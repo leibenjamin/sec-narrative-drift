@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react"
 import { Link, useParams } from "react-router-dom"
+import DriftTimeline from "../components/DriftTimeline"
 import { copy } from "../lib/copy"
 import {
   listFeaturedTickers,
@@ -109,18 +110,6 @@ export default function Company() {
     return start === end ? String(start) : `${start}-${end}`
   }, [metrics])
 
-  const driftRows = useMemo(() => {
-    if (!metrics) return []
-    return metrics.years.map((year, index) => ({
-      year,
-      prevYear: metrics.years[index - 1],
-      drift: metrics.drift_vs_prev?.[index] ?? null,
-      ciLow: metrics.drift_ci_low?.[index] ?? null,
-      ciHigh: metrics.drift_ci_high?.[index] ?? null,
-      boilerplate: metrics.boilerplate_score?.[index] ?? null,
-    }))
-  }, [metrics])
-
   const selectedShiftPair = shifts?.yearPairs?.[0] ?? null
   const selectedExcerptPair = useMemo(() => {
     if (!excerpts?.pairs?.length) return null
@@ -204,36 +193,13 @@ export default function Company() {
             <h2 className="text-xl font-semibold">{copy.driftTimeline.title}</h2>
             <p className="text-sm opacity-70">{copy.driftTimeline.helper}</p>
           </div>
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {driftRows.map((row) => (
-              <div key={row.year} className="rounded-lg border border-black/10 p-3">
-                <div className="text-sm font-semibold">{row.year}</div>
-                {row.drift !== null && row.prevYear !== undefined && (
-                  <div className="text-xs opacity-70">
-                    {copy.driftTimeline.tooltip.driftLine({
-                      prevYear: row.prevYear,
-                      drift: formatNumber(row.drift),
-                    })}
-                  </div>
-                )}
-                {row.ciLow !== null && row.ciHigh !== null && (
-                  <div className="text-xs opacity-70">
-                    {copy.driftTimeline.tooltip.ciLine({
-                      low: formatNumber(row.ciLow),
-                      high: formatNumber(row.ciHigh),
-                    })}
-                  </div>
-                )}
-                {row.boilerplate !== null && (
-                  <div className="text-xs opacity-70">
-                    {copy.driftTimeline.tooltip.boilerplateLine({
-                      boilerplatePct: formatNumber(row.boilerplate),
-                    })}
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
+          <DriftTimeline
+            years={metrics?.years ?? []}
+            drift_vs_prev={metrics?.drift_vs_prev ?? []}
+            drift_ci_low={metrics?.drift_ci_low}
+            drift_ci_high={metrics?.drift_ci_high}
+            boilerplate_score={metrics?.boilerplate_score}
+          />
         </section>
 
         <section className="space-y-3">
