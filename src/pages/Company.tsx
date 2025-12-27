@@ -1,8 +1,9 @@
-import { useEffect, useMemo, useState } from "react"
+import { useEffect, useMemo, useRef, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import ComparePane from "../components/ComparePane"
 import DataProvenanceDrawer from "../components/DataProvenanceDrawer"
 import DriftTimeline from "../components/DriftTimeline"
+import ExecBriefCard, { type ExecBriefData } from "../components/ExecBriefCard"
 import SimilarityHeatmap from "../components/SimilarityHeatmap"
 import TermShiftBars from "../components/TermShiftBars"
 import Tour from "../components/Tour"
@@ -16,6 +17,7 @@ import {
   loadShifts,
   loadSimilarity,
 } from "../lib/data"
+import { exportExecBriefPng } from "../lib/exportPng"
 import type { Excerpts, FilingRow, Meta, Metrics, ShiftPairs, SimilarityMatrix } from "../lib/types"
 
 function getErrorMessage(error: unknown, fallback: string): string {
@@ -42,6 +44,7 @@ export default function Company() {
   )
   const [selectedTerm, setSelectedTerm] = useState<string | null>(null)
   const [isTourOpen, setIsTourOpen] = useState(false)
+  const execBriefRef = useRef<SVGSVGElement | null>(null)
 
   useEffect(() => {
     let cancelled = false
@@ -185,6 +188,70 @@ export default function Company() {
     }
   }, [metrics])
 
+  const execBriefData = useMemo<ExecBriefData>(() => {
+    const companyName = meta?.companyName ?? ticker
+    const years = metrics?.years ?? []
+    const startYear = years[0] ?? null
+    const endYear = years[years.length - 1] ?? null
+    const driftValues = metrics?.drift_vs_prev ?? []
+
+    let maxIndex = -1
+    let maxValue = -Infinity
+    driftValues.forEach((value, index) => {
+      if (value === null || value === undefined) return
+      if (value > maxValue) {
+        maxValue = value
+        maxIndex = index
+      }
+    })
+
+    const largestDriftYear = maxIndex >= 0 ? years[maxIndex] : null
+    const prevYear = maxIndex > 0 ? years[maxIndex - 1] : null
+    const matchedPair =
+      shifts?.yearPairs?.find(
+        (pair) => pair.from === prevYear && pair.to === largestDriftYear
+      ) ?? shifts?.yearPairs?.[0] ?? null
+
+    const summary =
+      matchedPair?.summary ||
+      (largestDriftYear && prevYear
+        ? `Largest drift appears in ${largestDriftYear} vs ${prevYear}.`
+        : "")
+
+    const topRisers = matchedPair?.topRisers?.map((item) => item.term) ?? []
+    const topFallers = matchedPair?.topFallers?.map((item) => item.term) ?? []
+    const filingDates = filings
+      .map((filing) => filing.filingDate)
+      .filter((date) => Boolean(date))
+    const filingDatesText = filingDates.length > 0 ? filingDates.join(", ") : "-"
+    const provenanceLine = `${copy.global.sourceLine} Filing dates: ${filingDatesText}`
+
+    return {
+      companyName,
+      ticker,
+      startYear,
+      endYear,
+      largestDriftYear,
+      prevYear,
+      summary,
+      topRisers,
+      topFallers,
+      driftValues,
+      provenanceLine,
+    }
+  }, [meta, ticker, metrics, shifts, filings])
+
+  const execBriefFilename = useMemo(() => {
+    const start = execBriefData.startYear ?? "na"
+    const end = execBriefData.endYear ?? "na"
+    return `sec-narrative-drift-${ticker}-${start}-${end}.png`
+  }, [execBriefData, ticker])
+
+  function handleExportExecBrief() {
+    if (!execBriefRef.current) return
+    void exportExecBriefPng(execBriefRef.current, execBriefFilename)
+  }
+
   const tourSteps = useMemo(
     () => [
       {
@@ -264,6 +331,13 @@ export default function Company() {
             onClick={() => setIsTourOpen((prev) => !prev)}
           >
             {copy.company.topButtons.startTour}
+          </button>
+          <button
+            type="button"
+            className="inline-flex items-center rounded-md border border-black/20 px-3 py-2 text-sm hover:bg-black/5"
+            onClick={handleExportExecBrief}
+          >
+            {copy.company.topButtons.exportExecBrief}
           </button>
           <DataProvenanceDrawer />
         </div>
@@ -368,6 +442,9 @@ export default function Company() {
             errorMessage={excerptsError}
             showLowConfidenceWarning={hasLowConfidence}
           />
+        </div>
+        <div aria-hidden="true" style={{ position: "absolute", left: "-9999px", top: 0 }}>
+          <ExecBriefCard data={execBriefData} svgRef={execBriefRef} />
         </div>
       </div>
       <Tour isOpen={isTourOpen} steps={tourSteps} onClose={() => setIsTourOpen(false)} />
