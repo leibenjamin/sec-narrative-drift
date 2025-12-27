@@ -5,6 +5,7 @@ import DataProvenanceDrawer from "../components/DataProvenanceDrawer"
 import DriftTimeline from "../components/DriftTimeline"
 import SimilarityHeatmap from "../components/SimilarityHeatmap"
 import TermShiftBars from "../components/TermShiftBars"
+import Tour from "../components/Tour"
 import { copy } from "../lib/copy"
 import {
   listFeaturedTickers,
@@ -40,6 +41,7 @@ export default function Company() {
     null
   )
   const [selectedTerm, setSelectedTerm] = useState<string | null>(null)
+  const [isTourOpen, setIsTourOpen] = useState(false)
 
   useEffect(() => {
     let cancelled = false
@@ -56,6 +58,7 @@ export default function Company() {
       setExcerpts(null)
       setSelectedPair(null)
       setSelectedTerm(null)
+      setIsTourOpen(false)
 
       try {
         const [metaData, filingsData, metricsData, similarityData, shiftsData] =
@@ -149,6 +152,65 @@ export default function Company() {
     (filing) => filing.extraction && filing.extraction.confidence < 0.5
   )
 
+  const callouts = useMemo(() => {
+    const years = metrics?.years ?? []
+    const drift = metrics?.drift_vs_prev ?? []
+    const boilerplate = metrics?.boilerplate_score ?? []
+
+    const driftEntries = years
+      .map((year, index) => ({ year, value: drift[index] ?? null }))
+      .filter((entry): entry is { year: number; value: number } => entry.value !== null)
+
+    const boilerplateEntries = years
+      .map((year, index) => ({ year, value: boilerplate[index] ?? null }))
+      .filter((entry): entry is { year: number; value: number } => entry.value !== null)
+
+    const largestDrift = driftEntries.reduce(
+      (acc, entry) => (entry.value > acc.value ? entry : acc),
+      driftEntries[0] ?? { year: 0, value: -Infinity }
+    )
+    const mostStable = driftEntries.reduce(
+      (acc, entry) => (entry.value < acc.value ? entry : acc),
+      driftEntries[0] ?? { year: 0, value: Infinity }
+    )
+    const mostTemplated = boilerplateEntries.reduce(
+      (acc, entry) => (entry.value > acc.value ? entry : acc),
+      boilerplateEntries[0] ?? { year: 0, value: -Infinity }
+    )
+
+    return {
+      largestDrift: driftEntries.length ? largestDrift.year : null,
+      mostStable: driftEntries.length ? mostStable.year : null,
+      mostTemplated: boilerplateEntries.length ? mostTemplated.year : null,
+    }
+  }, [metrics])
+
+  const tourSteps = useMemo(
+    () => [
+      {
+        targetId: "tour-drift",
+        title: copy.driftTimeline.title,
+        body: copy.tour.steps.drift,
+      },
+      {
+        targetId: "tour-heatmap",
+        title: copy.heatmap.title,
+        body: copy.tour.steps.heatmap,
+      },
+      {
+        targetId: "tour-shifts",
+        title: copy.termShifts.title,
+        body: copy.tour.steps.shifts,
+      },
+      {
+        targetId: "tour-compare",
+        title: copy.comparePane.title,
+        body: copy.tour.steps.compare,
+      },
+    ],
+    []
+  )
+
   if (loading) {
     return (
       <main className="min-h-screen">
@@ -196,6 +258,13 @@ export default function Company() {
           >
             {copy.company.topButtons.methodology}
           </Link>
+          <button
+            type="button"
+            className="inline-flex items-center rounded-md border border-black/20 px-3 py-2 text-sm hover:bg-black/5"
+            onClick={() => setIsTourOpen((prev) => !prev)}
+          >
+            {copy.company.topButtons.startTour}
+          </button>
           <DataProvenanceDrawer />
         </div>
 
@@ -222,10 +291,35 @@ export default function Company() {
           </div>
         </section>
 
-        <section className="space-y-3">
+        <section className="space-y-3" id="tour-drift">
           <div>
             <h2 className="text-xl font-semibold">{copy.driftTimeline.title}</h2>
             <p className="text-sm opacity-70">{copy.driftTimeline.helper}</p>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            <div
+              className="rounded-full border border-black/10 px-3 py-1 text-xs"
+              title={copy.company.callouts.largestDrift.tooltip}
+            >
+              <span className="font-medium">{copy.company.callouts.largestDrift.label}</span>
+              <span className="ml-2">{callouts.largestDrift ?? "-"}</span>
+            </div>
+            <div
+              className="rounded-full border border-black/10 px-3 py-1 text-xs"
+              title={copy.company.callouts.mostStable.tooltip}
+            >
+              <span className="font-medium">{copy.company.callouts.mostStable.label}</span>
+              <span className="ml-2">{callouts.mostStable ?? "-"}</span>
+            </div>
+            <div
+              className="rounded-full border border-black/10 px-3 py-1 text-xs"
+              title={copy.company.callouts.highestBoilerplate.tooltip}
+            >
+              <span className="font-medium">
+                {copy.company.callouts.highestBoilerplate.label}
+              </span>
+              <span className="ml-2">{callouts.mostTemplated ?? "-"}</span>
+            </div>
           </div>
           <DriftTimeline
             years={metrics?.years ?? []}
@@ -236,7 +330,7 @@ export default function Company() {
           />
         </section>
 
-        <section className="space-y-3">
+        <section className="space-y-3" id="tour-heatmap">
           <div>
             <h2 className="text-xl font-semibold">{copy.heatmap.title}</h2>
             <p className="text-sm opacity-70">{copy.heatmap.helper}</p>
@@ -250,7 +344,7 @@ export default function Company() {
           ) : null}
         </section>
 
-        <section className="space-y-3">
+        <section className="space-y-3" id="tour-shifts">
           <div>
             <h2 className="text-xl font-semibold">{copy.termShifts.title}</h2>
             <p className="text-sm opacity-70">{copy.termShifts.helper}</p>
@@ -266,14 +360,17 @@ export default function Company() {
           />
         </section>
 
-        <ComparePane
-          selectedPair={selectedPair}
-          excerpts={excerpts}
-          highlightTerms={highlightTerms}
-          errorMessage={excerptsError}
-          showLowConfidenceWarning={hasLowConfidence}
-        />
+        <div id="tour-compare">
+          <ComparePane
+            selectedPair={selectedPair}
+            excerpts={excerpts}
+            highlightTerms={highlightTerms}
+            errorMessage={excerptsError}
+            showLowConfidenceWarning={hasLowConfidence}
+          />
+        </div>
       </div>
+      <Tour isOpen={isTourOpen} steps={tourSteps} onClose={() => setIsTourOpen(false)} />
     </main>
   )
 }

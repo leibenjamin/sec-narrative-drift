@@ -56,6 +56,12 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+[data-tour-active="true"] {
+  outline: 2px solid #111827;
+  outline-offset: 4px;
+  border-radius: 12px;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
