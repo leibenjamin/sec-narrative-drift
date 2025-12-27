@@ -26,6 +26,7 @@ If anything conflicts, the spec is the source of truth. Do not invent endpoints 
 - Keep components small and readable.
 - For heatmap, SVG grid is acceptable and often simplest.
 - For highlighting terms, avoid `dangerouslySetInnerHTML` unless you guarantee escaping.
+- Pylance strict typing: when parsing JSON, use explicit type guards/helpers and explicit loops to build typed lists/dicts; avoid comprehensions over unknown data and `all(...)` on unknown keys.
 
 
 ## Security / privacy guardrails (MUST follow)
