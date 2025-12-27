@@ -2,6 +2,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 import Home from "./pages/Home"
 import Company from "./pages/Company"
+import Methodology from "./pages/Methodology"
 
 export default function App() {
   return (
@@ -10,6 +11,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/company" element={<Company />} />
         <Route path="/company/:ticker" element={<Company />} />
+        <Route path="/methodology" element={<Methodology />} />
         {/* optional: send unknown URLs back home */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
