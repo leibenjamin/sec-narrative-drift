@@ -112,9 +112,9 @@ def as_list(value: Any) -> Optional[list[Any]]:
     return list(cast(list[Any], value))
 
 
-def load_ticker_cik_map() -> dict[str, dict[str, str]]:
+def load_ticker_cik_map(force_live: bool = False) -> dict[str, dict[str, str]]:
     fixture_path = FIXTURES_DIR / "company_tickers_exchange.json"
-    if fixture_path.exists():
+    if fixture_path.exists() and not force_live:
         payload = load_fixture_json(fixture_path)
     else:
         session = requests.Session()
@@ -343,6 +343,8 @@ def main(argv: Optional[list[str]] = None) -> int:
 
     ticker = args.ticker.upper().strip()
     mapping = load_ticker_cik_map()
+    if ticker not in mapping:
+        mapping = load_ticker_cik_map(force_live=True)
     if ticker not in mapping:
         raise SystemExit(f"Ticker not found in mapping: {ticker}")
 
