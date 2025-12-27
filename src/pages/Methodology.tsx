@@ -48,6 +48,13 @@ export default function Methodology() {
         </section>
 
         <section className="space-y-2">
+          <h2 className="text-lg font-semibold">
+            {copy.methodology.headings.securityPrivacy}
+          </h2>
+          <p className="text-sm opacity-80">{copy.methodology.paragraphs.securityPrivacy}</p>
+        </section>
+
+        <section className="space-y-2">
           <h2 className="text-lg font-semibold">{copy.methodology.headings.credits}</h2>
           <p className="text-sm opacity-70">{copy.methodology.paragraphs.credits}</p>
         </section>

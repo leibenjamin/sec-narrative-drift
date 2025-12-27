@@ -7,6 +7,7 @@ type ComparePaneProps = {
   selectedPair: { from: number; to: number } | null
   excerpts: Excerpts | null
   highlightTerms: string[]
+  secLinks?: Array<{ year: number; url: string }>
   errorMessage?: string | null
   showLowConfidenceWarning?: boolean
 }
@@ -15,6 +16,7 @@ export default function ComparePane({
   selectedPair,
   excerpts,
   highlightTerms,
+  secLinks,
   errorMessage,
   showLowConfidenceWarning,
 }: ComparePaneProps) {
@@ -49,6 +51,21 @@ export default function ComparePane({
           <div className="text-sm font-semibold">
             {selectedExcerptPair.from}-{selectedExcerptPair.to}
           </div>
+          {secLinks && secLinks.length > 0 ? (
+            <div className="flex flex-wrap gap-3 text-xs">
+              {secLinks.map((link) => (
+                <a
+                  key={`sec-${link.year}`}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline"
+                >
+                  {copy.comparePane.viewOnSec} {link.year}
+                </a>
+              ))}
+            </div>
+          ) : null}
           <div className="grid gap-3 md:grid-cols-2">
             {selectedExcerptPair.representativeParagraphs.map((para, index) => {
               const segments = splitForHighlight(para.text, highlightTerms)

@@ -18,6 +18,7 @@ import {
   loadSimilarity,
 } from "../lib/data"
 import { exportExecBriefPng } from "../lib/exportPng"
+import { assertSafeExternalUrl } from "../lib/sanitize"
 import type { Excerpts, FilingRow, Meta, Metrics, ShiftPairs, SimilarityMatrix } from "../lib/types"
 
 function getErrorMessage(error: unknown, fallback: string): string {
@@ -276,6 +277,22 @@ export default function Company() {
     []
   )
 
+  const secLinks = useMemo(() => {
+    if (!selectedPair) return []
+    const years = [selectedPair.from, selectedPair.to]
+    return years
+      .map((year) => {
+        const filing = filings.find((item) => item.year === year)
+        if (!filing?.secUrl) return null
+        try {
+          return { year, url: assertSafeExternalUrl(filing.secUrl) }
+        } catch {
+          return null
+        }
+      })
+      .filter((link): link is { year: number; url: string } => Boolean(link))
+  }, [selectedPair, filings])
+
   if (loading) {
     return (
       <main className="min-h-screen">
@@ -437,6 +454,7 @@ export default function Company() {
             selectedPair={selectedPair}
             excerpts={excerpts}
             highlightTerms={highlightTerms}
+            secLinks={secLinks}
             errorMessage={excerptsError}
             showLowConfidenceWarning={hasLowConfidence}
           />

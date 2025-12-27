@@ -152,6 +152,7 @@ export const copy = {
       extraction: "How extraction works (high level)",
       drift: "How drift is computed (high level)",
       sanityCheck: "How to sanity‑check a spike",
+      securityPrivacy: "Security & privacy",
       credits: "Credits",
     },
     paragraphs: {
@@ -167,6 +168,8 @@ export const copy = {
         "We vectorize text and compute cosine similarity across years. Drift is defined as 1 − similarity. Term shifts are computed as a smoothed log‑odds difference.",
       sanityCheck:
         "Click the spike year → click the heatmap cell → skim term shifts → read the highlighted paragraphs → open the SEC link if anything looks off.",
+      securityPrivacy:
+        "No login, no user accounts, and no server-side tracking. SEC text is treated as untrusted and rendered as plain text with highlights. Notes (if used) are stored locally in your browser (localStorage) and never uploaded. If you front the site with Cloudflare, set security headers like CSP and frame-ancestors; GitHub Pages alone has limited header support.",
       credits:
         "Microcopy includes a few understated nods to workplace/tech satire (see docs for unused lines and attributions).",
     },
