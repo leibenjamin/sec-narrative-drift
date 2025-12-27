@@ -8,7 +8,7 @@ import type {
   SimilarityMatrix,
 } from "./types"
 
-const BASE_PATH = "/data/sec_narrative_drift"
+const BASE_PATH = `${import.meta.env.BASE_URL}data/sec_narrative_drift`
 const FEATURED_TICKERS = ["AAPL", "NVDA", "TSLA"]
 
 export class DataLoadError extends Error {
