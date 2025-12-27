@@ -1,7 +1,9 @@
 import { useEffect, useMemo, useState } from "react"
+import type { ReactNode } from "react"
 import { Link, useParams } from "react-router-dom"
 import DriftTimeline from "../components/DriftTimeline"
 import SimilarityHeatmap from "../components/SimilarityHeatmap"
+import TermShiftBars from "../components/TermShiftBars"
 import { copy } from "../lib/copy"
 import {
   listFeaturedTickers,
@@ -20,11 +22,6 @@ import type {
   ShiftPairs,
   SimilarityMatrix,
 } from "../lib/types"
-
-function formatNumber(value: number | null | undefined): string {
-  if (value === null || value === undefined || Number.isNaN(value)) return ""
-  return value.toFixed(2)
-}
 
 function getErrorMessage(error: unknown, fallback: string): string {
   if (error instanceof Error && error.message) return error.message
@@ -48,6 +45,7 @@ export default function Company() {
   const [selectedPair, setSelectedPair] = useState<{ from: number; to: number } | null>(
     null
   )
+  const [selectedTerm, setSelectedTerm] = useState<string | null>(null)
 
   useEffect(() => {
     let cancelled = false
@@ -63,6 +61,7 @@ export default function Company() {
       setShifts(null)
       setExcerpts(null)
       setSelectedPair(null)
+      setSelectedTerm(null)
 
       try {
         const [metaData, filingsData, metricsData, similarityData, shiftsData] =
@@ -84,12 +83,14 @@ export default function Company() {
         if (shiftsData.yearPairs?.length) {
           const firstPair = shiftsData.yearPairs[0]
           setSelectedPair({ from: firstPair.from, to: firstPair.to })
+          setSelectedTerm(null)
         } else if (similarityData.years.length >= 2) {
           const lastIndex = similarityData.years.length - 1
           setSelectedPair({
             from: similarityData.years[lastIndex - 1],
             to: similarityData.years[lastIndex],
           })
+          setSelectedTerm(null)
         }
         setLoading(false)
       } catch (err) {
@@ -149,6 +150,43 @@ export default function Company() {
     const ordered =
       fromYear <= toYear ? { from: fromYear, to: toYear } : { from: toYear, to: fromYear }
     setSelectedPair(ordered)
+    setSelectedTerm(null)
+  }
+
+  function escapeRegExp(value: string): string {
+    return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
+  }
+
+  function highlightSelectedTerm(text: string, term: string | null) {
+    if (!term) return text
+    const trimmed = term.trim()
+    if (!trimmed) return text
+    const regex = new RegExp(`\\b${escapeRegExp(trimmed)}\\b`, "gi")
+    const matches = Array.from(text.matchAll(regex))
+    if (matches.length === 0) return text
+
+    const nodes: ReactNode[] = []
+    let lastIndex = 0
+
+    matches.forEach((match, index) => {
+      const start = match.index ?? 0
+      if (start > lastIndex) {
+        nodes.push(text.slice(lastIndex, start))
+      }
+      const matchText = match[0]
+      nodes.push(
+        <mark key={`${start}-${index}`} className="rounded bg-yellow-200 px-0.5">
+          {matchText}
+        </mark>
+      )
+      lastIndex = start + matchText.length
+    })
+
+    if (lastIndex < text.length) {
+      nodes.push(text.slice(lastIndex))
+    }
+
+    return nodes
   }
 
   const hasLowConfidence = filings.some(
@@ -251,39 +289,15 @@ export default function Company() {
             <h2 className="text-xl font-semibold">{copy.termShifts.title}</h2>
             <p className="text-sm opacity-70">{copy.termShifts.helper}</p>
           </div>
-          {selectedShiftPair ? (
-            <div className="space-y-4">
-              <p className="text-sm opacity-80">{selectedShiftPair.summary}</p>
-              <div className="grid gap-4 sm:grid-cols-2">
-                <div className="rounded-lg border border-black/10 p-3">
-                  <div className="text-sm font-semibold">
-                    {copy.termShifts.risersLabel}
-                  </div>
-                  <ul className="mt-2 space-y-1 text-xs">
-                    {selectedShiftPair.topRisers.map((item) => (
-                      <li key={`riser-${item.term}`}>
-                        {item.term} ({formatNumber(item.score)})
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="rounded-lg border border-black/10 p-3">
-                  <div className="text-sm font-semibold">
-                    {copy.termShifts.fallersLabel}
-                  </div>
-                  <ul className="mt-2 space-y-1 text-xs">
-                    {selectedShiftPair.topFallers.map((item) => (
-                      <li key={`faller-${item.term}`}>
-                        {item.term} ({formatNumber(item.score)})
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
-          ) : (
-            <p className="text-sm opacity-70">{copy.global.errors.noShifts}</p>
-          )}
+          {selectedShiftPair?.summary ? (
+            <p className="text-sm opacity-80">{selectedShiftPair.summary}</p>
+          ) : null}
+          <TermShiftBars
+            selectedPair={selectedShiftPair ? { from: selectedShiftPair.from, to: selectedShiftPair.to } : null}
+            topRisers={selectedShiftPair?.topRisers ?? []}
+            topFallers={selectedShiftPair?.topFallers ?? []}
+            onClickTerm={(term) => setSelectedTerm(term)}
+          />
         </section>
 
         <section className="space-y-3">
@@ -314,7 +328,7 @@ export default function Company() {
                       {para.year}
                     </div>
                     <p className="mt-2 text-sm leading-relaxed whitespace-pre-line">
-                      {para.text}
+                      {highlightSelectedTerm(para.text, selectedTerm)}
                     </p>
                   </div>
                 ))}
