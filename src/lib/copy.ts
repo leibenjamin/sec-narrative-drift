@@ -161,6 +161,8 @@ export const copy = {
         "A drift spike is not proof of a real-world event. It’s a prompt to read the filing and form hypotheses. Treat this as descriptive analysis, not causality.",
       extraction:
         "We download the filing HTML, isolate Item 1A using section heuristics, and split the result into paragraphs. We record an extraction confidence score for each year.",
+      secAccess:
+        "Always include a descriptive User-Agent with contact info and respect SEC fair-access limits (<= 10 requests/sec).",
       drift:
         "We vectorize text and compute cosine similarity across years. Drift is defined as 1 − similarity. Term shifts are computed as a smoothed log‑odds difference.",
       sanityCheck:

@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import ComparePane from "../components/ComparePane"
+import DataProvenanceDrawer from "../components/DataProvenanceDrawer"
 import DriftTimeline from "../components/DriftTimeline"
 import SimilarityHeatmap from "../components/SimilarityHeatmap"
 import TermShiftBars from "../components/TermShiftBars"
@@ -187,6 +188,16 @@ export default function Company() {
           </h1>
           <p className="text-sm opacity-70">{copy.company.sectionValueMvp}</p>
         </header>
+
+        <div className="flex flex-wrap items-center gap-3">
+          <Link
+            to="/methodology"
+            className="inline-flex items-center rounded-md border border-black/20 px-3 py-2 text-sm hover:bg-black/5"
+          >
+            {copy.company.topButtons.methodology}
+          </Link>
+          <DataProvenanceDrawer />
+        </div>
 
         <section className="grid gap-4 sm:grid-cols-3">
           <div className="rounded-lg border border-black/10 p-4">
