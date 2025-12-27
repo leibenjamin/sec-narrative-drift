@@ -33,12 +33,12 @@ export default function TermShiftBars({
   const hasData = topRisers.length > 0 || topFallers.length > 0
 
   if (!selectedPair || !hasData) {
-    return <p className="text-sm opacity-70">{copy.global.errors.noShifts}</p>
+    return <p className="text-sm text-slate-300">{copy.global.errors.noShifts}</p>
   }
 
   return (
     <div className="space-y-4">
-      <div className="text-xs uppercase tracking-wider opacity-70">
+      <div className="text-xs uppercase tracking-wider text-slate-300">
         {selectedPair.from} → {selectedPair.to}
       </div>
       <div className="grid gap-4 sm:grid-cols-2">
@@ -55,7 +55,7 @@ export default function TermShiftBars({
                     onClick={() => onClickTerm(item.term)}
                   >
                     <span className="min-w-22.5 font-medium">{item.term}</span>
-                    <span className="text-[10px] opacity-70">
+                    <span className="text-[10px] text-slate-300">
                       {formatScore(item.score)}
                     </span>
                     <span className="flex-1 h-2 rounded bg-emerald-100">
@@ -83,7 +83,7 @@ export default function TermShiftBars({
                     onClick={() => onClickTerm(item.term)}
                   >
                     <span className="min-w-22.5 font-medium">{item.term}</span>
-                    <span className="text-[10px] opacity-70">
+                    <span className="text-[10px] text-slate-300">
                       {formatScore(item.score)}
                     </span>
                     <span className="flex-1 h-2 rounded bg-rose-100">

@@ -34,18 +34,18 @@ export default function ComparePane({
     <section className="space-y-3">
       <div>
         <h2 className="text-xl font-semibold">{copy.comparePane.title}</h2>
-        <p className="text-sm opacity-70">{copy.comparePane.helper}</p>
+        <p className="text-sm text-slate-300">{copy.comparePane.helper}</p>
       </div>
 
       {showLowConfidenceWarning ? (
-        <p className="text-xs opacity-70">{copy.comparePane.warnLowConfidence}</p>
+        <p className="text-xs text-slate-300">{copy.comparePane.warnLowConfidence}</p>
       ) : null}
 
       {errorMessage ? (
-        <p className="text-sm opacity-70">{errorMessage}</p>
+        <p className="text-sm text-slate-300">{errorMessage}</p>
       ) : selectedExcerptPair ? (
         <div className="space-y-3">
-          <div className="text-xs uppercase tracking-wider opacity-70">
+          <div className="text-xs uppercase tracking-wider text-slate-300">
             {copy.comparePane.pairLabel}
           </div>
           <div className="text-sm font-semibold">
@@ -74,7 +74,7 @@ export default function ComparePane({
                   key={`${para.year}-${para.paragraphIndex}-${index}`}
                   className="rounded-lg border border-black/10 p-3"
                 >
-                  <div className="text-xs uppercase tracking-wider opacity-70">
+                  <div className="text-xs uppercase tracking-wider text-slate-300">
                     {para.year}
                   </div>
                   <p className="mt-2 text-sm leading-relaxed whitespace-pre-line">
@@ -103,7 +103,7 @@ export default function ComparePane({
           </div>
         </div>
       ) : (
-        <p className="text-sm opacity-70">{copy.comparePane.emptyNoPair}</p>
+        <p className="text-sm text-slate-300">{copy.comparePane.emptyNoPair}</p>
       )}
     </section>
   )
