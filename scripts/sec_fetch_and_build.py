@@ -2,17 +2,31 @@ import argparse
 import json
 import os
 import time
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Optional, Sequence, cast
 from urllib.parse import urlparse
 
 import requests
 
+from sec_extract_item1a import clean_html_to_text, extract_item_1a, split_paragraphs
+from sec_metrics import SectionYear as MetricsSectionYear, build_metrics
+from sec_quality import (
+    SectionYear as QualitySectionYear,
+    ShiftPair as QualityShiftPair,
+    ShiftTerm as QualityShiftTerm,
+    build_excerpt_pairs,
+)
 
 SEC_TICKER_MAP_URL = "https://www.sec.gov/files/company_tickers_exchange.json"
 SEC_SUBMISSIONS_URL = "https://data.sec.gov/submissions/CIK{cik10}.json"
 SEC_ARCHIVES_BASE = "https://www.sec.gov/Archives/edgar/data"
 MAX_REQUESTS_PER_SECOND = 10
+SECTION_NAME = "10k_item1a"
+META_NOTES = [
+    "Ticker/CIK mapping is SEC-provided and may be incomplete or outdated.",
+    "Narrative Drift is descriptive; causal explanations are hypotheses.",
+]
 
 ROOT_DIR = Path(__file__).resolve().parent
 FIXTURES_DIR = ROOT_DIR / "sample_fixtures"
@@ -218,8 +232,90 @@ def load_fixture_html(primary_doc: str) -> Optional[bytes]:
     return None
 
 
+def parse_year_from_date(value: str) -> Optional[int]:
+    if not value:
+        return None
+    year_text = value[:4]
+    if year_text.isdigit():
+        return int(year_text)
+    return None
+
+
+def ensure_low_confidence(errors: list[str]) -> list[str]:
+    if "low_confidence_item1a" not in errors:
+        errors.append("low_confidence_item1a")
+    return errors
+
+
+def extract_item1a_from_html(
+    html_bytes: bytes,
+) -> tuple[str, list[str], float, str, list[str]]:
+    html_text = html_bytes.decode("utf-8", errors="replace")
+    text = clean_html_to_text(html_text)
+    section, confidence, method, errors = extract_item_1a(text)
+    error_list = list(errors)
+    paragraphs = split_paragraphs(section) if section else []
+    if confidence < 0.5 or not section.strip():
+        return "", [], confidence, method, ensure_low_confidence(error_list)
+    return section, paragraphs, confidence, method, error_list
+
+
+def build_missing_extraction() -> tuple[str, list[str], float, str, list[str]]:
+    errors = ensure_low_confidence(["html_missing"])
+    return "", [], 0.0, "no_html", errors
+
+
+def build_quality_terms(value: Any) -> list[QualityShiftTerm]:
+    items = as_list(value)
+    if items is None:
+        return []
+    terms: list[QualityShiftTerm] = []
+    for item in items:
+        entry = as_str_dict(item)
+        if entry is None:
+            continue
+        term_value = entry.get("term")
+        score_value = entry.get("score")
+        if not isinstance(term_value, str):
+            continue
+        if not isinstance(score_value, (int, float)):
+            continue
+        terms.append(QualityShiftTerm(term=term_value, score=float(score_value)))
+    return terms
+
+
+def build_quality_shifts(payload: dict[str, Any]) -> list[QualityShiftPair]:
+    pairs = as_list(payload.get("yearPairs"))
+    if pairs is None:
+        return []
+    output: list[QualityShiftPair] = []
+    for item in pairs:
+        entry = as_str_dict(item)
+        if entry is None:
+            continue
+        from_year = entry.get("from")
+        to_year = entry.get("to")
+        if not isinstance(from_year, int) or not isinstance(to_year, int):
+            continue
+        top_risers = build_quality_terms(entry.get("topRisers"))
+        top_fallers = build_quality_terms(entry.get("topFallers"))
+        output.append(
+            QualityShiftPair(
+                from_year=from_year,
+                to_year=to_year,
+                top_risers=top_risers,
+                top_fallers=top_fallers,
+            )
+        )
+    return output
+
+
+def write_json(path: Path, payload: Any) -> None:
+    path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
+
+
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="Fetch SEC filings (fixtures first).")
+    parser = argparse.ArgumentParser(description="Fetch SEC filings and build JSON outputs.")
     parser.add_argument("--ticker", required=True, help="Ticker symbol (e.g., AAPL).")
     parser.add_argument(
         "--years",
@@ -227,7 +323,11 @@ def build_parser() -> argparse.ArgumentParser:
         default=10,
         help="Number of years to include (default: 10).",
     )
-    parser.add_argument("--out", help="Output folder for JSON artifacts.")
+    parser.add_argument(
+        "--out",
+        default=str(Path.cwd()),
+        help="Output folder for JSON artifacts.",
+    )
     parser.add_argument(
         "--limit",
         type=int,
@@ -247,11 +347,12 @@ def main(argv: Optional[list[str]] = None) -> int:
         raise SystemExit(f"Ticker not found in mapping: {ticker}")
 
     cik10 = mapping[ticker]["cik"]
+    company_name = mapping[ticker].get("name", ticker)
     submissions = fetch_submissions_json(cik10)
     filings = iter_recent_filings(submissions)
 
-    if args.limit:
-        filings = filings[: args.limit]
+    max_items = args.limit if args.limit is not None else args.years
+    filings = filings[:max_items]
 
     if not filings:
         raise SystemExit("No 10-K filings found for ticker.")
@@ -262,16 +363,104 @@ def main(argv: Optional[list[str]] = None) -> int:
     session = requests.Session()
     limiter = RateLimiter(MAX_REQUESTS_PER_SECOND)
 
+    seen_years: set[int] = set()
+    filings_out: list[dict[str, Any]] = []
+    metrics_sections: list[MetricsSectionYear] = []
+    quality_sections: list[QualitySectionYear] = []
+
     for filing in filings:
+        report_date = filing.get("reportDate", "")
+        filing_date = filing.get("filingDate", "")
+        year = parse_year_from_date(report_date) or parse_year_from_date(filing_date)
+        if year is None or year in seen_years:
+            continue
+        seen_years.add(year)
+
         url = build_primary_doc_url(cik10, filing["accessionNumber"], filing["primaryDocument"])
         html_bytes = load_fixture_html(filing["primaryDocument"])
         if html_bytes is None:
-            html_bytes = download(url, session, limiter)
+            try:
+                html_bytes = download(url, session, limiter)
+            except Exception as exc:  # pragma: no cover - defensive for offline runs
+                print(f"warning: unable to fetch {url}: {exc}")
+                html_bytes = None
 
-        filename = f"{filing['accessionNumber'].replace('-', '')}_{filing['primaryDocument']}"
-        output_path = cache_dir / filename
-        output_path.write_bytes(html_bytes)
-        print(f"saved: {output_path}")
+        if html_bytes is None:
+            section_text, paragraphs, confidence, method, errors = build_missing_extraction()
+        else:
+            filename = (
+                f"{filing['accessionNumber'].replace('-', '')}_{filing['primaryDocument']}"
+            )
+            output_path = cache_dir / filename
+            output_path.write_bytes(html_bytes)
+            print(f"saved: {output_path}")
+            section_text, paragraphs, confidence, method, errors = extract_item1a_from_html(
+                html_bytes
+            )
+
+        filings_out.append(
+            {
+                "year": year,
+                "form": filing.get("form", ""),
+                "filingDate": filing_date,
+                "reportDate": report_date,
+                "accessionNumber": filing.get("accessionNumber", ""),
+                "primaryDocument": filing.get("primaryDocument", ""),
+                "secUrl": url,
+                "extraction": {
+                    "confidence": confidence,
+                    "method": method,
+                    "errors": errors,
+                },
+            }
+        )
+
+        metrics_sections.append(
+            MetricsSectionYear(
+                year=year,
+                text=section_text,
+                paragraphs=paragraphs,
+                confidence=confidence,
+            )
+        )
+        quality_sections.append(
+            QualitySectionYear(
+                year=year,
+                paragraphs=paragraphs,
+                confidence=confidence,
+            )
+        )
+
+    metrics_sections.sort(key=lambda section: section.year)
+    quality_sections.sort(key=lambda section: section.year)
+    filings_out = sorted(filings_out, key=lambda row: row["year"])
+
+    metrics, similarity, shifts = build_metrics(metrics_sections)
+    quality_shifts = build_quality_shifts(shifts)
+    excerpt_pairs = build_excerpt_pairs(quality_sections, quality_shifts)
+    excerpts: dict[str, Any] = {"section": SECTION_NAME, "pairs": excerpt_pairs}
+
+    out_dir = Path(args.out)
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    meta_payload: dict[str, Any] = {
+        "ticker": ticker,
+        "cik": cik10,
+        "companyName": company_name,
+        "lastUpdatedUtc": datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace(
+            "+00:00", "Z"
+        ),
+        "formsIncluded": ["10-K"],
+        "sectionsIncluded": [SECTION_NAME],
+        "notes": META_NOTES,
+    }
+
+    write_json(out_dir / "meta.json", meta_payload)
+    write_json(out_dir / "filings.json", filings_out)
+    write_json(out_dir / "metrics_10k_item1a.json", metrics)
+    write_json(out_dir / "similarity_10k_item1a.json", similarity)
+    write_json(out_dir / "shifts_10k_item1a.json", shifts)
+    write_json(out_dir / "excerpts_10k_item1a.json", excerpts)
 
     return 0
 

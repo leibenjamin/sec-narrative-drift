@@ -1,16 +1,19 @@
 [
   {
-    "year": 2024,
+    "year": 2022,
     "form": "10-K",
-    "filingDate": "2024-11-01",
-    "reportDate": "2024-09-28",
-    "accessionNumber": "0000320193-24-000058",
-    "primaryDocument": "aapl-20240928.htm",
-    "secUrl": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000058/aapl-20240928.htm",
+    "filingDate": "2022-10-28",
+    "reportDate": "2022-09-24",
+    "accessionNumber": "0000320193-22-000108",
+    "primaryDocument": "aapl-20220924.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/320193/000032019322000108/aapl-20220924.htm",
     "extraction": {
-      "confidence": 0.91,
-      "method": "regex_item1a_to_item1b",
-      "errors": []
+      "confidence": 0.0,
+      "method": "no_html",
+      "errors": [
+        "html_missing",
+        "low_confidence_item1a"
+      ]
     }
   },
   {
@@ -22,21 +25,24 @@
     "primaryDocument": "aapl-20230930.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/320193/000032019323000106/aapl-20230930.htm",
     "extraction": {
-      "confidence": 0.88,
-      "method": "regex_item1a_to_item1b",
-      "errors": []
+      "confidence": 0.0,
+      "method": "no_html",
+      "errors": [
+        "html_missing",
+        "low_confidence_item1a"
+      ]
     }
   },
   {
-    "year": 2022,
+    "year": 2024,
     "form": "10-K",
-    "filingDate": "2022-10-28",
-    "reportDate": "2022-09-24",
-    "accessionNumber": "0000320193-22-000108",
-    "primaryDocument": "aapl-20220924.htm",
-    "secUrl": "https://www.sec.gov/Archives/edgar/data/320193/000032019322000108/aapl-20220924.htm",
+    "filingDate": "2024-11-01",
+    "reportDate": "2024-09-28",
+    "accessionNumber": "0000320193-24-000058",
+    "primaryDocument": "aapl-20240928.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000058/aapl-20240928.htm",
     "extraction": {
-      "confidence": 0.86,
+      "confidence": 0.85,
       "method": "regex_item1a_to_item1b",
       "errors": []
     }
