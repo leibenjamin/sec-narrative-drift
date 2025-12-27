@@ -10,7 +10,7 @@ export default function Home() {
     <main className="min-h-screen">
       <div className="mx-auto max-w-3xl px-6 py-16">
         <header className="space-y-4">
-          <p className="text-sm uppercase tracking-wider opacity-70">
+          <p className="text-sm uppercase tracking-wider text-slate-300">
             {copy.global.appName}
           </p>
 
@@ -18,15 +18,15 @@ export default function Home() {
             {copy.home.heroTitle}
           </h1>
 
-          <p className="text-lg opacity-80">
+          <p className="text-lg text-slate-200">
             {copy.global.subtitle}
           </p>
 
-          <p className="text-base opacity-80">
+          <p className="text-base text-slate-200">
             {copy.global.oneLiner}
           </p>
 
-          <p className="text-sm opacity-70">
+          <p className="text-sm text-slate-300">
             {copy.home.heroFootnote}
           </p>
         </header>
@@ -52,7 +52,7 @@ export default function Home() {
           <h2 className="text-xl font-semibold">
             {copy.home.featuredHeading}
           </h2>
-          <p className="mt-2 text-sm opacity-75">
+          <p className="mt-2 text-sm text-slate-300">
             {copy.home.featuredHelper}
           </p>
 
@@ -64,7 +64,7 @@ export default function Home() {
                 className="rounded-lg border border-black/10 p-4 hover:bg-black/5"
               >
                 <div className="text-sm font-medium">{ticker}</div>
-                <div className="mt-1 text-xs opacity-70">
+                <div className="mt-1 text-xs text-slate-300">
                   {copy.company.sectionValueMvp}
                 </div>
               </Link>
@@ -72,7 +72,7 @@ export default function Home() {
           </div>
         </section>
 
-        <footer className="mt-16 text-xs opacity-60">
+        <footer className="mt-16 text-xs text-slate-400">
           {copy.global.sourceLine} · {copy.global.caveatLine}
         </footer>
       </div>

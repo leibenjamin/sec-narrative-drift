@@ -297,7 +297,7 @@ export default function Company() {
     return (
       <main className="min-h-screen">
         <div className="mx-auto max-w-5xl px-6 py-16">
-          <p className="text-sm opacity-70">{copy.global.loading.base}</p>
+          <p className="text-sm text-slate-300">{copy.global.loading.base}</p>
         </div>
       </main>
     )
@@ -307,7 +307,7 @@ export default function Company() {
     return (
       <main className="min-h-screen">
         <div className="mx-auto max-w-5xl px-6 py-16 space-y-4">
-          <p className="text-sm opacity-80">{error}</p>
+          <p className="text-sm text-slate-200">{error}</p>
           <Link
             to="/"
             className="inline-flex items-center rounded-md border border-black/20 px-3 py-2 text-sm hover:bg-black/5"
@@ -323,14 +323,14 @@ export default function Company() {
     <main className="min-h-screen">
       <div className="mx-auto max-w-6xl px-6 py-12 space-y-10">
         <header className="space-y-3">
-          <p className="text-xs uppercase tracking-wider opacity-70">
+          <p className="text-xs uppercase tracking-wider text-slate-300">
             {copy.global.appName}
           </p>
           <h1 className="text-3xl font-semibold">
             {meta?.companyName ?? ticker}
             {meta?.ticker ? ` (${meta.ticker})` : ""}
           </h1>
-          <p className="text-sm opacity-70">{copy.company.sectionValueMvp}</p>
+          <p className="text-sm text-slate-300">{copy.company.sectionValueMvp}</p>
         </header>
 
         <div className="flex flex-wrap items-center gap-3">
@@ -359,7 +359,7 @@ export default function Company() {
 
         <section className="grid gap-4 sm:grid-cols-3">
           <div className="rounded-lg border border-black/10 p-4">
-            <div className="text-xs uppercase tracking-wider opacity-70">
+            <div className="text-xs uppercase tracking-wider text-slate-300">
               {copy.company.labels.company}
             </div>
             <div className="mt-2 text-lg font-semibold">
@@ -367,13 +367,13 @@ export default function Company() {
             </div>
           </div>
           <div className="rounded-lg border border-black/10 p-4">
-            <div className="text-xs uppercase tracking-wider opacity-70">
+            <div className="text-xs uppercase tracking-wider text-slate-300">
               {copy.company.labels.section}
             </div>
             <div className="mt-2 text-sm">{copy.company.sectionValueMvp}</div>
           </div>
           <div className="rounded-lg border border-black/10 p-4">
-            <div className="text-xs uppercase tracking-wider opacity-70">
+            <div className="text-xs uppercase tracking-wider text-slate-300">
               {copy.company.labels.years}
             </div>
             <div className="mt-2 text-sm">{yearRange}</div>
@@ -383,7 +383,7 @@ export default function Company() {
         <section className="space-y-3" id="tour-drift">
           <div>
             <h2 className="text-xl font-semibold">{copy.driftTimeline.title}</h2>
-            <p className="text-sm opacity-70">{copy.driftTimeline.helper}</p>
+            <p className="text-sm text-slate-300">{copy.driftTimeline.helper}</p>
           </div>
           <div className="flex flex-wrap gap-2">
             <div
@@ -422,7 +422,7 @@ export default function Company() {
         <section className="space-y-3" id="tour-heatmap">
           <div>
             <h2 className="text-xl font-semibold">{copy.heatmap.title}</h2>
-            <p className="text-sm opacity-70">{copy.heatmap.helper}</p>
+            <p className="text-sm text-slate-300">{copy.heatmap.helper}</p>
           </div>
           {similarity?.years?.length ? (
             <SimilarityHeatmap
@@ -436,10 +436,10 @@ export default function Company() {
         <section className="space-y-3" id="tour-shifts">
           <div>
             <h2 className="text-xl font-semibold">{copy.termShifts.title}</h2>
-            <p className="text-sm opacity-70">{copy.termShifts.helper}</p>
+            <p className="text-sm text-slate-300">{copy.termShifts.helper}</p>
           </div>
           {selectedShiftPair?.summary ? (
-            <p className="text-sm opacity-80">{selectedShiftPair.summary}</p>
+            <p className="text-sm text-slate-200">{selectedShiftPair.summary}</p>
           ) : null}
           <TermShiftBars
             selectedPair={selectedShiftPair ? { from: selectedShiftPair.from, to: selectedShiftPair.to } : null}
