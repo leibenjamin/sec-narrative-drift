@@ -1,8 +1,11 @@
 // src/pages/Home.tsx
 import { Link } from "react-router-dom"
 import { copy } from "../lib/copy"
+import { listFeaturedTickers } from "../lib/data"
 
 export default function Home() {
+  const featuredTickers = listFeaturedTickers()
+
   return (
     <main className="min-h-screen">
       <div className="mx-auto max-w-3xl px-6 py-16">
@@ -54,19 +57,18 @@ export default function Home() {
           </p>
 
           <div className="mt-6 grid gap-3 sm:grid-cols-2">
-            {/* placeholders — later replaced by real featured cards */}
-            <div className="rounded-lg border border-black/10 p-4">
-              <div className="text-sm font-medium">Featured #1</div>
-              <div className="mt-1 text-xs opacity-70">
-                Precomputed dataset placeholder
-              </div>
-            </div>
-            <div className="rounded-lg border border-black/10 p-4">
-              <div className="text-sm font-medium">Featured #2</div>
-              <div className="mt-1 text-xs opacity-70">
-                Precomputed dataset placeholder
-              </div>
-            </div>
+            {featuredTickers.map((ticker) => (
+              <Link
+                key={ticker}
+                to={`/company/${ticker}`}
+                className="rounded-lg border border-black/10 p-4 hover:bg-black/5"
+              >
+                <div className="text-sm font-medium">{ticker}</div>
+                <div className="mt-1 text-xs opacity-70">
+                  {copy.company.sectionValueMvp}
+                </div>
+              </Link>
+            ))}
           </div>
         </section>
 

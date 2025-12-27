@@ -212,19 +212,17 @@ export default function Company() {
         (pair) => pair.from === prevYear && pair.to === largestDriftYear
       ) ?? shifts?.yearPairs?.[0] ?? null
 
-    const summary =
-      matchedPair?.summary ||
-      (largestDriftYear && prevYear
-        ? `Largest drift appears in ${largestDriftYear} vs ${prevYear}.`
-        : "")
+    const summary = matchedPair?.summary ?? ""
 
     const topRisers = matchedPair?.topRisers?.map((item) => item.term) ?? []
     const topFallers = matchedPair?.topFallers?.map((item) => item.term) ?? []
     const filingDates = filings
       .map((filing) => filing.filingDate)
       .filter((date) => Boolean(date))
-    const filingDatesText = filingDates.length > 0 ? filingDates.join(", ") : "-"
-    const provenanceLine = `${copy.global.sourceLine} Filing dates: ${filingDatesText}`
+    const filingDatesText = filingDates.length > 0 ? filingDates.join(", ") : ""
+    const provenanceLine = filingDatesText
+      ? `${copy.global.sourceLine} ${filingDatesText}`
+      : copy.global.sourceLine
 
     return {
       companyName,
