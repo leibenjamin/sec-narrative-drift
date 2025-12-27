@@ -1,0 +1,336 @@
+import argparse
+import json
+import re
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Any, Optional, Sequence, TypeGuard, cast
+
+from sec_extract_item1a import clean_html_to_text, extract_item_1a, split_paragraphs
+
+
+SECTION_NAME = "10k_item1a"
+MAX_TERMS = 15
+MAX_PARAGRAPHS_PER_YEAR = 3
+
+
+@dataclass(frozen=True)
+class SectionYear:
+    year: int
+    paragraphs: list[str]
+    confidence: Optional[float] = None
+
+
+@dataclass(frozen=True)
+class ShiftTerm:
+    term: str
+    score: float
+
+
+@dataclass(frozen=True)
+class ShiftPair:
+    from_year: int
+    to_year: int
+    top_risers: list[ShiftTerm]
+    top_fallers: list[ShiftTerm]
+
+
+def as_str_dict(value: Any) -> Optional[dict[str, Any]]:
+    if not isinstance(value, dict):
+        return None
+    output: dict[str, Any] = {}
+    for key, item in cast(dict[object, object], value).items():
+        if not isinstance(key, str):
+            return None
+        output[key] = item
+    return output
+
+
+def as_list(value: Any) -> Optional[list[Any]]:
+    if isinstance(value, list):
+        return list(cast(list[Any], value))
+    return None
+
+
+def as_str_list(value: Any) -> Optional[list[str]]:
+    if not isinstance(value, list):
+        return None
+    output: list[str] = []
+    for item in cast(list[object], value):
+        if not isinstance(item, str):
+            return None
+        output.append(item)
+    return output
+
+
+def parse_year(value: Any) -> int:
+    if isinstance(value, int):
+        return value
+    if isinstance(value, str) and value.isdigit():
+        return int(value)
+    raise ValueError("year must be an integer")
+
+
+def parse_text(value: Any) -> str:
+    if isinstance(value, str):
+        return value
+    return ""
+
+
+def parse_confidence(value: Any) -> Optional[float]:
+    if isinstance(value, (int, float)):
+        return float(value)
+    return None
+
+
+def normalize_paragraphs(text: str, paragraphs: Optional[Sequence[str]]) -> list[str]:
+    if paragraphs:
+        cleaned = [para.strip() for para in paragraphs if para.strip()]
+        if cleaned:
+            return cleaned
+    text = text.strip()
+    if not text:
+        return []
+    split = split_paragraphs(text)
+    if split:
+        return split
+    return [text]
+
+
+def load_sections_from_json(path: Path) -> list[SectionYear]:
+    payload = json.loads(path.read_text(encoding="utf-8", errors="replace"))
+    items = as_list(payload)
+    if items is None:
+        raise RuntimeError("Input JSON must be a list of year sections.")
+
+    sections: list[SectionYear] = []
+    for item in items:
+        entry = as_str_dict(item)
+        if entry is None:
+            continue
+        try:
+            year = parse_year(entry.get("year"))
+        except ValueError:
+            continue
+        text = parse_text(entry.get("text"))
+        paragraphs = normalize_paragraphs(text, as_str_list(entry.get("paragraphs")))
+        confidence = parse_confidence(entry.get("confidence"))
+        sections.append(SectionYear(year=year, paragraphs=paragraphs, confidence=confidence))
+
+    return sorted(sections, key=lambda section: section.year)
+
+
+def load_sections_from_fixture(path: Path, years: Sequence[int]) -> list[SectionYear]:
+    html = path.read_text(encoding="utf-8", errors="replace")
+    text = clean_html_to_text(html)
+    section, confidence, _method, _errors = extract_item_1a(text)
+    paragraphs = normalize_paragraphs(section, None)
+    sections: list[SectionYear] = []
+    for year in years:
+        sections.append(SectionYear(year=year, paragraphs=paragraphs, confidence=confidence))
+    return sorted(sections, key=lambda section: section.year)
+
+
+def parse_shift_terms(value: Any) -> list[ShiftTerm]:
+    items = as_list(value)
+    if items is None:
+        return []
+    terms: list[ShiftTerm] = []
+    for item in items:
+        entry = as_str_dict(item)
+        if entry is None:
+            continue
+        term_value = entry.get("term")
+        score_value = entry.get("score")
+        if not isinstance(term_value, str):
+            continue
+        if not isinstance(score_value, (int, float)):
+            continue
+        terms.append(ShiftTerm(term=term_value, score=float(score_value)))
+    return terms
+
+
+def load_shifts(path: Path) -> list[ShiftPair]:
+    payload = json.loads(path.read_text(encoding="utf-8", errors="replace"))
+    payload_dict = as_str_dict(payload)
+    if payload_dict is None:
+        raise RuntimeError("Shift JSON must be an object.")
+    pairs = as_list(payload_dict.get("yearPairs"))
+    if pairs is None:
+        raise RuntimeError("Shift JSON missing yearPairs.")
+    shifts: list[ShiftPair] = []
+    for item in pairs:
+        entry = as_str_dict(item)
+        if entry is None:
+            continue
+        try:
+            from_year = parse_year(entry.get("from"))
+            to_year = parse_year(entry.get("to"))
+        except ValueError:
+            continue
+        top_risers = parse_shift_terms(entry.get("topRisers"))
+        top_fallers = parse_shift_terms(entry.get("topFallers"))
+        shifts.append(
+            ShiftPair(
+                from_year=from_year,
+                to_year=to_year,
+                top_risers=top_risers,
+                top_fallers=top_fallers,
+            )
+        )
+    return shifts
+
+
+def build_highlight_terms(top_risers: Sequence[ShiftTerm], top_fallers: Sequence[ShiftTerm]) -> list[str]:
+    terms = [term.term for term in top_risers[:MAX_TERMS]] + [
+        term.term for term in top_fallers[:MAX_TERMS]
+    ]
+    seen: set[str] = set()
+    output: list[str] = []
+    for term in terms:
+        key = term.strip().lower()
+        if not key or key in seen:
+            continue
+        seen.add(key)
+        output.append(term)
+    return output
+
+
+def compile_term_patterns(terms: Sequence[str]) -> list[re.Pattern[str]]:
+    patterns: list[re.Pattern[str]] = []
+    for term in terms:
+        normalized = term.strip()
+        if not normalized:
+            continue
+        pattern = re.compile(rf"\b{re.escape(normalized)}\b", re.IGNORECASE)
+        patterns.append(pattern)
+    return patterns
+
+
+def count_matches(text: str, patterns: Sequence[re.Pattern[str]]) -> int:
+    return sum(len(pattern.findall(text)) for pattern in patterns)
+
+
+def score_paragraph(
+    paragraph: str,
+    riser_patterns: Sequence[re.Pattern[str]],
+    faller_patterns: Sequence[re.Pattern[str]],
+) -> int:
+    riser_hits = count_matches(paragraph, riser_patterns)
+    faller_hits = count_matches(paragraph, faller_patterns)
+    return riser_hits - faller_hits
+
+
+def select_top_paragraphs(
+    paragraphs: Sequence[str],
+    year: int,
+    riser_patterns: Sequence[re.Pattern[str]],
+    faller_patterns: Sequence[re.Pattern[str]],
+    limit: int = MAX_PARAGRAPHS_PER_YEAR,
+) -> list[dict[str, Any]]:
+    scored: list[tuple[int, int, str]] = []
+    for idx, paragraph in enumerate(paragraphs):
+        score = score_paragraph(paragraph, riser_patterns, faller_patterns)
+        scored.append((score, idx, paragraph))
+    scored.sort(key=lambda item: (-item[0], item[1]))
+    selected = scored[:limit]
+    return [
+        {"year": year, "paragraphIndex": idx, "text": paragraph}
+        for _score, idx, paragraph in selected
+    ]
+
+
+def is_valid_section(section: Optional[SectionYear]) -> TypeGuard[SectionYear]:
+    if section is None:
+        return False
+    if section.confidence is not None and section.confidence < 0.5:
+        return False
+    return bool(section.paragraphs)
+
+
+def build_excerpt_pairs(
+    sections: list[SectionYear], shifts: list[ShiftPair]
+) -> list[dict[str, Any]]:
+    sections_by_year = {section.year: section for section in sections}
+    pairs: list[dict[str, Any]] = []
+
+    for shift in shifts:
+        highlight_terms = build_highlight_terms(shift.top_risers, shift.top_fallers)
+        from_section = sections_by_year.get(shift.from_year)
+        to_section = sections_by_year.get(shift.to_year)
+        representative: list[dict[str, Any]] = []
+
+        if is_valid_section(from_section) and is_valid_section(to_section):
+            riser_terms = [term.term for term in shift.top_risers[:MAX_TERMS]]
+            faller_terms = [term.term for term in shift.top_fallers[:MAX_TERMS]]
+            riser_patterns = compile_term_patterns(riser_terms)
+            faller_patterns = compile_term_patterns(faller_terms)
+            representative = select_top_paragraphs(
+                to_section.paragraphs, shift.to_year, riser_patterns, faller_patterns
+            ) + select_top_paragraphs(
+                from_section.paragraphs, shift.from_year, riser_patterns, faller_patterns
+            )
+
+        pairs.append(
+            {
+                "from": shift.from_year,
+                "to": shift.to_year,
+                "highlightTerms": highlight_terms,
+                "representativeParagraphs": representative,
+            }
+        )
+
+    return pairs
+
+
+def write_json(path: Path, payload: dict[str, Any]) -> None:
+    path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
+
+
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(description="Build excerpts for compare pane.")
+    parser.add_argument("--input", help="JSON list of {year,text,paragraphs,confidence}.")
+    parser.add_argument("--fixture-html", help="Fixture HTML to extract Item 1A from.")
+    parser.add_argument(
+        "--years",
+        nargs="+",
+        type=int,
+        help="Year list to use with --fixture-html (e.g., 2022 2023 2024).",
+    )
+    parser.add_argument("--shifts", required=True, help="Path to shifts_10k_item1a.json.")
+    parser.add_argument(
+        "--out",
+        default=str(Path.cwd()),
+        help="Output directory for excerpts JSON.",
+    )
+    return parser
+
+
+def main(argv: Optional[list[str]] = None) -> int:
+    parser = build_parser()
+    args = parser.parse_args(argv)
+
+    if args.input:
+        sections = load_sections_from_json(Path(args.input))
+    elif args.fixture_html:
+        if not args.years:
+            raise SystemExit("--years is required when using --fixture-html.")
+        sections = load_sections_from_fixture(Path(args.fixture_html), args.years)
+    else:
+        raise SystemExit("Provide --input or --fixture-html.")
+
+    if not sections:
+        raise SystemExit("No sections provided.")
+
+    shifts = load_shifts(Path(args.shifts))
+    pairs = build_excerpt_pairs(sections, shifts)
+
+    out_dir = Path(args.out)
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    payload: dict[str, Any] = {"section": SECTION_NAME, "pairs": pairs}
+    write_json(out_dir / "excerpts_10k_item1a.json", payload)
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
