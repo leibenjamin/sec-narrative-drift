@@ -1,0 +1,86 @@
+[
+  {
+    "year": 2020,
+    "form": "10-K",
+    "filingDate": "2020-02-20",
+    "reportDate": "2020-01-26",
+    "accessionNumber": "0001045810-20-000010",
+    "primaryDocument": "nvda-2020x10k.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/1045810/000104581020000010/nvda-2020x10k.htm",
+    "extraction": {
+      "confidence": 0.85,
+      "method": "regex_item1a_to_item1b",
+      "errors": []
+    }
+  },
+  {
+    "year": 2021,
+    "form": "10-K",
+    "filingDate": "2021-02-26",
+    "reportDate": "2021-01-31",
+    "accessionNumber": "0001045810-21-000010",
+    "primaryDocument": "nvda-20210131.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/1045810/000104581021000010/nvda-20210131.htm",
+    "extraction": {
+      "confidence": 0.85,
+      "method": "regex_item1a_to_item1b",
+      "errors": []
+    }
+  },
+  {
+    "year": 2022,
+    "form": "10-K",
+    "filingDate": "2022-03-18",
+    "reportDate": "2022-01-30",
+    "accessionNumber": "0001045810-22-000036",
+    "primaryDocument": "nvda-20220130.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/1045810/000104581022000036/nvda-20220130.htm",
+    "extraction": {
+      "confidence": 0.85,
+      "method": "regex_item1a_to_item1b",
+      "errors": []
+    }
+  },
+  {
+    "year": 2023,
+    "form": "10-K",
+    "filingDate": "2023-02-24",
+    "reportDate": "2023-01-29",
+    "accessionNumber": "0001045810-23-000017",
+    "primaryDocument": "nvda-20230129.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/1045810/000104581023000017/nvda-20230129.htm",
+    "extraction": {
+      "confidence": 0.85,
+      "method": "regex_item1a_to_item1b",
+      "errors": []
+    }
+  },
+  {
+    "year": 2024,
+    "form": "10-K",
+    "filingDate": "2024-02-21",
+    "reportDate": "2024-01-28",
+    "accessionNumber": "0001045810-24-000029",
+    "primaryDocument": "nvda-20240128.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/1045810/000104581024000029/nvda-20240128.htm",
+    "extraction": {
+      "confidence": 0.85,
+      "method": "regex_item1a_to_item1b",
+      "errors": []
+    }
+  },
+  {
+    "year": 2025,
+    "form": "10-K",
+    "filingDate": "2025-02-26",
+    "reportDate": "2025-01-26",
+    "accessionNumber": "0001045810-25-000023",
+    "primaryDocument": "nvda-20250126.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/1045810/000104581025000023/nvda-20250126.htm",
+    "extraction": {
+      "confidence": 0.85,
+      "method": "regex_item1a_to_item1b",
+      "errors": []
+    }
+  }
+]
