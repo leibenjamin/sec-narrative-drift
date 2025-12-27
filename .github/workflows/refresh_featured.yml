@@ -1,0 +1,51 @@
+name: Refresh featured datasets
+
+on:
+  schedule:
+    - cron: "0 3 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r scripts/requirements.txt
+      - name: Validate SEC_USER_AGENT
+        run: |
+          if [ -z "${SEC_USER_AGENT}" ]; then
+            echo "SEC_USER_AGENT secret is required." >&2
+            exit 1
+          fi
+      - name: Build featured datasets
+        run: |
+          python scripts/sec_fetch_and_build.py --ticker AAPL --years 10 --out public/data/sec_narrative_drift/AAPL
+          python scripts/sec_fetch_and_build.py --ticker NVDA --years 10 --out public/data/sec_narrative_drift/NVDA
+          python scripts/sec_fetch_and_build.py --ticker TSLA --years 10 --out public/data/sec_narrative_drift/TSLA
+      - name: Commit and push updates
+        run: |
+          if git status --porcelain | grep -q "public/data/sec_narrative_drift/"; then
+            git config user.name "sec-narrative-drift-bot"
+            git config user.email "sec-narrative-drift-bot@users.noreply.github.com"
+            git add public/data/sec_narrative_drift
+            git commit -m "Refresh featured datasets"
+            git push
+          else
+            echo "No dataset changes to commit."
+          fi
