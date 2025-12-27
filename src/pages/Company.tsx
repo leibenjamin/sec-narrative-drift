@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import DriftTimeline from "../components/DriftTimeline"
+import SimilarityHeatmap from "../components/SimilarityHeatmap"
 import { copy } from "../lib/copy"
 import {
   listFeaturedTickers,
@@ -44,6 +45,9 @@ export default function Company() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [excerptsError, setExcerptsError] = useState<string | null>(null)
+  const [selectedPair, setSelectedPair] = useState<{ from: number; to: number } | null>(
+    null
+  )
 
   useEffect(() => {
     let cancelled = false
@@ -58,6 +62,7 @@ export default function Company() {
       setSimilarity(null)
       setShifts(null)
       setExcerpts(null)
+      setSelectedPair(null)
 
       try {
         const [metaData, filingsData, metricsData, similarityData, shiftsData] =
@@ -76,6 +81,16 @@ export default function Company() {
         setMetrics(metricsData)
         setSimilarity(similarityData)
         setShifts(shiftsData)
+        if (shiftsData.yearPairs?.length) {
+          const firstPair = shiftsData.yearPairs[0]
+          setSelectedPair({ from: firstPair.from, to: firstPair.to })
+        } else if (similarityData.years.length >= 2) {
+          const lastIndex = similarityData.years.length - 1
+          setSelectedPair({
+            from: similarityData.years[lastIndex - 1],
+            to: similarityData.years[lastIndex],
+          })
+        }
         setLoading(false)
       } catch (err) {
         if (cancelled) return
@@ -110,16 +125,31 @@ export default function Company() {
     return start === end ? String(start) : `${start}-${end}`
   }, [metrics])
 
-  const selectedShiftPair = shifts?.yearPairs?.[0] ?? null
+  const selectedShiftPair = useMemo(() => {
+    if (!shifts?.yearPairs?.length) return null
+    if (!selectedPair) return shifts.yearPairs[0]
+    return (
+      shifts.yearPairs.find(
+        (pair) => pair.from === selectedPair.from && pair.to === selectedPair.to
+      ) ?? shifts.yearPairs[0]
+    )
+  }, [shifts, selectedPair])
+
   const selectedExcerptPair = useMemo(() => {
     if (!excerpts?.pairs?.length) return null
-    if (!selectedShiftPair) return excerpts.pairs[0]
+    if (!selectedPair) return excerpts.pairs[0]
     return (
       excerpts.pairs.find(
-        (pair) => pair.from === selectedShiftPair.from && pair.to === selectedShiftPair.to
+        (pair) => pair.from === selectedPair.from && pair.to === selectedPair.to
       ) ?? excerpts.pairs[0]
     )
-  }, [excerpts, selectedShiftPair])
+  }, [excerpts, selectedPair])
+
+  function handleSelectPair(fromYear: number, toYear: number) {
+    const ordered =
+      fromYear <= toYear ? { from: fromYear, to: toYear } : { from: toYear, to: fromYear }
+    setSelectedPair(ordered)
+  }
 
   const hasLowConfidence = filings.some(
     (filing) => filing.extraction && filing.extraction.confidence < 0.5
@@ -208,34 +238,11 @@ export default function Company() {
             <p className="text-sm opacity-70">{copy.heatmap.helper}</p>
           </div>
           {similarity?.years?.length ? (
-            <div className="overflow-x-auto">
-              <table className="min-w-full text-xs">
-                <thead>
-                  <tr>
-                    <th className="p-2 text-left" />
-                    {similarity.years.map((year) => (
-                      <th key={year} className="p-2 text-left">
-                        {year}
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {similarity.years.map((rowYear, rowIndex) => (
-                    <tr key={rowYear}>
-                      <td className="p-2 font-semibold">{rowYear}</td>
-                      {similarity.years.map((colYear, colIndex) => (
-                        <td key={`${rowYear}-${colYear}`} className="p-2">
-                          {formatNumber(
-                            similarity.cosineSimilarity?.[rowIndex]?.[colIndex]
-                          )}
-                        </td>
-                      ))}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+            <SimilarityHeatmap
+              years={similarity.years}
+              cosineSimilarity={similarity.cosineSimilarity ?? []}
+              onSelectPair={handleSelectPair}
+            />
           ) : null}
         </section>
 
