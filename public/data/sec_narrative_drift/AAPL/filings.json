@@ -8,12 +8,9 @@
     "primaryDocument": "aapl-20220924.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/320193/000032019322000108/aapl-20220924.htm",
     "extraction": {
-      "confidence": 0.0,
-      "method": "no_html",
-      "errors": [
-        "html_missing",
-        "low_confidence_item1a"
-      ]
+      "confidence": 0.85,
+      "method": "regex_item1a_to_item1b",
+      "errors": []
     }
   },
   {
@@ -25,12 +22,9 @@
     "primaryDocument": "aapl-20230930.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/320193/000032019323000106/aapl-20230930.htm",
     "extraction": {
-      "confidence": 0.0,
-      "method": "no_html",
-      "errors": [
-        "html_missing",
-        "low_confidence_item1a"
-      ]
+      "confidence": 0.85,
+      "method": "regex_item1a_to_item1b",
+      "errors": []
     }
   },
   {
