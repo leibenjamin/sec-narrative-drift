@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react"
-import type { ReactNode } from "react"
 import { Link, useParams } from "react-router-dom"
+import ComparePane from "../components/ComparePane"
 import DriftTimeline from "../components/DriftTimeline"
 import SimilarityHeatmap from "../components/SimilarityHeatmap"
 import TermShiftBars from "../components/TermShiftBars"
@@ -14,14 +14,7 @@ import {
   loadShifts,
   loadSimilarity,
 } from "../lib/data"
-import type {
-  Excerpts,
-  FilingRow,
-  Meta,
-  Metrics,
-  ShiftPairs,
-  SimilarityMatrix,
-} from "../lib/types"
+import type { Excerpts, FilingRow, Meta, Metrics, ShiftPairs, SimilarityMatrix } from "../lib/types"
 
 function getErrorMessage(error: unknown, fallback: string): string {
   if (error instanceof Error && error.message) return error.message
@@ -136,16 +129,6 @@ export default function Company() {
     )
   }, [shifts, selectedPair])
 
-  const selectedExcerptPair = useMemo(() => {
-    if (!excerpts?.pairs?.length) return null
-    if (!selectedPair) return excerpts.pairs[0]
-    return (
-      excerpts.pairs.find(
-        (pair) => pair.from === selectedPair.from && pair.to === selectedPair.to
-      ) ?? excerpts.pairs[0]
-    )
-  }, [excerpts, selectedPair])
-
   function handleSelectPair(fromYear: number, toYear: number) {
     const ordered =
       fromYear <= toYear ? { from: fromYear, to: toYear } : { from: toYear, to: fromYear }
@@ -153,41 +136,13 @@ export default function Company() {
     setSelectedTerm(null)
   }
 
-  function escapeRegExp(value: string): string {
-    return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
-  }
-
-  function highlightSelectedTerm(text: string, term: string | null) {
-    if (!term) return text
-    const trimmed = term.trim()
-    if (!trimmed) return text
-    const regex = new RegExp(`\\b${escapeRegExp(trimmed)}\\b`, "gi")
-    const matches = Array.from(text.matchAll(regex))
-    if (matches.length === 0) return text
-
-    const nodes: ReactNode[] = []
-    let lastIndex = 0
-
-    matches.forEach((match, index) => {
-      const start = match.index ?? 0
-      if (start > lastIndex) {
-        nodes.push(text.slice(lastIndex, start))
-      }
-      const matchText = match[0]
-      nodes.push(
-        <mark key={`${start}-${index}`} className="rounded bg-yellow-200 px-0.5">
-          {matchText}
-        </mark>
-      )
-      lastIndex = start + matchText.length
-    })
-
-    if (lastIndex < text.length) {
-      nodes.push(text.slice(lastIndex))
-    }
-
-    return nodes
-  }
+  const highlightTerms = useMemo(() => {
+    if (selectedTerm) return [selectedTerm]
+    if (!selectedShiftPair) return []
+    const risers = selectedShiftPair.topRisers.slice(0, 15).map((item) => item.term)
+    const fallers = selectedShiftPair.topFallers.slice(0, 15).map((item) => item.term)
+    return Array.from(new Set([...risers, ...fallers]))
+  }, [selectedTerm, selectedShiftPair])
 
   const hasLowConfidence = filings.some(
     (filing) => filing.extraction && filing.extraction.confidence < 0.5
@@ -300,44 +255,13 @@ export default function Company() {
           />
         </section>
 
-        <section className="space-y-3">
-          <div>
-            <h2 className="text-xl font-semibold">{copy.comparePane.title}</h2>
-            <p className="text-sm opacity-70">{copy.comparePane.helper}</p>
-          </div>
-          {hasLowConfidence ? (
-            <p className="text-xs opacity-70">{copy.comparePane.warnLowConfidence}</p>
-          ) : null}
-          {excerptsError ? (
-            <p className="text-sm opacity-70">{excerptsError}</p>
-          ) : selectedExcerptPair ? (
-            <div className="space-y-3">
-              <div className="text-xs uppercase tracking-wider opacity-70">
-                {copy.comparePane.pairLabel}
-              </div>
-              <div className="text-sm font-semibold">
-                {selectedExcerptPair.from}-{selectedExcerptPair.to}
-              </div>
-              <div className="grid gap-3 md:grid-cols-2">
-                {selectedExcerptPair.representativeParagraphs.map((para, index) => (
-                  <div
-                    key={`${para.year}-${para.paragraphIndex}-${index}`}
-                    className="rounded-lg border border-black/10 p-3"
-                  >
-                    <div className="text-xs uppercase tracking-wider opacity-70">
-                      {para.year}
-                    </div>
-                    <p className="mt-2 text-sm leading-relaxed whitespace-pre-line">
-                      {highlightSelectedTerm(para.text, selectedTerm)}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ) : (
-            <p className="text-sm opacity-70">{copy.comparePane.emptyNoPair}</p>
-          )}
-        </section>
+        <ComparePane
+          selectedPair={selectedPair}
+          excerpts={excerpts}
+          highlightTerms={highlightTerms}
+          errorMessage={excerptsError}
+          showLowConfidenceWarning={hasLowConfidence}
+        />
       </div>
     </main>
   )
