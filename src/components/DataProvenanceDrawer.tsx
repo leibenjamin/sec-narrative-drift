@@ -1,8 +1,21 @@
+import type { SyntheticEvent } from "react"
 import { copy } from "../lib/copy"
 
-export default function DataProvenanceDrawer() {
+type DataProvenanceDrawerProps = {
+  isOpen?: boolean
+  onOpenChange?: (isOpen: boolean) => void
+}
+
+export default function DataProvenanceDrawer({
+  isOpen,
+  onOpenChange,
+}: DataProvenanceDrawerProps) {
+  const handleToggle = (event: SyntheticEvent<HTMLDetailsElement>) => {
+    onOpenChange?.(event.currentTarget.open)
+  }
+
   return (
-    <details className="rounded-md border border-black/20 text-sm">
+    <details className="rounded-md border border-black/20 text-sm" open={isOpen} onToggle={handleToggle}>
       <summary className="cursor-pointer list-none px-3 py-2 font-medium">
         {copy.dataQuality.title}
       </summary>
