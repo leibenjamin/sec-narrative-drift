@@ -48,6 +48,42 @@ export default function Home() {
           </Link>
         </div>
 
+        <section className="mt-14 space-y-6">
+          <div>
+            <h2 className="text-xl font-semibold">{copy.home.howToReadTitle}</h2>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-3">
+            <div className="rounded-lg border border-black/10 p-4">
+              <div className="text-xs uppercase tracking-wider text-slate-300">1</div>
+              <p className="mt-2 text-sm text-slate-200">{copy.home.howToReadSteps.drift}</p>
+            </div>
+            <div className="rounded-lg border border-black/10 p-4">
+              <div className="text-xs uppercase tracking-wider text-slate-300">2</div>
+              <p className="mt-2 text-sm text-slate-200">
+                {copy.home.howToReadSteps.similarity}
+              </p>
+            </div>
+            <div className="rounded-lg border border-black/10 p-4">
+              <div className="text-xs uppercase tracking-wider text-slate-300">3</div>
+              <p className="mt-2 text-sm text-slate-200">
+                {copy.home.howToReadSteps.evidence}
+              </p>
+            </div>
+          </div>
+          <div className="rounded-lg border border-black/10 p-4">
+            <div className="text-xs uppercase tracking-wider text-slate-300">
+              {copy.home.exampleLabel}
+            </div>
+            <p className="mt-2 text-sm text-slate-200">{copy.home.exampleText}</p>
+            <Link
+              to="/company/NVDA"
+              className="mt-3 inline-flex items-center rounded-md border border-black/20 px-3 py-2 text-xs hover:bg-black/5"
+            >
+              {copy.home.exampleLink}
+            </Link>
+          </div>
+        </section>
+
         <section className="mt-14">
           <h2 className="text-xl font-semibold">
             {copy.home.featuredHeading}

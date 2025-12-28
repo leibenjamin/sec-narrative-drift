@@ -64,6 +64,16 @@ export const copy = {
     heroFootnote: "Featured companies are precomputed, because live demos are a form of optimism.",
     featuredHeading: "Featured companies",
     featuredHelper: "Three precomputed datasets. Click one to start.",
+    howToReadTitle: "How to read this",
+    howToReadSteps: {
+      drift: "Drift timeline: spot the year the wording changes most.",
+      similarity: "Similarity heatmap: pick two years to compare.",
+      evidence: "Evidence excerpts: read the paragraphs that moved.",
+    },
+    exampleLabel: "Example insight",
+    exampleText:
+      "NVDA: a 2021 spike pairs with pandemic-era terms in Item 1A. Use it as a prompt to read, not a verdict.",
+    exampleLink: "Open NVDA",
   },
 
   company: {
