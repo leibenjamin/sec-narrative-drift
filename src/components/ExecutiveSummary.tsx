@@ -105,17 +105,17 @@ export default function ExecutiveSummary({
   })
 
   return (
-    <section className="rounded-xl border border-black/10 bg-white/70 p-5">
+    <section className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div className="space-y-1">
-          <p className="text-xs uppercase tracking-wider text-slate-300">
+          <p className="text-xs uppercase tracking-wider text-slate-500">
             {copy.company.executiveSummary.title}
           </p>
-          <p className="text-sm text-slate-300">{copy.company.executiveSummary.helper}</p>
+          <p className="text-sm text-slate-600">{copy.company.executiveSummary.helper}</p>
         </div>
         <button
           type="button"
-          className="inline-flex items-center rounded-md border border-black/20 px-3 py-2 text-xs font-medium hover:bg-black/5 disabled:cursor-not-allowed disabled:opacity-60"
+          className="inline-flex items-center rounded-md border border-slate-300 px-3 py-2 text-xs font-medium text-slate-700 hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-60"
           onClick={() => {
             if (!hasPair || summary.fromYear === null || summary.toYear === null) return
             onJumpToPair(summary.fromYear, summary.toYear)
@@ -127,13 +127,15 @@ export default function ExecutiveSummary({
       </div>
 
       <div className="mt-4 grid gap-3 md:grid-cols-3">
-        <div className="rounded-lg border border-black/10 p-4">
-          <div className="mt-2 text-base font-semibold">{largestDriftLine}</div>
-          <div className="mt-2 text-sm text-slate-300">{driftCiLine}</div>
+        <div className="rounded-lg border border-slate-200 bg-slate-50 p-4">
+          <div className="mt-2 text-base font-semibold text-slate-900">
+            {largestDriftLine}
+          </div>
+          <div className="mt-2 text-sm text-slate-600">{driftCiLine}</div>
         </div>
 
-        <div className="rounded-lg border border-black/10 p-4">
-          <div className="text-xs uppercase tracking-wider text-slate-300">
+        <div className="rounded-lg border border-slate-200 bg-slate-50 p-4">
+          <div className="text-xs uppercase tracking-wider text-slate-500">
             {copy.termShifts.risersLabel}
           </div>
           {topRisers.length ? (
@@ -141,21 +143,21 @@ export default function ExecutiveSummary({
               {topRisers.map((term) => (
                 <span
                   key={`riser-${term}`}
-                  className="rounded-full border border-emerald-200 bg-emerald-50 px-2 py-1 text-emerald-700"
+                  className="rounded-full border border-emerald-300 bg-emerald-100 px-2 py-1 text-emerald-800"
                 >
                   {term}
                 </span>
               ))}
             </div>
           ) : (
-            <p className="mt-2 text-xs text-slate-300">
+            <p className="mt-2 text-xs text-slate-500">
               {copy.company.executiveSummary.noTerms}
             </p>
           )}
         </div>
 
-        <div className="rounded-lg border border-black/10 p-4">
-          <div className="text-xs uppercase tracking-wider text-slate-300">
+        <div className="rounded-lg border border-slate-200 bg-slate-50 p-4">
+          <div className="text-xs uppercase tracking-wider text-slate-500">
             {copy.termShifts.fallersLabel}
           </div>
           {topFallers.length ? (
@@ -163,21 +165,21 @@ export default function ExecutiveSummary({
               {topFallers.map((term) => (
                 <span
                   key={`faller-${term}`}
-                  className="rounded-full border border-rose-200 bg-rose-50 px-2 py-1 text-rose-700"
+                  className="rounded-full border border-rose-300 bg-rose-100 px-2 py-1 text-rose-800"
                 >
                   {term}
                 </span>
               ))}
             </div>
           ) : (
-            <p className="mt-2 text-xs text-slate-300">
+            <p className="mt-2 text-xs text-slate-500">
               {copy.company.executiveSummary.noTerms}
             </p>
           )}
         </div>
       </div>
 
-      <div className="mt-4 space-y-1 text-xs text-slate-300">
+      <div className="mt-4 space-y-1 text-xs text-slate-600">
         <p>{copy.global.caveatLine}</p>
         <p>{copy.company.executiveSummary.subtleLine}</p>
       </div>
