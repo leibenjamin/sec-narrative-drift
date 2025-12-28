@@ -296,6 +296,12 @@ export const copy = {
     subtitleLine: ({ company, ticker }: { company: string; ticker: string }) => t("{company} ({ticker})", { company, ticker }),
     coverageLine: ({ startYear, endYear }: { startYear: number | string; endYear: number | string }) =>
       t("Coverage: {startYear}–{endYear}", { startYear, endYear }),
+    driftLine: ({ drift }: { drift: string }) => t("Drift: {drift}", { drift }),
+    driftLineWithCi: ({ drift, low, high }: { drift: string; low: string; high: string }) =>
+      t("Drift: {drift} (95% CI {low}-{high})", { drift, low, high }),
+    keyChangesTitle: "Key changes",
+    qualityLabel: "Data quality",
+    sparklineLabel: "Drift trend",
     bullets: {
       largestDrift: ({ year, prev }: { year: number | string; prev: number | string }) =>
         t("Largest drift year: {year} (vs {prev})", { year, prev }),
