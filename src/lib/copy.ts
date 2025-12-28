@@ -226,6 +226,7 @@ export const copy = {
     title: "Read the evidence",
     helper: "Representative paragraphs for the selected year pair. The receipts — curated, not comprehensive.",
     pairLabel: "Comparing",
+    loading: "Loading excerpts...",
     highlightLabel: "Highlight",
     highlightOptions: {
       topShifts: "Top shifts",
