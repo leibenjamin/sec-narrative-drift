@@ -65,86 +65,156 @@ export default function SimilarityHeatmap({
     [years, cosineSimilarity, cellSize, leftLabelWidth, topLabelHeight]
   )
 
+  const legendRange = useMemo(() => {
+    let minValue = Infinity
+    let maxValue = -Infinity
+
+    for (const cell of cells) {
+      if (typeof cell.value !== "number") continue
+      minValue = Math.min(minValue, cell.value)
+      maxValue = Math.max(maxValue, cell.value)
+    }
+
+    if (!Number.isFinite(minValue) || !Number.isFinite(maxValue)) {
+      return { min: 0, max: 1 }
+    }
+
+    return { min: minValue, max: maxValue }
+  }, [cells])
+
+  const selectedLabel = useMemo(() => {
+    if (!activeCell) return null
+    const fromYear = years[activeCell.row]
+    const toYear = years[activeCell.col]
+    if (fromYear === undefined || toYear === undefined) return null
+    return copy.heatmap.selectedLabel({ fromYear, toYear })
+  }, [activeCell, years])
+
+  const legendGradient = "linear-gradient(90deg, #f3f4f6 0%, #6b7280 100%)"
+
   return (
-    <div className="w-full overflow-x-auto">
-      <svg
-        viewBox={`0 0 ${width} ${height}`}
-        className="w-full min-w-130"
-        role="img"
-        aria-label={copy.heatmap.title}
-      >
-        {years.map((year, index) => (
-          <text
-            key={`col-${year}`}
-            x={leftLabelWidth + index * cellSize + cellSize / 2}
-            y={topLabelHeight - 6}
-            textAnchor="middle"
-            fontSize={11}
-            fill="#6b7280"
-          >
-            {year}
-          </text>
-        ))}
+    <div className="space-y-3">
+      <div className="space-y-2 text-xs text-slate-300">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <span>{copy.heatmap.microcopy}</span>
+          {selectedLabel ? (
+            <span className="rounded-full border border-slate-500/60 px-2 py-0.5 text-slate-200">
+              {selectedLabel}
+            </span>
+          ) : null}
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="text-slate-400">
+            {copy.heatmap.legendMin({ value: formatValue(legendRange.min) })}
+          </span>
+          <span
+            className="h-2 w-28 rounded-sm border border-slate-500/40"
+            style={{ background: legendGradient }}
+          />
+          <span className="text-slate-400">
+            {copy.heatmap.legendMax({ value: formatValue(legendRange.max) })}
+          </span>
+        </div>
+      </div>
 
-        {years.map((year, index) => (
-          <text
-            key={`row-${year}`}
-            x={leftLabelWidth - 6}
-            y={topLabelHeight + index * cellSize + cellSize / 2 + 4}
-            textAnchor="end"
-            fontSize={11}
-            fill="#6b7280"
-          >
-            {year}
-          </text>
-        ))}
+      <div className="w-full overflow-x-auto">
+        <svg
+          viewBox={`0 0 ${width} ${height}`}
+          className="w-full min-w-130"
+          role="img"
+          aria-label={copy.heatmap.title}
+        >
+          {years.map((year, index) => (
+            <text
+              key={`col-${year}`}
+              x={leftLabelWidth + index * cellSize + cellSize / 2}
+              y={topLabelHeight - 6}
+              textAnchor="middle"
+              fontSize={11}
+              fill="#6b7280"
+            >
+              {year}
+            </text>
+          ))}
 
-        {cells.map((cell) => {
-          const isActive =
-            activeCell?.row === cell.rowIndex && activeCell?.col === cell.colIndex
-          const stroke = isActive
-            ? "#111827"
-            : cell.isDiagonal
-              ? "#9ca3af"
-              : "#f9fafb"
-          const strokeWidth = isActive ? 2 : 1
-          const tooltipLines = [
-            copy.heatmap.hoverTitle({
+          {years.map((year, index) => (
+            <text
+              key={`row-${year}`}
+              x={leftLabelWidth - 6}
+              y={topLabelHeight + index * cellSize + cellSize / 2 + 4}
+              textAnchor="end"
+              fontSize={11}
+              fill="#6b7280"
+            >
+              {year}
+            </text>
+          ))}
+
+          {cells.map((cell) => {
+            const isActive =
+              activeCell?.row === cell.rowIndex && activeCell?.col === cell.colIndex
+            const borderColor = isActive
+              ? "#111827"
+              : cell.isDiagonal
+                ? "#9ca3af"
+                : "#e5e7eb"
+            const borderWidth = isActive ? 2 : 1
+            const tooltipLines = [
+              copy.heatmap.clickHint({
+                fromYear: cell.rowYear,
+                toYear: cell.colYear,
+              }),
+              cell.value !== null
+                ? copy.heatmap.cosineLine({ value: formatValue(cell.value) })
+                : null,
+              cell.value !== null
+                ? copy.heatmap.driftLine({
+                    drift: formatValue(1 - cell.value),
+                  })
+                : null,
+            ]
+              .filter(Boolean)
+              .join("\n")
+
+            const ariaLabel = copy.heatmap.ariaLabel({
               fromYear: cell.rowYear,
               toYear: cell.colYear,
-            }),
-            cell.value !== null
-              ? copy.heatmap.cosineLine({ value: formatValue(cell.value) })
-              : null,
-            cell.value !== null
-              ? copy.heatmap.driftLine({
-                  drift: formatValue(1 - cell.value),
-                })
-              : null,
-          ]
-            .filter(Boolean)
-            .join("\n")
+              value:
+                cell.value !== null ? formatValue(cell.value) : copy.heatmap.naLabel,
+            })
 
-          return (
-            <g key={`cell-${cell.rowYear}-${cell.colYear}`}>
-              <title>{tooltipLines}</title>
-              <rect
+            return (
+              <foreignObject
+                key={`cell-${cell.rowYear}-${cell.colYear}`}
                 x={cell.x}
                 y={cell.y}
                 width={cellSize}
                 height={cellSize}
-                fill={cell.fill}
-                stroke={stroke}
-                strokeWidth={strokeWidth}
-                className="cursor-pointer"
-                onClick={() => {
-                  onSelectPair(cell.rowYear, cell.colYear)
-                }}
-              />
-            </g>
-          )
-        })}
-      </svg>
+              >
+                <button
+                  type="button"
+                  title={tooltipLines}
+                  aria-label={ariaLabel}
+                  onClick={() => {
+                    onSelectPair(cell.rowYear, cell.colYear)
+                  }}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    padding: 0,
+                    margin: 0,
+                    borderRadius: 0,
+                    border: `${borderWidth}px solid ${borderColor}`,
+                    backgroundColor: cell.fill,
+                    cursor: "pointer",
+                    boxShadow: isActive ? "0 0 0 1px #111827" : "none",
+                  }}
+                />
+              </foreignObject>
+            )
+          })}
+        </svg>
+      </div>
     </div>
   )
 }

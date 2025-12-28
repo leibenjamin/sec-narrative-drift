@@ -138,6 +138,37 @@ export const copy = {
     title: "Similarity across years",
     // High-traffic line for most flows: small + dry + functional.
     helper: "Darker cells are more similar. Click a cell to compare years. It will not file a 10‑K for you.",
+    microcopy: "Click a cell to compare those years.",
+    legendMin: ({ value }: { value: string }) => t("Low ({value})", { value }),
+    legendMax: ({ value }: { value: string }) => t("High ({value})", { value }),
+    selectedLabel: ({
+      fromYear,
+      toYear,
+    }: {
+      fromYear: number | string
+      toYear: number | string
+    }) => t("Selected: {fromYear} vs {toYear}", { fromYear, toYear }),
+    clickHint: ({
+      fromYear,
+      toYear,
+    }: {
+      fromYear: number | string
+      toYear: number | string
+    }) => t("Click to compare {fromYear} vs {toYear}", { fromYear, toYear }),
+    ariaLabel: ({
+      fromYear,
+      toYear,
+      value,
+    }: {
+      fromYear: number | string
+      toYear: number | string
+      value: string
+    }) => t("Compare {fromYear} vs {toYear}. Similarity {value}.", {
+      fromYear,
+      toYear,
+      value,
+    }),
+    naLabel: "not available",
     hoverTitle: ({ fromYear, toYear }: { fromYear: number | string; toYear: number | string }) =>
       t("{fromYear} ↔ {toYear}", { fromYear, toYear }),
     cosineLine: ({ value }: { value: string }) => t("Cosine similarity: {value}", { value }),
