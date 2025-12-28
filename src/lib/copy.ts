@@ -118,6 +118,34 @@ export const copy = {
       empty: "Not enough data to compute a largest drift year.",
       subtleLine: "If the line spikes, the filing got a rewrite.",
     },
+    selectedPairCallout: {
+      label: "Selected pair",
+      title: ({
+        fromYear,
+        toYear,
+      }: {
+        fromYear: number | string
+        toYear: number | string
+      }) => t("Comparing {fromYear} vs {toYear}", { fromYear, toYear }),
+      driftLine: ({ drift }: { drift: string }) =>
+        t("Drift vs prior year: {drift}", { drift }),
+      driftWithCi: ({
+        drift,
+        low,
+        high,
+      }: {
+        drift: string
+        low: string
+        high: string
+      }) => t("Drift vs prior year: {drift} (95% CI {low}-{high})", {
+        drift,
+        low,
+        high,
+      }),
+      driftUnavailable: "Drift vs prior year: -",
+      jumpToEvidence: "Jump to evidence",
+      openFiling: ({ year }: { year: number | string }) => t("Open SEC filing ({year})", { year }),
+    },
   },
 
   driftTimeline: {

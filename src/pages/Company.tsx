@@ -5,6 +5,7 @@ import DataProvenanceDrawer from "../components/DataProvenanceDrawer"
 import DriftTimeline from "../components/DriftTimeline"
 import ExecutiveSummary from "../components/ExecutiveSummary"
 import ExecBriefCard, { type ExecBriefData } from "../components/ExecBriefCard"
+import SelectedPairCallout from "../components/SelectedPairCallout"
 import SimilarityHeatmap from "../components/SimilarityHeatmap"
 import TermShiftBars from "../components/TermShiftBars"
 import Tour from "../components/Tour"
@@ -320,6 +321,12 @@ export default function Company() {
       .filter((link): link is { year: number; url: string } => Boolean(link))
   }, [selectedPair, filings])
 
+  const selectedToSecUrl = useMemo(() => {
+    if (!selectedPair) return null
+    const match = secLinks.find((link) => link.year === selectedPair.to)
+    return match?.url ?? null
+  }, [secLinks, selectedPair])
+
   if (loading) {
     return (
       <main className="min-h-screen">
@@ -472,6 +479,12 @@ export default function Company() {
             <h2 className="text-xl font-semibold">{copy.termShifts.title}</h2>
             <p className="text-sm text-slate-300">{copy.termShifts.helper}</p>
           </div>
+          <SelectedPairCallout
+            selectedPair={selectedPair}
+            metrics={metrics}
+            secUrl={selectedToSecUrl}
+            evidenceAnchorId="evidence"
+          />
           {selectedShiftPair?.summary ? (
             <p className="text-sm text-slate-200">{selectedShiftPair.summary}</p>
           ) : null}
@@ -484,14 +497,16 @@ export default function Company() {
         </section>
 
         <div id="tour-compare">
-          <ComparePane
-            selectedPair={selectedPair}
-            excerpts={excerpts}
-            highlightTerms={highlightTerms}
-            secLinks={secLinks}
-            errorMessage={excerptsError}
-            showLowConfidenceWarning={hasLowConfidence}
-          />
+          <div id="evidence">
+            <ComparePane
+              selectedPair={selectedPair}
+              excerpts={excerpts}
+              highlightTerms={highlightTerms}
+              secLinks={secLinks}
+              errorMessage={excerptsError}
+              showLowConfidenceWarning={hasLowConfidence}
+            />
+          </div>
         </div>
         <div aria-hidden="true" style={{ position: "absolute", left: "-9999px", top: 0 }}>
           <ExecBriefCard data={execBriefData} svgRef={execBriefRef} />
