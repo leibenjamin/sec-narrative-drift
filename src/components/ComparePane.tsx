@@ -1,34 +1,26 @@
-import { useMemo } from "react"
 import { copy } from "../lib/copy"
 import { splitForHighlight } from "../lib/textHighlight"
-import type { Excerpts } from "../lib/types"
+import type { ExcerptPair } from "../lib/types"
 
 type ComparePaneProps = {
-  selectedPair: { from: number; to: number } | null
-  excerpts: Excerpts | null
+  excerptPair: ExcerptPair | null
   highlightTerms: string[]
   secLinks?: Array<{ year: number; url: string }>
   errorMessage?: string | null
+  isLoading?: boolean
   showLowConfidenceWarning?: boolean
 }
 
 export default function ComparePane({
-  selectedPair,
-  excerpts,
+  excerptPair,
   highlightTerms,
   secLinks,
   errorMessage,
+  isLoading,
   showLowConfidenceWarning,
 }: ComparePaneProps) {
-  const selectedExcerptPair = useMemo(() => {
-    if (!excerpts?.pairs?.length) return null
-    if (!selectedPair) return excerpts.pairs[0]
-    return (
-      excerpts.pairs.find(
-        (pair) => pair.from === selectedPair.from && pair.to === selectedPair.to
-      ) ?? excerpts.pairs[0]
-    )
-  }, [excerpts, selectedPair])
+  const selectedExcerptPair = excerptPair
+  const showLoading = Boolean(isLoading && !selectedExcerptPair && !errorMessage)
 
   return (
     <section className="space-y-3">
@@ -43,6 +35,8 @@ export default function ComparePane({
 
       {errorMessage ? (
         <p className="text-sm text-slate-300">{errorMessage}</p>
+      ) : showLoading ? (
+        <p className="text-sm text-slate-300">{copy.comparePane.loading}</p>
       ) : selectedExcerptPair ? (
         <div className="space-y-3">
           <div className="text-xs uppercase tracking-wider text-slate-300">

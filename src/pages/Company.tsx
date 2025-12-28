@@ -22,7 +22,14 @@ import {
 } from "../lib/data"
 import { exportExecBriefPng } from "../lib/exportPng"
 import { assertSafeExternalUrl } from "../lib/sanitize"
-import type { Excerpts, FilingRow, Meta, Metrics, ShiftPairs, SimilarityMatrix } from "../lib/types"
+import type {
+  ExcerptPair,
+  FilingRow,
+  Meta,
+  Metrics,
+  ShiftPairs,
+  SimilarityMatrix,
+} from "../lib/types"
 
 function getErrorMessage(error: unknown, fallback: string): string {
   if (error instanceof Error && error.message) return error.message
@@ -45,6 +52,10 @@ function getHeatmapCell(
   return { row: rowIndex, col: colIndex }
 }
 
+function buildPairKey(fromYear: number, toYear: number): string {
+  return `${fromYear}-${toYear}`
+}
+
 export default function Company() {
   const params = useParams()
   const fallbackTicker = listFeaturedTickers()[0] ?? "AAPL"
@@ -55,7 +66,8 @@ export default function Company() {
   const [metrics, setMetrics] = useState<Metrics | null>(null)
   const [similarity, setSimilarity] = useState<SimilarityMatrix | null>(null)
   const [shifts, setShifts] = useState<ShiftPairs | null>(null)
-  const [excerpts, setExcerpts] = useState<Excerpts | null>(null)
+  const [excerptPairs, setExcerptPairs] = useState<Record<string, ExcerptPair>>({})
+  const [isExcerptsLoading, setIsExcerptsLoading] = useState(false)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [excerptsError, setExcerptsError] = useState<string | null>(null)
@@ -80,7 +92,8 @@ export default function Company() {
       setMetrics(null)
       setSimilarity(null)
       setShifts(null)
-      setExcerpts(null)
+      setExcerptPairs({})
+      setIsExcerptsLoading(false)
       setSelectedPair(null)
       setActiveCell(null)
       setSelectedTerm(null)
@@ -130,16 +143,6 @@ export default function Company() {
         setLoading(false)
         return
       }
-
-      try {
-        const excerptsData = await loadExcerpts(ticker)
-        if (cancelled) return
-        setExcerpts(excerptsData)
-      } catch (err) {
-        if (cancelled) return
-        setExcerptsError(getErrorMessage(err, copy.global.errors.missingExcerpts))
-        setExcerpts(null)
-      }
     }
 
     loadData()
@@ -182,6 +185,53 @@ export default function Company() {
     const fallers = selectedShiftPair.topFallers.slice(0, 15).map((item) => item.term)
     return Array.from(new Set([...risers, ...fallers]))
   }, [selectedTerm, selectedShiftPair])
+
+  const selectedExcerptPair = useMemo(() => {
+    if (!selectedPair) return null
+    const key = buildPairKey(selectedPair.from, selectedPair.to)
+    return excerptPairs[key] ?? null
+  }, [excerptPairs, selectedPair])
+
+  useEffect(() => {
+    if (!selectedPair) return
+    const key = buildPairKey(selectedPair.from, selectedPair.to)
+    if (excerptPairs[key]) {
+      setExcerptsError(null)
+      return
+    }
+
+    let cancelled = false
+
+    async function loadPair() {
+      setIsExcerptsLoading(true)
+      setExcerptsError(null)
+      try {
+        const excerptsData = await loadExcerpts(ticker)
+        if (cancelled) return
+        const nextPairs: Record<string, ExcerptPair> = {}
+        for (const pair of excerptsData.pairs) {
+          nextPairs[buildPairKey(pair.from, pair.to)] = pair
+        }
+        setExcerptPairs((prev) => ({ ...prev, ...nextPairs }))
+        if (!nextPairs[key]) {
+          setExcerptsError(copy.global.errors.missingExcerpts)
+        }
+      } catch (err) {
+        if (cancelled) return
+        setExcerptsError(getErrorMessage(err, copy.global.errors.missingExcerpts))
+      } finally {
+        if (!cancelled) {
+          setIsExcerptsLoading(false)
+        }
+      }
+    }
+
+    loadPair()
+
+    return () => {
+      cancelled = true
+    }
+  }, [excerptPairs, selectedPair, ticker])
 
   const hasLowConfidence = filings.some(
     (filing) => filing.extraction && filing.extraction.confidence < 0.5
@@ -538,11 +588,11 @@ export default function Company() {
         <div id="tour-compare">
           <div id="evidence">
             <ComparePane
-              selectedPair={selectedPair}
-              excerpts={excerpts}
+              excerptPair={selectedExcerptPair}
               highlightTerms={highlightTerms}
               secLinks={secLinks}
               errorMessage={excerptsError}
+              isLoading={isExcerptsLoading}
               showLowConfidenceWarning={hasLowConfidence}
             />
           </div>
