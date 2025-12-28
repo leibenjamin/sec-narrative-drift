@@ -15,6 +15,8 @@ type DriftPoint = {
   value: number | null
   ciLow: number | null
   ciHigh: number | null
+  ciLowY: number | null
+  ciHighY: number | null
   boilerplate: number | null
   prevYear?: number
   x: number
@@ -42,9 +44,15 @@ export default function DriftTimeline({
   const baselineY = paddingTop + chartHeight
 
   const points = useMemo<DriftPoint[]>(() => {
-    const values = drift_vs_prev
-      .slice(0, years.length)
-      .filter((value): value is number => value !== null)
+    const values: number[] = []
+    for (let index = 0; index < years.length; index += 1) {
+      const driftValue = drift_vs_prev[index]
+      const ciLowValue = drift_ci_low?.[index]
+      const ciHighValue = drift_ci_high?.[index]
+      if (typeof driftValue === "number") values.push(driftValue)
+      if (typeof ciLowValue === "number") values.push(ciLowValue)
+      if (typeof ciHighValue === "number") values.push(ciHighValue)
+    }
     const maxValue = values.length > 0 ? Math.max(...values) : 1
     const minValue = 0
     const range = Math.max(maxValue - minValue, 0.1)
@@ -63,6 +71,14 @@ export default function DriftTimeline({
         value === null
           ? baselineY
           : paddingTop + ((maxValue - value) / range) * chartHeight
+      const ciLowY =
+        typeof ciLow === "number"
+          ? paddingTop + ((maxValue - ciLow) / range) * chartHeight
+          : null
+      const ciHighY =
+        typeof ciHigh === "number"
+          ? paddingTop + ((maxValue - ciHigh) / range) * chartHeight
+          : null
 
       return {
         year,
@@ -70,6 +86,8 @@ export default function DriftTimeline({
         value,
         ciLow,
         ciHigh,
+        ciLowY,
+        ciHighY,
         boilerplate,
         prevYear,
         x,
@@ -89,6 +107,48 @@ export default function DriftTimeline({
     paddingX,
   ])
 
+  const ciBandPaths = useMemo(() => {
+    const paths: string[] = []
+    let segment: DriftPoint[] = []
+
+    const flushSegment = () => {
+      if (segment.length < 2) {
+        segment = []
+        return
+      }
+      const highPath = segment
+        .map((point, index) => {
+          if (point.ciHighY === null) return ""
+          return `${index === 0 ? "M" : "L"} ${point.x} ${point.ciHighY}`
+        })
+        .filter(Boolean)
+        .join(" ")
+      const lowPath = segment
+        .slice()
+        .reverse()
+        .map((point) => {
+          if (point.ciLowY === null) return ""
+          return `L ${point.x} ${point.ciLowY}`
+        })
+        .filter(Boolean)
+        .join(" ")
+      if (highPath && lowPath) {
+        paths.push(`${highPath} ${lowPath} Z`)
+      }
+      segment = []
+    }
+
+    for (const point of points) {
+      if (point.ciLowY !== null && point.ciHighY !== null) {
+        segment.push(point)
+      } else {
+        flushSegment()
+      }
+    }
+    flushSegment()
+    return paths
+  }, [points])
+
   return (
     <div className="w-full overflow-x-auto">
       <svg
@@ -105,6 +165,15 @@ export default function DriftTimeline({
           stroke="#e5e7eb"
           strokeWidth={1}
         />
+
+        {ciBandPaths.map((path, index) => (
+          <path
+            key={`ci-band-${index}`}
+            d={path}
+            fill="rgba(56, 189, 248, 0.18)"
+            stroke="none"
+          />
+        ))}
 
         {points.slice(1).map((point, index) => {
           const prev = points[index]
