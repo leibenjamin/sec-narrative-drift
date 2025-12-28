@@ -257,6 +257,11 @@ export default function Company() {
 
     const largestDriftYear = maxIndex >= 0 ? years[maxIndex] : null
     const prevYear = maxIndex > 0 ? years[maxIndex - 1] : null
+    const largestDriftValue = maxIndex >= 0 && Number.isFinite(maxValue) ? maxValue : null
+    const ciLowRaw = maxIndex >= 0 ? metrics?.drift_ci_low?.[maxIndex] : null
+    const ciHighRaw = maxIndex >= 0 ? metrics?.drift_ci_high?.[maxIndex] : null
+    const largestDriftCiLow = typeof ciLowRaw === "number" ? ciLowRaw : null
+    const largestDriftCiHigh = typeof ciHighRaw === "number" ? ciHighRaw : null
     const matchedPair =
       shifts?.yearPairs?.find(
         (pair) => pair.from === prevYear && pair.to === largestDriftYear
@@ -281,13 +286,17 @@ export default function Company() {
       endYear,
       largestDriftYear,
       prevYear,
+      largestDriftValue,
+      largestDriftCiLow,
+      largestDriftCiHigh,
       summary,
       topRisers,
       topFallers,
       driftValues,
       provenanceLine,
+      dataQualityLevel,
     }
-  }, [meta, ticker, metrics, shifts, filings])
+  }, [meta, ticker, metrics, shifts, filings, dataQualityLevel])
 
   const execBriefFilename = useMemo(() => {
     const start = execBriefData.startYear ?? "na"
