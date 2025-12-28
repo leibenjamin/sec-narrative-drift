@@ -94,6 +94,30 @@ export const copy = {
         tooltip: "Approx. reuse rate of sentences across years.",
       },
     },
+    executiveSummary: {
+      title: "Executive summary",
+      helper: "Largest drift year, confidence band, and the terms that moved most.",
+      largestDriftLine: ({
+        year,
+        prevYear,
+      }: {
+        year: number | string
+        prevYear: number | string
+      }) => t("Largest drift year: {year} (vs {prevYear})", { year, prevYear }),
+      driftCiLine: ({
+        drift,
+        low,
+        high,
+      }: {
+        drift: string
+        low: string
+        high: string
+      }) => t("Drift: {drift} | 95% CI: {low}-{high}", { drift, low, high }),
+      jumpButton: "Jump to largest drift pair",
+      noTerms: "No clear movers for this pair.",
+      empty: "Not enough data to compute a largest drift year.",
+      subtleLine: "If the line spikes, the filing got a rewrite.",
+    },
   },
 
   driftTimeline: {

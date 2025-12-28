@@ -1,15 +1,16 @@
-import { useMemo, useState } from "react"
+import { useMemo } from "react"
 import { copy } from "../lib/copy"
+
+type ActiveCell = {
+  row: number
+  col: number
+}
 
 type SimilarityHeatmapProps = {
   years: number[]
   cosineSimilarity: number[][]
   onSelectPair: (fromYear: number, toYear: number) => void
-}
-
-type ActiveCell = {
-  row: number
-  col: number
+  activeCell?: ActiveCell | null
 }
 
 function formatValue(value: number): string {
@@ -24,8 +25,8 @@ export default function SimilarityHeatmap({
   years,
   cosineSimilarity,
   onSelectPair,
+  activeCell,
 }: SimilarityHeatmapProps) {
-  const [activeCell, setActiveCell] = useState<ActiveCell | null>(null)
   const cellSize = years.length > 12 ? 20 : 26
   const leftLabelWidth = 48
   const topLabelHeight = 22
@@ -137,7 +138,6 @@ export default function SimilarityHeatmap({
                 strokeWidth={strokeWidth}
                 className="cursor-pointer"
                 onClick={() => {
-                  setActiveCell({ row: cell.rowIndex, col: cell.colIndex })
                   onSelectPair(cell.rowYear, cell.colYear)
                 }}
               />
