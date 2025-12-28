@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom"
 import ComparePane from "../components/ComparePane"
 import DataProvenanceDrawer from "../components/DataProvenanceDrawer"
 import DriftTimeline from "../components/DriftTimeline"
+import ExecutiveSummary from "../components/ExecutiveSummary"
 import ExecBriefCard, { type ExecBriefData } from "../components/ExecBriefCard"
 import SimilarityHeatmap from "../components/SimilarityHeatmap"
 import TermShiftBars from "../components/TermShiftBars"
@@ -26,6 +27,22 @@ function getErrorMessage(error: unknown, fallback: string): string {
   return fallback
 }
 
+type ActiveCell = {
+  row: number
+  col: number
+}
+
+function getHeatmapCell(
+  years: number[],
+  fromYear: number,
+  toYear: number
+): ActiveCell | null {
+  const rowIndex = years.indexOf(fromYear)
+  const colIndex = years.indexOf(toYear)
+  if (rowIndex < 0 || colIndex < 0) return null
+  return { row: rowIndex, col: colIndex }
+}
+
 export default function Company() {
   const params = useParams()
   const fallbackTicker = listFeaturedTickers()[0] ?? "AAPL"
@@ -43,6 +60,7 @@ export default function Company() {
   const [selectedPair, setSelectedPair] = useState<{ from: number; to: number } | null>(
     null
   )
+  const [activeCell, setActiveCell] = useState<ActiveCell | null>(null)
   const [selectedTerm, setSelectedTerm] = useState<string | null>(null)
   const [isTourOpen, setIsTourOpen] = useState(false)
   const execBriefRef = useRef<SVGSVGElement | null>(null)
@@ -61,6 +79,7 @@ export default function Company() {
       setShifts(null)
       setExcerpts(null)
       setSelectedPair(null)
+      setActiveCell(null)
       setSelectedTerm(null)
       setIsTourOpen(false)
 
@@ -81,17 +100,24 @@ export default function Company() {
         setMetrics(metricsData)
         setSimilarity(similarityData)
         setShifts(shiftsData)
+        let initialPair: { from: number; to: number } | null = null
         if (shiftsData.yearPairs?.length) {
           const firstPair = shiftsData.yearPairs[0]
-          setSelectedPair({ from: firstPair.from, to: firstPair.to })
-          setSelectedTerm(null)
+          initialPair = { from: firstPair.from, to: firstPair.to }
         } else if (similarityData.years.length >= 2) {
           const lastIndex = similarityData.years.length - 1
-          setSelectedPair({
+          initialPair = {
             from: similarityData.years[lastIndex - 1],
             to: similarityData.years[lastIndex],
-          })
+          }
+        }
+
+        if (initialPair) {
+          setSelectedPair(initialPair)
           setSelectedTerm(null)
+          setActiveCell(
+            getHeatmapCell(similarityData.years, initialPair.from, initialPair.to)
+          )
         }
         setLoading(false)
       } catch (err) {
@@ -142,6 +168,7 @@ export default function Company() {
       fromYear <= toYear ? { from: fromYear, to: toYear } : { from: toYear, to: fromYear }
     setSelectedPair(ordered)
     setSelectedTerm(null)
+    setActiveCell(getHeatmapCell(similarity?.years ?? [], fromYear, toYear))
   }
 
   const highlightTerms = useMemo(() => {
@@ -380,6 +407,12 @@ export default function Company() {
           </div>
         </section>
 
+        <ExecutiveSummary
+          metrics={metrics}
+          shifts={shifts}
+          onJumpToPair={handleSelectPair}
+        />
+
         <section className="space-y-3" id="tour-drift">
           <div>
             <h2 className="text-xl font-semibold">{copy.driftTimeline.title}</h2>
@@ -429,6 +462,7 @@ export default function Company() {
               years={similarity.years}
               cosineSimilarity={similarity.cosineSimilarity ?? []}
               onSelectPair={handleSelectPair}
+              activeCell={activeCell}
             />
           ) : null}
         </section>
