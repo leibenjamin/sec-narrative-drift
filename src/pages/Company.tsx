@@ -5,6 +5,7 @@ import DataProvenanceDrawer from "../components/DataProvenanceDrawer"
 import DriftTimeline from "../components/DriftTimeline"
 import ExecutiveSummary from "../components/ExecutiveSummary"
 import ExecBriefCard, { type ExecBriefData } from "../components/ExecBriefCard"
+import QualityBadge from "../components/QualityBadge"
 import SelectedPairCallout from "../components/SelectedPairCallout"
 import SimilarityHeatmap from "../components/SimilarityHeatmap"
 import TermShiftBars from "../components/TermShiftBars"
@@ -63,6 +64,7 @@ export default function Company() {
   )
   const [activeCell, setActiveCell] = useState<ActiveCell | null>(null)
   const [selectedTerm, setSelectedTerm] = useState<string | null>(null)
+  const [isDataQualityOpen, setIsDataQualityOpen] = useState(false)
   const [isTourOpen, setIsTourOpen] = useState(false)
   const execBriefRef = useRef<SVGSVGElement | null>(null)
 
@@ -82,6 +84,7 @@ export default function Company() {
       setSelectedPair(null)
       setActiveCell(null)
       setSelectedTerm(null)
+      setIsDataQualityOpen(false)
       setIsTourOpen(false)
 
       try {
@@ -183,6 +186,24 @@ export default function Company() {
   const hasLowConfidence = filings.some(
     (filing) => filing.extraction && filing.extraction.confidence < 0.5
   )
+
+  const dataQualityLevel = useMemo<"high" | "medium" | "low" | "unknown">(() => {
+    const confidences: number[] = []
+    for (const filing of filings) {
+      const confidence = filing.extraction?.confidence
+      if (typeof confidence === "number") {
+        confidences.push(confidence)
+      }
+    }
+    if (confidences.length === 0) return "unknown"
+    const sorted = [...confidences].sort((a, b) => a - b)
+    const mid = Math.floor(sorted.length / 2)
+    const median =
+      sorted.length % 2 === 0 ? (sorted[mid - 1] + sorted[mid]) / 2 : sorted[mid]
+    if (median >= 0.85) return "high"
+    if (median >= 0.65) return "medium"
+    return "low"
+  }, [filings])
 
   const callouts = useMemo(() => {
     const years = metrics?.years ?? []
@@ -360,10 +381,16 @@ export default function Company() {
           <p className="text-xs uppercase tracking-wider text-slate-300">
             {copy.global.appName}
           </p>
-          <h1 className="text-3xl font-semibold">
-            {meta?.companyName ?? ticker}
-            {meta?.ticker ? ` (${meta.ticker})` : ""}
-          </h1>
+          <div className="flex flex-wrap items-center gap-3">
+            <h1 className="text-3xl font-semibold">
+              {meta?.companyName ?? ticker}
+              {meta?.ticker ? ` (${meta.ticker})` : ""}
+            </h1>
+            <QualityBadge
+              level={dataQualityLevel}
+              onClick={() => setIsDataQualityOpen(true)}
+            />
+          </div>
           <p className="text-sm text-slate-300">{copy.company.sectionValueMvp}</p>
         </header>
 
@@ -388,7 +415,10 @@ export default function Company() {
           >
             {copy.company.topButtons.exportExecBrief}
           </button>
-          <DataProvenanceDrawer />
+          <DataProvenanceDrawer
+            isOpen={isDataQualityOpen}
+            onOpenChange={setIsDataQualityOpen}
+          />
         </div>
 
         <section className="grid gap-4 sm:grid-cols-3">
