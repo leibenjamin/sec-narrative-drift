@@ -1,0 +1,11 @@
+{
+  "include": ["scripts"],
+  "exclude": [
+    "**/__pycache__",
+    "scripts/_cache",
+    "dist",
+    "node_modules"
+  ],
+  "typeCheckingMode": "strict",
+  "reportMissingTypeStubs": "none"
+}

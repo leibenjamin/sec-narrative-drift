@@ -8,6 +8,10 @@ Setup:
 Usage:
 - python scripts/sec_fetch_and_build.py --help
 
+Type checking (optional):
+- Install pyright if you want CLI checks.
+- `pyright` (uses `pyrightconfig.json` at the repo root).
+
 Notes:
 - Pipeline tickets will add SEC fetching and fixture-first extraction.
 - Prefer fixtures in scripts/sample_fixtures/ before live SEC calls.
