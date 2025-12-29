@@ -1,73 +1,61 @@
-# React + TypeScript + Vite
+﻿# SEC Narrative Drift
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A portfolio micro-app that quantifies how a public company's Item 1A risk factor language shifts over time using SEC 10-K filings.
 
-Currently, two official plugins are available:
+Live demo: (add link)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## What it does
+- Compares year-to-year Item 1A disclosures and surfaces rising/falling terms.
+- Highlights term shifts in context with excerpted paragraphs.
+- Shows similarity patterns across years with a compact heatmap view.
+- Keeps all SEC data precomputed as static JSON for reliability and compliance.
 
-## React Compiler
+## Why it is useful
+Risk factor language changes can signal evolving exposure, strategy, or regulatory pressure. This app turns dense filings into a concise narrative drift view that is easy to scan and explain.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Features
+- Phrase-aware term shifts (unigrams + vetted SEC phrases; supports multiword signals).
+- Optional alternate lens (TextRank keyphrases) when available in data.
+- Highlighted excerpts and side-by-side comparisons for context.
+- Static data delivery (no in-browser SEC calls).
 
-## Expanding the ESLint configuration
+## Tech stack
+- React + TypeScript + Vite
+- Tailwind CSS
+- Python data pipeline for extraction and metrics
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Data and methodology
+- Source: SEC EDGAR 10-K filings, primarily Item 1A Risk Factors.
+- Pipeline scripts: `scripts/` (fetch, extract, score, and generate JSON outputs).
+- Outputs: `public/data/sec_narrative_drift/<TICKER>/*.json` consumed by the frontend.
+- Security: SEC text is treated as untrusted and never rendered as HTML.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Getting started
+```bash
+npm install
+npm run dev
+npm run build
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Regenerate data (live SEC)
+Set your own SEC User-Agent with contact info (SEC policy requirement):
+```bash
+SEC_USER_AGENT="YOUR NAME <your.email@domain.com>"
 ```
+
+Regenerate one ticker:
+```bash
+python scripts/sec_fetch_and_build.py --ticker AAPL --years 10 --out public/data/sec_narrative_drift/AAPL
+```
+
+## Project layout
+- `src/` React UI and data loaders
+- `public/data/` static JSON datasets used by the app
+- `scripts/` data pipeline and fixtures (`scripts/sample_fixtures/`)
+
+## Notes
+- The public repo is README-driven; internal planning docs are kept private.
+- If you publish a live demo, add the link and a screenshot at the top.
+
+## License
+No license specified yet.
