@@ -5,6 +5,9 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Optional, Sequence, TypeGuard, cast
 
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+
 from sec_extract_item1a import clean_html_to_text, extract_item_1a, split_paragraphs
 
 
@@ -206,36 +209,167 @@ def compile_term_patterns(terms: Sequence[str]) -> list[re.Pattern[str]]:
     return patterns
 
 
+def compile_weighted_patterns(terms: Sequence[ShiftTerm]) -> list[tuple[str, re.Pattern[str], float]]:
+    # Compile phrase-aware patterns with weights derived from ShiftTerm.score.
+    patterns: list[tuple[str, re.Pattern[str], float]] = []
+    hyphen_class = r"[-\u2010\u2011\u2012\u2013\u2014\u2212'\u2018\u2019]"
+    for item in terms:
+        term = item.term.strip()
+        if not term:
+            continue
+        weight = max(abs(item.score), 0.5)
+        if " " in term:
+            parts = [re.escape(part) for part in term.split()]
+            joiner = rf"(?:\s+|{hyphen_class}\s*)"
+            pattern = re.compile(rf"\b{joiner.join(parts)}\b", re.IGNORECASE)
+        else:
+            pattern = re.compile(rf"\b{re.escape(term)}\b", re.IGNORECASE)
+        patterns.append((term, pattern, weight))
+    return patterns
+
+
+def _paragraph_is_candidate(paragraph: str) -> bool:
+    if not paragraph:
+        return False
+    if len(paragraph) < 220:
+        return False
+    if len(paragraph) > 2600:
+        return False
+    digits = sum(ch.isdigit() for ch in paragraph)
+    if digits / max(len(paragraph), 1) > 0.22:
+        return False
+    return True
+
+
 def count_matches(text: str, patterns: Sequence[re.Pattern[str]]) -> int:
     return sum(len(pattern.findall(text)) for pattern in patterns)
 
 
 def score_paragraph(
     paragraph: str,
-    riser_patterns: Sequence[re.Pattern[str]],
-    faller_patterns: Sequence[re.Pattern[str]],
-) -> int:
-    riser_hits = count_matches(paragraph, riser_patterns)
-    faller_hits = count_matches(paragraph, faller_patterns)
-    return riser_hits - faller_hits
+    risers: Sequence[tuple[str, re.Pattern[str], float]],
+    fallers: Sequence[tuple[str, re.Pattern[str], float]],
+    direction: str,
+) -> tuple[float, list[str]]:
+    if not _paragraph_is_candidate(paragraph):
+        return 0.0, []
+
+    cross_weight = 0.25
+    if direction not in {"from", "to"}:
+        direction = "to"
+
+    primary = risers if direction == "to" else fallers
+    secondary = fallers if direction == "to" else risers
+
+    score = 0.0
+    hits: list[str] = []
+
+    def add_hits(patterns: Sequence[tuple[str, re.Pattern[str], float]], multiplier: float) -> None:
+        nonlocal score, hits
+        for term, pattern, weight in patterns:
+            count = len(pattern.findall(paragraph))
+            if count <= 0:
+                continue
+            count = min(count, 3)
+            score += multiplier * weight * count
+            hits.append(term)
+
+    add_hits(primary, 1.0)
+    add_hits(secondary, cross_weight)
+
+    if direction == "to":
+        has_primary = any(pattern.findall(paragraph) for _term, pattern, _weight in risers)
+    else:
+        has_primary = any(pattern.findall(paragraph) for _term, pattern, _weight in fallers)
+    if not has_primary:
+        return 0.0, []
+
+    seen: set[str] = set()
+    uniq_hits: list[str] = []
+    for term in hits:
+        if term in seen:
+            continue
+        seen.add(term)
+        uniq_hits.append(term)
+
+    return score, uniq_hits
 
 
 def select_top_paragraphs(
     paragraphs: Sequence[str],
     year: int,
-    riser_patterns: Sequence[re.Pattern[str]],
-    faller_patterns: Sequence[re.Pattern[str]],
-    limit: int = MAX_PARAGRAPHS_PER_YEAR,
+    risers: Sequence[tuple[str, re.Pattern[str], float]],
+    fallers: Sequence[tuple[str, re.Pattern[str], float]],
+    direction: str,
+    max_paragraphs: int = MAX_PARAGRAPHS_PER_YEAR,
 ) -> list[dict[str, Any]]:
-    scored: list[tuple[int, int, str]] = []
+    scored: list[dict[str, Any]] = []
     for idx, paragraph in enumerate(paragraphs):
-        score = score_paragraph(paragraph, riser_patterns, faller_patterns)
-        scored.append((score, idx, paragraph))
-    scored.sort(key=lambda item: (-item[0], item[1]))
-    selected = scored[:limit]
+        score, hits = score_paragraph(paragraph, risers, fallers, direction=direction)
+        if score <= 0:
+            continue
+        scored.append(
+            {
+                "year": year,
+                "paragraphIndex": idx,
+                "text": paragraph,
+                "score": score,
+                "hits": hits,
+            }
+        )
+
+    if not scored:
+        return []
+
+    scored.sort(key=lambda item: (-item["score"], len(item["text"])))
+
+    texts = [item["text"] for item in scored]
+    try:
+        vec = TfidfVectorizer(stop_words="english", ngram_range=(1, 2), max_features=8000)
+        vec_any = cast(Any, vec)
+        matrix = vec_any.fit_transform(texts)
+        sims = cosine_similarity(matrix)
+    except Exception:
+        return [
+            {
+                "year": item["year"],
+                "paragraphIndex": item["paragraphIndex"],
+                "text": item["text"],
+            }
+            for item in scored[:max_paragraphs]
+        ]
+
+    selected: list[int] = []
+    candidates = list(range(len(scored)))
+    diversity_lambda = 0.35
+
+    while candidates and len(selected) < max_paragraphs:
+        best_idx: Optional[int] = None
+        best_value: Optional[float] = None
+        for idx in candidates:
+            relevance = float(scored[idx]["score"])
+            if not selected:
+                mmr = relevance
+            else:
+                max_sim = max(float(sims[idx][j]) for j in selected)
+                mmr = relevance - diversity_lambda * max_sim
+            if best_value is None or mmr > best_value:
+                best_value = mmr
+                best_idx = idx
+        if best_idx is None:
+            break
+        selected.append(best_idx)
+        candidates.remove(best_idx)
+
+    selected_items = [scored[i] for i in selected]
+    selected_items.sort(key=lambda item: -item["score"])
     return [
-        {"year": year, "paragraphIndex": idx, "text": paragraph}
-        for _score, idx, paragraph in selected
+        {
+            "year": item["year"],
+            "paragraphIndex": item["paragraphIndex"],
+            "text": item["text"],
+        }
+        for item in selected_items
     ]
 
 
@@ -260,14 +394,20 @@ def build_excerpt_pairs(
         representative: list[dict[str, Any]] = []
 
         if is_valid_section(from_section) and is_valid_section(to_section):
-            riser_terms = [term.term for term in shift.top_risers[:MAX_TERMS]]
-            faller_terms = [term.term for term in shift.top_fallers[:MAX_TERMS]]
-            riser_patterns = compile_term_patterns(riser_terms)
-            faller_patterns = compile_term_patterns(faller_terms)
+            riser_patterns = compile_weighted_patterns(shift.top_risers[:MAX_TERMS])
+            faller_patterns = compile_weighted_patterns(shift.top_fallers[:MAX_TERMS])
             representative = select_top_paragraphs(
-                to_section.paragraphs, shift.to_year, riser_patterns, faller_patterns
+                to_section.paragraphs,
+                shift.to_year,
+                riser_patterns,
+                faller_patterns,
+                direction="to",
             ) + select_top_paragraphs(
-                from_section.paragraphs, shift.from_year, riser_patterns, faller_patterns
+                from_section.paragraphs,
+                shift.from_year,
+                riser_patterns,
+                faller_patterns,
+                direction="from",
             )
 
         pairs.append(
