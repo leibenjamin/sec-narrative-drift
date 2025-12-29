@@ -6,16 +6,248 @@ import re
 from collections import Counter
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Optional, Sequence, cast
+from typing import Any, Mapping, Optional, Sequence, TypedDict, cast
 
 from sklearn.feature_extraction.text import ENGLISH_STOP_WORDS, TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
 from sec_extract_item1a import clean_html_to_text, extract_item_1a, split_paragraphs
+from sec_phrases import HONORIFICS, NAME_SUFFIXES, NOISE_TOKENS, SEC_PHRASE_ALLOWLIST
 
 
 SECTION_NAME = "10k_item1a"
 STOPWORDS = set(ENGLISH_STOP_WORDS)
+ALLOWED_SHORT_TOKENS: set[str] = {"ai", "ml", "ip", "it", "vr", "ar"}
+HYPHEN_CLASS = r"[-\u2010\u2011\u2012\u2013\u2014\u2212'\u2018\u2019]"
+
+
+class TermBase(TypedDict):
+    term: str
+
+
+class ShiftTermStats(TermBase):
+    score: float
+    z: float
+    countPrev: int
+    countCurr: int
+    per10kPrev: float
+    per10kCurr: float
+    deltaPer10k: float
+    distinctive: bool
+
+
+class ShiftTermOutput(ShiftTermStats):
+    pass
+
+
+class ShiftTermAlt(TermBase):
+    score: float
+
+
+ShiftPairPayload = TypedDict(
+    "ShiftPairPayload",
+    {
+        "from": int,
+        "to": int,
+        "topRisers": list[ShiftTermOutput],
+        "topFallers": list[ShiftTermOutput],
+        "summary": str,
+        "topRisersAlt": list[ShiftTermAlt],
+        "topFallersAlt": list[ShiftTermAlt],
+        "summaryAlt": str,
+    },
+    total=False,
+)
+
+
+class MetricsPayload(TypedDict):
+    section: str
+    years: list[int]
+    drift_vs_prev: list[Optional[float]]
+    drift_ci_low: list[Optional[float]]
+    drift_ci_high: list[Optional[float]]
+    boilerplate_score: list[Optional[float]]
+
+
+class SimilarityPayload(TypedDict):
+    section: str
+    years: list[int]
+    cosineSimilarity: list[list[float]]
+
+
+class ShiftsPayload(TypedDict):
+    section: str
+    yearPairs: list[ShiftPairPayload]
+
+
+def _compile_phrase_pattern(phrase: str) -> re.Pattern[str]:
+    parts = [re.escape(part) for part in phrase.split()]
+    joiner = rf"(?:\s+|{HYPHEN_CLASS}\s*)"
+    return re.compile(rf"\b{joiner.join(parts)}\b", re.IGNORECASE)
+
+
+ALLOWLIST_PATTERNS: list[tuple[str, re.Pattern[str]]] = [
+    (phrase, _compile_phrase_pattern(phrase)) for phrase in SEC_PHRASE_ALLOWLIST
+]
+
+
+def tokenize(text: str) -> list[str]:
+    # Lowercase-only tokenization is intentional: we're chasing stable business terms,
+    # not proper nouns. Lightweight hygiene avoids common false positives.
+    raw = re.findall(r"[a-z]{2,}", text.lower())
+    tokens: list[str] = []
+    skip_next = False
+    for token in raw:
+        if skip_next:
+            skip_next = False
+            continue
+        if token in HONORIFICS:
+            skip_next = True
+            continue
+        if token in NAME_SUFFIXES or token in NOISE_TOKENS:
+            continue
+        if token in STOPWORDS:
+            continue
+        if len(token) < 3 and token not in ALLOWED_SHORT_TOKENS:
+            continue
+        tokens.append(token)
+    return tokens
+
+
+def bigrams(tokens: Sequence[str]) -> list[str]:
+    output: list[str] = []
+    for i in range(len(tokens) - 1):
+        a = tokens[i]
+        b = tokens[i + 1]
+        if not a or not b:
+            continue
+        output.append(f"{a} {b}")
+    return output
+
+
+def count_allowlist_phrases(text: str) -> Counter[str]:
+    counts: Counter[str] = Counter()
+    if not text:
+        return counts
+    lowered = text.lower()
+    for phrase, pattern in ALLOWLIST_PATTERNS:
+        matches = pattern.findall(lowered)
+        if matches:
+            counts[phrase] += len(matches)
+    return counts
+
+
+def pmi_keep_bigrams(
+    token_lists: Sequence[Sequence[str]], min_count: int = 4, pmi_threshold: float = 4.0
+) -> set[str]:
+    # Compute PMI on the pooled corpus and keep only strong collocations.
+    uni: Counter[str] = Counter()
+    bi: Counter[str] = Counter()
+    total_tokens = 0
+    total_bigrams = 0
+    for tokens in token_lists:
+        uni.update(tokens)
+        total_tokens += len(tokens)
+        bi_list = bigrams(tokens)
+        bi.update(bi_list)
+        total_bigrams += len(bi_list)
+    keep: set[str] = set()
+    if total_tokens == 0 or total_bigrams == 0:
+        return keep
+    for phrase, c_xy in bi.items():
+        if c_xy < min_count:
+            continue
+        w1, w2 = phrase.split(" ", 1)
+        c_x = uni.get(w1, 0)
+        c_y = uni.get(w2, 0)
+        if c_x == 0 or c_y == 0:
+            continue
+        p_xy = c_xy / total_bigrams
+        p_x = c_x / total_tokens
+        p_y = c_y / total_tokens
+        pmi = math.log(p_xy / (p_x * p_y), 2)
+        if pmi >= pmi_threshold:
+            keep.add(phrase)
+    return keep
+
+
+def textrank_keyphrases(
+    text: str, window: int = 4, top_keywords: int = 60, max_phrases: int = 250
+) -> Counter[str]:
+    # Lightweight TextRank-style phrases: PageRank over a co-occurrence graph.
+    tokens = tokenize(text)
+    if len(tokens) < 80:
+        empty: Counter[str] = Counter()
+        return empty
+
+    freq: Counter[str] = Counter(tokens)
+    candidates: list[str] = []
+    for token, count in freq.items():
+        if count >= 3:
+            candidates.append(token)
+    candidates.sort(key=lambda t: (-freq[t], t))
+    candidates = candidates[:2000]
+    cand_set = set(candidates)
+
+    neighbors: dict[str, set[str]] = {}
+    for token in candidates:
+        neighbors[token] = set[str]()
+    for i in range(len(tokens)):
+        a = tokens[i]
+        if a not in cand_set:
+            continue
+        for j in range(i + 1, min(i + window, len(tokens))):
+            b = tokens[j]
+            if b not in cand_set or b == a:
+                continue
+            neighbors[a].add(b)
+            neighbors[b].add(a)
+
+    d = 0.85
+    scores: dict[str, float] = {}
+    for token in candidates:
+        scores[token] = 1.0
+    for _ in range(25):
+        new_scores: dict[str, float] = {}
+        for node in candidates:
+            rank_sum = 0.0
+            for nb in neighbors[node]:
+                deg = len(neighbors[nb]) or 1
+                rank_sum += scores[nb] / deg
+            new_scores[node] = (1 - d) + d * rank_sum
+        scores = new_scores
+
+    ranked = sorted(scores.items(), key=lambda item: (-item[1], item[0]))
+    top_set: set[str] = set()
+    for token, _score in ranked[:top_keywords]:
+        top_set.add(token)
+
+    phrases: Counter[str] = Counter()
+    i = 0
+    while i < len(tokens):
+        if tokens[i] not in top_set:
+            i += 1
+            continue
+        j = i
+        while j < len(tokens) and tokens[j] in top_set and (j - i) < 3:
+            j += 1
+        if j - i >= 2:
+            phrase = " ".join(tokens[i:j])
+            phrases[phrase] += 1
+        i = j
+
+    trimmed: Counter[str] = Counter()
+    for phrase, count in phrases.items():
+        if count >= 2:
+            trimmed[phrase] = count
+    if len(trimmed) > max_phrases:
+        limited: Counter[str] = Counter()
+        for phrase, count in trimmed.most_common(max_phrases):
+            limited[phrase] = count
+        trimmed = limited
+    return trimmed
+
+
 BOOTSTRAP_ITERATIONS = 200
 BOOTSTRAP_SEED = 13
 
@@ -124,11 +356,6 @@ def load_sections_from_fixture(path: Path, years: Sequence[int]) -> list[Section
     return sorted(sections, key=lambda section: section.year)
 
 
-def tokenize(text: str) -> list[str]:
-    tokens = re.findall(r"[a-z]{2,}", text.lower())
-    return [token for token in tokens if token not in STOPWORDS]
-
-
 def sentence_tokens(text: str) -> list[str]:
     if not text:
         return []
@@ -169,11 +396,18 @@ def round_value(value: Optional[float], digits: int = 2) -> Optional[float]:
     return round(float(value), digits)
 
 
-def build_shift_summary(top_risers: list[dict[str, Any]], top_fallers: list[dict[str, Any]]) -> str:
-    riser_terms = [entry["term"] for entry in top_risers[:3]]
-    faller_terms = [entry["term"] for entry in top_fallers[:3]]
-    risers_text = ", ".join(riser_terms)
-    fallers_text = ", ".join(faller_terms)
+def extract_terms(items: Sequence[TermBase], limit: int = 3) -> list[str]:
+    terms: list[str] = []
+    for item in items:
+        terms.append(item["term"])
+        if len(terms) >= limit:
+            break
+    return terms
+
+
+def build_shift_summary(riser_terms: Sequence[str], faller_terms: Sequence[str]) -> str:
+    risers_text = ", ".join(riser_terms[:3])
+    fallers_text = ", ".join(faller_terms[:3])
     if risers_text and fallers_text:
         return f"Adds emphasis on {risers_text}; de-emphasizes {fallers_text}."
     if risers_text:
@@ -240,7 +474,7 @@ def compute_bootstrap_ci(
     return low, high
 
 
-def build_metrics(sections: list[SectionYear]) -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
+def build_metrics(sections: list[SectionYear]) -> tuple[MetricsPayload, SimilarityPayload, ShiftsPayload]:
     years = [section.year for section in sections]
     drift_vs_prev: list[Optional[float]] = [None] * len(years)
     drift_ci_low: list[Optional[float]] = [None] * len(years)
@@ -250,7 +484,7 @@ def build_metrics(sections: list[SectionYear]) -> tuple[dict[str, Any], dict[str
     valid_sections = [section for section in sections if is_valid_section(section)]
     valid_years = [section.year for section in valid_sections]
     valid_texts = [section.text for section in valid_sections]
-    similarity: dict[str, Any]
+    similarity: SimilarityPayload
 
     if valid_sections:
         vectorizer = TfidfVectorizer(
@@ -296,44 +530,169 @@ def build_metrics(sections: list[SectionYear]) -> tuple[dict[str, Any], dict[str
             "cosineSimilarity": similarity_values,
         }
     else:
+        empty_years: list[int] = []
+        empty_similarity: list[list[float]] = []
         similarity = {
             "section": SECTION_NAME,
-            "years": [],
-            "cosineSimilarity": [],
+            "years": empty_years,
+            "cosineSimilarity": empty_similarity,
         }
 
-    shifts: list[dict[str, Any]] = []
+    shifts: list[ShiftPairPayload] = []
+
+    pooled_tokens = [tokenize(section.text) for section in valid_sections]
+    bigram_keep = pmi_keep_bigrams(pooled_tokens)
+
+    def log_odds_stats(
+        counts_prev: Counter[str], counts_curr: Counter[str], alpha: float = 0.01
+    ) -> dict[str, ShiftTermStats]:
+        vocab = set(counts_prev) | set(counts_curr)
+        if not vocab:
+            return {}
+        total_prev = sum(counts_prev.values())
+        total_curr = sum(counts_curr.values())
+        vocab_size = len(vocab)
+        stats: dict[str, ShiftTermStats] = {}
+        for term in vocab:
+            c_prev = counts_prev.get(term, 0)
+            c_curr = counts_curr.get(term, 0)
+            denom_prev = total_prev - c_prev + alpha * vocab_size
+            denom_curr = total_curr - c_curr + alpha * vocab_size
+            if denom_prev <= 0 or denom_curr <= 0:
+                continue
+            log_prev = math.log((c_prev + alpha) / denom_prev)
+            log_curr = math.log((c_curr + alpha) / denom_curr)
+            score = log_curr - log_prev
+
+            z = score / math.sqrt((1 / (c_curr + alpha)) + (1 / (c_prev + alpha)))
+
+            per10k_prev = (c_prev / total_prev * 10000.0) if total_prev else 0.0
+            per10k_curr = (c_curr / total_curr * 10000.0) if total_curr else 0.0
+            delta = per10k_curr - per10k_prev
+
+            distinctive = (abs(z) >= 2.0) and (abs(delta) >= 0.5) and ((c_prev + c_curr) >= 8)
+
+            stats[term] = {
+                "term": term,
+                "score": score,
+                "z": z,
+                "countPrev": c_prev,
+                "countCurr": c_curr,
+                "per10kPrev": per10k_prev,
+                "per10kCurr": per10k_curr,
+                "deltaPer10k": delta,
+                "distinctive": distinctive,
+            }
+        return stats
+
+    def build_term_counts_primary(text: str) -> Counter[str]:
+        toks = tokenize(text)
+        counts: Counter[str] = Counter(toks)
+        for phrase in bigrams(toks):
+            if phrase in bigram_keep:
+                counts[phrase] += 1
+        counts.update(count_allowlist_phrases(text))
+        return counts
+
+    def build_term_counts_alt(text: str) -> Counter[str]:
+        counts: Counter[str] = Counter()
+        counts.update(textrank_keyphrases(text))
+        counts.update(count_allowlist_phrases(text))
+        return counts
+
+    def build_shift_term_outputs(
+        items: Sequence[ShiftTermStats], limit: int = 15
+    ) -> list[ShiftTermOutput]:
+        output: list[ShiftTermOutput] = []
+        for item in items:
+            output.append(
+                {
+                    "term": item["term"],
+                    "score": round(float(item["score"]), 2),
+                    "z": round(float(item["z"]), 2),
+                    "countPrev": int(item["countPrev"]),
+                    "countCurr": int(item["countCurr"]),
+                    "per10kPrev": round(float(item["per10kPrev"]), 2),
+                    "per10kCurr": round(float(item["per10kCurr"]), 2),
+                    "deltaPer10k": round(float(item["deltaPer10k"]), 2),
+                    "distinctive": bool(item["distinctive"]),
+                }
+            )
+            if len(output) >= limit:
+                break
+        return output
+
+    def build_alt_terms(items: Sequence[ShiftTermStats], limit: int = 15) -> list[ShiftTermAlt]:
+        output: list[ShiftTermAlt] = []
+        for item in items:
+            output.append({"term": item["term"], "score": round(float(item["score"]), 2)})
+            if len(output) >= limit:
+                break
+        return output
+
     for idx in range(1, len(valid_sections)):
         prev_section = valid_sections[idx - 1]
         curr_section = valid_sections[idx]
-        counts_prev = Counter(tokenize(prev_section.text))
-        counts_curr = Counter(tokenize(curr_section.text))
-        scores = log_odds_ratio(counts_prev, counts_curr)
-        if not scores:
-            top_risers: list[dict[str, Any]] = []
-            top_fallers: list[dict[str, Any]] = []
-        else:
-            sorted_risers = sorted(scores.items(), key=lambda item: (-item[1], item[0]))
-            sorted_fallers = sorted(scores.items(), key=lambda item: (item[1], item[0]))
-            top_risers = [
-                {"term": term, "score": round(float(score), 2)}
-                for term, score in sorted_risers[:15]
-            ]
-            top_fallers = [
-                {"term": term, "score": round(float(score), 2)}
-                for term, score in sorted_fallers[:15]
-            ]
-        shifts.append(
-            {
-                "from": prev_section.year,
-                "to": curr_section.year,
-                "topRisers": top_risers,
-                "topFallers": top_fallers,
-                "summary": build_shift_summary(top_risers, top_fallers),
-            }
-        )
 
-    metrics: dict[str, Any] = {
+        counts_prev = build_term_counts_primary(prev_section.text)
+        counts_curr = build_term_counts_primary(curr_section.text)
+        stats = log_odds_stats(counts_prev, counts_curr)
+
+        if not stats:
+            top_risers: list[ShiftTermOutput] = []
+            top_fallers: list[ShiftTermOutput] = []
+        else:
+            sorted_risers = sorted(
+                stats.values(), key=lambda item: (-item["score"], item["term"])
+            )
+            sorted_fallers = sorted(
+                stats.values(), key=lambda item: (item["score"], item["term"])
+            )
+            top_risers = build_shift_term_outputs(sorted_risers)
+            top_fallers = build_shift_term_outputs(sorted_fallers)
+
+        summary = build_shift_summary(extract_terms(top_risers), extract_terms(top_fallers))
+
+        counts_prev_alt = build_term_counts_alt(prev_section.text)
+        counts_curr_alt = build_term_counts_alt(curr_section.text)
+        stats_alt = log_odds_stats(counts_prev_alt, counts_curr_alt)
+
+        top_risers_alt: list[ShiftTermAlt] = []
+        top_fallers_alt: list[ShiftTermAlt] = []
+        summary_alt = ""
+
+        if stats_alt:
+            sorted_risers_alt = sorted(
+                stats_alt.values(), key=lambda item: (-item["score"], item["term"])
+            )
+            sorted_fallers_alt = sorted(
+                stats_alt.values(), key=lambda item: (item["score"], item["term"])
+            )
+            top_risers_alt = build_alt_terms(sorted_risers_alt)
+            top_fallers_alt = build_alt_terms(sorted_fallers_alt)
+            if (len(top_risers_alt) + len(top_fallers_alt)) >= 10:
+                summary_alt = build_shift_summary(
+                    extract_terms(top_risers_alt), extract_terms(top_fallers_alt)
+                )
+            else:
+                top_risers_alt = []
+                top_fallers_alt = []
+
+        payload: ShiftPairPayload = {
+            "from": prev_section.year,
+            "to": curr_section.year,
+            "topRisers": top_risers,
+            "topFallers": top_fallers,
+            "summary": summary,
+        }
+        if top_risers_alt or top_fallers_alt:
+            payload["topRisersAlt"] = top_risers_alt
+            payload["topFallersAlt"] = top_fallers_alt
+            payload["summaryAlt"] = summary_alt or summary
+
+        shifts.append(payload)
+
+    metrics: MetricsPayload = {
         "section": SECTION_NAME,
         "years": years,
         "drift_vs_prev": drift_vs_prev,
@@ -341,11 +700,11 @@ def build_metrics(sections: list[SectionYear]) -> tuple[dict[str, Any], dict[str
         "drift_ci_high": drift_ci_high,
         "boilerplate_score": boilerplate_scores,
     }
-    shifts_payload: dict[str, Any] = {"section": SECTION_NAME, "yearPairs": shifts}
+    shifts_payload: ShiftsPayload = {"section": SECTION_NAME, "yearPairs": shifts}
     return metrics, similarity, shifts_payload
 
 
-def write_json(path: Path, payload: dict[str, Any]) -> None:
+def write_json(path: Path, payload: Mapping[str, Any]) -> None:
     path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
 
 
