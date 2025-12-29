@@ -45,6 +45,14 @@ export type SimilarityMatrix = {
 export type ShiftTerm = {
   term: string;
   score: number;
+  // Optional richer stats (present in newer datasets)
+  z?: number;
+  countPrev?: number;
+  countCurr?: number;
+  per10kPrev?: number;
+  per10kCurr?: number;
+  deltaPer10k?: number;
+  distinctive?: boolean;
 };
 
 export type ShiftPair = {
@@ -53,6 +61,10 @@ export type ShiftPair = {
   topRisers: ShiftTerm[];
   topFallers: ShiftTerm[];
   summary: string;
+  // Optional alternate lens (e.g., TextRank keyphrases)
+  topRisersAlt?: ShiftTerm[];
+  topFallersAlt?: ShiftTerm[];
+  summaryAlt?: string;
 };
 
 export type ShiftPairs = {
