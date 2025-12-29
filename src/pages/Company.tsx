@@ -8,7 +8,7 @@ import ExecBriefCard, { type ExecBriefData } from "../components/ExecBriefCard"
 import QualityBadge from "../components/QualityBadge"
 import SelectedPairCallout from "../components/SelectedPairCallout"
 import SimilarityHeatmap from "../components/SimilarityHeatmap"
-import TermShiftBars from "../components/TermShiftBars"
+import TermShiftBars, { type TermLens } from "../components/TermShiftBars"
 import Tour from "../components/Tour"
 import { copy } from "../lib/copy"
 import {
@@ -76,6 +76,7 @@ export default function Company() {
   )
   const [activeCell, setActiveCell] = useState<ActiveCell | null>(null)
   const [selectedTerm, setSelectedTerm] = useState<string | null>(null)
+  const [termLens, setTermLens] = useState<TermLens>("primary")
   const [isDataQualityOpen, setIsDataQualityOpen] = useState(false)
   const [isTourOpen, setIsTourOpen] = useState(false)
   const execBriefRef = useRef<SVGSVGElement | null>(null)
@@ -170,6 +171,37 @@ export default function Company() {
     )
   }, [shifts, selectedPair])
 
+  const hasAltShiftLists = useMemo(() => {
+    if (!selectedShiftPair) return false
+    const altRisers = selectedShiftPair.topRisersAlt ?? []
+    const altFallers = selectedShiftPair.topFallersAlt ?? []
+    return altRisers.length > 0 || altFallers.length > 0
+  }, [selectedShiftPair])
+
+  useEffect(() => {
+    if (!hasAltShiftLists && termLens !== "primary") {
+      setTermLens("primary")
+    }
+  }, [hasAltShiftLists, termLens])
+
+  const activeShiftLists = useMemo(() => {
+    if (!selectedShiftPair) {
+      return { risers: [], fallers: [], summary: "" }
+    }
+    if (termLens === "alt" && hasAltShiftLists) {
+      return {
+        risers: selectedShiftPair.topRisersAlt ?? [],
+        fallers: selectedShiftPair.topFallersAlt ?? [],
+        summary: selectedShiftPair.summaryAlt ?? selectedShiftPair.summary,
+      }
+    }
+    return {
+      risers: selectedShiftPair.topRisers,
+      fallers: selectedShiftPair.topFallers,
+      summary: selectedShiftPair.summary,
+    }
+  }, [hasAltShiftLists, selectedShiftPair, termLens])
+
   function handleSelectPair(fromYear: number, toYear: number) {
     const ordered =
       fromYear <= toYear ? { from: fromYear, to: toYear } : { from: toYear, to: fromYear }
@@ -181,10 +213,10 @@ export default function Company() {
   const highlightTerms = useMemo(() => {
     if (selectedTerm) return [selectedTerm]
     if (!selectedShiftPair) return []
-    const risers = selectedShiftPair.topRisers.slice(0, 15).map((item) => item.term)
-    const fallers = selectedShiftPair.topFallers.slice(0, 15).map((item) => item.term)
+    const risers = activeShiftLists.risers.slice(0, 15).map((item) => item.term)
+    const fallers = activeShiftLists.fallers.slice(0, 15).map((item) => item.term)
     return Array.from(new Set([...risers, ...fallers]))
-  }, [selectedTerm, selectedShiftPair])
+  }, [activeShiftLists, selectedShiftPair, selectedTerm])
 
   const selectedExcerptPair = useMemo(() => {
     if (!selectedPair) return null
@@ -574,13 +606,18 @@ export default function Company() {
             secUrl={selectedToSecUrl}
             evidenceAnchorId="evidence"
           />
-          {selectedShiftPair?.summary ? (
-            <p className="text-sm text-slate-200">{selectedShiftPair.summary}</p>
+          {activeShiftLists.summary ? (
+            <p className="text-sm text-slate-200">{activeShiftLists.summary}</p>
           ) : null}
           <TermShiftBars
-            selectedPair={selectedShiftPair ? { from: selectedShiftPair.from, to: selectedShiftPair.to } : null}
-            topRisers={selectedShiftPair?.topRisers ?? []}
-            topFallers={selectedShiftPair?.topFallers ?? []}
+            selectedPair={
+              selectedShiftPair ? { from: selectedShiftPair.from, to: selectedShiftPair.to } : null
+            }
+            topRisers={activeShiftLists.risers}
+            topFallers={activeShiftLists.fallers}
+            lens={termLens}
+            hasAlt={hasAltShiftLists}
+            onLensChange={setTermLens}
             onClickTerm={(term) => setSelectedTerm(term)}
           />
         </section>
