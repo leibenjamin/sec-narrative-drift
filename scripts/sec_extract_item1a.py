@@ -43,8 +43,15 @@ def normalize_whitespace(text: str) -> str:
     return "\n".join(output)
 
 
+def choose_parser(html: str) -> str:
+    head = html.lstrip()[:200].lower()
+    if head.startswith("<?xml") or re.match(r"\s*<xbrl", head):
+        return "lxml-xml"
+    return "lxml"
+
+
 def clean_html_to_text(html: str) -> str:
-    soup = BeautifulSoup(html, "lxml")
+    soup = BeautifulSoup(html, choose_parser(html))
 
     for tag in soup(["script", "style", "noscript"]):
         tag.decompose()
