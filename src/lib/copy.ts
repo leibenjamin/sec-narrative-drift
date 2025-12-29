@@ -214,12 +214,23 @@ export const copy = {
   },
 
   termShifts: {
-    title: "Term shifts (what moved most)",
-    helper: "Left: terms emphasized more. Right: terms emphasized less (vs prior year).",
-    risersLabel: "Risers",
-    fallersLabel: "Fallers",
+    title: "Distinctive terms (log-odds)",
+    helper:
+      "Words and phrases that shifted the most between years (descriptive, not causal). Click a term to highlight it below.",
+    risersLabel: "More emphasized",
+    fallersLabel: "Less emphasized",
     scoreTooltip:
-      "Log‑odds shift score (with smoothing). Higher magnitude = larger relative change.",
+      "Smoothed log-odds shift. Higher magnitude = larger relative change. Some datasets also include an approximate z-score and per-10k frequency deltas.",
+    lensLabel: "Phrase lens",
+    lensPrimary: "PMI phrases",
+    lensAlt: "TextRank keyphrases",
+    lensPrimaryHelp:
+      "PMI bigrams + a small curated phrase list. Tends to be more stable and auditable.",
+    lensAltHelp:
+      "TextRank-style keyphrases derived from each year's text. Can surface more \"topic-like\" phrases, but may be noisier.",
+    distinctiveBadge: "Notable",
+    distinctiveTooltip:
+      "Heuristic: this term's shift looks less likely to be a tokenization artifact (uses z-score + frequency filters when available).",
   },
 
   comparePane: {
