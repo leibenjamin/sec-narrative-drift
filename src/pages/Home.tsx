@@ -1,10 +1,41 @@
-// src/pages/Home.tsx
+﻿// src/pages/Home.tsx
+import { useEffect, useMemo, useState } from "react"
 import { Link } from "react-router-dom"
-import { copy } from "../lib/copy"
-import { listFeaturedTickers } from "../lib/data"
+import { copy, t } from "../lib/copy"
+import {
+  listFeaturedTickers,
+  listFeaturedTickersFromIndex,
+  loadCompanyIndex,
+} from "../lib/data"
+import type { CompanyIndex } from "../lib/types"
 
 export default function Home() {
-  const featuredTickers = listFeaturedTickers()
+  const [index, setIndex] = useState<CompanyIndex | null>(null)
+  const [indexError, setIndexError] = useState<string | null>(null)
+
+  useEffect(() => {
+    let mounted = true
+    loadCompanyIndex()
+      .then((data) => {
+        if (!mounted) return
+        setIndex(data)
+      })
+      .catch((e) => {
+        if (!mounted) return
+        setIndexError(e?.message ?? copy.global.errors.missingDataset)
+      })
+    return () => {
+      mounted = false
+    }
+  }, [])
+
+  const featuredCases = useMemo(() => {
+    return index?.companies.filter((company) => !!company.featuredCase) ?? []
+  }, [index])
+
+  const featuredTickers = useMemo(() => {
+    return index ? listFeaturedTickersFromIndex(index) : listFeaturedTickers()
+  }, [index])
 
   return (
     <main className="min-h-screen">
@@ -32,12 +63,11 @@ export default function Home() {
         </header>
 
         <div className="mt-10 flex flex-wrap gap-3">
-          {/* Placeholder for now: route later when Company page exists */}
           <Link
-            to="/company"
+            to="/companies"
             className="inline-flex items-center rounded-md bg-black px-4 py-2 text-white hover:opacity-90"
           >
-            {copy.buttons.exploreFeatured}
+            {copy.buttons.browseCompanies}
           </Link>
 
           <Link
@@ -91,25 +121,56 @@ export default function Home() {
           <p className="mt-2 text-sm text-slate-300">
             {copy.home.featuredHelper}
           </p>
+          {index && !indexError ? (
+            <p className="mt-2 text-xs text-slate-400">
+              {t(copy.companies.coverageLine, {
+                n: index.companyCount,
+                target: index.lookbackTargetYears,
+              })}
+            </p>
+          ) : null}
 
-          <div className="mt-6 grid gap-3 sm:grid-cols-2">
-            {featuredTickers.map((ticker) => (
-              <Link
-                key={ticker}
-                to={`/company/${ticker}`}
-                className="rounded-lg border border-black/10 p-4 hover:bg-black/5"
-              >
-                <div className="text-sm font-medium">{ticker}</div>
-                <div className="mt-1 text-xs text-slate-300">
-                  {copy.company.sectionValueMvp}
-                </div>
-              </Link>
-            ))}
-          </div>
+          {featuredCases.length ? (
+            <div className="mt-6 grid gap-3 sm:grid-cols-2">
+              {featuredCases.slice(0, 6).map((company) => {
+                const featured = company.featuredCase!
+                const link = `/company/${company.ticker}?from=${featured.from}&to=${featured.to}`
+                return (
+                  <Link
+                    key={company.ticker}
+                    to={link}
+                    className="rounded-lg border border-black/10 p-4 hover:bg-black/5"
+                  >
+                    <div className="text-sm font-medium">{company.ticker}</div>
+                    <div className="mt-1 text-xs text-slate-300">
+                      {company.companyName}
+                    </div>
+                    <div className="mt-3 text-sm font-medium">{featured.title}</div>
+                    <div className="mt-2 text-xs text-slate-300">{featured.blurb}</div>
+                  </Link>
+                )
+              })}
+            </div>
+          ) : (
+            <div className="mt-6 grid gap-3 sm:grid-cols-2">
+              {featuredTickers.map((ticker) => (
+                <Link
+                  key={ticker}
+                  to={`/company/${ticker}`}
+                  className="rounded-lg border border-black/10 p-4 hover:bg-black/5"
+                >
+                  <div className="text-sm font-medium">{ticker}</div>
+                  <div className="mt-1 text-xs text-slate-300">
+                    {copy.company.sectionValueMvp}
+                  </div>
+                </Link>
+              ))}
+            </div>
+          )}
         </section>
 
         <footer className="mt-16 text-xs text-slate-400">
-          {copy.global.sourceLine} · {copy.global.caveatLine}
+          {copy.global.sourceLine} {copy.global.caveatLine}
         </footer>
       </div>
     </main>

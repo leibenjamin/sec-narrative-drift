@@ -89,3 +89,47 @@ export type Excerpts = {
   section: string;
   pairs: ExcerptPair[];
 };
+
+export type QualityLevel = "high" | "medium" | "low" | "unknown";
+
+export type CompanyIndexRow = {
+  ticker: string;
+  companyName: string;
+  cik: string;
+  sic?: string;
+  sicDescription?: string;
+  exchange?: string;
+  coverage: {
+    years: number[];
+    count: number;
+    minYear: number;
+    maxYear: number;
+  };
+  quality: {
+    level: QualityLevel;
+    minConfidence?: number;
+    medianConfidence?: number;
+    notes?: string[];
+  };
+  metricsSummary?: {
+    peakDrift?: { from: number; to: number; value: number };
+    latestDrift?: { from: number; to: number; value: number };
+  };
+  autoPair?: { from: number; to: number };
+  featuredCase?: {
+    from: number;
+    to: number;
+    title: string;
+    blurb: string;
+    tags?: string[];
+  };
+};
+
+export type CompanyIndex = {
+  version: number;
+  generatedAtUtc: string;
+  section: string;
+  lookbackTargetYears: number;
+  companyCount: number;
+  companies: CompanyIndexRow[];
+};

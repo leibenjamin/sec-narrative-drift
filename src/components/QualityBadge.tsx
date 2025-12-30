@@ -30,6 +30,18 @@ export default function QualityBadge({ level, onClick }: QualityBadgeProps) {
   const { className, label } = badgeStyles[level]
   const text = `${copy.dataQuality.title}: ${label}`
 
+  if (!onClick) {
+    return (
+      <span
+        className={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium ${className}`}
+        aria-label={text}
+        title={copy.dataQuality.helper}
+      >
+        {text}
+      </span>
+    )
+  }
+
   return (
     <button
       type="button"
