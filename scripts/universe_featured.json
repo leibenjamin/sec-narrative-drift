@@ -1,0 +1,128 @@
+{
+  "version": "v1.0",
+  "notes": "Anchor companies are broadly recognizable. Story companies are chosen for legible, non-obvious narrative shifts. SIC is sourced from SEC submissions; themes are editorial.",
+  "anchors": [
+    {"ticker": "AAPL", "theme": "Tech Platforms"},
+    {"ticker": "MSFT", "theme": "Tech Platforms"},
+    {"ticker": "GOOGL", "theme": "Tech Platforms"},
+    {"ticker": "AMZN", "theme": "Commerce & Cloud"},
+    {"ticker": "META", "theme": "Ads & Social"},
+    {"ticker": "ORCL", "theme": "Enterprise Software"},
+    {"ticker": "IBM", "theme": "Enterprise Software"},
+    {"ticker": "INTC", "theme": "Semiconductors"},
+    {"ticker": "TSM", "theme": "Semiconductors (ADR)"},
+    {"ticker": "TXN", "theme": "Semiconductors"},
+
+    {"ticker": "JPM", "theme": "Banks"},
+    {"ticker": "BAC", "theme": "Banks"},
+    {"ticker": "GS", "theme": "Capital Markets"},
+    {"ticker": "MS", "theme": "Capital Markets"},
+    {"ticker": "BRK-B", "theme": "Conglomerate"},
+    {"ticker": "BLK", "theme": "Asset Management"},
+    {"ticker": "V", "theme": "Payments"},
+    {"ticker": "MA", "theme": "Payments"},
+
+    {"ticker": "UNH", "theme": "Healthcare"},
+    {"ticker": "JNJ", "theme": "Healthcare"},
+    {"ticker": "PFE", "theme": "Pharma"},
+    {"ticker": "MRK", "theme": "Pharma"},
+    {"ticker": "LLY", "theme": "Pharma"},
+    {"ticker": "ABBV", "theme": "Pharma"},
+    {"ticker": "TMO", "theme": "Life Sciences Tools"},
+
+    {"ticker": "WMT", "theme": "Retail"},
+    {"ticker": "COST", "theme": "Retail"},
+    {"ticker": "PG", "theme": "Consumer Staples"},
+    {"ticker": "KO", "theme": "Consumer Staples"},
+    {"ticker": "PEP", "theme": "Consumer Staples"},
+    {"ticker": "HD", "theme": "Consumer Discretionary"},
+    {"ticker": "MCD", "theme": "Restaurants"},
+
+    {"ticker": "XOM", "theme": "Energy"},
+    {"ticker": "CVX", "theme": "Energy"},
+    {"ticker": "COP", "theme": "Energy"},
+    {"ticker": "SLB", "theme": "Oilfield Services"},
+
+    {"ticker": "CAT", "theme": "Industrials"},
+    {"ticker": "GE", "theme": "Industrials"},
+    {"ticker": "UPS", "theme": "Logistics"},
+    {"ticker": "LMT", "theme": "Defense"},
+    {"ticker": "RTX", "theme": "Defense"},
+
+    {"ticker": "NEE", "theme": "Utilities"},
+    {"ticker": "DUK", "theme": "Utilities"},
+    {"ticker": "SO", "theme": "Utilities"}
+  ],
+  "stories": [
+    {
+      "ticker": "CLX",
+      "theme": "Consumer Staples",
+      "why": "Cyber incident and operational disruption language becomes concrete.",
+      "bestYearPairs": ["2023-2024", "2022-2024"],
+      "tags": ["cyber", "operations", "supply chain"]
+    },
+    {
+      "ticker": "NSC",
+      "theme": "Rail & Hazmat",
+      "why": "Major derailment and hazmat event reshapes safety, regulatory, and litigation language.",
+      "bestYearPairs": ["2022-2023", "2023-2024"],
+      "tags": ["safety", "regulation", "litigation"]
+    },
+    {
+      "ticker": "ADM",
+      "theme": "Agribusiness",
+      "why": "Controls language shifts from generic to specific weaknesses and remediation.",
+      "bestYearPairs": ["2023-2024", "2022-2024"],
+      "tags": ["controls", "investigations", "governance"]
+    },
+    {
+      "ticker": "SBUX",
+      "theme": "Restaurants",
+      "why": "Labor and unionization disputes become more explicit and sustained.",
+      "bestYearPairs": ["2021-2023", "2022-2024"],
+      "tags": ["labor", "reputation", "human capital"]
+    },
+    {
+      "ticker": "SSTK",
+      "theme": "Media & Licensing",
+      "why": "Generative AI reshapes licensing economics and risk language.",
+      "bestYearPairs": ["2022-2024", "2023-2024"],
+      "tags": ["genai", "licensing", "ip"]
+    },
+    {
+      "ticker": "CHGG",
+      "theme": "EdTech",
+      "why": "AI competition becomes an existential narrative with legible shifts.",
+      "bestYearPairs": ["2022-2024", "2023-2024"],
+      "tags": ["genai", "demand", "platforms"]
+    },
+    {
+      "ticker": "PGR",
+      "theme": "Insurance",
+      "why": "Catastrophe, climate, and pricing cycles move from background to primary drivers.",
+      "bestYearPairs": ["2021-2023", "2022-2024"],
+      "tags": ["climate", "pricing", "reinsurance"]
+    },
+    {
+      "ticker": "WM",
+      "theme": "Waste & Environmental",
+      "why": "Environmental liabilities and regulatory language become more prominent.",
+      "bestYearPairs": ["2020-2024", "2021-2024"],
+      "tags": ["environment", "regulation", "liability"]
+    },
+    {
+      "ticker": "BA",
+      "theme": "Aerospace",
+      "why": "Safety, quality, and supplier constraints become operationally specific.",
+      "bestYearPairs": ["2018-2020", "2022-2024"],
+      "tags": ["safety", "quality", "supply chain"]
+    },
+    {
+      "ticker": "MO",
+      "theme": "Regulated Consumer",
+      "why": "Regulatory and litigation language is richly structured and shifts year to year.",
+      "bestYearPairs": ["2020-2024", "2022-2024"],
+      "tags": ["regulation", "litigation", "health"]
+    }
+  ]
+}

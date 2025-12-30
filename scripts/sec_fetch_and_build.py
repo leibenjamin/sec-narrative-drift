@@ -10,7 +10,7 @@ from urllib.parse import urlparse
 import requests
 
 from sec_extract_item1a import clean_html_to_text, extract_item_1a, split_paragraphs
-from sec_metrics import SectionYear as MetricsSectionYear, build_metrics
+from sec_metrics import SectionYear as MetricsSectionYear, ShiftsPayload, build_metrics
 from sec_quality import (
     SectionYear as QualitySectionYear,
     ShiftPair as QualityShiftPair,
@@ -284,7 +284,7 @@ def build_quality_terms(value: Any) -> list[QualityShiftTerm]:
     return terms
 
 
-def build_quality_shifts(payload: dict[str, Any]) -> list[QualityShiftPair]:
+def build_quality_shifts(payload: ShiftsPayload) -> list[QualityShiftPair]:
     pairs = as_list(payload.get("yearPairs"))
     if pairs is None:
         return []

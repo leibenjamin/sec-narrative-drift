@@ -1,17 +1,17 @@
 ﻿// src/pages/Home.tsx
-import { useEffect, useMemo, useState } from "react"
+import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { copy, t } from "../lib/copy"
 import {
-  listFeaturedTickers,
-  listFeaturedTickersFromIndex,
   loadCompanyIndex,
+  loadFeaturedCases,
 } from "../lib/data"
-import type { CompanyIndex } from "../lib/types"
+import type { CompanyIndex, FeaturedCase } from "../lib/types"
 
 export default function Home() {
   const [index, setIndex] = useState<CompanyIndex | null>(null)
-  const [indexError, setIndexError] = useState<string | null>(null)
+  const [featuredCases, setFeaturedCases] = useState<FeaturedCase[]>([])
+  const [featuredError, setFeaturedError] = useState<string | null>(null)
 
   useEffect(() => {
     let mounted = true
@@ -20,22 +20,30 @@ export default function Home() {
         if (!mounted) return
         setIndex(data)
       })
-      .catch((e) => {
+      .catch(() => {
         if (!mounted) return
-        setIndexError(e?.message ?? copy.global.errors.missingDataset)
+        setIndex(null)
       })
     return () => {
       mounted = false
     }
   }, [])
 
-  const featuredCases = useMemo(() => {
-    return index?.companies.filter((company) => !!company.featuredCase) ?? []
-  }, [index])
-
-  const featuredTickers = useMemo(() => {
-    return index ? listFeaturedTickersFromIndex(index) : listFeaturedTickers()
-  }, [index])
+  useEffect(() => {
+    let mounted = true
+    loadFeaturedCases()
+      .then((data) => {
+        if (!mounted) return
+        setFeaturedCases(data.cases.slice(0, 6))
+      })
+      .catch((e) => {
+        if (!mounted) return
+        setFeaturedError(e?.message ?? copy.global.errors.missingDataset)
+      })
+    return () => {
+      mounted = false
+    }
+  }, [])
 
   return (
     <main className="min-h-screen">
@@ -121,7 +129,7 @@ export default function Home() {
           <p className="mt-2 text-sm text-slate-300">
             {copy.home.featuredHelper}
           </p>
-          {index && !indexError ? (
+          {index ? (
             <p className="mt-2 text-xs text-slate-400">
               {t(copy.companies.coverageLine, {
                 n: index.companyCount,
@@ -132,41 +140,24 @@ export default function Home() {
 
           {featuredCases.length ? (
             <div className="mt-6 grid gap-3 sm:grid-cols-2">
-              {featuredCases.slice(0, 6).map((company) => {
-                const featured = company.featuredCase!
-                const link = `/company/${company.ticker}?from=${featured.from}&to=${featured.to}`
+              {featuredCases.map((featured) => {
+                const link = `/company/${featured.ticker}?from=${featured.defaultPair.from}&to=${featured.defaultPair.to}`
                 return (
                   <Link
-                    key={company.ticker}
+                    key={featured.id}
                     to={link}
                     className="rounded-lg border border-black/10 p-4 hover:bg-black/5"
                   >
-                    <div className="text-sm font-medium">{company.ticker}</div>
-                    <div className="mt-1 text-xs text-slate-300">
-                      {company.companyName}
-                    </div>
-                    <div className="mt-3 text-sm font-medium">{featured.title}</div>
-                    <div className="mt-2 text-xs text-slate-300">{featured.blurb}</div>
+                    <div className="text-sm font-medium">{featured.ticker}</div>
+                    <div className="mt-2 text-sm font-medium">{featured.headline}</div>
+                    <div className="mt-2 text-xs text-slate-300">{featured.hook}</div>
                   </Link>
                 )
               })}
             </div>
-          ) : (
-            <div className="mt-6 grid gap-3 sm:grid-cols-2">
-              {featuredTickers.map((ticker) => (
-                <Link
-                  key={ticker}
-                  to={`/company/${ticker}`}
-                  className="rounded-lg border border-black/10 p-4 hover:bg-black/5"
-                >
-                  <div className="text-sm font-medium">{ticker}</div>
-                  <div className="mt-1 text-xs text-slate-300">
-                    {copy.company.sectionValueMvp}
-                  </div>
-                </Link>
-              ))}
-            </div>
-          )}
+          ) : featuredError ? (
+            <p className="mt-4 text-xs text-slate-400">{featuredError}</p>
+          ) : null}
         </section>
 
         <footer className="mt-16 text-xs text-slate-400">

@@ -1,12 +1,18 @@
 import { useEffect, useMemo, useState } from "react"
 import { Link } from "react-router-dom"
 import { copy, t } from "../lib/copy"
-import { loadCompanyIndex } from "../lib/data"
-import type { CompanyIndex, CompanyIndexRow, QualityLevel } from "../lib/types"
+import { loadCompanyIndex, loadUniverseFeatured } from "../lib/data"
+import type {
+  CompanyIndex,
+  CompanyIndexRow,
+  QualityLevel,
+  UniverseFeatured,
+} from "../lib/types"
 import QualityBadge from "../components/QualityBadge"
 
-type CoverageFilter = "all" | "ge7" | "ge9"
+type CoverageFilter = "all" | "ge8"
 type QualityFilter = "all" | "high" | "high_med"
+type StoryFilter = "all" | "story"
 type SortMode = "featured" | "az" | "peak_drift" | "coverage"
 
 function normalize(s: string): string {
@@ -15,8 +21,7 @@ function normalize(s: string): string {
 
 function passesCoverage(row: CompanyIndexRow, f: CoverageFilter): boolean {
   if (f === "all") return true
-  if (f === "ge7") return row.coverage.count >= 7
-  if (f === "ge9") return row.coverage.count >= 9
+  if (f === "ge8") return row.coverage.count >= 8
   return true
 }
 
@@ -27,17 +32,36 @@ function passesQuality(level: QualityLevel, f: QualityFilter): boolean {
   return true
 }
 
+function passesStory(isStory: boolean, f: StoryFilter): boolean {
+  if (f === "all") return true
+  return isStory
+}
+
+function passesExchange(exchange: string | undefined, filter: string): boolean {
+  if (filter === "all") return true
+  if (!exchange) return false
+  return exchange === filter
+}
+
 function formatCoverage(row: CompanyIndexRow): string {
   const { count, minYear, maxYear } = row.coverage
   return `${count}y ${minYear}-${maxYear}`
 }
 
+function formatLatestYear(row: CompanyIndexRow): string {
+  const { maxYear } = row.coverage
+  return maxYear ? `${copy.companies.latestYearLabel} ${maxYear}` : copy.companies.latestYearUnknown
+}
+
 export default function Companies() {
   const [index, setIndex] = useState<CompanyIndex | null>(null)
+  const [universe, setUniverse] = useState<UniverseFeatured | null>(null)
   const [error, setError] = useState<string | null>(null)
 
   const [query, setQuery] = useState("")
   const [coverageFilter, setCoverageFilter] = useState<CoverageFilter>("all")
+  const [storyFilter, setStoryFilter] = useState<StoryFilter>("all")
+  const [exchangeFilter, setExchangeFilter] = useState("all")
   const [qualityFilter, setQualityFilter] = useState<QualityFilter>("all")
   const [sortMode, setSortMode] = useState<SortMode>("featured")
 
@@ -57,7 +81,46 @@ export default function Companies() {
     }
   }, [])
 
+  useEffect(() => {
+    let mounted = true
+    loadUniverseFeatured()
+      .then((data) => {
+        if (!mounted) return
+        setUniverse(data)
+      })
+      .catch(() => {
+        if (!mounted) return
+        setUniverse(null)
+      })
+    return () => {
+      mounted = false
+    }
+  }, [])
+
   const rows = useMemo(() => index?.companies ?? [], [index])
+
+  const storyTickers = useMemo(() => {
+    const set = new Set<string>()
+    if (universe?.stories) {
+      for (const story of universe.stories) {
+        if (story.ticker) {
+          set.add(story.ticker.toUpperCase())
+        }
+      }
+    }
+    return set
+  }, [universe])
+
+  const exchangeOptions = useMemo(() => {
+    const set = new Set<string>()
+    for (const row of rows) {
+      if (row.exchange) {
+        set.add(row.exchange)
+      }
+    }
+    const options = Array.from(set).sort((a, b) => a.localeCompare(b))
+    return ["all", ...options]
+  }, [rows])
 
   const featuredRows = useMemo(() => {
     return rows.filter((r) => !!r.featuredCase)
@@ -70,9 +133,15 @@ export default function Companies() {
       return !q || hay.includes(q)
     })
 
-    const afterFilters = base.filter(
-      (r) => passesCoverage(r, coverageFilter) && passesQuality(r.quality.level, qualityFilter)
-    )
+    const afterFilters = base.filter((r) => {
+      const isStory = storyTickers.has(r.ticker)
+      return (
+        passesCoverage(r, coverageFilter) &&
+        passesQuality(r.quality.level, qualityFilter) &&
+        passesStory(isStory, storyFilter) &&
+        passesExchange(r.exchange, exchangeFilter)
+      )
+    })
 
     const sorted = [...afterFilters].sort((a, b) => {
       if (sortMode === "az") {
@@ -92,7 +161,7 @@ export default function Companies() {
     })
 
     return sorted
-  }, [rows, query, coverageFilter, qualityFilter, sortMode])
+  }, [rows, query, coverageFilter, qualityFilter, storyFilter, exchangeFilter, sortMode, storyTickers])
 
   return (
     <main className="min-h-screen">
@@ -132,7 +201,7 @@ export default function Companies() {
         ) : null}
 
         <section className="space-y-4">
-          <div className="grid gap-3 sm:grid-cols-3">
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             <input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
@@ -148,34 +217,56 @@ export default function Companies() {
               aria-label={copy.companies.coverageFilterAria}
             >
               <option value="all">{copy.companies.filters.coverageAll}</option>
-              <option value="ge7">{copy.companies.filters.coverageGe7}</option>
-              <option value="ge9">{copy.companies.filters.coverageGe9}</option>
+              <option value="ge8">{copy.companies.filters.coverageGe8}</option>
             </select>
 
-            <div className="grid gap-3 sm:grid-cols-2">
-              <select
-                value={qualityFilter}
-                onChange={(e) => setQualityFilter(e.target.value as QualityFilter)}
-                className="rounded-md border border-black/20 px-3 py-2 text-sm"
-                aria-label={copy.companies.qualityFilterAria}
-              >
-                <option value="all">{copy.companies.filters.qualityAll}</option>
-                <option value="high">{copy.companies.filters.qualityHigh}</option>
-                <option value="high_med">{copy.companies.filters.qualityHighMed}</option>
-              </select>
+            <select
+              value={storyFilter}
+              onChange={(e) => setStoryFilter(e.target.value as StoryFilter)}
+              className="rounded-md border border-black/20 px-3 py-2 text-sm"
+              aria-label={copy.companies.storyFilterAria}
+            >
+              <option value="all">{copy.companies.filters.storyAll}</option>
+              <option value="story">{copy.companies.filters.storyOnly}</option>
+            </select>
 
-              <select
-                value={sortMode}
-                onChange={(e) => setSortMode(e.target.value as SortMode)}
-                className="rounded-md border border-black/20 px-3 py-2 text-sm"
-                aria-label={copy.companies.sortAria}
-              >
-                <option value="featured">{copy.companies.sort.featured}</option>
-                <option value="az">{copy.companies.sort.az}</option>
-                <option value="peak_drift">{copy.companies.sort.peakDrift}</option>
-                <option value="coverage">{copy.companies.sort.coverage}</option>
-              </select>
-            </div>
+            <select
+              value={exchangeFilter}
+              onChange={(e) => setExchangeFilter(e.target.value)}
+              className="rounded-md border border-black/20 px-3 py-2 text-sm"
+              aria-label={copy.companies.exchangeFilterAria}
+            >
+              {exchangeOptions.map((exchange) => (
+                <option key={exchange} value={exchange}>
+                  {exchange === "all"
+                    ? copy.companies.filters.exchangeAll
+                    : exchange}
+                </option>
+              ))}
+            </select>
+
+            <select
+              value={qualityFilter}
+              onChange={(e) => setQualityFilter(e.target.value as QualityFilter)}
+              className="rounded-md border border-black/20 px-3 py-2 text-sm"
+              aria-label={copy.companies.qualityFilterAria}
+            >
+              <option value="all">{copy.companies.filters.qualityAll}</option>
+              <option value="high">{copy.companies.filters.qualityHigh}</option>
+              <option value="high_med">{copy.companies.filters.qualityHighMed}</option>
+            </select>
+
+            <select
+              value={sortMode}
+              onChange={(e) => setSortMode(e.target.value as SortMode)}
+              className="rounded-md border border-black/20 px-3 py-2 text-sm"
+              aria-label={copy.companies.sortAria}
+            >
+              <option value="featured">{copy.companies.sort.featured}</option>
+              <option value="az">{copy.companies.sort.az}</option>
+              <option value="peak_drift">{copy.companies.sort.peakDrift}</option>
+              <option value="coverage">{copy.companies.sort.coverage}</option>
+            </select>
           </div>
         </section>
 
@@ -221,6 +312,7 @@ export default function Companies() {
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {filtered.map((r) => {
               const auto = r.autoPair
+              const isStory = storyTickers.has(r.ticker)
               const jump = auto
                 ? `/company/${r.ticker}?from=${auto.from}&to=${auto.to}`
                 : `/company/${r.ticker}`
@@ -233,12 +325,22 @@ export default function Companies() {
                       </Link>
                       <div className="mt-1 text-xs text-slate-300">{r.companyName}</div>
                     </div>
-                    <QualityBadge level={r.quality.level} />
+                    <div className="flex flex-col items-end gap-2">
+                      {isStory ? (
+                        <span className="rounded-full border border-black/20 px-2 py-1 text-[11px]">
+                          {copy.companies.storyChip}
+                        </span>
+                      ) : null}
+                      <QualityBadge level={r.quality.level} />
+                    </div>
                   </div>
 
                   <div className="mt-3 flex flex-wrap gap-2 text-xs text-slate-300">
                     <span className="rounded-full border border-black/20 px-2 py-1">
                       {formatCoverage(r)}
+                    </span>
+                    <span className="rounded-full border border-black/20 px-2 py-1">
+                      {formatLatestYear(r)}
                     </span>
                     {r.metricsSummary?.peakDrift ? (
                       <span className="rounded-full border border-black/20 px-2 py-1">
