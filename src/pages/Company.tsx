@@ -19,6 +19,7 @@ import {
   loadMetrics,
   loadShifts,
   loadSimilarity,
+  resolveDefaultPair,
 } from "../lib/data"
 import { exportExecBriefPng } from "../lib/exportPng"
 import { assertSafeExternalUrl } from "../lib/sanitize"
@@ -63,10 +64,6 @@ function parseYearParam(value: string | null): number | null {
   return Math.trunc(parsed)
 }
 
-function hasYearPair(shifts: ShiftPairs | null, fromYear: number, toYear: number): boolean {
-  if (!shifts?.yearPairs?.length) return false
-  return shifts.yearPairs.some((pair) => pair.from === fromYear && pair.to === toYear)
-}
 
 export default function Company() {
   const params = useParams()
@@ -199,26 +196,29 @@ export default function Company() {
   }, [hasAltShiftLists, termLens])
 
   useEffect(() => {
-    if (!similarity && !shifts) return
+    if (!similarity) return
     const queryFrom = parseYearParam(searchParams.get("from"))
     const queryTo = parseYearParam(searchParams.get("to"))
     if (queryFrom === null || queryTo === null || queryFrom === queryTo) return
 
-    const ordered =
+    const desired =
       queryFrom <= queryTo ? { from: queryFrom, to: queryTo } : { from: queryTo, to: queryFrom }
-    const inShifts = hasYearPair(shifts, ordered.from, ordered.to)
-    const years = similarity?.years ?? []
-    const inYears = years.includes(ordered.from) && years.includes(ordered.to)
-    if (!inShifts && !inYears) return
-    if (selectedPair && selectedPair.from === ordered.from && selectedPair.to === ordered.to) {
+    const years = similarity.years ?? []
+    const resolved = resolveDefaultPair(years, desired.from, desired.to)
+    if (!resolved) return
+    if (selectedPair && selectedPair.from === resolved.from && selectedPair.to === resolved.to) {
       return
     }
 
-    setSelectedPair(ordered)
+    if (resolved.from !== desired.from || resolved.to !== desired.to) {
+      setSearchParams({ from: String(resolved.from), to: String(resolved.to) })
+    }
+
+    setSelectedPair(resolved)
     setSelectedTerm(null)
-    setActiveCell(getHeatmapCell(years, ordered.from, ordered.to))
+    setActiveCell(getHeatmapCell(years, resolved.from, resolved.to))
     setShouldScrollToEvidence(true)
-  }, [searchParams, selectedPair, shifts, similarity])
+  }, [searchParams, selectedPair, setSearchParams, similarity])
 
   useEffect(() => {
     if (!shouldScrollToEvidence || !selectedPair) return

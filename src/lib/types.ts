@@ -133,3 +133,34 @@ export type CompanyIndex = {
   companyCount: number;
   companies: CompanyIndexRow[];
 };
+
+export type FeaturedCase = {
+  id: string;
+  ticker: string;
+  headline: string;
+  hook: string;
+  defaultPair: { from: number; to: number };
+  tags?: string[];
+  cta: string;
+};
+
+export type FeaturedCases = {
+  version: string;
+  updatedAt: string;
+  cases: FeaturedCase[];
+};
+
+export type UniverseEntry = {
+  ticker: string;
+  theme: string;
+  why?: string;
+  bestYearPairs?: string[];
+  tags?: string[];
+};
+
+export type UniverseFeatured = {
+  version: string;
+  notes: string;
+  anchors: UniverseEntry[];
+  stories: UniverseEntry[];
+};
