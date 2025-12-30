@@ -42,6 +42,7 @@ export const copy = {
 
   nav: {
     home: "Home",
+    companies: "Companies",
     company: "Company",
     methodology: "Methodology",
     dataQuality: "Data Quality",
@@ -49,6 +50,7 @@ export const copy = {
 
   buttons: {
     exploreFeatured: "Explore a featured company",
+    browseCompanies: "Browse companies",
     startTour: "Start tour",
     resetSelection: "Reset selection",
     details: "Details",
@@ -74,6 +76,36 @@ export const copy = {
     exampleText:
       "NVDA: a 2021 spike pairs with pandemic-era terms in Item 1A. Use it as a prompt to read, not a verdict.",
     exampleLink: "Open NVDA",
+  },
+
+  companies: {
+    title: "Company directory",
+    coverageLine: "{n} companies, up to {target} years each.",
+    searchPlaceholder: "Search ticker or name",
+    searchAria: "Search companies",
+    coverageFilterAria: "Filter by coverage",
+    qualityFilterAria: "Filter by data quality",
+    sortAria: "Sort companies",
+    filters: {
+      coverageAll: "Coverage: all",
+      coverageGe7: "Coverage: 7+ years",
+      coverageGe9: "Coverage: 9+ years",
+      qualityAll: "Quality: all",
+      qualityHigh: "Quality: high",
+      qualityHighMed: "Quality: high + medium",
+    },
+    sort: {
+      featured: "Sort: featured",
+      az: "Sort: A-Z",
+      peakDrift: "Sort: peak drift",
+      coverage: "Sort: coverage",
+    },
+    featuredTitle: "Featured cases",
+    featuredChip: "Featured",
+    compareYearsLabel: "Compare {from}-{to}",
+    resultsCount: "{n} results",
+    peakDriftLabel: "Peak drift {from}-{to}: {v}",
+    jumpBiggestShift: "Jump to biggest shift",
   },
 
   company: {

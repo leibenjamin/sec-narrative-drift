@@ -1,6 +1,7 @@
 import { copy } from "./copy"
 import type {
   Excerpts,
+  CompanyIndex,
   FilingRow,
   Meta,
   Metrics,
@@ -9,6 +10,7 @@ import type {
 } from "./types"
 
 const BASE_PATH = `${import.meta.env.BASE_URL}data/sec_narrative_drift`
+const INDEX_PATH = `${BASE_PATH}/index.json`
 const FEATURED_TICKERS = ["AAPL", "NVDA", "TSLA"]
 
 export class DataLoadError extends Error {
@@ -49,6 +51,17 @@ async function fetchJson<T>(url: string, userMessage: string): Promise<T> {
 
 export function listFeaturedTickers(): string[] {
   return [...FEATURED_TICKERS]
+}
+
+export function listFeaturedTickersFromIndex(index: CompanyIndex): string[] {
+  const featured = index.companies
+    .filter((company) => !!company.featuredCase)
+    .map((company) => company.ticker)
+  return featured.length ? featured.slice(0, 12) : [...FEATURED_TICKERS]
+}
+
+export async function loadCompanyIndex(): Promise<CompanyIndex> {
+  return fetchJson<CompanyIndex>(INDEX_PATH, copy.global.errors.missingDataset)
 }
 
 export async function loadCompanyMeta(ticker: string): Promise<Meta> {

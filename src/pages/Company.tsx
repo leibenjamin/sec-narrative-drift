@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react"
-import { Link, useParams } from "react-router-dom"
+import { Link, useParams, useSearchParams } from "react-router-dom"
 import ComparePane from "../components/ComparePane"
 import DataProvenanceDrawer from "../components/DataProvenanceDrawer"
 import DriftTimeline from "../components/DriftTimeline"
@@ -56,8 +56,21 @@ function buildPairKey(fromYear: number, toYear: number): string {
   return `${fromYear}-${toYear}`
 }
 
+function parseYearParam(value: string | null): number | null {
+  if (!value) return null
+  const parsed = Number(value)
+  if (!Number.isFinite(parsed)) return null
+  return Math.trunc(parsed)
+}
+
+function hasYearPair(shifts: ShiftPairs | null, fromYear: number, toYear: number): boolean {
+  if (!shifts?.yearPairs?.length) return false
+  return shifts.yearPairs.some((pair) => pair.from === fromYear && pair.to === toYear)
+}
+
 export default function Company() {
   const params = useParams()
+  const [searchParams, setSearchParams] = useSearchParams()
   const fallbackTicker = listFeaturedTickers()[0] ?? "AAPL"
   const ticker = (params.ticker ?? fallbackTicker).toUpperCase()
 
@@ -79,6 +92,7 @@ export default function Company() {
   const [termLens, setTermLens] = useState<TermLens>("primary")
   const [isDataQualityOpen, setIsDataQualityOpen] = useState(false)
   const [isTourOpen, setIsTourOpen] = useState(false)
+  const [shouldScrollToEvidence, setShouldScrollToEvidence] = useState(false)
   const execBriefRef = useRef<SVGSVGElement | null>(null)
 
   useEffect(() => {
@@ -184,6 +198,37 @@ export default function Company() {
     }
   }, [hasAltShiftLists, termLens])
 
+  useEffect(() => {
+    if (!similarity && !shifts) return
+    const queryFrom = parseYearParam(searchParams.get("from"))
+    const queryTo = parseYearParam(searchParams.get("to"))
+    if (queryFrom === null || queryTo === null || queryFrom === queryTo) return
+
+    const ordered =
+      queryFrom <= queryTo ? { from: queryFrom, to: queryTo } : { from: queryTo, to: queryFrom }
+    const inShifts = hasYearPair(shifts, ordered.from, ordered.to)
+    const years = similarity?.years ?? []
+    const inYears = years.includes(ordered.from) && years.includes(ordered.to)
+    if (!inShifts && !inYears) return
+    if (selectedPair && selectedPair.from === ordered.from && selectedPair.to === ordered.to) {
+      return
+    }
+
+    setSelectedPair(ordered)
+    setSelectedTerm(null)
+    setActiveCell(getHeatmapCell(years, ordered.from, ordered.to))
+    setShouldScrollToEvidence(true)
+  }, [searchParams, selectedPair, shifts, similarity])
+
+  useEffect(() => {
+    if (!shouldScrollToEvidence || !selectedPair) return
+    const target = document.getElementById("evidence")
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth", block: "start" })
+    }
+    setShouldScrollToEvidence(false)
+  }, [shouldScrollToEvidence, selectedPair])
+
   const activeShiftLists = useMemo(() => {
     if (!selectedShiftPair) {
       return { risers: [], fallers: [], summary: "" }
@@ -207,7 +252,8 @@ export default function Company() {
       fromYear <= toYear ? { from: fromYear, to: toYear } : { from: toYear, to: fromYear }
     setSelectedPair(ordered)
     setSelectedTerm(null)
-    setActiveCell(getHeatmapCell(similarity?.years ?? [], fromYear, toYear))
+    setActiveCell(getHeatmapCell(similarity?.years ?? [], ordered.from, ordered.to))
+    setSearchParams({ from: String(ordered.from), to: String(ordered.to) })
   }
 
   const highlightTerms = useMemo(() => {

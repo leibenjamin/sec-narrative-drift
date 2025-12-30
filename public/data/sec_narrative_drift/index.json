@@ -1,0 +1,129 @@
+{
+  "version": 1,
+  "generatedAtUtc": "2025-12-30T01:35:33Z",
+  "section": "10k_item1a",
+  "lookbackTargetYears": 10,
+  "companyCount": 3,
+  "companies": [
+    {
+      "ticker": "AAPL",
+      "companyName": "Apple Inc.",
+      "cik": "0000320193",
+      "exchange": "Nasdaq",
+      "coverage": {
+        "years": [
+          2022,
+          2023,
+          2024
+        ],
+        "count": 3,
+        "minYear": 2022,
+        "maxYear": 2024
+      },
+      "quality": {
+        "level": "low",
+        "minConfidence": 0.85,
+        "medianConfidence": 0.85,
+        "notes": []
+      },
+      "metricsSummary": {
+        "peakDrift": {
+          "from": 2023,
+          "to": 2024,
+          "value": 0.83
+        },
+        "latestDrift": {
+          "from": 2023,
+          "to": 2024,
+          "value": 0.83
+        }
+      },
+      "autoPair": {
+        "from": 2023,
+        "to": 2024
+      }
+    },
+    {
+      "ticker": "NVDA",
+      "companyName": "NVDA",
+      "cik": "0001045810",
+      "coverage": {
+        "years": [
+          2020,
+          2021,
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "count": 6,
+        "minYear": 2020,
+        "maxYear": 2025
+      },
+      "quality": {
+        "level": "low",
+        "minConfidence": 0.85,
+        "medianConfidence": 0.85,
+        "notes": []
+      },
+      "metricsSummary": {
+        "peakDrift": {
+          "from": 2020,
+          "to": 2021,
+          "value": 0.09
+        },
+        "latestDrift": {
+          "from": 2024,
+          "to": 2025,
+          "value": 0.01
+        }
+      },
+      "autoPair": {
+        "from": 2020,
+        "to": 2021
+      }
+    },
+    {
+      "ticker": "TSLA",
+      "companyName": "TSLA",
+      "cik": "0001318605",
+      "coverage": {
+        "years": [
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "count": 8,
+        "minYear": 2017,
+        "maxYear": 2024
+      },
+      "quality": {
+        "level": "low",
+        "minConfidence": 0.3,
+        "medianConfidence": 0.575,
+        "notes": []
+      },
+      "metricsSummary": {
+        "peakDrift": {
+          "from": 2021,
+          "to": 2022,
+          "value": 0.02
+        },
+        "latestDrift": {
+          "from": 2023,
+          "to": 2024,
+          "value": 0.01
+        }
+      },
+      "autoPair": {
+        "from": 2021,
+        "to": 2022
+      }
+    }
+  ]
+}
