@@ -1,10 +1,14 @@
 import argparse
 import json
+import os
 import subprocess
 import sys
 import time
+from urllib.parse import urlparse
 from pathlib import Path
 from typing import Any, Optional, cast
+
+import requests
 
 
 ROOT_DIR = Path(__file__).resolve().parent
@@ -12,6 +16,63 @@ REPO_ROOT = ROOT_DIR.parent
 DATA_DIR = REPO_ROOT / "public" / "data" / "sec_narrative_drift"
 UNIVERSE_PATH = ROOT_DIR / "universe_featured.json"
 CACHE_DIR = ROOT_DIR / "_cache"
+DEFAULT_SUBMISSIONS_ZIP = CACHE_DIR / "submissions.zip"
+SEC_SUBMISSIONS_ZIP_URL = "https://www.sec.gov/Archives/edgar/daily-index/bulkdata/submissions.zip"
+MAX_REQUESTS_PER_SECOND = 10
+
+
+class RateLimiter:
+    def __init__(self, max_requests_per_second: float) -> None:
+        self.min_interval = 1.0 / max_requests_per_second
+        self.last_time = 0.0
+
+    def wait(self) -> None:
+        now = time.monotonic()
+        wait_for = self.min_interval - (now - self.last_time)
+        if wait_for > 0:
+            time.sleep(wait_for)
+        self.last_time = time.monotonic()
+
+
+def get_user_agent() -> str:
+    user_agent = os.environ.get("SEC_USER_AGENT")
+    if not user_agent:
+        raise RuntimeError("SEC_USER_AGENT env var is required for live SEC requests.")
+    return user_agent
+
+
+def build_headers(url: str) -> dict[str, str]:
+    host = urlparse(url).hostname or ""
+    return {
+        "User-Agent": get_user_agent(),
+        "Accept-Encoding": "gzip, deflate, br",
+        "Host": host,
+    }
+
+
+def download_to_file(
+    url: str, session: requests.Session, limiter: RateLimiter, path: Path
+) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    last_response: Optional[requests.Response] = None
+    for attempt in range(5):
+        limiter.wait()
+        response = session.get(url, headers=build_headers(url), timeout=60, stream=True)
+        last_response = response
+        if response.status_code in {403, 429}:
+            backoff = min(2 ** attempt, 8)
+            time.sleep(backoff)
+            continue
+        response.raise_for_status()
+        with path.open("wb") as handle:
+            for chunk in response.iter_content(chunk_size=1024 * 1024):
+                if chunk:
+                    handle.write(chunk)
+        return
+
+    if last_response is not None:
+        last_response.raise_for_status()
+    raise RuntimeError(f"Failed to download {url}")
 
 
 def read_json(path: Path) -> Any:
@@ -99,6 +160,16 @@ def build_parser() -> argparse.ArgumentParser:
         help="Sleep between tickers (default: 250ms).",
     )
     parser.add_argument(
+        "--submissions-zip",
+        default=None,
+        help="Path to submissions.zip (bulk submissions archive).",
+    )
+    parser.add_argument(
+        "--download-submissions-zip",
+        action="store_true",
+        help="Download latest submissions.zip to cache (or --submissions-zip path).",
+    )
+    parser.add_argument(
         "--include-20f",
         action="store_true",
         help="Include 20-F filings when available.",
@@ -128,6 +199,24 @@ def main(argv: Optional[list[str]] = None) -> int:
     log_path = CACHE_DIR / "build_universe.log"
     append_log(log_path, f"Start build: {time.strftime('%Y-%m-%d %H:%M:%S')}")
 
+    submissions_zip: Optional[Path] = None
+    if args.submissions_zip:
+        submissions_zip = Path(args.submissions_zip)
+    if args.download_submissions_zip:
+        target = submissions_zip or DEFAULT_SUBMISSIONS_ZIP
+        session = requests.Session()
+        limiter = RateLimiter(MAX_REQUESTS_PER_SECOND)
+        append_log(log_path, f"Downloading submissions.zip to {target}")
+        download_to_file(SEC_SUBMISSIONS_ZIP_URL, session, limiter, target)
+        submissions_zip = target
+    if submissions_zip is not None and not submissions_zip.exists():
+        append_log(
+            log_path,
+            f"warning: submissions zip not found at {submissions_zip}; "
+            "falling back to live submissions API",
+        )
+        submissions_zip = None
+
     for ticker in tickers:
         if not started:
             if ticker == start_at:
@@ -148,6 +237,8 @@ def main(argv: Optional[list[str]] = None) -> int:
         ]
         if args.include_20f:
             cmd.append("--include-20f")
+        if submissions_zip is not None:
+            cmd.extend(["--submissions-zip", str(submissions_zip)])
 
         append_log(log_path, f"[{ticker}] start")
         result = subprocess.run(cmd, capture_output=True, text=True, check=False)
