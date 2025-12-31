@@ -1,0 +1,27 @@
+{
+  "ticker": "ADM",
+  "cik": "0000007084",
+  "companyName": "Archer-Daniels-Midland Co",
+  "lastUpdatedUtc": "2025-12-31T05:08:18Z",
+  "formsIncluded": [
+    "10-K"
+  ],
+  "sectionsIncluded": [
+    "10k_item1a"
+  ],
+  "notes": [
+    "Ticker/CIK mapping is SEC-provided and may be incomplete or outdated.",
+    "Narrative Drift is descriptive; causal explanations are hypotheses."
+  ],
+  "extraction": {
+    "section": "item1a",
+    "method": "text_scored",
+    "confidence": 0.95,
+    "warnings": [
+      "anchor_missing"
+    ],
+    "lengthChars": 30419,
+    "endMarkerUsed": "1B",
+    "hasItem1C": false
+  }
+}

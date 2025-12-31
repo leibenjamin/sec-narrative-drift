@@ -1,0 +1,168 @@
+[
+  {
+    "year": 2015,
+    "form": "10-K",
+    "filingDate": "2016-02-29",
+    "reportDate": "2015-12-31",
+    "accessionNumber": "0001193125-16-483023",
+    "primaryDocument": "d103603d10k.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/1067983/000119312516483023/d103603d10k.htm",
+    "extraction": {
+      "confidence": 0.8999999999999999,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing"
+      ]
+    }
+  },
+  {
+    "year": 2016,
+    "form": "10-K",
+    "filingDate": "2017-02-27",
+    "reportDate": "2016-12-31",
+    "accessionNumber": "0001193125-17-056969",
+    "primaryDocument": "d303001d10k.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/1067983/000119312517056969/d303001d10k.htm",
+    "extraction": {
+      "confidence": 0.8999999999999999,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing"
+      ]
+    }
+  },
+  {
+    "year": 2017,
+    "form": "10-K",
+    "filingDate": "2018-02-26",
+    "reportDate": "2017-12-31",
+    "accessionNumber": "0001193125-18-057033",
+    "primaryDocument": "d437858d10k.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/1067983/000119312518057033/d437858d10k.htm",
+    "extraction": {
+      "confidence": 0.8999999999999999,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing"
+      ]
+    }
+  },
+  {
+    "year": 2018,
+    "form": "10-K",
+    "filingDate": "2019-02-25",
+    "reportDate": "2018-12-31",
+    "accessionNumber": "0001193125-19-048926",
+    "primaryDocument": "d678758d10k.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/1067983/000119312519048926/d678758d10k.htm",
+    "extraction": {
+      "confidence": 0.8999999999999999,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing"
+      ]
+    }
+  },
+  {
+    "year": 2019,
+    "form": "10-K",
+    "filingDate": "2020-02-24",
+    "reportDate": "2019-12-31",
+    "accessionNumber": "0001564590-20-005874",
+    "primaryDocument": "brka-10k_20191231.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/1067983/000156459020005874/brka-10k_20191231.htm",
+    "extraction": {
+      "confidence": 0.8999999999999999,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing"
+      ]
+    }
+  },
+  {
+    "year": 2020,
+    "form": "10-K",
+    "filingDate": "2021-03-01",
+    "reportDate": "2020-12-31",
+    "accessionNumber": "0001564590-21-009611",
+    "primaryDocument": "brka-10k_20201231.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/1067983/000156459021009611/brka-10k_20201231.htm",
+    "extraction": {
+      "confidence": 0.8999999999999999,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing"
+      ]
+    }
+  },
+  {
+    "year": 2021,
+    "form": "10-K",
+    "filingDate": "2022-02-28",
+    "reportDate": "2021-12-31",
+    "accessionNumber": "0001564590-22-007322",
+    "primaryDocument": "brka-10k_20211231.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/1067983/000156459022007322/brka-10k_20211231.htm",
+    "extraction": {
+      "confidence": 0.8999999999999999,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing"
+      ]
+    }
+  },
+  {
+    "year": 2022,
+    "form": "10-K",
+    "filingDate": "2023-02-27",
+    "reportDate": "2022-12-31",
+    "accessionNumber": "0000950170-23-004451",
+    "primaryDocument": "brka-20221231.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/1067983/000095017023004451/brka-20221231.htm",
+    "extraction": {
+      "confidence": 0.25,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing",
+        "length_out_of_band",
+        "low_confidence_item1a"
+      ]
+    }
+  },
+  {
+    "year": 2023,
+    "form": "10-K",
+    "filingDate": "2024-02-26",
+    "reportDate": "2023-12-31",
+    "accessionNumber": "0000950170-24-019719",
+    "primaryDocument": "brka-20231231.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/1067983/000095017024019719/brka-20231231.htm",
+    "extraction": {
+      "confidence": 0.25,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing",
+        "length_out_of_band",
+        "low_confidence_item1a"
+      ]
+    }
+  },
+  {
+    "year": 2024,
+    "form": "10-K",
+    "filingDate": "2025-02-24",
+    "reportDate": "2024-12-31",
+    "accessionNumber": "0000950170-25-025210",
+    "primaryDocument": "brka-20241231.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/1067983/000095017025025210/brka-20241231.htm",
+    "extraction": {
+      "confidence": 0.25,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing",
+        "length_out_of_band",
+        "low_confidence_item1a"
+      ]
+    }
+  }
+]

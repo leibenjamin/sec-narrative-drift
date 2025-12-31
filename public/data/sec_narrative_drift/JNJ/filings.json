@@ -1,0 +1,114 @@
+[
+  {
+    "year": 2017,
+    "form": "10-K",
+    "filingDate": "2018-02-21",
+    "reportDate": "2017-12-31",
+    "accessionNumber": "0000200406-18-000005",
+    "primaryDocument": "form10-k20171231.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/200406/000020040618000005/form10-k20171231.htm",
+    "extraction": {
+      "confidence": 0.8999999999999999,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing"
+      ]
+    }
+  },
+  {
+    "year": 2018,
+    "form": "10-K",
+    "filingDate": "2019-02-20",
+    "reportDate": "2018-12-30",
+    "accessionNumber": "0000200406-19-000009",
+    "primaryDocument": "form10-k20181230.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/200406/000020040619000009/form10-k20181230.htm",
+    "extraction": {
+      "confidence": 0.8999999999999999,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing"
+      ]
+    }
+  },
+  {
+    "year": 2019,
+    "form": "10-K",
+    "filingDate": "2020-02-18",
+    "reportDate": "2019-12-29",
+    "accessionNumber": "0000200406-20-000010",
+    "primaryDocument": "form10-k20191229.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/200406/000020040620000010/form10-k20191229.htm",
+    "extraction": {
+      "confidence": 0.95,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing"
+      ]
+    }
+  },
+  {
+    "year": 2021,
+    "form": "10-K",
+    "filingDate": "2021-02-22",
+    "reportDate": "2021-01-03",
+    "accessionNumber": "0000200406-21-000008",
+    "primaryDocument": "jnj-20210103.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/200406/000020040621000008/jnj-20210103.htm",
+    "extraction": {
+      "confidence": 0.95,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing"
+      ]
+    }
+  },
+  {
+    "year": 2022,
+    "form": "10-K",
+    "filingDate": "2022-02-17",
+    "reportDate": "2022-01-02",
+    "accessionNumber": "0000200406-22-000022",
+    "primaryDocument": "jnj-20220102.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/200406/000020040622000022/jnj-20220102.htm",
+    "extraction": {
+      "confidence": 0.95,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing"
+      ]
+    }
+  },
+  {
+    "year": 2023,
+    "form": "10-K",
+    "filingDate": "2024-02-16",
+    "reportDate": "2023-12-31",
+    "accessionNumber": "0000200406-24-000013",
+    "primaryDocument": "jnj-20231231.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/200406/000020040624000013/jnj-20231231.htm",
+    "extraction": {
+      "confidence": 0.8999999999999999,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing"
+      ]
+    }
+  },
+  {
+    "year": 2024,
+    "form": "10-K",
+    "filingDate": "2025-02-13",
+    "reportDate": "2024-12-29",
+    "accessionNumber": "0000200406-25-000038",
+    "primaryDocument": "jnj-20241229.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/200406/000020040625000038/jnj-20241229.htm",
+    "extraction": {
+      "confidence": 0.95,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing"
+      ]
+    }
+  }
+]

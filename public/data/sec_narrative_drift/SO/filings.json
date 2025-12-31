@@ -1,0 +1,82 @@
+[
+  {
+    "year": 2020,
+    "form": "10-K",
+    "filingDate": "2021-02-18",
+    "reportDate": "2020-12-31",
+    "accessionNumber": "0000092122-21-000006",
+    "primaryDocument": "so-20201231.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/92122/000009212221000006/so-20201231.htm",
+    "extraction": {
+      "confidence": 0.95,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing"
+      ]
+    }
+  },
+  {
+    "year": 2021,
+    "form": "10-K",
+    "filingDate": "2022-02-17",
+    "reportDate": "2021-12-31",
+    "accessionNumber": "0000092122-22-000003",
+    "primaryDocument": "so-20211231.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/92122/000009212222000003/so-20211231.htm",
+    "extraction": {
+      "confidence": 0.95,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing"
+      ]
+    }
+  },
+  {
+    "year": 2022,
+    "form": "10-K",
+    "filingDate": "2023-02-16",
+    "reportDate": "2022-12-31",
+    "accessionNumber": "0000092122-23-000012",
+    "primaryDocument": "so-20221231.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/92122/000009212223000012/so-20221231.htm",
+    "extraction": {
+      "confidence": 0.95,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing"
+      ]
+    }
+  },
+  {
+    "year": 2023,
+    "form": "10-K",
+    "filingDate": "2024-02-15",
+    "reportDate": "2023-12-31",
+    "accessionNumber": "0000092122-24-000009",
+    "primaryDocument": "so-20231231.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/92122/000009212224000009/so-20231231.htm",
+    "extraction": {
+      "confidence": 0.95,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing"
+      ]
+    }
+  },
+  {
+    "year": 2024,
+    "form": "10-K",
+    "filingDate": "2025-02-20",
+    "reportDate": "2024-12-31",
+    "accessionNumber": "0000092122-25-000018",
+    "primaryDocument": "so-20241231.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/92122/000009212225000018/so-20241231.htm",
+    "extraction": {
+      "confidence": 0.95,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing"
+      ]
+    }
+  }
+]

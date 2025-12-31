@@ -1,0 +1,30 @@
+{
+  "ticker": "CLX",
+  "cik": "0000021076",
+  "companyName": "CLOROX CO /DE/",
+  "lastUpdatedUtc": "2025-12-31T05:07:47Z",
+  "formsIncluded": [
+    "10-K"
+  ],
+  "sectionsIncluded": [
+    "10k_item1a"
+  ],
+  "notes": [
+    "Ticker/CIK mapping is SEC-provided and may be incomplete or outdated.",
+    "Narrative Drift is descriptive; causal explanations are hypotheses."
+  ],
+  "extraction": {
+    "section": "item1a",
+    "method": "text_scored",
+    "confidence": 0.1,
+    "warnings": [
+      "anchor_missing",
+      "length_out_of_band",
+      "early_position_penalty",
+      "low_confidence_item1a"
+    ],
+    "lengthChars": 61,
+    "endMarkerUsed": "2",
+    "hasItem1C": false
+  }
+}

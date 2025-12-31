@@ -1,0 +1,128 @@
+[
+  {
+    "year": 2017,
+    "form": "10-K",
+    "filingDate": "2018-02-20",
+    "reportDate": "2017-12-31",
+    "accessionNumber": "0001193125-18-049729",
+    "primaryDocument": "d534096d10k.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/1163165/000119312518049729/d534096d10k.htm",
+    "extraction": {
+      "confidence": 0.8999999999999999,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing"
+      ]
+    }
+  },
+  {
+    "year": 2018,
+    "form": "10-K",
+    "filingDate": "2019-02-19",
+    "reportDate": "2018-12-31",
+    "accessionNumber": "0001193125-19-043841",
+    "primaryDocument": "d636257d10k.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/1163165/000119312519043841/d636257d10k.htm",
+    "extraction": {
+      "confidence": 0.8999999999999999,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing"
+      ]
+    }
+  },
+  {
+    "year": 2019,
+    "form": "10-K",
+    "filingDate": "2020-02-18",
+    "reportDate": "2019-12-31",
+    "accessionNumber": "0001193125-20-039954",
+    "primaryDocument": "d875559d10k.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/1163165/000119312520039954/d875559d10k.htm",
+    "extraction": {
+      "confidence": 0.95,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing"
+      ]
+    }
+  },
+  {
+    "year": 2020,
+    "form": "10-K",
+    "filingDate": "2021-02-16",
+    "reportDate": "2020-12-31",
+    "accessionNumber": "0001562762-21-000027",
+    "primaryDocument": "cop10k2020.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/1163165/000156276221000027/cop10k2020.htm",
+    "extraction": {
+      "confidence": 0.95,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing"
+      ]
+    }
+  },
+  {
+    "year": 2021,
+    "form": "10-K",
+    "filingDate": "2022-02-17",
+    "reportDate": "2021-12-31",
+    "accessionNumber": "0001562762-22-000031",
+    "primaryDocument": "cop10k2021.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/1163165/000156276222000031/cop10k2021.htm",
+    "extraction": {
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
+    }
+  },
+  {
+    "year": 2022,
+    "form": "10-K",
+    "filingDate": "2023-02-16",
+    "reportDate": "2022-12-31",
+    "accessionNumber": "0001163165-23-000006",
+    "primaryDocument": "cop-20221231.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/1163165/000116316523000006/cop-20221231.htm",
+    "extraction": {
+      "confidence": 0.7,
+      "method": "html_anchor",
+      "errors": [
+        "end_not_found"
+      ]
+    }
+  },
+  {
+    "year": 2023,
+    "form": "10-K",
+    "filingDate": "2024-02-15",
+    "reportDate": "2023-12-31",
+    "accessionNumber": "0001163165-24-000010",
+    "primaryDocument": "cop-20231231.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/1163165/000116316524000010/cop-20231231.htm",
+    "extraction": {
+      "confidence": 0.7,
+      "method": "html_anchor",
+      "errors": [
+        "end_not_found"
+      ]
+    }
+  },
+  {
+    "year": 2024,
+    "form": "10-K",
+    "filingDate": "2025-02-18",
+    "reportDate": "2024-12-31",
+    "accessionNumber": "0001163165-25-000012",
+    "primaryDocument": "cop-20241231.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/1163165/000116316525000012/cop-20241231.htm",
+    "extraction": {
+      "confidence": 0.7,
+      "method": "html_anchor",
+      "errors": [
+        "end_not_found"
+      ]
+    }
+  }
+]

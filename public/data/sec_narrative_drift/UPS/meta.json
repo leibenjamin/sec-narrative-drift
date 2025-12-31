@@ -1,0 +1,27 @@
+{
+  "ticker": "UPS",
+  "cik": "0001090727",
+  "companyName": "UNITED PARCEL SERVICE INC",
+  "lastUpdatedUtc": "2025-12-31T05:04:12Z",
+  "formsIncluded": [
+    "10-K"
+  ],
+  "sectionsIncluded": [
+    "10k_item1a"
+  ],
+  "notes": [
+    "Ticker/CIK mapping is SEC-provided and may be incomplete or outdated.",
+    "Narrative Drift is descriptive; causal explanations are hypotheses."
+  ],
+  "extraction": {
+    "section": "item1a",
+    "method": "text_scored",
+    "confidence": 0.8999999999999999,
+    "warnings": [
+      "anchor_missing"
+    ],
+    "lengthChars": 26050,
+    "endMarkerUsed": "1B",
+    "hasItem1C": false
+  }
+}
