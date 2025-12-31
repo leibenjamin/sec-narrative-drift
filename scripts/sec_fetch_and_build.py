@@ -917,7 +917,7 @@ def main(argv: Optional[list[str]] = None) -> int:
         seen_years.add(year)
 
         filing_cik = filing.get("cik", primary_cik)
-        if not isinstance(filing_cik, str) or not filing_cik:
+        if not filing_cik:
             filing_cik = primary_cik
         accession = filing["accessionNumber"]
         primary_doc = filing["primaryDocument"]
@@ -1030,7 +1030,7 @@ def main(argv: Optional[list[str]] = None) -> int:
     forms_included = build_forms_included(filings_out)
     meta_payload: dict[str, Any] = {
         "ticker": ticker,
-        "cik": cik10,
+        "cik": primary_cik,
         "companyName": company_name,
         "lastUpdatedUtc": datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace(
             "+00:00", "Z"
