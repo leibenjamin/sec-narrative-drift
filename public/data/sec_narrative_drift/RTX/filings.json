@@ -1,0 +1,150 @@
+[
+  {
+    "year": 2016,
+    "form": "10-K",
+    "filingDate": "2017-02-09",
+    "reportDate": "2016-12-31",
+    "accessionNumber": "0000101829-17-000007",
+    "primaryDocument": "a2016-12x31form10xk.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/101829/000010182917000007/a2016-12x31form10xk.htm",
+    "extraction": {
+      "confidence": 0.65,
+      "method": "html_anchor",
+      "errors": [
+        "length_out_of_band",
+        "early_position_penalty"
+      ]
+    }
+  },
+  {
+    "year": 2017,
+    "form": "10-K",
+    "filingDate": "2018-02-09",
+    "reportDate": "2017-12-31",
+    "accessionNumber": "0000101829-18-000005",
+    "primaryDocument": "a2017-12x31form10xk.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/101829/000010182918000005/a2017-12x31form10xk.htm",
+    "extraction": {
+      "confidence": 0.65,
+      "method": "html_anchor",
+      "errors": [
+        "length_out_of_band",
+        "early_position_penalty"
+      ]
+    }
+  },
+  {
+    "year": 2018,
+    "form": "10-K",
+    "filingDate": "2019-02-07",
+    "reportDate": "2018-12-31",
+    "accessionNumber": "0000101829-19-000007",
+    "primaryDocument": "a2018-12x31form10xk.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/101829/000010182919000007/a2018-12x31form10xk.htm",
+    "extraction": {
+      "confidence": 0.65,
+      "method": "html_anchor",
+      "errors": [
+        "length_out_of_band",
+        "early_position_penalty"
+      ]
+    }
+  },
+  {
+    "year": 2019,
+    "form": "10-K",
+    "filingDate": "2020-02-06",
+    "reportDate": "2019-12-31",
+    "accessionNumber": "0000101829-20-000013",
+    "primaryDocument": "utx-20191231_d2.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/101829/000010182920000013/utx-20191231_d2.htm",
+    "extraction": {
+      "confidence": 0.65,
+      "method": "html_anchor",
+      "errors": [
+        "length_out_of_band",
+        "early_position_penalty"
+      ]
+    }
+  },
+  {
+    "year": 2020,
+    "form": "10-K",
+    "filingDate": "2021-02-08",
+    "reportDate": "2020-12-31",
+    "accessionNumber": "0000101829-21-000008",
+    "primaryDocument": "rtx-20201231.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/101829/000010182921000008/rtx-20201231.htm",
+    "extraction": {
+      "confidence": 0.95,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing"
+      ]
+    }
+  },
+  {
+    "year": 2021,
+    "form": "10-K",
+    "filingDate": "2022-02-11",
+    "reportDate": "2021-12-31",
+    "accessionNumber": "0000101829-22-000005",
+    "primaryDocument": "rtx-20211231.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/101829/000010182922000005/rtx-20211231.htm",
+    "extraction": {
+      "confidence": 0.95,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing"
+      ]
+    }
+  },
+  {
+    "year": 2022,
+    "form": "10-K",
+    "filingDate": "2023-02-07",
+    "reportDate": "2022-12-31",
+    "accessionNumber": "0000101829-23-000009",
+    "primaryDocument": "rtx-20221231.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/101829/000010182923000009/rtx-20221231.htm",
+    "extraction": {
+      "confidence": 0.95,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing"
+      ]
+    }
+  },
+  {
+    "year": 2023,
+    "form": "10-K",
+    "filingDate": "2024-02-05",
+    "reportDate": "2023-12-31",
+    "accessionNumber": "0000101829-24-000008",
+    "primaryDocument": "rtx-20231231.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/101829/000010182924000008/rtx-20231231.htm",
+    "extraction": {
+      "confidence": 0.95,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing"
+      ]
+    }
+  },
+  {
+    "year": 2024,
+    "form": "10-K",
+    "filingDate": "2025-02-03",
+    "reportDate": "2024-12-31",
+    "accessionNumber": "0000101829-25-000005",
+    "primaryDocument": "rtx-20241231.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/101829/000010182925000005/rtx-20241231.htm",
+    "extraction": {
+      "confidence": 0.95,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing"
+      ]
+    }
+  }
+]

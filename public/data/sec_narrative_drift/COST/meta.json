@@ -1,0 +1,28 @@
+{
+  "ticker": "COST",
+  "cik": "0000909832",
+  "companyName": "COSTCO WHOLESALE CORP /NEW",
+  "lastUpdatedUtc": "2025-12-31T04:57:23Z",
+  "formsIncluded": [
+    "10-K"
+  ],
+  "sectionsIncluded": [
+    "10k_item1a"
+  ],
+  "notes": [
+    "Ticker/CIK mapping is SEC-provided and may be incomplete or outdated.",
+    "Narrative Drift is descriptive; causal explanations are hypotheses."
+  ],
+  "extraction": {
+    "section": "item1a",
+    "method": "html_anchor",
+    "confidence": 0.65,
+    "warnings": [
+      "early_position_penalty",
+      "toc_cluster_penalty"
+    ],
+    "lengthChars": 51506,
+    "endMarkerUsed": "1B",
+    "hasItem1C": false
+  }
+}

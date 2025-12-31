@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generatedAtUtc": "2025-12-30T01:35:33Z",
+  "generatedAtUtc": "2025-12-31T05:12:49Z",
   "section": "10k_item1a",
   "lookbackTargetYears": 10,
-  "companyCount": 3,
+  "companyCount": 56,
   "companies": [
     {
       "ticker": "AAPL",
@@ -22,20 +22,195 @@
       },
       "quality": {
         "level": "low",
-        "minConfidence": 0.85,
-        "medianConfidence": 0.85,
+        "minConfidence": 0.9,
+        "medianConfidence": 0.9,
+        "notes": []
+      },
+      "metricsSummary": {
+        "peakDrift": {
+          "from": 2022,
+          "to": 2023,
+          "value": 0.0
+        },
+        "latestDrift": {
+          "from": 2023,
+          "to": 2024,
+          "value": 0.0
+        }
+      },
+      "autoPair": {
+        "from": 2022,
+        "to": 2023
+      }
+    },
+    {
+      "ticker": "ABBV",
+      "companyName": "AbbVie Inc.",
+      "cik": "0001551152",
+      "coverage": {
+        "years": [
+          2016,
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "count": 9,
+        "minYear": 2016,
+        "maxYear": 2024
+      },
+      "quality": {
+        "level": "high",
+        "minConfidence": 0.9,
+        "medianConfidence": 0.9,
+        "notes": []
+      },
+      "metricsSummary": {
+        "peakDrift": {
+          "from": 2017,
+          "to": 2018,
+          "value": 0.01
+        },
+        "latestDrift": {
+          "from": 2023,
+          "to": 2024,
+          "value": 0.0
+        }
+      },
+      "autoPair": {
+        "from": 2017,
+        "to": 2018
+      }
+    },
+    {
+      "ticker": "ADM",
+      "companyName": "Archer-Daniels-Midland Co",
+      "cik": "0000007084",
+      "coverage": {
+        "years": [
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "count": 6,
+        "minYear": 2019,
+        "maxYear": 2024
+      },
+      "quality": {
+        "level": "low",
+        "minConfidence": 0.95,
+        "medianConfidence": 0.95,
+        "notes": []
+      },
+      "metricsSummary": {
+        "peakDrift": {
+          "from": 2022,
+          "to": 2023,
+          "value": 0.14
+        },
+        "latestDrift": {
+          "from": 2023,
+          "to": 2024,
+          "value": 0.13
+        }
+      },
+      "autoPair": {
+        "from": 2022,
+        "to": 2023
+      },
+      "featuredCase": {
+        "from": 2023,
+        "to": 2024,
+        "title": "Controls language tightens as investigations turn specific.",
+        "blurb": "Watch the shift from boilerplate controls to named weaknesses.",
+        "tags": [
+          "controls",
+          "investigations",
+          "governance"
+        ]
+      }
+    },
+    {
+      "ticker": "AMZN",
+      "companyName": "AMAZON COM INC",
+      "cik": "0001018724",
+      "coverage": {
+        "years": [
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "count": 6,
+        "minYear": 2019,
+        "maxYear": 2024
+      },
+      "quality": {
+        "level": "low",
+        "minConfidence": 0.9,
+        "medianConfidence": 0.9,
+        "notes": []
+      },
+      "metricsSummary": {
+        "peakDrift": {
+          "from": 2019,
+          "to": 2020,
+          "value": 0.01
+        },
+        "latestDrift": {
+          "from": 2023,
+          "to": 2024,
+          "value": 0.0
+        }
+      },
+      "autoPair": {
+        "from": 2019,
+        "to": 2020
+      }
+    },
+    {
+      "ticker": "BA",
+      "companyName": "BOEING CO",
+      "cik": "0000012927",
+      "coverage": {
+        "years": [
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "count": 7,
+        "minYear": 2018,
+        "maxYear": 2024
+      },
+      "quality": {
+        "level": "medium",
+        "minConfidence": 0.9,
+        "medianConfidence": 0.9,
         "notes": []
       },
       "metricsSummary": {
         "peakDrift": {
           "from": 2023,
           "to": 2024,
-          "value": 0.83
+          "value": 0.08
         },
         "latestDrift": {
           "from": 2023,
           "to": 2024,
-          "value": 0.83
+          "value": 0.08
         }
       },
       "autoPair": {
@@ -44,8 +219,1141 @@
       }
     },
     {
+      "ticker": "BAC",
+      "companyName": "BANK OF AMERICA CORP /DE/",
+      "cik": "0000070858",
+      "coverage": {
+        "years": [
+          2024
+        ],
+        "count": 1,
+        "minYear": 2024,
+        "maxYear": 2024
+      },
+      "quality": {
+        "level": "low",
+        "minConfidence": 0.9,
+        "medianConfidence": 0.9,
+        "notes": []
+      }
+    },
+    {
+      "ticker": "BLK",
+      "companyName": "BlackRock, Inc.",
+      "cik": "0002012383",
+      "coverage": {
+        "years": [
+          2024
+        ],
+        "count": 1,
+        "minYear": 2024,
+        "maxYear": 2024
+      },
+      "quality": {
+        "level": "low",
+        "minConfidence": 0.9,
+        "medianConfidence": 0.9,
+        "notes": []
+      }
+    },
+    {
+      "ticker": "BRK-B",
+      "companyName": "BERKSHIRE HATHAWAY INC",
+      "cik": "0001067983",
+      "coverage": {
+        "years": [
+          2015,
+          2016,
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "count": 10,
+        "minYear": 2015,
+        "maxYear": 2024
+      },
+      "quality": {
+        "level": "low",
+        "minConfidence": 0.25,
+        "medianConfidence": 0.9,
+        "notes": []
+      },
+      "metricsSummary": {
+        "peakDrift": {
+          "from": 2017,
+          "to": 2018,
+          "value": 0.04
+        },
+        "latestDrift": {
+          "from": 2020,
+          "to": 2021,
+          "value": 0.01
+        }
+      },
+      "autoPair": {
+        "from": 2017,
+        "to": 2018
+      }
+    },
+    {
+      "ticker": "CAT",
+      "companyName": "CATERPILLAR INC",
+      "cik": "0000018230",
+      "coverage": {
+        "years": [
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "count": 7,
+        "minYear": 2018,
+        "maxYear": 2024
+      },
+      "quality": {
+        "level": "medium",
+        "minConfidence": 0.75,
+        "medianConfidence": 0.9,
+        "notes": []
+      },
+      "metricsSummary": {
+        "peakDrift": {
+          "from": 2019,
+          "to": 2020,
+          "value": 0.01
+        },
+        "latestDrift": {
+          "from": 2023,
+          "to": 2024,
+          "value": 0.0
+        }
+      },
+      "autoPair": {
+        "from": 2019,
+        "to": 2020
+      }
+    },
+    {
+      "ticker": "CHGG",
+      "companyName": "CHEGG, INC",
+      "cik": "0001364954",
+      "coverage": {
+        "years": [
+          2015,
+          2016,
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "count": 10,
+        "minYear": 2015,
+        "maxYear": 2024
+      },
+      "quality": {
+        "level": "high",
+        "minConfidence": 0.9,
+        "medianConfidence": 0.9,
+        "notes": []
+      },
+      "metricsSummary": {
+        "peakDrift": {
+          "from": 2019,
+          "to": 2020,
+          "value": 0.06
+        },
+        "latestDrift": {
+          "from": 2023,
+          "to": 2024,
+          "value": 0.02
+        }
+      },
+      "autoPair": {
+        "from": 2019,
+        "to": 2020
+      },
+      "featuredCase": {
+        "from": 2022,
+        "to": 2024,
+        "title": "AI competition shifts from risk to existential narrative.",
+        "blurb": "Language tightens and the tone shifts from possibility to urgency.",
+        "tags": [
+          "genai",
+          "demand",
+          "platforms"
+        ]
+      }
+    },
+    {
+      "ticker": "CLX",
+      "companyName": "CLOROX CO /DE/",
+      "cik": "0000021076",
+      "coverage": {
+        "years": [
+          2016,
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "count": 10,
+        "minYear": 2016,
+        "maxYear": 2025
+      },
+      "quality": {
+        "level": "low",
+        "minConfidence": 0.1,
+        "medianConfidence": 0.25,
+        "notes": []
+      },
+      "featuredCase": {
+        "from": 2023,
+        "to": 2024,
+        "title": "When \"could happen\" becomes \"happened\": operational risk turns concrete.",
+        "blurb": "A cyber incident does more than add IT language. It rewrites the risk story.",
+        "tags": [
+          "cyber",
+          "operations"
+        ]
+      }
+    },
+    {
+      "ticker": "COP",
+      "companyName": "CONOCOPHILLIPS",
+      "cik": "0001163165",
+      "coverage": {
+        "years": [
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "count": 8,
+        "minYear": 2017,
+        "maxYear": 2024
+      },
+      "quality": {
+        "level": "medium",
+        "minConfidence": 0.7,
+        "medianConfidence": 0.9,
+        "notes": []
+      },
+      "metricsSummary": {
+        "peakDrift": {
+          "from": 2021,
+          "to": 2022,
+          "value": 0.54
+        },
+        "latestDrift": {
+          "from": 2023,
+          "to": 2024,
+          "value": 0.14
+        }
+      },
+      "autoPair": {
+        "from": 2021,
+        "to": 2022
+      }
+    },
+    {
+      "ticker": "COST",
+      "companyName": "COSTCO WHOLESALE CORP /NEW",
+      "cik": "0000909832",
+      "coverage": {
+        "years": [
+          2016,
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "count": 10,
+        "minYear": 2016,
+        "maxYear": 2025
+      },
+      "quality": {
+        "level": "low",
+        "minConfidence": 0.65,
+        "medianConfidence": 0.85,
+        "notes": []
+      },
+      "metricsSummary": {
+        "peakDrift": {
+          "from": 2024,
+          "to": 2025,
+          "value": 0.12
+        },
+        "latestDrift": {
+          "from": 2024,
+          "to": 2025,
+          "value": 0.12
+        }
+      },
+      "autoPair": {
+        "from": 2024,
+        "to": 2025
+      }
+    },
+    {
+      "ticker": "CVX",
+      "companyName": "CHEVRON CORP",
+      "cik": "0000093410",
+      "coverage": {
+        "years": [
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "count": 8,
+        "minYear": 2017,
+        "maxYear": 2024
+      },
+      "quality": {
+        "level": "medium",
+        "minConfidence": 0.9,
+        "medianConfidence": 0.9,
+        "notes": []
+      },
+      "metricsSummary": {
+        "peakDrift": {
+          "from": 2019,
+          "to": 2020,
+          "value": 0.1
+        },
+        "latestDrift": {
+          "from": 2023,
+          "to": 2024,
+          "value": 0.03
+        }
+      },
+      "autoPair": {
+        "from": 2019,
+        "to": 2020
+      }
+    },
+    {
+      "ticker": "DUK",
+      "companyName": "Duke Energy CORP",
+      "cik": "0001326160",
+      "coverage": {
+        "years": [
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "count": 7,
+        "minYear": 2018,
+        "maxYear": 2024
+      },
+      "quality": {
+        "level": "medium",
+        "minConfidence": 0.95,
+        "medianConfidence": 0.95,
+        "notes": []
+      },
+      "metricsSummary": {
+        "peakDrift": {
+          "from": 2018,
+          "to": 2019,
+          "value": 0.0
+        },
+        "latestDrift": {
+          "from": 2023,
+          "to": 2024,
+          "value": 0.0
+        }
+      },
+      "autoPair": {
+        "from": 2018,
+        "to": 2019
+      }
+    },
+    {
+      "ticker": "GE",
+      "companyName": "GENERAL ELECTRIC CO",
+      "cik": "0000040545",
+      "coverage": {
+        "years": [
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "count": 7,
+        "minYear": 2018,
+        "maxYear": 2024
+      },
+      "quality": {
+        "level": "medium",
+        "minConfidence": 0.8,
+        "medianConfidence": 0.8,
+        "notes": []
+      },
+      "metricsSummary": {
+        "peakDrift": {
+          "from": 2020,
+          "to": 2021,
+          "value": 0.06
+        },
+        "latestDrift": {
+          "from": 2023,
+          "to": 2024,
+          "value": 0.03
+        }
+      },
+      "autoPair": {
+        "from": 2020,
+        "to": 2021
+      }
+    },
+    {
+      "ticker": "GOOGL",
+      "companyName": "Alphabet Inc.",
+      "cik": "0001652044",
+      "coverage": {
+        "years": [
+          2022,
+          2023,
+          2024
+        ],
+        "count": 3,
+        "minYear": 2022,
+        "maxYear": 2024
+      },
+      "quality": {
+        "level": "low",
+        "minConfidence": 0.9,
+        "medianConfidence": 0.9,
+        "notes": []
+      },
+      "metricsSummary": {
+        "peakDrift": {
+          "from": 2022,
+          "to": 2023,
+          "value": 0.01
+        },
+        "latestDrift": {
+          "from": 2023,
+          "to": 2024,
+          "value": 0.01
+        }
+      },
+      "autoPair": {
+        "from": 2022,
+        "to": 2023
+      }
+    },
+    {
+      "ticker": "GS",
+      "companyName": "GOLDMAN SACHS GROUP INC",
+      "cik": "0000886982",
+      "coverage": {
+        "years": [
+          2024
+        ],
+        "count": 1,
+        "minYear": 2024,
+        "maxYear": 2024
+      },
+      "quality": {
+        "level": "low",
+        "minConfidence": 0.95,
+        "medianConfidence": 0.95,
+        "notes": []
+      }
+    },
+    {
+      "ticker": "HD",
+      "companyName": "HOME DEPOT, INC.",
+      "cik": "0000354950",
+      "coverage": {
+        "years": [
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "count": 9,
+        "minYear": 2017,
+        "maxYear": 2025
+      },
+      "quality": {
+        "level": "high",
+        "minConfidence": 0.9,
+        "medianConfidence": 0.9,
+        "notes": []
+      },
+      "metricsSummary": {
+        "peakDrift": {
+          "from": 2021,
+          "to": 2022,
+          "value": 0.09
+        },
+        "latestDrift": {
+          "from": 2024,
+          "to": 2025,
+          "value": 0.02
+        }
+      },
+      "autoPair": {
+        "from": 2021,
+        "to": 2022
+      }
+    },
+    {
+      "ticker": "IBM",
+      "companyName": "INTERNATIONAL BUSINESS MACHINES CORP",
+      "cik": "0000051143",
+      "coverage": {
+        "years": [
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "count": 6,
+        "minYear": 2019,
+        "maxYear": 2024
+      },
+      "quality": {
+        "level": "low",
+        "minConfidence": 0.75,
+        "medianConfidence": 0.75,
+        "notes": []
+      },
+      "metricsSummary": {
+        "peakDrift": {
+          "from": 2019,
+          "to": 2020,
+          "value": -0.0
+        },
+        "latestDrift": {
+          "from": 2023,
+          "to": 2024,
+          "value": -0.0
+        }
+      },
+      "autoPair": {
+        "from": 2019,
+        "to": 2020
+      }
+    },
+    {
+      "ticker": "INTC",
+      "companyName": "INTEL CORP",
+      "cik": "0000050863",
+      "coverage": {
+        "years": [
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "count": 7,
+        "minYear": 2018,
+        "maxYear": 2024
+      },
+      "quality": {
+        "level": "medium",
+        "minConfidence": 0.9,
+        "medianConfidence": 0.9,
+        "notes": []
+      },
+      "metricsSummary": {
+        "peakDrift": {
+          "from": 2018,
+          "to": 2019,
+          "value": 0.02
+        },
+        "latestDrift": {
+          "from": 2023,
+          "to": 2024,
+          "value": 0.01
+        }
+      },
+      "autoPair": {
+        "from": 2018,
+        "to": 2019
+      }
+    },
+    {
+      "ticker": "JNJ",
+      "companyName": "JOHNSON & JOHNSON",
+      "cik": "0000200406",
+      "coverage": {
+        "years": [
+          2017,
+          2018,
+          2019,
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "count": 7,
+        "minYear": 2017,
+        "maxYear": 2024
+      },
+      "quality": {
+        "level": "medium",
+        "minConfidence": 0.9,
+        "medianConfidence": 0.95,
+        "notes": []
+      },
+      "metricsSummary": {
+        "peakDrift": {
+          "from": 2018,
+          "to": 2019,
+          "value": 0.09
+        },
+        "latestDrift": {
+          "from": 2023,
+          "to": 2024,
+          "value": 0.07
+        }
+      },
+      "autoPair": {
+        "from": 2018,
+        "to": 2019
+      }
+    },
+    {
+      "ticker": "JPM",
+      "companyName": "JPMORGAN CHASE & CO",
+      "cik": "0000019617",
+      "coverage": {
+        "years": [
+          2024
+        ],
+        "count": 1,
+        "minYear": 2024,
+        "maxYear": 2024
+      },
+      "quality": {
+        "level": "low",
+        "minConfidence": 0.9,
+        "medianConfidence": 0.9,
+        "notes": []
+      }
+    },
+    {
+      "ticker": "KO",
+      "companyName": "COCA COLA CO",
+      "cik": "0000021344",
+      "coverage": {
+        "years": [
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "count": 8,
+        "minYear": 2017,
+        "maxYear": 2024
+      },
+      "quality": {
+        "level": "medium",
+        "minConfidence": 0.75,
+        "medianConfidence": 0.95,
+        "notes": []
+      },
+      "metricsSummary": {
+        "peakDrift": {
+          "from": 2019,
+          "to": 2020,
+          "value": 0.03
+        },
+        "latestDrift": {
+          "from": 2023,
+          "to": 2024,
+          "value": 0.01
+        }
+      },
+      "autoPair": {
+        "from": 2019,
+        "to": 2020
+      }
+    },
+    {
+      "ticker": "LLY",
+      "companyName": "ELI LILLY & Co",
+      "cik": "0000059478",
+      "coverage": {
+        "years": [
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "count": 5,
+        "minYear": 2020,
+        "maxYear": 2024
+      },
+      "quality": {
+        "level": "low",
+        "minConfidence": 0.9,
+        "medianConfidence": 0.9,
+        "notes": []
+      },
+      "metricsSummary": {
+        "peakDrift": {
+          "from": 2022,
+          "to": 2023,
+          "value": 0.06
+        },
+        "latestDrift": {
+          "from": 2023,
+          "to": 2024,
+          "value": 0.02
+        }
+      },
+      "autoPair": {
+        "from": 2022,
+        "to": 2023
+      }
+    },
+    {
+      "ticker": "LMT",
+      "companyName": "LOCKHEED MARTIN CORP",
+      "cik": "0000936468",
+      "coverage": {
+        "years": [
+          2015,
+          2016,
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "count": 10,
+        "minYear": 2015,
+        "maxYear": 2024
+      },
+      "quality": {
+        "level": "medium",
+        "minConfidence": 0.75,
+        "medianConfidence": 0.9,
+        "notes": []
+      },
+      "metricsSummary": {
+        "peakDrift": {
+          "from": 2015,
+          "to": 2016,
+          "value": 0.07
+        },
+        "latestDrift": {
+          "from": 2023,
+          "to": 2024,
+          "value": 0.01
+        }
+      },
+      "autoPair": {
+        "from": 2015,
+        "to": 2016
+      }
+    },
+    {
+      "ticker": "MA",
+      "companyName": "Mastercard Inc",
+      "cik": "0001141391",
+      "coverage": {
+        "years": [
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "count": 8,
+        "minYear": 2017,
+        "maxYear": 2024
+      },
+      "quality": {
+        "level": "medium",
+        "minConfidence": 0.75,
+        "medianConfidence": 0.75,
+        "notes": []
+      },
+      "metricsSummary": {
+        "peakDrift": {
+          "from": 2018,
+          "to": 2019,
+          "value": 0.97
+        },
+        "latestDrift": {
+          "from": 2023,
+          "to": 2024,
+          "value": -0.0
+        }
+      },
+      "autoPair": {
+        "from": 2018,
+        "to": 2019
+      }
+    },
+    {
+      "ticker": "MCD",
+      "companyName": "MCDONALDS CORP",
+      "cik": "0000063908",
+      "coverage": {
+        "years": [
+          2015,
+          2016,
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "count": 10,
+        "minYear": 2015,
+        "maxYear": 2024
+      },
+      "quality": {
+        "level": "medium",
+        "minConfidence": 0.75,
+        "medianConfidence": 0.9,
+        "notes": []
+      },
+      "metricsSummary": {
+        "peakDrift": {
+          "from": 2018,
+          "to": 2019,
+          "value": 0.5
+        },
+        "latestDrift": {
+          "from": 2023,
+          "to": 2024,
+          "value": 0.01
+        }
+      },
+      "autoPair": {
+        "from": 2018,
+        "to": 2019
+      }
+    },
+    {
+      "ticker": "META",
+      "companyName": "Meta Platforms, Inc.",
+      "cik": "0001326801",
+      "coverage": {
+        "years": [
+          2024
+        ],
+        "count": 1,
+        "minYear": 2024,
+        "maxYear": 2024
+      },
+      "quality": {
+        "level": "low",
+        "minConfidence": 0.9,
+        "medianConfidence": 0.9,
+        "notes": []
+      }
+    },
+    {
+      "ticker": "MO",
+      "companyName": "ALTRIA GROUP, INC.",
+      "cik": "0000764180",
+      "coverage": {
+        "years": [
+          2015,
+          2016,
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "count": 10,
+        "minYear": 2015,
+        "maxYear": 2024
+      },
+      "quality": {
+        "level": "medium",
+        "minConfidence": 0.75,
+        "medianConfidence": 0.9,
+        "notes": []
+      },
+      "metricsSummary": {
+        "peakDrift": {
+          "from": 2017,
+          "to": 2018,
+          "value": 0.2
+        },
+        "latestDrift": {
+          "from": 2023,
+          "to": 2024,
+          "value": 0.04
+        }
+      },
+      "autoPair": {
+        "from": 2017,
+        "to": 2018
+      }
+    },
+    {
+      "ticker": "MRK",
+      "companyName": "Merck & Co., Inc.",
+      "cik": "0000310158",
+      "coverage": {
+        "years": [
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "count": 8,
+        "minYear": 2017,
+        "maxYear": 2024
+      },
+      "quality": {
+        "level": "medium",
+        "minConfidence": 0.9,
+        "medianConfidence": 0.9,
+        "notes": []
+      },
+      "metricsSummary": {
+        "peakDrift": {
+          "from": 2018,
+          "to": 2019,
+          "value": 0.03
+        },
+        "latestDrift": {
+          "from": 2023,
+          "to": 2024,
+          "value": 0.02
+        }
+      },
+      "autoPair": {
+        "from": 2018,
+        "to": 2019
+      }
+    },
+    {
+      "ticker": "MS",
+      "companyName": "MORGAN STANLEY",
+      "cik": "0000895421",
+      "coverage": {
+        "years": [
+          2024
+        ],
+        "count": 1,
+        "minYear": 2024,
+        "maxYear": 2024
+      },
+      "quality": {
+        "level": "low",
+        "minConfidence": 0.7,
+        "medianConfidence": 0.7,
+        "notes": []
+      }
+    },
+    {
+      "ticker": "MSFT",
+      "companyName": "MICROSOFT CORP",
+      "cik": "0000789019",
+      "coverage": {
+        "years": [
+          2020,
+          2021,
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "count": 6,
+        "minYear": 2020,
+        "maxYear": 2025
+      },
+      "quality": {
+        "level": "low",
+        "minConfidence": 0.25,
+        "medianConfidence": 0.6,
+        "notes": []
+      },
+      "metricsSummary": {
+        "peakDrift": {
+          "from": 2020,
+          "to": 2021,
+          "value": 0.01
+        },
+        "latestDrift": {
+          "from": 2021,
+          "to": 2022,
+          "value": 0.01
+        }
+      },
+      "autoPair": {
+        "from": 2020,
+        "to": 2021
+      }
+    },
+    {
+      "ticker": "NEE",
+      "companyName": "NEXTERA ENERGY INC",
+      "cik": "0000753308",
+      "coverage": {
+        "years": [
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "count": 8,
+        "minYear": 2017,
+        "maxYear": 2024
+      },
+      "quality": {
+        "level": "medium",
+        "minConfidence": 0.9,
+        "medianConfidence": 0.9,
+        "notes": []
+      },
+      "metricsSummary": {
+        "peakDrift": {
+          "from": 2023,
+          "to": 2024,
+          "value": 0.01
+        },
+        "latestDrift": {
+          "from": 2023,
+          "to": 2024,
+          "value": 0.01
+        }
+      },
+      "autoPair": {
+        "from": 2023,
+        "to": 2024
+      }
+    },
+    {
+      "ticker": "NSC",
+      "companyName": "NORFOLK SOUTHERN CORP",
+      "cik": "0000702165",
+      "coverage": {
+        "years": [
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "count": 5,
+        "minYear": 2020,
+        "maxYear": 2024
+      },
+      "quality": {
+        "level": "low",
+        "minConfidence": 0.95,
+        "medianConfidence": 0.95,
+        "notes": []
+      },
+      "metricsSummary": {
+        "peakDrift": {
+          "from": 2022,
+          "to": 2023,
+          "value": 0.11
+        },
+        "latestDrift": {
+          "from": 2023,
+          "to": 2024,
+          "value": 0.06
+        }
+      },
+      "autoPair": {
+        "from": 2022,
+        "to": 2023
+      },
+      "featuredCase": {
+        "from": 2022,
+        "to": 2023,
+        "title": "Derailment fallout: safety and regulatory risk move to the foreground.",
+        "blurb": "Risk factors shift from generic hazards to specific operational exposure.",
+        "tags": [
+          "safety",
+          "regulation",
+          "litigation"
+        ]
+      }
+    },
+    {
       "ticker": "NVDA",
-      "companyName": "NVDA",
+      "companyName": "NVIDIA CORP",
       "cik": "0001045810",
       "coverage": {
         "years": [
@@ -62,19 +1370,497 @@
       },
       "quality": {
         "level": "low",
-        "minConfidence": 0.85,
-        "medianConfidence": 0.85,
+        "minConfidence": 0.9,
+        "medianConfidence": 0.9,
+        "notes": []
+      },
+      "metricsSummary": {
+        "peakDrift": {
+          "from": 2021,
+          "to": 2022,
+          "value": 0.07
+        },
+        "latestDrift": {
+          "from": 2024,
+          "to": 2025,
+          "value": 0.01
+        }
+      },
+      "autoPair": {
+        "from": 2021,
+        "to": 2022
+      }
+    },
+    {
+      "ticker": "ORCL",
+      "companyName": "ORACLE CORP",
+      "cik": "0001341439",
+      "coverage": {
+        "years": [
+          2016,
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "count": 10,
+        "minYear": 2016,
+        "maxYear": 2025
+      },
+      "quality": {
+        "level": "low",
+        "minConfidence": 0.1,
+        "medianConfidence": 0.9,
+        "notes": []
+      },
+      "metricsSummary": {
+        "peakDrift": {
+          "from": 2017,
+          "to": 2018,
+          "value": 0.03
+        },
+        "latestDrift": {
+          "from": 2021,
+          "to": 2022,
+          "value": 0.01
+        }
+      },
+      "autoPair": {
+        "from": 2017,
+        "to": 2018
+      }
+    },
+    {
+      "ticker": "PEP",
+      "companyName": "PEPSICO INC",
+      "cik": "0000077476",
+      "coverage": {
+        "years": [
+          2015,
+          2016,
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "count": 10,
+        "minYear": 2015,
+        "maxYear": 2024
+      },
+      "quality": {
+        "level": "high",
+        "minConfidence": 0.9,
+        "medianConfidence": 0.9,
+        "notes": []
+      },
+      "metricsSummary": {
+        "peakDrift": {
+          "from": 2019,
+          "to": 2020,
+          "value": 0.13
+        },
+        "latestDrift": {
+          "from": 2023,
+          "to": 2024,
+          "value": 0.02
+        }
+      },
+      "autoPair": {
+        "from": 2019,
+        "to": 2020
+      }
+    },
+    {
+      "ticker": "PFE",
+      "companyName": "PFIZER INC",
+      "cik": "0000078003",
+      "coverage": {
+        "years": [
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "count": 5,
+        "minYear": 2020,
+        "maxYear": 2024
+      },
+      "quality": {
+        "level": "low",
+        "minConfidence": 0.75,
+        "medianConfidence": 0.75,
         "notes": []
       },
       "metricsSummary": {
         "peakDrift": {
           "from": 2020,
           "to": 2021,
-          "value": 0.09
+          "value": -0.0
+        },
+        "latestDrift": {
+          "from": 2023,
+          "to": 2024,
+          "value": -0.0
+        }
+      },
+      "autoPair": {
+        "from": 2020,
+        "to": 2021
+      }
+    },
+    {
+      "ticker": "PG",
+      "companyName": "PROCTER & GAMBLE Co",
+      "cik": "0000080424",
+      "coverage": {
+        "years": [
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "count": 4,
+        "minYear": 2022,
+        "maxYear": 2025
+      },
+      "quality": {
+        "level": "low",
+        "minConfidence": 0.9,
+        "medianConfidence": 0.9,
+        "notes": []
+      },
+      "metricsSummary": {
+        "peakDrift": {
+          "from": 2022,
+          "to": 2023,
+          "value": 0.01
         },
         "latestDrift": {
           "from": 2024,
           "to": 2025,
+          "value": 0.01
+        }
+      },
+      "autoPair": {
+        "from": 2022,
+        "to": 2023
+      }
+    },
+    {
+      "ticker": "PGR",
+      "companyName": "PROGRESSIVE CORP/OH/",
+      "cik": "0000080661",
+      "coverage": {
+        "years": [
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "count": 4,
+        "minYear": 2021,
+        "maxYear": 2024
+      },
+      "quality": {
+        "level": "low",
+        "minConfidence": 0.9,
+        "medianConfidence": 0.925,
+        "notes": []
+      },
+      "metricsSummary": {
+        "peakDrift": {
+          "from": 2022,
+          "to": 2023,
+          "value": 0.08
+        },
+        "latestDrift": {
+          "from": 2023,
+          "to": 2024,
+          "value": 0.0
+        }
+      },
+      "autoPair": {
+        "from": 2022,
+        "to": 2023
+      }
+    },
+    {
+      "ticker": "RTX",
+      "companyName": "RTX Corp",
+      "cik": "0000101829",
+      "coverage": {
+        "years": [
+          2016,
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "count": 9,
+        "minYear": 2016,
+        "maxYear": 2024
+      },
+      "quality": {
+        "level": "low",
+        "minConfidence": 0.65,
+        "medianConfidence": 0.95,
+        "notes": []
+      },
+      "metricsSummary": {
+        "peakDrift": {
+          "from": 2019,
+          "to": 2020,
+          "value": 0.97
+        },
+        "latestDrift": {
+          "from": 2023,
+          "to": 2024,
+          "value": 0.02
+        }
+      },
+      "autoPair": {
+        "from": 2019,
+        "to": 2020
+      }
+    },
+    {
+      "ticker": "SBUX",
+      "companyName": "STARBUCKS CORP",
+      "cik": "0000829224",
+      "coverage": {
+        "years": [
+          2016,
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "count": 10,
+        "minYear": 2016,
+        "maxYear": 2025
+      },
+      "quality": {
+        "level": "high",
+        "minConfidence": 0.9,
+        "medianConfidence": 0.9,
+        "notes": []
+      },
+      "metricsSummary": {
+        "peakDrift": {
+          "from": 2024,
+          "to": 2025,
+          "value": 0.1
+        },
+        "latestDrift": {
+          "from": 2024,
+          "to": 2025,
+          "value": 0.1
+        }
+      },
+      "autoPair": {
+        "from": 2024,
+        "to": 2025
+      },
+      "featuredCase": {
+        "from": 2022,
+        "to": 2024,
+        "title": "Labor risk becomes sustained and explicit.",
+        "blurb": "Unionization and labor disputes become a durable risk driver.",
+        "tags": [
+          "labor",
+          "reputation",
+          "human capital"
+        ]
+      }
+    },
+    {
+      "ticker": "SLB",
+      "companyName": "SLB LIMITED/NV",
+      "cik": "0000087347",
+      "coverage": {
+        "years": [
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "count": 8,
+        "minYear": 2017,
+        "maxYear": 2024
+      },
+      "quality": {
+        "level": "medium",
+        "minConfidence": 0.9,
+        "medianConfidence": 0.9,
+        "notes": []
+      },
+      "metricsSummary": {
+        "peakDrift": {
+          "from": 2019,
+          "to": 2020,
+          "value": 0.1
+        },
+        "latestDrift": {
+          "from": 2023,
+          "to": 2024,
+          "value": 0.04
+        }
+      },
+      "autoPair": {
+        "from": 2019,
+        "to": 2020
+      }
+    },
+    {
+      "ticker": "SO",
+      "companyName": "SOUTHERN CO",
+      "cik": "0000092122",
+      "coverage": {
+        "years": [
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "count": 5,
+        "minYear": 2020,
+        "maxYear": 2024
+      },
+      "quality": {
+        "level": "low",
+        "minConfidence": 0.95,
+        "medianConfidence": 0.95,
+        "notes": []
+      },
+      "metricsSummary": {
+        "peakDrift": {
+          "from": 2020,
+          "to": 2021,
+          "value": 0.01
+        },
+        "latestDrift": {
+          "from": 2023,
+          "to": 2024,
+          "value": 0.01
+        }
+      },
+      "autoPair": {
+        "from": 2020,
+        "to": 2021
+      }
+    },
+    {
+      "ticker": "SSTK",
+      "companyName": "Shutterstock, Inc.",
+      "cik": "0001549346",
+      "coverage": {
+        "years": [
+          2015,
+          2016,
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "count": 10,
+        "minYear": 2015,
+        "maxYear": 2024
+      },
+      "quality": {
+        "level": "high",
+        "minConfidence": 0.9,
+        "medianConfidence": 0.9,
+        "notes": []
+      },
+      "metricsSummary": {
+        "peakDrift": {
+          "from": 2023,
+          "to": 2024,
+          "value": 0.12
+        },
+        "latestDrift": {
+          "from": 2023,
+          "to": 2024,
+          "value": 0.12
+        }
+      },
+      "autoPair": {
+        "from": 2023,
+        "to": 2024
+      },
+      "featuredCase": {
+        "from": 2022,
+        "to": 2024,
+        "title": "Generative AI pressure rewires licensing risk.",
+        "blurb": "The narrative moves beyond generic disruption to specific pricing exposure.",
+        "tags": [
+          "genai",
+          "licensing",
+          "ip"
+        ]
+      }
+    },
+    {
+      "ticker": "TMO",
+      "companyName": "THERMO FISHER SCIENTIFIC INC.",
+      "cik": "0000097745",
+      "coverage": {
+        "years": [
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "count": 7,
+        "minYear": 2018,
+        "maxYear": 2024
+      },
+      "quality": {
+        "level": "medium",
+        "minConfidence": 0.95,
+        "medianConfidence": 0.95,
+        "notes": []
+      },
+      "metricsSummary": {
+        "peakDrift": {
+          "from": 2020,
+          "to": 2021,
+          "value": 0.03
+        },
+        "latestDrift": {
+          "from": 2023,
+          "to": 2024,
           "value": 0.01
         }
       },
@@ -85,7 +1871,7 @@
     },
     {
       "ticker": "TSLA",
-      "companyName": "TSLA",
+      "companyName": "Tesla, Inc.",
       "cik": "0001318605",
       "coverage": {
         "years": [
@@ -103,16 +1889,103 @@
         "maxYear": 2024
       },
       "quality": {
-        "level": "low",
-        "minConfidence": 0.3,
-        "medianConfidence": 0.575,
+        "level": "medium",
+        "minConfidence": 0.9,
+        "medianConfidence": 0.9,
         "notes": []
       },
       "metricsSummary": {
         "peakDrift": {
-          "from": 2021,
-          "to": 2022,
-          "value": 0.02
+          "from": 2019,
+          "to": 2020,
+          "value": 0.05
+        },
+        "latestDrift": {
+          "from": 2023,
+          "to": 2024,
+          "value": 0.0
+        }
+      },
+      "autoPair": {
+        "from": 2019,
+        "to": 2020
+      }
+    },
+    {
+      "ticker": "TSM",
+      "companyName": "TAIWAN SEMICONDUCTOR MANUFACTURING CO LTD",
+      "cik": "0001046179",
+      "coverage": {
+        "years": [
+          2015,
+          2016,
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "count": 10,
+        "minYear": 2015,
+        "maxYear": 2024
+      },
+      "quality": {
+        "level": "medium",
+        "minConfidence": 0.75,
+        "medianConfidence": 0.75,
+        "notes": []
+      },
+      "metricsSummary": {
+        "peakDrift": {
+          "from": 2016,
+          "to": 2017,
+          "value": 0.07
+        },
+        "latestDrift": {
+          "from": 2023,
+          "to": 2024,
+          "value": 0.03
+        }
+      },
+      "autoPair": {
+        "from": 2016,
+        "to": 2017
+      }
+    },
+    {
+      "ticker": "TXN",
+      "companyName": "TEXAS INSTRUMENTS INC",
+      "cik": "0000097476",
+      "coverage": {
+        "years": [
+          2016,
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "count": 9,
+        "minYear": 2016,
+        "maxYear": 2024
+      },
+      "quality": {
+        "level": "high",
+        "minConfidence": 0.9,
+        "medianConfidence": 0.9,
+        "notes": []
+      },
+      "metricsSummary": {
+        "peakDrift": {
+          "from": 2022,
+          "to": 2023,
+          "value": 0.03
         },
         "latestDrift": {
           "from": 2023,
@@ -121,8 +1994,255 @@
         }
       },
       "autoPair": {
+        "from": 2022,
+        "to": 2023
+      }
+    },
+    {
+      "ticker": "UNH",
+      "companyName": "UNITEDHEALTH GROUP INC",
+      "cik": "0000731766",
+      "coverage": {
+        "years": [
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "count": 5,
+        "minYear": 2020,
+        "maxYear": 2024
+      },
+      "quality": {
+        "level": "low",
+        "minConfidence": 0.9,
+        "medianConfidence": 0.9,
+        "notes": []
+      },
+      "metricsSummary": {
+        "peakDrift": {
+          "from": 2021,
+          "to": 2022,
+          "value": 0.01
+        },
+        "latestDrift": {
+          "from": 2023,
+          "to": 2024,
+          "value": 0.0
+        }
+      },
+      "autoPair": {
         "from": 2021,
         "to": 2022
+      }
+    },
+    {
+      "ticker": "UPS",
+      "companyName": "UNITED PARCEL SERVICE INC",
+      "cik": "0001090727",
+      "coverage": {
+        "years": [
+          2015,
+          2016,
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "count": 10,
+        "minYear": 2015,
+        "maxYear": 2024
+      },
+      "quality": {
+        "level": "high",
+        "minConfidence": 0.9,
+        "medianConfidence": 0.9,
+        "notes": []
+      },
+      "metricsSummary": {
+        "peakDrift": {
+          "from": 2018,
+          "to": 2019,
+          "value": 0.09
+        },
+        "latestDrift": {
+          "from": 2023,
+          "to": 2024,
+          "value": 0.02
+        }
+      },
+      "autoPair": {
+        "from": 2018,
+        "to": 2019
+      }
+    },
+    {
+      "ticker": "V",
+      "companyName": "VISA INC.",
+      "cik": "0001403161",
+      "coverage": {
+        "years": [
+          2016,
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "count": 10,
+        "minYear": 2016,
+        "maxYear": 2025
+      },
+      "quality": {
+        "level": "high",
+        "minConfidence": 0.95,
+        "medianConfidence": 0.95,
+        "notes": []
+      },
+      "metricsSummary": {
+        "peakDrift": {
+          "from": 2022,
+          "to": 2023,
+          "value": 0.09
+        },
+        "latestDrift": {
+          "from": 2024,
+          "to": 2025,
+          "value": 0.05
+        }
+      },
+      "autoPair": {
+        "from": 2022,
+        "to": 2023
+      }
+    },
+    {
+      "ticker": "WM",
+      "companyName": "WASTE MANAGEMENT INC",
+      "cik": "0000823768",
+      "coverage": {
+        "years": [
+          2016,
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "count": 9,
+        "minYear": 2016,
+        "maxYear": 2024
+      },
+      "quality": {
+        "level": "high",
+        "minConfidence": 0.9,
+        "medianConfidence": 0.9,
+        "notes": []
+      },
+      "metricsSummary": {
+        "peakDrift": {
+          "from": 2023,
+          "to": 2024,
+          "value": 0.08
+        },
+        "latestDrift": {
+          "from": 2023,
+          "to": 2024,
+          "value": 0.08
+        }
+      },
+      "autoPair": {
+        "from": 2023,
+        "to": 2024
+      }
+    },
+    {
+      "ticker": "WMT",
+      "companyName": "Walmart Inc.",
+      "cik": "0000104169",
+      "coverage": {
+        "years": [
+          2023,
+          2024,
+          2025
+        ],
+        "count": 3,
+        "minYear": 2023,
+        "maxYear": 2025
+      },
+      "quality": {
+        "level": "low",
+        "minConfidence": 0.9,
+        "medianConfidence": 0.9,
+        "notes": []
+      },
+      "metricsSummary": {
+        "peakDrift": {
+          "from": 2024,
+          "to": 2025,
+          "value": 0.02
+        },
+        "latestDrift": {
+          "from": 2024,
+          "to": 2025,
+          "value": 0.02
+        }
+      },
+      "autoPair": {
+        "from": 2024,
+        "to": 2025
+      }
+    },
+    {
+      "ticker": "XOM",
+      "companyName": "EXXON MOBIL CORP",
+      "cik": "0000034088",
+      "coverage": {
+        "years": [
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "count": 6,
+        "minYear": 2019,
+        "maxYear": 2024
+      },
+      "quality": {
+        "level": "low",
+        "minConfidence": 0.9,
+        "medianConfidence": 0.9,
+        "notes": []
+      },
+      "metricsSummary": {
+        "peakDrift": {
+          "from": 2020,
+          "to": 2021,
+          "value": 0.06
+        },
+        "latestDrift": {
+          "from": 2023,
+          "to": 2024,
+          "value": 0.04
+        }
+      },
+      "autoPair": {
+        "from": 2020,
+        "to": 2021
       }
     }
   ]

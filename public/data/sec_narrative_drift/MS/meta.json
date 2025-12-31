@@ -1,0 +1,28 @@
+{
+  "ticker": "MS",
+  "cik": "0000895421",
+  "companyName": "MORGAN STANLEY",
+  "lastUpdatedUtc": "2025-12-31T04:52:02Z",
+  "formsIncluded": [
+    "10-K"
+  ],
+  "sectionsIncluded": [
+    "10k_item1a"
+  ],
+  "notes": [
+    "Ticker/CIK mapping is SEC-provided and may be incomplete or outdated.",
+    "Narrative Drift is descriptive; causal explanations are hypotheses."
+  ],
+  "extraction": {
+    "section": "item1a",
+    "method": "text_scored",
+    "confidence": 0.7,
+    "warnings": [
+      "anchor_missing",
+      "end_not_found"
+    ],
+    "lengthChars": 79998,
+    "endMarkerUsed": null,
+    "hasItem1C": false
+  }
+}

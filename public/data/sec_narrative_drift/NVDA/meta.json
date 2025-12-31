@@ -1,8 +1,8 @@
 {
   "ticker": "NVDA",
   "cik": "0001045810",
-  "companyName": "",
-  "lastUpdatedUtc": "2025-12-29T18:36:30Z",
+  "companyName": "NVIDIA CORP",
+  "lastUpdatedUtc": "2025-12-31T03:05:50Z",
   "formsIncluded": [
     "10-K"
   ],
@@ -12,5 +12,16 @@
   "notes": [
     "Ticker/CIK mapping is SEC-provided and may be incomplete or outdated.",
     "Narrative Drift is descriptive; causal explanations are hypotheses."
-  ]
+  ],
+  "extraction": {
+    "section": "item1a",
+    "method": "text_scored",
+    "confidence": 0.8999999999999999,
+    "warnings": [
+      "anchor_missing"
+    ],
+    "lengthChars": 47259,
+    "endMarkerUsed": "1B",
+    "hasItem1C": false
+  }
 }

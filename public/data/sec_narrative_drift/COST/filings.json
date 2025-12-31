@@ -1,0 +1,162 @@
+[
+  {
+    "year": 2016,
+    "form": "10-K",
+    "filingDate": "2016-10-12",
+    "reportDate": "2016-08-28",
+    "accessionNumber": "0000909832-16-000032",
+    "primaryDocument": "cost10k82816.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/909832/000090983216000032/cost10k82816.htm",
+    "extraction": {
+      "confidence": 0.8999999999999999,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing"
+      ]
+    }
+  },
+  {
+    "year": 2017,
+    "form": "10-K",
+    "filingDate": "2017-10-18",
+    "reportDate": "2017-09-03",
+    "accessionNumber": "0000909832-17-000014",
+    "primaryDocument": "cost10k90317.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/909832/000090983217000014/cost10k90317.htm",
+    "extraction": {
+      "confidence": 0.8999999999999999,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing"
+      ]
+    }
+  },
+  {
+    "year": 2018,
+    "form": "10-K",
+    "filingDate": "2018-10-26",
+    "reportDate": "2018-09-02",
+    "accessionNumber": "0000909832-18-000013",
+    "primaryDocument": "cost10k9218.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/909832/000090983218000013/cost10k9218.htm",
+    "extraction": {
+      "confidence": 0.8999999999999999,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing"
+      ]
+    }
+  },
+  {
+    "year": 2019,
+    "form": "10-K",
+    "filingDate": "2019-10-11",
+    "reportDate": "2019-09-01",
+    "accessionNumber": "0000909832-19-000019",
+    "primaryDocument": "cost10k9119.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/909832/000090983219000019/cost10k9119.htm",
+    "extraction": {
+      "confidence": 0.65,
+      "method": "html_anchor",
+      "errors": [
+        "early_position_penalty",
+        "toc_cluster_penalty"
+      ]
+    }
+  },
+  {
+    "year": 2020,
+    "form": "10-K",
+    "filingDate": "2020-10-07",
+    "reportDate": "2020-08-30",
+    "accessionNumber": "0000909832-20-000017",
+    "primaryDocument": "cost-20200830.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/909832/000090983220000017/cost-20200830.htm",
+    "extraction": {
+      "confidence": 0.75,
+      "method": "html_anchor",
+      "errors": [
+        "toc_cluster_penalty"
+      ]
+    }
+  },
+  {
+    "year": 2021,
+    "form": "10-K",
+    "filingDate": "2021-10-06",
+    "reportDate": "2021-08-29",
+    "accessionNumber": "0000909832-21-000014",
+    "primaryDocument": "cost-20210829.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/909832/000090983221000014/cost-20210829.htm",
+    "extraction": {
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
+    }
+  },
+  {
+    "year": 2022,
+    "form": "10-K",
+    "filingDate": "2022-10-05",
+    "reportDate": "2022-08-28",
+    "accessionNumber": "0000909832-22-000021",
+    "primaryDocument": "cost-20220828.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/909832/000090983222000021/cost-20220828.htm",
+    "extraction": {
+      "confidence": 0.8,
+      "method": "html_anchor",
+      "errors": [
+        "early_position_penalty"
+      ]
+    }
+  },
+  {
+    "year": 2023,
+    "form": "10-K",
+    "filingDate": "2023-10-11",
+    "reportDate": "2023-09-03",
+    "accessionNumber": "0000909832-23-000042",
+    "primaryDocument": "cost-20230903.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/909832/000090983223000042/cost-20230903.htm",
+    "extraction": {
+      "confidence": 0.75,
+      "method": "html_anchor",
+      "errors": [
+        "toc_cluster_penalty"
+      ]
+    }
+  },
+  {
+    "year": 2024,
+    "form": "10-K",
+    "filingDate": "2024-10-09",
+    "reportDate": "2024-09-01",
+    "accessionNumber": "0000909832-24-000049",
+    "primaryDocument": "cost-20240901.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/909832/000090983224000049/cost-20240901.htm",
+    "extraction": {
+      "confidence": 0.65,
+      "method": "html_anchor",
+      "errors": [
+        "early_position_penalty",
+        "toc_cluster_penalty"
+      ]
+    }
+  },
+  {
+    "year": 2025,
+    "form": "10-K",
+    "filingDate": "2025-10-08",
+    "reportDate": "2025-08-31",
+    "accessionNumber": "0000909832-25-000101",
+    "primaryDocument": "cost-20250831.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/909832/000090983225000101/cost-20250831.htm",
+    "extraction": {
+      "confidence": 0.8999999999999999,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing"
+      ]
+    }
+  }
+]

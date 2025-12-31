@@ -2,172 +2,2040 @@
   "section": "10k_item1a",
   "yearPairs": [
     {
-      "from": 2021,
-      "to": 2022,
+      "from": 2017,
+      "to": 2018,
       "topRisers": [
         {
-          "term": "ira",
-          "score": 6.45,
-          "z": 0.64,
+          "term": "china",
+          "score": 7.27,
+          "z": 0.73,
           "countPrev": 0,
-          "countCurr": 6,
+          "countCurr": 16,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.35,
-          "deltaPer10k": 3.35,
+          "per10kCurr": 12.17,
+          "deltaPer10k": 12.17,
           "distinctive": false
         },
         {
-          "term": "tesla start",
-          "score": 6.05,
+          "term": "gigafactory shanghai",
+          "score": 7.06,
+          "z": 0.71,
+          "countPrev": 0,
+          "countCurr": 13,
+          "per10kPrev": 0.0,
+          "per10kCurr": 9.89,
+          "deltaPer10k": 9.89,
+          "distinctive": false
+        },
+        {
+          "term": "shanghai",
+          "score": 7.06,
+          "z": 0.71,
+          "countPrev": 0,
+          "countCurr": 13,
+          "per10kPrev": 0.0,
+          "per10kCurr": 9.89,
+          "deltaPer10k": 9.89,
+          "distinctive": false
+        },
+        {
+          "term": "commence",
+          "score": 6.44,
+          "z": 0.64,
+          "countPrev": 0,
+          "countCurr": 7,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.32,
+          "deltaPer10k": 5.32,
+          "distinctive": false
+        },
+        {
+          "term": "recently",
+          "score": 6.44,
+          "z": 0.64,
+          "countPrev": 0,
+          "countCurr": 7,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.32,
+          "deltaPer10k": 5.32,
+          "distinctive": false
+        },
+        {
+          "term": "experience issues",
+          "score": 5.88,
+          "z": 0.59,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.04,
+          "deltaPer10k": 3.04,
+          "distinctive": false
+        },
+        {
+          "term": "local sourcing",
+          "score": 5.88,
+          "z": 0.59,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.04,
+          "deltaPer10k": 3.04,
+          "distinctive": false
+        },
+        {
+          "term": "manufacturing activities",
+          "score": 5.88,
+          "z": 0.59,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.04,
+          "deltaPer10k": 3.04,
+          "distinctive": false
+        },
+        {
+          "term": "settlement",
+          "score": 5.88,
+          "z": 0.59,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.04,
+          "deltaPer10k": 3.04,
+          "distinctive": false
+        },
+        {
+          "term": "sourcing",
+          "score": 5.88,
+          "z": 0.59,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.04,
+          "deltaPer10k": 3.04,
+          "distinctive": false
+        },
+        {
+          "term": "sourcing manufacturing",
+          "score": 5.88,
+          "z": 0.59,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.04,
+          "deltaPer10k": 3.04,
+          "distinctive": false
+        },
+        {
+          "term": "awards",
+          "score": 5.59,
+          "z": 0.56,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.28,
+          "deltaPer10k": 2.28,
+          "distinctive": false
+        },
+        {
+          "term": "duties",
+          "score": 5.59,
+          "z": 0.56,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.28,
+          "deltaPer10k": 2.28,
+          "distinctive": false
+        },
+        {
+          "term": "issues delays",
+          "score": 5.59,
+          "z": 0.56,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.28,
+          "deltaPer10k": 2.28,
+          "distinctive": false
+        },
+        {
+          "term": "localization",
+          "score": 5.59,
+          "z": 0.56,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.28,
+          "deltaPer10k": 2.28,
+          "distinctive": false
+        }
+      ],
+      "topFallers": [
+        {
+          "term": "value guarantee",
+          "score": -6.33,
+          "z": -0.63,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 4.27,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.27,
+          "distinctive": false
+        },
+        {
+          "term": "car",
+          "score": -5.42,
+          "z": -0.54,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.71,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.71,
+          "distinctive": false
+        },
+        {
+          "term": "ceo",
+          "score": -5.42,
+          "z": -0.54,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.71,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.71,
+          "distinctive": false
+        },
+        {
+          "term": "open",
+          "score": -5.42,
+          "z": -0.54,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.71,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.71,
+          "distinctive": false
+        },
+        {
+          "term": "started",
+          "score": -5.42,
+          "z": -0.54,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.71,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.71,
+          "distinctive": false
+        },
+        {
+          "term": "accepted",
+          "score": -4.73,
+          "z": -0.47,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 0.85,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -0.85,
+          "distinctive": false
+        },
+        {
+          "term": "advance",
+          "score": -4.73,
+          "z": -0.47,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 0.85,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -0.85,
+          "distinctive": false
+        },
+        {
+          "term": "altogether",
+          "score": -4.73,
+          "z": -0.47,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 0.85,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -0.85,
+          "distinctive": false
+        },
+        {
+          "term": "analysts investors",
+          "score": -4.73,
+          "z": -0.47,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 0.85,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -0.85,
+          "distinctive": false
+        },
+        {
+          "term": "applies",
+          "score": -4.73,
+          "z": -0.47,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 0.85,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -0.85,
+          "distinctive": false
+        },
+        {
+          "term": "approved",
+          "score": -4.73,
+          "z": -0.47,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 0.85,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -0.85,
+          "distinctive": false
+        },
+        {
+          "term": "assessment",
+          "score": -4.73,
+          "z": -0.47,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 0.85,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -0.85,
+          "distinctive": false
+        },
+        {
+          "term": "belt",
+          "score": -4.73,
+          "z": -0.47,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 0.85,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -0.85,
+          "distinctive": false
+        },
+        {
+          "term": "bring online",
+          "score": -4.73,
+          "z": -0.47,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 0.85,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -0.85,
+          "distinctive": false
+        },
+        {
+          "term": "calendar",
+          "score": -4.73,
+          "z": -0.47,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 0.85,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -0.85,
+          "distinctive": false
+        }
+      ],
+      "summary": "Adds emphasis on china, gigafactory shanghai, shanghai; de-emphasizes value guarantee, car, ceo.",
+      "topRisersAlt": [
+        {
+          "term": "model production",
+          "score": 6.07
+        },
+        {
+          "term": "products systems",
+          "score": 6.07
+        },
+        {
+          "term": "impact business",
+          "score": 5.84
+        },
+        {
+          "term": "model production gigafactory",
+          "score": 5.84
+        },
+        {
+          "term": "adversely impact business",
+          "score": 5.55
+        },
+        {
+          "term": "certain components",
+          "score": 5.55
+        },
+        {
+          "term": "subject number",
+          "score": 5.55
+        },
+        {
+          "term": "customers suppliers",
+          "score": 5.14
+        },
+        {
+          "term": "delays product",
+          "score": 5.14
+        },
+        {
+          "term": "electric vehicle",
+          "score": 5.14
+        },
+        {
+          "term": "experience delays",
+          "score": 5.14
+        },
+        {
+          "term": "experience future delays",
+          "score": 5.14
+        },
+        {
+          "term": "impact ability",
+          "score": 5.14
+        },
+        {
+          "term": "impact business financial",
+          "score": 5.14
+        },
+        {
+          "term": "impact production",
+          "score": 5.14
+        }
+      ],
+      "topFallersAlt": [
+        {
+          "term": "vehicles systems",
+          "score": -6.59
+        },
+        {
+          "term": "adversely affect business",
+          "score": -6.41
+        },
+        {
+          "term": "adversely affect",
+          "score": -6.18
+        },
+        {
+          "term": "able continue",
+          "score": -5.48
+        },
+        {
+          "term": "adversely affect financial",
+          "score": -5.48
+        },
+        {
+          "term": "affect financial results",
+          "score": -5.48
+        },
+        {
+          "term": "electric vehicles currently",
+          "score": -5.48
+        },
+        {
+          "term": "energy solar energy",
+          "score": -5.48
+        },
+        {
+          "term": "including solar",
+          "score": -5.48
+        },
+        {
+          "term": "model model model",
+          "score": -5.48
+        },
+        {
+          "term": "operating results vehicles",
+          "score": -5.48
+        },
+        {
+          "term": "products solar",
+          "score": -5.48
+        },
+        {
+          "term": "vehicles experience",
+          "score": -5.48
+        },
+        {
+          "term": "model model",
+          "score": -1.17
+        },
+        {
+          "term": "gross margin",
+          "score": -0.87
+        }
+      ],
+      "summaryAlt": "Adds emphasis on model production, products systems, impact business; de-emphasizes vehicles systems, adversely affect business, adversely affect."
+    },
+    {
+      "from": 2018,
+      "to": 2019,
+      "topRisers": [
+        {
+          "term": "fsd",
+          "score": 6.61,
+          "z": 0.66,
+          "countPrev": 0,
+          "countCurr": 7,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.65,
+          "deltaPer10k": 5.65,
+          "distinctive": false
+        },
+        {
+          "term": "autopilot fsd",
+          "score": 6.46,
+          "z": 0.65,
+          "countPrev": 0,
+          "countCurr": 6,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.84,
+          "deltaPer10k": 4.84,
+          "distinctive": false
+        },
+        {
+          "term": "fremont",
+          "score": 6.46,
+          "z": 0.65,
+          "countPrev": 0,
+          "countCurr": 6,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.84,
+          "deltaPer10k": 4.84,
+          "distinctive": false
+        },
+        {
+          "term": "fremont factory",
+          "score": 6.46,
+          "z": 0.65,
+          "countPrev": 0,
+          "countCurr": 6,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.84,
+          "deltaPer10k": 4.84,
+          "distinctive": false
+        },
+        {
+          "term": "fsd features",
+          "score": 6.46,
+          "z": 0.65,
+          "countPrev": 0,
+          "countCurr": 6,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.84,
+          "deltaPer10k": 4.84,
+          "distinctive": false
+        },
+        {
+          "term": "berlin",
+          "score": 6.28,
+          "z": 0.63,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.04,
+          "deltaPer10k": 4.04,
+          "distinctive": false
+        },
+        {
+          "term": "gigafactory berlin",
+          "score": 6.28,
+          "z": 0.63,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.04,
+          "deltaPer10k": 4.04,
+          "distinctive": false
+        },
+        {
+          "term": "gigafactory new",
+          "score": 6.28,
+          "z": 0.63,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.04,
+          "deltaPer10k": 4.04,
+          "distinctive": false
+        },
+        {
+          "term": "epidemics",
+          "score": 5.77,
+          "z": 0.58,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.42,
+          "deltaPer10k": 2.42,
+          "distinctive": false
+        },
+        {
+          "term": "events outside",
+          "score": 5.77,
+          "z": 0.58,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.42,
+          "deltaPer10k": 2.42,
+          "distinctive": false
+        },
+        {
+          "term": "health epidemics",
+          "score": 5.77,
+          "z": 0.58,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.42,
+          "deltaPer10k": 2.42,
+          "distinctive": false
+        },
+        {
+          "term": "approved",
+          "score": 5.36,
+          "z": 0.53,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.61,
+          "deltaPer10k": 1.61,
+          "distinctive": false
+        },
+        {
+          "term": "china europe",
+          "score": 5.36,
+          "z": 0.53,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.61,
+          "deltaPer10k": 1.61,
+          "distinctive": false
+        },
+        {
+          "term": "delays meeting",
+          "score": 5.36,
+          "z": 0.53,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.61,
+          "deltaPer10k": 1.61,
+          "distinctive": false
+        },
+        {
+          "term": "depend ability",
+          "score": 5.36,
+          "z": 0.53,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.61,
+          "deltaPer10k": 1.61,
+          "distinctive": false
+        }
+      ],
+      "topFallers": [
+        {
+          "term": "plan",
+          "score": -6.95,
+          "z": -0.69,
+          "countPrev": 11,
+          "countCurr": 0,
+          "per10kPrev": 8.37,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -8.37,
+          "distinctive": false
+        },
+        {
+          "term": "years",
+          "score": -6.95,
+          "z": -0.69,
+          "countPrev": 11,
+          "countCurr": 0,
+          "per10kPrev": 8.37,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -8.37,
+          "distinctive": false
+        },
+        {
+          "term": "limited warranty",
+          "score": -6.75,
+          "z": -0.67,
+          "countPrev": 9,
+          "countCurr": 0,
+          "per10kPrev": 6.85,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -6.85,
+          "distinctive": false
+        },
+        {
+          "term": "commence",
+          "score": -6.49,
+          "z": -0.65,
+          "countPrev": 7,
+          "countCurr": 0,
+          "per10kPrev": 5.32,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.32,
+          "distinctive": false
+        },
+        {
+          "term": "drive unit",
+          "score": -6.34,
+          "z": -0.63,
+          "countPrev": 6,
+          "countCurr": 0,
+          "per10kPrev": 4.56,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.56,
+          "distinctive": false
+        },
+        {
+          "term": "tesla factory",
+          "score": -6.34,
+          "z": -0.63,
+          "countPrev": 6,
+          "countCurr": 0,
+          "per10kPrev": 4.56,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.56,
+          "distinctive": false
+        },
+        {
+          "term": "mile",
+          "score": -6.16,
+          "z": -0.62,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 3.8,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.8,
+          "distinctive": false
+        },
+        {
+          "term": "year mile",
+          "score": -6.16,
+          "z": -0.62,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 3.8,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.8,
+          "distinctive": false
+        },
+        {
+          "term": "battery drive",
+          "score": -5.94,
+          "z": -0.59,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.04,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.04,
+          "distinctive": false
+        },
+        {
+          "term": "local sourcing",
+          "score": -5.94,
+          "z": -0.59,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.04,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.04,
+          "distinctive": false
+        },
+        {
+          "term": "manufacturing activities",
+          "score": -5.94,
+          "z": -0.59,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.04,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.04,
+          "distinctive": false
+        },
+        {
+          "term": "mile limited",
+          "score": -5.94,
+          "z": -0.59,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.04,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.04,
+          "distinctive": false
+        },
+        {
+          "term": "sourcing",
+          "score": -5.94,
+          "z": -0.59,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.04,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.04,
+          "distinctive": false
+        },
+        {
+          "term": "sourcing manufacturing",
+          "score": -5.94,
+          "z": -0.59,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.04,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.04,
+          "distinctive": false
+        },
+        {
+          "term": "continue expand",
+          "score": -5.65,
+          "z": -0.56,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.28,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.28,
+          "distinctive": false
+        }
+      ],
+      "summary": "Adds emphasis on fsd, autopilot fsd, fremont; de-emphasizes plan, years, limited warranty.",
+      "topRisersAlt": [
+        {
+          "term": "gigafactory new",
+          "score": 6.18
+        },
+        {
+          "term": "addition certain",
+          "score": 5.48
+        },
+        {
+          "term": "business results operations",
+          "score": 5.48
+        },
+        {
+          "term": "changes business",
+          "score": 5.48
+        },
+        {
+          "term": "components model model",
+          "score": 5.48
+        },
+        {
+          "term": "future gigafactory",
+          "score": 5.48
+        },
+        {
+          "term": "including gigafactory",
+          "score": 5.48
+        },
+        {
+          "term": "manufacture battery",
+          "score": 5.48
+        },
+        {
+          "term": "market electric vehicles",
+          "score": 5.48
+        },
+        {
+          "term": "model model model",
+          "score": 5.48
+        },
+        {
+          "term": "operating results addition",
+          "score": 5.48
+        },
+        {
+          "term": "operating results particular",
+          "score": 5.48
+        },
+        {
+          "term": "operations including",
+          "score": 5.48
+        },
+        {
+          "term": "production ramp",
+          "score": 5.48
+        },
+        {
+          "term": "ramp gigafactory",
+          "score": 5.48
+        }
+      ],
+      "topFallersAlt": [
+        {
+          "term": "model production",
+          "score": -6.07
+        },
+        {
+          "term": "model vehicles",
+          "score": -6.07
+        },
+        {
+          "term": "battery cells",
+          "score": -5.84
+        },
+        {
+          "term": "model production gigafactory",
+          "score": -5.84
+        },
+        {
+          "term": "expect continue",
+          "score": -5.55
+        },
+        {
+          "term": "expect future",
+          "score": -5.55
+        },
+        {
+          "term": "model model vehicles",
+          "score": -5.55
+        },
+        {
+          "term": "operating results future",
+          "score": -5.55
+        },
+        {
+          "term": "production model",
+          "score": -5.55
+        },
+        {
+          "term": "subject number",
+          "score": -5.55
+        },
+        {
+          "term": "business operations",
+          "score": -5.15
+        },
+        {
+          "term": "certain suppliers",
+          "score": -5.15
+        },
+        {
+          "term": "components products",
+          "score": -5.15
+        },
+        {
+          "term": "costs cost",
+          "score": -5.15
+        },
+        {
+          "term": "customers suppliers",
+          "score": -5.15
+        }
+      ],
+      "summaryAlt": "Adds emphasis on gigafactory new, addition certain, business results operations; de-emphasizes model production, model vehicles, battery cells."
+    },
+    {
+      "from": 2019,
+      "to": 2020,
+      "topRisers": [
+        {
+          "term": "digital",
+          "score": 7.03,
+          "z": 0.7,
+          "countPrev": 0,
+          "countCurr": 11,
+          "per10kPrev": 0.0,
+          "per10kCurr": 9.15,
+          "deltaPer10k": 9.15,
+          "distinctive": false
+        },
+        {
+          "term": "digital assets",
+          "score": 7.03,
+          "z": 0.7,
+          "countPrev": 0,
+          "countCurr": 11,
+          "per10kPrev": 0.0,
+          "per10kCurr": 9.15,
+          "deltaPer10k": 9.15,
+          "distinctive": false
+        },
+        {
+          "term": "Pandemic",
+          "score": 6.72,
+          "z": 0.67,
+          "countPrev": 0,
+          "countCurr": 8,
+          "per10kPrev": 0.0,
+          "per10kCurr": 6.65,
+          "deltaPer10k": 6.65,
+          "distinctive": false,
+          "includes": [
+            "pandemic"
+          ]
+        },
+        {
+          "term": "COVID-19",
+          "score": 6.58,
+          "z": 0.66,
+          "countPrev": 0,
+          "countCurr": 7,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.82,
+          "deltaPer10k": 5.82,
+          "distinctive": false,
+          "includes": [
+            "covid"
+          ]
+        },
+        {
+          "term": "covid pandemic",
+          "score": 6.58,
+          "z": 0.66,
+          "countPrev": 0,
+          "countCurr": 7,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.82,
+          "deltaPer10k": 5.82,
+          "distinctive": false
+        },
+        {
+          "term": "temporarily",
+          "score": 6.25,
+          "z": 0.62,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.16,
+          "deltaPer10k": 4.16,
+          "distinctive": false
+        },
+        {
+          "term": "manufacturing processes",
+          "score": 6.02,
           "z": 0.6,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.23,
-          "deltaPer10k": 2.23,
+          "per10kCurr": 3.33,
+          "deltaPer10k": 3.33,
           "distinctive": false
         },
         {
-          "term": "berlin brandenburg",
-          "score": 5.76,
-          "z": 0.58,
+          "term": "texas",
+          "score": 6.02,
+          "z": 0.6,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.33,
+          "deltaPer10k": 3.33,
+          "distinctive": false
+        },
+        {
+          "term": "areas",
+          "score": 5.74,
+          "z": 0.57,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.67,
-          "deltaPer10k": 1.67,
+          "per10kCurr": 2.49,
+          "deltaPer10k": 2.49,
           "distinctive": false
         },
+        {
+          "term": "berlin gigafactory",
+          "score": 5.74,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.49,
+          "deltaPer10k": 2.49,
+          "distinctive": false
+        },
+        {
+          "term": "brand prospects",
+          "score": 5.74,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.49,
+          "deltaPer10k": 2.49,
+          "distinctive": false
+        },
+        {
+          "term": "gigafactory texas",
+          "score": 5.74,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.49,
+          "deltaPer10k": 2.49,
+          "distinctive": false
+        },
+        {
+          "term": "global covid",
+          "score": 5.74,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.49,
+          "deltaPer10k": 2.49,
+          "distinctive": false
+        },
+        {
+          "term": "impairment",
+          "score": 5.74,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.49,
+          "deltaPer10k": 2.49,
+          "distinctive": false
+        },
+        {
+          "term": "malicious",
+          "score": 5.74,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.49,
+          "deltaPer10k": 2.49,
+          "distinctive": false
+        }
+      ],
+      "topFallers": [
+        {
+          "term": "convertible notes",
+          "score": -7.62,
+          "z": -0.76,
+          "countPrev": 21,
+          "countCurr": 0,
+          "per10kPrev": 16.95,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -16.95,
+          "distinctive": false
+        },
+        {
+          "term": "tesla convertible",
+          "score": -6.88,
+          "z": -0.69,
+          "countPrev": 10,
+          "countCurr": 0,
+          "per10kPrev": 8.07,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -8.07,
+          "distinctive": false
+        },
+        {
+          "term": "adverse effect",
+          "score": -6.77,
+          "z": -0.68,
+          "countPrev": 9,
+          "countCurr": 0,
+          "per10kPrev": 7.26,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -7.26,
+          "distinctive": false
+        },
+        {
+          "term": "affect brand",
+          "score": -6.37,
+          "z": -0.64,
+          "countPrev": 6,
+          "countCurr": 0,
+          "per10kPrev": 4.84,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.84,
+          "distinctive": false
+        },
+        {
+          "term": "negatively affect",
+          "score": -6.37,
+          "z": -0.64,
+          "countPrev": 6,
+          "countCurr": 0,
+          "per10kPrev": 4.84,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.84,
+          "distinctive": false
+        },
+        {
+          "term": "continuously",
+          "score": -6.19,
+          "z": -0.62,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 4.04,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.04,
+          "distinctive": false
+        },
+        {
+          "term": "effect business",
+          "score": -6.19,
+          "z": -0.62,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 4.04,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.04,
+          "distinctive": false
+        },
+        {
+          "term": "inability",
+          "score": -6.19,
+          "z": -0.62,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 4.04,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.04,
+          "distinctive": false
+        },
+        {
+          "term": "notes subsidiary",
+          "score": -6.19,
+          "z": -0.62,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 4.04,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.04,
+          "distinctive": false
+        },
+        {
+          "term": "damage",
+          "score": -5.96,
+          "z": -0.6,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.23,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.23,
+          "distinctive": false
+        },
+        {
+          "term": "damage brand",
+          "score": -5.96,
+          "z": -0.6,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.23,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.23,
+          "distinctive": false
+        },
+        {
+          "term": "subsidiary convertible",
+          "score": -5.96,
+          "z": -0.6,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.23,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.23,
+          "distinctive": false
+        },
+        {
+          "term": "volume production",
+          "score": -5.96,
+          "z": -0.6,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.23,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.23,
+          "distinctive": false
+        },
+        {
+          "term": "automated",
+          "score": -5.68,
+          "z": -0.57,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.42,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.42,
+          "distinctive": false
+        },
+        {
+          "term": "brand harm",
+          "score": -5.68,
+          "z": -0.57,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.42,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.42,
+          "distinctive": false
+        }
+      ],
+      "summary": "Adds emphasis on digital, digital assets, Pandemic; de-emphasizes convertible notes, tesla convertible, adverse effect.",
+      "topRisersAlt": [
+        {
+          "term": "market price",
+          "score": 6.39
+        },
+        {
+          "term": "harm business financial",
+          "score": 6.1
+        },
+        {
+          "term": "harm financial",
+          "score": 6.1
+        },
+        {
+          "term": "operating results unable",
+          "score": 6.1
+        },
+        {
+          "term": "ability make",
+          "score": 5.69
+        },
+        {
+          "term": "certain operations",
+          "score": 5.69
+        },
+        {
+          "term": "costs harm business",
+          "score": 5.69
+        },
+        {
+          "term": "demand vehicles",
+          "score": 5.69
+        },
+        {
+          "term": "energy storage systems",
+          "score": 5.69
+        },
+        {
+          "term": "future products",
+          "score": 5.69
+        },
+        {
+          "term": "harm business",
+          "score": 5.69
+        },
+        {
+          "term": "new products",
+          "score": 5.69
+        },
+        {
+          "term": "new vehicles",
+          "score": 5.69
+        },
+        {
+          "term": "operating results risks",
+          "score": 5.69
+        },
+        {
+          "term": "operating results subject",
+          "score": 5.69
+        }
+      ],
+      "topFallersAlt": [
+        {
+          "term": "operating results financial",
+          "score": -6.21
+        },
+        {
+          "term": "limited experience",
+          "score": -5.64
+        },
+        {
+          "term": "manufacturing facilities",
+          "score": -5.64
+        },
+        {
+          "term": "results operations",
+          "score": -5.64
+        },
+        {
+          "term": "vehicles energy storage",
+          "score": -5.64
+        },
+        {
+          "term": "adversely impact business",
+          "score": -5.35
+        },
+        {
+          "term": "electric vehicle",
+          "score": -5.35
+        },
+        {
+          "term": "impact business",
+          "score": -5.35
+        },
+        {
+          "term": "solar energy systems",
+          "score": -5.35
+        },
+        {
+          "term": "business operating results",
+          "score": -4.94
+        },
+        {
+          "term": "business results operations",
+          "score": -4.94
+        },
+        {
+          "term": "certain components",
+          "score": -4.94
+        },
+        {
+          "term": "changes business",
+          "score": -4.94
+        },
+        {
+          "term": "components model model",
+          "score": -4.94
+        },
+        {
+          "term": "future gigafactory",
+          "score": -4.94
+        }
+      ],
+      "summaryAlt": "Adds emphasis on market price, harm business financial, harm financial; de-emphasizes operating results financial, limited experience, manufacturing facilities."
+    },
+    {
+      "from": 2020,
+      "to": 2021,
+      "topRisers": [
+        {
+          "term": "Climate change",
+          "score": 5.94,
+          "z": 0.59,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.16,
+          "deltaPer10k": 3.16,
+          "distinctive": false,
+          "includes": [
+            "climate change"
+          ]
+        },
+        {
+          "term": "esg",
+          "score": 5.94,
+          "z": 0.59,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.16,
+          "deltaPer10k": 3.16,
+          "distinctive": false
+        },
+        {
+          "term": "esg practices",
+          "score": 5.94,
+          "z": 0.59,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.16,
+          "deltaPer10k": 3.16,
+          "distinctive": false
+        },
+        {
+          "term": "incidents",
+          "score": 5.94,
+          "z": 0.59,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.16,
+          "deltaPer10k": 3.16,
+          "distinctive": false
+        },
+        {
+          "term": "scrutiny",
+          "score": 5.94,
+          "z": 0.59,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.16,
+          "deltaPer10k": 3.16,
+          "distinctive": false
+        },
+        {
+          "term": "climate",
+          "score": 5.66,
+          "z": 0.56,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.37,
+          "deltaPer10k": 2.37,
+          "distinctive": false
+        },
+        {
+          "term": "damage",
+          "score": 5.66,
+          "z": 0.56,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.37,
+          "deltaPer10k": 2.37,
+          "distinctive": false
+        },
+        {
+          "term": "musk technoking",
+          "score": 5.66,
+          "z": 0.56,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.37,
+          "deltaPer10k": 2.37,
+          "distinctive": false
+        },
+        {
+          "term": "security incidents",
+          "score": 5.66,
+          "z": 0.56,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.37,
+          "deltaPer10k": 2.37,
+          "distinctive": false
+        },
+        {
+          "term": "technoking",
+          "score": 5.66,
+          "z": 0.56,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.37,
+          "deltaPer10k": 2.37,
+          "distinctive": false
+        },
+        {
+          "term": "technoking tesla",
+          "score": 5.66,
+          "z": 0.56,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.37,
+          "deltaPer10k": 2.37,
+          "distinctive": false
+        },
+        {
+          "term": "tesla chief",
+          "score": 5.66,
+          "z": 0.56,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.37,
+          "deltaPer10k": 2.37,
+          "distinctive": false
+        },
+        {
+          "term": "Artificial intelligence",
+          "score": 5.25,
+          "z": 0.52,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.58,
+          "deltaPer10k": 1.58,
+          "distinctive": false,
+          "includes": [
+            "artificial intelligence"
+          ]
+        },
+        {
+          "term": "adverse publicity",
+          "score": 5.25,
+          "z": 0.52,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.58,
+          "deltaPer10k": 1.58,
+          "distinctive": false
+        },
+        {
+          "term": "allocate",
+          "score": 5.25,
+          "z": 0.52,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.58,
+          "deltaPer10k": 1.58,
+          "distinctive": false
+        }
+      ],
+      "topFallers": [
+        {
+          "term": "hedge",
+          "score": -6.04,
+          "z": -0.6,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.33,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.33,
+          "distinctive": false
+        },
+        {
+          "term": "began",
+          "score": -5.76,
+          "z": -0.57,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.49,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.49,
+          "distinctive": false
+        },
+        {
+          "term": "pursuant terms",
+          "score": -5.76,
+          "z": -0.57,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.49,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.49,
+          "distinctive": false
+        },
+        {
+          "term": "unknown",
+          "score": -5.76,
+          "z": -0.57,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.49,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.49,
+          "distinctive": false
+        },
+        {
+          "term": "conversion applicable",
+          "score": -5.35,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.66,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.66,
+          "distinctive": false
+        },
+        {
+          "term": "experiencing",
+          "score": -5.35,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.66,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.66,
+          "distinctive": false
+        },
+        {
+          "term": "hedge counterparties",
+          "score": -5.35,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.66,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.66,
+          "distinctive": false
+        },
+        {
+          "term": "holders convertible",
+          "score": -5.35,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.66,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.66,
+          "distinctive": false
+        },
+        {
+          "term": "notes entered",
+          "score": -5.35,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.66,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.66,
+          "distinctive": false
+        },
+        {
+          "term": "split",
+          "score": -5.35,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.66,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.66,
+          "distinctive": false
+        },
+        {
+          "term": "stock split",
+          "score": -5.35,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.66,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.66,
+          "distinctive": false
+        },
+        {
+          "term": "warrant",
+          "score": -5.35,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.66,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.66,
+          "distinctive": false
+        },
+        {
+          "term": "accepting",
+          "score": -4.67,
+          "z": -0.46,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 0.83,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -0.83,
+          "distinctive": false
+        },
+        {
+          "term": "accustomed",
+          "score": -4.67,
+          "z": -0.46,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 0.83,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -0.83,
+          "distinctive": false
+        },
+        {
+          "term": "addition hedge",
+          "score": -4.67,
+          "z": -0.46,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 0.83,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -0.83,
+          "distinctive": false
+        }
+      ],
+      "summary": "Adds emphasis on Climate change, esg, esg practices; de-emphasizes hedge, began, pursuant terms.",
+      "topRisersAlt": [
+        {
+          "term": "products services",
+          "score": 6.53
+        },
+        {
+          "term": "certain model model",
+          "score": 5.95
+        },
+        {
+          "term": "limited experience",
+          "score": 5.66
+        },
+        {
+          "term": "tesla vehicles",
+          "score": 5.66
+        },
+        {
+          "term": "assets time",
+          "score": 5.25
+        },
+        {
+          "term": "climate change",
+          "score": 5.25
+        },
+        {
+          "term": "energy storage sales",
+          "score": 5.25
+        },
+        {
+          "term": "energy systems",
+          "score": 5.25
+        },
+        {
+          "term": "manufacturing operations",
+          "score": 5.25
+        },
+        {
+          "term": "require significant",
+          "score": 5.25
+        },
+        {
+          "term": "results operations",
+          "score": 5.25
+        },
+        {
+          "term": "storage products",
+          "score": 5.25
+        },
+        {
+          "term": "vehicles energy storage",
+          "score": 5.25
+        },
+        {
+          "term": "artificial intelligence",
+          "score": 4.55
+        },
+        {
+          "term": "labor shortages",
+          "score": 4.55
+        }
+      ],
+      "topFallersAlt": [
+        {
+          "term": "electric vehicles",
+          "score": -6.66
+        },
+        {
+          "term": "solar energy storage",
+          "score": -6.5
+        },
+        {
+          "term": "market price",
+          "score": -6.09
+        },
+        {
+          "term": "gigafactory new",
+          "score": -5.79
+        },
+        {
+          "term": "production gigafactory",
+          "score": -5.79
+        },
+        {
+          "term": "new vehicles",
+          "score": -5.38
+        },
+        {
+          "term": "stock price",
+          "score": -5.38
+        },
+        {
+          "term": "storage systems",
+          "score": -5.38
+        },
+        {
+          "term": "model model",
+          "score": -0.79
+        },
+        {
+          "term": "market share",
+          "score": -0.76
+        },
+        {
+          "term": "energy storage products",
+          "score": -0.36
+        },
+        {
+          "term": "financial results",
+          "score": -0.23
+        },
+        {
+          "term": "product liability",
+          "score": -0.07
+        },
+        {
+          "term": "business financial",
+          "score": -0.07
+        },
+        {
+          "term": "products systems",
+          "score": -0.07
+        }
+      ],
+      "summaryAlt": "Adds emphasis on products services, certain model model, limited experience; de-emphasizes electric vehicles, solar energy storage, market price."
+    },
+    {
+      "from": 2021,
+      "to": 2022,
+      "topRisers": [
         {
           "term": "brandenburg",
-          "score": 5.76,
-          "z": 0.58,
-          "countPrev": 0,
-          "countCurr": 3,
-          "per10kPrev": 0.0,
-          "per10kCurr": 1.67,
-          "deltaPer10k": 1.67,
-          "distinctive": false
-        },
-        {
-          "term": "gender",
-          "score": 5.76,
-          "z": 0.58,
-          "countPrev": 0,
-          "countCurr": 3,
-          "per10kPrev": 0.0,
-          "per10kCurr": 1.67,
-          "deltaPer10k": 1.67,
-          "distinctive": false
-        },
-        {
-          "term": "inflation",
-          "score": 5.76,
-          "z": 0.58,
-          "countPrev": 0,
-          "countCurr": 3,
-          "per10kPrev": 0.0,
-          "per10kCurr": 1.67,
-          "deltaPer10k": 1.67,
-          "distinctive": false
-        },
-        {
-          "term": "orientation",
-          "score": 5.76,
-          "z": 0.58,
-          "countPrev": 0,
-          "countCurr": 3,
-          "per10kPrev": 0.0,
-          "per10kCurr": 1.67,
-          "deltaPer10k": 1.67,
-          "distinctive": false
-        },
-        {
-          "term": "passionate",
-          "score": 5.76,
-          "z": 0.58,
-          "countPrev": 0,
-          "countCurr": 3,
-          "per10kPrev": 0.0,
-          "per10kCurr": 1.67,
-          "deltaPer10k": 1.67,
-          "distinctive": false
-        },
-        {
-          "term": "questions",
-          "score": 5.76,
-          "z": 0.58,
-          "countPrev": 0,
-          "countCurr": 3,
-          "per10kPrev": 0.0,
-          "per10kCurr": 1.67,
-          "deltaPer10k": 1.67,
-          "distinctive": false
-        },
-        {
-          "term": "assistance systems",
-          "score": 5.36,
+          "score": 5.35,
           "z": 0.53,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.12,
-          "deltaPer10k": 1.12,
+          "per10kCurr": 1.66,
+          "deltaPer10k": 1.66,
           "distinctive": false
         },
         {
           "term": "certain routes",
-          "score": 5.36,
+          "score": 5.35,
           "z": 0.53,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.12,
-          "deltaPer10k": 1.12,
-          "distinctive": false
-        },
-        {
-          "term": "college",
-          "score": 5.36,
-          "z": 0.53,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 1.12,
-          "deltaPer10k": 1.12,
+          "per10kCurr": 1.66,
+          "deltaPer10k": 1.66,
           "distinctive": false
         },
         {
           "term": "conflict",
-          "score": 5.36,
+          "score": 5.35,
           "z": 0.53,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.12,
-          "deltaPer10k": 1.12,
+          "per10kCurr": 1.66,
+          "deltaPer10k": 1.66,
           "distinctive": false
         },
         {
-          "term": "crashes",
-          "score": 5.36,
+          "term": "export components",
+          "score": 5.35,
           "z": 0.53,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.12,
-          "deltaPer10k": 1.12,
+          "per10kCurr": 1.66,
+          "deltaPer10k": 1.66,
           "distinctive": false
         },
         {
-          "term": "crashes involving",
-          "score": 5.36,
+          "term": "faced",
+          "score": 5.35,
           "z": 0.53,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.12,
-          "deltaPer10k": 1.12,
+          "per10kCurr": 1.66,
+          "deltaPer10k": 1.66,
+          "distinctive": false
+        },
+        {
+          "term": "faced past",
+          "score": 5.35,
+          "z": 0.53,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.66,
+          "deltaPer10k": 1.66,
+          "distinctive": false
+        },
+        {
+          "term": "gigafactories",
+          "score": 5.35,
+          "z": 0.53,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.66,
+          "deltaPer10k": 1.66,
+          "distinctive": false
+        },
+        {
+          "term": "import export",
+          "score": 5.35,
+          "z": 0.53,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.66,
+          "deltaPer10k": 1.66,
+          "distinctive": false
+        },
+        {
+          "term": "ira",
+          "score": 5.35,
+          "z": 0.53,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.66,
+          "deltaPer10k": 1.66,
+          "distinctive": false
+        },
+        {
+          "term": "operated",
+          "score": 5.35,
+          "z": 0.53,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.66,
+          "deltaPer10k": 1.66,
+          "distinctive": false
+        },
+        {
+          "term": "operated human",
+          "score": 5.35,
+          "z": 0.53,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.66,
+          "deltaPer10k": 1.66,
+          "distinctive": false
+        },
+        {
+          "term": "past face",
+          "score": 5.35,
+          "z": 0.53,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.66,
+          "deltaPer10k": 1.66,
+          "distinctive": false
+        },
+        {
+          "term": "routes",
+          "score": 5.35,
+          "z": 0.53,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.66,
+          "deltaPer10k": 1.66,
+          "distinctive": false
+        },
+        {
+          "term": "satisfaction",
+          "score": 5.35,
+          "z": 0.53,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.66,
+          "deltaPer10k": 1.66,
+          "distinctive": false
+        },
+        {
+          "term": "split",
+          "score": 5.35,
+          "z": 0.53,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.66,
+          "deltaPer10k": 1.66,
           "distinctive": false
         }
       ],
@@ -178,9 +2046,9 @@
           "z": -0.7,
           "countPrev": 12,
           "countCurr": 0,
-          "per10kPrev": 6.35,
+          "per10kPrev": 9.49,
           "per10kCurr": 0.0,
-          "deltaPer10k": -6.35,
+          "deltaPer10k": -9.49,
           "distinctive": false
         },
         {
@@ -189,119 +2057,64 @@
           "z": -0.7,
           "countPrev": 12,
           "countCurr": 0,
-          "per10kPrev": 6.35,
+          "per10kPrev": 9.49,
           "per10kCurr": 0.0,
-          "deltaPer10k": -6.35,
+          "deltaPer10k": -9.49,
           "distinctive": false
         },
         {
-          "term": "granted",
-          "score": -6.35,
-          "z": -0.63,
-          "countPrev": 6,
+          "term": "conversion notes",
+          "score": -5.66,
+          "z": -0.56,
+          "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 3.17,
+          "per10kPrev": 2.37,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.17,
+          "deltaPer10k": -2.37,
+          "distinctive": false
+        },
+        {
+          "term": "decrease",
+          "score": -5.66,
+          "z": -0.56,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.37,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.37,
           "distinctive": false
         },
         {
           "term": "suspended",
-          "score": -5.94,
-          "z": -0.59,
-          "countPrev": 4,
-          "countCurr": 0,
-          "per10kPrev": 2.12,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -2.12,
-          "distinctive": false
-        },
-        {
-          "term": "county",
-          "score": -5.65,
+          "score": -5.66,
           "z": -0.56,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 1.59,
+          "per10kPrev": 2.37,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.59,
+          "deltaPer10k": -2.37,
           "distinctive": false
         },
         {
-          "term": "diversity",
-          "score": -5.65,
-          "z": -0.56,
-          "countPrev": 3,
-          "countCurr": 0,
-          "per10kPrev": 1.59,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.59,
-          "distinctive": false
-        },
-        {
-          "term": "income",
-          "score": -5.65,
-          "z": -0.56,
-          "countPrev": 3,
-          "countCurr": 0,
-          "per10kPrev": 1.59,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.59,
-          "distinctive": false
-        },
-        {
-          "term": "sensors",
-          "score": -5.65,
-          "z": -0.56,
-          "countPrev": 3,
-          "countCurr": 0,
-          "per10kPrev": 1.59,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.59,
-          "distinctive": false
-        },
-        {
-          "term": "wages",
-          "score": -5.65,
-          "z": -0.56,
-          "countPrev": 3,
-          "countCurr": 0,
-          "per10kPrev": 1.59,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.59,
-          "distinctive": false
-        },
-        {
-          "term": "amendment",
+          "term": "april temporarily",
           "score": -5.25,
           "z": -0.52,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.06,
+          "per10kPrev": 1.58,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.06,
+          "deltaPer10k": -1.58,
           "distinctive": false
         },
         {
-          "term": "bay",
+          "term": "berlin gigafactory",
           "score": -5.25,
           "z": -0.52,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.06,
+          "per10kPrev": 1.58,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.06,
-          "distinctive": false
-        },
-        {
-          "term": "begin",
-          "score": -5.25,
-          "z": -0.52,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 1.06,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.06,
+          "deltaPer10k": -1.58,
           "distinctive": false
         },
         {
@@ -310,20 +2123,9 @@
           "z": -0.52,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.06,
+          "per10kPrev": 1.58,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.06,
-          "distinctive": false
-        },
-        {
-          "term": "black",
-          "score": -5.25,
-          "z": -0.52,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 1.06,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.06,
+          "deltaPer10k": -1.58,
           "distinctive": false
         },
         {
@@ -332,138 +2134,204 @@
           "z": -0.52,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.06,
+          "per10kPrev": 1.58,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.06,
+          "deltaPer10k": -1.58,
+          "distinctive": false
+        },
+        {
+          "term": "depress",
+          "score": -5.25,
+          "z": -0.52,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.58,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.58,
+          "distinctive": false
+        },
+        {
+          "term": "depress price",
+          "score": -5.25,
+          "z": -0.52,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.58,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.58,
+          "distinctive": false
+        },
+        {
+          "term": "design engineering",
+          "score": -5.25,
+          "z": -0.52,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.58,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.58,
+          "distinctive": false
+        },
+        {
+          "term": "dilute",
+          "score": -5.25,
+          "z": -0.52,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.58,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.58,
+          "distinctive": false
+        },
+        {
+          "term": "dilute ownership",
+          "score": -5.25,
+          "z": -0.52,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.58,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.58,
+          "distinctive": false
+        },
+        {
+          "term": "existence",
+          "score": -5.25,
+          "z": -0.52,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.58,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.58,
           "distinctive": false
         }
       ],
-      "summary": "Adds emphasis on ira, tesla start, berlin brandenburg; de-emphasizes digital, digital assets, granted.",
+      "summary": "Adds emphasis on brandenburg, certain routes, conflict; de-emphasizes digital, digital assets, conversion notes.",
       "topRisersAlt": [
         {
-          "term": "harm business",
-          "score": 6.15
-        },
-        {
-          "term": "harm business financial",
-          "score": 5.86
-        },
-        {
-          "term": "harm financial",
-          "score": 5.86
-        },
-        {
-          "term": "battery energy storage",
-          "score": 5.45
-        },
-        {
-          "term": "costs harm business",
-          "score": 5.45
-        },
-        {
-          "term": "customers continue",
-          "score": 5.45
-        },
-        {
-          "term": "customers currently",
-          "score": 5.45
-        },
-        {
-          "term": "electric vehicles market",
-          "score": 5.45
-        },
-        {
-          "term": "features services",
-          "score": 5.45
-        },
-        {
-          "term": "operating results risks",
-          "score": 5.45
+          "term": "management systems",
+          "score": 5.39
         },
         {
           "term": "production addition",
-          "score": 5.45
+          "score": 5.39
+        },
+        {
+          "term": "products systems data",
+          "score": 5.39
         },
         {
           "term": "regulations continue",
-          "score": 5.45
+          "score": 5.39
         },
         {
-          "term": "risks related",
-          "score": 5.45
+          "term": "supply demand",
+          "score": 5.39
         },
         {
-          "term": "various financial",
-          "score": 5.45
+          "term": "vehicles certain",
+          "score": 5.39
         },
         {
-          "term": "vehicle systems",
-          "score": 5.45
+          "term": "vehicles market",
+          "score": 5.39
+        },
+        {
+          "term": "data privacy",
+          "score": 4.7
+        },
+        {
+          "term": "interest rates",
+          "score": 4.7
+        },
+        {
+          "term": "privacy regulation",
+          "score": 4.7
+        },
+        {
+          "term": "time time",
+          "score": 0.6
+        },
+        {
+          "term": "harm business",
+          "score": 0.49
+        },
+        {
+          "term": "vehicles energy storage",
+          "score": 0.49
+        },
+        {
+          "term": "supply chain",
+          "score": 0.24
+        },
+        {
+          "term": "intellectual property",
+          "score": 0.08
         }
       ],
       "topFallersAlt": [
         {
           "term": "model model",
-          "score": -7.15
-        },
-        {
-          "term": "gigafactory new",
-          "score": -6.09
+          "score": -6.17
         },
         {
           "term": "certain model model",
-          "score": -5.87
+          "score": -5.94
+        },
+        {
+          "term": "limited experience",
+          "score": -5.65
+        },
+        {
+          "term": "ability make",
+          "score": -5.24
+        },
+        {
+          "term": "assets time",
+          "score": -5.24
+        },
+        {
+          "term": "business future",
+          "score": -5.24
         },
         {
           "term": "manufacturing operations",
-          "score": -5.58
+          "score": -5.24
         },
         {
-          "term": "related costs",
-          "score": -5.58
+          "term": "production sales",
+          "score": -5.24
         },
         {
-          "term": "energy performance requirements",
-          "score": -5.17
+          "term": "sales model",
+          "score": -5.24
         },
         {
-          "term": "future products",
-          "score": -5.17
+          "term": "vehicle production",
+          "score": -5.24
         },
         {
-          "term": "including result",
-          "score": -5.17
+          "term": "products systems",
+          "score": -0.62
         },
         {
-          "term": "manufacturing operations gigafactory",
-          "score": -5.17
+          "term": "energy storage products",
+          "score": -0.33
         },
         {
-          "term": "new products",
-          "score": -5.17
+          "term": "operating results unable",
+          "score": -0.33
         },
         {
-          "term": "new tesla",
-          "score": -5.17
+          "term": "energy storage systems",
+          "score": -0.21
         },
         {
-          "term": "operations gigafactory",
-          "score": -5.17
-        },
-        {
-          "term": "performance cost",
-          "score": -5.17
-        },
-        {
-          "term": "production model model",
-          "score": -5.17
-        },
-        {
-          "term": "production products",
-          "score": -5.17
+          "term": "operating results",
+          "score": -0.1
         }
       ],
-      "summaryAlt": "Adds emphasis on harm business, harm business financial, harm financial; de-emphasizes model model, gigafactory new, certain model model."
+      "summaryAlt": "Adds emphasis on management systems, production addition, products systems data; de-emphasizes model model, certain model model, limited experience."
     },
     {
       "from": 2022,
@@ -471,463 +2339,463 @@
       "topRisers": [
         {
           "term": "table",
-          "score": 7.82,
-          "z": 0.78,
+          "score": 7.29,
+          "z": 0.73,
           "countPrev": 0,
-          "countCurr": 25,
+          "countCurr": 14,
           "per10kPrev": 0.0,
-          "per10kCurr": 13.86,
-          "deltaPer10k": 13.86,
+          "per10kCurr": 12.11,
+          "deltaPer10k": 12.11,
           "distinctive": false
         },
         {
           "term": "table contents",
-          "score": 7.82,
-          "z": 0.78,
+          "score": 7.29,
+          "z": 0.73,
           "countPrev": 0,
-          "countCurr": 25,
+          "countCurr": 14,
           "per10kPrev": 0.0,
-          "per10kCurr": 13.86,
-          "deltaPer10k": 13.86,
+          "per10kCurr": 12.11,
+          "deltaPer10k": 12.11,
           "distinctive": false
         },
         {
-          "term": "nacs",
-          "score": 5.99,
-          "z": 0.6,
+          "term": "jurisdiction",
+          "score": 5.34,
+          "z": 0.53,
           "countPrev": 0,
-          "countCurr": 4,
+          "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.22,
-          "deltaPer10k": 2.22,
+          "per10kCurr": 1.73,
+          "deltaPer10k": 1.73,
           "distinctive": false
         },
         {
-          "term": "job",
-          "score": 5.7,
-          "z": 0.57,
+          "term": "add",
+          "score": 4.65,
+          "z": 0.46,
           "countPrev": 0,
-          "countCurr": 3,
+          "countCurr": 1,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.66,
-          "deltaPer10k": 1.66,
-          "distinctive": false
-        },
-        {
-          "term": "military",
-          "score": 5.7,
-          "z": 0.57,
-          "countPrev": 0,
-          "countCurr": 3,
-          "per10kPrev": 0.0,
-          "per10kCurr": 1.66,
-          "deltaPer10k": 1.66,
-          "distinctive": false
-        },
-        {
-          "term": "pickup",
-          "score": 5.7,
-          "z": 0.57,
-          "countPrev": 0,
-          "countCurr": 3,
-          "per10kPrev": 0.0,
-          "per10kCurr": 1.66,
-          "deltaPer10k": 1.66,
-          "distinctive": false
-        },
-        {
-          "term": "sell directly",
-          "score": 5.7,
-          "z": 0.57,
-          "countPrev": 0,
-          "countCurr": 3,
-          "per10kPrev": 0.0,
-          "per10kCurr": 1.66,
-          "deltaPer10k": 1.66,
-          "distinctive": false
-        },
-        {
-          "term": "technician trainee",
-          "score": 5.7,
-          "z": 0.57,
-          "countPrev": 0,
-          "countCurr": 3,
-          "per10kPrev": 0.0,
-          "per10kCurr": 1.66,
-          "deltaPer10k": 1.66,
-          "distinctive": false
-        },
-        {
-          "term": "trainee",
-          "score": 5.7,
-          "z": 0.57,
-          "countPrev": 0,
-          "countCurr": 3,
-          "per10kPrev": 0.0,
-          "per10kCurr": 1.66,
-          "deltaPer10k": 1.66,
-          "distinctive": false
-        },
-        {
-          "term": "trainees",
-          "score": 5.7,
-          "z": 0.57,
-          "countPrev": 0,
-          "countCurr": 3,
-          "per10kPrev": 0.0,
-          "per10kCurr": 1.66,
-          "deltaPer10k": 1.66,
-          "distinctive": false
-        },
-        {
-          "term": "truck",
-          "score": 5.7,
-          "z": 0.57,
-          "countPrev": 0,
-          "countCurr": 3,
-          "per10kPrev": 0.0,
-          "per10kCurr": 1.66,
-          "deltaPer10k": 1.66,
+          "per10kCurr": 0.87,
+          "deltaPer10k": 0.87,
           "distinctive": false
         },
         {
           "term": "american",
-          "score": 5.3,
-          "z": 0.53,
+          "score": 4.65,
+          "z": 0.46,
           "countPrev": 0,
-          "countCurr": 2,
+          "countCurr": 1,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.11,
-          "deltaPer10k": 1.11,
+          "per10kCurr": 0.87,
+          "deltaPer10k": 0.87,
+          "distinctive": false
+        },
+        {
+          "term": "base",
+          "score": 4.65,
+          "z": 0.46,
+          "countPrev": 0,
+          "countCurr": 1,
+          "per10kPrev": 0.0,
+          "per10kCurr": 0.87,
+          "deltaPer10k": 0.87,
+          "distinctive": false
+        },
+        {
+          "term": "brands",
+          "score": 4.65,
+          "z": 0.46,
+          "countPrev": 0,
+          "countCurr": 1,
+          "per10kPrev": 0.0,
+          "per10kCurr": 0.87,
+          "deltaPer10k": 0.87,
+          "distinctive": false
+        },
+        {
+          "term": "case",
+          "score": 4.65,
+          "z": 0.46,
+          "countPrev": 0,
+          "countCurr": 1,
+          "per10kPrev": 0.0,
+          "per10kCurr": 0.87,
+          "deltaPer10k": 0.87,
+          "distinctive": false
+        },
+        {
+          "term": "cause incur",
+          "score": 4.65,
+          "z": 0.46,
+          "countPrev": 0,
+          "countCurr": 1,
+          "per10kPrev": 0.0,
+          "per10kCurr": 0.87,
+          "deltaPer10k": 0.87,
+          "distinctive": false
+        },
+        {
+          "term": "certain aspects",
+          "score": 4.65,
+          "z": 0.46,
+          "countPrev": 0,
+          "countCurr": 1,
+          "per10kPrev": 0.0,
+          "per10kCurr": 0.87,
+          "deltaPer10k": 0.87,
+          "distinctive": false
+        },
+        {
+          "term": "chairman",
+          "score": 4.65,
+          "z": 0.46,
+          "countPrev": 0,
+          "countCurr": 1,
+          "per10kPrev": 0.0,
+          "per10kCurr": 0.87,
+          "deltaPer10k": 0.87,
+          "distinctive": false
+        },
+        {
+          "term": "commentary",
+          "score": 4.65,
+          "z": 0.46,
+          "countPrev": 0,
+          "countCurr": 1,
+          "per10kPrev": 0.0,
+          "per10kCurr": 0.87,
+          "deltaPer10k": 0.87,
           "distinctive": false
         },
         {
           "term": "confidential",
-          "score": 5.3,
-          "z": 0.53,
+          "score": 4.65,
+          "z": 0.46,
           "countPrev": 0,
-          "countCurr": 2,
+          "countCurr": 1,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.11,
-          "deltaPer10k": 1.11,
+          "per10kCurr": 0.87,
+          "deltaPer10k": 0.87,
           "distinctive": false
         },
         {
-          "term": "confidential information",
-          "score": 5.3,
-          "z": 0.53,
+          "term": "confidentiality",
+          "score": 4.65,
+          "z": 0.46,
           "countPrev": 0,
-          "countCurr": 2,
+          "countCurr": 1,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.11,
-          "deltaPer10k": 1.11,
+          "per10kCurr": 0.87,
+          "deltaPer10k": 0.87,
           "distinctive": false
         },
         {
-          "term": "consolidated statements",
-          "score": 5.3,
-          "z": 0.53,
+          "term": "consequence",
+          "score": 4.65,
+          "z": 0.46,
           "countPrev": 0,
-          "countCurr": 2,
+          "countCurr": 1,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.11,
-          "deltaPer10k": 1.11,
+          "per10kCurr": 0.87,
+          "deltaPer10k": 0.87,
           "distinctive": false
         }
       ],
       "topFallers": [
         {
           "term": "settlement",
-          "score": -6.22,
+          "score": -6.18,
           "z": -0.62,
           "countPrev": 5,
           "countCurr": 0,
-          "per10kPrev": 2.79,
+          "per10kPrev": 4.16,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.79,
+          "deltaPer10k": -4.16,
+          "distinctive": false
+        },
+        {
+          "term": "court",
+          "score": -5.95,
+          "z": -0.59,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.33,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.33,
           "distinctive": false
         },
         {
           "term": "appointed",
-          "score": -5.31,
+          "score": -5.26,
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.12,
+          "per10kPrev": 1.66,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.12,
+          "deltaPer10k": -1.66,
+          "distinctive": false
+        },
+        {
+          "term": "august",
+          "score": -5.26,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.66,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.66,
+          "distinctive": false
+        },
+        {
+          "term": "berlin",
+          "score": -5.26,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.66,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.66,
+          "distinctive": false
+        },
+        {
+          "term": "brandenburg",
+          "score": -5.26,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.66,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.66,
           "distinctive": false
         },
         {
           "term": "chinese",
-          "score": -5.31,
+          "score": -5.26,
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.12,
+          "per10kPrev": 1.66,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.12,
+          "deltaPer10k": -1.66,
           "distinctive": false
         },
         {
           "term": "chinese yuan",
-          "score": -5.31,
+          "score": -5.26,
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.12,
+          "per10kPrev": 1.66,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.12,
+          "deltaPer10k": -1.66,
           "distinctive": false
         },
         {
           "term": "circuit",
-          "score": -5.31,
+          "score": -5.26,
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.12,
+          "per10kPrev": 1.66,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.12,
+          "deltaPer10k": -1.66,
+          "distinctive": false
+        },
+        {
+          "term": "created",
+          "score": -5.26,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.66,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.66,
           "distinctive": false
         },
         {
           "term": "decision",
-          "score": -5.31,
+          "score": -5.26,
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.12,
+          "per10kPrev": 1.66,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.12,
+          "deltaPer10k": -1.66,
           "distinctive": false
         },
         {
           "term": "district",
-          "score": -5.31,
+          "score": -5.26,
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.12,
+          "per10kPrev": 1.66,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.12,
+          "deltaPer10k": -1.66,
           "distinctive": false
         },
         {
-          "term": "example model",
-          "score": -5.31,
+          "term": "gigafactory berlin",
+          "score": -5.26,
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.12,
+          "per10kPrev": 1.66,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.12,
+          "deltaPer10k": -1.66,
+          "distinctive": false
+        },
+        {
+          "term": "ira",
+          "score": -5.26,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.66,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.66,
           "distinctive": false
         },
         {
           "term": "lack",
-          "score": -5.31,
+          "score": -5.26,
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.12,
+          "per10kPrev": 1.66,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.12,
-          "distinctive": false
-        },
-        {
-          "term": "lack compliance",
-          "score": -5.31,
-          "z": -0.53,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 1.12,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.12,
-          "distinctive": false
-        },
-        {
-          "term": "media coverage",
-          "score": -5.31,
-          "z": -0.53,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 1.12,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.12,
-          "distinctive": false
-        },
-        {
-          "term": "pathways",
-          "score": -5.31,
-          "z": -0.53,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 1.12,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.12,
-          "distinctive": false
-        },
-        {
-          "term": "person",
-          "score": -5.31,
-          "z": -0.53,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 1.12,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.12,
-          "distinctive": false
-        },
-        {
-          "term": "september",
-          "score": -5.31,
-          "z": -0.53,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 1.12,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.12,
-          "distinctive": false
-        },
-        {
-          "term": "shutdowns",
-          "score": -5.31,
-          "z": -0.53,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 1.12,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.12,
+          "deltaPer10k": -1.66,
           "distinctive": false
         }
       ],
-      "summary": "Adds emphasis on table, table contents, nacs; de-emphasizes settlement, appointed, chinese.",
+      "summary": "Adds emphasis on table, table contents, jurisdiction; de-emphasizes settlement, court, appointed.",
       "topRisersAlt": [
         {
-          "term": "table contents",
-          "score": 7.09
+          "term": "electric vehicles",
+          "score": 6.5
         },
         {
-          "term": "demand vehicles",
-          "score": 5.27
+          "term": "information technology systems",
+          "score": 5.92
         },
         {
-          "term": "future products",
-          "score": 5.27
+          "term": "ability make",
+          "score": 5.22
         },
         {
-          "term": "future significant",
-          "score": 5.27
+          "term": "changes business",
+          "score": 5.22
+        },
+        {
+          "term": "electric vehicles market",
+          "score": 5.22
+        },
+        {
+          "term": "information technology",
+          "score": 5.22
         },
         {
           "term": "market vehicles",
-          "score": 5.27
-        },
-        {
-          "term": "new products",
-          "score": 5.27
-        },
-        {
-          "term": "new vehicle",
-          "score": 5.27
-        },
-        {
-          "term": "operating results unable",
-          "score": 5.27
-        },
-        {
-          "term": "production products",
-          "score": 5.27
-        },
-        {
-          "term": "products use",
-          "score": 5.27
+          "score": 5.22
         },
         {
           "term": "result significant",
-          "score": 5.27
+          "score": 5.22
         },
         {
-          "term": "solar energy companies",
-          "score": 5.27
+          "term": "data privacy",
+          "score": 0.6
         },
         {
-          "term": "subject significant",
-          "score": 5.27
+          "term": "energy storage products",
+          "score": 0.31
         },
         {
-          "term": "supply demand",
-          "score": 5.27
+          "term": "risks related",
+          "score": 0.31
         },
         {
-          "term": "table contents energy",
-          "score": 5.27
+          "term": "intellectual property",
+          "score": 0.08
+        },
+        {
+          "term": "laws regulations",
+          "score": 0.06
+        },
+        {
+          "term": "products services",
+          "score": 0.04
+        },
+        {
+          "term": "artificial intelligence",
+          "score": -0.1
         }
       ],
       "topFallersAlt": [
         {
-          "term": "features services",
-          "score": -5.35
-        },
-        {
-          "term": "operating results risks",
-          "score": -5.35
-        },
-        {
-          "term": "product design",
-          "score": -5.35
-        },
-        {
           "term": "production addition",
-          "score": -5.35
+          "score": -5.41
         },
         {
           "term": "regulations continue",
-          "score": -5.35
+          "score": -5.41
         },
         {
-          "term": "risks related",
-          "score": -5.35
+          "term": "supply demand",
+          "score": -5.41
         },
         {
-          "term": "various financial",
-          "score": -5.35
-        },
-        {
-          "term": "vehicle service",
-          "score": -5.35
-        },
-        {
-          "term": "vehicles customers",
-          "score": -5.35
+          "term": "vehicles market",
+          "score": -5.41
         },
         {
           "term": "labor shortages",
-          "score": -4.66
+          "score": -4.72
         },
         {
           "term": "harm business",
-          "score": -0.74
+          "score": -0.51
         },
         {
-          "term": "solar energy",
+          "term": "vehicles energy storage",
           "score": -0.51
         },
         {
           "term": "supply chain",
-          "score": -0.3
+          "score": -0.45
+        },
+        {
+          "term": "operating results",
+          "score": -0.18
+        },
+        {
+          "term": "financial results",
+          "score": -0.1
+        },
+        {
+          "term": "product liability",
+          "score": -0.1
+        },
+        {
+          "term": "time time",
+          "score": -0.1
         },
         {
           "term": "business financial",
-          "score": -0.27
+          "score": -0.1
         },
         {
-          "term": "electric vehicles",
-          "score": -0.25
+          "term": "addition certain",
+          "score": -0.1
+        },
+        {
+          "term": "energy storage systems",
+          "score": -0.1
         }
       ],
-      "summaryAlt": "Adds emphasis on table contents, demand vehicles, future products; de-emphasizes features services, operating results risks, product design."
+      "summaryAlt": "Adds emphasis on electric vehicles, information technology systems, ability make; de-emphasizes production addition, regulations continue, supply demand."
     },
     {
       "from": 2023,
@@ -935,463 +2803,469 @@
       "topRisers": [
         {
           "term": "fsd supervised",
-          "score": 6.78,
-          "z": 0.68,
+          "score": 6.22,
+          "z": 0.62,
           "countPrev": 0,
-          "countCurr": 9,
+          "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.89,
-          "deltaPer10k": 4.89,
+          "per10kCurr": 4.36,
+          "deltaPer10k": 4.36,
           "distinctive": false
         },
         {
           "term": "supervised",
-          "score": 6.78,
-          "z": 0.68,
+          "score": 6.22,
+          "z": 0.62,
           "countPrev": 0,
-          "countCurr": 9,
+          "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.89,
-          "deltaPer10k": 4.89,
+          "per10kCurr": 4.36,
+          "deltaPer10k": 4.36,
           "distinctive": false
         },
         {
-          "term": "collision",
-          "score": 5.97,
-          "z": 0.6,
-          "countPrev": 0,
-          "countCurr": 4,
-          "per10kPrev": 0.0,
-          "per10kCurr": 2.17,
-          "deltaPer10k": 2.17,
-          "distinctive": false
-        },
-        {
-          "term": "supervised features",
-          "score": 5.97,
-          "z": 0.6,
-          "countPrev": 0,
-          "countCurr": 4,
-          "per10kPrev": 0.0,
-          "per10kCurr": 2.17,
-          "deltaPer10k": 2.17,
-          "distinctive": false
-        },
-        {
-          "term": "veterans",
-          "score": 5.97,
-          "z": 0.6,
-          "countPrev": 0,
-          "countCurr": 4,
-          "per10kPrev": 0.0,
-          "per10kCurr": 2.17,
-          "deltaPer10k": 2.17,
-          "distinctive": false
-        },
-        {
-          "term": "committee",
-          "score": 5.69,
-          "z": 0.57,
-          "countPrev": 0,
-          "countCurr": 3,
-          "per10kPrev": 0.0,
-          "per10kCurr": 1.63,
-          "deltaPer10k": 1.63,
-          "distinctive": false
-        },
-        {
-          "term": "completion",
-          "score": 5.69,
-          "z": 0.57,
-          "countPrev": 0,
-          "countCurr": 3,
-          "per10kPrev": 0.0,
-          "per10kCurr": 1.63,
-          "deltaPer10k": 1.63,
-          "distinctive": false
-        },
-        {
-          "term": "disabilities",
-          "score": 5.69,
-          "z": 0.57,
-          "countPrev": 0,
-          "countCurr": 3,
-          "per10kPrev": 0.0,
-          "per10kCurr": 1.63,
-          "deltaPer10k": 1.63,
-          "distinctive": false
-        },
-        {
-          "term": "enhance",
-          "score": 5.69,
-          "z": 0.57,
-          "countPrev": 0,
-          "countCurr": 3,
-          "per10kPrev": 0.0,
-          "per10kCurr": 1.63,
-          "deltaPer10k": 1.63,
-          "distinctive": false
-        },
-        {
-          "term": "flexlearn",
-          "score": 5.69,
-          "z": 0.57,
-          "countPrev": 0,
-          "countCurr": 3,
-          "per10kPrev": 0.0,
-          "per10kCurr": 1.63,
-          "deltaPer10k": 1.63,
-          "distinctive": false
-        },
-        {
-          "term": "learning",
-          "score": 5.69,
-          "z": 0.57,
-          "countPrev": 0,
-          "countCurr": 3,
-          "per10kPrev": 0.0,
-          "per10kCurr": 1.63,
-          "deltaPer10k": 1.63,
-          "distinctive": false
-        },
-        {
-          "term": "study",
-          "score": 5.69,
-          "z": 0.57,
-          "countPrev": 0,
-          "countCurr": 3,
-          "per10kPrev": 0.0,
-          "per10kCurr": 1.63,
-          "deltaPer10k": 1.63,
-          "distinctive": false
-        },
-        {
-          "term": "aims",
-          "score": 5.28,
+          "term": "customer demand",
+          "score": 5.31,
           "z": 0.53,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.09,
-          "deltaPer10k": 1.09,
+          "per10kCurr": 1.74,
+          "deltaPer10k": 1.74,
           "distinctive": false
         },
         {
-          "term": "careers",
-          "score": 5.28,
+          "term": "liabilities",
+          "score": 5.31,
           "z": 0.53,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.09,
-          "deltaPer10k": 1.09,
+          "per10kCurr": 1.74,
+          "deltaPer10k": 1.74,
           "distinctive": false
         },
         {
-          "term": "contribute",
-          "score": 5.28,
-          "z": 0.53,
+          "term": "acceleration",
+          "score": 4.62,
+          "z": 0.46,
           "countPrev": 0,
-          "countCurr": 2,
+          "countCurr": 1,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.09,
-          "deltaPer10k": 1.09,
+          "per10kCurr": 0.87,
+          "deltaPer10k": 0.87,
+          "distinctive": false
+        },
+        {
+          "term": "agreed",
+          "score": 4.62,
+          "z": 0.46,
+          "countPrev": 0,
+          "countCurr": 1,
+          "per10kPrev": 0.0,
+          "per10kCurr": 0.87,
+          "deltaPer10k": 0.87,
+          "distinctive": false
+        },
+        {
+          "term": "arrangement",
+          "score": 4.62,
+          "z": 0.46,
+          "countPrev": 0,
+          "countCurr": 1,
+          "per10kPrev": 0.0,
+          "per10kCurr": 0.87,
+          "deltaPer10k": 0.87,
+          "distinctive": false
+        },
+        {
+          "term": "autonomous",
+          "score": 4.62,
+          "z": 0.46,
+          "countPrev": 0,
+          "countCurr": 1,
+          "per10kPrev": 0.0,
+          "per10kCurr": 0.87,
+          "deltaPer10k": 0.87,
+          "distinctive": false
+        },
+        {
+          "term": "balances",
+          "score": 4.62,
+          "z": 0.46,
+          "countPrev": 0,
+          "countCurr": 1,
+          "per10kPrev": 0.0,
+          "per10kCurr": 0.87,
+          "deltaPer10k": 0.87,
+          "distinctive": false
+        },
+        {
+          "term": "boring",
+          "score": 4.62,
+          "z": 0.46,
+          "countPrev": 0,
+          "countCurr": 1,
+          "per10kPrev": 0.0,
+          "per10kCurr": 0.87,
+          "deltaPer10k": 0.87,
+          "distinctive": false
+        },
+        {
+          "term": "channels",
+          "score": 4.62,
+          "z": 0.46,
+          "countPrev": 0,
+          "countCurr": 1,
+          "per10kPrev": 0.0,
+          "per10kCurr": 0.87,
+          "deltaPer10k": 0.87,
+          "distinctive": false
+        },
+        {
+          "term": "code",
+          "score": 4.62,
+          "z": 0.46,
+          "countPrev": 0,
+          "countCurr": 1,
+          "per10kPrev": 0.0,
+          "per10kCurr": 0.87,
+          "deltaPer10k": 0.87,
+          "distinctive": false
+        },
+        {
+          "term": "consisting",
+          "score": 4.62,
+          "z": 0.46,
+          "countPrev": 0,
+          "countCurr": 1,
+          "per10kPrev": 0.0,
+          "per10kCurr": 0.87,
+          "deltaPer10k": 0.87,
+          "distinctive": false
+        },
+        {
+          "term": "equivalents",
+          "score": 4.62,
+          "z": 0.46,
+          "countPrev": 0,
+          "countCurr": 1,
+          "per10kPrev": 0.0,
+          "per10kCurr": 0.87,
+          "deltaPer10k": 0.87,
+          "distinctive": false
+        },
+        {
+          "term": "formation",
+          "score": 4.62,
+          "z": 0.46,
+          "countPrev": 0,
+          "countCurr": 1,
+          "per10kPrev": 0.0,
+          "per10kCurr": 0.87,
+          "deltaPer10k": 0.87,
           "distinctive": false
         }
       ],
       "topFallers": [
         {
-          "term": "capability features",
-          "score": -6.01,
-          "z": -0.6,
-          "countPrev": 4,
+          "term": "fsd capability",
+          "score": -6.21,
+          "z": -0.62,
+          "countPrev": 5,
           "countCurr": 0,
-          "per10kPrev": 2.22,
+          "per10kPrev": 4.33,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.22,
+          "deltaPer10k": -4.33,
           "distinctive": false
         },
         {
           "term": "notes",
-          "score": -6.01,
+          "score": -5.99,
           "z": -0.6,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 2.22,
+          "per10kPrev": 3.46,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.22,
+          "deltaPer10k": -3.46,
+          "distinctive": false
+        },
+        {
+          "term": "capability features",
+          "score": -5.7,
+          "z": -0.57,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.6,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.6,
           "distinctive": false
         },
         {
           "term": "convertible",
-          "score": -5.73,
+          "score": -5.7,
           "z": -0.57,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 1.66,
+          "per10kPrev": 2.6,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.66,
+          "deltaPer10k": -2.6,
           "distinctive": false
         },
         {
           "term": "convertible senior",
-          "score": -5.73,
+          "score": -5.7,
           "z": -0.57,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 1.66,
+          "per10kPrev": 2.6,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.66,
-          "distinctive": false
-        },
-        {
-          "term": "gender",
-          "score": -5.73,
-          "z": -0.57,
-          "countPrev": 3,
-          "countCurr": 0,
-          "per10kPrev": 1.66,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.66,
+          "deltaPer10k": -2.6,
           "distinctive": false
         },
         {
           "term": "senior notes",
-          "score": -5.73,
+          "score": -5.7,
           "z": -0.57,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 1.66,
+          "per10kPrev": 2.6,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.66,
+          "deltaPer10k": -2.6,
           "distinctive": false
         },
         {
-          "term": "annually",
-          "score": -5.32,
+          "term": "COVID-19",
+          "score": -5.3,
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.11,
+          "per10kPrev": 1.73,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.11,
-          "distinctive": false
+          "deltaPer10k": -1.73,
+          "distinctive": false,
+          "includes": [
+            "covid"
+          ]
         },
         {
-          "term": "austin",
-          "score": -5.32,
+          "term": "Pandemic",
+          "score": -5.3,
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.11,
+          "per10kPrev": 1.73,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.11,
-          "distinctive": false
+          "deltaPer10k": -1.73,
+          "distinctive": false,
+          "includes": [
+            "pandemic"
+          ]
         },
         {
           "term": "chief technical",
-          "score": -5.32,
+          "score": -5.3,
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.11,
+          "per10kPrev": 1.73,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.11,
-          "distinctive": false
-        },
-        {
-          "term": "covid",
-          "score": -5.32,
-          "z": -0.53,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 1.11,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.11,
+          "deltaPer10k": -1.73,
           "distinctive": false
         },
         {
           "term": "covid pandemic",
-          "score": -5.32,
+          "score": -5.3,
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.11,
+          "per10kPrev": 1.73,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.11,
+          "deltaPer10k": -1.73,
           "distinctive": false
         },
         {
           "term": "delaware",
-          "score": -5.32,
+          "score": -5.3,
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.11,
+          "per10kPrev": 1.73,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.11,
+          "deltaPer10k": -1.73,
           "distinctive": false
         },
         {
           "term": "determined amounts",
-          "score": -5.32,
+          "score": -5.3,
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.11,
+          "per10kPrev": 1.73,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.11,
-          "distinctive": false
-        },
-        {
-          "term": "fundamental",
-          "score": -5.32,
-          "z": -0.53,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 1.11,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.11,
+          "deltaPer10k": -1.73,
           "distinctive": false
         },
         {
           "term": "global covid",
-          "score": -5.32,
+          "score": -5.3,
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.11,
+          "per10kPrev": 1.73,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.11,
+          "deltaPer10k": -1.73,
+          "distinctive": false
+        },
+        {
+          "term": "pre determined",
+          "score": -5.3,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.73,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.73,
+          "distinctive": false
+        },
+        {
+          "term": "repurchase",
+          "score": -5.3,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.73,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.73,
           "distinctive": false
         }
       ],
-      "summary": "Adds emphasis on fsd supervised, supervised, collision; de-emphasizes capability features, notes, convertible.",
+      "summary": "Adds emphasis on fsd supervised, supervised, customer demand; de-emphasizes fsd capability, notes, capability features.",
       "topRisersAlt": [
         {
-          "term": "risks related",
-          "score": 5.94
+          "term": "regulatory requirements",
+          "score": 5.7
         },
         {
-          "term": "program tesla",
-          "score": 5.65
+          "term": "business future",
+          "score": 5.29
         },
         {
-          "term": "certain markets",
-          "score": 5.24
-        },
-        {
-          "term": "energy systems",
-          "score": 5.24
-        },
-        {
-          "term": "management systems",
-          "score": 5.24
-        },
-        {
-          "term": "operating results risks",
-          "score": 5.24
-        },
-        {
-          "term": "operations continue subject",
-          "score": 5.24
+          "term": "requirements data",
+          "score": 5.29
         },
         {
           "term": "result additional costs",
-          "score": 5.24
-        },
-        {
-          "term": "tesla service",
-          "score": 5.24
+          "score": 5.29
         },
         {
           "term": "vehicle customers",
-          "score": 5.24
+          "score": 5.29
         },
         {
           "term": "customer demand",
-          "score": 4.55
+          "score": 4.6
         },
         {
           "term": "artificial intelligence",
-          "score": 0.63
+          "score": 1.08
         },
         {
-          "term": "harm business",
-          "score": 0.63
+          "term": "time time",
+          "score": 0.16
         },
         {
-          "term": "human capital",
-          "score": 0.63
+          "term": "class action",
+          "score": -0.02
         },
         {
-          "term": "table contents energy",
-          "score": 0.34
+          "term": "credit risk",
+          "score": -0.02
+        },
+        {
+          "term": "financial reporting",
+          "score": -0.02
+        },
+        {
+          "term": "interest rates",
+          "score": -0.02
+        },
+        {
+          "term": "market share",
+          "score": -0.02
+        },
+        {
+          "term": "privacy regulation",
+          "score": -0.02
+        },
+        {
+          "term": "trade restrictions",
+          "score": -0.02
         }
       ],
       "topFallersAlt": [
         {
-          "term": "operating results unable",
-          "score": -5.38
+          "term": "information technology systems",
+          "score": -6.04
         },
         {
-          "term": "solar customers",
-          "score": -5.38
+          "term": "information technology",
+          "score": -5.34
         },
         {
-          "term": "solar energy companies",
-          "score": -5.38
-        },
-        {
-          "term": "solar products components",
-          "score": -5.38
-        },
-        {
-          "term": "subject significant",
-          "score": -5.38
-        },
-        {
-          "term": "supply demand",
-          "score": -5.38
-        },
-        {
-          "term": "vehicle systems",
-          "score": -5.38
+          "term": "management systems",
+          "score": -5.34
         },
         {
           "term": "vehicles certain",
-          "score": -0.47
+          "score": -5.34
         },
         {
-          "term": "business financial",
-          "score": -0.36
-        },
-        {
-          "term": "tesla vehicles",
+          "term": "supply chain",
           "score": -0.25
         },
         {
           "term": "operating results",
-          "score": -0.07
+          "score": -0.02
         },
         {
           "term": "intellectual property",
-          "score": -0.07
-        },
-        {
-          "term": "electric vehicles",
-          "score": -0.07
+          "score": -0.02
         },
         {
           "term": "products services",
-          "score": -0.07
+          "score": -0.02
         },
         {
-          "term": "solar energy systems",
-          "score": -0.07
+          "term": "electric vehicles",
+          "score": -0.02
+        },
+        {
+          "term": "laws regulations",
+          "score": -0.02
+        },
+        {
+          "term": "financial results",
+          "score": -0.02
+        },
+        {
+          "term": "product liability",
+          "score": -0.02
+        },
+        {
+          "term": "business financial",
+          "score": -0.02
+        },
+        {
+          "term": "addition certain",
+          "score": -0.02
+        },
+        {
+          "term": "energy storage products",
+          "score": -0.02
         }
       ],
-      "summaryAlt": "Adds emphasis on risks related, program tesla, certain markets; de-emphasizes operating results unable, solar customers, solar energy companies."
+      "summaryAlt": "Adds emphasis on regulatory requirements, business future, requirements data; de-emphasizes information technology systems, information technology, management systems."
     }
   ]
 }

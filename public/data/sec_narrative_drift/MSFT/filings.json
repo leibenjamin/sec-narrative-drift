@@ -1,0 +1,104 @@
+[
+  {
+    "year": 2020,
+    "form": "10-K",
+    "filingDate": "2020-07-30",
+    "reportDate": "2020-06-30",
+    "accessionNumber": "0001564590-20-034944",
+    "primaryDocument": "msft-10k_20200630.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/789019/000156459020034944/msft-10k_20200630.htm",
+    "extraction": {
+      "confidence": 0.95,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing"
+      ]
+    }
+  },
+  {
+    "year": 2021,
+    "form": "10-K",
+    "filingDate": "2021-07-29",
+    "reportDate": "2021-06-30",
+    "accessionNumber": "0001564590-21-039151",
+    "primaryDocument": "msft-10k_20210630.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/789019/000156459021039151/msft-10k_20210630.htm",
+    "extraction": {
+      "confidence": 0.95,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing"
+      ]
+    }
+  },
+  {
+    "year": 2022,
+    "form": "10-K",
+    "filingDate": "2022-07-28",
+    "reportDate": "2022-06-30",
+    "accessionNumber": "0001564590-22-026876",
+    "primaryDocument": "msft-10k_20220630.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/789019/000156459022026876/msft-10k_20220630.htm",
+    "extraction": {
+      "confidence": 0.95,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing"
+      ]
+    }
+  },
+  {
+    "year": 2023,
+    "form": "10-K",
+    "filingDate": "2023-07-27",
+    "reportDate": "2023-06-30",
+    "accessionNumber": "0000950170-23-035122",
+    "primaryDocument": "msft-20230630.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/789019/000095017023035122/msft-20230630.htm",
+    "extraction": {
+      "confidence": 0.25,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing",
+        "length_out_of_band",
+        "low_confidence_item1a"
+      ]
+    }
+  },
+  {
+    "year": 2024,
+    "form": "10-K",
+    "filingDate": "2024-07-30",
+    "reportDate": "2024-06-30",
+    "accessionNumber": "0000950170-24-087843",
+    "primaryDocument": "msft-20240630.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/789019/000095017024087843/msft-20240630.htm",
+    "extraction": {
+      "confidence": 0.25,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing",
+        "length_out_of_band",
+        "low_confidence_item1a"
+      ]
+    }
+  },
+  {
+    "year": 2025,
+    "form": "10-K",
+    "filingDate": "2025-07-30",
+    "reportDate": "2025-06-30",
+    "accessionNumber": "0000950170-25-100235",
+    "primaryDocument": "msft-20250630.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm",
+    "extraction": {
+      "confidence": 0.25,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing",
+        "length_out_of_band",
+        "low_confidence_item1a"
+      ]
+    }
+  }
+]

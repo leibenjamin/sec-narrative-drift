@@ -1,0 +1,27 @@
+{
+  "ticker": "COP",
+  "cik": "0001163165",
+  "companyName": "CONOCOPHILLIPS",
+  "lastUpdatedUtc": "2025-12-31T05:01:26Z",
+  "formsIncluded": [
+    "10-K"
+  ],
+  "sectionsIncluded": [
+    "10k_item1a"
+  ],
+  "notes": [
+    "Ticker/CIK mapping is SEC-provided and may be incomplete or outdated.",
+    "Narrative Drift is descriptive; causal explanations are hypotheses."
+  ],
+  "extraction": {
+    "section": "item1a",
+    "method": "html_anchor",
+    "confidence": 0.7,
+    "warnings": [
+      "end_not_found"
+    ],
+    "lengthChars": 80000,
+    "endMarkerUsed": null,
+    "hasItem1C": true
+  }
+}
