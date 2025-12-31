@@ -1,5 +1,6 @@
 import { useMemo } from "react"
 import { copy } from "../lib/copy"
+import { getShiftTermLabel } from "../lib/shiftTerms"
 import type { Metrics, ShiftPairs, ShiftTerm } from "../lib/types"
 
 type ExecutiveSummaryProps = {
@@ -86,8 +87,8 @@ export default function ExecutiveSummary({
     }
   }, [metrics, shifts])
 
-  const topRisers = summary.risers.slice(0, 3).map((item) => item.term)
-  const topFallers = summary.fallers.slice(0, 3).map((item) => item.term)
+  const topRisers = summary.risers.slice(0, 3).map((item) => getShiftTermLabel(item))
+  const topFallers = summary.fallers.slice(0, 3).map((item) => getShiftTermLabel(item))
   const hasPair = summary.fromYear !== null && summary.toYear !== null
 
   let largestDriftLine: string = copy.company.executiveSummary.empty

@@ -47,6 +47,29 @@ export default function Methodology() {
           <p className="text-sm text-slate-200">{copy.methodology.paragraphs.sanityCheck}</p>
         </section>
 
+        <section className="space-y-3">
+          <h2 className="text-lg font-semibold">{copy.methodology.headings.relatedWork}</h2>
+          <p className="text-sm text-slate-200">{copy.methodology.paragraphs.relatedWorkLead}</p>
+          <ul className="space-y-2 text-sm text-slate-200 list-disc pl-5">
+            {copy.methodology.relatedWork.items.map((it) => (
+              <li key={it.href}>
+                <a
+                  className="underline underline-offset-2 hover:opacity-90"
+                  href={it.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {it.label}
+                </a>
+                <span className="text-slate-300"> - {it.note}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="text-xs text-slate-400">
+            {copy.methodology.paragraphs.relatedWorkDisclaimer}
+          </p>
+        </section>
+
         <section className="space-y-2">
           <h2 className="text-lg font-semibold">
             {copy.methodology.headings.securityPrivacy}
