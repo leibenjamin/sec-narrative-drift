@@ -3,6 +3,7 @@ import json
 import os
 import re
 import time
+import zipfile
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Optional, Sequence, cast
@@ -22,10 +23,17 @@ from sec_quality import (
 SEC_TICKER_MAP_URL = "https://www.sec.gov/files/company_tickers_exchange.json"
 SEC_SUBMISSIONS_URL = "https://data.sec.gov/submissions/CIK{cik10}.json"
 SEC_SUBMISSIONS_FILE_URL = "https://data.sec.gov/submissions/{filename}"
+SEC_SUBMISSIONS_ZIP_URL = "https://www.sec.gov/Archives/edgar/daily-index/bulkdata/submissions.zip"
 SEC_ARCHIVES_BASE = "https://www.sec.gov/Archives/edgar/data"
 MAX_REQUESTS_PER_SECOND = 10
 SECTION_NAME = "10k_item1a"
 MIN_PRIMARY_DOC_BYTES = 10000
+TICKER_CIK_OVERRIDES = {
+    "BLK": "0002012383",
+}
+TICKER_CIK_MERGE = {
+    "BLK": ["0002012383", "0001364742"],
+}
 META_NOTES = [
     "Ticker/CIK mapping is SEC-provided and may be incomplete or outdated.",
     "Narrative Drift is descriptive; causal explanations are hypotheses.",
@@ -34,6 +42,7 @@ META_NOTES = [
 ROOT_DIR = Path(__file__).resolve().parent
 FIXTURES_DIR = ROOT_DIR / "sample_fixtures"
 CACHE_DIR = ROOT_DIR / "_cache"
+DEFAULT_SUBMISSIONS_ZIP = CACHE_DIR / "submissions.zip"
 
 
 class RateLimiter:
@@ -77,6 +86,31 @@ def download(url: str, session: requests.Session, limiter: RateLimiter) -> bytes
             continue
         response.raise_for_status()
         return response.content
+
+    if last_response is not None:
+        last_response.raise_for_status()
+    raise RuntimeError(f"Failed to download {url}")
+
+
+def download_to_file(
+    url: str, session: requests.Session, limiter: RateLimiter, path: Path
+) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    last_response: Optional[requests.Response] = None
+    for attempt in range(5):
+        limiter.wait()
+        response = session.get(url, headers=build_headers(url), timeout=60, stream=True)
+        last_response = response
+        if response.status_code in {403, 429}:
+            backoff = min(2 ** attempt, 8)
+            time.sleep(backoff)
+            continue
+        response.raise_for_status()
+        with path.open("wb") as handle:
+            for chunk in response.iter_content(chunk_size=1024 * 1024):
+                if chunk:
+                    handle.write(chunk)
+        return
 
     if last_response is not None:
         last_response.raise_for_status()
@@ -171,6 +205,7 @@ def load_ticker_cik_map(force_live: bool = False) -> dict[str, dict[str, str]]:
                 "name": str(record.get("title", "")),
                 "exchange": str(record.get("exchange", "")),
             }
+        apply_cik_overrides(mapping)
         return mapping
 
     if payload_dict is not None:
@@ -189,19 +224,75 @@ def load_ticker_cik_map(force_live: bool = False) -> dict[str, dict[str, str]]:
                 "name": str(entry_dict.get("title", "")),
                 "exchange": str(entry_dict.get("exchange", "")),
             }
+        apply_cik_overrides(mapping)
         return mapping
 
     raise RuntimeError("Unexpected ticker map format")
+
+
+def apply_cik_overrides(mapping: dict[str, dict[str, str]]) -> None:
+    for ticker, cik in TICKER_CIK_OVERRIDES.items():
+        entry = mapping.get(ticker)
+        if entry is None:
+            mapping[ticker] = {"cik": cik, "name": ticker, "exchange": ""}
+            continue
+        entry["cik"] = cik
+
+
+def get_cik_candidates(ticker: str, primary_cik: str) -> list[str]:
+    merged = TICKER_CIK_MERGE.get(ticker, [])
+    candidates = list(merged) if merged else [primary_cik]
+    if primary_cik not in candidates:
+        candidates.insert(0, primary_cik)
+    seen: set[str] = set()
+    ordered: list[str] = []
+    for cik in candidates:
+        if cik in seen:
+            continue
+        seen.add(cik)
+        ordered.append(cik)
+    return ordered
+
+
+def load_json_from_zip(zip_path: Path, filename: str) -> Optional[dict[str, Any]]:
+    if not zip_path.exists():
+        return None
+    try:
+        with zipfile.ZipFile(zip_path, "r") as archive:
+            try:
+                raw = archive.read(filename)
+            except KeyError:
+                return None
+    except (OSError, zipfile.BadZipFile):
+        return None
+    try:
+        payload = json.loads(raw.decode("utf-8", errors="replace"))
+    except json.JSONDecodeError:
+        return None
+    payload_dict = as_str_dict(payload)
+    if payload_dict is None:
+        return None
+    return payload_dict
+
+
+def load_submissions_from_zip(zip_path: Path, cik10: str) -> Optional[dict[str, Any]]:
+    return load_json_from_zip(zip_path, f"CIK{cik10}.json")
 
 
 def fetch_submissions_json(
     cik10: str,
     session: Optional[requests.Session] = None,
     limiter: Optional[RateLimiter] = None,
+    submissions_zip: Optional[Path] = None,
 ) -> dict[str, Any]:
     fixture_path = FIXTURES_DIR / f"CIK{cik10}.json"
     if fixture_path.exists():
         return load_fixture_json(fixture_path)
+
+    if submissions_zip:
+        zip_payload = load_submissions_from_zip(submissions_zip, cik10)
+        if zip_payload is not None:
+            return zip_payload
 
     session = session or requests.Session()
     limiter = limiter or RateLimiter(MAX_REQUESTS_PER_SECOND)
@@ -209,21 +300,32 @@ def fetch_submissions_json(
     return json.loads(download(url, session, limiter).decode("utf-8"))
 
 
+def get_filings_table(payload: dict[str, Any]) -> Optional[dict[str, Any]]:
+    filings = as_str_dict(payload.get("filings"))
+    if filings is not None:
+        recent = as_str_dict(filings.get("recent"))
+        if recent is not None:
+            return recent
+
+    if isinstance(payload.get("form"), list):
+        return payload
+
+    return None
+
+
 def iter_recent_filings(
     submissions: dict[str, Any],
     allowed_forms: set[str],
+    cik10: str,
 ) -> list[dict[str, str]]:
-    filings = as_str_dict(submissions.get("filings"))
-    if filings is None:
+    table = get_filings_table(submissions)
+    if table is None:
         return []
-    recent = as_str_dict(filings.get("recent"))
-    if recent is None:
-        return []
-    forms = as_list(recent.get("form")) or []
-    filing_dates = as_list(recent.get("filingDate")) or []
-    report_dates = as_list(recent.get("reportDate")) or []
-    accession_numbers = as_list(recent.get("accessionNumber")) or []
-    primary_docs = as_list(recent.get("primaryDocument")) or []
+    forms = as_list(table.get("form")) or []
+    filing_dates = as_list(table.get("filingDate")) or []
+    report_dates = as_list(table.get("reportDate")) or []
+    accession_numbers = as_list(table.get("accessionNumber")) or []
+    primary_docs = as_list(table.get("primaryDocument")) or []
 
     length = min(
         len(forms),
@@ -254,6 +356,7 @@ def iter_recent_filings(
             report_date = ""
         rows.append(
             {
+                "cik": cik10,
                 "form": form,
                 "filingDate": filing_date,
                 "reportDate": report_date,
@@ -266,8 +369,15 @@ def iter_recent_filings(
 
 
 def fetch_submissions_file_json(
-    filename: str, session: requests.Session, limiter: RateLimiter
+    filename: str,
+    session: requests.Session,
+    limiter: RateLimiter,
+    submissions_zip: Optional[Path] = None,
 ) -> Optional[dict[str, Any]]:
+    if submissions_zip:
+        zip_payload = load_json_from_zip(submissions_zip, filename)
+        if zip_payload is not None:
+            return zip_payload
     url = SEC_SUBMISSIONS_FILE_URL.format(filename=filename)
     try:
         payload = json.loads(download(url, session, limiter).decode("utf-8"))
@@ -286,8 +396,10 @@ def collect_filings(
     session: requests.Session,
     limiter: RateLimiter,
     max_items: int,
+    submissions_zip: Optional[Path] = None,
+    cik10: str = "",
 ) -> list[dict[str, str]]:
-    filings = iter_recent_filings(submissions, allowed_forms)
+    filings = iter_recent_filings(submissions, allowed_forms, cik10)
     if max_items <= 0 or len(filings) >= max_items:
         return filings[:max_items] if max_items > 0 else filings
 
@@ -303,10 +415,10 @@ def collect_filings(
         name = entry_dict.get("name")
         if not isinstance(name, str) or not name:
             continue
-        payload = fetch_submissions_file_json(name, session, limiter)
+        payload = fetch_submissions_file_json(name, session, limiter, submissions_zip)
         if payload is None:
             continue
-        more = iter_recent_filings(payload, allowed_forms)
+        more = iter_recent_filings(payload, allowed_forms, cik10)
         for row in more:
             accession = row.get("accessionNumber", "")
             if not accession or accession in seen:
@@ -371,6 +483,22 @@ def matches_allowed_form(doc_type: str, allowed_forms: set[str]) -> bool:
     if normalized.endswith("/A") and normalized[:-2] in allowed_forms:
         return True
     return False
+
+
+def dedupe_filings(rows: list[dict[str, str]]) -> list[dict[str, str]]:
+    seen: set[str] = set()
+    deduped: list[dict[str, str]] = []
+    for row in rows:
+        accession = row.get("accessionNumber", "")
+        if not accession:
+            continue
+        cik = row.get("cik", "")
+        key = f"{cik}:{accession}" if cik else accession
+        if key in seen:
+            continue
+        seen.add(key)
+        deduped.append(row)
+    return deduped
 
 
 def extract_submission_text(html_bytes: bytes, allowed_forms: set[str]) -> Optional[str]:
@@ -521,6 +649,36 @@ def parse_year_from_date(value: str) -> Optional[int]:
     return None
 
 
+def parse_month_from_date(value: str) -> Optional[int]:
+    if len(value) < 7 or value[4] != "-":
+        return None
+    month_text = value[5:7]
+    if not month_text.isdigit():
+        return None
+    return int(month_text)
+
+
+def derive_filing_year(
+    report_date: str,
+    filing_date: str,
+    seen_years: set[int],
+) -> Optional[int]:
+    year = parse_year_from_date(report_date) or parse_year_from_date(filing_date)
+    if year is None:
+        return None
+    if year not in seen_years:
+        return year
+    month = parse_month_from_date(report_date)
+    if month is not None and month <= 2:
+        adjusted = year - 1
+        if adjusted not in seen_years:
+            return adjusted
+    filing_year = parse_year_from_date(filing_date)
+    if filing_year is not None and filing_year not in seen_years:
+        return filing_year
+    return None
+
+
 def ensure_low_confidence(errors: list[str]) -> list[str]:
     if "low_confidence_item1a" not in errors:
         errors.append("low_confidence_item1a")
@@ -650,6 +808,16 @@ def build_parser() -> argparse.ArgumentParser:
         help="Optional limit on number of filings to process.",
     )
     parser.add_argument(
+        "--submissions-zip",
+        default=None,
+        help="Path to submissions.zip (bulk submissions archive).",
+    )
+    parser.add_argument(
+        "--download-submissions-zip",
+        action="store_true",
+        help="Download latest submissions.zip to cache (or --submissions-zip path).",
+    )
+    parser.add_argument(
         "--include-20f",
         action="store_true",
         help="Include 20-F filings when available.",
@@ -668,18 +836,63 @@ def main(argv: Optional[list[str]] = None) -> int:
     if ticker not in mapping:
         raise SystemExit(f"Ticker not found in mapping: {ticker}")
 
-    cik10 = mapping[ticker]["cik"]
+    primary_cik = mapping[ticker]["cik"]
     session = requests.Session()
     limiter = RateLimiter(MAX_REQUESTS_PER_SECOND)
 
-    submissions = fetch_submissions_json(cik10, session=session, limiter=limiter)
-    company_name = resolve_company_name(mapping[ticker].get("name"), submissions.get("name"), ticker)
+    submissions_zip: Optional[Path] = None
+    if args.submissions_zip:
+        submissions_zip = Path(args.submissions_zip)
+    if args.download_submissions_zip:
+        target = submissions_zip or DEFAULT_SUBMISSIONS_ZIP
+        print(f"downloading submissions zip to {target}")
+        download_to_file(SEC_SUBMISSIONS_ZIP_URL, session, limiter, target)
+        submissions_zip = target
+    if submissions_zip is not None and not submissions_zip.exists():
+        print(
+            f"warning: submissions zip not found at {submissions_zip}; "
+            "falling back to live submissions API"
+        )
+        submissions_zip = None
+
+    submissions_primary = fetch_submissions_json(
+        primary_cik, session=session, limiter=limiter, submissions_zip=submissions_zip
+    )
+    company_name = resolve_company_name(
+        mapping[ticker].get("name"), submissions_primary.get("name"), ticker
+    )
     allowed_forms = {"10-K"}
     if args.include_20f:
         allowed_forms.add("20-F")
 
     max_items = args.limit if args.limit is not None else args.years
-    filings = collect_filings(submissions, allowed_forms, session, limiter, max_items)
+    cik_candidates = get_cik_candidates(ticker, primary_cik)
+    submissions_by_cik: dict[str, dict[str, Any]] = {primary_cik: submissions_primary}
+    filings_all: list[dict[str, str]] = []
+    for cik10 in cik_candidates:
+        submissions = submissions_by_cik.get(cik10)
+        if submissions is None:
+            submissions = fetch_submissions_json(
+                cik10, session=session, limiter=limiter, submissions_zip=submissions_zip
+            )
+            submissions_by_cik[cik10] = submissions
+        filings_all.extend(
+            collect_filings(
+                submissions,
+                allowed_forms,
+                session,
+                limiter,
+                max_items,
+                submissions_zip=submissions_zip,
+                cik10=cik10,
+            )
+        )
+
+    filings = sorted(
+        dedupe_filings(filings_all), key=lambda row: row.get("filingDate", ""), reverse=True
+    )
+    if max_items > 0:
+        filings = filings[:max_items]
 
     if not filings:
         if args.include_20f:
@@ -698,14 +911,17 @@ def main(argv: Optional[list[str]] = None) -> int:
     for filing in filings:
         report_date = filing.get("reportDate", "")
         filing_date = filing.get("filingDate", "")
-        year = parse_year_from_date(report_date) or parse_year_from_date(filing_date)
-        if year is None or year in seen_years:
+        year = derive_filing_year(report_date, filing_date, seen_years)
+        if year is None:
             continue
         seen_years.add(year)
 
+        filing_cik = filing.get("cik", primary_cik)
+        if not isinstance(filing_cik, str) or not filing_cik:
+            filing_cik = primary_cik
         accession = filing["accessionNumber"]
         primary_doc = filing["primaryDocument"]
-        url = build_primary_doc_url(cik10, accession, primary_doc)
+        url = build_primary_doc_url(filing_cik, accession, primary_doc)
         html_bytes = load_fixture_html(primary_doc)
         from_fixture = html_bytes is not None
         if html_bytes is None:
@@ -722,7 +938,7 @@ def main(argv: Optional[list[str]] = None) -> int:
         else:
             allow_live = (not from_fixture) or is_primary_doc_suspect(html_bytes)
             primary_doc, html_bytes, alternate_used = maybe_fetch_alternate_html(
-                cik10,
+                filing_cik,
                 accession,
                 primary_doc,
                 html_bytes,
@@ -731,7 +947,7 @@ def main(argv: Optional[list[str]] = None) -> int:
                 limiter,
                 allow_live=allow_live,
             )
-            url = build_primary_doc_url(cik10, accession, primary_doc)
+            url = build_primary_doc_url(filing_cik, accession, primary_doc)
             raw_bytes = html_bytes
             submission_text = None
             if primary_doc.lower().endswith(".txt"):
