@@ -22,7 +22,7 @@ export const copy = {
     appName: "SEC Narrative Drift",
     subtitle: "How 10‑K “Risk Factors” language changes over time (Item 1A)",
     oneLiner: "A fast, auditable way to spot when the risk story changed — and read the exact paragraphs.",
-    sourceLine: "Source: SEC EDGAR (10‑K filings).",
+    sourceLine: "Source: SEC EDGAR (10‑K and 20-Ffilings).",
     caveatLine: "Descriptive, not causal. Use drift as a reading prompt, not a conclusion.",
     disclaimerLine: "Not investment advice. For informational analysis of public filings.",
     loading: {
@@ -50,7 +50,7 @@ export const copy = {
 
   buttons: {
     exploreFeatured: "Explore a featured company",
-    browseCompanies: "Browse companies",
+    browseCompanies: "Browse from a directory of companies",
     startTour: "Start tour",
     resetSelection: "Reset selection",
     details: "Details",
@@ -425,6 +425,6 @@ export const copy = {
         t("Top fallers: {t1}, {t2}, {t3}", { t1, t2, t3 }),
     },
     footer: ({ lastUpdatedUtc }: { lastUpdatedUtc: string }) =>
-      t("Source: SEC EDGAR | Item 1A (10‑K) | Generated: {lastUpdatedUtc}", { lastUpdatedUtc }),
+      t("Source: SEC EDGAR | Item 1A (10‑K) or Item 3.D (20-F) | Generated: {lastUpdatedUtc}", { lastUpdatedUtc }),
   },
 } as const;
