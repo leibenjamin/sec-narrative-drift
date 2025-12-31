@@ -138,6 +138,31 @@ def validate_excerpts(path: Path, warnings: list[str]) -> None:
             break
 
 
+def validate_meta_extraction(path: Path, warnings: list[str]) -> None:
+    if not path.exists():
+        return
+    payload = read_json(path)
+    meta_dict = as_str_dict(payload)
+    if meta_dict is None:
+        warnings.append("meta.json structure unexpected")
+        return
+    extraction = meta_dict.get("extraction")
+    extraction_dict = as_str_dict(extraction)
+    if extraction_dict is None:
+        warnings.append("meta extraction missing")
+        return
+    confidence = extraction_dict.get("confidence")
+    if isinstance(confidence, (int, float)):
+        if float(confidence) < 0.55:
+            warnings.append("meta extraction low confidence")
+    else:
+        warnings.append("meta extraction missing confidence")
+    length_chars = extraction_dict.get("lengthChars")
+    if isinstance(length_chars, int):
+        if length_chars < 8000:
+            warnings.append("meta extraction short length")
+
+
 def summarize_ticker(path: Path) -> dict[str, Any]:
     missing: list[str] = []
     warnings: list[str] = []
@@ -148,6 +173,7 @@ def summarize_ticker(path: Path) -> dict[str, Any]:
     years = validate_filings_years(load_years_from_filings(path / "filings.json"), warnings)
     latest_year = max(years) if years else None
 
+    validate_meta_extraction(path / "meta.json", warnings)
     validate_metrics(path / "metrics_10k_item1a.json", warnings)
     validate_shifts(path / "shifts_10k_item1a.json", warnings)
     validate_excerpts(path / "excerpts_10k_item1a.json", warnings)

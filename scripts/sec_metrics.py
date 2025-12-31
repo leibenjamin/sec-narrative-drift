@@ -11,7 +11,7 @@ from typing import Any, Mapping, Optional, Sequence, TypedDict, cast
 from sklearn.feature_extraction.text import ENGLISH_STOP_WORDS, TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
-from sec_extract_item1a import clean_html_to_text, extract_item_1a, split_paragraphs
+from sec_extract_item1a import extract_item1a_from_html, split_paragraphs
 from sec_phrases import HONORIFICS, NAME_SUFFIXES, NOISE_TOKENS, SEC_PHRASE_ALLOWLIST
 
 
@@ -19,6 +19,7 @@ SECTION_NAME = "10k_item1a"
 STOPWORDS = set(ENGLISH_STOP_WORDS)
 ALLOWED_SHORT_TOKENS: set[str] = {"ai", "ml", "ip", "it", "vr", "ar"}
 HYPHEN_CLASS = r"[-\u2010\u2011\u2012\u2013\u2014\u2212'\u2018\u2019]"
+CANONICAL_TERMS_PATH = Path(__file__).resolve().parent / "resources" / "canonical_terms.json"
 
 
 class TermBase(TypedDict):
@@ -36,8 +37,8 @@ class ShiftTermStats(TermBase):
     distinctive: bool
 
 
-class ShiftTermOutput(ShiftTermStats):
-    pass
+class ShiftTermOutput(ShiftTermStats, total=False):
+    includes: list[str]
 
 
 class ShiftTermAlt(TermBase):
@@ -260,6 +261,117 @@ class SectionYear:
     confidence: Optional[float] = None
 
 
+@dataclass(frozen=True)
+class CanonicalTermsMap:
+    variant_to_concept: dict[str, str]
+    concept_labels: dict[str, str]
+
+
+def normalize_canonical_term(value: str) -> str:
+    lowered = value.lower()
+    lowered = re.sub(HYPHEN_CLASS, " ", lowered)
+    lowered = re.sub(r"[^\w\s]", "", lowered)
+    lowered = re.sub(r"\s+", " ", lowered).strip()
+    return lowered
+
+
+def load_canonical_terms(path: Path) -> Optional[CanonicalTermsMap]:
+    if not path.exists():
+        return None
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return None
+    root = as_str_dict(payload)
+    if root is None:
+        return None
+
+    variant_raw = as_str_dict(root.get("variantToConcept"))
+    concepts_raw = as_list(root.get("concepts"))
+    if variant_raw is None or concepts_raw is None:
+        return None
+
+    variant_to_concept: dict[str, str] = {}
+    for key, value in variant_raw.items():
+        if isinstance(value, str):
+            variant_to_concept[key] = value
+
+    concept_labels: dict[str, str] = {}
+    for concept in concepts_raw:
+        entry = as_str_dict(concept)
+        if entry is None:
+            continue
+        concept_id = entry.get("id")
+        label = entry.get("label")
+        if isinstance(concept_id, str) and isinstance(label, str):
+            concept_labels[concept_id] = label
+
+    if not variant_to_concept or not concept_labels:
+        return None
+
+    return CanonicalTermsMap(
+        variant_to_concept=variant_to_concept, concept_labels=concept_labels
+    )
+
+
+def sort_variants(variants: Sequence[str]) -> list[str]:
+    cleaned: list[str] = []
+    for variant in variants:
+        if not variant:
+            continue
+        cleaned.append(variant)
+
+    def sort_key(value: str) -> tuple[int, int, str]:
+        normalized = normalize_canonical_term(value)
+        token_count = len(normalized.split()) if normalized else 0
+        return (-token_count, -len(value), value)
+
+    cleaned.sort(key=sort_key)
+    return cleaned
+
+
+def canonicalize_counts(
+    counts: Counter[str],
+    canonical_terms: CanonicalTermsMap,
+) -> tuple[Counter[str], dict[str, set[str]]]:
+    output: Counter[str] = Counter()
+    includes: dict[str, set[str]] = {}
+    for term, count in counts.items():
+        if count <= 0:
+            continue
+        normalized = normalize_canonical_term(term)
+        if not normalized:
+            continue
+        concept_id = canonical_terms.variant_to_concept.get(normalized)
+        if concept_id:
+            label = canonical_terms.concept_labels.get(concept_id)
+            if label:
+                output[label] += count
+                if label not in includes:
+                    includes[label] = set()
+                includes[label].add(term)
+                continue
+        output[term] += count
+    return output, includes
+
+
+def merge_includes(
+    first: Mapping[str, set[str]],
+    second: Mapping[str, set[str]],
+) -> dict[str, list[str]]:
+    combined: dict[str, set[str]] = {}
+    for mapping in (first, second):
+        for term, variants in mapping.items():
+            if term not in combined:
+                combined[term] = set()
+            combined[term].update(variants)
+
+    output: dict[str, list[str]] = {}
+    for term, variants in combined.items():
+        output[term] = sort_variants(list(variants))
+    return output
+
+
 def as_str_dict(value: Any) -> Optional[dict[str, Any]]:
     if not isinstance(value, dict):
         return None
@@ -345,8 +457,7 @@ def load_sections_from_json(path: Path) -> list[SectionYear]:
 
 def load_sections_from_fixture(path: Path, years: Sequence[int]) -> list[SectionYear]:
     html = path.read_text(encoding="utf-8", errors="replace")
-    text = clean_html_to_text(html)
-    section, confidence, _method, _errors = extract_item_1a(text)
+    section, confidence, _method, _errors, _debug = extract_item1a_from_html(html)
     paragraphs = normalize_paragraphs(section, None)
     sections: list[SectionYear] = []
     for year in years:
@@ -475,6 +586,7 @@ def compute_bootstrap_ci(
 
 
 def build_metrics(sections: list[SectionYear]) -> tuple[MetricsPayload, SimilarityPayload, ShiftsPayload]:
+    canonical_terms = load_canonical_terms(CANONICAL_TERMS_PATH)
     years = [section.year for section in sections]
     drift_vs_prev: list[Optional[float]] = [None] * len(years)
     drift_ci_low: list[Optional[float]] = [None] * len(years)
@@ -601,23 +713,29 @@ def build_metrics(sections: list[SectionYear]) -> tuple[MetricsPayload, Similari
         return counts
 
     def build_shift_term_outputs(
-        items: Sequence[ShiftTermStats], limit: int = 15
+        items: Sequence[ShiftTermStats],
+        limit: int = 15,
+        includes_by_term: Optional[Mapping[str, Sequence[str]]] = None,
     ) -> list[ShiftTermOutput]:
         output: list[ShiftTermOutput] = []
         for item in items:
-            output.append(
-                {
-                    "term": item["term"],
-                    "score": round(float(item["score"]), 2),
-                    "z": round(float(item["z"]), 2),
-                    "countPrev": int(item["countPrev"]),
-                    "countCurr": int(item["countCurr"]),
-                    "per10kPrev": round(float(item["per10kPrev"]), 2),
-                    "per10kCurr": round(float(item["per10kCurr"]), 2),
-                    "deltaPer10k": round(float(item["deltaPer10k"]), 2),
-                    "distinctive": bool(item["distinctive"]),
-                }
-            )
+            term = item["term"]
+            term_output: ShiftTermOutput = {
+                "term": term,
+                "score": round(float(item["score"]), 2),
+                "z": round(float(item["z"]), 2),
+                "countPrev": int(item["countPrev"]),
+                "countCurr": int(item["countCurr"]),
+                "per10kPrev": round(float(item["per10kPrev"]), 2),
+                "per10kCurr": round(float(item["per10kCurr"]), 2),
+                "deltaPer10k": round(float(item["deltaPer10k"]), 2),
+                "distinctive": bool(item["distinctive"]),
+            }
+            if includes_by_term is not None:
+                includes = includes_by_term.get(term)
+                if includes:
+                    term_output["includes"] = list(includes)
+            output.append(term_output)
             if len(output) >= limit:
                 break
         return output
@@ -636,6 +754,11 @@ def build_metrics(sections: list[SectionYear]) -> tuple[MetricsPayload, Similari
 
         counts_prev = build_term_counts_primary(prev_section.text)
         counts_curr = build_term_counts_primary(curr_section.text)
+        includes_by_term: dict[str, list[str]] = {}
+        if canonical_terms:
+            counts_prev, includes_prev = canonicalize_counts(counts_prev, canonical_terms)
+            counts_curr, includes_curr = canonicalize_counts(counts_curr, canonical_terms)
+            includes_by_term = merge_includes(includes_prev, includes_curr)
         stats = log_odds_stats(counts_prev, counts_curr)
 
         if not stats:
@@ -648,8 +771,12 @@ def build_metrics(sections: list[SectionYear]) -> tuple[MetricsPayload, Similari
             sorted_fallers = sorted(
                 stats.values(), key=lambda item: (item["score"], item["term"])
             )
-            top_risers = build_shift_term_outputs(sorted_risers)
-            top_fallers = build_shift_term_outputs(sorted_fallers)
+            top_risers = build_shift_term_outputs(
+                sorted_risers, includes_by_term=includes_by_term
+            )
+            top_fallers = build_shift_term_outputs(
+                sorted_fallers, includes_by_term=includes_by_term
+            )
 
         summary = build_shift_summary(extract_terms(top_risers), extract_terms(top_fallers))
 

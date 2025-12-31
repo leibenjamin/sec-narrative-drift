@@ -98,6 +98,11 @@ def build_parser() -> argparse.ArgumentParser:
         default=250,
         help="Sleep between tickers (default: 250ms).",
     )
+    parser.add_argument(
+        "--include-20f",
+        action="store_true",
+        help="Include 20-F filings when available.",
+    )
     return parser
 
 
@@ -141,6 +146,8 @@ def main(argv: Optional[list[str]] = None) -> int:
             "--out",
             str(out_dir),
         ]
+        if args.include_20f:
+            cmd.append("--include-20f")
 
         append_log(log_path, f"[{ticker}] start")
         result = subprocess.run(cmd, capture_output=True, text=True, check=False)

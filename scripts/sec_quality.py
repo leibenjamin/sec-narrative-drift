@@ -8,7 +8,7 @@ from typing import Any, Optional, Sequence, TypeGuard, cast
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
-from sec_extract_item1a import clean_html_to_text, extract_item_1a, split_paragraphs
+from sec_extract_item1a import extract_item1a_from_html, split_paragraphs
 
 
 SECTION_NAME = "10k_item1a"
@@ -124,8 +124,7 @@ def load_sections_from_json(path: Path) -> list[SectionYear]:
 
 def load_sections_from_fixture(path: Path, years: Sequence[int]) -> list[SectionYear]:
     html = path.read_text(encoding="utf-8", errors="replace")
-    text = clean_html_to_text(html)
-    section, confidence, _method, _errors = extract_item_1a(text)
+    section, confidence, _method, _errors, _debug = extract_item1a_from_html(html)
     paragraphs = normalize_paragraphs(section, None)
     sections: list[SectionYear] = []
     for year in years:

@@ -1,6 +1,7 @@
 import argparse
 import json
 import os
+import re
 import time
 from datetime import datetime, timezone
 from pathlib import Path
@@ -9,7 +10,7 @@ from urllib.parse import urlparse
 
 import requests
 
-from sec_extract_item1a import clean_html_to_text, extract_item_1a, split_paragraphs
+from sec_extract_item1a import extract_item1a_from_html, split_paragraphs
 from sec_metrics import SectionYear as MetricsSectionYear, ShiftsPayload, build_metrics
 from sec_quality import (
     SectionYear as QualitySectionYear,
@@ -23,6 +24,7 @@ SEC_SUBMISSIONS_URL = "https://data.sec.gov/submissions/CIK{cik10}.json"
 SEC_ARCHIVES_BASE = "https://www.sec.gov/Archives/edgar/data"
 MAX_REQUESTS_PER_SECOND = 10
 SECTION_NAME = "10k_item1a"
+MIN_PRIMARY_DOC_BYTES = 10000
 META_NOTES = [
     "Ticker/CIK mapping is SEC-provided and may be incomplete or outdated.",
     "Narrative Drift is descriptive; causal explanations are hypotheses.",
@@ -112,6 +114,23 @@ def as_list(value: Any) -> Optional[list[Any]]:
     return list(cast(list[Any], value))
 
 
+def normalize_text(value: Any) -> Optional[str]:
+    if not isinstance(value, str):
+        return None
+    text = value.strip()
+    return text if text else None
+
+
+def resolve_company_name(map_name: Any, submissions_name: Any, fallback: str) -> str:
+    map_value = normalize_text(map_name)
+    if map_value:
+        return map_value
+    submissions_value = normalize_text(submissions_name)
+    if submissions_value:
+        return submissions_value
+    return fallback
+
+
 def load_ticker_cik_map(force_live: bool = False) -> dict[str, dict[str, str]]:
     fixture_path = FIXTURES_DIR / "company_tickers_exchange.json"
     if fixture_path.exists() and not force_live:
@@ -185,7 +204,10 @@ def fetch_submissions_json(cik10: str) -> dict[str, Any]:
     return json.loads(download(url, session, limiter).decode("utf-8"))
 
 
-def iter_recent_filings(submissions: dict[str, Any]) -> list[dict[str, str]]:
+def iter_recent_filings(
+    submissions: dict[str, Any],
+    allowed_forms: set[str],
+) -> list[dict[str, str]]:
     recent = submissions.get("filings", {}).get("recent", {})
     forms = recent.get("form", [])
     filing_dates = recent.get("filingDate", [])
@@ -204,7 +226,9 @@ def iter_recent_filings(submissions: dict[str, Any]) -> list[dict[str, str]]:
     rows: list[dict[str, str]] = []
     for idx in range(length):
         form = forms[idx]
-        if form != "10-K":
+        if not isinstance(form, str):
+            continue
+        if form not in allowed_forms:
             continue
         rows.append(
             {
@@ -232,6 +256,186 @@ def load_fixture_html(primary_doc: str) -> Optional[bytes]:
     return None
 
 
+def build_index_json_url(cik10: str, accession: str) -> str:
+    cik_no_leading = str(int(cik10))
+    acc_no_dashes = accession.replace("-", "")
+    return f"{SEC_ARCHIVES_BASE}/{cik_no_leading}/{acc_no_dashes}/index.json"
+
+
+def is_primary_doc_suspect(html_bytes: bytes) -> bool:
+    return len(html_bytes) < MIN_PRIMARY_DOC_BYTES
+
+
+def is_html_filename(name: str) -> bool:
+    lowered = name.lower()
+    return lowered.endswith(".htm") or lowered.endswith(".html")
+
+
+def is_txt_filename(name: str) -> bool:
+    return name.lower().endswith(".txt")
+
+
+def parse_size(value: Any) -> Optional[int]:
+    if isinstance(value, int):
+        return value
+    if isinstance(value, str) and value.isdigit():
+        return int(value)
+    return None
+
+
+DOCUMENT_BLOCK = re.compile(r"<DOCUMENT>(.*?)</DOCUMENT>", re.IGNORECASE | re.DOTALL)
+DOCUMENT_TYPE = re.compile(r"<TYPE>([^\\r\\n<]+)", re.IGNORECASE)
+DOCUMENT_TEXT = re.compile(r"<TEXT>(.*?)</TEXT>", re.IGNORECASE | re.DOTALL)
+
+
+def matches_allowed_form(doc_type: str, allowed_forms: set[str]) -> bool:
+    normalized = doc_type.strip().upper()
+    if normalized in allowed_forms:
+        return True
+    if normalized.endswith("/A") and normalized[:-2] in allowed_forms:
+        return True
+    return False
+
+
+def extract_submission_text(html_bytes: bytes, allowed_forms: set[str]) -> Optional[str]:
+    text = html_bytes.decode("utf-8", errors="replace")
+    if "<DOCUMENT>" not in text.upper():
+        return None
+    for match in DOCUMENT_BLOCK.finditer(text):
+        block = match.group(1)
+        type_match = DOCUMENT_TYPE.search(block)
+        if not type_match:
+            continue
+        doc_type = type_match.group(1)
+        if not matches_allowed_form(doc_type, allowed_forms):
+            continue
+        text_match = DOCUMENT_TEXT.search(block)
+        if not text_match:
+            continue
+        return text_match.group(1)
+    return None
+
+
+def load_index_json(
+    cik10: str, accession: str, session: requests.Session, limiter: RateLimiter
+) -> Optional[dict[str, Any]]:
+    url = build_index_json_url(cik10, accession)
+    try:
+        payload = json.loads(download(url, session, limiter).decode("utf-8"))
+    except Exception as exc:  # pragma: no cover - defensive for offline runs
+        print(f"warning: unable to fetch {url}: {exc}")
+        return None
+    return cast(dict[str, Any], payload)
+
+
+def select_alternate_document(
+    payload: dict[str, Any], allowed_forms: set[str]
+) -> Optional[str]:
+    directory = as_str_dict(payload.get("directory"))
+    if directory is None:
+        return None
+    items = as_list(directory.get("item"))
+    if items is None:
+        return None
+
+    hinted_html: list[tuple[int, str]] = []
+    hinted_txt: list[tuple[int, str]] = []
+    any_html: list[tuple[int, str]] = []
+    any_txt: list[tuple[int, str]] = []
+
+    hints: list[str] = []
+    for form in allowed_forms:
+        normalized = form.lower()
+        hints.append(normalized)
+        hints.append(normalized.replace("-", ""))
+
+    for raw in items:
+        entry = as_str_dict(raw)
+        if entry is None:
+            continue
+        name = entry.get("name")
+        size = parse_size(entry.get("size"))
+        if not isinstance(name, str):
+            continue
+        size_value = size if size is not None else 0
+        if name.lower().startswith("index."):
+            continue
+        name_lower = name.lower()
+        if (
+            name_lower.startswith("index.")
+            or "-index-headers" in name_lower
+            or name_lower.endswith("-index.html")
+            or name_lower.endswith("-index.htm")
+        ):
+            continue
+        matches_hint = any(hint in name_lower for hint in hints)
+        if is_html_filename(name):
+            if matches_hint:
+                hinted_html.append((size_value, name))
+            else:
+                any_html.append((size_value, name))
+            continue
+        if is_txt_filename(name):
+            if matches_hint:
+                hinted_txt.append((size_value, name))
+            else:
+                any_txt.append((size_value, name))
+
+    if hinted_html:
+        hinted_html.sort(reverse=True)
+        return hinted_html[0][1]
+    if any_html:
+        any_html.sort(reverse=True)
+        return any_html[0][1]
+    if hinted_txt:
+        hinted_txt.sort(reverse=True)
+        return hinted_txt[0][1]
+    if any_txt:
+        any_txt.sort(reverse=True)
+        return any_txt[0][1]
+    return None
+
+
+def maybe_fetch_alternate_html(
+    cik10: str,
+    accession: str,
+    primary_doc: str,
+    html_bytes: bytes,
+    allowed_forms: set[str],
+    session: requests.Session,
+    limiter: RateLimiter,
+    allow_live: bool,
+) -> tuple[str, bytes, bool]:
+    if not allow_live or not is_primary_doc_suspect(html_bytes):
+        return primary_doc, html_bytes, False
+
+    payload = load_index_json(cik10, accession, session, limiter)
+    if payload is None:
+        return primary_doc, html_bytes, False
+
+    alternate_doc = select_alternate_document(payload, allowed_forms)
+    if not alternate_doc or alternate_doc == primary_doc:
+        return primary_doc, html_bytes, False
+
+    alternate_bytes = load_fixture_html(alternate_doc)
+    if alternate_bytes is None:
+        alt_url = build_primary_doc_url(cik10, accession, alternate_doc)
+        try:
+            alternate_bytes = download(alt_url, session, limiter)
+        except Exception as exc:  # pragma: no cover - defensive for offline runs
+            print(f"warning: unable to fetch {alt_url}: {exc}")
+            return primary_doc, html_bytes, False
+
+    if len(alternate_bytes) <= len(html_bytes):
+        return primary_doc, html_bytes, False
+
+    print(
+        f"warning: primary document {primary_doc} looks small ({len(html_bytes)} bytes), "
+        f"using {alternate_doc} ({len(alternate_bytes)} bytes)"
+    )
+    return alternate_doc, alternate_bytes, True
+
+
 def parse_year_from_date(value: str) -> Optional[int]:
     if not value:
         return None
@@ -247,22 +451,23 @@ def ensure_low_confidence(errors: list[str]) -> list[str]:
     return errors
 
 
-def extract_item1a_from_html(
+def extract_item1a_from_html_bytes(
     html_bytes: bytes,
-) -> tuple[str, list[str], float, str, list[str]]:
+    extra_warnings: Optional[list[str]] = None,
+) -> tuple[str, list[str], float, str, list[str], dict[str, Any]]:
     html_text = html_bytes.decode("utf-8", errors="replace")
-    text = clean_html_to_text(html_text)
-    section, confidence, method, errors = extract_item_1a(text)
-    error_list = list(errors)
+    section, confidence, method, warnings, debug_meta = extract_item1a_from_html(html_text)
+    warning_list = list(extra_warnings) if extra_warnings else []
+    warning_list.extend(warnings)
     paragraphs = split_paragraphs(section) if section else []
     if confidence < 0.5 or not section.strip():
-        return "", [], confidence, method, ensure_low_confidence(error_list)
-    return section, paragraphs, confidence, method, error_list
+        return "", [], confidence, method, ensure_low_confidence(warning_list), debug_meta
+    return section, paragraphs, confidence, method, warning_list, debug_meta
 
 
-def build_missing_extraction() -> tuple[str, list[str], float, str, list[str]]:
-    errors = ensure_low_confidence(["html_missing"])
-    return "", [], 0.0, "no_html", errors
+def build_missing_extraction() -> tuple[str, list[str], float, str, list[str], dict[str, Any]]:
+    warnings = ensure_low_confidence(["html_missing"])
+    return "", [], 0.0, "no_html", warnings, {"lengthChars": 0, "endMarkerUsed": None, "hasItem1C": False}
 
 
 def build_quality_terms(value: Any) -> list[QualityShiftTerm]:
@@ -310,6 +515,40 @@ def build_quality_shifts(payload: ShiftsPayload) -> list[QualityShiftPair]:
     return output
 
 
+def build_forms_included(rows: list[dict[str, Any]]) -> list[str]:
+    forms: list[str] = []
+    for row in rows:
+        form_value = row.get("form")
+        if not isinstance(form_value, str):
+            continue
+        if form_value and form_value not in forms:
+            forms.append(form_value)
+    return forms
+
+
+def choose_meta_extraction(
+    current: Optional[dict[str, Any]], candidate: dict[str, Any]
+) -> dict[str, Any]:
+    if current is None:
+        return candidate
+    curr_conf = current.get("confidence")
+    cand_conf = candidate.get("confidence")
+    if isinstance(curr_conf, (int, float)) and isinstance(cand_conf, (int, float)):
+        if cand_conf < curr_conf:
+            return candidate
+        if cand_conf > curr_conf:
+            return current
+    curr_warn = len(current.get("warnings") or [])
+    cand_warn = len(candidate.get("warnings") or [])
+    if cand_warn > curr_warn:
+        return candidate
+    curr_len = current.get("lengthChars")
+    cand_len = candidate.get("lengthChars")
+    if isinstance(curr_len, int) and isinstance(cand_len, int) and cand_len < curr_len:
+        return candidate
+    return current
+
+
 def write_json(path: Path, payload: Any) -> None:
     path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
 
@@ -334,6 +573,11 @@ def build_parser() -> argparse.ArgumentParser:
         default=None,
         help="Optional limit on number of filings to process.",
     )
+    parser.add_argument(
+        "--include-20f",
+        action="store_true",
+        help="Include 20-F filings when available.",
+    )
     return parser
 
 
@@ -349,14 +593,19 @@ def main(argv: Optional[list[str]] = None) -> int:
         raise SystemExit(f"Ticker not found in mapping: {ticker}")
 
     cik10 = mapping[ticker]["cik"]
-    company_name = mapping[ticker].get("name", ticker)
     submissions = fetch_submissions_json(cik10)
-    filings = iter_recent_filings(submissions)
+    company_name = resolve_company_name(mapping[ticker].get("name"), submissions.get("name"), ticker)
+    allowed_forms = {"10-K"}
+    if args.include_20f:
+        allowed_forms.add("20-F")
+    filings = iter_recent_filings(submissions, allowed_forms)
 
     max_items = args.limit if args.limit is not None else args.years
     filings = filings[:max_items]
 
     if not filings:
+        if args.include_20f:
+            raise SystemExit("No 10-K or 20-F filings found for ticker.")
         raise SystemExit("No 10-K filings found for ticker.")
 
     cache_dir = CACHE_DIR / ticker
@@ -369,6 +618,7 @@ def main(argv: Optional[list[str]] = None) -> int:
     filings_out: list[dict[str, Any]] = []
     metrics_sections: list[MetricsSectionYear] = []
     quality_sections: list[QualitySectionYear] = []
+    meta_extraction: Optional[dict[str, Any]] = None
 
     for filing in filings:
         report_date = filing.get("reportDate", "")
@@ -378,8 +628,11 @@ def main(argv: Optional[list[str]] = None) -> int:
             continue
         seen_years.add(year)
 
-        url = build_primary_doc_url(cik10, filing["accessionNumber"], filing["primaryDocument"])
-        html_bytes = load_fixture_html(filing["primaryDocument"])
+        accession = filing["accessionNumber"]
+        primary_doc = filing["primaryDocument"]
+        url = build_primary_doc_url(cik10, accession, primary_doc)
+        html_bytes = load_fixture_html(primary_doc)
+        from_fixture = html_bytes is not None
         if html_bytes is None:
             try:
                 html_bytes = download(url, session, limiter)
@@ -388,17 +641,55 @@ def main(argv: Optional[list[str]] = None) -> int:
                 html_bytes = None
 
         if html_bytes is None:
-            section_text, paragraphs, confidence, method, errors = build_missing_extraction()
+            section_text, paragraphs, confidence, method, warnings, debug_meta = (
+                build_missing_extraction()
+            )
         else:
+            allow_live = (not from_fixture) or is_primary_doc_suspect(html_bytes)
+            primary_doc, html_bytes, alternate_used = maybe_fetch_alternate_html(
+                cik10,
+                accession,
+                primary_doc,
+                html_bytes,
+                allowed_forms,
+                session,
+                limiter,
+                allow_live=allow_live,
+            )
+            url = build_primary_doc_url(cik10, accession, primary_doc)
+            raw_bytes = html_bytes
+            submission_text = None
+            if primary_doc.lower().endswith(".txt"):
+                submission_text = extract_submission_text(raw_bytes, allowed_forms)
+            if submission_text:
+                html_bytes = submission_text.encode("utf-8")
             filename = (
-                f"{filing['accessionNumber'].replace('-', '')}_{filing['primaryDocument']}"
+                f"{accession.replace('-', '')}_{primary_doc}"
             )
             output_path = cache_dir / filename
-            output_path.write_bytes(html_bytes)
+            output_path.write_bytes(raw_bytes)
             print(f"saved: {output_path}")
-            section_text, paragraphs, confidence, method, errors = extract_item1a_from_html(
-                html_bytes
+            extra_warnings: list[str] = []
+            if alternate_used:
+                extra_warnings.append("alternate_primary_doc_used")
+            if is_primary_doc_suspect(raw_bytes):
+                extra_warnings.append("primary_doc_too_small")
+            if submission_text:
+                extra_warnings.append("submission_text_extracted")
+            section_text, paragraphs, confidence, method, warnings, debug_meta = (
+                extract_item1a_from_html_bytes(html_bytes, extra_warnings)
             )
+
+        extraction_summary = {
+            "section": "item1a",
+            "method": method,
+            "confidence": confidence,
+            "warnings": warnings,
+            "lengthChars": debug_meta.get("lengthChars"),
+            "endMarkerUsed": debug_meta.get("endMarkerUsed"),
+            "hasItem1C": debug_meta.get("hasItem1C"),
+        }
+        meta_extraction = choose_meta_extraction(meta_extraction, extraction_summary)
 
         filings_out.append(
             {
@@ -407,12 +698,12 @@ def main(argv: Optional[list[str]] = None) -> int:
                 "filingDate": filing_date,
                 "reportDate": report_date,
                 "accessionNumber": filing.get("accessionNumber", ""),
-                "primaryDocument": filing.get("primaryDocument", ""),
+                "primaryDocument": primary_doc,
                 "secUrl": url,
                 "extraction": {
                     "confidence": confidence,
                     "method": method,
-                    "errors": errors,
+                    "errors": warnings,
                 },
             }
         )
@@ -445,6 +736,7 @@ def main(argv: Optional[list[str]] = None) -> int:
     out_dir = Path(args.out)
     out_dir.mkdir(parents=True, exist_ok=True)
 
+    forms_included = build_forms_included(filings_out)
     meta_payload: dict[str, Any] = {
         "ticker": ticker,
         "cik": cik10,
@@ -452,10 +744,12 @@ def main(argv: Optional[list[str]] = None) -> int:
         "lastUpdatedUtc": datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace(
             "+00:00", "Z"
         ),
-        "formsIncluded": ["10-K"],
+        "formsIncluded": forms_included if forms_included else sorted(allowed_forms),
         "sectionsIncluded": [SECTION_NAME],
         "notes": META_NOTES,
     }
+    if meta_extraction is not None:
+        meta_payload["extraction"] = meta_extraction
 
     write_json(out_dir / "meta.json", meta_payload)
     write_json(out_dir / "filings.json", filings_out)
