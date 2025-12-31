@@ -8,6 +8,17 @@ export type Meta = {
   formsIncluded: string[];
   sectionsIncluded: string[];
   notes: string[];
+  extraction?: MetaExtraction;
+};
+
+export type MetaExtraction = {
+  section: string;
+  method: string;
+  confidence: number;
+  warnings: string[];
+  lengthChars?: number;
+  endMarkerUsed?: string | null;
+  hasItem1C?: boolean;
 };
 
 export type ExtractionInfo = {
@@ -42,7 +53,7 @@ export type SimilarityMatrix = {
   cosineSimilarity: number[][];
 };
 
-export type ShiftTerm = {
+export type ShiftTermItem = {
   term: string;
   score: number;
   // Optional richer stats (present in newer datasets)
@@ -53,7 +64,10 @@ export type ShiftTerm = {
   per10kCurr?: number;
   deltaPer10k?: number;
   distinctive?: boolean;
+  includes?: string[];
 };
+
+export type ShiftTerm = string | ShiftTermItem;
 
 export type ShiftPair = {
   from: number;

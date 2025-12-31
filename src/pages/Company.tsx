@@ -5,7 +5,9 @@ import DataProvenanceDrawer from "../components/DataProvenanceDrawer"
 import DriftTimeline from "../components/DriftTimeline"
 import ExecutiveSummary from "../components/ExecutiveSummary"
 import ExecBriefCard, { type ExecBriefData } from "../components/ExecBriefCard"
+import InlinePopover from "../components/InlinePopover"
 import QualityBadge from "../components/QualityBadge"
+import SectionCaptureBadge from "../components/SectionCaptureBadge"
 import SelectedPairCallout from "../components/SelectedPairCallout"
 import SimilarityHeatmap from "../components/SimilarityHeatmap"
 import TermShiftBars, { type TermLens } from "../components/TermShiftBars"
@@ -23,6 +25,7 @@ import {
 } from "../lib/data"
 import { exportExecBriefPng } from "../lib/exportPng"
 import { assertSafeExternalUrl } from "../lib/sanitize"
+import { getShiftTermIncludes, getShiftTermLabel } from "../lib/shiftTerms"
 import type {
   ExcerptPair,
   FilingRow,
@@ -85,7 +88,10 @@ export default function Company() {
     null
   )
   const [activeCell, setActiveCell] = useState<ActiveCell | null>(null)
-  const [selectedTerm, setSelectedTerm] = useState<string | null>(null)
+  const [selectedTerm, setSelectedTerm] = useState<{
+    term: string
+    includes?: string[]
+  } | null>(null)
   const [termLens, setTermLens] = useState<TermLens>("primary")
   const [isDataQualityOpen, setIsDataQualityOpen] = useState(false)
   const [isTourOpen, setIsTourOpen] = useState(false)
@@ -257,11 +263,38 @@ export default function Company() {
   }
 
   const highlightTerms = useMemo(() => {
-    if (selectedTerm) return [selectedTerm]
+    const terms: string[] = []
+    const pushTerm = (value: string) => {
+      if (value) {
+        terms.push(value)
+      }
+    }
+    const pushIncludes = (includes?: string[]) => {
+      if (!includes) return
+      includes.forEach((entry) => {
+        if (entry) {
+          terms.push(entry)
+        }
+      })
+    }
+
+    if (selectedTerm) {
+      pushTerm(selectedTerm.term)
+      pushIncludes(selectedTerm.includes)
+      return Array.from(new Set(terms))
+    }
+
     if (!selectedShiftPair) return []
-    const risers = activeShiftLists.risers.slice(0, 15).map((item) => item.term)
-    const fallers = activeShiftLists.fallers.slice(0, 15).map((item) => item.term)
-    return Array.from(new Set([...risers, ...fallers]))
+
+    for (const item of activeShiftLists.risers.slice(0, 15)) {
+      pushTerm(getShiftTermLabel(item))
+      pushIncludes(getShiftTermIncludes(item))
+    }
+    for (const item of activeShiftLists.fallers.slice(0, 15)) {
+      pushTerm(getShiftTermLabel(item))
+      pushIncludes(getShiftTermIncludes(item))
+    }
+    return Array.from(new Set(terms))
   }, [activeShiftLists, selectedShiftPair, selectedTerm])
 
   const selectedExcerptPair = useMemo(() => {
@@ -397,8 +430,8 @@ export default function Company() {
 
     const summary = matchedPair?.summary ?? ""
 
-    const topRisers = matchedPair?.topRisers?.map((item) => item.term) ?? []
-    const topFallers = matchedPair?.topFallers?.map((item) => item.term) ?? []
+    const topRisers = matchedPair?.topRisers?.map((item) => getShiftTermLabel(item)) ?? []
+    const topFallers = matchedPair?.topFallers?.map((item) => getShiftTermLabel(item)) ?? []
     const filingDates = filings
       .map((filing) => filing.filingDate)
       .filter((date) => Boolean(date))
@@ -527,6 +560,7 @@ export default function Company() {
               level={dataQualityLevel}
               onClick={() => setIsDataQualityOpen(true)}
             />
+            <SectionCaptureBadge confidence={meta?.extraction?.confidence} />
           </div>
           <p className="text-sm text-slate-300">{copy.company.sectionValueMvp}</p>
         </header>
@@ -642,8 +676,25 @@ export default function Company() {
         </section>
 
         <section className="space-y-3" id="tour-shifts">
-          <div>
-            <h2 className="text-xl font-semibold">{copy.termShifts.title}</h2>
+          <div className="space-y-1">
+            <div className="flex items-center gap-2">
+              <h2 className="text-xl font-semibold">{copy.terms.header}</h2>
+              <InlinePopover
+                label={<span aria-hidden="true">?</span>}
+                ariaLabel={copy.terms.whyGroupTitle}
+                triggerClassName="flex h-5 w-5 items-center justify-center rounded-full border border-slate-300 text-[10px] text-slate-500 hover:text-slate-700"
+                content={
+                  <div className="space-y-2 text-xs text-slate-700">
+                    <div className="font-semibold text-slate-900">
+                      {copy.terms.whyGroupTitle}
+                    </div>
+                    <p>{copy.terms.whyGroupBody1}</p>
+                    <p>{copy.terms.whyGroupBody2}</p>
+                  </div>
+                }
+              />
+            </div>
+            <p className="text-xs text-slate-400">{copy.terms.subnote}</p>
             <p className="text-sm text-slate-300">{copy.termShifts.helper}</p>
           </div>
           <SelectedPairCallout
@@ -664,7 +715,7 @@ export default function Company() {
             lens={termLens}
             hasAlt={hasAltShiftLists}
             onLensChange={setTermLens}
-            onClickTerm={(term) => setSelectedTerm(term)}
+            onClickTerm={(term, includes) => setSelectedTerm({ term, includes })}
           />
         </section>
 

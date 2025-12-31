@@ -272,6 +272,22 @@ export const copy = {
       "Heuristic: this term's shift looks less likely to be a tokenization artifact (uses z-score + frequency filters when available).",
   },
 
+  terms: {
+    header: "Distinctive terms (log-odds)",
+    subnote:
+      "Grouped by canonical term to reduce duplicate variants (e.g., \"covid\", \"covid-19\", \"coronavirus\").",
+    includesLabel: "Includes",
+    includesTooltipTitle: "Includes variants found in this year-pair",
+    includesTooltipCountsNote:
+      "Counts shown use the canonical group (not each variant separately).",
+    includesTooltipTip: "Tip: open Evidence to see each variant in context.",
+    whyGroupTitle: "Why group terms?",
+    whyGroupBody1:
+      "Risk factors reuse boilerplate and vary in phrasing. Grouping collapses obvious lexical variants so lists stay readable.",
+    whyGroupBody2: "We avoid broad semantic merges unless explicitly mapped.",
+    dryAside: "Boilerplate is a renewable resource.",
+  },
+
   comparePane: {
     title: "Read the evidence",
     helper: "Representative paragraphs for the selected year pair. The receipts — curated, not comprehensive.",
@@ -296,6 +312,7 @@ export const copy = {
       extraction: "How extraction works (high level)",
       drift: "How drift is computed (high level)",
       sanityCheck: "How to sanity‑check a spike",
+      relatedWork: "Related work (and how this differs)",
       securityPrivacy: "Security & privacy",
       credits: "Credits",
     },
@@ -312,10 +329,44 @@ export const copy = {
         "We vectorize text and compute cosine similarity across years. Drift is defined as 1 − similarity. Term shifts are computed as a smoothed log‑odds difference.",
       sanityCheck:
         "Click the spike year → click the heatmap cell → skim term shifts → read the highlighted paragraphs → open the SEC link if anything looks off.",
+      relatedWorkLead:
+        "There are plenty of ways to download and extract SEC sections. This project's obsession is narrower: turn those sections into an auditable, evidence-first \"what changed?\" reading workflow - with uncertainty, quality flags, and direct links back to the filing.",
+      relatedWorkDisclaimer:
+        "We're not affiliated with the tools below. They're good references; this is a different product decision.",
       securityPrivacy:
         "No login, no user accounts, and no server-side tracking. SEC text is treated as untrusted and rendered as plain text with highlights. Notes (if used) are stored locally in your browser (localStorage) and never uploaded. Security headers like CSP and frame-ancestors are set.",
       credits:
         "See docs for research, attributions, and inspirations.",
+    },
+    relatedWork: {
+      // Keep this list short: it's a credibility stamp, not an academic appendix.
+      items: [
+        {
+          label: "EDGAR-CRAWLER (WWW 2025): download + structured JSON extraction",
+          href: "https://github.com/lefterisloukas/edgar-crawler",
+          note: "Great for building corpora. SEC Narrative Drift starts after extraction: change metrics + evidence UX.",
+        },
+        {
+          label: "itemseg: 10-K item segmentation tool (incl. LLM/PLM approaches)",
+          href: "https://pypi.org/project/itemseg/",
+          note: "A stronger segmenter can be swapped into the pipeline. Our UI/metrics don't depend on any one parser.",
+        },
+        {
+          label: "Harvard Forum (2024): boilerplate & \"stickiness\" definitions for risk factors",
+          href: "https://corpgov.law.harvard.edu/2024/03/26/covid-19-risk-factors-and-boilerplate-disclosure/",
+          note: "Frames why drift is useful: it helps locate where disclosures did (or didn't) update with circumstances.",
+        },
+        {
+          label: "Dyer et al. (JAE 2017): disclosure growth, boilerplate, and stickiness trends",
+          href: "https://msbfile03.usc.edu/digitalmeasures/sticelaw/intellcont/Dyer%20et%20al.%202017-1.pdf",
+          note: "A classic reference for how risk-factor text expands and repeats over time - and why measuring change is non-trivial.",
+        },
+        {
+          label: "Nature HSSC (2024): risk disclosures become more specific (less boilerplate) during crises",
+          href: "https://www.nature.com/articles/s41599-024-04169-w",
+          note: "Empirical support for what you often see visually: crisis years produce genuinely different risk language.",
+        },
+      ],
     },
   },
 
@@ -331,6 +382,18 @@ export const copy = {
     },
     guidance:
       "If confidence is low, drift may reflect parsing noise. Use the “View on SEC” link to verify boundaries.",
+  },
+  sectionCapture: {
+    label: "Section capture",
+    tooltipTitle: "Section capture confidence",
+    levels: {
+      high: "Clean boundaries. The section start/end markers look like the real Item 1A.",
+      medium:
+        "Probably right, but the filing structure is quirky. Use the evidence panel to sanity-check.",
+      low: "This might be a TOC or cross-reference. Treat highlights as a starting point, not a verdict.",
+    },
+    footer: "If anything looks odd, open the filing on EDGAR.",
+    dryLine: "Some filings are well-structured. Others are enthusiastic.",
   },
 
   tour: {
