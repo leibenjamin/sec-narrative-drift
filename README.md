@@ -1,77 +1,61 @@
-﻿# SEC Narrative Drift
+# SEC Narrative Drift
 
-A portfolio micro-app that quantifies how a public company's Item 1A risk factor language shifts over time using SEC 10-K filings.
+A small portfolio app that turns 10-K **Item 1A (Risk Factors)** into an auditable "what changed?" workflow:
+- **Drift timeline** (where the narrative shifts most year-to-year)
+- **Similarity heatmap** (pick a year pair)
+- **Term shifts** (distinctive terms; smoothed log-odds)
+- **Evidence-first compare** (representative excerpts + "View on SEC")
 
-Live demo: https://<your-domain>/sec-narrative-drift
+Live: https://benlei.org/sec-narrative-drift/
 
-## Screenshots
-![Home](./assets/screenshot-home.png)
-![Company](./assets/screenshot-company.png)
+## What this is (and isn't)
 
-## What it does
-- Compares year-to-year Item 1A disclosures and surfaces rising/falling terms.
-- Highlights term shifts in context with excerpted paragraphs.
-- Shows similarity patterns across years with a compact heatmap view.
-- Keeps all SEC data precomputed as static JSON for reliability and compliance.
+This is **descriptive**, not causal. Drift is a reading prompt, not a conclusion.
 
-## Why it is useful
-Risk factor language changes can signal evolving exposure, strategy, or regulatory pressure. This app turns dense filings into a concise narrative drift view that is easy to scan and explain.
+It also does **not** ship full filing text. The demo stores short excerpts only and links back to EDGAR for verification.
 
-## Features
-- Phrase-aware term shifts (unigrams + vetted SEC phrases; supports multiword signals).
-- Optional alternate lens (TextRank keyphrases) when available in data.
-- Highlighted excerpts and side-by-side comparisons for context.
-- Static data delivery (no in-browser SEC calls).
+## Data source
 
-## Tech stack
-- React + TypeScript + Vite
-- Tailwind CSS
-- Python data pipeline for extraction and metrics
+- SEC EDGAR 10-K filings (public).
+- Section: Item 1A "Risk Factors".
 
-## Data provenance and compliance
-- Source: SEC EDGAR 10-K filings, primarily Item 1A Risk Factors.
-- Pipeline scripts live in `scripts/` and output static JSON to `public/data/sec_narrative_drift/`.
-- SEC text is treated as untrusted and never rendered as HTML.
-- Descriptive, not causal. This is a reading aid, not investment advice.
-- Use a descriptive SEC User-Agent with contact info and respect SEC fair-access limits.
+## Local dev
 
-## Getting started
 ```bash
 npm install
 npm run dev
+```
+
+## Build & deploy
+
+```bash
 npm run build
+npm run preview
 ```
 
-## Build data locally (live SEC)
-Set your own SEC User-Agent (SEC policy requirement):
-```bash
-SEC_USER_AGENT="YOUR NAME <your.email@domain.com>"
-```
+Static hosting (e.g., Cloudflare Pages / GitHub Pages) works well.
 
-Regenerate one ticker:
-```bash
-python scripts/sec_fetch_and_build.py --ticker AAPL --years 10 --out public/data/sec_narrative_drift/AAPL
-```
+## Scripts (data build)
 
-Batch build (anchors and stories):
-```bash
-python scripts/sec_build_universe.py --only all
-```
+See `scripts/README.md` for batch builds and how we fetch filings responsibly (User-Agent, rate limits, caching).
 
-Validate outputs and rebuild index:
-```bash
-python scripts/sec_validate_public_data.py
-python scripts/sec_build_index.py
-```
+## Related work (and how this differs)
 
-## Project layout
-- `src/` React UI and data loaders
-- `public/data/` static JSON datasets used by the app
-- `scripts/` data pipeline and fixtures (`scripts/sample_fixtures/`)
+There are many ways to download/extract SEC sections. This project's focus is narrower: **auditable change signals + evidence UX**.
 
-## Notes
-- The public repo is README-driven; internal planning docs are kept private.
-- Replace the live URL and screenshot placeholders when you publish.
+- EDGAR-CRAWLER (WWW 2025): https://github.com/lefterisloukas/edgar-crawler  
+  Great for corpora; SEC Narrative Drift starts after extraction: change metrics + evidence UX.
 
-## License
-No license specified yet.
+- itemseg (10-K item segmentation): https://pypi.org/project/itemseg/  
+  A stronger segmenter can be swapped in; the UI/metrics aren't married to one parser.
+
+- Boilerplate & stickiness framing (Harvard Forum, 2024):  
+  https://corpgov.law.harvard.edu/2024/03/26/covid-19-risk-factors-and-boilerplate-disclosure/
+
+- Disclosure evolution & stickiness (Dyer et al., JAE 2017):  
+  https://msbfile03.usc.edu/digitalmeasures/sticelaw/intellcont/Dyer%20et%20al.%202017-1.pdf
+
+- Crisis years reduce boilerplate (Nature HSSC, 2024):  
+  https://www.nature.com/articles/s41599-024-04169-w
+
+_Not affiliated with the above tools/papers._
