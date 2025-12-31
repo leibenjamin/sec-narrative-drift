@@ -1,0 +1,243 @@
+{
+  "version": "1.0",
+  "concepts": [
+    {
+      "id": "covid_19",
+      "label": "COVID-19",
+      "variants": [
+        "covid 19",
+        "covid19",
+        "covid"
+      ],
+      "notes": "Lexical variants only; does not include 'pandemic' or 'coronavirus'."
+    },
+    {
+      "id": "coronavirus",
+      "label": "Coronavirus",
+      "variants": [
+        "corona virus",
+        "coronavirus"
+      ]
+    },
+    {
+      "id": "pandemic",
+      "label": "Pandemic",
+      "variants": [
+        "pandemics",
+        "pandemic"
+      ]
+    },
+    {
+      "id": "cybersecurity",
+      "label": "Cybersecurity",
+      "variants": [
+        "cyber security",
+        "cybersecurity"
+      ]
+    },
+    {
+      "id": "data_breach",
+      "label": "Data breach",
+      "variants": [
+        "security breaches",
+        "security breach",
+        "data breaches",
+        "data breach"
+      ]
+    },
+    {
+      "id": "data_privacy",
+      "label": "Data privacy",
+      "variants": [
+        "data protection laws",
+        "data protection law",
+        "privacy regulations",
+        "privacy regulation",
+        "data protection",
+        "data privacy",
+        "privacy laws",
+        "privacy law"
+      ]
+    },
+    {
+      "id": "gdpr",
+      "label": "GDPR",
+      "variants": [
+        "general data protection regulation",
+        "gdpr"
+      ]
+    },
+    {
+      "id": "inflation",
+      "label": "Inflation",
+      "variants": [
+        "inflationary pressures",
+        "inflation pressures",
+        "inflationary",
+        "inflation"
+      ]
+    },
+    {
+      "id": "climate_change",
+      "label": "Climate change",
+      "variants": [
+        "climate change"
+      ]
+    },
+    {
+      "id": "interest_rates",
+      "label": "Interest rates",
+      "variants": [
+        "changes in interest rates",
+        "rising interest rates",
+        "interest rates",
+        "interest rate"
+      ]
+    },
+    {
+      "id": "supply_chain",
+      "label": "Supply chain",
+      "variants": [
+        "supply chain disruptions",
+        "supply chain disruption",
+        "supply chains",
+        "supply chain"
+      ]
+    },
+    {
+      "id": "geopolitical_tensions",
+      "label": "Geopolitical tensions",
+      "variants": [
+        "geopolitical tensions",
+        "geopolitical tension",
+        "geo political",
+        "geopolitical"
+      ]
+    },
+    {
+      "id": "sanctions",
+      "label": "Sanctions",
+      "variants": [
+        "economic sanctions",
+        "economic sanction",
+        "sanctions",
+        "sanction"
+      ]
+    },
+    {
+      "id": "intellectual_property",
+      "label": "Intellectual property",
+      "variants": [
+        "intellectual property"
+      ]
+    },
+    {
+      "id": "artificial_intelligence",
+      "label": "Artificial intelligence",
+      "variants": [
+        "artificial intelligence",
+        "ai"
+      ],
+      "notes": "Short token 'ai' requires whitelistShortTokens in the builder (per patch pack)."
+    },
+    {
+      "id": "generative_ai",
+      "label": "Generative AI",
+      "variants": [
+        "generative ai",
+        "gen ai",
+        "genai"
+      ]
+    },
+    {
+      "id": "large_language_models",
+      "label": "Large language models",
+      "variants": [
+        "large language models",
+        "large language model",
+        "llms",
+        "llm"
+      ],
+      "notes": "Short tokens 'llm'/'llms' require whitelistShortTokens in the builder (per patch pack)."
+    }
+  ],
+  "variantToConcept": {
+    "covid": "covid_19",
+    "covid19": "covid_19",
+    "covid 19": "covid_19",
+    "coronavirus": "coronavirus",
+    "corona virus": "coronavirus",
+    "pandemic": "pandemic",
+    "pandemics": "pandemic",
+    "cybersecurity": "cybersecurity",
+    "cyber security": "cybersecurity",
+    "data breach": "data_breach",
+    "data breaches": "data_breach",
+    "security breach": "data_breach",
+    "security breaches": "data_breach",
+    "data privacy": "data_privacy",
+    "privacy law": "data_privacy",
+    "privacy laws": "data_privacy",
+    "privacy regulation": "data_privacy",
+    "privacy regulations": "data_privacy",
+    "data protection": "data_privacy",
+    "data protection law": "data_privacy",
+    "data protection laws": "data_privacy",
+    "gdpr": "gdpr",
+    "general data protection regulation": "gdpr",
+    "inflation": "inflation",
+    "inflationary": "inflation",
+    "inflationary pressures": "inflation",
+    "inflation pressures": "inflation",
+    "climate change": "climate_change",
+    "interest rate": "interest_rates",
+    "interest rates": "interest_rates",
+    "rising interest rates": "interest_rates",
+    "changes in interest rates": "interest_rates",
+    "supply chain": "supply_chain",
+    "supply chains": "supply_chain",
+    "supply chain disruption": "supply_chain",
+    "supply chain disruptions": "supply_chain",
+    "geopolitical": "geopolitical_tensions",
+    "geo political": "geopolitical_tensions",
+    "geopolitical tension": "geopolitical_tensions",
+    "geopolitical tensions": "geopolitical_tensions",
+    "sanction": "sanctions",
+    "sanctions": "sanctions",
+    "economic sanction": "sanctions",
+    "economic sanctions": "sanctions",
+    "intellectual property": "intellectual_property",
+    "artificial intelligence": "artificial_intelligence",
+    "ai": "artificial_intelligence",
+    "generative ai": "generative_ai",
+    "genai": "generative_ai",
+    "gen ai": "generative_ai",
+    "large language model": "large_language_models",
+    "large language models": "large_language_models",
+    "llm": "large_language_models",
+    "llms": "large_language_models"
+  },
+  "whitelistShortTokens": [
+    "ai",
+    "us",
+    "uk",
+    "eu",
+    "ip",
+    "llm",
+    "llms"
+  ],
+  "noiseTokens": [
+    "mr",
+    "ms",
+    "mrs",
+    "dr"
+  ],
+  "normalization": {
+    "lowercase": true,
+    "hyphenToSpace": true,
+    "stripNonWordPunctuation": true,
+    "collapseWhitespace": true,
+    "trim": true
+  },
+  "generatedAt": "2025-12-31T04:06:21Z"
+}

@@ -1,0 +1,131 @@
+version: "1.0"
+principles:
+  - "Keep concepts small and defensible; prefer lexical variants over semantic synonymy."
+  - "No overlap across concepts (v1): the same normalized variant must not appear in multiple concepts."
+  - "Do not merge broad concepts (e.g., keep COVID-19 vs pandemic vs coronavirus distinct)."
+
+concepts:
+  - id: covid_19
+    label: "COVID-19"
+    variants:
+      - "covid"
+      - "covid19"
+      - "covid-19"
+    notes: "Lexical variants only; does not include 'pandemic' or 'coronavirus'."
+
+  - id: coronavirus
+    label: "Coronavirus"
+    variants:
+      - "coronavirus"
+      - "corona virus"
+
+  - id: pandemic
+    label: "Pandemic"
+    variants:
+      - "pandemic"
+      - "pandemics"
+
+  - id: cybersecurity
+    label: "Cybersecurity"
+    variants:
+      - "cybersecurity"
+      - "cyber security"
+
+  - id: data_breach
+    label: "Data breach"
+    variants:
+      - "data breach"
+      - "data breaches"
+      - "security breach"
+      - "security breaches"
+
+  - id: data_privacy
+    label: "Data privacy"
+    variants:
+      - "data privacy"
+      - "privacy law"
+      - "privacy laws"
+      - "privacy regulation"
+      - "privacy regulations"
+      - "data protection"
+      - "data protection law"
+      - "data protection laws"
+
+  - id: gdpr
+    label: "GDPR"
+    variants:
+      - "gdpr"
+      - "general data protection regulation"
+
+  - id: inflation
+    label: "Inflation"
+    variants:
+      - "inflation"
+      - "inflationary"
+      - "inflationary pressures"
+      - "inflation pressures"
+
+  - id: climate_change
+    label: "Climate change"
+    variants:
+      - "climate change"
+
+  - id: interest_rates
+    label: "Interest rates"
+    variants:
+      - "interest rate"
+      - "interest rates"
+      - "rising interest rates"
+      - "changes in interest rates"
+
+  - id: supply_chain
+    label: "Supply chain"
+    variants:
+      - "supply chain"
+      - "supply chains"
+      - "supply chain disruption"
+      - "supply chain disruptions"
+
+  - id: geopolitical_tensions
+    label: "Geopolitical tensions"
+    variants:
+      - "geopolitical"
+      - "geo political"
+      - "geopolitical tension"
+      - "geopolitical tensions"
+
+  - id: sanctions
+    label: "Sanctions"
+    variants:
+      - "sanction"
+      - "sanctions"
+      - "economic sanction"
+      - "economic sanctions"
+
+  - id: intellectual_property
+    label: "Intellectual property"
+    variants:
+      - "intellectual property"
+
+  - id: artificial_intelligence
+    label: "Artificial intelligence"
+    variants:
+      - "artificial intelligence"
+      - "ai"
+    notes: "Short token 'ai' requires whitelistShortTokens in the builder (per patch pack)."
+
+  - id: generative_ai
+    label: "Generative AI"
+    variants:
+      - "generative ai"
+      - "genai"
+      - "gen ai"
+
+  - id: large_language_models
+    label: "Large language models"
+    variants:
+      - "large language model"
+      - "large language models"
+      - "llm"
+      - "llms"
+    notes: "Short tokens 'llm'/'llms' require whitelistShortTokens in the builder (per patch pack)."
