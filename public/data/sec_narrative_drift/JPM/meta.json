@@ -2,7 +2,7 @@
   "ticker": "JPM",
   "cik": "0000019617",
   "companyName": "JPMORGAN CHASE & CO",
-  "lastUpdatedUtc": "2025-12-31T04:51:38Z",
+  "lastUpdatedUtc": "2025-12-31T17:13:48Z",
   "formsIncluded": [
     "10-K"
   ],
@@ -16,12 +16,13 @@
   "extraction": {
     "section": "item1a",
     "method": "text_scored",
-    "confidence": 0.8999999999999999,
+    "confidence": 0.75,
     "warnings": [
-      "anchor_missing"
+      "anchor_missing",
+      "early_position_penalty"
     ],
-    "lengthChars": 137535,
+    "lengthChars": 67663,
     "endMarkerUsed": "1B",
-    "hasItem1C": true
+    "hasItem1C": false
   }
 }

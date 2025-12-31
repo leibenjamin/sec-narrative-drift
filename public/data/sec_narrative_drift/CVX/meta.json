@@ -2,7 +2,7 @@
   "ticker": "CVX",
   "cik": "0000093410",
   "companyName": "CHEVRON CORP",
-  "lastUpdatedUtc": "2025-12-31T05:00:47Z",
+  "lastUpdatedUtc": "2025-12-31T17:48:38Z",
   "formsIncluded": [
     "10-K"
   ],
@@ -16,11 +16,12 @@
   "extraction": {
     "section": "item1a",
     "method": "text_scored",
-    "confidence": 0.8999999999999999,
+    "confidence": 0.6499999999999999,
     "warnings": [
-      "anchor_missing"
+      "anchor_missing",
+      "early_position_penalty"
     ],
-    "lengthChars": 18884,
+    "lengthChars": 104386,
     "endMarkerUsed": "1B",
     "hasItem1C": false
   }

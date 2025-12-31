@@ -2,343 +2,3601 @@
   "section": "10k_item1a",
   "yearPairs": [
     {
+      "from": 2016,
+      "to": 2017,
+      "topRisers": [
+        {
+          "term": "pharmacy",
+          "score": 7.07,
+          "z": 0.71,
+          "countPrev": 0,
+          "countCurr": 13,
+          "per10kPrev": 0.0,
+          "per10kCurr": 17.62,
+          "deltaPer10k": 17.62,
+          "distinctive": false
+        },
+        {
+          "term": "drugs",
+          "score": 6.59,
+          "z": 0.66,
+          "countPrev": 0,
+          "countCurr": 8,
+          "per10kPrev": 0.0,
+          "per10kCurr": 10.84,
+          "deltaPer10k": 10.84,
+          "distinctive": false
+        },
+        {
+          "term": "retail pharmacy",
+          "score": 6.46,
+          "z": 0.65,
+          "countPrev": 0,
+          "countCurr": 7,
+          "per10kPrev": 0.0,
+          "per10kCurr": 9.49,
+          "deltaPer10k": 9.49,
+          "distinctive": false
+        },
+        {
+          "term": "border",
+          "score": 6.3,
+          "z": 0.63,
+          "countPrev": 0,
+          "countCurr": 6,
+          "per10kPrev": 0.0,
+          "per10kCurr": 8.13,
+          "deltaPer10k": 8.13,
+          "distinctive": false
+        },
+        {
+          "term": "brand",
+          "score": 6.3,
+          "z": 0.63,
+          "countPrev": 0,
+          "countCurr": 6,
+          "per10kPrev": 0.0,
+          "per10kCurr": 8.13,
+          "deltaPer10k": 8.13,
+          "distinctive": false
+        },
+        {
+          "term": "cyber attacks",
+          "score": 6.3,
+          "z": 0.63,
+          "countPrev": 0,
+          "countCurr": 6,
+          "per10kPrev": 0.0,
+          "per10kCurr": 8.13,
+          "deltaPer10k": 8.13,
+          "distinctive": false
+        },
+        {
+          "term": "pharmacy operations",
+          "score": 6.12,
+          "z": 0.61,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 6.78,
+          "deltaPer10k": 6.78,
+          "distinctive": false
+        },
+        {
+          "term": "reimbursement",
+          "score": 6.12,
+          "z": 0.61,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 6.78,
+          "deltaPer10k": 6.78,
+          "distinctive": false
+        },
+        {
+          "term": "adversely impact",
+          "score": 5.9,
+          "z": 0.59,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.42,
+          "deltaPer10k": 5.42,
+          "distinctive": false
+        },
+        {
+          "term": "commerce technology",
+          "score": 5.9,
+          "z": 0.59,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.42,
+          "deltaPer10k": 5.42,
+          "distinctive": false
+        },
+        {
+          "term": "flows liquidity",
+          "score": 5.9,
+          "z": 0.59,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.42,
+          "deltaPer10k": 5.42,
+          "distinctive": false
+        },
+        {
+          "term": "generic",
+          "score": 5.9,
+          "z": 0.59,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.42,
+          "deltaPer10k": 5.42,
+          "distinctive": false
+        },
+        {
+          "term": "growth business",
+          "score": 5.9,
+          "z": 0.59,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.42,
+          "deltaPer10k": 5.42,
+          "distinctive": false
+        },
+        {
+          "term": "pharmaceuticals",
+          "score": 5.9,
+          "z": 0.59,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.42,
+          "deltaPer10k": 5.42,
+          "distinctive": false
+        },
+        {
+          "term": "Data privacy",
+          "score": 5.61,
+          "z": 0.56,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.07,
+          "deltaPer10k": 4.07,
+          "distinctive": false,
+          "includes": [
+            "data protection",
+            "data privacy"
+          ]
+        }
+      ],
+      "topFallers": [
+        {
+          "term": "supercenters",
+          "score": -6.5,
+          "z": -0.65,
+          "countPrev": 6,
+          "countCurr": 0,
+          "per10kPrev": 8.97,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -8.97,
+          "distinctive": false
+        },
+        {
+          "term": "discount stores",
+          "score": -6.32,
+          "z": -0.63,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 7.47,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -7.47,
+          "distinctive": false
+        },
+        {
+          "term": "formats",
+          "score": -6.32,
+          "z": -0.63,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 7.47,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -7.47,
+          "distinctive": false
+        },
+        {
+          "term": "walmart canada",
+          "score": -6.32,
+          "z": -0.63,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 7.47,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -7.47,
+          "distinctive": false
+        },
+        {
+          "term": "center",
+          "score": -6.09,
+          "z": -0.61,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 5.98,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.98,
+          "distinctive": false
+        },
+        {
+          "term": "concepts",
+          "score": -6.09,
+          "z": -0.61,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 5.98,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.98,
+          "distinctive": false
+        },
+        {
+          "term": "online photo",
+          "score": -6.09,
+          "z": -0.61,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 5.98,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.98,
+          "distinctive": false
+        },
+        {
+          "term": "photo",
+          "score": -6.09,
+          "z": -0.61,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 5.98,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.98,
+          "distinctive": false
+        },
+        {
+          "term": "photo center",
+          "score": -6.09,
+          "z": -0.61,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 5.98,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.98,
+          "distinctive": false
+        },
+        {
+          "term": "retail concepts",
+          "score": -6.09,
+          "z": -0.61,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 5.98,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.98,
+          "distinctive": false
+        },
+        {
+          "term": "acquisition",
+          "score": -5.81,
+          "z": -0.58,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 4.48,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.48,
+          "distinctive": false
+        },
+        {
+          "term": "appropriate",
+          "score": -5.81,
+          "z": -0.58,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 4.48,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.48,
+          "distinctive": false
+        },
+        {
+          "term": "convert",
+          "score": -5.81,
+          "z": -0.58,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 4.48,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.48,
+          "distinctive": false
+        },
+        {
+          "term": "cyberattacks",
+          "score": -5.81,
+          "z": -0.58,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 4.48,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.48,
+          "distinctive": false
+        },
+        {
+          "term": "emv",
+          "score": -5.81,
+          "z": -0.58,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 4.48,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.48,
+          "distinctive": false
+        }
+      ],
+      "summary": "Adds emphasis on pharmacy, drugs, retail pharmacy; de-emphasizes supercenters, discount stores, formats.",
+      "topRisersAlt": [
+        {
+          "term": "retail pharmacy operations",
+          "score": 6.04
+        },
+        {
+          "term": "commerce sales",
+          "score": 5.75
+        },
+        {
+          "term": "net sales",
+          "score": 5.75
+        },
+        {
+          "term": "store club sales",
+          "score": 5.75
+        },
+        {
+          "term": "business financial performance",
+          "score": 5.34
+        },
+        {
+          "term": "consolidated financial",
+          "score": 5.34
+        },
+        {
+          "term": "consolidated net sales",
+          "score": 5.34
+        },
+        {
+          "term": "consolidated operating",
+          "score": 5.34
+        },
+        {
+          "term": "financial performance operations",
+          "score": 5.34
+        },
+        {
+          "term": "information systems information",
+          "score": 5.34
+        },
+        {
+          "term": "net sales financial",
+          "score": 5.34
+        },
+        {
+          "term": "number new store",
+          "score": 5.34
+        },
+        {
+          "term": "operations operating results",
+          "score": 5.34
+        },
+        {
+          "term": "operations result",
+          "score": 5.34
+        },
+        {
+          "term": "pharmacy customers",
+          "score": 5.34
+        }
+      ],
+      "topFallersAlt": [
+        {
+          "term": "party service",
+          "score": -7.52
+        },
+        {
+          "term": "physical retail",
+          "score": -6.22
+        },
+        {
+          "term": "walmart international",
+          "score": -6.22
+        },
+        {
+          "term": "changes tax laws",
+          "score": -5.99
+        },
+        {
+          "term": "adversely affected",
+          "score": -5.29
+        },
+        {
+          "term": "changes consumer",
+          "score": -5.29
+        },
+        {
+          "term": "countries existing operations",
+          "score": -5.29
+        },
+        {
+          "term": "existing additional",
+          "score": -5.29
+        },
+        {
+          "term": "higher costs",
+          "score": -5.29
+        },
+        {
+          "term": "including walmart",
+          "score": -5.29
+        },
+        {
+          "term": "information systems systems",
+          "score": -5.29
+        },
+        {
+          "term": "new store",
+          "score": -5.29
+        },
+        {
+          "term": "new stores clubs",
+          "score": -5.29
+        },
+        {
+          "term": "operating results",
+          "score": -5.29
+        },
+        {
+          "term": "products including",
+          "score": -5.29
+        }
+      ],
+      "summaryAlt": "Adds emphasis on retail pharmacy operations, commerce sales, net sales; de-emphasizes party service, physical retail, walmart international."
+    },
+    {
+      "from": 2017,
+      "to": 2018,
+      "topRisers": [
+        {
+          "term": "ecommerce",
+          "score": 7.95,
+          "z": 0.8,
+          "countPrev": 0,
+          "countCurr": 51,
+          "per10kPrev": 0.0,
+          "per10kCurr": 38.2,
+          "deltaPer10k": 38.2,
+          "distinctive": false
+        },
+        {
+          "term": "square",
+          "score": 7.66,
+          "z": 0.77,
+          "countPrev": 0,
+          "countCurr": 38,
+          "per10kPrev": 0.0,
+          "per10kCurr": 28.46,
+          "deltaPer10k": 28.46,
+          "distinctive": false
+        },
+        {
+          "term": "feet",
+          "score": 7.6,
+          "z": 0.76,
+          "countPrev": 0,
+          "countCurr": 36,
+          "per10kPrev": 0.0,
+          "per10kCurr": 26.96,
+          "deltaPer10k": 26.96,
+          "distinctive": false
+        },
+        {
+          "term": "square feet",
+          "score": 7.6,
+          "z": 0.76,
+          "countPrev": 0,
+          "countCurr": 36,
+          "per10kPrev": 0.0,
+          "per10kCurr": 26.96,
+          "deltaPer10k": 26.96,
+          "distinctive": false
+        },
+        {
+          "term": "january",
+          "score": 7.54,
+          "z": 0.75,
+          "countPrev": 0,
+          "countCurr": 34,
+          "per10kPrev": 0.0,
+          "per10kCurr": 25.47,
+          "deltaPer10k": 25.47,
+          "distinctive": false
+        },
+        {
+          "term": "executive",
+          "score": 7.42,
+          "z": 0.74,
+          "countPrev": 0,
+          "countCurr": 30,
+          "per10kPrev": 0.0,
+          "per10kCurr": 22.47,
+          "deltaPer10k": 22.47,
+          "distinctive": false
+        },
+        {
+          "term": "president",
+          "score": 7.39,
+          "z": 0.74,
+          "countPrev": 0,
+          "countCurr": 29,
+          "per10kPrev": 0.0,
+          "per10kCurr": 21.72,
+          "deltaPer10k": 21.72,
+          "distinctive": false
+        },
+        {
+          "term": "unit",
+          "score": 7.28,
+          "z": 0.73,
+          "countPrev": 0,
+          "countCurr": 26,
+          "per10kPrev": 0.0,
+          "per10kCurr": 19.47,
+          "deltaPer10k": 19.47,
+          "distinctive": false
+        },
+        {
+          "term": "officer",
+          "score": 7.2,
+          "z": 0.72,
+          "countPrev": 0,
+          "countCurr": 24,
+          "per10kPrev": 0.0,
+          "per10kCurr": 17.98,
+          "deltaPer10k": 17.98,
+          "distinctive": false
+        },
+        {
+          "term": "chief",
+          "score": 7.11,
+          "z": 0.71,
+          "countPrev": 0,
+          "countCurr": 22,
+          "per10kPrev": 0.0,
+          "per10kCurr": 16.48,
+          "deltaPer10k": 16.48,
+          "distinctive": false
+        },
+        {
+          "term": "vice",
+          "score": 6.96,
+          "z": 0.7,
+          "countPrev": 0,
+          "countCurr": 19,
+          "per10kPrev": 0.0,
+          "per10kCurr": 14.23,
+          "deltaPer10k": 14.23,
+          "distinctive": false
+        },
+        {
+          "term": "vice president",
+          "score": 6.96,
+          "z": 0.7,
+          "countPrev": 0,
+          "countCurr": 19,
+          "per10kPrev": 0.0,
+          "per10kCurr": 14.23,
+          "deltaPer10k": 14.23,
+          "distinctive": false
+        },
+        {
+          "term": "president chief",
+          "score": 6.79,
+          "z": 0.68,
+          "countPrev": 0,
+          "countCurr": 16,
+          "per10kPrev": 0.0,
+          "per10kCurr": 11.98,
+          "deltaPer10k": 11.98,
+          "distinctive": false
+        },
+        {
+          "term": "served",
+          "score": 6.79,
+          "z": 0.68,
+          "countPrev": 0,
+          "countCurr": 16,
+          "per10kPrev": 0.0,
+          "per10kCurr": 11.98,
+          "deltaPer10k": 11.98,
+          "distinctive": false
+        },
+        {
+          "term": "states",
+          "score": 6.79,
+          "z": 0.68,
+          "countPrev": 0,
+          "countCurr": 16,
+          "per10kPrev": 0.0,
+          "per10kCurr": 11.98,
+          "deltaPer10k": 11.98,
+          "distinctive": false
+        }
+      ],
+      "topFallers": [
+        {
+          "term": "border",
+          "score": -6.99,
+          "z": -0.7,
+          "countPrev": 6,
+          "countCurr": 0,
+          "per10kPrev": 8.13,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -8.13,
+          "distinctive": false
+        },
+        {
+          "term": "commerce websites",
+          "score": -6.81,
+          "z": -0.68,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 6.78,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -6.78,
+          "distinctive": false
+        },
+        {
+          "term": "new units",
+          "score": -6.81,
+          "z": -0.68,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 6.78,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -6.78,
+          "distinctive": false
+        },
+        {
+          "term": "commerce technology",
+          "score": -6.58,
+          "z": -0.66,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 5.42,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.42,
+          "distinctive": false
+        },
+        {
+          "term": "existing units",
+          "score": -6.58,
+          "z": -0.66,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 5.42,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.42,
+          "distinctive": false
+        },
+        {
+          "term": "adjustment",
+          "score": -6.3,
+          "z": -0.63,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 4.07,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.07,
+          "distinctive": false
+        },
+        {
+          "term": "grow commerce",
+          "score": -6.3,
+          "z": -0.63,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 4.07,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.07,
+          "distinctive": false
+        },
+        {
+          "term": "multi",
+          "score": -6.3,
+          "z": -0.63,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 4.07,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.07,
+          "distinctive": false
+        },
+        {
+          "term": "multi channel",
+          "score": -6.3,
+          "z": -0.63,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 4.07,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.07,
+          "distinctive": false
+        },
+        {
+          "term": "units expand",
+          "score": -6.3,
+          "z": -0.63,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 4.07,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.07,
+          "distinctive": false
+        },
+        {
+          "term": "wage increases",
+          "score": -6.3,
+          "z": -0.63,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 4.07,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.07,
+          "distinctive": false
+        },
+        {
+          "term": "application",
+          "score": -5.89,
+          "z": -0.59,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.71,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.71,
+          "distinctive": false
+        },
+        {
+          "term": "commerce catalog",
+          "score": -5.89,
+          "z": -0.59,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.71,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.71,
+          "distinctive": false
+        },
+        {
+          "term": "congress",
+          "score": -5.89,
+          "z": -0.59,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.71,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.71,
+          "distinctive": false
+        },
+        {
+          "term": "continuing operations",
+          "score": -5.89,
+          "z": -0.59,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.71,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.71,
+          "distinctive": false
+        }
+      ],
+      "summary": "Adds emphasis on ecommerce, square, feet; de-emphasizes border, commerce websites, new units.",
+      "topRisersAlt": [
+        {
+          "term": "sam club",
+          "score": 6.74
+        },
+        {
+          "term": "walmart international",
+          "score": 6.66
+        },
+        {
+          "term": "fiscal year",
+          "score": 6.16
+        },
+        {
+          "term": "distribution facilities",
+          "score": 6.02
+        },
+        {
+          "term": "customers members",
+          "score": 5.68
+        },
+        {
+          "term": "results operations",
+          "score": 5.68
+        },
+        {
+          "term": "sam club segment",
+          "score": 5.68
+        },
+        {
+          "term": "customers members associates",
+          "score": 5.45
+        },
+        {
+          "term": "ecommerce business",
+          "score": 5.45
+        },
+        {
+          "term": "segment operating",
+          "score": 5.45
+        },
+        {
+          "term": "stores clubs distribution",
+          "score": 5.45
+        },
+        {
+          "term": "stores digital",
+          "score": 5.45
+        },
+        {
+          "term": "operating results",
+          "score": 5.16
+        },
+        {
+          "term": "products services",
+          "score": 5.16
+        },
+        {
+          "term": "regulations including",
+          "score": 5.16
+        }
+      ],
+      "topFallersAlt": [
+        {
+          "term": "information systems",
+          "score": -7.15
+        },
+        {
+          "term": "retail operations",
+          "score": -6.57
+        },
+        {
+          "term": "retail pharmacy operations",
+          "score": -6.57
+        },
+        {
+          "term": "commerce business",
+          "score": -6.28
+        },
+        {
+          "term": "commerce sales",
+          "score": -6.28
+        },
+        {
+          "term": "store club sales",
+          "score": -6.28
+        },
+        {
+          "term": "affect financial performance",
+          "score": -5.87
+        },
+        {
+          "term": "business financial performance",
+          "score": -5.87
+        },
+        {
+          "term": "consolidated financial",
+          "score": -5.87
+        },
+        {
+          "term": "consolidated net sales",
+          "score": -5.87
+        },
+        {
+          "term": "consolidated operating",
+          "score": -5.87
+        },
+        {
+          "term": "financial performance operations",
+          "score": -5.87
+        },
+        {
+          "term": "increase costs",
+          "score": -5.87
+        },
+        {
+          "term": "information customers",
+          "score": -5.87
+        },
+        {
+          "term": "information security laws",
+          "score": -5.87
+        }
+      ],
+      "summaryAlt": "Adds emphasis on sam club, walmart international, fiscal year; de-emphasizes information systems, retail operations, retail pharmacy operations."
+    },
+    {
+      "from": 2018,
+      "to": 2019,
+      "topRisers": [
+        {
+          "term": "flipkart",
+          "score": 6.59,
+          "z": 0.66,
+          "countPrev": 0,
+          "countCurr": 7,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.43,
+          "deltaPer10k": 5.43,
+          "distinctive": false
+        },
+        {
+          "term": "argentina canada",
+          "score": 6.25,
+          "z": 0.62,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.88,
+          "deltaPer10k": 3.88,
+          "distinctive": false
+        },
+        {
+          "term": "majority stake",
+          "score": 6.25,
+          "z": 0.62,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.88,
+          "deltaPer10k": 3.88,
+          "distinctive": false
+        },
+        {
+          "term": "stake",
+          "score": 6.25,
+          "z": 0.62,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.88,
+          "deltaPer10k": 3.88,
+          "distinctive": false
+        },
+        {
+          "term": "advent",
+          "score": 6.03,
+          "z": 0.6,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.1,
+          "deltaPer10k": 3.1,
+          "distinctive": false
+        },
+        {
+          "term": "grocery delivery",
+          "score": 6.03,
+          "z": 0.6,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.1,
+          "deltaPer10k": 3.1,
+          "distinctive": false
+        },
+        {
+          "term": "proposed",
+          "score": 6.03,
+          "z": 0.6,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.1,
+          "deltaPer10k": 3.1,
+          "distinctive": false
+        },
+        {
+          "term": "walmart brazil",
+          "score": 6.03,
+          "z": 0.6,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.1,
+          "deltaPer10k": 3.1,
+          "distinctive": false
+        },
+        {
+          "term": "channel retailers",
+          "score": 5.74,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.33,
+          "deltaPer10k": 2.33,
+          "distinctive": false
+        },
+        {
+          "term": "customers integrating",
+          "score": 5.74,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.33,
+          "deltaPer10k": 2.33,
+          "distinctive": false
+        },
+        {
+          "term": "divestiture",
+          "score": 5.74,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.33,
+          "deltaPer10k": 2.33,
+          "distinctive": false
+        },
+        {
+          "term": "ecommerce retailers",
+          "score": 5.74,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.33,
+          "deltaPer10k": 2.33,
+          "distinctive": false
+        },
+        {
+          "term": "fiscal representing",
+          "score": 5.74,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.33,
+          "deltaPer10k": 2.33,
+          "distinctive": false
+        },
+        {
+          "term": "held sale",
+          "score": 5.74,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.33,
+          "deltaPer10k": 2.33,
+          "distinctive": false
+        },
+        {
+          "term": "integrating",
+          "score": 5.74,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.33,
+          "deltaPer10k": 2.33,
+          "distinctive": false
+        }
+      ],
+      "topFallers": [
+        {
+          "term": "digital retailers",
+          "score": -6.52,
+          "z": -0.65,
+          "countPrev": 7,
+          "countCurr": 0,
+          "per10kPrev": 5.24,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.24,
+          "distinctive": false
+        },
+        {
+          "term": "digital retail",
+          "score": -6.36,
+          "z": -0.64,
+          "countPrev": 6,
+          "countCurr": 0,
+          "per10kPrev": 4.49,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.49,
+          "distinctive": false
+        },
+        {
+          "term": "owned operated",
+          "score": -6.36,
+          "z": -0.64,
+          "countPrev": 6,
+          "countCurr": 0,
+          "per10kPrev": 4.49,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.49,
+          "distinctive": false
+        },
+        {
+          "term": "stated",
+          "score": -6.36,
+          "z": -0.64,
+          "countPrev": 6,
+          "countCurr": 0,
+          "per10kPrev": 4.49,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.49,
+          "distinctive": false
+        },
+        {
+          "term": "accounted",
+          "score": -5.96,
+          "z": -0.6,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.0,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.0,
+          "distinctive": false
+        },
+        {
+          "term": "competes physical",
+          "score": -5.96,
+          "z": -0.6,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.0,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.0,
+          "distinctive": false
+        },
+        {
+          "term": "details",
+          "score": -5.96,
+          "z": -0.6,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.0,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.0,
+          "distinctive": false
+        },
+        {
+          "term": "physical retail",
+          "score": -5.96,
+          "z": -0.6,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.0,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.0,
+          "distinctive": false
+        },
+        {
+          "term": "physical retailers",
+          "score": -5.96,
+          "z": -0.6,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.0,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.0,
+          "distinctive": false
+        },
+        {
+          "term": "store formats",
+          "score": -5.96,
+          "z": -0.6,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.0,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.0,
+          "distinctive": false
+        },
+        {
+          "term": "websites mobile",
+          "score": -5.96,
+          "z": -0.6,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.0,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.0,
+          "distinctive": false
+        },
+        {
+          "term": "conducting",
+          "score": -5.67,
+          "z": -0.57,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.25,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.25,
+          "distinctive": false
+        },
+        {
+          "term": "leased",
+          "score": -5.67,
+          "z": -0.57,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.25,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.25,
+          "distinctive": false
+        },
+        {
+          "term": "provisional",
+          "score": -5.67,
+          "z": -0.57,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.25,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.25,
+          "distinctive": false
+        },
+        {
+          "term": "segment competes",
+          "score": -5.67,
+          "z": -0.57,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.25,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.25,
+          "distinctive": false
+        }
+      ],
+      "summary": "Adds emphasis on flipkart, argentina canada, majority stake; de-emphasizes digital retailers, digital retail, owned operated.",
+      "topRisersAlt": [
+        {
+          "term": "retail stores ecommerce",
+          "score": 6.03
+        },
+        {
+          "term": "affect financial performance",
+          "score": 5.74
+        },
+        {
+          "term": "matters including",
+          "score": 5.74
+        },
+        {
+          "term": "retail pharmacy operations",
+          "score": 5.74
+        },
+        {
+          "term": "business failure",
+          "score": 5.33
+        },
+        {
+          "term": "business financial",
+          "score": 5.33
+        },
+        {
+          "term": "clubs walmart international",
+          "score": 5.33
+        },
+        {
+          "term": "distribution fiscal",
+          "score": 5.33
+        },
+        {
+          "term": "includes pharmacy",
+          "score": 5.33
+        },
+        {
+          "term": "includes retail stores",
+          "score": 5.33
+        },
+        {
+          "term": "including ability",
+          "score": 5.33
+        },
+        {
+          "term": "information security laws",
+          "score": 5.33
+        },
+        {
+          "term": "international markets",
+          "score": 5.33
+        },
+        {
+          "term": "merchandise distribution facilities",
+          "score": 5.33
+        },
+        {
+          "term": "net sales net",
+          "score": 5.33
+        }
+      ],
+      "topFallersAlt": [
+        {
+          "term": "fiscal year",
+          "score": -6.69
+        },
+        {
+          "term": "stores digital",
+          "score": -5.98
+        },
+        {
+          "term": "clubs including sam",
+          "score": -5.29
+        },
+        {
+          "term": "digital physical",
+          "score": -5.29
+        },
+        {
+          "term": "digital retail operations",
+          "score": -5.29
+        },
+        {
+          "term": "distribution facilities including",
+          "score": -5.29
+        },
+        {
+          "term": "ecommerce sales",
+          "score": -5.29
+        },
+        {
+          "term": "financial performance products",
+          "score": -5.29
+        },
+        {
+          "term": "fiscal fiscal",
+          "score": -5.29
+        },
+        {
+          "term": "fiscal net sales",
+          "score": -5.29
+        },
+        {
+          "term": "grocery merchandise",
+          "score": -5.29
+        },
+        {
+          "term": "international segment",
+          "score": -5.29
+        },
+        {
+          "term": "january walmart international",
+          "score": -5.29
+        },
+        {
+          "term": "merchandise including products",
+          "score": -5.29
+        },
+        {
+          "term": "merchandise services",
+          "score": -5.29
+        }
+      ],
+      "summaryAlt": "Adds emphasis on retail stores ecommerce, affect financial performance, matters including; de-emphasizes fiscal year, stores digital, clubs including sam."
+    },
+    {
+      "from": 2019,
+      "to": 2020,
+      "topRisers": [
+        {
+          "term": "forum",
+          "score": 6.41,
+          "z": 0.64,
+          "countPrev": 0,
+          "countCurr": 6,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.69,
+          "deltaPer10k": 4.69,
+          "distinctive": false
+        },
+        {
+          "term": "unlimited",
+          "score": 6.0,
+          "z": 0.6,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.13,
+          "deltaPer10k": 3.13,
+          "distinctive": false
+        },
+        {
+          "term": "GDPR",
+          "score": 5.72,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.35,
+          "deltaPer10k": 2.35,
+          "distinctive": false,
+          "includes": [
+            "gdpr"
+          ]
+        },
+        {
+          "term": "bylaws",
+          "score": 5.72,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.35,
+          "deltaPer10k": 2.35,
+          "distinctive": false
+        },
+        {
+          "term": "california",
+          "score": 5.72,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.35,
+          "deltaPer10k": 2.35,
+          "distinctive": false
+        },
+        {
+          "term": "capacity",
+          "score": 5.72,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.35,
+          "deltaPer10k": 2.35,
+          "distinctive": false
+        },
+        {
+          "term": "chancery",
+          "score": 5.72,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.35,
+          "deltaPer10k": 2.35,
+          "distinctive": false
+        },
+        {
+          "term": "court chancery",
+          "score": 5.72,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.35,
+          "deltaPer10k": 2.35,
+          "distinctive": false
+        },
+        {
+          "term": "exclusive forum",
+          "score": 5.72,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.35,
+          "deltaPer10k": 2.35,
+          "distinctive": false
+        },
+        {
+          "term": "incur additional",
+          "score": 5.72,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.35,
+          "deltaPer10k": 2.35,
+          "distinctive": false
+        },
+        {
+          "term": "limitations",
+          "score": 5.72,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.35,
+          "deltaPer10k": 2.35,
+          "distinctive": false
+        },
+        {
+          "term": "nextday",
+          "score": 5.72,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.35,
+          "deltaPer10k": 2.35,
+          "distinctive": false
+        },
+        {
+          "term": "Coronavirus",
+          "score": 5.31,
+          "z": 0.53,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.56,
+          "deltaPer10k": 1.56,
+          "distinctive": false,
+          "includes": [
+            "coronavirus"
+          ]
+        },
+        {
+          "term": "advertising",
+          "score": 5.31,
+          "z": 0.53,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.56,
+          "deltaPer10k": 1.56,
+          "distinctive": false
+        },
+        {
+          "term": "area",
+          "score": 5.31,
+          "z": 0.53,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.56,
+          "deltaPer10k": 1.56,
+          "distinctive": false
+        }
+      ],
+      "topFallers": [
+        {
+          "term": "unit",
+          "score": -7.86,
+          "z": -0.79,
+          "countPrev": 26,
+          "countCurr": 0,
+          "per10kPrev": 20.17,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -20.17,
+          "distinctive": false
+        },
+        {
+          "term": "unit count",
+          "score": -7.43,
+          "z": -0.74,
+          "countPrev": 17,
+          "countCurr": 0,
+          "per10kPrev": 13.19,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -13.19,
+          "distinctive": false
+        },
+        {
+          "term": "count square",
+          "score": -7.16,
+          "z": -0.72,
+          "countPrev": 13,
+          "countCurr": 0,
+          "per10kPrev": 10.08,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -10.08,
+          "distinctive": false
+        },
+        {
+          "term": "feet unit",
+          "score": -6.9,
+          "z": -0.69,
+          "countPrev": 10,
+          "countCurr": 0,
+          "per10kPrev": 7.76,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -7.76,
+          "distinctive": false
+        },
+        {
+          "term": "counts",
+          "score": -6.8,
+          "z": -0.68,
+          "countPrev": 9,
+          "countCurr": 0,
+          "per10kPrev": 6.98,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -6.98,
+          "distinctive": false
+        },
+        {
+          "term": "unit counts",
+          "score": -6.8,
+          "z": -0.68,
+          "countPrev": 9,
+          "countCurr": 0,
+          "per10kPrev": 6.98,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -6.98,
+          "distinctive": false
+        },
+        {
+          "term": "total square",
+          "score": -6.54,
+          "z": -0.65,
+          "countPrev": 7,
+          "countCurr": 0,
+          "per10kPrev": 5.43,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.43,
+          "distinctive": false
+        },
+        {
+          "term": "accrual",
+          "score": -6.21,
+          "z": -0.62,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 3.88,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.88,
+          "distinctive": false
+        },
+        {
+          "term": "balance forward",
+          "score": -6.21,
+          "z": -0.62,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 3.88,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.88,
+          "distinctive": false
+        },
+        {
+          "term": "closed",
+          "score": -6.21,
+          "z": -0.62,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 3.88,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.88,
+          "distinctive": false
+        },
+        {
+          "term": "columns",
+          "score": -6.21,
+          "z": -0.62,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 3.88,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.88,
+          "distinctive": false
+        },
+        {
+          "term": "conversions",
+          "score": -6.21,
+          "z": -0.62,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 3.88,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.88,
+          "distinctive": false
+        },
+        {
+          "term": "feet balance",
+          "score": -6.21,
+          "z": -0.62,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 3.88,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.88,
+          "distinctive": false
+        },
+        {
+          "term": "feet columns",
+          "score": -6.21,
+          "z": -0.62,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 3.88,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.88,
+          "distinctive": false
+        },
+        {
+          "term": "geographic",
+          "score": -6.21,
+          "z": -0.62,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 3.88,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.88,
+          "distinctive": false
+        }
+      ],
+      "summary": "Adds emphasis on forum, unlimited, GDPR; de-emphasizes unit, unit count, count square.",
+      "topRisersAlt": [
+        {
+          "term": "information systems",
+          "score": 6.41
+        },
+        {
+          "term": "experience customers",
+          "score": 5.71
+        },
+        {
+          "term": "addition walmart",
+          "score": 5.3
+        },
+        {
+          "term": "adversely affect business",
+          "score": 5.3
+        },
+        {
+          "term": "adversely affect market",
+          "score": 5.3
+        },
+        {
+          "term": "business experience",
+          "score": 5.3
+        },
+        {
+          "term": "business operations financial",
+          "score": 5.3
+        },
+        {
+          "term": "ecommerce sales",
+          "score": 5.3
+        },
+        {
+          "term": "laws regulations result",
+          "score": 5.3
+        },
+        {
+          "term": "performance result",
+          "score": 5.3
+        },
+        {
+          "term": "related regulations",
+          "score": 5.3
+        },
+        {
+          "term": "sales result",
+          "score": 5.3
+        },
+        {
+          "term": "disaster recovery",
+          "score": 4.61
+        },
+        {
+          "term": "data security",
+          "score": 0.68
+        },
+        {
+          "term": "supply chain",
+          "score": 0.4
+        }
+      ],
+      "topFallersAlt": [
+        {
+          "term": "customers members",
+          "score": -6.02
+        },
+        {
+          "term": "customers members associates",
+          "score": -6.02
+        },
+        {
+          "term": "matters including",
+          "score": -5.73
+        },
+        {
+          "term": "business financial",
+          "score": -5.32
+        },
+        {
+          "term": "clubs walmart international",
+          "score": -5.32
+        },
+        {
+          "term": "includes pharmacy",
+          "score": -5.32
+        },
+        {
+          "term": "includes retail stores",
+          "score": -5.32
+        },
+        {
+          "term": "information customers members",
+          "score": -5.32
+        },
+        {
+          "term": "information security laws",
+          "score": -5.32
+        },
+        {
+          "term": "security operating",
+          "score": -5.32
+        },
+        {
+          "term": "segment fiscal",
+          "score": -5.32
+        },
+        {
+          "term": "information security",
+          "score": -1.12
+        },
+        {
+          "term": "data privacy",
+          "score": -0.7
+        },
+        {
+          "term": "foreign exchange",
+          "score": -0.7
+        },
+        {
+          "term": "ecommerce business",
+          "score": -0.42
+        }
+      ],
+      "summaryAlt": "Adds emphasis on information systems, experience customers, addition walmart; de-emphasizes customers members, customers members associates, matters including."
+    },
+    {
+      "from": 2020,
+      "to": 2021,
+      "topRisers": [
+        {
+          "term": "comparable sales",
+          "score": 8.67,
+          "z": 0.87,
+          "countPrev": 0,
+          "countCurr": 39,
+          "per10kPrev": 0.0,
+          "per10kCurr": 45.46,
+          "deltaPer10k": 45.46,
+          "distinctive": false
+        },
+        {
+          "term": "compared",
+          "score": 8.64,
+          "z": 0.86,
+          "countPrev": 0,
+          "countCurr": 38,
+          "per10kPrev": 0.0,
+          "per10kCurr": 44.29,
+          "deltaPer10k": 44.29,
+          "distinctive": false
+        },
+        {
+          "term": "net cash",
+          "score": 8.5,
+          "z": 0.85,
+          "countPrev": 0,
+          "countCurr": 33,
+          "per10kPrev": 0.0,
+          "per10kCurr": 38.47,
+          "deltaPer10k": 38.47,
+          "distinctive": false
+        },
+        {
+          "term": "previous fiscal",
+          "score": 8.37,
+          "z": 0.84,
+          "countPrev": 0,
+          "countCurr": 29,
+          "per10kPrev": 0.0,
+          "per10kCurr": 33.8,
+          "deltaPer10k": 33.8,
+          "distinctive": false
+        },
+        {
+          "term": "compared previous",
+          "score": 8.3,
+          "z": 0.83,
+          "countPrev": 0,
+          "countCurr": 27,
+          "per10kPrev": 0.0,
+          "per10kCurr": 31.47,
+          "deltaPer10k": 31.47,
+          "distinctive": false
+        },
+        {
+          "term": "partially",
+          "score": 8.18,
+          "z": 0.82,
+          "countPrev": 0,
+          "countCurr": 24,
+          "per10kPrev": 0.0,
+          "per10kCurr": 27.98,
+          "deltaPer10k": 27.98,
+          "distinctive": false
+        },
+        {
+          "term": "partially offset",
+          "score": 8.18,
+          "z": 0.82,
+          "countPrev": 0,
+          "countCurr": 24,
+          "per10kPrev": 0.0,
+          "per10kCurr": 27.98,
+          "deltaPer10k": 27.98,
+          "distinctive": false
+        },
+        {
+          "term": "term debt",
+          "score": 8.18,
+          "z": 0.82,
+          "countPrev": 0,
+          "countCurr": 24,
+          "per10kPrev": 0.0,
+          "per10kCurr": 27.98,
+          "deltaPer10k": 27.98,
+          "distinctive": false
+        },
+        {
+          "term": "cash flow",
+          "score": 8.1,
+          "z": 0.81,
+          "countPrev": 0,
+          "countCurr": 22,
+          "per10kPrev": 0.0,
+          "per10kCurr": 25.64,
+          "deltaPer10k": 25.64,
+          "distinctive": false
+        },
+        {
+          "term": "fair",
+          "score": 8.1,
+          "z": 0.81,
+          "countPrev": 0,
+          "countCurr": 22,
+          "per10kPrev": 0.0,
+          "per10kCurr": 25.64,
+          "deltaPer10k": 25.64,
+          "distinctive": false
+        },
+        {
+          "term": "flow",
+          "score": 8.1,
+          "z": 0.81,
+          "countPrev": 0,
+          "countCurr": 22,
+          "per10kPrev": 0.0,
+          "per10kCurr": 25.64,
+          "deltaPer10k": 25.64,
+          "distinctive": false
+        },
+        {
+          "term": "roi",
+          "score": 8.1,
+          "z": 0.81,
+          "countPrev": 0,
+          "countCurr": 22,
+          "per10kPrev": 0.0,
+          "per10kCurr": 25.64,
+          "deltaPer10k": 25.64,
+          "distinctive": false
+        },
+        {
+          "term": "covid pandemic",
+          "score": 8.0,
+          "z": 0.8,
+          "countPrev": 0,
+          "countCurr": 20,
+          "per10kPrev": 0.0,
+          "per10kCurr": 23.31,
+          "deltaPer10k": 23.31,
+          "distinctive": false
+        },
+        {
+          "term": "free cash",
+          "score": 8.0,
+          "z": 0.8,
+          "countPrev": 0,
+          "countCurr": 20,
+          "per10kPrev": 0.0,
+          "per10kCurr": 23.31,
+          "deltaPer10k": 23.31,
+          "distinctive": false
+        },
+        {
+          "term": "decreased",
+          "score": 7.95,
+          "z": 0.79,
+          "countPrev": 0,
+          "countCurr": 19,
+          "per10kPrev": 0.0,
+          "per10kCurr": 22.15,
+          "deltaPer10k": 22.15,
+          "distinctive": false
+        }
+      ],
+      "topFallers": [
+        {
+          "term": "adversely",
+          "score": -8.22,
+          "z": -0.82,
+          "countPrev": 55,
+          "countCurr": 0,
+          "per10kPrev": 43.03,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -43.03,
+          "distinctive": false
+        },
+        {
+          "term": "adversely affect",
+          "score": -8.0,
+          "z": -0.8,
+          "countPrev": 44,
+          "countCurr": 0,
+          "per10kPrev": 34.43,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -34.43,
+          "distinctive": false
+        },
+        {
+          "term": "products",
+          "score": -8.0,
+          "z": -0.8,
+          "countPrev": 44,
+          "countCurr": 0,
+          "per10kPrev": 34.43,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -34.43,
+          "distinctive": false
+        },
+        {
+          "term": "president",
+          "score": -7.61,
+          "z": -0.76,
+          "countPrev": 30,
+          "countCurr": 0,
+          "per10kPrev": 23.47,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -23.47,
+          "distinctive": false
+        },
+        {
+          "term": "materially adversely",
+          "score": -7.58,
+          "z": -0.76,
+          "countPrev": 29,
+          "countCurr": 0,
+          "per10kPrev": 22.69,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -22.69,
+          "distinctive": false
+        },
+        {
+          "term": "executive",
+          "score": -7.51,
+          "z": -0.75,
+          "countPrev": 27,
+          "countCurr": 0,
+          "per10kPrev": 21.13,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -21.13,
+          "distinctive": false
+        },
+        {
+          "term": "laws regulations",
+          "score": -7.43,
+          "z": -0.74,
+          "countPrev": 25,
+          "countCurr": 0,
+          "per10kPrev": 19.56,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -19.56,
+          "distinctive": false
+        },
+        {
+          "term": "digital",
+          "score": -7.35,
+          "z": -0.73,
+          "countPrev": 23,
+          "countCurr": 0,
+          "per10kPrev": 18.0,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -18.0,
+          "distinctive": false
+        },
+        {
+          "term": "distribution",
+          "score": -7.35,
+          "z": -0.73,
+          "countPrev": 23,
+          "countCurr": 0,
+          "per10kPrev": 18.0,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -18.0,
+          "distinctive": false
+        },
+        {
+          "term": "officer",
+          "score": -7.35,
+          "z": -0.73,
+          "countPrev": 23,
+          "countCurr": 0,
+          "per10kPrev": 18.0,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -18.0,
+          "distinctive": false
+        },
+        {
+          "term": "systems",
+          "score": -7.35,
+          "z": -0.73,
+          "countPrev": 23,
+          "countCurr": 0,
+          "per10kPrev": 18.0,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -18.0,
+          "distinctive": false
+        },
+        {
+          "term": "delivery",
+          "score": -7.3,
+          "z": -0.73,
+          "countPrev": 22,
+          "countCurr": 0,
+          "per10kPrev": 17.21,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -17.21,
+          "distinctive": false
+        },
+        {
+          "term": "chief",
+          "score": -7.26,
+          "z": -0.73,
+          "countPrev": 21,
+          "countCurr": 0,
+          "per10kPrev": 16.43,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -16.43,
+          "distinctive": false
+        },
+        {
+          "term": "vice",
+          "score": -7.26,
+          "z": -0.73,
+          "countPrev": 21,
+          "countCurr": 0,
+          "per10kPrev": 16.43,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -16.43,
+          "distinctive": false
+        },
+        {
+          "term": "vice president",
+          "score": -7.26,
+          "z": -0.73,
+          "countPrev": 21,
+          "countCurr": 0,
+          "per10kPrev": 16.43,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -16.43,
+          "distinctive": false
+        }
+      ],
+      "summary": "Adds emphasis on comparable sales, compared, net cash; de-emphasizes adversely, adversely affect, products.",
+      "topRisersAlt": [
+        {
+          "term": "long term debt",
+          "score": 7.1
+        },
+        {
+          "term": "free cash",
+          "score": 7.04
+        },
+        {
+          "term": "comparable sales",
+          "score": 6.98
+        },
+        {
+          "term": "financial statements",
+          "score": 6.91
+        },
+        {
+          "term": "net cash used",
+          "score": 6.91
+        },
+        {
+          "term": "consolidated financial statements",
+          "score": 6.84
+        },
+        {
+          "term": "january amounts",
+          "score": 6.76
+        },
+        {
+          "term": "fiscal year",
+          "score": 6.68
+        },
+        {
+          "term": "partially offset",
+          "score": 6.68
+        },
+        {
+          "term": "net cash",
+          "score": 6.59
+        },
+        {
+          "term": "comparable sales fiscal",
+          "score": 6.38
+        },
+        {
+          "term": "change comparable period",
+          "score": 6.26
+        },
+        {
+          "term": "financial measure",
+          "score": 6.13
+        },
+        {
+          "term": "billion billion fiscal",
+          "score": 5.97
+        },
+        {
+          "term": "billion fiscal",
+          "score": 5.97
+        }
+      ],
+      "topFallersAlt": [
+        {
+          "term": "sam club",
+          "score": -8.06
+        },
+        {
+          "term": "materially adversely affect",
+          "score": -7.94
+        },
+        {
+          "term": "walmart international",
+          "score": -7.88
+        },
+        {
+          "term": "financial performance",
+          "score": -7.66
+        },
+        {
+          "term": "laws regulations",
+          "score": -7.57
+        },
+        {
+          "term": "distribution facilities",
+          "score": -6.86
+        },
+        {
+          "term": "information systems",
+          "score": -6.86
+        },
+        {
+          "term": "products services",
+          "score": -6.86
+        },
+        {
+          "term": "results operations",
+          "score": -6.86
+        },
+        {
+          "term": "stores clubs",
+          "score": -6.86
+        },
+        {
+          "term": "adversely affect",
+          "score": -6.67
+        },
+        {
+          "term": "business results operations",
+          "score": -6.67
+        },
+        {
+          "term": "adversely affect financial",
+          "score": -6.45
+        },
+        {
+          "term": "international operations",
+          "score": -6.45
+        },
+        {
+          "term": "regulations including",
+          "score": -6.45
+        }
+      ],
+      "summaryAlt": "Adds emphasis on long term debt, free cash, comparable sales; de-emphasizes sam club, materially adversely affect, walmart international."
+    },
+    {
+      "from": 2021,
+      "to": 2022,
+      "topRisers": [
+        {
+          "term": "adversely",
+          "score": 8.33,
+          "z": 0.83,
+          "countPrev": 0,
+          "countCurr": 60,
+          "per10kPrev": 0.0,
+          "per10kCurr": 48.05,
+          "deltaPer10k": 48.05,
+          "distinctive": false
+        },
+        {
+          "term": "adversely affect",
+          "score": 8.06,
+          "z": 0.81,
+          "countPrev": 0,
+          "countCurr": 46,
+          "per10kPrev": 0.0,
+          "per10kCurr": 36.84,
+          "deltaPer10k": 36.84,
+          "distinctive": false
+        },
+        {
+          "term": "products",
+          "score": 7.9,
+          "z": 0.79,
+          "countPrev": 0,
+          "countCurr": 39,
+          "per10kPrev": 0.0,
+          "per10kCurr": 31.23,
+          "deltaPer10k": 31.23,
+          "distinctive": false
+        },
+        {
+          "term": "laws regulations",
+          "score": 7.64,
+          "z": 0.76,
+          "countPrev": 0,
+          "countCurr": 30,
+          "per10kPrev": 0.0,
+          "per10kCurr": 24.03,
+          "deltaPer10k": 24.03,
+          "distinctive": false
+        },
+        {
+          "term": "systems",
+          "score": 7.6,
+          "z": 0.76,
+          "countPrev": 0,
+          "countCurr": 29,
+          "per10kPrev": 0.0,
+          "per10kCurr": 23.23,
+          "deltaPer10k": 23.23,
+          "distinctive": false
+        },
+        {
+          "term": "materially adversely",
+          "score": 7.57,
+          "z": 0.76,
+          "countPrev": 0,
+          "countCurr": 28,
+          "per10kPrev": 0.0,
+          "per10kCurr": 22.43,
+          "deltaPer10k": 22.43,
+          "distinctive": false
+        },
+        {
+          "term": "president",
+          "score": 7.57,
+          "z": 0.76,
+          "countPrev": 0,
+          "countCurr": 28,
+          "per10kPrev": 0.0,
+          "per10kCurr": 22.43,
+          "deltaPer10k": 22.43,
+          "distinctive": false
+        },
+        {
+          "term": "digital",
+          "score": 7.49,
+          "z": 0.75,
+          "countPrev": 0,
+          "countCurr": 26,
+          "per10kPrev": 0.0,
+          "per10kCurr": 20.82,
+          "deltaPer10k": 20.82,
+          "distinctive": false
+        },
+        {
+          "term": "executive",
+          "score": 7.41,
+          "z": 0.74,
+          "countPrev": 0,
+          "countCurr": 24,
+          "per10kPrev": 0.0,
+          "per10kCurr": 19.22,
+          "deltaPer10k": 19.22,
+          "distinctive": false
+        },
+        {
+          "term": "failure",
+          "score": 7.33,
+          "z": 0.73,
+          "countPrev": 0,
+          "countCurr": 22,
+          "per10kPrev": 0.0,
+          "per10kCurr": 17.62,
+          "deltaPer10k": 17.62,
+          "distinctive": false
+        },
+        {
+          "term": "officer",
+          "score": 7.28,
+          "z": 0.73,
+          "countPrev": 0,
+          "countCurr": 21,
+          "per10kPrev": 0.0,
+          "per10kCurr": 16.82,
+          "deltaPer10k": 16.82,
+          "distinctive": false
+        },
+        {
+          "term": "pharmacy",
+          "score": 7.23,
+          "z": 0.72,
+          "countPrev": 0,
+          "countCurr": 20,
+          "per10kPrev": 0.0,
+          "per10kCurr": 16.02,
+          "deltaPer10k": 16.02,
+          "distinctive": false
+        },
+        {
+          "term": "vice",
+          "score": 7.23,
+          "z": 0.72,
+          "countPrev": 0,
+          "countCurr": 20,
+          "per10kPrev": 0.0,
+          "per10kCurr": 16.02,
+          "deltaPer10k": 16.02,
+          "distinctive": false
+        },
+        {
+          "term": "vice president",
+          "score": 7.23,
+          "z": 0.72,
+          "countPrev": 0,
+          "countCurr": 20,
+          "per10kPrev": 0.0,
+          "per10kCurr": 16.02,
+          "deltaPer10k": 16.02,
+          "distinctive": false
+        },
+        {
+          "term": "associate",
+          "score": 7.12,
+          "z": 0.71,
+          "countPrev": 0,
+          "countCurr": 18,
+          "per10kPrev": 0.0,
+          "per10kCurr": 14.42,
+          "deltaPer10k": 14.42,
+          "distinctive": false
+        }
+      ],
+      "topFallers": [
+        {
+          "term": "respectively",
+          "score": -8.65,
+          "z": -0.86,
+          "countPrev": 39,
+          "countCurr": 0,
+          "per10kPrev": 45.46,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -45.46,
+          "distinctive": false
+        },
+        {
+          "term": "fiscal respectively",
+          "score": -8.51,
+          "z": -0.85,
+          "countPrev": 34,
+          "countCurr": 0,
+          "per10kPrev": 39.63,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -39.63,
+          "distinctive": false
+        },
+        {
+          "term": "net cash",
+          "score": -8.48,
+          "z": -0.85,
+          "countPrev": 33,
+          "countCurr": 0,
+          "per10kPrev": 38.47,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -38.47,
+          "distinctive": false
+        },
+        {
+          "term": "percentage",
+          "score": -8.28,
+          "z": -0.83,
+          "countPrev": 27,
+          "countCurr": 0,
+          "per10kPrev": 31.47,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -31.47,
+          "distinctive": false
+        },
+        {
+          "term": "partially",
+          "score": -8.16,
+          "z": -0.82,
+          "countPrev": 24,
+          "countCurr": 0,
+          "per10kPrev": 27.98,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -27.98,
+          "distinctive": false
+        },
+        {
+          "term": "partially offset",
+          "score": -8.16,
+          "z": -0.82,
+          "countPrev": 24,
+          "countCurr": 0,
+          "per10kPrev": 27.98,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -27.98,
+          "distinctive": false
+        },
+        {
+          "term": "term debt",
+          "score": -8.16,
+          "z": -0.82,
+          "countPrev": 24,
+          "countCurr": 0,
+          "per10kPrev": 27.98,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -27.98,
+          "distinctive": false
+        },
+        {
+          "term": "cash flow",
+          "score": -8.07,
+          "z": -0.81,
+          "countPrev": 22,
+          "countCurr": 0,
+          "per10kPrev": 25.64,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -25.64,
+          "distinctive": false
+        },
+        {
+          "term": "flow",
+          "score": -8.07,
+          "z": -0.81,
+          "countPrev": 22,
+          "countCurr": 0,
+          "per10kPrev": 25.64,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -25.64,
+          "distinctive": false
+        },
+        {
+          "term": "roi",
+          "score": -8.07,
+          "z": -0.81,
+          "countPrev": 22,
+          "countCurr": 0,
+          "per10kPrev": 25.64,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -25.64,
+          "distinctive": false
+        },
+        {
+          "term": "billion billion",
+          "score": -7.98,
+          "z": -0.8,
+          "countPrev": 20,
+          "countCurr": 0,
+          "per10kPrev": 23.31,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -23.31,
+          "distinctive": false
+        },
+        {
+          "term": "billion fiscal",
+          "score": -7.98,
+          "z": -0.8,
+          "countPrev": 20,
+          "countCurr": 0,
+          "per10kPrev": 23.31,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -23.31,
+          "distinctive": false
+        },
+        {
+          "term": "free cash",
+          "score": -7.98,
+          "z": -0.8,
+          "countPrev": 20,
+          "countCurr": 0,
+          "per10kPrev": 23.31,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -23.31,
+          "distinctive": false
+        },
+        {
+          "term": "decreased",
+          "score": -7.93,
+          "z": -0.79,
+          "countPrev": 19,
+          "countCurr": 0,
+          "per10kPrev": 22.15,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -22.15,
+          "distinctive": false
+        },
+        {
+          "term": "cash used",
+          "score": -7.87,
+          "z": -0.79,
+          "countPrev": 18,
+          "countCurr": 0,
+          "per10kPrev": 20.98,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -20.98,
+          "distinctive": false
+        }
+      ],
+      "summary": "Adds emphasis on adversely, adversely affect, products; de-emphasizes respectively, fiscal respectively, net cash.",
+      "topRisersAlt": [
+        {
+          "term": "materially adversely affect",
+          "score": 8.16
+        },
+        {
+          "term": "laws regulations",
+          "score": 7.95
+        },
+        {
+          "term": "financial performance",
+          "score": 7.69
+        },
+        {
+          "term": "information systems",
+          "score": 7.36
+        },
+        {
+          "term": "adversely affect",
+          "score": 7.22
+        },
+        {
+          "term": "results operations",
+          "score": 7.07
+        },
+        {
+          "term": "climate change",
+          "score": 6.88
+        },
+        {
+          "term": "adversely affect financial",
+          "score": 6.65
+        },
+        {
+          "term": "adversely affect operations",
+          "score": 6.65
+        },
+        {
+          "term": "affect financial performance",
+          "score": 6.65
+        },
+        {
+          "term": "class action",
+          "score": 6.65
+        },
+        {
+          "term": "human capital",
+          "score": 6.65
+        },
+        {
+          "term": "materially adversely",
+          "score": 6.65
+        },
+        {
+          "term": "products sell",
+          "score": 6.65
+        },
+        {
+          "term": "products services",
+          "score": 6.65
+        }
+      ],
+      "topFallersAlt": [
+        {
+          "term": "net sales",
+          "score": -7.4
+        },
+        {
+          "term": "long term debt",
+          "score": -6.9
+        },
+        {
+          "term": "free cash",
+          "score": -6.84
+        },
+        {
+          "term": "comparable sales",
+          "score": -6.77
+        },
+        {
+          "term": "financial statements",
+          "score": -6.71
+        },
+        {
+          "term": "net cash used",
+          "score": -6.71
+        },
+        {
+          "term": "consolidated financial statements",
+          "score": -6.64
+        },
+        {
+          "term": "january amounts",
+          "score": -6.56
+        },
+        {
+          "term": "fiscal year",
+          "score": -6.48
+        },
+        {
+          "term": "partially offset",
+          "score": -6.48
+        },
+        {
+          "term": "net cash",
+          "score": -6.39
+        },
+        {
+          "term": "comparable sales fiscal",
+          "score": -6.18
+        },
+        {
+          "term": "change comparable period",
+          "score": -6.06
+        },
+        {
+          "term": "financial measure",
+          "score": -5.93
+        },
+        {
+          "term": "billion billion fiscal",
+          "score": -5.77
+        }
+      ],
+      "summaryAlt": "Adds emphasis on materially adversely affect, laws regulations, financial performance; de-emphasizes net sales, long term debt, free cash."
+    },
+    {
+      "from": 2022,
+      "to": 2023,
+      "topRisers": [
+        {
+          "term": "enterprise strategy",
+          "score": 6.18,
+          "z": 0.62,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.85,
+          "deltaPer10k": 3.85,
+          "distinctive": false
+        },
+        {
+          "term": "reform",
+          "score": 6.18,
+          "z": 0.62,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.85,
+          "deltaPer10k": 3.85,
+          "distinctive": false
+        },
+        {
+          "term": "connecticut",
+          "score": 5.67,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.31,
+          "deltaPer10k": 2.31,
+          "distinctive": false
+        },
+        {
+          "term": "epidemic",
+          "score": 5.67,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.31,
+          "deltaPer10k": 2.31,
+          "distinctive": false
+        },
+        {
+          "term": "health reform",
+          "score": 5.67,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.31,
+          "deltaPer10k": 2.31,
+          "distinctive": false
+        },
+        {
+          "term": "healthcare services",
+          "score": 5.67,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.31,
+          "deltaPer10k": 2.31,
+          "distinctive": false
+        },
+        {
+          "term": "interoperability",
+          "score": 5.67,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.31,
+          "deltaPer10k": 2.31,
+          "distinctive": false
+        },
+        {
+          "term": "novel",
+          "score": 5.67,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.31,
+          "deltaPer10k": 2.31,
+          "distinctive": false
+        },
+        {
+          "term": "novel interpretations",
+          "score": 5.67,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.31,
+          "deltaPer10k": 2.31,
+          "distinctive": false
+        },
+        {
+          "term": "patients",
+          "score": 5.67,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.31,
+          "deltaPer10k": 2.31,
+          "distinctive": false
+        },
+        {
+          "term": "pricing",
+          "score": 5.67,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.31,
+          "deltaPer10k": 2.31,
+          "distinctive": false
+        },
+        {
+          "term": "provide assurance",
+          "score": 5.67,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.31,
+          "deltaPer10k": 2.31,
+          "distinctive": false
+        },
+        {
+          "term": "reform efforts",
+          "score": 5.67,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.31,
+          "deltaPer10k": 2.31,
+          "distinctive": false
+        },
+        {
+          "term": "theft",
+          "score": 5.67,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.31,
+          "deltaPer10k": 2.31,
+          "distinctive": false
+        },
+        {
+          "term": "utah",
+          "score": 5.67,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.31,
+          "deltaPer10k": 2.31,
+          "distinctive": false
+        }
+      ],
+      "topFallers": [
+        {
+          "term": "doj",
+          "score": -6.26,
+          "z": -0.62,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 4.0,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.0,
+          "distinctive": false
+        },
+        {
+          "term": "complaint",
+          "score": -6.03,
+          "z": -0.6,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.2,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.2,
+          "distinctive": false
+        },
+        {
+          "term": "motion",
+          "score": -6.03,
+          "z": -0.6,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.2,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.2,
+          "distinctive": false
+        },
+        {
+          "term": "alleging",
+          "score": -5.75,
+          "z": -0.57,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.4,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.4,
+          "distinctive": false
+        },
+        {
+          "term": "csa",
+          "score": -5.75,
+          "z": -0.57,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.4,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.4,
+          "distinctive": false
+        },
+        {
+          "term": "decision",
+          "score": -5.75,
+          "z": -0.57,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.4,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.4,
+          "distinctive": false
+        },
+        {
+          "term": "defendants",
+          "score": -5.75,
+          "z": -0.57,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.4,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.4,
+          "distinctive": false
+        },
+        {
+          "term": "dismiss",
+          "score": -5.75,
+          "z": -0.57,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.4,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.4,
+          "distinctive": false
+        },
+        {
+          "term": "district delaware",
+          "score": -5.75,
+          "z": -0.57,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.4,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.4,
+          "distinctive": false
+        },
+        {
+          "term": "flywheel",
+          "score": -5.75,
+          "z": -0.57,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.4,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.4,
+          "distinctive": false
+        },
+        {
+          "term": "march",
+          "score": -5.75,
+          "z": -0.57,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.4,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.4,
+          "distinctive": false
+        },
+        {
+          "term": "accelerated",
+          "score": -5.34,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.6,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.6,
+          "distinctive": false
+        },
+        {
+          "term": "affordable care",
+          "score": -5.34,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.6,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.6,
+          "distinctive": false
+        },
+        {
+          "term": "announced",
+          "score": -5.34,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.6,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.6,
+          "distinctive": false
+        },
+        {
+          "term": "care act",
+          "score": -5.34,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.6,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.6,
+          "distinctive": false
+        }
+      ],
+      "summary": "Adds emphasis on enterprise strategy, reform, connecticut; de-emphasizes doj, complaint, motion.",
+      "topRisersAlt": [
+        {
+          "term": "ecommerce technology",
+          "score": 5.66
+        },
+        {
+          "term": "financial services",
+          "score": 5.66
+        },
+        {
+          "term": "international operations",
+          "score": 5.66
+        },
+        {
+          "term": "associates business",
+          "score": 5.25
+        },
+        {
+          "term": "changes health",
+          "score": 5.25
+        },
+        {
+          "term": "consumer data",
+          "score": 5.25
+        },
+        {
+          "term": "consumer financial",
+          "score": 5.25
+        },
+        {
+          "term": "countries operations",
+          "score": 5.25
+        },
+        {
+          "term": "geopolitical tensions",
+          "score": 5.25
+        },
+        {
+          "term": "global walmart",
+          "score": 5.25
+        },
+        {
+          "term": "including result health",
+          "score": 5.25
+        },
+        {
+          "term": "information technology",
+          "score": 5.25
+        },
+        {
+          "term": "laws regulations including",
+          "score": 5.25
+        },
+        {
+          "term": "risks including",
+          "score": 5.25
+        },
+        {
+          "term": "walmart health",
+          "score": 5.25
+        }
+      ],
+      "topFallersAlt": [
+        {
+          "term": "regulations including",
+          "score": -5.78
+        },
+        {
+          "term": "business experience",
+          "score": -5.37
+        },
+        {
+          "term": "continue experience",
+          "score": -5.37
+        },
+        {
+          "term": "customer associate",
+          "score": -5.37
+        },
+        {
+          "term": "future operating results",
+          "score": -5.37
+        },
+        {
+          "term": "global health",
+          "score": -5.37
+        },
+        {
+          "term": "health related",
+          "score": -5.37
+        },
+        {
+          "term": "health services",
+          "score": -5.37
+        },
+        {
+          "term": "including result",
+          "score": -5.37
+        },
+        {
+          "term": "operations subject",
+          "score": -5.37
+        },
+        {
+          "term": "pharmacy business",
+          "score": -5.37
+        },
+        {
+          "term": "retail business",
+          "score": -5.37
+        },
+        {
+          "term": "risk factors",
+          "score": -5.37
+        },
+        {
+          "term": "litigation matters",
+          "score": -4.68
+        },
+        {
+          "term": "class action",
+          "score": -0.76
+        }
+      ],
+      "summaryAlt": "Adds emphasis on ecommerce technology, financial services, international operations; de-emphasizes regulations including, business experience, continue experience."
+    },
+    {
       "from": 2023,
       "to": 2024,
       "topRisers": [
         {
           "term": "cybersecurity incident",
-          "score": 7.27,
+          "score": 7.31,
           "z": 0.73,
           "countPrev": 0,
           "countCurr": 16,
           "per10kPrev": 0.0,
-          "per10kCurr": 14.77,
-          "deltaPer10k": 14.77,
+          "per10kCurr": 11.47,
+          "deltaPer10k": 11.47,
           "distinctive": false
         },
         {
           "term": "quality safety",
-          "score": 6.11,
+          "score": 6.15,
           "z": 0.61,
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.62,
-          "deltaPer10k": 4.62,
+          "per10kCurr": 3.59,
+          "deltaPer10k": 3.59,
           "distinctive": false
         },
         {
           "term": "crisis",
-          "score": 5.88,
+          "score": 5.92,
           "z": 0.59,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.69,
-          "deltaPer10k": 3.69,
+          "per10kCurr": 2.87,
+          "deltaPer10k": 2.87,
           "distinctive": false
         },
         {
           "term": "fails",
-          "score": 5.88,
+          "score": 5.92,
           "z": 0.59,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.69,
-          "deltaPer10k": 3.69,
+          "per10kCurr": 2.87,
+          "deltaPer10k": 2.87,
           "distinctive": false
         },
         {
           "term": "fails meet",
-          "score": 5.88,
+          "score": 5.92,
           "z": 0.59,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.69,
-          "deltaPer10k": 3.69,
+          "per10kCurr": 2.87,
+          "deltaPer10k": 2.87,
           "distinctive": false
         },
         {
           "term": "health crisis",
-          "score": 5.88,
+          "score": 5.92,
           "z": 0.59,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.69,
-          "deltaPer10k": 3.69,
+          "per10kCurr": 2.87,
+          "deltaPer10k": 2.87,
           "distinctive": false
         },
         {
           "term": "offered sale",
-          "score": 5.88,
+          "score": 5.92,
           "z": 0.59,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.69,
-          "deltaPer10k": 3.69,
+          "per10kCurr": 2.87,
+          "deltaPer10k": 2.87,
           "distinctive": false
         },
         {
           "term": "pipl",
-          "score": 5.88,
+          "score": 5.92,
           "z": 0.59,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.69,
-          "deltaPer10k": 3.69,
+          "per10kCurr": 2.87,
+          "deltaPer10k": 2.87,
           "distinctive": false
         },
         {
           "term": "products offered",
-          "score": 5.88,
+          "score": 5.92,
           "z": 0.59,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.69,
-          "deltaPer10k": 3.69,
+          "per10kCurr": 2.87,
+          "deltaPer10k": 2.87,
           "distinctive": false
         },
         {
           "term": "actor",
-          "score": 5.6,
+          "score": 5.64,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.77,
-          "deltaPer10k": 2.77,
+          "per10kCurr": 2.15,
+          "deltaPer10k": 2.15,
           "distinctive": false
         },
         {
           "term": "exploited",
-          "score": 5.6,
+          "score": 5.64,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.77,
-          "deltaPer10k": 2.77,
+          "per10kCurr": 2.15,
+          "deltaPer10k": 2.15,
           "distinctive": false
         },
         {
           "term": "fintech venture",
-          "score": 5.6,
+          "score": 5.64,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.77,
-          "deltaPer10k": 2.77,
+          "per10kCurr": 2.15,
+          "deltaPer10k": 2.15,
           "distinctive": false
         },
         {
           "term": "goals initiatives",
-          "score": 5.6,
+          "score": 5.64,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.77,
-          "deltaPer10k": 2.77,
+          "per10kCurr": 2.15,
+          "deltaPer10k": 2.15,
           "distinctive": false
         },
         {
           "term": "nation",
-          "score": 5.6,
+          "score": 5.64,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.77,
-          "deltaPer10k": 2.77,
+          "per10kCurr": 2.15,
+          "deltaPer10k": 2.15,
           "distinctive": false
         },
         {
           "term": "networked",
-          "score": 5.6,
+          "score": 5.64,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.77,
-          "deltaPer10k": 2.77,
+          "per10kCurr": 2.15,
+          "deltaPer10k": 2.15,
           "distinctive": false
         }
       ],
       "topFallers": [
         {
           "term": "colorado",
-          "score": -5.82,
+          "score": -5.78,
           "z": -0.58,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 3.1,
+          "per10kPrev": 2.31,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.1,
+          "deltaPer10k": -2.31,
           "distinctive": false
         },
         {
           "term": "connecticut",
-          "score": -5.82,
+          "score": -5.78,
           "z": -0.58,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 3.1,
+          "per10kPrev": 2.31,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.1,
+          "deltaPer10k": -2.31,
+          "distinctive": false
+        },
+        {
+          "term": "covid pandemic",
+          "score": -5.78,
+          "z": -0.58,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.31,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.31,
+          "distinctive": false
+        },
+        {
+          "term": "fintech joint",
+          "score": -5.78,
+          "z": -0.58,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.31,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.31,
+          "distinctive": false
+        },
+        {
+          "term": "food non",
+          "score": -5.78,
+          "z": -0.58,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.31,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.31,
+          "distinctive": false
+        },
+        {
+          "term": "joint venture",
+          "score": -5.78,
+          "z": -0.58,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.31,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.31,
+          "distinctive": false
+        },
+        {
+          "term": "non food",
+          "score": -5.78,
+          "z": -0.58,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.31,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.31,
+          "distinctive": false
+        },
+        {
+          "term": "securities exchange",
+          "score": -5.78,
+          "z": -0.58,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.31,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.31,
           "distinctive": false
         },
         {
           "term": "utah",
-          "score": -5.82,
+          "score": -5.78,
           "z": -0.58,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 3.1,
+          "per10kPrev": 2.31,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.1,
+          "deltaPer10k": -2.31,
+          "distinctive": false
+        },
+        {
+          "term": "consumer tastes",
+          "score": -5.37,
+          "z": -0.54,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.54,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.54,
           "distinctive": false
         },
         {
           "term": "cpra",
-          "score": -5.41,
+          "score": -5.37,
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 2.06,
+          "per10kPrev": 1.54,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.06,
+          "deltaPer10k": -1.54,
           "distinctive": false
         },
         {
           "term": "day",
-          "score": -5.41,
+          "score": -5.37,
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 2.06,
+          "per10kPrev": 1.54,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.06,
+          "deltaPer10k": -1.54,
           "distinctive": false
         },
         {
-          "term": "mutations",
-          "score": -5.41,
+          "term": "epidemics pandemics",
+          "score": -5.37,
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 2.06,
+          "per10kPrev": 1.54,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.06,
+          "deltaPer10k": -1.54,
           "distinctive": false
         },
         {
-          "term": "safe",
-          "score": -5.41,
+          "term": "exchange commission",
+          "score": -5.37,
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 2.06,
+          "per10kPrev": 1.54,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.06,
+          "deltaPer10k": -1.54,
           "distinctive": false
         },
         {
-          "term": "strains",
-          "score": -5.41,
+          "term": "future mutations",
+          "score": -5.37,
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 2.06,
+          "per10kPrev": 1.54,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.06,
-          "distinctive": false
-        },
-        {
-          "term": "variants",
-          "score": -5.41,
-          "z": -0.54,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 2.06,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -2.06,
-          "distinctive": false
-        },
-        {
-          "term": "virginia",
-          "score": -5.41,
-          "z": -0.54,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 2.06,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -2.06,
-          "distinctive": false
-        },
-        {
-          "term": "aligns",
-          "score": -4.73,
-          "z": -0.47,
-          "countPrev": 1,
-          "countCurr": 0,
-          "per10kPrev": 1.03,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.03,
-          "distinctive": false
-        },
-        {
-          "term": "announce",
-          "score": -4.73,
-          "z": -0.47,
-          "countPrev": 1,
-          "countCurr": 0,
-          "per10kPrev": 1.03,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.03,
-          "distinctive": false
-        },
-        {
-          "term": "authentication",
-          "score": -4.73,
-          "z": -0.47,
-          "countPrev": 1,
-          "countCurr": 0,
-          "per10kPrev": 1.03,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.03,
-          "distinctive": false
-        },
-        {
-          "term": "baby",
-          "score": -4.73,
-          "z": -0.47,
-          "countPrev": 1,
-          "countCurr": 0,
-          "per10kPrev": 1.03,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.03,
-          "distinctive": false
-        },
-        {
-          "term": "belong",
-          "score": -4.73,
-          "z": -0.47,
-          "countPrev": 1,
-          "countCurr": 0,
-          "per10kPrev": 1.03,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.03,
+          "deltaPer10k": -1.54,
           "distinctive": false
         }
       ],
-      "summary": "Adds emphasis on cybersecurity incident, quality safety, crisis; de-emphasizes colorado, connecticut, utah.",
+      "summary": "Adds emphasis on cybersecurity incident, quality safety, crisis; de-emphasizes colorado, connecticut, covid pandemic.",
       "topRisersAlt": [
         {
           "term": "cybersecurity incident",
@@ -471,213 +3729,202 @@
       "topRisers": [
         {
           "term": "vizio",
-          "score": 6.93,
+          "score": 6.95,
           "z": 0.69,
           "countPrev": 0,
           "countCurr": 11,
           "per10kPrev": 0.0,
-          "per10kCurr": 9.39,
-          "deltaPer10k": 9.39,
+          "per10kCurr": 7.48,
+          "deltaPer10k": 7.48,
           "distinctive": false
         },
         {
           "term": "independent",
-          "score": 6.83,
-          "z": 0.68,
+          "score": 6.86,
+          "z": 0.69,
           "countPrev": 0,
           "countCurr": 10,
           "per10kPrev": 0.0,
-          "per10kCurr": 8.54,
-          "deltaPer10k": 8.54,
+          "per10kCurr": 6.8,
+          "deltaPer10k": 6.8,
           "distinctive": false
         },
         {
           "term": "independent contractors",
-          "score": 6.48,
+          "score": 6.5,
           "z": 0.65,
           "countPrev": 0,
           "countCurr": 7,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.98,
-          "deltaPer10k": 5.98,
+          "per10kCurr": 4.76,
+          "deltaPer10k": 4.76,
           "distinctive": false
         },
         {
           "term": "order",
-          "score": 6.32,
+          "score": 6.35,
           "z": 0.63,
           "countPrev": 0,
           "countCurr": 6,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.12,
-          "deltaPer10k": 5.12,
+          "per10kCurr": 4.08,
+          "deltaPer10k": 4.08,
           "distinctive": false
         },
         {
           "term": "ai technologies",
-          "score": 6.14,
-          "z": 0.61,
+          "score": 6.16,
+          "z": 0.62,
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.27,
-          "deltaPer10k": 4.27,
+          "per10kCurr": 3.4,
+          "deltaPer10k": 3.4,
           "distinctive": false
         },
         {
           "term": "alleging",
-          "score": 5.92,
+          "score": 5.94,
           "z": 0.59,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.42,
-          "deltaPer10k": 3.42,
+          "per10kCurr": 2.72,
+          "deltaPer10k": 2.72,
           "distinctive": false
         },
         {
           "term": "contractors party",
-          "score": 5.92,
+          "score": 5.94,
           "z": 0.59,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.42,
-          "deltaPer10k": 3.42,
+          "per10kCurr": 2.72,
+          "deltaPer10k": 2.72,
           "distinctive": false
         },
         {
           "term": "hearing",
-          "score": 5.92,
+          "score": 5.94,
           "z": 0.59,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.42,
-          "deltaPer10k": 3.42,
+          "per10kCurr": 2.72,
+          "deltaPer10k": 2.72,
           "distinctive": false
         },
         {
           "term": "packaging",
-          "score": 5.92,
+          "score": 5.94,
           "z": 0.59,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.42,
-          "deltaPer10k": 3.42,
+          "per10kCurr": 2.72,
+          "deltaPer10k": 2.72,
           "distinctive": false
         },
         {
           "term": "walmex",
-          "score": 5.92,
+          "score": 5.94,
           "z": 0.59,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.42,
-          "deltaPer10k": 3.42,
+          "per10kCurr": 2.72,
+          "deltaPer10k": 2.72,
           "distinctive": false
         },
         {
           "term": "cci",
-          "score": 5.63,
+          "score": 5.65,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.56,
-          "deltaPer10k": 2.56,
+          "per10kCurr": 2.04,
+          "deltaPer10k": 2.04,
           "distinctive": false
         },
         {
           "term": "driver",
-          "score": 5.63,
+          "score": 5.65,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.56,
-          "deltaPer10k": 2.56,
+          "per10kCurr": 2.04,
+          "deltaPer10k": 2.04,
           "distinctive": false
         },
         {
           "term": "endeavor",
-          "score": 5.63,
+          "score": 5.65,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.56,
-          "deltaPer10k": 2.56,
+          "per10kCurr": 2.04,
+          "deltaPer10k": 2.04,
           "distinctive": false
         },
         {
           "term": "engaging",
-          "score": 5.63,
+          "score": 5.65,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.56,
-          "deltaPer10k": 2.56,
+          "per10kCurr": 2.04,
+          "deltaPer10k": 2.04,
           "distinctive": false
         },
         {
           "term": "final",
-          "score": 5.63,
+          "score": 5.65,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.56,
-          "deltaPer10k": 2.56,
+          "per10kCurr": 2.04,
+          "deltaPer10k": 2.04,
           "distinctive": false
         }
       ],
       "topFallers": [
         {
-          "term": "walmart health",
-          "score": -6.63,
-          "z": -0.66,
-          "countPrev": 7,
-          "countCurr": 0,
-          "per10kPrev": 6.46,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -6.46,
-          "distinctive": false
-        },
-        {
           "term": "esg priorities",
-          "score": -6.07,
-          "z": -0.61,
+          "score": -6.05,
+          "z": -0.6,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 3.69,
+          "per10kPrev": 2.87,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.69,
+          "deltaPer10k": -2.87,
           "distinctive": false
         },
         {
           "term": "patients",
-          "score": -5.79,
+          "score": -5.76,
           "z": -0.58,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 2.77,
+          "per10kPrev": 2.15,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.77,
+          "deltaPer10k": -2.15,
           "distinctive": false
         },
         {
           "term": "COVID-19",
-          "score": -5.38,
-          "z": -0.54,
+          "score": -5.36,
+          "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.85,
+          "per10kPrev": 1.43,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.85,
+          "deltaPer10k": -1.43,
           "distinctive": false,
           "includes": [
             "covid"
@@ -685,127 +3932,138 @@
         },
         {
           "term": "billion",
-          "score": -5.38,
-          "z": -0.54,
+          "score": -5.36,
+          "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.85,
+          "per10kPrev": 1.43,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.85,
+          "deltaPer10k": -1.43,
           "distinctive": false
         },
         {
           "term": "bring claim",
-          "score": -5.38,
-          "z": -0.54,
+          "score": -5.36,
+          "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.85,
+          "per10kPrev": 1.43,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.85,
+          "deltaPer10k": -1.43,
           "distinctive": false
         },
         {
           "term": "claim",
-          "score": -5.38,
-          "z": -0.54,
+          "score": -5.36,
+          "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.85,
+          "per10kPrev": 1.43,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.85,
+          "deltaPer10k": -1.43,
           "distinctive": false
         },
         {
           "term": "dental",
-          "score": -5.38,
-          "z": -0.54,
+          "score": -5.36,
+          "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.85,
+          "per10kPrev": 1.43,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.85,
+          "deltaPer10k": -1.43,
           "distinctive": false
         },
         {
           "term": "dental behavioral",
-          "score": -5.38,
-          "z": -0.54,
+          "score": -5.36,
+          "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.85,
+          "per10kPrev": 1.43,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.85,
+          "deltaPer10k": -1.43,
           "distinctive": false
         },
         {
           "term": "effectiveness",
-          "score": -5.38,
-          "z": -0.54,
+          "score": -5.36,
+          "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.85,
+          "per10kPrev": 1.43,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.85,
+          "deltaPer10k": -1.43,
           "distinctive": false
         },
         {
           "term": "fires",
-          "score": -5.38,
-          "z": -0.54,
+          "score": -5.36,
+          "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.85,
+          "per10kPrev": 1.43,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.85,
+          "deltaPer10k": -1.43,
           "distinctive": false
         },
         {
           "term": "health locations",
-          "score": -5.38,
-          "z": -0.54,
+          "score": -5.36,
+          "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.85,
+          "per10kPrev": 1.43,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.85,
+          "deltaPer10k": -1.43,
           "distinctive": false
         },
         {
           "term": "healthcare providers",
-          "score": -5.38,
-          "z": -0.54,
+          "score": -5.36,
+          "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.85,
+          "per10kPrev": 1.43,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.85,
+          "deltaPer10k": -1.43,
           "distinctive": false
         },
         {
           "term": "inclusive",
-          "score": -5.38,
-          "z": -0.54,
+          "score": -5.36,
+          "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.85,
+          "per10kPrev": 1.43,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.85,
+          "deltaPer10k": -1.43,
           "distinctive": false
         },
         {
           "term": "inclusive economic",
-          "score": -5.38,
-          "z": -0.54,
+          "score": -5.36,
+          "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.85,
+          "per10kPrev": 1.43,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.85,
+          "deltaPer10k": -1.43,
+          "distinctive": false
+        },
+        {
+          "term": "medical dental",
+          "score": -5.36,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.43,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.43,
           "distinctive": false
         }
       ],
-      "summary": "Adds emphasis on vizio, independent, independent contractors; de-emphasizes walmart health, esg priorities, patients.",
+      "summary": "Adds emphasis on vizio, independent, independent contractors; de-emphasizes esg priorities, patients, COVID-19.",
       "topRisersAlt": [
         {
           "term": "goods services",

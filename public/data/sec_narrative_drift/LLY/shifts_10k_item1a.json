@@ -2,40 +2,2372 @@
   "section": "10k_item1a",
   "yearPairs": [
     {
-      "from": 2020,
-      "to": 2021,
+      "from": 2015,
+      "to": 2016,
       "topRisers": [
         {
-          "term": "labor",
-          "score": 6.2,
+          "term": "cyber",
+          "score": 6.03,
+          "z": 0.6,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 11.53,
+          "deltaPer10k": 11.53,
+          "distinctive": false
+        },
+        {
+          "term": "cyber attacks",
+          "score": 6.03,
+          "z": 0.6,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 11.53,
+          "deltaPer10k": 11.53,
+          "distinctive": false
+        },
+        {
+          "term": "destruction",
+          "score": 5.75,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 8.65,
+          "deltaPer10k": 8.65,
+          "distinctive": false
+        },
+        {
+          "term": "destruction unauthorized",
+          "score": 5.75,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 8.65,
+          "deltaPer10k": 8.65,
+          "distinctive": false
+        },
+        {
+          "term": "disclosure use",
+          "score": 5.75,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 8.65,
+          "deltaPer10k": 8.65,
+          "distinctive": false
+        },
+        {
+          "term": "theft destruction",
+          "score": 5.75,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 8.65,
+          "deltaPer10k": 8.65,
+          "distinctive": false
+        },
+        {
+          "term": "use confidential",
+          "score": 5.75,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 8.65,
+          "deltaPer10k": 8.65,
+          "distinctive": false
+        },
+        {
+          "term": "august",
+          "score": 5.34,
+          "z": 0.53,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.77,
+          "deltaPer10k": 5.77,
+          "distinctive": false
+        },
+        {
+          "term": "availability systems",
+          "score": 5.34,
+          "z": 0.53,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.77,
+          "deltaPer10k": 5.77,
+          "distinctive": false
+        },
+        {
+          "term": "breaches malicious",
+          "score": 5.34,
+          "z": 0.53,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.77,
+          "deltaPer10k": 5.77,
+          "distinctive": false
+        },
+        {
+          "term": "confidentiality integrity",
+          "score": 5.34,
+          "z": 0.53,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.77,
+          "deltaPer10k": 5.77,
+          "distinctive": false
+        },
+        {
+          "term": "devaluation",
+          "score": 5.34,
+          "z": 0.53,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.77,
+          "deltaPer10k": 5.77,
+          "distinctive": false
+        },
+        {
+          "term": "event",
+          "score": 5.34,
+          "z": 0.53,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.77,
+          "deltaPer10k": 5.77,
+          "distinctive": false
+        },
+        {
+          "term": "failure inadequacy",
+          "score": 5.34,
+          "z": 0.53,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.77,
+          "deltaPer10k": 5.77,
+          "distinctive": false
+        },
+        {
+          "term": "failures security",
+          "score": 5.34,
+          "z": 0.53,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.77,
+          "deltaPer10k": 5.77,
+          "distinctive": false
+        }
+      ],
+      "topFallers": [
+        {
+          "term": "information security",
+          "score": -6.36,
+          "z": -0.64,
+          "countPrev": 6,
+          "countCurr": 0,
+          "per10kPrev": 16.65,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -16.65,
+          "distinctive": false
+        },
+        {
+          "term": "proposals",
+          "score": -6.18,
+          "z": -0.62,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 13.87,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -13.87,
+          "distinctive": false
+        },
+        {
+          "term": "benefit",
+          "score": -5.67,
+          "z": -0.57,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 8.32,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -8.32,
+          "distinctive": false
+        },
+        {
+          "term": "formulary",
+          "score": -5.67,
+          "z": -0.57,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 8.32,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -8.32,
+          "distinctive": false
+        },
+        {
+          "term": "initiatives",
+          "score": -5.67,
+          "z": -0.57,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 8.32,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -8.32,
+          "distinctive": false
+        },
+        {
+          "term": "integration",
+          "score": -5.67,
+          "z": -0.57,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 8.32,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -8.32,
+          "distinctive": false
+        },
+        {
+          "term": "ongoing",
+          "score": -5.67,
+          "z": -0.57,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 8.32,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -8.32,
+          "distinctive": false
+        },
+        {
+          "term": "policy",
+          "score": -5.67,
+          "z": -0.57,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 8.32,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -8.32,
+          "distinctive": false
+        },
+        {
+          "term": "aca",
+          "score": -5.27,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 5.55,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.55,
+          "distinctive": false
+        },
+        {
+          "term": "april",
+          "score": -5.27,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 5.55,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.55,
+          "distinctive": false
+        },
+        {
+          "term": "assurance",
+          "score": -5.27,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 5.55,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.55,
+          "distinctive": false
+        },
+        {
+          "term": "biological",
+          "score": -5.27,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 5.55,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.55,
+          "distinctive": false
+        },
+        {
+          "term": "biological products",
+          "score": -5.27,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 5.55,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.55,
+          "distinctive": false
+        },
+        {
+          "term": "british",
+          "score": -5.27,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 5.55,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.55,
+          "distinctive": false
+        },
+        {
+          "term": "budgets",
+          "score": -5.27,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 5.55,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.55,
+          "distinctive": false
+        }
+      ],
+      "summary": "Adds emphasis on cyber, cyber attacks, destruction; de-emphasizes information security, proposals, benefit.",
+      "topRisersAlt": [
+        {
+          "term": "use patents",
+          "score": 6.01
+        },
+        {
+          "term": "generic competitors",
+          "score": 5.6
+        },
+        {
+          "term": "human health",
+          "score": 5.6
+        },
+        {
+          "term": "information data",
+          "score": 5.6
+        },
+        {
+          "term": "sales operating",
+          "score": 5.6
+        },
+        {
+          "term": "government regulation",
+          "score": 4.9
+        },
+        {
+          "term": "product liability",
+          "score": 0.29
+        },
+        {
+          "term": "new products",
+          "score": 0.28
+        },
+        {
+          "term": "human pharmaceutical",
+          "score": 0.28
+        },
+        {
+          "term": "adversely affect business",
+          "score": 0.27
+        },
+        {
+          "term": "efficacy safety",
+          "score": 0.27
+        },
+        {
+          "term": "item financial",
+          "score": 0.27
+        },
+        {
+          "term": "market product",
+          "score": 0.27
+        },
+        {
+          "term": "patents intellectual property",
+          "score": 0.27
+        },
+        {
+          "term": "regulatory compliance",
+          "score": 0.27
+        }
+      ],
+      "topFallersAlt": [
+        {
+          "term": "health care",
+          "score": -6.63
+        },
+        {
+          "term": "information security",
+          "score": -6.2
+        },
+        {
+          "term": "pharmaceutical companies",
+          "score": -5.47
+        },
+        {
+          "term": "cost sales operating",
+          "score": -5.06
+        },
+        {
+          "term": "generic competition",
+          "score": -5.06
+        },
+        {
+          "term": "operating results",
+          "score": -5.06
+        },
+        {
+          "term": "patent protection data",
+          "score": -5.06
+        },
+        {
+          "term": "intellectual property protection",
+          "score": -0.25
+        },
+        {
+          "term": "results operations",
+          "score": -0.14
+        },
+        {
+          "term": "material adverse effect",
+          "score": -0.07
+        },
+        {
+          "term": "pharmaceutical products",
+          "score": -0.02
+        },
+        {
+          "term": "intellectual property",
+          "score": 0.16
+        },
+        {
+          "term": "data privacy",
+          "score": 0.27
+        },
+        {
+          "term": "adversely affect business",
+          "score": 0.27
+        },
+        {
+          "term": "efficacy safety",
+          "score": 0.27
+        }
+      ],
+      "summaryAlt": "Adds emphasis on use patents, generic competitors, human health; de-emphasizes health care, information security, pharmaceutical companies."
+    },
+    {
+      "from": 2016,
+      "to": 2017,
+      "topRisers": [
+        {
+          "term": "compromise loss",
+          "score": 5.67,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 8.36,
+          "deltaPer10k": 8.36,
+          "distinctive": false
+        },
+        {
+          "term": "products services",
+          "score": 5.67,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 8.36,
+          "deltaPer10k": 8.36,
+          "distinctive": false
+        },
+        {
+          "term": "services",
+          "score": 5.67,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 8.36,
+          "deltaPer10k": 8.36,
+          "distinctive": false
+        },
+        {
+          "term": "unauthorized access",
+          "score": 5.67,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 8.36,
+          "deltaPer10k": 8.36,
+          "distinctive": false
+        },
+        {
+          "term": "access disruption",
+          "score": 5.27,
+          "z": 0.53,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.57,
+          "deltaPer10k": 5.57,
+          "distinctive": false
+        },
+        {
+          "term": "disruption",
+          "score": 5.27,
+          "z": 0.53,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.57,
+          "deltaPer10k": 5.57,
+          "distinctive": false
+        },
+        {
+          "term": "disruption interference",
+          "score": 5.27,
+          "z": 0.53,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.57,
+          "deltaPer10k": 5.57,
+          "distinctive": false
+        },
+        {
+          "term": "information unauthorized",
+          "score": 5.27,
+          "z": 0.53,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.57,
+          "deltaPer10k": 5.57,
+          "distinctive": false
+        },
+        {
+          "term": "interference",
+          "score": 5.27,
+          "z": 0.53,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.57,
+          "deltaPer10k": 5.57,
+          "distinctive": false
+        },
+        {
+          "term": "interference products",
+          "score": 5.27,
+          "z": 0.53,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.57,
+          "deltaPer10k": 5.57,
+          "distinctive": false
+        },
+        {
+          "term": "interruption failure",
+          "score": 5.27,
+          "z": 0.53,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.57,
+          "deltaPer10k": 5.57,
+          "distinctive": false
+        },
+        {
+          "term": "rely systems",
+          "score": 5.27,
+          "z": 0.53,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.57,
+          "deltaPer10k": 5.57,
+          "distinctive": false
+        },
+        {
+          "term": "services rely",
+          "score": 5.27,
+          "z": 0.53,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.57,
+          "deltaPer10k": 5.57,
+          "distinctive": false
+        },
+        {
+          "term": "access service",
+          "score": 4.58,
+          "z": 0.46,
+          "countPrev": 0,
+          "countCurr": 1,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.79,
+          "deltaPer10k": 2.79,
+          "distinctive": false
+        },
+        {
+          "term": "addition process",
+          "score": 4.58,
+          "z": 0.46,
+          "countPrev": 0,
+          "countCurr": 1,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.79,
+          "deltaPer10k": 2.79,
+          "distinctive": false
+        }
+      ],
+      "topFallers": [
+        {
+          "term": "dimasi",
+          "score": -4.65,
+          "z": -0.46,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 2.88,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.88,
+          "distinctive": false
+        },
+        {
+          "term": "economics",
+          "score": -4.65,
+          "z": -0.46,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 2.88,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.88,
+          "distinctive": false
+        },
+        {
+          "term": "establishing",
+          "score": -4.65,
+          "z": -0.46,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 2.88,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.88,
+          "distinctive": false
+        },
+        {
+          "term": "estimates",
+          "score": -4.65,
+          "z": -0.46,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 2.88,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.88,
+          "distinctive": false
+        },
+        {
+          "term": "grabowski",
+          "score": -4.65,
+          "z": -0.46,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 2.88,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.88,
+          "distinctive": false
+        },
+        {
+          "term": "hansen",
+          "score": -4.65,
+          "z": -0.46,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 2.88,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.88,
+          "distinctive": false
+        },
+        {
+          "term": "industry",
+          "score": -4.65,
+          "z": -0.46,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 2.88,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.88,
+          "distinctive": false
+        },
+        {
+          "term": "innovation",
+          "score": -4.65,
+          "z": -0.46,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 2.88,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.88,
+          "distinctive": false
+        },
+        {
+          "term": "journal",
+          "score": -4.65,
+          "z": -0.46,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 2.88,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.88,
+          "distinctive": false
+        },
+        {
+          "term": "meeting demand",
+          "score": -4.65,
+          "z": -0.46,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 2.88,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.88,
+          "distinctive": false
+        },
+        {
+          "term": "outlets",
+          "score": -4.65,
+          "z": -0.46,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 2.88,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.88,
+          "distinctive": false
+        },
+        {
+          "term": "pharmaceutical industry",
+          "score": -4.65,
+          "z": -0.46,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 2.88,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.88,
+          "distinctive": false
+        },
+        {
+          "term": "potentially",
+          "score": -4.65,
+          "z": -0.46,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 2.88,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.88,
+          "distinctive": false
+        },
+        {
+          "term": "protection certain",
+          "score": -4.65,
+          "z": -0.46,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 2.88,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.88,
+          "distinctive": false
+        },
+        {
+          "term": "regard",
+          "score": -4.65,
+          "z": -0.46,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 2.88,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.88,
+          "distinctive": false
+        }
+      ],
+      "summary": "Adds emphasis on compromise loss, products services, services; de-emphasizes dimasi, economics, establishing.",
+      "topRisersAlt": [
+        {
+          "term": "intellectual property rights",
+          "score": 6.06
+        },
+        {
+          "term": "data protection",
+          "score": 5.34
+        },
+        {
+          "term": "adversely affect business",
+          "score": 0.43
+        },
+        {
+          "term": "intellectual property protection",
+          "score": 0.31
+        },
+        {
+          "term": "product liability",
+          "score": 0.01
+        },
+        {
+          "term": "material adverse effect",
+          "score": 0.01
+        },
+        {
+          "term": "new products",
+          "score": 0.01
+        },
+        {
+          "term": "pharmaceutical products",
+          "score": 0.01
+        },
+        {
+          "term": "efficacy safety",
+          "score": 0.01
+        },
+        {
+          "term": "generic competitors",
+          "score": 0.01
+        },
+        {
+          "term": "information data",
+          "score": 0.01
+        },
+        {
+          "term": "item financial",
+          "score": 0.01
+        },
+        {
+          "term": "market product",
+          "score": 0.01
+        },
+        {
+          "term": "patents intellectual property",
+          "score": 0.01
+        },
+        {
+          "term": "regulatory compliance",
+          "score": 0.01
+        }
+      ],
+      "topFallersAlt": [
+        {
+          "term": "human health",
+          "score": -5.32
+        },
+        {
+          "term": "human pharmaceutical",
+          "score": -0.4
+        },
+        {
+          "term": "use patents",
+          "score": -0.4
+        },
+        {
+          "term": "intellectual property",
+          "score": -0.37
+        },
+        {
+          "term": "data privacy",
+          "score": 0.01
+        },
+        {
+          "term": "government regulation",
+          "score": 0.01
+        },
+        {
+          "term": "efficacy safety",
+          "score": 0.01
+        },
+        {
+          "term": "generic competitors",
+          "score": 0.01
+        },
+        {
+          "term": "information data",
+          "score": 0.01
+        },
+        {
+          "term": "item financial",
+          "score": 0.01
+        },
+        {
+          "term": "market product",
+          "score": 0.01
+        },
+        {
+          "term": "patents intellectual property",
+          "score": 0.01
+        },
+        {
+          "term": "regulatory compliance",
+          "score": 0.01
+        },
+        {
+          "term": "result product",
+          "score": 0.01
+        },
+        {
+          "term": "results operations",
+          "score": 0.01
+        }
+      ],
+      "summaryAlt": "Adds emphasis on intellectual property rights, data protection, adversely affect business; de-emphasizes human health, human pharmaceutical, use patents."
+    },
+    {
+      "from": 2017,
+      "to": 2018,
+      "topRisers": [
+        {
+          "term": "expire",
+          "score": 6.32,
+          "z": 0.63,
+          "countPrev": 0,
+          "countCurr": 6,
+          "per10kPrev": 0.0,
+          "per10kCurr": 15.4,
+          "deltaPer10k": 15.4,
+          "distinctive": false
+        },
+        {
+          "term": "analysis results",
+          "score": 5.91,
+          "z": 0.59,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 10.27,
+          "deltaPer10k": 10.27,
+          "distinctive": false
+        },
+        {
+          "term": "expired",
+          "score": 5.91,
+          "z": 0.59,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 10.27,
+          "deltaPer10k": 10.27,
+          "distinctive": false
+        },
+        {
+          "term": "operations executive",
+          "score": 5.91,
+          "z": 0.59,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 10.27,
+          "deltaPer10k": 10.27,
+          "distinctive": false
+        },
+        {
+          "term": "elanco",
+          "score": 5.63,
+          "z": 0.56,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 7.7,
+          "deltaPer10k": 7.7,
+          "distinctive": false
+        },
+        {
+          "term": "separation",
+          "score": 5.63,
+          "z": 0.56,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 7.7,
+          "deltaPer10k": 7.7,
+          "distinctive": false
+        },
+        {
+          "term": "alternative",
+          "score": 5.22,
+          "z": 0.52,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.13,
+          "deltaPer10k": 5.13,
+          "distinctive": false
+        },
+        {
+          "term": "anticipated",
+          "score": 5.22,
+          "z": 0.52,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.13,
+          "deltaPer10k": 5.13,
+          "distinctive": false
+        },
+        {
+          "term": "disputes",
+          "score": 5.22,
+          "z": 0.52,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.13,
+          "deltaPer10k": 5.13,
+          "distinctive": false
+        },
+        {
+          "term": "formulations",
+          "score": 5.22,
+          "z": 0.52,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.13,
+          "deltaPer10k": 5.13,
+          "distinctive": false
+        },
+        {
+          "term": "future subject",
+          "score": 5.22,
+          "z": 0.52,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.13,
+          "deltaPer10k": 5.13,
+          "distinctive": false
+        },
+        {
+          "term": "lilly",
+          "score": 5.22,
+          "z": 0.52,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.13,
+          "deltaPer10k": 5.13,
+          "distinctive": false
+        },
+        {
+          "term": "negotiations",
+          "score": 5.22,
+          "z": 0.52,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.13,
+          "deltaPer10k": 5.13,
+          "distinctive": false
+        },
+        {
+          "term": "shareholders",
+          "score": 5.22,
+          "z": 0.52,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.13,
+          "deltaPer10k": 5.13,
+          "distinctive": false
+        },
+        {
+          "term": "acquire develop",
+          "score": 4.53,
+          "z": 0.45,
+          "countPrev": 0,
+          "countCurr": 1,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.57,
+          "deltaPer10k": 2.57,
+          "distinctive": false
+        }
+      ],
+      "topFallers": [
+        {
+          "term": "analysis executive",
+          "score": -6.08,
+          "z": -0.61,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 11.15,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -11.15,
+          "distinctive": false
+        },
+        {
+          "term": "countries compound",
+          "score": -4.7,
+          "z": -0.47,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 2.79,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.79,
+          "distinctive": false
+        },
+        {
+          "term": "effient",
+          "score": -4.7,
+          "z": -0.47,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 2.79,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.79,
+          "distinctive": false
+        },
+        {
+          "term": "expected",
+          "score": -4.7,
+          "z": -0.47,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 2.79,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.79,
+          "distinctive": false
+        },
+        {
+          "term": "invalided",
+          "score": -4.7,
+          "z": -0.47,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 2.79,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.79,
+          "distinctive": false
+        },
+        {
+          "term": "november",
+          "score": -4.7,
+          "z": -0.47,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 2.79,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.79,
+          "distinctive": false
+        },
+        {
+          "term": "october",
+          "score": -4.7,
+          "z": -0.47,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 2.79,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.79,
+          "distinctive": false
+        },
+        {
+          "term": "outcome",
+          "score": -4.7,
+          "z": -0.47,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 2.79,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.79,
+          "distinctive": false
+        },
+        {
+          "term": "patent exclusivity",
+          "score": -4.7,
+          "z": -0.47,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 2.79,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.79,
+          "distinctive": false
+        },
+        {
+          "term": "pressures negatively",
+          "score": -4.7,
+          "z": -0.47,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 2.79,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.79,
+          "distinctive": false
+        },
+        {
+          "term": "prozac",
+          "score": -4.7,
+          "z": -0.47,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 2.79,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.79,
+          "distinctive": false
+        },
+        {
+          "term": "strattera",
+          "score": -4.7,
+          "z": -0.47,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 2.79,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.79,
+          "distinctive": false
+        },
+        {
+          "term": "compound",
+          "score": -1.17,
+          "z": -1.02,
+          "countPrev": 3,
+          "countCurr": 1,
+          "per10kPrev": 8.36,
+          "per10kCurr": 2.57,
+          "deltaPer10k": -5.79,
+          "distinctive": false
+        },
+        {
+          "term": "compound patent",
+          "score": -1.17,
+          "z": -1.02,
+          "countPrev": 3,
+          "countCurr": 1,
+          "per10kPrev": 8.36,
+          "per10kCurr": 2.57,
+          "deltaPer10k": -5.79,
+          "distinctive": false
+        },
+        {
+          "term": "patent plus",
+          "score": -0.77,
+          "z": -0.89,
+          "countPrev": 4,
+          "countCurr": 2,
+          "per10kPrev": 11.15,
+          "per10kCurr": 5.13,
+          "deltaPer10k": -6.01,
+          "distinctive": false
+        }
+      ],
+      "summary": "Adds emphasis on expire, analysis results, expired; de-emphasizes analysis executive, countries compound, effient.",
+      "topRisersAlt": [
+        {
+          "term": "human health",
+          "score": 5.13
+        },
+        {
+          "term": "products intellectual property",
+          "score": 5.13
+        },
+        {
+          "term": "results operations",
+          "score": 0.94
+        },
+        {
+          "term": "patents intellectual property",
+          "score": 0.22
+        },
+        {
+          "term": "use patents",
+          "score": 0.22
+        },
+        {
+          "term": "intellectual property",
+          "score": 0.14
+        },
+        {
+          "term": "pharmaceutical products",
+          "score": 0.1
+        },
+        {
+          "term": "data privacy",
+          "score": -0.2
+        },
+        {
+          "term": "government regulation",
+          "score": -0.2
+        },
+        {
+          "term": "data protection",
+          "score": -0.2
+        },
+        {
+          "term": "efficacy safety",
+          "score": -0.2
+        },
+        {
+          "term": "generic competitors",
+          "score": -0.2
+        },
+        {
+          "term": "human pharmaceutical",
+          "score": -0.2
+        },
+        {
+          "term": "information data",
+          "score": -0.2
+        },
+        {
+          "term": "item financial",
+          "score": -0.2
+        }
+      ],
+      "topFallersAlt": [
+        {
+          "term": "product liability",
+          "score": -0.21
+        },
+        {
+          "term": "material adverse effect",
+          "score": -0.21
+        },
+        {
+          "term": "intellectual property protection",
+          "score": -0.21
+        },
+        {
+          "term": "intellectual property rights",
+          "score": -0.21
+        },
+        {
+          "term": "new products",
+          "score": -0.21
+        },
+        {
+          "term": "adversely affect business",
+          "score": -0.2
+        },
+        {
+          "term": "data protection",
+          "score": -0.2
+        },
+        {
+          "term": "efficacy safety",
+          "score": -0.2
+        },
+        {
+          "term": "generic competitors",
+          "score": -0.2
+        },
+        {
+          "term": "human pharmaceutical",
+          "score": -0.2
+        },
+        {
+          "term": "information data",
+          "score": -0.2
+        },
+        {
+          "term": "item financial",
+          "score": -0.2
+        },
+        {
+          "term": "market product",
+          "score": -0.2
+        },
+        {
+          "term": "regulatory compliance",
+          "score": -0.2
+        },
+        {
+          "term": "result product",
+          "score": -0.2
+        }
+      ],
+      "summaryAlt": "Adds emphasis on human health, products intellectual property, results operations; de-emphasizes product liability, material adverse effect, intellectual property protection."
+    },
+    {
+      "from": 2018,
+      "to": 2019,
+      "topRisers": [
+        {
+          "term": "litigation investigations",
+          "score": 6.21,
+          "z": 0.62,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 12.76,
+          "deltaPer10k": 12.76,
+          "distinctive": false
+        },
+        {
+          "term": "compromise disruption",
+          "score": 5.7,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 7.65,
+          "deltaPer10k": 7.65,
+          "distinctive": false
+        },
+        {
+          "term": "degradation",
+          "score": 5.7,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 7.65,
+          "deltaPer10k": 7.65,
+          "distinctive": false
+        },
+        {
+          "term": "degradation manipulation",
+          "score": 5.7,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 7.65,
+          "deltaPer10k": 7.65,
+          "distinctive": false
+        },
+        {
+          "term": "disruption degradation",
+          "score": 5.7,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 7.65,
+          "deltaPer10k": 7.65,
+          "distinctive": false
+        },
+        {
+          "term": "investigations related",
+          "score": 5.7,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 7.65,
+          "deltaPer10k": 7.65,
+          "distinctive": false
+        },
+        {
+          "term": "manipulation",
+          "score": 5.7,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 7.65,
+          "deltaPer10k": 7.65,
+          "distinctive": false
+        },
+        {
+          "term": "manipulation loss",
+          "score": 5.7,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 7.65,
+          "deltaPer10k": 7.65,
+          "distinctive": false
+        },
+        {
+          "term": "stock",
+          "score": 5.7,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 7.65,
+          "deltaPer10k": 7.65,
+          "distinctive": false
+        },
+        {
+          "term": "Pandemic",
+          "score": 5.3,
+          "z": 0.53,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.1,
+          "deltaPer10k": 5.1,
+          "distinctive": false,
+          "includes": [
+            "pandemic"
+          ]
+        },
+        {
+          "term": "federal income",
+          "score": 5.3,
+          "z": 0.53,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.1,
+          "deltaPer10k": 5.1,
+          "distinctive": false
+        },
+        {
+          "term": "june",
+          "score": 5.3,
+          "z": 0.53,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.1,
+          "deltaPer10k": 5.1,
+          "distinctive": false
+        },
+        {
+          "term": "make",
+          "score": 5.3,
+          "z": 0.53,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.1,
+          "deltaPer10k": 5.1,
+          "distinctive": false
+        },
+        {
+          "term": "related pricing",
+          "score": 5.3,
+          "z": 0.53,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.1,
+          "deltaPer10k": 5.1,
+          "distinctive": false
+        },
+        {
+          "term": "Coronavirus",
+          "score": 4.61,
+          "z": 0.46,
+          "countPrev": 0,
+          "countCurr": 1,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.55,
+          "deltaPer10k": 2.55,
+          "distinctive": false,
+          "includes": [
+            "coronavirus"
+          ]
+        }
+      ],
+      "topFallers": [
+        {
+          "term": "human",
+          "score": -7.01,
+          "z": -0.7,
+          "countPrev": 11,
+          "countCurr": 0,
+          "per10kPrev": 28.24,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -28.24,
+          "distinctive": false
+        },
+        {
+          "term": "animal",
+          "score": -6.56,
+          "z": -0.66,
+          "countPrev": 7,
+          "countCurr": 0,
+          "per10kPrev": 17.97,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -17.97,
+          "distinctive": false
+        },
+        {
+          "term": "human pharmaceutical",
+          "score": -6.56,
+          "z": -0.66,
+          "countPrev": 7,
+          "countCurr": 0,
+          "per10kPrev": 17.97,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -17.97,
+          "distinctive": false
+        },
+        {
+          "term": "animal health",
+          "score": -6.22,
+          "z": -0.62,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 12.84,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -12.84,
+          "distinctive": false
+        },
+        {
+          "term": "food",
+          "score": -6.22,
+          "z": -0.62,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 12.84,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -12.84,
+          "distinctive": false
+        },
+        {
+          "term": "animals",
+          "score": -6.0,
+          "z": -0.6,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 10.27,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -10.27,
+          "distinctive": false
+        },
+        {
+          "term": "compromise loss",
+          "score": -5.71,
+          "z": -0.57,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 7.7,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -7.7,
+          "distinctive": false
+        },
+        {
+          "term": "agricultural",
+          "score": -5.31,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 5.13,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.13,
+          "distinctive": false
+        },
+        {
+          "term": "agricultural markets",
+          "score": -5.31,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 5.13,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.13,
+          "distinctive": false
+        },
+        {
+          "term": "anticipated",
+          "score": -5.31,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 5.13,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.13,
+          "distinctive": false
+        },
+        {
+          "term": "conditions",
+          "score": -5.31,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 5.13,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.13,
+          "distinctive": false
+        },
+        {
+          "term": "consumption",
+          "score": -5.31,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 5.13,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.13,
+          "distinctive": false
+        },
+        {
+          "term": "consumption food",
+          "score": -5.31,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 5.13,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.13,
+          "distinctive": false
+        },
+        {
+          "term": "food animal",
+          "score": -5.31,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 5.13,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.13,
+          "distinctive": false
+        },
+        {
+          "term": "food producing",
+          "score": -5.31,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 5.13,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.13,
+          "distinctive": false
+        }
+      ],
+      "summary": "Adds emphasis on litigation investigations, compromise disruption, degradation; de-emphasizes human, animal, human pharmaceutical.",
+      "topRisersAlt": [
+        {
+          "term": "confidential information",
+          "score": 6.01
+        },
+        {
+          "term": "product liability claims",
+          "score": 5.71
+        },
+        {
+          "term": "access disruption",
+          "score": 5.29
+        },
+        {
+          "term": "income tax",
+          "score": 5.29
+        },
+        {
+          "term": "item business",
+          "score": 5.29
+        },
+        {
+          "term": "operating results",
+          "score": 5.29
+        },
+        {
+          "term": "pharmaceutical manufacturing",
+          "score": 5.29
+        },
+        {
+          "term": "pharmaceutical pricing",
+          "score": 5.29
+        },
+        {
+          "term": "systems confidential information",
+          "score": 5.29
+        },
+        {
+          "term": "data security",
+          "score": 4.59
+        },
+        {
+          "term": "item financial",
+          "score": 0.38
+        },
+        {
+          "term": "new products",
+          "score": 0.2
+        },
+        {
+          "term": "data privacy",
+          "score": -0.03
+        },
+        {
+          "term": "government regulation",
+          "score": -0.03
+        },
+        {
+          "term": "data protection",
+          "score": -0.03
+        }
+      ],
+      "topFallersAlt": [
+        {
+          "term": "material adverse effect",
+          "score": -6.31
+        },
+        {
+          "term": "use patents",
+          "score": -5.77
+        },
+        {
+          "term": "efficacy safety",
+          "score": -5.36
+        },
+        {
+          "term": "human health",
+          "score": -5.36
+        },
+        {
+          "term": "human pharmaceutical",
+          "score": -5.36
+        },
+        {
+          "term": "information data",
+          "score": -5.36
+        },
+        {
+          "term": "market product",
+          "score": -5.36
+        },
+        {
+          "term": "pharmaceutical products",
+          "score": -0.75
+        },
+        {
+          "term": "intellectual property protection",
+          "score": -0.33
+        },
+        {
+          "term": "intellectual property",
+          "score": -0.04
+        },
+        {
+          "term": "product liability",
+          "score": -0.04
+        },
+        {
+          "term": "results operations",
+          "score": -0.03
+        },
+        {
+          "term": "intellectual property rights",
+          "score": -0.03
+        },
+        {
+          "term": "adversely affect business",
+          "score": -0.03
+        },
+        {
+          "term": "patents intellectual property",
+          "score": -0.03
+        }
+      ],
+      "summaryAlt": "Adds emphasis on confidential information, product liability claims, access disruption; de-emphasizes material adverse effect, use patents, efficacy safety."
+    },
+    {
+      "from": 2019,
+      "to": 2020,
+      "topRisers": [
+        {
+          "term": "COVID-19",
+          "score": 7.4,
+          "z": 0.74,
+          "countPrev": 0,
+          "countCurr": 20,
+          "per10kPrev": 0.0,
+          "per10kCurr": 41.34,
+          "deltaPer10k": 41.34,
+          "distinctive": false,
+          "includes": [
+            "covid"
+          ]
+        },
+        {
+          "term": "covid pandemic",
+          "score": 6.8,
+          "z": 0.68,
+          "countPrev": 0,
+          "countCurr": 11,
+          "per10kPrev": 0.0,
+          "per10kCurr": 22.74,
+          "deltaPer10k": 22.74,
+          "distinctive": false
+        },
+        {
+          "term": "Supply chain",
+          "score": 6.19,
           "z": 0.62,
           "countPrev": 0,
           "countCurr": 6,
           "per10kPrev": 0.0,
-          "per10kCurr": 10.75,
-          "deltaPer10k": 10.75,
+          "per10kCurr": 12.4,
+          "deltaPer10k": 12.4,
+          "distinctive": false,
+          "includes": [
+            "supply chain"
+          ]
+        },
+        {
+          "term": "healthcare",
+          "score": 6.19,
+          "z": 0.62,
+          "countPrev": 0,
+          "countCurr": 6,
+          "per10kPrev": 0.0,
+          "per10kCurr": 12.4,
+          "deltaPer10k": 12.4,
           "distinctive": false
         },
         {
-          "term": "jurisdictions outside",
+          "term": "impacted",
           "score": 6.01,
           "z": 0.6,
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 8.96,
-          "deltaPer10k": 8.96,
+          "per10kCurr": 10.33,
+          "deltaPer10k": 10.33,
           "distinctive": false
         },
         {
-          "term": "Inflation",
+          "term": "interactions",
+          "score": 6.01,
+          "z": 0.6,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 10.33,
+          "deltaPer10k": 10.33,
+          "distinctive": false
+        },
+        {
+          "term": "administration",
           "score": 5.79,
           "z": 0.58,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 7.17,
-          "deltaPer10k": 7.17,
+          "per10kCurr": 8.27,
+          "deltaPer10k": 8.27,
+          "distinctive": false
+        },
+        {
+          "term": "business processes",
+          "score": 5.79,
+          "z": 0.58,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 8.27,
+          "deltaPer10k": 8.27,
+          "distinctive": false
+        },
+        {
+          "term": "product pipeline",
+          "score": 5.79,
+          "z": 0.58,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 8.27,
+          "deltaPer10k": 8.27,
+          "distinctive": false
+        },
+        {
+          "term": "risks related",
+          "score": 5.79,
+          "z": 0.58,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 8.27,
+          "deltaPer10k": 8.27,
+          "distinctive": false
+        },
+        {
+          "term": "spread",
+          "score": 5.79,
+          "z": 0.58,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 8.27,
+          "deltaPer10k": 8.27,
+          "distinctive": false
+        },
+        {
+          "term": "chain",
+          "score": 5.5,
+          "z": 0.55,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 6.2,
+          "deltaPer10k": 6.2,
+          "distinctive": false
+        },
+        {
+          "term": "conditions",
+          "score": 5.5,
+          "z": 0.55,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 6.2,
+          "deltaPer10k": 6.2,
+          "distinctive": false
+        },
+        {
+          "term": "covid therapies",
+          "score": 5.5,
+          "z": 0.55,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 6.2,
+          "deltaPer10k": 6.2,
+          "distinctive": false
+        },
+        {
+          "term": "current presidential",
+          "score": 5.5,
+          "z": 0.55,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 6.2,
+          "deltaPer10k": 6.2,
+          "distinctive": false
+        }
+      ],
+      "topFallers": [
+        {
+          "term": "expired",
+          "score": -6.43,
+          "z": -0.64,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 12.76,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -12.76,
+          "distinctive": false
+        },
+        {
+          "term": "expire",
+          "score": -5.92,
+          "z": -0.59,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 7.65,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -7.65,
+          "distinctive": false
+        },
+        {
+          "term": "patents expired",
+          "score": -5.92,
+          "z": -0.59,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 7.65,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -7.65,
+          "distinctive": false
+        },
+        {
+          "term": "use patents",
+          "score": -5.92,
+          "z": -0.59,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 7.65,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -7.65,
+          "distinctive": false
+        },
+        {
+          "term": "august",
+          "score": -5.51,
+          "z": -0.55,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 5.1,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.1,
+          "distinctive": false
+        },
+        {
+          "term": "cymbalta",
+          "score": -5.51,
+          "z": -0.55,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 5.1,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.1,
+          "distinctive": false
+        },
+        {
+          "term": "data package",
+          "score": -5.51,
+          "z": -0.55,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 5.1,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.1,
+          "distinctive": false
+        },
+        {
+          "term": "formulation",
+          "score": -5.51,
+          "z": -0.55,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 5.1,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.1,
+          "distinctive": false
+        },
+        {
+          "term": "item legal",
+          "score": -5.51,
+          "z": -0.55,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 5.1,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.1,
+          "distinctive": false
+        },
+        {
+          "term": "january",
+          "score": -5.51,
+          "z": -0.55,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 5.1,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.1,
+          "distinctive": false
+        },
+        {
+          "term": "japan data",
+          "score": -5.51,
+          "z": -0.55,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 5.1,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.1,
+          "distinctive": false
+        },
+        {
+          "term": "june",
+          "score": -5.51,
+          "z": -0.55,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 5.1,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.1,
+          "distinctive": false
+        },
+        {
+          "term": "millions",
+          "score": -5.51,
+          "z": -0.55,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 5.1,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.1,
+          "distinctive": false
+        },
+        {
+          "term": "millions percent",
+          "score": -5.51,
+          "z": -0.55,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 5.1,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.1,
+          "distinctive": false
+        },
+        {
+          "term": "package",
+          "score": -5.51,
+          "z": -0.55,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 5.1,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.1,
+          "distinctive": false
+        }
+      ],
+      "summary": "Adds emphasis on COVID-19, covid pandemic, Supply chain; de-emphasizes expired, expire, patents expired.",
+      "topRisersAlt": [
+        {
+          "term": "covid pandemic",
+          "score": 6.4
+        },
+        {
+          "term": "material adverse",
+          "score": 6.26
+        },
+        {
+          "term": "systems business processes",
+          "score": 5.68
+        },
+        {
+          "term": "business development",
+          "score": 5.38
+        },
+        {
+          "term": "products litigation",
+          "score": 5.38
+        },
+        {
+          "term": "supply chain",
+          "score": 5.38
+        },
+        {
+          "term": "adversely affect",
+          "score": 4.97
+        },
+        {
+          "term": "business including",
+          "score": 4.97
+        },
+        {
+          "term": "covid therapies addition",
+          "score": 4.97
+        },
+        {
+          "term": "generic pharmaceutical",
+          "score": 4.97
+        },
+        {
+          "term": "impact business operations",
+          "score": 4.97
+        },
+        {
+          "term": "information data",
+          "score": 4.97
+        },
+        {
+          "term": "pharmaceutical research development",
+          "score": 4.97
+        },
+        {
+          "term": "product liability litigation",
+          "score": 4.97
+        },
+        {
+          "term": "protection data protection",
+          "score": 4.97
+        }
+      ],
+      "topFallersAlt": [
+        {
+          "term": "confidential information",
+          "score": -6.39
+        },
+        {
+          "term": "intellectual property rights",
+          "score": -6.39
+        },
+        {
+          "term": "access disruption",
+          "score": -5.67
+        },
+        {
+          "term": "data protection",
+          "score": -5.67
+        },
+        {
+          "term": "income tax",
+          "score": -5.67
+        },
+        {
+          "term": "item business",
+          "score": -5.67
+        },
+        {
+          "term": "revenues patent data",
+          "score": -5.67
+        },
+        {
+          "term": "systems confidential information",
+          "score": -5.67
+        },
+        {
+          "term": "new products",
+          "score": -0.6
+        },
+        {
+          "term": "product liability",
+          "score": -0.53
+        },
+        {
+          "term": "item financial",
+          "score": -0.36
+        },
+        {
+          "term": "patents intellectual property",
+          "score": -0.36
+        },
+        {
+          "term": "product liability claims",
+          "score": -0.36
+        },
+        {
+          "term": "generic competitors",
+          "score": -0.36
+        },
+        {
+          "term": "pharmaceutical manufacturing",
+          "score": -0.36
+        }
+      ],
+      "summaryAlt": "Adds emphasis on covid pandemic, material adverse, systems business processes; de-emphasizes confidential information, intellectual property rights, access disruption."
+    },
+    {
+      "from": 2020,
+      "to": 2021,
+      "topRisers": [
+        {
+          "term": "labor",
+          "score": 6.23,
+          "z": 0.62,
+          "countPrev": 0,
+          "countCurr": 6,
+          "per10kPrev": 0.0,
+          "per10kCurr": 10.49,
+          "deltaPer10k": 10.49,
+          "distinctive": false
+        },
+        {
+          "term": "jurisdictions outside",
+          "score": 6.05,
+          "z": 0.6,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 8.74,
+          "deltaPer10k": 8.74,
+          "distinctive": false
+        },
+        {
+          "term": "Inflation",
+          "score": 5.83,
+          "z": 0.58,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 6.99,
+          "deltaPer10k": 6.99,
           "distinctive": false,
           "includes": [
             "inflation"
@@ -43,301 +2375,301 @@
         },
         {
           "term": "products indications",
-          "score": 5.79,
+          "score": 5.83,
           "z": 0.58,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 7.17,
-          "deltaPer10k": 7.17,
+          "per10kCurr": 6.99,
+          "deltaPer10k": 6.99,
           "distinctive": false
         },
         {
           "term": "additional costs",
-          "score": 5.5,
+          "score": 5.54,
           "z": 0.55,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.38,
-          "deltaPer10k": 5.38,
+          "per10kCurr": 5.24,
+          "deltaPer10k": 5.24,
           "distinctive": false
         },
         {
           "term": "china",
-          "score": 5.5,
+          "score": 5.54,
           "z": 0.55,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.38,
-          "deltaPer10k": 5.38,
+          "per10kCurr": 5.24,
+          "deltaPer10k": 5.24,
           "distinctive": false
         },
         {
           "term": "costs uncertainties",
-          "score": 5.5,
+          "score": 5.54,
           "z": 0.55,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.38,
-          "deltaPer10k": 5.38,
+          "per10kCurr": 5.24,
+          "deltaPer10k": 5.24,
           "distinctive": false
         },
         {
           "term": "disruptions shortages",
-          "score": 5.5,
+          "score": 5.54,
           "z": 0.55,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.38,
-          "deltaPer10k": 5.38,
+          "per10kCurr": 5.24,
+          "deltaPer10k": 5.24,
           "distinctive": false
         },
         {
           "term": "epidemic",
-          "score": 5.5,
+          "score": 5.54,
           "z": 0.55,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.38,
-          "deltaPer10k": 5.38,
+          "per10kCurr": 5.24,
+          "deltaPer10k": 5.24,
           "distinctive": false
         },
         {
           "term": "global transportation",
-          "score": 5.5,
+          "score": 5.54,
           "z": 0.55,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.38,
-          "deltaPer10k": 5.38,
+          "per10kCurr": 5.24,
+          "deltaPer10k": 5.24,
           "distinctive": false
         },
         {
           "term": "health threat",
-          "score": 5.5,
+          "score": 5.54,
           "z": 0.55,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.38,
-          "deltaPer10k": 5.38,
+          "per10kCurr": 5.24,
+          "deltaPer10k": 5.24,
           "distinctive": false
         },
         {
           "term": "heightened",
-          "score": 5.5,
+          "score": 5.54,
           "z": 0.55,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.38,
-          "deltaPer10k": 5.38,
+          "per10kCurr": 5.24,
+          "deltaPer10k": 5.24,
           "distinctive": false
         },
         {
           "term": "labor markets",
-          "score": 5.5,
+          "score": 5.54,
           "z": 0.55,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.38,
-          "deltaPer10k": 5.38,
+          "per10kCurr": 5.24,
+          "deltaPer10k": 5.24,
           "distinctive": false
         },
         {
           "term": "logistics",
-          "score": 5.5,
+          "score": 5.54,
           "z": 0.55,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.38,
-          "deltaPer10k": 5.38,
+          "per10kCurr": 5.24,
+          "deltaPer10k": 5.24,
           "distinctive": false
         },
         {
           "term": "public health",
-          "score": 5.5,
+          "score": 5.54,
           "z": 0.55,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.38,
-          "deltaPer10k": 5.38,
+          "per10kCurr": 5.24,
+          "deltaPer10k": 5.24,
           "distinctive": false
         }
       ],
       "topFallers": [
         {
           "term": "elanco",
-          "score": -6.2,
+          "score": -6.16,
           "z": -0.62,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 8.79,
+          "per10kPrev": 8.27,
           "per10kCurr": 0.0,
-          "deltaPer10k": -8.79,
+          "deltaPer10k": -8.27,
           "distinctive": false
         },
         {
           "term": "expenses",
-          "score": -5.91,
+          "score": -5.87,
           "z": -0.59,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 6.59,
+          "per10kPrev": 6.2,
           "per10kCurr": 0.0,
-          "deltaPer10k": -6.59,
+          "deltaPer10k": -6.2,
           "distinctive": false
         },
         {
           "term": "stock",
-          "score": -5.91,
+          "score": -5.87,
           "z": -0.59,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 6.59,
+          "per10kPrev": 6.2,
           "per10kCurr": 0.0,
-          "deltaPer10k": -6.59,
+          "deltaPer10k": -6.2,
+          "distinctive": false
+        },
+        {
+          "term": "consolidated operating",
+          "score": -5.47,
+          "z": -0.55,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 4.13,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.13,
+          "distinctive": false
+        },
+        {
+          "term": "cost sales",
+          "score": -5.47,
+          "z": -0.55,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 4.13,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.13,
+          "distinctive": false
+        },
+        {
+          "term": "development manufacture",
+          "score": -5.47,
+          "z": -0.55,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 4.13,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.13,
           "distinctive": false
         },
         {
           "term": "divestiture",
-          "score": -5.51,
+          "score": -5.47,
           "z": -0.55,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 4.4,
+          "per10kPrev": 4.13,
           "per10kCurr": 0.0,
-          "deltaPer10k": -4.4,
+          "deltaPer10k": -4.13,
           "distinctive": false
         },
         {
           "term": "euas",
-          "score": -5.51,
+          "score": -5.47,
           "z": -0.55,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 4.4,
+          "per10kPrev": 4.13,
           "per10kCurr": 0.0,
-          "deltaPer10k": -4.4,
+          "deltaPer10k": -4.13,
+          "distinctive": false
+        },
+        {
+          "term": "federal income",
+          "score": -5.47,
+          "z": -0.55,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 4.13,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.13,
           "distinctive": false
         },
         {
           "term": "free",
-          "score": -5.51,
+          "score": -5.47,
           "z": -0.55,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 4.4,
+          "per10kPrev": 4.13,
           "per10kCurr": 0.0,
-          "deltaPer10k": -4.4,
+          "deltaPer10k": -4.13,
           "distinctive": false
         },
         {
           "term": "impacted future",
-          "score": -5.51,
+          "score": -5.47,
           "z": -0.55,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 4.4,
+          "per10kPrev": 4.13,
           "per10kCurr": 0.0,
-          "deltaPer10k": -4.4,
+          "deltaPer10k": -4.13,
           "distinctive": false
         },
         {
           "term": "impacting",
-          "score": -5.51,
+          "score": -5.47,
           "z": -0.55,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 4.4,
+          "per10kPrev": 4.13,
           "per10kCurr": 0.0,
-          "deltaPer10k": -4.4,
+          "deltaPer10k": -4.13,
           "distinctive": false
         },
         {
           "term": "locations",
-          "score": -5.51,
+          "score": -5.47,
           "z": -0.55,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 4.4,
+          "per10kPrev": 4.13,
           "per10kCurr": 0.0,
-          "deltaPer10k": -4.4,
+          "deltaPer10k": -4.13,
           "distinctive": false
         },
         {
           "term": "lost lose",
-          "score": -5.51,
+          "score": -5.47,
           "z": -0.55,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 4.4,
+          "per10kPrev": 4.13,
           "per10kCurr": 0.0,
-          "deltaPer10k": -4.4,
+          "deltaPer10k": -4.13,
           "distinctive": false
         },
         {
-          "term": "medications",
-          "score": -5.51,
+          "term": "market penetration",
+          "score": -5.47,
           "z": -0.55,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 4.4,
+          "per10kPrev": 4.13,
           "per10kCurr": 0.0,
-          "deltaPer10k": -4.4,
-          "distinctive": false
-        },
-        {
-          "term": "penetration",
-          "score": -5.51,
-          "z": -0.55,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 4.4,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -4.4,
-          "distinctive": false
-        },
-        {
-          "term": "periods negatively",
-          "score": -5.51,
-          "z": -0.55,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 4.4,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -4.4,
-          "distinctive": false
-        },
-        {
-          "term": "treatments",
-          "score": -5.51,
-          "z": -0.55,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 4.4,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -4.4,
-          "distinctive": false
-        },
-        {
-          "term": "unanticipated",
-          "score": -5.51,
-          "z": -0.55,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 4.4,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -4.4,
+          "deltaPer10k": -4.13,
           "distinctive": false
         }
       ],
@@ -474,68 +2806,68 @@
       "topRisers": [
         {
           "term": "epidemics",
-          "score": 6.39,
+          "score": 6.41,
           "z": 0.64,
           "countPrev": 0,
           "countCurr": 7,
           "per10kPrev": 0.0,
-          "per10kCurr": 10.66,
-          "deltaPer10k": 10.66,
+          "per10kCurr": 10.57,
+          "deltaPer10k": 10.57,
           "distinctive": false
         },
         {
           "term": "epidemics pandemics",
-          "score": 6.39,
+          "score": 6.41,
           "z": 0.64,
           "countPrev": 0,
           "countCurr": 7,
           "per10kPrev": 0.0,
-          "per10kCurr": 10.66,
-          "deltaPer10k": 10.66,
+          "per10kCurr": 10.57,
+          "deltaPer10k": 10.57,
           "distinctive": false
         },
         {
           "term": "health outbreaks",
-          "score": 6.39,
+          "score": 6.41,
           "z": 0.64,
           "countPrev": 0,
           "countCurr": 7,
           "per10kPrev": 0.0,
-          "per10kCurr": 10.66,
-          "deltaPer10k": 10.66,
+          "per10kCurr": 10.57,
+          "deltaPer10k": 10.57,
           "distinctive": false
         },
         {
           "term": "outbreaks",
-          "score": 6.39,
+          "score": 6.41,
           "z": 0.64,
           "countPrev": 0,
           "countCurr": 7,
           "per10kPrev": 0.0,
-          "per10kCurr": 10.66,
-          "deltaPer10k": 10.66,
+          "per10kCurr": 10.57,
+          "deltaPer10k": 10.57,
           "distinctive": false
         },
         {
           "term": "outbreaks epidemics",
-          "score": 6.39,
+          "score": 6.41,
           "z": 0.64,
           "countPrev": 0,
           "countCurr": 7,
           "per10kPrev": 0.0,
-          "per10kCurr": 10.66,
-          "deltaPer10k": 10.66,
+          "per10kCurr": 10.57,
+          "deltaPer10k": 10.57,
           "distinctive": false
         },
         {
           "term": "Climate change",
-          "score": 6.24,
+          "score": 6.25,
           "z": 0.62,
           "countPrev": 0,
           "countCurr": 6,
           "per10kPrev": 0.0,
-          "per10kCurr": 9.14,
-          "deltaPer10k": 9.14,
+          "per10kCurr": 9.06,
+          "deltaPer10k": 9.06,
           "distinctive": false,
           "includes": [
             "climate change"
@@ -543,191 +2875,191 @@
         },
         {
           "term": "investigations claims",
-          "score": 6.05,
-          "z": 0.6,
+          "score": 6.07,
+          "z": 0.61,
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 7.61,
-          "deltaPer10k": 7.61,
+          "per10kCurr": 7.55,
+          "deltaPer10k": 7.55,
           "distinctive": false
         },
         {
           "term": "pandemics covid",
-          "score": 6.05,
-          "z": 0.6,
+          "score": 6.07,
+          "z": 0.61,
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 7.61,
-          "deltaPer10k": 7.61,
+          "per10kCurr": 7.55,
+          "deltaPer10k": 7.55,
           "distinctive": false
         },
         {
           "term": "stakeholders",
-          "score": 6.05,
-          "z": 0.6,
+          "score": 6.07,
+          "z": 0.61,
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 7.61,
-          "deltaPer10k": 7.61,
+          "per10kCurr": 7.55,
+          "deltaPer10k": 7.55,
           "distinctive": false
         },
         {
           "term": "actual",
-          "score": 5.83,
+          "score": 5.85,
           "z": 0.58,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 6.09,
-          "deltaPer10k": 6.09,
+          "per10kCurr": 6.04,
+          "deltaPer10k": 6.04,
           "distinctive": false
         },
         {
           "term": "actual threatened",
-          "score": 5.83,
+          "score": 5.85,
           "z": 0.58,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 6.09,
-          "deltaPer10k": 6.09,
+          "per10kCurr": 6.04,
+          "deltaPer10k": 6.04,
           "distinctive": false
         },
         {
           "term": "analysis executive",
-          "score": 5.83,
+          "score": 5.85,
           "z": 0.58,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 6.09,
-          "deltaPer10k": 6.09,
+          "per10kCurr": 6.04,
+          "deltaPer10k": 6.04,
           "distinctive": false
         },
         {
           "term": "cost inflation",
-          "score": 5.83,
+          "score": 5.85,
           "z": 0.58,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 6.09,
-          "deltaPer10k": 6.09,
+          "per10kCurr": 6.04,
+          "deltaPer10k": 6.04,
           "distinctive": false
         },
         {
           "term": "expenses",
-          "score": 5.83,
+          "score": 5.85,
           "z": 0.58,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 6.09,
-          "deltaPer10k": 6.09,
+          "per10kCurr": 6.04,
+          "deltaPer10k": 6.04,
           "distinctive": false
         },
         {
           "term": "levels",
-          "score": 5.83,
+          "score": 5.85,
           "z": 0.58,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 6.09,
-          "deltaPer10k": 6.09,
+          "per10kCurr": 6.04,
+          "deltaPer10k": 6.04,
           "distinctive": false
         }
       ],
       "topFallers": [
         {
           "term": "analysis results",
-          "score": -6.16,
+          "score": -6.14,
           "z": -0.61,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 7.17,
+          "per10kPrev": 6.99,
           "per10kCurr": 0.0,
-          "deltaPer10k": -7.17,
+          "deltaPer10k": -6.99,
           "distinctive": false
         },
         {
           "term": "operations executive",
-          "score": -6.16,
+          "score": -6.14,
           "z": -0.61,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 7.17,
+          "per10kPrev": 6.99,
           "per10kCurr": 0.0,
-          "deltaPer10k": -7.17,
+          "deltaPer10k": -6.99,
           "distinctive": false
         },
         {
           "term": "health care",
-          "score": -5.87,
-          "z": -0.59,
+          "score": -5.85,
+          "z": -0.58,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 5.38,
+          "per10kPrev": 5.24,
           "per10kCurr": 0.0,
-          "deltaPer10k": -5.38,
+          "deltaPer10k": -5.24,
           "distinctive": false
         },
         {
           "term": "lost soon",
-          "score": -5.87,
-          "z": -0.59,
+          "score": -5.85,
+          "z": -0.58,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 5.38,
+          "per10kPrev": 5.24,
           "per10kCurr": 0.0,
-          "deltaPer10k": -5.38,
+          "deltaPer10k": -5.24,
           "distinctive": false
         },
         {
           "term": "reform",
-          "score": -5.87,
-          "z": -0.59,
+          "score": -5.85,
+          "z": -0.58,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 5.38,
+          "per10kPrev": 5.24,
           "per10kCurr": 0.0,
-          "deltaPer10k": -5.38,
+          "deltaPer10k": -5.24,
           "distinctive": false
         },
         {
           "term": "soon",
-          "score": -5.87,
-          "z": -0.59,
+          "score": -5.85,
+          "z": -0.58,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 5.38,
+          "per10kPrev": 5.24,
           "per10kCurr": 0.0,
-          "deltaPer10k": -5.38,
+          "deltaPer10k": -5.24,
           "distinctive": false
         },
         {
           "term": "soon lose",
-          "score": -5.87,
-          "z": -0.59,
+          "score": -5.85,
+          "z": -0.58,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 5.38,
+          "per10kPrev": 5.24,
           "per10kCurr": 0.0,
-          "deltaPer10k": -5.38,
+          "deltaPer10k": -5.24,
           "distinctive": false
         },
         {
           "term": "Coronavirus",
-          "score": -5.47,
-          "z": -0.55,
+          "score": -5.45,
+          "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 3.58,
+          "per10kPrev": 3.5,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.58,
+          "deltaPer10k": -3.5,
           "distinctive": false,
           "includes": [
             "coronavirus"
@@ -735,79 +3067,79 @@
         },
         {
           "term": "following loss",
-          "score": -5.47,
-          "z": -0.55,
+          "score": -5.45,
+          "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 3.58,
+          "per10kPrev": 3.5,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.58,
+          "deltaPer10k": -3.5,
+          "distinctive": false
+        },
+        {
+          "term": "including limited",
+          "score": -5.45,
+          "z": -0.54,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 3.5,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.5,
           "distinctive": false
         },
         {
           "term": "libor",
-          "score": -5.47,
-          "z": -0.55,
+          "score": -5.45,
+          "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 3.58,
+          "per10kPrev": 3.5,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.58,
+          "deltaPer10k": -3.5,
           "distinctive": false
         },
         {
           "term": "net income",
-          "score": -5.47,
-          "z": -0.55,
+          "score": -5.45,
+          "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 3.58,
+          "per10kPrev": 3.5,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.58,
+          "deltaPer10k": -3.5,
           "distinctive": false
         },
         {
           "term": "overall",
-          "score": -5.47,
-          "z": -0.55,
+          "score": -5.45,
+          "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 3.58,
+          "per10kPrev": 3.5,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.58,
+          "deltaPer10k": -3.5,
           "distinctive": false
         },
         {
           "term": "resume",
-          "score": -5.47,
-          "z": -0.55,
+          "score": -5.45,
+          "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 3.58,
+          "per10kPrev": 3.5,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.58,
+          "deltaPer10k": -3.5,
           "distinctive": false
         },
         {
           "term": "technology vulnerabilities",
-          "score": -5.47,
-          "z": -0.55,
+          "score": -5.45,
+          "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 3.58,
+          "per10kPrev": 3.5,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.58,
-          "distinctive": false
-        },
-        {
-          "term": "accessing",
-          "score": -4.78,
-          "z": -0.48,
-          "countPrev": 1,
-          "countCurr": 0,
-          "per10kPrev": 1.79,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.79,
+          "deltaPer10k": -3.5,
           "distinctive": false
         }
       ],
@@ -944,13 +3276,13 @@
       "topRisers": [
         {
           "term": "Artificial intelligence",
-          "score": 7.53,
+          "score": 7.54,
           "z": 0.75,
           "countPrev": 0,
           "countCurr": 22,
           "per10kPrev": 0.0,
-          "per10kCurr": 28.12,
-          "deltaPer10k": 28.12,
+          "per10kCurr": 28.27,
+          "deltaPer10k": 28.27,
           "distinctive": false,
           "includes": [
             "artificial intelligence",
@@ -959,323 +3291,323 @@
         },
         {
           "term": "technologies",
-          "score": 6.74,
+          "score": 6.75,
           "z": 0.67,
           "countPrev": 0,
           "countCurr": 10,
           "per10kPrev": 0.0,
-          "per10kCurr": 12.78,
-          "deltaPer10k": 12.78,
+          "per10kCurr": 12.85,
+          "deltaPer10k": 12.85,
           "distinctive": false
         },
         {
           "term": "exfiltration",
-          "score": 6.63,
+          "score": 6.64,
           "z": 0.66,
           "countPrev": 0,
           "countCurr": 9,
           "per10kPrev": 0.0,
-          "per10kCurr": 11.5,
-          "deltaPer10k": 11.5,
+          "per10kCurr": 11.57,
+          "deltaPer10k": 11.57,
           "distinctive": false
         },
         {
           "term": "theft exfiltration",
-          "score": 6.63,
+          "score": 6.64,
           "z": 0.66,
           "countPrev": 0,
           "countCurr": 9,
           "per10kPrev": 0.0,
-          "per10kCurr": 11.5,
-          "deltaPer10k": 11.5,
+          "per10kCurr": 11.57,
+          "deltaPer10k": 11.57,
           "distinctive": false
         },
         {
           "term": "economic growth",
-          "score": 6.23,
+          "score": 6.24,
           "z": 0.62,
           "countPrev": 0,
           "countCurr": 6,
           "per10kPrev": 0.0,
-          "per10kCurr": 7.67,
-          "deltaPer10k": 7.67,
+          "per10kCurr": 7.71,
+          "deltaPer10k": 7.71,
           "distinctive": false
         },
         {
           "term": "growth downturns",
-          "score": 6.23,
+          "score": 6.24,
           "z": 0.62,
           "countPrev": 0,
           "countCurr": 6,
           "per10kPrev": 0.0,
-          "per10kCurr": 7.67,
-          "deltaPer10k": 7.67,
+          "per10kCurr": 7.71,
+          "deltaPer10k": 7.71,
           "distinctive": false
         },
         {
           "term": "intrusions theft",
-          "score": 6.23,
+          "score": 6.24,
           "z": 0.62,
           "countPrev": 0,
           "countCurr": 6,
           "per10kPrev": 0.0,
-          "per10kCurr": 7.67,
-          "deltaPer10k": 7.67,
+          "per10kCurr": 7.71,
+          "deltaPer10k": 7.71,
           "distinctive": false
         },
         {
           "term": "uneven",
-          "score": 6.23,
+          "score": 6.24,
           "z": 0.62,
           "countPrev": 0,
           "countCurr": 6,
           "per10kPrev": 0.0,
-          "per10kCurr": 7.67,
-          "deltaPer10k": 7.67,
+          "per10kCurr": 7.71,
+          "deltaPer10k": 7.71,
           "distinctive": false
         },
         {
           "term": "uneven economic",
-          "score": 6.23,
+          "score": 6.24,
           "z": 0.62,
           "countPrev": 0,
           "countCurr": 6,
           "per10kPrev": 0.0,
-          "per10kCurr": 7.67,
-          "deltaPer10k": 7.67,
+          "per10kCurr": 7.71,
+          "deltaPer10k": 7.71,
           "distinctive": false
         },
         {
           "term": "compounded",
-          "score": 6.04,
-          "z": 0.6,
+          "score": 6.06,
+          "z": 0.61,
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 6.39,
-          "deltaPer10k": 6.39,
+          "per10kCurr": 6.43,
+          "deltaPer10k": 6.43,
           "distinctive": false
         },
         {
           "term": "emerging",
-          "score": 6.04,
-          "z": 0.6,
+          "score": 6.06,
+          "z": 0.61,
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 6.39,
-          "deltaPer10k": 6.39,
+          "per10kCurr": 6.43,
+          "deltaPer10k": 6.43,
           "distinctive": false
         },
         {
           "term": "exfiltration ransomware",
-          "score": 6.04,
-          "z": 0.6,
+          "score": 6.06,
+          "z": 0.61,
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 6.39,
-          "deltaPer10k": 6.39,
+          "per10kCurr": 6.43,
+          "deltaPer10k": 6.43,
           "distinctive": false
         },
         {
           "term": "illegally",
-          "score": 6.04,
-          "z": 0.6,
+          "score": 6.06,
+          "z": 0.61,
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 6.39,
-          "deltaPer10k": 6.39,
+          "per10kCurr": 6.43,
+          "deltaPer10k": 6.43,
           "distinctive": false
         },
         {
           "term": "illegally compounded",
-          "score": 6.04,
-          "z": 0.6,
+          "score": 6.06,
+          "z": 0.61,
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 6.39,
-          "deltaPer10k": 6.39,
+          "per10kCurr": 6.43,
+          "deltaPer10k": 6.43,
           "distinctive": false
         },
         {
           "term": "investigations litigation",
-          "score": 6.04,
-          "z": 0.6,
+          "score": 6.06,
+          "z": 0.61,
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 6.39,
-          "deltaPer10k": 6.39,
+          "per10kCurr": 6.43,
+          "deltaPer10k": 6.43,
           "distinctive": false
         }
       ],
       "topFallers": [
         {
           "term": "war",
-          "score": -6.73,
+          "score": -6.71,
           "z": -0.67,
           "countPrev": 7,
           "countCurr": 0,
-          "per10kPrev": 10.66,
+          "per10kPrev": 10.57,
           "per10kCurr": 0.0,
-          "deltaPer10k": -10.66,
+          "deltaPer10k": -10.57,
           "distinctive": false
         },
         {
           "term": "unrest",
-          "score": -6.39,
+          "score": -6.38,
           "z": -0.64,
           "countPrev": 5,
           "countCurr": 0,
-          "per10kPrev": 7.61,
+          "per10kPrev": 7.55,
           "per10kCurr": 0.0,
-          "deltaPer10k": -7.61,
+          "deltaPer10k": -7.55,
           "distinctive": false
         },
         {
           "term": "actual threatened",
-          "score": -6.17,
-          "z": -0.62,
+          "score": -6.16,
+          "z": -0.61,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 6.09,
+          "per10kPrev": 6.04,
           "per10kCurr": 0.0,
-          "deltaPer10k": -6.09,
+          "deltaPer10k": -6.04,
           "distinctive": false
         },
         {
           "term": "intrusions cyber",
-          "score": -6.17,
-          "z": -0.62,
+          "score": -6.16,
+          "z": -0.61,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 6.09,
+          "per10kPrev": 6.04,
           "per10kCurr": 0.0,
-          "deltaPer10k": -6.09,
+          "deltaPer10k": -6.04,
           "distinctive": false
         },
         {
           "term": "threatened",
-          "score": -6.17,
-          "z": -0.62,
+          "score": -6.16,
+          "z": -0.61,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 6.09,
+          "per10kPrev": 6.04,
           "per10kCurr": 0.0,
-          "deltaPer10k": -6.09,
+          "deltaPer10k": -6.04,
           "distinctive": false
         },
         {
           "term": "threatened public",
-          "score": -6.17,
-          "z": -0.62,
+          "score": -6.16,
+          "z": -0.61,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 6.09,
+          "per10kPrev": 6.04,
           "per10kCurr": 0.0,
-          "deltaPer10k": -6.09,
+          "deltaPer10k": -6.04,
           "distinctive": false
         },
         {
           "term": "covid therapies",
-          "score": -5.88,
+          "score": -5.87,
           "z": -0.59,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 4.57,
+          "per10kPrev": 4.53,
           "per10kCurr": 0.0,
-          "deltaPer10k": -4.57,
+          "deltaPer10k": -4.53,
           "distinctive": false
         },
         {
           "term": "economic downturns",
-          "score": -5.88,
+          "score": -5.87,
           "z": -0.59,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 4.57,
+          "per10kPrev": 4.53,
           "per10kCurr": 0.0,
-          "deltaPer10k": -4.57,
+          "deltaPer10k": -4.53,
+          "distinctive": false
+        },
+        {
+          "term": "future adversely",
+          "score": -5.87,
+          "z": -0.59,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 4.53,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.53,
           "distinctive": false
         },
         {
           "term": "pandemic adversely",
-          "score": -5.88,
+          "score": -5.87,
           "z": -0.59,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 4.57,
+          "per10kPrev": 4.53,
           "per10kCurr": 0.0,
-          "deltaPer10k": -4.57,
+          "deltaPer10k": -4.53,
           "distinctive": false
         },
         {
           "term": "russia",
-          "score": -5.88,
+          "score": -5.87,
           "z": -0.59,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 4.57,
+          "per10kPrev": 4.53,
           "per10kCurr": 0.0,
-          "deltaPer10k": -4.57,
+          "deltaPer10k": -4.53,
           "distinctive": false
         },
         {
           "term": "theft destruction",
-          "score": -5.88,
+          "score": -5.87,
           "z": -0.59,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 4.57,
+          "per10kPrev": 4.53,
           "per10kCurr": 0.0,
-          "deltaPer10k": -4.57,
+          "deltaPer10k": -4.53,
           "distinctive": false
         },
         {
           "term": "ukraine",
-          "score": -5.88,
+          "score": -5.87,
           "z": -0.59,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 4.57,
+          "per10kPrev": 4.53,
           "per10kCurr": 0.0,
-          "deltaPer10k": -4.57,
+          "deltaPer10k": -4.53,
           "distinctive": false
         },
         {
           "term": "alimta",
-          "score": -5.48,
+          "score": -5.46,
           "z": -0.55,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 3.05,
+          "per10kPrev": 3.02,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.05,
+          "deltaPer10k": -3.02,
           "distinctive": false
         },
         {
           "term": "degree",
-          "score": -5.48,
+          "score": -5.46,
           "z": -0.55,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 3.05,
+          "per10kPrev": 3.02,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.05,
-          "distinctive": false
-        },
-        {
-          "term": "designations",
-          "score": -5.48,
-          "z": -0.55,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 3.05,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -3.05,
+          "deltaPer10k": -3.02,
           "distinctive": false
         }
       ],
@@ -1417,8 +3749,8 @@
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.78,
-          "deltaPer10k": 4.78,
+          "per10kCurr": 4.8,
+          "deltaPer10k": 4.8,
           "distinctive": false
         },
         {
@@ -1428,8 +3760,8 @@
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.78,
-          "deltaPer10k": 4.78,
+          "per10kCurr": 4.8,
+          "deltaPer10k": 4.8,
           "distinctive": false
         },
         {
@@ -1439,8 +3771,8 @@
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.78,
-          "deltaPer10k": 4.78,
+          "per10kCurr": 4.8,
+          "deltaPer10k": 4.8,
           "distinctive": false
         },
         {
@@ -1450,8 +3782,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.58,
-          "deltaPer10k": 3.58,
+          "per10kCurr": 3.6,
+          "deltaPer10k": 3.6,
           "distinctive": false
         },
         {
@@ -1461,8 +3793,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.58,
-          "deltaPer10k": 3.58,
+          "per10kCurr": 3.6,
+          "deltaPer10k": 3.6,
           "distinctive": false
         },
         {
@@ -1472,8 +3804,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.58,
-          "deltaPer10k": 3.58,
+          "per10kCurr": 3.6,
+          "deltaPer10k": 3.6,
           "distinctive": false
         },
         {
@@ -1483,8 +3815,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.39,
-          "deltaPer10k": 2.39,
+          "per10kCurr": 2.4,
+          "deltaPer10k": 2.4,
           "distinctive": false
         },
         {
@@ -1494,8 +3826,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.39,
-          "deltaPer10k": 2.39,
+          "per10kCurr": 2.4,
+          "deltaPer10k": 2.4,
           "distinctive": false
         },
         {
@@ -1505,8 +3837,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.39,
-          "deltaPer10k": 2.39,
+          "per10kCurr": 2.4,
+          "deltaPer10k": 2.4,
           "distinctive": false
         },
         {
@@ -1516,8 +3848,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.39,
-          "deltaPer10k": 2.39,
+          "per10kCurr": 2.4,
+          "deltaPer10k": 2.4,
           "distinctive": false
         },
         {
@@ -1527,8 +3859,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.39,
-          "deltaPer10k": 2.39,
+          "per10kCurr": 2.4,
+          "deltaPer10k": 2.4,
           "distinctive": false
         },
         {
@@ -1538,8 +3870,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.39,
-          "deltaPer10k": 2.39,
+          "per10kCurr": 2.4,
+          "deltaPer10k": 2.4,
           "distinctive": false
         },
         {
@@ -1549,8 +3881,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.39,
-          "deltaPer10k": 2.39,
+          "per10kCurr": 2.4,
+          "deltaPer10k": 2.4,
           "distinctive": false
         },
         {
@@ -1560,8 +3892,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.39,
-          "deltaPer10k": 2.39,
+          "per10kCurr": 2.4,
+          "deltaPer10k": 2.4,
           "distinctive": false
         },
         {
@@ -1571,8 +3903,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.39,
-          "deltaPer10k": 2.39,
+          "per10kCurr": 2.4,
+          "deltaPer10k": 2.4,
           "distinctive": false
         }
       ],
@@ -1583,9 +3915,9 @@
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 2.56,
+          "per10kPrev": 2.57,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.56,
+          "deltaPer10k": -2.57,
           "distinctive": false,
           "includes": [
             "covid"
@@ -1597,9 +3929,9 @@
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 2.56,
+          "per10kPrev": 2.57,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.56,
+          "deltaPer10k": -2.57,
           "distinctive": false
         },
         {
@@ -1608,9 +3940,9 @@
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 2.56,
+          "per10kPrev": 2.57,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.56,
+          "deltaPer10k": -2.57,
           "distinctive": false
         },
         {
@@ -1619,9 +3951,9 @@
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 2.56,
+          "per10kPrev": 2.57,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.56,
+          "deltaPer10k": -2.57,
           "distinctive": false
         },
         {
@@ -1630,9 +3962,9 @@
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 2.56,
+          "per10kPrev": 2.57,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.56,
+          "deltaPer10k": -2.57,
           "distinctive": false
         },
         {
@@ -1641,9 +3973,9 @@
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 2.56,
+          "per10kPrev": 2.57,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.56,
+          "deltaPer10k": -2.57,
           "distinctive": false
         },
         {
@@ -1652,9 +3984,9 @@
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 2.56,
+          "per10kPrev": 2.57,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.56,
+          "deltaPer10k": -2.57,
           "distinctive": false
         },
         {
@@ -1663,9 +3995,9 @@
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 2.56,
+          "per10kPrev": 2.57,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.56,
+          "deltaPer10k": -2.57,
           "distinctive": false
         },
         {
@@ -1674,9 +4006,9 @@
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 2.56,
+          "per10kPrev": 2.57,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.56,
+          "deltaPer10k": -2.57,
           "distinctive": false
         },
         {
@@ -1685,9 +4017,9 @@
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 2.56,
+          "per10kPrev": 2.57,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.56,
+          "deltaPer10k": -2.57,
           "distinctive": false
         },
         {
@@ -1696,9 +4028,9 @@
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 2.56,
+          "per10kPrev": 2.57,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.56,
+          "deltaPer10k": -2.57,
           "distinctive": false
         },
         {
@@ -1707,9 +4039,9 @@
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 2.56,
+          "per10kPrev": 2.57,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.56,
+          "deltaPer10k": -2.57,
           "distinctive": false
         },
         {
@@ -1718,9 +4050,9 @@
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 2.56,
+          "per10kPrev": 2.57,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.56,
+          "deltaPer10k": -2.57,
           "distinctive": false
         },
         {
@@ -1729,9 +4061,9 @@
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 2.56,
+          "per10kPrev": 2.57,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.56,
+          "deltaPer10k": -2.57,
           "distinctive": false
         },
         {
@@ -1740,9 +4072,9 @@
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 2.56,
+          "per10kPrev": 2.57,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.56,
+          "deltaPer10k": -2.57,
           "distinctive": false
         }
       ],

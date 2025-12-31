@@ -1,5 +1,150 @@
 [
   {
+    "year": 2015,
+    "form": "10-K",
+    "filingDate": "2016-01-28",
+    "reportDate": "2015-12-31",
+    "accessionNumber": "0001326801-16-000043",
+    "primaryDocument": "fb-12312015x10k.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/1326801/000132680116000043/fb-12312015x10k.htm",
+    "extraction": {
+      "confidence": 0.8999999999999999,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing"
+      ]
+    }
+  },
+  {
+    "year": 2016,
+    "form": "10-K",
+    "filingDate": "2017-02-03",
+    "reportDate": "2016-12-31",
+    "accessionNumber": "0001326801-17-000007",
+    "primaryDocument": "fb-12312016x10k.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/1326801/000132680117000007/fb-12312016x10k.htm",
+    "extraction": {
+      "confidence": 0.8999999999999999,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing"
+      ]
+    }
+  },
+  {
+    "year": 2017,
+    "form": "10-K",
+    "filingDate": "2018-02-01",
+    "reportDate": "2017-12-31",
+    "accessionNumber": "0001326801-18-000009",
+    "primaryDocument": "fb-12312017x10k.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/1326801/000132680118000009/fb-12312017x10k.htm",
+    "extraction": {
+      "confidence": 0.8999999999999999,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing"
+      ]
+    }
+  },
+  {
+    "year": 2018,
+    "form": "10-K",
+    "filingDate": "2019-01-31",
+    "reportDate": "2018-12-31",
+    "accessionNumber": "0001326801-19-000009",
+    "primaryDocument": "fb-12312018x10k.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/1326801/000132680119000009/fb-12312018x10k.htm",
+    "extraction": {
+      "confidence": 0.75,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing",
+        "early_position_penalty"
+      ]
+    }
+  },
+  {
+    "year": 2019,
+    "form": "10-K",
+    "filingDate": "2020-01-30",
+    "reportDate": "2019-12-31",
+    "accessionNumber": "0001326801-20-000013",
+    "primaryDocument": "fb-12312019x10k.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/1326801/000132680120000013/fb-12312019x10k.htm",
+    "extraction": {
+      "confidence": 0.8999999999999999,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing"
+      ]
+    }
+  },
+  {
+    "year": 2020,
+    "form": "10-K",
+    "filingDate": "2021-01-28",
+    "reportDate": "2020-12-31",
+    "accessionNumber": "0001326801-21-000014",
+    "primaryDocument": "fb-20201231.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/1326801/000132680121000014/fb-20201231.htm",
+    "extraction": {
+      "confidence": 0.8999999999999999,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing"
+      ]
+    }
+  },
+  {
+    "year": 2021,
+    "form": "10-K",
+    "filingDate": "2022-02-03",
+    "reportDate": "2021-12-31",
+    "accessionNumber": "0001326801-22-000018",
+    "primaryDocument": "fb-20211231.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/1326801/000132680122000018/fb-20211231.htm",
+    "extraction": {
+      "confidence": 0.8999999999999999,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing"
+      ]
+    }
+  },
+  {
+    "year": 2022,
+    "form": "10-K",
+    "filingDate": "2023-02-02",
+    "reportDate": "2022-12-31",
+    "accessionNumber": "0001326801-23-000013",
+    "primaryDocument": "meta-20221231.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/1326801/000132680123000013/meta-20221231.htm",
+    "extraction": {
+      "confidence": 0.95,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing"
+      ]
+    }
+  },
+  {
+    "year": 2023,
+    "form": "10-K",
+    "filingDate": "2024-02-02",
+    "reportDate": "2023-12-31",
+    "accessionNumber": "0001326801-24-000012",
+    "primaryDocument": "meta-20231231.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/1326801/000132680124000012/meta-20231231.htm",
+    "extraction": {
+      "confidence": 0.8999999999999999,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing"
+      ]
+    }
+  },
+  {
     "year": 2024,
     "form": "10-K",
     "filingDate": "2025-01-30",

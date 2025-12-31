@@ -2,7 +2,7 @@
   "ticker": "WMT",
   "cik": "0000104169",
   "companyName": "Walmart Inc.",
-  "lastUpdatedUtc": "2025-12-31T04:56:58Z",
+  "lastUpdatedUtc": "2025-12-31T17:40:04Z",
   "formsIncluded": [
     "10-K"
   ],
@@ -16,10 +16,12 @@
   "extraction": {
     "section": "item1a",
     "method": "html_anchor",
-    "confidence": 0.9,
-    "warnings": [],
-    "lengthChars": 92706,
-    "endMarkerUsed": "1B",
+    "confidence": 0.7,
+    "warnings": [
+      "end_not_found"
+    ],
+    "lengthChars": 80000,
+    "endMarkerUsed": null,
     "hasItem1C": false
   }
 }

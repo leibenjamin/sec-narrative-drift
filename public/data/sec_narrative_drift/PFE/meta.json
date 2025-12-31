@@ -2,7 +2,7 @@
   "ticker": "PFE",
   "cik": "0000078003",
   "companyName": "PFIZER INC",
-  "lastUpdatedUtc": "2025-12-31T04:54:46Z",
+  "lastUpdatedUtc": "2025-12-31T17:35:37Z",
   "formsIncluded": [
     "10-K"
   ],
@@ -16,12 +16,13 @@
   "extraction": {
     "section": "item1a",
     "method": "html_anchor",
-    "confidence": 0.75,
+    "confidence": 0.65,
     "warnings": [
-      "length_out_of_band"
+      "length_out_of_band",
+      "early_position_penalty"
     ],
     "lengthChars": 26,
     "endMarkerUsed": "1B",
-    "hasItem1C": true
+    "hasItem1C": false
   }
 }

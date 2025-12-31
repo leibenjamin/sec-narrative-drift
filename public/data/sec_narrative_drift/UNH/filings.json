@@ -1,5 +1,77 @@
 [
   {
+    "year": 2015,
+    "form": "10-K",
+    "filingDate": "2016-02-09",
+    "reportDate": "2015-12-31",
+    "accessionNumber": "0000731766-16-000058",
+    "primaryDocument": "unh2015123110-k.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/731766/000073176616000058/unh2015123110-k.htm",
+    "extraction": {
+      "confidence": 0.8999999999999999,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing"
+      ]
+    }
+  },
+  {
+    "year": 2016,
+    "form": "10-K",
+    "filingDate": "2017-02-08",
+    "reportDate": "2016-12-31",
+    "accessionNumber": "0000731766-17-000009",
+    "primaryDocument": "unh2016123110-k.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/731766/000073176617000009/unh2016123110-k.htm",
+    "extraction": {
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
+    }
+  },
+  {
+    "year": 2017,
+    "form": "10-K",
+    "filingDate": "2018-02-13",
+    "reportDate": "2017-12-31",
+    "accessionNumber": "0000731766-18-000005",
+    "primaryDocument": "unh2017123110-k.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/731766/000073176618000005/unh2017123110-k.htm",
+    "extraction": {
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
+    }
+  },
+  {
+    "year": 2018,
+    "form": "10-K",
+    "filingDate": "2019-02-12",
+    "reportDate": "2018-12-31",
+    "accessionNumber": "0000731766-19-000005",
+    "primaryDocument": "unh2018123110-k.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/731766/000073176619000005/unh2018123110-k.htm",
+    "extraction": {
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
+    }
+  },
+  {
+    "year": 2019,
+    "form": "10-K",
+    "filingDate": "2020-02-14",
+    "reportDate": "2019-12-31",
+    "accessionNumber": "0000731766-20-000006",
+    "primaryDocument": "unh2019123110-k.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/731766/000073176620000006/unh2019123110-k.htm",
+    "extraction": {
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
+    }
+  },
+  {
     "year": 2020,
     "form": "10-K",
     "filingDate": "2021-03-01",

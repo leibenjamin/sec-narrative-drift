@@ -1,5 +1,22 @@
 [
   {
+    "year": 2015,
+    "form": "10-K",
+    "filingDate": "2016-02-11",
+    "reportDate": "2015-12-31",
+    "accessionNumber": "0000101829-16-000050",
+    "primaryDocument": "a2015-12x31form10xk.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/101829/000010182916000050/a2015-12x31form10xk.htm",
+    "extraction": {
+      "confidence": 0.65,
+      "method": "html_anchor",
+      "errors": [
+        "length_out_of_band",
+        "early_position_penalty"
+      ]
+    }
+  },
+  {
     "year": 2016,
     "form": "10-K",
     "filingDate": "2017-02-09",

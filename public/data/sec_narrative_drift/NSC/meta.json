@@ -2,7 +2,7 @@
   "ticker": "NSC",
   "cik": "0000702165",
   "companyName": "NORFOLK SOUTHERN CORP",
-  "lastUpdatedUtc": "2025-12-31T05:07:57Z",
+  "lastUpdatedUtc": "2025-12-31T18:05:03Z",
   "formsIncluded": [
     "10-K"
   ],
@@ -16,11 +16,12 @@
   "extraction": {
     "section": "item1a",
     "method": "text_scored",
-    "confidence": 0.95,
+    "confidence": 0.6000000000000001,
     "warnings": [
-      "anchor_missing"
+      "anchor_missing",
+      "length_out_of_band"
     ],
-    "lengthChars": 16915,
+    "lengthChars": 14511,
     "endMarkerUsed": "1B",
     "hasItem1C": false
   }
