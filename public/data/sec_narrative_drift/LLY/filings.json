@@ -1,5 +1,85 @@
 [
   {
+    "year": 2015,
+    "form": "10-K",
+    "filingDate": "2016-02-19",
+    "reportDate": "2015-12-31",
+    "accessionNumber": "0000059478-16-000321",
+    "primaryDocument": "lly-20151231x10k.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/59478/000005947816000321/lly-20151231x10k.htm",
+    "extraction": {
+      "confidence": 0.8999999999999999,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing"
+      ]
+    }
+  },
+  {
+    "year": 2016,
+    "form": "10-K",
+    "filingDate": "2017-02-21",
+    "reportDate": "2016-12-31",
+    "accessionNumber": "0000059478-17-000098",
+    "primaryDocument": "lly-20161231x10xk.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/59478/000005947817000098/lly-20161231x10xk.htm",
+    "extraction": {
+      "confidence": 0.8999999999999999,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing"
+      ]
+    }
+  },
+  {
+    "year": 2017,
+    "form": "10-K",
+    "filingDate": "2018-02-20",
+    "reportDate": "2017-12-31",
+    "accessionNumber": "0000059478-18-000089",
+    "primaryDocument": "lly-20171231x10xk.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/59478/000005947818000089/lly-20171231x10xk.htm",
+    "extraction": {
+      "confidence": 0.8999999999999999,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing"
+      ]
+    }
+  },
+  {
+    "year": 2018,
+    "form": "10-K",
+    "filingDate": "2019-02-19",
+    "reportDate": "2018-12-31",
+    "accessionNumber": "0000059478-19-000082",
+    "primaryDocument": "lly-20181231x10xk.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/59478/000005947819000082/lly-20181231x10xk.htm",
+    "extraction": {
+      "confidence": 0.8999999999999999,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing"
+      ]
+    }
+  },
+  {
+    "year": 2019,
+    "form": "10-K",
+    "filingDate": "2020-02-19",
+    "reportDate": "2019-12-31",
+    "accessionNumber": "0000059478-20-000057",
+    "primaryDocument": "lly-20191231x10xk.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/59478/000005947820000057/lly-20191231x10xk.htm",
+    "extraction": {
+      "confidence": 0.8999999999999999,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing"
+      ]
+    }
+  },
+  {
     "year": 2020,
     "form": "10-K",
     "filingDate": "2021-02-17",

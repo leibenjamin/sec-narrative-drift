@@ -2,343 +2,1271 @@
   "section": "10k_item1a",
   "yearPairs": [
     {
+      "from": 2015,
+      "to": 2016,
+      "topRisers": [
+        {
+          "term": "convertible notes",
+          "score": 7.69,
+          "z": 0.77,
+          "countPrev": 0,
+          "countCurr": 25,
+          "per10kPrev": 0.0,
+          "per10kCurr": 20.5,
+          "deltaPer10k": 20.5,
+          "distinctive": false
+        },
+        {
+          "term": "solar energy",
+          "score": 7.3,
+          "z": 0.73,
+          "countPrev": 0,
+          "countCurr": 17,
+          "per10kPrev": 0.0,
+          "per10kCurr": 13.94,
+          "deltaPer10k": 13.94,
+          "distinctive": false
+        },
+        {
+          "term": "electricity",
+          "score": 6.87,
+          "z": 0.69,
+          "countPrev": 0,
+          "countCurr": 11,
+          "per10kPrev": 0.0,
+          "per10kCurr": 9.02,
+          "deltaPer10k": 9.02,
+          "distinctive": false
+        },
+        {
+          "term": "energy systems",
+          "score": 6.77,
+          "z": 0.68,
+          "countPrev": 0,
+          "countCurr": 10,
+          "per10kPrev": 0.0,
+          "per10kCurr": 8.2,
+          "deltaPer10k": 8.2,
+          "distinctive": false
+        },
+        {
+          "term": "tesla convertible",
+          "score": 6.77,
+          "z": 0.68,
+          "countPrev": 0,
+          "countCurr": 10,
+          "per10kPrev": 0.0,
+          "per10kCurr": 8.2,
+          "deltaPer10k": 8.2,
+          "distinctive": false
+        },
+        {
+          "term": "foundation",
+          "score": 6.26,
+          "z": 0.63,
+          "countPrev": 0,
+          "countCurr": 6,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.92,
+          "deltaPer10k": 4.92,
+          "distinctive": false
+        },
+        {
+          "term": "installation",
+          "score": 6.26,
+          "z": 0.63,
+          "countPrev": 0,
+          "countCurr": 6,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.92,
+          "deltaPer10k": 4.92,
+          "distinctive": false
+        },
+        {
+          "term": "solarcity convertible",
+          "score": 6.26,
+          "z": 0.63,
+          "countPrev": 0,
+          "countCurr": 6,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.92,
+          "deltaPer10k": 4.92,
+          "distinctive": false
+        },
+        {
+          "term": "commitments",
+          "score": 6.08,
+          "z": 0.61,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.1,
+          "deltaPer10k": 4.1,
+          "distinctive": false
+        },
+        {
+          "term": "cost capital",
+          "score": 6.08,
+          "z": 0.61,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.1,
+          "deltaPer10k": 4.1,
+          "distinctive": false
+        },
+        {
+          "term": "grid",
+          "score": 6.08,
+          "z": 0.61,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.1,
+          "deltaPer10k": 4.1,
+          "distinctive": false
+        },
+        {
+          "term": "installations",
+          "score": 6.08,
+          "z": 0.61,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.1,
+          "deltaPer10k": 4.1,
+          "distinctive": false
+        },
+        {
+          "term": "significantly higher",
+          "score": 6.08,
+          "z": 0.61,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.1,
+          "deltaPer10k": 4.1,
+          "distinctive": false
+        },
+        {
+          "term": "tesla factory",
+          "score": 6.08,
+          "z": 0.61,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.1,
+          "deltaPer10k": 4.1,
+          "distinctive": false
+        },
+        {
+          "term": "contracts",
+          "score": 5.86,
+          "z": 0.59,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.28,
+          "deltaPer10k": 3.28,
+          "distinctive": false
+        }
+      ],
+      "topFallers": [
+        {
+          "term": "raw",
+          "score": -7.05,
+          "z": -0.7,
+          "countPrev": 10,
+          "countCurr": 0,
+          "per10kPrev": 9.41,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -9.41,
+          "distinctive": false
+        },
+        {
+          "term": "issued",
+          "score": -6.94,
+          "z": -0.69,
+          "countPrev": 9,
+          "countCurr": 0,
+          "per10kPrev": 8.47,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -8.47,
+          "distinctive": false
+        },
+        {
+          "term": "raw materials",
+          "score": -6.82,
+          "z": -0.68,
+          "countPrev": 8,
+          "countCurr": 0,
+          "per10kPrev": 7.53,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -7.53,
+          "distinctive": false
+        },
+        {
+          "term": "marks",
+          "score": -6.69,
+          "z": -0.67,
+          "countPrev": 7,
+          "countCurr": 0,
+          "per10kPrev": 6.59,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -6.59,
+          "distinctive": false
+        },
+        {
+          "term": "patent",
+          "score": -6.69,
+          "z": -0.67,
+          "countPrev": 7,
+          "countCurr": 0,
+          "per10kPrev": 6.59,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -6.59,
+          "distinctive": false
+        },
+        {
+          "term": "trust",
+          "score": -6.69,
+          "z": -0.67,
+          "countPrev": 7,
+          "countCurr": 0,
+          "per10kPrev": 6.59,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -6.59,
+          "distinctive": false
+        },
+        {
+          "term": "patent applications",
+          "score": -6.54,
+          "z": -0.65,
+          "countPrev": 6,
+          "countCurr": 0,
+          "per10kPrev": 5.64,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.64,
+          "distinctive": false
+        },
+        {
+          "term": "address",
+          "score": -6.35,
+          "z": -0.63,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 4.7,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.7,
+          "distinctive": false
+        },
+        {
+          "term": "june",
+          "score": -6.35,
+          "z": -0.63,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 4.7,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.7,
+          "distinctive": false
+        },
+        {
+          "term": "meetings",
+          "score": -6.35,
+          "z": -0.63,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 4.7,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.7,
+          "distinctive": false
+        },
+        {
+          "term": "rear",
+          "score": -6.35,
+          "z": -0.63,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 4.7,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.7,
+          "distinctive": false
+        },
+        {
+          "term": "commenced",
+          "score": -6.13,
+          "z": -0.61,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.76,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.76,
+          "distinctive": false
+        },
+        {
+          "term": "issued patents",
+          "score": -6.13,
+          "z": -0.61,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.76,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.76,
+          "distinctive": false
+        },
+        {
+          "term": "rear seat",
+          "score": -6.13,
+          "z": -0.61,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.76,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.76,
+          "distinctive": false
+        },
+        {
+          "term": "tesla marks",
+          "score": -6.13,
+          "z": -0.61,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.76,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.76,
+          "distinctive": false
+        }
+      ],
+      "summary": "Adds emphasis on convertible notes, solar energy, electricity; de-emphasizes raw, issued, raw materials.",
+      "topRisersAlt": [
+        {
+          "term": "harm business",
+          "score": 6.95
+        },
+        {
+          "term": "solar energy systems",
+          "score": 6.69
+        },
+        {
+          "term": "model model vehicles",
+          "score": 6.12
+        },
+        {
+          "term": "vehicles energy",
+          "score": 6.12
+        },
+        {
+          "term": "able continue",
+          "score": 5.83
+        },
+        {
+          "term": "business financial",
+          "score": 5.83
+        },
+        {
+          "term": "business operations",
+          "score": 5.83
+        },
+        {
+          "term": "laws regulations",
+          "score": 5.83
+        },
+        {
+          "term": "manufacturing facilities",
+          "score": 5.83
+        },
+        {
+          "term": "market price",
+          "score": 5.83
+        },
+        {
+          "term": "products solar products",
+          "score": 5.83
+        },
+        {
+          "term": "solar energy",
+          "score": 5.83
+        },
+        {
+          "term": "adversely impact business",
+          "score": 5.42
+        },
+        {
+          "term": "electric vehicles currently",
+          "score": 5.42
+        },
+        {
+          "term": "energy solar energy",
+          "score": 5.42
+        }
+      ],
+      "topFallersAlt": [
+        {
+          "term": "financial condition operating",
+          "score": -7.57
+        },
+        {
+          "term": "common stock",
+          "score": -7.33
+        },
+        {
+          "term": "adversely affect business",
+          "score": -6.61
+        },
+        {
+          "term": "price common stock",
+          "score": -6.47
+        },
+        {
+          "term": "sales service",
+          "score": -6.13
+        },
+        {
+          "term": "tesla common stock",
+          "score": -6.13
+        },
+        {
+          "term": "adversely affect",
+          "score": -5.9
+        },
+        {
+          "term": "condition operating results",
+          "score": -5.9
+        },
+        {
+          "term": "new vehicle limited",
+          "score": -5.9
+        },
+        {
+          "term": "service vehicles",
+          "score": -5.9
+        },
+        {
+          "term": "common stock addition",
+          "score": -5.61
+        },
+        {
+          "term": "market vehicles",
+          "score": -5.61
+        },
+        {
+          "term": "term business",
+          "score": -5.61
+        },
+        {
+          "term": "ability make",
+          "score": -5.2
+        },
+        {
+          "term": "adversely affect financial",
+          "score": -5.2
+        }
+      ],
+      "summaryAlt": "Adds emphasis on harm business, solar energy systems, model model vehicles; de-emphasizes financial condition operating, common stock, adversely affect business."
+    },
+    {
+      "from": 2016,
+      "to": 2017,
+      "topRisers": [
+        {
+          "term": "subsidiary convertible",
+          "score": 6.17,
+          "z": 0.62,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.9,
+          "deltaPer10k": 3.9,
+          "distinctive": false
+        },
+        {
+          "term": "driving",
+          "score": 5.95,
+          "z": 0.59,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.12,
+          "deltaPer10k": 3.12,
+          "distinctive": false
+        },
+        {
+          "term": "expect continue",
+          "score": 5.95,
+          "z": 0.59,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.12,
+          "deltaPer10k": 3.12,
+          "distinctive": false
+        },
+        {
+          "term": "module",
+          "score": 5.95,
+          "z": 0.59,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.12,
+          "deltaPer10k": 3.12,
+          "distinctive": false
+        },
+        {
+          "term": "ramp production",
+          "score": 5.95,
+          "z": 0.59,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.12,
+          "deltaPer10k": 3.12,
+          "distinctive": false
+        },
+        {
+          "term": "sales delivery",
+          "score": 5.95,
+          "z": 0.59,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.12,
+          "deltaPer10k": 3.12,
+          "distinctive": false
+        },
+        {
+          "term": "self driving",
+          "score": 5.95,
+          "z": 0.59,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.12,
+          "deltaPer10k": 3.12,
+          "distinctive": false
+        },
+        {
+          "term": "suny",
+          "score": 5.95,
+          "z": 0.59,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.12,
+          "deltaPer10k": 3.12,
+          "distinctive": false
+        },
+        {
+          "term": "suny foundation",
+          "score": 5.95,
+          "z": 0.59,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.12,
+          "deltaPer10k": 3.12,
+          "distinctive": false
+        },
+        {
+          "term": "cells modules",
+          "score": 5.66,
+          "z": 0.56,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.34,
+          "deltaPer10k": 2.34,
+          "distinctive": false
+        },
+        {
+          "term": "delivery service",
+          "score": 5.66,
+          "z": 0.56,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.34,
+          "deltaPer10k": 2.34,
+          "distinctive": false
+        },
+        {
+          "term": "depreciation",
+          "score": 5.66,
+          "z": 0.56,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.34,
+          "deltaPer10k": 2.34,
+          "distinctive": false
+        },
+        {
+          "term": "generation",
+          "score": 5.66,
+          "z": 0.56,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.34,
+          "deltaPer10k": 2.34,
+          "distinctive": false
+        },
+        {
+          "term": "involved",
+          "score": 5.66,
+          "z": 0.56,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.34,
+          "deltaPer10k": 2.34,
+          "distinctive": false
+        },
+        {
+          "term": "manufacturing lines",
+          "score": 5.66,
+          "z": 0.56,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.34,
+          "deltaPer10k": 2.34,
+          "distinctive": false
+        }
+      ],
+      "topFallers": [
+        {
+          "term": "solarcity",
+          "score": -7.43,
+          "z": -0.74,
+          "countPrev": 16,
+          "countCurr": 0,
+          "per10kPrev": 13.12,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -13.12,
+          "distinctive": false
+        },
+        {
+          "term": "united states",
+          "score": -7.14,
+          "z": -0.71,
+          "countPrev": 12,
+          "countCurr": 0,
+          "per10kPrev": 9.84,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -9.84,
+          "distinctive": false
+        },
+        {
+          "term": "solarcity convertible",
+          "score": -6.45,
+          "z": -0.64,
+          "countPrev": 6,
+          "countCurr": 0,
+          "per10kPrev": 4.92,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.92,
+          "distinctive": false
+        },
+        {
+          "term": "credit facility",
+          "score": -6.04,
+          "z": -0.6,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.28,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.28,
+          "distinctive": false
+        },
+        {
+          "term": "million aggregate",
+          "score": -6.04,
+          "z": -0.6,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.28,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.28,
+          "distinctive": false
+        },
+        {
+          "term": "notes solarcity",
+          "score": -6.04,
+          "z": -0.6,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.28,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.28,
+          "distinctive": false
+        },
+        {
+          "term": "states abroad",
+          "score": -6.04,
+          "z": -0.6,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.28,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.28,
+          "distinctive": false
+        },
+        {
+          "term": "acquired",
+          "score": -5.76,
+          "z": -0.57,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.46,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.46,
+          "distinctive": false
+        },
+        {
+          "term": "final",
+          "score": -5.76,
+          "z": -0.57,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.46,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.46,
+          "distinctive": false
+        },
+        {
+          "term": "integrate",
+          "score": -5.76,
+          "z": -0.57,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.46,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.46,
+          "distinctive": false
+        },
+        {
+          "term": "integrating",
+          "score": -5.76,
+          "z": -0.57,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.46,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.46,
+          "distinctive": false
+        },
+        {
+          "term": "outside united",
+          "score": -5.76,
+          "z": -0.57,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.46,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.46,
+          "distinctive": false
+        },
+        {
+          "term": "achieve volume",
+          "score": -5.35,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.64,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.64,
+          "distinctive": false
+        },
+        {
+          "term": "allows",
+          "score": -5.35,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.64,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.64,
+          "distinctive": false
+        },
+        {
+          "term": "approximately",
+          "score": -5.35,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.64,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.64,
+          "distinctive": false
+        }
+      ],
+      "summary": "Adds emphasis on subsidiary convertible, driving, expect continue; de-emphasizes solarcity, united states, solarcity convertible.",
+      "topRisersAlt": [
+        {
+          "term": "solar energy storage",
+          "score": 6.72
+        },
+        {
+          "term": "adversely affect business",
+          "score": 6.23
+        },
+        {
+          "term": "energy storage products",
+          "score": 6.23
+        },
+        {
+          "term": "adversely affect",
+          "score": 6.01
+        },
+        {
+          "term": "model energy storage",
+          "score": 6.01
+        },
+        {
+          "term": "expect future",
+          "score": 5.72
+        },
+        {
+          "term": "vehicles energy storage",
+          "score": 5.72
+        },
+        {
+          "term": "adversely affect financial",
+          "score": 5.31
+        },
+        {
+          "term": "affect financial results",
+          "score": 5.31
+        },
+        {
+          "term": "business operating results",
+          "score": 5.31
+        },
+        {
+          "term": "components products",
+          "score": 5.31
+        },
+        {
+          "term": "costs cost",
+          "score": 5.31
+        },
+        {
+          "term": "energy storage systems",
+          "score": 5.31
+        },
+        {
+          "term": "expect continue",
+          "score": 5.31
+        },
+        {
+          "term": "including solar",
+          "score": 5.31
+        }
+      ],
+      "topFallersAlt": [
+        {
+          "term": "harm business",
+          "score": -6.85
+        },
+        {
+          "term": "vehicles energy",
+          "score": -6.02
+        },
+        {
+          "term": "impact business",
+          "score": -5.72
+        },
+        {
+          "term": "market price",
+          "score": -5.72
+        },
+        {
+          "term": "production vehicles",
+          "score": -5.72
+        },
+        {
+          "term": "products solar products",
+          "score": -5.72
+        },
+        {
+          "term": "stock price",
+          "score": -5.72
+        },
+        {
+          "term": "adversely impact business",
+          "score": -5.32
+        },
+        {
+          "term": "harm ability",
+          "score": -5.32
+        },
+        {
+          "term": "impact ability",
+          "score": -5.32
+        },
+        {
+          "term": "impact business financial",
+          "score": -5.32
+        },
+        {
+          "term": "manufacturing costs model",
+          "score": -5.32
+        },
+        {
+          "term": "notes notes",
+          "score": -5.32
+        },
+        {
+          "term": "operations continue",
+          "score": -5.32
+        },
+        {
+          "term": "production model model",
+          "score": -5.32
+        }
+      ],
+      "summaryAlt": "Adds emphasis on solar energy storage, adversely affect business, energy storage products; de-emphasizes harm business, vehicles energy, impact business."
+    },
+    {
       "from": 2017,
       "to": 2018,
       "topRisers": [
         {
           "term": "china",
-          "score": 7.27,
+          "score": 7.28,
           "z": 0.73,
           "countPrev": 0,
           "countCurr": 16,
           "per10kPrev": 0.0,
-          "per10kCurr": 12.17,
-          "deltaPer10k": 12.17,
+          "per10kCurr": 11.29,
+          "deltaPer10k": 11.29,
           "distinctive": false
         },
         {
           "term": "gigafactory shanghai",
-          "score": 7.06,
+          "score": 7.07,
           "z": 0.71,
           "countPrev": 0,
           "countCurr": 13,
           "per10kPrev": 0.0,
-          "per10kCurr": 9.89,
-          "deltaPer10k": 9.89,
+          "per10kCurr": 9.17,
+          "deltaPer10k": 9.17,
           "distinctive": false
         },
         {
           "term": "shanghai",
-          "score": 7.06,
+          "score": 7.07,
           "z": 0.71,
           "countPrev": 0,
           "countCurr": 13,
           "per10kPrev": 0.0,
-          "per10kCurr": 9.89,
-          "deltaPer10k": 9.89,
+          "per10kCurr": 9.17,
+          "deltaPer10k": 9.17,
           "distinctive": false
         },
         {
           "term": "commence",
-          "score": 6.44,
+          "score": 6.45,
           "z": 0.64,
           "countPrev": 0,
           "countCurr": 7,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.32,
-          "deltaPer10k": 5.32,
+          "per10kCurr": 4.94,
+          "deltaPer10k": 4.94,
           "distinctive": false
         },
         {
           "term": "recently",
-          "score": 6.44,
+          "score": 6.45,
           "z": 0.64,
           "countPrev": 0,
           "countCurr": 7,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.32,
-          "deltaPer10k": 5.32,
+          "per10kCurr": 4.94,
+          "deltaPer10k": 4.94,
           "distinctive": false
         },
         {
           "term": "experience issues",
-          "score": 5.88,
+          "score": 5.89,
           "z": 0.59,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.04,
-          "deltaPer10k": 3.04,
+          "per10kCurr": 2.82,
+          "deltaPer10k": 2.82,
           "distinctive": false
         },
         {
           "term": "local sourcing",
-          "score": 5.88,
+          "score": 5.89,
           "z": 0.59,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.04,
-          "deltaPer10k": 3.04,
-          "distinctive": false
-        },
-        {
-          "term": "manufacturing activities",
-          "score": 5.88,
-          "z": 0.59,
-          "countPrev": 0,
-          "countCurr": 4,
-          "per10kPrev": 0.0,
-          "per10kCurr": 3.04,
-          "deltaPer10k": 3.04,
+          "per10kCurr": 2.82,
+          "deltaPer10k": 2.82,
           "distinctive": false
         },
         {
           "term": "settlement",
-          "score": 5.88,
+          "score": 5.89,
           "z": 0.59,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.04,
-          "deltaPer10k": 3.04,
+          "per10kCurr": 2.82,
+          "deltaPer10k": 2.82,
           "distinctive": false
         },
         {
           "term": "sourcing",
-          "score": 5.88,
+          "score": 5.89,
           "z": 0.59,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.04,
-          "deltaPer10k": 3.04,
+          "per10kCurr": 2.82,
+          "deltaPer10k": 2.82,
           "distinctive": false
         },
         {
           "term": "sourcing manufacturing",
-          "score": 5.88,
+          "score": 5.89,
           "z": 0.59,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.04,
-          "deltaPer10k": 3.04,
+          "per10kCurr": 2.82,
+          "deltaPer10k": 2.82,
           "distinctive": false
         },
         {
           "term": "awards",
-          "score": 5.59,
+          "score": 5.61,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.28,
-          "deltaPer10k": 2.28,
+          "per10kCurr": 2.12,
+          "deltaPer10k": 2.12,
           "distinctive": false
         },
         {
           "term": "duties",
-          "score": 5.59,
+          "score": 5.61,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.28,
-          "deltaPer10k": 2.28,
+          "per10kCurr": 2.12,
+          "deltaPer10k": 2.12,
           "distinctive": false
         },
         {
           "term": "issues delays",
-          "score": 5.59,
+          "score": 5.61,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.28,
-          "deltaPer10k": 2.28,
+          "per10kCurr": 2.12,
+          "deltaPer10k": 2.12,
           "distinctive": false
         },
         {
           "term": "localization",
-          "score": 5.59,
+          "score": 5.61,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.28,
-          "deltaPer10k": 2.28,
+          "per10kCurr": 2.12,
+          "deltaPer10k": 2.12,
+          "distinctive": false
+        },
+        {
+          "term": "pace",
+          "score": 5.61,
+          "z": 0.56,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.12,
+          "deltaPer10k": 2.12,
           "distinctive": false
         }
       ],
       "topFallers": [
         {
           "term": "value guarantee",
-          "score": -6.33,
+          "score": -6.32,
           "z": -0.63,
           "countPrev": 5,
           "countCurr": 0,
-          "per10kPrev": 4.27,
+          "per10kPrev": 3.9,
           "per10kCurr": 0.0,
-          "deltaPer10k": -4.27,
+          "deltaPer10k": -3.9,
+          "distinctive": false
+        },
+        {
+          "term": "tesla stores",
+          "score": -5.81,
+          "z": -0.58,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.34,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.34,
+          "distinctive": false
+        },
+        {
+          "term": "associated international",
+          "score": -5.4,
+          "z": -0.54,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.56,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.56,
           "distinctive": false
         },
         {
           "term": "car",
-          "score": -5.42,
+          "score": -5.4,
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.71,
+          "per10kPrev": 1.56,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.71,
+          "deltaPer10k": -1.56,
           "distinctive": false
         },
         {
           "term": "ceo",
-          "score": -5.42,
+          "score": -5.4,
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.71,
+          "per10kPrev": 1.56,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.71,
+          "deltaPer10k": -1.56,
+          "distinctive": false
+        },
+        {
+          "term": "experience delivering",
+          "score": -5.4,
+          "z": -0.54,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.56,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.56,
+          "distinctive": false
+        },
+        {
+          "term": "lease accounting",
+          "score": -5.4,
+          "z": -0.54,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.56,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.56,
+          "distinctive": false
+        },
+        {
+          "term": "leasing partners",
+          "score": -5.4,
+          "z": -0.54,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.56,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.56,
+          "distinctive": false
+        },
+        {
+          "term": "lower estimates",
+          "score": -5.4,
+          "z": -0.54,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.56,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.56,
+          "distinctive": false
+        },
+        {
+          "term": "lower revenues",
+          "score": -5.4,
+          "z": -0.54,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.56,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.56,
+          "distinctive": false
+        },
+        {
+          "term": "network tesla",
+          "score": -5.4,
+          "z": -0.54,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.56,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.56,
           "distinctive": false
         },
         {
           "term": "open",
-          "score": -5.42,
+          "score": -5.4,
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.71,
+          "per10kPrev": 1.56,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.71,
+          "deltaPer10k": -1.56,
+          "distinctive": false
+        },
+        {
+          "term": "open new",
+          "score": -5.4,
+          "z": -0.54,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.56,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.56,
+          "distinctive": false
+        },
+        {
+          "term": "plan produce",
+          "score": -5.4,
+          "z": -0.54,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.56,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.56,
           "distinctive": false
         },
         {
           "term": "started",
-          "score": -5.42,
+          "score": -5.4,
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.71,
+          "per10kPrev": 1.56,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.71,
-          "distinctive": false
-        },
-        {
-          "term": "accepted",
-          "score": -4.73,
-          "z": -0.47,
-          "countPrev": 1,
-          "countCurr": 0,
-          "per10kPrev": 0.85,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -0.85,
-          "distinctive": false
-        },
-        {
-          "term": "advance",
-          "score": -4.73,
-          "z": -0.47,
-          "countPrev": 1,
-          "countCurr": 0,
-          "per10kPrev": 0.85,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -0.85,
-          "distinctive": false
-        },
-        {
-          "term": "altogether",
-          "score": -4.73,
-          "z": -0.47,
-          "countPrev": 1,
-          "countCurr": 0,
-          "per10kPrev": 0.85,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -0.85,
-          "distinctive": false
-        },
-        {
-          "term": "analysts investors",
-          "score": -4.73,
-          "z": -0.47,
-          "countPrev": 1,
-          "countCurr": 0,
-          "per10kPrev": 0.85,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -0.85,
-          "distinctive": false
-        },
-        {
-          "term": "applies",
-          "score": -4.73,
-          "z": -0.47,
-          "countPrev": 1,
-          "countCurr": 0,
-          "per10kPrev": 0.85,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -0.85,
-          "distinctive": false
-        },
-        {
-          "term": "approved",
-          "score": -4.73,
-          "z": -0.47,
-          "countPrev": 1,
-          "countCurr": 0,
-          "per10kPrev": 0.85,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -0.85,
-          "distinctive": false
-        },
-        {
-          "term": "assessment",
-          "score": -4.73,
-          "z": -0.47,
-          "countPrev": 1,
-          "countCurr": 0,
-          "per10kPrev": 0.85,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -0.85,
-          "distinctive": false
-        },
-        {
-          "term": "belt",
-          "score": -4.73,
-          "z": -0.47,
-          "countPrev": 1,
-          "countCurr": 0,
-          "per10kPrev": 0.85,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -0.85,
-          "distinctive": false
-        },
-        {
-          "term": "bring online",
-          "score": -4.73,
-          "z": -0.47,
-          "countPrev": 1,
-          "countCurr": 0,
-          "per10kPrev": 0.85,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -0.85,
-          "distinctive": false
-        },
-        {
-          "term": "calendar",
-          "score": -4.73,
-          "z": -0.47,
-          "countPrev": 1,
-          "countCurr": 0,
-          "per10kPrev": 0.85,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -0.85,
+          "deltaPer10k": -1.56,
           "distinctive": false
         }
       ],
-      "summary": "Adds emphasis on china, gigafactory shanghai, shanghai; de-emphasizes value guarantee, car, ceo.",
+      "summary": "Adds emphasis on china, gigafactory shanghai, shanghai; de-emphasizes value guarantee, tesla stores, associated international.",
       "topRisersAlt": [
         {
           "term": "model production",
@@ -471,334 +1399,334 @@
       "topRisers": [
         {
           "term": "fsd",
-          "score": 6.61,
+          "score": 6.63,
           "z": 0.66,
           "countPrev": 0,
           "countCurr": 7,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.65,
-          "deltaPer10k": 5.65,
+          "per10kCurr": 5.34,
+          "deltaPer10k": 5.34,
           "distinctive": false
         },
         {
           "term": "autopilot fsd",
-          "score": 6.46,
+          "score": 6.48,
           "z": 0.65,
           "countPrev": 0,
           "countCurr": 6,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.84,
-          "deltaPer10k": 4.84,
+          "per10kCurr": 4.57,
+          "deltaPer10k": 4.57,
           "distinctive": false
         },
         {
           "term": "fremont",
-          "score": 6.46,
+          "score": 6.48,
           "z": 0.65,
           "countPrev": 0,
           "countCurr": 6,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.84,
-          "deltaPer10k": 4.84,
+          "per10kCurr": 4.57,
+          "deltaPer10k": 4.57,
           "distinctive": false
         },
         {
           "term": "fremont factory",
-          "score": 6.46,
+          "score": 6.48,
           "z": 0.65,
           "countPrev": 0,
           "countCurr": 6,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.84,
-          "deltaPer10k": 4.84,
+          "per10kCurr": 4.57,
+          "deltaPer10k": 4.57,
           "distinctive": false
         },
         {
           "term": "fsd features",
-          "score": 6.46,
+          "score": 6.48,
           "z": 0.65,
           "countPrev": 0,
           "countCurr": 6,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.84,
-          "deltaPer10k": 4.84,
+          "per10kCurr": 4.57,
+          "deltaPer10k": 4.57,
           "distinctive": false
         },
         {
           "term": "berlin",
-          "score": 6.28,
+          "score": 6.29,
           "z": 0.63,
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.04,
-          "deltaPer10k": 4.04,
+          "per10kCurr": 3.81,
+          "deltaPer10k": 3.81,
           "distinctive": false
         },
         {
           "term": "gigafactory berlin",
-          "score": 6.28,
+          "score": 6.29,
           "z": 0.63,
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.04,
-          "deltaPer10k": 4.04,
+          "per10kCurr": 3.81,
+          "deltaPer10k": 3.81,
           "distinctive": false
         },
         {
           "term": "gigafactory new",
-          "score": 6.28,
+          "score": 6.29,
           "z": 0.63,
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.04,
-          "deltaPer10k": 4.04,
+          "per10kCurr": 3.81,
+          "deltaPer10k": 3.81,
           "distinctive": false
         },
         {
           "term": "epidemics",
-          "score": 5.77,
+          "score": 5.78,
           "z": 0.58,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.42,
-          "deltaPer10k": 2.42,
+          "per10kCurr": 2.29,
+          "deltaPer10k": 2.29,
           "distinctive": false
         },
         {
           "term": "events outside",
-          "score": 5.77,
+          "score": 5.78,
           "z": 0.58,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.42,
-          "deltaPer10k": 2.42,
+          "per10kCurr": 2.29,
+          "deltaPer10k": 2.29,
           "distinctive": false
         },
         {
           "term": "health epidemics",
-          "score": 5.77,
+          "score": 5.78,
           "z": 0.58,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.42,
-          "deltaPer10k": 2.42,
+          "per10kCurr": 2.29,
+          "deltaPer10k": 2.29,
           "distinctive": false
         },
         {
           "term": "approved",
-          "score": 5.36,
-          "z": 0.53,
+          "score": 5.38,
+          "z": 0.54,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.61,
-          "deltaPer10k": 1.61,
+          "per10kCurr": 1.52,
+          "deltaPer10k": 1.52,
           "distinctive": false
         },
         {
           "term": "china europe",
-          "score": 5.36,
-          "z": 0.53,
+          "score": 5.38,
+          "z": 0.54,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.61,
-          "deltaPer10k": 1.61,
+          "per10kCurr": 1.52,
+          "deltaPer10k": 1.52,
           "distinctive": false
         },
         {
           "term": "delays meeting",
-          "score": 5.36,
-          "z": 0.53,
+          "score": 5.38,
+          "z": 0.54,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.61,
-          "deltaPer10k": 1.61,
+          "per10kCurr": 1.52,
+          "deltaPer10k": 1.52,
           "distinctive": false
         },
         {
           "term": "depend ability",
-          "score": 5.36,
-          "z": 0.53,
+          "score": 5.38,
+          "z": 0.54,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.61,
-          "deltaPer10k": 1.61,
+          "per10kCurr": 1.52,
+          "deltaPer10k": 1.52,
           "distinctive": false
         }
       ],
       "topFallers": [
         {
           "term": "plan",
-          "score": -6.95,
+          "score": -6.93,
           "z": -0.69,
           "countPrev": 11,
           "countCurr": 0,
-          "per10kPrev": 8.37,
+          "per10kPrev": 7.76,
           "per10kCurr": 0.0,
-          "deltaPer10k": -8.37,
+          "deltaPer10k": -7.76,
           "distinctive": false
         },
         {
           "term": "years",
-          "score": -6.95,
+          "score": -6.93,
           "z": -0.69,
           "countPrev": 11,
           "countCurr": 0,
-          "per10kPrev": 8.37,
+          "per10kPrev": 7.76,
           "per10kCurr": 0.0,
-          "deltaPer10k": -8.37,
+          "deltaPer10k": -7.76,
           "distinctive": false
         },
         {
           "term": "limited warranty",
-          "score": -6.75,
+          "score": -6.73,
           "z": -0.67,
           "countPrev": 9,
           "countCurr": 0,
-          "per10kPrev": 6.85,
+          "per10kPrev": 6.35,
           "per10kCurr": 0.0,
-          "deltaPer10k": -6.85,
+          "deltaPer10k": -6.35,
           "distinctive": false
         },
         {
           "term": "commence",
-          "score": -6.49,
+          "score": -6.48,
           "z": -0.65,
           "countPrev": 7,
           "countCurr": 0,
-          "per10kPrev": 5.32,
+          "per10kPrev": 4.94,
           "per10kCurr": 0.0,
-          "deltaPer10k": -5.32,
+          "deltaPer10k": -4.94,
           "distinctive": false
         },
         {
           "term": "drive unit",
-          "score": -6.34,
+          "score": -6.32,
           "z": -0.63,
           "countPrev": 6,
           "countCurr": 0,
-          "per10kPrev": 4.56,
+          "per10kPrev": 4.23,
           "per10kCurr": 0.0,
-          "deltaPer10k": -4.56,
+          "deltaPer10k": -4.23,
           "distinctive": false
         },
         {
           "term": "tesla factory",
-          "score": -6.34,
+          "score": -6.32,
           "z": -0.63,
           "countPrev": 6,
           "countCurr": 0,
-          "per10kPrev": 4.56,
+          "per10kPrev": 4.23,
           "per10kCurr": 0.0,
-          "deltaPer10k": -4.56,
+          "deltaPer10k": -4.23,
           "distinctive": false
         },
         {
           "term": "mile",
-          "score": -6.16,
-          "z": -0.62,
+          "score": -6.14,
+          "z": -0.61,
           "countPrev": 5,
           "countCurr": 0,
-          "per10kPrev": 3.8,
+          "per10kPrev": 3.53,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.8,
+          "deltaPer10k": -3.53,
           "distinctive": false
         },
         {
           "term": "year mile",
-          "score": -6.16,
-          "z": -0.62,
+          "score": -6.14,
+          "z": -0.61,
           "countPrev": 5,
           "countCurr": 0,
-          "per10kPrev": 3.8,
+          "per10kPrev": 3.53,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.8,
+          "deltaPer10k": -3.53,
           "distinctive": false
         },
         {
           "term": "battery drive",
-          "score": -5.94,
+          "score": -5.92,
           "z": -0.59,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 3.04,
+          "per10kPrev": 2.82,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.04,
+          "deltaPer10k": -2.82,
           "distinctive": false
         },
         {
           "term": "local sourcing",
-          "score": -5.94,
+          "score": -5.92,
           "z": -0.59,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 3.04,
+          "per10kPrev": 2.82,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.04,
-          "distinctive": false
-        },
-        {
-          "term": "manufacturing activities",
-          "score": -5.94,
-          "z": -0.59,
-          "countPrev": 4,
-          "countCurr": 0,
-          "per10kPrev": 3.04,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -3.04,
+          "deltaPer10k": -2.82,
           "distinctive": false
         },
         {
           "term": "mile limited",
-          "score": -5.94,
+          "score": -5.92,
           "z": -0.59,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 3.04,
+          "per10kPrev": 2.82,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.04,
+          "deltaPer10k": -2.82,
           "distinctive": false
         },
         {
           "term": "sourcing",
-          "score": -5.94,
+          "score": -5.92,
           "z": -0.59,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 3.04,
+          "per10kPrev": 2.82,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.04,
+          "deltaPer10k": -2.82,
           "distinctive": false
         },
         {
           "term": "sourcing manufacturing",
-          "score": -5.94,
+          "score": -5.92,
           "z": -0.59,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 3.04,
+          "per10kPrev": 2.82,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.04,
+          "deltaPer10k": -2.82,
           "distinctive": false
         },
         {
           "term": "continue expand",
-          "score": -5.65,
+          "score": -5.63,
           "z": -0.56,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 2.28,
+          "per10kPrev": 2.12,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.28,
+          "deltaPer10k": -2.12,
+          "distinctive": false
+        },
+        {
+          "term": "covered",
+          "score": -5.63,
+          "z": -0.56,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.12,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.12,
           "distinctive": false
         }
       ],
@@ -935,35 +1863,35 @@
       "topRisers": [
         {
           "term": "digital",
-          "score": 7.03,
-          "z": 0.7,
+          "score": 7.1,
+          "z": 0.71,
           "countPrev": 0,
           "countCurr": 11,
           "per10kPrev": 0.0,
-          "per10kCurr": 9.15,
-          "deltaPer10k": 9.15,
+          "per10kCurr": 9.19,
+          "deltaPer10k": 9.19,
           "distinctive": false
         },
         {
           "term": "digital assets",
-          "score": 7.03,
-          "z": 0.7,
+          "score": 7.1,
+          "z": 0.71,
           "countPrev": 0,
           "countCurr": 11,
           "per10kPrev": 0.0,
-          "per10kCurr": 9.15,
-          "deltaPer10k": 9.15,
+          "per10kCurr": 9.19,
+          "deltaPer10k": 9.19,
           "distinctive": false
         },
         {
           "term": "Pandemic",
-          "score": 6.72,
-          "z": 0.67,
+          "score": 6.78,
+          "z": 0.68,
           "countPrev": 0,
           "countCurr": 8,
           "per10kPrev": 0.0,
-          "per10kCurr": 6.65,
-          "deltaPer10k": 6.65,
+          "per10kCurr": 6.68,
+          "deltaPer10k": 6.68,
           "distinctive": false,
           "includes": [
             "pandemic"
@@ -971,13 +1899,13 @@
         },
         {
           "term": "COVID-19",
-          "score": 6.58,
+          "score": 6.64,
           "z": 0.66,
           "countPrev": 0,
           "countCurr": 7,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.82,
-          "deltaPer10k": 5.82,
+          "per10kCurr": 5.85,
+          "deltaPer10k": 5.85,
           "distinctive": false,
           "includes": [
             "covid"
@@ -985,290 +1913,290 @@
         },
         {
           "term": "covid pandemic",
-          "score": 6.58,
+          "score": 6.64,
           "z": 0.66,
           "countPrev": 0,
           "countCurr": 7,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.82,
-          "deltaPer10k": 5.82,
+          "per10kCurr": 5.85,
+          "deltaPer10k": 5.85,
           "distinctive": false
         },
         {
           "term": "temporarily",
-          "score": 6.25,
-          "z": 0.62,
+          "score": 6.31,
+          "z": 0.63,
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.16,
-          "deltaPer10k": 4.16,
+          "per10kCurr": 4.18,
+          "deltaPer10k": 4.18,
           "distinctive": false
         },
         {
           "term": "manufacturing processes",
-          "score": 6.02,
-          "z": 0.6,
+          "score": 6.09,
+          "z": 0.61,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.33,
-          "deltaPer10k": 3.33,
+          "per10kCurr": 3.34,
+          "deltaPer10k": 3.34,
           "distinctive": false
         },
         {
           "term": "texas",
-          "score": 6.02,
-          "z": 0.6,
+          "score": 6.09,
+          "z": 0.61,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.33,
-          "deltaPer10k": 3.33,
+          "per10kCurr": 3.34,
+          "deltaPer10k": 3.34,
           "distinctive": false
         },
         {
           "term": "areas",
-          "score": 5.74,
-          "z": 0.57,
+          "score": 5.8,
+          "z": 0.58,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.49,
-          "deltaPer10k": 2.49,
+          "per10kCurr": 2.51,
+          "deltaPer10k": 2.51,
           "distinctive": false
         },
         {
           "term": "berlin gigafactory",
-          "score": 5.74,
-          "z": 0.57,
+          "score": 5.8,
+          "z": 0.58,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.49,
-          "deltaPer10k": 2.49,
+          "per10kCurr": 2.51,
+          "deltaPer10k": 2.51,
           "distinctive": false
         },
         {
           "term": "brand prospects",
-          "score": 5.74,
-          "z": 0.57,
+          "score": 5.8,
+          "z": 0.58,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.49,
-          "deltaPer10k": 2.49,
+          "per10kCurr": 2.51,
+          "deltaPer10k": 2.51,
           "distinctive": false
         },
         {
           "term": "gigafactory texas",
-          "score": 5.74,
-          "z": 0.57,
+          "score": 5.8,
+          "z": 0.58,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.49,
-          "deltaPer10k": 2.49,
+          "per10kCurr": 2.51,
+          "deltaPer10k": 2.51,
           "distinctive": false
         },
         {
           "term": "global covid",
-          "score": 5.74,
-          "z": 0.57,
+          "score": 5.8,
+          "z": 0.58,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.49,
-          "deltaPer10k": 2.49,
+          "per10kCurr": 2.51,
+          "deltaPer10k": 2.51,
           "distinctive": false
         },
         {
           "term": "impairment",
-          "score": 5.74,
-          "z": 0.57,
+          "score": 5.8,
+          "z": 0.58,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.49,
-          "deltaPer10k": 2.49,
+          "per10kCurr": 2.51,
+          "deltaPer10k": 2.51,
           "distinctive": false
         },
         {
           "term": "malicious",
-          "score": 5.74,
-          "z": 0.57,
+          "score": 5.8,
+          "z": 0.58,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.49,
-          "deltaPer10k": 2.49,
+          "per10kCurr": 2.51,
+          "deltaPer10k": 2.51,
           "distinctive": false
         }
       ],
       "topFallers": [
         {
           "term": "convertible notes",
-          "score": -7.62,
+          "score": -7.56,
           "z": -0.76,
           "countPrev": 21,
           "countCurr": 0,
-          "per10kPrev": 16.95,
+          "per10kPrev": 16.01,
           "per10kCurr": 0.0,
-          "deltaPer10k": -16.95,
+          "deltaPer10k": -16.01,
           "distinctive": false
         },
         {
           "term": "tesla convertible",
-          "score": -6.88,
-          "z": -0.69,
+          "score": -6.82,
+          "z": -0.68,
           "countPrev": 10,
           "countCurr": 0,
-          "per10kPrev": 8.07,
+          "per10kPrev": 7.62,
           "per10kCurr": 0.0,
-          "deltaPer10k": -8.07,
+          "deltaPer10k": -7.62,
           "distinctive": false
         },
         {
           "term": "adverse effect",
-          "score": -6.77,
-          "z": -0.68,
+          "score": -6.71,
+          "z": -0.67,
           "countPrev": 9,
           "countCurr": 0,
-          "per10kPrev": 7.26,
+          "per10kPrev": 6.86,
           "per10kCurr": 0.0,
-          "deltaPer10k": -7.26,
+          "deltaPer10k": -6.86,
           "distinctive": false
         },
         {
           "term": "affect brand",
-          "score": -6.37,
-          "z": -0.64,
+          "score": -6.31,
+          "z": -0.63,
           "countPrev": 6,
           "countCurr": 0,
-          "per10kPrev": 4.84,
+          "per10kPrev": 4.57,
           "per10kCurr": 0.0,
-          "deltaPer10k": -4.84,
+          "deltaPer10k": -4.57,
           "distinctive": false
         },
         {
           "term": "negatively affect",
-          "score": -6.37,
-          "z": -0.64,
+          "score": -6.31,
+          "z": -0.63,
           "countPrev": 6,
           "countCurr": 0,
-          "per10kPrev": 4.84,
+          "per10kPrev": 4.57,
           "per10kCurr": 0.0,
-          "deltaPer10k": -4.84,
+          "deltaPer10k": -4.57,
           "distinctive": false
         },
         {
           "term": "continuously",
-          "score": -6.19,
-          "z": -0.62,
+          "score": -6.13,
+          "z": -0.61,
           "countPrev": 5,
           "countCurr": 0,
-          "per10kPrev": 4.04,
+          "per10kPrev": 3.81,
           "per10kCurr": 0.0,
-          "deltaPer10k": -4.04,
+          "deltaPer10k": -3.81,
           "distinctive": false
         },
         {
           "term": "effect business",
-          "score": -6.19,
-          "z": -0.62,
+          "score": -6.13,
+          "z": -0.61,
           "countPrev": 5,
           "countCurr": 0,
-          "per10kPrev": 4.04,
+          "per10kPrev": 3.81,
           "per10kCurr": 0.0,
-          "deltaPer10k": -4.04,
+          "deltaPer10k": -3.81,
           "distinctive": false
         },
         {
           "term": "inability",
-          "score": -6.19,
-          "z": -0.62,
+          "score": -6.13,
+          "z": -0.61,
           "countPrev": 5,
           "countCurr": 0,
-          "per10kPrev": 4.04,
+          "per10kPrev": 3.81,
           "per10kCurr": 0.0,
-          "deltaPer10k": -4.04,
+          "deltaPer10k": -3.81,
           "distinctive": false
         },
         {
           "term": "notes subsidiary",
-          "score": -6.19,
-          "z": -0.62,
+          "score": -6.13,
+          "z": -0.61,
           "countPrev": 5,
           "countCurr": 0,
-          "per10kPrev": 4.04,
+          "per10kPrev": 3.81,
           "per10kCurr": 0.0,
-          "deltaPer10k": -4.04,
+          "deltaPer10k": -3.81,
           "distinctive": false
         },
         {
           "term": "damage",
-          "score": -5.96,
-          "z": -0.6,
+          "score": -5.9,
+          "z": -0.59,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 3.23,
+          "per10kPrev": 3.05,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.23,
+          "deltaPer10k": -3.05,
           "distinctive": false
         },
         {
           "term": "damage brand",
-          "score": -5.96,
-          "z": -0.6,
+          "score": -5.9,
+          "z": -0.59,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 3.23,
+          "per10kPrev": 3.05,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.23,
+          "deltaPer10k": -3.05,
           "distinctive": false
         },
         {
           "term": "subsidiary convertible",
-          "score": -5.96,
-          "z": -0.6,
+          "score": -5.9,
+          "z": -0.59,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 3.23,
+          "per10kPrev": 3.05,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.23,
+          "deltaPer10k": -3.05,
           "distinctive": false
         },
         {
           "term": "volume production",
-          "score": -5.96,
-          "z": -0.6,
+          "score": -5.9,
+          "z": -0.59,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 3.23,
+          "per10kPrev": 3.05,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.23,
+          "deltaPer10k": -3.05,
           "distinctive": false
         },
         {
           "term": "automated",
-          "score": -5.68,
-          "z": -0.57,
+          "score": -5.62,
+          "z": -0.56,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 2.42,
+          "per10kPrev": 2.29,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.42,
+          "deltaPer10k": -2.29,
           "distinctive": false
         },
         {
           "term": "brand harm",
-          "score": -5.68,
-          "z": -0.57,
+          "score": -5.62,
+          "z": -0.56,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 2.42,
+          "per10kPrev": 2.29,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.42,
+          "deltaPer10k": -2.29,
           "distinctive": false
         }
       ],
@@ -1405,13 +2333,13 @@
       "topRisers": [
         {
           "term": "Climate change",
-          "score": 5.94,
+          "score": 5.95,
           "z": 0.59,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.16,
-          "deltaPer10k": 3.16,
+          "per10kCurr": 3.18,
+          "deltaPer10k": 3.18,
           "distinctive": false,
           "includes": [
             "climate change"
@@ -1419,46 +2347,46 @@
         },
         {
           "term": "esg",
-          "score": 5.94,
+          "score": 5.95,
           "z": 0.59,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.16,
-          "deltaPer10k": 3.16,
+          "per10kCurr": 3.18,
+          "deltaPer10k": 3.18,
           "distinctive": false
         },
         {
           "term": "esg practices",
-          "score": 5.94,
+          "score": 5.95,
           "z": 0.59,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.16,
-          "deltaPer10k": 3.16,
+          "per10kCurr": 3.18,
+          "deltaPer10k": 3.18,
           "distinctive": false
         },
         {
           "term": "incidents",
-          "score": 5.94,
+          "score": 5.95,
           "z": 0.59,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.16,
-          "deltaPer10k": 3.16,
+          "per10kCurr": 3.18,
+          "deltaPer10k": 3.18,
           "distinctive": false
         },
         {
           "term": "scrutiny",
-          "score": 5.94,
+          "score": 5.95,
           "z": 0.59,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.16,
-          "deltaPer10k": 3.16,
+          "per10kCurr": 3.18,
+          "deltaPer10k": 3.18,
           "distinctive": false
         },
         {
@@ -1468,8 +2396,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.37,
-          "deltaPer10k": 2.37,
+          "per10kCurr": 2.39,
+          "deltaPer10k": 2.39,
           "distinctive": false
         },
         {
@@ -1479,8 +2407,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.37,
-          "deltaPer10k": 2.37,
+          "per10kCurr": 2.39,
+          "deltaPer10k": 2.39,
           "distinctive": false
         },
         {
@@ -1490,8 +2418,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.37,
-          "deltaPer10k": 2.37,
+          "per10kCurr": 2.39,
+          "deltaPer10k": 2.39,
           "distinctive": false
         },
         {
@@ -1501,8 +2429,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.37,
-          "deltaPer10k": 2.37,
+          "per10kCurr": 2.39,
+          "deltaPer10k": 2.39,
           "distinctive": false
         },
         {
@@ -1512,8 +2440,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.37,
-          "deltaPer10k": 2.37,
+          "per10kCurr": 2.39,
+          "deltaPer10k": 2.39,
           "distinctive": false
         },
         {
@@ -1523,8 +2451,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.37,
-          "deltaPer10k": 2.37,
+          "per10kCurr": 2.39,
+          "deltaPer10k": 2.39,
           "distinctive": false
         },
         {
@@ -1534,8 +2462,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.37,
-          "deltaPer10k": 2.37,
+          "per10kCurr": 2.39,
+          "deltaPer10k": 2.39,
           "distinctive": false
         },
         {
@@ -1545,8 +2473,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.58,
-          "deltaPer10k": 1.58,
+          "per10kCurr": 1.59,
+          "deltaPer10k": 1.59,
           "distinctive": false,
           "includes": [
             "artificial intelligence"
@@ -1559,8 +2487,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.58,
-          "deltaPer10k": 1.58,
+          "per10kCurr": 1.59,
+          "deltaPer10k": 1.59,
           "distinctive": false
         },
         {
@@ -1570,8 +2498,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.58,
-          "deltaPer10k": 1.58,
+          "per10kCurr": 1.59,
+          "deltaPer10k": 1.59,
           "distinctive": false
         }
       ],
@@ -1582,9 +2510,9 @@
           "z": -0.6,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 3.33,
+          "per10kPrev": 3.34,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.33,
+          "deltaPer10k": -3.34,
           "distinctive": false
         },
         {
@@ -1593,9 +2521,9 @@
           "z": -0.57,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 2.49,
+          "per10kPrev": 2.51,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.49,
+          "deltaPer10k": -2.51,
           "distinctive": false
         },
         {
@@ -1604,9 +2532,9 @@
           "z": -0.57,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 2.49,
+          "per10kPrev": 2.51,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.49,
+          "deltaPer10k": -2.51,
           "distinctive": false
         },
         {
@@ -1615,9 +2543,9 @@
           "z": -0.57,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 2.49,
+          "per10kPrev": 2.51,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.49,
+          "deltaPer10k": -2.51,
           "distinctive": false
         },
         {
@@ -1626,9 +2554,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.66,
+          "per10kPrev": 1.67,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.66,
+          "deltaPer10k": -1.67,
           "distinctive": false
         },
         {
@@ -1637,9 +2565,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.66,
+          "per10kPrev": 1.67,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.66,
+          "deltaPer10k": -1.67,
           "distinctive": false
         },
         {
@@ -1648,9 +2576,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.66,
+          "per10kPrev": 1.67,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.66,
+          "deltaPer10k": -1.67,
           "distinctive": false
         },
         {
@@ -1659,9 +2587,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.66,
+          "per10kPrev": 1.67,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.66,
+          "deltaPer10k": -1.67,
           "distinctive": false
         },
         {
@@ -1670,9 +2598,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.66,
+          "per10kPrev": 1.67,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.66,
+          "deltaPer10k": -1.67,
           "distinctive": false
         },
         {
@@ -1681,9 +2609,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.66,
+          "per10kPrev": 1.67,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.66,
+          "deltaPer10k": -1.67,
           "distinctive": false
         },
         {
@@ -1692,9 +2620,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.66,
+          "per10kPrev": 1.67,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.66,
+          "deltaPer10k": -1.67,
           "distinctive": false
         },
         {
@@ -1703,42 +2631,42 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.66,
+          "per10kPrev": 1.67,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.66,
+          "deltaPer10k": -1.67,
           "distinctive": false
         },
         {
           "term": "accepting",
-          "score": -4.67,
+          "score": -4.66,
           "z": -0.46,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 0.83,
+          "per10kPrev": 0.84,
           "per10kCurr": 0.0,
-          "deltaPer10k": -0.83,
+          "deltaPer10k": -0.84,
           "distinctive": false
         },
         {
           "term": "accustomed",
-          "score": -4.67,
+          "score": -4.66,
           "z": -0.46,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 0.83,
+          "per10kPrev": 0.84,
           "per10kCurr": 0.0,
-          "deltaPer10k": -0.83,
+          "deltaPer10k": -0.84,
           "distinctive": false
         },
         {
           "term": "addition hedge",
-          "score": -4.67,
+          "score": -4.66,
           "z": -0.46,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 0.83,
+          "per10kPrev": 0.84,
           "per10kCurr": 0.0,
-          "deltaPer10k": -0.83,
+          "deltaPer10k": -0.84,
           "distinctive": false
         }
       ],
@@ -1880,8 +2808,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.66,
-          "deltaPer10k": 1.66,
+          "per10kCurr": 1.67,
+          "deltaPer10k": 1.67,
           "distinctive": false
         },
         {
@@ -1891,8 +2819,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.66,
-          "deltaPer10k": 1.66,
+          "per10kCurr": 1.67,
+          "deltaPer10k": 1.67,
           "distinctive": false
         },
         {
@@ -1902,8 +2830,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.66,
-          "deltaPer10k": 1.66,
+          "per10kCurr": 1.67,
+          "deltaPer10k": 1.67,
           "distinctive": false
         },
         {
@@ -1913,8 +2841,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.66,
-          "deltaPer10k": 1.66,
+          "per10kCurr": 1.67,
+          "deltaPer10k": 1.67,
           "distinctive": false
         },
         {
@@ -1924,8 +2852,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.66,
-          "deltaPer10k": 1.66,
+          "per10kCurr": 1.67,
+          "deltaPer10k": 1.67,
           "distinctive": false
         },
         {
@@ -1935,8 +2863,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.66,
-          "deltaPer10k": 1.66,
+          "per10kCurr": 1.67,
+          "deltaPer10k": 1.67,
           "distinctive": false
         },
         {
@@ -1946,8 +2874,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.66,
-          "deltaPer10k": 1.66,
+          "per10kCurr": 1.67,
+          "deltaPer10k": 1.67,
           "distinctive": false
         },
         {
@@ -1957,8 +2885,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.66,
-          "deltaPer10k": 1.66,
+          "per10kCurr": 1.67,
+          "deltaPer10k": 1.67,
           "distinctive": false
         },
         {
@@ -1968,8 +2896,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.66,
-          "deltaPer10k": 1.66,
+          "per10kCurr": 1.67,
+          "deltaPer10k": 1.67,
           "distinctive": false
         },
         {
@@ -1979,8 +2907,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.66,
-          "deltaPer10k": 1.66,
+          "per10kCurr": 1.67,
+          "deltaPer10k": 1.67,
           "distinctive": false
         },
         {
@@ -1990,8 +2918,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.66,
-          "deltaPer10k": 1.66,
+          "per10kCurr": 1.67,
+          "deltaPer10k": 1.67,
           "distinctive": false
         },
         {
@@ -2001,8 +2929,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.66,
-          "deltaPer10k": 1.66,
+          "per10kCurr": 1.67,
+          "deltaPer10k": 1.67,
           "distinctive": false
         },
         {
@@ -2012,8 +2940,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.66,
-          "deltaPer10k": 1.66,
+          "per10kCurr": 1.67,
+          "deltaPer10k": 1.67,
           "distinctive": false
         },
         {
@@ -2023,8 +2951,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.66,
-          "deltaPer10k": 1.66,
+          "per10kCurr": 1.67,
+          "deltaPer10k": 1.67,
           "distinctive": false
         },
         {
@@ -2034,8 +2962,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.66,
-          "deltaPer10k": 1.66,
+          "per10kCurr": 1.67,
+          "deltaPer10k": 1.67,
           "distinctive": false
         }
       ],
@@ -2046,9 +2974,9 @@
           "z": -0.7,
           "countPrev": 12,
           "countCurr": 0,
-          "per10kPrev": 9.49,
+          "per10kPrev": 9.54,
           "per10kCurr": 0.0,
-          "deltaPer10k": -9.49,
+          "deltaPer10k": -9.54,
           "distinctive": false
         },
         {
@@ -2057,9 +2985,9 @@
           "z": -0.7,
           "countPrev": 12,
           "countCurr": 0,
-          "per10kPrev": 9.49,
+          "per10kPrev": 9.54,
           "per10kCurr": 0.0,
-          "deltaPer10k": -9.49,
+          "deltaPer10k": -9.54,
           "distinctive": false
         },
         {
@@ -2068,9 +2996,9 @@
           "z": -0.56,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 2.37,
+          "per10kPrev": 2.39,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.37,
+          "deltaPer10k": -2.39,
           "distinctive": false
         },
         {
@@ -2079,9 +3007,9 @@
           "z": -0.56,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 2.37,
+          "per10kPrev": 2.39,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.37,
+          "deltaPer10k": -2.39,
           "distinctive": false
         },
         {
@@ -2090,9 +3018,9 @@
           "z": -0.56,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 2.37,
+          "per10kPrev": 2.39,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.37,
+          "deltaPer10k": -2.39,
           "distinctive": false
         },
         {
@@ -2101,9 +3029,9 @@
           "z": -0.52,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.58,
+          "per10kPrev": 1.59,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.58,
+          "deltaPer10k": -1.59,
           "distinctive": false
         },
         {
@@ -2112,9 +3040,9 @@
           "z": -0.52,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.58,
+          "per10kPrev": 1.59,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.58,
+          "deltaPer10k": -1.59,
           "distinctive": false
         },
         {
@@ -2123,9 +3051,9 @@
           "z": -0.52,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.58,
+          "per10kPrev": 1.59,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.58,
+          "deltaPer10k": -1.59,
           "distinctive": false
         },
         {
@@ -2134,9 +3062,9 @@
           "z": -0.52,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.58,
+          "per10kPrev": 1.59,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.58,
+          "deltaPer10k": -1.59,
           "distinctive": false
         },
         {
@@ -2145,9 +3073,9 @@
           "z": -0.52,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.58,
+          "per10kPrev": 1.59,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.58,
+          "deltaPer10k": -1.59,
           "distinctive": false
         },
         {
@@ -2156,9 +3084,9 @@
           "z": -0.52,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.58,
+          "per10kPrev": 1.59,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.58,
+          "deltaPer10k": -1.59,
           "distinctive": false
         },
         {
@@ -2167,9 +3095,9 @@
           "z": -0.52,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.58,
+          "per10kPrev": 1.59,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.58,
+          "deltaPer10k": -1.59,
           "distinctive": false
         },
         {
@@ -2178,9 +3106,9 @@
           "z": -0.52,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.58,
+          "per10kPrev": 1.59,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.58,
+          "deltaPer10k": -1.59,
           "distinctive": false
         },
         {
@@ -2189,9 +3117,9 @@
           "z": -0.52,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.58,
+          "per10kPrev": 1.59,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.58,
+          "deltaPer10k": -1.59,
           "distinctive": false
         },
         {
@@ -2200,9 +3128,9 @@
           "z": -0.52,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.58,
+          "per10kPrev": 1.59,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.58,
+          "deltaPer10k": -1.59,
           "distinctive": false
         }
       ],
@@ -2344,8 +3272,8 @@
           "countPrev": 0,
           "countCurr": 14,
           "per10kPrev": 0.0,
-          "per10kCurr": 12.11,
-          "deltaPer10k": 12.11,
+          "per10kCurr": 12.19,
+          "deltaPer10k": 12.19,
           "distinctive": false
         },
         {
@@ -2355,8 +3283,8 @@
           "countPrev": 0,
           "countCurr": 14,
           "per10kPrev": 0.0,
-          "per10kCurr": 12.11,
-          "deltaPer10k": 12.11,
+          "per10kCurr": 12.19,
+          "deltaPer10k": 12.19,
           "distinctive": false
         },
         {
@@ -2366,13 +3294,13 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.73,
-          "deltaPer10k": 1.73,
+          "per10kCurr": 1.74,
+          "deltaPer10k": 1.74,
           "distinctive": false
         },
         {
           "term": "add",
-          "score": 4.65,
+          "score": 4.66,
           "z": 0.46,
           "countPrev": 0,
           "countCurr": 1,
@@ -2383,7 +3311,7 @@
         },
         {
           "term": "american",
-          "score": 4.65,
+          "score": 4.66,
           "z": 0.46,
           "countPrev": 0,
           "countCurr": 1,
@@ -2394,7 +3322,7 @@
         },
         {
           "term": "base",
-          "score": 4.65,
+          "score": 4.66,
           "z": 0.46,
           "countPrev": 0,
           "countCurr": 1,
@@ -2405,7 +3333,7 @@
         },
         {
           "term": "brands",
-          "score": 4.65,
+          "score": 4.66,
           "z": 0.46,
           "countPrev": 0,
           "countCurr": 1,
@@ -2416,7 +3344,7 @@
         },
         {
           "term": "case",
-          "score": 4.65,
+          "score": 4.66,
           "z": 0.46,
           "countPrev": 0,
           "countCurr": 1,
@@ -2427,7 +3355,7 @@
         },
         {
           "term": "cause incur",
-          "score": 4.65,
+          "score": 4.66,
           "z": 0.46,
           "countPrev": 0,
           "countCurr": 1,
@@ -2438,7 +3366,7 @@
         },
         {
           "term": "certain aspects",
-          "score": 4.65,
+          "score": 4.66,
           "z": 0.46,
           "countPrev": 0,
           "countCurr": 1,
@@ -2449,7 +3377,7 @@
         },
         {
           "term": "chairman",
-          "score": 4.65,
+          "score": 4.66,
           "z": 0.46,
           "countPrev": 0,
           "countCurr": 1,
@@ -2460,7 +3388,7 @@
         },
         {
           "term": "commentary",
-          "score": 4.65,
+          "score": 4.66,
           "z": 0.46,
           "countPrev": 0,
           "countCurr": 1,
@@ -2471,7 +3399,7 @@
         },
         {
           "term": "confidential",
-          "score": 4.65,
+          "score": 4.66,
           "z": 0.46,
           "countPrev": 0,
           "countCurr": 1,
@@ -2482,7 +3410,7 @@
         },
         {
           "term": "confidentiality",
-          "score": 4.65,
+          "score": 4.66,
           "z": 0.46,
           "countPrev": 0,
           "countCurr": 1,
@@ -2493,7 +3421,7 @@
         },
         {
           "term": "consequence",
-          "score": 4.65,
+          "score": 4.66,
           "z": 0.46,
           "countPrev": 0,
           "countCurr": 1,
@@ -2510,9 +3438,9 @@
           "z": -0.62,
           "countPrev": 5,
           "countCurr": 0,
-          "per10kPrev": 4.16,
+          "per10kPrev": 4.18,
           "per10kCurr": 0.0,
-          "deltaPer10k": -4.16,
+          "deltaPer10k": -4.18,
           "distinctive": false
         },
         {
@@ -2521,9 +3449,9 @@
           "z": -0.59,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 3.33,
+          "per10kPrev": 3.35,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.33,
+          "deltaPer10k": -3.35,
           "distinctive": false
         },
         {
@@ -2532,9 +3460,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.66,
+          "per10kPrev": 1.67,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.66,
+          "deltaPer10k": -1.67,
           "distinctive": false
         },
         {
@@ -2543,9 +3471,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.66,
+          "per10kPrev": 1.67,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.66,
+          "deltaPer10k": -1.67,
           "distinctive": false
         },
         {
@@ -2554,9 +3482,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.66,
+          "per10kPrev": 1.67,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.66,
+          "deltaPer10k": -1.67,
           "distinctive": false
         },
         {
@@ -2565,9 +3493,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.66,
+          "per10kPrev": 1.67,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.66,
+          "deltaPer10k": -1.67,
           "distinctive": false
         },
         {
@@ -2576,9 +3504,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.66,
+          "per10kPrev": 1.67,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.66,
+          "deltaPer10k": -1.67,
           "distinctive": false
         },
         {
@@ -2587,9 +3515,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.66,
+          "per10kPrev": 1.67,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.66,
+          "deltaPer10k": -1.67,
           "distinctive": false
         },
         {
@@ -2598,9 +3526,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.66,
+          "per10kPrev": 1.67,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.66,
+          "deltaPer10k": -1.67,
           "distinctive": false
         },
         {
@@ -2609,9 +3537,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.66,
+          "per10kPrev": 1.67,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.66,
+          "deltaPer10k": -1.67,
           "distinctive": false
         },
         {
@@ -2620,9 +3548,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.66,
+          "per10kPrev": 1.67,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.66,
+          "deltaPer10k": -1.67,
           "distinctive": false
         },
         {
@@ -2631,9 +3559,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.66,
+          "per10kPrev": 1.67,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.66,
+          "deltaPer10k": -1.67,
           "distinctive": false
         },
         {
@@ -2642,9 +3570,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.66,
+          "per10kPrev": 1.67,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.66,
+          "deltaPer10k": -1.67,
           "distinctive": false
         },
         {
@@ -2653,9 +3581,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.66,
+          "per10kPrev": 1.67,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.66,
+          "deltaPer10k": -1.67,
           "distinctive": false
         },
         {
@@ -2664,9 +3592,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.66,
+          "per10kPrev": 1.67,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.66,
+          "deltaPer10k": -1.67,
           "distinctive": false
         }
       ],
@@ -2808,8 +3736,8 @@
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.36,
-          "deltaPer10k": 4.36,
+          "per10kCurr": 4.39,
+          "deltaPer10k": 4.39,
           "distinctive": false
         },
         {
@@ -2819,8 +3747,8 @@
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.36,
-          "deltaPer10k": 4.36,
+          "per10kCurr": 4.39,
+          "deltaPer10k": 4.39,
           "distinctive": false
         },
         {
@@ -2830,8 +3758,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.74,
-          "deltaPer10k": 1.74,
+          "per10kCurr": 1.76,
+          "deltaPer10k": 1.76,
           "distinctive": false
         },
         {
@@ -2841,8 +3769,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.74,
-          "deltaPer10k": 1.74,
+          "per10kCurr": 1.76,
+          "deltaPer10k": 1.76,
           "distinctive": false
         },
         {
@@ -2852,8 +3780,8 @@
           "countPrev": 0,
           "countCurr": 1,
           "per10kPrev": 0.0,
-          "per10kCurr": 0.87,
-          "deltaPer10k": 0.87,
+          "per10kCurr": 0.88,
+          "deltaPer10k": 0.88,
           "distinctive": false
         },
         {
@@ -2863,8 +3791,8 @@
           "countPrev": 0,
           "countCurr": 1,
           "per10kPrev": 0.0,
-          "per10kCurr": 0.87,
-          "deltaPer10k": 0.87,
+          "per10kCurr": 0.88,
+          "deltaPer10k": 0.88,
           "distinctive": false
         },
         {
@@ -2874,8 +3802,8 @@
           "countPrev": 0,
           "countCurr": 1,
           "per10kPrev": 0.0,
-          "per10kCurr": 0.87,
-          "deltaPer10k": 0.87,
+          "per10kCurr": 0.88,
+          "deltaPer10k": 0.88,
           "distinctive": false
         },
         {
@@ -2885,8 +3813,8 @@
           "countPrev": 0,
           "countCurr": 1,
           "per10kPrev": 0.0,
-          "per10kCurr": 0.87,
-          "deltaPer10k": 0.87,
+          "per10kCurr": 0.88,
+          "deltaPer10k": 0.88,
           "distinctive": false
         },
         {
@@ -2896,8 +3824,8 @@
           "countPrev": 0,
           "countCurr": 1,
           "per10kPrev": 0.0,
-          "per10kCurr": 0.87,
-          "deltaPer10k": 0.87,
+          "per10kCurr": 0.88,
+          "deltaPer10k": 0.88,
           "distinctive": false
         },
         {
@@ -2907,8 +3835,8 @@
           "countPrev": 0,
           "countCurr": 1,
           "per10kPrev": 0.0,
-          "per10kCurr": 0.87,
-          "deltaPer10k": 0.87,
+          "per10kCurr": 0.88,
+          "deltaPer10k": 0.88,
           "distinctive": false
         },
         {
@@ -2918,8 +3846,8 @@
           "countPrev": 0,
           "countCurr": 1,
           "per10kPrev": 0.0,
-          "per10kCurr": 0.87,
-          "deltaPer10k": 0.87,
+          "per10kCurr": 0.88,
+          "deltaPer10k": 0.88,
           "distinctive": false
         },
         {
@@ -2929,8 +3857,8 @@
           "countPrev": 0,
           "countCurr": 1,
           "per10kPrev": 0.0,
-          "per10kCurr": 0.87,
-          "deltaPer10k": 0.87,
+          "per10kCurr": 0.88,
+          "deltaPer10k": 0.88,
           "distinctive": false
         },
         {
@@ -2940,8 +3868,8 @@
           "countPrev": 0,
           "countCurr": 1,
           "per10kPrev": 0.0,
-          "per10kCurr": 0.87,
-          "deltaPer10k": 0.87,
+          "per10kCurr": 0.88,
+          "deltaPer10k": 0.88,
           "distinctive": false
         },
         {
@@ -2951,8 +3879,8 @@
           "countPrev": 0,
           "countCurr": 1,
           "per10kPrev": 0.0,
-          "per10kCurr": 0.87,
-          "deltaPer10k": 0.87,
+          "per10kCurr": 0.88,
+          "deltaPer10k": 0.88,
           "distinctive": false
         },
         {
@@ -2962,8 +3890,8 @@
           "countPrev": 0,
           "countCurr": 1,
           "per10kPrev": 0.0,
-          "per10kCurr": 0.87,
-          "deltaPer10k": 0.87,
+          "per10kCurr": 0.88,
+          "deltaPer10k": 0.88,
           "distinctive": false
         }
       ],
@@ -2974,9 +3902,9 @@
           "z": -0.62,
           "countPrev": 5,
           "countCurr": 0,
-          "per10kPrev": 4.33,
+          "per10kPrev": 4.35,
           "per10kCurr": 0.0,
-          "deltaPer10k": -4.33,
+          "deltaPer10k": -4.35,
           "distinctive": false
         },
         {
@@ -2985,9 +3913,9 @@
           "z": -0.6,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 3.46,
+          "per10kPrev": 3.48,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.46,
+          "deltaPer10k": -3.48,
           "distinctive": false
         },
         {
@@ -2996,9 +3924,9 @@
           "z": -0.57,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 2.6,
+          "per10kPrev": 2.61,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.6,
+          "deltaPer10k": -2.61,
           "distinctive": false
         },
         {
@@ -3007,9 +3935,9 @@
           "z": -0.57,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 2.6,
+          "per10kPrev": 2.61,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.6,
+          "deltaPer10k": -2.61,
           "distinctive": false
         },
         {
@@ -3018,9 +3946,9 @@
           "z": -0.57,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 2.6,
+          "per10kPrev": 2.61,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.6,
+          "deltaPer10k": -2.61,
           "distinctive": false
         },
         {
@@ -3029,9 +3957,9 @@
           "z": -0.57,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 2.6,
+          "per10kPrev": 2.61,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.6,
+          "deltaPer10k": -2.61,
           "distinctive": false
         },
         {
@@ -3040,9 +3968,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.73,
+          "per10kPrev": 1.74,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.73,
+          "deltaPer10k": -1.74,
           "distinctive": false,
           "includes": [
             "covid"
@@ -3054,9 +3982,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.73,
+          "per10kPrev": 1.74,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.73,
+          "deltaPer10k": -1.74,
           "distinctive": false,
           "includes": [
             "pandemic"
@@ -3068,9 +3996,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.73,
+          "per10kPrev": 1.74,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.73,
+          "deltaPer10k": -1.74,
           "distinctive": false
         },
         {
@@ -3079,9 +4007,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.73,
+          "per10kPrev": 1.74,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.73,
+          "deltaPer10k": -1.74,
           "distinctive": false
         },
         {
@@ -3090,9 +4018,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.73,
+          "per10kPrev": 1.74,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.73,
+          "deltaPer10k": -1.74,
           "distinctive": false
         },
         {
@@ -3101,9 +4029,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.73,
+          "per10kPrev": 1.74,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.73,
+          "deltaPer10k": -1.74,
           "distinctive": false
         },
         {
@@ -3112,9 +4040,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.73,
+          "per10kPrev": 1.74,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.73,
+          "deltaPer10k": -1.74,
           "distinctive": false
         },
         {
@@ -3123,9 +4051,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.73,
+          "per10kPrev": 1.74,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.73,
+          "deltaPer10k": -1.74,
           "distinctive": false
         },
         {
@@ -3134,9 +4062,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.73,
+          "per10kPrev": 1.74,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.73,
+          "deltaPer10k": -1.74,
           "distinctive": false
         }
       ],

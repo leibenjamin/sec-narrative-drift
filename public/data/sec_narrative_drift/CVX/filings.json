@@ -1,5 +1,38 @@
 [
   {
+    "year": 2015,
+    "form": "10-K",
+    "filingDate": "2016-02-25",
+    "reportDate": "2015-12-31",
+    "accessionNumber": "0000093410-16-000049",
+    "primaryDocument": "cvx-123115x10kdoc.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/93410/000009341016000049/cvx-123115x10kdoc.htm",
+    "extraction": {
+      "confidence": 0.6499999999999999,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing",
+        "early_position_penalty"
+      ]
+    }
+  },
+  {
+    "year": 2016,
+    "form": "10-K",
+    "filingDate": "2017-02-23",
+    "reportDate": "2016-12-31",
+    "accessionNumber": "0000093410-17-000013",
+    "primaryDocument": "cvx-123116x10kdoc.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/93410/000009341017000013/cvx-123116x10kdoc.htm",
+    "extraction": {
+      "confidence": 0.8999999999999999,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing"
+      ]
+    }
+  },
+  {
     "year": 2017,
     "form": "10-K",
     "filingDate": "2018-02-22",

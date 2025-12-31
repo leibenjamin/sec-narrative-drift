@@ -1,5 +1,73 @@
 [
   {
+    "year": 2015,
+    "form": "10-K",
+    "filingDate": "2016-02-24",
+    "reportDate": "2015-12-31",
+    "accessionNumber": "0000034088-16-000065",
+    "primaryDocument": "xom10k2015.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/34088/000003408816000065/xom10k2015.htm",
+    "extraction": {
+      "confidence": 0.75,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing",
+        "early_position_penalty"
+      ]
+    }
+  },
+  {
+    "year": 2016,
+    "form": "10-K",
+    "filingDate": "2017-02-22",
+    "reportDate": "2016-12-31",
+    "accessionNumber": "0000034088-17-000017",
+    "primaryDocument": "xom10k2016.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/34088/000003408817000017/xom10k2016.htm",
+    "extraction": {
+      "confidence": 0.75,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing",
+        "early_position_penalty"
+      ]
+    }
+  },
+  {
+    "year": 2017,
+    "form": "10-K",
+    "filingDate": "2018-02-28",
+    "reportDate": "2017-12-31",
+    "accessionNumber": "0000034088-18-000015",
+    "primaryDocument": "xom10k2017.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/34088/000003408818000015/xom10k2017.htm",
+    "extraction": {
+      "confidence": 0.75,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing",
+        "early_position_penalty"
+      ]
+    }
+  },
+  {
+    "year": 2018,
+    "form": "10-K",
+    "filingDate": "2019-02-27",
+    "reportDate": "2018-12-31",
+    "accessionNumber": "0000034088-19-000010",
+    "primaryDocument": "xom10k2018.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/34088/000003408819000010/xom10k2018.htm",
+    "extraction": {
+      "confidence": 0.75,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing",
+        "early_position_penalty"
+      ]
+    }
+  },
+  {
     "year": 2019,
     "form": "10-K",
     "filingDate": "2020-02-26",

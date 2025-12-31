@@ -2,343 +2,817 @@
   "section": "10k_item1a",
   "yearPairs": [
     {
+      "from": 2016,
+      "to": 2020,
+      "topRisers": [
+        {
+          "term": "Artificial intelligence",
+          "score": 6.93,
+          "z": 0.69,
+          "countPrev": 0,
+          "countCurr": 13,
+          "per10kPrev": 0.0,
+          "per10kCurr": 15.34,
+          "deltaPer10k": 15.34,
+          "distinctive": false,
+          "includes": [
+            "artificial intelligence",
+            "ai"
+          ]
+        },
+        {
+          "term": "iot",
+          "score": 6.93,
+          "z": 0.69,
+          "countPrev": 0,
+          "countCurr": 13,
+          "per10kPrev": 0.0,
+          "per10kCurr": 15.34,
+          "deltaPer10k": 15.34,
+          "distinctive": false
+        },
+        {
+          "term": "Pandemic",
+          "score": 6.44,
+          "z": 0.64,
+          "countPrev": 0,
+          "countCurr": 8,
+          "per10kPrev": 0.0,
+          "per10kCurr": 9.44,
+          "deltaPer10k": 9.44,
+          "distinctive": false,
+          "includes": [
+            "pandemic"
+          ]
+        },
+        {
+          "term": "brands",
+          "score": 6.44,
+          "z": 0.64,
+          "countPrev": 0,
+          "countCurr": 8,
+          "per10kPrev": 0.0,
+          "per10kCurr": 9.44,
+          "deltaPer10k": 9.44,
+          "distinctive": false
+        },
+        {
+          "term": "reputation brands",
+          "score": 6.31,
+          "z": 0.63,
+          "countPrev": 0,
+          "countCurr": 7,
+          "per10kPrev": 0.0,
+          "per10kCurr": 8.26,
+          "deltaPer10k": 8.26,
+          "distinctive": false
+        },
+        {
+          "term": "GDPR",
+          "score": 6.15,
+          "z": 0.61,
+          "countPrev": 0,
+          "countCurr": 6,
+          "per10kPrev": 0.0,
+          "per10kCurr": 7.08,
+          "deltaPer10k": 7.08,
+          "distinctive": false,
+          "includes": [
+            "gdpr"
+          ]
+        },
+        {
+          "term": "adversely impact",
+          "score": 6.15,
+          "z": 0.61,
+          "countPrev": 0,
+          "countCurr": 6,
+          "per10kPrev": 0.0,
+          "per10kCurr": 7.08,
+          "deltaPer10k": 7.08,
+          "distinctive": false
+        },
+        {
+          "term": "customer user",
+          "score": 6.15,
+          "z": 0.61,
+          "countPrev": 0,
+          "countCurr": 6,
+          "per10kPrev": 0.0,
+          "per10kCurr": 7.08,
+          "deltaPer10k": 7.08,
+          "distinctive": false
+        },
+        {
+          "term": "datacenter",
+          "score": 6.15,
+          "z": 0.61,
+          "countPrev": 0,
+          "countCurr": 6,
+          "per10kPrev": 0.0,
+          "per10kCurr": 7.08,
+          "deltaPer10k": 7.08,
+          "distinctive": false
+        },
+        {
+          "term": "intelligent",
+          "score": 6.15,
+          "z": 0.61,
+          "countPrev": 0,
+          "countCurr": 6,
+          "per10kPrev": 0.0,
+          "per10kCurr": 7.08,
+          "deltaPer10k": 7.08,
+          "distinctive": false
+        },
+        {
+          "term": "edge",
+          "score": 5.97,
+          "z": 0.6,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.9,
+          "deltaPer10k": 5.9,
+          "distinctive": false
+        },
+        {
+          "term": "engagement",
+          "score": 5.97,
+          "z": 0.6,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.9,
+          "deltaPer10k": 5.9,
+          "distinctive": false
+        },
+        {
+          "term": "safety",
+          "score": 5.97,
+          "z": 0.6,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.9,
+          "deltaPer10k": 5.9,
+          "distinctive": false
+        },
+        {
+          "term": "work",
+          "score": 5.97,
+          "z": 0.6,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.9,
+          "deltaPer10k": 5.9,
+          "distinctive": false
+        },
+        {
+          "term": "affect consolidated",
+          "score": 5.75,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.72,
+          "deltaPer10k": 4.72,
+          "distinctive": false
+        }
+      ],
+      "topFallers": [
+        {
+          "term": "contents",
+          "score": -7.05,
+          "z": -0.7,
+          "countPrev": 9,
+          "countCurr": 0,
+          "per10kPrev": 13.6,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -13.6,
+          "distinctive": false
+        },
+        {
+          "term": "contents item",
+          "score": -7.05,
+          "z": -0.7,
+          "countPrev": 9,
+          "countCurr": 0,
+          "per10kPrev": 13.6,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -13.6,
+          "distinctive": false
+        },
+        {
+          "term": "table",
+          "score": -7.05,
+          "z": -0.7,
+          "countPrev": 9,
+          "countCurr": 0,
+          "per10kPrev": 13.6,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -13.6,
+          "distinctive": false
+        },
+        {
+          "term": "table contents",
+          "score": -7.05,
+          "z": -0.7,
+          "countPrev": 9,
+          "countCurr": 0,
+          "per10kPrev": 13.6,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -13.6,
+          "distinctive": false
+        },
+        {
+          "term": "cyber",
+          "score": -6.24,
+          "z": -0.62,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 6.04,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -6.04,
+          "distinctive": false
+        },
+        {
+          "term": "harbor",
+          "score": -5.95,
+          "z": -0.59,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 4.53,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.53,
+          "distinctive": false
+        },
+        {
+          "term": "safe",
+          "score": -5.95,
+          "z": -0.59,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 4.53,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.53,
+          "distinctive": false
+        },
+        {
+          "term": "ecj",
+          "score": -5.55,
+          "z": -0.55,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 3.02,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.02,
+          "distinctive": false
+        },
+        {
+          "term": "mobile",
+          "score": -5.55,
+          "z": -0.55,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 3.02,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.02,
+          "distinctive": false
+        },
+        {
+          "term": "pass",
+          "score": -5.55,
+          "z": -0.55,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 3.02,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.02,
+          "distinctive": false
+        },
+        {
+          "term": "phone",
+          "score": -5.55,
+          "z": -0.55,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 3.02,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.02,
+          "distinctive": false
+        },
+        {
+          "term": "quarter",
+          "score": -5.55,
+          "z": -0.55,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 3.02,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.02,
+          "distinctive": false
+        },
+        {
+          "term": "stores",
+          "score": -5.55,
+          "z": -0.55,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 3.02,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.02,
+          "distinctive": false
+        },
+        {
+          "term": "accruals",
+          "score": -4.86,
+          "z": -0.48,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 1.51,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.51,
+          "distinctive": false
+        },
+        {
+          "term": "ambitious",
+          "score": -4.86,
+          "z": -0.48,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 1.51,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.51,
+          "distinctive": false
+        }
+      ],
+      "summary": "Adds emphasis on Artificial intelligence, iot, Pandemic; de-emphasizes contents, contents item, table.",
+      "topRisersAlt": [
+        {
+          "term": "adversely impact",
+          "score": 5.88
+        },
+        {
+          "term": "adversely affect",
+          "score": 5.66
+        },
+        {
+          "term": "customers users",
+          "score": 5.36
+        },
+        {
+          "term": "increase costs",
+          "score": 5.36
+        },
+        {
+          "term": "use products services",
+          "score": 5.36
+        },
+        {
+          "term": "user data",
+          "score": 5.36
+        },
+        {
+          "term": "business practices",
+          "score": 4.95
+        },
+        {
+          "term": "costs liability claims",
+          "score": 4.95
+        },
+        {
+          "term": "impact economic",
+          "score": 4.95
+        },
+        {
+          "term": "legal liability",
+          "score": 4.95
+        },
+        {
+          "term": "operations financial",
+          "score": 4.95
+        },
+        {
+          "term": "products services technologies",
+          "score": 4.95
+        },
+        {
+          "term": "reputation user",
+          "score": 4.95
+        },
+        {
+          "term": "result significant",
+          "score": 4.95
+        },
+        {
+          "term": "risks including",
+          "score": 4.95
+        }
+      ],
+      "topFallersAlt": [
+        {
+          "term": "customer data",
+          "score": -6.39
+        },
+        {
+          "term": "hardware software products",
+          "score": -6.09
+        },
+        {
+          "term": "products services adversely",
+          "score": -5.68
+        },
+        {
+          "term": "intellectual property",
+          "score": -1.08
+        },
+        {
+          "term": "adversely affect revenue",
+          "score": -0.79
+        },
+        {
+          "term": "operating margins",
+          "score": -0.6
+        },
+        {
+          "term": "cloud based",
+          "score": -0.56
+        },
+        {
+          "term": "new products services",
+          "score": -0.56
+        },
+        {
+          "term": "business operations",
+          "score": -0.37
+        },
+        {
+          "term": "margins operating",
+          "score": -0.37
+        },
+        {
+          "term": "practices result",
+          "score": -0.37
+        },
+        {
+          "term": "products services customers",
+          "score": -0.37
+        },
+        {
+          "term": "services including",
+          "score": -0.37
+        },
+        {
+          "term": "significant competition",
+          "score": -0.37
+        },
+        {
+          "term": "business continuity",
+          "score": -0.36
+        }
+      ],
+      "summaryAlt": "Adds emphasis on adversely impact, adversely affect, customers users; de-emphasizes customer data, hardware software products, products services adversely."
+    },
+    {
       "from": 2020,
       "to": 2021,
       "topRisers": [
         {
           "term": "environments",
-          "score": 5.93,
+          "score": 5.95,
           "z": 0.59,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.85,
-          "deltaPer10k": 5.85,
+          "per10kCurr": 4.49,
+          "deltaPer10k": 4.49,
           "distinctive": false
         },
         {
           "term": "export controls",
-          "score": 5.93,
+          "score": 5.95,
           "z": 0.59,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.85,
-          "deltaPer10k": 5.85,
+          "per10kCurr": 4.49,
+          "deltaPer10k": 4.49,
           "distinctive": false
         },
         {
           "term": "attack customers",
-          "score": 5.64,
+          "score": 5.66,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.39,
-          "deltaPer10k": 4.39,
+          "per10kCurr": 3.37,
+          "deltaPer10k": 3.37,
           "distinctive": false
         },
         {
           "term": "export",
-          "score": 5.64,
+          "score": 5.66,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.39,
-          "deltaPer10k": 4.39,
+          "per10kCurr": 3.37,
+          "deltaPer10k": 3.37,
           "distinctive": false
         },
         {
           "term": "malware",
-          "score": 5.64,
+          "score": 5.66,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.39,
-          "deltaPer10k": 4.39,
+          "per10kCurr": 3.37,
+          "deltaPer10k": 3.37,
           "distinctive": false
         },
         {
           "term": "nobelium",
-          "score": 5.64,
+          "score": 5.66,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.39,
-          "deltaPer10k": 4.39,
+          "per10kCurr": 3.37,
+          "deltaPer10k": 3.37,
           "distinctive": false
         },
         {
           "term": "settings",
-          "score": 5.64,
+          "score": 5.66,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.39,
-          "deltaPer10k": 4.39,
+          "per10kCurr": 3.37,
+          "deltaPer10k": 3.37,
           "distinctive": false
         },
         {
           "term": "solorigate",
-          "score": 5.64,
+          "score": 5.66,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.39,
-          "deltaPer10k": 4.39,
+          "per10kCurr": 3.37,
+          "deltaPer10k": 3.37,
           "distinctive": false
         },
         {
           "term": "solorigate nobelium",
-          "score": 5.64,
+          "score": 5.66,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.39,
-          "deltaPer10k": 4.39,
+          "per10kCurr": 3.37,
+          "deltaPer10k": 3.37,
           "distinctive": false
         },
         {
           "term": "advances",
-          "score": 5.24,
+          "score": 5.26,
           "z": 0.52,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.93,
-          "deltaPer10k": 2.93,
+          "per10kCurr": 2.25,
+          "deltaPer10k": 2.25,
           "distinctive": false
         },
         {
           "term": "advances standards",
-          "score": 5.24,
+          "score": 5.26,
           "z": 0.52,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.93,
-          "deltaPer10k": 2.93,
+          "per10kCurr": 2.25,
+          "deltaPer10k": 2.25,
           "distinctive": false
         },
         {
           "term": "announced",
-          "score": 5.24,
+          "score": 5.26,
           "z": 0.52,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.93,
-          "deltaPer10k": 2.93,
+          "per10kCurr": 2.25,
+          "deltaPer10k": 2.25,
           "distinctive": false
         },
         {
           "term": "attackers",
-          "score": 5.24,
+          "score": 5.26,
           "z": 0.52,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.93,
-          "deltaPer10k": 2.93,
+          "per10kCurr": 2.25,
+          "deltaPer10k": 2.25,
           "distinctive": false
         },
         {
           "term": "committed",
-          "score": 5.24,
+          "score": 5.26,
           "z": 0.52,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.93,
-          "deltaPer10k": 2.93,
+          "per10kCurr": 2.25,
+          "deltaPer10k": 2.25,
           "distinctive": false
         },
         {
           "term": "compromised",
-          "score": 5.24,
+          "score": 5.26,
           "z": 0.52,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.93,
-          "deltaPer10k": 2.93,
+          "per10kCurr": 2.25,
+          "deltaPer10k": 2.25,
           "distinctive": false
         }
       ],
       "topFallers": [
         {
           "term": "live",
-          "score": -5.77,
-          "z": -0.58,
+          "score": -5.76,
+          "z": -0.57,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 4.69,
+          "per10kPrev": 3.54,
           "per10kCurr": 0.0,
-          "deltaPer10k": -4.69,
+          "deltaPer10k": -3.54,
+          "distinctive": false
+        },
+        {
+          "term": "xbox live",
+          "score": -5.76,
+          "z": -0.57,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 3.54,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.54,
           "distinctive": false
         },
         {
           "term": "closures",
-          "score": -5.37,
-          "z": -0.54,
+          "score": -5.35,
+          "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 3.12,
+          "per10kPrev": 2.36,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.12,
+          "deltaPer10k": -2.36,
           "distinctive": false
         },
         {
           "term": "fiscal",
-          "score": -5.37,
-          "z": -0.54,
+          "score": -5.35,
+          "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 3.12,
+          "per10kPrev": 2.36,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.12,
+          "deltaPer10k": -2.36,
+          "distinctive": false
+        },
+        {
+          "term": "fiscal year",
+          "score": -5.35,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.36,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.36,
           "distinctive": false
         },
         {
           "term": "home",
-          "score": -5.37,
-          "z": -0.54,
+          "score": -5.35,
+          "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 3.12,
+          "per10kPrev": 2.36,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.12,
+          "deltaPer10k": -2.36,
+          "distinctive": false
+        },
+        {
+          "term": "protection laws",
+          "score": -5.35,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.36,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.36,
+          "distinctive": false
+        },
+        {
+          "term": "trade protection",
+          "score": -5.35,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.36,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.36,
           "distinctive": false
         },
         {
           "term": "advised",
-          "score": -4.68,
-          "z": -0.47,
+          "score": -4.66,
+          "z": -0.46,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 1.56,
+          "per10kPrev": 1.18,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.56,
+          "deltaPer10k": -1.18,
           "distinctive": false
         },
         {
           "term": "border",
-          "score": -4.68,
-          "z": -0.47,
+          "score": -4.66,
+          "z": -0.46,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 1.56,
+          "per10kPrev": 1.18,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.56,
+          "deltaPer10k": -1.18,
           "distinctive": false
         },
         {
           "term": "cancelled",
-          "score": -4.68,
-          "z": -0.47,
+          "score": -4.66,
+          "z": -0.46,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 1.56,
+          "per10kPrev": 1.18,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.56,
+          "deltaPer10k": -1.18,
           "distinctive": false
         },
         {
           "term": "closure",
-          "score": -4.68,
-          "z": -0.47,
+          "score": -4.66,
+          "z": -0.46,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 1.56,
+          "per10kPrev": 1.18,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.56,
+          "deltaPer10k": -1.18,
           "distinctive": false
         },
         {
           "term": "conferences",
-          "score": -4.68,
-          "z": -0.47,
+          "score": -4.66,
+          "z": -0.46,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 1.56,
+          "per10kPrev": 1.18,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.56,
+          "deltaPer10k": -1.18,
           "distinctive": false
         },
         {
           "term": "fourth",
-          "score": -4.68,
-          "z": -0.47,
+          "score": -4.66,
+          "z": -0.46,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 1.56,
+          "per10kPrev": 1.18,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.56,
+          "deltaPer10k": -1.18,
           "distinctive": false
         },
         {
           "term": "gatherings",
-          "score": -4.68,
-          "z": -0.47,
+          "score": -4.66,
+          "z": -0.46,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 1.56,
+          "per10kPrev": 1.18,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.56,
-          "distinctive": false
-        },
-        {
-          "term": "having",
-          "score": -4.68,
-          "z": -0.47,
-          "countPrev": 1,
-          "countCurr": 0,
-          "per10kPrev": 1.56,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.56,
-          "distinctive": false
-        },
-        {
-          "term": "logistical",
-          "score": -4.68,
-          "z": -0.47,
-          "countPrev": 1,
-          "countCurr": 0,
-          "per10kPrev": 1.56,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.56,
-          "distinctive": false
-        },
-        {
-          "term": "magnifying",
-          "score": -4.68,
-          "z": -0.47,
-          "countPrev": 1,
-          "countCurr": 0,
-          "per10kPrev": 1.56,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.56,
-          "distinctive": false
-        },
-        {
-          "term": "modifications",
-          "score": -4.68,
-          "z": -0.47,
-          "countPrev": 1,
-          "countCurr": 0,
-          "per10kPrev": 1.56,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.56,
+          "deltaPer10k": -1.18,
           "distinctive": false
         }
       ],
-      "summary": "Adds emphasis on environments, export controls, attack customers; de-emphasizes live, closures, fiscal.",
+      "summary": "Adds emphasis on environments, export controls, attack customers; de-emphasizes live, xbox live, closures.",
       "topRisersAlt": [
         {
           "term": "adversely affect business",
@@ -476,329 +950,329 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.3,
-          "deltaPer10k": 4.3,
+          "per10kCurr": 3.32,
+          "deltaPer10k": 3.32,
           "distinctive": false
         },
         {
           "term": "atlantic",
-          "score": 5.28,
+          "score": 5.29,
           "z": 0.53,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.86,
-          "deltaPer10k": 2.86,
+          "per10kCurr": 2.21,
+          "deltaPer10k": 2.21,
           "distinctive": false
         },
         {
           "term": "diplomatic",
-          "score": 5.28,
+          "score": 5.29,
           "z": 0.53,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.86,
-          "deltaPer10k": 2.86,
+          "per10kCurr": 2.21,
+          "deltaPer10k": 2.21,
           "distinctive": false
         },
         {
           "term": "recently",
-          "score": 5.28,
+          "score": 5.29,
           "z": 0.53,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.86,
-          "deltaPer10k": 2.86,
+          "per10kCurr": 2.21,
+          "deltaPer10k": 2.21,
           "distinctive": false
         },
         {
           "term": "trans",
-          "score": 5.28,
+          "score": 5.29,
           "z": 0.53,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.86,
-          "deltaPer10k": 2.86,
+          "per10kCurr": 2.21,
+          "deltaPer10k": 2.21,
           "distinctive": false
         },
         {
           "term": "activision",
-          "score": 4.59,
+          "score": 4.6,
           "z": 0.46,
           "countPrev": 0,
           "countCurr": 1,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.43,
-          "deltaPer10k": 1.43,
+          "per10kCurr": 1.11,
+          "deltaPer10k": 1.11,
           "distinctive": false
         },
         {
           "term": "assessed",
-          "score": 4.59,
+          "score": 4.6,
           "z": 0.46,
           "countPrev": 0,
           "countCurr": 1,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.43,
-          "deltaPer10k": 1.43,
+          "per10kCurr": 1.11,
+          "deltaPer10k": 1.11,
           "distinctive": false
         },
         {
           "term": "blizzard",
-          "score": 4.59,
+          "score": 4.6,
           "z": 0.46,
           "countPrev": 0,
           "countCurr": 1,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.43,
-          "deltaPer10k": 1.43,
+          "per10kCurr": 1.11,
+          "deltaPer10k": 1.11,
           "distinctive": false
         },
         {
           "term": "blockage",
-          "score": 4.59,
+          "score": 4.6,
           "z": 0.46,
           "countPrev": 0,
           "countCurr": 1,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.43,
-          "deltaPer10k": 1.43,
+          "per10kCurr": 1.11,
+          "deltaPer10k": 1.11,
           "distinctive": false
         },
         {
           "term": "blockages",
-          "score": 4.59,
+          "score": 4.6,
           "z": 0.46,
           "countPrev": 0,
           "countCurr": 1,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.43,
-          "deltaPer10k": 1.43,
+          "per10kCurr": 1.11,
+          "deltaPer10k": 1.11,
           "distinctive": false
         },
         {
           "term": "blocking",
-          "score": 4.59,
+          "score": 4.6,
           "z": 0.46,
           "countPrev": 0,
           "countCurr": 1,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.43,
-          "deltaPer10k": 1.43,
+          "per10kCurr": 1.11,
+          "deltaPer10k": 1.11,
           "distinctive": false
         },
         {
           "term": "breadth",
-          "score": 4.59,
+          "score": 4.6,
           "z": 0.46,
           "countPrev": 0,
           "countCurr": 1,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.43,
-          "deltaPer10k": 1.43,
+          "per10kCurr": 1.11,
+          "deltaPer10k": 1.11,
           "distinctive": false
         },
         {
           "term": "case",
-          "score": 4.59,
+          "score": 4.6,
           "z": 0.46,
           "countPrev": 0,
           "countCurr": 1,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.43,
-          "deltaPer10k": 1.43,
+          "per10kCurr": 1.11,
+          "deltaPer10k": 1.11,
           "distinctive": false
         },
         {
           "term": "clean",
-          "score": 4.59,
+          "score": 4.6,
           "z": 0.46,
           "countPrev": 0,
           "countCurr": 1,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.43,
-          "deltaPer10k": 1.43,
+          "per10kCurr": 1.11,
+          "deltaPer10k": 1.11,
           "distinctive": false
         },
         {
           "term": "complaints",
-          "score": 4.59,
+          "score": 4.6,
           "z": 0.46,
           "countPrev": 0,
           "countCurr": 1,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.43,
-          "deltaPer10k": 1.43,
+          "per10kCurr": 1.11,
+          "deltaPer10k": 1.11,
           "distinctive": false
         }
       ],
       "topFallers": [
         {
           "term": "assumptions",
-          "score": -5.33,
+          "score": -5.32,
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 2.93,
+          "per10kPrev": 2.25,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.93,
+          "deltaPer10k": -2.25,
           "distinctive": false
         },
         {
           "term": "contain virus",
-          "score": -5.33,
+          "score": -5.32,
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 2.93,
+          "per10kPrev": 2.25,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.93,
+          "deltaPer10k": -2.25,
           "distinctive": false
         },
         {
           "term": "doj",
-          "score": -5.33,
+          "score": -5.32,
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 2.93,
+          "per10kPrev": 2.25,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.93,
+          "deltaPer10k": -2.25,
           "distinctive": false
         },
         {
           "term": "estimates assumptions",
-          "score": -5.33,
+          "score": -5.32,
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 2.93,
+          "per10kPrev": 2.25,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.93,
+          "deltaPer10k": -2.25,
           "distinctive": false
         },
         {
           "term": "factors adversely",
-          "score": -5.33,
+          "score": -5.32,
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 2.93,
+          "per10kPrev": 2.25,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.93,
+          "deltaPer10k": -2.25,
           "distinctive": false
         },
         {
           "term": "npa",
-          "score": -5.33,
+          "score": -5.32,
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 2.93,
+          "per10kPrev": 2.25,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.93,
+          "deltaPer10k": -2.25,
           "distinctive": false
         },
         {
           "term": "sole",
-          "score": -5.33,
+          "score": -5.32,
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 2.93,
+          "per10kPrev": 2.25,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.93,
+          "deltaPer10k": -2.25,
           "distinctive": false
         },
         {
           "term": "subsidiary",
-          "score": -5.33,
+          "score": -5.32,
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 2.93,
+          "per10kPrev": 2.25,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.93,
+          "deltaPer10k": -2.25,
           "distinctive": false
         },
         {
           "term": "april",
-          "score": -4.64,
+          "score": -4.63,
           "z": -0.46,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 1.46,
+          "per10kPrev": 1.12,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.46,
+          "deltaPer10k": -1.12,
           "distinctive": false
         },
         {
           "term": "causing",
-          "score": -4.64,
+          "score": -4.63,
           "z": -0.46,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 1.46,
+          "per10kPrev": 1.12,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.46,
+          "deltaPer10k": -1.12,
           "distinctive": false
         },
         {
           "term": "cease",
-          "score": -4.64,
+          "score": -4.63,
           "z": -0.46,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 1.46,
+          "per10kPrev": 1.12,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.46,
+          "deltaPer10k": -1.12,
           "distinctive": false
         },
         {
           "term": "colorado",
-          "score": -4.64,
+          "score": -4.63,
           "z": -0.46,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 1.46,
+          "per10kPrev": 1.12,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.46,
+          "deltaPer10k": -1.12,
           "distinctive": false
         },
         {
           "term": "communities",
-          "score": -4.64,
+          "score": -4.63,
           "z": -0.46,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 1.46,
+          "per10kPrev": 1.12,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.46,
+          "deltaPer10k": -1.12,
           "distinctive": false
         },
         {
           "term": "contains",
-          "score": -4.64,
+          "score": -4.63,
           "z": -0.46,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 1.46,
+          "per10kPrev": 1.12,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.46,
+          "deltaPer10k": -1.12,
           "distinctive": false
         },
         {
           "term": "degree",
-          "score": -4.64,
+          "score": -4.63,
           "z": -0.46,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 1.46,
+          "per10kPrev": 1.12,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.46,
+          "deltaPer10k": -1.12,
           "distinctive": false
         }
       ],

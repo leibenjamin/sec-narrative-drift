@@ -1,5 +1,89 @@
 [
   {
+    "year": 2015,
+    "form": "10-K",
+    "filingDate": "2016-02-26",
+    "reportDate": "2015-12-31",
+    "accessionNumber": "0000092122-16-000126",
+    "primaryDocument": "so_10-kx12312015.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/92122/000009212216000126/so_10-kx12312015.htm",
+    "extraction": {
+      "confidence": 0.85,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing",
+        "early_position_penalty"
+      ]
+    }
+  },
+  {
+    "year": 2016,
+    "form": "10-K",
+    "filingDate": "2017-02-22",
+    "reportDate": "2016-12-31",
+    "accessionNumber": "0000092122-17-000007",
+    "primaryDocument": "so_10-kx12312016.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/92122/000009212217000007/so_10-kx12312016.htm",
+    "extraction": {
+      "confidence": 0.85,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing",
+        "early_position_penalty"
+      ]
+    }
+  },
+  {
+    "year": 2017,
+    "form": "10-K",
+    "filingDate": "2018-02-21",
+    "reportDate": "2017-12-31",
+    "accessionNumber": "0000092122-18-000012",
+    "primaryDocument": "so_10-kx12312017.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/92122/000009212218000012/so_10-kx12312017.htm",
+    "extraction": {
+      "confidence": 0.85,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing",
+        "early_position_penalty"
+      ]
+    }
+  },
+  {
+    "year": 2018,
+    "form": "10-K",
+    "filingDate": "2019-02-20",
+    "reportDate": "2018-12-31",
+    "accessionNumber": "0000092122-19-000006",
+    "primaryDocument": "so10-k12312018.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/92122/000009212219000006/so10-k12312018.htm",
+    "extraction": {
+      "confidence": 0.85,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing",
+        "early_position_penalty"
+      ]
+    }
+  },
+  {
+    "year": 2019,
+    "form": "10-K",
+    "filingDate": "2020-02-20",
+    "reportDate": "2019-12-31",
+    "accessionNumber": "0000092122-20-000017",
+    "primaryDocument": "so10-k12312019.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/92122/000009212220000017/so10-k12312019.htm",
+    "extraction": {
+      "confidence": 0.95,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing"
+      ]
+    }
+  },
+  {
     "year": 2020,
     "form": "10-K",
     "filingDate": "2021-02-18",

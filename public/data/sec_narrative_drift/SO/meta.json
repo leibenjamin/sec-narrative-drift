@@ -2,7 +2,7 @@
   "ticker": "SO",
   "cik": "0000092122",
   "companyName": "SOUTHERN CO",
-  "lastUpdatedUtc": "2025-12-31T05:07:39Z",
+  "lastUpdatedUtc": "2025-12-31T18:04:12Z",
   "formsIncluded": [
     "10-K"
   ],
@@ -16,11 +16,12 @@
   "extraction": {
     "section": "item1a",
     "method": "text_scored",
-    "confidence": 0.95,
+    "confidence": 0.85,
     "warnings": [
-      "anchor_missing"
+      "anchor_missing",
+      "early_position_penalty"
     ],
-    "lengthChars": 65781,
+    "lengthChars": 95333,
     "endMarkerUsed": "1B",
     "hasItem1C": false
   }

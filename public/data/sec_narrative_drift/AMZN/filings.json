@@ -1,5 +1,73 @@
 [
   {
+    "year": 2015,
+    "form": "10-K",
+    "filingDate": "2016-01-29",
+    "reportDate": "2015-12-31",
+    "accessionNumber": "0001018724-16-000172",
+    "primaryDocument": "amzn-20151231x10k.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/1018724/000101872416000172/amzn-20151231x10k.htm",
+    "extraction": {
+      "confidence": 0.75,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing",
+        "early_position_penalty"
+      ]
+    }
+  },
+  {
+    "year": 2016,
+    "form": "10-K",
+    "filingDate": "2017-02-10",
+    "reportDate": "2016-12-31",
+    "accessionNumber": "0001018724-17-000011",
+    "primaryDocument": "amzn-20161231x10k.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/1018724/000101872417000011/amzn-20161231x10k.htm",
+    "extraction": {
+      "confidence": 0.75,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing",
+        "early_position_penalty"
+      ]
+    }
+  },
+  {
+    "year": 2017,
+    "form": "10-K",
+    "filingDate": "2018-02-02",
+    "reportDate": "2017-12-31",
+    "accessionNumber": "0001018724-18-000005",
+    "primaryDocument": "amzn-20171231x10k.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/1018724/000101872418000005/amzn-20171231x10k.htm",
+    "extraction": {
+      "confidence": 0.75,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing",
+        "early_position_penalty"
+      ]
+    }
+  },
+  {
+    "year": 2018,
+    "form": "10-K",
+    "filingDate": "2019-02-01",
+    "reportDate": "2018-12-31",
+    "accessionNumber": "0001018724-19-000004",
+    "primaryDocument": "amzn-20181231x10k.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/1018724/000101872419000004/amzn-20181231x10k.htm",
+    "extraction": {
+      "confidence": 0.75,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing",
+        "early_position_penalty"
+      ]
+    }
+  },
+  {
     "year": 2019,
     "form": "10-K",
     "filingDate": "2020-01-31",

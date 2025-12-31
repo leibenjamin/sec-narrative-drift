@@ -2,6 +2,938 @@
   "section": "10k_item1a",
   "yearPairs": [
     {
+      "from": 2015,
+      "to": 2016,
+      "topRisers": [
+        {
+          "term": "tax",
+          "score": 7.28,
+          "z": 0.73,
+          "countPrev": 0,
+          "countCurr": 18,
+          "per10kPrev": 0.0,
+          "per10kCurr": 51.22,
+          "deltaPer10k": 51.22,
+          "distinctive": false
+        },
+        {
+          "term": "impact",
+          "score": 6.87,
+          "z": 0.69,
+          "countPrev": 0,
+          "countCurr": 12,
+          "per10kPrev": 0.0,
+          "per10kCurr": 34.15,
+          "deltaPer10k": 34.15,
+          "distinctive": false
+        },
+        {
+          "term": "rights",
+          "score": 6.79,
+          "z": 0.68,
+          "countPrev": 0,
+          "countCurr": 11,
+          "per10kPrev": 0.0,
+          "per10kCurr": 31.3,
+          "deltaPer10k": 31.3,
+          "distinctive": false
+        },
+        {
+          "term": "foreign",
+          "score": 6.58,
+          "z": 0.66,
+          "countPrev": 0,
+          "countCurr": 9,
+          "per10kPrev": 0.0,
+          "per10kCurr": 25.61,
+          "deltaPer10k": 25.61,
+          "distinctive": false
+        },
+        {
+          "term": "technologies",
+          "score": 6.47,
+          "z": 0.65,
+          "countPrev": 0,
+          "countCurr": 8,
+          "per10kPrev": 0.0,
+          "per10kCurr": 22.77,
+          "deltaPer10k": 22.77,
+          "distinctive": false
+        },
+        {
+          "term": "Inflation",
+          "score": 6.18,
+          "z": 0.62,
+          "countPrev": 0,
+          "countCurr": 6,
+          "per10kPrev": 0.0,
+          "per10kCurr": 17.07,
+          "deltaPer10k": 17.07,
+          "distinctive": false,
+          "includes": [
+            "inflationary",
+            "inflation"
+          ]
+        },
+        {
+          "term": "ability",
+          "score": 6.18,
+          "z": 0.62,
+          "countPrev": 0,
+          "countCurr": 6,
+          "per10kPrev": 0.0,
+          "per10kCurr": 17.07,
+          "deltaPer10k": 17.07,
+          "distinctive": false
+        },
+        {
+          "term": "challenges",
+          "score": 6.18,
+          "z": 0.62,
+          "countPrev": 0,
+          "countCurr": 6,
+          "per10kPrev": 0.0,
+          "per10kCurr": 17.07,
+          "deltaPer10k": 17.07,
+          "distinctive": false
+        },
+        {
+          "term": "currency",
+          "score": 6.18,
+          "z": 0.62,
+          "countPrev": 0,
+          "countCurr": 6,
+          "per10kPrev": 0.0,
+          "per10kCurr": 17.07,
+          "deltaPer10k": 17.07,
+          "distinctive": false
+        },
+        {
+          "term": "period",
+          "score": 6.18,
+          "z": 0.62,
+          "countPrev": 0,
+          "countCurr": 6,
+          "per10kPrev": 0.0,
+          "per10kCurr": 17.07,
+          "deltaPer10k": 17.07,
+          "distinctive": false
+        },
+        {
+          "term": "providers",
+          "score": 6.18,
+          "z": 0.62,
+          "countPrev": 0,
+          "countCurr": 6,
+          "per10kPrev": 0.0,
+          "per10kCurr": 17.07,
+          "deltaPer10k": 17.07,
+          "distinctive": false
+        },
+        {
+          "term": "reputational",
+          "score": 6.18,
+          "z": 0.62,
+          "countPrev": 0,
+          "countCurr": 6,
+          "per10kPrev": 0.0,
+          "per10kCurr": 17.07,
+          "deltaPer10k": 17.07,
+          "distinctive": false
+        },
+        {
+          "term": "adversely affect",
+          "score": 6.0,
+          "z": 0.6,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 14.23,
+          "deltaPer10k": 14.23,
+          "distinctive": false
+        },
+        {
+          "term": "damage",
+          "score": 6.0,
+          "z": 0.6,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 14.23,
+          "deltaPer10k": 14.23,
+          "distinctive": false
+        },
+        {
+          "term": "delays",
+          "score": 6.0,
+          "z": 0.6,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 14.23,
+          "deltaPer10k": 14.23,
+          "distinctive": false
+        }
+      ],
+      "topFallers": [
+        {
+          "term": "adults",
+          "score": -6.91,
+          "z": -0.69,
+          "countPrev": 8,
+          "countCurr": 0,
+          "per10kPrev": 28.5,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -28.5,
+          "distinctive": false
+        },
+        {
+          "term": "committee",
+          "score": -6.91,
+          "z": -0.69,
+          "countPrev": 8,
+          "countCurr": 0,
+          "per10kPrev": 28.5,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -28.5,
+          "distinctive": false
+        },
+        {
+          "term": "available",
+          "score": -6.78,
+          "z": -0.68,
+          "countPrev": 7,
+          "countCurr": 0,
+          "per10kPrev": 24.94,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -24.94,
+          "distinctive": false
+        },
+        {
+          "term": "active",
+          "score": -6.62,
+          "z": -0.66,
+          "countPrev": 6,
+          "countCurr": 0,
+          "per10kPrev": 21.38,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -21.38,
+          "distinctive": false
+        },
+        {
+          "term": "combination",
+          "score": -6.62,
+          "z": -0.66,
+          "countPrev": 6,
+          "countCurr": 0,
+          "per10kPrev": 21.38,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -21.38,
+          "distinctive": false
+        },
+        {
+          "term": "executive",
+          "score": -6.62,
+          "z": -0.66,
+          "countPrev": 6,
+          "countCurr": 0,
+          "per10kPrev": 21.38,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -21.38,
+          "distinctive": false
+        },
+        {
+          "term": "arthritis",
+          "score": -6.44,
+          "z": -0.64,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 17.81,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -17.81,
+          "distinctive": false
+        },
+        {
+          "term": "broad",
+          "score": -6.44,
+          "z": -0.64,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 17.81,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -17.81,
+          "distinctive": false
+        },
+        {
+          "term": "corporate",
+          "score": -6.44,
+          "z": -0.64,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 17.81,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -17.81,
+          "distinctive": false
+        },
+        {
+          "term": "diabetes",
+          "score": -6.44,
+          "z": -0.64,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 17.81,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -17.81,
+          "distinctive": false
+        },
+        {
+          "term": "schizophrenia",
+          "score": -6.44,
+          "z": -0.64,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 17.81,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -17.81,
+          "distinctive": false
+        },
+        {
+          "term": "segment",
+          "score": -6.44,
+          "z": -0.64,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 17.81,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -17.81,
+          "distinctive": false
+        },
+        {
+          "term": "trademarks",
+          "score": -6.44,
+          "z": -0.64,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 17.81,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -17.81,
+          "distinctive": false
+        },
+        {
+          "term": "treatment adults",
+          "score": -6.44,
+          "z": -0.64,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 17.81,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -17.81,
+          "distinctive": false
+        },
+        {
+          "term": "website",
+          "score": -6.44,
+          "z": -0.64,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 17.81,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -17.81,
+          "distinctive": false
+        }
+      ],
+      "summary": "Adds emphasis on tax, impact, rights; de-emphasizes adults, committee, available.",
+      "topRisersAlt": [
+        {
+          "term": "pharmaceutical products",
+          "score": 5.61
+        },
+        {
+          "term": "intellectual property rights",
+          "score": 5.31
+        },
+        {
+          "term": "legal proceedings",
+          "score": 5.31
+        },
+        {
+          "term": "new products",
+          "score": 5.31
+        },
+        {
+          "term": "results operations",
+          "score": 5.31
+        },
+        {
+          "term": "adversely affect",
+          "score": 4.88
+        },
+        {
+          "term": "business practices",
+          "score": 4.88
+        },
+        {
+          "term": "business results operations",
+          "score": 4.88
+        },
+        {
+          "term": "care providers",
+          "score": 4.88
+        },
+        {
+          "term": "changes tax laws",
+          "score": 4.88
+        },
+        {
+          "term": "government healthcare",
+          "score": 4.88
+        },
+        {
+          "term": "impact operating results",
+          "score": 4.88
+        },
+        {
+          "term": "information security",
+          "score": 4.88
+        },
+        {
+          "term": "intellectual property protection",
+          "score": 4.88
+        },
+        {
+          "term": "investigations legal",
+          "score": 4.88
+        }
+      ],
+      "topFallersAlt": [
+        {
+          "term": "treatment adults",
+          "score": -6.82
+        },
+        {
+          "term": "research development",
+          "score": -6.57
+        },
+        {
+          "term": "united states",
+          "score": -6.57
+        },
+        {
+          "term": "health care",
+          "score": -6.25
+        },
+        {
+          "term": "business include",
+          "score": -5.82
+        },
+        {
+          "term": "drug medical",
+          "score": -5.82
+        },
+        {
+          "term": "johnson johnson",
+          "score": -5.82
+        },
+        {
+          "term": "operations financial",
+          "score": -5.82
+        },
+        {
+          "term": "pharmaceutical medical devices",
+          "score": -5.82
+        },
+        {
+          "term": "products processes",
+          "score": -5.82
+        },
+        {
+          "term": "products used",
+          "score": -5.82
+        },
+        {
+          "term": "segments business",
+          "score": -5.82
+        },
+        {
+          "term": "customer demand",
+          "score": -5.1
+        },
+        {
+          "term": "regulatory compliance",
+          "score": -5.1
+        },
+        {
+          "term": "intellectual property",
+          "score": 1.28
+        }
+      ],
+      "summaryAlt": "Adds emphasis on pharmaceutical products, intellectual property rights, legal proceedings; de-emphasizes treatment adults, research development, united states."
+    },
+    {
+      "from": 2016,
+      "to": 2017,
+      "topRisers": [
+        {
+          "term": "tcja",
+          "score": 6.53,
+          "z": 0.65,
+          "countPrev": 0,
+          "countCurr": 7,
+          "per10kPrev": 0.0,
+          "per10kCurr": 19.5,
+          "deltaPer10k": 19.5,
+          "distinctive": false
+        },
+        {
+          "term": "income",
+          "score": 5.69,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 8.36,
+          "deltaPer10k": 8.36,
+          "distinctive": false
+        },
+        {
+          "term": "adjustments",
+          "score": 5.28,
+          "z": 0.53,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.57,
+          "deltaPer10k": 5.57,
+          "distinctive": false
+        },
+        {
+          "term": "audits disputes",
+          "score": 5.28,
+          "z": 0.53,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.57,
+          "deltaPer10k": 5.57,
+          "distinctive": false
+        },
+        {
+          "term": "estimates",
+          "score": 5.28,
+          "z": 0.53,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.57,
+          "deltaPer10k": 5.57,
+          "distinctive": false
+        },
+        {
+          "term": "guidance",
+          "score": 5.28,
+          "z": 0.53,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.57,
+          "deltaPer10k": 5.57,
+          "distinctive": false
+        },
+        {
+          "term": "income tax",
+          "score": 5.28,
+          "z": 0.53,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.57,
+          "deltaPer10k": 5.57,
+          "distinctive": false
+        },
+        {
+          "term": "provisional",
+          "score": 5.28,
+          "z": 0.53,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.57,
+          "deltaPer10k": 5.57,
+          "distinctive": false
+        },
+        {
+          "term": "provisions",
+          "score": 5.28,
+          "z": 0.53,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.57,
+          "deltaPer10k": 5.57,
+          "distinctive": false
+        },
+        {
+          "term": "accounting standards",
+          "score": 4.59,
+          "z": 0.46,
+          "countPrev": 0,
+          "countCurr": 1,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.79,
+          "deltaPer10k": 2.79,
+          "distinctive": false
+        },
+        {
+          "term": "addition increased",
+          "score": 4.59,
+          "z": 0.46,
+          "countPrev": 0,
+          "countCurr": 1,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.79,
+          "deltaPer10k": 2.79,
+          "distinctive": false
+        },
+        {
+          "term": "additional guidance",
+          "score": 4.59,
+          "z": 0.46,
+          "countPrev": 0,
+          "countCurr": 1,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.79,
+          "deltaPer10k": 2.79,
+          "distinctive": false
+        },
+        {
+          "term": "additional pricing",
+          "score": 4.59,
+          "z": 0.46,
+          "countPrev": 0,
+          "countCurr": 1,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.79,
+          "deltaPer10k": 2.79,
+          "distinctive": false
+        },
+        {
+          "term": "addressing tax",
+          "score": 4.59,
+          "z": 0.46,
+          "countPrev": 0,
+          "countCurr": 1,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.79,
+          "deltaPer10k": 2.79,
+          "distinctive": false
+        },
+        {
+          "term": "applying",
+          "score": 4.59,
+          "z": 0.46,
+          "countPrev": 0,
+          "countCurr": 1,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.79,
+          "deltaPer10k": 2.79,
+          "distinctive": false
+        }
+      ],
+      "topFallers": [
+        {
+          "term": "infliximab biosimilar",
+          "score": -5.73,
+          "z": -0.57,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 8.54,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -8.54,
+          "distinctive": false
+        },
+        {
+          "term": "belgium",
+          "score": -5.33,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 5.69,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.69,
+          "distinctive": false
+        },
+        {
+          "term": "pfizer",
+          "score": -5.33,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 5.69,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.69,
+          "distinctive": false
+        },
+        {
+          "term": "analysis results",
+          "score": -4.64,
+          "z": -0.46,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 2.85,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.85,
+          "distinctive": false
+        },
+        {
+          "term": "april",
+          "score": -4.64,
+          "z": -0.46,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 2.85,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.85,
+          "distinctive": false
+        },
+        {
+          "term": "began",
+          "score": -4.64,
+          "z": -0.46,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 2.85,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.85,
+          "distinctive": false
+        },
+        {
+          "term": "benefit",
+          "score": -4.64,
+          "z": -0.46,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 2.85,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.85,
+          "distinctive": false
+        },
+        {
+          "term": "benefit recorded",
+          "score": -4.64,
+          "z": -0.46,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 2.85,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.85,
+          "distinctive": false
+        },
+        {
+          "term": "change",
+          "score": -4.64,
+          "z": -0.46,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 2.85,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.85,
+          "distinctive": false
+        },
+        {
+          "term": "change statutory",
+          "score": -4.64,
+          "z": -0.46,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 2.85,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.85,
+          "distinctive": false
+        },
+        {
+          "term": "discussion analysis",
+          "score": -4.64,
+          "z": -0.46,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 2.85,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.85,
+          "distinctive": false
+        },
+        {
+          "term": "expense",
+          "score": -4.64,
+          "z": -0.46,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 2.85,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.85,
+          "distinctive": false
+        },
+        {
+          "term": "expense benefit",
+          "score": -4.64,
+          "z": -0.46,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 2.85,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.85,
+          "distinctive": false
+        },
+        {
+          "term": "invalidate",
+          "score": -4.64,
+          "z": -0.46,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 2.85,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.85,
+          "distinctive": false
+        },
+        {
+          "term": "ipr proceedings",
+          "score": -4.64,
+          "z": -0.46,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 2.85,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.85,
+          "distinctive": false
+        }
+      ],
+      "summary": "Adds emphasis on tcja, income, adjustments; de-emphasizes infliximab biosimilar, belgium, pfizer.",
+      "topRisersAlt": [
+        {
+          "term": "negatively impact operating",
+          "score": 5.45
+        },
+        {
+          "term": "tax laws",
+          "score": 5.45
+        },
+        {
+          "term": "intellectual property",
+          "score": 0.14
+        },
+        {
+          "term": "pharmaceutical products",
+          "score": 0.12
+        },
+        {
+          "term": "intellectual property rights",
+          "score": 0.12
+        },
+        {
+          "term": "legal proceedings",
+          "score": 0.12
+        },
+        {
+          "term": "new products",
+          "score": 0.12
+        },
+        {
+          "term": "results operations",
+          "score": 0.12
+        },
+        {
+          "term": "business practices",
+          "score": 0.11
+        },
+        {
+          "term": "business results operations",
+          "score": 0.11
+        },
+        {
+          "term": "care providers",
+          "score": 0.11
+        },
+        {
+          "term": "government healthcare",
+          "score": 0.11
+        },
+        {
+          "term": "information security",
+          "score": 0.11
+        },
+        {
+          "term": "investigations legal",
+          "score": 0.11
+        },
+        {
+          "term": "product liability",
+          "score": 0.11
+        }
+      ],
+      "topFallersAlt": [
+        {
+          "term": "adversely affect",
+          "score": -5.23
+        },
+        {
+          "term": "changes tax laws",
+          "score": -5.23
+        },
+        {
+          "term": "impact operating results",
+          "score": -5.23
+        },
+        {
+          "term": "intellectual property protection",
+          "score": -5.23
+        },
+        {
+          "term": "sales pharmaceutical",
+          "score": -5.23
+        },
+        {
+          "term": "market share",
+          "score": 0.11
+        },
+        {
+          "term": "patent infringement",
+          "score": 0.11
+        },
+        {
+          "term": "supply chain",
+          "score": 0.11
+        },
+        {
+          "term": "business practices",
+          "score": 0.11
+        },
+        {
+          "term": "business results operations",
+          "score": 0.11
+        },
+        {
+          "term": "care providers",
+          "score": 0.11
+        },
+        {
+          "term": "government healthcare",
+          "score": 0.11
+        },
+        {
+          "term": "information security",
+          "score": 0.11
+        },
+        {
+          "term": "investigations legal",
+          "score": 0.11
+        },
+        {
+          "term": "product liability",
+          "score": 0.11
+        }
+      ],
+      "summaryAlt": "Adds emphasis on negatively impact operating, tax laws, intellectual property; de-emphasizes adversely affect, changes tax laws, impact operating results."
+    },
+    {
       "from": 2017,
       "to": 2018,
       "topRisers": [
@@ -12,19 +944,19 @@
           "countPrev": 0,
           "countCurr": 6,
           "per10kPrev": 0.0,
-          "per10kCurr": 15.59,
-          "deltaPer10k": 15.59,
+          "per10kCurr": 15.42,
+          "deltaPer10k": 15.42,
           "distinctive": false
         },
         {
           "term": "swiss tax",
-          "score": 6.13,
+          "score": 6.14,
           "z": 0.61,
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 12.99,
-          "deltaPer10k": 12.99,
+          "per10kCurr": 12.85,
+          "deltaPer10k": 12.85,
           "distinctive": false
         },
         {
@@ -34,41 +966,41 @@
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 10.39,
-          "deltaPer10k": 10.39,
+          "per10kCurr": 10.28,
+          "deltaPer10k": 10.28,
           "distinctive": false
         },
         {
           "term": "acceptable",
-          "score": 5.62,
+          "score": 5.63,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 7.79,
-          "deltaPer10k": 7.79,
+          "per10kCurr": 7.71,
+          "deltaPer10k": 7.71,
           "distinctive": false
         },
         {
           "term": "change",
-          "score": 5.62,
+          "score": 5.63,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 7.79,
-          "deltaPer10k": 7.79,
+          "per10kCurr": 7.71,
+          "deltaPer10k": 7.71,
           "distinctive": false
         },
         {
           "term": "parties manufacture",
-          "score": 5.62,
+          "score": 5.63,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 7.79,
-          "deltaPer10k": 7.79,
+          "per10kCurr": 7.71,
+          "deltaPer10k": 7.71,
           "distinctive": false
         },
         {
@@ -78,8 +1010,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.2,
-          "deltaPer10k": 5.2,
+          "per10kCurr": 5.14,
+          "deltaPer10k": 5.14,
           "distinctive": false
         },
         {
@@ -89,8 +1021,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.2,
-          "deltaPer10k": 5.2,
+          "per10kCurr": 5.14,
+          "deltaPer10k": 5.14,
           "distinctive": false
         },
         {
@@ -100,8 +1032,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.2,
-          "deltaPer10k": 5.2,
+          "per10kCurr": 5.14,
+          "deltaPer10k": 5.14,
           "distinctive": false
         },
         {
@@ -111,8 +1043,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.2,
-          "deltaPer10k": 5.2,
+          "per10kCurr": 5.14,
+          "deltaPer10k": 5.14,
           "distinctive": false
         },
         {
@@ -122,8 +1054,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.2,
-          "deltaPer10k": 5.2,
+          "per10kCurr": 5.14,
+          "deltaPer10k": 5.14,
           "distinctive": false
         },
         {
@@ -133,8 +1065,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.2,
-          "deltaPer10k": 5.2,
+          "per10kCurr": 5.14,
+          "deltaPer10k": 5.14,
           "distinctive": false
         },
         {
@@ -144,8 +1076,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.2,
-          "deltaPer10k": 5.2,
+          "per10kCurr": 5.14,
+          "deltaPer10k": 5.14,
           "distinctive": false
         },
         {
@@ -155,8 +1087,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.2,
-          "deltaPer10k": 5.2,
+          "per10kCurr": 5.14,
+          "deltaPer10k": 5.14,
           "distinctive": false
         },
         {
@@ -166,8 +1098,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.2,
-          "deltaPer10k": 5.2,
+          "per10kCurr": 5.14,
+          "deltaPer10k": 5.14,
           "distinctive": false
         }
       ],
@@ -178,9 +1110,9 @@
           "z": -0.63,
           "countPrev": 5,
           "countCurr": 0,
-          "per10kPrev": 14.12,
+          "per10kPrev": 13.93,
           "per10kCurr": 0.0,
-          "deltaPer10k": -14.12,
+          "deltaPer10k": -13.93,
           "distinctive": false
         },
         {
@@ -189,9 +1121,9 @@
           "z": -0.63,
           "countPrev": 5,
           "countCurr": 0,
-          "per10kPrev": 14.12,
+          "per10kPrev": 13.93,
           "per10kCurr": 0.0,
-          "deltaPer10k": -14.12,
+          "deltaPer10k": -13.93,
           "distinctive": false
         },
         {
@@ -200,9 +1132,9 @@
           "z": -0.63,
           "countPrev": 5,
           "countCurr": 0,
-          "per10kPrev": 14.12,
+          "per10kPrev": 13.93,
           "per10kCurr": 0.0,
-          "deltaPer10k": -14.12,
+          "deltaPer10k": -13.93,
           "distinctive": false
         },
         {
@@ -211,9 +1143,9 @@
           "z": -0.63,
           "countPrev": 5,
           "countCurr": 0,
-          "per10kPrev": 14.12,
+          "per10kPrev": 13.93,
           "per10kCurr": 0.0,
-          "deltaPer10k": -14.12,
+          "deltaPer10k": -13.93,
           "distinctive": false
         },
         {
@@ -222,64 +1154,86 @@
           "z": -0.58,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 8.47,
+          "per10kPrev": 8.36,
           "per10kCurr": 0.0,
-          "deltaPer10k": -8.47,
+          "deltaPer10k": -8.36,
           "distinctive": false
         },
         {
           "term": "estimates",
-          "score": -5.39,
+          "score": -5.38,
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 5.65,
+          "per10kPrev": 5.57,
           "per10kCurr": 0.0,
-          "deltaPer10k": -5.65,
+          "deltaPer10k": -5.57,
           "distinctive": false
         },
         {
           "term": "largest",
-          "score": -5.39,
+          "score": -5.38,
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 5.65,
+          "per10kPrev": 5.57,
           "per10kCurr": 0.0,
-          "deltaPer10k": -5.65,
+          "deltaPer10k": -5.57,
           "distinctive": false
         },
         {
           "term": "largest product",
-          "score": -5.39,
+          "score": -5.38,
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 5.65,
+          "per10kPrev": 5.57,
           "per10kCurr": 0.0,
-          "deltaPer10k": -5.65,
+          "deltaPer10k": -5.57,
+          "distinctive": false
+        },
+        {
+          "term": "product remicade",
+          "score": -5.38,
+          "z": -0.54,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 5.57,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.57,
           "distinctive": false
         },
         {
           "term": "provisional",
-          "score": -5.39,
+          "score": -5.38,
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 5.65,
+          "per10kPrev": 5.57,
           "per10kCurr": 0.0,
-          "deltaPer10k": -5.65,
+          "deltaPer10k": -5.57,
           "distinctive": false
         },
         {
           "term": "remicade infliximab",
-          "score": -5.39,
+          "score": -5.38,
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 5.65,
+          "per10kPrev": 5.57,
           "per10kCurr": 0.0,
-          "deltaPer10k": -5.65,
+          "deltaPer10k": -5.57,
+          "distinctive": false
+        },
+        {
+          "term": "sales remicade",
+          "score": -5.38,
+          "z": -0.54,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 5.57,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.57,
           "distinctive": false
         },
         {
@@ -288,9 +1242,9 @@
           "z": -0.47,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 2.82,
+          "per10kPrev": 2.79,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.82,
+          "deltaPer10k": -2.79,
           "distinctive": false
         },
         {
@@ -299,9 +1253,9 @@
           "z": -0.47,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 2.82,
+          "per10kPrev": 2.79,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.82,
+          "deltaPer10k": -2.79,
           "distinctive": false
         },
         {
@@ -310,31 +1264,9 @@
           "z": -0.47,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 2.82,
+          "per10kPrev": 2.79,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.82,
-          "distinctive": false
-        },
-        {
-          "term": "applying",
-          "score": -4.7,
-          "z": -0.47,
-          "countPrev": 1,
-          "countCurr": 0,
-          "per10kPrev": 2.82,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -2.82,
-          "distinctive": false
-        },
-        {
-          "term": "approximately total",
-          "score": -4.7,
-          "z": -0.47,
-          "countPrev": 1,
-          "countCurr": 0,
-          "per10kPrev": 2.82,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -2.82,
+          "deltaPer10k": -2.79,
           "distinctive": false
         }
       ],
@@ -471,334 +1403,334 @@
       "topRisers": [
         {
           "term": "adults",
-          "score": 6.17,
+          "score": 6.15,
           "z": 0.62,
           "countPrev": 0,
           "countCurr": 11,
           "per10kPrev": 0.0,
-          "per10kCurr": 12.35,
-          "deltaPer10k": 12.35,
+          "per10kCurr": 11.97,
+          "deltaPer10k": 11.97,
           "distinctive": false
         },
         {
           "term": "active",
-          "score": 6.08,
+          "score": 6.06,
           "z": 0.61,
           "countPrev": 0,
           "countCurr": 10,
           "per10kPrev": 0.0,
-          "per10kCurr": 11.23,
-          "deltaPer10k": 11.23,
+          "per10kCurr": 10.88,
+          "deltaPer10k": 10.88,
           "distinctive": false
         },
         {
           "term": "forward",
-          "score": 6.08,
+          "score": 6.06,
           "z": 0.61,
           "countPrev": 0,
           "countCurr": 10,
           "per10kPrev": 0.0,
-          "per10kCurr": 11.23,
-          "deltaPer10k": 11.23,
+          "per10kCurr": 10.88,
+          "deltaPer10k": 10.88,
           "distinctive": false
         },
         {
           "term": "forward looking",
-          "score": 6.08,
+          "score": 6.06,
           "z": 0.61,
           "countPrev": 0,
           "countCurr": 10,
           "per10kPrev": 0.0,
-          "per10kCurr": 11.23,
-          "deltaPer10k": 11.23,
+          "per10kCurr": 10.88,
+          "deltaPer10k": 10.88,
           "distinctive": false
         },
         {
           "term": "looking",
-          "score": 6.08,
+          "score": 6.06,
           "z": 0.61,
           "countPrev": 0,
           "countCurr": 10,
           "per10kPrev": 0.0,
-          "per10kCurr": 11.23,
-          "deltaPer10k": 11.23,
+          "per10kCurr": 10.88,
+          "deltaPer10k": 10.88,
           "distinctive": false
         },
         {
           "term": "www",
-          "score": 6.08,
+          "score": 6.06,
           "z": 0.61,
           "countPrev": 0,
           "countCurr": 10,
           "per10kPrev": 0.0,
-          "per10kCurr": 11.23,
-          "deltaPer10k": 11.23,
+          "per10kCurr": 10.88,
+          "deltaPer10k": 10.88,
           "distinctive": false
         },
         {
           "term": "com",
-          "score": 5.97,
-          "z": 0.6,
+          "score": 5.95,
+          "z": 0.59,
           "countPrev": 0,
           "countCurr": 9,
           "per10kPrev": 0.0,
-          "per10kCurr": 10.11,
-          "deltaPer10k": 10.11,
+          "per10kCurr": 9.8,
+          "deltaPer10k": 9.8,
           "distinctive": false
         },
         {
           "term": "looking statements",
-          "score": 5.97,
-          "z": 0.6,
+          "score": 5.95,
+          "z": 0.59,
           "countPrev": 0,
           "countCurr": 9,
           "per10kPrev": 0.0,
-          "per10kCurr": 10.11,
-          "deltaPer10k": 10.11,
+          "per10kCurr": 9.8,
+          "deltaPer10k": 9.8,
           "distinctive": false
         },
         {
           "term": "states",
-          "score": 5.97,
-          "z": 0.6,
+          "score": 5.95,
+          "z": 0.59,
           "countPrev": 0,
           "countCurr": 9,
           "per10kPrev": 0.0,
-          "per10kCurr": 10.11,
-          "deltaPer10k": 10.11,
+          "per10kCurr": 9.8,
+          "deltaPer10k": 9.8,
           "distinctive": false
         },
         {
           "term": "committee",
-          "score": 5.85,
-          "z": 0.59,
+          "score": 5.84,
+          "z": 0.58,
           "countPrev": 0,
           "countCurr": 8,
           "per10kPrev": 0.0,
-          "per10kCurr": 8.98,
-          "deltaPer10k": 8.98,
+          "per10kCurr": 8.71,
+          "deltaPer10k": 8.71,
           "distinctive": false
         },
         {
           "term": "available",
-          "score": 5.72,
+          "score": 5.7,
           "z": 0.57,
           "countPrev": 0,
           "countCurr": 7,
           "per10kPrev": 0.0,
-          "per10kCurr": 7.86,
-          "deltaPer10k": 7.86,
+          "per10kCurr": 7.62,
+          "deltaPer10k": 7.62,
           "distinctive": false
         },
         {
           "term": "management",
-          "score": 5.72,
+          "score": 5.7,
           "z": 0.57,
           "countPrev": 0,
           "countCurr": 7,
           "per10kPrev": 0.0,
-          "per10kCurr": 7.86,
-          "deltaPer10k": 7.86,
+          "per10kCurr": 7.62,
+          "deltaPer10k": 7.62,
           "distinctive": false
         },
         {
           "term": "strategic",
-          "score": 5.72,
+          "score": 5.7,
           "z": 0.57,
           "countPrev": 0,
           "countCurr": 7,
           "per10kPrev": 0.0,
-          "per10kCurr": 7.86,
-          "deltaPer10k": 7.86,
+          "per10kCurr": 7.62,
+          "deltaPer10k": 7.62,
           "distinctive": false
         },
         {
           "term": "treatment adults",
-          "score": 5.72,
+          "score": 5.7,
           "z": 0.57,
           "countPrev": 0,
           "countCurr": 7,
           "per10kPrev": 0.0,
-          "per10kCurr": 7.86,
-          "deltaPer10k": 7.86,
+          "per10kCurr": 7.62,
+          "deltaPer10k": 7.62,
           "distinctive": false
         },
         {
           "term": "united",
-          "score": 5.72,
+          "score": 5.7,
           "z": 0.57,
           "countPrev": 0,
           "countCurr": 7,
           "per10kPrev": 0.0,
-          "per10kCurr": 7.86,
-          "deltaPer10k": 7.86,
+          "per10kCurr": 7.62,
+          "deltaPer10k": 7.62,
           "distinctive": false
         }
       ],
       "topFallers": [
         {
           "term": "swiss tax",
-          "score": -7.05,
-          "z": -0.7,
+          "score": -7.07,
+          "z": -0.71,
           "countPrev": 5,
           "countCurr": 0,
-          "per10kPrev": 12.99,
+          "per10kPrev": 12.85,
           "per10kCurr": 0.0,
-          "deltaPer10k": -12.99,
+          "deltaPer10k": -12.85,
           "distinctive": false
         },
         {
           "term": "tcja",
-          "score": -6.54,
+          "score": -6.56,
           "z": -0.65,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 7.79,
+          "per10kPrev": 7.71,
           "per10kCurr": 0.0,
-          "deltaPer10k": -7.79,
+          "deltaPer10k": -7.71,
           "distinctive": false
         },
         {
           "term": "adjustments",
-          "score": -6.14,
+          "score": -6.16,
           "z": -0.61,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 5.2,
+          "per10kPrev": 5.14,
           "per10kCurr": 0.0,
-          "deltaPer10k": -5.2,
+          "deltaPer10k": -5.14,
           "distinctive": false
         },
         {
           "term": "income tax",
-          "score": -6.14,
+          "score": -6.16,
           "z": -0.61,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 5.2,
+          "per10kPrev": 5.14,
           "per10kCurr": 0.0,
-          "deltaPer10k": -5.2,
+          "deltaPer10k": -5.14,
           "distinctive": false
         },
         {
           "term": "proposed",
-          "score": -6.14,
+          "score": -6.16,
           "z": -0.61,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 5.2,
+          "per10kPrev": 5.14,
           "per10kCurr": 0.0,
-          "deltaPer10k": -5.2,
+          "deltaPer10k": -5.14,
           "distinctive": false
         },
         {
           "term": "referendum",
-          "score": -6.14,
+          "score": -6.16,
           "z": -0.61,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 5.2,
+          "per10kPrev": 5.14,
           "per10kCurr": 0.0,
-          "deltaPer10k": -5.2,
+          "deltaPer10k": -5.14,
           "distinctive": false
         },
         {
           "term": "assessing",
-          "score": -5.45,
+          "score": -5.47,
           "z": -0.54,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 2.6,
+          "per10kPrev": 2.57,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.6,
+          "deltaPer10k": -2.57,
           "distinctive": false
         },
         {
           "term": "called",
-          "score": -5.45,
+          "score": -5.47,
           "z": -0.54,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 2.6,
+          "per10kPrev": 2.57,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.6,
+          "deltaPer10k": -2.57,
           "distinctive": false
         },
         {
           "term": "cantonal",
-          "score": -5.45,
+          "score": -5.47,
           "z": -0.54,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 2.6,
+          "per10kPrev": 2.57,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.6,
+          "deltaPer10k": -2.57,
           "distinctive": false
         },
         {
           "term": "enactment",
-          "score": -5.45,
+          "score": -5.47,
           "z": -0.54,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 2.6,
+          "per10kPrev": 2.57,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.6,
+          "deltaPer10k": -2.57,
           "distinctive": false
         },
         {
           "term": "final",
-          "score": -5.45,
+          "score": -5.47,
           "z": -0.54,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 2.6,
+          "per10kPrev": 2.57,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.6,
+          "deltaPer10k": -2.57,
           "distinctive": false
         },
         {
           "term": "implementation",
-          "score": -5.45,
+          "score": -5.47,
           "z": -0.54,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 2.6,
+          "per10kPrev": 2.57,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.6,
+          "deltaPer10k": -2.57,
           "distinctive": false
         },
         {
           "term": "implementing",
-          "score": -5.45,
+          "score": -5.47,
           "z": -0.54,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 2.6,
+          "per10kPrev": 2.57,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.6,
+          "deltaPer10k": -2.57,
           "distinctive": false
         },
         {
           "term": "interpreting",
-          "score": -5.45,
+          "score": -5.47,
           "z": -0.54,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 2.6,
+          "per10kPrev": 2.57,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.6,
+          "deltaPer10k": -2.57,
           "distinctive": false
         },
         {
           "term": "june",
-          "score": -5.45,
+          "score": -5.47,
           "z": -0.54,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 2.6,
+          "per10kPrev": 2.57,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.6,
+          "deltaPer10k": -2.57,
           "distinctive": false
         }
       ],
@@ -931,17 +1863,17 @@
     },
     {
       "from": 2019,
-      "to": 2021,
+      "to": 2020,
       "topRisers": [
         {
           "term": "COVID-19",
-          "score": 7.17,
-          "z": 0.72,
+          "score": 7.15,
+          "z": 0.71,
           "countPrev": 0,
           "countCurr": 16,
           "per10kPrev": 0.0,
-          "per10kCurr": 14.59,
-          "deltaPer10k": 14.59,
+          "per10kCurr": 13.79,
+          "deltaPer10k": 13.79,
           "distinctive": false,
           "includes": [
             "covid"
@@ -949,13 +1881,13 @@
         },
         {
           "term": "Climate change",
-          "score": 6.7,
+          "score": 6.68,
           "z": 0.67,
           "countPrev": 0,
           "countCurr": 10,
           "per10kPrev": 0.0,
-          "per10kCurr": 9.12,
-          "deltaPer10k": 9.12,
+          "per10kCurr": 8.62,
+          "deltaPer10k": 8.62,
           "distinctive": false,
           "includes": [
             "climate change"
@@ -963,312 +1895,312 @@
         },
         {
           "term": "covid pandemic",
-          "score": 6.48,
+          "score": 6.45,
           "z": 0.65,
           "countPrev": 0,
           "countCurr": 8,
           "per10kPrev": 0.0,
-          "per10kCurr": 7.29,
-          "deltaPer10k": 7.29,
+          "per10kCurr": 6.89,
+          "deltaPer10k": 6.89,
           "distinctive": false
         },
         {
           "term": "employee",
-          "score": 6.35,
+          "score": 6.32,
           "z": 0.63,
           "countPrev": 0,
           "countCurr": 7,
           "per10kPrev": 0.0,
-          "per10kCurr": 6.38,
-          "deltaPer10k": 6.38,
+          "per10kCurr": 6.03,
+          "deltaPer10k": 6.03,
           "distinctive": false
         },
         {
           "term": "ratings",
-          "score": 6.35,
+          "score": 6.32,
           "z": 0.63,
           "countPrev": 0,
           "countCurr": 7,
           "per10kPrev": 0.0,
-          "per10kCurr": 6.38,
-          "deltaPer10k": 6.38,
+          "per10kCurr": 6.03,
+          "deltaPer10k": 6.03,
           "distinctive": false
         },
         {
           "term": "talent",
-          "score": 6.35,
+          "score": 6.32,
           "z": 0.63,
           "countPrev": 0,
           "countCurr": 7,
           "per10kPrev": 0.0,
-          "per10kCurr": 6.38,
-          "deltaPer10k": 6.38,
+          "per10kCurr": 6.03,
+          "deltaPer10k": 6.03,
           "distinctive": false
         },
         {
           "term": "consumer health",
-          "score": 6.19,
+          "score": 6.17,
           "z": 0.62,
           "countPrev": 0,
           "countCurr": 6,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.47,
-          "deltaPer10k": 5.47,
+          "per10kCurr": 5.17,
+          "deltaPer10k": 5.17,
           "distinctive": false
         },
         {
           "term": "credit",
-          "score": 6.19,
+          "score": 6.17,
           "z": 0.62,
           "countPrev": 0,
           "countCurr": 6,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.47,
-          "deltaPer10k": 5.47,
+          "per10kCurr": 5.17,
+          "deltaPer10k": 5.17,
           "distinctive": false
         },
         {
           "term": "best",
-          "score": 6.01,
+          "score": 5.98,
           "z": 0.6,
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.56,
-          "deltaPer10k": 4.56,
+          "per10kCurr": 4.31,
+          "deltaPer10k": 4.31,
           "distinctive": false
         },
         {
           "term": "dei",
-          "score": 6.01,
+          "score": 5.98,
           "z": 0.6,
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.56,
-          "deltaPer10k": 4.56,
+          "per10kCurr": 4.31,
+          "deltaPer10k": 4.31,
           "distinctive": false
         },
         {
           "term": "diversity",
-          "score": 6.01,
+          "score": 5.98,
           "z": 0.6,
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.56,
-          "deltaPer10k": 4.56,
+          "per10kCurr": 4.31,
+          "deltaPer10k": 4.31,
           "distinctive": false
         },
         {
           "term": "inclusion",
-          "score": 6.01,
+          "score": 5.98,
           "z": 0.6,
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.56,
-          "deltaPer10k": 4.56,
+          "per10kCurr": 4.31,
+          "deltaPer10k": 4.31,
           "distinctive": false
         },
         {
           "term": "vaccine",
-          "score": 6.01,
+          "score": 5.98,
           "z": 0.6,
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.56,
-          "deltaPer10k": 4.56,
+          "per10kCurr": 4.31,
+          "deltaPer10k": 4.31,
           "distinctive": false
         },
         {
           "term": "candidate",
-          "score": 5.79,
+          "score": 5.76,
           "z": 0.58,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.65,
-          "deltaPer10k": 3.65,
+          "per10kCurr": 3.45,
+          "deltaPer10k": 3.45,
           "distinctive": false
         },
         {
           "term": "credit ratings",
-          "score": 5.79,
+          "score": 5.76,
           "z": 0.58,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.65,
-          "deltaPer10k": 3.65,
+          "per10kCurr": 3.45,
+          "deltaPer10k": 3.45,
           "distinctive": false
         }
       ],
       "topFallers": [
         {
           "term": "expiration date",
-          "score": -6.2,
+          "score": -6.23,
           "z": -0.62,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 4.49,
+          "per10kPrev": 4.35,
           "per10kCurr": 0.0,
-          "deltaPer10k": -4.49,
+          "deltaPer10k": -4.35,
           "distinctive": false
         },
         {
           "term": "latest projected",
-          "score": -6.2,
+          "score": -6.23,
           "z": -0.62,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 4.49,
+          "per10kPrev": 4.35,
           "per10kCurr": 0.0,
-          "deltaPer10k": -4.49,
+          "deltaPer10k": -4.35,
           "distinctive": false
         },
         {
           "term": "projected expiration",
-          "score": -6.2,
+          "score": -6.23,
           "z": -0.62,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 4.49,
+          "per10kPrev": 4.35,
           "per10kCurr": 0.0,
-          "deltaPer10k": -4.49,
+          "deltaPer10k": -4.35,
           "distinctive": false
         },
         {
           "term": "extension",
-          "score": -5.91,
+          "score": -5.94,
           "z": -0.59,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 3.37,
+          "per10kPrev": 3.27,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.37,
+          "deltaPer10k": -3.27,
           "distinctive": false
         },
         {
           "term": "tax reform",
-          "score": -5.91,
+          "score": -5.94,
           "z": -0.59,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 3.37,
+          "per10kPrev": 3.27,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.37,
+          "deltaPer10k": -3.27,
           "distinctive": false
         },
         {
           "term": "adjustment",
-          "score": -5.51,
+          "score": -5.54,
           "z": -0.55,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 2.25,
+          "per10kPrev": 2.18,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.25,
+          "deltaPer10k": -2.18,
           "distinctive": false
         },
         {
           "term": "ahv",
-          "score": -5.51,
+          "score": -5.54,
           "z": -0.55,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 2.25,
+          "per10kPrev": 2.18,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.25,
+          "deltaPer10k": -2.18,
           "distinctive": false
         },
         {
           "term": "determined",
-          "score": -5.51,
+          "score": -5.54,
           "z": -0.55,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 2.25,
+          "per10kPrev": 2.18,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.25,
+          "deltaPer10k": -2.18,
           "distinctive": false
         },
         {
           "term": "financing",
-          "score": -5.51,
+          "score": -5.54,
           "z": -0.55,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 2.25,
+          "per10kPrev": 2.18,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.25,
+          "deltaPer10k": -2.18,
           "distinctive": false
         },
         {
           "term": "orthopaedic",
-          "score": -5.51,
+          "score": -5.54,
           "z": -0.55,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 2.25,
+          "per10kPrev": 2.18,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.25,
+          "deltaPer10k": -2.18,
           "distinctive": false
         },
         {
           "term": "switzerland",
-          "score": -5.51,
+          "score": -5.54,
           "z": -0.55,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 2.25,
+          "per10kPrev": 2.18,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.25,
+          "deltaPer10k": -2.18,
+          "distinctive": false
+        },
+        {
+          "term": "act used",
+          "score": -4.85,
+          "z": -0.48,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 1.09,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.09,
           "distinctive": false
         },
         {
           "term": "action fda",
-          "score": -4.82,
+          "score": -4.85,
           "z": -0.48,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 1.12,
+          "per10kPrev": 1.09,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.12,
+          "deltaPer10k": -1.09,
           "distinctive": false
         },
         {
-          "term": "biosurgical",
-          "score": -4.82,
+          "term": "america invents",
+          "score": -4.85,
           "z": -0.48,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 1.12,
+          "per10kPrev": 1.09,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.12,
+          "deltaPer10k": -1.09,
           "distinctive": false
         },
         {
-          "term": "cantons",
-          "score": -4.82,
+          "term": "assets disruptions",
+          "score": -4.85,
           "z": -0.48,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 1.12,
+          "per10kPrev": 1.09,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.12,
-          "distinctive": false
-        },
-        {
-          "term": "ceased",
-          "score": -4.82,
-          "z": -0.48,
-          "countPrev": 1,
-          "countCurr": 0,
-          "per10kPrev": 1.12,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.12,
+          "deltaPer10k": -1.09,
           "distinctive": false
         }
       ],
@@ -1400,128 +2332,128 @@
       "summaryAlt": "Adds emphasis on climate change, global supply, patents related product; de-emphasizes treatment adults, pharmaceutical products, patent intellectual property."
     },
     {
-      "from": 2021,
-      "to": 2022,
+      "from": 2020,
+      "to": 2021,
       "topRisers": [
         {
           "term": "separation",
-          "score": 7.8,
+          "score": 7.79,
           "z": 0.78,
           "countPrev": 0,
           "countCurr": 26,
           "per10kPrev": 0.0,
-          "per10kCurr": 22.21,
-          "deltaPer10k": 22.21,
+          "per10kCurr": 20.75,
+          "deltaPer10k": 20.75,
           "distinctive": false
         },
         {
           "term": "planned separation",
-          "score": 7.76,
-          "z": 0.78,
+          "score": 7.75,
+          "z": 0.77,
           "countPrev": 0,
           "countCurr": 25,
           "per10kPrev": 0.0,
-          "per10kCurr": 21.36,
-          "deltaPer10k": 21.36,
+          "per10kCurr": 19.96,
+          "deltaPer10k": 19.96,
           "distinctive": false
         },
         {
           "term": "separation consumer",
-          "score": 6.33,
+          "score": 6.32,
           "z": 0.63,
           "countPrev": 0,
           "countCurr": 6,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.13,
-          "deltaPer10k": 5.13,
+          "per10kCurr": 4.79,
+          "deltaPer10k": 4.79,
           "distinctive": false
         },
         {
           "term": "free",
-          "score": 6.15,
+          "score": 6.14,
           "z": 0.61,
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.27,
-          "deltaPer10k": 4.27,
+          "per10kCurr": 3.99,
+          "deltaPer10k": 3.99,
           "distinctive": false
         },
         {
           "term": "tax free",
-          "score": 6.15,
+          "score": 6.14,
           "z": 0.61,
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.27,
-          "deltaPer10k": 4.27,
+          "per10kCurr": 3.99,
+          "deltaPer10k": 3.99,
           "distinctive": false
         },
         {
           "term": "intention",
-          "score": 5.93,
+          "score": 5.92,
           "z": 0.59,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.42,
-          "deltaPer10k": 3.42,
+          "per10kCurr": 3.19,
+          "deltaPer10k": 3.19,
           "distinctive": false
         },
         {
           "term": "opinion",
-          "score": 5.93,
+          "score": 5.92,
           "z": 0.59,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.42,
-          "deltaPer10k": 3.42,
+          "per10kCurr": 3.19,
+          "deltaPer10k": 3.19,
           "distinctive": false
         },
         {
           "term": "ruling",
-          "score": 5.93,
+          "score": 5.92,
           "z": 0.59,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.42,
-          "deltaPer10k": 3.42,
+          "per10kCurr": 3.19,
+          "deltaPer10k": 3.19,
           "distinctive": false
         },
         {
           "term": "shares",
-          "score": 5.93,
+          "score": 5.92,
           "z": 0.59,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.42,
-          "deltaPer10k": 3.42,
+          "per10kCurr": 3.19,
+          "deltaPer10k": 3.19,
           "distinctive": false
         },
         {
           "term": "shares common",
-          "score": 5.93,
+          "score": 5.92,
           "z": 0.59,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.42,
-          "deltaPer10k": 3.42,
+          "per10kCurr": 3.19,
+          "deltaPer10k": 3.19,
           "distinctive": false
         },
         {
           "term": "Data privacy",
-          "score": 5.64,
+          "score": 5.63,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.56,
-          "deltaPer10k": 2.56,
+          "per10kCurr": 2.39,
+          "deltaPer10k": 2.39,
           "distinctive": false,
           "includes": [
             "data protection",
@@ -1529,214 +2461,214 @@
           ]
         },
         {
-          "term": "completion",
-          "score": 5.64,
+          "term": "benefits planned",
+          "score": 5.63,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.56,
-          "deltaPer10k": 2.56,
+          "per10kCurr": 2.39,
+          "deltaPer10k": 2.39,
+          "distinctive": false
+        },
+        {
+          "term": "completion",
+          "score": 5.63,
+          "z": 0.56,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.39,
+          "deltaPer10k": 2.39,
+          "distinctive": false
+        },
+        {
+          "term": "completion planned",
+          "score": 5.63,
+          "z": 0.56,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.39,
+          "deltaPer10k": 2.39,
           "distinctive": false
         },
         {
           "term": "economic legal",
-          "score": 5.64,
+          "score": 5.63,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.56,
-          "deltaPer10k": 2.56,
-          "distinctive": false
-        },
-        {
-          "term": "families",
-          "score": 5.64,
-          "z": 0.56,
-          "countPrev": 0,
-          "countCurr": 3,
-          "per10kPrev": 0.0,
-          "per10kCurr": 2.56,
-          "deltaPer10k": 2.56,
-          "distinctive": false
-        },
-        {
-          "term": "nature",
-          "score": 5.64,
-          "z": 0.56,
-          "countPrev": 0,
-          "countCurr": 3,
-          "per10kPrev": 0.0,
-          "per10kCurr": 2.56,
-          "deltaPer10k": 2.56,
+          "per10kCurr": 2.39,
+          "deltaPer10k": 2.39,
           "distinctive": false
         }
       ],
       "topFallers": [
         {
           "term": "health care",
-          "score": -7.72,
+          "score": -7.73,
           "z": -0.77,
           "countPrev": 21,
           "countCurr": 0,
-          "per10kPrev": 19.14,
+          "per10kPrev": 18.09,
           "per10kCurr": 0.0,
-          "deltaPer10k": -19.14,
+          "deltaPer10k": -18.09,
           "distinctive": false
         },
         {
           "term": "care providers",
-          "score": -6.28,
+          "score": -6.29,
           "z": -0.63,
           "countPrev": 5,
           "countCurr": 0,
-          "per10kPrev": 4.56,
+          "per10kPrev": 4.31,
           "per10kCurr": 0.0,
-          "deltaPer10k": -4.56,
+          "deltaPer10k": -4.31,
           "distinctive": false
         },
         {
           "term": "care industry",
-          "score": -5.77,
+          "score": -5.78,
           "z": -0.58,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 2.73,
+          "per10kPrev": 2.58,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.73,
+          "deltaPer10k": -2.58,
           "distinctive": false
         },
         {
           "term": "healthy",
-          "score": -5.77,
+          "score": -5.78,
           "z": -0.58,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 2.73,
+          "per10kPrev": 2.58,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.73,
+          "deltaPer10k": -2.58,
           "distinctive": false
         },
         {
           "term": "pharmacyclics",
-          "score": -5.77,
+          "score": -5.78,
           "z": -0.58,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 2.73,
+          "per10kPrev": 2.58,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.73,
+          "deltaPer10k": -2.58,
           "distinctive": false
         },
         {
           "term": "care field",
-          "score": -5.37,
+          "score": -5.38,
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.82,
+          "per10kPrev": 1.72,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.82,
+          "deltaPer10k": -1.72,
           "distinctive": false
         },
         {
           "term": "castration",
-          "score": -5.37,
+          "score": -5.38,
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.82,
+          "per10kPrev": 1.72,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.82,
+          "deltaPer10k": -1.72,
           "distinctive": false
         },
         {
           "term": "consolidation health",
-          "score": -5.37,
+          "score": -5.38,
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.82,
+          "per10kPrev": 1.72,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.82,
+          "deltaPer10k": -1.72,
           "distinctive": false
         },
         {
           "term": "jabil",
-          "score": -5.37,
+          "score": -5.38,
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.82,
+          "per10kPrev": 1.72,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.82,
+          "deltaPer10k": -1.72,
           "distinctive": false
         },
         {
           "term": "llc",
-          "score": -5.37,
+          "score": -5.38,
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.82,
+          "per10kPrev": 1.72,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.82,
+          "deltaPer10k": -1.72,
           "distinctive": false
         },
         {
           "term": "metastatic",
-          "score": -5.37,
+          "score": -5.38,
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.82,
+          "per10kPrev": 1.72,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.82,
+          "deltaPer10k": -1.72,
           "distinctive": false
         },
         {
           "term": "mind",
-          "score": -5.37,
+          "score": -5.38,
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.82,
+          "per10kPrev": 1.72,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.82,
+          "deltaPer10k": -1.72,
           "distinctive": false
         },
         {
           "term": "patent infringement",
-          "score": -5.37,
+          "score": -5.38,
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.82,
+          "per10kPrev": 1.72,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.82,
+          "deltaPer10k": -1.72,
           "distinctive": false
         },
         {
           "term": "scrutiny health",
-          "score": -5.37,
+          "score": -5.38,
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.82,
+          "per10kPrev": 1.72,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.82,
+          "deltaPer10k": -1.72,
           "distinctive": false
         },
         {
           "term": "suffer",
-          "score": -5.37,
+          "score": -5.38,
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.82,
+          "per10kPrev": 1.72,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.82,
+          "deltaPer10k": -1.72,
           "distinctive": false
         }
       ],
@@ -1868,471 +2800,935 @@
       "summaryAlt": "Adds emphasis on johnson johnson, planned separation, planned separation consumer; de-emphasizes health care, government agencies, health care products."
     },
     {
+      "from": 2021,
+      "to": 2022,
+      "topRisers": [
+        {
+          "term": "russia",
+          "score": 7.71,
+          "z": 0.77,
+          "countPrev": 0,
+          "countCurr": 23,
+          "per10kPrev": 0.0,
+          "per10kCurr": 17.68,
+          "deltaPer10k": 17.68,
+          "distinctive": false
+        },
+        {
+          "term": "ukraine",
+          "score": 7.34,
+          "z": 0.73,
+          "countPrev": 0,
+          "countCurr": 16,
+          "per10kPrev": 0.0,
+          "per10kCurr": 12.3,
+          "deltaPer10k": 12.3,
+          "distinctive": false
+        },
+        {
+          "term": "russia ukraine",
+          "score": 7.21,
+          "z": 0.72,
+          "countPrev": 0,
+          "countCurr": 14,
+          "per10kPrev": 0.0,
+          "per10kCurr": 10.76,
+          "deltaPer10k": 10.76,
+          "distinctive": false
+        },
+        {
+          "term": "ukraine war",
+          "score": 7.13,
+          "z": 0.71,
+          "countPrev": 0,
+          "countCurr": 13,
+          "per10kPrev": 0.0,
+          "per10kCurr": 10.0,
+          "deltaPer10k": 10.0,
+          "distinctive": false
+        },
+        {
+          "term": "ira",
+          "score": 6.77,
+          "z": 0.68,
+          "countPrev": 0,
+          "countCurr": 9,
+          "per10kPrev": 0.0,
+          "per10kCurr": 6.92,
+          "deltaPer10k": 6.92,
+          "distinctive": false
+        },
+        {
+          "term": "letter",
+          "score": 6.18,
+          "z": 0.62,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.84,
+          "deltaPer10k": 3.84,
+          "distinctive": false
+        },
+        {
+          "term": "letter ruling",
+          "score": 6.18,
+          "z": 0.62,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.84,
+          "deltaPer10k": 3.84,
+          "distinctive": false
+        },
+        {
+          "term": "opinions",
+          "score": 6.18,
+          "z": 0.62,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.84,
+          "deltaPer10k": 3.84,
+          "distinctive": false
+        },
+        {
+          "term": "pharmaceutical medtech",
+          "score": 6.18,
+          "z": 0.62,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.84,
+          "deltaPer10k": 3.84,
+          "distinctive": false
+        },
+        {
+          "term": "private letter",
+          "score": 6.18,
+          "z": 0.62,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.84,
+          "deltaPer10k": 3.84,
+          "distinctive": false
+        },
+        {
+          "term": "cybersecurity incidents",
+          "score": 5.96,
+          "z": 0.59,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.08,
+          "deltaPer10k": 3.08,
+          "distinctive": false
+        },
+        {
+          "term": "export controls",
+          "score": 5.96,
+          "z": 0.59,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.08,
+          "deltaPer10k": 3.08,
+          "distinctive": false
+        },
+        {
+          "term": "kenvue",
+          "score": 5.96,
+          "z": 0.59,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.08,
+          "deltaPer10k": 3.08,
+          "distinctive": false
+        },
+        {
+          "term": "medicare drugs",
+          "score": 5.96,
+          "z": 0.59,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.08,
+          "deltaPer10k": 3.08,
+          "distinctive": false
+        },
+        {
+          "term": "opinions tax",
+          "score": 5.96,
+          "z": 0.59,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.08,
+          "deltaPer10k": 3.08,
+          "distinctive": false
+        }
+      ],
+      "topFallers": [
+        {
+          "term": "aca",
+          "score": -6.44,
+          "z": -0.64,
+          "countPrev": 6,
+          "countCurr": 0,
+          "per10kPrev": 4.79,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.79,
+          "distinctive": false
+        },
+        {
+          "term": "pharmaceutical medical",
+          "score": -6.25,
+          "z": -0.62,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 3.99,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.99,
+          "distinctive": false
+        },
+        {
+          "term": "opinion",
+          "score": -6.03,
+          "z": -0.6,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.19,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.19,
+          "distinctive": false
+        },
+        {
+          "term": "puerto",
+          "score": -5.74,
+          "z": -0.57,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.39,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.39,
+          "distinctive": false
+        },
+        {
+          "term": "related covid",
+          "score": -5.74,
+          "z": -0.57,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.39,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.39,
+          "distinctive": false
+        },
+        {
+          "term": "rico",
+          "score": -5.74,
+          "z": -0.57,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.39,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.39,
+          "distinctive": false
+        },
+        {
+          "term": "aca individual",
+          "score": -5.34,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.6,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.6,
+          "distinctive": false
+        },
+        {
+          "term": "caused",
+          "score": -5.34,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.6,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.6,
+          "distinctive": false
+        },
+        {
+          "term": "individual mandate",
+          "score": -5.34,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.6,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.6,
+          "distinctive": false
+        },
+        {
+          "term": "mandate",
+          "score": -5.34,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.6,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.6,
+          "distinctive": false
+        },
+        {
+          "term": "presented",
+          "score": -5.34,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.6,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.6,
+          "distinctive": false
+        },
+        {
+          "term": "priorities",
+          "score": -5.34,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.6,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.6,
+          "distinctive": false
+        },
+        {
+          "term": "accommodations",
+          "score": -4.65,
+          "z": -0.46,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 0.8,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -0.8,
+          "distinctive": false
+        },
+        {
+          "term": "act aca",
+          "score": -4.65,
+          "z": -0.46,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 0.8,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -0.8,
+          "distinctive": false
+        },
+        {
+          "term": "actors",
+          "score": -4.65,
+          "z": -0.46,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 0.8,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -0.8,
+          "distinctive": false
+        }
+      ],
+      "summary": "Adds emphasis on russia, ukraine, russia ukraine; de-emphasizes aca, pharmaceutical medical, opinion.",
+      "topRisersAlt": [
+        {
+          "term": "adversely affect business",
+          "score": 5.97
+        },
+        {
+          "term": "business adversely",
+          "score": 5.27
+        },
+        {
+          "term": "countries world",
+          "score": 5.27
+        },
+        {
+          "term": "data protection",
+          "score": 5.27
+        },
+        {
+          "term": "export controls",
+          "score": 5.27
+        },
+        {
+          "term": "future operations",
+          "score": 5.27
+        },
+        {
+          "term": "global health",
+          "score": 5.27
+        },
+        {
+          "term": "laws regulations world",
+          "score": 5.27
+        },
+        {
+          "term": "products adversely affect",
+          "score": 5.27
+        },
+        {
+          "term": "products include",
+          "score": 5.27
+        },
+        {
+          "term": "subject government",
+          "score": 5.27
+        },
+        {
+          "term": "cyber security",
+          "score": 4.58
+        },
+        {
+          "term": "data privacy",
+          "score": 4.58
+        },
+        {
+          "term": "data security",
+          "score": 4.58
+        },
+        {
+          "term": "information security",
+          "score": 0.83
+        }
+      ],
+      "topFallersAlt": [
+        {
+          "term": "johnson johnson",
+          "score": -6.89
+        },
+        {
+          "term": "planned separation consumer",
+          "score": -6.28
+        },
+        {
+          "term": "consumer health",
+          "score": -5.76
+        },
+        {
+          "term": "consumer health business",
+          "score": -5.76
+        },
+        {
+          "term": "challenges ability",
+          "score": -5.35
+        },
+        {
+          "term": "consumer products",
+          "score": -5.35
+        },
+        {
+          "term": "consumer protection laws",
+          "score": -5.35
+        },
+        {
+          "term": "johnson johnson employees",
+          "score": -5.35
+        },
+        {
+          "term": "litigation addition",
+          "score": -5.35
+        },
+        {
+          "term": "patent challenges",
+          "score": -5.35
+        },
+        {
+          "term": "planned separation addition",
+          "score": -5.35
+        },
+        {
+          "term": "programs health",
+          "score": -5.35
+        },
+        {
+          "term": "related covid",
+          "score": -5.35
+        },
+        {
+          "term": "healthcare products",
+          "score": -0.45
+        },
+        {
+          "term": "products related",
+          "score": -0.45
+        }
+      ],
+      "summaryAlt": "Adds emphasis on adversely affect business, business adversely, countries world; de-emphasizes johnson johnson, planned separation consumer, consumer health."
+    },
+    {
       "from": 2022,
       "to": 2023,
       "topRisers": [
         {
-          "term": "kenvue",
-          "score": 7.24,
-          "z": 0.72,
-          "countPrev": 0,
-          "countCurr": 7,
-          "per10kPrev": 0.0,
-          "per10kCurr": 11.99,
-          "deltaPer10k": 11.99,
-          "distinctive": false
-        },
-        {
           "term": "Artificial intelligence",
-          "score": 7.09,
-          "z": 0.71,
+          "score": 7.17,
+          "z": 0.72,
           "countPrev": 0,
           "countCurr": 6,
           "per10kPrev": 0.0,
-          "per10kCurr": 10.28,
-          "deltaPer10k": 10.28,
+          "per10kCurr": 9.99,
+          "deltaPer10k": 9.99,
           "distinctive": false,
           "includes": [
             "ai"
           ]
         },
         {
-          "term": "russia",
-          "score": 6.91,
-          "z": 0.69,
-          "countPrev": 0,
-          "countCurr": 5,
-          "per10kPrev": 0.0,
-          "per10kCurr": 8.56,
-          "deltaPer10k": 8.56,
-          "distinctive": false
-        },
-        {
           "term": "tensions",
-          "score": 6.69,
-          "z": 0.67,
+          "score": 6.76,
+          "z": 0.68,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 6.85,
-          "deltaPer10k": 6.85,
+          "per10kCurr": 6.66,
+          "deltaPer10k": 6.66,
           "distinctive": false
         },
         {
           "term": "global tensions",
-          "score": 6.4,
-          "z": 0.64,
+          "score": 6.47,
+          "z": 0.65,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.14,
-          "deltaPer10k": 5.14,
+          "per10kCurr": 4.99,
+          "deltaPer10k": 4.99,
           "distinctive": false
         },
         {
           "term": "innovative medicine",
-          "score": 6.4,
-          "z": 0.64,
+          "score": 6.47,
+          "z": 0.65,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.14,
-          "deltaPer10k": 5.14,
+          "per10kCurr": 4.99,
+          "deltaPer10k": 4.99,
           "distinctive": false
         },
         {
           "term": "medicine",
-          "score": 6.4,
-          "z": 0.64,
+          "score": 6.47,
+          "z": 0.65,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.14,
-          "deltaPer10k": 5.14,
+          "per10kCurr": 4.99,
+          "deltaPer10k": 4.99,
           "distinctive": false
         },
         {
           "term": "changes comply",
-          "score": 5.99,
-          "z": 0.6,
+          "score": 6.07,
+          "z": 0.61,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.43,
-          "deltaPer10k": 3.43,
+          "per10kCurr": 3.33,
+          "deltaPer10k": 3.33,
           "distinctive": false
         },
         {
           "term": "comply new",
-          "score": 5.99,
-          "z": 0.6,
+          "score": 6.07,
+          "z": 0.61,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.43,
-          "deltaPer10k": 3.43,
+          "per10kCurr": 3.33,
+          "deltaPer10k": 3.33,
           "distinctive": false
         },
         {
-          "term": "crisis",
-          "score": 5.99,
-          "z": 0.6,
+          "term": "implement changes",
+          "score": 6.07,
+          "z": 0.61,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.43,
-          "deltaPer10k": 3.43,
-          "distinctive": false
-        },
-        {
-          "term": "crisis health",
-          "score": 5.99,
-          "z": 0.6,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 3.43,
-          "deltaPer10k": 3.43,
-          "distinctive": false
-        },
-        {
-          "term": "cybersecurity incidents",
-          "score": 5.99,
-          "z": 0.6,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 3.43,
-          "deltaPer10k": 3.43,
-          "distinctive": false
-        },
-        {
-          "term": "enactment",
-          "score": 5.99,
-          "z": 0.6,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 3.43,
-          "deltaPer10k": 3.43,
-          "distinctive": false
-        },
-        {
-          "term": "health crisis",
-          "score": 5.99,
-          "z": 0.6,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 3.43,
-          "deltaPer10k": 3.43,
+          "per10kCurr": 3.33,
+          "deltaPer10k": 3.33,
           "distinctive": false
         },
         {
           "term": "increasing number",
-          "score": 5.99,
-          "z": 0.6,
+          "score": 6.07,
+          "z": 0.61,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.43,
-          "deltaPer10k": 3.43,
+          "per10kCurr": 3.33,
+          "deltaPer10k": 3.33,
+          "distinctive": false
+        },
+        {
+          "term": "machine",
+          "score": 6.07,
+          "z": 0.61,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.33,
+          "deltaPer10k": 3.33,
+          "distinctive": false
+        },
+        {
+          "term": "machine learning",
+          "score": 6.07,
+          "z": 0.61,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.33,
+          "deltaPer10k": 3.33,
+          "distinctive": false
+        },
+        {
+          "term": "manufacture supply",
+          "score": 6.07,
+          "z": 0.61,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.33,
+          "deltaPer10k": 3.33,
+          "distinctive": false
+        },
+        {
+          "term": "medicine medtech",
+          "score": 6.07,
+          "z": 0.61,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.33,
+          "deltaPer10k": 3.33,
+          "distinctive": false
+        },
+        {
+          "term": "payors",
+          "score": 6.07,
+          "z": 0.61,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.33,
+          "deltaPer10k": 3.33,
+          "distinctive": false
+        },
+        {
+          "term": "risks liabilities",
+          "score": 6.07,
+          "z": 0.61,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.33,
+          "deltaPer10k": 3.33,
           "distinctive": false
         }
       ],
       "topFallers": [
         {
           "term": "planned separation",
-          "score": -7.14,
+          "score": -7.06,
           "z": -0.71,
           "countPrev": 25,
           "countCurr": 0,
-          "per10kPrev": 21.36,
+          "per10kPrev": 19.22,
           "per10kCurr": 0.0,
-          "deltaPer10k": -21.36,
+          "deltaPer10k": -19.22,
           "distinctive": false
         },
         {
           "term": "consumer health",
-          "score": -6.75,
+          "score": -6.67,
           "z": -0.67,
           "countPrev": 17,
           "countCurr": 0,
-          "per10kPrev": 14.52,
+          "per10kPrev": 13.07,
           "per10kCurr": 0.0,
-          "deltaPer10k": -14.52,
+          "deltaPer10k": -13.07,
           "distinctive": false
         },
         {
           "term": "active",
-          "score": -6.48,
-          "z": -0.65,
-          "countPrev": 13,
+          "score": -6.33,
+          "z": -0.63,
+          "countPrev": 12,
           "countCurr": 0,
-          "per10kPrev": 11.11,
+          "per10kPrev": 9.23,
           "per10kCurr": 0.0,
-          "deltaPer10k": -11.11,
+          "deltaPer10k": -9.23,
           "distinctive": false
         },
         {
           "term": "www",
-          "score": -6.4,
-          "z": -0.64,
+          "score": -6.33,
+          "z": -0.63,
           "countPrev": 12,
           "countCurr": 0,
-          "per10kPrev": 10.25,
+          "per10kPrev": 9.23,
           "per10kCurr": 0.0,
-          "deltaPer10k": -10.25,
+          "deltaPer10k": -9.23,
           "distinctive": false
         },
         {
           "term": "adults",
-          "score": -6.31,
-          "z": -0.63,
+          "score": -6.24,
+          "z": -0.62,
           "countPrev": 11,
           "countCurr": 0,
-          "per10kPrev": 9.4,
+          "per10kPrev": 8.46,
           "per10kCurr": 0.0,
-          "deltaPer10k": -9.4,
+          "deltaPer10k": -8.46,
           "distinctive": false
         },
         {
           "term": "com",
-          "score": -6.31,
-          "z": -0.63,
+          "score": -6.24,
+          "z": -0.62,
           "countPrev": 11,
           "countCurr": 0,
-          "per10kPrev": 9.4,
+          "per10kPrev": 8.46,
           "per10kCurr": 0.0,
-          "deltaPer10k": -9.4,
-          "distinctive": false
-        },
-        {
-          "term": "employee",
-          "score": -6.22,
-          "z": -0.62,
-          "countPrev": 10,
-          "countCurr": 0,
-          "per10kPrev": 8.54,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -8.54,
+          "deltaPer10k": -8.46,
           "distinctive": false
         },
         {
           "term": "forward",
-          "score": -6.22,
-          "z": -0.62,
+          "score": -6.14,
+          "z": -0.61,
           "countPrev": 10,
           "countCurr": 0,
-          "per10kPrev": 8.54,
+          "per10kPrev": 7.69,
           "per10kCurr": 0.0,
-          "deltaPer10k": -8.54,
+          "deltaPer10k": -7.69,
           "distinctive": false
         },
         {
           "term": "forward looking",
-          "score": -6.22,
-          "z": -0.62,
+          "score": -6.14,
+          "z": -0.61,
           "countPrev": 10,
           "countCurr": 0,
-          "per10kPrev": 8.54,
+          "per10kPrev": 7.69,
           "per10kCurr": 0.0,
-          "deltaPer10k": -8.54,
+          "deltaPer10k": -7.69,
           "distinctive": false
         },
         {
           "term": "looking",
-          "score": -6.22,
-          "z": -0.62,
+          "score": -6.14,
+          "z": -0.61,
           "countPrev": 10,
           "countCurr": 0,
-          "per10kPrev": 8.54,
+          "per10kPrev": 7.69,
           "per10kCurr": 0.0,
-          "deltaPer10k": -8.54,
+          "deltaPer10k": -7.69,
           "distinctive": false
         },
         {
           "term": "arthritis",
-          "score": -6.11,
-          "z": -0.61,
+          "score": -6.04,
+          "z": -0.6,
           "countPrev": 9,
           "countCurr": 0,
-          "per10kPrev": 7.69,
+          "per10kPrev": 6.92,
           "per10kCurr": 0.0,
-          "deltaPer10k": -7.69,
+          "deltaPer10k": -6.92,
           "distinctive": false
         },
         {
           "term": "committee",
-          "score": -6.11,
-          "z": -0.61,
+          "score": -6.04,
+          "z": -0.6,
           "countPrev": 9,
           "countCurr": 0,
-          "per10kPrev": 7.69,
+          "per10kPrev": 6.92,
           "per10kCurr": 0.0,
-          "deltaPer10k": -7.69,
+          "deltaPer10k": -6.92,
+          "distinctive": false
+        },
+        {
+          "term": "employee",
+          "score": -6.04,
+          "z": -0.6,
+          "countPrev": 9,
+          "countCurr": 0,
+          "per10kPrev": 6.92,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -6.92,
           "distinctive": false
         },
         {
           "term": "looking statements",
-          "score": -6.11,
-          "z": -0.61,
+          "score": -6.04,
+          "z": -0.6,
           "countPrev": 9,
           "countCurr": 0,
-          "per10kPrev": 7.69,
+          "per10kPrev": 6.92,
           "per10kCurr": 0.0,
-          "deltaPer10k": -7.69,
+          "deltaPer10k": -6.92,
+          "distinctive": false
+        },
+        {
+          "term": "strategy",
+          "score": -6.04,
+          "z": -0.6,
+          "countPrev": 9,
+          "countCurr": 0,
+          "per10kPrev": 6.92,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -6.92,
           "distinctive": false
         },
         {
           "term": "available",
-          "score": -6.0,
-          "z": -0.6,
+          "score": -5.92,
+          "z": -0.59,
           "countPrev": 8,
           "countCurr": 0,
-          "per10kPrev": 6.83,
+          "per10kPrev": 6.15,
           "per10kCurr": 0.0,
-          "deltaPer10k": -6.83,
-          "distinctive": false
-        },
-        {
-          "term": "disease",
-          "score": -6.0,
-          "z": -0.6,
-          "countPrev": 8,
-          "countCurr": 0,
-          "per10kPrev": 6.83,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -6.83,
+          "deltaPer10k": -6.15,
           "distinctive": false
         }
       ],
-      "summary": "Adds emphasis on kenvue, Artificial intelligence, russia; de-emphasizes planned separation, consumer health, active.",
+      "summary": "Adds emphasis on Artificial intelligence, tensions, global tensions; de-emphasizes planned separation, consumer health, active.",
       "topRisersAlt": [
         {
           "term": "intellectual property rights",
-          "score": 7.04
-        },
-        {
-          "term": "adversely affect business",
-          "score": 6.62
+          "score": 7.08
         },
         {
           "term": "legal proceedings",
-          "score": 6.62
+          "score": 6.66
         },
         {
           "term": "business operations",
-          "score": 6.32
+          "score": 6.36
         },
         {
           "term": "products technologies",
-          "score": 6.32
+          "score": 6.36
         },
         {
           "term": "financial economic legal",
-          "score": 5.91
+          "score": 5.95
         },
         {
           "term": "government healthcare",
-          "score": 5.91
+          "score": 5.95
         },
         {
           "term": "intellectual property protection",
-          "score": 5.91
+          "score": 5.95
+        },
+        {
+          "term": "litigation addition",
+          "score": 5.95
         },
         {
           "term": "machine learning",
-          "score": 5.91
+          "score": 5.95
         },
         {
           "term": "negatively impact",
-          "score": 5.91
+          "score": 5.95
         },
         {
           "term": "new laws regulations",
-          "score": 5.91
+          "score": 5.95
         },
         {
           "term": "new products market",
-          "score": 5.91
+          "score": 5.95
         },
         {
           "term": "operations business",
-          "score": 5.91
+          "score": 5.95
         },
         {
-          "term": "data privacy",
-          "score": 5.21
+          "term": "new products",
+          "score": 0.94
         },
         {
-          "term": "export controls",
-          "score": 5.21
+          "term": "information security",
+          "score": 0.93
         }
       ],
       "topFallersAlt": [
         {
-          "term": "johnson johnson",
-          "score": -6.26
-        },
-        {
           "term": "planned separation",
-          "score": -6.26
-        },
-        {
-          "term": "planned separation consumer",
-          "score": -5.65
+          "score": -6.76
         },
         {
           "term": "health business",
-          "score": -5.42
-        },
-        {
-          "term": "result significant",
-          "score": -5.42
+          "score": -5.96
         },
         {
           "term": "risks related",
-          "score": -5.42
+          "score": -5.61
         },
         {
           "term": "certain products",
-          "score": -5.13
+          "score": -5.39
         },
         {
-          "term": "consumer health",
-          "score": -5.13
-        },
-        {
-          "term": "consumer health business",
-          "score": -5.13
+          "term": "result significant",
+          "score": -5.39
         },
         {
           "term": "development programs",
-          "score": -5.13
-        },
-        {
-          "term": "healthcare products",
-          "score": -5.13
+          "score": -5.09
         },
         {
           "term": "international business",
-          "score": -5.13
+          "score": -5.09
         },
         {
           "term": "potential risks",
-          "score": -5.13
-        },
-        {
-          "term": "products related",
-          "score": -5.13
+          "score": -5.09
         },
         {
           "term": "risk significant",
-          "score": -5.13
+          "score": -5.09
+        },
+        {
+          "term": "risks related product",
+          "score": -5.09
+        },
+        {
+          "term": "additional information",
+          "score": -4.69
+        },
+        {
+          "term": "additional tax",
+          "score": -4.69
+        },
+        {
+          "term": "business adversely",
+          "score": -4.69
+        },
+        {
+          "term": "countries world",
+          "score": -4.69
+        },
+        {
+          "term": "data protection",
+          "score": -4.69
         }
       ],
-      "summaryAlt": "Adds emphasis on intellectual property rights, adversely affect business, legal proceedings; de-emphasizes johnson johnson, planned separation, planned separation consumer."
+      "summaryAlt": "Adds emphasis on intellectual property rights, legal proceedings, business operations; de-emphasizes planned separation, health business, risks related."
     },
     {
       "from": 2023,
@@ -2340,334 +3736,334 @@
       "topRisers": [
         {
           "term": "active",
-          "score": 6.43,
+          "score": 6.41,
           "z": 0.64,
           "countPrev": 0,
           "countCurr": 12,
           "per10kPrev": 0.0,
-          "per10kCurr": 10.51,
-          "deltaPer10k": 10.51,
+          "per10kCurr": 10.04,
+          "deltaPer10k": 10.04,
           "distinctive": false
         },
         {
           "term": "adults",
-          "score": 6.24,
+          "score": 6.23,
           "z": 0.62,
           "countPrev": 0,
           "countCurr": 10,
           "per10kPrev": 0.0,
-          "per10kCurr": 8.76,
-          "deltaPer10k": 8.76,
+          "per10kCurr": 8.36,
+          "deltaPer10k": 8.36,
           "distinctive": false
         },
         {
           "term": "com",
-          "score": 6.24,
+          "score": 6.23,
           "z": 0.62,
           "countPrev": 0,
           "countCurr": 10,
           "per10kPrev": 0.0,
-          "per10kCurr": 8.76,
-          "deltaPer10k": 8.76,
+          "per10kCurr": 8.36,
+          "deltaPer10k": 8.36,
           "distinctive": false
         },
         {
           "term": "forward",
-          "score": 6.24,
+          "score": 6.23,
           "z": 0.62,
           "countPrev": 0,
           "countCurr": 10,
           "per10kPrev": 0.0,
-          "per10kCurr": 8.76,
-          "deltaPer10k": 8.76,
+          "per10kCurr": 8.36,
+          "deltaPer10k": 8.36,
           "distinctive": false
         },
         {
           "term": "forward looking",
-          "score": 6.24,
+          "score": 6.23,
           "z": 0.62,
           "countPrev": 0,
           "countCurr": 10,
           "per10kPrev": 0.0,
-          "per10kCurr": 8.76,
-          "deltaPer10k": 8.76,
+          "per10kCurr": 8.36,
+          "deltaPer10k": 8.36,
           "distinctive": false
         },
         {
           "term": "looking",
-          "score": 6.24,
+          "score": 6.23,
           "z": 0.62,
           "countPrev": 0,
           "countCurr": 10,
           "per10kPrev": 0.0,
-          "per10kCurr": 8.76,
-          "deltaPer10k": 8.76,
+          "per10kCurr": 8.36,
+          "deltaPer10k": 8.36,
           "distinctive": false
         },
         {
           "term": "arthritis",
-          "score": 6.14,
+          "score": 6.12,
           "z": 0.61,
           "countPrev": 0,
           "countCurr": 9,
           "per10kPrev": 0.0,
-          "per10kCurr": 7.88,
-          "deltaPer10k": 7.88,
+          "per10kCurr": 7.53,
+          "deltaPer10k": 7.53,
           "distinctive": false
         },
         {
           "term": "available",
-          "score": 6.14,
+          "score": 6.12,
           "z": 0.61,
           "countPrev": 0,
           "countCurr": 9,
           "per10kPrev": 0.0,
-          "per10kCurr": 7.88,
-          "deltaPer10k": 7.88,
+          "per10kCurr": 7.53,
+          "deltaPer10k": 7.53,
           "distinctive": false
         },
         {
           "term": "disease",
-          "score": 6.14,
+          "score": 6.12,
           "z": 0.61,
           "countPrev": 0,
           "countCurr": 9,
           "per10kPrev": 0.0,
-          "per10kCurr": 7.88,
-          "deltaPer10k": 7.88,
+          "per10kCurr": 7.53,
+          "deltaPer10k": 7.53,
           "distinctive": false
         },
         {
           "term": "executive",
-          "score": 6.14,
+          "score": 6.12,
           "z": 0.61,
           "countPrev": 0,
           "countCurr": 9,
           "per10kPrev": 0.0,
-          "per10kCurr": 7.88,
-          "deltaPer10k": 7.88,
+          "per10kCurr": 7.53,
+          "deltaPer10k": 7.53,
           "distinctive": false
         },
         {
           "term": "looking statements",
-          "score": 6.14,
+          "score": 6.12,
           "z": 0.61,
           "countPrev": 0,
           "countCurr": 9,
           "per10kPrev": 0.0,
-          "per10kCurr": 7.88,
-          "deltaPer10k": 7.88,
+          "per10kCurr": 7.53,
+          "deltaPer10k": 7.53,
           "distinctive": false
         },
         {
           "term": "www",
-          "score": 6.14,
+          "score": 6.12,
           "z": 0.61,
           "countPrev": 0,
           "countCurr": 9,
           "per10kPrev": 0.0,
-          "per10kCurr": 7.88,
-          "deltaPer10k": 7.88,
+          "per10kCurr": 7.53,
+          "deltaPer10k": 7.53,
           "distinctive": false
         },
         {
           "term": "employee",
-          "score": 6.02,
+          "score": 6.0,
           "z": 0.6,
           "countPrev": 0,
           "countCurr": 8,
           "per10kPrev": 0.0,
-          "per10kCurr": 7.01,
-          "deltaPer10k": 7.01,
+          "per10kCurr": 6.69,
+          "deltaPer10k": 6.69,
           "distinctive": false
         },
         {
           "term": "janssen",
-          "score": 6.02,
+          "score": 6.0,
           "z": 0.6,
           "countPrev": 0,
           "countCurr": 8,
           "per10kPrev": 0.0,
-          "per10kCurr": 7.01,
-          "deltaPer10k": 7.01,
+          "per10kCurr": 6.69,
+          "deltaPer10k": 6.69,
           "distinctive": false
         },
         {
           "term": "jnj",
-          "score": 6.02,
+          "score": 6.0,
           "z": 0.6,
           "countPrev": 0,
           "countCurr": 8,
           "per10kPrev": 0.0,
-          "per10kCurr": 7.01,
-          "deltaPer10k": 7.01,
+          "per10kCurr": 6.69,
+          "deltaPer10k": 6.69,
           "distinctive": false
         }
       ],
       "topFallers": [
         {
           "term": "separation",
-          "score": -7.35,
-          "z": -0.73,
+          "score": -7.37,
+          "z": -0.74,
           "countPrev": 8,
           "countCurr": 0,
-          "per10kPrev": 13.7,
+          "per10kPrev": 13.32,
           "per10kCurr": 0.0,
-          "deltaPer10k": -13.7,
+          "deltaPer10k": -13.32,
           "distinctive": false
         },
         {
           "term": "diverse",
-          "score": -6.37,
+          "score": -6.39,
           "z": -0.64,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 5.14,
+          "per10kPrev": 4.99,
           "per10kCurr": 0.0,
-          "deltaPer10k": -5.14,
+          "deltaPer10k": -4.99,
           "distinctive": false
         },
         {
           "term": "free",
-          "score": -6.37,
+          "score": -6.39,
           "z": -0.64,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 5.14,
+          "per10kPrev": 4.99,
           "per10kCurr": 0.0,
-          "deltaPer10k": -5.14,
+          "deltaPer10k": -4.99,
           "distinctive": false
         },
         {
           "term": "innovator",
-          "score": -6.37,
+          "score": -6.39,
           "z": -0.64,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 5.14,
+          "per10kPrev": 4.99,
           "per10kCurr": 0.0,
-          "deltaPer10k": -5.14,
+          "deltaPer10k": -4.99,
           "distinctive": false
         },
         {
           "term": "tax free",
-          "score": -6.37,
+          "score": -6.39,
           "z": -0.64,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 5.14,
+          "per10kPrev": 4.99,
           "per10kCurr": 0.0,
-          "deltaPer10k": -5.14,
+          "deltaPer10k": -4.99,
           "distinctive": false
         },
         {
           "term": "tax liability",
-          "score": -6.37,
+          "score": -6.39,
           "z": -0.64,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 5.14,
+          "per10kPrev": 4.99,
           "per10kCurr": 0.0,
-          "deltaPer10k": -5.14,
+          "deltaPer10k": -4.99,
           "distinctive": false
         },
         {
           "term": "anda",
-          "score": -5.97,
+          "score": -5.99,
           "z": -0.6,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 3.43,
+          "per10kPrev": 3.33,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.43,
+          "deltaPer10k": -3.33,
           "distinctive": false
         },
         {
           "term": "biological",
-          "score": -5.97,
+          "score": -5.99,
           "z": -0.6,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 3.43,
+          "per10kPrev": 3.33,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.43,
+          "deltaPer10k": -3.33,
           "distinctive": false
         },
         {
           "term": "challenge patents",
-          "score": -5.97,
+          "score": -5.99,
           "z": -0.6,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 3.43,
+          "per10kPrev": 3.33,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.43,
+          "deltaPer10k": -3.33,
           "distinctive": false
         },
         {
           "term": "created",
-          "score": -5.97,
+          "score": -5.99,
           "z": -0.6,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 3.43,
+          "per10kPrev": 3.33,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.43,
+          "deltaPer10k": -3.33,
           "distinctive": false
         },
         {
           "term": "free treatment",
-          "score": -5.97,
+          "score": -5.99,
           "z": -0.6,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 3.43,
+          "per10kPrev": 3.33,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.43,
+          "deltaPer10k": -3.33,
           "distinctive": false
         },
         {
           "term": "irs",
-          "score": -5.97,
+          "score": -5.99,
           "z": -0.6,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 3.43,
+          "per10kPrev": 3.33,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.43,
+          "deltaPer10k": -3.33,
           "distinctive": false
         },
         {
           "term": "letter",
-          "score": -5.97,
+          "score": -5.99,
           "z": -0.6,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 3.43,
+          "per10kPrev": 3.33,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.43,
+          "deltaPer10k": -3.33,
           "distinctive": false
         },
         {
-          "term": "qualify",
-          "score": -5.97,
+          "term": "letter ruling",
+          "score": -5.99,
           "z": -0.6,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 3.43,
+          "per10kPrev": 3.33,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.43,
+          "deltaPer10k": -3.33,
           "distinctive": false
         },
         {
-          "term": "qualify tax",
-          "score": -5.97,
+          "term": "private letter",
+          "score": -5.99,
           "z": -0.6,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 3.43,
+          "per10kPrev": 3.33,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.43,
+          "deltaPer10k": -3.33,
           "distinctive": false
         }
       ],

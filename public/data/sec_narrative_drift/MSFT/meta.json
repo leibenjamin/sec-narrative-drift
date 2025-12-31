@@ -2,7 +2,7 @@
   "ticker": "MSFT",
   "cik": "0000789019",
   "companyName": "MICROSOFT CORP",
-  "lastUpdatedUtc": "2025-12-31T04:47:32Z",
+  "lastUpdatedUtc": "2025-12-31T16:59:19Z",
   "formsIncluded": [
     "10-K"
   ],
@@ -16,14 +16,15 @@
   "extraction": {
     "section": "item1a",
     "method": "text_scored",
-    "confidence": 0.25,
+    "confidence": 0.1,
     "warnings": [
       "anchor_missing",
       "length_out_of_band",
+      "early_position_penalty",
       "low_confidence_item1a"
     ],
     "lengthChars": 28,
     "endMarkerUsed": "1B",
-    "hasItem1C": true
+    "hasItem1C": false
   }
 }

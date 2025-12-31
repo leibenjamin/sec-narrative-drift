@@ -1,5 +1,113 @@
 [
   {
+    "year": 2016,
+    "form": "10-K",
+    "filingDate": "2016-03-30",
+    "reportDate": "2016-01-31",
+    "accessionNumber": "0000104169-16-000079",
+    "primaryDocument": "wmtform10-kx1312016.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/104169/000010416916000079/wmtform10-kx1312016.htm",
+    "extraction": {
+      "confidence": 0.8999999999999999,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing"
+      ]
+    }
+  },
+  {
+    "year": 2017,
+    "form": "10-K",
+    "filingDate": "2017-03-31",
+    "reportDate": "2017-01-31",
+    "accessionNumber": "0000104169-17-000021",
+    "primaryDocument": "wmtform10-kx1312017.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/104169/000010416917000021/wmtform10-kx1312017.htm",
+    "extraction": {
+      "confidence": 0.8999999999999999,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing"
+      ]
+    }
+  },
+  {
+    "year": 2018,
+    "form": "10-K",
+    "filingDate": "2018-03-30",
+    "reportDate": "2018-01-31",
+    "accessionNumber": "0000104169-18-000028",
+    "primaryDocument": "wmtform10-kx1312018.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/104169/000010416918000028/wmtform10-kx1312018.htm",
+    "extraction": {
+      "confidence": 0.8,
+      "method": "html_anchor",
+      "errors": [
+        "early_position_penalty"
+      ]
+    }
+  },
+  {
+    "year": 2019,
+    "form": "10-K",
+    "filingDate": "2019-03-28",
+    "reportDate": "2019-01-31",
+    "accessionNumber": "0000104169-19-000016",
+    "primaryDocument": "wmtform10-kx1312019.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/104169/000010416919000016/wmtform10-kx1312019.htm",
+    "extraction": {
+      "confidence": 0.8,
+      "method": "html_anchor",
+      "errors": [
+        "early_position_penalty"
+      ]
+    }
+  },
+  {
+    "year": 2020,
+    "form": "10-K",
+    "filingDate": "2020-03-20",
+    "reportDate": "2020-01-31",
+    "accessionNumber": "0000104169-20-000011",
+    "primaryDocument": "wmtform10-kx1312020.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/104169/000010416920000011/wmtform10-kx1312020.htm",
+    "extraction": {
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
+    }
+  },
+  {
+    "year": 2021,
+    "form": "10-K",
+    "filingDate": "2021-03-19",
+    "reportDate": "2021-01-31",
+    "accessionNumber": "0000104169-21-000033",
+    "primaryDocument": "wmt-20210131.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/104169/000010416921000033/wmt-20210131.htm",
+    "extraction": {
+      "confidence": 0.7,
+      "method": "html_anchor",
+      "errors": [
+        "end_not_found"
+      ]
+    }
+  },
+  {
+    "year": 2022,
+    "form": "10-K",
+    "filingDate": "2022-03-18",
+    "reportDate": "2022-01-31",
+    "accessionNumber": "0000104169-22-000012",
+    "primaryDocument": "wmt-20220131.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/104169/000010416922000012/wmt-20220131.htm",
+    "extraction": {
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
+    }
+  },
+  {
     "year": 2023,
     "form": "10-K",
     "filingDate": "2023-03-17",

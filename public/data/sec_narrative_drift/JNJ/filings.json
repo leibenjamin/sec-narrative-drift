@@ -1,5 +1,38 @@
 [
   {
+    "year": 2015,
+    "form": "10-K",
+    "filingDate": "2016-02-24",
+    "reportDate": "2016-01-03",
+    "accessionNumber": "0000200406-16-000071",
+    "primaryDocument": "form10-k20160103.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/200406/000020040616000071/form10-k20160103.htm",
+    "extraction": {
+      "confidence": 0.7499999999999999,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing",
+        "early_position_penalty"
+      ]
+    }
+  },
+  {
+    "year": 2016,
+    "form": "10-K",
+    "filingDate": "2017-02-27",
+    "reportDate": "2017-01-01",
+    "accessionNumber": "0000200406-17-000006",
+    "primaryDocument": "form10-k20170101.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/200406/000020040617000006/form10-k20170101.htm",
+    "extraction": {
+      "confidence": 0.8999999999999999,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing"
+      ]
+    }
+  },
+  {
     "year": 2017,
     "form": "10-K",
     "filingDate": "2018-02-21",
@@ -48,7 +81,7 @@
     }
   },
   {
-    "year": 2021,
+    "year": 2020,
     "form": "10-K",
     "filingDate": "2021-02-22",
     "reportDate": "2021-01-03",
@@ -64,13 +97,29 @@
     }
   },
   {
-    "year": 2022,
+    "year": 2021,
     "form": "10-K",
     "filingDate": "2022-02-17",
     "reportDate": "2022-01-02",
     "accessionNumber": "0000200406-22-000022",
     "primaryDocument": "jnj-20220102.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/200406/000020040622000022/jnj-20220102.htm",
+    "extraction": {
+      "confidence": 0.95,
+      "method": "text_scored",
+      "errors": [
+        "anchor_missing"
+      ]
+    }
+  },
+  {
+    "year": 2022,
+    "form": "10-K",
+    "filingDate": "2023-02-16",
+    "reportDate": "2023-01-01",
+    "accessionNumber": "0000200406-23-000016",
+    "primaryDocument": "jnj-20230101.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/200406/000020040623000016/jnj-20230101.htm",
     "extraction": {
       "confidence": 0.95,
       "method": "text_scored",
