@@ -21,6 +21,7 @@ from sec_quality import (
 
 SEC_TICKER_MAP_URL = "https://www.sec.gov/files/company_tickers_exchange.json"
 SEC_SUBMISSIONS_URL = "https://data.sec.gov/submissions/CIK{cik10}.json"
+SEC_SUBMISSIONS_FILE_URL = "https://data.sec.gov/submissions/{filename}"
 SEC_ARCHIVES_BASE = "https://www.sec.gov/Archives/edgar/data"
 MAX_REQUESTS_PER_SECOND = 10
 SECTION_NAME = "10k_item1a"
@@ -193,13 +194,17 @@ def load_ticker_cik_map(force_live: bool = False) -> dict[str, dict[str, str]]:
     raise RuntimeError("Unexpected ticker map format")
 
 
-def fetch_submissions_json(cik10: str) -> dict[str, Any]:
+def fetch_submissions_json(
+    cik10: str,
+    session: Optional[requests.Session] = None,
+    limiter: Optional[RateLimiter] = None,
+) -> dict[str, Any]:
     fixture_path = FIXTURES_DIR / f"CIK{cik10}.json"
     if fixture_path.exists():
         return load_fixture_json(fixture_path)
 
-    session = requests.Session()
-    limiter = RateLimiter(MAX_REQUESTS_PER_SECOND)
+    session = session or requests.Session()
+    limiter = limiter or RateLimiter(MAX_REQUESTS_PER_SECOND)
     url = SEC_SUBMISSIONS_URL.format(cik10=cik10)
     return json.loads(download(url, session, limiter).decode("utf-8"))
 
@@ -208,12 +213,17 @@ def iter_recent_filings(
     submissions: dict[str, Any],
     allowed_forms: set[str],
 ) -> list[dict[str, str]]:
-    recent = submissions.get("filings", {}).get("recent", {})
-    forms = recent.get("form", [])
-    filing_dates = recent.get("filingDate", [])
-    report_dates = recent.get("reportDate", [])
-    accession_numbers = recent.get("accessionNumber", [])
-    primary_docs = recent.get("primaryDocument", [])
+    filings = as_str_dict(submissions.get("filings"))
+    if filings is None:
+        return []
+    recent = as_str_dict(filings.get("recent"))
+    if recent is None:
+        return []
+    forms = as_list(recent.get("form")) or []
+    filing_dates = as_list(recent.get("filingDate")) or []
+    report_dates = as_list(recent.get("reportDate")) or []
+    accession_numbers = as_list(recent.get("accessionNumber")) or []
+    primary_docs = as_list(recent.get("primaryDocument")) or []
 
     length = min(
         len(forms),
@@ -230,17 +240,83 @@ def iter_recent_filings(
             continue
         if form not in allowed_forms:
             continue
+        filing_date = filing_dates[idx]
+        if not isinstance(filing_date, str):
+            continue
+        accession = accession_numbers[idx]
+        if not isinstance(accession, str):
+            continue
+        primary_doc = primary_docs[idx]
+        if not isinstance(primary_doc, str):
+            continue
+        report_date = report_dates[idx] if report_dates else ""
+        if not isinstance(report_date, str):
+            report_date = ""
         rows.append(
             {
                 "form": form,
-                "filingDate": filing_dates[idx],
-                "reportDate": report_dates[idx] if report_dates else "",
-                "accessionNumber": accession_numbers[idx],
-                "primaryDocument": primary_docs[idx],
+                "filingDate": filing_date,
+                "reportDate": report_date,
+                "accessionNumber": accession,
+                "primaryDocument": primary_doc,
             }
         )
 
     return sorted(rows, key=lambda row: row["filingDate"], reverse=True)
+
+
+def fetch_submissions_file_json(
+    filename: str, session: requests.Session, limiter: RateLimiter
+) -> Optional[dict[str, Any]]:
+    url = SEC_SUBMISSIONS_FILE_URL.format(filename=filename)
+    try:
+        payload = json.loads(download(url, session, limiter).decode("utf-8"))
+    except Exception as exc:  # pragma: no cover - defensive for offline runs
+        print(f"warning: unable to fetch {url}: {exc}")
+        return None
+    payload_dict = as_str_dict(payload)
+    if payload_dict is None:
+        return None
+    return payload_dict
+
+
+def collect_filings(
+    submissions: dict[str, Any],
+    allowed_forms: set[str],
+    session: requests.Session,
+    limiter: RateLimiter,
+    max_items: int,
+) -> list[dict[str, str]]:
+    filings = iter_recent_filings(submissions, allowed_forms)
+    if max_items <= 0 or len(filings) >= max_items:
+        return filings[:max_items] if max_items > 0 else filings
+
+    seen = {row.get("accessionNumber", "") for row in filings}
+    filings_root = as_str_dict(submissions.get("filings"))
+    if filings_root is None:
+        return filings[:max_items]
+    files = as_list(filings_root.get("files")) or []
+    for entry in files:
+        entry_dict = as_str_dict(entry)
+        if entry_dict is None:
+            continue
+        name = entry_dict.get("name")
+        if not isinstance(name, str) or not name:
+            continue
+        payload = fetch_submissions_file_json(name, session, limiter)
+        if payload is None:
+            continue
+        more = iter_recent_filings(payload, allowed_forms)
+        for row in more:
+            accession = row.get("accessionNumber", "")
+            if not accession or accession in seen:
+                continue
+            seen.add(accession)
+            filings.append(row)
+        if len(filings) >= max_items:
+            break
+
+    return sorted(filings, key=lambda row: row["filingDate"], reverse=True)[:max_items]
 
 
 def build_primary_doc_url(cik10: str, accession: str, primary_doc: str) -> str:
@@ -593,15 +669,17 @@ def main(argv: Optional[list[str]] = None) -> int:
         raise SystemExit(f"Ticker not found in mapping: {ticker}")
 
     cik10 = mapping[ticker]["cik"]
-    submissions = fetch_submissions_json(cik10)
+    session = requests.Session()
+    limiter = RateLimiter(MAX_REQUESTS_PER_SECOND)
+
+    submissions = fetch_submissions_json(cik10, session=session, limiter=limiter)
     company_name = resolve_company_name(mapping[ticker].get("name"), submissions.get("name"), ticker)
     allowed_forms = {"10-K"}
     if args.include_20f:
         allowed_forms.add("20-F")
-    filings = iter_recent_filings(submissions, allowed_forms)
 
     max_items = args.limit if args.limit is not None else args.years
-    filings = filings[:max_items]
+    filings = collect_filings(submissions, allowed_forms, session, limiter, max_items)
 
     if not filings:
         if args.include_20f:
@@ -610,9 +688,6 @@ def main(argv: Optional[list[str]] = None) -> int:
 
     cache_dir = CACHE_DIR / ticker
     cache_dir.mkdir(parents=True, exist_ok=True)
-
-    session = requests.Session()
-    limiter = RateLimiter(MAX_REQUESTS_PER_SECOND)
 
     seen_years: set[int] = set()
     filings_out: list[dict[str, Any]] = []
