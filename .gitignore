@@ -32,3 +32,9 @@ AGENTS.md
 scripts/_cache/*
 !scripts/_cache/metrics_demo/
 !scripts/_cache/metrics_demo/**
+
+# Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
