@@ -8,11 +8,9 @@
     "primaryDocument": "d187868d10k.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/789019/000119312516662209/d187868d10k.htm",
     "extraction": {
-      "confidence": 0.95,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   },
   {
@@ -24,13 +22,11 @@
     "primaryDocument": "msft-10k_20170630.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/789019/000156459017014900/msft-10k_20170630.htm",
     "extraction": {
-      "confidence": 0.1,
+      "confidence": 0.95,
       "method": "text_scored",
       "errors": [
-        "anchor_missing",
-        "length_out_of_band",
-        "early_position_penalty",
-        "low_confidence_item1a"
+        "anchor_low_confidence",
+        "anchor_missing"
       ]
     }
   },
@@ -43,13 +39,11 @@
     "primaryDocument": "msft-10k_20180630.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/789019/000156459018019062/msft-10k_20180630.htm",
     "extraction": {
-      "confidence": 0.1,
+      "confidence": 0.95,
       "method": "text_scored",
       "errors": [
-        "anchor_missing",
-        "length_out_of_band",
-        "early_position_penalty",
-        "low_confidence_item1a"
+        "anchor_low_confidence",
+        "anchor_missing"
       ]
     }
   },
@@ -62,13 +56,11 @@
     "primaryDocument": "msft-10k_20190630.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/789019/000156459019027952/msft-10k_20190630.htm",
     "extraction": {
-      "confidence": 0.1,
+      "confidence": 0.95,
       "method": "text_scored",
       "errors": [
-        "anchor_missing",
-        "length_out_of_band",
-        "early_position_penalty",
-        "low_confidence_item1a"
+        "anchor_low_confidence",
+        "anchor_missing"
       ]
     }
   },
@@ -81,11 +73,9 @@
     "primaryDocument": "msft-10k_20200630.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/789019/000156459020034944/msft-10k_20200630.htm",
     "extraction": {
-      "confidence": 0.95,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   },
   {
@@ -97,11 +87,9 @@
     "primaryDocument": "msft-10k_20210630.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/789019/000156459021039151/msft-10k_20210630.htm",
     "extraction": {
-      "confidence": 0.95,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   },
   {
@@ -113,11 +101,9 @@
     "primaryDocument": "msft-10k_20220630.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/789019/000156459022026876/msft-10k_20220630.htm",
     "extraction": {
-      "confidence": 0.95,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   },
   {
@@ -129,12 +115,10 @@
     "primaryDocument": "msft-20230630.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/789019/000095017023035122/msft-20230630.htm",
     "extraction": {
-      "confidence": 0.25,
+      "confidence": 0.95,
       "method": "text_scored",
       "errors": [
-        "anchor_missing",
-        "length_out_of_band",
-        "low_confidence_item1a"
+        "anchor_missing"
       ]
     }
   },
@@ -147,12 +131,10 @@
     "primaryDocument": "msft-20240630.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/789019/000095017024087843/msft-20240630.htm",
     "extraction": {
-      "confidence": 0.25,
+      "confidence": 0.95,
       "method": "text_scored",
       "errors": [
-        "anchor_missing",
-        "length_out_of_band",
-        "low_confidence_item1a"
+        "anchor_missing"
       ]
     }
   },
@@ -165,12 +147,10 @@
     "primaryDocument": "msft-20250630.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm",
     "extraction": {
-      "confidence": 0.25,
+      "confidence": 0.95,
       "method": "text_scored",
       "errors": [
-        "anchor_missing",
-        "length_out_of_band",
-        "low_confidence_item1a"
+        "anchor_missing"
       ]
     }
   }

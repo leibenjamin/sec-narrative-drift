@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAtUtc": "2026-01-01T02:23:10Z",
+  "generatedAtUtc": "2026-01-01T17:21:11Z",
   "section": "10k_item1a",
   "lookbackTargetYears": 10,
   "companyCount": 56,
@@ -296,15 +296,15 @@
         "maxYear": 2024
       },
       "quality": {
-        "level": "low",
-        "minConfidence": 0.1,
+        "level": "high",
+        "minConfidence": 0.9,
         "medianConfidence": 0.9,
         "notes": []
       },
       "metricsSummary": {
         "peakDrift": {
-          "from": 2019,
-          "to": 2020,
+          "from": 2015,
+          "to": 2016,
           "value": 0.03
         },
         "latestDrift": {
@@ -314,8 +314,8 @@
         }
       },
       "autoPair": {
-        "from": 2019,
-        "to": 2020
+        "from": 2015,
+        "to": 2016
       }
     },
     {
@@ -340,8 +340,8 @@
         "maxYear": 2024
       },
       "quality": {
-        "level": "low",
-        "minConfidence": 0.25,
+        "level": "high",
+        "minConfidence": 0.9,
         "medianConfidence": 0.9,
         "notes": []
       },
@@ -349,12 +349,12 @@
         "peakDrift": {
           "from": 2017,
           "to": 2018,
-          "value": 0.04
+          "value": 0.05
         },
         "latestDrift": {
-          "from": 2020,
-          "to": 2021,
-          "value": 0.01
+          "from": 2023,
+          "to": 2024,
+          "value": 0.02
         }
       },
       "autoPair": {
@@ -483,10 +483,26 @@
         "maxYear": 2025
       },
       "quality": {
-        "level": "low",
-        "minConfidence": 0.1,
-        "medianConfidence": 0.25,
+        "level": "high",
+        "minConfidence": 0.9,
+        "medianConfidence": 0.9,
         "notes": []
+      },
+      "metricsSummary": {
+        "peakDrift": {
+          "from": 2019,
+          "to": 2020,
+          "value": 0.02
+        },
+        "latestDrift": {
+          "from": 2024,
+          "to": 2025,
+          "value": 0.01
+        }
+      },
+      "autoPair": {
+        "from": 2019,
+        "to": 2020
       },
       "featuredCase": {
         "from": 2023,
@@ -1445,26 +1461,26 @@
         "maxYear": 2025
       },
       "quality": {
-        "level": "low",
-        "minConfidence": 0.1,
-        "medianConfidence": 0.25,
+        "level": "high",
+        "minConfidence": 0.9,
+        "medianConfidence": 0.95,
         "notes": []
       },
       "metricsSummary": {
         "peakDrift": {
-          "from": 2020,
-          "to": 2021,
-          "value": 0.01
+          "from": 2023,
+          "to": 2024,
+          "value": 0.04
         },
         "latestDrift": {
-          "from": 2021,
-          "to": 2022,
+          "from": 2024,
+          "to": 2025,
           "value": 0.01
         }
       },
       "autoPair": {
-        "from": 2020,
-        "to": 2021
+        "from": 2023,
+        "to": 2024
       }
     },
     {
@@ -1632,8 +1648,8 @@
         "maxYear": 2025
       },
       "quality": {
-        "level": "low",
-        "minConfidence": 0.1,
+        "level": "high",
+        "minConfidence": 0.9,
         "medianConfidence": 0.9,
         "notes": []
       },
@@ -1644,9 +1660,9 @@
           "value": 0.03
         },
         "latestDrift": {
-          "from": 2021,
-          "to": 2022,
-          "value": 0.01
+          "from": 2024,
+          "to": 2025,
+          "value": 0.02
         }
       },
       "autoPair": {

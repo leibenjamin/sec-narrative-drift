@@ -133,22 +133,22 @@ def safe_get_attr(node: Any, name: str) -> Optional[str]:
     return None
 
 
-ITEM1A_HEADING = re.compile(r"(?m)(^|\n\n+)\s*item\s*1\s*a\b", re.IGNORECASE)
+ITEM1A_HEADING = re.compile(r"(?m)(^|\n\n+)\s*item\s*1\s*\.?\s*a\b", re.IGNORECASE)
 ITEM3D_HEADING = re.compile(r"(?m)(^|\n\n+)\s*item\s*3\s*\.?\s*d\b", re.IGNORECASE)
 ITEM3_HEADING = re.compile(r"(?m)^\s*item\s*3\b", re.IGNORECASE)
-ITEM1C_HEADING = re.compile(r"(?m)(^|\n\n+)\s*item\s*1\s*c\b", re.IGNORECASE)
+ITEM1C_HEADING = re.compile(r"(?m)(^|\n\n+)\s*item\s*1\s*\.?\s*c\b", re.IGNORECASE)
 ITEM1A_RISK_HEADING = re.compile(
-    r"(?m)^\s*item\s*1\s*a\b.*risk\s+factors?", re.IGNORECASE
+    r"(?m)^\s*item\s*1\s*\.?\s*a\b.*risk\s+factors?", re.IGNORECASE
 )
 ITEM3_RISK_HEADING = re.compile(
     r"(?m)^\s*item\s*3\b.*risk\s+factors?", re.IGNORECASE
 )
-ANCHOR_ITEM1A = re.compile(r"item\s*1\s*a", re.IGNORECASE)
+ANCHOR_ITEM1A = re.compile(r"item\s*1\s*\.?\s*a", re.IGNORECASE)
 ANCHOR_ITEM3D = re.compile(r"item\s*3\s*\.?\s*d", re.IGNORECASE)
 ANCHOR_ITEM3 = re.compile(r"item\s*3\b", re.IGNORECASE)
 END_MARKERS_10K: list[tuple[str, re.Pattern[str]]] = [
-    ("1C", re.compile(r"(?m)(^|\n\n+)\s*item\s*1\s*c\b", re.IGNORECASE)),
-    ("1B", re.compile(r"(?m)(^|\n\n+)\s*item\s*1\s*b\b", re.IGNORECASE)),
+    ("1C", re.compile(r"(?m)(^|\n\n+)\s*item\s*1\s*\.?\s*c\b", re.IGNORECASE)),
+    ("1B", re.compile(r"(?m)(^|\n\n+)\s*item\s*1\s*\.?\s*b\b", re.IGNORECASE)),
     ("2", re.compile(r"(?m)(^|\n\n+)\s*item\s*2\b", re.IGNORECASE)),
 ]
 END_MARKERS_20F: list[tuple[str, re.Pattern[str]]] = [
@@ -157,6 +157,9 @@ END_MARKERS_20F: list[tuple[str, re.Pattern[str]]] = [
     ("4", re.compile(r"(?m)(^|\n\n+)\s*item\s*4\b", re.IGNORECASE)),
 ]
 RISK_FACTORS = re.compile(r"\brisk\s+factors?\b", re.IGNORECASE)
+RISK_FACTORS_SLOPPY = re.compile(
+    r"r\s*i\s*s\s*k\s+f\s*a\s*c\s*t\s*o\s*r\s*s", re.IGNORECASE
+)
 RISK_FACTORS_HEADING = re.compile(r"(?m)^\s*risk\s+factors?\b", re.IGNORECASE)
 HEADING_LINE = re.compile(r"^(item\s+\d|risk factors|part\s+[ivx]+)\b", re.IGNORECASE)
 MODAL_TERMS = ("may", "could", "adversely")
@@ -173,6 +176,9 @@ def _heading_start_index(match: re.Match[str]) -> int:
 def _find_anchor_start(
     text: str, anchor_text: str, heading_pattern: re.Pattern[str] = ITEM1A_RISK_HEADING
 ) -> Optional[int]:
+    heading_match = heading_pattern.search(text)
+    if heading_match:
+        return heading_match.start()
     if not anchor_text:
         return None
     lowered = text.lower()
@@ -182,10 +188,13 @@ def _find_anchor_start(
     idx = lowered.find(anchor_lower)
     if idx >= 0:
         return idx
-    heading_match = heading_pattern.search(text)
-    if heading_match:
-        return heading_match.start()
     return None
+
+
+def _contains_risk_factors(text: str) -> bool:
+    if RISK_FACTORS.search(text):
+        return True
+    return RISK_FACTORS_SLOPPY.search(text) is not None
 
 
 def _find_end_marker(
@@ -307,7 +316,7 @@ def extract_item1a_from_text(
     for match in ITEM1A_HEADING.finditer(text):
         start_idx = _heading_start_index(match)
         window = text[start_idx : start_idx + 400]
-        if not RISK_FACTORS.search(window):
+        if not _contains_risk_factors(window):
             continue
         add_candidate(start_idx)
         found_item1a = True
@@ -317,7 +326,7 @@ def extract_item1a_from_text(
         for match in ITEM3D_HEADING.finditer(text):
             start_idx = _heading_start_index(match)
             window = text[start_idx : start_idx + 400]
-            if not RISK_FACTORS.search(window):
+            if not _contains_risk_factors(window):
                 continue
             add_candidate(start_idx)
         if candidates:
@@ -385,7 +394,7 @@ def extract_item1a_from_text(
         }
         return best["section"], best["confidence"], "text_scored", warnings, debug_meta
 
-    risk_match = RISK_FACTORS.search(text)
+    risk_match = RISK_FACTORS.search(text) or RISK_FACTORS_SLOPPY.search(text)
     if risk_match:
         start_idx = risk_match.start()
         end_idx, end_marker = _find_end_marker(text, start_idx, end_markers)
@@ -418,13 +427,14 @@ def extract_item1a_from_html(
     raw_links: Any = soup_any.find_all("a")
     for link in list(raw_links):
         text = safe_get_text(link).lower()
-        if "risk factors" not in text:
-            continue
         if ANCHOR_ITEM1A.search(text):
             anchor_links.append((link, False))
             continue
         if ANCHOR_ITEM3D.search(text) or ANCHOR_ITEM3.search(text):
             anchor_links.append((link, True))
+            continue
+        if "risk factors" in text:
+            anchor_links.append((link, False))
 
     text = clean_html_to_text(html)
     for link, is_item3d in anchor_links:
@@ -459,6 +469,10 @@ def extract_item1a_from_html(
             local_warnings.append("toc_cluster_penalty")
             confidence -= 0.15
         confidence = max(0.1, min(confidence, 0.95))
+        if confidence < 0.5 or len(section) < 8000:
+            if "anchor_low_confidence" not in anchor_warnings:
+                anchor_warnings.append("anchor_low_confidence")
+            continue
         debug_meta = {
             "lengthChars": len(section),
             "endMarkerUsed": end_marker,
