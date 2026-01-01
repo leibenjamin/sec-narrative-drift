@@ -260,6 +260,7 @@ export default function Company() {
   }, [hasAltShiftLists, selectedShiftPair, termLens])
 
   function handleSelectPair(fromYear: number, toYear: number) {
+    if (fromYear === toYear) return
     const ordered =
       fromYear <= toYear ? { from: fromYear, to: toYear } : { from: toYear, to: fromYear }
     setSelectedPair(ordered)
