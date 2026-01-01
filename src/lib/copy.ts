@@ -50,7 +50,7 @@ export const copy = {
 
   buttons: {
     exploreFeatured: "Explore a featured company",
-    browseCompanies: "Browse from a directory of companies",
+    browseCompanies: "Browse list of companies",
     startTour: "Start tour",
     resetSelection: "Reset selection",
     details: "Details",
@@ -123,6 +123,7 @@ export const copy = {
     },
     sectionValueMvp: "10‑K Item 1A — Risk Factors",
     topButtons: {
+      allCompanies: "All companies",
       methodology: "Methodology",
       dataQuality: "Data Quality",
       startTour: "Start tour",

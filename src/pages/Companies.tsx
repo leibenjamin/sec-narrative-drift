@@ -177,21 +177,6 @@ export default function Companies() {
                 })
               : copy.global.loading.base}
           </p>
-
-          <div className="flex flex-wrap gap-3">
-            <Link
-              to="/"
-              className="inline-flex items-center rounded-md border border-black/20 px-4 py-2 hover:bg-black/5"
-            >
-              {copy.nav.home}
-            </Link>
-            <Link
-              to="/methodology"
-              className="inline-flex items-center rounded-md border border-black/20 px-4 py-2 hover:bg-black/5"
-            >
-              {copy.nav.methodology}
-            </Link>
-          </div>
         </header>
 
         {error ? (
