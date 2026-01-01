@@ -218,7 +218,7 @@ export const copy = {
     title: "Similarity across years",
     // High-traffic line for most flows: small + dry + functional.
     helper: "Darker cells are more similar. Click a cell to compare years. It will not file a 10‑K for you.",
-    microcopy: "Click a cell to compare those years.",
+    microcopy: "Click any off-diagonal cell to compare two different years.",
     legendMin: ({ value }: { value: string }) => t("Low ({value})", { value }),
     legendMax: ({ value }: { value: string }) => t("High ({value})", { value }),
     selectedLabel: ({
@@ -235,6 +235,8 @@ export const copy = {
       fromYear: number | string
       toYear: number | string
     }) => t("Click to compare {fromYear} vs {toYear}", { fromYear, toYear }),
+    sameYearHint: "Same year (self-similarity). Select two different years.",
+    noDataHint: "No data for this year pair.",
     ariaLabel: ({
       fromYear,
       toYear,
@@ -248,6 +250,8 @@ export const copy = {
       toYear,
       value,
     }),
+    sameYearAria: ({ year }: { year: number | string }) =>
+      t("Same year {year}. Self-similarity; choose another year to compare.", { year }),
     naLabel: "not available",
     hoverTitle: ({ fromYear, toYear }: { fromYear: number | string; toYear: number | string }) =>
       t("{fromYear} ↔ {toYear}", { fromYear, toYear }),

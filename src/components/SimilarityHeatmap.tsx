@@ -159,15 +159,21 @@ export default function SimilarityHeatmap({
                 ? "#9ca3af"
                 : "#e5e7eb"
             const borderWidth = isActive ? 2 : 1
+            const isSelectable = !cell.isDiagonal && cell.value !== null
+            const primaryHint = cell.isDiagonal
+              ? copy.heatmap.sameYearHint
+              : cell.value === null
+                ? copy.heatmap.noDataHint
+                : copy.heatmap.clickHint({
+                    fromYear: cell.rowYear,
+                    toYear: cell.colYear,
+                  })
             const tooltipLines = [
-              copy.heatmap.clickHint({
-                fromYear: cell.rowYear,
-                toYear: cell.colYear,
-              }),
-              cell.value !== null
+              primaryHint,
+              cell.value !== null && !cell.isDiagonal
                 ? copy.heatmap.cosineLine({ value: formatValue(cell.value) })
                 : null,
-              cell.value !== null
+              cell.value !== null && !cell.isDiagonal
                 ? copy.heatmap.driftLine({
                     drift: formatValue(1 - cell.value),
                   })
@@ -176,12 +182,14 @@ export default function SimilarityHeatmap({
               .filter(Boolean)
               .join("\n")
 
-            const ariaLabel = copy.heatmap.ariaLabel({
-              fromYear: cell.rowYear,
-              toYear: cell.colYear,
-              value:
-                cell.value !== null ? formatValue(cell.value) : copy.heatmap.naLabel,
-            })
+            const ariaLabel = cell.isDiagonal
+              ? copy.heatmap.sameYearAria({ year: cell.rowYear })
+              : copy.heatmap.ariaLabel({
+                  fromYear: cell.rowYear,
+                  toYear: cell.colYear,
+                  value:
+                    cell.value !== null ? formatValue(cell.value) : copy.heatmap.naLabel,
+                })
 
             return (
               <foreignObject
@@ -195,7 +203,10 @@ export default function SimilarityHeatmap({
                   type="button"
                   title={tooltipLines}
                   aria-label={ariaLabel}
+                  aria-disabled={!isSelectable}
+                  tabIndex={isSelectable ? 0 : -1}
                   onClick={() => {
+                    if (!isSelectable) return
                     onSelectPair(cell.rowYear, cell.colYear)
                   }}
                   style={{
@@ -206,7 +217,7 @@ export default function SimilarityHeatmap({
                     borderRadius: 0,
                     border: `${borderWidth}px solid ${borderColor}`,
                     backgroundColor: cell.fill,
-                    cursor: "pointer",
+                    cursor: isSelectable ? "pointer" : "not-allowed",
                     boxShadow: isActive ? "0 0 0 1px #111827" : "none",
                   }}
                 />
