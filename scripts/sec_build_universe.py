@@ -160,6 +160,12 @@ def build_parser() -> argparse.ArgumentParser:
         help="Sleep between tickers (default: 250ms).",
     )
     parser.add_argument(
+        "--max-count",
+        type=int,
+        default=None,
+        help="Optional maximum number of tickers to process in this run.",
+    )
+    parser.add_argument(
         "--submissions-zip",
         default=None,
         help="Path to submissions.zip (bulk submissions archive).",
@@ -217,6 +223,7 @@ def main(argv: Optional[list[str]] = None) -> int:
         )
         submissions_zip = None
 
+    processed = 0
     for ticker in tickers:
         if not started:
             if ticker == start_at:
@@ -247,6 +254,10 @@ def main(argv: Optional[list[str]] = None) -> int:
         if result.stderr:
             append_log(log_path, f"[{ticker}] stderr: {result.stderr.strip()}")
         append_log(log_path, f"[{ticker}] exit={result.returncode}")
+        processed += 1
+        if args.max_count is not None and processed >= args.max_count:
+            append_log(log_path, f"Stopping early after {processed} tickers.")
+            break
 
         if args.sleep_ms > 0:
             time.sleep(args.sleep_ms / 1000)

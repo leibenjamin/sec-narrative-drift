@@ -115,12 +115,25 @@ def tokenize(text: str) -> list[str]:
     return tokens
 
 
+def has_repeated_tokens(tokens: Sequence[str]) -> bool:
+    seen: set[str] = set()
+    for token in tokens:
+        if not token:
+            continue
+        if token in seen:
+            return True
+        seen.add(token)
+    return False
+
+
 def bigrams(tokens: Sequence[str]) -> list[str]:
     output: list[str] = []
     for i in range(len(tokens) - 1):
         a = tokens[i]
         b = tokens[i + 1]
         if not a or not b:
+            continue
+        if a == b:
             continue
         output.append(f"{a} {b}")
     return output
@@ -233,8 +246,10 @@ def textrank_keyphrases(
         while j < len(tokens) and tokens[j] in top_set and (j - i) < 3:
             j += 1
         if j - i >= 2:
-            phrase = " ".join(tokens[i:j])
-            phrases[phrase] += 1
+            phrase_tokens = tokens[i:j]
+            if not has_repeated_tokens(phrase_tokens):
+                phrase = " ".join(phrase_tokens)
+                phrases[phrase] += 1
         i = j
 
     trimmed: Counter[str] = Counter()
