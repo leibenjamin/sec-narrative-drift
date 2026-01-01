@@ -29,7 +29,7 @@ type ExecBriefCardProps = {
 const WIDTH = 1200
 const HEIGHT = 630
 const MARGIN = 40
-const FONT_FAMILY = "system-ui, -apple-system, Segoe UI, sans-serif"
+const FONT_FAMILY = "IBM Plex Sans, Manrope, Segoe UI, Noto Sans, sans-serif"
 
 function formatValue(value: number | null): string {
   if (value === null || Number.isNaN(value)) return "-"

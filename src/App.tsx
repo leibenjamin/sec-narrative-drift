@@ -15,7 +15,7 @@ export default function App() {
       <AppHeader />
       <Suspense
         fallback={
-          <main className="min-h-screen">
+          <main className="min-h-screen page-fade">
             <div className="mx-auto max-w-6xl px-6 py-16">
               <p className="text-sm text-slate-300">{copy.global.loading.base}</p>
             </div>

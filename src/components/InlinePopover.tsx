@@ -76,7 +76,7 @@ export default function InlinePopover({
         <div
           id={tooltipId}
           role="tooltip"
-          className={`absolute z-20 mt-2 w-64 rounded-md border border-black/10 bg-white p-3 text-xs text-slate-700 shadow-lg ${panelPosition} ${panelClassName}`}
+          className={`absolute z-20 mt-2 w-64 rounded-md border border-white/10 bg-slate-900/95 p-3 text-xs text-slate-200 shadow-[0_12px_30px_rgba(2,6,23,0.6)] ${panelPosition} ${panelClassName}`}
         >
           {content}
         </div>

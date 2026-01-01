@@ -164,7 +164,7 @@ export default function Companies() {
   }, [rows, query, coverageFilter, qualityFilter, storyFilter, exchangeFilter, sortMode, storyTickers])
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen page-fade">
       <div className="mx-auto max-w-5xl space-y-10 px-6 py-16">
         <header className="space-y-3">
           <p className="text-xs uppercase tracking-wider text-slate-300">{copy.global.appName}</p>
@@ -180,7 +180,7 @@ export default function Companies() {
         </header>
 
         {error ? (
-          <div className="rounded-lg border border-black/10 p-4 text-sm text-slate-200">
+          <div className="rounded-lg border border-white/10 bg-slate-900/60 p-4 text-sm text-slate-200">
             {error}
           </div>
         ) : null}
@@ -190,7 +190,7 @@ export default function Companies() {
             <input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              className="rounded-md border border-black/20 px-3 py-2 text-sm"
+              className="rounded-md border border-white/15 bg-slate-950/40 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-400 focus:border-sky-400/60 focus:outline-none focus:ring-2 focus:ring-sky-400/20"
               placeholder={copy.companies.searchPlaceholder}
               aria-label={copy.companies.searchAria}
             />
@@ -198,7 +198,7 @@ export default function Companies() {
             <select
               value={coverageFilter}
               onChange={(e) => setCoverageFilter(e.target.value as CoverageFilter)}
-              className="rounded-md border border-black/20 px-3 py-2 text-sm"
+              className="rounded-md border border-white/15 bg-slate-950/40 px-3 py-2 text-sm text-slate-200 focus:border-sky-400/60 focus:outline-none focus:ring-2 focus:ring-sky-400/20"
               aria-label={copy.companies.coverageFilterAria}
             >
               <option value="all">{copy.companies.filters.coverageAll}</option>
@@ -208,7 +208,7 @@ export default function Companies() {
             <select
               value={storyFilter}
               onChange={(e) => setStoryFilter(e.target.value as StoryFilter)}
-              className="rounded-md border border-black/20 px-3 py-2 text-sm"
+              className="rounded-md border border-white/15 bg-slate-950/40 px-3 py-2 text-sm text-slate-200 focus:border-sky-400/60 focus:outline-none focus:ring-2 focus:ring-sky-400/20"
               aria-label={copy.companies.storyFilterAria}
             >
               <option value="all">{copy.companies.filters.storyAll}</option>
@@ -218,7 +218,7 @@ export default function Companies() {
             <select
               value={exchangeFilter}
               onChange={(e) => setExchangeFilter(e.target.value)}
-              className="rounded-md border border-black/20 px-3 py-2 text-sm"
+              className="rounded-md border border-white/15 bg-slate-950/40 px-3 py-2 text-sm text-slate-200 focus:border-sky-400/60 focus:outline-none focus:ring-2 focus:ring-sky-400/20"
               aria-label={copy.companies.exchangeFilterAria}
             >
               {exchangeOptions.map((exchange) => (
@@ -233,7 +233,7 @@ export default function Companies() {
             <select
               value={qualityFilter}
               onChange={(e) => setQualityFilter(e.target.value as QualityFilter)}
-              className="rounded-md border border-black/20 px-3 py-2 text-sm"
+              className="rounded-md border border-white/15 bg-slate-950/40 px-3 py-2 text-sm text-slate-200 focus:border-sky-400/60 focus:outline-none focus:ring-2 focus:ring-sky-400/20"
               aria-label={copy.companies.qualityFilterAria}
             >
               <option value="all">{copy.companies.filters.qualityAll}</option>
@@ -244,7 +244,7 @@ export default function Companies() {
             <select
               value={sortMode}
               onChange={(e) => setSortMode(e.target.value as SortMode)}
-              className="rounded-md border border-black/20 px-3 py-2 text-sm"
+              className="rounded-md border border-white/15 bg-slate-950/40 px-3 py-2 text-sm text-slate-200 focus:border-sky-400/60 focus:outline-none focus:ring-2 focus:ring-sky-400/20"
               aria-label={copy.companies.sortAria}
             >
               <option value="featured">{copy.companies.sort.featured}</option>
@@ -260,7 +260,7 @@ export default function Companies() {
           <section className="space-y-3">
             <h2 className="text-lg font-semibold">{copy.companies.featuredTitle}</h2>
             <p className="text-xs text-slate-400">{copy.companies.featuredHelper}</p>
-            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 stagger-children">
               {featuredRows.slice(0, 12).map((r) => {
                 const fc = r.featuredCase!
                 const link = `/company/${r.ticker}?from=${fc.from}&to=${fc.to}`
@@ -268,14 +268,14 @@ export default function Companies() {
                   <Link
                     key={r.ticker}
                     to={link}
-                    className="rounded-lg border border-black/10 p-4 hover:bg-black/5"
+                    className="rounded-lg border border-white/10 bg-slate-900/40 p-4 hover:bg-slate-900/60"
                   >
                     <div className="flex items-start justify-between gap-3">
                       <div>
                         <div className="text-sm font-semibold">{r.ticker}</div>
                         <div className="text-xs text-slate-300">{r.companyName}</div>
                       </div>
-                      <span className="rounded-full border border-black/20 px-2 py-1 text-[11px]">
+                      <span className="rounded-full border border-sky-400/40 bg-sky-400/10 px-2 py-1 text-[11px] text-sky-100">
                         {copy.companies.featuredChip}
                       </span>
                     </div>
@@ -296,7 +296,7 @@ export default function Companies() {
             {t(copy.companies.resultsCount, { n: filtered.length })}
           </div>
 
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 stagger-children">
             {filtered.map((r) => {
               const auto = r.autoPair
               const isStory = storyTickers.has(r.ticker)
@@ -304,7 +304,7 @@ export default function Companies() {
                 ? `/company/${r.ticker}?from=${auto.from}&to=${auto.to}`
                 : `/company/${r.ticker}`
               return (
-                <div key={r.ticker} className="rounded-lg border border-black/10 p-4">
+                <div key={r.ticker} className="rounded-lg border border-white/10 bg-slate-900/40 p-4">
                   <div className="flex items-start justify-between gap-3">
                     <div>
                       <Link to={`/company/${r.ticker}`} className="text-sm font-semibold hover:underline">
@@ -314,7 +314,7 @@ export default function Companies() {
                     </div>
                     <div className="flex flex-col items-end gap-2">
                       {isStory ? (
-                        <span className="rounded-full border border-black/20 px-2 py-1 text-[11px]">
+                        <span className="rounded-full border border-amber-400/40 bg-amber-400/10 px-2 py-1 text-[11px] text-amber-100">
                           {copy.companies.storyChip}
                         </span>
                       ) : null}
@@ -323,14 +323,14 @@ export default function Companies() {
                   </div>
 
                   <div className="mt-3 flex flex-wrap gap-2 text-xs text-slate-300">
-                    <span className="rounded-full border border-black/20 px-2 py-1">
+                    <span className="rounded-full border border-white/15 bg-white/5 px-2 py-1">
                       {formatCoverage(r)}
                     </span>
-                    <span className="rounded-full border border-black/20 px-2 py-1">
+                    <span className="rounded-full border border-white/15 bg-white/5 px-2 py-1">
                       {formatLatestYear(r)}
                     </span>
                     {r.metricsSummary?.peakDrift ? (
-                      <span className="rounded-full border border-black/20 px-2 py-1">
+                      <span className="rounded-full border border-white/15 bg-white/5 px-2 py-1">
                         {t(copy.companies.peakDriftLabel, {
                           from: r.metricsSummary.peakDrift.from,
                           to: r.metricsSummary.peakDrift.to,
@@ -343,7 +343,7 @@ export default function Companies() {
                   <div className="mt-4 flex gap-3">
                     <Link
                       to={jump}
-                      className="inline-flex items-center rounded-md border border-black/20 px-3 py-2 text-xs hover:bg-black/5"
+                      className="inline-flex items-center rounded-md border border-white/20 px-3 py-2 text-xs text-slate-200 hover:border-white/40 hover:bg-white/5"
                     >
                       {copy.companies.jumpBiggestShift}
                     </Link>

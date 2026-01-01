@@ -93,12 +93,12 @@ export default function SimilarityHeatmap({
   const legendGradient = "linear-gradient(90deg, #f3f4f6 0%, #6b7280 100%)"
 
   return (
-    <div className="space-y-3">
+    <div className="space-y-3 rounded-lg border border-white/10 bg-slate-900/40 p-3">
       <div className="space-y-2 text-xs text-slate-300">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <span>{copy.heatmap.microcopy}</span>
           {selectedLabel ? (
-            <span className="rounded-full border border-slate-500/60 px-2 py-0.5 text-slate-200">
+            <span className="rounded-full border border-sky-400/40 bg-sky-400/10 px-2 py-0.5 text-sky-100">
               {selectedLabel}
             </span>
           ) : null}
@@ -154,10 +154,10 @@ export default function SimilarityHeatmap({
             const isActive =
               activeCell?.row === cell.rowIndex && activeCell?.col === cell.colIndex
             const borderColor = isActive
-              ? "#111827"
+              ? "#38bdf8"
               : cell.isDiagonal
-                ? "#9ca3af"
-                : "#e5e7eb"
+                ? "#94a3b8"
+                : "#e2e8f0"
             const borderWidth = isActive ? 2 : 1
             const isSelectable = !cell.isDiagonal && cell.value !== null
             const primaryHint = cell.isDiagonal

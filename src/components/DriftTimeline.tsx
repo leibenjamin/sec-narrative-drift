@@ -150,7 +150,7 @@ export default function DriftTimeline({
   }, [points])
 
   return (
-    <div className="w-full overflow-x-auto">
+    <div className="w-full overflow-x-auto rounded-lg border border-white/10 bg-slate-900/40 p-3">
       <svg
         viewBox={`0 0 ${width} ${height}`}
         className="w-full min-w-130"
@@ -162,7 +162,7 @@ export default function DriftTimeline({
           y1={baselineY}
           x2={width - paddingX}
           y2={baselineY}
-          stroke="#e5e7eb"
+          stroke="rgba(148, 163, 184, 0.35)"
           strokeWidth={1}
         />
 
@@ -170,7 +170,7 @@ export default function DriftTimeline({
           <path
             key={`ci-band-${index}`}
             d={path}
-            fill="rgba(56, 189, 248, 0.18)"
+            fill="rgba(56, 189, 248, 0.2)"
             stroke="none"
           />
         ))}
@@ -185,7 +185,7 @@ export default function DriftTimeline({
               y1={prev.y}
               x2={point.x}
               y2={point.y}
-              stroke="#111827"
+              stroke="#38bdf8"
               strokeWidth={2}
             />
           )
@@ -222,7 +222,7 @@ export default function DriftTimeline({
                 cx={point.x}
                 cy={point.y}
                 r={point.value === null ? 5 : 6}
-                fill={point.value === null ? "#9ca3af" : "#111827"}
+                fill={point.value === null ? "#64748b" : "#38bdf8"}
               />
             </g>
           )
@@ -235,7 +235,7 @@ export default function DriftTimeline({
             y={height - 10}
             textAnchor="middle"
             fontSize={11}
-            fill="#6b7280"
+            fill="#94a3b8"
           >
             {point.year}
           </text>

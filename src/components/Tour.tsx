@@ -104,17 +104,17 @@ export default function Tour({ isOpen, steps, onClose }: TourProps) {
 
   return (
     <div
-      className="fixed z-50 max-w-xs rounded-lg border border-black/20 bg-white p-4 text-sm text-slate-900 shadow-lg"
+      className="fixed z-50 max-w-xs rounded-lg border border-white/10 bg-slate-900/95 p-4 text-sm text-slate-100 shadow-[0_12px_30px_rgba(2,6,23,0.6)]"
       style={{ top: position.top, left: position.left }}
       onClick={handleAdvance}
       role="dialog"
       aria-live="polite"
     >
-      <div className="text-[10px] uppercase tracking-wider text-slate-500">
+      <div className="text-[10px] uppercase tracking-wider text-slate-400">
         {index + 1}/{stepCount}
       </div>
       <div className="mt-1 text-sm font-semibold">{step.title}</div>
-      <p className="mt-2 text-sm text-slate-700">{step.body}</p>
+      <p className="mt-2 text-sm text-slate-300">{step.body}</p>
     </div>
   )
 }
