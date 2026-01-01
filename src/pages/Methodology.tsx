@@ -2,7 +2,7 @@ import { copy } from "../lib/copy"
 
 export default function Methodology() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen page-fade">
       <div className="mx-auto max-w-4xl px-6 py-12 space-y-10">
         <header className="space-y-3">
           <p className="text-xs uppercase tracking-wider text-slate-300">

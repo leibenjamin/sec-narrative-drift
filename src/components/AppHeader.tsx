@@ -24,11 +24,11 @@ export default function AppHeader() {
   const { pathname } = useLocation()
 
   return (
-    <header className="border-b border-black/10">
+    <header className="border-b border-white/10 bg-slate-950/70 backdrop-blur">
       <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-6 py-4">
         <Link
           to="/"
-          className="text-xs uppercase tracking-wider text-slate-300 hover:text-slate-100"
+          className="text-xs uppercase tracking-wider text-slate-200 hover:text-slate-50"
         >
           {copy.global.appName}
         </Link>
@@ -42,7 +42,7 @@ export default function AppHeader() {
                 aria-current={active ? "page" : undefined}
                 className={
                   active
-                    ? "text-slate-100"
+                    ? "text-slate-50"
                     : "text-slate-300 hover:text-slate-100"
                 }
               >

@@ -8,15 +8,15 @@ type SectionCaptureBadgeProps = {
 
 const badgeStyles: Record<CaptureLevel, { className: string; label: string }> = {
   high: {
-    className: "border-emerald-200 bg-emerald-50 text-emerald-800",
+    className: "border-emerald-400/40 bg-emerald-400/15 text-emerald-100",
     label: "High",
   },
   medium: {
-    className: "border-amber-200 bg-amber-50 text-amber-800",
+    className: "border-amber-400/40 bg-amber-400/15 text-amber-100",
     label: "Medium",
   },
   low: {
-    className: "border-rose-200 bg-rose-50 text-rose-800",
+    className: "border-rose-400/40 bg-rose-400/15 text-rose-100",
     label: "Low",
   },
 }

@@ -56,23 +56,23 @@ export default function Home() {
   }, [])
 
   return (
-    <main className="min-h-screen">
-      <div className="mx-auto max-w-6xl px-6 pt-10 pb-8 space-y-8">
-        <section className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
-          <header className="space-y-3">
+    <main className="min-h-screen page-fade">
+      <div className="mx-auto max-w-6xl px-6 pt-8 pb-6 space-y-6">
+        <section className="grid gap-6 lg:grid-cols-[1.35fr_0.65fr]">
+          <header className="space-y-2">
             <p className="text-xs uppercase tracking-wider text-slate-300">
               {copy.global.appName}
             </p>
 
-            <h1 className="text-3xl font-semibold leading-tight">
+            <h1 className="text-2xl font-semibold leading-snug">
               {copy.home.heroTitle}
             </h1>
 
-            <p className="text-base text-slate-200">
+            <p className="text-sm text-slate-200">
               {copy.global.subtitle}
             </p>
 
-            <p className="text-base text-slate-200">
+            <p className="text-sm text-slate-200">
               {copy.global.oneLiner}
             </p>
 
@@ -80,28 +80,28 @@ export default function Home() {
               {copy.home.heroFootnote}
             </p>
 
-            <div className="flex flex-wrap gap-3 pt-1">
+            <div className="flex flex-wrap gap-2 pt-1">
               <Link
                 to="/companies"
-                className="inline-flex items-center rounded-md bg-black px-4 py-2 text-sm text-white hover:opacity-90"
+                className="inline-flex items-center rounded-md bg-sky-400 px-3 py-1.5 text-sm font-semibold text-slate-900 hover:bg-sky-300"
               >
                 {copy.buttons.browseCompanies}
               </Link>
 
               <Link
                 to="/methodology"
-                className="inline-flex items-center rounded-md border border-black/20 px-4 py-2 text-sm hover:bg-black/5"
+                className="inline-flex items-center rounded-md border border-white/20 px-3 py-1.5 text-sm text-slate-200 hover:border-white/40 hover:bg-white/5"
               >
                 {copy.nav.methodology}
               </Link>
             </div>
           </header>
 
-          <aside className="rounded-lg border border-black/10 p-4">
+          <aside className="rounded-lg border border-white/10 bg-slate-900/60 p-3 shadow-sm">
             <div className="text-xs uppercase tracking-wider text-slate-300">
               {copy.home.howToReadTitle}
             </div>
-            <ol className="mt-3 space-y-2 text-sm text-slate-200">
+            <ol className="mt-2 space-y-1 text-sm text-slate-200">
               <li>
                 <span className="text-slate-400">1.</span>{" "}
                 {copy.home.howToReadSteps.drift}
@@ -115,19 +115,19 @@ export default function Home() {
                 {copy.home.howToReadSteps.evidence}
               </li>
             </ol>
-            <p className="mt-4 text-xs text-slate-400">
+            <p className="mt-2 text-xs text-slate-400 leading-snug">
               {copy.global.sourceLine} {copy.global.caveatLine}
             </p>
           </aside>
         </section>
 
-        <section className="space-y-4">
-          <div className="flex flex-wrap items-end justify-between gap-3">
+        <section className="space-y-3">
+          <div className="flex flex-wrap items-end justify-between gap-2">
             <div>
-              <h2 className="text-xl font-semibold">
+              <h2 className="text-lg font-semibold">
                 {copy.home.featuredHeading}
               </h2>
-              <p className="text-sm text-slate-300">
+              <p className="text-xs text-slate-300">
                 {copy.home.featuredHelper}
               </p>
             </div>
@@ -142,7 +142,7 @@ export default function Home() {
           </div>
 
           {featuredCases.length ? (
-            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3 stagger-children">
               {featuredCases.map((featured) => {
                 const link = `/company/${featured.ticker}?from=${featured.defaultPair.from}&to=${featured.defaultPair.to}`
                 const companyName = companyNameMap.get(featured.ticker.toUpperCase())
@@ -150,7 +150,7 @@ export default function Home() {
                   <Link
                     key={featured.id}
                     to={link}
-                    className="min-w-0 rounded-lg border border-black/10 p-3 hover:bg-black/5"
+                    className="min-w-0 rounded-lg border border-white/10 bg-slate-900/40 p-2 hover:bg-slate-900/60"
                     aria-label={featured.cta}
                   >
                     <div className="flex items-start justify-between gap-2">
@@ -162,23 +162,23 @@ export default function Home() {
                           </div>
                         ) : null}
                       </div>
-                      <span className="rounded-full border border-black/20 px-2 py-1 text-[11px]">
+                      <span className="rounded-full border border-sky-400/40 bg-sky-400/10 px-2 py-1 text-[11px] text-sky-100">
                         {copy.companies.featuredChip}
                       </span>
                     </div>
                     <div
-                      className="mt-2 text-sm font-medium leading-snug truncate"
+                      className="mt-1 text-sm font-medium leading-snug truncate"
                       title={featured.headline}
                     >
                       {featured.headline}
                     </div>
                     {featured.hook ? (
-                      <div className="mt-1 text-xs text-slate-300 truncate" title={featured.hook}>
+                      <div className="mt-0.5 text-xs text-slate-300 truncate" title={featured.hook}>
                         {featured.hook}
                       </div>
                     ) : null}
-                    <div className="mt-2 flex flex-wrap gap-2 text-xs text-slate-300">
-                      <span className="rounded-full border border-black/20 px-2 py-1">
+                    <div className="mt-1 flex flex-wrap gap-2 text-xs text-slate-300">
+                      <span className="rounded-full border border-white/15 bg-white/5 px-2 py-0.5">
                         {t(copy.companies.compareYearsLabel, {
                           from: featured.defaultPair.from,
                           to: featured.defaultPair.to,
@@ -187,7 +187,7 @@ export default function Home() {
                       {featured.tags?.slice(0, 2).map((tag) => (
                         <span
                           key={`${featured.id}-${tag}`}
-                          className="rounded-full border border-black/20 px-2 py-1"
+                          className="rounded-full border border-white/15 bg-white/5 px-2 py-0.5"
                         >
                           {tag}
                         </span>

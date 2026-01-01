@@ -9,19 +9,19 @@ type QualityBadgeProps = {
 
 const badgeStyles: Record<QualityLevel, { className: string; label: string }> = {
   high: {
-    className: "border-emerald-200 bg-emerald-50 text-emerald-800",
+    className: "border-emerald-400/40 bg-emerald-400/15 text-emerald-100",
     label: copy.dataQuality.badges.high,
   },
   medium: {
-    className: "border-amber-200 bg-amber-50 text-amber-800",
+    className: "border-amber-400/40 bg-amber-400/15 text-amber-100",
     label: copy.dataQuality.badges.medium,
   },
   low: {
-    className: "border-rose-200 bg-rose-50 text-rose-800",
+    className: "border-rose-400/40 bg-rose-400/15 text-rose-100",
     label: copy.dataQuality.badges.low,
   },
   unknown: {
-    className: "border-slate-200 bg-slate-50 text-slate-700",
+    className: "border-slate-400/30 bg-white/5 text-slate-200",
     label: copy.dataQuality.badges.skipped,
   },
 }

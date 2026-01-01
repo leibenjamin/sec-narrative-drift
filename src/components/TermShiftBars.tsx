@@ -82,8 +82,8 @@ function renderVariantList(variants: string[]) {
 
 function buildIncludesContent(variants: string[]) {
   return (
-    <div className="space-y-1 text-xs text-slate-700">
-      <div className="font-semibold text-slate-900">
+    <div className="space-y-1 text-xs text-slate-200">
+      <div className="font-semibold text-slate-100">
         {copy.terms.includesTooltipTitle}
       </div>
       <div>
@@ -91,7 +91,7 @@ function buildIncludesContent(variants: string[]) {
         {renderVariantList(variants)}
       </div>
       <div>{copy.terms.includesTooltipCountsNote}</div>
-      <div className="text-[11px] text-slate-500">
+      <div className="text-[11px] text-slate-400">
         {copy.terms.includesTooltipTip}
       </div>
     </div>
@@ -144,11 +144,13 @@ export default function TermShiftBars({
         {hasAlt ? (
           <div className="flex items-center gap-2 text-xs">
             <span className="text-slate-300">{copy.termShifts.lensLabel}</span>
-            <div className="inline-flex overflow-hidden rounded-md border border-black/10 bg-white/70">
+            <div className="inline-flex overflow-hidden rounded-md border border-white/15 bg-slate-950/70">
               <button
                 type="button"
                 className={`px-2 py-1 ${
-                  lens === "primary" ? "bg-white font-semibold" : "opacity-80 hover:opacity-100"
+                  lens === "primary"
+                    ? "bg-slate-900 font-semibold text-slate-100"
+                    : "opacity-80 hover:opacity-100"
                 }`}
                 onClick={() => onLensChange("primary")}
                 title={copy.termShifts.lensPrimaryHelp}
@@ -158,7 +160,9 @@ export default function TermShiftBars({
               <button
                 type="button"
                 className={`px-2 py-1 ${
-                  lens === "alt" ? "bg-white font-semibold" : "opacity-80 hover:opacity-100"
+                  lens === "alt"
+                    ? "bg-slate-900 font-semibold text-slate-100"
+                    : "opacity-80 hover:opacity-100"
                 }`}
                 onClick={() => onLensChange("alt")}
                 title={copy.termShifts.lensAltHelp}
@@ -170,7 +174,7 @@ export default function TermShiftBars({
         ) : null}
       </div>
       <div className="grid gap-4 sm:grid-cols-2">
-        <div className="rounded-lg border border-black/10 p-3">
+        <div className="rounded-lg border border-white/10 bg-slate-900/40 p-3">
           <div className="text-sm font-semibold">{copy.termShifts.risersLabel}</div>
           <ul className="mt-3 space-y-2 text-xs">
             {topRisers.map((item, index) => {
@@ -217,9 +221,9 @@ export default function TermShiftBars({
                         {isShiftTermItem(item) && item.z !== undefined ? ` | z=${item.z.toFixed(1)}` : ""}
                         {delta ? ` | ${delta}` : ""}
                       </span>
-                      <span className="flex-1 h-2 rounded bg-emerald-100">
+                      <span className="flex-1 h-2 rounded bg-emerald-400/20">
                         <span
-                          className="block h-2 rounded bg-emerald-500"
+                          className="block h-2 rounded bg-emerald-400"
                           style={{ width: `${width}%` }}
                         />
                       </span>
@@ -228,7 +232,7 @@ export default function TermShiftBars({
                       <InlinePopover
                         label={copy.terms.includesLabel}
                         ariaLabel={`${copy.terms.includesLabel} variants`}
-                        triggerClassName="shrink-0 text-[10px] text-slate-400 hover:text-slate-600 hover:underline"
+                        triggerClassName="shrink-0 text-[10px] text-slate-400 hover:text-slate-200 hover:underline"
                         content={buildIncludesContent(includes)}
                         align="right"
                         resetKey={pairKey}
@@ -240,7 +244,7 @@ export default function TermShiftBars({
             })}
           </ul>
         </div>
-        <div className="rounded-lg border border-black/10 p-3">
+        <div className="rounded-lg border border-white/10 bg-slate-900/40 p-3">
           <div className="text-sm font-semibold">{copy.termShifts.fallersLabel}</div>
           <ul className="mt-3 space-y-2 text-xs">
             {topFallers.map((item, index) => {
@@ -287,9 +291,9 @@ export default function TermShiftBars({
                         {isShiftTermItem(item) && item.z !== undefined ? ` | z=${item.z.toFixed(1)}` : ""}
                         {delta ? ` | ${delta}` : ""}
                       </span>
-                      <span className="flex-1 h-2 rounded bg-rose-100">
+                      <span className="flex-1 h-2 rounded bg-rose-400/20">
                         <span
-                          className="block h-2 rounded bg-rose-500"
+                          className="block h-2 rounded bg-rose-400"
                           style={{ width: `${width}%` }}
                         />
                       </span>
@@ -298,7 +302,7 @@ export default function TermShiftBars({
                       <InlinePopover
                         label={copy.terms.includesLabel}
                         ariaLabel={`${copy.terms.includesLabel} variants`}
-                        triggerClassName="shrink-0 text-[10px] text-slate-400 hover:text-slate-600 hover:underline"
+                        triggerClassName="shrink-0 text-[10px] text-slate-400 hover:text-slate-200 hover:underline"
                         content={buildIncludesContent(includes)}
                         align="right"
                         resetKey={pairKey}

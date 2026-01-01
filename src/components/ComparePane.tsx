@@ -40,7 +40,7 @@ export default function ComparePane({
     return (
       <div
         key={`${para.year}-${para.paragraphIndex}-${index}`}
-        className="rounded-lg border border-black/10 p-3"
+        className="rounded-lg border border-white/10 bg-slate-900/40 p-3"
       >
         <p className="text-sm leading-relaxed whitespace-pre-line">
           {segments.length > 0
@@ -48,7 +48,7 @@ export default function ComparePane({
                 segment.highlight ? (
                   <mark
                     key={`${para.year}-${para.paragraphIndex}-${segmentIndex}`}
-                    className="rounded bg-yellow-200 px-0.5"
+                    className="rounded bg-amber-400/25 px-0.5 text-amber-100"
                   >
                     {segment.text}
                   </mark>
@@ -103,7 +103,7 @@ export default function ComparePane({
             </div>
           ) : null}
           <div className="grid gap-3 md:grid-cols-2">
-            <div className="space-y-3 rounded-lg border border-black/10 p-4">
+            <div className="space-y-3 rounded-lg border border-white/10 bg-slate-900/40 p-4">
               <div className="flex items-baseline justify-between">
                 <div className="text-xs uppercase tracking-wider text-slate-300">
                   {copy.comparePane.fromLabel} {selectedExcerptPair.from}
@@ -120,7 +120,7 @@ export default function ComparePane({
                     </p>
                   )}
             </div>
-            <div className="space-y-3 rounded-lg border border-black/10 p-4">
+            <div className="space-y-3 rounded-lg border border-white/10 bg-slate-900/40 p-4">
               <div className="flex items-baseline justify-between">
                 <div className="text-xs uppercase tracking-wider text-slate-300">
                   {copy.comparePane.toLabel} {selectedExcerptPair.to}

@@ -560,7 +560,7 @@ export default function Company() {
 
   if (loading) {
     return (
-      <main className="min-h-screen">
+      <main className="min-h-screen page-fade">
         <div className="mx-auto max-w-5xl px-6 py-16">
           <p className="text-sm text-slate-300">{copy.global.loading.base}</p>
         </div>
@@ -570,12 +570,12 @@ export default function Company() {
 
   if (error) {
     return (
-      <main className="min-h-screen">
+      <main className="min-h-screen page-fade">
         <div className="mx-auto max-w-5xl px-6 py-16 space-y-4">
           <p className="text-sm text-slate-200">{error}</p>
           <Link
             to="/"
-            className="inline-flex items-center rounded-md border border-black/20 px-3 py-2 text-sm hover:bg-black/5"
+            className="inline-flex items-center rounded-md border border-white/20 px-3 py-2 text-sm text-slate-200 hover:border-white/40 hover:bg-white/5"
           >
             {copy.nav.home}
           </Link>
@@ -585,7 +585,7 @@ export default function Company() {
   }
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen page-fade">
       <div className="mx-auto max-w-6xl px-6 py-12 space-y-10">
         <header className="space-y-3">
           <nav
@@ -631,26 +631,26 @@ export default function Company() {
         <div className="flex flex-wrap items-center gap-3">
           <Link
             to="/companies"
-            className="inline-flex items-center rounded-md border border-black/20 px-3 py-2 text-sm hover:bg-black/5"
+            className="inline-flex items-center rounded-md border border-white/20 px-3 py-2 text-sm text-slate-200 hover:border-white/40 hover:bg-white/5"
           >
             {copy.company.topButtons.allCompanies}
           </Link>
           <Link
             to="/methodology"
-            className="inline-flex items-center rounded-md border border-black/20 px-3 py-2 text-sm hover:bg-black/5"
+            className="inline-flex items-center rounded-md border border-white/20 px-3 py-2 text-sm text-slate-200 hover:border-white/40 hover:bg-white/5"
           >
             {copy.company.topButtons.methodology}
           </Link>
           <button
             type="button"
-            className="inline-flex items-center rounded-md border border-black/20 px-3 py-2 text-sm hover:bg-black/5"
+            className="inline-flex items-center rounded-md border border-sky-400/40 bg-sky-400/10 px-3 py-2 text-sm text-sky-100 hover:bg-sky-400/20"
             onClick={() => setIsTourOpen((prev) => !prev)}
           >
             {copy.company.topButtons.startTour}
           </button>
           <button
             type="button"
-            className="inline-flex items-center rounded-md border border-black/20 px-3 py-2 text-sm hover:bg-black/5"
+            className="inline-flex items-center rounded-md border border-sky-400/40 bg-sky-400/10 px-3 py-2 text-sm text-sky-100 hover:bg-sky-400/20"
             onClick={handleExportExecBrief}
           >
             {copy.company.topButtons.exportExecBrief}
@@ -662,7 +662,7 @@ export default function Company() {
         </div>
 
         <section className="grid gap-4 sm:grid-cols-3">
-          <div className="rounded-lg border border-black/10 p-4">
+          <div className="rounded-lg border border-white/10 bg-slate-900/50 p-4">
             <div className="text-xs uppercase tracking-wider text-slate-300">
               {copy.company.labels.company}
             </div>
@@ -670,13 +670,13 @@ export default function Company() {
               {meta?.companyName ?? ticker}
             </div>
           </div>
-          <div className="rounded-lg border border-black/10 p-4">
+          <div className="rounded-lg border border-white/10 bg-slate-900/50 p-4">
             <div className="text-xs uppercase tracking-wider text-slate-300">
               {copy.company.labels.section}
             </div>
             <div className="mt-2 text-sm">{sectionLabel}</div>
           </div>
-          <div className="rounded-lg border border-black/10 p-4">
+          <div className="rounded-lg border border-white/10 bg-slate-900/50 p-4">
             <div className="text-xs uppercase tracking-wider text-slate-300">
               {copy.company.labels.years}
             </div>
@@ -697,21 +697,21 @@ export default function Company() {
           </div>
           <div className="flex flex-wrap gap-2">
             <div
-              className="rounded-full border border-black/10 px-3 py-1 text-xs"
+              className="rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs text-slate-200"
               title={copy.company.callouts.largestDrift.tooltip}
             >
               <span className="font-medium">{copy.company.callouts.largestDrift.label}</span>
               <span className="ml-2">{callouts.largestDrift ?? "-"}</span>
             </div>
             <div
-              className="rounded-full border border-black/10 px-3 py-1 text-xs"
+              className="rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs text-slate-200"
               title={copy.company.callouts.mostStable.tooltip}
             >
               <span className="font-medium">{copy.company.callouts.mostStable.label}</span>
               <span className="ml-2">{callouts.mostStable ?? "-"}</span>
             </div>
             <div
-              className="rounded-full border border-black/10 px-3 py-1 text-xs"
+              className="rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs text-slate-200"
               title={copy.company.callouts.highestBoilerplate.tooltip}
             >
               <span className="font-medium">
@@ -751,10 +751,10 @@ export default function Company() {
               <InlinePopover
                 label={<span aria-hidden="true">?</span>}
                 ariaLabel={copy.terms.whyGroupTitle}
-                triggerClassName="flex h-5 w-5 items-center justify-center rounded-full border border-slate-300 text-[10px] text-slate-500 hover:text-slate-700"
+                triggerClassName="flex h-5 w-5 items-center justify-center rounded-full border border-white/20 text-[10px] text-slate-300 hover:text-slate-100"
                 content={
-                  <div className="space-y-2 text-xs text-slate-700">
-                    <div className="font-semibold text-slate-900">
+                  <div className="space-y-2 text-xs text-slate-200">
+                    <div className="font-semibold text-slate-100">
                       {copy.terms.whyGroupTitle}
                     </div>
                     <p>{copy.terms.whyGroupBody1}</p>

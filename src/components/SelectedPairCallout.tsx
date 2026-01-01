@@ -55,24 +55,24 @@ export default function SelectedPairCallout({
   }
 
   return (
-    <div className="rounded-lg border border-slate-200 bg-slate-50 p-4">
+    <div className="rounded-lg border border-white/10 bg-slate-900/50 p-4">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div className="space-y-1">
-          <div className="text-xs uppercase tracking-wider text-slate-500">
+          <div className="text-xs uppercase tracking-wider text-slate-300">
             {copy.company.selectedPairCallout.label}
           </div>
-          <div className="text-sm font-semibold text-slate-900">
+          <div className="text-sm font-semibold text-slate-100">
             {copy.company.selectedPairCallout.title({
               fromYear: selectedPair.from,
               toYear: selectedPair.to,
             })}
           </div>
-          <div className="text-xs text-slate-600">{driftLine}</div>
+          <div className="text-xs text-slate-400">{driftLine}</div>
         </div>
         <div className="flex flex-wrap items-center gap-2 text-xs">
           <a
             href={`#${evidenceAnchorId}`}
-            className="rounded-full border border-slate-300 px-2.5 py-1 text-slate-700 hover:bg-white"
+            className="rounded-full border border-sky-400/40 bg-sky-400/10 px-2.5 py-1 text-sky-100 hover:bg-sky-400/20"
           >
             {copy.company.selectedPairCallout.jumpToEvidence}
           </a>
@@ -81,7 +81,7 @@ export default function SelectedPairCallout({
               href={secUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full border border-slate-300 px-2.5 py-1 text-slate-700 hover:bg-white"
+              className="rounded-full border border-sky-400/40 bg-sky-400/10 px-2.5 py-1 text-sky-100 hover:bg-sky-400/20"
             >
               {copy.company.selectedPairCallout.openFiling({
                 year: selectedPair.to,
