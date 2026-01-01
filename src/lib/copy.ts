@@ -20,9 +20,9 @@ export function t(template: string, params?: Record<string, string | number | nu
 export const copy = {
   global: {
     appName: "SEC Narrative Drift",
-    subtitle: "How 10‑K “Risk Factors” language changes over time (Item 1A)",
+    subtitle: "How 10-K / 20-F Risk Factors language changes over time (Item 1A / Item 3.D)",
     oneLiner: "A fast, auditable way to spot when the risk story changed — and read the exact paragraphs.",
-    sourceLine: "Source: SEC EDGAR (10‑K and 20-Ffilings).",
+    sourceLine: "Source: SEC EDGAR (10-K and 20-F filings).",
     caveatLine: "Descriptive, not causal. Use drift as a reading prompt, not a conclusion.",
     disclaimerLine: "Not investment advice. For informational analysis of public filings.",
     loading: {
@@ -36,7 +36,7 @@ export const copy = {
       missingExcerpts: "We have metrics for this pair, but no excerpt set yet.",
       noShifts: "No clear “top movers” for this year pair (which is itself a result).",
       lowConfidenceYear:
-        "This year’s Item 1A extraction is low confidence. Treat metrics with caution and use the “View on SEC” link to verify.",
+        "This year's Item 1A / Item 3.D extraction is low confidence. Treat metrics with caution and use the View on SEC link to verify.",
     },
   },
 
@@ -61,7 +61,7 @@ export const copy = {
   home: {
     heroTitle: "Narrative Drift, by the numbers — and by the paragraph",
     heroBody:
-      "Pick a company and see how its 10‑K Risk Factors language changes year‑to‑year, where the biggest shifts happen, and the terms that move the most.",
+      "Pick a company and see how its 10-K / 20-F Risk Factors language changes year-to-year, where the biggest shifts happen, and the terms that move the most.",
     // High-traffic understated humor: most users see this.
     heroFootnote: "Featured companies are precomputed, because live demos are a form of optimism.",
     featuredHeading: "Featured companies",
@@ -121,7 +121,8 @@ export const copy = {
       section: "Section",
       years: "Years",
     },
-    sectionValueMvp: "10‑K Item 1A — Risk Factors",
+    sectionValueMvp: "10-K Item 1A - Risk Factors",
+    sectionValue20F: "20-F Item 3.D - Risk Factors",
     topButtons: {
       allCompanies: "All companies",
       methodology: "Methodology",
@@ -319,11 +320,11 @@ export const copy = {
     },
     paragraphs: {
       whatMeasures:
-        "We compare the text of Item 1A across years and compute how similar each year is to the previous year. A large change suggests the risk narrative was rewritten or restructured.",
+        "We compare the text of Item 1A / Item 3.D across years and compute how similar each year is to the previous year. A large change suggests the risk narrative was rewritten or restructured.",
       whatNot:
         "A drift spike is not proof of a real-world event. It’s a prompt to read the filing and form hypotheses. Treat this as descriptive analysis, not causality.",
       extraction:
-        "We download the filing HTML, isolate Item 1A using section heuristics, and split the result into paragraphs. We record an extraction confidence score for each year.",
+        "We download the filing HTML, isolate Item 1A / Item 3.D using section heuristics, and split the result into paragraphs. We record an extraction confidence score for each year.",
       secAccess:
         "Always include a descriptive User-Agent with contact info and respect SEC fair-access limits (<= 10 requests/sec).",
       drift:
@@ -374,7 +375,7 @@ export const copy = {
   dataQuality: {
     title: "Data quality",
     helper:
-      "Extraction confidence reflects how reliably we isolated Item 1A in the filing HTML. Low confidence years are where HTML and reality briefly disagree.",
+      "Extraction confidence reflects how reliably we isolated Item 1A / Item 3.D in the filing HTML. Low confidence years are where HTML and reality briefly disagree.",
     badges: {
       high: "High confidence",
       medium: "Medium confidence",
@@ -388,7 +389,7 @@ export const copy = {
     label: "Section capture",
     tooltipTitle: "Section capture confidence",
     levels: {
-      high: "Clean boundaries. The section start/end markers look like the real Item 1A.",
+      high: "Clean boundaries. The section start/end markers look like the real Item 1A / Item 3.D.",
       medium:
         "Probably right, but the filing structure is quirky. Use the evidence panel to sanity-check.",
       low: "This might be a TOC or cross-reference. Treat highlights as a starting point, not a verdict.",
