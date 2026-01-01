@@ -62,7 +62,6 @@ export const copy = {
     heroTitle: "Narrative Drift, by the numbers — and by the paragraph",
     heroBody:
       "Pick a company and see how its 10-K / 20-F Risk Factors language changes year-to-year, where the biggest shifts happen, and the terms that move the most.",
-    // High-traffic understated humor: most users see this.
     heroFootnote: "Featured companies are precomputed, because live demos are a form of optimism.",
     featuredHeading: "Featured companies",
     featuredHelper: "Three precomputed datasets. Click one to start.",
@@ -139,7 +138,6 @@ export const copy = {
         label: "Most stable year",
         tooltip: "Lowest drift vs prior year (excluding null).",
       },
-      // Understated Barry-ish corporate-speak humor; still clear.
       highestBoilerplate: {
         label: "Most templated year",
         tooltip: "Approx. reuse rate of sentences across years.",
@@ -292,8 +290,13 @@ export const copy = {
 
   comparePane: {
     title: "Read the evidence",
-    helper: "Representative paragraphs for the selected year pair. The receipts — curated, not comprehensive.",
+    helper:
+      "Side-by-side excerpts from each year (representative, not aligned line-by-line).",
     pairLabel: "Comparing",
+    fromLabel: "From",
+    toLabel: "To",
+    excerptCount: ({ n }: { n: number }) => t("{n} excerpts", { n }),
+    emptyYear: "No excerpts for this year.",
     loading: "Loading excerpts...",
     highlightLabel: "Highlight",
     highlightOptions: {
