@@ -52,11 +52,18 @@ function buildPath(ticker: string, filename: string): string {
   return `${BASE_PATH}/${ticker.toUpperCase()}/${filename}`
 }
 
-async function fetchJson<T>(url: string, userMessage: string): Promise<T> {
+async function fetchJson<T>(
+  url: string,
+  userMessage: string,
+  options?: { signal?: AbortSignal }
+): Promise<T> {
   let response: Response
 
   try {
-    response = await fetch(url, { headers: { Accept: "application/json" } })
+    response = await fetch(url, {
+      headers: { Accept: "application/json" },
+      signal: options?.signal,
+    })
   } catch {
     throw new DataLoadError(userMessage, url)
   }
@@ -174,9 +181,13 @@ export async function loadShifts(ticker: string): Promise<ShiftPairs> {
   )
 }
 
-export async function loadExcerpts(ticker: string): Promise<Excerpts> {
+export async function loadExcerpts(
+  ticker: string,
+  signal?: AbortSignal
+): Promise<Excerpts> {
   return fetchJson<Excerpts>(
     buildPath(ticker, "excerpts_10k_item1a.json"),
-    copy.global.errors.missingExcerpts
+    copy.global.errors.missingExcerpts,
+    { signal }
   )
 }
