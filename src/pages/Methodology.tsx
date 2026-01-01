@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom"
 import { copy } from "../lib/copy"
 
 export default function Methodology() {
@@ -12,12 +11,6 @@ export default function Methodology() {
           <h1 className="text-3xl font-semibold">{copy.methodology.pageTitle}</h1>
           <p className="text-sm text-slate-300">{copy.global.sourceLine}</p>
           <p className="text-sm text-slate-300">{copy.global.caveatLine}</p>
-          <Link
-            to="/"
-            className="inline-flex items-center rounded-md border border-black/20 px-3 py-2 text-xs hover:bg-black/5"
-          >
-            {copy.nav.home}
-          </Link>
         </header>
 
         <section className="space-y-2">

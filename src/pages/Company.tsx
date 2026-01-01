@@ -548,9 +548,32 @@ export default function Company() {
     <main className="min-h-screen">
       <div className="mx-auto max-w-6xl px-6 py-12 space-y-10">
         <header className="space-y-3">
-          <p className="text-xs uppercase tracking-wider text-slate-300">
-            {copy.global.appName}
-          </p>
+          <nav
+            className="text-xs uppercase tracking-wider text-slate-300"
+            aria-label="Breadcrumb"
+          >
+            <ol className="flex flex-wrap items-center gap-2">
+              <li>
+                <Link to="/" className="hover:text-slate-100">
+                  {copy.nav.home}
+                </Link>
+              </li>
+              <li aria-hidden="true" className="text-slate-500">
+                /
+              </li>
+              <li>
+                <Link to="/companies" className="hover:text-slate-100">
+                  {copy.nav.companies}
+                </Link>
+              </li>
+              <li aria-hidden="true" className="text-slate-500">
+                /
+              </li>
+              <li className="text-slate-100" aria-current="page">
+                {meta?.ticker ?? ticker}
+              </li>
+            </ol>
+          </nav>
           <div className="flex flex-wrap items-center gap-3">
             <h1 className="text-3xl font-semibold">
               {meta?.companyName ?? ticker}
@@ -566,6 +589,12 @@ export default function Company() {
         </header>
 
         <div className="flex flex-wrap items-center gap-3">
+          <Link
+            to="/companies"
+            className="inline-flex items-center rounded-md border border-black/20 px-3 py-2 text-sm hover:bg-black/5"
+          >
+            {copy.company.topButtons.allCompanies}
+          </Link>
           <Link
             to="/methodology"
             className="inline-flex items-center rounded-md border border-black/20 px-3 py-2 text-sm hover:bg-black/5"
