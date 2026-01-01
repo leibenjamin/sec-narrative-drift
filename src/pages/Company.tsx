@@ -27,6 +27,7 @@ import { exportExecBriefPng } from "../lib/exportPng"
 import { assertSafeExternalUrl } from "../lib/sanitize"
 import { getShiftTermIncludes, getShiftTermLabel } from "../lib/shiftTerms"
 import type {
+  Excerpts,
   ExcerptPair,
   FilingRow,
   Meta,
@@ -97,6 +98,9 @@ export default function Company() {
   const [isTourOpen, setIsTourOpen] = useState(false)
   const [shouldScrollToEvidence, setShouldScrollToEvidence] = useState(false)
   const execBriefRef = useRef<SVGSVGElement | null>(null)
+  const excerptsControllerRef = useRef<AbortController | null>(null)
+  const excerptsPromiseRef = useRef<Promise<Excerpts> | null>(null)
+  const excerptsTickerRef = useRef<string | null>(null)
 
   useEffect(() => {
     let cancelled = false
@@ -117,6 +121,12 @@ export default function Company() {
       setSelectedTerm(null)
       setIsDataQualityOpen(false)
       setIsTourOpen(false)
+      if (excerptsControllerRef.current) {
+        excerptsControllerRef.current.abort()
+      }
+      excerptsControllerRef.current = null
+      excerptsPromiseRef.current = null
+      excerptsTickerRef.current = null
 
       try {
         const [metaData, filingsData, metricsData, similarityData, shiftsData] =
@@ -323,8 +333,22 @@ export default function Company() {
     async function loadPair() {
       setIsExcerptsLoading(true)
       setExcerptsError(null)
+      let currentPromise: Promise<Excerpts>
+      if (excerptsPromiseRef.current && excerptsTickerRef.current === ticker) {
+        currentPromise = excerptsPromiseRef.current
+      } else {
+        if (excerptsControllerRef.current) {
+          excerptsControllerRef.current.abort()
+        }
+        const controller = new AbortController()
+        excerptsControllerRef.current = controller
+        excerptsTickerRef.current = ticker
+        currentPromise = loadExcerpts(ticker, controller.signal)
+        excerptsPromiseRef.current = currentPromise
+      }
+
       try {
-        const excerptsData = await loadExcerpts(ticker)
+        const excerptsData = await currentPromise
         if (cancelled) return
         const nextPairs: Record<string, ExcerptPair> = {}
         for (const pair of excerptsData.pairs) {
@@ -336,6 +360,15 @@ export default function Company() {
         }
       } catch (err) {
         if (cancelled) return
+        if (err instanceof DOMException && err.name === "AbortError") {
+          if (excerptsPromiseRef.current === currentPromise) {
+            excerptsPromiseRef.current = null
+          }
+          return
+        }
+        if (excerptsPromiseRef.current === currentPromise) {
+          excerptsPromiseRef.current = null
+        }
         setExcerptsError(getErrorMessage(err, copy.global.errors.missingExcerpts))
       } finally {
         if (!cancelled) {
