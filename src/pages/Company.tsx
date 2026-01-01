@@ -178,6 +178,12 @@ export default function Company() {
     return start === end ? String(start) : `${start}-${end}`
   }, [metrics])
 
+  const sectionLabel = useMemo(() => {
+    const forms = meta?.formsIncluded ?? []
+    const has20F = forms.some((form) => form.toUpperCase() === "20-F")
+    return has20F ? copy.company.sectionValue20F : copy.company.sectionValueMvp
+  }, [meta])
+
   const selectedShiftPair = useMemo(() => {
     if (!shifts?.yearPairs?.length) return null
     if (!selectedPair) return shifts.yearPairs[0]
@@ -585,7 +591,7 @@ export default function Company() {
             />
             <SectionCaptureBadge confidence={meta?.extraction?.confidence} />
           </div>
-          <p className="text-sm text-slate-300">{copy.company.sectionValueMvp}</p>
+          <p className="text-sm text-slate-300">{sectionLabel}</p>
         </header>
 
         <div className="flex flex-wrap items-center gap-3">
@@ -634,7 +640,7 @@ export default function Company() {
             <div className="text-xs uppercase tracking-wider text-slate-300">
               {copy.company.labels.section}
             </div>
-            <div className="mt-2 text-sm">{copy.company.sectionValueMvp}</div>
+            <div className="mt-2 text-sm">{sectionLabel}</div>
           </div>
           <div className="rounded-lg border border-black/10 p-4">
             <div className="text-xs uppercase tracking-wider text-slate-300">
