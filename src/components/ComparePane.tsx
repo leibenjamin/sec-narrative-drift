@@ -21,6 +21,48 @@ export default function ComparePane({
 }: ComparePaneProps) {
   const selectedExcerptPair = excerptPair
   const showLoading = Boolean(isLoading && !selectedExcerptPair && !errorMessage)
+  const fromParagraphs = selectedExcerptPair
+    ? selectedExcerptPair.representativeParagraphs.filter(
+        (para) => para.year === selectedExcerptPair.from
+      )
+    : []
+  const toParagraphs = selectedExcerptPair
+    ? selectedExcerptPair.representativeParagraphs.filter(
+        (para) => para.year === selectedExcerptPair.to
+      )
+    : []
+
+  const renderParagraph = (
+    para: ExcerptPair["representativeParagraphs"][number],
+    index: number
+  ) => {
+    const segments = splitForHighlight(para.text, highlightTerms)
+    return (
+      <div
+        key={`${para.year}-${para.paragraphIndex}-${index}`}
+        className="rounded-lg border border-black/10 p-3"
+      >
+        <p className="text-sm leading-relaxed whitespace-pre-line">
+          {segments.length > 0
+            ? segments.map((segment, segmentIndex) =>
+                segment.highlight ? (
+                  <mark
+                    key={`${para.year}-${para.paragraphIndex}-${segmentIndex}`}
+                    className="rounded bg-yellow-200 px-0.5"
+                  >
+                    {segment.text}
+                  </mark>
+                ) : (
+                  <span key={`${para.year}-${para.paragraphIndex}-${segmentIndex}`}>
+                    {segment.text}
+                  </span>
+                )
+              )
+            : para.text}
+        </p>
+      </div>
+    )
+  }
 
   return (
     <section className="space-y-3">
@@ -61,39 +103,40 @@ export default function ComparePane({
             </div>
           ) : null}
           <div className="grid gap-3 md:grid-cols-2">
-            {selectedExcerptPair.representativeParagraphs.map((para, index) => {
-              const segments = splitForHighlight(para.text, highlightTerms)
-              return (
-                <div
-                  key={`${para.year}-${para.paragraphIndex}-${index}`}
-                  className="rounded-lg border border-black/10 p-3"
-                >
-                  <div className="text-xs uppercase tracking-wider text-slate-300">
-                    {para.year}
-                  </div>
-                  <p className="mt-2 text-sm leading-relaxed whitespace-pre-line">
-                    {segments.length > 0
-                      ? segments.map((segment, segmentIndex) =>
-                          segment.highlight ? (
-                            <mark
-                              key={`${para.year}-${para.paragraphIndex}-${segmentIndex}`}
-                              className="rounded bg-yellow-200 px-0.5"
-                            >
-                              {segment.text}
-                            </mark>
-                          ) : (
-                            <span
-                              key={`${para.year}-${para.paragraphIndex}-${segmentIndex}`}
-                            >
-                              {segment.text}
-                            </span>
-                          )
-                        )
-                      : para.text}
-                  </p>
+            <div className="space-y-3 rounded-lg border border-black/10 p-4">
+              <div className="flex items-baseline justify-between">
+                <div className="text-xs uppercase tracking-wider text-slate-300">
+                  {copy.comparePane.fromLabel} {selectedExcerptPair.from}
                 </div>
-              )
-            })}
+                <div className="text-xs text-slate-400">
+                  {copy.comparePane.excerptCount({ n: fromParagraphs.length })}
+                </div>
+              </div>
+              {fromParagraphs.length
+                ? fromParagraphs.map((para, index) => renderParagraph(para, index))
+                : (
+                    <p className="text-xs text-slate-400">
+                      {copy.comparePane.emptyYear}
+                    </p>
+                  )}
+            </div>
+            <div className="space-y-3 rounded-lg border border-black/10 p-4">
+              <div className="flex items-baseline justify-between">
+                <div className="text-xs uppercase tracking-wider text-slate-300">
+                  {copy.comparePane.toLabel} {selectedExcerptPair.to}
+                </div>
+                <div className="text-xs text-slate-400">
+                  {copy.comparePane.excerptCount({ n: toParagraphs.length })}
+                </div>
+              </div>
+              {toParagraphs.length
+                ? toParagraphs.map((para, index) => renderParagraph(para, index))
+                : (
+                    <p className="text-xs text-slate-400">
+                      {copy.comparePane.emptyYear}
+                    </p>
+                  )}
+            </div>
           </div>
         </div>
       ) : (
