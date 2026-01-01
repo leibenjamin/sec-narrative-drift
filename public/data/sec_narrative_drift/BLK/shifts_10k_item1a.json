@@ -2,40 +2,968 @@
   "section": "10k_item1a",
   "yearPairs": [
     {
+      "from": 2015,
+      "to": 2016,
+      "topRisers": [
+        {
+          "term": "bank holding",
+          "score": 7.08,
+          "z": 0.71,
+          "countPrev": 0,
+          "countCurr": 13,
+          "per10kPrev": 0.0,
+          "per10kCurr": 14.38,
+          "deltaPer10k": 14.38,
+          "distinctive": false
+        },
+        {
+          "term": "holding act",
+          "score": 7.08,
+          "z": 0.71,
+          "countPrev": 0,
+          "countCurr": 13,
+          "per10kPrev": 0.0,
+          "per10kCurr": 14.38,
+          "deltaPer10k": 14.38,
+          "distinctive": false
+        },
+        {
+          "term": "technologies",
+          "score": 6.12,
+          "z": 0.61,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.53,
+          "deltaPer10k": 5.53,
+          "distinctive": false
+        },
+        {
+          "term": "cloud",
+          "score": 5.9,
+          "z": 0.59,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.43,
+          "deltaPer10k": 4.43,
+          "distinctive": false
+        },
+        {
+          "term": "mobile",
+          "score": 5.9,
+          "z": 0.59,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.43,
+          "deltaPer10k": 4.43,
+          "distinctive": false
+        },
+        {
+          "term": "assets commodities",
+          "score": 5.62,
+          "z": 0.56,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.32,
+          "deltaPer10k": 3.32,
+          "distinctive": false
+        },
+        {
+          "term": "brexit",
+          "score": 5.62,
+          "z": 0.56,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.32,
+          "deltaPer10k": 3.32,
+          "distinctive": false
+        },
+        {
+          "term": "commodity",
+          "score": 5.62,
+          "z": 0.56,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.32,
+          "deltaPer10k": 3.32,
+          "distinctive": false
+        },
+        {
+          "term": "confidential proprietary",
+          "score": 5.62,
+          "z": 0.56,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.32,
+          "deltaPer10k": 3.32,
+          "distinctive": false
+        },
+        {
+          "term": "costly complex",
+          "score": 5.62,
+          "z": 0.56,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.32,
+          "deltaPer10k": 3.32,
+          "distinctive": false
+        },
+        {
+          "term": "dodd",
+          "score": 5.62,
+          "z": 0.56,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.32,
+          "deltaPer10k": 3.32,
+          "distinctive": false
+        },
+        {
+          "term": "dodd frank",
+          "score": 5.62,
+          "z": 0.56,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.32,
+          "deltaPer10k": 3.32,
+          "distinctive": false
+        },
+        {
+          "term": "etf net",
+          "score": 5.62,
+          "z": 0.56,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.32,
+          "deltaPer10k": 3.32,
+          "distinctive": false
+        },
+        {
+          "term": "financial stability",
+          "score": 5.62,
+          "z": 0.56,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.32,
+          "deltaPer10k": 3.32,
+          "distinctive": false
+        },
+        {
+          "term": "formally",
+          "score": 5.62,
+          "z": 0.56,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.32,
+          "deltaPer10k": 3.32,
+          "distinctive": false
+        }
+      ],
+      "topFallers": [
+        {
+          "term": "mmfs",
+          "score": -7.18,
+          "z": -0.72,
+          "countPrev": 12,
+          "countCurr": 0,
+          "per10kPrev": 14.57,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -14.57,
+          "distinctive": false
+        },
+        {
+          "term": "swaps",
+          "score": -7.0,
+          "z": -0.7,
+          "countPrev": 10,
+          "countCurr": 0,
+          "per10kPrev": 12.14,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -12.14,
+          "distinctive": false
+        },
+        {
+          "term": "bhc",
+          "score": -6.65,
+          "z": -0.66,
+          "countPrev": 7,
+          "countCurr": 0,
+          "per10kPrev": 8.5,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -8.5,
+          "distinctive": false
+        },
+        {
+          "term": "bhc act",
+          "score": -6.65,
+          "z": -0.66,
+          "countPrev": 7,
+          "countCurr": 0,
+          "per10kPrev": 8.5,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -8.5,
+          "distinctive": false
+        },
+        {
+          "term": "nav",
+          "score": -6.31,
+          "z": -0.63,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 6.07,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -6.07,
+          "distinctive": false
+        },
+        {
+          "term": "dfa",
+          "score": -6.09,
+          "z": -0.61,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 4.86,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.86,
+          "distinctive": false
+        },
+        {
+          "term": "focus",
+          "score": -6.09,
+          "z": -0.61,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 4.86,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.86,
+          "distinctive": false
+        },
+        {
+          "term": "indicating",
+          "score": -6.09,
+          "z": -0.61,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 4.86,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.86,
+          "distinctive": false
+        },
+        {
+          "term": "municipal",
+          "score": -6.09,
+          "z": -0.61,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 4.86,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.86,
+          "distinctive": false
+        },
+        {
+          "term": "regulated",
+          "score": -6.09,
+          "z": -0.61,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 4.86,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.86,
+          "distinctive": false
+        },
+        {
+          "term": "swaps derivatives",
+          "score": -6.09,
+          "z": -0.61,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 4.86,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.86,
+          "distinctive": false
+        },
+        {
+          "term": "central clearing",
+          "score": -5.8,
+          "z": -0.58,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 3.64,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.64,
+          "distinctive": false
+        },
+        {
+          "term": "cleared",
+          "score": -5.8,
+          "z": -0.58,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 3.64,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.64,
+          "distinctive": false
+        },
+        {
+          "term": "consuming",
+          "score": -5.8,
+          "z": -0.58,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 3.64,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.64,
+          "distinctive": false
+        },
+        {
+          "term": "derivatives trading",
+          "score": -5.8,
+          "z": -0.58,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 3.64,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.64,
+          "distinctive": false
+        }
+      ],
+      "summary": "Adds emphasis on bank holding, holding act, technologies; de-emphasizes mmfs, swaps, bhc.",
+      "topRisersAlt": [
+        {
+          "term": "market funds",
+          "score": 5.69
+        },
+        {
+          "term": "regulatory reforms",
+          "score": 5.69
+        },
+        {
+          "term": "subject blackrock",
+          "score": 5.69
+        },
+        {
+          "term": "addition blackrock",
+          "score": 5.28
+        },
+        {
+          "term": "blackrock competitive",
+          "score": 5.28
+        },
+        {
+          "term": "blackrock financial",
+          "score": 5.28
+        },
+        {
+          "term": "blackrock operations",
+          "score": 5.28
+        },
+        {
+          "term": "cause revenue earnings",
+          "score": 5.28
+        },
+        {
+          "term": "earnings decline harm",
+          "score": 5.28
+        },
+        {
+          "term": "future regulatory requirements",
+          "score": 5.28
+        },
+        {
+          "term": "lead regulatory",
+          "score": 5.28
+        },
+        {
+          "term": "market funds new",
+          "score": 5.28
+        },
+        {
+          "term": "operations cause",
+          "score": 5.28
+        },
+        {
+          "term": "competitive landscape",
+          "score": 4.59
+        },
+        {
+          "term": "human capital",
+          "score": 4.59
+        }
+      ],
+      "topFallersAlt": [
+        {
+          "term": "adversely affect",
+          "score": -6.27
+        },
+        {
+          "term": "new rules",
+          "score": -6.27
+        },
+        {
+          "term": "require blackrock",
+          "score": -6.27
+        },
+        {
+          "term": "adversely affect blackrock",
+          "score": -5.76
+        },
+        {
+          "term": "cyber security",
+          "score": -5.76
+        },
+        {
+          "term": "blackrock client",
+          "score": -5.35
+        },
+        {
+          "term": "capital liquidity",
+          "score": -5.35
+        },
+        {
+          "term": "decline failure",
+          "score": -5.35
+        },
+        {
+          "term": "funds blackrock",
+          "score": -5.35
+        },
+        {
+          "term": "funds new rules",
+          "score": -5.35
+        },
+        {
+          "term": "impact blackrock",
+          "score": -5.35
+        },
+        {
+          "term": "market liquidity fund",
+          "score": -5.35
+        },
+        {
+          "term": "new clients",
+          "score": -5.35
+        },
+        {
+          "term": "pnc blackrock",
+          "score": -5.35
+        },
+        {
+          "term": "earnings decline blackrock",
+          "score": -0.74
+        }
+      ],
+      "summaryAlt": "Adds emphasis on market funds, regulatory reforms, subject blackrock; de-emphasizes adversely affect, new rules, require blackrock."
+    },
+    {
+      "from": 2016,
+      "to": 2017,
+      "topRisers": [
+        {
+          "term": "index",
+          "score": 6.12,
+          "z": 0.61,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.02,
+          "deltaPer10k": 5.02,
+          "distinctive": false
+        },
+        {
+          "term": "proposal",
+          "score": 6.12,
+          "z": 0.61,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.02,
+          "deltaPer10k": 5.02,
+          "distinctive": false
+        },
+        {
+          "term": "workplace",
+          "score": 6.12,
+          "z": 0.61,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.02,
+          "deltaPer10k": 5.02,
+          "distinctive": false
+        },
+        {
+          "term": "common ownership",
+          "score": 5.9,
+          "z": 0.59,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.01,
+          "deltaPer10k": 4.01,
+          "distinctive": false
+        },
+        {
+          "term": "index investing",
+          "score": 5.9,
+          "z": 0.59,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.01,
+          "deltaPer10k": 4.01,
+          "distinctive": false
+        },
+        {
+          "term": "investing",
+          "score": 5.9,
+          "z": 0.59,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.01,
+          "deltaPer10k": 4.01,
+          "distinctive": false
+        },
+        {
+          "term": "treasury",
+          "score": 5.9,
+          "z": 0.59,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.01,
+          "deltaPer10k": 4.01,
+          "distinctive": false
+        },
+        {
+          "term": "workplace culture",
+          "score": 5.9,
+          "z": 0.59,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.01,
+          "deltaPer10k": 4.01,
+          "distinctive": false
+        },
+        {
+          "term": "aladdin clients",
+          "score": 5.61,
+          "z": 0.56,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.01,
+          "deltaPer10k": 3.01,
+          "distinctive": false
+        },
+        {
+          "term": "commentary",
+          "score": 5.61,
+          "z": 0.56,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.01,
+          "deltaPer10k": 3.01,
+          "distinctive": false
+        },
+        {
+          "term": "commentators",
+          "score": 5.61,
+          "z": 0.56,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.01,
+          "deltaPer10k": 3.01,
+          "distinctive": false
+        },
+        {
+          "term": "exemptions",
+          "score": 5.61,
+          "z": 0.56,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.01,
+          "deltaPer10k": 3.01,
+          "distinctive": false
+        },
+        {
+          "term": "transaction exemptions",
+          "score": 5.61,
+          "z": 0.56,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.01,
+          "deltaPer10k": 3.01,
+          "distinctive": false
+        },
+        {
+          "term": "advanced",
+          "score": 5.21,
+          "z": 0.52,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.01,
+          "deltaPer10k": 2.01,
+          "distinctive": false
+        },
+        {
+          "term": "advisory aladdin",
+          "score": 5.21,
+          "z": 0.52,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.01,
+          "deltaPer10k": 2.01,
+          "distinctive": false
+        }
+      ],
+      "topFallers": [
+        {
+          "term": "beps",
+          "score": -5.8,
+          "z": -0.58,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 3.32,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.32,
+          "distinctive": false
+        },
+        {
+          "term": "affecting",
+          "score": -5.4,
+          "z": -0.54,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.21,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.21,
+          "distinctive": false
+        },
+        {
+          "term": "beps package",
+          "score": -5.4,
+          "z": -0.54,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.21,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.21,
+          "distinctive": false
+        },
+        {
+          "term": "border",
+          "score": -5.4,
+          "z": -0.54,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.21,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.21,
+          "distinctive": false
+        },
+        {
+          "term": "contains",
+          "score": -5.4,
+          "z": -0.54,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.21,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.21,
+          "distinctive": false
+        },
+        {
+          "term": "cross",
+          "score": -5.4,
+          "z": -0.54,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.21,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.21,
+          "distinctive": false
+        },
+        {
+          "term": "cross border",
+          "score": -5.4,
+          "z": -0.54,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.21,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.21,
+          "distinctive": false
+        },
+        {
+          "term": "crs",
+          "score": -5.4,
+          "z": -0.54,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.21,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.21,
+          "distinctive": false
+        },
+        {
+          "term": "elements",
+          "score": -5.4,
+          "z": -0.54,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.21,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.21,
+          "distinctive": false
+        },
+        {
+          "term": "elements tax",
+          "score": -5.4,
+          "z": -0.54,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.21,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.21,
+          "distinctive": false
+        },
+        {
+          "term": "fatca",
+          "score": -5.4,
+          "z": -0.54,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.21,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.21,
+          "distinctive": false
+        },
+        {
+          "term": "future inorganic",
+          "score": -5.4,
+          "z": -0.54,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.21,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.21,
+          "distinctive": false
+        },
+        {
+          "term": "law",
+          "score": -5.4,
+          "z": -0.54,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.21,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.21,
+          "distinctive": false
+        },
+        {
+          "term": "memorandum",
+          "score": -5.4,
+          "z": -0.54,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.21,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.21,
+          "distinctive": false
+        },
+        {
+          "term": "planning",
+          "score": -5.4,
+          "z": -0.54,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.21,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.21,
+          "distinctive": false
+        }
+      ],
+      "summary": "Adds emphasis on index, proposal, workplace; de-emphasizes beps, affecting, beps package.",
+      "topRisersAlt": [
+        {
+          "term": "expose blackrock",
+          "score": 6.58
+        },
+        {
+          "term": "impact blackrock",
+          "score": 5.58
+        },
+        {
+          "term": "regulatory requirements",
+          "score": 5.58
+        },
+        {
+          "term": "support investment",
+          "score": 5.58
+        },
+        {
+          "term": "adverse blackrock",
+          "score": 5.17
+        },
+        {
+          "term": "assets expose blackrock",
+          "score": 5.17
+        },
+        {
+          "term": "blackrock aum revenue",
+          "score": 5.17
+        },
+        {
+          "term": "blackrock investment management",
+          "score": 5.17
+        },
+        {
+          "term": "client market",
+          "score": 5.17
+        },
+        {
+          "term": "clients cause",
+          "score": 5.17
+        },
+        {
+          "term": "earnings decline regulatory",
+          "score": 5.17
+        },
+        {
+          "term": "earnings decline risks",
+          "score": 5.17
+        },
+        {
+          "term": "expose blackrock increased",
+          "score": 5.17
+        },
+        {
+          "term": "failure blackrock",
+          "score": 5.17
+        },
+        {
+          "term": "financial performance",
+          "score": 5.17
+        }
+      ],
+      "topFallersAlt": [
+        {
+          "term": "blackrock clients",
+          "score": -5.86
+        },
+        {
+          "term": "blackrock funds",
+          "score": -5.86
+        },
+        {
+          "term": "regulatory reforms",
+          "score": -5.86
+        },
+        {
+          "term": "blackrock competitive",
+          "score": -5.45
+        },
+        {
+          "term": "blackrock financial",
+          "score": -5.45
+        },
+        {
+          "term": "future regulatory requirements",
+          "score": -5.45
+        },
+        {
+          "term": "lead regulatory",
+          "score": -5.45
+        },
+        {
+          "term": "market funds new",
+          "score": -5.45
+        },
+        {
+          "term": "operations cause",
+          "score": -5.45
+        },
+        {
+          "term": "products cause aum",
+          "score": -5.45
+        },
+        {
+          "term": "operational risks failure",
+          "score": -0.55
+        },
+        {
+          "term": "earnings decline",
+          "score": -0.44
+        },
+        {
+          "term": "business continuity",
+          "score": -0.43
+        },
+        {
+          "term": "new products services",
+          "score": -0.37
+        },
+        {
+          "term": "cause aum revenue",
+          "score": -0.28
+        }
+      ],
+      "summaryAlt": "Adds emphasis on expose blackrock, impact blackrock, regulatory requirements; de-emphasizes blackrock clients, blackrock funds, regulatory reforms."
+    },
+    {
       "from": 2017,
       "to": 2018,
       "topRisers": [
         {
           "term": "base",
-          "score": 6.14,
+          "score": 6.15,
           "z": 0.61,
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.9,
-          "deltaPer10k": 4.9,
+          "per10kCurr": 4.69,
+          "deltaPer10k": 4.69,
           "distinctive": false
         },
         {
           "term": "base fees",
-          "score": 6.14,
+          "score": 6.15,
           "z": 0.61,
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.9,
-          "deltaPer10k": 4.9,
+          "per10kCurr": 4.69,
+          "deltaPer10k": 4.69,
           "distinctive": false
         },
         {
           "term": "Data privacy",
-          "score": 5.92,
+          "score": 5.93,
           "z": 0.59,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.92,
-          "deltaPer10k": 3.92,
+          "per10kCurr": 3.75,
+          "deltaPer10k": 3.75,
           "distinctive": false,
           "includes": [
             "data protection",
@@ -44,301 +972,301 @@
         },
         {
           "term": "assess",
-          "score": 5.63,
+          "score": 5.64,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.94,
-          "deltaPer10k": 2.94,
+          "per10kCurr": 2.82,
+          "deltaPer10k": 2.82,
           "distinctive": false
         },
         {
           "term": "aum base",
-          "score": 5.63,
+          "score": 5.64,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.94,
-          "deltaPer10k": 2.94,
+          "per10kCurr": 2.82,
+          "deltaPer10k": 2.82,
           "distinctive": false
         },
         {
           "term": "cma",
-          "score": 5.63,
+          "score": 5.64,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.94,
-          "deltaPer10k": 2.94,
+          "per10kCurr": 2.82,
+          "deltaPer10k": 2.82,
           "distinctive": false
         },
         {
           "term": "etf rule",
-          "score": 5.63,
+          "score": 5.64,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.94,
-          "deltaPer10k": 2.94,
+          "per10kCurr": 2.82,
+          "deltaPer10k": 2.82,
           "distinctive": false
         },
         {
           "term": "experience",
-          "score": 5.63,
+          "score": 5.64,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.94,
-          "deltaPer10k": 2.94,
+          "per10kCurr": 2.82,
+          "deltaPer10k": 2.82,
           "distinctive": false
         },
         {
           "term": "fca",
-          "score": 5.63,
+          "score": 5.64,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.94,
-          "deltaPer10k": 2.94,
+          "per10kCurr": 2.82,
+          "deltaPer10k": 2.82,
           "distinctive": false
         },
         {
           "term": "income operating",
-          "score": 5.63,
+          "score": 5.64,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.94,
-          "deltaPer10k": 2.94,
+          "per10kCurr": 2.82,
+          "deltaPer10k": 2.82,
           "distinctive": false
         },
         {
           "term": "introduce volatility",
-          "score": 5.63,
+          "score": 5.64,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.94,
-          "deltaPer10k": 2.94,
+          "per10kCurr": 2.82,
+          "deltaPer10k": 2.82,
           "distinctive": false
         },
         {
           "term": "processing",
-          "score": 5.63,
+          "score": 5.64,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.94,
-          "deltaPer10k": 2.94,
+          "per10kCurr": 2.82,
+          "deltaPer10k": 2.82,
           "distinctive": false
         },
         {
           "term": "processing scale",
-          "score": 5.63,
+          "score": 5.64,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.94,
-          "deltaPer10k": 2.94,
+          "per10kCurr": 2.82,
+          "deltaPer10k": 2.82,
           "distinctive": false
         },
         {
           "term": "remains",
-          "score": 5.63,
+          "score": 5.64,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.94,
-          "deltaPer10k": 2.94,
+          "per10kCurr": 2.82,
+          "deltaPer10k": 2.82,
           "distinctive": false
         },
         {
           "term": "remedies",
-          "score": 5.63,
+          "score": 5.64,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.94,
-          "deltaPer10k": 2.94,
+          "per10kCurr": 2.82,
+          "deltaPer10k": 2.82,
           "distinctive": false
         }
       ],
       "topFallers": [
         {
           "term": "dol",
-          "score": -6.29,
+          "score": -6.28,
           "z": -0.63,
           "countPrev": 5,
           "countCurr": 0,
-          "per10kPrev": 5.27,
+          "per10kPrev": 5.02,
           "per10kCurr": 0.0,
-          "deltaPer10k": -5.27,
+          "deltaPer10k": -5.02,
           "distinctive": false
         },
         {
           "term": "prohibited transaction",
-          "score": -6.07,
+          "score": -6.06,
           "z": -0.61,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 4.22,
+          "per10kPrev": 4.01,
           "per10kCurr": 0.0,
-          "deltaPer10k": -4.22,
+          "deltaPer10k": -4.01,
           "distinctive": false
         },
         {
           "term": "exemptions",
-          "score": -5.78,
+          "score": -5.77,
           "z": -0.58,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 3.16,
+          "per10kPrev": 3.01,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.16,
+          "deltaPer10k": -3.01,
           "distinctive": false
         },
         {
           "term": "kid",
-          "score": -5.78,
+          "score": -5.77,
           "z": -0.58,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 3.16,
+          "per10kPrev": 3.01,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.16,
+          "deltaPer10k": -3.01,
           "distinctive": false
         },
         {
           "term": "transaction exemptions",
-          "score": -5.78,
+          "score": -5.77,
           "z": -0.58,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 3.16,
+          "per10kPrev": 3.01,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.16,
+          "deltaPer10k": -3.01,
           "distinctive": false
         },
         {
           "term": "abroad",
-          "score": -5.38,
+          "score": -5.37,
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 2.11,
+          "per10kPrev": 2.01,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.11,
+          "deltaPer10k": -2.01,
           "distinctive": false
         },
         {
           "term": "advanced",
-          "score": -5.38,
+          "score": -5.37,
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 2.11,
+          "per10kPrev": 2.01,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.11,
+          "deltaPer10k": -2.01,
+          "distinctive": false
+        },
+        {
+          "term": "currently takes",
+          "score": -5.37,
+          "z": -0.54,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.01,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.01,
           "distinctive": false
         },
         {
           "term": "european parliament",
-          "score": -5.38,
+          "score": -5.37,
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 2.11,
+          "per10kPrev": 2.01,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.11,
+          "deltaPer10k": -2.01,
+          "distinctive": false
+        },
+        {
+          "term": "exit european",
+          "score": -5.37,
+          "z": -0.54,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.01,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.01,
           "distinctive": false
         },
         {
           "term": "leadership",
-          "score": -5.38,
+          "score": -5.37,
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 2.11,
+          "per10kPrev": 2.01,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.11,
+          "deltaPer10k": -2.01,
           "distinctive": false
         },
         {
           "term": "powers",
-          "score": -5.38,
+          "score": -5.37,
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 2.11,
+          "per10kPrev": 2.01,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.11,
+          "deltaPer10k": -2.01,
           "distinctive": false
         },
         {
-          "term": "accompanying",
-          "score": -4.69,
-          "z": -0.47,
-          "countPrev": 1,
+          "term": "reserve currently",
+          "score": -5.37,
+          "z": -0.54,
+          "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.05,
+          "per10kPrev": 2.01,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.05,
+          "deltaPer10k": -2.01,
           "distinctive": false
         },
         {
-          "term": "additional compliance",
-          "score": -4.69,
-          "z": -0.47,
-          "countPrev": 1,
+          "term": "states abroad",
+          "score": -5.37,
+          "z": -0.54,
+          "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.05,
+          "per10kPrev": 2.01,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.05,
+          "deltaPer10k": -2.01,
           "distinctive": false
         },
         {
-          "term": "addressed",
-          "score": -4.69,
-          "z": -0.47,
-          "countPrev": 1,
+          "term": "takes position",
+          "score": -5.37,
+          "z": -0.54,
+          "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.05,
+          "per10kPrev": 2.01,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.05,
-          "distinctive": false
-        },
-        {
-          "term": "allowing",
-          "score": -4.69,
-          "z": -0.47,
-          "countPrev": 1,
-          "countCurr": 0,
-          "per10kPrev": 1.05,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.05,
-          "distinctive": false
-        },
-        {
-          "term": "announced",
-          "score": -4.69,
-          "z": -0.47,
-          "countPrev": 1,
-          "countCurr": 0,
-          "per10kPrev": 1.05,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.05,
+          "deltaPer10k": -2.01,
           "distinctive": false
         }
       ],
@@ -475,145 +1403,145 @@
       "topRisers": [
         {
           "term": "transition period",
-          "score": 6.14,
+          "score": 6.15,
           "z": 0.61,
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.52,
-          "deltaPer10k": 4.52,
+          "per10kCurr": 4.37,
+          "deltaPer10k": 4.37,
           "distinctive": false
         },
         {
           "term": "strategy",
-          "score": 5.91,
+          "score": 5.92,
           "z": 0.59,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.61,
-          "deltaPer10k": 3.61,
+          "per10kCurr": 3.5,
+          "deltaPer10k": 3.5,
           "distinctive": false
         },
         {
           "term": "activities based",
-          "score": 5.63,
+          "score": 5.64,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.71,
-          "deltaPer10k": 2.71,
+          "per10kCurr": 2.62,
+          "deltaPer10k": 2.62,
           "distinctive": false
         },
         {
           "term": "based approach",
-          "score": 5.63,
+          "score": 5.64,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.71,
-          "deltaPer10k": 2.71,
+          "per10kCurr": 2.62,
+          "deltaPer10k": 2.62,
           "distinctive": false
         },
         {
           "term": "inorganic strategy",
-          "score": 5.63,
+          "score": 5.64,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.71,
-          "deltaPer10k": 2.71,
+          "per10kCurr": 2.62,
+          "deltaPer10k": 2.62,
           "distinctive": false
         },
         {
           "term": "integration",
-          "score": 5.63,
+          "score": 5.64,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.71,
-          "deltaPer10k": 2.71,
+          "per10kCurr": 2.62,
+          "deltaPer10k": 2.62,
           "distinctive": false
         },
         {
           "term": "interpretations",
-          "score": 5.63,
+          "score": 5.64,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.71,
-          "deltaPer10k": 2.71,
+          "per10kCurr": 2.62,
+          "deltaPer10k": 2.62,
           "distinctive": false
         },
         {
           "term": "management program",
-          "score": 5.63,
+          "score": 5.64,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.71,
-          "deltaPer10k": 2.71,
+          "per10kCurr": 2.62,
+          "deltaPer10k": 2.62,
           "distinctive": false
         },
         {
           "term": "proxy voting",
-          "score": 5.63,
+          "score": 5.64,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.71,
-          "deltaPer10k": 2.71,
+          "per10kCurr": 2.62,
+          "deltaPer10k": 2.62,
           "distinctive": false
         },
         {
           "term": "sec adopted",
-          "score": 5.63,
+          "score": 5.64,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.71,
-          "deltaPer10k": 2.71,
+          "per10kCurr": 2.62,
+          "deltaPer10k": 2.62,
           "distinctive": false
         },
         {
           "term": "sustainability",
-          "score": 5.63,
+          "score": 5.64,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.71,
-          "deltaPer10k": 2.71,
+          "per10kCurr": 2.62,
+          "deltaPer10k": 2.62,
           "distinctive": false
         },
         {
           "term": "use derivatives",
-          "score": 5.63,
+          "score": 5.64,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.71,
-          "deltaPer10k": 2.71,
+          "per10kCurr": 2.62,
+          "deltaPer10k": 2.62,
           "distinctive": false
         },
         {
           "term": "Coronavirus",
-          "score": 5.22,
+          "score": 5.23,
           "z": 0.52,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.81,
-          "deltaPer10k": 1.81,
+          "per10kCurr": 1.75,
+          "deltaPer10k": 1.75,
           "distinctive": false,
           "includes": [
             "coronavirus"
@@ -621,191 +1549,191 @@
         },
         {
           "term": "able innovate",
-          "score": 5.22,
+          "score": 5.23,
           "z": 0.52,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.81,
-          "deltaPer10k": 1.81,
+          "per10kCurr": 1.75,
+          "deltaPer10k": 1.75,
           "distinctive": false
         },
         {
           "term": "acquisitions",
-          "score": 5.22,
+          "score": 5.23,
           "z": 0.52,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.81,
-          "deltaPer10k": 1.81,
+          "per10kCurr": 1.75,
+          "deltaPer10k": 1.75,
           "distinctive": false
         }
       ],
       "topFallers": [
         {
           "term": "fsb",
-          "score": -5.79,
+          "score": -5.78,
           "z": -0.58,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 2.94,
+          "per10kPrev": 2.82,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.94,
+          "deltaPer10k": -2.82,
           "distinctive": false
         },
         {
           "term": "rising",
-          "score": -5.79,
+          "score": -5.78,
           "z": -0.58,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 2.94,
+          "per10kPrev": 2.82,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.94,
+          "deltaPer10k": -2.82,
           "distinctive": false
         },
         {
           "term": "delegation",
-          "score": -5.38,
+          "score": -5.37,
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.96,
+          "per10kPrev": 1.88,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.96,
+          "deltaPer10k": -1.88,
           "distinctive": false
         },
         {
           "term": "esma",
-          "score": -5.38,
+          "score": -5.37,
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.96,
+          "per10kPrev": 1.88,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.96,
+          "deltaPer10k": -1.88,
           "distinctive": false
         },
         {
           "term": "focused products",
-          "score": -5.38,
+          "score": -5.37,
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.96,
+          "per10kPrev": 1.88,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.96,
+          "deltaPer10k": -1.88,
           "distinctive": false
         },
         {
           "term": "instability",
-          "score": -5.38,
+          "score": -5.37,
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.96,
+          "per10kPrev": 1.88,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.96,
+          "deltaPer10k": -1.88,
           "distinctive": false
         },
         {
           "term": "march",
-          "score": -5.38,
+          "score": -5.37,
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.96,
+          "per10kPrev": 1.88,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.96,
+          "deltaPer10k": -1.88,
           "distinctive": false
         },
         {
           "term": "outsourcing",
-          "score": -5.38,
+          "score": -5.37,
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.96,
+          "per10kPrev": 1.88,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.96,
+          "deltaPer10k": -1.88,
           "distinctive": false
         },
         {
           "term": "reduce",
-          "score": -5.38,
+          "score": -5.37,
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.96,
+          "per10kPrev": 1.88,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.96,
+          "deltaPer10k": -1.88,
           "distinctive": false
         },
         {
           "term": "review asset",
-          "score": -5.38,
+          "score": -5.37,
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.96,
+          "per10kPrev": 1.88,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.96,
+          "deltaPer10k": -1.88,
           "distinctive": false
         },
         {
           "term": "statements",
-          "score": -5.38,
+          "score": -5.37,
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.96,
+          "per10kPrev": 1.88,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.96,
+          "deltaPer10k": -1.88,
           "distinctive": false
         },
         {
           "term": "supporting",
-          "score": -5.38,
+          "score": -5.37,
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.96,
+          "per10kPrev": 1.88,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.96,
+          "deltaPer10k": -1.88,
           "distinctive": false
         },
         {
           "term": "value money",
-          "score": -5.38,
+          "score": -5.37,
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.96,
+          "per10kPrev": 1.88,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.96,
+          "deltaPer10k": -1.88,
           "distinctive": false
         },
         {
-          "term": "allows",
-          "score": -4.7,
+          "term": "accounts managed",
+          "score": -4.69,
           "z": -0.47,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 0.98,
+          "per10kPrev": 0.94,
           "per10kCurr": 0.0,
-          "deltaPer10k": -0.98,
+          "deltaPer10k": -0.94,
           "distinctive": false
         },
         {
-          "term": "april",
-          "score": -4.7,
+          "term": "actions terrorist",
+          "score": -4.69,
           "z": -0.47,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 0.98,
+          "per10kPrev": 0.94,
           "per10kCurr": 0.0,
-          "deltaPer10k": -0.98,
+          "deltaPer10k": -0.94,
           "distinctive": false
         }
       ],
@@ -942,7 +1870,7 @@
       "topRisers": [
         {
           "term": "COVID-19",
-          "score": 6.91,
+          "score": 6.94,
           "z": 0.69,
           "countPrev": 0,
           "countCurr": 11,
@@ -956,18 +1884,18 @@
         },
         {
           "term": "covid pandemic",
-          "score": 6.71,
+          "score": 6.74,
           "z": 0.67,
           "countPrev": 0,
           "countCurr": 9,
           "per10kPrev": 0.0,
-          "per10kCurr": 7.36,
-          "deltaPer10k": 7.36,
+          "per10kCurr": 7.35,
+          "deltaPer10k": 7.35,
           "distinctive": false
         },
         {
           "term": "securities financing",
-          "score": 6.3,
+          "score": 6.33,
           "z": 0.63,
           "countPrev": 0,
           "countCurr": 6,
@@ -978,18 +1906,18 @@
         },
         {
           "term": "nav",
-          "score": 6.12,
+          "score": 6.15,
           "z": 0.61,
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.09,
-          "deltaPer10k": 4.09,
+          "per10kCurr": 4.08,
+          "deltaPer10k": 4.08,
           "distinctive": false
         },
         {
           "term": "financing transactions",
-          "score": 5.9,
+          "score": 5.93,
           "z": 0.59,
           "countPrev": 0,
           "countCurr": 4,
@@ -1000,7 +1928,7 @@
         },
         {
           "term": "notification",
-          "score": 5.9,
+          "score": 5.93,
           "z": 0.59,
           "countPrev": 0,
           "countCurr": 4,
@@ -1011,7 +1939,7 @@
         },
         {
           "term": "sftr",
-          "score": 5.9,
+          "score": 5.93,
           "z": 0.59,
           "countPrev": 0,
           "countCurr": 4,
@@ -1022,7 +1950,7 @@
         },
         {
           "term": "antitrust",
-          "score": 5.61,
+          "score": 5.64,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
@@ -1033,7 +1961,7 @@
         },
         {
           "term": "consultation",
-          "score": 5.61,
+          "score": 5.64,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
@@ -1044,7 +1972,7 @@
         },
         {
           "term": "effects",
-          "score": 5.61,
+          "score": 5.64,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
@@ -1055,7 +1983,7 @@
         },
         {
           "term": "enforcement actions",
-          "score": 5.61,
+          "score": 5.64,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
@@ -1066,7 +1994,7 @@
         },
         {
           "term": "exemption",
-          "score": 5.61,
+          "score": 5.64,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
@@ -1077,7 +2005,7 @@
         },
         {
           "term": "introduce additional",
-          "score": 5.61,
+          "score": 5.64,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
@@ -1088,7 +2016,7 @@
         },
         {
           "term": "joint",
-          "score": 5.61,
+          "score": 5.64,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
@@ -1099,7 +2027,7 @@
         },
         {
           "term": "joint ventures",
-          "score": 5.61,
+          "score": 5.64,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
@@ -1112,167 +2040,167 @@
       "topFallers": [
         {
           "term": "pnc",
-          "score": -7.75,
+          "score": -7.72,
           "z": -0.77,
           "countPrev": 21,
           "countCurr": 0,
-          "per10kPrev": 18.97,
+          "per10kPrev": 18.36,
           "per10kCurr": 0.0,
-          "deltaPer10k": -18.97,
+          "deltaPer10k": -18.36,
           "distinctive": false
         },
         {
           "term": "bank holding",
-          "score": -7.27,
-          "z": -0.73,
+          "score": -7.24,
+          "z": -0.72,
           "countPrev": 13,
           "countCurr": 0,
-          "per10kPrev": 11.74,
+          "per10kPrev": 11.36,
           "per10kCurr": 0.0,
-          "deltaPer10k": -11.74,
+          "deltaPer10k": -11.36,
           "distinctive": false
         },
         {
           "term": "holding act",
-          "score": -7.27,
-          "z": -0.73,
+          "score": -7.24,
+          "z": -0.72,
           "countPrev": 13,
           "countCurr": 0,
-          "per10kPrev": 11.74,
+          "per10kPrev": 11.36,
           "per10kCurr": 0.0,
-          "deltaPer10k": -11.74,
+          "deltaPer10k": -11.36,
           "distinctive": false
         },
         {
           "term": "capital stock",
-          "score": -7.1,
+          "score": -7.07,
           "z": -0.71,
           "countPrev": 11,
           "countCurr": 0,
-          "per10kPrev": 9.93,
+          "per10kPrev": 9.61,
           "per10kCurr": 0.0,
-          "deltaPer10k": -9.93,
+          "deltaPer10k": -9.61,
           "distinctive": false
         },
         {
           "term": "stockholder",
-          "score": -7.01,
+          "score": -6.98,
           "z": -0.7,
           "countPrev": 10,
           "countCurr": 0,
-          "per10kPrev": 9.03,
+          "per10kPrev": 8.74,
           "per10kCurr": 0.0,
-          "deltaPer10k": -9.03,
+          "deltaPer10k": -8.74,
           "distinctive": false
         },
         {
           "term": "mifid",
-          "score": -6.65,
+          "score": -6.62,
           "z": -0.66,
           "countPrev": 7,
           "countCurr": 0,
-          "per10kPrev": 6.32,
+          "per10kPrev": 6.12,
           "per10kCurr": 0.0,
-          "deltaPer10k": -6.32,
+          "deltaPer10k": -6.12,
           "distinctive": false
         },
         {
           "term": "etf rule",
-          "score": -6.5,
+          "score": -6.47,
           "z": -0.65,
           "countPrev": 6,
           "countCurr": 0,
-          "per10kPrev": 5.42,
+          "per10kPrev": 5.24,
           "per10kCurr": 0.0,
-          "deltaPer10k": -5.42,
+          "deltaPer10k": -5.24,
           "distinctive": false
         },
         {
           "term": "proxy",
-          "score": -6.5,
+          "score": -6.47,
           "z": -0.65,
           "countPrev": 6,
           "countCurr": 0,
-          "per10kPrev": 5.42,
+          "per10kPrev": 5.24,
           "per10kCurr": 0.0,
-          "deltaPer10k": -5.42,
+          "deltaPer10k": -5.24,
           "distinctive": false
         },
         {
           "term": "volcker",
-          "score": -6.32,
+          "score": -6.28,
           "z": -0.63,
           "countPrev": 5,
           "countCurr": 0,
-          "per10kPrev": 4.52,
+          "per10kPrev": 4.37,
           "per10kCurr": 0.0,
-          "deltaPer10k": -4.52,
+          "deltaPer10k": -4.37,
           "distinctive": false
         },
         {
           "term": "volcker rule",
-          "score": -6.32,
+          "score": -6.28,
           "z": -0.63,
           "countPrev": 5,
           "countCurr": 0,
-          "per10kPrev": 4.52,
+          "per10kPrev": 4.37,
           "per10kCurr": 0.0,
-          "deltaPer10k": -4.52,
+          "deltaPer10k": -4.37,
           "distinctive": false
         },
         {
           "term": "common stock",
-          "score": -6.09,
+          "score": -6.06,
           "z": -0.61,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 3.61,
+          "per10kPrev": 3.5,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.61,
+          "deltaPer10k": -3.5,
           "distinctive": false
         },
         {
           "term": "consolidated",
-          "score": -6.09,
+          "score": -6.06,
           "z": -0.61,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 3.61,
+          "per10kPrev": 3.5,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.61,
+          "deltaPer10k": -3.5,
           "distinctive": false
         },
         {
           "term": "stockholder agreement",
-          "score": -6.09,
+          "score": -6.06,
           "z": -0.61,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 3.61,
+          "per10kPrev": 3.5,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.61,
+          "deltaPer10k": -3.5,
           "distinctive": false
         },
         {
           "term": "subsidiary pnc",
-          "score": -6.09,
+          "score": -6.06,
           "z": -0.61,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 3.61,
+          "per10kPrev": 3.5,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.61,
+          "deltaPer10k": -3.5,
           "distinctive": false
         },
         {
           "term": "total voting",
-          "score": -6.09,
+          "score": -6.06,
           "z": -0.61,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 3.61,
+          "per10kPrev": 3.5,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.61,
+          "deltaPer10k": -3.5,
           "distinctive": false
         }
       ],
@@ -1414,8 +2342,8 @@
           "countPrev": 0,
           "countCurr": 14,
           "per10kPrev": 0.0,
-          "per10kCurr": 10.12,
-          "deltaPer10k": 10.12,
+          "per10kCurr": 10.13,
+          "deltaPer10k": 10.13,
           "distinctive": false
         },
         {
@@ -1453,46 +2381,46 @@
         },
         {
           "term": "china",
-          "score": 6.09,
+          "score": 6.1,
           "z": 0.61,
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.61,
-          "deltaPer10k": 3.61,
+          "per10kCurr": 3.62,
+          "deltaPer10k": 3.62,
           "distinctive": false
         },
         {
           "term": "libor",
-          "score": 6.09,
+          "score": 6.1,
           "z": 0.61,
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.61,
-          "deltaPer10k": 3.61,
+          "per10kCurr": 3.62,
+          "deltaPer10k": 3.62,
           "distinctive": false
         },
         {
           "term": "oefs",
-          "score": 6.09,
+          "score": 6.1,
           "z": 0.61,
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.61,
-          "deltaPer10k": 3.61,
+          "per10kCurr": 3.62,
+          "deltaPer10k": 3.62,
           "distinctive": false
         },
         {
           "term": "sec proposed",
-          "score": 6.09,
+          "score": 6.1,
           "z": 0.61,
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.61,
-          "deltaPer10k": 3.61,
+          "per10kCurr": 3.62,
+          "deltaPer10k": 3.62,
           "distinctive": false
         },
         {
@@ -1552,7 +2480,7 @@
         },
         {
           "term": "accuracy",
-          "score": 5.58,
+          "score": 5.59,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
@@ -1563,7 +2491,7 @@
         },
         {
           "term": "climate related",
-          "score": 5.58,
+          "score": 5.59,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
@@ -1664,7 +2592,7 @@
         },
         {
           "term": "border",
-          "score": -5.43,
+          "score": -5.42,
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
@@ -1675,7 +2603,18 @@
         },
         {
           "term": "cross",
-          "score": -5.43,
+          "score": -5.42,
+          "z": -0.54,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.63,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.63,
+          "distinctive": false
+        },
+        {
+          "term": "cross border",
+          "score": -5.42,
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
@@ -1686,7 +2625,7 @@
         },
         {
           "term": "customer",
-          "score": -5.43,
+          "score": -5.42,
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
@@ -1697,7 +2636,7 @@
         },
         {
           "term": "distribution partners",
-          "score": -5.43,
+          "score": -5.42,
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
@@ -1708,7 +2647,7 @@
         },
         {
           "term": "ended investment",
-          "score": -5.43,
+          "score": -5.42,
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
@@ -1719,18 +2658,7 @@
         },
         {
           "term": "environmental social",
-          "score": -5.43,
-          "z": -0.54,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 1.63,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.63,
-          "distinctive": false
-        },
-        {
-          "term": "european operations",
-          "score": -5.43,
+          "score": -5.42,
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
@@ -1878,8 +2806,8 @@
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.51,
-          "deltaPer10k": 3.51,
+          "per10kCurr": 3.52,
+          "deltaPer10k": 3.52,
           "distinctive": false
         },
         {
@@ -1889,8 +2817,8 @@
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.51,
-          "deltaPer10k": 3.51,
+          "per10kCurr": 3.52,
+          "deltaPer10k": 3.52,
           "distinctive": false
         },
         {
@@ -1900,8 +2828,8 @@
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.51,
-          "deltaPer10k": 3.51,
+          "per10kCurr": 3.52,
+          "deltaPer10k": 3.52,
           "distinctive": false
         },
         {
@@ -2044,9 +2972,9 @@
           "z": -0.74,
           "countPrev": 16,
           "countCurr": 0,
-          "per10kPrev": 11.56,
+          "per10kPrev": 11.57,
           "per10kCurr": 0.0,
-          "deltaPer10k": -11.56,
+          "deltaPer10k": -11.57,
           "distinctive": false,
           "includes": [
             "climate change"
@@ -2518,9 +3446,9 @@
           "z": -0.7,
           "countPrev": 11,
           "countCurr": 0,
-          "per10kPrev": 7.73,
+          "per10kPrev": 7.74,
           "per10kCurr": 0.0,
-          "deltaPer10k": -7.73,
+          "deltaPer10k": -7.74,
           "distinctive": false
         },
         {
