@@ -1,5 +1,5 @@
 ﻿// src/pages/Home.tsx
-import { useEffect, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { Link } from "react-router-dom"
 import { copy, t } from "../lib/copy"
 import {
@@ -12,6 +12,16 @@ export default function Home() {
   const [index, setIndex] = useState<CompanyIndex | null>(null)
   const [featuredCases, setFeaturedCases] = useState<FeaturedCase[]>([])
   const [featuredError, setFeaturedError] = useState<string | null>(null)
+  const companyNameMap = useMemo(() => {
+    const map = new Map<string, string>()
+    if (!index) return map
+    for (const company of index.companies) {
+      if (company.ticker && company.companyName) {
+        map.set(company.ticker.toUpperCase(), company.companyName)
+      }
+    }
+    return map
+  }, [index])
 
   useEffect(() => {
     let mounted = true
@@ -142,15 +152,43 @@ export default function Home() {
             <div className="mt-6 grid gap-3 sm:grid-cols-2">
               {featuredCases.map((featured) => {
                 const link = `/company/${featured.ticker}?from=${featured.defaultPair.from}&to=${featured.defaultPair.to}`
+                const companyName = companyNameMap.get(featured.ticker.toUpperCase())
                 return (
                   <Link
                     key={featured.id}
                     to={link}
                     className="rounded-lg border border-black/10 p-4 hover:bg-black/5"
+                    aria-label={featured.cta}
                   >
-                    <div className="text-sm font-medium">{featured.ticker}</div>
-                    <div className="mt-2 text-sm font-medium">{featured.headline}</div>
+                    <div className="flex items-start justify-between gap-3">
+                      <div>
+                        <div className="text-sm font-semibold">{featured.ticker}</div>
+                        {companyName ? (
+                          <div className="text-xs text-slate-300">{companyName}</div>
+                        ) : null}
+                      </div>
+                      <span className="rounded-full border border-black/20 px-2 py-1 text-[11px]">
+                        {copy.companies.featuredChip}
+                      </span>
+                    </div>
+                    <div className="mt-3 text-sm font-medium">{featured.headline}</div>
                     <div className="mt-2 text-xs text-slate-300">{featured.hook}</div>
+                    <div className="mt-3 flex flex-wrap gap-2 text-xs text-slate-300">
+                      <span className="rounded-full border border-black/20 px-2 py-1">
+                        {t(copy.companies.compareYearsLabel, {
+                          from: featured.defaultPair.from,
+                          to: featured.defaultPair.to,
+                        })}
+                      </span>
+                      {featured.tags?.map((tag) => (
+                        <span
+                          key={`${featured.id}-${tag}`}
+                          className="rounded-full border border-black/20 px-2 py-1"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
                   </Link>
                 )
               })}

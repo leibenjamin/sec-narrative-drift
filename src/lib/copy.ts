@@ -32,7 +32,7 @@ export const copy = {
     },
     errors: {
       missingDataset:
-        "We couldn’t load this dataset. Try a featured company — those are precomputed and demo‑safe.",
+        "We couldn’t load this dataset. Try a featured case — those are curated and demo‑safe.",
       missingExcerpts: "We have metrics for this pair, but no excerpt set yet.",
       noShifts: "No clear “top movers” for this year pair (which is itself a result).",
       lowConfidenceYear:
@@ -49,7 +49,7 @@ export const copy = {
   },
 
   buttons: {
-    exploreFeatured: "Explore a featured company",
+    exploreFeatured: "Explore a featured case",
     browseCompanies: "Browse list of companies",
     startTour: "Start tour",
     resetSelection: "Reset selection",
@@ -62,9 +62,9 @@ export const copy = {
     heroTitle: "Narrative Drift, by the numbers — and by the paragraph",
     heroBody:
       "Pick a company and see how its 10-K / 20-F Risk Factors language changes year-to-year, where the biggest shifts happen, and the terms that move the most.",
-    heroFootnote: "Featured companies are precomputed, because live demos are a form of optimism.",
-    featuredHeading: "Featured companies",
-    featuredHelper: "Three precomputed datasets. Click one to start.",
+    heroFootnote: "Featured cases are precomputed, because live demos are a form of optimism.",
+    featuredHeading: "Featured cases",
+    featuredHelper: "Curated story cases with a recommended year pair. Click one to start.",
     howToReadTitle: "How to read this",
     howToReadSteps: {
       drift: "Drift timeline: spot the year the wording changes most.",
@@ -98,14 +98,17 @@ export const copy = {
       qualityHighMed: "Quality: high + medium",
     },
     sort: {
-      featured: "Sort: featured",
+      featured: "Sort: featured cases",
       az: "Sort: A-Z",
       peakDrift: "Sort: peak drift",
       coverage: "Sort: coverage",
     },
     featuredTitle: "Featured cases",
+    featuredHelper: "Curated story cases with a recommended year pair.",
     featuredChip: "Featured",
     storyChip: "Story",
+    storyHelper:
+      "Story filter highlights a broader set of notable narrative shifts; featured cases are the curated picks.",
     compareYearsLabel: "Compare {from}-{to}",
     resultsCount: "{n} results",
     peakDriftLabel: "Peak drift {from}-{to}: {v}",

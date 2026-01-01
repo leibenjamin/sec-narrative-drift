@@ -253,11 +253,13 @@ export default function Companies() {
               <option value="coverage">{copy.companies.sort.coverage}</option>
             </select>
           </div>
+          <p className="text-xs text-slate-400">{copy.companies.storyHelper}</p>
         </section>
 
         {featuredRows.length ? (
           <section className="space-y-3">
             <h2 className="text-lg font-semibold">{copy.companies.featuredTitle}</h2>
+            <p className="text-xs text-slate-400">{copy.companies.featuredHelper}</p>
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {featuredRows.slice(0, 12).map((r) => {
                 const fc = r.featuredCase!
