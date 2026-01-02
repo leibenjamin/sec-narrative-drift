@@ -2,7 +2,7 @@
   "ticker": "UNH",
   "cik": "0000731766",
   "companyName": "UNITEDHEALTH GROUP INC",
-  "lastUpdatedUtc": "2026-01-01T00:57:31Z",
+  "lastUpdatedUtc": "2026-01-01T21:51:02Z",
   "formsIncluded": [
     "10-K"
   ],
@@ -15,13 +15,13 @@
   ],
   "extraction": {
     "section": "item1a",
-    "method": "text_scored",
-    "confidence": 0.8999999999999999,
+    "method": "html_anchor",
+    "confidence": 0.7,
     "warnings": [
-      "anchor_missing"
+      "end_not_found"
     ],
-    "lengthChars": 61401,
-    "endMarkerUsed": "1B",
+    "lengthChars": 80000,
+    "endMarkerUsed": null,
     "hasItem1C": false
   }
 }

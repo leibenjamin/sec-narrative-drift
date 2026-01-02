@@ -8,12 +8,9 @@
     "primaryDocument": "cvx-123115x10kdoc.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/93410/000009341016000049/cvx-123115x10kdoc.htm",
     "extraction": {
-      "confidence": 0.6499999999999999,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing",
-        "early_position_penalty"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   },
   {
@@ -25,11 +22,9 @@
     "primaryDocument": "cvx-123116x10kdoc.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/93410/000009341017000013/cvx-123116x10kdoc.htm",
     "extraction": {
-      "confidence": 0.8999999999999999,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   },
   {
@@ -41,11 +36,9 @@
     "primaryDocument": "cvx12312017-10kdoc.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/93410/000009341018000010/cvx12312017-10kdoc.htm",
     "extraction": {
-      "confidence": 0.8999999999999999,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   },
   {
@@ -57,11 +50,9 @@
     "primaryDocument": "cvx12312018-10kdoc.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/93410/000009341019000008/cvx12312018-10kdoc.htm",
     "extraction": {
-      "confidence": 0.8999999999999999,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   },
   {
@@ -73,11 +64,9 @@
     "primaryDocument": "cvx12312019-10kdoc.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/93410/000009341020000010/cvx12312019-10kdoc.htm",
     "extraction": {
-      "confidence": 0.8999999999999999,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   },
   {
@@ -89,11 +78,9 @@
     "primaryDocument": "cvx-20201231.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/93410/000009341021000009/cvx-20201231.htm",
     "extraction": {
-      "confidence": 0.8999999999999999,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   },
   {
@@ -105,11 +92,9 @@
     "primaryDocument": "cvx-20211231.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/93410/000009341022000019/cvx-20211231.htm",
     "extraction": {
-      "confidence": 0.8999999999999999,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   },
   {
@@ -121,11 +106,9 @@
     "primaryDocument": "cvx-20221231.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/93410/000009341023000009/cvx-20221231.htm",
     "extraction": {
-      "confidence": 0.8999999999999999,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   },
   {

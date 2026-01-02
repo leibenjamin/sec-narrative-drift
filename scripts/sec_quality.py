@@ -14,6 +14,81 @@ from sec_extract_item1a import extract_item1a_from_html, split_paragraphs
 SECTION_NAME = "10k_item1a"
 MAX_TERMS = 15
 MAX_PARAGRAPHS_PER_YEAR = 3
+BULLET_TOKEN = "__BULLET_BREAK__"
+BULLET_SYMBOL = "\u2022"
+
+COMMON_SHORT_WORDS = {
+    "a",
+    "an",
+    "and",
+    "are",
+    "as",
+    "at",
+    "be",
+    "but",
+    "by",
+    "can",
+    "did",
+    "do",
+    "for",
+    "had",
+    "has",
+    "i",
+    "if",
+    "in",
+    "is",
+    "it",
+    "its",
+    "may",
+    "not",
+    "nor",
+    "of",
+    "on",
+    "or",
+    "our",
+    "per",
+    "the",
+    "to",
+    "us",
+    "we",
+    "who",
+    "why",
+    "you",
+}
+
+SUFFIX_FRAGMENTS = [
+    "mation",
+    "mations",
+    "tion",
+    "tions",
+    "sion",
+    "sions",
+    "ment",
+    "ments",
+    "ness",
+    "less",
+    "ance",
+    "ances",
+    "ence",
+    "ences",
+    "ing",
+    "ings",
+    "ity",
+    "ities",
+    "ative",
+    "atives",
+    "able",
+    "ably",
+    "ization",
+    "izations",
+    "tory",
+    "tories",
+]
+
+BULLET_PATTERN = re.compile(r"\n\s*(?:\u2022|\u00b7|\*|\u2013|\u2014|-)\s+")
+SHORT_SPLIT_PATTERN = re.compile(r"\b([A-Za-z]{1,3})\s*\n\s*([a-z][A-Za-z]+)")
+TAIL_SPLIT_PATTERN = re.compile(r"\b([A-Za-z]{3,})\s*\n\s*([a-z]{1,2})\b")
+SUFFIX_SPLIT_PATTERN = re.compile(r"\b([A-Za-z]{3,})\s*\n\s*([a-z]{2,})")
 
 
 @dataclass(frozen=True)
@@ -97,6 +172,69 @@ def normalize_paragraphs(text: str, paragraphs: Optional[Sequence[str]]) -> list
     if split:
         return split
     return [text]
+
+
+def starts_with_any(value: str, fragments: Sequence[str]) -> bool:
+    for fragment in fragments:
+        if value.startswith(fragment):
+            return True
+    return False
+
+
+def normalize_excerpt_text(text: str) -> str:
+    if not text:
+        return ""
+    normalized = (
+        text.replace("\u00a0", " ")
+        .replace("\u0091", "'")
+        .replace("\u0092", "'")
+        .replace("\u0093", '"')
+        .replace("\u0094", '"')
+        .replace("\u0096", "\u2013")
+        .replace("\u0097", "\u2014")
+        .replace("\r\n", "\n")
+        .replace("\r", "\n")
+    )
+    normalized = re.sub(r"([A-Za-z])-\n([A-Za-z])", r"\1\2", normalized)
+    normalized = BULLET_PATTERN.sub(f"{BULLET_TOKEN}{BULLET_SYMBOL} ", normalized)
+
+    def short_split(match: re.Match[str]) -> str:
+        left = match.group(1)
+        right = match.group(2)
+        left_lower = left.lower()
+        right_lower = right.lower()
+        if left_lower in COMMON_SHORT_WORDS or right_lower in COMMON_SHORT_WORDS:
+            return f"{left} {right}"
+        return f"{left}{right}"
+
+    def tail_split(match: re.Match[str]) -> str:
+        left = match.group(1)
+        right = match.group(2)
+        left_lower = left.lower()
+        right_lower = right.lower()
+        if left_lower in COMMON_SHORT_WORDS or right_lower in COMMON_SHORT_WORDS:
+            return f"{left} {right}"
+        return f"{left}{right}"
+
+    def suffix_split(match: re.Match[str]) -> str:
+        left = match.group(1)
+        right = match.group(2)
+        right_lower = right.lower()
+        if starts_with_any(right_lower, SUFFIX_FRAGMENTS):
+            return f"{left}{right}"
+        return f"{left} {right}"
+
+    normalized = SHORT_SPLIT_PATTERN.sub(short_split, normalized)
+    normalized = TAIL_SPLIT_PATTERN.sub(tail_split, normalized)
+    normalized = SUFFIX_SPLIT_PATTERN.sub(suffix_split, normalized)
+    normalized = re.sub(r"\s*\n+\s*", " ", normalized)
+    normalized = re.sub(r"([A-Za-z])\s+([\u00ae\u2122\u2120])", r"\1\2", normalized)
+    normalized = re.sub(r"([\u00ae\u2122\u2120])\s+([A-Za-z])", r"\1 \2", normalized)
+    normalized = re.sub(r"\u201c\s+", "\u201c", normalized)
+    normalized = re.sub(r"\s+\u201d", "\u201d", normalized)
+    normalized = normalized.replace(BULLET_TOKEN, "\n")
+    normalized = re.sub(r"\s{2,}", " ", normalized).strip()
+    return normalized
 
 
 def load_sections_from_json(path: Path) -> list[SectionYear]:
@@ -304,14 +442,17 @@ def select_top_paragraphs(
 ) -> list[dict[str, Any]]:
     scored: list[dict[str, Any]] = []
     for idx, paragraph in enumerate(paragraphs):
-        score, hits = score_paragraph(paragraph, risers, fallers, direction=direction)
+        normalized = normalize_excerpt_text(paragraph)
+        if not normalized:
+            continue
+        score, hits = score_paragraph(normalized, risers, fallers, direction=direction)
         if score <= 0:
             continue
         scored.append(
             {
                 "year": year,
                 "paragraphIndex": idx,
-                "text": paragraph,
+                "text": normalized,
                 "score": score,
                 "hits": hits,
             }

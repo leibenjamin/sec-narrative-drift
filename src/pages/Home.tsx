@@ -83,7 +83,7 @@ export default function Home() {
             <div className="flex flex-wrap gap-2 pt-1">
               <Link
                 to="/companies"
-                className="inline-flex items-center rounded-md bg-sky-400 px-3 py-1.5 text-sm font-semibold text-slate-900 hover:bg-sky-300"
+                className="inline-flex items-center rounded-md bg-sky-600 px-3 py-1.5 text-sm font-semibold text-white hover:bg-sky-500"
               >
                 {copy.buttons.browseCompanies}
               </Link>

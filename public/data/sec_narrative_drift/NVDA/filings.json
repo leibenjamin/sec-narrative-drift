@@ -8,11 +8,9 @@
     "primaryDocument": "nvda-2016x10k.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/1045810/000104581016000205/nvda-2016x10k.htm",
     "extraction": {
-      "confidence": 0.8999999999999999,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   },
   {
@@ -24,11 +22,9 @@
     "primaryDocument": "nvda-2017x10k.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/1045810/000104581017000027/nvda-2017x10k.htm",
     "extraction": {
-      "confidence": 0.8999999999999999,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   },
   {
@@ -40,11 +36,9 @@
     "primaryDocument": "nvda-2018x10k.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/1045810/000104581018000010/nvda-2018x10k.htm",
     "extraction": {
-      "confidence": 0.8999999999999999,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   },
   {
@@ -56,11 +50,9 @@
     "primaryDocument": "nvda-2019x10k.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/1045810/000104581019000023/nvda-2019x10k.htm",
     "extraction": {
-      "confidence": 0.8999999999999999,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   },
   {
@@ -72,11 +64,9 @@
     "primaryDocument": "nvda-2020x10k.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/1045810/000104581020000010/nvda-2020x10k.htm",
     "extraction": {
-      "confidence": 0.8999999999999999,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   },
   {
@@ -88,11 +78,9 @@
     "primaryDocument": "nvda-20210131.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/1045810/000104581021000010/nvda-20210131.htm",
     "extraction": {
-      "confidence": 0.8999999999999999,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   },
   {
@@ -104,11 +92,9 @@
     "primaryDocument": "nvda-20220130.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/1045810/000104581022000036/nvda-20220130.htm",
     "extraction": {
-      "confidence": 0.8999999999999999,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   },
   {
@@ -120,11 +106,9 @@
     "primaryDocument": "nvda-20230129.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/1045810/000104581023000017/nvda-20230129.htm",
     "extraction": {
-      "confidence": 0.8999999999999999,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   },
   {
@@ -136,11 +120,9 @@
     "primaryDocument": "nvda-20240128.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/1045810/000104581024000029/nvda-20240128.htm",
     "extraction": {
-      "confidence": 0.8999999999999999,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   },
   {
@@ -152,11 +134,9 @@
     "primaryDocument": "nvda-20250126.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/1045810/000104581025000023/nvda-20250126.htm",
     "extraction": {
-      "confidence": 0.8999999999999999,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   }
 ]

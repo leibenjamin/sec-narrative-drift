@@ -11,6 +11,7 @@
       "confidence": 0.8999999999999999,
       "method": "text_scored",
       "errors": [
+        "anchor_low_confidence",
         "anchor_missing"
       ]
     }
@@ -27,6 +28,7 @@
       "confidence": 0.8999999999999999,
       "method": "text_scored",
       "errors": [
+        "anchor_low_confidence",
         "anchor_missing"
       ]
     }
@@ -43,6 +45,7 @@
       "confidence": 0.8999999999999999,
       "method": "text_scored",
       "errors": [
+        "anchor_low_confidence",
         "anchor_missing"
       ]
     }
@@ -59,6 +62,7 @@
       "confidence": 0.8999999999999999,
       "method": "text_scored",
       "errors": [
+        "anchor_low_confidence",
         "anchor_missing"
       ]
     }
@@ -75,6 +79,7 @@
       "confidence": 0.8999999999999999,
       "method": "text_scored",
       "errors": [
+        "anchor_low_confidence",
         "anchor_missing"
       ]
     }
@@ -88,11 +93,9 @@
     "primaryDocument": "tsla-10k_20201231.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/1318605/000156459021004599/tsla-10k_20201231.htm",
     "extraction": {
-      "confidence": 0.8999999999999999,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   },
   {
@@ -104,11 +107,9 @@
     "primaryDocument": "tsla-20211231.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/1318605/000095017022000796/tsla-20211231.htm",
     "extraction": {
-      "confidence": 0.8999999999999999,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   },
   {
@@ -136,11 +137,9 @@
     "primaryDocument": "tsla-20231231.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/1318605/000162828024002390/tsla-20231231.htm",
     "extraction": {
-      "confidence": 0.8999999999999999,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   },
   {
@@ -152,11 +151,9 @@
     "primaryDocument": "tsla-20241231.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/1318605/000162828025003063/tsla-20241231.htm",
     "extraction": {
-      "confidence": 0.8999999999999999,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   }
 ]

@@ -2,7 +2,7 @@
   "ticker": "COP",
   "cik": "0001163165",
   "companyName": "CONOCOPHILLIPS",
-  "lastUpdatedUtc": "2026-01-01T01:18:14Z",
+  "lastUpdatedUtc": "2026-01-02T03:51:56Z",
   "formsIncluded": [
     "10-K"
   ],
@@ -16,12 +16,10 @@
   "extraction": {
     "section": "item1a",
     "method": "html_anchor",
-    "confidence": 0.7,
-    "warnings": [
-      "end_not_found"
-    ],
-    "lengthChars": 80000,
-    "endMarkerUsed": null,
-    "hasItem1C": true
+    "confidence": 0.9,
+    "warnings": [],
+    "lengthChars": 19053,
+    "endMarkerUsed": "1B",
+    "hasItem1C": false
   }
 }

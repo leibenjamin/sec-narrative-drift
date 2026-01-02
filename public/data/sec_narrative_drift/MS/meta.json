@@ -2,7 +2,7 @@
   "ticker": "MS",
   "cik": "0000895421",
   "companyName": "MORGAN STANLEY",
-  "lastUpdatedUtc": "2026-01-01T00:46:30Z",
+  "lastUpdatedUtc": "2026-01-02T14:49:04Z",
   "formsIncluded": [
     "10-K"
   ],
@@ -15,13 +15,13 @@
   ],
   "extraction": {
     "section": "item1a",
-    "method": "text_scored",
-    "confidence": 0.7,
+    "method": "html_anchor",
+    "confidence": 0.6,
     "warnings": [
-      "anchor_missing",
-      "end_not_found"
+      "end_not_found",
+      "early_position_penalty"
     ],
-    "lengthChars": 79998,
+    "lengthChars": 80000,
     "endMarkerUsed": null,
     "hasItem1C": false
   }

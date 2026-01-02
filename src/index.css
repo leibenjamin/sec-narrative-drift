@@ -55,12 +55,12 @@ body {
   min-height: 100vh;
 }
 
-a {
+a:not([class]) {
   color: var(--accent);
-  text-decoration: none;
+  text-decoration: underline;
 }
 
-a:hover {
+a:not([class]):hover {
   color: var(--accent-strong);
 }
 

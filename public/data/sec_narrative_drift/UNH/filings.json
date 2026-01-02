@@ -8,11 +8,9 @@
     "primaryDocument": "unh2015123110-k.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/731766/000073176616000058/unh2015123110-k.htm",
     "extraction": {
-      "confidence": 0.8999999999999999,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   },
   {
@@ -52,9 +50,11 @@
     "primaryDocument": "unh2018123110-k.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/731766/000073176619000005/unh2018123110-k.htm",
     "extraction": {
-      "confidence": 0.9,
+      "confidence": 0.7,
       "method": "html_anchor",
-      "errors": []
+      "errors": [
+        "end_not_found"
+      ]
     }
   },
   {
@@ -66,9 +66,11 @@
     "primaryDocument": "unh2019123110-k.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/731766/000073176620000006/unh2019123110-k.htm",
     "extraction": {
-      "confidence": 0.9,
+      "confidence": 0.7,
       "method": "html_anchor",
-      "errors": []
+      "errors": [
+        "end_not_found"
+      ]
     }
   },
   {

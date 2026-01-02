@@ -8,11 +8,9 @@
     "primaryDocument": "nsc1231201510-k.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/702165/000070216516000162/nsc1231201510-k.htm",
     "extraction": {
-      "confidence": 0.8999999999999999,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   },
   {
@@ -24,12 +22,9 @@
     "primaryDocument": "nsc1231201610-k.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/702165/000070216517000018/nsc1231201610-k.htm",
     "extraction": {
-      "confidence": 0.6000000000000001,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing",
-        "length_out_of_band"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   },
   {
@@ -41,12 +36,9 @@
     "primaryDocument": "nsc1231201710-knew.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/702165/000070216518000011/nsc1231201710-knew.htm",
     "extraction": {
-      "confidence": 0.6000000000000001,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing",
-        "length_out_of_band"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   },
   {
@@ -58,11 +50,9 @@
     "primaryDocument": "nsc1231201810-k.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/702165/000070216519000012/nsc1231201810-k.htm",
     "extraction": {
-      "confidence": 0.8999999999999999,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   },
   {
@@ -74,11 +64,9 @@
     "primaryDocument": "nsc-20191231.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/702165/000070216520000011/nsc-20191231.htm",
     "extraction": {
-      "confidence": 0.8999999999999999,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   },
   {
@@ -90,11 +78,9 @@
     "primaryDocument": "nsc-20201231.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/702165/000070216521000006/nsc-20201231.htm",
     "extraction": {
-      "confidence": 0.95,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   },
   {
@@ -106,11 +92,9 @@
     "primaryDocument": "nsc-20211231.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/702165/000070216522000007/nsc-20211231.htm",
     "extraction": {
-      "confidence": 0.95,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   },
   {
@@ -122,11 +106,9 @@
     "primaryDocument": "nsc-20221231.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/702165/000070216523000010/nsc-20221231.htm",
     "extraction": {
-      "confidence": 0.95,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   },
   {
@@ -138,11 +120,9 @@
     "primaryDocument": "nsc-20231231.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/702165/000070216524000005/nsc-20231231.htm",
     "extraction": {
-      "confidence": 0.95,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   },
   {
@@ -154,11 +134,9 @@
     "primaryDocument": "nsc-20241231.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/702165/000070216525000008/nsc-20241231.htm",
     "extraction": {
-      "confidence": 0.95,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   }
 ]
