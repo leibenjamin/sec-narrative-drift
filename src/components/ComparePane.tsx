@@ -1,4 +1,5 @@
 import { copy } from "../lib/copy"
+import { normalizeExcerptText } from "../lib/normalizeExcerpt"
 import { splitForHighlight } from "../lib/textHighlight"
 import type { ExcerptPair } from "../lib/types"
 
@@ -36,7 +37,8 @@ export default function ComparePane({
     para: ExcerptPair["representativeParagraphs"][number],
     index: number
   ) => {
-    const segments = splitForHighlight(para.text, highlightTerms)
+    const normalizedText = normalizeExcerptText(para.text)
+    const segments = splitForHighlight(normalizedText, highlightTerms)
     return (
       <div
         key={`${para.year}-${para.paragraphIndex}-${index}`}
@@ -58,7 +60,7 @@ export default function ComparePane({
                   </span>
                 )
               )
-            : para.text}
+            : normalizedText}
         </p>
       </div>
     )

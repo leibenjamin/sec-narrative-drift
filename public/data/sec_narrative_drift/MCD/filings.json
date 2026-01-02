@@ -8,10 +8,9 @@
     "primaryDocument": "mcd-12312015x10k.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/63908/000006390816000103/mcd-12312015x10k.htm",
     "extraction": {
-      "confidence": 0.75,
-      "method": "text_scored",
+      "confidence": 0.8,
+      "method": "html_anchor",
       "errors": [
-        "anchor_missing",
         "early_position_penalty"
       ]
     }
@@ -25,11 +24,9 @@
     "primaryDocument": "mcd-12312016x10k.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/63908/000006390817000017/mcd-12312016x10k.htm",
     "extraction": {
-      "confidence": 0.8999999999999999,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   },
   {
@@ -41,11 +38,9 @@
     "primaryDocument": "mcd-12312017x10k.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/63908/000006390818000010/mcd-12312017x10k.htm",
     "extraction": {
-      "confidence": 0.8999999999999999,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   },
   {
@@ -57,11 +52,9 @@
     "primaryDocument": "mcd-12312018x10k.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/63908/000006390819000010/mcd-12312018x10k.htm",
     "extraction": {
-      "confidence": 0.8999999999999999,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   },
   {

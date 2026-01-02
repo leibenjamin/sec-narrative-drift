@@ -2,7 +2,7 @@
   "ticker": "JNJ",
   "cik": "0000200406",
   "companyName": "JOHNSON & JOHNSON",
-  "lastUpdatedUtc": "2026-01-01T00:58:33Z",
+  "lastUpdatedUtc": "2026-01-01T21:17:55Z",
   "formsIncluded": [
     "10-K"
   ],
@@ -15,10 +15,9 @@
   ],
   "extraction": {
     "section": "item1a",
-    "method": "text_scored",
-    "confidence": 0.7499999999999999,
+    "method": "html_anchor",
+    "confidence": 0.8,
     "warnings": [
-      "anchor_missing",
       "early_position_penalty"
     ],
     "lengthChars": 20682,

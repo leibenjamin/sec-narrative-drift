@@ -2,7 +2,7 @@
   "ticker": "IBM",
   "cik": "0000051143",
   "companyName": "INTERNATIONAL BUSINESS MACHINES CORP",
-  "lastUpdatedUtc": "2025-12-31T23:26:47Z",
+  "lastUpdatedUtc": "2026-01-01T21:15:22Z",
   "formsIncluded": [
     "10-K"
   ],
@@ -15,13 +15,14 @@
   ],
   "extraction": {
     "section": "item1a",
-    "method": "html_anchor",
-    "confidence": 0.75,
+    "method": "text_scored",
+    "confidence": 0.8999999999999999,
     "warnings": [
-      "length_out_of_band"
+      "anchor_low_confidence",
+      "anchor_missing"
     ],
-    "lengthChars": 25,
+    "lengthChars": 31458,
     "endMarkerUsed": "1B",
-    "hasItem1C": true
+    "hasItem1C": false
   }
 }

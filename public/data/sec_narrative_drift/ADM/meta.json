@@ -2,7 +2,7 @@
   "ticker": "ADM",
   "cik": "0000007084",
   "companyName": "Archer-Daniels-Midland Co",
-  "lastUpdatedUtc": "2026-01-01T01:55:57Z",
+  "lastUpdatedUtc": "2026-01-01T20:52:02Z",
   "formsIncluded": [
     "10-K"
   ],
@@ -15,12 +15,12 @@
   ],
   "extraction": {
     "section": "item1a",
-    "method": "text_scored",
-    "confidence": 0.8999999999999999,
+    "method": "html_anchor",
+    "confidence": 0.8,
     "warnings": [
-      "anchor_missing"
+      "early_position_penalty"
     ],
-    "lengthChars": 23632,
+    "lengthChars": 25498,
     "endMarkerUsed": "1B",
     "hasItem1C": false
   }

@@ -2,7 +2,7 @@
   "ticker": "MO",
   "cik": "0000764180",
   "companyName": "ALTRIA GROUP, INC.",
-  "lastUpdatedUtc": "2026-01-01T02:22:52Z",
+  "lastUpdatedUtc": "2026-01-01T21:32:08Z",
   "formsIncluded": [
     "10-K"
   ],
@@ -15,10 +15,9 @@
   ],
   "extraction": {
     "section": "item1a",
-    "method": "text_scored",
-    "confidence": 0.75,
+    "method": "html_anchor",
+    "confidence": 0.8,
     "warnings": [
-      "anchor_missing",
       "early_position_penalty"
     ],
     "lengthChars": 32069,

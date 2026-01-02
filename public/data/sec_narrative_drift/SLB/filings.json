@@ -11,6 +11,7 @@
       "confidence": 0.8999999999999999,
       "method": "text_scored",
       "errors": [
+        "anchor_low_confidence",
         "anchor_missing"
       ]
     }
@@ -24,11 +25,9 @@
     "primaryDocument": "slb-10k_20161231.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/87347/000156459017000589/slb-10k_20161231.htm",
     "extraction": {
-      "confidence": 0.8999999999999999,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   },
   {
@@ -40,11 +39,9 @@
     "primaryDocument": "slb-10k_20171231.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/87347/000156459018000821/slb-10k_20171231.htm",
     "extraction": {
-      "confidence": 0.8999999999999999,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   },
   {
@@ -56,11 +53,9 @@
     "primaryDocument": "slb-10k_20181231.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/87347/000156459019000928/slb-10k_20181231.htm",
     "extraction": {
-      "confidence": 0.8999999999999999,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   },
   {
@@ -72,11 +67,9 @@
     "primaryDocument": "slb-10k_20191231.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/87347/000156459020001578/slb-10k_20191231.htm",
     "extraction": {
-      "confidence": 0.8999999999999999,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   },
   {
@@ -104,11 +97,9 @@
     "primaryDocument": "slb-10k_20211231.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/87347/000156459022002421/slb-10k_20211231.htm",
     "extraction": {
-      "confidence": 0.8999999999999999,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   },
   {
@@ -120,11 +111,9 @@
     "primaryDocument": "slb-10k_20221231.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/87347/000156459023000762/slb-10k_20221231.htm",
     "extraction": {
-      "confidence": 0.8999999999999999,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   },
   {

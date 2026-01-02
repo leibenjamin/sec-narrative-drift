@@ -24,11 +24,9 @@
     "primaryDocument": "abbv-12312016x10k.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/1551152/000155115217000004/abbv-12312016x10k.htm",
     "extraction": {
-      "confidence": 0.8999999999999999,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   },
   {
@@ -40,11 +38,9 @@
     "primaryDocument": "abbv-20171231x10k.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/1551152/000155115218000014/abbv-20171231x10k.htm",
     "extraction": {
-      "confidence": 0.95,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   },
   {
@@ -56,11 +52,9 @@
     "primaryDocument": "abbv-20181231x10k.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/1551152/000155115219000008/abbv-20181231x10k.htm",
     "extraction": {
-      "confidence": 0.95,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   },
   {
@@ -72,11 +66,9 @@
     "primaryDocument": "abbv-20191231x10k.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/1551152/000155115220000007/abbv-20191231x10k.htm",
     "extraction": {
-      "confidence": 0.95,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   },
   {
@@ -88,11 +80,9 @@
     "primaryDocument": "abbv-20201231.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/1551152/000155115221000008/abbv-20201231.htm",
     "extraction": {
-      "confidence": 0.8999999999999999,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   },
   {
@@ -104,11 +94,9 @@
     "primaryDocument": "abbv-20211231.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/1551152/000155115222000007/abbv-20211231.htm",
     "extraction": {
-      "confidence": 0.8999999999999999,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   },
   {
@@ -120,11 +108,9 @@
     "primaryDocument": "abbv-20221231.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/1551152/000155115223000011/abbv-20221231.htm",
     "extraction": {
-      "confidence": 0.8999999999999999,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   },
   {
@@ -136,11 +122,9 @@
     "primaryDocument": "abbv-20231231.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/1551152/000155115224000011/abbv-20231231.htm",
     "extraction": {
-      "confidence": 0.8999999999999999,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   },
   {
@@ -152,11 +136,9 @@
     "primaryDocument": "abbv-20241231.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/1551152/000155115225000020/abbv-20241231.htm",
     "extraction": {
-      "confidence": 0.8999999999999999,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   }
 ]
