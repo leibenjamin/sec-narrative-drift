@@ -2,9 +2,10 @@ import argparse
 import re
 import warnings
 from pathlib import Path
-from typing import Any, Optional
+from typing import Any, Optional, cast
 
 from bs4 import BeautifulSoup, XMLParsedAsHTMLWarning
+from bs4.element import Tag
 
 
 BLOCK_TAGS = {
@@ -88,6 +89,8 @@ def choose_parser(html: str) -> str:
 def clean_html_to_text(html: str) -> str:
     soup = BeautifulSoup(html, choose_parser(html))
 
+    _strip_hidden_nodes(soup)
+
     for tag in soup(["script", "style", "noscript"]):
         tag.decompose()
 
@@ -101,9 +104,39 @@ def clean_html_to_text(html: str) -> str:
     return normalize_whitespace(text)
 
 
+def _strip_hidden_nodes(soup: BeautifulSoup) -> None:
+    hidden_style = re.compile(r"(display\s*:\s*none|visibility\s*:\s*hidden)", re.IGNORECASE)
+    for tag in soup.find_all(True):
+        if tag.name == "ix:hidden":
+            tag.decompose()
+            continue
+        attrs = _coerce_attrs(getattr(tag, "attrs", None))
+        if "ix:hidden" in attrs:
+            tag.decompose()
+            continue
+        style_value = attrs.get("style")
+        style = style_value if isinstance(style_value, str) else None
+        if style is not None and hidden_style.search(style):
+            tag.decompose()
+            continue
+        if "hidden" in attrs:
+            tag.decompose()
+            continue
+
+
 def split_paragraphs(text: str, min_chars: int = 200) -> list[str]:
     paragraphs = [chunk.strip() for chunk in re.split(r"\n{2,}", text) if chunk.strip()]
     return [para for para in paragraphs if len(para) >= min_chars]
+
+
+def _coerce_attrs(raw: Any) -> dict[str, Any]:
+    if not isinstance(raw, dict):
+        return {}
+    output: dict[str, Any] = {}
+    for key, value in cast(dict[object, object], raw).items():
+        if isinstance(key, str):
+            output[key] = value
+    return output
 
 
 def safe_get_text(node: Any) -> str:
@@ -222,6 +255,34 @@ def _toc_cluster_penalty(section_head: str) -> bool:
     return count >= 4
 
 
+def _strip_toc_block(section: str) -> tuple[str, bool, bool]:
+    lines = section.splitlines()
+    if not lines:
+        return section, False, False
+    head_lines = lines[:80]
+    head_text = "\n".join(head_lines).lower()
+    dot_leader = re.compile(r"\.{2,}\s*\d+\s*$")
+    item_line = re.compile(r"^\s*item\s+\d", re.IGNORECASE)
+    dot_lines = sum(1 for line in head_lines if dot_leader.search(line))
+    item_lines = sum(1 for line in head_lines if item_line.search(line))
+    toc_detected = "table of contents" in head_text or (dot_lines >= 4 and item_lines >= 3)
+    if not toc_detected:
+        return section, False, False
+
+    min_offset = 300
+    match = ITEM1A_RISK_HEADING.search(section, min_offset)
+    if match is None:
+        match = ITEM3_RISK_HEADING.search(section, min_offset)
+    if match is None:
+        match = ITEM1A_HEADING.search(section, min_offset)
+    if match is None:
+        match = ITEM3D_HEADING.search(section, min_offset)
+    if match:
+        trimmed = section[match.start() :].lstrip()
+        return trimmed, True, True
+    return section, True, False
+
+
 def _heading_density_bonus(section: str) -> float:
     lines = [line.strip() for line in section.splitlines() if line.strip()]
     if not lines:
@@ -302,23 +363,23 @@ def extract_item1a_from_text(
     doc_length = len(text)
     has_item1c = bool(ITEM1C_HEADING.search(text))
 
-    candidates: list[int] = []
+    candidates: list[tuple[int, str]] = []
     candidate_set: set[int] = set()
     found_item1a = False
     found_20f = False
 
-    def add_candidate(start_idx: int) -> None:
+    def add_candidate(start_idx: int, marker: str) -> None:
         if start_idx in candidate_set:
             return
         candidate_set.add(start_idx)
-        candidates.append(start_idx)
+        candidates.append((start_idx, marker))
 
     for match in ITEM1A_HEADING.finditer(text):
         start_idx = _heading_start_index(match)
         window = text[start_idx : start_idx + 400]
         if not _contains_risk_factors(window):
             continue
-        add_candidate(start_idx)
+        add_candidate(start_idx, "item1a_heading")
         found_item1a = True
 
     end_markers = END_MARKERS_10K
@@ -328,7 +389,7 @@ def extract_item1a_from_text(
             window = text[start_idx : start_idx + 400]
             if not _contains_risk_factors(window):
                 continue
-            add_candidate(start_idx)
+            add_candidate(start_idx, "item3d_heading")
         if candidates:
             found_20f = True
         else:
@@ -339,7 +400,7 @@ def extract_item1a_from_text(
                     continue
                 if (risk_match.start() - start_idx) > 20000:
                     continue
-                add_candidate(risk_match.start())
+                add_candidate(risk_match.start(), "item3_heading")
             if candidates:
                 found_20f = True
 
@@ -348,7 +409,7 @@ def extract_item1a_from_text(
         line = text[match.start() : line_end if line_end != -1 else len(text)]
         if len(line.strip()) > 80:
             continue
-        add_candidate(match.start())
+        add_candidate(match.start(), "risk_factors_heading")
 
     if found_20f:
         end_markers = END_MARKERS_20F
@@ -359,7 +420,7 @@ def extract_item1a_from_text(
         end_markers = END_MARKERS_10K
 
     best: Optional[dict[str, Any]] = None
-    for start_idx in candidates:
+    for start_idx, start_marker in candidates:
         end_idx, end_marker = _find_end_marker(text, start_idx, end_markers)
         penalty = 0.0
         local_warnings: list[str] = []
@@ -368,6 +429,11 @@ def extract_item1a_from_text(
             local_warnings.append("end_not_found")
             penalty = -0.2
         section = text[start_idx:end_idx].strip()
+        section, toc_detected, toc_removed = _strip_toc_block(section)
+        if toc_detected:
+            local_warnings.append("toc_detected")
+        if toc_removed:
+            local_warnings.append("toc_removed")
         score, breakdown, score_warnings = _score_candidate(text, start_idx, end_idx, doc_length)
         score = max(0.05, min(score + penalty, 0.95))
         breakdown["endNotFoundPenalty"] = penalty
@@ -380,6 +446,9 @@ def extract_item1a_from_text(
             "warnings": score_warnings,
             "scoreBreakdown": breakdown,
             "lengthChars": len(section),
+            "startMarker": start_marker,
+            "tocDetected": toc_detected,
+            "tocRemoved": toc_removed,
         }
         if not best or candidate["confidence"] > best["confidence"]:
             best = candidate
@@ -391,6 +460,9 @@ def extract_item1a_from_text(
             "endMarkerUsed": best["endMarkerUsed"],
             "hasItem1C": has_item1c,
             "scoreBreakdown": best["scoreBreakdown"],
+            "startMarker": best.get("startMarker"),
+            "tocDetected": best.get("tocDetected", False),
+            "tocRemoved": best.get("tocRemoved", False),
         }
         return best["section"], best["confidence"], "text_scored", warnings, debug_meta
 
@@ -403,14 +475,29 @@ def extract_item1a_from_text(
             warnings.append("end_not_found")
         warnings.append("fallback_risk_word_only")
         section = text[start_idx:end_idx].strip()
+        section, toc_detected, toc_removed = _strip_toc_block(section)
+        if toc_detected:
+            warnings.append("toc_detected")
+        if toc_removed:
+            warnings.append("toc_removed")
         debug_meta = {
             "lengthChars": len(section),
             "endMarkerUsed": end_marker,
             "hasItem1C": has_item1c,
+            "startMarker": "risk_factors_fallback",
+            "tocDetected": toc_detected,
+            "tocRemoved": toc_removed,
         }
         return section, 0.35, "risk_factors_fallback", warnings, debug_meta
 
-    debug_meta = {"lengthChars": 0, "endMarkerUsed": None, "hasItem1C": has_item1c}
+    debug_meta = {
+        "lengthChars": 0,
+        "endMarkerUsed": None,
+        "hasItem1C": has_item1c,
+        "startMarker": None,
+        "tocDetected": False,
+        "tocRemoved": False,
+    }
     return "", 0.0, "not_found", ["item1a_not_found"], debug_meta
 
 
@@ -420,12 +507,11 @@ def extract_item1a_from_html(
     with warnings.catch_warnings():
         warnings.filterwarnings("ignore", category=XMLParsedAsHTMLWarning)
         soup = BeautifulSoup(html, "lxml")
+    _strip_hidden_nodes(soup)
     anchor_warnings: list[str] = []
 
-    anchor_links: list[tuple[Any, bool]] = []
-    soup_any: Any = soup
-    raw_links: Any = soup_any.find_all("a")
-    for link in list(raw_links):
+    anchor_links: list[tuple[Tag, bool]] = []
+    for link in soup.find_all("a"):
         text = safe_get_text(link).lower()
         if ANCHOR_ITEM1A.search(text):
             anchor_links.append((link, False))
@@ -442,7 +528,7 @@ def extract_item1a_from_html(
         if not href.startswith("#") or len(href) <= 1:
             continue
         anchor_id = href[1:]
-        target = soup_any.find(id=anchor_id) or soup_any.find(attrs={"name": anchor_id})
+        target = soup.find(id=anchor_id) or soup.find(attrs={"name": anchor_id})
         if target is None:
             continue
         anchor_text = safe_get_text(target) or safe_get_text(link)
@@ -459,6 +545,11 @@ def extract_item1a_from_html(
             local_warnings.append("end_not_found")
             confidence -= 0.2
         section = text[start_idx:end_idx].strip()
+        section, toc_detected, toc_removed = _strip_toc_block(section)
+        if toc_detected:
+            local_warnings.append("toc_detected")
+        if toc_removed:
+            local_warnings.append("toc_removed")
         if len(section) < 8000:
             local_warnings.append("length_out_of_band")
             confidence -= 0.15
@@ -477,6 +568,9 @@ def extract_item1a_from_html(
             "lengthChars": len(section),
             "endMarkerUsed": end_marker,
             "hasItem1C": bool(ITEM1C_HEADING.search(text)) if not is_item3d else False,
+            "startMarker": "anchor_item3d" if is_item3d else "anchor_item1a",
+            "tocDetected": toc_detected,
+            "tocRemoved": toc_removed,
         }
         return section, confidence, "html_anchor", local_warnings, debug_meta
 

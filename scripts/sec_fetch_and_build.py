@@ -6,12 +6,35 @@ import time
 import zipfile
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Optional, Sequence, cast
+from typing import Any, Optional, Sequence, TypedDict, cast
 from urllib.parse import urlparse
 
 import requests
 
-from sec_extract_item1a import extract_item1a_from_html, split_paragraphs
+from sec_cache import (
+    EXTRACTOR_VERSION,
+    MAX_CACHE_GB,
+    NORMALIZER_VERSION,
+    atomic_write_json,
+    compute_sha256_text,
+    enforce_cache_size_limit,
+    extraction_version_path,
+    filing_html_path,
+    filing_meta_path,
+    filing_text_path,
+    load_gz_text,
+    load_json,
+    risk_meta_path,
+    risk_text_path,
+    save_gz_text_atomic,
+    ticker_year_index_path,
+)
+from sec_extract_item1a import (
+    clean_html_to_text,
+    extract_item1a_from_html,
+    extract_item1a_from_text,
+    split_paragraphs,
+)
 from sec_metrics import SectionYear as MetricsSectionYear, ShiftsPayload, build_metrics
 from sec_quality import (
     SectionYear as QualitySectionYear,
@@ -28,6 +51,8 @@ SEC_ARCHIVES_BASE = "https://www.sec.gov/Archives/edgar/data"
 MAX_REQUESTS_PER_SECOND = 10
 SECTION_NAME = "10k_item1a"
 MIN_PRIMARY_DOC_BYTES = 10000
+MIN_RISK_TOKENS = 400
+MIN_RISK_UNIQUE = 150
 TICKER_CIK_OVERRIDES = {
     "BLK": "0002012383",
 }
@@ -43,6 +68,24 @@ ROOT_DIR = Path(__file__).resolve().parent
 FIXTURES_DIR = ROOT_DIR / "sample_fixtures"
 CACHE_DIR = ROOT_DIR / "_cache"
 DEFAULT_SUBMISSIONS_ZIP = CACHE_DIR / "submissions.zip"
+
+
+class ExtractionResult(TypedDict):
+    section: str
+    paragraphs: list[str]
+    confidence: float
+    method: str
+    warnings: list[str]
+    debug_meta: dict[str, Any]
+    raw_section: str
+    raw_paragraphs: list[str]
+
+
+class TickerYearEntry(TypedDict):
+    cik: str
+    accession: str
+    formType: str
+    filingDate: str
 
 
 class RateLimiter:
@@ -147,6 +190,34 @@ def as_list(value: Any) -> Optional[list[Any]]:
     if not isinstance(value, list):
         return None
     return list(cast(list[Any], value))
+
+
+def get_str(value: Any) -> Optional[str]:
+    if isinstance(value, str):
+        return value
+    return None
+
+
+def get_bool(value: Any) -> Optional[bool]:
+    if isinstance(value, bool):
+        return value
+    return None
+
+
+def get_int(value: Any) -> Optional[int]:
+    if isinstance(value, bool):
+        return None
+    if isinstance(value, int):
+        return value
+    return None
+
+
+def get_float(value: Any) -> Optional[float]:
+    if isinstance(value, bool):
+        return None
+    if isinstance(value, (int, float)):
+        return float(value)
+    return None
 
 
 def normalize_text(value: Any) -> Optional[str]:
@@ -688,20 +759,78 @@ def ensure_low_confidence(errors: list[str]) -> list[str]:
 def extract_item1a_from_html_bytes(
     html_bytes: bytes,
     extra_warnings: Optional[list[str]] = None,
-) -> tuple[str, list[str], float, str, list[str], dict[str, Any]]:
+) -> ExtractionResult:
     html_text = html_bytes.decode("utf-8", errors="replace")
-    section, confidence, method, warnings, debug_meta = extract_item1a_from_html(html_text)
+    raw_section, confidence, method, warnings, debug_meta = extract_item1a_from_html(html_text)
     warning_list = list(extra_warnings) if extra_warnings else []
     warning_list.extend(warnings)
-    paragraphs = split_paragraphs(section) if section else []
-    if confidence < 0.5 or not section.strip():
-        return "", [], confidence, method, ensure_low_confidence(warning_list), debug_meta
-    return section, paragraphs, confidence, method, warning_list, debug_meta
+    raw_paragraphs = split_paragraphs(raw_section) if raw_section else []
+    if confidence < 0.5 or not raw_section.strip():
+        return {
+            "section": "",
+            "paragraphs": [],
+            "confidence": confidence,
+            "method": method,
+            "warnings": ensure_low_confidence(warning_list),
+            "debug_meta": debug_meta,
+            "raw_section": raw_section,
+            "raw_paragraphs": raw_paragraphs,
+        }
+    return {
+        "section": raw_section,
+        "paragraphs": raw_paragraphs,
+        "confidence": confidence,
+        "method": method,
+        "warnings": warning_list,
+        "debug_meta": debug_meta,
+        "raw_section": raw_section,
+        "raw_paragraphs": raw_paragraphs,
+    }
 
 
-def build_missing_extraction() -> tuple[str, list[str], float, str, list[str], dict[str, Any]]:
+def extract_item1a_from_text_only(
+    text: str,
+    extra_warnings: Optional[list[str]] = None,
+) -> ExtractionResult:
+    raw_section, confidence, method, warnings, debug_meta = extract_item1a_from_text(text)
+    warning_list = list(extra_warnings) if extra_warnings else []
+    warning_list.extend(warnings)
+    raw_paragraphs = split_paragraphs(raw_section) if raw_section else []
+    if confidence < 0.5 or not raw_section.strip():
+        return {
+            "section": "",
+            "paragraphs": [],
+            "confidence": confidence,
+            "method": method,
+            "warnings": ensure_low_confidence(warning_list),
+            "debug_meta": debug_meta,
+            "raw_section": raw_section,
+            "raw_paragraphs": raw_paragraphs,
+        }
+    return {
+        "section": raw_section,
+        "paragraphs": raw_paragraphs,
+        "confidence": confidence,
+        "method": method,
+        "warnings": warning_list,
+        "debug_meta": debug_meta,
+        "raw_section": raw_section,
+        "raw_paragraphs": raw_paragraphs,
+    }
+
+
+def build_missing_extraction() -> ExtractionResult:
     warnings = ensure_low_confidence(["html_missing"])
-    return "", [], 0.0, "no_html", warnings, {"lengthChars": 0, "endMarkerUsed": None, "hasItem1C": False}
+    return {
+        "section": "",
+        "paragraphs": [],
+        "confidence": 0.0,
+        "method": "no_html",
+        "warnings": warnings,
+        "debug_meta": {"lengthChars": 0, "endMarkerUsed": None, "hasItem1C": False},
+        "raw_section": "",
+        "raw_paragraphs": [],
+    }
 
 
 def build_quality_terms(value: Any) -> list[QualityShiftTerm]:
@@ -783,6 +912,65 @@ def choose_meta_extraction(
     return current
 
 
+WORD_PATTERN = re.compile(r"[A-Za-z0-9]+")
+
+
+def count_tokens(text: str) -> tuple[int, int]:
+    tokens = WORD_PATTERN.findall(text.lower())
+    unique = len(set(tokens))
+    return len(tokens), unique
+
+
+def count_paragraphs(text: str) -> int:
+    chunks = [chunk for chunk in re.split(r"\n{2,}", text) if chunk.strip()]
+    return len(chunks)
+
+
+def add_warning(warnings: list[str], value: str) -> None:
+    if value not in warnings:
+        warnings.append(value)
+
+
+def parse_cache_max(value: Optional[str], default: float) -> float:
+    if value is None:
+        return default
+    try:
+        return float(value)
+    except ValueError:
+        return default
+
+
+def parse_ticker_year_index(raw: Any) -> dict[str, dict[str, TickerYearEntry]]:
+    payload = as_str_dict(raw)
+    if payload is None:
+        return {}
+    output: dict[str, dict[str, TickerYearEntry]] = {}
+    for ticker_key, value in payload.items():
+        year_map = as_str_dict(value)
+        if year_map is None:
+            continue
+        parsed_years: dict[str, TickerYearEntry] = {}
+        for year_key, entry_value in year_map.items():
+            entry = as_str_dict(entry_value)
+            if entry is None:
+                continue
+            cik = get_str(entry.get("cik"))
+            accession = get_str(entry.get("accession"))
+            form_type = get_str(entry.get("formType"))
+            filing_date = get_str(entry.get("filingDate"))
+            if cik is None or accession is None or form_type is None or filing_date is None:
+                continue
+            parsed_years[year_key] = {
+                "cik": cik,
+                "accession": accession,
+                "formType": form_type,
+                "filingDate": filing_date,
+            }
+        if parsed_years:
+            output[ticker_key] = parsed_years
+    return output
+
+
 def write_json(path: Path, payload: Any) -> None:
     path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
 
@@ -821,6 +1009,17 @@ def build_parser() -> argparse.ArgumentParser:
         "--include-20f",
         action="store_true",
         help="Include 20-F filings when available.",
+    )
+    parser.add_argument(
+        "--cache-debug-html",
+        action="store_true",
+        help="Store filing HTML in the local cache for debugging.",
+    )
+    parser.add_argument(
+        "--cache-max-gb",
+        type=float,
+        default=None,
+        help="Maximum cache size in GB before pruning optional artifacts.",
     )
     return parser
 
@@ -899,13 +1098,21 @@ def main(argv: Optional[list[str]] = None) -> int:
             raise SystemExit("No 10-K or 20-F filings found for ticker.")
         raise SystemExit("No 10-K filings found for ticker.")
 
-    cache_dir = CACHE_DIR / ticker
-    cache_dir.mkdir(parents=True, exist_ok=True)
+    cache_debug_html = args.cache_debug_html
+    cache_max_gb = (
+        args.cache_max_gb
+        if args.cache_max_gb is not None
+        else parse_cache_max(os.environ.get("SEC_CACHE_MAX_GB"), float(MAX_CACHE_GB))
+    )
+    run_timestamp = datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace(
+        "+00:00", "Z"
+    )
 
     seen_years: set[int] = set()
     filings_out: list[dict[str, Any]] = []
     metrics_sections: list[MetricsSectionYear] = []
     quality_sections: list[QualitySectionYear] = []
+    ticker_year_entries: dict[str, TickerYearEntry] = {}
     meta_extraction: Optional[dict[str, Any]] = None
 
     for filing in filings:
@@ -920,72 +1127,261 @@ def main(argv: Optional[list[str]] = None) -> int:
         if not filing_cik:
             filing_cik = primary_cik
         accession = filing["accessionNumber"]
+        form_type = filing.get("form", "")
         primary_doc = filing["primaryDocument"]
         url = build_primary_doc_url(filing_cik, accession, primary_doc)
-        html_bytes = load_fixture_html(primary_doc)
-        from_fixture = html_bytes is not None
-        if html_bytes is None:
-            try:
-                html_bytes = download(url, session, limiter)
-            except Exception as exc:  # pragma: no cover - defensive for offline runs
-                print(f"warning: unable to fetch {url}: {exc}")
-                html_bytes = None
 
-        if html_bytes is None:
-            section_text, paragraphs, confidence, method, warnings, debug_meta = (
-                build_missing_extraction()
-            )
-        else:
-            allow_live = (not from_fixture) or is_primary_doc_suspect(html_bytes)
-            primary_doc, html_bytes, alternate_used = maybe_fetch_alternate_html(
-                filing_cik,
-                accession,
-                primary_doc,
-                html_bytes,
-                allowed_forms,
-                session,
-                limiter,
-                allow_live=allow_live,
-            )
-            url = build_primary_doc_url(filing_cik, accession, primary_doc)
-            raw_bytes = html_bytes
-            submission_text = None
-            if primary_doc.lower().endswith(".txt"):
-                submission_text = extract_submission_text(raw_bytes, allowed_forms)
-            if submission_text:
-                html_bytes = submission_text.encode("utf-8")
-            filename = (
-                f"{accession.replace('-', '')}_{primary_doc}"
-            )
-            output_path = cache_dir / filename
-            output_path.write_bytes(raw_bytes)
-            print(f"saved: {output_path}")
-            extra_warnings: list[str] = []
-            if alternate_used:
-                extra_warnings.append("alternate_primary_doc_used")
-            if is_primary_doc_suspect(raw_bytes):
-                extra_warnings.append("primary_doc_too_small")
-            if submission_text:
-                extra_warnings.append("submission_text_extracted")
-            section_text, paragraphs, confidence, method, warnings, debug_meta = (
-                extract_item1a_from_html_bytes(html_bytes, extra_warnings)
-            )
+        extra_warnings: list[str] = []
+        html_text: Optional[str] = None
+        filing_text: Optional[str] = None
+        filing_source = "unknown"
+        section_text = ""
+        paragraphs: list[str] = []
+        confidence = 0.0
+        method = "missing"
+        warnings: list[str] = []
+        raw_section = ""
+        raw_paragraphs: list[str] = []
+        included_in_metrics = False
+        end_marker_value: Optional[str] = None
+        start_marker_value: Optional[str] = None
+        has_item1c = False
+        toc_detected = False
+        toc_removed = False
+        risk_token_count = 0
+        risk_unique = 0
+        risk_paragraph_count = 0
+        quality_gate_failed = False
+
+        cached_filing_meta = as_str_dict(load_json(filing_meta_path(filing_cik, accession)))
+        cached_normalizer = get_str(cached_filing_meta.get("normalizerVersion")) if cached_filing_meta else None
+        if cached_normalizer == NORMALIZER_VERSION:
+            cached_text = load_gz_text(filing_text_path(filing_cik, accession))
+            if cached_text is not None:
+                filing_text = cached_text
+                filing_source = "cache_text"
+
+        if filing_text is None:
+            cached_html = load_gz_text(filing_html_path(filing_cik, accession))
+            if cached_html is not None:
+                html_text = cached_html
+                filing_text = clean_html_to_text(html_text)
+                filing_source = "cache_html"
+
+        if filing_text is None:
+            html_bytes = load_fixture_html(primary_doc)
+            from_fixture = html_bytes is not None
+            if html_bytes is None:
+                try:
+                    html_bytes = download(url, session, limiter)
+                except Exception as exc:  # pragma: no cover - defensive for offline runs
+                    print(f"warning: unable to fetch {url}: {exc}")
+                    html_bytes = None
+
+            if html_bytes is not None:
+                allow_live = (not from_fixture) or is_primary_doc_suspect(html_bytes)
+                primary_doc, html_bytes, alternate_used = maybe_fetch_alternate_html(
+                    filing_cik,
+                    accession,
+                    primary_doc,
+                    html_bytes,
+                    allowed_forms,
+                    session,
+                    limiter,
+                    allow_live=allow_live,
+                )
+                url = build_primary_doc_url(filing_cik, accession, primary_doc)
+                raw_bytes = html_bytes
+                submission_text = None
+                if primary_doc.lower().endswith(".txt"):
+                    submission_text = extract_submission_text(raw_bytes, allowed_forms)
+                if alternate_used:
+                    extra_warnings.append("alternate_primary_doc_used")
+                if is_primary_doc_suspect(raw_bytes):
+                    extra_warnings.append("primary_doc_too_small")
+                if submission_text:
+                    extra_warnings.append("submission_text_extracted")
+                    html_text = submission_text
+                else:
+                    html_text = raw_bytes.decode("utf-8", errors="replace")
+                filing_text = clean_html_to_text(html_text)
+                filing_source = "fixture" if from_fixture else "download"
+            else:
+                filing_text = ""
+                filing_source = "missing_html"
+
+        write_filing_cache = bool(filing_text.strip()) and (
+            filing_source != "cache_text" or cached_filing_meta is None
+        )
+        if write_filing_cache:
+            filing_token_count, filing_unique = count_tokens(filing_text)
+            filing_paragraph_count = count_paragraphs(filing_text)
+            filing_meta_payload: dict[str, Any] = {
+                "cik": filing_cik,
+                "accessionNumber": accession,
+                "formType": form_type,
+                "primaryDocument": primary_doc,
+                "filingDate": filing_date,
+                "reportDate": report_date,
+                "secUrl": url,
+                "extractorVersion": EXTRACTOR_VERSION,
+                "normalizerVersion": NORMALIZER_VERSION,
+                "source": filing_source,
+                "charCount": len(filing_text),
+                "tokenCount": filing_token_count,
+                "uniqueTokens": filing_unique,
+                "paragraphCount": filing_paragraph_count,
+                "textBytes": len(filing_text.encode("utf-8")),
+                "sha256FilingText": compute_sha256_text(filing_text),
+                "generatedAtUtc": run_timestamp,
+            }
+            save_gz_text_atomic(filing_text_path(filing_cik, accession), filing_text)
+            atomic_write_json(filing_meta_path(filing_cik, accession), filing_meta_payload)
+
+        cached_risk_meta = as_str_dict(load_json(risk_meta_path(filing_cik, accession)))
+        cached_risk_ok = False
+        if cached_risk_meta is not None:
+            cached_extractor = get_str(cached_risk_meta.get("extractorVersion"))
+            if cached_extractor == EXTRACTOR_VERSION:
+                cached_risk_text = load_gz_text(risk_text_path(filing_cik, accession, form_type))
+                if cached_risk_text is not None:
+                    cached_risk_ok = True
+                    raw_section = cached_risk_text
+                    raw_paragraphs = split_paragraphs(raw_section) if raw_section else []
+                    confidence = get_float(cached_risk_meta.get("confidence")) or 0.0
+                    method = get_str(cached_risk_meta.get("method")) or "cached"
+                    warnings = as_str_list(cached_risk_meta.get("warnings")) or []
+                    included_in_metrics_value = get_bool(cached_risk_meta.get("includedInMetrics"))
+                    included_in_metrics = (
+                        included_in_metrics_value
+                        if included_in_metrics_value is not None
+                        else True
+                    )
+                    section_text = raw_section if included_in_metrics else ""
+                    paragraphs = raw_paragraphs if included_in_metrics else []
+                    end_marker_value = get_str(cached_risk_meta.get("endMarker"))
+                    start_marker_value = get_str(cached_risk_meta.get("startMarker"))
+                    has_item1c = get_bool(cached_risk_meta.get("hasItem1C")) or False
+                    toc_detected = get_bool(cached_risk_meta.get("tocDetected")) or False
+                    toc_removed = get_bool(cached_risk_meta.get("tocRemoved")) or False
+                    token_value = get_int(cached_risk_meta.get("tokenCount"))
+                    unique_value = get_int(cached_risk_meta.get("uniqueTokens"))
+                    paragraph_value = get_int(cached_risk_meta.get("paragraphCount"))
+                    tokens, uniques = count_tokens(raw_section)
+                    risk_token_count = token_value if token_value is not None else tokens
+                    risk_unique = unique_value if unique_value is not None else uniques
+                    risk_paragraph_count = (
+                        paragraph_value if paragraph_value is not None else len(raw_paragraphs)
+                    )
+                    quality_gate_failed = get_bool(cached_risk_meta.get("qualityGateFailed")) or False
+
+        if not cached_risk_ok:
+            if html_text is not None:
+                extraction = extract_item1a_from_html_bytes(
+                    html_text.encode("utf-8"), extra_warnings
+                )
+            elif filing_text:
+                extraction = extract_item1a_from_text_only(filing_text, extra_warnings)
+            else:
+                extraction = build_missing_extraction()
+
+            section_text = extraction["section"]
+            paragraphs = extraction["paragraphs"]
+            confidence = extraction["confidence"]
+            method = extraction["method"]
+            warnings = list(extraction["warnings"])
+            debug_meta = extraction["debug_meta"]
+            raw_section = extraction["raw_section"]
+            raw_paragraphs = extraction["raw_paragraphs"]
+
+            end_marker_value = get_str(debug_meta.get("endMarkerUsed"))
+            start_marker_value = get_str(debug_meta.get("startMarker"))
+            has_item1c = get_bool(debug_meta.get("hasItem1C")) or False
+            toc_detected = get_bool(debug_meta.get("tocDetected")) or False
+            toc_removed = get_bool(debug_meta.get("tocRemoved")) or False
+
+            risk_token_count, risk_unique = count_tokens(raw_section)
+            risk_paragraph_count = len(raw_paragraphs)
+
+            quality_gate_failed = False
+            if risk_token_count < MIN_RISK_TOKENS:
+                add_warning(warnings, "risk_too_short")
+                quality_gate_failed = True
+            if risk_unique < MIN_RISK_UNIQUE:
+                add_warning(warnings, "risk_low_unique")
+                quality_gate_failed = True
+            if toc_detected and not toc_removed:
+                add_warning(warnings, "toc_detected")
+                quality_gate_failed = True
+            if confidence < 0.5 or not raw_section.strip():
+                quality_gate_failed = True
+
+            if quality_gate_failed:
+                add_warning(warnings, "quality_gate_failed")
+                warnings = ensure_low_confidence(warnings)
+                section_text = ""
+                paragraphs = []
+                confidence = min(confidence, 0.25)
+
+            included_in_metrics = bool(section_text)
+
+            risk_section_label = "item_3d" if form_type.upper().startswith("20-F") else "item_1a"
+            risk_meta_payload: dict[str, Any] = {
+                "cik": filing_cik,
+                "accessionNumber": accession,
+                "formType": form_type,
+                "filingDate": filing_date,
+                "reportDate": report_date,
+                "secUrl": url,
+                "section": risk_section_label,
+                "extractorVersion": EXTRACTOR_VERSION,
+                "normalizerVersion": NORMALIZER_VERSION,
+                "confidence": confidence,
+                "method": method,
+                "warnings": warnings,
+                "startMarker": start_marker_value,
+                "endMarker": end_marker_value,
+                "tocDetected": toc_detected,
+                "tocRemoved": toc_removed,
+                "charCount": len(raw_section),
+                "tokenCount": risk_token_count,
+                "uniqueTokens": risk_unique,
+                "paragraphCount": risk_paragraph_count,
+                "sha256RiskText": compute_sha256_text(raw_section) if raw_section else "",
+                "includedInMetrics": included_in_metrics,
+                "qualityGateFailed": quality_gate_failed,
+                "hasItem1C": has_item1c,
+                "generatedAtUtc": run_timestamp,
+            }
+            save_gz_text_atomic(risk_text_path(filing_cik, accession, form_type), raw_section)
+            atomic_write_json(risk_meta_path(filing_cik, accession), risk_meta_payload)
+
+        should_store_html = False
+        if html_text is not None:
+            if cache_debug_html:
+                should_store_html = True
+            elif quality_gate_failed or confidence < 0.5:
+                should_store_html = True
+        if should_store_html and html_text is not None:
+            html_path = filing_html_path(filing_cik, accession)
+            if not html_path.exists():
+                save_gz_text_atomic(html_path, html_text)
 
         extraction_summary = {
             "section": "item1a",
             "method": method,
             "confidence": confidence,
             "warnings": warnings,
-            "lengthChars": debug_meta.get("lengthChars"),
-            "endMarkerUsed": debug_meta.get("endMarkerUsed"),
-            "hasItem1C": debug_meta.get("hasItem1C"),
+            "lengthChars": len(raw_section),
+            "endMarkerUsed": end_marker_value,
+            "hasItem1C": has_item1c,
         }
         meta_extraction = choose_meta_extraction(meta_extraction, extraction_summary)
 
         filings_out.append(
             {
                 "year": year,
-                "form": filing.get("form", ""),
+                "form": form_type,
                 "filingDate": filing_date,
                 "reportDate": report_date,
                 "accessionNumber": filing.get("accessionNumber", ""),
@@ -1014,6 +1410,12 @@ def main(argv: Optional[list[str]] = None) -> int:
                 confidence=confidence,
             )
         )
+        ticker_year_entries[str(year)] = {
+            "cik": filing_cik,
+            "accession": accession,
+            "formType": form_type,
+            "filingDate": filing_date,
+        }
 
     metrics_sections.sort(key=lambda section: section.year)
     quality_sections.sort(key=lambda section: section.year)
@@ -1032,9 +1434,7 @@ def main(argv: Optional[list[str]] = None) -> int:
         "ticker": ticker,
         "cik": primary_cik,
         "companyName": company_name,
-        "lastUpdatedUtc": datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace(
-            "+00:00", "Z"
-        ),
+        "lastUpdatedUtc": run_timestamp,
         "formsIncluded": forms_included if forms_included else sorted(allowed_forms),
         "sectionsIncluded": [SECTION_NAME],
         "notes": META_NOTES,
@@ -1048,6 +1448,36 @@ def main(argv: Optional[list[str]] = None) -> int:
     write_json(out_dir / "similarity_10k_item1a.json", similarity)
     write_json(out_dir / "shifts_10k_item1a.json", shifts)
     write_json(out_dir / "excerpts_10k_item1a.json", excerpts)
+
+    ticker_index_payload = parse_ticker_year_index(load_json(ticker_year_index_path()))
+    ticker_year_sorted: dict[str, TickerYearEntry] = {}
+    for year_key in sorted(ticker_year_entries.keys()):
+        ticker_year_sorted[year_key] = ticker_year_entries[year_key]
+    ticker_index_payload[ticker] = ticker_year_sorted
+    ordered_index: dict[str, dict[str, TickerYearEntry]] = {}
+    for key in sorted(ticker_index_payload.keys()):
+        ordered_index[key] = ticker_index_payload[key]
+    atomic_write_json(ticker_year_index_path(), ordered_index)
+    atomic_write_json(
+        extraction_version_path(),
+        {
+            "extractorVersion": EXTRACTOR_VERSION,
+            "normalizerVersion": NORMALIZER_VERSION,
+            "generatedAtUtc": run_timestamp,
+        },
+    )
+
+    cache_report = enforce_cache_size_limit(cache_max_gb)
+    removed_files = cache_report.get("removedFiles")
+    removed_files_list: list[str] = []
+    if isinstance(removed_files, list):
+        for item in cast(list[object], removed_files):
+            if isinstance(item, str):
+                removed_files_list.append(item)
+    if removed_files_list:
+        print(f"cache: pruned {len(removed_files_list)} optional files")
+    if cache_report.get("overLimit") is True:
+        print("warning: cache exceeds limit after pruning")
 
     return 0
 
