@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAtUtc": "2026-01-02T14:57:06Z",
+  "generatedAtUtc": "2026-01-03T17:16:50Z",
   "section": "10k_item1a",
   "lookbackTargetYears": 10,
   "companyCount": 56,
@@ -12,35 +12,42 @@
       "exchange": "Nasdaq",
       "coverage": {
         "years": [
+          2016,
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
           2022,
           2023,
-          2024
+          2024,
+          2025
         ],
-        "count": 3,
-        "minYear": 2022,
-        "maxYear": 2024
+        "count": 10,
+        "minYear": 2016,
+        "maxYear": 2025
       },
       "quality": {
-        "level": "low",
+        "level": "high",
         "minConfidence": 0.9,
         "medianConfidence": 0.9,
         "notes": []
       },
       "metricsSummary": {
         "peakDrift": {
-          "from": 2022,
-          "to": 2023,
-          "value": 0.0
+          "from": 2024,
+          "to": 2025,
+          "value": 0.02
         },
         "latestDrift": {
-          "from": 2023,
-          "to": 2024,
-          "value": 0.0
+          "from": 2024,
+          "to": 2025,
+          "value": 0.02
         }
       },
       "autoPair": {
-        "from": 2022,
-        "to": 2023
+        "from": 2024,
+        "to": 2025
       }
     },
     {
@@ -131,10 +138,10 @@
         "to": 2024
       },
       "featuredCase": {
-        "from": 2023,
-        "to": 2024,
-        "title": "Controls language tightens as investigations turn specific.",
-        "blurb": "Watch the shift from boilerplate controls to named weaknesses.",
+        "from": 2022,
+        "to": 2023,
+        "title": "Controls narrative tightens after material weakness investigations.",
+        "blurb": "Regulatory probes and remediation replace boilerplate controls language.",
         "tags": [
           "controls",
           "investigations",
@@ -164,8 +171,8 @@
         "maxYear": 2024
       },
       "quality": {
-        "level": "medium",
-        "minConfidence": 0.75,
+        "level": "high",
+        "minConfidence": 0.9,
         "medianConfidence": 0.9,
         "notes": []
       },
@@ -450,14 +457,14 @@
         "to": 2020
       },
       "featuredCase": {
-        "from": 2022,
+        "from": 2023,
         "to": 2024,
-        "title": "AI competition shifts from risk to existential narrative.",
-        "blurb": "Language tightens and the tone shifts from possibility to urgency.",
+        "title": "Generative AI reframes Chegg's platform risk story.",
+        "blurb": "Search and study shifts bring restructuring and demand pressure into focus.",
         "tags": [
           "genai",
-          "demand",
-          "platforms"
+          "platforms",
+          "demand"
         ]
       }
     },
@@ -503,16 +510,6 @@
       "autoPair": {
         "from": 2019,
         "to": 2020
-      },
-      "featuredCase": {
-        "from": 2023,
-        "to": 2024,
-        "title": "When \"could happen\" becomes \"happened\": operational risk turns concrete.",
-        "blurb": "A cyber incident does more than add IT language. It rewrites the risk story.",
-        "tags": [
-          "cyber",
-          "operations"
-        ]
       }
     },
     {
@@ -582,25 +579,25 @@
       },
       "quality": {
         "level": "low",
-        "minConfidence": 0.65,
-        "medianConfidence": 0.85,
+        "minConfidence": 0.55,
+        "medianConfidence": 0.55,
         "notes": []
       },
       "metricsSummary": {
         "peakDrift": {
-          "from": 2024,
-          "to": 2025,
-          "value": 0.12
+          "from": 2019,
+          "to": 2020,
+          "value": 0.06
         },
         "latestDrift": {
           "from": 2024,
           "to": 2025,
-          "value": 0.12
+          "value": 0.01
         }
       },
       "autoPair": {
-        "from": 2024,
-        "to": 2025
+        "from": 2019,
+        "to": 2020
       }
     },
     {
@@ -1023,7 +1020,7 @@
       "quality": {
         "level": "high",
         "minConfidence": 0.8,
-        "medianConfidence": 0.9,
+        "medianConfidence": 0.8,
         "notes": []
       },
       "metricsSummary": {
@@ -1419,7 +1416,7 @@
       "quality": {
         "level": "low",
         "minConfidence": 0.6,
-        "medianConfidence": 0.7,
+        "medianConfidence": 0.6,
         "notes": []
       },
       "metricsSummary": {
@@ -1573,8 +1570,8 @@
       "featuredCase": {
         "from": 2022,
         "to": 2023,
-        "title": "Derailment fallout: safety and regulatory risk move to the foreground.",
-        "blurb": "Risk factors shift from generic hazards to specific operational exposure.",
+        "title": "Derailment fallout puts safety and regulatory risk up front.",
+        "blurb": "Post-incident language gets specific on compliance, liability, and operations.",
         "tags": [
           "safety",
           "regulation",
@@ -1736,26 +1733,26 @@
         "maxYear": 2024
       },
       "quality": {
-        "level": "low",
-        "minConfidence": 0.65,
-        "medianConfidence": 0.75,
+        "level": "high",
+        "minConfidence": 0.95,
+        "medianConfidence": 0.95,
         "notes": []
       },
       "metricsSummary": {
         "peakDrift": {
-          "from": 2015,
-          "to": 2016,
-          "value": -0.0
+          "from": 2019,
+          "to": 2020,
+          "value": 0.09
         },
         "latestDrift": {
           "from": 2023,
           "to": 2024,
-          "value": -0.0
+          "value": 0.03
         }
       },
       "autoPair": {
-        "from": 2015,
-        "to": 2016
+        "from": 2019,
+        "to": 2020
       }
     },
     {
@@ -1868,21 +1865,21 @@
         "maxYear": 2024
       },
       "quality": {
-        "level": "low",
-        "minConfidence": 0.65,
-        "medianConfidence": 0.8,
+        "level": "high",
+        "minConfidence": 0.9,
+        "medianConfidence": 0.9,
         "notes": []
       },
       "metricsSummary": {
         "peakDrift": {
           "from": 2019,
           "to": 2020,
-          "value": 0.97
+          "value": 0.15
         },
         "latestDrift": {
           "from": 2023,
           "to": 2024,
-          "value": 0.02
+          "value": 0.03
         }
       },
       "autoPair": {
@@ -1932,17 +1929,6 @@
       "autoPair": {
         "from": 2024,
         "to": 2025
-      },
-      "featuredCase": {
-        "from": 2022,
-        "to": 2024,
-        "title": "Labor risk becomes sustained and explicit.",
-        "blurb": "Unionization and labor disputes become a durable risk driver.",
-        "tags": [
-          "labor",
-          "reputation",
-          "human capital"
-        ]
       }
     },
     {
@@ -2077,12 +2063,12 @@
         "to": 2024
       },
       "featuredCase": {
-        "from": 2022,
+        "from": 2023,
         "to": 2024,
-        "title": "Generative AI pressure rewires licensing risk.",
-        "blurb": "The narrative moves beyond generic disruption to specific pricing exposure.",
+        "title": "Getty merger reshapes licensing and integration risk.",
+        "blurb": "Transaction completion and integration risks become central.",
         "tags": [
-          "genai",
+          "merger",
           "licensing",
           "ip"
         ]
@@ -2350,6 +2336,16 @@
       "autoPair": {
         "from": 2018,
         "to": 2019
+      },
+      "featuredCase": {
+        "from": 2022,
+        "to": 2023,
+        "title": "Cyber incident makes logistics risk more operational.",
+        "blurb": "Incident response and exposure detail replace hypothetical threats.",
+        "tags": [
+          "cyber",
+          "operations"
+        ]
       }
     },
     {
@@ -2438,6 +2434,17 @@
       "autoPair": {
         "from": 2023,
         "to": 2024
+      },
+      "featuredCase": {
+        "from": 2023,
+        "to": 2024,
+        "title": "Stericycle acquisition raises regulated medical-waste exposure.",
+        "blurb": "Healthcare disposal, controlled substances, and compliance risk move up.",
+        "tags": [
+          "acquisition",
+          "regulation",
+          "healthcare"
+        ]
       }
     },
     {

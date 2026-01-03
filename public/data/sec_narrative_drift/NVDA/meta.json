@@ -2,7 +2,7 @@
   "ticker": "NVDA",
   "cik": "0001045810",
   "companyName": "NVIDIA CORP",
-  "lastUpdatedUtc": "2026-01-01T21:40:09Z",
+  "lastUpdatedUtc": "2026-01-03T01:41:01Z",
   "formsIncluded": [
     "10-K"
   ],
@@ -15,8 +15,8 @@
   ],
   "extraction": {
     "section": "item1a",
-    "method": "html_anchor",
-    "confidence": 0.9,
+    "method": "text_scored",
+    "confidence": 0.8999999999999999,
     "warnings": [],
     "lengthChars": 41018,
     "endMarkerUsed": "1B",

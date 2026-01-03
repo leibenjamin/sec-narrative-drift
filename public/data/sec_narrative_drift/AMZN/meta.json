@@ -2,7 +2,7 @@
   "ticker": "AMZN",
   "cik": "0001018724",
   "companyName": "AMAZON COM INC",
-  "lastUpdatedUtc": "2025-12-31T23:24:49Z",
+  "lastUpdatedUtc": "2026-01-03T02:35:10Z",
   "formsIncluded": [
     "10-K"
   ],
@@ -16,11 +16,8 @@
   "extraction": {
     "section": "item1a",
     "method": "text_scored",
-    "confidence": 0.75,
-    "warnings": [
-      "anchor_missing",
-      "early_position_penalty"
-    ],
+    "confidence": 0.8999999999999999,
+    "warnings": [],
     "lengthChars": 44150,
     "endMarkerUsed": "1B",
     "hasItem1C": false

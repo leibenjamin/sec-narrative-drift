@@ -1,5 +1,89 @@
 [
   {
+    "year": 2016,
+    "form": "10-K",
+    "filingDate": "2016-10-26",
+    "reportDate": "2016-09-24",
+    "accessionNumber": "0001628280-16-020309",
+    "primaryDocument": "a201610-k9242016.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/320193/000162828016020309/a201610-k9242016.htm",
+    "extraction": {
+      "confidence": 0.8999999999999999,
+      "method": "text_scored",
+      "errors": []
+    }
+  },
+  {
+    "year": 2017,
+    "form": "10-K",
+    "filingDate": "2017-11-03",
+    "reportDate": "2017-09-30",
+    "accessionNumber": "0000320193-17-000070",
+    "primaryDocument": "a10-k20179302017.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/320193/000032019317000070/a10-k20179302017.htm",
+    "extraction": {
+      "confidence": 0.8999999999999999,
+      "method": "text_scored",
+      "errors": []
+    }
+  },
+  {
+    "year": 2018,
+    "form": "10-K",
+    "filingDate": "2018-11-05",
+    "reportDate": "2018-09-29",
+    "accessionNumber": "0000320193-18-000145",
+    "primaryDocument": "a10-k20189292018.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/320193/000032019318000145/a10-k20189292018.htm",
+    "extraction": {
+      "confidence": 0.8999999999999999,
+      "method": "text_scored",
+      "errors": []
+    }
+  },
+  {
+    "year": 2019,
+    "form": "10-K",
+    "filingDate": "2019-10-31",
+    "reportDate": "2019-09-28",
+    "accessionNumber": "0000320193-19-000119",
+    "primaryDocument": "a10-k20199282019.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/320193/000032019319000119/a10-k20199282019.htm",
+    "extraction": {
+      "confidence": 0.8999999999999999,
+      "method": "text_scored",
+      "errors": []
+    }
+  },
+  {
+    "year": 2020,
+    "form": "10-K",
+    "filingDate": "2020-10-30",
+    "reportDate": "2020-09-26",
+    "accessionNumber": "0000320193-20-000096",
+    "primaryDocument": "aapl-20200926.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/320193/000032019320000096/aapl-20200926.htm",
+    "extraction": {
+      "confidence": 0.8999999999999999,
+      "method": "text_scored",
+      "errors": []
+    }
+  },
+  {
+    "year": 2021,
+    "form": "10-K",
+    "filingDate": "2021-10-29",
+    "reportDate": "2021-09-25",
+    "accessionNumber": "0000320193-21-000105",
+    "primaryDocument": "aapl-20210925.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/320193/000032019321000105/aapl-20210925.htm",
+    "extraction": {
+      "confidence": 0.8999999999999999,
+      "method": "text_scored",
+      "errors": []
+    }
+  },
+  {
     "year": 2022,
     "form": "10-K",
     "filingDate": "2022-10-28",
@@ -8,22 +92,22 @@
     "primaryDocument": "aapl-20220924.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/320193/000032019322000108/aapl-20220924.htm",
     "extraction": {
-      "confidence": 0.9,
-      "method": "html_anchor",
+      "confidence": 0.8999999999999999,
+      "method": "text_scored",
       "errors": []
     }
   },
   {
     "year": 2023,
     "form": "10-K",
-    "filingDate": "2023-11-02",
+    "filingDate": "2023-11-03",
     "reportDate": "2023-09-30",
     "accessionNumber": "0000320193-23-000106",
     "primaryDocument": "aapl-20230930.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/320193/000032019323000106/aapl-20230930.htm",
     "extraction": {
-      "confidence": 0.9,
-      "method": "html_anchor",
+      "confidence": 0.8999999999999999,
+      "method": "text_scored",
       "errors": []
     }
   },
@@ -36,8 +120,22 @@
     "primaryDocument": "aapl-20240928.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm",
     "extraction": {
-      "confidence": 0.9,
-      "method": "html_anchor",
+      "confidence": 0.8999999999999999,
+      "method": "text_scored",
+      "errors": []
+    }
+  },
+  {
+    "year": 2025,
+    "form": "10-K",
+    "filingDate": "2025-10-31",
+    "reportDate": "2025-09-27",
+    "accessionNumber": "0000320193-25-000079",
+    "primaryDocument": "aapl-20250927.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm",
+    "extraction": {
+      "confidence": 0.8999999999999999,
+      "method": "text_scored",
       "errors": []
     }
   }

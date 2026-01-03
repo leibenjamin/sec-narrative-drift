@@ -265,7 +265,10 @@ def _strip_toc_block(section: str) -> tuple[str, bool, bool]:
     item_line = re.compile(r"^\s*item\s+\d", re.IGNORECASE)
     dot_lines = sum(1 for line in head_lines if dot_leader.search(line))
     item_lines = sum(1 for line in head_lines if item_line.search(line))
-    toc_detected = "table of contents" in head_text or (dot_lines >= 4 and item_lines >= 3)
+    toc_phrase = "table of contents" in head_text
+    toc_detected = (toc_phrase and (dot_lines >= 2 or item_lines >= 3)) or (
+        dot_lines >= 4 and item_lines >= 3
+    )
     if not toc_detected:
         return section, False, False
 
@@ -329,8 +332,8 @@ def _score_candidate(
         warnings.append("length_out_of_band")
 
     early_penalty = 0.0
-    if doc_length > 0 and start_idx < (doc_length * 0.08):
-        early_penalty = -0.15
+    if doc_length > 0 and start_idx < (doc_length * 0.05):
+        early_penalty = -0.1
         warnings.append("early_position_penalty")
 
     head_snippet = text[start_idx : min(end_idx, start_idx + 2500)]
@@ -435,8 +438,14 @@ def extract_item1a_from_text(
         if toc_removed:
             local_warnings.append("toc_removed")
         score, breakdown, score_warnings = _score_candidate(text, start_idx, end_idx, doc_length)
-        score = max(0.05, min(score + penalty, 0.95))
+        toc_penalty = 0.0
+        if toc_detected:
+            toc_penalty -= 0.2
+        if toc_removed:
+            toc_penalty -= 0.05
+        score = max(0.05, min(score + penalty + toc_penalty, 0.95))
         breakdown["endNotFoundPenalty"] = penalty
+        breakdown["tocDetectedPenalty"] = toc_penalty
         if local_warnings:
             score_warnings.extend(local_warnings)
         candidate = {
@@ -548,12 +557,14 @@ def extract_item1a_from_html(
         section, toc_detected, toc_removed = _strip_toc_block(section)
         if toc_detected:
             local_warnings.append("toc_detected")
+            confidence -= 0.2
         if toc_removed:
             local_warnings.append("toc_removed")
+            confidence -= 0.05
         if len(section) < 8000:
             local_warnings.append("length_out_of_band")
             confidence -= 0.15
-        if len(text) > 0 and start_idx < (len(text) * 0.08):
+        if len(text) > 0 and start_idx < (len(text) * 0.05):
             local_warnings.append("early_position_penalty")
             confidence -= 0.1
         if _toc_cluster_penalty(section[:2500]):

@@ -1,60 +1,60 @@
 {
   "version": "v1.0",
-  "updatedAt": "2025-12-30",
+  "updatedAt": "2026-01-02",
   "cases": [
-    {
-      "id": "clx-cyber",
-      "ticker": "CLX",
-      "headline": "When \"could happen\" becomes \"happened\": operational risk turns concrete.",
-      "hook": "A cyber incident does more than add IT language. It rewrites the risk story.",
-      "defaultPair": { "from": 2023, "to": 2024 },
-      "tags": ["cyber", "operations"],
-      "cta": "Open CLX - compare 2023 vs 2024"
-    },
     {
       "id": "nsc-derailment",
       "ticker": "NSC",
-      "headline": "Derailment fallout: safety and regulatory risk move to the foreground.",
-      "hook": "Risk factors shift from generic hazards to specific operational exposure.",
+      "headline": "Derailment fallout puts safety and regulatory risk up front.",
+      "hook": "Post-incident language gets specific on compliance, liability, and operations.",
       "defaultPair": { "from": 2022, "to": 2023 },
       "tags": ["safety", "regulation", "litigation"],
-      "cta": "Open NSC - compare 2022 vs 2023"
+      "cta": "Open NSC: 2022 vs 2023"
+    },
+    {
+      "id": "chgg-genai",
+      "ticker": "CHGG",
+      "headline": "Generative AI reframes Chegg's platform risk story.",
+      "hook": "Search and study shifts bring restructuring and demand pressure into focus.",
+      "defaultPair": { "from": 2023, "to": 2024 },
+      "tags": ["genai", "platforms", "demand"],
+      "cta": "Open CHGG: 2023 vs 2024"
     },
     {
       "id": "adm-controls",
       "ticker": "ADM",
-      "headline": "Controls language tightens as investigations turn specific.",
-      "hook": "Watch the shift from boilerplate controls to named weaknesses.",
-      "defaultPair": { "from": 2023, "to": 2024 },
+      "headline": "Controls narrative tightens after material weakness investigations.",
+      "hook": "Regulatory probes and remediation replace boilerplate controls language.",
+      "defaultPair": { "from": 2022, "to": 2023 },
       "tags": ["controls", "investigations", "governance"],
-      "cta": "Open ADM - compare 2023 vs 2024"
+      "cta": "Open ADM: 2022 vs 2023"
     },
     {
-      "id": "sstk-licensing",
+      "id": "ups-cyber",
+      "ticker": "UPS",
+      "headline": "Cyber incident makes logistics risk more operational.",
+      "hook": "Incident response and exposure detail replace hypothetical threats.",
+      "defaultPair": { "from": 2022, "to": 2023 },
+      "tags": ["cyber", "operations"],
+      "cta": "Open UPS: 2022 vs 2023"
+    },
+    {
+      "id": "sstk-getty",
       "ticker": "SSTK",
-      "headline": "Generative AI pressure rewires licensing risk.",
-      "hook": "The narrative moves beyond generic disruption to specific pricing exposure.",
-      "defaultPair": { "from": 2022, "to": 2024 },
-      "tags": ["genai", "licensing", "ip"],
-      "cta": "Open SSTK - compare 2022 vs 2024"
+      "headline": "Getty merger reshapes licensing and integration risk.",
+      "hook": "Transaction completion and integration risks become central.",
+      "defaultPair": { "from": 2023, "to": 2024 },
+      "tags": ["merger", "licensing", "ip"],
+      "cta": "Open SSTK: 2023 vs 2024"
     },
     {
-      "id": "chgg-demand",
-      "ticker": "CHGG",
-      "headline": "AI competition shifts from risk to existential narrative.",
-      "hook": "Language tightens and the tone shifts from possibility to urgency.",
-      "defaultPair": { "from": 2022, "to": 2024 },
-      "tags": ["genai", "demand", "platforms"],
-      "cta": "Open CHGG - compare 2022 vs 2024"
-    },
-    {
-      "id": "sbux-labor",
-      "ticker": "SBUX",
-      "headline": "Labor risk becomes sustained and explicit.",
-      "hook": "Unionization and labor disputes become a durable risk driver.",
-      "defaultPair": { "from": 2022, "to": 2024 },
-      "tags": ["labor", "reputation", "human capital"],
-      "cta": "Open SBUX - compare 2022 vs 2024"
+      "id": "wm-stericycle",
+      "ticker": "WM",
+      "headline": "Stericycle acquisition raises regulated medical-waste exposure.",
+      "hook": "Healthcare disposal, controlled substances, and compliance risk move up.",
+      "defaultPair": { "from": 2023, "to": 2024 },
+      "tags": ["acquisition", "regulation", "healthcare"],
+      "cta": "Open WM: 2023 vs 2024"
     }
   ]
 }

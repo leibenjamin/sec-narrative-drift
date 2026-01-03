@@ -355,9 +355,10 @@ def fetch_submissions_json(
     session: Optional[requests.Session] = None,
     limiter: Optional[RateLimiter] = None,
     submissions_zip: Optional[Path] = None,
+    allow_fixture: bool = True,
 ) -> dict[str, Any]:
     fixture_path = FIXTURES_DIR / f"CIK{cik10}.json"
-    if fixture_path.exists():
+    if allow_fixture and fixture_path.exists():
         return load_fixture_json(fixture_path)
 
     if submissions_zip:
@@ -1021,6 +1022,11 @@ def build_parser() -> argparse.ArgumentParser:
         default=None,
         help="Maximum cache size in GB before pruning optional artifacts.",
     )
+    parser.add_argument(
+        "--force-live-submissions",
+        action="store_true",
+        help="Bypass local CIK submissions fixtures for this run.",
+    )
     return parser
 
 
@@ -1054,8 +1060,13 @@ def main(argv: Optional[list[str]] = None) -> int:
         )
         submissions_zip = None
 
+    allow_fixture = not args.force_live_submissions
     submissions_primary = fetch_submissions_json(
-        primary_cik, session=session, limiter=limiter, submissions_zip=submissions_zip
+        primary_cik,
+        session=session,
+        limiter=limiter,
+        submissions_zip=submissions_zip,
+        allow_fixture=allow_fixture,
     )
     company_name = resolve_company_name(
         mapping[ticker].get("name"), submissions_primary.get("name"), ticker
@@ -1072,7 +1083,11 @@ def main(argv: Optional[list[str]] = None) -> int:
         submissions = submissions_by_cik.get(cik10)
         if submissions is None:
             submissions = fetch_submissions_json(
-                cik10, session=session, limiter=limiter, submissions_zip=submissions_zip
+                cik10,
+                session=session,
+                limiter=limiter,
+                submissions_zip=submissions_zip,
+                allow_fixture=allow_fixture,
             )
             submissions_by_cik[cik10] = submissions
         filings_all.extend(
@@ -1210,8 +1225,13 @@ def main(argv: Optional[list[str]] = None) -> int:
                 filing_text = ""
                 filing_source = "missing_html"
 
+        cached_filing_extractor = (
+            get_str(cached_filing_meta.get("extractorVersion")) if cached_filing_meta else None
+        )
         write_filing_cache = bool(filing_text.strip()) and (
-            filing_source != "cache_text" or cached_filing_meta is None
+            filing_source != "cache_text"
+            or cached_filing_meta is None
+            or cached_filing_extractor != EXTRACTOR_VERSION
         )
         if write_filing_cache:
             filing_token_count, filing_unique = count_tokens(filing_text)

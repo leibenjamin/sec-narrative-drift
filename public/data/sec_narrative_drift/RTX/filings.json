@@ -8,11 +8,11 @@
     "primaryDocument": "a2015-12x31form10xk.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/101829/000010182916000050/a2015-12x31form10xk.htm",
     "extraction": {
-      "confidence": 0.65,
-      "method": "html_anchor",
+      "confidence": 0.8999999999999999,
+      "method": "text_scored",
       "errors": [
-        "length_out_of_band",
-        "early_position_penalty"
+        "anchor_low_confidence",
+        "anchor_missing"
       ]
     }
   },
@@ -25,11 +25,11 @@
     "primaryDocument": "a2016-12x31form10xk.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/101829/000010182917000007/a2016-12x31form10xk.htm",
     "extraction": {
-      "confidence": 0.65,
-      "method": "html_anchor",
+      "confidence": 0.8999999999999999,
+      "method": "text_scored",
       "errors": [
-        "length_out_of_band",
-        "early_position_penalty"
+        "anchor_low_confidence",
+        "anchor_missing"
       ]
     }
   },
@@ -42,11 +42,11 @@
     "primaryDocument": "a2017-12x31form10xk.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/101829/000010182918000005/a2017-12x31form10xk.htm",
     "extraction": {
-      "confidence": 0.65,
-      "method": "html_anchor",
+      "confidence": 0.8999999999999999,
+      "method": "text_scored",
       "errors": [
-        "length_out_of_band",
-        "early_position_penalty"
+        "anchor_low_confidence",
+        "anchor_missing"
       ]
     }
   },
@@ -59,11 +59,11 @@
     "primaryDocument": "a2018-12x31form10xk.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/101829/000010182919000007/a2018-12x31form10xk.htm",
     "extraction": {
-      "confidence": 0.65,
-      "method": "html_anchor",
+      "confidence": 0.8999999999999999,
+      "method": "text_scored",
       "errors": [
-        "length_out_of_band",
-        "early_position_penalty"
+        "anchor_low_confidence",
+        "anchor_missing"
       ]
     }
   },
@@ -76,11 +76,11 @@
     "primaryDocument": "utx-20191231_d2.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/101829/000010182920000013/utx-20191231_d2.htm",
     "extraction": {
-      "confidence": 0.65,
-      "method": "html_anchor",
+      "confidence": 0.8999999999999999,
+      "method": "text_scored",
       "errors": [
-        "length_out_of_band",
-        "early_position_penalty"
+        "anchor_low_confidence",
+        "anchor_missing"
       ]
     }
   },
@@ -93,11 +93,9 @@
     "primaryDocument": "rtx-20201231.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/101829/000010182921000008/rtx-20201231.htm",
     "extraction": {
-      "confidence": 0.95,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   },
   {
@@ -109,11 +107,9 @@
     "primaryDocument": "rtx-20211231.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/101829/000010182922000005/rtx-20211231.htm",
     "extraction": {
-      "confidence": 0.95,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   },
   {
@@ -125,11 +121,9 @@
     "primaryDocument": "rtx-20221231.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/101829/000010182923000009/rtx-20221231.htm",
     "extraction": {
-      "confidence": 0.95,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   },
   {
@@ -141,11 +135,9 @@
     "primaryDocument": "rtx-20231231.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/101829/000010182924000008/rtx-20231231.htm",
     "extraction": {
-      "confidence": 0.95,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   },
   {
@@ -157,11 +149,9 @@
     "primaryDocument": "rtx-20241231.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/101829/000010182925000005/rtx-20241231.htm",
     "extraction": {
-      "confidence": 0.95,
-      "method": "text_scored",
-      "errors": [
-        "anchor_missing"
-      ]
+      "confidence": 0.9,
+      "method": "html_anchor",
+      "errors": []
     }
   }
 ]
