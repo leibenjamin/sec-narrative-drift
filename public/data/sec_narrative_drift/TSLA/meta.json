@@ -2,7 +2,7 @@
   "ticker": "TSLA",
   "cik": "0001318605",
   "companyName": "Tesla, Inc.",
-  "lastUpdatedUtc": "2026-01-01T21:49:24Z",
+  "lastUpdatedUtc": "2026-01-03T01:41:45Z",
   "formsIncluded": [
     "10-K"
   ],
@@ -17,12 +17,9 @@
     "section": "item1a",
     "method": "text_scored",
     "confidence": 0.8999999999999999,
-    "warnings": [
-      "anchor_low_confidence",
-      "anchor_missing"
-    ],
-    "lengthChars": 84871,
+    "warnings": [],
+    "lengthChars": 79527,
     "endMarkerUsed": "1B",
-    "hasItem1C": false
+    "hasItem1C": true
   }
 }

@@ -2,7 +2,7 @@
   "ticker": "RTX",
   "cik": "0000101829",
   "companyName": "RTX Corp",
-  "lastUpdatedUtc": "2026-01-01T01:47:09Z",
+  "lastUpdatedUtc": "2026-01-03T03:23:06Z",
   "formsIncluded": [
     "10-K"
   ],
@@ -15,13 +15,13 @@
   ],
   "extraction": {
     "section": "item1a",
-    "method": "html_anchor",
-    "confidence": 0.65,
+    "method": "text_scored",
+    "confidence": 0.8999999999999999,
     "warnings": [
-      "length_out_of_band",
-      "early_position_penalty"
+      "anchor_low_confidence",
+      "anchor_missing"
     ],
-    "lengthChars": 26,
+    "lengthChars": 40841,
     "endMarkerUsed": "1B",
     "hasItem1C": false
   }
