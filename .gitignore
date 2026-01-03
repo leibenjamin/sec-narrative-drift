@@ -34,6 +34,15 @@ scripts/_cache/*
 !scripts/_cache/metrics_demo/**
 data/sec_cache/
 
+# Local reports (non-public)
+scripts/_reports/
+
+# Local fixture experiments (keep untracked)
+scripts/sample_fixtures/cost-20190901.htm
+scripts/sample_fixtures/ms-20191231.htm
+scripts/sample_fixtures/pfe-20151231.htm
+scripts/sample_fixtures/tsm-2018-20f.htm
+
 # Python bytecode
 __pycache__/
 *.pyc
