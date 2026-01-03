@@ -304,6 +304,7 @@ export const copy = {
     toLabel: "To",
     excerptCount: ({ n }: { n: number }) => t("{n} excerpts", { n }),
     emptyYear: "No excerpts for this year.",
+    emptyCell: "No paired excerpt on this side.",
     loading: "Loading excerpts...",
     highlightLabel: "Highlight",
     highlightOptions: {

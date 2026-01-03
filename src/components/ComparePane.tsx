@@ -32,6 +32,16 @@ export default function ComparePane({
         (para) => para.year === selectedExcerptPair.to
       )
     : []
+  const sortedFrom = [...fromParagraphs].sort((a, b) => a.paragraphIndex - b.paragraphIndex)
+  const sortedTo = [...toParagraphs].sort((a, b) => a.paragraphIndex - b.paragraphIndex)
+  const hasBothSides = sortedFrom.length > 0 && sortedTo.length > 0
+  const rowCount = Math.max(sortedFrom.length, sortedTo.length)
+  const pairedRows = hasBothSides
+    ? Array.from({ length: rowCount }, (_, index) => ({
+        left: sortedFrom[index] ?? null,
+        right: sortedTo[index] ?? null,
+      }))
+    : []
 
   const renderParagraph = (
     para: ExcerptPair["representativeParagraphs"][number],
@@ -65,6 +75,15 @@ export default function ComparePane({
       </div>
     )
   }
+
+  const renderEmptyCell = (key: string) => (
+    <div
+      key={key}
+      className="rounded-lg border border-dashed border-white/10 bg-slate-900/30 p-3 text-xs text-slate-400"
+    >
+      {copy.comparePane.emptyCell}
+    </div>
+  )
 
   return (
     <section className="space-y-3">
@@ -104,42 +123,75 @@ export default function ComparePane({
               ))}
             </div>
           ) : null}
-          <div className="grid gap-3 md:grid-cols-2">
-            <div className="space-y-3 rounded-lg border border-white/10 bg-slate-900/40 p-4">
-              <div className="flex items-baseline justify-between">
-                <div className="text-xs uppercase tracking-wider text-slate-300">
-                  {copy.comparePane.fromLabel} {selectedExcerptPair.from}
+          {hasBothSides ? (
+            <div className="rounded-lg border border-white/10 bg-slate-900/40 p-4 space-y-3">
+              <div className="grid gap-3 md:grid-cols-2">
+                <div className="flex items-baseline justify-between">
+                  <div className="text-xs uppercase tracking-wider text-slate-300">
+                    {copy.comparePane.fromLabel} {selectedExcerptPair.from}
+                  </div>
+                  <div className="text-xs text-slate-400">
+                    {copy.comparePane.excerptCount({ n: fromParagraphs.length })}
+                  </div>
                 </div>
-                <div className="text-xs text-slate-400">
-                  {copy.comparePane.excerptCount({ n: fromParagraphs.length })}
-                </div>
-              </div>
-              {fromParagraphs.length
-                ? fromParagraphs.map((para, index) => renderParagraph(para, index))
-                : (
-                    <p className="text-xs text-slate-400">
-                      {copy.comparePane.emptyYear}
-                    </p>
-                  )}
-            </div>
-            <div className="space-y-3 rounded-lg border border-white/10 bg-slate-900/40 p-4">
-              <div className="flex items-baseline justify-between">
-                <div className="text-xs uppercase tracking-wider text-slate-300">
-                  {copy.comparePane.toLabel} {selectedExcerptPair.to}
-                </div>
-                <div className="text-xs text-slate-400">
-                  {copy.comparePane.excerptCount({ n: toParagraphs.length })}
+                <div className="flex items-baseline justify-between">
+                  <div className="text-xs uppercase tracking-wider text-slate-300">
+                    {copy.comparePane.toLabel} {selectedExcerptPair.to}
+                  </div>
+                  <div className="text-xs text-slate-400">
+                    {copy.comparePane.excerptCount({ n: toParagraphs.length })}
+                  </div>
                 </div>
               </div>
-              {toParagraphs.length
-                ? toParagraphs.map((para, index) => renderParagraph(para, index))
-                : (
-                    <p className="text-xs text-slate-400">
-                      {copy.comparePane.emptyYear}
-                    </p>
-                  )}
+              {pairedRows.map((row, rowIndex) => (
+                <div key={`row-${rowIndex}`} className="grid gap-3 md:grid-cols-2">
+                  {row.left
+                    ? renderParagraph(row.left, rowIndex)
+                    : renderEmptyCell(`left-${rowIndex}`)}
+                  {row.right
+                    ? renderParagraph(row.right, rowIndex)
+                    : renderEmptyCell(`right-${rowIndex}`)}
+                </div>
+              ))}
             </div>
-          </div>
+          ) : (
+            <div className="grid gap-3 md:grid-cols-2">
+              <div className="space-y-3 rounded-lg border border-white/10 bg-slate-900/40 p-4">
+                <div className="flex items-baseline justify-between">
+                  <div className="text-xs uppercase tracking-wider text-slate-300">
+                    {copy.comparePane.fromLabel} {selectedExcerptPair.from}
+                  </div>
+                  <div className="text-xs text-slate-400">
+                    {copy.comparePane.excerptCount({ n: fromParagraphs.length })}
+                  </div>
+                </div>
+                {fromParagraphs.length
+                  ? fromParagraphs.map((para, index) => renderParagraph(para, index))
+                  : (
+                      <p className="text-xs text-slate-400">
+                        {copy.comparePane.emptyYear}
+                      </p>
+                    )}
+              </div>
+              <div className="space-y-3 rounded-lg border border-white/10 bg-slate-900/40 p-4">
+                <div className="flex items-baseline justify-between">
+                  <div className="text-xs uppercase tracking-wider text-slate-300">
+                    {copy.comparePane.toLabel} {selectedExcerptPair.to}
+                  </div>
+                  <div className="text-xs text-slate-400">
+                    {copy.comparePane.excerptCount({ n: toParagraphs.length })}
+                  </div>
+                </div>
+                {toParagraphs.length
+                  ? toParagraphs.map((para, index) => renderParagraph(para, index))
+                  : (
+                      <p className="text-xs text-slate-400">
+                        {copy.comparePane.emptyYear}
+                      </p>
+                    )}
+              </div>
+            </div>
+          )}
         </div>
       ) : (
         <p className="text-sm text-slate-300">{copy.comparePane.emptyNoPair}</p>
