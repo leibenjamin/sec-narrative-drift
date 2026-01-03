@@ -281,8 +281,18 @@ export default function Companies() {
                     </div>
                     <div className="mt-3 text-sm font-medium">{fc.title}</div>
                     <div className="mt-2 text-xs text-slate-300">{fc.blurb}</div>
-                    <div className="mt-3 text-xs text-slate-300">
-                      {t(copy.companies.compareYearsLabel, { from: fc.from, to: fc.to })}
+                    <div className="mt-3 flex flex-wrap gap-2 text-xs text-slate-300">
+                      <span className="rounded-full border border-white/15 bg-white/5 px-2 py-0.5">
+                        {t(copy.companies.compareYearsLabel, { from: fc.from, to: fc.to })}
+                      </span>
+                      {fc.tags?.slice(0, 2).map((tag) => (
+                        <span
+                          key={`${r.ticker}-${tag}`}
+                          className="rounded-full border border-white/15 bg-white/5 px-2 py-0.5"
+                        >
+                          {tag}
+                        </span>
+                      ))}
                     </div>
                   </Link>
                 )

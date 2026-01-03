@@ -204,6 +204,7 @@ export default function SimilarityHeatmap({
                   title={tooltipLines}
                   aria-label={ariaLabel}
                   aria-disabled={!isSelectable}
+                  disabled={!isSelectable}
                   tabIndex={isSelectable ? 0 : -1}
                   onClick={() => {
                     if (!isSelectable) return
@@ -217,7 +218,7 @@ export default function SimilarityHeatmap({
                     borderRadius: 0,
                     border: `${borderWidth}px solid ${borderColor}`,
                     backgroundColor: cell.fill,
-                    cursor: isSelectable ? "pointer" : "not-allowed",
+                    cursor: isSelectable ? "pointer" : "default",
                     boxShadow: isActive ? "0 0 0 1px #111827" : "none",
                   }}
                 />
