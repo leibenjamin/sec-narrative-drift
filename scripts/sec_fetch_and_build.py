@@ -1017,6 +1017,11 @@ def build_parser() -> argparse.ArgumentParser:
         help="Store filing HTML in the local cache for debugging.",
     )
     parser.add_argument(
+        "--force-html-cache",
+        action="store_true",
+        help="Fetch/store filing HTML even if normalized text is already cached.",
+    )
+    parser.add_argument(
         "--cache-max-gb",
         type=float,
         default=None,
@@ -1114,6 +1119,7 @@ def main(argv: Optional[list[str]] = None) -> int:
         raise SystemExit("No 10-K filings found for ticker.")
 
     cache_debug_html = args.cache_debug_html
+    force_html_cache = args.force_html_cache
     cache_max_gb = (
         args.cache_max_gb
         if args.cache_max_gb is not None
@@ -1169,14 +1175,23 @@ def main(argv: Optional[list[str]] = None) -> int:
         quality_gate_failed = False
 
         cached_filing_meta = as_str_dict(load_json(filing_meta_path(filing_cik, accession)))
-        cached_normalizer = get_str(cached_filing_meta.get("normalizerVersion")) if cached_filing_meta else None
+        cached_normalizer = (
+            get_str(cached_filing_meta.get("normalizerVersion")) if cached_filing_meta else None
+        )
+        cached_text: Optional[str] = None
         if cached_normalizer == NORMALIZER_VERSION:
             cached_text = load_gz_text(filing_text_path(filing_cik, accession))
-            if cached_text is not None:
-                filing_text = cached_text
-                filing_source = "cache_text"
+        if force_html_cache:
+            cached_html = load_gz_text(filing_html_path(filing_cik, accession))
+            if cached_html is not None:
+                html_text = cached_html
+                filing_text = clean_html_to_text(html_text)
+                filing_source = "cache_html"
+        elif cached_text is not None:
+            filing_text = cached_text
+            filing_source = "cache_text"
 
-        if filing_text is None:
+        if filing_text is None and not force_html_cache:
             cached_html = load_gz_text(filing_html_path(filing_cik, accession))
             if cached_html is not None:
                 html_text = cached_html
@@ -1222,8 +1237,12 @@ def main(argv: Optional[list[str]] = None) -> int:
                 filing_text = clean_html_to_text(html_text)
                 filing_source = "fixture" if from_fixture else "download"
             else:
-                filing_text = ""
-                filing_source = "missing_html"
+                if cached_text is not None:
+                    filing_text = cached_text
+                    filing_source = "cache_text_fallback"
+                else:
+                    filing_text = ""
+                    filing_source = "missing_html"
 
         cached_filing_extractor = (
             get_str(cached_filing_meta.get("extractorVersion")) if cached_filing_meta else None
@@ -1319,11 +1338,12 @@ def main(argv: Optional[list[str]] = None) -> int:
             has_item1c = get_bool(debug_meta.get("hasItem1C")) or False
             toc_detected = get_bool(debug_meta.get("tocDetected")) or False
             toc_removed = get_bool(debug_meta.get("tocRemoved")) or False
+            debug_gate_failed = get_bool(debug_meta.get("qualityGateFailed")) or False
 
             risk_token_count, risk_unique = count_tokens(raw_section)
             risk_paragraph_count = len(raw_paragraphs)
 
-            quality_gate_failed = False
+            quality_gate_failed = debug_gate_failed
             if risk_token_count < MIN_RISK_TOKENS:
                 add_warning(warnings, "risk_too_short")
                 quality_gate_failed = True
@@ -1332,7 +1352,6 @@ def main(argv: Optional[list[str]] = None) -> int:
                 quality_gate_failed = True
             if toc_detected and not toc_removed:
                 add_warning(warnings, "toc_detected")
-                quality_gate_failed = True
             if confidence < 0.5 or not raw_section.strip():
                 quality_gate_failed = True
 
