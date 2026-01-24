@@ -8,9 +8,9 @@ from pathlib import Path
 from typing import Any, Optional
 
 DEFAULT_CACHE_ROOT = Path(__file__).resolve().parents[1] / "data" / "sec_cache"
-EXTRACTOR_VERSION = "1.4"
+EXTRACTOR_VERSION = "1.25"
 NORMALIZER_VERSION = "1.0"
-MAX_CACHE_GB = 5
+MAX_CACHE_GB = 10
 
 
 def get_cache_root() -> Path:

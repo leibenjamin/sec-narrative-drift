@@ -6,9 +6,36 @@ import sys
 import time
 from urllib.parse import urlparse
 from pathlib import Path
-from typing import Any, Optional, cast
+from typing import Any, Iterable, Optional, Protocol, TYPE_CHECKING, cast
 
-import requests
+class RequestsResponse(Protocol):
+    status_code: int
+    content: bytes
+
+    def raise_for_status(self) -> None: ...
+
+    def iter_content(self, chunk_size: int = ...) -> Iterable[bytes]: ...
+
+
+class RequestsSession(Protocol):
+    def get(
+        self,
+        url: str,
+        headers: Optional[dict[str, str]] = ...,
+        timeout: Optional[float] = ...,
+        stream: bool = ...,
+    ) -> RequestsResponse: ...
+
+
+class RequestsModule(Protocol):
+    Session: type[RequestsSession]
+    Response: type[RequestsResponse]
+
+
+if TYPE_CHECKING:
+    requests: RequestsModule
+else:
+    import requests
 
 
 ROOT_DIR = Path(__file__).resolve().parent
@@ -51,10 +78,10 @@ def build_headers(url: str) -> dict[str, str]:
 
 
 def download_to_file(
-    url: str, session: requests.Session, limiter: RateLimiter, path: Path
+    url: str, session: RequestsSession, limiter: RateLimiter, path: Path
 ) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    last_response: Optional[requests.Response] = None
+    last_response: Optional[RequestsResponse] = None
     for attempt in range(5):
         limiter.wait()
         response = session.get(url, headers=build_headers(url), timeout=60, stream=True)
@@ -237,8 +264,8 @@ def main(argv: Optional[list[str]] = None) -> int:
             str(ROOT_DIR / "sec_fetch_and_build.py"),
             "--ticker",
             ticker,
-            "--years",
-            "10",
+            "--start-year",
+            "2015",
             "--out",
             str(out_dir),
         ]

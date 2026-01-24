@@ -6,10 +6,30 @@ import re
 from collections import Counter
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Mapping, Optional, Sequence, TypedDict, cast
+from typing import Any, Mapping, Optional, Sequence, TYPE_CHECKING, TypedDict, cast
 
-from sklearn.feature_extraction.text import ENGLISH_STOP_WORDS, TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
+if TYPE_CHECKING:
+    ENGLISH_STOP_WORDS: set[str] = set()
+
+    class TfidfVectorizer:
+        def __init__(
+            self,
+            *,
+            stop_words: Optional[str | set[str]] = ...,
+            token_pattern: Optional[str] = ...,
+        ) -> None: ...
+
+        def fit_transform(self, raw_documents: Sequence[str]) -> Any: ...
+
+        def transform(self, raw_documents: Sequence[str]) -> Any: ...
+
+    def cosine_similarity(
+        X: Any, Y: Any | None = None, dense_output: bool = True
+    ) -> Any: ...
+
+else:
+    from sklearn.feature_extraction.text import ENGLISH_STOP_WORDS, TfidfVectorizer
+    from sklearn.metrics.pairwise import cosine_similarity
 
 from sec_extract_item1a import extract_item1a_from_html, split_paragraphs
 from sec_phrases import HONORIFICS, NAME_SUFFIXES, NOISE_TOKENS, SEC_PHRASE_ALLOWLIST
@@ -862,8 +882,8 @@ def build_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument(
         "--out",
-        default=str(Path.cwd()),
-        help="Output directory for metrics JSON files.",
+        default=None,
+        help="Output directory for metrics JSON files (default: scripts/_reports/sec_metrics).",
     )
     return parser
 
@@ -886,7 +906,10 @@ def main(argv: Optional[list[str]] = None) -> int:
 
     metrics, similarity, shifts = build_metrics(sections)
 
-    out_dir = Path(args.out)
+    default_out_dir = (
+        Path(__file__).resolve().parents[1] / "scripts" / "_reports" / "sec_metrics"
+    )
+    out_dir = Path(args.out) if args.out else default_out_dir
     out_dir.mkdir(parents=True, exist_ok=True)
 
     write_json(out_dir / "metrics_10k_item1a.json", metrics)

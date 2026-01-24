@@ -6,10 +6,43 @@ import time
 import zipfile
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Optional, Sequence, TypedDict, cast
+from typing import Any, Iterable, Optional, Protocol, Sequence, TYPE_CHECKING, TypedDict, cast
 from urllib.parse import urlparse
 
-import requests
+class RequestsResponse(Protocol):
+    status_code: int
+    content: bytes
+
+    def raise_for_status(self) -> None: ...
+
+    def iter_content(self, chunk_size: int = ...) -> Iterable[bytes]: ...
+
+
+class RequestsSession(Protocol):
+    def get(
+        self,
+        url: str,
+        headers: Optional[dict[str, str]] = ...,
+        timeout: Optional[float] = ...,
+        stream: bool = ...,
+    ) -> RequestsResponse: ...
+
+
+class RequestsModule(Protocol):
+    Session: type[RequestsSession]
+    Response: type[RequestsResponse]
+
+
+class YamlModule(Protocol):
+    def safe_load(self, stream: Any) -> Any: ...
+
+
+if TYPE_CHECKING:
+    requests: RequestsModule
+    yaml: YamlModule
+else:
+    import requests
+    import yaml
 
 from sec_cache import (
     EXTRACTOR_VERSION,
@@ -53,6 +86,9 @@ SECTION_NAME = "10k_item1a"
 MIN_PRIMARY_DOC_BYTES = 10000
 MIN_RISK_TOKENS = 400
 MIN_RISK_UNIQUE = 150
+ENCODING_REPLACEMENT_RATIO = 0.005
+LENGTH_JUMP_RATIO = 0.5
+DEFAULT_START_YEAR = 2015
 TICKER_CIK_OVERRIDES = {
     "BLK": "0002012383",
 }
@@ -68,6 +104,7 @@ ROOT_DIR = Path(__file__).resolve().parent
 FIXTURES_DIR = ROOT_DIR / "sample_fixtures"
 CACHE_DIR = ROOT_DIR / "_cache"
 DEFAULT_SUBMISSIONS_ZIP = CACHE_DIR / "submissions.zip"
+UNUSABLE_LIST_PATH = ROOT_DIR / "resources" / "risk_extraction_unusable.yml"
 
 
 class ExtractionResult(TypedDict):
@@ -112,13 +149,41 @@ def build_headers(url: str) -> dict[str, str]:
     host = urlparse(url).hostname or ""
     return {
         "User-Agent": get_user_agent(),
-        "Accept-Encoding": "gzip, deflate, br",
+        "Accept-Encoding": "gzip, deflate",
         "Host": host,
     }
 
 
-def download(url: str, session: requests.Session, limiter: RateLimiter) -> bytes:
-    last_response: Optional[requests.Response] = None
+def _looks_like_html(text: str) -> bool:
+    lower = text.lower()
+    if "<html" in lower or "<!doctype" in lower or "<xbrl" in lower or "<document" in lower:
+        return True
+    return text.count("<") >= 10 and text.count(">") >= 10
+
+
+def decode_html_bytes(raw: bytes) -> tuple[str, list[str]]:
+    try:
+        return raw.decode("utf-8"), []
+    except UnicodeDecodeError:
+        text = raw.decode("utf-8", errors="replace")
+        replacement_count = text.count("\ufffd")
+        if replacement_count == 0:
+            return text, []
+        ratio = replacement_count / max(len(text), 1)
+        warnings: list[str] = []
+        if ratio >= ENCODING_REPLACEMENT_RATIO:
+            warnings.append("encoding_replacement_high")
+            fallback = raw.decode("cp1252", errors="replace")
+            if _looks_like_html(fallback) and not _looks_like_html(text):
+                warnings.append("encoding_fallback_cp1252")
+                return fallback, warnings
+        else:
+            warnings.append("encoding_replacement_low")
+        return text, warnings
+
+
+def download(url: str, session: RequestsSession, limiter: RateLimiter) -> bytes:
+    last_response: Optional[RequestsResponse] = None
     for attempt in range(5):
         limiter.wait()
         response = session.get(url, headers=build_headers(url), timeout=30)
@@ -136,10 +201,10 @@ def download(url: str, session: requests.Session, limiter: RateLimiter) -> bytes
 
 
 def download_to_file(
-    url: str, session: requests.Session, limiter: RateLimiter, path: Path
+    url: str, session: RequestsSession, limiter: RateLimiter, path: Path
 ) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    last_response: Optional[requests.Response] = None
+    last_response: Optional[RequestsResponse] = None
     for attempt in range(5):
         limiter.wait()
         response = session.get(url, headers=build_headers(url), timeout=60, stream=True)
@@ -225,6 +290,51 @@ def normalize_text(value: Any) -> Optional[str]:
         return None
     text = value.strip()
     return text if text else None
+
+
+def load_risk_extraction_unusable(path: Path) -> dict[str, set[int]]:
+    if not path.exists():
+        return {}
+    try:
+        raw = yaml.safe_load(path.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+    if not isinstance(raw, dict):
+        return {}
+    output: dict[str, set[int]] = {}
+    for key, value in cast(dict[object, object], raw).items():
+        if not isinstance(key, str):
+            continue
+        ticker = key.upper().strip()
+        if not ticker:
+            continue
+        years: set[int] = set()
+        if isinstance(value, list):
+            for item in cast(list[object], value):
+                if isinstance(item, int):
+                    years.add(item)
+                elif isinstance(item, str) and item.isdigit():
+                    years.add(int(item))
+        if years:
+            output[ticker] = years
+    return output
+
+
+def is_unusable_ticker_year(
+    ticker: str, year: int, unusable_map: dict[str, set[int]]
+) -> bool:
+    years = unusable_map.get(ticker.upper())
+    if years is None:
+        return False
+    return year in years
+
+
+def build_unusable_reason(ticker: str, year: int) -> str:
+    if ticker.upper() == "JNJ" and year == 2015:
+        return (
+            "JNJ 2015 uses Exhibit 99-style cautionary note; not comparable to Item 1A risk section."
+        )
+    return "Marked unusable for comparability by risk_extraction_unusable.yml."
 
 
 def resolve_company_name(map_name: Any, submissions_name: Any, fallback: str) -> str:
@@ -352,7 +462,7 @@ def load_submissions_from_zip(zip_path: Path, cik10: str) -> Optional[dict[str, 
 
 def fetch_submissions_json(
     cik10: str,
-    session: Optional[requests.Session] = None,
+    session: Optional[RequestsSession] = None,
     limiter: Optional[RateLimiter] = None,
     submissions_zip: Optional[Path] = None,
     allow_fixture: bool = True,
@@ -442,7 +552,7 @@ def iter_recent_filings(
 
 def fetch_submissions_file_json(
     filename: str,
-    session: requests.Session,
+    session: RequestsSession,
     limiter: RateLimiter,
     submissions_zip: Optional[Path] = None,
 ) -> Optional[dict[str, Any]]:
@@ -465,7 +575,7 @@ def fetch_submissions_file_json(
 def collect_filings(
     submissions: dict[str, Any],
     allowed_forms: set[str],
-    session: requests.Session,
+    session: RequestsSession,
     limiter: RateLimiter,
     max_items: int,
     submissions_zip: Optional[Path] = None,
@@ -509,7 +619,9 @@ def build_primary_doc_url(cik10: str, accession: str, primary_doc: str) -> str:
     return f"{SEC_ARCHIVES_BASE}/{cik_no_leading}/{acc_no_dashes}/{primary_doc}"
 
 
-def load_fixture_html(primary_doc: str) -> Optional[bytes]:
+def load_fixture_html(primary_doc: str, allow_sample: bool) -> Optional[bytes]:
+    if not allow_sample:
+        return None
     fixture_path = FIXTURES_DIR / primary_doc
     if fixture_path.exists():
         return fixture_path.read_bytes()
@@ -573,8 +685,15 @@ def dedupe_filings(rows: list[dict[str, str]]) -> list[dict[str, str]]:
     return deduped
 
 
-def extract_submission_text(html_bytes: bytes, allowed_forms: set[str]) -> Optional[str]:
-    text = html_bytes.decode("utf-8", errors="replace")
+def extract_submission_text(
+    html_bytes: bytes,
+    allowed_forms: set[str],
+    decode_warnings: Optional[list[str]] = None,
+) -> Optional[str]:
+    text, warnings = decode_html_bytes(html_bytes)
+    if decode_warnings is not None:
+        for warning in warnings:
+            add_warning(decode_warnings, warning)
     if "<DOCUMENT>" not in text.upper():
         return None
     for match in DOCUMENT_BLOCK.finditer(text):
@@ -593,7 +712,7 @@ def extract_submission_text(html_bytes: bytes, allowed_forms: set[str]) -> Optio
 
 
 def load_index_json(
-    cik10: str, accession: str, session: requests.Session, limiter: RateLimiter
+    cik10: str, accession: str, session: RequestsSession, limiter: RateLimiter
 ) -> Optional[dict[str, Any]]:
     url = build_index_json_url(cik10, accession)
     try:
@@ -672,17 +791,93 @@ def select_alternate_document(
     return None
 
 
+def select_exhibit_99_document(payload: dict[str, Any]) -> Optional[str]:
+    directory = as_str_dict(payload.get("directory"))
+    if directory is None:
+        return None
+    items = as_list(directory.get("item"))
+    if items is None:
+        return None
+
+    candidates: list[tuple[int, int, str]] = []
+    for entry in items:
+        entry_dict = as_str_dict(entry)
+        if entry_dict is None:
+            continue
+        name = get_str(entry_dict.get("name"))
+        if not name:
+            continue
+        doc_type = get_str(entry_dict.get("type")) or ""
+        size = parse_size(entry_dict.get("size")) or 0
+        lower_name = name.lower()
+        score = 0
+        if doc_type.upper().startswith("EX-99"):
+            score += 3
+        if re.search(r"ex-?99", lower_name):
+            score += 1
+        if re.search(r"\br99\b", lower_name) or lower_name.startswith("r99"):
+            score += 2
+        if "risk" in lower_name or "factor" in lower_name:
+            score += 2
+        if score <= 0:
+            continue
+        candidates.append((score, size, name))
+
+    if candidates:
+        candidates.sort(key=lambda item: (-item[0], -item[1]))
+        return candidates[0][2]
+    return None
+
+
+def fetch_exhibit_99_text(
+    cik10: str,
+    accession: str,
+    session: RequestsSession,
+    limiter: RateLimiter,
+    decode_warnings: Optional[list[str]] = None,
+) -> Optional[str]:
+    payload = load_index_json(cik10, accession, session, limiter)
+    if payload is None:
+        return None
+    exhibit_name = select_exhibit_99_document(payload)
+    if exhibit_name is None:
+        return None
+    url = build_primary_doc_url(cik10, accession, exhibit_name)
+    try:
+        raw_bytes = download(url, session, limiter)
+    except Exception as exc:  # pragma: no cover - defensive for offline runs
+        print(f"warning: unable to fetch {url}: {exc}")
+        return None
+    if is_txt_filename(exhibit_name):
+        extracted = extract_submission_text(
+            raw_bytes,
+            {"EX-99", "EX-99.1", "EX-99.2", "EX-99.3"},
+            decode_warnings=decode_warnings,
+        )
+        if extracted:
+            return extracted
+    text, warnings = decode_html_bytes(raw_bytes)
+    if decode_warnings is not None:
+        for warning in warnings:
+            add_warning(decode_warnings, warning)
+    return text
+
+
 def maybe_fetch_alternate_html(
     cik10: str,
     accession: str,
     primary_doc: str,
     html_bytes: bytes,
     allowed_forms: set[str],
-    session: requests.Session,
+    session: RequestsSession,
     limiter: RateLimiter,
     allow_live: bool,
+    allow_sample_fixtures: bool,
+    force_alternate: bool,
 ) -> tuple[str, bytes, bool]:
-    if not allow_live or not is_primary_doc_suspect(html_bytes):
+    if not allow_live:
+        return primary_doc, html_bytes, False
+    if not force_alternate and not is_primary_doc_suspect(html_bytes):
         return primary_doc, html_bytes, False
 
     payload = load_index_json(cik10, accession, session, limiter)
@@ -693,7 +888,7 @@ def maybe_fetch_alternate_html(
     if not alternate_doc or alternate_doc == primary_doc:
         return primary_doc, html_bytes, False
 
-    alternate_bytes = load_fixture_html(alternate_doc)
+    alternate_bytes = load_fixture_html(alternate_doc, allow_sample_fixtures)
     if alternate_bytes is None:
         alt_url = build_primary_doc_url(cik10, accession, alternate_doc)
         try:
@@ -722,9 +917,12 @@ def parse_year_from_date(value: str) -> Optional[int]:
 
 
 def parse_month_from_date(value: str) -> Optional[int]:
-    if len(value) < 7 or value[4] != "-":
+    if len(value) >= 7 and value[4] == "-":
+        month_text = value[5:7]
+    elif len(value) >= 6 and value[:6].isdigit():
+        month_text = value[4:6]
+    else:
         return None
-    month_text = value[5:7]
     if not month_text.isdigit():
         return None
     return int(month_text)
@@ -735,17 +933,24 @@ def derive_filing_year(
     filing_date: str,
     seen_years: set[int],
 ) -> Optional[int]:
-    year = parse_year_from_date(report_date) or parse_year_from_date(filing_date)
+    report_year = parse_year_from_date(report_date)
+    filing_year = parse_year_from_date(filing_date)
+    year = report_year or filing_year
     if year is None:
         return None
+    if report_year is None:
+        filing_month = parse_month_from_date(filing_date)
+        if filing_month is not None and filing_month <= 2:
+            adjusted = year - 1
+            if adjusted not in seen_years:
+                return adjusted
     if year not in seen_years:
         return year
-    month = parse_month_from_date(report_date)
-    if month is not None and month <= 2:
+    report_month = parse_month_from_date(report_date)
+    if report_month is not None and report_month <= 2:
         adjusted = year - 1
         if adjusted not in seen_years:
             return adjusted
-    filing_year = parse_year_from_date(filing_date)
     if filing_year is not None and filing_year not in seen_years:
         return filing_year
     return None
@@ -766,7 +971,8 @@ def extract_item1a_from_html_bytes(
     warning_list = list(extra_warnings) if extra_warnings else []
     warning_list.extend(warnings)
     raw_paragraphs = split_paragraphs(raw_section) if raw_section else []
-    if confidence < 0.5 or not raw_section.strip():
+    debug_gate_failed = get_bool(debug_meta.get("qualityGateFailed")) or False
+    if debug_gate_failed or not raw_section.strip():
         return {
             "section": "",
             "paragraphs": [],
@@ -777,6 +983,8 @@ def extract_item1a_from_html_bytes(
             "raw_section": raw_section,
             "raw_paragraphs": raw_paragraphs,
         }
+    if confidence < 0.5:
+        warning_list = ensure_low_confidence(warning_list)
     return {
         "section": raw_section,
         "paragraphs": raw_paragraphs,
@@ -797,7 +1005,8 @@ def extract_item1a_from_text_only(
     warning_list = list(extra_warnings) if extra_warnings else []
     warning_list.extend(warnings)
     raw_paragraphs = split_paragraphs(raw_section) if raw_section else []
-    if confidence < 0.5 or not raw_section.strip():
+    debug_gate_failed = get_bool(debug_meta.get("qualityGateFailed")) or False
+    if debug_gate_failed or not raw_section.strip():
         return {
             "section": "",
             "paragraphs": [],
@@ -808,6 +1017,8 @@ def extract_item1a_from_text_only(
             "raw_section": raw_section,
             "raw_paragraphs": raw_paragraphs,
         }
+    if confidence < 0.5:
+        warning_list = ensure_low_confidence(warning_list)
     return {
         "section": raw_section,
         "paragraphs": raw_paragraphs,
@@ -982,13 +1193,19 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--years",
         type=int,
-        default=10,
-        help="Number of years to include (default: 10).",
+        default=None,
+        help="Number of years to include (default: cover years since --start-year).",
+    )
+    parser.add_argument(
+        "--start-year",
+        type=int,
+        default=DEFAULT_START_YEAR,
+        help=f"Minimum fiscal year to include (default: {DEFAULT_START_YEAR}).",
     )
     parser.add_argument(
         "--out",
-        default=str(Path.cwd()),
-        help="Output folder for JSON artifacts.",
+        default=None,
+        help="Output folder for JSON artifacts (default: public/data/sec_narrative_drift/<ticker>).",
     )
     parser.add_argument(
         "--limit",
@@ -1022,6 +1239,11 @@ def build_parser() -> argparse.ArgumentParser:
         help="Fetch/store filing HTML even if normalized text is already cached.",
     )
     parser.add_argument(
+        "--force-alternate-doc",
+        action="store_true",
+        help="Try an alternate primary document even if the current one is not suspect.",
+    )
+    parser.add_argument(
         "--cache-max-gb",
         type=float,
         default=None,
@@ -1032,6 +1254,11 @@ def build_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="Bypass local CIK submissions fixtures for this run.",
     )
+    parser.add_argument(
+        "--allow-sample-fixtures",
+        action="store_true",
+        help="Allow use of scripts/sample_fixtures for submissions and filings.",
+    )
     return parser
 
 
@@ -1040,6 +1267,14 @@ def main(argv: Optional[list[str]] = None) -> int:
     args = parser.parse_args(argv)
 
     ticker = args.ticker.upper().strip()
+    default_out_dir = (
+        Path(__file__).resolve().parents[1]
+        / "public"
+        / "data"
+        / "sec_narrative_drift"
+        / ticker
+    )
+    out_dir = Path(args.out) if args.out else default_out_dir
     mapping = load_ticker_cik_map()
     if ticker not in mapping:
         mapping = load_ticker_cik_map(force_live=True)
@@ -1065,7 +1300,8 @@ def main(argv: Optional[list[str]] = None) -> int:
         )
         submissions_zip = None
 
-    allow_fixture = not args.force_live_submissions
+    allow_sample_fixtures = bool(args.allow_sample_fixtures)
+    allow_fixture = allow_sample_fixtures and not args.force_live_submissions
     submissions_primary = fetch_submissions_json(
         primary_cik,
         session=session,
@@ -1080,7 +1316,17 @@ def main(argv: Optional[list[str]] = None) -> int:
     if args.include_20f:
         allowed_forms.add("20-F")
 
-    max_items = args.limit if args.limit is not None else args.years
+    start_year = args.start_year if args.start_year and args.start_year > 0 else None
+    if args.years is None:
+        current_year = datetime.now(timezone.utc).year
+        if start_year is not None:
+            years = max(current_year - start_year + 1, 1)
+        else:
+            years = 10
+    else:
+        years = args.years
+
+    max_items = args.limit if args.limit is not None else years
     cik_candidates = get_cik_candidates(ticker, primary_cik)
     submissions_by_cik: dict[str, dict[str, Any]] = {primary_cik: submissions_primary}
     filings_all: list[dict[str, str]] = []
@@ -1120,6 +1366,7 @@ def main(argv: Optional[list[str]] = None) -> int:
 
     cache_debug_html = args.cache_debug_html
     force_html_cache = args.force_html_cache
+    force_alternate_doc = args.force_alternate_doc
     cache_max_gb = (
         args.cache_max_gb
         if args.cache_max_gb is not None
@@ -1128,6 +1375,7 @@ def main(argv: Optional[list[str]] = None) -> int:
     run_timestamp = datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace(
         "+00:00", "Z"
     )
+    unusable_map = load_risk_extraction_unusable(UNUSABLE_LIST_PATH)
 
     seen_years: set[int] = set()
     filings_out: list[dict[str, Any]] = []
@@ -1142,6 +1390,8 @@ def main(argv: Optional[list[str]] = None) -> int:
         year = derive_filing_year(report_date, filing_date, seen_years)
         if year is None:
             continue
+        if start_year is not None and year < start_year:
+            continue
         seen_years.add(year)
 
         filing_cik = filing.get("cik", primary_cik)
@@ -1153,6 +1403,7 @@ def main(argv: Optional[list[str]] = None) -> int:
         url = build_primary_doc_url(filing_cik, accession, primary_doc)
 
         extra_warnings: list[str] = []
+        decode_warnings: list[str] = []
         html_text: Optional[str] = None
         filing_text: Optional[str] = None
         filing_source = "unknown"
@@ -1173,6 +1424,8 @@ def main(argv: Optional[list[str]] = None) -> int:
         risk_unique = 0
         risk_paragraph_count = 0
         quality_gate_failed = False
+        unusable_override = is_unusable_ticker_year(ticker, year, unusable_map)
+        unusable_reason = build_unusable_reason(ticker, year) if unusable_override else ""
 
         cached_filing_meta = as_str_dict(load_json(filing_meta_path(filing_cik, accession)))
         cached_normalizer = (
@@ -1181,25 +1434,18 @@ def main(argv: Optional[list[str]] = None) -> int:
         cached_text: Optional[str] = None
         if cached_normalizer == NORMALIZER_VERSION:
             cached_text = load_gz_text(filing_text_path(filing_cik, accession))
-        if force_html_cache:
-            cached_html = load_gz_text(filing_html_path(filing_cik, accession))
-            if cached_html is not None:
-                html_text = cached_html
-                filing_text = clean_html_to_text(html_text)
-                filing_source = "cache_html"
-        elif cached_text is not None:
+
+        cached_html = load_gz_text(filing_html_path(filing_cik, accession))
+        if cached_html is not None:
+            html_text = cached_html
+            filing_text = clean_html_to_text(html_text)
+            filing_source = "cache_html"
+        elif not force_html_cache and cached_text is not None:
             filing_text = cached_text
             filing_source = "cache_text"
 
-        if filing_text is None and not force_html_cache:
-            cached_html = load_gz_text(filing_html_path(filing_cik, accession))
-            if cached_html is not None:
-                html_text = cached_html
-                filing_text = clean_html_to_text(html_text)
-                filing_source = "cache_html"
-
         if filing_text is None:
-            html_bytes = load_fixture_html(primary_doc)
+            html_bytes = load_fixture_html(primary_doc, allow_sample_fixtures)
             from_fixture = html_bytes is not None
             if html_bytes is None:
                 try:
@@ -1219,12 +1465,18 @@ def main(argv: Optional[list[str]] = None) -> int:
                     session,
                     limiter,
                     allow_live=allow_live,
+                    allow_sample_fixtures=allow_sample_fixtures,
+                    force_alternate=force_alternate_doc,
                 )
                 url = build_primary_doc_url(filing_cik, accession, primary_doc)
                 raw_bytes = html_bytes
                 submission_text = None
                 if primary_doc.lower().endswith(".txt"):
-                    submission_text = extract_submission_text(raw_bytes, allowed_forms)
+                    submission_text = extract_submission_text(
+                        raw_bytes,
+                        allowed_forms,
+                        decode_warnings=decode_warnings,
+                    )
                 if alternate_used:
                     extra_warnings.append("alternate_primary_doc_used")
                 if is_primary_doc_suspect(raw_bytes):
@@ -1233,7 +1485,12 @@ def main(argv: Optional[list[str]] = None) -> int:
                     extra_warnings.append("submission_text_extracted")
                     html_text = submission_text
                 else:
-                    html_text = raw_bytes.decode("utf-8", errors="replace")
+                    html_text, decode_notes = decode_html_bytes(raw_bytes)
+                    for warning in decode_notes:
+                        add_warning(decode_warnings, warning)
+                if decode_warnings:
+                    for warning in decode_warnings:
+                        add_warning(extra_warnings, warning)
                 filing_text = clean_html_to_text(html_text)
                 filing_source = "fixture" if from_fixture else "download"
             else:
@@ -1247,11 +1504,13 @@ def main(argv: Optional[list[str]] = None) -> int:
         cached_filing_extractor = (
             get_str(cached_filing_meta.get("extractorVersion")) if cached_filing_meta else None
         )
-        write_filing_cache = bool(filing_text.strip()) and (
-            filing_source != "cache_text"
-            or cached_filing_meta is None
-            or cached_filing_extractor != EXTRACTOR_VERSION
-        )
+        write_filing_cache = bool(filing_text.strip())
+        if (
+            filing_source == "cache_text"
+            and cached_filing_meta is not None
+            and cached_filing_extractor == EXTRACTOR_VERSION
+        ):
+            write_filing_cache = False
         if write_filing_cache:
             filing_token_count, filing_unique = count_tokens(filing_text)
             filing_paragraph_count = count_paragraphs(filing_text)
@@ -1274,12 +1533,14 @@ def main(argv: Optional[list[str]] = None) -> int:
                 "sha256FilingText": compute_sha256_text(filing_text),
                 "generatedAtUtc": run_timestamp,
             }
+            if decode_warnings:
+                filing_meta_payload["decodeWarnings"] = decode_warnings
             save_gz_text_atomic(filing_text_path(filing_cik, accession), filing_text)
             atomic_write_json(filing_meta_path(filing_cik, accession), filing_meta_payload)
 
         cached_risk_meta = as_str_dict(load_json(risk_meta_path(filing_cik, accession)))
         cached_risk_ok = False
-        if cached_risk_meta is not None:
+        if not unusable_override and cached_risk_meta is not None:
             cached_extractor = get_str(cached_risk_meta.get("extractorVersion"))
             if cached_extractor == EXTRACTOR_VERSION:
                 cached_risk_text = load_gz_text(risk_text_path(filing_cik, accession, form_type))
@@ -1314,7 +1575,60 @@ def main(argv: Optional[list[str]] = None) -> int:
                     )
                     quality_gate_failed = get_bool(cached_risk_meta.get("qualityGateFailed")) or False
 
-        if not cached_risk_ok:
+        if unusable_override:
+            warnings = ["unusable_incomparable_format"]
+            confidence = 0.0
+            method = "unusable_override"
+            raw_section = ""
+            raw_paragraphs = []
+            section_text = ""
+            paragraphs = []
+            included_in_metrics = False
+            quality_gate_failed = True
+            risk_token_count = 0
+            risk_unique = 0
+            risk_paragraph_count = 0
+            end_marker_value = None
+            start_marker_value = None
+            has_item1c = False
+            toc_detected = False
+            toc_removed = False
+
+            risk_section_label = "item_3d" if form_type.upper().startswith("20-F") else "item_1a"
+            risk_meta_payload: dict[str, Any] = {
+                "cik": filing_cik,
+                "accessionNumber": accession,
+                "formType": form_type,
+                "filingDate": filing_date,
+                "reportDate": report_date,
+                "secUrl": url,
+                "section": risk_section_label,
+                "extractorVersion": EXTRACTOR_VERSION,
+                "normalizerVersion": NORMALIZER_VERSION,
+                "confidence": confidence,
+                "method": method,
+                "warnings": warnings,
+                "status": "UNUSABLE",
+                "gateReasons": ["unusable_incomparable_format"],
+                "unusableReason": unusable_reason,
+                "startMarker": start_marker_value,
+                "endMarker": end_marker_value,
+                "tocDetected": toc_detected,
+                "tocRemoved": toc_removed,
+                "charCount": len(raw_section),
+                "tokenCount": risk_token_count,
+                "uniqueTokens": risk_unique,
+                "paragraphCount": risk_paragraph_count,
+                "sha256RiskText": "",
+                "includedInMetrics": included_in_metrics,
+                "qualityGateFailed": quality_gate_failed,
+                "hasItem1C": has_item1c,
+                "generatedAtUtc": run_timestamp,
+                "debug": {},
+            }
+            save_gz_text_atomic(risk_text_path(filing_cik, accession, form_type), raw_section)
+            atomic_write_json(risk_meta_path(filing_cik, accession), risk_meta_payload)
+        elif not cached_risk_ok:
             if html_text is not None:
                 extraction = extract_item1a_from_html_bytes(
                     html_text.encode("utf-8"), extra_warnings
@@ -1339,20 +1653,76 @@ def main(argv: Optional[list[str]] = None) -> int:
             toc_detected = get_bool(debug_meta.get("tocDetected")) or False
             toc_removed = get_bool(debug_meta.get("tocRemoved")) or False
             debug_gate_failed = get_bool(debug_meta.get("qualityGateFailed")) or False
+            status_value = get_str(debug_meta.get("status"))
+            gate_reasons = as_str_list(debug_meta.get("gateReasons")) or []
+            start_snippet = get_str(debug_meta.get("startSnippet"))
+            end_snippet = get_str(debug_meta.get("endSnippet"))
+            first_lines = as_str_list(debug_meta.get("firstLines")) or []
+            last_lines = as_str_list(debug_meta.get("lastLines")) or []
+            candidate_count = get_int(debug_meta.get("candidateCount"))
+            top_candidates = as_list(debug_meta.get("topCandidates"))
 
             risk_token_count, risk_unique = count_tokens(raw_section)
             risk_paragraph_count = len(raw_paragraphs)
 
+            exhibit_99_reference = "exhibit 99" in raw_section.lower()
+            if (
+                risk_token_count < MIN_RISK_TOKENS
+                and raw_section
+                and exhibit_99_reference
+            ):
+                exhibit_text = fetch_exhibit_99_text(
+                    filing_cik,
+                    accession,
+                    session,
+                    limiter,
+                    decode_warnings=decode_warnings,
+                )
+                if decode_warnings:
+                    for warning in decode_warnings:
+                        add_warning(warnings, warning)
+                if exhibit_text:
+                    exhibit_section, _conf, _method, _warn, _debug = extract_item1a_from_html(
+                        exhibit_text
+                    )
+                    fallback_section: Optional[str] = None
+                    min_len = max(len(raw_section), 2000)
+                    if exhibit_section and len(exhibit_section) >= min_len:
+                        fallback_section = exhibit_section
+                    else:
+                        cleaned = clean_html_to_text(exhibit_text)
+                        if "risk factors" in cleaned.lower() and len(cleaned) >= min_len:
+                            fallback_section = cleaned
+                    if fallback_section:
+                        raw_section = fallback_section
+                        section_text = fallback_section
+                        raw_paragraphs = split_paragraphs(raw_section)
+                        paragraphs = list(raw_paragraphs)
+                        warnings.append("exhibit_99_fallback")
+                        debug_meta["exhibit99Fallback"] = True
+                        confidence = min(confidence, 0.6)
+                        risk_token_count, risk_unique = count_tokens(raw_section)
+                        risk_paragraph_count = len(raw_paragraphs)
+                add_warning(warnings, "exhibit_99_reference")
+
+            short_risk_allowed = (
+                exhibit_99_reference
+                and end_marker_value in {"1B", "1C", "2"}
+                and not debug_gate_failed
+            )
+
             quality_gate_failed = debug_gate_failed
             if risk_token_count < MIN_RISK_TOKENS:
                 add_warning(warnings, "risk_too_short")
-                quality_gate_failed = True
+                if not short_risk_allowed:
+                    quality_gate_failed = True
             if risk_unique < MIN_RISK_UNIQUE:
                 add_warning(warnings, "risk_low_unique")
-                quality_gate_failed = True
+                if not short_risk_allowed:
+                    quality_gate_failed = True
             if toc_detected and not toc_removed:
                 add_warning(warnings, "toc_detected")
-            if confidence < 0.5 or not raw_section.strip():
+            if not raw_section.strip():
                 quality_gate_failed = True
 
             if quality_gate_failed:
@@ -1378,6 +1748,14 @@ def main(argv: Optional[list[str]] = None) -> int:
                 "confidence": confidence,
                 "method": method,
                 "warnings": warnings,
+                "status": status_value or ("FAIL" if quality_gate_failed else "PASS"),
+                "gateReasons": gate_reasons,
+                "startSnippet": start_snippet or "",
+                "endSnippet": end_snippet or "",
+                "firstLines": first_lines,
+                "lastLines": last_lines,
+                "candidateCount": candidate_count if candidate_count is not None else 0,
+                "topCandidates": top_candidates or [],
                 "startMarker": start_marker_value,
                 "endMarker": end_marker_value,
                 "tocDetected": toc_detected,
@@ -1391,6 +1769,7 @@ def main(argv: Optional[list[str]] = None) -> int:
                 "qualityGateFailed": quality_gate_failed,
                 "hasItem1C": has_item1c,
                 "generatedAtUtc": run_timestamp,
+                "debug": debug_meta,
             }
             save_gz_text_atomic(risk_text_path(filing_cik, accession, form_type), raw_section)
             atomic_write_json(risk_meta_path(filing_cik, accession), risk_meta_payload)
@@ -1456,6 +1835,61 @@ def main(argv: Optional[list[str]] = None) -> int:
             "filingDate": filing_date,
         }
 
+    filings_by_year: dict[int, dict[str, Any]] = {}
+    for row in filings_out:
+        year_value = row.get("year")
+        if isinstance(year_value, int):
+            filings_by_year[year_value] = row
+
+    year_entries: list[tuple[int, str, str]] = []
+    for year_key, entry in ticker_year_entries.items():
+        try:
+            year_value = int(year_key)
+        except ValueError:
+            continue
+        year_entries.append((year_value, entry["cik"], entry["accession"]))
+    year_entries.sort(key=lambda item: item[0])
+
+    prev_len = 0
+    for year_value, cik_value, accession_value in year_entries:
+        meta_path = risk_meta_path(cik_value, accession_value)
+        meta = as_str_dict(load_json(meta_path))
+        if meta is None:
+            prev_len = 0
+            continue
+        curr_len = get_int(meta.get("charCount")) or 0
+        warnings = as_str_list(meta.get("warnings")) or []
+        if prev_len > 0 and curr_len > 0:
+            jump_ratio = abs(curr_len - prev_len) / prev_len
+            if jump_ratio >= LENGTH_JUMP_RATIO:
+                if "length_jump_vs_prev_year" not in warnings:
+                    warnings.append("length_jump_vs_prev_year")
+                    meta["warnings"] = warnings
+                    atomic_write_json(meta_path, meta)
+                row = filings_by_year.get(year_value)
+                if row is not None:
+                    extraction = row.get("extraction")
+                    if isinstance(extraction, dict):
+                        extraction["errors"] = warnings
+        prev_len = curr_len
+
+    meta_extraction = None
+    for _year_value, cik_value, accession_value in year_entries:
+        meta = as_str_dict(load_json(risk_meta_path(cik_value, accession_value)))
+        if meta is None:
+            continue
+        warnings = as_str_list(meta.get("warnings")) or []
+        extraction_summary = {
+            "section": "item1a",
+            "method": get_str(meta.get("method")) or "",
+            "confidence": get_float(meta.get("confidence")) or 0.0,
+            "warnings": warnings,
+            "lengthChars": get_int(meta.get("charCount")) or 0,
+            "endMarkerUsed": get_str(meta.get("endMarker")),
+            "hasItem1C": get_bool(meta.get("hasItem1C")) or False,
+        }
+        meta_extraction = choose_meta_extraction(meta_extraction, extraction_summary)
+
     metrics_sections.sort(key=lambda section: section.year)
     quality_sections.sort(key=lambda section: section.year)
     filings_out = sorted(filings_out, key=lambda row: row["year"])
@@ -1465,7 +1899,6 @@ def main(argv: Optional[list[str]] = None) -> int:
     excerpt_pairs = build_excerpt_pairs(quality_sections, quality_shifts)
     excerpts: dict[str, Any] = {"section": SECTION_NAME, "pairs": excerpt_pairs}
 
-    out_dir = Path(args.out)
     out_dir.mkdir(parents=True, exist_ok=True)
 
     forms_included = build_forms_included(filings_out)

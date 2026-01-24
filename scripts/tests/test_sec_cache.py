@@ -3,10 +3,36 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
-from typing import Any, TypedDict, cast
+from typing import Any, Iterable, Protocol, TYPE_CHECKING, TypedDict, cast
 from unittest.mock import patch
 
-import requests
+class RequestsResponse(Protocol):
+    status_code: int
+    content: bytes
+
+    def raise_for_status(self) -> None: ...
+
+    def iter_content(self, chunk_size: int = ...) -> Iterable[bytes]: ...
+
+
+class RequestsSession(Protocol):
+    def get(
+        self,
+        url: str,
+        headers: dict[str, str] | None = ...,
+        timeout: float | None = ...,
+        stream: bool = ...,
+    ) -> RequestsResponse: ...
+
+
+class RequestsModule(Protocol):
+    Session: type[RequestsSession]
+
+
+if TYPE_CHECKING:
+    requests: RequestsModule
+else:
+    import requests
 
 ROOT_DIR = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT_DIR))

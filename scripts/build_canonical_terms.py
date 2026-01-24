@@ -6,9 +6,16 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 from difflib import SequenceMatcher
 from pathlib import Path
-from typing import Any, Optional, Union, cast
+from typing import Any, Optional, Protocol, TYPE_CHECKING, Union, cast
 
-import yaml
+class YamlModule(Protocol):
+    def safe_load(self, stream: Any) -> Any: ...
+
+
+if TYPE_CHECKING:
+    yaml: YamlModule
+else:
+    import yaml
 
 NOISE_TOKENS = ("mr", "ms", "mrs", "dr")
 WHITELIST_SHORT_TOKENS = ("ai", "us", "uk", "eu", "ip", "llm", "llms")

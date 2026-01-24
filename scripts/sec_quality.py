@@ -3,10 +3,28 @@ import json
 import re
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Optional, Sequence, TypeGuard, cast
+from typing import Any, Optional, Sequence, TYPE_CHECKING, TypeGuard, cast
 
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
+if TYPE_CHECKING:
+
+    class TfidfVectorizer:
+        def __init__(
+            self,
+            *,
+            stop_words: Optional[str | set[str]] = ...,
+            ngram_range: tuple[int, int] = ...,
+            max_features: Optional[int] = ...,
+        ) -> None: ...
+
+        def fit_transform(self, raw_documents: Sequence[str]) -> Any: ...
+
+    def cosine_similarity(
+        X: Any, Y: Any | None = None, dense_output: bool = True
+    ) -> Any: ...
+
+else:
+    from sklearn.feature_extraction.text import TfidfVectorizer
+    from sklearn.metrics.pairwise import cosine_similarity
 
 from sec_extract_item1a import extract_item1a_from_html, split_paragraphs
 
@@ -468,7 +486,7 @@ def select_top_paragraphs(
         vec = TfidfVectorizer(stop_words="english", ngram_range=(1, 2), max_features=8000)
         vec_any = cast(Any, vec)
         matrix = vec_any.fit_transform(texts)
-        sims = cosine_similarity(matrix)
+        sims = cast(list[list[float]], cosine_similarity(matrix))
     except Exception:
         return [
             {

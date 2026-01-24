@@ -34,6 +34,30 @@ class TopFiling(TypedDict):
     bytes: int
 
 
+# Warnings that indicate likely INCORRECT extraction (surface these as issues):
+# - business_heading_inside_slice: extraction includes Item 1 Business, grabbed too much
+# - end_not_found: no end marker found, extraction may spill into later sections
+# - anchor_low_confidence: (20-F) anchor position unreliable
+# - item1a_not_found: extraction failed entirely
+# - length_out_of_band: extraction suspiciously short or long
+#
+# Warnings that are INFORMATIONAL (don't surface as issues):
+# - toc_detected, toc_header_repeated: just says TOC exists in document
+# - early_position_penalty, toc_like_tail: heuristic penalties, not necessarily wrong
+# - toc_range_mismatch: can trigger due to page numbering quirks
+# - low_confidence_item1a: redundant with confidence score itself
+# - toc_like_head: mostly fixed by strong_head_near check
+RISK_WARNING_FLAGS = {
+    "anchor_low_confidence",
+    "business_heading_inside_slice",
+    "end_not_found",
+    "item1a_not_found",
+    "length_out_of_band",
+}
+# Gate reasons that are purely informational (don't flag REVIEW status for these)
+REVIEW_INFO_REASONS = {"toc_present_in_filing"}
+
+
 def as_str_dict(value: Any) -> Optional[dict[str, Any]]:
     if not isinstance(value, dict):
         return None
@@ -51,12 +75,29 @@ def get_str(value: Any) -> Optional[str]:
     return None
 
 
+def get_bool(value: Any) -> Optional[bool]:
+    if isinstance(value, bool):
+        return value
+    return None
+
+
 def get_int(value: Any) -> Optional[int]:
     if isinstance(value, bool):
         return None
     if isinstance(value, int):
         return value
     return None
+
+
+def as_str_list(value: Any) -> Optional[list[str]]:
+    if not isinstance(value, list):
+        return None
+    out: list[str] = []
+    for item in cast(list[object], value):
+        if not isinstance(item, str):
+            return None
+        out.append(item)
+    return out
 
 
 def parse_ticker_year_index(raw: Any) -> dict[str, dict[str, TickerYearEntry]]:
@@ -146,6 +187,11 @@ def main(argv: list[str] | None = None) -> int:
                     issues.append(f"{ticker} {year_key}: normalizer version mismatch")
                 if get_str(filing_meta_dict.get("extractorVersion")) != EXTRACTOR_VERSION:
                     issues.append(f"{ticker} {year_key}: extractor version mismatch (filing)")
+                decode_warnings = as_str_list(filing_meta_dict.get("decodeWarnings"))
+                if decode_warnings:
+                    issues.append(
+                        f"{ticker} {year_key}: decode warnings {','.join(decode_warnings)}"
+                    )
 
             risk_meta = load_json(risk_meta_path(cik, accession))
             risk_meta_dict: Optional[dict[str, Any]] = None
@@ -160,6 +206,28 @@ def main(argv: list[str] | None = None) -> int:
                     issues.append(f"{ticker} {year_key}: extractor version mismatch (risk)")
                 if get_str(risk_meta_dict.get("normalizerVersion")) != NORMALIZER_VERSION:
                     issues.append(f"{ticker} {year_key}: normalizer version mismatch (risk)")
+                risk_warnings = as_str_list(risk_meta_dict.get("warnings"))
+                flagged: list[str] = []
+                if risk_warnings:
+                    for warning in risk_warnings:
+                        if warning in RISK_WARNING_FLAGS:
+                            flagged.append(warning)
+                status = get_str(risk_meta_dict.get("status"))
+                gate_reasons = as_str_list(risk_meta_dict.get("gateReasons")) or []
+                if status == "FAIL":
+                    flagged.append("status_fail")
+                    if gate_reasons:
+                        flagged.append(f"gate:{','.join(gate_reasons)}")
+                elif status == "REVIEW":
+                    significant = [reason for reason in gate_reasons if reason not in REVIEW_INFO_REASONS]
+                    if significant:
+                        flagged.append("status_review")
+                        flagged.append(f"gate:{','.join(significant)}")
+                quality_gate_failed = get_bool(risk_meta_dict.get("qualityGateFailed"))
+                if quality_gate_failed and "quality_gate_failed" not in flagged:
+                    flagged.append("quality_gate_failed")
+                if flagged:
+                    issues.append(f"{ticker} {year_key}: risk warnings {','.join(flagged)}")
 
             if checked < hash_checks and filing_meta_dict is not None and filing_text.exists():
                 text = load_gz_text(filing_text)
