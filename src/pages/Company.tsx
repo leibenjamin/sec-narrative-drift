@@ -68,6 +68,28 @@ function parseYearParam(value: string | null): number | null {
   return Math.trunc(parsed)
 }
 
+const COVERAGE_START_YEAR = 2015
+
+function buildMissingYears(years: number[], startYear: number): number[] {
+  if (years.length === 0) return []
+  const yearSet = new Set<number>()
+  let maxYear = -Infinity
+  for (const year of years) {
+    yearSet.add(year)
+    if (year > maxYear) {
+      maxYear = year
+    }
+  }
+  if (!Number.isFinite(maxYear) || maxYear < startYear) return []
+  const gaps: number[] = []
+  for (let year = startYear; year <= maxYear; year += 1) {
+    if (!yearSet.has(year)) {
+      gaps.push(year)
+    }
+  }
+  return gaps
+}
+
 
 export default function Company() {
   const params = useParams()
@@ -187,6 +209,11 @@ export default function Company() {
     const end = years[years.length - 1]
     return start === end ? String(start) : `${start}-${end}`
   }, [metrics])
+
+  const missingYears = useMemo(
+    () => buildMissingYears(metrics?.years ?? [], COVERAGE_START_YEAR),
+    [metrics]
+  )
 
   const sectionLabel = useMemo(() => {
     const forms = meta?.formsIncluded ?? []
@@ -677,12 +704,20 @@ export default function Company() {
             <div className="mt-2 text-sm">{sectionLabel}</div>
           </div>
           <div className="rounded-lg border border-white/10 bg-slate-900/50 p-4">
-            <div className="text-xs uppercase tracking-wider text-slate-300">
-              {copy.company.labels.years}
+              <div className="text-xs uppercase tracking-wider text-slate-300">
+                {copy.company.labels.years}
+              </div>
+              <div className="mt-2 text-sm">{yearRange}</div>
+              {missingYears.length > 0 ? (
+                <div className="mt-1 text-xs text-amber-100/90">
+                  {copy.company.coverageGaps({
+                    startYear: COVERAGE_START_YEAR,
+                    years: missingYears.join(", "),
+                  })}
+                </div>
+              ) : null}
             </div>
-            <div className="mt-2 text-sm">{yearRange}</div>
-          </div>
-        </section>
+          </section>
 
         <ExecutiveSummary
           metrics={metrics}

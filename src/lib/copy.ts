@@ -123,6 +123,17 @@ export const copy = {
       section: "Section",
       years: "Years",
     },
+    coverageGaps: ({
+      startYear,
+      years,
+    }: {
+      startYear: number | string
+      years: string
+    }) =>
+      t("Missing years since {startYear}: {years} (filings unavailable or extraction failed).", {
+        startYear,
+        years,
+      }),
     sectionValueMvp: "10-K Item 1A - Risk Factors",
     sectionValue20F: "20-F Item 3.D - Risk Factors",
     topButtons: {

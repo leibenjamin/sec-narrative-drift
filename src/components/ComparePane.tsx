@@ -38,8 +38,8 @@ export default function ComparePane({
   const rowCount = Math.max(sortedFrom.length, sortedTo.length)
   const pairedRows = hasBothSides
     ? Array.from({ length: rowCount }, (_, index) => ({
-        left: sortedFrom[index] ?? null,
-        right: sortedTo[index] ?? null,
+        left: sortedTo[index] ?? null,
+        right: sortedFrom[index] ?? null,
       }))
     : []
 
@@ -128,18 +128,18 @@ export default function ComparePane({
               <div className="grid gap-3 md:grid-cols-2">
                 <div className="flex items-baseline justify-between">
                   <div className="text-xs uppercase tracking-wider text-slate-300">
-                    {copy.comparePane.fromLabel} {selectedExcerptPair.from}
-                  </div>
-                  <div className="text-xs text-slate-400">
-                    {copy.comparePane.excerptCount({ n: fromParagraphs.length })}
-                  </div>
-                </div>
-                <div className="flex items-baseline justify-between">
-                  <div className="text-xs uppercase tracking-wider text-slate-300">
                     {copy.comparePane.toLabel} {selectedExcerptPair.to}
                   </div>
                   <div className="text-xs text-slate-400">
                     {copy.comparePane.excerptCount({ n: toParagraphs.length })}
+                  </div>
+                </div>
+                <div className="flex items-baseline justify-between">
+                  <div className="text-xs uppercase tracking-wider text-slate-300">
+                    {copy.comparePane.fromLabel} {selectedExcerptPair.from}
+                  </div>
+                  <div className="text-xs text-slate-400">
+                    {copy.comparePane.excerptCount({ n: fromParagraphs.length })}
                   </div>
                 </div>
               </div>
@@ -159,14 +159,14 @@ export default function ComparePane({
               <div className="space-y-3 rounded-lg border border-white/10 bg-slate-900/40 p-4">
                 <div className="flex items-baseline justify-between">
                   <div className="text-xs uppercase tracking-wider text-slate-300">
-                    {copy.comparePane.fromLabel} {selectedExcerptPair.from}
+                    {copy.comparePane.toLabel} {selectedExcerptPair.to}
                   </div>
                   <div className="text-xs text-slate-400">
-                    {copy.comparePane.excerptCount({ n: fromParagraphs.length })}
+                    {copy.comparePane.excerptCount({ n: toParagraphs.length })}
                   </div>
                 </div>
-                {fromParagraphs.length
-                  ? fromParagraphs.map((para, index) => renderParagraph(para, index))
+                {toParagraphs.length
+                  ? toParagraphs.map((para, index) => renderParagraph(para, index))
                   : (
                       <p className="text-xs text-slate-400">
                         {copy.comparePane.emptyYear}
@@ -176,14 +176,14 @@ export default function ComparePane({
               <div className="space-y-3 rounded-lg border border-white/10 bg-slate-900/40 p-4">
                 <div className="flex items-baseline justify-between">
                   <div className="text-xs uppercase tracking-wider text-slate-300">
-                    {copy.comparePane.toLabel} {selectedExcerptPair.to}
+                    {copy.comparePane.fromLabel} {selectedExcerptPair.from}
                   </div>
                   <div className="text-xs text-slate-400">
-                    {copy.comparePane.excerptCount({ n: toParagraphs.length })}
+                    {copy.comparePane.excerptCount({ n: fromParagraphs.length })}
                   </div>
                 </div>
-                {toParagraphs.length
-                  ? toParagraphs.map((para, index) => renderParagraph(para, index))
+                {fromParagraphs.length
+                  ? fromParagraphs.map((para, index) => renderParagraph(para, index))
                   : (
                       <p className="text-xs text-slate-400">
                         {copy.comparePane.emptyYear}
