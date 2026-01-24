@@ -8,9 +8,12 @@
     "primaryDocument": "d145414d10k.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/1163165/000119312516472901/d145414d10k.htm",
     "extraction": {
-      "confidence": 0.9,
-      "method": "html_anchor",
-      "errors": []
+      "confidence": 0.8999999999999999,
+      "method": "blockdoc_scored",
+      "errors": [
+        "toc_header_repeated",
+        "toc_detected"
+      ]
     }
   },
   {
@@ -22,9 +25,12 @@
     "primaryDocument": "d264316d10k.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/1163165/000119312517050077/d264316d10k.htm",
     "extraction": {
-      "confidence": 0.9,
-      "method": "html_anchor",
-      "errors": []
+      "confidence": 0.8999999999999999,
+      "method": "blockdoc_scored",
+      "errors": [
+        "toc_header_repeated",
+        "toc_detected"
+      ]
     }
   },
   {
@@ -36,9 +42,12 @@
     "primaryDocument": "d534096d10k.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/1163165/000119312518049729/d534096d10k.htm",
     "extraction": {
-      "confidence": 0.9,
-      "method": "html_anchor",
-      "errors": []
+      "confidence": 0.8999999999999999,
+      "method": "blockdoc_scored",
+      "errors": [
+        "toc_header_repeated",
+        "toc_detected"
+      ]
     }
   },
   {
@@ -50,9 +59,12 @@
     "primaryDocument": "d636257d10k.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/1163165/000119312519043841/d636257d10k.htm",
     "extraction": {
-      "confidence": 0.9,
-      "method": "html_anchor",
-      "errors": []
+      "confidence": 0.8999999999999999,
+      "method": "blockdoc_scored",
+      "errors": [
+        "toc_header_repeated",
+        "toc_detected"
+      ]
     }
   },
   {
@@ -64,10 +76,10 @@
     "primaryDocument": "d875559d10k.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/1163165/000119312520039954/d875559d10k.htm",
     "extraction": {
-      "confidence": 0.95,
-      "method": "text_scored",
+      "confidence": 0.8999999999999999,
+      "method": "blockdoc_scored",
       "errors": [
-        "anchor_missing"
+        "toc_detected"
       ]
     }
   },
@@ -80,10 +92,10 @@
     "primaryDocument": "cop10k2020.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/1163165/000156276221000027/cop10k2020.htm",
     "extraction": {
-      "confidence": 0.95,
-      "method": "text_scored",
+      "confidence": 0.8999999999999999,
+      "method": "blockdoc_scored",
       "errors": [
-        "anchor_missing"
+        "toc_detected"
       ]
     }
   },
@@ -96,9 +108,14 @@
     "primaryDocument": "cop10k2021.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/1163165/000156276222000031/cop10k2021.htm",
     "extraction": {
-      "confidence": 0.9,
-      "method": "html_anchor",
-      "errors": []
+      "confidence": 0.8999999999999999,
+      "method": "blockdoc_scored",
+      "errors": [
+        "header_footer_repeat",
+        "start_before_item1_business",
+        "toc_header_repeated",
+        "toc_detected"
+      ]
     }
   },
   {
@@ -110,9 +127,12 @@
     "primaryDocument": "cop-20221231.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/1163165/000116316523000006/cop-20221231.htm",
     "extraction": {
-      "confidence": 0.9,
-      "method": "html_anchor",
-      "errors": []
+      "confidence": 0.95,
+      "method": "blockdoc_scored",
+      "errors": [
+        "toc_header_repeated",
+        "toc_detected"
+      ]
     }
   },
   {
@@ -124,9 +144,12 @@
     "primaryDocument": "cop-20231231.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/1163165/000116316524000010/cop-20231231.htm",
     "extraction": {
-      "confidence": 0.9,
-      "method": "html_anchor",
-      "errors": []
+      "confidence": 0.95,
+      "method": "blockdoc_scored",
+      "errors": [
+        "toc_header_repeated",
+        "toc_detected"
+      ]
     }
   },
   {
@@ -138,9 +161,12 @@
     "primaryDocument": "cop-20241231.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/1163165/000116316525000012/cop-20241231.htm",
     "extraction": {
-      "confidence": 0.9,
-      "method": "html_anchor",
-      "errors": []
+      "confidence": 0.95,
+      "method": "blockdoc_scored",
+      "errors": [
+        "toc_header_repeated",
+        "toc_detected"
+      ]
     }
   }
 ]

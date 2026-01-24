@@ -8,9 +8,12 @@
     "primaryDocument": "nee-12312015x10k.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/753308/000075330816000337/nee-12312015x10k.htm",
     "extraction": {
-      "confidence": 0.9,
-      "method": "html_anchor",
-      "errors": []
+      "confidence": 0.8999999999999999,
+      "method": "blockdoc_scored",
+      "errors": [
+        "toc_header_repeated",
+        "toc_detected"
+      ]
     }
   },
   {
@@ -22,9 +25,12 @@
     "primaryDocument": "nee-12312016x10k.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/753308/000075330817000060/nee-12312016x10k.htm",
     "extraction": {
-      "confidence": 0.9,
-      "method": "html_anchor",
-      "errors": []
+      "confidence": 0.8999999999999999,
+      "method": "blockdoc_scored",
+      "errors": [
+        "toc_header_repeated",
+        "toc_detected"
+      ]
     }
   },
   {
@@ -36,9 +42,12 @@
     "primaryDocument": "nee-12312017x10k.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/753308/000075330818000013/nee-12312017x10k.htm",
     "extraction": {
-      "confidence": 0.9,
-      "method": "html_anchor",
-      "errors": []
+      "confidence": 0.8999999999999999,
+      "method": "blockdoc_scored",
+      "errors": [
+        "toc_header_repeated",
+        "toc_detected"
+      ]
     }
   },
   {
@@ -50,9 +59,12 @@
     "primaryDocument": "nee-12312018x10k.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/753308/000075330819000039/nee-12312018x10k.htm",
     "extraction": {
-      "confidence": 0.9,
-      "method": "html_anchor",
-      "errors": []
+      "confidence": 0.8999999999999999,
+      "method": "blockdoc_scored",
+      "errors": [
+        "toc_header_repeated",
+        "toc_detected"
+      ]
     }
   },
   {
@@ -64,9 +76,12 @@
     "primaryDocument": "nee-12312019x10k.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/753308/000075330820000021/nee-12312019x10k.htm",
     "extraction": {
-      "confidence": 0.9,
-      "method": "html_anchor",
-      "errors": []
+      "confidence": 0.8999999999999999,
+      "method": "blockdoc_scored",
+      "errors": [
+        "toc_header_repeated",
+        "toc_detected"
+      ]
     }
   },
   {
@@ -78,9 +93,12 @@
     "primaryDocument": "nee-20201231.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/753308/000075330821000014/nee-20201231.htm",
     "extraction": {
-      "confidence": 0.9,
-      "method": "html_anchor",
-      "errors": []
+      "confidence": 0.8999999999999999,
+      "method": "blockdoc_scored",
+      "errors": [
+        "toc_header_repeated",
+        "toc_detected"
+      ]
     }
   },
   {
@@ -92,9 +110,12 @@
     "primaryDocument": "nee-20211231.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/753308/000075330822000014/nee-20211231.htm",
     "extraction": {
-      "confidence": 0.9,
-      "method": "html_anchor",
-      "errors": []
+      "confidence": 0.8999999999999999,
+      "method": "blockdoc_scored",
+      "errors": [
+        "toc_header_repeated",
+        "toc_detected"
+      ]
     }
   },
   {
@@ -106,9 +127,12 @@
     "primaryDocument": "nee-20221231.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/753308/000075330823000019/nee-20221231.htm",
     "extraction": {
-      "confidence": 0.9,
-      "method": "html_anchor",
-      "errors": []
+      "confidence": 0.8999999999999999,
+      "method": "blockdoc_scored",
+      "errors": [
+        "toc_header_repeated",
+        "toc_detected"
+      ]
     }
   },
   {
@@ -120,9 +144,11 @@
     "primaryDocument": "nee-20231231.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/753308/000075330824000008/nee-20231231.htm",
     "extraction": {
-      "confidence": 0.9,
-      "method": "html_anchor",
-      "errors": []
+      "confidence": 0.8999999999999999,
+      "method": "blockdoc_scored",
+      "errors": [
+        "toc_detected"
+      ]
     }
   },
   {
@@ -134,9 +160,11 @@
     "primaryDocument": "nee-20241231.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/753308/000075330825000011/nee-20241231.htm",
     "extraction": {
-      "confidence": 0.9,
-      "method": "html_anchor",
-      "errors": []
+      "confidence": 0.8999999999999999,
+      "method": "blockdoc_scored",
+      "errors": [
+        "toc_detected"
+      ]
     }
   }
 ]

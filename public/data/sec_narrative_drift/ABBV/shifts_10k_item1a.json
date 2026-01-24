@@ -53,28 +53,6 @@
           "distinctive": false
         },
         {
-          "term": "alleged violation",
-          "score": 4.61,
-          "z": 0.46,
-          "countPrev": 0,
-          "countCurr": 1,
-          "per10kPrev": 0.0,
-          "per10kCurr": 1.38,
-          "deltaPer10k": 1.38,
-          "distinctive": false
-        },
-        {
-          "term": "asserting patents",
-          "score": 4.61,
-          "z": 0.46,
-          "countPrev": 0,
-          "countCurr": 1,
-          "per10kPrev": 0.0,
-          "per10kCurr": 1.38,
-          "deltaPer10k": 1.38,
-          "distinctive": false
-        },
-        {
           "term": "available hepatitis",
           "score": 4.61,
           "z": 0.46,
@@ -119,17 +97,6 @@
           "distinctive": false
         },
         {
-          "term": "biopharmaceutical industry",
-          "score": 4.61,
-          "z": 0.46,
-          "countPrev": 0,
-          "countCurr": 1,
-          "per10kPrev": 0.0,
-          "per10kCurr": 1.38,
-          "deltaPer10k": 1.38,
-          "distinctive": false
-        },
-        {
           "term": "boehringer",
           "score": 4.61,
           "z": 0.46,
@@ -164,6 +131,39 @@
         },
         {
           "term": "business partners",
+          "score": 4.61,
+          "z": 0.46,
+          "countPrev": 0,
+          "countCurr": 1,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.38,
+          "deltaPer10k": 1.38,
+          "distinctive": false
+        },
+        {
+          "term": "cause sensitive",
+          "score": 4.61,
+          "z": 0.46,
+          "countPrev": 0,
+          "countCurr": 1,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.38,
+          "deltaPer10k": 1.38,
+          "distinctive": false
+        },
+        {
+          "term": "compete available",
+          "score": 4.61,
+          "z": 0.46,
+          "countPrev": 0,
+          "countCurr": 1,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.38,
+          "deltaPer10k": 1.38,
+          "distinctive": false
+        },
+        {
+          "term": "competes anti",
           "score": 4.61,
           "z": 0.46,
           "countPrev": 0,
@@ -232,6 +232,17 @@
         },
         {
           "term": "conversion abbott",
+          "score": -4.62,
+          "z": -0.46,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 1.39,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.39,
+          "distinctive": false
+        },
+        {
+          "term": "directors cautionary",
           "score": -4.62,
           "z": -0.46,
           "countPrev": 1,
@@ -328,145 +339,134 @@
           "per10kCurr": 0.0,
           "deltaPer10k": -1.39,
           "distinctive": false
-        },
-        {
-          "term": "relapsing",
-          "score": -4.62,
-          "z": -0.46,
-          "countPrev": 1,
-          "countCurr": 0,
-          "per10kPrev": 1.39,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.39,
-          "distinctive": false
         }
       ],
       "summary": "Adds emphasis on public, Data breach, acquires outstanding; de-emphasizes percent, amgen, abt.",
       "topRisersAlt": [
         {
           "term": "debt abbvie",
-          "score": 5.29
+          "score": 5.3
         },
         {
           "term": "data privacy",
-          "score": 0.67
+          "score": 0.68
         },
         {
           "term": "impact abbvie business",
-          "score": 0.38
+          "score": 0.39
         },
         {
           "term": "results operations abbvie",
-          "score": 0.38
+          "score": 0.39
         },
         {
           "term": "pharmaceutical products",
-          "score": 0.2
-        },
-        {
-          "term": "results operations",
-          "score": 0.2
+          "score": 0.21
         },
         {
           "term": "abbvie common stock",
-          "score": 0.16
+          "score": 0.17
         },
         {
           "term": "united states",
-          "score": 0.07
+          "score": 0.08
         },
         {
           "term": "intellectual property",
-          "score": 0.02
+          "score": 0.03
         },
         {
           "term": "market share",
-          "score": -0.03
+          "score": -0.02
         },
         {
           "term": "patent infringement",
-          "score": -0.03
+          "score": -0.02
         },
         {
           "term": "political instability",
-          "score": -0.03
+          "score": -0.02
         },
         {
           "term": "supply chain",
-          "score": -0.03
+          "score": -0.02
         },
         {
           "term": "abbvie future revenues",
-          "score": -0.03
+          "score": -0.02
         },
         {
           "term": "abbvie operations",
-          "score": -0.03
+          "score": -0.02
+        },
+        {
+          "term": "abbvie patents",
+          "score": -0.02
         }
       ],
       "topFallersAlt": [
         {
           "term": "common stock",
-          "score": -5.34
+          "score": -5.33
+        },
+        {
+          "term": "abbvie subject",
+          "score": -0.42
         },
         {
           "term": "business results operations",
-          "score": -0.32
+          "score": -0.31
         },
         {
           "term": "risks related abbvie",
-          "score": -0.32
+          "score": -0.31
         },
         {
           "term": "abbvie ability",
-          "score": -0.21
+          "score": -0.2
         },
         {
           "term": "abbvie products",
-          "score": -0.03
+          "score": -0.02
         },
         {
           "term": "adversely affect abbvie",
-          "score": -0.03
+          "score": -0.02
         },
         {
           "term": "abbvie business",
-          "score": -0.03
+          "score": -0.02
         },
         {
           "term": "health care",
-          "score": -0.03
+          "score": -0.02
         },
         {
           "term": "product liability",
-          "score": -0.03
+          "score": -0.02
+        },
+        {
+          "term": "results operations",
+          "score": -0.02
         },
         {
           "term": "abbvie business results",
-          "score": -0.03
+          "score": -0.02
         },
         {
           "term": "abbvie intellectual property",
-          "score": -0.03
+          "score": -0.02
         },
         {
           "term": "future revenues",
-          "score": -0.03
+          "score": -0.02
         },
         {
           "term": "intellectual property rights",
-          "score": -0.03
-        },
-        {
-          "term": "laws regulations",
-          "score": -0.03
-        },
-        {
-          "term": "new products",
-          "score": -0.03
+          "score": -0.02
         }
       ],
-      "summaryAlt": "Adds emphasis on debt abbvie, data privacy, impact abbvie business; de-emphasizes common stock, business results operations, risks related abbvie."
+      "summaryAlt": "Adds emphasis on debt abbvie, data privacy, impact abbvie business; de-emphasizes common stock, abbvie subject, business results operations."
     },
     {
       "from": 2016,
@@ -1473,8 +1473,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.0,
-          "deltaPer10k": 4.0,
+          "per10kCurr": 3.99,
+          "deltaPer10k": 3.99,
           "distinctive": false
         },
         {
@@ -1484,8 +1484,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.0,
-          "deltaPer10k": 4.0,
+          "per10kCurr": 3.99,
+          "deltaPer10k": 3.99,
           "distinctive": false
         },
         {
@@ -1495,8 +1495,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.0,
-          "deltaPer10k": 4.0,
+          "per10kCurr": 3.99,
+          "deltaPer10k": 3.99,
           "distinctive": false
         },
         {
@@ -1871,8 +1871,8 @@
           "countPrev": 0,
           "countCurr": 9,
           "per10kPrev": 0.0,
-          "per10kCurr": 11.01,
-          "deltaPer10k": 11.01,
+          "per10kCurr": 11.02,
+          "deltaPer10k": 11.02,
           "distinctive": false,
           "includes": [
             "covid"
@@ -1933,8 +1933,8 @@
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.89,
-          "deltaPer10k": 4.89,
+          "per10kCurr": 4.9,
+          "deltaPer10k": 4.9,
           "distinctive": false
         },
         {
@@ -1944,8 +1944,8 @@
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.89,
-          "deltaPer10k": 4.89,
+          "per10kCurr": 4.9,
+          "deltaPer10k": 4.9,
           "distinctive": false
         },
         {
@@ -1955,8 +1955,8 @@
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.89,
-          "deltaPer10k": 4.89,
+          "per10kCurr": 4.9,
+          "deltaPer10k": 4.9,
           "distinctive": false
         },
         {
@@ -2077,9 +2077,9 @@
           "z": -0.58,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 4.0,
+          "per10kPrev": 3.99,
           "per10kCurr": 0.0,
-          "deltaPer10k": -4.0,
+          "deltaPer10k": -3.99,
           "distinctive": false
         },
         {
@@ -2117,17 +2117,6 @@
         },
         {
           "term": "action inflation",
-          "score": -4.7,
-          "z": -0.47,
-          "countPrev": 1,
-          "countCurr": 0,
-          "per10kPrev": 1.33,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.33,
-          "distinctive": false
-        },
-        {
-          "term": "actual changes",
           "score": -4.7,
           "z": -0.47,
           "countPrev": 1,
@@ -2182,7 +2171,7 @@
           "distinctive": false
         },
         {
-          "term": "arbitration biologics",
+          "term": "arrangements strategic",
           "score": -4.7,
           "z": -0.47,
           "countPrev": 1,
@@ -2193,7 +2182,18 @@
           "distinctive": false
         },
         {
-          "term": "arrangements strategic",
+          "term": "china",
+          "score": -4.7,
+          "z": -0.47,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 1.33,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.33,
+          "distinctive": false
+        },
+        {
+          "term": "closing",
           "score": -4.7,
           "z": -0.47,
           "countPrev": 1,
@@ -2212,7 +2212,7 @@
         },
         {
           "term": "research development",
-          "score": 6.3
+          "score": 6.31
         },
         {
           "term": "health care",
@@ -2243,10 +2243,6 @@
           "score": 5.19
         },
         {
-          "term": "form abbvie",
-          "score": 5.19
-        },
-        {
           "term": "future adverse impact",
           "score": 5.19
         },
@@ -2264,69 +2260,73 @@
         },
         {
           "term": "abbvie operations",
+          "score": 0.58
+        },
+        {
+          "term": "supply chain",
           "score": 0.57
         }
       ],
       "topFallersAlt": [
         {
           "term": "abbvie common stock",
-          "score": -6.56
+          "score": -6.55
         },
         {
           "term": "acquisition abbvie",
-          "score": -5.85
+          "score": -5.84
         },
         {
           "term": "abbvie patents",
-          "score": -5.44
+          "score": -5.43
         },
         {
           "term": "business abbvie",
-          "score": -5.44
+          "score": -5.43
         },
         {
           "term": "common stock abbvie",
-          "score": -5.44
+          "score": -5.43
         },
         {
           "term": "factors item",
-          "score": -5.44
+          "score": -5.43
         },
         {
           "term": "humira revenues",
-          "score": -5.44
+          "score": -5.43
         },
         {
           "term": "item business",
-          "score": -5.44
+          "score": -5.43
         },
         {
           "term": "operations cash",
-          "score": -5.44
+          "score": -5.43
         },
         {
           "term": "abbvie subject",
-          "score": -0.83
+          "score": -0.82
         },
         {
           "term": "adversely affect business",
-          "score": -0.54
+          "score": -0.53
         },
         {
           "term": "debt abbvie",
-          "score": -0.54
+          "score": -0.53
         },
         {
           "term": "impact abbvie business",
-          "score": -0.54
+          "score": -0.53
         },
         {
           "term": "abbvie business",
-          "score": -0.43
+          "score": -0.42
         },
         {
           "term": "future revenues",
-          "score": -0.32
+          "score": -0.31
         }
       ],
       "summaryAlt": "Adds emphasis on material adverse, research development, health care; de-emphasizes abbvie common stock, acquisition abbvie, abbvie patents."
@@ -2342,8 +2342,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.43,
-          "deltaPer10k": 2.43,
+          "per10kCurr": 2.44,
+          "deltaPer10k": 2.44,
           "distinctive": false,
           "includes": [
             "climate change"
@@ -2356,8 +2356,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.43,
-          "deltaPer10k": 2.43,
+          "per10kCurr": 2.44,
+          "deltaPer10k": 2.44,
           "distinctive": false
         },
         {
@@ -2367,8 +2367,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.43,
-          "deltaPer10k": 2.43,
+          "per10kCurr": 2.44,
+          "deltaPer10k": 2.44,
           "distinctive": false
         },
         {
@@ -2378,30 +2378,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.43,
-          "deltaPer10k": 2.43,
-          "distinctive": false
-        },
-        {
-          "term": "actual changes",
-          "score": 4.61,
-          "z": 0.46,
-          "countPrev": 0,
-          "countCurr": 1,
-          "per10kPrev": 0.0,
-          "per10kCurr": 1.22,
-          "deltaPer10k": 1.22,
-          "distinctive": false
-        },
-        {
-          "term": "arbitration biologics",
-          "score": 4.61,
-          "z": 0.46,
-          "countPrev": 0,
-          "countCurr": 1,
-          "per10kPrev": 0.0,
-          "per10kCurr": 1.22,
-          "deltaPer10k": 1.22,
+          "per10kCurr": 2.44,
+          "deltaPer10k": 2.44,
           "distinctive": false
         },
         {
@@ -2502,33 +2480,33 @@
           "per10kCurr": 1.22,
           "deltaPer10k": 1.22,
           "distinctive": false
+        },
+        {
+          "term": "diverse highly",
+          "score": 4.61,
+          "z": 0.46,
+          "countPrev": 0,
+          "countCurr": 1,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.22,
+          "deltaPer10k": 1.22,
+          "distinctive": false
+        },
+        {
+          "term": "earthquakes",
+          "score": 4.61,
+          "z": 0.46,
+          "countPrev": 0,
+          "countCurr": 1,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.22,
+          "deltaPer10k": 1.22,
+          "distinctive": false
         }
       ],
       "topFallers": [
         {
-          "term": "action taken",
-          "score": -4.62,
-          "z": -0.46,
-          "countPrev": 1,
-          "countCurr": 0,
-          "per10kPrev": 1.22,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.22,
-          "distinctive": false
-        },
-        {
           "term": "america potential",
-          "score": -4.62,
-          "z": -0.46,
-          "countPrev": 1,
-          "countCurr": 0,
-          "per10kPrev": 1.22,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.22,
-          "distinctive": false
-        },
-        {
-          "term": "care inability",
           "score": -4.62,
           "z": -0.46,
           "countPrev": 1,
@@ -2583,17 +2561,6 @@
           "distinctive": false
         },
         {
-          "term": "laws political",
-          "score": -4.62,
-          "z": -0.46,
-          "countPrev": 1,
-          "countCurr": 0,
-          "per10kPrev": 1.22,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.22,
-          "distinctive": false
-        },
-        {
           "term": "newly",
           "score": -4.62,
           "z": -0.46,
@@ -2606,17 +2573,6 @@
         },
         {
           "term": "outbreak",
-          "score": -4.62,
-          "z": -0.46,
-          "countPrev": 1,
-          "countCurr": 0,
-          "per10kPrev": 1.22,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.22,
-          "distinctive": false
-        },
-        {
-          "term": "plans addition",
           "score": -4.62,
           "z": -0.46,
           "countPrev": 1,
@@ -2643,8 +2599,8 @@
           "z": -0.81,
           "countPrev": 4,
           "countCurr": 2,
-          "per10kPrev": 4.89,
-          "per10kCurr": 2.43,
+          "per10kPrev": 4.9,
+          "per10kCurr": 2.44,
           "deltaPer10k": -2.46,
           "distinctive": false
         },
@@ -2669,134 +2625,178 @@
           "per10kCurr": 1.22,
           "deltaPer10k": -1.23,
           "distinctive": false
+        },
+        {
+          "term": "resulted",
+          "score": -0.69,
+          "z": -0.57,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 2.45,
+          "per10kCurr": 1.22,
+          "deltaPer10k": -1.23,
+          "distinctive": false
+        },
+        {
+          "term": "retain highly",
+          "score": -0.69,
+          "z": -0.57,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 2.45,
+          "per10kCurr": 1.22,
+          "deltaPer10k": -1.23,
+          "distinctive": false
+        },
+        {
+          "term": "therapeutic",
+          "score": -0.69,
+          "z": -0.57,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 2.45,
+          "per10kCurr": 1.22,
+          "deltaPer10k": -1.23,
+          "distinctive": false
+        },
+        {
+          "term": "europe",
+          "score": -0.41,
+          "z": -0.45,
+          "countPrev": 3,
+          "countCurr": 2,
+          "per10kPrev": 3.67,
+          "per10kCurr": 2.44,
+          "deltaPer10k": -1.24,
+          "distinctive": false
         }
       ],
-      "summary": "Adds emphasis on Climate change, attract develop, develop retain; de-emphasizes action taken, america potential, care inability.",
+      "summary": "Adds emphasis on Climate change, attract develop, develop retain; de-emphasizes america potential, europe latin, including europe.",
       "topRisersAlt": [
-        {
-          "term": "products form",
-          "score": 5.31
-        },
         {
           "term": "climate change",
           "score": 4.62
         },
         {
-          "term": "abbvie subject",
-          "score": 0.4
+          "term": "intellectual property",
+          "score": 0.01
         },
         {
-          "term": "adversely affect business",
-          "score": 0.4
+          "term": "abbvie products",
+          "score": 0.0
         },
         {
-          "term": "laws regulations",
-          "score": 0.29
+          "term": "material adverse",
+          "score": 0.0
         },
         {
-          "term": "market share",
-          "score": -0.0
+          "term": "adversely affect abbvie",
+          "score": 0.0
         },
         {
-          "term": "patent infringement",
-          "score": -0.0
+          "term": "united states",
+          "score": 0.0
         },
         {
-          "term": "political instability",
-          "score": -0.0
+          "term": "abbvie business",
+          "score": 0.0
         },
         {
-          "term": "abbvie future revenues",
-          "score": -0.0
+          "term": "research development",
+          "score": 0.0
         },
         {
-          "term": "abbvie results operations",
-          "score": -0.0
+          "term": "business results operations",
+          "score": 0.0
         },
         {
-          "term": "abbvie revenues",
-          "score": -0.0
+          "term": "future revenues",
+          "score": 0.0
         },
         {
-          "term": "debt abbvie",
-          "score": -0.0
+          "term": "patent protection",
+          "score": 0.0
         },
         {
-          "term": "development manufacturing",
-          "score": -0.0
+          "term": "product liability",
+          "score": 0.0
         },
         {
-          "term": "factors cause",
-          "score": -0.0
+          "term": "abbvie ability",
+          "score": 0.0
         },
         {
-          "term": "future adverse impact",
-          "score": -0.0
+          "term": "abbvie business results",
+          "score": 0.0
+        },
+        {
+          "term": "abbvie intellectual property",
+          "score": 0.0
         }
       ],
       "topFallersAlt": [
         {
-          "term": "addition abbvie",
-          "score": -5.32
-        },
-        {
-          "term": "form abbvie",
-          "score": -5.32
-        },
-        {
           "term": "abbvie operations financial",
-          "score": -0.41
+          "score": -0.4
         },
         {
-          "term": "intellectual property",
-          "score": -0.01
+          "term": "new products",
+          "score": -0.4
         },
         {
-          "term": "abbvie products",
-          "score": -0.0
+          "term": "market share",
+          "score": 0.0
         },
         {
-          "term": "material adverse",
-          "score": -0.0
+          "term": "patent infringement",
+          "score": 0.0
         },
         {
-          "term": "adversely affect abbvie",
-          "score": -0.0
+          "term": "political instability",
+          "score": 0.0
         },
         {
-          "term": "united states",
-          "score": -0.0
+          "term": "abbvie future revenues",
+          "score": 0.0
         },
         {
-          "term": "abbvie business",
-          "score": -0.0
+          "term": "abbvie results operations",
+          "score": 0.0
         },
         {
-          "term": "research development",
-          "score": -0.0
+          "term": "abbvie revenues",
+          "score": 0.0
         },
         {
-          "term": "business results operations",
-          "score": -0.0
+          "term": "abbvie subject",
+          "score": 0.0
         },
         {
-          "term": "future revenues",
-          "score": -0.0
+          "term": "addition abbvie",
+          "score": 0.0
         },
         {
-          "term": "patent protection",
-          "score": -0.0
+          "term": "adversely affect business",
+          "score": 0.0
         },
         {
-          "term": "product liability",
-          "score": -0.0
+          "term": "debt abbvie",
+          "score": 0.0
         },
         {
-          "term": "abbvie ability",
-          "score": -0.0
+          "term": "development manufacturing",
+          "score": 0.0
+        },
+        {
+          "term": "factors cause",
+          "score": 0.0
+        },
+        {
+          "term": "future adverse impact",
+          "score": 0.0
         }
       ],
-      "summaryAlt": "Adds emphasis on products form, climate change, abbvie subject; de-emphasizes addition abbvie, form abbvie, abbvie operations financial."
+      "summaryAlt": "Adds emphasis on climate change, intellectual property, abbvie products; de-emphasizes abbvie operations financial, new products, market share."
     },
     {
       "from": 2021,
@@ -2986,9 +2986,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 2.43,
+          "per10kPrev": 2.44,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.43,
+          "deltaPer10k": -2.44,
           "distinctive": false
         },
         {
@@ -2997,9 +2997,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 2.43,
+          "per10kPrev": 2.44,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.43,
+          "deltaPer10k": -2.44,
           "distinctive": false
         },
         {
@@ -3008,9 +3008,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 2.43,
+          "per10kPrev": 2.44,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.43,
+          "deltaPer10k": -2.44,
           "distinctive": false
         },
         {
@@ -3019,9 +3019,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 2.43,
+          "per10kPrev": 2.44,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.43,
+          "deltaPer10k": -2.44,
           "distinctive": false
         },
         {
@@ -3030,9 +3030,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 2.43,
+          "per10kPrev": 2.44,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.43,
+          "deltaPer10k": -2.44,
           "distinctive": false
         },
         {
@@ -3041,9 +3041,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 2.43,
+          "per10kPrev": 2.44,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.43,
+          "deltaPer10k": -2.44,
           "distinctive": false
         },
         {
@@ -3052,9 +3052,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 2.43,
+          "per10kPrev": 2.44,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.43,
+          "deltaPer10k": -2.44,
           "distinctive": false
         },
         {
@@ -3063,9 +3063,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 2.43,
+          "per10kPrev": 2.44,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.43,
+          "deltaPer10k": -2.44,
           "distinctive": false
         },
         {
@@ -3074,9 +3074,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 2.43,
+          "per10kPrev": 2.44,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.43,
+          "deltaPer10k": -2.44,
           "distinctive": false
         },
         {
@@ -3085,9 +3085,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 2.43,
+          "per10kPrev": 2.44,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.43,
+          "deltaPer10k": -2.44,
           "distinctive": false
         },
         {
@@ -3096,9 +3096,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 2.43,
+          "per10kPrev": 2.44,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.43,
+          "deltaPer10k": -2.44,
           "distinctive": false
         },
         {
@@ -3107,9 +3107,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 2.43,
+          "per10kPrev": 2.44,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.43,
+          "deltaPer10k": -2.44,
           "distinctive": false
         },
         {
@@ -3138,129 +3138,129 @@
       "summary": "Adds emphasis on beginning, counterfeit, diverted; de-emphasizes future revenues, acquisition allergan, adversely affects.",
       "topRisersAlt": [
         {
-          "term": "addition abbvie",
-          "score": 5.69
-        },
-        {
           "term": "abbvie products material",
-          "score": 5.28
+          "score": 5.26
         },
         {
           "term": "abbvie revenues financial",
-          "score": 5.28
+          "score": 5.26
         },
         {
           "term": "adverse impact",
-          "score": 5.28
+          "score": 5.26
+        },
+        {
+          "term": "certain products",
+          "score": 5.26
         },
         {
           "term": "consequences include",
-          "score": 5.28
+          "score": 5.26
         },
         {
           "term": "failure significant",
-          "score": 5.28
+          "score": 5.26
         },
         {
           "term": "export controls",
-          "score": 4.59
+          "score": 4.57
+        },
+        {
+          "term": "new products",
+          "score": 0.65
         },
         {
           "term": "abbvie operations",
-          "score": 0.38
+          "score": 0.36
         },
         {
           "term": "abbvie revenues",
-          "score": 0.38
+          "score": 0.35
+        },
+        {
+          "term": "abbvie subject",
+          "score": 0.35
+        },
+        {
+          "term": "addition abbvie",
+          "score": 0.35
+        },
+        {
+          "term": "adversely affect business",
+          "score": 0.35
         },
         {
           "term": "impact abbvie business",
-          "score": 0.38
+          "score": 0.35
         },
         {
           "term": "products united states",
-          "score": 0.38
-        },
-        {
-          "term": "results operations financial",
-          "score": 0.38
-        },
-        {
-          "term": "business results operations",
-          "score": 0.31
-        },
-        {
-          "term": "research development",
-          "score": 0.26
-        },
-        {
-          "term": "abbvie product",
-          "score": 0.26
+          "score": 0.35
         }
       ],
       "topFallersAlt": [
         {
           "term": "future revenues",
-          "score": -6.27
+          "score": -6.29
         },
         {
           "term": "patent protection",
-          "score": -6.27
+          "score": -6.29
         },
         {
           "term": "abbvie future revenues",
-          "score": -5.34
+          "score": -5.37
         },
         {
           "term": "abbvie results operations",
-          "score": -5.34
+          "score": -5.37
         },
         {
           "term": "debt abbvie",
-          "score": -5.34
+          "score": -5.37
         },
         {
           "term": "impact abbvie results",
-          "score": -5.34
+          "score": -5.37
         },
         {
           "term": "intellectual property protection",
-          "score": -5.34
-        },
-        {
-          "term": "products form",
-          "score": -5.34
+          "score": -5.37
         },
         {
           "term": "products pharmaceutical",
-          "score": -5.34
+          "score": -5.37
         },
         {
           "term": "significant debt",
-          "score": -5.34
+          "score": -5.37
         },
         {
           "term": "abbvie ability",
-          "score": -0.32
+          "score": -0.35
         },
         {
           "term": "material adverse",
-          "score": -0.24
+          "score": -0.27
         },
         {
           "term": "united states",
-          "score": -0.14
+          "score": -0.17
         },
         {
           "term": "abbvie business",
-          "score": -0.03
+          "score": -0.05
         },
         {
           "term": "abbvie business results",
-          "score": -0.03
+          "score": -0.05
+        },
+        {
+          "term": "abbvie intellectual property",
+          "score": -0.05
         }
       ],
-      "summaryAlt": "Adds emphasis on addition abbvie, abbvie products material, abbvie revenues financial; de-emphasizes future revenues, patent protection, abbvie future revenues."
+      "summaryAlt": "Adds emphasis on abbvie products material, abbvie revenues financial, adverse impact; de-emphasizes future revenues, patent protection, abbvie future revenues."
     },
     {
       "from": 2022,
@@ -3273,8 +3273,8 @@
           "countPrev": 0,
           "countCurr": 7,
           "per10kPrev": 0.0,
-          "per10kCurr": 8.3,
-          "deltaPer10k": 8.3,
+          "per10kCurr": 8.31,
+          "deltaPer10k": 8.31,
           "distinctive": false
         },
         {
@@ -3606,11 +3606,7 @@
           "score": 5.35
         },
         {
-          "term": "certain products",
-          "score": 5.35
-        },
-        {
-          "term": "form abbvie",
+          "term": "new obligations abbvie",
           "score": 5.35
         },
         {
@@ -3635,7 +3631,7 @@
         },
         {
           "term": "intellectual property",
-          "score": 0.16
+          "score": 0.17
         },
         {
           "term": "adversely affect abbvie",
@@ -3660,28 +3656,28 @@
         {
           "term": "intellectual property rights",
           "score": 0.04
+        },
+        {
+          "term": "laws regulations",
+          "score": 0.04
         }
       ],
       "topFallersAlt": [
         {
           "term": "material adverse",
-          "score": -6.81
-        },
-        {
-          "term": "addition abbvie",
-          "score": -5.68
+          "score": -6.8
         },
         {
           "term": "abbvie products material",
-          "score": -5.28
+          "score": -5.27
         },
         {
           "term": "adverse impact",
-          "score": -5.28
+          "score": -5.27
         },
         {
           "term": "consequences include",
-          "score": -5.28
+          "score": -5.27
         },
         {
           "term": "export controls",
@@ -3689,19 +3685,27 @@
         },
         {
           "term": "supply chain",
-          "score": -0.66
+          "score": -0.65
         },
         {
           "term": "abbvie operations",
-          "score": -0.38
+          "score": -0.37
+        },
+        {
+          "term": "addition abbvie",
+          "score": -0.37
+        },
+        {
+          "term": "adversely affect business",
+          "score": -0.37
         },
         {
           "term": "abbvie business results",
-          "score": -0.26
+          "score": -0.25
         },
         {
           "term": "operations abbvie",
-          "score": -0.26
+          "score": -0.25
         },
         {
           "term": "pharmaceutical products",
@@ -3718,13 +3722,9 @@
         {
           "term": "patent infringement",
           "score": 0.04
-        },
-        {
-          "term": "political instability",
-          "score": 0.04
         }
       ],
-      "summaryAlt": "Adds emphasis on additional costs, certain products, form abbvie; de-emphasizes material adverse, addition abbvie, abbvie products material."
+      "summaryAlt": "Adds emphasis on additional costs, new obligations abbvie, product requirements; de-emphasizes material adverse, abbvie products material, adverse impact."
     },
     {
       "from": 2023,
@@ -3752,8 +3752,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.4,
-          "deltaPer10k": 2.4,
+          "per10kCurr": 2.41,
+          "deltaPer10k": 2.41,
           "distinctive": false
         },
         {
@@ -3763,8 +3763,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.4,
-          "deltaPer10k": 2.4,
+          "per10kCurr": 2.41,
+          "deltaPer10k": 2.41,
           "distinctive": false
         },
         {
@@ -3774,8 +3774,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.4,
-          "deltaPer10k": 2.4,
+          "per10kCurr": 2.41,
+          "deltaPer10k": 2.41,
           "distinctive": false
         },
         {
@@ -3785,8 +3785,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.4,
-          "deltaPer10k": 2.4,
+          "per10kCurr": 2.41,
+          "deltaPer10k": 2.41,
           "distinctive": false
         },
         {
@@ -3845,17 +3845,6 @@
           "distinctive": false
         },
         {
-          "term": "care costs",
-          "score": 4.63,
-          "z": 0.46,
-          "countPrev": 0,
-          "countCurr": 1,
-          "per10kPrev": 0.0,
-          "per10kCurr": 1.2,
-          "deltaPer10k": 1.2,
-          "distinctive": false
-        },
-        {
           "term": "cencora",
           "score": 4.63,
           "z": 0.46,
@@ -3898,6 +3887,17 @@
           "per10kCurr": 1.2,
           "deltaPer10k": 1.2,
           "distinctive": false
+        },
+        {
+          "term": "deficient",
+          "score": 4.63,
+          "z": 0.46,
+          "countPrev": 0,
+          "countCurr": 1,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.2,
+          "deltaPer10k": 1.2,
+          "distinctive": false
         }
       ],
       "topFallers": [
@@ -3907,9 +3907,9 @@
           "z": -0.6,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 4.74,
+          "per10kPrev": 4.75,
           "per10kCurr": 0.0,
-          "deltaPer10k": -4.74,
+          "deltaPer10k": -4.75,
           "distinctive": false,
           "includes": [
             "covid"
@@ -4077,125 +4077,125 @@
       "topRisersAlt": [
         {
           "term": "artificial intelligence",
-          "score": 5.33
+          "score": 5.31
         },
         {
           "term": "consequences include",
-          "score": 5.33
+          "score": 5.31
         },
         {
           "term": "result abbvie",
-          "score": 5.33
+          "score": 5.31
+        },
+        {
+          "term": "results operations abbvie",
+          "score": 5.31
         },
         {
           "term": "subject government",
-          "score": 5.33
+          "score": 5.31
         },
         {
           "term": "labor shortages",
-          "score": 4.64
+          "score": 4.62
         },
         {
           "term": "supply chain",
-          "score": 0.71
+          "score": 0.69
         },
         {
           "term": "results operations",
-          "score": 0.43
+          "score": 0.41
         },
         {
           "term": "abbvie revenues",
-          "score": 0.31
+          "score": 0.29
         },
         {
           "term": "new products",
-          "score": 0.25
+          "score": 0.23
         },
         {
           "term": "pharmaceutical products",
-          "score": 0.25
+          "score": 0.23
         },
         {
           "term": "abbvie business",
-          "score": 0.16
+          "score": 0.14
         },
         {
-          "term": "abbvie products",
-          "score": 0.02
+          "term": "abbvie ability",
+          "score": 0.0
         },
         {
-          "term": "adversely affect abbvie",
-          "score": 0.02
+          "term": "abbvie business results",
+          "score": 0.0
         },
         {
-          "term": "business results operations",
-          "score": 0.02
-        },
-        {
-          "term": "product liability",
-          "score": 0.02
+          "term": "abbvie intellectual property",
+          "score": 0.0
         }
       ],
       "topFallersAlt": [
         {
           "term": "financial condition results",
-          "score": -5.7
+          "score": -5.72
         },
         {
           "term": "abbvie operations financial",
-          "score": -5.29
+          "score": -5.31
         },
         {
           "term": "additional costs",
-          "score": -5.29
+          "score": -5.31
         },
         {
           "term": "future adverse impact",
-          "score": -5.29
+          "score": -5.31
         },
         {
           "term": "product requirements",
-          "score": -5.29
-        },
-        {
-          "term": "abbvie subject",
-          "score": -0.39
+          "score": -5.31
         },
         {
           "term": "affect abbvie results",
-          "score": -0.39
+          "score": -0.41
         },
         {
           "term": "products united states",
-          "score": -0.39
+          "score": -0.41
         },
         {
           "term": "regulatory requirements",
-          "score": -0.39
-        },
-        {
-          "term": "abbvie operations",
-          "score": -0.27
+          "score": -0.41
         },
         {
           "term": "united states",
-          "score": -0.24
+          "score": -0.26
         },
         {
           "term": "research development",
-          "score": -0.12
+          "score": -0.14
         },
         {
           "term": "intellectual property",
-          "score": -0.02
+          "score": -0.04
         },
         {
-          "term": "climate change",
-          "score": 0.02
+          "term": "abbvie ability",
+          "score": 0.0
         },
         {
-          "term": "market share",
-          "score": 0.02
+          "term": "abbvie business results",
+          "score": 0.0
+        },
+        {
+          "term": "abbvie intellectual property",
+          "score": 0.0
+        },
+        {
+          "term": "abbvie operations",
+          "score": 0.0
         }
       ],
       "summaryAlt": "Adds emphasis on artificial intelligence, consequences include, result abbvie; de-emphasizes financial condition results, abbvie operations financial, additional costs."

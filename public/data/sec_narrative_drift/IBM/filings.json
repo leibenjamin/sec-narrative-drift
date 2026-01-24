@@ -8,9 +8,11 @@
     "primaryDocument": "a2226548z10-k.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/51143/000104746916010329/a2226548z10-k.htm",
     "extraction": {
-      "confidence": 0.9,
-      "method": "html_anchor",
-      "errors": []
+      "confidence": 0.8999999999999999,
+      "method": "blockdoc_scored",
+      "errors": [
+        "toc_detected"
+      ]
     }
   },
   {
@@ -22,9 +24,11 @@
     "primaryDocument": "a2230222z10-k.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/51143/000104746917001061/a2230222z10-k.htm",
     "extraction": {
-      "confidence": 0.9,
-      "method": "html_anchor",
-      "errors": []
+      "confidence": 0.8999999999999999,
+      "method": "blockdoc_scored",
+      "errors": [
+        "toc_detected"
+      ]
     }
   },
   {
@@ -36,9 +40,11 @@
     "primaryDocument": "a2233835z10-k.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/51143/000104746918001117/a2233835z10-k.htm",
     "extraction": {
-      "confidence": 0.9,
-      "method": "html_anchor",
-      "errors": []
+      "confidence": 0.8999999999999999,
+      "method": "blockdoc_scored",
+      "errors": [
+        "toc_detected"
+      ]
     }
   },
   {
@@ -50,9 +56,11 @@
     "primaryDocument": "a2237254z10-k.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/51143/000104746919000712/a2237254z10-k.htm",
     "extraction": {
-      "confidence": 0.9,
-      "method": "html_anchor",
-      "errors": []
+      "confidence": 0.8999999999999999,
+      "method": "blockdoc_scored",
+      "errors": [
+        "toc_detected"
+      ]
     }
   },
   {
@@ -65,10 +73,10 @@
     "secUrl": "https://www.sec.gov/Archives/edgar/data/51143/000155837020001334/ibm-20191231x10k2af531.htm",
     "extraction": {
       "confidence": 0.8999999999999999,
-      "method": "text_scored",
+      "method": "blockdoc_scored",
       "errors": [
-        "anchor_low_confidence",
-        "anchor_missing"
+        "toc_header_repeated",
+        "toc_detected"
       ]
     }
   },
@@ -82,10 +90,10 @@
     "secUrl": "https://www.sec.gov/Archives/edgar/data/51143/000155837021001489/ibm-20201231x10k.htm",
     "extraction": {
       "confidence": 0.8999999999999999,
-      "method": "text_scored",
+      "method": "blockdoc_scored",
       "errors": [
-        "anchor_low_confidence",
-        "anchor_missing"
+        "toc_header_repeated",
+        "toc_detected"
       ]
     }
   },
@@ -99,10 +107,10 @@
     "secUrl": "https://www.sec.gov/Archives/edgar/data/51143/000155837022001584/ibm-20211231x10k.htm",
     "extraction": {
       "confidence": 0.8999999999999999,
-      "method": "text_scored",
+      "method": "blockdoc_scored",
       "errors": [
-        "anchor_low_confidence",
-        "anchor_missing"
+        "toc_header_repeated",
+        "toc_detected"
       ]
     }
   },
@@ -116,10 +124,10 @@
     "secUrl": "https://www.sec.gov/Archives/edgar/data/51143/000155837023002376/ibm-20221231x10k.htm",
     "extraction": {
       "confidence": 0.8999999999999999,
-      "method": "text_scored",
+      "method": "blockdoc_scored",
       "errors": [
-        "anchor_low_confidence",
-        "anchor_missing"
+        "toc_header_repeated",
+        "toc_detected"
       ]
     }
   },
@@ -133,10 +141,10 @@
     "secUrl": "https://www.sec.gov/Archives/edgar/data/51143/000005114324000012/ibm-20231231.htm",
     "extraction": {
       "confidence": 0.8999999999999999,
-      "method": "text_scored",
+      "method": "blockdoc_scored",
       "errors": [
-        "anchor_low_confidence",
-        "anchor_missing"
+        "toc_header_repeated",
+        "toc_detected"
       ]
     }
   },
@@ -150,10 +158,10 @@
     "secUrl": "https://www.sec.gov/Archives/edgar/data/51143/000005114325000015/ibm-20241231.htm",
     "extraction": {
       "confidence": 0.8999999999999999,
-      "method": "text_scored",
+      "method": "blockdoc_scored",
       "errors": [
-        "anchor_low_confidence",
-        "anchor_missing"
+        "toc_header_repeated",
+        "toc_detected"
       ]
     }
   }

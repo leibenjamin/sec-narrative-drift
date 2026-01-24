@@ -9,10 +9,10 @@
     "secUrl": "https://www.sec.gov/Archives/edgar/data/310158/000031015816000063/mrk1231201510k.htm",
     "extraction": {
       "confidence": 0.8999999999999999,
-      "method": "text_scored",
+      "method": "blockdoc_scored",
       "errors": [
-        "anchor_low_confidence",
-        "anchor_missing"
+        "toc_header_repeated",
+        "toc_detected"
       ]
     }
   },
@@ -26,10 +26,10 @@
     "secUrl": "https://www.sec.gov/Archives/edgar/data/310158/000031015817000010/mrk1231201610k.htm",
     "extraction": {
       "confidence": 0.8999999999999999,
-      "method": "text_scored",
+      "method": "blockdoc_scored",
       "errors": [
-        "anchor_low_confidence",
-        "anchor_missing"
+        "toc_header_repeated",
+        "toc_detected"
       ]
     }
   },
@@ -43,10 +43,10 @@
     "secUrl": "https://www.sec.gov/Archives/edgar/data/310158/000031015818000005/mrk1231201710k.htm",
     "extraction": {
       "confidence": 0.8999999999999999,
-      "method": "text_scored",
+      "method": "blockdoc_scored",
       "errors": [
-        "anchor_low_confidence",
-        "anchor_missing"
+        "toc_header_repeated",
+        "toc_detected"
       ]
     }
   },
@@ -60,10 +60,10 @@
     "secUrl": "https://www.sec.gov/Archives/edgar/data/310158/000031015819000014/mrk1231201810k.htm",
     "extraction": {
       "confidence": 0.8999999999999999,
-      "method": "text_scored",
+      "method": "blockdoc_scored",
       "errors": [
-        "anchor_low_confidence",
-        "anchor_missing"
+        "toc_header_repeated",
+        "toc_detected"
       ]
     }
   },
@@ -77,10 +77,10 @@
     "secUrl": "https://www.sec.gov/Archives/edgar/data/310158/000031015820000005/mrk1231201910k.htm",
     "extraction": {
       "confidence": 0.8999999999999999,
-      "method": "text_scored",
+      "method": "blockdoc_scored",
       "errors": [
-        "anchor_low_confidence",
-        "anchor_missing"
+        "toc_header_repeated",
+        "toc_detected"
       ]
     }
   },
@@ -94,10 +94,9 @@
     "secUrl": "https://www.sec.gov/Archives/edgar/data/310158/000031015821000004/mrk-20201231.htm",
     "extraction": {
       "confidence": 0.8999999999999999,
-      "method": "text_scored",
+      "method": "blockdoc_scored",
       "errors": [
-        "anchor_low_confidence",
-        "anchor_missing"
+        "toc_detected"
       ]
     }
   },
@@ -111,10 +110,9 @@
     "secUrl": "https://www.sec.gov/Archives/edgar/data/310158/000031015822000003/mrk-20211231.htm",
     "extraction": {
       "confidence": 0.8999999999999999,
-      "method": "text_scored",
+      "method": "blockdoc_scored",
       "errors": [
-        "anchor_low_confidence",
-        "anchor_missing"
+        "toc_detected"
       ]
     }
   },
@@ -128,10 +126,10 @@
     "secUrl": "https://www.sec.gov/Archives/edgar/data/310158/000162828023005061/mrk-20221231.htm",
     "extraction": {
       "confidence": 0.8999999999999999,
-      "method": "text_scored",
+      "method": "blockdoc_scored",
       "errors": [
-        "anchor_low_confidence",
-        "anchor_missing"
+        "toc_header_repeated",
+        "toc_detected"
       ]
     }
   },
@@ -145,10 +143,9 @@
     "secUrl": "https://www.sec.gov/Archives/edgar/data/310158/000162828024006850/mrk-20231231.htm",
     "extraction": {
       "confidence": 0.8999999999999999,
-      "method": "text_scored",
+      "method": "blockdoc_scored",
       "errors": [
-        "anchor_low_confidence",
-        "anchor_missing"
+        "toc_detected"
       ]
     }
   },
@@ -162,10 +159,9 @@
     "secUrl": "https://www.sec.gov/Archives/edgar/data/310158/000162828025007732/mrk-20241231.htm",
     "extraction": {
       "confidence": 0.8999999999999999,
-      "method": "text_scored",
+      "method": "blockdoc_scored",
       "errors": [
-        "anchor_low_confidence",
-        "anchor_missing"
+        "toc_detected"
       ]
     }
   }

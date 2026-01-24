@@ -2,32 +2,510 @@
   "section": "10k_item1a",
   "yearPairs": [
     {
+      "from": 2015,
+      "to": 2016,
+      "topRisers": [
+        {
+          "term": "premise",
+          "score": 6.79,
+          "z": 0.68,
+          "countPrev": 0,
+          "countCurr": 9,
+          "per10kPrev": 0.0,
+          "per10kCurr": 8.74,
+          "deltaPer10k": 8.74,
+          "distinctive": false
+        },
+        {
+          "term": "premise software",
+          "score": 6.54,
+          "z": 0.65,
+          "countPrev": 0,
+          "countCurr": 7,
+          "per10kPrev": 0.0,
+          "per10kCurr": 6.79,
+          "deltaPer10k": 6.79,
+          "distinctive": false
+        },
+        {
+          "term": "cloud premise",
+          "score": 5.98,
+          "z": 0.6,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.88,
+          "deltaPer10k": 3.88,
+          "distinctive": false
+        },
+        {
+          "term": "Climate change",
+          "score": 5.29,
+          "z": 0.53,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.94,
+          "deltaPer10k": 1.94,
+          "distinctive": false,
+          "includes": [
+            "climate change"
+          ]
+        },
+        {
+          "term": "demand premise",
+          "score": 5.29,
+          "z": 0.53,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.94,
+          "deltaPer10k": 1.94,
+          "distinctive": false
+        },
+        {
+          "term": "hardware indirect",
+          "score": 5.29,
+          "z": 0.53,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.94,
+          "deltaPer10k": 1.94,
+          "distinctive": false
+        },
+        {
+          "term": "mechanisms",
+          "score": 5.29,
+          "z": 0.53,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.94,
+          "deltaPer10k": 1.94,
+          "distinctive": false
+        },
+        {
+          "term": "pricing premise",
+          "score": 5.29,
+          "z": 0.53,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.94,
+          "deltaPer10k": 1.94,
+          "distinctive": false
+        },
+        {
+          "term": "acquisitions important",
+          "score": 4.6,
+          "z": 0.46,
+          "countPrev": 0,
+          "countCurr": 1,
+          "per10kPrev": 0.0,
+          "per10kCurr": 0.97,
+          "deltaPer10k": 0.97,
+          "distinctive": false
+        },
+        {
+          "term": "adapted",
+          "score": 4.6,
+          "z": 0.46,
+          "countPrev": 0,
+          "countCurr": 1,
+          "per10kPrev": 0.0,
+          "per10kCurr": 0.97,
+          "deltaPer10k": 0.97,
+          "distinctive": false
+        },
+        {
+          "term": "affected lose",
+          "score": 4.6,
+          "z": 0.46,
+          "countPrev": 0,
+          "countCurr": 1,
+          "per10kPrev": 0.0,
+          "per10kCurr": 0.97,
+          "deltaPer10k": 0.97,
+          "distinctive": false
+        },
+        {
+          "term": "alter market",
+          "score": 4.6,
+          "z": 0.46,
+          "countPrev": 0,
+          "countCurr": 1,
+          "per10kPrev": 0.0,
+          "per10kCurr": 0.97,
+          "deltaPer10k": 0.97,
+          "distinctive": false
+        },
+        {
+          "term": "arrangements customers",
+          "score": 4.6,
+          "z": 0.46,
+          "countPrev": 0,
+          "countCurr": 1,
+          "per10kPrev": 0.0,
+          "per10kCurr": 0.97,
+          "deltaPer10k": 0.97,
+          "distinctive": false
+        },
+        {
+          "term": "arrangements relative",
+          "score": 4.6,
+          "z": 0.46,
+          "countPrev": 0,
+          "countCurr": 1,
+          "per10kPrev": 0.0,
+          "per10kCurr": 0.97,
+          "deltaPer10k": 0.97,
+          "distinctive": false
+        },
+        {
+          "term": "asset",
+          "score": 4.6,
+          "z": 0.46,
+          "countPrev": 0,
+          "countCurr": 1,
+          "per10kPrev": 0.0,
+          "per10kCurr": 0.97,
+          "deltaPer10k": 0.97,
+          "distinctive": false
+        }
+      ],
+      "topFallers": [
+        {
+          "term": "hardware systems",
+          "score": -8.61,
+          "z": -0.86,
+          "countPrev": 54,
+          "countCurr": 0,
+          "per10kPrev": 53.12,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -53.12,
+          "distinctive": false
+        },
+        {
+          "term": "premises",
+          "score": -6.23,
+          "z": -0.62,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 4.92,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.92,
+          "distinctive": false
+        },
+        {
+          "term": "grants",
+          "score": -5.32,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.97,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.97,
+          "distinctive": false
+        },
+        {
+          "term": "rsus",
+          "score": -5.32,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.97,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.97,
+          "distinctive": false
+        },
+        {
+          "term": "assembly sales",
+          "score": -4.63,
+          "z": -0.46,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 0.98,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -0.98,
+          "distinctive": false
+        },
+        {
+          "term": "changed",
+          "score": -4.63,
+          "z": -0.46,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 0.98,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -0.98,
+          "distinctive": false
+        },
+        {
+          "term": "creating",
+          "score": -4.63,
+          "z": -0.46,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 0.98,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -0.98,
+          "distinctive": false
+        },
+        {
+          "term": "executives",
+          "score": -4.63,
+          "z": -0.46,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 0.98,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -0.98,
+          "distinctive": false
+        },
+        {
+          "term": "focused",
+          "score": -4.63,
+          "z": -0.46,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 0.98,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -0.98,
+          "distinctive": false
+        },
+        {
+          "term": "introduced",
+          "score": -4.63,
+          "z": -0.46,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 0.98,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -0.98,
+          "distinctive": false
+        },
+        {
+          "term": "rsu",
+          "score": -4.63,
+          "z": -0.46,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 0.98,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -0.98,
+          "distinctive": false
+        },
+        {
+          "term": "yemen",
+          "score": -4.63,
+          "z": -0.46,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 0.98,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -0.98,
+          "distinctive": false
+        },
+        {
+          "term": "systems",
+          "score": -1.82,
+          "z": -5.61,
+          "countPrev": 67,
+          "countCurr": 11,
+          "per10kPrev": 65.91,
+          "per10kCurr": 10.68,
+          "deltaPer10k": -55.23,
+          "distinctive": true
+        },
+        {
+          "term": "information technology",
+          "score": -1.39,
+          "z": -1.25,
+          "countPrev": 4,
+          "countCurr": 1,
+          "per10kPrev": 3.94,
+          "per10kCurr": 0.97,
+          "deltaPer10k": -2.96,
+          "distinctive": false
+        },
+        {
+          "term": "based compensation",
+          "score": -0.7,
+          "z": -0.81,
+          "countPrev": 4,
+          "countCurr": 2,
+          "per10kPrev": 3.94,
+          "per10kCurr": 1.94,
+          "deltaPer10k": -1.99,
+          "distinctive": false
+        }
+      ],
+      "summary": "Adds emphasis on premise, premise software, cloud premise; de-emphasizes hardware systems, premises, grants.",
+      "topRisersAlt": [
+        {
+          "term": "new hardware products",
+          "score": 5.76
+        },
+        {
+          "term": "certain hardware products",
+          "score": 5.35
+        },
+        {
+          "term": "hardware products customers",
+          "score": 5.35
+        },
+        {
+          "term": "hardware revenues",
+          "score": 5.35
+        },
+        {
+          "term": "international operations",
+          "score": 5.35
+        },
+        {
+          "term": "new hardware product",
+          "score": 5.35
+        },
+        {
+          "term": "climate change",
+          "score": 4.66
+        },
+        {
+          "term": "hardware business",
+          "score": 1.45
+        },
+        {
+          "term": "hardware products",
+          "score": 1.08
+        },
+        {
+          "term": "software hardware",
+          "score": 0.45
+        },
+        {
+          "term": "products services",
+          "score": 0.31
+        },
+        {
+          "term": "customer demand",
+          "score": 0.3
+        },
+        {
+          "term": "adversely affect",
+          "score": 0.23
+        },
+        {
+          "term": "software hardware cloud",
+          "score": 0.16
+        },
+        {
+          "term": "intellectual property",
+          "score": 0.04
+        }
+      ],
+      "topFallersAlt": [
+        {
+          "term": "hardware systems products",
+          "score": -7.1
+        },
+        {
+          "term": "hardware systems business",
+          "score": -6.68
+        },
+        {
+          "term": "hardware systems",
+          "score": -6.2
+        },
+        {
+          "term": "new hardware systems",
+          "score": -5.97
+        },
+        {
+          "term": "hardware systems revenues",
+          "score": -5.68
+        },
+        {
+          "term": "impact hardware systems",
+          "score": -5.68
+        },
+        {
+          "term": "operations hardware systems",
+          "score": -5.27
+        },
+        {
+          "term": "products services result",
+          "score": -5.27
+        },
+        {
+          "term": "software cloud offerings",
+          "score": -5.27
+        },
+        {
+          "term": "systems revenues",
+          "score": -5.27
+        },
+        {
+          "term": "adversely affect hardware",
+          "score": -0.37
+        },
+        {
+          "term": "laws regulations",
+          "score": -0.19
+        },
+        {
+          "term": "competitive landscape",
+          "score": 0.04
+        },
+        {
+          "term": "data privacy",
+          "score": 0.04
+        },
+        {
+          "term": "data security",
+          "score": 0.04
+        }
+      ],
+      "summaryAlt": "Adds emphasis on new hardware products, certain hardware products, hardware products customers; de-emphasizes hardware systems products, hardware systems business, hardware systems."
+    },
+    {
       "from": 2016,
       "to": 2017,
       "topRisers": [
         {
           "term": "GDPR",
-          "score": 5.68,
+          "score": 5.69,
           "z": 0.57,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.93,
-          "deltaPer10k": 2.93,
+          "per10kCurr": 2.85,
+          "deltaPer10k": 2.85,
           "distinctive": false,
           "includes": [
             "gdpr"
           ]
         },
         {
-          "term": "transfers",
-          "score": 5.68,
+          "term": "errors cloud",
+          "score": 5.69,
           "z": 0.57,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.93,
-          "deltaPer10k": 2.93,
+          "per10kCurr": 2.85,
+          "deltaPer10k": 2.85,
+          "distinctive": false
+        },
+        {
+          "term": "transfers",
+          "score": 5.69,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.85,
+          "deltaPer10k": 2.85,
           "distinctive": false
         },
         {
@@ -37,8 +515,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.96,
-          "deltaPer10k": 1.96,
+          "per10kCurr": 1.9,
+          "deltaPer10k": 1.9,
           "distinctive": false
         },
         {
@@ -48,8 +526,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.96,
-          "deltaPer10k": 1.96,
+          "per10kCurr": 1.9,
+          "deltaPer10k": 1.9,
           "distinctive": false
         },
         {
@@ -59,8 +537,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.96,
-          "deltaPer10k": 1.96,
+          "per10kCurr": 1.9,
+          "deltaPer10k": 1.9,
           "distinctive": false
         },
         {
@@ -70,19 +548,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.96,
-          "deltaPer10k": 1.96,
-          "distinctive": false
-        },
-        {
-          "term": "errors cloud",
-          "score": 5.28,
-          "z": 0.53,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 1.96,
-          "deltaPer10k": 1.96,
+          "per10kCurr": 1.9,
+          "deltaPer10k": 1.9,
           "distinctive": false
         },
         {
@@ -92,8 +559,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.96,
-          "deltaPer10k": 1.96,
+          "per10kCurr": 1.9,
+          "deltaPer10k": 1.9,
           "distinctive": false
         },
         {
@@ -103,8 +570,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.96,
-          "deltaPer10k": 1.96,
+          "per10kCurr": 1.9,
+          "deltaPer10k": 1.9,
           "distinctive": false
         },
         {
@@ -114,8 +581,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.96,
-          "deltaPer10k": 1.96,
+          "per10kCurr": 1.9,
+          "deltaPer10k": 1.9,
           "distinctive": false
         },
         {
@@ -125,8 +592,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.96,
-          "deltaPer10k": 1.96,
+          "per10kCurr": 1.9,
+          "deltaPer10k": 1.9,
           "distinctive": false
         },
         {
@@ -136,8 +603,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.96,
-          "deltaPer10k": 1.96,
+          "per10kCurr": 1.9,
+          "deltaPer10k": 1.9,
           "distinctive": false
         },
         {
@@ -147,8 +614,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.96,
-          "deltaPer10k": 1.96,
+          "per10kCurr": 1.9,
+          "deltaPer10k": 1.9,
           "distinctive": false
         },
         {
@@ -158,8 +625,8 @@
           "countPrev": 0,
           "countCurr": 1,
           "per10kPrev": 0.0,
-          "per10kCurr": 0.98,
-          "deltaPer10k": 0.98,
+          "per10kCurr": 0.95,
+          "deltaPer10k": 0.95,
           "distinctive": false,
           "includes": [
             "pandemics"
@@ -172,8 +639,8 @@
           "countPrev": 0,
           "countCurr": 1,
           "per10kPrev": 0.0,
-          "per10kCurr": 0.98,
-          "deltaPer10k": 0.98,
+          "per10kCurr": 0.95,
+          "deltaPer10k": 0.95,
           "distinctive": false
         }
       ],
@@ -184,31 +651,86 @@
           "z": -0.6,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 4.01,
+          "per10kPrev": 3.88,
           "per10kCurr": 0.0,
-          "deltaPer10k": -4.01,
+          "deltaPer10k": -3.88,
+          "distinctive": false
+        },
+        {
+          "term": "errors software",
+          "score": -5.73,
+          "z": -0.57,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.91,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.91,
           "distinctive": false
         },
         {
           "term": "nokk",
-          "score": -5.33,
+          "score": -5.32,
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 2.0,
+          "per10kPrev": 1.94,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.0,
+          "deltaPer10k": -1.94,
           "distinctive": false
         },
         {
           "term": "ofss",
-          "score": -5.33,
+          "score": -5.32,
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 2.0,
+          "per10kPrev": 1.94,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.0,
+          "deltaPer10k": -1.94,
+          "distinctive": false
+        },
+        {
+          "term": "states various",
+          "score": -5.32,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.94,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.94,
+          "distinctive": false
+        },
+        {
+          "term": "syria iraq",
+          "score": -5.32,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.94,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.94,
+          "distinctive": false
+        },
+        {
+          "term": "taxes united",
+          "score": -5.32,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.94,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.94,
+          "distinctive": false
+        },
+        {
+          "term": "ukraine syria",
+          "score": -5.32,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.94,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.94,
           "distinctive": false
         },
         {
@@ -217,9 +739,9 @@
           "z": -0.46,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 1.0,
+          "per10kPrev": 0.97,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.0,
+          "deltaPer10k": -0.97,
           "distinctive": false
         },
         {
@@ -228,9 +750,9 @@
           "z": -0.46,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 1.0,
+          "per10kPrev": 0.97,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.0,
+          "deltaPer10k": -0.97,
           "distinctive": false
         },
         {
@@ -239,20 +761,9 @@
           "z": -0.46,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 1.0,
+          "per10kPrev": 0.97,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.0,
-          "distinctive": false
-        },
-        {
-          "term": "areas continued",
-          "score": -4.64,
-          "z": -0.46,
-          "countPrev": 1,
-          "countCurr": 0,
-          "per10kPrev": 1.0,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.0,
+          "deltaPer10k": -0.97,
           "distinctive": false
         },
         {
@@ -261,9 +772,9 @@
           "z": -0.46,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 1.0,
+          "per10kPrev": 0.97,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.0,
+          "deltaPer10k": -0.97,
           "distinctive": false
         },
         {
@@ -272,9 +783,9 @@
           "z": -0.46,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 1.0,
+          "per10kPrev": 0.97,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.0,
+          "deltaPer10k": -0.97,
           "distinctive": false
         },
         {
@@ -283,20 +794,9 @@
           "z": -0.46,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 1.0,
+          "per10kPrev": 0.97,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.0,
-          "distinctive": false
-        },
-        {
-          "term": "currency variations",
-          "score": -4.64,
-          "z": -0.46,
-          "countPrev": 1,
-          "countCurr": 0,
-          "per10kPrev": 1.0,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.0,
+          "deltaPer10k": -0.97,
           "distinctive": false
         },
         {
@@ -305,171 +805,138 @@
           "z": -0.46,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 1.0,
+          "per10kPrev": 0.97,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.0,
-          "distinctive": false
-        },
-        {
-          "term": "enable",
-          "score": -4.64,
-          "z": -0.46,
-          "countPrev": 1,
-          "countCurr": 0,
-          "per10kPrev": 1.0,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.0,
-          "distinctive": false
-        },
-        {
-          "term": "estimate reduction",
-          "score": -4.64,
-          "z": -0.46,
-          "countPrev": 1,
-          "countCurr": 0,
-          "per10kPrev": 1.0,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.0,
-          "distinctive": false
-        },
-        {
-          "term": "europe",
-          "score": -4.64,
-          "z": -0.46,
-          "countPrev": 1,
-          "countCurr": 0,
-          "per10kPrev": 1.0,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.0,
+          "deltaPer10k": -0.97,
           "distinctive": false
         }
       ],
-      "summary": "Adds emphasis on GDPR, transfers, called; de-emphasizes outside united, nokk, ofss.",
+      "summary": "Adds emphasis on GDPR, errors cloud, transfers; de-emphasizes outside united, errors software, nokk.",
       "topRisersAlt": [
         {
           "term": "cloud software hardware",
-          "score": 6.97
+          "score": 6.94
         },
         {
           "term": "oracle cloud",
-          "score": 5.74
+          "score": 5.7
         },
         {
           "term": "potential customers",
-          "score": 5.74
+          "score": 5.7
         },
         {
           "term": "offerings customers",
-          "score": 5.33
+          "score": 5.29
         },
         {
           "term": "class action",
-          "score": 4.64
+          "score": 4.6
         },
         {
           "term": "climate change",
-          "score": 0.71
-        },
-        {
-          "term": "certain products",
-          "score": 0.43
+          "score": 0.67
         },
         {
           "term": "cloud based",
-          "score": 0.43
-        },
-        {
-          "term": "hardware products",
-          "score": 0.2
-        },
-        {
-          "term": "customer demand",
-          "score": 0.16
-        },
-        {
-          "term": "products services",
-          "score": 0.14
-        },
-        {
-          "term": "intellectual property",
-          "score": 0.02
+          "score": 0.39
         },
         {
           "term": "operating results",
-          "score": 0.02
+          "score": 0.21
         },
         {
-          "term": "supply chain",
-          "score": 0.02
+          "term": "hardware products",
+          "score": 0.16
         },
         {
           "term": "adversely affect",
-          "score": 0.02
+          "score": 0.14
+        },
+        {
+          "term": "cloud offerings",
+          "score": 0.14
+        },
+        {
+          "term": "products services",
+          "score": 0.04
+        },
+        {
+          "term": "competitive landscape",
+          "score": -0.02
+        },
+        {
+          "term": "data privacy",
+          "score": -0.02
+        },
+        {
+          "term": "data security",
+          "score": -0.02
         }
       ],
       "topFallersAlt": [
         {
-          "term": "table contents",
-          "score": -6.7
-        },
-        {
           "term": "software hardware",
-          "score": -5.7
-        },
-        {
-          "term": "changes customer",
-          "score": -5.29
+          "score": -5.74
         },
         {
           "term": "hardware products customers",
-          "score": -5.29
+          "score": -5.33
         },
         {
           "term": "hardware revenues",
-          "score": -5.29
+          "score": -5.33
+        },
+        {
+          "term": "increase expenses",
+          "score": -5.33
         },
         {
           "term": "software offerings cloud",
-          "score": -5.29
+          "score": -5.33
         },
         {
           "term": "software product service",
-          "score": -5.29
+          "score": -5.33
         },
         {
           "term": "software hardware cloud",
-          "score": -1.51
+          "score": -1.55
         },
         {
           "term": "hardware business",
-          "score": -0.4
+          "score": -0.31
         },
         {
           "term": "new software",
-          "score": -0.16
+          "score": -0.2
         },
         {
-          "term": "competitive landscape",
-          "score": 0.02
+          "term": "customer demand",
+          "score": -0.14
         },
         {
-          "term": "data privacy",
-          "score": 0.02
+          "term": "intellectual property",
+          "score": -0.02
         },
         {
-          "term": "data security",
-          "score": 0.02
+          "term": "supply chain",
+          "score": -0.02
         },
         {
-          "term": "product liability",
-          "score": 0.02
+          "term": "adversely affect business",
+          "score": -0.02
         },
         {
-          "term": "trade restrictions",
-          "score": 0.02
+          "term": "adversely affect operating",
+          "score": -0.02
+        },
+        {
+          "term": "results operations",
+          "score": -0.02
         }
       ],
-      "summaryAlt": "Adds emphasis on cloud software hardware, oracle cloud, potential customers; de-emphasizes table contents, software hardware, changes customer."
+      "summaryAlt": "Adds emphasis on cloud software hardware, oracle cloud, potential customers; de-emphasizes software hardware, hardware products customers, hardware revenues."
     },
     {
       "from": 2017,
@@ -477,463 +944,463 @@
       "topRisers": [
         {
           "term": "cloud license",
-          "score": 7.64,
-          "z": 0.76,
+          "score": 7.66,
+          "z": 0.77,
           "countPrev": 0,
           "countCurr": 23,
           "per10kPrev": 0.0,
-          "per10kCurr": 20.38,
-          "deltaPer10k": 20.38,
-          "distinctive": false
-        },
-        {
-          "term": "contents index",
-          "score": 7.34,
-          "z": 0.73,
-          "countPrev": 0,
-          "countCurr": 17,
-          "per10kPrev": 0.0,
-          "per10kCurr": 15.06,
-          "deltaPer10k": 15.06,
-          "distinctive": false
-        },
-        {
-          "term": "index",
-          "score": 7.34,
-          "z": 0.73,
-          "countPrev": 0,
-          "countCurr": 17,
-          "per10kPrev": 0.0,
-          "per10kCurr": 15.06,
-          "deltaPer10k": 15.06,
-          "distinctive": false
-        },
-        {
-          "term": "index financial",
-          "score": 7.34,
-          "z": 0.73,
-          "countPrev": 0,
-          "countCurr": 17,
-          "per10kPrev": 0.0,
-          "per10kCurr": 15.06,
-          "deltaPer10k": 15.06,
+          "per10kCurr": 20.07,
+          "deltaPer10k": 20.07,
           "distinctive": false
         },
         {
           "term": "license hardware",
-          "score": 7.28,
+          "score": 7.29,
           "z": 0.73,
           "countPrev": 0,
           "countCurr": 16,
           "per10kPrev": 0.0,
-          "per10kCurr": 14.18,
-          "deltaPer10k": 14.18,
+          "per10kCurr": 13.96,
+          "deltaPer10k": 13.96,
           "distinctive": false
         },
         {
           "term": "act",
-          "score": 6.45,
+          "score": 6.47,
           "z": 0.65,
           "countPrev": 0,
           "countCurr": 7,
           "per10kPrev": 0.0,
-          "per10kCurr": 6.2,
-          "deltaPer10k": 6.2,
+          "per10kCurr": 6.11,
+          "deltaPer10k": 6.11,
           "distinctive": false
         },
         {
           "term": "license premise",
-          "score": 6.45,
+          "score": 6.47,
           "z": 0.65,
           "countPrev": 0,
           "countCurr": 7,
           "per10kPrev": 0.0,
-          "per10kCurr": 6.2,
-          "deltaPer10k": 6.2,
+          "per10kCurr": 6.11,
+          "deltaPer10k": 6.11,
           "distinctive": false
         },
         {
           "term": "premise license",
-          "score": 6.45,
+          "score": 6.47,
           "z": 0.65,
           "countPrev": 0,
           "countCurr": 7,
           "per10kPrev": 0.0,
-          "per10kCurr": 6.2,
-          "deltaPer10k": 6.2,
+          "per10kCurr": 6.11,
+          "deltaPer10k": 6.11,
           "distinctive": false
         },
         {
           "term": "tax act",
-          "score": 6.3,
+          "score": 6.31,
           "z": 0.63,
           "countPrev": 0,
           "countCurr": 6,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.32,
-          "deltaPer10k": 5.32,
+          "per10kCurr": 5.24,
+          "deltaPer10k": 5.24,
           "distinctive": false
         },
         {
           "term": "repurchase",
-          "score": 6.12,
+          "score": 6.13,
           "z": 0.61,
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.43,
-          "deltaPer10k": 4.43,
+          "per10kCurr": 4.36,
+          "deltaPer10k": 4.36,
           "distinctive": false
         },
         {
           "term": "machine learning",
-          "score": 5.9,
+          "score": 5.91,
           "z": 0.59,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.54,
-          "deltaPer10k": 3.54,
+          "per10kCurr": 3.49,
+          "deltaPer10k": 3.49,
           "distinctive": false
         },
         {
           "term": "rates renewal",
-          "score": 5.9,
+          "score": 5.91,
           "z": 0.59,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.54,
-          "deltaPer10k": 3.54,
+          "per10kCurr": 3.49,
+          "deltaPer10k": 3.49,
           "distinctive": false
         },
         {
           "term": "repurchase program",
-          "score": 5.9,
+          "score": 5.91,
           "z": 0.59,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.54,
-          "deltaPer10k": 3.54,
+          "per10kCurr": 3.49,
+          "deltaPer10k": 3.49,
           "distinctive": false
         },
         {
           "term": "warehouse",
-          "score": 5.9,
+          "score": 5.91,
           "z": 0.59,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.54,
-          "deltaPer10k": 3.54,
+          "per10kCurr": 3.49,
+          "deltaPer10k": 3.49,
           "distinctive": false
         },
         {
           "term": "autonomous",
-          "score": 5.61,
+          "score": 5.62,
           "z": 0.56,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.66,
-          "deltaPer10k": 2.66,
+          "per10kCurr": 2.62,
+          "deltaPer10k": 2.62,
+          "distinctive": false
+        },
+        {
+          "term": "data warehouse",
+          "score": 5.62,
+          "z": 0.56,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.62,
+          "deltaPer10k": 2.62,
+          "distinctive": false
+        },
+        {
+          "term": "guidance",
+          "score": 5.62,
+          "z": 0.56,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.62,
+          "deltaPer10k": 2.62,
+          "distinctive": false
+        },
+        {
+          "term": "high quality",
+          "score": 5.62,
+          "z": 0.56,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.62,
+          "deltaPer10k": 2.62,
           "distinctive": false
         }
       ],
       "topFallers": [
         {
           "term": "new software",
-          "score": -6.79,
+          "score": -6.77,
           "z": -0.68,
           "countPrev": 8,
           "countCurr": 0,
-          "per10kPrev": 7.83,
+          "per10kPrev": 7.6,
           "per10kCurr": 0.0,
-          "deltaPer10k": -7.83,
+          "deltaPer10k": -7.6,
           "distinctive": false
         },
         {
           "term": "premise software",
-          "score": -6.65,
+          "score": -6.64,
           "z": -0.66,
           "countPrev": 7,
           "countCurr": 0,
-          "per10kPrev": 6.85,
+          "per10kPrev": 6.65,
           "per10kCurr": 0.0,
-          "deltaPer10k": -6.85,
+          "deltaPer10k": -6.65,
           "distinctive": false
         },
         {
           "term": "cloud premise",
-          "score": -6.32,
+          "score": -6.3,
           "z": -0.63,
           "countPrev": 5,
           "countCurr": 0,
-          "per10kPrev": 4.89,
+          "per10kPrev": 4.75,
           "per10kCurr": 0.0,
-          "deltaPer10k": -4.89,
-          "distinctive": false
-        },
-        {
-          "term": "venezuela",
-          "score": -5.81,
-          "z": -0.58,
-          "countPrev": 3,
-          "countCurr": 0,
-          "per10kPrev": 2.93,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -2.93,
-          "distinctive": false
-        },
-        {
-          "term": "advance pricing",
-          "score": -5.4,
-          "z": -0.54,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 1.96,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.96,
-          "distinctive": false
-        },
-        {
-          "term": "anticipated jurisdictions",
-          "score": -5.4,
-          "z": -0.54,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 1.96,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.96,
-          "distinctive": false
-        },
-        {
-          "term": "competitors platforms",
-          "score": -5.4,
-          "z": -0.54,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 1.96,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.96,
-          "distinctive": false
-        },
-        {
-          "term": "demand premise",
-          "score": -5.4,
-          "z": -0.54,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 1.96,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.96,
-          "distinctive": false
-        },
-        {
-          "term": "deployed",
-          "score": -5.4,
-          "z": -0.54,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 1.96,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.96,
-          "distinctive": false
-        },
-        {
-          "term": "increased recent",
-          "score": -5.4,
-          "z": -0.54,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 1.96,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.96,
-          "distinctive": false
-        },
-        {
-          "term": "iraq",
-          "score": -5.4,
-          "z": -0.54,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 1.96,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.96,
-          "distinctive": false
-        },
-        {
-          "term": "license updates",
-          "score": -5.4,
-          "z": -0.54,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 1.96,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.96,
+          "deltaPer10k": -4.75,
           "distinctive": false
         },
         {
           "term": "licenses hardware",
-          "score": -5.4,
+          "score": -5.79,
+          "z": -0.58,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.85,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.85,
+          "distinctive": false
+        },
+        {
+          "term": "venezuela",
+          "score": -5.79,
+          "z": -0.58,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.85,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.85,
+          "distinctive": false
+        },
+        {
+          "term": "advance pricing",
+          "score": -5.39,
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.96,
+          "per10kPrev": 1.9,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.96,
+          "deltaPer10k": -1.9,
+          "distinctive": false
+        },
+        {
+          "term": "anticipated jurisdictions",
+          "score": -5.39,
+          "z": -0.54,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.9,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.9,
+          "distinctive": false
+        },
+        {
+          "term": "competitors platforms",
+          "score": -5.39,
+          "z": -0.54,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.9,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.9,
+          "distinctive": false
+        },
+        {
+          "term": "demand premise",
+          "score": -5.39,
+          "z": -0.54,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.9,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.9,
+          "distinctive": false
+        },
+        {
+          "term": "deployed",
+          "score": -5.39,
+          "z": -0.54,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.9,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.9,
+          "distinctive": false
+        },
+        {
+          "term": "impact effective",
+          "score": -5.39,
+          "z": -0.54,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.9,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.9,
+          "distinctive": false
+        },
+        {
+          "term": "increased recent",
+          "score": -5.39,
+          "z": -0.54,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.9,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.9,
+          "distinctive": false
+        },
+        {
+          "term": "iraq",
+          "score": -5.39,
+          "z": -0.54,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.9,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.9,
+          "distinctive": false
+        },
+        {
+          "term": "license updates",
+          "score": -5.39,
+          "z": -0.54,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.9,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.9,
           "distinctive": false
         },
         {
           "term": "licenses revenues",
-          "score": -5.4,
+          "score": -5.39,
           "z": -0.54,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.96,
+          "per10kPrev": 1.9,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.96,
-          "distinctive": false
-        },
-        {
-          "term": "pricing agreements",
-          "score": -5.4,
-          "z": -0.54,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 1.96,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.96,
+          "deltaPer10k": -1.9,
           "distinctive": false
         }
       ],
-      "summary": "Adds emphasis on cloud license, contents index, index; de-emphasizes new software, premise software, cloud premise.",
+      "summary": "Adds emphasis on cloud license, license hardware, act; de-emphasizes new software, premise software, cloud premise.",
       "topRisersAlt": [
         {
-          "term": "financial statements",
-          "score": 7.18
-        },
-        {
           "term": "cloud license hardware",
-          "score": 6.83
+          "score": 6.88
         },
         {
           "term": "cloud license",
-          "score": 6.11
-        },
-        {
-          "term": "hardware revenues",
-          "score": 5.6
+          "score": 6.17
         },
         {
           "term": "addition changes",
-          "score": 5.19
+          "score": 5.24
         },
         {
           "term": "adversely impact",
-          "score": 5.19
+          "score": 5.24
         },
         {
           "term": "certain services",
-          "score": 5.19
+          "score": 5.24
         },
         {
           "term": "changes business",
-          "score": 5.19
+          "score": 5.24
         },
         {
           "term": "cloud service",
-          "score": 5.19
+          "score": 5.24
         },
         {
           "term": "hardware cloud offerings",
-          "score": 5.19
+          "score": 5.24
+        },
+        {
+          "term": "hardware revenues",
+          "score": 5.24
         },
         {
           "term": "hardware support contracts",
-          "score": 5.19
+          "score": 5.24
         },
         {
           "term": "license support",
-          "score": 5.19
+          "score": 5.24
         },
         {
           "term": "machine learning",
-          "score": 5.19
+          "score": 5.24
         },
         {
           "term": "offerings related services",
-          "score": 5.19
+          "score": 5.24
         },
         {
           "term": "oracle cloud services",
-          "score": 5.19
+          "score": 5.24
+        },
+        {
+          "term": "products services including",
+          "score": 5.24
         }
       ],
       "topFallersAlt": [
         {
           "term": "cloud software hardware",
-          "score": -7.08
+          "score": -7.02
         },
         {
           "term": "new software",
-          "score": -6.36
+          "score": -6.31
         },
         {
           "term": "based tax",
-          "score": -5.84
+          "score": -5.79
         },
         {
           "term": "oracle cloud",
-          "score": -5.84
+          "score": -5.79
         },
         {
           "term": "certain competitors",
-          "score": -5.43
+          "score": -5.38
         },
         {
           "term": "development efforts",
-          "score": -5.43
-        },
-        {
-          "term": "experience foreign",
-          "score": -5.43
+          "score": -5.38
         },
         {
           "term": "experience significant",
-          "score": -5.43
+          "score": -5.38
         },
         {
           "term": "international operations",
-          "score": -5.43
+          "score": -5.38
         },
         {
           "term": "offerings business",
-          "score": -5.43
+          "score": -5.38
         },
         {
           "term": "offerings customers",
-          "score": -5.43
+          "score": -5.38
         },
         {
           "term": "results adversely",
-          "score": -5.43
+          "score": -5.38
         },
         {
           "term": "software hardware cloud",
-          "score": -5.43
+          "score": -5.38
         },
         {
           "term": "trade restrictions",
-          "score": -4.74
+          "score": -4.69
         },
         {
           "term": "cloud based",
-          "score": -0.53
+          "score": -0.48
+        },
+        {
+          "term": "potential customers",
+          "score": -0.48
         }
       ],
-      "summaryAlt": "Adds emphasis on financial statements, cloud license hardware, cloud license; de-emphasizes cloud software hardware, new software, based tax."
+      "summaryAlt": "Adds emphasis on cloud license hardware, cloud license, addition changes; de-emphasizes cloud software hardware, new software, based tax."
     },
     {
       "from": 2018,
@@ -941,334 +1408,334 @@
       "topRisers": [
         {
           "term": "applications infrastructure",
-          "score": 5.74,
-          "z": 0.57,
+          "score": 5.77,
+          "z": 0.58,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.74,
-          "deltaPer10k": 2.74,
+          "per10kCurr": 2.78,
+          "deltaPer10k": 2.78,
           "distinctive": false
         },
         {
           "term": "ccpa",
-          "score": 5.74,
-          "z": 0.57,
+          "score": 5.77,
+          "z": 0.58,
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.74,
-          "deltaPer10k": 2.74,
+          "per10kCurr": 2.78,
+          "deltaPer10k": 2.78,
           "distinctive": false
         },
         {
           "term": "brexit",
-          "score": 5.34,
+          "score": 5.36,
           "z": 0.53,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.83,
-          "deltaPer10k": 1.83,
+          "per10kCurr": 1.85,
+          "deltaPer10k": 1.85,
           "distinctive": false
         },
         {
           "term": "california",
-          "score": 5.34,
+          "score": 5.36,
           "z": 0.53,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.83,
-          "deltaPer10k": 1.83,
+          "per10kCurr": 1.85,
+          "deltaPer10k": 1.85,
           "distinctive": false
         },
         {
           "term": "considering privacy",
-          "score": 5.34,
+          "score": 5.36,
           "z": 0.53,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.83,
-          "deltaPer10k": 1.83,
-          "distinctive": false
-        },
-        {
-          "term": "increase size",
-          "score": 5.34,
-          "z": 0.53,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 1.83,
-          "deltaPer10k": 1.83,
+          "per10kCurr": 1.85,
+          "deltaPer10k": 1.85,
           "distinctive": false
         },
         {
           "term": "product arrangements",
-          "score": 5.34,
+          "score": 5.36,
           "z": 0.53,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.83,
-          "deltaPer10k": 1.83,
+          "per10kCurr": 1.85,
+          "deltaPer10k": 1.85,
           "distinctive": false
         },
         {
           "term": "abilities",
-          "score": 4.65,
-          "z": 0.46,
+          "score": 4.67,
+          "z": 0.47,
           "countPrev": 0,
           "countCurr": 1,
           "per10kPrev": 0.0,
-          "per10kCurr": 0.91,
-          "deltaPer10k": 0.91,
+          "per10kCurr": 0.93,
+          "deltaPer10k": 0.93,
           "distinctive": false
         },
         {
           "term": "abilities conduct",
-          "score": 4.65,
-          "z": 0.46,
+          "score": 4.67,
+          "z": 0.47,
           "countPrev": 0,
           "countCurr": 1,
           "per10kPrev": 0.0,
-          "per10kCurr": 0.91,
-          "deltaPer10k": 0.91,
+          "per10kCurr": 0.93,
+          "deltaPer10k": 0.93,
           "distinctive": false
         },
         {
           "term": "acceptance difficulty",
-          "score": 4.65,
-          "z": 0.46,
+          "score": 4.67,
+          "z": 0.47,
           "countPrev": 0,
           "countCurr": 1,
           "per10kPrev": 0.0,
-          "per10kCurr": 0.91,
-          "deltaPer10k": 0.91,
+          "per10kCurr": 0.93,
+          "deltaPer10k": 0.93,
           "distinctive": false
         },
         {
           "term": "accuracy",
-          "score": 4.65,
-          "z": 0.46,
+          "score": 4.67,
+          "z": 0.47,
           "countPrev": 0,
           "countCurr": 1,
           "per10kPrev": 0.0,
-          "per10kCurr": 0.91,
-          "deltaPer10k": 0.91,
+          "per10kCurr": 0.93,
+          "deltaPer10k": 0.93,
           "distinctive": false
         },
         {
           "term": "accuracy financial",
-          "score": 4.65,
-          "z": 0.46,
+          "score": 4.67,
+          "z": 0.47,
           "countPrev": 0,
           "countCurr": 1,
           "per10kPrev": 0.0,
-          "per10kCurr": 0.91,
-          "deltaPer10k": 0.91,
-          "distinctive": false
-        },
-        {
-          "term": "activities difficulties",
-          "score": 4.65,
-          "z": 0.46,
-          "countPrev": 0,
-          "countCurr": 1,
-          "per10kPrev": 0.0,
-          "per10kCurr": 0.91,
-          "deltaPer10k": 0.91,
+          "per10kCurr": 0.93,
+          "deltaPer10k": 0.93,
           "distinctive": false
         },
         {
           "term": "additionall",
-          "score": 4.65,
-          "z": 0.46,
+          "score": 4.67,
+          "z": 0.47,
           "countPrev": 0,
           "countCurr": 1,
           "per10kPrev": 0.0,
-          "per10kCurr": 0.91,
-          "deltaPer10k": 0.91,
+          "per10kCurr": 0.93,
+          "deltaPer10k": 0.93,
           "distinctive": false
         },
         {
           "term": "adoption",
-          "score": 4.65,
-          "z": 0.46,
+          "score": 4.67,
+          "z": 0.47,
           "countPrev": 0,
           "countCurr": 1,
           "per10kPrev": 0.0,
-          "per10kCurr": 0.91,
-          "deltaPer10k": 0.91,
+          "per10kCurr": 0.93,
+          "deltaPer10k": 0.93,
+          "distinctive": false
+        },
+        {
+          "term": "adoption privacy",
+          "score": 4.67,
+          "z": 0.47,
+          "countPrev": 0,
+          "countCurr": 1,
+          "per10kPrev": 0.0,
+          "per10kCurr": 0.93,
+          "deltaPer10k": 0.93,
+          "distinctive": false
+        },
+        {
+          "term": "advances acquisitions",
+          "score": 4.67,
+          "z": 0.47,
+          "countPrev": 0,
+          "countCurr": 1,
+          "per10kPrev": 0.0,
+          "per10kCurr": 0.93,
+          "deltaPer10k": 0.93,
           "distinctive": false
         }
       ],
       "topFallers": [
         {
           "term": "manufacturers",
-          "score": -6.37,
-          "z": -0.64,
+          "score": -6.34,
+          "z": -0.63,
           "countPrev": 6,
           "countCurr": 0,
-          "per10kPrev": 5.32,
+          "per10kPrev": 5.24,
           "per10kCurr": 0.0,
-          "deltaPer10k": -5.32,
+          "deltaPer10k": -5.24,
           "distinctive": false
         },
         {
           "term": "paas",
-          "score": -6.19,
+          "score": -6.16,
           "z": -0.62,
           "countPrev": 5,
           "countCurr": 0,
-          "per10kPrev": 4.43,
+          "per10kPrev": 4.36,
           "per10kCurr": 0.0,
-          "deltaPer10k": -4.43,
+          "deltaPer10k": -4.36,
           "distinctive": false
         },
         {
           "term": "build",
-          "score": -5.68,
-          "z": -0.57,
+          "score": -5.65,
+          "z": -0.56,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 2.66,
+          "per10kPrev": 2.62,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.66,
+          "deltaPer10k": -2.62,
           "distinctive": false
         },
         {
           "term": "framework",
-          "score": -5.68,
-          "z": -0.57,
+          "score": -5.65,
+          "z": -0.56,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 2.66,
+          "per10kPrev": 2.62,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.66,
+          "deltaPer10k": -2.62,
           "distinctive": false
         },
         {
           "term": "party manufacturers",
-          "score": -5.68,
-          "z": -0.57,
+          "score": -5.65,
+          "z": -0.56,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 2.66,
+          "per10kPrev": 2.62,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.66,
+          "deltaPer10k": -2.62,
           "distinctive": false
         },
         {
           "term": "united states",
-          "score": -5.68,
-          "z": -0.57,
+          "score": -5.65,
+          "z": -0.56,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 2.66,
+          "per10kPrev": 2.62,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.66,
+          "deltaPer10k": -2.62,
           "distinctive": false
         },
         {
           "term": "component inventory",
-          "score": -5.27,
-          "z": -0.53,
+          "score": -5.24,
+          "z": -0.52,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.77,
+          "per10kPrev": 1.75,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.77,
+          "deltaPer10k": -1.75,
           "distinctive": false
         },
         {
           "term": "court justice",
-          "score": -5.27,
-          "z": -0.53,
+          "score": -5.24,
+          "z": -0.52,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.77,
+          "per10kPrev": 1.75,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.77,
+          "deltaPer10k": -1.75,
           "distinctive": false
         },
         {
           "term": "daas",
-          "score": -5.27,
-          "z": -0.53,
+          "score": -5.24,
+          "z": -0.52,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.77,
+          "per10kPrev": 1.75,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.77,
+          "deltaPer10k": -1.75,
           "distinctive": false
         },
         {
           "term": "daas offerings",
-          "score": -5.27,
-          "z": -0.53,
+          "score": -5.24,
+          "z": -0.52,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.77,
+          "per10kPrev": 1.75,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.77,
+          "deltaPer10k": -1.75,
           "distinctive": false
         },
         {
           "term": "design manufacturing",
-          "score": -5.27,
-          "z": -0.53,
+          "score": -5.24,
+          "z": -0.52,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.77,
+          "per10kPrev": 1.75,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.77,
+          "deltaPer10k": -1.75,
           "distinctive": false
         },
         {
           "term": "experience delays",
-          "score": -5.27,
-          "z": -0.53,
+          "score": -5.24,
+          "z": -0.52,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.77,
+          "per10kPrev": 1.75,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.77,
+          "deltaPer10k": -1.75,
           "distinctive": false
         },
         {
           "term": "fulfill",
-          "score": -5.27,
-          "z": -0.53,
+          "score": -5.24,
+          "z": -0.52,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.77,
+          "per10kPrev": 1.75,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.77,
+          "deltaPer10k": -1.75,
           "distinctive": false
         },
         {
           "term": "fulfill orders",
-          "score": -5.27,
-          "z": -0.53,
+          "score": -5.24,
+          "z": -0.52,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.77,
+          "per10kPrev": 1.75,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.77,
+          "deltaPer10k": -1.75,
           "distinctive": false
         },
         {
           "term": "justice",
-          "score": -5.27,
-          "z": -0.53,
+          "score": -5.24,
+          "z": -0.52,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.77,
+          "per10kPrev": 1.75,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.77,
+          "deltaPer10k": -1.75,
           "distinctive": false
         }
       ],
@@ -1276,7 +1743,7 @@
       "topRisersAlt": [
         {
           "term": "foreign currency",
-          "score": 7.35
+          "score": 7.26
         },
         {
           "term": "business practices",
@@ -1284,120 +1751,120 @@
         },
         {
           "term": "acquired products services",
-          "score": 5.36
+          "score": 5.35
         },
         {
           "term": "affect hardware revenues",
-          "score": 5.36
+          "score": 5.35
         },
         {
           "term": "changes business practices",
-          "score": 5.36
+          "score": 5.35
         },
         {
           "term": "cloud operations",
-          "score": 5.36
+          "score": 5.35
+        },
+        {
+          "term": "experience foreign currency",
+          "score": 5.35
         },
         {
           "term": "hardware products adversely",
-          "score": 5.36
+          "score": 5.35
+        },
+        {
+          "term": "international operations",
+          "score": 5.35
         },
         {
           "term": "license hardware product",
-          "score": 5.36
+          "score": 5.35
         },
         {
           "term": "sales revenues",
-          "score": 5.36
+          "score": 5.35
         },
         {
           "term": "data security",
-          "score": 1.44
+          "score": 1.43
         },
         {
           "term": "products services including",
-          "score": 0.46
+          "score": 0.45
         },
         {
           "term": "revenues operating results",
-          "score": 0.46
+          "score": 0.45
         },
         {
           "term": "business operations",
-          "score": 0.23
-        },
-        {
-          "term": "products services",
-          "score": 0.16
-        },
-        {
-          "term": "intellectual property",
-          "score": 0.05
+          "score": 0.22
         }
       ],
       "topFallersAlt": [
         {
-          "term": "hardware revenues",
-          "score": -5.67
-        },
-        {
           "term": "new hardware products",
-          "score": -5.67
+          "score": -5.68
         },
         {
           "term": "risks including",
-          "score": -5.67
+          "score": -5.68
         },
         {
           "term": "adversely affect hardware",
-          "score": -5.26
+          "score": -5.27
         },
         {
           "term": "cause customers",
-          "score": -5.26
+          "score": -5.27
         },
         {
           "term": "certain hardware products",
-          "score": -5.26
+          "score": -5.27
         },
         {
           "term": "changes business",
-          "score": -5.26
+          "score": -5.27
         },
         {
           "term": "cloud service",
-          "score": -5.26
+          "score": -5.27
+        },
+        {
+          "term": "experience foreign",
+          "score": -5.27
         },
         {
           "term": "hardware cloud offerings",
-          "score": -5.26
+          "score": -5.27
+        },
+        {
+          "term": "hardware revenues",
+          "score": -5.27
         },
         {
           "term": "hardware support contracts",
-          "score": -5.26
+          "score": -5.27
         },
         {
           "term": "new hardware product",
-          "score": -5.26
+          "score": -5.27
         },
         {
           "term": "hardware products",
-          "score": -1.46
+          "score": -1.47
         },
         {
           "term": "cloud license",
-          "score": -0.88
+          "score": -0.89
         },
         {
           "term": "hardware business",
-          "score": -0.81
-        },
-        {
-          "term": "product service",
-          "score": -0.36
+          "score": -0.82
         }
       ],
-      "summaryAlt": "Adds emphasis on foreign currency, business practices, acquired products services; de-emphasizes hardware revenues, new hardware products, risks including."
+      "summaryAlt": "Adds emphasis on foreign currency, business practices, acquired products services; de-emphasizes new hardware products, risks including, adversely affect hardware."
     },
     {
       "from": 2019,
@@ -1410,8 +1877,8 @@
           "countPrev": 0,
           "countCurr": 16,
           "per10kPrev": 0.0,
-          "per10kCurr": 13.96,
-          "deltaPer10k": 13.96,
+          "per10kCurr": 14.12,
+          "deltaPer10k": 14.12,
           "distinctive": false,
           "includes": [
             "covid"
@@ -1424,8 +1891,8 @@
           "countPrev": 0,
           "countCurr": 9,
           "per10kPrev": 0.0,
-          "per10kCurr": 7.85,
-          "deltaPer10k": 7.85,
+          "per10kCurr": 7.94,
+          "deltaPer10k": 7.94,
           "distinctive": false
         },
         {
@@ -1435,8 +1902,8 @@
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.36,
-          "deltaPer10k": 4.36,
+          "per10kCurr": 4.41,
+          "deltaPer10k": 4.41,
           "distinctive": false,
           "includes": [
             "cybersecurity"
@@ -1449,8 +1916,8 @@
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.49,
-          "deltaPer10k": 3.49,
+          "per10kCurr": 3.53,
+          "deltaPer10k": 3.53,
           "distinctive": false
         },
         {
@@ -1460,8 +1927,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.62,
-          "deltaPer10k": 2.62,
+          "per10kCurr": 2.65,
+          "deltaPer10k": 2.65,
           "distinctive": false,
           "includes": [
             "coronavirus"
@@ -1474,8 +1941,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.62,
-          "deltaPer10k": 2.62,
+          "per10kCurr": 2.65,
+          "deltaPer10k": 2.65,
           "distinctive": false
         },
         {
@@ -1485,8 +1952,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.62,
-          "deltaPer10k": 2.62,
+          "per10kCurr": 2.65,
+          "deltaPer10k": 2.65,
           "distinctive": false
         },
         {
@@ -1496,8 +1963,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.62,
-          "deltaPer10k": 2.62,
+          "per10kCurr": 2.65,
+          "deltaPer10k": 2.65,
           "distinctive": false
         },
         {
@@ -1507,8 +1974,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.62,
-          "deltaPer10k": 2.62,
+          "per10kCurr": 2.65,
+          "deltaPer10k": 2.65,
           "distinctive": false
         },
         {
@@ -1518,8 +1985,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.62,
-          "deltaPer10k": 2.62,
+          "per10kCurr": 2.65,
+          "deltaPer10k": 2.65,
           "distinctive": false
         },
         {
@@ -1529,8 +1996,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.62,
-          "deltaPer10k": 2.62,
+          "per10kCurr": 2.65,
+          "deltaPer10k": 2.65,
           "distinctive": false
         },
         {
@@ -1540,8 +2007,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.62,
-          "deltaPer10k": 2.62,
+          "per10kCurr": 2.65,
+          "deltaPer10k": 2.65,
           "distinctive": false
         },
         {
@@ -1551,8 +2018,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.74,
-          "deltaPer10k": 1.74,
+          "per10kCurr": 1.76,
+          "deltaPer10k": 1.76,
           "distinctive": false
         },
         {
@@ -1562,8 +2029,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.74,
-          "deltaPer10k": 1.74,
+          "per10kCurr": 1.76,
+          "deltaPer10k": 1.76,
           "distinctive": false
         },
         {
@@ -1573,8 +2040,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.74,
-          "deltaPer10k": 1.74,
+          "per10kCurr": 1.76,
+          "deltaPer10k": 1.76,
           "distinctive": false
         }
       ],
@@ -1585,9 +2052,9 @@
           "z": -0.6,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 3.66,
+          "per10kPrev": 3.7,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.66,
+          "deltaPer10k": -3.7,
           "distinctive": false
         },
         {
@@ -1596,75 +2063,75 @@
           "z": -0.6,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 3.66,
+          "per10kPrev": 3.7,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.66,
+          "deltaPer10k": -3.7,
           "distinctive": false
         },
         {
           "term": "autonomous",
-          "score": -5.75,
+          "score": -5.76,
           "z": -0.57,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 2.74,
+          "per10kPrev": 2.78,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.74,
+          "deltaPer10k": -2.78,
           "distinctive": false
         },
         {
           "term": "autonomous data",
-          "score": -5.75,
+          "score": -5.76,
           "z": -0.57,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 2.74,
+          "per10kPrev": 2.78,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.74,
+          "deltaPer10k": -2.78,
           "distinctive": false
         },
         {
           "term": "oracle autonomous",
-          "score": -5.75,
+          "score": -5.76,
           "z": -0.57,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 2.74,
+          "per10kPrev": 2.78,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.74,
+          "deltaPer10k": -2.78,
           "distinctive": false
         },
         {
           "term": "provisional",
-          "score": -5.75,
+          "score": -5.76,
           "z": -0.57,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 2.74,
+          "per10kPrev": 2.78,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.74,
+          "deltaPer10k": -2.78,
           "distinctive": false
         },
         {
           "term": "transfers",
-          "score": -5.75,
+          "score": -5.76,
           "z": -0.57,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 2.74,
+          "per10kPrev": 2.78,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.74,
+          "deltaPer10k": -2.78,
           "distinctive": false
         },
         {
           "term": "warehouse cloud",
-          "score": -5.75,
+          "score": -5.76,
           "z": -0.57,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 2.74,
+          "per10kPrev": 2.78,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.74,
+          "deltaPer10k": -2.78,
           "distinctive": false
         },
         {
@@ -1673,9 +2140,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.83,
+          "per10kPrev": 1.85,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.83,
+          "deltaPer10k": -1.85,
           "distinctive": false
         },
         {
@@ -1684,9 +2151,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.83,
+          "per10kPrev": 1.85,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.83,
+          "deltaPer10k": -1.85,
           "distinctive": false
         },
         {
@@ -1695,9 +2162,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.83,
+          "per10kPrev": 1.85,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.83,
+          "deltaPer10k": -1.85,
           "distinctive": false
         },
         {
@@ -1706,9 +2173,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.83,
+          "per10kPrev": 1.85,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.83,
+          "deltaPer10k": -1.85,
           "distinctive": false
         },
         {
@@ -1717,9 +2184,9 @@
           "z": -0.46,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 0.91,
+          "per10kPrev": 0.93,
           "per10kCurr": 0.0,
-          "deltaPer10k": -0.91,
+          "deltaPer10k": -0.93,
           "distinctive": false
         },
         {
@@ -1728,9 +2195,9 @@
           "z": -0.46,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 0.91,
+          "per10kPrev": 0.93,
           "per10kCurr": 0.0,
-          "deltaPer10k": -0.91,
+          "deltaPer10k": -0.93,
           "distinctive": false
         },
         {
@@ -1739,9 +2206,9 @@
           "z": -0.46,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 0.91,
+          "per10kPrev": 0.93,
           "per10kCurr": 0.0,
-          "deltaPer10k": -0.91,
+          "deltaPer10k": -0.93,
           "distinctive": false
         }
       ],
@@ -1749,128 +2216,128 @@
       "topRisersAlt": [
         {
           "term": "acquired products",
-          "score": 5.32
+          "score": 5.28
         },
         {
           "term": "business including",
-          "score": 5.32
+          "score": 5.28
         },
         {
           "term": "certain hardware products",
-          "score": 5.32
+          "score": 5.28
         },
         {
           "term": "certain products services",
-          "score": 5.32
+          "score": 5.28
         },
         {
           "term": "including oracle cloud",
-          "score": 5.32
-        },
-        {
-          "term": "international operations",
-          "score": 5.32
+          "score": 5.28
         },
         {
           "term": "international tax",
-          "score": 5.32
+          "score": 5.28
         },
         {
           "term": "tax revenue",
-          "score": 5.32
+          "score": 5.28
         },
         {
           "term": "oracle cloud services",
-          "score": 0.71
+          "score": 0.67
         },
         {
           "term": "adversely impact",
-          "score": 0.42
+          "score": 0.37
         },
         {
           "term": "business operations",
-          "score": 0.31
+          "score": 0.26
         },
         {
           "term": "supply chain",
-          "score": 0.24
+          "score": 0.2
         },
         {
           "term": "adversely affect operating",
-          "score": 0.17
+          "score": 0.12
         },
         {
           "term": "cloud offerings",
-          "score": 0.17
+          "score": 0.12
+        },
+        {
+          "term": "foreign currency",
+          "score": 0.12
         },
         {
           "term": "customer demand",
-          "score": 0.15
+          "score": 0.1
         }
       ],
       "topFallersAlt": [
         {
-          "term": "financial statements",
-          "score": -7.13
-        },
-        {
           "term": "adversely affect ability",
-          "score": -5.3
+          "score": -5.34
         },
         {
           "term": "cloud based",
-          "score": -5.3
+          "score": -5.34
+        },
+        {
+          "term": "experience foreign currency",
+          "score": -5.34
         },
         {
           "term": "license support",
-          "score": -5.3
+          "score": -5.34
         },
         {
           "term": "potential customers",
-          "score": -5.3
+          "score": -5.34
         },
         {
           "term": "product service",
-          "score": -5.3
+          "score": -5.34
         },
         {
           "term": "risks adversely affect",
-          "score": -5.3
+          "score": -5.34
         },
         {
           "term": "data security",
-          "score": -0.69
+          "score": -0.73
         },
         {
           "term": "machine learning",
-          "score": -0.68
+          "score": -0.73
         },
         {
           "term": "certain products",
-          "score": -0.4
+          "score": -0.44
         },
         {
           "term": "products services including",
-          "score": -0.4
-        },
-        {
-          "term": "laws regulations",
-          "score": -0.17
+          "score": -0.44
         },
         {
           "term": "operating results",
-          "score": -0.11
+          "score": -0.16
         },
         {
-          "term": "artificial intelligence",
-          "score": 0.01
+          "term": "intellectual property",
+          "score": -0.04
         },
         {
-          "term": "class action",
-          "score": 0.01
+          "term": "adversely affect",
+          "score": -0.03
+        },
+        {
+          "term": "adversely affect business",
+          "score": -0.03
         }
       ],
-      "summaryAlt": "Adds emphasis on acquired products, business including, certain hardware products; de-emphasizes financial statements, adversely affect ability, cloud based."
+      "summaryAlt": "Adds emphasis on acquired products, business including, certain hardware products; de-emphasizes adversely affect ability, cloud based, experience foreign currency."
     },
     {
       "from": 2020,
@@ -1883,8 +2350,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.88,
-          "deltaPer10k": 2.88,
+          "per10kCurr": 2.92,
+          "deltaPer10k": 2.92,
           "distinctive": false
         },
         {
@@ -1894,8 +2361,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.88,
-          "deltaPer10k": 2.88,
+          "per10kCurr": 2.92,
+          "deltaPer10k": 2.92,
           "distinctive": false
         },
         {
@@ -1905,8 +2372,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.88,
-          "deltaPer10k": 2.88,
+          "per10kCurr": 2.92,
+          "deltaPer10k": 2.92,
           "distinctive": false
         },
         {
@@ -1916,8 +2383,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.88,
-          "deltaPer10k": 2.88,
+          "per10kCurr": 2.92,
+          "deltaPer10k": 2.92,
           "distinctive": false
         },
         {
@@ -1927,8 +2394,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.88,
-          "deltaPer10k": 2.88,
+          "per10kCurr": 2.92,
+          "deltaPer10k": 2.92,
           "distinctive": false
         },
         {
@@ -1938,8 +2405,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.92,
-          "deltaPer10k": 1.92,
+          "per10kCurr": 1.95,
+          "deltaPer10k": 1.95,
           "distinctive": false
         },
         {
@@ -1949,8 +2416,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.92,
-          "deltaPer10k": 1.92,
+          "per10kCurr": 1.95,
+          "deltaPer10k": 1.95,
           "distinctive": false
         },
         {
@@ -1960,8 +2427,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.92,
-          "deltaPer10k": 1.92,
+          "per10kCurr": 1.95,
+          "deltaPer10k": 1.95,
           "distinctive": false
         },
         {
@@ -1971,8 +2438,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.92,
-          "deltaPer10k": 1.92,
+          "per10kCurr": 1.95,
+          "deltaPer10k": 1.95,
           "distinctive": false
         },
         {
@@ -1982,8 +2449,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.92,
-          "deltaPer10k": 1.92,
+          "per10kCurr": 1.95,
+          "deltaPer10k": 1.95,
           "distinctive": false
         },
         {
@@ -1993,8 +2460,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.92,
-          "deltaPer10k": 1.92,
+          "per10kCurr": 1.95,
+          "deltaPer10k": 1.95,
           "distinctive": false
         },
         {
@@ -2004,8 +2471,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.92,
-          "deltaPer10k": 1.92,
+          "per10kCurr": 1.95,
+          "deltaPer10k": 1.95,
           "distinctive": false
         },
         {
@@ -2015,8 +2482,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.92,
-          "deltaPer10k": 1.92,
+          "per10kCurr": 1.95,
+          "deltaPer10k": 1.95,
           "distinctive": false
         },
         {
@@ -2026,8 +2493,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.92,
-          "deltaPer10k": 1.92,
+          "per10kCurr": 1.95,
+          "deltaPer10k": 1.95,
           "distinctive": false
         },
         {
@@ -2037,8 +2504,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.92,
-          "deltaPer10k": 1.92,
+          "per10kCurr": 1.95,
+          "deltaPer10k": 1.95,
           "distinctive": false
         }
       ],
@@ -2049,9 +2516,9 @@
           "z": -0.66,
           "countPrev": 8,
           "countCurr": 0,
-          "per10kPrev": 6.98,
+          "per10kPrev": 7.06,
           "per10kCurr": 0.0,
-          "deltaPer10k": -6.98,
+          "deltaPer10k": -7.06,
           "distinctive": false
         },
         {
@@ -2060,9 +2527,9 @@
           "z": -0.63,
           "countPrev": 6,
           "countCurr": 0,
-          "per10kPrev": 5.23,
+          "per10kPrev": 5.29,
           "per10kCurr": 0.0,
-          "deltaPer10k": -5.23,
+          "deltaPer10k": -5.29,
           "distinctive": false
         },
         {
@@ -2071,9 +2538,9 @@
           "z": -0.63,
           "countPrev": 6,
           "countCurr": 0,
-          "per10kPrev": 5.23,
+          "per10kPrev": 5.29,
           "per10kCurr": 0.0,
-          "deltaPer10k": -5.23,
+          "deltaPer10k": -5.29,
           "distinctive": false
         },
         {
@@ -2082,9 +2549,9 @@
           "z": -0.61,
           "countPrev": 5,
           "countCurr": 0,
-          "per10kPrev": 4.36,
+          "per10kPrev": 4.41,
           "per10kCurr": 0.0,
-          "deltaPer10k": -4.36,
+          "deltaPer10k": -4.41,
           "distinctive": false
         },
         {
@@ -2093,9 +2560,9 @@
           "z": -0.59,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 3.49,
+          "per10kPrev": 3.53,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.49,
+          "deltaPer10k": -3.53,
           "distinctive": false
         },
         {
@@ -2104,9 +2571,9 @@
           "z": -0.59,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 3.49,
+          "per10kPrev": 3.53,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.49,
+          "deltaPer10k": -3.53,
           "distinctive": false
         },
         {
@@ -2115,9 +2582,9 @@
           "z": -0.59,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 3.49,
+          "per10kPrev": 3.53,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.49,
+          "deltaPer10k": -3.53,
           "distinctive": false
         },
         {
@@ -2126,9 +2593,9 @@
           "z": -0.59,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 3.49,
+          "per10kPrev": 3.53,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.49,
+          "deltaPer10k": -3.53,
           "distinctive": false
         },
         {
@@ -2137,9 +2604,9 @@
           "z": -0.59,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 3.49,
+          "per10kPrev": 3.53,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.49,
+          "deltaPer10k": -3.53,
           "distinctive": false
         },
         {
@@ -2148,9 +2615,9 @@
           "z": -0.59,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 3.49,
+          "per10kPrev": 3.53,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.49,
+          "deltaPer10k": -3.53,
           "distinctive": false
         },
         {
@@ -2159,9 +2626,9 @@
           "z": -0.59,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 3.49,
+          "per10kPrev": 3.53,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.49,
+          "deltaPer10k": -3.53,
           "distinctive": false
         },
         {
@@ -2170,9 +2637,9 @@
           "z": -0.56,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 2.62,
+          "per10kPrev": 2.65,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.62,
+          "deltaPer10k": -2.65,
           "distinctive": false,
           "includes": [
             "coronavirus"
@@ -2184,9 +2651,9 @@
           "z": -0.56,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 2.62,
+          "per10kPrev": 2.65,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.62,
+          "deltaPer10k": -2.65,
           "distinctive": false
         },
         {
@@ -2195,9 +2662,9 @@
           "z": -0.56,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 2.62,
+          "per10kPrev": 2.65,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.62,
+          "deltaPer10k": -2.65,
           "distinctive": false
         },
         {
@@ -2206,138 +2673,138 @@
           "z": -0.56,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 2.62,
+          "per10kPrev": 2.65,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.62,
+          "deltaPer10k": -2.65,
           "distinctive": false
         }
       ],
       "summary": "Adds emphasis on esc, esg, home; de-emphasizes conversion, conversion rates, tax act.",
       "topRisersAlt": [
         {
-          "term": "financial statements",
-          "score": 7.2
+          "term": "covid pandemic",
+          "score": 6.85
         },
         {
-          "term": "covid pandemic",
-          "score": 6.82
+          "term": "adversely affected",
+          "score": 6.25
         },
         {
           "term": "cloud license business",
-          "score": 5.7
+          "score": 5.73
         },
         {
           "term": "risks adversely affect",
-          "score": 5.7
+          "score": 5.73
         },
         {
           "term": "acquired technology",
-          "score": 5.29
+          "score": 5.32
         },
         {
           "term": "business financial",
-          "score": 5.29
+          "score": 5.32
         },
         {
           "term": "covid pandemic employees",
-          "score": 5.29
+          "score": 5.32
         },
         {
           "term": "data customers",
-          "score": 5.29
+          "score": 5.32
         },
         {
           "term": "experience foreign currency",
-          "score": 5.29
+          "score": 5.32
         },
         {
           "term": "experience increased",
-          "score": 5.29
+          "score": 5.32
         },
         {
           "term": "experience significant",
-          "score": 5.29
+          "score": 5.32
         },
         {
           "term": "hardware revenues",
-          "score": 5.29
+          "score": 5.32
         },
         {
           "term": "increase tax",
-          "score": 5.29
+          "score": 5.32
         },
         {
           "term": "license support",
-          "score": 5.29
+          "score": 5.32
         },
         {
           "term": "oracle business",
-          "score": 5.29
+          "score": 5.32
         }
       ],
       "topFallersAlt": [
         {
           "term": "business practices",
-          "score": -6.26
+          "score": -6.22
         },
         {
           "term": "acquired companies",
-          "score": -6.03
+          "score": -6.0
         },
         {
           "term": "future acquisitions",
-          "score": -5.74
+          "score": -5.71
         },
         {
           "term": "acquired products",
-          "score": -5.33
+          "score": -5.3
         },
         {
           "term": "business including",
-          "score": -5.33
+          "score": -5.3
         },
         {
           "term": "business operating results",
-          "score": -5.33
+          "score": -5.3
         },
         {
           "term": "certain hardware products",
-          "score": -5.33
+          "score": -5.3
         },
         {
           "term": "changes business practices",
-          "score": -5.33
+          "score": -5.3
         },
         {
           "term": "including oracle cloud",
-          "score": -5.33
+          "score": -5.3
         },
         {
           "term": "international operations",
-          "score": -5.33
+          "score": -5.3
         },
         {
           "term": "products services result",
-          "score": -5.33
+          "score": -5.3
         },
         {
           "term": "sales revenues",
-          "score": -5.33
+          "score": -5.3
         },
         {
           "term": "tax revenue",
-          "score": -5.33
+          "score": -5.3
         },
         {
           "term": "operating results",
-          "score": -0.73
+          "score": -0.7
         },
         {
           "term": "affect ability",
-          "score": -0.72
+          "score": -0.69
         }
       ],
-      "summaryAlt": "Adds emphasis on financial statements, covid pandemic, cloud license business; de-emphasizes business practices, acquired companies, future acquisitions."
+      "summaryAlt": "Adds emphasis on covid pandemic, adversely affected, cloud license business; de-emphasizes business practices, acquired companies, future acquisitions."
     },
     {
       "from": 2021,
@@ -2350,8 +2817,8 @@
           "countPrev": 0,
           "countCurr": 6,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.57,
-          "deltaPer10k": 5.57,
+          "per10kCurr": 5.64,
+          "deltaPer10k": 5.64,
           "distinctive": false
         },
         {
@@ -2361,8 +2828,8 @@
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.64,
-          "deltaPer10k": 4.64,
+          "per10kCurr": 4.7,
+          "deltaPer10k": 4.7,
           "distinctive": false
         },
         {
@@ -2372,8 +2839,8 @@
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.71,
-          "deltaPer10k": 3.71,
+          "per10kCurr": 3.76,
+          "deltaPer10k": 3.76,
           "distinctive": false
         },
         {
@@ -2383,8 +2850,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.78,
-          "deltaPer10k": 2.78,
+          "per10kCurr": 2.82,
+          "deltaPer10k": 2.82,
           "distinctive": false
         },
         {
@@ -2394,8 +2861,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.78,
-          "deltaPer10k": 2.78,
+          "per10kCurr": 2.82,
+          "deltaPer10k": 2.82,
           "distinctive": false
         },
         {
@@ -2405,8 +2872,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.78,
-          "deltaPer10k": 2.78,
+          "per10kCurr": 2.82,
+          "deltaPer10k": 2.82,
           "distinctive": false
         },
         {
@@ -2416,8 +2883,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.78,
-          "deltaPer10k": 2.78,
+          "per10kCurr": 2.82,
+          "deltaPer10k": 2.82,
           "distinctive": false
         },
         {
@@ -2427,8 +2894,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.78,
-          "deltaPer10k": 2.78,
+          "per10kCurr": 2.82,
+          "deltaPer10k": 2.82,
           "distinctive": false
         },
         {
@@ -2438,8 +2905,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.78,
-          "deltaPer10k": 2.78,
+          "per10kCurr": 2.82,
+          "deltaPer10k": 2.82,
           "distinctive": false
         },
         {
@@ -2449,8 +2916,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.86,
-          "deltaPer10k": 1.86,
+          "per10kCurr": 1.88,
+          "deltaPer10k": 1.88,
           "distinctive": false
         },
         {
@@ -2460,8 +2927,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.86,
-          "deltaPer10k": 1.86,
+          "per10kCurr": 1.88,
+          "deltaPer10k": 1.88,
           "distinctive": false
         },
         {
@@ -2471,8 +2938,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.86,
-          "deltaPer10k": 1.86,
+          "per10kCurr": 1.88,
+          "deltaPer10k": 1.88,
           "distinctive": false
         },
         {
@@ -2482,8 +2949,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.86,
-          "deltaPer10k": 1.86,
+          "per10kCurr": 1.88,
+          "deltaPer10k": 1.88,
           "distinctive": false
         },
         {
@@ -2493,8 +2960,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.86,
-          "deltaPer10k": 1.86,
+          "per10kCurr": 1.88,
+          "deltaPer10k": 1.88,
           "distinctive": false
         },
         {
@@ -2504,8 +2971,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.86,
-          "deltaPer10k": 1.86,
+          "per10kCurr": 1.88,
+          "deltaPer10k": 1.88,
           "distinctive": false
         }
       ],
@@ -2516,9 +2983,9 @@
           "z": -0.57,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 2.88,
+          "per10kPrev": 2.92,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.88,
+          "deltaPer10k": -2.92,
           "distinctive": false
         },
         {
@@ -2527,9 +2994,9 @@
           "z": -0.57,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 2.88,
+          "per10kPrev": 2.92,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.88,
+          "deltaPer10k": -2.92,
           "distinctive": false
         },
         {
@@ -2538,9 +3005,9 @@
           "z": -0.57,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 2.88,
+          "per10kPrev": 2.92,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.88,
+          "deltaPer10k": -2.92,
           "distinctive": false
         },
         {
@@ -2549,9 +3016,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.92,
+          "per10kPrev": 1.95,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.92,
+          "deltaPer10k": -1.95,
           "distinctive": false
         },
         {
@@ -2560,9 +3027,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.92,
+          "per10kPrev": 1.95,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.92,
+          "deltaPer10k": -1.95,
           "distinctive": false
         },
         {
@@ -2571,9 +3038,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.92,
+          "per10kPrev": 1.95,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.92,
+          "deltaPer10k": -1.95,
           "distinctive": false
         },
         {
@@ -2582,9 +3049,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.92,
+          "per10kPrev": 1.95,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.92,
+          "deltaPer10k": -1.95,
           "distinctive": false
         },
         {
@@ -2593,20 +3060,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.92,
+          "per10kPrev": 1.95,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.92,
-          "distinctive": false
-        },
-        {
-          "term": "internal external",
-          "score": -5.34,
-          "z": -0.53,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 1.92,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.92,
+          "deltaPer10k": -1.95,
           "distinctive": false
         },
         {
@@ -2615,9 +3071,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.92,
+          "per10kPrev": 1.95,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.92,
+          "deltaPer10k": -1.95,
           "distinctive": false
         },
         {
@@ -2626,9 +3082,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.92,
+          "per10kPrev": 1.95,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.92,
+          "deltaPer10k": -1.95,
           "distinctive": false
         },
         {
@@ -2637,20 +3093,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.92,
+          "per10kPrev": 1.95,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.92,
-          "distinctive": false
-        },
-        {
-          "term": "terms experience",
-          "score": -5.34,
-          "z": -0.53,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 1.92,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.92,
+          "deltaPer10k": -1.95,
           "distinctive": false
         },
         {
@@ -2659,9 +3104,9 @@
           "z": -0.46,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 0.96,
+          "per10kPrev": 0.97,
           "per10kCurr": 0.0,
-          "deltaPer10k": -0.96,
+          "deltaPer10k": -0.97,
           "distinctive": false
         },
         {
@@ -2670,9 +3115,31 @@
           "z": -0.46,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 0.96,
+          "per10kPrev": 0.97,
           "per10kCurr": 0.0,
-          "deltaPer10k": -0.96,
+          "deltaPer10k": -0.97,
+          "distinctive": false
+        },
+        {
+          "term": "accordingly",
+          "score": -4.65,
+          "z": -0.46,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 0.97,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -0.97,
+          "distinctive": false
+        },
+        {
+          "term": "accordingly ability",
+          "score": -4.65,
+          "z": -0.46,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 0.97,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -0.97,
           "distinctive": false
         }
       ],
@@ -2680,128 +3147,128 @@
       "topRisersAlt": [
         {
           "term": "business including",
-          "score": 5.47
+          "score": 5.44
         },
         {
           "term": "oracle cloud",
-          "score": 5.47
+          "score": 5.44
         },
         {
           "term": "products services addition",
-          "score": 5.47
+          "score": 5.44
         },
         {
           "term": "hardware products",
-          "score": 0.68
+          "score": 0.65
         },
         {
           "term": "adversely impact",
-          "score": 0.57
+          "score": 0.54
         },
         {
           "term": "data privacy",
-          "score": 0.57
+          "score": 0.54
         },
         {
           "term": "adversely affect",
-          "score": 0.35
+          "score": 0.32
         },
         {
           "term": "business operations",
-          "score": 0.35
+          "score": 0.32
         },
         {
           "term": "foreign currency",
-          "score": 0.24
+          "score": 0.21
         },
         {
           "term": "products services",
-          "score": 0.18
+          "score": 0.14
         },
         {
           "term": "intellectual property",
-          "score": 0.17
+          "score": 0.13
         },
         {
           "term": "cloud license hardware",
-          "score": 0.17
+          "score": 0.13
         },
         {
           "term": "customer demand",
-          "score": 0.17
+          "score": 0.13
         },
         {
           "term": "cloud offerings",
-          "score": 0.16
+          "score": 0.13
         },
         {
           "term": "results operations",
-          "score": 0.16
+          "score": 0.13
         }
       ],
       "topFallersAlt": [
         {
-          "term": "financial statements",
-          "score": -7.06
+          "term": "covid pandemic",
+          "score": -6.71
         },
         {
-          "term": "covid pandemic",
-          "score": -6.68
+          "term": "adversely affected",
+          "score": -6.11
         },
         {
           "term": "acquired technology",
-          "score": -5.15
+          "score": -5.18
         },
         {
           "term": "affect hardware revenues",
-          "score": -5.15
+          "score": -5.18
         },
         {
           "term": "covid pandemic employees",
-          "score": -5.15
+          "score": -5.18
         },
         {
           "term": "data customers",
-          "score": -5.15
+          "score": -5.18
         },
         {
           "term": "experience foreign currency",
-          "score": -5.15
+          "score": -5.18
         },
         {
           "term": "experience increased",
-          "score": -5.15
+          "score": -5.18
         },
         {
           "term": "experience significant",
-          "score": -5.15
+          "score": -5.18
         },
         {
           "term": "hardware products adversely",
-          "score": -5.15
+          "score": -5.18
         },
         {
           "term": "increase tax",
-          "score": -5.15
+          "score": -5.18
         },
         {
           "term": "international tax",
-          "score": -5.15
+          "score": -5.18
         },
         {
           "term": "data security",
-          "score": -0.53
+          "score": -0.56
         },
         {
           "term": "addition changes",
-          "score": -0.25
+          "score": -0.28
         },
         {
           "term": "cloud license business",
-          "score": -0.25
+          "score": -0.28
         }
       ],
-      "summaryAlt": "Adds emphasis on business including, oracle cloud, products services addition; de-emphasizes financial statements, covid pandemic, acquired technology."
+      "summaryAlt": "Adds emphasis on business including, oracle cloud, products services addition; de-emphasizes covid pandemic, adversely affected, acquired technology."
     },
     {
       "from": 2022,
@@ -2814,8 +3281,8 @@
           "countPrev": 0,
           "countCurr": 6,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.66,
-          "deltaPer10k": 5.66,
+          "per10kCurr": 5.73,
+          "deltaPer10k": 5.73,
           "distinctive": false
         },
         {
@@ -2825,8 +3292,8 @@
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.77,
-          "deltaPer10k": 3.77,
+          "per10kCurr": 3.82,
+          "deltaPer10k": 3.82,
           "distinctive": false
         },
         {
@@ -2836,8 +3303,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.83,
-          "deltaPer10k": 2.83,
+          "per10kCurr": 2.87,
+          "deltaPer10k": 2.87,
           "distinctive": false
         },
         {
@@ -2847,8 +3314,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.83,
-          "deltaPer10k": 2.83,
+          "per10kCurr": 2.87,
+          "deltaPer10k": 2.87,
           "distinctive": false
         },
         {
@@ -2858,8 +3325,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.83,
-          "deltaPer10k": 2.83,
+          "per10kCurr": 2.87,
+          "deltaPer10k": 2.87,
           "distinctive": false
         },
         {
@@ -2869,8 +3336,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.89,
-          "deltaPer10k": 1.89,
+          "per10kCurr": 1.91,
+          "deltaPer10k": 1.91,
           "distinctive": false
         },
         {
@@ -2880,8 +3347,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.89,
-          "deltaPer10k": 1.89,
+          "per10kCurr": 1.91,
+          "deltaPer10k": 1.91,
           "distinctive": false
         },
         {
@@ -2891,8 +3358,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.89,
-          "deltaPer10k": 1.89,
+          "per10kCurr": 1.91,
+          "deltaPer10k": 1.91,
           "distinctive": false
         },
         {
@@ -2902,8 +3369,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.89,
-          "deltaPer10k": 1.89,
+          "per10kCurr": 1.91,
+          "deltaPer10k": 1.91,
           "distinctive": false
         },
         {
@@ -2913,8 +3380,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.89,
-          "deltaPer10k": 1.89,
+          "per10kCurr": 1.91,
+          "deltaPer10k": 1.91,
           "distinctive": false
         },
         {
@@ -2924,8 +3391,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.89,
-          "deltaPer10k": 1.89,
+          "per10kCurr": 1.91,
+          "deltaPer10k": 1.91,
           "distinctive": false
         },
         {
@@ -2935,8 +3402,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.89,
-          "deltaPer10k": 1.89,
+          "per10kCurr": 1.91,
+          "deltaPer10k": 1.91,
           "distinctive": false
         },
         {
@@ -2946,8 +3413,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.89,
-          "deltaPer10k": 1.89,
+          "per10kCurr": 1.91,
+          "deltaPer10k": 1.91,
           "distinctive": false
         },
         {
@@ -2957,8 +3424,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.89,
-          "deltaPer10k": 1.89,
+          "per10kCurr": 1.91,
+          "deltaPer10k": 1.91,
           "distinctive": false
         },
         {
@@ -2968,8 +3435,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.89,
-          "deltaPer10k": 1.89,
+          "per10kCurr": 1.91,
+          "deltaPer10k": 1.91,
           "distinctive": false
         }
       ],
@@ -2980,9 +3447,9 @@
           "z": -0.57,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 2.78,
+          "per10kPrev": 2.82,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.78,
+          "deltaPer10k": -2.82,
           "distinctive": false
         },
         {
@@ -2991,9 +3458,9 @@
           "z": -0.57,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 2.78,
+          "per10kPrev": 2.82,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.78,
+          "deltaPer10k": -2.82,
           "distinctive": false
         },
         {
@@ -3002,9 +3469,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.86,
+          "per10kPrev": 1.88,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.86,
+          "deltaPer10k": -1.88,
           "distinctive": false
         },
         {
@@ -3013,9 +3480,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.86,
+          "per10kPrev": 1.88,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.86,
+          "deltaPer10k": -1.88,
           "distinctive": false
         },
         {
@@ -3024,9 +3491,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.86,
+          "per10kPrev": 1.88,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.86,
+          "deltaPer10k": -1.88,
           "distinctive": false
         },
         {
@@ -3035,9 +3502,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.86,
+          "per10kPrev": 1.88,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.86,
+          "deltaPer10k": -1.88,
           "distinctive": false
         },
         {
@@ -3046,9 +3513,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.86,
+          "per10kPrev": 1.88,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.86,
+          "deltaPer10k": -1.88,
           "distinctive": false
         },
         {
@@ -3057,9 +3524,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.86,
+          "per10kPrev": 1.88,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.86,
+          "deltaPer10k": -1.88,
           "distinctive": false
         },
         {
@@ -3068,9 +3535,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.86,
+          "per10kPrev": 1.88,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.86,
+          "deltaPer10k": -1.88,
           "distinctive": false
         },
         {
@@ -3079,9 +3546,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.86,
+          "per10kPrev": 1.88,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.86,
+          "deltaPer10k": -1.88,
           "distinctive": false
         },
         {
@@ -3090,9 +3557,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.86,
+          "per10kPrev": 1.88,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.86,
+          "deltaPer10k": -1.88,
           "distinctive": false
         },
         {
@@ -3101,9 +3568,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.86,
+          "per10kPrev": 1.88,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.86,
+          "deltaPer10k": -1.88,
           "distinctive": false
         },
         {
@@ -3112,9 +3579,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.86,
+          "per10kPrev": 1.88,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.86,
+          "deltaPer10k": -1.88,
           "distinctive": false
         },
         {
@@ -3123,9 +3590,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.86,
+          "per10kPrev": 1.88,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.86,
+          "deltaPer10k": -1.88,
           "distinctive": false
         },
         {
@@ -3134,138 +3601,138 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.86,
+          "per10kPrev": 1.88,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.86,
+          "deltaPer10k": -1.88,
           "distinctive": false
         }
       ],
       "summary": "Adds emphasis on export controls, sanctions export, multicloud; de-emphasizes travel, virtual, additional indebtedness.",
       "topRisersAlt": [
         {
-          "term": "affect stock",
-          "score": 5.72
-        },
-        {
           "term": "certain customers",
-          "score": 5.72
+          "score": 5.74
         },
         {
           "term": "export controls",
-          "score": 5.72
+          "score": 5.74
         },
         {
           "term": "acquired companies",
-          "score": 5.31
-        },
-        {
-          "term": "adversely affect stock",
-          "score": 5.31
+          "score": 5.33
         },
         {
           "term": "changes tax laws",
-          "score": 5.31
+          "score": 5.33
         },
         {
           "term": "companies products services",
-          "score": 5.31
+          "score": 5.33
         },
         {
           "term": "customers operating",
-          "score": 5.31
+          "score": 5.33
         },
         {
           "term": "employees certain",
-          "score": 5.31
+          "score": 5.33
         },
         {
           "term": "hardware products market",
-          "score": 5.31
+          "score": 5.33
         },
         {
           "term": "human capital",
-          "score": 4.62
+          "score": 4.63
         },
         {
           "term": "cloud services",
-          "score": 0.41
+          "score": 0.42
         },
         {
           "term": "laws regulations",
-          "score": 0.29
+          "score": 0.31
         },
         {
           "term": "adversely affect operating",
-          "score": 0.23
+          "score": 0.24
         },
         {
           "term": "cloud offerings",
-          "score": 0.14
+          "score": 0.15
+        },
+        {
+          "term": "cloud license hardware",
+          "score": 0.11
+        },
+        {
+          "term": "products services",
+          "score": 0.02
         }
       ],
       "topFallersAlt": [
         {
           "term": "business including",
-          "score": -5.31
+          "score": -5.3
         },
         {
           "term": "hardware business",
-          "score": -5.31
+          "score": -5.3
         },
         {
           "term": "hardware revenues",
-          "score": -5.31
+          "score": -5.3
         },
         {
           "term": "including revenue",
-          "score": -5.31
+          "score": -5.3
         },
         {
           "term": "oracle business",
-          "score": -5.31
+          "score": -5.3
         },
         {
           "term": "products services addition",
-          "score": -5.31
+          "score": -5.3
         },
         {
           "term": "sales products services",
-          "score": -5.31
+          "score": -5.3
         },
         {
           "term": "artificial intelligence",
-          "score": -4.62
-        },
-        {
-          "term": "adversely affect",
-          "score": -0.71
+          "score": -4.61
         },
         {
           "term": "hardware products",
-          "score": -0.52
+          "score": -0.5
         },
         {
           "term": "risks adversely affect",
-          "score": -0.41
+          "score": -0.39
         },
         {
           "term": "supply chain",
-          "score": -0.35
+          "score": -0.33
         },
         {
           "term": "operating results",
-          "score": -0.29
+          "score": -0.28
         },
         {
           "term": "oracle cloud services",
-          "score": -0.29
+          "score": -0.28
         },
         {
           "term": "results operations",
-          "score": -0.23
+          "score": -0.21
+        },
+        {
+          "term": "adversely affect",
+          "score": -0.17
         }
       ],
-      "summaryAlt": "Adds emphasis on affect stock, certain customers, export controls; de-emphasizes business including, hardware business, hardware revenues."
+      "summaryAlt": "Adds emphasis on certain customers, export controls, acquired companies; de-emphasizes business including, hardware business, hardware revenues."
     },
     {
       "from": 2023,
@@ -3278,8 +3745,8 @@
           "countPrev": 0,
           "countCurr": 6,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.58,
-          "deltaPer10k": 5.58,
+          "per10kCurr": 5.66,
+          "deltaPer10k": 5.66,
           "distinctive": false
         },
         {
@@ -3289,8 +3756,8 @@
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.65,
-          "deltaPer10k": 4.65,
+          "per10kCurr": 4.71,
+          "deltaPer10k": 4.71,
           "distinctive": false
         },
         {
@@ -3300,8 +3767,8 @@
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.72,
-          "deltaPer10k": 3.72,
+          "per10kCurr": 3.77,
+          "deltaPer10k": 3.77,
           "distinctive": false
         },
         {
@@ -3311,8 +3778,8 @@
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.72,
-          "deltaPer10k": 3.72,
+          "per10kCurr": 3.77,
+          "deltaPer10k": 3.77,
           "distinctive": false
         },
         {
@@ -3322,8 +3789,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.79,
-          "deltaPer10k": 2.79,
+          "per10kCurr": 2.83,
+          "deltaPer10k": 2.83,
           "distinctive": false
         },
         {
@@ -3333,8 +3800,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.79,
-          "deltaPer10k": 2.79,
+          "per10kCurr": 2.83,
+          "deltaPer10k": 2.83,
           "distinctive": false
         },
         {
@@ -3344,8 +3811,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.79,
-          "deltaPer10k": 2.79,
+          "per10kCurr": 2.83,
+          "deltaPer10k": 2.83,
           "distinctive": false
         },
         {
@@ -3355,8 +3822,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.79,
-          "deltaPer10k": 2.79,
+          "per10kCurr": 2.83,
+          "deltaPer10k": 2.83,
           "distinctive": false
         },
         {
@@ -3366,8 +3833,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.79,
-          "deltaPer10k": 2.79,
+          "per10kCurr": 2.83,
+          "deltaPer10k": 2.83,
           "distinctive": false
         },
         {
@@ -3377,8 +3844,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.86,
-          "deltaPer10k": 1.86,
+          "per10kCurr": 1.89,
+          "deltaPer10k": 1.89,
           "distinctive": false,
           "includes": [
             "generative ai"
@@ -3391,8 +3858,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.86,
-          "deltaPer10k": 1.86,
+          "per10kCurr": 1.89,
+          "deltaPer10k": 1.89,
           "distinctive": false
         },
         {
@@ -3402,8 +3869,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.86,
-          "deltaPer10k": 1.86,
+          "per10kCurr": 1.89,
+          "deltaPer10k": 1.89,
           "distinctive": false
         },
         {
@@ -3413,8 +3880,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.86,
-          "deltaPer10k": 1.86,
+          "per10kCurr": 1.89,
+          "deltaPer10k": 1.89,
           "distinctive": false
         },
         {
@@ -3424,8 +3891,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.86,
-          "deltaPer10k": 1.86,
+          "per10kCurr": 1.89,
+          "deltaPer10k": 1.89,
           "distinctive": false
         },
         {
@@ -3435,8 +3902,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.86,
-          "deltaPer10k": 1.86,
+          "per10kCurr": 1.89,
+          "deltaPer10k": 1.89,
           "distinctive": false
         }
       ],
@@ -3447,9 +3914,9 @@
           "z": -0.66,
           "countPrev": 7,
           "countCurr": 0,
-          "per10kPrev": 6.6,
+          "per10kPrev": 6.69,
           "per10kCurr": 0.0,
-          "deltaPer10k": -6.6,
+          "deltaPer10k": -6.69,
           "distinctive": false,
           "includes": [
             "covid"
@@ -3461,9 +3928,9 @@
           "z": -0.64,
           "countPrev": 6,
           "countCurr": 0,
-          "per10kPrev": 5.66,
+          "per10kPrev": 5.73,
           "per10kCurr": 0.0,
-          "deltaPer10k": -5.66,
+          "deltaPer10k": -5.73,
           "distinctive": false
         },
         {
@@ -3472,9 +3939,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.89,
+          "per10kPrev": 1.91,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.89,
+          "deltaPer10k": -1.91,
           "distinctive": false
         },
         {
@@ -3483,9 +3950,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.89,
+          "per10kPrev": 1.91,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.89,
+          "deltaPer10k": -1.91,
           "distinctive": false
         },
         {
@@ -3494,9 +3961,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.89,
+          "per10kPrev": 1.91,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.89,
+          "deltaPer10k": -1.91,
           "distinctive": false
         },
         {
@@ -3505,9 +3972,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.89,
+          "per10kPrev": 1.91,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.89,
+          "deltaPer10k": -1.91,
           "distinctive": false
         },
         {
@@ -3516,9 +3983,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.89,
+          "per10kPrev": 1.91,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.89,
+          "deltaPer10k": -1.91,
           "distinctive": false
         },
         {
@@ -3527,9 +3994,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.89,
+          "per10kPrev": 1.91,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.89,
+          "deltaPer10k": -1.91,
           "distinctive": false
         },
         {
@@ -3538,9 +4005,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.89,
+          "per10kPrev": 1.91,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.89,
+          "deltaPer10k": -1.91,
           "distinctive": false
         },
         {
@@ -3549,9 +4016,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.89,
+          "per10kPrev": 1.91,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.89,
+          "deltaPer10k": -1.91,
           "distinctive": false
         },
         {
@@ -3560,9 +4027,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.89,
+          "per10kPrev": 1.91,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.89,
+          "deltaPer10k": -1.91,
           "distinctive": false
         },
         {
@@ -3571,9 +4038,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.89,
+          "per10kPrev": 1.91,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.89,
+          "deltaPer10k": -1.91,
           "distinctive": false
         },
         {
@@ -3582,9 +4049,9 @@
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.89,
+          "per10kPrev": 1.91,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.89,
+          "deltaPer10k": -1.91,
           "distinctive": false
         },
         {
@@ -3593,9 +4060,9 @@
           "z": -0.46,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 0.94,
+          "per10kPrev": 0.96,
           "per10kCurr": 0.0,
-          "deltaPer10k": -0.94,
+          "deltaPer10k": -0.96,
           "distinctive": false
         },
         {
@@ -3604,9 +4071,9 @@
           "z": -0.46,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 0.94,
+          "per10kPrev": 0.96,
           "per10kCurr": 0.0,
-          "deltaPer10k": -0.94,
+          "deltaPer10k": -0.96,
           "distinctive": false
         }
       ],
@@ -3614,128 +4081,128 @@
       "topRisersAlt": [
         {
           "term": "acquired technology",
-          "score": 5.31
+          "score": 5.29
         },
         {
           "term": "customers use cloud",
-          "score": 5.31
+          "score": 5.29
         },
         {
           "term": "impact results operations",
-          "score": 5.31
+          "score": 5.29
         },
         {
           "term": "oracle business",
-          "score": 5.31
-        },
-        {
-          "term": "adversely affect",
-          "score": 0.71
+          "score": 5.29
         },
         {
           "term": "laws regulations",
-          "score": 0.41
+          "score": 0.4
         },
         {
           "term": "business results operations",
-          "score": 0.41
+          "score": 0.39
         },
         {
           "term": "interest rates",
-          "score": 0.41
+          "score": 0.39
         },
         {
           "term": "oracle cloud",
-          "score": 0.41
+          "score": 0.39
         },
         {
           "term": "risks adversely affect",
-          "score": 0.41
-        },
-        {
-          "term": "cloud services",
-          "score": 0.29
+          "score": 0.39
         },
         {
           "term": "data privacy",
-          "score": 0.29
+          "score": 0.27
         },
         {
           "term": "operating results",
-          "score": 0.29
+          "score": 0.27
+        },
+        {
+          "term": "adversely affect",
+          "score": 0.17
         },
         {
           "term": "products services",
-          "score": 0.18
+          "score": 0.15
         },
         {
-          "term": "acquired product",
-          "score": 0.0
+          "term": "class action",
+          "score": -0.02
+        },
+        {
+          "term": "competitive landscape",
+          "score": -0.02
         }
       ],
       "topFallersAlt": [
         {
-          "term": "affect stock",
-          "score": -5.72
-        },
-        {
           "term": "acquired companies",
-          "score": -5.31
-        },
-        {
-          "term": "adversely affect stock",
-          "score": -5.31
+          "score": -5.33
         },
         {
           "term": "business financial",
-          "score": -5.31
+          "score": -5.33
         },
         {
           "term": "certain products",
-          "score": -5.31
+          "score": -5.33
         },
         {
           "term": "certain services",
-          "score": -5.31
+          "score": -5.33
         },
         {
           "term": "changes tax laws",
-          "score": -5.31
+          "score": -5.33
         },
         {
           "term": "companies products services",
-          "score": -5.31
+          "score": -5.33
         },
         {
           "term": "employees certain",
-          "score": -5.31
+          "score": -5.33
         },
         {
           "term": "export controls",
-          "score": -0.41
+          "score": -0.43
         },
         {
           "term": "hardware products",
-          "score": -0.41
-        },
-        {
-          "term": "oracle cloud services",
-          "score": -0.41
-        },
-        {
-          "term": "products services including",
-          "score": -0.41
+          "score": -0.43
         },
         {
           "term": "adversely affect operating",
-          "score": -0.23
+          "score": -0.25
         },
         {
-          "term": "acquired product",
-          "score": 0.0
+          "term": "foreign currency",
+          "score": -0.02
+        },
+        {
+          "term": "cloud license hardware",
+          "score": -0.02
+        },
+        {
+          "term": "intellectual property",
+          "score": -0.02
+        },
+        {
+          "term": "cloud offerings",
+          "score": -0.02
+        },
+        {
+          "term": "customer demand",
+          "score": -0.02
         }
       ],
-      "summaryAlt": "Adds emphasis on acquired technology, customers use cloud, impact results operations; de-emphasizes affect stock, acquired companies, adversely affect stock."
+      "summaryAlt": "Adds emphasis on acquired technology, customers use cloud, impact results operations; de-emphasizes acquired companies, business financial, certain products."
     },
     {
       "from": 2024,
@@ -3743,13 +4210,13 @@
       "topRisers": [
         {
           "term": "Geopolitical tensions",
-          "score": 6.24,
+          "score": 6.23,
           "z": 0.62,
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.76,
-          "deltaPer10k": 4.76,
+          "per10kCurr": 4.79,
+          "deltaPer10k": 4.79,
           "distinctive": false,
           "includes": [
             "geopolitical"
@@ -3757,24 +4224,24 @@
         },
         {
           "term": "ampere acquisition",
-          "score": 6.02,
+          "score": 6.01,
           "z": 0.6,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.81,
-          "deltaPer10k": 3.81,
+          "per10kCurr": 3.83,
+          "deltaPer10k": 3.83,
           "distinctive": false
         },
         {
           "term": "Large language models",
-          "score": 5.33,
+          "score": 5.32,
           "z": 0.53,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.9,
-          "deltaPer10k": 1.9,
+          "per10kCurr": 1.92,
+          "deltaPer10k": 1.92,
           "distinctive": false,
           "includes": [
             "llms"
@@ -3782,427 +4249,427 @@
         },
         {
           "term": "assumed",
-          "score": 5.33,
+          "score": 5.32,
           "z": 0.53,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.9,
-          "deltaPer10k": 1.9,
+          "per10kCurr": 1.92,
+          "deltaPer10k": 1.92,
           "distinctive": false
         },
         {
           "term": "closing",
-          "score": 5.33,
+          "score": 5.32,
           "z": 0.53,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.9,
-          "deltaPer10k": 1.9,
+          "per10kCurr": 1.92,
+          "deltaPer10k": 1.92,
           "distinctive": false
         },
         {
           "term": "conflicting",
-          "score": 5.33,
+          "score": 5.32,
           "z": 0.53,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.9,
-          "deltaPer10k": 1.9,
+          "per10kCurr": 1.92,
+          "deltaPer10k": 1.92,
           "distinctive": false
         },
         {
           "term": "cyberattacks",
-          "score": 5.33,
+          "score": 5.32,
           "z": 0.53,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.9,
-          "deltaPer10k": 1.9,
+          "per10kCurr": 1.92,
+          "deltaPer10k": 1.92,
           "distinctive": false
         },
         {
           "term": "divergent",
-          "score": 5.33,
+          "score": 5.32,
           "z": 0.53,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.9,
-          "deltaPer10k": 1.9,
+          "per10kCurr": 1.92,
+          "deltaPer10k": 1.92,
           "distinctive": false
         },
         {
           "term": "failing",
-          "score": 5.33,
+          "score": 5.32,
           "z": 0.53,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.9,
-          "deltaPer10k": 1.9,
+          "per10kCurr": 1.92,
+          "deltaPer10k": 1.92,
           "distinctive": false
         },
         {
           "term": "interests",
-          "score": 5.33,
+          "score": 5.32,
           "z": 0.53,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.9,
-          "deltaPer10k": 1.9,
+          "per10kCurr": 1.92,
+          "deltaPer10k": 1.92,
           "distinctive": false
         },
         {
           "term": "marketable",
-          "score": 5.33,
+          "score": 5.32,
           "z": 0.53,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.9,
-          "deltaPer10k": 1.9,
+          "per10kCurr": 1.92,
+          "deltaPer10k": 1.92,
           "distinctive": false
         },
         {
           "term": "passed",
-          "score": 5.33,
+          "score": 5.32,
           "z": 0.53,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.9,
-          "deltaPer10k": 1.9,
+          "per10kCurr": 1.92,
+          "deltaPer10k": 1.92,
           "distinctive": false
         },
         {
           "term": "passed considering",
-          "score": 5.33,
+          "score": 5.32,
           "z": 0.53,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.9,
-          "deltaPer10k": 1.9,
+          "per10kCurr": 1.92,
+          "deltaPer10k": 1.92,
           "distinctive": false
         },
         {
           "term": "produce",
-          "score": 5.33,
+          "score": 5.32,
           "z": 0.53,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.9,
-          "deltaPer10k": 1.9,
+          "per10kCurr": 1.92,
+          "deltaPer10k": 1.92,
           "distinctive": false
         },
         {
           "term": "prohibit",
-          "score": 5.33,
+          "score": 5.32,
           "z": 0.53,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.9,
-          "deltaPer10k": 1.9,
+          "per10kCurr": 1.92,
+          "deltaPer10k": 1.92,
           "distinctive": false
         }
       ],
       "topFallers": [
         {
-          "term": "contents index",
-          "score": -7.22,
-          "z": -0.72,
-          "countPrev": 14,
-          "countCurr": 0,
-          "per10kPrev": 13.02,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -13.02,
-          "distinctive": false
-        },
-        {
-          "term": "index",
-          "score": -7.22,
-          "z": -0.72,
-          "countPrev": 14,
-          "countCurr": 0,
-          "per10kPrev": 13.02,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -13.02,
-          "distinctive": false
-        },
-        {
-          "term": "index financial",
-          "score": -7.22,
-          "z": -0.72,
-          "countPrev": 14,
-          "countCurr": 0,
-          "per10kPrev": 13.02,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -13.02,
-          "distinctive": false
-        },
-        {
           "term": "circumstances",
-          "score": -5.68,
+          "score": -5.69,
           "z": -0.57,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 2.79,
+          "per10kPrev": 2.83,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.79,
+          "deltaPer10k": -2.83,
           "distinctive": false
         },
         {
           "term": "cyber",
-          "score": -5.68,
+          "score": -5.69,
           "z": -0.57,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 2.79,
+          "per10kPrev": 2.83,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.79,
+          "deltaPer10k": -2.83,
           "distinctive": false
         },
         {
           "term": "options",
-          "score": -5.68,
+          "score": -5.69,
           "z": -0.57,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 2.79,
+          "per10kPrev": 2.83,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.79,
+          "deltaPer10k": -2.83,
           "distinctive": false
         },
         {
           "term": "set",
-          "score": -5.68,
+          "score": -5.69,
           "z": -0.57,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 2.79,
+          "per10kPrev": 2.83,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.79,
+          "deltaPer10k": -2.83,
           "distinctive": false
         },
         {
           "term": "assume",
-          "score": -5.28,
+          "score": -5.29,
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.86,
+          "per10kPrev": 1.89,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.86,
+          "deltaPer10k": -1.89,
           "distinctive": false
         },
         {
           "term": "assume acquired",
-          "score": -5.28,
+          "score": -5.29,
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.86,
+          "per10kPrev": 1.89,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.86,
+          "deltaPer10k": -1.89,
           "distinctive": false
         },
         {
           "term": "board directors",
-          "score": -5.28,
+          "score": -5.29,
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.86,
+          "per10kPrev": 1.89,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.86,
+          "deltaPer10k": -1.89,
           "distinctive": false
         },
         {
           "term": "continue dedicate",
-          "score": -5.28,
+          "score": -5.29,
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.86,
+          "per10kPrev": 1.89,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.86,
+          "deltaPer10k": -1.89,
           "distinctive": false
         },
         {
           "term": "dedicate",
-          "score": -5.28,
+          "score": -5.29,
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.86,
+          "per10kPrev": 1.89,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.86,
+          "deltaPer10k": -1.89,
           "distinctive": false
         },
         {
           "term": "dedicate significant",
-          "score": -5.28,
+          "score": -5.29,
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.86,
+          "per10kPrev": 1.89,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.86,
+          "deltaPer10k": -1.89,
           "distinctive": false
         },
         {
           "term": "directors",
-          "score": -5.28,
+          "score": -5.29,
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.86,
+          "per10kPrev": 1.89,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.86,
+          "deltaPer10k": -1.89,
           "distinctive": false
         },
         {
           "term": "disclosures",
-          "score": -5.28,
+          "score": -5.29,
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.86,
+          "per10kPrev": 1.89,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.86,
+          "deltaPer10k": -1.89,
+          "distinctive": false
+        },
+        {
+          "term": "environmental legislation",
+          "score": -5.29,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.89,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.89,
+          "distinctive": false
+        },
+        {
+          "term": "esc",
+          "score": -5.29,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.89,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.89,
+          "distinctive": false
+        },
+        {
+          "term": "face increased",
+          "score": -5.29,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.89,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.89,
           "distinctive": false
         }
       ],
-      "summary": "Adds emphasis on Geopolitical tensions, ampere acquisition, Large language models; de-emphasizes contents index, index, index financial.",
+      "summary": "Adds emphasis on Geopolitical tensions, ampere acquisition, Large language models; de-emphasizes circumstances, cyber, options.",
       "topRisersAlt": [
         {
           "term": "ai products",
-          "score": 5.81
+          "score": 5.83
         },
         {
           "term": "cloud infrastructure",
-          "score": 5.52
+          "score": 5.54
         },
         {
           "term": "government contracts",
-          "score": 5.52
+          "score": 5.54
         },
         {
           "term": "product offerings",
-          "score": 5.52
+          "score": 5.54
         },
         {
           "term": "business product",
-          "score": 5.12
+          "score": 5.13
         },
         {
           "term": "certain services",
-          "score": 5.12
+          "score": 5.13
         },
         {
           "term": "companies products services",
-          "score": 5.12
+          "score": 5.13
         },
         {
           "term": "countries business",
-          "score": 5.12
+          "score": 5.13
         },
         {
           "term": "customer demand data",
-          "score": 5.12
+          "score": 5.13
         },
         {
           "term": "employees certain",
-          "score": 5.12
+          "score": 5.13
         },
         {
           "term": "future subject",
-          "score": 5.12
-        },
-        {
-          "term": "impact ability",
-          "score": 5.12
+          "score": 5.13
         },
         {
           "term": "including revenue",
-          "score": 5.12
+          "score": 5.13
         },
         {
           "term": "infrastructure offerings",
-          "score": 5.12
+          "score": 5.13
         },
         {
           "term": "products services result",
-          "score": 5.12
+          "score": 5.13
+        },
+        {
+          "term": "regulatory requirements",
+          "score": 5.13
         }
       ],
       "topFallersAlt": [
         {
           "term": "acquired product",
-          "score": -5.51
+          "score": -5.5
         },
         {
           "term": "acquired products services",
-          "score": -5.51
+          "score": -5.5
         },
         {
           "term": "acquired technology",
-          "score": -5.51
+          "score": -5.5
         },
         {
           "term": "customers use cloud",
-          "score": -5.51
+          "score": -5.5
         },
         {
           "term": "oracle business",
-          "score": -5.51
+          "score": -5.5
         },
         {
           "term": "adversely impact",
-          "score": -0.61
+          "score": -0.59
         },
         {
-          "term": "cloud services",
-          "score": -0.49
+          "term": "oracle cloud services",
+          "score": -0.59
         },
         {
           "term": "operating results",
-          "score": -0.49
+          "score": -0.48
         },
         {
           "term": "results operations",
-          "score": -0.49
+          "score": -0.48
         },
         {
           "term": "cloud license hardware",
-          "score": -0.21
+          "score": -0.19
         },
         {
           "term": "intellectual property",
-          "score": -0.21
+          "score": -0.19
         },
         {
           "term": "cloud offerings",
-          "score": -0.2
+          "score": -0.19
         },
         {
           "term": "adversely affect",
-          "score": -0.2
+          "score": -0.19
         },
         {
           "term": "business operations",
-          "score": -0.2
+          "score": -0.19
         },
         {
           "term": "adversely affect operating",
-          "score": -0.2
+          "score": -0.19
         }
       ],
       "summaryAlt": "Adds emphasis on ai products, cloud infrastructure, government contracts; de-emphasizes acquired product, acquired products services, acquired technology."

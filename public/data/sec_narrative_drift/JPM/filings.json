@@ -9,9 +9,10 @@
     "secUrl": "https://www.sec.gov/Archives/edgar/data/19617/000001961716000902/corp10k2015.htm",
     "extraction": {
       "confidence": 0.8,
-      "method": "text_scored",
+      "method": "blockdoc_scored",
       "errors": [
-        "early_position_penalty"
+        "early_position_penalty",
+        "toc_detected"
       ]
     }
   },
@@ -25,9 +26,10 @@
     "secUrl": "https://www.sec.gov/Archives/edgar/data/19617/000001961717000314/corp10k2016.htm",
     "extraction": {
       "confidence": 0.9,
-      "method": "text_scored",
+      "method": "blockdoc_scored",
       "errors": [
-        "early_position_penalty"
+        "early_position_penalty",
+        "toc_detected"
       ]
     }
   },
@@ -41,9 +43,10 @@
     "secUrl": "https://www.sec.gov/Archives/edgar/data/19617/000001961718000057/corp10k2017.htm",
     "extraction": {
       "confidence": 0.8,
-      "method": "text_scored",
+      "method": "blockdoc_scored",
       "errors": [
-        "early_position_penalty"
+        "early_position_penalty",
+        "toc_detected"
       ]
     }
   },
@@ -57,9 +60,10 @@
     "secUrl": "https://www.sec.gov/Archives/edgar/data/19617/000001961719000054/corp10k2018.htm",
     "extraction": {
       "confidence": 0.8,
-      "method": "text_scored",
+      "method": "blockdoc_scored",
       "errors": [
-        "early_position_penalty"
+        "early_position_penalty",
+        "toc_detected"
       ]
     }
   },
@@ -73,9 +77,10 @@
     "secUrl": "https://www.sec.gov/Archives/edgar/data/19617/000001961720000257/corp10k2019.htm",
     "extraction": {
       "confidence": 0.8,
-      "method": "text_scored",
+      "method": "blockdoc_scored",
       "errors": [
-        "early_position_penalty"
+        "early_position_penalty",
+        "toc_detected"
       ]
     }
   },
@@ -89,9 +94,10 @@
     "secUrl": "https://www.sec.gov/Archives/edgar/data/19617/000001961721000236/jpm-20201231.htm",
     "extraction": {
       "confidence": 0.8,
-      "method": "text_scored",
+      "method": "blockdoc_scored",
       "errors": [
-        "early_position_penalty"
+        "early_position_penalty",
+        "toc_detected"
       ]
     }
   },
@@ -105,9 +111,10 @@
     "secUrl": "https://www.sec.gov/Archives/edgar/data/19617/000001961722000272/jpm-20211231.htm",
     "extraction": {
       "confidence": 0.8,
-      "method": "text_scored",
+      "method": "blockdoc_scored",
       "errors": [
-        "early_position_penalty"
+        "early_position_penalty",
+        "toc_detected"
       ]
     }
   },
@@ -121,9 +128,10 @@
     "secUrl": "https://www.sec.gov/Archives/edgar/data/19617/000001961723000231/jpm-20221231.htm",
     "extraction": {
       "confidence": 0.8,
-      "method": "text_scored",
+      "method": "blockdoc_scored",
       "errors": [
-        "early_position_penalty"
+        "early_position_penalty",
+        "toc_detected"
       ]
     }
   },
@@ -137,9 +145,10 @@
     "secUrl": "https://www.sec.gov/Archives/edgar/data/19617/000001961724000225/jpm-20231231.htm",
     "extraction": {
       "confidence": 0.8,
-      "method": "text_scored",
+      "method": "blockdoc_scored",
       "errors": [
-        "early_position_penalty"
+        "early_position_penalty",
+        "toc_detected"
       ]
     }
   },
@@ -153,9 +162,10 @@
     "secUrl": "https://www.sec.gov/Archives/edgar/data/19617/000001961725000270/jpm-20241231.htm",
     "extraction": {
       "confidence": 0.8,
-      "method": "text_scored",
+      "method": "blockdoc_scored",
       "errors": [
-        "early_position_penalty"
+        "early_position_penalty",
+        "toc_detected"
       ]
     }
   }

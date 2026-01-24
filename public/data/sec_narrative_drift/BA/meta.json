@@ -2,7 +2,7 @@
   "ticker": "BA",
   "cik": "0000012927",
   "companyName": "BOEING CO",
-  "lastUpdatedUtc": "2026-01-01T20:52:49Z",
+  "lastUpdatedUtc": "2026-01-24T19:44:22Z",
   "formsIncluded": [
     "10-K"
   ],
@@ -15,12 +15,13 @@
   ],
   "extraction": {
     "section": "item1a",
-    "method": "html_anchor",
-    "confidence": 0.8,
+    "method": "blockdoc_scored",
+    "confidence": 0.8999999999999999,
     "warnings": [
-      "early_position_penalty"
+      "toc_header_repeated",
+      "toc_detected"
     ],
-    "lengthChars": 36294,
+    "lengthChars": 35954,
     "endMarkerUsed": "1B",
     "hasItem1C": false
   }

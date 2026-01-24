@@ -2,7 +2,7 @@
   "ticker": "MCD",
   "cik": "0000063908",
   "companyName": "MCDONALDS CORP",
-  "lastUpdatedUtc": "2026-01-01T21:30:03Z",
+  "lastUpdatedUtc": "2026-01-24T19:27:01Z",
   "formsIncluded": [
     "10-K"
   ],
@@ -15,13 +15,15 @@
   ],
   "extraction": {
     "section": "item1a",
-    "method": "html_anchor",
-    "confidence": 0.8,
+    "method": "blockdoc_scored",
+    "confidence": 0.7799999999999999,
     "warnings": [
-      "early_position_penalty"
+      "header_footer_repeat",
+      "end_fallback_used",
+      "toc_detected"
     ],
-    "lengthChars": 33439,
-    "endMarkerUsed": "1B",
+    "lengthChars": 41538,
+    "endMarkerUsed": "Legal Proceedings",
     "hasItem1C": false
   }
 }

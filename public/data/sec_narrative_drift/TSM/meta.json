@@ -2,7 +2,7 @@
   "ticker": "TSM",
   "cik": "0001046179",
   "companyName": "TAIWAN SEMICONDUCTOR MANUFACTURING CO LTD",
-  "lastUpdatedUtc": "2026-01-02T14:56:43Z",
+  "lastUpdatedUtc": "2026-01-20T01:31:08Z",
   "formsIncluded": [
     "20-F"
   ],
@@ -15,13 +15,14 @@
   ],
   "extraction": {
     "section": "item1a",
-    "method": "text_scored",
-    "confidence": 0.75,
+    "method": "blockdoc_scored",
+    "confidence": 0.8,
     "warnings": [
-      "anchor_missing",
-      "early_position_penalty"
+      "toc_header_repeated",
+      "early_position_penalty",
+      "toc_detected"
     ],
-    "lengthChars": 42543,
+    "lengthChars": 42245,
     "endMarkerUsed": "4",
     "hasItem1C": false
   }

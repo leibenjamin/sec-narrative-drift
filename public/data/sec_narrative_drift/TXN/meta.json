@@ -2,7 +2,7 @@
   "ticker": "TXN",
   "cik": "0000097476",
   "companyName": "TEXAS INSTRUMENTS INC",
-  "lastUpdatedUtc": "2026-01-01T21:50:13Z",
+  "lastUpdatedUtc": "2026-01-24T18:56:24Z",
   "formsIncluded": [
     "10-K"
   ],
@@ -15,12 +15,10 @@
   ],
   "extraction": {
     "section": "item1a",
-    "method": "text_scored",
+    "method": "blockdoc_scored",
     "confidence": 0.8999999999999999,
-    "warnings": [
-      "anchor_missing"
-    ],
-    "lengthChars": 23110,
+    "warnings": [],
+    "lengthChars": 23040,
     "endMarkerUsed": "1B",
     "hasItem1C": false
   }

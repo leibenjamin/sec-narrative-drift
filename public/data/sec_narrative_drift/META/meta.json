@@ -2,7 +2,7 @@
   "ticker": "META",
   "cik": "0001326801",
   "companyName": "Meta Platforms, Inc.",
-  "lastUpdatedUtc": "2026-01-01T21:31:23Z",
+  "lastUpdatedUtc": "2026-01-24T18:53:07Z",
   "formsIncluded": [
     "10-K"
   ],
@@ -15,14 +15,13 @@
   ],
   "extraction": {
     "section": "item1a",
-    "method": "text_scored",
-    "confidence": 0.75,
+    "method": "blockdoc_scored",
+    "confidence": 0.8999999999999999,
     "warnings": [
-      "anchor_low_confidence",
-      "anchor_missing",
-      "early_position_penalty"
+      "toc_header_repeated",
+      "toc_detected"
     ],
-    "lengthChars": 117081,
+    "lengthChars": 139283,
     "endMarkerUsed": "1B",
     "hasItem1C": false
   }

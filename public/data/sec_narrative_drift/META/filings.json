@@ -9,10 +9,9 @@
     "secUrl": "https://www.sec.gov/Archives/edgar/data/1326801/000132680116000043/fb-12312015x10k.htm",
     "extraction": {
       "confidence": 0.8999999999999999,
-      "method": "text_scored",
+      "method": "blockdoc_scored",
       "errors": [
-        "anchor_low_confidence",
-        "anchor_missing"
+        "toc_detected"
       ]
     }
   },
@@ -26,10 +25,9 @@
     "secUrl": "https://www.sec.gov/Archives/edgar/data/1326801/000132680117000007/fb-12312016x10k.htm",
     "extraction": {
       "confidence": 0.8999999999999999,
-      "method": "text_scored",
+      "method": "blockdoc_scored",
       "errors": [
-        "anchor_low_confidence",
-        "anchor_missing"
+        "toc_detected"
       ]
     }
   },
@@ -43,10 +41,9 @@
     "secUrl": "https://www.sec.gov/Archives/edgar/data/1326801/000132680118000009/fb-12312017x10k.htm",
     "extraction": {
       "confidence": 0.8999999999999999,
-      "method": "text_scored",
+      "method": "blockdoc_scored",
       "errors": [
-        "anchor_low_confidence",
-        "anchor_missing"
+        "toc_detected"
       ]
     }
   },
@@ -59,12 +56,10 @@
     "primaryDocument": "fb-12312018x10k.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/1326801/000132680119000009/fb-12312018x10k.htm",
     "extraction": {
-      "confidence": 0.75,
-      "method": "text_scored",
+      "confidence": 0.8999999999999999,
+      "method": "blockdoc_scored",
       "errors": [
-        "anchor_low_confidence",
-        "anchor_missing",
-        "early_position_penalty"
+        "toc_detected"
       ]
     }
   },
@@ -78,10 +73,10 @@
     "secUrl": "https://www.sec.gov/Archives/edgar/data/1326801/000132680120000013/fb-12312019x10k.htm",
     "extraction": {
       "confidence": 0.8999999999999999,
-      "method": "text_scored",
+      "method": "blockdoc_scored",
       "errors": [
-        "anchor_low_confidence",
-        "anchor_missing"
+        "toc_header_repeated",
+        "toc_detected"
       ]
     }
   },
@@ -95,10 +90,10 @@
     "secUrl": "https://www.sec.gov/Archives/edgar/data/1326801/000132680121000014/fb-20201231.htm",
     "extraction": {
       "confidence": 0.8999999999999999,
-      "method": "text_scored",
+      "method": "blockdoc_scored",
       "errors": [
-        "anchor_low_confidence",
-        "anchor_missing"
+        "toc_header_repeated",
+        "toc_detected"
       ]
     }
   },
@@ -112,10 +107,10 @@
     "secUrl": "https://www.sec.gov/Archives/edgar/data/1326801/000132680122000018/fb-20211231.htm",
     "extraction": {
       "confidence": 0.8999999999999999,
-      "method": "text_scored",
+      "method": "blockdoc_scored",
       "errors": [
-        "anchor_low_confidence",
-        "anchor_missing"
+        "toc_header_repeated",
+        "toc_detected"
       ]
     }
   },
@@ -128,11 +123,10 @@
     "primaryDocument": "meta-20221231.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/1326801/000132680123000013/meta-20221231.htm",
     "extraction": {
-      "confidence": 0.95,
-      "method": "text_scored",
+      "confidence": 0.8999999999999999,
+      "method": "blockdoc_scored",
       "errors": [
-        "anchor_low_confidence",
-        "anchor_missing"
+        "toc_detected"
       ]
     }
   },
@@ -146,10 +140,10 @@
     "secUrl": "https://www.sec.gov/Archives/edgar/data/1326801/000132680124000012/meta-20231231.htm",
     "extraction": {
       "confidence": 0.8999999999999999,
-      "method": "text_scored",
+      "method": "blockdoc_scored",
       "errors": [
-        "anchor_low_confidence",
-        "anchor_missing"
+        "toc_header_repeated",
+        "toc_detected"
       ]
     }
   },
@@ -163,10 +157,10 @@
     "secUrl": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm",
     "extraction": {
       "confidence": 0.8999999999999999,
-      "method": "text_scored",
+      "method": "blockdoc_scored",
       "errors": [
-        "anchor_low_confidence",
-        "anchor_missing"
+        "toc_header_repeated",
+        "toc_detected"
       ]
     }
   }

@@ -8,10 +8,10 @@
     "primaryDocument": "mcd-12312015x10k.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/63908/000006390816000103/mcd-12312015x10k.htm",
     "extraction": {
-      "confidence": 0.8,
-      "method": "html_anchor",
+      "confidence": 0.8999999999999999,
+      "method": "blockdoc_scored",
       "errors": [
-        "early_position_penalty"
+        "toc_detected"
       ]
     }
   },
@@ -24,9 +24,11 @@
     "primaryDocument": "mcd-12312016x10k.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/63908/000006390817000017/mcd-12312016x10k.htm",
     "extraction": {
-      "confidence": 0.9,
-      "method": "html_anchor",
-      "errors": []
+      "confidence": 0.8999999999999999,
+      "method": "blockdoc_scored",
+      "errors": [
+        "toc_detected"
+      ]
     }
   },
   {
@@ -38,9 +40,11 @@
     "primaryDocument": "mcd-12312017x10k.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/63908/000006390818000010/mcd-12312017x10k.htm",
     "extraction": {
-      "confidence": 0.9,
-      "method": "html_anchor",
-      "errors": []
+      "confidence": 0.8999999999999999,
+      "method": "blockdoc_scored",
+      "errors": [
+        "toc_detected"
+      ]
     }
   },
   {
@@ -52,9 +56,11 @@
     "primaryDocument": "mcd-12312018x10k.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/63908/000006390819000010/mcd-12312018x10k.htm",
     "extraction": {
-      "confidence": 0.9,
-      "method": "html_anchor",
-      "errors": []
+      "confidence": 0.8999999999999999,
+      "method": "blockdoc_scored",
+      "errors": [
+        "toc_detected"
+      ]
     }
   },
   {
@@ -66,10 +72,11 @@
     "primaryDocument": "mcd-12312019x10k.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/63908/000006390820000022/mcd-12312019x10k.htm",
     "extraction": {
-      "confidence": 0.8999999999999999,
-      "method": "text_scored",
+      "confidence": 0.7799999999999999,
+      "method": "blockdoc_scored",
       "errors": [
-        "anchor_missing"
+        "end_fallback_used",
+        "toc_detected"
       ]
     }
   },
@@ -82,10 +89,11 @@
     "primaryDocument": "mcd-20201231.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/63908/000006390821000013/mcd-20201231.htm",
     "extraction": {
-      "confidence": 0.8999999999999999,
-      "method": "text_scored",
+      "confidence": 0.83,
+      "method": "blockdoc_scored",
       "errors": [
-        "anchor_missing"
+        "end_fallback_used",
+        "toc_detected"
       ]
     }
   },
@@ -98,10 +106,12 @@
     "primaryDocument": "mcd-20211231.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/63908/000006390822000011/mcd-20211231.htm",
     "extraction": {
-      "confidence": 0.8999999999999999,
-      "method": "text_scored",
+      "confidence": 0.83,
+      "method": "blockdoc_scored",
       "errors": [
-        "anchor_missing"
+        "header_footer_repeat",
+        "end_fallback_used",
+        "toc_detected"
       ]
     }
   },
@@ -114,10 +124,12 @@
     "primaryDocument": "mcd-20221231.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/63908/000006390823000012/mcd-20221231.htm",
     "extraction": {
-      "confidence": 0.8999999999999999,
-      "method": "text_scored",
+      "confidence": 0.7799999999999999,
+      "method": "blockdoc_scored",
       "errors": [
-        "anchor_missing"
+        "header_footer_repeat",
+        "end_fallback_used",
+        "toc_detected"
       ]
     }
   },
@@ -130,10 +142,12 @@
     "primaryDocument": "mcd-20231231.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/63908/000006390824000072/mcd-20231231.htm",
     "extraction": {
-      "confidence": 0.8999999999999999,
-      "method": "text_scored",
+      "confidence": 0.83,
+      "method": "blockdoc_scored",
       "errors": [
-        "anchor_missing"
+        "header_footer_repeat",
+        "end_fallback_used",
+        "toc_detected"
       ]
     }
   },
@@ -146,10 +160,12 @@
     "primaryDocument": "mcd-20241231.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/63908/000006390825000012/mcd-20241231.htm",
     "extraction": {
-      "confidence": 0.8999999999999999,
-      "method": "text_scored",
+      "confidence": 0.83,
+      "method": "blockdoc_scored",
       "errors": [
-        "anchor_missing"
+        "header_footer_repeat",
+        "end_fallback_used",
+        "toc_detected"
       ]
     }
   }

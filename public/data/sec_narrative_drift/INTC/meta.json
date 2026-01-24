@@ -2,7 +2,7 @@
   "ticker": "INTC",
   "cik": "0000050863",
   "companyName": "INTEL CORP",
-  "lastUpdatedUtc": "2026-01-01T21:17:01Z",
+  "lastUpdatedUtc": "2026-01-24T18:55:16Z",
   "formsIncluded": [
     "10-K"
   ],
@@ -15,14 +15,16 @@
   ],
   "extraction": {
     "section": "item1a",
-    "method": "text_scored",
-    "confidence": 0.8999999999999999,
+    "method": "blockdoc_scored",
+    "confidence": 0.7799999999999999,
     "warnings": [
-      "anchor_low_confidence",
-      "anchor_missing"
+      "header_footer_repeat",
+      "end_fallback_used",
+      "toc_header_repeated",
+      "toc_detected"
     ],
-    "lengthChars": 38619,
-    "endMarkerUsed": "1B",
+    "lengthChars": 84756,
+    "endMarkerUsed": "toc_page_end",
     "hasItem1C": false
   }
 }

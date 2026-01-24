@@ -9,8 +9,10 @@
     "secUrl": "https://www.sec.gov/Archives/edgar/data/1318605/000156459016013195/tsla-10k_20151231.htm",
     "extraction": {
       "confidence": 0.8999999999999999,
-      "method": "text_scored",
-      "errors": []
+      "method": "blockdoc_scored",
+      "errors": [
+        "toc_detected"
+      ]
     }
   },
   {
@@ -23,8 +25,10 @@
     "secUrl": "https://www.sec.gov/Archives/edgar/data/1318605/000156459017003118/tsla-10k_20161231.htm",
     "extraction": {
       "confidence": 0.8999999999999999,
-      "method": "text_scored",
-      "errors": []
+      "method": "blockdoc_scored",
+      "errors": [
+        "toc_detected"
+      ]
     }
   },
   {
@@ -37,8 +41,10 @@
     "secUrl": "https://www.sec.gov/Archives/edgar/data/1318605/000156459018002956/tsla-10k_20171231.htm",
     "extraction": {
       "confidence": 0.8999999999999999,
-      "method": "text_scored",
-      "errors": []
+      "method": "blockdoc_scored",
+      "errors": [
+        "toc_detected"
+      ]
     }
   },
   {
@@ -51,8 +57,10 @@
     "secUrl": "https://www.sec.gov/Archives/edgar/data/1318605/000156459019003165/tsla-10k_20181231.htm",
     "extraction": {
       "confidence": 0.8999999999999999,
-      "method": "text_scored",
-      "errors": []
+      "method": "blockdoc_scored",
+      "errors": [
+        "toc_detected"
+      ]
     }
   },
   {
@@ -65,8 +73,10 @@
     "secUrl": "https://www.sec.gov/Archives/edgar/data/1318605/000156459020004475/tsla-10k_20191231.htm",
     "extraction": {
       "confidence": 0.8999999999999999,
-      "method": "text_scored",
-      "errors": []
+      "method": "blockdoc_scored",
+      "errors": [
+        "toc_detected"
+      ]
     }
   },
   {
@@ -79,8 +89,10 @@
     "secUrl": "https://www.sec.gov/Archives/edgar/data/1318605/000156459021004599/tsla-10k_20201231.htm",
     "extraction": {
       "confidence": 0.8999999999999999,
-      "method": "text_scored",
-      "errors": []
+      "method": "blockdoc_scored",
+      "errors": [
+        "toc_detected"
+      ]
     }
   },
   {
@@ -93,8 +105,10 @@
     "secUrl": "https://www.sec.gov/Archives/edgar/data/1318605/000095017022000796/tsla-20211231.htm",
     "extraction": {
       "confidence": 0.8999999999999999,
-      "method": "text_scored",
-      "errors": []
+      "method": "blockdoc_scored",
+      "errors": [
+        "toc_detected"
+      ]
     }
   },
   {
@@ -107,8 +121,10 @@
     "secUrl": "https://www.sec.gov/Archives/edgar/data/1318605/000095017023001409/tsla-20221231.htm",
     "extraction": {
       "confidence": 0.8999999999999999,
-      "method": "text_scored",
-      "errors": []
+      "method": "blockdoc_scored",
+      "errors": [
+        "toc_detected"
+      ]
     }
   },
   {
@@ -121,8 +137,11 @@
     "secUrl": "https://www.sec.gov/Archives/edgar/data/1318605/000162828024002390/tsla-20231231.htm",
     "extraction": {
       "confidence": 0.8999999999999999,
-      "method": "text_scored",
-      "errors": []
+      "method": "blockdoc_scored",
+      "errors": [
+        "toc_header_repeated",
+        "toc_detected"
+      ]
     }
   },
   {
@@ -135,8 +154,11 @@
     "secUrl": "https://www.sec.gov/Archives/edgar/data/1318605/000162828025003063/tsla-20241231.htm",
     "extraction": {
       "confidence": 0.8999999999999999,
-      "method": "text_scored",
-      "errors": []
+      "method": "blockdoc_scored",
+      "errors": [
+        "toc_header_repeated",
+        "toc_detected"
+      ]
     }
   }
 ]

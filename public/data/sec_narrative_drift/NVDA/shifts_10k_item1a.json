@@ -2,9 +2,484 @@
   "section": "10k_item1a",
   "yearPairs": [
     {
+      "from": 2015,
+      "to": 2016,
+      "topRisers": [
+        {
+          "term": "financing",
+          "score": 6.72,
+          "z": 0.67,
+          "countPrev": 0,
+          "countCurr": 9,
+          "per10kPrev": 0.0,
+          "per10kCurr": 16.37,
+          "deltaPer10k": 16.37,
+          "distinctive": false
+        },
+        {
+          "term": "lease",
+          "score": 6.6,
+          "z": 0.66,
+          "countPrev": 0,
+          "countCurr": 8,
+          "per10kPrev": 0.0,
+          "per10kCurr": 14.55,
+          "deltaPer10k": 14.55,
+          "distinctive": false
+        },
+        {
+          "term": "arrangement",
+          "score": 6.47,
+          "z": 0.65,
+          "countPrev": 0,
+          "countCurr": 7,
+          "per10kPrev": 0.0,
+          "per10kCurr": 12.73,
+          "deltaPer10k": 12.73,
+          "distinctive": false
+        },
+        {
+          "term": "operating lease",
+          "score": 6.47,
+          "z": 0.65,
+          "countPrev": 0,
+          "countCurr": 7,
+          "per10kPrev": 0.0,
+          "per10kCurr": 12.73,
+          "deltaPer10k": 12.73,
+          "distinctive": false
+        },
+        {
+          "term": "construction",
+          "score": 6.31,
+          "z": 0.63,
+          "countPrev": 0,
+          "countCurr": 6,
+          "per10kPrev": 0.0,
+          "per10kCurr": 10.92,
+          "deltaPer10k": 10.92,
+          "distinctive": false
+        },
+        {
+          "term": "financing arrangement",
+          "score": 6.31,
+          "z": 0.63,
+          "countPrev": 0,
+          "countCurr": 6,
+          "per10kPrev": 0.0,
+          "per10kCurr": 10.92,
+          "deltaPer10k": 10.92,
+          "distinctive": false
+        },
+        {
+          "term": "lease financing",
+          "score": 6.31,
+          "z": 0.63,
+          "countPrev": 0,
+          "countCurr": 6,
+          "per10kPrev": 0.0,
+          "per10kCurr": 10.92,
+          "deltaPer10k": 10.92,
+          "distinctive": false
+        },
+        {
+          "term": "building",
+          "score": 6.13,
+          "z": 0.61,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 9.1,
+          "deltaPer10k": 9.1,
+          "distinctive": false
+        },
+        {
+          "term": "customers partners",
+          "score": 6.13,
+          "z": 0.61,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 9.1,
+          "deltaPer10k": 9.1,
+          "distinctive": false
+        },
+        {
+          "term": "headquarters building",
+          "score": 5.91,
+          "z": 0.59,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 7.28,
+          "deltaPer10k": 7.28,
+          "distinctive": false
+        },
+        {
+          "term": "covenants",
+          "score": 5.62,
+          "z": 0.56,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.46,
+          "deltaPer10k": 5.46,
+          "distinctive": false
+        },
+        {
+          "term": "default",
+          "score": 5.62,
+          "z": 0.56,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.46,
+          "deltaPer10k": 5.46,
+          "distinctive": false
+        },
+        {
+          "term": "models",
+          "score": 5.62,
+          "z": 0.56,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.46,
+          "deltaPer10k": 5.46,
+          "distinctive": false
+        },
+        {
+          "term": "new headquarters",
+          "score": 5.62,
+          "z": 0.56,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.46,
+          "deltaPer10k": 5.46,
+          "distinctive": false
+        },
+        {
+          "term": "privacy",
+          "score": 5.62,
+          "z": 0.56,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.46,
+          "deltaPer10k": 5.46,
+          "distinctive": false
+        }
+      ],
+      "topFallers": [
+        {
+          "term": "conversion",
+          "score": -6.08,
+          "z": -0.61,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 7.94,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -7.94,
+          "distinctive": false
+        },
+        {
+          "term": "goldman",
+          "score": -6.08,
+          "z": -0.61,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 7.94,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -7.94,
+          "distinctive": false
+        },
+        {
+          "term": "goldman sachs",
+          "score": -6.08,
+          "z": -0.61,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 7.94,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -7.94,
+          "distinctive": false
+        },
+        {
+          "term": "sachs",
+          "score": -6.08,
+          "z": -0.61,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 7.94,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -7.94,
+          "distinctive": false
+        },
+        {
+          "term": "alleged",
+          "score": -5.39,
+          "z": -0.54,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 3.97,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.97,
+          "distinctive": false
+        },
+        {
+          "term": "cores",
+          "score": -5.39,
+          "z": -0.54,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 3.97,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.97,
+          "distinctive": false
+        },
+        {
+          "term": "district",
+          "score": -5.39,
+          "z": -0.54,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 3.97,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.97,
+          "distinctive": false
+        },
+        {
+          "term": "entities",
+          "score": -5.39,
+          "z": -0.54,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 3.97,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.97,
+          "distinctive": false
+        },
+        {
+          "term": "filed",
+          "score": -5.39,
+          "z": -0.54,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 3.97,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.97,
+          "distinctive": false
+        },
+        {
+          "term": "gpu",
+          "score": -5.39,
+          "z": -0.54,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 3.97,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.97,
+          "distinctive": false
+        },
+        {
+          "term": "key",
+          "score": -5.39,
+          "z": -0.54,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 3.97,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.97,
+          "distinctive": false
+        },
+        {
+          "term": "key employees",
+          "score": -5.39,
+          "z": -0.54,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 3.97,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.97,
+          "distinctive": false
+        },
+        {
+          "term": "portfolio",
+          "score": -5.39,
+          "z": -0.54,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 3.97,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.97,
+          "distinctive": false
+        },
+        {
+          "term": "renew",
+          "score": -5.39,
+          "z": -0.54,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 3.97,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.97,
+          "distinctive": false
+        },
+        {
+          "term": "analyzed",
+          "score": -4.7,
+          "z": -0.47,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 1.98,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.98,
+          "distinctive": false
+        }
+      ],
+      "summary": "Adds emphasis on financing, lease, arrangement; de-emphasizes conversion, goldman, goldman sachs.",
+      "topRisersAlt": [
+        {
+          "term": "adversely affect",
+          "score": 5.96
+        },
+        {
+          "term": "customers partners",
+          "score": 5.96
+        },
+        {
+          "term": "new business",
+          "score": 5.96
+        },
+        {
+          "term": "products services",
+          "score": 5.96
+        },
+        {
+          "term": "operating results",
+          "score": 5.66
+        },
+        {
+          "term": "products services technologies",
+          "score": 5.66
+        },
+        {
+          "term": "costs associated",
+          "score": 5.25
+        },
+        {
+          "term": "costs related",
+          "score": 5.25
+        },
+        {
+          "term": "decline fail",
+          "score": 5.25
+        },
+        {
+          "term": "demand products services",
+          "score": 5.25
+        },
+        {
+          "term": "new products services",
+          "score": 5.25
+        },
+        {
+          "term": "products business",
+          "score": 5.25
+        },
+        {
+          "term": "products design",
+          "score": 5.25
+        },
+        {
+          "term": "products past",
+          "score": 5.25
+        },
+        {
+          "term": "results operations",
+          "score": 0.63
+        }
+      ],
+      "topFallersAlt": [
+        {
+          "term": "past future",
+          "score": -5.81
+        },
+        {
+          "term": "demand products",
+          "score": -5.4
+        },
+        {
+          "term": "new markets",
+          "score": -5.4
+        },
+        {
+          "term": "new products product",
+          "score": -5.4
+        },
+        {
+          "term": "number customers revenue",
+          "score": -5.4
+        },
+        {
+          "term": "operating results past",
+          "score": -5.4
+        },
+        {
+          "term": "revenue customer",
+          "score": -5.4
+        },
+        {
+          "term": "stock price decline",
+          "score": -5.4
+        },
+        {
+          "term": "intellectual property",
+          "score": -1.18
+        },
+        {
+          "term": "harm business",
+          "score": -0.79
+        },
+        {
+          "term": "new products",
+          "score": -0.39
+        },
+        {
+          "term": "gross margin",
+          "score": -0.08
+        },
+        {
+          "term": "market share",
+          "score": -0.08
+        },
+        {
+          "term": "adversely affect financial",
+          "score": -0.08
+        },
+        {
+          "term": "climate change",
+          "score": -0.08
+        }
+      ],
+      "summaryAlt": "Adds emphasis on adversely affect, customers partners, new business; de-emphasizes past future, demand products, new markets."
+    },
+    {
       "from": 2016,
       "to": 2017,
       "topRisers": [
+        {
+          "term": "income share",
+          "score": 5.69,
+          "z": 0.57,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.37,
+          "deltaPer10k": 5.37,
+          "distinctive": false
+        },
         {
           "term": "net",
           "score": 5.69,
@@ -12,8 +487,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.39,
-          "deltaPer10k": 5.39,
+          "per10kCurr": 5.37,
+          "deltaPer10k": 5.37,
           "distinctive": false
         },
         {
@@ -23,8 +498,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.39,
-          "deltaPer10k": 5.39,
+          "per10kCurr": 5.37,
+          "deltaPer10k": 5.37,
           "distinctive": false
         },
         {
@@ -34,8 +509,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.39,
-          "deltaPer10k": 5.39,
+          "per10kCurr": 5.37,
+          "deltaPer10k": 5.37,
           "distinctive": false
         },
         {
@@ -45,8 +520,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.39,
-          "deltaPer10k": 5.39,
+          "per10kCurr": 5.37,
+          "deltaPer10k": 5.37,
           "distinctive": false
         },
         {
@@ -56,8 +531,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.39,
-          "deltaPer10k": 5.39,
+          "per10kCurr": 5.37,
+          "deltaPer10k": 5.37,
           "distinctive": false
         },
         {
@@ -67,8 +542,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.39,
-          "deltaPer10k": 5.39,
+          "per10kCurr": 5.37,
+          "deltaPer10k": 5.37,
           "distinctive": false
         },
         {
@@ -78,8 +553,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.59,
-          "deltaPer10k": 3.59,
+          "per10kCurr": 3.58,
+          "deltaPer10k": 3.58,
           "distinctive": false
         },
         {
@@ -89,8 +564,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.59,
-          "deltaPer10k": 3.59,
+          "per10kCurr": 3.58,
+          "deltaPer10k": 3.58,
           "distinctive": false
         },
         {
@@ -100,8 +575,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.59,
-          "deltaPer10k": 3.59,
+          "per10kCurr": 3.58,
+          "deltaPer10k": 3.58,
           "distinctive": false
         },
         {
@@ -111,8 +586,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.59,
-          "deltaPer10k": 3.59,
+          "per10kCurr": 3.58,
+          "deltaPer10k": 3.58,
           "distinctive": false
         },
         {
@@ -122,8 +597,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.59,
-          "deltaPer10k": 3.59,
+          "per10kCurr": 3.58,
+          "deltaPer10k": 3.58,
           "distinctive": false
         },
         {
@@ -133,8 +608,19 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.59,
-          "deltaPer10k": 3.59,
+          "per10kCurr": 3.58,
+          "deltaPer10k": 3.58,
+          "distinctive": false
+        },
+        {
+          "term": "price common",
+          "score": 5.29,
+          "z": 0.53,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.58,
+          "deltaPer10k": 3.58,
           "distinctive": false
         },
         {
@@ -144,30 +630,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.59,
-          "deltaPer10k": 3.59,
-          "distinctive": false
-        },
-        {
-          "term": "respectively",
-          "score": 5.29,
-          "z": 0.53,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 3.59,
-          "deltaPer10k": 3.59,
-          "distinctive": false
-        },
-        {
-          "term": "settle",
-          "score": 5.29,
-          "z": 0.53,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 3.59,
-          "deltaPer10k": 3.59,
+          "per10kCurr": 3.58,
+          "deltaPer10k": 3.58,
           "distinctive": false
         }
       ],
@@ -178,9 +642,42 @@
           "z": -0.57,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 5.48,
+          "per10kPrev": 5.46,
           "per10kCurr": 0.0,
-          "deltaPer10k": -5.48,
+          "deltaPer10k": -5.46,
+          "distinctive": false
+        },
+        {
+          "term": "margins tegra",
+          "score": -5.32,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 3.64,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.64,
+          "distinctive": false
+        },
+        {
+          "term": "substantial indebtedness",
+          "score": -5.32,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 3.64,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.64,
+          "distinctive": false
+        },
+        {
+          "term": "year total",
+          "score": -5.32,
+          "z": -0.53,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 3.64,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.64,
           "distinctive": false
         },
         {
@@ -189,9 +686,9 @@
           "z": -0.46,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 1.83,
+          "per10kPrev": 1.82,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.83,
+          "deltaPer10k": -1.82,
           "distinctive": false
         },
         {
@@ -200,9 +697,9 @@
           "z": -0.46,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 1.83,
+          "per10kPrev": 1.82,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.83,
+          "deltaPer10k": -1.82,
           "distinctive": false
         },
         {
@@ -211,9 +708,9 @@
           "z": -0.46,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 1.83,
+          "per10kPrev": 1.82,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.83,
+          "deltaPer10k": -1.82,
           "distinctive": false
         },
         {
@@ -222,9 +719,9 @@
           "z": -0.46,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 1.83,
+          "per10kPrev": 1.82,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.83,
+          "deltaPer10k": -1.82,
           "distinctive": false
         },
         {
@@ -233,9 +730,9 @@
           "z": -0.46,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 1.83,
+          "per10kPrev": 1.82,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.83,
+          "deltaPer10k": -1.82,
           "distinctive": false
         },
         {
@@ -244,9 +741,9 @@
           "z": -0.46,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 1.83,
+          "per10kPrev": 1.82,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.83,
+          "deltaPer10k": -1.82,
           "distinctive": false
         },
         {
@@ -255,9 +752,9 @@
           "z": -0.46,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 1.83,
+          "per10kPrev": 1.82,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.83,
+          "deltaPer10k": -1.82,
           "distinctive": false
         },
         {
@@ -266,9 +763,9 @@
           "z": -0.46,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 1.83,
+          "per10kPrev": 1.82,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.83,
+          "deltaPer10k": -1.82,
           "distinctive": false
         },
         {
@@ -277,9 +774,9 @@
           "z": -0.46,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 1.83,
+          "per10kPrev": 1.82,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.83,
+          "deltaPer10k": -1.82,
           "distinctive": false
         },
         {
@@ -288,9 +785,9 @@
           "z": -0.46,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 1.83,
+          "per10kPrev": 1.82,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.83,
+          "deltaPer10k": -1.82,
           "distinctive": false
         },
         {
@@ -299,168 +796,135 @@
           "z": -0.46,
           "countPrev": 1,
           "countCurr": 0,
-          "per10kPrev": 1.83,
+          "per10kPrev": 1.82,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.83,
-          "distinctive": false
-        },
-        {
-          "term": "customers discontinue",
-          "score": -4.63,
-          "z": -0.46,
-          "countPrev": 1,
-          "countCurr": 0,
-          "per10kPrev": 1.83,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.83,
-          "distinctive": false
-        },
-        {
-          "term": "decline lose",
-          "score": -4.63,
-          "z": -0.46,
-          "countPrev": 1,
-          "countCurr": 0,
-          "per10kPrev": 1.83,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.83,
-          "distinctive": false
-        },
-        {
-          "term": "designed",
-          "score": -4.63,
-          "z": -0.46,
-          "countPrev": 1,
-          "countCurr": 0,
-          "per10kPrev": 1.83,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.83,
+          "deltaPer10k": -1.82,
           "distinctive": false
         }
       ],
-      "summary": "Adds emphasis on net, net income, network; de-emphasizes models, adverse economic, alternatively.",
+      "summary": "Adds emphasis on income share, net, net income; de-emphasizes models, margins tegra, substantial indebtedness.",
       "topRisersAlt": [
         {
           "term": "target markets",
-          "score": 6.03
+          "score": 6.05
         },
         {
           "term": "number customers",
-          "score": 5.32
+          "score": 5.34
         },
         {
           "term": "operating results past",
-          "score": 5.32
+          "score": 5.34
         },
         {
           "term": "stock price decline",
-          "score": 5.32
+          "score": 5.34
         },
         {
           "term": "harm business",
-          "score": 0.71
+          "score": 0.73
         },
         {
           "term": "new products services",
-          "score": 0.41
+          "score": 0.43
         },
         {
           "term": "financial results adversely",
-          "score": 0.3
+          "score": 0.32
         },
         {
           "term": "financial results",
-          "score": 0.19
+          "score": 0.21
         },
         {
-          "term": "class action",
-          "score": 0.0
-        },
-        {
-          "term": "climate change",
-          "score": 0.0
-        },
-        {
-          "term": "costs associated",
-          "score": 0.0
-        },
-        {
-          "term": "costs related",
-          "score": 0.0
+          "term": "intellectual property",
+          "score": 0.02
         },
         {
           "term": "customer demand",
-          "score": 0.0
+          "score": 0.02
         },
         {
-          "term": "customers result",
-          "score": 0.0
+          "term": "new products",
+          "score": 0.02
         },
         {
-          "term": "data security",
-          "score": 0.0
+          "term": "gross margin",
+          "score": 0.02
+        },
+        {
+          "term": "market share",
+          "score": 0.02
+        },
+        {
+          "term": "results operations",
+          "score": 0.02
+        },
+        {
+          "term": "operating results",
+          "score": 0.02
         }
       ],
       "topFallersAlt": [
         {
           "term": "adversely affect",
-          "score": -6.03
+          "score": -6.01
         },
         {
           "term": "new business",
-          "score": -6.03
+          "score": -6.01
         },
         {
           "term": "adversely affect financial",
-          "score": -5.32
+          "score": -5.3
+        },
+        {
+          "term": "decline fail",
+          "score": -5.3
         },
         {
           "term": "demand products services",
-          "score": -5.32
+          "score": -5.3
         },
         {
           "term": "products services technologies",
-          "score": -0.41
+          "score": -0.39
         },
         {
           "term": "customers partners",
-          "score": -0.3
+          "score": -0.28
         },
         {
           "term": "products services",
-          "score": -0.3
+          "score": -0.28
         },
         {
           "term": "class action",
-          "score": 0.0
-        },
-        {
-          "term": "climate change",
-          "score": 0.0
-        },
-        {
-          "term": "costs associated",
-          "score": 0.0
-        },
-        {
-          "term": "costs related",
-          "score": 0.0
-        },
-        {
-          "term": "customer demand",
-          "score": 0.0
-        },
-        {
-          "term": "customers result",
-          "score": 0.0
+          "score": 0.02
         },
         {
           "term": "data security",
-          "score": 0.0
+          "score": 0.02
         },
         {
-          "term": "development new products",
-          "score": 0.0
+          "term": "financial reporting",
+          "score": 0.02
+        },
+        {
+          "term": "foreign exchange",
+          "score": 0.02
+        },
+        {
+          "term": "patent infringement",
+          "score": 0.02
+        },
+        {
+          "term": "climate change",
+          "score": 0.02
+        },
+        {
+          "term": "costs associated",
+          "score": 0.02
         }
       ],
       "summaryAlt": "Adds emphasis on target markets, number customers, operating results past; de-emphasizes adversely affect, new business, adversely affect financial."
@@ -487,8 +951,8 @@
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 6.46,
-          "deltaPer10k": 6.46,
+          "per10kCurr": 6.45,
+          "deltaPer10k": 6.45,
           "distinctive": false
         },
         {
@@ -498,8 +962,8 @@
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 6.46,
-          "deltaPer10k": 6.46,
+          "per10kCurr": 6.45,
+          "deltaPer10k": 6.45,
           "distinctive": false
         },
         {
@@ -509,8 +973,8 @@
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 6.46,
-          "deltaPer10k": 6.46,
+          "per10kCurr": 6.45,
+          "deltaPer10k": 6.45,
           "distinctive": false
         },
         {
@@ -520,8 +984,8 @@
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 6.46,
-          "deltaPer10k": 6.46,
+          "per10kCurr": 6.45,
+          "deltaPer10k": 6.45,
           "distinctive": false
         },
         {
@@ -531,8 +995,8 @@
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 6.46,
-          "deltaPer10k": 6.46,
+          "per10kCurr": 6.45,
+          "deltaPer10k": 6.45,
           "distinctive": false
         },
         {
@@ -645,9 +1109,9 @@
           "z": -0.73,
           "countPrev": 13,
           "countCurr": 0,
-          "per10kPrev": 23.36,
+          "per10kPrev": 23.28,
           "per10kCurr": 0.0,
-          "deltaPer10k": -23.36,
+          "deltaPer10k": -23.28,
           "distinctive": false
         },
         {
@@ -656,20 +1120,20 @@
           "z": -0.71,
           "countPrev": 11,
           "countCurr": 0,
-          "per10kPrev": 19.76,
+          "per10kPrev": 19.7,
           "per10kCurr": 0.0,
-          "deltaPer10k": -19.76,
+          "deltaPer10k": -19.7,
           "distinctive": false
         },
         {
           "term": "notes",
-          "score": -7.02,
+          "score": -7.01,
           "z": -0.7,
           "countPrev": 10,
           "countCurr": 0,
-          "per10kPrev": 17.97,
+          "per10kPrev": 17.91,
           "per10kCurr": 0.0,
-          "deltaPer10k": -17.97,
+          "deltaPer10k": -17.91,
           "distinctive": false
         },
         {
@@ -678,9 +1142,9 @@
           "z": -0.68,
           "countPrev": 8,
           "countCurr": 0,
-          "per10kPrev": 14.37,
+          "per10kPrev": 14.33,
           "per10kCurr": 0.0,
-          "deltaPer10k": -14.37,
+          "deltaPer10k": -14.33,
           "distinctive": false
         },
         {
@@ -689,9 +1153,9 @@
           "z": -0.67,
           "countPrev": 7,
           "countCurr": 0,
-          "per10kPrev": 12.58,
+          "per10kPrev": 12.54,
           "per10kCurr": 0.0,
-          "deltaPer10k": -12.58,
+          "deltaPer10k": -12.54,
           "distinctive": false
         },
         {
@@ -700,42 +1164,42 @@
           "z": -0.67,
           "countPrev": 7,
           "countCurr": 0,
-          "per10kPrev": 12.58,
+          "per10kPrev": 12.54,
           "per10kCurr": 0.0,
-          "deltaPer10k": -12.58,
+          "deltaPer10k": -12.54,
           "distinctive": false
         },
         {
           "term": "construction",
-          "score": -6.51,
+          "score": -6.5,
           "z": -0.65,
           "countPrev": 6,
           "countCurr": 0,
-          "per10kPrev": 10.78,
+          "per10kPrev": 10.75,
           "per10kCurr": 0.0,
-          "deltaPer10k": -10.78,
+          "deltaPer10k": -10.75,
           "distinctive": false
         },
         {
           "term": "financing arrangement",
-          "score": -6.51,
+          "score": -6.5,
           "z": -0.65,
           "countPrev": 6,
           "countCurr": 0,
-          "per10kPrev": 10.78,
+          "per10kPrev": 10.75,
           "per10kCurr": 0.0,
-          "deltaPer10k": -10.78,
+          "deltaPer10k": -10.75,
           "distinctive": false
         },
         {
           "term": "lease financing",
-          "score": -6.51,
+          "score": -6.5,
           "z": -0.65,
           "countPrev": 6,
           "countCurr": 0,
-          "per10kPrev": 10.78,
+          "per10kPrev": 10.75,
           "per10kCurr": 0.0,
-          "deltaPer10k": -10.78,
+          "deltaPer10k": -10.75,
           "distinctive": false
         },
         {
@@ -744,9 +1208,9 @@
           "z": -0.63,
           "countPrev": 5,
           "countCurr": 0,
-          "per10kPrev": 8.98,
+          "per10kPrev": 8.96,
           "per10kCurr": 0.0,
-          "deltaPer10k": -8.98,
+          "deltaPer10k": -8.96,
           "distinctive": false
         },
         {
@@ -755,9 +1219,9 @@
           "z": -0.61,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 7.19,
+          "per10kPrev": 7.16,
           "per10kCurr": 0.0,
-          "deltaPer10k": -7.19,
+          "deltaPer10k": -7.16,
           "distinctive": false
         },
         {
@@ -766,9 +1230,9 @@
           "z": -0.61,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 7.19,
+          "per10kPrev": 7.16,
           "per10kCurr": 0.0,
-          "deltaPer10k": -7.19,
+          "deltaPer10k": -7.16,
           "distinctive": false
         },
         {
@@ -777,9 +1241,9 @@
           "z": -0.61,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 7.19,
+          "per10kPrev": 7.16,
           "per10kCurr": 0.0,
-          "deltaPer10k": -7.19,
+          "deltaPer10k": -7.16,
           "distinctive": false
         },
         {
@@ -788,9 +1252,9 @@
           "z": -0.61,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 7.19,
+          "per10kPrev": 7.16,
           "per10kCurr": 0.0,
-          "deltaPer10k": -7.19,
+          "deltaPer10k": -7.16,
           "distinctive": false
         },
         {
@@ -799,9 +1263,9 @@
           "z": -0.61,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 7.19,
+          "per10kPrev": 7.16,
           "per10kCurr": 0.0,
-          "deltaPer10k": -7.19,
+          "deltaPer10k": -7.16,
           "distinctive": false
         }
       ],
@@ -809,125 +1273,125 @@
       "topRisersAlt": [
         {
           "term": "revenue financial results",
-          "score": 5.85
+          "score": 5.86
         },
         {
           "term": "ability meet customer",
-          "score": 5.43
+          "score": 5.44
         },
         {
           "term": "cause stock",
-          "score": 5.43
+          "score": 5.44
         },
         {
           "term": "impact business operations",
-          "score": 5.43
+          "score": 5.44
         },
         {
           "term": "impact party",
-          "score": 5.43
+          "score": 5.44
         },
         {
           "term": "past future",
-          "score": 5.43
+          "score": 5.44
         },
         {
           "term": "product design",
-          "score": 5.43
+          "score": 5.44
         },
         {
           "term": "products including",
-          "score": 5.43
+          "score": 5.44
         },
         {
           "term": "result significant",
-          "score": 5.43
+          "score": 5.44
         },
         {
           "term": "results operations reputation",
-          "score": 5.43
+          "score": 5.44
         },
         {
           "term": "revenue sales",
-          "score": 5.43
+          "score": 5.44
         },
         {
           "term": "competitive landscape",
-          "score": 4.73
+          "score": 4.74
         },
         {
           "term": "products services",
-          "score": 1.27
+          "score": 1.28
         },
         {
           "term": "intellectual property",
-          "score": 0.32
+          "score": 0.34
         },
         {
           "term": "customer demand",
-          "score": 0.11
+          "score": 0.13
         }
       ],
       "topFallersAlt": [
         {
           "term": "financial results adversely",
-          "score": -5.92
+          "score": -5.91
         },
         {
           "term": "results operations",
-          "score": -5.92
+          "score": -5.91
         },
         {
           "term": "target markets",
-          "score": -5.92
+          "score": -5.91
         },
         {
           "term": "costs associated",
-          "score": -5.22
+          "score": -5.2
         },
         {
           "term": "customers result",
-          "score": -5.22
+          "score": -5.2
         },
         {
           "term": "development new products",
-          "score": -5.22
+          "score": -5.2
         },
         {
           "term": "number customers",
-          "score": -5.22
+          "score": -5.2
         },
         {
           "term": "products business",
-          "score": -5.22
+          "score": -5.2
         },
         {
           "term": "products services technologies",
-          "score": -5.22
+          "score": -5.2
         },
         {
           "term": "revenue sales customers",
-          "score": -5.22
+          "score": -5.2
         },
         {
           "term": "significant revenue",
-          "score": -5.22
+          "score": -5.2
         },
         {
           "term": "stock price decline",
-          "score": -5.22
+          "score": -5.2
         },
         {
           "term": "financial reporting",
-          "score": -4.52
+          "score": -4.51
         },
         {
           "term": "foreign exchange",
-          "score": -4.52
+          "score": -4.51
         },
         {
           "term": "gross margin",
-          "score": -0.83
+          "score": -0.82
         }
       ],
       "summaryAlt": "Adds emphasis on revenue financial results, ability meet customer, cause stock; de-emphasizes financial results adversely, results operations, target markets."
@@ -943,8 +1407,8 @@
           "countPrev": 0,
           "countCurr": 6,
           "per10kPrev": 0.0,
-          "per10kCurr": 9.28,
-          "deltaPer10k": 9.28,
+          "per10kCurr": 9.3,
+          "deltaPer10k": 9.3,
           "distinctive": false
         },
         {
@@ -954,8 +1418,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.64,
-          "deltaPer10k": 4.64,
+          "per10kCurr": 4.65,
+          "deltaPer10k": 4.65,
           "distinctive": false
         },
         {
@@ -965,169 +1429,169 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.64,
-          "deltaPer10k": 4.64,
+          "per10kCurr": 4.65,
+          "deltaPer10k": 4.65,
           "distinctive": false
         },
         {
           "term": "allegedly",
           "score": 5.26,
-          "z": 0.52,
+          "z": 0.53,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.09,
-          "deltaPer10k": 3.09,
+          "per10kCurr": 3.1,
+          "deltaPer10k": 3.1,
           "distinctive": false
         },
         {
           "term": "allegedly false",
           "score": 5.26,
-          "z": 0.52,
+          "z": 0.53,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.09,
-          "deltaPer10k": 3.09,
+          "per10kCurr": 3.1,
+          "deltaPer10k": 3.1,
           "distinctive": false
         },
         {
           "term": "attributable",
           "score": 5.26,
-          "z": 0.52,
+          "z": 0.53,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.09,
-          "deltaPer10k": 3.09,
+          "per10kCurr": 3.1,
+          "deltaPer10k": 3.1,
           "distinctive": false
         },
         {
           "term": "attributable end",
           "score": 5.26,
-          "z": 0.52,
+          "z": 0.53,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.09,
-          "deltaPer10k": 3.09,
+          "per10kCurr": 3.1,
+          "deltaPer10k": 3.1,
           "distinctive": false
         },
         {
           "term": "based dissemination",
           "score": 5.26,
-          "z": 0.52,
+          "z": 0.53,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.09,
-          "deltaPer10k": 3.09,
+          "per10kCurr": 3.1,
+          "deltaPer10k": 3.1,
           "distinctive": false
         },
         {
           "term": "behalf",
           "score": 5.26,
-          "z": 0.52,
+          "z": 0.53,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.09,
-          "deltaPer10k": 3.09,
+          "per10kCurr": 3.1,
+          "deltaPer10k": 3.1,
           "distinctive": false
         },
         {
           "term": "business plans",
           "score": 5.26,
-          "z": 0.52,
+          "z": 0.53,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.09,
-          "deltaPer10k": 3.09,
+          "per10kCurr": 3.1,
+          "deltaPer10k": 3.1,
           "distinctive": false
         },
         {
           "term": "certain officers",
           "score": 5.26,
-          "z": 0.52,
+          "z": 0.53,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.09,
-          "deltaPer10k": 3.09,
+          "per10kCurr": 3.1,
+          "deltaPer10k": 3.1,
           "distinctive": false
         },
         {
           "term": "channel inventory",
           "score": 5.26,
-          "z": 0.52,
+          "z": 0.53,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.09,
-          "deltaPer10k": 3.09,
+          "per10kCurr": 3.1,
+          "deltaPer10k": 3.1,
           "distinctive": false
         },
         {
           "term": "cryptocurrency",
           "score": 5.26,
-          "z": 0.52,
+          "z": 0.53,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.09,
-          "deltaPer10k": 3.09,
+          "per10kCurr": 3.1,
+          "deltaPer10k": 3.1,
           "distinctive": false
         },
         {
           "term": "cryptocurrency mining",
           "score": 5.26,
-          "z": 0.52,
+          "z": 0.53,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.09,
-          "deltaPer10k": 3.09,
+          "per10kCurr": 3.1,
+          "deltaPer10k": 3.1,
           "distinctive": false
         },
         {
           "term": "decisions",
           "score": 5.26,
-          "z": 0.52,
+          "z": 0.53,
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.09,
-          "deltaPer10k": 3.09,
+          "per10kCurr": 3.1,
+          "deltaPer10k": 3.1,
           "distinctive": false
         }
       ],
       "topFallers": [
         {
           "term": "americas",
-          "score": -6.04,
+          "score": -6.03,
           "z": -0.6,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 6.46,
+          "per10kPrev": 6.45,
           "per10kCurr": 0.0,
-          "deltaPer10k": -6.46,
+          "deltaPer10k": -6.45,
           "distinctive": false
         },
         {
           "term": "states americas",
-          "score": -6.04,
+          "score": -6.03,
           "z": -0.6,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 6.46,
+          "per10kPrev": 6.45,
           "per10kCurr": 0.0,
-          "deltaPer10k": -6.46,
+          "deltaPer10k": -6.45,
           "distinctive": false
         },
         {
           "term": "class action",
-          "score": -5.35,
+          "score": -5.34,
           "z": -0.53,
           "countPrev": 2,
           "countCurr": 0,
@@ -1137,7 +1601,73 @@
           "distinctive": false
         },
         {
-          "term": "attacks create",
+          "term": "action litigation",
+          "score": -4.66,
+          "z": -0.46,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 1.61,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.61,
+          "distinctive": false
+        },
+        {
+          "term": "addition majority",
+          "score": -4.66,
+          "z": -0.46,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 1.61,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.61,
+          "distinctive": false
+        },
+        {
+          "term": "americas accounted",
+          "score": -4.66,
+          "z": -0.46,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 1.61,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.61,
+          "distinctive": false
+        },
+        {
+          "term": "americas delayed",
+          "score": -4.66,
+          "z": -0.46,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 1.61,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.61,
+          "distinctive": false
+        },
+        {
+          "term": "americas generate",
+          "score": -4.66,
+          "z": -0.46,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 1.61,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.61,
+          "distinctive": false
+        },
+        {
+          "term": "americas revenue",
+          "score": -4.66,
+          "z": -0.46,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 1.61,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.61,
+          "distinctive": false
+        },
+        {
+          "term": "brought following",
           "score": -4.66,
           "z": -0.46,
           "countPrev": 1,
@@ -1192,7 +1722,7 @@
           "distinctive": false
         },
         {
-          "term": "investment risks",
+          "term": "following periods",
           "score": -4.66,
           "z": -0.46,
           "countPrev": 1,
@@ -1200,72 +1730,6 @@
           "per10kPrev": 1.61,
           "per10kCurr": 0.0,
           "deltaPer10k": -1.61,
-          "distinctive": false
-        },
-        {
-          "term": "operations harmed",
-          "score": -4.66,
-          "z": -0.46,
-          "countPrev": 1,
-          "countCurr": 0,
-          "per10kPrev": 1.61,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.61,
-          "distinctive": false
-        },
-        {
-          "term": "practices local",
-          "score": -4.66,
-          "z": -0.46,
-          "countPrev": 1,
-          "countCurr": 0,
-          "per10kPrev": 1.61,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.61,
-          "distinctive": false
-        },
-        {
-          "term": "respectively",
-          "score": -4.66,
-          "z": -0.46,
-          "countPrev": 1,
-          "countCurr": 0,
-          "per10kPrev": 1.61,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.61,
-          "distinctive": false
-        },
-        {
-          "term": "securities class",
-          "score": -4.66,
-          "z": -0.46,
-          "countPrev": 1,
-          "countCurr": 0,
-          "per10kPrev": 1.61,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.61,
-          "distinctive": false
-        },
-        {
-          "term": "securities",
-          "score": -0.73,
-          "z": -0.85,
-          "countPrev": 4,
-          "countCurr": 2,
-          "per10kPrev": 6.46,
-          "per10kCurr": 3.09,
-          "deltaPer10k": -3.36,
-          "distinctive": false
-        },
-        {
-          "term": "action",
-          "score": -0.73,
-          "z": -0.6,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 3.23,
-          "per10kCurr": 1.55,
-          "deltaPer10k": -1.68,
           "distinctive": false
         }
       ],
@@ -1273,125 +1737,125 @@
       "topRisersAlt": [
         {
           "term": "laws regulations",
-          "score": 5.99
+          "score": 5.98
         },
         {
           "term": "products services technologies",
-          "score": 5.7
+          "score": 5.69
         },
         {
           "term": "customers result",
-          "score": 5.28
+          "score": 5.27
         },
         {
           "term": "customers revenue",
-          "score": 5.28
+          "score": 5.27
         },
         {
           "term": "inventory impact",
-          "score": 5.28
+          "score": 5.27
         },
         {
           "term": "operating results",
-          "score": 0.67
+          "score": 0.66
+        },
+        {
+          "term": "financial results",
+          "score": 0.24
         },
         {
           "term": "competitive landscape",
-          "score": -0.04
+          "score": -0.05
         },
         {
           "term": "data security",
-          "score": -0.04
+          "score": -0.05
         },
         {
           "term": "patent infringement",
-          "score": -0.04
+          "score": -0.05
         },
         {
           "term": "ability meet customer",
-          "score": -0.04
+          "score": -0.05
         },
         {
           "term": "cause stock",
-          "score": -0.04
+          "score": -0.05
         },
         {
           "term": "climate change",
-          "score": -0.04
+          "score": -0.05
         },
         {
           "term": "costs related",
-          "score": -0.04
+          "score": -0.05
         },
         {
           "term": "gross margin",
-          "score": -0.04
-        },
-        {
-          "term": "harm business",
-          "score": -0.04
+          "score": -0.05
         }
       ],
       "topFallersAlt": [
         {
           "term": "operating results past",
-          "score": -5.36
+          "score": -5.37
         },
         {
           "term": "past future",
-          "score": -5.36
+          "score": -5.37
         },
         {
           "term": "products past",
-          "score": -5.36
+          "score": -5.37
         },
         {
           "term": "class action",
-          "score": -4.67
+          "score": -4.68
         },
         {
           "term": "products services",
-          "score": -0.48
+          "score": -0.49
         },
         {
           "term": "revenue financial results",
-          "score": -0.46
+          "score": -0.47
         },
         {
           "term": "intellectual property",
-          "score": -0.05
+          "score": -0.06
         },
         {
           "term": "customer demand",
-          "score": -0.04
+          "score": -0.05
         },
         {
           "term": "new products",
-          "score": -0.04
-        },
-        {
-          "term": "financial results",
-          "score": -0.04
+          "score": -0.05
         },
         {
           "term": "market share",
-          "score": -0.04
+          "score": -0.05
         },
         {
           "term": "customers partners",
-          "score": -0.04
+          "score": -0.05
         },
         {
           "term": "ability meet customer",
-          "score": -0.04
+          "score": -0.05
         },
         {
           "term": "cause stock",
-          "score": -0.04
+          "score": -0.05
         },
         {
           "term": "climate change",
-          "score": -0.04
+          "score": -0.05
+        },
+        {
+          "term": "costs related",
+          "score": -0.05
         }
       ],
       "summaryAlt": "Adds emphasis on laws regulations, products services technologies, customers result; de-emphasizes operating results past, past future, products past."
@@ -1407,8 +1871,8 @@
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.77,
-          "deltaPer10k": 5.77,
+          "per10kCurr": 5.78,
+          "deltaPer10k": 5.78,
           "distinctive": false
         },
         {
@@ -1418,8 +1882,8 @@
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.77,
-          "deltaPer10k": 5.77,
+          "per10kCurr": 5.78,
+          "deltaPer10k": 5.78,
           "distinctive": false
         },
         {
@@ -1429,8 +1893,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.32,
-          "deltaPer10k": 4.32,
+          "per10kCurr": 4.33,
+          "deltaPer10k": 4.33,
           "distinctive": false,
           "includes": [
             "coronavirus"
@@ -1443,8 +1907,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.32,
-          "deltaPer10k": 4.32,
+          "per10kCurr": 4.33,
+          "deltaPer10k": 4.33,
           "distinctive": false
         },
         {
@@ -1454,8 +1918,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.32,
-          "deltaPer10k": 4.32,
+          "per10kCurr": 4.33,
+          "deltaPer10k": 4.33,
           "distinctive": false
         },
         {
@@ -1465,8 +1929,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.32,
-          "deltaPer10k": 4.32,
+          "per10kCurr": 4.33,
+          "deltaPer10k": 4.33,
           "distinctive": false
         },
         {
@@ -1476,8 +1940,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.32,
-          "deltaPer10k": 4.32,
+          "per10kCurr": 4.33,
+          "deltaPer10k": 4.33,
           "distinctive": false
         },
         {
@@ -1487,8 +1951,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.88,
-          "deltaPer10k": 2.88,
+          "per10kCurr": 2.89,
+          "deltaPer10k": 2.89,
           "distinctive": false
         },
         {
@@ -1498,8 +1962,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.88,
-          "deltaPer10k": 2.88,
+          "per10kCurr": 2.89,
+          "deltaPer10k": 2.89,
           "distinctive": false
         },
         {
@@ -1509,8 +1973,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.88,
-          "deltaPer10k": 2.88,
+          "per10kCurr": 2.89,
+          "deltaPer10k": 2.89,
           "distinctive": false
         },
         {
@@ -1520,8 +1984,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.88,
-          "deltaPer10k": 2.88,
+          "per10kCurr": 2.89,
+          "deltaPer10k": 2.89,
           "distinctive": false
         },
         {
@@ -1531,8 +1995,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.88,
-          "deltaPer10k": 2.88,
+          "per10kCurr": 2.89,
+          "deltaPer10k": 2.89,
           "distinctive": false
         },
         {
@@ -1542,8 +2006,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.88,
-          "deltaPer10k": 2.88,
+          "per10kCurr": 2.89,
+          "deltaPer10k": 2.89,
           "distinctive": false
         },
         {
@@ -1576,9 +2040,9 @@
           "z": -0.58,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 4.64,
+          "per10kPrev": 4.65,
           "per10kCurr": 0.0,
-          "deltaPer10k": -4.64,
+          "deltaPer10k": -4.65,
           "distinctive": false
         },
         {
@@ -1659,17 +2123,6 @@
           "distinctive": false
         },
         {
-          "term": "defend implement",
-          "score": -4.69,
-          "z": -0.47,
-          "countPrev": 1,
-          "countCurr": 0,
-          "per10kPrev": 1.55,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.55,
-          "distinctive": false
-        },
-        {
           "term": "investments able",
           "score": -4.69,
           "z": -0.47,
@@ -1703,17 +2156,6 @@
           "distinctive": false
         },
         {
-          "term": "regulations interpretation",
-          "score": -4.69,
-          "z": -0.47,
-          "countPrev": 1,
-          "countCurr": 0,
-          "per10kPrev": 1.55,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.55,
-          "distinctive": false
-        },
-        {
           "term": "related acquisitions",
           "score": -4.69,
           "z": -0.47,
@@ -1733,6 +2175,28 @@
           "per10kPrev": 1.55,
           "per10kCurr": 0.0,
           "deltaPer10k": -1.55,
+          "distinctive": false
+        },
+        {
+          "term": "visualization datacenter",
+          "score": -4.69,
+          "z": -0.47,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 1.55,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.55,
+          "distinctive": false
+        },
+        {
+          "term": "appropriately",
+          "score": -0.76,
+          "z": -0.62,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 3.1,
+          "per10kCurr": 1.44,
+          "deltaPer10k": -1.66,
           "distinctive": false
         }
       ],
@@ -1874,8 +2338,8 @@
           "countPrev": 0,
           "countCurr": 24,
           "per10kPrev": 0.0,
-          "per10kCurr": 25.83,
-          "deltaPer10k": 25.83,
+          "per10kCurr": 25.89,
+          "deltaPer10k": 25.89,
           "distinctive": false,
           "includes": [
             "covid"
@@ -1888,8 +2352,8 @@
           "countPrev": 0,
           "countCurr": 14,
           "per10kPrev": 0.0,
-          "per10kCurr": 15.07,
-          "deltaPer10k": 15.07,
+          "per10kCurr": 15.1,
+          "deltaPer10k": 15.1,
           "distinctive": false,
           "includes": [
             "supply chain"
@@ -1902,19 +2366,19 @@
           "countPrev": 0,
           "countCurr": 13,
           "per10kPrev": 0.0,
-          "per10kCurr": 13.99,
-          "deltaPer10k": 13.99,
+          "per10kCurr": 14.03,
+          "deltaPer10k": 14.03,
           "distinctive": false
         },
         {
           "term": "israel",
-          "score": 6.71,
+          "score": 6.72,
           "z": 0.67,
           "countPrev": 0,
           "countCurr": 11,
           "per10kPrev": 0.0,
-          "per10kCurr": 11.84,
-          "deltaPer10k": 11.84,
+          "per10kCurr": 11.87,
+          "deltaPer10k": 11.87,
           "distinctive": false
         },
         {
@@ -1924,8 +2388,8 @@
           "countPrev": 0,
           "countCurr": 9,
           "per10kPrev": 0.0,
-          "per10kCurr": 9.69,
-          "deltaPer10k": 9.69,
+          "per10kCurr": 9.71,
+          "deltaPer10k": 9.71,
           "distinctive": false
         },
         {
@@ -1935,8 +2399,8 @@
           "countPrev": 0,
           "countCurr": 7,
           "per10kPrev": 0.0,
-          "per10kCurr": 7.53,
-          "deltaPer10k": 7.53,
+          "per10kCurr": 7.55,
+          "deltaPer10k": 7.55,
           "distinctive": false
         },
         {
@@ -1946,8 +2410,8 @@
           "countPrev": 0,
           "countCurr": 7,
           "per10kPrev": 0.0,
-          "per10kCurr": 7.53,
-          "deltaPer10k": 7.53,
+          "per10kCurr": 7.55,
+          "deltaPer10k": 7.55,
           "distinctive": false
         },
         {
@@ -1957,8 +2421,8 @@
           "countPrev": 0,
           "countCurr": 7,
           "per10kPrev": 0.0,
-          "per10kCurr": 7.53,
-          "deltaPer10k": 7.53,
+          "per10kCurr": 7.55,
+          "deltaPer10k": 7.55,
           "distinctive": false
         },
         {
@@ -1968,8 +2432,8 @@
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.38,
-          "deltaPer10k": 5.38,
+          "per10kCurr": 5.39,
+          "deltaPer10k": 5.39,
           "distinctive": false
         },
         {
@@ -1979,8 +2443,8 @@
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.38,
-          "deltaPer10k": 5.38,
+          "per10kCurr": 5.39,
+          "deltaPer10k": 5.39,
           "distinctive": false
         },
         {
@@ -1990,8 +2454,8 @@
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.38,
-          "deltaPer10k": 5.38,
+          "per10kCurr": 5.39,
+          "deltaPer10k": 5.39,
           "distinctive": false
         },
         {
@@ -2001,8 +2465,8 @@
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.38,
-          "deltaPer10k": 5.38,
+          "per10kCurr": 5.39,
+          "deltaPer10k": 5.39,
           "distinctive": false
         },
         {
@@ -2012,8 +2476,8 @@
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.3,
-          "deltaPer10k": 4.3,
+          "per10kCurr": 4.32,
+          "deltaPer10k": 4.32,
           "distinctive": false
         },
         {
@@ -2023,8 +2487,8 @@
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.3,
-          "deltaPer10k": 4.3,
+          "per10kCurr": 4.32,
+          "deltaPer10k": 4.32,
           "distinctive": false
         },
         {
@@ -2034,43 +2498,43 @@
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.3,
-          "deltaPer10k": 4.3,
+          "per10kCurr": 4.32,
+          "deltaPer10k": 4.32,
           "distinctive": false
         }
       ],
       "topFallers": [
         {
           "term": "gpus tegra",
-          "score": -6.29,
+          "score": -6.28,
           "z": -0.63,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 5.77,
+          "per10kPrev": 5.78,
           "per10kCurr": 0.0,
-          "deltaPer10k": -5.77,
+          "deltaPer10k": -5.78,
           "distinctive": false
         },
         {
           "term": "tegra",
-          "score": -6.29,
+          "score": -6.28,
           "z": -0.63,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 5.77,
+          "per10kPrev": 5.78,
           "per10kCurr": 0.0,
-          "deltaPer10k": -5.77,
+          "deltaPer10k": -5.78,
           "distinctive": false
         },
         {
           "term": "tegra processors",
-          "score": -6.29,
+          "score": -6.28,
           "z": -0.63,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 5.77,
+          "per10kPrev": 5.78,
           "per10kCurr": 0.0,
-          "deltaPer10k": -5.77,
+          "deltaPer10k": -5.78,
           "distinctive": false
         },
         {
@@ -2079,9 +2543,9 @@
           "z": -0.6,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 4.32,
+          "per10kPrev": 4.33,
           "per10kCurr": 0.0,
-          "deltaPer10k": -4.32,
+          "deltaPer10k": -4.33,
           "distinctive": false,
           "includes": [
             "coronavirus"
@@ -2093,9 +2557,9 @@
           "z": -0.56,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 2.88,
+          "per10kPrev": 2.89,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.88,
+          "deltaPer10k": -2.89,
           "distinctive": false
         },
         {
@@ -2154,17 +2618,6 @@
           "distinctive": false
         },
         {
-          "term": "bylaws march",
-          "score": -4.91,
-          "z": -0.49,
-          "countPrev": 1,
-          "countCurr": 0,
-          "per10kPrev": 1.44,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -1.44,
-          "distinctive": false
-        },
-        {
           "term": "constraints failure",
           "score": -4.91,
           "z": -0.49,
@@ -2199,6 +2652,17 @@
         },
         {
           "term": "cuts",
+          "score": -4.91,
+          "z": -0.49,
+          "countPrev": 1,
+          "countCurr": 0,
+          "per10kPrev": 1.44,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.44,
+          "distinctive": false
+        },
+        {
+          "term": "cuts jobs",
           "score": -4.91,
           "z": -0.49,
           "countPrev": 1,
@@ -2347,8 +2811,8 @@
           "countPrev": 0,
           "countCurr": 8,
           "per10kPrev": 0.0,
-          "per10kCurr": 8.1,
-          "deltaPer10k": 8.1,
+          "per10kCurr": 8.13,
+          "deltaPer10k": 8.13,
           "distinctive": false
         },
         {
@@ -2358,8 +2822,8 @@
           "countPrev": 0,
           "countCurr": 7,
           "per10kPrev": 0.0,
-          "per10kCurr": 7.09,
-          "deltaPer10k": 7.09,
+          "per10kCurr": 7.11,
+          "deltaPer10k": 7.11,
           "distinctive": false
         },
         {
@@ -2369,8 +2833,8 @@
           "countPrev": 0,
           "countCurr": 6,
           "per10kPrev": 0.0,
-          "per10kCurr": 6.08,
-          "deltaPer10k": 6.08,
+          "per10kCurr": 6.1,
+          "deltaPer10k": 6.1,
           "distinctive": false
         },
         {
@@ -2380,8 +2844,8 @@
           "countPrev": 0,
           "countCurr": 6,
           "per10kPrev": 0.0,
-          "per10kCurr": 6.08,
-          "deltaPer10k": 6.08,
+          "per10kCurr": 6.1,
+          "deltaPer10k": 6.1,
           "distinctive": false
         },
         {
@@ -2391,8 +2855,8 @@
           "countPrev": 0,
           "countCurr": 6,
           "per10kPrev": 0.0,
-          "per10kCurr": 6.08,
-          "deltaPer10k": 6.08,
+          "per10kCurr": 6.1,
+          "deltaPer10k": 6.1,
           "distinctive": false
         },
         {
@@ -2402,8 +2866,8 @@
           "countPrev": 0,
           "countCurr": 6,
           "per10kPrev": 0.0,
-          "per10kCurr": 6.08,
-          "deltaPer10k": 6.08,
+          "per10kCurr": 6.1,
+          "deltaPer10k": 6.1,
           "distinctive": false
         },
         {
@@ -2413,8 +2877,8 @@
           "countPrev": 0,
           "countCurr": 6,
           "per10kPrev": 0.0,
-          "per10kCurr": 6.08,
-          "deltaPer10k": 6.08,
+          "per10kCurr": 6.1,
+          "deltaPer10k": 6.1,
           "distinctive": false
         },
         {
@@ -2424,8 +2888,8 @@
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.06,
-          "deltaPer10k": 5.06,
+          "per10kCurr": 5.08,
+          "deltaPer10k": 5.08,
           "distinctive": false
         },
         {
@@ -2435,8 +2899,8 @@
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.06,
-          "deltaPer10k": 5.06,
+          "per10kCurr": 5.08,
+          "deltaPer10k": 5.08,
           "distinctive": false
         },
         {
@@ -2446,8 +2910,8 @@
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.06,
-          "deltaPer10k": 5.06,
+          "per10kCurr": 5.08,
+          "deltaPer10k": 5.08,
           "distinctive": false
         },
         {
@@ -2457,8 +2921,8 @@
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.06,
-          "deltaPer10k": 5.06,
+          "per10kCurr": 5.08,
+          "deltaPer10k": 5.08,
           "distinctive": false
         },
         {
@@ -2468,8 +2932,8 @@
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.06,
-          "deltaPer10k": 5.06,
+          "per10kCurr": 5.08,
+          "deltaPer10k": 5.08,
           "distinctive": false
         },
         {
@@ -2479,8 +2943,8 @@
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.06,
-          "deltaPer10k": 5.06,
+          "per10kCurr": 5.08,
+          "deltaPer10k": 5.08,
           "distinctive": false
         },
         {
@@ -2490,8 +2954,8 @@
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.05,
-          "deltaPer10k": 4.05,
+          "per10kCurr": 4.06,
+          "deltaPer10k": 4.06,
           "distinctive": false
         },
         {
@@ -2501,8 +2965,8 @@
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.05,
-          "deltaPer10k": 4.05,
+          "per10kCurr": 4.06,
+          "deltaPer10k": 4.06,
           "distinctive": false
         }
       ],
@@ -2513,9 +2977,9 @@
           "z": -0.8,
           "countPrev": 28,
           "countCurr": 0,
-          "per10kPrev": 30.13,
+          "per10kPrev": 30.21,
           "per10kCurr": 0.0,
-          "deltaPer10k": -30.13,
+          "deltaPer10k": -30.21,
           "distinctive": false,
           "includes": [
             "intellectual property"
@@ -2527,9 +2991,9 @@
           "z": -0.73,
           "countPrev": 14,
           "countCurr": 0,
-          "per10kPrev": 15.07,
+          "per10kPrev": 15.1,
           "per10kCurr": 0.0,
-          "deltaPer10k": -15.07,
+          "deltaPer10k": -15.1,
           "distinctive": false
         },
         {
@@ -2538,9 +3002,9 @@
           "z": -0.66,
           "countPrev": 7,
           "countCurr": 0,
-          "per10kPrev": 7.53,
+          "per10kPrev": 7.55,
           "per10kCurr": 0.0,
-          "deltaPer10k": -7.53,
+          "deltaPer10k": -7.55,
           "distinctive": false
         },
         {
@@ -2549,9 +3013,9 @@
           "z": -0.63,
           "countPrev": 5,
           "countCurr": 0,
-          "per10kPrev": 5.38,
+          "per10kPrev": 5.39,
           "per10kCurr": 0.0,
-          "deltaPer10k": -5.38,
+          "deltaPer10k": -5.39,
           "distinctive": false
         },
         {
@@ -2560,9 +3024,9 @@
           "z": -0.63,
           "countPrev": 5,
           "countCurr": 0,
-          "per10kPrev": 5.38,
+          "per10kPrev": 5.39,
           "per10kCurr": 0.0,
-          "deltaPer10k": -5.38,
+          "deltaPer10k": -5.39,
           "distinctive": false
         },
         {
@@ -2571,9 +3035,9 @@
           "z": -0.6,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 4.3,
+          "per10kPrev": 4.32,
           "per10kCurr": 0.0,
-          "deltaPer10k": -4.3,
+          "deltaPer10k": -4.32,
           "distinctive": false
         },
         {
@@ -2582,9 +3046,9 @@
           "z": -0.6,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 4.3,
+          "per10kPrev": 4.32,
           "per10kCurr": 0.0,
-          "deltaPer10k": -4.3,
+          "deltaPer10k": -4.32,
           "distinctive": false
         },
         {
@@ -2593,9 +3057,9 @@
           "z": -0.6,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 4.3,
+          "per10kPrev": 4.32,
           "per10kCurr": 0.0,
-          "deltaPer10k": -4.3,
+          "deltaPer10k": -4.32,
           "distinctive": false
         },
         {
@@ -2604,9 +3068,9 @@
           "z": -0.6,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 4.3,
+          "per10kPrev": 4.32,
           "per10kCurr": 0.0,
-          "deltaPer10k": -4.3,
+          "deltaPer10k": -4.32,
           "distinctive": false
         },
         {
@@ -2615,9 +3079,9 @@
           "z": -0.6,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 4.3,
+          "per10kPrev": 4.32,
           "per10kCurr": 0.0,
-          "deltaPer10k": -4.3,
+          "deltaPer10k": -4.32,
           "distinctive": false
         },
         {
@@ -2626,9 +3090,9 @@
           "z": -0.58,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 3.23,
+          "per10kPrev": 3.24,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.23,
+          "deltaPer10k": -3.24,
           "distinctive": false
         },
         {
@@ -2637,9 +3101,9 @@
           "z": -0.58,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 3.23,
+          "per10kPrev": 3.24,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.23,
+          "deltaPer10k": -3.24,
           "distinctive": false
         },
         {
@@ -2648,9 +3112,9 @@
           "z": -0.58,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 3.23,
+          "per10kPrev": 3.24,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.23,
+          "deltaPer10k": -3.24,
           "distinctive": false
         },
         {
@@ -2659,9 +3123,9 @@
           "z": -0.58,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 3.23,
+          "per10kPrev": 3.24,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.23,
+          "deltaPer10k": -3.24,
           "distinctive": false
         },
         {
@@ -2670,9 +3134,9 @@
           "z": -0.58,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 3.23,
+          "per10kPrev": 3.24,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.23,
+          "deltaPer10k": -3.24,
           "distinctive": false
         }
       ],
@@ -2814,8 +3278,8 @@
           "countPrev": 0,
           "countCurr": 8,
           "per10kPrev": 0.0,
-          "per10kCurr": 6.98,
-          "deltaPer10k": 6.98,
+          "per10kCurr": 7.02,
+          "deltaPer10k": 7.02,
           "distinctive": false
         },
         {
@@ -2825,8 +3289,8 @@
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.36,
-          "deltaPer10k": 4.36,
+          "per10kCurr": 4.39,
+          "deltaPer10k": 4.39,
           "distinctive": false
         },
         {
@@ -2836,8 +3300,8 @@
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 4.36,
-          "deltaPer10k": 4.36,
+          "per10kCurr": 4.39,
+          "deltaPer10k": 4.39,
           "distinctive": false
         },
         {
@@ -2847,8 +3311,8 @@
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.49,
-          "deltaPer10k": 3.49,
+          "per10kCurr": 3.51,
+          "deltaPer10k": 3.51,
           "distinctive": false
         },
         {
@@ -2858,8 +3322,8 @@
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.49,
-          "deltaPer10k": 3.49,
+          "per10kCurr": 3.51,
+          "deltaPer10k": 3.51,
           "distinctive": false
         },
         {
@@ -2869,8 +3333,8 @@
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.49,
-          "deltaPer10k": 3.49,
+          "per10kCurr": 3.51,
+          "deltaPer10k": 3.51,
           "distinctive": false
         },
         {
@@ -2880,8 +3344,8 @@
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.49,
-          "deltaPer10k": 3.49,
+          "per10kCurr": 3.51,
+          "deltaPer10k": 3.51,
           "distinctive": false
         },
         {
@@ -2891,8 +3355,8 @@
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.49,
-          "deltaPer10k": 3.49,
+          "per10kCurr": 3.51,
+          "deltaPer10k": 3.51,
           "distinctive": false
         },
         {
@@ -2902,8 +3366,8 @@
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.49,
-          "deltaPer10k": 3.49,
+          "per10kCurr": 3.51,
+          "deltaPer10k": 3.51,
           "distinctive": false
         },
         {
@@ -2913,8 +3377,8 @@
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.49,
-          "deltaPer10k": 3.49,
+          "per10kCurr": 3.51,
+          "deltaPer10k": 3.51,
           "distinctive": false
         },
         {
@@ -2924,8 +3388,8 @@
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.49,
-          "deltaPer10k": 3.49,
+          "per10kCurr": 3.51,
+          "deltaPer10k": 3.51,
           "distinctive": false
         },
         {
@@ -2935,8 +3399,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.62,
-          "deltaPer10k": 2.62,
+          "per10kCurr": 2.63,
+          "deltaPer10k": 2.63,
           "distinctive": false
         },
         {
@@ -2946,8 +3410,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.62,
-          "deltaPer10k": 2.62,
+          "per10kCurr": 2.63,
+          "deltaPer10k": 2.63,
           "distinctive": false
         },
         {
@@ -2957,8 +3421,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.62,
-          "deltaPer10k": 2.62,
+          "per10kCurr": 2.63,
+          "deltaPer10k": 2.63,
           "distinctive": false
         },
         {
@@ -2968,8 +3432,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.62,
-          "deltaPer10k": 2.62,
+          "per10kCurr": 2.63,
+          "deltaPer10k": 2.63,
           "distinctive": false
         }
       ],
@@ -2980,20 +3444,20 @@
           "z": -0.61,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 4.05,
+          "per10kPrev": 4.06,
           "per10kCurr": 0.0,
-          "deltaPer10k": -4.05,
+          "deltaPer10k": -4.06,
           "distinctive": false
         },
         {
           "term": "inventory purchase",
-          "score": -5.86,
+          "score": -5.85,
           "z": -0.58,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 3.04,
+          "per10kPrev": 3.05,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.04,
+          "deltaPer10k": -3.05,
           "distinctive": false
         },
         {
@@ -3144,128 +3608,128 @@
       "topRisersAlt": [
         {
           "term": "personal data",
-          "score": 6.96
+          "score": 6.93
         },
         {
           "term": "negatively impact business",
-          "score": 5.95
+          "score": 5.92
         },
         {
           "term": "negatively impact",
-          "score": 5.76
+          "score": 5.73
         },
         {
           "term": "financial harm",
-          "score": 5.53
+          "score": 5.51
         },
         {
           "term": "personal information",
-          "score": 5.53
+          "score": 5.51
         },
         {
           "term": "products including",
-          "score": 5.53
+          "score": 5.51
         },
         {
           "term": "adversely affect",
-          "score": 5.24
+          "score": 5.22
         },
         {
           "term": "adversely impact financial",
-          "score": 5.24
+          "score": 5.22
         },
         {
           "term": "business financial results",
-          "score": 5.24
+          "score": 5.22
         },
         {
           "term": "changes tax laws",
-          "score": 5.24
+          "score": 5.22
         },
         {
           "term": "customers china",
-          "score": 5.24
+          "score": 5.22
         },
         {
           "term": "customers future demand",
-          "score": 5.24
+          "score": 5.22
         },
         {
           "term": "information systems",
-          "score": 5.24
+          "score": 5.22
         },
         {
           "term": "risks harm business",
-          "score": 5.24
+          "score": 5.22
         },
         {
-          "term": "table contents",
-          "score": 5.24
+          "term": "use ai",
+          "score": 5.22
         }
       ],
       "topFallersAlt": [
         {
-          "term": "adverse impact business",
-          "score": -6.2
-        },
-        {
           "term": "future demand",
-          "score": -6.2
+          "score": -6.22
         },
         {
           "term": "impact business operations",
-          "score": -6.2
+          "score": -6.22
         },
         {
           "term": "information technology",
-          "score": -6.2
+          "score": -6.22
         },
         {
           "term": "adverse changes",
-          "score": -5.79
+          "score": -5.81
         },
         {
           "term": "certain business practices",
-          "score": -5.79
+          "score": -5.81
         },
         {
           "term": "costs increase",
-          "score": -5.79
+          "score": -5.81
         },
         {
           "term": "demand products impact",
-          "score": -5.79
+          "score": -5.81
         },
         {
           "term": "economic industry",
-          "score": -5.79
+          "score": -5.81
         },
         {
           "term": "impact business financial",
-          "score": -5.79
+          "score": -5.81
         },
         {
           "term": "impact business results",
-          "score": -5.79
+          "score": -5.81
         },
         {
           "term": "impact operating results",
-          "score": -5.79
+          "score": -5.81
         },
         {
           "term": "including product",
-          "score": -5.79
+          "score": -5.81
         },
         {
           "term": "including use",
-          "score": -5.79
+          "score": -5.81
         },
         {
-          "term": "new product",
-          "score": -5.79
+          "term": "new products services",
+          "score": -5.81
+        },
+        {
+          "term": "product demand",
+          "score": -5.81
         }
       ],
-      "summaryAlt": "Adds emphasis on personal data, negatively impact business, negatively impact; de-emphasizes adverse impact business, future demand, impact business operations."
+      "summaryAlt": "Adds emphasis on personal data, negatively impact business, negatively impact; de-emphasizes future demand, impact business operations, information technology."
     },
     {
       "from": 2023,
@@ -3278,8 +3742,8 @@
           "countPrev": 0,
           "countCurr": 7,
           "per10kPrev": 0.0,
-          "per10kCurr": 5.21,
-          "deltaPer10k": 5.21,
+          "per10kCurr": 5.23,
+          "deltaPer10k": 5.23,
           "distinctive": false
         },
         {
@@ -3289,8 +3753,8 @@
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.72,
-          "deltaPer10k": 3.72,
+          "per10kCurr": 3.74,
+          "deltaPer10k": 3.74,
           "distinctive": false
         },
         {
@@ -3300,8 +3764,8 @@
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.72,
-          "deltaPer10k": 3.72,
+          "per10kCurr": 3.74,
+          "deltaPer10k": 3.74,
           "distinctive": false
         },
         {
@@ -3311,8 +3775,8 @@
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.72,
-          "deltaPer10k": 3.72,
+          "per10kCurr": 3.74,
+          "deltaPer10k": 3.74,
           "distinctive": false
         },
         {
@@ -3322,19 +3786,19 @@
           "countPrev": 0,
           "countCurr": 5,
           "per10kPrev": 0.0,
-          "per10kCurr": 3.72,
-          "deltaPer10k": 3.72,
+          "per10kCurr": 3.74,
+          "deltaPer10k": 3.74,
           "distinctive": false
         },
         {
           "term": "Generative AI",
-          "score": 5.84,
+          "score": 5.83,
           "z": 0.58,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.98,
-          "deltaPer10k": 2.98,
+          "per10kCurr": 2.99,
+          "deltaPer10k": 2.99,
           "distinctive": false,
           "includes": [
             "generative ai"
@@ -3342,101 +3806,101 @@
         },
         {
           "term": "conflict",
-          "score": 5.84,
+          "score": 5.83,
           "z": 0.58,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.98,
-          "deltaPer10k": 2.98,
+          "per10kCurr": 2.99,
+          "deltaPer10k": 2.99,
           "distinctive": false
         },
         {
           "term": "controls restricting",
-          "score": 5.84,
+          "score": 5.83,
           "z": 0.58,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.98,
-          "deltaPer10k": 2.98,
+          "per10kCurr": 2.99,
+          "deltaPer10k": 2.99,
           "distinctive": false
         },
         {
           "term": "distributors channel",
-          "score": 5.84,
+          "score": 5.83,
           "z": 0.58,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.98,
-          "deltaPer10k": 2.98,
+          "per10kCurr": 2.99,
+          "deltaPer10k": 2.99,
           "distinctive": false
         },
         {
           "term": "excessive",
-          "score": 5.84,
+          "score": 5.83,
           "z": 0.58,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.98,
-          "deltaPer10k": 2.98,
+          "per10kCurr": 2.99,
+          "deltaPer10k": 2.99,
           "distinctive": false
         },
         {
           "term": "excessive shifting",
-          "score": 5.84,
+          "score": 5.83,
           "z": 0.58,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.98,
-          "deltaPer10k": 2.98,
+          "per10kCurr": 2.99,
+          "deltaPer10k": 2.99,
           "distinctive": false
         },
         {
           "term": "initiatives",
-          "score": 5.84,
+          "score": 5.83,
           "z": 0.58,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.98,
-          "deltaPer10k": 2.98,
+          "per10kCurr": 2.99,
+          "deltaPer10k": 2.99,
           "distinctive": false
         },
         {
           "term": "restricting",
-          "score": 5.84,
+          "score": 5.83,
           "z": 0.58,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.98,
-          "deltaPer10k": 2.98,
+          "per10kCurr": 2.99,
+          "deltaPer10k": 2.99,
           "distinctive": false
         },
         {
           "term": "security incidents",
-          "score": 5.84,
+          "score": 5.83,
           "z": 0.58,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.98,
-          "deltaPer10k": 2.98,
+          "per10kCurr": 2.99,
+          "deltaPer10k": 2.99,
           "distinctive": false
         },
         {
           "term": "sensitive information",
-          "score": 5.84,
+          "score": 5.83,
           "z": 0.58,
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.98,
-          "deltaPer10k": 2.98,
+          "per10kCurr": 2.99,
+          "deltaPer10k": 2.99,
           "distinctive": false
         }
       ],
@@ -3447,9 +3911,9 @@
           "z": -0.74,
           "countPrev": 14,
           "countCurr": 0,
-          "per10kPrev": 12.22,
+          "per10kPrev": 12.29,
           "per10kCurr": 0.0,
-          "deltaPer10k": -12.22,
+          "deltaPer10k": -12.29,
           "distinctive": false,
           "includes": [
             "covid"
@@ -3461,9 +3925,9 @@
           "z": -0.66,
           "countPrev": 6,
           "countCurr": 0,
-          "per10kPrev": 5.24,
+          "per10kPrev": 5.27,
           "per10kCurr": 0.0,
-          "deltaPer10k": -5.24,
+          "deltaPer10k": -5.27,
           "distinctive": false
         },
         {
@@ -3472,9 +3936,9 @@
           "z": -0.66,
           "countPrev": 6,
           "countCurr": 0,
-          "per10kPrev": 5.24,
+          "per10kPrev": 5.27,
           "per10kCurr": 0.0,
-          "deltaPer10k": -5.24,
+          "deltaPer10k": -5.27,
           "distinctive": false
         },
         {
@@ -3483,9 +3947,9 @@
           "z": -0.61,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 3.49,
+          "per10kPrev": 3.51,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.49,
+          "deltaPer10k": -3.51,
           "distinctive": false
         },
         {
@@ -3494,119 +3958,119 @@
           "z": -0.61,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 3.49,
+          "per10kPrev": 3.51,
           "per10kCurr": 0.0,
-          "deltaPer10k": -3.49,
+          "deltaPer10k": -3.51,
           "distinctive": false
         },
         {
           "term": "affect stock",
           "score": -5.46,
-          "z": -0.54,
+          "z": -0.55,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.75,
+          "per10kPrev": 1.76,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.75,
+          "deltaPer10k": -1.76,
           "distinctive": false
         },
         {
           "term": "audits",
           "score": -5.46,
-          "z": -0.54,
+          "z": -0.55,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.75,
+          "per10kPrev": 1.76,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.75,
+          "deltaPer10k": -1.76,
           "distinctive": false
         },
         {
           "term": "bilateral",
           "score": -5.46,
-          "z": -0.54,
+          "z": -0.55,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.75,
+          "per10kPrev": 1.76,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.75,
+          "deltaPer10k": -1.76,
           "distinctive": false
         },
         {
           "term": "cmp",
           "score": -5.46,
-          "z": -0.54,
+          "z": -0.55,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.75,
+          "per10kPrev": 1.76,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.75,
+          "deltaPer10k": -1.76,
           "distinctive": false
         },
         {
           "term": "competition current",
           "score": -5.46,
-          "z": -0.54,
+          "z": -0.55,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.75,
+          "per10kPrev": 1.76,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.75,
+          "deltaPer10k": -1.76,
           "distinctive": false
         },
         {
           "term": "containment",
           "score": -5.46,
-          "z": -0.54,
+          "z": -0.55,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.75,
+          "per10kPrev": 1.76,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.75,
+          "deltaPer10k": -1.76,
           "distinctive": false
         },
         {
           "term": "current target",
           "score": -5.46,
-          "z": -0.54,
+          "z": -0.55,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.75,
+          "per10kPrev": 1.76,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.75,
+          "deltaPer10k": -1.76,
           "distinctive": false
         },
         {
           "term": "demand properly",
           "score": -5.46,
-          "z": -0.54,
+          "z": -0.55,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.75,
+          "per10kPrev": 1.76,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.75,
+          "deltaPer10k": -1.76,
           "distinctive": false
         },
         {
           "term": "development enhancement",
           "score": -5.46,
-          "z": -0.54,
+          "z": -0.55,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.75,
+          "per10kPrev": 1.76,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.75,
+          "deltaPer10k": -1.76,
           "distinctive": false
         },
         {
           "term": "development tools",
           "score": -5.46,
-          "z": -0.54,
+          "z": -0.55,
           "countPrev": 2,
           "countCurr": 0,
-          "per10kPrev": 1.75,
+          "per10kPrev": 1.76,
           "per10kCurr": 0.0,
-          "deltaPer10k": -1.75,
+          "deltaPer10k": -1.76,
           "distinctive": false
         }
       ],
@@ -3614,128 +4078,128 @@
       "topRisersAlt": [
         {
           "term": "change control",
-          "score": 5.79
+          "score": 5.82
         },
         {
           "term": "business example",
-          "score": 5.5
+          "score": 5.53
         },
         {
           "term": "control product",
-          "score": 5.5
+          "score": 5.53
         },
         {
           "term": "financial markets",
-          "score": 5.5
+          "score": 5.53
         },
         {
           "term": "impact ability",
-          "score": 5.5
+          "score": 5.53
         },
         {
           "term": "past future",
-          "score": 5.5
+          "score": 5.53
         },
         {
-          "term": "regulatory requirements",
-          "score": 5.5
+          "term": "results past",
+          "score": 5.53
         },
         {
           "term": "additional costs",
-          "score": 5.1
+          "score": 5.12
         },
         {
           "term": "additional risks related",
-          "score": 5.1
+          "score": 5.12
         },
         {
           "term": "adversely impact market",
-          "score": 5.1
+          "score": 5.12
         },
         {
           "term": "business negatively",
-          "score": 5.1
+          "score": 5.12
         },
         {
           "term": "certain customers",
-          "score": 5.1
+          "score": 5.12
         },
         {
           "term": "china including",
-          "score": 5.1
+          "score": 5.12
         },
         {
           "term": "china market",
-          "score": 5.1
+          "score": 5.12
         },
         {
           "term": "customer requirements",
-          "score": 5.1
+          "score": 5.12
         }
       ],
       "topFallersAlt": [
         {
           "term": "personal data",
-          "score": -7.64
+          "score": -7.62
+        },
+        {
+          "term": "operating results",
+          "score": -6.61
         },
         {
           "term": "customers result",
-          "score": -6.22
+          "score": -6.2
         },
         {
           "term": "personal information",
-          "score": -6.22
+          "score": -6.2
         },
         {
           "term": "changes tax laws",
-          "score": -5.93
+          "score": -5.91
         },
         {
           "term": "customers china",
-          "score": -5.93
-        },
-        {
-          "term": "including limited",
-          "score": -5.93
-        },
-        {
-          "term": "table contents",
-          "score": -5.93
+          "score": -5.91
         },
         {
           "term": "additional tax",
-          "score": -5.52
+          "score": -5.5
+        },
+        {
+          "term": "adverse impact business",
+          "score": -5.5
+        },
+        {
+          "term": "adverse impact financial",
+          "score": -5.5
         },
         {
           "term": "cause stock",
-          "score": -5.52
+          "score": -5.5
+        },
+        {
+          "term": "future adverse",
+          "score": -5.5
         },
         {
           "term": "future cause",
-          "score": -5.52
+          "score": -5.5
         },
         {
           "term": "harm business financial",
-          "score": -5.52
-        },
-        {
-          "term": "impact financial",
-          "score": -5.52
-        },
-        {
-          "term": "including limited china",
-          "score": -5.52
+          "score": -5.5
         },
         {
           "term": "including new",
-          "score": -5.52
+          "score": -5.5
         },
         {
-          "term": "new requirements",
-          "score": -5.52
+          "term": "increase operating",
+          "score": -5.5
         }
       ],
-      "summaryAlt": "Adds emphasis on change control, business example, control product; de-emphasizes personal data, customers result, personal information."
+      "summaryAlt": "Adds emphasis on change control, business example, control product; de-emphasizes personal data, operating results, customers result."
     },
     {
       "from": 2024,
@@ -3744,12 +4208,12 @@
         {
           "term": "ifr",
           "score": 7.15,
-          "z": 0.72,
+          "z": 0.71,
           "countPrev": 0,
           "countCurr": 13,
           "per10kPrev": 0.0,
-          "per10kCurr": 9.49,
-          "deltaPer10k": 9.49,
+          "per10kCurr": 9.53,
+          "deltaPer10k": 9.53,
           "distinctive": false
         },
         {
@@ -3759,8 +4223,8 @@
           "countPrev": 0,
           "countCurr": 12,
           "per10kPrev": 0.0,
-          "per10kCurr": 8.76,
-          "deltaPer10k": 8.76,
+          "per10kCurr": 8.8,
+          "deltaPer10k": 8.8,
           "distinctive": false
         },
         {
@@ -3770,8 +4234,8 @@
           "countPrev": 0,
           "countCurr": 12,
           "per10kPrev": 0.0,
-          "per10kCurr": 8.76,
-          "deltaPer10k": 8.76,
+          "per10kCurr": 8.8,
+          "deltaPer10k": 8.8,
           "distinctive": false
         },
         {
@@ -3781,8 +4245,8 @@
           "countPrev": 0,
           "countCurr": 12,
           "per10kPrev": 0.0,
-          "per10kCurr": 8.76,
-          "deltaPer10k": 8.76,
+          "per10kCurr": 8.8,
+          "deltaPer10k": 8.8,
           "distinctive": false
         },
         {
@@ -3792,8 +4256,8 @@
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.92,
-          "deltaPer10k": 2.92,
+          "per10kCurr": 2.93,
+          "deltaPer10k": 2.93,
           "distinctive": false
         },
         {
@@ -3803,8 +4267,8 @@
           "countPrev": 0,
           "countCurr": 4,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.92,
-          "deltaPer10k": 2.92,
+          "per10kCurr": 2.93,
+          "deltaPer10k": 2.93,
           "distinctive": false
         },
         {
@@ -3814,8 +4278,8 @@
           "countPrev": 0,
           "countCurr": 3,
           "per10kPrev": 0.0,
-          "per10kCurr": 2.19,
-          "deltaPer10k": 2.19,
+          "per10kCurr": 2.2,
+          "deltaPer10k": 2.2,
           "distinctive": false
         },
         {
@@ -3825,8 +4289,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.46,
-          "deltaPer10k": 1.46,
+          "per10kCurr": 1.47,
+          "deltaPer10k": 1.47,
           "distinctive": false
         },
         {
@@ -3836,8 +4300,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.46,
-          "deltaPer10k": 1.46,
+          "per10kCurr": 1.47,
+          "deltaPer10k": 1.47,
           "distinctive": false
         },
         {
@@ -3847,8 +4311,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.46,
-          "deltaPer10k": 1.46,
+          "per10kCurr": 1.47,
+          "deltaPer10k": 1.47,
           "distinctive": false
         },
         {
@@ -3858,8 +4322,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.46,
-          "deltaPer10k": 1.46,
+          "per10kCurr": 1.47,
+          "deltaPer10k": 1.47,
           "distinctive": false
         },
         {
@@ -3869,8 +4333,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.46,
-          "deltaPer10k": 1.46,
+          "per10kCurr": 1.47,
+          "deltaPer10k": 1.47,
           "distinctive": false
         },
         {
@@ -3880,8 +4344,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.46,
-          "deltaPer10k": 1.46,
+          "per10kCurr": 1.47,
+          "deltaPer10k": 1.47,
           "distinctive": false
         },
         {
@@ -3891,8 +4355,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.46,
-          "deltaPer10k": 1.46,
+          "per10kCurr": 1.47,
+          "deltaPer10k": 1.47,
           "distinctive": false
         },
         {
@@ -3902,8 +4366,8 @@
           "countPrev": 0,
           "countCurr": 2,
           "per10kPrev": 0.0,
-          "per10kCurr": 1.46,
-          "deltaPer10k": 1.46,
+          "per10kCurr": 1.47,
+          "deltaPer10k": 1.47,
           "distinctive": false
         }
       ],
@@ -3914,9 +4378,9 @@
           "z": -0.6,
           "countPrev": 4,
           "countCurr": 0,
-          "per10kPrev": 2.98,
+          "per10kPrev": 2.99,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.98,
+          "deltaPer10k": -2.99,
           "distinctive": false
         },
         {
@@ -3925,9 +4389,9 @@
           "z": -0.57,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 2.23,
+          "per10kPrev": 2.24,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.23,
+          "deltaPer10k": -2.24,
           "distinctive": false
         },
         {
@@ -3936,9 +4400,9 @@
           "z": -0.57,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 2.23,
+          "per10kPrev": 2.24,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.23,
+          "deltaPer10k": -2.24,
           "distinctive": false
         },
         {
@@ -3947,9 +4411,9 @@
           "z": -0.57,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 2.23,
+          "per10kPrev": 2.24,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.23,
+          "deltaPer10k": -2.24,
           "distinctive": false
         },
         {
@@ -3958,9 +4422,9 @@
           "z": -0.57,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 2.23,
+          "per10kPrev": 2.24,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.23,
+          "deltaPer10k": -2.24,
           "distinctive": false
         },
         {
@@ -3969,9 +4433,9 @@
           "z": -0.57,
           "countPrev": 3,
           "countCurr": 0,
-          "per10kPrev": 2.23,
+          "per10kPrev": 2.24,
           "per10kCurr": 0.0,
-          "deltaPer10k": -2.23,
+          "deltaPer10k": -2.24,
           "distinctive": false
         },
         {
@@ -4077,10 +4541,6 @@
       "summary": "Adds emphasis on ifr, ai diffusion, diffusion; de-emphasizes indebtedness, cpu, flows operations.",
       "topRisersAlt": [
         {
-          "term": "including limited",
-          "score": 6.69
-        },
-        {
           "term": "impact financial results",
           "score": 5.99
         },
@@ -4094,65 +4554,65 @@
         },
         {
           "term": "additional tax",
-          "score": 5.29
+          "score": 5.3
         },
         {
           "term": "china example",
-          "score": 5.29
+          "score": 5.3
         },
         {
           "term": "compliance costs",
-          "score": 5.29
+          "score": 5.3
         },
         {
           "term": "customers business",
-          "score": 5.29
+          "score": 5.3
         },
         {
           "term": "customers suppliers partners",
-          "score": 5.29
+          "score": 5.3
         },
         {
           "term": "impact market",
-          "score": 5.29
-        },
-        {
-          "term": "including limited china",
-          "score": 5.29
+          "score": 5.3
         },
         {
           "term": "including restrictions export",
-          "score": 5.29
+          "score": 5.3
         },
         {
           "term": "laws regulations",
-          "score": 5.29
+          "score": 5.3
         },
         {
           "term": "markets worldwide",
-          "score": 5.29
+          "score": 5.3
         },
         {
           "term": "operations china",
-          "score": 5.29
+          "score": 5.3
+        },
+        {
+          "term": "regulations obligations",
+          "score": 5.3
+        },
+        {
+          "term": "tax related",
+          "score": 5.3
         }
       ],
       "topFallersAlt": [
         {
           "term": "adversely affect financial",
-          "score": -6.25
+          "score": -6.24
+        },
+        {
+          "term": "adversely affect",
+          "score": -6.02
         },
         {
           "term": "change control",
           "score": -6.02
-        },
-        {
-          "term": "operating results",
-          "score": -6.02
-        },
-        {
-          "term": "adversely affect",
-          "score": -5.73
         },
         {
           "term": "control product",
@@ -4164,6 +4624,10 @@
         },
         {
           "term": "past future",
+          "score": -5.73
+        },
+        {
+          "term": "results past",
           "score": -5.73
         },
         {
@@ -4199,7 +4663,7 @@
           "score": -5.32
         }
       ],
-      "summaryAlt": "Adds emphasis on including limited, impact financial results, changes tax laws; de-emphasizes adversely affect financial, change control, operating results."
+      "summaryAlt": "Adds emphasis on impact financial results, changes tax laws, new suppliers; de-emphasizes adversely affect financial, adversely affect, change control."
     }
   ]
 }

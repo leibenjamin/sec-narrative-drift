@@ -9,10 +9,10 @@
     "secUrl": "https://www.sec.gov/Archives/edgar/data/823768/000119312516467957/d83265d10k.htm",
     "extraction": {
       "confidence": 0.8999999999999999,
-      "method": "text_scored",
+      "method": "blockdoc_scored",
       "errors": [
-        "anchor_low_confidence",
-        "anchor_missing"
+        "toc_header_repeated",
+        "toc_detected"
       ]
     }
   },
@@ -26,10 +26,10 @@
     "secUrl": "https://www.sec.gov/Archives/edgar/data/823768/000119312517046480/d252547d10k.htm",
     "extraction": {
       "confidence": 0.8999999999999999,
-      "method": "text_scored",
+      "method": "blockdoc_scored",
       "errors": [
-        "anchor_low_confidence",
-        "anchor_missing"
+        "toc_header_repeated",
+        "toc_detected"
       ]
     }
   },
@@ -43,10 +43,10 @@
     "secUrl": "https://www.sec.gov/Archives/edgar/data/823768/000155837018000716/wm-20171231x10k.htm",
     "extraction": {
       "confidence": 0.8999999999999999,
-      "method": "text_scored",
+      "method": "blockdoc_scored",
       "errors": [
-        "anchor_low_confidence",
-        "anchor_missing"
+        "toc_header_repeated",
+        "toc_detected"
       ]
     }
   },
@@ -60,10 +60,10 @@
     "secUrl": "https://www.sec.gov/Archives/edgar/data/823768/000155837019000662/wm-20181231x10k.htm",
     "extraction": {
       "confidence": 0.8999999999999999,
-      "method": "text_scored",
+      "method": "blockdoc_scored",
       "errors": [
-        "anchor_low_confidence",
-        "anchor_missing"
+        "toc_header_repeated",
+        "toc_detected"
       ]
     }
   },
@@ -77,10 +77,10 @@
     "secUrl": "https://www.sec.gov/Archives/edgar/data/823768/000155837020000762/wm-20191231x10kba4080.htm",
     "extraction": {
       "confidence": 0.8999999999999999,
-      "method": "text_scored",
+      "method": "blockdoc_scored",
       "errors": [
-        "anchor_low_confidence",
-        "anchor_missing"
+        "toc_header_repeated",
+        "toc_detected"
       ]
     }
   },
@@ -94,10 +94,10 @@
     "secUrl": "https://www.sec.gov/Archives/edgar/data/823768/000155837021001348/wm-20201231x10k.htm",
     "extraction": {
       "confidence": 0.8999999999999999,
-      "method": "text_scored",
+      "method": "blockdoc_scored",
       "errors": [
-        "anchor_low_confidence",
-        "anchor_missing"
+        "toc_header_repeated",
+        "toc_detected"
       ]
     }
   },
@@ -111,10 +111,10 @@
     "secUrl": "https://www.sec.gov/Archives/edgar/data/823768/000155837022001179/wm-20211231x10k.htm",
     "extraction": {
       "confidence": 0.8999999999999999,
-      "method": "text_scored",
+      "method": "blockdoc_scored",
       "errors": [
-        "anchor_low_confidence",
-        "anchor_missing"
+        "toc_header_repeated",
+        "toc_detected"
       ]
     }
   },
@@ -128,10 +128,10 @@
     "secUrl": "https://www.sec.gov/Archives/edgar/data/823768/000155837023000964/wm-20221231x10k.htm",
     "extraction": {
       "confidence": 0.8999999999999999,
-      "method": "text_scored",
+      "method": "blockdoc_scored",
       "errors": [
-        "anchor_low_confidence",
-        "anchor_missing"
+        "toc_header_repeated",
+        "toc_detected"
       ]
     }
   },
@@ -145,10 +145,10 @@
     "secUrl": "https://www.sec.gov/Archives/edgar/data/823768/000155837024001049/wm-20231231x10k.htm",
     "extraction": {
       "confidence": 0.8999999999999999,
-      "method": "text_scored",
+      "method": "blockdoc_scored",
       "errors": [
-        "anchor_low_confidence",
-        "anchor_missing"
+        "toc_header_repeated",
+        "toc_detected"
       ]
     }
   },
@@ -162,10 +162,10 @@
     "secUrl": "https://www.sec.gov/Archives/edgar/data/823768/000155837025001132/wm-20241231x10k.htm",
     "extraction": {
       "confidence": 0.8999999999999999,
-      "method": "text_scored",
+      "method": "blockdoc_scored",
       "errors": [
-        "anchor_low_confidence",
-        "anchor_missing"
+        "toc_header_repeated",
+        "toc_detected"
       ]
     }
   }

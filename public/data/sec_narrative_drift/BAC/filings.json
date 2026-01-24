@@ -9,9 +9,10 @@
     "secUrl": "https://www.sec.gov/Archives/edgar/data/70858/000007085816000137/bac-1231201510xk.htm",
     "extraction": {
       "confidence": 0.8,
-      "method": "html_anchor",
+      "method": "blockdoc_scored",
       "errors": [
-        "early_position_penalty"
+        "early_position_penalty",
+        "toc_detected"
       ]
     }
   },
@@ -24,10 +25,12 @@
     "primaryDocument": "bac-1231201610xk.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/70858/000007085817000013/bac-1231201610xk.htm",
     "extraction": {
-      "confidence": 0.8,
-      "method": "html_anchor",
+      "confidence": 0.5,
+      "method": "blockdoc_scored",
       "errors": [
-        "early_position_penalty"
+        "early_position_penalty",
+        "toc_detected",
+        "toc_like_tail"
       ]
     }
   },
@@ -40,10 +43,12 @@
     "primaryDocument": "bac-1231201710xk.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/70858/000007085818000009/bac-1231201710xk.htm",
     "extraction": {
-      "confidence": 0.8,
-      "method": "html_anchor",
+      "confidence": 0.5,
+      "method": "blockdoc_scored",
       "errors": [
-        "early_position_penalty"
+        "early_position_penalty",
+        "toc_detected",
+        "toc_like_tail"
       ]
     }
   },
@@ -56,9 +61,12 @@
     "primaryDocument": "bac-1231201810xk.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/70858/000007085819000012/bac-1231201810xk.htm",
     "extraction": {
-      "confidence": 0.9,
-      "method": "html_anchor",
-      "errors": []
+      "confidence": 0.8,
+      "method": "blockdoc_scored",
+      "errors": [
+        "early_position_penalty",
+        "toc_detected"
+      ]
     }
   },
   {
@@ -70,9 +78,12 @@
     "primaryDocument": "bac-1231201910xk.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/70858/000007085820000011/bac-1231201910xk.htm",
     "extraction": {
-      "confidence": 0.9,
-      "method": "html_anchor",
-      "errors": []
+      "confidence": 0.8,
+      "method": "blockdoc_scored",
+      "errors": [
+        "early_position_penalty",
+        "toc_detected"
+      ]
     }
   },
   {
@@ -84,9 +95,13 @@
     "primaryDocument": "bac-20201231.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/70858/000007085821000023/bac-20201231.htm",
     "extraction": {
-      "confidence": 0.9,
-      "method": "html_anchor",
-      "errors": []
+      "confidence": 0.5,
+      "method": "blockdoc_scored",
+      "errors": [
+        "early_position_penalty",
+        "toc_detected",
+        "toc_like_tail"
+      ]
     }
   },
   {
@@ -98,9 +113,13 @@
     "primaryDocument": "bac-20211231.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/70858/000007085822000062/bac-20211231.htm",
     "extraction": {
-      "confidence": 0.9,
-      "method": "html_anchor",
-      "errors": []
+      "confidence": 0.5,
+      "method": "blockdoc_scored",
+      "errors": [
+        "early_position_penalty",
+        "toc_detected",
+        "toc_like_tail"
+      ]
     }
   },
   {
@@ -112,9 +131,11 @@
     "primaryDocument": "bac-20221231.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/70858/000007085823000092/bac-20221231.htm",
     "extraction": {
-      "confidence": 0.9,
-      "method": "html_anchor",
-      "errors": []
+      "confidence": 0.8999999999999999,
+      "method": "blockdoc_scored",
+      "errors": [
+        "toc_detected"
+      ]
     }
   },
   {
@@ -126,9 +147,11 @@
     "primaryDocument": "bac-20231231.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/70858/000007085824000122/bac-20231231.htm",
     "extraction": {
-      "confidence": 0.9,
-      "method": "html_anchor",
-      "errors": []
+      "confidence": 0.8999999999999999,
+      "method": "blockdoc_scored",
+      "errors": [
+        "toc_detected"
+      ]
     }
   },
   {
@@ -140,9 +163,11 @@
     "primaryDocument": "bac-20241231.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/70858/000007085825000139/bac-20241231.htm",
     "extraction": {
-      "confidence": 0.9,
-      "method": "html_anchor",
-      "errors": []
+      "confidence": 0.8999999999999999,
+      "method": "blockdoc_scored",
+      "errors": [
+        "toc_detected"
+      ]
     }
   }
 ]
