@@ -7,11 +7,14 @@ from typing import Any, Optional, cast
 ROOT_DIR = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT_DIR))
 
-from sec_extract_item1a import extract_item1a_from_html  # noqa: E402
+from sec_extract_item1a import extract_item1a_from_html, extract_item1a_from_text  # noqa: E402
 from sec_extract_item1a import (  # noqa: E402
     END_MARKERS_10K,
+    PART_PAGE_MULTIPLIER,
+    analyze_blockdoc_candidates,
     build_blockdoc_from_text,
     find_end_marker_in_text,
+    parse_toc_page_number,
     score_toc_window,
 )
 
@@ -85,6 +88,105 @@ class TestExtractItem1A(unittest.TestCase):
         self.assertGreaterEqual(score["pageNumBlocks"], 4)
         self.assertGreaterEqual(score["itemCodeBlocks"], 2)
 
+    def test_parse_toc_page_number_letter_prefix(self) -> None:
+        self.assertEqual(parse_toc_page_number("K-25"), (25, 25))
+        self.assertEqual(parse_toc_page_number("K- 25"), (25, 25))
+        self.assertEqual(parse_toc_page_number("K - 25"), (25, 25))
+        self.assertEqual(parse_toc_page_number("K- 25 - K- 27"), (25, 27))
+
+    def test_parse_toc_page_number_part_prefix(self) -> None:
+        self.assertEqual(
+            parse_toc_page_number("I-20"),
+            (PART_PAGE_MULTIPLIER + 20, PART_PAGE_MULTIPLIER + 20),
+        )
+        self.assertEqual(
+            parse_toc_page_number("II-8"),
+            (PART_PAGE_MULTIPLIER * 2 + 8, PART_PAGE_MULTIPLIER * 2 + 8),
+        )
+        self.assertEqual(
+            parse_toc_page_number("I-20 - I-38"),
+            (PART_PAGE_MULTIPLIER + 20, PART_PAGE_MULTIPLIER + 38),
+        )
+
+    def test_toc_head_unsafe_region_full(self) -> None:
+        toc_lines = ["Table of Contents"]
+        for idx in range(1, 70):
+            toc_lines.append(f"Item {idx}. Section {idx}")
+            toc_lines.append(str(idx))
+        toc_lines.extend(
+            [
+                "Item 1A.",
+                "Risk Factors",
+                "25",
+                "Item 1B.",
+                "Unresolved Staff Comments",
+                "28",
+            ]
+        )
+        filler_lines = [
+            "This is filler narrative content that should not be treated as a TOC entry."
+            for _ in range(40)
+        ]
+        body_lines = [
+            "ITEM 1A. RISK FACTORS",
+            "These risks could materially affect results and operations.",
+            "ITEM 1B. Unresolved Staff Comments",
+        ]
+        text = "\n\n".join(toc_lines + filler_lines + body_lines)
+        doc = build_blockdoc_from_text(text)
+        analysis = analyze_blockdoc_candidates(doc)
+        toc_regions = analysis.get("toc_regions", [])
+        unsafe_regions = analysis.get("unsafe_regions", [])
+        toc_head_end = max(
+            (region["end_idx"] for region in toc_regions if region["kind"] == "toc_head"),
+            default=None,
+        )
+        unsafe_head_end = max(
+            (region["end_idx"] for region in unsafe_regions if region["kind"] == "toc_head"),
+            default=None,
+        )
+        if toc_head_end is None or unsafe_head_end is None:
+            self.fail("Missing toc_head region in analysis output")
+        self.assertGreaterEqual(unsafe_head_end, toc_head_end)
+
+    def test_toc_candidate_rejected(self) -> None:
+        toc_lines = [
+            "Table of Contents",
+            "Item 1. Business",
+            "1",
+            "Item 1A. Risk Factors",
+            "5",
+            "Item 1B. Unresolved Staff Comments",
+            "7",
+        ]
+        filler_lines = [
+            "This paragraph is filler narrative describing operations and strategy." for _ in range(90)
+        ]
+        body_lines = [
+            "ITEM 1. BUSINESS",
+            "Business overview text that is long enough to look like narrative content.",
+            "ITEM 1A.",
+            "RISK FACTORS",
+            "These risks could materially affect results and operations.",
+            "ITEM 1B. Unresolved Staff Comments",
+        ]
+        text = "\n\n".join(toc_lines + filler_lines + body_lines)
+        doc = build_blockdoc_from_text(text)
+        analysis = analyze_blockdoc_candidates(doc)
+        selected = analysis.get("selected")
+        toc_end = analysis.get("toc_region_end_idx")
+        if selected is None:
+            self.fail("Expected a selected candidate")
+        selected_idx = getattr(selected, "idx", None)
+        if not isinstance(selected_idx, int):
+            self.fail("Selected candidate idx missing")
+        if isinstance(toc_end, int):
+            self.assertGreaterEqual(
+                selected_idx,
+                toc_end,
+                msg=f"Selected candidate inside TOC region: idx={selected_idx} toc_end={toc_end}",
+            )
+
     def test_heading_like_classification(self) -> None:
         sample = "\n\n".join(
             [
@@ -112,6 +214,54 @@ class TestExtractItem1A(unittest.TestCase):
         self.assertIsNotNone(end_idx)
         self.assertEqual(end_marker, "1B")
 
+    def test_split_heading_item1a(self) -> None:
+        text = "\n\n".join(
+            [
+                "ITEM 1. BUSINESS",
+                "Business narrative.",
+                "ITEM 1A.",
+                "RISK FACTORS",
+                "These risks could materially affect results.",
+                "ITEM 1B. Unresolved Staff Comments",
+            ]
+        )
+        _section, _confidence, _method, _warnings, debug = extract_item1a_from_text(text)
+        start_marker = as_str(debug.get("startMarker"))
+        self.assertEqual(start_marker, "item1a_heading_followed_by_risk")
+
+    def test_cross_ref_rejected(self) -> None:
+        text = "\n\n".join(
+            [
+                "See Item 1A. Risk Factors for more detail.",
+                "ITEM 1. BUSINESS",
+                "Business narrative.",
+                "ITEM 1A. RISK FACTORS",
+                "These risks could materially affect results.",
+                "ITEM 1B. Unresolved Staff Comments",
+            ]
+        )
+        _section, _confidence, _method, _warnings, debug = extract_item1a_from_text(text)
+        start_snippet = as_str(debug.get("startSnippet")) or ""
+        self.assertNotIn("See Item 1A", start_snippet)
+
+    def test_end_marker_item1c(self) -> None:
+        risk_body = (
+            "These risks could materially affect results and operations and financial condition. " * 120
+        )
+        text = "\n\n".join(
+            [
+                "ITEM 1. BUSINESS",
+                "Business narrative.",
+                "ITEM 1A. RISK FACTORS",
+                risk_body,
+                "ITEM 1C. Cybersecurity",
+                "ITEM 2. Properties",
+            ]
+        )
+        _section, _confidence, _method, _warnings, debug = extract_item1a_from_text(text)
+        end_marker = as_str(debug.get("endMarkerUsed"))
+        self.assertEqual(end_marker, "1C")
+
     def assert_fixture(self, ticker: str) -> None:
         fixture = find_fixture(ticker)
         if fixture is None:
@@ -135,7 +285,9 @@ class TestExtractItem1A(unittest.TestCase):
             msg=f"{ticker} extraction looks like a TOC cluster in the first 500 chars",
         )
 
-        if confidence < 0.55:
+        # Only warn for genuinely low confidence; 0.50 is common for valid extractions
+        # with minor penalties (e.g., toc_like_tail, early_position_penalty)
+        if confidence < 0.45:
             print(f"warning: low confidence {confidence:.2f} for {ticker}: {warnings}")
 
     def test_nvda_fixture(self) -> None:
