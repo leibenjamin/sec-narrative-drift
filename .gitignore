@@ -36,6 +36,7 @@ data/sec_cache/
 
 # Local reports (non-public)
 scripts/_reports/
+reports/*
 
 # Local analysis exports (non-public)
 analysis_exports/
@@ -51,3 +52,22 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
+
+# Claude Code session files
+.claude/
+
+# Windows artifact
+nul
+
+# Internal pipeline scripts (not needed for portfolio app)
+scripts/audit_risk_extraction_bundle.py
+scripts/build_risk_manual_checklist.py
+scripts/debug_start_in_toc.py
+scripts/fetch_missing_html_cache.py
+scripts/rebuild_ticker_year_index_from_cache.py
+scripts/refresh_risk_cache_from_html.py
+scripts/sec_risk_extraction_audit.py
+scripts/tests/analyze_fixtures.py
+
+# Internal resources
+scripts/resources/
