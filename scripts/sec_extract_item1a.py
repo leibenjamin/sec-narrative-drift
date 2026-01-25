@@ -144,6 +144,7 @@ LATER_TRIPWIRE_TAIL_BLOCKS = 80
 START_PURITY_BLOCKS = 10
 TOC_TAIL_BLOCKS = 40
 TOC_RANGE_TOLERANCE = 1
+SHORT_TOC_PAGE_SPAN_MAX = 4
 
 HEADING_TAGS = {"h1", "h2", "h3", "h4", "h5", "h6"}
 
@@ -181,6 +182,7 @@ class TocMap(TypedDict, total=False):
     risk_row_text: str
     next_label: str
     next_item_code: str
+    next_page_start: int
     next_row_text: str
     region_kind: str
 
@@ -571,6 +573,10 @@ HEADER_FOOTER_HINT = re.compile(
 YEAR_HINT = re.compile(r"\b(19|20)\d{2}\b")
 
 PART_PAGE_MULTIPLIER = 10000
+DOC_PAGE_MAX = 500
+DOC_PAGE_MIN_COUNT = 10
+DOC_PAGE_CLUSTER_GAP = 3
+DOC_PAGE_CLUSTER_MIN_SPAN = 5
 
 RISK_RELATED_SUBHEAD = re.compile(r"\brisks?\s+related\s+to\b", re.IGNORECASE)
 
@@ -2267,6 +2273,9 @@ def _build_toc_map_from_entries(
         next_item_code = next_entry["item_code"]
         if next_item_code:
             toc_map["next_item_code"] = next_item_code
+        next_page_start = next_entry.get("page_start")
+        if isinstance(next_page_start, int):
+            toc_map["next_page_start"] = next_page_start
         toc_map["next_row_text"] = next_entry["raw"]
     return toc_map
 
@@ -2371,13 +2380,13 @@ def extract_toc_entries(block_doc: BlockDoc, regions: list[TocRegion]) -> Option
     next_map: Optional[TocMap] = None
     non_xref_next = [
         toc_map
-        for toc_map in maps_to_score
+        for toc_map in toc_maps
         if toc_map.get("region_kind") != "xref_index" and _toc_map_has_next_label(toc_map)
     ]
     if non_xref_next:
         next_map = max(non_xref_next, key=_toc_map_score)
     if next_map is None:
-        any_next = [toc_map for toc_map in maps_to_score if _toc_map_has_next_label(toc_map)]
+        any_next = [toc_map for toc_map in toc_maps if _toc_map_has_next_label(toc_map)]
         if any_next:
             next_map = max(any_next, key=_toc_map_score)
 
@@ -2390,6 +2399,11 @@ def extract_toc_entries(block_doc: BlockDoc, regions: list[TocRegion]) -> Option
             next_item_code = next_map.get("next_item_code")
             if isinstance(next_item_code, str) and next_item_code:
                 combined["next_item_code"] = next_item_code
+            else:
+                combined.pop("next_item_code", None)
+            next_page_start = next_map.get("next_page_start")
+            if isinstance(next_page_start, int):
+                combined["next_page_start"] = next_page_start
             next_row_text = next_map.get("next_row_text")
             if isinstance(next_row_text, str) and next_row_text:
                 combined["next_row_text"] = next_row_text
@@ -2895,10 +2909,33 @@ def _document_page_bounds(blocks: list[Block]) -> Optional[tuple[int, int]]:
         page_num = _extract_page_number_from_block(blocks, idx)
         if page_num is None:
             continue
+        if _is_part_page_value(page_num):
+            continue
+        if page_num > DOC_PAGE_MAX:
+            continue
         pages.append(page_num)
     if not pages:
         return None
-    return min(pages), max(pages)
+    pages.sort()
+    unique_pages = sorted(set(pages))
+    if len(unique_pages) >= DOC_PAGE_MIN_COUNT:
+        best_start = unique_pages[0]
+        best_end = unique_pages[0]
+        cluster_start = unique_pages[0]
+        cluster_end = unique_pages[0]
+        for page in unique_pages[1:]:
+            if page - cluster_end <= DOC_PAGE_CLUSTER_GAP:
+                cluster_end = page
+                continue
+            if (cluster_end - cluster_start) > (best_end - best_start):
+                best_start, best_end = cluster_start, cluster_end
+            cluster_start = page
+            cluster_end = page
+        if (cluster_end - cluster_start) > (best_end - best_start):
+            best_start, best_end = cluster_start, cluster_end
+        if (best_end - best_start) >= DOC_PAGE_CLUSTER_MIN_SPAN:
+            return best_start, best_end
+    return pages[0], pages[-1]
 
 
 def _page_number_hint_for_toc(blocks: list[Block], idx: int, radius: int = 6) -> Optional[int]:
@@ -2987,8 +3024,38 @@ def _label_spec_from_text(text: Optional[str]) -> Optional[tuple[str, bool]]:
     return NEXT_SECTION_LABELS.get(normalized)
 
 
+def _primary_marker_matches_toc_label(
+    marker: str, toc_label_spec: Optional[tuple[str, bool]]
+) -> bool:
+    if toc_label_spec is None:
+        return True
+    normalized = _normalize_heading_label(toc_label_spec[0])
+    if marker == "1B":
+        return normalized == _normalize_heading_label("Unresolved Staff Comments")
+    if marker == "1C":
+        return normalized == _normalize_heading_label("Cybersecurity")
+    if marker == "2":
+        return normalized == _normalize_heading_label("Properties")
+    return True
+
+
+def _starts_with_upper_label(text: str, label: str) -> bool:
+    stripped = text.strip()
+    if not stripped:
+        return False
+    words = label.split()
+    if not words:
+        return False
+    pattern = r"^" + r"\s+".join(re.escape(word.upper()) for word in words)
+    pattern += r"(\b|\s*[:.\-–])"
+    return re.match(pattern, stripped) is not None
+
+
 def _find_heading_end_marker(
-    block_doc: BlockDoc, start_idx: int, allowed_labels: Optional[set[str]]
+    block_doc: BlockDoc,
+    start_idx: int,
+    allowed_labels: Optional[set[str]],
+    page_anchor_min: Optional[int] = None,
 ) -> Optional[tuple[int, str]]:
     blocks = block_doc.blocks
     for idx in range(start_idx + 1, len(blocks)):
@@ -2997,11 +3064,29 @@ def _find_heading_end_marker(
         if _end_marker_toc_like(blocks, idx):
             continue
         block = blocks[idx]
-        if not _is_heading_shaped_block(block):
-            continue
+        heading_like = _is_heading_shaped_block(block)
+        upper_label_match = False
+        matched_label: Optional[str] = None
+        if not heading_like:
+            if allowed_labels is None:
+                continue
+            for label in allowed_labels:
+                if _starts_with_upper_label(block.text, label):
+                    upper_label_match = True
+                    matched_label = label
+                    break
+            if not upper_label_match:
+                continue
+        if page_anchor_min is not None and not upper_label_match:
+            page_hint = _candidate_page_hint(blocks, idx)
+            if page_hint is not None and page_hint < page_anchor_min:
+                continue
         normalized = _normalize_heading_label(block.text)
-        if allowed_labels is not None and normalized not in allowed_labels:
-            continue
+        if allowed_labels is not None:
+            if upper_label_match and matched_label is not None:
+                normalized = matched_label
+            elif normalized not in allowed_labels:
+                continue
         label_spec = NEXT_SECTION_LABELS.get(normalized)
         if label_spec is None:
             continue
@@ -3568,6 +3653,9 @@ def find_end_marker_blockdoc(
             ("NOTES", NOTES_FINANCIAL_STATEMENTS_BLOCK),
         ]
 
+    toc_label_spec = _label_spec_from_text(toc_map.get("next_label") if toc_map else None)
+    next_page_start = _next_start_from_toc(toc_map) if isinstance(toc_map, dict) else None
+    primary_match: Optional[tuple[int, str]] = None
     for idx in range(start_idx + 1, len(blocks)):
         block = blocks[idx]
         text = block.text
@@ -3584,13 +3672,32 @@ def find_end_marker_blockdoc(
             if _end_marker_toc_like(blocks, idx):
                 if label not in {"1B", "1C", "2", "4", "4A", "4B"}:
                     continue
-            return idx, label, False
+            primary_match = (idx, label)
+            break
+        if primary_match is not None:
+            break
 
-    heading_fallback = _find_heading_end_marker(block_doc, start_idx, None)
-    toc_label_spec = _label_spec_from_text(toc_map.get("next_label") if toc_map else None)
+    primary_rejected = False
+    if primary_match is not None and toc_label_spec is not None:
+        if not _primary_marker_matches_toc_label(primary_match[1], toc_label_spec):
+            allowed_labels = {_normalize_heading_label(toc_label_spec[0])}
+            heading_match = _find_heading_end_marker(
+                block_doc, start_idx, allowed_labels, page_anchor_min=next_page_start
+            )
+            if heading_match is not None:
+                return heading_match[0], heading_match[1], False
+            primary_rejected = True
+    if primary_match is not None and not primary_rejected:
+        return primary_match[0], primary_match[1], False
+
+    heading_fallback = _find_heading_end_marker(
+        block_doc, start_idx, None, page_anchor_min=next_page_start
+    )
     if toc_label_spec is not None:
         allowed_labels = {_normalize_heading_label(toc_label_spec[0])}
-        heading_match = _find_heading_end_marker(block_doc, start_idx, allowed_labels)
+        heading_match = _find_heading_end_marker(
+            block_doc, start_idx, allowed_labels, page_anchor_min=next_page_start
+        )
         if heading_fallback is not None and (
             heading_match is None or heading_fallback[0] < heading_match[0]
         ):
@@ -5309,6 +5416,13 @@ def extract_item1a_from_blockdoc(
         quality_gate_failed = True
         warnings.append("drift_into_later_items")
         gate_reasons.append("later_item_tripwire")
+
+    if toc_map is not None and "length_out_of_band" in warnings:
+        risk_start = toc_map.get("risk_page_start")
+        risk_end = toc_map.get("risk_page_end")
+        if isinstance(risk_start, int) and isinstance(risk_end, int):
+            if 0 <= (risk_end - risk_start) <= SHORT_TOC_PAGE_SPAN_MAX:
+                warnings = [warning for warning in warnings if warning != "length_out_of_band"]
 
     warnings = _dedupe_warnings(warnings)
 
