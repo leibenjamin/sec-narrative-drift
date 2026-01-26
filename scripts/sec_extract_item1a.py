@@ -2991,6 +2991,9 @@ def _start_crossref_like(blocks: list[Block]) -> bool:
 def _end_marker_block_ok(block: Block, pattern: re.Pattern[str]) -> bool:
     text = block.text
     normalized = _normalize_heading_candidate(text)
+    if pattern is ITEM_1B_BLOCK:
+        if re.search(r"(?m)^\s*item\s*1\s*\.?\s*b\b", text, re.IGNORECASE):
+            return True
     if _is_heading_shaped_text(normalized):
         return True
     if block.is_heading_like:
@@ -5085,6 +5088,14 @@ def extract_item1a_from_blockdoc(
     if form_type == "10-K":
         toc_page_end = _extract_toc_risk_page_end(block_doc.blocks)
     start_offset = block_doc.offsets[selected.idx]
+    if toc_map is None and is_in_unsafe_zone(block_doc, selected.idx):
+        block_doc.unsafe_regions = [
+            region for region in block_doc.unsafe_regions if region.get("kind") != "toc_head"
+        ]
+        block_doc.toc_regions = [
+            region for region in block_doc.toc_regions if region.get("kind") != "toc_head"
+        ]
+        toc_detected = False
     end_block_idx: Optional[int]
     end_marker: Optional[str]
     end_block_idx, end_marker, end_fallback = find_end_marker_blockdoc(
@@ -5137,6 +5148,12 @@ def extract_item1a_from_blockdoc(
                 end_block_idx = page_end_idx
                 end_marker = "toc_page_end"
                 end_fallback = True
+    end_fallback_for_conf = end_fallback
+    if end_fallback and toc_map is not None and isinstance(end_marker, str):
+        next_label = toc_map.get("next_label")
+        if isinstance(next_label, str):
+            if _normalize_heading_label(next_label) == _normalize_heading_label(end_marker):
+                end_fallback_for_conf = False
     warnings: list[str] = list(selected.warnings)
     end_idx: Optional[int] = None
 
@@ -5150,7 +5167,7 @@ def extract_item1a_from_blockdoc(
         if end_marker is not None and end_marker != "toc_page_end":
             effective_end_block_idx = max(selected.idx, end_block_idx - 1)
         end_idx = block_doc.offsets[effective_end_block_idx]
-        if end_fallback:
+        if end_fallback_for_conf:
             warnings.append("end_fallback_used")
         slice_blocks = block_doc.blocks[selected.idx : effective_end_block_idx + 1]
         slice_end_idx = effective_end_block_idx
@@ -5339,7 +5356,7 @@ def extract_item1a_from_blockdoc(
         score=score,
         toc_like_head=toc_like_head_effective,
         toc_removed=toc_removed,
-        end_fallback=end_fallback,
+        end_fallback=end_fallback_for_conf,
         end_not_found="end_not_found" in warnings,
         slice_len=len(section),
         cross_ref_suspected=selected.cross_ref,
@@ -5417,12 +5434,21 @@ def extract_item1a_from_blockdoc(
         warnings.append("drift_into_later_items")
         gate_reasons.append("later_item_tripwire")
 
+    if form_type == "10-K" and len(section) < 1200:
+        if ITEM_1A_BLOCK.search(section) and (ITEM_1B_BLOCK.search(section) or end_marker == "1B"):
+            quality_gate_failed = True
+            if "length_out_of_band" not in warnings:
+                warnings.append("length_out_of_band")
+            gate_reasons.append("length_out_of_band")
+
     if toc_map is not None and "length_out_of_band" in warnings:
         risk_start = toc_map.get("risk_page_start")
         risk_end = toc_map.get("risk_page_end")
         if isinstance(risk_start, int) and isinstance(risk_end, int):
             if 0 <= (risk_end - risk_start) <= SHORT_TOC_PAGE_SPAN_MAX:
                 warnings = [warning for warning in warnings if warning != "length_out_of_band"]
+    if "length_out_of_band" in warnings and len(section) >= 10000:
+        warnings = [warning for warning in warnings if warning != "length_out_of_band"]
 
     warnings = _dedupe_warnings(warnings)
 

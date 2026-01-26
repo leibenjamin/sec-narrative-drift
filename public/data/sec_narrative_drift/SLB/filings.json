@@ -59,7 +59,6 @@
       "confidence": 0.6000000000000001,
       "method": "blockdoc_scored",
       "errors": [
-        "length_out_of_band",
         "toc_detected"
       ]
     }
@@ -152,6 +151,22 @@
     "accessionNumber": "0000950170-25-007638",
     "primaryDocument": "slb-20241231.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/87347/000095017025007638/slb-20241231.htm",
+    "extraction": {
+      "confidence": 0.8999999999999999,
+      "method": "blockdoc_scored",
+      "errors": [
+        "toc_detected"
+      ]
+    }
+  },
+  {
+    "year": 2025,
+    "form": "10-K",
+    "filingDate": "2026-01-23",
+    "reportDate": "2025-12-31",
+    "accessionNumber": "0001193125-26-021017",
+    "primaryDocument": "slb-20251231.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/87347/000119312526021017/slb-20251231.htm",
     "extraction": {
       "confidence": 0.8999999999999999,
       "method": "blockdoc_scored",

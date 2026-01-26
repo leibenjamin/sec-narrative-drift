@@ -927,6 +927,23 @@ def parse_month_from_date(value: str) -> Optional[int]:
         return None
     return int(month_text)
 
+def parse_day_from_date(value: str) -> Optional[int]:
+    if len(value) >= 10 and value[4] == "-" and value[7] == "-":
+        day_text = value[8:10]
+    elif len(value) >= 8 and value[:8].isdigit():
+        day_text = value[6:8]
+    else:
+        return None
+    if not day_text.isdigit():
+        return None
+    return int(day_text)
+
+
+def should_backshift_year(report_date: str) -> bool:
+    report_month = parse_month_from_date(report_date)
+    report_day = parse_day_from_date(report_date)
+    return report_month == 1 and report_day is not None and report_day <= 10
+
 
 def derive_filing_year(
     report_date: str,
@@ -938,6 +955,10 @@ def derive_filing_year(
     year = report_year or filing_year
     if year is None:
         return None
+    if report_year is not None and should_backshift_year(report_date):
+        adjusted = year - 1
+        if adjusted not in seen_years:
+            return adjusted
     if report_year is None:
         filing_month = parse_month_from_date(filing_date)
         if filing_month is not None and filing_month <= 2:
@@ -946,8 +967,7 @@ def derive_filing_year(
                 return adjusted
     if year not in seen_years:
         return year
-    report_month = parse_month_from_date(report_date)
-    if report_month is not None and report_month <= 2:
+    if report_year is not None and should_backshift_year(report_date):
         adjusted = year - 1
         if adjusted not in seen_years:
             return adjusted
@@ -1109,17 +1129,17 @@ def choose_meta_extraction(
     curr_conf = current.get("confidence")
     cand_conf = candidate.get("confidence")
     if isinstance(curr_conf, (int, float)) and isinstance(cand_conf, (int, float)):
-        if cand_conf < curr_conf:
-            return candidate
         if cand_conf > curr_conf:
+            return candidate
+        if cand_conf < curr_conf:
             return current
     curr_warn = len(current.get("warnings") or [])
     cand_warn = len(candidate.get("warnings") or [])
-    if cand_warn > curr_warn:
+    if cand_warn < curr_warn:
         return candidate
     curr_len = current.get("lengthChars")
     cand_len = candidate.get("lengthChars")
-    if isinstance(curr_len, int) and isinstance(cand_len, int) and cand_len < curr_len:
+    if isinstance(curr_len, int) and isinstance(cand_len, int) and cand_len > curr_len:
         return candidate
     return current
 

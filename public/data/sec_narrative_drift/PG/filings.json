@@ -8,12 +8,12 @@
     "primaryDocument": "fy141510-kreport.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/80424/000008042415000070/fy141510-kreport.htm",
     "extraction": {
-      "confidence": 0.68,
+      "confidence": 0.5,
       "method": "blockdoc_scored",
       "errors": [
         "toc_detected",
-        "end_fallback_used",
-        "early_position_penalty"
+        "early_position_penalty",
+        "toc_like_tail"
       ]
     }
   },

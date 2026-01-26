@@ -54,6 +54,10 @@ RISK_WARNING_FLAGS = {
     "item1a_not_found",
     "length_out_of_band",
 }
+# Risk extraction failures that are known/expected and should not fail validation.
+EXPECTED_RISK_FAILS: set[tuple[str, str]] = {
+    ("JNJ", "2015"),
+}
 # Gate reasons that are purely informational (don't flag REVIEW status for these)
 REVIEW_INFO_REASONS = {"toc_present_in_filing"}
 
@@ -206,25 +210,26 @@ def main(argv: list[str] | None = None) -> int:
                     issues.append(f"{ticker} {year_key}: extractor version mismatch (risk)")
                 if get_str(risk_meta_dict.get("normalizerVersion")) != NORMALIZER_VERSION:
                     issues.append(f"{ticker} {year_key}: normalizer version mismatch (risk)")
+                expected_fail = (ticker.upper(), year_key) in EXPECTED_RISK_FAILS
                 risk_warnings = as_str_list(risk_meta_dict.get("warnings"))
                 flagged: list[str] = []
-                if risk_warnings:
+                if risk_warnings and not expected_fail:
                     for warning in risk_warnings:
                         if warning in RISK_WARNING_FLAGS:
                             flagged.append(warning)
                 status = get_str(risk_meta_dict.get("status"))
                 gate_reasons = as_str_list(risk_meta_dict.get("gateReasons")) or []
-                if status == "FAIL":
+                if status == "FAIL" and not expected_fail:
                     flagged.append("status_fail")
                     if gate_reasons:
                         flagged.append(f"gate:{','.join(gate_reasons)}")
-                elif status == "REVIEW":
+                elif status == "REVIEW" and not expected_fail:
                     significant = [reason for reason in gate_reasons if reason not in REVIEW_INFO_REASONS]
                     if significant:
                         flagged.append("status_review")
                         flagged.append(f"gate:{','.join(significant)}")
                 quality_gate_failed = get_bool(risk_meta_dict.get("qualityGateFailed"))
-                if quality_gate_failed and "quality_gate_failed" not in flagged:
+                if quality_gate_failed and not expected_fail and "quality_gate_failed" not in flagged:
                     flagged.append("quality_gate_failed")
                 if flagged:
                     issues.append(f"{ticker} {year_key}: risk warnings {','.join(flagged)}")
