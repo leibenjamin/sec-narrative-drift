@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAtUtc": "2026-01-24T19:50:33Z",
+  "generatedAtUtc": "2026-01-29T05:20:33Z",
   "section": "10k_item1a",
   "lookbackTargetYears": 10,
   "companyCount": 56,
@@ -713,15 +713,15 @@
       },
       "quality": {
         "level": "low",
-        "minConfidence": 0.53,
-        "medianConfidence": 0.83,
+        "minConfidence": 0.65,
+        "medianConfidence": 0.95,
         "notes": []
       },
       "metricsSummary": {
         "peakDrift": {
-          "from": 2022,
-          "to": 2023,
-          "value": 0.55
+          "from": 2016,
+          "to": 2017,
+          "value": 0.2
         },
         "latestDrift": {
           "from": 2023,
@@ -730,8 +730,8 @@
         }
       },
       "autoPair": {
-        "from": 2022,
-        "to": 2023
+        "from": 2016,
+        "to": 2017
       }
     },
     {
@@ -926,33 +926,34 @@
           2021,
           2022,
           2023,
-          2024
+          2024,
+          2025
         ],
-        "count": 10,
+        "count": 11,
         "minYear": 2015,
-        "maxYear": 2024
+        "maxYear": 2025
       },
       "quality": {
-        "level": "medium",
-        "minConfidence": 0.78,
+        "level": "low",
+        "minConfidence": 0.43,
         "medianConfidence": 0.83,
         "notes": []
       },
       "metricsSummary": {
         "peakDrift": {
-          "from": 2016,
-          "to": 2017,
-          "value": 0.04
+          "from": 2024,
+          "to": 2025,
+          "value": 0.09
         },
         "latestDrift": {
-          "from": 2023,
-          "to": 2024,
-          "value": 0.02
+          "from": 2024,
+          "to": 2025,
+          "value": 0.09
         }
       },
       "autoPair": {
-        "from": 2016,
-        "to": 2017
+        "from": 2024,
+        "to": 2025
       }
     },
     {
@@ -1248,19 +1249,19 @@
       },
       "metricsSummary": {
         "peakDrift": {
-          "from": 2015,
-          "to": 2016,
-          "value": 0.03
+          "from": 2022,
+          "to": 2023,
+          "value": 0.08
         },
         "latestDrift": {
           "from": 2023,
           "to": 2024,
-          "value": 0.01
+          "value": 0.04
         }
       },
       "autoPair": {
-        "from": 2015,
-        "to": 2016
+        "from": 2022,
+        "to": 2023
       }
     },
     {
@@ -1417,26 +1418,26 @@
         "maxYear": 2024
       },
       "quality": {
-        "level": "medium",
-        "minConfidence": 0.78,
+        "level": "low",
+        "minConfidence": 0.48,
         "medianConfidence": 0.78,
         "notes": []
       },
       "metricsSummary": {
         "peakDrift": {
-          "from": 2016,
-          "to": 2017,
-          "value": 0.04
+          "from": 2022,
+          "to": 2023,
+          "value": 0.07
         },
         "latestDrift": {
           "from": 2023,
           "to": 2024,
-          "value": 0.01
+          "value": 0.07
         }
       },
       "autoPair": {
-        "from": 2016,
-        "to": 2017
+        "from": 2022,
+        "to": 2023
       }
     },
     {
@@ -1786,14 +1787,14 @@
       "quality": {
         "level": "low",
         "minConfidence": 0.5,
-        "medianConfidence": 0.68,
+        "medianConfidence": 0.6,
         "notes": []
       },
       "metricsSummary": {
         "peakDrift": {
-          "from": 2015,
-          "to": 2016,
-          "value": 0.21
+          "from": 2019,
+          "to": 2020,
+          "value": 0.06
         },
         "latestDrift": {
           "from": 2024,
@@ -1802,8 +1803,8 @@
         }
       },
       "autoPair": {
-        "from": 2015,
-        "to": 2016
+        "from": 2019,
+        "to": 2020
       }
     },
     {
@@ -1954,11 +1955,12 @@
           2021,
           2022,
           2023,
-          2024
+          2024,
+          2025
         ],
-        "count": 10,
+        "count": 11,
         "minYear": 2015,
-        "maxYear": 2024
+        "maxYear": 2025
       },
       "quality": {
         "level": "low",
@@ -1973,9 +1975,9 @@
           "value": 0.3
         },
         "latestDrift": {
-          "from": 2023,
-          "to": 2024,
-          "value": 0.04
+          "from": 2024,
+          "to": 2025,
+          "value": 0.01
         }
       },
       "autoPair": {

@@ -2,7 +2,7 @@
   "ticker": "KO",
   "cik": "0000021344",
   "companyName": "COCA COLA CO",
-  "lastUpdatedUtc": "2026-01-26T03:00:40Z",
+  "lastUpdatedUtc": "2026-01-27T03:24:46Z",
   "formsIncluded": [
     "10-K"
   ],
@@ -16,12 +16,12 @@
   "extraction": {
     "section": "item1a",
     "method": "blockdoc_scored",
-    "confidence": 0.8999999999999999,
+    "confidence": 0.95,
     "warnings": [
       "toc_detected"
     ],
-    "lengthChars": 62323,
+    "lengthChars": 90728,
     "endMarkerUsed": "1B",
-    "hasItem1C": false
+    "hasItem1C": true
   }
 }

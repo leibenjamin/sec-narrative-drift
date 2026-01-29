@@ -2,7 +2,7 @@
   "ticker": "GE",
   "cik": "0000040545",
   "companyName": "GENERAL ELECTRIC CO",
-  "lastUpdatedUtc": "2026-01-26T03:08:00Z",
+  "lastUpdatedUtc": "2026-01-27T19:03:08Z",
   "formsIncluded": [
     "10-K"
   ],
@@ -16,12 +16,11 @@
   "extraction": {
     "section": "item1a",
     "method": "blockdoc_scored",
-    "confidence": 0.6499999999999999,
+    "confidence": 0.95,
     "warnings": [
-      "toc_detected",
-      "toc_like_tail"
+      "toc_detected"
     ],
-    "lengthChars": 63305,
+    "lengthChars": 72740,
     "endMarkerUsed": "Legal Proceedings",
     "hasItem1C": true
   }
