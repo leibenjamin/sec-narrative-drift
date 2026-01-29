@@ -34,6 +34,9 @@ export SEC_CACHE_MAX_GB="10"            # Cache pruning limit
 | **From Cache** | Local dev, testing, rebuilding after algorithm changes | No | Fast |
 | **From Live** | Initial build, adding new tickers, updating latest filings | Yes | Slow (rate limited) |
 
+**Note:** Sample fixtures are **opt-in only**. The pipeline will not use
+`scripts/sample_fixtures/` unless `--allow-sample-fixtures` is explicitly set.
+
 ### Live Website vs Local Development
 
 | Aspect | Live Website | Local Development |
@@ -56,8 +59,9 @@ sec-narrative-drift/
 │       │   ├── filing.html.gz        # Original HTML (optional)
 │       │   ├── filing_meta.json      # Filing metadata
 │       │   └── risk/
-│       │       ├── item_1a.txt.gz    # Extracted risk section
-│       │       └── rf_meta.json      # Extraction metadata + debug
+│       │       ├── item_1a.txt.gz             # Extracted risk section
+│       │       ├── term_counts_primary.json.gz # Canonical term counts (per filing)
+│       │       └── rf_meta.json               # Extraction metadata + debug
 │       ├── indexes/
 │       │   ├── ticker_year_index.json    # Global ticker-year mapping
 │       │   └── extraction_version.json   # Version tracking
@@ -88,6 +92,14 @@ sec-narrative-drift/
 
 ## Common Workflows
 
+### Build per-filing term counts cache (optional, improves audits)
+```bash
+python scripts/build_risk_term_counts_cache.py
+```
+This writes `risk/term_counts_primary.json.gz` for each filing, using the same
+tokenization + canonicalization as term shifts. Re-run after refreshing risk
+extractions or changing tokenization logic.
+
 ### 1. Full Rebuild (From Existing Cache)
 
 Use when: Extraction algorithm changed, need fresh metrics.
@@ -103,6 +115,8 @@ python sec_build_universe.py --submissions-zip _cache/submissions.zip
 
 # 3. Build global index
 python sec_build_index.py
+# If you want to use sample fixtures for SIC/Exchange metadata:
+# python sec_build_index.py --allow-sample-fixtures
 ```
 
 ### 2. Single Ticker Rebuild
@@ -111,6 +125,13 @@ Use when: Testing changes on one company.
 
 ```bash
 python sec_fetch_and_build.py --ticker AAPL --submissions-zip _cache/submissions.zip
+```
+Note: partial runs now *merge* year entries into `ticker_year_index.json` and
+preserve existing years outside the current run.
+
+To run against deterministic fixtures instead of live/cached SEC data:
+```bash
+python sec_fetch_and_build.py --ticker AAPL --allow-sample-fixtures
 ```
 
 ### 3. Initial Build (From Live SEC)
@@ -124,6 +145,8 @@ python sec_build_universe.py --download-submissions-zip
 # Build all tickers
 python sec_build_universe.py --submissions-zip _cache/submissions.zip
 python sec_build_index.py
+# If you want to reuse prior index metadata:
+# python sec_build_index.py --existing-index public/data/sec_narrative_drift/index.json
 ```
 
 ### 4. Add New Ticker
@@ -140,18 +163,25 @@ python sec_build_index.py
 # Check cache integrity
 python sec_validate_cache.py
 
+# Require risk slice/raw/segments caches
+python sec_validate_cache.py --require-risk-exports
+
 # Check public output consistency
 python sec_validate_public_data.py
 
 # Build manual review checklist
 python build_risk_manual_checklist.py
 ```
+`build_risk_manual_checklist.py` prefers `public/data/sec_narrative_drift/index.json`
+for company names and only falls back to fixtures if that file is missing.
 
 ### 6. Fix Year Index Issues
 
 ```bash
 # Rebuild ticker-year index from cache (fixes year mapping issues)
 python rebuild_ticker_year_index_from_cache.py
+# If you want to allow sample fixtures for CIK->ticker mapping:
+# python rebuild_ticker_year_index_from_cache.py --allow-sample-fixtures
 ```
 
 ---
@@ -164,7 +194,13 @@ python rebuild_ticker_year_index_from_cache.py
 |--------|---------|---------------|
 | `sec_fetch_and_build.py` | Build data for one ticker | `--ticker AAPL --submissions-zip _cache/submissions.zip` |
 | `sec_build_universe.py` | Batch build all tickers | `--submissions-zip _cache/submissions.zip` |
-| `sec_build_index.py` | Build global index.json | (none) |
+| `sec_build_index.py` | Build global index.json | `--existing-index ...` `--allow-sample-fixtures` |
+
+### Canonical entrypoints
+- `sec_fetch_and_build.py` (single ticker, live or cached submissions)
+- `refresh_risk_cache_from_html.py` (refresh risk caches from local HTML)
+- `sec_build_universe.py` (batch build all tickers)
+- `sec_build_index.py` (global index)
 
 ### Cache Management Scripts
 
@@ -172,7 +208,7 @@ python rebuild_ticker_year_index_from_cache.py
 |--------|---------|---------------|
 | `sec_cache.py` | Cache utilities (library) | N/A (imported) |
 | `refresh_risk_cache_from_html.py` | Re-extract from cached HTML | `--tickers AAPL,MSFT` |
-| `rebuild_ticker_year_index_from_cache.py` | Rebuild index from cache | (none) |
+| `rebuild_ticker_year_index_from_cache.py` | Rebuild index from cache | `--allow-sample-fixtures` |
 | `fetch_missing_html_cache.py` | Download missing HTML | `--only AAPL --limit 10` |
 
 ### Validation Scripts
@@ -191,6 +227,20 @@ python rebuild_ticker_year_index_from_cache.py
 | `sec_metrics.py` | TF-IDF similarity, term shifts |
 | `sec_quality.py` | Excerpt selection |
 | `build_canonical_terms.py` | Term normalization mapping |
+
+### Non-canonical / auxiliary scripts
+These are useful for audits or one-off analysis but are not required for routine
+builds:
+- `sec_risk_extraction_report.py`
+- `sec_risk_extraction_audit.py`
+- `analyze_term_shift_snr.py`
+- `sweep_term_shift_prior.py`
+
+Notes:
+- `sec_risk_extraction_report.py` uses featured tickers by default; override with
+  `--cases TICKER:YEAR` or `--cases LABEL:TICKER:YEAR`.
+- `sweep_term_shift_prior.py` defaults to `scripts/universe_featured.json` tickers
+  when `--tickers` is not provided.
 
 ### Debug Scripts (Internal)
 

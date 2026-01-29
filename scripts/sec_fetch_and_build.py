@@ -57,17 +57,26 @@ from sec_cache import (
     filing_text_path,
     load_gz_text,
     load_json,
+    risk_html_path,
     risk_meta_path,
+    risk_raw_text_path,
+    risk_segments_path,
     risk_text_path,
     save_gz_text_atomic,
     ticker_year_index_path,
 )
 from sec_extract_item1a import (
+    PreparedHtml,
+    build_risk_html_slice_from_prepared,
+    build_risk_raw_text_from_blockdoc,
     clean_html_to_text,
     extract_item1a_from_html,
+    extract_item1a_from_prepared,
     extract_item1a_from_text,
+    prepare_html_for_extraction,
     split_paragraphs,
 )
+from sec_segments import segment_text_v1
 from sec_metrics import SectionYear as MetricsSectionYear, ShiftsPayload, build_metrics
 from sec_quality import (
     SectionYear as QualitySectionYear,
@@ -105,6 +114,14 @@ FIXTURES_DIR = ROOT_DIR / "sample_fixtures"
 CACHE_DIR = ROOT_DIR / "_cache"
 DEFAULT_SUBMISSIONS_ZIP = CACHE_DIR / "submissions.zip"
 UNUSABLE_LIST_PATH = ROOT_DIR / "resources" / "risk_extraction_unusable.yml"
+USED_FIXTURE_LOGS: set[str] = set()
+
+
+def log_fixture_use(key: str, message: str) -> None:
+    if key in USED_FIXTURE_LOGS:
+        return
+    USED_FIXTURE_LOGS.add(key)
+    print(message)
 
 
 class ExtractionResult(TypedDict):
@@ -116,6 +133,7 @@ class ExtractionResult(TypedDict):
     debug_meta: dict[str, Any]
     raw_section: str
     raw_paragraphs: list[str]
+    prepared: Optional[PreparedHtml]  # Pre-parsed HTML for efficient reuse
 
 
 class TickerYearEntry(TypedDict):
@@ -347,9 +365,15 @@ def resolve_company_name(map_name: Any, submissions_name: Any, fallback: str) ->
     return fallback
 
 
-def load_ticker_cik_map(force_live: bool = False) -> dict[str, dict[str, str]]:
+def load_ticker_cik_map(
+    *, force_live: bool = False, allow_fixture: bool = False
+) -> dict[str, dict[str, str]]:
     fixture_path = FIXTURES_DIR / "company_tickers_exchange.json"
-    if fixture_path.exists() and not force_live:
+    if allow_fixture and fixture_path.exists() and not force_live:
+        log_fixture_use(
+            "ticker_map",
+            f"using ticker map fixture {fixture_path.name}",
+        )
         payload = load_fixture_json(fixture_path)
     else:
         session = requests.Session()
@@ -469,6 +493,10 @@ def fetch_submissions_json(
 ) -> dict[str, Any]:
     fixture_path = FIXTURES_DIR / f"CIK{cik10}.json"
     if allow_fixture and fixture_path.exists():
+        log_fixture_use(
+            f"submissions:{cik10}",
+            f"using submissions fixture for {cik10} ({fixture_path.name})",
+        )
         return load_fixture_json(fixture_path)
 
     if submissions_zip:
@@ -624,6 +652,10 @@ def load_fixture_html(primary_doc: str, allow_sample: bool) -> Optional[bytes]:
         return None
     fixture_path = FIXTURES_DIR / primary_doc
     if fixture_path.exists():
+        log_fixture_use(
+            f"html:{primary_doc}",
+            f"using filing fixture html {fixture_path.name}",
+        )
         return fixture_path.read_bytes()
     return None
 
@@ -982,12 +1014,86 @@ def ensure_low_confidence(errors: list[str]) -> list[str]:
     return errors
 
 
+def _get_slice_indices(debug_meta: dict[str, Any]) -> Optional[tuple[int, int]]:
+    debug_payload = as_str_dict(debug_meta.get("debug"))
+    if not debug_payload:
+        return None
+    selected_start = as_str_dict(debug_payload.get("selectedStart"))
+    start_idx = get_int(selected_start.get("idx") if selected_start else None)
+    selected_end = as_str_dict(debug_payload.get("selectedEnd"))
+    end_idx = get_int(selected_end.get("idx") if selected_end else None)
+    if end_idx is None:
+        end_idx = get_int(debug_payload.get("sliceEndIdx"))
+    if start_idx is None or end_idx is None:
+        return None
+    return start_idx, end_idx
+
+
+def _write_risk_cache_extras(
+    *,
+    prepared: Optional[PreparedHtml],
+    raw_section: str,
+    cik: str,
+    accession: str,
+    ticker: str,
+    form_type: str,
+    debug_meta: dict[str, Any],
+) -> None:
+    if not raw_section:
+        return
+    item_code = "3D" if form_type.upper().startswith("20-F") else "1A"
+    base_name = "item_3d" if form_type.upper().startswith("20-F") else "item_1a"
+
+    segment_payload = segment_text_v1(raw_section)
+    segment_payload.update(
+        {
+            "version": 1,
+            "cik": cik,
+            "accession": accession,
+            "ticker": ticker,
+            "form_type": form_type,
+            "item": item_code,
+            "source_text_path": f"risk/{base_name}.txt.gz",
+        }
+    )
+    save_gz_text_atomic(
+        risk_segments_path(cik, accession, form_type),
+        json.dumps(segment_payload, indent=2),
+    )
+
+    if prepared is None:
+        return
+    slice_indices = _get_slice_indices(debug_meta)
+    if slice_indices is None:
+        return
+    start_idx, end_idx = slice_indices
+    # Use pre-parsed BlockDoc (no re-parsing)
+    raw_text = build_risk_raw_text_from_blockdoc(prepared.block_doc, start_idx, end_idx)
+    if raw_text:
+        save_gz_text_atomic(risk_raw_text_path(cik, accession, form_type), raw_text)
+    # Use pre-parsed block tags (no re-parsing)
+    html_slice = build_risk_html_slice_from_prepared(
+        prepared,
+        start_idx,
+        end_idx,
+        item=item_code,
+        form_type=form_type,
+        ticker=ticker,
+        cik=cik,
+        accession=accession,
+    )
+    if html_slice:
+        save_gz_text_atomic(risk_html_path(cik, accession, form_type), html_slice)
+
+
 def extract_item1a_from_html_bytes(
     html_bytes: bytes,
     extra_warnings: Optional[list[str]] = None,
 ) -> ExtractionResult:
     html_text = html_bytes.decode("utf-8", errors="replace")
-    raw_section, confidence, method, warnings, debug_meta = extract_item1a_from_html(html_text)
+    # Parse HTML once and reuse for extraction and cache writing
+    prepared = prepare_html_for_extraction(html_text)
+    raw_section, confidence, method, warnings, debug_meta = extract_item1a_from_prepared(prepared)
     warning_list = list(extra_warnings) if extra_warnings else []
     warning_list.extend(warnings)
     raw_paragraphs = split_paragraphs(raw_section) if raw_section else []
@@ -1002,6 +1108,7 @@ def extract_item1a_from_html_bytes(
             "debug_meta": debug_meta,
             "raw_section": raw_section,
             "raw_paragraphs": raw_paragraphs,
+            "prepared": prepared,
         }
     if confidence < 0.5:
         warning_list = ensure_low_confidence(warning_list)
@@ -1014,6 +1121,7 @@ def extract_item1a_from_html_bytes(
         "debug_meta": debug_meta,
         "raw_section": raw_section,
         "raw_paragraphs": raw_paragraphs,
+        "prepared": prepared,
     }
 
 
@@ -1036,6 +1144,7 @@ def extract_item1a_from_text_only(
             "debug_meta": debug_meta,
             "raw_section": raw_section,
             "raw_paragraphs": raw_paragraphs,
+            "prepared": None,  # No HTML for text-only extraction
         }
     if confidence < 0.5:
         warning_list = ensure_low_confidence(warning_list)
@@ -1048,6 +1157,7 @@ def extract_item1a_from_text_only(
         "debug_meta": debug_meta,
         "raw_section": raw_section,
         "raw_paragraphs": raw_paragraphs,
+        "prepared": None,  # No HTML for text-only extraction
     }
 
 
@@ -1062,6 +1172,7 @@ def build_missing_extraction() -> ExtractionResult:
         "debug_meta": {"lengthChars": 0, "endMarkerUsed": None, "hasItem1C": False},
         "raw_section": "",
         "raw_paragraphs": [],
+        "prepared": None,
     }
 
 
@@ -1275,9 +1386,14 @@ def build_parser() -> argparse.ArgumentParser:
         help="Bypass local CIK submissions fixtures for this run.",
     )
     parser.add_argument(
+        "--force-live-ticker-map",
+        action="store_true",
+        help="Fetch ticker->CIK mapping from SEC (ignores fixtures, even if enabled).",
+    )
+    parser.add_argument(
         "--allow-sample-fixtures",
         action="store_true",
-        help="Allow use of scripts/sample_fixtures for submissions and filings.",
+        help="Allow use of scripts/sample_fixtures for submissions and filings (tests only).",
     )
     return parser
 
@@ -1295,9 +1411,15 @@ def main(argv: Optional[list[str]] = None) -> int:
         / ticker
     )
     out_dir = Path(args.out) if args.out else default_out_dir
-    mapping = load_ticker_cik_map()
-    if ticker not in mapping:
-        mapping = load_ticker_cik_map(force_live=True)
+    allow_sample_fixtures = bool(args.allow_sample_fixtures)
+    if allow_sample_fixtures:
+        print("allow-sample-fixtures enabled")
+    force_live_ticker_map = bool(args.force_live_ticker_map)
+    mapping = load_ticker_cik_map(
+        force_live=force_live_ticker_map, allow_fixture=allow_sample_fixtures
+    )
+    if ticker not in mapping and not force_live_ticker_map:
+        mapping = load_ticker_cik_map(force_live=True, allow_fixture=False)
     if ticker not in mapping:
         raise SystemExit(f"Ticker not found in mapping: {ticker}")
 
@@ -1320,7 +1442,6 @@ def main(argv: Optional[list[str]] = None) -> int:
         )
         submissions_zip = None
 
-    allow_sample_fixtures = bool(args.allow_sample_fixtures)
     allow_fixture = allow_sample_fixtures and not args.force_live_submissions
     submissions_primary = fetch_submissions_json(
         primary_cik,
@@ -1648,6 +1769,15 @@ def main(argv: Optional[list[str]] = None) -> int:
             }
             save_gz_text_atomic(risk_text_path(filing_cik, accession, form_type), raw_section)
             atomic_write_json(risk_meta_path(filing_cik, accession), risk_meta_payload)
+            _write_risk_cache_extras(
+                prepared=None,  # No extraction done for unusable filings
+                raw_section=raw_section,
+                cik=filing_cik,
+                accession=accession,
+                ticker=ticker,
+                form_type=form_type,
+                debug_meta={},
+            )
         elif not cached_risk_ok:
             if html_text is not None:
                 extraction = extract_item1a_from_html_bytes(
@@ -1793,6 +1923,15 @@ def main(argv: Optional[list[str]] = None) -> int:
             }
             save_gz_text_atomic(risk_text_path(filing_cik, accession, form_type), raw_section)
             atomic_write_json(risk_meta_path(filing_cik, accession), risk_meta_payload)
+            _write_risk_cache_extras(
+                prepared=extraction["prepared"],  # Use pre-parsed HTML
+                raw_section=raw_section,
+                cik=filing_cik,
+                accession=accession,
+                ticker=ticker,
+                form_type=form_type,
+                debug_meta=debug_meta,
+            )
 
         should_store_html = False
         if html_text is not None:
@@ -1942,9 +2081,20 @@ def main(argv: Optional[list[str]] = None) -> int:
     write_json(out_dir / "excerpts_10k_item1a.json", excerpts)
 
     ticker_index_payload = parse_ticker_year_index(load_json(ticker_year_index_path()))
+    existing_years = ticker_index_payload.get(ticker, {})
+    merged_years: dict[str, TickerYearEntry] = dict(existing_years)
+    for year_key, entry in ticker_year_entries.items():
+        merged_years[year_key] = entry
     ticker_year_sorted: dict[str, TickerYearEntry] = {}
-    for year_key in sorted(ticker_year_entries.keys()):
-        ticker_year_sorted[year_key] = ticker_year_entries[year_key]
+    for year_key in sorted(merged_years.keys()):
+        ticker_year_sorted[year_key] = merged_years[year_key]
+    if args.limit is not None or args.years is not None:
+        preserved = set(existing_years.keys()) - set(ticker_year_entries.keys())
+        if preserved:
+            print(
+                f"note: preserving {len(preserved)} existing year entries "
+                f"in ticker_year_index for {ticker} outside this run"
+            )
     ticker_index_payload[ticker] = ticker_year_sorted
     ordered_index: dict[str, dict[str, TickerYearEntry]] = {}
     for key in sorted(ticker_index_payload.keys()):

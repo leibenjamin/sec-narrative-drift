@@ -1,6 +1,7 @@
 import argparse
 import json
 import math
+import os
 import random
 import re
 from collections import Counter
@@ -40,6 +41,17 @@ STOPWORDS = set(ENGLISH_STOP_WORDS)
 ALLOWED_SHORT_TOKENS: set[str] = {"ai", "ml", "ip", "it", "vr", "ar"}
 HYPHEN_CLASS = r"[-\u2010\u2011\u2012\u2013\u2014\u2212'\u2018\u2019]"
 CANONICAL_TERMS_PATH = Path(__file__).resolve().parent / "resources" / "canonical_terms.json"
+PRIOR_MASS_DEFAULT = 200.0
+PRIOR_FLOOR = 0.1
+DF_PENALTY_GAMMA_UNI = 1.25
+DF_PENALTY_GAMMA_PHRASE = 1.75
+DF_PENALTY_OVERRIDE_Z = 3.5
+DF_PENALTY_OVERRIDE_COUNT = 8
+DF_PENALTY_EPS = 0.05
+DF_PENALTY_FLOOR = 0.05
+SCORE_DF_MIN = 0.10
+DF_PENALTY_OVERRIDE_MAX_DF_FRAC = 0.90
+DF_PENALTY_OVERRIDE_MIN_PENALTY = 0.25
 
 
 class TermBase(TypedDict):
@@ -690,34 +702,77 @@ def build_metrics(sections: list[SectionYear]) -> tuple[MetricsPayload, Similari
     pooled_tokens = [tokenize(section.text) for section in valid_sections]
     bigram_keep = pmi_keep_bigrams(pooled_tokens)
 
+    def resolve_prior_mass() -> float:
+        raw = os.getenv("TERM_SHIFT_PRIOR_MASS")
+        if raw:
+            try:
+                value = float(raw)
+                if value > 0:
+                    return value
+            except ValueError:
+                pass
+        return PRIOR_MASS_DEFAULT
+
+    def build_background_counts(counts_by_year: Sequence[Counter[str]]) -> tuple[Counter[str], int]:
+        background: Counter[str] = Counter()
+        total = 0
+        for counts in counts_by_year:
+            background.update(counts)
+            total += sum(counts.values())
+        return background, total
+
+    def build_year_df(counts_by_year: Sequence[Counter[str]]) -> dict[str, int]:
+        df: dict[str, int] = {}
+        for counts in counts_by_year:
+            for term in counts.keys():
+                df[term] = df.get(term, 0) + 1
+        return df
+
     def log_odds_stats(
-        counts_prev: Counter[str], counts_curr: Counter[str], alpha: float = 0.01
+        counts_prev: Counter[str],
+        counts_curr: Counter[str],
+        counts_bg: Counter[str],
+        total_bg: int,
+        prior_mass: float,
+        year_df: Mapping[str, int],
+        num_years: int,
     ) -> dict[str, ShiftTermStats]:
         vocab = set(counts_prev) | set(counts_curr)
         if not vocab:
             return {}
         total_prev = sum(counts_prev.values())
         total_curr = sum(counts_curr.values())
-        vocab_size = len(vocab)
         stats: dict[str, ShiftTermStats] = {}
+        uniform_prior = 1.0 / max(1, len(vocab))
         for term in vocab:
             c_prev = counts_prev.get(term, 0)
             c_curr = counts_curr.get(term, 0)
-            denom_prev = total_prev - c_prev + alpha * vocab_size
-            denom_curr = total_curr - c_curr + alpha * vocab_size
+            if total_bg:
+                p_bg = counts_bg.get(term, 0) / total_bg
+            else:
+                p_bg = uniform_prior
+            alpha_i = max(prior_mass * p_bg, PRIOR_FLOOR)
+            denom_prev = total_prev + prior_mass - (c_prev + alpha_i)
+            denom_curr = total_curr + prior_mass - (c_curr + alpha_i)
             if denom_prev <= 0 or denom_curr <= 0:
                 continue
-            log_prev = math.log((c_prev + alpha) / denom_prev)
-            log_curr = math.log((c_curr + alpha) / denom_curr)
+            log_prev = math.log((c_prev + alpha_i) / denom_prev)
+            log_curr = math.log((c_curr + alpha_i) / denom_curr)
             score = log_curr - log_prev
 
-            z = score / math.sqrt((1 / (c_curr + alpha)) + (1 / (c_prev + alpha)))
+            z = score / math.sqrt((1 / (c_curr + alpha_i)) + (1 / (c_prev + alpha_i)))
 
             per10k_prev = (c_prev / total_prev * 10000.0) if total_prev else 0.0
             per10k_curr = (c_curr / total_curr * 10000.0) if total_curr else 0.0
             delta = per10k_curr - per10k_prev
 
-            distinctive = (abs(z) >= 2.0) and (abs(delta) >= 0.5) and ((c_prev + c_curr) >= 8)
+            df_frac = (year_df.get(term, 0) / num_years) if num_years else 0.0
+            distinctive = (
+                (abs(z) >= 2.0)
+                and (max(c_prev, c_curr) >= 3)
+                and (abs(delta) >= 0.25)
+                and (df_frac <= 0.70)
+            )
 
             stats[term] = {
                 "term": term,
@@ -731,6 +786,30 @@ def build_metrics(sections: list[SectionYear]) -> tuple[MetricsPayload, Similari
                 "distinctive": distinctive,
             }
         return stats
+
+    def build_df_penalty_scores(
+        items: Sequence[ShiftTermStats],
+        year_df: Mapping[str, int],
+        num_years: int,
+    ) -> dict[str, float]:
+        scores: dict[str, float] = {}
+        if not num_years:
+            return scores
+        for item in items:
+            term = item["term"]
+            df_frac = year_df.get(term, 0) / num_years
+            gamma = DF_PENALTY_GAMMA_PHRASE if " " in term else DF_PENALTY_GAMMA_UNI
+            df_penalty = max(
+                DF_PENALTY_FLOOR, (1 - df_frac + DF_PENALTY_EPS) ** gamma
+            )
+            if (
+                abs(item["z"]) >= DF_PENALTY_OVERRIDE_Z
+                and max(item["countPrev"], item["countCurr"]) >= DF_PENALTY_OVERRIDE_COUNT
+            ):
+                if df_frac <= DF_PENALTY_OVERRIDE_MAX_DF_FRAC:
+                    df_penalty = max(df_penalty, DF_PENALTY_OVERRIDE_MIN_PENALTY)
+            scores[term] = item["z"] * df_penalty
+        return scores
 
     def build_term_counts_primary(text: str) -> Counter[str]:
         toks = tokenize(text)
@@ -757,13 +836,13 @@ def build_metrics(sections: list[SectionYear]) -> tuple[MetricsPayload, Similari
             term = item["term"]
             term_output: ShiftTermOutput = {
                 "term": term,
-                "score": round(float(item["score"]), 2),
-                "z": round(float(item["z"]), 2),
+                "score": float(item["score"]),
+                "z": float(item["z"]),
                 "countPrev": int(item["countPrev"]),
                 "countCurr": int(item["countCurr"]),
-                "per10kPrev": round(float(item["per10kPrev"]), 2),
-                "per10kCurr": round(float(item["per10kCurr"]), 2),
-                "deltaPer10k": round(float(item["deltaPer10k"]), 2),
+                "per10kPrev": float(item["per10kPrev"]),
+                "per10kCurr": float(item["per10kCurr"]),
+                "deltaPer10k": float(item["deltaPer10k"]),
                 "distinctive": bool(item["distinctive"]),
             }
             if includes_by_term is not None:
@@ -778,34 +857,116 @@ def build_metrics(sections: list[SectionYear]) -> tuple[MetricsPayload, Similari
     def build_alt_terms(items: Sequence[ShiftTermStats], limit: int = 15) -> list[ShiftTermAlt]:
         output: list[ShiftTermAlt] = []
         for item in items:
-            output.append({"term": item["term"], "score": round(float(item["score"]), 2)})
+            output.append({"term": item["term"], "score": float(item["score"])})
             if len(output) >= limit:
                 break
         return output
+
+    prior_mass = resolve_prior_mass()
+
+    counts_primary_by_year = [build_term_counts_primary(section.text) for section in valid_sections]
+    counts_alt_by_year = [build_term_counts_alt(section.text) for section in valid_sections]
+
+    if canonical_terms:
+        canonical_primary: list[Counter[str]] = []
+        canonical_alt: list[Counter[str]] = []
+        for counts in counts_primary_by_year:
+            normalized, _ = canonicalize_counts(counts, canonical_terms)
+            canonical_primary.append(normalized)
+        for counts in counts_alt_by_year:
+            normalized, _ = canonicalize_counts(counts, canonical_terms)
+            canonical_alt.append(normalized)
+        counts_primary_by_year = canonical_primary
+        counts_alt_by_year = canonical_alt
+
+    bg_primary, bg_total_primary = build_background_counts(counts_primary_by_year)
+    bg_alt, bg_total_alt = build_background_counts(counts_alt_by_year)
+    year_df_primary = build_year_df(counts_primary_by_year)
+    year_df_alt = build_year_df(counts_alt_by_year)
+    num_years = len(valid_sections)
 
     for idx in range(1, len(valid_sections)):
         prev_section = valid_sections[idx - 1]
         curr_section = valid_sections[idx]
 
-        counts_prev = build_term_counts_primary(prev_section.text)
-        counts_curr = build_term_counts_primary(curr_section.text)
+        counts_prev = counts_primary_by_year[idx - 1]
+        counts_curr = counts_primary_by_year[idx]
         includes_by_term: dict[str, list[str]] = {}
         if canonical_terms:
-            counts_prev, includes_prev = canonicalize_counts(counts_prev, canonical_terms)
-            counts_curr, includes_curr = canonicalize_counts(counts_curr, canonical_terms)
+            _, includes_prev = canonicalize_counts(build_term_counts_primary(prev_section.text), canonical_terms)
+            _, includes_curr = canonicalize_counts(build_term_counts_primary(curr_section.text), canonical_terms)
             includes_by_term = merge_includes(includes_prev, includes_curr)
-        stats = log_odds_stats(counts_prev, counts_curr)
+        stats = log_odds_stats(
+            counts_prev,
+            counts_curr,
+            bg_primary,
+            bg_total_primary,
+            prior_mass,
+            year_df_primary,
+            num_years,
+        )
 
         if not stats:
             top_risers: list[ShiftTermOutput] = []
             top_fallers: list[ShiftTermOutput] = []
         else:
-            sorted_risers = sorted(
-                stats.values(), key=lambda item: (-item["score"], item["term"])
+            fallback_scores = build_df_penalty_scores(
+                list(stats.values()), year_df_primary, num_years
             )
-            sorted_fallers = sorted(
-                stats.values(), key=lambda item: (item["score"], item["term"])
-            )
+            has_distinctive = any(item["distinctive"] for item in stats.values())
+            fallback_items = [
+                item
+                for item in stats.values()
+                if item["distinctive"]
+                or max(item["countPrev"], item["countCurr"]) >= 2
+            ]
+            if not has_distinctive:
+                filtered: list[ShiftTermStats] = []
+                for item in fallback_items:
+                    score_df = fallback_scores.get(item["term"], item["z"])
+                    if abs(score_df) < SCORE_DF_MIN:
+                        continue
+                    filtered.append(item)
+                fallback_items = filtered
+
+            def _score_bucket(score: float) -> float:
+                return round(score, 9)
+
+            def sort_key_riser(
+                item: ShiftTermStats,
+            ) -> tuple[float, int, int, float, str]:
+                score_df = fallback_scores.get(item["term"], item["z"])
+                min_count = min(item["countPrev"], item["countCurr"])
+                total_count = item["countPrev"] + item["countCurr"]
+                abs_delta = abs(item["deltaPer10k"])
+                return (
+                    -_score_bucket(score_df),
+                    -min_count,
+                    -total_count,
+                    -abs_delta,
+                    item["term"],
+                )
+
+            def sort_key_faller(
+                item: ShiftTermStats,
+            ) -> tuple[float, int, int, float, str]:
+                score_df = fallback_scores.get(item["term"], item["z"])
+                min_count = min(item["countPrev"], item["countCurr"])
+                total_count = item["countPrev"] + item["countCurr"]
+                abs_delta = abs(item["deltaPer10k"])
+                return (
+                    _score_bucket(score_df),
+                    -min_count,
+                    -total_count,
+                    -abs_delta,
+                    item["term"],
+                )
+
+            for item in stats.values():
+                item["score"] = fallback_scores.get(item["term"], item["z"])
+
+            sorted_risers = sorted(fallback_items, key=sort_key_riser)
+            sorted_fallers = sorted(fallback_items, key=sort_key_faller)
             top_risers = build_shift_term_outputs(
                 sorted_risers, includes_by_term=includes_by_term
             )
@@ -815,9 +976,17 @@ def build_metrics(sections: list[SectionYear]) -> tuple[MetricsPayload, Similari
 
         summary = build_shift_summary(extract_terms(top_risers), extract_terms(top_fallers))
 
-        counts_prev_alt = build_term_counts_alt(prev_section.text)
-        counts_curr_alt = build_term_counts_alt(curr_section.text)
-        stats_alt = log_odds_stats(counts_prev_alt, counts_curr_alt)
+        counts_prev_alt = counts_alt_by_year[idx - 1]
+        counts_curr_alt = counts_alt_by_year[idx]
+        stats_alt = log_odds_stats(
+            counts_prev_alt,
+            counts_curr_alt,
+            bg_alt,
+            bg_total_alt,
+            prior_mass,
+            year_df_alt,
+            num_years,
+        )
 
         top_risers_alt: list[ShiftTermAlt] = []
         top_fallers_alt: list[ShiftTermAlt] = []
@@ -825,10 +994,10 @@ def build_metrics(sections: list[SectionYear]) -> tuple[MetricsPayload, Similari
 
         if stats_alt:
             sorted_risers_alt = sorted(
-                stats_alt.values(), key=lambda item: (-item["score"], item["term"])
+                stats_alt.values(), key=lambda item: (-item["z"], item["term"])
             )
             sorted_fallers_alt = sorted(
-                stats_alt.values(), key=lambda item: (item["score"], item["term"])
+                stats_alt.values(), key=lambda item: (item["z"], item["term"])
             )
             top_risers_alt = build_alt_terms(sorted_risers_alt)
             top_fallers_alt = build_alt_terms(sorted_fallers_alt)

@@ -4,6 +4,7 @@ import os
 import subprocess
 import sys
 import time
+from concurrent.futures import ProcessPoolExecutor, as_completed
 from urllib.parse import urlparse
 from pathlib import Path
 from typing import Any, Iterable, Optional, Protocol, TYPE_CHECKING, cast
@@ -187,6 +188,11 @@ def build_parser() -> argparse.ArgumentParser:
         help="Sleep between tickers (default: 250ms).",
     )
     parser.add_argument(
+        "--clear-proxy-env",
+        action="store_true",
+        help="Clear HTTP(S)_PROXY/ALL_PROXY/GIT_*_PROXY for subprocesses.",
+    )
+    parser.add_argument(
         "--max-count",
         type=int,
         default=None,
@@ -207,7 +213,60 @@ def build_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="Include 20-F filings when available.",
     )
+    parser.add_argument(
+        "--workers",
+        type=int,
+        default=1,
+        help="Number of parallel workers (default: 1). Use with --submissions-zip to avoid rate limits.",
+    )
     return parser
+
+
+def _run_ticker_build(
+    ticker: str,
+    *,
+    include_20f: bool,
+    submissions_zip: Optional[str],
+    clear_proxy_env: bool,
+) -> tuple[str, int, str, str]:
+    out_dir = DATA_DIR / ticker
+    cmd = [
+        sys.executable,
+        str(ROOT_DIR / "sec_fetch_and_build.py"),
+        "--ticker",
+        ticker,
+        "--start-year",
+        "2015",
+        "--out",
+        str(out_dir),
+        "--force-live-ticker-map",
+    ]
+    if include_20f:
+        cmd.append("--include-20f")
+    if submissions_zip:
+        cmd.extend(["--submissions-zip", submissions_zip])
+
+    run_env = None
+    if clear_proxy_env:
+        run_env = os.environ.copy()
+        for key in (
+            "HTTP_PROXY",
+            "HTTPS_PROXY",
+            "ALL_PROXY",
+            "GIT_HTTP_PROXY",
+            "GIT_HTTPS_PROXY",
+        ):
+            run_env.pop(key, None)
+    result = subprocess.run(
+        cmd,
+        capture_output=True,
+        text=True,
+        check=False,
+        env=run_env,
+    )
+    stdout = result.stdout.strip() if result.stdout else ""
+    stderr = result.stderr.strip() if result.stderr else ""
+    return ticker, result.returncode, stdout, stderr
 
 
 def main(argv: Optional[list[str]] = None) -> int:
@@ -250,44 +309,64 @@ def main(argv: Optional[list[str]] = None) -> int:
         )
         submissions_zip = None
 
-    processed = 0
+    selected: list[str] = []
     for ticker in tickers:
         if not started:
             if ticker == start_at:
                 started = True
             else:
                 continue
-
-        out_dir = DATA_DIR / ticker
-        cmd = [
-            sys.executable,
-            str(ROOT_DIR / "sec_fetch_and_build.py"),
-            "--ticker",
-            ticker,
-            "--start-year",
-            "2015",
-            "--out",
-            str(out_dir),
-        ]
-        if args.include_20f:
-            cmd.append("--include-20f")
-        if submissions_zip is not None:
-            cmd.extend(["--submissions-zip", str(submissions_zip)])
-
-        append_log(log_path, f"[{ticker}] start")
-        result = subprocess.run(cmd, capture_output=True, text=True, check=False)
-        if result.stdout:
-            append_log(log_path, f"[{ticker}] stdout: {result.stdout.strip()}")
-        if result.stderr:
-            append_log(log_path, f"[{ticker}] stderr: {result.stderr.strip()}")
-        append_log(log_path, f"[{ticker}] exit={result.returncode}")
-        processed += 1
-        if args.max_count is not None and processed >= args.max_count:
-            append_log(log_path, f"Stopping early after {processed} tickers.")
+        selected.append(ticker)
+        if args.max_count is not None and len(selected) >= args.max_count:
             break
 
-        if args.sleep_ms > 0:
-            time.sleep(args.sleep_ms / 1000)
+    processed = 0
+    if args.workers > 1 and len(selected) > 1:
+        append_log(log_path, f"Parallel build with {args.workers} workers")
+        with ProcessPoolExecutor(max_workers=args.workers) as executor:
+            futures = {
+                executor.submit(
+                    _run_ticker_build,
+                    ticker,
+                    include_20f=args.include_20f,
+                    submissions_zip=str(submissions_zip) if submissions_zip else None,
+                    clear_proxy_env=args.clear_proxy_env,
+                ): ticker
+                for ticker in selected
+            }
+            for future in as_completed(futures):
+                ticker = futures[future]
+                append_log(log_path, f"[{ticker}] start")
+                try:
+                    ticker, returncode, stdout, stderr = future.result()
+                except Exception as exc:
+                    append_log(log_path, f"[{ticker}] error: {exc}")
+                    processed += 1
+                    continue
+                if stdout:
+                    append_log(log_path, f"[{ticker}] stdout: {stdout}")
+                if stderr:
+                    append_log(log_path, f"[{ticker}] stderr: {stderr}")
+                append_log(log_path, f"[{ticker}] exit={returncode}")
+                processed += 1
+    else:
+        for ticker in selected:
+            append_log(log_path, f"[{ticker}] start")
+            ticker, returncode, stdout, stderr = _run_ticker_build(
+                ticker,
+                include_20f=args.include_20f,
+                submissions_zip=str(submissions_zip) if submissions_zip else None,
+                clear_proxy_env=args.clear_proxy_env,
+            )
+            if stdout:
+                append_log(log_path, f"[{ticker}] stdout: {stdout}")
+            if stderr:
+                append_log(log_path, f"[{ticker}] stderr: {stderr}")
+            append_log(log_path, f"[{ticker}] exit={returncode}")
+            processed += 1
+
+            if args.sleep_ms > 0:
+                time.sleep(args.sleep_ms / 1000)
 
     append_log(log_path, f"Done build: {time.strftime('%Y-%m-%d %H:%M:%S')}")
     return 0

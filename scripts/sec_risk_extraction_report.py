@@ -1,4 +1,6 @@
 import argparse
+import json
+from pathlib import Path
 from typing import Any, Optional, TypedDict, cast
 
 from sec_cache import (
@@ -29,6 +31,10 @@ class CacheRecord(TypedDict):
     warnings: list[str]
     qualityGateFailed: bool
     method: str
+
+
+ROOT_DIR = Path(__file__).resolve().parent
+UNIVERSE_PATH = ROOT_DIR / "universe_featured.json"
 
 
 def as_str_dict(value: Any) -> Optional[dict[str, Any]]:
@@ -117,6 +123,60 @@ def build_accession_map(
             key = (entry["cik"], entry["accession"])
             mapping[key] = (ticker, year)
     return mapping
+
+
+def load_featured_tickers(path: Path) -> list[str]:
+    if not path.exists():
+        return []
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return []
+    if not isinstance(payload, list):
+        return []
+    output: list[str] = []
+    for item in payload:
+        if not isinstance(item, dict):
+            continue
+        ticker = item.get("ticker")
+        if isinstance(ticker, str):
+            output.append(ticker.upper())
+    return output
+
+
+def parse_case(arg: str) -> Optional[tuple[str, str, int]]:
+    parts = arg.split(":")
+    if len(parts) == 2:
+        ticker_raw, year_raw = parts
+        label = f"{ticker_raw}_{year_raw}"
+    elif len(parts) == 3:
+        label, ticker_raw, year_raw = parts
+    else:
+        return None
+    try:
+        year = int(year_raw)
+    except ValueError:
+        return None
+    ticker = ticker_raw.upper()
+    return label, ticker, year
+
+
+def build_default_cases(
+    index_payload: dict[str, dict[int, TickerYearEntry]], limit: int
+) -> list[tuple[str, str, int]]:
+    tickers = load_featured_tickers(UNIVERSE_PATH)
+    if not tickers:
+        tickers = sorted(index_payload.keys())
+    cases: list[tuple[str, str, int]] = []
+    for ticker in tickers:
+        year_map = index_payload.get(ticker)
+        if not year_map:
+            continue
+        latest_year = max(year_map.keys())
+        cases.append((f"{ticker}_{latest_year}", ticker, latest_year))
+        if len(cases) >= limit:
+            break
+    return cases
 
 
 def load_cached_filing(cik: str, accession: str) -> tuple[Optional[str], Optional[str]]:
@@ -234,6 +294,18 @@ def build_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="Use cached risk_meta.json for summary instead of re-extracting every filing.",
     )
+    parser.add_argument(
+        "--cases",
+        nargs="+",
+        default=None,
+        help="Override sanity cases (TICKER:YEAR or LABEL:TICKER:YEAR).",
+    )
+    parser.add_argument(
+        "--case-limit",
+        type=int,
+        default=6,
+        help="Number of default sanity cases when --cases is not provided.",
+    )
     return parser
 
 
@@ -244,24 +316,21 @@ def main(argv: Optional[list[str]] = None) -> int:
     index_payload = parse_ticker_year_index(load_json(ticker_year_index_path()))
     accession_map = build_accession_map(index_payload)
 
-    cases = [
-        ("MS_2017", "MS", 2017),
-        ("UNH_2018", "UNH", 2018),
-        ("PFE_2025", "PFE", 2025),
-        ("WMT_2017", "WMT", 2017),
-        ("COST_2024", "COST", 2024),
-        ("AAPL_2024", "AAPL", 2024),
-    ]
+    cases: list[tuple[str, str, int]] = []
+    if args.cases:
+        for raw_case in args.cases:
+            parsed = parse_case(raw_case)
+            if parsed is None:
+                print(f"warning: skipping invalid case '{raw_case}'")
+                continue
+            cases.append(parsed)
+    if not cases:
+        cases = build_default_cases(index_payload, args.case_limit)
 
     print("sanity_checks:")
     for label, ticker, year in cases:
         year_map = index_payload.get(ticker)
         entry = year_map.get(year) if year_map else None
-        if entry is None and ticker == "PFE":
-            entry = year_map.get(2024) if year_map else None
-            if entry is not None:
-                print(f"  {label}: year 2025 missing, using 2024")
-                label = "PFE_2024"
         if entry is None:
             print(f"  {label}: missing cache entry")
             continue

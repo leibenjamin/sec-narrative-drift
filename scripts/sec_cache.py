@@ -10,7 +10,7 @@ from typing import Any, Optional
 DEFAULT_CACHE_ROOT = Path(__file__).resolve().parents[1] / "data" / "sec_cache"
 EXTRACTOR_VERSION = "1.25"
 NORMALIZER_VERSION = "1.0"
-MAX_CACHE_GB = 10
+MAX_CACHE_GB = 5.0
 
 
 def get_cache_root() -> Path:
@@ -41,11 +41,27 @@ def risk_dir(cik: str, accession: str) -> Path:
 
 
 def risk_text_path(cik: str, accession: str, form_type: str) -> Path:
-    return risk_dir(cik, accession) / _risk_filename_for_form(form_type)
+    return risk_dir(cik, accession) / f"{_risk_basename_for_form(form_type)}.txt.gz"
+
+
+def risk_html_path(cik: str, accession: str, form_type: str) -> Path:
+    return risk_dir(cik, accession) / f"{_risk_basename_for_form(form_type)}.html.gz"
+
+
+def risk_raw_text_path(cik: str, accession: str, form_type: str) -> Path:
+    return risk_dir(cik, accession) / f"{_risk_basename_for_form(form_type)}.raw.txt.gz"
+
+
+def risk_segments_path(cik: str, accession: str, form_type: str) -> Path:
+    return risk_dir(cik, accession) / f"{_risk_basename_for_form(form_type)}.segments.json.gz"
 
 
 def risk_meta_path(cik: str, accession: str) -> Path:
     return risk_dir(cik, accession) / "rf_meta.json"
+
+
+def risk_term_counts_path(cik: str, accession: str) -> Path:
+    return risk_dir(cik, accession) / "term_counts_primary.json.gz"
 
 
 def ticker_year_index_path() -> Path:
@@ -95,6 +111,10 @@ def save_gz_text_atomic(path: Path, text: str) -> None:
 
 def compute_sha256_text(text: str) -> str:
     return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+
+def compute_sha1_text(text: str) -> str:
+    return hashlib.sha1(text.encode("utf-8")).hexdigest()
 
 
 def cache_size_report() -> dict[str, Any]:
@@ -162,8 +182,8 @@ def enforce_cache_size_limit(max_gb: float = MAX_CACHE_GB) -> dict[str, Any]:
     }
 
 
-def _risk_filename_for_form(form_type: str) -> str:
+def _risk_basename_for_form(form_type: str) -> str:
     normalized = form_type.upper().strip()
     if normalized.startswith("20-F"):
-        return "item_3d.txt.gz"
-    return "item_1a.txt.gz"
+        return "item_3d"
+    return "item_1a"

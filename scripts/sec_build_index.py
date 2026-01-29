@@ -13,6 +13,7 @@ REPO_ROOT = ROOT_DIR.parent
 DATA_DIR = REPO_ROOT / "public" / "data" / "sec_narrative_drift"
 FEATURED_CASES_PATH = ROOT_DIR / "featured_cases.json"
 TICKER_MAP_PATH = ROOT_DIR / "sample_fixtures" / "company_tickers_exchange.json"
+DEFAULT_EXISTING_INDEX = DATA_DIR / "index.json"
 
 
 def utc_now() -> str:
@@ -294,8 +295,34 @@ def resolve_company_name(
     return ticker
 
 
-def build_index(data_dir: Path, featured_cases: dict[str, dict[str, Any]]) -> dict[str, Any]:
-    ticker_map = load_ticker_map(TICKER_MAP_PATH)
+def load_existing_index_map(path: Path) -> dict[str, dict[str, Any]]:
+    if not path.exists():
+        return {}
+    payload = read_json(path)
+    payload_dict = as_str_dict(payload)
+    if payload_dict is None:
+        return {}
+    rows = as_list(payload_dict.get("companies"))
+    if rows is None:
+        return {}
+    mapping: dict[str, dict[str, Any]] = {}
+    for row in rows:
+        row_dict = as_str_dict(row)
+        if row_dict is None:
+            continue
+        ticker_value = normalize_text(row_dict.get("ticker"))
+        if not ticker_value:
+            continue
+        mapping[ticker_value.upper()] = row_dict
+    return mapping
+
+
+def build_index(
+    data_dir: Path,
+    featured_cases: dict[str, dict[str, Any]],
+    ticker_map: dict[str, dict[str, Any]],
+    existing_index: dict[str, dict[str, Any]],
+) -> dict[str, Any]:
     companies: list[dict[str, Any]] = []
 
     for entry in sorted(data_dir.iterdir()):
@@ -314,7 +341,12 @@ def build_index(data_dir: Path, featured_cases: dict[str, dict[str, Any]]) -> di
         cik = normalize_text(meta_dict.get("cik")) or ""
         meta_name = normalize_text(meta_dict.get("companyName"))
         map_entry = ticker_map.get(ticker)
-        company_name = resolve_company_name(ticker, meta_name, map_entry)
+        existing_entry = existing_index.get(ticker)
+        company_name = resolve_company_name(
+            ticker,
+            meta_name or normalize_text((existing_entry or {}).get("companyName")),
+            map_entry,
+        )
 
         metrics_path = entry / "metrics_10k_item1a.json"
         filings_path = entry / "filings.json"
@@ -344,6 +376,16 @@ def build_index(data_dir: Path, featured_cases: dict[str, dict[str, Any]]) -> di
             if sic_desc:
                 row["sicDescription"] = sic_desc
             exchange = normalize_text(map_entry.get("exchange"))
+            if exchange:
+                row["exchange"] = exchange
+        elif existing_entry is not None:
+            sic_value = existing_entry.get("sic")
+            if sic_value is not None:
+                row["sic"] = str(sic_value)
+            sic_desc = normalize_text(existing_entry.get("sicDescription"))
+            if sic_desc:
+                row["sicDescription"] = sic_desc
+            exchange = normalize_text(existing_entry.get("exchange"))
             if exchange:
                 row["exchange"] = exchange
 
@@ -393,9 +435,19 @@ def build_parser() -> argparse.ArgumentParser:
         help="Path to public/data/sec_narrative_drift.",
     )
     parser.add_argument(
+        "--existing-index",
+        default=str(DEFAULT_EXISTING_INDEX),
+        help="Optional existing index.json to reuse metadata (default: <data-dir>/index.json).",
+    )
+    parser.add_argument(
         "--out",
         default=None,
         help="Optional output path for index.json (default: <data-dir>/index.json).",
+    )
+    parser.add_argument(
+        "--allow-sample-fixtures",
+        action="store_true",
+        help="Allow use of scripts/sample_fixtures/company_tickers_exchange.json for metadata.",
     )
     return parser
 
@@ -409,7 +461,9 @@ def main(argv: Optional[list[str]] = None) -> int:
         raise SystemExit(f"Data dir not found: {data_dir}")
 
     featured_cases = load_featured_cases(FEATURED_CASES_PATH)
-    payload = build_index(data_dir, featured_cases)
+    ticker_map = load_ticker_map(TICKER_MAP_PATH) if args.allow_sample_fixtures else {}
+    existing_index = load_existing_index_map(Path(args.existing_index))
+    payload = build_index(data_dir, featured_cases, ticker_map, existing_index)
 
     out_path = Path(args.out) if args.out else data_dir / "index.json"
     write_json(out_path, payload)

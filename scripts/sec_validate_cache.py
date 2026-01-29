@@ -14,7 +14,10 @@ from sec_cache import (
     get_cache_root,
     load_gz_text,
     load_json,
+    risk_html_path,
     risk_meta_path,
+    risk_raw_text_path,
+    risk_segments_path,
     risk_text_path,
     ticker_year_index_path,
     compute_sha256_text,
@@ -148,6 +151,11 @@ def build_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="Verify sha256 hashes for all cached filings.",
     )
+    parser.add_argument(
+        "--require-risk-exports",
+        action="store_true",
+        help="Require risk HTML/raw/segments caches to exist (optional, local-only).",
+    )
     return parser
 
 
@@ -233,6 +241,17 @@ def main(argv: list[str] | None = None) -> int:
                     flagged.append("quality_gate_failed")
                 if flagged:
                     issues.append(f"{ticker} {year_key}: risk warnings {','.join(flagged)}")
+
+            if args.require_risk_exports:
+                risk_html = risk_html_path(cik, accession, form_type)
+                risk_raw = risk_raw_text_path(cik, accession, form_type)
+                risk_segments = risk_segments_path(cik, accession, form_type)
+                if not risk_html.exists():
+                    issues.append(f"{ticker} {year_key}: missing risk html slice")
+                if not risk_raw.exists():
+                    issues.append(f"{ticker} {year_key}: missing risk raw text")
+                if not risk_segments.exists():
+                    issues.append(f"{ticker} {year_key}: missing risk segments")
 
             if checked < hash_checks and filing_meta_dict is not None and filing_text.exists():
                 text = load_gz_text(filing_text)

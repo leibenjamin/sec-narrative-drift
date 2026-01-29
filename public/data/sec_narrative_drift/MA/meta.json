@@ -2,7 +2,7 @@
   "ticker": "MA",
   "cik": "0001141391",
   "companyName": "Mastercard Inc",
-  "lastUpdatedUtc": "2026-01-26T02:52:47Z",
+  "lastUpdatedUtc": "2026-01-27T03:17:32Z",
   "formsIncluded": [
     "10-K"
   ],
@@ -16,13 +16,12 @@
   "extraction": {
     "section": "item1a",
     "method": "blockdoc_scored",
-    "confidence": 0.6499999999999999,
+    "confidence": 0.95,
     "warnings": [
       "header_footer_repeat",
-      "toc_detected",
-      "toc_like_tail"
+      "toc_detected"
     ],
-    "lengthChars": 51578,
+    "lengthChars": 81322,
     "endMarkerUsed": "1B",
     "hasItem1C": false
   }

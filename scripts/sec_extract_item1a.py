@@ -234,6 +234,27 @@ class StartCandidate:
     in_toc_region: bool
 
 
+@dataclass
+class PreparedHtml:
+    """Pre-parsed HTML components for efficient reuse across extraction functions.
+
+    This class holds the results of expensive HTML parsing operations so they
+    can be shared across extract_item1a_from_prepared(), build_risk_raw_text_from_blockdoc(),
+    and build_risk_html_slice_from_prepared() without redundant parsing.
+
+    Attributes:
+        soup: BeautifulSoup object with hidden nodes stripped and scripts removed.
+        block_tags: List of block-level tags extracted from soup, in document order.
+            Used for HTML slicing operations.
+        block_doc: Structured BlockDoc with text extraction and heading detection.
+            Note: BlockDoc.blocks may have fewer entries than block_tags because
+            tags with empty text content are filtered out during BlockDoc construction.
+    """
+
+    soup: Any  # BeautifulSoup - use Any to avoid import issues outside TYPE_CHECKING
+    block_tags: list[Tag]
+    block_doc: "BlockDoc"
+
 
 def normalize_whitespace(text: str) -> str:
     text = text.replace("\r\n", "\n").replace("\r", "\n")
@@ -312,6 +333,171 @@ def clean_html_to_text(html: str) -> str:
 
     text = soup.get_text(separator="\n")
     return normalize_whitespace(text)
+
+
+def build_risk_raw_text_from_html(
+    html: str, start_block_idx: int, end_block_idx: int
+) -> str:
+    """Build raw text from HTML by extracting blocks in the given range.
+
+    This function parses the HTML internally. For better performance when
+    multiple operations need the parsed HTML, use prepare_html_for_extraction()
+    followed by build_risk_raw_text_from_blockdoc().
+
+    Args:
+        html: Raw HTML string.
+        start_block_idx: Starting block index (inclusive).
+        end_block_idx: Ending block index (inclusive).
+
+    Returns:
+        Concatenated text from the specified block range.
+    """
+    block_doc = build_blockdoc_from_html(html)
+    return build_risk_raw_text_from_blockdoc(block_doc, start_block_idx, end_block_idx)
+
+
+def build_risk_html_slice_from_html(
+    html: str,
+    start_block_idx: int,
+    end_block_idx: int,
+    *,
+    item: str,
+    form_type: str,
+    ticker: Optional[str] = None,
+    cik: Optional[str] = None,
+    accession: Optional[str] = None,
+) -> str:
+    soup = BeautifulSoup(html, choose_parser(html))
+    for tag in soup(["script", "style", "noscript"]):
+        tag.decompose()
+
+    tags = soup.find_all(BLOCK_TAGS)
+    if not tags:
+        return ""
+    start = max(0, min(start_block_idx, len(tags) - 1))
+    end = max(start, min(end_block_idx, len(tags) - 1))
+    slice_tags = tags[start : end + 1]
+    slice_html = "".join(str(tag) for tag in slice_tags)
+
+    wrapper_attrs = [
+        'data-secnd="risk-slice"',
+        f'data-item="{item}"',
+        f'data-form="{form_type}"',
+    ]
+    if ticker:
+        wrapper_attrs.append(f'data-ticker="{ticker}"')
+    if cik:
+        wrapper_attrs.append(f'data-cik="{cik}"')
+    if accession:
+        wrapper_attrs.append(f'data-accession="{accession}"')
+
+    wrapped = f"<div {' '.join(wrapper_attrs)}>{slice_html}</div>"
+    slice_soup = BeautifulSoup(wrapped, choose_parser(html))
+    slice_soup_any = cast(Any, slice_soup)
+    for tag in slice_soup_any(["script", "style", "noscript"]):
+        tag.decompose()
+    for tag in slice_soup_any.find_all(True):
+        name = getattr(tag, "name", "")
+        if ":" in name:
+            unwrap = getattr(tag, "unwrap", None)
+            if callable(unwrap):
+                unwrap()
+    container = slice_soup_any.find("div", attrs={"data-secnd": "risk-slice"})
+    return str(container) if container is not None else str(slice_soup_any)
+
+
+def build_risk_raw_text_from_blockdoc(
+    block_doc: BlockDoc, start_block_idx: int, end_block_idx: int
+) -> str:
+    """Build raw text from a pre-built BlockDoc.
+
+    This is the efficient version that avoids redundant HTML parsing.
+    Use this when you have already built a BlockDoc via prepare_html_for_extraction().
+
+    Args:
+        block_doc: Pre-built BlockDoc (e.g., from PreparedHtml.block_doc).
+        start_block_idx: Starting block index (inclusive).
+        end_block_idx: Ending block index (inclusive).
+
+    Returns:
+        Concatenated text from the specified block range.
+    """
+    if not block_doc.blocks:
+        return ""
+    start = max(0, min(start_block_idx, len(block_doc.blocks) - 1))
+    end = max(start, min(end_block_idx, len(block_doc.blocks) - 1))
+    blocks = block_doc.blocks[start : end + 1]
+    return "\n\n".join(block.text for block in blocks).strip()
+
+
+def build_risk_html_slice_from_prepared(
+    prepared: PreparedHtml,
+    start_block_idx: int,
+    end_block_idx: int,
+    *,
+    item: str,
+    form_type: str,
+    ticker: Optional[str] = None,
+    cik: Optional[str] = None,
+    accession: Optional[str] = None,
+) -> str:
+    """Build an HTML slice from pre-parsed HTML components.
+
+    This is the efficient version that avoids redundant HTML parsing.
+    Use this when you have already called prepare_html_for_extraction().
+
+    Note: This function uses the block_tags list which contains ALL block-level
+    tags from the preprocessed soup, including tags with empty text. The indices
+    should correspond to the block_tags list, which may differ slightly from
+    BlockDoc block indices (which filter out empty-text tags).
+
+    Args:
+        prepared: PreparedHtml containing soup and block_tags.
+        start_block_idx: Starting block index (inclusive).
+        end_block_idx: Ending block index (inclusive).
+        item: Item code (e.g., "1A", "3D").
+        form_type: Form type (e.g., "10-K", "20-F").
+        ticker: Optional ticker symbol.
+        cik: Optional CIK number.
+        accession: Optional accession number.
+
+    Returns:
+        HTML string wrapped in a div with metadata attributes.
+    """
+    if not prepared.block_tags:
+        return ""
+
+    start = max(0, min(start_block_idx, len(prepared.block_tags) - 1))
+    end = max(start, min(end_block_idx, len(prepared.block_tags) - 1))
+    slice_tags = prepared.block_tags[start : end + 1]
+    slice_html = "".join(str(tag) for tag in slice_tags)
+
+    wrapper_attrs = [
+        'data-secnd="risk-slice"',
+        f'data-item="{item}"',
+        f'data-form="{form_type}"',
+    ]
+    if ticker:
+        wrapper_attrs.append(f'data-ticker="{ticker}"')
+    if cik:
+        wrapper_attrs.append(f'data-cik="{cik}"')
+    if accession:
+        wrapper_attrs.append(f'data-accession="{accession}"')
+
+    wrapped = f"<div {' '.join(wrapper_attrs)}>{slice_html}</div>"
+    # Parse just the small slice, not the full document
+    slice_soup = BeautifulSoup(wrapped, "lxml")
+    slice_soup_any = cast(Any, slice_soup)
+    for tag in slice_soup_any(["script", "style", "noscript"]):
+        tag.decompose()
+    for tag in slice_soup_any.find_all(True):
+        name = getattr(tag, "name", "")
+        if ":" in name:
+            unwrap = getattr(tag, "unwrap", None)
+            if callable(unwrap):
+                unwrap()
+    container = slice_soup_any.find("div", attrs={"data-secnd": "risk-slice"})
+    return str(container) if container is not None else str(slice_soup_any)
 
 
 def _strip_hidden_nodes(soup: BeautifulSoup) -> None:
@@ -580,6 +766,52 @@ DOC_PAGE_CLUSTER_MIN_SPAN = 5
 
 RISK_RELATED_SUBHEAD = re.compile(r"\brisks?\s+related\s+to\b", re.IGNORECASE)
 
+# Pre-compiled patterns for hot path functions (called millions of times)
+# These were previously inline re.fullmatch/re.match/re.search calls causing
+# 395+ million re._compile calls per filing.
+_PAGE_NUM_SIMPLE = re.compile(r"(\d{1,4})[.)-]?$")
+_PAGE_PART_RANGE = re.compile(
+    r"([A-Za-z]{1,5})\s*-?\s*(\d{1,4})\s*-\s*([A-Za-z]{1,5})\s*-?\s*(\d{1,4})$",
+    re.IGNORECASE,
+)
+_PAGE_PART_SINGLE = re.compile(r"([A-Za-z]{1,5})\s*-?\s*(\d{1,4})$", re.IGNORECASE)
+_DIGITS_1_4 = re.compile(r"\d{1,4}")
+_PAGE_LETTER_PREFIX = re.compile(r"^([A-Za-z]{1,5})\s*-?\s*\d{1,4}$")
+_PAGE_PAGES_PREFIX = re.compile(r"^(page|pages)\s+", re.IGNORECASE)
+_WHITESPACE_COLLAPSE = re.compile(r"\s+")
+_ALPHA_2_PLUS = re.compile(r"[A-Za-z]{2,}")
+_ALPHA_3_PLUS = re.compile(r"[A-Za-z]{3,}")
+_ALNUM_PLUS = re.compile(r"[A-Za-z0-9]+")
+_NON_ALNUM = re.compile(r"[^A-Za-z0-9]+")
+_NON_WORD_SPACE = re.compile(r"[^\w\s]")
+_ITEM_CODE_SUFFIX = re.compile(r"\d+[a-z]?$")
+_ROMAN_NUMERAL = re.compile(r"[ivxlcdm]{1,4}$")
+_PART_ROMAN = re.compile(r"part\s+[ivxlcdm]+$", re.IGNORECASE)
+_PAGE_TRAILING_DIGITS = re.compile(r"\s\d{1,4}$")
+_HEADER_YEAR_PAGE = re.compile(r"^(.+?)\s+(19|20)\d{2}\s+(\d{1,4})$")
+_HEADER_PAGE_YEAR = re.compile(r"^(\d{1,4})\s+(.+?)\s+(19|20)\d{2}$")
+_HEADER_PAGE_TEXT = re.compile(r"^(\d{1,4})\s+(.+)$")
+_HEADER_TEXT_PAGE = re.compile(r"^(.+?)\s+(\d{1,4})$")
+_PAGE_NUM_ONLY = re.compile(r"(\d{1,4})[.)-]?$")
+_ITEM_NUM_LETTER = re.compile(r"\b(\d{1,2})([A-Za-z])\b")
+_ITEM_NUM_WORD = re.compile(r"\bitem\s*(\d{1,2})\b", re.IGNORECASE)
+_DOT_LEADER_COLLAPSE = re.compile(r"\.{2,}")
+_TRAILING_PUNCT = re.compile(r"[.,;:]+$")
+_PART_PREFIX = re.compile(r"^\s*part\s+[ivxlcdm]+\b", re.IGNORECASE)
+_ITEM_1B_SEARCH = re.compile(r"(?m)^\s*item\s*1\s*\.?\s*b\b", re.IGNORECASE)
+_LOWER_ALNUM = re.compile(r"[a-z0-9]+")
+_LOWER_ALPHA = re.compile(r"[a-z]+")
+_ITEM_LINE_START = re.compile(r"^item\s+\d", re.IGNORECASE)
+_PAGE_DIGIT_START = re.compile(r"^\d{1,4}\s+\D+")
+_PAGE_DIGIT_END = re.compile(r"^\D.+\s+\d{1,4}$")
+# Additional patterns for _extract_inline_page_number (called 19.6M times)
+_INLINE_PART_PREFIX = re.compile(
+    r"^([A-Za-z]{1,5})\s*-?\s*(\d{1,4})\s+(.+)$", re.IGNORECASE
+)
+_INLINE_PART_SUFFIX = re.compile(
+    r"^(.+?)\s+([A-Za-z]{1,5})\s*-?\s*(\d{1,4})$", re.IGNORECASE
+)
+
 NEXT_SECTION_LABELS: dict[str, tuple[str, bool]] = {
     "unresolved staff comments": ("Unresolved Staff Comments", False),
     "legal proceedings": ("Legal Proceedings", True),
@@ -799,26 +1031,33 @@ def _is_heading_like(
     return True
 
 
-def build_blockdoc_from_html(html: str) -> BlockDoc:
-    soup = BeautifulSoup(html, choose_parser(html))
-    _strip_hidden_nodes(soup)
-    for tag in soup(["script", "style", "noscript"]):
-        tag.decompose()
+def _build_blockdoc_from_tags(tags: list[Tag]) -> BlockDoc:
+    """Build a BlockDoc from a list of pre-extracted block-level tags.
 
+    This is the core BlockDoc construction logic, separated from HTML parsing
+    to allow reuse when the soup has already been parsed.
+
+    Args:
+        tags: List of BeautifulSoup Tag objects (block-level elements).
+
+    Returns:
+        BlockDoc with blocks, full_text, and offsets. Tags with empty text
+        content are filtered out, so len(blocks) may be less than len(tags).
+    """
     block_texts: list[str] = []
-    block_tags: list[str] = []
+    block_tag_names: list[str] = []
     block_ids: list[list[str]] = []
     raw_lens: list[int] = []
     upper_ratios: list[float] = []
     titlecase_ratios: list[float] = []
     punct_counts: list[int] = []
 
-    for tag in soup.find_all(BLOCK_TAGS):
+    for tag in tags:
         text = _extract_block_text(tag)
         if not text:
             continue
         block_texts.append(text)
-        block_tags.append(tag.name or "text")
+        block_tag_names.append(tag.name or "text")
         block_ids.append(_collect_block_ids(tag))
         raw_lens.append(len(text))
         upper_ratio, title_ratio = _word_ratios(text)
@@ -832,7 +1071,7 @@ def build_blockdoc_from_html(html: str) -> BlockDoc:
             _is_heading_like(
                 idx,
                 block_texts,
-                block_tags,
+                block_tag_names,
                 upper_ratios,
                 titlecase_ratios,
                 punct_counts,
@@ -852,7 +1091,7 @@ def build_blockdoc_from_html(html: str) -> BlockDoc:
             Block(
                 idx=idx,
                 text=text,
-                tag=block_tags[idx],
+                tag=block_tag_names[idx],
                 ids=block_ids[idx],
                 is_heading_like=heading_flags[idx],
                 raw_len=raw_lens[idx],
@@ -865,6 +1104,52 @@ def build_blockdoc_from_html(html: str) -> BlockDoc:
 
     full_text = "\n\n".join(full_parts)
     return BlockDoc(blocks=blocks, full_text=full_text, offsets=offsets)
+
+
+def prepare_html_for_extraction(html: str) -> PreparedHtml:
+    """Parse HTML once and prepare all components needed for extraction.
+
+    This function centralizes the expensive HTML parsing and preprocessing,
+    returning components that can be reused across multiple extraction functions:
+    - extract_item1a_from_prepared()
+    - build_risk_raw_text_from_blockdoc()
+    - build_risk_html_slice_from_prepared()
+
+    The preprocessing (hidden node stripping, script removal) is applied
+    consistently to ensure block indices align between operations.
+
+    Args:
+        html: Raw HTML string from SEC filing.
+
+    Returns:
+        PreparedHtml containing the cleaned soup, block tags list, and BlockDoc.
+    """
+    soup = BeautifulSoup(html, choose_parser(html))
+    _strip_hidden_nodes(soup)
+    for tag in soup(["script", "style", "noscript"]):
+        tag.decompose()
+
+    block_tags = list(soup.find_all(BLOCK_TAGS))
+    block_doc = _build_blockdoc_from_tags(block_tags)
+
+    return PreparedHtml(soup=soup, block_tags=block_tags, block_doc=block_doc)
+
+
+def build_blockdoc_from_html(html: str) -> BlockDoc:
+    """Build a BlockDoc from raw HTML.
+
+    This function parses the HTML internally. For better performance when
+    multiple operations need the parsed HTML, use prepare_html_for_extraction()
+    instead and access the block_doc attribute.
+
+    Args:
+        html: Raw HTML string.
+
+    Returns:
+        BlockDoc with extracted blocks, full text, and offsets.
+    """
+    prepared = prepare_html_for_extraction(html)
+    return prepared.block_doc
 
 
 def _is_heading_boundary_line(text: str) -> bool:
@@ -1262,14 +1547,10 @@ def _is_toc_line(text: str) -> bool:
 
 def _parse_toc_page_number_simple(text: str) -> Optional[tuple[int, int]]:
     stripped = text.strip()
-    match = re.fullmatch(r"(\d{1,4})[.)-]?", stripped)
+    match = _PAGE_NUM_SIMPLE.fullmatch(stripped)
     if match:
         stripped = match.group(1)
-    part_range = re.fullmatch(
-        r"([A-Za-z]{1,5})\s*-?\s*(\d{1,4})\s*-\s*([A-Za-z]{1,5})\s*-?\s*(\d{1,4})",
-        stripped,
-        flags=re.IGNORECASE,
-    )
+    part_range = _PAGE_PART_RANGE.fullmatch(stripped)
     if part_range:
         prefix_start = part_range.group(1)
         prefix_end = part_range.group(3)
@@ -1286,9 +1567,7 @@ def _parse_toc_page_number_simple(text: str) -> Optional[tuple[int, int]]:
             return None
         if start_value <= end_value:
             return start_key, end_key
-    part_single = re.fullmatch(
-        r"([A-Za-z]{1,5})\s*-?\s*(\d{1,4})", stripped, flags=re.IGNORECASE
-    )
+    part_single = _PAGE_PART_SINGLE.fullmatch(stripped)
     if part_single:
         prefix = part_single.group(1)
         try:
@@ -1319,9 +1598,9 @@ def _parse_toc_page_number_simple(text: str) -> Optional[tuple[int, int]]:
             return None
         return value, value
     if TOC_PAGE_WITH_LETTER.match(stripped):
-        match = re.search(r"\d{1,4}", stripped)
+        match = _DIGITS_1_4.search(stripped)
         if match:
-            prefix_match = re.match(r"^([A-Za-z]{1,5})\s*-?\s*\d{1,4}$", stripped)
+            prefix_match = _PAGE_LETTER_PREFIX.match(stripped)
             try:
                 value = int(match.group(0))
             except ValueError:
@@ -1339,8 +1618,8 @@ def _parse_toc_page_number_simple(text: str) -> Optional[tuple[int, int]]:
 
 def _parse_toc_page_number(text: str) -> Optional[tuple[int, int]]:
     stripped = text.strip()
-    if re.match(r"^(page|pages)\s+", stripped, flags=re.IGNORECASE):
-        stripped = re.sub(r"^(page|pages)\s+", "", stripped, flags=re.IGNORECASE)
+    if _PAGE_PAGES_PREFIX.match(stripped):
+        stripped = _PAGE_PAGES_PREFIX.sub("", stripped)
     if "," in stripped:
         segments = [segment.strip() for segment in stripped.split(",") if segment.strip()]
         parsed_segments: list[tuple[int, int]] = []
@@ -1363,8 +1642,8 @@ def _parse_toc_page_number(text: str) -> Optional[tuple[int, int]]:
     if parsed_simple is not None:
         return parsed_simple
     if TOC_PAGE_WITH_NUM.match(stripped):
-        tail = re.sub(r"^(page|pages)\s+", "", stripped, flags=re.IGNORECASE)
-        match = re.match(r"\d{1,4}", tail)
+        tail = _PAGE_PAGES_PREFIX.sub("", stripped)
+        match = _DIGITS_1_4.match(tail)
         if match:
             try:
                 value = int(match.group(0))
@@ -1631,9 +1910,7 @@ def _extract_inline_page_number(text: str) -> Optional[int]:
         return None
     if TOC_ITEM_PREFIX.search(stripped) or TOC_DOT_LEADER.search(stripped):
         return None
-    part_match = re.match(
-        r"^([A-Za-z]{1,5})\s*-?\s*(\d{1,4})\s+(.+)$", stripped, re.IGNORECASE
-    )
+    part_match = _INLINE_PART_PREFIX.match(stripped)
     if part_match:
         head = part_match.group(3).strip()
         if _looks_like_header_footer_text(head) and _is_heading_shaped_text(head):
@@ -1644,9 +1921,7 @@ def _extract_inline_page_number(text: str) -> Optional[int]:
             encoded = _parse_prefixed_page_value(part_match.group(1), value)
             if encoded is not None:
                 return encoded
-    part_match = re.match(
-        r"^(.+?)\s+([A-Za-z]{1,5})\s*-?\s*(\d{1,4})$", stripped, re.IGNORECASE
-    )
+    part_match = _INLINE_PART_SUFFIX.match(stripped)
     if part_match:
         head = part_match.group(1).strip()
         if _looks_like_header_footer_text(head) and _is_heading_shaped_text(head):
@@ -1657,7 +1932,7 @@ def _extract_inline_page_number(text: str) -> Optional[int]:
             encoded = _parse_prefixed_page_value(part_match.group(2), value)
             if encoded is not None:
                 return encoded
-    match = re.match(r"^(.+?)\s+(19|20)\d{2}\s+(\d{1,4})$", stripped)
+    match = _HEADER_YEAR_PAGE.match(stripped)
     if match:
         head = match.group(1).strip()
         if _looks_like_header_footer_text(head) and _is_heading_shaped_text(head):
@@ -1665,7 +1940,7 @@ def _extract_inline_page_number(text: str) -> Optional[int]:
                 return int(match.group(3))
             except ValueError:
                 return None
-    match = re.match(r"^(\d{1,4})\s+(.+?)\s+(19|20)\d{2}$", stripped)
+    match = _HEADER_PAGE_YEAR.match(stripped)
     if match:
         head = match.group(2).strip()
         if _looks_like_header_footer_text(head) and _is_heading_shaped_text(head):
@@ -1673,7 +1948,7 @@ def _extract_inline_page_number(text: str) -> Optional[int]:
                 return int(match.group(1))
             except ValueError:
                 return None
-    match = re.match(r"^(\d{1,4})\s+(.+)$", stripped)
+    match = _HEADER_PAGE_TEXT.match(stripped)
     if match:
         try:
             value = int(match.group(1))
@@ -1687,7 +1962,7 @@ def _extract_inline_page_number(text: str) -> Optional[int]:
             and _is_heading_shaped_text(tail)
         ):
             return value
-    match = re.match(r"^(.+?)\s+(\d{1,4})$", stripped)
+    match = _HEADER_TEXT_PAGE.match(stripped)
     if match:
         try:
             value = int(match.group(2))
@@ -1708,7 +1983,7 @@ def _is_numeric_page_line(text: str) -> Optional[int]:
     stripped = text.strip()
     if not stripped:
         return None
-    match = re.fullmatch(r"(\d{1,4})[.)-]?", stripped)
+    match = _PAGE_NUM_SIMPLE.fullmatch(stripped)
     if match:
         stripped = match.group(1)
     if not stripped.isdigit():
@@ -1743,7 +2018,7 @@ def _extract_page_number_from_block(blocks: list[Block], idx: int) -> Optional[i
     match = PAGE_OF_LINE.match(text)
     if match is not None:
         return int(match.group(1))
-    letter_match = re.fullmatch(r"([A-Za-z]{1,5})\s*-?\s*(\d{1,4})", text)
+    letter_match = _PAGE_PART_SINGLE.fullmatch(text)
     numeric_page: Optional[int]
     if letter_match is not None:
         prefix = letter_match.group(1).upper()
@@ -2667,18 +2942,49 @@ def _build_toc_exclude_ranges(
     return ranges
 
 
-def _collect_page_markers(
-    blocks: list[Block], exclude_ranges: Optional[list[tuple[int, int]]] = None
-) -> list[tuple[int, int, str]]:
+# Cache for _collect_page_markers_full to avoid recomputing for the same blocks list
+_page_markers_cache: dict[int, list[tuple[int, int, str]]] = {}
+
+
+def _collect_page_markers_full(blocks: list[Block]) -> list[tuple[int, int, str]]:
+    """Collect ALL page markers from blocks (without filtering by exclude_ranges).
+
+    Results are cached by blocks list identity to avoid recomputation.
+    """
+    cache_key = id(blocks)
+    if cache_key in _page_markers_cache:
+        return _page_markers_cache[cache_key]
+
     markers: list[tuple[int, int, str]] = []
     for idx in range(len(blocks)):
-        if exclude_ranges is not None and _idx_in_ranges(idx, exclude_ranges):
-            continue
         page_num = _extract_page_number_from_block(blocks, idx)
         if page_num is None:
             continue
         kind = _page_marker_kind(blocks, idx)
         markers.append((idx, page_num, kind))
+
+    _page_markers_cache[cache_key] = markers
+    # Keep cache bounded to avoid memory issues
+    if len(_page_markers_cache) > 10:
+        # Remove oldest entry
+        oldest_key = next(iter(_page_markers_cache))
+        del _page_markers_cache[oldest_key]
+
+    return markers
+
+
+def _collect_page_markers(
+    blocks: list[Block], exclude_ranges: Optional[list[tuple[int, int]]] = None
+) -> list[tuple[int, int, str]]:
+    # Get all markers (cached)
+    all_markers = _collect_page_markers_full(blocks)
+
+    # Filter by exclude_ranges if specified
+    if exclude_ranges is not None:
+        markers = [m for m in all_markers if not _idx_in_ranges(m[0], exclude_ranges)]
+    else:
+        markers = all_markers
+
     if len(markers) < 3:
         return markers
     filtered: list[tuple[int, int, str]] = []
@@ -5512,6 +5818,7 @@ def extract_item1a_from_blockdoc(
                 "headPreview": selected.head_preview[:160],
             },
             "selectedEnd": selected_end,
+            "sliceEndIdx": slice_end_idx,
             "tocScoreDocHead": toc_score_doc,
             "tocRegions": analysis.get("toc_regions"),
             "unsafeRegions": analysis.get("unsafe_regions"),
@@ -5548,19 +5855,50 @@ def extract_item1a_from_text(
     return "", 0.0, "not_found", ["item1a_not_found"], debug_meta
 
 
-def extract_item1a_from_html(
-    html: str,
+def extract_item1a_from_prepared(
+    prepared: PreparedHtml,
 ) -> tuple[str, float, str, list[str], dict[str, Any]]:
-    block_doc = build_blockdoc_from_html(html)
-    if block_doc.blocks:
+    """Extract Item 1A from pre-parsed HTML components.
+
+    This is the efficient version that avoids redundant HTML parsing.
+    Use this when you have already called prepare_html_for_extraction().
+
+    Args:
+        prepared: PreparedHtml containing soup, block_tags, and block_doc.
+
+    Returns:
+        Tuple of (section_text, confidence, method, warnings, debug_meta).
+    """
+    if prepared.block_doc.blocks:
         section, confidence, method, block_warnings, debug_meta = extract_item1a_from_blockdoc(
-            block_doc
+            prepared.block_doc
         )
         if method != "blockdoc_not_found":
             return section, confidence, method, block_warnings, debug_meta
 
-    text = clean_html_to_text(html)
+    # Fallback: extract text directly from soup (avoids re-parsing HTML)
+    text = prepared.soup.get_text(separator="\n")
+    text = normalize_whitespace(text)
     return extract_item1a_from_text(text)
+
+
+def extract_item1a_from_html(
+    html: str,
+) -> tuple[str, float, str, list[str], dict[str, Any]]:
+    """Extract Item 1A from raw HTML.
+
+    This function parses the HTML internally. For better performance when
+    multiple operations need the parsed HTML, use prepare_html_for_extraction()
+    followed by extract_item1a_from_prepared().
+
+    Args:
+        html: Raw HTML string from SEC filing.
+
+    Returns:
+        Tuple of (section_text, confidence, method, warnings, debug_meta).
+    """
+    prepared = prepare_html_for_extraction(html)
+    return extract_item1a_from_prepared(prepared)
 
 
 def extract_item_1a(text: str) -> tuple[str, float, str, list[str]]:
