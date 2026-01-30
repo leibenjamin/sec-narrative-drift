@@ -176,8 +176,11 @@ export default function TermShiftBars({
       <div className="grid gap-4 sm:grid-cols-2">
         <div className="rounded-lg border border-white/10 bg-slate-900/40 p-3">
           <div className="text-sm font-semibold">{copy.termShifts.risersLabel}</div>
-          <ul className="mt-3 space-y-2 text-xs">
-            {topRisers.map((item, index) => {
+          {topRisers.length === 0 ? (
+            <div className="mt-3 text-xs text-slate-400">{copy.termShifts.emptyRisers}</div>
+          ) : (
+            <ul className="mt-3 space-y-2 text-xs">
+              {topRisers.map((item, index) => {
               const termLabel = getShiftTermLabel(item)
               const scoreValue =
                 isShiftTermItem(item) && typeof item.score === "number" ? item.score : null
@@ -241,13 +244,17 @@ export default function TermShiftBars({
                   </div>
                 </li>
               )
-            })}
-          </ul>
+              })}
+            </ul>
+          )}
         </div>
         <div className="rounded-lg border border-white/10 bg-slate-900/40 p-3">
           <div className="text-sm font-semibold">{copy.termShifts.fallersLabel}</div>
-          <ul className="mt-3 space-y-2 text-xs">
-            {topFallers.map((item, index) => {
+          {topFallers.length === 0 ? (
+            <div className="mt-3 text-xs text-slate-400">{copy.termShifts.emptyFallers}</div>
+          ) : (
+            <ul className="mt-3 space-y-2 text-xs">
+              {topFallers.map((item, index) => {
               const termLabel = getShiftTermLabel(item)
               const scoreValue =
                 isShiftTermItem(item) && typeof item.score === "number" ? item.score : null
@@ -311,8 +318,9 @@ export default function TermShiftBars({
                   </div>
                 </li>
               )
-            })}
-          </ul>
+              })}
+            </ul>
+          )}
         </div>
       </div>
     </div>

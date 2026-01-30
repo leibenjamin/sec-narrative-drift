@@ -277,7 +277,9 @@ export const copy = {
     risersLabel: "More emphasized",
     fallersLabel: "Less emphasized",
     scoreTooltip:
-      "Smoothed log-odds shift. Higher magnitude = larger relative change. Some datasets also include an approximate z-score and per-10k frequency deltas.",
+      "Rank score (DF-adjusted z). Bar length reflects rank score magnitude; z is shown separately.",
+    emptyRisers: "No notable risers (low-signal pair).",
+    emptyFallers: "No notable fallers (low-signal pair).",
     lensLabel: "Phrase lens",
     lensPrimary: "PMI phrases",
     lensAlt: "TextRank keyphrases",
