@@ -1,4 +1,16 @@
 import { copy } from "./copy"
+import {
+  CompanyIndexSchema,
+  ExcerptsSchema,
+  FeaturedCasesSchema,
+  FilingRowsSchema,
+  MetaSchema,
+  MetricsSchema,
+  parseWithSchema,
+  ShiftPairsSchema,
+  SimilarityMatrixSchema,
+  UniverseFeaturedSchema,
+} from "./schemas"
 import type {
   Excerpts,
   FeaturedCases,
@@ -92,7 +104,8 @@ export function listFeaturedTickersFromIndex(index: CompanyIndex): string[] {
 
 export async function loadCompanyIndex(): Promise<CompanyIndex> {
   try {
-    return await fetchJson<CompanyIndex>(INDEX_PATH, copy.global.errors.missingDataset)
+    const data = await fetchJson<unknown>(INDEX_PATH, copy.global.errors.missingDataset)
+    return parseWithSchema(CompanyIndexSchema, data, "CompanyIndex")
   } catch (error) {
     if (import.meta.env.DEV) {
       console.warn("Index missing or unreadable; using fallback tickers.", error)
@@ -102,11 +115,13 @@ export async function loadCompanyIndex(): Promise<CompanyIndex> {
 }
 
 export async function loadFeaturedCases(): Promise<FeaturedCases> {
-  return fetchJson<FeaturedCases>(FEATURED_CASES_PATH, copy.global.errors.missingDataset)
+  const data = await fetchJson<unknown>(FEATURED_CASES_PATH, copy.global.errors.missingDataset)
+  return parseWithSchema(FeaturedCasesSchema, data, "FeaturedCases")
 }
 
 export async function loadUniverseFeatured(): Promise<UniverseFeatured> {
-  return fetchJson<UniverseFeatured>(UNIVERSE_PATH, copy.global.errors.missingDataset)
+  const data = await fetchJson<unknown>(UNIVERSE_PATH, copy.global.errors.missingDataset)
+  return parseWithSchema(UniverseFeaturedSchema, data, "UniverseFeatured")
 }
 
 export function resolveDefaultPair(
@@ -150,44 +165,50 @@ export function resolveDefaultPair(
 }
 
 export async function loadCompanyMeta(ticker: string): Promise<Meta> {
-  return fetchJson<Meta>(buildPath(ticker, "meta.json"), copy.global.errors.missingDataset)
+  const data = await fetchJson<unknown>(buildPath(ticker, "meta.json"), copy.global.errors.missingDataset)
+  return parseWithSchema(MetaSchema, data, `Meta:${ticker}`)
 }
 
 export async function loadCompanyFilings(ticker: string): Promise<FilingRow[]> {
-  return fetchJson<FilingRow[]>(
+  const data = await fetchJson<unknown>(
     buildPath(ticker, "filings.json"),
     copy.global.errors.missingDataset
   )
+  return parseWithSchema(FilingRowsSchema, data, `FilingRows:${ticker}`)
 }
 
 export async function loadMetrics(ticker: string): Promise<Metrics> {
-  return fetchJson<Metrics>(
+  const data = await fetchJson<unknown>(
     buildPath(ticker, "metrics_10k_item1a.json"),
     copy.global.errors.missingDataset
   )
+  return parseWithSchema(MetricsSchema, data, `Metrics:${ticker}`)
 }
 
 export async function loadSimilarity(ticker: string): Promise<SimilarityMatrix> {
-  return fetchJson<SimilarityMatrix>(
+  const data = await fetchJson<unknown>(
     buildPath(ticker, "similarity_10k_item1a.json"),
     copy.global.errors.missingDataset
   )
+  return parseWithSchema(SimilarityMatrixSchema, data, `SimilarityMatrix:${ticker}`)
 }
 
 export async function loadShifts(ticker: string): Promise<ShiftPairs> {
-  return fetchJson<ShiftPairs>(
+  const data = await fetchJson<unknown>(
     buildPath(ticker, "shifts_10k_item1a.json"),
     copy.global.errors.missingDataset
   )
+  return parseWithSchema(ShiftPairsSchema, data, `ShiftPairs:${ticker}`)
 }
 
 export async function loadExcerpts(
   ticker: string,
   signal?: AbortSignal
 ): Promise<Excerpts> {
-  return fetchJson<Excerpts>(
+  const data = await fetchJson<unknown>(
     buildPath(ticker, "excerpts_10k_item1a.json"),
     copy.global.errors.missingExcerpts,
     { signal }
   )
+  return parseWithSchema(ExcerptsSchema, data, `Excerpts:${ticker}`)
 }
