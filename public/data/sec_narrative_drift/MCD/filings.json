@@ -72,10 +72,9 @@
     "primaryDocument": "mcd-12312019x10k.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/63908/000006390820000022/mcd-12312019x10k.htm",
     "extraction": {
-      "confidence": 0.7799999999999999,
+      "confidence": 0.8999999999999999,
       "method": "blockdoc_scored",
       "errors": [
-        "end_fallback_used",
         "toc_detected"
       ]
     }
@@ -124,11 +123,10 @@
     "primaryDocument": "mcd-20221231.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/63908/000006390823000012/mcd-20221231.htm",
     "extraction": {
-      "confidence": 0.7799999999999999,
+      "confidence": 0.8999999999999999,
       "method": "blockdoc_scored",
       "errors": [
         "header_footer_repeat",
-        "end_fallback_used",
         "toc_detected"
       ]
     }
@@ -142,11 +140,10 @@
     "primaryDocument": "mcd-20231231.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/63908/000006390824000072/mcd-20231231.htm",
     "extraction": {
-      "confidence": 0.83,
+      "confidence": 0.95,
       "method": "blockdoc_scored",
       "errors": [
         "header_footer_repeat",
-        "end_fallback_used",
         "toc_detected"
       ]
     }

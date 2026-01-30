@@ -42,11 +42,10 @@
     "primaryDocument": "a12302017q4-10kdocument.htm",
     "secUrl": "https://www.sec.gov/Archives/edgar/data/50863/000005086318000007/a12302017q4-10kdocument.htm",
     "extraction": {
-      "confidence": 0.43000000000000005,
+      "confidence": 0.5499999999999999,
       "method": "blockdoc_scored",
       "errors": [
         "header_footer_repeat",
-        "end_fallback_used",
         "toc_header_repeated",
         "toc_detected",
         "toc_like_tail",
