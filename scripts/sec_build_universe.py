@@ -9,6 +9,8 @@ from urllib.parse import urlparse
 from pathlib import Path
 from typing import Any, Iterable, Optional, Protocol, TYPE_CHECKING, cast
 
+from sec_fetch_and_build import load_ticker_cik_map
+
 class RequestsResponse(Protocol):
     status_code: int
     content: bytes
@@ -219,6 +221,21 @@ def build_parser() -> argparse.ArgumentParser:
         default=1,
         help="Number of parallel workers (default: 1). Use with --submissions-zip to avoid rate limits.",
     )
+    parser.add_argument(
+        "--cache-only",
+        action="store_true",
+        help="Rebuild all tickers using only cached data (no SEC API calls).",
+    )
+    parser.add_argument(
+        "--incremental",
+        action="store_true",
+        help="Only process filings newer than the most recent cached one per ticker.",
+    )
+    parser.add_argument(
+        "--refresh-ticker-map",
+        action="store_true",
+        help="Force-fetch ticker map from SEC before starting (default: use cache if <24h old).",
+    )
     return parser
 
 
@@ -228,6 +245,8 @@ def _run_ticker_build(
     include_20f: bool,
     submissions_zip: Optional[str],
     clear_proxy_env: bool,
+    cache_only: bool = False,
+    incremental: bool = False,
 ) -> tuple[str, int, str, str]:
     out_dir = DATA_DIR / ticker
     cmd = [
@@ -239,12 +258,16 @@ def _run_ticker_build(
         "2015",
         "--out",
         str(out_dir),
-        "--force-live-ticker-map",
+        # Note: --force-live-ticker-map removed; ticker map is now cached
     ]
     if include_20f:
         cmd.append("--include-20f")
     if submissions_zip:
         cmd.extend(["--submissions-zip", submissions_zip])
+    if cache_only:
+        cmd.append("--cache-only")
+    if incremental:
+        cmd.append("--incremental")
 
     run_env = None
     if clear_proxy_env:
@@ -276,6 +299,13 @@ def main(argv: Optional[list[str]] = None) -> int:
     if not UNIVERSE_PATH.exists():
         raise SystemExit(f"Universe config not found: {UNIVERSE_PATH}")
 
+    # Parse new mode flags
+    cache_only = bool(args.cache_only)
+    incremental = bool(args.incremental)
+
+    if cache_only and incremental:
+        raise SystemExit("Cannot use both --cache-only and --incremental together")
+
     anchors, stories = load_universe(UNIVERSE_PATH)
 
     if args.only == "anchors":
@@ -290,6 +320,18 @@ def main(argv: Optional[list[str]] = None) -> int:
 
     log_path = CACHE_DIR / "build_universe.log"
     append_log(log_path, f"Start build: {time.strftime('%Y-%m-%d %H:%M:%S')}")
+
+    # Pre-fetch and cache the ticker map ONCE for all tickers
+    # This eliminates redundant API calls (previously one per ticker)
+    if not cache_only:
+        if args.refresh_ticker_map:
+            append_log(log_path, "Refreshing ticker map from SEC...")
+            load_ticker_cik_map(force_live=True)
+            append_log(log_path, "Ticker map refreshed and cached")
+        else:
+            # Just ensure the cache is populated (uses cached if fresh)
+            load_ticker_cik_map(use_cache=True)
+            append_log(log_path, "Ticker map loaded (from cache or fresh)")
 
     submissions_zip: Optional[Path] = None
     if args.submissions_zip:
@@ -331,6 +373,8 @@ def main(argv: Optional[list[str]] = None) -> int:
                     include_20f=args.include_20f,
                     submissions_zip=str(submissions_zip) if submissions_zip else None,
                     clear_proxy_env=args.clear_proxy_env,
+                    cache_only=cache_only,
+                    incremental=incremental,
                 ): ticker
                 for ticker in selected
             }
@@ -357,6 +401,8 @@ def main(argv: Optional[list[str]] = None) -> int:
                 include_20f=args.include_20f,
                 submissions_zip=str(submissions_zip) if submissions_zip else None,
                 clear_proxy_env=args.clear_proxy_env,
+                cache_only=cache_only,
+                incremental=incremental,
             )
             if stdout:
                 append_log(log_path, f"[{ticker}] stdout: {stdout}")

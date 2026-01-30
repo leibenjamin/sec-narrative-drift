@@ -89,3 +89,40 @@ NOISE_TOKENS: set[str] = {
     "us",
     "usa",
 }
+
+# Tokens that make phrase edges weak or boilerplate-y.
+WEAK_EDGE_TOKENS: set[str] = {
+    "including",
+    "include",
+    "included",
+    "additional",
+    "certain",
+    "related",
+    "general",
+    "following",
+    "such",
+    "other",
+    "various",
+    "material",
+    "significant",
+    "adversely",
+    "affect",
+    "impact",
+    "impacts",
+    "impacting",
+    "operations",
+    "business",
+    "factors",
+    "risk",
+    "company",
+}
+
+# Explicit boilerplate phrases to suppress in keyphrase extraction.
+PHRASE_BLACKLIST: set[str] = {
+    "adversely affect",
+    "results of operations",
+    "laws and regulations",
+    "risk factors",
+    "financial condition",
+    "could materially",
+}

@@ -78,6 +78,10 @@ sec-narrative-drift/
 │   │   └── excerpts_10k_item1a.json  # Representative text excerpts
 │   └── index.json                    # Global ticker index
 │
+├── public/data/sec_narrative_drift_metrics/  # Optional sidecar metrics (committed)
+│   ├── {TICKER}/
+│   │   └── deboilerplated_drift_10k_item1a.json
+│
 ├── scripts/
 │   ├── _cache/                       # Working cache (git-ignored)
 │   │   ├── submissions.zip           # Bulk SEC submissions archive
@@ -115,8 +119,6 @@ python sec_build_universe.py --submissions-zip _cache/submissions.zip
 
 # 3. Build global index
 python sec_build_index.py
-# If you want to use sample fixtures for SIC/Exchange metadata:
-# python sec_build_index.py --allow-sample-fixtures
 ```
 
 ### 2. Single Ticker Rebuild
@@ -130,9 +132,7 @@ Note: partial runs now *merge* year entries into `ticker_year_index.json` and
 preserve existing years outside the current run.
 
 To run against deterministic fixtures instead of live/cached SEC data:
-```bash
-python sec_fetch_and_build.py --ticker AAPL --allow-sample-fixtures
-```
+See **Testing / Debug (fixtures)** below.
 
 ### 3. Initial Build (From Live SEC)
 
@@ -172,16 +172,23 @@ python sec_validate_public_data.py
 # Build manual review checklist
 python build_risk_manual_checklist.py
 ```
-`build_risk_manual_checklist.py` prefers `public/data/sec_narrative_drift/index.json`
-for company names and only falls back to fixtures if that file is missing.
+`build_risk_manual_checklist.py` uses `public/data/sec_narrative_drift/index.json`
+for company names and does not fall back to fixtures.
+
+### 5.1 Build Deboilerplated Drift Report (optional)
+
+```bash
+python build_deboilerplated_drift_report.py
+```
+Writes:
+- `reports/term_shift_deboilerplate/deboilerplated_drift_pairs.csv`
+- `reports/term_shift_deboilerplate/deboilerplated_drift_pairs.jsonl`
 
 ### 6. Fix Year Index Issues
 
 ```bash
 # Rebuild ticker-year index from cache (fixes year mapping issues)
 python rebuild_ticker_year_index_from_cache.py
-# If you want to allow sample fixtures for CIK->ticker mapping:
-# python rebuild_ticker_year_index_from_cache.py --allow-sample-fixtures
 ```
 
 ---
@@ -194,7 +201,7 @@ python rebuild_ticker_year_index_from_cache.py
 |--------|---------|---------------|
 | `sec_fetch_and_build.py` | Build data for one ticker | `--ticker AAPL --submissions-zip _cache/submissions.zip` |
 | `sec_build_universe.py` | Batch build all tickers | `--submissions-zip _cache/submissions.zip` |
-| `sec_build_index.py` | Build global index.json | `--existing-index ...` `--allow-sample-fixtures` |
+| `sec_build_index.py` | Build global index.json | `--existing-index ...` (tests only: `--allow-sample-fixtures`) |
 
 ### Canonical entrypoints
 - `sec_fetch_and_build.py` (single ticker, live or cached submissions)
@@ -208,8 +215,9 @@ python rebuild_ticker_year_index_from_cache.py
 |--------|---------|---------------|
 | `sec_cache.py` | Cache utilities (library) | N/A (imported) |
 | `refresh_risk_cache_from_html.py` | Re-extract from cached HTML | `--tickers AAPL,MSFT` |
-| `rebuild_ticker_year_index_from_cache.py` | Rebuild index from cache | `--allow-sample-fixtures` |
+| `rebuild_ticker_year_index_from_cache.py` | Rebuild index from cache | (tests only: `--allow-sample-fixtures`) |
 | `fetch_missing_html_cache.py` | Download missing HTML | `--only AAPL --limit 10` |
+| `export_risk_sections.py` | Export cached risk sections | `--tickers AAPL,MSFT --years 2022,2023` |
 
 ### Validation Scripts
 
@@ -226,7 +234,9 @@ python rebuild_ticker_year_index_from_cache.py
 | `sec_extract_item1a.py` | Risk section extraction (library) |
 | `sec_metrics.py` | TF-IDF similarity, term shifts |
 | `sec_quality.py` | Excerpt selection |
+| `build_deboilerplated_drift_report.py` | Aggregate deboilerplated drift sidecar outputs |
 | `build_canonical_terms.py` | Term normalization mapping |
+| `export_risk_sections.py` | Export cached risk files to a zip bundle |
 
 ### Non-canonical / auxiliary scripts
 These are useful for audits or one-off analysis but are not required for routine
@@ -264,7 +274,13 @@ Notes:
 --include-20f             Include 20-F filings (international companies)
 --cache-debug-html        Store HTML for debugging
 --force-html-cache        Re-fetch HTML even if cached
+--force-live-submissions  Ignore submissions fixtures (also disables fixture HTML)
 --allow-sample-fixtures   Use test fixtures instead of live data
+--cache-only              Rebuild from local cache only (no SEC API calls)
+--incremental             Only process filings newer than cached
+--fast                    Skip bootstrap CI computation (faster builds)
+--use-ticker-map-cache    Use cached ticker map if fresh (default: True)
+--no-ticker-map-cache     Always fetch fresh ticker map
 ```
 
 ### sec_build_universe.py
@@ -276,8 +292,43 @@ Notes:
 --start-at TICKER             Resume from specific ticker
 --max-count N                 Stop after N tickers
 --include-20f                 Include 20-F filings
+--cache-only                  Rebuild all tickers from local cache (no SEC API)
+--incremental                 Only fetch new filings for each ticker
+--refresh-ticker-map          Force refresh ticker map before batch
 ```
 
+### sec_rebuild_local.py
+
+Convenience script for local cache rebuilds (no SEC API calls):
+
+```
+--ticker TICKER     Single ticker to rebuild (default: all universe tickers)
+--workers N         Number of parallel workers (default: 1)
+--list-only         List processable tickers without rebuilding
+```
+
+Example: Rebuild all tickers from cache with 4 workers:
+```bash
+python sec_rebuild_local.py --workers 4
+```
+
+---
+
+## Testing / Debug (fixtures)
+
+Fixtures are **tests-only** and must be explicitly enabled. All fixture-enabled
+scripts print a warning banner when fixtures are in use.
+
+```bash
+# Deterministic single-ticker run using fixtures
+python sec_fetch_and_build.py --ticker AAPL --allow-sample-fixtures
+
+# Build index with fixture metadata (tests only)
+python sec_build_index.py --allow-sample-fixtures
+
+# Rebuild ticker-year index using fixture ticker map (tests only)
+python rebuild_ticker_year_index_from_cache.py --allow-sample-fixtures
+```
 ---
 
 ## Version Tracking
@@ -392,6 +443,23 @@ submissions.zip ──────────> sec_fetch_and_build.py <──�
      v
 refresh_risk_cache_from_html.py ←── (re-extract without SEC API)
 rebuild_ticker_year_index_from_cache.py ←── (rebuild index from cache)
+```
+
+---
+
+## Logging
+
+Pipeline scripts use structured logging via `sec_logging.py`:
+
+```python
+from sec_logging import get_logger
+logger = get_logger(__name__)
+logger.info("Processing ticker %s", ticker)
+```
+
+Set log level via environment variable:
+```bash
+export SEC_LOG_LEVEL=DEBUG  # DEBUG, INFO, WARNING, ERROR
 ```
 
 ---

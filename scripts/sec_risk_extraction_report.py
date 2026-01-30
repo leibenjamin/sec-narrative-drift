@@ -135,10 +135,11 @@ def load_featured_tickers(path: Path) -> list[str]:
     if not isinstance(payload, list):
         return []
     output: list[str] = []
-    for item in payload:
+    for item in cast(list[object], payload):
         if not isinstance(item, dict):
             continue
-        ticker = item.get("ticker")
+        item_dict = cast(dict[str, Any], item)
+        ticker = item_dict.get("ticker")
         if isinstance(ticker, str):
             output.append(ticker.upper())
     return output

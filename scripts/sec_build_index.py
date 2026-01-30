@@ -452,9 +452,20 @@ def build_parser() -> argparse.ArgumentParser:
     return parser
 
 
+def warn_fixture_mode() -> None:
+    banner = [
+        "WARNING: sample fixtures enabled (tests/debug only).",
+        "  context: sec_build_index",
+        "  do NOT use fixture output for production deploys.",
+    ]
+    print("\n".join(banner), flush=True)
+
+
 def main(argv: Optional[list[str]] = None) -> int:
     parser = build_parser()
     args = parser.parse_args(argv)
+    if args.allow_sample_fixtures:
+        warn_fixture_mode()
 
     data_dir = Path(args.data_dir)
     if not data_dir.exists():

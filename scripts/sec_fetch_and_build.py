@@ -9,6 +9,10 @@ from pathlib import Path
 from typing import Any, Iterable, Optional, Protocol, Sequence, TYPE_CHECKING, TypedDict, cast
 from urllib.parse import urlparse
 
+from sec_logging import get_logger
+
+logger = get_logger(__name__)
+
 class RequestsResponse(Protocol):
     status_code: int
     content: bytes
@@ -77,7 +81,12 @@ from sec_extract_item1a import (
     split_paragraphs,
 )
 from sec_segments import segment_text_v1
-from sec_metrics import SectionYear as MetricsSectionYear, ShiftsPayload, build_metrics
+from sec_metrics import (
+    SectionYear as MetricsSectionYear,
+    ShiftsPayload,
+    build_deboilerplated_drift,
+    build_metrics,
+)
 from sec_quality import (
     SectionYear as QualitySectionYear,
     ShiftPair as QualityShiftPair,
@@ -115,6 +124,11 @@ CACHE_DIR = ROOT_DIR / "_cache"
 DEFAULT_SUBMISSIONS_ZIP = CACHE_DIR / "submissions.zip"
 UNUSABLE_LIST_PATH = ROOT_DIR / "resources" / "risk_extraction_unusable.yml"
 USED_FIXTURE_LOGS: set[str] = set()
+
+# Ticker map caching
+TICKER_MAP_CACHE_PATH = CACHE_DIR / "ticker_cik_map.json"
+TICKER_MAP_CACHE_META_PATH = CACHE_DIR / "ticker_cik_map_meta.json"
+TICKER_MAP_MAX_AGE_HOURS = 24.0  # Re-fetch if older than this
 
 
 def log_fixture_use(key: str, message: str) -> None:
@@ -208,11 +222,16 @@ def download(url: str, session: RequestsSession, limiter: RateLimiter) -> bytes:
         last_response = response
         if response.status_code in {403, 429}:
             backoff = min(2 ** attempt, 8)
+            logger.warning(
+                "Rate limited (HTTP %d) on attempt %d/5 for %s, backing off %ds",
+                response.status_code, attempt + 1, url[:80], backoff
+            )
             time.sleep(backoff)
             continue
         response.raise_for_status()
         return response.content
 
+    logger.error("Failed to download after 5 attempts: %s", url[:100])
     if last_response is not None:
         last_response.raise_for_status()
     raise RuntimeError(f"Failed to download {url}")
@@ -229,6 +248,10 @@ def download_to_file(
         last_response = response
         if response.status_code in {403, 429}:
             backoff = min(2 ** attempt, 8)
+            logger.warning(
+                "Rate limited (HTTP %d) on attempt %d/5 for %s, backing off %ds",
+                response.status_code, attempt + 1, url[:80], backoff
+            )
             time.sleep(backoff)
             continue
         response.raise_for_status()
@@ -238,6 +261,7 @@ def download_to_file(
                     handle.write(chunk)
         return
 
+    logger.error("Failed to download file after 5 attempts: %s", url[:100])
     if last_response is not None:
         last_response.raise_for_status()
     raise RuntimeError(f"Failed to download {url}")
@@ -355,6 +379,15 @@ def build_unusable_reason(ticker: str, year: int) -> str:
     return "Marked unusable for comparability by risk_extraction_unusable.yml."
 
 
+def warn_fixture_mode(context: str) -> None:
+    banner = [
+        "WARNING: sample fixtures enabled (tests/debug only).",
+        f"  context: {context}",
+        "  do NOT use fixture output for production deploys.",
+    ]
+    print("\n".join(banner), flush=True)
+
+
 def resolve_company_name(map_name: Any, submissions_name: Any, fallback: str) -> str:
     map_value = normalize_text(map_name)
     if map_value:
@@ -365,23 +398,9 @@ def resolve_company_name(map_name: Any, submissions_name: Any, fallback: str) ->
     return fallback
 
 
-def load_ticker_cik_map(
-    *, force_live: bool = False, allow_fixture: bool = False
-) -> dict[str, dict[str, str]]:
-    fixture_path = FIXTURES_DIR / "company_tickers_exchange.json"
-    if allow_fixture and fixture_path.exists() and not force_live:
-        log_fixture_use(
-            "ticker_map",
-            f"using ticker map fixture {fixture_path.name}",
-        )
-        payload = load_fixture_json(fixture_path)
-    else:
-        session = requests.Session()
-        limiter = RateLimiter(MAX_REQUESTS_PER_SECOND)
-        payload = json.loads(download(SEC_TICKER_MAP_URL, session, limiter).decode("utf-8"))
-
+def _parse_ticker_map_payload(payload: Any) -> dict[str, dict[str, str]]:
+    """Parse the raw SEC ticker map payload into a ticker->info mapping."""
     mapping: dict[str, dict[str, str]] = {}
-
     payload_dict = as_str_dict(payload)
 
     if payload_dict is not None and "fields" in payload_dict and "data" in payload_dict:
@@ -433,6 +452,160 @@ def load_ticker_cik_map(
         return mapping
 
     raise RuntimeError("Unexpected ticker map format")
+
+
+def _is_ticker_map_cache_fresh(max_age_hours: float = TICKER_MAP_MAX_AGE_HOURS) -> bool:
+    """Check if the cached ticker map is fresh enough to use."""
+    if not TICKER_MAP_CACHE_PATH.exists():
+        return False
+    if not TICKER_MAP_CACHE_META_PATH.exists():
+        return False
+    try:
+        meta = load_json(TICKER_MAP_CACHE_META_PATH)
+        if not isinstance(meta, dict):
+            return False
+        meta_dict = cast(dict[str, Any], meta)
+        cached_at = meta_dict.get("cachedAtUtc")
+        if not isinstance(cached_at, str):
+            return False
+        cached_time = datetime.fromisoformat(cached_at.replace("Z", "+00:00"))
+        age_hours = (datetime.now(timezone.utc) - cached_time).total_seconds() / 3600
+        return age_hours < max_age_hours
+    except (ValueError, KeyError, TypeError):
+        return False
+
+
+def _load_cached_ticker_map() -> Optional[dict[str, dict[str, str]]]:
+    """Load the ticker map from local cache."""
+    if not TICKER_MAP_CACHE_PATH.exists():
+        return None
+    try:
+        payload = load_json(TICKER_MAP_CACHE_PATH)
+        if not isinstance(payload, dict):
+            return None
+        # Validate structure: should be ticker -> {cik, name, exchange}
+        payload_dict = cast(dict[str, Any], payload)
+        mapping: dict[str, dict[str, str]] = {}
+        for key, value in payload_dict.items():
+            if not isinstance(value, dict):
+                continue
+            value_dict = cast(dict[str, Any], value)
+            mapping[key] = {
+                "cik": str(value_dict.get("cik", "")),
+                "name": str(value_dict.get("name", "")),
+                "exchange": str(value_dict.get("exchange", "")),
+            }
+        return mapping if mapping else None
+    except (json.JSONDecodeError, TypeError):
+        return None
+
+
+def _save_ticker_map_cache(mapping: dict[str, dict[str, str]]) -> None:
+    """Save the ticker map to local cache."""
+    CACHE_DIR.mkdir(parents=True, exist_ok=True)
+    atomic_write_json(TICKER_MAP_CACHE_PATH, mapping)
+    atomic_write_json(TICKER_MAP_CACHE_META_PATH, {
+        "cachedAtUtc": datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z"),
+        "source": SEC_TICKER_MAP_URL,
+        "tickerCount": len(mapping),
+    })
+
+
+def _load_public_ticker_map() -> Optional[dict[str, dict[str, str]]]:
+    """Fallback ticker map built from existing public meta.json outputs."""
+    data_root = ROOT_DIR.parent / "public" / "data" / "sec_narrative_drift"
+    if not data_root.exists():
+        return None
+    mapping: dict[str, dict[str, str]] = {}
+    for ticker_dir in data_root.iterdir():
+        if not ticker_dir.is_dir():
+            continue
+        meta_path = ticker_dir / "meta.json"
+        if not meta_path.exists():
+            continue
+        try:
+            meta = json.loads(meta_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            continue
+        if not isinstance(meta, dict):
+            continue
+        meta_dict = cast(dict[str, Any], meta)
+        cik = meta_dict.get("cik")
+        if not isinstance(cik, str) or not cik.strip():
+            continue
+        name = meta_dict.get("companyName")
+        if not isinstance(name, str) or not name.strip():
+            name = ticker_dir.name
+        ticker = ticker_dir.name.upper()
+        mapping[ticker] = {"cik": cik.strip(), "name": name.strip(), "exchange": ""}
+    return mapping if mapping else None
+
+
+def load_ticker_cik_map(
+    *,
+    force_live: bool = False,
+    allow_fixture: bool = False,
+    cache_only: bool = False,
+    use_cache: bool = True,
+) -> dict[str, dict[str, str]]:
+    """
+    Load the ticker->CIK mapping.
+
+    Args:
+        force_live: Always fetch from SEC API (ignores cache and fixtures).
+        allow_fixture: Allow using sample fixtures (for tests).
+        cache_only: Only use local cache, never hit SEC API. Raises if no cache exists.
+        use_cache: Use local cache if fresh (default True). Set False to skip cache check.
+
+    Returns:
+        Mapping of ticker -> {cik, name, exchange}.
+    """
+    # Check local cache first (unless forcing live)
+    if not force_live and use_cache:
+        if _is_ticker_map_cache_fresh() or cache_only:
+            cached = _load_cached_ticker_map()
+            if cached is not None:
+                return cached
+            if cache_only:
+                public_map = _load_public_ticker_map()
+                if public_map:
+                    return public_map
+                raise RuntimeError(
+                    "--cache-only specified but no valid cached ticker map exists at "
+                    f"{TICKER_MAP_CACHE_PATH} and no public meta.json fallback was found"
+                )
+
+    if cache_only:
+        public_map = _load_public_ticker_map()
+        if public_map:
+            return public_map
+        raise RuntimeError(
+            "--cache-only specified but no valid cached ticker map exists at "
+            f"{TICKER_MAP_CACHE_PATH} and no public meta.json fallback was found"
+        )
+
+    # Check fixtures (for testing)
+    fixture_path = FIXTURES_DIR / "company_tickers_exchange.json"
+    if allow_fixture and fixture_path.exists() and not force_live:
+        log_fixture_use(
+            "ticker_map",
+            f"using ticker map fixture {fixture_path.name}",
+        )
+        payload = load_fixture_json(fixture_path)
+        mapping = _parse_ticker_map_payload(payload)
+        return mapping
+
+    # Fetch from SEC API
+    session = requests.Session()
+    limiter = RateLimiter(MAX_REQUESTS_PER_SECOND)
+    payload = json.loads(download(SEC_TICKER_MAP_URL, session, limiter).decode("utf-8"))
+    mapping = _parse_ticker_map_payload(payload)
+
+    # Cache the result
+    _save_ticker_map_cache(mapping)
+    print(f"ticker map: cached {len(mapping)} tickers to {TICKER_MAP_CACHE_PATH.name}")
+
+    return mapping
 
 
 def apply_cik_overrides(mapping: dict[str, dict[str, str]]) -> None:
@@ -489,7 +662,7 @@ def fetch_submissions_json(
     session: Optional[RequestsSession] = None,
     limiter: Optional[RateLimiter] = None,
     submissions_zip: Optional[Path] = None,
-    allow_fixture: bool = True,
+    allow_fixture: bool = False,
 ) -> dict[str, Any]:
     fixture_path = FIXTURES_DIR / f"CIK{cik10}.json"
     if allow_fixture and fixture_path.exists():
@@ -1318,6 +1491,71 @@ def write_json(path: Path, payload: Any) -> None:
     path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
 
 
+def get_most_recent_cached_filing(out_dir: Path) -> Optional[str]:
+    """
+    Return the most recent filing date from existing filings.json.
+
+    Returns None if no filings.json exists or it's empty.
+    """
+    filings_path = out_dir / "filings.json"
+    if not filings_path.exists():
+        return None
+    try:
+        filings = json.loads(filings_path.read_text(encoding="utf-8"))
+        if not filings or not isinstance(filings, list):
+            return None
+        filings_list = cast(list[Any], filings)
+        dates: list[str] = [
+            str(cast(dict[str, Any], f).get("filingDate", ""))
+            for f in filings_list
+            if isinstance(f, dict) and cast(dict[str, Any], f).get("filingDate")
+        ]
+        return max(dates) if dates else None
+    except (json.JSONDecodeError, KeyError, TypeError):
+        return None
+
+
+def get_cached_accession_numbers(out_dir: Path) -> set[str]:
+    """
+    Return the set of accession numbers already in filings.json.
+    """
+    filings_path = out_dir / "filings.json"
+    if not filings_path.exists():
+        return set()
+    try:
+        filings = json.loads(filings_path.read_text(encoding="utf-8"))
+        if not filings or not isinstance(filings, list):
+            return set()
+        filings_list = cast(list[Any], filings)
+        return {
+            cast(dict[str, Any], f).get("accessionNumber", "")
+            for f in filings_list
+            if isinstance(f, dict) and cast(dict[str, Any], f).get("accessionNumber")
+        }
+    except (json.JSONDecodeError, TypeError):
+        return set()
+
+
+def load_existing_filings_for_cache_only(out_dir: Path) -> list[dict[str, Any]]:
+    """
+    Load existing filings.json for --cache-only mode.
+
+    Returns a list of filing dicts that can be used to rebuild from cache.
+    """
+    filings_path = out_dir / "filings.json"
+    if not filings_path.exists():
+        raise RuntimeError(
+            f"--cache-only requires existing {filings_path} but file not found"
+        )
+    try:
+        filings = json.loads(filings_path.read_text(encoding="utf-8"))
+        if not isinstance(filings, list):
+            raise RuntimeError(f"--cache-only: {filings_path} is not a valid list")
+        return cast(list[dict[str, Any]], filings)
+    except json.JSONDecodeError as e:
+        raise RuntimeError(f"--cache-only: {filings_path} is not valid JSON: {e}") from e
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Fetch SEC filings and build JSON outputs.")
     parser.add_argument("--ticker", required=True, help="Ticker symbol (e.g., AAPL).")
@@ -1395,6 +1633,32 @@ def build_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="Allow use of scripts/sample_fixtures for submissions and filings (tests only).",
     )
+    parser.add_argument(
+        "--cache-only",
+        action="store_true",
+        help="Rebuild outputs using only locally cached data. No SEC API calls will be made.",
+    )
+    parser.add_argument(
+        "--incremental",
+        action="store_true",
+        help="Only process filings newer than the most recent one already in cache.",
+    )
+    parser.add_argument(
+        "--use-ticker-map-cache",
+        action="store_true",
+        default=True,
+        help="Use cached ticker map if fresh (default: True). Cached for 24h.",
+    )
+    parser.add_argument(
+        "--no-ticker-map-cache",
+        action="store_true",
+        help="Skip ticker map cache, always fetch fresh (unless --cache-only).",
+    )
+    parser.add_argument(
+        "--fast",
+        action="store_true",
+        help="Skip bootstrap confidence interval computation for faster builds.",
+    )
     return parser
 
 
@@ -1411,14 +1675,31 @@ def main(argv: Optional[list[str]] = None) -> int:
         / ticker
     )
     out_dir = Path(args.out) if args.out else default_out_dir
+
+    # Parse new mode flags
+    cache_only = bool(args.cache_only)
+    incremental = bool(args.incremental)
+    use_ticker_map_cache = not bool(args.no_ticker_map_cache)
+    fast_mode = bool(args.fast)
+
+    if cache_only and incremental:
+        raise SystemExit("Cannot use both --cache-only and --incremental together")
+
     allow_sample_fixtures = bool(args.allow_sample_fixtures)
     if allow_sample_fixtures:
-        print("allow-sample-fixtures enabled")
+        warn_fixture_mode("sec_fetch_and_build")
+
+    # Load ticker map (with caching support)
     force_live_ticker_map = bool(args.force_live_ticker_map)
+    if cache_only:
+        force_live_ticker_map = False  # Never fetch live in cache-only mode
     mapping = load_ticker_cik_map(
-        force_live=force_live_ticker_map, allow_fixture=allow_sample_fixtures
+        force_live=force_live_ticker_map,
+        allow_fixture=allow_sample_fixtures,
+        cache_only=cache_only,
+        use_cache=use_ticker_map_cache,
     )
-    if ticker not in mapping and not force_live_ticker_map:
+    if ticker not in mapping and not force_live_ticker_map and not cache_only:
         mapping = load_ticker_cik_map(force_live=True, allow_fixture=False)
     if ticker not in mapping:
         raise SystemExit(f"Ticker not found in mapping: {ticker}")
@@ -1427,32 +1708,85 @@ def main(argv: Optional[list[str]] = None) -> int:
     session = requests.Session()
     limiter = RateLimiter(MAX_REQUESTS_PER_SECOND)
 
-    submissions_zip: Optional[Path] = None
-    if args.submissions_zip:
-        submissions_zip = Path(args.submissions_zip)
-    if args.download_submissions_zip:
-        target = submissions_zip or DEFAULT_SUBMISSIONS_ZIP
-        print(f"downloading submissions zip to {target}")
-        download_to_file(SEC_SUBMISSIONS_ZIP_URL, session, limiter, target)
-        submissions_zip = target
-    if submissions_zip is not None and not submissions_zip.exists():
-        print(
-            f"warning: submissions zip not found at {submissions_zip}; "
-            "falling back to live submissions API"
-        )
-        submissions_zip = None
+    # For incremental mode, get info about already-cached filings
+    most_recent_cached_date: Optional[str] = None
+    cached_accessions: set[str] = set()
+    if incremental:
+        most_recent_cached_date = get_most_recent_cached_filing(out_dir)
+        cached_accessions = get_cached_accession_numbers(out_dir)
+        if most_recent_cached_date:
+            print(f"incremental: found {len(cached_accessions)} cached filings, most recent: {most_recent_cached_date}")
+        else:
+            print("incremental: no existing filings found, will process all")
 
-    allow_fixture = allow_sample_fixtures and not args.force_live_submissions
-    submissions_primary = fetch_submissions_json(
-        primary_cik,
-        session=session,
-        limiter=limiter,
-        submissions_zip=submissions_zip,
-        allow_fixture=allow_fixture,
-    )
-    company_name = resolve_company_name(
-        mapping[ticker].get("name"), submissions_primary.get("name"), ticker
-    )
+    # Initialize variables that will be set in one branch or the other
+    # (helps type checker understand control flow)
+    filings: list[dict[str, str]] = []
+    submissions_primary: dict[str, Any] = {}
+    company_name: str = mapping[ticker].get("name") or ticker
+
+    # Handle --cache-only mode: use existing filings.json, skip all API calls
+    if cache_only:
+        print(f"cache-only: rebuilding {ticker} from local cache only")
+        existing_filings = load_existing_filings_for_cache_only(out_dir)
+        # Convert existing filings to the format expected by the rest of the code
+        for ef in existing_filings:
+            filings.append({
+                "cik": str(ef.get("cik", primary_cik)),
+                "form": str(ef.get("form", "10-K")),
+                "filingDate": str(ef.get("filingDate", "")),
+                "reportDate": str(ef.get("reportDate", "")),
+                "accessionNumber": str(ef.get("accessionNumber", "")),
+                "primaryDocument": str(ef.get("primaryDocument", "")),
+            })
+
+        if not filings:
+            raise SystemExit(f"cache-only: no filings found in {out_dir / 'filings.json'}")
+
+        print(f"cache-only: loaded {len(filings)} filings from existing filings.json")
+
+        # Skip all the normal API/fetch logic
+        submissions_zip = None
+        allow_fixture = False
+        allow_fixture_html = False
+
+    else:
+        # Normal mode: fetch from SEC API (or submissions.zip)
+        submissions_zip: Optional[Path] = None
+        if args.submissions_zip:
+            submissions_zip = Path(args.submissions_zip)
+        if args.download_submissions_zip:
+            target = submissions_zip or DEFAULT_SUBMISSIONS_ZIP
+            print(f"downloading submissions zip to {target}")
+            download_to_file(SEC_SUBMISSIONS_ZIP_URL, session, limiter, target)
+            submissions_zip = target
+        if submissions_zip is not None and not submissions_zip.exists():
+            print(
+                f"warning: submissions zip not found at {submissions_zip}; "
+                "falling back to live submissions API"
+            )
+            submissions_zip = None
+        if submissions_zip is None and not cache_only:
+            print(
+                "info: no submissions zip provided; using live submissions API (rate-limited)",
+                flush=True,
+            )
+
+        allow_fixture = allow_sample_fixtures and not args.force_live_submissions
+        allow_fixture_html = allow_fixture
+        if allow_sample_fixtures and args.force_live_submissions:
+            print("allow-sample-fixtures disabled for HTML due to --force-live-submissions")
+        submissions_primary = fetch_submissions_json(
+            primary_cik,
+            session=session,
+            limiter=limiter,
+            submissions_zip=submissions_zip,
+            allow_fixture=allow_fixture,
+        )
+        company_name = resolve_company_name(
+            mapping[ticker].get("name"), submissions_primary.get("name"), ticker
+        )
+
     allowed_forms = {"10-K"}
     if args.include_20f:
         allowed_forms.add("20-F")
@@ -1468,37 +1802,51 @@ def main(argv: Optional[list[str]] = None) -> int:
         years = args.years
 
     max_items = args.limit if args.limit is not None else years
-    cik_candidates = get_cik_candidates(ticker, primary_cik)
-    submissions_by_cik: dict[str, dict[str, Any]] = {primary_cik: submissions_primary}
-    filings_all: list[dict[str, str]] = []
-    for cik10 in cik_candidates:
-        submissions = submissions_by_cik.get(cik10)
-        if submissions is None:
-            submissions = fetch_submissions_json(
-                cik10,
-                session=session,
-                limiter=limiter,
-                submissions_zip=submissions_zip,
-                allow_fixture=allow_fixture,
-            )
-            submissions_by_cik[cik10] = submissions
-        filings_all.extend(
-            collect_filings(
-                submissions,
-                allowed_forms,
-                session,
-                limiter,
-                max_items,
-                submissions_zip=submissions_zip,
-                cik10=cik10,
-            )
-        )
 
-    filings = sorted(
-        dedupe_filings(filings_all), key=lambda row: row.get("filingDate", ""), reverse=True
-    )
-    if max_items > 0:
-        filings = filings[:max_items]
+    # Collect filings (skip if cache-only, since we already loaded them)
+    if not cache_only:
+        cik_candidates = get_cik_candidates(ticker, primary_cik)
+        submissions_by_cik: dict[str, dict[str, Any]] = {primary_cik: submissions_primary}
+        filings_all: list[dict[str, str]] = []
+        for cik10 in cik_candidates:
+            submissions = submissions_by_cik.get(cik10)
+            if submissions is None:
+                submissions = fetch_submissions_json(
+                    cik10,
+                    session=session,
+                    limiter=limiter,
+                    submissions_zip=submissions_zip,
+                    allow_fixture=allow_fixture,
+                )
+                submissions_by_cik[cik10] = submissions
+            filings_all.extend(
+                collect_filings(
+                    submissions,
+                    allowed_forms,
+                    session,
+                    limiter,
+                    max_items,
+                    submissions_zip=submissions_zip,
+                    cik10=cik10,
+                )
+            )
+
+        filings = sorted(
+            dedupe_filings(filings_all), key=lambda row: row.get("filingDate", ""), reverse=True
+        )
+        if max_items > 0:
+            filings = filings[:max_items]
+
+        # Incremental mode: filter to only new filings
+        if incremental and cached_accessions:
+            original_count = len(filings)
+            filings = [f for f in filings if f.get("accessionNumber") not in cached_accessions]
+            skipped = original_count - len(filings)
+            if skipped > 0:
+                print(f"incremental: skipped {skipped} already-cached filings, {len(filings)} new to process")
+            if not filings:
+                print(f"incremental: no new filings found for {ticker}, nothing to do")
+                return 0
 
     if not filings:
         if args.include_20f:
@@ -1586,7 +1934,7 @@ def main(argv: Optional[list[str]] = None) -> int:
             filing_source = "cache_text"
 
         if filing_text is None:
-            html_bytes = load_fixture_html(primary_doc, allow_sample_fixtures)
+            html_bytes = load_fixture_html(primary_doc, allow_fixture_html)
             from_fixture = html_bytes is not None
             if html_bytes is None:
                 try:
@@ -1606,7 +1954,7 @@ def main(argv: Optional[list[str]] = None) -> int:
                     session,
                     limiter,
                     allow_live=allow_live,
-                    allow_sample_fixtures=allow_sample_fixtures,
+                    allow_sample_fixtures=allow_fixture_html,
                     force_alternate=force_alternate_doc,
                 )
                 url = build_primary_doc_url(filing_cik, accession, primary_doc)
@@ -2053,7 +2401,8 @@ def main(argv: Optional[list[str]] = None) -> int:
     quality_sections.sort(key=lambda section: section.year)
     filings_out = sorted(filings_out, key=lambda row: row["year"])
 
-    metrics, similarity, shifts = build_metrics(metrics_sections)
+    metrics, similarity, shifts = build_metrics(metrics_sections, skip_ci=fast_mode)
+    deboilerplated = build_deboilerplated_drift(metrics_sections)
     quality_shifts = build_quality_shifts(shifts)
     excerpt_pairs = build_excerpt_pairs(quality_sections, quality_shifts)
     excerpts: dict[str, Any] = {"section": SECTION_NAME, "pairs": excerpt_pairs}
@@ -2079,6 +2428,13 @@ def main(argv: Optional[list[str]] = None) -> int:
     write_json(out_dir / "similarity_10k_item1a.json", similarity)
     write_json(out_dir / "shifts_10k_item1a.json", shifts)
     write_json(out_dir / "excerpts_10k_item1a.json", excerpts)
+
+    metrics_root = out_dir.parent.parent / "sec_narrative_drift_metrics" / ticker
+    metrics_root.mkdir(parents=True, exist_ok=True)
+    write_json(
+        metrics_root / "deboilerplated_drift_10k_item1a.json",
+        deboilerplated,
+    )
 
     ticker_index_payload = parse_ticker_year_index(load_json(ticker_year_index_path()))
     existing_years = ticker_index_payload.get(ticker, {})

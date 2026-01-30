@@ -33,25 +33,57 @@ else:
     from sklearn.metrics.pairwise import cosine_similarity
 
 from sec_extract_item1a import extract_item1a_from_html, split_paragraphs
-from sec_phrases import HONORIFICS, NAME_SUFFIXES, NOISE_TOKENS, SEC_PHRASE_ALLOWLIST
+from sec_segments import segment_text_v1
+from sec_phrases import (
+    HONORIFICS,
+    NAME_SUFFIXES,
+    NOISE_TOKENS,
+    PHRASE_BLACKLIST,
+    SEC_PHRASE_ALLOWLIST,
+    WEAK_EDGE_TOKENS,
+)
 
+
+# =============================================================================
+# Configuration Constants
+# =============================================================================
+# These parameters control text processing, similarity computation, and term
+# shift scoring. They were tuned empirically on SEC 10-K filings.
 
 SECTION_NAME = "10k_item1a"
 STOPWORDS = set(ENGLISH_STOP_WORDS)
 ALLOWED_SHORT_TOKENS: set[str] = {"ai", "ml", "ip", "it", "vr", "ar"}
 HYPHEN_CLASS = r"[-\u2010\u2011\u2012\u2013\u2014\u2212'\u2018\u2019]"
+SEGMENT_BOUNDARY_RE = re.compile(r"(?:\n{2,}|[.!?;:])")
 CANONICAL_TERMS_PATH = Path(__file__).resolve().parent / "resources" / "canonical_terms.json"
+_canonical_terms_cache: Optional["CanonicalTermsMap"] = None
+
+# Log-odds smoothing parameters (Bayesian prior for term frequency estimation)
+# Higher PRIOR_MASS_DEFAULT = more regularization, reduces noise in low-count terms
 PRIOR_MASS_DEFAULT = 200.0
+# Minimum prior mass per term to prevent division instability
 PRIOR_FLOOR = 0.1
-DF_PENALTY_GAMMA_UNI = 1.25
-DF_PENALTY_GAMMA_PHRASE = 1.75
-DF_PENALTY_OVERRIDE_Z = 3.5
-DF_PENALTY_OVERRIDE_COUNT = 8
-DF_PENALTY_EPS = 0.05
-DF_PENALTY_FLOOR = 0.05
-SCORE_DF_MIN = 0.10
-DF_PENALTY_OVERRIDE_MAX_DF_FRAC = 0.90
-DF_PENALTY_OVERRIDE_MIN_PENALTY = 0.25
+
+# Output precision for similarity and drift metrics
+SIMILARITY_DECIMALS = 4
+DRIFT_DECIMALS = 4
+
+# Document Frequency (DF) penalty parameters for term shift scoring
+# These reduce the ranking of terms that appear in many years (less distinctive)
+# Gamma controls decay rate: higher = steeper penalty for high-DF terms
+DF_PENALTY_GAMMA_UNI = 1.25      # Penalty exponent for single-word terms
+DF_PENALTY_GAMMA_PHRASE = 1.75   # Penalty exponent for multi-word phrases (stricter)
+
+# Override thresholds: strong signals can bypass DF penalty partially
+DF_PENALTY_OVERRIDE_Z = 3.5      # Z-score threshold for override consideration
+DF_PENALTY_OVERRIDE_COUNT = 8    # Min count for override consideration
+DF_PENALTY_EPS = 0.05            # Epsilon to prevent zero penalty
+DF_PENALTY_FLOOR = 0.05          # Minimum penalty (prevents full bypass)
+SCORE_DF_MIN = 0.10              # Min absolute score after DF adjustment to show term
+DF_PENALTY_OVERRIDE_MAX_DF_FRAC = 0.90   # Max DF fraction for override eligibility
+DF_PENALTY_OVERRIDE_MIN_PENALTY = 0.25   # Min penalty even with override
+
+SENTENCE_NORMALIZE_RE = re.compile(r"\s+")
 
 
 class TermBase(TypedDict):
@@ -106,6 +138,19 @@ class SimilarityPayload(TypedDict):
     section: str
     years: list[int]
     cosineSimilarity: list[list[float]]
+
+
+class DeboilerplatedDriftPayload(TypedDict):
+    section: str
+    years: list[int]
+    drift_vs_prev: list[Optional[float]]
+    similarity_vs_prev: list[Optional[float]]
+    prev_sentence_count: list[Optional[int]]
+    curr_sentence_count: list[Optional[int]]
+    shared_sentence_count: list[Optional[int]]
+    prev_retained_count: list[Optional[int]]
+    curr_retained_count: list[Optional[int]]
+    notes: dict[str, str]
 
 
 class ShiftsPayload(TypedDict):
@@ -171,6 +216,39 @@ def bigrams(tokens: Sequence[str]) -> list[str]:
     return output
 
 
+def split_phrase_segments(text: str) -> list[str]:
+    if not text:
+        return []
+    segments = [segment.strip() for segment in SEGMENT_BOUNDARY_RE.split(text)]
+    return [segment for segment in segments if segment]
+
+
+def tokenize_segments(text: str) -> list[list[str]]:
+    token_lists: list[list[str]] = []
+    for segment in split_phrase_segments(text):
+        tokens = tokenize(segment)
+        if tokens:
+            token_lists.append(tokens)
+    return token_lists
+
+
+def _phrase_edge_is_weak(tokens: Sequence[str]) -> bool:
+    if not tokens:
+        return True
+    first = tokens[0]
+    last = tokens[-1]
+    if first in STOPWORDS or last in STOPWORDS:
+        return True
+    if first in WEAK_EDGE_TOKENS or last in WEAK_EDGE_TOKENS:
+        return True
+    return False
+
+
+def _phrase_is_blacklisted(tokens: Sequence[str]) -> bool:
+    phrase = " ".join(tokens).lower()
+    return phrase in PHRASE_BLACKLIST
+
+
 def count_allowlist_phrases(text: str) -> Counter[str]:
     counts: Counter[str] = Counter()
     if not text:
@@ -204,6 +282,8 @@ def pmi_keep_bigrams(
         if c_xy < min_count:
             continue
         w1, w2 = phrase.split(" ", 1)
+        if _phrase_edge_is_weak([w1, w2]) or _phrase_is_blacklisted([w1, w2]):
+            continue
         c_x = uni.get(w1, 0)
         c_y = uni.get(w2, 0)
         if c_x == 0 or c_y == 0:
@@ -269,20 +349,28 @@ def textrank_keyphrases(
         top_set.add(token)
 
     phrases: Counter[str] = Counter()
-    i = 0
-    while i < len(tokens):
-        if tokens[i] not in top_set:
-            i += 1
+    for segment in split_phrase_segments(text):
+        seg_tokens = tokenize(segment)
+        if not seg_tokens:
             continue
-        j = i
-        while j < len(tokens) and tokens[j] in top_set and (j - i) < 3:
-            j += 1
-        if j - i >= 2:
-            phrase_tokens = tokens[i:j]
-            if not has_repeated_tokens(phrase_tokens):
-                phrase = " ".join(phrase_tokens)
-                phrases[phrase] += 1
-        i = j
+        i = 0
+        while i < len(seg_tokens):
+            if seg_tokens[i] not in top_set:
+                i += 1
+                continue
+            j = i
+            while j < len(seg_tokens) and seg_tokens[j] in top_set and (j - i) < 4:
+                j += 1
+            if j - i >= 2:
+                phrase_tokens = seg_tokens[i:j]
+                if (
+                    not has_repeated_tokens(phrase_tokens)
+                    and not _phrase_edge_is_weak(phrase_tokens)
+                    and not _phrase_is_blacklisted(phrase_tokens)
+                ):
+                    phrase = " ".join(phrase_tokens)
+                    phrases[phrase] += 1
+            i = j
 
     trimmed: Counter[str] = Counter()
     for phrase, count in phrases.items():
@@ -296,7 +384,7 @@ def textrank_keyphrases(
     return trimmed
 
 
-BOOTSTRAP_ITERATIONS = 200
+BOOTSTRAP_ITERATIONS = 100
 BOOTSTRAP_SEED = 13
 
 
@@ -359,6 +447,14 @@ def load_canonical_terms(path: Path) -> Optional[CanonicalTermsMap]:
     return CanonicalTermsMap(
         variant_to_concept=variant_to_concept, concept_labels=concept_labels
     )
+
+
+def get_canonical_terms() -> Optional[CanonicalTermsMap]:
+    """Get canonical terms map, using module-level cache."""
+    global _canonical_terms_cache
+    if _canonical_terms_cache is None:
+        _canonical_terms_cache = load_canonical_terms(CANONICAL_TERMS_PATH)
+    return _canonical_terms_cache
 
 
 def sort_variants(variants: Sequence[str]) -> list[str]:
@@ -632,8 +728,147 @@ def compute_bootstrap_ci(
     return low, high
 
 
-def build_metrics(sections: list[SectionYear]) -> tuple[MetricsPayload, SimilarityPayload, ShiftsPayload]:
-    canonical_terms = load_canonical_terms(CANONICAL_TERMS_PATH)
+def normalize_sentence(text: str) -> str:
+    return SENTENCE_NORMALIZE_RE.sub(" ", text.strip()).lower()
+
+
+def extract_sentence_texts(text: str) -> list[str]:
+    payload = segment_text_v1(text)
+    sentences: list[str] = []
+    raw_sentences = payload.get("sentences")
+    if not isinstance(raw_sentences, list):
+        return sentences
+    for entry in cast(list[object], raw_sentences):
+        if not isinstance(entry, dict):
+            continue
+        entry_dict = cast(dict[str, Any], entry)
+        start = entry_dict.get("start")
+        end = entry_dict.get("end")
+        if not isinstance(start, int) or not isinstance(end, int):
+            continue
+        if start < 0 or end <= start or end > len(text):
+            continue
+        sentences.append(text[start:end])
+    return sentences
+
+
+def compute_deboilerplated_pair(
+    prev_text: str,
+    curr_text: str,
+) -> tuple[
+    Optional[float],
+    Optional[float],
+    int,
+    int,
+    int,
+    int,
+    int,
+]:
+    prev_sentences = extract_sentence_texts(prev_text)
+    curr_sentences = extract_sentence_texts(curr_text)
+    prev_norm = [normalize_sentence(s) for s in prev_sentences]
+    curr_norm = [normalize_sentence(s) for s in curr_sentences]
+    prev_pairs = [(s, n) for s, n in zip(prev_sentences, prev_norm) if n]
+    curr_pairs = [(s, n) for s, n in zip(curr_sentences, curr_norm) if n]
+
+    prev_norm_set = {n for _, n in prev_pairs}
+    curr_norm_set = {n for _, n in curr_pairs}
+    shared_norm = prev_norm_set & curr_norm_set
+
+    prev_retained = [s for s, n in prev_pairs if n not in shared_norm]
+    curr_retained = [s for s, n in curr_pairs if n not in shared_norm]
+
+    prev_count = len(prev_pairs)
+    curr_count = len(curr_pairs)
+    shared_count = len(shared_norm)
+    prev_retained_count = len(prev_retained)
+    curr_retained_count = len(curr_retained)
+
+    if not prev_retained or not curr_retained:
+        return (
+            None,
+            None,
+            prev_count,
+            curr_count,
+            shared_count,
+            prev_retained_count,
+            curr_retained_count,
+        )
+
+    vectorizer = TfidfVectorizer(
+        stop_words="english",
+        token_pattern=r"(?u)\b[a-zA-Z]{2,}\b",
+    )
+    vectorizer_any = cast(Any, vectorizer)
+    docs = ["\n".join(prev_retained), "\n".join(curr_retained)]
+    tfidf_matrix = vectorizer_any.fit_transform(docs)
+    similarity_matrix = cosine_similarity(tfidf_matrix)
+    similarity_values = cast(list[list[float]], similarity_matrix.tolist())
+    similarity = similarity_values[0][1]
+    drift = 1 - float(similarity)
+    return (
+        round_value(float(similarity), DRIFT_DECIMALS),
+        round_value(drift, DRIFT_DECIMALS),
+        prev_count,
+        curr_count,
+        shared_count,
+        prev_retained_count,
+        curr_retained_count,
+    )
+
+
+def build_deboilerplated_drift(sections: list[SectionYear]) -> DeboilerplatedDriftPayload:
+    years = [section.year for section in sections]
+    drift_vs_prev: list[Optional[float]] = [None] * len(years)
+    similarity_vs_prev: list[Optional[float]] = [None] * len(years)
+    prev_sentence_count: list[Optional[int]] = [None] * len(years)
+    curr_sentence_count: list[Optional[int]] = [None] * len(years)
+    shared_sentence_count: list[Optional[int]] = [None] * len(years)
+    prev_retained_count: list[Optional[int]] = [None] * len(years)
+    curr_retained_count: list[Optional[int]] = [None] * len(years)
+
+    for idx in range(1, len(sections)):
+        prev_text = sections[idx - 1].text
+        curr_text = sections[idx].text
+        (
+            similarity,
+            drift,
+            prev_count,
+            curr_count,
+            shared_count,
+            prev_keep,
+            curr_keep,
+        ) = compute_deboilerplated_pair(prev_text, curr_text)
+        similarity_vs_prev[idx] = similarity
+        drift_vs_prev[idx] = drift
+        prev_sentence_count[idx] = prev_count
+        curr_sentence_count[idx] = curr_count
+        shared_sentence_count[idx] = shared_count
+        prev_retained_count[idx] = prev_keep
+        curr_retained_count[idx] = curr_keep
+
+    return {
+        "section": SECTION_NAME,
+        "years": years,
+        "drift_vs_prev": drift_vs_prev,
+        "similarity_vs_prev": similarity_vs_prev,
+        "prev_sentence_count": prev_sentence_count,
+        "curr_sentence_count": curr_sentence_count,
+        "shared_sentence_count": shared_sentence_count,
+        "prev_retained_count": prev_retained_count,
+        "curr_retained_count": curr_retained_count,
+        "notes": {
+            "sentence_split": "sec_segments.segment_text_v1",
+            "match_norm": "whitespace+lower",
+        },
+    }
+
+
+def build_metrics(
+    sections: list[SectionYear],
+    skip_ci: bool = False,
+) -> tuple[MetricsPayload, SimilarityPayload, ShiftsPayload]:
+    canonical_terms = get_canonical_terms()
     years = [section.year for section in sections]
     drift_vs_prev: list[Optional[float]] = [None] * len(years)
     drift_ci_low: list[Optional[float]] = [None] * len(years)
@@ -661,7 +896,7 @@ def build_metrics(sections: list[SectionYear]) -> tuple[MetricsPayload, Similari
                 if row_index == col_index:
                     rounded_row.append(1.0)
                 else:
-                    rounded_row.append(round(float(value), 2))
+                    rounded_row.append(round(float(value), SIMILARITY_DECIMALS))
             similarity_values.append(rounded_row)
 
         valid_index = {year: idx for idx, year in enumerate(valid_years)}
@@ -672,16 +907,23 @@ def build_metrics(sections: list[SectionYear]) -> tuple[MetricsPayload, Similari
             if prev_year in valid_index and curr_year in valid_index:
                 sim = raw_similarity[valid_index[prev_year]][valid_index[curr_year]]
                 drift = 1 - float(sim)
-                drift_vs_prev[idx] = round_value(drift)
-                low, high = compute_bootstrap_ci(
-                    sections[idx - 1], sections[idx], vectorizer
-                )
-                drift_ci_low[idx] = round_value(low)
-                drift_ci_high[idx] = round_value(high)
+                drift_vs_prev[idx] = round_value(drift, DRIFT_DECIMALS)
+                if skip_ci:
+                    # Skip expensive bootstrap CI computation in fast mode
+                    drift_ci_low[idx] = None
+                    drift_ci_high[idx] = None
+                else:
+                    low, high = compute_bootstrap_ci(
+                        sections[idx - 1], sections[idx], vectorizer
+                    )
+                    drift_ci_low[idx] = round_value(low, DRIFT_DECIMALS)
+                    drift_ci_high[idx] = round_value(high, DRIFT_DECIMALS)
 
                 prev_text = sections[idx - 1].text
                 curr_text = sections[idx].text
-                boilerplate_scores[idx] = round_value(boilerplate_score(prev_text, curr_text))
+                boilerplate_scores[idx] = round_value(
+                    boilerplate_score(prev_text, curr_text), DRIFT_DECIMALS
+                )
 
         similarity = {
             "section": SECTION_NAME,
@@ -699,7 +941,9 @@ def build_metrics(sections: list[SectionYear]) -> tuple[MetricsPayload, Similari
 
     shifts: list[ShiftPairPayload] = []
 
-    pooled_tokens = [tokenize(section.text) for section in valid_sections]
+    pooled_tokens: list[list[str]] = []
+    for section in valid_sections:
+        pooled_tokens.extend(tokenize_segments(section.text))
     bigram_keep = pmi_keep_bigrams(pooled_tokens)
 
     def resolve_prior_mass() -> float:
@@ -814,9 +1058,10 @@ def build_metrics(sections: list[SectionYear]) -> tuple[MetricsPayload, Similari
     def build_term_counts_primary(text: str) -> Counter[str]:
         toks = tokenize(text)
         counts: Counter[str] = Counter(toks)
-        for phrase in bigrams(toks):
-            if phrase in bigram_keep:
-                counts[phrase] += 1
+        for seg_tokens in tokenize_segments(text):
+            for phrase in bigrams(seg_tokens):
+                if phrase in bigram_keep:
+                    counts[phrase] += 1
         counts.update(count_allowlist_phrases(text))
         return counts
 

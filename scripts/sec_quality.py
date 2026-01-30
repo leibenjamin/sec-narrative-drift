@@ -34,6 +34,28 @@ MAX_TERMS = 15
 MAX_PARAGRAPHS_PER_YEAR = 3
 BULLET_TOKEN = "__BULLET_BREAK__"
 BULLET_SYMBOL = "\u2022"
+NOVELTY_MIN_CHARS = 300
+NOVELTY_UNIQUE_RATIO_MIN = 0.3
+NOVELTY_BOILERPLATE_RATIO_MAX = 0.35
+NOVELTY_STOP_TOKENS = {
+    "may",
+    "might",
+    "could",
+    "should",
+    "would",
+    "shall",
+    "will",
+    "company",
+    "companies",
+    "business",
+    "operations",
+    "risk",
+    "factors",
+    "financial",
+    "condition",
+    "results",
+}
+WORD_RE = re.compile(r"[A-Za-z']+")
 
 COMMON_SHORT_WORDS = {
     "a",
@@ -396,6 +418,25 @@ def _paragraph_is_candidate(paragraph: str) -> bool:
     return True
 
 
+def _tokenize_words(text: str) -> list[str]:
+    return [token.lower() for token in WORD_RE.findall(text)]
+
+
+def _novelty_candidate(paragraph: str) -> bool:
+    if len(paragraph) < NOVELTY_MIN_CHARS:
+        return False
+    tokens = _tokenize_words(paragraph)
+    if not tokens:
+        return False
+    unique_ratio = len(set(tokens)) / len(tokens)
+    if unique_ratio < NOVELTY_UNIQUE_RATIO_MIN:
+        return False
+    boilerplate_ratio = sum(1 for token in tokens if token in NOVELTY_STOP_TOKENS) / len(tokens)
+    if boilerplate_ratio > NOVELTY_BOILERPLATE_RATIO_MAX:
+        return False
+    return True
+
+
 def count_matches(text: str, patterns: Sequence[re.Pattern[str]]) -> int:
     return sum(len(pattern.findall(text)) for pattern in patterns)
 
@@ -486,7 +527,7 @@ def select_top_paragraphs(
         vec = TfidfVectorizer(stop_words="english", ngram_range=(1, 2), max_features=8000)
         vec_any = cast(Any, vec)
         matrix = vec_any.fit_transform(texts)
-        sims = cast(list[list[float]], cosine_similarity(matrix))
+        sims = cast(list[list[float]], cosine_similarity(matrix).tolist())
     except Exception:
         return [
             {
@@ -531,6 +572,75 @@ def select_top_paragraphs(
     ]
 
 
+def select_novel_paragraphs(
+    source_paragraphs: Sequence[str],
+    reference_paragraphs: Sequence[str],
+    year: int,
+    max_paragraphs: int = MAX_PARAGRAPHS_PER_YEAR,
+) -> list[dict[str, Any]]:
+    candidates: list[dict[str, Any]] = []
+    for idx, paragraph in enumerate(source_paragraphs):
+        normalized = normalize_excerpt_text(paragraph)
+        if not normalized:
+            continue
+        if not _paragraph_is_candidate(normalized):
+            continue
+        if not _novelty_candidate(normalized):
+            continue
+        candidates.append(
+            {"year": year, "paragraphIndex": idx, "text": normalized, "score": 0.0}
+        )
+
+    refs: list[str] = []
+    for paragraph in reference_paragraphs:
+        normalized = normalize_excerpt_text(paragraph)
+        if not normalized:
+            continue
+        if not _paragraph_is_candidate(normalized):
+            continue
+        refs.append(normalized)
+
+    if not candidates:
+        return []
+
+    if not refs:
+        candidates.sort(key=lambda item: -len(item["text"]))
+        return [
+            {
+                "year": item["year"],
+                "paragraphIndex": item["paragraphIndex"],
+                "text": item["text"],
+            }
+            for item in candidates[:max_paragraphs]
+        ]
+
+    texts = refs + [item["text"] for item in candidates]
+    try:
+        vec = TfidfVectorizer(stop_words="english", ngram_range=(1, 2), max_features=8000)
+        vec_any = cast(Any, vec)
+        matrix = vec_any.fit_transform(texts)
+        sims = cast(list[list[float]], cosine_similarity(matrix).tolist())
+    except Exception:
+        return []
+
+    ref_count = len(refs)
+    for idx, item in enumerate(candidates):
+        row = sims[ref_count + idx][:ref_count]
+        max_sim = max(float(value) for value in row) if row else 0.0
+        novelty = 1.0 - max_sim
+        item["score"] = novelty
+
+    candidates.sort(key=lambda item: (-item["score"], -len(item["text"])))
+    return [
+        {
+            "year": item["year"],
+            "paragraphIndex": item["paragraphIndex"],
+            "text": item["text"],
+        }
+        for item in candidates[:max_paragraphs]
+    ]
+
+
 def is_valid_section(section: Optional[SectionYear]) -> TypeGuard[SectionYear]:
     if section is None:
         return False
@@ -567,6 +677,16 @@ def build_excerpt_pairs(
                 faller_patterns,
                 direction="from",
             )
+            if not representative:
+                representative = select_novel_paragraphs(
+                    to_section.paragraphs,
+                    from_section.paragraphs,
+                    shift.to_year,
+                ) + select_novel_paragraphs(
+                    from_section.paragraphs,
+                    to_section.paragraphs,
+                    shift.from_year,
+                )
 
         pairs.append(
             {
