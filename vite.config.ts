@@ -9,5 +9,17 @@ export default defineConfig(({ mode }) => {
   return {
     base,
     plugins: [react(), tailwindcss()],
+    build: {
+      // Disable source maps in production to avoid exposing source code
+      sourcemap: mode === "development",
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            // Vendor chunk for better caching - React libraries change less frequently
+            "react-vendor": ["react", "react-dom", "react-router-dom"],
+          },
+        },
+      },
+    },
   }
 })
