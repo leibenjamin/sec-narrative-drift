@@ -68,6 +68,13 @@ scripts/rebuild_ticker_year_index_from_cache.py
 scripts/refresh_risk_cache_from_html.py
 scripts/sec_risk_extraction_audit.py
 scripts/tests/analyze_fixtures.py
+scripts/tests/test_risk_caches.py
+scripts/sec_rebuild_local.py
+scripts/build_deboilerplated_drift_report.py
+scripts/export_risk_sections.py
 
 # Internal resources
 scripts/resources/
+
+# Local metrics sidecar (not needed for portfolio demo)
+public/data/sec_narrative_drift_metrics/
