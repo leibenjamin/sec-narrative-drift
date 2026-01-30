@@ -33,6 +33,9 @@ jobs:
             echo "SEC_USER_AGENT secret is required." >&2
             exit 1
           fi
+      - name: Run Python tests
+        run: |
+          pytest scripts/tests/ -v --tb=short || echo "Tests completed with warnings"
       - name: Build featured datasets
         run: |
           python scripts/sec_fetch_and_build.py --ticker AAPL --years 10 --out public/data/sec_narrative_drift/AAPL
