@@ -1210,8 +1210,11 @@ def build_metrics(
             for item in stats.values():
                 item["score"] = fallback_scores.get(item["term"], item["z"])
 
-            sorted_risers = sorted(fallback_items, key=sort_key_riser)
-            sorted_fallers = sorted(fallback_items, key=sort_key_faller)
+            riser_pool = [item for item in fallback_items if item.get("score", 0.0) > 0]
+            faller_pool = [item for item in fallback_items if item.get("score", 0.0) < 0]
+
+            sorted_risers = sorted(riser_pool, key=sort_key_riser)
+            sorted_fallers = sorted(faller_pool, key=sort_key_faller)
             top_risers = build_shift_term_outputs(
                 sorted_risers, includes_by_term=includes_by_term
             )
@@ -1238,11 +1241,13 @@ def build_metrics(
         summary_alt = ""
 
         if stats_alt:
+            alt_risers = [item for item in stats_alt.values() if item.get("z", 0.0) > 0]
+            alt_fallers = [item for item in stats_alt.values() if item.get("z", 0.0) < 0]
             sorted_risers_alt = sorted(
-                stats_alt.values(), key=lambda item: (-item["z"], item["term"])
+                alt_risers, key=lambda item: (-item["z"], item["term"])
             )
             sorted_fallers_alt = sorted(
-                stats_alt.values(), key=lambda item: (item["z"], item["term"])
+                alt_fallers, key=lambda item: (item["z"], item["term"])
             )
             top_risers_alt = build_alt_terms(sorted_risers_alt)
             top_fallers_alt = build_alt_terms(sorted_fallers_alt)
@@ -1250,9 +1255,6 @@ def build_metrics(
                 summary_alt = build_shift_summary(
                     extract_terms(top_risers_alt), extract_terms(top_fallers_alt)
                 )
-            else:
-                top_risers_alt = []
-                top_fallers_alt = []
 
         payload: ShiftPairPayload = {
             "from": prev_section.year,
