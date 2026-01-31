@@ -70,61 +70,6 @@
           "per10kCurr": 8.183306055646481,
           "deltaPer10k": 4.045945691558769,
           "distinctive": false
-        },
-        {
-          "term": "deterioration",
-          "score": -0.26450478330022903,
-          "z": -0.5584446933001478,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 8.274720728175424,
-          "per10kCurr": 4.091653027823241,
-          "deltaPer10k": -4.183067700352184,
-          "distinctive": false
-        },
-        {
-          "term": "specified",
-          "score": -0.3897685088436744,
-          "z": -0.5584446933001478,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 8.274720728175424,
-          "per10kCurr": 4.091653027823241,
-          "deltaPer10k": -4.183067700352184,
-          "distinctive": false
-        },
-        {
-          "term": "credit",
-          "score": -0.45523565941750127,
-          "z": -1.2351526416816154,
-          "countPrev": 5,
-          "countCurr": 0,
-          "per10kPrev": 20.68680182043856,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -20.68680182043856,
-          "distinctive": false
-        },
-        {
-          "term": "municipalities",
-          "score": -0.885405972836561,
-          "z": -0.944034662459599,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 8.274720728175424,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -8.274720728175424,
-          "distinctive": false
-        },
-        {
-          "term": "default",
-          "score": -1.005772786973474,
-          "z": -1.07237177361669,
-          "countPrev": 3,
-          "countCurr": 0,
-          "per10kPrev": 12.412081092263136,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -12.412081092263136,
-          "distinctive": false
         }
       ],
       "topFallers": [
@@ -182,72 +127,6 @@
           "per10kCurr": 4.091653027823241,
           "deltaPer10k": -4.183067700352184,
           "distinctive": false
-        },
-        {
-          "term": "likely",
-          "score": 0.19939154612011134,
-          "z": 0.5409923186473672,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 4.137360364087712,
-          "per10kCurr": 8.183306055646481,
-          "deltaPer10k": 4.045945691558769,
-          "distinctive": false
-        },
-        {
-          "term": "option contracts",
-          "score": 0.22870065002603515,
-          "z": 0.9250080236314124,
-          "countPrev": 1,
-          "countCurr": 3,
-          "per10kPrev": 4.137360364087712,
-          "per10kCurr": 12.274959083469723,
-          "deltaPer10k": 8.13759871938201,
-          "distinctive": false
-        },
-        {
-          "term": "changes fair",
-          "score": 0.32700041941835317,
-          "z": 0.5409923186473672,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 4.137360364087712,
-          "per10kCurr": 8.183306055646481,
-          "deltaPer10k": 4.045945691558769,
-          "distinctive": false
-        },
-        {
-          "term": "periodic changes",
-          "score": 0.32700041941835317,
-          "z": 0.5409923186473672,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 4.137360364087712,
-          "per10kCurr": 8.183306055646481,
-          "deltaPer10k": 4.045945691558769,
-          "distinctive": false
-        },
-        {
-          "term": "beginning",
-          "score": 0.3775875603526135,
-          "z": 0.5409923186473672,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 4.137360364087712,
-          "per10kCurr": 8.183306055646481,
-          "deltaPer10k": 4.045945691558769,
-          "distinctive": false
-        },
-        {
-          "term": "gaap",
-          "score": 0.8794549201704932,
-          "z": 0.9376895505366555,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 8.183306055646481,
-          "deltaPer10k": 8.183306055646481,
-          "distinctive": false
         }
       ],
       "summary": "Adds emphasis on gaap, beginning, changes fair; de-emphasizes default, municipalities, credit.",
@@ -303,14 +182,6 @@
         {
           "term": "results operations financial",
           "score": 0.0044441450551317985
-        },
-        {
-          "term": "energy businesses",
-          "score": -0.08467605069989226
-        },
-        {
-          "term": "future operating results",
-          "score": -0.24222764365417948
         }
       ],
       "topFallersAlt": [
@@ -325,54 +196,6 @@
         {
           "term": "energy businesses",
           "score": -0.08467605069989226
-        },
-        {
-          "term": "results operations financial",
-          "score": 0.0044441450551317985
-        },
-        {
-          "term": "losses future",
-          "score": 0.004468815985982921
-        },
-        {
-          "term": "business continuity",
-          "score": 0.004498659388506354
-        },
-        {
-          "term": "disaster recovery",
-          "score": 0.004498659388506354
-        },
-        {
-          "term": "Cybersecurity",
-          "score": 0.004531708550550739
-        },
-        {
-          "term": "operating subsidiaries",
-          "score": 0.004544500094202153
-        },
-        {
-          "term": "value share",
-          "score": 0.004586183993783521
-        },
-        {
-          "term": "regulatory compliance",
-          "score": 0.004649492167739577
-        },
-        {
-          "term": "Climate change",
-          "score": 0.004681806245808051
-        },
-        {
-          "term": "operating businesses",
-          "score": 0.004883755327429018
-        },
-        {
-          "term": "capital markets",
-          "score": 0.004898614758247266
-        },
-        {
-          "term": "reported earnings",
-          "score": 0.6038342109663177
         }
       ],
       "summaryAlt": "Adds emphasis on information technology, reported earnings, capital markets; de-emphasizes fair values investments, future operating results, energy businesses."
@@ -401,149 +224,6 @@
           "per10kPrev": 0.0,
           "per10kCurr": 8.190008190008191,
           "deltaPer10k": 8.190008190008191,
-          "distinctive": false
-        },
-        {
-          "term": "based",
-          "score": -0.14781402959976644,
-          "z": -0.5490736483431341,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 8.183306055646481,
-          "per10kCurr": 4.095004095004096,
-          "deltaPer10k": -4.088301960642386,
-          "distinctive": false
-        },
-        {
-          "term": "inherent",
-          "score": -0.14781402959976644,
-          "z": -0.5490736483431341,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 8.183306055646481,
-          "per10kCurr": 4.095004095004096,
-          "deltaPer10k": -4.088301960642386,
-          "distinctive": false
-        },
-        {
-          "term": "percentage investments",
-          "score": -0.19287027857308095,
-          "z": -0.5490736483431341,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 8.183306055646481,
-          "per10kCurr": 4.095004095004096,
-          "deltaPer10k": -4.088301960642386,
-          "distinctive": false
-        },
-        {
-          "term": "likely",
-          "score": -0.20237005203822522,
-          "z": -0.5490736483431341,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 8.183306055646481,
-          "per10kCurr": 4.095004095004096,
-          "deltaPer10k": -4.088301960642386,
-          "distinctive": false
-        },
-        {
-          "term": "demand",
-          "score": -0.25322264538092504,
-          "z": -0.9406270982455097,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 8.183306055646481,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -8.183306055646481,
-          "distinctive": false
-        },
-        {
-          "term": "railroads",
-          "score": -0.26006623057443673,
-          "z": -0.5490736483431341,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 8.183306055646481,
-          "per10kCurr": 4.095004095004096,
-          "deltaPer10k": -4.088301960642386,
-          "distinctive": false
-        },
-        {
-          "term": "defined",
-          "score": -0.320458869997356,
-          "z": -0.5490736483431341,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 8.183306055646481,
-          "per10kCurr": 4.095004095004096,
-          "deltaPer10k": -4.088301960642386,
-          "distinctive": false
-        },
-        {
-          "term": "periodic changes",
-          "score": -0.3318851434872291,
-          "z": -0.5490736483431341,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 8.183306055646481,
-          "per10kCurr": 4.095004095004096,
-          "deltaPer10k": -4.088301960642386,
-          "distinctive": false
-        },
-        {
-          "term": "periodic earnings",
-          "score": -0.3318851434872291,
-          "z": -0.5490736483431341,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 8.183306055646481,
-          "per10kCurr": 4.095004095004096,
-          "deltaPer10k": -4.088301960642386,
-          "distinctive": false
-        },
-        {
-          "term": "administration",
-          "score": -0.6565141111727846,
-          "z": -0.9406270982455097,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 8.183306055646481,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -8.183306055646481,
-          "distinctive": false
-        },
-        {
-          "term": "goods services",
-          "score": -0.7077837803084167,
-          "z": -0.9406270982455097,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 8.183306055646481,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -8.183306055646481,
-          "distinctive": false
-        },
-        {
-          "term": "goods",
-          "score": -0.7676992974946198,
-          "z": -0.9406270982455097,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 8.183306055646481,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -8.183306055646481,
-          "distinctive": false
-        },
-        {
-          "term": "oil",
-          "score": -0.7676992974946198,
-          "z": -0.9406270982455097,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 8.183306055646481,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -8.183306055646481,
           "distinctive": false
         }
       ],
@@ -714,7 +394,7 @@
           "distinctive": false
         }
       ],
-      "summary": "Adds emphasis on index, decreases, based; de-emphasizes gaap, goods, oil.",
+      "summary": "Adds emphasis on index, decreases; de-emphasizes gaap, goods, oil.",
       "topRisersAlt": [
         {
           "term": "financial markets",
@@ -767,14 +447,6 @@
         {
           "term": "reported earnings",
           "score": 0.004463983678922201
-        },
-        {
-          "term": "results operations financial",
-          "score": -0.5950047368399756
-        },
-        {
-          "term": "information technology",
-          "score": -0.9637699663646764
         }
       ],
       "topFallersAlt": [
@@ -785,61 +457,9 @@
         {
           "term": "results operations financial",
           "score": -0.5950047368399756
-        },
-        {
-          "term": "reported earnings",
-          "score": 0.004463983678922201
-        },
-        {
-          "term": "losses future",
-          "score": 0.004488875980255713
-        },
-        {
-          "term": "business continuity",
-          "score": 0.004518988814403269
-        },
-        {
-          "term": "disaster recovery",
-          "score": 0.004518988814403269
-        },
-        {
-          "term": "Cybersecurity",
-          "score": 0.004552338457128435
-        },
-        {
-          "term": "operating subsidiaries",
-          "score": 0.004565246895016362
-        },
-        {
-          "term": "value share",
-          "score": 0.004607314020806719
-        },
-        {
-          "term": "regulatory compliance",
-          "score": 0.004671210965847994
-        },
-        {
-          "term": "Climate change",
-          "score": 0.004703828700813872
-        },
-        {
-          "term": "operating businesses",
-          "score": 0.004907723496070382
-        },
-        {
-          "term": "capital markets",
-          "score": 0.004922729361406919
-        },
-        {
-          "term": "energy businesses",
-          "score": 0.09390617986546657
-        },
-        {
-          "term": "financial markets",
-          "score": 0.1971520654547354
         }
       ],
-      "summaryAlt": "Adds emphasis on financial markets, energy businesses, capital markets; de-emphasizes information technology, results operations financial, reported earnings."
+      "summaryAlt": "Adds emphasis on financial markets, energy businesses, capital markets; de-emphasizes information technology, results operations financial."
     },
     {
       "from": 2017,
@@ -957,61 +577,6 @@
           "per10kPrev": 0.0,
           "per10kCurr": 8.093889113719142,
           "deltaPer10k": 8.093889113719142,
-          "distinctive": false
-        },
-        {
-          "term": "estimate",
-          "score": -0.2060271469911268,
-          "z": -0.558996136615992,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 8.190008190008191,
-          "per10kCurr": 4.046944556859571,
-          "deltaPer10k": -4.14306363314862,
-          "distinctive": false
-        },
-        {
-          "term": "index option",
-          "score": -0.23342143191356732,
-          "z": -0.9441018089935616,
-          "countPrev": 3,
-          "countCurr": 1,
-          "per10kPrev": 12.285012285012284,
-          "per10kCurr": 4.046944556859571,
-          "deltaPer10k": -8.238067728152714,
-          "distinctive": false
-        },
-        {
-          "term": "option contracts",
-          "score": -0.23342143191356732,
-          "z": -0.9441018089935616,
-          "countPrev": 3,
-          "countCurr": 1,
-          "per10kPrev": 12.285012285012284,
-          "per10kCurr": 4.046944556859571,
-          "deltaPer10k": -8.238067728152714,
-          "distinctive": false
-        },
-        {
-          "term": "losses aggregate",
-          "score": -0.2630311480270271,
-          "z": -0.558996136615992,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 8.190008190008191,
-          "per10kCurr": 4.046944556859571,
-          "deltaPer10k": -4.14306363314862,
-          "distinctive": false
-        },
-        {
-          "term": "control",
-          "score": -0.26476597191301315,
-          "z": -0.558996136615992,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 8.190008190008191,
-          "per10kCurr": 4.046944556859571,
-          "deltaPer10k": -4.14306363314862,
           "distinctive": false
         }
       ],
@@ -1231,18 +796,6 @@
         {
           "term": "disaster recovery",
           "score": 0.009099706717968559
-        },
-        {
-          "term": "Cybersecurity",
-          "score": -0.11558611734630286
-        },
-        {
-          "term": "operating subsidiaries",
-          "score": -0.23770370264553975
-        },
-        {
-          "term": "losses future",
-          "score": -0.4296155683404477
         }
       ],
       "topFallersAlt": [
@@ -1269,42 +822,6 @@
         {
           "term": "Cybersecurity",
           "score": -0.11558611734630286
-        },
-        {
-          "term": "business continuity",
-          "score": 0.009099706717968559
-        },
-        {
-          "term": "disaster recovery",
-          "score": 0.009099706717968559
-        },
-        {
-          "term": "financial markets",
-          "score": 0.009299706011983488
-        },
-        {
-          "term": "regulatory compliance",
-          "score": 0.009408396646531703
-        },
-        {
-          "term": "Climate change",
-          "score": 0.009474560370509533
-        },
-        {
-          "term": "operating businesses",
-          "score": 0.009888300691517138
-        },
-        {
-          "term": "capital markets",
-          "score": 0.009918760470291943
-        },
-        {
-          "term": "Data privacy",
-          "score": 0.22051863139179328
-        },
-        {
-          "term": "information systems",
-          "score": 0.2560069476493485
         }
       ],
       "summaryAlt": "Adds emphasis on utilities energy businesses, operating assets, equity securities; de-emphasizes value share, reported earnings, energy businesses."
@@ -1377,105 +894,6 @@
           "per10kPrev": 4.046944556859571,
           "per10kCurr": 7.936507936507937,
           "deltaPer10k": 3.889563379648366,
-          "distinctive": false
-        },
-        {
-          "term": "settlement payments",
-          "score": -0.13973249163278195,
-          "z": -0.5651653194147823,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 8.093889113719142,
-          "per10kCurr": 3.9682539682539684,
-          "deltaPer10k": -4.125635145465173,
-          "distinctive": false
-        },
-        {
-          "term": "received",
-          "score": -0.20830089997088067,
-          "z": -0.5651653194147823,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 8.093889113719142,
-          "per10kCurr": 3.9682539682539684,
-          "deltaPer10k": -4.125635145465173,
-          "distinctive": false
-        },
-        {
-          "term": "settlement",
-          "score": -0.20830089997088067,
-          "z": -0.5651653194147823,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 8.093889113719142,
-          "per10kCurr": 3.9682539682539684,
-          "deltaPer10k": -4.125635145465173,
-          "distinctive": false
-        },
-        {
-          "term": "railroads",
-          "score": -0.2676879772233161,
-          "z": -0.5651653194147823,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 8.093889113719142,
-          "per10kCurr": 3.9682539682539684,
-          "deltaPer10k": -4.125635145465173,
-          "distinctive": false
-        },
-        {
-          "term": "year end",
-          "score": -0.3416116830483223,
-          "z": -0.5651653194147823,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 8.093889113719142,
-          "per10kCurr": 3.9682539682539684,
-          "deltaPer10k": -4.125635145465173,
-          "distinctive": false
-        },
-        {
-          "term": "end",
-          "score": -0.39445919433253995,
-          "z": -0.5651653194147823,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 8.093889113719142,
-          "per10kCurr": 3.9682539682539684,
-          "deltaPer10k": -4.125635145465173,
-          "distinctive": false
-        },
-        {
-          "term": "year",
-          "score": -0.39445919433253995,
-          "z": -0.5651653194147823,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 8.093889113719142,
-          "per10kCurr": 3.9682539682539684,
-          "deltaPer10k": -4.125635145465173,
-          "distinctive": false
-        },
-        {
-          "term": "compliant",
-          "score": -0.8876949986228245,
-          "z": -0.9464752600518805,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 8.093889113719142,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -8.093889113719142,
-          "distinctive": false
-        },
-        {
-          "term": "fra",
-          "score": -0.8876949986228245,
-          "z": -0.9464752600518805,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 8.093889113719142,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -8.093889113719142,
           "distinctive": false
         }
       ],
@@ -1589,61 +1007,6 @@
           "per10kCurr": 3.9682539682539684,
           "deltaPer10k": -4.125635145465173,
           "distinctive": false
-        },
-        {
-          "term": "international",
-          "score": 0.14382506220845157,
-          "z": 0.5342561314632985,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 4.046944556859571,
-          "per10kCurr": 7.936507936507937,
-          "deltaPer10k": 3.889563379648366,
-          "distinctive": false
-        },
-        {
-          "term": "catastrophe event",
-          "score": 0.2312298388162612,
-          "z": 0.9352376400490806,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 7.936507936507937,
-          "deltaPer10k": 7.936507936507937,
-          "distinctive": false
-        },
-        {
-          "term": "insurance regulators",
-          "score": 0.2312298388162612,
-          "z": 0.9352376400490806,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 7.936507936507937,
-          "deltaPer10k": 7.936507936507937,
-          "distinctive": false
-        },
-        {
-          "term": "single catastrophe",
-          "score": 0.2312298388162612,
-          "z": 0.9352376400490806,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 7.936507936507937,
-          "deltaPer10k": 7.936507936507937,
-          "distinctive": false
-        },
-        {
-          "term": "catastrophe",
-          "score": 0.3446970920129863,
-          "z": 0.9352376400490806,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 7.936507936507937,
-          "deltaPer10k": 7.936507936507937,
-          "distinctive": false
         }
       ],
       "summary": "Adds emphasis on catastrophe, regulators, catastrophe event; de-emphasizes compliant, fra, ptc.",
@@ -1659,50 +1022,6 @@
         {
           "term": "capital markets",
           "score": 0.03867420841429814
-        },
-        {
-          "term": "operating assets",
-          "score": -0.004504197070722693
-        },
-        {
-          "term": "Data privacy",
-          "score": -0.004521781026072702
-        },
-        {
-          "term": "business continuity",
-          "score": -0.004560203906067262
-        },
-        {
-          "term": "disaster recovery",
-          "score": -0.004560203906067262
-        },
-        {
-          "term": "Cybersecurity",
-          "score": -0.0045731570519640385
-        },
-        {
-          "term": "information systems",
-          "score": -0.004607314020806719
-        },
-        {
-          "term": "financial markets",
-          "score": -0.004660663533524456
-        },
-        {
-          "term": "regulatory compliance",
-          "score": -0.0047152630233888715
-        },
-        {
-          "term": "Climate change",
-          "score": -0.004748501055062082
-        },
-        {
-          "term": "operating businesses",
-          "score": -0.004956372607284543
-        },
-        {
-          "term": "utilities energy businesses",
-          "score": -0.9772769366194951
         }
       ],
       "topFallersAlt": [
@@ -1749,18 +1068,6 @@
         {
           "term": "operating assets",
           "score": -0.004504197070722693
-        },
-        {
-          "term": "capital markets",
-          "score": 0.03867420841429814
-        },
-        {
-          "term": "equity securities",
-          "score": 0.04702282526409851
-        },
-        {
-          "term": "berkshire board",
-          "score": 0.5950445920009355
         }
       ],
       "summaryAlt": "Adds emphasis on berkshire board, equity securities, capital markets; de-emphasizes utilities energy businesses, operating businesses, Climate change."
@@ -1851,17 +1158,6 @@
           "per10kCurr": 7.797270955165692,
           "deltaPer10k": 7.797270955165692,
           "distinctive": false
-        },
-        {
-          "term": "tih",
-          "score": -0.4480326626640649,
-          "z": -0.9459241521764407,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 7.936507936507937,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -7.936507936507937,
-          "distinctive": false
         }
       ],
       "topFallers": [
@@ -1875,92 +1171,9 @@
           "per10kCurr": 0.0,
           "deltaPer10k": -7.936507936507937,
           "distinctive": false
-        },
-        {
-          "term": "epidemics pandemics",
-          "score": 0.3287069392767662,
-          "z": 0.9357808767617417,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 7.797270955165692,
-          "deltaPer10k": 7.797270955165692,
-          "distinctive": false
-        },
-        {
-          "term": "Pandemic",
-          "score": 0.4432283465022181,
-          "z": 0.9357808767617417,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 7.797270955165692,
-          "deltaPer10k": 7.797270955165692,
-          "distinctive": false,
-          "includes": [
-            "pandemics"
-          ]
-        },
-        {
-          "term": "epidemics",
-          "score": 0.4432283465022181,
-          "z": 0.9357808767617417,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 7.797270955165692,
-          "deltaPer10k": 7.797270955165692,
-          "distinctive": false
-        },
-        {
-          "term": "outbreaks",
-          "score": 0.4432283465022181,
-          "z": 0.9357808767617417,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 7.797270955165692,
-          "deltaPer10k": 7.797270955165692,
-          "distinctive": false
-        },
-        {
-          "term": "products",
-          "score": 0.4432283465022181,
-          "z": 0.9357808767617417,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 7.797270955165692,
-          "deltaPer10k": 7.797270955165692,
-          "distinctive": false
-        },
-        {
-          "term": "pandemics outbreaks",
-          "score": 0.7041371949948625,
-          "z": 0.9357808767617417,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 7.797270955165692,
-          "deltaPer10k": 7.797270955165692,
-          "distinctive": false
-        },
-        {
-          "term": "COVID-19",
-          "score": 0.7637440203868994,
-          "z": 0.9357808767617417,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 7.797270955165692,
-          "deltaPer10k": 7.797270955165692,
-          "distinctive": false,
-          "includes": [
-            "covid"
-          ]
         }
       ],
-      "summary": "Adds emphasis on COVID-19, pandemics outbreaks, Pandemic; de-emphasizes tih, epidemics pandemics, Pandemic.",
+      "summary": "Adds emphasis on COVID-19, pandemics outbreaks, Pandemic; de-emphasizes tih.",
       "topRisersAlt": [
         {
           "term": "future operating results",
@@ -1973,54 +1186,6 @@
         {
           "term": "operating businesses",
           "score": 0.02978654917737167
-        },
-        {
-          "term": "berkshire board",
-          "score": -0.013392128950145299
-        },
-        {
-          "term": "Data privacy",
-          "score": -0.013443943351123533
-        },
-        {
-          "term": "business continuity",
-          "score": -0.01355715101481092
-        },
-        {
-          "term": "disaster recovery",
-          "score": -0.01355715101481092
-        },
-        {
-          "term": "Cybersecurity",
-          "score": -0.013595311786230635
-        },
-        {
-          "term": "information systems",
-          "score": -0.013695930983002036
-        },
-        {
-          "term": "financial markets",
-          "score": -0.013853060222368985
-        },
-        {
-          "term": "regulatory compliance",
-          "score": -0.014013836756730402
-        },
-        {
-          "term": "Climate change",
-          "score": -0.014111694262069374
-        },
-        {
-          "term": "equity securities",
-          "score": -0.014511949659342882
-        },
-        {
-          "term": "capital markets",
-          "score": -0.014841489831698862
-        },
-        {
-          "term": "operating assets",
-          "score": -0.6127821948613312
         }
       ],
       "topFallersAlt": [
@@ -2071,18 +1236,6 @@
         {
           "term": "berkshire board",
           "score": -0.013392128950145299
-        },
-        {
-          "term": "operating businesses",
-          "score": 0.02978654917737167
-        },
-        {
-          "term": "risks businesses",
-          "score": 0.20244386833422157
-        },
-        {
-          "term": "future operating results",
-          "score": 0.23315920255133715
         }
       ],
       "summaryAlt": "Adds emphasis on future operating results, risks businesses, operating businesses; de-emphasizes operating assets, capital markets, equity securities."
@@ -2090,30 +1243,7 @@
     {
       "from": 2020,
       "to": 2021,
-      "topRisers": [
-        {
-          "term": "international",
-          "score": -0.14262479530824085,
-          "z": -0.5297975903649422,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 7.797270955165692,
-          "per10kCurr": 3.9984006397441023,
-          "deltaPer10k": -3.7988703154215893,
-          "distinctive": false
-        },
-        {
-          "term": "securities prices",
-          "score": -0.5643195069062474,
-          "z": -0.9336150670454306,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 7.797270955165692,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -7.797270955165692,
-          "distinctive": false
-        }
-      ],
+      "topRisers": [],
       "topFallers": [
         {
           "term": "securities prices",
@@ -2138,7 +1268,7 @@
           "distinctive": false
         }
       ],
-      "summary": "Adds emphasis on international, securities prices; de-emphasizes securities prices, international.",
+      "summary": "De-emphasizes securities prices, international.",
       "topRisersAlt": [
         {
           "term": "financial results",
@@ -2147,58 +1277,6 @@
         {
           "term": "Climate change",
           "score": 0.17745643902785924
-        },
-        {
-          "term": "Data privacy",
-          "score": -0.008863256480921677
-        },
-        {
-          "term": "business continuity",
-          "score": -0.008937056430799561
-        },
-        {
-          "term": "disaster recovery",
-          "score": -0.008937056430799561
-        },
-        {
-          "term": "Cybersecurity",
-          "score": -0.008961930285230402
-        },
-        {
-          "term": "future operating results",
-          "score": -0.009027508110790006
-        },
-        {
-          "term": "information systems",
-          "score": -0.009027508110790006
-        },
-        {
-          "term": "risks businesses",
-          "score": -0.00907841245975849
-        },
-        {
-          "term": "financial markets",
-          "score": -0.009129894147509088
-        },
-        {
-          "term": "regulatory compliance",
-          "score": -0.00923462927815244
-        },
-        {
-          "term": "operating businesses",
-          "score": -0.009743775458703308
-        },
-        {
-          "term": "capital markets",
-          "score": -0.009773350018885019
-        },
-        {
-          "term": "equity securities",
-          "score": -0.06132718715284513
-        },
-        {
-          "term": "berkshire board",
-          "score": -0.6081422622487671
         }
       ],
       "topFallersAlt": [
@@ -2253,17 +1331,9 @@
         {
           "term": "Data privacy",
           "score": -0.008863256480921677
-        },
-        {
-          "term": "Climate change",
-          "score": 0.17745643902785924
-        },
-        {
-          "term": "financial results",
-          "score": 0.4296155683404477
         }
       ],
-      "summaryAlt": "Adds emphasis on financial results, Climate change, Data privacy; de-emphasizes berkshire board, equity securities, capital markets."
+      "summaryAlt": "Adds emphasis on financial results, Climate change; de-emphasizes berkshire board, equity securities, capital markets."
     },
     {
       "from": 2021,
@@ -2460,152 +1530,9 @@
           "per10kCurr": 0.0,
           "deltaPer10k": -7.996801279488205,
           "distinctive": false
-        },
-        {
-          "term": "develop",
-          "score": 0.13779190880713887,
-          "z": 0.5118452306980454,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 3.9984006397441023,
-          "per10kCurr": 7.621951219512195,
-          "deltaPer10k": 3.623550579768093,
-          "distinctive": false
-        },
-        {
-          "term": "non",
-          "score": 0.13779190880713887,
-          "z": 0.5118452306980454,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 3.9984006397441023,
-          "per10kCurr": 7.621951219512195,
-          "deltaPer10k": 3.623550579768093,
-          "distinctive": false
-        },
-        {
-          "term": "varying",
-          "score": 0.13779190880713887,
-          "z": 0.5118452306980454,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 3.9984006397441023,
-          "per10kCurr": 7.621951219512195,
-          "deltaPer10k": 3.623550579768093,
-          "distinctive": false
-        },
-        {
-          "term": "exclusions",
-          "score": 0.18864891127892733,
-          "z": 0.5118452306980454,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 3.9984006397441023,
-          "per10kCurr": 7.621951219512195,
-          "deltaPer10k": 3.623550579768093,
-          "distinctive": false
-        },
-        {
-          "term": "limitations",
-          "score": 0.18864891127892733,
-          "z": 0.5118452306980454,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 3.9984006397441023,
-          "per10kCurr": 7.621951219512195,
-          "deltaPer10k": 3.623550579768093,
-          "distinctive": false
-        },
-        {
-          "term": "losses affecting",
-          "score": 0.24084466747424357,
-          "z": 0.5118452306980454,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 3.9984006397441023,
-          "per10kCurr": 7.621951219512195,
-          "deltaPer10k": 3.623550579768093,
-          "distinctive": false
-        },
-        {
-          "term": "produce losses",
-          "score": 0.24084466747424357,
-          "z": 0.5118452306980454,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 3.9984006397441023,
-          "per10kCurr": 7.621951219512195,
-          "deltaPer10k": 3.623550579768093,
-          "distinctive": false
-        },
-        {
-          "term": "events",
-          "score": 0.31569175647139364,
-          "z": 1.1726764025508591,
-          "countPrev": 1,
-          "countCurr": 4,
-          "per10kPrev": 3.9984006397441023,
-          "per10kCurr": 15.24390243902439,
-          "deltaPer10k": 11.245501799280287,
-          "distinctive": false
-        },
-        {
-          "term": "liability",
-          "score": 0.3416930171399085,
-          "z": 0.9270869362574682,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 7.621951219512195,
-          "deltaPer10k": 7.621951219512195,
-          "distinctive": false
-        },
-        {
-          "term": "change regulation",
-          "score": 0.5603736070623847,
-          "z": 0.9270869362574682,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 7.621951219512195,
-          "deltaPer10k": 7.621951219512195,
-          "distinctive": false
-        },
-        {
-          "term": "ghg emissions",
-          "score": 0.5603736070623847,
-          "z": 0.9270869362574682,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 7.621951219512195,
-          "deltaPer10k": 7.621951219512195,
-          "distinctive": false
-        },
-        {
-          "term": "insurance reinsurance",
-          "score": 0.5603736070623847,
-          "z": 0.9270869362574682,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 7.621951219512195,
-          "deltaPer10k": 7.621951219512195,
-          "distinctive": false
-        },
-        {
-          "term": "pandemics similar",
-          "score": 0.5603736070623847,
-          "z": 0.9270869362574682,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 7.621951219512195,
-          "deltaPer10k": 7.621951219512195,
-          "distinctive": false
         }
       ],
-      "summary": "Adds emphasis on ghg, emerge, extreme; de-emphasizes COVID-19, pandemics outbreaks, develop.",
+      "summary": "Adds emphasis on ghg, emerge, extreme; de-emphasizes COVID-19, pandemics outbreaks.",
       "topRisersAlt": [
         {
           "term": "change regulation",
@@ -2622,50 +1549,6 @@
         {
           "term": "Climate change",
           "score": 0.037559480858693206
-        },
-        {
-          "term": "Data privacy",
-          "score": -0.0174942662799773
-        },
-        {
-          "term": "financial results",
-          "score": -0.017523304286425123
-        },
-        {
-          "term": "business continuity",
-          "score": -0.01763801099835538
-        },
-        {
-          "term": "disaster recovery",
-          "score": -0.01763801099835538
-        },
-        {
-          "term": "Cybersecurity",
-          "score": -0.01768645229490584
-        },
-        {
-          "term": "future operating results",
-          "score": -0.01781414667777792
-        },
-        {
-          "term": "risks businesses",
-          "score": -0.01791325157748691
-        },
-        {
-          "term": "financial markets",
-          "score": -0.018013465370627202
-        },
-        {
-          "term": "regulatory compliance",
-          "score": -0.01821729492671631
-        },
-        {
-          "term": "operating businesses",
-          "score": -0.019207271057121833
-        },
-        {
-          "term": "capital markets",
-          "score": -0.01926472979888816
         }
       ],
       "topFallersAlt": [
@@ -2720,14 +1603,6 @@
         {
           "term": "Data privacy",
           "score": -0.0174942662799773
-        },
-        {
-          "term": "Climate change",
-          "score": 0.037559480858693206
-        },
-        {
-          "term": "operating subsidiaries",
-          "score": 0.22883629675987738
         }
       ],
       "summaryAlt": "Adds emphasis on change regulation, failure comply, operating subsidiaries; de-emphasizes information systems, equity securities, capital markets."
@@ -2875,147 +1750,8 @@
           "distinctive": false
         }
       ],
-      "topFallers": [
-        {
-          "term": "share risks",
-          "score": 0.12302425446642963,
-          "z": 0.7724522886425657,
-          "countPrev": 2,
-          "countCurr": 4,
-          "per10kPrev": 7.621951219512195,
-          "per10kCurr": 15.054572826496049,
-          "deltaPer10k": 7.4326216069838535,
-          "distinctive": false
-        },
-        {
-          "term": "supply",
-          "score": 0.14532239906579142,
-          "z": 0.5398181759680343,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 3.8109756097560976,
-          "per10kCurr": 7.527286413248024,
-          "deltaPer10k": 3.7163108034919268,
-          "distinctive": false
-        },
-        {
-          "term": "world",
-          "score": 0.14532239906579142,
-          "z": 0.5398181759680343,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 3.8109756097560976,
-          "per10kCurr": 7.527286413248024,
-          "deltaPer10k": 3.7163108034919268,
-          "distinctive": false
-        },
-        {
-          "term": "events",
-          "score": 0.16167465757296554,
-          "z": 0.6005606796498251,
-          "countPrev": 4,
-          "countCurr": 6,
-          "per10kPrev": 15.24390243902439,
-          "per10kCurr": 22.581859239744073,
-          "deltaPer10k": 7.337956800719683,
-          "distinctive": false
-        },
-        {
-          "term": "Supply chain",
-          "score": 0.18961915635897064,
-          "z": 0.5398181759680343,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 3.8109756097560976,
-          "per10kCurr": 7.527286413248024,
-          "deltaPer10k": 3.7163108034919268,
-          "distinctive": false,
-          "includes": [
-            "supply chains"
-          ]
-        },
-        {
-          "term": "chains",
-          "score": 0.255682418275228,
-          "z": 0.5398181759680343,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 3.8109756097560976,
-          "per10kCurr": 7.527286413248024,
-          "deltaPer10k": 3.7163108034919268,
-          "distinctive": false
-        },
-        {
-          "term": "physical",
-          "score": 0.29534114508681264,
-          "z": 0.42315295218749743,
-          "countPrev": 2,
-          "countCurr": 3,
-          "per10kPrev": 7.621951219512195,
-          "per10kCurr": 11.290929619872037,
-          "deltaPer10k": 3.6689784003598414,
-          "distinctive": false
-        },
-        {
-          "term": "cause",
-          "score": 0.31505704780543997,
-          "z": 0.5398181759680343,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 3.8109756097560976,
-          "per10kCurr": 7.527286413248024,
-          "deltaPer10k": 3.7163108034919268,
-          "distinctive": false
-        },
-        {
-          "term": "Geopolitical tensions",
-          "score": 0.7052456094309671,
-          "z": 0.9372539320700058,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 7.527286413248024,
-          "deltaPer10k": 7.527286413248024,
-          "distinctive": false,
-          "includes": [
-            "geopolitical"
-          ]
-        },
-        {
-          "term": "geopolitical events",
-          "score": 0.7052456094309671,
-          "z": 0.9372539320700058,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 7.527286413248024,
-          "deltaPer10k": 7.527286413248024,
-          "distinctive": false
-        },
-        {
-          "term": "armed",
-          "score": 0.7649462646422843,
-          "z": 0.9372539320700058,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 7.527286413248024,
-          "deltaPer10k": 7.527286413248024,
-          "distinctive": false
-        },
-        {
-          "term": "life",
-          "score": 0.7649462646422843,
-          "z": 0.9372539320700058,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 7.527286413248024,
-          "deltaPer10k": 7.527286413248024,
-          "distinctive": false
-        }
-      ],
-      "summary": "Adds emphasis on armed, life, Geopolitical tensions; de-emphasizes share risks, supply, world.",
+      "topFallers": [],
+      "summary": "Adds emphasis on armed, life, Geopolitical tensions.",
       "topRisersAlt": [
         {
           "term": "insurance subsidiaries",
@@ -3032,50 +1768,6 @@
         {
           "term": "risks businesses",
           "score": 0.14514004512228462
-        },
-        {
-          "term": "change regulation",
-          "score": -0.03397130295873074
-        },
-        {
-          "term": "Data privacy",
-          "score": -0.034096317501806084
-        },
-        {
-          "term": "failure comply",
-          "score": -0.03415147099259874
-        },
-        {
-          "term": "financial results",
-          "score": -0.03415147099259874
-        },
-        {
-          "term": "business continuity",
-          "score": -0.034369294400383055
-        },
-        {
-          "term": "disaster recovery",
-          "score": -0.034369294400383055
-        },
-        {
-          "term": "future operating results",
-          "score": -0.0347036279816999
-        },
-        {
-          "term": "operating subsidiaries",
-          "score": -0.0347036279816999
-        },
-        {
-          "term": "financial markets",
-          "score": -0.03508176087036219
-        },
-        {
-          "term": "regulatory compliance",
-          "score": -0.03546822572745256
-        },
-        {
-          "term": "equity securities",
-          "score": -0.036329685544747026
         }
       ],
       "topFallersAlt": [
@@ -3348,141 +2040,6 @@
           "per10kCurr": 3.6536353671903545,
           "deltaPer10k": -3.87365104605767,
           "distinctive": false
-        },
-        {
-          "term": "supply",
-          "score": 0.10909004886453838,
-          "z": 0.4052285922396469,
-          "countPrev": 2,
-          "countCurr": 3,
-          "per10kPrev": 7.527286413248024,
-          "per10kCurr": 10.960906101571064,
-          "deltaPer10k": 3.4336196883230397,
-          "distinctive": false
-        },
-        {
-          "term": "events",
-          "score": 0.12805415935224887,
-          "z": 0.4756731458538321,
-          "countPrev": 6,
-          "countCurr": 8,
-          "per10kPrev": 22.581859239744073,
-          "per10kCurr": 29.229082937522836,
-          "deltaPer10k": 6.647223697778763,
-          "distinctive": false
-        },
-        {
-          "term": "international",
-          "score": 0.14165951694543283,
-          "z": 0.5262119434965848,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 3.763643206624012,
-          "per10kCurr": 7.307270734380709,
-          "deltaPer10k": 3.543627527756697,
-          "distinctive": false
-        },
-        {
-          "term": "Supply chain",
-          "score": 0.14234256498537248,
-          "z": 0.4052285922396469,
-          "countPrev": 2,
-          "countCurr": 3,
-          "per10kPrev": 7.527286413248024,
-          "per10kCurr": 10.960906101571064,
-          "deltaPer10k": 3.4336196883230397,
-          "distinctive": false,
-          "includes": [
-            "supply chains"
-          ]
-        },
-        {
-          "term": "products services",
-          "score": 0.18483976500588464,
-          "z": 0.5262119434965848,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 3.763643206624012,
-          "per10kCurr": 7.307270734380709,
-          "deltaPer10k": 3.543627527756697,
-          "distinctive": false
-        },
-        {
-          "term": "chains",
-          "score": 0.19193467547160648,
-          "z": 0.4052285922396469,
-          "countPrev": 2,
-          "countCurr": 3,
-          "per10kPrev": 7.527286413248024,
-          "per10kCurr": 10.960906101571064,
-          "deltaPer10k": 3.4336196883230397,
-          "distinctive": false
-        },
-        {
-          "term": "weather",
-          "score": 0.2339458371771838,
-          "z": 0.33518821640785046,
-          "countPrev": 3,
-          "countCurr": 4,
-          "per10kPrev": 11.290929619872037,
-          "per10kCurr": 14.614541468761418,
-          "deltaPer10k": 3.3236118488893815,
-          "distinctive": false
-        },
-        {
-          "term": "reduction",
-          "score": 0.24923788828941082,
-          "z": 0.5262119434965848,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 3.763643206624012,
-          "per10kCurr": 7.307270734380709,
-          "deltaPer10k": 3.543627527756697,
-          "distinctive": false
-        },
-        {
-          "term": "wildfires",
-          "score": 0.30711596759538196,
-          "z": 0.5262119434965848,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 3.763643206624012,
-          "per10kCurr": 7.307270734380709,
-          "deltaPer10k": 3.543627527756697,
-          "distinctive": false
-        },
-        {
-          "term": "values securities",
-          "score": 0.3180664868894205,
-          "z": 0.5262119434965848,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 3.763643206624012,
-          "per10kCurr": 7.307270734380709,
-          "deltaPer10k": 3.543627527756697,
-          "distinctive": false
-        },
-        {
-          "term": "frequency",
-          "score": 0.367271543651611,
-          "z": 0.5262119434965848,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 3.763643206624012,
-          "per10kCurr": 7.307270734380709,
-          "deltaPer10k": 3.543627527756697,
-          "distinctive": false
-        },
-        {
-          "term": "responses",
-          "score": 0.42947150906997084,
-          "z": 0.5262119434965848,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 3.763643206624012,
-          "per10kCurr": 7.307270734380709,
-          "deltaPer10k": 3.543627527756697,
-          "distinctive": false
         }
       ],
       "summary": "Adds emphasis on litigation, exposed, influence; de-emphasizes impacts, change regulation, cause.",
@@ -3560,54 +2117,6 @@
         {
           "term": "Climate change",
           "score": -0.038061943743739945
-        },
-        {
-          "term": "insurance subsidiaries",
-          "score": 0.016841402237357972
-        },
-        {
-          "term": "Data privacy",
-          "score": 0.0169028459312468
-        },
-        {
-          "term": "failure comply",
-          "score": 0.01692995220932314
-        },
-        {
-          "term": "business continuity",
-          "score": 0.017036998417358173
-        },
-        {
-          "term": "disaster recovery",
-          "score": 0.017036998417358173
-        },
-        {
-          "term": "future operating results",
-          "score": 0.017201278820227817
-        },
-        {
-          "term": "information systems",
-          "score": 0.017201278820227817
-        },
-        {
-          "term": "operating subsidiaries",
-          "score": 0.017201278820227817
-        },
-        {
-          "term": "financial markets",
-          "score": 0.017387047080355877
-        },
-        {
-          "term": "risks businesses",
-          "score": 0.01744450759157745
-        },
-        {
-          "term": "regulatory compliance",
-          "score": 0.01757687172595901
-        },
-        {
-          "term": "equity securities",
-          "score": 0.01799987108798584
         }
       ],
       "summaryAlt": "Adds emphasis on energy businesses, capital markets, operating businesses; de-emphasizes change regulation, financial results, Climate change."

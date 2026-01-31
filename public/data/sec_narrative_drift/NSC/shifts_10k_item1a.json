@@ -15,160 +15,6 @@
           "per10kCurr": 9.62000962000962,
           "deltaPer10k": 4.966682491112459,
           "distinctive": false
-        },
-        {
-          "term": "financial",
-          "score": -0.11347457222343456,
-          "z": -2.269491444468691,
-          "countPrev": 20,
-          "countCurr": 7,
-          "per10kPrev": 93.06654257794324,
-          "per10kCurr": 33.67003367003367,
-          "deltaPer10k": -59.39650890790957,
-          "distinctive": false
-        },
-        {
-          "term": "effect financial",
-          "score": -0.11510465648962964,
-          "z": -2.302093129792593,
-          "countPrev": 11,
-          "countCurr": 1,
-          "per10kPrev": 51.18659841786877,
-          "per10kCurr": 4.81000481000481,
-          "deltaPer10k": -46.37659360786396,
-          "distinctive": false
-        },
-        {
-          "term": "results",
-          "score": -0.1255032265523672,
-          "z": -2.510064531047344,
-          "countPrev": 17,
-          "countCurr": 4,
-          "per10kPrev": 79.10656119125176,
-          "per10kCurr": 19.24001924001924,
-          "deltaPer10k": -59.86654195123252,
-          "distinctive": false
-        },
-        {
-          "term": "liquidity particular",
-          "score": -0.12838734463248733,
-          "z": -2.567746892649746,
-          "countPrev": 14,
-          "countCurr": 1,
-          "per10kPrev": 65.14657980456026,
-          "per10kCurr": 4.81000481000481,
-          "deltaPer10k": -60.33657499455545,
-          "distinctive": false
-        },
-        {
-          "term": "particular",
-          "score": -0.12838734463248733,
-          "z": -2.567746892649746,
-          "countPrev": 14,
-          "countCurr": 1,
-          "per10kPrev": 65.14657980456026,
-          "per10kCurr": 4.81000481000481,
-          "deltaPer10k": -60.33657499455545,
-          "distinctive": false
-        },
-        {
-          "term": "particular year",
-          "score": -0.12838734463248733,
-          "z": -2.567746892649746,
-          "countPrev": 14,
-          "countCurr": 1,
-          "per10kPrev": 65.14657980456026,
-          "per10kCurr": 4.81000481000481,
-          "deltaPer10k": -60.33657499455545,
-          "distinctive": false
-        },
-        {
-          "term": "year quarter",
-          "score": -0.12838734463248733,
-          "z": -2.567746892649746,
-          "countPrev": 14,
-          "countCurr": 1,
-          "per10kPrev": 65.14657980456026,
-          "per10kCurr": 4.81000481000481,
-          "deltaPer10k": -60.33657499455545,
-          "distinctive": false
-        },
-        {
-          "term": "year",
-          "score": -0.1284633773672393,
-          "z": -2.569267547344786,
-          "countPrev": 14,
-          "countCurr": 1,
-          "per10kPrev": 65.14657980456026,
-          "per10kCurr": 4.81000481000481,
-          "deltaPer10k": -60.33657499455545,
-          "distinctive": false
-        },
-        {
-          "term": "quarter",
-          "score": -0.12853827413136062,
-          "z": -2.570765482627212,
-          "countPrev": 14,
-          "countCurr": 1,
-          "per10kPrev": 65.14657980456026,
-          "per10kCurr": 4.81000481000481,
-          "deltaPer10k": -60.33657499455545,
-          "distinctive": false
-        },
-        {
-          "term": "surface",
-          "score": -0.14107512333118372,
-          "z": -0.5240411405307702,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 9.306654257794323,
-          "per10kCurr": 4.81000481000481,
-          "deltaPer10k": -4.496649447789513,
-          "distinctive": false
-        },
-        {
-          "term": "liquidity",
-          "score": -0.14211645334201847,
-          "z": -2.8423290668403696,
-          "countPrev": 17,
-          "countCurr": 2,
-          "per10kPrev": 79.10656119125176,
-          "per10kCurr": 9.62000962000962,
-          "deltaPer10k": -69.48655157124213,
-          "distinctive": false
-        },
-        {
-          "term": "position results",
-          "score": -0.18164678492925415,
-          "z": -2.0550987744673606,
-          "countPrev": 16,
-          "countCurr": 0,
-          "per10kPrev": 74.45323406235458,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -74.45323406235458,
-          "distinctive": false
-        },
-        {
-          "term": "financial position",
-          "score": -0.20271719191556523,
-          "z": -2.293483217065456,
-          "countPrev": 16,
-          "countCurr": 0,
-          "per10kPrev": 74.45323406235458,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -74.45323406235458,
-          "distinctive": false
-        },
-        {
-          "term": "liquidity extent",
-          "score": -0.23031637025055096,
-          "z": -0.9315430036214147,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 9.306654257794323,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -9.306654257794323,
-          "distinctive": false
         }
       ],
       "topFallers": [
@@ -338,7 +184,7 @@
           "distinctive": false
         }
       ],
-      "summary": "Adds emphasis on ghgs, financial, effect financial; de-emphasizes department, position, liquidity extent.",
+      "summary": "Adds emphasis on ghgs; de-emphasizes department, position, liquidity extent.",
       "topRisersAlt": [
         {
           "term": "legislation regulation",
@@ -363,22 +209,6 @@
         {
           "term": "Climate change",
           "score": 0.040682532768070434
-        },
-        {
-          "term": "demand rail",
-          "score": -0.28568283011891804
-        },
-        {
-          "term": "materials material adverse effect",
-          "score": -0.7596369218287782
-        },
-        {
-          "term": "adverse effect financial",
-          "score": -0.7680484887330628
-        },
-        {
-          "term": "year quarter",
-          "score": -0.8132264284766788
         }
       ],
       "topFallersAlt": [
@@ -397,30 +227,6 @@
         {
           "term": "demand rail",
           "score": -0.28568283011891804
-        },
-        {
-          "term": "Climate change",
-          "score": 0.040682532768070434
-        },
-        {
-          "term": "insurance potential losses",
-          "score": 0.08523540290872589
-        },
-        {
-          "term": "rail industry",
-          "score": 0.08523540290872589
-        },
-        {
-          "term": "capital markets",
-          "score": 0.14582322433317785
-        },
-        {
-          "term": "significantly increase",
-          "score": 0.37500590062345607
-        },
-        {
-          "term": "legislation regulation",
-          "score": 0.9245224408581025
         }
       ],
       "summaryAlt": "Adds emphasis on legislation regulation, significantly increase, capital markets; de-emphasizes year quarter, adverse effect financial, materials material adverse effect."
@@ -507,86 +313,8 @@
           "distinctive": false
         }
       ],
-      "topFallers": [
-        {
-          "term": "prevent",
-          "score": 0.17201085236115168,
-          "z": 0.9730403211379876,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 9.293680297397769,
-          "deltaPer10k": 9.293680297397769,
-          "distinctive": false
-        },
-        {
-          "term": "ghgs negatively",
-          "score": 0.18369598373000623,
-          "z": 0.5229557644590502,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 4.81000481000481,
-          "per10kCurr": 9.293680297397769,
-          "deltaPer10k": 4.483675487392959,
-          "distinctive": false
-        },
-        {
-          "term": "lines december",
-          "score": 0.18369598373000623,
-          "z": 0.5229557644590502,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 4.81000481000481,
-          "per10kCurr": 9.293680297397769,
-          "deltaPer10k": 4.483675487392959,
-          "distinctive": false
-        },
-        {
-          "term": "ptc",
-          "score": 0.36869328543064467,
-          "z": 1.369557192231098,
-          "countPrev": 3,
-          "countCurr": 8,
-          "per10kPrev": 14.43001443001443,
-          "per10kCurr": 37.174721189591075,
-          "deltaPer10k": 22.744706759576644,
-          "distinctive": false
-        },
-        {
-          "term": "ptc laws",
-          "score": 0.43814437331807077,
-          "z": 0.9311483214135166,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 9.293680297397769,
-          "deltaPer10k": 9.293680297397769,
-          "distinctive": false
-        },
-        {
-          "term": "accidents",
-          "score": 0.44103415777912813,
-          "z": 0.9311483214135166,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 9.293680297397769,
-          "deltaPer10k": 9.293680297397769,
-          "distinctive": false
-        },
-        {
-          "term": "regulations require",
-          "score": 0.562828493395647,
-          "z": 0.9311483214135166,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 9.293680297397769,
-          "deltaPer10k": 9.293680297397769,
-          "distinctive": false
-        }
-      ],
-      "summary": "Adds emphasis on regulations require, accidents, ptc laws; de-emphasizes prevent, ghgs negatively, lines december.",
+      "topFallers": [],
+      "summary": "Adds emphasis on regulations require, accidents, ptc laws.",
       "topRisersAlt": [
         {
           "term": "ptc laws regulations",
@@ -595,30 +323,6 @@
         {
           "term": "insurance coverage",
           "score": 0.2121745199436358
-        },
-        {
-          "term": "significantly increase",
-          "score": -0.009763502267851276
-        },
-        {
-          "term": "insurance potential losses",
-          "score": -0.009837385424514178
-        },
-        {
-          "term": "rail industry",
-          "score": -0.009837385424514178
-        },
-        {
-          "term": "capital markets",
-          "score": -0.01035865836128469
-        },
-        {
-          "term": "Climate change",
-          "score": -0.010458663313536398
-        },
-        {
-          "term": "legislation regulation",
-          "score": -0.8519155430305947
         }
       ],
       "topFallersAlt": [
@@ -645,17 +349,9 @@
         {
           "term": "significantly increase",
           "score": -0.009763502267851276
-        },
-        {
-          "term": "insurance coverage",
-          "score": 0.2121745199436358
-        },
-        {
-          "term": "ptc laws regulations",
-          "score": 0.3158529494184772
         }
       ],
-      "summaryAlt": "Adds emphasis on ptc laws regulations, insurance coverage, significantly increase; de-emphasizes legislation regulation, Climate change, capital markets."
+      "summaryAlt": "Adds emphasis on regulations require, accidents, ptc laws."
     },
     {
       "from": 2017,
@@ -737,28 +433,6 @@
           "per10kCurr": 13.723696248856358,
           "deltaPer10k": 13.723696248856358,
           "distinctive": false
-        },
-        {
-          "term": "lines december",
-          "score": -0.19739561702410605,
-          "z": -0.561956629130401,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 9.293680297397769,
-          "per10kCurr": 4.574565416285453,
-          "deltaPer10k": -4.719114881112316,
-          "distinctive": false
-        },
-        {
-          "term": "rsia",
-          "score": -0.6597925900879829,
-          "z": -0.9453243713980292,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 9.293680297397769,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -9.293680297397769,
-          "distinctive": false
         }
       ],
       "topFallers": [
@@ -783,86 +457,9 @@
           "per10kCurr": 4.574565416285453,
           "deltaPer10k": -4.719114881112316,
           "distinctive": false
-        },
-        {
-          "term": "financial position",
-          "score": 0.11235976924610293,
-          "z": 1.2712056762636017,
-          "countPrev": 0,
-          "countCurr": 3,
-          "per10kPrev": 0.0,
-          "per10kCurr": 13.723696248856358,
-          "deltaPer10k": 13.723696248856358,
-          "distinctive": false
-        },
-        {
-          "term": "implementation",
-          "score": 0.11299413862249799,
-          "z": 0.4197308205644293,
-          "countPrev": 2,
-          "countCurr": 3,
-          "per10kPrev": 9.293680297397769,
-          "per10kCurr": 13.723696248856358,
-          "deltaPer10k": 4.430015951458589,
-          "distinctive": false
-        },
-        {
-          "term": "ptc",
-          "score": 0.11661044159822224,
-          "z": 0.4331640289937744,
-          "countPrev": 8,
-          "countCurr": 10,
-          "per10kPrev": 37.174721189591075,
-          "per10kCurr": 45.745654162854535,
-          "deltaPer10k": 8.57093297326346,
-          "distinctive": false
-        },
-        {
-          "term": "ptc laws",
-          "score": 0.1977058262966626,
-          "z": 0.4201661815160801,
-          "countPrev": 2,
-          "countCurr": 3,
-          "per10kPrev": 9.293680297397769,
-          "per10kCurr": 13.723696248856358,
-          "deltaPer10k": 4.430015951458589,
-          "distinctive": false
-        },
-        {
-          "term": "position",
-          "score": 0.22471953849220588,
-          "z": 1.2712056762636017,
-          "countPrev": 0,
-          "countCurr": 3,
-          "per10kPrev": 0.0,
-          "per10kCurr": 13.723696248856358,
-          "deltaPer10k": 13.723696248856358,
-          "distinctive": false
-        },
-        {
-          "term": "implement ptc",
-          "score": 0.324920813675349,
-          "z": 0.537551800941667,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 4.646840148698884,
-          "per10kCurr": 9.149130832570906,
-          "deltaPer10k": 4.502290683872022,
-          "distinctive": false
-        },
-        {
-          "term": "met",
-          "score": 0.7642915673608892,
-          "z": 0.9364517612121743,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 9.149130832570906,
-          "deltaPer10k": 9.149130832570906,
-          "distinctive": false
         }
       ],
-      "summary": "Adds emphasis on met, implement ptc, position; de-emphasizes rsia, lines december, financial position.",
+      "summary": "Adds emphasis on met, implement ptc, position; de-emphasizes rsia, lines december.",
       "topRisersAlt": [
         {
           "term": "ptc laws regulations",
@@ -887,71 +484,20 @@
         {
           "term": "significantly increase",
           "score": 0.004869835434186509
-        },
-        {
-          "term": "rail industry",
-          "score": -0.23599435977158656
         }
       ],
       "topFallersAlt": [
         {
           "term": "rail industry",
           "score": -0.23599435977158656
-        },
-        {
-          "term": "significantly increase",
-          "score": 0.004869835434186509
-        },
-        {
-          "term": "insurance potential losses",
-          "score": 0.004906595992035356
-        },
-        {
-          "term": "insurance coverage",
-          "score": 0.00492518517859164
-        },
-        {
-          "term": "capital markets",
-          "score": 0.005165916515228464
-        },
-        {
-          "term": "Climate change",
-          "score": 0.005215658764296194
-        },
-        {
-          "term": "ptc laws regulations",
-          "score": 0.1367266660687454
         }
       ],
-      "summaryAlt": "Adds emphasis on ptc laws regulations, Climate change, capital markets; de-emphasizes rail industry, significantly increase, insurance potential losses."
+      "summaryAlt": "Adds emphasis on met, implement ptc, position; de-emphasizes rsia, lines december."
     },
     {
       "from": 2018,
       "to": 2019,
-      "topRisers": [
-        {
-          "term": "ptc laws",
-          "score": -0.20394204309820926,
-          "z": -0.4334194449615414,
-          "countPrev": 3,
-          "countCurr": 2,
-          "per10kPrev": 13.723696248856358,
-          "per10kCurr": 9.174311926605505,
-          "deltaPer10k": -4.549384322250853,
-          "distinctive": false
-        },
-        {
-          "term": "regulations require",
-          "score": -0.3310013030680563,
-          "z": -0.5476114151186843,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 9.149130832570906,
-          "per10kCurr": 4.587155963302752,
-          "deltaPer10k": -4.561974869268154,
-          "distinctive": false
-        }
-      ],
+      "topRisers": [],
       "topFallers": [
         {
           "term": "regulations require",
@@ -976,7 +522,7 @@
           "distinctive": false
         }
       ],
-      "summary": "Adds emphasis on ptc laws, regulations require; de-emphasizes regulations require, ptc laws.",
+      "summary": "De-emphasizes regulations require, ptc laws.",
       "topRisersAlt": [
         {
           "term": "Climate change",
@@ -997,39 +543,15 @@
         {
           "term": "significantly increase",
           "score": 0.004893666833664767
-        },
-        {
-          "term": "ptc laws regulations",
-          "score": -0.12699969076130735
         }
       ],
       "topFallersAlt": [
         {
           "term": "ptc laws regulations",
           "score": -0.12699969076130735
-        },
-        {
-          "term": "significantly increase",
-          "score": 0.004893666833664767
-        },
-        {
-          "term": "insurance potential losses",
-          "score": 0.0049307894324788215
-        },
-        {
-          "term": "insurance coverage",
-          "score": 0.0049495627411668686
-        },
-        {
-          "term": "capital markets",
-          "score": 0.005192741846056226
-        },
-        {
-          "term": "Climate change",
-          "score": 0.005243004549240204
         }
       ],
-      "summaryAlt": "Adds emphasis on Climate change, capital markets, insurance coverage; de-emphasizes ptc laws regulations, significantly increase, insurance potential losses."
+      "summaryAlt": "De-emphasizes regulations require, ptc laws."
     },
     {
       "from": 2019,
@@ -1153,61 +675,6 @@
           "per10kCurr": 25.052192066805844,
           "deltaPer10k": 15.87788014020034,
           "distinctive": false
-        },
-        {
-          "term": "ptc",
-          "score": -0.24886861322047749,
-          "z": -0.924453502749781,
-          "countPrev": 9,
-          "countCurr": 6,
-          "per10kPrev": 41.284403669724774,
-          "per10kCurr": 25.052192066805844,
-          "deltaPer10k": -16.23221160291893,
-          "distinctive": false
-        },
-        {
-          "term": "implementation",
-          "score": -0.27231553543797965,
-          "z": -1.0115500196314366,
-          "countPrev": 3,
-          "countCurr": 1,
-          "per10kPrev": 13.761467889908257,
-          "per10kCurr": 4.175365344467641,
-          "deltaPer10k": -9.586102545440616,
-          "distinctive": false
-        },
-        {
-          "term": "ptc laws",
-          "score": -0.2932730083280272,
-          "z": -0.6232664072631876,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 9.174311926605505,
-          "per10kCurr": 4.175365344467641,
-          "deltaPer10k": -4.998946582137863,
-          "distinctive": false
-        },
-        {
-          "term": "implement ptc",
-          "score": -0.5848666283634958,
-          "z": -0.967608402278633,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 9.174311926605505,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -9.174311926605505,
-          "distinctive": false
-        },
-        {
-          "term": "met",
-          "score": -0.7897202749790588,
-          "z": -0.967608402278633,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 9.174311926605505,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -9.174311926605505,
-          "distinctive": false
         }
       ],
       "topFallers": [
@@ -1265,125 +732,6 @@
           "per10kCurr": 25.052192066805844,
           "deltaPer10k": -16.23221160291893,
           "distinctive": false
-        },
-        {
-          "term": "negatively",
-          "score": 0.10867123812082487,
-          "z": 1.164127480375628,
-          "countPrev": 2,
-          "countCurr": 6,
-          "per10kPrev": 9.174311926605505,
-          "per10kCurr": 25.052192066805844,
-          "deltaPer10k": 15.87788014020034,
-          "distinctive": false
-        },
-        {
-          "term": "capacity constraints",
-          "score": 0.3211065806327067,
-          "z": 0.914143760455982,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 8.350730688935283,
-          "deltaPer10k": 8.350730688935283,
-          "distinctive": false
-        },
-        {
-          "term": "Supply chain",
-          "score": 0.3530698531746015,
-          "z": 1.0051385513455182,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 8.350730688935283,
-          "deltaPer10k": 8.350730688935283,
-          "distinctive": false,
-          "includes": [
-            "supply chain"
-          ]
-        },
-        {
-          "term": "effect liquidity",
-          "score": 0.4301430135637216,
-          "z": 0.914143760455982,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 8.350730688935283,
-          "deltaPer10k": 8.350730688935283,
-          "distinctive": false
-        },
-        {
-          "term": "activities",
-          "score": 0.4329800249972256,
-          "z": 0.914143760455982,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 8.350730688935283,
-          "deltaPer10k": 8.350730688935283,
-          "distinctive": false
-        },
-        {
-          "term": "tax",
-          "score": 0.43632801124185466,
-          "z": 0.9212123099477044,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 8.350730688935283,
-          "deltaPer10k": 8.350730688935283,
-          "distinctive": false
-        },
-        {
-          "term": "Pandemic",
-          "score": 0.49366184024727905,
-          "z": 1.0422603006689732,
-          "countPrev": 0,
-          "countCurr": 3,
-          "per10kPrev": 0.0,
-          "per10kCurr": 12.526096033402922,
-          "deltaPer10k": 12.526096033402922,
-          "distinctive": false,
-          "includes": [
-            "pandemic"
-          ]
-        },
-        {
-          "term": "main lines",
-          "score": 0.6878561416396822,
-          "z": 0.914143760455982,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 8.350730688935283,
-          "deltaPer10k": 8.350730688935283,
-          "distinctive": false
-        },
-        {
-          "term": "main",
-          "score": 0.7460847385963533,
-          "z": 0.914143760455982,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 8.350730688935283,
-          "deltaPer10k": 8.350730688935283,
-          "distinctive": false
-        },
-        {
-          "term": "COVID-19",
-          "score": 0.850647937022605,
-          "z": 1.0422603006689732,
-          "countPrev": 0,
-          "countCurr": 3,
-          "per10kPrev": 0.0,
-          "per10kCurr": 12.526096033402922,
-          "deltaPer10k": 12.526096033402922,
-          "distinctive": false,
-          "includes": [
-            "covid"
-          ]
         }
       ],
       "summary": "Adds emphasis on COVID-19, main, main lines; de-emphasizes met, implement ptc, ptc laws.",
@@ -1423,26 +771,6 @@
         {
           "term": "Supply chain",
           "score": 0.015134434046069956
-        },
-        {
-          "term": "Climate change",
-          "score": -0.001313330491344633
-        },
-        {
-          "term": "capital markets",
-          "score": -0.10718543162776362
-        },
-        {
-          "term": "insurance potential losses",
-          "score": -0.28873475013132754
-        },
-        {
-          "term": "significantly increase",
-          "score": -0.3386128011203242
-        },
-        {
-          "term": "ptc laws regulations",
-          "score": -0.3728442649206656
         }
       ],
       "topFallersAlt": [
@@ -1465,42 +793,6 @@
         {
           "term": "Climate change",
           "score": -0.001313330491344633
-        },
-        {
-          "term": "Supply chain",
-          "score": 0.015134434046069956
-        },
-        {
-          "term": "insurance coverage",
-          "score": 0.047603307923870464
-        },
-        {
-          "term": "business continuity",
-          "score": 0.1277081916656333
-        },
-        {
-          "term": "rail industry",
-          "score": 0.1927022728485155
-        },
-        {
-          "term": "rail network",
-          "score": 0.18367747869915485
-        },
-        {
-          "term": "adverse effect",
-          "score": 0.4631986126589167
-        },
-        {
-          "term": "economic conditions",
-          "score": 0.4631986126589167
-        },
-        {
-          "term": "fuel supply",
-          "score": 0.4631986126589167
-        },
-        {
-          "term": "property damage",
-          "score": 0.4631986126589167
         }
       ],
       "summaryAlt": "Adds emphasis on adverse effect, economic conditions, fuel supply; de-emphasizes ptc laws regulations, significantly increase, insurance potential losses."
@@ -1725,134 +1017,6 @@
           "per10kCurr": 14.689680499449135,
           "deltaPer10k": -10.362511567356709,
           "distinctive": false
-        },
-        {
-          "term": "Cybersecurity",
-          "score": 0.1004204801861463,
-          "z": 1.0757422350082435,
-          "countPrev": 1,
-          "countCurr": 4,
-          "per10kPrev": 4.175365344467641,
-          "per10kCurr": 14.689680499449135,
-          "deltaPer10k": 10.514315154981494,
-          "distinctive": false,
-          "includes": [
-            "cybersecurity"
-          ]
-        },
-        {
-          "term": "Pandemic",
-          "score": 0.10117257692030807,
-          "z": 0.2136040338617125,
-          "countPrev": 3,
-          "countCurr": 4,
-          "per10kPrev": 12.526096033402922,
-          "per10kCurr": 14.689680499449135,
-          "deltaPer10k": 2.1635844660462134,
-          "distinctive": false,
-          "includes": [
-            "pandemics",
-            "pandemic"
-          ]
-        },
-        {
-          "term": "promulgated",
-          "score": 0.12074412263556812,
-          "z": 0.44851910276050644,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 4.175365344467641,
-          "per10kCurr": 7.344840249724568,
-          "deltaPer10k": 3.1694749052569264,
-          "distinctive": false
-        },
-        {
-          "term": "financial results",
-          "score": 0.15719360384907885,
-          "z": 0.44750734120454333,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 4.175365344467641,
-          "per10kCurr": 7.344840249724568,
-          "deltaPer10k": 3.1694749052569264,
-          "distinctive": false
-        },
-        {
-          "term": "impacted",
-          "score": 0.21056896293266847,
-          "z": 0.4445708635446156,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 4.175365344467641,
-          "per10kCurr": 7.344840249724568,
-          "deltaPer10k": 3.1694749052569264,
-          "distinctive": false
-        },
-        {
-          "term": "disease",
-          "score": 0.21243902843914714,
-          "z": 0.44851910276050644,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 4.175365344467641,
-          "per10kCurr": 7.344840249724568,
-          "deltaPer10k": 3.1694749052569264,
-          "distinctive": false
-        },
-        {
-          "term": "duration",
-          "score": 0.21243902843914714,
-          "z": 0.44851910276050644,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 4.175365344467641,
-          "per10kCurr": 7.344840249724568,
-          "deltaPer10k": 3.1694749052569264,
-          "distinctive": false
-        },
-        {
-          "term": "employee",
-          "score": 0.21243902843914714,
-          "z": 0.44851910276050644,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 4.175365344467641,
-          "per10kCurr": 7.344840249724568,
-          "deltaPer10k": 3.1694749052569264,
-          "distinctive": false
-        },
-        {
-          "term": "protect",
-          "score": 0.21243902843914714,
-          "z": 0.44851910276050644,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 4.175365344467641,
-          "per10kCurr": 7.344840249724568,
-          "deltaPer10k": 3.1694749052569264,
-          "distinctive": false
-        },
-        {
-          "term": "impacts",
-          "score": 0.3858144312126134,
-          "z": 0.8145638011572107,
-          "countPrev": 1,
-          "countCurr": 3,
-          "per10kPrev": 4.175365344467641,
-          "per10kCurr": 11.017260374586854,
-          "deltaPer10k": 6.841895030119213,
-          "distinctive": false
-        },
-        {
-          "term": "orders",
-          "score": 0.3896037630298312,
-          "z": 0.8225641564554238,
-          "countPrev": 1,
-          "countCurr": 3,
-          "per10kPrev": 4.175365344467641,
-          "per10kCurr": 11.017260374586854,
-          "deltaPer10k": 6.841895030119213,
-          "distinctive": false
         }
       ],
       "summary": "Adds emphasis on events, Supply chain, chain; de-emphasizes COVID-19, ghgs, ghgs negatively.",
@@ -1876,42 +1040,6 @@
         {
           "term": "Climate change",
           "score": 0.00844983903130947
-        },
-        {
-          "term": "adverse effect",
-          "score": -0.036215656937510055
-        },
-        {
-          "term": "economic conditions",
-          "score": -0.036215656937510055
-        },
-        {
-          "term": "fuel supply",
-          "score": -0.036215656937510055
-        },
-        {
-          "term": "property damage",
-          "score": -0.036215656937510055
-        },
-        {
-          "term": "business continuity",
-          "score": -0.036431349394087764
-        },
-        {
-          "term": "rail network",
-          "score": -0.03797462492083081
-        },
-        {
-          "term": "capital markets",
-          "score": -0.03863779270541423
-        },
-        {
-          "term": "insurance coverage",
-          "score": -0.13315050920550986
-        },
-        {
-          "term": "rail industry",
-          "score": -0.2771375433586689
         }
       ],
       "topFallersAlt": [
@@ -1950,26 +1078,6 @@
         {
           "term": "property damage",
           "score": -0.036215656937510055
-        },
-        {
-          "term": "Climate change",
-          "score": 0.00844983903130947
-        },
-        {
-          "term": "cybersecurity incident",
-          "score": 0.25399422169575203
-        },
-        {
-          "term": "demand rail",
-          "score": 0.33277592133119294
-        },
-        {
-          "term": "environmental liability",
-          "score": 0.33277592133119294
-        },
-        {
-          "term": "Supply chain",
-          "score": 0.19026067965234894
         }
       ],
       "summaryAlt": "Adds emphasis on Supply chain, demand rail, environmental liability; de-emphasizes rail industry, insurance coverage, capital markets."
@@ -2360,22 +1468,6 @@
         {
           "term": "business continuity",
           "score": 0.013506698839365061
-        },
-        {
-          "term": "insurance coverage",
-          "score": -0.2076091037610417
-        },
-        {
-          "term": "adverse effect",
-          "score": -0.496319410788443
-        },
-        {
-          "term": "economic conditions",
-          "score": -0.496319410788443
-        },
-        {
-          "term": "fuel supply",
-          "score": -0.496319410788443
         }
       ],
       "topFallersAlt": [
@@ -2398,46 +1490,6 @@
         {
           "term": "insurance coverage",
           "score": -0.2076091037610417
-        },
-        {
-          "term": "business continuity",
-          "score": 0.013506698839365061
-        },
-        {
-          "term": "demand rail",
-          "score": 0.013520746795846694
-        },
-        {
-          "term": "environmental liability",
-          "score": 0.013520746795846694
-        },
-        {
-          "term": "cybersecurity incident",
-          "score": 0.013615151844408313
-        },
-        {
-          "term": "rail network",
-          "score": 0.014072034483088025
-        },
-        {
-          "term": "capital markets",
-          "score": 0.014314797565194048
-        },
-        {
-          "term": "Supply chain",
-          "score": 0.014468811119916491
-        },
-        {
-          "term": "Climate change",
-          "score": 0.10533268058619116
-        },
-        {
-          "term": "human capital",
-          "score": 0.3777264426961029
-        },
-        {
-          "term": "rail industry",
-          "score": 0.253859858489323
         }
       ],
       "summaryAlt": "Adds emphasis on customers rail industry markets, rail industry, human capital; de-emphasizes adverse effect, economic conditions, fuel supply."
@@ -2823,26 +1875,6 @@
         {
           "term": "business continuity",
           "score": 0.07972767855797391
-        },
-        {
-          "term": "human capital",
-          "score": -0.06908456833722898
-        },
-        {
-          "term": "environmental liability",
-          "score": -0.07008593298164456
-        },
-        {
-          "term": "cybersecurity incident",
-          "score": -0.07056164617444649
-        },
-        {
-          "term": "rail network",
-          "score": -0.07286134826487212
-        },
-        {
-          "term": "capital markets",
-          "score": -0.07408156567885271
         }
       ],
       "topFallersAlt": [
@@ -2885,26 +1917,6 @@
         {
           "term": "human capital",
           "score": -0.06908456833722898
-        },
-        {
-          "term": "business continuity",
-          "score": 0.07972767855797391
-        },
-        {
-          "term": "disaster recovery",
-          "score": 0.4363647176419594
-        },
-        {
-          "term": "incident proceedings",
-          "score": 0.4401304589730426
-        },
-        {
-          "term": "rail services",
-          "score": 0.44396283498240896
-        },
-        {
-          "term": "customers rail",
-          "score": 0.7726658932043877
         }
       ],
       "summaryAlt": "Adds emphasis on incident risks, customers rail, effect financial; de-emphasizes customers rail industry markets, demand rail, rail industry."
@@ -3291,22 +2303,6 @@
         {
           "term": "rail network",
           "score": 0.0077572535967438405
-        },
-        {
-          "term": "disaster recovery",
-          "score": -0.056589545162160526
-        },
-        {
-          "term": "Climate change",
-          "score": -0.020049961290158347
-        },
-        {
-          "term": "human capital",
-          "score": -0.056766096128905374
-        },
-        {
-          "term": "incident proceedings",
-          "score": -0.057176375384282885
         }
       ],
       "topFallersAlt": [

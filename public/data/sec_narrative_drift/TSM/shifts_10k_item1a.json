@@ -59,119 +59,6 @@
           "per10kCurr": 5.369608018614641,
           "deltaPer10k": 1.8347900617394197,
           "distinctive": false
-        },
-        {
-          "term": "Climate change",
-          "score": -0.1005665607933811,
-          "z": -2.0113312158676218,
-          "countPrev": 16,
-          "countCurr": 6,
-          "per10kPrev": 28.27854365500177,
-          "per10kCurr": 10.739216037229282,
-          "deltaPer10k": -17.539327617772486,
-          "distinctive": false,
-          "includes": [
-            "climate change"
-          ]
-        },
-        {
-          "term": "reduction",
-          "score": -0.1133641676278208,
-          "z": -1.214399919495954,
-          "countPrev": 4,
-          "countCurr": 1,
-          "per10kPrev": 7.069635913750442,
-          "per10kCurr": 1.789869339538214,
-          "deltaPer10k": -5.279766574212228,
-          "distinctive": false
-        },
-        {
-          "term": "losses",
-          "score": -0.11368895163682474,
-          "z": -0.42231179016336157,
-          "countPrev": 3,
-          "countCurr": 2,
-          "per10kPrev": 5.302226935312832,
-          "per10kCurr": 3.579738679076428,
-          "deltaPer10k": -1.722488256236404,
-          "distinctive": false
-        },
-        {
-          "term": "disasters severe",
-          "score": -0.13330729550860088,
-          "z": -0.5391778201768206,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 3.534817956875221,
-          "per10kCurr": 1.789869339538214,
-          "deltaPer10k": -1.7449486173370072,
-          "distinctive": false
-        },
-        {
-          "term": "locations subject",
-          "score": -0.13330729550860088,
-          "z": -0.5391778201768206,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 3.534817956875221,
-          "per10kCurr": 1.789869339538214,
-          "deltaPer10k": -1.7449486173370072,
-          "distinctive": false
-        },
-        {
-          "term": "subject natural",
-          "score": -0.13330729550860088,
-          "z": -0.5391778201768206,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 3.534817956875221,
-          "per10kCurr": 1.789869339538214,
-          "deltaPer10k": -1.7449486173370072,
-          "distinctive": false
-        },
-        {
-          "term": "especially",
-          "score": -0.14515001131751307,
-          "z": -0.5391778201768206,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 3.534817956875221,
-          "per10kCurr": 1.789869339538214,
-          "deltaPer10k": -1.7449486173370072,
-          "distinctive": false
-        },
-        {
-          "term": "offer",
-          "score": -0.16563358368798817,
-          "z": -0.9369650417440479,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 3.534817956875221,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -3.534817956875221,
-          "distinctive": false
-        },
-        {
-          "term": "recently",
-          "score": -0.16837316765843469,
-          "z": -0.3554835598805124,
-          "countPrev": 4,
-          "countCurr": 3,
-          "per10kPrev": 7.069635913750442,
-          "per10kCurr": 5.369608018614641,
-          "deltaPer10k": -1.7000278951358014,
-          "distinctive": false
-        },
-        {
-          "term": "macro",
-          "score": -0.24647615027727027,
-          "z": -0.42231179016336157,
-          "countPrev": 3,
-          "countCurr": 2,
-          "per10kPrev": 5.302226935312832,
-          "per10kCurr": 3.579738679076428,
-          "deltaPer10k": -1.722488256236404,
-          "distinctive": false
         }
       ],
       "topFallers": [
@@ -456,14 +343,6 @@
         {
           "term": "market demand",
           "score": -0.009532470030883644
-        },
-        {
-          "term": "products services",
-          "score": 0.027693812018863895
-        },
-        {
-          "term": "decrease operating",
-          "score": 0.09327375575137964
         }
       ],
       "summaryAlt": "Adds emphasis on new semiconductor, timely manner, timely obtain; de-emphasizes Climate change, climate change environmental, market conditions."
@@ -842,30 +721,6 @@
         {
           "term": "Intellectual property",
           "score": 0.007560631968450249
-        },
-        {
-          "term": "gross margin",
-          "score": -0.04938132874555645
-        },
-        {
-          "term": "new semiconductor",
-          "score": -0.04944853575495234
-        },
-        {
-          "term": "business continuity",
-          "score": -0.0494886610157117
-        },
-        {
-          "term": "pricing pressure",
-          "score": -0.0494886610157117
-        },
-        {
-          "term": "common shares adss",
-          "score": -0.04952023372824765
-        },
-        {
-          "term": "timely manner",
-          "score": -0.04952023372824765
         }
       ],
       "topFallersAlt": [
@@ -1372,26 +1227,6 @@
         {
           "term": "products services",
           "score": -0.007780810823218243
-        },
-        {
-          "term": "business continuity",
-          "score": 0.0640900813425187
-        },
-        {
-          "term": "pricing pressure",
-          "score": 0.0640900813425187
-        },
-        {
-          "term": "timely manner",
-          "score": 0.06413127209915892
-        },
-        {
-          "term": "foreign exchange",
-          "score": 0.0642777398125709
-        },
-        {
-          "term": "shares taiwan companies",
-          "score": 0.06431917230018591
         }
       ],
       "summaryAlt": "Adds emphasis on shares adss, new equipment, increase cost; de-emphasizes common shares, adss common shares, laws regulations."
@@ -1776,30 +1611,6 @@
         {
           "term": "products services",
           "score": 0.05560709822066423
-        },
-        {
-          "term": "increase cost",
-          "score": -0.018203480778894665
-        },
-        {
-          "term": "business continuity",
-          "score": -0.018218704195167135
-        },
-        {
-          "term": "pricing pressure",
-          "score": -0.018218704195167135
-        },
-        {
-          "term": "foreign exchange",
-          "score": -0.01827328202402434
-        },
-        {
-          "term": "adverse results",
-          "score": -0.018367924786582
-        },
-        {
-          "term": "results operations financial",
-          "score": -0.018381762669124058
         }
       ],
       "topFallersAlt": [
@@ -2249,30 +2060,6 @@
         {
           "term": "laws regulations",
           "score": 0.10135452917347232
-        },
-        {
-          "term": "gross margin",
-          "score": -0.038865145072732865
-        },
-        {
-          "term": "major customers",
-          "score": -0.038918125113210245
-        },
-        {
-          "term": "business continuity",
-          "score": -0.038949756412485215
-        },
-        {
-          "term": "pricing pressure",
-          "score": -0.038949756412485215
-        },
-        {
-          "term": "foreign exchange",
-          "score": -0.03906314634976926
-        },
-        {
-          "term": "materials timely",
-          "score": -0.039145196810250305
         }
       ],
       "topFallersAlt": [
@@ -3175,38 +2962,6 @@
         {
           "term": "semiconductor industry",
           "score": 0.06755527019761676
-        },
-        {
-          "term": "labor shortages",
-          "score": -0.009718868820626447
-        },
-        {
-          "term": "business continuity",
-          "score": -0.009757735583572291
-        },
-        {
-          "term": "pricing pressure",
-          "score": -0.009757735583572291
-        },
-        {
-          "term": "export control measures",
-          "score": -0.009763462197930117
-        },
-        {
-          "term": "future sales",
-          "score": -0.009776502262073272
-        },
-        {
-          "term": "materials timely",
-          "score": -0.009802687168811275
-        },
-        {
-          "term": "operating financial",
-          "score": -0.009802687168811275
-        },
-        {
-          "term": "foreign exchange",
-          "score": -0.009815832292420446
         }
       ],
       "topFallersAlt": [
@@ -3719,34 +3474,6 @@
         {
           "term": "laws regulations",
           "score": -0.05876879286071013
-        },
-        {
-          "term": "labor shortages",
-          "score": 0.009718868820626447
-        },
-        {
-          "term": "business continuity",
-          "score": 0.009757735583572291
-        },
-        {
-          "term": "pricing pressure",
-          "score": 0.009757735583572291
-        },
-        {
-          "term": "future sales",
-          "score": 0.009776502262073272
-        },
-        {
-          "term": "materials timely",
-          "score": 0.009802687168811275
-        },
-        {
-          "term": "semiconductor manufacturing",
-          "score": 0.009815042590899381
-        },
-        {
-          "term": "foreign exchange",
-          "score": 0.009815832292420446
         }
       ],
       "summaryAlt": "Adds emphasis on able obtain, increased prices, Geopolitical tensions; de-emphasizes export control, export control measures, customer demand."
@@ -4133,22 +3860,6 @@
         {
           "term": "products services",
           "score": 0.030971637443079736
-        },
-        {
-          "term": "labor shortages",
-          "score": -0.04144939932575742
-        },
-        {
-          "term": "Geopolitical tensions",
-          "score": -0.04158199905263871
-        },
-        {
-          "term": "result increased prices",
-          "score": -0.04158199905263871
-        },
-        {
-          "term": "business continuity",
-          "score": -0.04161255158276411
         }
       ],
       "topFallersAlt": [

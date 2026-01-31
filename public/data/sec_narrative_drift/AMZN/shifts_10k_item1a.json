@@ -81,17 +81,6 @@
           "per10kCurr": 9.831230542356218,
           "deltaPer10k": 3.1701148054702895,
           "distinctive": false
-        },
-        {
-          "term": "drop",
-          "score": -0.8868442953334003,
-          "z": -0.945568225971105,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 3.3305578684429644,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -3.3305578684429644,
-          "distinctive": false
         }
       ],
       "topFallers": [
@@ -105,86 +94,9 @@
           "per10kCurr": 0.0,
           "deltaPer10k": -3.3305578684429644,
           "distinctive": false
-        },
-        {
-          "term": "states",
-          "score": 0.22042770134178236,
-          "z": 0.59806795003819,
-          "countPrev": 4,
-          "countCurr": 6,
-          "per10kPrev": 6.661115736885929,
-          "per10kCurr": 9.831230542356218,
-          "deltaPer10k": 3.1701148054702895,
-          "distinctive": false
-        },
-        {
-          "term": "court",
-          "score": 0.2920293733610157,
-          "z": 0.4184079784306911,
-          "countPrev": 2,
-          "countCurr": 3,
-          "per10kPrev": 3.3305578684429644,
-          "per10kCurr": 4.915615271178109,
-          "deltaPer10k": 1.5850574027351447,
-          "distinctive": false
-        },
-        {
-          "term": "indirect tax",
-          "score": 0.3241120724661224,
-          "z": 0.5362138124988894,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 1.6652789342214822,
-          "per10kCurr": 3.2770768474520726,
-          "deltaPer10k": 1.6117979132305904,
-          "distinctive": false
-        },
-        {
-          "term": "states foreign",
-          "score": 0.3241120724661224,
-          "z": 0.5362138124988894,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 1.6652789342214822,
-          "per10kCurr": 3.2770768474520726,
-          "deltaPer10k": 1.6117979132305904,
-          "distinctive": false
-        },
-        {
-          "term": "supreme court",
-          "score": 0.3241120724661224,
-          "z": 0.5362138124988894,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 1.6652789342214822,
-          "per10kCurr": 3.2770768474520726,
-          "deltaPer10k": 1.6117979132305904,
-          "distinctive": false
-        },
-        {
-          "term": "supreme",
-          "score": 0.3742523845718465,
-          "z": 0.5362138124988894,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 1.6652789342214822,
-          "per10kCurr": 3.2770768474520726,
-          "deltaPer10k": 1.6117979132305904,
-          "distinctive": false
-        },
-        {
-          "term": "seeking",
-          "score": 0.4376346034790353,
-          "z": 0.5362138124988894,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 1.6652789342214822,
-          "per10kCurr": 3.2770768474520726,
-          "deltaPer10k": 1.6117979132305904,
-          "distinctive": false
         }
       ],
-      "summary": "Adds emphasis on seeking, supreme, indirect tax; de-emphasizes drop, states, court.",
+      "summary": "Adds emphasis on seeking, supreme, indirect tax; de-emphasizes drop.",
       "topRisersAlt": [
         {
           "term": "foreign jurisdictions",
@@ -197,54 +109,6 @@
         {
           "term": "new product",
           "score": 0.4712631246310268
-        },
-        {
-          "term": "environmental regulation",
-          "score": -0.013309156171960268
-        },
-        {
-          "term": "Interest rates",
-          "score": -0.013325235070928976
-        },
-        {
-          "term": "disaster recovery",
-          "score": -0.013325235070928976
-        },
-        {
-          "term": "payment services",
-          "score": -0.013337440721655547
-        },
-        {
-          "term": "technology systems",
-          "score": -0.013337440721655547
-        },
-        {
-          "term": "activities sellers",
-          "score": -0.01335358807730369
-        },
-        {
-          "term": "changes foreign",
-          "score": -0.01335358807730369
-        },
-        {
-          "term": "payment terms",
-          "score": -0.01335358807730369
-        },
-        {
-          "term": "customer service",
-          "score": -0.013369774579448546
-        },
-        {
-          "term": "information security",
-          "score": -0.013369774579448546
-        },
-        {
-          "term": "operating results result",
-          "score": -0.013369774579448546
-        },
-        {
-          "term": "result future",
-          "score": -0.013369774579448546
         }
       ],
       "topFallersAlt": [
@@ -569,83 +433,6 @@
           "per10kCurr": 6.285355122564425,
           "deltaPer10k": -3.545875419791793,
           "distinctive": false
-        },
-        {
-          "term": "act",
-          "score": 0.10270993985569704,
-          "z": 2.0541987971139406,
-          "countPrev": 1,
-          "countCurr": 9,
-          "per10kPrev": 1.6385384237260363,
-          "per10kCurr": 14.142049025769957,
-          "deltaPer10k": 12.50351060204392,
-          "distinctive": false
-        },
-        {
-          "term": "analysis",
-          "score": 0.1640815271262585,
-          "z": 0.9281852839873749,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 3.1426775612822127,
-          "deltaPer10k": 3.1426775612822127,
-          "distinctive": false
-        },
-        {
-          "term": "transfer pricing",
-          "score": 0.2360522349996765,
-          "z": 0.3905268566979727,
-          "countPrev": 2,
-          "countCurr": 3,
-          "per10kPrev": 3.2770768474520726,
-          "per10kCurr": 4.714016341923319,
-          "deltaPer10k": 1.4369394944712464,
-          "distinctive": false
-        },
-        {
-          "term": "previously",
-          "score": 0.24394895704594238,
-          "z": 0.5150455080571478,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 1.6385384237260363,
-          "per10kCurr": 3.1426775612822127,
-          "deltaPer10k": 1.5041391375561763,
-          "distinctive": false
-        },
-        {
-          "term": "years",
-          "score": 0.300598839531381,
-          "z": 0.5150455080571478,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 1.6385384237260363,
-          "per10kCurr": 3.1426775612822127,
-          "deltaPer10k": 1.5041391375561763,
-          "distinctive": false
-        },
-        {
-          "term": "authorities luxembourg",
-          "score": 0.31131698426943233,
-          "z": 0.5150455080571478,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 1.6385384237260363,
-          "per10kCurr": 3.1426775612822127,
-          "deltaPer10k": 1.5041391375561763,
-          "distinctive": false
-        },
-        {
-          "term": "comply european",
-          "score": 0.31131698426943233,
-          "z": 0.5150455080571478,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 1.6385384237260363,
-          "per10kCurr": 3.1426775612822127,
-          "deltaPer10k": 1.5041391375561763,
-          "distinctive": false
         }
       ],
       "summary": "Adds emphasis on decision, nopas, appeal; de-emphasizes undistributed, undistributed earnings, seeking.",
@@ -719,61 +506,9 @@
         {
           "term": "products services",
           "score": -0.036129906233338005
-        },
-        {
-          "term": "environmental regulation",
-          "score": 0.006632436544645515
-        },
-        {
-          "term": "Interest rates",
-          "score": 0.006640422463460638
-        },
-        {
-          "term": "disaster recovery",
-          "score": 0.006640422463460638
-        },
-        {
-          "term": "payment services",
-          "score": 0.006646484610012493
-        },
-        {
-          "term": "technology systems",
-          "score": 0.006646484610012493
-        },
-        {
-          "term": "activities sellers",
-          "score": 0.0066545044149437516
-        },
-        {
-          "term": "changes foreign",
-          "score": 0.0066545044149437516
-        },
-        {
-          "term": "payment terms",
-          "score": 0.0066545044149437516
-        },
-        {
-          "term": "customer service",
-          "score": 0.006662543597100168
-        },
-        {
-          "term": "information security",
-          "score": 0.006662543597100168
-        },
-        {
-          "term": "operating results result",
-          "score": 0.006662543597100168
-        },
-        {
-          "term": "foreign jurisdictions",
-          "score": 0.006668646219099905
-        },
-        {
-          "term": "services businesses",
-          "score": 0.00667060222679261
         }
       ],
-      "summaryAlt": "Adds emphasis on laws regulations, operating results, Intellectual property; de-emphasizes result future, products services, environmental regulation."
+      "summaryAlt": "Adds emphasis on laws regulations, operating results, Intellectual property; de-emphasizes result future, products services."
     },
     {
       "from": 2017,
@@ -1148,34 +883,6 @@
         {
           "term": "product service",
           "score": 0.07394101886510773
-        },
-        {
-          "term": "environmental regulation",
-          "score": -0.009932231469451658
-        },
-        {
-          "term": "Interest rates",
-          "score": -0.009944170861376556
-        },
-        {
-          "term": "disaster recovery",
-          "score": -0.009944170861376556
-        },
-        {
-          "term": "activities sellers",
-          "score": -0.009965224045529908
-        },
-        {
-          "term": "changes foreign",
-          "score": -0.009965224045529908
-        },
-        {
-          "term": "payment terms",
-          "score": -0.009965224045529908
-        },
-        {
-          "term": "information security",
-          "score": -0.009977242937645237
         }
       ],
       "topFallersAlt": [
@@ -1690,18 +1397,6 @@
         {
           "term": "laws regulations",
           "score": -0.03358852662597833
-        },
-        {
-          "term": "environmental regulation",
-          "score": 0.023330549117351218
-        },
-        {
-          "term": "Interest rates",
-          "score": 0.02335878369838973
-        },
-        {
-          "term": "disaster recovery",
-          "score": 0.02335878369838973
         }
       ],
       "summaryAlt": "Adds emphasis on events security, customer service, provide services; de-emphasizes content electronic, subject additional tax, activities sellers."
@@ -1970,83 +1665,6 @@
           "per10kCurr": 2.789011295495747,
           "deltaPer10k": -1.4729577341959703,
           "distinctive": false
-        },
-        {
-          "term": "extreme",
-          "score": 0.1281240483042802,
-          "z": 0.34762820849418424,
-          "countPrev": 3,
-          "countCurr": 4,
-          "per10kPrev": 4.261969029691717,
-          "per10kCurr": 5.578022590991494,
-          "deltaPer10k": 1.3160535612997766,
-          "distinctive": false
-        },
-        {
-          "term": "contractual terms",
-          "score": 0.1320654868747225,
-          "z": 0.5341551717933486,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 1.4206563432305725,
-          "per10kCurr": 2.789011295495747,
-          "deltaPer10k": 1.3683549522651743,
-          "distinctive": false
-        },
-        {
-          "term": "data security",
-          "score": 0.13357886141736447,
-          "z": 2.671577228347289,
-          "countPrev": 4,
-          "countCurr": 18,
-          "per10kPrev": 5.68262537292229,
-          "per10kCurr": 25.10110165946172,
-          "deltaPer10k": 19.41847628653943,
-          "distinctive": false
-        },
-        {
-          "term": "discussion",
-          "score": 0.1968716040889905,
-          "z": 0.5341551717933486,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 1.4206563432305725,
-          "per10kCurr": 2.789011295495747,
-          "deltaPer10k": 1.3683549522651743,
-          "distinctive": false
-        },
-        {
-          "term": "disasters extreme",
-          "score": 0.26157614213835534,
-          "z": 0.34762820849418424,
-          "countPrev": 3,
-          "countCurr": 4,
-          "per10kPrev": 4.261969029691717,
-          "per10kCurr": 5.578022590991494,
-          "deltaPer10k": 1.3160535612997766,
-          "distinctive": false
-        },
-        {
-          "term": "man disasters",
-          "score": 0.26157614213835534,
-          "z": 0.34762820849418424,
-          "countPrev": 3,
-          "countCurr": 4,
-          "per10kPrev": 4.261969029691717,
-          "per10kCurr": 5.578022590991494,
-          "deltaPer10k": 1.3160535612997766,
-          "distinctive": false
-        },
-        {
-          "term": "natural man",
-          "score": 0.26157614213835534,
-          "z": 0.34762820849418424,
-          "countPrev": 3,
-          "countCurr": 4,
-          "per10kPrev": 4.261969029691717,
-          "per10kCurr": 5.578022590991494,
-          "deltaPer10k": 1.3160535612997766,
-          "distinctive": false
         }
       ],
       "summary": "Adds emphasis on COVID-19, Pandemic, protection data; de-emphasizes guidance, tax act, previously.",
@@ -2066,50 +1684,6 @@
         {
           "term": "products services",
           "score": 0.02165359044607973
-        },
-        {
-          "term": "Supply chain",
-          "score": -0.020030754192545075
-        },
-        {
-          "term": "environmental regulation",
-          "score": -0.020030754192545075
-        },
-        {
-          "term": "Interest rates",
-          "score": -0.02005503530047381
-        },
-        {
-          "term": "disaster recovery",
-          "score": -0.02005503530047381
-        },
-        {
-          "term": "customer service",
-          "score": -0.020122296456678512
-        },
-        {
-          "term": "provide services",
-          "score": -0.020122296456678512
-        },
-        {
-          "term": "result future",
-          "score": -0.020122296456678512
-        },
-        {
-          "term": "changes financial",
-          "score": -0.02014680014849901
-        },
-        {
-          "term": "services businesses",
-          "score": -0.02014680014849901
-        },
-        {
-          "term": "financial reporting",
-          "score": -0.02022067061812649
-        },
-        {
-          "term": "new businesses",
-          "score": -0.02022067061812649
         }
       ],
       "topFallersAlt": [
@@ -2432,97 +2006,6 @@
           "includes": [
             "pandemic"
           ]
-        },
-        {
-          "term": "qualified",
-          "score": 0.10053795643492557,
-          "z": 0.3734607782912027,
-          "countPrev": 2,
-          "countCurr": 3,
-          "per10kPrev": 2.789011295495747,
-          "per10kCurr": 3.950487226757967,
-          "deltaPer10k": 1.16147593126222,
-          "distinctive": false
-        },
-        {
-          "term": "continue increase",
-          "score": 0.12413696296549731,
-          "z": 0.5020872776673289,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 1.3945056477478734,
-          "per10kCurr": 2.633658151171978,
-          "deltaPer10k": 1.2391525034241047,
-          "distinctive": false
-        },
-        {
-          "term": "new technologies",
-          "score": 0.12413696296549731,
-          "z": 0.5020872776673289,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 1.3945056477478734,
-          "per10kCurr": 2.633658151171978,
-          "deltaPer10k": 1.2391525034241047,
-          "distinctive": false
-        },
-        {
-          "term": "actual",
-          "score": 0.13516500736601547,
-          "z": 0.5020872776673289,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 1.3945056477478734,
-          "per10kCurr": 2.633658151171978,
-          "deltaPer10k": 1.2391525034241047,
-          "distinctive": false
-        },
-        {
-          "term": "Supply chain",
-          "score": 0.17874551427757798,
-          "z": 0.7229583076220399,
-          "countPrev": 2,
-          "countCurr": 4,
-          "per10kPrev": 2.789011295495747,
-          "per10kCurr": 5.267316302343956,
-          "deltaPer10k": 2.4783050068482093,
-          "distinctive": false,
-          "includes": [
-            "supply chain"
-          ]
-        },
-        {
-          "term": "chain",
-          "score": 0.18505245847415058,
-          "z": 0.5020872776673289,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 1.3945056477478734,
-          "per10kCurr": 2.633658151171978,
-          "deltaPer10k": 1.2391525034241047,
-          "distinctive": false
-        },
-        {
-          "term": "circumstances",
-          "score": 0.18505245847415058,
-          "z": 0.5020872776673289,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 1.3945056477478734,
-          "per10kCurr": 2.633658151171978,
-          "deltaPer10k": 1.2391525034241047,
-          "distinctive": false
-        },
-        {
-          "term": "incidents",
-          "score": 0.18505245847415058,
-          "z": 0.5020872776673289,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 1.3945056477478734,
-          "per10kCurr": 2.633658151171978,
-          "deltaPer10k": 1.2391525034241047,
-          "distinctive": false
         }
       ],
       "summary": "Adds emphasis on crises, Climate change, use data; de-emphasizes man, disasters extreme, man disasters.",
@@ -2616,38 +2099,6 @@
         {
           "term": "product liability",
           "score": -0.10717122312256899
-        },
-        {
-          "term": "environmental regulation",
-          "score": 0.0234085719306254
-        },
-        {
-          "term": "Interest rates",
-          "score": 0.02343699579722358
-        },
-        {
-          "term": "disaster recovery",
-          "score": 0.02343699579722358
-        },
-        {
-          "term": "changes financial",
-          "score": 0.02354441830977727
-        },
-        {
-          "term": "rights management technology",
-          "score": 0.02357317325461672
-        },
-        {
-          "term": "financial reporting",
-          "score": 0.023630894381631684
-        },
-        {
-          "term": "new businesses",
-          "score": 0.023630894381631684
-        },
-        {
-          "term": "new product",
-          "score": 0.023630894381631684
         }
       ],
       "summaryAlt": "Adds emphasis on fulfillment network, Climate change, fulfillment network customer service; de-emphasizes data security, events security, customer service."
@@ -2904,94 +2355,6 @@
           "per10kCurr": 1.271617497456765,
           "deltaPer10k": -1.3620406537152132,
           "distinctive": false
-        },
-        {
-          "term": "discussed",
-          "score": 0.12028775859163532,
-          "z": 0.3263666624370484,
-          "countPrev": 3,
-          "countCurr": 4,
-          "per10kPrev": 3.950487226757967,
-          "per10kCurr": 5.08646998982706,
-          "deltaPer10k": 1.1359827630690926,
-          "distinctive": false
-        },
-        {
-          "term": "proceedings governments",
-          "score": 0.12870469132201015,
-          "z": 0.5205620191211118,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 1.316829075585989,
-          "per10kCurr": 2.54323499491353,
-          "deltaPer10k": 1.2264059193275407,
-          "distinctive": false
-        },
-        {
-          "term": "controversy",
-          "score": 0.14013852228216186,
-          "z": 0.5205620191211118,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 1.316829075585989,
-          "per10kCurr": 2.54323499491353,
-          "deltaPer10k": 1.2264059193275407,
-          "distinctive": false
-        },
-        {
-          "term": "matters",
-          "score": 0.17141755602094635,
-          "z": 0.46509284316785326,
-          "countPrev": 6,
-          "countCurr": 8,
-          "per10kPrev": 7.900974453515934,
-          "per10kCurr": 10.17293997965412,
-          "deltaPer10k": 2.2719655261381853,
-          "distinctive": false
-        },
-        {
-          "term": "risks discussed",
-          "score": 0.18285514510743828,
-          "z": 0.5205620191211118,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 1.316829075585989,
-          "per10kCurr": 2.54323499491353,
-          "deltaPer10k": 1.2264059193275407,
-          "distinctive": false
-        },
-        {
-          "term": "cloud services",
-          "score": 0.18717871873308692,
-          "z": 0.3977938788366455,
-          "countPrev": 2,
-          "countCurr": 3,
-          "per10kPrev": 2.633658151171978,
-          "per10kCurr": 3.814852492370295,
-          "deltaPer10k": 1.1811943411983168,
-          "distinctive": false
-        },
-        {
-          "term": "impacted",
-          "score": 0.19186162587942795,
-          "z": 0.5205620191211118,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 1.316829075585989,
-          "per10kCurr": 2.54323499491353,
-          "deltaPer10k": 1.2264059193275407,
-          "distinctive": false
-        },
-        {
-          "term": "prohibit",
-          "score": 0.19186162587942795,
-          "z": 0.5205620191211118,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 1.316829075585989,
-          "per10kCurr": 2.54323499491353,
-          "deltaPer10k": 1.2264059193275407,
-          "distinctive": false
         }
       ],
       "summary": "Adds emphasis on localization, Inflation, data localization; de-emphasizes security network, constrained, markets.",
@@ -3023,38 +2386,6 @@
         {
           "term": "product liability",
           "score": 0.10349478513517152
-        },
-        {
-          "term": "customer demand",
-          "score": -0.002378006861250448
-        },
-        {
-          "term": "environmental regulation",
-          "score": -0.08431518653555337
-        },
-        {
-          "term": "Interest rates",
-          "score": -0.08441451910275344
-        },
-        {
-          "term": "disaster recovery",
-          "score": -0.08441451910275344
-        },
-        {
-          "term": "Supply chain",
-          "score": -0.08458966474266294
-        },
-        {
-          "term": "fulfillment network customer service",
-          "score": -0.0846896458644073
-        },
-        {
-          "term": "changes financial",
-          "score": -0.08478986375382469
-        },
-        {
-          "term": "rights management technology",
-          "score": -0.08489031925345891
         }
       ],
       "topFallersAlt": [
@@ -3519,14 +2850,6 @@
         {
           "term": "laws regulations",
           "score": 0.035336585731590375
-        },
-        {
-          "term": "Inflation",
-          "score": -0.02450682381274838
-        },
-        {
-          "term": "Interest rates",
-          "score": -0.024602488227295716
         }
       ],
       "topFallersAlt": [
@@ -3730,141 +3053,8 @@
           "distinctive": false
         }
       ],
-      "topFallers": [
-        {
-          "term": "activity",
-          "score": 0.14738384345144387,
-          "z": 0.547475668242289,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 1.2193634922570418,
-          "per10kCurr": 2.4327940639824837,
-          "deltaPer10k": 1.2134305717254419,
-          "distinctive": false
-        },
-        {
-          "term": "detect",
-          "score": 0.21157152884554958,
-          "z": 0.7859088311394231,
-          "countPrev": 2,
-          "countCurr": 4,
-          "per10kPrev": 2.4387269845140835,
-          "per10kCurr": 4.865588127964967,
-          "deltaPer10k": 2.4268611434508838,
-          "distinctive": false
-        },
-        {
-          "term": "healthcare matters",
-          "score": 0.2576102840466633,
-          "z": 0.547475668242289,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 1.2193634922570418,
-          "per10kCurr": 2.4327940639824837,
-          "deltaPer10k": 1.2134305717254419,
-          "distinctive": false
-        },
-        {
-          "term": "intelligence machine",
-          "score": 0.3259965729590942,
-          "z": 0.4332413640884431,
-          "countPrev": 2,
-          "countCurr": 3,
-          "per10kPrev": 2.4387269845140835,
-          "per10kCurr": 3.649191095973726,
-          "deltaPer10k": 1.2104641114596424,
-          "distinctive": false
-        },
-        {
-          "term": "learning",
-          "score": 0.35359292909664625,
-          "z": 0.4332413640884431,
-          "countPrev": 2,
-          "countCurr": 3,
-          "per10kPrev": 2.4387269845140835,
-          "per10kCurr": 3.649191095973726,
-          "deltaPer10k": 1.2104641114596424,
-          "distinctive": false
-        },
-        {
-          "term": "machine",
-          "score": 0.35359292909664625,
-          "z": 0.4332413640884431,
-          "countPrev": 2,
-          "countCurr": 3,
-          "per10kPrev": 2.4387269845140835,
-          "per10kCurr": 3.649191095973726,
-          "deltaPer10k": 1.2104641114596424,
-          "distinctive": false
-        },
-        {
-          "term": "incidents",
-          "score": 0.397947109322637,
-          "z": 1.0797164351280195,
-          "countPrev": 2,
-          "countCurr": 5,
-          "per10kPrev": 2.4387269845140835,
-          "per10kCurr": 6.0819851599562105,
-          "deltaPer10k": 3.643258175442127,
-          "distinctive": false
-        },
-        {
-          "term": "social",
-          "score": 0.4468260447620048,
-          "z": 0.547475668242289,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 1.2193634922570418,
-          "per10kCurr": 2.4327940639824837,
-          "deltaPer10k": 1.2134305717254419,
-          "distinctive": false
-        },
-        {
-          "term": "sustainability",
-          "score": 0.4586842889070724,
-          "z": 0.7859088311394231,
-          "countPrev": 2,
-          "countCurr": 4,
-          "per10kPrev": 2.4387269845140835,
-          "per10kCurr": 4.865588127964967,
-          "deltaPer10k": 2.4268611434508838,
-          "distinctive": false
-        },
-        {
-          "term": "machine learning",
-          "score": 0.4656003994396286,
-          "z": 0.6187713887368381,
-          "countPrev": 4,
-          "countCurr": 6,
-          "per10kPrev": 4.877453969028167,
-          "per10kCurr": 7.298382191947452,
-          "deltaPer10k": 2.420928222919285,
-          "distinctive": false
-        },
-        {
-          "term": "healthcare",
-          "score": 0.850538174408536,
-          "z": 1.4573105699382165,
-          "countPrev": 1,
-          "countCurr": 5,
-          "per10kPrev": 1.2193634922570418,
-          "per10kCurr": 6.0819851599562105,
-          "deltaPer10k": 4.862621667699169,
-          "distinctive": false
-        },
-        {
-          "term": "satellite",
-          "score": 1.0018513727621654,
-          "z": 1.068190696173224,
-          "countPrev": 0,
-          "countCurr": 3,
-          "per10kPrev": 0.0,
-          "per10kCurr": 3.649191095973726,
-          "deltaPer10k": 3.649191095973726,
-          "distinctive": false
-        }
-      ],
-      "summary": "Adds emphasis on satellite, healthcare, machine learning; de-emphasizes activity, detect, healthcare matters.",
+      "topFallers": [],
+      "summary": "Adds emphasis on satellite, healthcare, machine learning.",
       "topRisersAlt": [
         {
           "term": "machine learning",
@@ -3939,54 +3129,6 @@
         {
           "term": "product service",
           "score": -0.06185344912180568
-        },
-        {
-          "term": "trade restrictions",
-          "score": 0.006067292189759321
-        },
-        {
-          "term": "Inflation",
-          "score": 0.006070631483327205
-        },
-        {
-          "term": "Supply chain",
-          "score": 0.006087383239512967
-        },
-        {
-          "term": "changes customer",
-          "score": 0.006092477287427123
-        },
-        {
-          "term": "operating costs",
-          "score": 0.006092477287427123
-        },
-        {
-          "term": "regulatory risks",
-          "score": 0.006092477287427123
-        },
-        {
-          "term": "Interest rates",
-          "score": 0.006094109857261998
-        },
-        {
-          "term": "disaster recovery",
-          "score": 0.006094109857261998
-        },
-        {
-          "term": "fulfillment network data",
-          "score": 0.006105967980650995
-        },
-        {
-          "term": "fulfillment network customer service",
-          "score": 0.006112735756697241
-        },
-        {
-          "term": "provide services",
-          "score": 0.006112735756697241
-        },
-        {
-          "term": "changes financial",
-          "score": 0.0061195185520688256
         }
       ],
       "summaryAlt": "Adds emphasis on machine learning, Artificial intelligence, products services; de-emphasizes financial reporting, rights parties, product service."

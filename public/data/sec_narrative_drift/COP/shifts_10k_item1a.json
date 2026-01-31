@@ -226,116 +226,6 @@
           "per10kCurr": 3.417634996582365,
           "deltaPer10k": -4.251076659859352,
           "distinctive": false
-        },
-        {
-          "term": "supply",
-          "score": 0.10528585423625726,
-          "z": 1.1278619654169768,
-          "countPrev": 0,
-          "countCurr": 3,
-          "per10kPrev": 0.0,
-          "per10kCurr": 10.252904989747096,
-          "deltaPer10k": 10.252904989747096,
-          "distinctive": false
-        },
-        {
-          "term": "liquids",
-          "score": 0.10702239737287778,
-          "z": 0.18337198212188505,
-          "countPrev": 16,
-          "countCurr": 19,
-          "per10kPrev": 61.34969325153374,
-          "per10kCurr": 64.93506493506494,
-          "deltaPer10k": 3.5853716835312,
-          "distinctive": false
-        },
-        {
-          "term": "wti crude",
-          "score": 0.11335624643754601,
-          "z": 0.4584833382481995,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 3.834355828220859,
-          "per10kCurr": 6.83526999316473,
-          "deltaPer10k": 3.0009141649438713,
-          "distinctive": false
-        },
-        {
-          "term": "note",
-          "score": 0.12342655659276373,
-          "z": 0.4584833382481995,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 3.834355828220859,
-          "per10kCurr": 6.83526999316473,
-          "deltaPer10k": 3.0009141649438713,
-          "distinctive": false
-        },
-        {
-          "term": "relative",
-          "score": 0.12342655659276373,
-          "z": 0.4584833382481995,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 3.834355828220859,
-          "per10kCurr": 6.83526999316473,
-          "deltaPer10k": 3.0009141649438713,
-          "distinctive": false
-        },
-        {
-          "term": "ongoing",
-          "score": 0.16045636162130655,
-          "z": 0.9076782510955743,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 6.83526999316473,
-          "deltaPer10k": 6.83526999316473,
-          "distinctive": false
-        },
-        {
-          "term": "wti",
-          "score": 0.16898151513904747,
-          "z": 0.4584833382481995,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 3.834355828220859,
-          "per10kCurr": 6.83526999316473,
-          "deltaPer10k": 3.0009141649438713,
-          "distinctive": false
-        },
-        {
-          "term": "disposition",
-          "score": 0.20340818338523914,
-          "z": 1.1506504465643157,
-          "countPrev": 0,
-          "countCurr": 4,
-          "per10kPrev": 0.0,
-          "per10kCurr": 13.67053998632946,
-          "deltaPer10k": 13.67053998632946,
-          "distinctive": false
-        },
-        {
-          "term": "brent crude",
-          "score": 0.21573565703108233,
-          "z": 0.4584833382481995,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 3.834355828220859,
-          "per10kCurr": 6.83526999316473,
-          "deltaPer10k": 3.0009141649438713,
-          "distinctive": false
-        },
-        {
-          "term": "willing incur",
-          "score": 0.224416005847285,
-          "z": 0.9076782510955743,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 6.83526999316473,
-          "deltaPer10k": 6.83526999316473,
-          "distinctive": false
         }
       ],
       "summary": "Adds emphasis on realized, complete disposition, successfully complete; de-emphasizes recent, fourth, fourth quarter.",
@@ -351,46 +241,6 @@
         {
           "term": "crude oil",
           "score": 0.044169492823076695
-        },
-        {
-          "term": "results operations cash flows",
-          "score": -0.008166657761185192
-        },
-        {
-          "term": "proved reserve",
-          "score": -0.008185046990863754
-        },
-        {
-          "term": "cash flows",
-          "score": -0.00821868232995504
-        },
-        {
-          "term": "operating results future",
-          "score": -0.00822207502268979
-        },
-        {
-          "term": "continue incur",
-          "score": -0.008278249527284842
-        },
-        {
-          "term": "hazards risks",
-          "score": -0.008309189005272888
-        },
-        {
-          "term": "prices crude oil",
-          "score": -0.008331710231582967
-        },
-        {
-          "term": "Climate change",
-          "score": -0.009419059200554303
-        },
-        {
-          "term": "counterparties result",
-          "score": -1.549867041630514
-        },
-        {
-          "term": "price declines",
-          "score": -1.549867041630514
         }
       ],
       "topFallersAlt": [
@@ -433,18 +283,6 @@
         {
           "term": "results operations cash flows",
           "score": -0.008166657761185192
-        },
-        {
-          "term": "crude oil",
-          "score": 0.044169492823076695
-        },
-        {
-          "term": "gas liquids",
-          "score": 0.07746975805229539
-        },
-        {
-          "term": "oil gas industry",
-          "score": 0.5463857991645416
         }
       ],
       "summaryAlt": "Adds emphasis on oil gas industry, gas liquids, crude oil; de-emphasizes counterparties result, price declines, Climate change."
@@ -561,61 +399,6 @@
           "per10kPrev": 0.0,
           "per10kCurr": 6.666666666666666,
           "deltaPer10k": 6.666666666666666,
-          "distinctive": false
-        },
-        {
-          "term": "gas liquids",
-          "score": -0.11108068549012866,
-          "z": -0.23606966135910915,
-          "countPrev": 19,
-          "countCurr": 18,
-          "per10kPrev": 64.93506493506494,
-          "per10kCurr": 60.0,
-          "deltaPer10k": -4.935064935064943,
-          "distinctive": false
-        },
-        {
-          "term": "liquids",
-          "score": -0.13777863342755445,
-          "z": -0.23606966135910915,
-          "countPrev": 19,
-          "countCurr": 18,
-          "per10kPrev": 64.93506493506494,
-          "per10kCurr": 60.0,
-          "deltaPer10k": -4.935064935064943,
-          "distinctive": false
-        },
-        {
-          "term": "wti crude",
-          "score": -0.14081722228664123,
-          "z": -0.5695526465088879,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 6.83526999316473,
-          "per10kCurr": 3.333333333333333,
-          "deltaPer10k": -3.5019366598313972,
-          "distinctive": false
-        },
-        {
-          "term": "wti",
-          "score": -0.20991792095708545,
-          "z": -0.5695526465088879,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 6.83526999316473,
-          "per10kCurr": 3.333333333333333,
-          "deltaPer10k": -3.5019366598313972,
-          "distinctive": false
-        },
-        {
-          "term": "brent crude",
-          "score": -0.267998429076761,
-          "z": -0.5695526465088879,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 6.83526999316473,
-          "per10kCurr": 3.333333333333333,
-          "deltaPer10k": -3.5019366598313972,
           "distinctive": false
         }
       ],
@@ -762,28 +545,6 @@
           "per10kCurr": 60.0,
           "deltaPer10k": -4.935064935064943,
           "distinctive": false
-        },
-        {
-          "term": "accordance",
-          "score": 0.16503721895877818,
-          "z": 0.9335914933913689,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 6.666666666666666,
-          "deltaPer10k": 6.666666666666666,
-          "distinctive": false
-        },
-        {
-          "term": "matures",
-          "score": 0.16503721895877818,
-          "z": 0.9335914933913689,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 6.666666666666666,
-          "deltaPer10k": 6.666666666666666,
-          "distinctive": false
         }
       ],
       "summary": "Adds emphasis on cenovus, cenovus energy, percent compared; de-emphasizes henry, hub, realized.",
@@ -823,18 +584,6 @@
         {
           "term": "proved reserve",
           "score": 0.01643764224188171
-        },
-        {
-          "term": "crude oil",
-          "score": -0.00693101280311792
-        },
-        {
-          "term": "results operations cash flows",
-          "score": -1.0276833091706097
-        },
-        {
-          "term": "cash flows",
-          "score": -1.0317490690854587
         }
       ],
       "topFallersAlt": [
@@ -849,42 +598,6 @@
         {
           "term": "crude oil",
           "score": -0.00693101280311792
-        },
-        {
-          "term": "proved reserve",
-          "score": 0.01643764224188171
-        },
-        {
-          "term": "oil gas industry",
-          "score": 0.016512313394411393
-        },
-        {
-          "term": "operating results future",
-          "score": 0.016512313394411393
-        },
-        {
-          "term": "continue incur",
-          "score": 0.01662560091012688
-        },
-        {
-          "term": "hazards risks",
-          "score": 0.016687999534801268
-        },
-        {
-          "term": "prices crude oil",
-          "score": 0.016733421495205292
-        },
-        {
-          "term": "gas liquids",
-          "score": 0.018168232644942606
-        },
-        {
-          "term": "Climate change",
-          "score": 0.018927681344449887
-        },
-        {
-          "term": "value assets",
-          "score": 1.558082334066464
         }
       ],
       "summaryAlt": "Adds emphasis on value assets, Climate change, gas liquids; de-emphasizes cash flows, results operations cash flows, crude oil."
@@ -1283,10 +996,6 @@
         {
           "term": "business continuity",
           "score": 0.3827425660660242
-        },
-        {
-          "term": "operating results future",
-          "score": -0.0989931343592021
         }
       ],
       "topFallersAlt": [
@@ -1325,30 +1034,6 @@
         {
           "term": "operating results future",
           "score": -0.0989931343592021
-        },
-        {
-          "term": "business continuity",
-          "score": 0.3827425660660242
-        },
-        {
-          "term": "production crude oil",
-          "score": 0.3302619636463455
-        },
-        {
-          "term": "Cybersecurity",
-          "score": 0.7034356623866955
-        },
-        {
-          "term": "existing future laws regulations",
-          "score": 0.7034356623866955
-        },
-        {
-          "term": "limit ability",
-          "score": 0.7034356623866955
-        },
-        {
-          "term": "oil natural gas",
-          "score": 0.4887056909115426
         }
       ],
       "summaryAlt": "Adds emphasis on Climate change, proved reserves, local state; de-emphasizes gas liquids, hazards risks, value assets."
@@ -1719,38 +1404,6 @@
         {
           "term": "Climate change",
           "score": 0.011729562152665407
-        },
-        {
-          "term": "incur additional costs",
-          "score": -0.029533383754677622
-        },
-        {
-          "term": "Cybersecurity",
-          "score": -0.029593497907908883
-        },
-        {
-          "term": "limit ability",
-          "score": -0.029593497907908883
-        },
-        {
-          "term": "operating results future",
-          "score": -0.029714463430882354
-        },
-        {
-          "term": "business continuity",
-          "score": -0.029775317820666114
-        },
-        {
-          "term": "continue incur",
-          "score": -0.02989777750010303
-        },
-        {
-          "term": "oil natural gas",
-          "score": -0.029948123419863304
-        },
-        {
-          "term": "production crude oil",
-          "score": -0.030165602733838615
         }
       ],
       "topFallersAlt": [
@@ -2191,30 +1844,6 @@
         {
           "term": "crude oil",
           "score": 0.03892700871832644
-        },
-        {
-          "term": "Cybersecurity",
-          "score": -0.010875607400606668
-        },
-        {
-          "term": "limit ability",
-          "score": -0.010875607400606668
-        },
-        {
-          "term": "existing future",
-          "score": -0.01091916677563809
-        },
-        {
-          "term": "business continuity",
-          "score": -0.010941077576212876
-        },
-        {
-          "term": "continue incur",
-          "score": -0.010985164045100415
-        },
-        {
-          "term": "production crude oil",
-          "score": -0.011081557697548039
         }
       ],
       "topFallersAlt": [
@@ -2273,10 +1902,6 @@
         {
           "term": "limit ability",
           "score": -0.010875607400606668
-        },
-        {
-          "term": "crude oil",
-          "score": 0.03892700871832644
         }
       ],
       "summaryAlt": "Adds emphasis on commodity prices, covid pandemic, commodity price; de-emphasizes natural gas ngls, result increased costs, incur additional costs."
@@ -3126,26 +2751,6 @@
         {
           "term": "laws regulations",
           "score": 0.08586987718190642
-        },
-        {
-          "term": "Geopolitical tensions",
-          "score": -0.0034794796267281214
-        },
-        {
-          "term": "cybersecurity incident",
-          "score": -0.0034861536365298207
-        },
-        {
-          "term": "increase future",
-          "score": -0.003491628689919146
-        },
-        {
-          "term": "existing future laws regulations",
-          "score": -0.003498349432521586
-        },
-        {
-          "term": "reduce capital",
-          "score": -0.003498349432521586
         }
       ],
       "topFallersAlt": [
@@ -3656,26 +3261,6 @@
         {
           "term": "results operations adversely affected",
           "score": -0.1804072548249378
-        },
-        {
-          "term": "Geopolitical tensions",
-          "score": 0.013991154334044076
-        },
-        {
-          "term": "costs adverse",
-          "score": 0.014067433344466806
-        },
-        {
-          "term": "Supply chain",
-          "score": 0.014108383556528103
-        },
-        {
-          "term": "oil natural gas",
-          "score": 0.014227593894277746
-        },
-        {
-          "term": "prices crude oil",
-          "score": 0.014232677289181428
         }
       ],
       "summaryAlt": "Adds emphasis on global climate change, climate related risks, foreign jurisdictions; de-emphasizes oil gas industry, results operations cash, laws regulations."
@@ -4050,34 +3635,6 @@
         {
           "term": "crude oil",
           "score": 0.001282021696403346
-        },
-        {
-          "term": "Artificial intelligence",
-          "score": -0.02087396822599974
-        },
-        {
-          "term": "Geopolitical tensions",
-          "score": -0.020914002531958964
-        },
-        {
-          "term": "subject number risks",
-          "score": -0.02098715945878027
-        },
-        {
-          "term": "costs adverse",
-          "score": -0.021027629559138283
-        },
-        {
-          "term": "cybersecurity incident",
-          "score": -0.021027629559138283
-        },
-        {
-          "term": "business continuity",
-          "score": -0.02107568732561038
-        },
-        {
-          "term": "Supply chain",
-          "score": -0.021088628217898808
         }
       ],
       "topFallersAlt": [

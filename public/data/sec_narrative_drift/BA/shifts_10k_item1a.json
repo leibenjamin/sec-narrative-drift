@@ -4,63 +4,7 @@
     {
       "from": 2015,
       "to": 2016,
-      "topRisers": [
-        {
-          "term": "spending levels",
-          "score": -0.13103085739935919,
-          "z": -0.3730258049610999,
-          "countPrev": 4,
-          "countCurr": 3,
-          "per10kPrev": 8.138351983723295,
-          "per10kCurr": 6.097560975609756,
-          "deltaPer10k": -2.0407910081135388,
-          "distinctive": false
-        },
-        {
-          "term": "limits",
-          "score": -0.26069055244239614,
-          "z": -0.5503917690580908,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 4.0691759918616475,
-          "per10kCurr": 2.032520325203252,
-          "deltaPer10k": -2.0366556666583953,
-          "distinctive": false
-        },
-        {
-          "term": "billion",
-          "score": -0.3523512088807011,
-          "z": -0.9560049118418804,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 4.0691759918616475,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -4.0691759918616475,
-          "distinctive": false
-        },
-        {
-          "term": "sequestration",
-          "score": -0.5810388240613946,
-          "z": -1.2267379207662257,
-          "countPrev": 4,
-          "countCurr": 1,
-          "per10kPrev": 8.138351983723295,
-          "per10kCurr": 2.032520325203252,
-          "deltaPer10k": -6.105831658520042,
-          "distinctive": false
-        },
-        {
-          "term": "sequestration cuts",
-          "score": -0.804609900714052,
-          "z": -1.0693066119690882,
-          "countPrev": 3,
-          "countCurr": 0,
-          "per10kPrev": 6.103763987792472,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -6.103763987792472,
-          "distinctive": false
-        }
-      ],
+      "topRisers": [],
       "topFallers": [
         {
           "term": "sequestration cuts",
@@ -118,7 +62,7 @@
           "distinctive": false
         }
       ],
-      "summary": "Adds emphasis on spending levels, limits, billion; de-emphasizes sequestration cuts, sequestration, billion.",
+      "summary": "De-emphasizes sequestration cuts, sequestration, billion.",
       "topRisersAlt": [
         {
           "term": "development programs",
@@ -131,54 +75,6 @@
         {
           "term": "financial performance",
           "score": 0.2482759687424232
-        },
-        {
-          "term": "changes price",
-          "score": -0.017048181558021014
-        },
-        {
-          "term": "litigation matters",
-          "score": -0.01712465687217124
-        },
-        {
-          "term": "customer financing",
-          "score": -0.017147959252463707
-        },
-        {
-          "term": "export controls",
-          "score": -0.017149715761712425
-        },
-        {
-          "term": "trade restrictions",
-          "score": -0.017149715761712425
-        },
-        {
-          "term": "contracts programs",
-          "score": -0.017198287371758436
-        },
-        {
-          "term": "customer requirements",
-          "score": -0.01729983512360045
-        },
-        {
-          "term": "results operations financial",
-          "score": -0.01729983512360045
-        },
-        {
-          "term": "requirements result",
-          "score": -0.017351060035963428
-        },
-        {
-          "term": "costs revenues",
-          "score": -0.017402589211432673
-        },
-        {
-          "term": "subject costs",
-          "score": -0.017402589211432673
-        },
-        {
-          "term": "customer demand",
-          "score": -0.017454425369022974
         }
       ],
       "topFallersAlt": [
@@ -270,28 +166,6 @@
           "per10kCurr": 4.024954719259409,
           "deltaPer10k": 4.024954719259409,
           "distinctive": false
-        },
-        {
-          "term": "max",
-          "score": -0.28101415117730943,
-          "z": -1.0438621126882406,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 4.065040650406504,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -4.065040650406504,
-          "distinctive": false
-        },
-        {
-          "term": "design changes",
-          "score": -0.7100889604035688,
-          "z": -0.9436906254471241,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 4.065040650406504,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -4.065040650406504,
-          "distinctive": false
         }
       ],
       "topFallers": [
@@ -316,31 +190,9 @@
           "per10kCurr": 0.0,
           "deltaPer10k": -4.065040650406504,
           "distinctive": false
-        },
-        {
-          "term": "fms",
-          "score": 0.1657818656468991,
-          "z": 0.9378038511734361,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 4.024954719259409,
-          "deltaPer10k": 4.024954719259409,
-          "distinctive": false
-        },
-        {
-          "term": "bgs",
-          "score": 0.2077174198023125,
-          "z": 1.1750271689023044,
-          "countPrev": 0,
-          "countCurr": 4,
-          "per10kPrev": 0.0,
-          "per10kCurr": 8.049909438518817,
-          "deltaPer10k": 8.049909438518817,
-          "distinctive": false
         }
       ],
-      "summary": "Adds emphasis on bgs, fms, max; de-emphasizes design changes, max, fms.",
+      "summary": "Adds emphasis on bgs, fms; de-emphasizes design changes, max.",
       "topRisersAlt": [
         {
           "term": "products services",
@@ -411,61 +263,9 @@
         {
           "term": "commercial aircraft",
           "score": -0.29560740847959366
-        },
-        {
-          "term": "development programs",
-          "score": 0.008512420483762106
-        },
-        {
-          "term": "litigation matters",
-          "score": 0.008525672149858554
-        },
-        {
-          "term": "customer financing",
-          "score": 0.00853722351325592
-        },
-        {
-          "term": "export controls",
-          "score": 0.008538094237541483
-        },
-        {
-          "term": "trade restrictions",
-          "score": 0.008538094237541483
-        },
-        {
-          "term": "contracts programs",
-          "score": 0.008562171505463567
-        },
-        {
-          "term": "customer requirements",
-          "score": 0.008612507491394084
-        },
-        {
-          "term": "results operations financial",
-          "score": 0.008612507491394084
-        },
-        {
-          "term": "meet customer",
-          "score": 0.00863789807949189
-        },
-        {
-          "term": "requirements result",
-          "score": 0.00863789807949189
-        },
-        {
-          "term": "costs revenues",
-          "score": 0.008663438819497493
-        },
-        {
-          "term": "subject costs",
-          "score": 0.008663438819497493
-        },
-        {
-          "term": "customer demand",
-          "score": 0.008689131047297405
         }
       ],
-      "summaryAlt": "Adds emphasis on products services, government contracts, market share; de-emphasizes changes price, commercial aircraft, development programs."
+      "summaryAlt": "Adds emphasis on products services, government contracts, market share; de-emphasizes changes price, commercial aircraft."
     },
     {
       "from": 2017,
@@ -627,17 +427,6 @@
           "per10kCurr": 3.931590328287793,
           "deltaPer10k": 3.931590328287793,
           "distinctive": false
-        },
-        {
-          "term": "spending levels",
-          "score": -0.16202153378390882,
-          "z": -0.4612517559628684,
-          "countPrev": 3,
-          "countCurr": 2,
-          "per10kPrev": 6.037432078889113,
-          "per10kCurr": 3.931590328287793,
-          "deltaPer10k": -2.10584175060132,
-          "distinctive": false
         }
       ],
       "topFallers": [
@@ -662,155 +451,9 @@
           "per10kCurr": 3.931590328287793,
           "deltaPer10k": -2.10584175060132,
           "distinctive": false
-        },
-        {
-          "term": "departments agencies",
-          "score": 0.1487164709885583,
-          "z": 0.9337701648523674,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 3.931590328287793,
-          "deltaPer10k": 3.931590328287793,
-          "distinctive": false
-        },
-        {
-          "term": "Supply chain",
-          "score": 0.16530534242158293,
-          "z": 1.0379293955667774,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 3.931590328287793,
-          "deltaPer10k": 3.931590328287793,
-          "distinctive": false,
-          "includes": [
-            "supply chain"
-          ]
-        },
-        {
-          "term": "fiscal years",
-          "score": 0.18630187268678214,
-          "z": 0.5303743515387173,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 2.0124773596297043,
-          "per10kCurr": 3.931590328287793,
-          "deltaPer10k": 1.9191129686580886,
-          "distinctive": false
-        },
-        {
-          "term": "limits",
-          "score": 0.2512093938841459,
-          "z": 0.5303743515387173,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 2.0124773596297043,
-          "per10kCurr": 3.931590328287793,
-          "deltaPer10k": 1.9191129686580886,
-          "distinctive": false
-        },
-        {
-          "term": "departments",
-          "score": 0.2513767164083801,
-          "z": 0.9337701648523674,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 3.931590328287793,
-          "deltaPer10k": 3.931590328287793,
-          "distinctive": false
-        },
-        {
-          "term": "shutdown",
-          "score": 0.2513767164083801,
-          "z": 0.9337701648523674,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 3.931590328287793,
-          "deltaPer10k": 3.931590328287793,
-          "distinctive": false
-        },
-        {
-          "term": "loss million",
-          "score": 0.328000646838108,
-          "z": 0.9337701648523674,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 3.931590328287793,
-          "deltaPer10k": 3.931590328287793,
-          "distinctive": false
-        },
-        {
-          "term": "aviation",
-          "score": 0.5449814114532643,
-          "z": 0.9337701648523674,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 3.931590328287793,
-          "deltaPer10k": 3.931590328287793,
-          "distinctive": false
-        },
-        {
-          "term": "spending caps",
-          "score": 0.5644132550911496,
-          "z": 0.9337701648523674,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 3.931590328287793,
-          "deltaPer10k": 3.931590328287793,
-          "distinctive": false
-        },
-        {
-          "term": "administration",
-          "score": 0.6517282895221362,
-          "z": 0.9337701648523674,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 3.931590328287793,
-          "deltaPer10k": 3.931590328287793,
-          "distinctive": false
-        },
-        {
-          "term": "caps",
-          "score": 0.6517282895221362,
-          "z": 0.9337701648523674,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 3.931590328287793,
-          "deltaPer10k": 3.931590328287793,
-          "distinctive": false
-        },
-        {
-          "term": "law",
-          "score": 0.7621029639861536,
-          "z": 0.9337701648523674,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 3.931590328287793,
-          "deltaPer10k": 3.931590328287793,
-          "distinctive": false
-        },
-        {
-          "term": "trainer",
-          "score": 0.8757789455132943,
-          "z": 0.9337701648523674,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 3.931590328287793,
-          "deltaPer10k": 3.931590328287793,
-          "distinctive": false
         }
       ],
-      "summary": "Adds emphasis on stingray, trainer, law; de-emphasizes budgetary, spending levels, departments agencies.",
+      "summary": "Adds emphasis on stingray, trainer, law; de-emphasizes budgetary, spending levels.",
       "topRisersAlt": [
         {
           "term": "subject uncertainty",
@@ -819,58 +462,6 @@
         {
           "term": "Supply chain",
           "score": 0.054136185291793204
-        },
-        {
-          "term": "development programs",
-          "score": -0.012741611045574253
-        },
-        {
-          "term": "litigation matters",
-          "score": -0.012761404591758563
-        },
-        {
-          "term": "customer financing",
-          "score": -0.012778658350149907
-        },
-        {
-          "term": "export controls",
-          "score": -0.012779958908350153
-        },
-        {
-          "term": "trade restrictions",
-          "score": -0.012779958908350153
-        },
-        {
-          "term": "contracts programs",
-          "score": -0.012815921722209467
-        },
-        {
-          "term": "customer requirements",
-          "score": -0.012891104274141085
-        },
-        {
-          "term": "results operations financial",
-          "score": -0.012891104274141085
-        },
-        {
-          "term": "meet customer",
-          "score": -0.012929027312629238
-        },
-        {
-          "term": "requirements result",
-          "score": -0.012929027312629238
-        },
-        {
-          "term": "costs revenues",
-          "score": -0.012967174136493398
-        },
-        {
-          "term": "subject costs",
-          "score": -0.012967174136493398
-        },
-        {
-          "term": "customer demand",
-          "score": -0.013005546732474116
         }
       ],
       "topFallersAlt": [
@@ -935,7 +526,7 @@
           "score": -0.012779958908350153
         }
       ],
-      "summaryAlt": "Adds emphasis on subject uncertainty, Supply chain, development programs; de-emphasizes products services, government contracts, market share."
+      "summaryAlt": "Adds emphasis on subject uncertainty, Supply chain; de-emphasizes products services, government contracts, market share."
     },
     {
       "from": 2018,
@@ -1315,26 +906,6 @@
         {
           "term": "government contracts",
           "score": 0.052649838650845826
-        },
-        {
-          "term": "litigation matters",
-          "score": -0.029158159526831984
-        },
-        {
-          "term": "export controls",
-          "score": -0.029199674357296868
-        },
-        {
-          "term": "trade restrictions",
-          "score": -0.029199674357296868
-        },
-        {
-          "term": "contracts programs",
-          "score": -0.029280133175010548
-        },
-        {
-          "term": "customer requirements",
-          "score": -0.02944830720030378
         }
       ],
       "topFallersAlt": [
@@ -1790,18 +1361,6 @@
         {
           "term": "commercial aircraft",
           "score": 0.03861159438896333
-        },
-        {
-          "term": "production costs program",
-          "score": -0.051917767093807576
-        },
-        {
-          "term": "litigation matters",
-          "score": -0.05199361376179468
-        },
-        {
-          "term": "aircraft programs",
-          "score": -0.05205971684863764
         }
       ],
       "topFallersAlt": [
@@ -2245,30 +1804,6 @@
         {
           "term": "government contracts",
           "score": 0.035270647633522056
-        },
-        {
-          "term": "production costs program",
-          "score": -0.04564359006605212
-        },
-        {
-          "term": "litigation matters",
-          "score": -0.045707090074425416
-        },
-        {
-          "term": "aircraft customers",
-          "score": -0.0457624253895581
-        },
-        {
-          "term": "aircraft programs",
-          "score": -0.0457624253895581
-        },
-        {
-          "term": "export controls",
-          "score": -0.04576659583664089
-        },
-        {
-          "term": "trade restrictions",
-          "score": -0.04576659583664089
         }
       ],
       "topFallersAlt": [
@@ -2791,18 +2326,6 @@
         {
           "term": "products services",
           "score": -0.04728374711388206
-        },
-        {
-          "term": "litigation matters",
-          "score": 0.011232411898295602
-        },
-        {
-          "term": "trade restrictions",
-          "score": 0.01124678389364675
-        },
-        {
-          "term": "contracts subject",
-          "score": 0.011274626091885231
         }
       ],
       "summaryAlt": "Adds emphasis on boeing aircraft, boeing products services, customers result; de-emphasizes covid pandemic, deliveries customers, increased costs."
@@ -3192,22 +2715,6 @@
         {
           "term": "products services",
           "score": 0.039451995332973944
-        },
-        {
-          "term": "Intellectual property",
-          "score": -0.018486447505509318
-        },
-        {
-          "term": "customers result",
-          "score": -0.01862582689389125
-        },
-        {
-          "term": "revenues costs",
-          "score": -0.01862582689389125
-        },
-        {
-          "term": "revenues market",
-          "score": -0.01862582689389125
         }
       ],
       "topFallersAlt": [
@@ -3664,14 +3171,6 @@
         {
           "term": "trade restrictions",
           "score": 0.09231307828029145
-        },
-        {
-          "term": "commercial aircraft",
-          "score": -0.020262587347240846
-        },
-        {
-          "term": "Artificial intelligence",
-          "score": -0.10084369948118432
         }
       ],
       "topFallersAlt": [

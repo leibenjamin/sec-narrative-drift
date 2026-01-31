@@ -26,149 +26,6 @@
           "per10kCurr": 9.643201542912248,
           "deltaPer10k": 3.166517605088414,
           "distinctive": false
-        },
-        {
-          "term": "cash flow",
-          "score": -0.13736220785812564,
-          "z": -0.5555784139574046,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 6.476683937823834,
-          "per10kCurr": 3.214400514304082,
-          "deltaPer10k": -3.262283423519752,
-          "distinctive": false
-        },
-        {
-          "term": "customers demands",
-          "score": -0.13736220785812564,
-          "z": -0.5555784139574046,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 6.476683937823834,
-          "per10kCurr": 3.214400514304082,
-          "deltaPer10k": -3.262283423519752,
-          "distinctive": false
-        },
-        {
-          "term": "intangible",
-          "score": -0.1402463541258618,
-          "z": -0.38051864172157596,
-          "countPrev": 4,
-          "countCurr": 3,
-          "per10kPrev": 12.953367875647668,
-          "per10kCurr": 9.643201542912248,
-          "deltaPer10k": -3.3101663327354203,
-          "distinctive": false
-        },
-        {
-          "term": "failure",
-          "score": -0.14956515282330612,
-          "z": -0.5555784139574046,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 6.476683937823834,
-          "per10kCurr": 3.214400514304082,
-          "deltaPer10k": -3.262283423519752,
-          "distinctive": false
-        },
-        {
-          "term": "benefit",
-          "score": -0.2047674895401498,
-          "z": -0.5555784139574046,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 6.476683937823834,
-          "per10kCurr": 3.214400514304082,
-          "deltaPer10k": -3.262283423519752,
-          "distinctive": false
-        },
-        {
-          "term": "flow",
-          "score": -0.2047674895401498,
-          "z": -0.5555784139574046,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 6.476683937823834,
-          "per10kCurr": 3.214400514304082,
-          "deltaPer10k": -3.262283423519752,
-          "distinctive": false
-        },
-        {
-          "term": "licenses",
-          "score": -0.2631471831555308,
-          "z": -0.5555784139574046,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 6.476683937823834,
-          "per10kCurr": 3.214400514304082,
-          "deltaPer10k": -3.262283423519752,
-          "distinctive": false
-        },
-        {
-          "term": "arise",
-          "score": -0.32425528209004506,
-          "z": -0.5555784139574046,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 6.476683937823834,
-          "per10kCurr": 3.214400514304082,
-          "deltaPer10k": -3.262283423519752,
-          "distinctive": false
-        },
-        {
-          "term": "license",
-          "score": -0.4285794408524995,
-          "z": -1.1628285649167742,
-          "countPrev": 4,
-          "countCurr": 0,
-          "per10kPrev": 12.953367875647668,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -12.953367875647668,
-          "distinctive": false
-        },
-        {
-          "term": "disposition",
-          "score": -0.8844063328785484,
-          "z": -0.9429688296108322,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 6.476683937823834,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -6.476683937823834,
-          "distinctive": false
-        },
-        {
-          "term": "estimated",
-          "score": -0.8844063328785484,
-          "z": -0.9429688296108322,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 6.476683937823834,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -6.476683937823834,
-          "distinctive": false
-        },
-        {
-          "term": "negotiations",
-          "score": -0.8844063328785484,
-          "z": -0.9429688296108322,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 6.476683937823834,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -6.476683937823834,
-          "distinctive": false
-        },
-        {
-          "term": "patent",
-          "score": -0.8844063328785484,
-          "z": -0.9429688296108322,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 6.476683937823834,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -6.476683937823834,
-          "distinctive": false
         }
       ],
       "topFallers": [
@@ -338,7 +195,7 @@
           "distinctive": false
         }
       ],
-      "summary": "Adds emphasis on disruptions information, goodwill intangible, cash flow; de-emphasizes licensees, asset, impairment.",
+      "summary": "Adds emphasis on disruptions information, goodwill intangible; de-emphasizes licensees, asset, impairment.",
       "topRisersAlt": [
         {
           "term": "change markets",
@@ -387,18 +244,6 @@
         {
           "term": "develop new",
           "score": 0.04139894069929806
-        },
-        {
-          "term": "Intellectual property",
-          "score": -0.11269247787372294
-        },
-        {
-          "term": "market share",
-          "score": -1.3059975366236767
-        },
-        {
-          "term": "domestic international",
-          "score": -1.3099797159631317
         }
       ],
       "topFallersAlt": [
@@ -417,50 +262,6 @@
         {
           "term": "Intellectual property",
           "score": -0.11269247787372294
-        },
-        {
-          "term": "develop new",
-          "score": 0.04139894069929806
-        },
-        {
-          "term": "Data privacy",
-          "score": 0.04159184082603762
-        },
-        {
-          "term": "Interest rates",
-          "score": 0.04159184082603762
-        },
-        {
-          "term": "Supply chain",
-          "score": 0.04171447210130763
-        },
-        {
-          "term": "credit financial markets",
-          "score": 0.041765576695465434
-        },
-        {
-          "term": "claims product",
-          "score": 0.04239128614766541
-        },
-        {
-          "term": "product liability",
-          "score": 0.043222071247620786
-        },
-        {
-          "term": "results operations adversely affected",
-          "score": 0.043222071247620786
-        },
-        {
-          "term": "information technology",
-          "score": 0.04428132689858266
-        },
-        {
-          "term": "customer demand",
-          "score": 0.04759520125492411
-        },
-        {
-          "term": "results operations financial condition",
-          "score": 0.18745043397966965
         }
       ],
       "summaryAlt": "Adds emphasis on change markets, results operations financial condition, customer demand; de-emphasizes domestic international, revenue depends, market share."
@@ -504,28 +305,6 @@
           "includes": [
             "cybersecurity"
           ]
-        },
-        {
-          "term": "earnings",
-          "score": -0.3474816656909949,
-          "z": -0.5953744576172224,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 6.428801028608164,
-          "per10kCurr": 3.0358227079538556,
-          "deltaPer10k": -3.3929783206543083,
-          "distinctive": false
-        },
-        {
-          "term": "income tax",
-          "score": -0.720431217847324,
-          "z": -0.9574352292078777,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 6.428801028608164,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -6.428801028608164,
-          "distinctive": false
         }
       ],
       "topFallers": [
@@ -550,45 +329,9 @@
           "per10kCurr": 3.0358227079538556,
           "deltaPer10k": -3.3929783206543083,
           "distinctive": false
-        },
-        {
-          "term": "Cybersecurity",
-          "score": 0.16875736371604375,
-          "z": 0.9546358100702335,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 6.071645415907711,
-          "deltaPer10k": 6.071645415907711,
-          "distinctive": false,
-          "includes": [
-            "cybersecurity"
-          ]
-        },
-        {
-          "term": "increasing",
-          "score": 0.1857265273614655,
-          "z": 0.5039161721083042,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 3.214400514304082,
-          "per10kCurr": 6.071645415907711,
-          "deltaPer10k": 2.857244901603629,
-          "distinctive": false
-        },
-        {
-          "term": "accounting",
-          "score": 0.19839151620265408,
-          "z": 1.1222718914942205,
-          "countPrev": 0,
-          "countCurr": 3,
-          "per10kPrev": 0.0,
-          "per10kCurr": 9.107468123861567,
-          "deltaPer10k": 9.107468123861567,
-          "distinctive": false
         }
       ],
-      "summary": "Adds emphasis on accounting, increasing, Cybersecurity; de-emphasizes income tax, earnings, Cybersecurity.",
+      "summary": "Adds emphasis on accounting, increasing, Cybersecurity; de-emphasizes income tax, earnings.",
       "topRisersAlt": [
         {
           "term": "Intellectual property",
@@ -597,54 +340,6 @@
         {
           "term": "economic conditions",
           "score": 0.3692659312562503
-        },
-        {
-          "term": "Data privacy",
-          "score": -0.03341071286434438
-        },
-        {
-          "term": "Interest rates",
-          "score": -0.03341071286434438
-        },
-        {
-          "term": "Supply chain",
-          "score": -0.033509624959453976
-        },
-        {
-          "term": "credit financial markets",
-          "score": -0.033550845662704276
-        },
-        {
-          "term": "claims product",
-          "score": -0.03405557272178861
-        },
-        {
-          "term": "product liability",
-          "score": -0.03472581791092466
-        },
-        {
-          "term": "results operations adversely affected",
-          "score": -0.03472581791092466
-        },
-        {
-          "term": "customer demand",
-          "score": -0.03825566172386474
-        },
-        {
-          "term": "information technology",
-          "score": -0.09361783022323866
-        },
-        {
-          "term": "results operations financial condition",
-          "score": -0.17919977858415548
-        },
-        {
-          "term": "change markets",
-          "score": -0.38154241552452506
-        },
-        {
-          "term": "develop new",
-          "score": -0.923098227803834
         }
       ],
       "topFallersAlt": [
@@ -695,17 +390,9 @@
         {
           "term": "Interest rates",
           "score": -0.03341071286434438
-        },
-        {
-          "term": "economic conditions",
-          "score": 0.3692659312562503
-        },
-        {
-          "term": "Intellectual property",
-          "score": 0.1636958125399507
         }
       ],
-      "summaryAlt": "Adds emphasis on Intellectual property, economic conditions, Data privacy; de-emphasizes develop new, change markets, results operations financial condition."
+      "summaryAlt": "Adds emphasis on Intellectual property, economic conditions; de-emphasizes develop new, change markets, results operations financial condition."
     },
     {
       "from": 2017,
@@ -798,28 +485,6 @@
           "per10kCurr": 5.903187721369539,
           "deltaPer10k": 5.903187721369539,
           "distinctive": false
-        },
-        {
-          "term": "impact",
-          "score": -0.10115187407687895,
-          "z": -0.572201408715911,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 6.071645415907711,
-          "per10kCurr": 2.9515938606847696,
-          "deltaPer10k": -3.1200515552229415,
-          "distinctive": false
-        },
-        {
-          "term": "tax liability",
-          "score": -0.5736226991068242,
-          "z": -0.949006348586795,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 6.071645415907711,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -6.071645415907711,
-          "distinctive": false
         }
       ],
       "topFallers": [
@@ -844,97 +509,9 @@
           "per10kCurr": 2.9515938606847696,
           "deltaPer10k": -3.1200515552229415,
           "distinctive": false
-        },
-        {
-          "term": "downturn associated",
-          "score": 0.1485296311766547,
-          "z": 0.9325970234995467,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 5.903187721369539,
-          "deltaPer10k": 5.903187721369539,
-          "distinctive": false
-        },
-        {
-          "term": "potential downturn",
-          "score": 0.1485296311766547,
-          "z": 0.9325970234995467,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 5.903187721369539,
-          "deltaPer10k": 5.903187721369539,
-          "distinctive": false
-        },
-        {
-          "term": "tax expense",
-          "score": 0.1485296311766547,
-          "z": 0.9325970234995467,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 5.903187721369539,
-          "deltaPer10k": 5.903187721369539,
-          "distinctive": false
-        },
-        {
-          "term": "increasing",
-          "score": 0.14977061514097265,
-          "z": 0.40636001840092467,
-          "countPrev": 2,
-          "countCurr": 3,
-          "per10kPrev": 6.071645415907711,
-          "per10kCurr": 8.85478158205431,
-          "deltaPer10k": 2.7831361661465985,
-          "distinctive": false
-        },
-        {
-          "term": "increasing protectionism",
-          "score": 0.2480082744143916,
-          "z": 0.5270693919193119,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 3.0358227079538556,
-          "per10kCurr": 5.903187721369539,
-          "deltaPer10k": 2.8673650134156836,
-          "distinctive": false
-        },
-        {
-          "term": "downturn",
-          "score": 0.251060899484414,
-          "z": 0.9325970234995467,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 5.903187721369539,
-          "deltaPer10k": 5.903187721369539,
-          "distinctive": false
-        },
-        {
-          "term": "expense",
-          "score": 0.251060899484414,
-          "z": 0.9325970234995467,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 5.903187721369539,
-          "deltaPer10k": 5.903187721369539,
-          "distinctive": false
-        },
-        {
-          "term": "protectionism",
-          "score": 0.3076164049291664,
-          "z": 0.5270693919193119,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 3.0358227079538556,
-          "per10kCurr": 5.903187721369539,
-          "deltaPer10k": 2.8673650134156836,
-          "distinctive": false
         }
       ],
-      "summary": "Adds emphasis on protectionism, downturn, expense; de-emphasizes tax liability, impact, downturn associated.",
+      "summary": "Adds emphasis on protectionism, downturn, expense; de-emphasizes tax liability, impact.",
       "topRisersAlt": [
         {
           "term": "affected customer",
@@ -959,42 +536,6 @@
         {
           "term": "economic conditions",
           "score": 0.03549370945052166
-        },
-        {
-          "term": "Data privacy",
-          "score": -0.04418985285624144
-        },
-        {
-          "term": "Interest rates",
-          "score": -0.04418985285624144
-        },
-        {
-          "term": "Supply chain",
-          "score": -0.04431568795616592
-        },
-        {
-          "term": "credit financial markets",
-          "score": -0.044368120225453556
-        },
-        {
-          "term": "results operations financial condition",
-          "score": -0.04455867374175293
-        },
-        {
-          "term": "claims product",
-          "score": -0.04500972942613757
-        },
-        {
-          "term": "product liability",
-          "score": -0.045860609720626666
-        },
-        {
-          "term": "results operations adversely affected",
-          "score": -0.045860609720626666
-        },
-        {
-          "term": "information technology",
-          "score": -0.04674428657189189
         }
       ],
       "topFallersAlt": [
@@ -1041,22 +582,6 @@
         {
           "term": "Interest rates",
           "score": -0.04418985285624144
-        },
-        {
-          "term": "economic conditions",
-          "score": 0.03549370945052166
-        },
-        {
-          "term": "laws regulations",
-          "score": 0.28373742112062317
-        },
-        {
-          "term": "countries operate",
-          "score": 0.3501392168670763
-        },
-        {
-          "term": "natural events",
-          "score": 0.41237120837591856
         }
       ],
       "summaryAlt": "Adds emphasis on affected customer, operating results, natural events; de-emphasizes Intellectual property, customer demand, information technology."
@@ -1174,61 +699,6 @@
           "per10kCurr": 5.977286312014345,
           "deltaPer10k": 3.0256924513295758,
           "distinctive": false
-        },
-        {
-          "term": "downturn",
-          "score": -0.14527037599767031,
-          "z": -0.5396249297931712,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 5.903187721369539,
-          "per10kCurr": 2.9886431560071727,
-          "deltaPer10k": -2.9145445653623665,
-          "distinctive": false
-        },
-        {
-          "term": "increasing",
-          "score": -0.1558664364262095,
-          "z": -0.4228992978003317,
-          "countPrev": 3,
-          "countCurr": 2,
-          "per10kPrev": 8.85478158205431,
-          "per10kCurr": 5.977286312014345,
-          "deltaPer10k": -2.8774952700399643,
-          "distinctive": false
-        },
-        {
-          "term": "increasing protectionism",
-          "score": -0.2539161820451141,
-          "z": -0.5396249297931712,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 5.903187721369539,
-          "per10kCurr": 2.9886431560071727,
-          "deltaPer10k": -2.9145445653623665,
-          "distinctive": false
-        },
-        {
-          "term": "percent revenue",
-          "score": -0.44097376815066186,
-          "z": -0.9371613764917583,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 5.903187721369539,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -5.903187721369539,
-          "distinctive": false
-        },
-        {
-          "term": "percent",
-          "score": -0.5469606429337048,
-          "z": -0.9371613764917583,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 5.903187721369539,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -5.903187721369539,
-          "distinctive": false
         }
       ],
       "topFallers": [
@@ -1307,94 +777,6 @@
           "per10kPrev": 5.903187721369539,
           "per10kCurr": 2.9886431560071727,
           "deltaPer10k": -2.9145445653623665,
-          "distinctive": false
-        },
-        {
-          "term": "customers vendors",
-          "score": 0.19658267511075628,
-          "z": 0.5596423016686668,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 2.9515938606847696,
-          "per10kCurr": 5.977286312014345,
-          "deltaPer10k": 3.0256924513295758,
-          "distinctive": false
-        },
-        {
-          "term": "events health",
-          "score": 0.19658267511075628,
-          "z": 0.5596423016686668,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 2.9515938606847696,
-          "per10kCurr": 5.977286312014345,
-          "deltaPer10k": 3.0256924513295758,
-          "distinctive": false
-        },
-        {
-          "term": "health epidemics",
-          "score": 0.19658267511075628,
-          "z": 0.5596423016686668,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 2.9515938606847696,
-          "per10kCurr": 5.977286312014345,
-          "deltaPer10k": 3.0256924513295758,
-          "distinctive": false
-        },
-        {
-          "term": "vendors parties",
-          "score": 0.19658267511075628,
-          "z": 0.5596423016686668,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 2.9515938606847696,
-          "per10kCurr": 5.977286312014345,
-          "deltaPer10k": 3.0256924513295758,
-          "distinctive": false
-        },
-        {
-          "term": "disruptions incidents",
-          "score": 0.23350489866295154,
-          "z": 0.9444394005696154,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 5.977286312014345,
-          "deltaPer10k": 5.977286312014345,
-          "distinctive": false
-        },
-        {
-          "term": "incidents relating",
-          "score": 0.23350489866295154,
-          "z": 0.9444394005696154,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 5.977286312014345,
-          "deltaPer10k": 5.977286312014345,
-          "distinctive": false
-        },
-        {
-          "term": "relating information",
-          "score": 0.23350489866295154,
-          "z": 0.9444394005696154,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 5.977286312014345,
-          "deltaPer10k": 5.977286312014345,
-          "distinctive": false
-        },
-        {
-          "term": "trade restrictions",
-          "score": 0.23350489866295154,
-          "z": 0.9444394005696154,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 5.977286312014345,
-          "deltaPer10k": 5.977286312014345,
           "distinctive": false
         }
       ],
@@ -1481,46 +863,6 @@
         {
           "term": "Intellectual property",
           "score": -0.0035644336272676602
-        },
-        {
-          "term": "Data privacy",
-          "score": 0.011859420036040902
-        },
-        {
-          "term": "Interest rates",
-          "score": 0.011859420036040902
-        },
-        {
-          "term": "Supply chain",
-          "score": 0.011892645368067445
-        },
-        {
-          "term": "credit financial markets",
-          "score": 0.011906488606404864
-        },
-        {
-          "term": "natural events",
-          "score": 0.011906488606404864
-        },
-        {
-          "term": "countries operate",
-          "score": 0.011939978571783527
-        },
-        {
-          "term": "results operations financial condition",
-          "score": 0.01195679430396801
-        },
-        {
-          "term": "laws regulations",
-          "score": 0.011990568266569301
-        },
-        {
-          "term": "claims product",
-          "score": 0.012075843871687475
-        },
-        {
-          "term": "product liability",
-          "score": 0.012300313723391909
         }
       ],
       "summaryAlt": "Adds emphasis on access credit markets, relating information technology, change markets; de-emphasizes economic conditions, affected customer, operating results."
@@ -1751,133 +1093,6 @@
           "per10kCurr": 2.8653295128939824,
           "deltaPer10k": -3.111956799120363,
           "distinctive": false
-        },
-        {
-          "term": "regulatory",
-          "score": 0.1388551296592375,
-          "z": 0.5157946971582792,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 2.9886431560071727,
-          "per10kCurr": 5.730659025787965,
-          "deltaPer10k": 2.742015869780792,
-          "distinctive": false
-        },
-        {
-          "term": "tensions",
-          "score": 0.1388551296592375,
-          "z": 0.5157946971582792,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 2.9886431560071727,
-          "per10kCurr": 5.730659025787965,
-          "deltaPer10k": 2.742015869780792,
-          "distinctive": false
-        },
-        {
-          "term": "license",
-          "score": 0.34221229062651004,
-          "z": 0.9284958373517976,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 5.730659025787965,
-          "deltaPer10k": 5.730659025787965,
-          "distinctive": false
-        },
-        {
-          "term": "Climate change",
-          "score": 0.34611331801501044,
-          "z": 0.9853343069167603,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 5.730659025787965,
-          "deltaPer10k": 5.730659025787965,
-          "distinctive": false,
-          "includes": [
-            "climate change"
-          ]
-        },
-        {
-          "term": "events epidemics",
-          "score": 0.37117564762685135,
-          "z": 1.0566831163743948,
-          "countPrev": 0,
-          "countCurr": 3,
-          "per10kPrev": 0.0,
-          "per10kCurr": 8.595988538681949,
-          "deltaPer10k": 8.595988538681949,
-          "distinctive": false
-        },
-        {
-          "term": "government",
-          "score": 0.4479620878952158,
-          "z": 0.9457751488024642,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 5.730659025787965,
-          "deltaPer10k": 5.730659025787965,
-          "distinctive": false
-        },
-        {
-          "term": "extent covid",
-          "score": 0.5612252111108795,
-          "z": 0.9284958373517976,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 5.730659025787965,
-          "deltaPer10k": 5.730659025787965,
-          "distinctive": false
-        },
-        {
-          "term": "short long",
-          "score": 0.5612252111108795,
-          "z": 0.9284958373517976,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 5.730659025787965,
-          "deltaPer10k": 5.730659025787965,
-          "distinctive": false
-        },
-        {
-          "term": "covid pandemic",
-          "score": 0.6387074461808557,
-          "z": 1.0566831163743948,
-          "countPrev": 0,
-          "countCurr": 3,
-          "per10kPrev": 0.0,
-          "per10kCurr": 8.595988538681949,
-          "deltaPer10k": 8.595988538681949,
-          "distinctive": false
-        },
-        {
-          "term": "response",
-          "score": 0.6480470534217417,
-          "z": 0.9284958373517976,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 5.730659025787965,
-          "deltaPer10k": 5.730659025787965,
-          "distinctive": false
-        },
-        {
-          "term": "Pandemic",
-          "score": 0.6582522487421257,
-          "z": 1.3897573819891322,
-          "countPrev": 0,
-          "countCurr": 6,
-          "per10kPrev": 0.0,
-          "per10kCurr": 17.191977077363898,
-          "deltaPer10k": 17.191977077363898,
-          "distinctive": false,
-          "includes": [
-            "pandemic"
-          ]
         }
       ],
       "summary": "Adds emphasis on COVID-19, disease, responses; de-emphasizes protectionism, events health, health epidemics.",
@@ -1893,54 +1108,6 @@
         {
           "term": "Climate change",
           "score": 0.19695751643138415
-        },
-        {
-          "term": "financial reporting",
-          "score": -0.003946648732468638
-        },
-        {
-          "term": "trade restrictions",
-          "score": -0.003946648732468638
-        },
-        {
-          "term": "Data privacy",
-          "score": -0.003968787858996237
-        },
-        {
-          "term": "Interest rates",
-          "score": -0.003968787858996237
-        },
-        {
-          "term": "relating information technology",
-          "score": -0.003973412881054461
-        },
-        {
-          "term": "Supply chain",
-          "score": -0.0039799508281257445
-        },
-        {
-          "term": "countries operate",
-          "score": -0.003995854152243794
-        },
-        {
-          "term": "results operations financial condition",
-          "score": -0.004001504133944955
-        },
-        {
-          "term": "change markets",
-          "score": -0.004007170115998271
-        },
-        {
-          "term": "laws regulations",
-          "score": -0.004012852166467962
-        },
-        {
-          "term": "claims product",
-          "score": -0.004041505854529337
-        },
-        {
-          "term": "product liability",
-          "score": -0.004116938336469644
         }
       ],
       "topFallersAlt": [
@@ -2367,50 +1534,6 @@
         {
           "term": "economic conditions",
           "score": 0.132408509824959
-        },
-        {
-          "term": "financial reporting",
-          "score": -0.023358284427628995
-        },
-        {
-          "term": "trade restrictions",
-          "score": -0.023358284427628995
-        },
-        {
-          "term": "Data privacy",
-          "score": -0.023487531429479347
-        },
-        {
-          "term": "Interest rates",
-          "score": -0.023487531429479347
-        },
-        {
-          "term": "relating information technology",
-          "score": -0.02351452958308453
-        },
-        {
-          "term": "Supply chain",
-          "score": -0.023552692809349907
-        },
-        {
-          "term": "financial markets",
-          "score": -0.02357984106605615
-        },
-        {
-          "term": "countries operate",
-          "score": -0.02364551638107848
-        },
-        {
-          "term": "change markets",
-          "score": -0.023711558576995806
-        },
-        {
-          "term": "laws regulations",
-          "score": -0.023744718217381777
-        },
-        {
-          "term": "claims product",
-          "score": -0.02391191745388488
         }
       ],
       "topFallersAlt": [
@@ -2550,105 +1673,6 @@
           "per10kCurr": 8.640552995391706,
           "deltaPer10k": 2.87686423458479,
           "distinctive": false
-        },
-        {
-          "term": "government authorities",
-          "score": -0.1932272675513134,
-          "z": -0.5500899440738529,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 5.763688760806916,
-          "per10kCurr": 2.880184331797235,
-          "deltaPer10k": -2.8835044290096814,
-          "distinctive": false
-        },
-        {
-          "term": "shipments",
-          "score": -0.25331329983904066,
-          "z": -0.9409638455366219,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 5.763688760806916,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -5.763688760806916,
-          "distinctive": false
-        },
-        {
-          "term": "continue extend",
-          "score": -0.2588404105684642,
-          "z": -0.5500899440738529,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 5.763688760806916,
-          "per10kCurr": 2.880184331797235,
-          "deltaPer10k": -2.8835044290096814,
-          "distinctive": false
-        },
-        {
-          "term": "extend",
-          "score": -0.321052016258212,
-          "z": -0.5500899440738529,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 5.763688760806916,
-          "per10kCurr": 2.880184331797235,
-          "deltaPer10k": -2.8835044290096814,
-          "distinctive": false
-        },
-        {
-          "term": "customers vendors",
-          "score": -0.3305275340812395,
-          "z": -0.9409638455366219,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 5.763688760806916,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -5.763688760806916,
-          "distinctive": false
-        },
-        {
-          "term": "vendors parties",
-          "score": -0.3305275340812395,
-          "z": -0.9409638455366219,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 5.763688760806916,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -5.763688760806916,
-          "distinctive": false
-        },
-        {
-          "term": "extent covid",
-          "score": -0.33249943895639406,
-          "z": -0.5500899440738529,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 5.763688760806916,
-          "per10kCurr": 2.880184331797235,
-          "deltaPer10k": -2.8835044290096814,
-          "distinctive": false
-        },
-        {
-          "term": "response",
-          "score": -0.3839372811737473,
-          "z": -0.5500899440738529,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 5.763688760806916,
-          "per10kCurr": 2.880184331797235,
-          "deltaPer10k": -2.8835044290096814,
-          "distinctive": false
-        },
-        {
-          "term": "vendors",
-          "score": -0.4456832360357725,
-          "z": -0.9409638455366219,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 5.763688760806916,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -5.763688760806916,
-          "distinctive": false
         }
       ],
       "topFallers": [
@@ -2761,61 +1785,6 @@
           "per10kCurr": 2.880184331797235,
           "deltaPer10k": -2.8835044290096814,
           "distinctive": false
-        },
-        {
-          "term": "tensions",
-          "score": 0.1172297855036907,
-          "z": 0.4354646591753305,
-          "countPrev": 2,
-          "countCurr": 3,
-          "per10kPrev": 5.763688760806916,
-          "per10kCurr": 8.640552995391706,
-          "deltaPer10k": 2.87686423458479,
-          "distinctive": false
-        },
-        {
-          "term": "difficult",
-          "score": 0.2601089129181514,
-          "z": 0.5491637628886924,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 2.881844380403458,
-          "per10kCurr": 5.76036866359447,
-          "deltaPer10k": 2.8785242831910116,
-          "distinctive": false
-        },
-        {
-          "term": "capital expenditures",
-          "score": 0.5685578982185926,
-          "z": 0.9406270982455097,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 5.76036866359447,
-          "deltaPer10k": 5.76036866359447,
-          "distinctive": false
-        },
-        {
-          "term": "depreciation",
-          "score": 0.6565141111727846,
-          "z": 0.9406270982455097,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 5.76036866359447,
-          "deltaPer10k": 5.76036866359447,
-          "distinctive": false
-        },
-        {
-          "term": "expenditures",
-          "score": 0.6565141111727846,
-          "z": 0.9406270982455097,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 5.76036866359447,
-          "deltaPer10k": 5.76036866359447,
-          "distinctive": false
         }
       ],
       "summary": "Adds emphasis on Geopolitical tensions, depreciation, expenditures; de-emphasizes responses, vendors, response.",
@@ -2827,58 +1796,6 @@
         {
           "term": "customers suppliers parties",
           "score": 0.5887062343506928
-        },
-        {
-          "term": "financial reporting",
-          "score": -0.011477674483383105
-        },
-        {
-          "term": "trade restrictions",
-          "score": -0.011477674483383105
-        },
-        {
-          "term": "Data privacy",
-          "score": -0.011540079542747606
-        },
-        {
-          "term": "Interest rates",
-          "score": -0.011540079542747606
-        },
-        {
-          "term": "costs key",
-          "score": -0.011553113703627993
-        },
-        {
-          "term": "relating information technology",
-          "score": -0.011553113703627993
-        },
-        {
-          "term": "Supply chain",
-          "score": -0.011571537245042673
-        },
-        {
-          "term": "financial markets",
-          "score": -0.011584642604916429
-        },
-        {
-          "term": "natural events",
-          "score": -0.011584642604916429
-        },
-        {
-          "term": "countries operate",
-          "score": -0.011616344066284423
-        },
-        {
-          "term": "change markets",
-          "score": -0.011648219508287205
-        },
-        {
-          "term": "laws regulations",
-          "score": -0.011664222920219736
-        },
-        {
-          "term": "Climate change",
-          "score": -0.011677539186656816
         }
       ],
       "topFallersAlt": [
@@ -2943,7 +1860,7 @@
           "score": -0.011553113703627993
         }
       ],
-      "summaryAlt": "Adds emphasis on Geopolitical tensions, customers suppliers parties, financial reporting; de-emphasizes economic conditions, Intellectual property, customer demand."
+      "summaryAlt": "Adds emphasis on Geopolitical tensions, customers suppliers parties; de-emphasizes economic conditions, Intellectual property, customer demand."
     },
     {
       "from": 2022,
@@ -3221,72 +2138,6 @@
           "per10kCurr": 2.8169014084507045,
           "deltaPer10k": -2.9434672551437653,
           "distinctive": false
-        },
-        {
-          "term": "entities",
-          "score": 0.11262165746919832,
-          "z": 1.2064458693253888,
-          "countPrev": 1,
-          "countCurr": 4,
-          "per10kPrev": 2.880184331797235,
-          "per10kCurr": 11.267605633802818,
-          "deltaPer10k": 8.387421302005583,
-          "distinctive": false
-        },
-        {
-          "term": "export",
-          "score": 0.14315253497034844,
-          "z": 0.5317579451596353,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 2.880184331797235,
-          "per10kCurr": 5.633802816901409,
-          "deltaPer10k": 2.753618485104174,
-          "distinctive": false
-        },
-        {
-          "term": "import",
-          "score": 0.14315253497034844,
-          "z": 0.5317579451596353,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 2.880184331797235,
-          "per10kCurr": 5.633802816901409,
-          "deltaPer10k": 2.753618485104174,
-          "distinctive": false
-        },
-        {
-          "term": "inquiries",
-          "score": 0.14315253497034844,
-          "z": 0.5317579451596353,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 2.880184331797235,
-          "per10kCurr": 5.633802816901409,
-          "deltaPer10k": 2.753618485104174,
-          "distinctive": false
-        },
-        {
-          "term": "listed",
-          "score": 0.19598806709886923,
-          "z": 0.5317579451596353,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 2.880184331797235,
-          "per10kCurr": 5.633802816901409,
-          "deltaPer10k": 2.753618485104174,
-          "distinctive": false
-        },
-        {
-          "term": "activities",
-          "score": 0.2518647266955543,
-          "z": 0.5317579451596353,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 2.880184331797235,
-          "per10kCurr": 5.633802816901409,
-          "deltaPer10k": 2.753618485104174,
-          "distinctive": false
         }
       ],
       "summary": "Adds emphasis on incentives, government entities, pandemics epidemics; de-emphasizes COVID-19, covid pandemic, short long.",
@@ -3368,50 +2219,6 @@
         {
           "term": "customer demand",
           "score": -0.04602860805995501
-        },
-        {
-          "term": "financial reporting",
-          "score": 0.0192033042713593
-        },
-        {
-          "term": "trade restrictions",
-          "score": 0.0192033042713593
-        },
-        {
-          "term": "Geopolitical tensions",
-          "score": 0.01927734429699779
-        },
-        {
-          "term": "customers suppliers parties",
-          "score": 0.019303643556559003
-        },
-        {
-          "term": "Data privacy",
-          "score": 0.01930812156888706
-        },
-        {
-          "term": "Interest rates",
-          "score": 0.01930812156888706
-        },
-        {
-          "term": "costs key",
-          "score": 0.019330014674307172
-        },
-        {
-          "term": "financial markets",
-          "score": 0.019382973665666103
-        },
-        {
-          "term": "natural events",
-          "score": 0.019382973665666103
-        },
-        {
-          "term": "change markets",
-          "score": 0.019489767032104588
-        },
-        {
-          "term": "Climate change",
-          "score": 0.019539018345950065
         }
       ],
       "summaryAlt": "Adds emphasis on financial results, information technology, Supply chain; de-emphasizes economic conditions, relating information technology, countries operate."
@@ -3522,39 +2329,6 @@
           "per10kCurr": 8.491367110104727,
           "deltaPer10k": 2.8575642932033185,
           "distinctive": false
-        },
-        {
-          "term": "government",
-          "score": -0.13779696106740635,
-          "z": -0.29092850685287974,
-          "countPrev": 6,
-          "countCurr": 5,
-          "per10kPrev": 16.901408450704228,
-          "per10kCurr": 14.15227851684121,
-          "deltaPer10k": -2.749129933863017,
-          "distinctive": false
-        },
-        {
-          "term": "designed",
-          "score": -0.38091547055633973,
-          "z": -0.5457604149683445,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 5.633802816901409,
-          "per10kCurr": 2.830455703368242,
-          "deltaPer10k": -2.803347113533167,
-          "distinctive": false
-        },
-        {
-          "term": "resources services",
-          "score": -0.6453392124909675,
-          "z": -1.0676547678457187,
-          "countPrev": 3,
-          "countCurr": 0,
-          "per10kPrev": 8.450704225352114,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -8.450704225352114,
-          "distinctive": false
         }
       ],
       "topFallers": [
@@ -3590,109 +2364,6 @@
           "per10kCurr": 14.15227851684121,
           "deltaPer10k": -2.749129933863017,
           "distinctive": false
-        },
-        {
-          "term": "incidents",
-          "score": 0.16259535702482195,
-          "z": 0.4411563123401783,
-          "countPrev": 2,
-          "countCurr": 3,
-          "per10kPrev": 5.633802816901409,
-          "per10kCurr": 8.491367110104727,
-          "deltaPer10k": 2.8575642932033185,
-          "distinctive": false
-        },
-        {
-          "term": "key materials",
-          "score": 0.17780137648260186,
-          "z": 0.37786506763285443,
-          "countPrev": 3,
-          "countCurr": 4,
-          "per10kPrev": 8.450704225352114,
-          "per10kCurr": 11.321822813472968,
-          "deltaPer10k": 2.8711185881208543,
-          "distinctive": false
-        },
-        {
-          "term": "services utilities",
-          "score": 0.17780137648260186,
-          "z": 0.37786506763285443,
-          "countPrev": 3,
-          "countCurr": 4,
-          "per10kPrev": 8.450704225352114,
-          "per10kCurr": 11.321822813472968,
-          "deltaPer10k": 2.8711185881208543,
-          "distinctive": false
-        },
-        {
-          "term": "failure",
-          "score": 0.3311944200483525,
-          "z": 1.2302629799027187,
-          "countPrev": 1,
-          "countCurr": 4,
-          "per10kPrev": 2.8169014084507045,
-          "per10kCurr": 11.321822813472968,
-          "deltaPer10k": 8.504921405022264,
-          "distinctive": false
-        },
-        {
-          "term": "retain train",
-          "score": 0.7059249793687319,
-          "z": 0.9381567978758829,
-          "countPrev": 1,
-          "countCurr": 3,
-          "per10kPrev": 2.8169014084507045,
-          "per10kCurr": 8.491367110104727,
-          "deltaPer10k": 5.674465701654023,
-          "distinctive": false
-        },
-        {
-          "term": "train recruit",
-          "score": 0.7059249793687319,
-          "z": 0.9381567978758829,
-          "countPrev": 1,
-          "countCurr": 3,
-          "per10kPrev": 2.8169014084507045,
-          "per10kCurr": 8.491367110104727,
-          "deltaPer10k": 5.674465701654023,
-          "distinctive": false
-        },
-        {
-          "term": "train",
-          "score": 0.765683144800422,
-          "z": 0.9381567978758829,
-          "countPrev": 1,
-          "countCurr": 3,
-          "per10kPrev": 2.8169014084507045,
-          "per10kCurr": 8.491367110104727,
-          "deltaPer10k": 5.674465701654023,
-          "distinctive": false
-        },
-        {
-          "term": "Artificial intelligence",
-          "score": 0.8613066433233297,
-          "z": 0.9421965023837436,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 5.660911406736484,
-          "deltaPer10k": 5.660911406736484,
-          "distinctive": false,
-          "includes": [
-            "artificial intelligence",
-            "ai"
-          ]
-        },
-        {
-          "term": "materials services",
-          "score": 1.0622621792880877,
-          "z": 1.1620248348230287,
-          "countPrev": 0,
-          "countCurr": 4,
-          "per10kPrev": 0.0,
-          "per10kCurr": 11.321822813472968,
-          "deltaPer10k": 11.321822813472968,
-          "distinctive": false
         }
       ],
       "summary": "Adds emphasis on materials services, Artificial intelligence, train; de-emphasizes resources services, designed, government.",
@@ -3720,42 +2391,6 @@
         {
           "term": "customers suppliers parties",
           "score": 0.18627462746621237
-        },
-        {
-          "term": "financial reporting",
-          "score": -0.0192033042713593
-        },
-        {
-          "term": "trade restrictions",
-          "score": -0.0192033042713593
-        },
-        {
-          "term": "Geopolitical tensions",
-          "score": -0.01927734429699779
-        },
-        {
-          "term": "Data privacy",
-          "score": -0.01930812156888706
-        },
-        {
-          "term": "Interest rates",
-          "score": -0.01930812156888706
-        },
-        {
-          "term": "costs key",
-          "score": -0.019330014674307172
-        },
-        {
-          "term": "financial markets",
-          "score": -0.019382973665666103
-        },
-        {
-          "term": "Supply chain",
-          "score": -0.01943622364991393
-        },
-        {
-          "term": "change markets",
-          "score": -0.019489767032104588
         }
       ],
       "topFallersAlt": [

@@ -37,116 +37,6 @@
           "per10kCurr": 3.0197795560924052,
           "deltaPer10k": 3.0197795560924052,
           "distinctive": false
-        },
-        {
-          "term": "sale",
-          "score": -0.18113285774827584,
-          "z": -0.5460392352020037,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 3.007066606525335,
-          "per10kCurr": 1.5098897780462026,
-          "deltaPer10k": -1.4971768284791322,
-          "distinctive": false
-        },
-        {
-          "term": "computers compete",
-          "score": -0.22039864778713536,
-          "z": -0.5460392352020037,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 3.007066606525335,
-          "per10kCurr": 1.5098897780462026,
-          "deltaPer10k": -1.4971768284791322,
-          "distinctive": false
-        },
-        {
-          "term": "media devices",
-          "score": -0.22325393472197233,
-          "z": -0.4313493575062497,
-          "countPrev": 3,
-          "countCurr": 2,
-          "per10kPrev": 4.510599909788001,
-          "per10kCurr": 3.0197795560924052,
-          "deltaPer10k": -1.4908203536955962,
-          "distinctive": false
-        },
-        {
-          "term": "communication media",
-          "score": -0.27754452028817317,
-          "z": -0.4313493575062497,
-          "countPrev": 3,
-          "countCurr": 2,
-          "per10kPrev": 4.510599909788001,
-          "per10kCurr": 3.0197795560924052,
-          "deltaPer10k": -1.4908203536955962,
-          "distinctive": false
-        },
-        {
-          "term": "mobile communication",
-          "score": -0.27754452028817317,
-          "z": -0.4313493575062497,
-          "countPrev": 3,
-          "countCurr": 2,
-          "per10kPrev": 4.510599909788001,
-          "per10kCurr": 3.0197795560924052,
-          "deltaPer10k": -1.4908203536955962,
-          "distinctive": false
-        },
-        {
-          "term": "communication",
-          "score": -0.3148081320724375,
-          "z": -0.4313493575062497,
-          "countPrev": 3,
-          "countCurr": 2,
-          "per10kPrev": 4.510599909788001,
-          "per10kCurr": 3.0197795560924052,
-          "deltaPer10k": -1.4908203536955962,
-          "distinctive": false
-        },
-        {
-          "term": "windows based",
-          "score": -0.3513398013823755,
-          "z": -0.5460392352020037,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 3.007066606525335,
-          "per10kCurr": 1.5098897780462026,
-          "deltaPer10k": -1.4971768284791322,
-          "distinctive": false
-        },
-        {
-          "term": "european",
-          "score": -0.4540117602922655,
-          "z": -1.0676815306037062,
-          "countPrev": 3,
-          "countCurr": 0,
-          "per10kPrev": 4.510599909788001,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -4.510599909788001,
-          "distinctive": false
-        },
-        {
-          "term": "aid",
-          "score": -0.8916600533436664,
-          "z": -0.939451993777581,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 3.007066606525335,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -3.007066606525335,
-          "distinctive": false
-        },
-        {
-          "term": "posted",
-          "score": -0.8916600533436664,
-          "z": -0.939451993777581,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 3.007066606525335,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -3.007066606525335,
-          "distinctive": false
         }
       ],
       "topFallers": [
@@ -259,39 +149,6 @@
           "per10kCurr": 1.5098897780462026,
           "deltaPer10k": -1.4971768284791322,
           "distinctive": false
-        },
-        {
-          "term": "country",
-          "score": 0.15152260527010739,
-          "z": 0.9419829885578245,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 3.0197795560924052,
-          "deltaPer10k": 3.0197795560924052,
-          "distinctive": false
-        },
-        {
-          "term": "pii",
-          "score": 0.24559719420817677,
-          "z": 0.5775612245272251,
-          "countPrev": 5,
-          "countCurr": 7,
-          "per10kPrev": 7.517666516313336,
-          "per10kCurr": 10.569228446323418,
-          "deltaPer10k": 3.051561930010082,
-          "distinctive": false
-        },
-        {
-          "term": "regulations country",
-          "score": 0.6061031786169129,
-          "z": 0.9419829885578245,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 3.0197795560924052,
-          "deltaPer10k": 3.0197795560924052,
-          "distinctive": false
         }
       ],
       "summary": "Adds emphasis on regulations country, pii, country; de-emphasizes aid, posted, european.",
@@ -307,54 +164,6 @@
         {
           "term": "laws regulations",
           "score": 0.30200949341360195
-        },
-        {
-          "term": "financial reporting",
-          "score": -0.03351410045621961
-        },
-        {
-          "term": "political instability",
-          "score": -0.033539569814620585
-        },
-        {
-          "term": "gross margin",
-          "score": -0.03359062485322273
-        },
-        {
-          "term": "Interest rates",
-          "score": -0.033629018262819166
-        },
-        {
-          "term": "disaster recovery",
-          "score": -0.033629018262819166
-        },
-        {
-          "term": "foreign laws regulations",
-          "score": -0.03364215613689581
-        },
-        {
-          "term": "software applications",
-          "score": -0.03364215613689581
-        },
-        {
-          "term": "stores services",
-          "score": -0.03364215613689581
-        },
-        {
-          "term": "subject laws regulations",
-          "score": -0.03364215613689581
-        },
-        {
-          "term": "patent infringement",
-          "score": -0.033654662669777125
-        },
-        {
-          "term": "content applications",
-          "score": -0.03366782059434836
-        },
-        {
-          "term": "costs associated",
-          "score": -0.03366782059434836
         }
       ],
       "topFallersAlt": [
@@ -857,30 +666,6 @@
         {
           "term": "Intellectual property",
           "score": -0.02426058543462606
-        },
-        {
-          "term": "political instability",
-          "score": 0.04288538688220633
-        },
-        {
-          "term": "gross margin",
-          "score": 0.04295097662869818
-        },
-        {
-          "term": "Interest rates",
-          "score": 0.043000300772511935
-        },
-        {
-          "term": "disaster recovery",
-          "score": 0.043000300772511935
-        },
-        {
-          "term": "content applications",
-          "score": 0.04305015080753183
-        },
-        {
-          "term": "costs associated",
-          "score": 0.04305015080753183
         }
       ],
       "summaryAlt": "Adds emphasis on data security, foreign laws, subject laws; de-emphasizes reasonable terms, laws regulations, retail stores."
@@ -1735,18 +1520,6 @@
         {
           "term": "information technology",
           "score": 0.019881023201056447
-        },
-        {
-          "term": "products services",
-          "score": -0.004200092850347836
-        },
-        {
-          "term": "gross margin",
-          "score": -0.050985078268571016
-        },
-        {
-          "term": "business continuity",
-          "score": -0.05100414379058371
         }
       ],
       "topFallersAlt": [
@@ -1997,170 +1770,9 @@
           "per10kCurr": 5.005005005005005,
           "deltaPer10k": -1.7728179582591945,
           "distinctive": false
-        },
-        {
-          "term": "adverse effects",
-          "score": 0.10308492679448544,
-          "z": 0.4831838631128939,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 1.35556459265284,
-          "per10kCurr": 2.5025025025025025,
-          "deltaPer10k": 1.1469379098496626,
-          "distinctive": false
-        },
-        {
-          "term": "distracting management",
-          "score": 0.10308492679448544,
-          "z": 0.4831838631128939,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 1.35556459265284,
-          "per10kCurr": 2.5025025025025025,
-          "deltaPer10k": 1.1469379098496626,
-          "distinctive": false
-        },
-        {
-          "term": "Supply chain",
-          "score": 0.11161697194508505,
-          "z": 2.232339438901701,
-          "countPrev": 2,
-          "countCurr": 12,
-          "per10kPrev": 2.71112918530568,
-          "per10kCurr": 15.015015015015015,
-          "deltaPer10k": 12.303885829709335,
-          "distinctive": false,
-          "includes": [
-            "supply chain"
-          ]
-        },
-        {
-          "term": "government investigations",
-          "score": 0.11721207649291364,
-          "z": 1.5134366370902468,
-          "countPrev": 3,
-          "countCurr": 9,
-          "per10kPrev": 4.06669377795852,
-          "per10kCurr": 11.26126126126126,
-          "deltaPer10k": 7.194567483302741,
-          "distinctive": false
-        },
-        {
-          "term": "face",
-          "score": 0.11753223819255366,
-          "z": 0.4831838631128939,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 1.35556459265284,
-          "per10kCurr": 2.5025025025025025,
-          "deltaPer10k": 1.1469379098496626,
-          "distinctive": false
-        },
-        {
-          "term": "intangible",
-          "score": 0.11753223819255366,
-          "z": 0.4831838631128939,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 1.35556459265284,
-          "per10kCurr": 2.5025025025025025,
-          "deltaPer10k": 1.1469379098496626,
-          "distinctive": false
-        },
-        {
-          "term": "large",
-          "score": 0.11753223819255366,
-          "z": 0.4831838631128939,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 1.35556459265284,
-          "per10kCurr": 2.5025025025025025,
-          "deltaPer10k": 1.1469379098496626,
-          "distinctive": false
-        },
-        {
-          "term": "plans",
-          "score": 0.11753223819255366,
-          "z": 0.4831838631128939,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 1.35556459265284,
-          "per10kCurr": 2.5025025025025025,
-          "deltaPer10k": 1.1469379098496626,
-          "distinctive": false
-        },
-        {
-          "term": "structure",
-          "score": 0.11753223819255366,
-          "z": 0.4831838631128939,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 1.35556459265284,
-          "per10kCurr": 2.5025025025025025,
-          "deltaPer10k": 1.1469379098496626,
-          "distinctive": false
-        },
-        {
-          "term": "Pandemic",
-          "score": 0.12113685832377608,
-          "z": 2.4227371664755215,
-          "countPrev": 1,
-          "countCurr": 13,
-          "per10kPrev": 1.35556459265284,
-          "per10kCurr": 16.266266266266268,
-          "deltaPer10k": 14.910701673613428,
-          "distinctive": false,
-          "includes": [
-            "pandemics",
-            "pandemic"
-          ]
-        },
-        {
-          "term": "impacts",
-          "score": 0.13889332706355062,
-          "z": 0.8634695205037775,
-          "countPrev": 1,
-          "countCurr": 3,
-          "per10kPrev": 1.35556459265284,
-          "per10kCurr": 3.7537537537537538,
-          "deltaPer10k": 2.398189161100914,
-          "distinctive": false
-        },
-        {
-          "term": "described item",
-          "score": 0.14594457062483943,
-          "z": 0.4831838631128939,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 1.35556459265284,
-          "per10kCurr": 2.5025025025025025,
-          "deltaPer10k": 1.1469379098496626,
-          "distinctive": false
-        },
-        {
-          "term": "item form",
-          "score": 0.14594457062483943,
-          "z": 0.4831838631128939,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 1.35556459265284,
-          "per10kCurr": 2.5025025025025025,
-          "deltaPer10k": 1.1469379098496626,
-          "distinctive": false
-        },
-        {
-          "term": "services designed",
-          "score": 0.14594457062483943,
-          "z": 0.4831838631128939,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 1.35556459265284,
-          "per10kCurr": 2.5025025025025025,
-          "deltaPer10k": 1.1469379098496626,
-          "distinctive": false
         }
       ],
-      "summary": "Adds emphasis on points, points sale, COVID-19; de-emphasizes contract, adverse effects, distracting management.",
+      "summary": "Adds emphasis on points, points sale, COVID-19; de-emphasizes contract.",
       "topRisersAlt": [
         {
           "term": "adverse impact financial condition",
@@ -2205,22 +1817,6 @@
         {
           "term": "international trade",
           "score": 0.07898900182558055
-        },
-        {
-          "term": "gross margin",
-          "score": -0.028820179760502995
-        },
-        {
-          "term": "business continuity",
-          "score": -0.028830534386275808
-        },
-        {
-          "term": "Interest rates",
-          "score": -0.02885126597692178
-        },
-        {
-          "term": "disaster recovery",
-          "score": -0.02885126597692178
         }
       ],
       "topFallersAlt": [
@@ -3056,39 +2652,6 @@
           "includes": [
             "covid"
           ]
-        },
-        {
-          "term": "example subject",
-          "score": 0.106703982263017,
-          "z": 0.5001472471543954,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 1.1584800741427248,
-          "per10kCurr": 2.183406113537118,
-          "deltaPer10k": 1.0249260393943933,
-          "distinctive": false
-        },
-        {
-          "term": "liabilities increased",
-          "score": 0.106703982263017,
-          "z": 0.5001472471543954,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 1.1584800741427248,
-          "per10kCurr": 2.183406113537118,
-          "deltaPer10k": 1.0249260393943933,
-          "distinctive": false
-        },
-        {
-          "term": "potential liabilities",
-          "score": 0.106703982263017,
-          "z": 0.5001472471543954,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 1.1584800741427248,
-          "per10kCurr": 2.183406113537118,
-          "deltaPer10k": 1.0249260393943933,
-          "distinctive": false
         }
       ],
       "summary": "Adds emphasis on governance, environmental social, social governance; de-emphasizes enacted, points, proposed.",
@@ -3140,18 +2703,6 @@
         {
           "term": "demand products services",
           "score": 0.1198398693704763
-        },
-        {
-          "term": "regulatory compliance",
-          "score": -0.023573700411599674
-        },
-        {
-          "term": "trade restrictions",
-          "score": -0.023573700411599674
-        },
-        {
-          "term": "gross margin",
-          "score": -0.02359969844962162
         }
       ],
       "topFallersAlt": [
@@ -3606,22 +3157,6 @@
         {
           "term": "products services",
           "score": 0.025454364273990393
-        },
-        {
-          "term": "regulatory compliance",
-          "score": -0.020180751785455087
-        },
-        {
-          "term": "business continuity",
-          "score": -0.020209794078278165
-        },
-        {
-          "term": "Interest rates",
-          "score": -0.02022434659459016
-        },
-        {
-          "term": "disaster recovery",
-          "score": -0.02022434659459016
         }
       ],
       "topFallersAlt": [
@@ -4065,30 +3600,6 @@
         {
           "term": "Supply chain",
           "score": 0.050887414324335634
-        },
-        {
-          "term": "regulatory compliance",
-          "score": -0.025362262900343602
-        },
-        {
-          "term": "business continuity",
-          "score": -0.025397939399854685
-        },
-        {
-          "term": "Interest rates",
-          "score": -0.02541581531709891
-        },
-        {
-          "term": "disaster recovery",
-          "score": -0.02541581531709891
-        },
-        {
-          "term": "products services",
-          "score": -0.0056330360833887205
-        },
-        {
-          "term": "patent infringement",
-          "score": -0.025433716416757512
         }
       ],
       "topFallersAlt": [
@@ -4548,14 +4059,6 @@
         {
           "term": "international laws",
           "score": 0.0729090494806881
-        },
-        {
-          "term": "new products services",
-          "score": -0.022404906348592046
-        },
-        {
-          "term": "regulatory compliance",
-          "score": -0.11549964784620936
         }
       ],
       "topFallersAlt": [
