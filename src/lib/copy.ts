@@ -1,6 +1,6 @@
 // src/lib/copy.ts
 /**
- * SEC Narrative Drift — Copy System (Single public tone)
+ * SEC Narrative Drift -- Copy System (Single public tone)
  *
  * Portfolio guidance: ship ONE public tone. Keep humor understated and embedded in a few
  * high-traffic helpers/footnotes. Some people gave feedback that I should edit down my tone for professional credibility.
@@ -21,20 +21,20 @@ export const copy = {
   global: {
     appName: "SEC Narrative Drift",
     subtitle: "How 10-K / 20-F Risk Factors language changes over time (Item 1A / Item 3.D)",
-    oneLiner: "A fast, auditable way to spot when the risk story changed — and read the exact paragraphs.",
+    oneLiner: "A fast, auditable way to see when the risk story changed -- and read the exact paragraphs.",
     sourceLine: "Source: SEC EDGAR (10-K and 20-F filings).",
     caveatLine: "Descriptive, not causal. Use drift as a reading prompt, not a conclusion.",
     disclaimerLine: "Not investment advice. For informational analysis of public filings.",
     loading: {
-      base: "Loading…",
-      filings: "Loading filings…",
-      charts: "Rendering charts…",
+      base: "Loading...",
+      filings: "Loading filings...",
+      charts: "Rendering charts...",
     },
     errors: {
       missingDataset:
-        "We couldn’t load this dataset. Try a featured case — those are curated and demo‑safe.",
+        "We couldn't load this dataset. Try a featured case -- those are curated and demo-safe.",
       missingExcerpts: "We have metrics for this pair, but no excerpt set yet.",
-      noShifts: "No clear “top movers” for this year pair (which is itself a result).",
+      noShifts: 'No clear "top movers" for this year pair (which is itself a result).',
       lowConfidenceYear:
         "This year's Item 1A / Item 3.D extraction is low confidence. Treat metrics with caution and use the View on SEC link to verify.",
     },
@@ -59,7 +59,7 @@ export const copy = {
   },
 
   home: {
-    heroTitle: "Narrative Drift, by the numbers — and by the paragraph",
+    heroTitle: "Narrative Drift, by the numbers -- and by the paragraph",
     heroBody:
       "Pick a company and see how its 10-K / 20-F Risk Factors language changes year-to-year, where the biggest shifts happen, and the terms that move the most.",
     heroFootnote: "Featured cases are precomputed, because live demos are a form of optimism.",
@@ -146,7 +146,7 @@ export const copy = {
     callouts: {
       largestDrift: {
         label: "Largest drift year",
-        tooltip: "Highest drift vs prior year (1 − cosine similarity).",
+        tooltip: "Highest drift vs prior year (1 - TF-IDF cosine similarity).",
       },
       mostStable: {
         label: "Most stable year",
@@ -214,12 +214,12 @@ export const copy = {
   driftTimeline: {
     title: "Narrative drift vs prior year",
     // High-traffic: appears above the fold in the default dashboard layout.
-    helper: "Higher means the wording changed more from the previous year. Not a verdict — just where to read.",
+    helper: "Higher means the wording changed more from the previous year. Not a verdict -- just where to read.",
     tooltip: {
       title: ({ year }: { year: number | string }) => t("{year}", { year }),
       driftLine: ({ prevYear, drift }: { prevYear: number | string; drift: string }) =>
         t("Drift vs {prevYear}: {drift}", { prevYear, drift }),
-      ciLine: ({ low, high }: { low: string; high: string }) => t("CI: {low}–{high}", { low, high }),
+      ciLine: ({ low, high }: { low: string; high: string }) => t("CI: {low}-{high}", { low, high }),
       boilerplateLine: ({ boilerplatePct }: { boilerplatePct: string }) => t("Boilerplate: {boilerplatePct}", { boilerplatePct }),
       confidenceLine: ({ confidencePct }: { confidencePct: string }) => t("Extraction confidence: {confidencePct}", { confidencePct }),
     },
@@ -228,7 +228,7 @@ export const copy = {
   heatmap: {
     title: "Similarity across years",
     // High-traffic line for most flows: small + dry + functional.
-    helper: "Darker cells are more similar. Click a cell to compare years. It will not file a 10‑K for you.",
+    helper: "Darker cells are more similar. Click a cell to compare years. It will not file a 10-K for you.",
     microcopy: "Click any off-diagonal cell to compare two different years.",
     legendMin: ({ value }: { value: string }) => t("Low ({value})", { value }),
     legendMax: ({ value }: { value: string }) => t("High ({value})", { value }),
@@ -265,7 +265,7 @@ export const copy = {
       t("Same year {year}. Self-similarity; choose another year to compare.", { year }),
     naLabel: "not available",
     hoverTitle: ({ fromYear, toYear }: { fromYear: number | string; toYear: number | string }) =>
-      t("{fromYear} ↔ {toYear}", { fromYear, toYear }),
+      t("{fromYear} <-> {toYear}", { fromYear, toYear }),
     cosineLine: ({ value }: { value: string }) => t("Cosine similarity: {value}", { value }),
     driftLine: ({ drift }: { drift: string }) => t("Drift: {drift}", { drift }),
   },
@@ -273,11 +273,11 @@ export const copy = {
   termShifts: {
     title: "Distinctive terms (log-odds)",
     helper:
-      "Words and phrases that shifted the most between years (descriptive, not causal). Click a term to highlight it below.",
+      "Words and phrases that shifted the most between years (smoothed log-odds). Click a term to highlight it below.",
     risersLabel: "More emphasized",
     fallersLabel: "Less emphasized",
     scoreTooltip:
-      "Rank score (DF-adjusted z). Bar length reflects rank score magnitude; z is shown separately.",
+      "Rank score is DF-adjusted z; log-odds uses a Dirichlet prior.",
     emptyRisers: "No notable risers (low-signal pair).",
     emptyFallers: "No notable fallers (low-signal pair).",
     lensLabel: "Phrase lens",
@@ -289,7 +289,7 @@ export const copy = {
       "TextRank-style keyphrases derived from each year's text. Can surface more \"topic-like\" phrases, but may be noisier.",
     distinctiveBadge: "Notable",
     distinctiveTooltip:
-      "Heuristic: this term's shift looks less likely to be a tokenization artifact (uses z-score + frequency filters when available).",
+      "Heuristic: this term's shift looks less likely to be a tokenization artifact (z-score + frequency + DF filters).",
   },
 
   terms: {
@@ -311,7 +311,7 @@ export const copy = {
   comparePane: {
     title: "Read the evidence",
     helper:
-      "Side-by-side excerpts from each year (representative, not aligned line-by-line).",
+      "Representative paragraphs for the selected year pair. The receipts -- curated, not comprehensive.",
     pairLabel: "Comparing",
     fromLabel: "From",
     toLabel: "To",
@@ -337,24 +337,24 @@ export const copy = {
       whatNot: "What it does not measure",
       extraction: "How extraction works (high level)",
       drift: "How drift is computed (high level)",
-      sanityCheck: "How to sanity‑check a spike",
+      sanityCheck: "How to sanity-check a spike",
       relatedWork: "Related work (and how this differs)",
       securityPrivacy: "Security & privacy",
       credits: "Credits",
     },
     paragraphs: {
       whatMeasures:
-        "We compare the text of Item 1A / Item 3.D across years and compute how similar each year is to the previous year. A large change suggests the risk narrative was rewritten or restructured.",
+        "We compare the text of Item 1A / Item 3.D across years and compute how similar each year is to the previous year. A large change suggests the risk narrative was rewritten or reorganized.",
       whatNot:
-        "A drift spike is not proof of a real-world event. It’s a prompt to read the filing and form hypotheses. Treat this as descriptive analysis, not causality.",
+        "A drift spike is not proof of a real-world event. It's a prompt to read the filing and form hypotheses. Treat this as descriptive analysis, not causality.",
       extraction:
-        "We download the filing HTML, isolate Item 1A / Item 3.D using section heuristics, and split the result into paragraphs. We record an extraction confidence score for each year.",
+        "We download the filing HTML, drop scripts/tables, isolate Item 1A / Item 3.D via heading + TOC heuristics, and split the result into paragraphs. We record a confidence score for each year.",
       secAccess:
         "Always include a descriptive User-Agent with contact info and respect SEC fair-access limits (<= 10 requests/sec).",
       drift:
-        "We vectorize text and compute cosine similarity across years. Drift is defined as 1 − similarity. Term shifts are computed as a smoothed log‑odds difference.",
+        "We vectorize text with TF-IDF and compute cosine similarity across years. Drift is defined as 1 - similarity. Term shifts use smoothed log-odds (Dirichlet prior) with a document-frequency penalty to downweight boilerplate; phrases come from PMI bigrams + an allowlist. The alternate lens uses TextRank keyphrases.",
       sanityCheck:
-        "Click the spike year → click the heatmap cell → skim term shifts → read the highlighted paragraphs → open the SEC link if anything looks off.",
+        "Click the spike year -> click the heatmap cell -> skim term shifts -> read the highlighted paragraphs -> open the SEC link if anything looks off.",
       relatedWorkLead:
         "There are plenty of ways to download and extract SEC sections. This project's obsession is narrower: turn those sections into an auditable, evidence-first \"what changed?\" reading workflow - with uncertainty, quality flags, and direct links back to the filing.",
       relatedWorkDisclaimer:
@@ -399,7 +399,7 @@ export const copy = {
   dataQuality: {
     title: "Data quality",
     helper:
-      "Extraction confidence reflects how reliably we isolated Item 1A / Item 3.D in the filing HTML. Low confidence years are where HTML and reality briefly disagree.",
+      "Extraction confidence reflects how reliably we isolated Item 1A / Item 3.D in the filing HTML (boundary markers + text density). Low confidence years are where HTML and reality briefly disagree.",
     badges: {
       high: "High confidence",
       medium: "Medium confidence",
@@ -407,7 +407,7 @@ export const copy = {
       skipped: "Skipped (no reliable extract)",
     },
     guidance:
-      "If confidence is low, drift may reflect parsing noise. Use the “View on SEC” link to verify boundaries.",
+      'If confidence is low, drift may reflect parsing noise. Use the "View on SEC" link to verify boundaries.',
   },
   sectionCapture: {
     label: "Section capture",
@@ -427,15 +427,15 @@ export const copy = {
       drift: "Start here: spikes show years where wording changed most vs the prior year.",
       heatmap: "Click any cell to pick two years to compare.",
       shifts: "These are the biggest movers for that year pair. Click one to highlight it.",
-      compare: "Read the paragraphs side‑by‑side. This is why drift is auditable.",
+      compare: "Read the paragraphs side-by-side. This is why drift is auditable.",
     },
   },
 
   export: {
-    title: "SEC Narrative Drift — Exec Brief",
+    title: "SEC Narrative Drift -- Exec Brief",
     subtitleLine: ({ company, ticker }: { company: string; ticker: string }) => t("{company} ({ticker})", { company, ticker }),
     coverageLine: ({ startYear, endYear }: { startYear: number | string; endYear: number | string }) =>
-      t("Coverage: {startYear}–{endYear}", { startYear, endYear }),
+      t("Coverage: {startYear}-{endYear}", { startYear, endYear }),
     driftLine: ({ drift }: { drift: string }) => t("Drift: {drift}", { drift }),
     driftLineWithCi: ({ drift, low, high }: { drift: string; low: string; high: string }) =>
       t("Drift: {drift} (95% CI {low}-{high})", { drift, low, high }),
@@ -451,6 +451,6 @@ export const copy = {
         t("Top fallers: {t1}, {t2}, {t3}", { t1, t2, t3 }),
     },
     footer: ({ lastUpdatedUtc }: { lastUpdatedUtc: string }) =>
-      t("Source: SEC EDGAR | Item 1A (10‑K) or Item 3.D (20-F) | Generated: {lastUpdatedUtc}", { lastUpdatedUtc }),
+      t("Source: SEC EDGAR | Item 1A (10-K) or Item 3.D (20-F) | Generated: {lastUpdatedUtc}", { lastUpdatedUtc }),
   },
 } as const;

@@ -48,48 +48,57 @@ export SEC_CACHE_MAX_GB="10"            # Cache pruning limit
 
 ---
 
+### Algorithm Notes (short)
+
+- **Drift:** TF-IDF cosine similarity between adjacent years; drift = 1 - similarity.
+- **Term shifts:** Smoothed log-odds with a Dirichlet prior. Rank score applies a document-frequency penalty to downweight boilerplate. Phrases come from PMI bigrams + an allowlist; the alternate lens uses TextRank keyphrases.
+- **Boilerplate:** Approximate sentence reuse score (see `sec_metrics.py`).
+- **Determinism:** No LLMs or opaque models in the core metrics; outputs are reproducible from inputs + parameters.
+
+---
+
 ## Directory Structure
 
 ```
 sec-narrative-drift/
-├── data/
-│   └── sec_cache/                    # Primary data cache (git-ignored)
-│       ├── filings/{CIK}/{ACCESSION}/
-│       │   ├── filing.txt.gz         # Normalized full filing text
-│       │   ├── filing.html.gz        # Original HTML (optional)
-│       │   ├── filing_meta.json      # Filing metadata
-│       │   └── risk/
-│       │       ├── item_1a.txt.gz             # Extracted risk section
-│       │       ├── term_counts_primary.json.gz # Canonical term counts (per filing)
-│       │       └── rf_meta.json               # Extraction metadata + debug
-│       ├── indexes/
-│       │   ├── ticker_year_index.json    # Global ticker-year mapping
-│       │   └── extraction_version.json   # Version tracking
-│       └── reports/
-│           └── cache_usage.json      # Cache statistics
-│
-├── public/data/sec_narrative_drift/  # Website output (committed)
-│   ├── {TICKER}/
-│   │   ├── meta.json                 # Company info
-│   │   ├── filings.json              # Filing list with extraction status
-│   │   ├── metrics_10k_item1a.json   # Drift scores, similarity
-│   │   ├── similarity_10k_item1a.json # Cosine similarity matrix
-│   │   ├── shifts_10k_item1a.json    # Year-over-year term shifts
-│   │   └── excerpts_10k_item1a.json  # Representative text excerpts
-│   └── index.json                    # Global ticker index
-│
-├── public/data/sec_narrative_drift_metrics/  # Optional sidecar metrics (committed)
-│   ├── {TICKER}/
-│   │   └── deboilerplated_drift_10k_item1a.json
-│
-├── scripts/
-│   ├── _cache/                       # Working cache (git-ignored)
-│   │   ├── submissions.zip           # Bulk SEC submissions archive
-│   │   ├── build_universe.log        # Build execution log
-│   │   └── {TICKER}/                 # Raw HTML files (optional)
-│   ├── sample_fixtures/              # Test fixtures
-│   ├── resources/                    # Config files (git-ignored)
-│   └── *.py                          # Pipeline scripts
+|-- data/
+|   `-- sec_cache/                    # Primary data cache (git-ignored)
+|       |-- filings/{CIK}/{ACCESSION}/
+|       |   |-- filing.txt.gz         # Normalized full filing text
+|       |   |-- filing.html.gz        # Original HTML (optional)
+|       |   |-- filing_meta.json      # Filing metadata
+|       |   `-- risk/
+|       |       |-- item_1a.txt.gz             # Extracted risk section
+|       |       |-- term_counts_primary.json.gz # Canonical term counts (per filing)
+|       |       `-- rf_meta.json               # Extraction metadata + debug
+|       |-- indexes/
+|       |   |-- ticker_year_index.json    # Global ticker-year mapping
+|       |   `-- extraction_version.json   # Version tracking
+|       `-- reports/
+|           `-- cache_usage.json      # Cache statistics
+|
+|-- public/data/sec_narrative_drift/  # Website output (committed)
+|   |-- {TICKER}/
+|   |   |-- meta.json                 # Company info
+|   |   |-- filings.json              # Filing list with extraction status
+|   |   |-- metrics_10k_item1a.json   # Drift scores, similarity
+|   |   |-- similarity_10k_item1a.json # Cosine similarity matrix
+|   |   |-- shifts_10k_item1a.json    # Year-over-year term shifts
+|   |   `-- excerpts_10k_item1a.json  # Representative text excerpts
+|   `-- index.json                    # Global ticker index
+|
+|-- public/data/sec_narrative_drift_metrics/  # Optional sidecar metrics (committed)
+|   |-- {TICKER}/
+|   |   `-- deboilerplated_drift_10k_item1a.json
+|
+|-- scripts/
+|   |-- _cache/                       # Working cache (git-ignored)
+|   |   |-- submissions.zip           # Bulk SEC submissions archive
+|   |   |-- build_universe.log        # Build execution log
+|   |   `-- {TICKER}/                 # Raw HTML files (optional)
+|   |-- sample_fixtures/              # Test fixtures
+|   |-- resources/                    # Config files (git-ignored)
+|   `-- *.py                          # Pipeline scripts
 ```
 
 ---
@@ -401,48 +410,48 @@ pyright  # Uses pyrightconfig.json at repo root
 
 ```
 SEC EDGAR API
-     │
-     ├──────────────────────────────────────────────────────────┐
-     │                                                          │
+     |
+     |----------------------------------------------------------+
+     |                                                          |
      v                                                          v
-submissions.zip ──────────> sec_fetch_and_build.py <─── filing HTML/TXT
-     │                              │
-     │                              v
-     │                    sec_extract_item1a.py
-     │                              │
-     │                              v
-     │                 ┌────────────────────────┐
-     │                 │   data/sec_cache/      │
-     │                 │   - filing.txt.gz      │
-     │                 │   - filing_meta.json   │
-     │                 │   - risk/item_1a.txt.gz│
-     │                 │   - risk/rf_meta.json  │
-     │                 └────────────────────────┘
-     │                              │
-     │                              v
-     │                    sec_metrics.py
-     │                    sec_quality.py
-     │                              │
-     │                              v
-     │                 ┌────────────────────────┐
-     │                 │ public/data/.../       │
-     │                 │   - meta.json          │
-     │                 │   - filings.json       │
-     │                 │   - metrics_*.json     │
-     │                 │   - similarity_*.json  │
-     │                 │   - shifts_*.json      │
-     │                 │   - excerpts_*.json    │
-     │                 └────────────────────────┘
-     │                              │
-     │                              v
-     │                    sec_build_index.py
-     │                              │
-     │                              v
-     │                       index.json
-     │
+submissions.zip ----------> sec_fetch_and_build.py <--- filing HTML/TXT
+     |                              |
+     |                              v
+     |                    sec_extract_item1a.py
+     |                              |
+     |                              v
+     |                 +------------------------+
+     |                 |   data/sec_cache/      |
+     |                 |   - filing.txt.gz      |
+     |                 |   - filing_meta.json   |
+     |                 |   - risk/item_1a.txt.gz|
+     |                 |   - risk/rf_meta.json  |
+     |                 `------------------------+
+     |                              |
+     |                              v
+     |                    sec_metrics.py
+     |                    sec_quality.py
+     |                              |
+     |                              v
+     |                 +------------------------+
+     |                 | public/data/.../       |
+     |                 |   - meta.json          |
+     |                 |   - filings.json       |
+     |                 |   - metrics_*.json     |
+     |                 |   - similarity_*.json  |
+     |                 |   - shifts_*.json      |
+     |                 |   - excerpts_*.json    |
+     |                 `------------------------+
+     |                              |
+     |                              v
+     |                    sec_build_index.py
+     |                              |
+     |                              v
+     |                       index.json
+     |
      v
-refresh_risk_cache_from_html.py ←── (re-extract without SEC API)
-rebuild_ticker_year_index_from_cache.py ←── (rebuild index from cache)
+refresh_risk_cache_from_html.py <--- (re-extract without SEC API)
+rebuild_ticker_year_index_from_cache.py <--- (rebuild index from cache)
 ```
 
 ---

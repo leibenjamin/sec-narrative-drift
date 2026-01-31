@@ -14,6 +14,13 @@ This is **descriptive**, not causal. Drift is a reading prompt, not a conclusion
 
 It also does **not** ship full filing text. The demo stores short excerpts only and links back to EDGAR for verification.
 
+## Methodology in brief
+
+- **Extraction:** Parse filing HTML, drop scripts/tables, locate Item 1A / Item 3.D via heading heuristics + TOC scoring, split into paragraphs, and score confidence.
+- **Drift:** TF-IDF cosine similarity between adjacent years; drift = 1 - similarity. (Optional) bootstrap CI bands and an approximate boilerplate-reuse score.
+- **Term shifts:** Smoothed log-odds with a Dirichlet prior; rank score applies a document-frequency penalty to downweight boilerplate. Phrases include PMI bigrams + an allowlist; the alternate lens uses TextRank keyphrases.
+- **Deterministic:** No LLMs or opaque models in the core metrics. Everything is reproducible from the text and parameters.
+
 ## Data source
 
 - SEC EDGAR 10-K filings (public).
