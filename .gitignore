@@ -12,6 +12,11 @@ dist
 dist-ssr
 bundle_out
 *.local
+.venv/
+
+# Pytest cache
+.pytest_cache/
+scripts/.pytest_cache/
 
 # Editor directories and files
 .vscode/*
@@ -41,6 +46,10 @@ reports/*
 
 # Local analysis exports (non-public)
 analysis_exports/
+
+# Local bundles (planning / ChatGPT exports)
+chatgpt_bundle_*/
+chatgpt_bundle_*.zip
 
 # Local fixture experiments (keep untracked)
 scripts/sample_fixtures/cost-20190901.htm
@@ -73,6 +82,8 @@ scripts/tests/test_risk_caches.py
 scripts/sec_rebuild_local.py
 scripts/build_deboilerplated_drift_report.py
 scripts/export_risk_sections.py
+scripts/build_meaningfulness_unified_bundle.py
+scripts/build_term_shift_spotcheck_ui.py
 
 # Internal resources
 scripts/resources/
