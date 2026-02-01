@@ -79,9 +79,11 @@ DF_PENALTY_OVERRIDE_Z = 3.5      # Z-score threshold for override consideration
 DF_PENALTY_OVERRIDE_COUNT = 8    # Min count for override consideration
 DF_PENALTY_EPS = 0.05            # Epsilon to prevent zero penalty
 DF_PENALTY_FLOOR = 0.05          # Minimum penalty (prevents full bypass)
-SCORE_DF_MIN = 0.10              # Min absolute score after DF adjustment to show term
+SCORE_DF_MIN = 0.25              # Min abs score after DF adjustment in no-distinctive fallback
 DF_PENALTY_OVERRIDE_MAX_DF_FRAC = 0.90   # Max DF fraction for override eligibility
 DF_PENALTY_OVERRIDE_MIN_PENALTY = 0.25   # Min penalty even with override
+NO_DISTINCTIVE_Z_MIN = 1.25
+NO_DISTINCTIVE_COUNT_MIN = 4
 
 SENTENCE_NORMALIZE_RE = re.compile(r"\s+")
 
@@ -972,6 +974,25 @@ def build_metrics(
                 df[term] = df.get(term, 0) + 1
         return df
 
+    def build_self_noise_unigrams(
+        year_df: Mapping[str, int],
+        num_years: int,
+        background_counts: Mapping[str, int],
+        *,
+        df_frac_min: float = 0.85,
+        total_count_min: int = 100,
+    ) -> set[str]:
+        if not num_years:
+            return set()
+        output: set[str] = set()
+        for term, total_count in background_counts.items():
+            if " " in term:
+                continue
+            df_frac = year_df.get(term, 0) / num_years
+            if df_frac >= df_frac_min and total_count >= total_count_min:
+                output.add(term)
+        return output
+
     def log_odds_stats(
         counts_prev: Counter[str],
         counts_curr: Counter[str],
@@ -1129,6 +1150,10 @@ def build_metrics(
     year_df_primary = build_year_df(counts_primary_by_year)
     year_df_alt = build_year_df(counts_alt_by_year)
     num_years = len(valid_sections)
+    self_noise_unigrams = build_self_noise_unigrams(
+        year_df_primary, num_years, bg_primary
+    )
+    self_noise_removed_total = 0
 
     for idx in range(1, len(valid_sections)):
         prev_section = valid_sections[idx - 1]
@@ -1150,7 +1175,15 @@ def build_metrics(
             year_df_primary,
             num_years,
         )
+        if stats and self_noise_unigrams:
+            removed_primary = sum(1 for term in stats if term in self_noise_unigrams)
+            if removed_primary:
+                stats = {
+                    term: item for term, item in stats.items() if term not in self_noise_unigrams
+                }
+                self_noise_removed_total += removed_primary
 
+        has_distinctive = False
         if not stats:
             top_risers: list[ShiftTermOutput] = []
             top_fallers: list[ShiftTermOutput] = []
@@ -1170,6 +1203,11 @@ def build_metrics(
                 for item in fallback_items:
                     score_df = fallback_scores.get(item["term"], item["z"])
                     if abs(score_df) < SCORE_DF_MIN:
+                        continue
+                    if not (
+                        abs(item["z"]) >= NO_DISTINCTIVE_Z_MIN
+                        or max(item["countPrev"], item["countCurr"]) >= NO_DISTINCTIVE_COUNT_MIN
+                    ):
                         continue
                     filtered.append(item)
                 fallback_items = filtered
@@ -1215,14 +1253,29 @@ def build_metrics(
 
             sorted_risers = sorted(riser_pool, key=sort_key_riser)
             sorted_fallers = sorted(faller_pool, key=sort_key_faller)
-            top_risers = build_shift_term_outputs(
-                sorted_risers, includes_by_term=includes_by_term
-            )
-            top_fallers = build_shift_term_outputs(
-                sorted_fallers, includes_by_term=includes_by_term
-            )
+            if has_distinctive:
+                top_risers = build_shift_term_outputs(
+                    sorted_risers, includes_by_term=includes_by_term
+                )
+                top_fallers = build_shift_term_outputs(
+                    sorted_fallers, includes_by_term=includes_by_term
+                )
+            else:
+                top_risers = (
+                    build_shift_term_outputs(sorted_risers, includes_by_term=includes_by_term)
+                    if len(sorted_risers) >= 3
+                    else []
+                )
+                top_fallers = (
+                    build_shift_term_outputs(sorted_fallers, includes_by_term=includes_by_term)
+                    if len(sorted_fallers) >= 3
+                    else []
+                )
 
-        summary = build_shift_summary(extract_terms(top_risers), extract_terms(top_fallers))
+        if not has_distinctive:
+            summary = "No strong distinctive term shifts detected."
+        else:
+            summary = build_shift_summary(extract_terms(top_risers), extract_terms(top_fallers))
 
         counts_prev_alt = counts_alt_by_year[idx - 1]
         counts_curr_alt = counts_alt_by_year[idx]
@@ -1235,6 +1288,13 @@ def build_metrics(
             year_df_alt,
             num_years,
         )
+        if stats_alt and self_noise_unigrams:
+            removed_alt = sum(1 for term in stats_alt if term in self_noise_unigrams)
+            if removed_alt:
+                stats_alt = {
+                    term: item for term, item in stats_alt.items() if term not in self_noise_unigrams
+                }
+                self_noise_removed_total += removed_alt
 
         top_risers_alt: list[ShiftTermAlt] = []
         top_fallers_alt: list[ShiftTermAlt] = []
@@ -1279,6 +1339,7 @@ def build_metrics(
         "boilerplate_score": boilerplate_scores,
     }
     shifts_payload: ShiftsPayload = {"section": SECTION_NAME, "yearPairs": shifts}
+    print(f"Self-noise suppression removed {self_noise_removed_total} terms.")
     return metrics, similarity, shifts_payload
 
 
