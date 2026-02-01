@@ -5,64 +5,8 @@
       "from": 2015,
       "to": 2016,
       "topRisers": [],
-      "topFallers": [
-        {
-          "term": "sequestration cuts",
-          "score": -0.804609900714052,
-          "z": -1.0693066119690882,
-          "countPrev": 3,
-          "countCurr": 0,
-          "per10kPrev": 6.103763987792472,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -6.103763987792472,
-          "distinctive": false
-        },
-        {
-          "term": "sequestration",
-          "score": -0.5810388240613946,
-          "z": -1.2267379207662257,
-          "countPrev": 4,
-          "countCurr": 1,
-          "per10kPrev": 8.138351983723295,
-          "per10kCurr": 2.032520325203252,
-          "deltaPer10k": -6.105831658520042,
-          "distinctive": false
-        },
-        {
-          "term": "billion",
-          "score": -0.3523512088807011,
-          "z": -0.9560049118418804,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 4.0691759918616475,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -4.0691759918616475,
-          "distinctive": false
-        },
-        {
-          "term": "limits",
-          "score": -0.26069055244239614,
-          "z": -0.5503917690580908,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 4.0691759918616475,
-          "per10kCurr": 2.032520325203252,
-          "deltaPer10k": -2.0366556666583953,
-          "distinctive": false
-        },
-        {
-          "term": "spending levels",
-          "score": -0.13103085739935919,
-          "z": -0.3730258049610999,
-          "countPrev": 4,
-          "countCurr": 3,
-          "per10kPrev": 8.138351983723295,
-          "per10kCurr": 6.097560975609756,
-          "deltaPer10k": -2.0407910081135388,
-          "distinctive": false
-        }
-      ],
-      "summary": "De-emphasizes sequestration cuts, sequestration, billion.",
+      "topFallers": [],
+      "summary": "No strong distinctive term shifts detected.",
       "topRisersAlt": [
         {
           "term": "development programs",
@@ -144,55 +88,9 @@
     {
       "from": 2016,
       "to": 2017,
-      "topRisers": [
-        {
-          "term": "bgs",
-          "score": 0.2077174198023125,
-          "z": 1.1750271689023044,
-          "countPrev": 0,
-          "countCurr": 4,
-          "per10kPrev": 0.0,
-          "per10kCurr": 8.049909438518817,
-          "deltaPer10k": 8.049909438518817,
-          "distinctive": false
-        },
-        {
-          "term": "fms",
-          "score": 0.1657818656468991,
-          "z": 0.9378038511734361,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 4.024954719259409,
-          "deltaPer10k": 4.024954719259409,
-          "distinctive": false
-        }
-      ],
-      "topFallers": [
-        {
-          "term": "design changes",
-          "score": -0.7100889604035688,
-          "z": -0.9436906254471241,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 4.065040650406504,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -4.065040650406504,
-          "distinctive": false
-        },
-        {
-          "term": "max",
-          "score": -0.28101415117730943,
-          "z": -1.0438621126882406,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 4.065040650406504,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -4.065040650406504,
-          "distinctive": false
-        }
-      ],
-      "summary": "Adds emphasis on bgs, fms; de-emphasizes design changes, max.",
+      "topRisers": [],
+      "topFallers": [],
+      "summary": "No strong distinctive term shifts detected.",
       "topRisersAlt": [
         {
           "term": "products services",
@@ -270,190 +168,9 @@
     {
       "from": 2017,
       "to": 2018,
-      "topRisers": [
-        {
-          "term": "stingray",
-          "score": 0.9960179782863906,
-          "z": 1.0619710333813757,
-          "countPrev": 0,
-          "countCurr": 3,
-          "per10kPrev": 0.0,
-          "per10kCurr": 5.897385492431689,
-          "deltaPer10k": 5.897385492431689,
-          "distinctive": false
-        },
-        {
-          "term": "trainer",
-          "score": 0.8757789455132943,
-          "z": 0.9337701648523674,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 3.931590328287793,
-          "deltaPer10k": 3.931590328287793,
-          "distinctive": false
-        },
-        {
-          "term": "law",
-          "score": 0.7621029639861536,
-          "z": 0.9337701648523674,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 3.931590328287793,
-          "deltaPer10k": 3.931590328287793,
-          "distinctive": false
-        },
-        {
-          "term": "administration",
-          "score": 0.6517282895221362,
-          "z": 0.9337701648523674,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 3.931590328287793,
-          "deltaPer10k": 3.931590328287793,
-          "distinctive": false
-        },
-        {
-          "term": "caps",
-          "score": 0.6517282895221362,
-          "z": 0.9337701648523674,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 3.931590328287793,
-          "deltaPer10k": 3.931590328287793,
-          "distinctive": false
-        },
-        {
-          "term": "spending caps",
-          "score": 0.5644132550911496,
-          "z": 0.9337701648523674,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 3.931590328287793,
-          "deltaPer10k": 3.931590328287793,
-          "distinctive": false
-        },
-        {
-          "term": "aviation",
-          "score": 0.5449814114532643,
-          "z": 0.9337701648523674,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 3.931590328287793,
-          "deltaPer10k": 3.931590328287793,
-          "distinctive": false
-        },
-        {
-          "term": "loss million",
-          "score": 0.328000646838108,
-          "z": 0.9337701648523674,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 3.931590328287793,
-          "deltaPer10k": 3.931590328287793,
-          "distinctive": false
-        },
-        {
-          "term": "departments",
-          "score": 0.2513767164083801,
-          "z": 0.9337701648523674,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 3.931590328287793,
-          "deltaPer10k": 3.931590328287793,
-          "distinctive": false
-        },
-        {
-          "term": "shutdown",
-          "score": 0.2513767164083801,
-          "z": 0.9337701648523674,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 3.931590328287793,
-          "deltaPer10k": 3.931590328287793,
-          "distinctive": false
-        },
-        {
-          "term": "limits",
-          "score": 0.2512093938841459,
-          "z": 0.5303743515387173,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 2.0124773596297043,
-          "per10kCurr": 3.931590328287793,
-          "deltaPer10k": 1.9191129686580886,
-          "distinctive": false
-        },
-        {
-          "term": "fiscal years",
-          "score": 0.18630187268678214,
-          "z": 0.5303743515387173,
-          "countPrev": 1,
-          "countCurr": 2,
-          "per10kPrev": 2.0124773596297043,
-          "per10kCurr": 3.931590328287793,
-          "deltaPer10k": 1.9191129686580886,
-          "distinctive": false
-        },
-        {
-          "term": "Supply chain",
-          "score": 0.16530534242158293,
-          "z": 1.0379293955667774,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 3.931590328287793,
-          "deltaPer10k": 3.931590328287793,
-          "distinctive": false,
-          "includes": [
-            "supply chain"
-          ]
-        },
-        {
-          "term": "departments agencies",
-          "score": 0.1487164709885583,
-          "z": 0.9337701648523674,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 3.931590328287793,
-          "deltaPer10k": 3.931590328287793,
-          "distinctive": false
-        }
-      ],
-      "topFallers": [
-        {
-          "term": "budgetary",
-          "score": -0.26938178912610555,
-          "z": -0.5687414372329911,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 4.024954719259409,
-          "per10kCurr": 1.9657951641438964,
-          "deltaPer10k": -2.059159555115512,
-          "distinctive": false
-        },
-        {
-          "term": "spending levels",
-          "score": -0.16202153378390882,
-          "z": -0.4612517559628684,
-          "countPrev": 3,
-          "countCurr": 2,
-          "per10kPrev": 6.037432078889113,
-          "per10kCurr": 3.931590328287793,
-          "deltaPer10k": -2.10584175060132,
-          "distinctive": false
-        }
-      ],
-      "summary": "Adds emphasis on stingray, trainer, law; de-emphasizes budgetary, spending levels.",
+      "topRisers": [],
+      "topFallers": [],
+      "summary": "No strong distinctive term shifts detected.",
       "topRisersAlt": [
         {
           "term": "subject uncertainty",
@@ -1432,17 +1149,6 @@
       "to": 2021,
       "topRisers": [
         {
-          "term": "absenteeism",
-          "score": 0.9847174696377718,
-          "z": 1.0499222419851042,
-          "countPrev": 0,
-          "countCurr": 3,
-          "per10kPrev": 0.0,
-          "per10kCurr": 4.049676025917926,
-          "deltaPer10k": 4.049676025917926,
-          "distinctive": false
-        },
-        {
           "term": "rework",
           "score": 0.9781703527769994,
           "z": 1.401483265727187,
@@ -1454,61 +1160,6 @@
           "distinctive": false
         },
         {
-          "term": "discussions",
-          "score": 0.8645783255143864,
-          "z": 0.9218278764057103,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 2.699784017278618,
-          "deltaPer10k": 2.699784017278618,
-          "distinctive": false
-        },
-        {
-          "term": "mandates",
-          "score": 0.8645783255143864,
-          "z": 0.9218278764057103,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 2.699784017278618,
-          "deltaPer10k": 2.699784017278618,
-          "distinctive": false
-        },
-        {
-          "term": "resuming",
-          "score": 0.8645783255143864,
-          "z": 0.9218278764057103,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 2.699784017278618,
-          "deltaPer10k": 2.699784017278618,
-          "distinctive": false
-        },
-        {
-          "term": "shortages",
-          "score": 0.8645783255143864,
-          "z": 0.9218278764057103,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 2.699784017278618,
-          "deltaPer10k": 2.699784017278618,
-          "distinctive": false
-        },
-        {
-          "term": "vaccination",
-          "score": 0.8645783255143864,
-          "z": 0.9218278764057103,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 2.699784017278618,
-          "deltaPer10k": 2.699784017278618,
-          "distinctive": false
-        },
-        {
           "term": "inspections rework",
           "score": 0.858813011012547,
           "z": 1.1413412018741267,
@@ -1517,17 +1168,6 @@
           "per10kPrev": 0.0,
           "per10kCurr": 5.399568034557236,
           "deltaPer10k": 5.399568034557236,
-          "distinctive": false
-        },
-        {
-          "term": "comparable",
-          "score": 0.7523561828567588,
-          "z": 0.9218278764057103,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 2.699784017278618,
-          "deltaPer10k": 2.699784017278618,
           "distinctive": false
         },
         {
@@ -1567,207 +1207,96 @@
           "distinctive": false
         },
         {
-          "term": "ghg",
-          "score": 0.6433931257791928,
-          "z": 0.9218278764057103,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 2.699784017278618,
-          "deltaPer10k": 2.699784017278618,
+          "term": "customers suppliers",
+          "score": 0.517691729459389,
+          "z": 1.473793104434322,
+          "countPrev": 2,
+          "countCurr": 7,
+          "per10kPrev": 2.874802357337933,
+          "per10kCurr": 9.449244060475163,
+          "deltaPer10k": 6.57444170313723,
           "distinctive": false
         },
         {
-          "term": "remain",
-          "score": 0.6133226484613297,
-          "z": 0.8787441020572336,
-          "countPrev": 1,
-          "countCurr": 3,
-          "per10kPrev": 1.4374011786689664,
-          "per10kCurr": 4.049676025917926,
-          "deltaPer10k": 2.61227484724896,
+          "term": "faa",
+          "score": 0.44777308460753096,
+          "z": 1.6633089691217264,
+          "countPrev": 2,
+          "countCurr": 8,
+          "per10kPrev": 2.874802357337933,
+          "per10kCurr": 10.799136069114471,
+          "deltaPer10k": 7.924333711776539,
           "distinctive": false
         },
         {
-          "term": "emissions",
-          "score": 0.6127718863706497,
-          "z": 1.0499222419851042,
-          "countPrev": 0,
-          "countCurr": 3,
-          "per10kPrev": 0.0,
-          "per10kCurr": 4.049676025917926,
-          "deltaPer10k": 4.049676025917926,
+          "term": "aviation authorities",
+          "score": 0.4332107372766072,
+          "z": 0.7167075859996689,
+          "countPrev": 2,
+          "countCurr": 4,
+          "per10kPrev": 2.874802357337933,
+          "per10kCurr": 5.399568034557236,
+          "deltaPer10k": 2.524765677219303,
+          "distinctive": false
+        },
+        {
+          "term": "civil aviation",
+          "score": 0.4332107372766072,
+          "z": 0.7167075859996689,
+          "countPrev": 2,
+          "countCurr": 4,
+          "per10kPrev": 2.874802357337933,
+          "per10kCurr": 5.399568034557236,
+          "deltaPer10k": 2.524765677219303,
+          "distinctive": false
+        },
+        {
+          "term": "remaining",
+          "score": 0.4182959860139839,
+          "z": 0.7167075859996689,
+          "countPrev": 2,
+          "countCurr": 4,
+          "per10kPrev": 2.874802357337933,
+          "per10kCurr": 5.399568034557236,
+          "deltaPer10k": 2.524765677219303,
+          "distinctive": false
+        },
+        {
+          "term": "implement",
+          "score": 0.41584751591430313,
+          "z": 1.128284103392764,
+          "countPrev": 3,
+          "countCurr": 7,
+          "per10kPrev": 4.3122035360068995,
+          "per10kCurr": 9.449244060475163,
+          "deltaPer10k": 5.137040524468263,
+          "distinctive": false
+        },
+        {
+          "term": "social",
+          "score": 0.3394652809827721,
+          "z": 0.7167075859996689,
+          "countPrev": 2,
+          "countCurr": 4,
+          "per10kPrev": 2.874802357337933,
+          "per10kCurr": 5.399568034557236,
+          "deltaPer10k": 2.524765677219303,
+          "distinctive": false
+        },
+        {
+          "term": "production disruptions",
+          "score": 0.2517541903245939,
+          "z": 0.7167075859996689,
+          "countPrev": 2,
+          "countCurr": 4,
+          "per10kPrev": 2.874802357337933,
+          "per10kCurr": 5.399568034557236,
+          "deltaPer10k": 2.524765677219303,
           "distinctive": false
         }
       ],
-      "topFallers": [
-        {
-          "term": "recover",
-          "score": -0.8070989325611488,
-          "z": -0.9889016824811699,
-          "countPrev": 3,
-          "countCurr": 1,
-          "per10kPrev": 4.3122035360068995,
-          "per10kCurr": 1.349892008639309,
-          "deltaPer10k": -2.9623115273675906,
-          "distinctive": false
-        },
-        {
-          "term": "connection",
-          "score": -0.6178875913908366,
-          "z": -1.058687481715571,
-          "countPrev": 6,
-          "countCurr": 3,
-          "per10kPrev": 8.624407072013799,
-          "per10kCurr": 4.049676025917926,
-          "deltaPer10k": -4.574731046095873,
-          "distinctive": false
-        },
-        {
-          "term": "condition results",
-          "score": -0.5977372576072368,
-          "z": -0.9889016824811699,
-          "countPrev": 3,
-          "countCurr": 1,
-          "per10kPrev": 4.3122035360068995,
-          "per10kCurr": 1.349892008639309,
-          "deltaPer10k": -2.9623115273675906,
-          "distinctive": false
-        },
-        {
-          "term": "aftermath",
-          "score": -0.49087130925907285,
-          "z": -0.6014423313231855,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 2.874802357337933,
-          "per10kCurr": 1.349892008639309,
-          "deltaPer10k": -1.524910348698624,
-          "distinctive": false
-        },
-        {
-          "term": "fallen",
-          "score": -0.49087130925907285,
-          "z": -0.6014423313231855,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 2.874802357337933,
-          "per10kCurr": 1.349892008639309,
-          "deltaPer10k": -1.524910348698624,
-          "distinctive": false
-        },
-        {
-          "term": "scope",
-          "score": -0.49087130925907285,
-          "z": -0.6014423313231855,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 2.874802357337933,
-          "per10kCurr": 1.349892008639309,
-          "deltaPer10k": -1.524910348698624,
-          "distinctive": false
-        },
-        {
-          "term": "begin",
-          "score": -0.4197788669992885,
-          "z": -0.6014423313231855,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 2.874802357337933,
-          "per10kCurr": 1.349892008639309,
-          "deltaPer10k": -1.524910348698624,
-          "distinctive": false
-        },
-        {
-          "term": "pace",
-          "score": -0.4197788669992885,
-          "z": -0.6014423313231855,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 2.874802357337933,
-          "per10kCurr": 1.349892008639309,
-          "deltaPer10k": -1.524910348698624,
-          "distinctive": false
-        },
-        {
-          "term": "training",
-          "score": -0.4197788669992885,
-          "z": -0.6014423313231855,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 2.874802357337933,
-          "per10kCurr": 1.349892008639309,
-          "deltaPer10k": -1.524910348698624,
-          "distinctive": false
-        },
-        {
-          "term": "recovery",
-          "score": -0.4116046391669338,
-          "z": -0.5043204789003943,
-          "countPrev": 3,
-          "countCurr": 2,
-          "per10kPrev": 4.3122035360068995,
-          "per10kCurr": 2.699784017278618,
-          "deltaPer10k": -1.6124195187282817,
-          "distinctive": false
-        },
-        {
-          "term": "grounding",
-          "score": -0.3756150087941683,
-          "z": -0.6435780768145192,
-          "countPrev": 8,
-          "countCurr": 6,
-          "per10kPrev": 11.499209429351732,
-          "per10kCurr": 8.099352051835853,
-          "deltaPer10k": -3.399857377515879,
-          "distinctive": false
-        },
-        {
-          "term": "hawk",
-          "score": -0.3644758504588418,
-          "z": -0.9889016824811699,
-          "countPrev": 3,
-          "countCurr": 1,
-          "per10kPrev": 4.3122035360068995,
-          "per10kCurr": 1.349892008639309,
-          "deltaPer10k": -2.9623115273675906,
-          "distinctive": false
-        },
-        {
-          "term": "red",
-          "score": -0.3644758504588418,
-          "z": -0.9889016824811699,
-          "countPrev": 3,
-          "countCurr": 1,
-          "per10kPrev": 4.3122035360068995,
-          "per10kCurr": 1.349892008639309,
-          "deltaPer10k": -2.9623115273675906,
-          "distinctive": false
-        },
-        {
-          "term": "expected continue",
-          "score": -0.363539162793233,
-          "z": -0.6014423313231855,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 2.874802357337933,
-          "per10kCurr": 1.349892008639309,
-          "deltaPer10k": -1.524910348698624,
-          "distinctive": false
-        },
-        {
-          "term": "max associated",
-          "score": -0.363539162793233,
-          "z": -0.6014423313231855,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 2.874802357337933,
-          "per10kCurr": 1.349892008639309,
-          "deltaPer10k": -1.524910348698624,
-          "distinctive": false
-        }
-      ],
-      "summary": "Adds emphasis on absenteeism, rework, discussions; de-emphasizes recover, connection, condition results.",
+      "topFallers": [],
+      "summary": "No strong distinctive term shifts detected.",
       "topRisersAlt": [
         {
           "term": "customers suppliers",
@@ -2333,173 +1862,7 @@
     {
       "from": 2022,
       "to": 2023,
-      "topRisers": [
-        {
-          "term": "attack",
-          "score": 0.8715458581531725,
-          "z": 1.0678655747346917,
-          "countPrev": 0,
-          "countCurr": 3,
-          "per10kPrev": 0.0,
-          "per10kCurr": 4.734848484848485,
-          "deltaPer10k": 4.734848484848485,
-          "distinctive": false
-        },
-        {
-          "term": "strategy results",
-          "score": 0.8035255785812655,
-          "z": 1.0678655747346917,
-          "countPrev": 0,
-          "countCurr": 3,
-          "per10kPrev": 0.0,
-          "per10kCurr": 4.734848484848485,
-          "deltaPer10k": 4.734848484848485,
-          "distinctive": false
-        },
-        {
-          "term": "actors",
-          "score": 0.7668875562284195,
-          "z": 0.9396325085223668,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 3.156565656565657,
-          "deltaPer10k": 3.156565656565657,
-          "distinctive": false
-        },
-        {
-          "term": "agreements",
-          "score": 0.7668875562284195,
-          "z": 0.9396325085223668,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 3.156565656565657,
-          "deltaPer10k": 3.156565656565657,
-          "distinctive": false
-        },
-        {
-          "term": "alaska",
-          "score": 0.7668875562284195,
-          "z": 0.9396325085223668,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 3.156565656565657,
-          "deltaPer10k": 3.156565656565657,
-          "distinctive": false
-        },
-        {
-          "term": "allow",
-          "score": 0.7668875562284195,
-          "z": 0.9396325085223668,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 3.156565656565657,
-          "deltaPer10k": 3.156565656565657,
-          "distinctive": false
-        },
-        {
-          "term": "attempts",
-          "score": 0.7668875562284195,
-          "z": 0.9396325085223668,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 3.156565656565657,
-          "deltaPer10k": 3.156565656565657,
-          "distinctive": false
-        },
-        {
-          "term": "bargaining",
-          "score": 0.7668875562284195,
-          "z": 0.9396325085223668,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 3.156565656565657,
-          "deltaPer10k": 3.156565656565657,
-          "distinctive": false
-        },
-        {
-          "term": "collective",
-          "score": 0.7668875562284195,
-          "z": 0.9396325085223668,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 3.156565656565657,
-          "deltaPer10k": 3.156565656565657,
-          "distinctive": false
-        },
-        {
-          "term": "enforceable",
-          "score": 0.7668875562284195,
-          "z": 0.9396325085223668,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 3.156565656565657,
-          "deltaPer10k": 3.156565656565657,
-          "distinctive": false
-        },
-        {
-          "term": "functions",
-          "score": 0.7668875562284195,
-          "z": 0.9396325085223668,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 3.156565656565657,
-          "deltaPer10k": 3.156565656565657,
-          "distinctive": false
-        },
-        {
-          "term": "gain",
-          "score": 0.7668875562284195,
-          "z": 0.9396325085223668,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 3.156565656565657,
-          "deltaPer10k": 3.156565656565657,
-          "distinctive": false
-        },
-        {
-          "term": "attack incident",
-          "score": 0.7070353918392613,
-          "z": 0.9396325085223668,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 3.156565656565657,
-          "deltaPer10k": 3.156565656565657,
-          "distinctive": false
-        },
-        {
-          "term": "attempts gain",
-          "score": 0.7070353918392613,
-          "z": 0.9396325085223668,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 3.156565656565657,
-          "deltaPer10k": 3.156565656565657,
-          "distinctive": false
-        },
-        {
-          "term": "chain party",
-          "score": 0.7070353918392613,
-          "z": 0.9396325085223668,
-          "countPrev": 0,
-          "countCurr": 2,
-          "per10kPrev": 0.0,
-          "per10kCurr": 3.156565656565657,
-          "deltaPer10k": 3.156565656565657,
-          "distinctive": false
-        }
-      ],
+      "topRisers": [],
       "topFallers": [
         {
           "term": "enhancements",
@@ -2546,28 +1909,6 @@
           "distinctive": false
         },
         {
-          "term": "acsaa",
-          "score": -1.003605071135591,
-          "z": -1.070060518721076,
-          "countPrev": 3,
-          "countCurr": 0,
-          "per10kPrev": 4.752098843655948,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -4.752098843655948,
-          "distinctive": false
-        },
-        {
-          "term": "section",
-          "score": -1.003605071135591,
-          "z": -1.070060518721076,
-          "countPrev": 3,
-          "countCurr": 0,
-          "per10kPrev": 4.752098843655948,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -4.752098843655948,
-          "distinctive": false
-        },
-        {
           "term": "safety enhancements",
           "score": -0.9247681854594585,
           "z": -1.228993993701655,
@@ -2576,72 +1917,6 @@
           "per10kPrev": 6.3361317915412645,
           "per10kCurr": 1.5782828282828285,
           "deltaPer10k": -4.757848963258436,
-          "distinctive": false
-        },
-        {
-          "term": "alerting",
-          "score": -0.883320535291876,
-          "z": -0.9418111340568369,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 3.1680658957706322,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -3.1680658957706322,
-          "distinctive": false
-        },
-        {
-          "term": "amended",
-          "score": -0.883320535291876,
-          "z": -0.9418111340568369,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 3.1680658957706322,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -3.1680658957706322,
-          "distinctive": false
-        },
-        {
-          "term": "cyberattack",
-          "score": -0.883320535291876,
-          "z": -0.9418111340568369,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 3.1680658957706322,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -3.1680658957706322,
-          "distinctive": false
-        },
-        {
-          "term": "gradually",
-          "score": -0.883320535291876,
-          "z": -0.9418111340568369,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 3.1680658957706322,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -3.1680658957706322,
-          "distinctive": false
-        },
-        {
-          "term": "lingering",
-          "score": -0.883320535291876,
-          "z": -0.9418111340568369,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 3.1680658957706322,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -3.1680658957706322,
-          "distinctive": false
-        },
-        {
-          "term": "original",
-          "score": -0.883320535291876,
-          "z": -0.9418111340568369,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 3.1680658957706322,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -3.1680658957706322,
           "distinctive": false
         },
         {
@@ -2656,21 +1931,29 @@
           "distinctive": false
         },
         {
-          "term": "COVID-19",
-          "score": -0.8331178422798916,
-          "z": -1.193657843972906,
-          "countPrev": 3,
-          "countCurr": 0,
-          "per10kPrev": 4.752098843655948,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -4.752098843655948,
-          "distinctive": false,
-          "includes": [
-            "covid"
-          ]
+          "term": "experiencing",
+          "score": -0.4861898964365281,
+          "z": -0.6965933918227932,
+          "countPrev": 5,
+          "countCurr": 3,
+          "per10kPrev": 7.92016473942658,
+          "per10kCurr": 4.734848484848485,
+          "deltaPer10k": -3.185316254578095,
+          "distinctive": false
+        },
+        {
+          "term": "max",
+          "score": -0.3253486811913173,
+          "z": -1.2085482538365633,
+          "countPrev": 4,
+          "countCurr": 1,
+          "per10kPrev": 6.3361317915412645,
+          "per10kCurr": 1.5782828282828285,
+          "deltaPer10k": -4.757848963258436,
+          "distinctive": false
         }
       ],
-      "summary": "Adds emphasis on attack, strategy results, actors; de-emphasizes enhancements, certificate, type certificate.",
+      "summary": "No strong distinctive term shifts detected.",
       "topRisersAlt": [
         {
           "term": "price contracts",
@@ -2951,174 +2234,8 @@
           "distinctive": false
         }
       ],
-      "topFallers": [
-        {
-          "term": "water waste",
-          "score": -0.5898475997366115,
-          "z": -0.9758489643459572,
-          "countPrev": 2,
-          "countCurr": 0,
-          "per10kPrev": 3.156565656565657,
-          "per10kCurr": 0.0,
-          "deltaPer10k": -3.156565656565657,
-          "distinctive": false
-        },
-        {
-          "term": "alaska",
-          "score": -0.5273511368536936,
-          "z": -0.6461394080129881,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 3.156565656565657,
-          "per10kCurr": 1.4039028499227852,
-          "deltaPer10k": -1.7526628066428718,
-          "distinctive": false
-        },
-        {
-          "term": "bargaining",
-          "score": -0.5273511368536936,
-          "z": -0.6461394080129881,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 3.156565656565657,
-          "per10kCurr": 1.4039028499227852,
-          "deltaPer10k": -1.7526628066428718,
-          "distinctive": false
-        },
-        {
-          "term": "collective",
-          "score": -0.5273511368536936,
-          "z": -0.6461394080129881,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 3.156565656565657,
-          "per10kCurr": 1.4039028499227852,
-          "deltaPer10k": -1.7526628066428718,
-          "distinctive": false
-        },
-        {
-          "term": "functions",
-          "score": -0.5273511368536936,
-          "z": -0.6461394080129881,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 3.156565656565657,
-          "per10kCurr": 1.4039028499227852,
-          "deltaPer10k": -1.7526628066428718,
-          "distinctive": false
-        },
-        {
-          "term": "ensure",
-          "score": -0.377109892593504,
-          "z": -0.6461394080129881,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 3.156565656565657,
-          "per10kCurr": 1.4039028499227852,
-          "deltaPer10k": -1.7526628066428718,
-          "distinctive": false
-        },
-        {
-          "term": "objectives",
-          "score": -0.377109892593504,
-          "z": -0.6461394080129881,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 3.156565656565657,
-          "per10kCurr": 1.4039028499227852,
-          "deltaPer10k": -1.7526628066428718,
-          "distinctive": false
-        },
-        {
-          "term": "waste",
-          "score": -0.377109892593504,
-          "z": -0.6461394080129881,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 3.156565656565657,
-          "per10kCurr": 1.4039028499227852,
-          "deltaPer10k": -1.7526628066428718,
-          "distinctive": false
-        },
-        {
-          "term": "water",
-          "score": -0.377109892593504,
-          "z": -0.6461394080129881,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 3.156565656565657,
-          "per10kCurr": 1.4039028499227852,
-          "deltaPer10k": -1.7526628066428718,
-          "distinctive": false
-        },
-        {
-          "term": "labor instability",
-          "score": -0.34041884576299813,
-          "z": -0.563191879105732,
-          "countPrev": 3,
-          "countCurr": 2,
-          "per10kPrev": 4.734848484848485,
-          "per10kCurr": 2.8078056998455705,
-          "deltaPer10k": -1.9270427850029148,
-          "distinctive": false
-        },
-        {
-          "term": "emissions",
-          "score": -0.32869877058299957,
-          "z": -0.563191879105732,
-          "countPrev": 3,
-          "countCurr": 2,
-          "per10kPrev": 4.734848484848485,
-          "per10kCurr": 2.8078056998455705,
-          "deltaPer10k": -1.9270427850029148,
-          "distinctive": false
-        },
-        {
-          "term": "goals",
-          "score": -0.32869877058299957,
-          "z": -0.563191879105732,
-          "countPrev": 3,
-          "countCurr": 2,
-          "per10kPrev": 4.734848484848485,
-          "per10kCurr": 2.8078056998455705,
-          "deltaPer10k": -1.9270427850029148,
-          "distinctive": false
-        },
-        {
-          "term": "january",
-          "score": -0.32869877058299957,
-          "z": -0.563191879105732,
-          "countPrev": 3,
-          "countCurr": 2,
-          "per10kPrev": 4.734848484848485,
-          "per10kCurr": 2.8078056998455705,
-          "deltaPer10k": -1.9270427850029148,
-          "distinctive": false
-        },
-        {
-          "term": "imposed",
-          "score": -0.30604098516584194,
-          "z": -0.6461394080129881,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 3.156565656565657,
-          "per10kCurr": 1.4039028499227852,
-          "deltaPer10k": -1.7526628066428718,
-          "distinctive": false
-        },
-        {
-          "term": "disruptions inefficiencies",
-          "score": -0.3040357153522012,
-          "z": -0.6461394080129881,
-          "countPrev": 2,
-          "countCurr": 1,
-          "per10kPrev": 3.156565656565657,
-          "per10kCurr": 1.4039028499227852,
-          "deltaPer10k": -1.7526628066428718,
-          "distinctive": false
-        }
-      ],
-      "summary": "Adds emphasis on spirit, convertible, dividends; de-emphasizes water waste, alaska, bargaining.",
+      "topFallers": [],
+      "summary": "No strong distinctive term shifts detected.",
       "topRisersAlt": [
         {
           "term": "results operations cash flows",
