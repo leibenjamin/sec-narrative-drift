@@ -50,6 +50,9 @@ analysis_exports/
 # Local bundles (planning / ChatGPT exports)
 chatgpt_bundle_*/
 chatgpt_bundle_*.zip
+bundles/showcase_llm_inputs_*/
+bundles/llm_precompute_queue_*/
+bundles/llm_outputs_pack_*/
 
 # Local fixture experiments (keep untracked)
 scripts/sample_fixtures/cost-20190901.htm
@@ -90,3 +93,7 @@ scripts/resources/
 
 # Local metrics sidecar (not needed for portfolio demo)
 public/data/sec_narrative_drift_metrics/
+
+# Lab data (keep local until ready to deploy)
+public/data/sec_narrative_drift_lab/
+public/data/sec_narrative_drift_lab_candidates*/
