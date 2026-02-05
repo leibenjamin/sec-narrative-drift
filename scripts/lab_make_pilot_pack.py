@@ -83,7 +83,7 @@ def build_skeleton(
     year_to: int,
     input_file: str,
 ) -> list[str]:
-    highlights_placeholder = '["<tag>"]' if detector_id == "det_llm_delta_brief_v1" else "[]"
+    highlights_placeholder = '["<tag>"]'
     if detector_id == "det_llm_delta_brief_v1":
         artifacts_lines = [
             '  "artifacts": {',
@@ -368,7 +368,9 @@ def main(argv: Optional[list[str]] = None) -> int:
         lines.append("- include warnings if unsure")
         lines.append("- provenance.input_file matches attached input file")
         if detector_id == "det_llm_excerpt_picker_v1":
-            lines.append("- excerpt picker: artifacts.selected_prev/curr list focuspack positions (0-based)")
+            lines.append("- excerpt picker: artifacts.selected_prev/curr list FULL paragraph indices (not focuspack-local positions)")
+            lines.append("  - Mapping: if you select texts.prev_paragraphs[i], index = focuspack_meta.selected_prev_indices[i] (and similarly for curr)")
+            lines.append("- excerpt picker: evidence highlights must be NON-EMPTY (1–3 short tags) for each evidence block")
             lines.append("- reuse highlight tokens across years for paired comparisons")
             lines.append("- avoid buzzword over-weighting (cap AI/ML highlights)")
         lines.append("")

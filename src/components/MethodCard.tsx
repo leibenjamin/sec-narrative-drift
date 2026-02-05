@@ -42,6 +42,14 @@ export default function MethodCard({
   const topRisers = normalizeRankedList(output?.artifacts.top_risers)
   const topFallers = normalizeRankedList(output?.artifacts.top_fallers)
   const isExcerptPicker = output?.detector_id === "det_llm_excerpt_picker_v1"
+  const isDeltaBrief = output?.detector_id === "det_llm_delta_brief_v1"
+  const deltaBriefRaw = isDeltaBrief ? output?.artifacts.delta_brief : null
+  const deltaBriefText =
+    typeof deltaBriefRaw === "string"
+      ? deltaBriefRaw.trim()
+      : deltaBriefRaw
+        ? JSON.stringify(deltaBriefRaw, null, 2)
+        : ""
 
   return (
     <section className="rounded-xl border border-white/10 bg-slate-950/40 p-5">
@@ -113,6 +121,15 @@ export default function MethodCard({
           <div>
             <div className="text-xs uppercase tracking-wide text-slate-400">Evidence</div>
             <div className="mt-2">
+              {isDeltaBrief && deltaBriefText ? (
+                <div>
+                  <div className="text-xs uppercase tracking-wide text-slate-400">Delta brief</div>
+                  <div className="mt-2 whitespace-pre-wrap rounded-md border border-white/10 bg-white/5 p-3 text-xs text-slate-200">
+                    {deltaBriefText}
+                  </div>
+                </div>
+              ) : null}
+
               {isExcerptPicker ? (
                 <LabExcerptPickerPanel output={output} />
               ) : (

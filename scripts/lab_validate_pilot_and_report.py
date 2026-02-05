@@ -126,7 +126,7 @@ def check_snippets(payload: dict[str, Any]) -> list[str]:
         snippet = get_str(entry_dict.get("snippet"))
         if snippet is None:
             continue
-        if len(snippet) >= 350:
+        if len(snippet) > 350:
             issues.append(f"snippet too long at evidence[{idx}] ({len(snippet)} chars)")
     return issues
 
