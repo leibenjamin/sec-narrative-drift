@@ -26,6 +26,10 @@ from lab_validate_llm_outputs import (  # type: ignore
     load_required_fields,
     validate_outputs,
 )
+from lab_reconcile_llm_evidence import (  # type: ignore
+    build_fixed_path,
+    reconcile_outputs,
+)
 
 
 @dataclass(frozen=True)
@@ -186,6 +190,12 @@ def build_parser() -> argparse.ArgumentParser:
         default=str(REPORT_PATH),
         help="Output report path",
     )
+    parser.add_argument(
+        "--reconcile",
+        choices=["off", "sibling", "in_place"],
+        default="off",
+        help="Run evidence reconcile before scoring (off, sibling, in_place).",
+    )
     return parser
 
 
@@ -215,6 +225,11 @@ def main(argv: Optional[list[str]] = None) -> int:
     required_fields = load_required_fields(bundle_paths.prompt_templates)
     outputs_dir = REPO_ROOT / "public" / "data" / "sec_narrative_drift_lab" / "llm_outputs"
 
+    reconcile_summary: Optional[dict[str, Any]] = None
+    if args.reconcile != "off":
+        mode = "write_fixed_sibling" if args.reconcile == "sibling" else "in_place"
+        reconcile_summary = reconcile_outputs([job.output_path for job in jobs], mode, 350)
+
     validation_issues = validate_outputs(outputs_dir, bundle_paths, required_fields)
     issue_map: dict[str, list[str]] = {}
     for issue in validation_issues:
@@ -226,29 +241,57 @@ def main(argv: Optional[list[str]] = None) -> int:
     report_lines.append(f"Jobs file: {jobs_path}")
     report_lines.append(f"Script: {SCRIPT_VERSION}")
     report_lines.append("")
+    if reconcile_summary:
+        summary = reconcile_summary.get("summary", {})
+        report_lines.append("## Reconcile Summary")
+        report_lines.append(f"- mode: {summary.get('mode')}")
+        report_lines.append(f"- paragraph_idx_corrected: {summary.get('paragraph_idx_corrected')}")
+        report_lines.append(f"- snippets_trimmed: {summary.get('snippets_trimmed')}")
+        report_lines.append(f"- confidence_filled: {summary.get('confidence_filled')}")
+        report_lines.append(f"- warnings_filled: {summary.get('warnings_filled')}")
+        report_lines.append(f"- unresolved_snippet_matches: {summary.get('unresolved_snippet_matches')}")
+        report_lines.append(f"- input_file_inferred: {summary.get('input_file_inferred')}")
+        report_lines.append(f"- reconcile_log: {reconcile_summary.get('md_log')}")
+        report_lines.append("")
 
     missing_outputs: list[str] = []
     invalid_outputs: list[str] = []
     schema_issues_by_job: dict[str, list[str]] = {}
+    validator_warnings_by_job: dict[str, list[str]] = {}
     snippet_issues: dict[str, list[str]] = {}
     warning_missing: list[str] = []
     evidence_counts: dict[str, int] = {}
 
     for job in jobs:
-        output_path = job.output_path
+        output_path = (
+            build_fixed_path(job.output_path)
+            if args.reconcile == "sibling"
+            else job.output_path
+        )
         key = str(output_path)
         if not output_path.exists():
             missing_outputs.append(job.job_id)
             continue
 
-        payload = json.loads(output_path.read_text(encoding="utf-8", errors="replace"))
+        try:
+            payload = json.loads(output_path.read_text(encoding="utf-8", errors="replace"))
+        except json.JSONDecodeError as exc:
+            invalid_outputs.append(job.job_id)
+            schema_issues_by_job[job.job_id] = [f"invalid JSON: {exc}"]
+            evidence_counts[job.job_id] = 0
+            continue
+
         payload_dict = as_str_dict(payload) or {}
         evidence_counts[job.job_id] = count_evidence_blocks(payload_dict)
 
         reasons = issue_map.get(key, [])
-        if reasons:
+        error_reasons = [reason for reason in reasons if not reason.startswith("WARN:")]
+        warn_reasons = [reason for reason in reasons if reason.startswith("WARN:")]
+        if error_reasons:
             invalid_outputs.append(job.job_id)
             schema_issues_by_job[job.job_id] = reasons
+        elif warn_reasons:
+            validator_warnings_by_job[job.job_id] = warn_reasons
 
         snippet_problems = check_snippets(payload_dict)
         if snippet_problems:
@@ -258,16 +301,17 @@ def main(argv: Optional[list[str]] = None) -> int:
             warning_missing.append(job.job_id)
 
     report_lines.append("## Status By Output")
-    report_lines.append("| Job ID | Exists | Schema Valid | Evidence Blocks | Snippet Issues | Warnings Needed |")
-    report_lines.append("| --- | --- | --- | --- | --- | --- |")
+    report_lines.append("| Job ID | Exists | Schema Valid | Evidence Blocks | Snippet Issues | Warnings Needed | Validator Warnings |")
+    report_lines.append("| --- | --- | --- | --- | --- | --- | --- |")
     for job in jobs:
         exists = "yes" if job.job_id not in missing_outputs else "no"
         schema_valid = "yes" if job.job_id not in invalid_outputs and exists == "yes" else "no"
         evidence_count = evidence_counts.get(job.job_id, 0)
         snippet_issue = "yes" if job.job_id in snippet_issues else "no"
         warnings_needed_flag = "missing" if job.job_id in warning_missing else "-"
+        validator_warn_flag = "yes" if job.job_id in validator_warnings_by_job else "-"
         report_lines.append(
-            f"| {job.job_id} | {exists} | {schema_valid} | {evidence_count} | {snippet_issue} | {warnings_needed_flag} |"
+            f"| {job.job_id} | {exists} | {schema_valid} | {evidence_count} | {snippet_issue} | {warnings_needed_flag} | {validator_warn_flag} |"
         )
 
     report_lines.append("")
@@ -284,6 +328,16 @@ def main(argv: Optional[list[str]] = None) -> int:
         for job_id in invalid_outputs:
             report_lines.append(f"- {job_id}")
             for reason in schema_issues_by_job.get(job_id, []):
+                report_lines.append(f"  - {reason}")
+    else:
+        report_lines.append("- None")
+
+    report_lines.append("")
+    report_lines.append("## Validator Warnings")
+    if validator_warnings_by_job:
+        for job_id, reasons in validator_warnings_by_job.items():
+            report_lines.append(f"- {job_id}")
+            for reason in reasons:
                 report_lines.append(f"  - {reason}")
     else:
         report_lines.append("- None")

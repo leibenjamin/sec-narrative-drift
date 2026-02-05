@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Optional
@@ -30,6 +31,10 @@ DEFAULT_REQUIRED_FIELDS = [
     "provenance",
 ]
 
+FOCUSPACK_WARNING = "Focuspack is a subset; verify in full compare pane."
+ALLOWED_CONFIDENCE: set[float] = {0.25, 0.50, 0.75}
+DELTA_BRIEF_CITATION_RE = re.compile(r"(20\d{2})\s*¶\s*\d+")
+
 sys.path.append(str(Path(__file__).resolve().parent))
 from lab_llm_precompute_utils import (  # type: ignore
     BundlePaths,
@@ -50,6 +55,12 @@ class FocuspackMeta:
     selected_curr: list[int]
     full_prev_count: Optional[int]
     full_curr_count: Optional[int]
+
+
+@dataclass(frozen=True)
+class ParagraphMaps:
+    prev_map: dict[int, str]
+    curr_map: dict[int, str]
 
 
 @dataclass(frozen=True)
@@ -175,6 +186,97 @@ def load_full_counts(path: Path) -> Optional[tuple[int, int]]:
     return (len(prev_paras), len(curr_paras))
 
 
+def resolve_input_file(path_value: str, output_path: Path) -> Optional[Path]:
+    if not path_value or not path_value.strip():
+        return None
+    raw_path = Path(path_value)
+    if raw_path.is_absolute():
+        if raw_path.is_file():
+            return raw_path
+        return None
+    candidate = REPO_ROOT / path_value
+    if candidate.is_file():
+        return candidate
+    candidate = output_path.parent / path_value
+    if candidate.is_file():
+        return candidate
+    bundles_root = REPO_ROOT / "bundles"
+    if bundles_root.exists():
+        matches = sorted(
+            path for path in bundles_root.rglob(raw_path.name) if path.is_file()
+        )
+        if len(matches) == 1:
+            return matches[0]
+        if len(matches) > 1:
+            return matches[-1]
+    return None
+
+
+def normalize_output_stem(name: str) -> str:
+    if name.endswith(".fixed"):
+        return name[: -len(".fixed")]
+    return name
+
+
+def build_paragraph_maps(input_payload: dict[str, object]) -> Optional[ParagraphMaps]:
+    texts = as_str_dict(input_payload.get("texts"))
+    if texts is None:
+        return None
+    prev_raw = as_list(texts.get("prev_paragraphs"))
+    curr_raw = as_list(texts.get("curr_paragraphs"))
+    if prev_raw is None or curr_raw is None:
+        return None
+    prev_paras: list[str] = []
+    for item in prev_raw:
+        if not isinstance(item, str):
+            return None
+        prev_paras.append(item)
+    curr_paras: list[str] = []
+    for item in curr_raw:
+        if not isinstance(item, str):
+            return None
+        curr_paras.append(item)
+
+    focus_meta = as_str_dict(input_payload.get("focuspack_meta"))
+    if focus_meta is not None:
+        selected_prev_raw = as_list(focus_meta.get("selected_prev_indices"))
+        selected_curr_raw = as_list(focus_meta.get("selected_curr_indices"))
+        if selected_prev_raw is None or selected_curr_raw is None:
+            return None
+        selected_prev: list[int] = []
+        selected_curr: list[int] = []
+        for value in selected_prev_raw:
+            if isinstance(value, int) and not isinstance(value, bool):
+                selected_prev.append(value)
+            else:
+                return None
+        for value in selected_curr_raw:
+            if isinstance(value, int) and not isinstance(value, bool):
+                selected_curr.append(value)
+            else:
+                return None
+        if len(selected_prev) != len(prev_paras) or len(selected_curr) != len(curr_paras):
+            return None
+        prev_map = {full_idx: prev_paras[i] for i, full_idx in enumerate(selected_prev)}
+        curr_map = {full_idx: curr_paras[i] for i, full_idx in enumerate(selected_curr)}
+        return ParagraphMaps(prev_map=prev_map, curr_map=curr_map)
+
+    prev_map = {idx: text for idx, text in enumerate(prev_paras)}
+    curr_map = {idx: text for idx, text in enumerate(curr_paras)}
+    return ParagraphMaps(prev_map=prev_map, curr_map=curr_map)
+
+
+def load_text_counts(input_payload: dict[str, object]) -> Optional[tuple[int, int]]:
+    texts = as_str_dict(input_payload.get("texts"))
+    if texts is None:
+        return None
+    prev_raw = as_list(texts.get("prev_paragraphs"))
+    curr_raw = as_list(texts.get("curr_paragraphs"))
+    if prev_raw is None or curr_raw is None:
+        return None
+    return (len(prev_raw), len(curr_raw))
+
+
 def get_input_entry(
     index_map: dict[tuple[str, int, int, str, str], InputIndexEntry],
     ticker: str,
@@ -220,9 +322,10 @@ def validate_outputs(
                 reasons.append(f"missing field: {field}")
 
         section = get_str(payload_dict.get("section")) or "10k_item1a"
-        parsed = parse_output_filename(path.stem, section)
+        normalized_stem = normalize_output_stem(path.stem)
+        parsed = parse_output_filename(normalized_stem, section)
         if parsed is None and section != "10k_item1a":
-            parsed = parse_output_filename(path.stem, "10k_item1a")
+            parsed = parse_output_filename(normalized_stem, "10k_item1a")
         if parsed is None:
             reasons.append("filename does not match expected pattern")
             issues.append(ValidationIssue(path, reasons))
@@ -265,6 +368,108 @@ def validate_outputs(
             reasons.append("evidence is not a list")
             issues.append(ValidationIssue(path, reasons))
             continue
+
+        detector = parsed.detector_id
+
+        metrics = as_str_dict(payload_dict.get("metrics"))
+        if metrics is None:
+            reasons.append("metrics is not an object")
+            metrics = {}
+
+        confidence_raw = metrics.get("confidence")
+        if confidence_raw is None:
+            reasons.append("metrics.confidence missing")
+        elif isinstance(confidence_raw, bool) or not isinstance(confidence_raw, (int, float)):
+            reasons.append("metrics.confidence not a number")
+        else:
+            confidence_value = float(confidence_raw)
+            if confidence_value not in ALLOWED_CONFIDENCE:
+                reasons.append(
+                    f"metrics.confidence must be one of {sorted(ALLOWED_CONFIDENCE)} (got {confidence_value})"
+                )
+
+        warnings_raw = as_list(metrics.get("warnings"))
+        warnings_list: list[str] = []
+        if warnings_raw is None:
+            reasons.append("metrics.warnings missing or not a list")
+        else:
+            for idx, item in enumerate(warnings_raw):
+                if isinstance(item, str):
+                    warnings_list.append(item)
+                else:
+                    reasons.append(f"metrics.warnings[{idx}] is not a string")
+            if FOCUSPACK_WARNING not in warnings_list:
+                reasons.append(
+                    f'metrics.warnings missing required warning: "{FOCUSPACK_WARNING}"'
+                )
+
+        artifacts = as_str_dict(payload_dict.get("artifacts"))
+        if artifacts is None:
+            reasons.append("artifacts is not an object")
+            artifacts = {}
+
+        if detector == "det_llm_delta_brief_v1":
+            delta_brief = get_str(artifacts.get("delta_brief"))
+            if delta_brief is None or not delta_brief.strip():
+                reasons.append("artifacts.delta_brief missing or empty")
+            if len(evidence_list) < 3 or len(evidence_list) > 8:
+                reasons.append(
+                    f"evidence count out of range for delta brief: {len(evidence_list)} (expected 3-8)"
+                )
+            if delta_brief:
+                citation_count = len(DELTA_BRIEF_CITATION_RE.findall(delta_brief))
+                if citation_count < 2:
+                    reasons.append(
+                        'WARN: delta_brief should include at least 2 inline citations like "YYYY ¶NN"'
+                    )
+
+        selected_prev: list[int] = []
+        selected_curr: list[int] = []
+        if detector == "det_llm_excerpt_picker_v1":
+            selected_prev_raw = as_list(artifacts.get("selected_prev"))
+            selected_curr_raw = as_list(artifacts.get("selected_curr"))
+            if selected_prev_raw is None:
+                reasons.append("artifacts.selected_prev missing or not a list")
+            else:
+                for idx, value in enumerate(selected_prev_raw):
+                    if isinstance(value, int) and not isinstance(value, bool):
+                        selected_prev.append(value)
+                    else:
+                        reasons.append(f"artifacts.selected_prev[{idx}] is not an int")
+            if selected_curr_raw is None:
+                reasons.append("artifacts.selected_curr missing or not a list")
+            else:
+                for idx, value in enumerate(selected_curr_raw):
+                    if isinstance(value, int) and not isinstance(value, bool):
+                        selected_curr.append(value)
+                    else:
+                        reasons.append(f"artifacts.selected_curr[{idx}] is not an int")
+            if len(evidence_list) < 6 or len(evidence_list) > 10:
+                reasons.append(
+                    f"WARN: excerpt picker evidence count out of band: {len(evidence_list)} (expected 6-10)"
+                )
+
+        provenance = as_str_dict(payload_dict.get("provenance")) or {}
+        input_file_value = get_str(provenance.get("input_file"))
+        if input_file_value is not None and not input_file_value.strip():
+            input_file_value = None
+        paragraph_maps: Optional[ParagraphMaps] = None
+        input_text_counts: Optional[tuple[int, int]] = None
+        if input_file_value:
+            input_path = resolve_input_file(input_file_value, path)
+            if input_path is None or not input_path.exists():
+                reasons.append(f"provenance.input_file not found: {input_file_value}")
+            else:
+                input_payload = as_str_dict(read_json(input_path))
+                if input_payload is None:
+                    reasons.append("provenance.input_file JSON invalid")
+                else:
+                    input_text_counts = load_text_counts(input_payload)
+                    paragraph_maps = build_paragraph_maps(input_payload)
+                    if paragraph_maps is None:
+                        reasons.append("provenance.input_file missing focuspack texts/meta")
+        else:
+            reasons.append("provenance.input_file missing")
 
         lens_key = parsed.lens_key
         lens_name = ""
@@ -327,6 +532,25 @@ def validate_outputs(
                 if full_counts is None:
                     reasons.append("invalid full input JSON for paragraph counts")
 
+        if detector == "det_llm_excerpt_picker_v1" and is_focuspack:
+            if input_text_counts is None:
+                reasons.append(
+                    "cannot validate artifacts.selected_prev/curr bounds (missing input texts)"
+                )
+            else:
+                prev_count, curr_count = input_text_counts
+                for idx, value in enumerate(selected_prev):
+                    if value < 0 or value >= prev_count:
+                        reasons.append(
+                            f"artifacts.selected_prev[{idx}] out of bounds (count {prev_count})"
+                        )
+                for idx, value in enumerate(selected_curr):
+                    if value < 0 or value >= curr_count:
+                        reasons.append(
+                            f"artifacts.selected_curr[{idx}] out of bounds (count {curr_count})"
+                        )
+
+        evidence_counts_by_year: dict[int, int] = {year_from: 0, year_to: 0}
         for idx, evidence in enumerate(evidence_list):
             evidence_dict = as_str_dict(evidence)
             if evidence_dict is None:
@@ -340,9 +564,46 @@ def validate_outputs(
             if year_value is None:
                 reasons.append(f"evidence[{idx}] year missing or not int")
                 continue
+            if year_value in evidence_counts_by_year:
+                evidence_counts_by_year[year_value] += 1
             if paragraph_idx < 0:
                 reasons.append(f"evidence[{idx}] paragraph_idx negative")
                 continue
+
+            snippet = get_str(evidence_dict.get("snippet"))
+            if snippet is None:
+                reasons.append(f"evidence[{idx}] snippet missing or not a string")
+            elif not snippet.strip():
+                reasons.append(f"evidence[{idx}] snippet empty")
+            elif len(snippet) > 350:
+                reasons.append(
+                    f"evidence[{idx}] snippet too long ({len(snippet)} chars, max 350)"
+                )
+
+            why_value = get_str(evidence_dict.get("why"))
+            if why_value is None or not why_value.strip():
+                reasons.append(f"evidence[{idx}] why missing or empty")
+
+            highlights_raw = evidence_dict.get("highlights")
+            if highlights_raw is None:
+                if detector == "det_llm_delta_brief_v1":
+                    reasons.append(f"evidence[{idx}] highlights missing")
+                highlights_list: list[str] = []
+            else:
+                highlights_any = as_list(highlights_raw)
+                highlights_list = []
+                if highlights_any is None:
+                    reasons.append(f"evidence[{idx}] highlights is not a list")
+                else:
+                    for j, item in enumerate(highlights_any):
+                        if isinstance(item, str):
+                            highlights_list.append(item)
+                        else:
+                            reasons.append(
+                                f"evidence[{idx}] highlights[{j}] is not a string"
+                            )
+            if detector == "det_llm_delta_brief_v1" and len(highlights_list) < 1:
+                reasons.append(f"evidence[{idx}] highlights missing/empty (delta brief)")
 
             if is_focuspack:
                 if focus_meta is None:
@@ -385,14 +646,52 @@ def validate_outputs(
                         f"evidence[{idx}] paragraph_idx out of bounds (count {count})"
                     )
 
+            if paragraph_maps is not None and snippet is not None:
+                if year_value == year_from:
+                    mapped_text = paragraph_maps.prev_map.get(paragraph_idx)
+                elif year_value == year_to:
+                    mapped_text = paragraph_maps.curr_map.get(paragraph_idx)
+                else:
+                    mapped_text = None
+                if mapped_text is None:
+                    reasons.append(
+                        f"snippet mapping missing (year={year_value}, paragraph_idx={paragraph_idx})"
+                    )
+                elif snippet not in mapped_text:
+                    reasons.append(
+                        f"snippet not found in mapped paragraph (year={year_value}, paragraph_idx={paragraph_idx})"
+                    )
+
+        if detector == "det_llm_delta_brief_v1" and len(evidence_list) >= 4:
+            prev_count = evidence_counts_by_year.get(year_from, 0)
+            curr_count = evidence_counts_by_year.get(year_to, 0)
+            if prev_count < 2 or curr_count < 2:
+                reasons.append(
+                    f"WARN: delta brief evidence distribution lopsided (year_from={prev_count}, year_to={curr_count}); target >=2 per year when possible"
+                )
+
         if reasons:
             issues.append(ValidationIssue(path, reasons))
 
     return issues
 
 
-def print_issues(issues: list[ValidationIssue]) -> None:
-    print(f"Validation failed: {len(issues)} invalid file(s)")
+def split_issues(
+    issues: list[ValidationIssue],
+) -> tuple[list[ValidationIssue], list[ValidationIssue]]:
+    errors: list[ValidationIssue] = []
+    warnings: list[ValidationIssue] = []
+    for issue in issues:
+        has_error = any(not reason.startswith("WARN:") for reason in issue.reasons)
+        if has_error:
+            errors.append(issue)
+        else:
+            warnings.append(issue)
+    return errors, warnings
+
+
+def print_issues(title: str, issues: list[ValidationIssue]) -> None:
+    print(title)
     for issue in issues:
         print(f"- {issue.path}")
         for reason in issue.reasons:
@@ -443,8 +742,12 @@ def main(argv: Optional[list[str]] = None) -> int:
     required_fields = load_required_fields(bundle_paths.prompt_templates)
 
     issues = validate_outputs(outputs_dir, bundle_paths, required_fields)
-    if issues:
-        print_issues(issues)
+    errors, warnings = split_issues(issues)
+    if warnings:
+        print_issues(f"Validation warnings: {len(warnings)} file(s)", warnings)
+        print("")
+    if errors:
+        print_issues(f"Validation failed: {len(errors)} invalid file(s)", errors)
         return 1
 
     file_count = len(list(outputs_dir.rglob("*.json"))) if outputs_dir.exists() else 0
