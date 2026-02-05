@@ -6,6 +6,7 @@ import DriftTimeline from "../components/DriftTimeline"
 import ExecutiveSummary from "../components/ExecutiveSummary"
 import ExecBriefCard, { type ExecBriefData } from "../components/ExecBriefCard"
 import InlinePopover from "../components/InlinePopover"
+import LabPanel from "../components/LabPanel"
 import QualityBadge from "../components/QualityBadge"
 import SectionCaptureBadge from "../components/SectionCaptureBadge"
 import SelectedPairCallout from "../components/SelectedPairCallout"
@@ -70,6 +71,21 @@ function parseYearParam(value: string | null): number | null {
 
 const COVERAGE_START_YEAR = 2015
 
+function mergeSearchParams(
+  current: URLSearchParams,
+  updates: Record<string, string | null>
+): URLSearchParams {
+  const next = new URLSearchParams(current)
+  Object.entries(updates).forEach(([key, value]) => {
+    if (value === null || value === undefined) {
+      next.delete(key)
+    } else {
+      next.set(key, value)
+    }
+  })
+  return next
+}
+
 function buildMissingYears(years: number[], startYear: number): number[] {
   if (years.length === 0) return []
   const yearSet = new Set<number>()
@@ -115,6 +131,7 @@ export default function Company() {
     term: string
     includes?: string[]
   } | null>(null)
+  const [activeTab, setActiveTab] = useState<"overview" | "lab">("overview")
   const [termLens, setTermLens] = useState<TermLens>("primary")
   const [isDataQualityOpen, setIsDataQualityOpen] = useState(false)
   const [isTourOpen, setIsTourOpen] = useState(false)
@@ -245,6 +262,12 @@ export default function Company() {
   }, [hasAltShiftLists, termLens])
 
   useEffect(() => {
+    if (activeTab !== "overview" && isTourOpen) {
+      setIsTourOpen(false)
+    }
+  }, [activeTab, isTourOpen])
+
+  useEffect(() => {
     if (!similarity) return
     const queryFrom = parseYearParam(searchParams.get("from"))
     const queryTo = parseYearParam(searchParams.get("to"))
@@ -260,7 +283,12 @@ export default function Company() {
     }
 
     if (resolved.from !== desired.from || resolved.to !== desired.to) {
-      setSearchParams({ from: String(resolved.from), to: String(resolved.to) })
+      setSearchParams(
+        mergeSearchParams(searchParams, {
+          from: String(resolved.from),
+          to: String(resolved.to),
+        })
+      )
     }
 
     setSelectedPair(resolved)
@@ -268,6 +296,15 @@ export default function Company() {
     setActiveCell(getHeatmapCell(years, resolved.from, resolved.to))
     setShouldScrollToEvidence(true)
   }, [searchParams, selectedPair, setSearchParams, similarity])
+
+  useEffect(() => {
+    const tabParam = searchParams.get("tab")
+    if (tabParam === "lab" || tabParam === "overview") {
+      if (activeTab !== tabParam) {
+        setActiveTab(tabParam)
+      }
+    }
+  }, [activeTab, searchParams])
 
   useEffect(() => {
     if (!shouldScrollToEvidence || !selectedPair) return
@@ -303,7 +340,17 @@ export default function Company() {
     setSelectedPair(ordered)
     setSelectedTerm(null)
     setActiveCell(getHeatmapCell(similarity?.years ?? [], ordered.from, ordered.to))
-    setSearchParams({ from: String(ordered.from), to: String(ordered.to) })
+    setSearchParams(
+      mergeSearchParams(searchParams, {
+        from: String(ordered.from),
+        to: String(ordered.to),
+      })
+    )
+  }
+
+  function handleTabChange(nextTab: "overview" | "lab") {
+    setActiveTab(nextTab)
+    setSearchParams(mergeSearchParams(searchParams, { tab: nextTab }))
   }
 
   const highlightTerms = useMemo(() => {
@@ -668,26 +715,59 @@ export default function Company() {
           >
             {copy.company.topButtons.methodology}
           </Link>
-          <button
-            type="button"
-            className="inline-flex items-center rounded-md border border-sky-400/40 bg-sky-400/10 px-3 py-2 text-sm text-sky-100 hover:bg-sky-400/20"
-            onClick={() => setIsTourOpen((prev) => !prev)}
-          >
-            {copy.company.topButtons.startTour}
-          </button>
-          <button
-            type="button"
-            className="inline-flex items-center rounded-md border border-sky-400/40 bg-sky-400/10 px-3 py-2 text-sm text-sky-100 hover:bg-sky-400/20"
-            onClick={handleExportExecBrief}
-          >
-            {copy.company.topButtons.exportExecBrief}
-          </button>
+          {activeTab === "overview" ? (
+            <>
+              <button
+                type="button"
+                className="inline-flex items-center rounded-md border border-sky-400/40 bg-sky-400/10 px-3 py-2 text-sm text-sky-100 hover:bg-sky-400/20"
+                onClick={() => setIsTourOpen((prev) => !prev)}
+              >
+                {copy.company.topButtons.startTour}
+              </button>
+              <button
+                type="button"
+                className="inline-flex items-center rounded-md border border-sky-400/40 bg-sky-400/10 px-3 py-2 text-sm text-sky-100 hover:bg-sky-400/20"
+                onClick={handleExportExecBrief}
+              >
+                {copy.company.topButtons.exportExecBrief}
+              </button>
+            </>
+          ) : null}
           <DataProvenanceDrawer
             isOpen={isDataQualityOpen}
             onOpenChange={setIsDataQualityOpen}
           />
         </div>
 
+        <div className="flex flex-wrap items-center gap-2">
+          <button
+            type="button"
+            onClick={() => handleTabChange("overview")}
+            className={`rounded-full border px-4 py-1 text-xs uppercase tracking-wide transition ${
+              activeTab === "overview"
+                ? "border-sky-300/70 bg-sky-400/20 text-sky-100"
+                : "border-white/15 text-slate-300 hover:border-white/30"
+            }`}
+          >
+            Overview
+          </button>
+          <button
+            type="button"
+            onClick={() => handleTabChange("lab")}
+            className={`rounded-full border px-4 py-1 text-xs uppercase tracking-wide transition ${
+              activeTab === "lab"
+                ? "border-sky-300/70 bg-sky-400/20 text-sky-100"
+                : "border-white/15 text-slate-300 hover:border-white/30"
+            }`}
+          >
+            Lab
+          </button>
+        </div>
+
+        {activeTab === "lab" ? <LabPanel ticker={ticker} /> : null}
+
+        {activeTab === "overview" ? (
+          <>
         <section className="grid gap-4 sm:grid-cols-3">
           <div className="rounded-lg border border-white/10 bg-slate-900/50 p-4">
             <div className="text-xs uppercase tracking-wider text-slate-300">
@@ -838,8 +918,12 @@ export default function Company() {
         <div aria-hidden="true" style={{ position: "absolute", left: "-9999px", top: 0 }}>
           <ExecBriefCard data={execBriefData} svgRef={execBriefRef} />
         </div>
+          </>
+        ) : null}
       </div>
-      <Tour isOpen={isTourOpen} steps={tourSteps} onClose={() => setIsTourOpen(false)} />
+      {activeTab === "overview" ? (
+        <Tour isOpen={isTourOpen} steps={tourSteps} onClose={() => setIsTourOpen(false)} />
+      ) : null}
     </main>
   )
 }
