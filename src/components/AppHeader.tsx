@@ -26,12 +26,17 @@ export default function AppHeader() {
   return (
     <header className="border-b border-white/10 bg-slate-950/70 backdrop-blur">
       <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-6 py-4">
-        <Link
-          to="/"
-          className="text-xs uppercase tracking-wider text-slate-200 hover:text-slate-50"
-        >
-          {copy.global.appName}
-        </Link>
+        <div className="flex items-center gap-2">
+          <Link
+            to="/"
+            className="text-xs uppercase tracking-wider text-slate-200 hover:text-slate-50"
+          >
+            {copy.global.appName}
+          </Link>
+          <span className="rounded bg-amber-600/80 px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wide text-amber-100">
+            Beta
+          </span>
+        </div>
         <nav className="flex flex-wrap items-center gap-4 text-sm" aria-label="Primary">
           {NAV_ITEMS.map((item) => {
             const active = isActive(pathname, item.to)
