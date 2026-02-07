@@ -102,7 +102,11 @@ def build_skeleton(
     year_to: int,
     input_file: str,
 ) -> list[str]:
-    highlights_placeholder = '["<tag>"]' if detector_id == "det_llm_delta_brief_v1" else "[]"
+    highlights_placeholder = (
+        '["<tag>"]'
+        if detector_id in {"det_llm_delta_brief_v1", "det_llm_excerpt_picker_v1"}
+        else "[]"
+    )
     if detector_id == "det_llm_delta_brief_v1":
         artifacts_lines = [
             '  "artifacts": {',
@@ -280,6 +284,22 @@ def main(argv: Optional[list[str]] = None) -> int:
         lines.append("- snippet is only a short highlight substring; UI displays the full paragraph.")
         lines.append("- max 350 characters per snippet.")
         if detector_id == "det_llm_excerpt_picker_v1":
+            lines.append("EXCERPT PICKER INDEX RULES")
+            lines.append(
+                "- artifacts.selected_prev/curr MUST list FULL paragraph_idx values (0-based FULL indices)."
+            )
+            lines.append(
+                "- If you cite texts.prev_paragraphs[i], paragraph_idx = focuspack_meta.selected_prev_indices[i]."
+            )
+            lines.append(
+                "- If you cite texts.curr_paragraphs[i], paragraph_idx = focuspack_meta.selected_curr_indices[i]."
+            )
+            lines.append(
+                "- Highlights REQUIRED: 1-3 per evidence (non-empty). Validator will fail if empty."
+            )
+            lines.append(
+                "- Before finalizing, verify each snippet is a verbatim substring and <= 350 chars."
+            )
             lines.append("PAIRING + DIVERSITY RULES")
             lines.append(
                 "- Ensure at least 2 prev-year excerpts share at least one identical highlight token with"
@@ -295,13 +315,30 @@ def main(argv: Optional[list[str]] = None) -> int:
             )
         if detector_id == "det_llm_delta_brief_v1":
             lines.append("DELTA BRIEF RULES")
-            lines.append("- Evidence distribution target: >=2 blocks per year where possible.")
+            lines.append(
+                "- Evidence distribution MUST include >=2 blocks for year_from and >=2 blocks for year_to."
+            )
+            lines.append(
+                "- If needed, choose different paragraphs to satisfy the per-year minimum."
+            )
             lines.append("- Highlights REQUIRED: 1-3 per evidence (non-empty).")
             lines.append(
                 "- Paired baseline REQUIRED for >=2 major claims: reuse identical highlight tags across years."
             )
             lines.append(
-                '- Delta brief must include >=2 inline citations like "YYYY ¶NN" using FULL indices.'
+                "- Include >=2 inline citations total in artifacts.delta_brief."
+            )
+            lines.append(
+                '- Use one citation format consistently in artifacts.delta_brief.'
+            )
+            lines.append(
+                '- Primary citation format: "YYYY \u00B6NN" where NN is 1-based (NN = paragraph_idx + 1).'
+            )
+            lines.append(
+                '- Fallback citation format: "YYYY para NN" is fully acceptable.'
+            )
+            lines.append(
+                '- Do NOT output "\u00C2\u00B6".'
             )
         lines.append("")
         lines.append("METRICS RULES")
@@ -320,7 +357,18 @@ def main(argv: Optional[list[str]] = None) -> int:
         lines.append("- include warnings if unsure")
         lines.append("- provenance.input_file matches attached input file")
         if detector_id == "det_llm_excerpt_picker_v1":
-            lines.append("- excerpt picker: artifacts.selected_prev/curr list focuspack positions (0-based)")
+            lines.append(
+                "- excerpt picker: artifacts.selected_prev/curr list FULL paragraph_idx values (0-based FULL indices)"
+            )
+            lines.append(
+                "- mapping: prev -> focuspack_meta.selected_prev_indices[i], curr -> focuspack_meta.selected_curr_indices[i]"
+            )
+            lines.append(
+                "- excerpt picker: highlights REQUIRED (1-3 non-empty tags per evidence)"
+            )
+            lines.append(
+                "- self-check: each snippet is verbatim and <= 350 chars"
+            )
             lines.append("- reuse highlight tokens across years for paired comparisons")
             lines.append("- avoid buzzword over-weighting (cap AI/ML highlights)")
         lines.append("")

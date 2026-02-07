@@ -51,6 +51,8 @@ analysis_exports/
 bundles/*
 chatgpt_bundle_*/
 chatgpt_bundle_*.zip
+chatgpt_review_bundle_*.zip
+chatgpt_upload_bundle_*.zip
 
 # Local fixture experiments (keep untracked)
 scripts/sample_fixtures/cost-20190901.htm
@@ -85,6 +87,8 @@ scripts/build_deboilerplated_drift_report.py
 scripts/export_risk_sections.py
 scripts/build_meaningfulness_unified_bundle.py
 scripts/build_term_shift_spotcheck_ui.py
+scripts/lab_make_rerun_pack.py
+scripts/lab_promote_llm_inputs_to_public.py
 
 # Internal resources
 scripts/resources/

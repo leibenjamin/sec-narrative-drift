@@ -193,6 +193,21 @@ Writes:
 - `reports/term_shift_deboilerplate/deboilerplated_drift_pairs.csv`
 - `reports/term_shift_deboilerplate/deboilerplated_drift_pairs.jsonl`
 
+### 5.2 Promote Lab LLM Inputs To Public (optional)
+
+Use this when you want stable shipped `provenance.input_file` targets under
+`public/data/sec_narrative_drift_lab/llm_inputs/`.
+
+```bash
+# Promote all input files referenced by a pilot pack:
+python scripts/lab_promote_llm_inputs_to_public.py --from-pilot-pack bundles/llm_pilot_pack_20260204_145010
+
+# Or promote from a showcase bundle:
+python scripts/lab_promote_llm_inputs_to_public.py --from-bundle bundles/showcase_llm_inputs_20260205_171321
+
+# Add --overwrite to replace existing public llm_inputs files.
+```
+
 ### 6. Fix Year Index Issues
 
 ```bash

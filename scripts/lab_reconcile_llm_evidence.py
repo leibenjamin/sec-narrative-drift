@@ -5,7 +5,7 @@ import json
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
-from typing import Optional, cast
+from typing import Any, Optional, cast
 
 import sys
 
@@ -16,6 +16,20 @@ REPORTS_ROOT = REPO_ROOT / "reports"
 
 FOCUSPACK_WARNING = "Focuspack is a subset; verify in full compare pane."
 AUTOFILL_WARNING = "Confidence is moderate; validator autofilled confidence due to missing value."
+SELECTED_RECONCILED_WARNING = (
+    "Reconciled selected_prev/curr to FULL indices based on evidence."
+)
+DELTA_BRIEF_MOJIBAKE = "Â¶"
+DELTA_BRIEF_PILCROW = "¶"
+DELTA_BRIEF_NORMALIZED_WARNING = (
+    "Normalized citation symbol from 'Â¶' to '¶' in delta_brief."
+)
+PROVENANCE_PUBLIC_NORMALIZED_WARNING = (
+    "Normalized provenance.input_file to shipped public llm_inputs path."
+)
+PUBLIC_LLM_INPUTS_ROOT = (
+    REPO_ROOT / "public" / "data" / "sec_narrative_drift_lab" / "llm_inputs"
+)
 
 sys.path.append(str(Path(__file__).resolve().parent))
 from lab_llm_precompute_utils import (  # type: ignore
@@ -89,6 +103,103 @@ def load_focuspack_inputs(input_payload: dict[str, object]) -> Optional[Focuspac
     )
 
 
+def parse_int_list(value: object) -> Optional[list[int]]:
+    values_raw = as_list(value)
+    if values_raw is None:
+        return None
+    values: list[int] = []
+    for item in values_raw:
+        if isinstance(item, int) and not isinstance(item, bool):
+            values.append(item)
+        else:
+            return None
+    return values
+
+
+def maybe_map_focuspack_local_to_full(
+    values: list[int], full_indices: list[int]
+) -> tuple[list[int], bool]:
+    if not values:
+        return values, False
+    allowed_full = set(full_indices)
+    looks_local = all(0 <= value < len(full_indices) for value in values) and all(
+        value not in allowed_full for value in values
+    )
+    if not looks_local:
+        return values, False
+    mapped: list[int] = []
+    for value in values:
+        mapped.append(full_indices[value])
+    return mapped, True
+
+
+def normalize_provenance_to_public_llm_inputs(path_value: str) -> Optional[str]:
+    basename = Path(path_value).name
+    if not basename or not basename.lower().endswith(".json"):
+        return None
+    candidate = PUBLIC_LLM_INPUTS_ROOT / basename
+    if not candidate.exists() or not candidate.is_file():
+        return None
+    public_rel = str(candidate.relative_to(REPO_ROOT)).replace("\\", "/")
+    current_norm = path_value.replace("\\", "/")
+    if current_norm == public_rel:
+        return None
+    return public_rel
+
+
+def repair_source_file_warning_lines(
+    warnings_list: list[Any], provenance_filename: Optional[str]
+) -> tuple[list[Any], bool]:
+    fixed: list[Any] = []
+    changed = False
+    replacement = (
+        f"Source file: {provenance_filename}" if provenance_filename else None
+    )
+    for entry in warnings_list:
+        if not isinstance(entry, str):
+            fixed.append(entry)
+            continue
+        trimmed = entry.strip()
+        is_empty_source_file = (
+            trimmed == "Source file:"
+            or (
+                trimmed.startswith("Source file:")
+                and not trimmed[len("Source file:") :].strip()
+            )
+        )
+        if not is_empty_source_file:
+            fixed.append(entry)
+            continue
+        changed = True
+        if replacement is None:
+            continue
+        if replacement not in fixed:
+            fixed.append(replacement)
+    return fixed, changed
+
+
+def normalize_warning_strings(warnings_list: list[Any]) -> tuple[list[str], bool]:
+    normalized: list[str] = []
+    seen: set[str] = set()
+    changed = False
+    for entry in warnings_list:
+        if not isinstance(entry, str):
+            changed = True
+            continue
+        trimmed = entry.strip()
+        if trimmed != entry:
+            changed = True
+        if not trimmed:
+            changed = True
+            continue
+        if trimmed in seen:
+            changed = True
+            continue
+        seen.add(trimmed)
+        normalized.append(trimmed)
+    return normalized, changed
+
+
 def trim_snippet(snippet: str, max_chars: int) -> str:
     if len(snippet) <= max_chars:
         return snippet
@@ -132,8 +243,8 @@ def infer_input_file(path: Path, payload_dict: dict[str, object]) -> Optional[Pa
     if ticker is None:
         ticker = path.parent.name
     input_name = f"{ticker}_{parsed.year_from}_{parsed.year_to}_{parsed.lens_key}.json"
-    inferred = resolve_input_file(input_name, path)
-    return inferred
+    resolution = resolve_input_file(input_name, path)
+    return resolution.path
 
 
 def reconcile_file(
@@ -169,6 +280,8 @@ def reconcile_file(
     if input_file_value is not None and not input_file_value.strip():
         input_file_value = None
     input_path: Optional[Path] = None
+    resolution_error: Optional[str] = None
+    provenance_public_normalized = False
     if input_file_value is None:
         inferred = infer_input_file(path, payload_dict)
         if inferred is None:
@@ -177,11 +290,34 @@ def reconcile_file(
         input_path = inferred
         provenance["input_file"] = str(input_path.relative_to(REPO_ROOT))
         payload_dict["provenance"] = provenance
+        input_file_value = get_str(provenance.get("input_file"))
         result["input_file_inferred"] = 1
     else:
-        input_path = resolve_input_file(input_file_value, path)
+        resolution = resolve_input_file(input_file_value, path)
+        input_path = resolution.path
+        resolution_error = resolution.error
+
+    current_input_file_value = get_str(provenance.get("input_file"))
+    if current_input_file_value is not None:
+        normalized_public = normalize_provenance_to_public_llm_inputs(
+            current_input_file_value
+        )
+        if normalized_public is not None:
+            provenance["input_file"] = normalized_public
+            payload_dict["provenance"] = provenance
+            input_file_value = normalized_public
+            resolution = resolve_input_file(normalized_public, path)
+            input_path = resolution.path
+            resolution_error = resolution.error
+            provenance_public_normalized = True
+
     if input_path is None or not input_path.exists():
-        result["errors"] = [f"provenance.input_file not found: {input_file_value}"]
+        if input_file_value is None:
+            result["errors"] = ["provenance.input_file not found"]
+        else:
+            result["errors"] = [
+                resolution_error or f"provenance.input_file not found: {input_file_value}"
+            ]
         return result
 
     input_payload = as_str_dict(read_json(input_path))
@@ -206,6 +342,43 @@ def reconcile_file(
         result["errors"] = ["evidence is not a list"]
         return result
 
+    detector_id = get_str(payload_dict.get("detector_id")) or ""
+    is_excerpt_picker = detector_id == "det_llm_excerpt_picker_v1"
+    selected_reconciled = False
+    delta_brief_normalized = False
+
+    artifacts = as_str_dict(payload_dict.get("artifacts"))
+    if artifacts is None:
+        artifacts = {}
+        payload_dict["artifacts"] = artifacts
+
+    if detector_id == "det_llm_delta_brief_v1":
+        delta_brief = get_str(artifacts.get("delta_brief"))
+        if delta_brief is not None and DELTA_BRIEF_MOJIBAKE in delta_brief:
+            artifacts["delta_brief"] = delta_brief.replace(
+                DELTA_BRIEF_MOJIBAKE, DELTA_BRIEF_PILCROW
+            )
+            payload_dict["artifacts"] = artifacts
+            delta_brief_normalized = True
+
+    selected_prev_original = parse_int_list(artifacts.get("selected_prev")) if is_excerpt_picker else None
+    selected_curr_original = parse_int_list(artifacts.get("selected_curr")) if is_excerpt_picker else None
+    selected_prev_mapped = selected_prev_original or []
+    selected_curr_mapped = selected_curr_original or []
+    if is_excerpt_picker:
+        selected_prev_mapped, prev_was_local = maybe_map_focuspack_local_to_full(
+            selected_prev_mapped, focuspack_inputs.selected_prev
+        )
+        selected_curr_mapped, curr_was_local = maybe_map_focuspack_local_to_full(
+            selected_curr_mapped, focuspack_inputs.selected_curr
+        )
+        if prev_was_local or curr_was_local:
+            selected_reconciled = True
+
+    evidence_prev_indices: list[int] = []
+    evidence_curr_indices: list[int] = []
+    seen_prev_indices: set[int] = set()
+    seen_curr_indices: set[int] = set()
     for idx, entry in enumerate(evidence_list):
         entry_dict = as_str_dict(entry)
         if entry_dict is None:
@@ -226,6 +399,13 @@ def reconcile_file(
             focus_indices = focuspack_inputs.selected_curr
         else:
             continue
+
+        if year_value == year_from and paragraph_idx not in seen_prev_indices:
+            seen_prev_indices.add(paragraph_idx)
+            evidence_prev_indices.append(paragraph_idx)
+        if year_value == year_to and paragraph_idx not in seen_curr_indices:
+            seen_curr_indices.add(paragraph_idx)
+            evidence_curr_indices.append(paragraph_idx)
 
         if mapped_text is None or snippet not in mapped_text:
             matches: list[int] = []
@@ -248,6 +428,15 @@ def reconcile_file(
 
     payload_dict["evidence"] = evidence_list
 
+    if is_excerpt_picker:
+        rebuilt_prev = evidence_prev_indices
+        rebuilt_curr = evidence_curr_indices
+        if selected_prev_mapped != rebuilt_prev or selected_curr_mapped != rebuilt_curr:
+            selected_reconciled = True
+        artifacts["selected_prev"] = rebuilt_prev
+        artifacts["selected_curr"] = rebuilt_curr
+        payload_dict["artifacts"] = artifacts
+
     metrics = payload_dict.get("metrics")
     metrics_dict = as_str_dict(metrics) if metrics is not None else None
     if metrics_dict is None:
@@ -265,19 +454,49 @@ def reconcile_file(
     warnings_list = as_list(warnings) if warnings is not None else None
     if warnings_list is None:
         warnings_list = []
+
+    provenance_filename: Optional[str] = None
+    current_provenance_file = get_str(provenance.get("input_file"))
+    if current_provenance_file is not None:
+        filename = Path(current_provenance_file).name
+        if filename:
+            provenance_filename = filename
+    warnings_list, source_warning_fixed = repair_source_file_warning_lines(
+        warnings_list, provenance_filename
+    )
+    if source_warning_fixed:
+        result["warnings_filled"] = cast(int, result["warnings_filled"]) + 1
+
     if not warnings_list:
         warnings_list.append(FOCUSPACK_WARNING)
         if autofilled_conf:
             warnings_list.append(AUTOFILL_WARNING)
-        metrics_dict["warnings"] = warnings_list
         result["warnings_filled"] = cast(int, result["warnings_filled"]) + 1
     else:
         if FOCUSPACK_WARNING not in warnings_list:
             warnings_list.append(FOCUSPACK_WARNING)
             if autofilled_conf:
                 warnings_list.append(AUTOFILL_WARNING)
-            metrics_dict["warnings"] = warnings_list
             result["warnings_filled"] = cast(int, result["warnings_filled"]) + 1
+    if selected_reconciled and SELECTED_RECONCILED_WARNING not in warnings_list:
+        warnings_list.append(SELECTED_RECONCILED_WARNING)
+        result["warnings_filled"] = cast(int, result["warnings_filled"]) + 1
+    if (
+        delta_brief_normalized
+        and DELTA_BRIEF_NORMALIZED_WARNING not in warnings_list
+    ):
+        warnings_list.append(DELTA_BRIEF_NORMALIZED_WARNING)
+        result["warnings_filled"] = cast(int, result["warnings_filled"]) + 1
+    if (
+        provenance_public_normalized
+        and PROVENANCE_PUBLIC_NORMALIZED_WARNING not in warnings_list
+    ):
+        warnings_list.append(PROVENANCE_PUBLIC_NORMALIZED_WARNING)
+        result["warnings_filled"] = cast(int, result["warnings_filled"]) + 1
+    warnings_list, warnings_normalized = normalize_warning_strings(warnings_list)
+    if warnings_normalized:
+        result["warnings_filled"] = cast(int, result["warnings_filled"]) + 1
+    metrics_dict["warnings"] = warnings_list
 
     payload_dict["metrics"] = metrics_dict
 
@@ -382,6 +601,8 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--output-file", default="", help="Single output JSON file to reconcile.")
     parser.add_argument(
         "--output-root",
+        "--root",
+        dest="output_root",
         default="",
         help="Directory containing output JSON files to reconcile.",
     )

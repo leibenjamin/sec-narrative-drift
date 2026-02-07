@@ -3,6 +3,8 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import shutil
+import zipfile
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
@@ -10,7 +12,7 @@ from typing import Any, Optional, cast
 
 import sys
 
-SCRIPT_VERSION = "lab_make_llm_precompute_queue.py@v1"
+SCRIPT_VERSION = "lab_make_llm_precompute_queue.py@v2"
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 PUBLIC_LAB_ROOT = REPO_ROOT / "public" / "data" / "sec_narrative_drift_lab"
@@ -27,8 +29,10 @@ INPUT_PRIORITY = [
 ]
 
 PILOT_PAIRS = {("NVDA", 2021, 2022), ("KO", 2023, 2024)}
+UTF8_BOM = b"\xef\xbb\xbf"
 
 sys.path.append(str(Path(__file__).resolve().parent))
+from lab_emit_chatgpt_thread_starters import main as emit_thread_starters  # type: ignore
 from lab_llm_precompute_utils import (  # type: ignore
     InputIndexEntry,
     as_str_dict,
@@ -98,6 +102,160 @@ def pick_input(
     return None, errors
 
 
+def write_jsonl_utf8_no_bom(path: Path, rows: list[dict[str, Any]]) -> bool:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8", newline="\n") as handle:
+        for row in rows:
+            handle.write(json.dumps(row))
+            handle.write("\n")
+    first_three = path.read_bytes()[:3]
+    if first_three == UTF8_BOM:
+        raise SystemExit(f"UTF-8 BOM detected in {path}")
+    return True
+
+
+def write_text_utf8_lf(path: Path, lines: list[str]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8", newline="\n") as handle:
+        handle.write("\n".join(lines))
+        handle.write("\n")
+
+
+def build_output_target_rows(jobs: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+    for job in jobs:
+        job_id = cast(str, job.get("job_id"))
+        ticker = cast(str, job.get("ticker"))
+        detector_id = cast(str, job.get("detector_id"))
+        year_from = cast(int, job.get("year_from"))
+        year_to = cast(int, job.get("year_to"))
+        input_path = cast(str, job.get("input_path"))
+        output_path = cast(str, job.get("output_path"))
+        rows.append(
+            {
+                "job_id": job_id,
+                "ticker": ticker,
+                "detector_id": detector_id,
+                "year_from": year_from,
+                "year_to": year_to,
+                "input_path": input_path,
+                "output_path": output_path,
+            }
+        )
+    return rows
+
+
+def build_showcase_runbook_lines(
+    queue_dir: Path,
+    total_jobs: int,
+    counts_by_ticker: dict[str, int],
+    counts_by_detector: dict[str, int],
+) -> list[str]:
+    lines: list[str] = []
+    lines.append("# Showcase LLM Queue Runbook")
+    lines.append("")
+    lines.append(f"Source queue: {to_repo_relative(queue_dir)}")
+    lines.append(f"Total jobs: {total_jobs}")
+    lines.append("")
+    lines.append("## Manual execution (ChatGPT Plus)")
+    lines.append("1. Open a NEW ChatGPT Plus thread per job in thread_starters/.")
+    lines.append("2. Attach the exact input JSON file named in that starter (from inputs/).")
+    lines.append("3. Paste the full starter text and submit.")
+    lines.append("4. Save JSON output to the exact target in output_targets.jsonl.")
+    lines.append("5. Do not change the detector envelope keys.")
+    lines.append("")
+    lines.append("## FAST MODE (Optional: 1 thread per pair)")
+    lines.append("1. For a given ticker/year pair, you may run both detector prompts in one thread.")
+    lines.append("2. Run det_llm_delta_brief_v1 first, save to its exact target path.")
+    lines.append("3. Then run det_llm_excerpt_picker_v1 in the same thread, save to its exact target path.")
+    lines.append("4. Caution: paste the FULL starter text each time; do not use short follow-ups.")
+    lines.append("")
+    lines.append("## Strict index + evidence rules (must follow)")
+    lines.append("- paragraph_idx values must be FULL paragraph indices.")
+    lines.append(
+        "- For focuspack inputs, map local i -> focuspack_meta.selected_prev_indices[i] / selected_curr_indices[i]."
+    )
+    lines.append("- snippets must be verbatim and <= 350 chars.")
+    lines.append("- highlights are required where the starter specifies them (1-3 non-empty tags).")
+    lines.append("")
+    lines.append("## Status table: jobs per ticker")
+    lines.append("| Ticker | Jobs |")
+    lines.append("| --- | --- |")
+    for ticker in sorted(counts_by_ticker.keys()):
+        lines.append(f"| {ticker} | {counts_by_ticker[ticker]} |")
+    lines.append("")
+    lines.append("## Status table: jobs per detector")
+    lines.append("| Detector | Jobs |")
+    lines.append("| --- | --- |")
+    for detector_id in sorted(counts_by_detector.keys()):
+        lines.append(f"| {detector_id} | {counts_by_detector[detector_id]} |")
+    return lines
+
+
+def build_showcase_queue_bundle(
+    jobs: list[dict[str, Any]],
+    queue_dir: Path,
+    bundle_out_dir: Path,
+    timestamp: str,
+) -> tuple[Path, Path, bool]:
+    inputs_dir = bundle_out_dir / "inputs"
+    thread_starters_dir = bundle_out_dir / "thread_starters"
+    inputs_dir.mkdir(parents=True, exist_ok=True)
+    thread_starters_dir.mkdir(parents=True, exist_ok=True)
+
+    seen_basenames: set[str] = set()
+    for job in jobs:
+        input_rel = cast(str, job.get("input_path"))
+        source_path = REPO_ROOT / input_rel
+        if not source_path.exists():
+            raise SystemExit(f"Input file not found for showcase bundle: {source_path}")
+        basename = source_path.name
+        if basename in seen_basenames:
+            continue
+        seen_basenames.add(basename)
+        shutil.copy2(source_path, inputs_dir / basename)
+
+    source_thread_dir = queue_dir / "thread_starters"
+    if not source_thread_dir.exists():
+        raise SystemExit(f"thread_starters not found: {source_thread_dir}")
+    thread_files = sorted(path for path in source_thread_dir.glob("*.md") if path.is_file())
+    if not thread_files:
+        raise SystemExit(f"No thread starter files found in {source_thread_dir}")
+    for path in thread_files:
+        shutil.copy2(path, thread_starters_dir / path.name)
+
+    output_targets_rows = build_output_target_rows(jobs)
+    output_targets_path = bundle_out_dir / "output_targets.jsonl"
+    bom_check_passed = write_jsonl_utf8_no_bom(output_targets_path, output_targets_rows)
+    write_jsonl_utf8_no_bom(bundle_out_dir / "jobs.jsonl", jobs)
+
+    counts_by_ticker: dict[str, int] = {}
+    counts_by_detector: dict[str, int] = {}
+    for job in jobs:
+        ticker = cast(str, job.get("ticker"))
+        detector_id = cast(str, job.get("detector_id"))
+        counts_by_ticker[ticker] = counts_by_ticker.get(ticker, 0) + 1
+        counts_by_detector[detector_id] = counts_by_detector.get(detector_id, 0) + 1
+
+    readme_lines = build_showcase_runbook_lines(
+        queue_dir=queue_dir,
+        total_jobs=len(jobs),
+        counts_by_ticker=counts_by_ticker,
+        counts_by_detector=counts_by_detector,
+    )
+    write_text_utf8_lf(bundle_out_dir / "README.md", readme_lines)
+
+    zip_path = REPO_ROOT / f"chatgpt_bundle_showcase_llm_queue_{timestamp}.zip"
+    if zip_path.exists():
+        zip_path.unlink()
+    with zipfile.ZipFile(zip_path, "w", compression=zipfile.ZIP_DEFLATED) as zip_handle:
+        for path in sorted(bundle_out_dir.rglob("*")):
+            if path.is_file():
+                zip_handle.write(path, path.relative_to(bundle_out_dir))
+
+    return bundle_out_dir, zip_path, bom_check_passed
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Build LLM precompute queue for hero pairs.")
     parser.add_argument(
@@ -134,6 +292,19 @@ def build_parser() -> argparse.ArgumentParser:
         "--report",
         default=str(DEFAULT_REPORT_PATH),
         help="Summary report output path",
+    )
+    parser.add_argument(
+        "--make-showcase-queue-bundle",
+        action="store_true",
+        help=(
+            "Also build bundles/showcase_llm_queue_<timestamp>/ with inputs, "
+            "thread_starters, output_targets.jsonl, README, and zip."
+        ),
+    )
+    parser.add_argument(
+        "--showcase-queue-out-dir",
+        default="",
+        help="Override showcase queue bundle output directory.",
     )
     return parser
 
@@ -354,6 +525,30 @@ def main(argv: Optional[list[str]] = None) -> int:
 
     print(f"Wrote queue to {out_dir}")
     print(f"Wrote summary to {report_path}")
+    if args.make_showcase_queue_bundle:
+        emit_rc = emit_thread_starters(["--queue-dir", str(out_dir)])
+        if emit_rc != 0:
+            raise SystemExit(
+                f"Thread starter generation failed for queue {out_dir} (exit {emit_rc})"
+            )
+        showcase_out_dir = (
+            Path(args.showcase_queue_out_dir)
+            if args.showcase_queue_out_dir
+            else REPO_ROOT / "bundles" / f"showcase_llm_queue_{timestamp}"
+        )
+        _, showcase_zip_path, bom_check_passed = build_showcase_queue_bundle(
+            jobs=jobs,
+            queue_dir=out_dir,
+            bundle_out_dir=showcase_out_dir,
+            timestamp=timestamp,
+        )
+        print(f"Wrote showcase queue bundle to {showcase_out_dir}")
+        print(f"Wrote showcase queue zip to {showcase_zip_path}")
+        print(
+            "BOM check: "
+            + ("passed" if bom_check_passed else "failed")
+            + f" for {showcase_out_dir / 'output_targets.jsonl'}"
+        )
     return 0
 
 

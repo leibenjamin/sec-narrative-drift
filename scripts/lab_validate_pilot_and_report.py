@@ -196,6 +196,11 @@ def build_parser() -> argparse.ArgumentParser:
         default="off",
         help="Run evidence reconcile before scoring (off, sibling, in_place).",
     )
+    parser.add_argument(
+        "--showcase-gate",
+        action="store_true",
+        help="Treat any validator warning as NO-GO for showcase readiness.",
+    )
     return parser
 
 
@@ -240,6 +245,9 @@ def main(argv: Optional[list[str]] = None) -> int:
     report_lines.append("")
     report_lines.append(f"Jobs file: {jobs_path}")
     report_lines.append(f"Script: {SCRIPT_VERSION}")
+    report_lines.append(
+        f"Showcase gate: {'on' if args.showcase_gate else 'off'}"
+    )
     report_lines.append("")
     if reconcile_summary:
         summary = reconcile_summary.get("summary", {})
@@ -305,7 +313,18 @@ def main(argv: Optional[list[str]] = None) -> int:
     report_lines.append("| --- | --- | --- | --- | --- | --- | --- |")
     for job in jobs:
         exists = "yes" if job.job_id not in missing_outputs else "no"
-        schema_valid = "yes" if job.job_id not in invalid_outputs and exists == "yes" else "no"
+        blocked_by_showcase_warning = (
+            args.showcase_gate and job.job_id in validator_warnings_by_job
+        )
+        schema_valid = (
+            "yes"
+            if (
+                job.job_id not in invalid_outputs
+                and exists == "yes"
+                and not blocked_by_showcase_warning
+            )
+            else "no"
+        )
         evidence_count = evidence_counts.get(job.job_id, 0)
         snippet_issue = "yes" if job.job_id in snippet_issues else "no"
         warnings_needed_flag = "missing" if job.job_id in warning_missing else "-"
@@ -361,13 +380,25 @@ def main(argv: Optional[list[str]] = None) -> int:
     else:
         report_lines.append("- None")
 
-    hard_fail = bool(missing_outputs or invalid_outputs or snippet_issues)
+    showcase_warning_fail = bool(args.showcase_gate and validator_warnings_by_job)
+    hard_fail = bool(
+        missing_outputs or invalid_outputs or snippet_issues or showcase_warning_fail
+    )
     summary = "NO-GO" if hard_fail else "GO"
     report_lines.append("")
     report_lines.append("## Go / No-Go Summary")
     report_lines.append(f"**{summary}**")
     if hard_fail:
-        report_lines.append("Missing outputs or validation issues detected. Resolve before scaling.")
+        if showcase_warning_fail and not (
+            missing_outputs or invalid_outputs or snippet_issues
+        ):
+            report_lines.append(
+                "Showcase gate is enabled; validator warnings detected. Resolve warnings before scaling."
+            )
+        else:
+            report_lines.append(
+                "Missing outputs or validation issues detected. Resolve before scaling."
+            )
     else:
         report_lines.append("Pilot outputs look good. Safe to scale.")
 

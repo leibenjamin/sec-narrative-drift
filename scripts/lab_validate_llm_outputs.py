@@ -33,7 +33,12 @@ DEFAULT_REQUIRED_FIELDS = [
 
 FOCUSPACK_WARNING = "Focuspack is a subset; verify in full compare pane."
 ALLOWED_CONFIDENCE: set[float] = {0.25, 0.50, 0.75}
-DELTA_BRIEF_CITATION_RE = re.compile(r"(20\d{2})\s*¶\s*\d+")
+PILCROW_SYMBOL = "\u00B6"
+MOJIBAKE_PILCROW_SYMBOL = "\u00C2\u00B6"
+DELTA_BRIEF_CITATION_RE = re.compile(
+    r"(?P<year>20\d{2})\s*(?:(?P<mojibake>\u00C2\u00B6)|(?P<pilcrow>\u00B6)|(?P<para>para))\s*(?P<idx>\d+)",
+    re.IGNORECASE,
+)
 
 sys.path.append(str(Path(__file__).resolve().parent))
 from lab_llm_precompute_utils import (  # type: ignore
@@ -76,6 +81,62 @@ class ParsedFilename:
     year_to: int
     lens_key: str
     section: str
+
+
+@dataclass(frozen=True)
+class ResolvedInputFile:
+    path: Optional[Path]
+    error: Optional[str]
+
+
+def debug_count_delta_brief_citations(delta_brief: str) -> dict[str, int]:
+    counts = {
+        "total": 0,
+        "pilcrow": 0,
+        "mojibake": 0,
+        "para": 0,
+    }
+    for match in DELTA_BRIEF_CITATION_RE.finditer(delta_brief):
+        if match.group("mojibake") is not None:
+            counts["mojibake"] += 1
+        elif match.group("pilcrow") is not None:
+            counts["pilcrow"] += 1
+        elif match.group("para") is not None:
+            counts["para"] += 1
+        counts["total"] += 1
+    return counts
+
+
+def run_debug_citation_self_check() -> None:
+    checks: list[tuple[str, str, dict[str, int]]] = [
+        (
+            "pilcrow_only",
+            "(2021 \u00B633) and (2022 \u00B612)",
+            {"total": 2, "pilcrow": 2, "mojibake": 0, "para": 0},
+        ),
+        (
+            "mojibake_only",
+            "(2021 \u00C2\u00B633) and (2022 \u00C2\u00B612)",
+            {"total": 2, "pilcrow": 0, "mojibake": 2, "para": 0},
+        ),
+        (
+            "para_only",
+            "(2021 para 33) and (2022 para 12)",
+            {"total": 2, "pilcrow": 0, "mojibake": 0, "para": 2},
+        ),
+        (
+            "mixed",
+            "(2021 \u00B633) and (2022 para 12)",
+            {"total": 2, "pilcrow": 1, "mojibake": 0, "para": 1},
+        ),
+    ]
+    for label, text, expected in checks:
+        observed = debug_count_delta_brief_citations(text)
+        if observed != expected:
+            raise SystemExit(
+                f"[debug-citations] self-check failed for {label}: expected {expected}, got {observed}"
+            )
+    print("[debug-citations] citation parser self-check passed.")
 
 
 def load_required_fields(prompt_path: Optional[Path]) -> list[str]:
@@ -186,30 +247,64 @@ def load_full_counts(path: Path) -> Optional[tuple[int, int]]:
     return (len(prev_paras), len(curr_paras))
 
 
-def resolve_input_file(path_value: str, output_path: Path) -> Optional[Path]:
+def _is_json_file(path: Path) -> bool:
+    return path.is_file() and path.suffix.lower() == ".json"
+
+
+def resolve_input_file(path_value: str, output_path: Path) -> ResolvedInputFile:
+    del output_path  # deterministic repo-root resolution only
     if not path_value or not path_value.strip():
-        return None
-    raw_path = Path(path_value)
+        return ResolvedInputFile(path=None, error="provenance.input_file missing")
+
+    raw_path = Path(path_value.strip())
     if raw_path.is_absolute():
-        if raw_path.is_file():
-            return raw_path
-        return None
-    candidate = REPO_ROOT / path_value
-    if candidate.is_file():
-        return candidate
-    candidate = output_path.parent / path_value
-    if candidate.is_file():
-        return candidate
-    bundles_root = REPO_ROOT / "bundles"
-    if bundles_root.exists():
-        matches = sorted(
-            path for path in bundles_root.rglob(raw_path.name) if path.is_file()
+        if _is_json_file(raw_path):
+            return ResolvedInputFile(path=raw_path, error=None)
+        return ResolvedInputFile(
+            path=None,
+            error=f"provenance.input_file not found or not JSON: {path_value}",
         )
-        if len(matches) == 1:
-            return matches[0]
-        if len(matches) > 1:
-            return matches[-1]
-    return None
+
+    repo_relative_candidate = REPO_ROOT / raw_path
+    if _is_json_file(repo_relative_candidate):
+        return ResolvedInputFile(path=repo_relative_candidate, error=None)
+
+    llm_inputs_candidate = (
+        REPO_ROOT
+        / "public"
+        / "data"
+        / "sec_narrative_drift_lab"
+        / "llm_inputs"
+        / raw_path.name
+    )
+    if _is_json_file(llm_inputs_candidate):
+        return ResolvedInputFile(path=llm_inputs_candidate, error=None)
+
+    bundles_root = REPO_ROOT / "bundles"
+    matches: list[Path] = []
+    if bundles_root.exists():
+        for candidate in bundles_root.rglob(raw_path.name):
+            if not _is_json_file(candidate):
+                continue
+            if candidate.parent.name != "inputs":
+                continue
+            matches.append(candidate)
+    matches = sorted(set(matches), key=lambda item: str(item))
+    if len(matches) == 1:
+        return ResolvedInputFile(path=matches[0], error=None)
+    if len(matches) > 1:
+        preview = ", ".join(
+            str(candidate.relative_to(REPO_ROOT)) for candidate in matches[:3]
+        )
+        suffix = " ..." if len(matches) > 3 else ""
+        return ResolvedInputFile(
+            path=None,
+            error=(
+                f"provenance.input_file ambiguous for '{path_value}': {len(matches)} matches "
+                f"under bundles/**/inputs ({preview}{suffix}); use an exact repo-relative path"
+            ),
+        )
+    return ResolvedInputFile(path=None, error=f"provenance.input_file not found: {path_value}")
 
 
 def normalize_output_stem(name: str) -> str:
@@ -417,10 +512,22 @@ def validate_outputs(
                     f"evidence count out of range for delta brief: {len(evidence_list)} (expected 3-8)"
                 )
             if delta_brief:
-                citation_count = len(DELTA_BRIEF_CITATION_RE.findall(delta_brief))
-                if citation_count < 2:
+                citation_counts = debug_count_delta_brief_citations(delta_brief)
+                has_pilcrow_format = (
+                    citation_counts["pilcrow"] + citation_counts["mojibake"]
+                ) > 0
+                has_para_format = citation_counts["para"] > 0
+                if MOJIBAKE_PILCROW_SYMBOL in delta_brief:
                     reasons.append(
-                        'WARN: delta_brief should include at least 2 inline citations like "YYYY ¶NN"'
+                        "WARN: delta_brief contains mojibake 'Â¶' (encoding issue). Prefer '¶' or fallback 'para'."
+                    )
+                if has_pilcrow_format and has_para_format:
+                    reasons.append(
+                        'WARN: delta_brief mixes citation formats ("YYYY ¶NN" and "YYYY para NN"). Use one format consistently.'
+                    )
+                if citation_counts["total"] < 2:
+                    reasons.append(
+                        'WARN: delta_brief should include at least 2 inline citations like "YYYY ¶NN" or "YYYY para NN"'
                     )
 
         selected_prev: list[int] = []
@@ -456,9 +563,13 @@ def validate_outputs(
         paragraph_maps: Optional[ParagraphMaps] = None
         input_text_counts: Optional[tuple[int, int]] = None
         if input_file_value:
-            input_path = resolve_input_file(input_file_value, path)
+            resolution = resolve_input_file(input_file_value, path)
+            input_path = resolution.path
             if input_path is None or not input_path.exists():
-                reasons.append(f"provenance.input_file not found: {input_file_value}")
+                reasons.append(
+                    resolution.error
+                    or f"provenance.input_file not found: {input_file_value}"
+                )
             else:
                 input_payload = as_str_dict(read_json(input_path))
                 if input_payload is None:
@@ -532,25 +643,11 @@ def validate_outputs(
                 if full_counts is None:
                     reasons.append("invalid full input JSON for paragraph counts")
 
-        if detector == "det_llm_excerpt_picker_v1" and is_focuspack:
-            if input_text_counts is None:
-                reasons.append(
-                    "cannot validate artifacts.selected_prev/curr bounds (missing input texts)"
-                )
-            else:
-                prev_count, curr_count = input_text_counts
-                for idx, value in enumerate(selected_prev):
-                    if value < 0 or value >= prev_count:
-                        reasons.append(
-                            f"artifacts.selected_prev[{idx}] out of bounds (count {prev_count})"
-                        )
-                for idx, value in enumerate(selected_curr):
-                    if value < 0 or value >= curr_count:
-                        reasons.append(
-                            f"artifacts.selected_curr[{idx}] out of bounds (count {curr_count})"
-                        )
-
         evidence_counts_by_year: dict[int, int] = {year_from: 0, year_to: 0}
+        evidence_prev_indices: list[int] = []
+        evidence_curr_indices: list[int] = []
+        evidence_prev_seen: set[int] = set()
+        evidence_curr_seen: set[int] = set()
         for idx, evidence in enumerate(evidence_list):
             evidence_dict = as_str_dict(evidence)
             if evidence_dict is None:
@@ -569,6 +666,12 @@ def validate_outputs(
             if paragraph_idx < 0:
                 reasons.append(f"evidence[{idx}] paragraph_idx negative")
                 continue
+            if year_value == year_from and paragraph_idx not in evidence_prev_seen:
+                evidence_prev_seen.add(paragraph_idx)
+                evidence_prev_indices.append(paragraph_idx)
+            if year_value == year_to and paragraph_idx not in evidence_curr_seen:
+                evidence_curr_seen.add(paragraph_idx)
+                evidence_curr_indices.append(paragraph_idx)
 
             snippet = get_str(evidence_dict.get("snippet"))
             if snippet is None:
@@ -602,8 +705,17 @@ def validate_outputs(
                             reasons.append(
                                 f"evidence[{idx}] highlights[{j}] is not a string"
                             )
-            if detector == "det_llm_delta_brief_v1" and len(highlights_list) < 1:
-                reasons.append(f"evidence[{idx}] highlights missing/empty (delta brief)")
+            if detector in {"det_llm_delta_brief_v1", "det_llm_excerpt_picker_v1"} and len(
+                highlights_list
+            ) < 1:
+                detector_label = (
+                    "delta brief"
+                    if detector == "det_llm_delta_brief_v1"
+                    else "excerpt picker"
+                )
+                reasons.append(
+                    f"evidence[{idx}] highlights missing/empty ({detector_label})"
+                )
 
             if is_focuspack:
                 if focus_meta is None:
@@ -661,6 +773,136 @@ def validate_outputs(
                     reasons.append(
                         f"snippet not found in mapped paragraph (year={year_value}, paragraph_idx={paragraph_idx})"
                     )
+
+        if detector == "det_llm_excerpt_picker_v1":
+            if len(selected_prev) != len(set(selected_prev)):
+                reasons.append("artifacts.selected_prev contains duplicate FULL indices")
+            if len(selected_curr) != len(set(selected_curr)):
+                reasons.append("artifacts.selected_curr contains duplicate FULL indices")
+
+            for idx, value in enumerate(selected_prev):
+                if value < 0:
+                    reasons.append(f"artifacts.selected_prev[{idx}] must be >= 0")
+            for idx, value in enumerate(selected_curr):
+                if value < 0:
+                    reasons.append(f"artifacts.selected_curr[{idx}] must be >= 0")
+
+            selected_prev_set = set(selected_prev)
+            selected_curr_set = set(selected_curr)
+            evidence_prev_set = set(evidence_prev_indices)
+            evidence_curr_set = set(evidence_curr_indices)
+
+            missing_prev = [
+                value for value in evidence_prev_indices if value not in selected_prev_set
+            ]
+            missing_curr = [
+                value for value in evidence_curr_indices if value not in selected_curr_set
+            ]
+            if missing_prev:
+                reasons.append(
+                    "artifacts.selected_prev missing evidence paragraph_idx values "
+                    f"for year_from: {missing_prev}"
+                )
+            if missing_curr:
+                reasons.append(
+                    "artifacts.selected_curr missing evidence paragraph_idx values "
+                    f"for year_to: {missing_curr}"
+                )
+
+            extras_prev = [
+                value for value in selected_prev if value not in evidence_prev_set
+            ]
+            extras_curr = [
+                value for value in selected_curr if value not in evidence_curr_set
+            ]
+            if extras_prev:
+                reasons.append(
+                    f"WARN: artifacts.selected_prev includes indices not used in evidence: {extras_prev}"
+                )
+            if extras_curr:
+                reasons.append(
+                    f"WARN: artifacts.selected_curr includes indices not used in evidence: {extras_curr}"
+                )
+
+            if is_focuspack:
+                if focus_meta is None:
+                    reasons.append(
+                        "cannot validate artifacts.selected_prev/curr FULL membership (missing focuspack_meta)"
+                    )
+                else:
+                    prev_allowed = set(focus_meta.selected_prev)
+                    curr_allowed = set(focus_meta.selected_curr)
+                    prev_local_count = (
+                        input_text_counts[0]
+                        if input_text_counts is not None
+                        else len(focus_meta.selected_prev)
+                    )
+                    curr_local_count = (
+                        input_text_counts[1]
+                        if input_text_counts is not None
+                        else len(focus_meta.selected_curr)
+                    )
+
+                    invalid_prev = [
+                        value for value in selected_prev if value not in prev_allowed
+                    ]
+                    invalid_curr = [
+                        value for value in selected_curr if value not in curr_allowed
+                    ]
+
+                    if invalid_prev:
+                        looks_prev_local = (
+                            len(selected_prev) > 0
+                            and all(
+                                0 <= value < prev_local_count
+                                for value in selected_prev
+                            )
+                            and all(
+                                value not in prev_allowed for value in selected_prev
+                            )
+                        )
+                        if looks_prev_local:
+                            reasons.append(
+                                "artifacts.selected_prev looks focuspack-local; map via focuspack_meta.selected_prev_indices[pos]"
+                            )
+                        else:
+                            reasons.append(
+                                "artifacts.selected_prev must use FULL indices from "
+                                f"focuspack_meta.selected_prev_indices (invalid: {invalid_prev})"
+                            )
+
+                    if invalid_curr:
+                        looks_curr_local = (
+                            len(selected_curr) > 0
+                            and all(
+                                0 <= value < curr_local_count
+                                for value in selected_curr
+                            )
+                            and all(
+                                value not in curr_allowed for value in selected_curr
+                            )
+                        )
+                        if looks_curr_local:
+                            reasons.append(
+                                "artifacts.selected_curr looks focuspack-local; map via focuspack_meta.selected_curr_indices[pos]"
+                            )
+                        else:
+                            reasons.append(
+                                "artifacts.selected_curr must use FULL indices from "
+                                f"focuspack_meta.selected_curr_indices (invalid: {invalid_curr})"
+                            )
+            elif full_counts is not None:
+                prev_count, curr_count = full_counts
+                for idx, value in enumerate(selected_prev):
+                    if value >= prev_count:
+                        reasons.append(
+                            f"artifacts.selected_prev[{idx}] out of bounds (count {prev_count})"
+                        )
+                for idx, value in enumerate(selected_curr):
+                    if value >= curr_count:
+                        reasons.append(
+                            f"artifacts.selected_curr[{idx}] out of bounds (count {curr_count})"
+                        )
 
         if detector == "det_llm_delta_brief_v1" and len(evidence_list) >= 4:
             prev_count = evidence_counts_by_year.get(year_from, 0)
@@ -725,12 +967,21 @@ def build_parser() -> argparse.ArgumentParser:
         default="",
         help="Override path to prompt_templates_showcase.md",
     )
+    parser.add_argument(
+        "--debug-citations",
+        action="store_true",
+        help="Run built-in citation parser self-check and exit.",
+    )
     return parser
 
 
 def main(argv: Optional[list[str]] = None) -> int:
     parser = build_parser()
     args = parser.parse_args(argv)
+
+    if args.debug_citations:
+        run_debug_citation_self_check()
+        return 0
 
     bundle_paths = resolve_bundle_paths(
         args.bundle or None,
