@@ -19,6 +19,7 @@ PUBLIC_LAB_ROOT = REPO_ROOT / "public" / "data" / "sec_narrative_drift_lab"
 
 DEFAULT_HERO_PATH = PUBLIC_LAB_ROOT / "lab_showcase_hero_pairs_v2.json"
 DEFAULT_REPORT_PATH = REPO_ROOT / "reports" / "llm_precompute_queue_summary.md"
+DEFAULT_SHOWCASE_SANITY_REPORT = REPO_ROOT / "reports" / "showcase_queue_bundle_sanity.md"
 
 DETECTORS = ["det_llm_delta_brief_v1", "det_llm_excerpt_picker_v1"]
 INPUT_PRIORITY = [
@@ -114,6 +115,21 @@ def write_jsonl_utf8_no_bom(path: Path, rows: list[dict[str, Any]]) -> bool:
     return True
 
 
+def read_jsonl_dicts(path: Path) -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+    lines = path.read_text(encoding="utf-8-sig").splitlines()
+    for line in lines:
+        trimmed = line.strip()
+        if not trimmed:
+            continue
+        payload = json.loads(trimmed)
+        payload_dict = as_str_dict(payload)
+        if payload_dict is None:
+            raise SystemExit(f"Invalid JSONL row in {path}")
+        rows.append(payload_dict)
+    return rows
+
+
 def write_text_utf8_lf(path: Path, lines: list[str]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8", newline="\n") as handle:
@@ -192,46 +208,200 @@ def build_showcase_runbook_lines(
     return lines
 
 
+def build_queue_local_jobs(jobs: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    localized: list[dict[str, Any]] = []
+    for job in jobs:
+        ticker = get_str(job.get("ticker"))
+        input_path = get_str(job.get("input_path"))
+        if ticker is None or input_path is None:
+            raise SystemExit("Job missing ticker or input_path")
+        source_name = Path(input_path).name
+        local_input = (Path("inputs") / ticker / source_name).as_posix()
+        job_local = dict(job)
+        job_local["input_path"] = local_input
+        job_local["repo_input_path"] = input_path.replace("\\", "/")
+        localized.append(job_local)
+    return localized
+
+
+def copy_queue_inputs_for_jobs(
+    jobs: list[dict[str, Any]], bundle_out_dir: Path
+) -> tuple[int, list[str]]:
+    copied: set[str] = set()
+    missing: list[str] = []
+    for job in jobs:
+        ticker = get_str(job.get("ticker"))
+        input_rel = get_str(job.get("input_path"))
+        if ticker is None or input_rel is None:
+            missing.append("job missing ticker/input_path")
+            continue
+        source_path = REPO_ROOT / input_rel
+        if not source_path.exists() or not source_path.is_file():
+            missing.append(f"missing input source: {source_path}")
+            continue
+        dest_rel = (Path("inputs") / ticker / source_path.name).as_posix()
+        if dest_rel in copied:
+            continue
+        copied.add(dest_rel)
+        dest_path = bundle_out_dir / Path(dest_rel)
+        dest_path.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(source_path, dest_path)
+    return len(copied), missing
+
+
+def self_check_showcase_queue_zip(
+    zip_path: Path,
+) -> tuple[bool, int, int, int]:
+    errors: list[str] = []
+    if not zip_path.exists():
+        raise SystemExit(f"Showcase queue zip not found: {zip_path}")
+
+    extract_root = REPO_ROOT / "bundles" / f"_tmp_showcase_selfcheck_{zip_path.stem}"
+    if extract_root.exists():
+        shutil.rmtree(extract_root, ignore_errors=True)
+    extract_root.mkdir(parents=True, exist_ok=True)
+    try:
+        with zipfile.ZipFile(zip_path, "r") as zip_handle:
+            zip_handle.extractall(extract_root)
+
+        jobs_path = extract_root / "jobs.jsonl"
+        if not jobs_path.exists():
+            errors.append("jobs.jsonl missing in extracted showcase queue bundle")
+            raise SystemExit("\n".join(errors))
+        jobs = read_jsonl_dicts(jobs_path)
+
+        output_targets_path = extract_root / "output_targets.jsonl"
+        if not output_targets_path.exists():
+            errors.append("output_targets.jsonl missing in extracted showcase queue bundle")
+        else:
+            if output_targets_path.read_bytes()[:3] == UTF8_BOM:
+                errors.append("output_targets.jsonl has UTF-8 BOM")
+
+        thread_starters_count = len(
+            [path for path in (extract_root / "thread_starters").glob("*.md") if path.is_file()]
+        )
+        input_paths_seen: set[str] = set()
+        for idx, job in enumerate(jobs):
+            input_rel = get_str(job.get("input_path"))
+            ticker = get_str(job.get("ticker"))
+            year_from = get_int(job.get("year_from"))
+            year_to = get_int(job.get("year_to"))
+            if (
+                input_rel is None
+                or ticker is None
+                or year_from is None
+                or year_to is None
+            ):
+                errors.append(f"job[{idx}] missing required fields")
+                continue
+            input_paths_seen.add(input_rel)
+            bundled_input = extract_root / Path(input_rel)
+            if not bundled_input.exists() or not bundled_input.is_file():
+                errors.append(f"missing bundled input for job[{idx}]: {input_rel}")
+                continue
+
+            payload = json.loads(bundled_input.read_text(encoding="utf-8-sig"))
+            payload_dict = as_str_dict(payload)
+            if payload_dict is None:
+                errors.append(f"input JSON root invalid: {input_rel}")
+                continue
+            case = as_str_dict(payload_dict.get("case"))
+            if case is None:
+                errors.append(f"input JSON missing case object: {input_rel}")
+                continue
+            case_ticker = get_str(case.get("ticker"))
+            case_year_from = get_int(case.get("year_from"))
+            case_year_to = get_int(case.get("year_to"))
+            if case_ticker != ticker:
+                errors.append(
+                    f"ticker mismatch for {input_rel}: case={case_ticker} job={ticker}"
+                )
+            if case_year_from != year_from or case_year_to != year_to:
+                errors.append(
+                    "year mismatch for "
+                    + input_rel
+                    + f": case={case_year_from}-{case_year_to} job={year_from}-{year_to}"
+                )
+
+        if errors:
+            joined = "\n".join(f"- {entry}" for entry in errors)
+            raise SystemExit(f"Showcase queue bundle self-check failed:\n{joined}")
+        return True, len(jobs), thread_starters_count, len(input_paths_seen)
+    finally:
+        shutil.rmtree(extract_root, ignore_errors=True)
+
+
+def write_showcase_queue_sanity_report(
+    path: Path,
+    queue_bundle_dir: Path,
+    queue_zip_path: Path,
+    jobs_count: int,
+    thread_starters_count: int,
+    inputs_copied_count: int,
+    missing_items: list[str],
+) -> None:
+    lines: list[str] = []
+    lines.append("# Showcase Queue Bundle Sanity")
+    lines.append("")
+    lines.append(f"Bundle dir: {to_repo_relative(queue_bundle_dir)}")
+    lines.append(f"Bundle zip: {to_repo_relative(queue_zip_path)}")
+    lines.append("")
+    lines.append("| Metric | Value |")
+    lines.append("| --- | --- |")
+    lines.append(f"| jobs | {jobs_count} |")
+    lines.append(f"| thread_starters | {thread_starters_count} |")
+    lines.append(f"| inputs_copied | {inputs_copied_count} |")
+    lines.append("")
+    lines.append("## Missing Items")
+    if missing_items:
+        for item in missing_items:
+            lines.append(f"- {item}")
+    else:
+        lines.append("- none")
+    write_text_utf8_lf(path, lines)
+
+
 def build_showcase_queue_bundle(
     jobs: list[dict[str, Any]],
     queue_dir: Path,
     bundle_out_dir: Path,
+    prompt_templates_path: Path,
     timestamp: str,
-) -> tuple[Path, Path, bool]:
-    inputs_dir = bundle_out_dir / "inputs"
+) -> tuple[Path, Path, bool, bool, int, int, int, list[str]]:
+    bundle_out_dir.mkdir(parents=True, exist_ok=True)
+    local_jobs = build_queue_local_jobs(jobs)
+    _inputs_copied_count, missing_inputs = copy_queue_inputs_for_jobs(jobs, bundle_out_dir)
+    if missing_inputs:
+        details = "\n".join(f"- {item}" for item in missing_inputs)
+        raise SystemExit(f"Missing queue inputs while building bundle:\n{details}")
+
+    jobs_jsonl_path = bundle_out_dir / "jobs.jsonl"
+    write_jsonl_utf8_no_bom(jobs_jsonl_path, local_jobs)
+
+    emit_rc = emit_thread_starters(
+        [
+            "--jobs",
+            str(jobs_jsonl_path),
+            "--prompt-templates",
+            str(prompt_templates_path),
+        ]
+    )
+    if emit_rc != 0:
+        raise SystemExit(
+            f"Thread starter generation failed for showcase queue bundle {bundle_out_dir}"
+        )
     thread_starters_dir = bundle_out_dir / "thread_starters"
-    inputs_dir.mkdir(parents=True, exist_ok=True)
-    thread_starters_dir.mkdir(parents=True, exist_ok=True)
-
-    seen_basenames: set[str] = set()
-    for job in jobs:
-        input_rel = cast(str, job.get("input_path"))
-        source_path = REPO_ROOT / input_rel
-        if not source_path.exists():
-            raise SystemExit(f"Input file not found for showcase bundle: {source_path}")
-        basename = source_path.name
-        if basename in seen_basenames:
-            continue
-        seen_basenames.add(basename)
-        shutil.copy2(source_path, inputs_dir / basename)
-
-    source_thread_dir = queue_dir / "thread_starters"
-    if not source_thread_dir.exists():
-        raise SystemExit(f"thread_starters not found: {source_thread_dir}")
-    thread_files = sorted(path for path in source_thread_dir.glob("*.md") if path.is_file())
+    thread_files = sorted(path for path in thread_starters_dir.glob("*.md") if path.is_file())
     if not thread_files:
-        raise SystemExit(f"No thread starter files found in {source_thread_dir}")
-    for path in thread_files:
-        shutil.copy2(path, thread_starters_dir / path.name)
+        raise SystemExit(f"No thread starter files found in {thread_starters_dir}")
 
-    output_targets_rows = build_output_target_rows(jobs)
+    output_targets_rows = build_output_target_rows(local_jobs)
     output_targets_path = bundle_out_dir / "output_targets.jsonl"
     bom_check_passed = write_jsonl_utf8_no_bom(output_targets_path, output_targets_rows)
-    write_jsonl_utf8_no_bom(bundle_out_dir / "jobs.jsonl", jobs)
 
     counts_by_ticker: dict[str, int] = {}
     counts_by_detector: dict[str, int] = {}
-    for job in jobs:
+    for job in local_jobs:
         ticker = cast(str, job.get("ticker"))
         detector_id = cast(str, job.get("detector_id"))
         counts_by_ticker[ticker] = counts_by_ticker.get(ticker, 0) + 1
@@ -239,7 +409,7 @@ def build_showcase_queue_bundle(
 
     readme_lines = build_showcase_runbook_lines(
         queue_dir=queue_dir,
-        total_jobs=len(jobs),
+        total_jobs=len(local_jobs),
         counts_by_ticker=counts_by_ticker,
         counts_by_detector=counts_by_detector,
     )
@@ -251,9 +421,21 @@ def build_showcase_queue_bundle(
     with zipfile.ZipFile(zip_path, "w", compression=zipfile.ZIP_DEFLATED) as zip_handle:
         for path in sorted(bundle_out_dir.rglob("*")):
             if path.is_file():
-                zip_handle.write(path, path.relative_to(bundle_out_dir))
+                zip_handle.write(path, path.relative_to(bundle_out_dir).as_posix())
 
-    return bundle_out_dir, zip_path, bom_check_passed
+    self_check_passed, jobs_count, thread_count, input_count = self_check_showcase_queue_zip(
+        zip_path
+    )
+    return (
+        bundle_out_dir,
+        zip_path,
+        bom_check_passed,
+        self_check_passed,
+        jobs_count,
+        thread_count,
+        input_count,
+        missing_inputs,
+    )
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -306,12 +488,33 @@ def build_parser() -> argparse.ArgumentParser:
         default="",
         help="Override showcase queue bundle output directory.",
     )
+    parser.add_argument(
+        "--showcase-sanity-report",
+        default=str(DEFAULT_SHOWCASE_SANITY_REPORT),
+        help="Sanity report output path for showcase queue bundle.",
+    )
+    parser.add_argument(
+        "--self-check-showcase-zip",
+        default="",
+        help="Run showcase queue zip self-check and exit.",
+    )
     return parser
 
 
 def main(argv: Optional[list[str]] = None) -> int:
     parser = build_parser()
     args = parser.parse_args(argv)
+
+    if args.self_check_showcase_zip:
+        self_check_passed, jobs_count, thread_count, input_count = (
+            self_check_showcase_queue_zip(Path(args.self_check_showcase_zip))
+        )
+        print(
+            "Showcase queue self-check: "
+            + ("PASS" if self_check_passed else "FAIL")
+            + f" (jobs={jobs_count}, thread_starters={thread_count}, inputs={input_count})"
+        )
+        return 0
 
     hero_path = Path(args.hero)
     if not hero_path.exists():
@@ -526,6 +729,10 @@ def main(argv: Optional[list[str]] = None) -> int:
     print(f"Wrote queue to {out_dir}")
     print(f"Wrote summary to {report_path}")
     if args.make_showcase_queue_bundle:
+        if prompt_path is None:
+            raise SystemExit(
+                "prompt_templates_showcase.md not found. Provide --prompt-templates when building showcase queue bundle."
+            )
         emit_rc = emit_thread_starters(["--queue-dir", str(out_dir)])
         if emit_rc != 0:
             raise SystemExit(
@@ -536,18 +743,44 @@ def main(argv: Optional[list[str]] = None) -> int:
             if args.showcase_queue_out_dir
             else REPO_ROOT / "bundles" / f"showcase_llm_queue_{timestamp}"
         )
-        _, showcase_zip_path, bom_check_passed = build_showcase_queue_bundle(
+        (
+            _,
+            showcase_zip_path,
+            bom_check_passed,
+            self_check_passed,
+            sanity_jobs_count,
+            sanity_thread_count,
+            sanity_inputs_count,
+            missing_items,
+        ) = build_showcase_queue_bundle(
             jobs=jobs,
             queue_dir=out_dir,
             bundle_out_dir=showcase_out_dir,
+            prompt_templates_path=prompt_path,
             timestamp=timestamp,
+        )
+        sanity_report_path = Path(args.showcase_sanity_report)
+        write_showcase_queue_sanity_report(
+            path=sanity_report_path,
+            queue_bundle_dir=showcase_out_dir,
+            queue_zip_path=showcase_zip_path,
+            jobs_count=sanity_jobs_count,
+            thread_starters_count=sanity_thread_count,
+            inputs_copied_count=sanity_inputs_count,
+            missing_items=missing_items,
         )
         print(f"Wrote showcase queue bundle to {showcase_out_dir}")
         print(f"Wrote showcase queue zip to {showcase_zip_path}")
+        print(f"Wrote showcase queue sanity report to {sanity_report_path}")
         print(
             "BOM check: "
             + ("passed" if bom_check_passed else "failed")
             + f" for {showcase_out_dir / 'output_targets.jsonl'}"
+        )
+        print(
+            "Showcase queue self-check: "
+            + ("passed" if self_check_passed else "failed")
+            + f" for {showcase_zip_path}"
         )
     return 0
 

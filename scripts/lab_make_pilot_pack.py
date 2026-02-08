@@ -7,17 +7,15 @@ import shutil
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Optional, cast
+from typing import Any, Optional
 
 import sys
 
-SCRIPT_VERSION = "lab_make_pilot_pack.py@v1"
+SCRIPT_VERSION = "lab_make_pilot_pack.py@v2"
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 PUBLIC_LAB_ROOT = REPO_ROOT / "public" / "data" / "sec_narrative_drift_lab"
 BUNDLES_ROOT = REPO_ROOT / "bundles"
-
-FOCUSPACK_WARNING = "Focuspack is a subset; verify in full compare pane."
 
 PILOT_CASES = [
     ("NVDA", 2021, 2022),
@@ -32,6 +30,7 @@ INPUT_PRIORITY = [
 ]
 
 sys.path.append(str(Path(__file__).resolve().parent))
+from lab_emit_chatgpt_thread_starters import main as emit_thread_starters  # type: ignore
 from lab_llm_precompute_utils import (  # type: ignore
     InputIndexEntry,
     load_input_index,
@@ -45,94 +44,6 @@ class SelectedInput:
     entry: InputIndexEntry
     lens_key: str
     input_kind: str
-
-
-def load_detector_prompts(path: Path) -> dict[str, str]:
-    lines = path.read_text(encoding="utf-8", errors="replace").splitlines()
-    prompts: dict[str, list[str]] = {}
-    current: Optional[str] = None
-    for line in lines:
-        if line.startswith("## "):
-            current = line[3:].strip()
-            prompts[current] = []
-            continue
-        if current is None:
-            continue
-        prompts[current].append(line)
-    output: dict[str, str] = {}
-    for detector, block_lines in prompts.items():
-        output[detector] = "\n".join(block_lines).strip()
-    return output
-
-
-def derive_cleaning_lens(input_lens: str) -> str:
-    if input_lens.startswith("focuspack_"):
-        return input_lens[len("focuspack_") :]
-    if input_lens.startswith("full_"):
-        return input_lens[len("full_") :]
-    return input_lens
-
-
-def build_skeleton(
-    detector_id: str,
-    cleaning_lens: str,
-    source_id: str,
-    ticker: str,
-    section: str,
-    year_from: int,
-    year_to: int,
-    input_file: str,
-) -> list[str]:
-    highlights_placeholder = '["<tag>"]'
-    if detector_id == "det_llm_delta_brief_v1":
-        artifacts_lines = [
-            '  "artifacts": {',
-            '    "delta_brief": "<5-10 sentence summary>"',
-            "  },",
-        ]
-    else:
-        artifacts_lines = [
-            '  "artifacts": {',
-            '    "selected_prev": [],',
-            '    "selected_curr": []',
-            "  },",
-        ]
-    skeleton = [
-        "{",
-        '  "lab_schema_version": "1.0",',
-        f'  "detector_id": "{detector_id}",',
-        f'  "cleaning_lens": "{cleaning_lens}",',
-        f'  "source_id": "{source_id}",',
-        f'  "ticker": "{ticker}",',
-        f'  "section": "{section}",',
-        f'  "year_from": {year_from},',
-        f'  "year_to": {year_to},',
-    ]
-    skeleton.extend(artifacts_lines)
-    skeleton.extend(
-        [
-            '  "evidence": [',
-            "    {",
-            f'      "year": {year_from},',
-            '      "paragraph_idx": 0,',
-            '      "snippet": "<verbatim snippet>",',
-            '      "why": "<why this matters>",',
-            f'      "highlights": {highlights_placeholder}',
-            "    }",
-            "  ],",
-            '  "metrics": {',
-            '    "drift_score": null,',
-            '    "confidence": 0.50,',
-            '    "coverage": null,',
-            f'    "warnings": ["{FOCUSPACK_WARNING}"]',
-            "  },",
-            '  "provenance": {',
-            f'    "input_file": "{input_file}"',
-            "  }",
-            "}",
-        ]
-    )
-    return skeleton
 
 
 def pick_input(
@@ -175,7 +86,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--prompt-templates",
         default="",
-        help="Override path to prompt_templates_showcase.md",
+        help="Optional override path to prompt_templates_showcase.md",
     )
     parser.add_argument(
         "--out-dir",
@@ -205,13 +116,7 @@ def main(argv: Optional[list[str]] = None) -> int:
 
     inputs_dir = out_dir / "inputs"
     inputs_dir.mkdir(parents=True, exist_ok=True)
-    thread_dir = out_dir / "thread_starters"
-    thread_dir.mkdir(parents=True, exist_ok=True)
-
-    prompt_path = bundle_paths.prompt_templates
-    if prompt_path is None or not prompt_path.exists():
-        raise SystemExit("prompt_templates_showcase.md not found.")
-    detector_prompts = load_detector_prompts(prompt_path)
+    (out_dir / "thread_starters").mkdir(parents=True, exist_ok=True)
 
     jobs: list[dict[str, Any]] = []
     input_cache: dict[tuple[str, int, int], dict[str, Any]] = {}
@@ -255,6 +160,7 @@ def main(argv: Optional[list[str]] = None) -> int:
                     "source_id": source_id,
                     "input_lens": entry["lens_key"],
                     "input_path": entry["input_path"],
+                    "repo_input_path": entry["input_source_path"],
                     "input_source_path": entry["input_source_path"],
                     "output_path": to_repo_relative(output_path),
                 }
@@ -277,6 +183,7 @@ def main(argv: Optional[list[str]] = None) -> int:
         "source_id",
         "input_lens",
         "input_path",
+        "repo_input_path",
         "output_path",
         "input_source_path",
     ]
@@ -286,107 +193,26 @@ def main(argv: Optional[list[str]] = None) -> int:
         for job in jobs:
             writer.writerow({key: job.get(key, "") for key in fieldnames})
 
-    for job in jobs:
-        detector_id = cast(str, job.get("detector_id"))
-        prompt_text = detector_prompts.get(detector_id)
-        if prompt_text is None:
-            raise SystemExit(f"Prompt template missing for {detector_id}")
-        cleaning_lens = derive_cleaning_lens(cast(str, job.get("input_lens")))
-        skeleton_lines = build_skeleton(
-            detector_id,
-            cleaning_lens,
-            cast(str, job.get("source_id")),
-            cast(str, job.get("ticker")),
-            cast(str, job.get("section")),
-            cast(int, job.get("year_from")),
-            cast(int, job.get("year_to")),
-            cast(str, job.get("input_path")),
-        )
-        filename = (
-            f"{job['ticker']}_{job['year_from']}_{job['year_to']}__{detector_id}__{job['input_lens']}.md"
-        )
-        thread_title = f"{job['ticker']} {job['year_from']}-{job['year_to']} {detector_id} ({job['input_lens']})"
-        lines: list[str] = []
-        lines.append(f"Thread Title: {thread_title}")
-        lines.append("")
-        lines.append(f"Attach this input file: {job['input_path']}")
-        lines.append(f"Save output to: {job['output_path']}")
-        lines.append("")
-        lines.append("STRICT OUTPUT RULES")
-        lines.append("JSON ONLY.")
-        lines.append("No markdown.")
-        lines.append("No backticks.")
-        lines.append("No extra top-level keys.")
-        lines.append("")
-        lines.append("EVIDENCE RULES")
-        lines.append("- paragraph_idx must be a FULL paragraph index (not focuspack-local).")
-        if cast(str, job.get("input_lens")).startswith("focuspack_"):
-            lines.append("- Focuspack mapping:")
-            lines.append("  - If you cite texts.prev_paragraphs[i], set paragraph_idx = focuspack_meta.selected_prev_indices[i].")
-            lines.append("  - If you cite texts.curr_paragraphs[i], set paragraph_idx = focuspack_meta.selected_curr_indices[i].")
-        lines.append("- snippet must be copied verbatim from the cited paragraph.")
-        lines.append("- snippet is only a short highlight substring; UI displays the full paragraph.")
-        lines.append("- max 350 characters per snippet.")
-        if detector_id == "det_llm_excerpt_picker_v1":
-            lines.append("PAIRING + DIVERSITY RULES")
-            lines.append(
-                "- Ensure at least 2 prev-year excerpts share at least one identical highlight token with"
-            )
-            lines.append(
-                "  at least 2 curr-year excerpts (deterministic pairing)."
-            )
-            lines.append(
-                "- Do not let a single theme (e.g., AI/ML) dominate: at most 2 excerpts total across"
-            )
-            lines.append(
-                "  both years may include AI/ML-related highlights unless the filing is overwhelmingly about it."
-            )
-        if detector_id == "det_llm_delta_brief_v1":
-            lines.append("DELTA BRIEF RULES")
-            lines.append("- Evidence distribution target: >=2 blocks per year where possible.")
-            lines.append("- Highlights REQUIRED: 1-3 per evidence (non-empty).")
-            lines.append(
-                "- Paired baseline REQUIRED for >=2 major claims: reuse identical highlight tags across years."
-            )
-            lines.append(
-                '- Delta brief must include >=2 inline citations like "YYYY ¶NN" using FULL indices.'
-            )
-        lines.append("")
-        lines.append("METRICS RULES")
-        lines.append("- metrics.confidence MUST be one of {0.25, 0.50, 0.75} (never null).")
-        lines.append(f"- metrics.warnings MUST include: \"{FOCUSPACK_WARNING}\"")
-        lines.append("")
-        lines.append("JSON SKELETON (fill in values, keep keys exact)")
-        lines.extend(skeleton_lines)
-        lines.append("")
-        lines.append("Detector Prompt")
-        lines.append(prompt_text)
-        lines.append("")
-        lines.append("Checklist")
-        lines.append("- evidence paragraph_idx are FULL indices")
-        lines.append("- snippets < 350 chars")
-        lines.append("- include warnings if unsure")
-        lines.append("- provenance.input_file matches attached input file")
-        if detector_id == "det_llm_excerpt_picker_v1":
-            lines.append("- excerpt picker: artifacts.selected_prev/curr list FULL paragraph indices (not focuspack-local positions)")
-            lines.append("  - Mapping: if you select texts.prev_paragraphs[i], index = focuspack_meta.selected_prev_indices[i] (and similarly for curr)")
-            lines.append("- excerpt picker: evidence highlights must be NON-EMPTY (1–3 short tags) for each evidence block")
-            lines.append("- reuse highlight tokens across years for paired comparisons")
-            lines.append("- avoid buzzword over-weighting (cap AI/ML highlights)")
-        lines.append("")
-        lines.append("REPAIR MODE")
-        lines.append("Given validator errors pasted below, output corrected JSON only.")
-        (thread_dir / filename).write_text("\n".join(lines), encoding="utf-8")
+    emit_args = ["--jobs", str(jobs_jsonl)]
+    prompt_path = bundle_paths.prompt_templates
+    if prompt_path is not None and prompt_path.exists():
+        emit_args.extend(["--prompt-templates", str(prompt_path)])
+    emit_rc = emit_thread_starters(emit_args)
+    if emit_rc != 0:
+        raise SystemExit(f"Thread starter generation failed with exit code {emit_rc}")
 
     readme_lines: list[str] = []
     readme_lines.append("# LLM Pilot Pack")
     readme_lines.append("")
     readme_lines.append(f"Created: {timestamp}")
     readme_lines.append(f"Bundle: {to_repo_relative(bundle_paths.bundle_root)}")
-    readme_lines.append(f"Prompt templates: {to_repo_relative(prompt_path)}")
+    if prompt_path is not None and prompt_path.exists():
+        readme_lines.append(f"Prompt templates: {to_repo_relative(prompt_path)}")
+    else:
+        readme_lines.append("Prompt templates: canonical built-ins from scripts/lab_prompt_blocks.py")
     readme_lines.append("")
     readme_lines.append("## Upload To ChatGPT Project")
-    readme_lines.append("- Upload prompt_templates_showcase.md once (optional; thread starters are self-contained).")
+    readme_lines.append("- Thread starters are canonical and self-contained.")
     readme_lines.append("- For each job, attach the input file listed below.")
     readme_lines.append("")
     readme_lines.append("## Jobs")
@@ -399,7 +225,7 @@ def main(argv: Optional[list[str]] = None) -> int:
     readme_lines.append("")
     readme_lines.append("Thread starters are in thread_starters/.")
 
-    (out_dir / "README.md").write_text("\n".join(readme_lines), encoding="utf-8")
+    (out_dir / "README.md").write_text("\n".join(readme_lines) + "\n", encoding="utf-8")
 
     print(f"Wrote pilot pack to {out_dir}")
     return 0

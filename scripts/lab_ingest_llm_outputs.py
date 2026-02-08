@@ -77,7 +77,7 @@ def main(argv: Optional[list[str]] = None) -> int:
 
     issues = validate_outputs(outputs_dir, bundle_paths, required_fields)
     if issues:
-        print_issues(issues)
+        print_issues(f"Validation failed: {len(issues)} invalid file(s)", issues)
         return 1
 
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
