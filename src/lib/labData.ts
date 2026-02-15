@@ -48,10 +48,24 @@ function normalizeInputPath(pathValue: string): string | null {
     if (!filename) return null
     return `${LAB_BASE_PATH}/llm_inputs/${filename}`
   }
+  if (normalized.startsWith("inputs/")) {
+    const filename = normalized.split("/").pop()
+    if (!filename) return null
+    return `${LAB_BASE_PATH}/llm_inputs/${filename}`
+  }
   if (!normalized.includes("/")) {
     return `${LAB_BASE_PATH}/llm_inputs/${normalized}`
   }
   return `${LAB_BASE_PATH}/${normalized}`
+}
+
+if (import.meta.env.DEV) {
+  const smokeActual = normalizeInputPath("inputs/NVDA/foo.json")
+  const smokeExpected = `${LAB_BASE_PATH}/llm_inputs/foo.json`
+  console.assert(
+    smokeActual === smokeExpected,
+    `normalizeInputPath smoke failed: expected ${smokeExpected}, got ${String(smokeActual)}`
+  )
 }
 
 async function fetchJson<T>(
