@@ -1,0 +1,167 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_llm_excerpt_picker_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "KO",
+  "section": "10k_item1a",
+  "year_from": 2023,
+  "year_to": 2024,
+  "artifacts": {
+    "selected_prev": [
+      0,
+      5,
+      7,
+      14,
+      58
+    ],
+    "selected_curr": [
+      0,
+      5,
+      25,
+      49,
+      53
+    ]
+  },
+  "evidence": [
+    {
+      "year": 2023,
+      "paragraph_idx": 0,
+      "snippet": "certain markets in which our products are sold experienced intensified inflation throughout 2023, which may continue to accelerate in 2024.",
+      "why": "Captures affordability and demand risk tied to inflationary pressure across key markets.",
+      "highlights": [
+        "inflation",
+        "affordability",
+        "consumer demand"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 5,
+      "snippet": "These conflicts have resulted, and could continue to result, in volatile commodity markets; logistical, transportation and supply chain disruptions; increased risk of cyber incidents or other disruptions to our information systems; reputational risk;",
+      "why": "Shows how geopolitical conflict can cascade into commodities, supply chain, IT disruptions and reputational exposure.",
+      "highlights": [
+        "international conflicts",
+        "commodity markets",
+        "supply chain disruptions",
+        "cyber incidents",
+        "reputational risk"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 7,
+      "snippet": "If we do not continuously strengthen our capabilities in marketing and innovation to maintain consumer interest, brand loyalty and market share while strategically expanding into other profitable categories of the commercial beverage industry, our business could be negatively affected.",
+      "why": "Frames brand/portfolio growth as dependent on sustained marketing and innovation capabilities.",
+      "highlights": [
+        "marketing",
+        "innovation",
+        "brand loyalty",
+        "market share"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 14,
+      "snippet": "We may not be able to successfully compete for, attract or retain the highly skilled and diverse workforce that we want and may require for our future business needs, such as employees with advanced technology, artificial intelligence and machine learning, social media and digital marketing skills, and/or digital and analytics capabilities.",
+      "why": "Highlights talent constraints in advanced tech, AI/ML and digital capabilities as a strategic execution risk.",
+      "highlights": [
+        "workforce",
+        "AI and machine learning",
+        "digital marketing",
+        "digital and analytics"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 58,
+      "snippet": "Cybercriminals have increasingly demonstrated advanced capabilities, such as use of zero-day vulnerabilities, and rapid integration of new technology such as generative artificial intelligence.",
+      "why": "Signals escalating cyber threat sophistication, including adoption of generative AI by adversaries.",
+      "highlights": [
+        "cybersecurity",
+        "zero-day vulnerabilities",
+        "generative artificial intelligence"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 0,
+      "snippet": "certain markets in which our products are sold experienced intensified inflation throughout 2024, which may continue in 2025.",
+      "why": "Updates macro risk: inflation remains a demand/affordability headwind, now framed as a 2024-to-2025 continuation.",
+      "highlights": [
+        "inflation",
+        "affordability",
+        "consumer demand"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 5,
+      "snippet": "If we do not continuously strengthen our capabilities in marketing, data analytics (including artificial intelligence and machine learning) and innovation to understand and maintain consumer interest, brand loyalty and market share",
+      "why": "Makes data analytics (including AI/ML) an explicit prerequisite for sustaining consumer interest and share, sharpening the capability risk.",
+      "highlights": [
+        "data analytics",
+        "artificial intelligence",
+        "machine learning",
+        "marketing capability"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 25,
+      "snippet": "Ongoing public concern about obesity; other health-related public concerns surrounding consumption of sweetened beverages; the effects or perceived effects of the usage of weight-loss drugs on consumption patterns; potential new or increased taxes on sweetened beverages by government entities to reduce consumption or to raise revenue;",
+      "why": "Introduces/foregrounds health perception and policy risk, including potential shifts from weight-loss drugs and sugar tax dynamics.",
+      "highlights": [
+        "obesity",
+        "weight-loss drugs",
+        "taxes on sweetened beverages",
+        "regulatory risk"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 49,
+      "snippet": "Other proposals relating to beverage container deposits, recycling, recycling content, tethered bottle caps, ecotax and/or extended producer responsibility laws, or prohibitions on certain types of plastic products, packages and cups (including packaging containing PFAS)",
+      "why": "Captures tightening packaging regulation and potential cost/operational impacts (EPR, deposits, plastic limits, PFAS-related rules).",
+      "highlights": [
+        "extended producer responsibility",
+        "container deposits",
+        "tethered bottle caps",
+        "PFAS"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 53,
+      "snippet": "The legal and regulatory landscape for certain new technologies, such as artificial intelligence, is uncertain and evolving, and our compliance obligations could increase our costs or limit how we may use these technologies.",
+      "why": "Flags that AI governance is a moving target and could raise compliance costs or constrain use cases.",
+      "highlights": [
+        "artificial intelligence regulation",
+        "uncertain and evolving",
+        "compliance obligations"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": null,
+    "confidence": 0.5,
+    "coverage": 0.3391791921746819,
+    "warnings": [
+      "Lens coverage is 0.339; excerpts may not represent the full Item 1A risk set.",
+      "Focuspack is a subset; verify in full compare pane.",
+      "Confidence is moderate; validator autofilled confidence due to missing value.",
+      "Reconciled selected_prev/curr to FULL indices based on evidence.",
+      "Normalized provenance.input_file to shipped public llm_inputs path."
+    ]
+  },
+  "provenance": {
+    "input_file": "public/data/sec_narrative_drift_lab/llm_inputs/KO_2023_2024_focuspack_deboilerplated.json",
+    "focuspack_meta": {
+      "selected_prev_count": 38,
+      "selected_curr_count": 41,
+      "full_prev_count": 81,
+      "full_curr_count": 86,
+      "trigger_hits": 25
+    }
+  }
+}

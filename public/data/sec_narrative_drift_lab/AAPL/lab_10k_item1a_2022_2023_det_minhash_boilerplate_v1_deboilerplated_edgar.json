@@ -1,0 +1,73 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_minhash_boilerplate_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "AAPL",
+  "section": "10k_item1a",
+  "year_from": 2022,
+  "year_to": 2023,
+  "artifacts": {
+    "stats": {
+      "percent_reused": 0.2033898305084746,
+      "percent_new": 0.7966101694915254,
+      "reused_paragraphs": 12,
+      "total_paragraphs": 59
+    }
+  },
+  "evidence": [
+    {
+      "year": 2023,
+      "paragraph_idx": 20,
+      "snippet": "In addition, the Company can be exposed to product liability claims, recalls, product replacements or modifications, write-offs of inventory, property, plant and equipment or intangible assets, and significant warranty and other expenses, including litigation costs and regulatory fines.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 32,
+      "snippet": "In addition, the Company can be exposed to product liability claims, recalls, product replacements or modifications, write-offs of inventory, property, plant and equipment, and/or intangible assets, and significant warranty and other expenses, including litigation costs and regulatory fines.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 27,
+      "snippet": "Much of the Company\u2019s future success depends on the talents and efforts of its team members and the continued availability and service of key personnel, including its Chief Executive Officer, executive team and other highly skilled employees.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 37,
+      "snippet": "Much of the Company\u2019s future success depends on the talents and efforts of its team members, the continued availability and service of key personnel, including its Chief Executive Officer, executive team and other highly skilled employees.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 30,
+      "snippet": "Although the Company takes steps to secure confidential information that is provided to or accessible by third parties working on the Company\u2019s behalf, such measures are not always effective and losses or unauthorized access to, or releases of, confidential information occur.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 40,
+      "snippet": "Although the Company takes steps to secure confidential information that is provided to or accessible by third parties working on the Company\u2019s behalf, such measures are not always effective and losses or unauthorized access to or releases of confidential information occur.",
+      "why": "Matching paragraph from prior year."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.7966101694915254,
+    "confidence": 1.0,
+    "coverage": 0.25103624658259105,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T05:55:28Z",
+    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "8a6a972cd160b7416c3cb28fcf93379a17b88d78bef2c76df1537424ab8e92e6",
+      "curr_text_sha256": "dc793034d7a883a8aae64da478ab03efa50b4681013c373227d6c97c1744af34",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

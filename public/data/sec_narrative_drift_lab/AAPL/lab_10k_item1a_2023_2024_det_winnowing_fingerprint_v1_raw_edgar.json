@@ -1,0 +1,55 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_winnowing_fingerprint_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "AAPL",
+  "section": "10k_item1a",
+  "year_from": 2023,
+  "year_to": 2024,
+  "artifacts": {
+    "stats": {
+      "shared_fingerprints": 21556,
+      "prev_fingerprints": 27118,
+      "curr_fingerprints": 27447,
+      "shared_ratio": 0.7948963787889962
+    }
+  },
+  "evidence": [
+    {
+      "year": 2024,
+      "paragraph_idx": 0,
+      "snippet": "Item 1A. Risk Factors\n\nThe Company\u2019s business, reputation, results of operations, financial condition and stock price can ",
+      "why": "Shared fingerprint span."
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 0,
+      "snippet": "Item 1A. Risk Factors\n\nThe Company\u2019s business, reputation, results of operations, financial condition and stock price can be a",
+      "why": "Shared fingerprint span."
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 0,
+      "snippet": "Item 1A. Risk Factors\n\nThe Company\u2019s business, reputation, results of operations, financial condition and stock price can be affec",
+      "why": "Shared fingerprint span."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.7948963787889962,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T05:55:29Z",
+    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "faba2351b5eb0944e50e21e04903e09b7c829528c0030d25be54f3f995f225d9",
+      "curr_text_sha256": "40acafe56d3ef736e5a8a6241c2088969b438d2b59812fbe401f5c4f78bf453a",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

@@ -1,0 +1,1001 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_logodds_terms_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "AAPL",
+  "section": "10k_item1a",
+  "year_from": 2022,
+  "year_to": 2023,
+  "artifacts": {
+    "top_risers": [
+      {
+        "label": "allows",
+        "score": 0.9038858496346153,
+        "meta": {
+          "z": 0.9523330785115897,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.269117313365101,
+          "deltaPer10k": 2.269117313365101,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "inside",
+        "score": 0.9038858496346153,
+        "meta": {
+          "z": 0.9523330785115897,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.269117313365101,
+          "deltaPer10k": 2.269117313365101,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "march",
+        "score": 0.9038858496346153,
+        "meta": {
+          "z": 0.9523330785115897,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.269117313365101,
+          "deltaPer10k": 2.269117313365101,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "communicate",
+        "score": 0.8554806107808836,
+        "meta": {
+          "z": 1.172177508217858,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.538234626730202,
+          "deltaPer10k": 4.538234626730202,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "mechanisms",
+        "score": 0.8554806107808836,
+        "meta": {
+          "z": 1.172177508217858,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.538234626730202,
+          "deltaPer10k": 4.538234626730202,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "purchasing",
+        "score": 0.8554806107808836,
+        "meta": {
+          "z": 1.172177508217858,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.538234626730202,
+          "deltaPer10k": 4.538234626730202,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "alternative purchasing",
+        "score": 0.7542179872290592,
+        "meta": {
+          "z": 1.172177508217858,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.538234626730202,
+          "deltaPer10k": 4.538234626730202,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "communicate consumers",
+        "score": 0.7542179872290592,
+        "meta": {
+          "z": 1.172177508217858,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.538234626730202,
+          "deltaPer10k": 4.538234626730202,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "developers communicate",
+        "score": 0.7542179872290592,
+        "meta": {
+          "z": 1.172177508217858,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.538234626730202,
+          "deltaPer10k": 4.538234626730202,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "purchasing mechanisms",
+        "score": 0.7542179872290592,
+        "meta": {
+          "z": 1.172177508217858,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.538234626730202,
+          "deltaPer10k": 4.538234626730202,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "regarding alternative",
+        "score": 0.7542179872290592,
+        "meta": {
+          "z": 1.172177508217858,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.538234626730202,
+          "deltaPer10k": 4.538234626730202,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "store regarding",
+        "score": 0.7542179872290592,
+        "meta": {
+          "z": 1.172177508217858,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.538234626730202,
+          "deltaPer10k": 4.538234626730202,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "Artificial intelligence",
+        "score": 0.6127627706649098,
+        "meta": {
+          "z": 0.9523330785115897,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.269117313365101,
+          "deltaPer10k": 2.269117313365101,
+          "distinctive": false,
+          "includes": [
+            "artificial intelligence"
+          ]
+        }
+      },
+      {
+        "label": "expects make",
+        "score": 0.6127627706649098,
+        "meta": {
+          "z": 0.9523330785115897,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.269117313365101,
+          "deltaPer10k": 2.269117313365101,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "machine learning",
+        "score": 0.6127627706649098,
+        "meta": {
+          "z": 0.9523330785115897,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.269117313365101,
+          "deltaPer10k": 2.269117313365101,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_fallers": [
+      {
+        "label": "COVID-19",
+        "score": -0.8599602883206303,
+        "meta": {
+          "z": -2.022334655607856,
+          "countPrev": 10,
+          "countCurr": 2,
+          "per10kPrev": 10.91703056768559,
+          "per10kCurr": 2.269117313365101,
+          "deltaPer10k": -8.647913254320489,
+          "distinctive": true,
+          "includes": [
+            "covid"
+          ]
+        }
+      },
+      {
+        "label": "extent charges",
+        "score": -0.7254549593140726,
+        "meta": {
+          "z": -0.9290557011185522,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.183406113537118,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.183406113537118,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "new legislative",
+        "score": -0.7254549593140726,
+        "meta": {
+          "z": -0.9290557011185522,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.183406113537118,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.183406113537118,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "extent covid",
+        "score": -0.5977853320071421,
+        "meta": {
+          "z": -0.9290557011185522,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.183406113537118,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.183406113537118,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "covid pandemic",
+        "score": -0.5639671281842824,
+        "meta": {
+          "z": -1.8671459616352961,
+          "countPrev": 9,
+          "countCurr": 2,
+          "per10kPrev": 9.825327510917031,
+          "per10kCurr": 2.269117313365101,
+          "deltaPer10k": -7.5562101975519305,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "marketable non",
+        "score": -0.480852323623995,
+        "meta": {
+          "z": -0.9290557011185522,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.183406113537118,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.183406113537118,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "measures response",
+        "score": -0.480852323623995,
+        "meta": {
+          "z": -0.9290557011185522,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.183406113537118,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.183406113537118,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "non marketable",
+        "score": -0.480852323623995,
+        "meta": {
+          "z": -0.9290557011185522,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.183406113537118,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.183406113537118,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "trade restrictions",
+        "score": -0.480852323623995,
+        "meta": {
+          "z": -0.9290557011185522,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.183406113537118,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.183406113537118,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "protective",
+        "score": -0.38263492072159866,
+        "meta": {
+          "z": -0.8998274352088936,
+          "countPrev": 3,
+          "countCurr": 1,
+          "per10kPrev": 3.2751091703056767,
+          "per10kCurr": 1.1345586566825505,
+          "deltaPer10k": -2.1405505136231264,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "consumer demand",
+        "score": -0.37499616702398186,
+        "meta": {
+          "z": -0.9290557011185522,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.183406113537118,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.183406113537118,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "governance",
+        "score": -0.3688780153388522,
+        "meta": {
+          "z": -0.5054357835901835,
+          "countPrev": 7,
+          "countCurr": 5,
+          "per10kPrev": 7.641921397379913,
+          "per10kCurr": 5.672793283412752,
+          "deltaPer10k": -1.9691281139671606,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "public safety",
+        "score": -0.3595869472034896,
+        "meta": {
+          "z": -1.19049725201071,
+          "countPrev": 4,
+          "countCurr": 1,
+          "per10kPrev": 4.366812227074236,
+          "per10kCurr": 1.1345586566825505,
+          "deltaPer10k": -3.232253570391686,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "safety measures",
+        "score": -0.3595869472034896,
+        "meta": {
+          "z": -1.19049725201071,
+          "countPrev": 4,
+          "countCurr": 1,
+          "per10kPrev": 4.366812227074236,
+          "per10kCurr": 1.1345586566825505,
+          "deltaPer10k": -3.232253570391686,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "governance goals",
+        "score": -0.3329636485691409,
+        "meta": {
+          "z": -0.5174797028387081,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 2.183406113537118,
+          "per10kCurr": 1.1345586566825505,
+          "deltaPer10k": -1.0488474568545676,
+          "distinctive": false
+        }
+      }
+    ],
+    "summary": "Adds emphasis on allows, inside, march; de-emphasizes COVID-19, extent charges, new legislative.",
+    "ranked_items": [
+      {
+        "label": "allows",
+        "score": 0.9038858496346153,
+        "meta": {
+          "z": 0.9523330785115897,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.269117313365101,
+          "deltaPer10k": 2.269117313365101,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "inside",
+        "score": 0.9038858496346153,
+        "meta": {
+          "z": 0.9523330785115897,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.269117313365101,
+          "deltaPer10k": 2.269117313365101,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "march",
+        "score": 0.9038858496346153,
+        "meta": {
+          "z": 0.9523330785115897,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.269117313365101,
+          "deltaPer10k": 2.269117313365101,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "communicate",
+        "score": 0.8554806107808836,
+        "meta": {
+          "z": 1.172177508217858,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.538234626730202,
+          "deltaPer10k": 4.538234626730202,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "mechanisms",
+        "score": 0.8554806107808836,
+        "meta": {
+          "z": 1.172177508217858,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.538234626730202,
+          "deltaPer10k": 4.538234626730202,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "purchasing",
+        "score": 0.8554806107808836,
+        "meta": {
+          "z": 1.172177508217858,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.538234626730202,
+          "deltaPer10k": 4.538234626730202,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "alternative purchasing",
+        "score": 0.7542179872290592,
+        "meta": {
+          "z": 1.172177508217858,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.538234626730202,
+          "deltaPer10k": 4.538234626730202,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "communicate consumers",
+        "score": 0.7542179872290592,
+        "meta": {
+          "z": 1.172177508217858,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.538234626730202,
+          "deltaPer10k": 4.538234626730202,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "developers communicate",
+        "score": 0.7542179872290592,
+        "meta": {
+          "z": 1.172177508217858,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.538234626730202,
+          "deltaPer10k": 4.538234626730202,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "purchasing mechanisms",
+        "score": 0.7542179872290592,
+        "meta": {
+          "z": 1.172177508217858,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.538234626730202,
+          "deltaPer10k": 4.538234626730202,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "regarding alternative",
+        "score": 0.7542179872290592,
+        "meta": {
+          "z": 1.172177508217858,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.538234626730202,
+          "deltaPer10k": 4.538234626730202,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "store regarding",
+        "score": 0.7542179872290592,
+        "meta": {
+          "z": 1.172177508217858,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.538234626730202,
+          "deltaPer10k": 4.538234626730202,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "Artificial intelligence",
+        "score": 0.6127627706649098,
+        "meta": {
+          "z": 0.9523330785115897,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.269117313365101,
+          "deltaPer10k": 2.269117313365101,
+          "distinctive": false,
+          "includes": [
+            "artificial intelligence"
+          ]
+        }
+      },
+      {
+        "label": "expects make",
+        "score": 0.6127627706649098,
+        "meta": {
+          "z": 0.9523330785115897,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.269117313365101,
+          "deltaPer10k": 2.269117313365101,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "machine learning",
+        "score": 0.6127627706649098,
+        "meta": {
+          "z": 0.9523330785115897,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.269117313365101,
+          "deltaPer10k": 2.269117313365101,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "COVID-19",
+        "score": -0.8599602883206303,
+        "meta": {
+          "z": -2.022334655607856,
+          "countPrev": 10,
+          "countCurr": 2,
+          "per10kPrev": 10.91703056768559,
+          "per10kCurr": 2.269117313365101,
+          "deltaPer10k": -8.647913254320489,
+          "distinctive": true,
+          "includes": [
+            "covid"
+          ]
+        }
+      },
+      {
+        "label": "extent charges",
+        "score": -0.7254549593140726,
+        "meta": {
+          "z": -0.9290557011185522,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.183406113537118,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.183406113537118,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "new legislative",
+        "score": -0.7254549593140726,
+        "meta": {
+          "z": -0.9290557011185522,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.183406113537118,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.183406113537118,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "extent covid",
+        "score": -0.5977853320071421,
+        "meta": {
+          "z": -0.9290557011185522,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.183406113537118,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.183406113537118,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "covid pandemic",
+        "score": -0.5639671281842824,
+        "meta": {
+          "z": -1.8671459616352961,
+          "countPrev": 9,
+          "countCurr": 2,
+          "per10kPrev": 9.825327510917031,
+          "per10kCurr": 2.269117313365101,
+          "deltaPer10k": -7.5562101975519305,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "marketable non",
+        "score": -0.480852323623995,
+        "meta": {
+          "z": -0.9290557011185522,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.183406113537118,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.183406113537118,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "measures response",
+        "score": -0.480852323623995,
+        "meta": {
+          "z": -0.9290557011185522,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.183406113537118,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.183406113537118,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "non marketable",
+        "score": -0.480852323623995,
+        "meta": {
+          "z": -0.9290557011185522,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.183406113537118,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.183406113537118,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "trade restrictions",
+        "score": -0.480852323623995,
+        "meta": {
+          "z": -0.9290557011185522,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.183406113537118,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.183406113537118,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "protective",
+        "score": -0.38263492072159866,
+        "meta": {
+          "z": -0.8998274352088936,
+          "countPrev": 3,
+          "countCurr": 1,
+          "per10kPrev": 3.2751091703056767,
+          "per10kCurr": 1.1345586566825505,
+          "deltaPer10k": -2.1405505136231264,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "consumer demand",
+        "score": -0.37499616702398186,
+        "meta": {
+          "z": -0.9290557011185522,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.183406113537118,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.183406113537118,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "governance",
+        "score": -0.3688780153388522,
+        "meta": {
+          "z": -0.5054357835901835,
+          "countPrev": 7,
+          "countCurr": 5,
+          "per10kPrev": 7.641921397379913,
+          "per10kCurr": 5.672793283412752,
+          "deltaPer10k": -1.9691281139671606,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "public safety",
+        "score": -0.3595869472034896,
+        "meta": {
+          "z": -1.19049725201071,
+          "countPrev": 4,
+          "countCurr": 1,
+          "per10kPrev": 4.366812227074236,
+          "per10kCurr": 1.1345586566825505,
+          "deltaPer10k": -3.232253570391686,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "safety measures",
+        "score": -0.3595869472034896,
+        "meta": {
+          "z": -1.19049725201071,
+          "countPrev": 4,
+          "countCurr": 1,
+          "per10kPrev": 4.366812227074236,
+          "per10kCurr": 1.1345586566825505,
+          "deltaPer10k": -3.232253570391686,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "governance goals",
+        "score": -0.3329636485691409,
+        "meta": {
+          "z": -0.5174797028387081,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 2.183406113537118,
+          "per10kCurr": 1.1345586566825505,
+          "deltaPer10k": -1.0488474568545676,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_risers_alt": [
+      {
+        "label": "conditions adverse",
+        "score": 2.1855994396422647,
+        "meta": {}
+      },
+      {
+        "label": "developers access",
+        "score": 2.1855994396422647,
+        "meta": {}
+      },
+      {
+        "label": "market conditions legal",
+        "score": 2.1855994396422647,
+        "meta": {}
+      },
+      {
+        "label": "foreign exchange",
+        "score": 0.28719749646350046,
+        "meta": {}
+      },
+      {
+        "label": "machine learning",
+        "score": 0.7465201969896045,
+        "meta": {}
+      },
+      {
+        "label": "Artificial intelligence",
+        "score": 0.5718708199471125,
+        "meta": {}
+      },
+      {
+        "label": "international trade",
+        "score": 0.27356121277530177,
+        "meta": {}
+      },
+      {
+        "label": "demand products",
+        "score": 0.13397594139515911,
+        "meta": {}
+      },
+      {
+        "label": "customer demand",
+        "score": 0.123230008062305,
+        "meta": {}
+      },
+      {
+        "label": "information technology",
+        "score": 0.05703586088279655,
+        "meta": {}
+      },
+      {
+        "label": "products services",
+        "score": 0.025454364273990393,
+        "meta": {}
+      }
+    ],
+    "top_fallers_alt": [
+      {
+        "label": "market legal",
+        "score": -1.6378727297364533,
+        "meta": {}
+      },
+      {
+        "label": "financial performance",
+        "score": -2.2259178236323693,
+        "meta": {}
+      },
+      {
+        "label": "require changes",
+        "score": -2.2259178236323693,
+        "meta": {}
+      },
+      {
+        "label": "future performance",
+        "score": -1.3275097142255845,
+        "meta": {}
+      },
+      {
+        "label": "trade restrictions",
+        "score": -0.98046343091755,
+        "meta": {}
+      },
+      {
+        "label": "gross margin",
+        "score": -0.7177640304223081,
+        "meta": {}
+      },
+      {
+        "label": "Supply chain",
+        "score": -0.0980912152311193,
+        "meta": {}
+      },
+      {
+        "label": "Intellectual property",
+        "score": -0.022044027324532145,
+        "meta": {}
+      },
+      {
+        "label": "data security",
+        "score": -0.020694490336690574,
+        "meta": {}
+      },
+      {
+        "label": "credit risk",
+        "score": -0.020671453463639633,
+        "meta": {}
+      },
+      {
+        "label": "new products services",
+        "score": -0.020633488234242492,
+        "meta": {}
+      },
+      {
+        "label": "components products",
+        "score": -0.020603216313855643,
+        "meta": {}
+      },
+      {
+        "label": "new products",
+        "score": -0.020580382098135175,
+        "meta": {}
+      },
+      {
+        "label": "new product service",
+        "score": -0.0205504536495007,
+        "meta": {}
+      },
+      {
+        "label": "demand products services",
+        "score": -0.020535428203773076,
+        "meta": {}
+      }
+    ],
+    "summary_alt": "Adds emphasis on conditions adverse, developers access, market conditions legal; de-emphasizes market legal, financial performance, require changes."
+  },
+  "evidence": [
+    {
+      "year": 2023,
+      "paragraph_idx": 14,
+      "snippet": "Major public health issues, including pandemics such as the COVID-19 pandemic, have adversely affected, and could in the future materially adversely affect, the Company due to their impact on the global economy and demand for consumer products; the imposition of protective public safety measures, such as stringent employee travel restrictions and limitations on freight services and the movement of products between regions; and disruptions in the Company\u2019s operations, supply chain and sales and distribution channels, resulting in interruptions to the supply of current products and offering of existing services, and delays in production ramps of new products and development of new services.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "covid-19"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 24,
+      "snippet": "The Company expects to make further business changes in the future, including as a result of legislative initiatives impacting the App Store, such as the European Union (\u201cEU\u201d) Digital Markets Act, which the Company is required to comply with by March 2024.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "march"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 6,
+      "snippet": "The Company\u2019s business, results of operations, financial condition and stock price have been adversely affected and could in the future be materially adversely affected by the COVID-19 pandemic.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "covid-19"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 7,
+      "snippet": "COVID-19 has had, and continues to have, a significant impact around the world, prompting governments and businesses to take unprecedented measures in response.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "covid-19"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.0036,
+    "confidence": 1.0,
+    "coverage": 0.25103624658259105,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T05:55:28Z",
+    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "8a6a972cd160b7416c3cb28fcf93379a17b88d78bef2c76df1537424ab8e92e6",
+      "curr_text_sha256": "dc793034d7a883a8aae64da478ab03efa50b4681013c373227d6c97c1744af34",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

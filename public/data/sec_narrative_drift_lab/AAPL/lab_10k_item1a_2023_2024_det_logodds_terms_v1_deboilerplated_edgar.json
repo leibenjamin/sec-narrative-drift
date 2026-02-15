@@ -1,0 +1,988 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_logodds_terms_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "AAPL",
+  "section": "10k_item1a",
+  "year_from": 2023,
+  "year_to": 2024,
+  "artifacts": {
+    "top_risers": [
+      {
+        "label": "ipados",
+        "score": 1.156869293323708,
+        "meta": {
+          "z": 1.3804508095062815,
+          "countPrev": 0,
+          "countCurr": 8,
+          "per10kPrev": 0.0,
+          "per10kCurr": 9.047726758651889,
+          "deltaPer10k": 9.047726758651889,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ios ipados",
+        "score": 1.077927711589025,
+        "meta": {
+          "z": 1.3804508095062815,
+          "countPrev": 0,
+          "countCurr": 8,
+          "per10kPrev": 0.0,
+          "per10kCurr": 9.047726758651889,
+          "deltaPer10k": 9.047726758651889,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "dma",
+        "score": 1.0312392871018952,
+        "meta": {
+          "z": 1.230541010025889,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.654829224157431,
+          "deltaPer10k": 5.654829224157431,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "tensions conflict",
+        "score": 0.9608703517860613,
+        "meta": {
+          "z": 1.230541010025889,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.654829224157431,
+          "deltaPer10k": 5.654829224157431,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "apps",
+        "score": 0.910202237824168,
+        "meta": {
+          "z": 1.7401117131816575,
+          "countPrev": 2,
+          "countCurr": 8,
+          "per10kPrev": 2.269117313365101,
+          "per10kCurr": 9.047726758651889,
+          "deltaPer10k": 6.778609445286788,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "apps alternative",
+        "score": 0.905350535964534,
+        "meta": {
+          "z": 1.1594394195662794,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.523863379325944,
+          "deltaPer10k": 4.523863379325944,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "implemented changes",
+        "score": 0.905350535964534,
+        "meta": {
+          "z": 1.1594394195662794,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.523863379325944,
+          "deltaPer10k": 4.523863379325944,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ipados app",
+        "score": 0.905350535964534,
+        "meta": {
+          "z": 1.1594394195662794,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.523863379325944,
+          "deltaPer10k": 4.523863379325944,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ipados apps",
+        "score": 0.905350535964534,
+        "meta": {
+          "z": 1.1594394195662794,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.523863379325944,
+          "deltaPer10k": 4.523863379325944,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "apis",
+        "score": 0.8919307641787255,
+        "meta": {
+          "z": 0.9397372143981301,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.261931689662972,
+          "deltaPer10k": 2.261931689662972,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "Artificial intelligence",
+        "score": 0.8554348914206729,
+        "meta": {
+          "z": 1.3294850513337961,
+          "countPrev": 2,
+          "countCurr": 6,
+          "per10kPrev": 2.269117313365101,
+          "per10kCurr": 6.785795068988917,
+          "deltaPer10k": 4.516677755623816,
+          "distinctive": false,
+          "includes": [
+            "artificial intelligence"
+          ]
+        }
+      },
+      {
+        "label": "disputes geopolitical",
+        "score": 0.8339169733887083,
+        "meta": {
+          "z": 1.0679578496766347,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.3928975344944585,
+          "deltaPer10k": 3.3928975344944585,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "challenged",
+        "score": 0.7875348542984847,
+        "meta": {
+          "z": 0.9397372143981301,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.261931689662972,
+          "deltaPer10k": 2.261931689662972,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "methods",
+        "score": 0.7875348542984847,
+        "meta": {
+          "z": 0.9397372143981301,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.261931689662972,
+          "deltaPer10k": 2.261931689662972,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "monopolization",
+        "score": 0.7875348542984847,
+        "meta": {
+          "z": 0.9397372143981301,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.261931689662972,
+          "deltaPer10k": 2.261931689662972,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_fallers": [
+      {
+        "label": "allows",
+        "score": -0.8937499320373682,
+        "meta": {
+          "z": -0.9416538875353971,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.269117313365101,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.269117313365101,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "inside",
+        "score": -0.8937499320373682,
+        "meta": {
+          "z": -0.9416538875353971,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.269117313365101,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.269117313365101,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "march",
+        "score": -0.8937499320373682,
+        "meta": {
+          "z": -0.9416538875353971,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.269117313365101,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.269117313365101,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "armed",
+        "score": -0.7891410979129425,
+        "meta": {
+          "z": -0.9416538875353971,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.269117313365101,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.269117313365101,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "outside app",
+        "score": -0.7472691709246366,
+        "meta": {
+          "z": -1.1613779166956422,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 4.538234626730202,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.538234626730202,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "armed conflict",
+        "score": -0.7352922777907364,
+        "meta": {
+          "z": -0.9416538875353971,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.269117313365101,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.269117313365101,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "access platforms",
+        "score": -0.6058914240754804,
+        "meta": {
+          "z": -0.9416538875353971,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.269117313365101,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.269117313365101,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "apps outside",
+        "score": -0.6058914240754804,
+        "meta": {
+          "z": -0.9416538875353971,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.269117313365101,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.269117313365101,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "charges developers",
+        "score": -0.6058914240754804,
+        "meta": {
+          "z": -0.9416538875353971,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.269117313365101,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.269117313365101,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "developers access",
+        "score": -0.6058914240754804,
+        "meta": {
+          "z": -0.9416538875353971,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.269117313365101,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.269117313365101,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "distribution apps",
+        "score": -0.6058914240754804,
+        "meta": {
+          "z": -0.9416538875353971,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.269117313365101,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.269117313365101,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "legislative initiatives",
+        "score": -0.6058914240754804,
+        "meta": {
+          "z": -0.9416538875353971,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.269117313365101,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.269117313365101,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "manages distribution",
+        "score": -0.6058914240754804,
+        "meta": {
+          "z": -0.9416538875353971,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.269117313365101,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.269117313365101,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "platforms manages",
+        "score": -0.6058914240754804,
+        "meta": {
+          "z": -0.9416538875353971,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.269117313365101,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.269117313365101,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "practices future",
+        "score": -0.6058914240754804,
+        "meta": {
+          "z": -0.9416538875353971,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.269117313365101,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.269117313365101,
+          "distinctive": false
+        }
+      }
+    ],
+    "summary": "Adds emphasis on ipados, ios ipados, dma; de-emphasizes allows, inside, march.",
+    "ranked_items": [
+      {
+        "label": "ipados",
+        "score": 1.156869293323708,
+        "meta": {
+          "z": 1.3804508095062815,
+          "countPrev": 0,
+          "countCurr": 8,
+          "per10kPrev": 0.0,
+          "per10kCurr": 9.047726758651889,
+          "deltaPer10k": 9.047726758651889,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ios ipados",
+        "score": 1.077927711589025,
+        "meta": {
+          "z": 1.3804508095062815,
+          "countPrev": 0,
+          "countCurr": 8,
+          "per10kPrev": 0.0,
+          "per10kCurr": 9.047726758651889,
+          "deltaPer10k": 9.047726758651889,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "dma",
+        "score": 1.0312392871018952,
+        "meta": {
+          "z": 1.230541010025889,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.654829224157431,
+          "deltaPer10k": 5.654829224157431,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "tensions conflict",
+        "score": 0.9608703517860613,
+        "meta": {
+          "z": 1.230541010025889,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.654829224157431,
+          "deltaPer10k": 5.654829224157431,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "apps",
+        "score": 0.910202237824168,
+        "meta": {
+          "z": 1.7401117131816575,
+          "countPrev": 2,
+          "countCurr": 8,
+          "per10kPrev": 2.269117313365101,
+          "per10kCurr": 9.047726758651889,
+          "deltaPer10k": 6.778609445286788,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "apps alternative",
+        "score": 0.905350535964534,
+        "meta": {
+          "z": 1.1594394195662794,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.523863379325944,
+          "deltaPer10k": 4.523863379325944,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "implemented changes",
+        "score": 0.905350535964534,
+        "meta": {
+          "z": 1.1594394195662794,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.523863379325944,
+          "deltaPer10k": 4.523863379325944,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ipados app",
+        "score": 0.905350535964534,
+        "meta": {
+          "z": 1.1594394195662794,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.523863379325944,
+          "deltaPer10k": 4.523863379325944,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ipados apps",
+        "score": 0.905350535964534,
+        "meta": {
+          "z": 1.1594394195662794,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.523863379325944,
+          "deltaPer10k": 4.523863379325944,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "apis",
+        "score": 0.8919307641787255,
+        "meta": {
+          "z": 0.9397372143981301,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.261931689662972,
+          "deltaPer10k": 2.261931689662972,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "Artificial intelligence",
+        "score": 0.8554348914206729,
+        "meta": {
+          "z": 1.3294850513337961,
+          "countPrev": 2,
+          "countCurr": 6,
+          "per10kPrev": 2.269117313365101,
+          "per10kCurr": 6.785795068988917,
+          "deltaPer10k": 4.516677755623816,
+          "distinctive": false,
+          "includes": [
+            "artificial intelligence"
+          ]
+        }
+      },
+      {
+        "label": "disputes geopolitical",
+        "score": 0.8339169733887083,
+        "meta": {
+          "z": 1.0679578496766347,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.3928975344944585,
+          "deltaPer10k": 3.3928975344944585,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "challenged",
+        "score": 0.7875348542984847,
+        "meta": {
+          "z": 0.9397372143981301,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.261931689662972,
+          "deltaPer10k": 2.261931689662972,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "methods",
+        "score": 0.7875348542984847,
+        "meta": {
+          "z": 0.9397372143981301,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.261931689662972,
+          "deltaPer10k": 2.261931689662972,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "monopolization",
+        "score": 0.7875348542984847,
+        "meta": {
+          "z": 0.9397372143981301,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.261931689662972,
+          "deltaPer10k": 2.261931689662972,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "allows",
+        "score": -0.8937499320373682,
+        "meta": {
+          "z": -0.9416538875353971,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.269117313365101,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.269117313365101,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "inside",
+        "score": -0.8937499320373682,
+        "meta": {
+          "z": -0.9416538875353971,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.269117313365101,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.269117313365101,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "march",
+        "score": -0.8937499320373682,
+        "meta": {
+          "z": -0.9416538875353971,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.269117313365101,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.269117313365101,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "armed",
+        "score": -0.7891410979129425,
+        "meta": {
+          "z": -0.9416538875353971,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.269117313365101,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.269117313365101,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "outside app",
+        "score": -0.7472691709246366,
+        "meta": {
+          "z": -1.1613779166956422,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 4.538234626730202,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.538234626730202,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "armed conflict",
+        "score": -0.7352922777907364,
+        "meta": {
+          "z": -0.9416538875353971,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.269117313365101,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.269117313365101,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "access platforms",
+        "score": -0.6058914240754804,
+        "meta": {
+          "z": -0.9416538875353971,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.269117313365101,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.269117313365101,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "apps outside",
+        "score": -0.6058914240754804,
+        "meta": {
+          "z": -0.9416538875353971,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.269117313365101,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.269117313365101,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "charges developers",
+        "score": -0.6058914240754804,
+        "meta": {
+          "z": -0.9416538875353971,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.269117313365101,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.269117313365101,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "developers access",
+        "score": -0.6058914240754804,
+        "meta": {
+          "z": -0.9416538875353971,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.269117313365101,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.269117313365101,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "distribution apps",
+        "score": -0.6058914240754804,
+        "meta": {
+          "z": -0.9416538875353971,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.269117313365101,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.269117313365101,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "legislative initiatives",
+        "score": -0.6058914240754804,
+        "meta": {
+          "z": -0.9416538875353971,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.269117313365101,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.269117313365101,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "manages distribution",
+        "score": -0.6058914240754804,
+        "meta": {
+          "z": -0.9416538875353971,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.269117313365101,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.269117313365101,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "platforms manages",
+        "score": -0.6058914240754804,
+        "meta": {
+          "z": -0.9416538875353971,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.269117313365101,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.269117313365101,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "practices future",
+        "score": -0.6058914240754804,
+        "meta": {
+          "z": -0.9416538875353971,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.269117313365101,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.269117313365101,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_risers_alt": [
+      {
+        "label": "Geopolitical tensions",
+        "score": 1.6858080253257706,
+        "meta": {}
+      },
+      {
+        "label": "legal regulatory",
+        "score": 1.6005953207565895,
+        "meta": {}
+      },
+      {
+        "label": "regulatory changes",
+        "score": 2.1802934763418307,
+        "meta": {}
+      },
+      {
+        "label": "global supply",
+        "score": 1.59221593036973,
+        "meta": {}
+      },
+      {
+        "label": "industry data security",
+        "score": 1.59221593036973,
+        "meta": {}
+      },
+      {
+        "label": "Artificial intelligence",
+        "score": 0.616987870062542,
+        "meta": {}
+      },
+      {
+        "label": "machine learning",
+        "score": 0.40535860904559673,
+        "meta": {}
+      },
+      {
+        "label": "new products services",
+        "score": 0.07975563226258453,
+        "meta": {}
+      },
+      {
+        "label": "Supply chain",
+        "score": 0.050887414324335634,
+        "meta": {}
+      }
+    ],
+    "top_fallers_alt": [
+      {
+        "label": "industry data",
+        "score": -1.642923051694976,
+        "meta": {}
+      },
+      {
+        "label": "result legal",
+        "score": -1.642923051694976,
+        "meta": {}
+      },
+      {
+        "label": "conditions adverse",
+        "score": -2.2309650204284486,
+        "meta": {}
+      },
+      {
+        "label": "developers access",
+        "score": -2.2309650204284486,
+        "meta": {}
+      },
+      {
+        "label": "market conditions legal",
+        "score": -2.2309650204284486,
+        "meta": {}
+      },
+      {
+        "label": "future result changes",
+        "score": -1.332563165136861,
+        "meta": {}
+      },
+      {
+        "label": "international trade",
+        "score": -0.16240851604017292,
+        "meta": {}
+      },
+      {
+        "label": "Intellectual property",
+        "score": -0.027646503355341245,
+        "meta": {}
+      },
+      {
+        "label": "information technology",
+        "score": -0.026267415004700645,
+        "meta": {}
+      },
+      {
+        "label": "foreign exchange",
+        "score": -0.026096566778250896,
+        "meta": {}
+      },
+      {
+        "label": "data security",
+        "score": -0.025993015458547042,
+        "meta": {}
+      },
+      {
+        "label": "credit risk",
+        "score": -0.02596474694234896,
+        "meta": {}
+      },
+      {
+        "label": "components products",
+        "score": -0.02588100471553334,
+        "meta": {}
+      },
+      {
+        "label": "new products",
+        "score": -0.02585297918953655,
+        "meta": {}
+      },
+      {
+        "label": "new product service",
+        "score": -0.02581624441336494,
+        "meta": {}
+      }
+    ],
+    "summary_alt": "Adds emphasis on Geopolitical tensions, legal regulatory, regulatory changes; de-emphasizes industry data, result legal, conditions adverse."
+  },
+  "evidence": [
+    {
+      "year": 2024,
+      "paragraph_idx": 26,
+      "snippet": "For example, in the U.S., the Company has implemented changes to how developers communicate with consumers within apps on the U.S. storefront of the iOS and iPadOS App Store regarding alternative purchasing mechanisms.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "ipados",
+        "apps"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 27,
+      "snippet": "The Company has also implemented changes to iOS, iPadOS, the App Store and Safari \u00ae in the European Union (\u201cEU\u201d) as it seeks to comply with the Digital Markets Act (the \u201cDMA\u201d), including new business terms and alternative fee structures for iOS and iPadOS apps, alternative methods of distribution for iOS and iPadOS apps, alternative payment processing for apps across the Company\u2019s operating systems, and additional tools and application programming interfaces (\u201cAPIs\u201d) for developers.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "ipados",
+        "dma",
+        "apps"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 14,
+      "snippet": "In addition, manufacturing or logistics in these locations or transit to final destinations can be disrupted for a variety of reasons, including natural and man-made disasters, information technology system failures, commercial disputes, armed conflict, economic, business, labor, environmental, public health or political issues, or international trade disputes.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "armed"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 24,
+      "snippet": "The Company expects to make further business changes in the future, including as a result of legislative initiatives impacting the App Store, such as the European Union (\u201cEU\u201d) Digital Markets Act, which the Company is required to comply with by March 2024.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "march"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.0048,
+    "confidence": 1.0,
+    "coverage": 0.24874327542111296,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T05:55:29Z",
+    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "b9a868111dda2a984ff891bab219f667ee84ea8e7136cb5ffdd420327591da78",
+      "curr_text_sha256": "c2c8993a233207c11fdea07b38d81c80f329795f9f7532aa5d1b831f76281ea3",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

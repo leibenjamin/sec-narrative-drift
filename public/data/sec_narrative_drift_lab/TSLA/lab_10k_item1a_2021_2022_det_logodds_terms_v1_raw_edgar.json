@@ -1,0 +1,1186 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_logodds_terms_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "TSLA",
+  "section": "10k_item1a",
+  "year_from": 2021,
+  "year_to": 2022,
+  "artifacts": {
+    "top_risers": [
+      {
+        "label": "brandenburg",
+        "score": 0.8968686368095627,
+        "meta": {
+          "z": 0.9562563465758389,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.7747803709290975,
+          "deltaPer10k": 1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ira",
+        "score": 0.8968686368095627,
+        "meta": {
+          "z": 0.9562563465758389,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.7747803709290975,
+          "deltaPer10k": 1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "split",
+        "score": 0.7804552163767601,
+        "meta": {
+          "z": 0.9562563465758389,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.7747803709290975,
+          "deltaPer10k": 1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "stock split",
+        "score": 0.7195441564311681,
+        "meta": {
+          "z": 0.9562563465758389,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.7747803709290975,
+          "deltaPer10k": 1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "conflict",
+        "score": 0.6674226020030228,
+        "meta": {
+          "z": 0.9562563465758389,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.7747803709290975,
+          "deltaPer10k": 1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "gigafactories",
+        "score": 0.6674226020030228,
+        "meta": {
+          "z": 0.9562563465758389,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.7747803709290975,
+          "deltaPer10k": 1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "operated",
+        "score": 0.6674226020030228,
+        "meta": {
+          "z": 0.9562563465758389,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.7747803709290975,
+          "deltaPer10k": 1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "routes",
+        "score": 0.6674226020030228,
+        "meta": {
+          "z": 0.9562563465758389,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.7747803709290975,
+          "deltaPer10k": 1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "export components",
+        "score": 0.5780049283945285,
+        "meta": {
+          "z": 0.9562563465758389,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.7747803709290975,
+          "deltaPer10k": 1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "faced past",
+        "score": 0.5780049283945285,
+        "meta": {
+          "z": 0.9562563465758389,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.7747803709290975,
+          "deltaPer10k": 1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "import export",
+        "score": 0.5780049283945285,
+        "meta": {
+          "z": 0.9562563465758389,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.7747803709290975,
+          "deltaPer10k": 1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "operated human",
+        "score": 0.5780049283945285,
+        "meta": {
+          "z": 0.9562563465758389,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.7747803709290975,
+          "deltaPer10k": 1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "past face",
+        "score": 0.5780049283945285,
+        "meta": {
+          "z": 0.9562563465758389,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.7747803709290975,
+          "deltaPer10k": 1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "vehicles operated",
+        "score": 0.5780049283945285,
+        "meta": {
+          "z": 0.9562563465758389,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.7747803709290975,
+          "deltaPer10k": 1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "faced",
+        "score": 0.5581051452317894,
+        "meta": {
+          "z": 0.9562563465758389,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.7747803709290975,
+          "deltaPer10k": 1.7747803709290975,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_fallers": [
+      {
+        "label": "digital",
+        "score": -1.2199676395619632,
+        "meta": {
+          "z": -1.4947709663139759,
+          "countPrev": 12,
+          "countCurr": 0,
+          "per10kPrev": 10.116337885685383,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -10.116337885685383,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "digital assets",
+        "score": -1.1247545889400186,
+        "meta": {
+          "z": -1.4947709663139759,
+          "countPrev": 12,
+          "countCurr": 0,
+          "per10kPrev": 10.116337885685383,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -10.116337885685383,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "sensors",
+        "score": -0.8676500166233917,
+        "meta": {
+          "z": -0.9251029648603093,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.6860563142808969,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.6860563142808969,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "bitcoin",
+        "score": -0.755029168900344,
+        "meta": {
+          "z": -0.9251029648603093,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.6860563142808969,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.6860563142808969,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "gold",
+        "score": -0.755029168900344,
+        "meta": {
+          "z": -0.9251029648603093,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.6860563142808969,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.6860563142808969,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "intangible",
+        "score": -0.755029168900344,
+        "meta": {
+          "z": -0.9251029648603093,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.6860563142808969,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.6860563142808969,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "returns",
+        "score": -0.755029168900344,
+        "meta": {
+          "z": -0.9251029648603093,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.6860563142808969,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.6860563142808969,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "updated",
+        "score": -0.755029168900344,
+        "meta": {
+          "z": -0.9251029648603093,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.6860563142808969,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.6860563142808969,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "suspended",
+        "score": -0.7350893104815989,
+        "meta": {
+          "z": -1.0532064936645682,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.5290844714213456,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.5290844714213456,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "berlin gigafactory",
+        "score": -0.6961024989229623,
+        "meta": {
+          "z": -0.9251029648603093,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.6860563142808969,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.6860563142808969,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "intangible assets",
+        "score": -0.6961024989229623,
+        "meta": {
+          "z": -0.9251029648603093,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.6860563142808969,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.6860563142808969,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "multiple factories",
+        "score": -0.6961024989229623,
+        "meta": {
+          "z": -0.9251029648603093,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.6860563142808969,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.6860563142808969,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "secure digital",
+        "score": -0.6961024989229623,
+        "meta": {
+          "z": -0.9251029648603093,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.6860563142808969,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.6860563142808969,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "design engineering",
+        "score": -0.5591744043073307,
+        "meta": {
+          "z": -0.9251029648603093,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.6860563142808969,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.6860563142808969,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "manufactured gigafactory",
+        "score": -0.5591744043073307,
+        "meta": {
+          "z": -0.9251029648603093,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.6860563142808969,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.6860563142808969,
+          "distinctive": false
+        }
+      }
+    ],
+    "summary": "Adds emphasis on brandenburg, ira, split; de-emphasizes digital, digital assets, sensors.",
+    "ranked_items": [
+      {
+        "label": "brandenburg",
+        "score": 0.8968686368095627,
+        "meta": {
+          "z": 0.9562563465758389,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.7747803709290975,
+          "deltaPer10k": 1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ira",
+        "score": 0.8968686368095627,
+        "meta": {
+          "z": 0.9562563465758389,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.7747803709290975,
+          "deltaPer10k": 1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "split",
+        "score": 0.7804552163767601,
+        "meta": {
+          "z": 0.9562563465758389,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.7747803709290975,
+          "deltaPer10k": 1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "stock split",
+        "score": 0.7195441564311681,
+        "meta": {
+          "z": 0.9562563465758389,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.7747803709290975,
+          "deltaPer10k": 1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "conflict",
+        "score": 0.6674226020030228,
+        "meta": {
+          "z": 0.9562563465758389,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.7747803709290975,
+          "deltaPer10k": 1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "gigafactories",
+        "score": 0.6674226020030228,
+        "meta": {
+          "z": 0.9562563465758389,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.7747803709290975,
+          "deltaPer10k": 1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "operated",
+        "score": 0.6674226020030228,
+        "meta": {
+          "z": 0.9562563465758389,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.7747803709290975,
+          "deltaPer10k": 1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "routes",
+        "score": 0.6674226020030228,
+        "meta": {
+          "z": 0.9562563465758389,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.7747803709290975,
+          "deltaPer10k": 1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "export components",
+        "score": 0.5780049283945285,
+        "meta": {
+          "z": 0.9562563465758389,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.7747803709290975,
+          "deltaPer10k": 1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "faced past",
+        "score": 0.5780049283945285,
+        "meta": {
+          "z": 0.9562563465758389,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.7747803709290975,
+          "deltaPer10k": 1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "import export",
+        "score": 0.5780049283945285,
+        "meta": {
+          "z": 0.9562563465758389,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.7747803709290975,
+          "deltaPer10k": 1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "operated human",
+        "score": 0.5780049283945285,
+        "meta": {
+          "z": 0.9562563465758389,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.7747803709290975,
+          "deltaPer10k": 1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "past face",
+        "score": 0.5780049283945285,
+        "meta": {
+          "z": 0.9562563465758389,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.7747803709290975,
+          "deltaPer10k": 1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "vehicles operated",
+        "score": 0.5780049283945285,
+        "meta": {
+          "z": 0.9562563465758389,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.7747803709290975,
+          "deltaPer10k": 1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "faced",
+        "score": 0.5581051452317894,
+        "meta": {
+          "z": 0.9562563465758389,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.7747803709290975,
+          "deltaPer10k": 1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "digital",
+        "score": -1.2199676395619632,
+        "meta": {
+          "z": -1.4947709663139759,
+          "countPrev": 12,
+          "countCurr": 0,
+          "per10kPrev": 10.116337885685383,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -10.116337885685383,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "digital assets",
+        "score": -1.1247545889400186,
+        "meta": {
+          "z": -1.4947709663139759,
+          "countPrev": 12,
+          "countCurr": 0,
+          "per10kPrev": 10.116337885685383,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -10.116337885685383,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "sensors",
+        "score": -0.8676500166233917,
+        "meta": {
+          "z": -0.9251029648603093,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.6860563142808969,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.6860563142808969,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "bitcoin",
+        "score": -0.755029168900344,
+        "meta": {
+          "z": -0.9251029648603093,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.6860563142808969,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.6860563142808969,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "gold",
+        "score": -0.755029168900344,
+        "meta": {
+          "z": -0.9251029648603093,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.6860563142808969,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.6860563142808969,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "intangible",
+        "score": -0.755029168900344,
+        "meta": {
+          "z": -0.9251029648603093,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.6860563142808969,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.6860563142808969,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "returns",
+        "score": -0.755029168900344,
+        "meta": {
+          "z": -0.9251029648603093,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.6860563142808969,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.6860563142808969,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "updated",
+        "score": -0.755029168900344,
+        "meta": {
+          "z": -0.9251029648603093,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.6860563142808969,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.6860563142808969,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "suspended",
+        "score": -0.7350893104815989,
+        "meta": {
+          "z": -1.0532064936645682,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.5290844714213456,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.5290844714213456,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "berlin gigafactory",
+        "score": -0.6961024989229623,
+        "meta": {
+          "z": -0.9251029648603093,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.6860563142808969,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.6860563142808969,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "intangible assets",
+        "score": -0.6961024989229623,
+        "meta": {
+          "z": -0.9251029648603093,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.6860563142808969,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.6860563142808969,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "multiple factories",
+        "score": -0.6961024989229623,
+        "meta": {
+          "z": -0.9251029648603093,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.6860563142808969,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.6860563142808969,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "secure digital",
+        "score": -0.6961024989229623,
+        "meta": {
+          "z": -0.9251029648603093,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.6860563142808969,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.6860563142808969,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "design engineering",
+        "score": -0.5591744043073307,
+        "meta": {
+          "z": -0.9251029648603093,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.6860563142808969,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.6860563142808969,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "manufactured gigafactory",
+        "score": -0.5591744043073307,
+        "meta": {
+          "z": -0.9251029648603093,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.6860563142808969,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.6860563142808969,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_risers_alt": [
+      {
+        "label": "regulations continue",
+        "score": 2.190535589185423,
+        "meta": {}
+      },
+      {
+        "label": "vehicles market",
+        "score": 2.190535589185423,
+        "meta": {}
+      },
+      {
+        "label": "management systems",
+        "score": 1.603419840108537,
+        "meta": {}
+      },
+      {
+        "label": "supply demand",
+        "score": 1.603419840108537,
+        "meta": {}
+      },
+      {
+        "label": "operating performance",
+        "score": 1.2938135083257247,
+        "meta": {}
+      },
+      {
+        "label": "products systems data",
+        "score": 1.2938135083257247,
+        "meta": {}
+      },
+      {
+        "label": "unable meet",
+        "score": 1.2938135083257247,
+        "meta": {}
+      },
+      {
+        "label": "Data privacy",
+        "score": 1.093599746844565,
+        "meta": {}
+      },
+      {
+        "label": "new vehicles",
+        "score": 0.8430029361043232,
+        "meta": {}
+      },
+      {
+        "label": "Interest rates",
+        "score": 0.6293796522935073,
+        "meta": {}
+      },
+      {
+        "label": "vehicles energy storage products",
+        "score": 0.18718920234766223,
+        "meta": {}
+      },
+      {
+        "label": "Supply chain",
+        "score": 0.06862040911433143,
+        "meta": {}
+      }
+    ],
+    "top_fallers_alt": [
+      {
+        "label": "assets time",
+        "score": -2.202815170032011,
+        "meta": {}
+      },
+      {
+        "label": "limited experience",
+        "score": -0.6847755748599793,
+        "meta": {}
+      },
+      {
+        "label": "ability make",
+        "score": -0.9632030577036357,
+        "meta": {}
+      },
+      {
+        "label": "production sales",
+        "score": -0.8553301791951338,
+        "meta": {}
+      },
+      {
+        "label": "sales model",
+        "score": -0.8553301791951338,
+        "meta": {}
+      },
+      {
+        "label": "vehicle production",
+        "score": -0.555756091735673,
+        "meta": {}
+      },
+      {
+        "label": "products systems",
+        "score": -0.34764392193178795,
+        "meta": {}
+      },
+      {
+        "label": "energy storage systems",
+        "score": -0.19542067054964107,
+        "meta": {}
+      },
+      {
+        "label": "operating results",
+        "score": -0.05210843052381109,
+        "meta": {}
+      },
+      {
+        "label": "laws regulations",
+        "score": -0.08208860601385792,
+        "meta": {}
+      },
+      {
+        "label": "Intellectual property",
+        "score": -0.0065537741183443465,
+        "meta": {}
+      },
+      {
+        "label": "product liability",
+        "score": -0.006406502623872434,
+        "meta": {}
+      },
+      {
+        "label": "financial results",
+        "score": -0.006401337595376866,
+        "meta": {}
+      },
+      {
+        "label": "products services",
+        "score": -0.006289777304890887,
+        "meta": {}
+      },
+      {
+        "label": "operating costs",
+        "score": -0.006243238445677868,
+        "meta": {}
+      }
+    ],
+    "summary_alt": "Adds emphasis on regulations continue, vehicles market, management systems; de-emphasizes assets time, limited experience, ability make."
+  },
+  "evidence": [
+    {
+      "year": 2022,
+      "paragraph_idx": 77,
+      "snippet": "The trading price of our common stock has been highly volatile and could continue to be subject to wide fluctuations in response to various factors, some of which are beyond our control. Our common stock has experienced over the last 52 weeks an intra-day trading high of $384.29 per share and a low of $101.81 per share, as adjusted to give effect to the three-for-one stock split in the form of a stock dividend in August 2022 (the \u201c2022 Stock Split\u201d). The stock market in general, and the market for technology companies in particular, has experienced extreme price and volume fluctuations that have often been unrelated or disproportionate to the operating performance of those companies. In particular, a large proportion of our common stock has been historically and may in the future be traded by short sellers which may put pressure on the supply and demand for our common stock, further influencing volatility in its market price. Public perception of our company or management and other factors outside of our control may additionally impact the stock price of companies like us that garner a disproportionate degree of public attention, regardless of actual operating performance. In addition, in the past, following periods of volatility in the overall market or the market price of our shares, securities class action litigation has been filed against us. While we defend such actions vigorously, any judgment against us or any future stockholder litigation could result in substantial costs and a diversion of our management\u2019s attention and resources.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "brandenburg",
+        "ira",
+        "split",
+        "stock split",
+        "conflict",
+        "gigafactories",
+        "operated",
+        "routes",
+        "export components",
+        "faced past",
+        "import export",
+        "operated human",
+        "past face",
+        "vehicles operated",
+        "faced",
+        "digital",
+        "digital assets",
+        "sensors",
+        "bitcoin",
+        "gold",
+        "intangible",
+        "returns",
+        "updated",
+        "suspended",
+        "berlin gigafactory",
+        "intangible assets",
+        "multiple factories",
+        "secure digital",
+        "design engineering",
+        "manufactured gigafactory"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 64,
+      "snippet": "We may be impacted by natural disasters, wars, health epidemics, weather conditions, the long-term effects of climate change, power outages or other events outside of our control. For example, our Fremont Factory and Gigafactory Nevada are located in seismically active regions in Northern California and Nevada, and our Gigafactory Shanghai is located in a flood-prone area. Moreover, the area in which our Gigafactory Texas is located experienced severe winter storms in the first quarter of 2021 that had a widespread impact on utilities and transportation. If major disasters such as earthquakes, floods or other climate-related events occur, or our information system or communication breaks down or operates improperly, our headquarters and production facilities may be seriously damaged, or we may have to stop or delay production and shipment of our products. In addition, the global COVID-19 pandemic has impacted economic markets, manufacturing operations, supply chains, employment and consumer behavior in nearly every geographic region and industry across the world, and we have been, and may in the future be, adversely affected as a result. Also, the broader consequences in the current conflict between Russia and Ukraine, which may include further embargoes, regional instability and geopolitical shifts; airspace bans relating to certain routes, or strategic decisions to alter certain routes; and potential retaliatory action by the Russian government against companies, and the extent of the conflict on our business and operating results cannot be predicted. We may incur expenses or delays relating to such events outside of our control, which could have a material adverse impact on our business, operating results and financial condition.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "brandenburg",
+        "ira",
+        "split",
+        "stock split",
+        "conflict",
+        "gigafactories",
+        "operated",
+        "routes",
+        "export components",
+        "faced past",
+        "import export",
+        "operated human",
+        "past face",
+        "vehicles operated",
+        "faced",
+        "digital",
+        "digital assets",
+        "sensors",
+        "bitcoin",
+        "gold",
+        "intangible",
+        "returns",
+        "updated",
+        "suspended",
+        "berlin gigafactory",
+        "intangible assets",
+        "multiple factories",
+        "secure digital",
+        "design engineering",
+        "manufactured gigafactory"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 26,
+      "snippet": "Our plan to grow the volume and profitability of our vehicles and energy storage products depends on significant lithium-ion battery cell production, including by our partner Panasonic at Gigafactory Nevada. We also produce several vehicle components at our Gigafactories, such as battery modules and packs and drive units, and manufacture energy storage products. In the past, some of the manufacturing lines for certain product components took longer than anticipated to ramp to their full capacity, and additional bottlenecks may arise in the future as we continue to increase the production rate and introduce new lines. In addition, as the IRA provides new incentives for domestic energy production and manufacturing, we may face increasing competition from other automobile manufacturers as well as suppliers for the resources and capacity to build additional factories and expand our operations domestically. If we are unable to or otherwise do not maintain and grow our respective operations, or if we are unable to do so cost-effectively or hire and retain highly-skilled personnel there, our ability to manufacture our products profitably would be limited, which may harm our business and operating results.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "brandenburg",
+        "ira",
+        "split",
+        "stock split",
+        "conflict",
+        "gigafactories",
+        "operated",
+        "routes",
+        "export components",
+        "faced past",
+        "import export",
+        "operated human",
+        "past face",
+        "vehicles operated",
+        "faced",
+        "digital",
+        "digital assets",
+        "sensors",
+        "bitcoin",
+        "gold",
+        "intangible",
+        "returns",
+        "updated",
+        "suspended",
+        "berlin gigafactory",
+        "intangible assets",
+        "multiple factories",
+        "secure digital",
+        "design engineering",
+        "manufactured gigafactory"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 64,
+      "snippet": "In January 2021, we updated our investment policy to provide us with more flexibility to further diversify and maximize returns on our cash that is not required to maintain adequate operating liquidity, allowing us to invest a portion of such cash in certain alternative reserve assets including digital assets, gold bullion, gold exchange-traded funds and other assets as specified in the future. Thereafter, we invested certain of such cash in bitcoin and also accepted bitcoin as a form of payment for sales of certain of our products in specified regions, subject to applicable laws, and suspended this practice in May 2021. We believe in the long-term potential of digital assets both as an investment and also as a liquid alternative to cash. As with any investment and consistent with how we manage fiat-based cash and cash equivalent accounts, we may increase or decrease our holdings of digital assets at any time based on the needs of the business and on our view of market and environmental conditions.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "brandenburg",
+        "ira",
+        "split",
+        "stock split",
+        "conflict",
+        "gigafactories",
+        "operated",
+        "routes",
+        "export components",
+        "faced past",
+        "import export",
+        "operated human",
+        "past face",
+        "vehicles operated",
+        "faced",
+        "digital",
+        "digital assets",
+        "sensors",
+        "bitcoin",
+        "gold",
+        "intangible",
+        "returns",
+        "updated",
+        "suspended",
+        "berlin gigafactory",
+        "intangible assets",
+        "multiple factories",
+        "secure digital",
+        "design engineering",
+        "manufactured gigafactory"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 67,
+      "snippet": "Finally, as intangible assets without centralized issuers or governing bodies, digital assets have been, and may in the future be, subject to security breaches, cyberattacks or other malicious activities, as well as human errors or computer malfunctions that may result in the loss or destruction of private keys needed to access such assets. While we intend to take all reasonable measures to secure any digital assets, if such threats are realized or the measures or controls we create or implement to secure our digital assets fail, it could result in a partial or total misappropriation or loss of our digital assets, and our financial condition and operating results may be harmed.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "brandenburg",
+        "ira",
+        "split",
+        "stock split",
+        "conflict",
+        "gigafactories",
+        "operated",
+        "routes",
+        "export components",
+        "faced past",
+        "import export",
+        "operated human",
+        "past face",
+        "vehicles operated",
+        "faced",
+        "digital",
+        "digital assets",
+        "sensors",
+        "bitcoin",
+        "gold",
+        "intangible",
+        "returns",
+        "updated",
+        "suspended",
+        "berlin gigafactory",
+        "intangible assets",
+        "multiple factories",
+        "secure digital",
+        "design engineering",
+        "manufactured gigafactory"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 66,
+      "snippet": "Moreover, digital assets are currently considered indefinite-lived intangible assets under applicable accounting rules, meaning that any decrease in their fair values below our carrying values for such assets at any time subsequent to their acquisition will require us to recognize impairment charges, whereas we may make no upward revisions for any market price increases until a sale, which may adversely affect our operating results in any period in which such impairment occurs. Moreover, there is no guarantee that future changes in GAAP will not require us to change the way we account for digital assets held by us.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "brandenburg",
+        "ira",
+        "split",
+        "stock split",
+        "conflict",
+        "gigafactories",
+        "operated",
+        "routes",
+        "export components",
+        "faced past",
+        "import export",
+        "operated human",
+        "past face",
+        "vehicles operated",
+        "faced",
+        "digital",
+        "digital assets",
+        "sensors",
+        "bitcoin",
+        "gold",
+        "intangible",
+        "returns",
+        "updated",
+        "suspended",
+        "berlin gigafactory",
+        "intangible assets",
+        "multiple factories",
+        "secure digital",
+        "design engineering",
+        "manufactured gigafactory"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.0206,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T05:55:33Z",
+    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "1839738d63d74d68a16b945be0db04fee83c5f7463f47628de3d75e5781f6108",
+      "curr_text_sha256": "dfa43be6764b7bd331039c9343b4b0f5e430637fb09a9150f0f191033958c371",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

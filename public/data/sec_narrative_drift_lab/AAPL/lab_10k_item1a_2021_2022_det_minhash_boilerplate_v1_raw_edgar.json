@@ -1,0 +1,73 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_minhash_boilerplate_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "AAPL",
+  "section": "10k_item1a",
+  "year_from": 2021,
+  "year_to": 2022,
+  "artifacts": {
+    "stats": {
+      "percent_reused": 0.8043478260869565,
+      "percent_new": 0.19565217391304346,
+      "reused_paragraphs": 74,
+      "total_paragraphs": 92
+    }
+  },
+  "evidence": [
+    {
+      "year": 2022,
+      "paragraph_idx": 1,
+      "snippet": "Because of the following factors, as well as other factors affecting the Company\u2019s results of operations and financial condition, past financial performance should not be considered to be a reliable indicator of future performance, and investors should not use historical trends to anticipate results or trends in future periods. This discussion of risk factors contains forward-looking statements.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 1,
+      "snippet": "Because of the following factors, as well as other factors affecting the Company\u2019s results of operations and financial condition, past financial performance should not be considered to be a reliable indicator of future performance, and investors should not use historical trends to anticipate results or trends in future periods. This discussion of risk factors contains forward-looking statements.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 2,
+      "snippet": "This section should be read in conjunction with Part II, Item 7, \u201cManagement\u2019s Discussion and Analysis of Financial Condition and Results of Operations\u201d and the consolidated financial statements and accompanying notes in Part II, Item 8, \u201cFinancial Statements and Supplementary Data\u201d of this Form 10-K.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 2,
+      "snippet": "This section should be read in conjunction with Part II, Item 7, \u201cManagement\u2019s Discussion and Analysis of Financial Condition and Results of Operations\u201d and the consolidated financial statements and accompanying notes in Part II, Item 8, \u201cFinancial Statements and Supplementary Data\u201d of this Form 10-K.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 3,
+      "snippet": "The Company\u2019s operations and performance depend significantly on global and regional economic conditions and adverse economic conditions can materially adversely affect the Company\u2019s business, results of operations and financial condition.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 8,
+      "snippet": "The Company\u2019s operations and performance depend significantly on global and regional economic conditions and adverse economic conditions can materially adversely affect the Company\u2019s business, results of operations and financial condition.",
+      "why": "Matching paragraph from prior year."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.19565217391304346,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T05:55:30Z",
+    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "0b8cc5d86739227e0a2a0bd0dd52adfdbcb5505e895f42c95f354fd20b1011d1",
+      "curr_text_sha256": "de8edd3ae5902c43e0f41fa7b52f05178ef9013c315bb6cf27cc43fba0cc2860",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

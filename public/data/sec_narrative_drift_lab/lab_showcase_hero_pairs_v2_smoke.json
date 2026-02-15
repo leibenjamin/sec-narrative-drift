@@ -1,0 +1,92 @@
+{
+  "version": "2.0",
+  "updated_at": "2026-02-02T23:14:03Z",
+  "section": "10k_item1a",
+  "source_id": "edgar",
+  "hero_pairs_per_ticker": {
+    "NVDA": [
+      {
+        "year_from": 2023,
+        "year_to": 2024,
+        "tags": [
+          "structure"
+        ],
+        "scores": {
+          "boilerplate_score": 0.163636,
+          "structure_score": 0.666667,
+          "drift_score": 0.119479,
+          "term_signal_score": 4.195862,
+          "meaningful_score": 0.099928,
+          "overall_score": 0.49088
+        },
+        "warnings": []
+      },
+      {
+        "year_from": 2024,
+        "year_to": 2025,
+        "tags": [
+          "boilerplate",
+          "most_recent"
+        ],
+        "scores": {
+          "boilerplate_score": 0.313043,
+          "structure_score": 0.012423,
+          "drift_score": 0.02381,
+          "term_signal_score": 1.007486,
+          "meaningful_score": 0.0,
+          "overall_score": 0.209814
+        },
+        "warnings": [
+          "no_distinctive_terms"
+        ]
+      }
+    ]
+  },
+  "full_scoring_table": {
+    "NVDA": [
+      {
+        "year_from": 2023,
+        "year_to": 2024,
+        "scores": {
+          "boilerplate_score": 0.163636,
+          "structure_score": 0.666667,
+          "drift_score": 0.119479,
+          "term_signal_score": 4.195862,
+          "meaningful_score": 0.099928,
+          "overall_score": 0.49088
+        },
+        "warnings": [],
+        "most_recent": false
+      },
+      {
+        "year_from": 2024,
+        "year_to": 2025,
+        "scores": {
+          "boilerplate_score": 0.313043,
+          "structure_score": 0.012423,
+          "drift_score": 0.02381,
+          "term_signal_score": 1.007486,
+          "meaningful_score": 0.0,
+          "overall_score": 0.209814
+        },
+        "warnings": [
+          "no_distinctive_terms"
+        ],
+        "most_recent": true
+      }
+    ]
+  },
+  "selection_rules": [
+    "High boilerplate hero: max boilerplate_score, require no missing_text.",
+    "Structure hero: max structure_score, require no missing_text.",
+    "Meaningful hero: maximize drift_score * (1 - boilerplate_score) * term_signal_norm, exclude missing_text and missing_term_shift.",
+    "Most recent hero: newest adjacent pair available (prefer 2024-2025 if present).",
+    "Ensure at least 3 hero pairs per ticker; fill with highest overall_score.",
+    "Cap hero pairs at 5 per ticker.",
+    "Scores computed on raw lens; proxy metrics used when lab outputs missing."
+  ],
+  "provenance": {
+    "build_utc": "2026-02-02T23:14:03Z",
+    "script_version": "select_showcase_hero_pairs.py@v1"
+  }
+}

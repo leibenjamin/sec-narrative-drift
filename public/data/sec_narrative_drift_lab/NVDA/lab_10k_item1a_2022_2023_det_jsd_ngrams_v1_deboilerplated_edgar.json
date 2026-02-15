@@ -1,0 +1,154 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_jsd_ngrams_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "NVDA",
+  "section": "10k_item1a",
+  "year_from": 2022,
+  "year_to": 2023,
+  "artifacts": {
+    "ranked_items": [
+      {
+        "label": "china",
+        "score": 0.0007926652171415514
+      },
+      {
+        "label": "cloud",
+        "score": 0.00037394904698527184
+      },
+      {
+        "label": "regulators",
+        "score": 0.0003735873727468012
+      },
+      {
+        "label": "past",
+        "score": 0.0003339343931578228
+      },
+      {
+        "label": "payment",
+        "score": 0.0002801905295601009
+      },
+      {
+        "label": "threat actors",
+        "score": 0.00024339783375927954
+      },
+      {
+        "label": "threat",
+        "score": 0.00024339783375927954
+      },
+      {
+        "label": "cards",
+        "score": 0.00024339783375927954
+      },
+      {
+        "label": "actors",
+        "score": 0.00024339783375927954
+      },
+      {
+        "label": "cloud service",
+        "score": 0.0002334921079667507
+      },
+      {
+        "label": "impact financial",
+        "score": 0.0002334921079667507
+      },
+      {
+        "label": "architectures",
+        "score": 0.0002334921079667507
+      },
+      {
+        "label": "usg",
+        "score": 0.0002334921079667507
+      },
+      {
+        "label": "transitions",
+        "score": 0.00021762772731970736
+      },
+      {
+        "label": "recorded",
+        "score": 0.0001867936863734006
+      },
+      {
+        "label": "content",
+        "score": 0.0001867936863734006
+      },
+      {
+        "label": "agreements",
+        "score": 0.0001867936863734006
+      },
+      {
+        "label": "ai cloud",
+        "score": 0.0001867936863734006
+      },
+      {
+        "label": "lockdowns",
+        "score": 0.0001867936863734006
+      },
+      {
+        "label": "license requirements",
+        "score": 0.0001867936863734006
+      }
+    ],
+    "stats": {
+      "jsd": 0.248195,
+      "tokens_prev": 4109,
+      "tokens_curr": 5354
+    }
+  },
+  "evidence": [
+    {
+      "year": 2023,
+      "paragraph_idx": 8,
+      "snippet": "\u2022 Our operating results have in the past fluctuated and may in the future fluctuate, and if our operating results are below the expectations of securities analysts or investors, our stock price could decline.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "past"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 10,
+      "snippet": "\u2022 Increased scrutiny from shareholders, regulators, and others regarding our environmental, social and governance responsibilities could result in financial, reputational and operational harm.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "regulators"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 20,
+      "snippet": "It is difficult for us to estimate with any reasonable degree of precision the past or current impact of cryptocurrency mining, or forecast the future impact of cryptocurrency mining, on demand for our products.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "past"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 37,
+      "snippet": "\u2022 decrease in future demand, decrease in the cost of supply chain materials, or changes in the design of future products where we have entered into long-term supply commitments, including prepayments, particularly to the extent we are placing orders well in advance of our historical lead times and/or before the design of those products is final.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "payment"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.248195,
+    "confidence": 1.0,
+    "coverage": 0.6946768589298123,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T05:55:31Z",
+    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "f9d680b55eeb9b0b3c191801569738e3704083c4e3f55e5c24b46194143c56dc",
+      "curr_text_sha256": "3d36f90bfc94e8a3354daf84ba4fe8a6bac6bc4e03aa9ce4e58ab7135d329d3c",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

@@ -1,0 +1,981 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_logodds_terms_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "TSLA",
+  "section": "10k_item1a",
+  "year_from": 2022,
+  "year_to": 2023,
+  "artifacts": {
+    "top_risers": [
+      {
+        "label": "jurisdiction",
+        "score": 0.7783193027938149,
+        "meta": {
+          "z": 0.9536393086259728,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8521948508983146,
+          "deltaPer10k": 1.8521948508983146,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "identify",
+        "score": 0.3580737137139454,
+        "meta": {
+          "z": 0.9715313030979205,
+          "countPrev": 1,
+          "countCurr": 3,
+          "per10kPrev": 0.8873901854645487,
+          "per10kCurr": 2.7782922763474716,
+          "deltaPer10k": 1.8909020908829228,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "face challenges",
+        "score": 0.3536640153476215,
+        "meta": {
+          "z": 0.5851048020836552,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 0.8873901854645487,
+          "per10kCurr": 1.8521948508983146,
+          "deltaPer10k": 0.9648046654337659,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "provide benefits",
+        "score": 0.3536640153476215,
+        "meta": {
+          "z": 0.5851048020836552,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 0.8873901854645487,
+          "per10kCurr": 1.8521948508983146,
+          "deltaPer10k": 0.9648046654337659,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "capability features",
+        "score": 0.29182646995804384,
+        "meta": {
+          "z": 0.4828002328134551,
+          "countPrev": 2,
+          "countCurr": 3,
+          "per10kPrev": 1.7747803709290975,
+          "per10kCurr": 2.7782922763474716,
+          "deltaPer10k": 1.003511905418374,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "assemble",
+        "score": 0.27713222229489426,
+        "meta": {
+          "z": 0.5851048020836552,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 0.8873901854645487,
+          "per10kCurr": 1.8521948508983146,
+          "deltaPer10k": 0.9648046654337659,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "unavailable",
+        "score": 0.27713222229489426,
+        "meta": {
+          "z": 0.5851048020836552,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 0.8873901854645487,
+          "per10kCurr": 1.8521948508983146,
+          "deltaPer10k": 0.9648046654337659,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "working",
+        "score": 0.27713222229489426,
+        "meta": {
+          "z": 0.5851048020836552,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 0.8873901854645487,
+          "per10kCurr": 1.8521948508983146,
+          "deltaPer10k": 0.9648046654337659,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "assemble domestically",
+        "score": 0.275316371128901,
+        "meta": {
+          "z": 0.5851048020836552,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 0.8873901854645487,
+          "per10kCurr": 1.8521948508983146,
+          "deltaPer10k": 0.9648046654337659,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "benefits manufacturers",
+        "score": 0.275316371128901,
+        "meta": {
+          "z": 0.5851048020836552,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 0.8873901854645487,
+          "per10kCurr": 1.8521948508983146,
+          "deltaPer10k": 0.9648046654337659,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "domestically local",
+        "score": 0.275316371128901,
+        "meta": {
+          "z": 0.5851048020836552,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 0.8873901854645487,
+          "per10kCurr": 1.8521948508983146,
+          "deltaPer10k": 0.9648046654337659,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "local suppliers",
+        "score": 0.275316371128901,
+        "meta": {
+          "z": 0.5851048020836552,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 0.8873901854645487,
+          "per10kCurr": 1.8521948508983146,
+          "deltaPer10k": 0.9648046654337659,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "manufacturers assemble",
+        "score": 0.275316371128901,
+        "meta": {
+          "z": 0.5851048020836552,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 0.8873901854645487,
+          "per10kCurr": 1.8521948508983146,
+          "deltaPer10k": 0.9648046654337659,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "fsd capability",
+        "score": 0.23719455854412214,
+        "meta": {
+          "z": 0.39241672663775556,
+          "countPrev": 4,
+          "countCurr": 5,
+          "per10kPrev": 3.549560741858195,
+          "per10kCurr": 4.630487127245786,
+          "deltaPer10k": 1.080926385387591,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "north",
+        "score": 0.15751383952797263,
+        "meta": {
+          "z": 0.5851048020836552,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 0.8873901854645487,
+          "per10kCurr": 1.8521948508983146,
+          "deltaPer10k": 0.9648046654337659,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_fallers": [
+      {
+        "label": "Pandemic",
+        "score": -0.9862116592656084,
+        "meta": {
+          "z": -1.6897732735435633,
+          "countPrev": 8,
+          "countCurr": 2,
+          "per10kPrev": 7.09912148371639,
+          "per10kCurr": 1.8521948508983146,
+          "deltaPer10k": -5.2469266328180755,
+          "distinctive": false,
+          "includes": [
+            "pandemic"
+          ]
+        }
+      },
+      {
+        "label": "brandenburg",
+        "score": -0.8701091742073346,
+        "meta": {
+          "z": -0.9277249598218466,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7747803709290975,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ira",
+        "score": -0.8701091742073346,
+        "meta": {
+          "z": -0.9277249598218466,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7747803709290975,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "circuit",
+        "score": -0.757169128182573,
+        "meta": {
+          "z": -0.9277249598218466,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7747803709290975,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "split",
+        "score": -0.757169128182573,
+        "meta": {
+          "z": -0.9277249598218466,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7747803709290975,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "COVID-19",
+        "score": -0.7475336095586025,
+        "meta": {
+          "z": -1.2808227347953898,
+          "countPrev": 6,
+          "countCurr": 2,
+          "per10kPrev": 5.324341112787292,
+          "per10kCurr": 1.8521948508983146,
+          "deltaPer10k": -3.4721462618889776,
+          "distinctive": false,
+          "includes": [
+            "covid"
+          ]
+        }
+      },
+      {
+        "label": "stock split",
+        "score": -0.6980754438968929,
+        "meta": {
+          "z": -0.9277249598218466,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7747803709290975,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "person",
+        "score": -0.6475090166403829,
+        "meta": {
+          "z": -0.9277249598218466,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7747803709290975,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "shutdowns",
+        "score": -0.6475090166403829,
+        "meta": {
+          "z": -0.9277249598218466,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7747803709290975,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "temporary",
+        "score": -0.6475090166403829,
+        "meta": {
+          "z": -0.9277249598218466,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7747803709290975,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "berlin",
+        "score": -0.5414532152288983,
+        "meta": {
+          "z": -0.9277249598218466,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7747803709290975,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "settlement",
+        "score": -0.4490401424305783,
+        "meta": {
+          "z": -1.2183428663165377,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 4.436950927322743,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.436950927322743,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "appointed",
+        "score": -0.4394126981666964,
+        "meta": {
+          "z": -0.9277249598218466,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7747803709290975,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "created",
+        "score": -0.4394126981666964,
+        "meta": {
+          "z": -0.9277249598218466,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7747803709290975,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "district",
+        "score": -0.4394126981666964,
+        "meta": {
+          "z": -0.9277249598218466,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7747803709290975,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7747803709290975,
+          "distinctive": false
+        }
+      }
+    ],
+    "summary": "Adds emphasis on jurisdiction, identify, face challenges; de-emphasizes Pandemic, brandenburg, ira.",
+    "ranked_items": [
+      {
+        "label": "jurisdiction",
+        "score": 0.7783193027938149,
+        "meta": {
+          "z": 0.9536393086259728,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8521948508983146,
+          "deltaPer10k": 1.8521948508983146,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "identify",
+        "score": 0.3580737137139454,
+        "meta": {
+          "z": 0.9715313030979205,
+          "countPrev": 1,
+          "countCurr": 3,
+          "per10kPrev": 0.8873901854645487,
+          "per10kCurr": 2.7782922763474716,
+          "deltaPer10k": 1.8909020908829228,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "face challenges",
+        "score": 0.3536640153476215,
+        "meta": {
+          "z": 0.5851048020836552,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 0.8873901854645487,
+          "per10kCurr": 1.8521948508983146,
+          "deltaPer10k": 0.9648046654337659,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "provide benefits",
+        "score": 0.3536640153476215,
+        "meta": {
+          "z": 0.5851048020836552,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 0.8873901854645487,
+          "per10kCurr": 1.8521948508983146,
+          "deltaPer10k": 0.9648046654337659,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "capability features",
+        "score": 0.29182646995804384,
+        "meta": {
+          "z": 0.4828002328134551,
+          "countPrev": 2,
+          "countCurr": 3,
+          "per10kPrev": 1.7747803709290975,
+          "per10kCurr": 2.7782922763474716,
+          "deltaPer10k": 1.003511905418374,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "assemble",
+        "score": 0.27713222229489426,
+        "meta": {
+          "z": 0.5851048020836552,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 0.8873901854645487,
+          "per10kCurr": 1.8521948508983146,
+          "deltaPer10k": 0.9648046654337659,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "unavailable",
+        "score": 0.27713222229489426,
+        "meta": {
+          "z": 0.5851048020836552,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 0.8873901854645487,
+          "per10kCurr": 1.8521948508983146,
+          "deltaPer10k": 0.9648046654337659,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "working",
+        "score": 0.27713222229489426,
+        "meta": {
+          "z": 0.5851048020836552,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 0.8873901854645487,
+          "per10kCurr": 1.8521948508983146,
+          "deltaPer10k": 0.9648046654337659,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "assemble domestically",
+        "score": 0.275316371128901,
+        "meta": {
+          "z": 0.5851048020836552,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 0.8873901854645487,
+          "per10kCurr": 1.8521948508983146,
+          "deltaPer10k": 0.9648046654337659,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "benefits manufacturers",
+        "score": 0.275316371128901,
+        "meta": {
+          "z": 0.5851048020836552,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 0.8873901854645487,
+          "per10kCurr": 1.8521948508983146,
+          "deltaPer10k": 0.9648046654337659,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "domestically local",
+        "score": 0.275316371128901,
+        "meta": {
+          "z": 0.5851048020836552,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 0.8873901854645487,
+          "per10kCurr": 1.8521948508983146,
+          "deltaPer10k": 0.9648046654337659,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "local suppliers",
+        "score": 0.275316371128901,
+        "meta": {
+          "z": 0.5851048020836552,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 0.8873901854645487,
+          "per10kCurr": 1.8521948508983146,
+          "deltaPer10k": 0.9648046654337659,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "manufacturers assemble",
+        "score": 0.275316371128901,
+        "meta": {
+          "z": 0.5851048020836552,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 0.8873901854645487,
+          "per10kCurr": 1.8521948508983146,
+          "deltaPer10k": 0.9648046654337659,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "fsd capability",
+        "score": 0.23719455854412214,
+        "meta": {
+          "z": 0.39241672663775556,
+          "countPrev": 4,
+          "countCurr": 5,
+          "per10kPrev": 3.549560741858195,
+          "per10kCurr": 4.630487127245786,
+          "deltaPer10k": 1.080926385387591,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "north",
+        "score": 0.15751383952797263,
+        "meta": {
+          "z": 0.5851048020836552,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 0.8873901854645487,
+          "per10kCurr": 1.8521948508983146,
+          "deltaPer10k": 0.9648046654337659,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "Pandemic",
+        "score": -0.9862116592656084,
+        "meta": {
+          "z": -1.6897732735435633,
+          "countPrev": 8,
+          "countCurr": 2,
+          "per10kPrev": 7.09912148371639,
+          "per10kCurr": 1.8521948508983146,
+          "deltaPer10k": -5.2469266328180755,
+          "distinctive": false,
+          "includes": [
+            "pandemic"
+          ]
+        }
+      },
+      {
+        "label": "brandenburg",
+        "score": -0.8701091742073346,
+        "meta": {
+          "z": -0.9277249598218466,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7747803709290975,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ira",
+        "score": -0.8701091742073346,
+        "meta": {
+          "z": -0.9277249598218466,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7747803709290975,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "circuit",
+        "score": -0.757169128182573,
+        "meta": {
+          "z": -0.9277249598218466,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7747803709290975,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "split",
+        "score": -0.757169128182573,
+        "meta": {
+          "z": -0.9277249598218466,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7747803709290975,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "COVID-19",
+        "score": -0.7475336095586025,
+        "meta": {
+          "z": -1.2808227347953898,
+          "countPrev": 6,
+          "countCurr": 2,
+          "per10kPrev": 5.324341112787292,
+          "per10kCurr": 1.8521948508983146,
+          "deltaPer10k": -3.4721462618889776,
+          "distinctive": false,
+          "includes": [
+            "covid"
+          ]
+        }
+      },
+      {
+        "label": "stock split",
+        "score": -0.6980754438968929,
+        "meta": {
+          "z": -0.9277249598218466,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7747803709290975,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "person",
+        "score": -0.6475090166403829,
+        "meta": {
+          "z": -0.9277249598218466,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7747803709290975,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "shutdowns",
+        "score": -0.6475090166403829,
+        "meta": {
+          "z": -0.9277249598218466,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7747803709290975,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "temporary",
+        "score": -0.6475090166403829,
+        "meta": {
+          "z": -0.9277249598218466,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7747803709290975,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "berlin",
+        "score": -0.5414532152288983,
+        "meta": {
+          "z": -0.9277249598218466,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7747803709290975,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "settlement",
+        "score": -0.4490401424305783,
+        "meta": {
+          "z": -1.2183428663165377,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 4.436950927322743,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.436950927322743,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "appointed",
+        "score": -0.4394126981666964,
+        "meta": {
+          "z": -0.9277249598218466,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7747803709290975,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "created",
+        "score": -0.4394126981666964,
+        "meta": {
+          "z": -0.9277249598218466,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7747803709290975,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "district",
+        "score": -0.4394126981666964,
+        "meta": {
+          "z": -0.9277249598218466,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7747803709290975,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7747803709290975,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_risers_alt": [
+      {
+        "label": "electric vehicles",
+        "score": 0.4345163283880056,
+        "meta": {}
+      },
+      {
+        "label": "information technology",
+        "score": 2.1723943984907343,
+        "meta": {}
+      },
+      {
+        "label": "information technology systems",
+        "score": 2.1723943984907343,
+        "meta": {}
+      },
+      {
+        "label": "ability make",
+        "score": 0.9326887505880883,
+        "meta": {}
+      },
+      {
+        "label": "Data privacy",
+        "score": 0.2657434575487905,
+        "meta": {}
+      },
+      {
+        "label": "Intellectual property",
+        "score": 0.06824789011586052,
+        "meta": {}
+      },
+      {
+        "label": "laws regulations",
+        "score": 0.05051063486101981,
+        "meta": {}
+      }
+    ],
+    "top_fallers_alt": [
+      {
+        "label": "regulations continue",
+        "score": -2.220772381315812,
+        "meta": {}
+      },
+      {
+        "label": "vehicles market",
+        "score": -2.220772381315812,
+        "meta": {}
+      },
+      {
+        "label": "labor shortages",
+        "score": -1.630591477990576,
+        "meta": {}
+      },
+      {
+        "label": "Supply chain",
+        "score": -0.18058124774267137,
+        "meta": {}
+      },
+      {
+        "label": "vehicles energy storage products",
+        "score": -0.2178448963930011,
+        "meta": {}
+      },
+      {
+        "label": "operating results",
+        "score": -0.02860940935203149,
+        "meta": {}
+      },
+      {
+        "label": "product liability",
+        "score": -0.02522330000382489,
+        "meta": {}
+      },
+      {
+        "label": "financial results",
+        "score": -0.025203282886592238,
+        "meta": {}
+      },
+      {
+        "label": "products services",
+        "score": -0.02477080684998967,
+        "meta": {}
+      },
+      {
+        "label": "operating costs",
+        "score": -0.024590324149306397,
+        "meta": {}
+      },
+      {
+        "label": "new products",
+        "score": -0.024476611679853377,
+        "meta": {}
+      },
+      {
+        "label": "products systems",
+        "score": -0.024467748606451956,
+        "meta": {}
+      },
+      {
+        "label": "energy storage systems",
+        "score": -0.0244577617742312,
+        "meta": {}
+      },
+      {
+        "label": "harm business financial",
+        "score": -0.0244577617742312,
+        "meta": {}
+      },
+      {
+        "label": "harm financial",
+        "score": -0.0244577617742312,
+        "meta": {}
+      }
+    ],
+    "summary_alt": "Adds emphasis on electric vehicles, information technology, information technology systems; de-emphasizes regulations continue, vehicles market, labor shortages."
+  },
+  "evidence": [
+    {
+      "year": 2023,
+      "paragraph_idx": 3,
+      "snippet": "Unexpected changes in business conditions, materials pricing, including inflation of raw material costs, labor issues, wars, trade policies, natural disasters, health epidemics such as the global COVID-19 pandemic, trade and shipping disruptions, port congestions, cyberattacks and other factors beyond our or our suppliers\u2019 control could also affect these suppliers\u2019 ability to deliver components to us or to remain solvent and operational.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "pandemic"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 16,
+      "snippet": "In addition, certain government and economic incentives which provide benefits to manufacturers who assemble domestically or have local suppliers, may provide a greater benefit to our competitors, which could negatively impact our profitability.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "provide benefits"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 1,
+      "snippet": "Global trade conditions and consumer trends that originated during the pandemic continue to persist and may also have long-lasting adverse impact on us and our industries independently of the progress of the pandemic.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "pandemic"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 2,
+      "snippet": "For example, pandemic-related issues have exacerbated port congestion and intermittent supplier shutdowns and delays, resulting in additional expenses to expedite delivery of critical parts.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "pandemic"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.0104,
+    "confidence": 1.0,
+    "coverage": 0.20818539063191013,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T05:55:35Z",
+    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "4172ad8823c2cf83b659f9a54a8503ef61770b8f6ee2a42bca462041c8964d22",
+      "curr_text_sha256": "069a38a3c35691c4ce8a61ae5738104cc46c926b7998a3bc27b4eb5e4c675588",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

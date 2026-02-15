@@ -1,0 +1,73 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_minhash_boilerplate_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "AAPL",
+  "section": "10k_item1a",
+  "year_from": 2021,
+  "year_to": 2022,
+  "artifacts": {
+    "stats": {
+      "percent_reused": 0.12280701754385964,
+      "percent_new": 0.8771929824561404,
+      "reused_paragraphs": 7,
+      "total_paragraphs": 57
+    }
+  },
+  "evidence": [
+    {
+      "year": 2022,
+      "paragraph_idx": 23,
+      "snippet": "In addition, because of technological changes in the industries in which the Company currently competes or in the future may compete, current extensive patent coverage and the rapid rate of issuance of new patents, the Company\u2019s products and services can unknowingly infringe existing patents or intellectual property rights of others.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 21,
+      "snippet": "In addition, because of technological changes in the industries in which the Company currently competes or in the future may compete, current extensive patent coverage and the rapid rate of issuance of new patents, the Company\u2019s products and services may unknowingly infringe existing patents or intellectual property rights of others.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 52,
+      "snippet": "The Company could also experience a significant increase in payment card transaction costs or lose the ability to process payment cards if it fails to follow payment card industry data security standards, which could materially adversely affect the Company\u2019s business, reputation, results of operations and financial condition.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 40,
+      "snippet": "The Company could also experience a significant increase in payment card transaction costs or lose the ability to process payment cards if it fails to follow payment card industry data security standards, which would materially adversely affect the Company\u2019s business, reputation, results of operations and financial condition.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 56,
+      "snippet": "As of September 24, 2022, the Company\u2019s vendor non-trade receivables and prepayments related to long-term supply agreements were concentrated among a few individual vendors located primarily in Asia.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 44,
+      "snippet": "As of September 25, 2021, the Company\u2019s vendor non-trade receivables and prepayments related to long-term supply agreements were concentrated among a few individual vendors located primarily in Asia.",
+      "why": "Matching paragraph from prior year."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.8771929824561404,
+    "confidence": 1.0,
+    "coverage": 0.20838389740362862,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T05:55:30Z",
+    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "67c5b4e8f390cf2ddcbd64d6d848829c57b7f6d8bc115301ce13c3ef5ad0b795",
+      "curr_text_sha256": "8716db1eef9115278cff4425df1599aae9c0f25fee82ad20c451fb090682fee2",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

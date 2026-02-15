@@ -1,0 +1,55 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_winnowing_fingerprint_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "TSLA",
+  "section": "10k_item1a",
+  "year_from": 2021,
+  "year_to": 2022,
+  "artifacts": {
+    "stats": {
+      "shared_fingerprints": 6228,
+      "prev_fingerprints": 11182,
+      "curr_fingerprints": 9256,
+      "shared_ratio": 0.6728608470181504
+    }
+  },
+  "evidence": [
+    {
+      "year": 2022,
+      "paragraph_idx": 0,
+      "snippet": "ITEM 1A.\n\nRISK FACTORS\n\nGovernment regulations and shifting social behaviors have, at times, limited or closed non-essenti",
+      "why": "Shared fingerprint span."
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 0,
+      "snippet": "ITEM 1A.\n\nRISK FACTORS\n\nGovernment regulations and shifting social behaviors have, at times, limited or closed non-essential ",
+      "why": "Shared fingerprint span."
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 0,
+      "snippet": "ITEM 1A.\n\nRISK FACTORS\n\nGovernment regulations and shifting social behaviors have, at times, limited or closed non-essential tran",
+      "why": "Shared fingerprint span."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.6728608470181504,
+    "confidence": 1.0,
+    "coverage": 0.28048647799122306,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T05:55:34Z",
+    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "fcf1afd46bdd21f36990fb527c8ae8c2503a2ccb3d5d486c90c6d867a2511139",
+      "curr_text_sha256": "107339d220df7bb549893a22d9901fb1cb2dc26dca96fe5fcbe8004a568b5c5a",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

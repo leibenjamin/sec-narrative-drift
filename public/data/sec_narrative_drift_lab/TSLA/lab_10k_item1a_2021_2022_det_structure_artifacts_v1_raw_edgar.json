@@ -1,0 +1,95 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_structure_artifacts_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "TSLA",
+  "section": "10k_item1a",
+  "year_from": 2021,
+  "year_to": 2022,
+  "artifacts": {
+    "stats": {
+      "headings_prev": [
+        "ITEM 1A. RISK FACTORS",
+        "Note 11, Debt",
+        "ITEM 1B. UNRESOLVED STAFF COMMENTS"
+      ],
+      "headings_curr": [
+        "ITEM 1A.",
+        "RISK FACTORS",
+        "Debt",
+        "ITEM 1B."
+      ],
+      "headings_added": [
+        "ITEM 1A.",
+        "RISK FACTORS",
+        "Debt",
+        "ITEM 1B."
+      ],
+      "headings_removed": [
+        "ITEM 1A. RISK FACTORS",
+        "Note 11, Debt",
+        "ITEM 1B. UNRESOLVED STAFF COMMENTS"
+      ],
+      "paragraph_count_prev": 93,
+      "paragraph_count_curr": 83,
+      "length_chars_prev": 87655,
+      "length_chars_curr": 82717
+    }
+  },
+  "evidence": [
+    {
+      "year": 2022,
+      "paragraph_idx": 0,
+      "snippet": "ITEM 1A.",
+      "why": "Heading added: ITEM 1A."
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 0,
+      "snippet": "You should carefully consider the risks described below together with the other information set forth in this report, which could materially affect our business, financial condition and future results. The risks described below are not the only risks facing our company. Risks and uncertainties not currently known to us or that we currently deem to be immaterial also may materially adversely affect our business, financial condition and operating results.",
+      "why": "Heading added: RISK FACTORS"
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 59,
+      "snippet": ", to the consolidated financial statements included elsewhere in this Annual Report on Form 10-K). Our consolidated indebtedness may increase our vulnerability to any generally adverse economic and industry conditions. We and our subsidiaries may, subject to the limitations in the terms of our existing and future indebtedness, incur additional debt, secure existing or future debt or recapitalize our debt.",
+      "why": "Heading added: Debt"
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 0,
+      "snippet": "You should carefully consider the risks described below together with the other information set forth in this report, which could materially affect our business, financial condition and future results. The risks described below are not the only risks facing our company. Risks and uncertainties not currently known to us or that we currently deem to be immaterial also may materially adversely affect our business, financial condition and operating results.",
+      "why": "Heading removed: ITEM 1A. RISK FACTORS"
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 68,
+      "snippet": ", to the consolidated financial statements included elsewhere in this Annual Report on Form 10-K). Our consolidated indebtedness may increase our vulnerability to any generally adverse economic and industry conditions. We and our subsidiaries may, subject to the limitations in the terms of our existing and future indebtedness, incur additional debt, secure existing or future debt or recapitalize our debt.",
+      "why": "Heading removed: Note 11, Debt"
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 0,
+      "snippet": "ITEM 1B. UNRESOLVED STAFF COMMENTS",
+      "why": "Heading removed: ITEM 1B. UNRESOLVED STAFF COMMENTS"
+    }
+  ],
+  "metrics": {
+    "drift_score": 1.0,
+    "confidence": 0.35,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T05:55:34Z",
+    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "1839738d63d74d68a16b945be0db04fee83c5f7463f47628de3d75e5781f6108",
+      "curr_text_sha256": "dfa43be6764b7bd331039c9343b4b0f5e430637fb09a9150f0f191033958c371",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

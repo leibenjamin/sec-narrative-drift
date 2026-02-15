@@ -1,0 +1,55 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_winnowing_fingerprint_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "TSLA",
+  "section": "10k_item1a",
+  "year_from": 2020,
+  "year_to": 2021,
+  "artifacts": {
+    "stats": {
+      "shared_fingerprints": 28387,
+      "prev_fingerprints": 33564,
+      "curr_fingerprints": 34998,
+      "shared_ratio": 0.8457573590751997
+    }
+  },
+  "evidence": [
+    {
+      "year": 2021,
+      "paragraph_idx": 0,
+      "snippet": "ITEM 1A. RISK FACTORS\n\nYou should carefully consider the risks described below together with the other information set fo",
+      "why": "Shared fingerprint span."
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 0,
+      "snippet": "ITEM 1A. RISK FACTORS\n\nYou should carefully consider the risks described below together with the other information set forth",
+      "why": "Shared fingerprint span."
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 0,
+      "snippet": "ITEM 1A. RISK FACTORS\n\nYou should carefully consider the risks described below together with the other information set forth in ",
+      "why": "Shared fingerprint span."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.8457573590751997,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T05:55:33Z",
+    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "7f0ca2fc7979aec4fd9b7fa10914ddff66b78d595807a140c9d00bcebab5ff20",
+      "curr_text_sha256": "1839738d63d74d68a16b945be0db04fee83c5f7463f47628de3d75e5781f6108",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

@@ -1,0 +1,136 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_jsd_ngrams_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "AAPL",
+  "section": "10k_item1a",
+  "year_from": 2023,
+  "year_to": 2024,
+  "artifacts": {
+    "ranked_items": [
+      {
+        "label": "ios ipados",
+        "score": 0.00035103115401491884
+      },
+      {
+        "label": "ios",
+        "score": 0.00035103115401491884
+      },
+      {
+        "label": "ipados",
+        "score": 0.00035103115401491884
+      },
+      {
+        "label": "geopolitical tensions",
+        "score": 0.00021939447125932427
+      },
+      {
+        "label": "tensions conflict",
+        "score": 0.00021939447125932427
+      },
+      {
+        "label": "geopolitical",
+        "score": 0.00021939447125932427
+      },
+      {
+        "label": "dma",
+        "score": 0.00021939447125932427
+      },
+      {
+        "label": "outside app",
+        "score": 0.00017817371937639198
+      },
+      {
+        "label": "ipados app",
+        "score": 0.00017551557700745942
+      },
+      {
+        "label": "implemented changes",
+        "score": 0.00017551557700745942
+      },
+      {
+        "label": "apps alternative",
+        "score": 0.00017551557700745942
+      },
+      {
+        "label": "ipados apps",
+        "score": 0.00017551557700745942
+      },
+      {
+        "label": "contingencies",
+        "score": 0.00013363028953229398
+      },
+      {
+        "label": "business supply",
+        "score": 0.00013163668275559457
+      },
+      {
+        "label": "disputes geopolitical",
+        "score": 0.00013163668275559457
+      },
+      {
+        "label": "tensions",
+        "score": 0.00012422376417629914
+      },
+      {
+        "label": "apps",
+        "score": 0.00012026948652732918
+      },
+      {
+        "label": "disputes war",
+        "score": 8.908685968819599e-05
+      },
+      {
+        "label": "extent allows",
+        "score": 8.908685968819599e-05
+      },
+      {
+        "label": "result legislative",
+        "score": 8.908685968819599e-05
+      }
+    ],
+    "stats": {
+      "jsd": 0.034458,
+      "tokens_prev": 5613,
+      "tokens_curr": 5698
+    }
+  },
+  "evidence": [
+    {
+      "year": 2024,
+      "paragraph_idx": 8,
+      "snippet": "The Company\u2019s business can be impacted by political events, trade and other international disputes, geopolitical tensions, conflict, terrorism, natural disasters, public health issues, industrial accidents and other business interruptions.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "geopolitical tensions"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 9,
+      "snippet": "Political events, trade and other international disputes, geopolitical tensions, conflict, terrorism, natural disasters, public health issues, industrial accidents and other business interruptions can have a material adverse effect on the Company and its customers, employees, suppliers, contract manufacturers, logistics providers, distributors, cellular network carriers and other channel partners.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "geopolitical tensions"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.034458,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T05:55:28Z",
+    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "faba2351b5eb0944e50e21e04903e09b7c829528c0030d25be54f3f995f225d9",
+      "curr_text_sha256": "40acafe56d3ef736e5a8a6241c2088969b438d2b59812fbe401f5c4f78bf453a",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

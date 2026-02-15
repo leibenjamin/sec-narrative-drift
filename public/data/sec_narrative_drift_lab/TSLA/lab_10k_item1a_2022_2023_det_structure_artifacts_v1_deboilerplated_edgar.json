@@ -1,0 +1,87 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_structure_artifacts_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "TSLA",
+  "section": "10k_item1a",
+  "year_from": 2022,
+  "year_to": 2023,
+  "artifacts": {
+    "stats": {
+      "headings_prev": [
+        "ITEM 1A.",
+        "RISK FACTORS",
+        "Debt",
+        "ITEM 1B."
+      ],
+      "headings_curr": [
+        "ITEM 1A. RISK FACTORS",
+        "ITEM 1B. UNRESOLVED STAFF COMMENTS"
+      ],
+      "headings_added": [
+        "ITEM 1A. RISK FACTORS",
+        "ITEM 1B. UNRESOLVED STAFF COMMENTS"
+      ],
+      "headings_removed": [
+        "ITEM 1A.",
+        "RISK FACTORS",
+        "Debt",
+        "ITEM 1B."
+      ],
+      "paragraph_count_prev": 70,
+      "paragraph_count_curr": 54,
+      "length_chars_prev": 20070,
+      "length_chars_curr": 16476
+    }
+  },
+  "evidence": [
+    {
+      "year": 2023,
+      "paragraph_idx": 0,
+      "snippet": "In addition, we may introduce in the future new or unique manufacturing processes and design features for our products.",
+      "why": "Heading added: ITEM 1A. RISK FACTORS"
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 0,
+      "snippet": "ITEM 1B. UNRESOLVED STAFF COMMENTS",
+      "why": "Heading added: ITEM 1B. UNRESOLVED STAFF COMMENTS"
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 0,
+      "snippet": "ITEM 1A.",
+      "why": "Heading removed: ITEM 1A."
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 0,
+      "snippet": "We may be impacted by macroeconomic conditions resulting from the global COVID-19 pandemic.",
+      "why": "Heading removed: RISK FACTORS"
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 0,
+      "snippet": ", to the consolidated financial statements included elsewhere in this Annual Report on Form 10-K).",
+      "why": "Heading removed: Debt"
+    }
+  ],
+  "metrics": {
+    "drift_score": 1.0,
+    "confidence": 0.3,
+    "coverage": 0.20818539063191013,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T05:55:35Z",
+    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "4172ad8823c2cf83b659f9a54a8503ef61770b8f6ee2a42bca462041c8964d22",
+      "curr_text_sha256": "069a38a3c35691c4ce8a61ae5738104cc46c926b7998a3bc27b4eb5e4c675588",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

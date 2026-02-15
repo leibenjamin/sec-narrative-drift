@@ -1,0 +1,1173 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_logodds_terms_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "TSLA",
+  "section": "10k_item1a",
+  "year_from": 2022,
+  "year_to": 2023,
+  "artifacts": {
+    "top_risers": [
+      {
+        "label": "jurisdiction",
+        "score": 0.7783193027938149,
+        "meta": {
+          "z": 0.9536393086259728,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8521948508983146,
+          "deltaPer10k": 1.8521948508983146,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "identify",
+        "score": 0.3580737137139454,
+        "meta": {
+          "z": 0.9715313030979205,
+          "countPrev": 1,
+          "countCurr": 3,
+          "per10kPrev": 0.8873901854645487,
+          "per10kCurr": 2.7782922763474716,
+          "deltaPer10k": 1.8909020908829228,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "face challenges",
+        "score": 0.3536640153476215,
+        "meta": {
+          "z": 0.5851048020836552,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 0.8873901854645487,
+          "per10kCurr": 1.8521948508983146,
+          "deltaPer10k": 0.9648046654337659,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "provide benefits",
+        "score": 0.3536640153476215,
+        "meta": {
+          "z": 0.5851048020836552,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 0.8873901854645487,
+          "per10kCurr": 1.8521948508983146,
+          "deltaPer10k": 0.9648046654337659,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "capability features",
+        "score": 0.29182646995804384,
+        "meta": {
+          "z": 0.4828002328134551,
+          "countPrev": 2,
+          "countCurr": 3,
+          "per10kPrev": 1.7747803709290975,
+          "per10kCurr": 2.7782922763474716,
+          "deltaPer10k": 1.003511905418374,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "assemble",
+        "score": 0.27713222229489426,
+        "meta": {
+          "z": 0.5851048020836552,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 0.8873901854645487,
+          "per10kCurr": 1.8521948508983146,
+          "deltaPer10k": 0.9648046654337659,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "unavailable",
+        "score": 0.27713222229489426,
+        "meta": {
+          "z": 0.5851048020836552,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 0.8873901854645487,
+          "per10kCurr": 1.8521948508983146,
+          "deltaPer10k": 0.9648046654337659,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "working",
+        "score": 0.27713222229489426,
+        "meta": {
+          "z": 0.5851048020836552,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 0.8873901854645487,
+          "per10kCurr": 1.8521948508983146,
+          "deltaPer10k": 0.9648046654337659,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "assemble domestically",
+        "score": 0.275316371128901,
+        "meta": {
+          "z": 0.5851048020836552,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 0.8873901854645487,
+          "per10kCurr": 1.8521948508983146,
+          "deltaPer10k": 0.9648046654337659,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "benefits manufacturers",
+        "score": 0.275316371128901,
+        "meta": {
+          "z": 0.5851048020836552,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 0.8873901854645487,
+          "per10kCurr": 1.8521948508983146,
+          "deltaPer10k": 0.9648046654337659,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "domestically local",
+        "score": 0.275316371128901,
+        "meta": {
+          "z": 0.5851048020836552,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 0.8873901854645487,
+          "per10kCurr": 1.8521948508983146,
+          "deltaPer10k": 0.9648046654337659,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "local suppliers",
+        "score": 0.275316371128901,
+        "meta": {
+          "z": 0.5851048020836552,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 0.8873901854645487,
+          "per10kCurr": 1.8521948508983146,
+          "deltaPer10k": 0.9648046654337659,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "manufacturers assemble",
+        "score": 0.275316371128901,
+        "meta": {
+          "z": 0.5851048020836552,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 0.8873901854645487,
+          "per10kCurr": 1.8521948508983146,
+          "deltaPer10k": 0.9648046654337659,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "fsd capability",
+        "score": 0.23719455854412214,
+        "meta": {
+          "z": 0.39241672663775556,
+          "countPrev": 4,
+          "countCurr": 5,
+          "per10kPrev": 3.549560741858195,
+          "per10kCurr": 4.630487127245786,
+          "deltaPer10k": 1.080926385387591,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "north",
+        "score": 0.15751383952797263,
+        "meta": {
+          "z": 0.5851048020836552,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 0.8873901854645487,
+          "per10kCurr": 1.8521948508983146,
+          "deltaPer10k": 0.9648046654337659,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_fallers": [
+      {
+        "label": "Pandemic",
+        "score": -0.9862116592656084,
+        "meta": {
+          "z": -1.6897732735435633,
+          "countPrev": 8,
+          "countCurr": 2,
+          "per10kPrev": 7.09912148371639,
+          "per10kCurr": 1.8521948508983146,
+          "deltaPer10k": -5.2469266328180755,
+          "distinctive": false,
+          "includes": [
+            "pandemic"
+          ]
+        }
+      },
+      {
+        "label": "brandenburg",
+        "score": -0.8701091742073346,
+        "meta": {
+          "z": -0.9277249598218466,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7747803709290975,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ira",
+        "score": -0.8701091742073346,
+        "meta": {
+          "z": -0.9277249598218466,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7747803709290975,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "circuit",
+        "score": -0.757169128182573,
+        "meta": {
+          "z": -0.9277249598218466,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7747803709290975,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "split",
+        "score": -0.757169128182573,
+        "meta": {
+          "z": -0.9277249598218466,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7747803709290975,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "COVID-19",
+        "score": -0.7475336095586025,
+        "meta": {
+          "z": -1.2808227347953898,
+          "countPrev": 6,
+          "countCurr": 2,
+          "per10kPrev": 5.324341112787292,
+          "per10kCurr": 1.8521948508983146,
+          "deltaPer10k": -3.4721462618889776,
+          "distinctive": false,
+          "includes": [
+            "covid"
+          ]
+        }
+      },
+      {
+        "label": "stock split",
+        "score": -0.6980754438968929,
+        "meta": {
+          "z": -0.9277249598218466,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7747803709290975,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "person",
+        "score": -0.6475090166403829,
+        "meta": {
+          "z": -0.9277249598218466,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7747803709290975,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "shutdowns",
+        "score": -0.6475090166403829,
+        "meta": {
+          "z": -0.9277249598218466,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7747803709290975,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "temporary",
+        "score": -0.6475090166403829,
+        "meta": {
+          "z": -0.9277249598218466,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7747803709290975,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "berlin",
+        "score": -0.5414532152288983,
+        "meta": {
+          "z": -0.9277249598218466,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7747803709290975,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "settlement",
+        "score": -0.4490401424305783,
+        "meta": {
+          "z": -1.2183428663165377,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 4.436950927322743,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.436950927322743,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "appointed",
+        "score": -0.4394126981666964,
+        "meta": {
+          "z": -0.9277249598218466,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7747803709290975,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "created",
+        "score": -0.4394126981666964,
+        "meta": {
+          "z": -0.9277249598218466,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7747803709290975,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "district",
+        "score": -0.4394126981666964,
+        "meta": {
+          "z": -0.9277249598218466,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7747803709290975,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7747803709290975,
+          "distinctive": false
+        }
+      }
+    ],
+    "summary": "Adds emphasis on jurisdiction, identify, face challenges; de-emphasizes Pandemic, brandenburg, ira.",
+    "ranked_items": [
+      {
+        "label": "jurisdiction",
+        "score": 0.7783193027938149,
+        "meta": {
+          "z": 0.9536393086259728,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8521948508983146,
+          "deltaPer10k": 1.8521948508983146,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "identify",
+        "score": 0.3580737137139454,
+        "meta": {
+          "z": 0.9715313030979205,
+          "countPrev": 1,
+          "countCurr": 3,
+          "per10kPrev": 0.8873901854645487,
+          "per10kCurr": 2.7782922763474716,
+          "deltaPer10k": 1.8909020908829228,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "face challenges",
+        "score": 0.3536640153476215,
+        "meta": {
+          "z": 0.5851048020836552,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 0.8873901854645487,
+          "per10kCurr": 1.8521948508983146,
+          "deltaPer10k": 0.9648046654337659,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "provide benefits",
+        "score": 0.3536640153476215,
+        "meta": {
+          "z": 0.5851048020836552,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 0.8873901854645487,
+          "per10kCurr": 1.8521948508983146,
+          "deltaPer10k": 0.9648046654337659,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "capability features",
+        "score": 0.29182646995804384,
+        "meta": {
+          "z": 0.4828002328134551,
+          "countPrev": 2,
+          "countCurr": 3,
+          "per10kPrev": 1.7747803709290975,
+          "per10kCurr": 2.7782922763474716,
+          "deltaPer10k": 1.003511905418374,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "assemble",
+        "score": 0.27713222229489426,
+        "meta": {
+          "z": 0.5851048020836552,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 0.8873901854645487,
+          "per10kCurr": 1.8521948508983146,
+          "deltaPer10k": 0.9648046654337659,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "unavailable",
+        "score": 0.27713222229489426,
+        "meta": {
+          "z": 0.5851048020836552,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 0.8873901854645487,
+          "per10kCurr": 1.8521948508983146,
+          "deltaPer10k": 0.9648046654337659,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "working",
+        "score": 0.27713222229489426,
+        "meta": {
+          "z": 0.5851048020836552,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 0.8873901854645487,
+          "per10kCurr": 1.8521948508983146,
+          "deltaPer10k": 0.9648046654337659,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "assemble domestically",
+        "score": 0.275316371128901,
+        "meta": {
+          "z": 0.5851048020836552,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 0.8873901854645487,
+          "per10kCurr": 1.8521948508983146,
+          "deltaPer10k": 0.9648046654337659,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "benefits manufacturers",
+        "score": 0.275316371128901,
+        "meta": {
+          "z": 0.5851048020836552,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 0.8873901854645487,
+          "per10kCurr": 1.8521948508983146,
+          "deltaPer10k": 0.9648046654337659,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "domestically local",
+        "score": 0.275316371128901,
+        "meta": {
+          "z": 0.5851048020836552,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 0.8873901854645487,
+          "per10kCurr": 1.8521948508983146,
+          "deltaPer10k": 0.9648046654337659,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "local suppliers",
+        "score": 0.275316371128901,
+        "meta": {
+          "z": 0.5851048020836552,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 0.8873901854645487,
+          "per10kCurr": 1.8521948508983146,
+          "deltaPer10k": 0.9648046654337659,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "manufacturers assemble",
+        "score": 0.275316371128901,
+        "meta": {
+          "z": 0.5851048020836552,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 0.8873901854645487,
+          "per10kCurr": 1.8521948508983146,
+          "deltaPer10k": 0.9648046654337659,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "fsd capability",
+        "score": 0.23719455854412214,
+        "meta": {
+          "z": 0.39241672663775556,
+          "countPrev": 4,
+          "countCurr": 5,
+          "per10kPrev": 3.549560741858195,
+          "per10kCurr": 4.630487127245786,
+          "deltaPer10k": 1.080926385387591,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "north",
+        "score": 0.15751383952797263,
+        "meta": {
+          "z": 0.5851048020836552,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 0.8873901854645487,
+          "per10kCurr": 1.8521948508983146,
+          "deltaPer10k": 0.9648046654337659,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "Pandemic",
+        "score": -0.9862116592656084,
+        "meta": {
+          "z": -1.6897732735435633,
+          "countPrev": 8,
+          "countCurr": 2,
+          "per10kPrev": 7.09912148371639,
+          "per10kCurr": 1.8521948508983146,
+          "deltaPer10k": -5.2469266328180755,
+          "distinctive": false,
+          "includes": [
+            "pandemic"
+          ]
+        }
+      },
+      {
+        "label": "brandenburg",
+        "score": -0.8701091742073346,
+        "meta": {
+          "z": -0.9277249598218466,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7747803709290975,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ira",
+        "score": -0.8701091742073346,
+        "meta": {
+          "z": -0.9277249598218466,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7747803709290975,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "circuit",
+        "score": -0.757169128182573,
+        "meta": {
+          "z": -0.9277249598218466,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7747803709290975,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "split",
+        "score": -0.757169128182573,
+        "meta": {
+          "z": -0.9277249598218466,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7747803709290975,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "COVID-19",
+        "score": -0.7475336095586025,
+        "meta": {
+          "z": -1.2808227347953898,
+          "countPrev": 6,
+          "countCurr": 2,
+          "per10kPrev": 5.324341112787292,
+          "per10kCurr": 1.8521948508983146,
+          "deltaPer10k": -3.4721462618889776,
+          "distinctive": false,
+          "includes": [
+            "covid"
+          ]
+        }
+      },
+      {
+        "label": "stock split",
+        "score": -0.6980754438968929,
+        "meta": {
+          "z": -0.9277249598218466,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7747803709290975,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "person",
+        "score": -0.6475090166403829,
+        "meta": {
+          "z": -0.9277249598218466,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7747803709290975,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "shutdowns",
+        "score": -0.6475090166403829,
+        "meta": {
+          "z": -0.9277249598218466,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7747803709290975,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "temporary",
+        "score": -0.6475090166403829,
+        "meta": {
+          "z": -0.9277249598218466,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7747803709290975,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "berlin",
+        "score": -0.5414532152288983,
+        "meta": {
+          "z": -0.9277249598218466,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7747803709290975,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "settlement",
+        "score": -0.4490401424305783,
+        "meta": {
+          "z": -1.2183428663165377,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 4.436950927322743,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.436950927322743,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "appointed",
+        "score": -0.4394126981666964,
+        "meta": {
+          "z": -0.9277249598218466,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7747803709290975,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "created",
+        "score": -0.4394126981666964,
+        "meta": {
+          "z": -0.9277249598218466,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7747803709290975,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7747803709290975,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "district",
+        "score": -0.4394126981666964,
+        "meta": {
+          "z": -0.9277249598218466,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7747803709290975,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7747803709290975,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_risers_alt": [
+      {
+        "label": "electric vehicles",
+        "score": 0.4345163283880056,
+        "meta": {}
+      },
+      {
+        "label": "information technology",
+        "score": 2.1723943984907343,
+        "meta": {}
+      },
+      {
+        "label": "information technology systems",
+        "score": 2.1723943984907343,
+        "meta": {}
+      },
+      {
+        "label": "ability make",
+        "score": 0.9326887505880883,
+        "meta": {}
+      },
+      {
+        "label": "Data privacy",
+        "score": 0.2657434575487905,
+        "meta": {}
+      },
+      {
+        "label": "Intellectual property",
+        "score": 0.06824789011586052,
+        "meta": {}
+      },
+      {
+        "label": "laws regulations",
+        "score": 0.05051063486101981,
+        "meta": {}
+      }
+    ],
+    "top_fallers_alt": [
+      {
+        "label": "regulations continue",
+        "score": -2.220772381315812,
+        "meta": {}
+      },
+      {
+        "label": "vehicles market",
+        "score": -2.220772381315812,
+        "meta": {}
+      },
+      {
+        "label": "labor shortages",
+        "score": -1.630591477990576,
+        "meta": {}
+      },
+      {
+        "label": "Supply chain",
+        "score": -0.18058124774267137,
+        "meta": {}
+      },
+      {
+        "label": "vehicles energy storage products",
+        "score": -0.2178448963930011,
+        "meta": {}
+      },
+      {
+        "label": "operating results",
+        "score": -0.02860940935203149,
+        "meta": {}
+      },
+      {
+        "label": "product liability",
+        "score": -0.02522330000382489,
+        "meta": {}
+      },
+      {
+        "label": "financial results",
+        "score": -0.025203282886592238,
+        "meta": {}
+      },
+      {
+        "label": "products services",
+        "score": -0.02477080684998967,
+        "meta": {}
+      },
+      {
+        "label": "operating costs",
+        "score": -0.024590324149306397,
+        "meta": {}
+      },
+      {
+        "label": "new products",
+        "score": -0.024476611679853377,
+        "meta": {}
+      },
+      {
+        "label": "products systems",
+        "score": -0.024467748606451956,
+        "meta": {}
+      },
+      {
+        "label": "energy storage systems",
+        "score": -0.0244577617742312,
+        "meta": {}
+      },
+      {
+        "label": "harm business financial",
+        "score": -0.0244577617742312,
+        "meta": {}
+      },
+      {
+        "label": "harm financial",
+        "score": -0.0244577617742312,
+        "meta": {}
+      }
+    ],
+    "summary_alt": "Adds emphasis on electric vehicles, information technology, information technology systems; de-emphasizes regulations continue, vehicles market, labor shortages."
+  },
+  "evidence": [
+    {
+      "year": 2023,
+      "paragraph_idx": 62,
+      "snippet": "Government and economic incentives that support the development and adoption of electric vehicles in the U.S. and abroad, including certain tax exemptions, tax credits and rebates, may be reduced, eliminated, amended or exhausted from time to time. For example, previously available incentives favoring electric vehicles in certain areas have expired or were cancelled or temporarily unavailable, and in some cases were not eventually replaced or reinstituted, which may have negatively impacted sales. In addition, certain government and economic incentives may also be implemented or amended to provide benefits to manufacturers who assemble domestically, have local suppliers or have other characteristics that may not apply to Tesla. Such developments could negatively impact demand for our vehicles, and we and our customers may have to adjust to them, including through pricing modifications.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "jurisdiction",
+        "identify",
+        "face challenges",
+        "provide benefits",
+        "capability features",
+        "assemble",
+        "unavailable",
+        "working",
+        "assemble domestically",
+        "benefits manufacturers",
+        "domestically local",
+        "local suppliers",
+        "manufacturers assemble",
+        "fsd capability",
+        "north",
+        "Pandemic",
+        "brandenburg",
+        "ira",
+        "circuit",
+        "split",
+        "COVID-19",
+        "stock split",
+        "person",
+        "shutdowns",
+        "temporary",
+        "berlin",
+        "settlement",
+        "appointed",
+        "created",
+        "district"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 25,
+      "snippet": "If our products contain design or manufacturing defects, whether relating to our software or hardware, that cause them not to perform as designed or intended or that require repair, or certain features of our vehicles such as new Autopilot or FSD Capability features take longer than expected to become enabled, are legally restricted or become subject to onerous regulation, our ability to develop, market and sell our products and services may be harmed, and we may experience delivery delays, product recalls, allegations of product liability, breach of warranty and related consumer protection claims and significant warranty and other expenses. While we are continuously working to develop and improve our products\u2019 capability and performance, there is no guarantee that any incremental changes in the specific software or equipment we deploy in our vehicles over time will not result in initial functional disparities from prior iterations or will perform as forecast in the timeframe we anticipate, or at all. Although we attempt to remedy any issues we observe in our products as effectively and rapidly as possible, such efforts may not be timely, may hamper production or may not completely satisfy our customers. We have performed, and continue to perform, extensive internal testing on our products and features, though, like the rest of the industry, we currently have a limited frame of reference by which to evaluate certain aspects of their long-term quality, reliability, durability and performance characteristics, including exposure to or consequence of external attacks. While we attempt to identify and address or remedy defects we identify pre-production and sale, there may be latent defects that we may be unable to detect or control for in our products, and thereby address, prior to their sale to or installation for customers.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "jurisdiction",
+        "identify",
+        "face challenges",
+        "provide benefits",
+        "capability features",
+        "assemble",
+        "unavailable",
+        "working",
+        "assemble domestically",
+        "benefits manufacturers",
+        "domestically local",
+        "local suppliers",
+        "manufacturers assemble",
+        "fsd capability",
+        "north",
+        "Pandemic",
+        "brandenburg",
+        "ira",
+        "circuit",
+        "split",
+        "COVID-19",
+        "stock split",
+        "person",
+        "shutdowns",
+        "temporary",
+        "berlin",
+        "settlement",
+        "appointed",
+        "created",
+        "district"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 67,
+      "snippet": "In particular, we offer in our vehicles in certain markets Autopilot and FSD Capability features that today assist drivers with certain tedious and potentially dangerous aspects of road travel, but which currently require drivers to remain fully engaged in the driving operation. We are continuing to develop our Autopilot and FSD Capability technology. There are a variety of international, federal and state regulations that may apply to, and may adversely affect, the design and performance, sale, marketing, registration and operation of Autopilot and FSD Capability, and future capability, including full self-driving vehicles that may not be operated by a human driver. This includes many existing vehicle standards that were not originally intended to apply to vehicles that may not be operated by a human driver. Such regulations continue to rapidly change, which increases the likelihood of a patchwork of complex or conflicting regulations, or may delay, restrict or prohibit the availability of certain functionalities and vehicle designs, which could adversely affect our business.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "jurisdiction",
+        "identify",
+        "face challenges",
+        "provide benefits",
+        "capability features",
+        "assemble",
+        "unavailable",
+        "working",
+        "assemble domestically",
+        "benefits manufacturers",
+        "domestically local",
+        "local suppliers",
+        "manufacturers assemble",
+        "fsd capability",
+        "north",
+        "Pandemic",
+        "brandenburg",
+        "ira",
+        "circuit",
+        "split",
+        "COVID-19",
+        "stock split",
+        "person",
+        "shutdowns",
+        "temporary",
+        "berlin",
+        "settlement",
+        "appointed",
+        "created",
+        "district"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 2,
+      "snippet": "For example, pandemic-related issues have exacerbated port congestion and intermittent supplier shutdowns and delays, resulting in additional expenses to expedite delivery of critical parts. Similarly, increased demand for personal electronics has created a shortfall of semiconductors, which has caused challenges in our supply chain and production. In addition, labor shortages resulting from the pandemic, including worker absenteeism, has led to increased difficulty in hiring and retaining manufacturing and service workers, as well as increased labor costs and supplier delays. Sustaining our production trajectory will require the ongoing readiness and solvency of our suppliers and vendors, a stable and motivated production workforce and government cooperation, including for travel and visa allowances. The contingencies inherent in the ramp at new facilities such as Gigafactory Berlin-Brandenburg and Gigafactory Texas may be exacerbated by these challenges. Additionally, infection rates and regulations continue to fluctuate in various regions, which may impact operations. For example, in 2022, spikes in COVID-19 cases in Shanghai resulted in the temporary shutdown of Gigafactory Shanghai, as well as parts of our supply chain, and impacted our ability to deliver cars.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "jurisdiction",
+        "identify",
+        "face challenges",
+        "provide benefits",
+        "capability features",
+        "assemble",
+        "unavailable",
+        "working",
+        "assemble domestically",
+        "benefits manufacturers",
+        "domestically local",
+        "local suppliers",
+        "manufacturers assemble",
+        "fsd capability",
+        "north",
+        "Pandemic",
+        "brandenburg",
+        "ira",
+        "circuit",
+        "split",
+        "COVID-19",
+        "stock split",
+        "person",
+        "shutdowns",
+        "temporary",
+        "berlin",
+        "settlement",
+        "appointed",
+        "created",
+        "district"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 1,
+      "snippet": "Since the first quarter of 2020, there has been a worldwide impact from the COVID-19 pandemic. Government regulations and shifting social behaviors have, at times, limited or closed non-essential transportation, government functions, business activities and person-to-person interactions. Global trade conditions and consumer trends that originated during the pandemic continue to persist and may also have long-lasting adverse impact on us and our industries independently of the progress of the pandemic.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "jurisdiction",
+        "identify",
+        "face challenges",
+        "provide benefits",
+        "capability features",
+        "assemble",
+        "unavailable",
+        "working",
+        "assemble domestically",
+        "benefits manufacturers",
+        "domestically local",
+        "local suppliers",
+        "manufacturers assemble",
+        "fsd capability",
+        "north",
+        "Pandemic",
+        "brandenburg",
+        "ira",
+        "circuit",
+        "split",
+        "COVID-19",
+        "stock split",
+        "person",
+        "shutdowns",
+        "temporary",
+        "berlin",
+        "settlement",
+        "appointed",
+        "created",
+        "district"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 74,
+      "snippet": "For example, on October 16, 2018, the U.S. District Court for the Southern District of New York entered a final judgment approving the terms of a settlement filed with the Court on September 29, 2018, in connection with the actions taken by the SEC relating to Mr. Musk\u2019s statement on August 7, 2018 that he was considering taking Tesla private. Pursuant to the settlement, we, among other things, paid a civil penalty of $20 million, appointed an independent director as the chair of our board of directors, appointed two additional independent directors to our board of directors and made further enhancements to our disclosure controls and other corporate governance-related matters. On April 26, 2019, this settlement was amended to clarify certain of the previously-agreed disclosure procedures, which was subsequently approved by the Court. All other terms of the prior settlement were reaffirmed without modification. Although we intend to continue to comply with the terms and requirements of the settlement, if there is a lack of compliance or an alleged lack of compliance, additional enforcement actions or other legal proceedings may be instituted against us.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "jurisdiction",
+        "identify",
+        "face challenges",
+        "provide benefits",
+        "capability features",
+        "assemble",
+        "unavailable",
+        "working",
+        "assemble domestically",
+        "benefits manufacturers",
+        "domestically local",
+        "local suppliers",
+        "manufacturers assemble",
+        "fsd capability",
+        "north",
+        "Pandemic",
+        "brandenburg",
+        "ira",
+        "circuit",
+        "split",
+        "COVID-19",
+        "stock split",
+        "person",
+        "shutdowns",
+        "temporary",
+        "berlin",
+        "settlement",
+        "appointed",
+        "created",
+        "district"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.0104,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T05:55:34Z",
+    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "dfa43be6764b7bd331039c9343b4b0f5e430637fb09a9150f0f191033958c371",
+      "curr_text_sha256": "cd5281b2475c4920648284b873155d7f6054531e30d1ddf6f078dd9641d213cc",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

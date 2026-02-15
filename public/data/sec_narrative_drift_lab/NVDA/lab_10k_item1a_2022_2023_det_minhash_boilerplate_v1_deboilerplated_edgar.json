@@ -1,0 +1,73 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_minhash_boilerplate_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "NVDA",
+  "section": "10k_item1a",
+  "year_from": 2022,
+  "year_to": 2023,
+  "artifacts": {
+    "stats": {
+      "percent_reused": 0.07531380753138076,
+      "percent_new": 0.9246861924686193,
+      "reused_paragraphs": 18,
+      "total_paragraphs": 239
+    }
+  },
+  "evidence": [
+    {
+      "year": 2023,
+      "paragraph_idx": 67,
+      "snippet": "It is difficult for us to estimate with any reasonable degree of precision, the past or current impact of cryptocurrency mining, or forecast the future impact of cryptocurrency mining, on demand for our products.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 20,
+      "snippet": "It is difficult for us to estimate with any reasonable degree of precision the past or current impact of cryptocurrency mining, or forecast the future impact of cryptocurrency mining, on demand for our products.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 68,
+      "snippet": "Volatility in the cryptocurrency market, including new compute technologies, price changes in cryptocurrencies, government cryptocurrency policies and regulations, new cryptocurrency standards, and changes in the method of verifying blockchain transactions, has impacted and can in the future impact cryptocurrency mining and demand for our products and can further impact our ability to estimate demand for our products.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 21,
+      "snippet": "Volatility in the cryptocurrency market, including new compute technologies, price changes in cryptocurrencies, government cryptocurrency policies and regulations, new cryptocurrency standards, and changes in the method of verifying blockchain transactions, have impacted and can in the future impact cryptocurrency mining and demand for our products, and can further impact our ability to estimate demand for our products.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 82,
+      "snippet": "\u2022 low manufacturing yields resulting from a failure in our product design or a foundry\u2019s proprietary process technology; and",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 52,
+      "snippet": "\u2022 low manufacturing yields resulting from a failure in our product design or a foundry\u2019s proprietary process technology.",
+      "why": "Matching paragraph from prior year."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.9246861924686193,
+    "confidence": 1.0,
+    "coverage": 0.6946768589298123,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T05:55:32Z",
+    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "f9d680b55eeb9b0b3c191801569738e3704083c4e3f55e5c24b46194143c56dc",
+      "curr_text_sha256": "3d36f90bfc94e8a3354daf84ba4fe8a6bac6bc4e03aa9ce4e58ab7135d329d3c",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

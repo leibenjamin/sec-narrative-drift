@@ -1,0 +1,55 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_winnowing_fingerprint_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "AAPL",
+  "section": "10k_item1a",
+  "year_from": 2023,
+  "year_to": 2024,
+  "artifacts": {
+    "stats": {
+      "shared_fingerprints": 3944,
+      "prev_fingerprints": 6733,
+      "curr_fingerprints": 7052,
+      "shared_ratio": 0.5857715728501411
+    }
+  },
+  "evidence": [
+    {
+      "year": 2024,
+      "paragraph_idx": 0,
+      "snippet": "Apple Inc. | 2024 Form 10-K | 5\n\nThe Company\u2019s business can be impacted by political events, trade and other international disputes, geopolitical tensions",
+      "why": "Shared fingerprint span."
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 0,
+      "snippet": "Apple Inc. | 2024 Form 10-K | 5\n\nThe Company\u2019s business can be impacted by political events, trade and other international disputes, geopolitical tensions, co",
+      "why": "Shared fingerprint span."
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 0,
+      "snippet": "Apple Inc. | 2024 Form 10-K | 5\n\nThe Company\u2019s business can be impacted by political events, trade and other international disputes, geopolitical tensions, conf",
+      "why": "Shared fingerprint span."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.5857715728501411,
+    "confidence": 1.0,
+    "coverage": 0.24874327542111296,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T05:55:29Z",
+    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "b9a868111dda2a984ff891bab219f667ee84ea8e7136cb5ffdd420327591da78",
+      "curr_text_sha256": "c2c8993a233207c11fdea07b38d81c80f329795f9f7532aa5d1b831f76281ea3",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

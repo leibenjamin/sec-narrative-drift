@@ -1,0 +1,46 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_llm_excerpt_picker_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "AAPL",
+  "section": "10k_item1a",
+  "year_from": 2023,
+  "year_to": 2024,
+  "artifacts": {
+    "notes": ["Precomputed offline excerpt selection."],
+    "ranked_items": [
+      { "label": "AI risks", "score": 0.77 },
+      { "label": "supply chain continuity", "score": 0.63 }
+    ]
+  },
+  "evidence": [
+    {
+      "year": 2024,
+      "paragraph_idx": 8,
+      "snippet": "We depend on third-party manufacturing and logistics providers; disruptions or geopolitical constraints could materially impact product availability.",
+      "why": "Precomputed excerpt focused on supply chain continuity.",
+      "highlights": ["manufacturing", "logistics", "geopolitical"]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 11,
+      "snippet": "Our AI features require ongoing evaluation of safety, bias, and regulatory compliance, which may increase costs and legal exposure.",
+      "why": "Precomputed excerpt focused on AI risk themes.",
+      "highlights": ["AI", "safety", "regulatory"]
+    }
+  ],
+  "metrics": {
+    "drift_score": null,
+    "confidence": 0.55,
+    "coverage": 1.0,
+    "warnings": ["precomputed_only"]
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T00:00:00Z",
+    "git_commit": "precomputed",
+    "script_version": "manual_seed_v1",
+    "inputs": { "source": "precomputed" },
+    "notes": ["LLM output seeded offline for v1 demo."]
+  }
+}

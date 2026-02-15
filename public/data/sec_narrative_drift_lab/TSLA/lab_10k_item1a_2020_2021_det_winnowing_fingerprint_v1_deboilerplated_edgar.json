@@ -1,0 +1,55 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_winnowing_fingerprint_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "TSLA",
+  "section": "10k_item1a",
+  "year_from": 2020,
+  "year_to": 2021,
+  "artifacts": {
+    "stats": {
+      "shared_fingerprints": 7788,
+      "prev_fingerprints": 11857,
+      "curr_fingerprints": 13293,
+      "shared_ratio": 0.6568271906890445
+    }
+  },
+  "evidence": [
+    {
+      "year": 2021,
+      "paragraph_idx": 0,
+      "snippet": "In some cases, the relaxation of such trends has been followed by actual or contemplated returns to stringent restriction",
+      "why": "Shared fingerprint span."
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 0,
+      "snippet": "In some cases, the relaxation of such trends has been followed by actual or contemplated returns to stringent restrictions ",
+      "why": "Shared fingerprint span."
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 0,
+      "snippet": "In some cases, the relaxation of such trends has been followed by actual or contemplated returns to stringent restrictions on ",
+      "why": "Shared fingerprint span."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.6568271906890445,
+    "confidence": 1.0,
+    "coverage": 0.35447015138531845,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T05:55:33Z",
+    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "4d4c2c235c8fc17051048a920b5d9fd03da202cd258c0f4a8b7acbed0ac45c5c",
+      "curr_text_sha256": "cdf7009b1492e36a82e5866ae50391267a93526e1d898d362dd032d5cba7277e",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

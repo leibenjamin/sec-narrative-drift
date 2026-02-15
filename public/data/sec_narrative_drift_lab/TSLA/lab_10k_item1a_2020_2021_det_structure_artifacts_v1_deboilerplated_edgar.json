@@ -1,0 +1,85 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_structure_artifacts_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "TSLA",
+  "section": "10k_item1a",
+  "year_from": 2020,
+  "year_to": 2021,
+  "artifacts": {
+    "stats": {
+      "headings_prev": [
+        "While",
+        "Debt",
+        "ITEM 1B."
+      ],
+      "headings_curr": [
+        "Note 11, Debt",
+        "ITEM 1B. UNRESOLVED STAFF COMMENTS"
+      ],
+      "headings_added": [
+        "Note 11, Debt",
+        "ITEM 1B. UNRESOLVED STAFF COMMENTS"
+      ],
+      "headings_removed": [
+        "While",
+        "Debt",
+        "ITEM 1B."
+      ],
+      "paragraph_count_prev": 113,
+      "paragraph_count_curr": 120,
+      "length_chars_prev": 29784,
+      "length_chars_curr": 33414
+    }
+  },
+  "evidence": [
+    {
+      "year": 2021,
+      "paragraph_idx": 0,
+      "snippet": "Our consolidated indebtedness may increase our vulnerability to any generally adverse economic and industry conditions.",
+      "why": "Heading added: Note 11, Debt"
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 0,
+      "snippet": "ITEM 1B. UNRESOLVED STAFF COMMENTS",
+      "why": "Heading added: ITEM 1B. UNRESOLVED STAFF COMMENTS"
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 43,
+      "snippet": "we have implemented safety procedures related to the handling of the cells, there can be no assurance that a safety issue or fire related to the cells would not disrupt our operations .",
+      "why": "Heading removed: While"
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 73,
+      "snippet": "Our substantial consolidated indebtedness may increase our vulnerability to any generally adverse economic and industry conditions.",
+      "why": "Heading removed: Debt"
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 0,
+      "snippet": "ITEM 1B.",
+      "why": "Heading removed: ITEM 1B."
+    }
+  ],
+  "metrics": {
+    "drift_score": 1.0,
+    "confidence": 0.25,
+    "coverage": 0.35447015138531845,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T05:55:33Z",
+    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "4d4c2c235c8fc17051048a920b5d9fd03da202cd258c0f4a8b7acbed0ac45c5c",
+      "curr_text_sha256": "cdf7009b1492e36a82e5866ae50391267a93526e1d898d362dd032d5cba7277e",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

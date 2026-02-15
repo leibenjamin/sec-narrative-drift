@@ -1,0 +1,138 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_jsd_ngrams_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "AAPL",
+  "section": "10k_item1a",
+  "year_from": 2021,
+  "year_to": 2022,
+  "artifacts": {
+    "ranked_items": [
+      {
+        "label": "social governance",
+        "score": 0.0002991197333561234
+      },
+      {
+        "label": "environmental social",
+        "score": 0.0002991197333561234
+      },
+      {
+        "label": "social",
+        "score": 0.0002991197333561234
+      },
+      {
+        "label": "governance",
+        "score": 0.0002991197333561234
+      },
+      {
+        "label": "goals initiatives",
+        "score": 0.00021365695239723101
+      },
+      {
+        "label": "goals",
+        "score": 0.00021365695239723101
+      },
+      {
+        "label": "condition price",
+        "score": 0.000181801654395055
+      },
+      {
+        "label": "condition stock",
+        "score": 0.00015070163925276378
+      },
+      {
+        "label": "governance considerations",
+        "score": 0.0001281941714383386
+      },
+      {
+        "label": "condition apple",
+        "score": 0.0001281941714383386
+      },
+      {
+        "label": "stock price",
+        "score": 0.00011375465014049004
+      },
+      {
+        "label": "environmental",
+        "score": 0.00011375465014049004
+      },
+      {
+        "label": "operations distracting",
+        "score": 9.09008271975275e-05
+      },
+      {
+        "label": "distracting management",
+        "score": 9.09008271975275e-05
+      },
+      {
+        "label": "services apple",
+        "score": 9.09008271975275e-05
+      },
+      {
+        "label": "stock materially",
+        "score": 9.09008271975275e-05
+      },
+      {
+        "label": "enacted require",
+        "score": 9.09008271975275e-05
+      },
+      {
+        "label": "arise apple",
+        "score": 9.09008271975275e-05
+      },
+      {
+        "label": "points",
+        "score": 9.09008271975275e-05
+      },
+      {
+        "label": "enacted",
+        "score": 9.09008271975275e-05
+      }
+    ],
+    "stats": {
+      "jsd": 0.029419,
+      "tokens_prev": 5501,
+      "tokens_curr": 5851
+    }
+  },
+  "evidence": [
+    {
+      "year": 2022,
+      "paragraph_idx": 69,
+      "snippet": "Expectations relating to environmental, social and governance considerations expose the Company to potential liabilities, increased costs, reputational harm, and other adverse effects on the Company\u2019s business.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "social",
+        "governance"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 70,
+      "snippet": "Many governments, regulators, investors, employees, customers and other stakeholders are increasingly focused on environmental, social and governance considerations relating to businesses, including climate change and greenhouse gas emissions, human and civil rights, and diversity, equity and inclusion. In addition, the Company makes statements about its environmental, social and governance goals and initiatives through its environmental, social and governance report, its other non-financial reports, information provided on its website, press statements and other communications. Responding to these environmental, social and governance considerations and implementation of these goals and initiatives involves risks and uncertainties, requires investments, and depends in part on third-party performance or data that is outside the Company\u2019s control. The Company cannot guarantee that it will achieve its announced environmental, social and governance goals and initiatives. In addition, some stakeholders may disagree with the Company\u2019s goals and initiatives. Any failure, or perceived failure, by the Company to achieve its goals, further its initiatives, adhere to its public statements, comply with federal, state or international environmental, social and governance laws and regulations, or meet evolving and varied stakeholder expectations and standards could result in legal and regulatory proceedings against the Company and materially adversely affect the Company\u2019s business, reputation, results of operations, financial condition and stock price.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "social",
+        "governance"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.029419,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T05:55:30Z",
+    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "0b8cc5d86739227e0a2a0bd0dd52adfdbcb5505e895f42c95f354fd20b1011d1",
+      "curr_text_sha256": "de8edd3ae5902c43e0f41fa7b52f05178ef9013c315bb6cf27cc43fba0cc2860",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

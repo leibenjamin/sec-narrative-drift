@@ -1,0 +1,42 @@
+{
+  "version": "2.0",
+  "updated_at": "2026-02-02T23:13:51Z",
+  "tickers": [
+    "NVDA"
+  ],
+  "section": "10k_item1a",
+  "source_id": "edgar",
+  "available_years_per_ticker": {
+    "NVDA": [
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ]
+  },
+  "pairs_per_ticker": {
+    "NVDA": [
+      {
+        "year_from": 2023,
+        "year_to": 2024
+      },
+      {
+        "year_from": 2024,
+        "year_to": 2025
+      }
+    ]
+  },
+  "hero_selection_targets": [
+    "boilerplate",
+    "structure",
+    "meaningful",
+    "most_recent"
+  ]
+}

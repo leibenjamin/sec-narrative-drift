@@ -1,0 +1,155 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_jsd_ngrams_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "NVDA",
+  "section": "10k_item1a",
+  "year_from": 2023,
+  "year_to": 2024,
+  "artifacts": {
+    "ranked_items": [
+      {
+        "label": "covid",
+        "score": 0.0007951834601840281
+      },
+      {
+        "label": "export controls",
+        "score": 0.0005113204989511584
+      },
+      {
+        "label": "pandemic",
+        "score": 0.00039759173009201406
+      },
+      {
+        "label": "esg",
+        "score": 0.0003407929115074406
+      },
+      {
+        "label": "covid pandemic",
+        "score": 0.0003407929115074406
+      },
+      {
+        "label": "controls",
+        "score": 0.0003267705244860545
+      },
+      {
+        "label": "corporate sustainability",
+        "score": 0.0002920804473003422
+      },
+      {
+        "label": "usg",
+        "score": 0.00025386423249051276
+      },
+      {
+        "label": "networking",
+        "score": 0.000250354669114579
+      },
+      {
+        "label": "export",
+        "score": 0.00023152974779258752
+      },
+      {
+        "label": "license requirements",
+        "score": 0.00022719527433829378
+      },
+      {
+        "label": "esg practices",
+        "score": 0.00022719527433829378
+      },
+      {
+        "label": "new license",
+        "score": 0.00022719527433829378
+      },
+      {
+        "label": "licensing requirements",
+        "score": 0.00022336257682527597
+      },
+      {
+        "label": "incidents",
+        "score": 0.0002086288909288158
+      },
+      {
+        "label": "portfolio",
+        "score": 0.0002086288909288158
+      },
+      {
+        "label": "integrators",
+        "score": 0.0002086288909288158
+      },
+      {
+        "label": "integrators distributors",
+        "score": 0.0002086288909288158
+      },
+      {
+        "label": "software services",
+        "score": 0.0002086288909288158
+      },
+      {
+        "label": "center",
+        "score": 0.00019983507675254512
+      }
+    ],
+    "stats": {
+      "jsd": 0.192492,
+      "tokens_prev": 4402,
+      "tokens_curr": 5992
+    }
+  },
+  "evidence": [
+    {
+      "year": 2024,
+      "paragraph_idx": 35,
+      "snippet": "\u2022 government actions or changes in governmental policies, such as export controls or increased restrictions on gaming usage.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "export controls"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 64,
+      "snippet": "Extended lead times may occur if we experience other supply constraints caused by natural disasters, pandemics or other events.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "pandemic"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 9,
+      "snippet": "\u2022 The COVID-19 pandemic has affected and could continue to have a material adverse impact on our financial condition and results of operations.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "covid",
+        "pandemic"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 34,
+      "snippet": "\u2022 sudden or sustained government lockdowns or actions to control case spread of COVID-19 or other global or local health issues;",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "covid"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.192492,
+    "confidence": 1.0,
+    "coverage": 0.6105930026824953,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T05:55:32Z",
+    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "df2481e2b27b60b5667db8c928de7360547bee0f36435efbfd23e4c8ace7b647",
+      "curr_text_sha256": "2e8c3d7c091fae17e6ab04817a2822c01b18022cc14bdd73c999f0099650e065",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

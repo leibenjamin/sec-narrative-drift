@@ -1,0 +1,127 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_structure_artifacts_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "AAPL",
+  "section": "10k_item1a",
+  "year_from": 2022,
+  "year_to": 2023,
+  "artifacts": {
+    "stats": {
+      "headings_prev": [
+        "Apple Inc. | 2022 Form 10-K | 5",
+        "Apple Inc. | 2022 Form 10-K | 6",
+        "Apple Inc. | 2022 Form 10-K | 7",
+        "Apple Inc. | 2022 Form 10-K | 8",
+        "Apple Inc. | 2022 Form 10-K | 9",
+        "Apple Inc. | 2022 Form 10-K | 10",
+        "Apple Inc. | 2022 Form 10-K | 11",
+        "Apple Inc. | 2022 Form 10-K | 12",
+        "Apple Inc. | 2022 Form 10-K | 13",
+        "Apple Inc. | 2022 Form 10-K | 14",
+        "Apple Inc. | 2022 Form 10-K | 15",
+        "Apple Inc. | 2022 Form 10-K | 16"
+      ],
+      "headings_curr": [
+        "Apple Inc. | 2023 Form 10-K | 5",
+        "Apple Inc. | 2023 Form 10-K | 6",
+        "Apple Inc. | 2023 Form 10-K | 7",
+        "Apple Inc. | 2023 Form 10-K | 8",
+        "Apple Inc. | 2023 Form 10-K | 9",
+        "Apple Inc. | 2023 Form 10-K | 10",
+        "Apple Inc. | 2023 Form 10-K | 11",
+        "Apple Inc. | 2023 Form 10-K | 12",
+        "Apple Inc. | 2023 Form 10-K | 13",
+        "Apple Inc. | 2023 Form 10-K | 14",
+        "Apple Inc. | 2023 Form 10-K | 15"
+      ],
+      "headings_added": [
+        "Apple Inc. | 2023 Form 10-K | 5",
+        "Apple Inc. | 2023 Form 10-K | 6",
+        "Apple Inc. | 2023 Form 10-K | 7",
+        "Apple Inc. | 2023 Form 10-K | 8",
+        "Apple Inc. | 2023 Form 10-K | 9",
+        "Apple Inc. | 2023 Form 10-K | 10",
+        "Apple Inc. | 2023 Form 10-K | 11",
+        "Apple Inc. | 2023 Form 10-K | 12",
+        "Apple Inc. | 2023 Form 10-K | 13",
+        "Apple Inc. | 2023 Form 10-K | 14",
+        "Apple Inc. | 2023 Form 10-K | 15"
+      ],
+      "headings_removed": [
+        "Apple Inc. | 2022 Form 10-K | 5",
+        "Apple Inc. | 2022 Form 10-K | 6",
+        "Apple Inc. | 2022 Form 10-K | 7",
+        "Apple Inc. | 2022 Form 10-K | 8",
+        "Apple Inc. | 2022 Form 10-K | 9",
+        "Apple Inc. | 2022 Form 10-K | 10",
+        "Apple Inc. | 2022 Form 10-K | 11",
+        "Apple Inc. | 2022 Form 10-K | 12",
+        "Apple Inc. | 2022 Form 10-K | 13",
+        "Apple Inc. | 2022 Form 10-K | 14",
+        "Apple Inc. | 2022 Form 10-K | 15",
+        "Apple Inc. | 2022 Form 10-K | 16"
+      ],
+      "paragraph_count_prev": 71,
+      "paragraph_count_curr": 59,
+      "length_chars_prev": 20001,
+      "length_chars_curr": 17079
+    }
+  },
+  "evidence": [
+    {
+      "year": 2023,
+      "paragraph_idx": 6,
+      "snippet": "Substantially all of the Company\u2019s manufacturing is performed in whole or in part by outsourcing partners located primarily in China mainland, India, Japan, South Korea, Taiwan and Vietnam.",
+      "why": "Heading added: Apple Inc. | 2023 Form 10-K | 5"
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 15,
+      "snippet": "The success of new product and service introductions depends on a number of factors, including timely and successful development, market acceptance, the Company\u2019s ability to manage the risks associated with new technologies and production ramp-up issues, the availability of application software for the Company\u2019s products, the effective management of purchase commitments and inventory levels in line with anticipated product demand, the availability of products in appropriate quantities and at expected costs to meet anticipated demand, and the risk that new products and services may have quality or other defects or deficiencies.",
+      "why": "Heading added: Apple Inc. | 2023 Form 10-K | 6"
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 17,
+      "snippet": "For example, the global semiconductor industry has in the past experienced high demand and shortages of supply, which adversely affected the Company\u2019s ability to obtain sufficient quantities of components and products on commercially reasonable terms or at all.",
+      "why": "Heading added: Apple Inc. | 2023 Form 10-K | 7"
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 13,
+      "snippet": "The Company continues to monitor the situation and take appropriate actions in accordance with the recommendations and requirements of relevant authorities.",
+      "why": "Heading removed: Apple Inc. | 2022 Form 10-K | 5"
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 26,
+      "snippet": "Major public health issues, including pandemics such as the COVID-19 pandemic, have adversely affected, and could in the future materially adversely affect, the Company due to their impact on the global economy and demand for consumer products; the imposition of protective public safety measures, such as stringent employee travel restrictions and limitations on freight services and the movement of products between regions; and disruptions in the Company\u2019s supply chain and sales and distribution channels, resulting in interruptions of the supply of current products and delays in production ramps of new products.",
+      "why": "Heading removed: Apple Inc. | 2022 Form 10-K | 6"
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 27,
+      "snippet": "The success of new product and service introductions depends on a number of factors, including timely and successful development, market acceptance, the Company\u2019s ability to manage the risks associated with production ramp-up issues, the availability of application software for the Company\u2019s products, the effective management of purchase commitments and inventory levels in line with anticipated product demand, the availability of products in appropriate quantities and at expected costs to meet anticipated demand, and the risk that new products and services may have quality or other defects or deficiencies.",
+      "why": "Heading removed: Apple Inc. | 2022 Form 10-K | 7"
+    }
+  ],
+  "metrics": {
+    "drift_score": 1.0,
+    "confidence": 1.0,
+    "coverage": 0.25103624658259105,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T05:55:28Z",
+    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "8a6a972cd160b7416c3cb28fcf93379a17b88d78bef2c76df1537424ab8e92e6",
+      "curr_text_sha256": "dc793034d7a883a8aae64da478ab03efa50b4681013c373227d6c97c1744af34",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

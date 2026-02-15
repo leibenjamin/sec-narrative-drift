@@ -1,0 +1,154 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_jsd_ngrams_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "TSLA",
+  "section": "10k_item1a",
+  "year_from": 2021,
+  "year_to": 2022,
+  "artifacts": {
+    "ranked_items": [
+      {
+        "label": "assets",
+        "score": 0.0016749768177594564
+      },
+      {
+        "label": "digital assets",
+        "score": 0.0013040643338404696
+      },
+      {
+        "label": "digital",
+        "score": 0.0013040643338404696
+      },
+      {
+        "label": "model",
+        "score": 0.0011644900977727628
+      },
+      {
+        "label": "certain model",
+        "score": 0.0006520321669202348
+      },
+      {
+        "label": "notes",
+        "score": 0.0006520321669202348
+      },
+      {
+        "label": "cash",
+        "score": 0.0006520321669202348
+      },
+      {
+        "label": "conversion",
+        "score": 0.0005433601391001956
+      },
+      {
+        "label": "gigafactory nevada",
+        "score": 0.0005433601391001956
+      },
+      {
+        "label": "senior",
+        "score": 0.0005433601391001956
+      },
+      {
+        "label": "model model",
+        "score": 0.0003875510739421607
+      },
+      {
+        "label": "values",
+        "score": 0.0003260160834601174
+      },
+      {
+        "label": "convertible senior",
+        "score": 0.0003260160834601174
+      },
+      {
+        "label": "suspended",
+        "score": 0.0003260160834601174
+      },
+      {
+        "label": "convertible",
+        "score": 0.0003260160834601174
+      },
+      {
+        "label": "conversion notes",
+        "score": 0.0003260160834601174
+      },
+      {
+        "label": "senior notes",
+        "score": 0.0003260160834601174
+      },
+      {
+        "label": "impairment",
+        "score": 0.0003260160834601174
+      },
+      {
+        "label": "decrease",
+        "score": 0.0003260160834601174
+      },
+      {
+        "label": "nevada gigafactory",
+        "score": 0.0003260160834601174
+      }
+    ],
+    "stats": {
+      "jsd": 0.217499,
+      "tokens_prev": 2301,
+      "tokens_curr": 1892
+    }
+  },
+  "evidence": [
+    {
+      "year": 2022,
+      "paragraph_idx": 6,
+      "snippet": "In particular, our future business depends in large part on increasing the production of mass-market vehicles including Model 3 and Model Y.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "model"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 19,
+      "snippet": "We have also deployed a number of delivery models, such as deliveries to customers\u2019 homes and workplaces and touchless deliveries, but there is no guarantee that such models will be scalable or be accepted globally.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "model"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 7,
+      "snippet": "In particular, our future business depends in large part on increasing the production of mass-market vehicles including Model 3 and Model Y, which we are planning to achieve through multiple factories worldwide.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "model"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 8,
+      "snippet": "We have relatively limited experience to date in manufacturing Model 3 and Model Y at high volumes and even less experience building and ramping vehicle production lines across multiple factories in different geographies.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "model"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.217499,
+    "confidence": 1.0,
+    "coverage": 0.28048647799122306,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T05:55:34Z",
+    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "fcf1afd46bdd21f36990fb527c8ae8c2503a2ccb3d5d486c90c6d867a2511139",
+      "curr_text_sha256": "107339d220df7bb549893a22d9901fb1cb2dc26dca96fe5fcbe8004a568b5c5a",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

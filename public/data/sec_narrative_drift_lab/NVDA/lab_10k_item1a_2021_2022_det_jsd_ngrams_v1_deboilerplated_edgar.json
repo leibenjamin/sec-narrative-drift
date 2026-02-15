@@ -1,0 +1,156 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_jsd_ngrams_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "NVDA",
+  "section": "10k_item1a",
+  "year_from": 2021,
+  "year_to": 2022,
+  "artifacts": {
+    "ranked_items": [
+      {
+        "label": "intellectual",
+        "score": 0.0006979758699770665
+      },
+      {
+        "label": "intellectual property",
+        "score": 0.0006979758699770665
+      },
+      {
+        "label": "ai",
+        "score": 0.0006491699897987573
+      },
+      {
+        "label": "actors",
+        "score": 0.00037095427988500417
+      },
+      {
+        "label": "property",
+        "score": 0.0003690433969858047
+      },
+      {
+        "label": "property rights",
+        "score": 0.00034898793498853325
+      },
+      {
+        "label": "obligations",
+        "score": 0.0003250107787339238
+      },
+      {
+        "label": "russia",
+        "score": 0.00032458499489937864
+      },
+      {
+        "label": "threat actors",
+        "score": 0.0002782157099137531
+      },
+      {
+        "label": "reputational harm",
+        "score": 0.0002782157099137531
+      },
+      {
+        "label": "threat",
+        "score": 0.0002782157099137531
+      },
+      {
+        "label": "responsible",
+        "score": 0.0002782157099137531
+      },
+      {
+        "label": "reputational",
+        "score": 0.0002782157099137531
+      },
+      {
+        "label": "personal data",
+        "score": 0.000275990947543691
+      },
+      {
+        "label": "addition",
+        "score": 0.00026925635329894506
+      },
+      {
+        "label": "additionally",
+        "score": 0.0002588479844767571
+      },
+      {
+        "label": "mellanox",
+        "score": 0.0002492770964203809
+      },
+      {
+        "label": "spread",
+        "score": 0.0002492770964203809
+      },
+      {
+        "label": "pandemic",
+        "score": 0.00024754342676377604
+      },
+      {
+        "label": "acquisition",
+        "score": 0.00023726431607952523
+      }
+    ],
+    "stats": {
+      "jsd": 0.304556,
+      "tokens_prev": 5015,
+      "tokens_curr": 5392
+    }
+  },
+  "evidence": [
+    {
+      "year": 2022,
+      "paragraph_idx": 0,
+      "snippet": "In evaluating NVIDIA, the following risk factors should be considered in addition to the other information in this Annual Report on Form 10-K.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "actors"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 6,
+      "snippet": "If we fail to develop new products, services and technologies, or if they do not become widely adopted, our business, revenue, financial condition and results of operations could be adversely affected.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "ai"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 0,
+      "snippet": "In evaluating NVIDIA and our business, the following factors should be considered in addition to the other information in this Annual Report on Form 10-K.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "actors"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 7,
+      "snippet": "We must also continue to develop the infrastructure needed to scale our business in these areas, including customer service and support, e-commerce and intellectual property, or IP, licensing capabilities.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "intellectual",
+        "intellectual property",
+        "property"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.304556,
+    "confidence": 1.0,
+    "coverage": 0.9071391014780628,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T05:55:31Z",
+    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "6734466c5fba84b078dc30eb79c68f9243c6da253df3399d53bf91c918961369",
+      "curr_text_sha256": "672f0812e68af903e7ebd26e5135b927e5230a5cc622891d6d29d7e98bbeae7f",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

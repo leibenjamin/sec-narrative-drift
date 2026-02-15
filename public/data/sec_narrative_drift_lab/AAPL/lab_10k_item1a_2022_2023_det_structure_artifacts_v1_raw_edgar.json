@@ -1,0 +1,137 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_structure_artifacts_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "AAPL",
+  "section": "10k_item1a",
+  "year_from": 2022,
+  "year_to": 2023,
+  "artifacts": {
+    "stats": {
+      "headings_prev": [
+        "Item 1A. Risk Factors",
+        "Apple Inc. | 2022 Form 10-K | 5",
+        "Apple Inc. | 2022 Form 10-K | 6",
+        "Apple Inc. | 2022 Form 10-K | 7",
+        "Business Risks",
+        "Apple Inc. | 2022 Form 10-K | 8",
+        "Apple Inc. | 2022 Form 10-K | 9",
+        "Apple Inc. | 2022 Form 10-K | 10",
+        "Apple Inc. | 2022 Form 10-K | 11",
+        "Apple Inc. | 2022 Form 10-K | 12",
+        "Apple Inc. | 2022 Form 10-K | 13",
+        "Apple Inc. | 2022 Form 10-K | 14",
+        "Financial Risks",
+        "Apple Inc. | 2022 Form 10-K | 15",
+        "Apple Inc. | 2022 Form 10-K | 16",
+        "General Risks",
+        "Item 1B. Unresolved Staff Comments"
+      ],
+      "headings_curr": [
+        "Item 1A. Risk Factors",
+        "Apple Inc. | 2023 Form 10-K | 5",
+        "Apple Inc. | 2023 Form 10-K | 6",
+        "Business Risks",
+        "Apple Inc. | 2023 Form 10-K | 7",
+        "Apple Inc. | 2023 Form 10-K | 8",
+        "Apple Inc. | 2023 Form 10-K | 9",
+        "Apple Inc. | 2023 Form 10-K | 10",
+        "Apple Inc. | 2023 Form 10-K | 11",
+        "Apple Inc. | 2023 Form 10-K | 12",
+        "Apple Inc. | 2023 Form 10-K | 13",
+        "Apple Inc. | 2023 Form 10-K | 14",
+        "Financial Risks",
+        "Apple Inc. | 2023 Form 10-K | 15",
+        "General Risks",
+        "Item 1B. Unresolved Staff Comments"
+      ],
+      "headings_added": [
+        "Apple Inc. | 2023 Form 10-K | 5",
+        "Apple Inc. | 2023 Form 10-K | 6",
+        "Apple Inc. | 2023 Form 10-K | 7",
+        "Apple Inc. | 2023 Form 10-K | 8",
+        "Apple Inc. | 2023 Form 10-K | 9",
+        "Apple Inc. | 2023 Form 10-K | 10",
+        "Apple Inc. | 2023 Form 10-K | 11",
+        "Apple Inc. | 2023 Form 10-K | 12",
+        "Apple Inc. | 2023 Form 10-K | 13",
+        "Apple Inc. | 2023 Form 10-K | 14",
+        "Apple Inc. | 2023 Form 10-K | 15"
+      ],
+      "headings_removed": [
+        "Apple Inc. | 2022 Form 10-K | 5",
+        "Apple Inc. | 2022 Form 10-K | 6",
+        "Apple Inc. | 2022 Form 10-K | 7",
+        "Apple Inc. | 2022 Form 10-K | 8",
+        "Apple Inc. | 2022 Form 10-K | 9",
+        "Apple Inc. | 2022 Form 10-K | 10",
+        "Apple Inc. | 2022 Form 10-K | 11",
+        "Apple Inc. | 2022 Form 10-K | 12",
+        "Apple Inc. | 2022 Form 10-K | 13",
+        "Apple Inc. | 2022 Form 10-K | 14",
+        "Apple Inc. | 2022 Form 10-K | 15",
+        "Apple Inc. | 2022 Form 10-K | 16"
+      ],
+      "paragraph_count_prev": 92,
+      "paragraph_count_curr": 87,
+      "length_chars_prev": 70944,
+      "length_chars_curr": 68034
+    }
+  },
+  "evidence": [
+    {
+      "year": 2023,
+      "paragraph_idx": 10,
+      "snippet": "The Company has a large, global business with sales outside the U.S. representing a majority of the Company\u2019s total net sales, and the Company believes that it generally benefits from growth in international trade. Substantially all of the Company\u2019s manufacturing is performed in whole or in part by outsourcing partners located primarily in China mainland, India, Japan, South Korea, Taiwan and Vietnam. Restrictions on international trade, such as tariffs and other controls on imports or exports of goods, technology or data, can materially adversely affect the Company\u2019s operations and supply chain and limit the Company\u2019s ability to offer and distribute its products and services to customers. The impact can be particularly significant if these restrictive measures apply to countries and regions where the Company derives a significant portion of its revenues and/or has significant supply chain operations. Restrictive measures can require the Company to take various actions, including changing suppliers, restructuring business relationships, and ceasing to offer third-party applications on its platforms. Changing the Company\u2019s operations in accordance with new or changed restrictions on international trade can be expensive, time-consuming and disruptive to the Company\u2019s operations. Such restrictions can be announced with little or no advance notice and the Company may not be able to effectively mitigate all adverse impacts from such measures. For example, tensions between governments, including the U.S. and China, have in the past led to tariffs and other restrictions being imposed on the Company\u2019s business. If disputes and conflicts further escalate in the future, actions by governments in response could be significantly more severe and restrictive and could materially adversely affect the Company\u2019s business. Political uncertainty surrounding trade and other international disputes could also have a negative effect on consumer confidence and spending, which could adversely affect the Company\u2019s business.",
+      "why": "Heading added: Apple Inc. | 2023 Form 10-K | 5"
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 15,
+      "snippet": "The Company currently holds a significant number of patents, trademarks and copyrights and has registered, and applied to register, additional patents, trademarks and copyrights. In contrast, many of the Company\u2019s competitors seek to compete primarily through aggressive pricing and very low cost structures, and by imitating the Company\u2019s products and infringing on its intellectual property. Effective intellectual property protection is not consistently available in every country in which the Company operates. If the Company is unable to continue to develop and sell innovative new products with attractive margins or if competitors infringe on the Company\u2019s intellectual property, the Company\u2019s ability to maintain a competitive advantage could be materially adversely affected.",
+      "why": "Heading added: Apple Inc. | 2023 Form 10-K | 6"
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 22,
+      "snippet": "The Company relies on single-source outsourcing partners in the U.S., Asia and Europe to supply and manufacture many components, and on outsourcing partners primarily located in Asia, for final assembly of substantially all of the Company\u2019s hardware products. Any failure of these partners to perform can have a negative impact on the Company\u2019s cost or supply of components or finished goods. In addition, manufacturing or logistics in these locations or transit to final destinations can be disrupted for a variety of reasons, including natural and man-made disasters, information technology system failures, commercial disputes, armed conflict, economic, business, labor, environmental, public health or political issues, or international trade disputes.",
+      "why": "Heading added: Apple Inc. | 2023 Form 10-K | 7"
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 10,
+      "snippet": "The Company continues to monitor the situation and take appropriate actions in accordance with the recommendations and requirements of relevant authorities. The extent to which the COVID-19 pandemic may impact the Company\u2019s operational and financial performance remains uncertain and will depend on many factors outside the Company\u2019s control, including the timing, extent, trajectory and duration of the pandemic, the emergence of new variants, the development, availability, distribution and effectiveness of vaccines and treatments, the imposition of protective public safety measures, and the impact of the pandemic on the global economy and demand for consumer products and services. Additional future impacts on the Company may include material adverse effects on demand for the Company\u2019s products and services, the Company\u2019s supply chain and sales and distribution channels, the Company\u2019s ability to execute its strategic plans, and the Company\u2019s profitability and cost structure.",
+      "why": "Heading removed: Apple Inc. | 2022 Form 10-K | 5"
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 16,
+      "snippet": "The Company\u2019s operations are also subject to the risks of industrial accidents at its suppliers and contract manufacturers. While the Company\u2019s suppliers are required to maintain safe working environments and operations, an industrial accident could occur and could result in serious injuries or loss of life, disruption to the Company\u2019s business, and harm to the Company\u2019s reputation. Major public health issues, including pandemics such as the COVID-19 pandemic, have adversely affected, and could in the future materially adversely affect, the Company due to their impact on the global economy and demand for consumer products; the imposition of protective public safety measures, such as stringent employee travel restrictions and limitations on freight services and the movement of products between regions; and disruptions in the Company\u2019s supply chain and sales and distribution channels, resulting in interruptions of the supply of current products and delays in production ramps of new products.",
+      "why": "Heading removed: Apple Inc. | 2022 Form 10-K | 6"
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 0,
+      "snippet": "Apple Inc. | 2022 Form 10-K | 7",
+      "why": "Heading removed: Apple Inc. | 2022 Form 10-K | 7"
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.8214285714285714,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T05:55:28Z",
+    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "de8edd3ae5902c43e0f41fa7b52f05178ef9013c315bb6cf27cc43fba0cc2860",
+      "curr_text_sha256": "faba2351b5eb0944e50e21e04903e09b7c829528c0030d25be54f3f995f225d9",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

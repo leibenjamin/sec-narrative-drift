@@ -1,0 +1,61 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_structure_artifacts_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "NVDA",
+  "section": "10k_item1a",
+  "year_from": 2023,
+  "year_to": 2024,
+  "artifacts": {
+    "stats": {
+      "headings_prev": [
+        "Additional risks related to acquisitions or strategic investments include, but are not limited to:"
+      ],
+      "headings_curr": [
+        "Additional risks related to acquisitions include, but are not limited to:"
+      ],
+      "headings_added": [
+        "Additional risks related to acquisitions include, but are not limited to:"
+      ],
+      "headings_removed": [
+        "Additional risks related to acquisitions or strategic investments include, but are not limited to:"
+      ],
+      "paragraph_count_prev": 198,
+      "paragraph_count_curr": 274,
+      "length_chars_prev": 53491,
+      "length_chars_curr": 72829
+    }
+  },
+  "evidence": [
+    {
+      "year": 2024,
+      "paragraph_idx": 0,
+      "snippet": "\u2022 exposure to additional cybersecurity risks and vulnerabilities; and",
+      "why": "Heading added: Additional risks related to acquisitions include, but are not limited to:"
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 0,
+      "snippet": "\u2022 diversion of capital and other resources, including management\u2019s attention;",
+      "why": "Heading removed: Additional risks related to acquisitions or strategic investments include, but are not limited to:"
+    }
+  ],
+  "metrics": {
+    "drift_score": 1.0,
+    "confidence": 0.1,
+    "coverage": 0.6105930026824953,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T05:55:33Z",
+    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "df2481e2b27b60b5667db8c928de7360547bee0f36435efbfd23e4c8ace7b647",
+      "curr_text_sha256": "2e8c3d7c091fae17e6ab04817a2822c01b18022cc14bdd73c999f0099650e065",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

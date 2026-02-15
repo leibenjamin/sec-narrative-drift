@@ -1,0 +1,97 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_structure_artifacts_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "NVDA",
+  "section": "10k_item1a",
+  "year_from": 2021,
+  "year_to": 2022,
+  "artifacts": {
+    "stats": {
+      "headings_prev": [
+        "Our GPU-based visual and accelerated computing platforms address four large markets:",
+        "Situations that may result in excess or obsolete inventory include:",
+        "These provisions include the following:"
+      ],
+      "headings_curr": [
+        "Our accelerated computing platforms address four large markets:",
+        "Our strategic and business success depends on our ability to:",
+        "Situations that may result in excess inventory or related impairments include:",
+        "Risks related to acquisitions or strategic investments include, but are not limited to:",
+        "Additional factors that could affect our results of operations include, but are not limited to:"
+      ],
+      "headings_added": [
+        "Our accelerated computing platforms address four large markets:",
+        "Our strategic and business success depends on our ability to:",
+        "Situations that may result in excess inventory or related impairments include:",
+        "Risks related to acquisitions or strategic investments include, but are not limited to:",
+        "Additional factors that could affect our results of operations include, but are not limited to:"
+      ],
+      "headings_removed": [
+        "Our GPU-based visual and accelerated computing platforms address four large markets:",
+        "Situations that may result in excess or obsolete inventory include:",
+        "These provisions include the following:"
+      ],
+      "paragraph_count_prev": 228,
+      "paragraph_count_curr": 257,
+      "length_chars_prev": 62110,
+      "length_chars_curr": 65594
+    }
+  },
+  "evidence": [
+    {
+      "year": 2022,
+      "paragraph_idx": 0,
+      "snippet": "Gaming, Data Center, Professional Visualization, and Automotive.",
+      "why": "Heading added: Our accelerated computing platforms address four large markets:"
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 3,
+      "snippet": "\u2022 timely identify emerging industry changes, and develop new or enhance existing products, services and technologies that meet the evolving needs of these markets;",
+      "why": "Heading added: Our strategic and business success depends on our ability to:"
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 38,
+      "snippet": "\u2022 changes in business and economic conditions resulting in decreased consumer confidence, including downturns in our target markets and/or overall economy and changes in the credit market;",
+      "why": "Heading added: Situations that may result in excess inventory or related impairments include:"
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 0,
+      "snippet": "Gaming, Professional Visualization, Data Center, and Automotive.",
+      "why": "Heading removed: Our GPU-based visual and accelerated computing platforms address four large markets:"
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 0,
+      "snippet": "\u2022 changes in business and economic conditions, including downturns in our target markets and/or overall economy;",
+      "why": "Heading removed: Situations that may result in excess or obsolete inventory include:"
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 0,
+      "snippet": "\u2022 the ability of our Board of Directors to create and issue preferred stock without prior shareholder approval;",
+      "why": "Heading removed: These provisions include the following:"
+    }
+  ],
+  "metrics": {
+    "drift_score": 1.0,
+    "confidence": 0.4,
+    "coverage": 0.9071391014780628,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T05:55:31Z",
+    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "6734466c5fba84b078dc30eb79c68f9243c6da253df3399d53bf91c918961369",
+      "curr_text_sha256": "672f0812e68af903e7ebd26e5135b927e5230a5cc622891d6d29d7e98bbeae7f",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

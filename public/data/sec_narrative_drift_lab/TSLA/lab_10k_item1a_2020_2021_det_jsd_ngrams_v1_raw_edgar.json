@@ -1,0 +1,157 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_jsd_ngrams_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "TSLA",
+  "section": "10k_item1a",
+  "year_from": 2020,
+  "year_to": 2021,
+  "artifacts": {
+    "ranked_items": [
+      {
+        "label": "certain model",
+        "score": 0.00021247963736808557
+      },
+      {
+        "label": "service providers",
+        "score": 0.00015504722078018594
+      },
+      {
+        "label": "providers",
+        "score": 0.00015504722078018594
+      },
+      {
+        "label": "notes",
+        "score": 0.00015159922632293152
+      },
+      {
+        "label": "hedge",
+        "score": 0.0001477650535648319
+      },
+      {
+        "label": "incidents",
+        "score": 0.0001416530915787237
+      },
+      {
+        "label": "esg",
+        "score": 0.0001416530915787237
+      },
+      {
+        "label": "scrutiny",
+        "score": 0.0001416530915787237
+      },
+      {
+        "label": "esg practices",
+        "score": 0.0001416530915787237
+      },
+      {
+        "label": "began",
+        "score": 0.00011082379017362394
+      },
+      {
+        "label": "production gigafactory",
+        "score": 0.00011082379017362394
+      },
+      {
+        "label": "unknown",
+        "score": 0.00011082379017362394
+      },
+      {
+        "label": "terms notes",
+        "score": 0.00011082379017362394
+      },
+      {
+        "label": "pursuant terms",
+        "score": 0.00011082379017362394
+      },
+      {
+        "label": "musk technoking",
+        "score": 0.00010623981868404278
+      },
+      {
+        "label": "damage",
+        "score": 0.00010623981868404278
+      },
+      {
+        "label": "climate",
+        "score": 0.00010623981868404278
+      },
+      {
+        "label": "security incidents",
+        "score": 0.00010623981868404278
+      },
+      {
+        "label": "tesla chief",
+        "score": 0.00010623981868404278
+      },
+      {
+        "label": "technoking tesla",
+        "score": 0.00010623981868404278
+      }
+    ],
+    "stats": {
+      "jsd": 0.061358,
+      "tokens_prev": 6768,
+      "tokens_curr": 7060
+    }
+  },
+  "evidence": [
+    {
+      "year": 2021,
+      "paragraph_idx": 26,
+      "snippet": "We also face competition in our energy generation and storage business from other manufacturers, developers, installers and service providers of competing energy technologies, as well as from large utilities. Decreases in the retail or wholesale prices of electricity from utilities or other renewable energy sources could make our products less attractive to customers and lead to an increased rate of residential customer defaults under our existing long-term leases and PPAs.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "service providers",
+        "providers"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 47,
+      "snippet": "Our information technology systems or data, or those of our service providers or customers or users could be subject to cyber-attacks or other security incidents, which could result in data breaches, intellectual property theft, claims, litigation, regulatory investigations, significant liability, reputational damage and other adverse consequences.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "service providers",
+        "providers"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 23,
+      "snippet": "We also face competition in our energy generation and storage business from other manufacturers, developers, installers and service providers of competing energy systems, as well as from large utilities. Decreases in the retail or wholesale prices of electricity from utilities or other renewable energy sources could make our products less attractive to customers and lead to an increased rate of residential customer defaults under our existing long-term leases and PPAs.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "service providers",
+        "providers"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 51,
+      "snippet": "Holders of convertible senior notes issued by us or our subsidiary may convert such notes at their option prior to the scheduled maturities of the respective convertible senior notes under certain circumstances pursuant to the terms of such notes. Upon conversion of the applicable convertible senior notes, we will be obligated to deliver cash and/or shares pursuant to the terms of such notes. For example, as our stock price has significantly increased recently, we have seen higher levels of early conversions of such \u201cin-the-money\u201d convertible senior notes. Moreover, holders of such convertible senior notes may have the right to require us to repurchase their notes upon the occurrence of a fundamental change pursuant to the terms of such notes.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "notes"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.061358,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T05:55:33Z",
+    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "7f0ca2fc7979aec4fd9b7fa10914ddff66b78d595807a140c9d00bcebab5ff20",
+      "curr_text_sha256": "1839738d63d74d68a16b945be0db04fee83c5f7463f47628de3d75e5781f6108",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

@@ -1,0 +1,163 @@
+{
+  "version": "2.0",
+  "updated_at": "2026-02-07T20:30:37Z",
+  "tickers": [
+    "NVDA",
+    "WM",
+    "GE",
+    "KO"
+  ],
+  "section": "10k_item1a",
+  "source_id": "edgar",
+  "available_years_per_ticker": {
+    "NVDA": [
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "WM": [
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024
+    ],
+    "GE": [
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024
+    ],
+    "KO": [
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024
+    ]
+  },
+  "pairs_per_ticker": {
+    "NVDA": [
+      {
+        "year_from": 2019,
+        "year_to": 2020
+      },
+      {
+        "year_from": 2020,
+        "year_to": 2021
+      },
+      {
+        "year_from": 2021,
+        "year_to": 2022
+      },
+      {
+        "year_from": 2022,
+        "year_to": 2023
+      },
+      {
+        "year_from": 2023,
+        "year_to": 2024
+      },
+      {
+        "year_from": 2024,
+        "year_to": 2025
+      }
+    ],
+    "WM": [
+      {
+        "year_from": 2019,
+        "year_to": 2020
+      },
+      {
+        "year_from": 2020,
+        "year_to": 2021
+      },
+      {
+        "year_from": 2021,
+        "year_to": 2022
+      },
+      {
+        "year_from": 2022,
+        "year_to": 2023
+      },
+      {
+        "year_from": 2023,
+        "year_to": 2024
+      }
+    ],
+    "GE": [
+      {
+        "year_from": 2019,
+        "year_to": 2020
+      },
+      {
+        "year_from": 2020,
+        "year_to": 2021
+      },
+      {
+        "year_from": 2021,
+        "year_to": 2022
+      },
+      {
+        "year_from": 2022,
+        "year_to": 2023
+      },
+      {
+        "year_from": 2023,
+        "year_to": 2024
+      }
+    ],
+    "KO": [
+      {
+        "year_from": 2019,
+        "year_to": 2020
+      },
+      {
+        "year_from": 2020,
+        "year_to": 2021
+      },
+      {
+        "year_from": 2021,
+        "year_to": 2022
+      },
+      {
+        "year_from": 2022,
+        "year_to": 2023
+      },
+      {
+        "year_from": 2023,
+        "year_to": 2024
+      }
+    ]
+  },
+  "hero_selection_targets": [
+    "boilerplate",
+    "structure",
+    "meaningful",
+    "most_recent"
+  ]
+}

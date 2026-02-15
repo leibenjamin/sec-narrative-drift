@@ -1,0 +1,1015 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_logodds_terms_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "NVDA",
+  "section": "10k_item1a",
+  "year_from": 2023,
+  "year_to": 2024,
+  "artifacts": {
+    "top_risers": [
+      {
+        "label": "export controls",
+        "score": 2.0613342713190694,
+        "meta": {
+          "z": 3.9827079179876357,
+          "countPrev": 4,
+          "countCurr": 38,
+          "per10kPrev": 3.6937852063902485,
+          "per10kCurr": 29.729306837740573,
+          "deltaPer10k": 26.035521631350324,
+          "distinctive": true
+        }
+      },
+      {
+        "label": "usg",
+        "score": 1.9371309250553292,
+        "meta": {
+          "z": 2.654252208884604,
+          "countPrev": 5,
+          "countCurr": 22,
+          "per10kPrev": 4.61723150798781,
+          "per10kCurr": 17.21170395869191,
+          "deltaPer10k": 12.5944724507041,
+          "distinctive": true
+        }
+      },
+      {
+        "label": "licensing requirements",
+        "score": 1.2848185128301526,
+        "meta": {
+          "z": 1.996817085222913,
+          "countPrev": 2,
+          "countCurr": 11,
+          "per10kPrev": 1.8468926031951243,
+          "per10kCurr": 8.605851979345955,
+          "deltaPer10k": 6.75895937615083,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "sustainability",
+        "score": 1.159931324452927,
+        "meta": {
+          "z": 1.8566901944188625,
+          "countPrev": 2,
+          "countCurr": 10,
+          "per10kPrev": 1.8468926031951243,
+          "per10kCurr": 7.823501799405414,
+          "deltaPer10k": 5.97660919621029,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "training",
+        "score": 1.1190214242666519,
+        "meta": {
+          "z": 1.5332805071315048,
+          "countPrev": 2,
+          "countCurr": 8,
+          "per10kPrev": 1.8468926031951243,
+          "per10kCurr": 6.258801439524331,
+          "deltaPer10k": 4.411908836329206,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "corporate sustainability",
+        "score": 1.0053905276377741,
+        "meta": {
+          "z": 1.287555884152523,
+          "countPrev": 0,
+          "countCurr": 7,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.47645125958379,
+          "deltaPer10k": 5.47645125958379,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "incidents",
+        "score": 0.9892201336829353,
+        "meta": {
+          "z": 1.180401054987994,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.911750899702707,
+          "deltaPer10k": 3.911750899702707,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "integrators",
+        "score": 0.9892201336829353,
+        "meta": {
+          "z": 1.180401054987994,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.911750899702707,
+          "deltaPer10k": 3.911750899702707,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "cpu",
+        "score": 0.9663516586375507,
+        "meta": {
+          "z": 1.0181469821295408,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.347050539821624,
+          "deltaPer10k": 2.347050539821624,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "mechanisms",
+        "score": 0.951917596524269,
+        "meta": {
+          "z": 1.3043152378451122,
+          "countPrev": 1,
+          "countCurr": 5,
+          "per10kPrev": 0.9234463015975621,
+          "per10kCurr": 3.911750899702707,
+          "deltaPer10k": 2.988304598105145,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "excessive",
+        "score": 0.9297413424265064,
+        "meta": {
+          "z": 1.1094271376991223,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.1294007197621654,
+          "deltaPer10k": 3.1294007197621654,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "restricting",
+        "score": 0.9297413424265064,
+        "meta": {
+          "z": 1.1094271376991223,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.1294007197621654,
+          "deltaPer10k": 3.1294007197621654,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "center",
+        "score": 0.9264113027972607,
+        "meta": {
+          "z": 2.1786048826189477,
+          "countPrev": 4,
+          "countCurr": 16,
+          "per10kPrev": 3.6937852063902485,
+          "per10kCurr": 12.517602879048662,
+          "deltaPer10k": 8.823817672658413,
+          "distinctive": true
+        }
+      },
+      {
+        "label": "integrators distributors",
+        "score": 0.9217184699363163,
+        "meta": {
+          "z": 1.180401054987994,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.911750899702707,
+          "deltaPer10k": 3.911750899702707,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "networking",
+        "score": 0.8689384269785063,
+        "meta": {
+          "z": 1.6612241455629553,
+          "countPrev": 1,
+          "countCurr": 7,
+          "per10kPrev": 0.9234463015975621,
+          "per10kCurr": 5.47645125958379,
+          "deltaPer10k": 4.553004957986228,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_fallers": [
+      {
+        "label": "COVID-19",
+        "score": -1.2130157692882595,
+        "meta": {
+          "z": -1.6620713362228,
+          "countPrev": 14,
+          "countCurr": 0,
+          "per10kPrev": 12.92824822236587,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -12.92824822236587,
+          "distinctive": false,
+          "includes": [
+            "covid"
+          ]
+        }
+      },
+      {
+        "label": "license requirements",
+        "score": -1.1259381384163378,
+        "meta": {
+          "z": -1.2113228919229595,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.6937852063902485,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.6937852063902485,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "esg",
+        "score": -1.123603754790672,
+        "meta": {
+          "z": -1.3407562304716365,
+          "countPrev": 6,
+          "countCurr": 0,
+          "per10kPrev": 5.5406778095853735,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.5406778095853735,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "restricts",
+        "score": -1.0052438159543888,
+        "meta": {
+          "z": -1.3773826975005912,
+          "countPrev": 4,
+          "countCurr": 1,
+          "per10kPrev": 3.6937852063902485,
+          "per10kCurr": 0.7823501799405413,
+          "deltaPer10k": -2.9114350264497073,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "esg practices",
+        "score": -0.9458638467189613,
+        "meta": {
+          "z": -1.2113228919229595,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.6937852063902485,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.6937852063902485,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "bilateral",
+        "score": -0.9406375025442194,
+        "meta": {
+          "z": -0.9910545772162558,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8468926031951243,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8468926031951243,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "examples",
+        "score": -0.9406375025442194,
+        "meta": {
+          "z": -0.9910545772162558,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8468926031951243,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8468926031951243,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "legacy",
+        "score": -0.9406375025442194,
+        "meta": {
+          "z": -0.9910545772162558,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8468926031951243,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8468926031951243,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "covid pandemic",
+        "score": -0.8626871428787004,
+        "meta": {
+          "z": -1.3407562304716365,
+          "countPrev": 6,
+          "countCurr": 0,
+          "per10kPrev": 5.5406778095853735,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.5406778095853735,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "cmp",
+        "score": -0.8305407193751796,
+        "meta": {
+          "z": -0.9910545772162558,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8468926031951243,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8468926031951243,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "goal",
+        "score": -0.8305407193751796,
+        "meta": {
+          "z": -0.9910545772162558,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8468926031951243,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8468926031951243,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "half",
+        "score": -0.8305407193751796,
+        "meta": {
+          "z": -0.9910545772162558,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8468926031951243,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8468926031951243,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "lhr",
+        "score": -0.8305407193751796,
+        "meta": {
+          "z": -0.9910545772162558,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8468926031951243,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8468926031951243,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "responsibilities",
+        "score": -0.8305407193751796,
+        "meta": {
+          "z": -0.9910545772162558,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8468926031951243,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8468926031951243,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "softbank",
+        "score": -0.8305407193751796,
+        "meta": {
+          "z": -0.9910545772162558,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8468926031951243,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8468926031951243,
+          "distinctive": false
+        }
+      }
+    ],
+    "summary": "Adds emphasis on export controls, usg, licensing requirements; de-emphasizes COVID-19, license requirements, esg.",
+    "ranked_items": [
+      {
+        "label": "export controls",
+        "score": 2.0613342713190694,
+        "meta": {
+          "z": 3.9827079179876357,
+          "countPrev": 4,
+          "countCurr": 38,
+          "per10kPrev": 3.6937852063902485,
+          "per10kCurr": 29.729306837740573,
+          "deltaPer10k": 26.035521631350324,
+          "distinctive": true
+        }
+      },
+      {
+        "label": "usg",
+        "score": 1.9371309250553292,
+        "meta": {
+          "z": 2.654252208884604,
+          "countPrev": 5,
+          "countCurr": 22,
+          "per10kPrev": 4.61723150798781,
+          "per10kCurr": 17.21170395869191,
+          "deltaPer10k": 12.5944724507041,
+          "distinctive": true
+        }
+      },
+      {
+        "label": "licensing requirements",
+        "score": 1.2848185128301526,
+        "meta": {
+          "z": 1.996817085222913,
+          "countPrev": 2,
+          "countCurr": 11,
+          "per10kPrev": 1.8468926031951243,
+          "per10kCurr": 8.605851979345955,
+          "deltaPer10k": 6.75895937615083,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "sustainability",
+        "score": 1.159931324452927,
+        "meta": {
+          "z": 1.8566901944188625,
+          "countPrev": 2,
+          "countCurr": 10,
+          "per10kPrev": 1.8468926031951243,
+          "per10kCurr": 7.823501799405414,
+          "deltaPer10k": 5.97660919621029,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "training",
+        "score": 1.1190214242666519,
+        "meta": {
+          "z": 1.5332805071315048,
+          "countPrev": 2,
+          "countCurr": 8,
+          "per10kPrev": 1.8468926031951243,
+          "per10kCurr": 6.258801439524331,
+          "deltaPer10k": 4.411908836329206,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "corporate sustainability",
+        "score": 1.0053905276377741,
+        "meta": {
+          "z": 1.287555884152523,
+          "countPrev": 0,
+          "countCurr": 7,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.47645125958379,
+          "deltaPer10k": 5.47645125958379,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "incidents",
+        "score": 0.9892201336829353,
+        "meta": {
+          "z": 1.180401054987994,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.911750899702707,
+          "deltaPer10k": 3.911750899702707,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "integrators",
+        "score": 0.9892201336829353,
+        "meta": {
+          "z": 1.180401054987994,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.911750899702707,
+          "deltaPer10k": 3.911750899702707,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "cpu",
+        "score": 0.9663516586375507,
+        "meta": {
+          "z": 1.0181469821295408,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.347050539821624,
+          "deltaPer10k": 2.347050539821624,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "mechanisms",
+        "score": 0.951917596524269,
+        "meta": {
+          "z": 1.3043152378451122,
+          "countPrev": 1,
+          "countCurr": 5,
+          "per10kPrev": 0.9234463015975621,
+          "per10kCurr": 3.911750899702707,
+          "deltaPer10k": 2.988304598105145,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "excessive",
+        "score": 0.9297413424265064,
+        "meta": {
+          "z": 1.1094271376991223,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.1294007197621654,
+          "deltaPer10k": 3.1294007197621654,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "restricting",
+        "score": 0.9297413424265064,
+        "meta": {
+          "z": 1.1094271376991223,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.1294007197621654,
+          "deltaPer10k": 3.1294007197621654,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "center",
+        "score": 0.9264113027972607,
+        "meta": {
+          "z": 2.1786048826189477,
+          "countPrev": 4,
+          "countCurr": 16,
+          "per10kPrev": 3.6937852063902485,
+          "per10kCurr": 12.517602879048662,
+          "deltaPer10k": 8.823817672658413,
+          "distinctive": true
+        }
+      },
+      {
+        "label": "integrators distributors",
+        "score": 0.9217184699363163,
+        "meta": {
+          "z": 1.180401054987994,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.911750899702707,
+          "deltaPer10k": 3.911750899702707,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "networking",
+        "score": 0.8689384269785063,
+        "meta": {
+          "z": 1.6612241455629553,
+          "countPrev": 1,
+          "countCurr": 7,
+          "per10kPrev": 0.9234463015975621,
+          "per10kCurr": 5.47645125958379,
+          "deltaPer10k": 4.553004957986228,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "COVID-19",
+        "score": -1.2130157692882595,
+        "meta": {
+          "z": -1.6620713362228,
+          "countPrev": 14,
+          "countCurr": 0,
+          "per10kPrev": 12.92824822236587,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -12.92824822236587,
+          "distinctive": false,
+          "includes": [
+            "covid"
+          ]
+        }
+      },
+      {
+        "label": "license requirements",
+        "score": -1.1259381384163378,
+        "meta": {
+          "z": -1.2113228919229595,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.6937852063902485,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.6937852063902485,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "esg",
+        "score": -1.123603754790672,
+        "meta": {
+          "z": -1.3407562304716365,
+          "countPrev": 6,
+          "countCurr": 0,
+          "per10kPrev": 5.5406778095853735,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.5406778095853735,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "restricts",
+        "score": -1.0052438159543888,
+        "meta": {
+          "z": -1.3773826975005912,
+          "countPrev": 4,
+          "countCurr": 1,
+          "per10kPrev": 3.6937852063902485,
+          "per10kCurr": 0.7823501799405413,
+          "deltaPer10k": -2.9114350264497073,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "esg practices",
+        "score": -0.9458638467189613,
+        "meta": {
+          "z": -1.2113228919229595,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.6937852063902485,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.6937852063902485,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "bilateral",
+        "score": -0.9406375025442194,
+        "meta": {
+          "z": -0.9910545772162558,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8468926031951243,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8468926031951243,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "examples",
+        "score": -0.9406375025442194,
+        "meta": {
+          "z": -0.9910545772162558,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8468926031951243,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8468926031951243,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "legacy",
+        "score": -0.9406375025442194,
+        "meta": {
+          "z": -0.9910545772162558,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8468926031951243,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8468926031951243,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "covid pandemic",
+        "score": -0.8626871428787004,
+        "meta": {
+          "z": -1.3407562304716365,
+          "countPrev": 6,
+          "countCurr": 0,
+          "per10kPrev": 5.5406778095853735,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.5406778095853735,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "cmp",
+        "score": -0.8305407193751796,
+        "meta": {
+          "z": -0.9910545772162558,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8468926031951243,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8468926031951243,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "goal",
+        "score": -0.8305407193751796,
+        "meta": {
+          "z": -0.9910545772162558,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8468926031951243,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8468926031951243,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "half",
+        "score": -0.8305407193751796,
+        "meta": {
+          "z": -0.9910545772162558,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8468926031951243,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8468926031951243,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "lhr",
+        "score": -0.8305407193751796,
+        "meta": {
+          "z": -0.9910545772162558,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8468926031951243,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8468926031951243,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "responsibilities",
+        "score": -0.8305407193751796,
+        "meta": {
+          "z": -0.9910545772162558,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8468926031951243,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8468926031951243,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "softbank",
+        "score": -0.8305407193751796,
+        "meta": {
+          "z": -0.9910545772162558,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8468926031951243,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8468926031951243,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_risers_alt": [
+      {
+        "label": "export controls",
+        "score": 1.1595925992306664,
+        "meta": {}
+      },
+      {
+        "label": "change control",
+        "score": 2.0077770706115663,
+        "meta": {}
+      },
+      {
+        "label": "past future",
+        "score": 1.3381659039790739,
+        "meta": {}
+      },
+      {
+        "label": "control product",
+        "score": 2.0056114966083864,
+        "meta": {}
+      },
+      {
+        "label": "results past",
+        "score": 2.0056114966083864,
+        "meta": {}
+      },
+      {
+        "label": "regulatory requirements",
+        "score": 1.4271056823483752,
+        "meta": {}
+      },
+      {
+        "label": "financial markets",
+        "score": 1.2091339496045643,
+        "meta": {}
+      },
+      {
+        "label": "china market",
+        "score": 2.003452053464918,
+        "meta": {}
+      },
+      {
+        "label": "customers affect product",
+        "score": 2.003452053464918,
+        "meta": {}
+      },
+      {
+        "label": "customers parties",
+        "score": 2.003452053464918,
+        "meta": {}
+      },
+      {
+        "label": "export control",
+        "score": 2.003452053464918,
+        "meta": {}
+      },
+      {
+        "label": "future impact demand products",
+        "score": 2.003452053464918,
+        "meta": {}
+      },
+      {
+        "label": "increased supply",
+        "score": 2.003452053464918,
+        "meta": {}
+      },
+      {
+        "label": "products china",
+        "score": 2.003452053464918,
+        "meta": {}
+      },
+      {
+        "label": "risks increase",
+        "score": 2.003452053464918,
+        "meta": {}
+      }
+    ],
+    "top_fallers_alt": [
+      {
+        "label": "personal data",
+        "score": -2.2555858786397196,
+        "meta": {}
+      },
+      {
+        "label": "operating results",
+        "score": -1.0538911493408283,
+        "meta": {}
+      },
+      {
+        "label": "personal information",
+        "score": -2.22511229735215,
+        "meta": {}
+      },
+      {
+        "label": "customers china",
+        "score": -2.2226240473259704,
+        "meta": {}
+      },
+      {
+        "label": "customers result",
+        "score": -1.096885889563044,
+        "meta": {}
+      },
+      {
+        "label": "changes tax laws",
+        "score": -1.6418073965611786,
+        "meta": {}
+      },
+      {
+        "label": "tax laws",
+        "score": -1.6418073965611786,
+        "meta": {}
+      },
+      {
+        "label": "adverse impact financial",
+        "score": -2.2201434692756115,
+        "meta": {}
+      },
+      {
+        "label": "cause stock",
+        "score": -2.2201434692756115,
+        "meta": {}
+      },
+      {
+        "label": "future adverse",
+        "score": -2.2201434692756115,
+        "meta": {}
+      },
+      {
+        "label": "future cause",
+        "score": -2.2201434692756115,
+        "meta": {}
+      },
+      {
+        "label": "new requirements",
+        "score": -2.2201434692756115,
+        "meta": {}
+      },
+      {
+        "label": "party suppliers technology",
+        "score": -2.2201434692756115,
+        "meta": {}
+      },
+      {
+        "label": "harm business financial",
+        "score": -1.3393331075115356,
+        "meta": {}
+      },
+      {
+        "label": "increase operating",
+        "score": -1.3393331075115356,
+        "meta": {}
+      }
+    ],
+    "summary_alt": "Adds emphasis on export controls, change control, past future; de-emphasizes personal data, operating results, personal information."
+  },
+  "evidence": [
+    {
+      "year": 2024,
+      "paragraph_idx": 8,
+      "snippet": "\u2022 Increased scrutiny from shareholders, regulators, and others regarding our corporate sustainability practices could result in financial, reputational, or operational harm and liability.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "sustainability"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 19,
+      "snippet": "We have begun offering enterprise customers NVIDIA DGX Cloud services directly and through our network of partners, which include cloud-based infrastructure, software and services for training and deploying AI models, and NVIDIA AI Foundations for customizable pretrained AI models.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "training"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 9,
+      "snippet": "\u2022 The COVID-19 pandemic has affected and could continue to have a material adverse impact on our financial condition and results of operations.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "covid-19"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 20,
+      "snippet": "Examples of these services include NVIDIA DGX Cloud, which is cloud-based infrastructure and software for training AI models, and customizable pretrained AI models.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "training"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.0336,
+    "confidence": 1.0,
+    "coverage": 0.6105930026824953,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T05:55:32Z",
+    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "df2481e2b27b60b5667db8c928de7360547bee0f36435efbfd23e4c8ace7b647",
+      "curr_text_sha256": "2e8c3d7c091fae17e6ab04817a2822c01b18022cc14bdd73c999f0099650e065",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

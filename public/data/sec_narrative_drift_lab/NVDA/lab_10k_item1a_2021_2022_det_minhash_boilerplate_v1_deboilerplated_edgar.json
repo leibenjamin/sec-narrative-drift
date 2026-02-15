@@ -1,0 +1,73 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_minhash_boilerplate_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "NVDA",
+  "section": "10k_item1a",
+  "year_from": 2021,
+  "year_to": 2022,
+  "artifacts": {
+    "stats": {
+      "percent_reused": 0.054474708171206226,
+      "percent_new": 0.9455252918287937,
+      "reused_paragraphs": 14,
+      "total_paragraphs": 257
+    }
+  },
+  "evidence": [
+    {
+      "year": 2022,
+      "paragraph_idx": 16,
+      "snippet": "In our networking business, some of our customers are also integrated circuit and switch suppliers and have in-house expertise and internal development capabilities similar to ours.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 24,
+      "snippet": "In our networking business, some of our customers are also integrated circuit and switch suppliers and already have in-house expertise and internal development capabilities similar to ours.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 43,
+      "snippet": "If we fail to fulfill our customers\u2019 orders on a timely basis, or at all, our customer relationships could be damaged, we could lose revenue and market share and our reputation could be damaged.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 71,
+      "snippet": "If we fail to fulfill our customers' orders on a timely basis, or at all, our customer relationships could be damaged, we could lose revenue and market share and our reputation could be damaged.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 66,
+      "snippet": "We may be required to reimburse our customers, partners or consumers, including for costs to repair or replace products in the field.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 52,
+      "snippet": "Also, we may be required to reimburse our customers, partners or consumers, including costs to repair or replace products in the field.",
+      "why": "Matching paragraph from prior year."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.9455252918287937,
+    "confidence": 1.0,
+    "coverage": 0.9071391014780628,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T05:55:31Z",
+    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "6734466c5fba84b078dc30eb79c68f9243c6da253df3399d53bf91c918961369",
+      "curr_text_sha256": "672f0812e68af903e7ebd26e5135b927e5230a5cc622891d6d29d7e98bbeae7f",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

@@ -1,0 +1,129 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_structure_artifacts_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "AAPL",
+  "section": "10k_item1a",
+  "year_from": 2021,
+  "year_to": 2022,
+  "artifacts": {
+    "stats": {
+      "headings_prev": [
+        "Apple Inc. | 2021 Form 10-K | 6",
+        "Apple Inc. | 2021 Form 10-K | 7",
+        "Apple Inc. | 2021 Form 10-K | 8",
+        "Apple Inc. | 2021 Form 10-K | 9",
+        "Apple Inc. | 2021 Form 10-K | 10",
+        "Apple Inc. | 2021 Form 10-K | 11",
+        "Apple Inc. | 2021 Form 10-K | 12",
+        "Apple Inc. | 2021 Form 10-K | 13",
+        "Apple Inc. | 2021 Form 10-K | 14",
+        "Apple Inc. | 2021 Form 10-K | 15",
+        "Apple Inc. | 2021 Form 10-K | 16"
+      ],
+      "headings_curr": [
+        "Apple Inc. | 2022 Form 10-K | 5",
+        "Apple Inc. | 2022 Form 10-K | 6",
+        "Apple Inc. | 2022 Form 10-K | 7",
+        "Apple Inc. | 2022 Form 10-K | 8",
+        "Apple Inc. | 2022 Form 10-K | 9",
+        "Apple Inc. | 2022 Form 10-K | 10",
+        "Apple Inc. | 2022 Form 10-K | 11",
+        "Apple Inc. | 2022 Form 10-K | 12",
+        "Apple Inc. | 2022 Form 10-K | 13",
+        "Apple Inc. | 2022 Form 10-K | 14",
+        "Apple Inc. | 2022 Form 10-K | 15",
+        "Apple Inc. | 2022 Form 10-K | 16",
+        "Item 1B. Unresolved Staff Comments"
+      ],
+      "headings_added": [
+        "Apple Inc. | 2022 Form 10-K | 5",
+        "Apple Inc. | 2022 Form 10-K | 6",
+        "Apple Inc. | 2022 Form 10-K | 7",
+        "Apple Inc. | 2022 Form 10-K | 8",
+        "Apple Inc. | 2022 Form 10-K | 9",
+        "Apple Inc. | 2022 Form 10-K | 10",
+        "Apple Inc. | 2022 Form 10-K | 11",
+        "Apple Inc. | 2022 Form 10-K | 12",
+        "Apple Inc. | 2022 Form 10-K | 13",
+        "Apple Inc. | 2022 Form 10-K | 14",
+        "Apple Inc. | 2022 Form 10-K | 15",
+        "Apple Inc. | 2022 Form 10-K | 16",
+        "Item 1B. Unresolved Staff Comments"
+      ],
+      "headings_removed": [
+        "Apple Inc. | 2021 Form 10-K | 6",
+        "Apple Inc. | 2021 Form 10-K | 7",
+        "Apple Inc. | 2021 Form 10-K | 8",
+        "Apple Inc. | 2021 Form 10-K | 9",
+        "Apple Inc. | 2021 Form 10-K | 10",
+        "Apple Inc. | 2021 Form 10-K | 11",
+        "Apple Inc. | 2021 Form 10-K | 12",
+        "Apple Inc. | 2021 Form 10-K | 13",
+        "Apple Inc. | 2021 Form 10-K | 14",
+        "Apple Inc. | 2021 Form 10-K | 15",
+        "Apple Inc. | 2021 Form 10-K | 16"
+      ],
+      "paragraph_count_prev": 45,
+      "paragraph_count_curr": 57,
+      "length_chars_prev": 13909,
+      "length_chars_curr": 18118
+    }
+  },
+  "evidence": [
+    {
+      "year": 2022,
+      "paragraph_idx": 8,
+      "snippet": "The extent to which the COVID-19 pandemic may impact the Company\u2019s operational and financial performance remains uncertain and will depend on many factors outside the Company\u2019s control, including the timing, extent, trajectory and duration of the pandemic, the emergence of new variants, the development, availability, distribution and effectiveness of vaccines and treatments, the imposition of protective public safety measures, and the impact of the pandemic on the global economy and demand for consumer products and services.",
+      "why": "Heading added: Apple Inc. | 2022 Form 10-K | 5"
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 15,
+      "snippet": "While the Company\u2019s suppliers are required to maintain safe working environments and operations, an industrial accident could occur and could result in serious injuries or loss of life, disruption to the Company\u2019s business, and harm to the Company\u2019s reputation.",
+      "why": "Heading added: Apple Inc. | 2022 Form 10-K | 6"
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 18,
+      "snippet": "Due to the highly volatile and competitive nature of the markets and industries in which the Company competes, the Company must continually introduce new products, services and technologies, enhance existing products and services, effectively stimulate customer demand for new and upgraded products and services, and successfully manage the transition to these new and upgraded products and services.",
+      "why": "Heading added: Apple Inc. | 2022 Form 10-K | 7"
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 9,
+      "snippet": "These and other economic factors can materially adversely affect the Company\u2019s business, results of operations and financial condition.",
+      "why": "Heading removed: Apple Inc. | 2021 Form 10-K | 6"
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 15,
+      "snippet": "If the Company is unable to continue to develop and sell innovative new products with attractive margins or if competitors infringe on the Company\u2019s intellectual property, the Company\u2019s ability to maintain a competitive advantage could be adversely affected.",
+      "why": "Heading removed: Apple Inc. | 2021 Form 10-K | 7"
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 17,
+      "snippet": "Substantially all of the Company\u2019s manufacturing is performed in whole or in part by outsourcing partners located primarily in Asia.",
+      "why": "Heading removed: Apple Inc. | 2021 Form 10-K | 8"
+    }
+  ],
+  "metrics": {
+    "drift_score": 1.0,
+    "confidence": 1.0,
+    "coverage": 0.20838389740362862,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T05:55:30Z",
+    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "67c5b4e8f390cf2ddcbd64d6d848829c57b7f6d8bc115301ce13c3ef5ad0b795",
+      "curr_text_sha256": "8716db1eef9115278cff4425df1599aae9c0f25fee82ad20c451fb090682fee2",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_minhash_boilerplate_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "AAPL",
+  "section": "10k_item1a",
+  "year_from": 2023,
+  "year_to": 2024,
+  "artifacts": {
+    "stats": {
+      "percent_reused": 0.27586206896551724,
+      "percent_new": 0.7241379310344828,
+      "reused_paragraphs": 16,
+      "total_paragraphs": 58
+    }
+  },
+  "evidence": [
+    {
+      "year": 2024,
+      "paragraph_idx": 11,
+      "snippet": "Following any interruption to its business, the Company can require substantial recovery time, experience significant expenditures to resume operations, and lose significant sales.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 11,
+      "snippet": "Following an interruption to its business, the Company can require substantial recovery time, experience significant expenditures to resume operations, and lose significant sales.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 17,
+      "snippet": "For example, the global semiconductor industry has in the past experienced high demand and shortages of supply, which adversely affected the Company\u2019s ability to obtain sufficient quantities of components and products on commercially reasonable terms, or at all.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 16,
+      "snippet": "For example, the global semiconductor industry has in the past experienced high demand and shortages of supply, which adversely affected the Company\u2019s ability to obtain sufficient quantities of components and products on commercially reasonable terms or at all.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 21,
+      "snippet": "Quality problems can adversely affect the experience for users of the Company\u2019s products and services, and result in harm to the Company\u2019s reputation, loss of competitive advantage, poor market acceptance, reduced demand for products and services, delay in new product and service introductions and lost sales.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 19,
+      "snippet": "Quality problems can also adversely affect the experience for users of the Company\u2019s products and services, and result in harm to the Company\u2019s reputation, loss of competitive advantage, poor market acceptance, reduced demand for products and services, delay in new product and service introductions and lost sales.",
+      "why": "Matching paragraph from prior year."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.7241379310344828,
+    "confidence": 1.0,
+    "coverage": 0.24874327542111296,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T05:55:29Z",
+    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "b9a868111dda2a984ff891bab219f667ee84ea8e7136cb5ffdd420327591da78",
+      "curr_text_sha256": "c2c8993a233207c11fdea07b38d81c80f329795f9f7532aa5d1b831f76281ea3",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

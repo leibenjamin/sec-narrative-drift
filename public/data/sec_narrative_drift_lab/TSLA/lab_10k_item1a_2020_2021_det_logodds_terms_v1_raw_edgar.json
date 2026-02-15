@@ -1,0 +1,1202 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_logodds_terms_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "TSLA",
+  "section": "10k_item1a",
+  "year_from": 2020,
+  "year_to": 2021,
+  "artifacts": {
+    "top_risers": [
+      {
+        "label": "providers",
+        "score": 0.9085418053078717,
+        "meta": {
+          "z": 1.9181896957969973,
+          "countPrev": 1,
+          "countCurr": 8,
+          "per10kPrev": 0.8851907586084801,
+          "per10kCurr": 6.7442252571235874,
+          "deltaPer10k": 5.859034498515108,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "sensors",
+        "score": 0.8683565935922741,
+        "meta": {
+          "z": 0.9258563290466651,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.6860563142808969,
+          "deltaPer10k": 1.6860563142808969,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "circuit",
+        "score": 0.7556440322799998,
+        "meta": {
+          "z": 0.9258563290466651,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.6860563142808969,
+          "deltaPer10k": 1.6860563142808969,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "service providers",
+        "score": 0.67379263619874,
+        "meta": {
+          "z": 1.9181896957969973,
+          "countPrev": 1,
+          "countCurr": 8,
+          "per10kPrev": 0.8851907586084801,
+          "per10kCurr": 6.7442252571235874,
+          "deltaPer10k": 5.859034498515108,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "esg",
+        "score": 0.6684871788816801,
+        "meta": {
+          "z": 1.14538472341927,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.3721126285617937,
+          "deltaPer10k": 3.3721126285617937,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "incidents",
+        "score": 0.6684871788816801,
+        "meta": {
+          "z": 1.14538472341927,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.3721126285617937,
+          "deltaPer10k": 3.3721126285617937,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "scrutiny",
+        "score": 0.6684871788816801,
+        "meta": {
+          "z": 1.14538472341927,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.3721126285617937,
+          "deltaPer10k": 3.3721126285617937,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "semiconductors",
+        "score": 0.6462047989809442,
+        "meta": {
+          "z": 0.9258563290466651,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.6860563142808969,
+          "deltaPer10k": 1.6860563142808969,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "climate",
+        "score": 0.615131641723626,
+        "meta": {
+          "z": 1.0539654425395673,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.5290844714213456,
+          "deltaPer10k": 2.5290844714213456,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "technoking",
+        "score": 0.615131641723626,
+        "meta": {
+          "z": 1.0539654425395673,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.5290844714213456,
+          "deltaPer10k": 2.5290844714213456,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "caused challenges",
+        "score": 0.5596297719649143,
+        "meta": {
+          "z": 0.9258563290466651,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.6860563142808969,
+          "deltaPer10k": 1.6860563142808969,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "fsd capability",
+        "score": 0.5596297719649143,
+        "meta": {
+          "z": 0.9258563290466651,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.6860563142808969,
+          "deltaPer10k": 1.6860563142808969,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "bugs",
+        "score": 0.5403626159833074,
+        "meta": {
+          "z": 0.9258563290466651,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.6860563142808969,
+          "deltaPer10k": 1.6860563142808969,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "outages",
+        "score": 0.5403626159833074,
+        "meta": {
+          "z": 0.9258563290466651,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.6860563142808969,
+          "deltaPer10k": 1.6860563142808969,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ransomware",
+        "score": 0.5403626159833074,
+        "meta": {
+          "z": 0.9258563290466651,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.6860563142808969,
+          "deltaPer10k": 1.6860563142808969,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_fallers": [
+      {
+        "label": "split",
+        "score": -0.7798402458863399,
+        "meta": {
+          "z": -0.9555028511515259,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7703815172169601,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7703815172169601,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "unknown",
+        "score": -0.7564651942583344,
+        "meta": {
+          "z": -1.0838330029614143,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.6555722758254405,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.6555722758254405,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "stock split",
+        "score": -0.7189771816535329,
+        "meta": {
+          "z": -0.9555028511515259,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7703815172169601,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7703815172169601,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "began",
+        "score": -0.5133525611780927,
+        "meta": {
+          "z": -1.0838330029614143,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.6555722758254405,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.6555722758254405,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "acquire",
+        "score": -0.48172288828230847,
+        "meta": {
+          "z": -0.5902331864080014,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 1.7703815172169601,
+          "per10kCurr": 0.8430281571404484,
+          "deltaPer10k": -0.9273533600765117,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "threat",
+        "score": -0.48172288828230847,
+        "meta": {
+          "z": -0.5902331864080014,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 1.7703815172169601,
+          "per10kCurr": 0.8430281571404484,
+          "deltaPer10k": -0.9273533600765117,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "experiencing",
+        "score": -0.4525695697689217,
+        "meta": {
+          "z": -0.9555028511515259,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7703815172169601,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7703815172169601,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "hedge",
+        "score": -0.43320106787030993,
+        "meta": {
+          "z": -1.1753680369502697,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.5407630344339203,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.5407630344339203,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "half",
+        "score": -0.41195540345595105,
+        "meta": {
+          "z": -0.5902331864080014,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 1.7703815172169601,
+          "per10kCurr": 0.8430281571404484,
+          "deltaPer10k": -0.9273533600765117,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "fsd features",
+        "score": -0.39769310788469026,
+        "meta": {
+          "z": -0.8451809321210352,
+          "countPrev": 4,
+          "countCurr": 2,
+          "per10kPrev": 3.5407630344339203,
+          "per10kCurr": 1.6860563142808969,
+          "deltaPer10k": -1.8547067201530234,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "COVID-19",
+        "score": -0.3811022988991685,
+        "meta": {
+          "z": -0.6529799897573393,
+          "countPrev": 7,
+          "countCurr": 5,
+          "per10kPrev": 6.196335310259361,
+          "per10kCurr": 4.215140785702242,
+          "deltaPer10k": -1.981194524557119,
+          "distinctive": false,
+          "includes": [
+            "covid"
+          ]
+        }
+      },
+      {
+        "label": "berlin gigafactory",
+        "score": -0.36836974560963676,
+        "meta": {
+          "z": -0.4895542601205731,
+          "countPrev": 3,
+          "countCurr": 2,
+          "per10kPrev": 2.6555722758254405,
+          "per10kCurr": 1.6860563142808969,
+          "deltaPer10k": -0.9695159615445437,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "notes issued",
+        "score": -0.35676384461912136,
+        "meta": {
+          "z": -0.5902331864080014,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 1.7703815172169601,
+          "per10kCurr": 0.8430281571404484,
+          "deltaPer10k": -0.9273533600765117,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "warrant",
+        "score": -0.3521661662214149,
+        "meta": {
+          "z": -0.9555028511515259,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7703815172169601,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7703815172169601,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "recommended",
+        "score": -0.3444810373289736,
+        "meta": {
+          "z": -0.5902331864080014,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 1.7703815172169601,
+          "per10kCurr": 0.8430281571404484,
+          "deltaPer10k": -0.9273533600765117,
+          "distinctive": false
+        }
+      }
+    ],
+    "summary": "Adds emphasis on providers, sensors, circuit; de-emphasizes split, unknown, stock split.",
+    "ranked_items": [
+      {
+        "label": "providers",
+        "score": 0.9085418053078717,
+        "meta": {
+          "z": 1.9181896957969973,
+          "countPrev": 1,
+          "countCurr": 8,
+          "per10kPrev": 0.8851907586084801,
+          "per10kCurr": 6.7442252571235874,
+          "deltaPer10k": 5.859034498515108,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "sensors",
+        "score": 0.8683565935922741,
+        "meta": {
+          "z": 0.9258563290466651,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.6860563142808969,
+          "deltaPer10k": 1.6860563142808969,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "circuit",
+        "score": 0.7556440322799998,
+        "meta": {
+          "z": 0.9258563290466651,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.6860563142808969,
+          "deltaPer10k": 1.6860563142808969,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "service providers",
+        "score": 0.67379263619874,
+        "meta": {
+          "z": 1.9181896957969973,
+          "countPrev": 1,
+          "countCurr": 8,
+          "per10kPrev": 0.8851907586084801,
+          "per10kCurr": 6.7442252571235874,
+          "deltaPer10k": 5.859034498515108,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "esg",
+        "score": 0.6684871788816801,
+        "meta": {
+          "z": 1.14538472341927,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.3721126285617937,
+          "deltaPer10k": 3.3721126285617937,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "incidents",
+        "score": 0.6684871788816801,
+        "meta": {
+          "z": 1.14538472341927,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.3721126285617937,
+          "deltaPer10k": 3.3721126285617937,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "scrutiny",
+        "score": 0.6684871788816801,
+        "meta": {
+          "z": 1.14538472341927,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.3721126285617937,
+          "deltaPer10k": 3.3721126285617937,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "semiconductors",
+        "score": 0.6462047989809442,
+        "meta": {
+          "z": 0.9258563290466651,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.6860563142808969,
+          "deltaPer10k": 1.6860563142808969,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "climate",
+        "score": 0.615131641723626,
+        "meta": {
+          "z": 1.0539654425395673,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.5290844714213456,
+          "deltaPer10k": 2.5290844714213456,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "technoking",
+        "score": 0.615131641723626,
+        "meta": {
+          "z": 1.0539654425395673,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.5290844714213456,
+          "deltaPer10k": 2.5290844714213456,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "caused challenges",
+        "score": 0.5596297719649143,
+        "meta": {
+          "z": 0.9258563290466651,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.6860563142808969,
+          "deltaPer10k": 1.6860563142808969,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "fsd capability",
+        "score": 0.5596297719649143,
+        "meta": {
+          "z": 0.9258563290466651,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.6860563142808969,
+          "deltaPer10k": 1.6860563142808969,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "bugs",
+        "score": 0.5403626159833074,
+        "meta": {
+          "z": 0.9258563290466651,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.6860563142808969,
+          "deltaPer10k": 1.6860563142808969,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "outages",
+        "score": 0.5403626159833074,
+        "meta": {
+          "z": 0.9258563290466651,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.6860563142808969,
+          "deltaPer10k": 1.6860563142808969,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ransomware",
+        "score": 0.5403626159833074,
+        "meta": {
+          "z": 0.9258563290466651,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.6860563142808969,
+          "deltaPer10k": 1.6860563142808969,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "split",
+        "score": -0.7798402458863399,
+        "meta": {
+          "z": -0.9555028511515259,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7703815172169601,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7703815172169601,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "unknown",
+        "score": -0.7564651942583344,
+        "meta": {
+          "z": -1.0838330029614143,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.6555722758254405,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.6555722758254405,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "stock split",
+        "score": -0.7189771816535329,
+        "meta": {
+          "z": -0.9555028511515259,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7703815172169601,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7703815172169601,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "began",
+        "score": -0.5133525611780927,
+        "meta": {
+          "z": -1.0838330029614143,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.6555722758254405,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.6555722758254405,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "acquire",
+        "score": -0.48172288828230847,
+        "meta": {
+          "z": -0.5902331864080014,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 1.7703815172169601,
+          "per10kCurr": 0.8430281571404484,
+          "deltaPer10k": -0.9273533600765117,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "threat",
+        "score": -0.48172288828230847,
+        "meta": {
+          "z": -0.5902331864080014,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 1.7703815172169601,
+          "per10kCurr": 0.8430281571404484,
+          "deltaPer10k": -0.9273533600765117,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "experiencing",
+        "score": -0.4525695697689217,
+        "meta": {
+          "z": -0.9555028511515259,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7703815172169601,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7703815172169601,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "hedge",
+        "score": -0.43320106787030993,
+        "meta": {
+          "z": -1.1753680369502697,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.5407630344339203,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.5407630344339203,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "half",
+        "score": -0.41195540345595105,
+        "meta": {
+          "z": -0.5902331864080014,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 1.7703815172169601,
+          "per10kCurr": 0.8430281571404484,
+          "deltaPer10k": -0.9273533600765117,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "fsd features",
+        "score": -0.39769310788469026,
+        "meta": {
+          "z": -0.8451809321210352,
+          "countPrev": 4,
+          "countCurr": 2,
+          "per10kPrev": 3.5407630344339203,
+          "per10kCurr": 1.6860563142808969,
+          "deltaPer10k": -1.8547067201530234,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "COVID-19",
+        "score": -0.3811022988991685,
+        "meta": {
+          "z": -0.6529799897573393,
+          "countPrev": 7,
+          "countCurr": 5,
+          "per10kPrev": 6.196335310259361,
+          "per10kCurr": 4.215140785702242,
+          "deltaPer10k": -1.981194524557119,
+          "distinctive": false,
+          "includes": [
+            "covid"
+          ]
+        }
+      },
+      {
+        "label": "berlin gigafactory",
+        "score": -0.36836974560963676,
+        "meta": {
+          "z": -0.4895542601205731,
+          "countPrev": 3,
+          "countCurr": 2,
+          "per10kPrev": 2.6555722758254405,
+          "per10kCurr": 1.6860563142808969,
+          "deltaPer10k": -0.9695159615445437,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "notes issued",
+        "score": -0.35676384461912136,
+        "meta": {
+          "z": -0.5902331864080014,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 1.7703815172169601,
+          "per10kCurr": 0.8430281571404484,
+          "deltaPer10k": -0.9273533600765117,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "warrant",
+        "score": -0.3521661662214149,
+        "meta": {
+          "z": -0.9555028511515259,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7703815172169601,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7703815172169601,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "recommended",
+        "score": -0.3444810373289736,
+        "meta": {
+          "z": -0.5902331864080014,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 1.7703815172169601,
+          "per10kCurr": 0.8430281571404484,
+          "deltaPer10k": -0.9273533600765117,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_risers_alt": [
+      {
+        "label": "products services",
+        "score": 1.106139987304252,
+        "meta": {}
+      },
+      {
+        "label": "tesla vehicles",
+        "score": 1.0967054487295087,
+        "meta": {}
+      },
+      {
+        "label": "assets time",
+        "score": 2.190535589185422,
+        "meta": {}
+      },
+      {
+        "label": "limited experience",
+        "score": 0.6723858148973596,
+        "meta": {}
+      },
+      {
+        "label": "Climate change",
+        "score": 1.093599746844566,
+        "meta": {}
+      },
+      {
+        "label": "energy systems",
+        "score": 1.093599746844566,
+        "meta": {}
+      },
+      {
+        "label": "labor shortages",
+        "score": 1.600335779602971,
+        "meta": {}
+      },
+      {
+        "label": "vehicles energy storage products",
+        "score": 0.543380814959562,
+        "meta": {}
+      },
+      {
+        "label": "energy storage systems",
+        "score": 0.4149194114472925,
+        "meta": {}
+      },
+      {
+        "label": "Supply chain",
+        "score": 0.2559832817486791,
+        "meta": {}
+      },
+      {
+        "label": "Artificial intelligence",
+        "score": 0.8399140764866582,
+        "meta": {}
+      },
+      {
+        "label": "laws regulations",
+        "score": 0.15069178732702815,
+        "meta": {}
+      },
+      {
+        "label": "operating costs",
+        "score": 0.15976134857225066,
+        "meta": {}
+      },
+      {
+        "label": "Intellectual property",
+        "score": 0.04359513638127854,
+        "meta": {}
+      }
+    ],
+    "top_fallers_alt": [
+      {
+        "label": "market price",
+        "score": -1.7301058685479083,
+        "meta": {}
+      },
+      {
+        "label": "electric vehicles",
+        "score": -0.5274894197552751,
+        "meta": {}
+      },
+      {
+        "label": "gigafactory new",
+        "score": -1.497752177734971,
+        "meta": {}
+      },
+      {
+        "label": "production gigafactory",
+        "score": -1.056626703988476,
+        "meta": {}
+      },
+      {
+        "label": "demand products",
+        "score": -2.2028910308133174,
+        "meta": {}
+      },
+      {
+        "label": "stock price",
+        "score": -1.0292288705190549,
+        "meta": {}
+      },
+      {
+        "label": "solar energy storage systems",
+        "score": -0.9058860962409092,
+        "meta": {}
+      },
+      {
+        "label": "new vehicles",
+        "score": -0.8554066318556579,
+        "meta": {}
+      },
+      {
+        "label": "storage products",
+        "score": -0.8554066318556579,
+        "meta": {}
+      },
+      {
+        "label": "market share",
+        "score": -0.3444989869255597,
+        "meta": {}
+      },
+      {
+        "label": "financial results",
+        "score": -0.0760863029823855,
+        "meta": {}
+      },
+      {
+        "label": "operating results",
+        "score": -0.007389723428544714,
+        "meta": {}
+      },
+      {
+        "label": "product liability",
+        "score": -0.006447810682121524,
+        "meta": {}
+      },
+      {
+        "label": "products systems",
+        "score": -0.006289777304890887,
+        "meta": {}
+      },
+      {
+        "label": "new products",
+        "score": -0.006252776624856793,
+        "meta": {}
+      }
+    ],
+    "summary_alt": "Adds emphasis on products services, tesla vehicles, assets time; de-emphasizes market price, electric vehicles, gigafactory new."
+  },
+  "evidence": [
+    {
+      "year": 2021,
+      "paragraph_idx": 50,
+      "snippet": "We also rely on service providers, and similar incidents relating to their information technology systems could also have a material adverse effect on our business. There have been and may continue to be significant supply chain attacks. Our service providers, including our workforce management software provider, have been subject to ransomware and other security incidents, and we cannot guarantee that our or our service providers\u2019 systems have not been breached or that they do not contain exploitable defects, bugs, or vulnerabilities that could result in a security incident, or other disruption to, our or our service providers\u2019 systems. Our ability to monitor our service providers\u2019 security measures is limited, and, in any event, malicious third parties may be able to circumvent those security measures.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "providers",
+        "sensors",
+        "circuit",
+        "service providers",
+        "esg",
+        "incidents",
+        "scrutiny",
+        "semiconductors",
+        "climate",
+        "technoking",
+        "caused challenges",
+        "fsd capability",
+        "bugs",
+        "outages",
+        "ransomware",
+        "split",
+        "unknown",
+        "stock split",
+        "began",
+        "acquire",
+        "threat",
+        "experiencing",
+        "hedge",
+        "half",
+        "fsd features",
+        "COVID-19",
+        "berlin gigafactory",
+        "notes issued",
+        "warrant",
+        "recommended"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 48,
+      "snippet": "We continue to expand our information technology systems as our operations grow, such as product data management, procurement, inventory management, production planning and execution, sales, service and logistics, dealer management, financial, tax and regulatory compliance systems. This includes the implementation of new internally developed systems and the deployment of such systems in the U.S. and abroad. While, we maintain information technology measures designed to protect us against intellectual property theft, data breaches, sabotage and other external or internal cyber-attacks or misappropriation, our systems and those of our service providers are potentially vulnerable to malware, ransomware, viruses, denial-of-service attacks, phishing attacks, social engineering, computer hacking, unauthorized access, exploitation of bugs, defects and vulnerabilities, breakdowns, damage, interruptions, system malfunctions, power outages, terrorism, acts of vandalism, security breaches, security incidents, inadvertent or intentional actions by employees or other third parties, and other cyber-attacks.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "providers",
+        "sensors",
+        "circuit",
+        "service providers",
+        "esg",
+        "incidents",
+        "scrutiny",
+        "semiconductors",
+        "climate",
+        "technoking",
+        "caused challenges",
+        "fsd capability",
+        "bugs",
+        "outages",
+        "ransomware",
+        "split",
+        "unknown",
+        "stock split",
+        "began",
+        "acquire",
+        "threat",
+        "experiencing",
+        "hedge",
+        "half",
+        "fsd features",
+        "COVID-19",
+        "berlin gigafactory",
+        "notes issued",
+        "warrant",
+        "recommended"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 73,
+      "snippet": "Companies across many industries are facing increasing scrutiny related to their ESG practices. Investor advocacy groups, certain institutional investors, investment funds and other influential investors are also increasingly focused on ESG practices and in recent years have placed increasing importance on the non-financial impacts of their investments. While our mission is to accelerate the world's transition to sustainable energy, if our ESG practices do not meet investor or other industry stakeholder expectations, which continue to evolve, we may incur additional costs and our brand, ability to attract and retain qualified employees and business may be harmed.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "providers",
+        "sensors",
+        "circuit",
+        "service providers",
+        "esg",
+        "incidents",
+        "scrutiny",
+        "semiconductors",
+        "climate",
+        "technoking",
+        "caused challenges",
+        "fsd capability",
+        "bugs",
+        "outages",
+        "ransomware",
+        "split",
+        "unknown",
+        "stock split",
+        "began",
+        "acquire",
+        "threat",
+        "experiencing",
+        "hedge",
+        "half",
+        "fsd features",
+        "COVID-19",
+        "berlin gigafactory",
+        "notes issued",
+        "warrant",
+        "recommended"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 75,
+      "snippet": "The trading price of our common stock has been highly volatile and could continue to be subject to wide fluctuations in response to various factors, some of which are beyond our control. Our common stock has experienced over the last 52 weeks an intra-day trading high of $900.40 per share and a low of $70.10 per share, as adjusted to give effect to the reflect the five-for-one stock split effected in the form of a stock dividend in August 2020 (the \u201cStock Split\u201d) . The stock market in general, and the market for technology companies in particular, has experienced extreme price and volume fluctuations that have often been unrelated or disproportionate to the operating performance of those companies. In particular, a large proportion of our common stock has been historically and may in the future be traded by short sellers which may put pressure on the supply and demand for our common stock, further influencing volatility in its market price. Public perception and other factors outside of our control may additionally impact the stock price of companies like us that garner a disproportionate degree of public attention, regardless of actual operating performance. In addition, in the past, following periods of volatility in the overall market or the market price of our shares, securities class action litigation has been filed against us. While we defend such actions vigorously, any judgment against us or any future stockholder litigation could result in substantial costs and a diversion of our management\u2019s attention and resources.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "providers",
+        "sensors",
+        "circuit",
+        "service providers",
+        "esg",
+        "incidents",
+        "scrutiny",
+        "semiconductors",
+        "climate",
+        "technoking",
+        "caused challenges",
+        "fsd capability",
+        "bugs",
+        "outages",
+        "ransomware",
+        "split",
+        "unknown",
+        "stock split",
+        "began",
+        "acquire",
+        "threat",
+        "experiencing",
+        "hedge",
+        "half",
+        "fsd features",
+        "COVID-19",
+        "berlin gigafactory",
+        "notes issued",
+        "warrant",
+        "recommended"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 79,
+      "snippet": "Moreover, in connection with certain of the convertible senior notes, we entered into convertible note hedge transactions, which are expected to reduce the potential dilution and/or offset potential cash payments we are required to make in excess of the principal amount upon conversion of the applicable notes. We also entered into warrant transactions with the hedge counterparties, which could separately have a dilutive effect on our common stock to the extent that the market price per share of our common stock exceeds the applicable strike price of the warrants on the applicable expiration dates. In addition, the hedge counterparties or their affiliates may enter into various transactions with respect to their hedge positions, which could also affect the market price of our common stock or the convertible senior notes.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "providers",
+        "sensors",
+        "circuit",
+        "service providers",
+        "esg",
+        "incidents",
+        "scrutiny",
+        "semiconductors",
+        "climate",
+        "technoking",
+        "caused challenges",
+        "fsd capability",
+        "bugs",
+        "outages",
+        "ransomware",
+        "split",
+        "unknown",
+        "stock split",
+        "began",
+        "acquire",
+        "threat",
+        "experiencing",
+        "hedge",
+        "half",
+        "fsd features",
+        "COVID-19",
+        "berlin gigafactory",
+        "notes issued",
+        "warrant",
+        "recommended"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 15,
+      "snippet": "Finally, the target demographics for our vehicles, particularly Model 3 and Model Y, are highly competitive. Sales of vehicles in the automotive industry tend to be cyclical in many markets, which may expose us to further volatility as we expand and adjust our operations and retail strategies. Moreover, the COVID-19 pandemic may negatively impact the transportation and automotive industries long-term. It is uncertain as to how such macroeconomic factors will impact us as a company that has been experiencing growth and increasing market share in an industry that has globally been experiencing a recent decline in sales.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "providers",
+        "sensors",
+        "circuit",
+        "service providers",
+        "esg",
+        "incidents",
+        "scrutiny",
+        "semiconductors",
+        "climate",
+        "technoking",
+        "caused challenges",
+        "fsd capability",
+        "bugs",
+        "outages",
+        "ransomware",
+        "split",
+        "unknown",
+        "stock split",
+        "began",
+        "acquire",
+        "threat",
+        "experiencing",
+        "hedge",
+        "half",
+        "fsd features",
+        "COVID-19",
+        "berlin gigafactory",
+        "notes issued",
+        "warrant",
+        "recommended"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.0171,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T05:55:33Z",
+    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "7f0ca2fc7979aec4fd9b7fa10914ddff66b78d595807a140c9d00bcebab5ff20",
+      "curr_text_sha256": "1839738d63d74d68a16b945be0db04fee83c5f7463f47628de3d75e5781f6108",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

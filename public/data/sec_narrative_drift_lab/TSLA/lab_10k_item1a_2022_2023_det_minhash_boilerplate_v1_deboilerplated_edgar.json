@@ -1,0 +1,73 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_minhash_boilerplate_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "TSLA",
+  "section": "10k_item1a",
+  "year_from": 2022,
+  "year_to": 2023,
+  "artifacts": {
+    "stats": {
+      "percent_reused": 0.18518518518518517,
+      "percent_new": 0.8148148148148149,
+      "reused_paragraphs": 10,
+      "total_paragraphs": 54
+    }
+  },
+  "evidence": [
+    {
+      "year": 2023,
+      "paragraph_idx": 14,
+      "snippet": "unable to do so, we may have to curtail our planned vehicle and energy storage product production or procure additional cells from suppliers at potentially greater costs, either of which may harm our business and operating results.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 26,
+      "snippet": "If we are unable to do so, we may have to curtail our planned vehicle and energy storage product production or procure additional cells from suppliers at potentially greater costs, either of which may harm our business and operating results.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 24,
+      "snippet": "Under this agreement, we are obligated to, among other things, meet employment targets as well as specified minimum numbers of personnel in the State of New York and in Buffalo, New York and spend or incur $ 5.00 billion in combined capital, operational expenses, costs of goods sold and other costs in the State of New York during a period that was initially 10 years beginning April 30, 2018.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 37,
+      "snippet": "Under this agreement, we are obligated to, among other things, meet employment targets as well as specified minimum numbers of personnel in the State of New York and in Buffalo, New York and spend or incur $5.00 billion in combined capital, operational expenses, costs of goods sold and other costs in the State of New York during a period that was initially 10 years beginning April 30, 2018.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 25,
+      "snippet": "As of December 31, 2023, we are currently in excess of such targets relating to investments and personnel in the State of New York and Buffalo.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 38,
+      "snippet": "As of December 31, 2022, we are currently in excess of such targets relating to investments and personnel in the State of New York and Buffalo.",
+      "why": "Matching paragraph from prior year."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.8148148148148149,
+    "confidence": 1.0,
+    "coverage": 0.20818539063191013,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T05:55:35Z",
+    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "4172ad8823c2cf83b659f9a54a8503ef61770b8f6ee2a42bca462041c8964d22",
+      "curr_text_sha256": "069a38a3c35691c4ce8a61ae5738104cc46c926b7998a3bc27b4eb5e4c675588",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

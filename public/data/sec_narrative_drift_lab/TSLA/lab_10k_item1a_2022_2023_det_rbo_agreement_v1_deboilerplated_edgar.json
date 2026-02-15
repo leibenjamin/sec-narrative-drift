@@ -1,0 +1,43 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_rbo_agreement_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "TSLA",
+  "section": "10k_item1a",
+  "year_from": 2022,
+  "year_to": 2023,
+  "artifacts": {
+    "detectors": [
+      "det_logodds_terms_v1",
+      "det_jsd_ngrams_v1"
+    ],
+    "matrix": [
+      [
+        1.0,
+        0.0201
+      ],
+      [
+        0.0201,
+        1.0
+      ]
+    ],
+    "agreement_score": 0.0201
+  },
+  "evidence": [],
+  "metrics": {
+    "drift_score": 0.0201,
+    "confidence": 1.0,
+    "coverage": null,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T05:55:35Z",
+    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

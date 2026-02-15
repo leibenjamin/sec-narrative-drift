@@ -1,0 +1,1213 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_logodds_terms_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "NVDA",
+  "section": "10k_item1a",
+  "year_from": 2021,
+  "year_to": 2022,
+  "artifacts": {
+    "top_risers": [
+      {
+        "label": "cards",
+        "score": 1.0823363675494966,
+        "meta": {
+          "z": 1.1403483363636342,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.290464442775931,
+          "deltaPer10k": 4.290464442775931,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "Artificial intelligence",
+        "score": 1.065165360541448,
+        "meta": {
+          "z": 2.6389548423884115,
+          "countPrev": 1,
+          "countCurr": 15,
+          "per10kPrev": 1.1453441759248655,
+          "per10kCurr": 16.08924166040974,
+          "deltaPer10k": 14.943897484484875,
+          "distinctive": true,
+          "includes": [
+            "ai"
+          ]
+        }
+      },
+      {
+        "label": "esg",
+        "score": 0.9556544608088483,
+        "meta": {
+          "z": 1.1403483363636342,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.290464442775931,
+          "deltaPer10k": 4.290464442775931,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "cmp",
+        "score": 0.8790520381436753,
+        "meta": {
+          "z": 1.0489414012945302,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.217848332081948,
+          "deltaPer10k": 3.217848332081948,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "lhr",
+        "score": 0.8790520381436753,
+        "meta": {
+          "z": 1.0489414012945302,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.217848332081948,
+          "deltaPer10k": 3.217848332081948,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "credentials",
+        "score": 0.8740161753382205,
+        "meta": {
+          "z": 0.9208624244590641,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.1452322213879653,
+          "deltaPer10k": 2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "invasion",
+        "score": 0.8740161753382205,
+        "meta": {
+          "z": 0.9208624244590641,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.1452322213879653,
+          "deltaPer10k": 2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "obtained",
+        "score": 0.8740161753382205,
+        "meta": {
+          "z": 0.9208624244590641,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.1452322213879653,
+          "deltaPer10k": 2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "placing",
+        "score": 0.8740161753382205,
+        "meta": {
+          "z": 0.9208624244590641,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.1452322213879653,
+          "deltaPer10k": 2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "quarters",
+        "score": 0.8740161753382205,
+        "meta": {
+          "z": 0.9208624244590641,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.1452322213879653,
+          "deltaPer10k": 2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "russian",
+        "score": 0.8740161753382205,
+        "meta": {
+          "z": 0.9208624244590641,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.1452322213879653,
+          "deltaPer10k": 2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "shortage",
+        "score": 0.8740161753382205,
+        "meta": {
+          "z": 0.9208624244590641,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.1452322213879653,
+          "deltaPer10k": 2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "actors",
+        "score": 0.8504080513497411,
+        "meta": {
+          "z": 1.3612394603970317,
+          "countPrev": 0,
+          "countCurr": 8,
+          "per10kPrev": 0.0,
+          "per10kCurr": 8.580928885551861,
+          "deltaPer10k": 8.580928885551861,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "impose",
+        "score": 0.8328356167196771,
+        "meta": {
+          "z": 1.5922033055787101,
+          "countPrev": 1,
+          "countCurr": 6,
+          "per10kPrev": 1.1453441759248655,
+          "per10kCurr": 6.435696664163896,
+          "deltaPer10k": 5.290352488239031,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "russia",
+        "score": 0.8238074754176158,
+        "meta": {
+          "z": 1.3186601908679798,
+          "countPrev": 0,
+          "countCurr": 7,
+          "per10kPrev": 0.0,
+          "per10kCurr": 7.508312774857878,
+          "deltaPer10k": 7.508312774857878,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_fallers": [
+      {
+        "label": "COVID-19",
+        "score": -1.6916349437006037,
+        "meta": {
+          "z": -2.317874196250036,
+          "countPrev": 24,
+          "countCurr": 11,
+          "per10kPrev": 27.488260222196768,
+          "per10kCurr": 11.798777217633807,
+          "deltaPer10k": -15.68948300456296,
+          "distinctive": true,
+          "includes": [
+            "covid"
+          ]
+        }
+      },
+      {
+        "label": "covid pandemic",
+        "score": -1.0886341272687763,
+        "meta": {
+          "z": -1.6919146192084755,
+          "countPrev": 13,
+          "countCurr": 6,
+          "per10kPrev": 14.88947428702325,
+          "per10kCurr": 6.435696664163896,
+          "deltaPer10k": -8.453777622859352,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "home",
+        "score": -1.0335062978173426,
+        "meta": {
+          "z": -1.0889010317612269,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 3.436032527774596,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.436032527774596,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "travel",
+        "score": -0.9892723011683795,
+        "meta": {
+          "z": -1.1804633045851844,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 4.581376703699462,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.581376703699462,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "arm",
+        "score": -0.9380933177513043,
+        "meta": {
+          "z": -1.2853732437884482,
+          "countPrev": 4,
+          "countCurr": 1,
+          "per10kPrev": 4.581376703699462,
+          "per10kCurr": 1.0726161106939827,
+          "deltaPer10k": -3.508760593005479,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "benefited",
+        "score": -0.9116618487920526,
+        "meta": {
+          "z": -0.9605258621679544,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.290688351849731,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "desktop",
+        "score": -0.9116618487920526,
+        "meta": {
+          "z": -0.9605258621679544,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.290688351849731,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "election",
+        "score": -0.9116618487920526,
+        "meta": {
+          "z": -0.9605258621679544,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.290688351849731,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "grows",
+        "score": -0.9116618487920526,
+        "meta": {
+          "z": -0.9605258621679544,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.290688351849731,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "joint",
+        "score": -0.9116618487920526,
+        "meta": {
+          "z": -0.9605258621679544,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.290688351849731,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "remotely",
+        "score": -0.9116618487920526,
+        "meta": {
+          "z": -0.9605258621679544,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.290688351849731,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "severity",
+        "score": -0.9116618487920526,
+        "meta": {
+          "z": -0.9605258621679544,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.290688351849731,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "slowdown",
+        "score": -0.9116618487920526,
+        "meta": {
+          "z": -0.9605258621679544,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.290688351849731,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "try",
+        "score": -0.9116618487920526,
+        "meta": {
+          "z": -0.9605258621679544,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.290688351849731,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "workstations",
+        "score": -0.9116618487920526,
+        "meta": {
+          "z": -0.9605258621679544,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.290688351849731,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.290688351849731,
+          "distinctive": false
+        }
+      }
+    ],
+    "summary": "Adds emphasis on cards, Artificial intelligence, esg; de-emphasizes COVID-19, covid pandemic, home.",
+    "ranked_items": [
+      {
+        "label": "cards",
+        "score": 1.0823363675494966,
+        "meta": {
+          "z": 1.1403483363636342,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.290464442775931,
+          "deltaPer10k": 4.290464442775931,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "Artificial intelligence",
+        "score": 1.065165360541448,
+        "meta": {
+          "z": 2.6389548423884115,
+          "countPrev": 1,
+          "countCurr": 15,
+          "per10kPrev": 1.1453441759248655,
+          "per10kCurr": 16.08924166040974,
+          "deltaPer10k": 14.943897484484875,
+          "distinctive": true,
+          "includes": [
+            "ai"
+          ]
+        }
+      },
+      {
+        "label": "esg",
+        "score": 0.9556544608088483,
+        "meta": {
+          "z": 1.1403483363636342,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.290464442775931,
+          "deltaPer10k": 4.290464442775931,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "cmp",
+        "score": 0.8790520381436753,
+        "meta": {
+          "z": 1.0489414012945302,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.217848332081948,
+          "deltaPer10k": 3.217848332081948,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "lhr",
+        "score": 0.8790520381436753,
+        "meta": {
+          "z": 1.0489414012945302,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.217848332081948,
+          "deltaPer10k": 3.217848332081948,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "credentials",
+        "score": 0.8740161753382205,
+        "meta": {
+          "z": 0.9208624244590641,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.1452322213879653,
+          "deltaPer10k": 2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "invasion",
+        "score": 0.8740161753382205,
+        "meta": {
+          "z": 0.9208624244590641,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.1452322213879653,
+          "deltaPer10k": 2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "obtained",
+        "score": 0.8740161753382205,
+        "meta": {
+          "z": 0.9208624244590641,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.1452322213879653,
+          "deltaPer10k": 2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "placing",
+        "score": 0.8740161753382205,
+        "meta": {
+          "z": 0.9208624244590641,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.1452322213879653,
+          "deltaPer10k": 2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "quarters",
+        "score": 0.8740161753382205,
+        "meta": {
+          "z": 0.9208624244590641,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.1452322213879653,
+          "deltaPer10k": 2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "russian",
+        "score": 0.8740161753382205,
+        "meta": {
+          "z": 0.9208624244590641,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.1452322213879653,
+          "deltaPer10k": 2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "shortage",
+        "score": 0.8740161753382205,
+        "meta": {
+          "z": 0.9208624244590641,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.1452322213879653,
+          "deltaPer10k": 2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "actors",
+        "score": 0.8504080513497411,
+        "meta": {
+          "z": 1.3612394603970317,
+          "countPrev": 0,
+          "countCurr": 8,
+          "per10kPrev": 0.0,
+          "per10kCurr": 8.580928885551861,
+          "deltaPer10k": 8.580928885551861,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "impose",
+        "score": 0.8328356167196771,
+        "meta": {
+          "z": 1.5922033055787101,
+          "countPrev": 1,
+          "countCurr": 6,
+          "per10kPrev": 1.1453441759248655,
+          "per10kCurr": 6.435696664163896,
+          "deltaPer10k": 5.290352488239031,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "russia",
+        "score": 0.8238074754176158,
+        "meta": {
+          "z": 1.3186601908679798,
+          "countPrev": 0,
+          "countCurr": 7,
+          "per10kPrev": 0.0,
+          "per10kCurr": 7.508312774857878,
+          "deltaPer10k": 7.508312774857878,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "COVID-19",
+        "score": -1.6916349437006037,
+        "meta": {
+          "z": -2.317874196250036,
+          "countPrev": 24,
+          "countCurr": 11,
+          "per10kPrev": 27.488260222196768,
+          "per10kCurr": 11.798777217633807,
+          "deltaPer10k": -15.68948300456296,
+          "distinctive": true,
+          "includes": [
+            "covid"
+          ]
+        }
+      },
+      {
+        "label": "covid pandemic",
+        "score": -1.0886341272687763,
+        "meta": {
+          "z": -1.6919146192084755,
+          "countPrev": 13,
+          "countCurr": 6,
+          "per10kPrev": 14.88947428702325,
+          "per10kCurr": 6.435696664163896,
+          "deltaPer10k": -8.453777622859352,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "home",
+        "score": -1.0335062978173426,
+        "meta": {
+          "z": -1.0889010317612269,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 3.436032527774596,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.436032527774596,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "travel",
+        "score": -0.9892723011683795,
+        "meta": {
+          "z": -1.1804633045851844,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 4.581376703699462,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.581376703699462,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "arm",
+        "score": -0.9380933177513043,
+        "meta": {
+          "z": -1.2853732437884482,
+          "countPrev": 4,
+          "countCurr": 1,
+          "per10kPrev": 4.581376703699462,
+          "per10kCurr": 1.0726161106939827,
+          "deltaPer10k": -3.508760593005479,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "benefited",
+        "score": -0.9116618487920526,
+        "meta": {
+          "z": -0.9605258621679544,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.290688351849731,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "desktop",
+        "score": -0.9116618487920526,
+        "meta": {
+          "z": -0.9605258621679544,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.290688351849731,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "election",
+        "score": -0.9116618487920526,
+        "meta": {
+          "z": -0.9605258621679544,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.290688351849731,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "grows",
+        "score": -0.9116618487920526,
+        "meta": {
+          "z": -0.9605258621679544,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.290688351849731,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "joint",
+        "score": -0.9116618487920526,
+        "meta": {
+          "z": -0.9605258621679544,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.290688351849731,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "remotely",
+        "score": -0.9116618487920526,
+        "meta": {
+          "z": -0.9605258621679544,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.290688351849731,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "severity",
+        "score": -0.9116618487920526,
+        "meta": {
+          "z": -0.9605258621679544,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.290688351849731,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "slowdown",
+        "score": -0.9116618487920526,
+        "meta": {
+          "z": -0.9605258621679544,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.290688351849731,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "try",
+        "score": -0.9116618487920526,
+        "meta": {
+          "z": -0.9605258621679544,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.290688351849731,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "workstations",
+        "score": -0.9116618487920526,
+        "meta": {
+          "z": -0.9605258621679544,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.290688351849731,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.290688351849731,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_risers_alt": [
+      {
+        "label": "future demand",
+        "score": 2.076272034197636,
+        "meta": {}
+      },
+      {
+        "label": "information technology",
+        "score": 2.076272034197636,
+        "meta": {}
+      },
+      {
+        "label": "Data privacy",
+        "score": 0.5735779562693546,
+        "meta": {}
+      },
+      {
+        "label": "result increased",
+        "score": 1.0008233541296674,
+        "meta": {}
+      },
+      {
+        "label": "adverse changes",
+        "score": 2.0732477948170693,
+        "meta": {}
+      },
+      {
+        "label": "costs increase",
+        "score": 2.0732477948170693,
+        "meta": {}
+      },
+      {
+        "label": "demand products impact ability",
+        "score": 2.0732477948170693,
+        "meta": {}
+      },
+      {
+        "label": "economic industry",
+        "score": 2.0732477948170693,
+        "meta": {}
+      },
+      {
+        "label": "product demand",
+        "score": 2.0732477948170693,
+        "meta": {}
+      },
+      {
+        "label": "products services result",
+        "score": 2.0732477948170693,
+        "meta": {}
+      },
+      {
+        "label": "tax laws",
+        "score": 1.4948105078827254,
+        "meta": {}
+      },
+      {
+        "label": "Climate change",
+        "score": 0.3921775239152887,
+        "meta": {}
+      },
+      {
+        "label": "material weakness",
+        "score": 0.9978314227442437,
+        "meta": {}
+      },
+      {
+        "label": "partners customers",
+        "score": 0.9978314227442437,
+        "meta": {}
+      },
+      {
+        "label": "demand products services",
+        "score": 0.9236136995910149,
+        "meta": {}
+      }
+    ],
+    "top_fallers_alt": [
+      {
+        "label": "Intellectual property",
+        "score": -0.8134832307791529,
+        "meta": {}
+      },
+      {
+        "label": "covid pandemic",
+        "score": -2.1760082799055063,
+        "meta": {}
+      },
+      {
+        "label": "laws regulations",
+        "score": -1.6681697403346343,
+        "meta": {}
+      },
+      {
+        "label": "economic demand",
+        "score": -2.153450978940808,
+        "meta": {}
+      },
+      {
+        "label": "future continue",
+        "score": -1.5750822464271357,
+        "meta": {}
+      },
+      {
+        "label": "ability meet customer demand",
+        "score": -1.07824062236807,
+        "meta": {}
+      },
+      {
+        "label": "data security",
+        "score": -1.07824062236807,
+        "meta": {}
+      },
+      {
+        "label": "financial markets",
+        "score": -1.07824062236807,
+        "meta": {}
+      },
+      {
+        "label": "product design",
+        "score": -1.07824062236807,
+        "meta": {}
+      },
+      {
+        "label": "revenue sales",
+        "score": -1.07824062236807,
+        "meta": {}
+      },
+      {
+        "label": "competitive landscape",
+        "score": -1.0750061990064799,
+        "meta": {}
+      },
+      {
+        "label": "financial results",
+        "score": -0.21645635193884072,
+        "meta": {}
+      },
+      {
+        "label": "new products",
+        "score": -0.19901511172630526,
+        "meta": {}
+      },
+      {
+        "label": "product liability",
+        "score": -0.29541646649251785,
+        "meta": {}
+      },
+      {
+        "label": "demand products",
+        "score": -0.17439274312800368,
+        "meta": {}
+      }
+    ],
+    "summary_alt": "Adds emphasis on future demand, information technology, Data privacy; de-emphasizes Intellectual property, covid pandemic, laws regulations."
+  },
+  "evidence": [
+    {
+      "year": 2022,
+      "paragraph_idx": 7,
+      "snippet": "GPUs have use cases in addition to their designed and marketed use case, such as for digital currency mining, including blockchain-based platforms such as Ethereum. It is difficult for us to estimate with any reasonable degree of precision the past or current impact of cryptocurrency mining, or forecast the future impact of cryptocurrency mining, on demand for our products. Volatility in the cryptocurrency market, including new compute technologies, price changes in cryptocurrencies, government cryptocurrency policies and regulations, new cryptocurrency standards, and changes in the method of verifying blockchain transactions, have impacted and can in the future impact cryptocurrency mining and demand for our products, and can further impact our ability to estimate demand for our products. Changes to cryptocurrency standards and processes including, but not limited to, the pending Ethereum 2.0 standard may decrease the usage of GPUs for Ethereum mining as well as create increased aftermarket resales of our GPUs, impact retail prices for our GPUs, increase returns of our products in the distribution channel, and may reduce demand for our new GPUs. We have introduced Lite Hash Rate, or LHR, GeForce GPUs with limited Ethereum mining capability and increased the supply of CMP in an effort to address demand from gamers and direct miners to CMP. However, if attempts in the aftermarket to improve the hash rate capabilities of our LHR cards are successful, our gaming cards may become more attractive to miners, increasing demand for our gaming GPUs and limiting our ability to supply our gaming cards to non-mining customers. We cannot predict whether our strategy of using LHR cards and CMP will achieve our desired outcome. In addition, our products may be resold on the unauthorized \u201cgray market,\u201d which also makes demand forecasting difficult. Gray market products compete with our distribution channels.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "cards",
+        "Artificial intelligence",
+        "esg",
+        "cmp",
+        "lhr",
+        "credentials",
+        "invasion",
+        "obtained",
+        "placing",
+        "quarters",
+        "russian",
+        "shortage",
+        "actors",
+        "impose",
+        "russia",
+        "COVID-19",
+        "covid pandemic",
+        "home",
+        "travel",
+        "arm",
+        "benefited",
+        "desktop",
+        "election",
+        "grows",
+        "joint",
+        "remotely",
+        "severity",
+        "slowdown",
+        "try",
+        "workstations"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 31,
+      "snippet": "For example, on February 23, 2022, we became aware of a security incident involving unauthorized access to our network by a group of independent criminal threat actors, not affiliated with any government or political cause. The threat actors obtained NVIDIA network credentials and through deception, obtained two-factor authentication capability and access to our network. The threat actors misappropriated certain NVIDIA proprietary information, including NVIDIA source code, and leaked some of that information online. Upon learning of the security incident, we engaged in remedial and preventative actions, rotated all NVIDIA network credentials to prevent further unauthorized access, hardened our network, analyzed the information that the threat actors exfiltrated, and notified law enforcement and other authorities.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "cards",
+        "Artificial intelligence",
+        "esg",
+        "cmp",
+        "lhr",
+        "credentials",
+        "invasion",
+        "obtained",
+        "placing",
+        "quarters",
+        "russian",
+        "shortage",
+        "actors",
+        "impose",
+        "russia",
+        "COVID-19",
+        "covid pandemic",
+        "home",
+        "travel",
+        "arm",
+        "benefited",
+        "desktop",
+        "election",
+        "grows",
+        "joint",
+        "remotely",
+        "severity",
+        "slowdown",
+        "try",
+        "workstations"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 51,
+      "snippet": "Government actions, including trade protection and national security policies of U.S. and foreign government bodies, such as tariffs, import or export regulations, including deemed export restrictions, trade and economic sanctions, decrees, quotas or other trade barriers and restrictions could affect our ability to ship products, provide services to our customers and employees, do business without an export license with entities on the U.S. Department of Commerce\u2019s U.S. Entity List or other U.S. government restricted parties lists (which is expected to change from time to time), and generally fulfill our contractual obligations and have a material adverse effect on our business. For example, in response to the Russian invasion of Ukraine, the United States and certain allies have imposed economic sanctions and export control measures and may impose additional sanctions or export control measures, which have and could in the future result in, among other things, severe or complete restrictions on exports to and other commerce and business dealings involving Russia, certain regions of Ukraine, and/or particular entities and individuals. Such actions have limited or blocked, or could in the future limit or block the passage of our products, services and support into Russia or other regions determined to be supporting Russia, and restrict access by our Russian or Ukrainian employees (both within and outside of Russia and Ukraine) to our systems, negatively impacting productivity. Given these recent sanctions and export restrictions imposed by the United States and foreign government bodies, we recently ceased product sales to Russia. While we have policies and procedures in place to ensure compliance with sanctions and trade restrictions, our employees, contractors, partners, and agents may take actions in violations of such policies and applicable law, for which we may be ultimately held responsible. If we were ever found to have violated U.S. export control laws, we may be subject to various penalties available under the laws, any of which could have a material and adverse impact on our business, operating results and financial condition. Additionally, changes in the public perception of governments in the regions where we operate or plan to operate could negatively impact our business and results of operations.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "cards",
+        "Artificial intelligence",
+        "esg",
+        "cmp",
+        "lhr",
+        "credentials",
+        "invasion",
+        "obtained",
+        "placing",
+        "quarters",
+        "russian",
+        "shortage",
+        "actors",
+        "impose",
+        "russia",
+        "COVID-19",
+        "covid pandemic",
+        "home",
+        "travel",
+        "arm",
+        "benefited",
+        "desktop",
+        "election",
+        "grows",
+        "joint",
+        "remotely",
+        "severity",
+        "slowdown",
+        "try",
+        "workstations"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 26,
+      "snippet": "The COVID-19 pandemic has increased economic and demand uncertainty. It continues to affect our business in both positive and negative ways, and there is uncertainty around their duration and impact. In the fourth quarter of fiscal year 2021, our Gaming and Data Center market platforms benefited from stronger demand as people continue to work, learn, and play from home. Our Professional Visualization market platform benefited from work-from-home trends in mobile workstations and desktop workstation demand has started to recover, although not back to pre-COVID levels. In our Automotive market platform, COVID-19 did not have a significant impact on demand in the fourth quarter of fiscal year 2021. In some regions, markets, or industries, where COVID-19 has driven an increase in sales for our products, the demand may not be sustainable if conditions change. Additionally, stronger demand globally has limited the availability of capacity and components in our supply chain, particularly in Gaming, which could cause us to order an excess amount if demand changes, pay higher prices, or limit our ability to obtain supply at necessary levels or at all. As the COVID-19 pandemic continues, the timing and overall demand from customers and the availability of supply chain, logistical services and component supply may have a material net negative impact on our business and financial results.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "cards",
+        "Artificial intelligence",
+        "esg",
+        "cmp",
+        "lhr",
+        "credentials",
+        "invasion",
+        "obtained",
+        "placing",
+        "quarters",
+        "russian",
+        "shortage",
+        "actors",
+        "impose",
+        "russia",
+        "COVID-19",
+        "covid pandemic",
+        "home",
+        "travel",
+        "arm",
+        "benefited",
+        "desktop",
+        "election",
+        "grows",
+        "joint",
+        "remotely",
+        "severity",
+        "slowdown",
+        "try",
+        "workstations"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 30,
+      "snippet": "The ultimate impact of the COVID-19 pandemic or a similar health epidemic is highly uncertain and subject to change. The extent of the impact of the COVID-19 pandemic on our operational and financial performance, including our ability to execute our business strategies and initiatives in the expected time frame, will depend on future developments, including, but not limited to, the duration and continued spread of the pandemic, its severity, the actions to contain the disease or treat its impact, availability of vaccines or other treatments, further related restrictions on travel, and the duration, timing and severity of the impact on customer spending, including any recession resulting from the pandemic, all of which are uncertain and cannot be predicted. An extended period of global supply chain and economic disruption as a result of the COVID-19 pandemic could have a material negative impact on our business, results of operations, access to sources of liquidity and financial condition, though the full extent and duration is uncertain.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "cards",
+        "Artificial intelligence",
+        "esg",
+        "cmp",
+        "lhr",
+        "credentials",
+        "invasion",
+        "obtained",
+        "placing",
+        "quarters",
+        "russian",
+        "shortage",
+        "actors",
+        "impose",
+        "russia",
+        "COVID-19",
+        "covid pandemic",
+        "home",
+        "travel",
+        "arm",
+        "benefited",
+        "desktop",
+        "election",
+        "grows",
+        "joint",
+        "remotely",
+        "severity",
+        "slowdown",
+        "try",
+        "workstations"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 25,
+      "snippet": "COVID-19 has spread worldwide, resulting in government authorities implementing numerous measures to try to contain the disease, such as travel bans and restrictions, quarantines, shelter-in-place orders and shutdowns. These measures have impacted, and may further impact, our workforce and operations, the operations of our customers and our partners, and those of our respective vendors and suppliers (including our subcontractors and third-party contract manufacturers). Our critical business operations, including our headquarters, most of our finished goods inventory and many of our key suppliers are located in regions which have been impacted by COVID-19. Our customers and suppliers worldwide have also been affected and may continue to be affected by COVID-19 related restrictions and closures.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "cards",
+        "Artificial intelligence",
+        "esg",
+        "cmp",
+        "lhr",
+        "credentials",
+        "invasion",
+        "obtained",
+        "placing",
+        "quarters",
+        "russian",
+        "shortage",
+        "actors",
+        "impose",
+        "russia",
+        "COVID-19",
+        "covid pandemic",
+        "home",
+        "travel",
+        "arm",
+        "benefited",
+        "desktop",
+        "election",
+        "grows",
+        "joint",
+        "remotely",
+        "severity",
+        "slowdown",
+        "try",
+        "workstations"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.0886,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T05:55:30Z",
+    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "8c0d08a1b053aeeb4c1399cfee88fa0577b416889c7f4d7b9306ba6b4859e669",
+      "curr_text_sha256": "1a7937b559823b48cfe923c9a8174260a8af88156c70d16482bf92d29c4fc296",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

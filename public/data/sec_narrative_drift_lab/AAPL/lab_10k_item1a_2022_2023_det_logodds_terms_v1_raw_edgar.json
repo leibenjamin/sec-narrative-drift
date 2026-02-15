@@ -1,0 +1,1193 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_logodds_terms_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "AAPL",
+  "section": "10k_item1a",
+  "year_from": 2022,
+  "year_to": 2023,
+  "artifacts": {
+    "top_risers": [
+      {
+        "label": "allows",
+        "score": 0.9038858496346153,
+        "meta": {
+          "z": 0.9523330785115897,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.269117313365101,
+          "deltaPer10k": 2.269117313365101,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "inside",
+        "score": 0.9038858496346153,
+        "meta": {
+          "z": 0.9523330785115897,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.269117313365101,
+          "deltaPer10k": 2.269117313365101,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "march",
+        "score": 0.9038858496346153,
+        "meta": {
+          "z": 0.9523330785115897,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.269117313365101,
+          "deltaPer10k": 2.269117313365101,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "communicate",
+        "score": 0.8554806107808836,
+        "meta": {
+          "z": 1.172177508217858,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.538234626730202,
+          "deltaPer10k": 4.538234626730202,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "mechanisms",
+        "score": 0.8554806107808836,
+        "meta": {
+          "z": 1.172177508217858,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.538234626730202,
+          "deltaPer10k": 4.538234626730202,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "purchasing",
+        "score": 0.8554806107808836,
+        "meta": {
+          "z": 1.172177508217858,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.538234626730202,
+          "deltaPer10k": 4.538234626730202,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "alternative purchasing",
+        "score": 0.7542179872290592,
+        "meta": {
+          "z": 1.172177508217858,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.538234626730202,
+          "deltaPer10k": 4.538234626730202,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "communicate consumers",
+        "score": 0.7542179872290592,
+        "meta": {
+          "z": 1.172177508217858,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.538234626730202,
+          "deltaPer10k": 4.538234626730202,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "developers communicate",
+        "score": 0.7542179872290592,
+        "meta": {
+          "z": 1.172177508217858,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.538234626730202,
+          "deltaPer10k": 4.538234626730202,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "purchasing mechanisms",
+        "score": 0.7542179872290592,
+        "meta": {
+          "z": 1.172177508217858,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.538234626730202,
+          "deltaPer10k": 4.538234626730202,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "regarding alternative",
+        "score": 0.7542179872290592,
+        "meta": {
+          "z": 1.172177508217858,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.538234626730202,
+          "deltaPer10k": 4.538234626730202,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "store regarding",
+        "score": 0.7542179872290592,
+        "meta": {
+          "z": 1.172177508217858,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.538234626730202,
+          "deltaPer10k": 4.538234626730202,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "Artificial intelligence",
+        "score": 0.6127627706649098,
+        "meta": {
+          "z": 0.9523330785115897,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.269117313365101,
+          "deltaPer10k": 2.269117313365101,
+          "distinctive": false,
+          "includes": [
+            "artificial intelligence"
+          ]
+        }
+      },
+      {
+        "label": "expects make",
+        "score": 0.6127627706649098,
+        "meta": {
+          "z": 0.9523330785115897,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.269117313365101,
+          "deltaPer10k": 2.269117313365101,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "machine learning",
+        "score": 0.6127627706649098,
+        "meta": {
+          "z": 0.9523330785115897,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.269117313365101,
+          "deltaPer10k": 2.269117313365101,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_fallers": [
+      {
+        "label": "COVID-19",
+        "score": -0.8599602883206303,
+        "meta": {
+          "z": -2.022334655607856,
+          "countPrev": 10,
+          "countCurr": 2,
+          "per10kPrev": 10.91703056768559,
+          "per10kCurr": 2.269117313365101,
+          "deltaPer10k": -8.647913254320489,
+          "distinctive": true,
+          "includes": [
+            "covid"
+          ]
+        }
+      },
+      {
+        "label": "extent charges",
+        "score": -0.7254549593140726,
+        "meta": {
+          "z": -0.9290557011185522,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.183406113537118,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.183406113537118,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "new legislative",
+        "score": -0.7254549593140726,
+        "meta": {
+          "z": -0.9290557011185522,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.183406113537118,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.183406113537118,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "extent covid",
+        "score": -0.5977853320071421,
+        "meta": {
+          "z": -0.9290557011185522,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.183406113537118,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.183406113537118,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "covid pandemic",
+        "score": -0.5639671281842824,
+        "meta": {
+          "z": -1.8671459616352961,
+          "countPrev": 9,
+          "countCurr": 2,
+          "per10kPrev": 9.825327510917031,
+          "per10kCurr": 2.269117313365101,
+          "deltaPer10k": -7.5562101975519305,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "marketable non",
+        "score": -0.480852323623995,
+        "meta": {
+          "z": -0.9290557011185522,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.183406113537118,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.183406113537118,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "measures response",
+        "score": -0.480852323623995,
+        "meta": {
+          "z": -0.9290557011185522,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.183406113537118,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.183406113537118,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "non marketable",
+        "score": -0.480852323623995,
+        "meta": {
+          "z": -0.9290557011185522,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.183406113537118,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.183406113537118,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "trade restrictions",
+        "score": -0.480852323623995,
+        "meta": {
+          "z": -0.9290557011185522,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.183406113537118,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.183406113537118,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "protective",
+        "score": -0.38263492072159866,
+        "meta": {
+          "z": -0.8998274352088936,
+          "countPrev": 3,
+          "countCurr": 1,
+          "per10kPrev": 3.2751091703056767,
+          "per10kCurr": 1.1345586566825505,
+          "deltaPer10k": -2.1405505136231264,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "consumer demand",
+        "score": -0.37499616702398186,
+        "meta": {
+          "z": -0.9290557011185522,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.183406113537118,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.183406113537118,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "governance",
+        "score": -0.3688780153388522,
+        "meta": {
+          "z": -0.5054357835901835,
+          "countPrev": 7,
+          "countCurr": 5,
+          "per10kPrev": 7.641921397379913,
+          "per10kCurr": 5.672793283412752,
+          "deltaPer10k": -1.9691281139671606,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "public safety",
+        "score": -0.3595869472034896,
+        "meta": {
+          "z": -1.19049725201071,
+          "countPrev": 4,
+          "countCurr": 1,
+          "per10kPrev": 4.366812227074236,
+          "per10kCurr": 1.1345586566825505,
+          "deltaPer10k": -3.232253570391686,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "safety measures",
+        "score": -0.3595869472034896,
+        "meta": {
+          "z": -1.19049725201071,
+          "countPrev": 4,
+          "countCurr": 1,
+          "per10kPrev": 4.366812227074236,
+          "per10kCurr": 1.1345586566825505,
+          "deltaPer10k": -3.232253570391686,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "governance goals",
+        "score": -0.3329636485691409,
+        "meta": {
+          "z": -0.5174797028387081,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 2.183406113537118,
+          "per10kCurr": 1.1345586566825505,
+          "deltaPer10k": -1.0488474568545676,
+          "distinctive": false
+        }
+      }
+    ],
+    "summary": "Adds emphasis on allows, inside, march; de-emphasizes COVID-19, extent charges, new legislative.",
+    "ranked_items": [
+      {
+        "label": "allows",
+        "score": 0.9038858496346153,
+        "meta": {
+          "z": 0.9523330785115897,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.269117313365101,
+          "deltaPer10k": 2.269117313365101,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "inside",
+        "score": 0.9038858496346153,
+        "meta": {
+          "z": 0.9523330785115897,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.269117313365101,
+          "deltaPer10k": 2.269117313365101,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "march",
+        "score": 0.9038858496346153,
+        "meta": {
+          "z": 0.9523330785115897,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.269117313365101,
+          "deltaPer10k": 2.269117313365101,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "communicate",
+        "score": 0.8554806107808836,
+        "meta": {
+          "z": 1.172177508217858,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.538234626730202,
+          "deltaPer10k": 4.538234626730202,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "mechanisms",
+        "score": 0.8554806107808836,
+        "meta": {
+          "z": 1.172177508217858,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.538234626730202,
+          "deltaPer10k": 4.538234626730202,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "purchasing",
+        "score": 0.8554806107808836,
+        "meta": {
+          "z": 1.172177508217858,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.538234626730202,
+          "deltaPer10k": 4.538234626730202,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "alternative purchasing",
+        "score": 0.7542179872290592,
+        "meta": {
+          "z": 1.172177508217858,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.538234626730202,
+          "deltaPer10k": 4.538234626730202,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "communicate consumers",
+        "score": 0.7542179872290592,
+        "meta": {
+          "z": 1.172177508217858,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.538234626730202,
+          "deltaPer10k": 4.538234626730202,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "developers communicate",
+        "score": 0.7542179872290592,
+        "meta": {
+          "z": 1.172177508217858,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.538234626730202,
+          "deltaPer10k": 4.538234626730202,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "purchasing mechanisms",
+        "score": 0.7542179872290592,
+        "meta": {
+          "z": 1.172177508217858,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.538234626730202,
+          "deltaPer10k": 4.538234626730202,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "regarding alternative",
+        "score": 0.7542179872290592,
+        "meta": {
+          "z": 1.172177508217858,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.538234626730202,
+          "deltaPer10k": 4.538234626730202,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "store regarding",
+        "score": 0.7542179872290592,
+        "meta": {
+          "z": 1.172177508217858,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.538234626730202,
+          "deltaPer10k": 4.538234626730202,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "Artificial intelligence",
+        "score": 0.6127627706649098,
+        "meta": {
+          "z": 0.9523330785115897,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.269117313365101,
+          "deltaPer10k": 2.269117313365101,
+          "distinctive": false,
+          "includes": [
+            "artificial intelligence"
+          ]
+        }
+      },
+      {
+        "label": "expects make",
+        "score": 0.6127627706649098,
+        "meta": {
+          "z": 0.9523330785115897,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.269117313365101,
+          "deltaPer10k": 2.269117313365101,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "machine learning",
+        "score": 0.6127627706649098,
+        "meta": {
+          "z": 0.9523330785115897,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.269117313365101,
+          "deltaPer10k": 2.269117313365101,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "COVID-19",
+        "score": -0.8599602883206303,
+        "meta": {
+          "z": -2.022334655607856,
+          "countPrev": 10,
+          "countCurr": 2,
+          "per10kPrev": 10.91703056768559,
+          "per10kCurr": 2.269117313365101,
+          "deltaPer10k": -8.647913254320489,
+          "distinctive": true,
+          "includes": [
+            "covid"
+          ]
+        }
+      },
+      {
+        "label": "extent charges",
+        "score": -0.7254549593140726,
+        "meta": {
+          "z": -0.9290557011185522,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.183406113537118,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.183406113537118,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "new legislative",
+        "score": -0.7254549593140726,
+        "meta": {
+          "z": -0.9290557011185522,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.183406113537118,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.183406113537118,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "extent covid",
+        "score": -0.5977853320071421,
+        "meta": {
+          "z": -0.9290557011185522,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.183406113537118,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.183406113537118,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "covid pandemic",
+        "score": -0.5639671281842824,
+        "meta": {
+          "z": -1.8671459616352961,
+          "countPrev": 9,
+          "countCurr": 2,
+          "per10kPrev": 9.825327510917031,
+          "per10kCurr": 2.269117313365101,
+          "deltaPer10k": -7.5562101975519305,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "marketable non",
+        "score": -0.480852323623995,
+        "meta": {
+          "z": -0.9290557011185522,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.183406113537118,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.183406113537118,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "measures response",
+        "score": -0.480852323623995,
+        "meta": {
+          "z": -0.9290557011185522,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.183406113537118,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.183406113537118,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "non marketable",
+        "score": -0.480852323623995,
+        "meta": {
+          "z": -0.9290557011185522,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.183406113537118,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.183406113537118,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "trade restrictions",
+        "score": -0.480852323623995,
+        "meta": {
+          "z": -0.9290557011185522,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.183406113537118,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.183406113537118,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "protective",
+        "score": -0.38263492072159866,
+        "meta": {
+          "z": -0.8998274352088936,
+          "countPrev": 3,
+          "countCurr": 1,
+          "per10kPrev": 3.2751091703056767,
+          "per10kCurr": 1.1345586566825505,
+          "deltaPer10k": -2.1405505136231264,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "consumer demand",
+        "score": -0.37499616702398186,
+        "meta": {
+          "z": -0.9290557011185522,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.183406113537118,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.183406113537118,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "governance",
+        "score": -0.3688780153388522,
+        "meta": {
+          "z": -0.5054357835901835,
+          "countPrev": 7,
+          "countCurr": 5,
+          "per10kPrev": 7.641921397379913,
+          "per10kCurr": 5.672793283412752,
+          "deltaPer10k": -1.9691281139671606,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "public safety",
+        "score": -0.3595869472034896,
+        "meta": {
+          "z": -1.19049725201071,
+          "countPrev": 4,
+          "countCurr": 1,
+          "per10kPrev": 4.366812227074236,
+          "per10kCurr": 1.1345586566825505,
+          "deltaPer10k": -3.232253570391686,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "safety measures",
+        "score": -0.3595869472034896,
+        "meta": {
+          "z": -1.19049725201071,
+          "countPrev": 4,
+          "countCurr": 1,
+          "per10kPrev": 4.366812227074236,
+          "per10kCurr": 1.1345586566825505,
+          "deltaPer10k": -3.232253570391686,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "governance goals",
+        "score": -0.3329636485691409,
+        "meta": {
+          "z": -0.5174797028387081,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 2.183406113537118,
+          "per10kCurr": 1.1345586566825505,
+          "deltaPer10k": -1.0488474568545676,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_risers_alt": [
+      {
+        "label": "conditions adverse",
+        "score": 2.1855994396422647,
+        "meta": {}
+      },
+      {
+        "label": "developers access",
+        "score": 2.1855994396422647,
+        "meta": {}
+      },
+      {
+        "label": "market conditions legal",
+        "score": 2.1855994396422647,
+        "meta": {}
+      },
+      {
+        "label": "foreign exchange",
+        "score": 0.28719749646350046,
+        "meta": {}
+      },
+      {
+        "label": "machine learning",
+        "score": 0.7465201969896045,
+        "meta": {}
+      },
+      {
+        "label": "Artificial intelligence",
+        "score": 0.5718708199471125,
+        "meta": {}
+      },
+      {
+        "label": "international trade",
+        "score": 0.27356121277530177,
+        "meta": {}
+      },
+      {
+        "label": "demand products",
+        "score": 0.13397594139515911,
+        "meta": {}
+      },
+      {
+        "label": "customer demand",
+        "score": 0.123230008062305,
+        "meta": {}
+      },
+      {
+        "label": "information technology",
+        "score": 0.05703586088279655,
+        "meta": {}
+      },
+      {
+        "label": "products services",
+        "score": 0.025454364273990393,
+        "meta": {}
+      }
+    ],
+    "top_fallers_alt": [
+      {
+        "label": "market legal",
+        "score": -1.6378727297364533,
+        "meta": {}
+      },
+      {
+        "label": "financial performance",
+        "score": -2.2259178236323693,
+        "meta": {}
+      },
+      {
+        "label": "require changes",
+        "score": -2.2259178236323693,
+        "meta": {}
+      },
+      {
+        "label": "future performance",
+        "score": -1.3275097142255845,
+        "meta": {}
+      },
+      {
+        "label": "trade restrictions",
+        "score": -0.98046343091755,
+        "meta": {}
+      },
+      {
+        "label": "gross margin",
+        "score": -0.7177640304223081,
+        "meta": {}
+      },
+      {
+        "label": "Supply chain",
+        "score": -0.0980912152311193,
+        "meta": {}
+      },
+      {
+        "label": "Intellectual property",
+        "score": -0.022044027324532145,
+        "meta": {}
+      },
+      {
+        "label": "data security",
+        "score": -0.020694490336690574,
+        "meta": {}
+      },
+      {
+        "label": "credit risk",
+        "score": -0.020671453463639633,
+        "meta": {}
+      },
+      {
+        "label": "new products services",
+        "score": -0.020633488234242492,
+        "meta": {}
+      },
+      {
+        "label": "components products",
+        "score": -0.020603216313855643,
+        "meta": {}
+      },
+      {
+        "label": "new products",
+        "score": -0.020580382098135175,
+        "meta": {}
+      },
+      {
+        "label": "new product service",
+        "score": -0.0205504536495007,
+        "meta": {}
+      },
+      {
+        "label": "demand products services",
+        "score": -0.020535428203773076,
+        "meta": {}
+      }
+    ],
+    "summary_alt": "Adds emphasis on conditions adverse, developers access, market conditions legal; de-emphasizes market legal, financial performance, require changes."
+  },
+  "evidence": [
+    {
+      "year": 2023,
+      "paragraph_idx": 67,
+      "snippet": "From time to time, the Company has made changes to its App Store, including actions taken in response to litigation, competition, market conditions and legal and regulatory requirements. The Company expects to make further business changes in the future, including as a result of legislative initiatives impacting the App Store, such as the EU Digital Markets Act, which the Company is required to comply with by March 2024, or similar laws in other jurisdictions. Changes have included how developers communicate with consumers outside the App Store regarding alternative purchasing mechanisms. Future changes could also affect what the Company charges developers for access to its platforms, how it manages distribution of apps outside of the App Store, and how and to what extent it allows developers to communicate with consumers inside the App Store regarding alternative purchasing mechanisms.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "allows",
+        "inside",
+        "march",
+        "communicate",
+        "mechanisms",
+        "purchasing",
+        "alternative purchasing",
+        "communicate consumers",
+        "developers communicate",
+        "purchasing mechanisms",
+        "regarding alternative",
+        "store regarding",
+        "Artificial intelligence",
+        "expects make",
+        "machine learning",
+        "COVID-19",
+        "extent charges",
+        "new legislative",
+        "extent covid",
+        "covid pandemic",
+        "marketable non",
+        "measures response",
+        "non marketable",
+        "trade restrictions",
+        "protective",
+        "consumer demand",
+        "governance",
+        "public safety",
+        "safety measures",
+        "governance goals"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 35,
+      "snippet": "The Company distributes third-party applications for its products through the App Store. For the vast majority of applications, developers keep all of the revenue they generate on the App Store. The Company retains a commission from sales of applications and sales of digital services or goods initiated within an application. From time to time, the Company has made changes to its App Store, including actions taken in response to competition, market conditions and legal and regulatory requirements. The Company expects to make further business changes in the future, including as a result of legislative initiatives impacting the App Store, such as the European Union (\u201cEU\u201d) Digital Markets Act, which the Company is required to comply with by March 2024. The Company is also subject to litigation and investigations relating to the App Store, which have resulted in changes to the Company\u2019s business practices, and may in the future result in further changes. Changes have included how developers communicate with consumers outside the App Store regarding alternative purchasing mechanisms. Future changes could also affect what the Company charges developers for access to its platforms, how it manages distribution of apps outside of the App Store, and how and to what extent it allows developers to communicate with consumers inside the App Store regarding alternative purchasing mechanisms. This could reduce the volume of sales, and the commission that the Company earns on those sales, would decrease. If the rate of the commission that the Company retains on such sales is reduced, or if it is otherwise narrowed in scope or eliminated, the Company\u2019s business, results of operations and financial condition could be materially adversely affected.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "allows",
+        "inside",
+        "march",
+        "communicate",
+        "mechanisms",
+        "purchasing",
+        "alternative purchasing",
+        "communicate consumers",
+        "developers communicate",
+        "purchasing mechanisms",
+        "regarding alternative",
+        "store regarding",
+        "Artificial intelligence",
+        "expects make",
+        "machine learning",
+        "COVID-19",
+        "extent charges",
+        "new legislative",
+        "extent covid",
+        "covid pandemic",
+        "marketable non",
+        "measures response",
+        "non marketable",
+        "trade restrictions",
+        "protective",
+        "consumer demand",
+        "governance",
+        "public safety",
+        "safety measures",
+        "governance goals"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 62,
+      "snippet": "The Company\u2019s global operations are subject to complex and changing laws and regulations on subjects, including antitrust; privacy, data security and data localization; consumer protection; advertising, sales, billing and e-commerce; financial services and technology; product liability; intellectual property ownership and infringement; digital platforms; machine learning and artificial intelligence; internet, telecommunications and mobile communications; media, television, film and digital content; availability of third-party software applications and services; labor and employment; anticorruption; import, export and trade; foreign exchange controls and cash repatriation restrictions; anti\u2013money laundering; foreign ownership and investment; tax; and environmental, health and safety, including electronic waste, recycling, product design and climate change.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "allows",
+        "inside",
+        "march",
+        "communicate",
+        "mechanisms",
+        "purchasing",
+        "alternative purchasing",
+        "communicate consumers",
+        "developers communicate",
+        "purchasing mechanisms",
+        "regarding alternative",
+        "store regarding",
+        "Artificial intelligence",
+        "expects make",
+        "machine learning",
+        "COVID-19",
+        "extent charges",
+        "new legislative",
+        "extent covid",
+        "covid pandemic",
+        "marketable non",
+        "measures response",
+        "non marketable",
+        "trade restrictions",
+        "protective",
+        "consumer demand",
+        "governance",
+        "public safety",
+        "safety measures",
+        "governance goals"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 70,
+      "snippet": "Many governments, regulators, investors, employees, customers and other stakeholders are increasingly focused on environmental, social and governance considerations relating to businesses, including climate change and greenhouse gas emissions, human and civil rights, and diversity, equity and inclusion. In addition, the Company makes statements about its environmental, social and governance goals and initiatives through its environmental, social and governance report, its other non-financial reports, information provided on its website, press statements and other communications. Responding to these environmental, social and governance considerations and implementation of these goals and initiatives involves risks and uncertainties, requires investments, and depends in part on third-party performance or data that is outside the Company\u2019s control. The Company cannot guarantee that it will achieve its announced environmental, social and governance goals and initiatives. In addition, some stakeholders may disagree with the Company\u2019s goals and initiatives. Any failure, or perceived failure, by the Company to achieve its goals, further its initiatives, adhere to its public statements, comply with federal, state or international environmental, social and governance laws and regulations, or meet evolving and varied stakeholder expectations and standards could result in legal and regulatory proceedings against the Company and materially adversely affect the Company\u2019s business, reputation, results of operations, financial condition and stock price.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "allows",
+        "inside",
+        "march",
+        "communicate",
+        "mechanisms",
+        "purchasing",
+        "alternative purchasing",
+        "communicate consumers",
+        "developers communicate",
+        "purchasing mechanisms",
+        "regarding alternative",
+        "store regarding",
+        "Artificial intelligence",
+        "expects make",
+        "machine learning",
+        "COVID-19",
+        "extent charges",
+        "new legislative",
+        "extent covid",
+        "covid pandemic",
+        "marketable non",
+        "measures response",
+        "non marketable",
+        "trade restrictions",
+        "protective",
+        "consumer demand",
+        "governance",
+        "public safety",
+        "safety measures",
+        "governance goals"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 60,
+      "snippet": "The Company\u2019s retail stores have required substantial investment in equipment and leasehold improvements, information systems, inventory and personnel. The Company also has entered into substantial lease commitments for retail space. Certain stores have been designed and built to serve as high-profile venues to promote brand awareness. Because of their unique design elements, locations and size, these stores require substantially more investment than the Company\u2019s more typical retail stores. Due to the high cost structure associated with the Company\u2019s retail stores, a decline in sales or the closure or poor performance of an individual store or multiple stores, including as a result of protective public safety measures in response to the COVID-19 pandemic, could result in significant lease termination costs, write-offs of equipment and leasehold improvements and severance costs.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "allows",
+        "inside",
+        "march",
+        "communicate",
+        "mechanisms",
+        "purchasing",
+        "alternative purchasing",
+        "communicate consumers",
+        "developers communicate",
+        "purchasing mechanisms",
+        "regarding alternative",
+        "store regarding",
+        "Artificial intelligence",
+        "expects make",
+        "machine learning",
+        "COVID-19",
+        "extent charges",
+        "new legislative",
+        "extent covid",
+        "covid pandemic",
+        "marketable non",
+        "measures response",
+        "non marketable",
+        "trade restrictions",
+        "protective",
+        "consumer demand",
+        "governance",
+        "public safety",
+        "safety measures",
+        "governance goals"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 9,
+      "snippet": "The COVID-19 pandemic and the measures taken by many countries in response have adversely affected and could in the future materially adversely impact the Company\u2019s business, results of operations, financial condition and stock price. During the course of the pandemic, certain of the Company\u2019s component suppliers and manufacturing and logistical service providers have experienced disruptions, resulting in supply shortages that affected sales worldwide, and similar disruptions could occur in the future. Public safety measures can also adversely impact consumer demand for the Company\u2019s products and services in affected areas.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "allows",
+        "inside",
+        "march",
+        "communicate",
+        "mechanisms",
+        "purchasing",
+        "alternative purchasing",
+        "communicate consumers",
+        "developers communicate",
+        "purchasing mechanisms",
+        "regarding alternative",
+        "store regarding",
+        "Artificial intelligence",
+        "expects make",
+        "machine learning",
+        "COVID-19",
+        "extent charges",
+        "new legislative",
+        "extent covid",
+        "covid pandemic",
+        "marketable non",
+        "measures response",
+        "non marketable",
+        "trade restrictions",
+        "protective",
+        "consumer demand",
+        "governance",
+        "public safety",
+        "safety measures",
+        "governance goals"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.0036,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T05:55:28Z",
+    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "de8edd3ae5902c43e0f41fa7b52f05178ef9013c315bb6cf27cc43fba0cc2860",
+      "curr_text_sha256": "faba2351b5eb0944e50e21e04903e09b7c829528c0030d25be54f3f995f225d9",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

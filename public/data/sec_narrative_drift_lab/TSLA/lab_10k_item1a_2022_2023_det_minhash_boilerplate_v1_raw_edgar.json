@@ -1,0 +1,73 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_minhash_boilerplate_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "TSLA",
+  "section": "10k_item1a",
+  "year_from": 2022,
+  "year_to": 2023,
+  "artifacts": {
+    "stats": {
+      "percent_reused": 0.6097560975609756,
+      "percent_new": 0.3902439024390244,
+      "reused_paragraphs": 50,
+      "total_paragraphs": 82
+    }
+  },
+  "evidence": [
+    {
+      "year": 2023,
+      "paragraph_idx": 0,
+      "snippet": "You should carefully consider the risks described below together with the other information set forth in this report, which could materially affect our business, financial condition and future results. The risks described below are not the only risks facing our company. Risks and uncertainties not currently known to us or that we currently deem to be immaterial also may materially adversely affect our business, financial condition and operating results.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 0,
+      "snippet": "You should carefully consider the risks described below together with the other information set forth in this report, which could materially affect our business, financial condition and future results. The risks described below are not the only risks facing our company. Risks and uncertainties not currently known to us or that we currently deem to be immaterial also may materially adversely affect our business, financial condition and operating results.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 3,
+      "snippet": "We have experienced, and may also experience similar future delays in launching and/or ramping production of our energy storage products and Solar Roof; new product versions or variants; new vehicles; and future features and services based on artificial intelligence. Likewise, we may encounter delays with the design, construction and regulatory or other approvals necessary to build and bring online future manufacturing facilities and products.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 7,
+      "snippet": "We have experienced, and may also experience similar future delays in launching and/or ramping production of our energy storage products and Solar Roof; new product versions or variants; new vehicles; and future features and services based on artificial intelligence. Likewise, we may encounter delays with the design, construction and regulatory or other approvals necessary to build and bring online future manufacturing facilities and products.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 4,
+      "snippet": "Any delay or other complication in ramping the production of our current products or the development, manufacture, launch and production ramp of our future products, features and services, or in doing so cost-effectively and with high quality, may harm our brand, business, prospects, financial condition and operating results.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 8,
+      "snippet": "Any delay or other complication in ramping the production of our current products or the development, manufacture, launch and production ramp of our future products, features and services, or in doing so cost-effectively and with high quality, may harm our brand, business, prospects, financial condition and operating results.",
+      "why": "Matching paragraph from prior year."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.3902439024390244,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T05:55:34Z",
+    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "dfa43be6764b7bd331039c9343b4b0f5e430637fb09a9150f0f191033958c371",
+      "curr_text_sha256": "cd5281b2475c4920648284b873155d7f6054531e30d1ddf6f078dd9641d213cc",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

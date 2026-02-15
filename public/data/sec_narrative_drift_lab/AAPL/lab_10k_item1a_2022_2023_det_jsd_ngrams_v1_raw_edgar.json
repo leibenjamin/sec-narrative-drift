@@ -1,0 +1,154 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_jsd_ngrams_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "AAPL",
+  "section": "10k_item1a",
+  "year_from": 2022,
+  "year_to": 2023,
+  "artifacts": {
+    "ranked_items": [
+      {
+        "label": "pandemic",
+        "score": 0.00023782098017378957
+      },
+      {
+        "label": "communicate",
+        "score": 0.00017817371937639198
+      },
+      {
+        "label": "purchasing",
+        "score": 0.00017817371937639198
+      },
+      {
+        "label": "communicate consumers",
+        "score": 0.00017817371937639198
+      },
+      {
+        "label": "purchasing mechanisms",
+        "score": 0.00017817371937639198
+      },
+      {
+        "label": "store regarding",
+        "score": 0.00017817371937639198
+      },
+      {
+        "label": "alternative purchasing",
+        "score": 0.00017817371937639198
+      },
+      {
+        "label": "regarding alternative",
+        "score": 0.00017817371937639198
+      },
+      {
+        "label": "mechanisms",
+        "score": 0.00017817371937639198
+      },
+      {
+        "label": "developers communicate",
+        "score": 0.00017817371937639198
+      },
+      {
+        "label": "covid",
+        "score": 0.0001738072033887584
+      },
+      {
+        "label": "covid pandemic",
+        "score": 0.00014331636986647978
+      },
+      {
+        "label": "future including",
+        "score": 0.00013363028953229398
+      },
+      {
+        "label": "currency exchange",
+        "score": 0.0001281941714383386
+      },
+      {
+        "label": "alternative",
+        "score": 9.645225201037496e-05
+      },
+      {
+        "label": "market conditions",
+        "score": 8.908685968819599e-05
+      },
+      {
+        "label": "extent allows",
+        "score": 8.908685968819599e-05
+      },
+      {
+        "label": "conditions legal",
+        "score": 8.908685968819599e-05
+      },
+      {
+        "label": "result legislative",
+        "score": 8.908685968819599e-05
+      },
+      {
+        "label": "changes affect",
+        "score": 8.908685968819599e-05
+      }
+    ],
+    "stats": {
+      "jsd": 0.036015,
+      "tokens_prev": 5851,
+      "tokens_curr": 5613
+    }
+  },
+  "evidence": [
+    {
+      "year": 2023,
+      "paragraph_idx": 11,
+      "snippet": "Many of the Company\u2019s operations and facilities, as well as critical business operations of the Company\u2019s suppliers and contract manufacturers, are in locations that are prone to earthquakes and other natural disasters. In addition, such operations and facilities are subject to the risk of interruption by fire, power shortages, nuclear power plant accidents and other industrial accidents, terrorist attacks and other hostile acts, ransomware and other cybersecurity attacks, labor disputes, public health issues, including pandemics such as the COVID-19 pandemic, and other events beyond the Company\u2019s control. Global climate change is resulting in certain types of natural disasters, such as droughts, floods, hurricanes and wildfires, occurring more frequently or with more intense effects. Such events can make it difficult or impossible for the Company to manufacture and deliver products to its customers, create delays and inefficiencies in the Company\u2019s supply and manufacturing chain, and result in slowdowns and outages to the Company\u2019s service offerings, and negatively impact consumer spending and demand in affected areas. Following an interruption to its business, the Company can require substantial recovery time, experience significant expenditures to resume operations, and lose significant sales. Because the Company relies on single or limited sources for the supply and manufacture of many critical components, a business interruption affecting such sources would exacerbate any negative consequences to the Company.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "pandemic"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 12,
+      "snippet": "The Company\u2019s operations are also subject to the risks of industrial accidents at its suppliers and contract manufacturers. While the Company\u2019s suppliers are required to maintain safe working environments and operations, an industrial accident could occur and could result in serious injuries or loss of life, disruption to the Company\u2019s business, and harm to the Company\u2019s reputation. Major public health issues, including pandemics such as the COVID-19 pandemic, have adversely affected, and could in the future materially adversely affect, the Company due to their impact on the global economy and demand for consumer products; the imposition of protective public safety measures, such as stringent employee travel restrictions and limitations on freight services and the movement of products between regions; and disruptions in the Company\u2019s operations, supply chain and sales and distribution channels, resulting in interruptions to the supply of current products and offering of existing services, and delays in production ramps of new products and development of new services.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "pandemic"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 8,
+      "snippet": "COVID-19 has had, and continues to have, a significant impact around the world, prompting governments and businesses to take unprecedented measures in response. Such measures have included restrictions on travel and business operations, temporary closures of businesses, and quarantine and shelter-in-place orders. The COVID-19 pandemic has at times significantly curtailed global economic activity and caused significant volatility and disruption in global financial markets.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "pandemic"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 9,
+      "snippet": "The COVID-19 pandemic and the measures taken by many countries in response have adversely affected and could in the future materially adversely impact the Company\u2019s business, results of operations, financial condition and stock price. During the course of the pandemic, certain of the Company\u2019s component suppliers and manufacturing and logistical service providers have experienced disruptions, resulting in supply shortages that affected sales worldwide, and similar disruptions could occur in the future. Public safety measures can also adversely impact consumer demand for the Company\u2019s products and services in affected areas.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "pandemic"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.036015,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T05:55:28Z",
+    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "de8edd3ae5902c43e0f41fa7b52f05178ef9013c315bb6cf27cc43fba0cc2860",
+      "curr_text_sha256": "faba2351b5eb0944e50e21e04903e09b7c829528c0030d25be54f3f995f225d9",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

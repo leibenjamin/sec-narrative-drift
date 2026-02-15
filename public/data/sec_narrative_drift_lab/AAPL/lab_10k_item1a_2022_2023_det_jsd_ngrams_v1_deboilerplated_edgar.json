@@ -1,0 +1,158 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_jsd_ngrams_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "AAPL",
+  "section": "10k_item1a",
+  "year_from": 2022,
+  "year_to": 2023,
+  "artifacts": {
+    "ranked_items": [
+      {
+        "label": "pandemic",
+        "score": 0.0009910153809034278
+      },
+      {
+        "label": "covid",
+        "score": 0.0007394767831864814
+      },
+      {
+        "label": "regarding",
+        "score": 0.0006980802792321117
+      },
+      {
+        "label": "purchasing",
+        "score": 0.0006980802792321117
+      },
+      {
+        "label": "communicate",
+        "score": 0.0006980802792321117
+      },
+      {
+        "label": "regarding alternative",
+        "score": 0.0006980802792321117
+      },
+      {
+        "label": "communicate consumers",
+        "score": 0.0006980802792321117
+      },
+      {
+        "label": "mechanisms",
+        "score": 0.0006980802792321117
+      },
+      {
+        "label": "purchasing mechanisms",
+        "score": 0.0006980802792321117
+      },
+      {
+        "label": "consumers",
+        "score": 0.0006980802792321117
+      },
+      {
+        "label": "store regarding",
+        "score": 0.0006980802792321117
+      },
+      {
+        "label": "alternative",
+        "score": 0.0006980802792321117
+      },
+      {
+        "label": "developers communicate",
+        "score": 0.0006980802792321117
+      },
+      {
+        "label": "alternative purchasing",
+        "score": 0.0006980802792321117
+      },
+      {
+        "label": "covid pandemic",
+        "score": 0.0006176070586393511
+      },
+      {
+        "label": "future including",
+        "score": 0.0005235602094240838
+      },
+      {
+        "label": "legal regulatory",
+        "score": 0.0005235602094240838
+      },
+      {
+        "label": "past",
+        "score": 0.0005235602094240838
+      },
+      {
+        "label": "stores",
+        "score": 0.000499194659183394
+      },
+      {
+        "label": "substantial",
+        "score": 0.0004489673750374139
+      }
+    ],
+    "stats": {
+      "jsd": 0.155385,
+      "tokens_prev": 1671,
+      "tokens_curr": 1433
+    }
+  },
+  "evidence": [
+    {
+      "year": 2023,
+      "paragraph_idx": 14,
+      "snippet": "Major public health issues, including pandemics such as the COVID-19 pandemic, have adversely affected, and could in the future materially adversely affect, the Company due to their impact on the global economy and demand for consumer products; the imposition of protective public safety measures, such as stringent employee travel restrictions and limitations on freight services and the movement of products between regions; and disruptions in the Company\u2019s operations, supply chain and sales and distribution channels, resulting in interruptions to the supply of current products and offering of existing services, and delays in production ramps of new products and development of new services.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "pandemic",
+        "covid"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 25,
+      "snippet": "Changes have included how developers communicate with consumers outside the App Store regarding alternative purchasing mechanisms.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "regarding",
+        "purchasing",
+        "communicate"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 6,
+      "snippet": "The Company\u2019s business, results of operations, financial condition and stock price have been adversely affected and could in the future be materially adversely affected by the COVID-19 pandemic.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "pandemic",
+        "covid"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 7,
+      "snippet": "COVID-19 has had, and continues to have, a significant impact around the world, prompting governments and businesses to take unprecedented measures in response.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "covid"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.155385,
+    "confidence": 1.0,
+    "coverage": 0.25103624658259105,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T05:55:28Z",
+    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "8a6a972cd160b7416c3cb28fcf93379a17b88d78bef2c76df1537424ab8e92e6",
+      "curr_text_sha256": "dc793034d7a883a8aae64da478ab03efa50b4681013c373227d6c97c1744af34",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

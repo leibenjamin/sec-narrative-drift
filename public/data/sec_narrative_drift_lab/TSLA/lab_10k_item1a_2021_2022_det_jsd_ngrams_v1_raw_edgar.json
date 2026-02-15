@@ -1,0 +1,154 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_jsd_ngrams_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "TSLA",
+  "section": "10k_item1a",
+  "year_from": 2021,
+  "year_to": 2022,
+  "artifacts": {
+    "ranked_items": [
+      {
+        "label": "assets",
+        "score": 0.00043211840453692837
+      },
+      {
+        "label": "digital assets",
+        "score": 0.00042495927473617113
+      },
+      {
+        "label": "digital",
+        "score": 0.00042495927473617113
+      },
+      {
+        "label": "certain model",
+        "score": 0.00021247963736808557
+      },
+      {
+        "label": "model",
+        "score": 0.00017754220595128184
+      },
+      {
+        "label": "suspended",
+        "score": 0.00010623981868404278
+      },
+      {
+        "label": "decrease",
+        "score": 0.00010623981868404278
+      },
+      {
+        "label": "conversion notes",
+        "score": 0.00010623981868404278
+      },
+      {
+        "label": "conversion",
+        "score": 9.736614290332488e-05
+      },
+      {
+        "label": "gigafactories",
+        "score": 7.518231711901361e-05
+      },
+      {
+        "label": "cases shanghai",
+        "score": 7.518231711901361e-05
+      },
+      {
+        "label": "operated human",
+        "score": 7.518231711901361e-05
+      },
+      {
+        "label": "import export",
+        "score": 7.518231711901361e-05
+      },
+      {
+        "label": "past face",
+        "score": 7.518231711901361e-05
+      },
+      {
+        "label": "satisfaction",
+        "score": 7.518231711901361e-05
+      },
+      {
+        "label": "operated",
+        "score": 7.518231711901361e-05
+      },
+      {
+        "label": "brandenburg",
+        "score": 7.518231711901361e-05
+      },
+      {
+        "label": "stock split",
+        "score": 7.518231711901361e-05
+      },
+      {
+        "label": "routes",
+        "score": 7.518231711901361e-05
+      },
+      {
+        "label": "faced past",
+        "score": 7.518231711901361e-05
+      }
+    ],
+    "stats": {
+      "jsd": 0.057797,
+      "tokens_prev": 7060,
+      "tokens_curr": 6651
+    }
+  },
+  "evidence": [
+    {
+      "year": 2022,
+      "paragraph_idx": 4,
+      "snippet": "We have previously experienced and may in the future experience launch and production ramp delays for new products and features. For example, we encountered unanticipated supplier issues that led to delays during the initial ramp of our first Model X and experienced challenges with a supplier and with ramping full automation for certain of our initial Model 3 manufacturing processes. In",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "model"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 6,
+      "snippet": "In particular, our future business depends in large part on increasing the production of mass-market vehicles including Model 3 and Model Y. In order to be successful, we will need to implement, maintain and ramp efficient and cost-effective manufacturing capabilities, processes and supply chains and achieve the design tolerances, high quality and output rates we have planned at our manufacturing facilities in California, Nevada, Texas, China, Germany and any future sites. We will also need to hire, train and compensate skilled employees to operate these facilities. Bottlenecks and other unexpected challenges such as those we experienced in the past may arise during our production ramps, and we must address them promptly while continuing to improve manufacturing processes and reducing costs. If we are not successful in achieving these goals, we could face delays in establishing and/or sustaining our Model 3 and Model Y ramps or be unable to meet our related cost and profitability targets.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "model"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 5,
+      "snippet": "We have previously experienced and may in the future experience launch and production ramp delays for new products and features. For example, we encountered unanticipated supplier issues that led to delays during the initial ramp of our first Model X and experienced challenges with a supplier and with ramping full automation for certain of our initial Model 3 manufacturing processes. In addition, we may introduce in the future new or unique manufacturing processes and design features for our products. There is no guarantee that we will be able to successfully and timely introduce and scale such processes or features.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "model"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 6,
+      "snippet": "In particular, our future business depends in large part on increasing the production of mass-market vehicles including Model 3 and Model Y, which we are planning to achieve through multiple factories worldwide. We have relatively limited experience to date in manufacturing Model 3 and Model Y at high volumes and even less experience building and ramping vehicle production lines across multiple factories in different geographies. In order to be successful, we will need to implement, maintain and ramp efficient and cost-effective manufacturing capabilities, processes and supply chains and achieve the design tolerances, high quality and output rates we have planned at our manufacturing facilities in California, Nevada, Texas, China and Germany. We will also need to hire, train and compensate skilled employees to operate these facilities. Bottlenecks and other unexpected challenges such as those we experienced in the past may arise during our production ramps, and we must address them promptly while continuing to improve manufacturing processes and reducing costs. If we are not successful in achieving these goals, we could face delays in establishing and/or sustaining our Model 3 and Model Y ramps or be unable to meet our related cost and profitability targets.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "model"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.057797,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T05:55:33Z",
+    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "1839738d63d74d68a16b945be0db04fee83c5f7463f47628de3d75e5781f6108",
+      "curr_text_sha256": "dfa43be6764b7bd331039c9343b4b0f5e430637fb09a9150f0f191033958c371",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

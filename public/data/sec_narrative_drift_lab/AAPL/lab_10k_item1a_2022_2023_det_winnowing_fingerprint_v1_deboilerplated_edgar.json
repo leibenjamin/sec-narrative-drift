@@ -1,0 +1,55 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_winnowing_fingerprint_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "AAPL",
+  "section": "10k_item1a",
+  "year_from": 2022,
+  "year_to": 2023,
+  "artifacts": {
+    "stats": {
+      "shared_fingerprints": 4315,
+      "prev_fingerprints": 7954,
+      "curr_fingerprints": 6809,
+      "shared_ratio": 0.6337200763695109
+    }
+  },
+  "evidence": [
+    {
+      "year": 2023,
+      "paragraph_idx": 0,
+      "snippet": "Adverse macroeconomic conditions, including slow growth or recession, high unemployment, inflation, tighter credit, high",
+      "why": "Shared fingerprint span."
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 0,
+      "snippet": "Adverse macroeconomic conditions, including slow growth or recession, high unemployment, inflation, tighter credit, higher i",
+      "why": "Shared fingerprint span."
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 0,
+      "snippet": "Adverse macroeconomic conditions, including slow growth or recession, high unemployment, inflation, tighter credit, higher inter",
+      "why": "Shared fingerprint span."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.6337200763695109,
+    "confidence": 1.0,
+    "coverage": 0.25103624658259105,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T05:55:28Z",
+    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "8a6a972cd160b7416c3cb28fcf93379a17b88d78bef2c76df1537424ab8e92e6",
+      "curr_text_sha256": "dc793034d7a883a8aae64da478ab03efa50b4681013c373227d6c97c1744af34",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_winnowing_fingerprint_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "TSLA",
+  "section": "10k_item1a",
+  "year_from": 2022,
+  "year_to": 2023,
+  "artifacts": {
+    "stats": {
+      "shared_fingerprints": 4633,
+      "prev_fingerprints": 7984,
+      "curr_fingerprints": 6595,
+      "shared_ratio": 0.7025018953752843
+    }
+  },
+  "evidence": [
+    {
+      "year": 2023,
+      "paragraph_idx": 0,
+      "snippet": "ITEM 1A. RISK FACTORS\n\nIn addition, we may introduce in the future new or unique manufacturing processes and design features for our products.",
+      "why": "Shared fingerprint span."
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 0,
+      "snippet": "ITEM 1A. RISK FACTORS\n\nIn addition, we may introduce in the future new or unique manufacturing processes and design features for our products.\n\n",
+      "why": "Shared fingerprint span."
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 0,
+      "snippet": "ITEM 1A. RISK FACTORS\n\nIn addition, we may introduce in the future new or unique manufacturing processes and design features for our products.\n\nAs ",
+      "why": "Shared fingerprint span."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.7025018953752843,
+    "confidence": 1.0,
+    "coverage": 0.20818539063191013,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T05:55:35Z",
+    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "4172ad8823c2cf83b659f9a54a8503ef61770b8f6ee2a42bca462041c8964d22",
+      "curr_text_sha256": "069a38a3c35691c4ce8a61ae5738104cc46c926b7998a3bc27b4eb5e4c675588",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

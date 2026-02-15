@@ -1,0 +1,72 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_structure_artifacts_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "NVDA",
+  "section": "10k_item1a",
+  "year_from": 2021,
+  "year_to": 2022,
+  "artifacts": {
+    "stats": {
+      "headings_prev": [
+        "ITEM 1A. RISK FACTORS",
+        "ITEM 1B. UNRESOLVED STAFF COMMENTS"
+      ],
+      "headings_curr": [
+        "ITEM 1A. RISK FACTORS",
+        "Our strategic and business success depends on our ability to:",
+        "Situations that may result in excess inventory or related impairments include:",
+        "Risks related to acquisitions or strategic investments include, but are not limited to:",
+        "ITEM 1B. UNRESOLVED STAFF COMMENTS"
+      ],
+      "headings_added": [
+        "Our strategic and business success depends on our ability to:",
+        "Situations that may result in excess inventory or related impairments include:",
+        "Risks related to acquisitions or strategic investments include, but are not limited to:"
+      ],
+      "headings_removed": [],
+      "paragraph_count_prev": 56,
+      "paragraph_count_curr": 77,
+      "length_chars_prev": 68468,
+      "length_chars_curr": 71950
+    }
+  },
+  "evidence": [
+    {
+      "year": 2022,
+      "paragraph_idx": 0,
+      "snippet": "\u2022 timely identify emerging industry changes, and develop new or enhance existing products, services and technologies that meet the evolving needs of these markets;",
+      "why": "Heading added: Our strategic and business success depends on our ability to:"
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 0,
+      "snippet": "\u2022 changes in business and economic conditions resulting in decreased consumer confidence, including downturns in our target markets and/or overall economy and changes in the credit market;",
+      "why": "Heading added: Situations that may result in excess inventory or related impairments include:"
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 0,
+      "snippet": "\u2022 difficulty in integrating the technology, products, or operations and integrating and retaining the employees of the acquired business;",
+      "why": "Heading added: Risks related to acquisitions or strategic investments include, but are not limited to:"
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.6,
+    "confidence": 0.35,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T05:55:30Z",
+    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "8c0d08a1b053aeeb4c1399cfee88fa0577b416889c7f4d7b9306ba6b4859e669",
+      "curr_text_sha256": "1a7937b559823b48cfe923c9a8174260a8af88156c70d16482bf92d29c4fc296",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

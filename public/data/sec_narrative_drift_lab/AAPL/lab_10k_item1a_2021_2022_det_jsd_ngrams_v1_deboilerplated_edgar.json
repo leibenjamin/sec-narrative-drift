@@ -1,0 +1,136 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_jsd_ngrams_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "AAPL",
+  "section": "10k_item1a",
+  "year_from": 2021,
+  "year_to": 2022,
+  "artifacts": {
+    "ranked_items": [
+      {
+        "label": "stock price",
+        "score": 0.00115549686365137
+      },
+      {
+        "label": "social governance",
+        "score": 0.00115549686365137
+      },
+      {
+        "label": "environmental social",
+        "score": 0.00115549686365137
+      },
+      {
+        "label": "social",
+        "score": 0.00115549686365137
+      },
+      {
+        "label": "governance",
+        "score": 0.00115549686365137
+      },
+      {
+        "label": "condition stock",
+        "score": 0.0009904258831297458
+      },
+      {
+        "label": "condition price",
+        "score": 0.0008587376556462001
+      },
+      {
+        "label": "goals initiatives",
+        "score": 0.0008253549026081215
+      },
+      {
+        "label": "goals",
+        "score": 0.0008253549026081215
+      },
+      {
+        "label": "company stock",
+        "score": 0.0005370408600601711
+      },
+      {
+        "label": "price company",
+        "score": 0.0005370408600601711
+      },
+      {
+        "label": "governance considerations",
+        "score": 0.0004952129415648729
+      },
+      {
+        "label": "considerations",
+        "score": 0.0004952129415648729
+      },
+      {
+        "label": "relating",
+        "score": 0.0004952129415648729
+      },
+      {
+        "label": "statements",
+        "score": 0.0004952129415648729
+      },
+      {
+        "label": "policies",
+        "score": 0.0004952129415648729
+      },
+      {
+        "label": "environmental",
+        "score": 0.00044469290645501153
+      },
+      {
+        "label": "stock materially",
+        "score": 0.00042936882782310007
+      },
+      {
+        "label": "management",
+        "score": 0.00042936882782310007
+      },
+      {
+        "label": "enacted require",
+        "score": 0.00042936882782310007
+      }
+    ],
+    "stats": {
+      "jsd": 0.14736,
+      "tokens_prev": 1165,
+      "tokens_curr": 1515
+    }
+  },
+  "evidence": [
+    {
+      "year": 2022,
+      "paragraph_idx": 0,
+      "snippet": "The Company\u2019s business, reputation, results of operations, financial condition and stock price can be affected by a number of factors, whether currently known or unknown, including those described below.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "stock price"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 1,
+      "snippet": "When any one or more of these risks materialize from time to time, the Company\u2019s business, reputation, results of operations, financial condition and stock price can be materially and adversely affected.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "stock price"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.14736,
+    "confidence": 1.0,
+    "coverage": 0.20838389740362862,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T05:55:30Z",
+    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "67c5b4e8f390cf2ddcbd64d6d848829c57b7f6d8bc115301ce13c3ef5ad0b795",
+      "curr_text_sha256": "8716db1eef9115278cff4425df1599aae9c0f25fee82ad20c451fb090682fee2",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

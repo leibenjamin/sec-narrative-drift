@@ -1,0 +1,154 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_jsd_ngrams_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "TSLA",
+  "section": "10k_item1a",
+  "year_from": 2022,
+  "year_to": 2023,
+  "artifacts": {
+    "ranked_items": [
+      {
+        "label": "settlement",
+        "score": 0.00018795579279753401
+      },
+      {
+        "label": "model",
+        "score": 0.0001599454200490848
+      },
+      {
+        "label": "court",
+        "score": 0.00015036463423802722
+      },
+      {
+        "label": "model model",
+        "score": 0.00013378799468034263
+      },
+      {
+        "label": "pandemic",
+        "score": 9.996193187473275e-05
+      },
+      {
+        "label": "jurisdiction",
+        "score": 7.870916961826053e-05
+      },
+      {
+        "label": "shanghai",
+        "score": 7.61902523704269e-05
+      },
+      {
+        "label": "cases shanghai",
+        "score": 7.518231711901361e-05
+      },
+      {
+        "label": "berlin",
+        "score": 7.518231711901361e-05
+      },
+      {
+        "label": "person",
+        "score": 7.518231711901361e-05
+      },
+      {
+        "label": "lack",
+        "score": 7.518231711901361e-05
+      },
+      {
+        "label": "chinese yuan",
+        "score": 7.518231711901361e-05
+      },
+      {
+        "label": "district",
+        "score": 7.518231711901361e-05
+      },
+      {
+        "label": "gigafactory berlin",
+        "score": 7.518231711901361e-05
+      },
+      {
+        "label": "brandenburg",
+        "score": 7.518231711901361e-05
+      },
+      {
+        "label": "stock split",
+        "score": 7.518231711901361e-05
+      },
+      {
+        "label": "decision",
+        "score": 7.518231711901361e-05
+      },
+      {
+        "label": "lack compliance",
+        "score": 7.518231711901361e-05
+      },
+      {
+        "label": "august",
+        "score": 7.518231711901361e-05
+      },
+      {
+        "label": "berlin brandenburg",
+        "score": 7.518231711901361e-05
+      }
+    ],
+    "stats": {
+      "jsd": 0.042321,
+      "tokens_prev": 6651,
+      "tokens_curr": 6353
+    }
+  },
+  "evidence": [
+    {
+      "year": 2023,
+      "paragraph_idx": 1,
+      "snippet": "We have previously experienced and may in the future experience launch and production ramp delays for new products and features. For example, we encountered unanticipated supplier issues that led to delays during the initial ramp of our first Model X and experienced challenges with a supplier and with ramping full automation for certain of our initial Model 3 manufacturing processes. In addition, we may introduce in the future new or unique manufacturing processes and design features for our products. As we expand our vehicle offerings and global footprint, there is no guarantee that we will be able to successfully and timely introduce and scale such processes or features.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "model"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 5,
+      "snippet": "Our products contain thousands of parts purchased globally from hundreds of suppliers, including single-source direct suppliers, which exposes us to multiple potential sources of component shortages. Unexpected changes in business conditions, materials pricing, including inflation of raw material costs, labor issues, wars, trade policies, natural disasters, health epidemics such as the global COVID-19 pandemic, trade and shipping disruptions, port congestions, cyberattacks and other factors beyond our or our suppliers\u2019 control could also affect these suppliers\u2019 ability to deliver components to us or to remain solvent and operational. For example, a global shortage of semiconductors beginning in early 2021 has caused challenges in the manufacturing industry and impacted our supply chain and production. Additionally, if our suppliers do not accurately forecast and effectively allocate production or if they are not willing to allocate sufficient production to us, or face other challenges such as insolvency, it may reduce our access to components and require us to search for new suppliers. The unavailability of any component or supplier could result in production delays, idle manufacturing facilities, product design changes and loss of access to important technology and tools for producing and supporting our products, as well as impact our capacity expansion and our ability to fulfill our obligations under customer contracts. Moreover, significant increases in our production or product design changes by us have required and may in the future require us to procure additional components in a short amount of time. We have faced in the past, and may face suppliers who are unwilling or unable to sustainably meet our timelines or our cost, quality and volume needs, which may increase our costs or require us to replace them with other sources. Finally, as we construct new manufacturing facilities and add production lines to existing facilities, we may experience issues in correspondingly increasing the level of localized procurement at those facilities. While we believe that we will be able to secure additional or alternate sources or develop our own replacements for most of our components, there is no assurance that we will be able to do so quickly or at all. Additionally, we may be unsuccessful in our continuous efforts to negotiate with existing suppliers to obtain cost reductions and avoid unfavorable changes to terms, source less expensive suppliers for certain parts and redesign certain parts to make them less expensive to produce, especially in the case of increases in materials pricing. Any of these occurrences may harm our business, prospects, financial condition and operating results.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "pandemic"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 1,
+      "snippet": "Since the first quarter of 2020, there has been a worldwide impact from the COVID-19 pandemic. Government regulations and shifting social behaviors have, at times, limited or closed non-essential transportation, government functions, business activities and person-to-person interactions. Global trade conditions and consumer trends that originated during the pandemic continue to persist and may also have long-lasting adverse impact on us and our industries independently of the progress of the pandemic.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "pandemic"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 2,
+      "snippet": "For example, pandemic-related issues have exacerbated port congestion and intermittent supplier shutdowns and delays, resulting in additional expenses to expedite delivery of critical parts. Similarly, increased demand for personal electronics has created a shortfall of semiconductors, which has caused challenges in our supply chain and production. In addition, labor shortages resulting from the pandemic, including worker absenteeism, has led to increased difficulty in hiring and retaining manufacturing and service workers, as well as increased labor costs and supplier delays. Sustaining our production trajectory will require the ongoing readiness and solvency of our suppliers and vendors, a stable and motivated production workforce and government cooperation, including for travel and visa allowances. The contingencies inherent in the ramp at new facilities such as Gigafactory Berlin-Brandenburg and Gigafactory Texas may be exacerbated by these challenges. Additionally, infection rates and regulations continue to fluctuate in various regions, which may impact operations. For example, in 2022, spikes in COVID-19 cases in Shanghai resulted in the temporary shutdown of Gigafactory Shanghai, as well as parts of our supply chain, and impacted our ability to deliver cars.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "pandemic"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.042321,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T05:55:34Z",
+    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "dfa43be6764b7bd331039c9343b4b0f5e430637fb09a9150f0f191033958c371",
+      "curr_text_sha256": "cd5281b2475c4920648284b873155d7f6054531e30d1ddf6f078dd9641d213cc",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

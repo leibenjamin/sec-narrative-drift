@@ -1,0 +1,48 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_llm_delta_brief_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "AAPL",
+  "section": "10k_item1a",
+  "year_from": 2023,
+  "year_to": 2024,
+  "artifacts": {
+    "summary": "Precomputed LLM brief: 2024 adds more AI and supply chain resilience framing; older product-cycle risk language fades.",
+    "ranked_items": [
+      { "label": "AI services", "score": 0.82 },
+      { "label": "supply chain resilience", "score": 0.71 },
+      { "label": "product cycle", "score": -0.54 }
+    ],
+    "notes": ["Precomputed offline; no runtime LLM calls."]
+  },
+  "evidence": [
+    {
+      "year": 2024,
+      "paragraph_idx": 3,
+      "snippet": "We increasingly rely on AI-enabled services and models to deliver new features and protect user trust, which introduces new operational and regulatory risks.",
+      "why": "Selected by precomputed LLM summary.",
+      "highlights": ["AI", "services", "regulatory"]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 5,
+      "snippet": "Our results can be affected by product transition timing and component availability across our global supply chain.",
+      "why": "Contrast excerpt from prior year.",
+      "highlights": ["product transition", "supply chain"]
+    }
+  ],
+  "metrics": {
+    "drift_score": null,
+    "confidence": 0.6,
+    "coverage": 1.0,
+    "warnings": ["precomputed_only"]
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T00:00:00Z",
+    "git_commit": "precomputed",
+    "script_version": "manual_seed_v1",
+    "inputs": { "source": "precomputed" },
+    "notes": ["LLM output seeded offline for v1 demo."]
+  }
+}

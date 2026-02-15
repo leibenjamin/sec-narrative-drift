@@ -1,0 +1,923 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_logodds_terms_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "AAPL",
+  "section": "10k_item1a",
+  "year_from": 2021,
+  "year_to": 2022,
+  "artifacts": {
+    "top_risers": [
+      {
+        "label": "governance",
+        "score": 0.9637918804046282,
+        "meta": {
+          "z": 1.3205853535149996,
+          "countPrev": 0,
+          "countCurr": 7,
+          "per10kPrev": 0.0,
+          "per10kCurr": 7.641921397379913,
+          "deltaPer10k": 7.641921397379913,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "environmental social",
+        "score": 0.8497085299022329,
+        "meta": {
+          "z": 1.3205853535149996,
+          "countPrev": 0,
+          "countCurr": 7,
+          "per10kPrev": 0.0,
+          "per10kCurr": 7.641921397379913,
+          "deltaPer10k": 7.641921397379913,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "social governance",
+        "score": 0.8497085299022329,
+        "meta": {
+          "z": 1.3205853535149996,
+          "countPrev": 0,
+          "countCurr": 7,
+          "per10kPrev": 0.0,
+          "per10kCurr": 7.641921397379913,
+          "deltaPer10k": 7.641921397379913,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "social",
+        "score": 0.8250101835838233,
+        "meta": {
+          "z": 1.3205853535149996,
+          "countPrev": 0,
+          "countCurr": 7,
+          "per10kPrev": 0.0,
+          "per10kCurr": 7.641921397379913,
+          "deltaPer10k": 7.641921397379913,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "armed",
+        "score": 0.773302032401907,
+        "meta": {
+          "z": 0.9227536963619298,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.183406113537118,
+          "deltaPer10k": 2.183406113537118,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "initiatives",
+        "score": 0.7728473702072194,
+        "meta": {
+          "z": 1.4775186277437151,
+          "countPrev": 2,
+          "countCurr": 7,
+          "per10kPrev": 2.3169601482854496,
+          "per10kCurr": 7.641921397379913,
+          "deltaPer10k": 5.324961249094463,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "goals",
+        "score": 0.7579996319457155,
+        "meta": {
+          "z": 1.2133222496344709,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.458515283842795,
+          "deltaPer10k": 5.458515283842795,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "armed conflict",
+        "score": 0.7205340265876405,
+        "meta": {
+          "z": 0.9227536963619298,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.183406113537118,
+          "deltaPer10k": 2.183406113537118,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "governance considerations",
+        "score": 0.6761500726541636,
+        "meta": {
+          "z": 1.050847262681863,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.2751091703056767,
+          "deltaPer10k": 3.2751091703056767,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "goals initiatives",
+        "score": 0.6279804562191474,
+        "meta": {
+          "z": 1.2133222496344709,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.458515283842795,
+          "deltaPer10k": 5.458515283842795,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "governance goals",
+        "score": 0.5937304125860434,
+        "meta": {
+          "z": 0.9227536963619298,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.183406113537118,
+          "deltaPer10k": 2.183406113537118,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "conflict",
+        "score": 0.5764725425826559,
+        "meta": {
+          "z": 0.9227536963619298,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.183406113537118,
+          "deltaPer10k": 2.183406113537118,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "conflicts",
+        "score": 0.5764725425826559,
+        "meta": {
+          "z": 0.9227536963619298,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.183406113537118,
+          "deltaPer10k": 2.183406113537118,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "dynamics",
+        "score": 0.5764725425826559,
+        "meta": {
+          "z": 0.9227536963619298,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.183406113537118,
+          "deltaPer10k": 2.183406113537118,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "escalate",
+        "score": 0.5764725425826559,
+        "meta": {
+          "z": 0.9227536963619298,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.183406113537118,
+          "deltaPer10k": 2.183406113537118,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_fallers": [
+      {
+        "label": "enacted",
+        "score": -0.8033731577466724,
+        "meta": {
+          "z": -0.9586364962292185,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.3169601482854496,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.3169601482854496,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "points",
+        "score": -0.8033731577466724,
+        "meta": {
+          "z": -0.9586364962292185,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.3169601482854496,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.3169601482854496,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "proposed",
+        "score": -0.8033731577466724,
+        "meta": {
+          "z": -0.9586364962292185,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.3169601482854496,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.3169601482854496,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "points sale",
+        "score": -0.7485531809682208,
+        "meta": {
+          "z": -0.9586364962292185,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.3169601482854496,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.3169601482854496,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "price stock",
+        "score": -0.5808394155081927,
+        "meta": {
+          "z": -1.4390338298517684,
+          "countPrev": 9,
+          "countCurr": 4,
+          "per10kPrev": 10.426320667284523,
+          "per10kCurr": 4.366812227074236,
+          "deltaPer10k": -6.059508440210287,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "distracting",
+        "score": -0.31800016722160157,
+        "meta": {
+          "z": -0.9586364962292185,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.3169601482854496,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.3169601482854496,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "sale",
+        "score": -0.31800016722160157,
+        "meta": {
+          "z": -0.9586364962292185,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.3169601482854496,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.3169601482854496,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "making",
+        "score": -0.2546415054338662,
+        "meta": {
+          "z": -0.5988303741335793,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 2.3169601482854496,
+          "per10kCurr": 1.091703056768559,
+          "deltaPer10k": -1.2252570915168906,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "distracting management",
+        "score": -0.20452043327701508,
+        "meta": {
+          "z": -0.9586364962292185,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.3169601482854496,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.3169601482854496,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "international disputes",
+        "score": -0.181145592777669,
+        "meta": {
+          "z": -0.44878950907204934,
+          "countPrev": 4,
+          "countCurr": 3,
+          "per10kPrev": 4.633920296570899,
+          "per10kCurr": 3.2751091703056767,
+          "deltaPer10k": -1.3588111262652225,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "trade international",
+        "score": -0.181145592777669,
+        "meta": {
+          "z": -0.44878950907204934,
+          "countPrev": 4,
+          "countCurr": 3,
+          "per10kPrev": 4.633920296570899,
+          "per10kCurr": 3.2751091703056767,
+          "deltaPer10k": -1.3588111262652225,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "COVID-19",
+        "score": -0.1492727337483975,
+        "meta": {
+          "z": -0.35103879411249617,
+          "countPrev": 11,
+          "countCurr": 10,
+          "per10kPrev": 12.743280815569971,
+          "per10kCurr": 10.91703056768559,
+          "deltaPer10k": -1.8262502478843814,
+          "distinctive": false,
+          "includes": [
+            "covid"
+          ]
+        }
+      }
+    ],
+    "summary": "Adds emphasis on governance, environmental social, social governance; de-emphasizes enacted, points, proposed.",
+    "ranked_items": [
+      {
+        "label": "governance",
+        "score": 0.9637918804046282,
+        "meta": {
+          "z": 1.3205853535149996,
+          "countPrev": 0,
+          "countCurr": 7,
+          "per10kPrev": 0.0,
+          "per10kCurr": 7.641921397379913,
+          "deltaPer10k": 7.641921397379913,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "environmental social",
+        "score": 0.8497085299022329,
+        "meta": {
+          "z": 1.3205853535149996,
+          "countPrev": 0,
+          "countCurr": 7,
+          "per10kPrev": 0.0,
+          "per10kCurr": 7.641921397379913,
+          "deltaPer10k": 7.641921397379913,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "social governance",
+        "score": 0.8497085299022329,
+        "meta": {
+          "z": 1.3205853535149996,
+          "countPrev": 0,
+          "countCurr": 7,
+          "per10kPrev": 0.0,
+          "per10kCurr": 7.641921397379913,
+          "deltaPer10k": 7.641921397379913,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "social",
+        "score": 0.8250101835838233,
+        "meta": {
+          "z": 1.3205853535149996,
+          "countPrev": 0,
+          "countCurr": 7,
+          "per10kPrev": 0.0,
+          "per10kCurr": 7.641921397379913,
+          "deltaPer10k": 7.641921397379913,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "armed",
+        "score": 0.773302032401907,
+        "meta": {
+          "z": 0.9227536963619298,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.183406113537118,
+          "deltaPer10k": 2.183406113537118,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "initiatives",
+        "score": 0.7728473702072194,
+        "meta": {
+          "z": 1.4775186277437151,
+          "countPrev": 2,
+          "countCurr": 7,
+          "per10kPrev": 2.3169601482854496,
+          "per10kCurr": 7.641921397379913,
+          "deltaPer10k": 5.324961249094463,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "goals",
+        "score": 0.7579996319457155,
+        "meta": {
+          "z": 1.2133222496344709,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.458515283842795,
+          "deltaPer10k": 5.458515283842795,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "armed conflict",
+        "score": 0.7205340265876405,
+        "meta": {
+          "z": 0.9227536963619298,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.183406113537118,
+          "deltaPer10k": 2.183406113537118,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "governance considerations",
+        "score": 0.6761500726541636,
+        "meta": {
+          "z": 1.050847262681863,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.2751091703056767,
+          "deltaPer10k": 3.2751091703056767,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "goals initiatives",
+        "score": 0.6279804562191474,
+        "meta": {
+          "z": 1.2133222496344709,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.458515283842795,
+          "deltaPer10k": 5.458515283842795,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "governance goals",
+        "score": 0.5937304125860434,
+        "meta": {
+          "z": 0.9227536963619298,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.183406113537118,
+          "deltaPer10k": 2.183406113537118,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "conflict",
+        "score": 0.5764725425826559,
+        "meta": {
+          "z": 0.9227536963619298,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.183406113537118,
+          "deltaPer10k": 2.183406113537118,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "conflicts",
+        "score": 0.5764725425826559,
+        "meta": {
+          "z": 0.9227536963619298,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.183406113537118,
+          "deltaPer10k": 2.183406113537118,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "dynamics",
+        "score": 0.5764725425826559,
+        "meta": {
+          "z": 0.9227536963619298,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.183406113537118,
+          "deltaPer10k": 2.183406113537118,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "escalate",
+        "score": 0.5764725425826559,
+        "meta": {
+          "z": 0.9227536963619298,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.183406113537118,
+          "deltaPer10k": 2.183406113537118,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "enacted",
+        "score": -0.8033731577466724,
+        "meta": {
+          "z": -0.9586364962292185,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.3169601482854496,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.3169601482854496,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "points",
+        "score": -0.8033731577466724,
+        "meta": {
+          "z": -0.9586364962292185,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.3169601482854496,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.3169601482854496,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "proposed",
+        "score": -0.8033731577466724,
+        "meta": {
+          "z": -0.9586364962292185,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.3169601482854496,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.3169601482854496,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "points sale",
+        "score": -0.7485531809682208,
+        "meta": {
+          "z": -0.9586364962292185,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.3169601482854496,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.3169601482854496,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "price stock",
+        "score": -0.5808394155081927,
+        "meta": {
+          "z": -1.4390338298517684,
+          "countPrev": 9,
+          "countCurr": 4,
+          "per10kPrev": 10.426320667284523,
+          "per10kCurr": 4.366812227074236,
+          "deltaPer10k": -6.059508440210287,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "distracting",
+        "score": -0.31800016722160157,
+        "meta": {
+          "z": -0.9586364962292185,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.3169601482854496,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.3169601482854496,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "sale",
+        "score": -0.31800016722160157,
+        "meta": {
+          "z": -0.9586364962292185,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.3169601482854496,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.3169601482854496,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "making",
+        "score": -0.2546415054338662,
+        "meta": {
+          "z": -0.5988303741335793,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 2.3169601482854496,
+          "per10kCurr": 1.091703056768559,
+          "deltaPer10k": -1.2252570915168906,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "distracting management",
+        "score": -0.20452043327701508,
+        "meta": {
+          "z": -0.9586364962292185,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.3169601482854496,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.3169601482854496,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "international disputes",
+        "score": -0.181145592777669,
+        "meta": {
+          "z": -0.44878950907204934,
+          "countPrev": 4,
+          "countCurr": 3,
+          "per10kPrev": 4.633920296570899,
+          "per10kCurr": 3.2751091703056767,
+          "deltaPer10k": -1.3588111262652225,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "trade international",
+        "score": -0.181145592777669,
+        "meta": {
+          "z": -0.44878950907204934,
+          "countPrev": 4,
+          "countCurr": 3,
+          "per10kPrev": 4.633920296570899,
+          "per10kCurr": 3.2751091703056767,
+          "deltaPer10k": -1.3588111262652225,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "COVID-19",
+        "score": -0.1492727337483975,
+        "meta": {
+          "z": -0.35103879411249617,
+          "countPrev": 11,
+          "countCurr": 10,
+          "per10kPrev": 12.743280815569971,
+          "per10kCurr": 10.91703056768559,
+          "deltaPer10k": -1.8262502478843814,
+          "distinctive": false,
+          "includes": [
+            "covid"
+          ]
+        }
+      }
+    ],
+    "top_risers_alt": [
+      {
+        "label": "financial performance",
+        "score": 2.1823380415525557,
+        "meta": {}
+      },
+      {
+        "label": "require changes",
+        "score": 2.1823380415525557,
+        "meta": {}
+      },
+      {
+        "label": "industry data",
+        "score": 1.5942613651054298,
+        "meta": {}
+      },
+      {
+        "label": "result legal",
+        "score": 1.5942613651054298,
+        "meta": {}
+      },
+      {
+        "label": "future performance",
+        "score": 1.2838667212267216,
+        "meta": {}
+      },
+      {
+        "label": "product service",
+        "score": 1.082994040431064,
+        "meta": {}
+      },
+      {
+        "label": "Supply chain",
+        "score": 0.13608137047119495,
+        "meta": {}
+      },
+      {
+        "label": "Climate change",
+        "score": 0.18534128893531143,
+        "meta": {}
+      },
+      {
+        "label": "customer demand",
+        "score": 0.1430296451760058,
+        "meta": {}
+      },
+      {
+        "label": "products services",
+        "score": 0.049724786272453914,
+        "meta": {}
+      },
+      {
+        "label": "materially adversely affected",
+        "score": 0.12498543350777958,
+        "meta": {}
+      },
+      {
+        "label": "demand products services",
+        "score": 0.1198398693704763,
+        "meta": {}
+      }
+    ],
+    "top_fallers_alt": [
+      {
+        "label": "data subject",
+        "score": -1.6413918683489532,
+        "meta": {}
+      },
+      {
+        "label": "industry data security",
+        "score": -1.6413918683489532,
+        "meta": {}
+      },
+      {
+        "label": "adverse economic",
+        "score": -2.2294339688357834,
+        "meta": {}
+      },
+      {
+        "label": "currently subject",
+        "score": -2.2294339688357834,
+        "meta": {}
+      },
+      {
+        "label": "security measures",
+        "score": -2.2294339688357834,
+        "meta": {}
+      },
+      {
+        "label": "changes laws",
+        "score": -1.3310318512392296,
+        "meta": {}
+      },
+      {
+        "label": "trade international",
+        "score": -0.209356222593291,
+        "meta": {}
+      },
+      {
+        "label": "Intellectual property",
+        "score": -0.025802956706387103,
+        "meta": {}
+      },
+      {
+        "label": "information technology",
+        "score": -0.02438033721159094,
+        "meta": {}
+      },
+      {
+        "label": "data security",
+        "score": -0.02418743591432415,
+        "meta": {}
+      },
+      {
+        "label": "credit risk",
+        "score": -0.024159900192396666,
+        "meta": {}
+      },
+      {
+        "label": "new products services",
+        "score": -0.024114523808081323,
+        "meta": {}
+      },
+      {
+        "label": "components products",
+        "score": -0.024078345245760246,
+        "meta": {}
+      },
+      {
+        "label": "foreign exchange",
+        "score": -0.024069091956148814,
+        "meta": {}
+      },
+      {
+        "label": "new products",
+        "score": -0.0240510572198791,
+        "meta": {}
+      }
+    ],
+    "summary_alt": "Adds emphasis on financial performance, require changes, industry data; de-emphasizes data subject, industry data security, adverse economic."
+  },
+  "evidence": [
+    {
+      "year": 2022,
+      "paragraph_idx": 22,
+      "snippet": "In addition, manufacturing or logistics in these locations or transit to final destinations can be disrupted for a variety of reasons, including natural and man-made disasters, information technology system failures, commercial disputes, armed conflict, economic, business, labor, environmental, public health or political issues, or international trade disputes.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "armed"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 31,
+      "snippet": "In addition, attacks against the Company and its customers can escalate during periods of severe diplomatic or armed conflict.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "armed"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 4,
+      "snippet": "In many cases, as stores and points of sale have reopened, they are subject to operating restrictions to protect public health and the health and safety of employees and customers.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "points"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 22,
+      "snippet": "New legislative initiatives, such as the proposed European Union (\u201cEU\u201d) Digital Markets Act, could, if enacted, require further changes.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "enacted",
+        "proposed"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.0031,
+    "confidence": 1.0,
+    "coverage": 0.20838389740362862,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T05:55:30Z",
+    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "67c5b4e8f390cf2ddcbd64d6d848829c57b7f6d8bc115301ce13c3ef5ad0b795",
+      "curr_text_sha256": "8716db1eef9115278cff4425df1599aae9c0f25fee82ad20c451fb090682fee2",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}
