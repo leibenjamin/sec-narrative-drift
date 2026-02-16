@@ -29,8 +29,17 @@ const outputCache = new Map<string, Promise<LabOutput>>()
 const inputCache = new Map<string, Promise<unknown>>()
 let casesPromise: Promise<LabCasesRegistry> | null = null
 
-function buildLabPath(ticker: string, filename: string): string {
-  return `${LAB_BASE_PATH}/${ticker.toUpperCase()}/${filename}`
+function normalizeOutputFilename(pathValue: string): string | null {
+  const normalized = pathValue.replace(/\\/g, "/").replace(/^\.\/+/, "")
+  if (!normalized || normalized.includes("..")) return null
+  if (!normalized.startsWith("outputs/")) return null
+  return normalized
+}
+
+function buildLabPath(ticker: string, filename: string): string | null {
+  const normalized = normalizeOutputFilename(filename)
+  if (!normalized) return null
+  return `${LAB_BASE_PATH}/${ticker.toUpperCase()}/${normalized}`
 }
 
 function normalizeInputPath(pathValue: string): string | null {
@@ -125,7 +134,8 @@ export function resolveLabOutputLink(
     if (
       output.detector_id === detectorId &&
       output.cleaning_lens === lens &&
-      output.source_id === sourceId
+      output.source_id === sourceId &&
+      normalizeOutputFilename(output.filename)
     ) {
       return output
     }
@@ -138,10 +148,17 @@ export async function loadLabOutput(
   filename: string,
   options?: { signal?: AbortSignal }
 ): Promise<LabOutput> {
+  const normalizedFilename = normalizeOutputFilename(filename)
+  if (!normalizedFilename) {
+    throw new LabDataLoadError("Output file path is not canonical.", filename)
+  }
   const url = buildLabPath(ticker, filename)
+  if (!url) {
+    throw new LabDataLoadError("Output file path is not usable.", filename)
+  }
   if (!outputCache.has(url)) {
     const promise = fetchJson<unknown>(url, copy.global.errors.missingDataset, options).then(
-      (data) => parseWithSchema(LabOutputSchema, data, `LabOutput:${filename}`)
+      (data) => parseWithSchema(LabOutputSchema, data, `LabOutput:${normalizedFilename}`)
     )
     outputCache.set(url, promise)
   }

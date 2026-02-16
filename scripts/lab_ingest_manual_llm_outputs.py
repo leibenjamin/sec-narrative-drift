@@ -17,6 +17,7 @@ SCRIPT_VERSION = "lab_ingest_manual_llm_outputs.py@v2"
 REPO_ROOT = Path(__file__).resolve().parents[1]
 PUBLIC_OUTPUTS_ROOT_REL = "public/data/sec_narrative_drift_lab/llm_outputs"
 PUBLIC_INPUTS_ROOT_REL = "public/data/sec_narrative_drift_lab/llm_inputs"
+PUBLIC_LAB_ROOT_REL = "public/data/sec_narrative_drift_lab"
 PROVENANCE_NORMALIZED_WARNING_TEMPLATE = (
     "Normalized provenance.input_file to llm_inputs/{ticker}/{basename} for UI lookup."
 )
@@ -482,6 +483,7 @@ def main(argv: Optional[list[str]] = None) -> int:
             input_synced_count = 0
             input_sync_existing_count = 0
             input_alias_written_count = 0
+            ticker_output_written_count = 0
 
             for item in items:
                 temp_path = item.temp_output.resolve()
@@ -681,11 +683,30 @@ def main(argv: Optional[list[str]] = None) -> int:
                 payload_after_reconcile_dict["provenance"] = provenance
 
                 output_dest_abs = REPO_ROOT / item.safe_output_rel
+                ticker_output_rel_raw = (
+                    f"{PUBLIC_LAB_ROOT_REL}/{sync_ticker}/outputs/{item.target.detector_id}/"
+                    + Path(item.safe_output_rel).name
+                )
+                ticker_output_rel = ensure_safe_repo_rel(
+                    ticker_output_rel_raw, PUBLIC_LAB_ROOT_REL
+                )
+                ticker_output_abs = REPO_ROOT / ticker_output_rel
                 if apply_changes:
                     output_dest_abs.parent.mkdir(parents=True, exist_ok=True)
                     output_dest_abs.write_text(
                         json.dumps(payload_after_reconcile_dict, indent=2) + "\n",
                         encoding="utf-8",
+                    )
+                    ticker_output_abs.parent.mkdir(parents=True, exist_ok=True)
+                    ticker_output_abs.write_text(
+                        json.dumps(payload_after_reconcile_dict, indent=2) + "\n",
+                        encoding="utf-8",
+                    )
+                    ticker_output_written_count += 1
+                else:
+                    print(
+                        "INFO: ticker_output_sync "
+                        + f"{item.target.job_id}: would_write='{ticker_output_rel}'"
                     )
                 written_count += 1
         finally:
@@ -706,6 +727,7 @@ def main(argv: Optional[list[str]] = None) -> int:
     print(f"- input_sync_new_files: {input_synced_count}")
     print(f"- input_sync_existing_files: {input_sync_existing_count}")
     print(f"- input_sync_flat_alias_new_files: {input_alias_written_count}")
+    print(f"- ticker_output_sync_writes: {ticker_output_written_count}")
     print(f"- reconcile_available: {'yes' if _reconcile_available else 'no'}")
 
     return 1 if failed_count > 0 else 0

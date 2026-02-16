@@ -277,13 +277,12 @@ def parse_input_record(path: Path) -> Optional[InputRecord]:
 
 
 def source_priority(rel_path: str, ticker: str) -> tuple[int, str]:
-    ticker_prefix = f"{ticker}/"
-    if rel_path.startswith("llm_outputs/"):
+    if rel_path.startswith(f"{ticker}/outputs/"):
         return (0, rel_path)
-    if rel_path.startswith(ticker_prefix):
-        if rel_path.startswith(f"{ticker}/outputs/"):
-            return (2, rel_path)
+    if rel_path.startswith(f"{ticker}/"):
         return (1, rel_path)
+    if rel_path.startswith("llm_outputs/"):
+        return (2, rel_path)
     return (3, rel_path)
 
 
@@ -518,7 +517,7 @@ def main(argv: Optional[list[str]] = None) -> int:
         bucket.append(parsed_output)
 
     normalized_links_by_case: dict[CaseKey, list[OutputLink]] = {}
-    copied_files: list[str] = []
+    normalized_files: list[str] = []
     copied_count = 0
     synced_count = 0
 
@@ -531,20 +530,23 @@ def main(argv: Optional[list[str]] = None) -> int:
         )[0]
 
         ticker = selected.ticker
-        ticker_prefix = f"{ticker}/"
-        if selected.rel_path.startswith(ticker_prefix):
-            filename = selected.rel_path[len(ticker_prefix) :]
-            target_abs = selected.abs_path
-        else:
-            target_rel = f"{ticker}/outputs/{selected.detector_id}/{selected.abs_path.name}"
-            target_abs = LAB_ROOT / target_rel
+        target_rel = f"{ticker}/outputs/{selected.detector_id}/{selected.abs_path.name}"
+        target_abs = LAB_ROOT / target_rel
+        filename = f"outputs/{selected.detector_id}/{selected.abs_path.name}"
+
+        same_target = False
+        try:
+            same_target = selected.abs_path.resolve() == target_abs.resolve()
+        except Exception:
+            same_target = selected.abs_path == target_abs
+
+        if not same_target:
             did_copy = sync_file_deterministic(selected.abs_path, target_abs)
             if did_copy:
                 copied_count += 1
             else:
                 synced_count += 1
-            copied_files.append(f"{selected.rel_path} -> {target_rel}")
-            filename = f"outputs/{selected.detector_id}/{selected.abs_path.name}"
+            normalized_files.append(f"{selected.rel_path} -> {target_rel}")
 
         safe_filename = normalize_rel_path(filename)
         if safe_filename is None:
@@ -659,7 +661,7 @@ def main(argv: Optional[list[str]] = None) -> int:
         "updated_at": build_utc,
         "notes": [
             "Generated deterministically from scanned lab outputs.",
-            "Ticker-local output paths normalized for UI loadLabOutput() lookup.",
+            "Output links are canonicalized to ticker-local outputs/<detector_id>/<filename> paths.",
         ],
         "cases": cases_payload,
         "provenance": {
@@ -668,7 +670,7 @@ def main(argv: Optional[list[str]] = None) -> int:
             "script_version": SCRIPT_VERSION,
             "inputs": provenance_inputs,
             "notes": [
-                "llm_outputs files are copied into ticker-local outputs/<detector_id>/ paths when needed."
+                "Selected outputs are synced into ticker-local outputs/<detector_id>/ paths when needed."
             ],
         },
     }
@@ -686,7 +688,7 @@ def main(argv: Optional[list[str]] = None) -> int:
         + f"adjacent_only={bool(args.adjacent_only)}, include_most_recent_always={bool(args.include_most_recent_always)}"
     )
     lines.append(f"- cases_written: {len(cases_payload)}")
-    lines.append(f"- copied_or_synced_shared_outputs: {len(copied_files)}")
+    lines.append(f"- normalized_output_paths: {len(normalized_files)}")
     lines.append(f"- copied_new_files: {copied_count}")
     lines.append(f"- already_synced_files: {synced_count}")
     lines.append(f"- llm_inputs_detected: {len(all_inputs)}")
@@ -713,14 +715,69 @@ def main(argv: Optional[list[str]] = None) -> int:
         lines.append(f"- {ticker}: {rendered}")
     lines.append("")
 
-    lines.append("## UI Fetch Samples")
-    lines.append("- Registry URL: `data/sec_narrative_drift_lab/lab_cases_v1.json`")
-
     cases_by_ticker: dict[str, list[dict[str, Any]]] = {}
     for case in cases_payload:
         ticker = str(case["ticker"])
         bucket = cases_by_ticker.setdefault(ticker, [])
         bucket.append(case)
+
+    lines.append("## Detectors Per Case")
+    for ticker in tickers:
+        ticker_cases = cases_by_ticker.get(ticker, [])
+        if not ticker_cases:
+            lines.append(f"- {ticker}: none")
+            continue
+        for case in ticker_cases:
+            year_from = int(case["year_from"])
+            year_to = int(case["year_to"])
+            outputs_any = as_list(case.get("outputs")) or []
+            present_detectors: list[str] = []
+            for output_any in outputs_any:
+                output = as_dict(output_any)
+                if output is None:
+                    continue
+                detector_id = as_str(output.get("detector_id"))
+                if detector_id is None:
+                    continue
+                if detector_id not in present_detectors:
+                    present_detectors.append(detector_id)
+            if present_detectors:
+                lines.append(f"- {ticker} {year_from}-{year_to}: {', '.join(present_detectors)}")
+            else:
+                lines.append(f"- {ticker} {year_from}-{year_to}: none")
+    lines.append("")
+
+    lines.append("## Missing Outputs By Case (vs Detector Roster)")
+    for ticker in tickers:
+        ticker_cases = cases_by_ticker.get(ticker, [])
+        if not ticker_cases:
+            lines.append(f"- {ticker}: no included cases")
+            continue
+        for case in ticker_cases:
+            year_from = int(case["year_from"])
+            year_to = int(case["year_to"])
+            outputs_any = as_list(case.get("outputs")) or []
+            present_detectors: list[str] = []
+            for output_any in outputs_any:
+                output = as_dict(output_any)
+                if output is None:
+                    continue
+                detector_id = as_str(output.get("detector_id"))
+                if detector_id is None:
+                    continue
+                if detector_id not in present_detectors:
+                    present_detectors.append(detector_id)
+            missing_detectors = [det for det in DETECTOR_ORDER if det not in present_detectors]
+            if missing_detectors:
+                lines.append(
+                    f"- {ticker} {year_from}-{year_to}: missing {', '.join(missing_detectors)}"
+                )
+            else:
+                lines.append(f"- {ticker} {year_from}-{year_to}: none")
+    lines.append("")
+
+    lines.append("## UI Fetch Samples")
+    lines.append("- Registry URL: `data/sec_narrative_drift_lab/lab_cases_v1.json`")
 
     for ticker in tickers:
         lines.append("")
@@ -765,10 +822,10 @@ def main(argv: Optional[list[str]] = None) -> int:
                         if input_url is not None:
                             lines.append(f"  - Input URL from provenance.input_file: `{input_url}`")
 
-    if copied_files:
+    if normalized_files:
         lines.append("")
-        lines.append("## Shared Output Path Normalization")
-        for item in sorted(copied_files):
+        lines.append("## Output Path Normalization")
+        for item in sorted(normalized_files):
             lines.append(f"- `{item}`")
 
     BUILD_REPORT_PATH.write_text("\n".join(lines) + "\n", encoding="utf-8")
