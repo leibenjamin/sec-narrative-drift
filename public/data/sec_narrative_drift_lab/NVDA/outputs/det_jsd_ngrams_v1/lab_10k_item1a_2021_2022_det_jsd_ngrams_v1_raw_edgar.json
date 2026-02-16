@@ -1,0 +1,159 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_jsd_ngrams_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "NVDA",
+  "section": "10k_item1a",
+  "year_from": 2021,
+  "year_to": 2022,
+  "artifacts": {
+    "ranked_items": [
+      {
+        "label": "intellectual",
+        "score": 0.0006325110689437065
+      },
+      {
+        "label": "intellectual property",
+        "score": 0.0006325110689437065
+      },
+      {
+        "label": "ai",
+        "score": 0.0004399811055723232
+      },
+      {
+        "label": "actors",
+        "score": 0.0003383808476440233
+      },
+      {
+        "label": "property",
+        "score": 0.0003329756627111237
+      },
+      {
+        "label": "property rights",
+        "score": 0.00031625553447185326
+      },
+      {
+        "label": "obligations",
+        "score": 0.0002976128003295346
+      },
+      {
+        "label": "russia",
+        "score": 0.0002960832416885204
+      },
+      {
+        "label": "threat actors",
+        "score": 0.0002537856357330175
+      },
+      {
+        "label": "reputational harm",
+        "score": 0.0002537856357330175
+      },
+      {
+        "label": "threat",
+        "score": 0.0002537856357330175
+      },
+      {
+        "label": "responsible",
+        "score": 0.0002537856357330175
+      },
+      {
+        "label": "reputational",
+        "score": 0.0002537856357330175
+      },
+      {
+        "label": "personal data",
+        "score": 0.0002531004190041746
+      },
+      {
+        "label": "addition",
+        "score": 0.00024231658970852243
+      },
+      {
+        "label": "additionally",
+        "score": 0.00023357948879563047
+      },
+      {
+        "label": "mellanox",
+        "score": 0.00022589681033703804
+      },
+      {
+        "label": "spread",
+        "score": 0.00022589681033703804
+      },
+      {
+        "label": "ukraine",
+        "score": 0.0002114880297775146
+      },
+      {
+        "label": "incident",
+        "score": 0.0002114880297775146
+      }
+    ],
+    "stats": {
+      "jsd": 0.273943,
+      "tokens_prev": 5534,
+      "tokens_curr": 5911
+    }
+  },
+  "evidence": [
+    {
+      "year": 2022,
+      "paragraph_idx": 0,
+      "snippet": "In evaluating NVIDIA, the following risk factors should be considered in addition to the other information in this Annual Report on Form 10-K. Purchasing or owning NVIDIA common stock involves investment risks including, but not limited to, the risks described below. Any one of the following risks could harm our business, financial condition, results of operations or reputation, which could cause our stock price to decline, and you may lose all or a part of your investment. Additional risks, trends and uncertainties not presently known to us or that we currently believe are immaterial may also harm our business, financial condition, results of operations or reputation.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "ai",
+        "actors"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 2,
+      "snippet": "We make considerable investments in research and development and business offerings in markets where we have a limited operating history, which may not produce meaningful revenue for several years, if at all. If we fail to develop new products, services and technologies, or if they do not become widely adopted, our business, revenue, financial condition and results of operations could be adversely affected.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "ai"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 0,
+      "snippet": "In evaluating NVIDIA and our business, the following factors should be considered in addition to the other information in this Annual Report on Form 10-K. Before you buy our common stock, you should know that making such an investment involves risks including, but not limited to, the risks described below. Any one of the following risks could harm our business, financial condition, results of operations or reputation, which could cause our stock price to decline, and you may lose all or a part of your investment. Additional risks, trends and uncertainties not presently known to us or that we currently believe are immaterial may also harm our business, financial condition, results of operations or reputation.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "ai",
+        "actors"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 1,
+      "snippet": "If we fail to meet the evolving needs of our markets, or to identify new products, services or technologies, our revenue and financial results may be adversely impacted. Our GPU-based visual and accelerated computing platforms address four large markets: Gaming, Professional Visualization, Data Center, and Automotive. These markets often experience rapid technological change, changes in customer requirements, new product introductions and enhancements, and evolving industry standards. Our success depends on our ability to identify emerging industry changes and to develop new (or enhance our existing) products, services and technologies that meet the evolving needs of these markets. Such activities may require considerable technical, financial, compliance, sales and marketing investments. We devote significant resources to the development of technologies and business offerings in markets where we have a limited operating history, such as the automotive and data center markets, which presents additional risks to our business. For example, we must continue to accurately forecast demand, scale and optimize utilization in our data center business, and develop and deliver next-generation autonomous driving solutions to our partners and customers or our business could be negatively impacted. We also must continue to scale our networking business following the Mellanox acquisition by leveraging our joint product capabilities and continuing to effectively integrate company processes. We must also continue to develop the infrastructure needed to scale our business in these areas, including customer service and support, e-commerce and intellectual property, or IP, licensing capabilities. If we do not continue to evolve our business, including by developing 13 market specific technologies, managing the social and environmental impact of our products and technologies, expanding the ecosystem for our current and future products and technologies, and monetizing and expanding our business in various areas, our financial results could be negatively impacted. We also must meet customer safety and compliance standards, which are subject to change, including those applicable to our automotive solutions and systems. Additionally, we continue to make considerable investments in research and development, which may not produce significant revenue for several years, if at all. If our investments are unsuccessful and we fail to develop new products, services and technologies, or if we focus on technologies that do not become widely adopted, our business, revenue, financial condition and results of operations could be adversely affected. We cannot assure you that our strategic direction will result in innovative products and technologies that provide value to our customers, partners, and ultimately, our shareholders. If we fail to anticipate the changing needs of our target markets and emerging technology trends, or if we do not appropriately adapt our strategies as market conditions evolve, in a timely manner to exploit potential market opportunities, our business will be harmed.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "intellectual",
+        "intellectual property",
+        "ai",
+        "property"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.273943,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T05:55:30Z",
+    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "8c0d08a1b053aeeb4c1399cfee88fa0577b416889c7f4d7b9306ba6b4859e669",
+      "curr_text_sha256": "1a7937b559823b48cfe923c9a8174260a8af88156c70d16482bf92d29c4fc296",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

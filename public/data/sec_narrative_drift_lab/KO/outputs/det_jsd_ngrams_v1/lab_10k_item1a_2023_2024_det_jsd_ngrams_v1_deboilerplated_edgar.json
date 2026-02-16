@@ -1,0 +1,163 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_jsd_ngrams_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "KO",
+  "section": "10k_item1a",
+  "year_from": 2023,
+  "year_to": 2024,
+  "artifacts": {
+    "ranked_items": [
+      {
+        "label": "processing",
+        "score": 0.0006837272904864231
+      },
+      {
+        "label": "skilled",
+        "score": 0.0006103763987792472
+      },
+      {
+        "label": "libor",
+        "score": 0.0006103763987792472
+      },
+      {
+        "label": "highly",
+        "score": 0.0006103763987792472
+      },
+      {
+        "label": "highly skilled",
+        "score": 0.0006103763987792472
+      },
+      {
+        "label": "targets",
+        "score": 0.000508646998982706
+      },
+      {
+        "label": "goals targets",
+        "score": 0.000508646998982706
+      },
+      {
+        "label": "skilled diverse",
+        "score": 0.0004069175991861648
+      },
+      {
+        "label": "retain highly",
+        "score": 0.0004069175991861648
+      },
+      {
+        "label": "month",
+        "score": 0.0004069175991861648
+      },
+      {
+        "label": "specialized",
+        "score": 0.0003907013088493846
+      },
+      {
+        "label": "additives",
+        "score": 0.0003907013088493846
+      },
+      {
+        "label": "rate",
+        "score": 0.0003051881993896236
+      },
+      {
+        "label": "month month",
+        "score": 0.0003051881993896236
+      },
+      {
+        "label": "diverse workforce",
+        "score": 0.0003051881993896236
+      },
+      {
+        "label": "stewardship",
+        "score": 0.0003051881993896236
+      },
+      {
+        "label": "reference",
+        "score": 0.0003051881993896236
+      },
+      {
+        "label": "perspectives experiences",
+        "score": 0.0002930259816370385
+      },
+      {
+        "label": "cybersecurity systems",
+        "score": 0.0002930259816370385
+      },
+      {
+        "label": "backgrounds reflect",
+        "score": 0.0002930259816370385
+      }
+    ],
+    "stats": {
+      "jsd": 0.103891,
+      "tokens_prev": 2458,
+      "tokens_curr": 2560
+    }
+  },
+  "evidence": [
+    {
+      "year": 2024,
+      "paragraph_idx": 26,
+      "snippet": "Consumer product preferences have evolved and continue to evolve as a result of, among other things, health, wellness and nutrition considerations, including concerns regarding caloric intake associated with sweetened beverages and the perceived undesirability of artificial ingredients or processing; concerns regarding the perceived health effects of, or location of origin of, ingredients, raw materials or substances in our products or packaging, including due to the results of third-party studies (whether or not scientifically valid); shifting consumer demographics; changes in consumer tastes and needs coupled with a rapid expansion of beverage options and delivery methods; changes in consumer lifestyles; concerns regarding the environmental, social and sustainability impact of ingredient sources, the product manufacturing process and our packaging; consumer emphasis on transparency related to ingredients we use in our products and collection and recyclability of, and amount of recycled content contained in, our packaging containers and other materials; concerns about the health and welfare of animals in our dairy supply chain; and competitive product and pricing pressures.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "processing"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 30,
+      "snippet": "Public debate and concern about perceived negative health consequences of processing and of certain ingredients, such as nutritive and non-nutritive sweeteners, color additives and biotechnology-derived substances, and of other substances present in our beverage products or packaging materials, may reduce demand for our beverage products or result in additional governmental regulation.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "processing"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 10,
+      "snippet": "If we are unable to attract or retain a highly skilled and diverse workforce, our business could be negatively affected.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "skilled",
+        "highly",
+        "highly skilled"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 11,
+      "snippet": "The success of our business depends on our Company\u2019s and the Coca-Cola system\u2019s ability to attract, hire, develop, motivate and retain a highly skilled and diverse workforce as well as on our success in nurturing a culture that supports our growth and aligns employees around the Company\u2019s purpose and work that matters most.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "skilled",
+        "highly",
+        "highly skilled"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.103891,
+    "confidence": 1.0,
+    "coverage": 0.3391791921746819,
+    "warnings": [
+      "partial_coverage"
+    ]
+  },
+  "provenance": {
+    "build_utc": "2026-02-16T18:19:26Z",
+    "git_commit": "d9404836b264fcefaa81b0fb83cc09b15c41e2e8",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "f0666849bc8f882592e05310028ae6fde2c642d12336b4cf309bf746fbc8c0de",
+      "curr_text_sha256": "e23b259422fab41a97315332d85dce463c4f28a022f7934d238cec247d17f2da",
+      "lens": "deboilerplated",
+      "source": "edgar",
+      "script": "lab_precompute_detectors_for_case.py@v1",
+      "prev_input_path": "scripts/_reports/risk_extraction_bundle/sections/KO_2023_item_1a.txt",
+      "curr_input_path": "scripts/_reports/risk_extraction_bundle/sections/KO_2024_item_1a.txt"
+    }
+  }
+}

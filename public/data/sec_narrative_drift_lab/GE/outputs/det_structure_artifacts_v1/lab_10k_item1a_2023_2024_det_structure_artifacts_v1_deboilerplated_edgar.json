@@ -1,0 +1,116 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_structure_artifacts_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "GE",
+  "section": "10k_item1a",
+  "year_from": 2023,
+  "year_to": 2024,
+  "artifacts": {
+    "stats": {
+      "headings_prev": [
+        "2023 FORM 10-K 27",
+        "2023 FORM 10-K 28",
+        "2023 FORM 10-K 29",
+        "2023 FORM 10-K 30",
+        "2023 FORM 10-K 31",
+        "2023 FORM 10-K 32",
+        "2023 FORM 10-K 33",
+        "2023 FORM 10-K 34",
+        "2023 FORM 10-K 35"
+      ],
+      "headings_curr": [
+        "26 2024 FORM 10-K",
+        "2024 FORM 10-K 27",
+        "28 2024 FORM 10-K",
+        "2024 FORM 10-K 29",
+        "30 2024 FORM 10-K",
+        "2024 FORM 10-K 31",
+        "32 2024 FORM 10-K"
+      ],
+      "headings_added": [
+        "26 2024 FORM 10-K",
+        "2024 FORM 10-K 27",
+        "28 2024 FORM 10-K",
+        "2024 FORM 10-K 29",
+        "30 2024 FORM 10-K",
+        "2024 FORM 10-K 31",
+        "32 2024 FORM 10-K"
+      ],
+      "headings_removed": [
+        "2023 FORM 10-K 27",
+        "2023 FORM 10-K 28",
+        "2023 FORM 10-K 29",
+        "2023 FORM 10-K 30",
+        "2023 FORM 10-K 31",
+        "2023 FORM 10-K 32",
+        "2023 FORM 10-K 33",
+        "2023 FORM 10-K 34",
+        "2023 FORM 10-K 35"
+      ],
+      "paragraph_count_prev": 193,
+      "paragraph_count_curr": 175,
+      "length_chars_prev": 61763,
+      "length_chars_curr": 52316
+    }
+  },
+  "evidence": [
+    {
+      "year": 2024,
+      "paragraph_idx": 0,
+      "snippet": "when any new product is ready to enter into service.",
+      "why": "Heading added: 26 2024 FORM 10-K"
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 45,
+      "snippet": "pricing and taxes, energy taxes, product fuel efficiency standards, mandatory disclosure obligations, including U.S. government procurement-related contractual climate disclosures, could increase our operational and compliance expenditures and those of our customers and suppliers, including increased energy and raw materials costs and costs associated with manufacturing changes, and could require new or additional investments in product designs and facility upgrades.",
+      "why": "Heading added: 2024 FORM 10-K 27"
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 0,
+      "snippet": "independent companies might incur income tax liabilities.",
+      "why": "Heading added: 28 2024 FORM 10-K"
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 2,
+      "snippet": "investments in technology and innovation; our portfolio of businesses and capital allocation decisions; dispositions, acquisitions, joint ventures and restructuring activity; intellectual property; and other risks.",
+      "why": "Heading removed: 2023 FORM 10-K 27"
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 26,
+      "snippet": "may also sell the common stock of any of the new independent companies that do not match their investment strategies, which may cause a decline in the market price of such common stock.",
+      "why": "Heading removed: 2023 FORM 10-K 28"
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 48,
+      "snippet": "A failure by GE or other industry participants to invest successfully in these technological developments, or to adequately position our businesses to benefit from the growth in adoption of new technologies, could adversely affect our competitive position, business, ability to attract and retain talent, results of operations, cash flows and financial condition.",
+      "why": "Heading removed: 2023 FORM 10-K 29"
+    }
+  ],
+  "metrics": {
+    "drift_score": 1.0,
+    "confidence": 0.8,
+    "coverage": 0.8238740157480315,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-16T18:19:33Z",
+    "git_commit": "d9404836b264fcefaa81b0fb83cc09b15c41e2e8",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "1c50b34c890939d1bb9a3bda5cbcc593b7e3257f5de1e4a5ef203e2426ea6bce",
+      "curr_text_sha256": "99ace605fdd639611a84496658394939c0c1c2a005d9485bef87895ef694057a",
+      "lens": "deboilerplated",
+      "source": "edgar",
+      "script": "lab_precompute_detectors_for_case.py@v1",
+      "prev_input_path": "scripts/_reports/risk_extraction_bundle/sections/GE_2023_item_1a.txt",
+      "curr_input_path": "scripts/_reports/risk_extraction_bundle/sections/GE_2024_item_1a.txt"
+    }
+  }
+}

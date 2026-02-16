@@ -1,0 +1,78 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_minhash_boilerplate_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "NVDA",
+  "section": "10k_item1a",
+  "year_from": 2024,
+  "year_to": 2025,
+  "artifacts": {
+    "stats": {
+      "percent_reused": 0.2,
+      "percent_new": 0.8,
+      "reused_paragraphs": 38,
+      "total_paragraphs": 190
+    }
+  },
+  "evidence": [
+    {
+      "year": 2025,
+      "paragraph_idx": 2,
+      "snippet": "\u2022 Modification or interruption of our business processes and information systems may disrupt our business and internal controls.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 4,
+      "snippet": "\u2022 Modification or interruption of our business processes and information systems may disrupt our business, and internal controls.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 7,
+      "snippet": "\u2022 develop, acquire, maintain, and secure access to the internal and external infrastructure needed to scale our business, including sufficient energy for powering data centers using our products, acquisition integrations, customer support, e-commerce, IP licensing capabilities, and cloud service capacity; and",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 9,
+      "snippet": "\u2022 develop, acquire, maintain, and secure access to the internal and external infrastructure needed to scale our business, including sufficient energy for powering data centers using our products, acquisition integrations, customer support, e-commerce, IP licensing capabilities and cloud service capacity; and",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 47,
+      "snippet": "Because our products may be used in multiple use cases and applications, it is difficult to estimate with any reasonable degree of precision the impact of generative AI models on our reported revenue or forecasted demand.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 57,
+      "snippet": "Because our products may be used in multiple use cases and applications, it is difficult for us to estimate with any reasonable degree of precision the impact of generative AI models on our reported revenue or forecasted demand.",
+      "why": "Matching paragraph from prior year."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.8,
+    "confidence": 1.0,
+    "coverage": 0.4395635247435801,
+    "warnings": [
+      "partial_coverage"
+    ]
+  },
+  "provenance": {
+    "build_utc": "2026-02-16T18:19:28Z",
+    "git_commit": "d9404836b264fcefaa81b0fb83cc09b15c41e2e8",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "2d44704091b3adaf94304f5881cb2e4299d3dd4cda0ea3fab3aa93f2288e358f",
+      "curr_text_sha256": "2480f4c3c9df28484211b6a9e531aea4a930ad2db3d2d55696d6a2e5393bced4",
+      "lens": "deboilerplated",
+      "source": "edgar",
+      "script": "lab_precompute_detectors_for_case.py@v1",
+      "prev_input_path": "scripts/_reports/risk_extraction_bundle/sections/NVDA_2024_item_1a.txt",
+      "curr_input_path": "scripts/_reports/risk_extraction_bundle/sections/NVDA_2025_item_1a.txt"
+    }
+  }
+}

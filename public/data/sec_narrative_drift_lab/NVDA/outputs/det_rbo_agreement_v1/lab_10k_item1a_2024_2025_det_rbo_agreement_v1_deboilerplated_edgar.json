@@ -1,0 +1,49 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_rbo_agreement_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "NVDA",
+  "section": "10k_item1a",
+  "year_from": 2024,
+  "year_to": 2025,
+  "artifacts": {
+    "detectors": [
+      "det_logodds_terms_v1",
+      "det_jsd_ngrams_v1"
+    ],
+    "matrix": [
+      [
+        1.0,
+        0.6244
+      ],
+      [
+        0.6244,
+        1.0
+      ]
+    ],
+    "agreement_score": 0.6244
+  },
+  "evidence": [],
+  "metrics": {
+    "drift_score": 0.6244,
+    "confidence": 1.0,
+    "coverage": null,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-16T18:19:28Z",
+    "git_commit": "d9404836b264fcefaa81b0fb83cc09b15c41e2e8",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "2d44704091b3adaf94304f5881cb2e4299d3dd4cda0ea3fab3aa93f2288e358f",
+      "curr_text_sha256": "2480f4c3c9df28484211b6a9e531aea4a930ad2db3d2d55696d6a2e5393bced4",
+      "lens": "deboilerplated",
+      "source": "edgar",
+      "script": "lab_precompute_detectors_for_case.py@v1",
+      "ranked_list_inputs": "det_jsd_ngrams_v1,det_logodds_terms_v1,det_minhash_boilerplate_v1,det_structure_artifacts_v1,det_winnowing_fingerprint_v1",
+      "prev_input_path": "scripts/_reports/risk_extraction_bundle/sections/NVDA_2024_item_1a.txt",
+      "curr_input_path": "scripts/_reports/risk_extraction_bundle/sections/NVDA_2025_item_1a.txt"
+    }
+  }
+}

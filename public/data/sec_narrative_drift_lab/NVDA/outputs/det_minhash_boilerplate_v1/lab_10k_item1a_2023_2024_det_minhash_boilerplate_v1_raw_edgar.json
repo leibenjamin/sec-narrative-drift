@@ -1,0 +1,73 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_minhash_boilerplate_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "NVDA",
+  "section": "10k_item1a",
+  "year_from": 2023,
+  "year_to": 2024,
+  "artifacts": {
+    "stats": {
+      "percent_reused": 0.16363636363636364,
+      "percent_new": 0.8363636363636364,
+      "reused_paragraphs": 18,
+      "total_paragraphs": 110
+    }
+  },
+  "evidence": [
+    {
+      "year": 2024,
+      "paragraph_idx": 3,
+      "snippet": "\u2022 Our operating results have in the past fluctuated and may in the future fluctuate, and if our operating results are below the expectations of securities analysts or investors, our stock price could decline.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 8,
+      "snippet": "\u2022 Our operating results have in the past fluctuated and may in the future fluctuate, and if our operating results are below the expectations of securities analysts or investors, our stock price could decline.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 41,
+      "snippet": "Security breaches, computer malware, social-engineering attacks, denial-of-service attacks, software bugs, server malfunctions, software or hardware failures, loss of data or other information technology assets, and other cyber-attacks are becoming increasingly sophisticated, making it more difficult to successfully detect, defend against them or implement adequate preventative measures.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 38,
+      "snippet": "Security breaches, computer malware, social-engineering attacks, denial-of-service attacks, software bugs, server malfunctions, software or hardware failures, loss of data or other information technology assets, and other cyber-attacks are increasingly sophisticated, making it more difficult to successfully detect, defend against them or implement adequate preventative measures.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 42,
+      "snippet": "Cyber-attacks, including ransomware attacks by organized criminal threat actors, nation-states, and nation-state-supported actors, may become more prevalent and severe. Our ability to recover from ransomware attacks may be limited if our backups have been affected by the attack, or if restoring from backups is delayed or not feasible.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 39,
+      "snippet": "Cyber-attacks, including ransomware attacks by organized criminal threat actors, nation-states, and nation-state-supported actors, may become more prevalent and severe. Our ability to recover from ransomware attacks may be limited if our backups have been affected by the attack, or if restoring from backups is delayed or not feasible.",
+      "why": "Matching paragraph from prior year."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.8363636363636364,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T05:55:32Z",
+    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "b13bf38cc427b8eec49b6492bf559638ba32ea611dae26ef263a0e9035aa9567",
+      "curr_text_sha256": "b032c029a9eb187f81c4d8b6d09f418da11d0a64b142dc83ca46dc17392e152a",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

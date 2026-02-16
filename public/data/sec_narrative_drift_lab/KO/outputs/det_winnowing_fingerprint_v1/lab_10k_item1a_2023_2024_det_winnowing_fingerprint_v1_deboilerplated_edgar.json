@@ -1,0 +1,60 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_winnowing_fingerprint_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "KO",
+  "section": "10k_item1a",
+  "year_from": 2023,
+  "year_to": 2024,
+  "artifacts": {
+    "stats": {
+      "shared_fingerprints": 9065,
+      "prev_fingerprints": 12071,
+      "curr_fingerprints": 12702,
+      "shared_ratio": 0.7509734073399056
+    }
+  },
+  "evidence": [
+    {
+      "year": 2024,
+      "paragraph_idx": 0,
+      "snippet": "Many of the jurisdictions in which our products are sold have experienced, and could continue to experience, unfavorable",
+      "why": "Shared fingerprint span."
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 0,
+      "snippet": "Many of the jurisdictions in which our products are sold have experienced, and could continue to experience, unfavorable ",
+      "why": "Shared fingerprint span."
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 0,
+      "snippet": "Many of the jurisdictions in which our products are sold have experienced, and could continue to experience, unfavorable chan",
+      "why": "Shared fingerprint span."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.7509734073399056,
+    "confidence": 1.0,
+    "coverage": 0.3391791921746819,
+    "warnings": [
+      "partial_coverage"
+    ]
+  },
+  "provenance": {
+    "build_utc": "2026-02-16T18:19:26Z",
+    "git_commit": "d9404836b264fcefaa81b0fb83cc09b15c41e2e8",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "f0666849bc8f882592e05310028ae6fde2c642d12336b4cf309bf746fbc8c0de",
+      "curr_text_sha256": "e23b259422fab41a97315332d85dce463c4f28a022f7934d238cec247d17f2da",
+      "lens": "deboilerplated",
+      "source": "edgar",
+      "script": "lab_precompute_detectors_for_case.py@v1",
+      "prev_input_path": "scripts/_reports/risk_extraction_bundle/sections/KO_2023_item_1a.txt",
+      "curr_input_path": "scripts/_reports/risk_extraction_bundle/sections/KO_2024_item_1a.txt"
+    }
+  }
+}

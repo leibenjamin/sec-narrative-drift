@@ -1,0 +1,76 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_minhash_boilerplate_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "GE",
+  "section": "10k_item1a",
+  "year_from": 2023,
+  "year_to": 2024,
+  "artifacts": {
+    "stats": {
+      "percent_reused": 0.11428571428571428,
+      "percent_new": 0.8857142857142857,
+      "reused_paragraphs": 20,
+      "total_paragraphs": 175
+    }
+  },
+  "evidence": [
+    {
+      "year": 2024,
+      "paragraph_idx": 0,
+      "snippet": "RISK FACTORS. The following discussion of the material factors, events and uncertainties that may make an investment in the Company speculative or risky contains \u201cforward-looking statements,\" as discussed in the Forward-Looking Statements section.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 0,
+      "snippet": "RISK FACTORS. The following discussion of the material factors, events and uncertainties that may make an investment in the Company speculative or risky contains \"forward-looking statements,\" as discussed in the Forward-Looking Statements section.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 11,
+      "snippet": "We also do business in emerging market jurisdictions where economic, political and legal risks are heightened and the operating environments are complex.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 35,
+      "snippet": "We also do business in many emerging market jurisdictions where economic, political and legal risks are heightened and the operating environments are complex.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 81,
+      "snippet": "The value of, or our ability to use, our intellectual property may also be negatively impacted by dependencies on third parties, such as our ability to obtain or renew on reasonable terms, or at all, licenses that we need in the future, or our ability to secure or retain ownership or rights to use data in certain software analytics or services offerings.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 92,
+      "snippet": "The value of, or our ability to use, our intellectual property may also be negatively impacted by dependencies on third parties, such as our ability to obtain or renew on reasonable terms licenses that we need in the future, or our ability to secure or retain ownership or rights to use data in certain software analytics or services offerings.",
+      "why": "Matching paragraph from prior year."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.8857142857142857,
+    "confidence": 1.0,
+    "coverage": 0.8238740157480315,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-16T18:19:33Z",
+    "git_commit": "d9404836b264fcefaa81b0fb83cc09b15c41e2e8",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "1c50b34c890939d1bb9a3bda5cbcc593b7e3257f5de1e4a5ef203e2426ea6bce",
+      "curr_text_sha256": "99ace605fdd639611a84496658394939c0c1c2a005d9485bef87895ef694057a",
+      "lens": "deboilerplated",
+      "source": "edgar",
+      "script": "lab_precompute_detectors_for_case.py@v1",
+      "prev_input_path": "scripts/_reports/risk_extraction_bundle/sections/GE_2023_item_1a.txt",
+      "curr_input_path": "scripts/_reports/risk_extraction_bundle/sections/GE_2024_item_1a.txt"
+    }
+  }
+}

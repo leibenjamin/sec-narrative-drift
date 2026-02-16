@@ -1,0 +1,63 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_structure_artifacts_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "KO",
+  "section": "10k_item1a",
+  "year_from": 2023,
+  "year_to": 2024,
+  "artifacts": {
+    "stats": {
+      "headings_prev": [
+        "ITEM 1A. RISK FACTORS",
+        "RISKS RELATED TO OUR OPERATIONS",
+        "RISKS RELATED TO CONSUMER DEMAND FOR OUR PRODUCTS",
+        "RISKS RELATED TO THE COCA-COLA SYSTEM",
+        "RISKS RELATED TO REGULATORY AND LEGAL MATTERS",
+        "RISKS RELATED TO FINANCE, ACCOUNTING AND INVESTMENTS",
+        "RISKS RELATED TO CYBERSECURITY AND DATA PRIVACY",
+        "RISKS RELATED TO ENVIRONMENTAL AND SOCIAL FACTORS",
+        "ITEM 1B. UNRESOLVED STAFF COMMENTS"
+      ],
+      "headings_curr": [
+        "ITEM 1A. RISK FACTORS",
+        "RISKS RELATED TO OUR OPERATIONS",
+        "RISKS RELATED TO CONSUMER DEMAND FOR OUR PRODUCTS",
+        "RISKS RELATED TO THE COCA-COLA SYSTEM",
+        "RISKS RELATED TO REGULATORY AND LEGAL MATTERS",
+        "RISKS RELATED TO FINANCE, ACCOUNTING AND INVESTMENTS",
+        "RISKS RELATED TO CYBERSECURITY AND DATA PRIVACY",
+        "RISKS RELATED TO ENVIRONMENTAL AND SOCIAL FACTORS",
+        "ITEM 1B. UNRESOLVED STAFF COMMENTS"
+      ],
+      "headings_added": [],
+      "headings_removed": [],
+      "paragraph_count_prev": 73,
+      "paragraph_count_curr": 74,
+      "length_chars_prev": 89351,
+      "length_chars_curr": 90820
+    }
+  },
+  "evidence": [],
+  "metrics": {
+    "drift_score": 0.0,
+    "confidence": 0.9,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-16T05:22:40Z",
+    "git_commit": "d9404836b264fcefaa81b0fb83cc09b15c41e2e8",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "8d005a2728ac3571f5042a9956e63b4fffb0d6bcb656bda6be2e217116052ff0",
+      "curr_text_sha256": "604daa670ec51ce1aa4c3f5b6fe7fe28634f36f90a480ccde248384d40986995",
+      "lens": "raw",
+      "source": "edgar",
+      "script": "lab_precompute_detectors_for_case.py@v1",
+      "prev_input_path": "scripts/_reports/risk_extraction_bundle/sections/KO_2023_item_1a.txt",
+      "curr_input_path": "scripts/_reports/risk_extraction_bundle/sections/KO_2024_item_1a.txt"
+    }
+  }
+}

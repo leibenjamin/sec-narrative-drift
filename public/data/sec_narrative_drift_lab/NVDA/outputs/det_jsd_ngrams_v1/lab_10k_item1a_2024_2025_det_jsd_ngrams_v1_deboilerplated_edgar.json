@@ -1,0 +1,162 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_jsd_ngrams_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "NVDA",
+  "section": "10k_item1a",
+  "year_from": 2024,
+  "year_to": 2025,
+  "artifacts": {
+    "ranked_items": [
+      {
+        "label": "ifr",
+        "score": 0.0007733491969066032
+      },
+      {
+        "label": "diffusion ifr",
+        "score": 0.0007138607971445568
+      },
+      {
+        "label": "diffusion",
+        "score": 0.0007138607971445568
+      },
+      {
+        "label": "ai diffusion",
+        "score": 0.0007138607971445568
+      },
+      {
+        "label": "indebtedness",
+        "score": 0.0002576323586242432
+      },
+      {
+        "label": "terms",
+        "score": 0.0002576323586242432
+      },
+      {
+        "label": "tier",
+        "score": 0.00025553114716689795
+      },
+      {
+        "label": "covered products",
+        "score": 0.0002379535990481856
+      },
+      {
+        "label": "licensing requirement",
+        "score": 0.0002379535990481856
+      },
+      {
+        "label": "south",
+        "score": 0.0002379535990481856
+      },
+      {
+        "label": "south korea",
+        "score": 0.0002379535990481856
+      },
+      {
+        "label": "covered",
+        "score": 0.0002076307417343518
+      },
+      {
+        "label": "computing",
+        "score": 0.0002076307417343518
+      },
+      {
+        "label": "customers future",
+        "score": 0.0001932242689681824
+      },
+      {
+        "label": "flows operations",
+        "score": 0.0001932242689681824
+      },
+      {
+        "label": "risk factors",
+        "score": 0.0001932242689681824
+      },
+      {
+        "label": "cpu",
+        "score": 0.0001932242689681824
+      },
+      {
+        "label": "mismatch",
+        "score": 0.0001932242689681824
+      },
+      {
+        "label": "refinance",
+        "score": 0.0001932242689681824
+      },
+      {
+        "label": "impacted future",
+        "score": 0.0001932242689681824
+      }
+    ],
+    "stats": {
+      "jsd": 0.172934,
+      "tokens_prev": 3882,
+      "tokens_curr": 4203
+    }
+  },
+  "evidence": [
+    {
+      "year": 2025,
+      "paragraph_idx": 121,
+      "snippet": "Such controls have been and may again be very broad in scope and application, prohibit us from exporting our products to any or all customers in one or more markets, including but not limited to China and over 150 countries designated \u201cTier 2\u201d by the January 2025 AI Diffusion IFR, and could negatively impact our manufacturing, testing and warehousing locations and options, or could impose other conditions that limit our ability to serve demand abroad and could negatively and materially impact our business, revenue and financial results.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "ifr",
+        "diffusion ifr",
+        "diffusion",
+        "ai diffusion"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 129,
+      "snippet": "After a 120-day delayed compliance period, the IFR will, unless modified, impose a worldwide licensing requirement on all products classified under Export Control Classification Numbers, or ECCNs, 3A090.a, 4A090.a, or corresponding .z ECCNs, including all related software and technology.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "ifr"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 7,
+      "snippet": "\u2022 Our indebtedness could adversely affect our financial position and cash flows from operations and prevent us from implementing our strategy or fulfilling our contractual obligations.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "indebtedness"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 173,
+      "snippet": "Our indebtedness could adversely affect our financial position and cash flows from operations, and prevent us from implementing our strategy or fulfilling our contractual obligations.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "indebtedness"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.172934,
+    "confidence": 1.0,
+    "coverage": 0.4395635247435801,
+    "warnings": [
+      "partial_coverage"
+    ]
+  },
+  "provenance": {
+    "build_utc": "2026-02-16T18:19:28Z",
+    "git_commit": "d9404836b264fcefaa81b0fb83cc09b15c41e2e8",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "2d44704091b3adaf94304f5881cb2e4299d3dd4cda0ea3fab3aa93f2288e358f",
+      "curr_text_sha256": "2480f4c3c9df28484211b6a9e531aea4a930ad2db3d2d55696d6a2e5393bced4",
+      "lens": "deboilerplated",
+      "source": "edgar",
+      "script": "lab_precompute_detectors_for_case.py@v1",
+      "prev_input_path": "scripts/_reports/risk_extraction_bundle/sections/NVDA_2024_item_1a.txt",
+      "curr_input_path": "scripts/_reports/risk_extraction_bundle/sections/NVDA_2025_item_1a.txt"
+    }
+  }
+}

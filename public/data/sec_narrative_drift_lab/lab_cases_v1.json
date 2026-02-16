@@ -1,9 +1,9 @@
 {
   "version": "1.0",
-  "updated_at": "2026-02-16T01:03:51Z",
+  "updated_at": "2026-02-16T18:20:07Z",
   "notes": [
     "Generated deterministically from scanned lab outputs.",
-    "Ticker-local output paths normalized for UI loadLabOutput() lookup."
+    "Output links are canonicalized to ticker-local outputs/<detector_id>/<filename> paths."
   ],
   "cases": [
     {
@@ -27,73 +27,73 @@
           "detector_id": "det_logodds_terms_v1",
           "cleaning_lens": "raw",
           "source_id": "edgar",
-          "filename": "lab_10k_item1a_2021_2022_det_logodds_terms_v1_raw_edgar.json"
+          "filename": "outputs/det_logodds_terms_v1/lab_10k_item1a_2021_2022_det_logodds_terms_v1_raw_edgar.json"
         },
         {
           "detector_id": "det_logodds_terms_v1",
           "cleaning_lens": "deboilerplated",
           "source_id": "edgar",
-          "filename": "lab_10k_item1a_2021_2022_det_logodds_terms_v1_deboilerplated_edgar.json"
+          "filename": "outputs/det_logodds_terms_v1/lab_10k_item1a_2021_2022_det_logodds_terms_v1_deboilerplated_edgar.json"
         },
         {
           "detector_id": "det_jsd_ngrams_v1",
           "cleaning_lens": "raw",
           "source_id": "edgar",
-          "filename": "lab_10k_item1a_2021_2022_det_jsd_ngrams_v1_raw_edgar.json"
+          "filename": "outputs/det_jsd_ngrams_v1/lab_10k_item1a_2021_2022_det_jsd_ngrams_v1_raw_edgar.json"
         },
         {
           "detector_id": "det_jsd_ngrams_v1",
           "cleaning_lens": "deboilerplated",
           "source_id": "edgar",
-          "filename": "lab_10k_item1a_2021_2022_det_jsd_ngrams_v1_deboilerplated_edgar.json"
+          "filename": "outputs/det_jsd_ngrams_v1/lab_10k_item1a_2021_2022_det_jsd_ngrams_v1_deboilerplated_edgar.json"
         },
         {
           "detector_id": "det_minhash_boilerplate_v1",
           "cleaning_lens": "raw",
           "source_id": "edgar",
-          "filename": "lab_10k_item1a_2021_2022_det_minhash_boilerplate_v1_raw_edgar.json"
+          "filename": "outputs/det_minhash_boilerplate_v1/lab_10k_item1a_2021_2022_det_minhash_boilerplate_v1_raw_edgar.json"
         },
         {
           "detector_id": "det_minhash_boilerplate_v1",
           "cleaning_lens": "deboilerplated",
           "source_id": "edgar",
-          "filename": "lab_10k_item1a_2021_2022_det_minhash_boilerplate_v1_deboilerplated_edgar.json"
+          "filename": "outputs/det_minhash_boilerplate_v1/lab_10k_item1a_2021_2022_det_minhash_boilerplate_v1_deboilerplated_edgar.json"
         },
         {
           "detector_id": "det_winnowing_fingerprint_v1",
           "cleaning_lens": "raw",
           "source_id": "edgar",
-          "filename": "lab_10k_item1a_2021_2022_det_winnowing_fingerprint_v1_raw_edgar.json"
+          "filename": "outputs/det_winnowing_fingerprint_v1/lab_10k_item1a_2021_2022_det_winnowing_fingerprint_v1_raw_edgar.json"
         },
         {
           "detector_id": "det_winnowing_fingerprint_v1",
           "cleaning_lens": "deboilerplated",
           "source_id": "edgar",
-          "filename": "lab_10k_item1a_2021_2022_det_winnowing_fingerprint_v1_deboilerplated_edgar.json"
+          "filename": "outputs/det_winnowing_fingerprint_v1/lab_10k_item1a_2021_2022_det_winnowing_fingerprint_v1_deboilerplated_edgar.json"
         },
         {
           "detector_id": "det_structure_artifacts_v1",
           "cleaning_lens": "raw",
           "source_id": "edgar",
-          "filename": "lab_10k_item1a_2021_2022_det_structure_artifacts_v1_raw_edgar.json"
+          "filename": "outputs/det_structure_artifacts_v1/lab_10k_item1a_2021_2022_det_structure_artifacts_v1_raw_edgar.json"
         },
         {
           "detector_id": "det_structure_artifacts_v1",
           "cleaning_lens": "deboilerplated",
           "source_id": "edgar",
-          "filename": "lab_10k_item1a_2021_2022_det_structure_artifacts_v1_deboilerplated_edgar.json"
+          "filename": "outputs/det_structure_artifacts_v1/lab_10k_item1a_2021_2022_det_structure_artifacts_v1_deboilerplated_edgar.json"
         },
         {
           "detector_id": "det_rbo_agreement_v1",
           "cleaning_lens": "raw",
           "source_id": "edgar",
-          "filename": "lab_10k_item1a_2021_2022_det_rbo_agreement_v1_raw_edgar.json"
+          "filename": "outputs/det_rbo_agreement_v1/lab_10k_item1a_2021_2022_det_rbo_agreement_v1_raw_edgar.json"
         },
         {
           "detector_id": "det_rbo_agreement_v1",
           "cleaning_lens": "deboilerplated",
           "source_id": "edgar",
-          "filename": "lab_10k_item1a_2021_2022_det_rbo_agreement_v1_deboilerplated_edgar.json"
+          "filename": "outputs/det_rbo_agreement_v1/lab_10k_item1a_2021_2022_det_rbo_agreement_v1_deboilerplated_edgar.json"
         },
         {
           "detector_id": "det_llm_delta_brief_v1",
@@ -132,73 +132,73 @@
           "detector_id": "det_logodds_terms_v1",
           "cleaning_lens": "raw",
           "source_id": "edgar",
-          "filename": "lab_10k_item1a_2022_2023_det_logodds_terms_v1_raw_edgar.json"
+          "filename": "outputs/det_logodds_terms_v1/lab_10k_item1a_2022_2023_det_logodds_terms_v1_raw_edgar.json"
         },
         {
           "detector_id": "det_logodds_terms_v1",
           "cleaning_lens": "deboilerplated",
           "source_id": "edgar",
-          "filename": "lab_10k_item1a_2022_2023_det_logodds_terms_v1_deboilerplated_edgar.json"
+          "filename": "outputs/det_logodds_terms_v1/lab_10k_item1a_2022_2023_det_logodds_terms_v1_deboilerplated_edgar.json"
         },
         {
           "detector_id": "det_jsd_ngrams_v1",
           "cleaning_lens": "raw",
           "source_id": "edgar",
-          "filename": "lab_10k_item1a_2022_2023_det_jsd_ngrams_v1_raw_edgar.json"
+          "filename": "outputs/det_jsd_ngrams_v1/lab_10k_item1a_2022_2023_det_jsd_ngrams_v1_raw_edgar.json"
         },
         {
           "detector_id": "det_jsd_ngrams_v1",
           "cleaning_lens": "deboilerplated",
           "source_id": "edgar",
-          "filename": "lab_10k_item1a_2022_2023_det_jsd_ngrams_v1_deboilerplated_edgar.json"
+          "filename": "outputs/det_jsd_ngrams_v1/lab_10k_item1a_2022_2023_det_jsd_ngrams_v1_deboilerplated_edgar.json"
         },
         {
           "detector_id": "det_minhash_boilerplate_v1",
           "cleaning_lens": "raw",
           "source_id": "edgar",
-          "filename": "lab_10k_item1a_2022_2023_det_minhash_boilerplate_v1_raw_edgar.json"
+          "filename": "outputs/det_minhash_boilerplate_v1/lab_10k_item1a_2022_2023_det_minhash_boilerplate_v1_raw_edgar.json"
         },
         {
           "detector_id": "det_minhash_boilerplate_v1",
           "cleaning_lens": "deboilerplated",
           "source_id": "edgar",
-          "filename": "lab_10k_item1a_2022_2023_det_minhash_boilerplate_v1_deboilerplated_edgar.json"
+          "filename": "outputs/det_minhash_boilerplate_v1/lab_10k_item1a_2022_2023_det_minhash_boilerplate_v1_deboilerplated_edgar.json"
         },
         {
           "detector_id": "det_winnowing_fingerprint_v1",
           "cleaning_lens": "raw",
           "source_id": "edgar",
-          "filename": "lab_10k_item1a_2022_2023_det_winnowing_fingerprint_v1_raw_edgar.json"
+          "filename": "outputs/det_winnowing_fingerprint_v1/lab_10k_item1a_2022_2023_det_winnowing_fingerprint_v1_raw_edgar.json"
         },
         {
           "detector_id": "det_winnowing_fingerprint_v1",
           "cleaning_lens": "deboilerplated",
           "source_id": "edgar",
-          "filename": "lab_10k_item1a_2022_2023_det_winnowing_fingerprint_v1_deboilerplated_edgar.json"
+          "filename": "outputs/det_winnowing_fingerprint_v1/lab_10k_item1a_2022_2023_det_winnowing_fingerprint_v1_deboilerplated_edgar.json"
         },
         {
           "detector_id": "det_structure_artifacts_v1",
           "cleaning_lens": "raw",
           "source_id": "edgar",
-          "filename": "lab_10k_item1a_2022_2023_det_structure_artifacts_v1_raw_edgar.json"
+          "filename": "outputs/det_structure_artifacts_v1/lab_10k_item1a_2022_2023_det_structure_artifacts_v1_raw_edgar.json"
         },
         {
           "detector_id": "det_structure_artifacts_v1",
           "cleaning_lens": "deboilerplated",
           "source_id": "edgar",
-          "filename": "lab_10k_item1a_2022_2023_det_structure_artifacts_v1_deboilerplated_edgar.json"
+          "filename": "outputs/det_structure_artifacts_v1/lab_10k_item1a_2022_2023_det_structure_artifacts_v1_deboilerplated_edgar.json"
         },
         {
           "detector_id": "det_rbo_agreement_v1",
           "cleaning_lens": "raw",
           "source_id": "edgar",
-          "filename": "lab_10k_item1a_2022_2023_det_rbo_agreement_v1_raw_edgar.json"
+          "filename": "outputs/det_rbo_agreement_v1/lab_10k_item1a_2022_2023_det_rbo_agreement_v1_raw_edgar.json"
         },
         {
           "detector_id": "det_rbo_agreement_v1",
           "cleaning_lens": "deboilerplated",
           "source_id": "edgar",
-          "filename": "lab_10k_item1a_2022_2023_det_rbo_agreement_v1_deboilerplated_edgar.json"
+          "filename": "outputs/det_rbo_agreement_v1/lab_10k_item1a_2022_2023_det_rbo_agreement_v1_deboilerplated_edgar.json"
         }
       ],
       "tags": [
@@ -225,74 +225,131 @@
           "detector_id": "det_logodds_terms_v1",
           "cleaning_lens": "raw",
           "source_id": "edgar",
-          "filename": "lab_10k_item1a_2023_2024_det_logodds_terms_v1_raw_edgar.json"
+          "filename": "outputs/det_logodds_terms_v1/lab_10k_item1a_2023_2024_det_logodds_terms_v1_raw_edgar.json"
         },
         {
           "detector_id": "det_logodds_terms_v1",
           "cleaning_lens": "deboilerplated",
           "source_id": "edgar",
-          "filename": "lab_10k_item1a_2023_2024_det_logodds_terms_v1_deboilerplated_edgar.json"
+          "filename": "outputs/det_logodds_terms_v1/lab_10k_item1a_2023_2024_det_logodds_terms_v1_deboilerplated_edgar.json"
         },
         {
           "detector_id": "det_jsd_ngrams_v1",
           "cleaning_lens": "raw",
           "source_id": "edgar",
-          "filename": "lab_10k_item1a_2023_2024_det_jsd_ngrams_v1_raw_edgar.json"
+          "filename": "outputs/det_jsd_ngrams_v1/lab_10k_item1a_2023_2024_det_jsd_ngrams_v1_raw_edgar.json"
         },
         {
           "detector_id": "det_jsd_ngrams_v1",
           "cleaning_lens": "deboilerplated",
           "source_id": "edgar",
-          "filename": "lab_10k_item1a_2023_2024_det_jsd_ngrams_v1_deboilerplated_edgar.json"
+          "filename": "outputs/det_jsd_ngrams_v1/lab_10k_item1a_2023_2024_det_jsd_ngrams_v1_deboilerplated_edgar.json"
         },
         {
           "detector_id": "det_minhash_boilerplate_v1",
           "cleaning_lens": "raw",
           "source_id": "edgar",
-          "filename": "lab_10k_item1a_2023_2024_det_minhash_boilerplate_v1_raw_edgar.json"
+          "filename": "outputs/det_minhash_boilerplate_v1/lab_10k_item1a_2023_2024_det_minhash_boilerplate_v1_raw_edgar.json"
         },
         {
           "detector_id": "det_minhash_boilerplate_v1",
           "cleaning_lens": "deboilerplated",
           "source_id": "edgar",
-          "filename": "lab_10k_item1a_2023_2024_det_minhash_boilerplate_v1_deboilerplated_edgar.json"
+          "filename": "outputs/det_minhash_boilerplate_v1/lab_10k_item1a_2023_2024_det_minhash_boilerplate_v1_deboilerplated_edgar.json"
         },
         {
           "detector_id": "det_winnowing_fingerprint_v1",
           "cleaning_lens": "raw",
           "source_id": "edgar",
-          "filename": "lab_10k_item1a_2023_2024_det_winnowing_fingerprint_v1_raw_edgar.json"
+          "filename": "outputs/det_winnowing_fingerprint_v1/lab_10k_item1a_2023_2024_det_winnowing_fingerprint_v1_raw_edgar.json"
         },
         {
           "detector_id": "det_winnowing_fingerprint_v1",
           "cleaning_lens": "deboilerplated",
           "source_id": "edgar",
-          "filename": "lab_10k_item1a_2023_2024_det_winnowing_fingerprint_v1_deboilerplated_edgar.json"
+          "filename": "outputs/det_winnowing_fingerprint_v1/lab_10k_item1a_2023_2024_det_winnowing_fingerprint_v1_deboilerplated_edgar.json"
         },
         {
           "detector_id": "det_structure_artifacts_v1",
           "cleaning_lens": "raw",
           "source_id": "edgar",
-          "filename": "lab_10k_item1a_2023_2024_det_structure_artifacts_v1_raw_edgar.json"
+          "filename": "outputs/det_structure_artifacts_v1/lab_10k_item1a_2023_2024_det_structure_artifacts_v1_raw_edgar.json"
         },
         {
           "detector_id": "det_structure_artifacts_v1",
           "cleaning_lens": "deboilerplated",
           "source_id": "edgar",
-          "filename": "lab_10k_item1a_2023_2024_det_structure_artifacts_v1_deboilerplated_edgar.json"
+          "filename": "outputs/det_structure_artifacts_v1/lab_10k_item1a_2023_2024_det_structure_artifacts_v1_deboilerplated_edgar.json"
         },
         {
           "detector_id": "det_rbo_agreement_v1",
           "cleaning_lens": "raw",
           "source_id": "edgar",
-          "filename": "lab_10k_item1a_2023_2024_det_rbo_agreement_v1_raw_edgar.json"
+          "filename": "outputs/det_rbo_agreement_v1/lab_10k_item1a_2023_2024_det_rbo_agreement_v1_raw_edgar.json"
         },
         {
           "detector_id": "det_rbo_agreement_v1",
           "cleaning_lens": "deboilerplated",
           "source_id": "edgar",
-          "filename": "lab_10k_item1a_2023_2024_det_rbo_agreement_v1_deboilerplated_edgar.json"
+          "filename": "outputs/det_rbo_agreement_v1/lab_10k_item1a_2023_2024_det_rbo_agreement_v1_deboilerplated_edgar.json"
         }
+      ]
+    },
+    {
+      "ticker": "NVDA",
+      "year_from": 2024,
+      "year_to": 2025,
+      "section": "10k_item1a",
+      "why_interesting": "Most recent adjacent pair with precomputed lab outputs.",
+      "expected_detectors": [
+        "det_logodds_terms_v1",
+        "det_jsd_ngrams_v1",
+        "det_minhash_boilerplate_v1",
+        "det_winnowing_fingerprint_v1",
+        "det_structure_artifacts_v1",
+        "det_rbo_agreement_v1"
+      ],
+      "outputs": [
+        {
+          "detector_id": "det_logodds_terms_v1",
+          "cleaning_lens": "deboilerplated",
+          "source_id": "edgar",
+          "filename": "outputs/det_logodds_terms_v1/lab_10k_item1a_2024_2025_det_logodds_terms_v1_deboilerplated_edgar.json"
+        },
+        {
+          "detector_id": "det_jsd_ngrams_v1",
+          "cleaning_lens": "deboilerplated",
+          "source_id": "edgar",
+          "filename": "outputs/det_jsd_ngrams_v1/lab_10k_item1a_2024_2025_det_jsd_ngrams_v1_deboilerplated_edgar.json"
+        },
+        {
+          "detector_id": "det_minhash_boilerplate_v1",
+          "cleaning_lens": "deboilerplated",
+          "source_id": "edgar",
+          "filename": "outputs/det_minhash_boilerplate_v1/lab_10k_item1a_2024_2025_det_minhash_boilerplate_v1_deboilerplated_edgar.json"
+        },
+        {
+          "detector_id": "det_winnowing_fingerprint_v1",
+          "cleaning_lens": "deboilerplated",
+          "source_id": "edgar",
+          "filename": "outputs/det_winnowing_fingerprint_v1/lab_10k_item1a_2024_2025_det_winnowing_fingerprint_v1_deboilerplated_edgar.json"
+        },
+        {
+          "detector_id": "det_structure_artifacts_v1",
+          "cleaning_lens": "deboilerplated",
+          "source_id": "edgar",
+          "filename": "outputs/det_structure_artifacts_v1/lab_10k_item1a_2024_2025_det_structure_artifacts_v1_deboilerplated_edgar.json"
+        },
+        {
+          "detector_id": "det_rbo_agreement_v1",
+          "cleaning_lens": "deboilerplated",
+          "source_id": "edgar",
+          "filename": "outputs/det_rbo_agreement_v1/lab_10k_item1a_2024_2025_det_rbo_agreement_v1_deboilerplated_edgar.json"
+        }
+      ],
+      "tags": [
+        "recommended",
+        "most_recent"
       ]
     },
     {
@@ -302,10 +359,64 @@
       "section": "10k_item1a",
       "why_interesting": "Most recent adjacent pair with precomputed lab outputs.",
       "expected_detectors": [
+        "det_logodds_terms_v1",
+        "det_jsd_ngrams_v1",
+        "det_minhash_boilerplate_v1",
+        "det_winnowing_fingerprint_v1",
+        "det_structure_artifacts_v1",
+        "det_rbo_agreement_v1",
         "det_llm_delta_brief_v1",
         "det_llm_excerpt_picker_v1"
       ],
       "outputs": [
+        {
+          "detector_id": "det_logodds_terms_v1",
+          "cleaning_lens": "deboilerplated",
+          "source_id": "edgar",
+          "filename": "outputs/det_logodds_terms_v1/lab_10k_item1a_2023_2024_det_logodds_terms_v1_deboilerplated_edgar.json"
+        },
+        {
+          "detector_id": "det_jsd_ngrams_v1",
+          "cleaning_lens": "deboilerplated",
+          "source_id": "edgar",
+          "filename": "outputs/det_jsd_ngrams_v1/lab_10k_item1a_2023_2024_det_jsd_ngrams_v1_deboilerplated_edgar.json"
+        },
+        {
+          "detector_id": "det_minhash_boilerplate_v1",
+          "cleaning_lens": "raw",
+          "source_id": "edgar",
+          "filename": "outputs/det_minhash_boilerplate_v1/lab_10k_item1a_2023_2024_det_minhash_boilerplate_v1_raw_edgar.json"
+        },
+        {
+          "detector_id": "det_minhash_boilerplate_v1",
+          "cleaning_lens": "deboilerplated",
+          "source_id": "edgar",
+          "filename": "outputs/det_minhash_boilerplate_v1/lab_10k_item1a_2023_2024_det_minhash_boilerplate_v1_deboilerplated_edgar.json"
+        },
+        {
+          "detector_id": "det_winnowing_fingerprint_v1",
+          "cleaning_lens": "deboilerplated",
+          "source_id": "edgar",
+          "filename": "outputs/det_winnowing_fingerprint_v1/lab_10k_item1a_2023_2024_det_winnowing_fingerprint_v1_deboilerplated_edgar.json"
+        },
+        {
+          "detector_id": "det_structure_artifacts_v1",
+          "cleaning_lens": "raw",
+          "source_id": "edgar",
+          "filename": "outputs/det_structure_artifacts_v1/lab_10k_item1a_2023_2024_det_structure_artifacts_v1_raw_edgar.json"
+        },
+        {
+          "detector_id": "det_structure_artifacts_v1",
+          "cleaning_lens": "deboilerplated",
+          "source_id": "edgar",
+          "filename": "outputs/det_structure_artifacts_v1/lab_10k_item1a_2023_2024_det_structure_artifacts_v1_deboilerplated_edgar.json"
+        },
+        {
+          "detector_id": "det_rbo_agreement_v1",
+          "cleaning_lens": "deboilerplated",
+          "source_id": "edgar",
+          "filename": "outputs/det_rbo_agreement_v1/lab_10k_item1a_2023_2024_det_rbo_agreement_v1_deboilerplated_edgar.json"
+        },
         {
           "detector_id": "det_llm_delta_brief_v1",
           "cleaning_lens": "deboilerplated",
@@ -324,11 +435,127 @@
         "boilerplate",
         "most_recent"
       ]
+    },
+    {
+      "ticker": "WM",
+      "year_from": 2023,
+      "year_to": 2024,
+      "section": "10k_item1a",
+      "why_interesting": "Most recent adjacent pair with precomputed lab outputs.",
+      "expected_detectors": [
+        "det_logodds_terms_v1",
+        "det_jsd_ngrams_v1",
+        "det_minhash_boilerplate_v1",
+        "det_winnowing_fingerprint_v1",
+        "det_structure_artifacts_v1",
+        "det_rbo_agreement_v1"
+      ],
+      "outputs": [
+        {
+          "detector_id": "det_logodds_terms_v1",
+          "cleaning_lens": "deboilerplated",
+          "source_id": "edgar",
+          "filename": "outputs/det_logodds_terms_v1/lab_10k_item1a_2023_2024_det_logodds_terms_v1_deboilerplated_edgar.json"
+        },
+        {
+          "detector_id": "det_jsd_ngrams_v1",
+          "cleaning_lens": "deboilerplated",
+          "source_id": "edgar",
+          "filename": "outputs/det_jsd_ngrams_v1/lab_10k_item1a_2023_2024_det_jsd_ngrams_v1_deboilerplated_edgar.json"
+        },
+        {
+          "detector_id": "det_minhash_boilerplate_v1",
+          "cleaning_lens": "deboilerplated",
+          "source_id": "edgar",
+          "filename": "outputs/det_minhash_boilerplate_v1/lab_10k_item1a_2023_2024_det_minhash_boilerplate_v1_deboilerplated_edgar.json"
+        },
+        {
+          "detector_id": "det_winnowing_fingerprint_v1",
+          "cleaning_lens": "deboilerplated",
+          "source_id": "edgar",
+          "filename": "outputs/det_winnowing_fingerprint_v1/lab_10k_item1a_2023_2024_det_winnowing_fingerprint_v1_deboilerplated_edgar.json"
+        },
+        {
+          "detector_id": "det_structure_artifacts_v1",
+          "cleaning_lens": "deboilerplated",
+          "source_id": "edgar",
+          "filename": "outputs/det_structure_artifacts_v1/lab_10k_item1a_2023_2024_det_structure_artifacts_v1_deboilerplated_edgar.json"
+        },
+        {
+          "detector_id": "det_rbo_agreement_v1",
+          "cleaning_lens": "deboilerplated",
+          "source_id": "edgar",
+          "filename": "outputs/det_rbo_agreement_v1/lab_10k_item1a_2023_2024_det_rbo_agreement_v1_deboilerplated_edgar.json"
+        }
+      ],
+      "tags": [
+        "recommended",
+        "structure",
+        "most_recent"
+      ]
+    },
+    {
+      "ticker": "GE",
+      "year_from": 2023,
+      "year_to": 2024,
+      "section": "10k_item1a",
+      "why_interesting": "Most recent adjacent pair with precomputed lab outputs.",
+      "expected_detectors": [
+        "det_logodds_terms_v1",
+        "det_jsd_ngrams_v1",
+        "det_minhash_boilerplate_v1",
+        "det_winnowing_fingerprint_v1",
+        "det_structure_artifacts_v1",
+        "det_rbo_agreement_v1"
+      ],
+      "outputs": [
+        {
+          "detector_id": "det_logodds_terms_v1",
+          "cleaning_lens": "deboilerplated",
+          "source_id": "edgar",
+          "filename": "outputs/det_logodds_terms_v1/lab_10k_item1a_2023_2024_det_logodds_terms_v1_deboilerplated_edgar.json"
+        },
+        {
+          "detector_id": "det_jsd_ngrams_v1",
+          "cleaning_lens": "deboilerplated",
+          "source_id": "edgar",
+          "filename": "outputs/det_jsd_ngrams_v1/lab_10k_item1a_2023_2024_det_jsd_ngrams_v1_deboilerplated_edgar.json"
+        },
+        {
+          "detector_id": "det_minhash_boilerplate_v1",
+          "cleaning_lens": "deboilerplated",
+          "source_id": "edgar",
+          "filename": "outputs/det_minhash_boilerplate_v1/lab_10k_item1a_2023_2024_det_minhash_boilerplate_v1_deboilerplated_edgar.json"
+        },
+        {
+          "detector_id": "det_winnowing_fingerprint_v1",
+          "cleaning_lens": "deboilerplated",
+          "source_id": "edgar",
+          "filename": "outputs/det_winnowing_fingerprint_v1/lab_10k_item1a_2023_2024_det_winnowing_fingerprint_v1_deboilerplated_edgar.json"
+        },
+        {
+          "detector_id": "det_structure_artifacts_v1",
+          "cleaning_lens": "deboilerplated",
+          "source_id": "edgar",
+          "filename": "outputs/det_structure_artifacts_v1/lab_10k_item1a_2023_2024_det_structure_artifacts_v1_deboilerplated_edgar.json"
+        },
+        {
+          "detector_id": "det_rbo_agreement_v1",
+          "cleaning_lens": "deboilerplated",
+          "source_id": "edgar",
+          "filename": "outputs/det_rbo_agreement_v1/lab_10k_item1a_2023_2024_det_rbo_agreement_v1_deboilerplated_edgar.json"
+        }
+      ],
+      "tags": [
+        "recommended",
+        "structure",
+        "most_recent"
+      ]
     }
   ],
   "provenance": {
-    "build_utc": "2026-02-16T01:03:51Z",
-    "git_commit": "0752e3936501176885bc33e35a6c7efda1c6988b",
+    "build_utc": "2026-02-16T18:20:07Z",
+    "git_commit": "d9404836b264fcefaa81b0fb83cc09b15c41e2e8",
     "script_version": "lab_build_cases_registry_v1.py@v1",
     "inputs": {
       "tickers": "NVDA,KO,WM,GE",
@@ -338,7 +565,7 @@
       "include_most_recent_always": "true"
     },
     "notes": [
-      "llm_outputs files are copied into ticker-local outputs/<detector_id>/ paths when needed."
+      "Selected outputs are synced into ticker-local outputs/<detector_id>/ paths when needed."
     ]
   }
 }

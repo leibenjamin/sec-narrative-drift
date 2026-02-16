@@ -1,0 +1,73 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_minhash_boilerplate_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "NVDA",
+  "section": "10k_item1a",
+  "year_from": 2021,
+  "year_to": 2022,
+  "artifacts": {
+    "stats": {
+      "percent_reused": 0.05194805194805195,
+      "percent_new": 0.948051948051948,
+      "reused_paragraphs": 4,
+      "total_paragraphs": 77
+    }
+  },
+  "evidence": [
+    {
+      "year": 2022,
+      "paragraph_idx": 29,
+      "snippet": "System security and data protection breaches, as well as cyber-attacks, could disrupt our operations, reduce our expected revenue and increase our expenses, which could adversely affect our stock price and damage our reputation.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 13,
+      "snippet": "System security and data protection breaches, as well as cyber-attacks, could disrupt our operations, reduce our expected revenue and increase our expenses, which could adversely affect our stock price and damage our reputation.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 47,
+      "snippet": "Our operating results have in the past fluctuated and may in the future fluctuate, and if our operating results are below the expectations of securities analysts or investors, our stock price could decline.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 35,
+      "snippet": "Our operating results have in the past fluctuated and may in the future fluctuate, and if our operating results are below the expectations of securities analysts or investors, our stock price could decline.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 49,
+      "snippet": "Any one or more of the factors discussed above could prevent us from achieving our expected future financial results. Any such failure to meet our expectations or the expectations of our investors or security analysts could cause our stock price to decline or experience substantial price volatility.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 38,
+      "snippet": "Any one or more of the factors discussed above could prevent us from achieving our expected future financial results. Any such failure to meet our expectations or the expectations of our investors or security analysts could cause our stock price to decline or experience substantial price volatility.",
+      "why": "Matching paragraph from prior year."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.948051948051948,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T05:55:30Z",
+    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "8c0d08a1b053aeeb4c1399cfee88fa0577b416889c7f4d7b9306ba6b4859e669",
+      "curr_text_sha256": "1a7937b559823b48cfe923c9a8174260a8af88156c70d16482bf92d29c4fc296",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

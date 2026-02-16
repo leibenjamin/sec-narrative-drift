@@ -1,0 +1,91 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_structure_artifacts_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "NVDA",
+  "section": "10k_item1a",
+  "year_from": 2024,
+  "year_to": 2025,
+  "artifacts": {
+    "stats": {
+      "headings_prev": [
+        "Item 1A. Risk Factors",
+        "Additional factors that could affect our results of operations include, but are not limited to:"
+      ],
+      "headings_curr": [
+        "With",
+        "Factors that could affect our results of operations include, but are not limited to:",
+        "A100, A800, H100, H200, H800, B100, B200, GB200, L4, L40S, and RTX 6000 Ada."
+      ],
+      "headings_added": [
+        "With",
+        "Factors that could affect our results of operations include, but are not limited to:",
+        "A100, A800, H100, H200, H800, B100, B200, GB200, L4, L40S, and RTX 6000 Ada."
+      ],
+      "headings_removed": [
+        "Item 1A. Risk Factors",
+        "Additional factors that could affect our results of operations include, but are not limited to:"
+      ],
+      "paragraph_count_prev": 179,
+      "paragraph_count_curr": 190,
+      "length_chars_prev": 46970,
+      "length_chars_curr": 50452
+    }
+  },
+  "evidence": [
+    {
+      "year": 2025,
+      "paragraph_idx": 0,
+      "snippet": "several of these partners, we are selling multiple products and systems in our portfolio through their channels.",
+      "why": "Heading added: With"
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 0,
+      "snippet": "Any of these factors could prevent us from achieving our anticipated financial results.",
+      "why": "Heading added: Factors that could affect our results of operations include, but are not limited to:"
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 0,
+      "snippet": "The AI Diffusion IFR would divide the world into three tiers, relegating most countries to \u201cTier 2\u201d status.",
+      "why": "Heading added: A100, A800, H100, H200, H800, B100, B200, GB200, L4, L40S, and RTX 6000 Ada."
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 0,
+      "snippet": "The following risk factors should be considered in addition to the other information in this Annual Report on Form 10-K.",
+      "why": "Heading removed: Item 1A. Risk Factors"
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 0,
+      "snippet": "Any of the factors discussed above could prevent us from achieving our anticipated financial results.",
+      "why": "Heading removed: Additional factors that could affect our results of operations include, but are not limited to:"
+    }
+  ],
+  "metrics": {
+    "drift_score": 1.0,
+    "confidence": 0.25,
+    "coverage": 0.4395635247435801,
+    "warnings": [
+      "partial_coverage",
+      "low_confidence"
+    ]
+  },
+  "provenance": {
+    "build_utc": "2026-02-16T18:19:28Z",
+    "git_commit": "d9404836b264fcefaa81b0fb83cc09b15c41e2e8",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "2d44704091b3adaf94304f5881cb2e4299d3dd4cda0ea3fab3aa93f2288e358f",
+      "curr_text_sha256": "2480f4c3c9df28484211b6a9e531aea4a930ad2db3d2d55696d6a2e5393bced4",
+      "lens": "deboilerplated",
+      "source": "edgar",
+      "script": "lab_precompute_detectors_for_case.py@v1",
+      "prev_input_path": "scripts/_reports/risk_extraction_bundle/sections/NVDA_2024_item_1a.txt",
+      "curr_input_path": "scripts/_reports/risk_extraction_bundle/sections/NVDA_2025_item_1a.txt"
+    }
+  }
+}

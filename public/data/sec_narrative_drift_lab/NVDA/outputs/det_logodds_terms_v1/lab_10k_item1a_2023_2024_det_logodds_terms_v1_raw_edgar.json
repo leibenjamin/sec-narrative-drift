@@ -1,0 +1,1207 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_logodds_terms_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "NVDA",
+  "section": "10k_item1a",
+  "year_from": 2023,
+  "year_to": 2024,
+  "artifacts": {
+    "top_risers": [
+      {
+        "label": "export controls",
+        "score": 2.0613342713190694,
+        "meta": {
+          "z": 3.9827079179876357,
+          "countPrev": 4,
+          "countCurr": 38,
+          "per10kPrev": 3.6937852063902485,
+          "per10kCurr": 29.729306837740573,
+          "deltaPer10k": 26.035521631350324,
+          "distinctive": true
+        }
+      },
+      {
+        "label": "usg",
+        "score": 1.9371309250553292,
+        "meta": {
+          "z": 2.654252208884604,
+          "countPrev": 5,
+          "countCurr": 22,
+          "per10kPrev": 4.61723150798781,
+          "per10kCurr": 17.21170395869191,
+          "deltaPer10k": 12.5944724507041,
+          "distinctive": true
+        }
+      },
+      {
+        "label": "licensing requirements",
+        "score": 1.2848185128301526,
+        "meta": {
+          "z": 1.996817085222913,
+          "countPrev": 2,
+          "countCurr": 11,
+          "per10kPrev": 1.8468926031951243,
+          "per10kCurr": 8.605851979345955,
+          "deltaPer10k": 6.75895937615083,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "sustainability",
+        "score": 1.159931324452927,
+        "meta": {
+          "z": 1.8566901944188625,
+          "countPrev": 2,
+          "countCurr": 10,
+          "per10kPrev": 1.8468926031951243,
+          "per10kCurr": 7.823501799405414,
+          "deltaPer10k": 5.97660919621029,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "training",
+        "score": 1.1190214242666519,
+        "meta": {
+          "z": 1.5332805071315048,
+          "countPrev": 2,
+          "countCurr": 8,
+          "per10kPrev": 1.8468926031951243,
+          "per10kCurr": 6.258801439524331,
+          "deltaPer10k": 4.411908836329206,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "corporate sustainability",
+        "score": 1.0053905276377741,
+        "meta": {
+          "z": 1.287555884152523,
+          "countPrev": 0,
+          "countCurr": 7,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.47645125958379,
+          "deltaPer10k": 5.47645125958379,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "incidents",
+        "score": 0.9892201336829353,
+        "meta": {
+          "z": 1.180401054987994,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.911750899702707,
+          "deltaPer10k": 3.911750899702707,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "integrators",
+        "score": 0.9892201336829353,
+        "meta": {
+          "z": 1.180401054987994,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.911750899702707,
+          "deltaPer10k": 3.911750899702707,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "cpu",
+        "score": 0.9663516586375507,
+        "meta": {
+          "z": 1.0181469821295408,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.347050539821624,
+          "deltaPer10k": 2.347050539821624,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "mechanisms",
+        "score": 0.951917596524269,
+        "meta": {
+          "z": 1.3043152378451122,
+          "countPrev": 1,
+          "countCurr": 5,
+          "per10kPrev": 0.9234463015975621,
+          "per10kCurr": 3.911750899702707,
+          "deltaPer10k": 2.988304598105145,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "excessive",
+        "score": 0.9297413424265064,
+        "meta": {
+          "z": 1.1094271376991223,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.1294007197621654,
+          "deltaPer10k": 3.1294007197621654,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "restricting",
+        "score": 0.9297413424265064,
+        "meta": {
+          "z": 1.1094271376991223,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.1294007197621654,
+          "deltaPer10k": 3.1294007197621654,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "center",
+        "score": 0.9264113027972607,
+        "meta": {
+          "z": 2.1786048826189477,
+          "countPrev": 4,
+          "countCurr": 16,
+          "per10kPrev": 3.6937852063902485,
+          "per10kCurr": 12.517602879048662,
+          "deltaPer10k": 8.823817672658413,
+          "distinctive": true
+        }
+      },
+      {
+        "label": "integrators distributors",
+        "score": 0.9217184699363163,
+        "meta": {
+          "z": 1.180401054987994,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.911750899702707,
+          "deltaPer10k": 3.911750899702707,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "networking",
+        "score": 0.8689384269785063,
+        "meta": {
+          "z": 1.6612241455629553,
+          "countPrev": 1,
+          "countCurr": 7,
+          "per10kPrev": 0.9234463015975621,
+          "per10kCurr": 5.47645125958379,
+          "deltaPer10k": 4.553004957986228,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_fallers": [
+      {
+        "label": "COVID-19",
+        "score": -1.2130157692882595,
+        "meta": {
+          "z": -1.6620713362228,
+          "countPrev": 14,
+          "countCurr": 0,
+          "per10kPrev": 12.92824822236587,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -12.92824822236587,
+          "distinctive": false,
+          "includes": [
+            "covid"
+          ]
+        }
+      },
+      {
+        "label": "license requirements",
+        "score": -1.1259381384163378,
+        "meta": {
+          "z": -1.2113228919229595,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.6937852063902485,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.6937852063902485,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "esg",
+        "score": -1.123603754790672,
+        "meta": {
+          "z": -1.3407562304716365,
+          "countPrev": 6,
+          "countCurr": 0,
+          "per10kPrev": 5.5406778095853735,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.5406778095853735,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "restricts",
+        "score": -1.0052438159543888,
+        "meta": {
+          "z": -1.3773826975005912,
+          "countPrev": 4,
+          "countCurr": 1,
+          "per10kPrev": 3.6937852063902485,
+          "per10kCurr": 0.7823501799405413,
+          "deltaPer10k": -2.9114350264497073,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "esg practices",
+        "score": -0.9458638467189613,
+        "meta": {
+          "z": -1.2113228919229595,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.6937852063902485,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.6937852063902485,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "bilateral",
+        "score": -0.9406375025442194,
+        "meta": {
+          "z": -0.9910545772162558,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8468926031951243,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8468926031951243,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "examples",
+        "score": -0.9406375025442194,
+        "meta": {
+          "z": -0.9910545772162558,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8468926031951243,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8468926031951243,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "legacy",
+        "score": -0.9406375025442194,
+        "meta": {
+          "z": -0.9910545772162558,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8468926031951243,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8468926031951243,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "covid pandemic",
+        "score": -0.8626871428787004,
+        "meta": {
+          "z": -1.3407562304716365,
+          "countPrev": 6,
+          "countCurr": 0,
+          "per10kPrev": 5.5406778095853735,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.5406778095853735,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "cmp",
+        "score": -0.8305407193751796,
+        "meta": {
+          "z": -0.9910545772162558,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8468926031951243,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8468926031951243,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "goal",
+        "score": -0.8305407193751796,
+        "meta": {
+          "z": -0.9910545772162558,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8468926031951243,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8468926031951243,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "half",
+        "score": -0.8305407193751796,
+        "meta": {
+          "z": -0.9910545772162558,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8468926031951243,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8468926031951243,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "lhr",
+        "score": -0.8305407193751796,
+        "meta": {
+          "z": -0.9910545772162558,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8468926031951243,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8468926031951243,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "responsibilities",
+        "score": -0.8305407193751796,
+        "meta": {
+          "z": -0.9910545772162558,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8468926031951243,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8468926031951243,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "softbank",
+        "score": -0.8305407193751796,
+        "meta": {
+          "z": -0.9910545772162558,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8468926031951243,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8468926031951243,
+          "distinctive": false
+        }
+      }
+    ],
+    "summary": "Adds emphasis on export controls, usg, licensing requirements; de-emphasizes COVID-19, license requirements, esg.",
+    "ranked_items": [
+      {
+        "label": "export controls",
+        "score": 2.0613342713190694,
+        "meta": {
+          "z": 3.9827079179876357,
+          "countPrev": 4,
+          "countCurr": 38,
+          "per10kPrev": 3.6937852063902485,
+          "per10kCurr": 29.729306837740573,
+          "deltaPer10k": 26.035521631350324,
+          "distinctive": true
+        }
+      },
+      {
+        "label": "usg",
+        "score": 1.9371309250553292,
+        "meta": {
+          "z": 2.654252208884604,
+          "countPrev": 5,
+          "countCurr": 22,
+          "per10kPrev": 4.61723150798781,
+          "per10kCurr": 17.21170395869191,
+          "deltaPer10k": 12.5944724507041,
+          "distinctive": true
+        }
+      },
+      {
+        "label": "licensing requirements",
+        "score": 1.2848185128301526,
+        "meta": {
+          "z": 1.996817085222913,
+          "countPrev": 2,
+          "countCurr": 11,
+          "per10kPrev": 1.8468926031951243,
+          "per10kCurr": 8.605851979345955,
+          "deltaPer10k": 6.75895937615083,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "sustainability",
+        "score": 1.159931324452927,
+        "meta": {
+          "z": 1.8566901944188625,
+          "countPrev": 2,
+          "countCurr": 10,
+          "per10kPrev": 1.8468926031951243,
+          "per10kCurr": 7.823501799405414,
+          "deltaPer10k": 5.97660919621029,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "training",
+        "score": 1.1190214242666519,
+        "meta": {
+          "z": 1.5332805071315048,
+          "countPrev": 2,
+          "countCurr": 8,
+          "per10kPrev": 1.8468926031951243,
+          "per10kCurr": 6.258801439524331,
+          "deltaPer10k": 4.411908836329206,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "corporate sustainability",
+        "score": 1.0053905276377741,
+        "meta": {
+          "z": 1.287555884152523,
+          "countPrev": 0,
+          "countCurr": 7,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.47645125958379,
+          "deltaPer10k": 5.47645125958379,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "incidents",
+        "score": 0.9892201336829353,
+        "meta": {
+          "z": 1.180401054987994,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.911750899702707,
+          "deltaPer10k": 3.911750899702707,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "integrators",
+        "score": 0.9892201336829353,
+        "meta": {
+          "z": 1.180401054987994,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.911750899702707,
+          "deltaPer10k": 3.911750899702707,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "cpu",
+        "score": 0.9663516586375507,
+        "meta": {
+          "z": 1.0181469821295408,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.347050539821624,
+          "deltaPer10k": 2.347050539821624,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "mechanisms",
+        "score": 0.951917596524269,
+        "meta": {
+          "z": 1.3043152378451122,
+          "countPrev": 1,
+          "countCurr": 5,
+          "per10kPrev": 0.9234463015975621,
+          "per10kCurr": 3.911750899702707,
+          "deltaPer10k": 2.988304598105145,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "excessive",
+        "score": 0.9297413424265064,
+        "meta": {
+          "z": 1.1094271376991223,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.1294007197621654,
+          "deltaPer10k": 3.1294007197621654,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "restricting",
+        "score": 0.9297413424265064,
+        "meta": {
+          "z": 1.1094271376991223,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.1294007197621654,
+          "deltaPer10k": 3.1294007197621654,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "center",
+        "score": 0.9264113027972607,
+        "meta": {
+          "z": 2.1786048826189477,
+          "countPrev": 4,
+          "countCurr": 16,
+          "per10kPrev": 3.6937852063902485,
+          "per10kCurr": 12.517602879048662,
+          "deltaPer10k": 8.823817672658413,
+          "distinctive": true
+        }
+      },
+      {
+        "label": "integrators distributors",
+        "score": 0.9217184699363163,
+        "meta": {
+          "z": 1.180401054987994,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.911750899702707,
+          "deltaPer10k": 3.911750899702707,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "networking",
+        "score": 0.8689384269785063,
+        "meta": {
+          "z": 1.6612241455629553,
+          "countPrev": 1,
+          "countCurr": 7,
+          "per10kPrev": 0.9234463015975621,
+          "per10kCurr": 5.47645125958379,
+          "deltaPer10k": 4.553004957986228,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "COVID-19",
+        "score": -1.2130157692882595,
+        "meta": {
+          "z": -1.6620713362228,
+          "countPrev": 14,
+          "countCurr": 0,
+          "per10kPrev": 12.92824822236587,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -12.92824822236587,
+          "distinctive": false,
+          "includes": [
+            "covid"
+          ]
+        }
+      },
+      {
+        "label": "license requirements",
+        "score": -1.1259381384163378,
+        "meta": {
+          "z": -1.2113228919229595,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.6937852063902485,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.6937852063902485,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "esg",
+        "score": -1.123603754790672,
+        "meta": {
+          "z": -1.3407562304716365,
+          "countPrev": 6,
+          "countCurr": 0,
+          "per10kPrev": 5.5406778095853735,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.5406778095853735,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "restricts",
+        "score": -1.0052438159543888,
+        "meta": {
+          "z": -1.3773826975005912,
+          "countPrev": 4,
+          "countCurr": 1,
+          "per10kPrev": 3.6937852063902485,
+          "per10kCurr": 0.7823501799405413,
+          "deltaPer10k": -2.9114350264497073,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "esg practices",
+        "score": -0.9458638467189613,
+        "meta": {
+          "z": -1.2113228919229595,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.6937852063902485,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.6937852063902485,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "bilateral",
+        "score": -0.9406375025442194,
+        "meta": {
+          "z": -0.9910545772162558,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8468926031951243,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8468926031951243,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "examples",
+        "score": -0.9406375025442194,
+        "meta": {
+          "z": -0.9910545772162558,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8468926031951243,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8468926031951243,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "legacy",
+        "score": -0.9406375025442194,
+        "meta": {
+          "z": -0.9910545772162558,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8468926031951243,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8468926031951243,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "covid pandemic",
+        "score": -0.8626871428787004,
+        "meta": {
+          "z": -1.3407562304716365,
+          "countPrev": 6,
+          "countCurr": 0,
+          "per10kPrev": 5.5406778095853735,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.5406778095853735,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "cmp",
+        "score": -0.8305407193751796,
+        "meta": {
+          "z": -0.9910545772162558,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8468926031951243,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8468926031951243,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "goal",
+        "score": -0.8305407193751796,
+        "meta": {
+          "z": -0.9910545772162558,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8468926031951243,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8468926031951243,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "half",
+        "score": -0.8305407193751796,
+        "meta": {
+          "z": -0.9910545772162558,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8468926031951243,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8468926031951243,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "lhr",
+        "score": -0.8305407193751796,
+        "meta": {
+          "z": -0.9910545772162558,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8468926031951243,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8468926031951243,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "responsibilities",
+        "score": -0.8305407193751796,
+        "meta": {
+          "z": -0.9910545772162558,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8468926031951243,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8468926031951243,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "softbank",
+        "score": -0.8305407193751796,
+        "meta": {
+          "z": -0.9910545772162558,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8468926031951243,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8468926031951243,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_risers_alt": [
+      {
+        "label": "export controls",
+        "score": 1.1595925992306664,
+        "meta": {}
+      },
+      {
+        "label": "change control",
+        "score": 2.0077770706115663,
+        "meta": {}
+      },
+      {
+        "label": "past future",
+        "score": 1.3381659039790739,
+        "meta": {}
+      },
+      {
+        "label": "control product",
+        "score": 2.0056114966083864,
+        "meta": {}
+      },
+      {
+        "label": "results past",
+        "score": 2.0056114966083864,
+        "meta": {}
+      },
+      {
+        "label": "regulatory requirements",
+        "score": 1.4271056823483752,
+        "meta": {}
+      },
+      {
+        "label": "financial markets",
+        "score": 1.2091339496045643,
+        "meta": {}
+      },
+      {
+        "label": "china market",
+        "score": 2.003452053464918,
+        "meta": {}
+      },
+      {
+        "label": "customers affect product",
+        "score": 2.003452053464918,
+        "meta": {}
+      },
+      {
+        "label": "customers parties",
+        "score": 2.003452053464918,
+        "meta": {}
+      },
+      {
+        "label": "export control",
+        "score": 2.003452053464918,
+        "meta": {}
+      },
+      {
+        "label": "future impact demand products",
+        "score": 2.003452053464918,
+        "meta": {}
+      },
+      {
+        "label": "increased supply",
+        "score": 2.003452053464918,
+        "meta": {}
+      },
+      {
+        "label": "products china",
+        "score": 2.003452053464918,
+        "meta": {}
+      },
+      {
+        "label": "risks increase",
+        "score": 2.003452053464918,
+        "meta": {}
+      }
+    ],
+    "top_fallers_alt": [
+      {
+        "label": "personal data",
+        "score": -2.2555858786397196,
+        "meta": {}
+      },
+      {
+        "label": "operating results",
+        "score": -1.0538911493408283,
+        "meta": {}
+      },
+      {
+        "label": "personal information",
+        "score": -2.22511229735215,
+        "meta": {}
+      },
+      {
+        "label": "customers china",
+        "score": -2.2226240473259704,
+        "meta": {}
+      },
+      {
+        "label": "customers result",
+        "score": -1.096885889563044,
+        "meta": {}
+      },
+      {
+        "label": "changes tax laws",
+        "score": -1.6418073965611786,
+        "meta": {}
+      },
+      {
+        "label": "tax laws",
+        "score": -1.6418073965611786,
+        "meta": {}
+      },
+      {
+        "label": "adverse impact financial",
+        "score": -2.2201434692756115,
+        "meta": {}
+      },
+      {
+        "label": "cause stock",
+        "score": -2.2201434692756115,
+        "meta": {}
+      },
+      {
+        "label": "future adverse",
+        "score": -2.2201434692756115,
+        "meta": {}
+      },
+      {
+        "label": "future cause",
+        "score": -2.2201434692756115,
+        "meta": {}
+      },
+      {
+        "label": "new requirements",
+        "score": -2.2201434692756115,
+        "meta": {}
+      },
+      {
+        "label": "party suppliers technology",
+        "score": -2.2201434692756115,
+        "meta": {}
+      },
+      {
+        "label": "harm business financial",
+        "score": -1.3393331075115356,
+        "meta": {}
+      },
+      {
+        "label": "increase operating",
+        "score": -1.3393331075115356,
+        "meta": {}
+      }
+    ],
+    "summary_alt": "Adds emphasis on export controls, change control, past future; de-emphasizes personal data, operating results, personal information."
+  },
+  "evidence": [
+    {
+      "year": 2024,
+      "paragraph_idx": 80,
+      "snippet": "Following these export controls, we transitioned some operations, including certain testing, validation, and supply and distribution operations out of China and Hong Kong. Any future transitions could be costly and time consuming, and adversely affect our research and development and supply and distribution operations, as well as our revenue, during any such transition period. We are working to expand our Data Center product portfolio to offer new solutions, including those for which the USG does not require a license or advance notice before each shipment. To the extent that a customer requires products covered by the licensing requirements, we may seek a license for the customer. However, the licensing process is time-consuming. We have no assurance that the USG will grant such a license or that the USG will act on the license application in a timely manner or at all. Even if a license is offered, it may impose burdensome conditions that we or our customer or end users cannot or decide not to accept. The USG is evaluating license requests in a closed process that does not have clear standards or an opportunity for review. For example, the Notified Advanced Computing, or \u201cNAC,\u201d process has not resulted in approvals for exports of products to customers in China. The license process for exports to D1 and D4 countries has been time-consuming and resulted in license conditions for countries outside China. The requirements have a disproportionate impact on NVIDIA and already have disadvantaged and may in the future",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "export controls",
+        "usg",
+        "licensing requirements",
+        "sustainability",
+        "training",
+        "corporate sustainability",
+        "incidents",
+        "integrators",
+        "cpu",
+        "mechanisms",
+        "excessive",
+        "restricting",
+        "center",
+        "integrators distributors",
+        "networking",
+        "COVID-19",
+        "license requirements",
+        "esg",
+        "restricts",
+        "esg practices",
+        "bilateral",
+        "examples",
+        "legacy",
+        "covid pandemic",
+        "cmp",
+        "goal",
+        "half",
+        "lhr",
+        "responsibilities",
+        "softbank"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 81,
+      "snippet": "Management of these new licenses and other requirements is complicated and time consuming. Our competitive position has been harmed, and our competitive position and future results may be further harmed, over the long-term, if there are further changes in the USG\u2019s export controls, including further expansion of the geographic, customer, or product scope of the controls, if customers purchase product from competitors, if customers develop their own internal solution, if we are unable to provide contractual warranty or other extended service obligations, if the USG does not grant licenses in a timely manner or denies licenses to significant customers or if we incur significant transition costs. Even if the USG grants any requested licenses, the licenses may be temporary or impose burdensome conditions that we or our customers or end users cannot or choose not to fulfill. The licensing requirements may benefit certain of our competitors, as the licensing process will make our pre-sale and post-sale technical support efforts more cumbersome and less certain and encourage customers in China to pursue alternatives to our products, including semiconductor suppliers based in China, Europe, and Israel.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "export controls",
+        "usg",
+        "licensing requirements",
+        "sustainability",
+        "training",
+        "corporate sustainability",
+        "incidents",
+        "integrators",
+        "cpu",
+        "mechanisms",
+        "excessive",
+        "restricting",
+        "center",
+        "integrators distributors",
+        "networking",
+        "COVID-19",
+        "license requirements",
+        "esg",
+        "restricts",
+        "esg practices",
+        "bilateral",
+        "examples",
+        "legacy",
+        "covid pandemic",
+        "cmp",
+        "goal",
+        "half",
+        "lhr",
+        "responsibilities",
+        "softbank"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 78,
+      "snippet": "During the third quarter of fiscal year 2023, the USG announced export restrictions and export licensing requirements targeting China\u2019s semiconductor and supercomputing industries. These restrictions impact exports of certain chips, as well as software, hardware, equipment and technology used to develop, produce and manufacture certain chips to China (including Hong Kong and Macau) and Russia, and specifically impact our A100 and H100 integrated circuits, DGX or any other systems or boards which incorporate A100 or H100 integrated circuits. The licensing requirements also apply to any future NVIDIA integrated circuit achieving certain peak performance and chip-to-chip I/O performance thresholds, as well as any system or board that includes those circuits. There are also now licensing requirements to export a wide array of products, including networking products, destined for certain end users and for certain end uses in China. During the second quarter of fiscal year 2024, the USG also informed us of an additional licensing requirement for a subset of A100 and H100 products destined to certain customers and other regions, including some countries in the Middle East.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "export controls",
+        "usg",
+        "licensing requirements",
+        "sustainability",
+        "training",
+        "corporate sustainability",
+        "incidents",
+        "integrators",
+        "cpu",
+        "mechanisms",
+        "excessive",
+        "restricting",
+        "center",
+        "integrators distributors",
+        "networking",
+        "COVID-19",
+        "license requirements",
+        "esg",
+        "restricts",
+        "esg practices",
+        "bilateral",
+        "examples",
+        "legacy",
+        "covid pandemic",
+        "cmp",
+        "goal",
+        "half",
+        "lhr",
+        "responsibilities",
+        "softbank"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 72,
+      "snippet": "Shareholder advocacy groups, certain investment funds, other market participants, shareholders and customers have placed increased importance on the implications of the social and environmental cost of their investments and these parties, as well as government regulators, have focused increasingly on corporate ESG and sustainability practices and disclosures, including those associated with climate change and human rights. Stakeholders may not be satisfied with our ESG practices or the speed of their adoption. Additionally, our ESG practices, oversight of ESG practices, or disclosure controls may not meet evolving shareholder, regulator, or other industry stakeholder expectations, or we may fail to meet sustainability disclosure or ESG reporting standards. We could also incur additional costs and require additional resources to monitor, report, and comply with various ESG practices, choose not to conduct business with potential",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "export controls",
+        "usg",
+        "licensing requirements",
+        "sustainability",
+        "training",
+        "corporate sustainability",
+        "incidents",
+        "integrators",
+        "cpu",
+        "mechanisms",
+        "excessive",
+        "restricting",
+        "center",
+        "integrators distributors",
+        "networking",
+        "COVID-19",
+        "license requirements",
+        "esg",
+        "restricts",
+        "esg practices",
+        "bilateral",
+        "examples",
+        "legacy",
+        "covid pandemic",
+        "cmp",
+        "goal",
+        "half",
+        "lhr",
+        "responsibilities",
+        "softbank"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 54,
+      "snippet": "The COVID-19 pandemic has impacted and may continue to impact our workforce and operations and those of our customers, partners, vendors and suppliers. COVID-19-related disruptions have created and may continue to create supply chain and logistics constraints, and COVID-19 containment around the world has put restrictions on, among other areas, manufacturing facilities, commerce, and support operations. Restrictions may be imposed or reinstated as the pandemic resurfaces, such as lockdown measures due to COVID-19 containment efforts in China. End customer sales for our products in China have been negatively impacted by lockdowns and this impact may continue if lockdowns return. COVID-19 has also resulted in, and may continue to result in, disruption of and volatility in global financial markets, which could impact overall technology spending or negatively affect our stock price and liquidity. All of these factors have had or could in the future have a material negative impact on our business.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "export controls",
+        "usg",
+        "licensing requirements",
+        "sustainability",
+        "training",
+        "corporate sustainability",
+        "incidents",
+        "integrators",
+        "cpu",
+        "mechanisms",
+        "excessive",
+        "restricting",
+        "center",
+        "integrators distributors",
+        "networking",
+        "COVID-19",
+        "license requirements",
+        "esg",
+        "restricts",
+        "esg practices",
+        "bilateral",
+        "examples",
+        "legacy",
+        "covid pandemic",
+        "cmp",
+        "goal",
+        "half",
+        "lhr",
+        "responsibilities",
+        "softbank"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 21,
+      "snippet": "The use of our GPUs for other than that for which they were designed and marketed, including new and unexpected use cases, has impacted and can in the future impact demand for our products, including by leading to inconsistent spikes and drops in demand. For example, a number of years ago, our Gaming GPUs began to be used for digital currency mining, including blockchain-based platforms such as Ethereum. It is difficult for us to estimate with any reasonable degree of precision, the past or current impact of cryptocurrency mining, or forecast the future impact of cryptocurrency mining, on demand for our products. Volatility in the cryptocurrency market, including new compute technologies, price changes in cryptocurrencies, government cryptocurrency policies and regulations, new cryptocurrency standards, and changes in the method of verifying blockchain transactions, has impacted and can in the future impact cryptocurrency mining and demand for our products and can further impact our ability to estimate demand for our products. Changes to cryptocurrency standards and processes including, but not limited to, the recently implemented Ethereum 2.0 merge may decrease the usage of GPUs for Ethereum mining as well as create increased aftermarket sales of our GPUs, which could negatively impact retail prices for our GPUs and reduce demand for our new GPUs. We previously introduced Lite Hash Rate, or LHR, GeForce GPUs with limited Ethereum mining capability and provided CMP products in an effort to address demand from gamers and direct miners to CMP. With the Ethereum 2.0 merge, NVIDIA Ampere and Ada Lovelace architectures no longer include LHR. In addition, our new products or previously sold products may be resold online or on the unauthorized \u201cgray market,\u201d which also makes demand forecasting difficult. Gray market products and reseller marketplaces compete with our new products and distribution channels.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "export controls",
+        "usg",
+        "licensing requirements",
+        "sustainability",
+        "training",
+        "corporate sustainability",
+        "incidents",
+        "integrators",
+        "cpu",
+        "mechanisms",
+        "excessive",
+        "restricting",
+        "center",
+        "integrators distributors",
+        "networking",
+        "COVID-19",
+        "license requirements",
+        "esg",
+        "restricts",
+        "esg practices",
+        "bilateral",
+        "examples",
+        "legacy",
+        "covid pandemic",
+        "cmp",
+        "goal",
+        "half",
+        "lhr",
+        "responsibilities",
+        "softbank"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.0336,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T05:55:32Z",
+    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "b13bf38cc427b8eec49b6492bf559638ba32ea611dae26ef263a0e9035aa9567",
+      "curr_text_sha256": "b032c029a9eb187f81c4d8b6d09f418da11d0a64b142dc83ca46dc17392e152a",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

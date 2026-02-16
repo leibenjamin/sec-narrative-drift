@@ -1,0 +1,55 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_winnowing_fingerprint_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "NVDA",
+  "section": "10k_item1a",
+  "year_from": 2021,
+  "year_to": 2022,
+  "artifacts": {
+    "stats": {
+      "shared_fingerprints": 8536,
+      "prev_fingerprints": 24711,
+      "curr_fingerprints": 26088,
+      "shared_ratio": 0.345433207883129
+    }
+  },
+  "evidence": [
+    {
+      "year": 2022,
+      "paragraph_idx": 0,
+      "snippet": "In evaluating NVIDIA, the following risk factors should be considered in addition to the other information in this Annual Report on Form 10-K.\n\nPurchasing or ow",
+      "why": "Shared fingerprint span."
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 0,
+      "snippet": "In evaluating NVIDIA, the following risk factors should be considered in addition to the other information in this Annual Report on Form 10-K.\n\nPurchasing or owning",
+      "why": "Shared fingerprint span."
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 0,
+      "snippet": "In evaluating NVIDIA, the following risk factors should be considered in addition to the other information in this Annual Report on Form 10-K.\n\nPurchasing or owning NVI",
+      "why": "Shared fingerprint span."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.345433207883129,
+    "confidence": 1.0,
+    "coverage": 0.9071391014780628,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T05:55:31Z",
+    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "6734466c5fba84b078dc30eb79c68f9243c6da253df3399d53bf91c918961369",
+      "curr_text_sha256": "672f0812e68af903e7ebd26e5135b927e5230a5cc622891d6d29d7e98bbeae7f",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

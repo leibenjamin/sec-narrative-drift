@@ -1,0 +1,1019 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_logodds_terms_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "GE",
+  "section": "10k_item1a",
+  "year_from": 2023,
+  "year_to": 2024,
+  "artifacts": {
+    "top_risers": [
+      {
+        "label": "defense",
+        "score": 1.4953500970649465,
+        "meta": {
+          "z": 1.594367293027305,
+          "countPrev": 0,
+          "countCurr": 13,
+          "per10kPrev": 0.0,
+          "per10kCurr": 17.503702706341727,
+          "deltaPer10k": 17.503702706341727,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "spending",
+        "score": 1.4577202332058443,
+        "meta": {
+          "z": 1.7860784261350588,
+          "countPrev": 2,
+          "countCurr": 7,
+          "per10kPrev": 2.2299029992195343,
+          "per10kCurr": 9.42507068803016,
+          "deltaPer10k": 7.195167688810626,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "inorganic",
+        "score": 1.1423245997114708,
+        "meta": {
+          "z": 1.2179656010824969,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.385754678874377,
+          "deltaPer10k": 5.385754678874377,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "aerospace defense",
+        "score": 1.1134002948403927,
+        "meta": {
+          "z": 1.2179656010824969,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.385754678874377,
+          "deltaPer10k": 5.385754678874377,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "defense sector",
+        "score": 1.1134002948403927,
+        "meta": {
+          "z": 1.2179656010824969,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.385754678874377,
+          "deltaPer10k": 5.385754678874377,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "healthcare vernova",
+        "score": 1.1134002948403927,
+        "meta": {
+          "z": 1.2179656010824969,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.385754678874377,
+          "deltaPer10k": 5.385754678874377,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "inorganic investments",
+        "score": 1.1134002948403927,
+        "meta": {
+          "z": 1.2179656010824969,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.385754678874377,
+          "deltaPer10k": 5.385754678874377,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "government contracts",
+        "score": 1.107390820602223,
+        "meta": {
+          "z": 1.8320769396933156,
+          "countPrev": 1,
+          "countCurr": 6,
+          "per10kPrev": 1.1149514996097671,
+          "per10kCurr": 8.078632018311566,
+          "deltaPer10k": 6.963680518701799,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "venture",
+        "score": 1.0563088512809728,
+        "meta": {
+          "z": 1.1262541709284288,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.039316009155783,
+          "deltaPer10k": 4.039316009155783,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "advance",
+        "score": 0.9356430003797206,
+        "meta": {
+          "z": 0.9975982217698485,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.6928773394371883,
+          "deltaPer10k": 2.6928773394371883,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "certifications",
+        "score": 0.9356430003797206,
+        "meta": {
+          "z": 0.9975982217698485,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.6928773394371883,
+          "deltaPer10k": 2.6928773394371883,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "comparable",
+        "score": 0.9356430003797206,
+        "meta": {
+          "z": 0.9975982217698485,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.6928773394371883,
+          "deltaPer10k": 2.6928773394371883,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "criminal",
+        "score": 0.9356430003797206,
+        "meta": {
+          "z": 0.9975982217698485,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.6928773394371883,
+          "deltaPer10k": 2.6928773394371883,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "determine",
+        "score": 0.9356430003797206,
+        "meta": {
+          "z": 0.9975982217698485,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.6928773394371883,
+          "deltaPer10k": 2.6928773394371883,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "domestic",
+        "score": 0.9356430003797206,
+        "meta": {
+          "z": 0.9975982217698485,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.6928773394371883,
+          "deltaPer10k": 2.6928773394371883,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_fallers": [
+      {
+        "label": "vernova",
+        "score": -1.8436217988073575,
+        "meta": {
+          "z": -2.641467400870424,
+          "countPrev": 26,
+          "countCurr": 7,
+          "per10kPrev": 28.988738989853942,
+          "per10kCurr": 9.42507068803016,
+          "deltaPer10k": -19.563668301823782,
+          "distinctive": true
+        }
+      },
+      {
+        "label": "independent",
+        "score": -1.358241410988617,
+        "meta": {
+          "z": -2.3272083773758525,
+          "countPrev": 14,
+          "countCurr": 2,
+          "per10kPrev": 15.609320994536738,
+          "per10kCurr": 2.6928773394371883,
+          "deltaPer10k": -12.916443655099549,
+          "distinctive": true
+        }
+      },
+      {
+        "label": "separation",
+        "score": -1.130204302284992,
+        "meta": {
+          "z": -3.066488313752618,
+          "countPrev": 25,
+          "countCurr": 1,
+          "per10kPrev": 27.873787490244172,
+          "per10kCurr": 1.3464386697185942,
+          "deltaPer10k": -26.527348820525578,
+          "distinctive": true
+        }
+      },
+      {
+        "label": "aerospace",
+        "score": -1.1224565135536368,
+        "meta": {
+          "z": -1.6082106923256294,
+          "countPrev": 19,
+          "countCurr": 8,
+          "per10kPrev": 21.184078492585574,
+          "per10kCurr": 10.771509357748753,
+          "deltaPer10k": -10.41256913483682,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "vernova separation",
+        "score": -0.991781956275389,
+        "meta": {
+          "z": -1.6408126358749566,
+          "countPrev": 7,
+          "countCurr": 1,
+          "per10kPrev": 7.804660497268369,
+          "per10kCurr": 1.3464386697185942,
+          "deltaPer10k": -6.4582218275497745,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "vernova independent",
+        "score": -0.9664283425463155,
+        "meta": {
+          "z": -1.284359309725126,
+          "countPrev": 5,
+          "countCurr": 1,
+          "per10kPrev": 5.574757498048835,
+          "per10kCurr": 1.3464386697185942,
+          "deltaPer10k": -4.228318828330241,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "aerospace vernova",
+        "score": -0.9269504331802089,
+        "meta": {
+          "z": -1.2318941468251525,
+          "countPrev": 6,
+          "countCurr": 0,
+          "per10kPrev": 6.6897089976586015,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -6.6897089976586015,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "separation transaction",
+        "score": -0.9269504331802089,
+        "meta": {
+          "z": -1.2318941468251525,
+          "countPrev": 6,
+          "countCurr": 0,
+          "per10kPrev": 6.6897089976586015,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -6.6897089976586015,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "independent companies",
+        "score": -0.9265632885627421,
+        "meta": {
+          "z": -1.9691405467445293,
+          "countPrev": 11,
+          "countCurr": 2,
+          "per10kPrev": 12.264466495707437,
+          "per10kCurr": 2.6928773394371883,
+          "deltaPer10k": -9.571589156270248,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "credit support",
+        "score": -0.8924085354801048,
+        "meta": {
+          "z": -1.4764083900835092,
+          "countPrev": 6,
+          "countCurr": 1,
+          "per10kPrev": 6.6897089976586015,
+          "per10kCurr": 1.3464386697185942,
+          "deltaPer10k": -5.343270327940007,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "common",
+        "score": -0.8598050092011917,
+        "meta": {
+          "z": -1.2318941468251525,
+          "countPrev": 6,
+          "countCurr": 0,
+          "per10kPrev": 6.6897089976586015,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -6.6897089976586015,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "implemented",
+        "score": -0.828916276329035,
+        "meta": {
+          "z": -0.8838044028826495,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.2299029992195343,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.2299029992195343,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "stock",
+        "score": -0.7771634253047134,
+        "meta": {
+          "z": -1.6408126358749566,
+          "countPrev": 7,
+          "countCurr": 1,
+          "per10kPrev": 7.804660497268369,
+          "per10kCurr": 1.3464386697185942,
+          "deltaPer10k": -6.4582218275497745,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "separate",
+        "score": -0.7697556576802491,
+        "meta": {
+          "z": -1.102875046125668,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 4.4598059984390686,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.4598059984390686,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "common stock",
+        "score": -0.744612980269345,
+        "meta": {
+          "z": -1.2318941468251525,
+          "countPrev": 6,
+          "countCurr": 0,
+          "per10kPrev": 6.6897089976586015,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -6.6897089976586015,
+          "distinctive": false
+        }
+      }
+    ],
+    "summary": "Adds emphasis on defense, spending, inorganic; de-emphasizes vernova, independent, separation.",
+    "ranked_items": [
+      {
+        "label": "defense",
+        "score": 1.4953500970649465,
+        "meta": {
+          "z": 1.594367293027305,
+          "countPrev": 0,
+          "countCurr": 13,
+          "per10kPrev": 0.0,
+          "per10kCurr": 17.503702706341727,
+          "deltaPer10k": 17.503702706341727,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "spending",
+        "score": 1.4577202332058443,
+        "meta": {
+          "z": 1.7860784261350588,
+          "countPrev": 2,
+          "countCurr": 7,
+          "per10kPrev": 2.2299029992195343,
+          "per10kCurr": 9.42507068803016,
+          "deltaPer10k": 7.195167688810626,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "inorganic",
+        "score": 1.1423245997114708,
+        "meta": {
+          "z": 1.2179656010824969,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.385754678874377,
+          "deltaPer10k": 5.385754678874377,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "aerospace defense",
+        "score": 1.1134002948403927,
+        "meta": {
+          "z": 1.2179656010824969,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.385754678874377,
+          "deltaPer10k": 5.385754678874377,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "defense sector",
+        "score": 1.1134002948403927,
+        "meta": {
+          "z": 1.2179656010824969,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.385754678874377,
+          "deltaPer10k": 5.385754678874377,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "healthcare vernova",
+        "score": 1.1134002948403927,
+        "meta": {
+          "z": 1.2179656010824969,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.385754678874377,
+          "deltaPer10k": 5.385754678874377,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "inorganic investments",
+        "score": 1.1134002948403927,
+        "meta": {
+          "z": 1.2179656010824969,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.385754678874377,
+          "deltaPer10k": 5.385754678874377,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "government contracts",
+        "score": 1.107390820602223,
+        "meta": {
+          "z": 1.8320769396933156,
+          "countPrev": 1,
+          "countCurr": 6,
+          "per10kPrev": 1.1149514996097671,
+          "per10kCurr": 8.078632018311566,
+          "deltaPer10k": 6.963680518701799,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "venture",
+        "score": 1.0563088512809728,
+        "meta": {
+          "z": 1.1262541709284288,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.039316009155783,
+          "deltaPer10k": 4.039316009155783,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "advance",
+        "score": 0.9356430003797206,
+        "meta": {
+          "z": 0.9975982217698485,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.6928773394371883,
+          "deltaPer10k": 2.6928773394371883,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "certifications",
+        "score": 0.9356430003797206,
+        "meta": {
+          "z": 0.9975982217698485,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.6928773394371883,
+          "deltaPer10k": 2.6928773394371883,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "comparable",
+        "score": 0.9356430003797206,
+        "meta": {
+          "z": 0.9975982217698485,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.6928773394371883,
+          "deltaPer10k": 2.6928773394371883,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "criminal",
+        "score": 0.9356430003797206,
+        "meta": {
+          "z": 0.9975982217698485,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.6928773394371883,
+          "deltaPer10k": 2.6928773394371883,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "determine",
+        "score": 0.9356430003797206,
+        "meta": {
+          "z": 0.9975982217698485,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.6928773394371883,
+          "deltaPer10k": 2.6928773394371883,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "domestic",
+        "score": 0.9356430003797206,
+        "meta": {
+          "z": 0.9975982217698485,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.6928773394371883,
+          "deltaPer10k": 2.6928773394371883,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "vernova",
+        "score": -1.8436217988073575,
+        "meta": {
+          "z": -2.641467400870424,
+          "countPrev": 26,
+          "countCurr": 7,
+          "per10kPrev": 28.988738989853942,
+          "per10kCurr": 9.42507068803016,
+          "deltaPer10k": -19.563668301823782,
+          "distinctive": true
+        }
+      },
+      {
+        "label": "independent",
+        "score": -1.358241410988617,
+        "meta": {
+          "z": -2.3272083773758525,
+          "countPrev": 14,
+          "countCurr": 2,
+          "per10kPrev": 15.609320994536738,
+          "per10kCurr": 2.6928773394371883,
+          "deltaPer10k": -12.916443655099549,
+          "distinctive": true
+        }
+      },
+      {
+        "label": "separation",
+        "score": -1.130204302284992,
+        "meta": {
+          "z": -3.066488313752618,
+          "countPrev": 25,
+          "countCurr": 1,
+          "per10kPrev": 27.873787490244172,
+          "per10kCurr": 1.3464386697185942,
+          "deltaPer10k": -26.527348820525578,
+          "distinctive": true
+        }
+      },
+      {
+        "label": "aerospace",
+        "score": -1.1224565135536368,
+        "meta": {
+          "z": -1.6082106923256294,
+          "countPrev": 19,
+          "countCurr": 8,
+          "per10kPrev": 21.184078492585574,
+          "per10kCurr": 10.771509357748753,
+          "deltaPer10k": -10.41256913483682,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "vernova separation",
+        "score": -0.991781956275389,
+        "meta": {
+          "z": -1.6408126358749566,
+          "countPrev": 7,
+          "countCurr": 1,
+          "per10kPrev": 7.804660497268369,
+          "per10kCurr": 1.3464386697185942,
+          "deltaPer10k": -6.4582218275497745,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "vernova independent",
+        "score": -0.9664283425463155,
+        "meta": {
+          "z": -1.284359309725126,
+          "countPrev": 5,
+          "countCurr": 1,
+          "per10kPrev": 5.574757498048835,
+          "per10kCurr": 1.3464386697185942,
+          "deltaPer10k": -4.228318828330241,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "aerospace vernova",
+        "score": -0.9269504331802089,
+        "meta": {
+          "z": -1.2318941468251525,
+          "countPrev": 6,
+          "countCurr": 0,
+          "per10kPrev": 6.6897089976586015,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -6.6897089976586015,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "separation transaction",
+        "score": -0.9269504331802089,
+        "meta": {
+          "z": -1.2318941468251525,
+          "countPrev": 6,
+          "countCurr": 0,
+          "per10kPrev": 6.6897089976586015,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -6.6897089976586015,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "independent companies",
+        "score": -0.9265632885627421,
+        "meta": {
+          "z": -1.9691405467445293,
+          "countPrev": 11,
+          "countCurr": 2,
+          "per10kPrev": 12.264466495707437,
+          "per10kCurr": 2.6928773394371883,
+          "deltaPer10k": -9.571589156270248,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "credit support",
+        "score": -0.8924085354801048,
+        "meta": {
+          "z": -1.4764083900835092,
+          "countPrev": 6,
+          "countCurr": 1,
+          "per10kPrev": 6.6897089976586015,
+          "per10kCurr": 1.3464386697185942,
+          "deltaPer10k": -5.343270327940007,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "common",
+        "score": -0.8598050092011917,
+        "meta": {
+          "z": -1.2318941468251525,
+          "countPrev": 6,
+          "countCurr": 0,
+          "per10kPrev": 6.6897089976586015,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -6.6897089976586015,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "implemented",
+        "score": -0.828916276329035,
+        "meta": {
+          "z": -0.8838044028826495,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.2299029992195343,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.2299029992195343,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "stock",
+        "score": -0.7771634253047134,
+        "meta": {
+          "z": -1.6408126358749566,
+          "countPrev": 7,
+          "countCurr": 1,
+          "per10kPrev": 7.804660497268369,
+          "per10kCurr": 1.3464386697185942,
+          "deltaPer10k": -6.4582218275497745,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "separate",
+        "score": -0.7697556576802491,
+        "meta": {
+          "z": -1.102875046125668,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 4.4598059984390686,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.4598059984390686,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "common stock",
+        "score": -0.744612980269345,
+        "meta": {
+          "z": -1.2318941468251525,
+          "countPrev": 6,
+          "countCurr": 0,
+          "per10kPrev": 6.6897089976586015,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -6.6897089976586015,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_risers_alt": [
+      {
+        "label": "compliance risks",
+        "score": 1.723132126652009,
+        "meta": {}
+      },
+      {
+        "label": "demand products services",
+        "score": 1.7168954335111426,
+        "meta": {}
+      },
+      {
+        "label": "financial operational",
+        "score": 1.7168954335111426,
+        "meta": {}
+      },
+      {
+        "label": "financial risks",
+        "score": 1.3195099625429245,
+        "meta": {}
+      },
+      {
+        "label": "customers suppliers",
+        "score": 1.7137979277583426,
+        "meta": {}
+      },
+      {
+        "label": "quality performance",
+        "score": 1.7137979277583426,
+        "meta": {}
+      },
+      {
+        "label": "suppliers customers",
+        "score": 1.7137979277583426,
+        "meta": {}
+      },
+      {
+        "label": "market new",
+        "score": 0.9229352745928239,
+        "meta": {}
+      },
+      {
+        "label": "cybersecurity incident",
+        "score": 1.7107141726247752,
+        "meta": {}
+      },
+      {
+        "label": "labor shortages",
+        "score": 1.183232022524476,
+        "meta": {}
+      },
+      {
+        "label": "customer demand",
+        "score": 0.6440111041524705,
+        "meta": {}
+      },
+      {
+        "label": "financial performance",
+        "score": 0.23935613929203248,
+        "meta": {}
+      },
+      {
+        "label": "results operations financial",
+        "score": 0.2765599691549081,
+        "meta": {}
+      },
+      {
+        "label": "Climate change",
+        "score": 0.13046390555666054,
+        "meta": {}
+      },
+      {
+        "label": "Supply chain",
+        "score": 0.09798040836020405,
+        "meta": {}
+      }
+    ],
+    "top_fallers_alt": [
+      {
+        "label": "commercial aviation",
+        "score": -1.7355784280408844,
+        "meta": {}
+      },
+      {
+        "label": "economic growth",
+        "score": -0.9416645978439533,
+        "meta": {}
+      },
+      {
+        "label": "separation aerospace",
+        "score": -1.7292857537242323,
+        "meta": {}
+      },
+      {
+        "label": "new technologies",
+        "score": -1.726160535962233,
+        "meta": {}
+      },
+      {
+        "label": "businesses subject",
+        "score": -0.49312515005228263,
+        "meta": {}
+      },
+      {
+        "label": "market conditions",
+        "score": -1.1986972953073671,
+        "meta": {}
+      },
+      {
+        "label": "new products",
+        "score": -1.1986972953073671,
+        "meta": {}
+      },
+      {
+        "label": "financial markets",
+        "score": -0.486634388809442,
+        "meta": {}
+      },
+      {
+        "label": "Intellectual property",
+        "score": -0.14280006307465487,
+        "meta": {}
+      },
+      {
+        "label": "results operations cash",
+        "score": -0.21674902706395782,
+        "meta": {}
+      },
+      {
+        "label": "addition suppliers",
+        "score": -0.2582430297867493,
+        "meta": {}
+      },
+      {
+        "label": "Inflation",
+        "score": -0.2336077145668609,
+        "meta": {}
+      },
+      {
+        "label": "economic conditions",
+        "score": -0.14785446695227922,
+        "meta": {}
+      },
+      {
+        "label": "credit risk",
+        "score": -0.10176689545184603,
+        "meta": {}
+      },
+      {
+        "label": "global economic",
+        "score": -0.00627978048812583,
+        "meta": {}
+      }
+    ],
+    "summary_alt": "Adds emphasis on compliance risks, demand products services, financial operational; de-emphasizes commercial aviation, economic growth, separation aerospace."
+  },
+  "evidence": [
+    {
+      "year": 2024,
+      "paragraph_idx": 1,
+      "snippet": "STRATEGIC RISKS. Strategic risk relates to the Company\u2019s future business plans and strategies, including the risks associated with the global macro-environment; dynamics in the commercial aviation sector; competitive threats; the demand for our products and services and the success of our investments in technology and innovation; impacts of government spending, programs and contracts; climate change; our recent spin-offs; capital allocation decisions; acquisitions, dispositions, joint ventures and other inorganic investments; intellectual property; and other risks.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "spending",
+        "inorganic"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 14,
+      "snippet": "Capital spending and demand for aircraft engines, aviation products and aftermarket parts and services by commercial airlines, lessors, other aircraft owners or operators and airframers are influenced by a wide variety of factors, including current and predicted traffic levels, passenger and cargo load factors, aircraft fuel prices, labor costs and other issues, airline consolidation, bankruptcies and restructuring activities, competition, the retirement of older aircraft, changes in production schedules, production capabilities and capacities of airframers, regulatory oversight and changes, environmental regulations, terrorism and related security concerns, aircraft safety incidents, general economic conditions, tightening of credit in financial markets, corporate profitability, cost reduction efforts and remaining performance obligations levels.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "spending"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 1,
+      "snippet": "STRATEGIC RISKS. Strategic risk relates to the Company's future business plans and strategies, including the risks associated with: our planned separation of GE Aerospace and GE Vernova into independent companies; the global macro-environment and conditions in our sectors; the global energy transition; competitive threats; the demand for our products and services and the success of our",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "vernova",
+        "independent",
+        "separation",
+        "aerospace"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 3,
+      "snippet": "Strategic plan - We may encounter challenges to executing our plan to separate GE Aerospace and GE Vernova into independent companies, or to completing the plan within the timeframes we anticipate, and we may not realize some or all of the expected benefits of the separations.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "vernova",
+        "independent",
+        "separation",
+        "aerospace"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.1181,
+    "confidence": 1.0,
+    "coverage": 0.8238740157480315,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-16T18:19:33Z",
+    "git_commit": "d9404836b264fcefaa81b0fb83cc09b15c41e2e8",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "1c50b34c890939d1bb9a3bda5cbcc593b7e3257f5de1e4a5ef203e2426ea6bce",
+      "curr_text_sha256": "99ace605fdd639611a84496658394939c0c1c2a005d9485bef87895ef694057a",
+      "lens": "deboilerplated",
+      "source": "edgar",
+      "script": "lab_precompute_detectors_for_case.py@v1",
+      "prev_input_path": "scripts/_reports/risk_extraction_bundle/sections/GE_2023_item_1a.txt",
+      "curr_input_path": "scripts/_reports/risk_extraction_bundle/sections/GE_2024_item_1a.txt"
+    }
+  }
+}

@@ -1,0 +1,1201 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_logodds_terms_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "NVDA",
+  "section": "10k_item1a",
+  "year_from": 2022,
+  "year_to": 2023,
+  "artifacts": {
+    "top_risers": [
+      {
+        "label": "license requirements",
+        "score": 1.0359505284689179,
+        "meta": {
+          "z": 1.114511132733364,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.6937852063902485,
+          "deltaPer10k": 3.6937852063902485,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "regulators",
+        "score": 0.9744805635365621,
+        "meta": {
+          "z": 1.3352309618453673,
+          "countPrev": 0,
+          "countCurr": 8,
+          "per10kPrev": 0.0,
+          "per10kCurr": 7.387570412780497,
+          "deltaPer10k": 7.387570412780497,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "usg",
+        "score": 0.8937855084211653,
+        "meta": {
+          "z": 1.2246627883080061,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.61723150798781,
+          "deltaPer10k": 4.61723150798781,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "models",
+        "score": 0.8772584986439882,
+        "meta": {
+          "z": 1.6771303404260056,
+          "countPrev": 1,
+          "countCurr": 7,
+          "per10kPrev": 1.0726161106939827,
+          "per10kCurr": 6.464124111182935,
+          "deltaPer10k": 5.391508000488952,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "architectures",
+        "score": 0.8652045554625512,
+        "meta": {
+          "z": 1.1855012342069264,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.61723150798781,
+          "deltaPer10k": 4.61723150798781,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "reductions",
+        "score": 0.8574859152098918,
+        "meta": {
+          "z": 1.023207317043473,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.7703389047926867,
+          "deltaPer10k": 2.7703389047926867,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "bilateral",
+        "score": 0.8497751758005017,
+        "meta": {
+          "z": 0.8953221355771375,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8468926031951243,
+          "deltaPer10k": 1.8468926031951243,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "examples",
+        "score": 0.8497751758005017,
+        "meta": {
+          "z": 0.8953221355771375,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8468926031951243,
+          "deltaPer10k": 1.8468926031951243,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "legacy",
+        "score": 0.8497751758005017,
+        "meta": {
+          "z": 0.8953221355771375,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8468926031951243,
+          "deltaPer10k": 1.8468926031951243,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "content",
+        "score": 0.8133944371637168,
+        "meta": {
+          "z": 1.114511132733364,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.6937852063902485,
+          "deltaPer10k": 3.6937852063902485,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "lockdowns",
+        "score": 0.8133944371637168,
+        "meta": {
+          "z": 1.114511132733364,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.6937852063902485,
+          "deltaPer10k": 3.6937852063902485,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "recorded",
+        "score": 0.8133944371637168,
+        "meta": {
+          "z": 1.114511132733364,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.6937852063902485,
+          "deltaPer10k": 3.6937852063902485,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "restricts",
+        "score": 0.7946219612011919,
+        "meta": {
+          "z": 1.08878913059851,
+          "countPrev": 1,
+          "countCurr": 4,
+          "per10kPrev": 1.0726161106939827,
+          "per10kCurr": 3.6937852063902485,
+          "deltaPer10k": 2.621169095696266,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "half",
+        "score": 0.7503133607872922,
+        "meta": {
+          "z": 0.8953221355771375,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8468926031951243,
+          "deltaPer10k": 1.8468926031951243,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "publishers",
+        "score": 0.7503133607872922,
+        "meta": {
+          "z": 0.8953221355771375,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8468926031951243,
+          "deltaPer10k": 1.8468926031951243,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_fallers": [
+      {
+        "label": "cards",
+        "score": -1.1449081349151127,
+        "meta": {
+          "z": -1.2062738775891069,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 4.290464442775931,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.290464442775931,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "continues",
+        "score": -0.9942509946216517,
+        "meta": {
+          "z": -1.3623203597272895,
+          "countPrev": 4,
+          "countCurr": 1,
+          "per10kPrev": 4.290464442775931,
+          "per10kCurr": 0.9234463015975621,
+          "deltaPer10k": -3.3670181411783684,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "threat",
+        "score": -0.9476395933450749,
+        "meta": {
+          "z": -1.5168769941071478,
+          "countPrev": 6,
+          "countCurr": 2,
+          "per10kPrev": 6.435696664163896,
+          "per10kCurr": 1.8468926031951243,
+          "deltaPer10k": -4.588804060968772,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "credentials",
+        "score": -0.935890353823649,
+        "meta": {
+          "z": -0.9860529868527816,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.1452322213879653,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "invasion",
+        "score": -0.935890353823649,
+        "meta": {
+          "z": -0.9860529868527816,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.1452322213879653,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "obtained",
+        "score": -0.935890353823649,
+        "meta": {
+          "z": -0.9860529868527816,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.1452322213879653,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "placing",
+        "score": -0.935890353823649,
+        "meta": {
+          "z": -0.9860529868527816,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.1452322213879653,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "quarters",
+        "score": -0.935890353823649,
+        "meta": {
+          "z": -0.9860529868527816,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.1452322213879653,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "russian",
+        "score": -0.935890353823649,
+        "meta": {
+          "z": -0.9860529868527816,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.1452322213879653,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "shortage",
+        "score": -0.935890353823649,
+        "meta": {
+          "z": -0.9860529868527816,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.1452322213879653,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "actors",
+        "score": -0.8536290426055837,
+        "meta": {
+          "z": -1.3663952681202627,
+          "countPrev": 8,
+          "countCurr": 4,
+          "per10kPrev": 8.580928885551861,
+          "per10kCurr": 3.6937852063902485,
+          "deltaPer10k": -4.887143679161612,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "congress",
+        "score": -0.8263492000037965,
+        "meta": {
+          "z": -0.9860529868527816,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.1452322213879653,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "supporting",
+        "score": -0.8263492000037965,
+        "meta": {
+          "z": -0.9860529868527816,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.1452322213879653,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "threat actors",
+        "score": -0.7850916004175391,
+        "meta": {
+          "z": -1.5168769941071478,
+          "countPrev": 6,
+          "countCurr": 2,
+          "per10kPrev": 6.435696664163896,
+          "per10kCurr": 1.8468926031951243,
+          "deltaPer10k": -4.588804060968772,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "israel companies",
+        "score": -0.7699614012352138,
+        "meta": {
+          "z": -0.9860529868527816,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.1452322213879653,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.1452322213879653,
+          "distinctive": false
+        }
+      }
+    ],
+    "summary": "Adds emphasis on license requirements, regulators, usg; de-emphasizes cards, continues, threat.",
+    "ranked_items": [
+      {
+        "label": "license requirements",
+        "score": 1.0359505284689179,
+        "meta": {
+          "z": 1.114511132733364,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.6937852063902485,
+          "deltaPer10k": 3.6937852063902485,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "regulators",
+        "score": 0.9744805635365621,
+        "meta": {
+          "z": 1.3352309618453673,
+          "countPrev": 0,
+          "countCurr": 8,
+          "per10kPrev": 0.0,
+          "per10kCurr": 7.387570412780497,
+          "deltaPer10k": 7.387570412780497,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "usg",
+        "score": 0.8937855084211653,
+        "meta": {
+          "z": 1.2246627883080061,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.61723150798781,
+          "deltaPer10k": 4.61723150798781,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "models",
+        "score": 0.8772584986439882,
+        "meta": {
+          "z": 1.6771303404260056,
+          "countPrev": 1,
+          "countCurr": 7,
+          "per10kPrev": 1.0726161106939827,
+          "per10kCurr": 6.464124111182935,
+          "deltaPer10k": 5.391508000488952,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "architectures",
+        "score": 0.8652045554625512,
+        "meta": {
+          "z": 1.1855012342069264,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.61723150798781,
+          "deltaPer10k": 4.61723150798781,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "reductions",
+        "score": 0.8574859152098918,
+        "meta": {
+          "z": 1.023207317043473,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.7703389047926867,
+          "deltaPer10k": 2.7703389047926867,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "bilateral",
+        "score": 0.8497751758005017,
+        "meta": {
+          "z": 0.8953221355771375,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8468926031951243,
+          "deltaPer10k": 1.8468926031951243,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "examples",
+        "score": 0.8497751758005017,
+        "meta": {
+          "z": 0.8953221355771375,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8468926031951243,
+          "deltaPer10k": 1.8468926031951243,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "legacy",
+        "score": 0.8497751758005017,
+        "meta": {
+          "z": 0.8953221355771375,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8468926031951243,
+          "deltaPer10k": 1.8468926031951243,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "content",
+        "score": 0.8133944371637168,
+        "meta": {
+          "z": 1.114511132733364,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.6937852063902485,
+          "deltaPer10k": 3.6937852063902485,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "lockdowns",
+        "score": 0.8133944371637168,
+        "meta": {
+          "z": 1.114511132733364,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.6937852063902485,
+          "deltaPer10k": 3.6937852063902485,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "recorded",
+        "score": 0.8133944371637168,
+        "meta": {
+          "z": 1.114511132733364,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.6937852063902485,
+          "deltaPer10k": 3.6937852063902485,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "restricts",
+        "score": 0.7946219612011919,
+        "meta": {
+          "z": 1.08878913059851,
+          "countPrev": 1,
+          "countCurr": 4,
+          "per10kPrev": 1.0726161106939827,
+          "per10kCurr": 3.6937852063902485,
+          "deltaPer10k": 2.621169095696266,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "half",
+        "score": 0.7503133607872922,
+        "meta": {
+          "z": 0.8953221355771375,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8468926031951243,
+          "deltaPer10k": 1.8468926031951243,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "publishers",
+        "score": 0.7503133607872922,
+        "meta": {
+          "z": 0.8953221355771375,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8468926031951243,
+          "deltaPer10k": 1.8468926031951243,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "cards",
+        "score": -1.1449081349151127,
+        "meta": {
+          "z": -1.2062738775891069,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 4.290464442775931,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.290464442775931,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "continues",
+        "score": -0.9942509946216517,
+        "meta": {
+          "z": -1.3623203597272895,
+          "countPrev": 4,
+          "countCurr": 1,
+          "per10kPrev": 4.290464442775931,
+          "per10kCurr": 0.9234463015975621,
+          "deltaPer10k": -3.3670181411783684,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "threat",
+        "score": -0.9476395933450749,
+        "meta": {
+          "z": -1.5168769941071478,
+          "countPrev": 6,
+          "countCurr": 2,
+          "per10kPrev": 6.435696664163896,
+          "per10kCurr": 1.8468926031951243,
+          "deltaPer10k": -4.588804060968772,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "credentials",
+        "score": -0.935890353823649,
+        "meta": {
+          "z": -0.9860529868527816,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.1452322213879653,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "invasion",
+        "score": -0.935890353823649,
+        "meta": {
+          "z": -0.9860529868527816,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.1452322213879653,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "obtained",
+        "score": -0.935890353823649,
+        "meta": {
+          "z": -0.9860529868527816,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.1452322213879653,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "placing",
+        "score": -0.935890353823649,
+        "meta": {
+          "z": -0.9860529868527816,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.1452322213879653,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "quarters",
+        "score": -0.935890353823649,
+        "meta": {
+          "z": -0.9860529868527816,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.1452322213879653,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "russian",
+        "score": -0.935890353823649,
+        "meta": {
+          "z": -0.9860529868527816,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.1452322213879653,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "shortage",
+        "score": -0.935890353823649,
+        "meta": {
+          "z": -0.9860529868527816,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.1452322213879653,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "actors",
+        "score": -0.8536290426055837,
+        "meta": {
+          "z": -1.3663952681202627,
+          "countPrev": 8,
+          "countCurr": 4,
+          "per10kPrev": 8.580928885551861,
+          "per10kCurr": 3.6937852063902485,
+          "deltaPer10k": -4.887143679161612,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "congress",
+        "score": -0.8263492000037965,
+        "meta": {
+          "z": -0.9860529868527816,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.1452322213879653,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "supporting",
+        "score": -0.8263492000037965,
+        "meta": {
+          "z": -0.9860529868527816,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.1452322213879653,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "threat actors",
+        "score": -0.7850916004175391,
+        "meta": {
+          "z": -1.5168769941071478,
+          "countPrev": 6,
+          "countCurr": 2,
+          "per10kPrev": 6.435696664163896,
+          "per10kCurr": 1.8468926031951243,
+          "deltaPer10k": -4.588804060968772,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "israel companies",
+        "score": -0.7699614012352138,
+        "meta": {
+          "z": -0.9860529868527816,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.1452322213879653,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.1452322213879653,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_risers_alt": [
+      {
+        "label": "personal data",
+        "score": 1.9298143787644473,
+        "meta": {}
+      },
+      {
+        "label": "personal information",
+        "score": 1.9007349949318213,
+        "meta": {}
+      },
+      {
+        "label": "customers china",
+        "score": 1.8983623848471884,
+        "meta": {}
+      },
+      {
+        "label": "financial harm",
+        "score": 0.9125893155122276,
+        "meta": {}
+      },
+      {
+        "label": "customers future demand products",
+        "score": 1.3197178375369516,
+        "meta": {}
+      },
+      {
+        "label": "information systems",
+        "score": 1.0169344442256936,
+        "meta": {}
+      },
+      {
+        "label": "use ai",
+        "score": 1.0169344442256936,
+        "meta": {}
+      },
+      {
+        "label": "adverse impact financial",
+        "score": 1.895997363596475,
+        "meta": {}
+      },
+      {
+        "label": "cause stock",
+        "score": 1.895997363596475,
+        "meta": {}
+      },
+      {
+        "label": "future adverse",
+        "score": 1.895997363596475,
+        "meta": {}
+      },
+      {
+        "label": "future cause",
+        "score": 1.895997363596475,
+        "meta": {}
+      },
+      {
+        "label": "new requirements",
+        "score": 1.895997363596475,
+        "meta": {}
+      },
+      {
+        "label": "party suppliers technology",
+        "score": 1.895997363596475,
+        "meta": {}
+      },
+      {
+        "label": "supply demand",
+        "score": 0.8792678535312914,
+        "meta": {}
+      },
+      {
+        "label": "changes tax laws",
+        "score": 1.3174300941408497,
+        "meta": {}
+      }
+    ],
+    "top_fallers_alt": [
+      {
+        "label": "future demand",
+        "score": -2.3323984384759893,
+        "meta": {}
+      },
+      {
+        "label": "information technology",
+        "score": -2.3323984384759893,
+        "meta": {}
+      },
+      {
+        "label": "adverse changes",
+        "score": -2.3292760709820053,
+        "meta": {}
+      },
+      {
+        "label": "costs increase",
+        "score": -2.3292760709820053,
+        "meta": {}
+      },
+      {
+        "label": "demand products impact ability",
+        "score": -2.3292760709820053,
+        "meta": {}
+      },
+      {
+        "label": "economic industry",
+        "score": -2.3292760709820053,
+        "meta": {}
+      },
+      {
+        "label": "product demand",
+        "score": -2.3292760709820053,
+        "meta": {}
+      },
+      {
+        "label": "products services result",
+        "score": -2.3292760709820053,
+        "meta": {}
+      },
+      {
+        "label": "new products services",
+        "score": -1.254449604241647,
+        "meta": {}
+      },
+      {
+        "label": "human capital",
+        "score": -2.3261655111231887,
+        "meta": {}
+      },
+      {
+        "label": "products services",
+        "score": -0.19216366973579602,
+        "meta": {}
+      },
+      {
+        "label": "trade restrictions",
+        "score": -0.5885642656319447,
+        "meta": {}
+      },
+      {
+        "label": "Supply chain",
+        "score": -0.1805962459470467,
+        "meta": {}
+      },
+      {
+        "label": "Climate change",
+        "score": -0.1562298593144109,
+        "meta": {}
+      },
+      {
+        "label": "result increased",
+        "score": -0.21864937123597095,
+        "meta": {}
+      }
+    ],
+    "summary_alt": "Adds emphasis on personal data, personal information, customers china; de-emphasizes future demand, information technology, adverse changes."
+  },
+  "evidence": [
+    {
+      "year": 2023,
+      "paragraph_idx": 15,
+      "snippet": "Our demand predictions may not be correct, as we have experienced from time to time. Product transitions are complex and frequently negatively impact our revenue as we often ship both new and legacy architecture products simultaneously and we and our channel partners prepare to ship and support new products. Our architecture transitions of Data Center, Professional Visualization, and Gaming products may impair our ability to predict demand and impact our supply mix. Qualification time for new products, customers anticipating product transitions and channel partners reducing channel inventory of legacy architectures ahead of new product introductions can create reductions or volatility in our revenue. We have experienced and may in the future experience reduced demand for current generation architectures when customers anticipate transitions, and we may be unable to sell multiple product architectures at the same time for current and future architecture transitions. While we have managed prior product transitions and have previously sold multiple product architectures at the same time, these transitions are difficult and prior trends may not continue. If we are unable to execute our architectural transitions as planned for any reason, our financial results may be negatively impacted.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "license requirements",
+        "regulators",
+        "usg",
+        "models",
+        "architectures",
+        "reductions",
+        "bilateral",
+        "examples",
+        "legacy",
+        "content",
+        "lockdowns",
+        "recorded",
+        "restricts",
+        "half",
+        "publishers",
+        "cards",
+        "continues",
+        "threat",
+        "credentials",
+        "invasion",
+        "obtained",
+        "placing",
+        "quarters",
+        "russian",
+        "shortage",
+        "actors",
+        "congress",
+        "supporting",
+        "threat actors",
+        "israel companies"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 84,
+      "snippet": "In the ordinary course of business, we may transfer personal data from Europe, China, and other jurisdictions to the United States or other countries. Certain jurisdictions have enacted data localization laws and cross-border personal data transfer laws. For example, the GDPR generally restricts the transfer of personal data to countries outside of the EEA. The European Commission released a set of \u201cStandard Contractual Clauses\u201d designed for entities to validly transfer personal data out of the EEA to jurisdictions that the European Commission has not found to provide an adequate level of protection, including the United States. While the European Union and United States governments have recently announced an agreement in principle on a new bilateral cross-border transfer mechanism, it is uncertain whether this agreement will be overturned in court like the previous two European Union-United States bilateral cross-border transfer agreements. These mechanisms are subject to legal challenges, and there is no assurance that we can satisfy or rely on these measures to lawfully transfer personal data to the United States. Other jurisdictions have enacted or are considering similar cross-border personal data transfer laws and local personal data residency laws, any of which would increase the cost and complexity of doing business and could result in fines from regulators. For example, China law imposes various requirements relating to data processing and data localization. Data broadly defined as important under China law, including personal data, may not be transferable outside of China without prior assessment and approval by the Cyberspace Administration of China, or CAC. Compliance with these requirements, including CAC assessments and any deemed failures of such assessments, could cause us to incur liability, prevent us from using data collected in China, or impact our ability to transfer data outside of China. The inability to import personal data to the United States could significantly and negatively impact our business operations, limit our ability to collaborate with parties that are subject to European, China, and other data privacy and security laws, or require us to increase our personal data processing capabilities in Europe and/or elsewhere at significant expense. Some European regulators have prevented companies from transferring personal data out of Europe for allegedly violating the GDPR\u2019s cross-border data transfer limitations, which could negatively impact our business.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "license requirements",
+        "regulators",
+        "usg",
+        "models",
+        "architectures",
+        "reductions",
+        "bilateral",
+        "examples",
+        "legacy",
+        "content",
+        "lockdowns",
+        "recorded",
+        "restricts",
+        "half",
+        "publishers",
+        "cards",
+        "continues",
+        "threat",
+        "credentials",
+        "invasion",
+        "obtained",
+        "placing",
+        "quarters",
+        "russian",
+        "shortage",
+        "actors",
+        "congress",
+        "supporting",
+        "threat actors",
+        "israel companies"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 22,
+      "snippet": "Additionally, we depend on developers and other third parties to build accelerated computing applications that leverage our platforms. We also rely on third-party content providers and publishers to make their content available on our platforms such as GeForce NOW. Failure by developers to build applications that leverage our platforms, or failure by third-party content providers or publishers to make their content available on reasonable terms or at all for use by our customers or end users on our platforms, could adversely affect customer demand.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "license requirements",
+        "regulators",
+        "usg",
+        "models",
+        "architectures",
+        "reductions",
+        "bilateral",
+        "examples",
+        "legacy",
+        "content",
+        "lockdowns",
+        "recorded",
+        "restricts",
+        "half",
+        "publishers",
+        "cards",
+        "continues",
+        "threat",
+        "credentials",
+        "invasion",
+        "obtained",
+        "placing",
+        "quarters",
+        "russian",
+        "shortage",
+        "actors",
+        "congress",
+        "supporting",
+        "threat actors",
+        "israel companies"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 31,
+      "snippet": "For example, on February 23, 2022, we became aware of a security incident involving unauthorized access to our network by a group of independent criminal threat actors, not affiliated with any government or political cause. The threat actors obtained NVIDIA network credentials and through deception, obtained two-factor authentication capability and access to our network. The threat actors misappropriated certain NVIDIA proprietary information, including NVIDIA source code, and leaked some of that information online. Upon learning of the security incident, we engaged in remedial and preventative actions, rotated all NVIDIA network credentials to prevent further unauthorized access, hardened our network, analyzed the information that the threat actors exfiltrated, and notified law enforcement and other authorities.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "license requirements",
+        "regulators",
+        "usg",
+        "models",
+        "architectures",
+        "reductions",
+        "bilateral",
+        "examples",
+        "legacy",
+        "content",
+        "lockdowns",
+        "recorded",
+        "restricts",
+        "half",
+        "publishers",
+        "cards",
+        "continues",
+        "threat",
+        "credentials",
+        "invasion",
+        "obtained",
+        "placing",
+        "quarters",
+        "russian",
+        "shortage",
+        "actors",
+        "congress",
+        "supporting",
+        "threat actors",
+        "israel companies"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 51,
+      "snippet": "Government actions, including trade protection and national security policies of U.S. and foreign government bodies, such as tariffs, import or export regulations, including deemed export restrictions, trade and economic sanctions, decrees, quotas or other trade barriers and restrictions could affect our ability to ship products, provide services to our customers and employees, do business without an export license with entities on the U.S. Department of Commerce\u2019s U.S. Entity List or other U.S. government restricted parties lists (which is expected to change from time to time), and generally fulfill our contractual obligations and have a material adverse effect on our business. For example, in response to the Russian invasion of Ukraine, the United States and certain allies have imposed economic sanctions and export control measures and may impose additional sanctions or export control measures, which have and could in the future result in, among other things, severe or complete restrictions on exports to and other commerce and business dealings involving Russia, certain regions of Ukraine, and/or particular entities and individuals. Such actions have limited or blocked, or could in the future limit or block the passage of our products, services and support into Russia or other regions determined to be supporting Russia, and restrict access by our Russian or Ukrainian employees (both within and outside of Russia and Ukraine) to our systems, negatively impacting productivity. Given these recent sanctions and export restrictions imposed by the United States and foreign government bodies, we recently ceased product sales to Russia. While we have policies and procedures in place to ensure compliance with sanctions and trade restrictions, our employees, contractors, partners, and agents may take actions in violations of such policies and applicable law, for which we may be ultimately held responsible. If we were ever found to have violated U.S. export control laws, we may be subject to various penalties available under the laws, any of which could have a material and adverse impact on our business, operating results and financial condition. Additionally, changes in the public perception of governments in the regions where we operate or plan to operate could negatively impact our business and results of operations.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "license requirements",
+        "regulators",
+        "usg",
+        "models",
+        "architectures",
+        "reductions",
+        "bilateral",
+        "examples",
+        "legacy",
+        "content",
+        "lockdowns",
+        "recorded",
+        "restricts",
+        "half",
+        "publishers",
+        "cards",
+        "continues",
+        "threat",
+        "credentials",
+        "invasion",
+        "obtained",
+        "placing",
+        "quarters",
+        "russian",
+        "shortage",
+        "actors",
+        "congress",
+        "supporting",
+        "threat actors",
+        "israel companies"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 7,
+      "snippet": "GPUs have use cases in addition to their designed and marketed use case, such as for digital currency mining, including blockchain-based platforms such as Ethereum. It is difficult for us to estimate with any reasonable degree of precision the past or current impact of cryptocurrency mining, or forecast the future impact of cryptocurrency mining, on demand for our products. Volatility in the cryptocurrency market, including new compute technologies, price changes in cryptocurrencies, government cryptocurrency policies and regulations, new cryptocurrency standards, and changes in the method of verifying blockchain transactions, have impacted and can in the future impact cryptocurrency mining and demand for our products, and can further impact our ability to estimate demand for our products. Changes to cryptocurrency standards and processes including, but not limited to, the pending Ethereum 2.0 standard may decrease the usage of GPUs for Ethereum mining as well as create increased aftermarket resales of our GPUs, impact retail prices for our GPUs, increase returns of our products in the distribution channel, and may reduce demand for our new GPUs. We have introduced Lite Hash Rate, or LHR, GeForce GPUs with limited Ethereum mining capability and increased the supply of CMP in an effort to address demand from gamers and direct miners to CMP. However, if attempts in the aftermarket to improve the hash rate capabilities of our LHR cards are successful, our gaming cards may become more attractive to miners, increasing demand for our gaming GPUs and limiting our ability to supply our gaming cards to non-mining customers. We cannot predict whether our strategy of using LHR cards and CMP will achieve our desired outcome. In addition, our products may be resold on the unauthorized \u201cgray market,\u201d which also makes demand forecasting difficult. Gray market products compete with our distribution channels.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "license requirements",
+        "regulators",
+        "usg",
+        "models",
+        "architectures",
+        "reductions",
+        "bilateral",
+        "examples",
+        "legacy",
+        "content",
+        "lockdowns",
+        "recorded",
+        "restricts",
+        "half",
+        "publishers",
+        "cards",
+        "continues",
+        "threat",
+        "credentials",
+        "invasion",
+        "obtained",
+        "placing",
+        "quarters",
+        "russian",
+        "shortage",
+        "actors",
+        "congress",
+        "supporting",
+        "threat actors",
+        "israel companies"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.0439,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T05:55:31Z",
+    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "1a7937b559823b48cfe923c9a8174260a8af88156c70d16482bf92d29c4fc296",
+      "curr_text_sha256": "b13bf38cc427b8eec49b6492bf559638ba32ea611dae26ef263a0e9035aa9567",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

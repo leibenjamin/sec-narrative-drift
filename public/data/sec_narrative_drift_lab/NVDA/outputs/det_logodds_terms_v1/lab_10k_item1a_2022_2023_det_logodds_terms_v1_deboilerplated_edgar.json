@@ -1,0 +1,1009 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_logodds_terms_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "NVDA",
+  "section": "10k_item1a",
+  "year_from": 2022,
+  "year_to": 2023,
+  "artifacts": {
+    "top_risers": [
+      {
+        "label": "license requirements",
+        "score": 1.0359505284689179,
+        "meta": {
+          "z": 1.114511132733364,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.6937852063902485,
+          "deltaPer10k": 3.6937852063902485,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "regulators",
+        "score": 0.9744805635365621,
+        "meta": {
+          "z": 1.3352309618453673,
+          "countPrev": 0,
+          "countCurr": 8,
+          "per10kPrev": 0.0,
+          "per10kCurr": 7.387570412780497,
+          "deltaPer10k": 7.387570412780497,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "usg",
+        "score": 0.8937855084211653,
+        "meta": {
+          "z": 1.2246627883080061,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.61723150798781,
+          "deltaPer10k": 4.61723150798781,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "models",
+        "score": 0.8772584986439882,
+        "meta": {
+          "z": 1.6771303404260056,
+          "countPrev": 1,
+          "countCurr": 7,
+          "per10kPrev": 1.0726161106939827,
+          "per10kCurr": 6.464124111182935,
+          "deltaPer10k": 5.391508000488952,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "architectures",
+        "score": 0.8652045554625512,
+        "meta": {
+          "z": 1.1855012342069264,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.61723150798781,
+          "deltaPer10k": 4.61723150798781,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "reductions",
+        "score": 0.8574859152098918,
+        "meta": {
+          "z": 1.023207317043473,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.7703389047926867,
+          "deltaPer10k": 2.7703389047926867,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "bilateral",
+        "score": 0.8497751758005017,
+        "meta": {
+          "z": 0.8953221355771375,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8468926031951243,
+          "deltaPer10k": 1.8468926031951243,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "examples",
+        "score": 0.8497751758005017,
+        "meta": {
+          "z": 0.8953221355771375,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8468926031951243,
+          "deltaPer10k": 1.8468926031951243,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "legacy",
+        "score": 0.8497751758005017,
+        "meta": {
+          "z": 0.8953221355771375,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8468926031951243,
+          "deltaPer10k": 1.8468926031951243,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "content",
+        "score": 0.8133944371637168,
+        "meta": {
+          "z": 1.114511132733364,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.6937852063902485,
+          "deltaPer10k": 3.6937852063902485,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "lockdowns",
+        "score": 0.8133944371637168,
+        "meta": {
+          "z": 1.114511132733364,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.6937852063902485,
+          "deltaPer10k": 3.6937852063902485,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "recorded",
+        "score": 0.8133944371637168,
+        "meta": {
+          "z": 1.114511132733364,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.6937852063902485,
+          "deltaPer10k": 3.6937852063902485,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "restricts",
+        "score": 0.7946219612011919,
+        "meta": {
+          "z": 1.08878913059851,
+          "countPrev": 1,
+          "countCurr": 4,
+          "per10kPrev": 1.0726161106939827,
+          "per10kCurr": 3.6937852063902485,
+          "deltaPer10k": 2.621169095696266,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "half",
+        "score": 0.7503133607872922,
+        "meta": {
+          "z": 0.8953221355771375,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8468926031951243,
+          "deltaPer10k": 1.8468926031951243,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "publishers",
+        "score": 0.7503133607872922,
+        "meta": {
+          "z": 0.8953221355771375,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8468926031951243,
+          "deltaPer10k": 1.8468926031951243,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_fallers": [
+      {
+        "label": "cards",
+        "score": -1.1449081349151127,
+        "meta": {
+          "z": -1.2062738775891069,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 4.290464442775931,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.290464442775931,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "continues",
+        "score": -0.9942509946216517,
+        "meta": {
+          "z": -1.3623203597272895,
+          "countPrev": 4,
+          "countCurr": 1,
+          "per10kPrev": 4.290464442775931,
+          "per10kCurr": 0.9234463015975621,
+          "deltaPer10k": -3.3670181411783684,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "threat",
+        "score": -0.9476395933450749,
+        "meta": {
+          "z": -1.5168769941071478,
+          "countPrev": 6,
+          "countCurr": 2,
+          "per10kPrev": 6.435696664163896,
+          "per10kCurr": 1.8468926031951243,
+          "deltaPer10k": -4.588804060968772,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "credentials",
+        "score": -0.935890353823649,
+        "meta": {
+          "z": -0.9860529868527816,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.1452322213879653,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "invasion",
+        "score": -0.935890353823649,
+        "meta": {
+          "z": -0.9860529868527816,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.1452322213879653,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "obtained",
+        "score": -0.935890353823649,
+        "meta": {
+          "z": -0.9860529868527816,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.1452322213879653,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "placing",
+        "score": -0.935890353823649,
+        "meta": {
+          "z": -0.9860529868527816,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.1452322213879653,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "quarters",
+        "score": -0.935890353823649,
+        "meta": {
+          "z": -0.9860529868527816,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.1452322213879653,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "russian",
+        "score": -0.935890353823649,
+        "meta": {
+          "z": -0.9860529868527816,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.1452322213879653,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "shortage",
+        "score": -0.935890353823649,
+        "meta": {
+          "z": -0.9860529868527816,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.1452322213879653,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "actors",
+        "score": -0.8536290426055837,
+        "meta": {
+          "z": -1.3663952681202627,
+          "countPrev": 8,
+          "countCurr": 4,
+          "per10kPrev": 8.580928885551861,
+          "per10kCurr": 3.6937852063902485,
+          "deltaPer10k": -4.887143679161612,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "congress",
+        "score": -0.8263492000037965,
+        "meta": {
+          "z": -0.9860529868527816,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.1452322213879653,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "supporting",
+        "score": -0.8263492000037965,
+        "meta": {
+          "z": -0.9860529868527816,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.1452322213879653,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "threat actors",
+        "score": -0.7850916004175391,
+        "meta": {
+          "z": -1.5168769941071478,
+          "countPrev": 6,
+          "countCurr": 2,
+          "per10kPrev": 6.435696664163896,
+          "per10kCurr": 1.8468926031951243,
+          "deltaPer10k": -4.588804060968772,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "israel companies",
+        "score": -0.7699614012352138,
+        "meta": {
+          "z": -0.9860529868527816,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.1452322213879653,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.1452322213879653,
+          "distinctive": false
+        }
+      }
+    ],
+    "summary": "Adds emphasis on license requirements, regulators, usg; de-emphasizes cards, continues, threat.",
+    "ranked_items": [
+      {
+        "label": "license requirements",
+        "score": 1.0359505284689179,
+        "meta": {
+          "z": 1.114511132733364,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.6937852063902485,
+          "deltaPer10k": 3.6937852063902485,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "regulators",
+        "score": 0.9744805635365621,
+        "meta": {
+          "z": 1.3352309618453673,
+          "countPrev": 0,
+          "countCurr": 8,
+          "per10kPrev": 0.0,
+          "per10kCurr": 7.387570412780497,
+          "deltaPer10k": 7.387570412780497,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "usg",
+        "score": 0.8937855084211653,
+        "meta": {
+          "z": 1.2246627883080061,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.61723150798781,
+          "deltaPer10k": 4.61723150798781,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "models",
+        "score": 0.8772584986439882,
+        "meta": {
+          "z": 1.6771303404260056,
+          "countPrev": 1,
+          "countCurr": 7,
+          "per10kPrev": 1.0726161106939827,
+          "per10kCurr": 6.464124111182935,
+          "deltaPer10k": 5.391508000488952,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "architectures",
+        "score": 0.8652045554625512,
+        "meta": {
+          "z": 1.1855012342069264,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.61723150798781,
+          "deltaPer10k": 4.61723150798781,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "reductions",
+        "score": 0.8574859152098918,
+        "meta": {
+          "z": 1.023207317043473,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.7703389047926867,
+          "deltaPer10k": 2.7703389047926867,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "bilateral",
+        "score": 0.8497751758005017,
+        "meta": {
+          "z": 0.8953221355771375,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8468926031951243,
+          "deltaPer10k": 1.8468926031951243,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "examples",
+        "score": 0.8497751758005017,
+        "meta": {
+          "z": 0.8953221355771375,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8468926031951243,
+          "deltaPer10k": 1.8468926031951243,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "legacy",
+        "score": 0.8497751758005017,
+        "meta": {
+          "z": 0.8953221355771375,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8468926031951243,
+          "deltaPer10k": 1.8468926031951243,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "content",
+        "score": 0.8133944371637168,
+        "meta": {
+          "z": 1.114511132733364,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.6937852063902485,
+          "deltaPer10k": 3.6937852063902485,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "lockdowns",
+        "score": 0.8133944371637168,
+        "meta": {
+          "z": 1.114511132733364,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.6937852063902485,
+          "deltaPer10k": 3.6937852063902485,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "recorded",
+        "score": 0.8133944371637168,
+        "meta": {
+          "z": 1.114511132733364,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.6937852063902485,
+          "deltaPer10k": 3.6937852063902485,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "restricts",
+        "score": 0.7946219612011919,
+        "meta": {
+          "z": 1.08878913059851,
+          "countPrev": 1,
+          "countCurr": 4,
+          "per10kPrev": 1.0726161106939827,
+          "per10kCurr": 3.6937852063902485,
+          "deltaPer10k": 2.621169095696266,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "half",
+        "score": 0.7503133607872922,
+        "meta": {
+          "z": 0.8953221355771375,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8468926031951243,
+          "deltaPer10k": 1.8468926031951243,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "publishers",
+        "score": 0.7503133607872922,
+        "meta": {
+          "z": 0.8953221355771375,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8468926031951243,
+          "deltaPer10k": 1.8468926031951243,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "cards",
+        "score": -1.1449081349151127,
+        "meta": {
+          "z": -1.2062738775891069,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 4.290464442775931,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.290464442775931,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "continues",
+        "score": -0.9942509946216517,
+        "meta": {
+          "z": -1.3623203597272895,
+          "countPrev": 4,
+          "countCurr": 1,
+          "per10kPrev": 4.290464442775931,
+          "per10kCurr": 0.9234463015975621,
+          "deltaPer10k": -3.3670181411783684,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "threat",
+        "score": -0.9476395933450749,
+        "meta": {
+          "z": -1.5168769941071478,
+          "countPrev": 6,
+          "countCurr": 2,
+          "per10kPrev": 6.435696664163896,
+          "per10kCurr": 1.8468926031951243,
+          "deltaPer10k": -4.588804060968772,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "credentials",
+        "score": -0.935890353823649,
+        "meta": {
+          "z": -0.9860529868527816,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.1452322213879653,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "invasion",
+        "score": -0.935890353823649,
+        "meta": {
+          "z": -0.9860529868527816,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.1452322213879653,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "obtained",
+        "score": -0.935890353823649,
+        "meta": {
+          "z": -0.9860529868527816,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.1452322213879653,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "placing",
+        "score": -0.935890353823649,
+        "meta": {
+          "z": -0.9860529868527816,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.1452322213879653,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "quarters",
+        "score": -0.935890353823649,
+        "meta": {
+          "z": -0.9860529868527816,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.1452322213879653,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "russian",
+        "score": -0.935890353823649,
+        "meta": {
+          "z": -0.9860529868527816,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.1452322213879653,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "shortage",
+        "score": -0.935890353823649,
+        "meta": {
+          "z": -0.9860529868527816,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.1452322213879653,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "actors",
+        "score": -0.8536290426055837,
+        "meta": {
+          "z": -1.3663952681202627,
+          "countPrev": 8,
+          "countCurr": 4,
+          "per10kPrev": 8.580928885551861,
+          "per10kCurr": 3.6937852063902485,
+          "deltaPer10k": -4.887143679161612,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "congress",
+        "score": -0.8263492000037965,
+        "meta": {
+          "z": -0.9860529868527816,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.1452322213879653,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "supporting",
+        "score": -0.8263492000037965,
+        "meta": {
+          "z": -0.9860529868527816,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.1452322213879653,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "threat actors",
+        "score": -0.7850916004175391,
+        "meta": {
+          "z": -1.5168769941071478,
+          "countPrev": 6,
+          "countCurr": 2,
+          "per10kPrev": 6.435696664163896,
+          "per10kCurr": 1.8468926031951243,
+          "deltaPer10k": -4.588804060968772,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "israel companies",
+        "score": -0.7699614012352138,
+        "meta": {
+          "z": -0.9860529868527816,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.1452322213879653,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.1452322213879653,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_risers_alt": [
+      {
+        "label": "personal data",
+        "score": 1.9298143787644473,
+        "meta": {}
+      },
+      {
+        "label": "personal information",
+        "score": 1.9007349949318213,
+        "meta": {}
+      },
+      {
+        "label": "customers china",
+        "score": 1.8983623848471884,
+        "meta": {}
+      },
+      {
+        "label": "financial harm",
+        "score": 0.9125893155122276,
+        "meta": {}
+      },
+      {
+        "label": "customers future demand products",
+        "score": 1.3197178375369516,
+        "meta": {}
+      },
+      {
+        "label": "information systems",
+        "score": 1.0169344442256936,
+        "meta": {}
+      },
+      {
+        "label": "use ai",
+        "score": 1.0169344442256936,
+        "meta": {}
+      },
+      {
+        "label": "adverse impact financial",
+        "score": 1.895997363596475,
+        "meta": {}
+      },
+      {
+        "label": "cause stock",
+        "score": 1.895997363596475,
+        "meta": {}
+      },
+      {
+        "label": "future adverse",
+        "score": 1.895997363596475,
+        "meta": {}
+      },
+      {
+        "label": "future cause",
+        "score": 1.895997363596475,
+        "meta": {}
+      },
+      {
+        "label": "new requirements",
+        "score": 1.895997363596475,
+        "meta": {}
+      },
+      {
+        "label": "party suppliers technology",
+        "score": 1.895997363596475,
+        "meta": {}
+      },
+      {
+        "label": "supply demand",
+        "score": 0.8792678535312914,
+        "meta": {}
+      },
+      {
+        "label": "changes tax laws",
+        "score": 1.3174300941408497,
+        "meta": {}
+      }
+    ],
+    "top_fallers_alt": [
+      {
+        "label": "future demand",
+        "score": -2.3323984384759893,
+        "meta": {}
+      },
+      {
+        "label": "information technology",
+        "score": -2.3323984384759893,
+        "meta": {}
+      },
+      {
+        "label": "adverse changes",
+        "score": -2.3292760709820053,
+        "meta": {}
+      },
+      {
+        "label": "costs increase",
+        "score": -2.3292760709820053,
+        "meta": {}
+      },
+      {
+        "label": "demand products impact ability",
+        "score": -2.3292760709820053,
+        "meta": {}
+      },
+      {
+        "label": "economic industry",
+        "score": -2.3292760709820053,
+        "meta": {}
+      },
+      {
+        "label": "product demand",
+        "score": -2.3292760709820053,
+        "meta": {}
+      },
+      {
+        "label": "products services result",
+        "score": -2.3292760709820053,
+        "meta": {}
+      },
+      {
+        "label": "new products services",
+        "score": -1.254449604241647,
+        "meta": {}
+      },
+      {
+        "label": "human capital",
+        "score": -2.3261655111231887,
+        "meta": {}
+      },
+      {
+        "label": "products services",
+        "score": -0.19216366973579602,
+        "meta": {}
+      },
+      {
+        "label": "trade restrictions",
+        "score": -0.5885642656319447,
+        "meta": {}
+      },
+      {
+        "label": "Supply chain",
+        "score": -0.1805962459470467,
+        "meta": {}
+      },
+      {
+        "label": "Climate change",
+        "score": -0.1562298593144109,
+        "meta": {}
+      },
+      {
+        "label": "result increased",
+        "score": -0.21864937123597095,
+        "meta": {}
+      }
+    ],
+    "summary_alt": "Adds emphasis on personal data, personal information, customers china; de-emphasizes future demand, information technology, adverse changes."
+  },
+  "evidence": [
+    {
+      "year": 2023,
+      "paragraph_idx": 10,
+      "snippet": "\u2022 Increased scrutiny from shareholders, regulators, and others regarding our environmental, social and governance responsibilities could result in financial, reputational and operational harm.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "regulators"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 19,
+      "snippet": "\u2022 launch new offerings with new business models including standalone software, cloud solutions, and software-, infrastructure-, or platform-as-a-service solutions;",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "models"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 24,
+      "snippet": "However, if attempts in the aftermarket to improve the hash rate capabilities of our LHR cards are successful, our gaming cards may become more attractive to miners, increasing demand for our gaming GPUs and limiting our ability to supply our gaming cards to non-mining customers.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "cards"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 66,
+      "snippet": "To the extent such inflation continues, increases or both, it may reduce our margins and have a material adverse effect on our financial performance.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "continues"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.0439,
+    "confidence": 1.0,
+    "coverage": 0.6946768589298123,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T05:55:31Z",
+    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "f9d680b55eeb9b0b3c191801569738e3704083c4e3f55e5c24b46194143c56dc",
+      "curr_text_sha256": "3d36f90bfc94e8a3354daf84ba4fe8a6bac6bc4e03aa9ce4e58ab7135d329d3c",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

@@ -1,0 +1,154 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_jsd_ngrams_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "NVDA",
+  "section": "10k_item1a",
+  "year_from": 2022,
+  "year_to": 2023,
+  "artifacts": {
+    "ranked_items": [
+      {
+        "label": "china",
+        "score": 0.0006015290521131268
+      },
+      {
+        "label": "regulators",
+        "score": 0.0002787262211692565
+      },
+      {
+        "label": "cloud",
+        "score": 0.00022648233888069823
+      },
+      {
+        "label": "architectures",
+        "score": 0.0001742038882307853
+      },
+      {
+        "label": "usg",
+        "score": 0.0001742038882307853
+      },
+      {
+        "label": "cards",
+        "score": 0.00016919042382201166
+      },
+      {
+        "label": "recorded",
+        "score": 0.00013936311058462825
+      },
+      {
+        "label": "content",
+        "score": 0.00013936311058462825
+      },
+      {
+        "label": "ai cloud",
+        "score": 0.00013936311058462825
+      },
+      {
+        "label": "lockdowns",
+        "score": 0.00013936311058462825
+      },
+      {
+        "label": "license requirements",
+        "score": 0.00013936311058462825
+      },
+      {
+        "label": "changes tax",
+        "score": 0.00013936311058462825
+      },
+      {
+        "label": "financial harm",
+        "score": 0.00013936311058462825
+      },
+      {
+        "label": "past future",
+        "score": 0.00013936311058462825
+      },
+      {
+        "label": "reputational financial",
+        "score": 0.00013936311058462825
+      },
+      {
+        "label": "disadvantage",
+        "score": 0.00013936311058462825
+      },
+      {
+        "label": "new license",
+        "score": 0.00013936311058462825
+      },
+      {
+        "label": "past",
+        "score": 0.0001365968120464712
+      },
+      {
+        "label": "russia ukraine",
+        "score": 0.00012689281786650876
+      },
+      {
+        "label": "inventory purchase",
+        "score": 0.00012689281786650876
+      }
+    ],
+    "stats": {
+      "jsd": 0.170119,
+      "tokens_prev": 5911,
+      "tokens_curr": 7176
+    }
+  },
+  "evidence": [
+    {
+      "year": 2023,
+      "paragraph_idx": 9,
+      "snippet": "\u2022 We are subject to complex laws, rules and regulations, and political and other actions, which may adversely impact our business. \u2022 Increased scrutiny from shareholders, regulators, and others regarding our environmental, social and governance responsibilities could result in financial, reputational and operational harm.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "regulators"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 15,
+      "snippet": "Our success depends on our ability to: \u2022 timely identify industry changes, adapt our strategies, and develop new or enhance existing products and technologies that meet the evolving needs of these markets, including due to unexpected changes in industry standards or disruptive technological innovation that could render our products incompatible with products developed by other companies; \u2022 develop new products and technologies through investments in research and development; \u2022 launch new offerings with new business models including standalone software, cloud solutions, and software-, infrastructure-, or platform-as-a-service solutions; \u2022 expand the ecosystem for our products and technologies; \u2022 meet evolving and prevailing customer and industry safety and compliance standards; \u2022 manage product and software lifecycles to maintain customer and end user satisfaction; \u2022 develop, acquire, and maintain the internal and external infrastructure needed to scale our business, including our acquisitions integrations, customer support, e-commerce, IP licensing capabilities and cloud service capacity; and \u2022 complete technical, financial, compliance, sales and marketing investments for some of the above activities.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "cloud"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 33,
+      "snippet": "Threat actors, sophisticated nation-states, and nation-state-supported actors now engage and are expected to continue to engage in cyber-attacks. Due to increasing geopolitical conflicts, we and the third parties upon which we rely may be vulnerable to a heightened risk of cyber-attacks. Furthermore, we rely on products and services provided by third party suppliers to operate certain critical business systems, including without limitation, cloud-based infrastructure, encryption and authentication technology, employee email, and other functions, which exposes us to supply-chain attacks or other business disruptions. We cannot guarantee that third parties and infrastructure in our supply chain or our partners\u2019 supply chains have not been compromised or that they do not contain exploitable defects or bugs that could result in a breach of or disruption to our information technology systems, including our products and services, or the third-party information technology systems that support our services. Our ability to monitor these third parties\u2019 information security practices is limited, and these may not have adequate information security measures in place. In addition, if one of our third-party suppliers suffers a security breach, our response may be limited or more difficult because we may not have direct access to their systems, logs and other information related to the security breach.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "cloud"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 37,
+      "snippet": "Our worldwide operations could be disrupted by natural disasters and extreme weather conditions, power or water shortages, telecommunications failures, cloud service provider outages, terrorist attacks, or acts of violence, political and/or civil unrest, acts of war or other military actions, epidemics or pandemics and other natural or man-made disasters and catastrophic events. Our corporate headquarters, a large portion of our current data center capacity, and a portion of our research and development activities are located in California, and other critical business operations, finished goods inventory, and some of our suppliers are located in Asia, making our operations vulnerable to natural disasters such as earthquakes, wildfires, or other business disruptions occurring in these geographical areas. Catastrophic events can also have an impact on third-party vendors who provide us critical infrastructure services for IT and research and development systems and personnel. Geopolitical and domestic political developments and other events beyond our control, can increase economic volatility globally. Political instability, changes in government or adverse political developments in or around any of the major countries in which we do business would also likely harm our business, financial condition and results of operations. For example, the invasion by Russia of Ukraine has had and will likely continue to have a negative impact on our employees or operations both within and outside these regions, and may result in the loss of some or even all of our assets in those regions. Our operations could be harmed and our costs could increase if manufacturing, logistics or other operations are disrupted for any reason, including natural disasters, high heat events or water shortages, information technology system failures, military actions or economic, business, labor, environmental, public health, or political issues. For example, our operations could be harmed, and our costs could increase, if the conflict between Russia and Ukraine results in a shortage of key materials that our suppliers, including our foundry partners, require to satisfy our needs. The ultimate impact on us, our third-party foundries and other suppliers of being located and consolidated in certain geographical areas is unknown. In the event a disaster, war or catastrophic event affects us or the third-party systems on which we rely, our business could be harmed as a result of declines in revenue, increases in expenses, and substantial expenditures and time spent to fully resume operations. All of these risks and conditions could materially adversely affect our future sales and operating results.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "cloud"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.170119,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T05:55:31Z",
+    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "1a7937b559823b48cfe923c9a8174260a8af88156c70d16482bf92d29c4fc296",
+      "curr_text_sha256": "b13bf38cc427b8eec49b6492bf559638ba32ea611dae26ef263a0e9035aa9567",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

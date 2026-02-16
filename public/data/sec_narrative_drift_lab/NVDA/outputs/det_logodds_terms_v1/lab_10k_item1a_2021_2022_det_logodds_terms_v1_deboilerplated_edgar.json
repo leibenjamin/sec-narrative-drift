@@ -1,0 +1,1021 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_logodds_terms_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "NVDA",
+  "section": "10k_item1a",
+  "year_from": 2021,
+  "year_to": 2022,
+  "artifacts": {
+    "top_risers": [
+      {
+        "label": "cards",
+        "score": 1.0823363675494966,
+        "meta": {
+          "z": 1.1403483363636342,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.290464442775931,
+          "deltaPer10k": 4.290464442775931,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "Artificial intelligence",
+        "score": 1.065165360541448,
+        "meta": {
+          "z": 2.6389548423884115,
+          "countPrev": 1,
+          "countCurr": 15,
+          "per10kPrev": 1.1453441759248655,
+          "per10kCurr": 16.08924166040974,
+          "deltaPer10k": 14.943897484484875,
+          "distinctive": true,
+          "includes": [
+            "ai"
+          ]
+        }
+      },
+      {
+        "label": "esg",
+        "score": 0.9556544608088483,
+        "meta": {
+          "z": 1.1403483363636342,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.290464442775931,
+          "deltaPer10k": 4.290464442775931,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "cmp",
+        "score": 0.8790520381436753,
+        "meta": {
+          "z": 1.0489414012945302,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.217848332081948,
+          "deltaPer10k": 3.217848332081948,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "lhr",
+        "score": 0.8790520381436753,
+        "meta": {
+          "z": 1.0489414012945302,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.217848332081948,
+          "deltaPer10k": 3.217848332081948,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "credentials",
+        "score": 0.8740161753382205,
+        "meta": {
+          "z": 0.9208624244590641,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.1452322213879653,
+          "deltaPer10k": 2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "invasion",
+        "score": 0.8740161753382205,
+        "meta": {
+          "z": 0.9208624244590641,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.1452322213879653,
+          "deltaPer10k": 2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "obtained",
+        "score": 0.8740161753382205,
+        "meta": {
+          "z": 0.9208624244590641,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.1452322213879653,
+          "deltaPer10k": 2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "placing",
+        "score": 0.8740161753382205,
+        "meta": {
+          "z": 0.9208624244590641,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.1452322213879653,
+          "deltaPer10k": 2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "quarters",
+        "score": 0.8740161753382205,
+        "meta": {
+          "z": 0.9208624244590641,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.1452322213879653,
+          "deltaPer10k": 2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "russian",
+        "score": 0.8740161753382205,
+        "meta": {
+          "z": 0.9208624244590641,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.1452322213879653,
+          "deltaPer10k": 2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "shortage",
+        "score": 0.8740161753382205,
+        "meta": {
+          "z": 0.9208624244590641,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.1452322213879653,
+          "deltaPer10k": 2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "actors",
+        "score": 0.8504080513497411,
+        "meta": {
+          "z": 1.3612394603970317,
+          "countPrev": 0,
+          "countCurr": 8,
+          "per10kPrev": 0.0,
+          "per10kCurr": 8.580928885551861,
+          "deltaPer10k": 8.580928885551861,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "impose",
+        "score": 0.8328356167196771,
+        "meta": {
+          "z": 1.5922033055787101,
+          "countPrev": 1,
+          "countCurr": 6,
+          "per10kPrev": 1.1453441759248655,
+          "per10kCurr": 6.435696664163896,
+          "deltaPer10k": 5.290352488239031,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "russia",
+        "score": 0.8238074754176158,
+        "meta": {
+          "z": 1.3186601908679798,
+          "countPrev": 0,
+          "countCurr": 7,
+          "per10kPrev": 0.0,
+          "per10kCurr": 7.508312774857878,
+          "deltaPer10k": 7.508312774857878,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_fallers": [
+      {
+        "label": "COVID-19",
+        "score": -1.6916349437006037,
+        "meta": {
+          "z": -2.317874196250036,
+          "countPrev": 24,
+          "countCurr": 11,
+          "per10kPrev": 27.488260222196768,
+          "per10kCurr": 11.798777217633807,
+          "deltaPer10k": -15.68948300456296,
+          "distinctive": true,
+          "includes": [
+            "covid"
+          ]
+        }
+      },
+      {
+        "label": "covid pandemic",
+        "score": -1.0886341272687763,
+        "meta": {
+          "z": -1.6919146192084755,
+          "countPrev": 13,
+          "countCurr": 6,
+          "per10kPrev": 14.88947428702325,
+          "per10kCurr": 6.435696664163896,
+          "deltaPer10k": -8.453777622859352,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "home",
+        "score": -1.0335062978173426,
+        "meta": {
+          "z": -1.0889010317612269,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 3.436032527774596,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.436032527774596,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "travel",
+        "score": -0.9892723011683795,
+        "meta": {
+          "z": -1.1804633045851844,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 4.581376703699462,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.581376703699462,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "arm",
+        "score": -0.9380933177513043,
+        "meta": {
+          "z": -1.2853732437884482,
+          "countPrev": 4,
+          "countCurr": 1,
+          "per10kPrev": 4.581376703699462,
+          "per10kCurr": 1.0726161106939827,
+          "deltaPer10k": -3.508760593005479,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "benefited",
+        "score": -0.9116618487920526,
+        "meta": {
+          "z": -0.9605258621679544,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.290688351849731,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "desktop",
+        "score": -0.9116618487920526,
+        "meta": {
+          "z": -0.9605258621679544,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.290688351849731,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "election",
+        "score": -0.9116618487920526,
+        "meta": {
+          "z": -0.9605258621679544,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.290688351849731,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "grows",
+        "score": -0.9116618487920526,
+        "meta": {
+          "z": -0.9605258621679544,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.290688351849731,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "joint",
+        "score": -0.9116618487920526,
+        "meta": {
+          "z": -0.9605258621679544,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.290688351849731,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "remotely",
+        "score": -0.9116618487920526,
+        "meta": {
+          "z": -0.9605258621679544,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.290688351849731,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "severity",
+        "score": -0.9116618487920526,
+        "meta": {
+          "z": -0.9605258621679544,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.290688351849731,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "slowdown",
+        "score": -0.9116618487920526,
+        "meta": {
+          "z": -0.9605258621679544,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.290688351849731,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "try",
+        "score": -0.9116618487920526,
+        "meta": {
+          "z": -0.9605258621679544,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.290688351849731,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "workstations",
+        "score": -0.9116618487920526,
+        "meta": {
+          "z": -0.9605258621679544,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.290688351849731,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.290688351849731,
+          "distinctive": false
+        }
+      }
+    ],
+    "summary": "Adds emphasis on cards, Artificial intelligence, esg; de-emphasizes COVID-19, covid pandemic, home.",
+    "ranked_items": [
+      {
+        "label": "cards",
+        "score": 1.0823363675494966,
+        "meta": {
+          "z": 1.1403483363636342,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.290464442775931,
+          "deltaPer10k": 4.290464442775931,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "Artificial intelligence",
+        "score": 1.065165360541448,
+        "meta": {
+          "z": 2.6389548423884115,
+          "countPrev": 1,
+          "countCurr": 15,
+          "per10kPrev": 1.1453441759248655,
+          "per10kCurr": 16.08924166040974,
+          "deltaPer10k": 14.943897484484875,
+          "distinctive": true,
+          "includes": [
+            "ai"
+          ]
+        }
+      },
+      {
+        "label": "esg",
+        "score": 0.9556544608088483,
+        "meta": {
+          "z": 1.1403483363636342,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.290464442775931,
+          "deltaPer10k": 4.290464442775931,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "cmp",
+        "score": 0.8790520381436753,
+        "meta": {
+          "z": 1.0489414012945302,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.217848332081948,
+          "deltaPer10k": 3.217848332081948,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "lhr",
+        "score": 0.8790520381436753,
+        "meta": {
+          "z": 1.0489414012945302,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.217848332081948,
+          "deltaPer10k": 3.217848332081948,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "credentials",
+        "score": 0.8740161753382205,
+        "meta": {
+          "z": 0.9208624244590641,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.1452322213879653,
+          "deltaPer10k": 2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "invasion",
+        "score": 0.8740161753382205,
+        "meta": {
+          "z": 0.9208624244590641,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.1452322213879653,
+          "deltaPer10k": 2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "obtained",
+        "score": 0.8740161753382205,
+        "meta": {
+          "z": 0.9208624244590641,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.1452322213879653,
+          "deltaPer10k": 2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "placing",
+        "score": 0.8740161753382205,
+        "meta": {
+          "z": 0.9208624244590641,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.1452322213879653,
+          "deltaPer10k": 2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "quarters",
+        "score": 0.8740161753382205,
+        "meta": {
+          "z": 0.9208624244590641,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.1452322213879653,
+          "deltaPer10k": 2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "russian",
+        "score": 0.8740161753382205,
+        "meta": {
+          "z": 0.9208624244590641,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.1452322213879653,
+          "deltaPer10k": 2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "shortage",
+        "score": 0.8740161753382205,
+        "meta": {
+          "z": 0.9208624244590641,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.1452322213879653,
+          "deltaPer10k": 2.1452322213879653,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "actors",
+        "score": 0.8504080513497411,
+        "meta": {
+          "z": 1.3612394603970317,
+          "countPrev": 0,
+          "countCurr": 8,
+          "per10kPrev": 0.0,
+          "per10kCurr": 8.580928885551861,
+          "deltaPer10k": 8.580928885551861,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "impose",
+        "score": 0.8328356167196771,
+        "meta": {
+          "z": 1.5922033055787101,
+          "countPrev": 1,
+          "countCurr": 6,
+          "per10kPrev": 1.1453441759248655,
+          "per10kCurr": 6.435696664163896,
+          "deltaPer10k": 5.290352488239031,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "russia",
+        "score": 0.8238074754176158,
+        "meta": {
+          "z": 1.3186601908679798,
+          "countPrev": 0,
+          "countCurr": 7,
+          "per10kPrev": 0.0,
+          "per10kCurr": 7.508312774857878,
+          "deltaPer10k": 7.508312774857878,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "COVID-19",
+        "score": -1.6916349437006037,
+        "meta": {
+          "z": -2.317874196250036,
+          "countPrev": 24,
+          "countCurr": 11,
+          "per10kPrev": 27.488260222196768,
+          "per10kCurr": 11.798777217633807,
+          "deltaPer10k": -15.68948300456296,
+          "distinctive": true,
+          "includes": [
+            "covid"
+          ]
+        }
+      },
+      {
+        "label": "covid pandemic",
+        "score": -1.0886341272687763,
+        "meta": {
+          "z": -1.6919146192084755,
+          "countPrev": 13,
+          "countCurr": 6,
+          "per10kPrev": 14.88947428702325,
+          "per10kCurr": 6.435696664163896,
+          "deltaPer10k": -8.453777622859352,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "home",
+        "score": -1.0335062978173426,
+        "meta": {
+          "z": -1.0889010317612269,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 3.436032527774596,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.436032527774596,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "travel",
+        "score": -0.9892723011683795,
+        "meta": {
+          "z": -1.1804633045851844,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 4.581376703699462,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.581376703699462,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "arm",
+        "score": -0.9380933177513043,
+        "meta": {
+          "z": -1.2853732437884482,
+          "countPrev": 4,
+          "countCurr": 1,
+          "per10kPrev": 4.581376703699462,
+          "per10kCurr": 1.0726161106939827,
+          "deltaPer10k": -3.508760593005479,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "benefited",
+        "score": -0.9116618487920526,
+        "meta": {
+          "z": -0.9605258621679544,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.290688351849731,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "desktop",
+        "score": -0.9116618487920526,
+        "meta": {
+          "z": -0.9605258621679544,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.290688351849731,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "election",
+        "score": -0.9116618487920526,
+        "meta": {
+          "z": -0.9605258621679544,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.290688351849731,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "grows",
+        "score": -0.9116618487920526,
+        "meta": {
+          "z": -0.9605258621679544,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.290688351849731,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "joint",
+        "score": -0.9116618487920526,
+        "meta": {
+          "z": -0.9605258621679544,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.290688351849731,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "remotely",
+        "score": -0.9116618487920526,
+        "meta": {
+          "z": -0.9605258621679544,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.290688351849731,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "severity",
+        "score": -0.9116618487920526,
+        "meta": {
+          "z": -0.9605258621679544,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.290688351849731,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "slowdown",
+        "score": -0.9116618487920526,
+        "meta": {
+          "z": -0.9605258621679544,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.290688351849731,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "try",
+        "score": -0.9116618487920526,
+        "meta": {
+          "z": -0.9605258621679544,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.290688351849731,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "workstations",
+        "score": -0.9116618487920526,
+        "meta": {
+          "z": -0.9605258621679544,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.290688351849731,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.290688351849731,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_risers_alt": [
+      {
+        "label": "future demand",
+        "score": 2.076272034197636,
+        "meta": {}
+      },
+      {
+        "label": "information technology",
+        "score": 2.076272034197636,
+        "meta": {}
+      },
+      {
+        "label": "Data privacy",
+        "score": 0.5735779562693546,
+        "meta": {}
+      },
+      {
+        "label": "result increased",
+        "score": 1.0008233541296674,
+        "meta": {}
+      },
+      {
+        "label": "adverse changes",
+        "score": 2.0732477948170693,
+        "meta": {}
+      },
+      {
+        "label": "costs increase",
+        "score": 2.0732477948170693,
+        "meta": {}
+      },
+      {
+        "label": "demand products impact ability",
+        "score": 2.0732477948170693,
+        "meta": {}
+      },
+      {
+        "label": "economic industry",
+        "score": 2.0732477948170693,
+        "meta": {}
+      },
+      {
+        "label": "product demand",
+        "score": 2.0732477948170693,
+        "meta": {}
+      },
+      {
+        "label": "products services result",
+        "score": 2.0732477948170693,
+        "meta": {}
+      },
+      {
+        "label": "tax laws",
+        "score": 1.4948105078827254,
+        "meta": {}
+      },
+      {
+        "label": "Climate change",
+        "score": 0.3921775239152887,
+        "meta": {}
+      },
+      {
+        "label": "material weakness",
+        "score": 0.9978314227442437,
+        "meta": {}
+      },
+      {
+        "label": "partners customers",
+        "score": 0.9978314227442437,
+        "meta": {}
+      },
+      {
+        "label": "demand products services",
+        "score": 0.9236136995910149,
+        "meta": {}
+      }
+    ],
+    "top_fallers_alt": [
+      {
+        "label": "Intellectual property",
+        "score": -0.8134832307791529,
+        "meta": {}
+      },
+      {
+        "label": "covid pandemic",
+        "score": -2.1760082799055063,
+        "meta": {}
+      },
+      {
+        "label": "laws regulations",
+        "score": -1.6681697403346343,
+        "meta": {}
+      },
+      {
+        "label": "economic demand",
+        "score": -2.153450978940808,
+        "meta": {}
+      },
+      {
+        "label": "future continue",
+        "score": -1.5750822464271357,
+        "meta": {}
+      },
+      {
+        "label": "ability meet customer demand",
+        "score": -1.07824062236807,
+        "meta": {}
+      },
+      {
+        "label": "data security",
+        "score": -1.07824062236807,
+        "meta": {}
+      },
+      {
+        "label": "financial markets",
+        "score": -1.07824062236807,
+        "meta": {}
+      },
+      {
+        "label": "product design",
+        "score": -1.07824062236807,
+        "meta": {}
+      },
+      {
+        "label": "revenue sales",
+        "score": -1.07824062236807,
+        "meta": {}
+      },
+      {
+        "label": "competitive landscape",
+        "score": -1.0750061990064799,
+        "meta": {}
+      },
+      {
+        "label": "financial results",
+        "score": -0.21645635193884072,
+        "meta": {}
+      },
+      {
+        "label": "new products",
+        "score": -0.19901511172630526,
+        "meta": {}
+      },
+      {
+        "label": "product liability",
+        "score": -0.29541646649251785,
+        "meta": {}
+      },
+      {
+        "label": "demand products",
+        "score": -0.17439274312800368,
+        "meta": {}
+      }
+    ],
+    "summary_alt": "Adds emphasis on future demand, information technology, Data privacy; de-emphasizes Intellectual property, covid pandemic, laws regulations."
+  },
+  "evidence": [
+    {
+      "year": 2022,
+      "paragraph_idx": 11,
+      "snippet": "If we fail to anticipate the changing needs of our target markets and emerging technology trends, or if we do not appropriately adapt our strategies as market conditions evolve, our business will be harmed.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "arm"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 15,
+      "snippet": "These competitors may be able to more effectively identify and capitalize upon opportunities in new markets and end user customer trends, more quickly transition their products, and secure sufficient foundry capacity and packaging materials during a supply-constrained environment, which could harm our business.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "arm"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 13,
+      "snippet": "If we fail to anticipate the changing needs of our target markets and emerging technology trends, or if we do not appropriately adapt our strategies as market conditions evolve, in a timely manner to exploit potential market opportunities, our business will be harmed.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "arm"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 23,
+      "snippet": "These competitors may be able to more effectively identify and capitalize upon opportunities in new markets and end user customer trends, quickly transition their products, including semiconductor products, to increasingly smaller line width geometries, and obtain sufficient foundry capacity and packaging materials, which could harm our business.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "arm"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.0886,
+    "confidence": 1.0,
+    "coverage": 0.9071391014780628,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-02T05:55:31Z",
+    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "6734466c5fba84b078dc30eb79c68f9243c6da253df3399d53bf91c918961369",
+      "curr_text_sha256": "672f0812e68af903e7ebd26e5135b927e5230a5cc622891d6d29d7e98bbeae7f",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

@@ -1,0 +1,1017 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_logodds_terms_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "NVDA",
+  "section": "10k_item1a",
+  "year_from": 2024,
+  "year_to": 2025,
+  "artifacts": {
+    "top_risers": [
+      {
+        "label": "ifr",
+        "score": 1.4517170778099424,
+        "meta": {
+          "z": 1.52952742251409,
+          "countPrev": 0,
+          "countCurr": 13,
+          "per10kPrev": 0.0,
+          "per10kCurr": 9.95634525541855,
+          "deltaPer10k": 9.95634525541855,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "diffusion",
+        "score": 1.427504947277083,
+        "meta": {
+          "z": 1.5040175499820625,
+          "countPrev": 0,
+          "countCurr": 12,
+          "per10kPrev": 0.0,
+          "per10kCurr": 9.190472543463276,
+          "deltaPer10k": 9.190472543463276,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ai diffusion",
+        "score": 1.3980010876241307,
+        "meta": {
+          "z": 1.5040175499820625,
+          "countPrev": 0,
+          "countCurr": 12,
+          "per10kPrev": 0.0,
+          "per10kCurr": 9.190472543463276,
+          "deltaPer10k": 9.190472543463276,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "diffusion ifr",
+        "score": 1.3980010876241307,
+        "meta": {
+          "z": 1.5040175499820625,
+          "countPrev": 0,
+          "countCurr": 12,
+          "per10kPrev": 0.0,
+          "per10kCurr": 9.190472543463276,
+          "deltaPer10k": 9.190472543463276,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "licensing requirement",
+        "score": 1.1240102453690872,
+        "meta": {
+          "z": 1.4394665212064754,
+          "countPrev": 1,
+          "countCurr": 5,
+          "per10kPrev": 0.7823501799405413,
+          "per10kCurr": 3.8293635597763656,
+          "deltaPer10k": 3.0470133798358243,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "south",
+        "score": 1.095118033506579,
+        "meta": {
+          "z": 1.1538150847305166,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.0634908478210923,
+          "deltaPer10k": 3.0634908478210923,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "south korea",
+        "score": 1.0724839902231382,
+        "meta": {
+          "z": 1.1538150847305166,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.0634908478210923,
+          "deltaPer10k": 3.0634908478210923,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "pillar",
+        "score": 1.0106468269615192,
+        "meta": {
+          "z": 1.2059687628113076,
+          "countPrev": 1,
+          "countCurr": 4,
+          "per10kPrev": 0.7823501799405413,
+          "per10kCurr": 3.0634908478210923,
+          "deltaPer10k": 2.281140667880551,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "train",
+        "score": 1.0106468269615192,
+        "meta": {
+          "z": 1.2059687628113076,
+          "countPrev": 1,
+          "countCurr": 4,
+          "per10kPrev": 0.7823501799405413,
+          "per10kCurr": 3.0634908478210923,
+          "deltaPer10k": 2.281140667880551,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "eccns",
+        "score": 1.00832110488594,
+        "meta": {
+          "z": 1.0623659418193205,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.297618135865819,
+          "deltaPer10k": 2.297618135865819,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "covered",
+        "score": 1.0035191736974298,
+        "meta": {
+          "z": 1.6063228662215094,
+          "countPrev": 3,
+          "countCurr": 9,
+          "per10kPrev": 2.347050539821624,
+          "per10kCurr": 6.892854407597458,
+          "deltaPer10k": 4.545803867775834,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "accelerators",
+        "score": 0.8866726994186216,
+        "meta": {
+          "z": 0.9341973234904151,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.5317454239105461,
+          "deltaPer10k": 1.5317454239105461,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "blackwell",
+        "score": 0.8866726994186216,
+        "meta": {
+          "z": 0.9341973234904151,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.5317454239105461,
+          "deltaPer10k": 1.5317454239105461,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "classified",
+        "score": 0.8866726994186216,
+        "meta": {
+          "z": 0.9341973234904151,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.5317454239105461,
+          "deltaPer10k": 1.5317454239105461,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "combined",
+        "score": 0.8866726994186216,
+        "meta": {
+          "z": 0.9341973234904151,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.5317454239105461,
+          "deltaPer10k": 1.5317454239105461,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_fallers": [
+      {
+        "label": "cpu",
+        "score": -1.0207074980509157,
+        "meta": {
+          "z": -1.075416231232773,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.347050539821624,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.347050539821624,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "content",
+        "score": -0.9086425911200147,
+        "meta": {
+          "z": -1.2450199278595704,
+          "countPrev": 4,
+          "countCurr": 1,
+          "per10kPrev": 3.1294007197621654,
+          "per10kCurr": 0.7658727119552731,
+          "deltaPer10k": -2.3635280078068925,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "foundations",
+        "score": -0.8989674791579656,
+        "meta": {
+          "z": -0.9471510891053149,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.5647003598810827,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.5647003598810827,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "hopper",
+        "score": -0.8989674791579656,
+        "meta": {
+          "z": -0.9471510891053149,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.5647003598810827,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.5647003598810827,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "indications",
+        "score": -0.8989674791579656,
+        "meta": {
+          "z": -0.9471510891053149,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.5647003598810827,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.5647003598810827,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "cases applications",
+        "score": -0.8010872222569472,
+        "meta": {
+          "z": -1.2450199278595704,
+          "countPrev": 4,
+          "countCurr": 1,
+          "per10kPrev": 3.1294007197621654,
+          "per10kCurr": 0.7658727119552731,
+          "deltaPer10k": -2.3635280078068925,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "algorithms",
+        "score": -0.7983200632180378,
+        "meta": {
+          "z": -0.9526068190022221,
+          "countPrev": 3,
+          "countCurr": 1,
+          "per10kPrev": 2.347050539821624,
+          "per10kCurr": 0.7658727119552731,
+          "deltaPer10k": -1.581177827866351,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "publishers",
+        "score": -0.7937479579702909,
+        "meta": {
+          "z": -0.9471510891053149,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.5647003598810827,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.5647003598810827,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "reductions",
+        "score": -0.7937479579702909,
+        "meta": {
+          "z": -0.9471510891053149,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.5647003598810827,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.5647003598810827,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "started",
+        "score": -0.7937479579702909,
+        "meta": {
+          "z": -0.9471510891053149,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.5647003598810827,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.5647003598810827,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "refinance",
+        "score": -0.7848621287209514,
+        "meta": {
+          "z": -1.075416231232773,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.347050539821624,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.347050539821624,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "multiple oems",
+        "score": -0.7438448957253433,
+        "meta": {
+          "z": -0.9526068190022221,
+          "countPrev": 3,
+          "countCurr": 1,
+          "per10kPrev": 2.347050539821624,
+          "per10kCurr": 0.7658727119552731,
+          "deltaPer10k": -1.581177827866351,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "odms integrators",
+        "score": -0.7438448957253433,
+        "meta": {
+          "z": -0.9526068190022221,
+          "countPrev": 3,
+          "countCurr": 1,
+          "per10kPrev": 2.347050539821624,
+          "per10kCurr": 0.7658727119552731,
+          "deltaPer10k": -1.581177827866351,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "content available",
+        "score": -0.7395847783764865,
+        "meta": {
+          "z": -0.9471510891053149,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.5647003598810827,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.5647003598810827,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "content providers",
+        "score": -0.7395847783764865,
+        "meta": {
+          "z": -0.9471510891053149,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.5647003598810827,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.5647003598810827,
+          "distinctive": false
+        }
+      }
+    ],
+    "summary": "Adds emphasis on ifr, diffusion, ai diffusion; de-emphasizes cpu, content, foundations.",
+    "ranked_items": [
+      {
+        "label": "ifr",
+        "score": 1.4517170778099424,
+        "meta": {
+          "z": 1.52952742251409,
+          "countPrev": 0,
+          "countCurr": 13,
+          "per10kPrev": 0.0,
+          "per10kCurr": 9.95634525541855,
+          "deltaPer10k": 9.95634525541855,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "diffusion",
+        "score": 1.427504947277083,
+        "meta": {
+          "z": 1.5040175499820625,
+          "countPrev": 0,
+          "countCurr": 12,
+          "per10kPrev": 0.0,
+          "per10kCurr": 9.190472543463276,
+          "deltaPer10k": 9.190472543463276,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ai diffusion",
+        "score": 1.3980010876241307,
+        "meta": {
+          "z": 1.5040175499820625,
+          "countPrev": 0,
+          "countCurr": 12,
+          "per10kPrev": 0.0,
+          "per10kCurr": 9.190472543463276,
+          "deltaPer10k": 9.190472543463276,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "diffusion ifr",
+        "score": 1.3980010876241307,
+        "meta": {
+          "z": 1.5040175499820625,
+          "countPrev": 0,
+          "countCurr": 12,
+          "per10kPrev": 0.0,
+          "per10kCurr": 9.190472543463276,
+          "deltaPer10k": 9.190472543463276,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "licensing requirement",
+        "score": 1.1240102453690872,
+        "meta": {
+          "z": 1.4394665212064754,
+          "countPrev": 1,
+          "countCurr": 5,
+          "per10kPrev": 0.7823501799405413,
+          "per10kCurr": 3.8293635597763656,
+          "deltaPer10k": 3.0470133798358243,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "south",
+        "score": 1.095118033506579,
+        "meta": {
+          "z": 1.1538150847305166,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.0634908478210923,
+          "deltaPer10k": 3.0634908478210923,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "south korea",
+        "score": 1.0724839902231382,
+        "meta": {
+          "z": 1.1538150847305166,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.0634908478210923,
+          "deltaPer10k": 3.0634908478210923,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "pillar",
+        "score": 1.0106468269615192,
+        "meta": {
+          "z": 1.2059687628113076,
+          "countPrev": 1,
+          "countCurr": 4,
+          "per10kPrev": 0.7823501799405413,
+          "per10kCurr": 3.0634908478210923,
+          "deltaPer10k": 2.281140667880551,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "train",
+        "score": 1.0106468269615192,
+        "meta": {
+          "z": 1.2059687628113076,
+          "countPrev": 1,
+          "countCurr": 4,
+          "per10kPrev": 0.7823501799405413,
+          "per10kCurr": 3.0634908478210923,
+          "deltaPer10k": 2.281140667880551,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "eccns",
+        "score": 1.00832110488594,
+        "meta": {
+          "z": 1.0623659418193205,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.297618135865819,
+          "deltaPer10k": 2.297618135865819,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "covered",
+        "score": 1.0035191736974298,
+        "meta": {
+          "z": 1.6063228662215094,
+          "countPrev": 3,
+          "countCurr": 9,
+          "per10kPrev": 2.347050539821624,
+          "per10kCurr": 6.892854407597458,
+          "deltaPer10k": 4.545803867775834,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "accelerators",
+        "score": 0.8866726994186216,
+        "meta": {
+          "z": 0.9341973234904151,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.5317454239105461,
+          "deltaPer10k": 1.5317454239105461,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "blackwell",
+        "score": 0.8866726994186216,
+        "meta": {
+          "z": 0.9341973234904151,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.5317454239105461,
+          "deltaPer10k": 1.5317454239105461,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "classified",
+        "score": 0.8866726994186216,
+        "meta": {
+          "z": 0.9341973234904151,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.5317454239105461,
+          "deltaPer10k": 1.5317454239105461,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "combined",
+        "score": 0.8866726994186216,
+        "meta": {
+          "z": 0.9341973234904151,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.5317454239105461,
+          "deltaPer10k": 1.5317454239105461,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "cpu",
+        "score": -1.0207074980509157,
+        "meta": {
+          "z": -1.075416231232773,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.347050539821624,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.347050539821624,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "content",
+        "score": -0.9086425911200147,
+        "meta": {
+          "z": -1.2450199278595704,
+          "countPrev": 4,
+          "countCurr": 1,
+          "per10kPrev": 3.1294007197621654,
+          "per10kCurr": 0.7658727119552731,
+          "deltaPer10k": -2.3635280078068925,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "foundations",
+        "score": -0.8989674791579656,
+        "meta": {
+          "z": -0.9471510891053149,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.5647003598810827,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.5647003598810827,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "hopper",
+        "score": -0.8989674791579656,
+        "meta": {
+          "z": -0.9471510891053149,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.5647003598810827,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.5647003598810827,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "indications",
+        "score": -0.8989674791579656,
+        "meta": {
+          "z": -0.9471510891053149,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.5647003598810827,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.5647003598810827,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "cases applications",
+        "score": -0.8010872222569472,
+        "meta": {
+          "z": -1.2450199278595704,
+          "countPrev": 4,
+          "countCurr": 1,
+          "per10kPrev": 3.1294007197621654,
+          "per10kCurr": 0.7658727119552731,
+          "deltaPer10k": -2.3635280078068925,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "algorithms",
+        "score": -0.7983200632180378,
+        "meta": {
+          "z": -0.9526068190022221,
+          "countPrev": 3,
+          "countCurr": 1,
+          "per10kPrev": 2.347050539821624,
+          "per10kCurr": 0.7658727119552731,
+          "deltaPer10k": -1.581177827866351,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "publishers",
+        "score": -0.7937479579702909,
+        "meta": {
+          "z": -0.9471510891053149,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.5647003598810827,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.5647003598810827,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "reductions",
+        "score": -0.7937479579702909,
+        "meta": {
+          "z": -0.9471510891053149,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.5647003598810827,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.5647003598810827,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "started",
+        "score": -0.7937479579702909,
+        "meta": {
+          "z": -0.9471510891053149,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.5647003598810827,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.5647003598810827,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "refinance",
+        "score": -0.7848621287209514,
+        "meta": {
+          "z": -1.075416231232773,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.347050539821624,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.347050539821624,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "multiple oems",
+        "score": -0.7438448957253433,
+        "meta": {
+          "z": -0.9526068190022221,
+          "countPrev": 3,
+          "countCurr": 1,
+          "per10kPrev": 2.347050539821624,
+          "per10kCurr": 0.7658727119552731,
+          "deltaPer10k": -1.581177827866351,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "odms integrators",
+        "score": -0.7438448957253433,
+        "meta": {
+          "z": -0.9526068190022221,
+          "countPrev": 3,
+          "countCurr": 1,
+          "per10kPrev": 2.347050539821624,
+          "per10kCurr": 0.7658727119552731,
+          "deltaPer10k": -1.581177827866351,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "content available",
+        "score": -0.7395847783764865,
+        "meta": {
+          "z": -0.9471510891053149,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.5647003598810827,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.5647003598810827,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "content providers",
+        "score": -0.7395847783764865,
+        "meta": {
+          "z": -0.9471510891053149,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.5647003598810827,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.5647003598810827,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_risers_alt": [
+      {
+        "label": "new suppliers",
+        "score": 2.120348373996708,
+        "meta": {}
+      },
+      {
+        "label": "information security",
+        "score": 0.753913051196756,
+        "meta": {}
+      },
+      {
+        "label": "export controls",
+        "score": 0.23215515582052726,
+        "meta": {}
+      },
+      {
+        "label": "compliance costs",
+        "score": 2.118137954620324,
+        "meta": {}
+      },
+      {
+        "label": "customers suppliers partners",
+        "score": 2.118137954620324,
+        "meta": {}
+      },
+      {
+        "label": "future products",
+        "score": 2.118137954620324,
+        "meta": {}
+      },
+      {
+        "label": "regulations obligations",
+        "score": 2.118137954620324,
+        "meta": {}
+      },
+      {
+        "label": "worldwide revenue",
+        "score": 2.118137954620324,
+        "meta": {}
+      },
+      {
+        "label": "changes tax laws",
+        "score": 1.5397363213553161,
+        "meta": {}
+      },
+      {
+        "label": "customers suppliers",
+        "score": 0.5455252960928094,
+        "meta": {}
+      },
+      {
+        "label": "financial results",
+        "score": 0.2177917290435829,
+        "meta": {}
+      },
+      {
+        "label": "results financial",
+        "score": 0.3246843843299718,
+        "meta": {}
+      },
+      {
+        "label": "demand products services",
+        "score": 0.27739289575941495,
+        "meta": {}
+      },
+      {
+        "label": "new product",
+        "score": 0.27739289575941495,
+        "meta": {}
+      },
+      {
+        "label": "new products",
+        "score": 0.12094219038402487,
+        "meta": {}
+      }
+    ],
+    "top_fallers_alt": [
+      {
+        "label": "change control",
+        "score": -2.1093763588311525,
+        "meta": {}
+      },
+      {
+        "label": "past future",
+        "score": -1.4399279456100098,
+        "meta": {}
+      },
+      {
+        "label": "control product",
+        "score": -2.107178296651435,
+        "meta": {}
+      },
+      {
+        "label": "results past",
+        "score": -2.107178296651435,
+        "meta": {}
+      },
+      {
+        "label": "customers future demand products",
+        "score": -1.528770009366645,
+        "meta": {}
+      },
+      {
+        "label": "china market",
+        "score": -2.104986386119972,
+        "meta": {}
+      },
+      {
+        "label": "customers affect product",
+        "score": -2.104986386119972,
+        "meta": {}
+      },
+      {
+        "label": "customers parties",
+        "score": -2.104986386119972,
+        "meta": {}
+      },
+      {
+        "label": "export control",
+        "score": -2.104986386119972,
+        "meta": {}
+      },
+      {
+        "label": "future impact demand products",
+        "score": -2.104986386119972,
+        "meta": {}
+      },
+      {
+        "label": "increased supply",
+        "score": -2.104986386119972,
+        "meta": {}
+      },
+      {
+        "label": "products china",
+        "score": -2.104986386119972,
+        "meta": {}
+      },
+      {
+        "label": "risks increase",
+        "score": -2.104986386119972,
+        "meta": {}
+      },
+      {
+        "label": "systems products",
+        "score": -2.104986386119972,
+        "meta": {}
+      },
+      {
+        "label": "customer demand",
+        "score": -0.2825533119135839,
+        "meta": {}
+      }
+    ],
+    "summary_alt": "Adds emphasis on new suppliers, information security, export controls; de-emphasizes change control, past future, control product."
+  },
+  "evidence": [
+    {
+      "year": 2025,
+      "paragraph_idx": 121,
+      "snippet": "Such controls have been and may again be very broad in scope and application, prohibit us from exporting our products to any or all customers in one or more markets, including but not limited to China and over 150 countries designated \u201cTier 2\u201d by the January 2025 AI Diffusion IFR, and could negatively impact our manufacturing, testing and warehousing locations and options, or could impose other conditions that limit our ability to serve demand abroad and could negatively and materially impact our business, revenue and financial results.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "ifr",
+        "diffusion",
+        "ai diffusion",
+        "diffusion ifr"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 126,
+      "snippet": "In October 2023, the USG announced new and updated licensing requirements that became effective in our fourth quarter of fiscal year 2024 for exports to China and Country Groups D1, D4, and D5 (including but not limited to, Saudi Arabia, the United Arab Emirates, and Vietnam, but excluding Israel) of our products exceeding certain performance thresholds, including, but not limited to, the A100, A800, H100, H800, L4, L40, L40S and RTX 4090.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "licensing requirement"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 11,
+      "snippet": "We have begun offering enterprise customers NVIDIA DGX Cloud services directly and through our network of partners, which include cloud-based infrastructure, software and services for training and deploying AI models, and NVIDIA AI Foundations for customizable pretrained AI models.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "foundations"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 54,
+      "snippet": "We build technology and introduce products for new and innovative use cases and applications, such as NVIDIA DGX Cloud services, NVIDIA AI Foundations, Omniverse platform, LLMs, and generative AI models.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "foundations"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.0178,
+    "confidence": 1.0,
+    "coverage": 0.4395635247435801,
+    "warnings": [
+      "partial_coverage"
+    ]
+  },
+  "provenance": {
+    "build_utc": "2026-02-16T18:19:28Z",
+    "git_commit": "d9404836b264fcefaa81b0fb83cc09b15c41e2e8",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "2d44704091b3adaf94304f5881cb2e4299d3dd4cda0ea3fab3aa93f2288e358f",
+      "curr_text_sha256": "2480f4c3c9df28484211b6a9e531aea4a930ad2db3d2d55696d6a2e5393bced4",
+      "lens": "deboilerplated",
+      "source": "edgar",
+      "script": "lab_precompute_detectors_for_case.py@v1",
+      "prev_input_path": "scripts/_reports/risk_extraction_bundle/sections/NVDA_2024_item_1a.txt",
+      "curr_input_path": "scripts/_reports/risk_extraction_bundle/sections/NVDA_2025_item_1a.txt"
+    }
+  }
+}

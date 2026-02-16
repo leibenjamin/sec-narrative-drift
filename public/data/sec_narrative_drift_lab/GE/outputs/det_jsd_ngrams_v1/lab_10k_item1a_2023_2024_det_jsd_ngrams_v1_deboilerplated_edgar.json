@@ -1,0 +1,158 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_jsd_ngrams_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "GE",
+  "section": "10k_item1a",
+  "year_from": 2023,
+  "year_to": 2024,
+  "artifacts": {
+    "ranked_items": [
+      {
+        "label": "businesses",
+        "score": 0.0015288774781826167
+      },
+      {
+        "label": "ge",
+        "score": 0.0013496086908436065
+      },
+      {
+        "label": "separation",
+        "score": 0.0009348503364320938
+      },
+      {
+        "label": "power",
+        "score": 0.0008894847466545016
+      },
+      {
+        "label": "defense",
+        "score": 0.0007559018490522154
+      },
+      {
+        "label": "aerospace business",
+        "score": 0.0004870920603994155
+      },
+      {
+        "label": "renewable",
+        "score": 0.0004383828543594739
+      },
+      {
+        "label": "companies",
+        "score": 0.0004220013512965676
+      },
+      {
+        "label": "wind",
+        "score": 0.0004034289204736274
+      },
+      {
+        "label": "power generation",
+        "score": 0.0003896736483195324
+      },
+      {
+        "label": "renewable energy",
+        "score": 0.0003896736483195324
+      },
+      {
+        "label": "generation",
+        "score": 0.0003896736483195324
+      },
+      {
+        "label": "projects",
+        "score": 0.00036113242769546955
+      },
+      {
+        "label": "offshore",
+        "score": 0.00034096444227959085
+      },
+      {
+        "label": "offshore wind",
+        "score": 0.00034096444227959085
+      },
+      {
+        "label": "government",
+        "score": 0.00033754489319831615
+      },
+      {
+        "label": "vernova",
+        "score": 0.00033409299715945616
+      },
+      {
+        "label": "ge vernova",
+        "score": 0.00033409299715945616
+      },
+      {
+        "label": "independent",
+        "score": 0.00032012860092603455
+      },
+      {
+        "label": "energy",
+        "score": 0.000299144782864811
+      }
+    ],
+    "stats": {
+      "jsd": 0.250553,
+      "tokens_prev": 5133,
+      "tokens_curr": 4300
+    }
+  },
+  "evidence": [
+    {
+      "year": 2024,
+      "paragraph_idx": 1,
+      "snippet": "STRATEGIC RISKS. Strategic risk relates to the Company\u2019s future business plans and strategies, including the risks associated with the global macro-environment; dynamics in the commercial aviation sector; competitive threats; the demand for our products and services and the success of our investments in technology and innovation; impacts of government spending, programs and contracts; climate change; our recent spin-offs; capital allocation decisions; acquisitions, dispositions, joint ventures and other inorganic investments; intellectual property; and other risks.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "ge"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 3,
+      "snippet": "Accordingly, our operations and execution are subject to the effects of global economic trends, geopolitical risks and demand or supply shocks from events such as war or international conflict, a major terrorist attack, natural disasters or actual or threatened public health pandemics or other emergencies.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "ge"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 1,
+      "snippet": "STRATEGIC RISKS. Strategic risk relates to the Company's future business plans and strategies, including the risks associated with: our planned separation of GE Aerospace and GE Vernova into independent companies; the global macro-environment and conditions in our sectors; the global energy transition; competitive threats; the demand for our products and services and the success of our",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "ge",
+        "separation"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 2,
+      "snippet": "investments in technology and innovation; our portfolio of businesses and capital allocation decisions; dispositions, acquisitions, joint ventures and restructuring activity; intellectual property; and other risks.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "businesses"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.250553,
+    "confidence": 1.0,
+    "coverage": 0.8238740157480315,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-16T18:19:33Z",
+    "git_commit": "d9404836b264fcefaa81b0fb83cc09b15c41e2e8",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "1c50b34c890939d1bb9a3bda5cbcc593b7e3257f5de1e4a5ef203e2426ea6bce",
+      "curr_text_sha256": "99ace605fdd639611a84496658394939c0c1c2a005d9485bef87895ef694057a",
+      "lens": "deboilerplated",
+      "source": "edgar",
+      "script": "lab_precompute_detectors_for_case.py@v1",
+      "prev_input_path": "scripts/_reports/risk_extraction_bundle/sections/GE_2023_item_1a.txt",
+      "curr_input_path": "scripts/_reports/risk_extraction_bundle/sections/GE_2024_item_1a.txt"
+    }
+  }
+}

@@ -1,0 +1,163 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_jsd_ngrams_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "WM",
+  "section": "10k_item1a",
+  "year_from": 2023,
+  "year_to": 2024,
+  "artifacts": {
+    "ranked_items": [
+      {
+        "label": "stericycle",
+        "score": 0.0018067807418429163
+      },
+      {
+        "label": "controlled substances",
+        "score": 0.0009033903709214582
+      },
+      {
+        "label": "acquisition",
+        "score": 0.0008502497608672548
+      },
+      {
+        "label": "medical",
+        "score": 0.0007439685407588479
+      },
+      {
+        "label": "medical waste",
+        "score": 0.0007439685407588479
+      },
+      {
+        "label": "waste controlled",
+        "score": 0.0006908279307046445
+      },
+      {
+        "label": "controlled",
+        "score": 0.000659048872930404
+      },
+      {
+        "label": "substances waste",
+        "score": 0.0005845467105962377
+      },
+      {
+        "label": "epa",
+        "score": 0.0005567153792623522
+      },
+      {
+        "label": "acquisition stericycle",
+        "score": 0.0005314061005420342
+      },
+      {
+        "label": "healthcare",
+        "score": 0.0005314061005420342
+      },
+      {
+        "label": "substances",
+        "score": 0.0004939317047305533
+      },
+      {
+        "label": "esg",
+        "score": 0.0004871259568545581
+      },
+      {
+        "label": "disposal destruction",
+        "score": 0.0004251248804336274
+      },
+      {
+        "label": "tax rate",
+        "score": 0.0004175365344467641
+      },
+      {
+        "label": "investigations",
+        "score": 0.00037198427037942394
+      },
+      {
+        "label": "additional information",
+        "score": 0.00037198427037942394
+      },
+      {
+        "label": "administration",
+        "score": 0.00037198427037942394
+      },
+      {
+        "label": "financial reporting",
+        "score": 0.00037198427037942394
+      },
+      {
+        "label": "control financial",
+        "score": 0.00037198427037942394
+      }
+    ],
+    "stats": {
+      "jsd": 0.261319,
+      "tokens_prev": 3593,
+      "tokens_curr": 4705
+    }
+  },
+  "evidence": [
+    {
+      "year": 2024,
+      "paragraph_idx": 2,
+      "snippet": "Execution of our strategy, including growth through acquisitions, such as our recent Stericycle acquisition, and our planned and ongoing expansion of our Recycling Processing and Sales and WM Renewable Energy segments, has caused, and may in the future, cause us to incur substantial additional indebtedness, which may divert capital away from our traditional business operations and other financial plans, and may introduce additional risks and volatility to our financial performance.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "stericycle",
+        "acquisition"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 3,
+      "snippet": "Integration of acquisitions and/or new services offerings or lines of business, such as our expansion into medical waste, controlled substances waste and secure information destruction services, and additional expansion into markets outside of North America has and would result in our business being subject to new laws and regulatory regimes, resulting in greater exposure to risk of inadvertent noncompliance and additional compliance costs.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "controlled substances",
+        "acquisition",
+        "medical",
+        "medical waste"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 2,
+      "snippet": "Integration of acquisitions and/or new services offerings or lines of business could increase our exposure to the risk of inadvertent noncompliance with applicable laws and regulations, and additional expansion into markets outside of North America would result in our business being subject to new laws and regulatory regimes, resulting in greater exposure to risk of inadvertent noncompliance and additional compliance costs.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "acquisition"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 3,
+      "snippet": "Execution of our strategy, including growth through acquisitions and our planned expansion of our Recycling Processing and Sales and WM Renewable Energy segments, may cause us to incur substantial additional indebtedness, which may divert capital away from our traditional business operations and other financial plans, and may introduce additional risks and volatility to our financial performance.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "acquisition"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.261319,
+    "confidence": 1.0,
+    "coverage": 0.5269581528513075,
+    "warnings": [
+      "partial_coverage"
+    ]
+  },
+  "provenance": {
+    "build_utc": "2026-02-16T18:19:30Z",
+    "git_commit": "d9404836b264fcefaa81b0fb83cc09b15c41e2e8",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "f103855366903b85560f3e639529414b9eb353cefd4b28f5286ad2a7bce6c311",
+      "curr_text_sha256": "1b8b68723167b96040f1e9854a95faaaace32b7ec3d3837ed226c6693f5aaf38",
+      "lens": "deboilerplated",
+      "source": "edgar",
+      "script": "lab_precompute_detectors_for_case.py@v1",
+      "prev_input_path": "scripts/_reports/risk_extraction_bundle/sections/WM_2023_item_1a.txt",
+      "curr_input_path": "scripts/_reports/risk_extraction_bundle/sections/WM_2024_item_1a.txt"
+    }
+  }
+}
