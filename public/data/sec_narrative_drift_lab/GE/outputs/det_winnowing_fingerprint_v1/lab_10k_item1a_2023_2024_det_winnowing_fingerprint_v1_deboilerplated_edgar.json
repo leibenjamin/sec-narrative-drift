@@ -42,15 +42,15 @@
     "warnings": []
   },
   "provenance": {
-    "build_utc": "2026-02-16T18:19:33Z",
-    "git_commit": "d9404836b264fcefaa81b0fb83cc09b15c41e2e8",
+    "build_utc": "2026-02-16T19:47:02Z",
+    "git_commit": "a1ba38d137defef506fe64640fa9e62630a10016",
     "script_version": "build_lab_outputs.py@v1",
     "inputs": {
       "prev_text_sha256": "1c50b34c890939d1bb9a3bda5cbcc593b7e3257f5de1e4a5ef203e2426ea6bce",
       "curr_text_sha256": "99ace605fdd639611a84496658394939c0c1c2a005d9485bef87895ef694057a",
       "lens": "deboilerplated",
       "source": "edgar",
-      "script": "lab_precompute_detectors_for_case.py@v1",
+      "script": "lab_precompute_detectors_for_case.py@v2",
       "prev_input_path": "scripts/_reports/risk_extraction_bundle/sections/GE_2023_item_1a.txt",
       "curr_input_path": "scripts/_reports/risk_extraction_bundle/sections/GE_2024_item_1a.txt"
     }

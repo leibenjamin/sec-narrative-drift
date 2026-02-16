@@ -1,7 +1,7 @@
 {
   "lab_schema_version": "1.0",
   "detector_id": "det_winnowing_fingerprint_v1",
-  "cleaning_lens": "deboilerplated",
+  "cleaning_lens": "raw",
   "source_id": "edgar",
   "ticker": "KO",
   "section": "10k_item1a",
@@ -9,48 +9,46 @@
   "year_to": 2024,
   "artifacts": {
     "stats": {
-      "shared_fingerprints": 9065,
-      "prev_fingerprints": 12071,
-      "curr_fingerprints": 12702,
-      "shared_ratio": 0.7509734073399056
+      "shared_fingerprints": 30802,
+      "prev_fingerprints": 35713,
+      "curr_fingerprints": 36350,
+      "shared_ratio": 0.8624870495337832
     }
   },
   "evidence": [
     {
       "year": 2024,
       "paragraph_idx": 0,
-      "snippet": "Many of the jurisdictions in which our products are sold have experienced, and could continue to experience, unfavorable",
+      "snippet": "ITEM 1A. RISK FACTORS\n\nIn addition to the other information set forth in this report, you should carefully consider the f",
       "why": "Shared fingerprint span."
     },
     {
       "year": 2024,
       "paragraph_idx": 0,
-      "snippet": "Many of the jurisdictions in which our products are sold have experienced, and could continue to experience, unfavorable ",
+      "snippet": "ITEM 1A. RISK FACTORS\n\nIn addition to the other information set forth in this report, you should carefully consider the fol",
       "why": "Shared fingerprint span."
     },
     {
       "year": 2024,
       "paragraph_idx": 0,
-      "snippet": "Many of the jurisdictions in which our products are sold have experienced, and could continue to experience, unfavorable chan",
+      "snippet": "ITEM 1A. RISK FACTORS\n\nIn addition to the other information set forth in this report, you should carefully consider the follow",
       "why": "Shared fingerprint span."
     }
   ],
   "metrics": {
-    "drift_score": 0.7509734073399056,
+    "drift_score": 0.8624870495337832,
     "confidence": 1.0,
-    "coverage": 0.3391791921746819,
-    "warnings": [
-      "partial_coverage"
-    ]
+    "coverage": 1.0,
+    "warnings": []
   },
   "provenance": {
     "build_utc": "2026-02-16T19:47:00Z",
     "git_commit": "a1ba38d137defef506fe64640fa9e62630a10016",
     "script_version": "build_lab_outputs.py@v1",
     "inputs": {
-      "prev_text_sha256": "f0666849bc8f882592e05310028ae6fde2c642d12336b4cf309bf746fbc8c0de",
-      "curr_text_sha256": "e23b259422fab41a97315332d85dce463c4f28a022f7934d238cec247d17f2da",
-      "lens": "deboilerplated",
+      "prev_text_sha256": "8d005a2728ac3571f5042a9956e63b4fffb0d6bcb656bda6be2e217116052ff0",
+      "curr_text_sha256": "604daa670ec51ce1aa4c3f5b6fe7fe28634f36f90a480ccde248384d40986995",
+      "lens": "raw",
       "source": "edgar",
       "script": "lab_precompute_detectors_for_case.py@v2",
       "prev_input_path": "scripts/_reports/risk_extraction_bundle/sections/KO_2023_item_1a.txt",

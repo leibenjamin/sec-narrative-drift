@@ -14,6 +14,14 @@
         "score": 0.0006837272904864231
       },
       {
+        "label": "highly skilled",
+        "score": 0.0006103763987792472
+      },
+      {
+        "label": "highly",
+        "score": 0.0006103763987792472
+      },
+      {
         "label": "skilled",
         "score": 0.0006103763987792472
       },
@@ -22,23 +30,15 @@
         "score": 0.0006103763987792472
       },
       {
-        "label": "highly",
-        "score": 0.0006103763987792472
-      },
-      {
-        "label": "highly skilled",
-        "score": 0.0006103763987792472
+        "label": "goals targets",
+        "score": 0.000508646998982706
       },
       {
         "label": "targets",
         "score": 0.000508646998982706
       },
       {
-        "label": "goals targets",
-        "score": 0.000508646998982706
-      },
-      {
-        "label": "skilled diverse",
+        "label": "month",
         "score": 0.0004069175991861648
       },
       {
@@ -46,7 +46,7 @@
         "score": 0.0004069175991861648
       },
       {
-        "label": "month",
+        "label": "skilled diverse",
         "score": 0.0004069175991861648
       },
       {
@@ -58,19 +58,11 @@
         "score": 0.0003907013088493846
       },
       {
-        "label": "rate",
-        "score": 0.0003051881993896236
-      },
-      {
-        "label": "month month",
-        "score": 0.0003051881993896236
-      },
-      {
         "label": "diverse workforce",
         "score": 0.0003051881993896236
       },
       {
-        "label": "stewardship",
+        "label": "rate",
         "score": 0.0003051881993896236
       },
       {
@@ -78,11 +70,19 @@
         "score": 0.0003051881993896236
       },
       {
-        "label": "perspectives experiences",
+        "label": "stewardship",
+        "score": 0.0003051881993896236
+      },
+      {
+        "label": "month month",
+        "score": 0.0003051881993896236
+      },
+      {
+        "label": "range consumers",
         "score": 0.0002930259816370385
       },
       {
-        "label": "cybersecurity systems",
+        "label": "perspectives experiences",
         "score": 0.0002930259816370385
       },
       {
@@ -121,9 +121,9 @@
       "snippet": "If we are unable to attract or retain a highly skilled and diverse workforce, our business could be negatively affected.",
       "why": "Paragraph with high-contribution n-grams.",
       "highlights": [
-        "skilled",
+        "highly skilled",
         "highly",
-        "highly skilled"
+        "skilled"
       ]
     },
     {
@@ -132,9 +132,9 @@
       "snippet": "The success of our business depends on our Company\u2019s and the Coca-Cola system\u2019s ability to attract, hire, develop, motivate and retain a highly skilled and diverse workforce as well as on our success in nurturing a culture that supports our growth and aligns employees around the Company\u2019s purpose and work that matters most.",
       "why": "Paragraph with high-contribution n-grams.",
       "highlights": [
-        "skilled",
+        "highly skilled",
         "highly",
-        "highly skilled"
+        "skilled"
       ]
     }
   ],
@@ -147,15 +147,15 @@
     ]
   },
   "provenance": {
-    "build_utc": "2026-02-16T18:19:26Z",
-    "git_commit": "d9404836b264fcefaa81b0fb83cc09b15c41e2e8",
+    "build_utc": "2026-02-16T19:47:00Z",
+    "git_commit": "a1ba38d137defef506fe64640fa9e62630a10016",
     "script_version": "build_lab_outputs.py@v1",
     "inputs": {
       "prev_text_sha256": "f0666849bc8f882592e05310028ae6fde2c642d12336b4cf309bf746fbc8c0de",
       "curr_text_sha256": "e23b259422fab41a97315332d85dce463c4f28a022f7934d238cec247d17f2da",
       "lens": "deboilerplated",
       "source": "edgar",
-      "script": "lab_precompute_detectors_for_case.py@v1",
+      "script": "lab_precompute_detectors_for_case.py@v2",
       "prev_input_path": "scripts/_reports/risk_extraction_bundle/sections/KO_2023_item_1a.txt",
       "curr_input_path": "scripts/_reports/risk_extraction_bundle/sections/KO_2024_item_1a.txt"
     }

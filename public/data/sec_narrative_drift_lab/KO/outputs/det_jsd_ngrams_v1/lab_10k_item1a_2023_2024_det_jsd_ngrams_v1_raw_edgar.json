@@ -1,0 +1,140 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_jsd_ngrams_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "KO",
+  "section": "10k_item1a",
+  "year_from": 2023,
+  "year_to": 2024,
+  "artifacts": {
+    "ranked_items": [
+      {
+        "label": "libor",
+        "score": 0.0002071394048194435
+      },
+      {
+        "label": "highly skilled",
+        "score": 0.0002071394048194435
+      },
+      {
+        "label": "skilled",
+        "score": 0.0002071394048194435
+      },
+      {
+        "label": "goals targets",
+        "score": 0.00017261617068286956
+      },
+      {
+        "label": "targets",
+        "score": 0.00017261617068286956
+      },
+      {
+        "label": "processing",
+        "score": 0.00015116215387682273
+      },
+      {
+        "label": "month",
+        "score": 0.00013809293654629565
+      },
+      {
+        "label": "retain highly",
+        "score": 0.00013809293654629565
+      },
+      {
+        "label": "skilled diverse",
+        "score": 0.00013809293654629565
+      },
+      {
+        "label": "specialized",
+        "score": 0.00013617484850548105
+      },
+      {
+        "label": "additives",
+        "score": 0.00013617484850548105
+      },
+      {
+        "label": "diverse workforce",
+        "score": 0.00010356970240972175
+      },
+      {
+        "label": "reference",
+        "score": 0.00010356970240972175
+      },
+      {
+        "label": "stewardship",
+        "score": 0.00010356970240972175
+      },
+      {
+        "label": "month month",
+        "score": 0.00010356970240972175
+      },
+      {
+        "label": "perspectives experiences",
+        "score": 0.00010213113637911078
+      },
+      {
+        "label": "diverse perspectives",
+        "score": 0.00010213113637911078
+      },
+      {
+        "label": "perspectives",
+        "score": 0.00010213113637911078
+      },
+      {
+        "label": "consequences processing",
+        "score": 0.00010213113637911078
+      },
+      {
+        "label": "backgrounds",
+        "score": 0.00010213113637911078
+      }
+    ],
+    "stats": {
+      "jsd": 0.031738,
+      "tokens_prev": 7242,
+      "tokens_curr": 7344
+    }
+  },
+  "evidence": [
+    {
+      "year": 2023,
+      "paragraph_idx": 9,
+      "snippet": "The success of our business depends on our Company\u2019s and the Coca-Cola system\u2019s ability to attract, hire, develop, motivate and retain a highly skilled and diverse workforce as well as on our success in nurturing a culture that supports our growth and aligns employees around the Company\u2019s purpose and work that matters most. Competition for, along with compensation and benefits expectations of, existing and prospective employees has increased, especially in light of changing worker expectations and talent marketplace variability regarding flexible work models. In addition, the broader labor market is experiencing a shortage of qualified workers, which has further increased the competition we face for qualified employees. We may not be able to successfully compete for, attract or retain the highly skilled and diverse workforce that we want and may require for our future business needs, such as employees with advanced technology, artificial intelligence and machine learning, social media and digital marketing skills, and/or digital and analytics capabilities. Changes in immigration laws and policies could also make it more difficult for us to recruit or relocate highly skilled technical, professional and management personnel to meet our business needs. In addition, the unexpected loss of experienced and highly skilled employees due to an increase in aggressive recruiting for best-in-class talent could deplete our institutional knowledge base and erode our competitiveness. Failure to attract, hire, develop, motivate and retain highly skilled and diverse talent; to meet our goals related to fostering an inclusive and diverse culture; to develop and implement an adequate succession plan for our management team; to maintain a corporate culture that fosters innovation, collaboration and inclusion; or to design and successfully implement flexible work models that meet the expectations of employees and prospective employees could disrupt our operations and adversely affect our business and our future success.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "highly skilled",
+        "skilled"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 52,
+      "snippet": "to adverse changes in interest rates. When and to the extent appropriate, we use derivative financial instruments to reduce our exposure to interest rate risks. However, our financial risk management program may not be successful in reducing the risks inherent in exposures to interest rate fluctuations. On December 31, 2021, the United Kingdom\u2019s Financial Conduct Authority, the governing body responsible for regulating the London Interbank Offered Rate (\u201cLIBOR\u201d), ceased to publish certain LIBOR reference rates. Other LIBOR reference rates, including U.S. dollar overnight, 1-month, 3-month, 6-month and 12-month maturities, ceased to be published in July 2023. As a result of the discontinuation of LIBOR, we have amended our LIBOR-referencing agreements to either reference the Secured Overnight Financing Rate or include mechanics for selecting an alternative rate, but it is possible that these changes may have an adverse impact on our financing costs as compared to LIBOR in the long term. Our interest expense may also be affected by our credit ratings. In assessing our credit strength, credit rating agencies consider our capital structure and financial policies as well as the consolidated balance sheet and other financial information of the Company. In addition, some credit rating agencies also consider financial information of certain of our major bottling partners. It is our expectation that the credit rating agencies will continue using this methodology. If our credit ratings were to be downgraded as a result of changes in our capital structure; our major bottling partners\u2019 financial performance; changes in the credit rating agencies\u2019 methodology in assessing our credit strength; the credit agencies\u2019 perception of the impact of credit market conditions on our or our major bottling partners\u2019 current or future financial performance and financial condition; or for any other reason, our cost of borrowing could increase. Additionally, if the credit ratings of certain bottling partners in which we have equity method investments were to be downgraded, such bottling partners\u2019 interest expense could increase, which would reduce our equity income.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "libor"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.031738,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-16T19:46:59Z",
+    "git_commit": "a1ba38d137defef506fe64640fa9e62630a10016",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "8d005a2728ac3571f5042a9956e63b4fffb0d6bcb656bda6be2e217116052ff0",
+      "curr_text_sha256": "604daa670ec51ce1aa4c3f5b6fe7fe28634f36f90a480ccde248384d40986995",
+      "lens": "raw",
+      "source": "edgar",
+      "script": "lab_precompute_detectors_for_case.py@v2",
+      "prev_input_path": "scripts/_reports/risk_extraction_bundle/sections/KO_2023_item_1a.txt",
+      "curr_input_path": "scripts/_reports/risk_extraction_bundle/sections/KO_2024_item_1a.txt"
+    }
+  }
+}

@@ -60,15 +60,15 @@
     "warnings": []
   },
   "provenance": {
-    "build_utc": "2026-02-16T05:22:40Z",
-    "git_commit": "d9404836b264fcefaa81b0fb83cc09b15c41e2e8",
+    "build_utc": "2026-02-16T19:47:00Z",
+    "git_commit": "a1ba38d137defef506fe64640fa9e62630a10016",
     "script_version": "build_lab_outputs.py@v1",
     "inputs": {
       "prev_text_sha256": "8d005a2728ac3571f5042a9956e63b4fffb0d6bcb656bda6be2e217116052ff0",
       "curr_text_sha256": "604daa670ec51ce1aa4c3f5b6fe7fe28634f36f90a480ccde248384d40986995",
       "lens": "raw",
       "source": "edgar",
-      "script": "lab_precompute_detectors_for_case.py@v1",
+      "script": "lab_precompute_detectors_for_case.py@v2",
       "prev_input_path": "scripts/_reports/risk_extraction_bundle/sections/KO_2023_item_1a.txt",
       "curr_input_path": "scripts/_reports/risk_extraction_bundle/sections/KO_2024_item_1a.txt"
     }

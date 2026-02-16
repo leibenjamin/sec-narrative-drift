@@ -57,17 +57,22 @@
     "drift_score": 0.7992700729927007,
     "confidence": 1.0,
     "coverage": 0.6105930026824953,
-    "warnings": []
+    "warnings": [
+      "partial_coverage"
+    ]
   },
   "provenance": {
-    "build_utc": "2026-02-02T05:55:32Z",
-    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "build_utc": "2026-02-16T19:47:00Z",
+    "git_commit": "a1ba38d137defef506fe64640fa9e62630a10016",
     "script_version": "build_lab_outputs.py@v1",
     "inputs": {
       "prev_text_sha256": "df2481e2b27b60b5667db8c928de7360547bee0f36435efbfd23e4c8ace7b647",
       "curr_text_sha256": "2e8c3d7c091fae17e6ab04817a2822c01b18022cc14bdd73c999f0099650e065",
       "lens": "deboilerplated",
-      "source": "edgar"
+      "source": "edgar",
+      "script": "lab_precompute_detectors_for_case.py@v2",
+      "prev_input_path": "scripts/_reports/risk_extraction_bundle/sections/NVDA_2023_item_1a.txt",
+      "curr_input_path": "scripts/_reports/risk_extraction_bundle/sections/NVDA_2024_item_1a.txt"
     }
   }
 }

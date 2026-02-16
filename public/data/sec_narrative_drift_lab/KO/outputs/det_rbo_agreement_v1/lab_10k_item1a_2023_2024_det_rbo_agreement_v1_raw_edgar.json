@@ -1,7 +1,7 @@
 {
   "lab_schema_version": "1.0",
   "detector_id": "det_rbo_agreement_v1",
-  "cleaning_lens": "deboilerplated",
+  "cleaning_lens": "raw",
   "source_id": "edgar",
   "ticker": "KO",
   "section": "10k_item1a",
@@ -15,18 +15,18 @@
     "matrix": [
       [
         1.0,
-        0.0761
+        0.0928
       ],
       [
-        0.0761,
+        0.0928,
         1.0
       ]
     ],
-    "agreement_score": 0.0761
+    "agreement_score": 0.0928
   },
   "evidence": [],
   "metrics": {
-    "drift_score": 0.0761,
+    "drift_score": 0.0928,
     "confidence": 1.0,
     "coverage": null,
     "warnings": []
@@ -36,9 +36,9 @@
     "git_commit": "a1ba38d137defef506fe64640fa9e62630a10016",
     "script_version": "build_lab_outputs.py@v1",
     "inputs": {
-      "prev_text_sha256": "f0666849bc8f882592e05310028ae6fde2c642d12336b4cf309bf746fbc8c0de",
-      "curr_text_sha256": "e23b259422fab41a97315332d85dce463c4f28a022f7934d238cec247d17f2da",
-      "lens": "deboilerplated",
+      "prev_text_sha256": "8d005a2728ac3571f5042a9956e63b4fffb0d6bcb656bda6be2e217116052ff0",
+      "curr_text_sha256": "604daa670ec51ce1aa4c3f5b6fe7fe28634f36f90a480ccde248384d40986995",
+      "lens": "raw",
       "source": "edgar",
       "script": "lab_precompute_detectors_for_case.py@v2",
       "ranked_list_inputs": "det_jsd_ngrams_v1,det_logodds_terms_v1,det_minhash_boilerplate_v1,det_structure_artifacts_v1,det_winnowing_fingerprint_v1",
