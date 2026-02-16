@@ -77,6 +77,22 @@ function extractAvailableLenses(caseItem: LabCase, sourceId: LabSourceId): LabCl
   return lenses
 }
 
+function extractAvailableDetectors(
+  caseItem: LabCase,
+  sourceId: LabSourceId,
+  lens: LabCleaningLens
+): string[] {
+  const detectors: string[] = []
+  for (const output of caseItem.outputs ?? []) {
+    if (output.source_id !== sourceId) continue
+    if (normalizeLens(output.cleaning_lens) !== lens) continue
+    if (!detectors.includes(output.detector_id)) {
+      detectors.push(output.detector_id)
+    }
+  }
+  return detectors
+}
+
 export default function LabPanel({ ticker }: { ticker: string }) {
   const [cases, setCases] = useState<LabCase[]>([])
   const [isLoadingCases, setIsLoadingCases] = useState(true)
@@ -141,6 +157,28 @@ export default function LabPanel({ ticker }: { ticker: string }) {
     const lenses = extractAvailableLenses(selectedCase, sourceId)
     return lenses.length ? lenses : (["raw"] as LabCleaningLens[])
   }, [selectedCase, sourceId])
+
+  const availableDetectorIds = useMemo(() => {
+    if (!selectedCase) return []
+    return extractAvailableDetectors(selectedCase, sourceId, lens)
+  }, [selectedCase, sourceId, lens])
+  const availableDetectorSet = useMemo(
+    () => new Set<string>(availableDetectorIds),
+    [availableDetectorIds]
+  )
+
+  useEffect(() => {
+    if (!selectedCase) return
+    setSelectedDetectors((prev) => {
+      const filtered = prev.filter((detectorId) => availableDetectorSet.has(detectorId))
+      const defaults = DEFAULT_SELECTED.filter((detectorId) => availableDetectorSet.has(detectorId))
+      const next = filtered.length ? filtered : defaults
+      if (next.length === prev.length && next.every((item, idx) => item === prev[idx])) {
+        return prev
+      }
+      return next
+    })
+  }, [selectedCase, lens, availableDetectorSet])
 
   // Adjust lens during render when available lenses change (avoids sync setState in effect)
   if (availableLenses.length && !availableLenses.includes(lens)) {
@@ -270,7 +308,7 @@ export default function LabPanel({ ticker }: { ticker: string }) {
               >
                 {cases.map((item) => (
                   <option key={buildCaseKey(item)} value={buildCaseKey(item)}>
-                    {item.year_from} ? {item.year_to}
+                    {item.year_from} - {item.year_to}
                   </option>
                 ))}
               </select>
@@ -288,20 +326,32 @@ export default function LabPanel({ ticker }: { ticker: string }) {
           </div>
 
           <div>
-            <div className="text-xs uppercase tracking-wide text-slate-400">Methods</div>
+            <div className="flex items-center justify-between gap-3">
+              <div className="text-xs uppercase tracking-wide text-slate-400">Methods</div>
+              <div className="text-[11px] text-slate-400">
+                Available outputs: {availableDetectorIds.length}/{DETECTOR_CATALOG.length}
+              </div>
+            </div>
             <div className="mt-2 flex flex-wrap gap-3">
               {DETECTOR_CATALOG.map((detector) => {
-                const isSelected = selectedDetectors.includes(detector.id)
+                const isAvailable = availableDetectorSet.has(detector.id)
+                const isSelected = isAvailable && selectedDetectors.includes(detector.id)
                 return (
                   <label
                     key={detector.id}
-                    className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-200"
+                    className={`flex items-center gap-2 rounded-full border px-3 py-1 text-xs ${
+                      isAvailable
+                        ? "border-white/10 bg-white/5 text-slate-200"
+                        : "cursor-not-allowed border-white/10 bg-slate-900/40 text-slate-500"
+                    }`}
                   >
                     <input
                       type="checkbox"
                       className="h-3 w-3"
+                      disabled={!isAvailable}
                       checked={isSelected}
                       onChange={() => {
+                        if (!isAvailable) return
                         setSelectedDetectors((prev) => {
                           if (prev.includes(detector.id)) {
                             return prev.filter((item) => item !== detector.id)
@@ -310,7 +360,10 @@ export default function LabPanel({ ticker }: { ticker: string }) {
                         })
                       }}
                     />
-                    {detector.label}
+                    <span>
+                      {detector.label}
+                      {!isAvailable ? " (not available for this case)" : ""}
+                    </span>
                   </label>
                 )
               })}
@@ -335,7 +388,7 @@ export default function LabPanel({ ticker }: { ticker: string }) {
                       : "border-white/10 bg-slate-950/40 text-slate-200 hover:border-white/30"
                   }`}
                 >
-                  {item.ticker} {item.year_from} ? {item.year_to}
+                  {item.ticker} {item.year_from} - {item.year_to}
                   <div className="mt-1 text-[11px] text-slate-400">{item.why_interesting}</div>
                 </button>
               )

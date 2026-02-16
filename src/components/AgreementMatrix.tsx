@@ -15,7 +15,7 @@ export default function AgreementMatrix({ output }: AgreementMatrixProps) {
   if (!output) {
     return (
       <div className="rounded-lg border border-white/10 bg-white/5 p-4 text-xs text-slate-300">
-        No agreement matrix available.
+        No agreement output for this case and lens.
       </div>
     )
   }

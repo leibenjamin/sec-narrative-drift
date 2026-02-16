@@ -66,7 +66,7 @@ export default function MethodCard({
       </header>
 
       {isLoading ? (
-        <p className="mt-3 text-xs text-slate-400">Loading detector output…</p>
+        <p className="mt-3 text-xs text-slate-400">Loading detector output...</p>
       ) : null}
 
       {!isLoading && !output ? (
@@ -90,7 +90,7 @@ export default function MethodCard({
                     key={item.label}
                     className="rounded-full border border-white/10 bg-white/5 px-2 py-1 text-xs text-slate-200"
                   >
-                    {item.label} • {item.score.toFixed(2)}
+                    {item.label} · {item.score.toFixed(2)}
                   </span>
                 ))}
               </div>
