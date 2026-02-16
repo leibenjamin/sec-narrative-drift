@@ -2,7 +2,12 @@ import { useEffect, useMemo, useState } from "react"
 import AgreementMatrix from "./AgreementMatrix"
 import CleaningLensToggle from "./CleaningLensToggle"
 import MethodCard from "./MethodCard"
-import { listLabCasesForTicker, loadLabOutput, resolveLabOutputLink } from "../lib/labData"
+import {
+  formatLabLoadDebug,
+  listLabCasesForTicker,
+  loadLabOutput,
+  resolveLabOutputLink,
+} from "../lib/labData"
 import type { LabCase, LabCleaningLens, LabOutput, LabSourceId } from "../lib/labTypes"
 
 const DETECTOR_CATALOG = [
@@ -97,11 +102,14 @@ export default function LabPanel({ ticker }: { ticker: string }) {
   const [cases, setCases] = useState<LabCase[]>([])
   const [isLoadingCases, setIsLoadingCases] = useState(true)
   const [caseError, setCaseError] = useState<string | null>(null)
+  const [caseDebugPath, setCaseDebugPath] = useState<string | null>(null)
   const [selectedCaseKey, setSelectedCaseKey] = useState<string | null>(null)
   const [lens, setLens] = useState<LabCleaningLens>("raw")
   const [selectedDetectors, setSelectedDetectors] = useState<string[]>(DEFAULT_SELECTED)
   const [outputs, setOutputs] = useState<Record<string, LabOutput | null>>({})
+  const [outputDebugPaths, setOutputDebugPaths] = useState<Record<string, string | null>>({})
   const [agreementOutput, setAgreementOutput] = useState<LabOutput | null>(null)
+  const [agreementDebugPath, setAgreementDebugPath] = useState<string | null>(null)
   const [isLoadingOutputs, setIsLoadingOutputs] = useState(false)
 
   // Track previous values for render-time state adjustments (React recommended pattern)
@@ -114,6 +122,7 @@ export default function LabPanel({ ticker }: { ticker: string }) {
     setPrevTicker(ticker)
     setIsLoadingCases(true)
     setCaseError(null)
+    setCaseDebugPath(null)
     setCases([])
     setSelectedCaseKey(null)
   }
@@ -132,6 +141,7 @@ export default function LabPanel({ ticker }: { ticker: string }) {
       .catch((error) => {
         if (cancelled) return
         setCaseError(error instanceof Error ? error.message : "Failed to load lab cases.")
+        setCaseDebugPath(formatLabLoadDebug(error))
       })
       .finally(() => {
         if (!cancelled) setIsLoadingCases(false)
@@ -167,18 +177,27 @@ export default function LabPanel({ ticker }: { ticker: string }) {
     [availableDetectorIds]
   )
 
-  useEffect(() => {
-    if (!selectedCase) return
-    setSelectedDetectors((prev) => {
-      const filtered = prev.filter((detectorId) => availableDetectorSet.has(detectorId))
-      const defaults = DEFAULT_SELECTED.filter((detectorId) => availableDetectorSet.has(detectorId))
-      const next = filtered.length ? filtered : defaults
-      if (next.length === prev.length && next.every((item, idx) => item === prev[idx])) {
-        return prev
-      }
-      return next
-    })
-  }, [selectedCase, lens, availableDetectorSet])
+  // Keep selected detectors in sync when case/lens availability changes.
+  const detectorSyncKey = selectedCase
+    ? `${buildCaseKey(selectedCase)}|${lens}|${availableDetectorIds.join(",")}`
+    : null
+  const [prevDetectorSyncKey, setPrevDetectorSyncKey] = useState(detectorSyncKey)
+  if (prevDetectorSyncKey !== detectorSyncKey) {
+    setPrevDetectorSyncKey(detectorSyncKey)
+    if (selectedCase) {
+      setSelectedDetectors((prev) => {
+        const filtered = prev.filter((detectorId) => availableDetectorSet.has(detectorId))
+        const defaults = DEFAULT_SELECTED.filter((detectorId) =>
+          availableDetectorSet.has(detectorId)
+        )
+        const next = filtered.length ? filtered : defaults
+        if (next.length === prev.length && next.every((item, idx) => item === prev[idx])) {
+          return prev
+        }
+        return next
+      })
+    }
+  }
 
   // Adjust lens during render when available lenses change (avoids sync setState in effect)
   if (availableLenses.length && !availableLenses.includes(lens)) {
@@ -199,7 +218,9 @@ export default function LabPanel({ ticker }: { ticker: string }) {
     setPrevOutputRequestKey(outputRequestKey)
     if (!outputRequestKey) {
       setOutputs({})
+      setOutputDebugPaths({})
       setAgreementOutput(null)
+      setAgreementDebugPath(null)
       setIsLoadingOutputs(false)
     } else {
       setIsLoadingOutputs(true)
@@ -216,11 +237,13 @@ export default function LabPanel({ ticker }: { ticker: string }) {
 
     const load = async () => {
       const nextOutputs: Record<string, LabOutput | null> = {}
+      const nextOutputDebugPaths: Record<string, string | null> = {}
 
       for (const detectorId of selectedDetectors) {
         const link = resolveLabOutputLink(selectedCase, detectorId, lens, sourceId)
         if (!link) {
           nextOutputs[detectorId] = null
+          nextOutputDebugPaths[detectorId] = null
           continue
         }
         try {
@@ -228,8 +251,10 @@ export default function LabPanel({ ticker }: { ticker: string }) {
             signal: controller.signal,
           })
           nextOutputs[detectorId] = output
-        } catch {
+          nextOutputDebugPaths[detectorId] = null
+        } catch (error) {
           nextOutputs[detectorId] = null
+          nextOutputDebugPaths[detectorId] = formatLabLoadDebug(error)
         }
       }
 
@@ -240,19 +265,24 @@ export default function LabPanel({ ticker }: { ticker: string }) {
         sourceId
       )
       let agreement: LabOutput | null = null
+      let nextAgreementDebugPath: string | null = null
       if (agreementLink) {
         try {
           agreement = await loadLabOutput(selectedCase.ticker, agreementLink.filename, {
             signal: controller.signal,
           })
-        } catch {
+          nextAgreementDebugPath = null
+        } catch (error) {
           agreement = null
+          nextAgreementDebugPath = formatLabLoadDebug(error)
         }
       }
 
       if (!cancelled) {
         setOutputs(nextOutputs)
+        setOutputDebugPaths(nextOutputDebugPaths)
         setAgreementOutput(agreement)
+        setAgreementDebugPath(nextAgreementDebugPath)
         setIsLoadingOutputs(false)
       }
     }
@@ -283,7 +313,12 @@ export default function LabPanel({ ticker }: { ticker: string }) {
   }
 
   if (caseError) {
-    return <p className="text-sm text-amber-200">{caseError}</p>
+    return (
+      <div className="space-y-1">
+        <p className="text-sm text-amber-200">{caseError}</p>
+        {caseDebugPath ? <p className="break-all text-[11px] text-slate-400">{caseDebugPath}</p> : null}
+      </div>
+    )
   }
 
   if (!cases.length) {
@@ -405,6 +440,9 @@ export default function LabPanel({ ticker }: { ticker: string }) {
           </p>
         </div>
         <AgreementMatrix output={agreementOutput} />
+        {!agreementOutput && agreementDebugPath ? (
+          <p className="break-all text-[11px] text-slate-500">{agreementDebugPath}</p>
+        ) : null}
       </div>
 
       <div className="grid gap-4">
@@ -414,6 +452,7 @@ export default function LabPanel({ ticker }: { ticker: string }) {
             title={detector.label}
             description={detector.description}
             output={outputs[detector.id] ?? null}
+            debugPath={outputDebugPaths[detector.id] ?? null}
             isLoading={isLoadingOutputs}
             emptyMessage="No lab output for this detector/lens yet."
           />

@@ -1,5 +1,6 @@
 import { copy } from "./copy"
 import { LabCasesRegistrySchema, LabOutputSchema } from "./labSchemas"
+import { withBase } from "./paths"
 import { parseWithSchema } from "./schemas"
 import type {
   LabCase,
@@ -10,7 +11,7 @@ import type {
   LabSourceId,
 } from "./labTypes"
 
-const LAB_BASE_PATH = `${import.meta.env.BASE_URL}data/sec_narrative_drift_lab`
+const LAB_BASE_PATH = withBase("data/sec_narrative_drift_lab")
 const LAB_CASES_PATH = `${LAB_BASE_PATH}/lab_cases_v1.json`
 
 export class LabDataLoadError extends Error {
@@ -47,25 +48,25 @@ function normalizeInputPath(pathValue: string): string | null {
   if (!normalized || normalized.includes("..")) return null
 
   if (normalized.startsWith("data/")) {
-    return `${import.meta.env.BASE_URL}${normalized}`
+    return withBase(normalized)
   }
   if (normalized.startsWith("public/")) {
-    return `${import.meta.env.BASE_URL}${normalized.replace(/^public\//, "")}`
+    return withBase(normalized.replace(/^public\//, ""))
   }
   if (normalized.startsWith("bundles/")) {
     const filename = normalized.split("/").pop()
     if (!filename) return null
-    return `${LAB_BASE_PATH}/llm_inputs/${filename}`
+    return withBase(`data/sec_narrative_drift_lab/llm_inputs/${filename}`)
   }
   if (normalized.startsWith("inputs/")) {
     const filename = normalized.split("/").pop()
     if (!filename) return null
-    return `${LAB_BASE_PATH}/llm_inputs/${filename}`
+    return withBase(`data/sec_narrative_drift_lab/llm_inputs/${filename}`)
   }
   if (!normalized.includes("/")) {
-    return `${LAB_BASE_PATH}/llm_inputs/${normalized}`
+    return withBase(`data/sec_narrative_drift_lab/llm_inputs/${normalized}`)
   }
-  return `${LAB_BASE_PATH}/${normalized}`
+  return withBase(`data/sec_narrative_drift_lab/${normalized}`)
 }
 
 if (import.meta.env.DEV) {
@@ -178,4 +179,12 @@ export async function loadLabInputFile(
     inputCache.set(url, promise)
   }
   return inputCache.get(url)!
+}
+
+export function formatLabLoadDebug(error: unknown): string | null {
+  if (!(error instanceof LabDataLoadError)) {
+    return null
+  }
+  const statusText = typeof error.status === "number" ? ` (status ${error.status})` : ""
+  return `Requested path: ${error.url}${statusText}`
 }

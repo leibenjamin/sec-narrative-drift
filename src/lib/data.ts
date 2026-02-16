@@ -1,4 +1,5 @@
 import { copy } from "./copy"
+import { withBase } from "./paths"
 import {
   CompanyIndexSchema,
   ExcerptsSchema,
@@ -24,7 +25,7 @@ import type {
   SimilarityMatrix,
 } from "./types"
 
-const BASE_PATH = `${import.meta.env.BASE_URL}data/sec_narrative_drift`
+const BASE_PATH = withBase("data/sec_narrative_drift")
 const INDEX_PATH = `${BASE_PATH}/index.json`
 const FEATURED_CASES_PATH = `${BASE_PATH}/featured_cases.json`
 const UNIVERSE_PATH = `${BASE_PATH}/universe_featured.json`

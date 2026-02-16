@@ -10,6 +10,7 @@ type MethodCardProps = {
   output: LabOutput | null
   isLoading?: boolean
   emptyMessage?: string
+  debugPath?: string | null
 }
 
 function normalizeRankedList(raw: unknown): RankedItem[] {
@@ -36,6 +37,7 @@ export default function MethodCard({
   output,
   isLoading,
   emptyMessage,
+  debugPath,
 }: MethodCardProps) {
   const warnings = output?.metrics.warnings ?? []
   const rankedItems = normalizeRankedList(output?.artifacts.ranked_items)
@@ -70,7 +72,10 @@ export default function MethodCard({
       ) : null}
 
       {!isLoading && !output ? (
-        <p className="mt-3 text-xs text-slate-400">{emptyMessage ?? "No lab output yet."}</p>
+        <div className="mt-3 space-y-1">
+          <p className="text-xs text-slate-400">{emptyMessage ?? "No lab output yet."}</p>
+          {debugPath ? <p className="break-all text-[11px] text-slate-500">{debugPath}</p> : null}
+        </div>
       ) : null}
 
       {output ? (
