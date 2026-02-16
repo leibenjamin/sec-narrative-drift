@@ -4,7 +4,7 @@ import argparse
 import json
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Optional
+from typing import Any, Optional, cast
 
 SCRIPT_VERSION = "lab_smoke_check_registry_paths.py@v1"
 
@@ -31,8 +31,9 @@ def read_json(path: Path) -> Any:
 def as_dict(value: Any) -> Optional[dict[str, Any]]:
     if not isinstance(value, dict):
         return None
+    raw = cast(dict[Any, Any], value)
     output: dict[str, Any] = {}
-    for key, item in value.items():
+    for key, item in raw.items():
         if not isinstance(key, str):
             return None
         output[key] = item
@@ -41,7 +42,7 @@ def as_dict(value: Any) -> Optional[dict[str, Any]]:
 
 def as_list(value: Any) -> Optional[list[Any]]:
     if isinstance(value, list):
-        return value
+        return cast(list[Any], value)
     return None
 
 

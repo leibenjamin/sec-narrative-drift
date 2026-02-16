@@ -8,7 +8,7 @@ import subprocess
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Optional
+from typing import Any, Optional, cast
 
 SCRIPT_VERSION = "lab_build_cases_registry_v1.py@v1"
 
@@ -96,7 +96,7 @@ def as_dict(value: Any) -> Optional[dict[str, Any]]:
     if not isinstance(value, dict):
         return None
     output: dict[str, Any] = {}
-    for key, item in value.items():
+    for key, item in cast(dict[Any, Any], value).items():
         if not isinstance(key, str):
             return None
         output[key] = item
@@ -105,7 +105,7 @@ def as_dict(value: Any) -> Optional[dict[str, Any]]:
 
 def as_list(value: Any) -> Optional[list[Any]]:
     if isinstance(value, list):
-        return value
+        return cast(list[Any], value)
     return None
 
 
