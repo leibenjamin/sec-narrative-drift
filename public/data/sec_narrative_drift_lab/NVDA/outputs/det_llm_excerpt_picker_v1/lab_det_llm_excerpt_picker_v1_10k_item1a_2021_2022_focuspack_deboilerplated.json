@@ -1,0 +1,159 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_llm_excerpt_picker_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "NVDA",
+  "section": "10k_item1a",
+  "year_from": 2021,
+  "year_to": 2022,
+  "artifacts": {
+    "selected_prev": [
+      30,
+      35,
+      63,
+      64,
+      201
+    ],
+    "selected_curr": [
+      13,
+      30,
+      107,
+      130,
+      195
+    ]
+  },
+  "evidence": [
+    {
+      "year": 2021,
+      "paragraph_idx": 30,
+      "snippet": "In the past we have not had and going forward we may not have long-term commitment contracts with these foundries or subcontractors.",
+      "why": "Highlights structural supply chain dependency risk: limited long-term commitments with key manufacturing partners can constrain capacity planning and resilience, a baseline that later-year supply constraints build on.",
+      "highlights": [
+        "supply_chain",
+        "foundries",
+        "capacity_risk"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 35,
+      "snippet": "\u2022 a failure by our foundries to develop, obtain or successfully implement high quality, leading-edge process technologies, including transitions to smaller geometry process technologies such as advanced process node technologies and memory designs needed to manufacture our products profitably or on a timely basis;",
+      "why": "Captures a key operational/technology risk driver: reliance on successful process-node transitions and yields, which can directly affect product availability, timing, and margins.",
+      "highlights": [
+        "process_nodes",
+        "manufacturing",
+        "margins"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 63,
+      "snippet": "Changes to cryptocurrency standards and processes including, but not limited to, the pending Ethereum 2.0 standard may also create increased aftermarket resales of our GPUs and may reduce demand for our new GPUs.",
+      "why": "Establishes crypto-related demand volatility as a recurring risk factor, setting context for later more detailed mining-mitigation and channel dynamics disclosures.",
+      "highlights": [
+        "crypto",
+        "ethereum_2_0",
+        "gpu_demand"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 64,
+      "snippet": "Additionally, consumer behavior during the COVID-19 pandemic, such as increased demand for our Gaming, Data Center and mobile workstation and laptop products and suppressed corporate demand for desktop workstations, has made it more difficult for us to estimate future demand,",
+      "why": "Shows pandemic-driven demand mix shifts and forecasting difficulty, an important baseline that later evolves into longer lead times and purchase-commitment mismatch risk.",
+      "highlights": [
+        "covid_19",
+        "demand_forecasting",
+        "mix_shift"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 201,
+      "snippet": "California\u2019s privacy laws will expand substantially effective January 1, 2023 as a result of California voters approving the California Privacy Rights Act of 2020, or CPRA, in the November 2020 election.",
+      "why": "Represents regulatory/compliance risk emphasis (privacy) in the earlier year, useful for contrasting with later-year risk additions (e.g., security incident, geopolitical conflict, ESG scrutiny).",
+      "highlights": [
+        "privacy",
+        "regulation",
+        "cpra"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 13,
+      "snippet": "Our competitors\u2019 products, services and technologies, such as the high-end discrete GPUs offered by Intel and AMD, may be cheaper or provide better functionality or features than ours, which may result in lower than expected selling prices for our products.",
+      "why": "Adds specific named competitor pricing/feature pressure (Intel, AMD), sharpening competitive risk in a way that can signal narrative drift toward explicit competitive dynamics affecting pricing power.",
+      "highlights": [
+        "competition",
+        "intel",
+        "amd"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 30,
+      "snippet": "Our manufacturing lead times are very long and in some cases, extend to be twelve months or longer, which requires us to make estimates of customers\u2019 future demand.",
+      "why": "Introduces an explicit quantitative lead-time horizon, intensifying supply/demand mismatch and commitment risk relative to the prior year\u2019s more general demand-estimation challenges.",
+      "highlights": [
+        "lead_times",
+        "demand_forecasting",
+        "supply_planning"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 107,
+      "snippet": "For example, on February 23, 2022, we became aware of a security incident involving unauthorized access to our network by a group of independent criminal threat actors, not affiliated with any government or political cause.",
+      "why": "Major new discrete event risk disclosure (security incident) that is absent in the prior year excerpts, making it a clear candidate for year-over-year narrative drift.",
+      "highlights": [
+        "cybersecurity",
+        "security_incident",
+        "network_access"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 130,
+      "snippet": "For example, the invasion by Russia of Ukraine has had and will likely continue to have a negative impact on our employees or operations both within and outside these regions, and may result in the loss of some or even all of our assets in those regions.",
+      "why": "Elevates geopolitical conflict from general unpredictability to a concrete war-related operational/asset risk, reflecting a material shift in external-risk framing versus the prior year.",
+      "highlights": [
+        "geopolitics",
+        "russia_ukraine",
+        "operations_risk"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 195,
+      "snippet": "Increased scrutiny from shareholders and others regarding our environmental, social and governance responsibilities could result in additional costs or risks and adversely impact our reputation and willingness of customers and suppliers to do business with us.",
+      "why": "Adds ESG scrutiny as a prominent reputational and cost risk theme, complementing the year\u2019s broader external-risk expansion (cyber + war + supply constraints).",
+      "highlights": [
+        "esg",
+        "reputation",
+        "stakeholder_scrutiny"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": null,
+    "confidence": 0.5,
+    "coverage": 0.9071391014780628,
+    "warnings": [
+      "Focuspack is a subset; verify in full compare pane.",
+      "Confidence is moderate; validator autofilled confidence due to missing value.",
+      "Reconciled selected_prev/curr to FULL indices based on evidence.",
+      "Normalized provenance.input_file to shipped public llm_inputs path."
+    ]
+  },
+  "provenance": {
+    "input_file": "public/data/sec_narrative_drift_lab/llm_inputs/NVDA_2021_2022_focuspack_deboilerplated.json",
+    "focuspack_meta": {
+      "full_prev_count": 228,
+      "full_curr_count": 257,
+      "selected_prev_count": 45,
+      "selected_curr_count": 45,
+      "trigger_hits": 28
+    }
+  }
+}
