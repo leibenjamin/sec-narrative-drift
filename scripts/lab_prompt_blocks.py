@@ -1,4 +1,4 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 from typing import Optional
 
@@ -86,10 +86,11 @@ def build_delta_brief_rules_block(
     )
     lines: list[str] = []
     lines.append("- artifacts.delta_brief must include >= 2 inline citations total.")
-    lines.append('- Preferred format: "YYYY ¶NN" where NN = paragraph_idx+1.')
-    lines.append('- Fallback accepted: "YYYY para NN" (if ¶ is hard to type reliably).')
-    lines.append('- If ¶ looks corrupted (extra stray character), remove it or use "para".')
-    lines.append(f"- Encourage pairing: every claim should contrast {pair_label} with nearby citations.")
+    lines.append('- Citation format MUST be ASCII-only: "YYYY para NN" where NN = paragraph_idx+1.')
+    lines.append('- Never output ¶, Â¶, or Ã‚Â¶; use only "YYYY para NN".')
+    lines.append(
+        f"- Encourage pairing: every claim should contrast {pair_label} with nearby citations."
+    )
     lines.append("- Aim for >=2 evidence blocks from each year when possible.")
     return lines
 

@@ -1,14 +1,15 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 import argparse
 import json
+import re
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Optional
 
 import sys
 
-SCRIPT_VERSION = "lab_validate_llm_manifest_outputs.py@v1"
+SCRIPT_VERSION = "lab_validate_llm_manifest_outputs.py@v2"
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_MANIFEST_PATH = REPO_ROOT / "reports" / "lab_llm_run_manifest.json"
@@ -28,6 +29,14 @@ REQUIRED_TOP_LEVEL_FIELDS = [
     "metrics",
     "provenance",
 ]
+REQUIRED_TOP_LEVEL_FIELD_SET = set(REQUIRED_TOP_LEVEL_FIELDS)
+EXPECTED_SCHEMA_VERSION = "1.0"
+
+FOCUSPACK_WARNING = "Focuspack is a subset; verify in full compare pane."
+ALLOWED_CONFIDENCE: set[float] = {0.25, 0.50, 0.75}
+MAX_SNIPPET_CHARS = 350
+DELTA_BRIEF_CITATION_RE = re.compile(r"\b(20\d{2})\s+para\s+(\d+)\b", re.IGNORECASE)
+FORBIDDEN_CITATION_TOKENS = ("\u00B6", "\u00C2\u00B6", "\u00C3\u0082\u00C2\u00B6")
 
 sys.path.append(str(Path(__file__).resolve().parent))
 from lab_llm_precompute_utils import (  # type: ignore
@@ -126,6 +135,42 @@ def load_manifest_targets(manifest_path: Path) -> list[ManifestTarget]:
     return targets
 
 
+def parse_int_list(value: object, field_name: str, reasons: list[str]) -> Optional[list[int]]:
+    values_raw = as_list(value)
+    if values_raw is None:
+        reasons.append(f"{field_name} must be a list")
+        return None
+    values: list[int] = []
+    for idx, item in enumerate(values_raw):
+        item_int = get_int(item)
+        if item_int is None:
+            reasons.append(f"{field_name}[{idx}] must be an int")
+            continue
+        values.append(item_int)
+    return values
+
+
+def parse_string_list(
+    value: object, field_name: str, reasons: list[str]
+) -> Optional[list[str]]:
+    values_raw = as_list(value)
+    if values_raw is None:
+        reasons.append(f"{field_name} must be a list")
+        return None
+    values: list[str] = []
+    for idx, item in enumerate(values_raw):
+        item_str = get_str(item)
+        if item_str is None:
+            reasons.append(f"{field_name}[{idx}] must be a string")
+            continue
+        stripped = item_str.strip()
+        if not stripped:
+            reasons.append(f"{field_name}[{idx}] must be non-empty")
+            continue
+        values.append(stripped)
+    return values
+
+
 def validate_output_json(target: ManifestTarget, output_path: Path) -> list[str]:
     reasons: list[str] = []
     try:
@@ -142,6 +187,17 @@ def validate_output_json(target: ManifestTarget, output_path: Path) -> list[str]
     for field in REQUIRED_TOP_LEVEL_FIELDS:
         if field not in payload_dict:
             reasons.append(f"missing top-level field: {field}")
+    extra_fields = [field for field in payload_dict.keys() if field not in REQUIRED_TOP_LEVEL_FIELD_SET]
+    if extra_fields:
+        reasons.append(
+            "unexpected top-level field(s): " + ", ".join(sorted(extra_fields))
+        )
+
+    schema_version = get_str(payload_dict.get("lab_schema_version"))
+    if schema_version != EXPECTED_SCHEMA_VERSION:
+        reasons.append(
+            f"lab_schema_version mismatch: got {schema_version!r}, expected {EXPECTED_SCHEMA_VERSION!r}"
+        )
 
     detector_id = get_str(payload_dict.get("detector_id"))
     if detector_id != target.detector_id:
@@ -175,23 +231,166 @@ def validate_output_json(target: ManifestTarget, output_path: Path) -> list[str]
     artifacts = as_str_dict(payload_dict.get("artifacts"))
     if artifacts is None:
         reasons.append("artifacts must be an object")
+        artifacts = {}
 
-    evidence = as_list(payload_dict.get("evidence"))
-    if evidence is None:
+    evidence_raw = as_list(payload_dict.get("evidence"))
+    evidence_prev_indices: list[int] = []
+    evidence_curr_indices: list[int] = []
+    if evidence_raw is None:
         reasons.append("evidence must be a list")
+    else:
+        seen_prev: set[int] = set()
+        seen_curr: set[int] = set()
+        for idx, entry in enumerate(evidence_raw):
+            entry_dict = as_str_dict(entry)
+            if entry_dict is None:
+                reasons.append(f"evidence[{idx}] must be an object")
+                continue
+
+            evidence_year = get_int(entry_dict.get("year"))
+            if evidence_year is None:
+                reasons.append(f"evidence[{idx}].year must be an int")
+            elif evidence_year not in (target.year_from, target.year_to):
+                reasons.append(
+                    f"evidence[{idx}].year must be {target.year_from} or {target.year_to}"
+                )
+
+            paragraph_idx = get_int(entry_dict.get("paragraph_idx"))
+            if paragraph_idx is None:
+                reasons.append(f"evidence[{idx}].paragraph_idx must be an int")
+            elif paragraph_idx < 0:
+                reasons.append(f"evidence[{idx}].paragraph_idx must be >= 0")
+
+            snippet = get_str(entry_dict.get("snippet"))
+            if snippet is None or not snippet.strip():
+                reasons.append(f"evidence[{idx}].snippet must be a non-empty string")
+            elif len(snippet) > MAX_SNIPPET_CHARS:
+                reasons.append(
+                    f"evidence[{idx}].snippet length must be <= {MAX_SNIPPET_CHARS}"
+                )
+
+            why = get_str(entry_dict.get("why"))
+            if why is None or not why.strip():
+                reasons.append(f"evidence[{idx}].why must be a non-empty string")
+
+            highlights = parse_string_list(
+                entry_dict.get("highlights"), f"evidence[{idx}].highlights", reasons
+            )
+            if highlights is not None and len(highlights) < 1:
+                reasons.append(f"evidence[{idx}].highlights must include at least one value")
+
+            if evidence_year == target.year_from and paragraph_idx is not None and paragraph_idx >= 0:
+                if paragraph_idx not in seen_prev:
+                    seen_prev.add(paragraph_idx)
+                    evidence_prev_indices.append(paragraph_idx)
+            if evidence_year == target.year_to and paragraph_idx is not None and paragraph_idx >= 0:
+                if paragraph_idx not in seen_curr:
+                    seen_curr.add(paragraph_idx)
+                    evidence_curr_indices.append(paragraph_idx)
+
+        if len(evidence_prev_indices) < 1:
+            reasons.append("evidence must include at least one block for year_from")
+        if len(evidence_curr_indices) < 1:
+            reasons.append("evidence must include at least one block for year_to")
 
     metrics = as_str_dict(payload_dict.get("metrics"))
     if metrics is None:
         reasons.append("metrics must be an object")
+        metrics = {}
+    confidence_raw = metrics.get("confidence")
+    if confidence_raw is None:
+        reasons.append("metrics.confidence is required")
+    elif isinstance(confidence_raw, bool) or not isinstance(confidence_raw, (int, float)):
+        reasons.append("metrics.confidence must be numeric")
+    else:
+        confidence_value = float(confidence_raw)
+        if confidence_value not in ALLOWED_CONFIDENCE:
+            reasons.append(
+                f"metrics.confidence must be one of {sorted(ALLOWED_CONFIDENCE)}"
+            )
+
+    warning_values = parse_string_list(metrics.get("warnings"), "metrics.warnings", reasons)
+    if warning_values is not None and FOCUSPACK_WARNING not in warning_values:
+        reasons.append(f'metrics.warnings must include "{FOCUSPACK_WARNING}"')
 
     provenance = as_str_dict(payload_dict.get("provenance"))
     if provenance is None:
         reasons.append("provenance must be an object")
+    else:
+        input_file = get_str(provenance.get("input_file"))
+        if input_file is None or not input_file.strip():
+            reasons.append("provenance.input_file must be a non-empty string")
+        else:
+            expected_input_file = (
+                f"inputs/{target.ticker}_{target.year_from}_{target.year_to}_focuspack_{target.lens}.json"
+            )
+            if input_file != expected_input_file:
+                reasons.append(
+                    "provenance.input_file mismatch: "
+                    + f"got {input_file!r}, expected {expected_input_file!r}"
+                )
+
+    if target.detector_id == "det_llm_delta_brief_v1":
+        delta_brief = get_str(artifacts.get("delta_brief"))
+        if delta_brief is None or not delta_brief.strip():
+            reasons.append("artifacts.delta_brief must be a non-empty string")
+        else:
+            for token in FORBIDDEN_CITATION_TOKENS:
+                if token in delta_brief:
+                    reasons.append(f"delta_brief contains forbidden citation token: {token!r}")
+            citation_matches = DELTA_BRIEF_CITATION_RE.findall(delta_brief)
+            if len(citation_matches) < 2:
+                reasons.append(
+                    'delta_brief must include >=2 inline citations in "YYYY para NN" format'
+                )
+
+    if target.detector_id == "det_llm_excerpt_picker_v1":
+        selected_prev = parse_int_list(
+            artifacts.get("selected_prev"), "artifacts.selected_prev", reasons
+        )
+        selected_curr = parse_int_list(
+            artifacts.get("selected_curr"), "artifacts.selected_curr", reasons
+        )
+        if selected_prev is not None:
+            if len(selected_prev) != len(set(selected_prev)):
+                reasons.append("artifacts.selected_prev must not contain duplicates")
+            for idx, value in enumerate(selected_prev):
+                if value < 0:
+                    reasons.append(f"artifacts.selected_prev[{idx}] must be >= 0")
+        if selected_curr is not None:
+            if len(selected_curr) != len(set(selected_curr)):
+                reasons.append("artifacts.selected_curr must not contain duplicates")
+            for idx, value in enumerate(selected_curr):
+                if value < 0:
+                    reasons.append(f"artifacts.selected_curr[{idx}] must be >= 0")
+
+        if selected_prev is not None and evidence_prev_indices:
+            selected_prev_set = set(selected_prev)
+            missing_prev = [
+                idx for idx in evidence_prev_indices if idx not in selected_prev_set
+            ]
+            if missing_prev:
+                reasons.append(
+                    "artifacts.selected_prev missing evidence paragraph_idx values: "
+                    + ", ".join(str(idx) for idx in missing_prev)
+                )
+        if selected_curr is not None and evidence_curr_indices:
+            selected_curr_set = set(selected_curr)
+            missing_curr = [
+                idx for idx in evidence_curr_indices if idx not in selected_curr_set
+            ]
+            if missing_curr:
+                reasons.append(
+                    "artifacts.selected_curr missing evidence paragraph_idx values: "
+                    + ", ".join(str(idx) for idx in missing_curr)
+                )
 
     return reasons
 
 
-def validate_targets(targets: list[ManifestTarget]) -> tuple[list[ValidationIssue], list[ValidationIssue], list[ValidationIssue]]:
+def validate_targets(
+    targets: list[ManifestTarget],
+) -> tuple[list[ValidationIssue], list[ValidationIssue], list[ValidationIssue]]:
     missing: list[ValidationIssue] = []
     invalid: list[ValidationIssue] = []
     manifest_mismatch: list[ValidationIssue] = []
@@ -200,7 +399,10 @@ def validate_targets(targets: list[ManifestTarget]) -> tuple[list[ValidationIssu
         expected_abs = REPO_ROOT / Path(target.expected_output_path)
         exists_now = expected_abs.exists()
 
-        if target.manifest_present_flag is not None and target.manifest_present_flag != exists_now:
+        if (
+            target.manifest_present_flag is not None
+            and target.manifest_present_flag != exists_now
+        ):
             manifest_mismatch.append(
                 ValidationIssue(
                     issue_type="manifest_present_mismatch",
