@@ -3,6 +3,7 @@ import AgreementMatrix from "./AgreementMatrix"
 import CleaningLensToggle from "./CleaningLensToggle"
 import MethodCard from "./MethodCard"
 import {
+  clearLabOutputCache,
   formatLabLoadDebug,
   listLabCasesForTicker,
   loadLabOutput,
@@ -129,6 +130,7 @@ export default function LabPanel({ ticker }: { ticker: string }) {
   const [agreementOutput, setAgreementOutput] = useState<LabOutput | null>(null)
   const [agreementDebugPath, setAgreementDebugPath] = useState<string | null>(null)
   const [isLoadingOutputs, setIsLoadingOutputs] = useState(false)
+  const [reloadNonce, setReloadNonce] = useState(0)
 
   // Track previous values for render-time state adjustments (React recommended pattern)
   const [prevTicker, setPrevTicker] = useState(ticker)
@@ -227,7 +229,7 @@ export default function LabPanel({ ticker }: { ticker: string }) {
 
   // Build a key to track when output-loading dependencies change
   const outputRequestKey = selectedCase
-    ? `${buildCaseKey(selectedCase)}|${lens}|${selectedDetectors.join(",")}`
+    ? `${buildCaseKey(selectedCase)}|${lens}|${selectedDetectors.join(",")}|reload:${reloadNonce}`
     : null
   const [prevOutputRequestKey, setPrevOutputRequestKey] = useState(outputRequestKey)
 
@@ -326,6 +328,11 @@ export default function LabPanel({ ticker }: { ticker: string }) {
     return DETECTOR_CATALOG.filter((det) => selected.has(det.id))
   }, [selectedDetectors])
 
+  const handleReloadOutputs = () => {
+    clearLabOutputCache()
+    setReloadNonce((previous) => previous + 1)
+  }
+
   if (isLoadingCases) {
     return <p className="text-sm text-slate-300">Loading lab cases?</p>
   }
@@ -381,8 +388,18 @@ export default function LabPanel({ ticker }: { ticker: string }) {
           <div>
             <div className="flex items-center justify-between gap-3">
               <div className="text-xs uppercase tracking-wide text-slate-400">Methods</div>
-              <div className="text-[11px] text-slate-400">
-                Available outputs: {availableDetectorIds.length}/{DETECTOR_CATALOG.length}
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={handleReloadOutputs}
+                  disabled={!selectedCase || isLoadingOutputs}
+                  className="rounded-md border border-white/15 bg-slate-900/50 px-2 py-1 text-[11px] text-slate-200 transition hover:border-white/35 disabled:cursor-not-allowed disabled:opacity-50"
+                >
+                  Reload outputs
+                </button>
+                <div className="text-[11px] text-slate-400">
+                  Available outputs: {availableDetectorIds.length}/{DETECTOR_CATALOG.length}
+                </div>
               </div>
             </div>
             <div className="mt-2 flex flex-wrap gap-3">

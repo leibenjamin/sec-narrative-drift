@@ -30,6 +30,10 @@ const outputCache = new Map<string, Promise<LabOutput>>()
 const inputCache = new Map<string, Promise<unknown>>()
 let casesPromise: Promise<LabCasesRegistry> | null = null
 
+export function clearLabOutputCache(): void {
+  outputCache.clear()
+}
+
 function normalizeOutputFilename(pathValue: string): string | null {
   const normalized = pathValue.replace(/\\/g, "/").replace(/^\.\/+/, "")
   if (!normalized || normalized.includes("..")) return null
@@ -179,9 +183,15 @@ export async function loadLabOutput(
     throw new LabDataLoadError("Output file path is not usable.", filename)
   }
   if (!outputCache.has(url)) {
-    const promise = fetchJson<unknown>(url, copy.global.errors.missingDataset, options).then(
-      (data) => parseLabPayload(LabOutputSchema, data, `LabOutput:${normalizedFilename}`, url)
-    )
+    const promise = fetchJson<unknown>(url, copy.global.errors.missingDataset, options)
+      .then((data) => parseLabPayload(LabOutputSchema, data, `LabOutput:${normalizedFilename}`, url))
+      .catch((error) => {
+        // Retry smoke (manual):
+        // 1) First call rejects (404/invalid JSON) and evicts this URL from cache.
+        // 2) After file/path is fixed, the next call re-fetches instead of reusing a stale rejection.
+        outputCache.delete(url)
+        throw error
+      })
     outputCache.set(url, promise)
   }
   return outputCache.get(url)!
