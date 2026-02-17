@@ -1,0 +1,1205 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_logodds_terms_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "KO",
+  "section": "10k_item1a",
+  "year_from": 2022,
+  "year_to": 2023,
+  "artifacts": {
+    "top_risers": [
+      {
+        "label": "conflicts",
+        "score": 1.1549708427604852,
+        "meta": {
+          "z": 1.4151333418298193,
+          "countPrev": 0,
+          "countCurr": 9,
+          "per10kPrev": 0.0,
+          "per10kCurr": 7.607776838546069,
+          "deltaPer10k": 7.607776838546069,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "opinions",
+        "score": 1.0895574036624327,
+        "meta": {
+          "z": 1.3349852244538336,
+          "countPrev": 0,
+          "countCurr": 7,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.9171597633136095,
+          "deltaPer10k": 5.9171597633136095,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "international conflicts",
+        "score": 0.9237929529511159,
+        "meta": {
+          "z": 1.2276979338738396,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.22654268808115,
+          "deltaPer10k": 4.22654268808115,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "machine learning",
+        "score": 0.8703033502725224,
+        "meta": {
+          "z": 1.1566115779079733,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.3812341504649197,
+          "deltaPer10k": 3.3812341504649197,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "political instability",
+        "score": 0.8703033502725224,
+        "meta": {
+          "z": 1.1566115779079733,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.3812341504649197,
+          "deltaPer10k": 3.3812341504649197,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "portions opinions",
+        "score": 0.8703033502725224,
+        "meta": {
+          "z": 1.1566115779079733,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.3812341504649197,
+          "deltaPer10k": 3.3812341504649197,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "standards regulations",
+        "score": 0.8703033502725224,
+        "meta": {
+          "z": 1.1566115779079733,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.3812341504649197,
+          "deltaPer10k": 3.3812341504649197,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "aspirations",
+        "score": 0.8693290017654082,
+        "meta": {
+          "z": 1.0651493612406127,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.53592561284869,
+          "deltaPer10k": 2.53592561284869,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "recall",
+        "score": 0.8693290017654082,
+        "meta": {
+          "z": 1.0651493612406127,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.53592561284869,
+          "deltaPer10k": 2.53592561284869,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "reflect",
+        "score": 0.8693290017654082,
+        "meta": {
+          "z": 1.0651493612406127,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.53592561284869,
+          "deltaPer10k": 2.53592561284869,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "pillar",
+        "score": 0.8568762470794525,
+        "meta": {
+          "z": 1.2276979338738396,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.22654268808115,
+          "deltaPer10k": 4.22654268808115,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "advanced",
+        "score": 0.7647046423619408,
+        "meta": {
+          "z": 0.9369578832587425,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.6906170752324599,
+          "deltaPer10k": 1.6906170752324599,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "impacting",
+        "score": 0.7647046423619408,
+        "meta": {
+          "z": 0.9369578832587425,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.6906170752324599,
+          "deltaPer10k": 1.6906170752324599,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "influencers",
+        "score": 0.7647046423619408,
+        "meta": {
+          "z": 0.9369578832587425,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.6906170752324599,
+          "deltaPer10k": 1.6906170752324599,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "learning",
+        "score": 0.7647046423619408,
+        "meta": {
+          "z": 0.9369578832587425,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.6906170752324599,
+          "deltaPer10k": 1.6906170752324599,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_fallers": [
+      {
+        "label": "russia",
+        "score": -1.0266179088584677,
+        "meta": {
+          "z": -1.4708969817744946,
+          "countPrev": 5,
+          "countCurr": 1,
+          "per10kPrev": 4.278623994523361,
+          "per10kCurr": 0.8453085376162299,
+          "deltaPer10k": -3.433315456907131,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ukraine",
+        "score": -1.0266179088584677,
+        "meta": {
+          "z": -1.4708969817744946,
+          "countPrev": 5,
+          "countCurr": 1,
+          "per10kPrev": 4.278623994523361,
+          "per10kCurr": 0.8453085376162299,
+          "deltaPer10k": -3.433315456907131,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "Pandemic",
+        "score": -1.0226771652764262,
+        "meta": {
+          "z": -2.1591618449471115,
+          "countPrev": 12,
+          "countCurr": 3,
+          "per10kPrev": 10.268697586856067,
+          "per10kCurr": 2.53592561284869,
+          "deltaPer10k": -7.7327719740073775,
+          "distinctive": true,
+          "includes": [
+            "pandemics",
+            "pandemic"
+          ]
+        }
+      },
+      {
+        "label": "COVID-19",
+        "score": -0.9150277377094092,
+        "meta": {
+          "z": -1.9318833405226234,
+          "countPrev": 9,
+          "countCurr": 2,
+          "per10kPrev": 7.70152319014205,
+          "per10kCurr": 1.6906170752324599,
+          "deltaPer10k": -6.01090611490959,
+          "distinctive": false,
+          "includes": [
+            "covid"
+          ]
+        }
+      },
+      {
+        "label": "covid pandemic",
+        "score": -0.8621012471732513,
+        "meta": {
+          "z": -1.8321452427077507,
+          "countPrev": 7,
+          "countCurr": 1,
+          "per10kPrev": 5.990073592332705,
+          "per10kCurr": 0.8453085376162299,
+          "deltaPer10k": -5.144765054716475,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "home",
+        "score": -0.7486576255266274,
+        "meta": {
+          "z": -1.072646631495097,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.567174396714017,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.567174396714017,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "portions opinion",
+        "score": -0.7036580154794695,
+        "meta": {
+          "z": -1.1641378992912617,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.422899195618689,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.422899195618689,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "away home",
+        "score": -0.5708382149439343,
+        "meta": {
+          "z": -0.9443996739342116,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7114495978093445,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7114495978093445,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "condition cash",
+        "score": -0.5708382149439343,
+        "meta": {
+          "z": -0.9443996739342116,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7114495978093445,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7114495978093445,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "home consumption",
+        "score": -0.5708382149439343,
+        "meta": {
+          "z": -0.9443996739342116,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7114495978093445,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7114495978093445,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ability achieve",
+        "score": -0.4444654497954349,
+        "meta": {
+          "z": -0.9445819293972285,
+          "countPrev": 3,
+          "countCurr": 1,
+          "per10kPrev": 2.567174396714017,
+          "per10kCurr": 0.8453085376162299,
+          "deltaPer10k": -1.7218658590977869,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "opinion",
+        "score": -0.42868973426871426,
+        "meta": {
+          "z": -0.9050857386684044,
+          "countPrev": 7,
+          "countCurr": 4,
+          "per10kPrev": 5.990073592332705,
+          "per10kCurr": 3.3812341504649197,
+          "deltaPer10k": -2.6088394418677856,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "difficulty",
+        "score": -0.3906441394118833,
+        "meta": {
+          "z": -0.5596992616734582,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 1.7114495978093445,
+          "per10kCurr": 0.8453085376162299,
+          "deltaPer10k": -0.8661410601931145,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "goals targets",
+        "score": -0.3572517254185779,
+        "meta": {
+          "z": -0.5910403406171336,
+          "countPrev": 7,
+          "countCurr": 5,
+          "per10kPrev": 5.990073592332705,
+          "per10kCurr": 4.22654268808115,
+          "deltaPer10k": -1.7635309042515557,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "targets",
+        "score": -0.3449521211745609,
+        "meta": {
+          "z": -0.5910403406171336,
+          "countPrev": 7,
+          "countCurr": 5,
+          "per10kPrev": 5.990073592332705,
+          "per10kCurr": 4.22654268808115,
+          "deltaPer10k": -1.7635309042515557,
+          "distinctive": false
+        }
+      }
+    ],
+    "summary": "Adds emphasis on conflicts, opinions, international conflicts; de-emphasizes russia, ukraine, Pandemic.",
+    "ranked_items": [
+      {
+        "label": "conflicts",
+        "score": 1.1549708427604852,
+        "meta": {
+          "z": 1.4151333418298193,
+          "countPrev": 0,
+          "countCurr": 9,
+          "per10kPrev": 0.0,
+          "per10kCurr": 7.607776838546069,
+          "deltaPer10k": 7.607776838546069,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "opinions",
+        "score": 1.0895574036624327,
+        "meta": {
+          "z": 1.3349852244538336,
+          "countPrev": 0,
+          "countCurr": 7,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.9171597633136095,
+          "deltaPer10k": 5.9171597633136095,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "international conflicts",
+        "score": 0.9237929529511159,
+        "meta": {
+          "z": 1.2276979338738396,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.22654268808115,
+          "deltaPer10k": 4.22654268808115,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "machine learning",
+        "score": 0.8703033502725224,
+        "meta": {
+          "z": 1.1566115779079733,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.3812341504649197,
+          "deltaPer10k": 3.3812341504649197,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "political instability",
+        "score": 0.8703033502725224,
+        "meta": {
+          "z": 1.1566115779079733,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.3812341504649197,
+          "deltaPer10k": 3.3812341504649197,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "portions opinions",
+        "score": 0.8703033502725224,
+        "meta": {
+          "z": 1.1566115779079733,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.3812341504649197,
+          "deltaPer10k": 3.3812341504649197,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "standards regulations",
+        "score": 0.8703033502725224,
+        "meta": {
+          "z": 1.1566115779079733,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.3812341504649197,
+          "deltaPer10k": 3.3812341504649197,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "aspirations",
+        "score": 0.8693290017654082,
+        "meta": {
+          "z": 1.0651493612406127,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.53592561284869,
+          "deltaPer10k": 2.53592561284869,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "recall",
+        "score": 0.8693290017654082,
+        "meta": {
+          "z": 1.0651493612406127,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.53592561284869,
+          "deltaPer10k": 2.53592561284869,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "reflect",
+        "score": 0.8693290017654082,
+        "meta": {
+          "z": 1.0651493612406127,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.53592561284869,
+          "deltaPer10k": 2.53592561284869,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "pillar",
+        "score": 0.8568762470794525,
+        "meta": {
+          "z": 1.2276979338738396,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.22654268808115,
+          "deltaPer10k": 4.22654268808115,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "advanced",
+        "score": 0.7647046423619408,
+        "meta": {
+          "z": 0.9369578832587425,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.6906170752324599,
+          "deltaPer10k": 1.6906170752324599,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "impacting",
+        "score": 0.7647046423619408,
+        "meta": {
+          "z": 0.9369578832587425,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.6906170752324599,
+          "deltaPer10k": 1.6906170752324599,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "influencers",
+        "score": 0.7647046423619408,
+        "meta": {
+          "z": 0.9369578832587425,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.6906170752324599,
+          "deltaPer10k": 1.6906170752324599,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "learning",
+        "score": 0.7647046423619408,
+        "meta": {
+          "z": 0.9369578832587425,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.6906170752324599,
+          "deltaPer10k": 1.6906170752324599,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "russia",
+        "score": -1.0266179088584677,
+        "meta": {
+          "z": -1.4708969817744946,
+          "countPrev": 5,
+          "countCurr": 1,
+          "per10kPrev": 4.278623994523361,
+          "per10kCurr": 0.8453085376162299,
+          "deltaPer10k": -3.433315456907131,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ukraine",
+        "score": -1.0266179088584677,
+        "meta": {
+          "z": -1.4708969817744946,
+          "countPrev": 5,
+          "countCurr": 1,
+          "per10kPrev": 4.278623994523361,
+          "per10kCurr": 0.8453085376162299,
+          "deltaPer10k": -3.433315456907131,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "Pandemic",
+        "score": -1.0226771652764262,
+        "meta": {
+          "z": -2.1591618449471115,
+          "countPrev": 12,
+          "countCurr": 3,
+          "per10kPrev": 10.268697586856067,
+          "per10kCurr": 2.53592561284869,
+          "deltaPer10k": -7.7327719740073775,
+          "distinctive": true,
+          "includes": [
+            "pandemics",
+            "pandemic"
+          ]
+        }
+      },
+      {
+        "label": "COVID-19",
+        "score": -0.9150277377094092,
+        "meta": {
+          "z": -1.9318833405226234,
+          "countPrev": 9,
+          "countCurr": 2,
+          "per10kPrev": 7.70152319014205,
+          "per10kCurr": 1.6906170752324599,
+          "deltaPer10k": -6.01090611490959,
+          "distinctive": false,
+          "includes": [
+            "covid"
+          ]
+        }
+      },
+      {
+        "label": "covid pandemic",
+        "score": -0.8621012471732513,
+        "meta": {
+          "z": -1.8321452427077507,
+          "countPrev": 7,
+          "countCurr": 1,
+          "per10kPrev": 5.990073592332705,
+          "per10kCurr": 0.8453085376162299,
+          "deltaPer10k": -5.144765054716475,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "home",
+        "score": -0.7486576255266274,
+        "meta": {
+          "z": -1.072646631495097,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.567174396714017,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.567174396714017,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "portions opinion",
+        "score": -0.7036580154794695,
+        "meta": {
+          "z": -1.1641378992912617,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.422899195618689,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.422899195618689,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "away home",
+        "score": -0.5708382149439343,
+        "meta": {
+          "z": -0.9443996739342116,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7114495978093445,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7114495978093445,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "condition cash",
+        "score": -0.5708382149439343,
+        "meta": {
+          "z": -0.9443996739342116,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7114495978093445,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7114495978093445,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "home consumption",
+        "score": -0.5708382149439343,
+        "meta": {
+          "z": -0.9443996739342116,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7114495978093445,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7114495978093445,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ability achieve",
+        "score": -0.4444654497954349,
+        "meta": {
+          "z": -0.9445819293972285,
+          "countPrev": 3,
+          "countCurr": 1,
+          "per10kPrev": 2.567174396714017,
+          "per10kCurr": 0.8453085376162299,
+          "deltaPer10k": -1.7218658590977869,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "opinion",
+        "score": -0.42868973426871426,
+        "meta": {
+          "z": -0.9050857386684044,
+          "countPrev": 7,
+          "countCurr": 4,
+          "per10kPrev": 5.990073592332705,
+          "per10kCurr": 3.3812341504649197,
+          "deltaPer10k": -2.6088394418677856,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "difficulty",
+        "score": -0.3906441394118833,
+        "meta": {
+          "z": -0.5596992616734582,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 1.7114495978093445,
+          "per10kCurr": 0.8453085376162299,
+          "deltaPer10k": -0.8661410601931145,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "goals targets",
+        "score": -0.3572517254185779,
+        "meta": {
+          "z": -0.5910403406171336,
+          "countPrev": 7,
+          "countCurr": 5,
+          "per10kPrev": 5.990073592332705,
+          "per10kCurr": 4.22654268808115,
+          "deltaPer10k": -1.7635309042515557,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "targets",
+        "score": -0.3449521211745609,
+        "meta": {
+          "z": -0.5910403406171336,
+          "countPrev": 7,
+          "countCurr": 5,
+          "per10kPrev": 5.990073592332705,
+          "per10kCurr": 4.22654268808115,
+          "deltaPer10k": -1.7635309042515557,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_risers_alt": [
+      {
+        "label": "new increased",
+        "score": 1.8474822761633831,
+        "meta": {}
+      },
+      {
+        "label": "machine learning",
+        "score": 1.6935204135762731,
+        "meta": {}
+      },
+      {
+        "label": "new products",
+        "score": 1.6935204135762731,
+        "meta": {}
+      },
+      {
+        "label": "political instability",
+        "score": 1.6935204135762731,
+        "meta": {}
+      },
+      {
+        "label": "Artificial intelligence",
+        "score": 0.7243641687381279,
+        "meta": {}
+      },
+      {
+        "label": "negatively affect business operating",
+        "score": 1.0186680350383934,
+        "meta": {}
+      },
+      {
+        "label": "reduce demand beverage products",
+        "score": 0.905405417934185,
+        "meta": {}
+      },
+      {
+        "label": "internal controls",
+        "score": 1.691076507889651,
+        "meta": {}
+      },
+      {
+        "label": "increased costs",
+        "score": 0.48627526713747926,
+        "meta": {}
+      },
+      {
+        "label": "Inflation",
+        "score": 0.43366997264177787,
+        "meta": {}
+      },
+      {
+        "label": "continue result",
+        "score": 0.29497606314371616,
+        "meta": {}
+      },
+      {
+        "label": "Interest rates",
+        "score": 0.14703403673185633,
+        "meta": {}
+      },
+      {
+        "label": "demand products",
+        "score": 0.13163124195872244,
+        "meta": {}
+      }
+    ],
+    "top_fallers_alt": [
+      {
+        "label": "countries increase",
+        "score": -1.7231102284472222,
+        "meta": {}
+      },
+      {
+        "label": "rates increase",
+        "score": -2.3207998480589165,
+        "meta": {}
+      },
+      {
+        "label": "reputation brands",
+        "score": -2.3207998480589165,
+        "meta": {}
+      },
+      {
+        "label": "negative impact products",
+        "score": -0.7726809452987728,
+        "meta": {}
+      },
+      {
+        "label": "Supply chain",
+        "score": -0.17640202299768992,
+        "meta": {}
+      },
+      {
+        "label": "beverage products",
+        "score": -0.09509403680656536,
+        "meta": {}
+      },
+      {
+        "label": "cybersecurity incident",
+        "score": -0.22494935004623873,
+        "meta": {}
+      },
+      {
+        "label": "reduce demand products",
+        "score": -0.19596577276498284,
+        "meta": {}
+      },
+      {
+        "label": "financial results",
+        "score": -0.12941122527777482,
+        "meta": {}
+      },
+      {
+        "label": "laws regulations",
+        "score": -0.0628409990345995,
+        "meta": {}
+      },
+      {
+        "label": "bottling partners",
+        "score": -0.01700502918307345,
+        "meta": {}
+      },
+      {
+        "label": "Intellectual property",
+        "score": -0.015562977577547876,
+        "meta": {}
+      },
+      {
+        "label": "packaging materials",
+        "score": -0.015372218376573876,
+        "meta": {}
+      },
+      {
+        "label": "information systems",
+        "score": -0.015345831772770602,
+        "meta": {}
+      },
+      {
+        "label": "Climate change",
+        "score": -0.015337361800048743,
+        "meta": {}
+      }
+    ],
+    "summary_alt": "Adds emphasis on new increased, machine learning, new products; de-emphasizes countries increase, rates increase, reputation brands."
+  },
+  "evidence": [
+    {
+      "year": 2023,
+      "paragraph_idx": 3,
+      "snippet": "Throughout 2023, the Company faced disruptions to our operations due to international conflicts, including the conflict between Russia and Ukraine and conflicts in the Middle East. These conflicts have resulted, and could continue to result, in volatile commodity markets; logistical, transportation and supply chain disruptions; increased risk of cyber incidents or other disruptions to our information systems; reputational risk; heightened risks to employee safety; business disruptions (including labor shortages); reduced availability and increased costs of transportation, energy, packaging, raw materials and other input costs; sanctions, export controls and other legislation or regulation; or difficulty protecting and enforcing our intellectual property rights. While we currently do not anticipate that the effects of these conflicts will have a material impact on our results of operations, we cannot predict how and the extent to which these conflicts will continue to affect our employees, operations, customers or business partners.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "conflicts",
+        "opinions",
+        "international conflicts",
+        "machine learning",
+        "political instability",
+        "portions opinions",
+        "standards regulations",
+        "aspirations",
+        "recall",
+        "reflect",
+        "pillar",
+        "advanced",
+        "impacting",
+        "influencers",
+        "learning",
+        "russia",
+        "ukraine",
+        "Pandemic",
+        "COVID-19",
+        "covid pandemic",
+        "home",
+        "portions opinion",
+        "away home",
+        "condition cash",
+        "home consumption",
+        "ability achieve",
+        "opinion",
+        "difficulty",
+        "goals targets",
+        "targets"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 40,
+      "snippet": "For instance, the United States Internal Revenue Service (\u201cIRS\u201d) is seeking to increase our U.S. taxable income for tax years 2007 through 2009 by an amount that creates a potential additional U.S. federal income tax liability of approximately $3.3 billion for that period, plus interest. The Company firmly believes that the IRS\u2019 claims are without merit and is pursuing, and will continue to pursue, all available administrative and judicial remedies necessary to vigorously defend its position. On November 18, 2020, the U.S. Tax Court (\u201cTax Court\u201d) issued an opinion (\u201cOpinion\u201d) predominantly siding with the IRS. On November 8, 2023, the Tax Court issued a supplemental opinion (together with the original Tax Court opinion, \u201cOpinions\u201d) also siding with the IRS as to the validity of the blocked-income regulations and its application to the Brazilian legal restrictions. Although the Company disagrees with the unfavorable portions of the Opinions and intends to vigorously defend its position, considering all avenues of appeal, there is no assurance that the courts will ultimately rule in the Company\u2019s favor. It is therefore possible that all or some of the unfavorable portions of the Opinions could ultimately be upheld. In that event, the Company would be subject to significant additional liabilities for the years at issue and potentially also for the subsequent years if the unfavorable portions of the Opinions were to be applied to the foreign licensees covered within the scope of the Opinions. Moreover, the IRS could successfully appeal the portions of the Opinions that are favorable to the Company and/or assert new claims for additional tax relating to the subsequent years by broadening the scope to cover additional foreign licensees. These adjustments could have a material adverse impact on the Company\u2019s financial position, results of operations and cash flows. Any such adjustments related to years prior to 2018, either in the litigation period or thereafter, may also have an impact on the transition tax payable as part of the 2017 Tax Cuts and Jobs Act (\u201cTax Reform Act\u201d). For additional information regarding the tax litigation, refer to Part I, \u201cItem 3. Legal Proceedings\u201d of this report.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "conflicts",
+        "opinions",
+        "international conflicts",
+        "machine learning",
+        "political instability",
+        "portions opinions",
+        "standards regulations",
+        "aspirations",
+        "recall",
+        "reflect",
+        "pillar",
+        "advanced",
+        "impacting",
+        "influencers",
+        "learning",
+        "russia",
+        "ukraine",
+        "Pandemic",
+        "COVID-19",
+        "covid pandemic",
+        "home",
+        "portions opinion",
+        "away home",
+        "condition cash",
+        "home consumption",
+        "ability achieve",
+        "opinion",
+        "difficulty",
+        "goals targets",
+        "targets"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 50,
+      "snippet": "We earn revenues, pay expenses, own assets and incur liabilities in countries using many currencies other than the U.S. dollar. In 2023, we derived $29.2 billion of net operating revenues from operations outside the United States. Because our consolidated financial statements are presented in U.S. dollars, we must translate revenues, income and expenses, as well as assets and liabilities, into U.S. dollars at exchange rates in effect during or at the end of each reporting period. Therefore, increases or decreases in the value of the U.S. dollar against other currencies affect our net operating revenues, operating income and the value of balance sheet items denominated in foreign currencies. Global events, including political instability, international conflicts, trade disputes, economic sanctions, inflation, increasing interest rates and emerging market volatility, and the resulting uncertainties, may cause currencies to fluctuate in relation to the U.S. dollar. Due to the geographic diversity of our operations, weakness in some currencies may be offset by strength in other currencies over time. We also use derivative financial instruments to further reduce our net exposure to foreign currency exchange rate fluctuations. However, fluctuations in foreign currency exchange rates, particularly the strengthening of the U.S. dollar against major currencies or the currencies of large developing countries, could materially affect our financial results.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "conflicts",
+        "opinions",
+        "international conflicts",
+        "machine learning",
+        "political instability",
+        "portions opinions",
+        "standards regulations",
+        "aspirations",
+        "recall",
+        "reflect",
+        "pillar",
+        "advanced",
+        "impacting",
+        "influencers",
+        "learning",
+        "russia",
+        "ukraine",
+        "Pandemic",
+        "COVID-19",
+        "covid pandemic",
+        "home",
+        "portions opinion",
+        "away home",
+        "condition cash",
+        "home consumption",
+        "ability achieve",
+        "opinion",
+        "difficulty",
+        "goals targets",
+        "targets"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 15,
+      "snippet": "Since early 2020, the COVID-19 pandemic and the related actions by governments around the world to attempt to contain the spread of the virus have negatively impacted, and could continue to negatively impact, our business globally. The extent and nature of governmental actions related to the COVID-19 pandemic have varied across our markets based upon the then-current extent and severity of the COVID-19 pandemic. At times we have experienced a decrease in sales of certain of our products in markets around the world, as well as a shift in consumer demand to more at-home consumption versus away-from-home consumption. While we have experienced improved trends throughout 2021 and 2022 in away-from-home channels and improved margins, our recovery has been asynchronous, and the full extent to which the COVID-19 pandemic will affect our results of operations, financial condition and cash flows will depend on future developments that are highly uncertain. If COVID-19 infection rates increase, the pandemic intensifies, or continued efforts to curb the pandemic are ineffective, the negative impacts of the pandemic on our sales could be more prolonged and may become more severe than what we have experienced to date.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "conflicts",
+        "opinions",
+        "international conflicts",
+        "machine learning",
+        "political instability",
+        "portions opinions",
+        "standards regulations",
+        "aspirations",
+        "recall",
+        "reflect",
+        "pillar",
+        "advanced",
+        "impacting",
+        "influencers",
+        "learning",
+        "russia",
+        "ukraine",
+        "Pandemic",
+        "COVID-19",
+        "covid pandemic",
+        "home",
+        "portions opinion",
+        "away home",
+        "condition cash",
+        "home consumption",
+        "ability achieve",
+        "opinion",
+        "difficulty",
+        "goals targets",
+        "targets"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 3,
+      "snippet": "In March 2022, the Company announced the suspension of its business in Russia. While we have maintained our operations in Ukraine to the extent possible, our business in Ukraine has been disrupted due to the conflict. Although we currently do not anticipate that the suspension of our operations in Russia or the disruptions in Ukraine will have a material impact on our results of operations, the conflict has resulted, and could continue to result, in volatile commodity markets, supply chain disruptions, increased risk of cyber incidents or other disruptions to our information systems, reputational risk, heightened risks to employee safety, business disruptions (including labor shortages), reduced availability and increased costs for transportation, energy, packaging and raw materials and other input costs, additional sanctions, export controls and other legislation or regulations (including restrictions on the transfer of funds to and from Russia), or difficulty protecting and enforcing our intellectual property rights. The ongoing conflict could result in the temporary or permanent loss of assets or result in additional impairment charges. We cannot predict how and the extent to which the conflict will continue to affect our employees, operations, customers or business partners or our ability to achieve certain of our sustainability goals.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "conflicts",
+        "opinions",
+        "international conflicts",
+        "machine learning",
+        "political instability",
+        "portions opinions",
+        "standards regulations",
+        "aspirations",
+        "recall",
+        "reflect",
+        "pillar",
+        "advanced",
+        "impacting",
+        "influencers",
+        "learning",
+        "russia",
+        "ukraine",
+        "Pandemic",
+        "COVID-19",
+        "covid pandemic",
+        "home",
+        "portions opinion",
+        "away home",
+        "condition cash",
+        "home consumption",
+        "ability achieve",
+        "opinion",
+        "difficulty",
+        "goals targets",
+        "targets"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 17,
+      "snippet": "In addition to the above risks, the COVID-19 pandemic may exacerbate other risks related to our business, including risks related to changes in the retail landscape or the loss of key retail or foodservice customers; fluctuations in input costs, inflation rates, and foreign currency exchange rates; and the ability of third-party service providers and business partners to fulfill their respective commitments and responsibilities to us in a timely manner and in accordance with the agreed-upon terms. The continuing evolution of the pandemic may also present risks not currently known to us.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "conflicts",
+        "opinions",
+        "international conflicts",
+        "machine learning",
+        "political instability",
+        "portions opinions",
+        "standards regulations",
+        "aspirations",
+        "recall",
+        "reflect",
+        "pillar",
+        "advanced",
+        "impacting",
+        "influencers",
+        "learning",
+        "russia",
+        "ukraine",
+        "Pandemic",
+        "COVID-19",
+        "covid pandemic",
+        "home",
+        "portions opinion",
+        "away home",
+        "condition cash",
+        "home consumption",
+        "ability achieve",
+        "opinion",
+        "difficulty",
+        "goals targets",
+        "targets"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.0165,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T19:27:19Z",
+    "git_commit": "cfe9628e9904d9ea49e72960b3535e0464887ce9",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "a37751455aeb69e85a19f53a089bf34113014acf24f280964f890fad12668547",
+      "curr_text_sha256": "8d005a2728ac3571f5042a9956e63b4fffb0d6bcb656bda6be2e217116052ff0",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

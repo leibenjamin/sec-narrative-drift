@@ -1,0 +1,1191 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_logodds_terms_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "GE",
+  "section": "10k_item1a",
+  "year_from": 2020,
+  "year_to": 2021,
+  "artifacts": {
+    "top_risers": [
+      {
+        "label": "separation",
+        "score": 0.9898545849374071,
+        "meta": {
+          "z": 2.6856892252915947,
+          "countPrev": 1,
+          "countCurr": 16,
+          "per10kPrev": 1.3287270794578794,
+          "per10kCurr": 19.888129272840274,
+          "deltaPer10k": 18.559402193382393,
+          "distinctive": true
+        }
+      },
+      {
+        "label": "common",
+        "score": 0.8858992956245737,
+        "meta": {
+          "z": 1.269280994269096,
+          "countPrev": 0,
+          "countCurr": 6,
+          "per10kPrev": 0.0,
+          "per10kCurr": 7.458048477315103,
+          "deltaPer10k": 7.458048477315103,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "aercap",
+        "score": 0.8559012486952305,
+        "meta": {
+          "z": 1.0486969449787014,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.7290242386575514,
+          "deltaPer10k": 3.7290242386575514,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "stock",
+        "score": 0.8322660704575001,
+        "meta": {
+          "z": 1.7571499640262098,
+          "countPrev": 1,
+          "countCurr": 7,
+          "per10kPrev": 1.3287270794578794,
+          "per10kCurr": 8.70105655686762,
+          "deltaPer10k": 7.372329477409741,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "separate",
+        "score": 0.7957425563608649,
+        "meta": {
+          "z": 1.1401080327170474,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.9720323182100685,
+          "deltaPer10k": 4.9720323182100685,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "independent",
+        "score": 0.7694848920568714,
+        "meta": {
+          "z": 1.3184340225317372,
+          "countPrev": 0,
+          "countCurr": 7,
+          "per10kPrev": 0.0,
+          "per10kCurr": 8.70105655686762,
+          "deltaPer10k": 8.70105655686762,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "common stock",
+        "score": 0.7672112952056211,
+        "meta": {
+          "z": 1.269280994269096,
+          "countPrev": 0,
+          "countCurr": 6,
+          "per10kPrev": 0.0,
+          "per10kCurr": 7.458048477315103,
+          "deltaPer10k": 7.458048477315103,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "separation transactions",
+        "score": 0.744411460651242,
+        "meta": {
+          "z": 1.582029861018415,
+          "countPrev": 0,
+          "countCurr": 16,
+          "per10kPrev": 0.0,
+          "per10kCurr": 19.888129272840274,
+          "deltaPer10k": 19.888129272840274,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "timeframes",
+        "score": 0.73194185454203,
+        "meta": {
+          "z": 1.0486969449787014,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.7290242386575514,
+          "deltaPer10k": 3.7290242386575514,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "free",
+        "score": 0.7068804539685579,
+        "meta": {
+          "z": 1.2111676915236245,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 6.215040397762585,
+          "deltaPer10k": 6.215040397762585,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "sales dispositions",
+        "score": 0.6927252879511876,
+        "meta": {
+          "z": 0.9206147351990431,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.4860161591050343,
+          "deltaPer10k": 2.4860161591050343,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "separate public",
+        "score": 0.6927252879511876,
+        "meta": {
+          "z": 0.9206147351990431,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.4860161591050343,
+          "deltaPer10k": 2.4860161591050343,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "public companies",
+        "score": 0.6891332686808794,
+        "meta": {
+          "z": 1.1401080327170474,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.9720323182100685,
+          "deltaPer10k": 4.9720323182100685,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "grids",
+        "score": 0.6425464094529167,
+        "meta": {
+          "z": 0.9206147351990431,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.4860161591050343,
+          "deltaPer10k": 2.4860161591050343,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "intensive",
+        "score": 0.6425464094529167,
+        "meta": {
+          "z": 0.9206147351990431,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.4860161591050343,
+          "deltaPer10k": 2.4860161591050343,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_fallers": [
+      {
+        "label": "quickly",
+        "score": -0.9011248622730461,
+        "meta": {
+          "z": -0.9607944053782874,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.6574541589157588,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.6574541589157588,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "indebtedness",
+        "score": -0.8241058315087142,
+        "meta": {
+          "z": -1.180745796239603,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 5.3149083178315175,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.3149083178315175,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "max",
+        "score": -0.784158984385493,
+        "meta": {
+          "z": -0.9607944053782874,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.6574541589157588,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.6574541589157588,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "transformational",
+        "score": -0.67058995668236,
+        "meta": {
+          "z": -0.9607944053782874,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.6574541589157588,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.6574541589157588,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "expected continue",
+        "score": -0.6511587294052195,
+        "meta": {
+          "z": -0.865373809316129,
+          "countPrev": 4,
+          "countCurr": 2,
+          "per10kPrev": 5.3149083178315175,
+          "per10kCurr": 2.4860161591050343,
+          "deltaPer10k": -2.8288921587264833,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "retention",
+        "score": -0.6356823591288066,
+        "meta": {
+          "z": -1.0891770045781664,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 3.986181238373638,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.986181238373638,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "cases",
+        "score": -0.6092028181032035,
+        "meta": {
+          "z": -1.2862001082493644,
+          "countPrev": 4,
+          "countCurr": 1,
+          "per10kPrev": 5.3149083178315175,
+          "per10kCurr": 1.2430080795525171,
+          "deltaPer10k": -4.071900238279,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "aviation industry",
+        "score": -0.5998534705615955,
+        "meta": {
+          "z": -0.9924027634735628,
+          "countPrev": 3,
+          "countCurr": 1,
+          "per10kPrev": 3.986181238373638,
+          "per10kCurr": 1.2430080795525171,
+          "deltaPer10k": -2.743173158821121,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "asset dispositions",
+        "score": -0.5807479380096301,
+        "meta": {
+          "z": -0.9607944053782874,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.6574541589157588,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.6574541589157588,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "decrease leverage",
+        "score": -0.5807479380096301,
+        "meta": {
+          "z": -0.9607944053782874,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.6574541589157588,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.6574541589157588,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "levels limit",
+        "score": -0.5807479380096301,
+        "meta": {
+          "z": -0.9607944053782874,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.6574541589157588,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.6574541589157588,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "limit flexibility",
+        "score": -0.5807479380096301,
+        "meta": {
+          "z": -0.9607944053782874,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.6574541589157588,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.6574541589157588,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "expects",
+        "score": -0.5607537174227926,
+        "meta": {
+          "z": -0.9607944053782874,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.6574541589157588,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.6574541589157588,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "impair",
+        "score": -0.5607537174227926,
+        "meta": {
+          "z": -0.9607944053782874,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.6574541589157588,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.6574541589157588,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "outlook",
+        "score": -0.5607537174227926,
+        "meta": {
+          "z": -0.9607944053782874,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.6574541589157588,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.6574541589157588,
+          "distinctive": false
+        }
+      }
+    ],
+    "summary": "Adds emphasis on separation, common, aercap; de-emphasizes quickly, indebtedness, max.",
+    "ranked_items": [
+      {
+        "label": "separation",
+        "score": 0.9898545849374071,
+        "meta": {
+          "z": 2.6856892252915947,
+          "countPrev": 1,
+          "countCurr": 16,
+          "per10kPrev": 1.3287270794578794,
+          "per10kCurr": 19.888129272840274,
+          "deltaPer10k": 18.559402193382393,
+          "distinctive": true
+        }
+      },
+      {
+        "label": "common",
+        "score": 0.8858992956245737,
+        "meta": {
+          "z": 1.269280994269096,
+          "countPrev": 0,
+          "countCurr": 6,
+          "per10kPrev": 0.0,
+          "per10kCurr": 7.458048477315103,
+          "deltaPer10k": 7.458048477315103,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "aercap",
+        "score": 0.8559012486952305,
+        "meta": {
+          "z": 1.0486969449787014,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.7290242386575514,
+          "deltaPer10k": 3.7290242386575514,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "stock",
+        "score": 0.8322660704575001,
+        "meta": {
+          "z": 1.7571499640262098,
+          "countPrev": 1,
+          "countCurr": 7,
+          "per10kPrev": 1.3287270794578794,
+          "per10kCurr": 8.70105655686762,
+          "deltaPer10k": 7.372329477409741,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "separate",
+        "score": 0.7957425563608649,
+        "meta": {
+          "z": 1.1401080327170474,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.9720323182100685,
+          "deltaPer10k": 4.9720323182100685,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "independent",
+        "score": 0.7694848920568714,
+        "meta": {
+          "z": 1.3184340225317372,
+          "countPrev": 0,
+          "countCurr": 7,
+          "per10kPrev": 0.0,
+          "per10kCurr": 8.70105655686762,
+          "deltaPer10k": 8.70105655686762,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "common stock",
+        "score": 0.7672112952056211,
+        "meta": {
+          "z": 1.269280994269096,
+          "countPrev": 0,
+          "countCurr": 6,
+          "per10kPrev": 0.0,
+          "per10kCurr": 7.458048477315103,
+          "deltaPer10k": 7.458048477315103,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "separation transactions",
+        "score": 0.744411460651242,
+        "meta": {
+          "z": 1.582029861018415,
+          "countPrev": 0,
+          "countCurr": 16,
+          "per10kPrev": 0.0,
+          "per10kCurr": 19.888129272840274,
+          "deltaPer10k": 19.888129272840274,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "timeframes",
+        "score": 0.73194185454203,
+        "meta": {
+          "z": 1.0486969449787014,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.7290242386575514,
+          "deltaPer10k": 3.7290242386575514,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "free",
+        "score": 0.7068804539685579,
+        "meta": {
+          "z": 1.2111676915236245,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 6.215040397762585,
+          "deltaPer10k": 6.215040397762585,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "sales dispositions",
+        "score": 0.6927252879511876,
+        "meta": {
+          "z": 0.9206147351990431,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.4860161591050343,
+          "deltaPer10k": 2.4860161591050343,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "separate public",
+        "score": 0.6927252879511876,
+        "meta": {
+          "z": 0.9206147351990431,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.4860161591050343,
+          "deltaPer10k": 2.4860161591050343,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "public companies",
+        "score": 0.6891332686808794,
+        "meta": {
+          "z": 1.1401080327170474,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.9720323182100685,
+          "deltaPer10k": 4.9720323182100685,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "grids",
+        "score": 0.6425464094529167,
+        "meta": {
+          "z": 0.9206147351990431,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.4860161591050343,
+          "deltaPer10k": 2.4860161591050343,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "intensive",
+        "score": 0.6425464094529167,
+        "meta": {
+          "z": 0.9206147351990431,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.4860161591050343,
+          "deltaPer10k": 2.4860161591050343,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "quickly",
+        "score": -0.9011248622730461,
+        "meta": {
+          "z": -0.9607944053782874,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.6574541589157588,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.6574541589157588,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "indebtedness",
+        "score": -0.8241058315087142,
+        "meta": {
+          "z": -1.180745796239603,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 5.3149083178315175,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.3149083178315175,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "max",
+        "score": -0.784158984385493,
+        "meta": {
+          "z": -0.9607944053782874,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.6574541589157588,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.6574541589157588,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "transformational",
+        "score": -0.67058995668236,
+        "meta": {
+          "z": -0.9607944053782874,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.6574541589157588,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.6574541589157588,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "expected continue",
+        "score": -0.6511587294052195,
+        "meta": {
+          "z": -0.865373809316129,
+          "countPrev": 4,
+          "countCurr": 2,
+          "per10kPrev": 5.3149083178315175,
+          "per10kCurr": 2.4860161591050343,
+          "deltaPer10k": -2.8288921587264833,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "retention",
+        "score": -0.6356823591288066,
+        "meta": {
+          "z": -1.0891770045781664,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 3.986181238373638,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.986181238373638,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "cases",
+        "score": -0.6092028181032035,
+        "meta": {
+          "z": -1.2862001082493644,
+          "countPrev": 4,
+          "countCurr": 1,
+          "per10kPrev": 5.3149083178315175,
+          "per10kCurr": 1.2430080795525171,
+          "deltaPer10k": -4.071900238279,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "aviation industry",
+        "score": -0.5998534705615955,
+        "meta": {
+          "z": -0.9924027634735628,
+          "countPrev": 3,
+          "countCurr": 1,
+          "per10kPrev": 3.986181238373638,
+          "per10kCurr": 1.2430080795525171,
+          "deltaPer10k": -2.743173158821121,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "asset dispositions",
+        "score": -0.5807479380096301,
+        "meta": {
+          "z": -0.9607944053782874,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.6574541589157588,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.6574541589157588,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "decrease leverage",
+        "score": -0.5807479380096301,
+        "meta": {
+          "z": -0.9607944053782874,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.6574541589157588,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.6574541589157588,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "levels limit",
+        "score": -0.5807479380096301,
+        "meta": {
+          "z": -0.9607944053782874,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.6574541589157588,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.6574541589157588,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "limit flexibility",
+        "score": -0.5807479380096301,
+        "meta": {
+          "z": -0.9607944053782874,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.6574541589157588,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.6574541589157588,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "expects",
+        "score": -0.5607537174227926,
+        "meta": {
+          "z": -0.9607944053782874,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.6574541589157588,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.6574541589157588,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "impair",
+        "score": -0.5607537174227926,
+        "meta": {
+          "z": -0.9607944053782874,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.6574541589157588,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.6574541589157588,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "outlook",
+        "score": -0.5607537174227926,
+        "meta": {
+          "z": -0.9607944053782874,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.6574541589157588,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.6574541589157588,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_risers_alt": [
+      {
+        "label": "economic growth",
+        "score": 0.9195090019211487,
+        "meta": {}
+      },
+      {
+        "label": "risks face",
+        "score": 1.7036304317398372,
+        "meta": {}
+      },
+      {
+        "label": "market new",
+        "score": 0.9127373938688006,
+        "meta": {}
+      },
+      {
+        "label": "risks form",
+        "score": 0.9127373938688006,
+        "meta": {}
+      },
+      {
+        "label": "labor shortages",
+        "score": 1.1727840515692094,
+        "meta": {}
+      },
+      {
+        "label": "Supply chain",
+        "score": 0.22694034277354858,
+        "meta": {}
+      },
+      {
+        "label": "financial markets",
+        "score": 0.31000036266021613,
+        "meta": {}
+      },
+      {
+        "label": "new product",
+        "score": 0.2791641771268303,
+        "meta": {}
+      },
+      {
+        "label": "Inflation",
+        "score": 0.39555733498198364,
+        "meta": {}
+      },
+      {
+        "label": "Climate change",
+        "score": 0.1394800276451873,
+        "meta": {}
+      },
+      {
+        "label": "financial performance",
+        "score": 0.11296243488548852,
+        "meta": {}
+      },
+      {
+        "label": "results operations cash",
+        "score": 0.10623668166654454,
+        "meta": {}
+      },
+      {
+        "label": "Intellectual property",
+        "score": 0.03594410325780717,
+        "meta": {}
+      }
+    ],
+    "top_fallers_alt": [
+      {
+        "label": "adverse financial",
+        "score": -1.737522993555995,
+        "meta": {}
+      },
+      {
+        "label": "businesses assets",
+        "score": -1.737522993555995,
+        "meta": {}
+      },
+      {
+        "label": "product service",
+        "score": -0.7079745932009511,
+        "meta": {}
+      },
+      {
+        "label": "businesses capital",
+        "score": -1.2100783348909356,
+        "meta": {}
+      },
+      {
+        "label": "subject global economic",
+        "score": -1.2100783348909356,
+        "meta": {}
+      },
+      {
+        "label": "meet cash",
+        "score": -0.9467312462056707,
+        "meta": {}
+      },
+      {
+        "label": "ability meet",
+        "score": -0.7225367906828222,
+        "meta": {}
+      },
+      {
+        "label": "customer demand",
+        "score": -0.6674497480942385,
+        "meta": {}
+      },
+      {
+        "label": "products services",
+        "score": -0.0685790226622991,
+        "meta": {}
+      },
+      {
+        "label": "global economic",
+        "score": -0.18725023047761047,
+        "meta": {}
+      },
+      {
+        "label": "economic conditions",
+        "score": -0.18136894049250385,
+        "meta": {}
+      },
+      {
+        "label": "Interest rates",
+        "score": -0.08920603158678331,
+        "meta": {}
+      },
+      {
+        "label": "credit risk",
+        "score": -0.01753518155790168,
+        "meta": {}
+      },
+      {
+        "label": "businesses subject",
+        "score": -0.017488674811009464,
+        "meta": {}
+      },
+      {
+        "label": "Data privacy",
+        "score": -0.01719651590798943,
+        "meta": {}
+      }
+    ],
+    "summary_alt": "Adds emphasis on economic growth, risks face, market new; de-emphasizes adverse financial, businesses assets, product service."
+  },
+  "evidence": [
+    {
+      "year": 2021,
+      "paragraph_idx": 2,
+      "snippet": "Strategic plan - We may encounter challenges to executing our plan to separate GE into three public companies, or to completing the plan within the timeframes we anticipate, and we may not realize some or all of the expected benefits of the separations. In November 2021, we announced our plan to form three independent public companies from our (i) Aviation business, (ii) Healthcare business and (iii) combined Renewable Energy, Power and Digital businesses, in order to better position those businesses to deliver long-term growth and create value for customers, investors, and employees. The planned business separations are expected to be effected through spin-offs by GE that are intended to be tax-free for the Company\u2019s shareholders for U.S. federal income tax purposes. These separation transactions will be subject to the satisfaction of a number of customary conditions, including, among others, final approvals by GE\u2019s Board of Directors, receipt of tax rulings in certain jurisdictions and/or tax opinions from external counsel, the filing with the SEC and effectiveness of Form 10 registration statements, and satisfactory completion of financing. The failure to satisfy all of the required conditions could delay the completion of the separation transactions for a significant period of time or prevent them from occurring at all. Additionally, the separation transactions are complex in nature, and unanticipated developments or changes may affect our ability to complete one or both of the separation transactions as currently expected, within the anticipated timeframes or at all. These or other developments could cause us not to realize some or all of the expected benefits, or to realize them",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "separation",
+        "common",
+        "aercap",
+        "stock",
+        "separate",
+        "independent",
+        "common stock",
+        "separation transactions",
+        "timeframes",
+        "free",
+        "sales dispositions",
+        "separate public",
+        "public companies",
+        "grids",
+        "intensive",
+        "quickly",
+        "indebtedness",
+        "max",
+        "transformational",
+        "expected continue",
+        "retention",
+        "cases",
+        "aviation industry",
+        "asset dispositions",
+        "decrease leverage",
+        "levels limit",
+        "limit flexibility",
+        "expects",
+        "impair",
+        "outlook"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 3,
+      "snippet": "on a different timeline than expected. If we are unable to complete any of the separations, we will have incurred costs without realizing the benefits of such transaction. In addition, the terms and conditions of the required regulatory authorizations and consents that are granted, if any, may impose requirements, limitations or costs, or place restrictions on the conduct of the independent companies. And, although we intend for the separation transactions to be tax-free to the Company\u2019s shareholders for U.S. federal income tax purposes, we expect to incur non-U.S. cash taxes on the preparatory restructuring and may also incur non-cash tax expense including potential impairments of deferred tax assets. Moreover, there can be no assurance that the separation transactions will qualify as tax-free for U.S. purposes. If the separation transactions were ultimately determined to be taxable, we would incur a significant tax liability, while",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "separation",
+        "common",
+        "aercap",
+        "stock",
+        "separate",
+        "independent",
+        "common stock",
+        "separation transactions",
+        "timeframes",
+        "free",
+        "sales dispositions",
+        "separate public",
+        "public companies",
+        "grids",
+        "intensive",
+        "quickly",
+        "indebtedness",
+        "max",
+        "transformational",
+        "expected continue",
+        "retention",
+        "cases",
+        "aviation industry",
+        "asset dispositions",
+        "decrease leverage",
+        "levels limit",
+        "limit flexibility",
+        "expects",
+        "impair",
+        "outlook"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 4,
+      "snippet": "the distributions to the Company\u2019s shareholders would become taxable and the new independent companies might incur income tax liabilities as well. Furthermore, if the separation transactions are completed, we cannot be assured that each separate company will be successful.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "separation",
+        "common",
+        "aercap",
+        "stock",
+        "separate",
+        "independent",
+        "common stock",
+        "separation transactions",
+        "timeframes",
+        "free",
+        "sales dispositions",
+        "separate public",
+        "public companies",
+        "grids",
+        "intensive",
+        "quickly",
+        "indebtedness",
+        "max",
+        "transformational",
+        "expected continue",
+        "retention",
+        "cases",
+        "aviation industry",
+        "asset dispositions",
+        "decrease leverage",
+        "levels limit",
+        "limit flexibility",
+        "expects",
+        "impair",
+        "outlook"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 8,
+      "snippet": "Restructuring & retention - We have been undertaking extensive cost reduction and restructuring efforts; these efforts may have adverse effects on our operations, employee retention, results and reputation and may not achieve the expected benefits . We continue undertaking restructuring actions that include workforce reductions, global facility consolidations and other cost reduction initiatives. These actions have been a central component of our ongoing efforts to improve operational and financial performance, and we have also taken additional actions or accelerated the pace of actions to mitigate the adverse financial effects of COVID-19 on our businesses. The extent of change across our organizational structure, senior leadership, culture, functional alignment, outsourcing and other areas poses risks in the form of personnel capacity constraints and institutional knowledge loss that could lead to missed performance or financial targets, loss of key personnel and harm to our reputation. The risk of capacity constraints is also heightened with the number of interdependent and transformational business portfolio and internal actions that we have been undertaking during a period of significant restructuring and cost reduction across the Company. Moreover, if we do not successfully manage our restructuring and other transformational activities, the anticipated operational improvements, efficiencies and other benefits might be delayed or not realized, and our operations and business could be disrupted. Risks associated with these actions include unforeseen delays in implementation of workforce reductions, additional unexpected costs, adverse effects on employee morale, loss of key employees or other retention issues, inability to attract and hire talented professionals or the failure to meet operational targets due to the loss of employees or work stoppages, any of which may impair our ability to achieve anticipated cost reductions or may otherwise harm our business or reputation and have an adverse effect on our competitive position or financial performance.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "separation",
+        "common",
+        "aercap",
+        "stock",
+        "separate",
+        "independent",
+        "common stock",
+        "separation transactions",
+        "timeframes",
+        "free",
+        "sales dispositions",
+        "separate public",
+        "public companies",
+        "grids",
+        "intensive",
+        "quickly",
+        "indebtedness",
+        "max",
+        "transformational",
+        "expected continue",
+        "retention",
+        "cases",
+        "aviation industry",
+        "asset dispositions",
+        "decrease leverage",
+        "levels limit",
+        "limit flexibility",
+        "expects",
+        "impair",
+        "outlook"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 3,
+      "snippet": "In particular, the interruption of regional and international air travel from COVID-19 is having a material adverse effect on our airline and airframer customers, the viability of their businesses and their demand for our services and products. In this context, we have observed a significant increase in the number of requests for payment deferrals, contract modifications, aircraft lease restructurings and similar actions across the aviation sector, which may lead to additional charges, impairments and other adverse financial impacts, or to customer disputes, at GE Aviation and GE Capital Aviation Services. Disruption of the aviation industry, which could continue for an uncertain period of time, is particularly significant for GE, as we have depended on the strength of our Aviation business as we have been working to improve the operations and execution of other GE businesses and strengthen the company\u2019s balance sheet. As a result, disruption of the aviation industry, which could continue for an uncertain period of time, is particularly significant for GE.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "separation",
+        "common",
+        "aercap",
+        "stock",
+        "separate",
+        "independent",
+        "common stock",
+        "separation transactions",
+        "timeframes",
+        "free",
+        "sales dispositions",
+        "separate public",
+        "public companies",
+        "grids",
+        "intensive",
+        "quickly",
+        "indebtedness",
+        "max",
+        "transformational",
+        "expected continue",
+        "retention",
+        "cases",
+        "aviation industry",
+        "asset dispositions",
+        "decrease leverage",
+        "levels limit",
+        "limit flexibility",
+        "expects",
+        "impair",
+        "outlook"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 18,
+      "snippet": "Liquidity - Failure to meet our cash flow targets, or additional credit downgrades, could adversely affect our liquidity, funding costs and related margins. We rely primarily on cash from operations, as well as proceeds from business and asset dispositions and access to the short- and long-term debt markets, to fund our operations, maintain a contingency buffer of liquidity and meet our financial obligations and capital allocation priorities. If we do not meet our cash flow objectives, through both improved cash performance in our businesses or successful execution of business and asset dispositions, our financial condition could be adversely affected. Our access to the debt markets depends, in part, on our credit ratings. As previously reported, in April 2020, Moody's and S&P changed their credit rating outlooks for GE and GE Capital from Stable to Negative, and Fitch lowered its credit ratings for GE and GE Capital. There can be no assurance that we will not face additional credit downgrades as a result of factors such as our continued progress in decreasing our leverage, the performance of our businesses, the failure to execute on dispositions or changes in rating application or methodology for GE or GE Capital. Future downgrades could further adversely affect our cost of funds and related margins, liquidity, competitive position and access to capital markets, and a significant downgrade could have an adverse commercial impact on our industrial businesses. In addition, swap, forward and option contracts are executed under standard master agreements that typically contain mutual downgrade provisions that provide the ability of the counterparty to require termination if the credit ratings of the applicable GE entity were to fall below specified ratings levels agreed upon with the counterparty. For additional discussion about our current credit ratings and related considerations, refer to the Capital Resources and Liquidity - Credit Ratings and Conditions section within MD&A.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "separation",
+        "common",
+        "aercap",
+        "stock",
+        "separate",
+        "independent",
+        "common stock",
+        "separation transactions",
+        "timeframes",
+        "free",
+        "sales dispositions",
+        "separate public",
+        "public companies",
+        "grids",
+        "intensive",
+        "quickly",
+        "indebtedness",
+        "max",
+        "transformational",
+        "expected continue",
+        "retention",
+        "cases",
+        "aviation industry",
+        "asset dispositions",
+        "decrease leverage",
+        "levels limit",
+        "limit flexibility",
+        "expects",
+        "impair",
+        "outlook"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.0603,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T19:27:23Z",
+    "git_commit": "cfe9628e9904d9ea49e72960b3535e0464887ce9",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "231bdd0927c5ed3145794df750f944019d39e3bf17119eaa1dc6846257c3196a",
+      "curr_text_sha256": "33cd08318c3afe8fd69423a1f2d61b59aefa60e076d72143891dd4a695ad7491",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

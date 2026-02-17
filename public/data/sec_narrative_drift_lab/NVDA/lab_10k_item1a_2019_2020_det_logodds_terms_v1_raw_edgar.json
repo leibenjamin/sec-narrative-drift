@@ -1,0 +1,723 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_logodds_terms_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "NVDA",
+  "section": "10k_item1a",
+  "year_from": 2019,
+  "year_to": 2020,
+  "artifacts": {
+    "top_risers": [
+      {
+        "label": "Coronavirus",
+        "score": 0.994420762300825,
+        "meta": {
+          "z": 1.0477205570599513,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.614674665436087,
+          "deltaPer10k": 4.614674665436087,
+          "distinctive": false,
+          "includes": [
+            "coronavirus"
+          ]
+        }
+      },
+      {
+        "label": "mellanox",
+        "score": 0.7116536071711893,
+        "meta": {
+          "z": 1.1391366423186744,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 6.152899553914783,
+          "deltaPer10k": 6.152899553914783,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "mellanox acquisition",
+        "score": 0.5422698162923353,
+        "meta": {
+          "z": 1.0477205570599513,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.614674665436087,
+          "deltaPer10k": 4.614674665436087,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "center",
+        "score": 0.4527402761795955,
+        "meta": {
+          "z": 1.0646914316188696,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.614674665436087,
+          "deltaPer10k": 4.614674665436087,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "integrating",
+        "score": 0.3910585245948842,
+        "meta": {
+          "z": 0.9196368918424381,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.0764497769573915,
+          "deltaPer10k": 3.0764497769573915,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "trade restrictions",
+        "score": 0.344073593590555,
+        "meta": {
+          "z": 1.1391366423186744,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 6.152899553914783,
+          "deltaPer10k": 6.152899553914783,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "data center",
+        "score": 0.3215875895243965,
+        "meta": {
+          "z": 1.0646914316188696,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.614674665436087,
+          "deltaPer10k": 4.614674665436087,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "hong",
+        "score": 0.2893778214551139,
+        "meta": {
+          "z": 0.8723521854403937,
+          "countPrev": 1,
+          "countCurr": 3,
+          "per10kPrev": 1.6504373659019642,
+          "per10kCurr": 4.614674665436087,
+          "deltaPer10k": 2.9642372995341226,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "kong",
+        "score": 0.2893778214551139,
+        "meta": {
+          "z": 0.8723521854403937,
+          "countPrev": 1,
+          "countCurr": 3,
+          "per10kPrev": 1.6504373659019642,
+          "per10kCurr": 4.614674665436087,
+          "deltaPer10k": 2.9642372995341226,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "regions",
+        "score": 0.2121956312581149,
+        "meta": {
+          "z": 0.8723521854403937,
+          "countPrev": 1,
+          "countCurr": 3,
+          "per10kPrev": 1.6504373659019642,
+          "per10kCurr": 4.614674665436087,
+          "deltaPer10k": 2.9642372995341226,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "hong kong",
+        "score": 0.18611209529181122,
+        "meta": {
+          "z": 0.8723521854403937,
+          "countPrev": 1,
+          "countCurr": 3,
+          "per10kPrev": 1.6504373659019642,
+          "per10kCurr": 4.614674665436087,
+          "deltaPer10k": 2.9642372995341226,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "approximately",
+        "score": 0.16305313228004711,
+        "meta": {
+          "z": 0.4915364818636036,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 1.6504373659019642,
+          "per10kCurr": 3.0764497769573915,
+          "deltaPer10k": 1.4260124110554273,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "finished",
+        "score": 0.16305313228004711,
+        "meta": {
+          "z": 0.4915364818636036,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 1.6504373659019642,
+          "per10kCurr": 3.0764497769573915,
+          "deltaPer10k": 1.4260124110554273,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "march",
+        "score": 0.16305313228004711,
+        "meta": {
+          "z": 0.4915364818636036,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 1.6504373659019642,
+          "per10kCurr": 3.0764497769573915,
+          "deltaPer10k": 1.4260124110554273,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "shutdowns",
+        "score": 0.16305313228004711,
+        "meta": {
+          "z": 0.4915364818636036,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 1.6504373659019642,
+          "per10kCurr": 3.0764497769573915,
+          "deltaPer10k": 1.4260124110554273,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_fallers": [
+      {
+        "label": "datacenter",
+        "score": -0.5702562693261356,
+        "meta": {
+          "z": -1.0902078379215938,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 4.951312097705893,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.951312097705893,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "appropriately",
+        "score": -0.3177744792905733,
+        "meta": {
+          "z": -0.6075167370337201,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 3.3008747318039284,
+          "per10kCurr": 1.5382248884786958,
+          "deltaPer10k": -1.7626498433252327,
+          "distinctive": false
+        }
+      }
+    ],
+    "summary": "Adds emphasis on Coronavirus, mellanox, mellanox acquisition; de-emphasizes datacenter, appropriately.",
+    "ranked_items": [
+      {
+        "label": "Coronavirus",
+        "score": 0.994420762300825,
+        "meta": {
+          "z": 1.0477205570599513,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.614674665436087,
+          "deltaPer10k": 4.614674665436087,
+          "distinctive": false,
+          "includes": [
+            "coronavirus"
+          ]
+        }
+      },
+      {
+        "label": "mellanox",
+        "score": 0.7116536071711893,
+        "meta": {
+          "z": 1.1391366423186744,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 6.152899553914783,
+          "deltaPer10k": 6.152899553914783,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "mellanox acquisition",
+        "score": 0.5422698162923353,
+        "meta": {
+          "z": 1.0477205570599513,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.614674665436087,
+          "deltaPer10k": 4.614674665436087,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "center",
+        "score": 0.4527402761795955,
+        "meta": {
+          "z": 1.0646914316188696,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.614674665436087,
+          "deltaPer10k": 4.614674665436087,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "integrating",
+        "score": 0.3910585245948842,
+        "meta": {
+          "z": 0.9196368918424381,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.0764497769573915,
+          "deltaPer10k": 3.0764497769573915,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "trade restrictions",
+        "score": 0.344073593590555,
+        "meta": {
+          "z": 1.1391366423186744,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 6.152899553914783,
+          "deltaPer10k": 6.152899553914783,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "data center",
+        "score": 0.3215875895243965,
+        "meta": {
+          "z": 1.0646914316188696,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.614674665436087,
+          "deltaPer10k": 4.614674665436087,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "hong",
+        "score": 0.2893778214551139,
+        "meta": {
+          "z": 0.8723521854403937,
+          "countPrev": 1,
+          "countCurr": 3,
+          "per10kPrev": 1.6504373659019642,
+          "per10kCurr": 4.614674665436087,
+          "deltaPer10k": 2.9642372995341226,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "kong",
+        "score": 0.2893778214551139,
+        "meta": {
+          "z": 0.8723521854403937,
+          "countPrev": 1,
+          "countCurr": 3,
+          "per10kPrev": 1.6504373659019642,
+          "per10kCurr": 4.614674665436087,
+          "deltaPer10k": 2.9642372995341226,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "regions",
+        "score": 0.2121956312581149,
+        "meta": {
+          "z": 0.8723521854403937,
+          "countPrev": 1,
+          "countCurr": 3,
+          "per10kPrev": 1.6504373659019642,
+          "per10kCurr": 4.614674665436087,
+          "deltaPer10k": 2.9642372995341226,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "hong kong",
+        "score": 0.18611209529181122,
+        "meta": {
+          "z": 0.8723521854403937,
+          "countPrev": 1,
+          "countCurr": 3,
+          "per10kPrev": 1.6504373659019642,
+          "per10kCurr": 4.614674665436087,
+          "deltaPer10k": 2.9642372995341226,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "approximately",
+        "score": 0.16305313228004711,
+        "meta": {
+          "z": 0.4915364818636036,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 1.6504373659019642,
+          "per10kCurr": 3.0764497769573915,
+          "deltaPer10k": 1.4260124110554273,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "finished",
+        "score": 0.16305313228004711,
+        "meta": {
+          "z": 0.4915364818636036,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 1.6504373659019642,
+          "per10kCurr": 3.0764497769573915,
+          "deltaPer10k": 1.4260124110554273,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "march",
+        "score": 0.16305313228004711,
+        "meta": {
+          "z": 0.4915364818636036,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 1.6504373659019642,
+          "per10kCurr": 3.0764497769573915,
+          "deltaPer10k": 1.4260124110554273,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "shutdowns",
+        "score": 0.16305313228004711,
+        "meta": {
+          "z": 0.4915364818636036,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 1.6504373659019642,
+          "per10kCurr": 3.0764497769573915,
+          "deltaPer10k": 1.4260124110554273,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "datacenter",
+        "score": -0.5702562693261356,
+        "meta": {
+          "z": -1.0902078379215938,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 4.951312097705893,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.951312097705893,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "appropriately",
+        "score": -0.3177744792905733,
+        "meta": {
+          "z": -0.6075167370337201,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 3.3008747318039284,
+          "per10kCurr": 1.5382248884786958,
+          "deltaPer10k": -1.7626498433252327,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_risers_alt": [
+      {
+        "label": "changes united",
+        "score": 2.078370643114572,
+        "meta": {}
+      },
+      {
+        "label": "laws united",
+        "score": 2.078370643114572,
+        "meta": {}
+      },
+      {
+        "label": "products sell",
+        "score": 2.078370643114572,
+        "meta": {}
+      },
+      {
+        "label": "future continue",
+        "score": 1.499933609583338,
+        "meta": {}
+      },
+      {
+        "label": "new products services",
+        "score": 1.0029550077662375,
+        "meta": {}
+      },
+      {
+        "label": "trade restrictions",
+        "score": 0.9287374005179236,
+        "meta": {}
+      },
+      {
+        "label": "customers result",
+        "score": 0.7184503393964565,
+        "meta": {}
+      },
+      {
+        "label": "products services",
+        "score": 0.10553010372629368,
+        "meta": {}
+      },
+      {
+        "label": "operating results",
+        "score": 0.06912341184707937,
+        "meta": {}
+      },
+      {
+        "label": "financial results",
+        "score": 0.054224276761409396,
+        "meta": {}
+      },
+      {
+        "label": "market share",
+        "score": 0.04608782752140783,
+        "meta": {}
+      }
+    ],
+    "top_fallers_alt": [
+      {
+        "label": "laws regulations",
+        "score": -1.4885072734460123,
+        "meta": {}
+      },
+      {
+        "label": "new products services technologies",
+        "score": -1.5720283564318347,
+        "meta": {}
+      },
+      {
+        "label": "products services technologies",
+        "score": -1.1631377009245103,
+        "meta": {}
+      },
+      {
+        "label": "new products",
+        "score": -0.19613071102053148,
+        "meta": {}
+      },
+      {
+        "label": "Intellectual property",
+        "score": -0.0393982500327561,
+        "meta": {}
+      },
+      {
+        "label": "customer demand",
+        "score": -0.03845194864726453,
+        "meta": {}
+      },
+      {
+        "label": "Climate change",
+        "score": -0.03699243032299515,
+        "meta": {}
+      },
+      {
+        "label": "customers partners",
+        "score": -0.036958837913346976,
+        "meta": {}
+      },
+      {
+        "label": "gross margin",
+        "score": -0.03672912309508902,
+        "meta": {}
+      },
+      {
+        "label": "product liability",
+        "score": -0.03643275386009126,
+        "meta": {}
+      },
+      {
+        "label": "increase operating expenses",
+        "score": -0.036322844887656025,
+        "meta": {}
+      },
+      {
+        "label": "ability meet customer demand",
+        "score": -0.03624993995049497,
+        "meta": {}
+      },
+      {
+        "label": "product design",
+        "score": -0.03624993995049497,
+        "meta": {}
+      },
+      {
+        "label": "revenue sales",
+        "score": -0.03624993995049497,
+        "meta": {}
+      },
+      {
+        "label": "failure meet",
+        "score": -0.03621359713153183,
+        "meta": {}
+      }
+    ],
+    "summary_alt": "Adds emphasis on changes united, laws united, products sell; de-emphasizes laws regulations, new products services technologies, products services technologies."
+  },
+  "evidence": [
+    {
+      "year": 2020,
+      "paragraph_idx": 26,
+      "snippet": "We have in the past acquired and invested in, and may continue to acquire and invest in, other businesses that offer products, services and technologies that we believe will help expand or enhance our existing products, strategic objectives and business. In March 2019, we announced our agreement to acquire Mellanox for approximately $6.9 billion. The Mellanox acquisition and other past or future acquisitions or investments involve significant challenges and risks, and could impair our ability to grow our business, develop new products or sell our products, and ultimately could have a negative impact on our growth or our financial results. Given that our resources are limited, our decision to pursue a transaction has opportunity costs; accordingly, if we pursue a particular transaction, we may need to forgo the prospect of entering into other transactions that could help us achieve our strategic objectives. Additional risks related to the Mellanox acquisition, and other acquisitions or strategic investments include, but are not limited to: difficulty in combining the technology, products, operations or workforce of the acquired business with our business; diversion of capital and other resources, including management\u2019s attention; assumption of liabilities and incurring amortization expenses, impairment charges to goodwill or write-downs of acquired assets; integrating financial forecasting and controls, procedures and reporting cycles; coordinating and integrating operations in countries in which we have not previously operated; difficulty in realizing a satisfactory return, if at all; difficulty in obtaining regulatory, other approvals or financing; failure and costs associated with the failure to consummate a proposed acquisition or other strategic investment; legal proceedings initiated as a result of an acquisition or investment; uncertainties and time needed to realize the benefits of an acquisition or strategic investment, if at all; negative changes in general economic conditions in the regions or the industries in which we or our target operate; the need to later divest acquired assets if an acquisition does not meet our expectations; potential failure of our due diligence processes to identify significant issues with the acquired assets or company; and impairment of relationships with, or loss of our or our target\u2019s, employees, vendors and customers, as a result of our acquisition or investment.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "Coronavirus",
+        "mellanox",
+        "mellanox acquisition",
+        "center",
+        "integrating",
+        "trade restrictions",
+        "data center",
+        "hong",
+        "kong",
+        "regions",
+        "hong kong",
+        "approximately",
+        "finished",
+        "march",
+        "shutdowns",
+        "datacenter",
+        "appropriately"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 14,
+      "snippet": "In January 2020, a novel strain of coronavirus was identified in China, resulting in shutdowns of manufacturing and commerce, as well as global travel restrictions to contain the virus. The impact has extended to other regions. We have operations and employees in China, and the region represents an important end market for our products. Our customers and suppliers within China and neighboring countries are also affected by the coronavirus related restrictions and closures. The coronavirus is expected to have a negative effect on our financial results, though the full extent and duration is uncertain and could have a material negative impact on our business.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "Coronavirus",
+        "mellanox",
+        "mellanox acquisition",
+        "center",
+        "integrating",
+        "trade restrictions",
+        "data center",
+        "hong",
+        "kong",
+        "regions",
+        "hong kong",
+        "approximately",
+        "finished",
+        "march",
+        "shutdowns",
+        "datacenter",
+        "appropriately"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 1,
+      "snippet": "If we fail to meet the evolving needs of our markets, or identify new products, services or technologies, our revenue and financial results may be adversely impacted. We created GPU-based visual and accelerated computing platforms that address four large markets: Gaming, Professional Visualization, Data Center, and Automotive. These markets often experience rapid technological change, changes in customer requirements, new product introductions and enhancements, and evolving industry standards. Our success depends on our ability to identify emerging industry changes and to develop new (or enhance our existing) products, services and technologies that meet the evolving needs of these markets. Such activities may require considerable technical, financial, compliance, sales and marketing investments. We devote significant resources to the development of technologies and business offerings in markets where we have a limited operating history, such as the automotive and data center markets, which presents additional risks to our business. We must also continue to develop the infrastructure needed to scale our business in these areas, including customer service and support. We also must meet customer safety and compliance standards, which are subject to change. Additionally, we continue to make considerable investments in research and development, which may not produce significant revenue for several years, if at all. If our investments are unsuccessful and we fail to develop new products, services and technologies, or if we focus on technologies that do not become widely adopted, our business, revenue, financial condition and results of operations could be adversely affected. We cannot assure you that our strategic direction will result in innovative products and technologies that provide value to our customers, partners and ultimately, our shareholders. If we fail to anticipate the changing needs of our target markets and emerging technology trends, or if we do not appropriately adapt that strategy as market conditions evolve, in a timely manner to exploit potential market opportunities, our business will be harmed.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "Coronavirus",
+        "mellanox",
+        "mellanox acquisition",
+        "center",
+        "integrating",
+        "trade restrictions",
+        "data center",
+        "hong",
+        "kong",
+        "regions",
+        "hong kong",
+        "approximately",
+        "finished",
+        "march",
+        "shutdowns",
+        "datacenter",
+        "appropriately"
+      ]
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 1,
+      "snippet": "If we fail to meet the evolving needs of our markets, or identify new products, services or technologies, our revenue and financial results may be adversely impacted. We have created GPU-based visual and accelerated computing platforms that address four large markets: Gaming, Professional Visualization, Datacenter, and Automotive. These markets often experience rapid technological change, changes in customer requirements, new product introductions and enhancements, and evolving industry standards. Our success depends on our ability to identify these emerging industry changes and to develop new (or enhance our existing) products, services and technologies that meet the evolving needs of these markets. Such activities may require considerable technical, financial, compliance, sales and marketing investments. We currently devote significant resources to the development of technologies and business offerings in markets where we have a limited operating history, such as the automotive and datacenter markets, which presents additional risks to our business. We must also continue to develop the infrastructure needed to appropriately scale our business in these areas, including customer service and customer support. We also must meet customer safety and compliance standards, which are subject to change. Additionally, we continue to make considerable investments in research and development, which may not produce significant revenue for several years, if at all. If our investments are unsuccessful and we fail to develop new products, services and technologies, or if we focus on technologies that do not become widely adopted, our business, revenue, financial condition and results of operations could be adversely affected. We cannot assure you that our strategic direction will result in innovative products and technologies that provide value to our customers, partners and ultimately, our shareholders. If we fail to anticipate the changing needs of our target markets and emerging technology trends, or if we do not appropriately adapt that strategy as market conditions evolve, in a timely manner to exploit potential market opportunities, our business will be harmed.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "Coronavirus",
+        "mellanox",
+        "mellanox acquisition",
+        "center",
+        "integrating",
+        "trade restrictions",
+        "data center",
+        "hong",
+        "kong",
+        "regions",
+        "hong kong",
+        "approximately",
+        "finished",
+        "march",
+        "shutdowns",
+        "datacenter",
+        "appropriately"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.0099,
+    "confidence": 0.85,
+    "coverage": 1.0,
+    "warnings": [
+      "thin_counts"
+    ]
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T19:27:15Z",
+    "git_commit": "cfe9628e9904d9ea49e72960b3535e0464887ce9",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "3391e9b5a389f82185e2b8ea26b2c7aa10b5a8c9a62698f2390daa0fcf1ae989",
+      "curr_text_sha256": "8d071c33e1e2434abc15f22db00cd5cc9e715a8acf3573775ea431e665167d41",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

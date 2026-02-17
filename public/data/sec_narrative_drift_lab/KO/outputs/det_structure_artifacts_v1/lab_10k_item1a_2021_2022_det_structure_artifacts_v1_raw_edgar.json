@@ -1,0 +1,60 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_structure_artifacts_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "KO",
+  "section": "10k_item1a",
+  "year_from": 2021,
+  "year_to": 2022,
+  "artifacts": {
+    "stats": {
+      "headings_prev": [
+        "ITEM 1A. RISK FACTORS",
+        "RISKS RELATED TO OUR OPERATIONS",
+        "RISKS RELATED TO CONSUMER DEMAND FOR OUR PRODUCTS",
+        "RISKS RELATED TO THE COCA-COLA SYSTEM",
+        "RISKS RELATED TO REGULATORY AND LEGAL MATTERS",
+        "RISKS RELATED TO FINANCE, ACCOUNTING AND INVESTMENTS",
+        "RISKS RELATED TO INFORMATION TECHNOLOGY AND DATA PRIVACY",
+        "RISKS RELATED TO ENVIRONMENTAL AND SOCIAL FACTORS",
+        "ITEM 1B. UNRESOLVED STAFF COMMENTS"
+      ],
+      "headings_curr": [
+        "ITEM 1A. RISK FACTORS",
+        "RISKS RELATED TO OUR OPERATIONS",
+        "RISKS RELATED TO CONSUMER DEMAND FOR OUR PRODUCTS",
+        "RISKS RELATED TO THE COCA-COLA SYSTEM",
+        "RISKS RELATED TO REGULATORY AND LEGAL MATTERS",
+        "RISKS RELATED TO FINANCE, ACCOUNTING AND INVESTMENTS",
+        "RISKS RELATED TO INFORMATION TECHNOLOGY AND DATA PRIVACY",
+        "RISKS RELATED TO ENVIRONMENTAL AND SOCIAL FACTORS",
+        "ITEM 1B. UNRESOLVED STAFF COMMENTS"
+      ],
+      "headings_added": [],
+      "headings_removed": [],
+      "paragraph_count_prev": 77,
+      "paragraph_count_curr": 69,
+      "length_chars_prev": 86380,
+      "length_chars_curr": 87012
+    }
+  },
+  "evidence": [],
+  "metrics": {
+    "drift_score": 0.0,
+    "confidence": 0.9,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T19:27:19Z",
+    "git_commit": "cfe9628e9904d9ea49e72960b3535e0464887ce9",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "012edf6b35d3f8d9321f2db9b84dc74b1c54705fdb822d0b280f04cdec0a8fb1",
+      "curr_text_sha256": "a37751455aeb69e85a19f53a089bf34113014acf24f280964f890fad12668547",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

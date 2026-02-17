@@ -1,0 +1,154 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_jsd_ngrams_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "KO",
+  "section": "10k_item1a",
+  "year_from": 2020,
+  "year_to": 2021,
+  "artifacts": {
+    "ranked_items": [
+      {
+        "label": "esg",
+        "score": 0.0003562014675500463
+      },
+      {
+        "label": "associates",
+        "score": 0.00032758244158113123
+      },
+      {
+        "label": "brands bottling",
+        "score": 0.0002493410272850324
+      },
+      {
+        "label": "place",
+        "score": 0.00016442258267226542
+      },
+      {
+        "label": "shelter place",
+        "score": 0.00014559219625828057
+      },
+      {
+        "label": "reorganization",
+        "score": 0.00014559219625828057
+      },
+      {
+        "label": "total",
+        "score": 0.00014559219625828057
+      },
+      {
+        "label": "shelter",
+        "score": 0.00014559219625828057
+      },
+      {
+        "label": "crisis",
+        "score": 0.00014559219625828057
+      },
+      {
+        "label": "alcoholic",
+        "score": 0.00014559219625828057
+      },
+      {
+        "label": "adequate",
+        "score": 0.0001424805870200185
+      },
+      {
+        "label": "month",
+        "score": 0.0001424805870200185
+      },
+      {
+        "label": "taken",
+        "score": 0.00012879461165916944
+      },
+      {
+        "label": "cybersecurity",
+        "score": 0.00012154986211833463
+      },
+      {
+        "label": "operations acquired",
+        "score": 0.00010919414719371041
+      },
+      {
+        "label": "pandemic including",
+        "score": 0.00010919414719371041
+      },
+      {
+        "label": "taken future",
+        "score": 0.00010919414719371041
+      },
+      {
+        "label": "expect continue",
+        "score": 0.00010919414719371041
+      },
+      {
+        "label": "associates agents",
+        "score": 0.00010919414719371041
+      },
+      {
+        "label": "reorganization related",
+        "score": 0.00010919414719371041
+      }
+    ],
+    "stats": {
+      "jsd": 0.101775,
+      "tokens_prev": 6869,
+      "tokens_curr": 7019
+    }
+  },
+  "evidence": [
+    {
+      "year": 2021,
+      "paragraph_idx": 6,
+      "snippet": "We operate in the highly competitive commercial beverage industry. For additional information regarding the competitive environment in which we operate, including the names of certain of our significant competitors, refer to the heading \u201cCompetition\u201d set forth in Part I, \u201cItem 1. Business\u201d of this report. Our ability to maintain or gain share of sales in the global market or in local markets may be limited as a result of actions by competitors. Competitive pressures may cause the Company and our bottling partners to reduce prices we charge customers or may restrict our and our bottlers\u2019 ability to increase prices, as may be necessary in response to commodity and other cost increases. Such pressures may also increase marketing costs along with in-store placement and slotting fees. In addition, the rapid growth of e\u2011commerce may create additional consumer price deflation by, among other things, facilitating comparison shopping, and could potentially threaten the value of some of our legacy route-to-market strategies and thus negatively affect revenues. If we do not continuously strengthen our capabilities in marketing and innovation to maintain consumer interest, brand loyalty and market share while we selectively expand into other profitable categories in the commercial beverage industry, our business could be negatively affected.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "place"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 23,
+      "snippet": "partners are subject to similar risks as we are relating to cybersecurity, privacy violations, business interruption, and systems and employee failures, and are subject to legal, regulatory and market risks of their own. Our third-party service providers and business partners may not fulfill their respective commitments and responsibilities in a timely manner and in accordance with the agreed-upon terms. In addition, while we have procedures in place for selecting and managing our relationships with third-party service providers and other business partners, we do not have control over their business operations or governance and compliance systems, practices and procedures, which increases our financial, legal, reputational and operational risk. If we are unable to effectively manage our third-party relationships, or for any reason our third-party service providers or business partners fail to satisfactorily fulfill their commitments and responsibilities, our financial results could suffer.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "place"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 3,
+      "snippet": "\u2022 We have experienced a decrease in sales of certain of our products in markets around the world as a result of the COVID-19 pandemic. In particular, sales of our products in the away-from-home channels have been significantly negatively affected by shelter-in-place regulations or recommendations, closings of restaurants and cancellations of major sporting and other events that were imposed as a result of the initial COVID-19 outbreak. While some of these restrictions have been lifted or eased in many jurisdictions as the rates of COVID-19 infections have decreased or stabilized, resurgence of the pandemic in some markets has slowed the reopening process. If COVID-19 infection trends increase, the pandemic intensifies or expands geographically or efforts to curb the pandemic are ineffective, the negative impacts of the pandemic on our sales could be more prolonged and may become more severe. While we initially experienced increased sales in the at-home channels from pantry loading as consumers stocked up on certain of our products with the expectation of spending more time at home during the crisis, such increased sales levels have not, and we expect will not, fully offset the sales pressures we have experienced, and we expect will continue to",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "place"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 4,
+      "snippet": "\u2022 In certain COVID-19 affected markets, consumer demand has shifted away from some of our more profitable beverages and away-from-home consumption to lower-margin products and at-home consumption, and this shift in consumer purchasing patterns is likely to continue while shelter-in-place and social distancing behaviors are mandated or encouraged.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "place"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.101775,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T19:27:18Z",
+    "git_commit": "cfe9628e9904d9ea49e72960b3535e0464887ce9",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "34b0ec0d66b244446712462b1db58c554840ecaf73b985f16e10109a32f13871",
+      "curr_text_sha256": "012edf6b35d3f8d9321f2db9b84dc74b1c54705fdb822d0b280f04cdec0a8fb1",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

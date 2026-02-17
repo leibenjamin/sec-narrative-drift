@@ -1,0 +1,55 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_winnowing_fingerprint_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "GE",
+  "section": "10k_item1a",
+  "year_from": 2023,
+  "year_to": 2024,
+  "artifacts": {
+    "stats": {
+      "shared_fingerprints": 14910,
+      "prev_fingerprints": 29201,
+      "curr_fingerprints": 25405,
+      "shared_ratio": 0.5868923440267664
+    }
+  },
+  "evidence": [
+    {
+      "year": 2024,
+      "paragraph_idx": 0,
+      "snippet": "RISK FACTORS. The following discussion of the material factors, events and uncertainties that may make an investment in the",
+      "why": "Shared fingerprint span."
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 0,
+      "snippet": "RISK FACTORS. The following discussion of the material factors, events and uncertainties that may make an investment in the C",
+      "why": "Shared fingerprint span."
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 0,
+      "snippet": "RISK FACTORS. The following discussion of the material factors, events and uncertainties that may make an investment in the Comp",
+      "why": "Shared fingerprint span."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.5868923440267664,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T19:27:25Z",
+    "git_commit": "cfe9628e9904d9ea49e72960b3535e0464887ce9",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "c6bc42c2851cab77e82a74e4c516ded6232d9fea6ada3fd45af033c4e542c82c",
+      "curr_text_sha256": "e52b4b32b73cacf0f7dde38785d5e00f8634370d20ca5a6e5ea811d077091de1",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

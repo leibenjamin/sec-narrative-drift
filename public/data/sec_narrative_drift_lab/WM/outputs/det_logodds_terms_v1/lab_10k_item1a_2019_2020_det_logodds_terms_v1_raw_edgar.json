@@ -1,0 +1,1213 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_logodds_terms_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "WM",
+  "section": "10k_item1a",
+  "year_from": 2019,
+  "year_to": 2020,
+  "artifacts": {
+    "top_risers": [
+      {
+        "label": "financial reporting",
+        "score": 1.1168062258545781,
+        "meta": {
+          "z": 1.484207788811375,
+          "countPrev": 0,
+          "countCurr": 12,
+          "per10kPrev": 0.0,
+          "per10kCurr": 11.793611793611793,
+          "deltaPer10k": 11.793611793611793,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "COVID-19",
+        "score": 0.9953460268479238,
+        "meta": {
+          "z": 1.4260918829477425,
+          "countPrev": 0,
+          "countCurr": 10,
+          "per10kPrev": 0.0,
+          "per10kCurr": 9.828009828009828,
+          "deltaPer10k": 9.828009828009828,
+          "distinctive": false,
+          "includes": [
+            "covid"
+          ]
+        }
+      },
+      {
+        "label": "effectiveness",
+        "score": 0.9256112261968098,
+        "meta": {
+          "z": 1.1341094158120875,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.9312039312039313,
+          "deltaPer10k": 3.9312039312039313,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "effectiveness internal",
+        "score": 0.8533713850090872,
+        "meta": {
+          "z": 1.1341094158120875,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.9312039312039313,
+          "deltaPer10k": 3.9312039312039313,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "basel",
+        "score": 0.7465374042283098,
+        "meta": {
+          "z": 0.914698391105316,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.9656019656019657,
+          "deltaPer10k": 1.9656019656019657,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "conclude",
+        "score": 0.7465374042283098,
+        "meta": {
+          "z": 0.914698391105316,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.9656019656019657,
+          "deltaPer10k": 1.9656019656019657,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "convention",
+        "score": 0.7465374042283098,
+        "meta": {
+          "z": 0.914698391105316,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.9656019656019657,
+          "deltaPer10k": 1.9656019656019657,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "distancing",
+        "score": 0.7465374042283098,
+        "meta": {
+          "z": 0.914698391105316,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.9656019656019657,
+          "deltaPer10k": 1.9656019656019657,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "staff",
+        "score": 0.7465374042283098,
+        "meta": {
+          "z": 0.914698391105316,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.9656019656019657,
+          "deltaPer10k": 1.9656019656019657,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "basel convention",
+        "score": 0.6882734787314934,
+        "meta": {
+          "z": 0.914698391105316,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.9656019656019657,
+          "deltaPer10k": 1.9656019656019657,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "conclude internal",
+        "score": 0.6882734787314934,
+        "meta": {
+          "z": 0.914698391105316,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.9656019656019657,
+          "deltaPer10k": 1.9656019656019657,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "difficulties integrating",
+        "score": 0.6882734787314934,
+        "meta": {
+          "z": 0.914698391105316,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.9656019656019657,
+          "deltaPer10k": 1.9656019656019657,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "internal",
+        "score": 0.6754619194896169,
+        "meta": {
+          "z": 1.4260918829477425,
+          "countPrev": 0,
+          "countCurr": 10,
+          "per10kPrev": 0.0,
+          "per10kCurr": 9.828009828009828,
+          "deltaPer10k": 9.828009828009828,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "controls",
+        "score": 0.6619065091562734,
+        "meta": {
+          "z": 1.1341094158120875,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.9312039312039313,
+          "deltaPer10k": 3.9312039312039313,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "Pandemic",
+        "score": 0.641767160690324,
+        "meta": {
+          "z": 1.3549526808179442,
+          "countPrev": 0,
+          "countCurr": 8,
+          "per10kPrev": 0.0,
+          "per10kCurr": 7.862407862407863,
+          "deltaPer10k": 7.862407862407863,
+          "distinctive": false,
+          "includes": [
+            "pandemic"
+          ]
+        }
+      }
+    ],
+    "top_fallers": [
+      {
+        "label": "planned acquisition",
+        "score": -1.2480208421006767,
+        "meta": {
+          "z": -1.3652290754337684,
+          "countPrev": 7,
+          "countCurr": 0,
+          "per10kPrev": 7.496251874062969,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -7.496251874062969,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "redemption",
+        "score": -1.1797283801662437,
+        "meta": {
+          "z": -1.2578461376268923,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 5.354465624330691,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.354465624330691,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "merger",
+        "score": -1.1129843480370263,
+        "meta": {
+          "z": -1.1866825338390858,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 4.283572499464554,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.283572499464554,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "completed",
+        "score": -1.0270883034784724,
+        "meta": {
+          "z": -1.0950987339561167,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 3.212679374598415,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.212679374598415,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "feature",
+        "score": -1.0270883034784724,
+        "meta": {
+          "z": -1.0950987339561167,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 3.212679374598415,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.212679374598415,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "aggregate",
+        "score": -0.906645087303199,
+        "meta": {
+          "z": -0.9666801616674009,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.141786249732277,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.141786249732277,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "principal",
+        "score": -0.906645087303199,
+        "meta": {
+          "z": -0.9666801616674009,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.141786249732277,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.141786249732277,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "pursuant",
+        "score": -0.906645087303199,
+        "meta": {
+          "z": -0.9666801616674009,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.141786249732277,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.141786249732277,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "redeem",
+        "score": -0.906645087303199,
+        "meta": {
+          "z": -0.9666801616674009,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.141786249732277,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.141786249732277,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "series",
+        "score": -0.906645087303199,
+        "meta": {
+          "z": -0.9666801616674009,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.141786249732277,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.141786249732277,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "trading",
+        "score": -0.906645087303199,
+        "meta": {
+          "z": -0.9666801616674009,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.141786249732277,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.141786249732277,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "agreement",
+        "score": -0.8937723889875949,
+        "meta": {
+          "z": -1.0950987339561167,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 3.212679374598415,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.212679374598415,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "unexpected",
+        "score": -0.7889626849984193,
+        "meta": {
+          "z": -0.9666801616674009,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.141786249732277,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.141786249732277,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "import recyclables",
+        "score": -0.7596594182553039,
+        "meta": {
+          "z": -1.009568535092724,
+          "countPrev": 3,
+          "countCurr": 1,
+          "per10kPrev": 3.212679374598415,
+          "per10kCurr": 0.9828009828009828,
+          "deltaPer10k": -2.229878391797432,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "planned",
+        "score": -0.7012389756149618,
+        "meta": {
+          "z": -1.9026127572897067,
+          "countPrev": 7,
+          "countCurr": 1,
+          "per10kPrev": 7.496251874062969,
+          "per10kCurr": 0.9828009828009828,
+          "deltaPer10k": -6.513450891261986,
+          "distinctive": false
+        }
+      }
+    ],
+    "summary": "Adds emphasis on financial reporting, COVID-19, effectiveness; de-emphasizes planned acquisition, redemption, merger.",
+    "ranked_items": [
+      {
+        "label": "financial reporting",
+        "score": 1.1168062258545781,
+        "meta": {
+          "z": 1.484207788811375,
+          "countPrev": 0,
+          "countCurr": 12,
+          "per10kPrev": 0.0,
+          "per10kCurr": 11.793611793611793,
+          "deltaPer10k": 11.793611793611793,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "COVID-19",
+        "score": 0.9953460268479238,
+        "meta": {
+          "z": 1.4260918829477425,
+          "countPrev": 0,
+          "countCurr": 10,
+          "per10kPrev": 0.0,
+          "per10kCurr": 9.828009828009828,
+          "deltaPer10k": 9.828009828009828,
+          "distinctive": false,
+          "includes": [
+            "covid"
+          ]
+        }
+      },
+      {
+        "label": "effectiveness",
+        "score": 0.9256112261968098,
+        "meta": {
+          "z": 1.1341094158120875,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.9312039312039313,
+          "deltaPer10k": 3.9312039312039313,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "effectiveness internal",
+        "score": 0.8533713850090872,
+        "meta": {
+          "z": 1.1341094158120875,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.9312039312039313,
+          "deltaPer10k": 3.9312039312039313,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "basel",
+        "score": 0.7465374042283098,
+        "meta": {
+          "z": 0.914698391105316,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.9656019656019657,
+          "deltaPer10k": 1.9656019656019657,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "conclude",
+        "score": 0.7465374042283098,
+        "meta": {
+          "z": 0.914698391105316,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.9656019656019657,
+          "deltaPer10k": 1.9656019656019657,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "convention",
+        "score": 0.7465374042283098,
+        "meta": {
+          "z": 0.914698391105316,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.9656019656019657,
+          "deltaPer10k": 1.9656019656019657,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "distancing",
+        "score": 0.7465374042283098,
+        "meta": {
+          "z": 0.914698391105316,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.9656019656019657,
+          "deltaPer10k": 1.9656019656019657,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "staff",
+        "score": 0.7465374042283098,
+        "meta": {
+          "z": 0.914698391105316,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.9656019656019657,
+          "deltaPer10k": 1.9656019656019657,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "basel convention",
+        "score": 0.6882734787314934,
+        "meta": {
+          "z": 0.914698391105316,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.9656019656019657,
+          "deltaPer10k": 1.9656019656019657,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "conclude internal",
+        "score": 0.6882734787314934,
+        "meta": {
+          "z": 0.914698391105316,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.9656019656019657,
+          "deltaPer10k": 1.9656019656019657,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "difficulties integrating",
+        "score": 0.6882734787314934,
+        "meta": {
+          "z": 0.914698391105316,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.9656019656019657,
+          "deltaPer10k": 1.9656019656019657,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "internal",
+        "score": 0.6754619194896169,
+        "meta": {
+          "z": 1.4260918829477425,
+          "countPrev": 0,
+          "countCurr": 10,
+          "per10kPrev": 0.0,
+          "per10kCurr": 9.828009828009828,
+          "deltaPer10k": 9.828009828009828,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "controls",
+        "score": 0.6619065091562734,
+        "meta": {
+          "z": 1.1341094158120875,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.9312039312039313,
+          "deltaPer10k": 3.9312039312039313,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "Pandemic",
+        "score": 0.641767160690324,
+        "meta": {
+          "z": 1.3549526808179442,
+          "countPrev": 0,
+          "countCurr": 8,
+          "per10kPrev": 0.0,
+          "per10kCurr": 7.862407862407863,
+          "deltaPer10k": 7.862407862407863,
+          "distinctive": false,
+          "includes": [
+            "pandemic"
+          ]
+        }
+      },
+      {
+        "label": "planned acquisition",
+        "score": -1.2480208421006767,
+        "meta": {
+          "z": -1.3652290754337684,
+          "countPrev": 7,
+          "countCurr": 0,
+          "per10kPrev": 7.496251874062969,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -7.496251874062969,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "redemption",
+        "score": -1.1797283801662437,
+        "meta": {
+          "z": -1.2578461376268923,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 5.354465624330691,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.354465624330691,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "merger",
+        "score": -1.1129843480370263,
+        "meta": {
+          "z": -1.1866825338390858,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 4.283572499464554,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.283572499464554,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "completed",
+        "score": -1.0270883034784724,
+        "meta": {
+          "z": -1.0950987339561167,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 3.212679374598415,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.212679374598415,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "feature",
+        "score": -1.0270883034784724,
+        "meta": {
+          "z": -1.0950987339561167,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 3.212679374598415,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.212679374598415,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "aggregate",
+        "score": -0.906645087303199,
+        "meta": {
+          "z": -0.9666801616674009,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.141786249732277,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.141786249732277,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "principal",
+        "score": -0.906645087303199,
+        "meta": {
+          "z": -0.9666801616674009,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.141786249732277,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.141786249732277,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "pursuant",
+        "score": -0.906645087303199,
+        "meta": {
+          "z": -0.9666801616674009,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.141786249732277,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.141786249732277,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "redeem",
+        "score": -0.906645087303199,
+        "meta": {
+          "z": -0.9666801616674009,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.141786249732277,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.141786249732277,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "series",
+        "score": -0.906645087303199,
+        "meta": {
+          "z": -0.9666801616674009,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.141786249732277,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.141786249732277,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "trading",
+        "score": -0.906645087303199,
+        "meta": {
+          "z": -0.9666801616674009,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.141786249732277,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.141786249732277,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "agreement",
+        "score": -0.8937723889875949,
+        "meta": {
+          "z": -1.0950987339561167,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 3.212679374598415,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.212679374598415,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "unexpected",
+        "score": -0.7889626849984193,
+        "meta": {
+          "z": -0.9666801616674009,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.141786249732277,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.141786249732277,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "import recyclables",
+        "score": -0.7596594182553039,
+        "meta": {
+          "z": -1.009568535092724,
+          "countPrev": 3,
+          "countCurr": 1,
+          "per10kPrev": 3.212679374598415,
+          "per10kCurr": 0.9828009828009828,
+          "deltaPer10k": -2.229878391797432,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "planned",
+        "score": -0.7012389756149618,
+        "meta": {
+          "z": -1.9026127572897067,
+          "countPrev": 7,
+          "countCurr": 1,
+          "per10kPrev": 7.496251874062969,
+          "per10kCurr": 0.9828009828009828,
+          "deltaPer10k": -6.513450891261986,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_risers_alt": [
+      {
+        "label": "financial reporting",
+        "score": 1.2792092757925335,
+        "meta": {}
+      },
+      {
+        "label": "control financial",
+        "score": 1.8959912658458844,
+        "meta": {}
+      },
+      {
+        "label": "increase operating costs",
+        "score": 1.887549553398812,
+        "meta": {}
+      },
+      {
+        "label": "internal controls",
+        "score": 0.7698278685967272,
+        "meta": {}
+      },
+      {
+        "label": "cash tax",
+        "score": 1.0394995526894926,
+        "meta": {}
+      },
+      {
+        "label": "customers waste service",
+        "score": 1.0394995526894926,
+        "meta": {}
+      },
+      {
+        "label": "employees customers",
+        "score": 1.0394995526894926,
+        "meta": {}
+      },
+      {
+        "label": "negatively affect operating results",
+        "score": 1.0394995526894926,
+        "meta": {}
+      },
+      {
+        "label": "waste industry",
+        "score": 1.0394995526894926,
+        "meta": {}
+      },
+      {
+        "label": "increase operating",
+        "score": 0.6359736856543412,
+        "meta": {}
+      },
+      {
+        "label": "fuel prices",
+        "score": 0.9392696084296919,
+        "meta": {}
+      },
+      {
+        "label": "environmental services",
+        "score": 0.7877788934676717,
+        "meta": {}
+      },
+      {
+        "label": "information security",
+        "score": 0.6306511375475043,
+        "meta": {}
+      },
+      {
+        "label": "results operations cash",
+        "score": 0.1126963587213563,
+        "meta": {}
+      },
+      {
+        "label": "Supply chain",
+        "score": 0.09797486985406678,
+        "meta": {}
+      }
+    ],
+    "top_fallers_alt": [
+      {
+        "label": "environmental damage",
+        "score": -2.0277896690225052,
+        "meta": {}
+      },
+      {
+        "label": "future business financial results",
+        "score": -2.021646126648739,
+        "meta": {}
+      },
+      {
+        "label": "operating expenses increase",
+        "score": -1.4617448399868884,
+        "meta": {}
+      },
+      {
+        "label": "increase operating expenses",
+        "score": -0.9913841256821794,
+        "meta": {}
+      },
+      {
+        "label": "environmental regulation",
+        "score": -0.8634403856585289,
+        "meta": {}
+      },
+      {
+        "label": "operating results future",
+        "score": -0.8634403856585289,
+        "meta": {}
+      },
+      {
+        "label": "changes regulations",
+        "score": -0.2481202435176586,
+        "meta": {}
+      },
+      {
+        "label": "Climate change",
+        "score": -0.1171731626359298,
+        "meta": {}
+      },
+      {
+        "label": "new service",
+        "score": -0.19674761757914494,
+        "meta": {}
+      },
+      {
+        "label": "operating results",
+        "score": -0.12448162089752346,
+        "meta": {}
+      },
+      {
+        "label": "laws regulations",
+        "score": -0.0711551357254332,
+        "meta": {}
+      },
+      {
+        "label": "Interest rates",
+        "score": -0.07021440920112498,
+        "meta": {}
+      },
+      {
+        "label": "Intellectual property",
+        "score": -0.07010770854440906,
+        "meta": {}
+      },
+      {
+        "label": "financial results",
+        "score": -0.06902246122523215,
+        "meta": {}
+      },
+      {
+        "label": "waste management",
+        "score": -0.06878303337011626,
+        "meta": {}
+      }
+    ],
+    "summary_alt": "Adds emphasis on financial reporting, control financial, increase operating costs; de-emphasizes environmental damage, future business financial results, operating expenses increase."
+  },
+  "evidence": [
+    {
+      "year": 2020,
+      "paragraph_idx": 12,
+      "snippet": "As described further in Item 9A. Controls and Procedures , in accordance with SEC staff guidance, we have excluded Advanced Disposal from the assessment of the effectiveness of our internal control over financial reporting as of December 31, 2020 contained in this Annual Report on Form 10-K; however, this exclusion may not extend beyond one year from the October 30, 2020 closing date. We are in the process of integrating Advanced Disposal\u2019s operations and systems to ensure the effectiveness of the internal control over financial reporting for this acquired business. Establishing, testing and maintaining an effective system of internal control over financial reporting requires significant resources and time commitments on the part of our management and our finance staff, and the time and expenditures needed may exceed our expectations. If we encounter difficulties integrating Advanced Disposal operations and systems into our system of internal control over financial reporting, and if we are unable to correct any issues encountered in a timely manner, our ability to record, process, summarize, and report financial data may be adversely affected, which may impact the accuracy,",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "financial reporting",
+        "COVID-19",
+        "effectiveness",
+        "effectiveness internal",
+        "basel",
+        "conclude",
+        "convention",
+        "distancing",
+        "staff",
+        "basel convention",
+        "conclude internal",
+        "difficulties integrating",
+        "internal",
+        "controls",
+        "Pandemic",
+        "planned acquisition",
+        "redemption",
+        "merger",
+        "completed",
+        "feature",
+        "aggregate",
+        "principal",
+        "pursuant",
+        "redeem",
+        "series",
+        "trading",
+        "agreement",
+        "unexpected",
+        "import recyclables",
+        "planned"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 13,
+      "snippet": "quality and completeness of our financial statements. Such failure could materially and adversely impact our business and subject us to potential investigations, liability, and penalties. Additionally, if we are unable to conclude that our internal control over financial reporting is effective in any future period (or if our auditors are unable to express an opinion on the effectiveness of our internal controls or conclude that our internal controls are ineffective), we could lose investor confidence and suffer an adverse effect on our stock price.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "financial reporting",
+        "COVID-19",
+        "effectiveness",
+        "effectiveness internal",
+        "basel",
+        "conclude",
+        "convention",
+        "distancing",
+        "staff",
+        "basel convention",
+        "conclude internal",
+        "difficulties integrating",
+        "internal",
+        "controls",
+        "Pandemic",
+        "planned acquisition",
+        "redemption",
+        "merger",
+        "completed",
+        "feature",
+        "aggregate",
+        "principal",
+        "pursuant",
+        "redeem",
+        "series",
+        "trading",
+        "agreement",
+        "unexpected",
+        "import recyclables",
+        "planned"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 38,
+      "snippet": "We have incurred costs related to health, safety and financial security of our workforce during the COVID-19 pandemic. This included transitioning back-office employees to work-from-home and providing financial certainty to employees by guaranteeing all full-time hourly employees compensation for a 40-hour work week regardless of service decreases and reduced work schedules that resulted from the COVID-19 pandemic. It could be necessary for us to incur additional such costs in the future related to pandemic conditions. If a large portion of our employee base were to become ill, it could impact our ability to provide timely and reliable service. Additionally, the transition of most of our back-office employees to work-from-home increases various operational risks, including potential exposure to cyber incidents, loss of data, fraud, internal control challenges and other disruptions as a consequence of more employees accessing Company systems and information remotely in the course of their ordinary work.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "financial reporting",
+        "COVID-19",
+        "effectiveness",
+        "effectiveness internal",
+        "basel",
+        "conclude",
+        "convention",
+        "distancing",
+        "staff",
+        "basel convention",
+        "conclude internal",
+        "difficulties integrating",
+        "internal",
+        "controls",
+        "Pandemic",
+        "planned acquisition",
+        "redemption",
+        "merger",
+        "completed",
+        "feature",
+        "aggregate",
+        "principal",
+        "pursuant",
+        "redeem",
+        "series",
+        "trading",
+        "agreement",
+        "unexpected",
+        "import recyclables",
+        "planned"
+      ]
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 14,
+      "snippet": "Additionally, in May 2019, we issued senior notes with an aggregate principal amount of $3 billion that include a special mandatory redemption feature. This feature provides that if the acquisition of Advanced Disposal is not completed on or prior to July 14, 2020, or if, prior to such date, the Agreement and Plan of Merger is terminated for any reason, we will be required to redeem all of such outstanding notes equal to 101% of the aggregate principal amounts of such notes, plus accrued but unpaid interest. Our ability to pay the redemption price may be limited by our financial resources at the time and the terms of our debt instruments and other instruments and agreements. We may also be required to incur additional indebtedness and reduce availability under our $3.5 billion revolving credit facility to fund the redemption price. Any failure to pay the special mandatory redemption price of such notes when due would constitute an event of default with respect to the notes of such series and could have a material adverse effect on our business, results of operations and financial condition and the market prices of our securities. Further, if we redeem such series of notes pursuant to the special mandatory redemption feature, our investors may be dissatisfied that they did not obtain the return that they expected on their investment in those notes.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "financial reporting",
+        "COVID-19",
+        "effectiveness",
+        "effectiveness internal",
+        "basel",
+        "conclude",
+        "convention",
+        "distancing",
+        "staff",
+        "basel convention",
+        "conclude internal",
+        "difficulties integrating",
+        "internal",
+        "controls",
+        "Pandemic",
+        "planned acquisition",
+        "redemption",
+        "merger",
+        "completed",
+        "feature",
+        "aggregate",
+        "principal",
+        "pursuant",
+        "redeem",
+        "series",
+        "trading",
+        "agreement",
+        "unexpected",
+        "import recyclables",
+        "planned"
+      ]
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 13,
+      "snippet": "The planned acquisition of Advanced Disposal is subject to a number of risks and uncertainties, including general economic and capital markets conditions; the effects that the pending merger may have on us, Advanced Disposal and our respective businesses; inability to obtain required regulatory or government approvals or to obtain such approvals on satisfactory conditions; inability of Advanced Disposal to satisfy other closing conditions; the occurrence of any event, change or other circumstance that could give rise to the termination of the Agreement and Plan of Merger, several of which could require us to pay a termination fee of $150 million to Advanced Disposal; legal proceedings that may be instituted related to the proposed acquisition and the legal expenses and diversion of management\u2019s attention that may be associated therewith; and unexpected costs, charges or expenses. If the planned acquisition of Advanced Disposal is not completed, if there are significant delays in completing the planned acquisition or if the planned acquisition involves an unexpected amount of required divestitures, it could negatively affect the trading price of our common stock and our future business and financial results.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "financial reporting",
+        "COVID-19",
+        "effectiveness",
+        "effectiveness internal",
+        "basel",
+        "conclude",
+        "convention",
+        "distancing",
+        "staff",
+        "basel convention",
+        "conclude internal",
+        "difficulties integrating",
+        "internal",
+        "controls",
+        "Pandemic",
+        "planned acquisition",
+        "redemption",
+        "merger",
+        "completed",
+        "feature",
+        "aggregate",
+        "principal",
+        "pursuant",
+        "redeem",
+        "series",
+        "trading",
+        "agreement",
+        "unexpected",
+        "import recyclables",
+        "planned"
+      ]
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 12,
+      "snippet": "On April 14, 2019, we entered into an Agreement and Plan of Merger pursuant to which, among other things and subject to the satisfaction or waiver of specified conditions, we agreed to acquire Advanced Disposal. If the acquisition is completed, Advanced Disposal will become an indirect wholly-owned subsidiary of WM. The consummation of the acquisition is not assured and is subject to certain conditions, including the expiration or termination of any waiting period under the Hart-Scott-Rodino Antitrust Improvements Act of 1976, as amended, and the rules and regulations promulgated thereunder and the absence of any law or order restraining, enjoining or otherwise prohibiting the acquisition, as well as other customary closing conditions.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "financial reporting",
+        "COVID-19",
+        "effectiveness",
+        "effectiveness internal",
+        "basel",
+        "conclude",
+        "convention",
+        "distancing",
+        "staff",
+        "basel convention",
+        "conclude internal",
+        "difficulties integrating",
+        "internal",
+        "controls",
+        "Pandemic",
+        "planned acquisition",
+        "redemption",
+        "merger",
+        "completed",
+        "feature",
+        "aggregate",
+        "principal",
+        "pursuant",
+        "redeem",
+        "series",
+        "trading",
+        "agreement",
+        "unexpected",
+        "import recyclables",
+        "planned"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.0409,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T19:27:20Z",
+    "git_commit": "cfe9628e9904d9ea49e72960b3535e0464887ce9",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "71d4f09bf28ca0ff2f111974816ce3f66743c2c47aec077a767b0e173441fc29",
+      "curr_text_sha256": "29d1ab781cc001a5191a52b1cb72e2af781b38d8c21045e0068ae4646374b754",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

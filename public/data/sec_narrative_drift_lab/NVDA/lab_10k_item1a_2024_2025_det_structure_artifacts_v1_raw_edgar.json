@@ -1,0 +1,62 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_structure_artifacts_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "NVDA",
+  "section": "10k_item1a",
+  "year_from": 2024,
+  "year_to": 2025,
+  "artifacts": {
+    "stats": {
+      "headings_prev": [
+        "Item 1A. Risk Factors",
+        "Risk Factors Summary",
+        "Risk Factors",
+        "Our success depends on our ability to:",
+        "Additional risks related to acquisitions include, but are not limited to:",
+        "Item 1B. Unresolved Staff Comments"
+      ],
+      "headings_curr": [
+        "Risk Factors Summary",
+        "Risk Factors",
+        "Our success depends on our ability to:",
+        "Additional risks related to acquisitions include, but are not limited to:",
+        "Item 1B. Unresolved Staff Comments"
+      ],
+      "headings_added": [],
+      "headings_removed": [
+        "Item 1A. Risk Factors"
+      ],
+      "paragraph_count_prev": 110,
+      "paragraph_count_curr": 115,
+      "length_chars_prev": 106856,
+      "length_chars_curr": 110281
+    }
+  },
+  "evidence": [
+    {
+      "year": 2024,
+      "paragraph_idx": 0,
+      "snippet": "The following risk factors should be considered in addition to the other information in this Annual Report on Form 10-K. The following risks could harm our business, financial condition, results of operations or reputation, which could cause our stock price to decline. Additional risks, trends and uncertainties not presently known to us or that we currently believe are immaterial may also harm our business, financial condition, results of operations or reputation.",
+      "why": "Heading removed: Item 1A. Risk Factors"
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.16666666666666666,
+    "confidence": 0.55,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T19:27:18Z",
+    "git_commit": "cfe9628e9904d9ea49e72960b3535e0464887ce9",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "b032c029a9eb187f81c4d8b6d09f418da11d0a64b142dc83ca46dc17392e152a",
+      "curr_text_sha256": "3faa722813accd60d54099d68e67d82cdffa4e119bb6728a8fdbf02fd031345d",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

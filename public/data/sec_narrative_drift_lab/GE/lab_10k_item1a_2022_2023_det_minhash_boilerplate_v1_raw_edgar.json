@@ -1,0 +1,73 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_minhash_boilerplate_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "GE",
+  "section": "10k_item1a",
+  "year_from": 2022,
+  "year_to": 2023,
+  "artifacts": {
+    "stats": {
+      "percent_reused": 0.17647058823529413,
+      "percent_new": 0.8235294117647058,
+      "reused_paragraphs": 6,
+      "total_paragraphs": 34
+    }
+  },
+  "evidence": [
+    {
+      "year": 2023,
+      "paragraph_idx": 8,
+      "snippet": "A failure by GE or other industry participants to invest successfully in these technological developments, or to adequately position our businesses to benefit from the growth in adoption of new technologies, could adversely affect our competitive position, business, ability to attract and retain talent, results of operations, cash flows and financial condition. In addition, we face increasing scrutiny and expectations from many customers, governments, regulators, investors, banks, project financiers and other stakeholders regarding the roles that the private sector and individual companies play in decarbonization, which can result in additional costs and pose reputational or other risks for companies like GE that serve carbon intensive industries or relative to progress that we make over time in reducing emissions from our operations or products and achieving our publicly announced ambitions. We anticipate that we will continue to need to make investments in new technologies and capabilities and devote additional management and other resources in response to the foregoing, and we may not realize the anticipated benefits of those investments and actions. Trends related to the global energy transition and decarbonization will affect the relative competitiveness of different types of product and service offerings within and across our energy businesses and our Aerospace business. Important factors that could impact our businesses include the pace of technological developments and related cost considerations, the levels of economic growth in different markets around the world and the adoption and pace of implementation of climate change-related policies (such as carbon taxes, cap and trade regimes, increased efficiency standards, greenhouse gas emission reduction targets or commitments, incentives or mandates for particular types of energy or policies that impact the availability of financing for certain types of projects) at the national and sub-national levels or by customers, investors or other private actors.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 10,
+      "snippet": "A failure by GE or other industry participants to invest successfully in these technological developments, or to adequately position our businesses to benefit from the growth in adoption of new technologies, could adversely affect our competitive position, business, ability to attract and retain talent, results of operations, cash flows and financial condition. In addition, we face increasing scrutiny and expectations from many customers, governments, regulators, investors, banks, project financiers and other stakeholders regarding the roles that the private sector and individual companies play in decarbonization, which can result in additional costs and pose reputational or other risks for companies like GE that serve carbon intensive industries or relative to progress that we make over time in reducing emissions from our operations or products and achieving our publicly announced ambitions. We anticipate that we will continue to need to make investments in new technologies and capabilities and devote additional management and other resources in response to the foregoing, and we may not realize the anticipated benefits of those investments and actions. Trends related to the global energy transition and decarbonization, will affect the relative competitiveness of different types of product and service offerings within and across our energy businesses and our Aerospace business. Important factors that could impact our businesses include the pace of technological developments and related cost considerations, the levels of economic growth in different markets around the world and the adoption and pace of implementation of climate change-related policies (such as carbon taxes, cap and trade regimes, increased efficiency standards, greenhouse gas emission reduction targets or commitments, incentives or mandates for particular types of energy or policies that impact the availability of financing for certain types of projects) at the national and sub-national levels or by customers, investors or other private actors.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 30,
+      "snippet": "LEGAL AND COMPLIANCE RISKS. Legal and compliance risk relates to risks arising from the government and regulatory environment, legal proceedings and compliance with integrity policies and procedures, including matters relating to financial reporting and the environment, health and safety. Government and regulatory risk includes the risk that the government or regulatory actions will impose additional cost on us or require us to make adverse changes to our business models or practices.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 31,
+      "snippet": "LEGAL AND COMPLIANCE RISKS. Legal and compliance risk relates to risks arising from the government and regulatory environment, legal proceedings and compliance with integrity policies and procedures, including matters relating to financial reporting and the environment, health and safety. Government and regulatory risk includes the risk that the government or regulatory actions will impose additional cost on us or require us to make adverse changes to our business models or practices.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 13,
+      "snippet": "Intellectual property - Our intellectual property portfolio may not prevent competitors from independently developing products and services similar to or duplicative to ours, and the value of our intellectual property may be negatively impacted by external dependencies. Our patents and other intellectual property may not prevent competitors from independently developing or selling products and services similar to or duplicative of ours, and there can be no assurance that the resources invested by us to protect our intellectual property will be sufficient or that our intellectual property portfolio will adequately deter misappropriation or improper use of our technology, particularly in certain markets outside the U.S. where intellectual property laws and related enforcement mechanisms may not be as well-developed. Trademark licenses of the GE brand in connection with dispositions, including in connection with the separation of GE HealthCare in January 2023 and the planned separation of GE Aerospace and GE Vernova into independent companies, may negatively impact the overall value of the brand in the future. We also face competition in some countries where we have not invested in an intellectual property portfolio. If we are not able to protect our intellectual property, the value of our brand and other intangible assets may be diminished, and our business may be adversely affected. We also face attempts, both internally from insider threats and externally from cyber-attacks, to gain unauthorized access to our IT systems or products for the purpose of improperly acquiring our trade secrets or confidential business information. In addition, we have observed an increase in the use of social engineering tactics by bad actors attempting to obtain confidential business information or credentials to access systems with our intellectual property. The theft or unauthorized use or publication of our trade secrets and other confidential business information as a result of such incidents could adversely affect our competitive position and the value of our investment in research and development. In addition, we are subject to the enforcement of patents or other intellectual property by third parties, including aggressive and opportunistic enforcement claims by non-practicing entities. Regardless of the merit of such claims, responding to infringement claims can be expensive and time-consuming. GE has in the past, and may in the future be, found to infringe third-party rights, which could require us to pay substantial damages or enjoin us from offering some of our products and services. The value of, or our ability to use, our intellectual property may also be negatively impacted by dependencies on third parties, such as our ability to obtain or renew on reasonable terms licenses that we need in the future, or our ability to secure or retain ownership or rights to use data in certain software analytics or services offerings.",
+      "why": "Near-duplicate paragraph (Jaccard 0.90)."
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 15,
+      "snippet": "Intellectual property - Our intellectual property portfolio may not prevent competitors from independently developing products and services similar to or duplicative to ours, and the value of our intellectual property may be negatively impacted by external dependencies. Our patents and other intellectual property may not prevent competitors from independently developing or selling products and services similar to or duplicative of ours, and there can be no assurance that the resources invested by us to protect our intellectual property will be sufficient or that our intellectual property portfolio will adequately deter misappropriation or improper use of our technology, particularly in certain markets outside the US where intellectual property laws and related enforcement mechanisms may not be as well-developed. Trademark licenses of the GE brand in connection with dispositions may negatively impact the overall value of the brand in the future. We also face competition in some countries where we have not invested in an intellectual property portfolio. If we are not able to protect our intellectual property, the value of our brand and other intangible assets may be diminished, and our business may be adversely affected. We also face attempts, both internally from insider threats and externally from cyber-attacks, to gain unauthorized access to our IT systems or products for the purpose of improperly acquiring our trade secrets or confidential business information. In addition, we have observed an increase in the use of social engineering tactics by bad actors attempting to obtain confidential business information or credentials to access systems with our intellectual property. The theft or unauthorized use or publication of our trade secrets and other confidential business information as a result of such incidents could adversely affect our competitive position and the value of our investment in research and development. In addition, we are subject to the enforcement of patents or other intellectual property by third parties, including aggressive and opportunistic enforcement claims by non-practicing entities. Regardless of the merit of such claims, responding to infringement claims can be expensive and time-consuming. GE has in the past, and may in the future be, found to infringe third-party rights, which could require us to pay substantial damages or enjoin us from offering some of our products and services. The value of, or our ability to use, our intellectual property may also be negatively impacted by dependencies on third parties, such as our ability to obtain or renew on reasonable terms licenses that we need in the future, or our ability to secure or retain ownership or rights to use data in certain software analytics or services offerings.",
+      "why": "Matching paragraph from prior year."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.8235294117647058,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T19:27:24Z",
+    "git_commit": "cfe9628e9904d9ea49e72960b3535e0464887ce9",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "625585febfb164ec0fa5e2974a08cd27e0e1f9f812e1a13f76f076360d33c118",
+      "curr_text_sha256": "c6bc42c2851cab77e82a74e4c516ded6232d9fea6ada3fd45af033c4e542c82c",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

@@ -1,0 +1,154 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_jsd_ngrams_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "NVDA",
+  "section": "10k_item1a",
+  "year_from": 2024,
+  "year_to": 2025,
+  "artifacts": {
+    "ranked_items": [
+      {
+        "label": "ifr",
+        "score": 0.00035790980672870435
+      },
+      {
+        "label": "diffusion",
+        "score": 0.00033037828313418866
+      },
+      {
+        "label": "diffusion ifr",
+        "score": 0.00033037828313418866
+      },
+      {
+        "label": "ai diffusion",
+        "score": 0.00033037828313418866
+      },
+      {
+        "label": "tier",
+        "score": 0.00012096010826319188
+      },
+      {
+        "label": "indebtedness",
+        "score": 0.00011408362329587588
+      },
+      {
+        "label": "south",
+        "score": 0.00011012609437806288
+      },
+      {
+        "label": "south korea",
+        "score": 0.00011012609437806288
+      },
+      {
+        "label": "covered products",
+        "score": 0.00011012609437806288
+      },
+      {
+        "label": "refinance",
+        "score": 8.556271747190691e-05
+      },
+      {
+        "label": "mismatch",
+        "score": 8.556271747190691e-05
+      },
+      {
+        "label": "notes",
+        "score": 8.556271747190691e-05
+      },
+      {
+        "label": "cpu",
+        "score": 8.556271747190691e-05
+      },
+      {
+        "label": "flows operations",
+        "score": 8.556271747190691e-05
+      },
+      {
+        "label": "worldwide licensing",
+        "score": 8.259457078354717e-05
+      },
+      {
+        "label": "eccns",
+        "score": 8.259457078354717e-05
+      },
+      {
+        "label": "covered",
+        "score": 5.943832096873692e-05
+      },
+      {
+        "label": "need continue",
+        "score": 5.704181164793794e-05
+      },
+      {
+        "label": "new vendors",
+        "score": 5.704181164793794e-05
+      },
+      {
+        "label": "harmed competitive",
+        "score": 5.704181164793794e-05
+      }
+    ],
+    "stats": {
+      "jsd": 0.070505,
+      "tokens_prev": 8766,
+      "tokens_curr": 9081
+    }
+  },
+  "evidence": [
+    {
+      "year": 2025,
+      "paragraph_idx": 29,
+      "snippet": "Undiscovered vulnerabilities in our products or services could result in loss of data or intangible property, or expose our customers to unscrupulous third parties who develop and deploy malicious software programs that could attack our products or services. Defects or failure of our offerings to perform to specifications could lead to substantial damage to the products in which our offerings have been integrated by OEMs, ODMs, AIB manufacturers, automotive manufacturers, and tier 1 automotive suppliers, and to the user of such end product. Any such defect may cause us to incur significant warranty, support, and repair or replacement costs as part of a product recall or otherwise, write-off the value of related inventory, and divert the attention of our engineering and management personnel from our product development efforts to find and correct the issue. Our efforts to remedy these issues may not be timely or satisfactory to our customers. An error or defect in new products, releases or related software drivers after commencement of commercial shipments could result in failure to achieve market acceptance, loss of design wins, temporary or permanent withdrawal from a product or market and harm to our relationships with existing and prospective customers and partners and consumers\u2019 perceptions of our brand, which would in turn negatively impact our business operations, gross margin, revenue and/or financial results. We may be required to reimburse our customers, partners or consumers, including for costs to repair or replace products in the field or in connection with indemnification obligations, or pay fines imposed by regulatory agencies.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "tier"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 68,
+      "snippet": "Governments and regulators are also considering, and in certain cases, have imposed restrictions on the hardware, software, and systems used to develop frontier foundation models and generative AI. For example, the EU AI Act became effective on August 1, 2024 and will be fully applicable after a two-year transitional period. The EU AI Act may impact our ability to train, deploy, or release AI models in the EU. Several states are considering enacting or have already enacted regulations concerning AI technologies, which may impact our ability to train, deploy, or release AI models, and increase our compliance costs. Restrictions under these and any other regulations, if implemented, could increase the costs and burdens to us and our customers, delay or halt deployment of new systems using our products, and reduce the number of new entrants and customers, negatively impacting our business and financial results. Revisions to laws or regulations or their interpretation and enforcement could also result in increased taxation, trade sanctions, the imposition of or increase to import duties or tariffs, restrictions and controls on imports or exports, or other retaliatory actions, which could have an adverse effect on our business plans or impact the timing of our shipments. Additionally, changes in the public perception of governments in the regions where we operate or plan to operate could negatively impact our business and results of operations.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "tier"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 32,
+      "snippet": "training data that may originate from third parties and new training methods, and the resulting products may contain unknown or undetected defects and errors, or reflect unintended bias. Although arrangements with component providers may contain provisions for product defect expense reimbursement, we generally remain responsible to the customer for warranty product defects that may occur from time to time. Some failures in our products or services have been in the past and may in the future be only discovered after a product or service has been shipped or used. Undiscovered vulnerabilities in our products or services could result in loss of data or intangible property, or expose our customers to unscrupulous third parties who develop and deploy malicious software programs that could attack our products or services. Defects or failure of our offerings to perform to specifications could lead to substantial damage to the products in which our offerings have been integrated by OEMs, ODMs, AIBs and automotive manufacturers and tier 1 automotive suppliers, and to the user of such end product. Any such defect may cause us to incur significant warranty, support and repair or replacement costs as part of a product recall or otherwise, write-off the value of related inventory, and divert the attention of our engineering and management personnel from our product development efforts to find and correct the issue. Our efforts to remedy these issues may not be timely or satisfactory to our customers. An error or defect in new products, releases or related software drivers after commencement of commercial shipments could result in failure to achieve market acceptance, loss of design wins, temporary or permanent withdrawal from a product or market and harm to our relationships with existing and prospective customers and partners and consumers\u2019 perceptions of our brand, which would in turn negatively impact our business operations, gross margin, revenue and/or financial results. We may be required to reimburse our customers, partners or consumers, including for costs to repair or replace products in the field or in connection with indemnification obligations, or pay fines imposed by regulatory agencies.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "tier"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 69,
+      "snippet": "We are subject to laws and regulations domestically and worldwide, affecting our operations in areas including, but not limited to, IP ownership and infringement; taxes; import and export requirements and tariffs; anti-corruption, including the Foreign Corrupt Practices Act; business acquisitions; foreign exchange controls and cash repatriation restrictions; data privacy requirements; competition and antitrust; advertising; employment; product regulations; cybersecurity; environmental, health, and safety requirements; the responsible use of AI; sustainability; cryptocurrency; and consumer laws. Compliance with such requirements can be onerous and expensive, could impact our competitive position, and may negatively impact our business operations and ability to manufacture and ship our products. There can be no assurance that our employees, contractors, suppliers, customers or agents will not violate applicable laws or the policies, controls, and procedures that we have designed to help ensure compliance with such laws, and violations could result in fines, criminal sanctions against us, our officers, or our employees, prohibitions on the conduct of our business, and damage to our reputation. Changes to the laws, rules and regulations to which we are subject, or changes to their interpretation and enforcement, could lead to materially greater compliance and other costs and/or further restrictions on our ability to manufacture and supply our products and operate our business. For example, we may face increased compliance costs as a result of changes or increases in antitrust legislation, regulation, administrative rule making, increased focus from regulators on cybersecurity vulnerabilities and risks. Our position in markets relating to AI has led to increased interest in our business from regulators worldwide, including the European Union, the United States, the United Kingdom and China. For example, the French Competition Authority collected information from us regarding our business and competition in the graphics card and cloud service provider market as part of an ongoing inquiry into competition in those markets. We have also received requests for information from regulators in the European Union, the United Kingdom, and China regarding our sales of GPUs, our efforts to allocate supply, foundation models and our investments, partnerships and other agreements with companies developing foundation models, and we expect to receive additional requests for information in the future. Governments and regulators are considering imposing restrictions on the hardware, software, and systems used to develop frontier foundation models and generative AI. If implemented, such restrictions could increase the costs and burdens to us and our customers, delay or halt deployment of new systems using our products, and reduce the number of new entrants and customers, negatively impacting our business and financial results. Revisions to laws or regulations or their interpretation and enforcement could also result in increased taxation, trade sanctions, the imposition of or increase to import duties or tariffs, restrictions and controls on imports or exports, or other retaliatory actions, which could have an adverse effect on our business plans or impact the timing of our shipments. Additionally, changes in the public perception of governments in the regions where we operate or plan to operate could negatively impact our business and results of operations.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "tier"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.070505,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T19:27:17Z",
+    "git_commit": "cfe9628e9904d9ea49e72960b3535e0464887ce9",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "b032c029a9eb187f81c4d8b6d09f418da11d0a64b142dc83ca46dc17392e152a",
+      "curr_text_sha256": "3faa722813accd60d54099d68e67d82cdffa4e119bb6728a8fdbf02fd031345d",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

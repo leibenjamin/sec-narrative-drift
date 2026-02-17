@@ -1,0 +1,157 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_jsd_ngrams_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "GE",
+  "section": "10k_item1a",
+  "year_from": 2019,
+  "year_to": 2020,
+  "artifacts": {
+    "ranked_items": [
+      {
+        "label": "covid",
+        "score": 0.0007971091508130513
+      },
+      {
+        "label": "covid pandemic",
+        "score": 0.0005314061005420342
+      },
+      {
+        "label": "paper",
+        "score": 0.0003583801218492414
+      },
+      {
+        "label": "commercial paper",
+        "score": 0.0003583801218492414
+      },
+      {
+        "label": "party investors",
+        "score": 0.0002986501015410345
+      },
+      {
+        "label": "short term",
+        "score": 0.0002986501015410345
+      },
+      {
+        "label": "pandemic",
+        "score": 0.0002677334869871659
+      },
+      {
+        "label": "decarbonization",
+        "score": 0.0002657030502710171
+      },
+      {
+        "label": "paper markets",
+        "score": 0.00023892008123282762
+      },
+      {
+        "label": "investors",
+        "score": 0.0002317610118413889
+      },
+      {
+        "label": "cases",
+        "score": 0.0002125624402168137
+      },
+      {
+        "label": "network",
+        "score": 0.0002125624402168137
+      },
+      {
+        "label": "ge network",
+        "score": 0.0002125624402168137
+      },
+      {
+        "label": "operations cash",
+        "score": 0.0002125624402168137
+      },
+      {
+        "label": "expected continue",
+        "score": 0.0002125624402168137
+      },
+      {
+        "label": "taken",
+        "score": 0.0002125624402168137
+      },
+      {
+        "label": "consolidated",
+        "score": 0.0001843921500125543
+      },
+      {
+        "label": "short",
+        "score": 0.00018310464919234215
+      },
+      {
+        "label": "health pandemic",
+        "score": 0.0001791900609246207
+      },
+      {
+        "label": "note consolidated",
+        "score": 0.0001791900609246207
+      }
+    ],
+    "stats": {
+      "jsd": 0.124588,
+      "tokens_prev": 4186,
+      "tokens_curr": 4705
+    }
+  },
+  "evidence": [
+    {
+      "year": 2020,
+      "paragraph_idx": 2,
+      "snippet": "COVID-19 - The global COVID-19 pandemic has had and is expected to continue to have a material adverse impact on our operations and financial performance, as well as on the operations and financial performance of many of the customers and suppliers in industries that we serve. Our operations and financial performance have been negatively impacted by the COVID-19 pandemic that has caused, and is expected to continue to cause, the global slowdown of economic activity (including the decrease in demand for a broad variety of goods and services), disruptions in global supply chains and significant volatility and disruption of financial markets. Across all of our businesses, we have experienced and expect to continue to experience operational challenges from the need to protect employee health and safety, site shutdowns, workplace disruptions and restrictions on the movement of people, raw materials and goods, both at our own facilities and at those of our customers and suppliers. We also have experienced, and expect to continue experiencing, lower demand and volume for products and services (particularly at GE Aviation, as described below, and also for portions of GE Healthcare\u2019s business), customer requests for potential payment deferrals or other contract modifications, supply chain under-liquidation, delays of deliveries and the achievement of other billing milestones, delays or cancellations of new projects and related down payments and other factors related directly and indirectly to the COVID-19 pandemic that adversely impact our businesses.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "covid"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 3,
+      "snippet": "In particular, the interruption of regional and international air travel from COVID-19 is having a material adverse effect on our airline and airframer customers, the viability of their businesses and their demand for our services and products. In this context, we have observed a significant increase in the number of requests for payment deferrals, contract modifications, aircraft lease restructurings and similar actions across the aviation sector, which may lead to additional charges, impairments and other adverse financial impacts, or to customer disputes, at GE Aviation and GE Capital Aviation Services. Disruption of the aviation industry, which could continue for an uncertain period of time, is particularly significant for GE, as we have depended on the strength of our Aviation business as we have been working to improve the operations and execution of other GE businesses and strengthen the company\u2019s balance sheet. As a result, disruption of the aviation industry, which could continue for an uncertain period of time, is particularly significant for GE.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "covid"
+      ]
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 17,
+      "snippet": "Liquidity - Failure to meet our cash flow targets, or additional credit downgrades, could adversely affect our liquidity, funding costs and related margins. We rely on cash from operations and proceeds from business and asset dispositions, as well as access to the short- and long-term debt markets, to fund our operations, maintain a contingency buffer of liquidity and meet our financial obligations and capital allocation priorities. If we do not meet our cash flow objectives, through both improved cash performance in our businesses or successful execution of business and asset dispositions, our financial condition could be adversely affected. Our access to the debt markets, and to the commercial paper markets in particular, depends on our credit ratings. As a result of ratings actions by Moody\u2019s, S&P and Fitch in 2018, GE transitioned to a tier-2 commercial paper issuer, which reduced our borrowing capacity in the commercial paper markets that we historically relied on significantly to fund our operations on an intra-quarter basis. To accommodate GE\u2019s short-term liquidity needs, we have been increasing utilization of our revolving credit facilities as a substitute for commercial paper borrowings, which results in an overall increase to our cost of funds.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "paper",
+        "commercial paper"
+      ]
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 18,
+      "snippet": "There can also be no assurance that we will not face additional credit downgrades as a result of factors such as our progress in decreasing our leverage, the performance of our businesses, the failure to execute on dispositions or changes in rating application or methodology. Future downgrades could further adversely affect our cost of funds and related margins, liquidity, competitive position and access to capital markets, and a significant downgrade could have an adverse commercial impact on our industrial businesses. For example, if our short-term credit ratings were to fall below A-2/P-2/F2, it is possible that we would lose all or part of our access to the tier-2 commercial paper markets, and therefore our borrowing capacity in the commercial paper markets would likely be further reduced. Further, we have relied, and may continue to rely, on securitization programs to provide alternative funding for sales of GE receivables to third-party investors. If any of our short-term credit ratings were to fall below A-2/P-2/F2, the timing or amount of liquidity generated by these programs could be adversely affected. In addition, in certain securitization transactions where we provide servicing for third-party investors, we are contractually permitted to commingle cash collected from customers on financing receivables sold or pledged to third-party investors with our own cash prior to making required payments to third-party investors, provided our short-term credit rating does not fall below A-2/P-2/F2. In the event our ratings were to fall below such levels, we would be required to segregate certain of these cash collections owed to third-party investors into restricted bank accounts and would lose the short-term liquidity benefit of commingling with respect to such collections. In addition, under various debt and derivative instruments, guarantees and covenants, we could be required to post additional capital or collateral in the event of a ratings downgrade, which would increase the impact of a ratings downgrade on our liquidity and capital position. Swap, forward and option contracts are executed under standard master agreements that typically contain mutual downgrade provisions that provide the ability of the counterparty to require termination if the credit ratings of the applicable GE entity were to fall below specified ratings levels agreed upon with the counterparty, primarily BBB/Baa2. For additional discussion about our current credit ratings and related considerations, refer to the Capital Resources and Liquidity - Credit Ratings and Conditions section within MD&A .",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "paper",
+        "commercial paper",
+        "party investors"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.124588,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T19:27:23Z",
+    "git_commit": "cfe9628e9904d9ea49e72960b3535e0464887ce9",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "445afa9fd8f58e5308e5cb8e14841ff2ef5fa0ade6dfc41670c440f78f0c27fc",
+      "curr_text_sha256": "231bdd0927c5ed3145794df750f944019d39e3bf17119eaa1dc6846257c3196a",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

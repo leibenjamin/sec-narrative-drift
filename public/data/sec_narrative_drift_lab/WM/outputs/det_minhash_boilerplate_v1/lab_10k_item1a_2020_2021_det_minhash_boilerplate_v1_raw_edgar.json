@@ -1,0 +1,73 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_minhash_boilerplate_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "WM",
+  "section": "10k_item1a",
+  "year_from": 2020,
+  "year_to": 2021,
+  "artifacts": {
+    "stats": {
+      "percent_reused": 0.4606741573033708,
+      "percent_new": 0.5393258426966292,
+      "reused_paragraphs": 41,
+      "total_paragraphs": 89
+    }
+  },
+  "evidence": [
+    {
+      "year": 2021,
+      "paragraph_idx": 0,
+      "snippet": "In an effort to keep our stockholders and the public informed about our business, we may make \u201cforward-looking statements.\u201d Forward-looking statements are often identified by the words, \u201cwill,\u201d \u201cmay,\u201d \u201cshould,\u201d \u201ccontinue,\u201d \u201canticipate,\u201d \u201cbelieve,\u201d \u201cexpect,\u201d \u201cplan,\u201d \u201cforecast,\u201d \u201cproject,\u201d \u201cestimate,\u201d \u201cintend\u201d and words of a similar nature and generally include statements regarding:",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 0,
+      "snippet": "In an effort to keep our stockholders and the public informed about our business, we may make \u201cforward-looking statements.\u201d Forward-looking statements are often identified by the words, \u201cwill,\u201d \u201cmay,\u201d \u201cshould,\u201d \u201ccontinue,\u201d \u201canticipate,\u201d \u201cbelieve,\u201d \u201cexpect,\u201d \u201cplan,\u201d \u201cforecast,\u201d \u201cproject,\u201d \u201cestimate,\u201d \u201cintend\u201d and words of a similar nature and generally include statements regarding:",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 2,
+      "snippet": "Our future financial performance and success are dependent in large part upon our ability to implement our business strategy successfully. Implementation of our strategy will require effective management of our operational, financial and human resources and will place significant demands on those resources. See Item 1. Business for more information on our business strategy.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 2,
+      "snippet": "Our future financial performance and success are dependent in large part upon our ability to implement our business strategy successfully. Implementation of our strategy will require effective management of our operational, financial and human resources and will place significant demands on those resources. See Item 1. Business for more information on our business strategy.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 3,
+      "snippet": "A key element of our strategy is yield management through focus on price leadership, which has presented challenges to keep existing business and win new business at reasonable returns. We have also continued our environmental fee, fuel surcharge and regulatory recovery fee to offset costs. The loss of volumes as a result of price increases and our unwillingness to pursue lower margin volumes may negatively affect our cash flows or results of operations. Additionally, we have in the past and may in the future face purported class action lawsuits related to our customer service agreements, prices and fees.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 3,
+      "snippet": "A key element of our strategy is yield management through focus on price leadership, which has presented challenges to keep existing business and win new business at reasonable returns. We have also continued our environmental fee, fuel surcharge and regulatory recovery fee to offset costs. The loss of volumes as a result of price increases and our unwillingness to pursue lower margin volumes may negatively affect our cash flows or results of operations. Additionally, we have in the past and may in the future face purported class action lawsuits related to our customer service agreements, prices and fees.",
+      "why": "Matching paragraph from prior year."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.5393258426966292,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T19:27:21Z",
+    "git_commit": "cfe9628e9904d9ea49e72960b3535e0464887ce9",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "29d1ab781cc001a5191a52b1cb72e2af781b38d8c21045e0068ae4646374b754",
+      "curr_text_sha256": "a241a1405f869f11f5ff29b22c0681289ef94822c893491f55f4ddad76cc96b3",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

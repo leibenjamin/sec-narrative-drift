@@ -1,0 +1,155 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_jsd_ngrams_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "KO",
+  "section": "10k_item1a",
+  "year_from": 2022,
+  "year_to": 2023,
+  "artifacts": {
+    "ranked_items": [
+      {
+        "label": "conflicts",
+        "score": 0.0003107091072291652
+      },
+      {
+        "label": "pandemic",
+        "score": 0.00025200171141488573
+      },
+      {
+        "label": "opinions",
+        "score": 0.0002416626389560174
+      },
+      {
+        "label": "pillar",
+        "score": 0.00017261617068286956
+      },
+      {
+        "label": "international conflicts",
+        "score": 0.00017261617068286956
+      },
+      {
+        "label": "portions opinion",
+        "score": 0.00014189428875487761
+      },
+      {
+        "label": "implementation",
+        "score": 0.00013809293654629565
+      },
+      {
+        "label": "portions opinions",
+        "score": 0.00013809293654629565
+      },
+      {
+        "label": "standards regulations",
+        "score": 0.00013809293654629565
+      },
+      {
+        "label": "covid pandemic",
+        "score": 0.00013144810671819168
+      },
+      {
+        "label": "covid",
+        "score": 0.00012609541954568715
+      },
+      {
+        "label": "international",
+        "score": 0.0001241767204635943
+      },
+      {
+        "label": "home",
+        "score": 0.00010642071656615822
+      },
+      {
+        "label": "faced",
+        "score": 0.00010356970240972175
+      },
+      {
+        "label": "recall",
+        "score": 0.00010356970240972175
+      },
+      {
+        "label": "reflect",
+        "score": 0.00010356970240972175
+      },
+      {
+        "label": "aspirations",
+        "score": 0.00010356970240972175
+      },
+      {
+        "label": "conflict",
+        "score": 7.753310895947113e-05
+      },
+      {
+        "label": "russia",
+        "score": 7.601144552485953e-05
+      },
+      {
+        "label": "ukraine",
+        "score": 7.601144552485953e-05
+      }
+    ],
+    "stats": {
+      "jsd": 0.051706,
+      "tokens_prev": 7048,
+      "tokens_curr": 7242
+    }
+  },
+  "evidence": [
+    {
+      "year": 2023,
+      "paragraph_idx": 1,
+      "snippet": "Our business, operating results, financial condition and liquidity may be adversely affected by changes in global economic conditions, including global inflationary pressures, prevailing interest rates, credit market conditions, increased unemployment, levels of consumer and business confidence, bank failures, commodity (including energy) prices and supply, a recession or economic slowdown, trade policies, foreign currency exchange rates, changing policy positions or priorities, governmental rules and approaches to taxation, levels of government spending and deficits, and actual or anticipated default on sovereign debt. Many of the jurisdictions in which our products are sold have experienced, and could continue to experience, unfavorable changes in economic conditions, which could negatively affect the affordability of, and consumer demand for, our beverages, and certain markets in which our products are sold experienced intensified inflation throughout 2023, which may continue to accelerate in 2024. Under difficult economic conditions, consumers may seek to reduce discretionary spending by forgoing purchases of our products or by shifting away from our beverages to lower-priced products offered by other companies, including private-label brands, which could reduce our profitability and negatively affect our overall financial performance. In addition, the occurrence or resurgence of global or regional health events, such as the COVID-19 pandemic, and the related governmental, private sector and individual consumer responses, could contribute to a recession, depression or global economic downturn.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "pandemic"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 2,
+      "snippet": "Other financial uncertainties in our major markets and unstable geopolitical conditions or events in certain markets, including international conflicts, civil unrest, acts of war, terrorism, governmental changes, or changes in international relations, could undermine global consumer confidence and reduce consumers\u2019 purchasing power, thereby reducing demand for our products. Geopolitical instability may also lead to heightened security risk, impacting employee safety and/or damage to infrastructure or our assets. At times, we have faced product boycotts resulting from activism, which have reduced demand for our products. Restrictions on our ability to transfer earnings or capital across borders, price controls, limitations on profits, retaliatory tariffs, import authorization requirements and other restrictions on business activities, which have been or may be imposed or expanded as a result of political and economic instability, deterioration of economic relations between countries or otherwise, could impact our profitability. In addition, U.S. trade sanctions against countries designated by the U.S. government as state sponsors of terrorism and/or financial institutions accepting transactions for commerce within such countries could increase significantly, which could make it difficult, or even impossible, for us to continue to make sales to bottlers in such countries. The imposition of retaliatory sanctions against U.S. multinational corporations by countries that are or may become subject to U.S. trade sanctions, or the delisting of our branded products by retailers in various countries in reaction to U.S. trade sanctions or other governmental actions or policies, could also negatively affect our business.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "conflicts",
+        "international conflicts"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 13,
+      "snippet": "The raw materials and other supplies, including ingredients, agricultural commodities, energy, fuel, packaging materials, transportation, labor and other supply chain inputs that we use for the production and distribution of our products, are subject to price volatility and fluctuations in availability caused by many factors. These factors include changes in supply and demand; supplier capacity constraints; a deterioration of our or our bottling partners\u2019 relationships with suppliers; inflation; weather conditions (including the effects of climate change); wildfires and other natural disasters; disease or pests (including the impact of citrus greening disease on the citrus industry); agricultural uncertainty; health epidemics, pandemics or other contagious outbreaks (including COVID-19); labor shortages, strikes or work stoppages; changes in or the enactment of new laws and regulations; governmental actions or controls (including import/export restrictions, such as new or increased tariffs, sanctions, quotas or trade barriers); port congestion or delays; transport capacity constraints; cybersecurity incidents or other disruptions; political uncertainties; acts of terrorism; governmental instability; or fluctuations in foreign currency exchange rates. Many of our raw materials and supplies are purchased in the open market and the prices we pay for such items are subject to fluctuation. We expect the inflationary pressures on input and other costs to continue to impact our business in 2023.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "pandemic"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 15,
+      "snippet": "Since early 2020, the COVID-19 pandemic and the related actions by governments around the world to attempt to contain the spread of the virus have negatively impacted, and could continue to negatively impact, our business globally. The extent and nature of governmental actions related to the COVID-19 pandemic have varied across our markets based upon the then-current extent and severity of the COVID-19 pandemic. At times we have experienced a decrease in sales of certain of our products in markets around the world, as well as a shift in consumer demand to more at-home consumption versus away-from-home consumption. While we have experienced improved trends throughout 2021 and 2022 in away-from-home channels and improved margins, our recovery has been asynchronous, and the full extent to which the COVID-19 pandemic will affect our results of operations, financial condition and cash flows will depend on future developments that are highly uncertain. If COVID-19 infection rates increase, the pandemic intensifies, or continued efforts to curb the pandemic are ineffective, the negative impacts of the pandemic on our sales could be more prolonged and may become more severe than what we have experienced to date.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "pandemic"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.051706,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T19:27:19Z",
+    "git_commit": "cfe9628e9904d9ea49e72960b3535e0464887ce9",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "a37751455aeb69e85a19f53a089bf34113014acf24f280964f890fad12668547",
+      "curr_text_sha256": "8d005a2728ac3571f5042a9956e63b4fffb0d6bcb656bda6be2e217116052ff0",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

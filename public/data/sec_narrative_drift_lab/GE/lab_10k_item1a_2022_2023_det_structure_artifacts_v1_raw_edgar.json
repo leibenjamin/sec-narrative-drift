@@ -1,0 +1,127 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_structure_artifacts_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "GE",
+  "section": "10k_item1a",
+  "year_from": 2022,
+  "year_to": 2023,
+  "artifacts": {
+    "stats": {
+      "headings_prev": [
+        "2022 FORM 10-K 30",
+        "2022 FORM 10-K 31",
+        "2022 FORM 10-K 32",
+        "2022 FORM 10-K 33",
+        "2022 FORM 10-K 34",
+        "2022 FORM 10-K 35",
+        "2022 FORM 10-K 36",
+        "2022 FORM 10-K 37",
+        "2022 FORM 10-K 38",
+        "MANAGEMENT AND AUDITOR\u2019S REPORTS",
+        "H. Lawrence Culp, Jr.",
+        "Carolina Dybeck Happe",
+        "Chief Financial Officer",
+        "February 10, 2023"
+      ],
+      "headings_curr": [
+        "2023 FORM 10-K 27",
+        "2023 FORM 10-K 28",
+        "2023 FORM 10-K 29",
+        "2023 FORM 10-K 30",
+        "2023 FORM 10-K 31",
+        "2023 FORM 10-K 32",
+        "2023 FORM 10-K 33",
+        "2023 FORM 10-K 34",
+        "2023 FORM 10-K 35"
+      ],
+      "headings_added": [
+        "2023 FORM 10-K 27",
+        "2023 FORM 10-K 28",
+        "2023 FORM 10-K 29",
+        "2023 FORM 10-K 30",
+        "2023 FORM 10-K 31",
+        "2023 FORM 10-K 32",
+        "2023 FORM 10-K 33",
+        "2023 FORM 10-K 34",
+        "2023 FORM 10-K 35"
+      ],
+      "headings_removed": [
+        "2022 FORM 10-K 30",
+        "2022 FORM 10-K 31",
+        "2022 FORM 10-K 32",
+        "2022 FORM 10-K 33",
+        "2022 FORM 10-K 34",
+        "2022 FORM 10-K 35",
+        "2022 FORM 10-K 36",
+        "2022 FORM 10-K 37",
+        "2022 FORM 10-K 38",
+        "MANAGEMENT AND AUDITOR\u2019S REPORTS",
+        "H. Lawrence Culp, Jr.",
+        "Carolina Dybeck Happe",
+        "Chief Financial Officer",
+        "February 10, 2023"
+      ],
+      "paragraph_count_prev": 42,
+      "paragraph_count_curr": 34,
+      "length_chars_prev": 74601,
+      "length_chars_curr": 72927
+    }
+  },
+  "evidence": [
+    {
+      "year": 2023,
+      "paragraph_idx": 2,
+      "snippet": "investments in technology and innovation; our portfolio of businesses and capital allocation decisions; dispositions, acquisitions, joint ventures and restructuring activity; intellectual property; and other risks.",
+      "why": "Heading added: 2023 FORM 10-K 27"
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 0,
+      "snippet": "may also sell the common stock of any of the new independent companies that do not match their investment strategies, which may cause a decline in the market price of such common stock.",
+      "why": "Heading added: 2023 FORM 10-K 28"
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 8,
+      "snippet": "A failure by GE or other industry participants to invest successfully in these technological developments, or to adequately position our businesses to benefit from the growth in adoption of new technologies, could adversely affect our competitive position, business, ability to attract and retain talent, results of operations, cash flows and financial condition. In addition, we face increasing scrutiny and expectations from many customers, governments, regulators, investors, banks, project financiers and other stakeholders regarding the roles that the private sector and individual companies play in decarbonization, which can result in additional costs and pose reputational or other risks for companies like GE that serve carbon intensive industries or relative to progress that we make over time in reducing emissions from our operations or products and achieving our publicly announced ambitions. We anticipate that we will continue to need to make investments in new technologies and capabilities and devote additional management and other resources in response to the foregoing, and we may not realize the anticipated benefits of those investments and actions. Trends related to the global energy transition and decarbonization will affect the relative competitiveness of different types of product and service offerings within and across our energy businesses and our Aerospace business. Important factors that could impact our businesses include the pace of technological developments and related cost considerations, the levels of economic growth in different markets around the world and the adoption and pace of implementation of climate change-related policies (such as carbon taxes, cap and trade regimes, increased efficiency standards, greenhouse gas emission reduction targets or commitments, incentives or mandates for particular types of energy or policies that impact the availability of financing for certain types of projects) at the national and sub-national levels or by customers, investors or other private actors.",
+      "why": "Heading added: 2023 FORM 10-K 29"
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 2,
+      "snippet": "Strategic plan - We may encounter challenges to executing our plan to separate GE into three public companies, or to completing the plan within the timeframes we anticipate, and we may not realize some or all of the expected benefits of the separations. In November 2021, we announced our plan to form three independent public companies from our (i) Aerospace business, (ii) HealthCare business and (iii) portfolio of energy businesses that we plan to combine as GE Vernova (Renewable Energy, Power, Digital and Energy Financial Services), to better position those businesses to deliver long-term growth and create value for customers, investors, and employees. In January 2023, our HealthCare business was spun off as GE HealthCare. The GE HealthCare business separation was, and the planned GE Vernova business separation is expected to be, effected through spin-offs by GE that are intended to be tax-free for the Company and its shareholders for U.S. federal income tax purposes and with all three resulting companies having investment grade credit ratings. The GE Vernova separation transaction will be subject to the satisfaction of a number of customary conditions, including, among others, final approvals by GE\u2019s Board of Directors, receipt of tax rulings in certain jurisdictions and/or tax opinions from external counsel, the filing with the SEC and effectiveness of a Form 10 registration statement, and establishment of the capital structures and credit ratings for both GE Vernova and the remainder of GE following the spin-off. A failure to satisfy required conditions, or disruptions in market conditions, could delay the completion of the GE Vernova separation transaction for a significant period of time or prevent it from occurring at all. Additionally, the GE Vernova separation transaction is complex in nature, and business, market or other developments or changes may affect our ability to complete the separation transaction as currently expected, within the anticipated timeframe or at all. These or other developments could cause us not to realize some or all of the expected benefits, or to realize them on a different timeline than expected. If we are unable to complete the GE Vernova separation, we will have incurred costs without realizing the benefits of such transaction. In addition, the terms and conditions of the required regulatory authorizations and consents that are granted, if any, may impose requirements, limitations or costs, or place restrictions on the conduct of GE Vernova or GE Aerospace as independent companies. In addition, although we intend for the GE Vernova separation transaction to be tax-free to the Company and its shareholders for U.S. federal income tax purposes, we expect to incur non-U.S. cash taxes on the preparatory restructuring and may also incur non-cash tax expense including potential impairments of deferred tax assets. Moreover, there can be no assurance that either of the separation transactions will qualify as tax-free for U.S. purposes for the Company or its shareholders. If either of the separation transactions were ultimately determined to be taxable, we would incur a significant tax liability, while the distributions to the Company\u2019s shareholders would become taxable and the new independent companies might incur income tax liabilities as well. Furthermore, there can be no assurance that each separate company will be successful as a standalone public company.",
+      "why": "Heading removed: 2022 FORM 10-K 30"
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 6,
+      "snippet": "currency volatility, commodity prices and sovereign debt levels. For example, ongoing inflationary pressures have caused and may continue to cause many of our material and labor costs to increase, which can adversely affect our profitability and cash flows, particularly when we are unable to increase customer contract values or pricing to offset those pressures. At the same time, Russia\u2019s invasion of Ukraine and related political and economic consequences, such as sanctions and other measures imposed by the European Union, the U.S. and other countries and organizations in response, have also caused and may continue to cause disruption and instability in global markets, supply chains and industries that negatively impact our businesses, financial condition and results of operations and pose reputational risks. Further deterioration of economic conditions or outlooks, such as lower rates of investment, lower economic growth, recession or fears of recession in the U.S., China, Europe or other key markets, may adversely affect the demand for or profitability of our products and services, and the impact from developments outside the U.S. on our business performance can be significant given the extent of our global activities. In addition, political changes and trends such as populism, protectionism, economic nationalism and sentiment toward multinational companies, as well as tariffs, export controls, restrictions on outbound investment or other trade barriers, sanctions, technical or local content regulations, currency controls, or changes to tax or other laws and policies, have been and may continue to be disruptive and costly to our businesses. These can interfere with our global operating model, supply chain, production costs, customer relationships and competitive position. Further escalation of any specific trade tensions, including intensified decoupling between the U.S. and China, or in global trade conflict more broadly could be harmful to global economic growth or to our business in or with China or other countries. We also do business in many emerging market jurisdictions where economic, political and legal risks are heightened and the operating environments are complex.",
+      "why": "Heading removed: 2022 FORM 10-K 31"
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 9,
+      "snippet": "will require significant investments in power grids and other infrastructure, research and development and new technology and products, both by GE and third parties. Similar dynamics exist in the aviation sector, where decarbonization over time will require a combination of continued technological innovation in the fuel efficiency of engines, expanded use of sustainable aviation fuels and the development of electric flight and hydrogen-based aviation technologies. For example, the risk of insufficient availability of low carbon fuels (such as sustainable aviation fuels or hydrogen) may compromise the pace and degree of decarbonization within the aviation sector. Our success in advancing decarbonization objectives across our businesses will depend in part on the actions of governments, regulators and other market participants to invest in infrastructure, create appropriate market incentives and to otherwise support the development of new technologies. The process of developing new high-technology products and enhancing existing products to mitigate climate change is often complex, costly and uncertain, and we may pursue strategies or make investments that do not prove to be commercially successful in the time frames expected or at all.",
+      "why": "Heading removed: 2022 FORM 10-K 32"
+    }
+  ],
+  "metrics": {
+    "drift_score": 1.0,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T19:27:24Z",
+    "git_commit": "cfe9628e9904d9ea49e72960b3535e0464887ce9",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "625585febfb164ec0fa5e2974a08cd27e0e1f9f812e1a13f76f076360d33c118",
+      "curr_text_sha256": "c6bc42c2851cab77e82a74e4c516ded6232d9fea6ada3fd45af033c4e542c82c",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

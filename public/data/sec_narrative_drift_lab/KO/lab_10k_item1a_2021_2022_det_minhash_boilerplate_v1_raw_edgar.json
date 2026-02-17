@@ -1,0 +1,73 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_minhash_boilerplate_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "KO",
+  "section": "10k_item1a",
+  "year_from": 2021,
+  "year_to": 2022,
+  "artifacts": {
+    "stats": {
+      "percent_reused": 0.37681159420289856,
+      "percent_new": 0.6231884057971014,
+      "reused_paragraphs": 26,
+      "total_paragraphs": 69
+    }
+  },
+  "evidence": [
+    {
+      "year": 2022,
+      "paragraph_idx": 0,
+      "snippet": "In addition to the other information set forth in this report, you should carefully consider the following factors, which could materially affect our business, financial condition and results of operations in future periods. The risks described below are not the only risks facing our Company. Additional risks not currently known to us or that we currently deem to be immaterial also may materially adversely affect our business, financial condition or results of operations in future periods.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 0,
+      "snippet": "In addition to the other information set forth in this report, you should carefully consider the following factors, which could materially affect our business, financial condition and results of operations in future periods. The risks described below are not the only risks facing our Company. Additional risks not currently known to us or that we currently deem to be immaterial also may materially adversely affect our business, financial condition or results of operations in future periods.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 14,
+      "snippet": "Our attempts to offset these cost pressures, such as through price increases of some of our products, may not be successful. Higher product prices may result in reductions in sales volume. Consumers may be less willing to pay a price differential for our branded products and may increasingly purchase lower-priced offerings, or may forgo some purchases altogether. To the extent that price increases are not sufficient to offset higher costs adequately or in a timely manner, and/or if they result in significant decreases in sales volume, our financial condition or results of operations may be adversely affected. Furthermore, we may not be able to offset cost increases through productivity initiatives or through our commodity hedging activity.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 20,
+      "snippet": "Our attempts to offset these cost pressures, such as through price increases of some of our products, may not be successful. Higher product prices may result in reductions in sales volume. Consumers may be less willing to pay a price differential for our branded products and may increasingly purchase lower-priced offerings, or may forgo some purchases altogether. To the extent that price increases are not sufficient to offset higher costs adequately or in a timely manner, and/or if they result in significant decreases in sales volume, our financial condition or results of operations may be adversely affected. Furthermore, we may not be able to offset cost increases through productivity initiatives or through our commodity hedging activity.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 16,
+      "snippet": "The COVID-19 pandemic has disrupted and could continue to disrupt our global supply chain. We and our bottling partners have experienced temporary disruptions in certain of our operations; delays in delivery of concentrates, ingredients, packaging and equipment; temporary plant closures; production slowdowns; and difficulty or delays in sourcing key ingredients and beverage containers. We and our bottling partners may face similar disruptions in the future, which may increase supply chain and packaging costs, or may result in an inability to secure key ingredients and inputs, which could cause delays in delivering our products to our customers and consumers. Although we are unable to predict the impact on our ability to source materials in the future, we expect supply chain pressures to continue into 2023.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 3,
+      "snippet": "The COVID-19 pandemic has disrupted and could continue to disrupt our global supply chain . We and our bottling partners have experienced temporary disruptions in certain of our operations; delays in delivery of concentrates, ingredients, packaging and equipment; temporary plant closures; production slowdowns; and difficulty or delays in sourcing key ingredients and beverage containers. We and our bottling partners may face similar disruptions in the future, which may increase supply chain and packaging costs, or may result in an inability to secure key ingredients and inputs, which could cause delays in delivering our products to our customers and consumers. Although we are unable to predict the impact on our ability to source materials in the future, we expect supply chain pressures to continue into 2022.",
+      "why": "Matching paragraph from prior year."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.6231884057971014,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T19:27:19Z",
+    "git_commit": "cfe9628e9904d9ea49e72960b3535e0464887ce9",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "012edf6b35d3f8d9321f2db9b84dc74b1c54705fdb822d0b280f04cdec0a8fb1",
+      "curr_text_sha256": "a37751455aeb69e85a19f53a089bf34113014acf24f280964f890fad12668547",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

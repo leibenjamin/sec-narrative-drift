@@ -1,10 +1,10 @@
 {
-  "build_utc": "2026-02-17T05:02:58Z",
-  "git_commit": "77553f23af39ca9ca4d7337e78fce9b3d4e9594f",
+  "build_utc": "2026-02-17T19:27:25Z",
+  "git_commit": "cfe9628e9904d9ea49e72960b3535e0464887ce9",
   "script_version": "build_lab_outputs.py@v1",
   "source_id": "edgar",
   "lenses": [
-    "deboilerplated"
+    "raw"
   ],
   "detectors": [
     "det_logodds_terms_v1",
@@ -14,11 +14,11 @@
     "det_structure_artifacts_v1",
     "det_rbo_agreement_v1"
   ],
-  "cases_planned": 4,
-  "cases_written": 4,
-  "outputs_written": 24,
+  "cases_planned": 21,
+  "cases_written": 21,
+  "outputs_written": 126,
   "outputs_linked": 0,
-  "outputs_total": 24,
+  "outputs_total": 126,
   "registry": "lab_cases_v1.json",
   "notes": [
     "Build complete marker."

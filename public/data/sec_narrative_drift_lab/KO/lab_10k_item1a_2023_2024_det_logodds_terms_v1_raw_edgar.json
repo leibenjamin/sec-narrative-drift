@@ -1,0 +1,1181 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_logodds_terms_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "KO",
+  "section": "10k_item1a",
+  "year_from": 2023,
+  "year_to": 2024,
+  "artifacts": {
+    "top_risers": [
+      {
+        "label": "additives",
+        "score": 1.0882610615577484,
+        "meta": {
+          "z": 1.1603221521357816,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.3806626098715347,
+          "deltaPer10k": 3.3806626098715347,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "specialized",
+        "score": 1.0882610615577484,
+        "meta": {
+          "z": 1.1603221521357816,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.3806626098715347,
+          "deltaPer10k": 3.3806626098715347,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "backgrounds",
+        "score": 1.002465765336047,
+        "meta": {
+          "z": 1.0688457718152413,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.535496957403651,
+          "deltaPer10k": 2.535496957403651,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "broad",
+        "score": 1.002465765336047,
+        "meta": {
+          "z": 1.0688457718152413,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.535496957403651,
+          "deltaPer10k": 2.535496957403651,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "perspectives",
+        "score": 1.002465765336047,
+        "meta": {
+          "z": 1.0688457718152413,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.535496957403651,
+          "deltaPer10k": 2.535496957403651,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "extended",
+        "score": 0.8822100332932838,
+        "meta": {
+          "z": 0.9406270982455095,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.6903313049357673,
+          "deltaPer10k": 1.6903313049357673,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "fruits",
+        "score": 0.8822100332932838,
+        "meta": {
+          "z": 0.9406270982455095,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.6903313049357673,
+          "deltaPer10k": 1.6903313049357673,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "manufacturers",
+        "score": 0.8822100332932838,
+        "meta": {
+          "z": 0.9406270982455095,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.6903313049357673,
+          "deltaPer10k": 1.6903313049357673,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "producer",
+        "score": 0.8822100332932838,
+        "meta": {
+          "z": 0.9406270982455095,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.6903313049357673,
+          "deltaPer10k": 1.6903313049357673,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "reflect",
+        "score": 0.7921269866896097,
+        "meta": {
+          "z": 0.970557236880927,
+          "countPrev": 3,
+          "countCurr": 6,
+          "per10kPrev": 2.53592561284869,
+          "per10kCurr": 5.070993914807302,
+          "deltaPer10k": 2.5350683019586127,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "processing",
+        "score": 0.5290557694158278,
+        "meta": {
+          "z": 1.9652436394345576,
+          "countPrev": 1,
+          "countCurr": 8,
+          "per10kPrev": 0.8453085376162299,
+          "per10kCurr": 6.761325219743069,
+          "deltaPer10k": 5.916016682126839,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "voluntary",
+        "score": 0.4601567117961762,
+        "meta": {
+          "z": 0.7884316778549183,
+          "countPrev": 2,
+          "countCurr": 4,
+          "per10kPrev": 1.6906170752324599,
+          "per10kCurr": 3.3806626098715347,
+          "deltaPer10k": 1.6900455346390748,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "generative",
+        "score": 0.44833512726794245,
+        "meta": {
+          "z": 0.5493246785295273,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 0.8453085376162299,
+          "per10kCurr": 1.6903313049357673,
+          "deltaPer10k": 0.8450227673195374,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "phishing",
+        "score": 0.44833512726794245,
+        "meta": {
+          "z": 0.5493246785295273,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 0.8453085376162299,
+          "per10kCurr": 1.6903313049357673,
+          "deltaPer10k": 0.8450227673195374,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "regulators",
+        "score": 0.3834031612982077,
+        "meta": {
+          "z": 0.5493246785295273,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 0.8453085376162299,
+          "per10kCurr": 1.6903313049357673,
+          "deltaPer10k": 0.8450227673195374,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_fallers": [
+      {
+        "label": "month",
+        "score": -0.8099235896928793,
+        "meta": {
+          "z": -1.1604260487447409,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.3812341504649197,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.3812341504649197,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "goals targets",
+        "score": -0.7443876388306547,
+        "meta": {
+          "z": -1.231521340002393,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 4.22654268808115,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.22654268808115,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "targets",
+        "score": -0.7187595656533231,
+        "meta": {
+          "z": -1.231521340002393,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 4.22654268808115,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.22654268808115,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "targets reduce",
+        "score": -0.7078610802925998,
+        "meta": {
+          "z": -0.9407298280082417,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.6906170752324599,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.6906170752324599,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "targets resulting",
+        "score": -0.7078610802925998,
+        "meta": {
+          "z": -0.9407298280082417,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.6906170752324599,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.6906170752324599,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ceased",
+        "score": -0.6565858117850641,
+        "meta": {
+          "z": -0.9407298280082417,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.6906170752324599,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.6906170752324599,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "circular",
+        "score": -0.6565858117850641,
+        "meta": {
+          "z": -0.9407298280082417,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.6906170752324599,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.6906170752324599,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "economy",
+        "score": -0.6565858117850641,
+        "meta": {
+          "z": -0.9407298280082417,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.6906170752324599,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.6906170752324599,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "flexible",
+        "score": -0.6565858117850641,
+        "meta": {
+          "z": -0.9407298280082417,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.6906170752324599,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.6906170752324599,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "overnight",
+        "score": -0.6565858117850641,
+        "meta": {
+          "z": -0.9407298280082417,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.6906170752324599,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.6906170752324599,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "conflicts",
+        "score": -0.6245010466150137,
+        "meta": {
+          "z": -0.7651727821632934,
+          "countPrev": 9,
+          "countCurr": 6,
+          "per10kPrev": 7.607776838546069,
+          "per10kCurr": 5.070993914807302,
+          "deltaPer10k": -2.536782923738767,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "libor",
+        "score": -0.6108391260187614,
+        "meta": {
+          "z": -1.2896548188245267,
+          "countPrev": 6,
+          "countCurr": 0,
+          "per10kPrev": 5.07185122569738,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.07185122569738,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "circular economy",
+        "score": -0.5686199927702936,
+        "meta": {
+          "z": -0.9407298280082417,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.6906170752324599,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.6906170752324599,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "flexible work",
+        "score": -0.5686199927702936,
+        "meta": {
+          "z": -0.9407298280082417,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.6906170752324599,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.6906170752324599,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "reference",
+        "score": -0.5063029476849046,
+        "meta": {
+          "z": -1.0689492674161878,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.53592561284869,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.53592561284869,
+          "distinctive": false
+        }
+      }
+    ],
+    "summary": "Adds emphasis on additives, specialized, backgrounds; de-emphasizes month, goals targets, targets.",
+    "ranked_items": [
+      {
+        "label": "additives",
+        "score": 1.0882610615577484,
+        "meta": {
+          "z": 1.1603221521357816,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.3806626098715347,
+          "deltaPer10k": 3.3806626098715347,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "specialized",
+        "score": 1.0882610615577484,
+        "meta": {
+          "z": 1.1603221521357816,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.3806626098715347,
+          "deltaPer10k": 3.3806626098715347,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "backgrounds",
+        "score": 1.002465765336047,
+        "meta": {
+          "z": 1.0688457718152413,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.535496957403651,
+          "deltaPer10k": 2.535496957403651,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "broad",
+        "score": 1.002465765336047,
+        "meta": {
+          "z": 1.0688457718152413,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.535496957403651,
+          "deltaPer10k": 2.535496957403651,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "perspectives",
+        "score": 1.002465765336047,
+        "meta": {
+          "z": 1.0688457718152413,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.535496957403651,
+          "deltaPer10k": 2.535496957403651,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "extended",
+        "score": 0.8822100332932838,
+        "meta": {
+          "z": 0.9406270982455095,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.6903313049357673,
+          "deltaPer10k": 1.6903313049357673,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "fruits",
+        "score": 0.8822100332932838,
+        "meta": {
+          "z": 0.9406270982455095,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.6903313049357673,
+          "deltaPer10k": 1.6903313049357673,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "manufacturers",
+        "score": 0.8822100332932838,
+        "meta": {
+          "z": 0.9406270982455095,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.6903313049357673,
+          "deltaPer10k": 1.6903313049357673,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "producer",
+        "score": 0.8822100332932838,
+        "meta": {
+          "z": 0.9406270982455095,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.6903313049357673,
+          "deltaPer10k": 1.6903313049357673,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "reflect",
+        "score": 0.7921269866896097,
+        "meta": {
+          "z": 0.970557236880927,
+          "countPrev": 3,
+          "countCurr": 6,
+          "per10kPrev": 2.53592561284869,
+          "per10kCurr": 5.070993914807302,
+          "deltaPer10k": 2.5350683019586127,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "processing",
+        "score": 0.5290557694158278,
+        "meta": {
+          "z": 1.9652436394345576,
+          "countPrev": 1,
+          "countCurr": 8,
+          "per10kPrev": 0.8453085376162299,
+          "per10kCurr": 6.761325219743069,
+          "deltaPer10k": 5.916016682126839,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "voluntary",
+        "score": 0.4601567117961762,
+        "meta": {
+          "z": 0.7884316778549183,
+          "countPrev": 2,
+          "countCurr": 4,
+          "per10kPrev": 1.6906170752324599,
+          "per10kCurr": 3.3806626098715347,
+          "deltaPer10k": 1.6900455346390748,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "generative",
+        "score": 0.44833512726794245,
+        "meta": {
+          "z": 0.5493246785295273,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 0.8453085376162299,
+          "per10kCurr": 1.6903313049357673,
+          "deltaPer10k": 0.8450227673195374,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "phishing",
+        "score": 0.44833512726794245,
+        "meta": {
+          "z": 0.5493246785295273,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 0.8453085376162299,
+          "per10kCurr": 1.6903313049357673,
+          "deltaPer10k": 0.8450227673195374,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "regulators",
+        "score": 0.3834031612982077,
+        "meta": {
+          "z": 0.5493246785295273,
+          "countPrev": 1,
+          "countCurr": 2,
+          "per10kPrev": 0.8453085376162299,
+          "per10kCurr": 1.6903313049357673,
+          "deltaPer10k": 0.8450227673195374,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "month",
+        "score": -0.8099235896928793,
+        "meta": {
+          "z": -1.1604260487447409,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.3812341504649197,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.3812341504649197,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "goals targets",
+        "score": -0.7443876388306547,
+        "meta": {
+          "z": -1.231521340002393,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 4.22654268808115,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.22654268808115,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "targets",
+        "score": -0.7187595656533231,
+        "meta": {
+          "z": -1.231521340002393,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 4.22654268808115,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.22654268808115,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "targets reduce",
+        "score": -0.7078610802925998,
+        "meta": {
+          "z": -0.9407298280082417,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.6906170752324599,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.6906170752324599,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "targets resulting",
+        "score": -0.7078610802925998,
+        "meta": {
+          "z": -0.9407298280082417,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.6906170752324599,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.6906170752324599,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ceased",
+        "score": -0.6565858117850641,
+        "meta": {
+          "z": -0.9407298280082417,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.6906170752324599,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.6906170752324599,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "circular",
+        "score": -0.6565858117850641,
+        "meta": {
+          "z": -0.9407298280082417,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.6906170752324599,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.6906170752324599,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "economy",
+        "score": -0.6565858117850641,
+        "meta": {
+          "z": -0.9407298280082417,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.6906170752324599,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.6906170752324599,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "flexible",
+        "score": -0.6565858117850641,
+        "meta": {
+          "z": -0.9407298280082417,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.6906170752324599,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.6906170752324599,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "overnight",
+        "score": -0.6565858117850641,
+        "meta": {
+          "z": -0.9407298280082417,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.6906170752324599,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.6906170752324599,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "conflicts",
+        "score": -0.6245010466150137,
+        "meta": {
+          "z": -0.7651727821632934,
+          "countPrev": 9,
+          "countCurr": 6,
+          "per10kPrev": 7.607776838546069,
+          "per10kCurr": 5.070993914807302,
+          "deltaPer10k": -2.536782923738767,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "libor",
+        "score": -0.6108391260187614,
+        "meta": {
+          "z": -1.2896548188245267,
+          "countPrev": 6,
+          "countCurr": 0,
+          "per10kPrev": 5.07185122569738,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.07185122569738,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "circular economy",
+        "score": -0.5686199927702936,
+        "meta": {
+          "z": -0.9407298280082417,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.6906170752324599,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.6906170752324599,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "flexible work",
+        "score": -0.5686199927702936,
+        "meta": {
+          "z": -0.9407298280082417,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.6906170752324599,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.6906170752324599,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "reference",
+        "score": -0.5063029476849046,
+        "meta": {
+          "z": -1.0689492674161878,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.53592561284869,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.53592561284869,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_risers_alt": [
+      {
+        "label": "consumers markets",
+        "score": 2.2986459290326007,
+        "meta": {}
+      },
+      {
+        "label": "countries increase",
+        "score": 1.6985120589363243,
+        "meta": {}
+      },
+      {
+        "label": "beverages packaging",
+        "score": 2.2962151403017224,
+        "meta": {}
+      },
+      {
+        "label": "bottling partners continue",
+        "score": 2.2962151403017224,
+        "meta": {}
+      },
+      {
+        "label": "regulations policies",
+        "score": 2.2962151403017224,
+        "meta": {}
+      },
+      {
+        "label": "increase costs",
+        "score": 1.380169470239669,
+        "meta": {}
+      },
+      {
+        "label": "addition bottling partners",
+        "score": 0.9104081774164179,
+        "meta": {}
+      },
+      {
+        "label": "Artificial intelligence",
+        "score": 0.41555779840315976,
+        "meta": {}
+      },
+      {
+        "label": "markets products",
+        "score": 0.3000210096535776,
+        "meta": {}
+      },
+      {
+        "label": "income tax",
+        "score": 0.07037124061010536,
+        "meta": {}
+      },
+      {
+        "label": "packaging materials",
+        "score": 0.050632740369312756,
+        "meta": {}
+      }
+    ],
+    "top_fallers_alt": [
+      {
+        "label": "tax rates",
+        "score": -1.7179981555157298,
+        "meta": {}
+      },
+      {
+        "label": "use information systems",
+        "score": -1.7179981555157298,
+        "meta": {}
+      },
+      {
+        "label": "consumer demand",
+        "score": -1.3996661377486346,
+        "meta": {}
+      },
+      {
+        "label": "use packaging materials",
+        "score": -1.3996661377486346,
+        "meta": {}
+      },
+      {
+        "label": "negatively affect business operating",
+        "score": -1.0431858551674145,
+        "meta": {}
+      },
+      {
+        "label": "export controls",
+        "score": -1.7155409195355285,
+        "meta": {}
+      },
+      {
+        "label": "new increased",
+        "score": -0.34236642609463974,
+        "meta": {}
+      },
+      {
+        "label": "continue result",
+        "score": -0.31959445295129285,
+        "meta": {}
+      },
+      {
+        "label": "cybersecurity incident",
+        "score": -0.2744603703677324,
+        "meta": {}
+      },
+      {
+        "label": "financial results",
+        "score": -0.13829772397274542,
+        "meta": {}
+      },
+      {
+        "label": "Intellectual property",
+        "score": -0.06050134465220891,
+        "meta": {}
+      },
+      {
+        "label": "bottling partners",
+        "score": -0.032591483846085234,
+        "meta": {}
+      },
+      {
+        "label": "beverage products",
+        "score": -0.010363459376637518,
+        "meta": {}
+      },
+      {
+        "label": "laws regulations",
+        "score": -0.010254012812570767,
+        "meta": {}
+      },
+      {
+        "label": "Supply chain",
+        "score": -0.010155584503818371,
+        "meta": {}
+      }
+    ],
+    "summary_alt": "Adds emphasis on consumers markets, countries increase, beverages packaging; de-emphasizes tax rates, use information systems, consumer demand."
+  },
+  "evidence": [
+    {
+      "year": 2024,
+      "paragraph_idx": 10,
+      "snippet": "The success of our business depends on our Company\u2019s and the Coca-Cola system\u2019s ability to attract, hire, develop, motivate and retain a global workforce of top talent with diverse perspectives, experiences and backgrounds that reflect the broad range of consumers and markets we serve around the world; and in our ability to nurture a culture that supports our growth and aligns employees around the Company\u2019s purpose and work that matters most. Competition for, along with compensation and benefits expectations of, existing and prospective employees has increased, especially considering changing worker expectations and talent marketplace variability. In addition, the broader labor market is experiencing a shortage of qualified talent, which has further increased the competition we face for qualified employees. We may not be able to successfully compete for, attract or retain the workforce that we want and may require for our future business needs, such as employees with advanced technology, artificial intelligence and digital marketing skills, and/or digital and analytics capabilities. Changes in laws and policies could also make it more difficult for us to recruit or relocate specialized technical, professional and management personnel to meet our business needs. In addition, the unexpected loss of experienced and specialized employees due to an increase in aggressive recruiting for best-in-class talent could deplete our institutional knowledge base and erode our competitiveness. Failure to attract, hire, develop, motivate and retain specialized and/or top talent with diverse perspectives, experiences and backgrounds that reflect the broad range of consumers and markets we serve around the world; to develop and implement an adequate succession plan for our management team; to maintain a corporate culture that fosters innovation, collaboration and inclusion; or to design and successfully implement work models that meet the expectations of employees and prospective employees could disrupt our operations and adversely affect our business and our future success.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "additives",
+        "specialized",
+        "backgrounds",
+        "broad",
+        "perspectives",
+        "extended",
+        "fruits",
+        "manufacturers",
+        "producer",
+        "reflect",
+        "processing",
+        "voluntary",
+        "generative",
+        "phishing",
+        "regulators",
+        "month",
+        "goals targets",
+        "targets",
+        "targets reduce",
+        "targets resulting",
+        "ceased",
+        "circular",
+        "economy",
+        "flexible",
+        "overnight",
+        "conflicts",
+        "libor",
+        "circular economy",
+        "flexible work",
+        "reference"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 9,
+      "snippet": "If we are unable to attract or retain specialized talent or top talent with diverse perspectives, experiences and backgrounds that reflect the broad range of consumers and markets we serve around the world, our business could be negatively affected.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "additives",
+        "specialized",
+        "backgrounds",
+        "broad",
+        "perspectives",
+        "extended",
+        "fruits",
+        "manufacturers",
+        "producer",
+        "reflect",
+        "processing",
+        "voluntary",
+        "generative",
+        "phishing",
+        "regulators",
+        "month",
+        "goals targets",
+        "targets",
+        "targets reduce",
+        "targets resulting",
+        "ceased",
+        "circular",
+        "economy",
+        "flexible",
+        "overnight",
+        "conflicts",
+        "libor",
+        "circular economy",
+        "flexible work",
+        "reference"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 45,
+      "snippet": "Regulators in the United States and abroad have been expressing concerns about the processing and the use of particular ingredients or additives in beverage products. Various jurisdictions have adopted, and others may seek to adopt, bans or restrictions on the use of certain ingredients or substances in products, as well as significant additional product labeling or warning requirements or limitations on the marketing or sale of our products because of what they contain or allegations that they cause adverse health effects. If these types of requirements become applicable to one or more of our products under current or future environmental or health laws or regulations, they may inhibit sales of such products or make it necessary for us to reformulate certain of our products, resulting in adverse effects on our business.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "additives",
+        "specialized",
+        "backgrounds",
+        "broad",
+        "perspectives",
+        "extended",
+        "fruits",
+        "manufacturers",
+        "producer",
+        "reflect",
+        "processing",
+        "voluntary",
+        "generative",
+        "phishing",
+        "regulators",
+        "month",
+        "goals targets",
+        "targets",
+        "targets reduce",
+        "targets resulting",
+        "ceased",
+        "circular",
+        "economy",
+        "flexible",
+        "overnight",
+        "conflicts",
+        "libor",
+        "circular economy",
+        "flexible work",
+        "reference"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 52,
+      "snippet": "to adverse changes in interest rates. When and to the extent appropriate, we use derivative financial instruments to reduce our exposure to interest rate risks. However, our financial risk management program may not be successful in reducing the risks inherent in exposures to interest rate fluctuations. On December 31, 2021, the United Kingdom\u2019s Financial Conduct Authority, the governing body responsible for regulating the London Interbank Offered Rate (\u201cLIBOR\u201d), ceased to publish certain LIBOR reference rates. Other LIBOR reference rates, including U.S. dollar overnight, 1-month, 3-month, 6-month and 12-month maturities, ceased to be published in July 2023. As a result of the discontinuation of LIBOR, we have amended our LIBOR-referencing agreements to either reference the Secured Overnight Financing Rate or include mechanics for selecting an alternative rate, but it is possible that these changes may have an adverse impact on our financing costs as compared to LIBOR in the long term. Our interest expense may also be affected by our credit ratings. In assessing our credit strength, credit rating agencies consider our capital structure and financial policies as well as the consolidated balance sheet and other financial information of the Company. In addition, some credit rating agencies also consider financial information of certain of our major bottling partners. It is our expectation that the credit rating agencies will continue using this methodology. If our credit ratings were to be downgraded as a result of changes in our capital structure; our major bottling partners\u2019 financial performance; changes in the credit rating agencies\u2019 methodology in assessing our credit strength; the credit agencies\u2019 perception of the impact of credit market conditions on our or our major bottling partners\u2019 current or future financial performance and financial condition; or for any other reason, our cost of borrowing could increase. Additionally, if the credit ratings of certain bottling partners in which we have equity method investments were to be downgraded, such bottling partners\u2019 interest expense could increase, which would reduce our equity income.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "additives",
+        "specialized",
+        "backgrounds",
+        "broad",
+        "perspectives",
+        "extended",
+        "fruits",
+        "manufacturers",
+        "producer",
+        "reflect",
+        "processing",
+        "voluntary",
+        "generative",
+        "phishing",
+        "regulators",
+        "month",
+        "goals targets",
+        "targets",
+        "targets reduce",
+        "targets resulting",
+        "ceased",
+        "circular",
+        "economy",
+        "flexible",
+        "overnight",
+        "conflicts",
+        "libor",
+        "circular economy",
+        "flexible work",
+        "reference"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 63,
+      "snippet": "We have established and publicly announced sustainability goals and aspirations. We also report progress related to the circular economy of packaging; water stewardship; climate; portfolio; sustainable agriculture; human and workplace rights and diversity, equity and inclusion. These goals reflect our current plans and aspirations and are not guarantees that we will be able to achieve them. Our ability to achieve our sustainability goals and targets and to accurately and transparently report our progress presents numerous operational, financial, legal and other risks and is dependent on the actions of our bottling partners, suppliers and other third parties, some of which are outside of our control. If we are unable to meet our sustainability goals or evolving stakeholder expectations and industry standards, or if we are perceived to have not responded appropriately to the growing concern for sustainability issues, our reputation, and therefore our ability to sell products, could be negatively impacted. In addition, in recent years, investor advocacy groups and certain institutional investors have placed increasing importance on sustainability. If, as a result of their assessment of our sustainability practices, certain investors are unsatisfied with our actions or progress, they may reconsider their investment in our Company. At the same time, there also exists \u201canti-ESG\u201d sentiment among certain stakeholders and government institutions, and we may face scrutiny, reputational risk, product boycotts, lawsuits or market access restrictions from these parties regarding our sustainability initiatives.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "additives",
+        "specialized",
+        "backgrounds",
+        "broad",
+        "perspectives",
+        "extended",
+        "fruits",
+        "manufacturers",
+        "producer",
+        "reflect",
+        "processing",
+        "voluntary",
+        "generative",
+        "phishing",
+        "regulators",
+        "month",
+        "goals targets",
+        "targets",
+        "targets reduce",
+        "targets resulting",
+        "ceased",
+        "circular",
+        "economy",
+        "flexible",
+        "overnight",
+        "conflicts",
+        "libor",
+        "circular economy",
+        "flexible work",
+        "reference"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 9,
+      "snippet": "The success of our business depends on our Company\u2019s and the Coca-Cola system\u2019s ability to attract, hire, develop, motivate and retain a highly skilled and diverse workforce as well as on our success in nurturing a culture that supports our growth and aligns employees around the Company\u2019s purpose and work that matters most. Competition for, along with compensation and benefits expectations of, existing and prospective employees has increased, especially in light of changing worker expectations and talent marketplace variability regarding flexible work models. In addition, the broader labor market is experiencing a shortage of qualified workers, which has further increased the competition we face for qualified employees. We may not be able to successfully compete for, attract or retain the highly skilled and diverse workforce that we want and may require for our future business needs, such as employees with advanced technology, artificial intelligence and machine learning, social media and digital marketing skills, and/or digital and analytics capabilities. Changes in immigration laws and policies could also make it more difficult for us to recruit or relocate highly skilled technical, professional and management personnel to meet our business needs. In addition, the unexpected loss of experienced and highly skilled employees due to an increase in aggressive recruiting for best-in-class talent could deplete our institutional knowledge base and erode our competitiveness. Failure to attract, hire, develop, motivate and retain highly skilled and diverse talent; to meet our goals related to fostering an inclusive and diverse culture; to develop and implement an adequate succession plan for our management team; to maintain a corporate culture that fosters innovation, collaboration and inclusion; or to design and successfully implement flexible work models that meet the expectations of employees and prospective employees could disrupt our operations and adversely affect our business and our future success.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "additives",
+        "specialized",
+        "backgrounds",
+        "broad",
+        "perspectives",
+        "extended",
+        "fruits",
+        "manufacturers",
+        "producer",
+        "reflect",
+        "processing",
+        "voluntary",
+        "generative",
+        "phishing",
+        "regulators",
+        "month",
+        "goals targets",
+        "targets",
+        "targets reduce",
+        "targets resulting",
+        "ceased",
+        "circular",
+        "economy",
+        "flexible",
+        "overnight",
+        "conflicts",
+        "libor",
+        "circular economy",
+        "flexible work",
+        "reference"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.0084,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T19:27:20Z",
+    "git_commit": "cfe9628e9904d9ea49e72960b3535e0464887ce9",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "8d005a2728ac3571f5042a9956e63b4fffb0d6bcb656bda6be2e217116052ff0",
+      "curr_text_sha256": "604daa670ec51ce1aa4c3f5b6fe7fe28634f36f90a480ccde248384d40986995",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

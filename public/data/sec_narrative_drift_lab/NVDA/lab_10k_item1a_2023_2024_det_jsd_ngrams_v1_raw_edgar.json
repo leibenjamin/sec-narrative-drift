@@ -42,15 +42,7 @@
         "score": 0.00014754421835812102
       },
       {
-        "label": "incidents",
-        "score": 0.00014260452911984484
-      },
-      {
         "label": "portfolio",
-        "score": 0.00014260452911984484
-      },
-      {
-        "label": "integrators",
         "score": 0.00014260452911984484
       },
       {
@@ -58,12 +50,16 @@
         "score": 0.00014260452911984484
       },
       {
+        "label": "incidents",
+        "score": 0.00014260452911984484
+      },
+      {
         "label": "software services",
         "score": 0.00014260452911984484
       },
       {
-        "label": "license requirements",
-        "score": 0.00013936311058462825
+        "label": "integrators",
+        "score": 0.00014260452911984484
       },
       {
         "label": "esg practices",
@@ -74,11 +70,15 @@
         "score": 0.00013936311058462825
       },
       {
-        "label": "center",
-        "score": 0.0001281746122564619
+        "label": "license requirements",
+        "score": 0.00013936311058462825
       },
       {
         "label": "data center",
+        "score": 0.0001281746122564619
+      },
+      {
+        "label": "center",
         "score": 0.0001281746122564619
       },
       {
@@ -142,8 +142,8 @@
     "warnings": []
   },
   "provenance": {
-    "build_utc": "2026-02-02T05:55:32Z",
-    "git_commit": "188567ed07e3652efcee7c151b78a4656ea39f6d",
+    "build_utc": "2026-02-17T19:27:17Z",
+    "git_commit": "cfe9628e9904d9ea49e72960b3535e0464887ce9",
     "script_version": "build_lab_outputs.py@v1",
     "inputs": {
       "prev_text_sha256": "b13bf38cc427b8eec49b6492bf559638ba32ea611dae26ef263a0e9035aa9567",

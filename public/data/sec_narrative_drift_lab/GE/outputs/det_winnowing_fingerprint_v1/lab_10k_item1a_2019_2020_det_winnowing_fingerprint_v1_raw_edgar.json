@@ -1,0 +1,55 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_winnowing_fingerprint_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "GE",
+  "section": "10k_item1a",
+  "year_from": 2019,
+  "year_to": 2020,
+  "artifacts": {
+    "stats": {
+      "shared_fingerprints": 15169,
+      "prev_fingerprints": 20622,
+      "curr_fingerprints": 23015,
+      "shared_ratio": 0.7355736591989138
+    }
+  },
+  "evidence": [
+    {
+      "year": 2020,
+      "paragraph_idx": 0,
+      "snippet": "RISK FACTORS. The following discussion of the material factors, events and uncertainties that may make an investment in the Company spec",
+      "why": "Shared fingerprint span."
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 0,
+      "snippet": "t may make an investment in the Company speculative or risky contains \"forward-looking statements,\" as discussed in the Forward-Looking Statements section. These risk factors may b",
+      "why": "Shared fingerprint span."
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 0,
+      "snippet": "may make an investment in the Company speculative or risky contains \"forward-looking statements,\" as discussed in the Forward-Looking Statements section. These risk factors may be ",
+      "why": "Shared fingerprint span."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.7355736591989138,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T19:27:23Z",
+    "git_commit": "cfe9628e9904d9ea49e72960b3535e0464887ce9",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "445afa9fd8f58e5308e5cb8e14841ff2ef5fa0ade6dfc41670c440f78f0c27fc",
+      "curr_text_sha256": "231bdd0927c5ed3145794df750f944019d39e3bf17119eaa1dc6846257c3196a",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

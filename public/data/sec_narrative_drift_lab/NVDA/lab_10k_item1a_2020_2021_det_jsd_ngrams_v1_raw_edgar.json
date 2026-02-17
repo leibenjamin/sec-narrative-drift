@@ -1,0 +1,148 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_jsd_ngrams_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "NVDA",
+  "section": "10k_item1a",
+  "year_from": 2020,
+  "year_to": 2021,
+  "artifacts": {
+    "ranked_items": [
+      {
+        "label": "covid",
+        "score": 0.0010843046896177825
+      },
+      {
+        "label": "pandemic",
+        "score": 0.0008584078792807445
+      },
+      {
+        "label": "covid pandemic",
+        "score": 0.0005873317068762989
+      },
+      {
+        "label": "israel",
+        "score": 0.0004969729827414837
+      },
+      {
+        "label": "notes",
+        "score": 0.0004066142586066685
+      },
+      {
+        "label": "uncertainty",
+        "score": 0.00031625553447185326
+      },
+      {
+        "label": "availability",
+        "score": 0.00031625553447185326
+      },
+      {
+        "label": "supply chain",
+        "score": 0.00031625553447185326
+      },
+      {
+        "label": "chain",
+        "score": 0.00031625553447185326
+      },
+      {
+        "label": "tegra",
+        "score": 0.0002638870563398865
+      },
+      {
+        "label": "tegra processors",
+        "score": 0.0002638870563398865
+      },
+      {
+        "label": "gpus tegra",
+        "score": 0.0002638870563398865
+      },
+      {
+        "label": "place",
+        "score": 0.00022589681033703804
+      },
+      {
+        "label": "billion notes",
+        "score": 0.00022589681033703804
+      },
+      {
+        "label": "spread",
+        "score": 0.00022589681033703804
+      },
+      {
+        "label": "continues",
+        "score": 0.00022589681033703804
+      },
+      {
+        "label": "supply",
+        "score": 0.000211925435804976
+      },
+      {
+        "label": "coronavirus",
+        "score": 0.0001979152922549149
+      },
+      {
+        "label": "measures",
+        "score": 0.0001932540210515085
+      },
+      {
+        "label": "pandemic continues",
+        "score": 0.00018071744826963042
+      }
+    ],
+    "stats": {
+      "jsd": 0.132799,
+      "tokens_prev": 3790,
+      "tokens_curr": 5534
+    }
+  },
+  "evidence": [
+    {
+      "year": 2021,
+      "paragraph_idx": 10,
+      "snippet": "If we fail to estimate customer demand properly, our financial results could be harmed. Our products are manufactured based on estimates of customers\u2019 future demand and our manufacturing lead times are very long. This could lead to a significant mismatch between supply and demand, giving rise to product shortages or excess inventory, and make our demand forecast more uncertain. We sell many of our products through a channel model, and our channel customers sell to retailers, distributors, and/or end customers. As a result, the decisions made by our channel partners, retailers, and distributors in response to changing market conditions and the changing demand for our products could impact our financial results. In order to have shorter shipment lead times and quicker delivery schedules for our customers, we may build inventory for anticipated periods of growth which do not occur, may build inventory anticipating demand that does not materialize, or may build inventory to serve what we believe is pent-up demand. In periods with limited availability of capacity and components in our supply chain, we may place non-cancellable inventory orders significantly in advance of our normal lead times, pay premiums or provide deposits to secure normal and incremental future supply, which could negatively impact our financial results. Demand for our products is based on many factors, including our product introductions and transitions, competitor announcements, and competing technologies, all of which can impact the timing and amount of our revenue. For example, our GPUs for gaming are capable of digital currency mining. Demand and use of GPUs for cryptocurrency has fluctuated in the past and is likely to continue to change quickly. Volatility in the cryptocurrency market, including changes in the prices of cryptocurrencies, can impact demand for our products and our ability to estimate demand for our products. Changes to cryptocurrency standards and processes including, but not limited to, the pending Ethereum 2.0 standard may also create increased aftermarket resales of our GPUs and may reduce demand for our new GPUs. Additionally, consumer behavior during the COVID-19 pandemic, such as increased demand for our Gaming, Data Center and mobile workstation and laptop products and suppressed corporate demand for desktop workstations, has made it more difficult for us to estimate future demand, and these challenges may be more pronounced in the future if and when the effects of the pandemic subside. In estimating demand, we make multiple assumptions, any of which may prove to be incorrect. If we are unable to accurately anticipate demand for our products, our business and financial results could be adversely impacted. Situations that may result in excess or obsolete inventory include: \u2022 changes in business and economic conditions, including downturns in our target markets and/or overall economy; \u2022 changes in consumer confidence caused by changes in market conditions, including changes in the credit market; \u2022 a sudden and significant decrease in demand for our products; \u2022 a higher incidence of inventory obsolescence because of rapidly changing technology or customer requirements; \u2022 our introduction of new products resulting in lower demand for older products; \u2022 less demand than expected for newly-introduced products; or \u2022 increased competition, including competitive pricing actions.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "covid",
+        "pandemic"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 16,
+      "snippet": "Business disruptions could harm our business, lead to a decline in revenues and increase our costs. Our worldwide operations could be disrupted by earthquakes, telecommunications failures, power or water shortages, outages at cloud service providers, tsunamis, floods, hurricanes, typhoons, fires, extreme weather conditions, cyber-attacks, terrorist attacks, medical epidemics or pandemics (including, but not limited to, COVID-19) and other natural or man-made disasters, catastrophic events or climate change. The occurrence of any of these disruptions could harm our business and result in significant losses, a decline in revenue and an increase in our costs and expenses. Any of these business disruptions could require substantial expenditures and recovery time in order to fully resume operations. Such risks are discussed further in the risk factor \u201cThe COVID-19 pandemic continues to impact our business and could materially adversely affect our financial condition and results of operations.\u201d Our corporate headquarters, and a portion of our research and development activities, are located in California, and other critical business operations, finished goods inventory, and some of our suppliers are located in Asia, near major earthquake faults known for seismic activity. In addition, a large portion of our current data center capacity is located in California, making our operations vulnerable to natural disasters or other business disruptions occurring in these geographical areas. The manufacture of product components, the final assembly of our products and other critical operations are concentrated in certain geographic locations, including Taiwan, China, Hong Kong, Israel and Korea. Additionally, a significant portion of our finished goods product distribution occurs through Hong Kong, Israel and Taiwan. Geopolitical change or changes in government regulations and policies in the United States or abroad may result in changing regulatory requirements, trade policies, import duties and economic disruptions that could impact our operating strategies, product demand, access to global markets, hiring, and profitability. In particular, revisions to laws or regulations or their interpretation and enforcement 17 could result in increased taxation, trade sanctions, the imposition of import duties or tariffs, restrictions and controls on imports or exports, or other retaliatory actions, which could have an adverse effect on our business plans or impact the timing of our shipments. For example, regulations to implement the Export Control Reform Act of 2018 could have an adverse effect on our business plans. Catastrophic events can also have an impact on third-party vendors who provide us critical infrastructure services for IT and research and development systems and personnel. In addition, geopolitical and domestic political developments, such as existing and potential trade wars, political or social unrest, elections and post-election developments, and other events beyond our control, can increase levels of political and economic unpredictability globally and increase the volatility of global financial markets. Political instability, changes in government or adverse political developments in or around any of the major countries in which we do business would also likely harm our business, financial condition and results of operations. Our operations could be harmed if manufacturing, logistics or other operations in these locations are disrupted for any reason, including natural disasters, high heat events or water shortages, other negative impacts from climate change, information technology system failures, military actions or economic, business, labor, environmental, public health, regulatory or political issues. The ultimate impact on us, our third-party foundries and other suppliers and our general infrastructure of being located near major earthquake faults and being consolidated in certain geographical areas is unknown. In the event a major earthquake or other disaster or catastrophic event affects us or the third-party systems on which we rely, our business could be harmed as a result of declines in revenue, increases in expenses, substantial expenditures and time spent to fully resume operations. All of these risks and conditions could materially adversely affect our future sales and operating results.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "covid",
+        "pandemic",
+        "israel"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 13,
+      "snippet": "Business disruptions could harm our business, lead to a decline in revenues and increase our costs. Our worldwide operations could be disrupted by earthquakes, telecommunications failures, power or water shortages, outages at cloud service providers, tsunamis, floods, hurricanes, typhoons, fires, extreme weather conditions, cyber-attacks, terrorist attacks, medical epidemics or pandemics and other natural or man-made disasters, catastrophic events or climate change. The occurrence of any of these disruptions could harm our business and result in significant losses, a decline in revenue and an increase in our costs and expenses. Any of these business disruptions could require substantial expenditures and recovery time in order to fully resume operations. Our corporate headquarters, and a portion of our research and development activities, are located in California, and other critical business operations, finished goods inventory, and some of our suppliers are located in Asia, near major earthquake faults known for seismic activity. In addition, a large portion of our current data center capacity is located in California, making our operations vulnerable to natural disasters or other business disruptions occurring in these geographical areas. The manufacture of product components, the final assembly of our products and other critical operations are concentrated in certain geographic locations, including Taiwan, China, Hong Kong, and Korea. Additionally, a significant portion of our finished goods product distribution occurs through Hong Kong. Geopolitical change or changes in government regulations and policies in the United States or abroad may result in changing regulatory requirements, trade policies, import duties and economic disruptions that could impact our operating strategies, product demand, access to global markets, hiring, and profitability. In particular, revisions to laws or regulations or their 14 interpretation and enforcement could result in increased taxation, trade sanctions, the imposition of import duties or tariffs, restrictions and controls on imports or exports, or other retaliatory actions, which could have an adverse effect on our business plans. For example, regulations to implement the Export Control Reform Act of 2018 could have an adverse effect on our business plans. Catastrophic events can also have an impact on third-party vendors who provide us critical infrastructure services for IT and research and development systems and personnel. Our operations could be harmed if manufacturing, logistics or other operations in these locations are disrupted for any reason, including natural disasters, high heat events or water shortages, information technology system failures, military actions or economic, business, labor, environmental, public health, regulatory or political issues. The ultimate impact on us, our third-party foundries and other suppliers and our general infrastructure of being located near major earthquake faults and being consolidated in certain geographical areas is unknown. In the event a major earthquake or other disaster or catastrophic event affects us or the third-party systems on which we rely, our business could be harmed as a result of declines in revenue, increases in expenses, substantial expenditures and time spent to fully resume operations.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "pandemic"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.132799,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T19:27:16Z",
+    "git_commit": "cfe9628e9904d9ea49e72960b3535e0464887ce9",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "8d071c33e1e2434abc15f22db00cd5cc9e715a8acf3573775ea431e665167d41",
+      "curr_text_sha256": "8c0d08a1b053aeeb4c1399cfee88fa0577b416889c7f4d7b9306ba6b4859e669",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

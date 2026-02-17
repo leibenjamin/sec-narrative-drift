@@ -1,0 +1,1197 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_logodds_terms_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "GE",
+  "section": "10k_item1a",
+  "year_from": 2021,
+  "year_to": 2022,
+  "artifacts": {
+    "top_risers": [
+      {
+        "label": "vernova",
+        "score": 1.2028460916714943,
+        "meta": {
+          "z": 1.723389656962202,
+          "countPrev": 0,
+          "countCurr": 15,
+          "per10kPrev": 0.0,
+          "per10kCurr": 17.001020061203672,
+          "deltaPer10k": 17.001020061203672,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "aercap healthcare",
+        "score": 1.0350305017328834,
+        "meta": {
+          "z": 1.1322356865034984,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.533605349654312,
+          "deltaPer10k": 4.533605349654312,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "aerospace",
+        "score": 1.0219881257532715,
+        "meta": {
+          "z": 1.4642636141535497,
+          "countPrev": 0,
+          "countCurr": 10,
+          "per10kPrev": 0.0,
+          "per10kCurr": 11.334013374135782,
+          "deltaPer10k": 11.334013374135782,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "separation transaction",
+        "score": 0.9491306998253253,
+        "meta": {
+          "z": 1.261371171353203,
+          "countPrev": 0,
+          "countCurr": 6,
+          "per10kPrev": 0.0,
+          "per10kCurr": 6.800408024481469,
+          "deltaPer10k": 6.800408024481469,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "lockdowns",
+        "score": 0.856145466872801,
+        "meta": {
+          "z": 0.9128366214271898,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.266802674827156,
+          "deltaPer10k": 2.266802674827156,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "virus",
+        "score": 0.856145466872801,
+        "meta": {
+          "z": 0.9128366214271898,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.266802674827156,
+          "deltaPer10k": 2.266802674827156,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "vernova separation",
+        "score": 0.8178668716182043,
+        "meta": {
+          "z": 1.3530860174693937,
+          "countPrev": 0,
+          "countCurr": 8,
+          "per10kPrev": 0.0,
+          "per10kCurr": 9.067210699308625,
+          "deltaPer10k": 9.067210699308625,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "healthcare separation",
+        "score": 0.7832034089968652,
+        "meta": {
+          "z": 1.0408579151385675,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.4002040122407347,
+          "deltaPer10k": 3.4002040122407347,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "standalone",
+        "score": 0.7450179080574465,
+        "meta": {
+          "z": 0.9128366214271898,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.266802674827156,
+          "deltaPer10k": 2.266802674827156,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "skilled labor",
+        "score": 0.7273134327582705,
+        "meta": {
+          "z": 1.203273625982355,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.667006687067891,
+          "deltaPer10k": 5.667006687067891,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "stability",
+        "score": 0.7264705750971239,
+        "meta": {
+          "z": 1.0408579151385675,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.4002040122407347,
+          "deltaPer10k": 3.4002040122407347,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "completion vernova",
+        "score": 0.6868725724814974,
+        "meta": {
+          "z": 0.9128366214271898,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.266802674827156,
+          "deltaPer10k": 2.266802674827156,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "spin",
+        "score": 0.666281592154866,
+        "meta": {
+          "z": 1.1416056751100783,
+          "countPrev": 1,
+          "countCurr": 4,
+          "per10kPrev": 1.2430080795525171,
+          "per10kCurr": 4.533605349654312,
+          "deltaPer10k": 3.290597270101795,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "flows results",
+        "score": 0.6464114130833579,
+        "meta": {
+          "z": 1.3737592877819644,
+          "countPrev": 1,
+          "countCurr": 5,
+          "per10kPrev": 1.2430080795525171,
+          "per10kCurr": 5.667006687067891,
+          "deltaPer10k": 4.423998607515374,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "transaction",
+        "score": 0.6385549389135909,
+        "meta": {
+          "z": 1.7325374305412833,
+          "countPrev": 1,
+          "countCurr": 7,
+          "per10kPrev": 1.2430080795525171,
+          "per10kCurr": 7.933809361895047,
+          "deltaPer10k": 6.69080128234253,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_fallers": [
+      {
+        "label": "separation transactions",
+        "score": -0.9505334203190906,
+        "meta": {
+          "z": -2.0200820840737825,
+          "countPrev": 16,
+          "countCurr": 7,
+          "per10kPrev": 19.888129272840274,
+          "per10kCurr": 7.933809361895047,
+          "deltaPer10k": -11.954319910945227,
+          "distinctive": true
+        }
+      },
+      {
+        "label": "expected continue",
+        "score": -0.7288029244054681,
+        "meta": {
+          "z": -0.9685610196911218,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.4860161591050343,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.4860161591050343,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ownership position",
+        "score": -0.5854424337542413,
+        "meta": {
+          "z": -0.9685610196911218,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.4860161591050343,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.4860161591050343,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "covid pandemic",
+        "score": -0.5263766714651973,
+        "meta": {
+          "z": -1.1186603866535092,
+          "countPrev": 11,
+          "countCurr": 7,
+          "per10kPrev": 13.673088875077688,
+          "per10kCurr": 7.933809361895047,
+          "deltaPer10k": -5.739279513182641,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "baker",
+        "score": -0.5195884123797,
+        "meta": {
+          "z": -1.096998655273245,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 3.7290242386575514,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.7290242386575514,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "hughes",
+        "score": -0.5195884123797,
+        "meta": {
+          "z": -1.096998655273245,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 3.7290242386575514,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.7290242386575514,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "deferrals",
+        "score": -0.4370023330263607,
+        "meta": {
+          "z": -0.6261194229424869,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 2.4860161591050343,
+          "per10kCurr": 1.133401337413578,
+          "deltaPer10k": -1.3526148216914562,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "goods",
+        "score": -0.4370023330263607,
+        "meta": {
+          "z": -0.6261194229424869,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 2.4860161591050343,
+          "per10kCurr": 1.133401337413578,
+          "deltaPer10k": -1.3526148216914562,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "requests",
+        "score": -0.4370023330263607,
+        "meta": {
+          "z": -0.6261194229424869,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 2.4860161591050343,
+          "per10kCurr": 1.133401337413578,
+          "deltaPer10k": -1.3526148216914562,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "baker hughes",
+        "score": -0.38533707978027687,
+        "meta": {
+          "z": -1.096998655273245,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 3.7290242386575514,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.7290242386575514,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "Pandemic",
+        "score": -0.3789776554013514,
+        "meta": {
+          "z": -1.0282482106218072,
+          "countPrev": 14,
+          "countCurr": 10,
+          "per10kPrev": 17.40211311373524,
+          "per10kCurr": 11.334013374135782,
+          "deltaPer10k": -6.068099739599457,
+          "distinctive": false,
+          "includes": [
+            "pandemic"
+          ]
+        }
+      },
+      {
+        "label": "contract modifications",
+        "score": -0.37845512191389574,
+        "meta": {
+          "z": -0.6261194229424869,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 2.4860161591050343,
+          "per10kCurr": 1.133401337413578,
+          "deltaPer10k": -1.3526148216914562,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "deferrals contract",
+        "score": -0.37845512191389574,
+        "meta": {
+          "z": -0.6261194229424869,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 2.4860161591050343,
+          "per10kCurr": 1.133401337413578,
+          "deltaPer10k": -1.3526148216914562,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "payment deferrals",
+        "score": -0.37845512191389574,
+        "meta": {
+          "z": -0.6261194229424869,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 2.4860161591050343,
+          "per10kCurr": 1.133401337413578,
+          "deltaPer10k": -1.3526148216914562,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "timeframes",
+        "score": -0.37467585594391484,
+        "meta": {
+          "z": -0.5368205453034397,
+          "countPrev": 3,
+          "countCurr": 2,
+          "per10kPrev": 3.7290242386575514,
+          "per10kCurr": 2.266802674827156,
+          "deltaPer10k": -1.4622215638303953,
+          "distinctive": false
+        }
+      }
+    ],
+    "summary": "Adds emphasis on vernova, aercap healthcare, aerospace; de-emphasizes separation transactions, expected continue, ownership position.",
+    "ranked_items": [
+      {
+        "label": "vernova",
+        "score": 1.2028460916714943,
+        "meta": {
+          "z": 1.723389656962202,
+          "countPrev": 0,
+          "countCurr": 15,
+          "per10kPrev": 0.0,
+          "per10kCurr": 17.001020061203672,
+          "deltaPer10k": 17.001020061203672,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "aercap healthcare",
+        "score": 1.0350305017328834,
+        "meta": {
+          "z": 1.1322356865034984,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.533605349654312,
+          "deltaPer10k": 4.533605349654312,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "aerospace",
+        "score": 1.0219881257532715,
+        "meta": {
+          "z": 1.4642636141535497,
+          "countPrev": 0,
+          "countCurr": 10,
+          "per10kPrev": 0.0,
+          "per10kCurr": 11.334013374135782,
+          "deltaPer10k": 11.334013374135782,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "separation transaction",
+        "score": 0.9491306998253253,
+        "meta": {
+          "z": 1.261371171353203,
+          "countPrev": 0,
+          "countCurr": 6,
+          "per10kPrev": 0.0,
+          "per10kCurr": 6.800408024481469,
+          "deltaPer10k": 6.800408024481469,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "lockdowns",
+        "score": 0.856145466872801,
+        "meta": {
+          "z": 0.9128366214271898,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.266802674827156,
+          "deltaPer10k": 2.266802674827156,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "virus",
+        "score": 0.856145466872801,
+        "meta": {
+          "z": 0.9128366214271898,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.266802674827156,
+          "deltaPer10k": 2.266802674827156,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "vernova separation",
+        "score": 0.8178668716182043,
+        "meta": {
+          "z": 1.3530860174693937,
+          "countPrev": 0,
+          "countCurr": 8,
+          "per10kPrev": 0.0,
+          "per10kCurr": 9.067210699308625,
+          "deltaPer10k": 9.067210699308625,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "healthcare separation",
+        "score": 0.7832034089968652,
+        "meta": {
+          "z": 1.0408579151385675,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.4002040122407347,
+          "deltaPer10k": 3.4002040122407347,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "standalone",
+        "score": 0.7450179080574465,
+        "meta": {
+          "z": 0.9128366214271898,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.266802674827156,
+          "deltaPer10k": 2.266802674827156,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "skilled labor",
+        "score": 0.7273134327582705,
+        "meta": {
+          "z": 1.203273625982355,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.667006687067891,
+          "deltaPer10k": 5.667006687067891,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "stability",
+        "score": 0.7264705750971239,
+        "meta": {
+          "z": 1.0408579151385675,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.4002040122407347,
+          "deltaPer10k": 3.4002040122407347,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "completion vernova",
+        "score": 0.6868725724814974,
+        "meta": {
+          "z": 0.9128366214271898,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.266802674827156,
+          "deltaPer10k": 2.266802674827156,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "spin",
+        "score": 0.666281592154866,
+        "meta": {
+          "z": 1.1416056751100783,
+          "countPrev": 1,
+          "countCurr": 4,
+          "per10kPrev": 1.2430080795525171,
+          "per10kCurr": 4.533605349654312,
+          "deltaPer10k": 3.290597270101795,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "flows results",
+        "score": 0.6464114130833579,
+        "meta": {
+          "z": 1.3737592877819644,
+          "countPrev": 1,
+          "countCurr": 5,
+          "per10kPrev": 1.2430080795525171,
+          "per10kCurr": 5.667006687067891,
+          "deltaPer10k": 4.423998607515374,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "transaction",
+        "score": 0.6385549389135909,
+        "meta": {
+          "z": 1.7325374305412833,
+          "countPrev": 1,
+          "countCurr": 7,
+          "per10kPrev": 1.2430080795525171,
+          "per10kCurr": 7.933809361895047,
+          "deltaPer10k": 6.69080128234253,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "separation transactions",
+        "score": -0.9505334203190906,
+        "meta": {
+          "z": -2.0200820840737825,
+          "countPrev": 16,
+          "countCurr": 7,
+          "per10kPrev": 19.888129272840274,
+          "per10kCurr": 7.933809361895047,
+          "deltaPer10k": -11.954319910945227,
+          "distinctive": true
+        }
+      },
+      {
+        "label": "expected continue",
+        "score": -0.7288029244054681,
+        "meta": {
+          "z": -0.9685610196911218,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.4860161591050343,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.4860161591050343,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ownership position",
+        "score": -0.5854424337542413,
+        "meta": {
+          "z": -0.9685610196911218,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.4860161591050343,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.4860161591050343,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "covid pandemic",
+        "score": -0.5263766714651973,
+        "meta": {
+          "z": -1.1186603866535092,
+          "countPrev": 11,
+          "countCurr": 7,
+          "per10kPrev": 13.673088875077688,
+          "per10kCurr": 7.933809361895047,
+          "deltaPer10k": -5.739279513182641,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "baker",
+        "score": -0.5195884123797,
+        "meta": {
+          "z": -1.096998655273245,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 3.7290242386575514,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.7290242386575514,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "hughes",
+        "score": -0.5195884123797,
+        "meta": {
+          "z": -1.096998655273245,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 3.7290242386575514,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.7290242386575514,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "deferrals",
+        "score": -0.4370023330263607,
+        "meta": {
+          "z": -0.6261194229424869,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 2.4860161591050343,
+          "per10kCurr": 1.133401337413578,
+          "deltaPer10k": -1.3526148216914562,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "goods",
+        "score": -0.4370023330263607,
+        "meta": {
+          "z": -0.6261194229424869,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 2.4860161591050343,
+          "per10kCurr": 1.133401337413578,
+          "deltaPer10k": -1.3526148216914562,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "requests",
+        "score": -0.4370023330263607,
+        "meta": {
+          "z": -0.6261194229424869,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 2.4860161591050343,
+          "per10kCurr": 1.133401337413578,
+          "deltaPer10k": -1.3526148216914562,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "baker hughes",
+        "score": -0.38533707978027687,
+        "meta": {
+          "z": -1.096998655273245,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 3.7290242386575514,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.7290242386575514,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "Pandemic",
+        "score": -0.3789776554013514,
+        "meta": {
+          "z": -1.0282482106218072,
+          "countPrev": 14,
+          "countCurr": 10,
+          "per10kPrev": 17.40211311373524,
+          "per10kCurr": 11.334013374135782,
+          "deltaPer10k": -6.068099739599457,
+          "distinctive": false,
+          "includes": [
+            "pandemic"
+          ]
+        }
+      },
+      {
+        "label": "contract modifications",
+        "score": -0.37845512191389574,
+        "meta": {
+          "z": -0.6261194229424869,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 2.4860161591050343,
+          "per10kCurr": 1.133401337413578,
+          "deltaPer10k": -1.3526148216914562,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "deferrals contract",
+        "score": -0.37845512191389574,
+        "meta": {
+          "z": -0.6261194229424869,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 2.4860161591050343,
+          "per10kCurr": 1.133401337413578,
+          "deltaPer10k": -1.3526148216914562,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "payment deferrals",
+        "score": -0.37845512191389574,
+        "meta": {
+          "z": -0.6261194229424869,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 2.4860161591050343,
+          "per10kCurr": 1.133401337413578,
+          "deltaPer10k": -1.3526148216914562,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "timeframes",
+        "score": -0.37467585594391484,
+        "meta": {
+          "z": -0.5368205453034397,
+          "countPrev": 3,
+          "countCurr": 2,
+          "per10kPrev": 3.7290242386575514,
+          "per10kCurr": 2.266802674827156,
+          "deltaPer10k": -1.4622215638303953,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_risers_alt": [
+      {
+        "label": "energy businesses",
+        "score": 1.6520580814984074,
+        "meta": {}
+      },
+      {
+        "label": "ability meet",
+        "score": 0.8609296488608162,
+        "meta": {}
+      },
+      {
+        "label": "future adverse",
+        "score": 1.648958097534023,
+        "meta": {}
+      },
+      {
+        "label": "healthcare separation",
+        "score": 1.648958097534023,
+        "meta": {}
+      },
+      {
+        "label": "products meet",
+        "score": 1.648958097534023,
+        "meta": {}
+      },
+      {
+        "label": "market conditions",
+        "score": 1.1213854744055984,
+        "meta": {}
+      },
+      {
+        "label": "new products",
+        "score": 1.1213854744055984,
+        "meta": {}
+      },
+      {
+        "label": "financial risks",
+        "score": 0.9717581088262524,
+        "meta": {}
+      },
+      {
+        "label": "meet cash",
+        "score": 0.8579100506953123,
+        "meta": {}
+      },
+      {
+        "label": "addition suppliers",
+        "score": 0.7678373847898188,
+        "meta": {}
+      },
+      {
+        "label": "Inflation",
+        "score": 0.4483952443744066,
+        "meta": {}
+      },
+      {
+        "label": "global economic",
+        "score": 0.09748409215115306,
+        "meta": {}
+      },
+      {
+        "label": "results operations cash",
+        "score": 0.037350819342842456,
+        "meta": {}
+      }
+    ],
+    "top_fallers_alt": [
+      {
+        "label": "risks face",
+        "score": -1.791617724273313,
+        "meta": {}
+      },
+      {
+        "label": "labor shortages",
+        "score": -1.260771344102685,
+        "meta": {}
+      },
+      {
+        "label": "financial markets",
+        "score": -0.22328953397787377,
+        "meta": {}
+      },
+      {
+        "label": "Supply chain",
+        "score": -0.13190204013965534,
+        "meta": {}
+      },
+      {
+        "label": "new product",
+        "score": -0.21037962629182827,
+        "meta": {}
+      },
+      {
+        "label": "financial performance",
+        "score": -0.20299188751223296,
+        "meta": {}
+      },
+      {
+        "label": "products services",
+        "score": -0.06027323779037874,
+        "meta": {}
+      },
+      {
+        "label": "Climate change",
+        "score": -0.07444709212686451,
+        "meta": {}
+      },
+      {
+        "label": "Interest rates",
+        "score": -0.07441663794828601,
+        "meta": {}
+      },
+      {
+        "label": "credit risk",
+        "score": -0.0736985712107483,
+        "meta": {}
+      },
+      {
+        "label": "businesses subject",
+        "score": -0.07351176255886616,
+        "meta": {}
+      },
+      {
+        "label": "Intellectual property",
+        "score": -0.029645123644509885,
+        "meta": {}
+      },
+      {
+        "label": "economic growth",
+        "score": -0.07255227507455109,
+        "meta": {}
+      },
+      {
+        "label": "Data privacy",
+        "score": -0.07233721858517894,
+        "meta": {}
+      },
+      {
+        "label": "economic conditions",
+        "score": -0.07233721858517894,
+        "meta": {}
+      }
+    ],
+    "summary_alt": "Adds emphasis on energy businesses, ability meet, future adverse; de-emphasizes risks face, labor shortages, financial markets."
+  },
+  "evidence": [
+    {
+      "year": 2022,
+      "paragraph_idx": 3,
+      "snippet": "Whether or not the GE Vernova separation transaction is completed, our businesses may face material challenges as a result of the GE HealthCare separation and in connection with the GE Vernova separation, including the diversion of management\u2019s attention from ongoing business concerns and impact on the businesses of the Company; appropriately allocating assets and liabilities among GE Aerospace and GE Vernova; maintaining employee morale and retaining and attracting key management and other employees; retaining existing or attracting new business and operational relationships, including with customers, suppliers, employees and other counterparties; assigning customer contracts, guaranties and other contracts and instruments to each of the businesses, and obtaining releases from the counterparties to those contracts or beneficiaries of those instruments; providing financial or credit support for new business; assigning intellectual property to each of the businesses; establishing transition service agreements and standalone readiness for key functions; and potential negative reactions from investors or the financial community. In particular, GE for the past several years has been undertaking various restructuring and business transformation actions (including workforce reductions, global facility consolidations and other cost reduction initiatives, and the GE HealthCare separation) that have entailed changes across our organizational structure, senior leadership, culture, functional alignment, outsourcing and other areas. These pose risks in the form of personnel capacity constraints and institutional knowledge loss that could lead to missed performance or financial targets, loss of key personnel and harm to our reputation, and these risks are heightened with the additional interdependent actions that will be needed to complete the planned separation of GE Vernova.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "vernova",
+        "aercap healthcare",
+        "aerospace",
+        "separation transaction",
+        "lockdowns",
+        "virus",
+        "vernova separation",
+        "healthcare separation",
+        "standalone",
+        "skilled labor",
+        "stability",
+        "completion vernova",
+        "spin",
+        "flows results",
+        "transaction",
+        "separation transactions",
+        "expected continue",
+        "ownership position",
+        "covid pandemic",
+        "baker",
+        "hughes",
+        "deferrals",
+        "goods",
+        "requests",
+        "baker hughes",
+        "Pandemic",
+        "contract modifications",
+        "deferrals contract",
+        "payment deferrals",
+        "timeframes"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 4,
+      "snippet": "Moreover, completion of the GE HealthCare separation has resulted, and completion of the GE Vernova separation will result in independent public companies that are smaller, less diversified companies with more limited businesses concentrated in their respective industries than GE was prior to the separation transactions. As a result, each company may be more vulnerable to global economic trends, geopolitical risks, demand or supply shocks, and changing market conditions, which could have a material adverse effect on its business, financial condition, cash flows and results of operations. In addition, the diversification of revenues, costs, and cash flows will diminish, such that each company\u2019s results of operations, cash flows, working capital, effective tax rate, and financing requirements may be subject to increased volatility and its ability to execute of capital allocation plans, fund capital expenditures and investments, pay dividends and meet debt obligations and other liabilities may be diminished. Each of the separate companies will also incur ongoing costs, including costs of operating as independent public companies, that the separated businesses will no longer be able to share. Additionally, we cannot predict whether the market value of our common stock and the common stock of each of the new independent companies after the separation transactions will be, in the aggregate, less than, equal to or greater than the market value of our common stock prior to the separation transactions. Investors holding our common stock may also sell the common stock of any of the new independent companies that do not match their investment strategies, which may cause a decline in the market price of such common stock. Any decline in the market price of GE HealthCare common stock will also affect the value of our retained equity ownership in that company and could affect the timing and tax treatment of our disposition of that stake.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "vernova",
+        "aercap healthcare",
+        "aerospace",
+        "separation transaction",
+        "lockdowns",
+        "virus",
+        "vernova separation",
+        "healthcare separation",
+        "standalone",
+        "skilled labor",
+        "stability",
+        "completion vernova",
+        "spin",
+        "flows results",
+        "transaction",
+        "separation transactions",
+        "expected continue",
+        "ownership position",
+        "covid pandemic",
+        "baker",
+        "hughes",
+        "deferrals",
+        "goods",
+        "requests",
+        "baker hughes",
+        "Pandemic",
+        "contract modifications",
+        "deferrals contract",
+        "payment deferrals",
+        "timeframes"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 27,
+      "snippet": "Liquidity - Failure to meet our cash flow targets, or additional credit downgrades, could adversely affect our liquidity, funding costs and related margins. We rely primarily on cash and cash equivalents, free cash flows from our operating businesses and cash generated from asset sales and dispositions (including from our equity stakes in AerCap and GE HealthCare) to fund our operations and meet our financial obligations, and to meet our capital allocation objectives. We maintain short-term borrowing facilities, including revolving credit facilities, as a contingency buffer of liquidity and to meet our financial obligations and capital allocation priorities. Failure to meet our cash flow objectives could adversely affect our financial condition or our credit ratings. There can be no assurance that we will not face credit downgrades as a result of factors such as the performance of our businesses, the failure to make progress as planned on the separation transactions and continued progress in decreasing GE\u2019s leverage, reduced diversification of GE\u2019s businesses following the separation transactions, or changes in rating application or methodology. Future downgrades could further adversely affect our ability to execute the planned spin-off of GE Vernova, as well as our cost of funds and related margins, liquidity, competitive position and access to capital markets, and a significant downgrade could have an adverse commercial impact on our businesses. In addition, swap, forward and option contracts are executed under standard master agreements that typically contain mutual downgrade provisions that provide the ability of the counterparty to require termination if the credit ratings of the applicable GE entity were to fall below specified ratings levels agreed upon with the counterparty. For additional discussion about our current credit ratings and related considerations, refer to the Capital Resources and Liquidity - Credit Ratings and Conditions section within MD&A.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "vernova",
+        "aercap healthcare",
+        "aerospace",
+        "separation transaction",
+        "lockdowns",
+        "virus",
+        "vernova separation",
+        "healthcare separation",
+        "standalone",
+        "skilled labor",
+        "stability",
+        "completion vernova",
+        "spin",
+        "flows results",
+        "transaction",
+        "separation transactions",
+        "expected continue",
+        "ownership position",
+        "covid pandemic",
+        "baker",
+        "hughes",
+        "deferrals",
+        "goods",
+        "requests",
+        "baker hughes",
+        "Pandemic",
+        "contract modifications",
+        "deferrals contract",
+        "payment deferrals",
+        "timeframes"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 6,
+      "snippet": "COVID-19 - The global COVID-19 pandemic has had and may continue to have a material adverse impact on our operations and financial performance, as well as on the operations and financial performance of many of the customers and suppliers in industries that we serve. Our operations and financial performance since early 2020 have been negatively impacted by the COVID-19 pandemic that has caused, and may continue to cause, a slowdown of economic activity (including the decrease in demand for a broad variety of goods and services), disruptions in global supply chains and significant volatility and disruption of financial markets. As the COVID-19 pandemic continues to affect economic activity globally or in various regions, the extent to which this will adversely impact our future operations and financial performance is uncertain. Across all of our businesses, we have experienced and expect to continue to experience operational challenges from the need to protect employee health and safety, site shutdowns, workplace disruptions and restrictions on the movement of people, raw materials and goods, both at our own facilities and at those of our customers and suppliers, global supply chain disruptions and price inflation. We also have experienced, and may continue experiencing, lower demand and volume for products and services, customer requests for potential payment deferrals or other contract modifications, supply chain under-liquidation, delays of deliveries and the achievement of other billing milestones, delays or cancellations of new projects and related down payments and other factors related directly and indirectly to the COVID-19 pandemic's effects on our customers that adversely impact our businesses. In particular, interruptions of regional and international air travel from COVID-19 are having a material adverse effect on our airline and airframer customers and their demand for our services and products. While our Aviation business is showing continued signs of recovery, the recently renewed intensity of the COVID-19 pandemic in many parts of the world could stall the recovery achieved to date and lead to future requests for payment deferrals, contract modifications, and similar actions across the aviation sector, which may lead to additional charges, impairments and other adverse financial impacts, or to customer disputes.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "vernova",
+        "aercap healthcare",
+        "aerospace",
+        "separation transaction",
+        "lockdowns",
+        "virus",
+        "vernova separation",
+        "healthcare separation",
+        "standalone",
+        "skilled labor",
+        "stability",
+        "completion vernova",
+        "spin",
+        "flows results",
+        "transaction",
+        "separation transactions",
+        "expected continue",
+        "ownership position",
+        "covid pandemic",
+        "baker",
+        "hughes",
+        "deferrals",
+        "goods",
+        "requests",
+        "baker hughes",
+        "Pandemic",
+        "contract modifications",
+        "deferrals contract",
+        "payment deferrals",
+        "timeframes"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 13,
+      "snippet": "Business portfolio - Our success depends on achieving our strategic and financial objectives, including through acquisitions, integrations, dispositions and joint ventures. With respect to acquisitions and business integrations, such as our Healthcare business\u2019s recent acquisition of BK Medical, or with joint ventures and business integrations, we may not achieve expected returns and other benefits on a timely basis or at all as a result of changes in strategy, integration challenges or other factors. Over the past several years we have also been pursuing a variety of dispositions, including the ongoing monetization of our remaining equity ownership position in Baker Hughes and our plans to monetize our equity ownership position in AerCap. Declines in the values of equity interests (such as our interests in Baker Hughes and AerCap) or other assets that we sell can diminish the cash proceeds that we realize. We may dispose of businesses or assets at a price or on terms that are less favorable than we had anticipated, or with purchase price adjustments or the exclusion of assets or liabilities that must be divested, managed or run off separately. Dispositions or other business separations also often involve continued financial involvement in the divested business, such as through continuing equity ownership, retained assets or liabilities, transition services agreements, commercial agreements, guarantees, indemnities or other current or contingent financial obligations or liabilities. Under these arrangements, performance by the divested businesses or other conditions outside our control could materially affect our future financial results. Executing on all types of portfolio transactions can divert senior management time and resources from other pursuits. We also participate in a number of joint ventures with other companies or government enterprises in various markets around the world, including joint ventures where we have a lesser degree of control over the business operations, which expose us to additional operational, financial, reputational, legal or compliance risks.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "vernova",
+        "aercap healthcare",
+        "aerospace",
+        "separation transaction",
+        "lockdowns",
+        "virus",
+        "vernova separation",
+        "healthcare separation",
+        "standalone",
+        "skilled labor",
+        "stability",
+        "completion vernova",
+        "spin",
+        "flows results",
+        "transaction",
+        "separation transactions",
+        "expected continue",
+        "ownership position",
+        "covid pandemic",
+        "baker",
+        "hughes",
+        "deferrals",
+        "goods",
+        "requests",
+        "baker hughes",
+        "Pandemic",
+        "contract modifications",
+        "deferrals contract",
+        "payment deferrals",
+        "timeframes"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 2,
+      "snippet": "Strategic plan - We may encounter challenges to executing our plan to separate GE into three public companies, or to completing the plan within the timeframes we anticipate, and we may not realize some or all of the expected benefits of the separations. In November 2021, we announced our plan to form three independent public companies from our (i) Aviation business, (ii) Healthcare business and (iii) combined Renewable Energy, Power and Digital businesses, in order to better position those businesses to deliver long-term growth and create value for customers, investors, and employees. The planned business separations are expected to be effected through spin-offs by GE that are intended to be tax-free for the Company\u2019s shareholders for U.S. federal income tax purposes. These separation transactions will be subject to the satisfaction of a number of customary conditions, including, among others, final approvals by GE\u2019s Board of Directors, receipt of tax rulings in certain jurisdictions and/or tax opinions from external counsel, the filing with the SEC and effectiveness of Form 10 registration statements, and satisfactory completion of financing. The failure to satisfy all of the required conditions could delay the completion of the separation transactions for a significant period of time or prevent them from occurring at all. Additionally, the separation transactions are complex in nature, and unanticipated developments or changes may affect our ability to complete one or both of the separation transactions as currently expected, within the anticipated timeframes or at all. These or other developments could cause us not to realize some or all of the expected benefits, or to realize them",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "vernova",
+        "aercap healthcare",
+        "aerospace",
+        "separation transaction",
+        "lockdowns",
+        "virus",
+        "vernova separation",
+        "healthcare separation",
+        "standalone",
+        "skilled labor",
+        "stability",
+        "completion vernova",
+        "spin",
+        "flows results",
+        "transaction",
+        "separation transactions",
+        "expected continue",
+        "ownership position",
+        "covid pandemic",
+        "baker",
+        "hughes",
+        "deferrals",
+        "goods",
+        "requests",
+        "baker hughes",
+        "Pandemic",
+        "contract modifications",
+        "deferrals contract",
+        "payment deferrals",
+        "timeframes"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.033,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T19:27:23Z",
+    "git_commit": "cfe9628e9904d9ea49e72960b3535e0464887ce9",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "33cd08318c3afe8fd69423a1f2d61b59aefa60e076d72143891dd4a695ad7491",
+      "curr_text_sha256": "625585febfb164ec0fa5e2974a08cd27e0e1f9f812e1a13f76f076360d33c118",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

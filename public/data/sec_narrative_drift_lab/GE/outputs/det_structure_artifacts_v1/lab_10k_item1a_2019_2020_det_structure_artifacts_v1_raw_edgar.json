@@ -1,0 +1,111 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_structure_artifacts_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "GE",
+  "section": "10k_item1a",
+  "year_from": 2019,
+  "year_to": 2020,
+  "artifacts": {
+    "stats": {
+      "headings_prev": [
+        "GE 2019 FORM 10-K 50",
+        "GE 2019 FORM 10-K 51",
+        "GE 2019 FORM 10-K 52",
+        "GE 2019 FORM 10-K 53",
+        "GE 2019 FORM 10-K 54",
+        "GE 2019 FORM 10-K 55",
+        "GE 2019 FORM 10-K 56",
+        "LEGAL PROCEEDINGS"
+      ],
+      "headings_curr": [
+        "GE 2020 FORM 10-K 44",
+        "GE 2020 FORM 10-K 45",
+        "GE 2020 FORM 10-K 46",
+        "GE 2020 FORM 10-K 47",
+        "GE 2020 FORM 10-K 48",
+        "GE 2020 FORM 10-K 49",
+        "GE 2020 FORM 10-K 50"
+      ],
+      "headings_added": [
+        "GE 2020 FORM 10-K 44",
+        "GE 2020 FORM 10-K 45",
+        "GE 2020 FORM 10-K 46",
+        "GE 2020 FORM 10-K 47",
+        "GE 2020 FORM 10-K 48",
+        "GE 2020 FORM 10-K 49",
+        "GE 2020 FORM 10-K 50"
+      ],
+      "headings_removed": [
+        "GE 2019 FORM 10-K 50",
+        "GE 2019 FORM 10-K 51",
+        "GE 2019 FORM 10-K 52",
+        "GE 2019 FORM 10-K 53",
+        "GE 2019 FORM 10-K 54",
+        "GE 2019 FORM 10-K 55",
+        "GE 2019 FORM 10-K 56",
+        "LEGAL PROCEEDINGS"
+      ],
+      "paragraph_count_prev": 26,
+      "paragraph_count_curr": 25,
+      "length_chars_prev": 51209,
+      "length_chars_curr": 57369
+    }
+  },
+  "evidence": [
+    {
+      "year": 2020,
+      "paragraph_idx": 5,
+      "snippet": "Global macro-environment - Our growth is subject to global economic, political and geopolitical risks. We operate in virtually every part of the world, serve customers in over 170 countries and received 56% of our revenues for 2020 from outside the United States. Our operations and the execution of our business plans and strategies are subject to the effects of global economic trends, geopolitical risks and demand or supply shocks from events that could include war, a major terrorist attack, natural disasters or actual or threatened health emergencies (such as COVID-19). They are also affected by local and regional economic environments and policies in the U.S. and other markets that we serve, including interest rates, monetary policy, inflation, economic growth, recession, commodity prices, currency volatility, currency controls or other limitations on the ability to expatriate cash, sovereign debt levels and actual or anticipated defaults on sovereign debt. For example, changes in local economic conditions or outlooks, such as lower rates of investment or economic growth in China, Europe or other key markets, affect the demand for or profitability of our products and services outside the U.S., and the impact on the Company could be significant given the extent of our activities outside the United States. Political changes and trends such as populism, protectionism, economic nationalism and sentiment toward multinational companies and resulting tariffs, export controls or other trade barriers, or changes to tax or other laws and policies, have been and may continue to be disruptive and costly to our businesses, and these can interfere with our global operating model, supply chain, production costs, customer relationships and competitive position. Further escalation of specific trade tensions, such as those between the U.S. and China, or in global trade conflict more broadly could be harmful to global economic growth, and related decreases in confidence or investment activity in the global markets would adversely affect our business performance. We also do business in many emerging market jurisdictions where economic, political and legal risks are heightened.",
+      "why": "Heading added: GE 2020 FORM 10-K 44"
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 7,
+      "snippet": "Competitive environment - We are dependent on the maintenance of existing product lines and service relationships, market acceptance of new product and service introductions and technology and innovation leadership for revenue and earnings growth. The markets in which we operate are highly competitive in terms of pricing, product and service quality, product development and introduction time, customer service, financing terms and shifts in market demand, and competitors are increasingly offering services for our installed base. Our businesses are also subject to technological change and require us to continually attract and retain skilled talent. The introduction of innovative and disruptive technologies in the markets in which we operate also poses risks in the form of new competitors (including new entrants from outside our traditional industries, such as competitors from digital technology companies), market consolidation, substitutions of existing products, services or solutions, niche players, new business models and competitors that are faster to market with new or more cost-effective products or services. Because the research and development cycle involved in bringing products in our businesses to market is often lengthy, it is inherently difficult to predict the economic conditions and competitive dynamics that will exist when any new product is complete, and our investments, to the extent they result in bringing a product to market, may generate weaker returns than we anticipated at the outset. Our capacity to invest in research and development efforts to pursue advancement in a wide range of technologies, products and services also depends on the financial resources that we have available for such investment relative to other capital allocation priorities, and to the extent there may be under-investment that could lead to loss of sales of our products and services in the future, particularly in our long-cycle businesses. The amounts that we do invest in research and development divert resources from other potential investments in our businesses, and our efforts may not lead to the development of new technologies or products on a timely basis or meet the needs of our customers as fully as competitive offerings.",
+      "why": "Heading added: GE 2020 FORM 10-K 45"
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 10,
+      "snippet": "Intellectual property - Our intellectual property portfolio may not prevent competitors from independently developing products and services similar to or duplicative to ours, and the value of our intellectual property may be negatively impacted by external dependencies. Our patents and other intellectual property may not prevent competitors from independently developing or selling products and services similar to or duplicative of ours, and there can be no assurance that the resources invested by us to protect our intellectual property will be sufficient or that our intellectual property portfolio will adequately deter misappropriation or improper use of our technology. Trademark licenses of the GE brand in connection with dispositions may negatively impact the overall value of the brand in the future. We also face competition in some countries where we have not invested in an intellectual property portfolio. If we are not able to protect our intellectual property, the value of our brand and other intangible assets may be diminished, and our business may be adversely affected. We also face attempts to gain unauthorized access to our IT systems or products for the purpose of improperly acquiring our trade secrets or confidential business information. The theft or unauthorized use or publication of our trade secrets and other confidential business information as a result of such an incident could adversely affect our competitive position and the value of our investment in research and development. In addition, we are subject to the enforcement of patents or other intellectual property by third parties, including aggressive and opportunistic enforcement claims by non-practicing entities. Regardless of the merit of such claims, responding to infringement claims can be expensive and time-consuming. If GE is found to infringe any third-party rights, we could be required to pay substantial damages or we could be enjoined from offering some of our products and services. The value of, or our ability to use, our intellectual property may also be negatively impacted by dependencies on third parties, such as our ability to obtain or renew on reasonable terms licenses that we need in the future, or our ability to secure or retain ownership or rights to use data in certain software analytics or services offerings.",
+      "why": "Heading added: GE 2020 FORM 10-K 46"
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 3,
+      "snippet": "Portfolio strategy execution - Our success depends on achieving our strategic and financial objectives, including through dispositions. We are pursuing a variety of dispositions, including the planned sale of our BioPharma business within our Healthcare segment and exiting our remaining equity ownership position in Baker Hughes. The proceeds that we expect to receive from such actions are an important source of cash flow for the Company as part of our strategic and financial planning. As we seek to sell certain businesses, equity interests or assets, we may encounter difficulty in finding buyers, managing interdependencies across multiple transactions and other Company initiatives or implementing separation plans, which could delay or prevent the accomplishment of our strategic and financial objectives, including our goal of reducing the Company\u2019s leverage to targeted levels over time. In particular, some of the disposition strategies that we are considering or may consider depend on favorable conditions in the capital markets or private acquisition financing markets for execution, and declines in the values of equity interests (such as our remaining interest in Baker Hughes) or other assets that we sell can diminish the cash proceeds that we realize. We may dispose of businesses or assets at a price or on terms that are less favorable than we had anticipated, or with purchase price adjustments or the exclusion of assets or liabilities that must be divested, managed or run off separately. We are also subject to limitations in the form of regulatory or governmental approvals that may prevent certain prospective purchasers from completing transactions with us or delay us from executing transactions on our preferred timeline, or arising from our debt or other contractual obligations that limit our ability to complete certain business or asset dispositions. Moreover, recent and planned dispositions have the effects of reducing the Company\u2019s cash flow and earnings capacity, resulting in a less diversified portfolio of businesses and increasing our dependency on remaining businesses for our financial results from ongoing operations. Executing on these transactions can divert senior management time and resources from other pursuits. Dispositions or other business separations also often involve continued financial involvement in the divested business, such as through continuing equity ownership, retained assets or liabilities, transition services agreements, commercial agreements, guarantees, indemnities or other current or contingent financial obligations or liabilities. Under these arrangements, performance by the divested businesses or other conditions outside our control could materially affect our future financial results.",
+      "why": "Heading removed: GE 2019 FORM 10-K 50"
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 7,
+      "snippet": "Restructuring & personnel - We have been undertaking extensive cost reduction and restructuring efforts; these efforts may have adverse effects on our operations, employee retention, results and reputation and may not achieve the expected benefits . We continue undertaking restructuring actions that include workforce reductions, global facility consolidations and other cost reduction initiatives. These actions are a central component of our ongoing efforts to improve operational and financial performance. The extent of change across our organizational structure, senior leadership, culture, functional alignment, outsourcing and other areas poses risks in the form of personnel capacity constraints and institutional knowledge loss that could lead to missed performance or financial targets, loss of key personnel and harm to our reputation. The risk of capacity constraints is also heightened with the number of interdependent and transformational business portfolio and internal actions that we have been undertaking during a period of significant restructuring and cost reduction across the Company. Moreover, if we do not successfully manage our restructuring and other transformational activities, the anticipated operational improvements, efficiencies and other benefits might be delayed or not realized, and our operations and business could be disrupted. Risks associated with these actions include unforeseen delays in implementation of workforce reductions, additional unexpected costs, adverse effects on employee morale, loss of key employees or other retention issues, inability to attract and hire talented professionals or the failure to meet operational targets due to the loss of employees or work stoppages, any of which may impair our ability to achieve anticipated cost reductions or may otherwise harm our business or reputation and have an adverse effect on our competitive position or financial performance .",
+      "why": "Heading removed: GE 2019 FORM 10-K 51"
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 11,
+      "snippet": "Product safety - Our products and services are highly sophisticated and specialized, and a major failure or similar event affecting our products or third-party products with which our products are integrated can adversely affect our business, reputation, financial position and results of operations. We produce highly sophisticated products and provide specialized services for both our own and third-party products that incorporate or use complex or leading-edge technology, including both hardware and software. Many of our products and services involve complex industrial machinery or infrastructure projects, such as commercial jet engines, gas turbines, onshore and offshore wind turbines or nuclear power generation, and accordingly the impact of a catastrophic product failure or similar event could be significant. In particular, actual or perceived design or production issues related to new product introductions or relatively new product lines can result in significant reputational harm to our businesses, in addition to direct warranty, maintenance and other costs that may arise. A significant product issue resulting in injuries or death, widespread outages, a fleet grounding or similar systemic consequences could have a material adverse effect on our business, reputation, financial position and results of operations. We may also incur increased costs, delayed payments or lost equipment or services revenue in connection with a significant issue with a third party\u2019s product with which our products are integrated. For example, the LEAP-1B engine that our Aviation business develops, produces and sells through CFM is the exclusive engine for the Boeing 737 MAX, which has been subject to a global fleet grounding since March 2019 following two fatal crashes that were unrelated to the LEAP engine. The 737 MAX grounding had an adverse effect on GE CFOA in 2019, and uncertainties related to the timing for the 737 MAX return to service and future engine production rates pose material risk for our Aviation business and GE\u2019s overall financial outlook and results. For further information regarding the effect of the 737 MAX grounding on GE CFOA, see the Aviation and GECAS 737 MAX section in Consolidated Results within MD&A. While we have built operational processes to ensure that our product design, manufacture, performance and servicing meet rigorous quality standards, there can be no assurance that we or our customers or other third parties will not experience operational process or product failures and other problems, including through manufacturing or design defects, process or other failures of contractors or third-party suppliers, cyber-attacks or other intentional acts, that could result in potential product, safety, quality, regulatory or environmental risks.",
+      "why": "Heading removed: GE 2019 FORM 10-K 52"
+    }
+  ],
+  "metrics": {
+    "drift_score": 1.0,
+    "confidence": 0.75,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T19:27:23Z",
+    "git_commit": "cfe9628e9904d9ea49e72960b3535e0464887ce9",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "445afa9fd8f58e5308e5cb8e14841ff2ef5fa0ade6dfc41670c440f78f0c27fc",
+      "curr_text_sha256": "231bdd0927c5ed3145794df750f944019d39e3bf17119eaa1dc6846257c3196a",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

@@ -1,0 +1,161 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_jsd_ngrams_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "WM",
+  "section": "10k_item1a",
+  "year_from": 2021,
+  "year_to": 2022,
+  "artifacts": {
+    "ranked_items": [
+      {
+        "label": "sustainability",
+        "score": 0.0005026680071146856
+      },
+      {
+        "label": "sustainability growth",
+        "score": 0.0002706673884463692
+      },
+      {
+        "label": "esg",
+        "score": 0.00023200061866831645
+      },
+      {
+        "label": "growth strategy",
+        "score": 0.00019583062807316466
+      },
+      {
+        "label": "goals",
+        "score": 0.00019583062807316466
+      },
+      {
+        "label": "automation",
+        "score": 0.0001933338488902637
+      },
+      {
+        "label": "recession",
+        "score": 0.0001933338488902637
+      },
+      {
+        "label": "energy businesses",
+        "score": 0.0001933338488902637
+      },
+      {
+        "label": "achieve",
+        "score": 0.0001933338488902637
+      },
+      {
+        "label": "vaccine",
+        "score": 0.00017151187719749593
+      },
+      {
+        "label": "erp hcm",
+        "score": 0.00017151187719749593
+      },
+      {
+        "label": "erp",
+        "score": 0.00017151187719749593
+      },
+      {
+        "label": "hcm",
+        "score": 0.00017151187719749593
+      },
+      {
+        "label": "planned",
+        "score": 0.0001640114044947284
+      },
+      {
+        "label": "including inflation",
+        "score": 0.00015466707911221097
+      },
+      {
+        "label": "significant planned",
+        "score": 0.00015466707911221097
+      },
+      {
+        "label": "planned investments",
+        "score": 0.00015466707911221097
+      },
+      {
+        "label": "yield results",
+        "score": 0.00015466707911221097
+      },
+      {
+        "label": "results anticipated",
+        "score": 0.00015466707911221097
+      },
+      {
+        "label": "includes significant",
+        "score": 0.00015466707911221097
+      }
+    ],
+    "stats": {
+      "jsd": 0.091753,
+      "tokens_prev": 5831,
+      "tokens_curr": 6466
+    }
+  },
+  "evidence": [
+    {
+      "year": 2022,
+      "paragraph_idx": 32,
+      "snippet": "We may not be able to achieve our sustainability and other environmental, social and governance (\"ESG\")-related goals, including reduction of our greenhouse gas (\"GHG\") emissions, or execute on our sustainability-related growth strategy and initiatives, within planned timelines, and expectations and regulations relating to ESG performance and disclosure can result in increased costs, risk of noncompliance, and related adverse effects.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "sustainability",
+        "esg",
+        "growth strategy",
+        "goals"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 33,
+      "snippet": "Consistent with our Company\u2019s long-standing commitment to sustainability and environmental stewardship, we have set goals to reduce our GHG emissions and announced other ESG-related goals and initiatives. We have also announced a sustainability growth strategy that includes significant planned investments in our recycling and renewable energy businesses. Our ability to achieve these goals and successfully execute our sustainability growth strategy may be impacted by the numerous risks and uncertainties associated with our business and the environmental services industry, including financial and operating performance, availability of technology and financing, changes in regulation, commodity price fluctuation and general economic conditions. (Also see Item 1A. Risk Factors \u2014 Our revenues, earnings and cash flows will fluctuate based on changes in commodity prices, and commodity prices for recyclable materials are particularly susceptible to volatility based on macroeconomic conditions and regulations that affect our ability to export products and \u2014 We have announced a sustainability growth strategy that includes significant planned investments in our renewable energy businesses; changes to federal and state renewable fuel policies could affect our financial performance, and such investments may not yield the results anticipated. )",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "sustainability",
+        "sustainability growth",
+        "esg",
+        "growth strategy",
+        "goals"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 47,
+      "snippet": "Our customers are increasingly diverting waste to alternatives to landfill disposal, such as recycling and composting, while also working to reduce the amount of waste they generate. In addition, many state and local governments mandate diversion, recycling and waste reduction at the source and prohibit the disposal of certain types of materials at landfills, such as recyclables (cardboard, bottles and cans), yard waste, food waste and electronics. Where organic waste is not banned from the landfill, some large customers such as grocery stores and restaurants are choosing to divert their organic waste from landfills. Zero-waste goals (sending no waste to the landfill) have been set by many of the U.S. and Canada\u2019s largest companies. Although such mandates and initiatives help to protect our environment, these developments reduce the volume of waste going to our landfills which may affect the prices that we can charge for landfill disposal. Our landfills currently provide our highest income from operations margins. If we are not successful in expanding our service offerings, growing lines of businesses to service waste streams that do not go to landfills, and providing alternative services for customers that wish to reduce waste entirely, then our revenues and operating results may decline. Additionally, despite the development of new service offerings and lines of business, it is possible that our revenues and our income from operations margins could be negatively affected due to disposal alternatives.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "goals"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 68,
+      "snippet": "There is risk of incurring significant environmental liabilities in the use, treatment, storage, transfer and disposal of waste materials. Under applicable environmental laws and regulations, we could be liable if it is alleged that our operations cause environmental damage to our properties or to the property of other landowners, particularly as a result of the contamination of air, drinking water or soil. Under current law, we could also be held liable for damage caused by conditions that existed before we acquired the assets or operations involved and for conditions resulting from waste types or compounds previously considered non-hazardous but later determined to present possible threat to public health or the environment. The risks of successor liability and emerging contaminants are of particular concern as we execute our growth strategy, partially through acquisitions, because we may be unsuccessful in identifying and assessing potential liabilities during our due diligence investigations. Further, the counterparties in such transactions may be unable to perform their indemnification obligations owed to us. Any substantial liability for environmental damage could have a material adverse effect on our financial condition, results of operations and cash flows.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "growth strategy"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.091753,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T19:27:21Z",
+    "git_commit": "cfe9628e9904d9ea49e72960b3535e0464887ce9",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "a241a1405f869f11f5ff29b22c0681289ef94822c893491f55f4ddad76cc96b3",
+      "curr_text_sha256": "04c9c2b3c90a5369bae2cf3ea8a2cd92b72c66032f15a17ae21b9a310dfc2b8a",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

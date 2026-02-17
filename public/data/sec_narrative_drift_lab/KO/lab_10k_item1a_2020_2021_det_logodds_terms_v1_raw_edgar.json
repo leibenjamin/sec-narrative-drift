@@ -1,0 +1,1211 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_logodds_terms_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "KO",
+  "section": "10k_item1a",
+  "year_from": 2020,
+  "year_to": 2021,
+  "artifacts": {
+    "top_risers": [
+      {
+        "label": "esg",
+        "score": 1.004969760390899,
+        "meta": {
+          "z": 1.4398803825439594,
+          "countPrev": 0,
+          "countCurr": 10,
+          "per10kPrev": 0.0,
+          "per10kCurr": 8.390669575432119,
+          "deltaPer10k": 8.390669575432119,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ready",
+        "score": 0.8706210226921324,
+        "meta": {
+          "z": 0.9282707012403605,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.678133915086424,
+          "deltaPer10k": 1.678133915086424,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "month",
+        "score": 0.8011293931273624,
+        "meta": {
+          "z": 1.1478260764729404,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.356267830172848,
+          "deltaPer10k": 3.356267830172848,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "Inflation",
+        "score": 0.7739909096216998,
+        "meta": {
+          "z": 1.3261546248787373,
+          "countPrev": 0,
+          "countCurr": 7,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.873468702802484,
+          "deltaPer10k": 5.873468702802484,
+          "distinctive": false,
+          "includes": [
+            "inflationary pressures",
+            "inflationary",
+            "inflation"
+          ]
+        }
+      },
+      {
+        "label": "anti",
+        "score": 0.6731596770480022,
+        "meta": {
+          "z": 1.4212311955220986,
+          "countPrev": 1,
+          "countCurr": 5,
+          "per10kPrev": 0.8740494712000699,
+          "per10kCurr": 4.195334787716059,
+          "deltaPer10k": 3.3212853165159895,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "adequate",
+        "score": 0.6699120391772063,
+        "meta": {
+          "z": 1.1478260764729404,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.356267830172848,
+          "deltaPer10k": 3.356267830172848,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "overnight",
+        "score": 0.6478899188522946,
+        "meta": {
+          "z": 0.9282707012403605,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.678133915086424,
+          "deltaPer10k": 1.678133915086424,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "brands bottling",
+        "score": 0.6240114208210192,
+        "meta": {
+          "z": 1.3261546248787373,
+          "countPrev": 0,
+          "countCurr": 7,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.873468702802484,
+          "deltaPer10k": 5.873468702802484,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "country",
+        "score": 0.616551131162324,
+        "meta": {
+          "z": 1.0563975931768608,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.517200872629636,
+          "deltaPer10k": 2.517200872629636,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "divestitures",
+        "score": 0.616551131162324,
+        "meta": {
+          "z": 1.0563975931768608,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.517200872629636,
+          "deltaPer10k": 2.517200872629636,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "expectations",
+        "score": 0.616551131162324,
+        "meta": {
+          "z": 1.0563975931768608,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.517200872629636,
+          "deltaPer10k": 2.517200872629636,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "incident",
+        "score": 0.616551131162324,
+        "meta": {
+          "z": 1.0563975931768608,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.517200872629636,
+          "deltaPer10k": 2.517200872629636,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "investigations",
+        "score": 0.616551131162324,
+        "meta": {
+          "z": 1.0563975931768608,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.517200872629636,
+          "deltaPer10k": 2.517200872629636,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "cybersecurity incident",
+        "score": 0.6008844579156789,
+        "meta": {
+          "z": 1.2770049974953743,
+          "countPrev": 0,
+          "countCurr": 6,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.034401745259272,
+          "deltaPer10k": 5.034401745259272,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "present extent",
+        "score": 0.5610891285819256,
+        "meta": {
+          "z": 0.9282707012403605,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.678133915086424,
+          "deltaPer10k": 1.678133915086424,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_fallers": [
+      {
+        "label": "alcoholic",
+        "score": -1.1000810858111951,
+        "meta": {
+          "z": -1.1729248597622262,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.4961978848002797,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.4961978848002797,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "crisis",
+        "score": -1.1000810858111951,
+        "meta": {
+          "z": -1.1729248597622262,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.4961978848002797,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.4961978848002797,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "reorganization",
+        "score": -1.1000810858111951,
+        "meta": {
+          "z": -1.1729248597622262,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.4961978848002797,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.4961978848002797,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "shelter",
+        "score": -1.1000810858111951,
+        "meta": {
+          "z": -1.1729248597622262,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.4961978848002797,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.4961978848002797,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "shelter place",
+        "score": -1.0722264106015862,
+        "meta": {
+          "z": -1.1729248597622262,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.4961978848002797,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.4961978848002797,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "segments",
+        "score": -1.0142398421975445,
+        "meta": {
+          "z": -1.081399489563618,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.62214841360021,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.62214841360021,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "approach",
+        "score": -0.8938966619109043,
+        "meta": {
+          "z": -0.9530875772131193,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7480989424001399,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7480989424001399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "behaviors",
+        "score": -0.8938966619109043,
+        "meta": {
+          "z": -0.9530875772131193,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7480989424001399,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7480989424001399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "distancing",
+        "score": -0.8938966619109043,
+        "meta": {
+          "z": -0.9530875772131193,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7480989424001399,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7480989424001399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "improving",
+        "score": -0.8938966619109043,
+        "meta": {
+          "z": -0.9530875772131193,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7480989424001399,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7480989424001399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "optimization",
+        "score": -0.8938966619109043,
+        "meta": {
+          "z": -0.9530875772131193,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7480989424001399,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7480989424001399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "recommendations",
+        "score": -0.8938966619109043,
+        "meta": {
+          "z": -0.9530875772131193,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7480989424001399,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7480989424001399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "reopening",
+        "score": -0.8938966619109043,
+        "meta": {
+          "z": -0.9530875772131193,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7480989424001399,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7480989424001399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "routines",
+        "score": -0.8938966619109043,
+        "meta": {
+          "z": -0.9530875772131193,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7480989424001399,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7480989424001399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "stronger",
+        "score": -0.8938966619109043,
+        "meta": {
+          "z": -0.9530875772131193,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7480989424001399,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7480989424001399,
+          "distinctive": false
+        }
+      }
+    ],
+    "summary": "Adds emphasis on esg, ready, month; de-emphasizes alcoholic, crisis, reorganization.",
+    "ranked_items": [
+      {
+        "label": "esg",
+        "score": 1.004969760390899,
+        "meta": {
+          "z": 1.4398803825439594,
+          "countPrev": 0,
+          "countCurr": 10,
+          "per10kPrev": 0.0,
+          "per10kCurr": 8.390669575432119,
+          "deltaPer10k": 8.390669575432119,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ready",
+        "score": 0.8706210226921324,
+        "meta": {
+          "z": 0.9282707012403605,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.678133915086424,
+          "deltaPer10k": 1.678133915086424,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "month",
+        "score": 0.8011293931273624,
+        "meta": {
+          "z": 1.1478260764729404,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.356267830172848,
+          "deltaPer10k": 3.356267830172848,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "Inflation",
+        "score": 0.7739909096216998,
+        "meta": {
+          "z": 1.3261546248787373,
+          "countPrev": 0,
+          "countCurr": 7,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.873468702802484,
+          "deltaPer10k": 5.873468702802484,
+          "distinctive": false,
+          "includes": [
+            "inflationary pressures",
+            "inflationary",
+            "inflation"
+          ]
+        }
+      },
+      {
+        "label": "anti",
+        "score": 0.6731596770480022,
+        "meta": {
+          "z": 1.4212311955220986,
+          "countPrev": 1,
+          "countCurr": 5,
+          "per10kPrev": 0.8740494712000699,
+          "per10kCurr": 4.195334787716059,
+          "deltaPer10k": 3.3212853165159895,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "adequate",
+        "score": 0.6699120391772063,
+        "meta": {
+          "z": 1.1478260764729404,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.356267830172848,
+          "deltaPer10k": 3.356267830172848,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "overnight",
+        "score": 0.6478899188522946,
+        "meta": {
+          "z": 0.9282707012403605,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.678133915086424,
+          "deltaPer10k": 1.678133915086424,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "brands bottling",
+        "score": 0.6240114208210192,
+        "meta": {
+          "z": 1.3261546248787373,
+          "countPrev": 0,
+          "countCurr": 7,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.873468702802484,
+          "deltaPer10k": 5.873468702802484,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "country",
+        "score": 0.616551131162324,
+        "meta": {
+          "z": 1.0563975931768608,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.517200872629636,
+          "deltaPer10k": 2.517200872629636,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "divestitures",
+        "score": 0.616551131162324,
+        "meta": {
+          "z": 1.0563975931768608,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.517200872629636,
+          "deltaPer10k": 2.517200872629636,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "expectations",
+        "score": 0.616551131162324,
+        "meta": {
+          "z": 1.0563975931768608,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.517200872629636,
+          "deltaPer10k": 2.517200872629636,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "incident",
+        "score": 0.616551131162324,
+        "meta": {
+          "z": 1.0563975931768608,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.517200872629636,
+          "deltaPer10k": 2.517200872629636,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "investigations",
+        "score": 0.616551131162324,
+        "meta": {
+          "z": 1.0563975931768608,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.517200872629636,
+          "deltaPer10k": 2.517200872629636,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "cybersecurity incident",
+        "score": 0.6008844579156789,
+        "meta": {
+          "z": 1.2770049974953743,
+          "countPrev": 0,
+          "countCurr": 6,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.034401745259272,
+          "deltaPer10k": 5.034401745259272,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "present extent",
+        "score": 0.5610891285819256,
+        "meta": {
+          "z": 0.9282707012403605,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.678133915086424,
+          "deltaPer10k": 1.678133915086424,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "alcoholic",
+        "score": -1.1000810858111951,
+        "meta": {
+          "z": -1.1729248597622262,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.4961978848002797,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.4961978848002797,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "crisis",
+        "score": -1.1000810858111951,
+        "meta": {
+          "z": -1.1729248597622262,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.4961978848002797,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.4961978848002797,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "reorganization",
+        "score": -1.1000810858111951,
+        "meta": {
+          "z": -1.1729248597622262,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.4961978848002797,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.4961978848002797,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "shelter",
+        "score": -1.1000810858111951,
+        "meta": {
+          "z": -1.1729248597622262,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.4961978848002797,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.4961978848002797,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "shelter place",
+        "score": -1.0722264106015862,
+        "meta": {
+          "z": -1.1729248597622262,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.4961978848002797,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.4961978848002797,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "segments",
+        "score": -1.0142398421975445,
+        "meta": {
+          "z": -1.081399489563618,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.62214841360021,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.62214841360021,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "approach",
+        "score": -0.8938966619109043,
+        "meta": {
+          "z": -0.9530875772131193,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7480989424001399,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7480989424001399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "behaviors",
+        "score": -0.8938966619109043,
+        "meta": {
+          "z": -0.9530875772131193,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7480989424001399,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7480989424001399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "distancing",
+        "score": -0.8938966619109043,
+        "meta": {
+          "z": -0.9530875772131193,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7480989424001399,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7480989424001399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "improving",
+        "score": -0.8938966619109043,
+        "meta": {
+          "z": -0.9530875772131193,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7480989424001399,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7480989424001399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "optimization",
+        "score": -0.8938966619109043,
+        "meta": {
+          "z": -0.9530875772131193,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7480989424001399,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7480989424001399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "recommendations",
+        "score": -0.8938966619109043,
+        "meta": {
+          "z": -0.9530875772131193,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7480989424001399,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7480989424001399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "reopening",
+        "score": -0.8938966619109043,
+        "meta": {
+          "z": -0.9530875772131193,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7480989424001399,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7480989424001399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "routines",
+        "score": -0.8938966619109043,
+        "meta": {
+          "z": -0.9530875772131193,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7480989424001399,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7480989424001399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "stronger",
+        "score": -0.8938966619109043,
+        "meta": {
+          "z": -0.9530875772131193,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.7480989424001399,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.7480989424001399,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_risers_alt": [
+      {
+        "label": "cybersecurity incident",
+        "score": 1.2162485588211256,
+        "meta": {}
+      },
+      {
+        "label": "increase cost",
+        "score": 0.9220499005692737,
+        "meta": {}
+      },
+      {
+        "label": "cost increases",
+        "score": 2.3370981819870007,
+        "meta": {}
+      },
+      {
+        "label": "future subject",
+        "score": 2.3370981819870007,
+        "meta": {}
+      },
+      {
+        "label": "increases cost",
+        "score": 2.3370981819870007,
+        "meta": {}
+      },
+      {
+        "label": "use information",
+        "score": 2.3370981819870007,
+        "meta": {}
+      },
+      {
+        "label": "use packaging materials",
+        "score": 1.4210990901939038,
+        "meta": {}
+      },
+      {
+        "label": "Inflation",
+        "score": 1.307830804979515,
+        "meta": {}
+      },
+      {
+        "label": "laws regulations",
+        "score": 0.2807861120714903,
+        "meta": {}
+      },
+      {
+        "label": "Supply chain",
+        "score": 0.22112645785688212,
+        "meta": {}
+      },
+      {
+        "label": "bottling partners",
+        "score": 0.12034744879516723,
+        "meta": {}
+      },
+      {
+        "label": "Climate change",
+        "score": 0.1567711145616637,
+        "meta": {}
+      },
+      {
+        "label": "bottling partners financial",
+        "score": 0.14067661601808368,
+        "meta": {}
+      },
+      {
+        "label": "Intellectual property",
+        "score": 0.032388162935347964,
+        "meta": {}
+      },
+      {
+        "label": "income tax",
+        "score": 0.03177775512422443,
+        "meta": {}
+      }
+    ],
+    "top_fallers_alt": [
+      {
+        "label": "united states",
+        "score": -0.9102286712237082,
+        "meta": {}
+      },
+      {
+        "label": "covid pandemic",
+        "score": -2.282992977853869,
+        "meta": {}
+      },
+      {
+        "label": "results operations financial",
+        "score": -2.277896978133848,
+        "meta": {}
+      },
+      {
+        "label": "major markets",
+        "score": -0.9642905864315408,
+        "meta": {}
+      },
+      {
+        "label": "bottling partners result",
+        "score": -2.275360889300643,
+        "meta": {}
+      },
+      {
+        "label": "increased sales",
+        "score": -2.275360889300643,
+        "meta": {}
+      },
+      {
+        "label": "increase costs",
+        "score": -1.3592910093006187,
+        "meta": {}
+      },
+      {
+        "label": "negatively affected",
+        "score": -0.4379662510417077,
+        "meta": {}
+      },
+      {
+        "label": "customer demand",
+        "score": -2.2728326808950134,
+        "meta": {}
+      },
+      {
+        "label": "ability supply",
+        "score": -0.2262394124660112,
+        "meta": {}
+      },
+      {
+        "label": "beverage products",
+        "score": -0.0767278608176789,
+        "meta": {}
+      },
+      {
+        "label": "financial reporting",
+        "score": -0.1789096562457253,
+        "meta": {}
+      },
+      {
+        "label": "sales products",
+        "score": -0.16970469511075859,
+        "meta": {}
+      },
+      {
+        "label": "demand products",
+        "score": -0.09715526828724119,
+        "meta": {}
+      },
+      {
+        "label": "financial results",
+        "score": -0.08295521034888775,
+        "meta": {}
+      }
+    ],
+    "summary_alt": "Adds emphasis on cybersecurity incident, increase cost, cost increases; de-emphasizes united states, covid pandemic, results operations financial."
+  },
+  "evidence": [
+    {
+      "year": 2021,
+      "paragraph_idx": 69,
+      "snippet": "Companies across all industries are facing increasing scrutiny from stakeholders related to environmental, social and governance (\u201cESG\u201d) matters, including practices and disclosures related to environmental stewardship; social responsibility; diversity, equity and inclusion; and workplace rights. Our ability to achieve our ESG goals and objectives and to accurately and transparently report our progress presents numerous operational, financial, legal and other risks, and are dependent on the actions of our bottling partners, suppliers and other third parties, all of which are outside of our control. If we are unable to meet our ESG goals or evolving stakeholder expectations and industry standards, or if we are perceived to have not responded appropriately to the growing concern for ESG issues, our reputation, and therefore our ability to sell products, could be negatively impacted. In addition, in recent years, investor advocacy groups and certain institutional investors have placed increasing importance on ESG matters. If, as a result of their assessment of our ESG practices, certain investors are unsatisfied with our actions or progress, they may reconsider their investment in our Company.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "esg",
+        "ready",
+        "month",
+        "Inflation",
+        "anti",
+        "adequate",
+        "overnight",
+        "brands bottling",
+        "country",
+        "divestitures",
+        "expectations",
+        "incident",
+        "investigations",
+        "cybersecurity incident",
+        "present extent",
+        "alcoholic",
+        "crisis",
+        "reorganization",
+        "shelter",
+        "shelter place",
+        "segments",
+        "approach",
+        "behaviors",
+        "distancing",
+        "improving",
+        "optimization",
+        "recommendations",
+        "reopening",
+        "routines",
+        "stronger"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 64,
+      "snippet": "Like most major corporations, the Company\u2019s information systems are a target of attacks. In addition, third-party providers of data hosting or cloud services, as well as our bottling partners, distributors, joint venture partners, suppliers or acquired businesses that use separate information systems, may experience cybersecurity incidents that may involve data we share with them. Although the incidents that we have experienced to date, as well as those reported to us by our third-party partners, have not had a material effect on our business, financial condition or results of operations, such incidents could have a material adverse effect on us in the future. In order to address risks to our information systems, we continue to make investments in personnel, technologies and training. Data protection laws and regulations around the world often require \u201creasonable,\u201d \u201cappropriate\u201d or \u201cadequate\u201d technical and organizational security measures, and the interpretation and application of those laws and regulations are often uncertain and evolving; there can be no assurance that our security measures will be deemed adequate, appropriate or reasonable by a regulator or court. Moreover, even security measures that are deemed appropriate, reasonable or in accordance with applicable legal requirements may not be able to protect the information we maintain. In addition to potential fines, we could be subject to mandatory corrective action due to a cybersecurity incident, which could adversely affect our business operations and result in substantial costs for years to come. The Company maintains an information risk management program which is supervised by information technology management and reviewed by a cross-functional committee. As part of this program, reports that include analysis of emerging risks, as well as the Company\u2019s plans and strategies to address them, are regularly presented to senior management and the Audit Committee of the Board of Directors. While we have purchased cybersecurity insurance, there are no assurances that the coverage would be adequate in relation to any incurred losses. Moreover, as cyberattacks increase in frequency and magnitude, we may be unable to obtain cybersecurity insurance in amounts and on terms we view as appropriate for our operations.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "esg",
+        "ready",
+        "month",
+        "Inflation",
+        "anti",
+        "adequate",
+        "overnight",
+        "brands bottling",
+        "country",
+        "divestitures",
+        "expectations",
+        "incident",
+        "investigations",
+        "cybersecurity incident",
+        "present extent",
+        "alcoholic",
+        "crisis",
+        "reorganization",
+        "shelter",
+        "shelter place",
+        "segments",
+        "approach",
+        "behaviors",
+        "distancing",
+        "improving",
+        "optimization",
+        "recommendations",
+        "reopening",
+        "routines",
+        "stronger"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 55,
+      "snippet": "We maintain levels of debt that we consider prudent based on our cash flows, interest coverage ratio and percentage of debt to capital. We use debt financing to lower our cost of capital, which increases our return on shareowners\u2019 equity. This exposes us to adverse changes in interest rates. When and to the extent appropriate, we use derivative financial instruments to reduce our exposure to interest rate risks. However, our financial risk management program may not be successful in reducing the risks inherent in exposures to interest rate fluctuations. On December 31, 2021, the United Kingdom\u2019s Financial Conduct Authority, the governing body responsible for regulating the London Interbank Offered Rate (\u201cLIBOR\u201d), ceased to publish certain LIBOR reference rates. However, other LIBOR reference rates, including U.S. dollar overnight, 1-month, 3-month, 6-month and",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "esg",
+        "ready",
+        "month",
+        "Inflation",
+        "anti",
+        "adequate",
+        "overnight",
+        "brands bottling",
+        "country",
+        "divestitures",
+        "expectations",
+        "incident",
+        "investigations",
+        "cybersecurity incident",
+        "present extent",
+        "alcoholic",
+        "crisis",
+        "reorganization",
+        "shelter",
+        "shelter place",
+        "segments",
+        "approach",
+        "behaviors",
+        "distancing",
+        "improving",
+        "optimization",
+        "recommendations",
+        "reopening",
+        "routines",
+        "stronger"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 5,
+      "snippet": "\u2022 We are accelerating our business strategy and are taking certain actions to address challenges posed by the COVID-19 pandemic and deliver on our commitment to emerge stronger from this crisis. These actions include focusing investments on a defined growth portfolio by prioritizing brands best positioned for consumer reach; streamlining the innovation pipeline through initiatives that are scalable regionally or globally, as well as maintaining a disciplined approach to local experimentation; refreshing our marketing approach, with a focus on improving our marketing investment effectiveness and efficiency; and investing in new capabilities to capitalize on emerging shifts in consumer behaviors that we anticipate may last beyond this crisis. These actions, which may require substantial additional investment of management time and financial resources, may not be sufficient to accomplish our goals.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "esg",
+        "ready",
+        "month",
+        "Inflation",
+        "anti",
+        "adequate",
+        "overnight",
+        "brands bottling",
+        "country",
+        "divestitures",
+        "expectations",
+        "incident",
+        "investigations",
+        "cybersecurity incident",
+        "present extent",
+        "alcoholic",
+        "crisis",
+        "reorganization",
+        "shelter",
+        "shelter place",
+        "segments",
+        "approach",
+        "behaviors",
+        "distancing",
+        "improving",
+        "optimization",
+        "recommendations",
+        "reopening",
+        "routines",
+        "stronger"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 18,
+      "snippet": "Over the last three years, we worked to develop the strategies and evolve our culture to equip us to grow and become a total beverage company, while improving efficiency. In late 2020, we took a series of strategic steps to transform our organizational structure and to reallocate certain resources aimed at emerging stronger from the pandemic, including voluntary and involuntary reductions in employees. We have incurred and expect we will incur in future periods significant expenses in connection with the reorganization and related reduction in employees. If we are unable to timely capture the efficiencies, cost savings and revenue growth opportunities we anticipate from these actions, our results of operations in future periods could be negatively affected. In addition, the reorganization and related reduction in employees may become a distraction for our managers and employees remaining with the Company; disrupt our ongoing business operations; cause deterioration in employee morale, which may make it more difficult for us to retain or attract qualified managers and employees in the future; disrupt or weaken our internal control and financial reporting structures; and/or give rise to negative publicity, which could affect our corporate reputation. If we are unable to successfully manage these possible negative consequences of our reorganization and reduction in employees, our business operations could be adversely affected.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "esg",
+        "ready",
+        "month",
+        "Inflation",
+        "anti",
+        "adequate",
+        "overnight",
+        "brands bottling",
+        "country",
+        "divestitures",
+        "expectations",
+        "incident",
+        "investigations",
+        "cybersecurity incident",
+        "present extent",
+        "alcoholic",
+        "crisis",
+        "reorganization",
+        "shelter",
+        "shelter place",
+        "segments",
+        "approach",
+        "behaviors",
+        "distancing",
+        "improving",
+        "optimization",
+        "recommendations",
+        "reopening",
+        "routines",
+        "stronger"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 3,
+      "snippet": "\u2022 We have experienced a decrease in sales of certain of our products in markets around the world as a result of the COVID-19 pandemic. In particular, sales of our products in the away-from-home channels have been significantly negatively affected by shelter-in-place regulations or recommendations, closings of restaurants and cancellations of major sporting and other events that were imposed as a result of the initial COVID-19 outbreak. While some of these restrictions have been lifted or eased in many jurisdictions as the rates of COVID-19 infections have decreased or stabilized, resurgence of the pandemic in some markets has slowed the reopening process. If COVID-19 infection trends increase, the pandemic intensifies or expands geographically or efforts to curb the pandemic are ineffective, the negative impacts of the pandemic on our sales could be more prolonged and may become more severe. While we initially experienced increased sales in the at-home channels from pantry loading as consumers stocked up on certain of our products with the expectation of spending more time at home during the crisis, such increased sales levels have not, and we expect will not, fully offset the sales pressures we have experienced, and we expect will continue to",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "esg",
+        "ready",
+        "month",
+        "Inflation",
+        "anti",
+        "adequate",
+        "overnight",
+        "brands bottling",
+        "country",
+        "divestitures",
+        "expectations",
+        "incident",
+        "investigations",
+        "cybersecurity incident",
+        "present extent",
+        "alcoholic",
+        "crisis",
+        "reorganization",
+        "shelter",
+        "shelter place",
+        "segments",
+        "approach",
+        "behaviors",
+        "distancing",
+        "improving",
+        "optimization",
+        "recommendations",
+        "reopening",
+        "routines",
+        "stronger"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.0284,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T19:27:18Z",
+    "git_commit": "cfe9628e9904d9ea49e72960b3535e0464887ce9",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "34b0ec0d66b244446712462b1db58c554840ecaf73b985f16e10109a32f13871",
+      "curr_text_sha256": "012edf6b35d3f8d9321f2db9b84dc74b1c54705fdb822d0b280f04cdec0a8fb1",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

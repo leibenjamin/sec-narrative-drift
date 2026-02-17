@@ -1,0 +1,1207 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_logodds_terms_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "WM",
+  "section": "10k_item1a",
+  "year_from": 2021,
+  "year_to": 2022,
+  "artifacts": {
+    "top_risers": [
+      {
+        "label": "sustainability",
+        "score": 1.1489838096059108,
+        "meta": {
+          "z": 1.6462179386061029,
+          "countPrev": 0,
+          "countCurr": 13,
+          "per10kPrev": 0.0,
+          "per10kCurr": 12.326948606106582,
+          "deltaPer10k": 12.326948606106582,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "esg",
+        "score": 1.0323675023429117,
+        "meta": {
+          "z": 1.2649130345968342,
+          "countPrev": 0,
+          "countCurr": 6,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.689360895126114,
+          "deltaPer10k": 5.689360895126114,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "rng",
+        "score": 0.9210117804435617,
+        "meta": {
+          "z": 1.5780599190758064,
+          "countPrev": 1,
+          "countCurr": 6,
+          "per10kPrev": 1.0275380189066996,
+          "per10kCurr": 5.689360895126114,
+          "deltaPer10k": 4.661822876219414,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "conflict",
+        "score": 0.8594380977605947,
+        "meta": {
+          "z": 0.9163472795705996,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8964536317087046,
+          "deltaPer10k": 1.8964536317087046,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "headwinds",
+        "score": 0.8594380977605947,
+        "meta": {
+          "z": 0.9163472795705996,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8964536317087046,
+          "deltaPer10k": 1.8964536317087046,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "invasion",
+        "score": 0.8594380977605947,
+        "meta": {
+          "z": 0.9163472795705996,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8964536317087046,
+          "deltaPer10k": 1.8964536317087046,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "russia",
+        "score": 0.8594380977605947,
+        "meta": {
+          "z": 0.9163472795705996,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8964536317087046,
+          "deltaPer10k": 1.8964536317087046,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ukraine",
+        "score": 0.8594380977605947,
+        "meta": {
+          "z": 0.9163472795705996,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8964536317087046,
+          "deltaPer10k": 1.8964536317087046,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "variant",
+        "score": 0.8594380977605947,
+        "meta": {
+          "z": 0.9163472795705996,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8964536317087046,
+          "deltaPer10k": 1.8964536317087046,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "planned investments",
+        "score": 0.8546245294805785,
+        "meta": {
+          "z": 1.135774813749559,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.7929072634174092,
+          "deltaPer10k": 3.7929072634174092,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "automation",
+        "score": 0.8423012575768754,
+        "meta": {
+          "z": 1.2068154732390222,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.741134079271761,
+          "deltaPer10k": 4.741134079271761,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "recession",
+        "score": 0.8423012575768754,
+        "meta": {
+          "z": 1.2068154732390222,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.741134079271761,
+          "deltaPer10k": 4.741134079271761,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "sustainability growth",
+        "score": 0.7942730627774751,
+        "meta": {
+          "z": 1.314052216310445,
+          "countPrev": 0,
+          "countCurr": 7,
+          "per10kPrev": 0.0,
+          "per10kCurr": 6.637587710980466,
+          "deltaPer10k": 6.637587710980466,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "retail",
+        "score": 0.7927181703908412,
+        "meta": {
+          "z": 1.135774813749559,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.7929072634174092,
+          "deltaPer10k": 3.7929072634174092,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ship",
+        "score": 0.7478831559282196,
+        "meta": {
+          "z": 0.9163472795705996,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8964536317087046,
+          "deltaPer10k": 1.8964536317087046,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_fallers": [
+      {
+        "label": "COVID-19",
+        "score": -1.353159185619021,
+        "meta": {
+          "z": -1.938752231782708,
+          "countPrev": 17,
+          "countCurr": 8,
+          "per10kPrev": 17.468146321413894,
+          "per10kCurr": 7.5858145268348185,
+          "deltaPer10k": -9.882331794579075,
+          "distinctive": false,
+          "includes": [
+            "covid"
+          ]
+        }
+      },
+      {
+        "label": "hcm",
+        "score": -1.1114135993432495,
+        "meta": {
+          "z": -1.1850077753007082,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 4.110152075626798,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.110152075626798,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "vaccine",
+        "score": -1.1114135993432495,
+        "meta": {
+          "z": -1.1850077753007082,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 4.110152075626798,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.110152075626798,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "erp hcm",
+        "score": -1.083271978482256,
+        "meta": {
+          "z": -1.1850077753007082,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 4.110152075626798,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.110152075626798,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ets",
+        "score": -1.0255247673412198,
+        "meta": {
+          "z": -1.0934316655661827,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 3.082614056720099,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.082614056720099,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "variants",
+        "score": -1.0255247673412198,
+        "meta": {
+          "z": -1.0934316655661827,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 3.082614056720099,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.082614056720099,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "discussed",
+        "score": -0.9050942622039597,
+        "meta": {
+          "z": -0.9650266459988721,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.055076037813399,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.055076037813399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "employers",
+        "score": -0.9050942622039597,
+        "meta": {
+          "z": -0.9650266459988721,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.055076037813399,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.055076037813399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "influence",
+        "score": -0.9050942622039597,
+        "meta": {
+          "z": -0.9650266459988721,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.055076037813399,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.055076037813399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "osha",
+        "score": -0.9050942622039597,
+        "meta": {
+          "z": -0.9650266459988721,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.055076037813399,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.055076037813399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "erp",
+        "score": -0.827080495326456,
+        "meta": {
+          "z": -1.1850077753007082,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 4.110152075626798,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.110152075626798,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "basel",
+        "score": -0.7876131567746485,
+        "meta": {
+          "z": -0.9650266459988721,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.055076037813399,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.055076037813399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "convention",
+        "score": -0.7876131567746485,
+        "meta": {
+          "z": -0.9650266459988721,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.055076037813399,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.055076037813399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "indicated",
+        "score": -0.7876131567746485,
+        "meta": {
+          "z": -0.9650266459988721,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.055076037813399,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.055076037813399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "resurgence transmission",
+        "score": -0.7560301983204761,
+        "meta": {
+          "z": -1.0047453917668,
+          "countPrev": 3,
+          "countCurr": 1,
+          "per10kPrev": 3.082614056720099,
+          "per10kCurr": 0.9482268158543523,
+          "deltaPer10k": -2.1343872408657463,
+          "distinctive": false
+        }
+      }
+    ],
+    "summary": "Adds emphasis on sustainability, esg, rng; de-emphasizes COVID-19, hcm, vaccine.",
+    "ranked_items": [
+      {
+        "label": "sustainability",
+        "score": 1.1489838096059108,
+        "meta": {
+          "z": 1.6462179386061029,
+          "countPrev": 0,
+          "countCurr": 13,
+          "per10kPrev": 0.0,
+          "per10kCurr": 12.326948606106582,
+          "deltaPer10k": 12.326948606106582,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "esg",
+        "score": 1.0323675023429117,
+        "meta": {
+          "z": 1.2649130345968342,
+          "countPrev": 0,
+          "countCurr": 6,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.689360895126114,
+          "deltaPer10k": 5.689360895126114,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "rng",
+        "score": 0.9210117804435617,
+        "meta": {
+          "z": 1.5780599190758064,
+          "countPrev": 1,
+          "countCurr": 6,
+          "per10kPrev": 1.0275380189066996,
+          "per10kCurr": 5.689360895126114,
+          "deltaPer10k": 4.661822876219414,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "conflict",
+        "score": 0.8594380977605947,
+        "meta": {
+          "z": 0.9163472795705996,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8964536317087046,
+          "deltaPer10k": 1.8964536317087046,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "headwinds",
+        "score": 0.8594380977605947,
+        "meta": {
+          "z": 0.9163472795705996,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8964536317087046,
+          "deltaPer10k": 1.8964536317087046,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "invasion",
+        "score": 0.8594380977605947,
+        "meta": {
+          "z": 0.9163472795705996,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8964536317087046,
+          "deltaPer10k": 1.8964536317087046,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "russia",
+        "score": 0.8594380977605947,
+        "meta": {
+          "z": 0.9163472795705996,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8964536317087046,
+          "deltaPer10k": 1.8964536317087046,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ukraine",
+        "score": 0.8594380977605947,
+        "meta": {
+          "z": 0.9163472795705996,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8964536317087046,
+          "deltaPer10k": 1.8964536317087046,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "variant",
+        "score": 0.8594380977605947,
+        "meta": {
+          "z": 0.9163472795705996,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8964536317087046,
+          "deltaPer10k": 1.8964536317087046,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "planned investments",
+        "score": 0.8546245294805785,
+        "meta": {
+          "z": 1.135774813749559,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.7929072634174092,
+          "deltaPer10k": 3.7929072634174092,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "automation",
+        "score": 0.8423012575768754,
+        "meta": {
+          "z": 1.2068154732390222,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.741134079271761,
+          "deltaPer10k": 4.741134079271761,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "recession",
+        "score": 0.8423012575768754,
+        "meta": {
+          "z": 1.2068154732390222,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.741134079271761,
+          "deltaPer10k": 4.741134079271761,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "sustainability growth",
+        "score": 0.7942730627774751,
+        "meta": {
+          "z": 1.314052216310445,
+          "countPrev": 0,
+          "countCurr": 7,
+          "per10kPrev": 0.0,
+          "per10kCurr": 6.637587710980466,
+          "deltaPer10k": 6.637587710980466,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "retail",
+        "score": 0.7927181703908412,
+        "meta": {
+          "z": 1.135774813749559,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.7929072634174092,
+          "deltaPer10k": 3.7929072634174092,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ship",
+        "score": 0.7478831559282196,
+        "meta": {
+          "z": 0.9163472795705996,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8964536317087046,
+          "deltaPer10k": 1.8964536317087046,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "COVID-19",
+        "score": -1.353159185619021,
+        "meta": {
+          "z": -1.938752231782708,
+          "countPrev": 17,
+          "countCurr": 8,
+          "per10kPrev": 17.468146321413894,
+          "per10kCurr": 7.5858145268348185,
+          "deltaPer10k": -9.882331794579075,
+          "distinctive": false,
+          "includes": [
+            "covid"
+          ]
+        }
+      },
+      {
+        "label": "hcm",
+        "score": -1.1114135993432495,
+        "meta": {
+          "z": -1.1850077753007082,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 4.110152075626798,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.110152075626798,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "vaccine",
+        "score": -1.1114135993432495,
+        "meta": {
+          "z": -1.1850077753007082,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 4.110152075626798,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.110152075626798,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "erp hcm",
+        "score": -1.083271978482256,
+        "meta": {
+          "z": -1.1850077753007082,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 4.110152075626798,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.110152075626798,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ets",
+        "score": -1.0255247673412198,
+        "meta": {
+          "z": -1.0934316655661827,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 3.082614056720099,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.082614056720099,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "variants",
+        "score": -1.0255247673412198,
+        "meta": {
+          "z": -1.0934316655661827,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 3.082614056720099,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.082614056720099,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "discussed",
+        "score": -0.9050942622039597,
+        "meta": {
+          "z": -0.9650266459988721,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.055076037813399,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.055076037813399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "employers",
+        "score": -0.9050942622039597,
+        "meta": {
+          "z": -0.9650266459988721,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.055076037813399,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.055076037813399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "influence",
+        "score": -0.9050942622039597,
+        "meta": {
+          "z": -0.9650266459988721,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.055076037813399,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.055076037813399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "osha",
+        "score": -0.9050942622039597,
+        "meta": {
+          "z": -0.9650266459988721,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.055076037813399,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.055076037813399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "erp",
+        "score": -0.827080495326456,
+        "meta": {
+          "z": -1.1850077753007082,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 4.110152075626798,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.110152075626798,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "basel",
+        "score": -0.7876131567746485,
+        "meta": {
+          "z": -0.9650266459988721,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.055076037813399,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.055076037813399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "convention",
+        "score": -0.7876131567746485,
+        "meta": {
+          "z": -0.9650266459988721,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.055076037813399,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.055076037813399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "indicated",
+        "score": -0.7876131567746485,
+        "meta": {
+          "z": -0.9650266459988721,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.055076037813399,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.055076037813399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "resurgence transmission",
+        "score": -0.7560301983204761,
+        "meta": {
+          "z": -1.0047453917668,
+          "countPrev": 3,
+          "countCurr": 1,
+          "per10kPrev": 3.082614056720099,
+          "per10kCurr": 0.9482268158543523,
+          "deltaPer10k": -2.1343872408657463,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_risers_alt": [
+      {
+        "label": "landfill gas",
+        "score": 0.6997903804529133,
+        "meta": {}
+      },
+      {
+        "label": "economic conditions",
+        "score": 1.9194644374328593,
+        "meta": {}
+      },
+      {
+        "label": "subject regulatory",
+        "score": 1.91374029645731,
+        "meta": {}
+      },
+      {
+        "label": "internal controls",
+        "score": 0.7962126466827026,
+        "meta": {}
+      },
+      {
+        "label": "conditions regulations",
+        "score": 1.353734324132028,
+        "meta": {}
+      },
+      {
+        "label": "future results",
+        "score": 1.0657410665461837,
+        "meta": {}
+      },
+      {
+        "label": "investments technology",
+        "score": 1.0657410665461837,
+        "meta": {}
+      },
+      {
+        "label": "information technology",
+        "score": 0.9655238457751443,
+        "meta": {}
+      },
+      {
+        "label": "landfill disposal",
+        "score": 0.8831636277422463,
+        "meta": {}
+      },
+      {
+        "label": "increased operating costs",
+        "score": 0.5853485976248534,
+        "meta": {}
+      },
+      {
+        "label": "Supply chain",
+        "score": 0.28875415334204924,
+        "meta": {}
+      },
+      {
+        "label": "gas prices",
+        "score": 0.476861321824269,
+        "meta": {}
+      },
+      {
+        "label": "Climate change",
+        "score": 0.16751613475122573,
+        "meta": {}
+      },
+      {
+        "label": "increased costs",
+        "score": 0.19307825875714002,
+        "meta": {}
+      },
+      {
+        "label": "Artificial intelligence",
+        "score": 0.4741423492832775,
+        "meta": {}
+      }
+    ],
+    "top_fallers_alt": [
+      {
+        "label": "natural gas",
+        "score": -1.2643871155016204,
+        "meta": {}
+      },
+      {
+        "label": "cost increases",
+        "score": -1.9954641601021486,
+        "meta": {}
+      },
+      {
+        "label": "customers result",
+        "score": -1.9954641601021486,
+        "meta": {}
+      },
+      {
+        "label": "implementation new",
+        "score": -1.9954641601021486,
+        "meta": {}
+      },
+      {
+        "label": "waste volumes",
+        "score": -1.9954641601021486,
+        "meta": {}
+      },
+      {
+        "label": "negatively affect operating results",
+        "score": -1.1476237522029207,
+        "meta": {}
+      },
+      {
+        "label": "waste industry",
+        "score": -1.1476237522029207,
+        "meta": {}
+      },
+      {
+        "label": "disposal services",
+        "score": -0.7862422231768091,
+        "meta": {}
+      },
+      {
+        "label": "changes regulations",
+        "score": -0.5379268608471381,
+        "meta": {}
+      },
+      {
+        "label": "fuel prices",
+        "score": -0.31881199157547435,
+        "meta": {}
+      },
+      {
+        "label": "increase costs",
+        "score": -0.2326840392357914,
+        "meta": {}
+      },
+      {
+        "label": "new service",
+        "score": -0.187923934487086,
+        "meta": {}
+      },
+      {
+        "label": "financial results",
+        "score": -0.13108226579320092,
+        "meta": {}
+      },
+      {
+        "label": "results operations cash",
+        "score": -0.043190021296406034,
+        "meta": {}
+      },
+      {
+        "label": "Intellectual property",
+        "score": -0.04272837152312592,
+        "meta": {}
+      }
+    ],
+    "summary_alt": "Adds emphasis on landfill gas, economic conditions, subject regulatory; de-emphasizes natural gas, cost increases, customers result."
+  },
+  "evidence": [
+    {
+      "year": 2022,
+      "paragraph_idx": 33,
+      "snippet": "Consistent with our Company\u2019s long-standing commitment to sustainability and environmental stewardship, we have set goals to reduce our GHG emissions and announced other ESG-related goals and initiatives. We have also announced a sustainability growth strategy that includes significant planned investments in our recycling and renewable energy businesses. Our ability to achieve these goals and successfully execute our sustainability growth strategy may be impacted by the numerous risks and uncertainties associated with our business and the environmental services industry, including financial and operating performance, availability of technology and financing, changes in regulation, commodity price fluctuation and general economic conditions. (Also see Item 1A. Risk Factors \u2014 Our revenues, earnings and cash flows will fluctuate based on changes in commodity prices, and commodity prices for recyclable materials are particularly susceptible to volatility based on macroeconomic conditions and regulations that affect our ability to export products and \u2014 We have announced a sustainability growth strategy that includes significant planned investments in our renewable energy businesses; changes to federal and state renewable fuel policies could affect our financial performance, and such investments may not yield the results anticipated. )",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "sustainability",
+        "esg",
+        "rng",
+        "conflict",
+        "headwinds",
+        "invasion",
+        "russia",
+        "ukraine",
+        "variant",
+        "planned investments",
+        "automation",
+        "recession",
+        "sustainability growth",
+        "retail",
+        "ship",
+        "COVID-19",
+        "hcm",
+        "vaccine",
+        "erp hcm",
+        "ets",
+        "variants",
+        "discussed",
+        "employers",
+        "influence",
+        "osha",
+        "erp",
+        "basel",
+        "convention",
+        "indicated",
+        "resurgence transmission"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 40,
+      "snippet": "Macroeconomic pressures, including inflation and rising interest rates, and market disruption resulting in labor market, supply chain and transportation constraints are continuing. Significant global supply chain disruption and the heightened pace of inflation have reduced availability and increased costs for the goods and services we purchase, with a particular impact on our repair and maintenance costs. Supply chain constraints have also caused delayed delivery of fleet, steel containers and other purchases. Aspects of our business rely on third-party transportation providers, and such services have become more limited and expensive. Additionally, we expect continued significant headwinds from commodity prices for recycled material into 2023, resulting from the slowdown in the global economy, which reduced retail demand and the corresponding need for cardboard packaging to ship retail goods. We are also currently experiencing margin pressures from commodity-driven business impacts, particularly from higher fuel prices. The constrained labor market has resulted in increased costs for wage adjustments, overtime hours and training new hires. If we are not able to overcome limitations on labor availability, it could materially impact our ability to service our customers and our financial results. Geopolitical conflict and the resulting international response, including Russia\u2019s invasion of Ukraine, have also exacerbated market disruption, leading to volatility in commodity prices, impacts on the availability and cost of energy, and vendor and supplier disruptions across the global supply chain.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "sustainability",
+        "esg",
+        "rng",
+        "conflict",
+        "headwinds",
+        "invasion",
+        "russia",
+        "ukraine",
+        "variant",
+        "planned investments",
+        "automation",
+        "recession",
+        "sustainability growth",
+        "retail",
+        "ship",
+        "COVID-19",
+        "hcm",
+        "vaccine",
+        "erp hcm",
+        "ets",
+        "variants",
+        "discussed",
+        "employers",
+        "influence",
+        "osha",
+        "erp",
+        "basel",
+        "convention",
+        "indicated",
+        "resurgence transmission"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 48,
+      "snippet": "We have announced a sustainability growth strategy that includes significant planned investments in our recycling business to increase automation and reduce labor dependency. Such investments are also targeted at addressing increases in quality requirements for commodities. These investments increase our exposure to commodity price fluctuations. Additionally, future regulation, tariffs, international trade policies or other initiatives, including regulations addressing climate change or GHG emissions, may impact supply and demand of material, or increase operating costs, which could impact the profitability of our recycling operations. If the Company does not effectively manage changes in demand and commodity prices for recycling materials, or if we do not successfully execute our sustainability growth strategy, our investments in recycling infrastructure and technology may not yield the results anticipated.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "sustainability",
+        "esg",
+        "rng",
+        "conflict",
+        "headwinds",
+        "invasion",
+        "russia",
+        "ukraine",
+        "variant",
+        "planned investments",
+        "automation",
+        "recession",
+        "sustainability growth",
+        "retail",
+        "ship",
+        "COVID-19",
+        "hcm",
+        "vaccine",
+        "erp hcm",
+        "ets",
+        "variants",
+        "discussed",
+        "employers",
+        "influence",
+        "osha",
+        "erp",
+        "basel",
+        "convention",
+        "indicated",
+        "resurgence transmission"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 36,
+      "snippet": "In September 2021, President Biden issued an executive order requiring all employers with U.S. government contracts to ensure that their U.S.-based employees, contractors and subcontractors that work on or in support of U.S. government contracts, with some exceptions, to be fully vaccinated against COVID-19. We are currently party to certain service agreements with the U.S. government. The vaccine mandate is facing legal challenges and currently is enjoined nationwide. In November 2021, OSHA announced an Emergency Temporary Standard (\u201cETS\u201d) mandating either full vaccination against COVID-19 or weekly testing of employees for employers with 100 or more employees; however, the agency withdrew the ETS in January 2022 following an unfavorable decision by the U.S. Supreme Court. OSHA has indicated that it will continue to pursue the vaccine and testing requirements of the ETS through the traditional rulemaking process, and additional vaccine mandates may be announced in jurisdictions in which our businesses operate. We cannot currently predict the impact of any such vaccine requirements on our workforce, although implementation may result in our inability to perform or compete for certain contracts, as well as significant cost, operational disruption, attrition and difficulty securing future labor needs in the already-constrained labor market.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "sustainability",
+        "esg",
+        "rng",
+        "conflict",
+        "headwinds",
+        "invasion",
+        "russia",
+        "ukraine",
+        "variant",
+        "planned investments",
+        "automation",
+        "recession",
+        "sustainability growth",
+        "retail",
+        "ship",
+        "COVID-19",
+        "hcm",
+        "vaccine",
+        "erp hcm",
+        "ets",
+        "variants",
+        "discussed",
+        "employers",
+        "influence",
+        "osha",
+        "erp",
+        "basel",
+        "convention",
+        "indicated",
+        "resurgence transmission"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 34,
+      "snippet": "Throughout 2021, our volumes recovered from the sharp decline experienced in April 2020, with minimal impact from the resurgence in transmission of COVID-19 associated with recent virus variants, as communities and businesses remained open. However, uncertainty remains with respect to various factors that influence the pace of economic recovery, including factors discussed in the two risk factors immediately below. The potential for future resurgence in transmission of COVID-19 and related business closures, due to COVID-19 variants or other pandemic conditions, could adversely impact our volumes and costs in the future. If such conditions were to deepen and extend the broad-based economic slow-down, it may have a material adverse impact on our financial condition, results of operations and cash flows and hinder our ability to grow our business and execute our business strategy. Additionally, if a large portion of our employee base were to become ill, it could impact our ability to provide timely and reliable service.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "sustainability",
+        "esg",
+        "rng",
+        "conflict",
+        "headwinds",
+        "invasion",
+        "russia",
+        "ukraine",
+        "variant",
+        "planned investments",
+        "automation",
+        "recession",
+        "sustainability growth",
+        "retail",
+        "ship",
+        "COVID-19",
+        "hcm",
+        "vaccine",
+        "erp hcm",
+        "ets",
+        "variants",
+        "discussed",
+        "employers",
+        "influence",
+        "osha",
+        "erp",
+        "basel",
+        "convention",
+        "indicated",
+        "resurgence transmission"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 62,
+      "snippet": "We are in the process of a complex, multi-year implementation of a new enterprise resource planning and human capital management (\u201cERP/HCM\u201d) system. The ERP/HCM system implementation requires the integration of the new system with multiple new and existing information systems and business processes and is designed to accurately maintain our books and records and provide information to our management team important to the operation of the business. Such an implementation is a major undertaking from a financial, management, and personnel perspective, and we have made interim adjustments to our implementation timeline to accommodate aspects that have proven more difficult, or time consuming than initially predicted. Any material disruptions, delays, deficiencies or cost increases associated with the design and implementation of our new ERP/HCM system could adversely affect our ability to produce timely and accurate financial statements or comply with applicable regulations, resulting in negative impacts on our business and operations and subject us to potential liability. Additionally, our implementation of the ERP/HCM system involves greater utilization of third-party \u201ccloud\u201d computing services in connection with our business operations. Problems faced by us or our third-party providers, including technological or business-related disruptions, as well as cybersecurity threats, could adversely impact our business, results of operations and financial condition for future periods.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "sustainability",
+        "esg",
+        "rng",
+        "conflict",
+        "headwinds",
+        "invasion",
+        "russia",
+        "ukraine",
+        "variant",
+        "planned investments",
+        "automation",
+        "recession",
+        "sustainability growth",
+        "retail",
+        "ship",
+        "COVID-19",
+        "hcm",
+        "vaccine",
+        "erp hcm",
+        "ets",
+        "variants",
+        "discussed",
+        "employers",
+        "influence",
+        "osha",
+        "erp",
+        "basel",
+        "convention",
+        "indicated",
+        "resurgence transmission"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.0374,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T19:27:21Z",
+    "git_commit": "cfe9628e9904d9ea49e72960b3535e0464887ce9",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "a241a1405f869f11f5ff29b22c0681289ef94822c893491f55f4ddad76cc96b3",
+      "curr_text_sha256": "04c9c2b3c90a5369bae2cf3ea8a2cd92b72c66032f15a17ae21b9a310dfc2b8a",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

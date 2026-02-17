@@ -1,0 +1,73 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_minhash_boilerplate_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "KO",
+  "section": "10k_item1a",
+  "year_from": 2022,
+  "year_to": 2023,
+  "artifacts": {
+    "stats": {
+      "percent_reused": 0.547945205479452,
+      "percent_new": 0.452054794520548,
+      "reused_paragraphs": 40,
+      "total_paragraphs": 73
+    }
+  },
+  "evidence": [
+    {
+      "year": 2023,
+      "paragraph_idx": 0,
+      "snippet": "In addition to the other information set forth in this report, you should carefully consider the following factors, which could materially affect our business, financial condition and results of operations in future periods. The risks described below are not the only risks facing our Company. Additional risks not currently known to us or that we currently deem to be immaterial also may materially adversely affect our business, financial condition or results of operations in future periods.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 0,
+      "snippet": "In addition to the other information set forth in this report, you should carefully consider the following factors, which could materially affect our business, financial condition and results of operations in future periods. The risks described below are not the only risks facing our Company. Additional risks not currently known to us or that we currently deem to be immaterial also may materially adversely affect our business, financial condition or results of operations in future periods.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 4,
+      "snippet": "We operate in the highly competitive commercial beverage industry. For additional information regarding the competitive environment in which we operate, including the names of certain of our significant competitors, refer to the heading \u201cCompetition\u201d set forth in Part I, \u201cItem 1. Business\u201d of this report. Our ability to maintain or gain share of sales in the global market or in regional or local markets may be limited as a result of actions by competitors. Competitive pressures may cause the Company and our bottling partners to reduce prices we charge customers or may restrict our and our bottlers\u2019 ability to increase prices, as may be necessary in response to commodity and other cost increases. Such pressures may also increase marketing costs along with in-store placement, slotting and other marketing fees. In addition, the rapid growth of e\u2011commerce may create additional consumer price deflation by, among other things, facilitating comparison shopping, and could potentially threaten the value of some of our legacy route-to-market strategies and thus negatively affect revenues. If we do not continuously strengthen our capabilities in marketing and innovation to maintain consumer interest, brand loyalty and market share while strategically expanding into other profitable categories of the commercial beverage industry, our business could be negatively affected.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 4,
+      "snippet": "We operate in the highly competitive commercial beverage industry. For additional information regarding the competitive environment in which we operate, including the names of certain of our significant competitors, refer to the heading \u201cCompetition\u201d set forth in Part I, \u201cItem 1. Business\u201d of this report. Our ability to maintain or gain share of sales in the global market or in regional or local markets may be limited as a result of actions by competitors. Competitive pressures may cause the Company and our bottling partners to reduce prices we charge customers or may restrict our and our bottlers\u2019 ability to increase prices, as may be necessary in response to commodity and other cost increases. Such pressures may also increase marketing costs along with in-store placement, slotting and other marketing fees. In addition, the rapid growth of e\u2011commerce may create additional consumer price deflation by, among other things, facilitating comparison shopping, and could potentially threaten the value of some of our legacy route-to-market strategies and thus negatively affect revenues. If we do not continuously strengthen our capabilities in marketing and innovation to maintain consumer interest, brand loyalty and market share while strategically expanding into other profitable categories of the commercial beverage industry, our business could be negatively affected.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 5,
+      "snippet": "Achieving our business growth objectives depends in part on our ability to evolve and improve our existing beverage products through innovation and to successfully develop, introduce and market new beverage products. The success of our innovation activities depends on our ability to correctly anticipate customer and consumer acceptance and trends; obtain, maintain and enforce necessary intellectual property rights; and avoid infringing on the intellectual property rights of others. If we are not successful in our innovation activities, we may not be able to achieve our growth objectives, which may have a negative impact on our financial results.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 5,
+      "snippet": "Achieving our business growth objectives depends in part on our ability to evolve and improve our existing beverage products through innovation and to successfully develop, introduce and market new beverage products. The success of our innovation activities depends on our ability to correctly anticipate customer and consumer acceptance and trends; obtain, maintain and enforce necessary intellectual property rights; and avoid infringing on the intellectual property rights of others. If we are not successful in our innovation activities, we may not be able to achieve our growth objectives, which may have a negative impact on our financial results.",
+      "why": "Matching paragraph from prior year."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.452054794520548,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T19:27:19Z",
+    "git_commit": "cfe9628e9904d9ea49e72960b3535e0464887ce9",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "a37751455aeb69e85a19f53a089bf34113014acf24f280964f890fad12668547",
+      "curr_text_sha256": "8d005a2728ac3571f5042a9956e63b4fffb0d6bcb656bda6be2e217116052ff0",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

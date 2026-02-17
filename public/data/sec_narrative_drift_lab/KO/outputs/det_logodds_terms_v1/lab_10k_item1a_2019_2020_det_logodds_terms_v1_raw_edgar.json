@@ -1,0 +1,1219 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_logodds_terms_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "KO",
+  "section": "10k_item1a",
+  "year_from": 2019,
+  "year_to": 2020,
+  "artifacts": {
+    "top_risers": [
+      {
+        "label": "COVID-19",
+        "score": 1.4649040566177056,
+        "meta": {
+          "z": 3.0928283655402184,
+          "countPrev": 2,
+          "countCurr": 21,
+          "per10kPrev": 1.879169407122052,
+          "per10kCurr": 18.355038895201467,
+          "deltaPer10k": 16.475869488079415,
+          "distinctive": true,
+          "includes": [
+            "covid"
+          ]
+        }
+      },
+      {
+        "label": "alcoholic",
+        "score": 1.0675032719983217,
+        "meta": {
+          "z": 1.1381898495973641,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.4961978848002797,
+          "deltaPer10k": 3.4961978848002797,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "crisis",
+        "score": 1.0675032719983217,
+        "meta": {
+          "z": 1.1381898495973641,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.4961978848002797,
+          "deltaPer10k": 3.4961978848002797,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "reorganization",
+        "score": 1.0675032719983217,
+        "meta": {
+          "z": 1.1381898495973641,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.4961978848002797,
+          "deltaPer10k": 3.4961978848002797,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "shelter",
+        "score": 1.0675032719983217,
+        "meta": {
+          "z": 1.1381898495973641,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.4961978848002797,
+          "deltaPer10k": 3.4961978848002797,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "shelter place",
+        "score": 1.0404734854578308,
+        "meta": {
+          "z": 1.1381898495973641,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.4961978848002797,
+          "deltaPer10k": 3.4961978848002797,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "segments",
+        "score": 0.9817864191169322,
+        "meta": {
+          "z": 1.0467971068787436,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.62214841360021,
+          "deltaPer10k": 2.62214841360021,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "home",
+        "score": 0.8845397277562645,
+        "meta": {
+          "z": 1.2673330599336847,
+          "countPrev": 0,
+          "countCurr": 6,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.24429682720042,
+          "deltaPer10k": 5.24429682720042,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "approach",
+        "score": 0.8616820457766884,
+        "meta": {
+          "z": 0.9187398144901047,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.7480989424001399,
+          "deltaPer10k": 1.7480989424001399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "behaviors",
+        "score": 0.8616820457766884,
+        "meta": {
+          "z": 0.9187398144901047,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.7480989424001399,
+          "deltaPer10k": 1.7480989424001399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "distancing",
+        "score": 0.8616820457766884,
+        "meta": {
+          "z": 0.9187398144901047,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.7480989424001399,
+          "deltaPer10k": 1.7480989424001399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "improving",
+        "score": 0.8616820457766884,
+        "meta": {
+          "z": 0.9187398144901047,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.7480989424001399,
+          "deltaPer10k": 1.7480989424001399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "optimization",
+        "score": 0.8616820457766884,
+        "meta": {
+          "z": 0.9187398144901047,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.7480989424001399,
+          "deltaPer10k": 1.7480989424001399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "recommendations",
+        "score": 0.8616820457766884,
+        "meta": {
+          "z": 0.9187398144901047,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.7480989424001399,
+          "deltaPer10k": 1.7480989424001399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "reopening",
+        "score": 0.8616820457766884,
+        "meta": {
+          "z": 0.9187398144901047,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.7480989424001399,
+          "deltaPer10k": 1.7480989424001399,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_fallers": [
+      {
+        "label": "ccpa",
+        "score": -1.0232525964962673,
+        "meta": {
+          "z": -1.0910090389943363,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.818754110683078,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.818754110683078,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "Coronavirus",
+        "score": -0.9028412634837718,
+        "meta": {
+          "z": -0.9626244610672293,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.879169407122052,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.879169407122052,
+          "distinctive": false,
+          "includes": [
+            "coronavirus"
+          ]
+        }
+      },
+      {
+        "label": "novel",
+        "score": -0.9028412634837718,
+        "meta": {
+          "z": -0.9626244610672293,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.879169407122052,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.879169407122052,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "provides",
+        "score": -0.9028412634837718,
+        "meta": {
+          "z": -0.9626244610672293,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.879169407122052,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.879169407122052,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "sharing",
+        "score": -0.9028412634837718,
+        "meta": {
+          "z": -0.9626244610672293,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.879169407122052,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.879169407122052,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "GDPR",
+        "score": -0.8904345562215793,
+        "meta": {
+          "z": -1.0910090389943363,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.818754110683078,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.818754110683078,
+          "distinctive": false,
+          "includes": [
+            "gdpr"
+          ]
+        }
+      },
+      {
+        "label": "residents",
+        "score": -0.7856525969652255,
+        "meta": {
+          "z": -0.9626244610672293,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.879169407122052,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.879169407122052,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "participated",
+        "score": -0.6718672507197776,
+        "meta": {
+          "z": -0.9626244610672293,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.879169407122052,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.879169407122052,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "controlled",
+        "score": -0.6648554895580313,
+        "meta": {
+          "z": -1.4036986980826103,
+          "countPrev": 8,
+          "countCurr": 0,
+          "per10kPrev": 7.516677628488208,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -7.516677628488208,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "tax dispute",
+        "score": -0.5818541070941361,
+        "meta": {
+          "z": -0.9626244610672293,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.879169407122052,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.879169407122052,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "employer",
+        "score": -0.5601204140129479,
+        "meta": {
+          "z": -1.182573218192314,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.758338814244104,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.758338814244104,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "multi",
+        "score": -0.5601204140129479,
+        "meta": {
+          "z": -1.182573218192314,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.758338814244104,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.758338814244104,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "pension",
+        "score": -0.5601204140129479,
+        "meta": {
+          "z": -1.182573218192314,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.758338814244104,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.758338814244104,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "owned controlled",
+        "score": -0.4781020464000373,
+        "meta": {
+          "z": -1.3610870313422465,
+          "countPrev": 7,
+          "countCurr": 0,
+          "per10kPrev": 6.577092924927182,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -6.577092924927182,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "deteriorate",
+        "score": -0.4559426878414924,
+        "meta": {
+          "z": -0.9626244610672293,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.879169407122052,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.879169407122052,
+          "distinctive": false
+        }
+      }
+    ],
+    "summary": "Adds emphasis on COVID-19, alcoholic, crisis; de-emphasizes ccpa, Coronavirus, novel.",
+    "ranked_items": [
+      {
+        "label": "COVID-19",
+        "score": 1.4649040566177056,
+        "meta": {
+          "z": 3.0928283655402184,
+          "countPrev": 2,
+          "countCurr": 21,
+          "per10kPrev": 1.879169407122052,
+          "per10kCurr": 18.355038895201467,
+          "deltaPer10k": 16.475869488079415,
+          "distinctive": true,
+          "includes": [
+            "covid"
+          ]
+        }
+      },
+      {
+        "label": "alcoholic",
+        "score": 1.0675032719983217,
+        "meta": {
+          "z": 1.1381898495973641,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.4961978848002797,
+          "deltaPer10k": 3.4961978848002797,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "crisis",
+        "score": 1.0675032719983217,
+        "meta": {
+          "z": 1.1381898495973641,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.4961978848002797,
+          "deltaPer10k": 3.4961978848002797,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "reorganization",
+        "score": 1.0675032719983217,
+        "meta": {
+          "z": 1.1381898495973641,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.4961978848002797,
+          "deltaPer10k": 3.4961978848002797,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "shelter",
+        "score": 1.0675032719983217,
+        "meta": {
+          "z": 1.1381898495973641,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.4961978848002797,
+          "deltaPer10k": 3.4961978848002797,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "shelter place",
+        "score": 1.0404734854578308,
+        "meta": {
+          "z": 1.1381898495973641,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.4961978848002797,
+          "deltaPer10k": 3.4961978848002797,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "segments",
+        "score": 0.9817864191169322,
+        "meta": {
+          "z": 1.0467971068787436,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.62214841360021,
+          "deltaPer10k": 2.62214841360021,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "home",
+        "score": 0.8845397277562645,
+        "meta": {
+          "z": 1.2673330599336847,
+          "countPrev": 0,
+          "countCurr": 6,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.24429682720042,
+          "deltaPer10k": 5.24429682720042,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "approach",
+        "score": 0.8616820457766884,
+        "meta": {
+          "z": 0.9187398144901047,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.7480989424001399,
+          "deltaPer10k": 1.7480989424001399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "behaviors",
+        "score": 0.8616820457766884,
+        "meta": {
+          "z": 0.9187398144901047,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.7480989424001399,
+          "deltaPer10k": 1.7480989424001399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "distancing",
+        "score": 0.8616820457766884,
+        "meta": {
+          "z": 0.9187398144901047,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.7480989424001399,
+          "deltaPer10k": 1.7480989424001399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "improving",
+        "score": 0.8616820457766884,
+        "meta": {
+          "z": 0.9187398144901047,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.7480989424001399,
+          "deltaPer10k": 1.7480989424001399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "optimization",
+        "score": 0.8616820457766884,
+        "meta": {
+          "z": 0.9187398144901047,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.7480989424001399,
+          "deltaPer10k": 1.7480989424001399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "recommendations",
+        "score": 0.8616820457766884,
+        "meta": {
+          "z": 0.9187398144901047,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.7480989424001399,
+          "deltaPer10k": 1.7480989424001399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "reopening",
+        "score": 0.8616820457766884,
+        "meta": {
+          "z": 0.9187398144901047,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.7480989424001399,
+          "deltaPer10k": 1.7480989424001399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ccpa",
+        "score": -1.0232525964962673,
+        "meta": {
+          "z": -1.0910090389943363,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.818754110683078,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.818754110683078,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "Coronavirus",
+        "score": -0.9028412634837718,
+        "meta": {
+          "z": -0.9626244610672293,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.879169407122052,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.879169407122052,
+          "distinctive": false,
+          "includes": [
+            "coronavirus"
+          ]
+        }
+      },
+      {
+        "label": "novel",
+        "score": -0.9028412634837718,
+        "meta": {
+          "z": -0.9626244610672293,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.879169407122052,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.879169407122052,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "provides",
+        "score": -0.9028412634837718,
+        "meta": {
+          "z": -0.9626244610672293,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.879169407122052,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.879169407122052,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "sharing",
+        "score": -0.9028412634837718,
+        "meta": {
+          "z": -0.9626244610672293,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.879169407122052,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.879169407122052,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "GDPR",
+        "score": -0.8904345562215793,
+        "meta": {
+          "z": -1.0910090389943363,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.818754110683078,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.818754110683078,
+          "distinctive": false,
+          "includes": [
+            "gdpr"
+          ]
+        }
+      },
+      {
+        "label": "residents",
+        "score": -0.7856525969652255,
+        "meta": {
+          "z": -0.9626244610672293,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.879169407122052,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.879169407122052,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "participated",
+        "score": -0.6718672507197776,
+        "meta": {
+          "z": -0.9626244610672293,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.879169407122052,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.879169407122052,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "controlled",
+        "score": -0.6648554895580313,
+        "meta": {
+          "z": -1.4036986980826103,
+          "countPrev": 8,
+          "countCurr": 0,
+          "per10kPrev": 7.516677628488208,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -7.516677628488208,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "tax dispute",
+        "score": -0.5818541070941361,
+        "meta": {
+          "z": -0.9626244610672293,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.879169407122052,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.879169407122052,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "employer",
+        "score": -0.5601204140129479,
+        "meta": {
+          "z": -1.182573218192314,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.758338814244104,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.758338814244104,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "multi",
+        "score": -0.5601204140129479,
+        "meta": {
+          "z": -1.182573218192314,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.758338814244104,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.758338814244104,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "pension",
+        "score": -0.5601204140129479,
+        "meta": {
+          "z": -1.182573218192314,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.758338814244104,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.758338814244104,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "owned controlled",
+        "score": -0.4781020464000373,
+        "meta": {
+          "z": -1.3610870313422465,
+          "countPrev": 7,
+          "countCurr": 0,
+          "per10kPrev": 6.577092924927182,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -6.577092924927182,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "deteriorate",
+        "score": -0.4559426878414924,
+        "meta": {
+          "z": -0.9626244610672293,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.879169407122052,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.879169407122052,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_risers_alt": [
+      {
+        "label": "covid pandemic",
+        "score": 2.288195314276302,
+        "meta": {}
+      },
+      {
+        "label": "results operations financial",
+        "score": 2.2830963041273487,
+        "meta": {}
+      },
+      {
+        "label": "bottling partners result",
+        "score": 2.280558711385833,
+        "meta": {}
+      },
+      {
+        "label": "increased sales",
+        "score": 2.280558711385833,
+        "meta": {}
+      },
+      {
+        "label": "legal actions",
+        "score": 1.007975162011042,
+        "meta": {}
+      },
+      {
+        "label": "reduce demand beverage products",
+        "score": 0.8947061965019723,
+        "meta": {}
+      },
+      {
+        "label": "negatively affected",
+        "score": 0.4432310324622497,
+        "meta": {}
+      },
+      {
+        "label": "information security",
+        "score": 1.680321983112151,
+        "meta": {}
+      },
+      {
+        "label": "customer demand",
+        "score": 2.2780289999416548,
+        "meta": {}
+      },
+      {
+        "label": "demand products",
+        "score": 0.2492206207334955,
+        "meta": {}
+      },
+      {
+        "label": "ability supply",
+        "score": 0.23148115823613047,
+        "meta": {}
+      },
+      {
+        "label": "financial reporting",
+        "score": 0.18416366255164185,
+        "meta": {}
+      },
+      {
+        "label": "Data privacy",
+        "score": 0.17945832682785046,
+        "meta": {}
+      },
+      {
+        "label": "financial results negatively affected",
+        "score": 0.11404591727695879,
+        "meta": {}
+      },
+      {
+        "label": "bottling partners",
+        "score": 0.014741462335924105,
+        "meta": {}
+      }
+    ],
+    "top_fallers_alt": [
+      {
+        "label": "financial performance adversely affected",
+        "score": -1.418508879345585,
+        "meta": {}
+      },
+      {
+        "label": "financial performance",
+        "score": -0.8593213973659104,
+        "meta": {}
+      },
+      {
+        "label": "bottling partners use",
+        "score": -1.734190355605718,
+        "meta": {}
+      },
+      {
+        "label": "united states major",
+        "score": -1.734190355605718,
+        "meta": {}
+      },
+      {
+        "label": "consumers data",
+        "score": -2.331873201320442,
+        "meta": {}
+      },
+      {
+        "label": "addition bottling partners",
+        "score": -0.946167646971098,
+        "meta": {}
+      },
+      {
+        "label": "income tax",
+        "score": -0.2520014974609124,
+        "meta": {}
+      },
+      {
+        "label": "laws regulations",
+        "score": -0.08114777601537027,
+        "meta": {}
+      },
+      {
+        "label": "beverage products",
+        "score": -0.06232604715471535,
+        "meta": {}
+      },
+      {
+        "label": "united states",
+        "score": -0.027341982456423608,
+        "meta": {}
+      },
+      {
+        "label": "Intellectual property",
+        "score": -0.02691676368878193,
+        "meta": {}
+      },
+      {
+        "label": "packaging materials",
+        "score": -0.02671654180847005,
+        "meta": {}
+      },
+      {
+        "label": "Climate change",
+        "score": -0.026653373617371745,
+        "meta": {}
+      },
+      {
+        "label": "Supply chain",
+        "score": -0.026606134072990173,
+        "meta": {}
+      },
+      {
+        "label": "financial results",
+        "score": -0.026210513295939375,
+        "meta": {}
+      }
+    ],
+    "summary_alt": "Adds emphasis on covid pandemic, results operations financial, bottling partners result; de-emphasizes financial performance adversely affected, financial performance, bottling partners use."
+  },
+  "evidence": [
+    {
+      "year": 2020,
+      "paragraph_idx": 3,
+      "snippet": "\u2022 We have experienced a decrease in sales of certain of our products in markets around the world as a result of the COVID-19 pandemic. In particular, sales of our products in the away-from-home channels have been significantly negatively affected by shelter-in-place regulations or recommendations, closings of restaurants and cancellations of major sporting and other events that were imposed as a result of the initial COVID-19 outbreak. While some of these restrictions have been lifted or eased in many jurisdictions as the rates of COVID-19 infections have decreased or stabilized, resurgence of the pandemic in some markets has slowed the reopening process. If COVID-19 infection trends increase, the pandemic intensifies or expands geographically or efforts to curb the pandemic are ineffective, the negative impacts of the pandemic on our sales could be more prolonged and may become more severe. While we initially experienced increased sales in the at-home channels from pantry loading as consumers stocked up on certain of our products with the expectation of spending more time at home during the crisis, such increased sales levels have not, and we expect will not, fully offset the sales pressures we have experienced, and we expect will continue to",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "COVID-19",
+        "alcoholic",
+        "crisis",
+        "reorganization",
+        "shelter",
+        "shelter place",
+        "segments",
+        "home",
+        "approach",
+        "behaviors",
+        "distancing",
+        "improving",
+        "optimization",
+        "recommendations",
+        "reopening",
+        "ccpa",
+        "Coronavirus",
+        "novel",
+        "provides",
+        "sharing",
+        "GDPR",
+        "residents",
+        "participated",
+        "controlled",
+        "tax dispute",
+        "employer",
+        "multi",
+        "pension",
+        "owned controlled",
+        "deteriorate"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 5,
+      "snippet": "\u2022 We are accelerating our business strategy and are taking certain actions to address challenges posed by the COVID-19 pandemic and deliver on our commitment to emerge stronger from this crisis. These actions include focusing investments on a defined growth portfolio by prioritizing brands best positioned for consumer reach; streamlining the innovation pipeline through initiatives that are scalable regionally or globally, as well as maintaining a disciplined approach to local experimentation; refreshing our marketing approach, with a focus on improving our marketing investment effectiveness and efficiency; and investing in new capabilities to capitalize on emerging shifts in consumer behaviors that we anticipate may last beyond this crisis. These actions, which may require substantial additional investment of management time and financial resources, may not be sufficient to accomplish our goals.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "COVID-19",
+        "alcoholic",
+        "crisis",
+        "reorganization",
+        "shelter",
+        "shelter place",
+        "segments",
+        "home",
+        "approach",
+        "behaviors",
+        "distancing",
+        "improving",
+        "optimization",
+        "recommendations",
+        "reopening",
+        "ccpa",
+        "Coronavirus",
+        "novel",
+        "provides",
+        "sharing",
+        "GDPR",
+        "residents",
+        "participated",
+        "controlled",
+        "tax dispute",
+        "employer",
+        "multi",
+        "pension",
+        "owned controlled",
+        "deteriorate"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 4,
+      "snippet": "\u2022 In certain COVID-19 affected markets, consumer demand has shifted away from some of our more profitable beverages and away-from-home consumption to lower-margin products and at-home consumption, and this shift in consumer purchasing patterns is likely to continue while shelter-in-place and social distancing behaviors are mandated or encouraged.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "COVID-19",
+        "alcoholic",
+        "crisis",
+        "reorganization",
+        "shelter",
+        "shelter place",
+        "segments",
+        "home",
+        "approach",
+        "behaviors",
+        "distancing",
+        "improving",
+        "optimization",
+        "recommendations",
+        "reopening",
+        "ccpa",
+        "Coronavirus",
+        "novel",
+        "provides",
+        "sharing",
+        "GDPR",
+        "residents",
+        "participated",
+        "controlled",
+        "tax dispute",
+        "employer",
+        "multi",
+        "pension",
+        "owned controlled",
+        "deteriorate"
+      ]
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 14,
+      "snippet": "In the ordinary course of our business, we receive, process, transmit and store information relating to identifiable individuals (\"personal data\"), primarily employees and former employees but also some consumers. As a result, we are subject to various U.S. federal and state and foreign laws and regulations relating to personal data. These laws have been subject to frequent changes, and new legislation in this area may be enacted in other jurisdictions at any time. In the European Union (\"EU\"), the GDPR, which became effective on May 25, 2018 for all EU member states, includes operational requirements for companies receiving or processing personal data of EU residents and provides for significant penalties for noncompliance. In the United States, the CCPA, which became effective on January 1, 2020, provides for a private right of action for data breaches and requires companies that process information about California residents to make disclosures to consumers about their data collection, use and sharing practices and to allow consumers to opt out of certain data sharing with third parties. The changes introduced by the GDPR and the CCPA, as well as any other changes to existing personal data protection or privacy laws and the introduction of such laws in other jurisdictions, have subjected and may continue in the future to subject the Company to, among other things, additional costs and expenses and have required and may in the future require costly changes to our business practices and security systems, policies, procedures and practices. Our security controls over personal data, the training of employees and vendors on data privacy and data security, and the policies, procedures and practices we implemented or may implement in the future may not prevent the improper disclosure of personal data. Improper disclosure of personal data in violation of the GDPR, the CCPA and/or of other personal data protection or privacy laws could harm our reputation, cause loss of consumer confidence, subject us to government enforcement actions (including fines), or result in",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "COVID-19",
+        "alcoholic",
+        "crisis",
+        "reorganization",
+        "shelter",
+        "shelter place",
+        "segments",
+        "home",
+        "approach",
+        "behaviors",
+        "distancing",
+        "improving",
+        "optimization",
+        "recommendations",
+        "reopening",
+        "ccpa",
+        "Coronavirus",
+        "novel",
+        "provides",
+        "sharing",
+        "GDPR",
+        "residents",
+        "participated",
+        "controlled",
+        "tax dispute",
+        "employer",
+        "multi",
+        "pension",
+        "owned controlled",
+        "deteriorate"
+      ]
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 62,
+      "snippet": "We currently participate, and have in the past participated, in certain multi-employer pension plans in the United States. The U.S. multi-employer pension plans in which we currently participate have contractual arrangements that extend into 2021 . If in the future we choose to withdraw, or are deemed to have withdrawn, from any of the multi-employer pension plans in which we currently participate, or in which we have participated in the past, we would need to record the appropriate withdrawal liabilities, which could negatively impact our financial performance in the applicable periods.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "COVID-19",
+        "alcoholic",
+        "crisis",
+        "reorganization",
+        "shelter",
+        "shelter place",
+        "segments",
+        "home",
+        "approach",
+        "behaviors",
+        "distancing",
+        "improving",
+        "optimization",
+        "recommendations",
+        "reopening",
+        "ccpa",
+        "Coronavirus",
+        "novel",
+        "provides",
+        "sharing",
+        "GDPR",
+        "residents",
+        "participated",
+        "controlled",
+        "tax dispute",
+        "employer",
+        "multi",
+        "pension",
+        "owned controlled",
+        "deteriorate"
+      ]
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 66,
+      "snippet": "Because of our global presence and worldwide operations, our business could be affected by large-scale terrorist acts, cyber-strikes and radiological attacks, especially those directed against the United States or other major industrialized countries; the outbreak or escalation of armed hostilities; major natural disasters; or widespread outbreaks of infectious diseases such as the recent outbreak of the novel coronavirus COVID-19. Such events could impair our ability to manage our business around the world, could disrupt our supply of raw materials and ingredients, and could impact production, transportation and delivery of concentrates, syrups and finished products. In addition, such events could cause disruption of regional or global economic activity, which could affect consumers' purchasing power in the affected areas and, therefore, reduce demand for our products.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "COVID-19",
+        "alcoholic",
+        "crisis",
+        "reorganization",
+        "shelter",
+        "shelter place",
+        "segments",
+        "home",
+        "approach",
+        "behaviors",
+        "distancing",
+        "improving",
+        "optimization",
+        "recommendations",
+        "reopening",
+        "ccpa",
+        "Coronavirus",
+        "novel",
+        "provides",
+        "sharing",
+        "GDPR",
+        "residents",
+        "participated",
+        "controlled",
+        "tax dispute",
+        "employer",
+        "multi",
+        "pension",
+        "owned controlled",
+        "deteriorate"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.0375,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T19:27:18Z",
+    "git_commit": "cfe9628e9904d9ea49e72960b3535e0464887ce9",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "19074bf419ec25109f66851165aeeb69230f1a8b1a87281c7036328cad5f87e1",
+      "curr_text_sha256": "34b0ec0d66b244446712462b1db58c554840ecaf73b985f16e10109a32f13871",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

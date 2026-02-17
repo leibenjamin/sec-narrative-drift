@@ -1,0 +1,1201 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_logodds_terms_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "WM",
+  "section": "10k_item1a",
+  "year_from": 2023,
+  "year_to": 2024,
+  "artifacts": {
+    "top_risers": [
+      {
+        "label": "stericycle",
+        "score": 1.6986236157453563,
+        "meta": {
+          "z": 1.8111009197269956,
+          "countPrev": 0,
+          "countCurr": 34,
+          "per10kPrev": 0.0,
+          "per10kCurr": 28.74535001690903,
+          "deltaPer10k": 28.74535001690903,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "controlled substances",
+        "score": 1.4538573316409498,
+        "meta": {
+          "z": 1.5903967575957065,
+          "countPrev": 0,
+          "countCurr": 17,
+          "per10kPrev": 0.0,
+          "per10kCurr": 14.372675008454515,
+          "deltaPer10k": 14.372675008454515,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "medical",
+        "score": 1.4336193908007249,
+        "meta": {
+          "z": 1.5285489811575088,
+          "countPrev": 0,
+          "countCurr": 14,
+          "per10kPrev": 0.0,
+          "per10kCurr": 11.836320595197837,
+          "deltaPer10k": 11.836320595197837,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "medical waste",
+        "score": 1.3973193370864978,
+        "meta": {
+          "z": 1.5285489811575088,
+          "countPrev": 0,
+          "countCurr": 14,
+          "per10kPrev": 0.0,
+          "per10kCurr": 11.836320595197837,
+          "deltaPer10k": 11.836320595197837,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "waste controlled",
+        "score": 1.375735257588739,
+        "meta": {
+          "z": 1.5049378266777367,
+          "countPrev": 0,
+          "countCurr": 13,
+          "per10kPrev": 0.0,
+          "per10kCurr": 10.990869124112274,
+          "deltaPer10k": 10.990869124112274,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "substances",
+        "score": 1.3359364900495996,
+        "meta": {
+          "z": 2.820541217235441,
+          "countPrev": 2,
+          "countCurr": 18,
+          "per10kPrev": 1.8703824932198634,
+          "per10kCurr": 15.218126479540075,
+          "deltaPer10k": 13.34774398632021,
+          "distinctive": true
+        }
+      },
+      {
+        "label": "healthcare",
+        "score": 1.3330587406639043,
+        "meta": {
+          "z": 1.4213295334452951,
+          "countPrev": 0,
+          "countCurr": 10,
+          "per10kPrev": 0.0,
+          "per10kCurr": 8.454514710855596,
+          "deltaPer10k": 8.454514710855596,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "substances waste",
+        "score": 1.3270727944963625,
+        "meta": {
+          "z": 1.4517052144850506,
+          "countPrev": 0,
+          "countCurr": 11,
+          "per10kPrev": 0.0,
+          "per10kCurr": 9.299966181941157,
+          "deltaPer10k": 9.299966181941157,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "acquisition stericycle",
+        "score": 1.2993049394801102,
+        "meta": {
+          "z": 1.4213295334452951,
+          "countPrev": 0,
+          "countCurr": 10,
+          "per10kPrev": 0.0,
+          "per10kCurr": 8.454514710855596,
+          "deltaPer10k": 8.454514710855596,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "disposal destruction",
+        "score": 1.2342860944539933,
+        "meta": {
+          "z": 1.3502044250445684,
+          "countPrev": 0,
+          "countCurr": 8,
+          "per10kPrev": 0.0,
+          "per10kCurr": 6.763611768684477,
+          "deltaPer10k": 6.763611768684477,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "artificial",
+        "score": 1.203024647516331,
+        "meta": {
+          "z": 1.7236454846182194,
+          "countPrev": 1,
+          "countCurr": 7,
+          "per10kPrev": 0.9351912466099317,
+          "per10kCurr": 5.918160297598918,
+          "deltaPer10k": 4.982969050988986,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "intelligence",
+        "score": 1.203024647516331,
+        "meta": {
+          "z": 1.7236454846182194,
+          "countPrev": 1,
+          "countCurr": 7,
+          "per10kPrev": 0.9351912466099317,
+          "per10kCurr": 5.918160297598918,
+          "deltaPer10k": 4.982969050988986,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "personal confidential",
+        "score": 1.1953772978817778,
+        "meta": {
+          "z": 1.307641497745121,
+          "countPrev": 0,
+          "countCurr": 7,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.918160297598918,
+          "deltaPer10k": 5.918160297598918,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "financial reporting",
+        "score": 1.150171176535531,
+        "meta": {
+          "z": 1.5285489811575088,
+          "countPrev": 0,
+          "countCurr": 14,
+          "per10kPrev": 0.0,
+          "per10kCurr": 11.836320595197837,
+          "deltaPer10k": 11.836320595197837,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "handling",
+        "score": 1.1258764992524304,
+        "meta": {
+          "z": 1.2004283611707236,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.227257355427798,
+          "deltaPer10k": 4.227257355427798,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_fallers": [
+      {
+        "label": "esg",
+        "score": -1.1180625358612397,
+        "meta": {
+          "z": -1.3699112688995843,
+          "countPrev": 7,
+          "countCurr": 0,
+          "per10kPrev": 6.546338726269522,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -6.546338726269522,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "cercla",
+        "score": -1.0314561274894083,
+        "meta": {
+          "z": -1.0997557809970768,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.8055737398297955,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.8055737398297955,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "clean fuel",
+        "score": -0.9916314836359911,
+        "meta": {
+          "z": -1.3178536594536878,
+          "countPrev": 4,
+          "countCurr": 1,
+          "per10kPrev": 3.7407649864397268,
+          "per10kCurr": 0.8454514710855596,
+          "deltaPer10k": -2.895313515354167,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "eccc",
+        "score": -0.9109845519154709,
+        "meta": {
+          "z": -0.9713069714430084,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8703824932198634,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8703824932198634,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "relief",
+        "score": -0.9109845519154709,
+        "meta": {
+          "z": -0.9713069714430084,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8703824932198634,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8703824932198634,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "stakeholder",
+        "score": -0.9109845519154709,
+        "meta": {
+          "z": -0.9713069714430084,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8703824932198634,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8703824932198634,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "started",
+        "score": -0.9109845519154709,
+        "meta": {
+          "z": -0.9713069714430084,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8703824932198634,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8703824932198634,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "recession",
+        "score": -0.8399361167281552,
+        "meta": {
+          "z": -1.2034267942516057,
+          "countPrev": 5,
+          "countCurr": 2,
+          "per10kPrev": 4.675956233049659,
+          "per10kCurr": 1.6909029421711192,
+          "deltaPer10k": -2.9850532908785397,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "rng",
+        "score": -0.8086058546608123,
+        "meta": {
+          "z": -1.3854638091118945,
+          "countPrev": 11,
+          "countCurr": 6,
+          "per10kPrev": 10.28710371270925,
+          "per10kCurr": 5.072708826513358,
+          "deltaPer10k": -5.214394886195892,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "economic recession",
+        "score": -0.7965708283083119,
+        "meta": {
+          "z": -1.3178536594536878,
+          "countPrev": 4,
+          "countCurr": 1,
+          "per10kPrev": 3.7407649864397268,
+          "per10kCurr": 0.8454514710855596,
+          "deltaPer10k": -2.895313515354167,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "attributable",
+        "score": -0.7927388877263658,
+        "meta": {
+          "z": -0.9713069714430084,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8703824932198634,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8703824932198634,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "governance",
+        "score": -0.7927388877263658,
+        "meta": {
+          "z": -0.9713069714430084,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8703824932198634,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8703824932198634,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "settlement",
+        "score": -0.7927388877263658,
+        "meta": {
+          "z": -0.9713069714430084,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8703824932198634,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8703824932198634,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "standard programs",
+        "score": -0.7698131288326477,
+        "meta": {
+          "z": -1.0230625647420468,
+          "countPrev": 3,
+          "countCurr": 1,
+          "per10kPrev": 2.8055737398297955,
+          "per10kCurr": 0.8454514710855596,
+          "deltaPer10k": -1.960122268744236,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "compared",
+        "score": -0.7675785552161282,
+        "meta": {
+          "z": -1.0997557809970768,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.8055737398297955,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.8055737398297955,
+          "distinctive": false
+        }
+      }
+    ],
+    "summary": "Adds emphasis on stericycle, controlled substances, medical; de-emphasizes esg, cercla, clean fuel.",
+    "ranked_items": [
+      {
+        "label": "stericycle",
+        "score": 1.6986236157453563,
+        "meta": {
+          "z": 1.8111009197269956,
+          "countPrev": 0,
+          "countCurr": 34,
+          "per10kPrev": 0.0,
+          "per10kCurr": 28.74535001690903,
+          "deltaPer10k": 28.74535001690903,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "controlled substances",
+        "score": 1.4538573316409498,
+        "meta": {
+          "z": 1.5903967575957065,
+          "countPrev": 0,
+          "countCurr": 17,
+          "per10kPrev": 0.0,
+          "per10kCurr": 14.372675008454515,
+          "deltaPer10k": 14.372675008454515,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "medical",
+        "score": 1.4336193908007249,
+        "meta": {
+          "z": 1.5285489811575088,
+          "countPrev": 0,
+          "countCurr": 14,
+          "per10kPrev": 0.0,
+          "per10kCurr": 11.836320595197837,
+          "deltaPer10k": 11.836320595197837,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "medical waste",
+        "score": 1.3973193370864978,
+        "meta": {
+          "z": 1.5285489811575088,
+          "countPrev": 0,
+          "countCurr": 14,
+          "per10kPrev": 0.0,
+          "per10kCurr": 11.836320595197837,
+          "deltaPer10k": 11.836320595197837,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "waste controlled",
+        "score": 1.375735257588739,
+        "meta": {
+          "z": 1.5049378266777367,
+          "countPrev": 0,
+          "countCurr": 13,
+          "per10kPrev": 0.0,
+          "per10kCurr": 10.990869124112274,
+          "deltaPer10k": 10.990869124112274,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "substances",
+        "score": 1.3359364900495996,
+        "meta": {
+          "z": 2.820541217235441,
+          "countPrev": 2,
+          "countCurr": 18,
+          "per10kPrev": 1.8703824932198634,
+          "per10kCurr": 15.218126479540075,
+          "deltaPer10k": 13.34774398632021,
+          "distinctive": true
+        }
+      },
+      {
+        "label": "healthcare",
+        "score": 1.3330587406639043,
+        "meta": {
+          "z": 1.4213295334452951,
+          "countPrev": 0,
+          "countCurr": 10,
+          "per10kPrev": 0.0,
+          "per10kCurr": 8.454514710855596,
+          "deltaPer10k": 8.454514710855596,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "substances waste",
+        "score": 1.3270727944963625,
+        "meta": {
+          "z": 1.4517052144850506,
+          "countPrev": 0,
+          "countCurr": 11,
+          "per10kPrev": 0.0,
+          "per10kCurr": 9.299966181941157,
+          "deltaPer10k": 9.299966181941157,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "acquisition stericycle",
+        "score": 1.2993049394801102,
+        "meta": {
+          "z": 1.4213295334452951,
+          "countPrev": 0,
+          "countCurr": 10,
+          "per10kPrev": 0.0,
+          "per10kCurr": 8.454514710855596,
+          "deltaPer10k": 8.454514710855596,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "disposal destruction",
+        "score": 1.2342860944539933,
+        "meta": {
+          "z": 1.3502044250445684,
+          "countPrev": 0,
+          "countCurr": 8,
+          "per10kPrev": 0.0,
+          "per10kCurr": 6.763611768684477,
+          "deltaPer10k": 6.763611768684477,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "artificial",
+        "score": 1.203024647516331,
+        "meta": {
+          "z": 1.7236454846182194,
+          "countPrev": 1,
+          "countCurr": 7,
+          "per10kPrev": 0.9351912466099317,
+          "per10kCurr": 5.918160297598918,
+          "deltaPer10k": 4.982969050988986,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "intelligence",
+        "score": 1.203024647516331,
+        "meta": {
+          "z": 1.7236454846182194,
+          "countPrev": 1,
+          "countCurr": 7,
+          "per10kPrev": 0.9351912466099317,
+          "per10kCurr": 5.918160297598918,
+          "deltaPer10k": 4.982969050988986,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "personal confidential",
+        "score": 1.1953772978817778,
+        "meta": {
+          "z": 1.307641497745121,
+          "countPrev": 0,
+          "countCurr": 7,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.918160297598918,
+          "deltaPer10k": 5.918160297598918,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "financial reporting",
+        "score": 1.150171176535531,
+        "meta": {
+          "z": 1.5285489811575088,
+          "countPrev": 0,
+          "countCurr": 14,
+          "per10kPrev": 0.0,
+          "per10kCurr": 11.836320595197837,
+          "deltaPer10k": 11.836320595197837,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "handling",
+        "score": 1.1258764992524304,
+        "meta": {
+          "z": 1.2004283611707236,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.227257355427798,
+          "deltaPer10k": 4.227257355427798,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "esg",
+        "score": -1.1180625358612397,
+        "meta": {
+          "z": -1.3699112688995843,
+          "countPrev": 7,
+          "countCurr": 0,
+          "per10kPrev": 6.546338726269522,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -6.546338726269522,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "cercla",
+        "score": -1.0314561274894083,
+        "meta": {
+          "z": -1.0997557809970768,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.8055737398297955,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.8055737398297955,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "clean fuel",
+        "score": -0.9916314836359911,
+        "meta": {
+          "z": -1.3178536594536878,
+          "countPrev": 4,
+          "countCurr": 1,
+          "per10kPrev": 3.7407649864397268,
+          "per10kCurr": 0.8454514710855596,
+          "deltaPer10k": -2.895313515354167,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "eccc",
+        "score": -0.9109845519154709,
+        "meta": {
+          "z": -0.9713069714430084,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8703824932198634,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8703824932198634,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "relief",
+        "score": -0.9109845519154709,
+        "meta": {
+          "z": -0.9713069714430084,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8703824932198634,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8703824932198634,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "stakeholder",
+        "score": -0.9109845519154709,
+        "meta": {
+          "z": -0.9713069714430084,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8703824932198634,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8703824932198634,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "started",
+        "score": -0.9109845519154709,
+        "meta": {
+          "z": -0.9713069714430084,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8703824932198634,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8703824932198634,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "recession",
+        "score": -0.8399361167281552,
+        "meta": {
+          "z": -1.2034267942516057,
+          "countPrev": 5,
+          "countCurr": 2,
+          "per10kPrev": 4.675956233049659,
+          "per10kCurr": 1.6909029421711192,
+          "deltaPer10k": -2.9850532908785397,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "rng",
+        "score": -0.8086058546608123,
+        "meta": {
+          "z": -1.3854638091118945,
+          "countPrev": 11,
+          "countCurr": 6,
+          "per10kPrev": 10.28710371270925,
+          "per10kCurr": 5.072708826513358,
+          "deltaPer10k": -5.214394886195892,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "economic recession",
+        "score": -0.7965708283083119,
+        "meta": {
+          "z": -1.3178536594536878,
+          "countPrev": 4,
+          "countCurr": 1,
+          "per10kPrev": 3.7407649864397268,
+          "per10kCurr": 0.8454514710855596,
+          "deltaPer10k": -2.895313515354167,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "attributable",
+        "score": -0.7927388877263658,
+        "meta": {
+          "z": -0.9713069714430084,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8703824932198634,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8703824932198634,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "governance",
+        "score": -0.7927388877263658,
+        "meta": {
+          "z": -0.9713069714430084,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8703824932198634,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8703824932198634,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "settlement",
+        "score": -0.7927388877263658,
+        "meta": {
+          "z": -0.9713069714430084,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8703824932198634,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8703824932198634,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "standard programs",
+        "score": -0.7698131288326477,
+        "meta": {
+          "z": -1.0230625647420468,
+          "countPrev": 3,
+          "countCurr": 1,
+          "per10kPrev": 2.8055737398297955,
+          "per10kCurr": 0.8454514710855596,
+          "deltaPer10k": -1.960122268744236,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "compared",
+        "score": -0.7675785552161282,
+        "meta": {
+          "z": -1.0997557809970768,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.8055737398297955,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.8055737398297955,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_risers_alt": [
+      {
+        "label": "financial reporting",
+        "score": 1.3623381340399612,
+        "meta": {}
+      },
+      {
+        "label": "Artificial intelligence",
+        "score": 1.1397851635033343,
+        "meta": {}
+      },
+      {
+        "label": "benefits cost",
+        "score": 1.8583918855293442,
+        "meta": {}
+      },
+      {
+        "label": "tax laws",
+        "score": 1.8557388821433287,
+        "meta": {}
+      },
+      {
+        "label": "Data privacy",
+        "score": 1.8530954907910209,
+        "meta": {}
+      },
+      {
+        "label": "changes regulation",
+        "score": 1.8530954907910209,
+        "meta": {}
+      },
+      {
+        "label": "compliance costs",
+        "score": 1.8530954907910209,
+        "meta": {}
+      },
+      {
+        "label": "increase cost",
+        "score": 1.8530954907910209,
+        "meta": {}
+      },
+      {
+        "label": "increase tax",
+        "score": 1.8530954907910209,
+        "meta": {}
+      },
+      {
+        "label": "laws regulations require",
+        "score": 1.8530954907910209,
+        "meta": {}
+      },
+      {
+        "label": "laws regulatory",
+        "score": 1.8530954907910209,
+        "meta": {}
+      },
+      {
+        "label": "new customers",
+        "score": 1.8530954907910209,
+        "meta": {}
+      },
+      {
+        "label": "regulation sustainability",
+        "score": 1.8530954907910209,
+        "meta": {}
+      },
+      {
+        "label": "market prices",
+        "score": 1.293033931505664,
+        "meta": {}
+      },
+      {
+        "label": "waste industry",
+        "score": 1.00498498497278,
+        "meta": {}
+      }
+    ],
+    "top_fallers_alt": [
+      {
+        "label": "growth strategy",
+        "score": -2.0740437272920835,
+        "meta": {}
+      },
+      {
+        "label": "market prices recycling",
+        "score": -2.061770676931471,
+        "meta": {}
+      },
+      {
+        "label": "environmental services",
+        "score": -1.2111116148161134,
+        "meta": {}
+      },
+      {
+        "label": "waste management",
+        "score": -0.7036719596434997,
+        "meta": {}
+      },
+      {
+        "label": "conditions regulations",
+        "score": -1.4958345072136217,
+        "meta": {}
+      },
+      {
+        "label": "laws regulations",
+        "score": -0.2079984333993088,
+        "meta": {}
+      },
+      {
+        "label": "Climate change",
+        "score": -0.14866059734564985,
+        "meta": {}
+      },
+      {
+        "label": "human capital",
+        "score": -0.48457073434082254,
+        "meta": {}
+      },
+      {
+        "label": "Supply chain",
+        "score": -0.17437976940780775,
+        "meta": {}
+      },
+      {
+        "label": "class action",
+        "score": -0.2315102014453374,
+        "meta": {}
+      },
+      {
+        "label": "Interest rates",
+        "score": -0.10654573139848633,
+        "meta": {}
+      },
+      {
+        "label": "new service",
+        "score": -0.10309109140025097,
+        "meta": {}
+      },
+      {
+        "label": "increase operating",
+        "score": -0.10265123411760602,
+        "meta": {}
+      },
+      {
+        "label": "increase costs",
+        "score": -0.102602592874943,
+        "meta": {}
+      },
+      {
+        "label": "reduce waste",
+        "score": -0.1024559759862349,
+        "meta": {}
+      }
+    ],
+    "summary_alt": "Adds emphasis on financial reporting, Artificial intelligence, benefits cost; de-emphasizes growth strategy, market prices recycling, environmental services."
+  },
+  "evidence": [
+    {
+      "year": 2024,
+      "paragraph_idx": 11,
+      "snippet": "The benefits we expect to receive from the acquisition of Stericycle depend on the performance of the Stericycle business and its ability to achieve financial and operational targets and strategic goals. The acquired Stericycle business, which is now presented as our new WM Healthcare Solutions segment, is subject to numerous risks and uncertainties that could cause performance to be materially different than we anticipate; such factors include, but are not limited to, decreases in the volume of medical waste and controlled substances wastes or personal and confidential information collected from customers; disruptions resulting from deployment of systems, including with respect to the implementation of Stericycle\u2019s enterprise resource planning system and billing and collection delays that Stericycle has experienced following the launch of such system upgrade; changing market conditions in the healthcare industry; competition and demand for services for the medical waste, controlled substances waste and secure information destruction industries; commodity price volatility; changes in regulation of the collection, transportation, treatment and disposal or destruction of medical waste and controlled substances waste or the proper handling and protection of personal and confidential information; the level of government enforcement of regulations governing medical waste and controlled substances waste collection and treatment or the proper handling and protection of personal and confidential information; and the outcome of pending, future or settled litigation or investigations. Should the Stericycle business be unsuccessful in achieving financial and operational targets and implementing the WM Healthcare Solutions business strategy, it could negatively impact our realization of benefits from the acquisition, as well as our stock price and our future business and financial results.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "stericycle",
+        "controlled substances",
+        "medical",
+        "medical waste",
+        "waste controlled",
+        "substances",
+        "healthcare",
+        "substances waste",
+        "acquisition stericycle",
+        "disposal destruction",
+        "artificial",
+        "intelligence",
+        "personal confidential",
+        "financial reporting",
+        "handling",
+        "esg",
+        "cercla",
+        "clean fuel",
+        "eccc",
+        "relief",
+        "stakeholder",
+        "started",
+        "recession",
+        "rng",
+        "economic recession",
+        "attributable",
+        "governance",
+        "settlement",
+        "standard programs",
+        "compared"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 19,
+      "snippet": "Following our acquisition of Stericycle, we are subject to additional laws and regulations in the U.S. and internationally concerning transportation, management and disposal or destruction of medical waste streams, including regulations that govern the definition, generation, segregation, handling, packaging, transportation, treatment, storage and disposal or destruction of medical waste and controlled substances waste, along with extensive recordkeeping and documentation requirements. Additionally, Stericycle\u2019s secure information destruction services are subject to additional laws and regulations regarding proper handling and protection of personal and confidential information. Relaxation of enforcement, government shutdowns, or other changes in governmental regulation of medical waste and controlled substances waste and personal and confidential information could increase the number of competitors we face or reduce or delay the need for these services.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "stericycle",
+        "controlled substances",
+        "medical",
+        "medical waste",
+        "waste controlled",
+        "substances",
+        "healthcare",
+        "substances waste",
+        "acquisition stericycle",
+        "disposal destruction",
+        "artificial",
+        "intelligence",
+        "personal confidential",
+        "financial reporting",
+        "handling",
+        "esg",
+        "cercla",
+        "clean fuel",
+        "eccc",
+        "relief",
+        "stakeholder",
+        "started",
+        "recession",
+        "rng",
+        "economic recession",
+        "attributable",
+        "governance",
+        "settlement",
+        "standard programs",
+        "compared"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 24,
+      "snippet": "Providing environmental and waste management services, including constructing and operating landfills, transfer stations, processing facilities, recycling facilities and other disposal or destruction facilities, and landfill gas-to-energy facilities, involves risks such as truck accidents, equipment defects, malfunctions and failures, and improper use of dangerous equipment. Additionally, we closely monitor and manage landfills to minimize the risk of waste mass instability, releases of hazardous materials, and odors that are sometimes triggered by weather or natural disasters. There are also risks presented by the potential for subsurface heat reactions causing elevated landfill temperatures and increased production of leachate, landfill gas and odors, and we have proactively incurred increased costs to manage leachate in response to this risk. We build and operate natural gas fueling stations, some of which also serve the public or third parties. Operation of fueling stations and landfill gas collection and control systems, as well as operation of heavy machinery and management of flammable materials at our recycling facilities and transfer stations, involves additional risks of fire and explosion. The Stericycle business requires handling of medical waste and controlled substances waste. Incidents such as truck accidents, damaged or leaking containers, improper storage of medical waste and controlled substances waste, placement of prohibited materials into the waste stream, or malfunctioning plant equipment could result in exposure to contaminated or infectious waste or other hazardous materials.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "stericycle",
+        "controlled substances",
+        "medical",
+        "medical waste",
+        "waste controlled",
+        "substances",
+        "healthcare",
+        "substances waste",
+        "acquisition stericycle",
+        "disposal destruction",
+        "artificial",
+        "intelligence",
+        "personal confidential",
+        "financial reporting",
+        "handling",
+        "esg",
+        "cercla",
+        "clean fuel",
+        "eccc",
+        "relief",
+        "stakeholder",
+        "started",
+        "recession",
+        "rng",
+        "economic recession",
+        "attributable",
+        "governance",
+        "settlement",
+        "standard programs",
+        "compared"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 80,
+      "snippet": "aspects of the rule, will ultimately reduce volatility in the RINs market or that future rulemakings will be similarly favorable to our business. Additionally, the Company\u2019s sustainability growth strategy is informed by the increased adoption of state and Canadian clean fuel standard programs, utility policies, and voluntary market demand for RNG in transportation and industrial applications. Clean fuel standard programs operate similar to the RFS program in that certain regulated parties purchase credits from fuel producers, including RNG producers, to meet their carbon intensity obligations. Like RINs, clean fuel standard program credit values can fluctuate with policy and market dynamics. Changes and volatility in the RFS market or other markets, or changes in the structure of the RFS program or other clean fuel standard programs, can and has impacted the financial performance of the facilities constructed to capture and treat the gas. Such changes could impact or alter our projected future investments, and such investments may not yield the results anticipated.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "stericycle",
+        "controlled substances",
+        "medical",
+        "medical waste",
+        "waste controlled",
+        "substances",
+        "healthcare",
+        "substances waste",
+        "acquisition stericycle",
+        "disposal destruction",
+        "artificial",
+        "intelligence",
+        "personal confidential",
+        "financial reporting",
+        "handling",
+        "esg",
+        "cercla",
+        "clean fuel",
+        "eccc",
+        "relief",
+        "stakeholder",
+        "started",
+        "recession",
+        "rng",
+        "economic recession",
+        "attributable",
+        "governance",
+        "settlement",
+        "standard programs",
+        "compared"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 14,
+      "snippet": "Federal and state governments have increased their focus on efforts to safeguard communities from the potentially harmful effects associated with PFAS. See Item 1. Business \u2013 Regulation \u2013 Recent Developments and Focus Areas in Policy and Regulation \u2013 PFAS for additional background information. The EPA proposed the designation of two PFAS compounds as hazardous substances under CERCLA. We are closely monitoring this proposed rulemaking and are actively working with both Congress and the EPA to provide landfills and other essential public services with relief from CERCLA liability and instead hold accountable manufacturers and heavy users of these compounds. Without such relief, we may face increased exposure to remediation and litigation costs associated with properties that the EPA may designate as CERCLA sites due to the presence of PFAS.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "stericycle",
+        "controlled substances",
+        "medical",
+        "medical waste",
+        "waste controlled",
+        "substances",
+        "healthcare",
+        "substances waste",
+        "acquisition stericycle",
+        "disposal destruction",
+        "artificial",
+        "intelligence",
+        "personal confidential",
+        "financial reporting",
+        "handling",
+        "esg",
+        "cercla",
+        "clean fuel",
+        "eccc",
+        "relief",
+        "stakeholder",
+        "started",
+        "recession",
+        "rng",
+        "economic recession",
+        "attributable",
+        "governance",
+        "settlement",
+        "standard programs",
+        "compared"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 46,
+      "snippet": "Prices and demand for recyclables fluctuate and are particularly susceptible to volatility based on macroeconomic conditions and regulations. The downturn in market prices for recycling commodities that started in the second half of 2022 continued in 2023. Average market prices for single-stream recycled commodities were down 40% in 2023 when compared to the comparable prior year period. Decreases in the market prices for recycling commodities resulted in a decrease in recycling revenues attributable to yield of $308 million in 2023 as compared to the prior year period. Recycling revenues attributable to yield increased $19 million in 2022 as compared with the prior year period, primarily from higher market prices for recycling commodities in the first half of 2022, before the significant downturn in the second half of 2022.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "stericycle",
+        "controlled substances",
+        "medical",
+        "medical waste",
+        "waste controlled",
+        "substances",
+        "healthcare",
+        "substances waste",
+        "acquisition stericycle",
+        "disposal destruction",
+        "artificial",
+        "intelligence",
+        "personal confidential",
+        "financial reporting",
+        "handling",
+        "esg",
+        "cercla",
+        "clean fuel",
+        "eccc",
+        "relief",
+        "stakeholder",
+        "started",
+        "recession",
+        "rng",
+        "economic recession",
+        "attributable",
+        "governance",
+        "settlement",
+        "standard programs",
+        "compared"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.0815,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T19:27:22Z",
+    "git_commit": "cfe9628e9904d9ea49e72960b3535e0464887ce9",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "faed25fa3f4d1c6d55f7737bc8a15ba0376a341b6c0b6f34c48c76a3fac81f31",
+      "curr_text_sha256": "3b00b2045a6f716096275d249ce5ef3df89c95a4be259e714dc6a17b881d2f9d",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

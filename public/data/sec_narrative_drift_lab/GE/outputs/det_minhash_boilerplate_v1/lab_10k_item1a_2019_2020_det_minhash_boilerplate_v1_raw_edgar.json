@@ -1,0 +1,73 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_minhash_boilerplate_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "GE",
+  "section": "10k_item1a",
+  "year_from": 2019,
+  "year_to": 2020,
+  "artifacts": {
+    "stats": {
+      "percent_reused": 0.24,
+      "percent_new": 0.76,
+      "reused_paragraphs": 6,
+      "total_paragraphs": 25
+    }
+  },
+  "evidence": [
+    {
+      "year": 2020,
+      "paragraph_idx": 11,
+      "snippet": "OPERATIONAL RISKS. Operational risk relates to risks arising from systems, processes, people and external events that affect the operation of our businesses. It includes risks related to product and service lifecycle and execution; product safety and performance; information management and data protection and security, including cybersecurity; and supply chain and business disruption.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 9,
+      "snippet": "OPERATIONAL RISKS. Operational risk relates to risks arising from systems, processes, people and external events that affect the operation of our businesses. It includes risks related to product and service lifecycle and execution; product safety and performance; information management and data protection and security, including cybersecurity; and supply chain and business disruption.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 22,
+      "snippet": "LEGAL & COMPLIANCE RISKS. Legal and compliance risk relates to risks arising from the government and regulatory environment and action and from legal proceedings and compliance with integrity policies and procedures, including those relating to financial reporting and environmental, health and safety matters. Government and regulatory risk includes the risk that the government or regulatory actions will impose additional cost on us or require us to make adverse changes to our business models or practices.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 23,
+      "snippet": "LEGAL & COMPLIANCE RISKS. Legal and compliance risk relates to risks arising from the government and regulatory environment and action and from legal proceedings and compliance with integrity policies and procedures, including those relating to financial reporting and environmental, health and safety matters. Government and regulatory risk includes the risk that the government or regulatory actions will impose additional cost on us or require us to make adverse changes to our business models or practices.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 16,
+      "snippet": "FINANCIAL RISKS. Financial risk relates to our ability to meet financial obligations and mitigate exposure to broad market risks, including funding and liquidity risks, such as risk related to our credit ratings and our availability and cost of funding; credit risk; and volatility in foreign currency exchange rates, interest rates and commodity prices. Liquidity risk refers to the potential inability to meet contractual or contingent financial obligations (whether on- or off-balance sheet) as they arise, and could potentially impact our financial condition or overall safety and soundness. Credit risk is the risk of financial loss arising from a customer or counterparty failure to meet its contractual obligations, and we face credit risk arising from both our industrial businesses and from GE Capital.",
+      "why": "Near-duplicate paragraph (Jaccard 0.88)."
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 14,
+      "snippet": "FINANCIAL RISKS. Financial risk relates to our ability to meet financial obligations and mitigate exposure to broad market risks, including funding and liquidity risks, such as risk related to our credit ratings and our availability and cost of funding; credit risk; and volatility in foreign currency exchange rates, interest rates and commodity prices. Liquidity risk refers to the potential inability to meet contractual or contingent financial obligations (whether on- or off-balance sheet) as they arise, and could potentially impact an institution's financial condition or overall safety and soundness. Credit risk is the risk of financial loss arising from a customer or counterparty failure to meet its contractual obligations, and we face credit risk arising from both our industrial businesses and from GE Capital.",
+      "why": "Matching paragraph from prior year."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.76,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T19:27:23Z",
+    "git_commit": "cfe9628e9904d9ea49e72960b3535e0464887ce9",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "445afa9fd8f58e5308e5cb8e14841ff2ef5fa0ade6dfc41670c440f78f0c27fc",
+      "curr_text_sha256": "231bdd0927c5ed3145794df750f944019d39e3bf17119eaa1dc6846257c3196a",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

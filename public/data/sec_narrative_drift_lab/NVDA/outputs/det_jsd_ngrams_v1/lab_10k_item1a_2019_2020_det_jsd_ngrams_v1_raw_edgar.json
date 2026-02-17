@@ -1,0 +1,154 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_jsd_ngrams_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "NVDA",
+  "section": "10k_item1a",
+  "year_from": 2019,
+  "year_to": 2020,
+  "artifacts": {
+    "ranked_items": [
+      {
+        "label": "mellanox",
+        "score": 0.0002638870563398865
+      },
+      {
+        "label": "datacenter",
+        "score": 0.00021468441391155003
+      },
+      {
+        "label": "data center",
+        "score": 0.0001979152922549149
+      },
+      {
+        "label": "coronavirus",
+        "score": 0.0001979152922549149
+      },
+      {
+        "label": "mellanox acquisition",
+        "score": 0.0001979152922549149
+      },
+      {
+        "label": "limited number",
+        "score": 0.0001979152922549149
+      },
+      {
+        "label": "center",
+        "score": 0.0001979152922549149
+      },
+      {
+        "label": "receive significant",
+        "score": 0.00013194352816994325
+      },
+      {
+        "label": "purchase products",
+        "score": 0.00013194352816994325
+      },
+      {
+        "label": "integrating",
+        "score": 0.00013194352816994325
+      },
+      {
+        "label": "revenue limited",
+        "score": 0.00013194352816994325
+      },
+      {
+        "label": "number customers",
+        "score": 0.00013194352816994325
+      },
+      {
+        "label": "trade restrictions",
+        "score": 0.00013194352816994325
+      },
+      {
+        "label": "accounts",
+        "score": 0.00013194352816994325
+      },
+      {
+        "label": "receive",
+        "score": 0.00013194352816994325
+      },
+      {
+        "label": "negative",
+        "score": 8.459971197684766e-05
+      },
+      {
+        "label": "purchase",
+        "score": 7.916960315006012e-05
+      },
+      {
+        "label": "anticipated business",
+        "score": 7.156147130385e-05
+      },
+      {
+        "label": "automotive datacenter",
+        "score": 7.156147130385e-05
+      },
+      {
+        "label": "reputation products",
+        "score": 7.156147130385e-05
+      }
+    ],
+    "stats": {
+      "jsd": 0.028273,
+      "tokens_prev": 3494,
+      "tokens_curr": 3790
+    }
+  },
+  "evidence": [
+    {
+      "year": 2020,
+      "paragraph_idx": 1,
+      "snippet": "If we fail to meet the evolving needs of our markets, or identify new products, services or technologies, our revenue and financial results may be adversely impacted. We created GPU-based visual and accelerated computing platforms that address four large markets: Gaming, Professional Visualization, Data Center, and Automotive. These markets often experience rapid technological change, changes in customer requirements, new product introductions and enhancements, and evolving industry standards. Our success depends on our ability to identify emerging industry changes and to develop new (or enhance our existing) products, services and technologies that meet the evolving needs of these markets. Such activities may require considerable technical, financial, compliance, sales and marketing investments. We devote significant resources to the development of technologies and business offerings in markets where we have a limited operating history, such as the automotive and data center markets, which presents additional risks to our business. We must also continue to develop the infrastructure needed to scale our business in these areas, including customer service and support. We also must meet customer safety and compliance standards, which are subject to change. Additionally, we continue to make considerable investments in research and development, which may not produce significant revenue for several years, if at all. If our investments are unsuccessful and we fail to develop new products, services and technologies, or if we focus on technologies that do not become widely adopted, our business, revenue, financial condition and results of operations could be adversely affected. We cannot assure you that our strategic direction will result in innovative products and technologies that provide value to our customers, partners and ultimately, our shareholders. If we fail to anticipate the changing needs of our target markets and emerging technology trends, or if we do not appropriately adapt that strategy as market conditions evolve, in a timely manner to exploit potential market opportunities, our business will be harmed.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "data center"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 13,
+      "snippet": "Business disruptions could harm our business, lead to a decline in revenues and increase our costs. Our worldwide operations could be disrupted by earthquakes, telecommunications failures, power or water shortages, outages at cloud service providers, tsunamis, floods, hurricanes, typhoons, fires, extreme weather conditions, cyber-attacks, terrorist attacks, medical epidemics or pandemics and other natural or man-made disasters, catastrophic events or climate change. The occurrence of any of these disruptions could harm our business and result in significant losses, a decline in revenue and an increase in our costs and expenses. Any of these business disruptions could require substantial expenditures and recovery time in order to fully resume operations. Our corporate headquarters, and a portion of our research and development activities, are located in California, and other critical business operations, finished goods inventory, and some of our suppliers are located in Asia, near major earthquake faults known for seismic activity. In addition, a large portion of our current data center capacity is located in California, making our operations vulnerable to natural disasters or other business disruptions occurring in these geographical areas. The manufacture of product components, the final assembly of our products and other critical operations are concentrated in certain geographic locations, including Taiwan, China, Hong Kong, and Korea. Additionally, a significant portion of our finished goods product distribution occurs through Hong Kong. Geopolitical change or changes in government regulations and policies in the United States or abroad may result in changing regulatory requirements, trade policies, import duties and economic disruptions that could impact our operating strategies, product demand, access to global markets, hiring, and profitability. In particular, revisions to laws or regulations or their 14 interpretation and enforcement could result in increased taxation, trade sanctions, the imposition of import duties or tariffs, restrictions and controls on imports or exports, or other retaliatory actions, which could have an adverse effect on our business plans. For example, regulations to implement the Export Control Reform Act of 2018 could have an adverse effect on our business plans. Catastrophic events can also have an impact on third-party vendors who provide us critical infrastructure services for IT and research and development systems and personnel. Our operations could be harmed if manufacturing, logistics or other operations in these locations are disrupted for any reason, including natural disasters, high heat events or water shortages, information technology system failures, military actions or economic, business, labor, environmental, public health, regulatory or political issues. The ultimate impact on us, our third-party foundries and other suppliers and our general infrastructure of being located near major earthquake faults and being consolidated in certain geographical areas is unknown. In the event a major earthquake or other disaster or catastrophic event affects us or the third-party systems on which we rely, our business could be harmed as a result of declines in revenue, increases in expenses, substantial expenditures and time spent to fully resume operations.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "data center"
+      ]
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 1,
+      "snippet": "If we fail to meet the evolving needs of our markets, or identify new products, services or technologies, our revenue and financial results may be adversely impacted. We have created GPU-based visual and accelerated computing platforms that address four large markets: Gaming, Professional Visualization, Datacenter, and Automotive. These markets often experience rapid technological change, changes in customer requirements, new product introductions and enhancements, and evolving industry standards. Our success depends on our ability to identify these emerging industry changes and to develop new (or enhance our existing) products, services and technologies that meet the evolving needs of these markets. Such activities may require considerable technical, financial, compliance, sales and marketing investments. We currently devote significant resources to the development of technologies and business offerings in markets where we have a limited operating history, such as the automotive and datacenter markets, which presents additional risks to our business. We must also continue to develop the infrastructure needed to appropriately scale our business in these areas, including customer service and customer support. We also must meet customer safety and compliance standards, which are subject to change. Additionally, we continue to make considerable investments in research and development, which may not produce significant revenue for several years, if at all. If our investments are unsuccessful and we fail to develop new products, services and technologies, or if we focus on technologies that do not become widely adopted, our business, revenue, financial condition and results of operations could be adversely affected. We cannot assure you that our strategic direction will result in innovative products and technologies that provide value to our customers, partners and ultimately, our shareholders. If we fail to anticipate the changing needs of our target markets and emerging technology trends, or if we do not appropriately adapt that strategy as market conditions evolve, in a timely manner to exploit potential market opportunities, our business will be harmed.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "datacenter"
+      ]
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 13,
+      "snippet": "Business disruptions could harm our business, lead to a decline in revenues and increase our costs. Our worldwide operations could be disrupted by earthquakes, telecommunications failures, power or water shortages, outages at cloud service providers, tsunamis, floods, hurricanes, typhoons, fires, extreme weather conditions, cyber-attacks, terrorist attacks, medical epidemics or pandemics and other natural or man-made disasters, catastrophic events or climate change. The occurrence of any of these disruptions could harm our business and result in significant losses, a decline in revenue and an increase in our costs and expenses. Any of these business disruptions could require substantial expenditures and recovery time in order to fully resume operations. Our corporate headquarters, and a portion of our research and development activities, are located in California, and other critical business operations, finished goods inventory, and some of our suppliers are located in Asia, near major earthquake faults known for seismic activity. In addition, a large portion of our current datacenter capacity is located in California, making our operations vulnerable to natural disasters or other business disruptions occurring in these geographical areas. The manufacture of product components, the final assembly of our products and other critical operations are concentrated in certain geographic locations, including Taiwan, China, and Korea. Geopolitical change or changes in government regulations and policies in the United States or abroad also may result in changing regulatory requirements, trade policies, import duties and economic disruptions that could impact our operating strategies, product demand, access to global markets, hiring, and profitability. In particular, revisions to laws or regulations or their interpretation and enforcement could result in increased taxation, trade sanctions, the imposition of import duties or tariffs, restrictions and controls on imports or exports, or other retaliatory actions, which could have an adverse effect on our business plans. For example, regulations to implement the Export Control Reform Act of 2018 could have an adverse effect on our business plans. Catastrophic events can also have an impact on third-party vendors who provide us critical infrastructure services for IT and research and development systems and personnel. Our operations 14 could be harmed if manufacturing, logistics or other operations in these locations are disrupted for any reason, including natural disasters, high heat events or water shortages, information technology system failures, military actions or economic, business, labor, environmental, public health, regulatory or political issues. The ultimate impact on us, our third-party foundries and other suppliers and our general infrastructure of being located near major earthquake faults and being consolidated in certain geographical areas is unknown. In the event a major earthquake or other disaster or catastrophic event affects us or the third-party systems on which we rely, our business could be harmed as a result of declines in revenue, increases in expenses, substantial expenditures and time spent to fully resume operations.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "datacenter"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.028273,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T19:27:15Z",
+    "git_commit": "cfe9628e9904d9ea49e72960b3535e0464887ce9",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "3391e9b5a389f82185e2b8ea26b2c7aa10b5a8c9a62698f2390daa0fcf1ae989",
+      "curr_text_sha256": "8d071c33e1e2434abc15f22db00cd5cc9e715a8acf3573775ea431e665167d41",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

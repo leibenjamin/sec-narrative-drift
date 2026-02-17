@@ -1,0 +1,156 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_jsd_ngrams_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "GE",
+  "section": "10k_item1a",
+  "year_from": 2020,
+  "year_to": 2021,
+  "artifacts": {
+    "ranked_items": [
+      {
+        "label": "ge capital",
+        "score": 0.0013285152513550856
+      },
+      {
+        "label": "separation transactions",
+        "score": 0.0007545034424219561
+      },
+      {
+        "label": "ge",
+        "score": 0.0007293614580686926
+      },
+      {
+        "label": "capital",
+        "score": 0.0005992299231660894
+      },
+      {
+        "label": "separation",
+        "score": 0.0005249366036429528
+      },
+      {
+        "label": "independent",
+        "score": 0.0005187211166650948
+      },
+      {
+        "label": "internal control",
+        "score": 0.0005187211166650948
+      },
+      {
+        "label": "control financial",
+        "score": 0.0004244081863623503
+      },
+      {
+        "label": "internal",
+        "score": 0.0003966029610576675
+      },
+      {
+        "label": "ge ge",
+        "score": 0.00037198427037942394
+      },
+      {
+        "label": "ge form",
+        "score": 0.00037198427037942394
+      },
+      {
+        "label": "financial reporting",
+        "score": 0.00031671960217575476
+      },
+      {
+        "label": "companies",
+        "score": 0.0002945666222795314
+      },
+      {
+        "label": "free",
+        "score": 0.00028293879090823354
+      },
+      {
+        "label": "services operations",
+        "score": 0.00028293879090823354
+      },
+      {
+        "label": "common stock",
+        "score": 0.00028293879090823354
+      },
+      {
+        "label": "common",
+        "score": 0.00028293879090823354
+      },
+      {
+        "label": "reporting",
+        "score": 0.00024883919316928997
+      },
+      {
+        "label": "management",
+        "score": 0.0002370246386989136
+      },
+      {
+        "label": "independent companies",
+        "score": 0.00023578232575686126
+      }
+    ],
+    "stats": {
+      "jsd": 0.146069,
+      "tokens_prev": 4705,
+      "tokens_curr": 5302
+    }
+  },
+  "evidence": [
+    {
+      "year": 2021,
+      "paragraph_idx": 1,
+      "snippet": "STRATEGIC RISKS. Strategic risk relates to the Company's future business plans and strategies, including the risks associated with: our strategic plan to separate into three public companies; the global macro-environment; the global energy transition; competitive threats, the demand for our products and services and the success of our investments in technology and innovation; our portfolio of businesses and capital allocation decisions; dispositions, acquisitions, joint ventures and restructuring activity; intellectual property; and other risks.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "capital"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 2,
+      "snippet": "Strategic plan - We may encounter challenges to executing our plan to separate GE into three public companies, or to completing the plan within the timeframes we anticipate, and we may not realize some or all of the expected benefits of the separations. In November 2021, we announced our plan to form three independent public companies from our (i) Aviation business, (ii) Healthcare business and (iii) combined Renewable Energy, Power and Digital businesses, in order to better position those businesses to deliver long-term growth and create value for customers, investors, and employees. The planned business separations are expected to be effected through spin-offs by GE that are intended to be tax-free for the Company\u2019s shareholders for U.S. federal income tax purposes. These separation transactions will be subject to the satisfaction of a number of customary conditions, including, among others, final approvals by GE\u2019s Board of Directors, receipt of tax rulings in certain jurisdictions and/or tax opinions from external counsel, the filing with the SEC and effectiveness of Form 10 registration statements, and satisfactory completion of financing. The failure to satisfy all of the required conditions could delay the completion of the separation transactions for a significant period of time or prevent them from occurring at all. Additionally, the separation transactions are complex in nature, and unanticipated developments or changes may affect our ability to complete one or both of the separation transactions as currently expected, within the anticipated timeframes or at all. These or other developments could cause us not to realize some or all of the expected benefits, or to realize them",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "separation transactions",
+        "ge",
+        "separation"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 1,
+      "snippet": "STRATEGIC RISKS. Strategic risk relates to the Company's future business plans and strategies, including the risks associated with: the global macro-environment; competitive threats, the demand for our products and services and the success of our investments in technology and innovation; our portfolio of businesses and capital allocation decisions; dispositions, acquisitions, joint ventures and restructuring activity; intellectual property; and other risks.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "capital"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 2,
+      "snippet": "COVID-19 - The global COVID-19 pandemic has had and is expected to continue to have a material adverse impact on our operations and financial performance, as well as on the operations and financial performance of many of the customers and suppliers in industries that we serve. Our operations and financial performance have been negatively impacted by the COVID-19 pandemic that has caused, and is expected to continue to cause, the global slowdown of economic activity (including the decrease in demand for a broad variety of goods and services), disruptions in global supply chains and significant volatility and disruption of financial markets. Across all of our businesses, we have experienced and expect to continue to experience operational challenges from the need to protect employee health and safety, site shutdowns, workplace disruptions and restrictions on the movement of people, raw materials and goods, both at our own facilities and at those of our customers and suppliers. We also have experienced, and expect to continue experiencing, lower demand and volume for products and services (particularly at GE Aviation, as described below, and also for portions of GE Healthcare\u2019s business), customer requests for potential payment deferrals or other contract modifications, supply chain under-liquidation, delays of deliveries and the achievement of other billing milestones, delays or cancellations of new projects and related down payments and other factors related directly and indirectly to the COVID-19 pandemic that adversely impact our businesses.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "ge"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.146069,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T19:27:23Z",
+    "git_commit": "cfe9628e9904d9ea49e72960b3535e0464887ce9",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "231bdd0927c5ed3145794df750f944019d39e3bf17119eaa1dc6846257c3196a",
+      "curr_text_sha256": "33cd08318c3afe8fd69423a1f2d61b59aefa60e076d72143891dd4a695ad7491",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

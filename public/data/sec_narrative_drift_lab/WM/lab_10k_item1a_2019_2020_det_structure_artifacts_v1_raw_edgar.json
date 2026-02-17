@@ -1,0 +1,58 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_structure_artifacts_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "WM",
+  "section": "10k_item1a",
+  "year_from": 2019,
+  "year_to": 2020,
+  "artifacts": {
+    "stats": {
+      "headings_prev": [
+        "Item 1A. Risk Factors.",
+        "There are risks involved in pursuing our strategy, including the following:",
+        "Item 1B. Unresolved Staff Comments."
+      ],
+      "headings_curr": [
+        "Item 1A. Risk Factors.",
+        "There are risks involved in pursuing our strategy, including the following:",
+        "Financial Risks",
+        "Item 1B. Unresolved Staff Comments."
+      ],
+      "headings_added": [
+        "Financial Risks"
+      ],
+      "headings_removed": [],
+      "paragraph_count_prev": 87,
+      "paragraph_count_curr": 92,
+      "length_chars_prev": 68156,
+      "length_chars_curr": 74540
+    }
+  },
+  "evidence": [
+    {
+      "year": 2020,
+      "paragraph_idx": 0,
+      "snippet": "Our capital requirements and our business strategy could increase our expenses, cause us to change our growth and development plans, or result in an inability to maintain our desired credit profile.",
+      "why": "Heading added: Financial Risks"
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.25,
+    "confidence": 0.35,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T19:27:21Z",
+    "git_commit": "cfe9628e9904d9ea49e72960b3535e0464887ce9",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "71d4f09bf28ca0ff2f111974816ce3f66743c2c47aec077a767b0e173441fc29",
+      "curr_text_sha256": "29d1ab781cc001a5191a52b1cb72e2af781b38d8c21045e0068ae4646374b754",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

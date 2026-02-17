@@ -1,0 +1,154 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_jsd_ngrams_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "GE",
+  "section": "10k_item1a",
+  "year_from": 2022,
+  "year_to": 2023,
+  "artifacts": {
+    "ranked_items": [
+      {
+        "label": "internal",
+        "score": 0.0004670752253896649
+      },
+      {
+        "label": "internal control",
+        "score": 0.00044791921166218747
+      },
+      {
+        "label": "control financial",
+        "score": 0.0003664793549963352
+      },
+      {
+        "label": "financial reporting",
+        "score": 0.0002849770588112881
+      },
+      {
+        "label": "reporting",
+        "score": 0.00026263104346220946
+      },
+      {
+        "label": "accounting",
+        "score": 0.00021491812433880388
+      },
+      {
+        "label": "vernova independent",
+        "score": 0.000206423912145983
+      },
+      {
+        "label": "aercap",
+        "score": 0.00020359964166463066
+      },
+      {
+        "label": "covid",
+        "score": 0.00017020249867046532
+      },
+      {
+        "label": "officer",
+        "score": 0.00016287971333170455
+      },
+      {
+        "label": "aercap ge",
+        "score": 0.00016287971333170455
+      },
+      {
+        "label": "audit",
+        "score": 0.00016287971333170455
+      },
+      {
+        "label": "chief",
+        "score": 0.00016287971333170455
+      },
+      {
+        "label": "financial",
+        "score": 0.00015878705650682978
+      },
+      {
+        "label": "control",
+        "score": 0.0001438716269227886
+      },
+      {
+        "label": "aircraft",
+        "score": 0.0001269377018747578
+      },
+      {
+        "label": "artificial",
+        "score": 0.00012385434728758978
+      },
+      {
+        "label": "ge credit",
+        "score": 0.00012385434728758978
+      },
+      {
+        "label": "january planned",
+        "score": 0.00012385434728758978
+      },
+      {
+        "label": "factors including",
+        "score": 0.00012385434728758978
+      }
+    ],
+    "stats": {
+      "jsd": 0.122819,
+      "tokens_prev": 6140,
+      "tokens_curr": 6056
+    }
+  },
+  "evidence": [
+    {
+      "year": 2023,
+      "paragraph_idx": 13,
+      "snippet": "Intellectual property - Our intellectual property portfolio may not prevent competitors from independently developing products and services similar to or duplicative to ours, and the value of our intellectual property may be negatively impacted by external dependencies. Our patents and other intellectual property may not prevent competitors from independently developing or selling products and services similar to or duplicative of ours, and there can be no assurance that the resources invested by us to protect our intellectual property will be sufficient or that our intellectual property portfolio will adequately deter misappropriation or improper use of our technology, particularly in certain markets outside the U.S. where intellectual property laws and related enforcement mechanisms may not be as well-developed. Trademark licenses of the GE brand in connection with dispositions, including in connection with the separation of GE HealthCare in January 2023 and the planned separation of GE Aerospace and GE Vernova into independent companies, may negatively impact the overall value of the brand in the future. We also face competition in some countries where we have not invested in an intellectual property portfolio. If we are not able to protect our intellectual property, the value of our brand and other intangible assets may be diminished, and our business may be adversely affected. We also face attempts, both internally from insider threats and externally from cyber-attacks, to gain unauthorized access to our IT systems or products for the purpose of improperly acquiring our trade secrets or confidential business information. In addition, we have observed an increase in the use of social engineering tactics by bad actors attempting to obtain confidential business information or credentials to access systems with our intellectual property. The theft or unauthorized use or publication of our trade secrets and other confidential business information as a result of such incidents could adversely affect our competitive position and the value of our investment in research and development. In addition, we are subject to the enforcement of patents or other intellectual property by third parties, including aggressive and opportunistic enforcement claims by non-practicing entities. Regardless of the merit of such claims, responding to infringement claims can be expensive and time-consuming. GE has in the past, and may in the future be, found to infringe third-party rights, which could require us to pay substantial damages or enjoin us from offering some of our products and services. The value of, or our ability to use, our intellectual property may also be negatively impacted by dependencies on third parties, such as our ability to obtain or renew on reasonable terms licenses that we need in the future, or our ability to secure or retain ownership or rights to use data in certain software analytics or services offerings.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "internal"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 21,
+      "snippet": "The continued adoption of new technologies by our businesses and our suppliers also increases our exposure to cybersecurity threats. An unknown vulnerability or compromise in our or a third-party product (for example, open source software) may expose our systems, networks, software or connected products to malicious actors and lead to the misuse or unintended use of our products, loss of GE intellectual property, misappropriation of sensitive, confidential or personal data, safety risks or unavailability of equipment. We also have access to sensitive, classified, confidential or personal data or information in certain of our businesses that is subject to privacy and security laws, regulations or customer-imposed controls. We are vulnerable to security breaches, theft, misplaced, lost or corrupted data, programming errors and misconfigurations, employee errors (including as a result of social engineering/phishing) and/or malfeasance (including misappropriation by insiders or departing employees) that may compromise sensitive, classified, confidential or personal data or information, improper use of our systems, software solutions or networks, unauthorized access, use, disclosure, modification or destruction of or denial of access to information, defective products, production downtimes and operational disruptions. In addition, our suppliers may be the victim of a cyber-related incident that could compromise our intellectual property, personal data or other confidential information, or result in production downtimes and operational disruptions that could cause us to breach our commitments to customers. An unknown security vulnerability or malicious software in a product used by a supplier to deliver a service or embedded in a supplier\u2019s product that is later integrated into a GE product could lead to a vulnerability in the security of GE\u2019s product or, if used internally in the GE network environment, to a compromise of the GE network, which may lead to the loss of information or operational disruptions. Cybersecurity-related and data privacy and protection laws and regulatory regimes are evolving, can vary significantly by country and present increasing compliance challenges, and we from time to time receive, and in the future will likely receive, regulatory inquiries about specific incidents or aspects of our cybersecurity framework; these dynamics increase our costs, affect our competitiveness and can expose us to fines or other penalties and reputational risks. In addition, cybersecurity incidents can result in other negative consequences, regardless of whether the direct effects of an incident are significant, including damage to our reputation or competitiveness, restoration and remediation costs, increased digital infrastructure or related costs that are not covered by insurance, and costs or fines arising from litigation or regulatory investigations or actions. While we carry cyber insurance, we cannot be certain that our coverage will be adequate for liabilities actually incurred, that insurance will continue to be available to us on economically reasonable terms, or at all, or that any insurer will not deny coverage as to any future claim.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "internal"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 15,
+      "snippet": "Intellectual property - Our intellectual property portfolio may not prevent competitors from independently developing products and services similar to or duplicative to ours, and the value of our intellectual property may be negatively impacted by external dependencies. Our patents and other intellectual property may not prevent competitors from independently developing or selling products and services similar to or duplicative of ours, and there can be no assurance that the resources invested by us to protect our intellectual property will be sufficient or that our intellectual property portfolio will adequately deter misappropriation or improper use of our technology, particularly in certain markets outside the US where intellectual property laws and related enforcement mechanisms may not be as well-developed. Trademark licenses of the GE brand in connection with dispositions may negatively impact the overall value of the brand in the future. We also face competition in some countries where we have not invested in an intellectual property portfolio. If we are not able to protect our intellectual property, the value of our brand and other intangible assets may be diminished, and our business may be adversely affected. We also face attempts, both internally from insider threats and externally from cyber-attacks, to gain unauthorized access to our IT systems or products for the purpose of improperly acquiring our trade secrets or confidential business information. In addition, we have observed an increase in the use of social engineering tactics by bad actors attempting to obtain confidential business information or credentials to access systems with our intellectual property. The theft or unauthorized use or publication of our trade secrets and other confidential business information as a result of such incidents could adversely affect our competitive position and the value of our investment in research and development. In addition, we are subject to the enforcement of patents or other intellectual property by third parties, including aggressive and opportunistic enforcement claims by non-practicing entities. Regardless of the merit of such claims, responding to infringement claims can be expensive and time-consuming. GE has in the past, and may in the future be, found to infringe third-party rights, which could require us to pay substantial damages or enjoin us from offering some of our products and services. The value of, or our ability to use, our intellectual property may also be negatively impacted by dependencies on third parties, such as our ability to obtain or renew on reasonable terms licenses that we need in the future, or our ability to secure or retain ownership or rights to use data in certain software analytics or services offerings.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "internal"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 21,
+      "snippet": "In addition to existing risks from the integration of digital technologies into our business portfolio, the adoption of new technologies in the future may also increase our exposure to cybersecurity breaches and failures. While we have developed secure development lifecycle design practices to secure our software designs and connected products, an unknown vulnerability or compromise could potentially impact the security of GE\u2019s software or connected products and lead to the misuse or unintended use of our products, loss of GE intellectual property, misappropriation of sensitive, confidential or personal data, safety risks or unavailability of equipment. We also have access to sensitive, confidential or personal data or information in certain of our businesses that is subject to privacy and security laws, regulations or customer-imposed controls. Despite our use of reasonable and appropriate controls to protect our systems and sensitive, confidential or personal data or information, we have vulnerability to security breaches, theft, misplaced, lost or corrupted data, programming errors, employee errors and/or malfeasance (including misappropriation by departing employees) that could potentially lead to material compromising of sensitive, confidential or personal data or information, improper use of our systems, software solutions or networks, unauthorized access, use, disclosure, modification or destruction of or denial of access to information, defective products, production downtimes and operational disruptions. In addition, while we require our suppliers to implement and maintain reasonable and appropriate controls to protect information we provide to them, they may be the victim of a cyber-related attack that could lead to the compromise of the Company\u2019s intellectual property, personal data or other confidential information, or to production downtimes and operational disruptions that could have an adverse effect on our ability to meet our commitments to customers. An unknown security vulnerability or malicious software embedded in a supplier\u2019s product that is later integrated into a GE product could lead to a vulnerability in the security of GE\u2019s product or if used internally in the GE network environment to a compromise of the GE network, which could potentially lead to the loss of information or operational disruptions. Data privacy and protection laws are evolving, can vary significantly by country and present increasing compliance challenges, which increase our costs, affect our competitiveness and can expose us to substantial fines or other penalties. In addition, a significant cyber-related attack could result in",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "internal"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.122819,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T19:27:24Z",
+    "git_commit": "cfe9628e9904d9ea49e72960b3535e0464887ce9",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "625585febfb164ec0fa5e2974a08cd27e0e1f9f812e1a13f76f076360d33c118",
+      "curr_text_sha256": "c6bc42c2851cab77e82a74e4c516ded6232d9fea6ada3fd45af033c4e542c82c",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

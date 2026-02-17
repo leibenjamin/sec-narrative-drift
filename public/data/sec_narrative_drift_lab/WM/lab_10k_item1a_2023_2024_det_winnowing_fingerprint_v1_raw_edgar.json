@@ -1,0 +1,55 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_winnowing_fingerprint_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "WM",
+  "section": "10k_item1a",
+  "year_from": 2023,
+  "year_to": 2024,
+  "artifacts": {
+    "stats": {
+      "shared_fingerprints": 23044,
+      "prev_fingerprints": 32166,
+      "curr_fingerprints": 37937,
+      "shared_ratio": 0.7164086302306784
+    }
+  },
+  "evidence": [
+    {
+      "year": 2024,
+      "paragraph_idx": 0,
+      "snippet": "Item 1A. Risk Factors.\n\nOur business, financial condition and results of operations are subject to numerous risks and un",
+      "why": "Shared fingerprint span."
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 0,
+      "snippet": "Item 1A. Risk Factors.\n\nOur business, financial condition and results of operations are subject to numerous risks and unc",
+      "why": "Shared fingerprint span."
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 0,
+      "snippet": "Item 1A. Risk Factors.\n\nOur business, financial condition and results of operations are subject to numerous risks and unce",
+      "why": "Shared fingerprint span."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.7164086302306784,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T19:27:22Z",
+    "git_commit": "cfe9628e9904d9ea49e72960b3535e0464887ce9",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "faed25fa3f4d1c6d55f7737bc8a15ba0376a341b6c0b6f34c48c76a3fac81f31",
+      "curr_text_sha256": "3b00b2045a6f716096275d249ce5ef3df89c95a4be259e714dc6a17b881d2f9d",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_winnowing_fingerprint_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "NVDA",
+  "section": "10k_item1a",
+  "year_from": 2020,
+  "year_to": 2021,
+  "artifacts": {
+    "stats": {
+      "shared_fingerprints": 15726,
+      "prev_fingerprints": 18569,
+      "curr_fingerprints": 27346,
+      "shared_ratio": 0.8468953632398083
+    }
+  },
+  "evidence": [
+    {
+      "year": 2021,
+      "paragraph_idx": 0,
+      "snippet": "ITEM 1A. RISK FACTORS\n\nIn evaluating NVIDIA and our business, the following factors should be considered in addition to ",
+      "why": "Shared fingerprint span."
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 0,
+      "snippet": "ITEM 1A. RISK FACTORS\n\nIn evaluating NVIDIA and our business, the following factors should be considered in addition to the ",
+      "why": "Shared fingerprint span."
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 0,
+      "snippet": "ITEM 1A. RISK FACTORS\n\nIn evaluating NVIDIA and our business, the following factors should be considered in addition to the ot",
+      "why": "Shared fingerprint span."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.8468953632398083,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T19:27:16Z",
+    "git_commit": "cfe9628e9904d9ea49e72960b3535e0464887ce9",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "8d071c33e1e2434abc15f22db00cd5cc9e715a8acf3573775ea431e665167d41",
+      "curr_text_sha256": "8c0d08a1b053aeeb4c1399cfee88fa0577b416889c7f4d7b9306ba6b4859e669",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

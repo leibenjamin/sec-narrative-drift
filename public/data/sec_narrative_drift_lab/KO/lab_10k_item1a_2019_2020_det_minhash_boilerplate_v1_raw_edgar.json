@@ -1,0 +1,73 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_minhash_boilerplate_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "KO",
+  "section": "10k_item1a",
+  "year_from": 2019,
+  "year_to": 2020,
+  "artifacts": {
+    "stats": {
+      "percent_reused": 0.5064935064935064,
+      "percent_new": 0.49350649350649356,
+      "reused_paragraphs": 39,
+      "total_paragraphs": 77
+    }
+  },
+  "evidence": [
+    {
+      "year": 2020,
+      "paragraph_idx": 0,
+      "snippet": "In addition to the other information set forth in this report, you should carefully consider the following factors, which could materially affect our business, financial condition or results of operations in future periods. The risks described below are not the only risks facing our Company. Additional risks not currently known to us or that we currently deem to be immaterial also may materially adversely affect our business, financial condition or results of operations in future periods.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 0,
+      "snippet": "In addition to the other information set forth in this report, you should carefully consider the following factors, which could materially affect our business, financial condition or results of operations in future periods. The risks described below are not the only risks facing our Company. Additional risks not currently known to us or that we currently deem to be immaterial also may materially adversely affect our business, financial condition or results of operations in future periods.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 20,
+      "snippet": "The success of our business depends on our Company's and the Coca-Cola system's ability to attract, develop, retain and motivate a highly skilled and diverse workforce as well as on our success in nurturing a culture that supports our growth and aligns employees around the Company's purpose and work that matters most. We may not be able to successfully compete for, attract and/or retain the high-quality and diverse employee talent that we want and that our future business needs may require, such as employees with e-commerce, social media and digital marketing and advertising skills, and/or digital and analytics capabilities. Changes in immigration laws and policies could also make it more difficult for us to recruit or relocate highly skilled technical, professional and management personnel to meet our business needs. In addition, the unexpected loss of experienced and highly skilled associates due to an increase in aggressive recruiting for best-in-class talent could deplete our institutional knowledge base and erode our competitiveness. Any of the foregoing could have a negative impact on our business.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 28,
+      "snippet": "The success of our business depends on our Company's and the Coca-Cola system's ability to attract, develop, retain and motivate a highly skilled and diverse workforce as well as on our success in nurturing a culture that supports our growth and aligns employees around the Company purpose and work that matters most. We may not be able to successfully compete for, attract and/or retain the high-quality and diverse employee talent we want and our future business needs may require, such as employees with e-commerce, social media and digital marketing and advertising skills, and/or digital and analytics capabilities. Changes in immigration laws and policies could also make it more difficult for us to recruit or relocate highly skilled technical, professional and management personnel to meet our business needs. In addition, the unexpected loss of experienced and highly skilled associates due to an increase in aggressive recruiting for best-in-class talent could deplete our institutional knowledge base and erode our competitiveness. Any of the foregoing could have a negative impact on our business.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 24,
+      "snippet": "Achieving our business growth objectives depends in part on our ability to evolve and improve our existing beverage products through innovation and to successfully develop, introduce and market new beverage products. The success of our innovation activities in turn depends on our ability to correctly anticipate customer and consumer acceptance and trends; obtain, maintain and enforce necessary intellectual property protections; and avoid infringing on the intellectual property rights of others. If we are not successful in our innovation activities, we may not be able to achieve our growth objectives, which may have a negative impact on our financial results.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 9,
+      "snippet": "Achieving our business growth objectives depends in part on our ability to evolve and improve our existing beverage products through innovation and to successfully develop, introduce and market new beverage products. The success of our innovation activities in turn depends on our ability to correctly anticipate customer and consumer acceptance and trends; obtain, maintain and enforce necessary intellectual property protections; and avoid infringing on the intellectual property rights of others. If we are not successful in our innovation activities, we may not be able to achieve our growth objectives, which may have a negative impact on our financial results.",
+      "why": "Matching paragraph from prior year."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.49350649350649356,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T19:27:18Z",
+    "git_commit": "cfe9628e9904d9ea49e72960b3535e0464887ce9",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "19074bf419ec25109f66851165aeeb69230f1a8b1a87281c7036328cad5f87e1",
+      "curr_text_sha256": "34b0ec0d66b244446712462b1db58c554840ecaf73b985f16e10109a32f13871",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

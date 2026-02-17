@@ -1,0 +1,73 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_minhash_boilerplate_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "NVDA",
+  "section": "10k_item1a",
+  "year_from": 2020,
+  "year_to": 2021,
+  "artifacts": {
+    "stats": {
+      "percent_reused": 0.42857142857142855,
+      "percent_new": 0.5714285714285714,
+      "reused_paragraphs": 24,
+      "total_paragraphs": 56
+    }
+  },
+  "evidence": [
+    {
+      "year": 2021,
+      "paragraph_idx": 0,
+      "snippet": "In evaluating NVIDIA and our business, the following factors should be considered in addition to the other information in this Annual Report on Form 10-K. Before you buy our common stock, you should know that making such an investment involves risks including, but not limited to, the risks described below. Any one of the following risks could harm our business, financial condition, results of operations or reputation, which could cause our stock price to decline, and you may lose all or a part of your investment. Additional risks, trends and uncertainties not presently known to us or that we currently believe are immaterial may also harm our business, financial condition, results of operations or reputation.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 0,
+      "snippet": "In evaluating NVIDIA and our business, the following factors should be considered in addition to the other information in this Annual Report on Form 10-K. Before you buy our common stock, you should know that making such an investment involves risks including, but not limited to, the risks described below. Any one of the following risks could harm our business, financial condition, results of operations or reputation, which could cause our stock price to decline, and you may lose all or a part of your investment. Additional risks, trends and uncertainties not presently known to us or that we currently believe are immaterial may also harm our business, financial condition, results of operations or reputation.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 5,
+      "snippet": "We depend on third parties and their technology to manufacture, assemble, test and/or package our products, which reduces our control over product quantity and quality, manufacturing yields, development, enhancement and product delivery schedule and could harm our business.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 6,
+      "snippet": "We depend on third parties and their technology to manufacture, assemble, test and/or package our products, which reduces our control over product quantity and quality, manufacturing yields, development, enhancement and product delivery schedule and could harm our business.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 7,
+      "snippet": "In addition, low manufacturing yields could have an adverse effect on our ability to meet customer demand, increase manufacturing costs, harm customer or partner relationships, and/or negatively impact our business operations, gross margin, revenue and/or financial results. Manufacturing yields for our products are a function of product design, which is developed largely by us, and process technology, which typically is proprietary to the foundry. Low yields may result from either product design or process technology failure. We do not know whether a yield problem will exist until our design is actually manufactured by the foundry. As a result, yield problems may not be identified until well into the manufacturing process and require us and the foundry to cooperate to resolve the problem.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 8,
+      "snippet": "In addition, low manufacturing yields could have an adverse effect on our ability to meet customer demand, increase manufacturing costs, harm customer or partner relationships, and/or negatively impact our business operations, gross margin, revenue and/or financial results. Manufacturing yields for our products are a function of product design, which is developed largely by us, and process technology, which typically is proprietary to the foundry. Low yields may result from either product design or process technology failure. We do not know whether a yield problem will exist until our design is actually manufactured by the foundry. As a result, yield problems may not be identified until well into the manufacturing process and require us and the foundry to cooperate to resolve the problem.",
+      "why": "Matching paragraph from prior year."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.5714285714285714,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T19:27:16Z",
+    "git_commit": "cfe9628e9904d9ea49e72960b3535e0464887ce9",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "8d071c33e1e2434abc15f22db00cd5cc9e715a8acf3573775ea431e665167d41",
+      "curr_text_sha256": "8c0d08a1b053aeeb4c1399cfee88fa0577b416889c7f4d7b9306ba6b4859e669",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

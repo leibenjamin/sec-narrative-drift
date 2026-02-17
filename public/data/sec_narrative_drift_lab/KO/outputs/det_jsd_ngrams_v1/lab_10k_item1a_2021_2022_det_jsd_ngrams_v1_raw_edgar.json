@@ -1,0 +1,156 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_jsd_ngrams_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "KO",
+  "section": "10k_item1a",
+  "year_from": 2021,
+  "year_to": 2022,
+  "artifacts": {
+    "ranked_items": [
+      {
+        "label": "esg",
+        "score": 0.0003562014675500463
+      },
+      {
+        "label": "sugar sweetened",
+        "score": 0.000284961174040037
+      },
+      {
+        "label": "aluminum cans",
+        "score": 0.0002493410272850324
+      },
+      {
+        "label": "aluminum",
+        "score": 0.0002493410272850324
+      },
+      {
+        "label": "sustainability",
+        "score": 0.00024915509081022656
+      },
+      {
+        "label": "cans containers",
+        "score": 0.00021372088053002778
+      },
+      {
+        "label": "juice",
+        "score": 0.00021372088053002778
+      },
+      {
+        "label": "orange",
+        "score": 0.00017810073377502316
+      },
+      {
+        "label": "materials aluminum",
+        "score": 0.00017810073377502316
+      },
+      {
+        "label": "russia",
+        "score": 0.000177367860943597
+      },
+      {
+        "label": "ukraine",
+        "score": 0.000177367860943597
+      },
+      {
+        "label": "sustainability goals",
+        "score": 0.000177367860943597
+      },
+      {
+        "label": "cans",
+        "score": 0.0001595645422732083
+      },
+      {
+        "label": "materials packaging",
+        "score": 0.0001595645422732083
+      },
+      {
+        "label": "goals commitments",
+        "score": 0.0001424805870200185
+      },
+      {
+        "label": "orange juice",
+        "score": 0.0001424805870200185
+      },
+      {
+        "label": "supplies",
+        "score": 0.00014189428875487761
+      },
+      {
+        "label": "resulted",
+        "score": 0.00014189428875487761
+      },
+      {
+        "label": "materials supplies",
+        "score": 0.00014189428875487761
+      },
+      {
+        "label": "strategic relationships",
+        "score": 0.00014189428875487761
+      }
+    ],
+    "stats": {
+      "jsd": 0.068686,
+      "tokens_prev": 7019,
+      "tokens_curr": 7048
+    }
+  },
+  "evidence": [
+    {
+      "year": 2022,
+      "paragraph_idx": 3,
+      "snippet": "In March 2022, the Company announced the suspension of its business in Russia. While we have maintained our operations in Ukraine to the extent possible, our business in Ukraine has been disrupted due to the conflict. Although we currently do not anticipate that the suspension of our operations in Russia or the disruptions in Ukraine will have a material impact on our results of operations, the conflict has resulted, and could continue to result, in volatile commodity markets, supply chain disruptions, increased risk of cyber incidents or other disruptions to our information systems, reputational risk, heightened risks to employee safety, business disruptions (including labor shortages), reduced availability and increased costs for transportation, energy, packaging and raw materials and other input costs, additional sanctions, export controls and other legislation or regulations (including restrictions on the transfer of funds to and from Russia), or difficulty protecting and enforcing our intellectual property rights. The ongoing conflict could result in the temporary or permanent loss of assets or result in additional impairment charges. We cannot predict how and the extent to which the conflict will continue to affect our employees, operations, customers or business partners or our ability to achieve certain of our sustainability goals.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "sustainability"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 19,
+      "snippet": "We routinely evaluate opportunities to acquire businesses or brands to expand our beverage portfolio and capabilities. Additionally, from time to time, we have acquired or taken control of bottling operations, often in underperforming markets where we believe we can use our resources and expertise to improve performance. We may incur unforeseen liabilities and obligations in connection with acquiring businesses, brands or bottling operations. The expected benefits of business or brand acquisitions, including cost and growth synergies associated with such acquisitions, may take longer to realize than expected or may not be realized at all. Moreover, we may encounter challenges to successfully integrating the operations, technologies, services, products and systems of any acquired businesses in an effective, timely and cost-efficient manner. We may also encounter unexpected difficulties, costs or delays in restructuring and integrating acquired businesses, brands or bottling operations into our Company\u2019s operating, governance, sustainability and internal control structures, including extending our Company\u2019s internal control over financial reporting to newly acquired businesses, which may increase the risk of failure to prevent misstatements in their financial records and in our consolidated financial statements. In addition, our quality management program, which is designed to ensure product quality and safety, may not be sufficiently robust to effectively manage the expanded range of product offerings introduced through newly acquired businesses or brands, which may increase our costs or subject us to negative publicity. Also, we may not be able to successfully manage the additional complexities involved with overseeing various supply chain models as we expand our product offerings. Our financial performance is impacted by how well we can integrate and manage acquired businesses, brands and bottling operations, and we may not be able to achieve our strategic and financial objectives for acquired businesses, brands or bottling operations. If we incur unforeseen liabilities or costs in connection with acquiring or integrating businesses, brands or bottling operations, experience internal control or product quality failures, or are unable to achieve our strategic and financial objectives for acquired businesses, brands or bottling operations, our consolidated results could be negatively affected.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "sustainability"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 14,
+      "snippet": "We and our bottling partners use various ingredients in our business, including HFCS, sucrose, aspartame, acesulfame potassium, sucralose, saccharin, cyclamate, steviol glycosides, ascorbic acid, citric acid, phosphoric acid, caffeine and caramel color; other raw materials such as coffee, orange and other fruit juice and juice concentrates; packaging materials such as PET, bio-based PET and recycled PET for bottles; and aluminum cans and other containers. For additional information regarding ingredients, other raw materials, packaging materials and containers we use in our business, refer to the heading \u201cRaw Materials\u201d set forth in Part I, \u201cItem 1. Business\u201d of this report. The prices of these ingredients, other raw materials, packaging materials, aluminum cans and other containers fluctuate depending on market conditions, governmental actions, climate change and other factors beyond our control, including the COVID-19 pandemic. Substantial increases in the prices of our or our bottling partners\u2019 ingredients, other raw materials, packaging materials, aluminum cans and other containers, to the extent they cannot be recouped through increases in the prices of finished beverage products, could increase our and our bottling partners\u2019 operating costs and reduce our profitability. Increases in the prices of our finished products resulting from a higher cost of ingredients, other raw materials, packaging materials, aluminum cans and other containers could affect affordability in some markets and reduce our or our bottling partners\u2019 sales. In addition, some of our ingredients, such as aspartame, acesulfame potassium, and saccharin, as well as some packaging containers, such as aluminum cans, are available from a limited number of suppliers, and certain other ingredients are only available from one source. Furthermore, some of our suppliers are located in countries experiencing political or other risks. We and our bottling partners may not be able to maintain favorable arrangements and relationships with these suppliers, and our contingency plans may not be effective in preventing disruptions that may arise from shortages of any ingredients that are available from a limited number of suppliers or from only one source.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "aluminum cans",
+        "aluminum"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 17,
+      "snippet": "An increase in the cost, a sustained interruption in the supply, or a shortage of some of these ingredients, other raw materials, packaging materials, aluminum cans and other containers that may be caused by changes in or the enactment of new laws and regulations; a deterioration of our or our bottling partners\u2019 relationships with suppliers; supplier quality and reliability issues; trade disruptions; changes in supply chain; and increases in tariffs; or events such as natural disasters, widespread outbreaks of infectious diseases (such as the COVID-19 pandemic), power outages, labor strikes, political uncertainties or governmental instability, or the like could negatively impact our net operating revenues and profits.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "aluminum cans",
+        "aluminum"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.068686,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T19:27:19Z",
+    "git_commit": "cfe9628e9904d9ea49e72960b3535e0464887ce9",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "012edf6b35d3f8d9321f2db9b84dc74b1c54705fdb822d0b280f04cdec0a8fb1",
+      "curr_text_sha256": "a37751455aeb69e85a19f53a089bf34113014acf24f280964f890fad12668547",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

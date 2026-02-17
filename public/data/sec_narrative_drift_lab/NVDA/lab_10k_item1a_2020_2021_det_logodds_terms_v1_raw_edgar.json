@@ -1,0 +1,1213 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_logodds_terms_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "NVDA",
+  "section": "10k_item1a",
+  "year_from": 2020,
+  "year_to": 2021,
+  "artifacts": {
+    "top_risers": [
+      {
+        "label": "COVID-19",
+        "score": 1.236036918155372,
+        "meta": {
+          "z": 1.6936148599161454,
+          "countPrev": 0,
+          "countCurr": 24,
+          "per10kPrev": 0.0,
+          "per10kCurr": 27.488260222196768,
+          "deltaPer10k": 27.488260222196768,
+          "distinctive": false,
+          "includes": [
+            "covid"
+          ]
+        }
+      },
+      {
+        "label": "covid pandemic",
+        "score": 0.930263705983812,
+        "meta": {
+          "z": 1.445781208257561,
+          "countPrev": 0,
+          "countCurr": 13,
+          "per10kPrev": 0.0,
+          "per10kCurr": 14.88947428702325,
+          "deltaPer10k": 14.88947428702325,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "home",
+        "score": 0.9296809276045856,
+        "meta": {
+          "z": 0.9795107426198603,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.436032527774596,
+          "deltaPer10k": 3.436032527774596,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "pandemic continues",
+        "score": 0.8360220594463574,
+        "meta": {
+          "z": 1.0706537333811905,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.581376703699462,
+          "deltaPer10k": 4.581376703699462,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "continues",
+        "score": 0.8331263673330391,
+        "meta": {
+          "z": 1.1415477767516224,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.7267208796243265,
+          "deltaPer10k": 5.7267208796243265,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "disease",
+        "score": 0.8208665551964833,
+        "meta": {
+          "z": 0.9795107426198603,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.436032527774596,
+          "deltaPer10k": 3.436032527774596,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "benefited",
+        "score": 0.8086004725517462,
+        "meta": {
+          "z": 0.851940516186216,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.290688351849731,
+          "deltaPer10k": 2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "desktop",
+        "score": 0.8086004725517462,
+        "meta": {
+          "z": 0.851940516186216,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.290688351849731,
+          "deltaPer10k": 2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "election",
+        "score": 0.8086004725517462,
+        "meta": {
+          "z": 0.851940516186216,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.290688351849731,
+          "deltaPer10k": 2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "grows",
+        "score": 0.8086004725517462,
+        "meta": {
+          "z": 0.851940516186216,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.290688351849731,
+          "deltaPer10k": 2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "joint",
+        "score": 0.8086004725517462,
+        "meta": {
+          "z": 0.851940516186216,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.290688351849731,
+          "deltaPer10k": 2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "remotely",
+        "score": 0.8086004725517462,
+        "meta": {
+          "z": 0.851940516186216,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.290688351849731,
+          "deltaPer10k": 2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "severity",
+        "score": 0.8086004725517462,
+        "meta": {
+          "z": 0.851940516186216,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.290688351849731,
+          "deltaPer10k": 2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "slowdown",
+        "score": 0.8086004725517462,
+        "meta": {
+          "z": 0.851940516186216,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.290688351849731,
+          "deltaPer10k": 2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "try",
+        "score": 0.8086004725517462,
+        "meta": {
+          "z": 0.851940516186216,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.290688351849731,
+          "deltaPer10k": 2.290688351849731,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_fallers": [
+      {
+        "label": "Coronavirus",
+        "score": -1.0994440775496528,
+        "meta": {
+          "z": -1.158372999696198,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 4.614674665436087,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.614674665436087,
+          "distinctive": false,
+          "includes": [
+            "coronavirus"
+          ]
+        }
+      },
+      {
+        "label": "tegra",
+        "score": -0.5316299678775132,
+        "meta": {
+          "z": -1.2502132047259487,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 6.152899553914783,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -6.152899553914783,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "allegedly false",
+        "score": -0.5106493379716968,
+        "meta": {
+          "z": -0.7936321841857287,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 3.0764497769573915,
+          "per10kCurr": 1.1453441759248655,
+          "deltaPer10k": -1.931105601032526,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "attributable end",
+        "score": -0.5106493379716968,
+        "meta": {
+          "z": -0.7936321841857287,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 3.0764497769573915,
+          "per10kCurr": 1.1453441759248655,
+          "deltaPer10k": -1.931105601032526,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "based dissemination",
+        "score": -0.5106493379716968,
+        "meta": {
+          "z": -0.7936321841857287,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 3.0764497769573915,
+          "per10kCurr": 1.1453441759248655,
+          "deltaPer10k": -1.931105601032526,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "different location",
+        "score": -0.5106493379716968,
+        "meta": {
+          "z": -0.7936321841857287,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 3.0764497769573915,
+          "per10kCurr": 1.1453441759248655,
+          "deltaPer10k": -1.931105601032526,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "dissemination allegedly",
+        "score": -0.5106493379716968,
+        "meta": {
+          "z": -0.7936321841857287,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 3.0764497769573915,
+          "per10kCurr": 1.1453441759248655,
+          "deltaPer10k": -1.931105601032526,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "located different",
+        "score": -0.5106493379716968,
+        "meta": {
+          "z": -0.7936321841857287,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 3.0764497769573915,
+          "per10kCurr": 1.1453441759248655,
+          "deltaPer10k": -1.931105601032526,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "officers based",
+        "score": -0.5106493379716968,
+        "meta": {
+          "z": -0.7936321841857287,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 3.0764497769573915,
+          "per10kCurr": 1.1453441759248655,
+          "deltaPer10k": -1.931105601032526,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "filed",
+        "score": -0.49580637270460365,
+        "meta": {
+          "z": -0.7936321841857287,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 3.0764497769573915,
+          "per10kCurr": 1.1453441759248655,
+          "deltaPer10k": -1.931105601032526,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "attributable",
+        "score": -0.41512610057336113,
+        "meta": {
+          "z": -0.7936321841857287,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 3.0764497769573915,
+          "per10kCurr": 1.1453441759248655,
+          "deltaPer10k": -1.931105601032526,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "revenue attributable",
+        "score": -0.4107610333901793,
+        "meta": {
+          "z": -0.7936321841857287,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 3.0764497769573915,
+          "per10kCurr": 1.1453441759248655,
+          "deltaPer10k": -1.931105601032526,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "location",
+        "score": -0.3962005917091122,
+        "meta": {
+          "z": -0.757450665085833,
+          "countPrev": 3,
+          "countCurr": 2,
+          "per10kPrev": 4.614674665436087,
+          "per10kCurr": 2.290688351849731,
+          "deltaPer10k": -2.3239863135863557,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "gpus tegra",
+        "score": -0.37762401289175834,
+        "meta": {
+          "z": -1.2502132047259487,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 6.152899553914783,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -6.152899553914783,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "tegra processors",
+        "score": -0.37762401289175834,
+        "meta": {
+          "z": -1.2502132047259487,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 6.152899553914783,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -6.152899553914783,
+          "distinctive": false
+        }
+      }
+    ],
+    "summary": "Adds emphasis on COVID-19, covid pandemic, home; de-emphasizes Coronavirus, tegra, allegedly false.",
+    "ranked_items": [
+      {
+        "label": "COVID-19",
+        "score": 1.236036918155372,
+        "meta": {
+          "z": 1.6936148599161454,
+          "countPrev": 0,
+          "countCurr": 24,
+          "per10kPrev": 0.0,
+          "per10kCurr": 27.488260222196768,
+          "deltaPer10k": 27.488260222196768,
+          "distinctive": false,
+          "includes": [
+            "covid"
+          ]
+        }
+      },
+      {
+        "label": "covid pandemic",
+        "score": 0.930263705983812,
+        "meta": {
+          "z": 1.445781208257561,
+          "countPrev": 0,
+          "countCurr": 13,
+          "per10kPrev": 0.0,
+          "per10kCurr": 14.88947428702325,
+          "deltaPer10k": 14.88947428702325,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "home",
+        "score": 0.9296809276045856,
+        "meta": {
+          "z": 0.9795107426198603,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.436032527774596,
+          "deltaPer10k": 3.436032527774596,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "pandemic continues",
+        "score": 0.8360220594463574,
+        "meta": {
+          "z": 1.0706537333811905,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.581376703699462,
+          "deltaPer10k": 4.581376703699462,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "continues",
+        "score": 0.8331263673330391,
+        "meta": {
+          "z": 1.1415477767516224,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.7267208796243265,
+          "deltaPer10k": 5.7267208796243265,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "disease",
+        "score": 0.8208665551964833,
+        "meta": {
+          "z": 0.9795107426198603,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.436032527774596,
+          "deltaPer10k": 3.436032527774596,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "benefited",
+        "score": 0.8086004725517462,
+        "meta": {
+          "z": 0.851940516186216,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.290688351849731,
+          "deltaPer10k": 2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "desktop",
+        "score": 0.8086004725517462,
+        "meta": {
+          "z": 0.851940516186216,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.290688351849731,
+          "deltaPer10k": 2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "election",
+        "score": 0.8086004725517462,
+        "meta": {
+          "z": 0.851940516186216,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.290688351849731,
+          "deltaPer10k": 2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "grows",
+        "score": 0.8086004725517462,
+        "meta": {
+          "z": 0.851940516186216,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.290688351849731,
+          "deltaPer10k": 2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "joint",
+        "score": 0.8086004725517462,
+        "meta": {
+          "z": 0.851940516186216,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.290688351849731,
+          "deltaPer10k": 2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "remotely",
+        "score": 0.8086004725517462,
+        "meta": {
+          "z": 0.851940516186216,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.290688351849731,
+          "deltaPer10k": 2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "severity",
+        "score": 0.8086004725517462,
+        "meta": {
+          "z": 0.851940516186216,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.290688351849731,
+          "deltaPer10k": 2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "slowdown",
+        "score": 0.8086004725517462,
+        "meta": {
+          "z": 0.851940516186216,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.290688351849731,
+          "deltaPer10k": 2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "try",
+        "score": 0.8086004725517462,
+        "meta": {
+          "z": 0.851940516186216,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.290688351849731,
+          "deltaPer10k": 2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "Coronavirus",
+        "score": -1.0994440775496528,
+        "meta": {
+          "z": -1.158372999696198,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 4.614674665436087,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.614674665436087,
+          "distinctive": false,
+          "includes": [
+            "coronavirus"
+          ]
+        }
+      },
+      {
+        "label": "tegra",
+        "score": -0.5316299678775132,
+        "meta": {
+          "z": -1.2502132047259487,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 6.152899553914783,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -6.152899553914783,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "allegedly false",
+        "score": -0.5106493379716968,
+        "meta": {
+          "z": -0.7936321841857287,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 3.0764497769573915,
+          "per10kCurr": 1.1453441759248655,
+          "deltaPer10k": -1.931105601032526,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "attributable end",
+        "score": -0.5106493379716968,
+        "meta": {
+          "z": -0.7936321841857287,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 3.0764497769573915,
+          "per10kCurr": 1.1453441759248655,
+          "deltaPer10k": -1.931105601032526,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "based dissemination",
+        "score": -0.5106493379716968,
+        "meta": {
+          "z": -0.7936321841857287,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 3.0764497769573915,
+          "per10kCurr": 1.1453441759248655,
+          "deltaPer10k": -1.931105601032526,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "different location",
+        "score": -0.5106493379716968,
+        "meta": {
+          "z": -0.7936321841857287,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 3.0764497769573915,
+          "per10kCurr": 1.1453441759248655,
+          "deltaPer10k": -1.931105601032526,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "dissemination allegedly",
+        "score": -0.5106493379716968,
+        "meta": {
+          "z": -0.7936321841857287,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 3.0764497769573915,
+          "per10kCurr": 1.1453441759248655,
+          "deltaPer10k": -1.931105601032526,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "located different",
+        "score": -0.5106493379716968,
+        "meta": {
+          "z": -0.7936321841857287,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 3.0764497769573915,
+          "per10kCurr": 1.1453441759248655,
+          "deltaPer10k": -1.931105601032526,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "officers based",
+        "score": -0.5106493379716968,
+        "meta": {
+          "z": -0.7936321841857287,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 3.0764497769573915,
+          "per10kCurr": 1.1453441759248655,
+          "deltaPer10k": -1.931105601032526,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "filed",
+        "score": -0.49580637270460365,
+        "meta": {
+          "z": -0.7936321841857287,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 3.0764497769573915,
+          "per10kCurr": 1.1453441759248655,
+          "deltaPer10k": -1.931105601032526,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "attributable",
+        "score": -0.41512610057336113,
+        "meta": {
+          "z": -0.7936321841857287,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 3.0764497769573915,
+          "per10kCurr": 1.1453441759248655,
+          "deltaPer10k": -1.931105601032526,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "revenue attributable",
+        "score": -0.4107610333901793,
+        "meta": {
+          "z": -0.7936321841857287,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 3.0764497769573915,
+          "per10kCurr": 1.1453441759248655,
+          "deltaPer10k": -1.931105601032526,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "location",
+        "score": -0.3962005917091122,
+        "meta": {
+          "z": -0.757450665085833,
+          "countPrev": 3,
+          "countCurr": 2,
+          "per10kPrev": 4.614674665436087,
+          "per10kCurr": 2.290688351849731,
+          "deltaPer10k": -2.3239863135863557,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "gpus tegra",
+        "score": -0.37762401289175834,
+        "meta": {
+          "z": -1.2502132047259487,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 6.152899553914783,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -6.152899553914783,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "tegra processors",
+        "score": -0.37762401289175834,
+        "meta": {
+          "z": -1.2502132047259487,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 6.152899553914783,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -6.152899553914783,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_risers_alt": [
+      {
+        "label": "covid pandemic",
+        "score": 2.0192108118647827,
+        "meta": {}
+      },
+      {
+        "label": "laws regulations",
+        "score": 1.5113722722939107,
+        "meta": {}
+      },
+      {
+        "label": "demand products",
+        "score": 0.8426583935679961,
+        "meta": {}
+      },
+      {
+        "label": "Supply chain",
+        "score": 0.4653301564889927,
+        "meta": {}
+      },
+      {
+        "label": "economic demand",
+        "score": 1.9971491992395443,
+        "meta": {}
+      },
+      {
+        "label": "harm business financial",
+        "score": 1.1159906278488325,
+        "meta": {}
+      },
+      {
+        "label": "increase operating",
+        "score": 1.1159906278488325,
+        "meta": {}
+      },
+      {
+        "label": "financial markets",
+        "score": 0.9215141597439898,
+        "meta": {}
+      },
+      {
+        "label": "Interest rates",
+        "score": 0.5956477560993951,
+        "meta": {}
+      },
+      {
+        "label": "foreign exchange",
+        "score": 0.5300017276757316,
+        "meta": {}
+      },
+      {
+        "label": "political instability",
+        "score": 0.4757806230202215,
+        "meta": {}
+      },
+      {
+        "label": "data security",
+        "score": 0.2744757165223213,
+        "meta": {}
+      },
+      {
+        "label": "internal controls",
+        "score": 0.25872350747690387,
+        "meta": {}
+      },
+      {
+        "label": "new products",
+        "score": 0.036345293945101,
+        "meta": {}
+      },
+      {
+        "label": "Data privacy",
+        "score": 0.030360784208777414,
+        "meta": {}
+      }
+    ],
+    "top_fallers_alt": [
+      {
+        "label": "customers revenue",
+        "score": -1.6522821741520533,
+        "meta": {}
+      },
+      {
+        "label": "changes united",
+        "score": -2.230576289393225,
+        "meta": {}
+      },
+      {
+        "label": "laws united",
+        "score": -2.230576289393225,
+        "meta": {}
+      },
+      {
+        "label": "products sell",
+        "score": -2.230576289393225,
+        "meta": {}
+      },
+      {
+        "label": "failure meet",
+        "score": -1.349849961826461,
+        "meta": {}
+      },
+      {
+        "label": "increase operating expenses",
+        "score": -0.9143204847570745,
+        "meta": {}
+      },
+      {
+        "label": "customers result",
+        "score": -0.8714453782595513,
+        "meta": {}
+      },
+      {
+        "label": "market share",
+        "score": -0.12147796560402169,
+        "meta": {}
+      },
+      {
+        "label": "products services",
+        "score": -0.08232363373513474,
+        "meta": {}
+      },
+      {
+        "label": "customers partners",
+        "score": -0.11955452271189548,
+        "meta": {}
+      },
+      {
+        "label": "gross margin",
+        "score": -0.11886668908759557,
+        "meta": {}
+      },
+      {
+        "label": "customer demand",
+        "score": -0.06912265670772388,
+        "meta": {}
+      },
+      {
+        "label": "product liability",
+        "score": -0.11797833929226531,
+        "meta": {}
+      },
+      {
+        "label": "Intellectual property",
+        "score": -0.04346800202569279,
+        "meta": {}
+      },
+      {
+        "label": "trade restrictions",
+        "score": -0.11748445991522516,
+        "meta": {}
+      }
+    ],
+    "summary_alt": "Adds emphasis on covid pandemic, laws regulations, demand products; de-emphasizes customers revenue, changes united, laws united."
+  },
+  "evidence": [
+    {
+      "year": 2021,
+      "paragraph_idx": 26,
+      "snippet": "The COVID-19 pandemic has increased economic and demand uncertainty. It continues to affect our business in both positive and negative ways, and there is uncertainty around their duration and impact. In the fourth quarter of fiscal year 2021, our Gaming and Data Center market platforms benefited from stronger demand as people continue to work, learn, and play from home. Our Professional Visualization market platform benefited from work-from-home trends in mobile workstations and desktop workstation demand has started to recover, although not back to pre-COVID levels. In our Automotive market platform, COVID-19 did not have a significant impact on demand in the fourth quarter of fiscal year 2021. In some regions, markets, or industries, where COVID-19 has driven an increase in sales for our products, the demand may not be sustainable if conditions change. Additionally, stronger demand globally has limited the availability of capacity and components in our supply chain, particularly in Gaming, which could cause us to order an excess amount if demand changes, pay higher prices, or limit our ability to obtain supply at necessary levels or at all. As the COVID-19 pandemic continues, the timing and overall demand from customers and the availability of supply chain, logistical services and component supply may have a material net negative impact on our business and financial results.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "COVID-19",
+        "covid pandemic",
+        "home",
+        "pandemic continues",
+        "continues",
+        "disease",
+        "benefited",
+        "desktop",
+        "election",
+        "grows",
+        "joint",
+        "remotely",
+        "severity",
+        "slowdown",
+        "try",
+        "Coronavirus",
+        "tegra",
+        "allegedly false",
+        "attributable end",
+        "based dissemination",
+        "different location",
+        "dissemination allegedly",
+        "located different",
+        "officers based",
+        "filed",
+        "attributable",
+        "revenue attributable",
+        "location",
+        "gpus tegra",
+        "tegra processors"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 30,
+      "snippet": "The ultimate impact of the COVID-19 pandemic or a similar health epidemic is highly uncertain and subject to change. The extent of the impact of the COVID-19 pandemic on our operational and financial performance, including our ability to execute our business strategies and initiatives in the expected time frame, will depend on future developments, including, but not limited to, the duration and continued spread of the pandemic, its severity, the actions to contain the disease or treat its impact, availability of vaccines or other treatments, further related restrictions on travel, and the duration, timing and severity of the impact on customer spending, including any recession resulting from the pandemic, all of which are uncertain and cannot be predicted. An extended period of global supply chain and economic disruption as a result of the COVID-19 pandemic could have a material negative impact on our business, results of operations, access to sources of liquidity and financial condition, though the full extent and duration is uncertain.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "COVID-19",
+        "covid pandemic",
+        "home",
+        "pandemic continues",
+        "continues",
+        "disease",
+        "benefited",
+        "desktop",
+        "election",
+        "grows",
+        "joint",
+        "remotely",
+        "severity",
+        "slowdown",
+        "try",
+        "Coronavirus",
+        "tegra",
+        "allegedly false",
+        "attributable end",
+        "based dissemination",
+        "different location",
+        "dissemination allegedly",
+        "located different",
+        "officers based",
+        "filed",
+        "attributable",
+        "revenue attributable",
+        "location",
+        "gpus tegra",
+        "tegra processors"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 25,
+      "snippet": "COVID-19 has spread worldwide, resulting in government authorities implementing numerous measures to try to contain the disease, such as travel bans and restrictions, quarantines, shelter-in-place orders and shutdowns. These measures have impacted, and may further impact, our workforce and operations, the operations of our customers and our partners, and those of our respective vendors and suppliers (including our subcontractors and third-party contract manufacturers). Our critical business operations, including our headquarters, most of our finished goods inventory and many of our key suppliers are located in regions which have been impacted by COVID-19. Our customers and suppliers worldwide have also been affected and may continue to be affected by COVID-19 related restrictions and closures.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "COVID-19",
+        "covid pandemic",
+        "home",
+        "pandemic continues",
+        "continues",
+        "disease",
+        "benefited",
+        "desktop",
+        "election",
+        "grows",
+        "joint",
+        "remotely",
+        "severity",
+        "slowdown",
+        "try",
+        "Coronavirus",
+        "tegra",
+        "allegedly false",
+        "attributable end",
+        "based dissemination",
+        "different location",
+        "dissemination allegedly",
+        "located different",
+        "officers based",
+        "filed",
+        "attributable",
+        "revenue attributable",
+        "location",
+        "gpus tegra",
+        "tegra processors"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 22,
+      "snippet": "We are subject to risks and uncertainties associated with international operations, which may harm our business. We conduct our business worldwide and we have offices in various countries outside of the United States. Our semiconductor wafers are manufactured, assembled, tested and packaged by third parties located outside of the United States. We also generate a significant portion of our revenue from sales outside the United States. We allocate revenue to individual countries based on the location to which the products are initially billed even if our customers\u2019 revenue is attributable to end customers that are located in a different location. Revenue from sales outside of the United States accounted for 92% of total revenue for fiscal year 2020 , and 87% for each of fiscal years 2019 and 2018 . Revenue from billings to China, including Hong Kong, was 25% of our revenue for fiscal year 2020, even if our customers' revenue is attributable to end customers that are located in a different location. Additionally, as of January 26, 2020 , approximately 46% of our employees were located outside of the United States. The global nature of our business subjects us to a number of risks and uncertainties, which could have a material adverse effect on our business, financial condition and results of operations, including: international economic and political conditions, including as a result of the United Kingdom's vote to withdraw from the European Union, and other political tensions between countries in which we do business; unexpected changes in, or impositions of, legislative or regulatory requirements, including changes in tax laws; differing legal standards with respect to protection of intellectual property and employment practices; local business and cultural factors that differ from our normal standards and practices, including business practices that we are prohibited from engaging in by the Foreign Corrupt Practices Act and other anticorruption laws and regulations; exporting or importing issues related to export or import restrictions, including deemed export restrictions, tariffs, quotas and other trade barriers and restrictions; disruptions of capital and trading markets and currency fluctuations; and increased costs due to imposition of climate change regulations, such as carbon taxes, fuel or energy taxes, and pollution limits.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "COVID-19",
+        "covid pandemic",
+        "home",
+        "pandemic continues",
+        "continues",
+        "disease",
+        "benefited",
+        "desktop",
+        "election",
+        "grows",
+        "joint",
+        "remotely",
+        "severity",
+        "slowdown",
+        "try",
+        "Coronavirus",
+        "tegra",
+        "allegedly false",
+        "attributable end",
+        "based dissemination",
+        "different location",
+        "dissemination allegedly",
+        "located different",
+        "officers based",
+        "filed",
+        "attributable",
+        "revenue attributable",
+        "location",
+        "gpus tegra",
+        "tegra processors"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 14,
+      "snippet": "In January 2020, a novel strain of coronavirus was identified in China, resulting in shutdowns of manufacturing and commerce, as well as global travel restrictions to contain the virus. The impact has extended to other regions. We have operations and employees in China, and the region represents an important end market for our products. Our customers and suppliers within China and neighboring countries are also affected by the coronavirus related restrictions and closures. The coronavirus is expected to have a negative effect on our financial results, though the full extent and duration is uncertain and could have a material negative impact on our business.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "COVID-19",
+        "covid pandemic",
+        "home",
+        "pandemic continues",
+        "continues",
+        "disease",
+        "benefited",
+        "desktop",
+        "election",
+        "grows",
+        "joint",
+        "remotely",
+        "severity",
+        "slowdown",
+        "try",
+        "Coronavirus",
+        "tegra",
+        "allegedly false",
+        "attributable end",
+        "based dissemination",
+        "different location",
+        "dissemination allegedly",
+        "located different",
+        "officers based",
+        "filed",
+        "attributable",
+        "revenue attributable",
+        "location",
+        "gpus tegra",
+        "tegra processors"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 40,
+      "snippet": "Our business is exposed to the risks associated with litigation, investigations and regulatory proceedings. We currently and may in the future face legal, administrative and regulatory proceedings, claims, demands and/or investigations involving shareholder, consumer, competition and/or other issues relating to our business on a global basis. For example, multiple securities litigation claims have recently been filed against us and certain of our officers based on the dissemination of allegedly false and misleading statements related to channel inventory and the impact of cryptocurrency mining on GPU demand. In addition, a stockholder, purporting to act on behalf of the Company, filed a derivative lawsuit seeking to assert claims on behalf of the Company against the members of our board of directors and certain officers based on the dissemination of allegedly false and misleading statements related to channel inventory and the impact of cryptocurrency mining on GPU demand.",
+      "why": "Representative paragraph from baseline excerpts.",
+      "highlights": [
+        "COVID-19",
+        "covid pandemic",
+        "home",
+        "pandemic continues",
+        "continues",
+        "disease",
+        "benefited",
+        "desktop",
+        "election",
+        "grows",
+        "joint",
+        "remotely",
+        "severity",
+        "slowdown",
+        "try",
+        "Coronavirus",
+        "tegra",
+        "allegedly false",
+        "attributable end",
+        "based dissemination",
+        "different location",
+        "dissemination allegedly",
+        "located different",
+        "officers based",
+        "filed",
+        "attributable",
+        "revenue attributable",
+        "location",
+        "gpus tegra",
+        "tegra processors"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.0761,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T19:27:15Z",
+    "git_commit": "cfe9628e9904d9ea49e72960b3535e0464887ce9",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "8d071c33e1e2434abc15f22db00cd5cc9e715a8acf3573775ea431e665167d41",
+      "curr_text_sha256": "8c0d08a1b053aeeb4c1399cfee88fa0577b416889c7f4d7b9306ba6b4859e669",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

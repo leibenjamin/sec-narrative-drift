@@ -1,0 +1,121 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_structure_artifacts_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "GE",
+  "section": "10k_item1a",
+  "year_from": 2020,
+  "year_to": 2021,
+  "artifacts": {
+    "stats": {
+      "headings_prev": [
+        "GE 2020 FORM 10-K 44",
+        "GE 2020 FORM 10-K 45",
+        "GE 2020 FORM 10-K 46",
+        "GE 2020 FORM 10-K 47",
+        "GE 2020 FORM 10-K 48",
+        "GE 2020 FORM 10-K 49",
+        "GE 2020 FORM 10-K 50"
+      ],
+      "headings_curr": [
+        "2021 FORM 10-K 35",
+        "2021 FORM 10-K 36",
+        "2021 FORM 10-K 37",
+        "2021 FORM 10-K 38",
+        "2021 FORM 10-K 39",
+        "2021 FORM 10-K 40",
+        "2021 FORM 10-K 41",
+        "2021 FORM 10-K 42",
+        "MANAGEMENT AND AUDITOR\u2019S REPORTS",
+        "H. Lawrence Culp, Jr.",
+        "Carolina Dybeck Happe",
+        "Chief Financial Officer",
+        "February 11, 2022"
+      ],
+      "headings_added": [
+        "2021 FORM 10-K 35",
+        "2021 FORM 10-K 36",
+        "2021 FORM 10-K 37",
+        "2021 FORM 10-K 38",
+        "2021 FORM 10-K 39",
+        "2021 FORM 10-K 40",
+        "2021 FORM 10-K 41",
+        "2021 FORM 10-K 42",
+        "MANAGEMENT AND AUDITOR\u2019S REPORTS",
+        "H. Lawrence Culp, Jr.",
+        "Carolina Dybeck Happe",
+        "Chief Financial Officer",
+        "February 11, 2022"
+      ],
+      "headings_removed": [
+        "GE 2020 FORM 10-K 44",
+        "GE 2020 FORM 10-K 45",
+        "GE 2020 FORM 10-K 46",
+        "GE 2020 FORM 10-K 47",
+        "GE 2020 FORM 10-K 48",
+        "GE 2020 FORM 10-K 49",
+        "GE 2020 FORM 10-K 50"
+      ],
+      "paragraph_count_prev": 25,
+      "paragraph_count_curr": 39,
+      "length_chars_prev": 57369,
+      "length_chars_curr": 64798
+    }
+  },
+  "evidence": [
+    {
+      "year": 2021,
+      "paragraph_idx": 3,
+      "snippet": "on a different timeline than expected. If we are unable to complete any of the separations, we will have incurred costs without realizing the benefits of such transaction. In addition, the terms and conditions of the required regulatory authorizations and consents that are granted, if any, may impose requirements, limitations or costs, or place restrictions on the conduct of the independent companies. And, although we intend for the separation transactions to be tax-free to the Company\u2019s shareholders for U.S. federal income tax purposes, we expect to incur non-U.S. cash taxes on the preparatory restructuring and may also incur non-cash tax expense including potential impairments of deferred tax assets. Moreover, there can be no assurance that the separation transactions will qualify as tax-free for U.S. purposes. If the separation transactions were ultimately determined to be taxable, we would incur a significant tax liability, while",
+      "why": "Heading added: 2021 FORM 10-K 35"
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 8,
+      "snippet": "Global macro-environment - Our growth is subject to global economic, political and geopolitical risks. We operate in virtually every part of the world, serve customers in over 175 countries and received 56% of our revenues for 2021 from outside the United States. Our operations and the execution of our business plans and strategies are subject to the effects of global economic trends, geopolitical risks and demand or supply shocks from events that could include war, a major terrorist attack, natural disasters or actual or threatened public health emergencies (such as COVID-19). They are also affected by local and regional economic environments and policies in the U.S. and other markets that we serve, including interest rates, monetary policy, inflation, economic growth, recession, commodity prices, currency volatility, currency controls or other limitations on the ability to expatriate cash, sovereign debt levels and actual or anticipated defaults on sovereign debt. For example, changes in local economic conditions or outlooks, such as lower rates of investment or economic growth in China, Europe or other key markets, affect the demand for or profitability of our products and services outside the U.S., and the impact on the Company could be significant given the extent of our activities outside the United States. Political changes and trends such as populism, protectionism, economic nationalism and sentiment toward multinational companies and resulting tariffs, export controls or other trade barriers, or changes to tax or other laws and policies, have been and may continue to be disruptive and costly to our businesses, and these can interfere with our global operating model, supply chain, production costs, customer relationships and competitive position. Further escalation of specific trade tensions, including intensified decoupling between the U.S. and China, or in global trade conflict more broadly could be harmful to global economic growth or to our business in or with China or other countries, and related decreases in confidence or investment activity in the global markets would adversely affect our business performance. We also do business in many emerging market jurisdictions where economic, political and legal risks are heightened.",
+      "why": "Heading added: 2021 FORM 10-K 36"
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 12,
+      "snippet": "retain skilled talent. Our long-term operating results and competitive position also depend substantially upon our ability to continually develop, introduce, and market new and innovative technology, products, services and platforms, to develop digital solutions for our own operations and our customers, to modify existing products and services, to customize products and services, to maintain long-term customer relationships and to increase our productivity over time as we perform on long-term service agreements. A failure to appropriately plan for these dynamics may adversely affect our delivery of products, services and outcomes in line with our projected financial performance or cost estimates, and ultimately may result in excess costs, build-up of inventory that becomes obsolete, lower profit margins and an erosion of our competitive position. Our businesses are subject to technological change and advances, such as growth in industrial automation and increased digitization of the operations, infrastructure and solutions that customers demand across all the industries we serve. The introduction of innovative and disruptive technologies in the markets in which we operate also poses risks in the form of new competitors (including new entrants from outside our traditional industries, such as competitors from digital technology companies), market consolidation, substitutions of existing products, services or solutions, niche players, new business models and competitors that are faster to market with new or more cost-effective products or services. Existing and new competitors are frequently offering services for our installed base, and this can erode the revenues and profitability of our businesses if we fail to maintain or enter into new services relationships with customers that purchase our equipment and products. In addition, the research and development cycle involved in bringing products in our businesses to market is often lengthy, it is inherently difficult to predict the economic conditions and competitive dynamics that will exist when any new product is complete, and our investments, to the extent they result in bringing a product to market, may generate weaker returns than we anticipated at the outset. Our capacity to invest in research and development efforts to pursue advancement in a wide range of technologies, products and services also depends on the financial resources that we have available for such investment relative to other capital allocation priorities. Under-investment in research and development, or investment in technologies that prove to be less competitive in the future (at the expense of alternative investment opportunities not pursued), could lead to loss of sales of our products and services in the future, particularly in our long-cycle businesses that have longer product development cycles. The amounts that we do invest in research and development efforts may not lead to the development of new technologies or products on a timely basis or meet the needs of our customers as fully as competitive offerings.",
+      "why": "Heading added: 2021 FORM 10-K 37"
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 5,
+      "snippet": "Global macro-environment - Our growth is subject to global economic, political and geopolitical risks. We operate in virtually every part of the world, serve customers in over 170 countries and received 56% of our revenues for 2020 from outside the United States. Our operations and the execution of our business plans and strategies are subject to the effects of global economic trends, geopolitical risks and demand or supply shocks from events that could include war, a major terrorist attack, natural disasters or actual or threatened health emergencies (such as COVID-19). They are also affected by local and regional economic environments and policies in the U.S. and other markets that we serve, including interest rates, monetary policy, inflation, economic growth, recession, commodity prices, currency volatility, currency controls or other limitations on the ability to expatriate cash, sovereign debt levels and actual or anticipated defaults on sovereign debt. For example, changes in local economic conditions or outlooks, such as lower rates of investment or economic growth in China, Europe or other key markets, affect the demand for or profitability of our products and services outside the U.S., and the impact on the Company could be significant given the extent of our activities outside the United States. Political changes and trends such as populism, protectionism, economic nationalism and sentiment toward multinational companies and resulting tariffs, export controls or other trade barriers, or changes to tax or other laws and policies, have been and may continue to be disruptive and costly to our businesses, and these can interfere with our global operating model, supply chain, production costs, customer relationships and competitive position. Further escalation of specific trade tensions, such as those between the U.S. and China, or in global trade conflict more broadly could be harmful to global economic growth, and related decreases in confidence or investment activity in the global markets would adversely affect our business performance. We also do business in many emerging market jurisdictions where economic, political and legal risks are heightened.",
+      "why": "Heading removed: GE 2020 FORM 10-K 44"
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 7,
+      "snippet": "Competitive environment - We are dependent on the maintenance of existing product lines and service relationships, market acceptance of new product and service introductions and technology and innovation leadership for revenue and earnings growth. The markets in which we operate are highly competitive in terms of pricing, product and service quality, product development and introduction time, customer service, financing terms and shifts in market demand, and competitors are increasingly offering services for our installed base. Our businesses are also subject to technological change and require us to continually attract and retain skilled talent. The introduction of innovative and disruptive technologies in the markets in which we operate also poses risks in the form of new competitors (including new entrants from outside our traditional industries, such as competitors from digital technology companies), market consolidation, substitutions of existing products, services or solutions, niche players, new business models and competitors that are faster to market with new or more cost-effective products or services. Because the research and development cycle involved in bringing products in our businesses to market is often lengthy, it is inherently difficult to predict the economic conditions and competitive dynamics that will exist when any new product is complete, and our investments, to the extent they result in bringing a product to market, may generate weaker returns than we anticipated at the outset. Our capacity to invest in research and development efforts to pursue advancement in a wide range of technologies, products and services also depends on the financial resources that we have available for such investment relative to other capital allocation priorities, and to the extent there may be under-investment that could lead to loss of sales of our products and services in the future, particularly in our long-cycle businesses. The amounts that we do invest in research and development divert resources from other potential investments in our businesses, and our efforts may not lead to the development of new technologies or products on a timely basis or meet the needs of our customers as fully as competitive offerings.",
+      "why": "Heading removed: GE 2020 FORM 10-K 45"
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 10,
+      "snippet": "Intellectual property - Our intellectual property portfolio may not prevent competitors from independently developing products and services similar to or duplicative to ours, and the value of our intellectual property may be negatively impacted by external dependencies. Our patents and other intellectual property may not prevent competitors from independently developing or selling products and services similar to or duplicative of ours, and there can be no assurance that the resources invested by us to protect our intellectual property will be sufficient or that our intellectual property portfolio will adequately deter misappropriation or improper use of our technology. Trademark licenses of the GE brand in connection with dispositions may negatively impact the overall value of the brand in the future. We also face competition in some countries where we have not invested in an intellectual property portfolio. If we are not able to protect our intellectual property, the value of our brand and other intangible assets may be diminished, and our business may be adversely affected. We also face attempts to gain unauthorized access to our IT systems or products for the purpose of improperly acquiring our trade secrets or confidential business information. The theft or unauthorized use or publication of our trade secrets and other confidential business information as a result of such an incident could adversely affect our competitive position and the value of our investment in research and development. In addition, we are subject to the enforcement of patents or other intellectual property by third parties, including aggressive and opportunistic enforcement claims by non-practicing entities. Regardless of the merit of such claims, responding to infringement claims can be expensive and time-consuming. If GE is found to infringe any third-party rights, we could be required to pay substantial damages or we could be enjoined from offering some of our products and services. The value of, or our ability to use, our intellectual property may also be negatively impacted by dependencies on third parties, such as our ability to obtain or renew on reasonable terms licenses that we need in the future, or our ability to secure or retain ownership or rights to use data in certain software analytics or services offerings.",
+      "why": "Heading removed: GE 2020 FORM 10-K 46"
+    }
+  ],
+  "metrics": {
+    "drift_score": 1.0,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T19:27:23Z",
+    "git_commit": "cfe9628e9904d9ea49e72960b3535e0464887ce9",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "231bdd0927c5ed3145794df750f944019d39e3bf17119eaa1dc6846257c3196a",
+      "curr_text_sha256": "33cd08318c3afe8fd69423a1f2d61b59aefa60e076d72143891dd4a695ad7491",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

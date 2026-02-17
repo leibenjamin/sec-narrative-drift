@@ -1,0 +1,55 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_winnowing_fingerprint_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "WM",
+  "section": "10k_item1a",
+  "year_from": 2020,
+  "year_to": 2021,
+  "artifacts": {
+    "stats": {
+      "shared_fingerprints": 21578,
+      "prev_fingerprints": 29732,
+      "curr_fingerprints": 28040,
+      "shared_ratio": 0.769543509272468
+    }
+  },
+  "evidence": [
+    {
+      "year": 2021,
+      "paragraph_idx": 0,
+      "snippet": "Item 1A. Risk Factors.\n\nIn an effort to keep our stockholders and the public informed about our business, we may make \u201cfo",
+      "why": "Shared fingerprint span."
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 0,
+      "snippet": "Item 1A. Risk Factors.\n\nIn an effort to keep our stockholders and the public informed about our business, we may make \u201cforw",
+      "why": "Shared fingerprint span."
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 0,
+      "snippet": "Item 1A. Risk Factors.\n\nIn an effort to keep our stockholders and the public informed about our business, we may make \u201cforward",
+      "why": "Shared fingerprint span."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.769543509272468,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T19:27:21Z",
+    "git_commit": "cfe9628e9904d9ea49e72960b3535e0464887ce9",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "29d1ab781cc001a5191a52b1cb72e2af781b38d8c21045e0068ae4646374b754",
+      "curr_text_sha256": "a241a1405f869f11f5ff29b22c0681289ef94822c893491f55f4ddad76cc96b3",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

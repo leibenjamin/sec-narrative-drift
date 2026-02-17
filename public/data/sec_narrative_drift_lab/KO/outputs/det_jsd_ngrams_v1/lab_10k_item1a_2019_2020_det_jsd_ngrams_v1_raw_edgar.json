@@ -1,0 +1,156 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_jsd_ngrams_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "KO",
+  "section": "10k_item1a",
+  "year_from": 2019,
+  "year_to": 2020,
+  "artifacts": {
+    "ranked_items": [
+      {
+        "label": "pandemic",
+        "score": 0.0008371551284851132
+      },
+      {
+        "label": "covid pandemic",
+        "score": 0.0005459707359685521
+      },
+      {
+        "label": "covid",
+        "score": 0.00045920260357103855
+      },
+      {
+        "label": "risks related",
+        "score": 0.00032758244158113123
+      },
+      {
+        "label": "controlled",
+        "score": 0.0003257063757023044
+      },
+      {
+        "label": "consolidated bottling",
+        "score": 0.00029118439251656113
+      },
+      {
+        "label": "owned",
+        "score": 0.0002849930787395163
+      },
+      {
+        "label": "owned controlled",
+        "score": 0.0002849930787395163
+      },
+      {
+        "label": "company owned",
+        "score": 0.0002849930787395163
+      },
+      {
+        "label": "opinion",
+        "score": 0.000254786343451991
+      },
+      {
+        "label": "home",
+        "score": 0.00021838829438742082
+      },
+      {
+        "label": "controlled bottling",
+        "score": 0.00020356648481394024
+      },
+      {
+        "label": "taken",
+        "score": 0.0001835740567317645
+      },
+      {
+        "label": "employer",
+        "score": 0.0001628531878511522
+      },
+      {
+        "label": "multi employer",
+        "score": 0.0001628531878511522
+      },
+      {
+        "label": "pension",
+        "score": 0.0001628531878511522
+      },
+      {
+        "label": "employer pension",
+        "score": 0.0001628531878511522
+      },
+      {
+        "label": "multi",
+        "score": 0.0001628531878511522
+      },
+      {
+        "label": "place",
+        "score": 0.00015367452431505255
+      },
+      {
+        "label": "shelter place",
+        "score": 0.00014559219625828057
+      }
+    ],
+    "stats": {
+      "jsd": 0.081415,
+      "tokens_prev": 6141,
+      "tokens_curr": 6869
+    }
+  },
+  "evidence": [
+    {
+      "year": 2020,
+      "paragraph_idx": 1,
+      "snippet": "The COVID-19 pandemic has had, and we expect will continue to have, certain negative impacts on our business, and such impacts have had, and may continue to have, a material adverse effect on our results of operations, financial condition and cash flows.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "pandemic",
+        "covid"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 2,
+      "snippet": "The public health crisis caused by the COVID-19 pandemic and the measures that have been taken or that may be taken in the future by governments, businesses, including us and our bottling partners, and the public at large to limit the spread of COVID-19 have had, and we expect will continue to have, certain negative impacts on our business including, without limitation, the following:",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "pandemic",
+        "covid"
+      ]
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 29,
+      "snippet": "Our Company-owned or -controlled bottlers operate a large fleet of trucks and other motor vehicles to distribute and deliver beverage products to customers. In addition, we use a significant amount of electricity, natural gas and other energy sources to operate our concentrate, syrup and juice production plants and the bottling plants and distribution facilities operated by our Company-owned or -controlled bottlers. An increase in the price, disruption of supply or shortage of fuel and other energy sources in countries in which we have concentrate plants, or in any of the major markets in which our Company-owned or -controlled bottlers operate, which may be caused by increasing demand, by events such as natural disasters, power outages and the like, or by government regulations, taxes, policies or programs designed to reduce greenhouse gas emissions to address climate change, could increase our operating costs and negatively impact our profitability.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "controlled"
+      ]
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 34,
+      "snippet": "An increase in the cost, a sustained interruption in the supply, or a shortage of some of these ingredients, other raw materials, packaging materials, aluminum cans and other containers that may be caused by changes in or the enactment of new laws and regulations; a deterioration of our or our bottling partners' relationships with suppliers; supplier quality and reliability issues; trade disruptions; changes in supply chain; and increases in tariffs that may be caused by the United Kingdom's withdrawal from the European Union, commonly referred to as \"Brexit\"; or events such as natural disasters, widespread outbreaks of infectious diseases (such as the recent outbreak of the novel coronavirus COVID-19), power outages, labor strikes, political uncertainties or governmental instability, or the like could negatively impact our net operating revenues and profits.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "covid"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.081415,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T19:27:18Z",
+    "git_commit": "cfe9628e9904d9ea49e72960b3535e0464887ce9",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "19074bf419ec25109f66851165aeeb69230f1a8b1a87281c7036328cad5f87e1",
+      "curr_text_sha256": "34b0ec0d66b244446712462b1db58c554840ecaf73b985f16e10109a32f13871",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

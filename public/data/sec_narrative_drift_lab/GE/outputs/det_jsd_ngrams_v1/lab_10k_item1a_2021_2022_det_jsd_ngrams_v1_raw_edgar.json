@@ -1,0 +1,144 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_jsd_ngrams_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "GE",
+  "section": "10k_item1a",
+  "year_from": 2021,
+  "year_to": 2022,
+  "artifacts": {
+    "ranked_items": [
+      {
+        "label": "ge vernova",
+        "score": 0.000610798924993892
+      },
+      {
+        "label": "ge healthcare",
+        "score": 0.000610798924993892
+      },
+      {
+        "label": "vernova",
+        "score": 0.000610798924993892
+      },
+      {
+        "label": "aerospace",
+        "score": 0.0004071992833292613
+      },
+      {
+        "label": "vernova separation",
+        "score": 0.0003257594266634091
+      },
+      {
+        "label": "ge",
+        "score": 0.000284887257735298
+      },
+      {
+        "label": "separation transaction",
+        "score": 0.0002443195699975568
+      },
+      {
+        "label": "aerospace business",
+        "score": 0.0002443195699975568
+      },
+      {
+        "label": "skilled labor",
+        "score": 0.00020359964166463066
+      },
+      {
+        "label": "transactions",
+        "score": 0.00019963359185334216
+      },
+      {
+        "label": "aircraft",
+        "score": 0.00016287971333170455
+      },
+      {
+        "label": "aercap ge",
+        "score": 0.00016287971333170455
+      },
+      {
+        "label": "separation transactions",
+        "score": 0.0001586106226499152
+      },
+      {
+        "label": "hughes",
+        "score": 0.00014146939545411677
+      },
+      {
+        "label": "baker",
+        "score": 0.00014146939545411677
+      },
+      {
+        "label": "transactions completed",
+        "score": 0.00014146939545411677
+      },
+      {
+        "label": "baker hughes",
+        "score": 0.00014146939545411677
+      },
+      {
+        "label": "transaction",
+        "score": 0.00013642200462923867
+      },
+      {
+        "label": "spin ge",
+        "score": 0.0001221597849987784
+      },
+      {
+        "label": "successfully",
+        "score": 0.0001221597849987784
+      }
+    ],
+    "stats": {
+      "jsd": 0.101535,
+      "tokens_prev": 5302,
+      "tokens_curr": 6140
+    }
+  },
+  "evidence": [
+    {
+      "year": 2022,
+      "paragraph_idx": 2,
+      "snippet": "Strategic plan - We may encounter challenges to executing our plan to separate GE into three public companies, or to completing the plan within the timeframes we anticipate, and we may not realize some or all of the expected benefits of the separations. In November 2021, we announced our plan to form three independent public companies from our (i) Aerospace business, (ii) HealthCare business and (iii) portfolio of energy businesses that we plan to combine as GE Vernova (Renewable Energy, Power, Digital and Energy Financial Services), to better position those businesses to deliver long-term growth and create value for customers, investors, and employees. In January 2023, our HealthCare business was spun off as GE HealthCare. The GE HealthCare business separation was, and the planned GE Vernova business separation is expected to be, effected through spin-offs by GE that are intended to be tax-free for the Company and its shareholders for U.S. federal income tax purposes and with all three resulting companies having investment grade credit ratings. The GE Vernova separation transaction will be subject to the satisfaction of a number of customary conditions, including, among others, final approvals by GE\u2019s Board of Directors, receipt of tax rulings in certain jurisdictions and/or tax opinions from external counsel, the filing with the SEC and effectiveness of a Form 10 registration statement, and establishment of the capital structures and credit ratings for both GE Vernova and the remainder of GE following the spin-off. A failure to satisfy required conditions, or disruptions in market conditions, could delay the completion of the GE Vernova separation transaction for a significant period of time or prevent it from occurring at all. Additionally, the GE Vernova separation transaction is complex in nature, and business, market or other developments or changes may affect our ability to complete the separation transaction as currently expected, within the anticipated timeframe or at all. These or other developments could cause us not to realize some or all of the expected benefits, or to realize them on a different timeline than expected. If we are unable to complete the GE Vernova separation, we will have incurred costs without realizing the benefits of such transaction. In addition, the terms and conditions of the required regulatory authorizations and consents that are granted, if any, may impose requirements, limitations or costs, or place restrictions on the conduct of GE Vernova or GE Aerospace as independent companies. In addition, although we intend for the GE Vernova separation transaction to be tax-free to the Company and its shareholders for U.S. federal income tax purposes, we expect to incur non-U.S. cash taxes on the preparatory restructuring and may also incur non-cash tax expense including potential impairments of deferred tax assets. Moreover, there can be no assurance that either of the separation transactions will qualify as tax-free for U.S. purposes for the Company or its shareholders. If either of the separation transactions were ultimately determined to be taxable, we would incur a significant tax liability, while the distributions to the Company\u2019s shareholders would become taxable and the new independent companies might incur income tax liabilities as well. Furthermore, there can be no assurance that each separate company will be successful as a standalone public company.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "ge vernova",
+        "ge healthcare",
+        "vernova",
+        "aerospace",
+        "vernova separation"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 3,
+      "snippet": "Whether or not the GE Vernova separation transaction is completed, our businesses may face material challenges as a result of the GE HealthCare separation and in connection with the GE Vernova separation, including the diversion of management\u2019s attention from ongoing business concerns and impact on the businesses of the Company; appropriately allocating assets and liabilities among GE Aerospace and GE Vernova; maintaining employee morale and retaining and attracting key management and other employees; retaining existing or attracting new business and operational relationships, including with customers, suppliers, employees and other counterparties; assigning customer contracts, guaranties and other contracts and instruments to each of the businesses, and obtaining releases from the counterparties to those contracts or beneficiaries of those instruments; providing financial or credit support for new business; assigning intellectual property to each of the businesses; establishing transition service agreements and standalone readiness for key functions; and potential negative reactions from investors or the financial community. In particular, GE for the past several years has been undertaking various restructuring and business transformation actions (including workforce reductions, global facility consolidations and other cost reduction initiatives, and the GE HealthCare separation) that have entailed changes across our organizational structure, senior leadership, culture, functional alignment, outsourcing and other areas. These pose risks in the form of personnel capacity constraints and institutional knowledge loss that could lead to missed performance or financial targets, loss of key personnel and harm to our reputation, and these risks are heightened with the additional interdependent actions that will be needed to complete the planned separation of GE Vernova.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "ge vernova",
+        "ge healthcare",
+        "vernova",
+        "aerospace",
+        "vernova separation"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.101535,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T19:27:23Z",
+    "git_commit": "cfe9628e9904d9ea49e72960b3535e0464887ce9",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "33cd08318c3afe8fd69423a1f2d61b59aefa60e076d72143891dd4a695ad7491",
+      "curr_text_sha256": "625585febfb164ec0fa5e2974a08cd27e0e1f9f812e1a13f76f076360d33c118",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

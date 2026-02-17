@@ -1,0 +1,50 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_structure_artifacts_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "WM",
+  "section": "10k_item1a",
+  "year_from": 2020,
+  "year_to": 2021,
+  "artifacts": {
+    "stats": {
+      "headings_prev": [
+        "Item 1A. Risk Factors.",
+        "There are risks involved in pursuing our strategy, including the following:",
+        "Financial Risks",
+        "Item 1B. Unresolved Staff Comments."
+      ],
+      "headings_curr": [
+        "Item 1A. Risk Factors.",
+        "There are risks involved in pursuing our strategy, including the following:",
+        "Financial Risks",
+        "Item 1B. Unresolved Staff Comments."
+      ],
+      "headings_added": [],
+      "headings_removed": [],
+      "paragraph_count_prev": 92,
+      "paragraph_count_curr": 89,
+      "length_chars_prev": 74540,
+      "length_chars_curr": 70460
+    }
+  },
+  "evidence": [],
+  "metrics": {
+    "drift_score": 0.0,
+    "confidence": 0.4,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T19:27:21Z",
+    "git_commit": "cfe9628e9904d9ea49e72960b3535e0464887ce9",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "29d1ab781cc001a5191a52b1cb72e2af781b38d8c21045e0068ae4646374b754",
+      "curr_text_sha256": "a241a1405f869f11f5ff29b22c0681289ef94822c893491f55f4ddad76cc96b3",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

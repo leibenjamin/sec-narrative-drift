@@ -1,0 +1,58 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_structure_artifacts_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "WM",
+  "section": "10k_item1a",
+  "year_from": 2022,
+  "year_to": 2023,
+  "artifacts": {
+    "stats": {
+      "headings_prev": [
+        "Item 1A. Risk Factors.",
+        "There are risks involved in pursuing our strategy, including the following:",
+        "Financial Risks",
+        "Item 1B. Unresolved Staff Comments."
+      ],
+      "headings_curr": [
+        "Item 1A. Risk Factors.",
+        "Financial Risks",
+        "Item 1B. Unresolved Staff Comments."
+      ],
+      "headings_added": [],
+      "headings_removed": [
+        "There are risks involved in pursuing our strategy, including the following:"
+      ],
+      "paragraph_count_prev": 92,
+      "paragraph_count_curr": 95,
+      "length_chars_prev": 77847,
+      "length_chars_curr": 81033
+    }
+  },
+  "evidence": [
+    {
+      "year": 2022,
+      "paragraph_idx": 0,
+      "snippet": "Our employees, customers or investors may not embrace and support our strategy.",
+      "why": "Heading removed: There are risks involved in pursuing our strategy, including the following:"
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.25,
+    "confidence": 0.35,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T19:27:22Z",
+    "git_commit": "cfe9628e9904d9ea49e72960b3535e0464887ce9",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "04c9c2b3c90a5369bae2cf3ea8a2cd92b72c66032f15a17ae21b9a310dfc2b8a",
+      "curr_text_sha256": "faed25fa3f4d1c6d55f7737bc8a15ba0376a341b6c0b6f34c48c76a3fac81f31",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

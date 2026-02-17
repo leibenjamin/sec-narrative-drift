@@ -1,0 +1,154 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_jsd_ngrams_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "WM",
+  "section": "10k_item1a",
+  "year_from": 2022,
+  "year_to": 2023,
+  "artifacts": {
+    "ranked_items": [
+      {
+        "label": "covid",
+        "score": 0.00030933415822442193
+      },
+      {
+        "label": "wm renewable",
+        "score": 0.0002964939589355867
+      },
+      {
+        "label": "wm",
+        "score": 0.00019311717038653247
+      },
+      {
+        "label": "energy segment",
+        "score": 0.00018530872433474168
+      },
+      {
+        "label": "ai",
+        "score": 0.00018530872433474168
+      },
+      {
+        "label": "segment",
+        "score": 0.00018530872433474168
+      },
+      {
+        "label": "ongoing",
+        "score": 0.00018530872433474168
+      },
+      {
+        "label": "looking",
+        "score": 0.00015466707911221097
+      },
+      {
+        "label": "forward",
+        "score": 0.00015466707911221097
+      },
+      {
+        "label": "forward looking",
+        "score": 0.00015466707911221097
+      },
+      {
+        "label": "clean",
+        "score": 0.00014824697946779335
+      },
+      {
+        "label": "clean fuel",
+        "score": 0.00014824697946779335
+      },
+      {
+        "label": "looking statements",
+        "score": 0.00011600030933415822
+      },
+      {
+        "label": "recycling renewable",
+        "score": 0.00011600030933415822
+      },
+      {
+        "label": "fuel surcharge",
+        "score": 0.00011600030933415822
+      },
+      {
+        "label": "covid pandemic",
+        "score": 0.00011600030933415822
+      },
+      {
+        "label": "resurgence",
+        "score": 0.00011600030933415822
+      },
+      {
+        "label": "processing sales",
+        "score": 0.000111185234600845
+      },
+      {
+        "label": "year period",
+        "score": 0.000111185234600845
+      },
+      {
+        "label": "areas policy",
+        "score": 0.000111185234600845
+      }
+    ],
+    "stats": {
+      "jsd": 0.08213,
+      "tokens_prev": 6466,
+      "tokens_curr": 6746
+    }
+  },
+  "evidence": [
+    {
+      "year": 2023,
+      "paragraph_idx": 0,
+      "snippet": "Our business, financial condition and results of operations are subject to numerous risks and uncertainties. You should carefully consider the following risk factors in conjunction with \u201cManagement\u2019s Discussion and Analysis of Financial Condition and Results of Operations\u201d in Item 7 and our \u201cFinancial Statements and Supplementary Data\u201d in Item 8. In addition to the following risks, there may be additional risks and uncertainties that adversely affect our business, performance, or financial condition in the future that are not presently known or are not currently believed to be material.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "ai"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 3,
+      "snippet": "Our ability to make strategic acquisitions depends on our ability to identify desirable acquisition targets, negotiate advantageous transactions despite competition for such opportunities, fund such acquisitions on favorable terms, obtain regulatory approvals and realize the benefits we expect from those transactions.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "ai"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 1,
+      "snippet": "You should view these statements with caution. These statements are not guarantees of future performance, circumstances or events. They are based on facts and circumstances known to us as of the date the statements are made. The following discussion should be read together with the Consolidated Financial Statements and the notes thereto. Outlined below are some of the risks that we believe could affect our business and financial statements for 2023 and beyond and could cause actual results to be materially different from those set forth in forward-looking statements made by the Company. In addition to the following risks, there may be additional risks and uncertainties that adversely affect our business, performance, or financial condition in the future that are not presently known or are not currently believed to be material. We assume no obligation to update any forward-looking statement, whether as a result of future events, circumstances or developments or otherwise.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "ai"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 4,
+      "snippet": "Strategic decisions with respect to our asset portfolio may result in impairments to our assets. See Item 1A. Risk Factors \u2014 We may record material charges against our earnings due to impairments to our assets .",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "ai"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.08213,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T19:27:22Z",
+    "git_commit": "cfe9628e9904d9ea49e72960b3535e0464887ce9",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "04c9c2b3c90a5369bae2cf3ea8a2cd92b72c66032f15a17ae21b9a310dfc2b8a",
+      "curr_text_sha256": "faed25fa3f4d1c6d55f7737bc8a15ba0376a341b6c0b6f34c48c76a3fac81f31",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

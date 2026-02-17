@@ -1,0 +1,138 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_jsd_ngrams_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "WM",
+  "section": "10k_item1a",
+  "year_from": 2023,
+  "year_to": 2024,
+  "artifacts": {
+    "ranked_items": [
+      {
+        "label": "stericycle",
+        "score": 0.0010817690104995227
+      },
+      {
+        "label": "controlled substances",
+        "score": 0.0005408845052497613
+      },
+      {
+        "label": "medical waste",
+        "score": 0.00044543429844097997
+      },
+      {
+        "label": "medical",
+        "score": 0.00044543429844097997
+      },
+      {
+        "label": "waste controlled",
+        "score": 0.0004136175628380528
+      },
+      {
+        "label": "controlled",
+        "score": 0.0004082145206857736
+      },
+      {
+        "label": "substances waste",
+        "score": 0.00034998409163219854
+      },
+      {
+        "label": "acquisition stericycle",
+        "score": 0.0003181673560292714
+      },
+      {
+        "label": "healthcare",
+        "score": 0.0003181673560292714
+      },
+      {
+        "label": "substances",
+        "score": 0.0003145994221712652
+      },
+      {
+        "label": "acquisition",
+        "score": 0.0003145994221712652
+      },
+      {
+        "label": "esg",
+        "score": 0.00025943221406863834
+      },
+      {
+        "label": "disposal destruction",
+        "score": 0.0002545338848234171
+      },
+      {
+        "label": "stericycle business",
+        "score": 0.00022271714922048998
+      },
+      {
+        "label": "control financial",
+        "score": 0.00022271714922048998
+      },
+      {
+        "label": "administration",
+        "score": 0.00022271714922048998
+      },
+      {
+        "label": "financial reporting",
+        "score": 0.00022271714922048998
+      },
+      {
+        "label": "additional information",
+        "score": 0.00022271714922048998
+      },
+      {
+        "label": "personal confidential",
+        "score": 0.00022271714922048998
+      },
+      {
+        "label": "tax rate",
+        "score": 0.00022237046920169
+      }
+    ],
+    "stats": {
+      "jsd": 0.13848,
+      "tokens_prev": 6746,
+      "tokens_curr": 7858
+    }
+  },
+  "evidence": [
+    {
+      "year": 2024,
+      "paragraph_idx": 3,
+      "snippet": "Execution of our strategy, including growth through acquisitions, such as our recent Stericycle acquisition, and our planned and ongoing expansion of our Recycling Processing and Sales and WM Renewable Energy segments, has caused, and may in the future, cause us to incur substantial additional indebtedness, which may divert capital away from our traditional business operations and other financial plans, and may introduce additional risks and volatility to our financial performance.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "stericycle"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 6,
+      "snippet": "Integration of acquisitions and/or new services offerings or lines of business, such as our expansion into medical waste, controlled substances waste and secure information destruction services, and additional expansion into markets outside of North America has and would result in our business being subject to new laws and regulatory regimes, resulting in greater exposure to risk of inadvertent noncompliance and additional compliance costs.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "controlled substances",
+        "medical waste",
+        "medical"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.13848,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T19:27:22Z",
+    "git_commit": "cfe9628e9904d9ea49e72960b3535e0464887ce9",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "faed25fa3f4d1c6d55f7737bc8a15ba0376a341b6c0b6f34c48c76a3fac81f31",
+      "curr_text_sha256": "3b00b2045a6f716096275d249ce5ef3df89c95a4be259e714dc6a17b881d2f9d",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

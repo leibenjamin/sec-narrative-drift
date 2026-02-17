@@ -1,0 +1,73 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_minhash_boilerplate_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "NVDA",
+  "section": "10k_item1a",
+  "year_from": 2019,
+  "year_to": 2020,
+  "artifacts": {
+    "stats": {
+      "percent_reused": 0.8,
+      "percent_new": 0.19999999999999996,
+      "reused_paragraphs": 36,
+      "total_paragraphs": 45
+    }
+  },
+  "evidence": [
+    {
+      "year": 2020,
+      "paragraph_idx": 0,
+      "snippet": "In evaluating NVIDIA and our business, the following factors should be considered in addition to the other information in this Annual Report on Form 10-K. Before you buy our common stock, you should know that making such an investment involves risks including, but not limited to, the risks described below. Any one of the following risks could harm our business, financial condition, results of operations or reputation, which could cause our stock price to decline, and you may lose all or a part of your investment. Additional risks, trends and uncertainties not presently known to us or that we currently believe are immaterial may also harm our business, financial condition, results of operations or reputation.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 0,
+      "snippet": "In evaluating NVIDIA and our business, the following factors should be considered in addition to the other information in this Annual Report on Form 10-K. Before you buy our common stock, you should know that making such an investment involves risks including, but not limited to, the risks described below. Any one of the following risks could harm our business, financial condition, results of operations or reputation, which could cause our stock price to decline, and you may lose all or a part of your investment. Additional risks, trends and uncertainties not presently known to us or that we currently believe are immaterial may also harm our business, financial condition, results of operations or reputation.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 2,
+      "snippet": "Competition in our current and target markets could prevent us from growing our revenue. Our target markets remain extremely competitive, and we expect competition to intensify as current competitors expand their product and/or service offerings, industry standards continue to evolve, customer needs change and new competitors enter these markets. Our competitors\u2019 products, services and technologies may be less costly, or may offer superior functionality or better features, than ours, which may result, among other things, in lower than expected selling prices for our products. In addition, some of our competitors operate and maintain their own fabrication facilities, have longer operating histories, larger customer bases, more comprehensive intellectual property, or IP, portfolios and patent protections, and greater financial, sales, marketing and distribution resources than we do. These competitors may be able to more effectively identify and capitalize upon opportunities in new markets and end user customer trends, quickly transition their products, including semiconductor products, to increasingly smaller line width geometries, and obtain sufficient foundry capacity and packaging materials, which could harm our business. If we are unable to successfully compete in our target markets, respond to changes in our target markets or introduce new offerings to meet the needs of this competitive environment, including in significant international markets such as China, demand for our products, services and technologies could decrease, which would cause our revenue to decline and cause our results of operations to suffer. In addition, the competitive landscape in our target markets has changed and may continue to evolve due to a trend toward consolidation, which could lead to fewer customers, partners, or suppliers, any of which could negatively affect our financial results.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 2,
+      "snippet": "Competition in our current and target markets could prevent us from growing our revenue. Our target markets remain extremely competitive, and we expect competition to intensify as current competitors expand their product and/or service offerings, industry standards continue to evolve, customer needs change and new competitors enter these markets. Our competitors\u2019 products, services and technologies may be less costly, or may offer superior functionality or better features, than ours, which may result, among other things, in lower than expected selling prices for our products. In addition, some of our competitors operate and maintain their own fabrication facilities, have longer operating histories, larger customer bases, more comprehensive intellectual property, or IP, portfolios and patent protections, and greater financial, sales, marketing and distribution resources than we do. These competitors may be able to more effectively identify and capitalize upon opportunities in new markets and end user customer trends, quickly transition their products, including semiconductor products, to increasingly smaller line width geometries, and obtain sufficient foundry capacity and packaging materials, which could harm our business. If we are unable to successfully compete in our target markets, respond to changes in our target markets or introduce new offerings to meet the needs of this competitive environment, including in significant international markets such as China, demand for our products, services and technologies could decrease, which would cause our revenue to decline and cause our results of operations to suffer. In addition, the competitive landscape in our target markets has changed and may continue to evolve due to a trend toward consolidation, which could lead to fewer customers, partners, or suppliers, any of which could negatively affect our financial results.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 3,
+      "snippet": "System security and data protection breaches, as well as cyber-attacks, could disrupt our operations, reduce our expected revenue and increase our expenses, which could adversely affect our stock price and damage our reputation.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 3,
+      "snippet": "System security and data protection breaches, as well as cyber-attacks, could disrupt our operations, reduce our expected revenue and increase our expenses, which could adversely affect our stock price and damage our reputation.",
+      "why": "Matching paragraph from prior year."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.19999999999999996,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T19:27:15Z",
+    "git_commit": "cfe9628e9904d9ea49e72960b3535e0464887ce9",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "3391e9b5a389f82185e2b8ea26b2c7aa10b5a8c9a62698f2390daa0fcf1ae989",
+      "curr_text_sha256": "8d071c33e1e2434abc15f22db00cd5cc9e715a8acf3573775ea431e665167d41",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

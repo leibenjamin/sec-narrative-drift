@@ -1,0 +1,73 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_minhash_boilerplate_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "KO",
+  "section": "10k_item1a",
+  "year_from": 2020,
+  "year_to": 2021,
+  "artifacts": {
+    "stats": {
+      "percent_reused": 0.2727272727272727,
+      "percent_new": 0.7272727272727273,
+      "reused_paragraphs": 21,
+      "total_paragraphs": 77
+    }
+  },
+  "evidence": [
+    {
+      "year": 2021,
+      "paragraph_idx": 0,
+      "snippet": "In addition to the other information set forth in this report, you should carefully consider the following factors, which could materially affect our business, financial condition and results of operations in future periods. The risks described below are not the only risks facing our Company. Additional risks not currently known to us or that we currently deem to be immaterial also may materially adversely affect our business, financial condition or results of operations in future periods.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 0,
+      "snippet": "In addition to the other information set forth in this report, you should carefully consider the following factors, which could materially affect our business, financial condition or results of operations in future periods. The risks described below are not the only risks facing our Company. Additional risks not currently known to us or that we currently deem to be immaterial also may materially adversely affect our business, financial condition or results of operations in future periods.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 25,
+      "snippet": "There is growing concern among consumers, public health professionals and government agencies about the health problems associated with obesity. Increasing public concern about obesity; other health-related public concerns surrounding consumption of sugar-sweetened beverages; possible new or increased taxes on sugar-sweetened beverages by government entities to reduce consumption or to raise revenue; additional governmental regulations concerning the advertising, marketing, labeling, packaging or sale of our sugar-sweetened beverages; and negative publicity resulting from actual or threatened legal actions against us or other companies in our industry relating to the marketing, labeling or sale of sugar-sweetened beverages may reduce demand for, or increase the cost of, our sugar-sweetened beverages, which could adversely affect our profitability.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 33,
+      "snippet": "There is growing concern among consumers, public health professionals and government agencies about the health problems associated with obesity. Increasing public concern about obesity; other health-related public concerns surrounding consumption of sugar-sweetened beverages; possible new or increased taxes on sugar-sweetened beverages by government entities to reduce consumption or to raise revenue; additional governmental regulations concerning the advertising, marketing, labeling, packaging or sale of our sugar-sweetened beverages; and negative publicity resulting from actual or threatened legal actions against us or other companies in our industry relating to the marketing, labeling or sale of sugar-sweetened beverages may reduce demand for, or increase the cost of, our sugar-sweetened beverages, which could adversely affect our profitability.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 29,
+      "snippet": "Public debate and concern about perceived negative health consequences of certain ingredients, such as non-nutritive sweeteners and biotechnology-derived substances, and of other substances present in our beverage products or packaging materials, may reduce demand for our beverage products.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 36,
+      "snippet": "Public debate and concern about perceived negative health consequences of certain ingredients, such as non-nutritive sweeteners and biotechnology-derived substances, and of other substances present in our beverage products or packaging materials, may reduce demand for our beverage products.",
+      "why": "Matching paragraph from prior year."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.7272727272727273,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T19:27:18Z",
+    "git_commit": "cfe9628e9904d9ea49e72960b3535e0464887ce9",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "34b0ec0d66b244446712462b1db58c554840ecaf73b985f16e10109a32f13871",
+      "curr_text_sha256": "012edf6b35d3f8d9321f2db9b84dc74b1c54705fdb822d0b280f04cdec0a8fb1",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

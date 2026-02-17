@@ -1,0 +1,154 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_jsd_ngrams_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "WM",
+  "section": "10k_item1a",
+  "year_from": 2019,
+  "year_to": 2020,
+  "artifacts": {
+    "ranked_items": [
+      {
+        "label": "internal",
+        "score": 0.00040773057163826144
+      },
+      {
+        "label": "covid",
+        "score": 0.00040773057163826144
+      },
+      {
+        "label": "pandemic",
+        "score": 0.0003261844573106092
+      },
+      {
+        "label": "tax rate",
+        "score": 0.0003261844573106092
+      },
+      {
+        "label": "planned acquisition",
+        "score": 0.00031376064545047064
+      },
+      {
+        "label": "tax",
+        "score": 0.00031213965951696205
+      },
+      {
+        "label": "financial reporting",
+        "score": 0.00024463834298295685
+      },
+      {
+        "label": "internal control",
+        "score": 0.00024463834298295685
+      },
+      {
+        "label": "redemption",
+        "score": 0.00022411474675033618
+      },
+      {
+        "label": "control financial",
+        "score": 0.00020386528581913072
+      },
+      {
+        "label": "workforce",
+        "score": 0.00020386528581913072
+      },
+      {
+        "label": "effective tax",
+        "score": 0.00020386528581913072
+      },
+      {
+        "label": "merger",
+        "score": 0.00017929179740026893
+      },
+      {
+        "label": "current administration",
+        "score": 0.00017929179740026893
+      },
+      {
+        "label": "planned",
+        "score": 0.00017200925304074768
+      },
+      {
+        "label": "notes",
+        "score": 0.00016805475931804862
+      },
+      {
+        "label": "effectiveness internal",
+        "score": 0.0001630922286553046
+      },
+      {
+        "label": "operations systems",
+        "score": 0.0001630922286553046
+      },
+      {
+        "label": "effectiveness",
+        "score": 0.0001630922286553046
+      },
+      {
+        "label": "home",
+        "score": 0.0001630922286553046
+      }
+    ],
+    "stats": {
+      "jsd": 0.095719,
+      "tokens_prev": 5578,
+      "tokens_curr": 6132
+    }
+  },
+  "evidence": [
+    {
+      "year": 2020,
+      "paragraph_idx": 10,
+      "snippet": "We may not realize the strategic benefits and cost synergies that are anticipated from our acquisition of Advanced Disposal Services, Inc. (\u201cAdvanced Disposal\u201d), and we may encounter difficulties integrating Advanced Disposal\u2019s operations and systems that could impact the effectiveness of our internal controls over financial reporting.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "internal"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 12,
+      "snippet": "As described further in Item 9A. Controls and Procedures , in accordance with SEC staff guidance, we have excluded Advanced Disposal from the assessment of the effectiveness of our internal control over financial reporting as of December 31, 2020 contained in this Annual Report on Form 10-K; however, this exclusion may not extend beyond one year from the October 30, 2020 closing date. We are in the process of integrating Advanced Disposal\u2019s operations and systems to ensure the effectiveness of the internal control over financial reporting for this acquired business. Establishing, testing and maintaining an effective system of internal control over financial reporting requires significant resources and time commitments on the part of our management and our finance staff, and the time and expenditures needed may exceed our expectations. If we encounter difficulties integrating Advanced Disposal operations and systems into our system of internal control over financial reporting, and if we are unable to correct any issues encountered in a timely manner, our ability to record, process, summarize, and report financial data may be adversely affected, which may impact the accuracy,",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "internal"
+      ]
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 11,
+      "snippet": "Our planned acquisition of Advanced Disposal Services, Inc. (\u201cAdvanced Disposal\u201d) may not occur at all, may not occur in the expected time frame or may involve the divestiture of certain businesses and assets, which may negatively affect the trading price of our common stock and our future business and financial results.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "planned acquisition"
+      ]
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 13,
+      "snippet": "The planned acquisition of Advanced Disposal is subject to a number of risks and uncertainties, including general economic and capital markets conditions; the effects that the pending merger may have on us, Advanced Disposal and our respective businesses; inability to obtain required regulatory or government approvals or to obtain such approvals on satisfactory conditions; inability of Advanced Disposal to satisfy other closing conditions; the occurrence of any event, change or other circumstance that could give rise to the termination of the Agreement and Plan of Merger, several of which could require us to pay a termination fee of $150 million to Advanced Disposal; legal proceedings that may be instituted related to the proposed acquisition and the legal expenses and diversion of management\u2019s attention that may be associated therewith; and unexpected costs, charges or expenses. If the planned acquisition of Advanced Disposal is not completed, if there are significant delays in completing the planned acquisition or if the planned acquisition involves an unexpected amount of required divestitures, it could negatively affect the trading price of our common stock and our future business and financial results.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "planned acquisition"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.095719,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T19:27:20Z",
+    "git_commit": "cfe9628e9904d9ea49e72960b3535e0464887ce9",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "71d4f09bf28ca0ff2f111974816ce3f66743c2c47aec077a767b0e173441fc29",
+      "curr_text_sha256": "29d1ab781cc001a5191a52b1cb72e2af781b38d8c21045e0068ae4646374b754",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_minhash_boilerplate_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "WM",
+  "section": "10k_item1a",
+  "year_from": 2022,
+  "year_to": 2023,
+  "artifacts": {
+    "stats": {
+      "percent_reused": 0.4421052631578947,
+      "percent_new": 0.5578947368421052,
+      "reused_paragraphs": 42,
+      "total_paragraphs": 95
+    }
+  },
+  "evidence": [
+    {
+      "year": 2023,
+      "paragraph_idx": 3,
+      "snippet": "Our ability to make strategic acquisitions depends on our ability to identify desirable acquisition targets, negotiate advantageous transactions despite competition for such opportunities, fund such acquisitions on favorable terms, obtain regulatory approvals and realize the benefits we expect from those transactions.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 5,
+      "snippet": "Our ability to make strategic acquisitions depends on our ability to identify desirable acquisition targets, negotiate advantageous transactions despite competition for such opportunities, fund such acquisitions on favorable terms, obtain regulatory approvals and realize the benefits we expect from those transactions.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 6,
+      "snippet": "Liabilities associated with acquisitions, including ones that may exist only because of past operations of an acquired business, may prove to be more difficult or costly to address than anticipated, and businesses or assets we acquire may have undisclosed liabilities, despite our efforts to minimize exposure to such risks through due diligence and other measures.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 8,
+      "snippet": "Liabilities associated with acquisitions, including ones that may exist only because of past operations of an acquired business, may prove to be more difficult or costly to address than anticipated, and businesses or assets we acquire may have undisclosed liabilities, despite our efforts to minimize exposure to such risks through due diligence and other measures.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 9,
+      "snippet": "We continue to seek to divest underperforming and non-strategic assets if we cannot improve their profitability. We may not be able to successfully negotiate the divestiture of underperforming and non-strategic operations, which could result in asset impairments or the continued operation of low-margin businesses.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 10,
+      "snippet": "We continue to seek to divest underperforming and non-strategic assets if we cannot improve their profitability. We may not be able to successfully negotiate the divestiture of underperforming and non-strategic operations, which could result in asset impairments or the continued operation of low-margin businesses.",
+      "why": "Matching paragraph from prior year."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.5578947368421052,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T19:27:22Z",
+    "git_commit": "cfe9628e9904d9ea49e72960b3535e0464887ce9",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "04c9c2b3c90a5369bae2cf3ea8a2cd92b72c66032f15a17ae21b9a310dfc2b8a",
+      "curr_text_sha256": "faed25fa3f4d1c6d55f7737bc8a15ba0376a341b6c0b6f34c48c76a3fac81f31",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_winnowing_fingerprint_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "KO",
+  "section": "10k_item1a",
+  "year_from": 2021,
+  "year_to": 2022,
+  "artifacts": {
+    "stats": {
+      "shared_fingerprints": 26523,
+      "prev_fingerprints": 34534,
+      "curr_fingerprints": 34745,
+      "shared_ratio": 0.7680257137893091
+    }
+  },
+  "evidence": [
+    {
+      "year": 2022,
+      "paragraph_idx": 0,
+      "snippet": "ITEM 1A. RISK FACTORS\n\nIn addition to the other information set forth in this report, you should carefully consider the f",
+      "why": "Shared fingerprint span."
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 0,
+      "snippet": "ITEM 1A. RISK FACTORS\n\nIn addition to the other information set forth in this report, you should carefully consider the fol",
+      "why": "Shared fingerprint span."
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 0,
+      "snippet": "ITEM 1A. RISK FACTORS\n\nIn addition to the other information set forth in this report, you should carefully consider the follow",
+      "why": "Shared fingerprint span."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.7680257137893091,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T19:27:19Z",
+    "git_commit": "cfe9628e9904d9ea49e72960b3535e0464887ce9",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "012edf6b35d3f8d9321f2db9b84dc74b1c54705fdb822d0b280f04cdec0a8fb1",
+      "curr_text_sha256": "a37751455aeb69e85a19f53a089bf34113014acf24f280964f890fad12668547",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

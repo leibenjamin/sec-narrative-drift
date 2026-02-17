@@ -1,0 +1,73 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_minhash_boilerplate_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "KO",
+  "section": "10k_item1a",
+  "year_from": 2023,
+  "year_to": 2024,
+  "artifacts": {
+    "stats": {
+      "percent_reused": 0.6216216216216216,
+      "percent_new": 0.3783783783783784,
+      "reused_paragraphs": 46,
+      "total_paragraphs": 74
+    }
+  },
+  "evidence": [
+    {
+      "year": 2024,
+      "paragraph_idx": 0,
+      "snippet": "In addition to the other information set forth in this report, you should carefully consider the following factors, which could materially affect our business, financial condition and results of operations in future periods. The risks described below are not the only risks facing our Company. Additional risks not currently known to us or that we currently deem to be immaterial also may materially adversely affect our business, financial condition or results of operations in future periods.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 0,
+      "snippet": "In addition to the other information set forth in this report, you should carefully consider the following factors, which could materially affect our business, financial condition and results of operations in future periods. The risks described below are not the only risks facing our Company. Additional risks not currently known to us or that we currently deem to be immaterial also may materially adversely affect our business, financial condition or results of operations in future periods.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 4,
+      "snippet": "Achieving our business growth objectives depends in part on our ability to evolve and improve our existing beverage products through innovation and to successfully develop, introduce and market new beverage products. The success of our innovation activities depends on our ability to correctly anticipate customer and consumer acceptance and trends; obtain, maintain and enforce necessary intellectual property rights; and avoid infringing on the intellectual property rights of others. If we are not successful in our innovation activities, we may not be able to achieve our growth objectives, which may have a negative impact on our financial results.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 5,
+      "snippet": "Achieving our business growth objectives depends in part on our ability to evolve and improve our existing beverage products through innovation and to successfully develop, introduce and market new beverage products. The success of our innovation activities depends on our ability to correctly anticipate customer and consumer acceptance and trends; obtain, maintain and enforce necessary intellectual property rights; and avoid infringing on the intellectual property rights of others. If we are not successful in our innovation activities, we may not be able to achieve our growth objectives, which may have a negative impact on our financial results.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 6,
+      "snippet": "Our success depends in part on our ability to grow our business in emerging and developing markets, which in turn depends on economic and political conditions in those markets and on our ability to work with local bottlers to make necessary infrastructure enhancements to production facilities, distribution networks, sales equipment and technology. Additionally, we rely on local availability of talented management and employees to establish and manage our operations in these markets. Scarcity of, or heavy competition for, talented employees could impede our abilities in such markets. Moreover, the supply of our products in emerging and developing markets must match consumer demand for those products. Due to product price, limited purchasing power and cultural differences, our products may not be accepted in any particular emerging or developing market.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 7,
+      "snippet": "Our success depends in part on our ability to grow our business in emerging and developing markets, which in turn depends on economic and political conditions in those markets and on our ability to work with local bottlers to make necessary infrastructure enhancements to production facilities, distribution networks, sales equipment and technology. Additionally, we rely on local availability of talented management and employees to establish and manage our operations in these markets. Scarcity of, or heavy competition for, talented employees could impede our abilities in such markets. Moreover, the supply of our products in emerging and developing markets must match consumer demand for those products. Due to product price, limited purchasing power and cultural differences, our products may not be accepted in any particular emerging or developing market.",
+      "why": "Matching paragraph from prior year."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.3783783783783784,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T19:27:20Z",
+    "git_commit": "cfe9628e9904d9ea49e72960b3535e0464887ce9",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "8d005a2728ac3571f5042a9956e63b4fffb0d6bcb656bda6be2e217116052ff0",
+      "curr_text_sha256": "604daa670ec51ce1aa4c3f5b6fe7fe28634f36f90a480ccde248384d40986995",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}
