@@ -1,0 +1,298 @@
+﻿# SEC Narrative Drift Lab â€” Remaining Work Plan (Codex Execution Doc)
+Last updated: 2026-02-17
+Scope: deterministic pipeline + React UI Lab tab
+Showcase tickers: NVDA, KO, WM, GE
+Core time window: 2019â€“2024 adjacent year pairs (include most recent even if low signal); 2024â€“2025 only if locally available
+
+## Hard constraints (DO NOT VIOLATE)
+- Deterministic only in the shipped app; no runtime ML/LLM calls.
+- No POS taggers.
+- Do NOT change baseline public JSON schemas or lab output envelope keys.
+- Treat SEC-derived text as untrusted:
+  - No HTML rendering of SEC text (no `dangerouslySetInnerHTML`, no raw HTML injection).
+  - Highlighting must be done with safe React nodes, not HTML strings.
+  - Avoid inserting untrusted text into attribute contexts (id/class/style/href).
+
+## Current status (as reported by operator/Codex)
+- Phase 0 complete:
+  - deterministic baseline shipped/locked,
+  - post-deploy helper added: `scripts/lab_postdeploy_verify.py`,
+  - gates passing: `npm run lab:predeploy`, `npm run lab:portfolio`, `npm run build`.
+- Phase 1 complete:
+  - RAW prerequisite audit added: `scripts/lab_build_raw_prereq_audit.py`,
+  - RAW outputs backfilled for all eligible showcase adjacent pairs,
+  - audit report added: `reports/lab_raw_prereq_audit.md`.
+- Phase 2 complete:
+  - manifest/run-pack generator added: `scripts/lab_build_llm_run_manifest.py`,
+  - manifest validator added: `scripts/lab_validate_llm_manifest_outputs.py`,
+  - generated artifacts:
+    - `reports/lab_llm_run_manifest.md`
+    - `reports/lab_llm_run_manifest.json`
+    - local-only `bundles/llm_run_pack_<UTCSTAMP>/inputs/*` + `THREAD_STARTERS.md`.
+- Phase 3 complete (implementation):
+  - Lab explainer added ("What am I looking at?"),
+  - explicit missing artifact states with expected path + requested URL + copy-debug payload,
+  - SEC text safety doc added: `docs/SEC_TEXT_SAFETY.md`.
+- Phase 4 complete (moderate cleanup):
+  - stale/non-canonical data moved into `attic/`,
+  - canonical docs added: `docs/00_DOC_INDEX.md`, `docs/PORTFOLIO_STORY.md`.
+
+Remaining human/manual work:
+- Run offline ChatGPT Desktop jobs and save outputs to canonical paths listed in `reports/lab_llm_run_manifest.md`.
+
+---
+
+# PHASE 0 â€” Ship and lock the deterministic baseline (DEBOILERPLATED)
+Goal: Get the GO deterministic Lab state deployed and verifiably live.
+
+## 0.1 Make git state clean and reproducible
+1) `git status` must be clean after committing any generated outputs/registry/reports that are meant to ship.
+2) Commit message convention:
+   - `lab: backfill deterministic outputs 2019-2024`
+   - `lab: rebuild registry + gates`
+   - `lab: UI reload button / cache fixes` (if applicable)
+
+## 0.2 Run the predeploy gates locally (must pass)
+- `npm run lab:predeploy`  (registry + smoke; portfolio gate may be separate depending on current package.json)
+- `npm run lab:portfolio`  (must be GO for the deterministic baseline)
+- `npm run build`
+
+## 0.3 Deploy
+- Push to `origin/main`.
+- Trigger the hosting build (Cloudflare Pages or whatever pipeline currently publishes `dist/`).
+
+## 0.4 Post-deploy verification (fast, no guesswork)
+Open these in an incognito window:
+1) `/sec-narrative-drift/data/sec_narrative_drift_lab/lab_cases_v1.json`
+   - confirm `updated_at` matches your latest commit build time.
+2) For each ticker, open ONE deterministic output file referenced by the registry (deboilerplated):
+   - e.g. `.../NVDA/outputs/det_logodds_terms_v1/<file>.json`
+   - e.g. `.../KO/outputs/det_jsd_ngrams_v1/<file>.json`
+3) Load the site:
+   - NVDA Lab tab
+   - KO Lab tab
+Confirm:
+- â€œAvailable outputsâ€ counts look correct for the selected case/lens.
+- No silent empties caused by 404/schema errors. If something fails, the UI should show a debug path/error (not blank).
+
+## 0.5 Only if needed: address CDN caching safely
+If the JSON URLs in (0.4) already show the newest content, DO NOTHING.
+If they show stale content after deploy:
+- Prefer a targeted purge (purge-by-URL) for:
+  - `/sec-narrative-drift/data/sec_narrative_drift_lab/lab_cases_v1.json`
+  - and any specific missing output JSON paths.
+- Avoid â€œpurge everythingâ€ unless you truly need it.
+
+Additionally, add cache headers for lab data to reduce confusion:
+- Patch `public/_headers` (or equivalent) to include `/data/sec_narrative_drift_lab/*.json`
+  - either short max-age or conservative caching while you iterate.
+
+Acceptance criteria for Phase 0:
+- Live registry `updated_at` matches latest deploy.
+- Live site shows deterministic outputs for all required pairs (2019â€“2024 adjacents) under deboilerplated.
+- No â€œempty cardâ€ that is actually caused by missing file/path/schema.
+
+---
+
+# PHASE 1 â€” Fill RAW lens deterministically (for all available pairs)
+User question: â€œCan raw be filled in now for all these year-pairs?â€
+Answer: YES **if** raw source texts exist for each (ticker, year) pair.
+
+Important: RAW is not required for shipping, but lab pages would look emptier without RAW.
+
+## 1.1 Determine whether â€œrawâ€ source sections exist
+We need raw Item 1A text for each ticker+year.
+Common locations (verify actual paths in repo):
+- `scripts/_reports/risk_extraction_bundle/sections/<TICKER>_<YEAR>_item_1a.txt`
+- raw/edgar variants may exist depending on your extraction pipeline naming.
+
+Codex task:
+- Implement a script or add a mode to existing scripts to print a matrix:
+  - rows: ticker-year
+  - cols: raw exists? deboilerplated exists?
+- Output: `reports/lab_raw_prereq_audit.md`
+
+## 1.2 Generate raw outputs (deterministic detectors only)
+If raw texts exist:
+- Run `build_lab_outputs.py` with `--lenses raw` for:
+  - all tickers NVDA, KO, WM, GE
+  - all adjacent pairs 2019â€“2024 (and 2024â€“2025 only if prerequisites exist)
+  - detectors: the same 6 deterministic detectors
+
+Example shape (adjust to your CLI):
+- `python scripts/build_lab_outputs.py --tickers KO --pairs 2019-2020,... --lenses raw --detectors <6detectors>`
+
+## 1.3 Rebuild registry + gates
+- `npm run lab:registry`
+- `npm run lab:smoke`
+- `npm run lab:portfolio` should remain GO (it should not require raw unless you explicitly add that requirement)
+- `npm run build`
+
+## 1.4 UI sanity check
+- Lab should default to deboilerplated (already preferred).
+- When switching to RAW, it should show outputs for the same case if raw was generated.
+
+Acceptance criteria for Phase 1:
+- Raw lens is available in UI for all pairs where raw prerequisites exist.
+- Switching lenses never yields â€œsilent emptyâ€ when files exist.
+
+---
+
+# PHASE 2 â€” Fill LLM precompute outputs for ALL pairs (your ChatGPT runs)
+This is the â€œfully fleshed outâ€ goal.
+
+Key rule: LLM runs do NOT happen at runtime.
+They are offline precompute artifacts stored as JSON.
+
+## 2.1 Decide the required LLM coverage
+For a portfolio-ready experience, recommended:
+- For every required adjacent pair (2019â€“2024) for each showcase ticker:
+  - LLM delta brief (precomputed)
+  - LLM excerpt picker (precomputed)
+- Lens: deboilerplated (recommended as default).
+
+## 2.2 Create an LLM run manifest (Codex-generated)
+Codex should generate:
+- `reports/lab_llm_run_manifest.md`
+- `reports/lab_llm_run_manifest.json` (machine-friendly)
+Each entry includes:
+- ticker
+- year_from, year_to
+- lens (deboilerplated)
+- expected output paths:
+  - `public/data/sec_narrative_drift_lab/<TICKER>/outputs/det_llm_delta_brief_v1/<filename>.json`
+  - `public/data/sec_narrative_drift_lab/<TICKER>/outputs/det_llm_excerpt_picker_v1/<filename>.json`
+- input bundle path(s) you will attach to ChatGPT threads
+
+## 2.3 Generate all LLM input bundles (Codex)
+Codex should generate the â€œthread-starterâ€ input JSONs (focuspacks) for every manifest line:
+- put them under a dated bundle directory, e.g.
+  - `bundles/llm_run_pack_<UTCSTAMP>/inputs/<TICKER>_<YFROM>_<YTO>_focuspack_deboilerplated.json`
+
+Also generate:
+- `bundles/.../THREAD_STARTERS.md` that contains copy/paste ready prompts per pair.
+
+## 2.4 You run ChatGPT (manual)
+You do the runs, paste JSON-only outputs, save them to the expected output paths.
+
+## 2.5 Validate + migrate + gate
+After you drop in the outputs:
+- run the migration/compat script (if needed):
+  - `python scripts/lab_migrate_llm_outputs_section_id.py`
+- run schema validation (Codex should ensure you have a validator; if not, add one):
+  - `python scripts/lab_validate_outputs.py --llm` (or equivalent)
+- rebuild registry:
+  - `npm run lab:registry`
+- smoke check:
+  - `npm run lab:smoke`
+- build:
+  - `npm run build`
+
+Acceptance criteria for Phase 2:
+- For each pair, LLM cards render with content (not â€œprecomputed but not availableâ€).
+- Any missing LLM output is displayed as an explicit â€œmissing artifactâ€ state with the expected path shown.
+
+---
+
+# PHASE 3 â€” Portfolio polish (make it obvious, credible, and safe)
+Goal: Hiring managers should â€œget itâ€ in 30 seconds, and experts shouldnâ€™t cringe.
+
+## 3.1 UX: reduce confusion, increase trust
+- Add a small â€œWhat am I looking at?â€ explainer at top of Lab:
+  - deterministic-only
+  - what each detector measures
+  - what â€œcoverage/confidence/driftâ€ mean (plain English + link to methodology)
+- Improve empty/missing states:
+  - show: â€œMissing artifactâ€ + expected file path + suggestion: â€œrun lab:predeployâ€
+- Add â€œCopy debug infoâ€ button for errors:
+  - includes ticker, pair, lens, detector, requested URL, and any schema issue.
+
+## 3.2 Security audit: prevent XSS/injection from SEC text
+Codex must:
+- Search for unsafe APIs:
+  - `dangerouslySetInnerHTML`, `innerHTML`, `insertAdjacentHTML`
+- Ensure all SEC-derived text is rendered only as text nodes.
+- Ensure highlight logic does not generate HTML strings.
+
+Add a short `docs/SEC_TEXT_SAFETY.md` explaining:
+- SEC text is untrusted
+- React escaping is relied on
+- unsafe HTML APIs are forbidden
+- (optional) CSP policy if supported by hosting
+
+## 3.3 Performance and ergonomics
+- Ensure output fetches donâ€™t permanently cache failures:
+  - rejected promises must be evicted (already done)
+  - provide a â€œReload outputsâ€ control (already done)
+- Consider adding a tiny debounce for rapid lens/method toggles.
+- Keep payload sizes reasonable (cap evidence blocks, lazy-render long paragraphs).
+
+Acceptance criteria for Phase 3:
+- No blank confusing states: every absence is explained.
+- No unsafe rendering paths exist.
+- Lab feels â€œproductizedâ€, not â€œdebug UIâ€.
+
+---
+
+# PHASE 4 â€” Repo cleanup (remove pre-Lab clutter without breaking archaeology)
+Goal: reduce Codex confusion and improve portfolio impression.
+
+## 4.1 Create an /attic (or /archive) policy
+- Move old bundles/scripts/docs that are not part of the shipped product into:
+  - `attic/` (kept, but clearly non-shipping)
+- Add `attic/README.md` explaining:
+  - why it exists
+  - whatâ€™s in there
+  - â€œnot used by production buildâ€
+
+## 4.2 Reduce noise
+- Ensure `scripts/_cache/` remains gitignored.
+- Remove outdated one-off scripts that duplicate the new Lab pipeline:
+  - but only after verifying nothing imports them.
+
+## 4.3 Canonical docs
+Create/update:
+- `docs/00_DOC_INDEX.md` (single source of truth)
+- `docs/LAB_REMAINING_WORK_PLAN.md` (this doc)
+- `docs/PORTFOLIO_STORY.md` (how to demo the app in an interview)
+
+Acceptance criteria for Phase 4:
+- Repo tree reads clean and intentional.
+- New contributors (or hiring managers) can find the â€œmain pathâ€ fast.
+- Codex Agent Mode is less likely to latch onto dead code.
+
+---
+
+# CODEx: One-shot Agent Prompt (surgical execution)
+You are GPT-5.3-Codex in Agent mode (Extra High reasoning).
+Implement Phase 0 completely and prepare Phase 1â€“4 scaffolding without blocking deploy.
+
+Do:
+1) Create `docs/LAB_REMAINING_WORK_PLAN.md` from the latest version in chat (edit for repo specifics).
+2) Add post-deploy verification helper script:
+   - `scripts/lab_postdeploy_verify.py`
+   - It should print the 3 URLs to open and what values to confirm (updated_at, etc.).
+3) Add `reports/lab_raw_prereq_audit.md` generator:
+   - prints which ticker-years have raw text available vs deboilerplated.
+4) Add `reports/lab_llm_run_manifest.{md,json}` generator:
+   - lists every required adjacent pair (2019â€“2024) for NVDA/KO/WM/GE and the expected LLM output paths.
+5) Run:
+   - `npm run lab:predeploy`
+   - `npm run lab:portfolio`
+   - `npm run build`
+6) If all pass, commit with a single clean commit:
+   - `lab: ship deterministic baseline + manifests`
+7) Push to origin/main.
+
+Do NOT:
+- change any JSON schemas or envelope keys.
+- add runtime LLM/ML.
+- add POS tagging.
+- introduce any unsafe rendering of SEC text.
+
+Output:
+- A short summary of what you changed
+- Exact commands you ran
+- Any files you moved into `attic/`
+- Any remaining TODOs for the human (LLM runs)
+
