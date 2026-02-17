@@ -3,12 +3,17 @@ import AgreementMatrix from "./AgreementMatrix"
 import CleaningLensToggle from "./CleaningLensToggle"
 import MethodCard from "./MethodCard"
 import {
+  LabDataLoadError,
+  buildExpectedLabOutputArtifact,
+  buildLabOutputRepoPath,
+  buildLabOutputRequestUrl,
   clearLabOutputCache,
   formatLabLoadDebug,
   listLabCasesForTicker,
   loadLabOutput,
   resolveLabOutputLink,
 } from "../lib/labData"
+import { withBase } from "../lib/paths"
 import type { LabCase, LabCleaningLens, LabOutput, LabSourceId } from "../lib/labTypes"
 
 const DETECTOR_CATALOG = [
@@ -117,6 +122,41 @@ function pickPreferredAvailableLens(availableLenses: LabCleaningLens[]): LabClea
   return null
 }
 
+type DetectorDebugInfo = {
+  ticker: string
+  yearFrom: number
+  yearTo: number
+  lens: LabCleaningLens
+  detectorId: string
+  expectedPath: string | null
+  requestedUrl: string | null
+  errorText: string | null
+}
+
+async function copyTextToClipboard(text: string): Promise<boolean> {
+  if (typeof navigator !== "undefined" && navigator.clipboard?.writeText) {
+    try {
+      await navigator.clipboard.writeText(text)
+      return true
+    } catch {
+      // fall through to fallback path
+    }
+  }
+  if (typeof document === "undefined") {
+    return false
+  }
+  const textarea = document.createElement("textarea")
+  textarea.value = text
+  textarea.setAttribute("readonly", "true")
+  textarea.style.position = "absolute"
+  textarea.style.left = "-9999px"
+  document.body.appendChild(textarea)
+  textarea.select()
+  const copied = document.execCommand("copy")
+  document.body.removeChild(textarea)
+  return copied
+}
+
 export default function LabPanel({ ticker }: { ticker: string }) {
   const [cases, setCases] = useState<LabCase[]>([])
   const [isLoadingCases, setIsLoadingCases] = useState(true)
@@ -127,8 +167,13 @@ export default function LabPanel({ ticker }: { ticker: string }) {
   const [selectedDetectors, setSelectedDetectors] = useState<string[]>(DEFAULT_SELECTED)
   const [outputs, setOutputs] = useState<Record<string, LabOutput | null>>({})
   const [outputDebugPaths, setOutputDebugPaths] = useState<Record<string, string | null>>({})
+  const [outputDebugInfo, setOutputDebugInfo] = useState<Record<string, DetectorDebugInfo>>({})
   const [agreementOutput, setAgreementOutput] = useState<LabOutput | null>(null)
   const [agreementDebugPath, setAgreementDebugPath] = useState<string | null>(null)
+  const [agreementDebugInfo, setAgreementDebugInfo] = useState<DetectorDebugInfo | null>(null)
+  const [agreementCopyState, setAgreementCopyState] = useState<"idle" | "copied" | "failed">(
+    "idle"
+  )
   const [isLoadingOutputs, setIsLoadingOutputs] = useState(false)
   const [reloadNonce, setReloadNonce] = useState(0)
 
@@ -197,28 +242,6 @@ export default function LabPanel({ ticker }: { ticker: string }) {
     [availableDetectorIds]
   )
 
-  // Keep selected detectors in sync when case/lens availability changes.
-  const detectorSyncKey = selectedCase
-    ? `${buildCaseKey(selectedCase)}|${lens}|${availableDetectorIds.join(",")}`
-    : null
-  const [prevDetectorSyncKey, setPrevDetectorSyncKey] = useState(detectorSyncKey)
-  if (prevDetectorSyncKey !== detectorSyncKey) {
-    setPrevDetectorSyncKey(detectorSyncKey)
-    if (selectedCase) {
-      setSelectedDetectors((prev) => {
-        const filtered = prev.filter((detectorId) => availableDetectorSet.has(detectorId))
-        const defaults = DEFAULT_SELECTED.filter((detectorId) =>
-          availableDetectorSet.has(detectorId)
-        )
-        const next = filtered.length ? filtered : defaults
-        if (next.length === prev.length && next.every((item, idx) => item === prev[idx])) {
-          return prev
-        }
-        return next
-      })
-    }
-  }
-
   // Adjust lens during render when available lenses change (avoids sync setState in effect)
   if (availableLenses.length && !availableLenses.includes(lens)) {
     const nextLens = pickPreferredAvailableLens(availableLenses)
@@ -239,8 +262,11 @@ export default function LabPanel({ ticker }: { ticker: string }) {
     if (!outputRequestKey) {
       setOutputs({})
       setOutputDebugPaths({})
+      setOutputDebugInfo({})
       setAgreementOutput(null)
       setAgreementDebugPath(null)
+      setAgreementDebugInfo(null)
+      setAgreementCopyState("idle")
       setIsLoadingOutputs(false)
     } else {
       setIsLoadingOutputs(true)
@@ -258,26 +284,85 @@ export default function LabPanel({ ticker }: { ticker: string }) {
     const load = async () => {
       const nextOutputs: Record<string, LabOutput | null> = {}
       const nextOutputDebugPaths: Record<string, string | null> = {}
+      const nextOutputDebugInfo: Record<string, DetectorDebugInfo> = {}
 
       for (const detectorId of selectedDetectors) {
+        const expectedArtifact = buildExpectedLabOutputArtifact(
+          selectedCase,
+          detectorId,
+          lens,
+          sourceId
+        )
         const link = resolveLabOutputLink(selectedCase, detectorId, lens, sourceId)
+        const fallbackExpectedPath = expectedArtifact?.repoPath ?? null
+        const fallbackRequestedUrl = expectedArtifact?.requestUrl ?? null
+        let requestedUrl = fallbackRequestedUrl
+        let expectedPath = fallbackExpectedPath
         if (!link) {
           nextOutputs[detectorId] = null
-          nextOutputDebugPaths[detectorId] = null
+          nextOutputDebugPaths[detectorId] = fallbackExpectedPath
+            ? `Missing artifact. Expected path: ${fallbackExpectedPath}`
+            : "Missing artifact."
+          nextOutputDebugInfo[detectorId] = {
+            ticker: selectedCase.ticker,
+            yearFrom: selectedCase.year_from,
+            yearTo: selectedCase.year_to,
+            lens,
+            detectorId,
+            expectedPath: fallbackExpectedPath,
+            requestedUrl: fallbackRequestedUrl,
+            errorText: "Missing artifact: detector output is not listed for this case/lens.",
+          }
           continue
         }
+        requestedUrl = buildLabOutputRequestUrl(selectedCase.ticker, link.filename) ?? fallbackRequestedUrl
+        expectedPath = buildLabOutputRepoPath(selectedCase.ticker, link.filename) ?? fallbackExpectedPath
         try {
           const output = await loadLabOutput(selectedCase.ticker, link.filename, {
             signal: controller.signal,
           })
           nextOutputs[detectorId] = output
           nextOutputDebugPaths[detectorId] = null
+          nextOutputDebugInfo[detectorId] = {
+            ticker: selectedCase.ticker,
+            yearFrom: selectedCase.year_from,
+            yearTo: selectedCase.year_to,
+            lens,
+            detectorId,
+            expectedPath,
+            requestedUrl,
+            errorText: null,
+          }
         } catch (error) {
           nextOutputs[detectorId] = null
           nextOutputDebugPaths[detectorId] = formatLabLoadDebug(error)
+          let errorText = "Failed to load detector output."
+          if (error instanceof LabDataLoadError) {
+            const statusText = typeof error.status === "number" ? ` (status ${error.status})` : ""
+            errorText = `${error.message}${statusText}`
+            requestedUrl = error.url
+          } else if (error instanceof Error) {
+            errorText = error.message
+          }
+          nextOutputDebugInfo[detectorId] = {
+            ticker: selectedCase.ticker,
+            yearFrom: selectedCase.year_from,
+            yearTo: selectedCase.year_to,
+            lens,
+            detectorId,
+            expectedPath,
+            requestedUrl,
+            errorText,
+          }
         }
       }
 
+      const agreementExpectedArtifact = buildExpectedLabOutputArtifact(
+        selectedCase,
+        "det_rbo_agreement_v1",
+        lens,
+        sourceId
+      )
       const agreementLink = resolveLabOutputLink(
         selectedCase,
         "det_rbo_agreement_v1",
@@ -286,23 +371,78 @@ export default function LabPanel({ ticker }: { ticker: string }) {
       )
       let agreement: LabOutput | null = null
       let nextAgreementDebugPath: string | null = null
+      let nextAgreementDebugInfo: DetectorDebugInfo | null = null
       if (agreementLink) {
+        const expectedPath =
+          buildLabOutputRepoPath(selectedCase.ticker, agreementLink.filename) ??
+          agreementExpectedArtifact?.repoPath ??
+          null
+        let requestedUrl =
+          buildLabOutputRequestUrl(selectedCase.ticker, agreementLink.filename) ??
+          agreementExpectedArtifact?.requestUrl ??
+          null
         try {
           agreement = await loadLabOutput(selectedCase.ticker, agreementLink.filename, {
             signal: controller.signal,
           })
           nextAgreementDebugPath = null
+          nextAgreementDebugInfo = {
+            ticker: selectedCase.ticker,
+            yearFrom: selectedCase.year_from,
+            yearTo: selectedCase.year_to,
+            lens,
+            detectorId: "det_rbo_agreement_v1",
+            expectedPath,
+            requestedUrl,
+            errorText: null,
+          }
         } catch (error) {
           agreement = null
           nextAgreementDebugPath = formatLabLoadDebug(error)
+          let errorText = "Failed to load agreement output."
+          if (error instanceof LabDataLoadError) {
+            const statusText = typeof error.status === "number" ? ` (status ${error.status})` : ""
+            errorText = `${error.message}${statusText}`
+            requestedUrl = error.url
+          } else if (error instanceof Error) {
+            errorText = error.message
+          }
+          nextAgreementDebugInfo = {
+            ticker: selectedCase.ticker,
+            yearFrom: selectedCase.year_from,
+            yearTo: selectedCase.year_to,
+            lens,
+            detectorId: "det_rbo_agreement_v1",
+            expectedPath,
+            requestedUrl,
+            errorText,
+          }
+        }
+      } else {
+        agreement = null
+        nextAgreementDebugPath = agreementExpectedArtifact?.repoPath
+          ? `Missing artifact. Expected path: ${agreementExpectedArtifact.repoPath}`
+          : "Missing artifact."
+        nextAgreementDebugInfo = {
+          ticker: selectedCase.ticker,
+          yearFrom: selectedCase.year_from,
+          yearTo: selectedCase.year_to,
+          lens,
+          detectorId: "det_rbo_agreement_v1",
+          expectedPath: agreementExpectedArtifact?.repoPath ?? null,
+          requestedUrl: agreementExpectedArtifact?.requestUrl ?? null,
+          errorText: "Missing artifact: agreement output is not listed for this case/lens.",
         }
       }
 
       if (!cancelled) {
         setOutputs(nextOutputs)
         setOutputDebugPaths(nextOutputDebugPaths)
+        setOutputDebugInfo(nextOutputDebugInfo)
         setAgreementOutput(agreement)
         setAgreementDebugPath(nextAgreementDebugPath)
+        setAgreementDebugInfo(nextAgreementDebugInfo)
+        setAgreementCopyState("idle")
         setIsLoadingOutputs(false)
       }
     }
@@ -333,6 +473,33 @@ export default function LabPanel({ ticker }: { ticker: string }) {
     setReloadNonce((previous) => previous + 1)
   }
 
+  const buildDebugPayload = (
+    info: DetectorDebugInfo,
+    debugText: string | null
+  ): string => {
+    return JSON.stringify(
+      {
+        ticker: info.ticker,
+        pair: `${info.yearFrom}-${info.yearTo}`,
+        lens: info.lens,
+        detector: info.detectorId,
+        expected_path: info.expectedPath,
+        requested_url: info.requestedUrl,
+        error: info.errorText,
+        schema_issue_or_debug: debugText,
+      },
+      null,
+      2
+    )
+  }
+
+  const handleCopyAgreementDebug = async () => {
+    if (!agreementDebugInfo) return
+    const payload = buildDebugPayload(agreementDebugInfo, agreementDebugPath)
+    const didCopy = await copyTextToClipboard(payload)
+    setAgreementCopyState(didCopy ? "copied" : "failed")
+  }
+
   if (isLoadingCases) {
     return <p className="text-sm text-slate-300">Loading lab cases?</p>
   }
@@ -356,6 +523,25 @@ export default function LabPanel({ ticker }: { ticker: string }) {
 
   return (
     <section className="space-y-6">
+      <div className="rounded-lg border border-white/10 bg-white/5 p-4 text-sm text-slate-200">
+        <h3 className="text-sm font-semibold text-slate-100">What am I looking at?</h3>
+        <p className="mt-2 text-xs text-slate-300">
+          This Lab compares adjacent years of 10-K risk text and surfaces what shifted, what stayed
+          similar, and where detectors disagree. Start with the default deboilerplated lens for the
+          cleanest signal, then switch lenses to inspect raw wording effects.
+        </p>
+        <p className="mt-2 text-xs text-slate-400">
+          Looking for the method details?{" "}
+          <a
+            className="text-sky-300 underline decoration-sky-300/60 underline-offset-2"
+            href={withBase("methodology")}
+          >
+            Open methodology
+          </a>
+          .
+        </p>
+      </div>
+
       <div className="grid gap-4 lg:grid-cols-[2fr,1fr]">
         <div className="space-y-4 rounded-lg border border-white/10 bg-white/5 p-4">
           <div className="flex flex-wrap items-center justify-between gap-3">
@@ -405,23 +591,21 @@ export default function LabPanel({ ticker }: { ticker: string }) {
             <div className="mt-2 flex flex-wrap gap-3">
               {DETECTOR_CATALOG.map((detector) => {
                 const isAvailable = availableDetectorSet.has(detector.id)
-                const isSelected = isAvailable && selectedDetectors.includes(detector.id)
+                const isSelected = selectedDetectors.includes(detector.id)
                 return (
                   <label
                     key={detector.id}
                     className={`flex items-center gap-2 rounded-full border px-3 py-1 text-xs ${
                       isAvailable
                         ? "border-white/10 bg-white/5 text-slate-200"
-                        : "cursor-not-allowed border-white/10 bg-slate-900/40 text-slate-500"
+                        : "border-amber-300/30 bg-amber-400/10 text-amber-100"
                     }`}
                   >
                     <input
                       type="checkbox"
                       className="h-3 w-3"
-                      disabled={!isAvailable}
                       checked={isSelected}
                       onChange={() => {
-                        if (!isAvailable) return
                         setSelectedDetectors((prev) => {
                           if (prev.includes(detector.id)) {
                             return prev.filter((item) => item !== detector.id)
@@ -432,7 +616,7 @@ export default function LabPanel({ ticker }: { ticker: string }) {
                     />
                     <span>
                       {detector.label}
-                      {!isAvailable ? " (not available for this case)" : ""}
+                      {!isAvailable ? " (missing artifact)" : ""}
                     </span>
                   </label>
                 )
@@ -475,8 +659,43 @@ export default function LabPanel({ ticker }: { ticker: string }) {
           </p>
         </div>
         <AgreementMatrix output={agreementOutput} />
-        {!agreementOutput && agreementDebugPath ? (
-          <p className="break-all text-[11px] text-slate-500">{agreementDebugPath}</p>
+        {!agreementOutput ? (
+          <div className="space-y-2 rounded-md border border-amber-400/30 bg-amber-400/10 p-3 text-xs text-slate-200">
+            <p className="font-semibold text-amber-100">Missing artifact</p>
+            {agreementDebugInfo?.expectedPath ? (
+              <p className="break-all text-[11px] text-slate-100">
+                Expected path: {agreementDebugInfo.expectedPath}
+              </p>
+            ) : null}
+            {agreementDebugInfo?.requestedUrl ? (
+              <p className="break-all text-[11px] text-slate-300">
+                Requested URL: {agreementDebugInfo.requestedUrl}
+              </p>
+            ) : null}
+            {agreementDebugInfo?.errorText ? (
+              <p className="text-[11px] text-amber-100">{agreementDebugInfo.errorText}</p>
+            ) : null}
+            {agreementDebugPath ? (
+              <p className="break-all text-[11px] text-slate-300">{agreementDebugPath}</p>
+            ) : null}
+            {agreementDebugInfo ? (
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={handleCopyAgreementDebug}
+                  className="rounded-md border border-white/20 bg-slate-900/60 px-2 py-1 text-[11px] text-slate-100 transition hover:border-white/40"
+                >
+                  Copy debug info
+                </button>
+                {agreementCopyState === "copied" ? (
+                  <span className="text-[11px] text-emerald-300">Copied.</span>
+                ) : null}
+                {agreementCopyState === "failed" ? (
+                  <span className="text-[11px] text-rose-300">Copy failed.</span>
+                ) : null}
+              </div>
+            ) : null}
+          </div>
         ) : null}
       </div>
 
@@ -484,10 +703,12 @@ export default function LabPanel({ ticker }: { ticker: string }) {
         {methodCards.map((detector) => (
           <MethodCard
             key={detector.id}
+            detectorId={detector.id}
             title={detector.label}
             description={detector.description}
             output={outputs[detector.id] ?? null}
             debugPath={outputDebugPaths[detector.id] ?? null}
+            debugInfo={outputDebugInfo[detector.id] ?? null}
             isLoading={isLoadingOutputs}
             emptyMessage="No lab output for this detector/lens yet."
           />

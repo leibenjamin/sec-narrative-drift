@@ -13,6 +13,16 @@ import type {
 
 const LAB_BASE_PATH = withBase("data/sec_narrative_drift_lab")
 const LAB_CASES_PATH = `${LAB_BASE_PATH}/lab_cases_v1.json`
+const LLM_DETECTORS = new Set<string>([
+  "det_llm_delta_brief_v1",
+  "det_llm_excerpt_picker_v1",
+])
+
+export type LabExpectedOutputArtifact = {
+  filename: string
+  repoPath: string
+  requestUrl: string
+}
 
 export class LabDataLoadError extends Error {
   readonly url: string
@@ -45,6 +55,16 @@ function buildLabPath(ticker: string, filename: string): string | null {
   const normalized = normalizeOutputFilename(filename)
   if (!normalized) return null
   return `${LAB_BASE_PATH}/${ticker.toUpperCase()}/${normalized}`
+}
+
+export function buildLabOutputRequestUrl(ticker: string, filename: string): string | null {
+  return buildLabPath(ticker, filename)
+}
+
+export function buildLabOutputRepoPath(ticker: string, filename: string): string | null {
+  const normalized = normalizeOutputFilename(filename)
+  if (!normalized) return null
+  return `public/data/sec_narrative_drift_lab/${ticker.toUpperCase()}/${normalized}`
 }
 
 function normalizeInputPath(pathValue: string): string | null {
@@ -182,6 +202,34 @@ export function resolveLabOutputLink(
     }
   }
   return null
+}
+
+function buildCanonicalLabOutputFilename(
+  entry: Pick<LabCase, "section" | "year_from" | "year_to">,
+  detectorId: string,
+  lens: LabCleaningLens,
+  sourceId: LabSourceId
+): string {
+  const section = entry.section
+  const yearFrom = entry.year_from
+  const yearTo = entry.year_to
+  if (LLM_DETECTORS.has(detectorId)) {
+    return `outputs/${detectorId}/lab_${detectorId}_${section}_${yearFrom}_${yearTo}_focuspack_${lens}.json`
+  }
+  return `outputs/${detectorId}/lab_${section}_${yearFrom}_${yearTo}_${detectorId}_${lens}_${sourceId}.json`
+}
+
+export function buildExpectedLabOutputArtifact(
+  entry: Pick<LabCase, "ticker" | "section" | "year_from" | "year_to">,
+  detectorId: string,
+  lens: LabCleaningLens,
+  sourceId: LabSourceId
+): LabExpectedOutputArtifact | null {
+  const filename = buildCanonicalLabOutputFilename(entry, detectorId, lens, sourceId)
+  const requestUrl = buildLabOutputRequestUrl(entry.ticker, filename)
+  const repoPath = buildLabOutputRepoPath(entry.ticker, filename)
+  if (!requestUrl || !repoPath) return null
+  return { filename, repoPath, requestUrl }
 }
 
 export async function loadLabOutput(

@@ -1,16 +1,28 @@
+import { useState } from "react"
 import EvidenceStack from "./EvidenceStack"
 import LabExcerptPickerPanel from "./LabExcerptPickerPanel"
-import type { LabOutput, RankedItem } from "../lib/labTypes"
+import type { LabCleaningLens, LabOutput, RankedItem } from "../lib/labTypes"
 
 const EMPTY_ITEMS: RankedItem[] = []
 
 type MethodCardProps = {
+  detectorId: string
   title: string
   description?: string
   output: LabOutput | null
   isLoading?: boolean
   emptyMessage?: string
   debugPath?: string | null
+  debugInfo?: {
+    ticker: string
+    yearFrom: number
+    yearTo: number
+    lens: LabCleaningLens
+    detectorId: string
+    expectedPath: string | null
+    requestedUrl: string | null
+    errorText: string | null
+  } | null
 }
 
 function normalizeRankedList(raw: unknown): RankedItem[] {
@@ -31,14 +43,41 @@ function formatMetric(value: number | null | undefined): string {
   return value.toFixed(3)
 }
 
+async function copyTextToClipboard(text: string): Promise<boolean> {
+  if (typeof navigator !== "undefined" && navigator.clipboard?.writeText) {
+    try {
+      await navigator.clipboard.writeText(text)
+      return true
+    } catch {
+      // fall through to fallback path
+    }
+  }
+  if (typeof document === "undefined") {
+    return false
+  }
+  const textarea = document.createElement("textarea")
+  textarea.value = text
+  textarea.setAttribute("readonly", "true")
+  textarea.style.position = "absolute"
+  textarea.style.left = "-9999px"
+  document.body.appendChild(textarea)
+  textarea.select()
+  const copied = document.execCommand("copy")
+  document.body.removeChild(textarea)
+  return copied
+}
+
 export default function MethodCard({
+  detectorId,
   title,
   description,
   output,
   isLoading,
   emptyMessage,
   debugPath,
+  debugInfo,
 }: MethodCardProps) {
+  const [copyState, setCopyState] = useState<"idle" | "copied" | "failed">("idle")
   const warnings = output?.metrics.warnings ?? []
   const rankedItems = normalizeRankedList(output?.artifacts.ranked_items)
   const topRisers = normalizeRankedList(output?.artifacts.top_risers)
@@ -52,6 +91,22 @@ export default function MethodCard({
       : deltaBriefRaw
         ? JSON.stringify(deltaBriefRaw, null, 2)
         : ""
+
+  const handleCopyDebug = async () => {
+    if (!debugInfo) return
+    const payload = {
+      ticker: debugInfo.ticker,
+      pair: `${debugInfo.yearFrom}-${debugInfo.yearTo}`,
+      lens: debugInfo.lens,
+      detector: debugInfo.detectorId || detectorId,
+      expected_path: debugInfo.expectedPath,
+      requested_url: debugInfo.requestedUrl,
+      error: debugInfo.errorText,
+      schema_issue_or_debug: debugPath ?? null,
+    }
+    const didCopy = await copyTextToClipboard(JSON.stringify(payload, null, 2))
+    setCopyState(didCopy ? "copied" : "failed")
+  }
 
   return (
     <section className="rounded-xl border border-white/10 bg-slate-950/40 p-5">
@@ -72,9 +127,40 @@ export default function MethodCard({
       ) : null}
 
       {!isLoading && !output ? (
-        <div className="mt-3 space-y-1">
-          <p className="text-xs text-slate-400">{emptyMessage ?? "No lab output yet."}</p>
-          {debugPath ? <p className="break-all text-[11px] text-slate-500">{debugPath}</p> : null}
+        <div className="mt-3 space-y-2 rounded-md border border-amber-400/30 bg-amber-400/10 p-3">
+          <p className="text-xs font-semibold text-amber-100">Missing artifact</p>
+          <p className="text-xs text-slate-200">{emptyMessage ?? "No lab output yet."}</p>
+          {debugInfo?.expectedPath ? (
+            <p className="break-all text-[11px] text-slate-200">
+              Expected path: <span className="text-slate-100">{debugInfo.expectedPath}</span>
+            </p>
+          ) : null}
+          {debugInfo?.requestedUrl ? (
+            <p className="break-all text-[11px] text-slate-300">
+              Requested URL: <span className="text-slate-100">{debugInfo.requestedUrl}</span>
+            </p>
+          ) : null}
+          {debugInfo?.errorText ? (
+            <p className="text-[11px] text-amber-100">{debugInfo.errorText}</p>
+          ) : null}
+          {debugPath ? <p className="break-all text-[11px] text-slate-300">{debugPath}</p> : null}
+          {debugInfo ? (
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={handleCopyDebug}
+                className="rounded-md border border-white/20 bg-slate-900/60 px-2 py-1 text-[11px] text-slate-100 transition hover:border-white/40"
+              >
+                Copy debug info
+              </button>
+              {copyState === "copied" ? (
+                <span className="text-[11px] text-emerald-300">Copied.</span>
+              ) : null}
+              {copyState === "failed" ? (
+                <span className="text-[11px] text-rose-300">Copy failed.</span>
+              ) : null}
+            </div>
+          ) : null}
         </div>
       ) : null}
 
