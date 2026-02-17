@@ -210,26 +210,28 @@ function ExcerptCard({
 }
 
 export default function LabExcerptPickerPanel({ output }: { output: LabOutput }) {
+  const inputFile = extractInputFile(output)
+
   const [paragraphStatus, setParagraphStatus] = useState<ParagraphStatus>({
     lookup: null,
     error: null,
-    isLoading: false,
+    isLoading: !!inputFile,
   })
   const [expandedKeys, setExpandedKeys] = useState<Record<string, boolean>>({})
-
-  const inputFile = extractInputFile(output)
+  const [prevInputFile, setPrevInputFile] = useState(inputFile)
+  if (prevInputFile !== inputFile) {
+    setPrevInputFile(inputFile)
+    setParagraphStatus({ lookup: null, error: null, isLoading: !!inputFile })
+  }
 
   useEffect(() => {
     let cancelled = false
 
     if (!inputFile) {
-      setParagraphStatus({ lookup: null, error: "Input file not linked.", isLoading: false })
       return () => {
         cancelled = true
       }
     }
-
-    setParagraphStatus({ lookup: null, error: null, isLoading: true })
 
     loadLabInputFile(inputFile)
       .then((payload) => {
@@ -259,9 +261,13 @@ export default function LabExcerptPickerPanel({ output }: { output: LabOutput })
     }
   }, [inputFile])
 
+  const effectiveStatus: ParagraphStatus = !inputFile
+    ? { lookup: null, error: "Input file not linked.", isLoading: false }
+    : paragraphStatus
+
   const yearFrom = output.year_from
   const yearTo = output.year_to
-  const evidence = output.evidence ?? []
+  const evidence = useMemo(() => output.evidence ?? [], [output.evidence])
 
   const prevEvidence = useMemo(
     () => evidence.filter((block) => block.year === yearFrom),
@@ -278,16 +284,16 @@ export default function LabExcerptPickerPanel({ output }: { output: LabOutput })
   )
 
   const missingParagraphs = useMemo(() => {
-    if (!paragraphStatus.lookup) return evidence.length
+    if (!effectiveStatus.lookup) return evidence.length
     let missing = 0
     for (const block of evidence) {
-      const map = block.year === yearFrom ? paragraphStatus.lookup.prevMap : paragraphStatus.lookup.currMap
+      const map = block.year === yearFrom ? effectiveStatus.lookup.prevMap : effectiveStatus.lookup.currMap
       if (!map.has(block.paragraph_idx)) {
         missing += 1
       }
     }
     return missing
-  }, [paragraphStatus.lookup, evidence, yearFrom])
+  }, [effectiveStatus.lookup, evidence, yearFrom])
 
   const coverage = output.metrics.coverage
   const coverageLabel = `${formatCoverage(coverage)}${coverage !== null && coverage < 0.99 ? " (subset)" : ""}`
@@ -300,7 +306,7 @@ export default function LabExcerptPickerPanel({ output }: { output: LabOutput })
     setExpandedKeys((prev) => ({ ...prev, [key]: !prev[key] }))
   }
 
-  const paragraphLookup = paragraphStatus.lookup
+  const paragraphLookup = effectiveStatus.lookup
 
   const buildParagraphText = (block: EvidenceBlock): string | null => {
     if (!paragraphLookup) return null
@@ -331,10 +337,10 @@ export default function LabExcerptPickerPanel({ output }: { output: LabOutput })
             Low coverage may also reflect missing paragraph lookups; check filing availability.
           </div>
         ) : null}
-        {paragraphStatus.error ? (
-          <div className="mt-2 text-[11px] text-amber-200/80">{paragraphStatus.error}</div>
+        {effectiveStatus.error ? (
+          <div className="mt-2 text-[11px] text-amber-200/80">{effectiveStatus.error}</div>
         ) : null}
-        {paragraphStatus.isLoading ? (
+        {effectiveStatus.isLoading ? (
           <div className="mt-2 text-[11px] text-slate-400">Loading full paragraphs…</div>
         ) : null}
       </div>

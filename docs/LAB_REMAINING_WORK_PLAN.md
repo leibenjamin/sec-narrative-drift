@@ -1,8 +1,8 @@
-﻿# SEC Narrative Drift Lab â€” Remaining Work Plan (Codex Execution Doc)
+﻿# SEC Narrative Drift Lab - Remaining Work Plan (Codex Execution Doc)
 Last updated: 2026-02-17
 Scope: deterministic pipeline + React UI Lab tab
 Showcase tickers: NVDA, KO, WM, GE
-Core time window: 2019â€“2024 adjacent year pairs (include most recent even if low signal); 2024â€“2025 only if locally available
+Core time window: 2019-2024 adjacent year pairs (include most recent even if low signal); 2024-2025 only if locally available
 
 ## Hard constraints (DO NOT VIOLATE)
 - Deterministic only in the shipped app; no runtime ML/LLM calls.
@@ -42,7 +42,7 @@ Remaining human/manual work:
 
 ---
 
-# PHASE 0 â€” Ship and lock the deterministic baseline (DEBOILERPLATED)
+# PHASE 0 - Ship and lock the deterministic baseline (DEBOILERPLATED)
 Goal: Get the GO deterministic Lab state deployed and verifiably live.
 
 ## 0.1 Make git state clean and reproducible
@@ -72,7 +72,7 @@ Open these in an incognito window:
    - NVDA Lab tab
    - KO Lab tab
 Confirm:
-- â€œAvailable outputsâ€ counts look correct for the selected case/lens.
+- "Available outputs" counts look correct for the selected case/lens.
 - No silent empties caused by 404/schema errors. If something fails, the UI should show a debug path/error (not blank).
 
 ## 0.5 Only if needed: address CDN caching safely
@@ -81,7 +81,7 @@ If they show stale content after deploy:
 - Prefer a targeted purge (purge-by-URL) for:
   - `/sec-narrative-drift/data/sec_narrative_drift_lab/lab_cases_v1.json`
   - and any specific missing output JSON paths.
-- Avoid â€œpurge everythingâ€ unless you truly need it.
+- Avoid "purge everything" unless you truly need it.
 
 Additionally, add cache headers for lab data to reduce confusion:
 - Patch `public/_headers` (or equivalent) to include `/data/sec_narrative_drift_lab/*.json`
@@ -89,18 +89,18 @@ Additionally, add cache headers for lab data to reduce confusion:
 
 Acceptance criteria for Phase 0:
 - Live registry `updated_at` matches latest deploy.
-- Live site shows deterministic outputs for all required pairs (2019â€“2024 adjacents) under deboilerplated.
-- No â€œempty cardâ€ that is actually caused by missing file/path/schema.
+- Live site shows deterministic outputs for all required pairs (2019-2024 adjacents) under deboilerplated.
+- No "empty card" that is actually caused by missing file/path/schema.
 
 ---
 
-# PHASE 1 â€” Fill RAW lens deterministically (for all available pairs)
-User question: â€œCan raw be filled in now for all these year-pairs?â€
+# PHASE 1 - Fill RAW lens deterministically (for all available pairs)
+User question: "Can raw be filled in now for all these year-pairs?"
 Answer: YES **if** raw source texts exist for each (ticker, year) pair.
 
 Important: RAW is not required for shipping, but lab pages would look emptier without RAW.
 
-## 1.1 Determine whether â€œrawâ€ source sections exist
+## 1.1 Determine whether "raw" source sections exist
 We need raw Item 1A text for each ticker+year.
 Common locations (verify actual paths in repo):
 - `scripts/_reports/risk_extraction_bundle/sections/<TICKER>_<YEAR>_item_1a.txt`
@@ -116,7 +116,7 @@ Codex task:
 If raw texts exist:
 - Run `build_lab_outputs.py` with `--lenses raw` for:
   - all tickers NVDA, KO, WM, GE
-  - all adjacent pairs 2019â€“2024 (and 2024â€“2025 only if prerequisites exist)
+  - all adjacent pairs 2019-2024 (and 2024-2025 only if prerequisites exist)
   - detectors: the same 6 deterministic detectors
 
 Example shape (adjust to your CLI):
@@ -134,19 +134,19 @@ Example shape (adjust to your CLI):
 
 Acceptance criteria for Phase 1:
 - Raw lens is available in UI for all pairs where raw prerequisites exist.
-- Switching lenses never yields â€œsilent emptyâ€ when files exist.
+- Switching lenses never yields "silent empty" when files exist.
 
 ---
 
-# PHASE 2 â€” Fill LLM precompute outputs for ALL pairs (your ChatGPT runs)
-This is the â€œfully fleshed outâ€ goal.
+# PHASE 2 - Fill LLM precompute outputs for ALL pairs (your ChatGPT runs)
+This is the "fully fleshed out" goal.
 
 Key rule: LLM runs do NOT happen at runtime.
 They are offline precompute artifacts stored as JSON.
 
 ## 2.1 Decide the required LLM coverage
 For a portfolio-ready experience, recommended:
-- For every required adjacent pair (2019â€“2024) for each showcase ticker:
+- For every required adjacent pair (2019-2024) for each showcase ticker:
   - LLM delta brief (precomputed)
   - LLM excerpt picker (precomputed)
 - Lens: deboilerplated (recommended as default).
@@ -165,7 +165,7 @@ Each entry includes:
 - input bundle path(s) you will attach to ChatGPT threads
 
 ## 2.3 Generate all LLM input bundles (Codex)
-Codex should generate the â€œthread-starterâ€ input JSONs (focuspacks) for every manifest line:
+Codex should generate the "thread-starter" input JSONs (focuspacks) for every manifest line:
 - put them under a dated bundle directory, e.g.
   - `bundles/llm_run_pack_<UTCSTAMP>/inputs/<TICKER>_<YFROM>_<YTO>_focuspack_deboilerplated.json`
 
@@ -189,22 +189,22 @@ After you drop in the outputs:
   - `npm run build`
 
 Acceptance criteria for Phase 2:
-- For each pair, LLM cards render with content (not â€œprecomputed but not availableâ€).
-- Any missing LLM output is displayed as an explicit â€œmissing artifactâ€ state with the expected path shown.
+- For each pair, LLM cards render with content (not "precomputed but not available").
+- Any missing LLM output is displayed as an explicit "missing artifact" state with the expected path shown.
 
 ---
 
-# PHASE 3 â€” Portfolio polish (make it obvious, credible, and safe)
-Goal: Hiring managers should â€œget itâ€ in 30 seconds, and experts shouldnâ€™t cringe.
+# PHASE 3 - Portfolio polish (make it obvious, credible, and safe)
+Goal: Hiring managers should "get it" in 30 seconds, and experts shouldn't cringe.
 
 ## 3.1 UX: reduce confusion, increase trust
-- Add a small â€œWhat am I looking at?â€ explainer at top of Lab:
+- Add a small "What am I looking at?" explainer at top of Lab:
   - deterministic-only
   - what each detector measures
-  - what â€œcoverage/confidence/driftâ€ mean (plain English + link to methodology)
+  - what "coverage/confidence/drift" mean (plain English + link to methodology)
 - Improve empty/missing states:
-  - show: â€œMissing artifactâ€ + expected file path + suggestion: â€œrun lab:predeployâ€
-- Add â€œCopy debug infoâ€ button for errors:
+  - show: "Missing artifact" + expected file path + suggestion: "run lab:predeploy"
+- Add "Copy debug info" button for errors:
   - includes ticker, pair, lens, detector, requested URL, and any schema issue.
 
 ## 3.2 Security audit: prevent XSS/injection from SEC text
@@ -221,20 +221,20 @@ Add a short `docs/SEC_TEXT_SAFETY.md` explaining:
 - (optional) CSP policy if supported by hosting
 
 ## 3.3 Performance and ergonomics
-- Ensure output fetches donâ€™t permanently cache failures:
+- Ensure output fetches don't permanently cache failures:
   - rejected promises must be evicted (already done)
-  - provide a â€œReload outputsâ€ control (already done)
+  - provide a "Reload outputs" control (already done)
 - Consider adding a tiny debounce for rapid lens/method toggles.
 - Keep payload sizes reasonable (cap evidence blocks, lazy-render long paragraphs).
 
 Acceptance criteria for Phase 3:
 - No blank confusing states: every absence is explained.
 - No unsafe rendering paths exist.
-- Lab feels â€œproductizedâ€, not â€œdebug UIâ€.
+- Lab feels "productized", not "debug UI".
 
 ---
 
-# PHASE 4 â€” Repo cleanup (remove pre-Lab clutter without breaking archaeology)
+# PHASE 4 - Repo cleanup (remove pre-Lab clutter without breaking archaeology)
 Goal: reduce Codex confusion and improve portfolio impression.
 
 ## 4.1 Create an /attic (or /archive) policy
@@ -242,8 +242,8 @@ Goal: reduce Codex confusion and improve portfolio impression.
   - `attic/` (kept, but clearly non-shipping)
 - Add `attic/README.md` explaining:
   - why it exists
-  - whatâ€™s in there
-  - â€œnot used by production buildâ€
+  - what's in there
+  - "not used by production build"
 
 ## 4.2 Reduce noise
 - Ensure `scripts/_cache/` remains gitignored.
@@ -258,14 +258,14 @@ Create/update:
 
 Acceptance criteria for Phase 4:
 - Repo tree reads clean and intentional.
-- New contributors (or hiring managers) can find the â€œmain pathâ€ fast.
+- New contributors (or hiring managers) can find the "main path" fast.
 - Codex Agent Mode is less likely to latch onto dead code.
 
 ---
 
 # CODEx: One-shot Agent Prompt (surgical execution)
 You are GPT-5.3-Codex in Agent mode (Extra High reasoning).
-Implement Phase 0 completely and prepare Phase 1â€“4 scaffolding without blocking deploy.
+Implement Phase 0 completely and prepare Phase 1-4 scaffolding without blocking deploy.
 
 Do:
 1) Create `docs/LAB_REMAINING_WORK_PLAN.md` from the latest version in chat (edit for repo specifics).
@@ -275,7 +275,7 @@ Do:
 3) Add `reports/lab_raw_prereq_audit.md` generator:
    - prints which ticker-years have raw text available vs deboilerplated.
 4) Add `reports/lab_llm_run_manifest.{md,json}` generator:
-   - lists every required adjacent pair (2019â€“2024) for NVDA/KO/WM/GE and the expected LLM output paths.
+   - lists every required adjacent pair (2019-2024) for NVDA/KO/WM/GE and the expected LLM output paths.
 5) Run:
    - `npm run lab:predeploy`
    - `npm run lab:portfolio`
@@ -295,4 +295,3 @@ Output:
 - Exact commands you ran
 - Any files you moved into `attic/`
 - Any remaining TODOs for the human (LLM runs)
-
