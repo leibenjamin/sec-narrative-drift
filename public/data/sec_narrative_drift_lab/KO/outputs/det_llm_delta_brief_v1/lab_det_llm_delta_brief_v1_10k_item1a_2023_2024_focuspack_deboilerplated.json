@@ -4,86 +4,89 @@
   "cleaning_lens": "deboilerplated",
   "source_id": "edgar",
   "ticker": "KO",
+  "section": "10k_item1a",
   "year_from": 2023,
   "year_to": 2024,
   "artifacts": {
-    "delta_brief": "Across 2023-2024, KO continues to frame international conflicts and broader geopolitical instability as drivers of supply-chain, cost, and security disruptions (2023 ¶6; 2024 ¶4). The 2024 language leans more on a generalized instability pathway that bundles logistics, input costs, and employee/infrastructure risk together (2024 ¶4). Cyber risk remains prominent, with both years calling out escalating attacker sophistication and the role of generative AI alongside zero-day vulnerabilities (2023 ¶59; 2024 ¶60). New emphasis in 2024 explicitly flags that the legal and regulatory landscape for AI is uncertain and evolving, potentially raising compliance costs or constraining usage (2024 ¶54). 2024 also expands consumer-health and policy pressure on sweetened beverages, including obesity concerns, perceived effects of weight-loss drugs on consumption patterns, and potential taxes/regulation that could reduce demand or increase costs (2024 ¶26). Overall, the drift tilts toward a more tech-and-regulation-forward posture (AI rules plus cyber sophistication) while keeping geopolitical disruption as the operating backdrop (2024 ¶54; 2024 ¶4)."
+    "delta_brief": "Between 2023 and 2024, KO continues to emphasize supply_chain as core risk exposure (2023 para 19; 2024 para 17). The earlier filing is relatively more anchored in supply_chain, while the later filing adds clearer weight to supply_chain (2023 para 6; 2024 para 53). Across both years, management frames these items as operational and financial execution pressures rather than isolated one-off events (2023 para 19; 2024 para 53). This comparison should be read as directional because the lens is a focuspack subset and not the full Item 1A text (2023 para 6; 2024 para 17). Overall, the narrative indicates continuity with selective shifts in emphasis instead of a full thematic reset (2023 para 19; 2024 para 17)."
   },
   "evidence": [
     {
       "year": 2023,
-      "paragraph_idx": 5,
-      "snippet": "These conflicts have resulted, and could continue to result, in volatile commodity markets; logistical, transportation and supply chain disruptions; increased risk of cyber incidents or other disruptions to our information systems; reputational risk; heightened risks to employee safety; business disruptions (including",
-      "why": "Captures the 2023 baseline that conflict-driven instability can cascade into commodity volatility, supply-chain disruption, cyber risk, safety issues, and higher input costs.",
+      "paragraph_idx": 18,
+      "snippet": "These factors include changes in supply and demand; supplier capacity constraints; a deterioration of our or our bottling partners’ relationships with suppliers; international conflicts; political uncertainties; acts of terrorism; governmental instability; inflation; weather conditions (including the effects of climate change);",
+      "why": "Supports 2023 risk narrative context for supply_chain, demand.",
       "highlights": [
-        "geopolitical instability",
-        "supply chain"
+        "supply_chain",
+        "demand",
+        "artificial_intelligence"
       ]
     },
     {
       "year": 2023,
-      "paragraph_idx": 58,
-      "snippet": "Cybercriminals have increasingly demonstrated advanced capabilities, such as use of zero-day vulnerabilities, and rapid integration of new technology such as generative artificial intelligence.",
-      "why": "Anchors the 2023 cyber narrative around rapidly evolving attacker capability, including explicit mention of generative AI.",
+      "paragraph_idx": 5,
+      "snippet": "These conflicts have resulted, and could continue to result, in volatile commodity markets; logistical, transportation and supply chain disruptions; increased risk of cyber incidents or other disruptions to our information systems; reputational risk; heightened risks to employee safety; business disruptions (including labor shortages);",
+      "why": "Supports 2023 risk narrative context for supply_chain, cybersecurity.",
       "highlights": [
+        "supply_chain",
         "cybersecurity",
-        "generative ai"
+        "artificial_intelligence"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 51,
+      "snippet": "Our Company is subject to various laws and regulations in the countries and territories throughout the world in which we do business, including laws and regulations relating to competition, distribution and pricing, product safety, product design, advertising and labeling, container deposits, recycling, recycled content, product stewardship,",
+      "why": "Supports 2023 risk narrative context for security, artificial_intelligence.",
+      "highlights": [
+        "security",
+        "artificial_intelligence",
+        "regulation"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 16,
+      "snippet": "These factors include changes in supply and demand; supplier capacity constraints; a deterioration of our or our bottling partners’ relationships with suppliers; international conflicts; political uncertainties; acts of terrorism; governmental instability; inflation; weather conditions (including the effects of climate change);",
+      "why": "Supports 2024 risk narrative context for supply_chain, demand.",
+      "highlights": [
+        "supply_chain",
+        "demand",
+        "cybersecurity"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 52,
+      "snippet": "Our Company is subject to various laws and regulations in the countries and territories throughout the world in which we do business, including laws and regulations relating to competition, distribution and pricing, product safety, product design, advertising and labeling, container deposits, recycling, recycled content,",
+      "why": "Supports 2024 risk narrative context for security, artificial_intelligence.",
+      "highlights": [
+        "security",
+        "artificial_intelligence",
+        "regulation"
       ]
     },
     {
       "year": 2024,
       "paragraph_idx": 3,
-      "snippet": "Geopolitical instability has in the past led, and may in the future lead, to logistical, transportation and supply chain disruptions; business disruptions (including labor shortages); increased risk of cybersecurity incidents or other disruptions to our information systems; reduced availability and increased costs of",
-      "why": "Shows the 2024 counterpart that broad geopolitical instability can drive logistics and cost pressures while also elevating security and cybersecurity disruption risk.",
+      "snippet": "Geopolitical instability has in the past led, and may in the future lead, to logistical, transportation and supply chain disruptions; business disruptions (including labor shortages); increased risk of cybersecurity incidents or other disruptions to our information systems;",
+      "why": "Supports 2024 risk narrative context for supply_chain, cybersecurity.",
       "highlights": [
-        "geopolitical instability",
-        "supply chain"
-      ]
-    },
-    {
-      "year": 2024,
-      "paragraph_idx": 59,
-      "snippet": "Despite our efforts to protect the security of our information systems, cybercriminals have increasingly demonstrated advanced capabilities, such as use of zero-day vulnerabilities and rapid integration of new technology such as generative artificial intelligence.",
-      "why": "Reinforces that 2024 maintains (and sharpens) the cyber-risk framing, again tying threat sophistication to zero-days and generative AI.",
-      "highlights": [
+        "supply_chain",
         "cybersecurity",
-        "generative ai"
-      ]
-    },
-    {
-      "year": 2024,
-      "paragraph_idx": 53,
-      "snippet": "The legal and regulatory landscape for certain new technologies, such as artificial intelligence, is uncertain and evolving, and our compliance obligations could increase our costs or limit how we may use these technologies.",
-      "why": "Adds a distinct 2024 thread: evolving AI regulation and compliance obligations as a cost/constraint risk.",
-      "highlights": [
-        "ai regulation"
-      ]
-    },
-    {
-      "year": 2024,
-      "paragraph_idx": 25,
-      "snippet": "Ongoing public concern about obesity; other health-related public concerns surrounding consumption of sweetened beverages; the effects or perceived effects of the usage of weight-loss drugs on consumption patterns; potential new or increased taxes on sweetened beverages by government entities to reduce consumption or to raise revenue; potential",
-      "why": "Introduces expanded 2024 demand/policy risk for sweetened beverages, explicitly including weight-loss drugs, obesity concerns, and taxation/regulation pressure.",
-      "highlights": [
-        "obesity concerns",
-        "sweetened beverage taxes"
+        "security"
       ]
     }
   ],
   "metrics": {
     "drift_score": null,
     "confidence": 0.5,
-    "coverage": 0.3391791921746819,
+    "coverage": 0.473054,
     "warnings": [
-      "Focuspack is a subset; verify in full compare pane.",
-      "Lens coverage is low (~0.34); important risk-factor changes may be outside the subset.",
-      "Normalized provenance.input_file to shipped public llm_inputs path.",
-      "Normalized provenance.input_file to llm_inputs/KO/lab_llm_focuspack_10k_item1a_2023_2024_deboilerplated.json for UI lookup."
+      "Focuspack is a subset; verify in full compare pane."
     ]
   },
   "provenance": {
-    "input_file": "llm_inputs/KO/lab_llm_focuspack_10k_item1a_2023_2024_deboilerplated.json"
-  },
-  "section_id": "10k_item1a",
-  "section": "10k_item1a"
+    "input_file": "inputs/KO_2023_2024_focuspack_deboilerplated.json"
+  }
 }

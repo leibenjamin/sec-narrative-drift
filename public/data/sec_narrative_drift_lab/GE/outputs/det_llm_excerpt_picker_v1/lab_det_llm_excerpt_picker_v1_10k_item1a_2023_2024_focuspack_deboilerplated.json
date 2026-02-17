@@ -1,0 +1,148 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_llm_excerpt_picker_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "GE",
+  "section": "10k_item1a",
+  "year_from": 2023,
+  "year_to": 2024,
+  "artifacts": {
+    "selected_prev": [
+      55,
+      41,
+      186,
+      6,
+      19
+    ],
+    "selected_curr": [
+      14,
+      45,
+      8,
+      4,
+      99
+    ]
+  },
+  "evidence": [
+    {
+      "year": 2023,
+      "paragraph_idx": 55,
+      "snippet": "Capital spending and demand for aircraft engines, aviation products and component aftermarket parts and services by commercial airlines, lessors, other aircraft operators and airframers are influenced by a wide variety of factors, including current and predicted traffic levels, load factors, aircraft fuel prices, labor issues,",
+      "why": "Supports 2023 risk narrative context for demand, artificial_intelligence.",
+      "highlights": [
+        "demand",
+        "artificial_intelligence",
+        "regulation"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 41,
+      "snippet": "While the currently anticipated market growth and power generation share for renewable energy is expected to be favorable for our wind businesses over time, we face uncertainties related to future levels and timeframes of government subsidies and credits (including the impact of the Inflation Reduction Act and other policies),",
+      "why": "Supports 2023 risk narrative context for manufacturing, artificial_intelligence.",
+      "highlights": [
+        "manufacturing",
+        "artificial_intelligence",
+        "competition"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 186,
+      "snippet": "We, our representatives and the industries in which we operate are subject to continuing scrutiny by regulators, other governmental authorities and private sector entities or individuals in the U.S., the European Union, China and other jurisdictions, which have led or may, in certain circumstances, lead to enforcement actions,",
+      "why": "Supports 2023 risk narrative context for artificial_intelligence, regulation.",
+      "highlights": [
+        "artificial_intelligence",
+        "regulation",
+        "litigation"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 6,
+      "snippet": "The GE Vernova separation transaction will be subject to the satisfaction of a number of customary conditions, including, among others, final approvals by GE’s Board of Directors, receipt of tax rulings in certain jurisdictions and/or tax opinions from external counsel, the filing with the SEC and effectiveness of a Form 10 registration statement,",
+      "why": "Supports 2023 risk narrative context for artificial_intelligence, tax_policy.",
+      "highlights": [
+        "artificial_intelligence",
+        "tax_policy"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 19,
+      "snippet": "In addition, GE for the past several years has been undertaking various restructuring and business transformation actions (including workforce reductions, global facility consolidations and other cost reduction initiatives and the GE HealthCare separation) that have entailed changes across our organizational structure, senior leadership, culture,",
+      "why": "Supports 2023 risk narrative context for artificial_intelligence, cost_pressure.",
+      "highlights": [
+        "artificial_intelligence",
+        "cost_pressure"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 14,
+      "snippet": "Capital spending and demand for aircraft engines, aviation products and aftermarket parts and services by commercial airlines, lessors, other aircraft owners or operators and airframers are influenced by a wide variety of factors, including current and predicted traffic levels, passenger and cargo load factors, aircraft fuel prices,",
+      "why": "Supports 2024 risk narrative context for demand, security.",
+      "highlights": [
+        "demand",
+        "security",
+        "artificial_intelligence"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 45,
+      "snippet": "pricing and taxes, energy taxes, product fuel efficiency standards, mandatory disclosure obligations, including U.S. government procurement-related contractual climate disclosures, could increase our operational and compliance expenditures and those of our customers and suppliers,",
+      "why": "Supports 2024 risk narrative context for manufacturing, compliance.",
+      "highlights": [
+        "manufacturing",
+        "compliance",
+        "climate"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 8,
+      "snippet": "Further, political changes and trends such as populism, protectionism, economic nationalism and sentiment toward multinational companies, as well as tariffs, export controls, restrictions on outbound investment or other trade barriers, sanctions, technical or local content regulations,",
+      "why": "Supports 2024 risk narrative context for regulation, sanctions.",
+      "highlights": [
+        "regulation",
+        "sanctions",
+        "export_controls"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 4,
+      "snippet": "Our operations and performance are also affected by local and regional economic environments, supply chain constraints and policies in the U.S.",
+      "why": "Supports 2024 risk narrative context for supply_chain, artificial_intelligence.",
+      "highlights": [
+        "supply_chain",
+        "artificial_intelligence",
+        "inflation"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 99,
+      "snippet": "Disruptions in deliveries, capacity constraints, production disruptions up- or down-stream, price increases, or decreased availability of raw materials or commodities, including as a result of war, natural disasters (including the effects of climate change such as sea level rise, drought, flooding, wildfires and more intense weather events),",
+      "why": "Supports 2024 risk narrative context for artificial_intelligence, regulation.",
+      "highlights": [
+        "artificial_intelligence",
+        "regulation",
+        "climate"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": null,
+    "confidence": 0.5,
+    "coverage": 0.228261,
+    "warnings": [
+      "Focuspack is a subset; verify in full compare pane.",
+      "Low signal: focuspack coverage is limited for this pair."
+    ]
+  },
+  "provenance": {
+    "input_file": "inputs/GE_2023_2024_focuspack_deboilerplated.json"
+  }
+}

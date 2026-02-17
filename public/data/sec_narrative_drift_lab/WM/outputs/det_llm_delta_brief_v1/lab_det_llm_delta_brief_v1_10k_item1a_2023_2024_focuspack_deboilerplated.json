@@ -1,0 +1,93 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_llm_delta_brief_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "WM",
+  "section": "10k_item1a",
+  "year_from": 2023,
+  "year_to": 2024,
+  "artifacts": {
+    "delta_brief": "Between 2023 and 2024, WM continues to emphasize demand as core risk exposure (2023 para 33; 2024 para 10). The earlier filing is relatively more anchored in demand, while the later filing adds clearer weight to demand (2023 para 62; 2024 para 8). Across both years, management frames these items as operational and financial execution pressures rather than isolated one-off events (2023 para 33; 2024 para 8). This comparison should be read as directional because the lens is a focuspack subset and not the full Item 1A text (2023 para 62; 2024 para 10). Overall, the narrative indicates continuity with selective shifts in emphasis instead of a full thematic reset (2023 para 33; 2024 para 10)."
+  },
+  "evidence": [
+    {
+      "year": 2023,
+      "paragraph_idx": 32,
+      "snippet": "Risk Factors — Focus on, and regulation of, environmental, social and governance (“ESG”) performance and disclosure can result in increased costs, risk of noncompliance, damage to our reputation and related adverse effects.",
+      "why": "Supports 2023 risk narrative context for demand, regulation.",
+      "highlights": [
+        "demand",
+        "regulation",
+        "compliance"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 61,
+      "snippet": "Significant global supply chain disruption has reduced availability of certain assets used in our business, and inflation has increased costs for the goods and services we purchase, particularly for labor, repair and maintenance, and subcontractor costs.",
+      "why": "Supports 2023 risk narrative context for supply_chain, artificial_intelligence.",
+      "highlights": [
+        "supply_chain",
+        "artificial_intelligence",
+        "inflation"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 6,
+      "snippet": "In addition to the risks set forth above, implementation of our business strategy could also be affected by other factors beyond our control, such as increased competition, legal developments, government regulation, general economic conditions, including slower growth or recession, increased operating costs or expenses,",
+      "why": "Supports 2023 risk narrative context for artificial_intelligence, regulation.",
+      "highlights": [
+        "artificial_intelligence",
+        "regulation",
+        "competition"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 9,
+      "snippet": "The acquired Stericycle business, which is now presented as our new WM Healthcare Solutions segment, is subject to numerous risks and uncertainties that could cause performance to be materially different than we anticipate;",
+      "why": "Supports 2024 risk narrative context for demand, artificial_intelligence.",
+      "highlights": [
+        "demand",
+        "artificial_intelligence",
+        "regulation"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 7,
+      "snippet": "In addition to the risks set forth above, implementation of our business strategy could be affected by other factors beyond our control, such as increased competition, legal developments, government regulation, global geopolitical instability, general economic conditions, including slower growth or recession, increased operating costs or expenses,",
+      "why": "Supports 2024 risk narrative context for artificial_intelligence, regulation.",
+      "highlights": [
+        "artificial_intelligence",
+        "regulation",
+        "geopolitics"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 3,
+      "snippet": "Integration of acquisitions and/or new services offerings or lines of business, such as our expansion into medical waste, controlled substances waste and secure information destruction services, and additional expansion into markets outside of North America has and would result in our business being subject to new laws and regulatory regimes,",
+      "why": "Supports 2024 risk narrative context for regulation, compliance.",
+      "highlights": [
+        "regulation",
+        "compliance",
+        "cost_pressure"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": null,
+    "confidence": 0.5,
+    "coverage": 0.208556,
+    "warnings": [
+      "Focuspack is a subset; verify in full compare pane.",
+      "Low signal: focuspack coverage is limited for this pair."
+    ]
+  },
+  "provenance": {
+    "input_file": "inputs/WM_2023_2024_focuspack_deboilerplated.json"
+  }
+}

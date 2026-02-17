@@ -1,0 +1,93 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_llm_delta_brief_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "GE",
+  "section": "10k_item1a",
+  "year_from": 2019,
+  "year_to": 2020,
+  "artifacts": {
+    "delta_brief": "Between 2019 and 2020, GE continues to emphasize artificial_intelligence and supply_chain as core risk exposure (2019 para 21; 2020 para 19). The earlier filing is relatively more anchored in artificial_intelligence, while the later filing adds clearer weight to supply_chain (2019 para 7; 2020 para 8). Across both years, management frames these items as operational and financial execution pressures rather than isolated one-off events (2019 para 21; 2020 para 8). This comparison should be read as directional because the lens is a focuspack subset and not the full Item 1A text (2019 para 7; 2020 para 19). Overall, the narrative indicates continuity with selective shifts in emphasis instead of a full thematic reset (2019 para 21; 2020 para 19)."
+  },
+  "evidence": [
+    {
+      "year": 2019,
+      "paragraph_idx": 20,
+      "snippet": "These trends and the relative competitiveness of different types of product and service offerings will continue to be impacted in ways that are uncertain by factors such as the pace of technological developments and related cost considerations,",
+      "why": "Supports 2019 risk narrative context for artificial_intelligence, climate.",
+      "highlights": [
+        "artificial_intelligence",
+        "climate",
+        "tax_policy"
+      ]
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 6,
+      "snippet": "Political changes and trends such as populism, protectionism, economic nationalism and sentiment toward multinational companies and resulting changes to trade, tax or other laws and policies (including tariffs) have been and may continue to be disruptive and costly to our businesses, and can interfere with our global operating model, supply chain,",
+      "why": "Supports 2019 risk narrative context for supply_chain, artificial_intelligence.",
+      "highlights": [
+        "supply_chain",
+        "artificial_intelligence",
+        "tax_policy"
+      ]
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 4,
+      "snippet": "Our operations and the execution of our business plans and strategies are subject to the effects of global economic trends, competition and geopolitical risks and demand or supply shocks from war, natural disaster, a health pandemic or other events.",
+      "why": "Supports 2019 risk narrative context for supply_chain, demand.",
+      "highlights": [
+        "supply_chain",
+        "demand",
+        "geopolitics"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 18,
+      "snippet": "Political changes and trends such as populism, protectionism, economic nationalism and sentiment toward multinational companies and resulting tariffs, export controls or other trade barriers, or changes to tax or other laws and policies, have been and may continue to be disruptive and costly to our businesses,",
+      "why": "Supports 2020 risk narrative context for supply_chain, artificial_intelligence.",
+      "highlights": [
+        "supply_chain",
+        "artificial_intelligence",
+        "export_controls"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 7,
+      "snippet": "We also have experienced, and expect to continue experiencing, lower demand and volume for products and services (particularly at GE Aviation, as described below, and also for portions of GE Healthcare’s business), customer requests for potential payment deferrals or other contract modifications, supply chain under-liquidation,",
+      "why": "Supports 2020 risk narrative context for supply_chain, demand.",
+      "highlights": [
+        "supply_chain",
+        "demand",
+        "artificial_intelligence"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 5,
+      "snippet": "Our operations and financial performance have been negatively impacted by the COVID-19 pandemic that has caused, and is expected to continue to cause, the global slowdown of economic activity (including the decrease in demand for a broad variety of goods and services),",
+      "why": "Supports 2020 risk narrative context for supply_chain, demand.",
+      "highlights": [
+        "supply_chain",
+        "demand",
+        "artificial_intelligence"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": null,
+    "confidence": 0.5,
+    "coverage": 0.320388,
+    "warnings": [
+      "Focuspack is a subset; verify in full compare pane.",
+      "Low signal: focuspack coverage is limited for this pair."
+    ]
+  },
+  "provenance": {
+    "input_file": "inputs/GE_2019_2020_focuspack_deboilerplated.json"
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_llm_excerpt_picker_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "NVDA",
+  "section": "10k_item1a",
+  "year_from": 2022,
+  "year_to": 2023,
+  "artifacts": {
+    "selected_prev": [
+      37,
+      128,
+      142,
+      129,
+      157
+    ],
+    "selected_curr": [
+      111,
+      194,
+      164,
+      96,
+      162
+    ]
+  },
+  "evidence": [
+    {
+      "year": 2022,
+      "paragraph_idx": 37,
+      "snippet": "• decrease in future demand, decrease in the cost of supply chain materials, or changes in the design of future products where we have entered into long-term supply commitments, including prepayments, particularly to the extent we are placing orders well in advance of our historical lead times and/or before the design of those products is final.",
+      "why": "Supports 2022 risk narrative context for supply_chain, demand.",
+      "highlights": [
+        "supply_chain",
+        "demand",
+        "artificial_intelligence"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 128,
+      "snippet": "For example, we may face increased compliance costs as a result of changes or increases in anti-competition legislation, regulation, administrative rule making, and enforcement activity resulting from growing public concern over concentration of economic power in corporations.",
+      "why": "Supports 2022 risk narrative context for regulation, compliance.",
+      "highlights": [
+        "regulation",
+        "compliance",
+        "competition"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 142,
+      "snippet": "Compliance with government regulation in the area of AI ethics may also increase the cost of related research and development.",
+      "why": "Supports 2022 risk narrative context for artificial_intelligence, regulation.",
+      "highlights": [
+        "artificial_intelligence",
+        "regulation",
+        "compliance"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 129,
+      "snippet": "For example, in response to the Russian invasion of Ukraine, the United States and certain allies have imposed economic sanctions and export control measures and may impose additional sanctions or export control measures, which have and could in the future result in, among other things,",
+      "why": "Supports 2022 risk narrative context for artificial_intelligence, sanctions.",
+      "highlights": [
+        "artificial_intelligence",
+        "sanctions",
+        "export_controls"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 157,
+      "snippet": "Concerns about our practices or the ultimate use of our products and services with regard to the collection, use, retention, security or disclosure of personal information or other privacy-related matters, including for use in AI, even if unfounded, could damage our reputation and adversely affect our operating results.",
+      "why": "Supports 2022 risk narrative context for security, artificial_intelligence.",
+      "highlights": [
+        "security",
+        "artificial_intelligence",
+        "privacy"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 111,
+      "snippet": "Breaches of our security measures, along with reported or perceived vulnerabilities or unapproved dissemination of proprietary information or sensitive or confidential data about us or third parties could expose us and the parties affected to a risk of loss or misuse of this information,",
+      "why": "Supports 2023 risk narrative context for security, regulation.",
+      "highlights": [
+        "security",
+        "regulation",
+        "litigation"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 194,
+      "snippet": "The California Privacy Rights Act of 2020, or CPRA, became operative in 2023, and restricts the use of certain categories of sensitive personal information; further restricts the use of cross-contextual advertising techniques; restricts the retention of personal information;",
+      "why": "Supports 2023 risk narrative context for artificial_intelligence, compliance.",
+      "highlights": [
+        "artificial_intelligence",
+        "compliance",
+        "privacy"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 164,
+      "snippet": "These restrictions impact exports of certain chips, as well as software, hardware, equipment, and technology used to develop, produce, and manufacture certain chips, to China (including Hong Kong and Macau) and Russia, and specifically impact our A100 and H100 integrated circuits,",
+      "why": "Supports 2023 risk narrative context for manufacturing, artificial_intelligence.",
+      "highlights": [
+        "manufacturing",
+        "artificial_intelligence",
+        "export_controls"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 96,
+      "snippet": "In general, if a product liability claim regarding any of our products is brought against us, even if the alleged damage is due to the actions or inactions of a third party, such as within our supply chain,",
+      "why": "Supports 2023 risk narrative context for supply_chain, artificial_intelligence.",
+      "highlights": [
+        "supply_chain",
+        "artificial_intelligence",
+        "cost_pressure"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 162,
+      "snippet": "Additional export restrictions may not only impact our ability to serve overseas markets, but also provoke responses from foreign governments, including China, that negatively impact our supply chain or our ability to provide our products and services to customers in all markets worldwide, which could also substantially reduce our revenue.",
+      "why": "Supports 2023 risk narrative context for supply_chain, artificial_intelligence.",
+      "highlights": [
+        "supply_chain",
+        "artificial_intelligence",
+        "export_controls"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": null,
+    "confidence": 0.5,
+    "coverage": 0.241379,
+    "warnings": [
+      "Focuspack is a subset; verify in full compare pane.",
+      "Low signal: focuspack coverage is limited for this pair."
+    ]
+  },
+  "provenance": {
+    "input_file": "inputs/NVDA_2022_2023_focuspack_deboilerplated.json"
+  }
+}

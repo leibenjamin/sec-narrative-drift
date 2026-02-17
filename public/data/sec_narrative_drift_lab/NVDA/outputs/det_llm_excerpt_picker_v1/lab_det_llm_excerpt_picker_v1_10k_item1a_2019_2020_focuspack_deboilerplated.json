@@ -1,0 +1,145 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_llm_excerpt_picker_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "NVDA",
+  "section": "10k_item1a",
+  "year_from": 2019,
+  "year_to": 2020,
+  "artifacts": {
+    "selected_prev": [
+      9,
+      8,
+      7,
+      15,
+      6
+    ],
+    "selected_curr": [
+      9,
+      7,
+      8,
+      6,
+      10
+    ]
+  },
+  "evidence": [
+    {
+      "year": 2019,
+      "paragraph_idx": 9,
+      "snippet": "could be harmed if manufacturing, logistics or other operations in these locations are disrupted for any reason, including natural disasters, high heat events or water shortages, information technology system failures, military actions or economic, business, labor, environmental, public health, regulatory or political issues.",
+      "why": "Supports 2019 risk narrative context for manufacturing, artificial_intelligence.",
+      "highlights": [
+        "manufacturing",
+        "artificial_intelligence",
+        "regulation"
+      ]
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 8,
+      "snippet": "In particular, revisions to laws or regulations or their interpretation and enforcement could result in increased taxation, trade sanctions, the imposition of import duties or tariffs, restrictions and controls on imports or exports, or other retaliatory actions, which could have an adverse effect on our business plans.",
+      "why": "Supports 2019 risk narrative context for regulation, sanctions.",
+      "highlights": [
+        "regulation",
+        "sanctions",
+        "export_controls"
+      ]
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 7,
+      "snippet": "Geopolitical change or changes in government regulations and policies in the United States or abroad also may result in changing regulatory requirements, trade policies, import duties and economic disruptions that could impact our operating strategies, product demand, access to global markets, hiring, and profitability.",
+      "why": "Supports 2019 risk narrative context for demand, regulation.",
+      "highlights": [
+        "demand",
+        "regulation",
+        "geopolitics"
+      ]
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 15,
+      "snippet": "If we or one of our indemnitees is unable to obtain a license from a third party for technology that we use or that is used in one of our products, we could be subject to substantial liabilities or have to suspend or discontinue the manufacture and sale of one or more of our products.",
+      "why": "Supports 2019 risk narrative context for manufacturing, artificial_intelligence.",
+      "highlights": [
+        "manufacturing",
+        "artificial_intelligence"
+      ]
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 6,
+      "snippet": "The manufacture of product components, the final assembly of our products and other critical operations are concentrated in certain geographic locations, including Taiwan, China, and Korea.",
+      "why": "Supports 2019 risk narrative context for manufacturing, artificial_intelligence.",
+      "highlights": [
+        "manufacturing",
+        "artificial_intelligence"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 9,
+      "snippet": "Our operations could be harmed if manufacturing, logistics or other operations in these locations are disrupted for any reason, including natural disasters, high heat events or water shortages, information technology system failures, military actions or economic, business, labor, environmental, public health, regulatory or political issues.",
+      "why": "Supports 2020 risk narrative context for manufacturing, artificial_intelligence.",
+      "highlights": [
+        "manufacturing",
+        "artificial_intelligence",
+        "regulation"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 7,
+      "snippet": "Geopolitical change or changes in government regulations and policies in the United States or abroad may result in changing regulatory requirements, trade policies, import duties and economic disruptions that could impact our operating strategies, product demand, access to global markets, hiring, and profitability.",
+      "why": "Supports 2020 risk narrative context for demand, regulation.",
+      "highlights": [
+        "demand",
+        "regulation",
+        "geopolitics"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 8,
+      "snippet": "interpretation and enforcement could result in increased taxation, trade sanctions, the imposition of import duties or tariffs, restrictions and controls on imports or exports, or other retaliatory actions, which could have an adverse effect on our business plans.",
+      "why": "Supports 2020 risk narrative context for sanctions, export_controls.",
+      "highlights": [
+        "sanctions",
+        "export_controls",
+        "tax_policy"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 6,
+      "snippet": "The manufacture of product components, the final assembly of our products and other critical operations are concentrated in certain geographic locations, including Taiwan, China, Hong Kong, and Korea.",
+      "why": "Supports 2020 risk narrative context for manufacturing, artificial_intelligence.",
+      "highlights": [
+        "manufacturing",
+        "artificial_intelligence"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 10,
+      "snippet": "In January 2020, a novel strain of coronavirus was identified in China, resulting in shutdowns of manufacturing and commerce, as well as global travel restrictions to contain the virus.",
+      "why": "Supports 2020 risk narrative context for manufacturing, artificial_intelligence.",
+      "highlights": [
+        "manufacturing",
+        "artificial_intelligence"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": null,
+    "confidence": 0.5,
+    "coverage": 0.836735,
+    "warnings": [
+      "Focuspack is a subset; verify in full compare pane."
+    ]
+  },
+  "provenance": {
+    "input_file": "inputs/NVDA_2019_2020_focuspack_deboilerplated.json"
+  }
+}

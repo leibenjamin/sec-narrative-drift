@@ -1,0 +1,146 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_llm_excerpt_picker_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "KO",
+  "section": "10k_item1a",
+  "year_from": 2019,
+  "year_to": 2020,
+  "artifacts": {
+    "selected_prev": [
+      42,
+      9,
+      10,
+      12,
+      4
+    ],
+    "selected_curr": [
+      13,
+      16,
+      8,
+      45,
+      41
+    ]
+  },
+  "evidence": [
+    {
+      "year": 2019,
+      "paragraph_idx": 42,
+      "snippet": "An increase in the cost, a sustained interruption in the supply, or a shortage of some of these ingredients, other raw materials, packaging materials, aluminum cans and other containers that may be caused by changes in or the enactment of new laws and regulations; a deterioration of our or our bottling partners' relationships with suppliers;",
+      "why": "Supports 2019 risk narrative context for supply_chain, artificial_intelligence.",
+      "highlights": [
+        "supply_chain",
+        "artificial_intelligence",
+        "regulation"
+      ]
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 9,
+      "snippet": "The changes introduced by the GDPR and the CCPA, as well as any other changes to existing personal data protection or privacy laws and the introduction of such laws in other jurisdictions, have subjected and may continue in the future to subject the Company to, among other things,",
+      "why": "Supports 2019 risk narrative context for security, privacy.",
+      "highlights": [
+        "security",
+        "privacy",
+        "cost_pressure"
+      ]
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 10,
+      "snippet": "Our security controls over personal data, the training of employees and vendors on data privacy and data security, and the policies, procedures and practices we implemented or may implement in the future may not prevent the improper disclosure of personal data.",
+      "why": "Supports 2019 risk narrative context for security, artificial_intelligence.",
+      "highlights": [
+        "security",
+        "artificial_intelligence",
+        "privacy"
+      ]
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 12,
+      "snippet": "private litigation against us, which could result in loss of revenue, increased costs, liability for monetary damages, fines and/or criminal prosecution, all of which could negatively affect our business and operating results.",
+      "why": "Supports 2019 risk narrative context for artificial_intelligence, litigation.",
+      "highlights": [
+        "artificial_intelligence",
+        "litigation",
+        "cost_pressure"
+      ]
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 4,
+      "snippet": "Public debate and concern about perceived negative health consequences of certain ingredients in our beverage products, such as non-nutritive sweeteners and biotechnology-derived substances;",
+      "why": "Supports 2019 risk narrative context for manufacturing, artificial_intelligence.",
+      "highlights": [
+        "manufacturing",
+        "artificial_intelligence"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 13,
+      "snippet": "These measures may not be sufficient to prevent the spread of COVID-19 among our employees and, therefore, we may face additional concentrate production disruptions in the future, which may place constraints on our ability to supply concentrates to our bottling partners in a timely manner or may increase our concentrate supply costs.",
+      "why": "Supports 2020 risk narrative context for supply_chain, artificial_intelligence.",
+      "highlights": [
+        "supply_chain",
+        "artificial_intelligence",
+        "cost_pressure"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 16,
+      "snippet": "• Disruptions in supply chains have placed, and may continue to place, constraints on our and our bottling partners' ability to source beverage containers, such as glass bottles and cans, which has increased, and in the future may increase, our and their packaging costs.",
+      "why": "Supports 2020 risk narrative context for supply_chain, artificial_intelligence.",
+      "highlights": [
+        "supply_chain",
+        "artificial_intelligence",
+        "cost_pressure"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 8,
+      "snippet": "• In certain COVID-19 affected markets, consumer demand has shifted away from some of our more profitable beverages and away-from-home consumption to lower-margin products and at-home consumption, and this shift in consumer purchasing patterns is likely to continue while shelter-in-place and social distancing behaviors are mandated or encouraged.",
+      "why": "Supports 2020 risk narrative context for demand, artificial_intelligence.",
+      "highlights": [
+        "demand",
+        "artificial_intelligence"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 45,
+      "snippet": "Furthermore, from time to time we and our bottling partners restructure manufacturing and other operations to improve productivity, which may have negative impacts on employee morale and work performance, result in escalation of grievances and adversely affect the negotiation of collective bargaining agreements.",
+      "why": "Supports 2020 risk narrative context for manufacturing, artificial_intelligence.",
+      "highlights": [
+        "manufacturing",
+        "artificial_intelligence"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 41,
+      "snippet": "We may not be able to successfully compete for, attract and/or retain the high-quality and diverse employee talent that we want and that our future business needs may require, such as employees with e-commerce, social media and digital marketing and advertising skills, and/or digital and analytics capabilities.",
+      "why": "Supports 2020 risk narrative context for artificial_intelligence, talent.",
+      "highlights": [
+        "artificial_intelligence",
+        "talent"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": null,
+    "confidence": 0.5,
+    "coverage": 0.316327,
+    "warnings": [
+      "Focuspack is a subset; verify in full compare pane.",
+      "Low signal: focuspack coverage is limited for this pair."
+    ]
+  },
+  "provenance": {
+    "input_file": "inputs/KO_2019_2020_focuspack_deboilerplated.json"
+  }
+}

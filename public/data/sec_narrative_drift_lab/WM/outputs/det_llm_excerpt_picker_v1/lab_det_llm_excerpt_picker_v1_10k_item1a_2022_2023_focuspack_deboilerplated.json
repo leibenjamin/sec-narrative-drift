@@ -1,0 +1,150 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_llm_excerpt_picker_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "WM",
+  "section": "10k_item1a",
+  "year_from": 2022,
+  "year_to": 2023,
+  "artifacts": {
+    "selected_prev": [
+      82,
+      30,
+      53,
+      81,
+      50
+    ],
+    "selected_curr": [
+      55,
+      52,
+      35,
+      2,
+      3
+    ]
+  },
+  "evidence": [
+    {
+      "year": 2022,
+      "paragraph_idx": 82,
+      "snippet": "Increased state, federal and international laws and regulations related to cybersecurity protections and disclosures may require additional resources for compliance, and any inability, or perceived inability, to adequately address new requirements could subject us to regulatory enforcement, private litigation, and public criticism,",
+      "why": "Supports 2022 risk narrative context for cybersecurity, security.",
+      "highlights": [
+        "cybersecurity",
+        "security",
+        "regulation"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 30,
+      "snippet": "We may not be able to achieve our sustainability and other environmental, social and governance (\"ESG\")-related goals, including reduction of our greenhouse gas (\"GHG\") emissions, or execute on our sustainability-related growth strategy and initiatives, within planned timelines,",
+      "why": "Supports 2022 risk narrative context for artificial_intelligence, regulation.",
+      "highlights": [
+        "artificial_intelligence",
+        "regulation",
+        "compliance"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 53,
+      "snippet": "Geopolitical conflict and the resulting international response, including Russia’s invasion of Ukraine, have also exacerbated market disruption, leading to volatility in commodity prices, impacts on the availability and cost of energy, and vendor and supplier disruptions across the global supply chain.",
+      "why": "Supports 2022 risk narrative context for supply_chain, artificial_intelligence.",
+      "highlights": [
+        "supply_chain",
+        "artificial_intelligence",
+        "geopolitics"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 81,
+      "snippet": "Certain new technologies, such as use of autonomous vehicles, remote-controlled equipment, virtual reality, automation and artificial intelligence, present new and significant cybersecurity safety risks that must be analyzed and addressed before implementation.",
+      "why": "Supports 2022 risk narrative context for cybersecurity, security.",
+      "highlights": [
+        "cybersecurity",
+        "security",
+        "artificial_intelligence"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 50,
+      "snippet": "Significant global supply chain disruption and the heightened pace of inflation have reduced availability and increased costs for the goods and services we purchase, with a particular impact on our repair and maintenance costs.",
+      "why": "Supports 2022 risk narrative context for supply_chain, artificial_intelligence.",
+      "highlights": [
+        "supply_chain",
+        "artificial_intelligence",
+        "inflation"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 55,
+      "snippet": "Geopolitical conflicts and the resulting international responses have also exacerbated market disruption, leading to volatility in commodity prices, impacts on the availability and cost of energy, and vendor and supplier disruptions across the global supply chain.",
+      "why": "Supports 2023 risk narrative context for supply_chain, artificial_intelligence.",
+      "highlights": [
+        "supply_chain",
+        "artificial_intelligence",
+        "geopolitics"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 52,
+      "snippet": "Significant global supply chain disruption has reduced availability of certain assets used in our business, and inflation has increased costs for the goods and services we purchase, particularly for labor, repair and maintenance, and subcontractor costs.",
+      "why": "Supports 2023 risk narrative context for supply_chain, artificial_intelligence.",
+      "highlights": [
+        "supply_chain",
+        "artificial_intelligence",
+        "inflation"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 35,
+      "snippet": "Risk Factors — Our revenues, earnings and cash flows will fluctuate based on changes in commodity prices, and commodity prices for recyclable materials are particularly susceptible to volatility based on macroeconomic conditions and regulations that affect our ability to export products and — Our sustainability growth strategy includes significant",
+      "why": "Supports 2023 risk narrative context for artificial_intelligence, regulation.",
+      "highlights": [
+        "artificial_intelligence",
+        "regulation",
+        "export_controls"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 2,
+      "snippet": "Acquisitions, investments and/or new service offerings or lines of business may not increase our earnings in the timeframe anticipated, or at all, due to difficulties operating in new markets or providing new service offerings or lines of business, failure of technologies to perform as expected, failure to operate within budget,",
+      "why": "Supports 2023 risk narrative context for artificial_intelligence, regulation.",
+      "highlights": [
+        "artificial_intelligence",
+        "regulation",
+        "compliance"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 3,
+      "snippet": "Integration of acquisitions and/or new services offerings or lines of business could increase our exposure to the risk of inadvertent noncompliance with applicable laws and regulations, and additional expansion into markets outside of North America would result in our business being subject to new laws and regulatory regimes,",
+      "why": "Supports 2023 risk narrative context for regulation, compliance.",
+      "highlights": [
+        "regulation",
+        "compliance",
+        "cost_pressure"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": null,
+    "confidence": 0.5,
+    "coverage": 0.362445,
+    "warnings": [
+      "Focuspack is a subset; verify in full compare pane.",
+      "Low signal: focuspack coverage is limited for this pair."
+    ]
+  },
+  "provenance": {
+    "input_file": "inputs/WM_2022_2023_focuspack_deboilerplated.json"
+  }
+}

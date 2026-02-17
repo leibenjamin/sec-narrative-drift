@@ -1,0 +1,148 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_llm_excerpt_picker_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "NVDA",
+  "section": "10k_item1a",
+  "year_from": 2020,
+  "year_to": 2021,
+  "artifacts": {
+    "selected_prev": [
+      23,
+      55,
+      19,
+      56,
+      57
+    ],
+    "selected_curr": [
+      42,
+      46,
+      17,
+      16,
+      101
+    ]
+  },
+  "evidence": [
+    {
+      "year": 2020,
+      "paragraph_idx": 23,
+      "snippet": "Our operations could be harmed if manufacturing, logistics or other operations in these locations are disrupted for any reason, including natural disasters, high heat events or water shortages, information technology system failures, military actions or economic, business, labor, environmental, public health, regulatory or political issues.",
+      "why": "Supports 2020 risk narrative context for manufacturing, artificial_intelligence.",
+      "highlights": [
+        "manufacturing",
+        "artificial_intelligence",
+        "regulation"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 55,
+      "snippet": "Our future effective tax rate may be affected by such factors as changes in tax laws, changes in our business or statutory rates, changes in jurisdictions in which our profits are determined to be earned and taxed, changes in available tax credits, the resolution of issues arising from tax audits,",
+      "why": "Supports 2020 risk narrative context for artificial_intelligence, regulation.",
+      "highlights": [
+        "artificial_intelligence",
+        "regulation",
+        "tax_policy"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 19,
+      "snippet": "Our worldwide operations could be disrupted by earthquakes, telecommunications failures, power or water shortages, outages at cloud service providers, tsunamis, floods, hurricanes, typhoons, fires, extreme weather conditions, cyber-attacks, terrorist attacks, medical epidemics or pandemics and other natural or man-made disasters,",
+      "why": "Supports 2020 risk narrative context for cybersecurity, artificial_intelligence.",
+      "highlights": [
+        "cybersecurity",
+        "artificial_intelligence",
+        "climate"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 56,
+      "snippet": "For example, multiple securities litigation claims have recently been filed against us and certain of our officers based on the dissemination of allegedly false and misleading statements related to channel inventory and the impact of cryptocurrency mining on GPU demand.",
+      "why": "Supports 2020 risk narrative context for demand, artificial_intelligence.",
+      "highlights": [
+        "demand",
+        "artificial_intelligence",
+        "litigation"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 57,
+      "snippet": "In addition, a stockholder, purporting to act on behalf of the Company, filed a derivative lawsuit seeking to assert claims on behalf of the Company against the members of our board of directors and certain officers based on the dissemination of allegedly false and misleading statements related to channel inventory and the impact of cryptocurrency",
+      "why": "Supports 2020 risk narrative context for demand, artificial_intelligence.",
+      "highlights": [
+        "demand",
+        "artificial_intelligence"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 42,
+      "snippet": "Our worldwide operations could be disrupted by earthquakes, telecommunications failures, power or water shortages, outages at cloud service providers, tsunamis, floods, hurricanes, typhoons, fires, extreme weather conditions, cyber-attacks, terrorist attacks, medical epidemics or pandemics (including, but not limited to,",
+      "why": "Supports 2021 risk narrative context for cybersecurity, artificial_intelligence.",
+      "highlights": [
+        "cybersecurity",
+        "artificial_intelligence",
+        "climate"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 46,
+      "snippet": "could result in increased taxation, trade sanctions, the imposition of import duties or tariffs, restrictions and controls on imports or exports, or other retaliatory actions, which could have an adverse effect on our business plans or impact the timing of our shipments.",
+      "why": "Supports 2021 risk narrative context for sanctions, export_controls.",
+      "highlights": [
+        "sanctions",
+        "export_controls",
+        "tax_policy"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 17,
+      "snippet": "• a lack of guaranteed supply of wafers and other components and potential higher wafer and component prices, which could be impacted by our failure to correctly estimate demand and to place orders with our suppliers in sufficient quantities and/or in a timely manner;",
+      "why": "Supports 2021 risk narrative context for supply_chain, demand.",
+      "highlights": [
+        "supply_chain",
+        "demand",
+        "artificial_intelligence"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 16,
+      "snippet": "As a result, we face several significant risks which could have an adverse effect on our ability to meet customer demand, scale our supply chain and/or negatively impact our business operations, gross margin, revenue and/or financial results, including:",
+      "why": "Supports 2021 risk narrative context for supply_chain, demand.",
+      "highlights": [
+        "supply_chain",
+        "demand",
+        "artificial_intelligence"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 101,
+      "snippet": "Adverse changes in global, regional or local economic conditions, including recession or slowing growth, changes or uncertainty in fiscal, monetary, or trade policy, higher interest rates, tighter credit, inflation, lower capital expenditures by businesses including on IT infrastructure, increases in unemployment,",
+      "why": "Supports 2021 risk narrative context for artificial_intelligence, inflation.",
+      "highlights": [
+        "artificial_intelligence",
+        "inflation"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": null,
+    "confidence": 0.5,
+    "coverage": 0.399015,
+    "warnings": [
+      "Focuspack is a subset; verify in full compare pane.",
+      "Low signal: focuspack coverage is limited for this pair."
+    ]
+  },
+  "provenance": {
+    "input_file": "inputs/NVDA_2020_2021_focuspack_deboilerplated.json"
+  }
+}

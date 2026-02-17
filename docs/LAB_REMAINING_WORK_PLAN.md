@@ -29,6 +29,7 @@ Core time window: 2019-2024 adjacent year pairs (include most recent even if low
     - `reports/lab_llm_run_manifest.md`
     - `reports/lab_llm_run_manifest.json`
     - local-only `bundles/llm_run_pack_<UTCSTAMP>/inputs/*` + `THREAD_STARTERS.md`.
+  - current manifest/validator state: `42/42` LLM targets present, `missing=0`, `invalid=0`, `present_flag_mismatch=0`.
 - Phase 3 complete (implementation):
   - Lab explainer added ("What am I looking at?"),
   - explicit missing artifact states with expected path + requested URL + copy-debug payload,
@@ -38,7 +39,7 @@ Core time window: 2019-2024 adjacent year pairs (include most recent even if low
   - canonical docs added: `docs/00_DOC_INDEX.md`, `docs/PORTFOLIO_STORY.md`.
 
 Remaining human/manual work:
-- Run offline ChatGPT Desktop jobs and save outputs to canonical paths listed in `reports/lab_llm_run_manifest.md`.
+- Live/incognito screenshot verification on deployed site for final UX confirmation.
 
 ---
 

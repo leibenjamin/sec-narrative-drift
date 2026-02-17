@@ -1,0 +1,93 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_llm_delta_brief_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "KO",
+  "section": "10k_item1a",
+  "year_from": 2022,
+  "year_to": 2023,
+  "artifacts": {
+    "delta_brief": "Between 2022 and 2023, KO continues to emphasize supply_chain as core risk exposure (2022 para 15; 2023 para 17). The earlier filing is relatively more anchored in supply_chain, while the later filing adds clearer weight to supply_chain (2022 para 5; 2023 para 7). Across both years, management frames these items as operational and financial execution pressures rather than isolated one-off events (2022 para 15; 2023 para 7). This comparison should be read as directional because the lens is a focuspack subset and not the full Item 1A text (2022 para 5; 2023 para 17). Overall, the narrative indicates continuity with selective shifts in emphasis instead of a full thematic reset (2022 para 15; 2023 para 17)."
+  },
+  "evidence": [
+    {
+      "year": 2022,
+      "paragraph_idx": 14,
+      "snippet": "These factors include changes in supply and demand; supplier capacity constraints; a deterioration of our or our bottling partners’ relationships with suppliers; inflation; weather conditions (including the effects of climate change); wildfires and other natural disasters;",
+      "why": "Supports 2022 risk narrative context for supply_chain, demand.",
+      "highlights": [
+        "supply_chain",
+        "demand",
+        "cybersecurity"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 4,
+      "snippet": "Although we currently do not anticipate that the suspension of our operations in Russia or the disruptions in Ukraine will have a material impact on our results of operations, the conflict has resulted, and could continue to result, in volatile commodity markets, supply chain disruptions,",
+      "why": "Supports 2022 risk narrative context for supply_chain, cybersecurity.",
+      "highlights": [
+        "supply_chain",
+        "cybersecurity",
+        "artificial_intelligence"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 10,
+      "snippet": "Disruption of our supply chain, including increased commodity, raw material, packaging, energy, transportation and other input costs may adversely affect our financial condition or results of operations.",
+      "why": "Supports 2022 risk narrative context for supply_chain, artificial_intelligence.",
+      "highlights": [
+        "supply_chain",
+        "artificial_intelligence",
+        "cost_pressure"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 16,
+      "snippet": "These factors include changes in supply and demand; supplier capacity constraints; a deterioration of our or our bottling partners’ relationships with suppliers; international conflicts; political uncertainties; acts of terrorism; governmental instability; inflation; weather conditions (including the effects of climate change);",
+      "why": "Supports 2023 risk narrative context for supply_chain, demand.",
+      "highlights": [
+        "supply_chain",
+        "demand",
+        "artificial_intelligence"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 6,
+      "snippet": "These conflicts have resulted, and could continue to result, in volatile commodity markets; logistical, transportation and supply chain disruptions; increased risk of cyber incidents or other disruptions to our information systems; reputational risk; heightened risks to employee safety; business disruptions (including labor shortages);",
+      "why": "Supports 2023 risk narrative context for supply_chain, cybersecurity.",
+      "highlights": [
+        "supply_chain",
+        "cybersecurity",
+        "artificial_intelligence"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 0,
+      "snippet": "Our business, operating results, financial condition and liquidity may be adversely affected by changes in global economic conditions, including global inflationary pressures, prevailing interest rates, credit market conditions, increased unemployment, levels of consumer and business confidence, bank failures,",
+      "why": "Supports 2023 risk narrative context for supply_chain, artificial_intelligence.",
+      "highlights": [
+        "supply_chain",
+        "artificial_intelligence",
+        "inflation"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": null,
+    "confidence": 0.5,
+    "coverage": 0.311475,
+    "warnings": [
+      "Focuspack is a subset; verify in full compare pane.",
+      "Low signal: focuspack coverage is limited for this pair."
+    ]
+  },
+  "provenance": {
+    "input_file": "inputs/KO_2022_2023_focuspack_deboilerplated.json"
+  }
+}

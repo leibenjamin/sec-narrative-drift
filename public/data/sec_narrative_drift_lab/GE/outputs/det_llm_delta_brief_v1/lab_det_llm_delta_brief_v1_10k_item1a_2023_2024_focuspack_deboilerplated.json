@@ -1,0 +1,93 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_llm_delta_brief_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "GE",
+  "section": "10k_item1a",
+  "year_from": 2023,
+  "year_to": 2024,
+  "artifacts": {
+    "delta_brief": "Between 2023 and 2024, GE continues to emphasize demand as core risk exposure (2023 para 56; 2024 para 15). The earlier filing is relatively more anchored in demand, while the later filing adds clearer weight to demand (2023 para 42; 2024 para 46). Across both years, management frames these items as operational and financial execution pressures rather than isolated one-off events (2023 para 56; 2024 para 46). This comparison should be read as directional because the lens is a focuspack subset and not the full Item 1A text (2023 para 42; 2024 para 15). Overall, the narrative indicates continuity with selective shifts in emphasis instead of a full thematic reset (2023 para 56; 2024 para 15)."
+  },
+  "evidence": [
+    {
+      "year": 2023,
+      "paragraph_idx": 55,
+      "snippet": "Capital spending and demand for aircraft engines, aviation products and component aftermarket parts and services by commercial airlines, lessors, other aircraft operators and airframers are influenced by a wide variety of factors, including current and predicted traffic levels, load factors, aircraft fuel prices, labor issues,",
+      "why": "Supports 2023 risk narrative context for demand, artificial_intelligence.",
+      "highlights": [
+        "demand",
+        "artificial_intelligence",
+        "regulation"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 41,
+      "snippet": "While the currently anticipated market growth and power generation share for renewable energy is expected to be favorable for our wind businesses over time, we face uncertainties related to future levels and timeframes of government subsidies and credits (including the impact of the Inflation Reduction Act and other policies),",
+      "why": "Supports 2023 risk narrative context for manufacturing, artificial_intelligence.",
+      "highlights": [
+        "manufacturing",
+        "artificial_intelligence",
+        "competition"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 186,
+      "snippet": "We, our representatives and the industries in which we operate are subject to continuing scrutiny by regulators, other governmental authorities and private sector entities or individuals in the U.S., the European Union, China and other jurisdictions, which have led or may, in certain circumstances, lead to enforcement actions,",
+      "why": "Supports 2023 risk narrative context for artificial_intelligence, regulation.",
+      "highlights": [
+        "artificial_intelligence",
+        "regulation",
+        "litigation"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 14,
+      "snippet": "Capital spending and demand for aircraft engines, aviation products and aftermarket parts and services by commercial airlines, lessors, other aircraft owners or operators and airframers are influenced by a wide variety of factors, including current and predicted traffic levels, passenger and cargo load factors, aircraft fuel prices,",
+      "why": "Supports 2024 risk narrative context for demand, security.",
+      "highlights": [
+        "demand",
+        "security",
+        "artificial_intelligence"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 45,
+      "snippet": "pricing and taxes, energy taxes, product fuel efficiency standards, mandatory disclosure obligations, including U.S. government procurement-related contractual climate disclosures, could increase our operational and compliance expenditures and those of our customers and suppliers,",
+      "why": "Supports 2024 risk narrative context for manufacturing, compliance.",
+      "highlights": [
+        "manufacturing",
+        "compliance",
+        "climate"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 8,
+      "snippet": "Further, political changes and trends such as populism, protectionism, economic nationalism and sentiment toward multinational companies, as well as tariffs, export controls, restrictions on outbound investment or other trade barriers, sanctions, technical or local content regulations,",
+      "why": "Supports 2024 risk narrative context for regulation, sanctions.",
+      "highlights": [
+        "regulation",
+        "sanctions",
+        "export_controls"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": null,
+    "confidence": 0.5,
+    "coverage": 0.228261,
+    "warnings": [
+      "Focuspack is a subset; verify in full compare pane.",
+      "Low signal: focuspack coverage is limited for this pair."
+    ]
+  },
+  "provenance": {
+    "input_file": "inputs/GE_2023_2024_focuspack_deboilerplated.json"
+  }
+}

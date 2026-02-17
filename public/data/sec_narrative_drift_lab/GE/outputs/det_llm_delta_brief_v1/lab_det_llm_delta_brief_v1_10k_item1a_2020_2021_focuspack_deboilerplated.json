@@ -1,0 +1,91 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_llm_delta_brief_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "GE",
+  "section": "10k_item1a",
+  "year_from": 2020,
+  "year_to": 2021,
+  "artifacts": {
+    "delta_brief": "Between 2020 and 2021, GE continues to emphasize artificial_intelligence and manufacturing as core risk exposure (2020 para 21; 2021 para 37). The earlier filing is relatively more anchored in artificial_intelligence, while the later filing adds clearer weight to manufacturing (2020 para 5; 2021 para 19). Across both years, management frames these items as operational and financial execution pressures rather than isolated one-off events (2020 para 21; 2021 para 19). This comparison should be read as directional because the lens is a focuspack subset and not the full Item 1A text (2020 para 5; 2021 para 37). Overall, the narrative indicates continuity with selective shifts in emphasis instead of a full thematic reset (2020 para 21; 2021 para 37)."
+  },
+  "evidence": [
+    {
+      "year": 2020,
+      "paragraph_idx": 20,
+      "snippet": "These trends related to the global energy transition and decarbonization, including the relative competitiveness of different types of product and service offerings within and across our energy businesses, as well as for GE Aviation,",
+      "why": "Supports 2020 risk narrative context for artificial_intelligence, climate.",
+      "highlights": [
+        "artificial_intelligence",
+        "climate",
+        "tax_policy"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 4,
+      "snippet": "We also have experienced, and expect to continue experiencing, lower demand and volume for products and services (particularly at GE Aviation, as described below, and also for portions of GE Healthcare’s business), customer requests for potential payment deferrals or other contract modifications, supply chain under-liquidation,",
+      "why": "Supports 2020 risk narrative context for supply_chain, demand.",
+      "highlights": [
+        "supply_chain",
+        "demand",
+        "artificial_intelligence"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 18,
+      "snippet": "While the anticipated market growth and generation share for renewable energy over time is favorable for our wind businesses, there too we face uncertainties related to the future anticipated levels of government subsidies and credits, significant price competition among wind equipment manufacturers,",
+      "why": "Supports 2020 risk narrative context for manufacturing, artificial_intelligence.",
+      "highlights": [
+        "manufacturing",
+        "artificial_intelligence",
+        "competition"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 36,
+      "snippet": "And while the anticipated market growth and power generation share for renewable energy over time is favorable for our wind businesses, there too we face uncertainties related to the future anticipated levels and timeframes of government subsidies and credits (such as the U.S.",
+      "why": "Supports 2021 risk narrative context for manufacturing, artificial_intelligence.",
+      "highlights": [
+        "manufacturing",
+        "artificial_intelligence",
+        "competition"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 18,
+      "snippet": "In addition, the diversification of revenues, costs, and cash flows will diminish, such that each company’s results of operations, cash flows, working capital, effective tax rate, and financing requirements may be subject to increased volatility and its ability to fund capital expenditures and investments,",
+      "why": "Supports 2021 risk narrative context for tax_policy, cost_pressure.",
+      "highlights": [
+        "tax_policy",
+        "cost_pressure"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 4,
+      "snippet": "These separation transactions will be subject to the satisfaction of a number of customary conditions, including, among others, final approvals by GE’s Board of Directors, receipt of tax rulings in certain jurisdictions and/or tax opinions from external counsel, the filing with the SEC and effectiveness of Form 10 registration statements,",
+      "why": "Supports 2021 risk narrative context for artificial_intelligence, tax_policy.",
+      "highlights": [
+        "artificial_intelligence",
+        "tax_policy"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": null,
+    "confidence": 0.5,
+    "coverage": 0.295652,
+    "warnings": [
+      "Focuspack is a subset; verify in full compare pane.",
+      "Low signal: focuspack coverage is limited for this pair."
+    ]
+  },
+  "provenance": {
+    "input_file": "inputs/GE_2020_2021_focuspack_deboilerplated.json"
+  }
+}

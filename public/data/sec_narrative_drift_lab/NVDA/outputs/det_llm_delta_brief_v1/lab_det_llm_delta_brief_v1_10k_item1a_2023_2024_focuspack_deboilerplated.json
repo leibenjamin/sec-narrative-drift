@@ -1,0 +1,93 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_llm_delta_brief_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "NVDA",
+  "section": "10k_item1a",
+  "year_from": 2023,
+  "year_to": 2024,
+  "artifacts": {
+    "delta_brief": "Between 2023 and 2024, NVDA continues to emphasize artificial_intelligence and manufacturing as core risk exposure (2023 para 155; 2024 para 126). The earlier filing is relatively more anchored in artificial_intelligence, while the later filing adds clearer weight to manufacturing (2023 para 174; 2024 para 51). Across both years, management frames these items as operational and financial execution pressures rather than isolated one-off events (2023 para 155; 2024 para 51). This comparison should be read as directional because the lens is a focuspack subset and not the full Item 1A text (2023 para 174; 2024 para 126). Overall, the narrative indicates continuity with selective shifts in emphasis instead of a full thematic reset (2023 para 155; 2024 para 126)."
+  },
+  "evidence": [
+    {
+      "year": 2023,
+      "paragraph_idx": 154,
+      "snippet": "Shareholder advocacy groups, certain investment funds, other market participants, shareholders and customers have placed increased importance on the implications of the social and environmental cost of their investments and these parties, as well as government regulators,",
+      "why": "Supports 2023 risk narrative context for artificial_intelligence, regulation.",
+      "highlights": [
+        "artificial_intelligence",
+        "regulation",
+        "climate"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 173,
+      "snippet": "The California Privacy Rights Act of 2020, or CPRA, became operative in 2023, and restricts the use of certain categories of sensitive personal information; further restricts the use of cross-contextual advertising techniques; restricts the retention of personal information;",
+      "why": "Supports 2023 risk narrative context for artificial_intelligence, compliance.",
+      "highlights": [
+        "artificial_intelligence",
+        "compliance",
+        "privacy"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 139,
+      "snippet": "Such controls may be very broad in scope and application, prohibit us from exporting our products to any or all customers in one or more markets, including but not limited to China, and could negatively impact our manufacturing, testing, and warehousing locations and options,",
+      "why": "Supports 2023 risk narrative context for manufacturing, demand.",
+      "highlights": [
+        "manufacturing",
+        "demand",
+        "export_controls"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 125,
+      "snippet": "Our operations could be harmed and our costs could increase if manufacturing, logistics or other operations are disrupted for any reason, including natural disasters, high heat events or water shortages, power shortages, information technology system failures or cyber-attacks, military actions or economic, business, labor, environmental,",
+      "why": "Supports 2024 risk narrative context for manufacturing, cybersecurity.",
+      "highlights": [
+        "manufacturing",
+        "cybersecurity",
+        "artificial_intelligence"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 50,
+      "snippet": "While we have managed prior product transitions and have previously sold multiple product architectures at the same time, these transitions are difficult, may impair our ability to predict demand and impact our supply mix, and we may incur additional costs.",
+      "why": "Supports 2024 risk narrative context for supply_chain, demand.",
+      "highlights": [
+        "supply_chain",
+        "demand",
+        "artificial_intelligence"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 210,
+      "snippet": "The USG has already imposed export controls restricting certain gaming GPUs, and if the USG expands such controls to restrict additional gaming products, it may disrupt a significant portion of our supply and distribution chain and negatively impact sales of such products to markets outside China, including the U.S. and Europe.",
+      "why": "Supports 2024 risk narrative context for supply_chain, artificial_intelligence.",
+      "highlights": [
+        "supply_chain",
+        "artificial_intelligence",
+        "export_controls"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": null,
+    "confidence": 0.5,
+    "coverage": 0.197034,
+    "warnings": [
+      "Focuspack is a subset; verify in full compare pane.",
+      "Low signal: focuspack coverage is limited for this pair."
+    ]
+  },
+  "provenance": {
+    "input_file": "inputs/NVDA_2023_2024_focuspack_deboilerplated.json"
+  }
+}

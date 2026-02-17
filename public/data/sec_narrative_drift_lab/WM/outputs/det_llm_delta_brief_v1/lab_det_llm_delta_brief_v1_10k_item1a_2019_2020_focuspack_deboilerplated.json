@@ -1,0 +1,92 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_llm_delta_brief_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "WM",
+  "section": "10k_item1a",
+  "year_from": 2019,
+  "year_to": 2020,
+  "artifacts": {
+    "delta_brief": "Between 2019 and 2020, WM continues to emphasize artificial_intelligence and regulation as core risk exposure (2019 para 5; 2020 para 12). The earlier filing is relatively more anchored in artificial_intelligence, while the later filing adds clearer weight to regulation (2019 para 17; 2020 para 13). Across both years, management frames these items as operational and financial execution pressures rather than isolated one-off events (2019 para 5; 2020 para 13). This comparison should be read as directional because the lens is a focuspack subset and not the full Item 1A text (2019 para 17; 2020 para 12). Overall, the narrative indicates continuity with selective shifts in emphasis instead of a full thematic reset (2019 para 5; 2020 para 12)."
+  },
+  "evidence": [
+    {
+      "year": 2019,
+      "paragraph_idx": 4,
+      "snippet": "The planned acquisition of Advanced Disposal is subject to a number of risks and uncertainties, including general economic and capital markets conditions; the effects that the pending merger may have on us, Advanced Disposal and our respective businesses;",
+      "why": "Supports 2019 risk narrative context for artificial_intelligence, regulation.",
+      "highlights": [
+        "artificial_intelligence",
+        "regulation",
+        "cost_pressure"
+      ]
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 16,
+      "snippet": "Compliance with existing or increased future regulations and/or enforcement of such regulations can restrict or change our operations, increase our operating costs or require us to make additional capital expenditures, and a decrease in regulation may lower barriers to entry for our competitors.",
+      "why": "Supports 2019 risk narrative context for regulation, compliance.",
+      "highlights": [
+        "regulation",
+        "compliance",
+        "cost_pressure"
+      ]
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 17,
+      "snippet": "Stringent government regulations at the federal, state, provincial and local level in the U.S. and Canada have a substantial impact on our business, and compliance with such regulations is costly.",
+      "why": "Supports 2019 risk narrative context for regulation, compliance.",
+      "highlights": [
+        "regulation",
+        "compliance",
+        "cost_pressure"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 11,
+      "snippet": "Our operations must comply with extensive existing regulations, and changes in regulations and/or enforcement of regulations can restrict or alter our operations, increase our operating costs, increase our tax rate, or require us to make additional capital expenditures.",
+      "why": "Supports 2020 risk narrative context for regulation, tax_policy.",
+      "highlights": [
+        "regulation",
+        "tax_policy",
+        "cost_pressure"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 12,
+      "snippet": "Stringent government regulations at the federal, state, provincial and local level in the U.S. and Canada have a substantial impact on our operations, and compliance with such regulations is costly.",
+      "why": "Supports 2020 risk narrative context for regulation, compliance.",
+      "highlights": [
+        "regulation",
+        "compliance",
+        "cost_pressure"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 19,
+      "snippet": "If we are unable to attract, hire or retain key team members and a high-quality workforce, or if our succession planning does not develop an adequate pipeline of future leaders, it could disrupt our business, jeopardize our strategic priorities and result in increased costs, negatively impacting our results of operations.",
+      "why": "Supports 2020 risk narrative context for artificial_intelligence, cost_pressure.",
+      "highlights": [
+        "artificial_intelligence",
+        "cost_pressure"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": null,
+    "confidence": 0.5,
+    "coverage": 0.257895,
+    "warnings": [
+      "Focuspack is a subset; verify in full compare pane.",
+      "Low signal: focuspack coverage is limited for this pair."
+    ]
+  },
+  "provenance": {
+    "input_file": "inputs/WM_2019_2020_focuspack_deboilerplated.json"
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_llm_delta_brief_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "WM",
+  "section": "10k_item1a",
+  "year_from": 2021,
+  "year_to": 2022,
+  "artifacts": {
+    "delta_brief": "Between 2021 and 2022, WM continues to emphasize artificial_intelligence as core risk exposure (2021 para 11; 2022 para 32). The earlier filing is relatively more anchored in artificial_intelligence, while the later filing adds clearer weight to artificial_intelligence (2021 para 40; 2022 para 57). Across both years, management frames these items as operational and financial execution pressures rather than isolated one-off events (2021 para 11; 2022 para 57). This comparison should be read as directional because the lens is a focuspack subset and not the full Item 1A text (2021 para 40; 2022 para 32). Overall, the narrative indicates continuity with selective shifts in emphasis instead of a full thematic reset (2021 para 11; 2022 para 32)."
+  },
+  "evidence": [
+    {
+      "year": 2021,
+      "paragraph_idx": 10,
+      "snippet": "In addition to the risks set forth above, implementation of our business strategy could also be affected by other factors beyond our control, such as increased competition, legal developments, government regulation, general economic conditions, increased operating costs or expenses,",
+      "why": "Supports 2021 risk narrative context for artificial_intelligence, regulation.",
+      "highlights": [
+        "artificial_intelligence",
+        "regulation",
+        "competition"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 39,
+      "snippet": "We cannot currently predict the impact of any such vaccine requirements on our workforce, although implementation may result in our inability to perform or compete for certain contracts, as well as significant cost, operational disruption, attrition and difficulty securing future labor needs in the already-constrained labor market.",
+      "why": "Supports 2021 risk narrative context for artificial_intelligence, cost_pressure.",
+      "highlights": [
+        "artificial_intelligence",
+        "cost_pressure",
+        "labor"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 101,
+      "snippet": "RINs prices generally respond to regulations enacted by the EPA or other regulatory bodies, as well as fluctuations in supply and demand.",
+      "why": "Supports 2021 risk narrative context for supply_chain, demand.",
+      "highlights": [
+        "supply_chain",
+        "demand",
+        "regulation"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 31,
+      "snippet": "We may not be able to achieve our sustainability and other environmental, social and governance (\"ESG\")-related goals, including reduction of our greenhouse gas (\"GHG\") emissions, or execute on our sustainability-related growth strategy and initiatives, within planned timelines,",
+      "why": "Supports 2022 risk narrative context for artificial_intelligence, regulation.",
+      "highlights": [
+        "artificial_intelligence",
+        "regulation",
+        "compliance"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 56,
+      "snippet": "Geopolitical conflict and the resulting international response, including Russia’s invasion of Ukraine, have also exacerbated market disruption, leading to volatility in commodity prices, impacts on the availability and cost of energy, and vendor and supplier disruptions across the global supply chain.",
+      "why": "Supports 2022 risk narrative context for supply_chain, artificial_intelligence.",
+      "highlights": [
+        "supply_chain",
+        "artificial_intelligence",
+        "geopolitics"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 10,
+      "snippet": "In addition to the risks set forth above, implementation of our business strategy could also be affected by other factors beyond our control, such as increased competition, legal developments, government regulation, general economic conditions, including slower growth or recession, increased operating costs or expenses,",
+      "why": "Supports 2022 risk narrative context for artificial_intelligence, regulation.",
+      "highlights": [
+        "artificial_intelligence",
+        "regulation",
+        "competition"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": null,
+    "confidence": 0.5,
+    "coverage": 0.275591,
+    "warnings": [
+      "Focuspack is a subset; verify in full compare pane.",
+      "Low signal: focuspack coverage is limited for this pair."
+    ]
+  },
+  "provenance": {
+    "input_file": "inputs/WM_2021_2022_focuspack_deboilerplated.json"
+  }
+}

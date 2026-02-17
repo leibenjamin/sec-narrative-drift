@@ -1,0 +1,92 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_llm_delta_brief_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "KO",
+  "section": "10k_item1a",
+  "year_from": 2019,
+  "year_to": 2020,
+  "artifacts": {
+    "delta_brief": "Between 2019 and 2020, KO continues to emphasize supply_chain as core risk exposure (2019 para 43; 2020 para 14). The earlier filing is relatively more anchored in supply_chain, while the later filing adds clearer weight to supply_chain (2019 para 10; 2020 para 17). Across both years, management frames these items as operational and financial execution pressures rather than isolated one-off events (2019 para 43; 2020 para 17). This comparison should be read as directional because the lens is a focuspack subset and not the full Item 1A text (2019 para 10; 2020 para 14). Overall, the narrative indicates continuity with selective shifts in emphasis instead of a full thematic reset (2019 para 43; 2020 para 14)."
+  },
+  "evidence": [
+    {
+      "year": 2019,
+      "paragraph_idx": 42,
+      "snippet": "An increase in the cost, a sustained interruption in the supply, or a shortage of some of these ingredients, other raw materials, packaging materials, aluminum cans and other containers that may be caused by changes in or the enactment of new laws and regulations; a deterioration of our or our bottling partners' relationships with suppliers;",
+      "why": "Supports 2019 risk narrative context for supply_chain, artificial_intelligence.",
+      "highlights": [
+        "supply_chain",
+        "artificial_intelligence",
+        "regulation"
+      ]
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 9,
+      "snippet": "The changes introduced by the GDPR and the CCPA, as well as any other changes to existing personal data protection or privacy laws and the introduction of such laws in other jurisdictions, have subjected and may continue in the future to subject the Company to, among other things,",
+      "why": "Supports 2019 risk narrative context for security, privacy.",
+      "highlights": [
+        "security",
+        "privacy",
+        "cost_pressure"
+      ]
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 10,
+      "snippet": "Our security controls over personal data, the training of employees and vendors on data privacy and data security, and the policies, procedures and practices we implemented or may implement in the future may not prevent the improper disclosure of personal data.",
+      "why": "Supports 2019 risk narrative context for security, artificial_intelligence.",
+      "highlights": [
+        "security",
+        "artificial_intelligence",
+        "privacy"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 13,
+      "snippet": "These measures may not be sufficient to prevent the spread of COVID-19 among our employees and, therefore, we may face additional concentrate production disruptions in the future, which may place constraints on our ability to supply concentrates to our bottling partners in a timely manner or may increase our concentrate supply costs.",
+      "why": "Supports 2020 risk narrative context for supply_chain, artificial_intelligence.",
+      "highlights": [
+        "supply_chain",
+        "artificial_intelligence",
+        "cost_pressure"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 16,
+      "snippet": "• Disruptions in supply chains have placed, and may continue to place, constraints on our and our bottling partners' ability to source beverage containers, such as glass bottles and cans, which has increased, and in the future may increase, our and their packaging costs.",
+      "why": "Supports 2020 risk narrative context for supply_chain, artificial_intelligence.",
+      "highlights": [
+        "supply_chain",
+        "artificial_intelligence",
+        "cost_pressure"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 8,
+      "snippet": "• In certain COVID-19 affected markets, consumer demand has shifted away from some of our more profitable beverages and away-from-home consumption to lower-margin products and at-home consumption, and this shift in consumer purchasing patterns is likely to continue while shelter-in-place and social distancing behaviors are mandated or encouraged.",
+      "why": "Supports 2020 risk narrative context for demand, artificial_intelligence.",
+      "highlights": [
+        "demand",
+        "artificial_intelligence"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": null,
+    "confidence": 0.5,
+    "coverage": 0.316327,
+    "warnings": [
+      "Focuspack is a subset; verify in full compare pane.",
+      "Low signal: focuspack coverage is limited for this pair."
+    ]
+  },
+  "provenance": {
+    "input_file": "inputs/KO_2019_2020_focuspack_deboilerplated.json"
+  }
+}

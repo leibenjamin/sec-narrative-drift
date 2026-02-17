@@ -1,0 +1,92 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_llm_delta_brief_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "NVDA",
+  "section": "10k_item1a",
+  "year_from": 2024,
+  "year_to": 2025,
+  "artifacts": {
+    "delta_brief": "Between 2024 and 2025, NVDA continues to emphasize security and supply_chain as core risk exposure (2024 para 160; 2025 para 109). The earlier filing is relatively more anchored in security, while the later filing adds clearer weight to supply_chain (2024 para 37; 2025 para 122). Across both years, management frames these items as operational and financial execution pressures rather than isolated one-off events (2024 para 160; 2025 para 122). This comparison should be read as directional because the lens is a focuspack subset and not the full Item 1A text (2024 para 37; 2025 para 109). Overall, the narrative indicates continuity with selective shifts in emphasis instead of a full thematic reset (2024 para 160; 2025 para 109)."
+  },
+  "evidence": [
+    {
+      "year": 2024,
+      "paragraph_idx": 159,
+      "snippet": "The theft, loss or misuse of personal data in our possession or by one of our partners could result in damage to our reputation, regulatory proceedings, disruption of our business activities or increased security costs and costs related to defending legal claims.",
+      "why": "Supports 2024 risk narrative context for security, artificial_intelligence.",
+      "highlights": [
+        "security",
+        "artificial_intelligence",
+        "regulation"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 36,
+      "snippet": "The increased frequency of these transitions may magnify the challenges associated with managing our supply and demand due to long manufacturing lead times.",
+      "why": "Supports 2024 risk narrative context for supply_chain, manufacturing.",
+      "highlights": [
+        "supply_chain",
+        "manufacturing",
+        "demand"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 82,
+      "snippet": "These include domestic and international economic and political conditions in countries in which we and our suppliers and manufacturers do business, government lockdowns to control case spread of global or local health issues, differing legal standards with respect to protection of IP and employment practices,",
+      "why": "Supports 2024 risk narrative context for manufacturing, inflation.",
+      "highlights": [
+        "manufacturing",
+        "inflation"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 108,
+      "snippet": "Changes to the laws, rules and regulations to which we are subject, or changes to their interpretation and enforcement, could lead to materially greater compliance and other costs, and/or further restrictions on our ability to manufacture and supply our products and operate our business.",
+      "why": "Supports 2025 risk narrative context for supply_chain, manufacturing.",
+      "highlights": [
+        "supply_chain",
+        "manufacturing",
+        "regulation"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 121,
+      "snippet": "Such controls have been and may again be very broad in scope and application, prohibit us from exporting our products to any or all customers in one or more markets, including but not limited to China and over 150 countries designated “Tier 2” by the January 2025 AI Diffusion IFR, and could negatively impact our manufacturing,",
+      "why": "Supports 2025 risk narrative context for manufacturing, demand.",
+      "highlights": [
+        "manufacturing",
+        "demand",
+        "artificial_intelligence"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 0,
+      "snippet": "• Long manufacturing lead times and uncertain supply and component availability, combined with a failure to estimate customer demand accurately has led and could lead to mismatches between supply and demand.",
+      "why": "Supports 2025 risk narrative context for supply_chain, manufacturing.",
+      "highlights": [
+        "supply_chain",
+        "manufacturing",
+        "demand"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": null,
+    "confidence": 0.5,
+    "coverage": 0.222222,
+    "warnings": [
+      "Focuspack is a subset; verify in full compare pane.",
+      "Low signal: focuspack coverage is limited for this pair."
+    ]
+  },
+  "provenance": {
+    "input_file": "inputs/NVDA_2024_2025_focuspack_deboilerplated.json"
+  }
+}

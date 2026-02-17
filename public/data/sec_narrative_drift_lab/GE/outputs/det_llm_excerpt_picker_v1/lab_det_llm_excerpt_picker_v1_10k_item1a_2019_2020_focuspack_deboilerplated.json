@@ -1,0 +1,148 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_llm_excerpt_picker_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "GE",
+  "section": "10k_item1a",
+  "year_from": 2019,
+  "year_to": 2020,
+  "artifacts": {
+    "selected_prev": [
+      20,
+      6,
+      4,
+      19,
+      5
+    ],
+    "selected_curr": [
+      18,
+      7,
+      5,
+      16,
+      104
+    ]
+  },
+  "evidence": [
+    {
+      "year": 2019,
+      "paragraph_idx": 20,
+      "snippet": "These trends and the relative competitiveness of different types of product and service offerings will continue to be impacted in ways that are uncertain by factors such as the pace of technological developments and related cost considerations,",
+      "why": "Supports 2019 risk narrative context for artificial_intelligence, climate.",
+      "highlights": [
+        "artificial_intelligence",
+        "climate",
+        "tax_policy"
+      ]
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 6,
+      "snippet": "Political changes and trends such as populism, protectionism, economic nationalism and sentiment toward multinational companies and resulting changes to trade, tax or other laws and policies (including tariffs) have been and may continue to be disruptive and costly to our businesses, and can interfere with our global operating model, supply chain,",
+      "why": "Supports 2019 risk narrative context for supply_chain, artificial_intelligence.",
+      "highlights": [
+        "supply_chain",
+        "artificial_intelligence",
+        "tax_policy"
+      ]
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 4,
+      "snippet": "Our operations and the execution of our business plans and strategies are subject to the effects of global economic trends, competition and geopolitical risks and demand or supply shocks from war, natural disaster, a health pandemic or other events.",
+      "why": "Supports 2019 risk narrative context for supply_chain, demand.",
+      "highlights": [
+        "supply_chain",
+        "demand",
+        "geopolitics"
+      ]
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 19,
+      "snippet": "For example, the significant decreases in recent years in the levelized cost of renewable sources of power generation (such as wind and solar), along with ongoing changes in investor and consumer preferences and considerations related to climate change,",
+      "why": "Supports 2019 risk narrative context for demand, climate.",
+      "highlights": [
+        "demand",
+        "climate",
+        "cost_pressure"
+      ]
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 5,
+      "snippet": "They are also affected by local and regional economic environments and policies in the U.S. and other markets that we serve, including interest rates, monetary policy, inflation, economic growth, recession, commodity prices, currency volatility, currency controls or other limitations on the ability to expatriate cash,",
+      "why": "Supports 2019 risk narrative context for inflation, commodity_risk.",
+      "highlights": [
+        "inflation",
+        "commodity_risk"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 18,
+      "snippet": "Political changes and trends such as populism, protectionism, economic nationalism and sentiment toward multinational companies and resulting tariffs, export controls or other trade barriers, or changes to tax or other laws and policies, have been and may continue to be disruptive and costly to our businesses,",
+      "why": "Supports 2020 risk narrative context for supply_chain, artificial_intelligence.",
+      "highlights": [
+        "supply_chain",
+        "artificial_intelligence",
+        "export_controls"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 7,
+      "snippet": "We also have experienced, and expect to continue experiencing, lower demand and volume for products and services (particularly at GE Aviation, as described below, and also for portions of GE Healthcare’s business), customer requests for potential payment deferrals or other contract modifications, supply chain under-liquidation,",
+      "why": "Supports 2020 risk narrative context for supply_chain, demand.",
+      "highlights": [
+        "supply_chain",
+        "demand",
+        "artificial_intelligence"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 5,
+      "snippet": "Our operations and financial performance have been negatively impacted by the COVID-19 pandemic that has caused, and is expected to continue to cause, the global slowdown of economic activity (including the decrease in demand for a broad variety of goods and services),",
+      "why": "Supports 2020 risk narrative context for supply_chain, demand.",
+      "highlights": [
+        "supply_chain",
+        "demand",
+        "artificial_intelligence"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 16,
+      "snippet": "Our operations and the execution of our business plans and strategies are subject to the effects of global economic trends, geopolitical risks and demand or supply shocks from events that could include war, a major terrorist attack, natural disasters or actual or threatened health emergencies (such as COVID-19).",
+      "why": "Supports 2020 risk narrative context for supply_chain, demand.",
+      "highlights": [
+        "supply_chain",
+        "demand",
+        "geopolitics"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 104,
+      "snippet": "For example, following our acquisition of Alstom's Thermal, Renewables and Grid businesses in 2015, we are subject to legacy legal proceedings and legal compliance risks that relate to claimed anti-competitive conduct or improper payments by Alstom in the pre-acquisition period, and payments for settlements, judgments,",
+      "why": "Supports 2020 risk narrative context for artificial_intelligence, compliance.",
+      "highlights": [
+        "artificial_intelligence",
+        "compliance"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": null,
+    "confidence": 0.5,
+    "coverage": 0.320388,
+    "warnings": [
+      "Focuspack is a subset; verify in full compare pane.",
+      "Low signal: focuspack coverage is limited for this pair."
+    ]
+  },
+  "provenance": {
+    "input_file": "inputs/GE_2019_2020_focuspack_deboilerplated.json"
+  }
+}

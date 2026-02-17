@@ -1,0 +1,145 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_llm_excerpt_picker_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "WM",
+  "section": "10k_item1a",
+  "year_from": 2019,
+  "year_to": 2020,
+  "artifacts": {
+    "selected_prev": [
+      4,
+      16,
+      17,
+      3,
+      19
+    ],
+    "selected_curr": [
+      11,
+      12,
+      19,
+      14,
+      52
+    ]
+  },
+  "evidence": [
+    {
+      "year": 2019,
+      "paragraph_idx": 4,
+      "snippet": "The planned acquisition of Advanced Disposal is subject to a number of risks and uncertainties, including general economic and capital markets conditions; the effects that the pending merger may have on us, Advanced Disposal and our respective businesses;",
+      "why": "Supports 2019 risk narrative context for artificial_intelligence, regulation.",
+      "highlights": [
+        "artificial_intelligence",
+        "regulation",
+        "cost_pressure"
+      ]
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 16,
+      "snippet": "Compliance with existing or increased future regulations and/or enforcement of such regulations can restrict or change our operations, increase our operating costs or require us to make additional capital expenditures, and a decrease in regulation may lower barriers to entry for our competitors.",
+      "why": "Supports 2019 risk narrative context for regulation, compliance.",
+      "highlights": [
+        "regulation",
+        "compliance",
+        "cost_pressure"
+      ]
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 17,
+      "snippet": "Stringent government regulations at the federal, state, provincial and local level in the U.S. and Canada have a substantial impact on our business, and compliance with such regulations is costly.",
+      "why": "Supports 2019 risk narrative context for regulation, compliance.",
+      "highlights": [
+        "regulation",
+        "compliance",
+        "cost_pressure"
+      ]
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 3,
+      "snippet": "The consummation of the acquisition is not assured and is subject to certain conditions, including the expiration or termination of any waiting period under the Hart-Scott-Rodino Antitrust Improvements Act of 1976, as amended, and the rules and regulations promulgated thereunder and the absence of any law or order restraining,",
+      "why": "Supports 2019 risk narrative context for artificial_intelligence, regulation.",
+      "highlights": [
+        "artificial_intelligence",
+        "regulation"
+      ]
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 19,
+      "snippet": "The permits and approvals are often difficult, time consuming and costly to obtain and sometimes contain conditions that limit our operations.",
+      "why": "Supports 2019 risk narrative context for artificial_intelligence, cost_pressure.",
+      "highlights": [
+        "artificial_intelligence",
+        "cost_pressure"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 11,
+      "snippet": "Our operations must comply with extensive existing regulations, and changes in regulations and/or enforcement of regulations can restrict or alter our operations, increase our operating costs, increase our tax rate, or require us to make additional capital expenditures.",
+      "why": "Supports 2020 risk narrative context for regulation, tax_policy.",
+      "highlights": [
+        "regulation",
+        "tax_policy",
+        "cost_pressure"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 12,
+      "snippet": "Stringent government regulations at the federal, state, provincial and local level in the U.S. and Canada have a substantial impact on our operations, and compliance with such regulations is costly.",
+      "why": "Supports 2020 risk narrative context for regulation, compliance.",
+      "highlights": [
+        "regulation",
+        "compliance",
+        "cost_pressure"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 19,
+      "snippet": "If we are unable to attract, hire or retain key team members and a high-quality workforce, or if our succession planning does not develop an adequate pipeline of future leaders, it could disrupt our business, jeopardize our strategic priorities and result in increased costs, negatively impacting our results of operations.",
+      "why": "Supports 2020 risk narrative context for artificial_intelligence, cost_pressure.",
+      "highlights": [
+        "artificial_intelligence",
+        "cost_pressure"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 14,
+      "snippet": "The policies set forth under the previous U.S. administration, for example, included substantial changes to foreign trade policy and generally were in favor of reducing regulation and corporate taxation.",
+      "why": "Supports 2020 risk narrative context for regulation, tax_policy.",
+      "highlights": [
+        "regulation",
+        "tax_policy"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 52,
+      "snippet": "The U.S. is not a party to the Basel Convention, but most countries to which we export are, which may limit exports of certain plastics.",
+      "why": "Supports 2020 risk narrative context for artificial_intelligence, export_controls.",
+      "highlights": [
+        "artificial_intelligence",
+        "export_controls"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": null,
+    "confidence": 0.5,
+    "coverage": 0.257895,
+    "warnings": [
+      "Focuspack is a subset; verify in full compare pane.",
+      "Low signal: focuspack coverage is limited for this pair."
+    ]
+  },
+  "provenance": {
+    "input_file": "inputs/WM_2019_2020_focuspack_deboilerplated.json"
+  }
+}

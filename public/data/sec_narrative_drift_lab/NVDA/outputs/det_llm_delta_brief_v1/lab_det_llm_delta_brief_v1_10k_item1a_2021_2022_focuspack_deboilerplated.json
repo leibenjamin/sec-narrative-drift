@@ -4,85 +4,90 @@
   "cleaning_lens": "deboilerplated",
   "source_id": "edgar",
   "ticker": "NVDA",
+  "section": "10k_item1a",
   "year_from": 2021,
   "year_to": 2022,
   "artifacts": {
-    "delta_brief": "From 2021 to 2022, NVIDIA's risk narrative puts more weight on concrete execution bottlenecks, moving from general warnings about scaling the supply chain and meeting customer demand (2021 ¶33) to explicit acknowledgment that manufacturing lead times can be twelve months or longer, increasing the odds of shortages or excess inventory if forecasts miss (2022 ¶31). Crypto-driven volatility remains a recurring theme, with 2021 highlighting how Ethereum 2.0 and related standards could increase aftermarket GPU resales and reduce demand for new GPUs (2021 ¶64) and 2022 expanding that risk to include reduced Ethereum mining usage and broader downstream effects that can still depress new-product demand (2022 ¶26). 2022 adds a sharply event-specific cybersecurity risk, describing a February 23, 2022 incident of unauthorized network access by criminal threat actors (2022 ¶108). It also foregrounds geopolitics by tying sanctions and export controls directly to the Russia-Ukraine war and potential severe restrictions on exports (2022 ¶180). Overall, the 2022 section feels more immediate and incident-and-policy-driven, while keeping the core themes of supply constraints and crypto-related demand swings (2021 ¶33; 2022 ¶31; 2021 ¶64; 2022 ¶26)."
+    "delta_brief": "Between 2021 and 2022, NVDA continues to emphasize manufacturing and security as core risk exposure (2021 para 96; 2022 para 179). The earlier filing is relatively more anchored in manufacturing, while the later filing adds clearer weight to security (2021 para 38; 2022 para 41). Across both years, management frames these items as operational and financial execution pressures rather than isolated one-off events (2021 para 96; 2022 para 41). This comparison should be read as directional because the lens is a focuspack subset and not the full Item 1A text (2021 para 38; 2022 para 179). Overall, the narrative indicates continuity with selective shifts in emphasis instead of a full thematic reset (2021 para 96; 2022 para 179)."
   },
   "evidence": [
     {
       "year": 2021,
-      "paragraph_idx": 32,
-      "snippet": "As a result, we face several significant risks which could have an adverse effect on our ability to meet customer demand, scale our supply chain and/or negatively impact our business operations, gross margin, revenue and/or financial results, including:",
-      "why": "Serves as the 2021 baseline for supply-chain and capacity execution risk tied to meeting demand.",
+      "paragraph_idx": 95,
+      "snippet": "Our operations could be harmed if manufacturing, logistics or other operations in these locations are disrupted for any reason, including natural disasters, high heat events or water shortages, other negative impacts from climate change, information technology system failures, military actions or economic, business, labor, environmental,",
+      "why": "Supports 2021 risk narrative context for manufacturing, artificial_intelligence.",
       "highlights": [
-        "supply chain constraints",
-        "demand forecasting"
+        "manufacturing",
+        "artificial_intelligence",
+        "regulation"
       ]
     },
     {
       "year": 2021,
-      "paragraph_idx": 63,
-      "snippet": "Changes to cryptocurrency standards and processes including, but not limited to, the pending Ethereum 2.0 standard may also create increased aftermarket resales of our GPUs and may reduce demand for our new GPUs.",
-      "why": "Shows the 2021 framing of crypto-driven demand risk via Ethereum changes and aftermarket resale pressure.",
+      "paragraph_idx": 37,
+      "snippet": "In addition, low manufacturing yields could have an adverse effect on our ability to meet customer demand, increase manufacturing costs, harm customer or partner relationships, and/or negatively impact our business operations, gross margin, revenue and/or financial results.",
+      "why": "Supports 2021 risk narrative context for manufacturing, demand.",
       "highlights": [
-        "crypto mining demand"
+        "manufacturing",
+        "demand",
+        "cost_pressure"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 32,
+      "snippet": "As a result, we face several significant risks which could have an adverse effect on our ability to meet customer demand, scale our supply chain and/or negatively impact our business operations, gross margin, revenue and/or financial results, including:",
+      "why": "Supports 2021 risk narrative context for supply_chain, demand.",
+      "highlights": [
+        "supply_chain",
+        "demand",
+        "artificial_intelligence"
       ]
     },
     {
       "year": 2022,
-      "paragraph_idx": 30,
-      "snippet": "Our manufacturing lead times are very long and in some cases, extend to be twelve months or longer, which requires us to make estimates of customers’ future demand.",
-      "why": "Updates the supply-risk narrative with explicit long lead times that magnify forecasting error and mismatch risk.",
+      "paragraph_idx": 178,
+      "snippet": "Government actions, including trade protection and national security policies of U.S. and foreign government bodies, such as tariffs, import or export regulations, including deemed export restrictions, trade and economic sanctions, decrees, quotas or other trade barriers and restrictions could affect our ability to ship products,",
+      "why": "Supports 2022 risk narrative context for security, regulation.",
       "highlights": [
-        "supply chain constraints",
-        "demand forecasting"
+        "security",
+        "regulation",
+        "sanctions"
       ]
     },
     {
       "year": 2022,
-      "paragraph_idx": 25,
-      "snippet": "Changes to cryptocurrency standards and processes including, but not limited to, the pending Ethereum 2.",
-      "why": "Expands the crypto-risk discussion in 2022 to include mining usage declines and broader channel/price impacts alongside reduced demand.",
+      "paragraph_idx": 40,
+      "snippet": "• decrease in future demand, decrease in the cost of supply chain materials, or changes in the design of future products where we have entered into long-term supply commitments, including prepayments, particularly to the extent we are placing orders well in advance of our historical lead times and/or before the design of those products is final.",
+      "why": "Supports 2022 risk narrative context for supply_chain, demand.",
       "highlights": [
-        "crypto mining demand",
-        "aftermarket resales"
+        "supply_chain",
+        "demand",
+        "artificial_intelligence"
       ]
     },
     {
       "year": 2022,
-      "paragraph_idx": 107,
-      "snippet": "For example, on February 23, 2022, we became aware of a security incident involving unauthorized access to our network by a group of independent criminal threat actors, not affiliated with any government or political cause.",
-      "why": "Introduces a specific, dated cybersecurity incident that elevates operational and IP protection risk in 2022.",
+      "paragraph_idx": 131,
+      "snippet": "Our operations could be harmed and our costs could increase if manufacturing, logistics or other operations are disrupted for any reason, including natural disasters, high heat events or water shortages, information technology system failures, military actions or economic, business, labor, environmental, public health, or political issues.",
+      "why": "Supports 2022 risk narrative context for manufacturing, artificial_intelligence.",
       "highlights": [
-        "cybersecurity incident"
-      ]
-    },
-    {
-      "year": 2022,
-      "paragraph_idx": 179,
-      "snippet": "For example, in response to the Russian invasion of Ukraine, the United States and certain allies have imposed economic sanctions and export control measures and may impose additional sanctions or export control measures, which have and could in the future result in, among other things, severe or complete restrictions on exports",
-      "why": "Makes geopolitical conflict and sanctions/export controls a concrete, event-linked business risk in 2022.",
-      "highlights": [
-        "geopolitical conflict",
-        "export controls"
+        "manufacturing",
+        "artificial_intelligence",
+        "cost_pressure"
       ]
     }
   ],
   "metrics": {
     "drift_score": null,
     "confidence": 0.5,
-    "coverage": 0.9071391014780628,
+    "coverage": 0.185567,
     "warnings": [
       "Focuspack is a subset; verify in full compare pane.",
-      "Source file: NVDA_2021_2022_focuspack_deboilerplated.json",
-      "Normalized citation symbol from 'Â¶' to '¶' in delta_brief.",
-      "Normalized provenance.input_file to shipped public llm_inputs path."
+      "Low signal: focuspack coverage is limited for this pair."
     ]
   },
   "provenance": {
-    "input_file": "public/data/sec_narrative_drift_lab/llm_inputs/NVDA_2021_2022_focuspack_deboilerplated.json"
-  },
-  "section_id": "10k_item1a",
-  "section": "10k_item1a"
+    "input_file": "inputs/NVDA_2021_2022_focuspack_deboilerplated.json"
+  }
 }
