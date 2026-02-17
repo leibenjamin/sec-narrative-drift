@@ -4,11 +4,10 @@
   "cleaning_lens": "deboilerplated",
   "source_id": "edgar",
   "ticker": "KO",
-  "section": "10k_item1a",
   "year_from": 2023,
   "year_to": 2024,
   "artifacts": {
-    "delta_brief": "Across 2023-2024, KO continues to frame international conflicts and broader geopolitical instability as drivers of supply-chain, cost, and security disruptions (2023 \u00b66; 2024 \u00b64). The 2024 language leans more on a generalized instability pathway that bundles logistics, input costs, and employee/infrastructure risk together (2024 \u00b64). Cyber risk remains prominent, with both years calling out escalating attacker sophistication and the role of generative AI alongside zero-day vulnerabilities (2023 \u00b659; 2024 \u00b660). New emphasis in 2024 explicitly flags that the legal and regulatory landscape for AI is uncertain and evolving, potentially raising compliance costs or constraining usage (2024 \u00b654). 2024 also expands consumer-health and policy pressure on sweetened beverages, including obesity concerns, perceived effects of weight-loss drugs on consumption patterns, and potential taxes/regulation that could reduce demand or increase costs (2024 \u00b626). Overall, the drift tilts toward a more tech-and-regulation-forward posture (AI rules plus cyber sophistication) while keeping geopolitical disruption as the operating backdrop (2024 \u00b654; 2024 \u00b64)."
+    "delta_brief": "Across 2023-2024, KO continues to frame international conflicts and broader geopolitical instability as drivers of supply-chain, cost, and security disruptions (2023 ¶6; 2024 ¶4). The 2024 language leans more on a generalized instability pathway that bundles logistics, input costs, and employee/infrastructure risk together (2024 ¶4). Cyber risk remains prominent, with both years calling out escalating attacker sophistication and the role of generative AI alongside zero-day vulnerabilities (2023 ¶59; 2024 ¶60). New emphasis in 2024 explicitly flags that the legal and regulatory landscape for AI is uncertain and evolving, potentially raising compliance costs or constraining usage (2024 ¶54). 2024 also expands consumer-health and policy pressure on sweetened beverages, including obesity concerns, perceived effects of weight-loss drugs on consumption patterns, and potential taxes/regulation that could reduce demand or increase costs (2024 ¶26). Overall, the drift tilts toward a more tech-and-regulation-forward posture (AI rules plus cyber sophistication) while keeping geopolitical disruption as the operating backdrop (2024 ¶54; 2024 ¶4)."
   },
   "evidence": [
     {
@@ -84,5 +83,7 @@
   },
   "provenance": {
     "input_file": "llm_inputs/KO/lab_llm_focuspack_10k_item1a_2023_2024_deboilerplated.json"
-  }
+  },
+  "section_id": "10k_item1a",
+  "section": "10k_item1a"
 }

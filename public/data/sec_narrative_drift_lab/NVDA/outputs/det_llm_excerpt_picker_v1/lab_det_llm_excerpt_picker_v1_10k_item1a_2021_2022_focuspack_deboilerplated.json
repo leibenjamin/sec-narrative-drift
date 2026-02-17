@@ -4,7 +4,6 @@
   "cleaning_lens": "deboilerplated",
   "source_id": "edgar",
   "ticker": "NVDA",
-  "section": "10k_item1a",
   "year_from": 2021,
   "year_to": 2022,
   "artifacts": {
@@ -38,7 +37,7 @@
     {
       "year": 2021,
       "paragraph_idx": 35,
-      "snippet": "\u2022 a failure by our foundries to develop, obtain or successfully implement high quality, leading-edge process technologies, including transitions to smaller geometry process technologies such as advanced process node technologies and memory designs needed to manufacture our products profitably or on a timely basis;",
+      "snippet": "• a failure by our foundries to develop, obtain or successfully implement high quality, leading-edge process technologies, including transitions to smaller geometry process technologies such as advanced process node technologies and memory designs needed to manufacture our products profitably or on a timely basis;",
       "why": "Captures a key operational/technology risk driver: reliance on successful process-node transitions and yields, which can directly affect product availability, timing, and margins.",
       "highlights": [
         "process_nodes",
@@ -71,7 +70,7 @@
     {
       "year": 2021,
       "paragraph_idx": 201,
-      "snippet": "California\u2019s privacy laws will expand substantially effective January 1, 2023 as a result of California voters approving the California Privacy Rights Act of 2020, or CPRA, in the November 2020 election.",
+      "snippet": "California’s privacy laws will expand substantially effective January 1, 2023 as a result of California voters approving the California Privacy Rights Act of 2020, or CPRA, in the November 2020 election.",
       "why": "Represents regulatory/compliance risk emphasis (privacy) in the earlier year, useful for contrasting with later-year risk additions (e.g., security incident, geopolitical conflict, ESG scrutiny).",
       "highlights": [
         "privacy",
@@ -82,7 +81,7 @@
     {
       "year": 2022,
       "paragraph_idx": 13,
-      "snippet": "Our competitors\u2019 products, services and technologies, such as the high-end discrete GPUs offered by Intel and AMD, may be cheaper or provide better functionality or features than ours, which may result in lower than expected selling prices for our products.",
+      "snippet": "Our competitors’ products, services and technologies, such as the high-end discrete GPUs offered by Intel and AMD, may be cheaper or provide better functionality or features than ours, which may result in lower than expected selling prices for our products.",
       "why": "Adds specific named competitor pricing/feature pressure (Intel, AMD), sharpening competitive risk in a way that can signal narrative drift toward explicit competitive dynamics affecting pricing power.",
       "highlights": [
         "competition",
@@ -93,8 +92,8 @@
     {
       "year": 2022,
       "paragraph_idx": 30,
-      "snippet": "Our manufacturing lead times are very long and in some cases, extend to be twelve months or longer, which requires us to make estimates of customers\u2019 future demand.",
-      "why": "Introduces an explicit quantitative lead-time horizon, intensifying supply/demand mismatch and commitment risk relative to the prior year\u2019s more general demand-estimation challenges.",
+      "snippet": "Our manufacturing lead times are very long and in some cases, extend to be twelve months or longer, which requires us to make estimates of customers’ future demand.",
+      "why": "Introduces an explicit quantitative lead-time horizon, intensifying supply/demand mismatch and commitment risk relative to the prior year’s more general demand-estimation challenges.",
       "highlights": [
         "lead_times",
         "demand_forecasting",
@@ -127,7 +126,7 @@
       "year": 2022,
       "paragraph_idx": 195,
       "snippet": "Increased scrutiny from shareholders and others regarding our environmental, social and governance responsibilities could result in additional costs or risks and adversely impact our reputation and willingness of customers and suppliers to do business with us.",
-      "why": "Adds ESG scrutiny as a prominent reputational and cost risk theme, complementing the year\u2019s broader external-risk expansion (cyber + war + supply constraints).",
+      "why": "Adds ESG scrutiny as a prominent reputational and cost risk theme, complementing the year’s broader external-risk expansion (cyber + war + supply constraints).",
       "highlights": [
         "esg",
         "reputation",
@@ -155,5 +154,7 @@
       "selected_curr_count": 45,
       "trigger_hits": 28
     }
-  }
+  },
+  "section_id": "10k_item1a",
+  "section": "10k_item1a"
 }

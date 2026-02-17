@@ -212,6 +212,18 @@ def csv(items: list[str]) -> str:
     return ", ".join(items)
 
 
+def pair_sort_key(pair: tuple[str, int, int]) -> tuple[int, int, int]:
+    ticker = pair[0]
+    order_index = len(REQUIRED_TICKERS)
+    idx = 0
+    while idx < len(REQUIRED_TICKERS):
+        if REQUIRED_TICKERS[idx] == ticker:
+            order_index = idx
+            break
+        idx += 1
+    return (order_index, pair[1], pair[2])
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description=(
@@ -244,6 +256,7 @@ def main(argv: Optional[list[str]] = None) -> int:
 
     coverage_rows: list[PairCoverage] = []
     required_failures: list[str] = []
+    required_missing_pairs: set[tuple[str, int, int]] = set()
     latest_pairs: dict[str, Optional[tuple[int, int]]] = {}
 
     for ticker in REQUIRED_TICKERS:
@@ -312,6 +325,7 @@ def main(argv: Optional[list[str]] = None) -> int:
                 optional_present.append(detector_id)
 
             if required_missing:
+                required_missing_pairs.add((ticker, year_from, year_to))
                 for issue in required_missing:
                     required_failures.append(f"{ticker} {year_from}-{year_to}: {issue}")
 
@@ -352,6 +366,7 @@ def main(argv: Optional[list[str]] = None) -> int:
     )
     lines.append(f"- rows_checked: {len(coverage_rows)}")
     lines.append(f"- required_failure_count: {len(required_failures)}")
+    lines.append(f"- missing_required_pairs_count: {len(required_missing_pairs)}")
     lines.append(f"- optional_missing_count: {optional_missing_count}")
     lines.append(f"- optional_broken_count: {optional_broken_count}")
     lines.append("")
@@ -381,6 +396,14 @@ def main(argv: Optional[list[str]] = None) -> int:
             + f"{csv(row.required_missing)} | {csv(row.optional_present)} | "
             + f"{csv(row.optional_missing)} | {csv(row.optional_broken)} |"
         )
+    lines.append("")
+    lines.append("## Missing Required Pairs (for batch generation)")
+    if not required_missing_pairs:
+        lines.append("None.")
+    else:
+        sorted_pairs = sorted(required_missing_pairs, key=pair_sort_key)
+        for ticker, year_from, year_to in sorted_pairs:
+            lines.append(f"- {ticker},{year_from},{year_to}")
     lines.append("")
     lines.append("## Required Failures")
     if not required_failures:

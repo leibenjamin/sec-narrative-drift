@@ -130,6 +130,21 @@ function parseLabPayload<T>(
   return result.data
 }
 
+function normalizeLabOutputPayload(data: unknown): unknown {
+  if (!data || typeof data !== "object" || Array.isArray(data)) {
+    return data
+  }
+  const record = data as Record<string, unknown>
+  if ("section_id" in record) {
+    return data
+  }
+  const section = record.section
+  if (typeof section !== "string") {
+    return data
+  }
+  return { ...record, section_id: section }
+}
+
 export async function loadLabCasesRegistry(): Promise<LabCasesRegistry> {
   if (!casesPromise) {
     casesPromise = fetchJson<unknown>(LAB_CASES_PATH, copy.global.errors.missingDataset).then(
@@ -184,7 +199,14 @@ export async function loadLabOutput(
   }
   if (!outputCache.has(url)) {
     const promise = fetchJson<unknown>(url, copy.global.errors.missingDataset, options)
-      .then((data) => parseLabPayload(LabOutputSchema, data, `LabOutput:${normalizedFilename}`, url))
+      .then((data) =>
+        parseLabPayload(
+          LabOutputSchema,
+          normalizeLabOutputPayload(data),
+          `LabOutput:${normalizedFilename}`,
+          url
+        )
+      )
       .catch((error) => {
         // Retry smoke (manual):
         // 1) First call rejects (404/invalid JSON) and evicts this URL from cache.

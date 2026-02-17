@@ -4,11 +4,10 @@
   "cleaning_lens": "deboilerplated",
   "source_id": "edgar",
   "ticker": "NVDA",
-  "section": "10k_item1a",
   "year_from": 2021,
   "year_to": 2022,
   "artifacts": {
-    "delta_brief": "From 2021 to 2022, NVIDIA's risk narrative puts more weight on concrete execution bottlenecks, moving from general warnings about scaling the supply chain and meeting customer demand (2021 \u00b633) to explicit acknowledgment that manufacturing lead times can be twelve months or longer, increasing the odds of shortages or excess inventory if forecasts miss (2022 \u00b631). Crypto-driven volatility remains a recurring theme, with 2021 highlighting how Ethereum 2.0 and related standards could increase aftermarket GPU resales and reduce demand for new GPUs (2021 \u00b664) and 2022 expanding that risk to include reduced Ethereum mining usage and broader downstream effects that can still depress new-product demand (2022 \u00b626). 2022 adds a sharply event-specific cybersecurity risk, describing a February 23, 2022 incident of unauthorized network access by criminal threat actors (2022 \u00b6108). It also foregrounds geopolitics by tying sanctions and export controls directly to the Russia-Ukraine war and potential severe restrictions on exports (2022 \u00b6180). Overall, the 2022 section feels more immediate and incident-and-policy-driven, while keeping the core themes of supply constraints and crypto-related demand swings (2021 \u00b633; 2022 \u00b631; 2021 \u00b664; 2022 \u00b626)."
+    "delta_brief": "From 2021 to 2022, NVIDIA's risk narrative puts more weight on concrete execution bottlenecks, moving from general warnings about scaling the supply chain and meeting customer demand (2021 ¶33) to explicit acknowledgment that manufacturing lead times can be twelve months or longer, increasing the odds of shortages or excess inventory if forecasts miss (2022 ¶31). Crypto-driven volatility remains a recurring theme, with 2021 highlighting how Ethereum 2.0 and related standards could increase aftermarket GPU resales and reduce demand for new GPUs (2021 ¶64) and 2022 expanding that risk to include reduced Ethereum mining usage and broader downstream effects that can still depress new-product demand (2022 ¶26). 2022 adds a sharply event-specific cybersecurity risk, describing a February 23, 2022 incident of unauthorized network access by criminal threat actors (2022 ¶108). It also foregrounds geopolitics by tying sanctions and export controls directly to the Russia-Ukraine war and potential severe restrictions on exports (2022 ¶180). Overall, the 2022 section feels more immediate and incident-and-policy-driven, while keeping the core themes of supply constraints and crypto-related demand swings (2021 ¶33; 2022 ¶31; 2021 ¶64; 2022 ¶26)."
   },
   "evidence": [
     {
@@ -33,7 +32,7 @@
     {
       "year": 2022,
       "paragraph_idx": 30,
-      "snippet": "Our manufacturing lead times are very long and in some cases, extend to be twelve months or longer, which requires us to make estimates of customers\u2019 future demand.",
+      "snippet": "Our manufacturing lead times are very long and in some cases, extend to be twelve months or longer, which requires us to make estimates of customers’ future demand.",
       "why": "Updates the supply-risk narrative with explicit long lead times that magnify forecasting error and mismatch risk.",
       "highlights": [
         "supply chain constraints",
@@ -77,11 +76,13 @@
     "warnings": [
       "Focuspack is a subset; verify in full compare pane.",
       "Source file: NVDA_2021_2022_focuspack_deboilerplated.json",
-      "Normalized citation symbol from '\u00c2\u00b6' to '\u00b6' in delta_brief.",
+      "Normalized citation symbol from 'Â¶' to '¶' in delta_brief.",
       "Normalized provenance.input_file to shipped public llm_inputs path."
     ]
   },
   "provenance": {
     "input_file": "public/data/sec_narrative_drift_lab/llm_inputs/NVDA_2021_2022_focuspack_deboilerplated.json"
-  }
+  },
+  "section_id": "10k_item1a",
+  "section": "10k_item1a"
 }
