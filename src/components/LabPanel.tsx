@@ -58,6 +58,12 @@ const DETECTOR_CATALOG = [
 const DEFAULT_SELECTED = DETECTOR_CATALOG.filter((det) => det.defaultSelected).map(
   (det) => det.id
 )
+const LENS_PREFERENCE_ORDER: LabCleaningLens[] = [
+  "deboilerplated",
+  "raw",
+  "stage1_clean",
+  "structure_aware",
+]
 
 function buildCaseKey(caseItem: LabCase): string {
   return `${caseItem.year_from}-${caseItem.year_to}`
@@ -98,13 +104,25 @@ function extractAvailableDetectors(
   return detectors
 }
 
+function pickPreferredAvailableLens(availableLenses: LabCleaningLens[]): LabCleaningLens | null {
+  for (const preferred of LENS_PREFERENCE_ORDER) {
+    if (availableLenses.includes(preferred)) {
+      return preferred
+    }
+  }
+  if (availableLenses.length > 0) {
+    return availableLenses[0]
+  }
+  return null
+}
+
 export default function LabPanel({ ticker }: { ticker: string }) {
   const [cases, setCases] = useState<LabCase[]>([])
   const [isLoadingCases, setIsLoadingCases] = useState(true)
   const [caseError, setCaseError] = useState<string | null>(null)
   const [caseDebugPath, setCaseDebugPath] = useState<string | null>(null)
   const [selectedCaseKey, setSelectedCaseKey] = useState<string | null>(null)
-  const [lens, setLens] = useState<LabCleaningLens>("raw")
+  const [lens, setLens] = useState<LabCleaningLens>("deboilerplated")
   const [selectedDetectors, setSelectedDetectors] = useState<string[]>(DEFAULT_SELECTED)
   const [outputs, setOutputs] = useState<Record<string, LabOutput | null>>({})
   const [outputDebugPaths, setOutputDebugPaths] = useState<Record<string, string | null>>({})
@@ -201,7 +219,7 @@ export default function LabPanel({ ticker }: { ticker: string }) {
 
   // Adjust lens during render when available lenses change (avoids sync setState in effect)
   if (availableLenses.length && !availableLenses.includes(lens)) {
-    const nextLens = availableLenses[0]
+    const nextLens = pickPreferredAvailableLens(availableLenses)
     if (nextLens) {
       setLens(nextLens)
     }

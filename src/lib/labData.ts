@@ -1,7 +1,7 @@
 import { copy } from "./copy"
 import { LabCasesRegistrySchema, LabOutputSchema } from "./labSchemas"
 import { withBase } from "./paths"
-import { parseWithSchema } from "./schemas"
+import type { z } from "zod"
 import type {
   LabCase,
   LabCasesRegistry,
@@ -88,6 +88,7 @@ async function fetchJson<T>(
   try {
     response = await fetch(url, {
       headers: { Accept: "application/json" },
+      cache: "no-store",
       signal: options?.signal,
     })
   } catch {
@@ -105,10 +106,30 @@ async function fetchJson<T>(
   }
 }
 
+function parseLabPayload<T>(
+  schema: z.ZodType<T>,
+  data: unknown,
+  label: string,
+  url: string
+): T {
+  const result = schema.safeParse(data)
+  if (!result.success) {
+    const firstIssue = result.error.issues[0]
+    const issuePath =
+      firstIssue && firstIssue.path.length > 0 ? firstIssue.path.join(".") : "<root>"
+    const issueMessage = firstIssue ? firstIssue.message : "Unknown schema validation issue."
+    throw new LabDataLoadError(
+      `Invalid ${label} payload (${issuePath}: ${issueMessage}).`,
+      url
+    )
+  }
+  return result.data
+}
+
 export async function loadLabCasesRegistry(): Promise<LabCasesRegistry> {
   if (!casesPromise) {
     casesPromise = fetchJson<unknown>(LAB_CASES_PATH, copy.global.errors.missingDataset).then(
-      (data) => parseWithSchema(LabCasesRegistrySchema, data, "LabCasesRegistry")
+      (data) => parseLabPayload(LabCasesRegistrySchema, data, "LabCasesRegistry", LAB_CASES_PATH)
     )
   }
   return casesPromise!
@@ -159,7 +180,7 @@ export async function loadLabOutput(
   }
   if (!outputCache.has(url)) {
     const promise = fetchJson<unknown>(url, copy.global.errors.missingDataset, options).then(
-      (data) => parseWithSchema(LabOutputSchema, data, `LabOutput:${normalizedFilename}`)
+      (data) => parseLabPayload(LabOutputSchema, data, `LabOutput:${normalizedFilename}`, url)
     )
     outputCache.set(url, promise)
   }
@@ -182,9 +203,12 @@ export async function loadLabInputFile(
 }
 
 export function formatLabLoadDebug(error: unknown): string | null {
-  if (!(error instanceof LabDataLoadError)) {
-    return null
+  if (error instanceof LabDataLoadError) {
+    const statusText = typeof error.status === "number" ? ` (status ${error.status})` : ""
+    return `${error.message} Requested path: ${error.url}${statusText}`
   }
-  const statusText = typeof error.status === "number" ? ` (status ${error.status})` : ""
-  return `Requested path: ${error.url}${statusText}`
+  if (error instanceof Error) {
+    return `Lab data error: ${error.message}`
+  }
+  return "Lab data error: unknown failure."
 }
