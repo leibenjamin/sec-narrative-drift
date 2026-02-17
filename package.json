@@ -7,7 +7,10 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lab:registry": "python scripts/lab_build_cases_registry_v1.py --out public/data/sec_narrative_drift_lab/lab_cases_v1.json",
+    "lab:smoke": "python scripts/lab_smoke_check_registry_paths.py --registry public/data/sec_narrative_drift_lab/lab_cases_v1.json",
+    "lab:predeploy": "npm run lab:registry && npm run lab:smoke"
   },
   "dependencies": {
     "react": "^19.2.0",

@@ -12,7 +12,19 @@ from typing import Any, Optional, cast
 
 SCRIPT_VERSION = "lab_build_cases_registry_v1.py@v1"
 
-REPO_ROOT = Path(__file__).resolve().parents[1]
+def find_repo_root(start: Path) -> Path:
+    current = start if start.is_dir() else start.parent
+    while True:
+        if (current / "package.json").is_file() and (current / ".git").exists():
+            return current
+        parent = current.parent
+        if parent == current:
+            break
+        current = parent
+    raise SystemExit(f"Could not locate repository root from {start}")
+
+
+REPO_ROOT = find_repo_root(Path(__file__).resolve())
 LAB_ROOT = REPO_ROOT / "public" / "data" / "sec_narrative_drift_lab"
 REGISTRY_PATH = LAB_ROOT / "lab_cases_v1.json"
 REPORTS_ROOT = REPO_ROOT / "reports"
@@ -179,6 +191,26 @@ def parse_tickers(raw_items: list[str]) -> list[str]:
             candidate = piece.strip().upper()
             if not candidate:
                 continue
+            if candidate in seen:
+                continue
+            seen.add(candidate)
+            parsed.append(candidate)
+    return parsed
+
+
+def parse_publish_lenses(raw_items: list[str]) -> list[str]:
+    parsed: list[str] = []
+    seen: set[str] = set()
+    for item in raw_items:
+        for piece in item.split(","):
+            candidate = piece.strip()
+            if not candidate:
+                continue
+            if candidate not in VALID_LENSES:
+                raise SystemExit(
+                    f"Invalid --publish-lens value '{candidate}'. "
+                    + f"Allowed values: {', '.join(sorted(VALID_LENSES))}"
+                )
             if candidate in seen:
                 continue
             seen.add(candidate)
@@ -457,6 +489,20 @@ def build_parser() -> argparse.ArgumentParser:
         default=True,
         help="Include only adjacent year pairs.",
     )
+    parser.add_argument(
+        "--publish-lens",
+        action="append",
+        default=[],
+        help=(
+            "Repeatable lens filter for emitted registry links. "
+            + "Allowed: raw, deboilerplated, stage1_clean, structure_aware."
+        ),
+    )
+    parser.add_argument(
+        "--out",
+        default=str(REGISTRY_PATH),
+        help="Output path for lab_cases_v1.json.",
+    )
     return parser
 
 
@@ -467,6 +513,11 @@ def main(argv: Optional[list[str]] = None) -> int:
         raise SystemExit("No tickers provided.")
     if args.year_min > args.year_max:
         raise SystemExit("--year-min must be <= --year-max.")
+    publish_lenses = parse_publish_lenses(args.publish_lens)
+    publish_lens_set = set(publish_lenses)
+    registry_out_path = Path(args.out)
+    if not registry_out_path.is_absolute():
+        registry_out_path = REPO_ROOT / registry_out_path
 
     candidate_pairs = build_candidate_pairs(
         year_min=args.year_min,
@@ -499,6 +550,8 @@ def main(argv: Optional[list[str]] = None) -> int:
         if parsed_output is None:
             continue
         if parsed_output.ticker not in tickers:
+            continue
+        if publish_lens_set and parsed_output.cleaning_lens not in publish_lens_set:
             continue
         if parsed_output.year_from < args.year_min or parsed_output.year_to > args.year_max:
             continue
@@ -655,6 +708,7 @@ def main(argv: Optional[list[str]] = None) -> int:
         "year_max": str(args.year_max),
         "adjacent_only": str(bool(args.adjacent_only)).lower(),
         "include_most_recent_always": str(bool(args.include_most_recent_always)).lower(),
+        "publish_lenses": ",".join(publish_lenses) if publish_lenses else "all",
     }
     registry_payload = {
         "version": "1.0",
@@ -674,7 +728,7 @@ def main(argv: Optional[list[str]] = None) -> int:
             ],
         },
     }
-    write_json(REGISTRY_PATH, registry_payload)
+    write_json(registry_out_path, registry_payload)
 
     REPORTS_ROOT.mkdir(parents=True, exist_ok=True)
     lines: list[str] = []
@@ -685,7 +739,8 @@ def main(argv: Optional[list[str]] = None) -> int:
     lines.append(f"- tickers: {', '.join(tickers)}")
     lines.append(
         f"- options: year_min={args.year_min}, year_max={args.year_max}, "
-        + f"adjacent_only={bool(args.adjacent_only)}, include_most_recent_always={bool(args.include_most_recent_always)}"
+        + f"adjacent_only={bool(args.adjacent_only)}, include_most_recent_always={bool(args.include_most_recent_always)}, "
+        + f"publish_lenses={','.join(publish_lenses) if publish_lenses else 'all'}"
     )
     lines.append(f"- cases_written: {len(cases_payload)}")
     lines.append(f"- normalized_output_paths: {len(normalized_files)}")
@@ -833,7 +888,7 @@ def main(argv: Optional[list[str]] = None) -> int:
     print(
         "Lab registry build complete: "
         + f"cases={len(cases_payload)} "
-        + f"registry={to_repo_rel(REGISTRY_PATH)} "
+        + f"registry={to_repo_rel(registry_out_path)} "
         + f"report={to_repo_rel(BUILD_REPORT_PATH)}"
     )
     return 0
