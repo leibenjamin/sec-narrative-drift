@@ -1,0 +1,73 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_minhash_boilerplate_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "GE",
+  "section": "10k_item1a",
+  "year_from": 2019,
+  "year_to": 2020,
+  "artifacts": {
+    "stats": {
+      "percent_reused": 0.1388888888888889,
+      "percent_new": 0.8611111111111112,
+      "reused_paragraphs": 15,
+      "total_paragraphs": 108
+    }
+  },
+  "evidence": [
+    {
+      "year": 2020,
+      "paragraph_idx": 15,
+      "snippet": "We operate in virtually every part of the world, serve customers in over 170 countries and received 56% of our revenues for 2020 from outside the United States.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 3,
+      "snippet": "We operate in virtually every part of the world, serve customers in over 170 countries and received 59% of our revenues for 2019 from outside the United States.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 34,
+      "snippet": "Risks associated with these actions include unforeseen delays in implementation of workforce reductions, additional unexpected costs, adverse effects on employee morale, loss of key employees or other retention issues, inability to attract and hire talented professionals or the failure to meet operational targets due to the loss of employees or work stoppages, any of which may impair our ability to achieve anticipated cost reductions or may otherwise harm our business or reputation and have an adverse effect on our competitive position or financial performance.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 25,
+      "snippet": "Risks associated with these actions include unforeseen delays in implementation of workforce reductions, additional unexpected costs, adverse effects on employee morale, loss of key employees or other retention issues, inability to attract and hire talented professionals or the failure to meet operational targets due to the loss of employees or work stoppages, any of which may impair our ability to achieve anticipated cost reductions or may otherwise harm our business or reputation and have an adverse effect on our competitive position or financial performance .",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 49,
+      "snippet": "Operational, quality or other issues at large projects, or across our projects portfolio more broadly, can adversely affect GE\u2019s business, reputation or results of operations.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 33,
+      "snippet": "Operational, quality or other issues at large projects, or across our projects portfolio more broadly, can adversely affect GE\u2019s business, reputation or results of operations .",
+      "why": "Matching paragraph from prior year."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.8611111111111112,
+    "confidence": 1.0,
+    "coverage": 0.573981136128415,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T05:02:57Z",
+    "git_commit": "77553f23af39ca9ca4d7337e78fce9b3d4e9594f",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "612d85474211bb7c94a2c150842055caf402c2b957874fe9c6842d403b2b27a0",
+      "curr_text_sha256": "d72381b6b70d4ef5d3ce12c2ea1e5fd3750f0dd6691b55691d65c6e6aa8bfbfa",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

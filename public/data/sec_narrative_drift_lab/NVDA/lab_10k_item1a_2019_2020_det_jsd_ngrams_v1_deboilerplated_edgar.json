@@ -1,0 +1,156 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_jsd_ngrams_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "NVDA",
+  "section": "10k_item1a",
+  "year_from": 2019,
+  "year_to": 2020,
+  "artifacts": {
+    "ranked_items": [
+      {
+        "label": "datacenter",
+        "score": 0.0019157088122605363
+      },
+      {
+        "label": "partners",
+        "score": 0.0018181818181818182
+      },
+      {
+        "label": "purchase",
+        "score": 0.0018181818181818182
+      },
+      {
+        "label": "credit",
+        "score": 0.0014545454545454545
+      },
+      {
+        "label": "mellanox",
+        "score": 0.0014545454545454545
+      },
+      {
+        "label": "customers",
+        "score": 0.0012877667115908144
+      },
+      {
+        "label": "network",
+        "score": 0.001090909090909091
+      },
+      {
+        "label": "partner network",
+        "score": 0.001090909090909091
+      },
+      {
+        "label": "selling",
+        "score": 0.001090909090909091
+      },
+      {
+        "label": "coronavirus",
+        "score": 0.001090909090909091
+      },
+      {
+        "label": "partner",
+        "score": 0.001090909090909091
+      },
+      {
+        "label": "market",
+        "score": 0.001090909090909091
+      },
+      {
+        "label": "number",
+        "score": 0.001090909090909091
+      },
+      {
+        "label": "limited number",
+        "score": 0.001090909090909091
+      },
+      {
+        "label": "mellanox acquisition",
+        "score": 0.001090909090909091
+      },
+      {
+        "label": "center",
+        "score": 0.001090909090909091
+      },
+      {
+        "label": "data center",
+        "score": 0.001090909090909091
+      },
+      {
+        "label": "suppliers",
+        "score": 0.0007272727272727272
+      },
+      {
+        "label": "distribution",
+        "score": 0.0007272727272727272
+      },
+      {
+        "label": "significant revenue",
+        "score": 0.0007272727272727272
+      }
+    ],
+    "stats": {
+      "jsd": 0.238747,
+      "tokens_prev": 392,
+      "tokens_curr": 688
+    }
+  },
+  "evidence": [
+    {
+      "year": 2020,
+      "paragraph_idx": 15,
+      "snippet": "With several of these distributors and partners, we are selling multiple target market platforms through their channels.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "partners"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 16,
+      "snippet": "future will continue to depend on sales within our partner network, as well as the ability of these partners to sell products that incorporate our GPUs and Tegra processors.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "partners"
+      ]
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 1,
+      "snippet": "We currently devote significant resources to the development of technologies and business offerings in markets where we have a limited operating history, such as the automotive and datacenter markets, which presents additional risks to our business.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "datacenter"
+      ]
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 5,
+      "snippet": "In addition, a large portion of our current datacenter capacity is located in California, making our operations vulnerable to natural disasters or other business disruptions occurring in these geographical areas.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "datacenter"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.238747,
+    "confidence": 0.392,
+    "coverage": 0.11339749714525413,
+    "warnings": [
+      "thin_counts"
+    ]
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T05:02:49Z",
+    "git_commit": "77553f23af39ca9ca4d7337e78fce9b3d4e9594f",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "d64481ca1ae6ca334aa85d2badf071391e37f406963dae225fd87342002f329b",
+      "curr_text_sha256": "85bf66c0559860ed1ac4317a701190a04ff8211be8af04381e4ba541dda3ef7c",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

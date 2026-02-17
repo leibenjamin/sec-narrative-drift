@@ -1,0 +1,73 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_minhash_boilerplate_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "NVDA",
+  "section": "10k_item1a",
+  "year_from": 2019,
+  "year_to": 2020,
+  "artifacts": {
+    "stats": {
+      "percent_reused": 0.1875,
+      "percent_new": 0.8125,
+      "reused_paragraphs": 6,
+      "total_paragraphs": 32
+    }
+  },
+  "evidence": [
+    {
+      "year": 2020,
+      "paragraph_idx": 0,
+      "snippet": "Our success depends on our ability to identify emerging industry changes and to develop new (or enhance our existing) products, services and technologies that meet the evolving needs of these markets.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 0,
+      "snippet": "Our success depends on our ability to identify these emerging industry changes and to develop new (or enhance our existing) products, services and technologies that meet the evolving needs of these markets.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 7,
+      "snippet": "Geopolitical change or changes in government regulations and policies in the United States or abroad may result in changing regulatory requirements, trade policies, import duties and economic disruptions that could impact our operating strategies, product demand, access to global markets, hiring, and profitability.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 7,
+      "snippet": "Geopolitical change or changes in government regulations and policies in the United States or abroad also may result in changing regulatory requirements, trade policies, import duties and economic disruptions that could impact our operating strategies, product demand, access to global markets, hiring, and profitability.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 24,
+      "snippet": "Revenue from billings to China, including Hong Kong, was 25% of our revenue for fiscal year 2020, even if our customers' revenue is attributable to end customers that are located in a different location.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 11,
+      "snippet": "Revenue from billings to China, including Hong Kong, was 24% of our revenue for fiscal year 2019, even if our customers' revenue is attributable to end customers that are located in a different location.",
+      "why": "Matching paragraph from prior year."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.8125,
+    "confidence": 1.0,
+    "coverage": 0.11339749714525413,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T05:02:49Z",
+    "git_commit": "77553f23af39ca9ca4d7337e78fce9b3d4e9594f",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "d64481ca1ae6ca334aa85d2badf071391e37f406963dae225fd87342002f329b",
+      "curr_text_sha256": "85bf66c0559860ed1ac4317a701190a04ff8211be8af04381e4ba541dda3ef7c",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_winnowing_fingerprint_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "GE",
+  "section": "10k_item1a",
+  "year_from": 2022,
+  "year_to": 2023,
+  "artifacts": {
+    "stats": {
+      "shared_fingerprints": 10261,
+      "prev_fingerprints": 18800,
+      "curr_fingerprints": 18073,
+      "shared_ratio": 0.5677530017152659
+    }
+  },
+  "evidence": [
+    {
+      "year": 2023,
+      "paragraph_idx": 0,
+      "snippet": "These risk factors may be important to understanding any statement in this report or elsewhere.\n\nThe risks we describe in",
+      "why": "Shared fingerprint span."
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 0,
+      "snippet": "These risk factors may be important to understanding any statement in this report or elsewhere.\n\nThe risks we describe in th",
+      "why": "Shared fingerprint span."
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 0,
+      "snippet": "These risk factors may be important to understanding any statement in this report or elsewhere.\n\nThe risks we describe in this",
+      "why": "Shared fingerprint span."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.5677530017152659,
+    "confidence": 1.0,
+    "coverage": 0.6218547314437726,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T05:02:58Z",
+    "git_commit": "77553f23af39ca9ca4d7337e78fce9b3d4e9594f",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "42d8ebb6d652853c7670c439b184bcafda4d618c864b160b0108689dc556a013",
+      "curr_text_sha256": "5316845cf41d84fa8b9f0f3527a56617073d663d9b0729619a1016cb691a3c8b",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

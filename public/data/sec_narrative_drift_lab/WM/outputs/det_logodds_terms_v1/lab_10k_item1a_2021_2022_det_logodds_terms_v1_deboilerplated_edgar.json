@@ -1,0 +1,1015 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_logodds_terms_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "WM",
+  "section": "10k_item1a",
+  "year_from": 2021,
+  "year_to": 2022,
+  "artifacts": {
+    "top_risers": [
+      {
+        "label": "sustainability",
+        "score": 1.1489838096059108,
+        "meta": {
+          "z": 1.6462179386061029,
+          "countPrev": 0,
+          "countCurr": 13,
+          "per10kPrev": 0.0,
+          "per10kCurr": 12.326948606106582,
+          "deltaPer10k": 12.326948606106582,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "esg",
+        "score": 1.0323675023429117,
+        "meta": {
+          "z": 1.2649130345968342,
+          "countPrev": 0,
+          "countCurr": 6,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.689360895126114,
+          "deltaPer10k": 5.689360895126114,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "rng",
+        "score": 0.9210117804435617,
+        "meta": {
+          "z": 1.5780599190758064,
+          "countPrev": 1,
+          "countCurr": 6,
+          "per10kPrev": 1.0275380189066996,
+          "per10kCurr": 5.689360895126114,
+          "deltaPer10k": 4.661822876219414,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "conflict",
+        "score": 0.8594380977605947,
+        "meta": {
+          "z": 0.9163472795705996,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8964536317087046,
+          "deltaPer10k": 1.8964536317087046,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "headwinds",
+        "score": 0.8594380977605947,
+        "meta": {
+          "z": 0.9163472795705996,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8964536317087046,
+          "deltaPer10k": 1.8964536317087046,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "invasion",
+        "score": 0.8594380977605947,
+        "meta": {
+          "z": 0.9163472795705996,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8964536317087046,
+          "deltaPer10k": 1.8964536317087046,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "russia",
+        "score": 0.8594380977605947,
+        "meta": {
+          "z": 0.9163472795705996,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8964536317087046,
+          "deltaPer10k": 1.8964536317087046,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ukraine",
+        "score": 0.8594380977605947,
+        "meta": {
+          "z": 0.9163472795705996,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8964536317087046,
+          "deltaPer10k": 1.8964536317087046,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "variant",
+        "score": 0.8594380977605947,
+        "meta": {
+          "z": 0.9163472795705996,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8964536317087046,
+          "deltaPer10k": 1.8964536317087046,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "planned investments",
+        "score": 0.8546245294805785,
+        "meta": {
+          "z": 1.135774813749559,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.7929072634174092,
+          "deltaPer10k": 3.7929072634174092,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "automation",
+        "score": 0.8423012575768754,
+        "meta": {
+          "z": 1.2068154732390222,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.741134079271761,
+          "deltaPer10k": 4.741134079271761,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "recession",
+        "score": 0.8423012575768754,
+        "meta": {
+          "z": 1.2068154732390222,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.741134079271761,
+          "deltaPer10k": 4.741134079271761,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "sustainability growth",
+        "score": 0.7942730627774751,
+        "meta": {
+          "z": 1.314052216310445,
+          "countPrev": 0,
+          "countCurr": 7,
+          "per10kPrev": 0.0,
+          "per10kCurr": 6.637587710980466,
+          "deltaPer10k": 6.637587710980466,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "retail",
+        "score": 0.7927181703908412,
+        "meta": {
+          "z": 1.135774813749559,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.7929072634174092,
+          "deltaPer10k": 3.7929072634174092,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ship",
+        "score": 0.7478831559282196,
+        "meta": {
+          "z": 0.9163472795705996,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8964536317087046,
+          "deltaPer10k": 1.8964536317087046,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_fallers": [
+      {
+        "label": "COVID-19",
+        "score": -1.353159185619021,
+        "meta": {
+          "z": -1.938752231782708,
+          "countPrev": 17,
+          "countCurr": 8,
+          "per10kPrev": 17.468146321413894,
+          "per10kCurr": 7.5858145268348185,
+          "deltaPer10k": -9.882331794579075,
+          "distinctive": false,
+          "includes": [
+            "covid"
+          ]
+        }
+      },
+      {
+        "label": "hcm",
+        "score": -1.1114135993432495,
+        "meta": {
+          "z": -1.1850077753007082,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 4.110152075626798,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.110152075626798,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "vaccine",
+        "score": -1.1114135993432495,
+        "meta": {
+          "z": -1.1850077753007082,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 4.110152075626798,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.110152075626798,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "erp hcm",
+        "score": -1.083271978482256,
+        "meta": {
+          "z": -1.1850077753007082,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 4.110152075626798,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.110152075626798,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ets",
+        "score": -1.0255247673412198,
+        "meta": {
+          "z": -1.0934316655661827,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 3.082614056720099,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.082614056720099,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "variants",
+        "score": -1.0255247673412198,
+        "meta": {
+          "z": -1.0934316655661827,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 3.082614056720099,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.082614056720099,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "discussed",
+        "score": -0.9050942622039597,
+        "meta": {
+          "z": -0.9650266459988721,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.055076037813399,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.055076037813399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "employers",
+        "score": -0.9050942622039597,
+        "meta": {
+          "z": -0.9650266459988721,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.055076037813399,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.055076037813399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "influence",
+        "score": -0.9050942622039597,
+        "meta": {
+          "z": -0.9650266459988721,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.055076037813399,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.055076037813399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "osha",
+        "score": -0.9050942622039597,
+        "meta": {
+          "z": -0.9650266459988721,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.055076037813399,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.055076037813399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "erp",
+        "score": -0.827080495326456,
+        "meta": {
+          "z": -1.1850077753007082,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 4.110152075626798,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.110152075626798,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "basel",
+        "score": -0.7876131567746485,
+        "meta": {
+          "z": -0.9650266459988721,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.055076037813399,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.055076037813399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "convention",
+        "score": -0.7876131567746485,
+        "meta": {
+          "z": -0.9650266459988721,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.055076037813399,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.055076037813399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "indicated",
+        "score": -0.7876131567746485,
+        "meta": {
+          "z": -0.9650266459988721,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.055076037813399,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.055076037813399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "resurgence transmission",
+        "score": -0.7560301983204761,
+        "meta": {
+          "z": -1.0047453917668,
+          "countPrev": 3,
+          "countCurr": 1,
+          "per10kPrev": 3.082614056720099,
+          "per10kCurr": 0.9482268158543523,
+          "deltaPer10k": -2.1343872408657463,
+          "distinctive": false
+        }
+      }
+    ],
+    "summary": "Adds emphasis on sustainability, esg, rng; de-emphasizes COVID-19, hcm, vaccine.",
+    "ranked_items": [
+      {
+        "label": "sustainability",
+        "score": 1.1489838096059108,
+        "meta": {
+          "z": 1.6462179386061029,
+          "countPrev": 0,
+          "countCurr": 13,
+          "per10kPrev": 0.0,
+          "per10kCurr": 12.326948606106582,
+          "deltaPer10k": 12.326948606106582,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "esg",
+        "score": 1.0323675023429117,
+        "meta": {
+          "z": 1.2649130345968342,
+          "countPrev": 0,
+          "countCurr": 6,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.689360895126114,
+          "deltaPer10k": 5.689360895126114,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "rng",
+        "score": 0.9210117804435617,
+        "meta": {
+          "z": 1.5780599190758064,
+          "countPrev": 1,
+          "countCurr": 6,
+          "per10kPrev": 1.0275380189066996,
+          "per10kCurr": 5.689360895126114,
+          "deltaPer10k": 4.661822876219414,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "conflict",
+        "score": 0.8594380977605947,
+        "meta": {
+          "z": 0.9163472795705996,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8964536317087046,
+          "deltaPer10k": 1.8964536317087046,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "headwinds",
+        "score": 0.8594380977605947,
+        "meta": {
+          "z": 0.9163472795705996,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8964536317087046,
+          "deltaPer10k": 1.8964536317087046,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "invasion",
+        "score": 0.8594380977605947,
+        "meta": {
+          "z": 0.9163472795705996,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8964536317087046,
+          "deltaPer10k": 1.8964536317087046,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "russia",
+        "score": 0.8594380977605947,
+        "meta": {
+          "z": 0.9163472795705996,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8964536317087046,
+          "deltaPer10k": 1.8964536317087046,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ukraine",
+        "score": 0.8594380977605947,
+        "meta": {
+          "z": 0.9163472795705996,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8964536317087046,
+          "deltaPer10k": 1.8964536317087046,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "variant",
+        "score": 0.8594380977605947,
+        "meta": {
+          "z": 0.9163472795705996,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8964536317087046,
+          "deltaPer10k": 1.8964536317087046,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "planned investments",
+        "score": 0.8546245294805785,
+        "meta": {
+          "z": 1.135774813749559,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.7929072634174092,
+          "deltaPer10k": 3.7929072634174092,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "automation",
+        "score": 0.8423012575768754,
+        "meta": {
+          "z": 1.2068154732390222,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.741134079271761,
+          "deltaPer10k": 4.741134079271761,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "recession",
+        "score": 0.8423012575768754,
+        "meta": {
+          "z": 1.2068154732390222,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.741134079271761,
+          "deltaPer10k": 4.741134079271761,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "sustainability growth",
+        "score": 0.7942730627774751,
+        "meta": {
+          "z": 1.314052216310445,
+          "countPrev": 0,
+          "countCurr": 7,
+          "per10kPrev": 0.0,
+          "per10kCurr": 6.637587710980466,
+          "deltaPer10k": 6.637587710980466,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "retail",
+        "score": 0.7927181703908412,
+        "meta": {
+          "z": 1.135774813749559,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.7929072634174092,
+          "deltaPer10k": 3.7929072634174092,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ship",
+        "score": 0.7478831559282196,
+        "meta": {
+          "z": 0.9163472795705996,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8964536317087046,
+          "deltaPer10k": 1.8964536317087046,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "COVID-19",
+        "score": -1.353159185619021,
+        "meta": {
+          "z": -1.938752231782708,
+          "countPrev": 17,
+          "countCurr": 8,
+          "per10kPrev": 17.468146321413894,
+          "per10kCurr": 7.5858145268348185,
+          "deltaPer10k": -9.882331794579075,
+          "distinctive": false,
+          "includes": [
+            "covid"
+          ]
+        }
+      },
+      {
+        "label": "hcm",
+        "score": -1.1114135993432495,
+        "meta": {
+          "z": -1.1850077753007082,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 4.110152075626798,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.110152075626798,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "vaccine",
+        "score": -1.1114135993432495,
+        "meta": {
+          "z": -1.1850077753007082,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 4.110152075626798,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.110152075626798,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "erp hcm",
+        "score": -1.083271978482256,
+        "meta": {
+          "z": -1.1850077753007082,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 4.110152075626798,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.110152075626798,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ets",
+        "score": -1.0255247673412198,
+        "meta": {
+          "z": -1.0934316655661827,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 3.082614056720099,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.082614056720099,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "variants",
+        "score": -1.0255247673412198,
+        "meta": {
+          "z": -1.0934316655661827,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 3.082614056720099,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.082614056720099,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "discussed",
+        "score": -0.9050942622039597,
+        "meta": {
+          "z": -0.9650266459988721,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.055076037813399,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.055076037813399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "employers",
+        "score": -0.9050942622039597,
+        "meta": {
+          "z": -0.9650266459988721,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.055076037813399,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.055076037813399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "influence",
+        "score": -0.9050942622039597,
+        "meta": {
+          "z": -0.9650266459988721,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.055076037813399,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.055076037813399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "osha",
+        "score": -0.9050942622039597,
+        "meta": {
+          "z": -0.9650266459988721,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.055076037813399,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.055076037813399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "erp",
+        "score": -0.827080495326456,
+        "meta": {
+          "z": -1.1850077753007082,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 4.110152075626798,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.110152075626798,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "basel",
+        "score": -0.7876131567746485,
+        "meta": {
+          "z": -0.9650266459988721,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.055076037813399,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.055076037813399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "convention",
+        "score": -0.7876131567746485,
+        "meta": {
+          "z": -0.9650266459988721,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.055076037813399,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.055076037813399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "indicated",
+        "score": -0.7876131567746485,
+        "meta": {
+          "z": -0.9650266459988721,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.055076037813399,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.055076037813399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "resurgence transmission",
+        "score": -0.7560301983204761,
+        "meta": {
+          "z": -1.0047453917668,
+          "countPrev": 3,
+          "countCurr": 1,
+          "per10kPrev": 3.082614056720099,
+          "per10kCurr": 0.9482268158543523,
+          "deltaPer10k": -2.1343872408657463,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_risers_alt": [
+      {
+        "label": "landfill gas",
+        "score": 0.6997903804529133,
+        "meta": {}
+      },
+      {
+        "label": "economic conditions",
+        "score": 1.9194644374328593,
+        "meta": {}
+      },
+      {
+        "label": "subject regulatory",
+        "score": 1.91374029645731,
+        "meta": {}
+      },
+      {
+        "label": "internal controls",
+        "score": 0.7962126466827026,
+        "meta": {}
+      },
+      {
+        "label": "conditions regulations",
+        "score": 1.353734324132028,
+        "meta": {}
+      },
+      {
+        "label": "future results",
+        "score": 1.0657410665461837,
+        "meta": {}
+      },
+      {
+        "label": "investments technology",
+        "score": 1.0657410665461837,
+        "meta": {}
+      },
+      {
+        "label": "information technology",
+        "score": 0.9655238457751443,
+        "meta": {}
+      },
+      {
+        "label": "landfill disposal",
+        "score": 0.8831636277422463,
+        "meta": {}
+      },
+      {
+        "label": "increased operating costs",
+        "score": 0.5853485976248534,
+        "meta": {}
+      },
+      {
+        "label": "Supply chain",
+        "score": 0.28875415334204924,
+        "meta": {}
+      },
+      {
+        "label": "gas prices",
+        "score": 0.476861321824269,
+        "meta": {}
+      },
+      {
+        "label": "Climate change",
+        "score": 0.16751613475122573,
+        "meta": {}
+      },
+      {
+        "label": "increased costs",
+        "score": 0.19307825875714002,
+        "meta": {}
+      },
+      {
+        "label": "Artificial intelligence",
+        "score": 0.4741423492832775,
+        "meta": {}
+      }
+    ],
+    "top_fallers_alt": [
+      {
+        "label": "natural gas",
+        "score": -1.2643871155016204,
+        "meta": {}
+      },
+      {
+        "label": "cost increases",
+        "score": -1.9954641601021486,
+        "meta": {}
+      },
+      {
+        "label": "customers result",
+        "score": -1.9954641601021486,
+        "meta": {}
+      },
+      {
+        "label": "implementation new",
+        "score": -1.9954641601021486,
+        "meta": {}
+      },
+      {
+        "label": "waste volumes",
+        "score": -1.9954641601021486,
+        "meta": {}
+      },
+      {
+        "label": "negatively affect operating results",
+        "score": -1.1476237522029207,
+        "meta": {}
+      },
+      {
+        "label": "waste industry",
+        "score": -1.1476237522029207,
+        "meta": {}
+      },
+      {
+        "label": "disposal services",
+        "score": -0.7862422231768091,
+        "meta": {}
+      },
+      {
+        "label": "changes regulations",
+        "score": -0.5379268608471381,
+        "meta": {}
+      },
+      {
+        "label": "fuel prices",
+        "score": -0.31881199157547435,
+        "meta": {}
+      },
+      {
+        "label": "increase costs",
+        "score": -0.2326840392357914,
+        "meta": {}
+      },
+      {
+        "label": "new service",
+        "score": -0.187923934487086,
+        "meta": {}
+      },
+      {
+        "label": "financial results",
+        "score": -0.13108226579320092,
+        "meta": {}
+      },
+      {
+        "label": "results operations cash",
+        "score": -0.043190021296406034,
+        "meta": {}
+      },
+      {
+        "label": "Intellectual property",
+        "score": -0.04272837152312592,
+        "meta": {}
+      }
+    ],
+    "summary_alt": "Adds emphasis on landfill gas, economic conditions, subject regulatory; de-emphasizes natural gas, cost increases, customers result."
+  },
+  "evidence": [
+    {
+      "year": 2022,
+      "paragraph_idx": 4,
+      "snippet": "Acquisitions, investments and/or new service offerings or lines of business may not increase our earnings in the timeframe anticipated, or at all, due to difficulties operating in new markets or providing new service offerings or lines of business, failure of technologies to perform as expected, failure to operate within budget, integration",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "ets"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 6,
+      "snippet": "Integration of acquisitions and/or new services offerings or lines of business could increase our exposure to the risk of inadvertent noncompliance with applicable laws and regulations, and any expansion into markets outside of North America would result in our business being subject to new laws and regulatory regimes, resulting in greater exposure to risk of inadvertent noncompliance and additional compliance costs.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "ets"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 1,
+      "snippet": "The Company continues to be optimistic about volume recovery and overall economic recovery from the impacts of the COVID-19 pandemic.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "covid-19"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 2,
+      "snippet": "However, uncertainty remains with respect to various factors that influence the pace of economic recovery, including the risks discussed below and the potential for future resurgence in transmission of COVID-19 and related business closures due to virus variants or otherwise.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "covid-19"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.0374,
+    "confidence": 1.0,
+    "coverage": 0.41075787680953735,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T05:02:55Z",
+    "git_commit": "77553f23af39ca9ca4d7337e78fce9b3d4e9594f",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "42c8ea45a9f1b70cbe0140d7151e51115a12f0f1e7ef593c2ac5c1687b1d2b9d",
+      "curr_text_sha256": "8da62498a6fbb57776a83982b4805d2f72d97ad6f84b860e0416493fbcf079a1",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

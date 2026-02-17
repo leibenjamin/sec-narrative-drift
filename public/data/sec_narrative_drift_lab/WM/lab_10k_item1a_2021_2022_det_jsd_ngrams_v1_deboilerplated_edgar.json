@@ -1,0 +1,136 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_jsd_ngrams_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "WM",
+  "section": "10k_item1a",
+  "year_from": 2021,
+  "year_to": 2022,
+  "artifacts": {
+    "ranked_items": [
+      {
+        "label": "sustainability",
+        "score": 0.0010660980810234541
+      },
+      {
+        "label": "energy",
+        "score": 0.0008200754469411186
+      },
+      {
+        "label": "growth strategy",
+        "score": 0.0006560603575528948
+      },
+      {
+        "label": "goals",
+        "score": 0.0006560603575528948
+      },
+      {
+        "label": "sustainability growth",
+        "score": 0.000574052812858783
+      },
+      {
+        "label": "esg",
+        "score": 0.0004920452681646711
+      },
+      {
+        "label": "growth",
+        "score": 0.0004559617945526476
+      },
+      {
+        "label": "covid",
+        "score": 0.00041756042899384683
+      },
+      {
+        "label": "hcm",
+        "score": 0.0004143360265175057
+      },
+      {
+        "label": "vaccine",
+        "score": 0.0004143360265175057
+      },
+      {
+        "label": "erp hcm",
+        "score": 0.0004143360265175057
+      },
+      {
+        "label": "erp",
+        "score": 0.0004143360265175057
+      },
+      {
+        "label": "achieve",
+        "score": 0.0004100377234705593
+      },
+      {
+        "label": "energy businesses",
+        "score": 0.0004100377234705593
+      },
+      {
+        "label": "automation",
+        "score": 0.0004100377234705593
+      },
+      {
+        "label": "recession",
+        "score": 0.0004100377234705593
+      },
+      {
+        "label": "renewable energy",
+        "score": 0.0004100377234705593
+      },
+      {
+        "label": "implementation",
+        "score": 0.0003425428594981537
+      },
+      {
+        "label": "includes significant",
+        "score": 0.0003280301787764474
+      },
+      {
+        "label": "including inflation",
+        "score": 0.0003280301787764474
+      }
+    ],
+    "stats": {
+      "jsd": 0.228008,
+      "tokens_prev": 2414,
+      "tokens_curr": 3049
+    }
+  },
+  "evidence": [
+    {
+      "year": 2022,
+      "paragraph_idx": 8,
+      "snippet": "Execution of our strategy, including growth through acquisitions and our planned expansion of our recycling and renewable energy businesses, may cause us to incur substantial additional indebtedness, which may divert capital away from our traditional business operations and other financial plans.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "energy"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 9,
+      "snippet": "Supply chain disruptions or delays could detrimentally impact the execution timeline for our planned expansion of our recycling and renewable energy businesses.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "energy"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.228008,
+    "confidence": 1.0,
+    "coverage": 0.41075787680953735,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T05:02:55Z",
+    "git_commit": "77553f23af39ca9ca4d7337e78fce9b3d4e9594f",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "42c8ea45a9f1b70cbe0140d7151e51115a12f0f1e7ef593c2ac5c1687b1d2b9d",
+      "curr_text_sha256": "8da62498a6fbb57776a83982b4805d2f72d97ad6f84b860e0416493fbcf079a1",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

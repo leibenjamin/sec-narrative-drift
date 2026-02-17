@@ -1,0 +1,73 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_minhash_boilerplate_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "KO",
+  "section": "10k_item1a",
+  "year_from": 2019,
+  "year_to": 2020,
+  "artifacts": {
+    "stats": {
+      "percent_reused": 0.14912280701754385,
+      "percent_new": 0.8508771929824561,
+      "reused_paragraphs": 17,
+      "total_paragraphs": 114
+    }
+  },
+  "evidence": [
+    {
+      "year": 2020,
+      "paragraph_idx": 40,
+      "snippet": "The success of our business depends on our Company's and the Coca-Cola system's ability to attract, develop, retain and motivate a highly skilled and diverse workforce as well as on our success in nurturing a culture that supports our growth and aligns employees around the Company's purpose and work that matters most.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 31,
+      "snippet": "The success of our business depends on our Company's and the Coca-Cola system's ability to attract, develop, retain and motivate a highly skilled and diverse workforce as well as on our success in nurturing a culture that supports our growth and aligns employees around the Company purpose and work that matters most.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 41,
+      "snippet": "We may not be able to successfully compete for, attract and/or retain the high-quality and diverse employee talent that we want and that our future business needs may require, such as employees with e-commerce, social media and digital marketing and advertising skills, and/or digital and analytics capabilities.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 32,
+      "snippet": "We may not be able to successfully compete for, attract and/or retain the high-quality and diverse employee talent we want and our future business needs may require, such as employees with e-commerce, social media and digital marketing and advertising skills, and/or digital and analytics capabilities.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 47,
+      "snippet": "Larger retailers may seek lower prices from us and our bottling partners, may demand increased marketing or promotional expenditures, and may be more likely to use their distribution networks to introduce and develop private-label brands, any of which could negatively affect the Coca-Cola system's profitability.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 15,
+      "snippet": "Larger retailers may seek lower prices from us and our bottling partners, may demand increased marketing or promotional expenditures, and may be more likely to use their distribution networks to introduce and develop private label brands, any of which could negatively affect the Coca-Cola system's profitability.",
+      "why": "Matching paragraph from prior year."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.8508771929824561,
+    "confidence": 1.0,
+    "coverage": 0.3078431632369115,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T05:02:51Z",
+    "git_commit": "77553f23af39ca9ca4d7337e78fce9b3d4e9594f",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "ec7cdfb76a14ca922f221735d8fcf99c5aec72c358111823e412cdc0bdb41050",
+      "curr_text_sha256": "61bfa0824cedae26d98cc00ce8a2d66320e7989f9132c173bc42c03ea712a091",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

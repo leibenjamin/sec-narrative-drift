@@ -1,0 +1,69 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_structure_artifacts_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "NVDA",
+  "section": "10k_item1a",
+  "year_from": 2019,
+  "year_to": 2020,
+  "artifacts": {
+    "stats": {
+      "headings_prev": [
+        "We have created GPU-based visual and accelerated computing platforms that address four large markets:",
+        "Additional risks related to acquisitions or strategic investments include, but are not limited to:"
+      ],
+      "headings_curr": [
+        "We created GPU-based visual and accelerated computing platforms that address four large markets:"
+      ],
+      "headings_added": [
+        "We created GPU-based visual and accelerated computing platforms that address four large markets:"
+      ],
+      "headings_removed": [
+        "We have created GPU-based visual and accelerated computing platforms that address four large markets:",
+        "Additional risks related to acquisitions or strategic investments include, but are not limited to:"
+      ],
+      "paragraph_count_prev": 17,
+      "paragraph_count_curr": 32,
+      "length_chars_prev": 4866,
+      "length_chars_curr": 8716
+    }
+  },
+  "evidence": [
+    {
+      "year": 2020,
+      "paragraph_idx": 0,
+      "snippet": "Gaming, Professional Visualization, Data Center, and Automotive.",
+      "why": "Heading added: We created GPU-based visual and accelerated computing platforms that address four large markets:"
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 0,
+      "snippet": "Gaming, Professional Visualization, Datacenter, and Automotive.",
+      "why": "Heading removed: We have created GPU-based visual and accelerated computing platforms that address four large markets:"
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 15,
+      "snippet": "If we or one of our indemnitees is unable to obtain a license from a third party for technology that we use or that is used in one of our products, we could be subject to substantial liabilities or have to suspend or discontinue the manufacture and sale of one or more of our products.",
+      "why": "Heading removed: Additional risks related to acquisitions or strategic investments include, but are not limited to:"
+    }
+  ],
+  "metrics": {
+    "drift_score": 1.0,
+    "confidence": 0.15,
+    "coverage": 0.11339749714525413,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T05:02:49Z",
+    "git_commit": "77553f23af39ca9ca4d7337e78fce9b3d4e9594f",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "d64481ca1ae6ca334aa85d2badf071391e37f406963dae225fd87342002f329b",
+      "curr_text_sha256": "85bf66c0559860ed1ac4317a701190a04ff8211be8af04381e4ba541dda3ef7c",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

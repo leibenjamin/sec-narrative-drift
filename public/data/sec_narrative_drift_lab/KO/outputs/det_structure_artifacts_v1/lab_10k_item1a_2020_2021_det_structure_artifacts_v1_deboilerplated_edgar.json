@@ -1,0 +1,69 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_structure_artifacts_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "KO",
+  "section": "10k_item1a",
+  "year_from": 2020,
+  "year_to": 2021,
+  "artifacts": {
+    "stats": {
+      "headings_prev": [
+        "RISKS RELATED TO INFORMATION TECHNOLOGY, DATA PRIVACY AND DIGITIZATION"
+      ],
+      "headings_curr": [
+        "RISKS RELATED TO INFORMATION TECHNOLOGY AND DATA PRIVACY",
+        "Because"
+      ],
+      "headings_added": [
+        "RISKS RELATED TO INFORMATION TECHNOLOGY AND DATA PRIVACY",
+        "Because"
+      ],
+      "headings_removed": [
+        "RISKS RELATED TO INFORMATION TECHNOLOGY, DATA PRIVACY AND DIGITIZATION"
+      ],
+      "paragraph_count_prev": 191,
+      "paragraph_count_curr": 191,
+      "length_chars_prev": 56770,
+      "length_chars_curr": 58381
+    }
+  },
+  "evidence": [
+    {
+      "year": 2021,
+      "paragraph_idx": 145,
+      "snippet": "If we are unable to protect our information systems against service interruption, misappropriation of data or cybersecurity incidents, our operations could be disrupted, we may suffer financial losses and our reputation may be damaged.",
+      "why": "Heading added: RISKS RELATED TO INFORMATION TECHNOLOGY AND DATA PRIVACY"
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 148,
+      "snippet": "information systems are critical to many of the Company\u2019s operating activities, our business may be impacted by system shutdowns, service disruptions or cybersecurity incidents.",
+      "why": "Heading added: Because"
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 161,
+      "snippet": "If we are unable to protect our information systems against service interruption, misappropriation of data or breaches of security, our operations could be disrupted, we may suffer financial losses and our reputation may be damaged.",
+      "why": "Heading removed: RISKS RELATED TO INFORMATION TECHNOLOGY, DATA PRIVACY AND DIGITIZATION"
+    }
+  ],
+  "metrics": {
+    "drift_score": 1.0,
+    "confidence": 0.15,
+    "coverage": 0.6695838837516512,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T05:02:52Z",
+    "git_commit": "77553f23af39ca9ca4d7337e78fce9b3d4e9594f",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "5b2e73706f009be79c12a24e3160b4480898609cb5b6c7b2c20be75d2854796a",
+      "curr_text_sha256": "0fac1e3d2bc2d8f5c69332b090a63e1cef7164b20263237cf14b772dc47bdf4a",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

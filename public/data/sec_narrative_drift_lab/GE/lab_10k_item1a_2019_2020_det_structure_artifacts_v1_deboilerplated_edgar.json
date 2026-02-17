@@ -1,0 +1,111 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_structure_artifacts_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "GE",
+  "section": "10k_item1a",
+  "year_from": 2019,
+  "year_to": 2020,
+  "artifacts": {
+    "stats": {
+      "headings_prev": [
+        "GE 2019 FORM 10-K 50",
+        "GE 2019 FORM 10-K 51",
+        "GE 2019 FORM 10-K 52",
+        "GE 2019 FORM 10-K 53",
+        "GE 2019 FORM 10-K 54",
+        "GE 2019 FORM 10-K 55",
+        "GE 2019 FORM 10-K 56",
+        "LEGAL PROCEEDINGS"
+      ],
+      "headings_curr": [
+        "GE 2020 FORM 10-K 44",
+        "GE 2020 FORM 10-K 45",
+        "GE 2020 FORM 10-K 46",
+        "GE 2020 FORM 10-K 47",
+        "GE 2020 FORM 10-K 48",
+        "GE 2020 FORM 10-K 49",
+        "GE 2020 FORM 10-K 50"
+      ],
+      "headings_added": [
+        "GE 2020 FORM 10-K 44",
+        "GE 2020 FORM 10-K 45",
+        "GE 2020 FORM 10-K 46",
+        "GE 2020 FORM 10-K 47",
+        "GE 2020 FORM 10-K 48",
+        "GE 2020 FORM 10-K 49",
+        "GE 2020 FORM 10-K 50"
+      ],
+      "headings_removed": [
+        "GE 2019 FORM 10-K 50",
+        "GE 2019 FORM 10-K 51",
+        "GE 2019 FORM 10-K 52",
+        "GE 2019 FORM 10-K 53",
+        "GE 2019 FORM 10-K 54",
+        "GE 2019 FORM 10-K 55",
+        "GE 2019 FORM 10-K 56",
+        "LEGAL PROCEEDINGS"
+      ],
+      "paragraph_count_prev": 98,
+      "paragraph_count_curr": 108,
+      "length_chars_prev": 29393,
+      "length_chars_curr": 35563
+    }
+  },
+  "evidence": [
+    {
+      "year": 2020,
+      "paragraph_idx": 15,
+      "snippet": "We operate in virtually every part of the world, serve customers in over 170 countries and received 56% of our revenues for 2020 from outside the United States.",
+      "why": "Heading added: GE 2020 FORM 10-K 44"
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 29,
+      "snippet": "The introduction of innovative and disruptive technologies in the markets in which we operate also poses risks in the form of new competitors (including new entrants from outside our traditional industries, such as competitors from digital technology companies), market consolidation, substitutions of existing products, services or solutions, niche players, new business models and competitors that are faster to market with new or more cost-effective products or services.",
+      "why": "Heading added: GE 2020 FORM 10-K 45"
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 43,
+      "snippet": "The value of, or our ability to use, our intellectual property may also be negatively impacted by dependencies on third parties, such as our ability to obtain or renew on reasonable terms licenses that we need in the future, or our ability to secure or retain ownership or rights to use data in certain software analytics or services offerings.",
+      "why": "Heading added: GE 2020 FORM 10-K 46"
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 9,
+      "snippet": "Portfolio strategy execution - Our success depends on achieving our strategic and financial objectives, including through dispositions.",
+      "why": "Heading removed: GE 2019 FORM 10-K 50"
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 24,
+      "snippet": "Restructuring & personnel - We have been undertaking extensive cost reduction and restructuring efforts; these efforts may have adverse effects on our operations, employee retention, results and reputation and may not achieve the expected benefits .",
+      "why": "Heading removed: GE 2019 FORM 10-K 51"
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 34,
+      "snippet": "Product safety - Our products and services are highly sophisticated and specialized, and a major failure or similar event affecting our products or third-party products with which our products are integrated can adversely affect our business, reputation, financial position and results of operations.",
+      "why": "Heading removed: GE 2019 FORM 10-K 52"
+    }
+  ],
+  "metrics": {
+    "drift_score": 1.0,
+    "confidence": 0.75,
+    "coverage": 0.573981136128415,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T05:02:57Z",
+    "git_commit": "77553f23af39ca9ca4d7337e78fce9b3d4e9594f",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "612d85474211bb7c94a2c150842055caf402c2b957874fe9c6842d403b2b27a0",
+      "curr_text_sha256": "d72381b6b70d4ef5d3ce12c2ea1e5fd3750f0dd6691b55691d65c6e6aa8bfbfa",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

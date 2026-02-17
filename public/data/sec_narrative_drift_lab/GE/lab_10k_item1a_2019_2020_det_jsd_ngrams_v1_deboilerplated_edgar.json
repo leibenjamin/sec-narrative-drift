@@ -1,0 +1,156 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_jsd_ngrams_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "GE",
+  "section": "10k_item1a",
+  "year_from": 2019,
+  "year_to": 2020,
+  "artifacts": {
+    "ranked_items": [
+      {
+        "label": "covid",
+        "score": 0.0012888812510740678
+      },
+      {
+        "label": "covid pandemic",
+        "score": 0.0008592541673827118
+      },
+      {
+        "label": "commercial paper",
+        "score": 0.0006274837900020916
+      },
+      {
+        "label": "investors",
+        "score": 0.0006274837900020916
+      },
+      {
+        "label": "paper",
+        "score": 0.0006274837900020916
+      },
+      {
+        "label": "short term",
+        "score": 0.0005229031583350763
+      },
+      {
+        "label": "party investors",
+        "score": 0.0005229031583350763
+      },
+      {
+        "label": "decarbonization",
+        "score": 0.0004296270836913559
+      },
+      {
+        "label": "consolidated",
+        "score": 0.0004214401352734512
+      },
+      {
+        "label": "paper markets",
+        "score": 0.0004183225266680611
+      },
+      {
+        "label": "pandemic",
+        "score": 0.0004012652749949305
+      },
+      {
+        "label": "taken",
+        "score": 0.00034370166695308474
+      },
+      {
+        "label": "operations cash",
+        "score": 0.00034370166695308474
+      },
+      {
+        "label": "ge network",
+        "score": 0.00034370166695308474
+      },
+      {
+        "label": "cases",
+        "score": 0.00034370166695308474
+      },
+      {
+        "label": "network",
+        "score": 0.00034370166695308474
+      },
+      {
+        "label": "expected continue",
+        "score": 0.00034370166695308474
+      },
+      {
+        "label": "short",
+        "score": 0.00033485001988310485
+      },
+      {
+        "label": "health pandemic",
+        "score": 0.0003137418950010458
+      },
+      {
+        "label": "term credit",
+        "score": 0.0003137418950010458
+      }
+    ],
+    "stats": {
+      "jsd": 0.222969,
+      "tokens_prev": 2391,
+      "tokens_curr": 2910
+    }
+  },
+  "evidence": [
+    {
+      "year": 2020,
+      "paragraph_idx": 4,
+      "snippet": "COVID-19 - The global COVID-19 pandemic has had and is expected to continue to have a material adverse impact on our operations and financial performance, as well as on the operations and financial performance of many of the customers and suppliers in industries that we serve.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "covid"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 5,
+      "snippet": "Our operations and financial performance have been negatively impacted by the COVID-19 pandemic that has caused, and is expected to continue to cause, the global slowdown of economic activity (including the decrease in demand for a broad variety of goods and services), disruptions in global supply chains and significant volatility and disruption of financial markets.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "covid"
+      ]
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 55,
+      "snippet": "As a result of ratings actions by Moody\u2019s, S&P and Fitch in 2018, GE transitioned to a tier-2 commercial paper issuer, which reduced our borrowing capacity in the commercial paper markets that we historically relied on significantly to fund our operations on an intra-quarter basis.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "commercial paper",
+        "paper"
+      ]
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 56,
+      "snippet": "To accommodate GE\u2019s short-term liquidity needs, we have been increasing utilization of our revolving credit facilities as a substitute for commercial paper borrowings, which results in an overall increase to our cost of funds.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "commercial paper",
+        "paper"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.222969,
+    "confidence": 1.0,
+    "coverage": 0.573981136128415,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T05:02:57Z",
+    "git_commit": "77553f23af39ca9ca4d7337e78fce9b3d4e9594f",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "612d85474211bb7c94a2c150842055caf402c2b957874fe9c6842d403b2b27a0",
+      "curr_text_sha256": "d72381b6b70d4ef5d3ce12c2ea1e5fd3750f0dd6691b55691d65c6e6aa8bfbfa",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

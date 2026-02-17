@@ -1,0 +1,145 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_jsd_ngrams_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "GE",
+  "section": "10k_item1a",
+  "year_from": 2022,
+  "year_to": 2023,
+  "artifacts": {
+    "ranked_items": [
+      {
+        "label": "internal",
+        "score": 0.0009706224925585609
+      },
+      {
+        "label": "reporting",
+        "score": 0.000711789827876278
+      },
+      {
+        "label": "internal control",
+        "score": 0.000711789827876278
+      },
+      {
+        "label": "financial reporting",
+        "score": 0.0006470816617057072
+      },
+      {
+        "label": "control financial",
+        "score": 0.0005823734955351365
+      },
+      {
+        "label": "financial",
+        "score": 0.00040488940229070776
+      },
+      {
+        "label": "control",
+        "score": 0.0003540624363351869
+      },
+      {
+        "label": "accounting",
+        "score": 0.00034028451761580595
+      },
+      {
+        "label": "vernova independent",
+        "score": 0.0003307315782510914
+      },
+      {
+        "label": "aercap",
+        "score": 0.0003235408308528536
+      },
+      {
+        "label": "covid",
+        "score": 0.00026798307268224305
+      },
+      {
+        "label": "greenhouse",
+        "score": 0.00026458526260087314
+      },
+      {
+        "label": "greenhouse gas",
+        "score": 0.00026458526260087314
+      },
+      {
+        "label": "emission reduction",
+        "score": 0.00026458526260087314
+      },
+      {
+        "label": "emission",
+        "score": 0.00026458526260087314
+      },
+      {
+        "label": "gas",
+        "score": 0.00026458526260087314
+      },
+      {
+        "label": "chief",
+        "score": 0.0002588326646822829
+      },
+      {
+        "label": "officer",
+        "score": 0.0002588326646822829
+      },
+      {
+        "label": "audit",
+        "score": 0.0002588326646822829
+      },
+      {
+        "label": "secure",
+        "score": 0.0002588326646822829
+      }
+    ],
+    "stats": {
+      "jsd": 0.209324,
+      "tokens_prev": 3864,
+      "tokens_curr": 3780
+    }
+  },
+  "evidence": [
+    {
+      "year": 2023,
+      "paragraph_idx": 91,
+      "snippet": "An unknown security vulnerability or malicious software in a product used by a supplier to deliver a service or embedded in a supplier\u2019s product that is later integrated into a GE product could lead to a vulnerability in the security of GE\u2019s product or, if used internally in the GE network environment, to a compromise of the GE network, which may lead to the loss of information or operational disruptions.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "internal"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 70,
+      "snippet": "An unknown security vulnerability or malicious software embedded in a supplier\u2019s product that is later integrated into a GE product could lead to a vulnerability in the security of GE\u2019s product or if used internally in the GE network environment to a compromise of the GE network, which could potentially lead to the loss of information or operational disruptions.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "internal"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 128,
+      "snippet": "LEGAL PROCEEDINGS. We are reporting the following environmental matter in compliance with SEC requirements to disclose environmental proceedings where a governmental authority is a party and that involve potential monetary sanctions of $300,000 or greater.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "reporting"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.209324,
+    "confidence": 1.0,
+    "coverage": 0.6218547314437726,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T05:02:58Z",
+    "git_commit": "77553f23af39ca9ca4d7337e78fce9b3d4e9594f",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "42d8ebb6d652853c7670c439b184bcafda4d618c864b160b0108689dc556a013",
+      "curr_text_sha256": "5316845cf41d84fa8b9f0f3527a56617073d663d9b0729619a1016cb691a3c8b",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

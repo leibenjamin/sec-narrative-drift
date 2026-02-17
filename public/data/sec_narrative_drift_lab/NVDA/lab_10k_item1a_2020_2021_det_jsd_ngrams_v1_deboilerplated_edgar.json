@@ -1,0 +1,147 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_jsd_ngrams_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "NVDA",
+  "section": "10k_item1a",
+  "year_from": 2020,
+  "year_to": 2021,
+  "artifacts": {
+    "ranked_items": [
+      {
+        "label": "covid",
+        "score": 0.0017897091722595079
+      },
+      {
+        "label": "pandemic",
+        "score": 0.0014168530947054436
+      },
+      {
+        "label": "covid pandemic",
+        "score": 0.0009694258016405667
+      },
+      {
+        "label": "israel",
+        "score": 0.0008202833706189411
+      },
+      {
+        "label": "notes",
+        "score": 0.0006711409395973154
+      },
+      {
+        "label": "tegra",
+        "score": 0.0006216972334473111
+      },
+      {
+        "label": "tegra processors",
+        "score": 0.0006216972334473111
+      },
+      {
+        "label": "gpus tegra",
+        "score": 0.0006216972334473111
+      },
+      {
+        "label": "condition",
+        "score": 0.0005219985085756898
+      },
+      {
+        "label": "financial condition",
+        "score": 0.0005219985085756898
+      },
+      {
+        "label": "uncertainty",
+        "score": 0.0005219985085756898
+      },
+      {
+        "label": "availability",
+        "score": 0.0005219985085756898
+      },
+      {
+        "label": "chain",
+        "score": 0.0005219985085756898
+      },
+      {
+        "label": "supply chain",
+        "score": 0.0005219985085756898
+      },
+      {
+        "label": "coronavirus",
+        "score": 0.00046627292508548337
+      },
+      {
+        "label": "condition results",
+        "score": 0.00044742729306487697
+      },
+      {
+        "label": "billion notes",
+        "score": 0.0003728560775540641
+      },
+      {
+        "label": "reduce",
+        "score": 0.0003728560775540641
+      },
+      {
+        "label": "including limited",
+        "score": 0.0003728560775540641
+      },
+      {
+        "label": "business financial",
+        "score": 0.0003728560775540641
+      }
+    ],
+    "stats": {
+      "jsd": 0.267268,
+      "tokens_prev": 1609,
+      "tokens_curr": 3353
+    }
+  },
+  "evidence": [
+    {
+      "year": 2021,
+      "paragraph_idx": 35,
+      "snippet": "Additionally, consumer behavior during the COVID-19 pandemic, such as increased demand for our Gaming, Data Center and mobile workstation and laptop products and suppressed corporate demand for desktop workstations, has made it more difficult for us to estimate future demand, and these challenges may be more pronounced in the future if and when the effects of the pandemic subside.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "covid",
+        "pandemic"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 42,
+      "snippet": "Our worldwide operations could be disrupted by earthquakes, telecommunications failures, power or water shortages, outages at cloud service providers, tsunamis, floods, hurricanes, typhoons, fires, extreme weather conditions, cyber-attacks, terrorist attacks, medical epidemics or pandemics (including, but not limited to, COVID-19) and other natural or man-made disasters, catastrophic events or climate change.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "covid",
+        "pandemic"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 19,
+      "snippet": "Our worldwide operations could be disrupted by earthquakes, telecommunications failures, power or water shortages, outages at cloud service providers, tsunamis, floods, hurricanes, typhoons, fires, extreme weather conditions, cyber-attacks, terrorist attacks, medical epidemics or pandemics and other natural or man-made disasters, catastrophic events or climate change.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "pandemic"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.267268,
+    "confidence": 1.0,
+    "coverage": 0.4167789685340863,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T05:02:49Z",
+    "git_commit": "77553f23af39ca9ca4d7337e78fce9b3d4e9594f",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "20b62b19cb33bb5cb41d651aaddc1d939f2bdeddd2d4f373f1e9803b95cd8b28",
+      "curr_text_sha256": "f185a5f8243e4b11cfb46f89bf804a468dfbc9f1ed1f591520a1f920a16e29e1",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

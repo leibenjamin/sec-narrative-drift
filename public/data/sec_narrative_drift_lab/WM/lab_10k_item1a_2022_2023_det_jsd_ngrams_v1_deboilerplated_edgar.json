@@ -1,0 +1,156 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_jsd_ngrams_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "WM",
+  "section": "10k_item1a",
+  "year_from": 2022,
+  "year_to": 2023,
+  "artifacts": {
+    "ranked_items": [
+      {
+        "label": "covid",
+        "score": 0.0008154943934760449
+      },
+      {
+        "label": "wm",
+        "score": 0.0007319304666056725
+      },
+      {
+        "label": "wm renewable",
+        "score": 0.0007319304666056725
+      },
+      {
+        "label": "focus",
+        "score": 0.0006404391582799634
+      },
+      {
+        "label": "parties",
+        "score": 0.0004574565416285453
+      },
+      {
+        "label": "energy segment",
+        "score": 0.0004574565416285453
+      },
+      {
+        "label": "segment",
+        "score": 0.0004574565416285453
+      },
+      {
+        "label": "ai",
+        "score": 0.0004574565416285453
+      },
+      {
+        "label": "ongoing",
+        "score": 0.0004574565416285453
+      },
+      {
+        "label": "forward",
+        "score": 0.00040774719673802244
+      },
+      {
+        "label": "expect",
+        "score": 0.00040774719673802244
+      },
+      {
+        "label": "forward looking",
+        "score": 0.00040774719673802244
+      },
+      {
+        "label": "looking",
+        "score": 0.00040774719673802244
+      },
+      {
+        "label": "policy",
+        "score": 0.00036596523330283625
+      },
+      {
+        "label": "clean",
+        "score": 0.00036596523330283625
+      },
+      {
+        "label": "respect",
+        "score": 0.00036596523330283625
+      },
+      {
+        "label": "clean fuel",
+        "score": 0.00036596523330283625
+      },
+      {
+        "label": "negatively impact",
+        "score": 0.00036596523330283625
+      },
+      {
+        "label": "looking statements",
+        "score": 0.0003058103975535168
+      },
+      {
+        "label": "recycling renewable",
+        "score": 0.0003058103975535168
+      }
+    ],
+    "stats": {
+      "jsd": 0.235993,
+      "tokens_prev": 2453,
+      "tokens_curr": 2733
+    }
+  },
+  "evidence": [
+    {
+      "year": 2023,
+      "paragraph_idx": 4,
+      "snippet": "Execution of our strategy, including growth through acquisitions and our planned expansion of our Recycling Processing and Sales and WM Renewable Energy segments, may cause us to incur substantial additional indebtedness, which may divert capital away from our traditional business operations and other financial plans, and may introduce additional risks and volatility to our financial performance.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "wm",
+        "wm renewable"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 5,
+      "snippet": "Supply chain, regulatory or permitting disruptions or delays could detrimentally impact the execution timeline for our planned expansion of our Recycling Processing and Sales and WM Renewable Energy businesses.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "wm",
+        "wm renewable"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 42,
+      "snippet": "The COVID-19 global pandemic disrupted social and commercial activity and financial markets throughout North America; a significant resurgence or new variant of the COVID-19 virus, or other similar pandemic conditions, may have a material adverse impact on our business, financial condition, results of operations and cash flows.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "covid"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 43,
+      "snippet": "The COVID-19 pandemic and related protective measures had a significant adverse impact on many sectors of the economy, including environmental services.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "covid"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.235993,
+    "confidence": 1.0,
+    "coverage": 0.37740696494405696,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T05:02:55Z",
+    "git_commit": "77553f23af39ca9ca4d7337e78fce9b3d4e9594f",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "390613f8861992077c72559861b6a2a490e8f112445fb200b475d147f16de653",
+      "curr_text_sha256": "1aaddb195acb15820f16fc5ace1129d80964c3d455101fc8a04f6d97bc9df5cc",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

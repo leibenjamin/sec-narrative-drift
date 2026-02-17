@@ -1,0 +1,1008 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_logodds_terms_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "GE",
+  "section": "10k_item1a",
+  "year_from": 2021,
+  "year_to": 2022,
+  "artifacts": {
+    "top_risers": [
+      {
+        "label": "vernova",
+        "score": 1.2028460916714943,
+        "meta": {
+          "z": 1.723389656962202,
+          "countPrev": 0,
+          "countCurr": 15,
+          "per10kPrev": 0.0,
+          "per10kCurr": 17.001020061203672,
+          "deltaPer10k": 17.001020061203672,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "aercap healthcare",
+        "score": 1.0350305017328834,
+        "meta": {
+          "z": 1.1322356865034984,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.533605349654312,
+          "deltaPer10k": 4.533605349654312,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "aerospace",
+        "score": 1.0219881257532715,
+        "meta": {
+          "z": 1.4642636141535497,
+          "countPrev": 0,
+          "countCurr": 10,
+          "per10kPrev": 0.0,
+          "per10kCurr": 11.334013374135782,
+          "deltaPer10k": 11.334013374135782,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "separation transaction",
+        "score": 0.9491306998253253,
+        "meta": {
+          "z": 1.261371171353203,
+          "countPrev": 0,
+          "countCurr": 6,
+          "per10kPrev": 0.0,
+          "per10kCurr": 6.800408024481469,
+          "deltaPer10k": 6.800408024481469,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "lockdowns",
+        "score": 0.856145466872801,
+        "meta": {
+          "z": 0.9128366214271898,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.266802674827156,
+          "deltaPer10k": 2.266802674827156,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "virus",
+        "score": 0.856145466872801,
+        "meta": {
+          "z": 0.9128366214271898,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.266802674827156,
+          "deltaPer10k": 2.266802674827156,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "vernova separation",
+        "score": 0.8178668716182043,
+        "meta": {
+          "z": 1.3530860174693937,
+          "countPrev": 0,
+          "countCurr": 8,
+          "per10kPrev": 0.0,
+          "per10kCurr": 9.067210699308625,
+          "deltaPer10k": 9.067210699308625,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "healthcare separation",
+        "score": 0.7832034089968652,
+        "meta": {
+          "z": 1.0408579151385675,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.4002040122407347,
+          "deltaPer10k": 3.4002040122407347,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "standalone",
+        "score": 0.7450179080574465,
+        "meta": {
+          "z": 0.9128366214271898,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.266802674827156,
+          "deltaPer10k": 2.266802674827156,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "skilled labor",
+        "score": 0.7273134327582705,
+        "meta": {
+          "z": 1.203273625982355,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.667006687067891,
+          "deltaPer10k": 5.667006687067891,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "stability",
+        "score": 0.7264705750971239,
+        "meta": {
+          "z": 1.0408579151385675,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.4002040122407347,
+          "deltaPer10k": 3.4002040122407347,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "completion vernova",
+        "score": 0.6868725724814974,
+        "meta": {
+          "z": 0.9128366214271898,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.266802674827156,
+          "deltaPer10k": 2.266802674827156,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "spin",
+        "score": 0.666281592154866,
+        "meta": {
+          "z": 1.1416056751100783,
+          "countPrev": 1,
+          "countCurr": 4,
+          "per10kPrev": 1.2430080795525171,
+          "per10kCurr": 4.533605349654312,
+          "deltaPer10k": 3.290597270101795,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "flows results",
+        "score": 0.6464114130833579,
+        "meta": {
+          "z": 1.3737592877819644,
+          "countPrev": 1,
+          "countCurr": 5,
+          "per10kPrev": 1.2430080795525171,
+          "per10kCurr": 5.667006687067891,
+          "deltaPer10k": 4.423998607515374,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "transaction",
+        "score": 0.6385549389135909,
+        "meta": {
+          "z": 1.7325374305412833,
+          "countPrev": 1,
+          "countCurr": 7,
+          "per10kPrev": 1.2430080795525171,
+          "per10kCurr": 7.933809361895047,
+          "deltaPer10k": 6.69080128234253,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_fallers": [
+      {
+        "label": "separation transactions",
+        "score": -0.9505334203190906,
+        "meta": {
+          "z": -2.0200820840737825,
+          "countPrev": 16,
+          "countCurr": 7,
+          "per10kPrev": 19.888129272840274,
+          "per10kCurr": 7.933809361895047,
+          "deltaPer10k": -11.954319910945227,
+          "distinctive": true
+        }
+      },
+      {
+        "label": "expected continue",
+        "score": -0.7288029244054681,
+        "meta": {
+          "z": -0.9685610196911218,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.4860161591050343,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.4860161591050343,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ownership position",
+        "score": -0.5854424337542413,
+        "meta": {
+          "z": -0.9685610196911218,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.4860161591050343,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.4860161591050343,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "covid pandemic",
+        "score": -0.5263766714651973,
+        "meta": {
+          "z": -1.1186603866535092,
+          "countPrev": 11,
+          "countCurr": 7,
+          "per10kPrev": 13.673088875077688,
+          "per10kCurr": 7.933809361895047,
+          "deltaPer10k": -5.739279513182641,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "baker",
+        "score": -0.5195884123797,
+        "meta": {
+          "z": -1.096998655273245,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 3.7290242386575514,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.7290242386575514,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "hughes",
+        "score": -0.5195884123797,
+        "meta": {
+          "z": -1.096998655273245,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 3.7290242386575514,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.7290242386575514,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "deferrals",
+        "score": -0.4370023330263607,
+        "meta": {
+          "z": -0.6261194229424869,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 2.4860161591050343,
+          "per10kCurr": 1.133401337413578,
+          "deltaPer10k": -1.3526148216914562,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "goods",
+        "score": -0.4370023330263607,
+        "meta": {
+          "z": -0.6261194229424869,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 2.4860161591050343,
+          "per10kCurr": 1.133401337413578,
+          "deltaPer10k": -1.3526148216914562,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "requests",
+        "score": -0.4370023330263607,
+        "meta": {
+          "z": -0.6261194229424869,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 2.4860161591050343,
+          "per10kCurr": 1.133401337413578,
+          "deltaPer10k": -1.3526148216914562,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "baker hughes",
+        "score": -0.38533707978027687,
+        "meta": {
+          "z": -1.096998655273245,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 3.7290242386575514,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.7290242386575514,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "Pandemic",
+        "score": -0.3789776554013514,
+        "meta": {
+          "z": -1.0282482106218072,
+          "countPrev": 14,
+          "countCurr": 10,
+          "per10kPrev": 17.40211311373524,
+          "per10kCurr": 11.334013374135782,
+          "deltaPer10k": -6.068099739599457,
+          "distinctive": false,
+          "includes": [
+            "pandemic"
+          ]
+        }
+      },
+      {
+        "label": "contract modifications",
+        "score": -0.37845512191389574,
+        "meta": {
+          "z": -0.6261194229424869,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 2.4860161591050343,
+          "per10kCurr": 1.133401337413578,
+          "deltaPer10k": -1.3526148216914562,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "deferrals contract",
+        "score": -0.37845512191389574,
+        "meta": {
+          "z": -0.6261194229424869,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 2.4860161591050343,
+          "per10kCurr": 1.133401337413578,
+          "deltaPer10k": -1.3526148216914562,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "payment deferrals",
+        "score": -0.37845512191389574,
+        "meta": {
+          "z": -0.6261194229424869,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 2.4860161591050343,
+          "per10kCurr": 1.133401337413578,
+          "deltaPer10k": -1.3526148216914562,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "timeframes",
+        "score": -0.37467585594391484,
+        "meta": {
+          "z": -0.5368205453034397,
+          "countPrev": 3,
+          "countCurr": 2,
+          "per10kPrev": 3.7290242386575514,
+          "per10kCurr": 2.266802674827156,
+          "deltaPer10k": -1.4622215638303953,
+          "distinctive": false
+        }
+      }
+    ],
+    "summary": "Adds emphasis on vernova, aercap healthcare, aerospace; de-emphasizes separation transactions, expected continue, ownership position.",
+    "ranked_items": [
+      {
+        "label": "vernova",
+        "score": 1.2028460916714943,
+        "meta": {
+          "z": 1.723389656962202,
+          "countPrev": 0,
+          "countCurr": 15,
+          "per10kPrev": 0.0,
+          "per10kCurr": 17.001020061203672,
+          "deltaPer10k": 17.001020061203672,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "aercap healthcare",
+        "score": 1.0350305017328834,
+        "meta": {
+          "z": 1.1322356865034984,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.533605349654312,
+          "deltaPer10k": 4.533605349654312,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "aerospace",
+        "score": 1.0219881257532715,
+        "meta": {
+          "z": 1.4642636141535497,
+          "countPrev": 0,
+          "countCurr": 10,
+          "per10kPrev": 0.0,
+          "per10kCurr": 11.334013374135782,
+          "deltaPer10k": 11.334013374135782,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "separation transaction",
+        "score": 0.9491306998253253,
+        "meta": {
+          "z": 1.261371171353203,
+          "countPrev": 0,
+          "countCurr": 6,
+          "per10kPrev": 0.0,
+          "per10kCurr": 6.800408024481469,
+          "deltaPer10k": 6.800408024481469,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "lockdowns",
+        "score": 0.856145466872801,
+        "meta": {
+          "z": 0.9128366214271898,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.266802674827156,
+          "deltaPer10k": 2.266802674827156,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "virus",
+        "score": 0.856145466872801,
+        "meta": {
+          "z": 0.9128366214271898,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.266802674827156,
+          "deltaPer10k": 2.266802674827156,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "vernova separation",
+        "score": 0.8178668716182043,
+        "meta": {
+          "z": 1.3530860174693937,
+          "countPrev": 0,
+          "countCurr": 8,
+          "per10kPrev": 0.0,
+          "per10kCurr": 9.067210699308625,
+          "deltaPer10k": 9.067210699308625,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "healthcare separation",
+        "score": 0.7832034089968652,
+        "meta": {
+          "z": 1.0408579151385675,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.4002040122407347,
+          "deltaPer10k": 3.4002040122407347,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "standalone",
+        "score": 0.7450179080574465,
+        "meta": {
+          "z": 0.9128366214271898,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.266802674827156,
+          "deltaPer10k": 2.266802674827156,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "skilled labor",
+        "score": 0.7273134327582705,
+        "meta": {
+          "z": 1.203273625982355,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.667006687067891,
+          "deltaPer10k": 5.667006687067891,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "stability",
+        "score": 0.7264705750971239,
+        "meta": {
+          "z": 1.0408579151385675,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.4002040122407347,
+          "deltaPer10k": 3.4002040122407347,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "completion vernova",
+        "score": 0.6868725724814974,
+        "meta": {
+          "z": 0.9128366214271898,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.266802674827156,
+          "deltaPer10k": 2.266802674827156,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "spin",
+        "score": 0.666281592154866,
+        "meta": {
+          "z": 1.1416056751100783,
+          "countPrev": 1,
+          "countCurr": 4,
+          "per10kPrev": 1.2430080795525171,
+          "per10kCurr": 4.533605349654312,
+          "deltaPer10k": 3.290597270101795,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "flows results",
+        "score": 0.6464114130833579,
+        "meta": {
+          "z": 1.3737592877819644,
+          "countPrev": 1,
+          "countCurr": 5,
+          "per10kPrev": 1.2430080795525171,
+          "per10kCurr": 5.667006687067891,
+          "deltaPer10k": 4.423998607515374,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "transaction",
+        "score": 0.6385549389135909,
+        "meta": {
+          "z": 1.7325374305412833,
+          "countPrev": 1,
+          "countCurr": 7,
+          "per10kPrev": 1.2430080795525171,
+          "per10kCurr": 7.933809361895047,
+          "deltaPer10k": 6.69080128234253,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "separation transactions",
+        "score": -0.9505334203190906,
+        "meta": {
+          "z": -2.0200820840737825,
+          "countPrev": 16,
+          "countCurr": 7,
+          "per10kPrev": 19.888129272840274,
+          "per10kCurr": 7.933809361895047,
+          "deltaPer10k": -11.954319910945227,
+          "distinctive": true
+        }
+      },
+      {
+        "label": "expected continue",
+        "score": -0.7288029244054681,
+        "meta": {
+          "z": -0.9685610196911218,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.4860161591050343,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.4860161591050343,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ownership position",
+        "score": -0.5854424337542413,
+        "meta": {
+          "z": -0.9685610196911218,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.4860161591050343,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.4860161591050343,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "covid pandemic",
+        "score": -0.5263766714651973,
+        "meta": {
+          "z": -1.1186603866535092,
+          "countPrev": 11,
+          "countCurr": 7,
+          "per10kPrev": 13.673088875077688,
+          "per10kCurr": 7.933809361895047,
+          "deltaPer10k": -5.739279513182641,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "baker",
+        "score": -0.5195884123797,
+        "meta": {
+          "z": -1.096998655273245,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 3.7290242386575514,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.7290242386575514,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "hughes",
+        "score": -0.5195884123797,
+        "meta": {
+          "z": -1.096998655273245,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 3.7290242386575514,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.7290242386575514,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "deferrals",
+        "score": -0.4370023330263607,
+        "meta": {
+          "z": -0.6261194229424869,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 2.4860161591050343,
+          "per10kCurr": 1.133401337413578,
+          "deltaPer10k": -1.3526148216914562,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "goods",
+        "score": -0.4370023330263607,
+        "meta": {
+          "z": -0.6261194229424869,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 2.4860161591050343,
+          "per10kCurr": 1.133401337413578,
+          "deltaPer10k": -1.3526148216914562,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "requests",
+        "score": -0.4370023330263607,
+        "meta": {
+          "z": -0.6261194229424869,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 2.4860161591050343,
+          "per10kCurr": 1.133401337413578,
+          "deltaPer10k": -1.3526148216914562,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "baker hughes",
+        "score": -0.38533707978027687,
+        "meta": {
+          "z": -1.096998655273245,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 3.7290242386575514,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.7290242386575514,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "Pandemic",
+        "score": -0.3789776554013514,
+        "meta": {
+          "z": -1.0282482106218072,
+          "countPrev": 14,
+          "countCurr": 10,
+          "per10kPrev": 17.40211311373524,
+          "per10kCurr": 11.334013374135782,
+          "deltaPer10k": -6.068099739599457,
+          "distinctive": false,
+          "includes": [
+            "pandemic"
+          ]
+        }
+      },
+      {
+        "label": "contract modifications",
+        "score": -0.37845512191389574,
+        "meta": {
+          "z": -0.6261194229424869,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 2.4860161591050343,
+          "per10kCurr": 1.133401337413578,
+          "deltaPer10k": -1.3526148216914562,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "deferrals contract",
+        "score": -0.37845512191389574,
+        "meta": {
+          "z": -0.6261194229424869,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 2.4860161591050343,
+          "per10kCurr": 1.133401337413578,
+          "deltaPer10k": -1.3526148216914562,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "payment deferrals",
+        "score": -0.37845512191389574,
+        "meta": {
+          "z": -0.6261194229424869,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 2.4860161591050343,
+          "per10kCurr": 1.133401337413578,
+          "deltaPer10k": -1.3526148216914562,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "timeframes",
+        "score": -0.37467585594391484,
+        "meta": {
+          "z": -0.5368205453034397,
+          "countPrev": 3,
+          "countCurr": 2,
+          "per10kPrev": 3.7290242386575514,
+          "per10kCurr": 2.266802674827156,
+          "deltaPer10k": -1.4622215638303953,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_risers_alt": [
+      {
+        "label": "energy businesses",
+        "score": 1.6520580814984074,
+        "meta": {}
+      },
+      {
+        "label": "ability meet",
+        "score": 0.8609296488608162,
+        "meta": {}
+      },
+      {
+        "label": "future adverse",
+        "score": 1.648958097534023,
+        "meta": {}
+      },
+      {
+        "label": "healthcare separation",
+        "score": 1.648958097534023,
+        "meta": {}
+      },
+      {
+        "label": "products meet",
+        "score": 1.648958097534023,
+        "meta": {}
+      },
+      {
+        "label": "market conditions",
+        "score": 1.1213854744055984,
+        "meta": {}
+      },
+      {
+        "label": "new products",
+        "score": 1.1213854744055984,
+        "meta": {}
+      },
+      {
+        "label": "financial risks",
+        "score": 0.9717581088262524,
+        "meta": {}
+      },
+      {
+        "label": "meet cash",
+        "score": 0.8579100506953123,
+        "meta": {}
+      },
+      {
+        "label": "addition suppliers",
+        "score": 0.7678373847898188,
+        "meta": {}
+      },
+      {
+        "label": "Inflation",
+        "score": 0.4483952443744066,
+        "meta": {}
+      },
+      {
+        "label": "global economic",
+        "score": 0.09748409215115306,
+        "meta": {}
+      },
+      {
+        "label": "results operations cash",
+        "score": 0.037350819342842456,
+        "meta": {}
+      }
+    ],
+    "top_fallers_alt": [
+      {
+        "label": "risks face",
+        "score": -1.791617724273313,
+        "meta": {}
+      },
+      {
+        "label": "labor shortages",
+        "score": -1.260771344102685,
+        "meta": {}
+      },
+      {
+        "label": "financial markets",
+        "score": -0.22328953397787377,
+        "meta": {}
+      },
+      {
+        "label": "Supply chain",
+        "score": -0.13190204013965534,
+        "meta": {}
+      },
+      {
+        "label": "new product",
+        "score": -0.21037962629182827,
+        "meta": {}
+      },
+      {
+        "label": "financial performance",
+        "score": -0.20299188751223296,
+        "meta": {}
+      },
+      {
+        "label": "products services",
+        "score": -0.06027323779037874,
+        "meta": {}
+      },
+      {
+        "label": "Climate change",
+        "score": -0.07444709212686451,
+        "meta": {}
+      },
+      {
+        "label": "Interest rates",
+        "score": -0.07441663794828601,
+        "meta": {}
+      },
+      {
+        "label": "credit risk",
+        "score": -0.0736985712107483,
+        "meta": {}
+      },
+      {
+        "label": "businesses subject",
+        "score": -0.07351176255886616,
+        "meta": {}
+      },
+      {
+        "label": "Intellectual property",
+        "score": -0.029645123644509885,
+        "meta": {}
+      },
+      {
+        "label": "economic growth",
+        "score": -0.07255227507455109,
+        "meta": {}
+      },
+      {
+        "label": "Data privacy",
+        "score": -0.07233721858517894,
+        "meta": {}
+      },
+      {
+        "label": "economic conditions",
+        "score": -0.07233721858517894,
+        "meta": {}
+      }
+    ],
+    "summary_alt": "Adds emphasis on energy businesses, ability meet, future adverse; de-emphasizes risks face, labor shortages, financial markets."
+  },
+  "evidence": [
+    {
+      "year": 2022,
+      "paragraph_idx": 0,
+      "snippet": "In November 2021, we announced our plan to form three independent public companies from our (i) Aerospace business, (ii) HealthCare business and (iii) portfolio of energy businesses that we plan to combine as GE Vernova (Renewable Energy, Power, Digital and Energy Financial Services), to better position those businesses to deliver long-term growth and create value for customers, investors, and employees.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "vernova",
+        "aerospace"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 1,
+      "snippet": "The GE HealthCare business separation was, and the planned GE Vernova business separation is expected to be, effected through spin-offs by GE that are intended to be tax-free for the Company and its shareholders for U.S. federal income tax purposes and with all three resulting companies having investment grade credit ratings.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "vernova"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 2,
+      "snippet": "These separation transactions will be subject to the satisfaction of a number of customary conditions, including, among others, final approvals by GE\u2019s Board of Directors, receipt of tax rulings in certain jurisdictions and/or tax opinions from external counsel, the filing with the SEC and effectiveness of Form 10 registration statements, and satisfactory completion of financing.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "separation transaction",
+        "separation transactions"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 3,
+      "snippet": "The failure to satisfy all of the required conditions could delay the completion of the separation transactions for a significant period of time or prevent them from occurring at all.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "separation transaction",
+        "separation transactions"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.033,
+    "confidence": 1.0,
+    "coverage": 0.5806815025155098,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T05:02:57Z",
+    "git_commit": "77553f23af39ca9ca4d7337e78fce9b3d4e9594f",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "39716dffaae473350e80e09f321b76951c9c602d4391181bd1a330004eee0831",
+      "curr_text_sha256": "5fb20269a1106017107f38feb7ef37fd66c4e4c24ac56efef9351f454fc2ed94",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

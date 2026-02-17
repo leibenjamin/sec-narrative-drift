@@ -1,0 +1,40 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_structure_artifacts_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "WM",
+  "section": "10k_item1a",
+  "year_from": 2020,
+  "year_to": 2021,
+  "artifacts": {
+    "stats": {
+      "headings_prev": [],
+      "headings_curr": [],
+      "headings_added": [],
+      "headings_removed": [],
+      "paragraph_count_prev": 123,
+      "paragraph_count_curr": 108,
+      "length_chars_prev": 30397,
+      "length_chars_curr": 26292
+    }
+  },
+  "evidence": [],
+  "metrics": {
+    "drift_score": null,
+    "confidence": 0.0,
+    "coverage": 0.3731478853250071,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T05:02:54Z",
+    "git_commit": "77553f23af39ca9ca4d7337e78fce9b3d4e9594f",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "d09fa3665988ef7a7fade6ad0c0432d7938bf2653b8aaa2db9a2948f0e74e013",
+      "curr_text_sha256": "feebfde0925c43b08192e3e8b3f332e28ce1dd6de7576d245050e91a7f64b400",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

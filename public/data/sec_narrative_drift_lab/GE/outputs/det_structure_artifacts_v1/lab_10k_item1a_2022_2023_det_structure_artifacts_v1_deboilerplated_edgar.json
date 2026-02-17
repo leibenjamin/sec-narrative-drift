@@ -1,0 +1,133 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_structure_artifacts_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "GE",
+  "section": "10k_item1a",
+  "year_from": 2022,
+  "year_to": 2023,
+  "artifacts": {
+    "stats": {
+      "headings_prev": [
+        "2022 FORM 10-K 30",
+        "2022 FORM 10-K 31",
+        "2022 FORM 10-K 32",
+        "2022 FORM 10-K 33",
+        "2022 FORM 10-K 34",
+        "2022 FORM 10-K 35",
+        "2022 FORM 10-K 36",
+        "2022 FORM 10-K 37",
+        "2022 FORM 10-K 38",
+        "MANAGEMENT AND AUDITOR\u2019S REPORTS",
+        "MANAGEMENT\u2019S DISCUSSION OF FINANCIAL RESPONSIBILITY.",
+        "MANAGEMENT\u2019S ANNUAL REPORT ON INTERNAL CONTROL OVER FINANCIAL REPORTING.",
+        "H. Lawrence Culp, Jr.",
+        "Carolina Dybeck Happe",
+        "Chief Financial Officer",
+        "February 10, 2023",
+        "DISCLOSURE CONTROLS."
+      ],
+      "headings_curr": [
+        "2023 FORM 10-K 27",
+        "2023 FORM 10-K 28",
+        "2023 FORM 10-K 29",
+        "2023 FORM 10-K 30",
+        "2023 FORM 10-K 31",
+        "2023 FORM 10-K 32",
+        "2023 FORM 10-K 33",
+        "2023 FORM 10-K 34",
+        "2023 FORM 10-K 35"
+      ],
+      "headings_added": [
+        "2023 FORM 10-K 27",
+        "2023 FORM 10-K 28",
+        "2023 FORM 10-K 29",
+        "2023 FORM 10-K 30",
+        "2023 FORM 10-K 31",
+        "2023 FORM 10-K 32",
+        "2023 FORM 10-K 33",
+        "2023 FORM 10-K 34",
+        "2023 FORM 10-K 35"
+      ],
+      "headings_removed": [
+        "2022 FORM 10-K 30",
+        "2022 FORM 10-K 31",
+        "2022 FORM 10-K 32",
+        "2022 FORM 10-K 33",
+        "2022 FORM 10-K 34",
+        "2022 FORM 10-K 35",
+        "2022 FORM 10-K 36",
+        "2022 FORM 10-K 37",
+        "2022 FORM 10-K 38",
+        "MANAGEMENT AND AUDITOR\u2019S REPORTS",
+        "MANAGEMENT\u2019S DISCUSSION OF FINANCIAL RESPONSIBILITY.",
+        "MANAGEMENT\u2019S ANNUAL REPORT ON INTERNAL CONTROL OVER FINANCIAL REPORTING.",
+        "H. Lawrence Culp, Jr.",
+        "Carolina Dybeck Happe",
+        "Chief Financial Officer",
+        "February 10, 2023",
+        "DISCLOSURE CONTROLS."
+      ],
+      "paragraph_count_prev": 145,
+      "paragraph_count_curr": 141,
+      "length_chars_prev": 47032,
+      "length_chars_curr": 45350
+    }
+  },
+  "evidence": [
+    {
+      "year": 2023,
+      "paragraph_idx": 2,
+      "snippet": "investments in technology and innovation; our portfolio of businesses and capital allocation decisions; dispositions, acquisitions, joint ventures and restructuring activity; intellectual property; and other risks.",
+      "why": "Heading added: 2023 FORM 10-K 27"
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 17,
+      "snippet": "may also sell the common stock of any of the new independent companies that do not match their investment strategies, which may cause a decline in the market price of such common stock.",
+      "why": "Heading added: 2023 FORM 10-K 28"
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 34,
+      "snippet": "Trends related to the global energy transition and decarbonization will affect the relative competitiveness of different types of product and service offerings within and across our energy businesses and our Aerospace business.",
+      "why": "Heading added: 2023 FORM 10-K 29"
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 2,
+      "snippet": "Strategic plan - We may encounter challenges to executing our plan to separate GE into three public companies, or to completing the plan within the timeframes we anticipate, and we may not realize some or all of the expected benefits of the separations.",
+      "why": "Heading removed: 2022 FORM 10-K 30"
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 0,
+      "snippet": "currency volatility, commodity prices and sovereign debt levels.",
+      "why": "Heading removed: 2022 FORM 10-K 31"
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 33,
+      "snippet": "will require significant investments in power grids and other infrastructure, research and development and new technology and products, both by GE and third parties.",
+      "why": "Heading removed: 2022 FORM 10-K 32"
+    }
+  ],
+  "metrics": {
+    "drift_score": 1.0,
+    "confidence": 1.0,
+    "coverage": 0.6218547314437726,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T05:02:58Z",
+    "git_commit": "77553f23af39ca9ca4d7337e78fce9b3d4e9594f",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "42d8ebb6d652853c7670c439b184bcafda4d618c864b160b0108689dc556a013",
+      "curr_text_sha256": "5316845cf41d84fa8b9f0f3527a56617073d663d9b0729619a1016cb691a3c8b",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

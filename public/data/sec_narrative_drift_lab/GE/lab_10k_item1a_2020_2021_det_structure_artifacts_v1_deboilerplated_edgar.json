@@ -1,0 +1,127 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_structure_artifacts_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "GE",
+  "section": "10k_item1a",
+  "year_from": 2020,
+  "year_to": 2021,
+  "artifacts": {
+    "stats": {
+      "headings_prev": [
+        "GE 2020 FORM 10-K 44",
+        "GE 2020 FORM 10-K 45",
+        "GE 2020 FORM 10-K 46",
+        "GE 2020 FORM 10-K 47",
+        "GE 2020 FORM 10-K 48",
+        "GE 2020 FORM 10-K 49",
+        "GE 2020 FORM 10-K 50"
+      ],
+      "headings_curr": [
+        "2021 FORM 10-K 35",
+        "2021 FORM 10-K 36",
+        "2021 FORM 10-K 37",
+        "2021 FORM 10-K 38",
+        "2021 FORM 10-K 39",
+        "2021 FORM 10-K 40",
+        "2021 FORM 10-K 41",
+        "2021 FORM 10-K 42",
+        "MANAGEMENT AND AUDITOR\u2019S REPORTS",
+        "MANAGEMENT\u2019S DISCUSSION OF FINANCIAL RESPONSIBILITY.",
+        "MANAGEMENT\u2019S ANNUAL REPORT ON INTERNAL CONTROL OVER FINANCIAL REPORTING.",
+        "H. Lawrence Culp, Jr.",
+        "Carolina Dybeck Happe",
+        "Chief Financial Officer",
+        "February 11, 2022",
+        "DISCLOSURE CONTROLS."
+      ],
+      "headings_added": [
+        "2021 FORM 10-K 35",
+        "2021 FORM 10-K 36",
+        "2021 FORM 10-K 37",
+        "2021 FORM 10-K 38",
+        "2021 FORM 10-K 39",
+        "2021 FORM 10-K 40",
+        "2021 FORM 10-K 41",
+        "2021 FORM 10-K 42",
+        "MANAGEMENT AND AUDITOR\u2019S REPORTS",
+        "MANAGEMENT\u2019S DISCUSSION OF FINANCIAL RESPONSIBILITY.",
+        "MANAGEMENT\u2019S ANNUAL REPORT ON INTERNAL CONTROL OVER FINANCIAL REPORTING.",
+        "H. Lawrence Culp, Jr.",
+        "Carolina Dybeck Happe",
+        "Chief Financial Officer",
+        "February 11, 2022",
+        "DISCLOSURE CONTROLS."
+      ],
+      "headings_removed": [
+        "GE 2020 FORM 10-K 44",
+        "GE 2020 FORM 10-K 45",
+        "GE 2020 FORM 10-K 46",
+        "GE 2020 FORM 10-K 47",
+        "GE 2020 FORM 10-K 48",
+        "GE 2020 FORM 10-K 49",
+        "GE 2020 FORM 10-K 50"
+      ],
+      "paragraph_count_prev": 103,
+      "paragraph_count_curr": 127,
+      "length_chars_prev": 33275,
+      "length_chars_curr": 40727
+    }
+  },
+  "evidence": [
+    {
+      "year": 2021,
+      "paragraph_idx": 0,
+      "snippet": "on a different timeline than expected.",
+      "why": "Heading added: 2021 FORM 10-K 35"
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 30,
+      "snippet": "We operate in virtually every part of the world, serve customers in over 175 countries and received 56% of our revenues for 2021 from outside the United States.",
+      "why": "Heading added: 2021 FORM 10-K 36"
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 0,
+      "snippet": "retain skilled talent.",
+      "why": "Heading added: 2021 FORM 10-K 37"
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 10,
+      "snippet": "We operate in virtually every part of the world, serve customers in over 170 countries and received 56% of our revenues for 2020 from outside the United States.",
+      "why": "Heading removed: GE 2020 FORM 10-K 44"
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 21,
+      "snippet": "Competitive environment - We are dependent on the maintenance of existing product lines and service relationships, market acceptance of new product and service introductions and technology and innovation leadership for revenue and earnings growth.",
+      "why": "Heading removed: GE 2020 FORM 10-K 45"
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 43,
+      "snippet": "We also face attempts to gain unauthorized access to our IT systems or products for the purpose of improperly acquiring our trade secrets or confidential business information.",
+      "why": "Heading removed: GE 2020 FORM 10-K 46"
+    }
+  ],
+  "metrics": {
+    "drift_score": 1.0,
+    "confidence": 1.0,
+    "coverage": 0.5800170823964161,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T05:02:57Z",
+    "git_commit": "77553f23af39ca9ca4d7337e78fce9b3d4e9594f",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "5ecebc6c15c4f90f5f0df472955263405fb503609f881816b080072aa45e1385",
+      "curr_text_sha256": "8f866da359fb85c2abae05d82110bca644d22892b4b9eff8ae5dad728225c143",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

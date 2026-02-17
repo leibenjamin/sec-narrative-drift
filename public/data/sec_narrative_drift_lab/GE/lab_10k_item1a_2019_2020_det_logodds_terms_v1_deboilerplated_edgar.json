@@ -1,0 +1,993 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_logodds_terms_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "GE",
+  "section": "10k_item1a",
+  "year_from": 2019,
+  "year_to": 2020,
+  "artifacts": {
+    "top_risers": [
+      {
+        "label": "COVID-19",
+        "score": 1.0012033377238425,
+        "meta": {
+          "z": 1.7154599883033006,
+          "countPrev": 0,
+          "countCurr": 15,
+          "per10kPrev": 0.0,
+          "per10kCurr": 19.93090619186819,
+          "deltaPer10k": 19.93090619186819,
+          "distinctive": false,
+          "includes": [
+            "covid"
+          ]
+        }
+      },
+      {
+        "label": "quickly",
+        "score": 0.8499819915223696,
+        "meta": {
+          "z": 0.9062650208840154,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.6574541589157588,
+          "deltaPer10k": 2.6574541589157588,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "expected continue",
+        "score": 0.8469696211748516,
+        "meta": {
+          "z": 1.1256016303745262,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.3149083178315175,
+          "deltaPer10k": 5.3149083178315175,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "Pandemic",
+        "score": 0.8234426337474989,
+        "meta": {
+          "z": 2.234177668875711,
+          "countPrev": 3,
+          "countCurr": 14,
+          "per10kPrev": 4.470272686633884,
+          "per10kCurr": 18.60217911241031,
+          "deltaPer10k": 14.131906425776428,
+          "distinctive": true,
+          "includes": [
+            "pandemic"
+          ]
+        }
+      },
+      {
+        "label": "decarbonization",
+        "score": 0.6983956611432154,
+        "meta": {
+          "z": 1.1966298628403838,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 6.643635397289397,
+          "deltaPer10k": 6.643635397289397,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "covid pandemic",
+        "score": 0.6670336168456488,
+        "meta": {
+          "z": 1.4175857787435742,
+          "countPrev": 0,
+          "countCurr": 10,
+          "per10kPrev": 0.0,
+          "per10kCurr": 13.287270794578793,
+          "deltaPer10k": 13.287270794578793,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "deferrals",
+        "score": 0.6325309740516979,
+        "meta": {
+          "z": 0.9062650208840154,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.6574541589157588,
+          "deltaPer10k": 2.6574541589157588,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "goods",
+        "score": 0.6325309740516979,
+        "meta": {
+          "z": 0.9062650208840154,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.6574541589157588,
+          "deltaPer10k": 2.6574541589157588,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "requests",
+        "score": 0.6325309740516979,
+        "meta": {
+          "z": 0.9062650208840154,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.6574541589157588,
+          "deltaPer10k": 2.6574541589157588,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "aviation industry",
+        "score": 0.6251438548819621,
+        "meta": {
+          "z": 1.0342433937617275,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.986181238373638,
+          "deltaPer10k": 3.986181238373638,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "contract modifications",
+        "score": 0.5477878922092859,
+        "meta": {
+          "z": 0.9062650208840154,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.6574541589157588,
+          "deltaPer10k": 2.6574541589157588,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "deferrals contract",
+        "score": 0.5477878922092859,
+        "meta": {
+          "z": 0.9062650208840154,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.6574541589157588,
+          "deltaPer10k": 2.6574541589157588,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "health emergencies",
+        "score": 0.5477878922092859,
+        "meta": {
+          "z": 0.9062650208840154,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.6574541589157588,
+          "deltaPer10k": 2.6574541589157588,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "international air",
+        "score": 0.5477878922092859,
+        "meta": {
+          "z": 0.9062650208840154,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.6574541589157588,
+          "deltaPer10k": 2.6574541589157588,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "mitigate adverse",
+        "score": 0.5477878922092859,
+        "meta": {
+          "z": 0.9062650208840154,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.6574541589157588,
+          "deltaPer10k": 2.6574541589157588,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_fallers": [
+      {
+        "label": "max",
+        "score": -0.9946602846748213,
+        "meta": {
+          "z": -1.2187120925694042,
+          "countPrev": 5,
+          "countCurr": 2,
+          "per10kPrev": 7.450454477723141,
+          "per10kCurr": 2.6574541589157588,
+          "deltaPer10k": -4.7930003188073815,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "party investors",
+        "score": -0.9529731671585637,
+        "meta": {
+          "z": -1.2664777151852646,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 7.450454477723141,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -7.450454477723141,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "cfoa",
+        "score": -0.91459696814117,
+        "meta": {
+          "z": -0.9751585900641998,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.9801817910892567,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.9801817910892567,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ratings fall",
+        "score": -0.8304537335636575,
+        "meta": {
+          "z": -1.103652425164007,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 4.470272686633884,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.470272686633884,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "lose",
+        "score": -0.7958824128440465,
+        "meta": {
+          "z": -0.9751585900641998,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.9801817910892567,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.9801817910892567,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "relied",
+        "score": -0.7958824128440465,
+        "meta": {
+          "z": -0.9751585900641998,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.9801817910892567,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.9801817910892567,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "continued strength",
+        "score": -0.7337673287993218,
+        "meta": {
+          "z": -0.9751585900641998,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.9801817910892567,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.9801817910892567,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "dependency continued",
+        "score": -0.7337673287993218,
+        "meta": {
+          "z": -0.9751585900641998,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.9801817910892567,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.9801817910892567,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "term liquidity",
+        "score": -0.7337673287993218,
+        "meta": {
+          "z": -0.9751585900641998,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.9801817910892567,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.9801817910892567,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "paper markets",
+        "score": -0.7224826114018262,
+        "meta": {
+          "z": -1.1952814733996684,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 5.9603635821785135,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.9603635821785135,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "dependency",
+        "score": -0.721894558549167,
+        "meta": {
+          "z": -1.0343015820852857,
+          "countPrev": 3,
+          "countCurr": 1,
+          "per10kPrev": 4.470272686633884,
+          "per10kCurr": 1.3287270794578794,
+          "deltaPer10k": -3.1415456071760053,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "collections",
+        "score": -0.6806154917316726,
+        "meta": {
+          "z": -0.9751585900641998,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.9801817910892567,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.9801817910892567,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "securitization",
+        "score": -0.6806154917316726,
+        "meta": {
+          "z": -0.9751585900641998,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.9801817910892567,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.9801817910892567,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "tier",
+        "score": -0.6806154917316726,
+        "meta": {
+          "z": -0.9751585900641998,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.9801817910892567,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.9801817910892567,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "health pandemic",
+        "score": -0.6670978375867727,
+        "meta": {
+          "z": -1.103652425164007,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 4.470272686633884,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.470272686633884,
+          "distinctive": false
+        }
+      }
+    ],
+    "summary": "Adds emphasis on COVID-19, quickly, expected continue; de-emphasizes max, party investors, cfoa.",
+    "ranked_items": [
+      {
+        "label": "COVID-19",
+        "score": 1.0012033377238425,
+        "meta": {
+          "z": 1.7154599883033006,
+          "countPrev": 0,
+          "countCurr": 15,
+          "per10kPrev": 0.0,
+          "per10kCurr": 19.93090619186819,
+          "deltaPer10k": 19.93090619186819,
+          "distinctive": false,
+          "includes": [
+            "covid"
+          ]
+        }
+      },
+      {
+        "label": "quickly",
+        "score": 0.8499819915223696,
+        "meta": {
+          "z": 0.9062650208840154,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.6574541589157588,
+          "deltaPer10k": 2.6574541589157588,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "expected continue",
+        "score": 0.8469696211748516,
+        "meta": {
+          "z": 1.1256016303745262,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.3149083178315175,
+          "deltaPer10k": 5.3149083178315175,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "Pandemic",
+        "score": 0.8234426337474989,
+        "meta": {
+          "z": 2.234177668875711,
+          "countPrev": 3,
+          "countCurr": 14,
+          "per10kPrev": 4.470272686633884,
+          "per10kCurr": 18.60217911241031,
+          "deltaPer10k": 14.131906425776428,
+          "distinctive": true,
+          "includes": [
+            "pandemic"
+          ]
+        }
+      },
+      {
+        "label": "decarbonization",
+        "score": 0.6983956611432154,
+        "meta": {
+          "z": 1.1966298628403838,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 6.643635397289397,
+          "deltaPer10k": 6.643635397289397,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "covid pandemic",
+        "score": 0.6670336168456488,
+        "meta": {
+          "z": 1.4175857787435742,
+          "countPrev": 0,
+          "countCurr": 10,
+          "per10kPrev": 0.0,
+          "per10kCurr": 13.287270794578793,
+          "deltaPer10k": 13.287270794578793,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "deferrals",
+        "score": 0.6325309740516979,
+        "meta": {
+          "z": 0.9062650208840154,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.6574541589157588,
+          "deltaPer10k": 2.6574541589157588,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "goods",
+        "score": 0.6325309740516979,
+        "meta": {
+          "z": 0.9062650208840154,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.6574541589157588,
+          "deltaPer10k": 2.6574541589157588,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "requests",
+        "score": 0.6325309740516979,
+        "meta": {
+          "z": 0.9062650208840154,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.6574541589157588,
+          "deltaPer10k": 2.6574541589157588,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "aviation industry",
+        "score": 0.6251438548819621,
+        "meta": {
+          "z": 1.0342433937617275,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.986181238373638,
+          "deltaPer10k": 3.986181238373638,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "contract modifications",
+        "score": 0.5477878922092859,
+        "meta": {
+          "z": 0.9062650208840154,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.6574541589157588,
+          "deltaPer10k": 2.6574541589157588,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "deferrals contract",
+        "score": 0.5477878922092859,
+        "meta": {
+          "z": 0.9062650208840154,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.6574541589157588,
+          "deltaPer10k": 2.6574541589157588,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "health emergencies",
+        "score": 0.5477878922092859,
+        "meta": {
+          "z": 0.9062650208840154,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.6574541589157588,
+          "deltaPer10k": 2.6574541589157588,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "international air",
+        "score": 0.5477878922092859,
+        "meta": {
+          "z": 0.9062650208840154,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.6574541589157588,
+          "deltaPer10k": 2.6574541589157588,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "mitigate adverse",
+        "score": 0.5477878922092859,
+        "meta": {
+          "z": 0.9062650208840154,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.6574541589157588,
+          "deltaPer10k": 2.6574541589157588,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "max",
+        "score": -0.9946602846748213,
+        "meta": {
+          "z": -1.2187120925694042,
+          "countPrev": 5,
+          "countCurr": 2,
+          "per10kPrev": 7.450454477723141,
+          "per10kCurr": 2.6574541589157588,
+          "deltaPer10k": -4.7930003188073815,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "party investors",
+        "score": -0.9529731671585637,
+        "meta": {
+          "z": -1.2664777151852646,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 7.450454477723141,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -7.450454477723141,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "cfoa",
+        "score": -0.91459696814117,
+        "meta": {
+          "z": -0.9751585900641998,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.9801817910892567,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.9801817910892567,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ratings fall",
+        "score": -0.8304537335636575,
+        "meta": {
+          "z": -1.103652425164007,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 4.470272686633884,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.470272686633884,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "lose",
+        "score": -0.7958824128440465,
+        "meta": {
+          "z": -0.9751585900641998,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.9801817910892567,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.9801817910892567,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "relied",
+        "score": -0.7958824128440465,
+        "meta": {
+          "z": -0.9751585900641998,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.9801817910892567,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.9801817910892567,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "continued strength",
+        "score": -0.7337673287993218,
+        "meta": {
+          "z": -0.9751585900641998,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.9801817910892567,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.9801817910892567,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "dependency continued",
+        "score": -0.7337673287993218,
+        "meta": {
+          "z": -0.9751585900641998,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.9801817910892567,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.9801817910892567,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "term liquidity",
+        "score": -0.7337673287993218,
+        "meta": {
+          "z": -0.9751585900641998,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.9801817910892567,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.9801817910892567,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "paper markets",
+        "score": -0.7224826114018262,
+        "meta": {
+          "z": -1.1952814733996684,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 5.9603635821785135,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.9603635821785135,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "dependency",
+        "score": -0.721894558549167,
+        "meta": {
+          "z": -1.0343015820852857,
+          "countPrev": 3,
+          "countCurr": 1,
+          "per10kPrev": 4.470272686633884,
+          "per10kCurr": 1.3287270794578794,
+          "deltaPer10k": -3.1415456071760053,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "collections",
+        "score": -0.6806154917316726,
+        "meta": {
+          "z": -0.9751585900641998,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.9801817910892567,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.9801817910892567,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "securitization",
+        "score": -0.6806154917316726,
+        "meta": {
+          "z": -0.9751585900641998,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.9801817910892567,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.9801817910892567,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "tier",
+        "score": -0.6806154917316726,
+        "meta": {
+          "z": -0.9751585900641998,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.9801817910892567,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.9801817910892567,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "health pandemic",
+        "score": -0.6670978375867727,
+        "meta": {
+          "z": -1.103652425164007,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 4.470272686633884,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.470272686633884,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_risers_alt": [
+      {
+        "label": "adverse financial",
+        "score": 1.699983666331116,
+        "meta": {}
+      },
+      {
+        "label": "businesses assets",
+        "score": 1.699983666331116,
+        "meta": {}
+      },
+      {
+        "label": "global economic",
+        "score": 0.6063831919219487,
+        "meta": {}
+      },
+      {
+        "label": "results operations cash",
+        "score": 0.47216788647011665,
+        "meta": {}
+      },
+      {
+        "label": "financial results",
+        "score": 0.6332045838090892,
+        "meta": {}
+      },
+      {
+        "label": "export controls",
+        "score": 0.2392421348853384,
+        "meta": {}
+      },
+      {
+        "label": "financial performance",
+        "score": 0.12767526311903543,
+        "meta": {}
+      },
+      {
+        "label": "businesses subject",
+        "score": 0.08135575780556303,
+        "meta": {}
+      },
+      {
+        "label": "Supply chain",
+        "score": 0.048898960339914144,
+        "meta": {}
+      }
+    ],
+    "top_fallers_alt": [
+      {
+        "label": "competitive position",
+        "score": -1.1130618887766666,
+        "meta": {}
+      },
+      {
+        "label": "debt markets",
+        "score": -1.741427768852712,
+        "meta": {}
+      },
+      {
+        "label": "performance businesses",
+        "score": -1.741427768852712,
+        "meta": {}
+      },
+      {
+        "label": "risks form",
+        "score": -0.950649267564712,
+        "meta": {}
+      },
+      {
+        "label": "credit risk",
+        "score": -0.10950414751565818,
+        "meta": {}
+      },
+      {
+        "label": "Climate change",
+        "score": -0.10301808003611024,
+        "meta": {}
+      },
+      {
+        "label": "Intellectual property",
+        "score": -0.023992714291200423,
+        "meta": {}
+      },
+      {
+        "label": "Interest rates",
+        "score": -0.02175818052871703,
+        "meta": {}
+      },
+      {
+        "label": "economic conditions",
+        "score": -0.021107943101858595,
+        "meta": {}
+      },
+      {
+        "label": "product service",
+        "score": -0.021059093583677413,
+        "meta": {}
+      },
+      {
+        "label": "new product",
+        "score": -0.021050162354980806,
+        "meta": {}
+      },
+      {
+        "label": "Data privacy",
+        "score": -0.021033943151483214,
+        "meta": {}
+      },
+      {
+        "label": "financial markets",
+        "score": -0.021001579613493693,
+        "meta": {}
+      },
+      {
+        "label": "liquidity risk",
+        "score": -0.02092832229253272,
+        "meta": {}
+      },
+      {
+        "label": "ability meet",
+        "score": -0.020905083823280712,
+        "meta": {}
+      }
+    ],
+    "summary_alt": "Adds emphasis on adverse financial, businesses assets, global economic; de-emphasizes competitive position, debt markets, performance businesses."
+  },
+  "evidence": [
+    {
+      "year": 2020,
+      "paragraph_idx": 4,
+      "snippet": "COVID-19 - The global COVID-19 pandemic has had and is expected to continue to have a material adverse impact on our operations and financial performance, as well as on the operations and financial performance of many of the customers and suppliers in industries that we serve.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "covid-19",
+        "pandemic"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 5,
+      "snippet": "Our operations and financial performance have been negatively impacted by the COVID-19 pandemic that has caused, and is expected to continue to cause, the global slowdown of economic activity (including the decrease in demand for a broad variety of goods and services), disruptions in global supply chains and significant volatility and disruption of financial markets.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "covid-19",
+        "pandemic"
+      ]
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 4,
+      "snippet": "Our operations and the execution of our business plans and strategies are subject to the effects of global economic trends, competition and geopolitical risks and demand or supply shocks from war, natural disaster, a health pandemic or other events.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "pandemic"
+      ]
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 36,
+      "snippet": "For example, the LEAP-1B engine that our Aviation business develops, produces and sells through CFM is the exclusive engine for the Boeing 737 MAX, which has been subject to a global fleet grounding since March 2019 following two fatal crashes that were unrelated to the LEAP engine.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "max"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.0432,
+    "confidence": 1.0,
+    "coverage": 0.573981136128415,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T05:02:57Z",
+    "git_commit": "77553f23af39ca9ca4d7337e78fce9b3d4e9594f",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "612d85474211bb7c94a2c150842055caf402c2b957874fe9c6842d403b2b27a0",
+      "curr_text_sha256": "d72381b6b70d4ef5d3ce12c2ea1e5fd3750f0dd6691b55691d65c6e6aa8bfbfa",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

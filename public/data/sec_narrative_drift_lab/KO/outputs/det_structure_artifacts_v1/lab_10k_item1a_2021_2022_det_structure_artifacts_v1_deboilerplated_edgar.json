@@ -1,0 +1,51 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_structure_artifacts_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "KO",
+  "section": "10k_item1a",
+  "year_from": 2021,
+  "year_to": 2022,
+  "artifacts": {
+    "stats": {
+      "headings_prev": [
+        "Because"
+      ],
+      "headings_curr": [],
+      "headings_added": [],
+      "headings_removed": [
+        "Because"
+      ],
+      "paragraph_count_prev": 136,
+      "paragraph_count_curr": 130,
+      "length_chars_prev": 42980,
+      "length_chars_curr": 43615
+    }
+  },
+  "evidence": [
+    {
+      "year": 2021,
+      "paragraph_idx": 96,
+      "snippet": "information systems are critical to many of the Company\u2019s operating activities, our business may be impacted by system shutdowns, service disruptions or cybersecurity incidents.",
+      "why": "Heading removed: Because"
+    }
+  ],
+  "metrics": {
+    "drift_score": 1.0,
+    "confidence": 0.05,
+    "coverage": 0.49756888168557534,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T05:02:52Z",
+    "git_commit": "77553f23af39ca9ca4d7337e78fce9b3d4e9594f",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "e6cfc8b78dd3ec509c30c6506ff9e388f0fbe1901a6373c20f2324d9ad1c3ec1",
+      "curr_text_sha256": "c57571334e0bb44ce275ccc4562aeb9807109f8ebce8ce33a03eb0811a07cf82",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

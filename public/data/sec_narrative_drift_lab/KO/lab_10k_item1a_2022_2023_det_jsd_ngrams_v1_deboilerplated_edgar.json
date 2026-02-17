@@ -1,0 +1,155 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_jsd_ngrams_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "KO",
+  "section": "10k_item1a",
+  "year_from": 2022,
+  "year_to": 2023,
+  "artifacts": {
+    "ranked_items": [
+      {
+        "label": "conflicts",
+        "score": 0.0008880994671403197
+      },
+      {
+        "label": "pandemic",
+        "score": 0.000773255740361921
+      },
+      {
+        "label": "opinions",
+        "score": 0.0006907440299980265
+      },
+      {
+        "label": "international conflicts",
+        "score": 0.0004933885928557331
+      },
+      {
+        "label": "pillar",
+        "score": 0.0004933885928557331
+      },
+      {
+        "label": "portions opinion",
+        "score": 0.00042744176106005556
+      },
+      {
+        "label": "covid pandemic",
+        "score": 0.0004069719845791049
+      },
+      {
+        "label": "covid",
+        "score": 0.00039604879801441526
+      },
+      {
+        "label": "portions opinions",
+        "score": 0.00039471087428458656
+      },
+      {
+        "label": "standards regulations",
+        "score": 0.00039471087428458656
+      },
+      {
+        "label": "implementation",
+        "score": 0.00039471087428458656
+      },
+      {
+        "label": "international",
+        "score": 0.00034437020862864765
+      },
+      {
+        "label": "regulatory",
+        "score": 0.00034437020862864765
+      },
+      {
+        "label": "conflict",
+        "score": 0.0003206264469173336
+      },
+      {
+        "label": "cash flows",
+        "score": 0.0003205813207950417
+      },
+      {
+        "label": "temporary",
+        "score": 0.0003205813207950417
+      },
+      {
+        "label": "flows",
+        "score": 0.0003205813207950417
+      },
+      {
+        "label": "home",
+        "score": 0.0003205813207950417
+      },
+      {
+        "label": "established",
+        "score": 0.0002960331557134399
+      },
+      {
+        "label": "regulatory requirements",
+        "score": 0.0002960331557134399
+      }
+    ],
+    "stats": {
+      "jsd": 0.176551,
+      "tokens_prev": 2340,
+      "tokens_curr": 2534
+    }
+  },
+  "evidence": [
+    {
+      "year": 2023,
+      "paragraph_idx": 2,
+      "snippet": "In addition, the occurrence or resurgence of global or regional health events, such as the COVID-19 pandemic, and the related governmental, private sector and individual consumer responses, could contribute to a recession, depression or global economic downturn.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "pandemic"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 3,
+      "snippet": "Other financial uncertainties in our major markets and unstable geopolitical conditions or events in certain markets, including international conflicts, civil unrest, acts of war, terrorism, governmental changes, or changes in international relations, could undermine global consumer confidence and reduce consumers\u2019 purchasing power, thereby reducing demand for our products.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "conflicts",
+        "international conflicts"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 14,
+      "snippet": "These factors include changes in supply and demand; supplier capacity constraints; a deterioration of our or our bottling partners\u2019 relationships with suppliers; inflation; weather conditions (including the effects of climate change); wildfires and other natural disasters; disease or pests (including the impact of citrus greening disease on the citrus industry); agricultural uncertainty; health epidemics, pandemics or other contagious outbreaks (including COVID-19); labor shortages, strikes or work stoppages; changes in or the enactment of new laws and regulations; governmental actions or controls (including import/export restrictions, such as new or increased tariffs, sanctions, quotas or trade barriers); port congestion or delays; transport capacity constraints; cybersecurity incidents or other disruptions; political uncertainties; acts of terrorism; governmental instability; or fluctuations in foreign currency exchange rates.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "pandemic"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 16,
+      "snippet": "The COVID-19 pandemic and related ongoing impacts may have a material adverse effect on our results of operations, financial condition and cash flows.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "pandemic"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.176551,
+    "confidence": 1.0,
+    "coverage": 0.3327357146140762,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T05:02:52Z",
+    "git_commit": "77553f23af39ca9ca4d7337e78fce9b3d4e9594f",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "ac5989f10f38d27e8c1e7e1184365b7b8bd8b2a6b29238f31ccfee5f98001212",
+      "curr_text_sha256": "2be32a089e50557072275dca3cdb9070ac1329a7dd99884d9a2e2782bd8a78be",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

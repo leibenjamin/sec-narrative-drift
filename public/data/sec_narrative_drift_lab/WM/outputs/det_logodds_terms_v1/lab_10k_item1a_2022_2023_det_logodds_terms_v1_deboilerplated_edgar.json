@@ -1,0 +1,1020 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_logodds_terms_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "WM",
+  "section": "10k_item1a",
+  "year_from": 2022,
+  "year_to": 2023,
+  "artifacts": {
+    "top_risers": [
+      {
+        "label": "segment",
+        "score": 1.0016104586139476,
+        "meta": {
+          "z": 1.227227825182417,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.675956233049659,
+          "deltaPer10k": 4.675956233049659,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "cercla",
+        "score": 0.998555645861457,
+        "meta": {
+          "z": 1.0646767370090433,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.8055737398297955,
+          "deltaPer10k": 2.8055737398297955,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "Artificial intelligence",
+        "score": 0.9272545543741577,
+        "meta": {
+          "z": 1.53405794475581,
+          "countPrev": 2,
+          "countCurr": 7,
+          "per10kPrev": 1.8964536317087046,
+          "per10kCurr": 6.546338726269522,
+          "deltaPer10k": 4.649885094560817,
+          "distinctive": false,
+          "includes": [
+            "artificial intelligence",
+            "ai"
+          ]
+        }
+      },
+      {
+        "label": "energy segment",
+        "score": 0.9234392152080807,
+        "meta": {
+          "z": 1.227227825182417,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.675956233049659,
+          "deltaPer10k": 4.675956233049659,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "sustainability",
+        "score": 0.9193013442218043,
+        "meta": {
+          "z": 1.317138110380953,
+          "countPrev": 13,
+          "countCurr": 21,
+          "per10kPrev": 12.326948606106582,
+          "per10kCurr": 19.639016178808568,
+          "deltaPer10k": 7.312067572701986,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "eccc",
+        "score": 0.8783261668926458,
+        "meta": {
+          "z": 0.9364860549060138,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8703824932198634,
+          "deltaPer10k": 1.8703824932198634,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "relief",
+        "score": 0.8783261668926458,
+        "meta": {
+          "z": 0.9364860549060138,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8703824932198634,
+          "deltaPer10k": 1.8703824932198634,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "stakeholder",
+        "score": 0.8783261668926458,
+        "meta": {
+          "z": 0.9364860549060138,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8703824932198634,
+          "deltaPer10k": 1.8703824932198634,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "started",
+        "score": 0.8783261668926458,
+        "meta": {
+          "z": 0.9364860549060138,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8703824932198634,
+          "deltaPer10k": 1.8703824932198634,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "clean fuel",
+        "score": 0.869948397723757,
+        "meta": {
+          "z": 1.1561398547698498,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.7407649864397268,
+          "deltaPer10k": 3.7407649864397268,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "applications",
+        "score": 0.8689432662372361,
+        "meta": {
+          "z": 1.0646767370090433,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.8055737398297955,
+          "deltaPer10k": 2.8055737398297955,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ongoing",
+        "score": 0.8565481330050444,
+        "meta": {
+          "z": 1.227227825182417,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.675956233049659,
+          "deltaPer10k": 4.675956233049659,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "areas policy",
+        "score": 0.8011261073939487,
+        "meta": {
+          "z": 1.0646767370090433,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.8055737398297955,
+          "deltaPer10k": 2.8055737398297955,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "developments focus",
+        "score": 0.8011261073939487,
+        "meta": {
+          "z": 1.0646767370090433,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.8055737398297955,
+          "deltaPer10k": 2.8055737398297955,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "focus areas",
+        "score": 0.8011261073939487,
+        "meta": {
+          "z": 1.0646767370090433,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.8055737398297955,
+          "deltaPer10k": 2.8055737398297955,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_fallers": [
+      {
+        "label": "COVID-19",
+        "score": -0.96712068189327,
+        "meta": {
+          "z": -1.3856517402762514,
+          "countPrev": 8,
+          "countCurr": 0,
+          "per10kPrev": 7.5858145268348185,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -7.5858145268348185,
+          "distinctive": false,
+          "includes": [
+            "covid"
+          ]
+        }
+      },
+      {
+        "label": "planned investments",
+        "score": -0.931692288060401,
+        "meta": {
+          "z": -1.2381959544115215,
+          "countPrev": 4,
+          "countCurr": 1,
+          "per10kPrev": 3.7929072634174092,
+          "per10kCurr": 0.9351912466099317,
+          "deltaPer10k": -2.8577160168074776,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "energy businesses",
+        "score": -0.8899859184886062,
+        "meta": {
+          "z": -1.4724003916052304,
+          "countPrev": 5,
+          "countCurr": 1,
+          "per10kPrev": 4.741134079271761,
+          "per10kCurr": 0.9351912466099317,
+          "deltaPer10k": -3.8059428326618296,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "conflict",
+        "score": -0.8862010441779598,
+        "meta": {
+          "z": -0.9448823808265805,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8964536317087046,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8964536317087046,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "headwinds",
+        "score": -0.8862010441779598,
+        "meta": {
+          "z": -0.9448823808265805,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8964536317087046,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8964536317087046,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "invasion",
+        "score": -0.8862010441779598,
+        "meta": {
+          "z": -0.9448823808265805,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8964536317087046,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8964536317087046,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "russia",
+        "score": -0.8862010441779598,
+        "meta": {
+          "z": -0.9448823808265805,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8964536317087046,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8964536317087046,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ukraine",
+        "score": -0.8862010441779598,
+        "meta": {
+          "z": -0.9448823808265805,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8964536317087046,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8964536317087046,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "variant",
+        "score": -0.8862010441779598,
+        "meta": {
+          "z": -0.9448823808265805,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8964536317087046,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8964536317087046,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "resurgence",
+        "score": -0.8758471039502184,
+        "meta": {
+          "z": -1.0731356959476712,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.844680447563057,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.844680447563057,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "deepen",
+        "score": -0.7711722757388385,
+        "meta": {
+          "z": -0.9448823808265805,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8964536317087046,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8964536317087046,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "virus",
+        "score": -0.7711722757388385,
+        "meta": {
+          "z": -0.9448823808265805,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8964536317087046,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8964536317087046,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "announced sustainability",
+        "score": -0.7484220800528479,
+        "meta": {
+          "z": -1.2381959544115215,
+          "countPrev": 4,
+          "countCurr": 1,
+          "per10kPrev": 3.7929072634174092,
+          "per10kCurr": 0.9351912466099317,
+          "deltaPer10k": -2.8577160168074776,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "Pandemic",
+        "score": -0.7429914715993089,
+        "meta": {
+          "z": -1.5686659398175893,
+          "countPrev": 7,
+          "countCurr": 2,
+          "per10kPrev": 6.637587710980466,
+          "per10kCurr": 1.8703824932198634,
+          "deltaPer10k": -4.767205217760603,
+          "distinctive": false,
+          "includes": [
+            "pandemic"
+          ]
+        }
+      },
+      {
+        "label": "future resurgence",
+        "score": -0.7109857080405951,
+        "meta": {
+          "z": -0.9448823808265805,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8964536317087046,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8964536317087046,
+          "distinctive": false
+        }
+      }
+    ],
+    "summary": "Adds emphasis on segment, cercla, Artificial intelligence; de-emphasizes COVID-19, planned investments, energy businesses.",
+    "ranked_items": [
+      {
+        "label": "segment",
+        "score": 1.0016104586139476,
+        "meta": {
+          "z": 1.227227825182417,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.675956233049659,
+          "deltaPer10k": 4.675956233049659,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "cercla",
+        "score": 0.998555645861457,
+        "meta": {
+          "z": 1.0646767370090433,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.8055737398297955,
+          "deltaPer10k": 2.8055737398297955,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "Artificial intelligence",
+        "score": 0.9272545543741577,
+        "meta": {
+          "z": 1.53405794475581,
+          "countPrev": 2,
+          "countCurr": 7,
+          "per10kPrev": 1.8964536317087046,
+          "per10kCurr": 6.546338726269522,
+          "deltaPer10k": 4.649885094560817,
+          "distinctive": false,
+          "includes": [
+            "artificial intelligence",
+            "ai"
+          ]
+        }
+      },
+      {
+        "label": "energy segment",
+        "score": 0.9234392152080807,
+        "meta": {
+          "z": 1.227227825182417,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.675956233049659,
+          "deltaPer10k": 4.675956233049659,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "sustainability",
+        "score": 0.9193013442218043,
+        "meta": {
+          "z": 1.317138110380953,
+          "countPrev": 13,
+          "countCurr": 21,
+          "per10kPrev": 12.326948606106582,
+          "per10kCurr": 19.639016178808568,
+          "deltaPer10k": 7.312067572701986,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "eccc",
+        "score": 0.8783261668926458,
+        "meta": {
+          "z": 0.9364860549060138,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8703824932198634,
+          "deltaPer10k": 1.8703824932198634,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "relief",
+        "score": 0.8783261668926458,
+        "meta": {
+          "z": 0.9364860549060138,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8703824932198634,
+          "deltaPer10k": 1.8703824932198634,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "stakeholder",
+        "score": 0.8783261668926458,
+        "meta": {
+          "z": 0.9364860549060138,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8703824932198634,
+          "deltaPer10k": 1.8703824932198634,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "started",
+        "score": 0.8783261668926458,
+        "meta": {
+          "z": 0.9364860549060138,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.8703824932198634,
+          "deltaPer10k": 1.8703824932198634,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "clean fuel",
+        "score": 0.869948397723757,
+        "meta": {
+          "z": 1.1561398547698498,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.7407649864397268,
+          "deltaPer10k": 3.7407649864397268,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "applications",
+        "score": 0.8689432662372361,
+        "meta": {
+          "z": 1.0646767370090433,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.8055737398297955,
+          "deltaPer10k": 2.8055737398297955,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ongoing",
+        "score": 0.8565481330050444,
+        "meta": {
+          "z": 1.227227825182417,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.675956233049659,
+          "deltaPer10k": 4.675956233049659,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "areas policy",
+        "score": 0.8011261073939487,
+        "meta": {
+          "z": 1.0646767370090433,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.8055737398297955,
+          "deltaPer10k": 2.8055737398297955,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "developments focus",
+        "score": 0.8011261073939487,
+        "meta": {
+          "z": 1.0646767370090433,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.8055737398297955,
+          "deltaPer10k": 2.8055737398297955,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "focus areas",
+        "score": 0.8011261073939487,
+        "meta": {
+          "z": 1.0646767370090433,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.8055737398297955,
+          "deltaPer10k": 2.8055737398297955,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "COVID-19",
+        "score": -0.96712068189327,
+        "meta": {
+          "z": -1.3856517402762514,
+          "countPrev": 8,
+          "countCurr": 0,
+          "per10kPrev": 7.5858145268348185,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -7.5858145268348185,
+          "distinctive": false,
+          "includes": [
+            "covid"
+          ]
+        }
+      },
+      {
+        "label": "planned investments",
+        "score": -0.931692288060401,
+        "meta": {
+          "z": -1.2381959544115215,
+          "countPrev": 4,
+          "countCurr": 1,
+          "per10kPrev": 3.7929072634174092,
+          "per10kCurr": 0.9351912466099317,
+          "deltaPer10k": -2.8577160168074776,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "energy businesses",
+        "score": -0.8899859184886062,
+        "meta": {
+          "z": -1.4724003916052304,
+          "countPrev": 5,
+          "countCurr": 1,
+          "per10kPrev": 4.741134079271761,
+          "per10kCurr": 0.9351912466099317,
+          "deltaPer10k": -3.8059428326618296,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "conflict",
+        "score": -0.8862010441779598,
+        "meta": {
+          "z": -0.9448823808265805,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8964536317087046,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8964536317087046,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "headwinds",
+        "score": -0.8862010441779598,
+        "meta": {
+          "z": -0.9448823808265805,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8964536317087046,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8964536317087046,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "invasion",
+        "score": -0.8862010441779598,
+        "meta": {
+          "z": -0.9448823808265805,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8964536317087046,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8964536317087046,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "russia",
+        "score": -0.8862010441779598,
+        "meta": {
+          "z": -0.9448823808265805,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8964536317087046,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8964536317087046,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ukraine",
+        "score": -0.8862010441779598,
+        "meta": {
+          "z": -0.9448823808265805,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8964536317087046,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8964536317087046,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "variant",
+        "score": -0.8862010441779598,
+        "meta": {
+          "z": -0.9448823808265805,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8964536317087046,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8964536317087046,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "resurgence",
+        "score": -0.8758471039502184,
+        "meta": {
+          "z": -1.0731356959476712,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.844680447563057,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.844680447563057,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "deepen",
+        "score": -0.7711722757388385,
+        "meta": {
+          "z": -0.9448823808265805,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8964536317087046,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8964536317087046,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "virus",
+        "score": -0.7711722757388385,
+        "meta": {
+          "z": -0.9448823808265805,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8964536317087046,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8964536317087046,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "announced sustainability",
+        "score": -0.7484220800528479,
+        "meta": {
+          "z": -1.2381959544115215,
+          "countPrev": 4,
+          "countCurr": 1,
+          "per10kPrev": 3.7929072634174092,
+          "per10kCurr": 0.9351912466099317,
+          "deltaPer10k": -2.8577160168074776,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "Pandemic",
+        "score": -0.7429914715993089,
+        "meta": {
+          "z": -1.5686659398175893,
+          "countPrev": 7,
+          "countCurr": 2,
+          "per10kPrev": 6.637587710980466,
+          "per10kCurr": 1.8703824932198634,
+          "deltaPer10k": -4.767205217760603,
+          "distinctive": false,
+          "includes": [
+            "pandemic"
+          ]
+        }
+      },
+      {
+        "label": "future resurgence",
+        "score": -0.7109857080405951,
+        "meta": {
+          "z": -0.9448823808265805,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.8964536317087046,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.8964536317087046,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_risers_alt": [
+      {
+        "label": "growth strategy",
+        "score": 2.0076607262698505,
+        "meta": {}
+      },
+      {
+        "label": "market prices recycling",
+        "score": 1.9955094984019555,
+        "meta": {}
+      },
+      {
+        "label": "waste management",
+        "score": 0.6366108430496586,
+        "meta": {}
+      },
+      {
+        "label": "environmental services",
+        "score": 0.28975846298173025,
+        "meta": {}
+      },
+      {
+        "label": "increase costs",
+        "score": 0.22666311791143734,
+        "meta": {}
+      },
+      {
+        "label": "new service",
+        "score": 0.18187275253059187,
+        "meta": {}
+      },
+      {
+        "label": "Supply chain",
+        "score": 0.10545670011069763,
+        "meta": {}
+      },
+      {
+        "label": "Interest rates",
+        "score": 0.0944631418657802,
+        "meta": {}
+      },
+      {
+        "label": "operating results",
+        "score": 0.08820699841823432,
+        "meta": {}
+      },
+      {
+        "label": "Climate change",
+        "score": 0.037873703875292986,
+        "meta": {}
+      },
+      {
+        "label": "Intellectual property",
+        "score": 0.036511398425613795,
+        "meta": {}
+      },
+      {
+        "label": "financial results",
+        "score": 0.0359473878083123,
+        "meta": {}
+      },
+      {
+        "label": "class action",
+        "score": 0.035663413605206085,
+        "meta": {}
+      },
+      {
+        "label": "increase operating",
+        "score": 0.035400886028924106,
+        "meta": {}
+      },
+      {
+        "label": "internal controls",
+        "score": 0.03533162240144616,
+        "meta": {}
+      }
+    ],
+    "top_fallers_alt": [
+      {
+        "label": "results operations cash",
+        "score": -0.6972083448290096,
+        "meta": {}
+      },
+      {
+        "label": "economic conditions",
+        "score": -1.9253932696278024,
+        "meta": {}
+      },
+      {
+        "label": "subject regulatory",
+        "score": -1.9196632953351092,
+        "meta": {}
+      },
+      {
+        "label": "cash tax",
+        "score": -1.0716757435596165,
+        "meta": {}
+      },
+      {
+        "label": "customers waste service",
+        "score": -1.0716757435596165,
+        "meta": {}
+      },
+      {
+        "label": "employees customers",
+        "score": -1.0716757435596165,
+        "meta": {}
+      },
+      {
+        "label": "fuel prices",
+        "score": -0.9714614495214633,
+        "meta": {}
+      },
+      {
+        "label": "landfill disposal",
+        "score": -0.8891041611095654,
+        "meta": {}
+      },
+      {
+        "label": "services customers",
+        "score": -0.8891041611095654,
+        "meta": {}
+      },
+      {
+        "label": "gas prices",
+        "score": -0.4828313111931344,
+        "meta": {}
+      },
+      {
+        "label": "laws regulations",
+        "score": -0.055465207685178264,
+        "meta": {}
+      },
+      {
+        "label": "increased costs",
+        "score": -0.036639661741844076,
+        "meta": {}
+      },
+      {
+        "label": "landfill gas",
+        "score": -0.01851391127860813,
+        "meta": {}
+      }
+    ],
+    "summary_alt": "Adds emphasis on growth strategy, market prices recycling, waste management; de-emphasizes results operations cash, economic conditions, subject regulatory."
+  },
+  "evidence": [
+    {
+      "year": 2023,
+      "paragraph_idx": 4,
+      "snippet": "Execution of our strategy, including growth through acquisitions and our planned expansion of our Recycling Processing and Sales and WM Renewable Energy segments, may cause us to incur substantial additional indebtedness, which may divert capital away from our traditional business operations and other financial plans, and may introduce additional risks and volatility to our financial performance.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "segment",
+        "energy segment"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 5,
+      "snippet": "Supply chain, regulatory or permitting disruptions or delays could detrimentally impact the execution timeline for our planned expansion of our Recycling Processing and Sales and WM Renewable Energy businesses.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "energy businesses"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 8,
+      "snippet": "Execution of our strategy, including growth through acquisitions and our planned expansion of our recycling and renewable energy businesses, may cause us to incur substantial additional indebtedness, which may divert capital away from our traditional business operations and other financial plans.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "energy businesses"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 9,
+      "snippet": "Supply chain disruptions or delays could detrimentally impact the execution timeline for our planned expansion of our recycling and renewable energy businesses.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "energy businesses"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.0284,
+    "confidence": 1.0,
+    "coverage": 0.37740696494405696,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T05:02:55Z",
+    "git_commit": "77553f23af39ca9ca4d7337e78fce9b3d4e9594f",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "390613f8861992077c72559861b6a2a490e8f112445fb200b475d147f16de653",
+      "curr_text_sha256": "1aaddb195acb15820f16fc5ace1129d80964c3d455101fc8a04f6d97bc9df5cc",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

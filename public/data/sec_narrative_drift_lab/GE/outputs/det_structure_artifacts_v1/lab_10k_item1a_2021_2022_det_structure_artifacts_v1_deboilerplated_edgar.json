@@ -1,0 +1,123 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_structure_artifacts_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "GE",
+  "section": "10k_item1a",
+  "year_from": 2021,
+  "year_to": 2022,
+  "artifacts": {
+    "stats": {
+      "headings_prev": [
+        "2021 FORM 10-K 35",
+        "2021 FORM 10-K 36",
+        "2021 FORM 10-K 37",
+        "2021 FORM 10-K 38",
+        "2021 FORM 10-K 39",
+        "2021 FORM 10-K 40",
+        "2021 FORM 10-K 41",
+        "LEGAL & COMPLIANCE RISKS.",
+        "2021 FORM 10-K 42",
+        "February 11, 2022"
+      ],
+      "headings_curr": [
+        "2022 FORM 10-K 30",
+        "2022 FORM 10-K 31",
+        "2022 FORM 10-K 32",
+        "2022 FORM 10-K 33",
+        "2022 FORM 10-K 34",
+        "2022 FORM 10-K 35",
+        "2022 FORM 10-K 36",
+        "2022 FORM 10-K 37",
+        "LEGAL AND COMPLIANCE RISKS.",
+        "2022 FORM 10-K 38",
+        "February 10, 2023"
+      ],
+      "headings_added": [
+        "2022 FORM 10-K 30",
+        "2022 FORM 10-K 31",
+        "2022 FORM 10-K 32",
+        "2022 FORM 10-K 33",
+        "2022 FORM 10-K 34",
+        "2022 FORM 10-K 35",
+        "2022 FORM 10-K 36",
+        "2022 FORM 10-K 37",
+        "LEGAL AND COMPLIANCE RISKS.",
+        "2022 FORM 10-K 38",
+        "February 10, 2023"
+      ],
+      "headings_removed": [
+        "2021 FORM 10-K 35",
+        "2021 FORM 10-K 36",
+        "2021 FORM 10-K 37",
+        "2021 FORM 10-K 38",
+        "2021 FORM 10-K 39",
+        "2021 FORM 10-K 40",
+        "2021 FORM 10-K 41",
+        "LEGAL & COMPLIANCE RISKS.",
+        "2021 FORM 10-K 42",
+        "February 11, 2022"
+      ],
+      "paragraph_count_prev": 122,
+      "paragraph_count_curr": 149,
+      "length_chars_prev": 37627,
+      "length_chars_curr": 47456
+    }
+  },
+  "evidence": [
+    {
+      "year": 2022,
+      "paragraph_idx": 0,
+      "snippet": "In November 2021, we announced our plan to form three independent public companies from our (i) Aerospace business, (ii) HealthCare business and (iii) portfolio of energy businesses that we plan to combine as GE Vernova (Renewable Energy, Power, Digital and Energy Financial Services), to better position those businesses to deliver long-term growth and create value for customers, investors, and employees.",
+      "why": "Heading added: 2022 FORM 10-K 30"
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 0,
+      "snippet": "currency volatility, commodity prices and sovereign debt levels.",
+      "why": "Heading added: 2022 FORM 10-K 31"
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 44,
+      "snippet": "will require significant investments in power grids and other infrastructure, research and development and new technology and products, both by GE and third parties.",
+      "why": "Heading added: 2022 FORM 10-K 32"
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 0,
+      "snippet": "on a different timeline than expected.",
+      "why": "Heading removed: 2021 FORM 10-K 35"
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 28,
+      "snippet": "We operate in virtually every part of the world, serve customers in over 175 countries and received 56% of our revenues for 2021 from outside the United States.",
+      "why": "Heading removed: 2021 FORM 10-K 36"
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 0,
+      "snippet": "retain skilled talent.",
+      "why": "Heading removed: 2021 FORM 10-K 37"
+    }
+  ],
+  "metrics": {
+    "drift_score": 1.0,
+    "confidence": 1.0,
+    "coverage": 0.5806815025155098,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T05:02:58Z",
+    "git_commit": "77553f23af39ca9ca4d7337e78fce9b3d4e9594f",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "39716dffaae473350e80e09f321b76951c9c602d4391181bd1a330004eee0831",
+      "curr_text_sha256": "5fb20269a1106017107f38feb7ef37fd66c4e4c24ac56efef9351f454fc2ed94",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

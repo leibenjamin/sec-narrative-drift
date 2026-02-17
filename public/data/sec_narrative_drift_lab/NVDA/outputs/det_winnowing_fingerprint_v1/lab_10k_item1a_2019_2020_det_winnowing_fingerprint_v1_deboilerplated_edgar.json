@@ -1,0 +1,55 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_winnowing_fingerprint_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "NVDA",
+  "section": "10k_item1a",
+  "year_from": 2019,
+  "year_to": 2020,
+  "artifacts": {
+    "stats": {
+      "shared_fingerprints": 1584,
+      "prev_fingerprints": 1914,
+      "curr_fingerprints": 3437,
+      "shared_ratio": 0.8275862068965517
+    }
+  },
+  "evidence": [
+    {
+      "year": 2020,
+      "paragraph_idx": 0,
+      "snippet": "We created GPU-based visual and accelerated computing platforms that address four large markets:\n\nGaming, Professional Visu",
+      "why": "Shared fingerprint span."
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 0,
+      "snippet": "We created GPU-based visual and accelerated computing platforms that address four large markets:\n\nGaming, Professional Visua",
+      "why": "Shared fingerprint span."
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 0,
+      "snippet": "We created GPU-based visual and accelerated computing platforms that address four large markets:\n\nGaming, Professional Visualiza",
+      "why": "Shared fingerprint span."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.8275862068965517,
+    "confidence": 1.0,
+    "coverage": 0.11339749714525413,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T05:02:49Z",
+    "git_commit": "77553f23af39ca9ca4d7337e78fce9b3d4e9594f",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "d64481ca1ae6ca334aa85d2badf071391e37f406963dae225fd87342002f329b",
+      "curr_text_sha256": "85bf66c0559860ed1ac4317a701190a04ff8211be8af04381e4ba541dda3ef7c",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

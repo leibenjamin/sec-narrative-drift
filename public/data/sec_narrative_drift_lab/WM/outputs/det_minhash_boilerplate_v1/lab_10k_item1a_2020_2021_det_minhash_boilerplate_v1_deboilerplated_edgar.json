@@ -1,0 +1,73 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_minhash_boilerplate_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "WM",
+  "section": "10k_item1a",
+  "year_from": 2020,
+  "year_to": 2021,
+  "artifacts": {
+    "stats": {
+      "percent_reused": 0.19444444444444445,
+      "percent_new": 0.8055555555555556,
+      "reused_paragraphs": 21,
+      "total_paragraphs": 108
+    }
+  },
+  "evidence": [
+    {
+      "year": 2021,
+      "paragraph_idx": 0,
+      "snippet": "Outlined below are some of the risks that we believe could affect our business and financial statements for 2022 and beyond and could cause actual results to be materially different from those set forth in forward-looking statements made by the Company.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 2,
+      "snippet": "Outlined below are some of the risks that we believe could affect our business and financial statements for 2021 and beyond and could cause actual results to be materially different from those that may be set forth in forward-looking statements made by the Company.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 22,
+      "snippet": "During 2020 and continuing into 2021, federal, state and local governments throughout North America imposed varying degrees of restriction on social and commercial activity to promote social distancing in an effort to slow the spread of COVID-19.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 36,
+      "snippet": "During 2020 and continuing into 2021, federal, state and local governments throughout North America have imposed varying degrees of restriction on social and commercial activity to promote social distancing in an effort to slow the spread of COVID-19.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 57,
+      "snippet": "Where organic waste is not banned from the landfill, some large customers such as grocery stores and restaurants are choosing to divert their organic waste from landfills.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 66,
+      "snippet": "Where such organic waste is not banned from the landfill, some large customers such as grocery stores and restaurants are choosing to divert their organic waste from landfills.",
+      "why": "Matching paragraph from prior year."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.8055555555555556,
+    "confidence": 1.0,
+    "coverage": 0.3731478853250071,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T05:02:54Z",
+    "git_commit": "77553f23af39ca9ca4d7337e78fce9b3d4e9594f",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "d09fa3665988ef7a7fade6ad0c0432d7938bf2653b8aaa2db9a2948f0e74e013",
+      "curr_text_sha256": "feebfde0925c43b08192e3e8b3f332e28ce1dd6de7576d245050e91a7f64b400",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

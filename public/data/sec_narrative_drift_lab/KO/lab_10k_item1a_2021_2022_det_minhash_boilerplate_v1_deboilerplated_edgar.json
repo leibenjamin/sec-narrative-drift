@@ -1,0 +1,73 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_minhash_boilerplate_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "KO",
+  "section": "10k_item1a",
+  "year_from": 2021,
+  "year_to": 2022,
+  "artifacts": {
+    "stats": {
+      "percent_reused": 0.13846153846153847,
+      "percent_new": 0.8615384615384616,
+      "reused_paragraphs": 18,
+      "total_paragraphs": 130
+    }
+  },
+  "evidence": [
+    {
+      "year": 2022,
+      "paragraph_idx": 2,
+      "snippet": "Under difficult economic conditions, consumers may seek to reduce discretionary spending by forgoing purchases of our products or by shifting away from our beverages to lower-priced products offered by other companies, including private-label brands, which could reduce our profitability and negatively affect our overall financial performance.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 61,
+      "snippet": "Under difficult economic conditions, consumers may seek to reduce discretionary spending by forgoing purchases of our products or by shifting away from our beverages to lower-priced products offered by other companies, including private-label brands, which could reduce our profitability and could negatively affect our overall financial performance.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 15,
+      "snippet": "In addition, in developed markets, discounters and value stores are growing at a rapid pace, while in emerging and developing markets, modern trade is growing at a faster pace than traditional trade outlets.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 12,
+      "snippet": "In addition, in developed markets discounters and value stores are growing at a rapid pace, while in emerging and developing markets modern trade is growing at a faster pace than traditional trade outlets.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 20,
+      "snippet": "In addition, the broader labor market is experiencing a shortage of qualified workers, which has further increased the competition we face for qualified employees.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 17,
+      "snippet": "In addition, the broader labor market is experiencing a shortage of qualified workers which has further increased the competition we face for qualified employees.",
+      "why": "Matching paragraph from prior year."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.8615384615384616,
+    "confidence": 1.0,
+    "coverage": 0.49756888168557534,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T05:02:52Z",
+    "git_commit": "77553f23af39ca9ca4d7337e78fce9b3d4e9594f",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "e6cfc8b78dd3ec509c30c6506ff9e388f0fbe1901a6373c20f2324d9ad1c3ec1",
+      "curr_text_sha256": "c57571334e0bb44ce275ccc4562aeb9807109f8ebce8ce33a03eb0811a07cf82",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

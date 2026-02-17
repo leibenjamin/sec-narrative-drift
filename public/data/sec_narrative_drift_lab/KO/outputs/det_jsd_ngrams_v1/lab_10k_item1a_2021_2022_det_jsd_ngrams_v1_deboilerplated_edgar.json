@@ -1,0 +1,156 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_jsd_ngrams_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "KO",
+  "section": "10k_item1a",
+  "year_from": 2021,
+  "year_to": 2022,
+  "artifacts": {
+    "ranked_items": [
+      {
+        "label": "esg",
+        "score": 0.0007117437722419929
+      },
+      {
+        "label": "sustainability",
+        "score": 0.0005705285897145385
+      },
+      {
+        "label": "sugar sweetened",
+        "score": 0.0005693950177935943
+      },
+      {
+        "label": "aluminum cans",
+        "score": 0.000498220640569395
+      },
+      {
+        "label": "cans",
+        "score": 0.000498220640569395
+      },
+      {
+        "label": "aluminum",
+        "score": 0.000498220640569395
+      },
+      {
+        "label": "juice",
+        "score": 0.00042704626334519574
+      },
+      {
+        "label": "cans containers",
+        "score": 0.00042704626334519574
+      },
+      {
+        "label": "conflict",
+        "score": 0.00042354934349851756
+      },
+      {
+        "label": "potential",
+        "score": 0.00042354934349851756
+      },
+      {
+        "label": "materials aluminum",
+        "score": 0.00035587188612099647
+      },
+      {
+        "label": "orange",
+        "score": 0.00035587188612099647
+      },
+      {
+        "label": "russia",
+        "score": 0.00035295778624876465
+      },
+      {
+        "label": "sustainability goals",
+        "score": 0.00035295778624876465
+      },
+      {
+        "label": "ukraine",
+        "score": 0.00035295778624876465
+      },
+      {
+        "label": "materials packaging",
+        "score": 0.00031946525303731333
+      },
+      {
+        "label": "sugar",
+        "score": 0.00030076648584456374
+      },
+      {
+        "label": "orange juice",
+        "score": 0.00028469750889679714
+      },
+      {
+        "label": "goals commitments",
+        "score": 0.00028469750889679714
+      },
+      {
+        "label": "supplies",
+        "score": 0.00028236622899901174
+      }
+    ],
+    "stats": {
+      "jsd": 0.14939,
+      "tokens_prev": 3513,
+      "tokens_curr": 3542
+    }
+  },
+  "evidence": [
+    {
+      "year": 2022,
+      "paragraph_idx": 10,
+      "snippet": "We cannot predict how and the extent to which the conflict will continue to affect our employees, operations, customers or business partners or our ability to achieve certain of our sustainability goals.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "sustainability"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 44,
+      "snippet": "We may also encounter unexpected difficulties, costs or delays in restructuring and integrating acquired businesses, brands or bottling operations into our Company\u2019s operating, governance, sustainability and internal control structures, including extending our Company\u2019s internal control over financial reporting to newly acquired businesses, which may increase the risk of failure to prevent misstatements in their financial records and in our consolidated financial statements.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "sustainability"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 23,
+      "snippet": "Increases in the cost, disruption of supply or shortages of ingredients, other raw materials, packaging materials, aluminum cans and other containers could harm our business.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "aluminum cans",
+        "cans"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 24,
+      "snippet": "We and our bottling partners use various ingredients in our business, including HFCS, sucrose, aspartame, acesulfame potassium, sucralose, saccharin, cyclamate, steviol glycosides, ascorbic acid, citric acid, phosphoric acid, caffeine and caramel color; other raw materials such as coffee, orange and other fruit juice and juice concentrates; packaging materials such as PET, bio-based PET and recycled PET for bottles; and aluminum cans and other containers.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "aluminum cans",
+        "cans"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.14939,
+    "confidence": 1.0,
+    "coverage": 0.49756888168557534,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T05:02:52Z",
+    "git_commit": "77553f23af39ca9ca4d7337e78fce9b3d4e9594f",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "e6cfc8b78dd3ec509c30c6506ff9e388f0fbe1901a6373c20f2324d9ad1c3ec1",
+      "curr_text_sha256": "c57571334e0bb44ce275ccc4562aeb9807109f8ebce8ce33a03eb0811a07cf82",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

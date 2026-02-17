@@ -1,0 +1,1021 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_logodds_terms_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "NVDA",
+  "section": "10k_item1a",
+  "year_from": 2020,
+  "year_to": 2021,
+  "artifacts": {
+    "top_risers": [
+      {
+        "label": "COVID-19",
+        "score": 1.236036918155372,
+        "meta": {
+          "z": 1.6936148599161454,
+          "countPrev": 0,
+          "countCurr": 24,
+          "per10kPrev": 0.0,
+          "per10kCurr": 27.488260222196768,
+          "deltaPer10k": 27.488260222196768,
+          "distinctive": false,
+          "includes": [
+            "covid"
+          ]
+        }
+      },
+      {
+        "label": "covid pandemic",
+        "score": 0.930263705983812,
+        "meta": {
+          "z": 1.445781208257561,
+          "countPrev": 0,
+          "countCurr": 13,
+          "per10kPrev": 0.0,
+          "per10kCurr": 14.88947428702325,
+          "deltaPer10k": 14.88947428702325,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "home",
+        "score": 0.9296809276045856,
+        "meta": {
+          "z": 0.9795107426198603,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.436032527774596,
+          "deltaPer10k": 3.436032527774596,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "pandemic continues",
+        "score": 0.8360220594463574,
+        "meta": {
+          "z": 1.0706537333811905,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.581376703699462,
+          "deltaPer10k": 4.581376703699462,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "continues",
+        "score": 0.8331263673330391,
+        "meta": {
+          "z": 1.1415477767516224,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.7267208796243265,
+          "deltaPer10k": 5.7267208796243265,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "disease",
+        "score": 0.8208665551964833,
+        "meta": {
+          "z": 0.9795107426198603,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.436032527774596,
+          "deltaPer10k": 3.436032527774596,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "benefited",
+        "score": 0.8086004725517462,
+        "meta": {
+          "z": 0.851940516186216,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.290688351849731,
+          "deltaPer10k": 2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "desktop",
+        "score": 0.8086004725517462,
+        "meta": {
+          "z": 0.851940516186216,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.290688351849731,
+          "deltaPer10k": 2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "election",
+        "score": 0.8086004725517462,
+        "meta": {
+          "z": 0.851940516186216,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.290688351849731,
+          "deltaPer10k": 2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "grows",
+        "score": 0.8086004725517462,
+        "meta": {
+          "z": 0.851940516186216,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.290688351849731,
+          "deltaPer10k": 2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "joint",
+        "score": 0.8086004725517462,
+        "meta": {
+          "z": 0.851940516186216,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.290688351849731,
+          "deltaPer10k": 2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "remotely",
+        "score": 0.8086004725517462,
+        "meta": {
+          "z": 0.851940516186216,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.290688351849731,
+          "deltaPer10k": 2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "severity",
+        "score": 0.8086004725517462,
+        "meta": {
+          "z": 0.851940516186216,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.290688351849731,
+          "deltaPer10k": 2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "slowdown",
+        "score": 0.8086004725517462,
+        "meta": {
+          "z": 0.851940516186216,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.290688351849731,
+          "deltaPer10k": 2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "try",
+        "score": 0.8086004725517462,
+        "meta": {
+          "z": 0.851940516186216,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.290688351849731,
+          "deltaPer10k": 2.290688351849731,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_fallers": [
+      {
+        "label": "Coronavirus",
+        "score": -1.0994440775496528,
+        "meta": {
+          "z": -1.158372999696198,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 4.614674665436087,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.614674665436087,
+          "distinctive": false,
+          "includes": [
+            "coronavirus"
+          ]
+        }
+      },
+      {
+        "label": "tegra",
+        "score": -0.5316299678775132,
+        "meta": {
+          "z": -1.2502132047259487,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 6.152899553914783,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -6.152899553914783,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "allegedly false",
+        "score": -0.5106493379716968,
+        "meta": {
+          "z": -0.7936321841857287,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 3.0764497769573915,
+          "per10kCurr": 1.1453441759248655,
+          "deltaPer10k": -1.931105601032526,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "attributable end",
+        "score": -0.5106493379716968,
+        "meta": {
+          "z": -0.7936321841857287,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 3.0764497769573915,
+          "per10kCurr": 1.1453441759248655,
+          "deltaPer10k": -1.931105601032526,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "based dissemination",
+        "score": -0.5106493379716968,
+        "meta": {
+          "z": -0.7936321841857287,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 3.0764497769573915,
+          "per10kCurr": 1.1453441759248655,
+          "deltaPer10k": -1.931105601032526,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "different location",
+        "score": -0.5106493379716968,
+        "meta": {
+          "z": -0.7936321841857287,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 3.0764497769573915,
+          "per10kCurr": 1.1453441759248655,
+          "deltaPer10k": -1.931105601032526,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "dissemination allegedly",
+        "score": -0.5106493379716968,
+        "meta": {
+          "z": -0.7936321841857287,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 3.0764497769573915,
+          "per10kCurr": 1.1453441759248655,
+          "deltaPer10k": -1.931105601032526,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "located different",
+        "score": -0.5106493379716968,
+        "meta": {
+          "z": -0.7936321841857287,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 3.0764497769573915,
+          "per10kCurr": 1.1453441759248655,
+          "deltaPer10k": -1.931105601032526,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "officers based",
+        "score": -0.5106493379716968,
+        "meta": {
+          "z": -0.7936321841857287,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 3.0764497769573915,
+          "per10kCurr": 1.1453441759248655,
+          "deltaPer10k": -1.931105601032526,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "filed",
+        "score": -0.49580637270460365,
+        "meta": {
+          "z": -0.7936321841857287,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 3.0764497769573915,
+          "per10kCurr": 1.1453441759248655,
+          "deltaPer10k": -1.931105601032526,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "attributable",
+        "score": -0.41512610057336113,
+        "meta": {
+          "z": -0.7936321841857287,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 3.0764497769573915,
+          "per10kCurr": 1.1453441759248655,
+          "deltaPer10k": -1.931105601032526,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "revenue attributable",
+        "score": -0.4107610333901793,
+        "meta": {
+          "z": -0.7936321841857287,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 3.0764497769573915,
+          "per10kCurr": 1.1453441759248655,
+          "deltaPer10k": -1.931105601032526,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "location",
+        "score": -0.3962005917091122,
+        "meta": {
+          "z": -0.757450665085833,
+          "countPrev": 3,
+          "countCurr": 2,
+          "per10kPrev": 4.614674665436087,
+          "per10kCurr": 2.290688351849731,
+          "deltaPer10k": -2.3239863135863557,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "gpus tegra",
+        "score": -0.37762401289175834,
+        "meta": {
+          "z": -1.2502132047259487,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 6.152899553914783,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -6.152899553914783,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "tegra processors",
+        "score": -0.37762401289175834,
+        "meta": {
+          "z": -1.2502132047259487,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 6.152899553914783,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -6.152899553914783,
+          "distinctive": false
+        }
+      }
+    ],
+    "summary": "Adds emphasis on COVID-19, covid pandemic, home; de-emphasizes Coronavirus, tegra, allegedly false.",
+    "ranked_items": [
+      {
+        "label": "COVID-19",
+        "score": 1.236036918155372,
+        "meta": {
+          "z": 1.6936148599161454,
+          "countPrev": 0,
+          "countCurr": 24,
+          "per10kPrev": 0.0,
+          "per10kCurr": 27.488260222196768,
+          "deltaPer10k": 27.488260222196768,
+          "distinctive": false,
+          "includes": [
+            "covid"
+          ]
+        }
+      },
+      {
+        "label": "covid pandemic",
+        "score": 0.930263705983812,
+        "meta": {
+          "z": 1.445781208257561,
+          "countPrev": 0,
+          "countCurr": 13,
+          "per10kPrev": 0.0,
+          "per10kCurr": 14.88947428702325,
+          "deltaPer10k": 14.88947428702325,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "home",
+        "score": 0.9296809276045856,
+        "meta": {
+          "z": 0.9795107426198603,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.436032527774596,
+          "deltaPer10k": 3.436032527774596,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "pandemic continues",
+        "score": 0.8360220594463574,
+        "meta": {
+          "z": 1.0706537333811905,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.581376703699462,
+          "deltaPer10k": 4.581376703699462,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "continues",
+        "score": 0.8331263673330391,
+        "meta": {
+          "z": 1.1415477767516224,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.7267208796243265,
+          "deltaPer10k": 5.7267208796243265,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "disease",
+        "score": 0.8208665551964833,
+        "meta": {
+          "z": 0.9795107426198603,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.436032527774596,
+          "deltaPer10k": 3.436032527774596,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "benefited",
+        "score": 0.8086004725517462,
+        "meta": {
+          "z": 0.851940516186216,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.290688351849731,
+          "deltaPer10k": 2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "desktop",
+        "score": 0.8086004725517462,
+        "meta": {
+          "z": 0.851940516186216,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.290688351849731,
+          "deltaPer10k": 2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "election",
+        "score": 0.8086004725517462,
+        "meta": {
+          "z": 0.851940516186216,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.290688351849731,
+          "deltaPer10k": 2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "grows",
+        "score": 0.8086004725517462,
+        "meta": {
+          "z": 0.851940516186216,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.290688351849731,
+          "deltaPer10k": 2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "joint",
+        "score": 0.8086004725517462,
+        "meta": {
+          "z": 0.851940516186216,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.290688351849731,
+          "deltaPer10k": 2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "remotely",
+        "score": 0.8086004725517462,
+        "meta": {
+          "z": 0.851940516186216,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.290688351849731,
+          "deltaPer10k": 2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "severity",
+        "score": 0.8086004725517462,
+        "meta": {
+          "z": 0.851940516186216,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.290688351849731,
+          "deltaPer10k": 2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "slowdown",
+        "score": 0.8086004725517462,
+        "meta": {
+          "z": 0.851940516186216,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.290688351849731,
+          "deltaPer10k": 2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "try",
+        "score": 0.8086004725517462,
+        "meta": {
+          "z": 0.851940516186216,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.290688351849731,
+          "deltaPer10k": 2.290688351849731,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "Coronavirus",
+        "score": -1.0994440775496528,
+        "meta": {
+          "z": -1.158372999696198,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 4.614674665436087,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.614674665436087,
+          "distinctive": false,
+          "includes": [
+            "coronavirus"
+          ]
+        }
+      },
+      {
+        "label": "tegra",
+        "score": -0.5316299678775132,
+        "meta": {
+          "z": -1.2502132047259487,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 6.152899553914783,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -6.152899553914783,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "allegedly false",
+        "score": -0.5106493379716968,
+        "meta": {
+          "z": -0.7936321841857287,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 3.0764497769573915,
+          "per10kCurr": 1.1453441759248655,
+          "deltaPer10k": -1.931105601032526,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "attributable end",
+        "score": -0.5106493379716968,
+        "meta": {
+          "z": -0.7936321841857287,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 3.0764497769573915,
+          "per10kCurr": 1.1453441759248655,
+          "deltaPer10k": -1.931105601032526,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "based dissemination",
+        "score": -0.5106493379716968,
+        "meta": {
+          "z": -0.7936321841857287,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 3.0764497769573915,
+          "per10kCurr": 1.1453441759248655,
+          "deltaPer10k": -1.931105601032526,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "different location",
+        "score": -0.5106493379716968,
+        "meta": {
+          "z": -0.7936321841857287,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 3.0764497769573915,
+          "per10kCurr": 1.1453441759248655,
+          "deltaPer10k": -1.931105601032526,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "dissemination allegedly",
+        "score": -0.5106493379716968,
+        "meta": {
+          "z": -0.7936321841857287,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 3.0764497769573915,
+          "per10kCurr": 1.1453441759248655,
+          "deltaPer10k": -1.931105601032526,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "located different",
+        "score": -0.5106493379716968,
+        "meta": {
+          "z": -0.7936321841857287,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 3.0764497769573915,
+          "per10kCurr": 1.1453441759248655,
+          "deltaPer10k": -1.931105601032526,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "officers based",
+        "score": -0.5106493379716968,
+        "meta": {
+          "z": -0.7936321841857287,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 3.0764497769573915,
+          "per10kCurr": 1.1453441759248655,
+          "deltaPer10k": -1.931105601032526,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "filed",
+        "score": -0.49580637270460365,
+        "meta": {
+          "z": -0.7936321841857287,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 3.0764497769573915,
+          "per10kCurr": 1.1453441759248655,
+          "deltaPer10k": -1.931105601032526,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "attributable",
+        "score": -0.41512610057336113,
+        "meta": {
+          "z": -0.7936321841857287,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 3.0764497769573915,
+          "per10kCurr": 1.1453441759248655,
+          "deltaPer10k": -1.931105601032526,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "revenue attributable",
+        "score": -0.4107610333901793,
+        "meta": {
+          "z": -0.7936321841857287,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 3.0764497769573915,
+          "per10kCurr": 1.1453441759248655,
+          "deltaPer10k": -1.931105601032526,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "location",
+        "score": -0.3962005917091122,
+        "meta": {
+          "z": -0.757450665085833,
+          "countPrev": 3,
+          "countCurr": 2,
+          "per10kPrev": 4.614674665436087,
+          "per10kCurr": 2.290688351849731,
+          "deltaPer10k": -2.3239863135863557,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "gpus tegra",
+        "score": -0.37762401289175834,
+        "meta": {
+          "z": -1.2502132047259487,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 6.152899553914783,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -6.152899553914783,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "tegra processors",
+        "score": -0.37762401289175834,
+        "meta": {
+          "z": -1.2502132047259487,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 6.152899553914783,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -6.152899553914783,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_risers_alt": [
+      {
+        "label": "covid pandemic",
+        "score": 2.0192108118647827,
+        "meta": {}
+      },
+      {
+        "label": "laws regulations",
+        "score": 1.5113722722939107,
+        "meta": {}
+      },
+      {
+        "label": "demand products",
+        "score": 0.8426583935679961,
+        "meta": {}
+      },
+      {
+        "label": "Supply chain",
+        "score": 0.4653301564889927,
+        "meta": {}
+      },
+      {
+        "label": "economic demand",
+        "score": 1.9971491992395443,
+        "meta": {}
+      },
+      {
+        "label": "harm business financial",
+        "score": 1.1159906278488325,
+        "meta": {}
+      },
+      {
+        "label": "increase operating",
+        "score": 1.1159906278488325,
+        "meta": {}
+      },
+      {
+        "label": "financial markets",
+        "score": 0.9215141597439898,
+        "meta": {}
+      },
+      {
+        "label": "Interest rates",
+        "score": 0.5956477560993951,
+        "meta": {}
+      },
+      {
+        "label": "foreign exchange",
+        "score": 0.5300017276757316,
+        "meta": {}
+      },
+      {
+        "label": "political instability",
+        "score": 0.4757806230202215,
+        "meta": {}
+      },
+      {
+        "label": "data security",
+        "score": 0.2744757165223213,
+        "meta": {}
+      },
+      {
+        "label": "internal controls",
+        "score": 0.25872350747690387,
+        "meta": {}
+      },
+      {
+        "label": "new products",
+        "score": 0.036345293945101,
+        "meta": {}
+      },
+      {
+        "label": "Data privacy",
+        "score": 0.030360784208777414,
+        "meta": {}
+      }
+    ],
+    "top_fallers_alt": [
+      {
+        "label": "customers revenue",
+        "score": -1.6522821741520533,
+        "meta": {}
+      },
+      {
+        "label": "changes united",
+        "score": -2.230576289393225,
+        "meta": {}
+      },
+      {
+        "label": "laws united",
+        "score": -2.230576289393225,
+        "meta": {}
+      },
+      {
+        "label": "products sell",
+        "score": -2.230576289393225,
+        "meta": {}
+      },
+      {
+        "label": "failure meet",
+        "score": -1.349849961826461,
+        "meta": {}
+      },
+      {
+        "label": "increase operating expenses",
+        "score": -0.9143204847570745,
+        "meta": {}
+      },
+      {
+        "label": "customers result",
+        "score": -0.8714453782595513,
+        "meta": {}
+      },
+      {
+        "label": "market share",
+        "score": -0.12147796560402169,
+        "meta": {}
+      },
+      {
+        "label": "products services",
+        "score": -0.08232363373513474,
+        "meta": {}
+      },
+      {
+        "label": "customers partners",
+        "score": -0.11955452271189548,
+        "meta": {}
+      },
+      {
+        "label": "gross margin",
+        "score": -0.11886668908759557,
+        "meta": {}
+      },
+      {
+        "label": "customer demand",
+        "score": -0.06912265670772388,
+        "meta": {}
+      },
+      {
+        "label": "product liability",
+        "score": -0.11797833929226531,
+        "meta": {}
+      },
+      {
+        "label": "Intellectual property",
+        "score": -0.04346800202569279,
+        "meta": {}
+      },
+      {
+        "label": "trade restrictions",
+        "score": -0.11748445991522516,
+        "meta": {}
+      }
+    ],
+    "summary_alt": "Adds emphasis on covid pandemic, laws regulations, demand products; de-emphasizes customers revenue, changes united, laws united."
+  },
+  "evidence": [
+    {
+      "year": 2021,
+      "paragraph_idx": 2,
+      "snippet": "We also must continue to scale our networking business following the Mellanox acquisition by leveraging our joint product capabilities and continuing to effectively integrate company processes.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "tegra"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 12,
+      "snippet": "In our networking business, some of our customers are also integrated circuit and switch suppliers and already have in-house expertise and internal development capabilities similar to ours.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "tegra"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 5,
+      "snippet": "We do not manufacture the silicon wafers used for our GPUs and Tegra processors and do not own or operate a wafer fabrication facility.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "tegra"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 24,
+      "snippet": "In January 2020, a novel strain of coronavirus was identified in China, resulting in shutdowns of manufacturing and commerce, as well as global travel restrictions to contain the virus.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "coronavirus"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.0761,
+    "confidence": 1.0,
+    "coverage": 0.4167789685340863,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T05:02:49Z",
+    "git_commit": "77553f23af39ca9ca4d7337e78fce9b3d4e9594f",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "20b62b19cb33bb5cb41d651aaddc1d939f2bdeddd2d4f373f1e9803b95cd8b28",
+      "curr_text_sha256": "f185a5f8243e4b11cfb46f89bf804a468dfbc9f1ed1f591520a1f920a16e29e1",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

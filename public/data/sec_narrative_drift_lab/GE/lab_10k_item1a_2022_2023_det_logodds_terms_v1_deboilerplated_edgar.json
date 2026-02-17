@@ -1,0 +1,1014 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_logodds_terms_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "GE",
+  "section": "10k_item1a",
+  "year_from": 2022,
+  "year_to": 2023,
+  "artifacts": {
+    "top_risers": [
+      {
+        "label": "aerospace vernova",
+        "score": 1.233049326218248,
+        "meta": {
+          "z": 1.638691987557064,
+          "countPrev": 1,
+          "countCurr": 6,
+          "per10kPrev": 1.133401337413578,
+          "per10kCurr": 6.6897089976586015,
+          "deltaPer10k": 5.556307660245023,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "vernova",
+        "score": 1.147980186839528,
+        "meta": {
+          "z": 1.6447799881425713,
+          "countPrev": 15,
+          "countCurr": 26,
+          "per10kPrev": 17.001020061203672,
+          "per10kCurr": 28.988738989853942,
+          "deltaPer10k": 11.98771892865027,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "aerospace",
+        "score": 1.1155635577042975,
+        "meta": {
+          "z": 1.598334741529513,
+          "countPrev": 10,
+          "countCurr": 19,
+          "per10kPrev": 11.334013374135782,
+          "per10kCurr": 21.184078492585574,
+          "deltaPer10k": 9.850065118449791,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "credit support",
+        "score": 0.9905001397588005,
+        "meta": {
+          "z": 1.638691987557064,
+          "countPrev": 1,
+          "countCurr": 6,
+          "per10kPrev": 1.133401337413578,
+          "per10kCurr": 6.6897089976586015,
+          "deltaPer10k": 5.556307660245023,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "Artificial intelligence",
+        "score": 0.9666220033714388,
+        "meta": {
+          "z": 1.284616680160911,
+          "countPrev": 0,
+          "countCurr": 6,
+          "per10kPrev": 0.0,
+          "per10kCurr": 6.6897089976586015,
+          "deltaPer10k": 6.6897089976586015,
+          "distinctive": false,
+          "includes": [
+            "artificial intelligence"
+          ]
+        }
+      },
+      {
+        "label": "vernova independent",
+        "score": 0.9228787775972743,
+        "meta": {
+          "z": 1.2264830174907646,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.574757498048835,
+          "deltaPer10k": 5.574757498048835,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "implemented",
+        "score": 0.8776220011671967,
+        "meta": {
+          "z": 0.9357352616277504,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.2299029992195343,
+          "deltaPer10k": 2.2299029992195343,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "artificial",
+        "score": 0.8683303457599467,
+        "meta": {
+          "z": 1.0639257533727557,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.3448544988293007,
+          "deltaPer10k": 3.3448544988293007,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "intelligence",
+        "score": 0.8683303457599467,
+        "meta": {
+          "z": 1.0639257533727557,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.3448544988293007,
+          "deltaPer10k": 3.3448544988293007,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "independent",
+        "score": 0.8507322339539255,
+        "meta": {
+          "z": 1.4576430712123543,
+          "countPrev": 7,
+          "countCurr": 14,
+          "per10kPrev": 7.933809361895047,
+          "per10kCurr": 15.609320994536738,
+          "deltaPer10k": 7.67551163264169,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "commercial aviation",
+        "score": 0.8109192568119221,
+        "meta": {
+          "z": 1.7233728213009896,
+          "countPrev": 2,
+          "countCurr": 8,
+          "per10kPrev": 2.266802674827156,
+          "per10kCurr": 8.919611996878137,
+          "deltaPer10k": 6.652809322050981,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "independent companies",
+        "score": 0.7984542929340963,
+        "meta": {
+          "z": 1.6968821691366818,
+          "countPrev": 4,
+          "countCurr": 11,
+          "per10kPrev": 4.533605349654312,
+          "per10kCurr": 12.264466495707437,
+          "deltaPer10k": 7.730861146053124,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "classified",
+        "score": 0.7637067912805027,
+        "meta": {
+          "z": 0.9357352616277504,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.2299029992195343,
+          "deltaPer10k": 2.2299029992195343,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "cyberattacks",
+        "score": 0.7637067912805027,
+        "meta": {
+          "z": 0.9357352616277504,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.2299029992195343,
+          "deltaPer10k": 2.2299029992195343,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "deployment",
+        "score": 0.7637067912805027,
+        "meta": {
+          "z": 0.9357352616277504,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.2299029992195343,
+          "deltaPer10k": 2.2299029992195343,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_fallers": [
+      {
+        "label": "COVID-19",
+        "score": -1.3006489884270993,
+        "meta": {
+          "z": -2.22852962470774,
+          "countPrev": 14,
+          "countCurr": 4,
+          "per10kPrev": 15.867618723790095,
+          "per10kCurr": 4.4598059984390686,
+          "deltaPer10k": -11.407812725351025,
+          "distinctive": true,
+          "includes": [
+            "covid"
+          ]
+        }
+      },
+      {
+        "label": "aercap healthcare",
+        "score": -1.0653694199890185,
+        "meta": {
+          "z": -1.1654238929206013,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 4.533605349654312,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.533605349654312,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "aercap",
+        "score": -1.0092103073650014,
+        "meta": {
+          "z": -1.236539574849426,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 5.667006687067891,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.667006687067891,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "lockdowns",
+        "score": -0.8869255163052219,
+        "meta": {
+          "z": -0.9456548251302147,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.266802674827156,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.266802674827156,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "virus",
+        "score": -0.8869255163052219,
+        "meta": {
+          "z": -0.9456548251302147,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.266802674827156,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.266802674827156,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "decarbonization",
+        "score": -0.7986172975088641,
+        "meta": {
+          "z": -1.36834943335082,
+          "countPrev": 9,
+          "countCurr": 4,
+          "per10kPrev": 10.200612036722204,
+          "per10kCurr": 4.4598059984390686,
+          "deltaPer10k": -5.740806038283135,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "stakes",
+        "score": -0.7718027114878827,
+        "meta": {
+          "z": -0.9456548251302147,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.266802674827156,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.266802674827156,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "variants",
+        "score": -0.7718027114878827,
+        "meta": {
+          "z": -0.9456548251302147,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.266802674827156,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.266802674827156,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "sales dispositions",
+        "score": -0.7115669410821731,
+        "meta": {
+          "z": -0.9456548251302147,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.266802674827156,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.266802674827156,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "separate public",
+        "score": -0.7115669410821731,
+        "meta": {
+          "z": -0.9456548251302147,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.266802674827156,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.266802674827156,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "resurgences",
+        "score": -0.660023231474643,
+        "meta": {
+          "z": -0.9456548251302147,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.266802674827156,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.266802674827156,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "separate",
+        "score": -0.6363126908119305,
+        "meta": {
+          "z": -0.9116833130456409,
+          "countPrev": 7,
+          "countCurr": 4,
+          "per10kPrev": 7.933809361895047,
+          "per10kCurr": 4.4598059984390686,
+          "deltaPer10k": -3.474003363455979,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "taken",
+        "score": -0.5875767720054185,
+        "meta": {
+          "z": -1.2405413850698128,
+          "countPrev": 4,
+          "countCurr": 1,
+          "per10kPrev": 4.533605349654312,
+          "per10kCurr": 1.1149514996097671,
+          "deltaPer10k": -3.418653850044545,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "covid pandemic",
+        "score": -0.5842036063855837,
+        "meta": {
+          "z": -1.2415547033734398,
+          "countPrev": 7,
+          "countCurr": 3,
+          "per10kPrev": 7.933809361895047,
+          "per10kCurr": 3.3448544988293007,
+          "deltaPer10k": -4.588954863065746,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "separate companies",
+        "score": -0.573161420208419,
+        "meta": {
+          "z": -0.9482432047925601,
+          "countPrev": 3,
+          "countCurr": 1,
+          "per10kPrev": 3.4002040122407347,
+          "per10kCurr": 1.1149514996097671,
+          "deltaPer10k": -2.2852525126309677,
+          "distinctive": false
+        }
+      }
+    ],
+    "summary": "Adds emphasis on aerospace vernova, vernova, aerospace; de-emphasizes COVID-19, aercap healthcare, aercap.",
+    "ranked_items": [
+      {
+        "label": "aerospace vernova",
+        "score": 1.233049326218248,
+        "meta": {
+          "z": 1.638691987557064,
+          "countPrev": 1,
+          "countCurr": 6,
+          "per10kPrev": 1.133401337413578,
+          "per10kCurr": 6.6897089976586015,
+          "deltaPer10k": 5.556307660245023,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "vernova",
+        "score": 1.147980186839528,
+        "meta": {
+          "z": 1.6447799881425713,
+          "countPrev": 15,
+          "countCurr": 26,
+          "per10kPrev": 17.001020061203672,
+          "per10kCurr": 28.988738989853942,
+          "deltaPer10k": 11.98771892865027,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "aerospace",
+        "score": 1.1155635577042975,
+        "meta": {
+          "z": 1.598334741529513,
+          "countPrev": 10,
+          "countCurr": 19,
+          "per10kPrev": 11.334013374135782,
+          "per10kCurr": 21.184078492585574,
+          "deltaPer10k": 9.850065118449791,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "credit support",
+        "score": 0.9905001397588005,
+        "meta": {
+          "z": 1.638691987557064,
+          "countPrev": 1,
+          "countCurr": 6,
+          "per10kPrev": 1.133401337413578,
+          "per10kCurr": 6.6897089976586015,
+          "deltaPer10k": 5.556307660245023,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "Artificial intelligence",
+        "score": 0.9666220033714388,
+        "meta": {
+          "z": 1.284616680160911,
+          "countPrev": 0,
+          "countCurr": 6,
+          "per10kPrev": 0.0,
+          "per10kCurr": 6.6897089976586015,
+          "deltaPer10k": 6.6897089976586015,
+          "distinctive": false,
+          "includes": [
+            "artificial intelligence"
+          ]
+        }
+      },
+      {
+        "label": "vernova independent",
+        "score": 0.9228787775972743,
+        "meta": {
+          "z": 1.2264830174907646,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 5.574757498048835,
+          "deltaPer10k": 5.574757498048835,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "implemented",
+        "score": 0.8776220011671967,
+        "meta": {
+          "z": 0.9357352616277504,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.2299029992195343,
+          "deltaPer10k": 2.2299029992195343,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "artificial",
+        "score": 0.8683303457599467,
+        "meta": {
+          "z": 1.0639257533727557,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.3448544988293007,
+          "deltaPer10k": 3.3448544988293007,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "intelligence",
+        "score": 0.8683303457599467,
+        "meta": {
+          "z": 1.0639257533727557,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.3448544988293007,
+          "deltaPer10k": 3.3448544988293007,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "independent",
+        "score": 0.8507322339539255,
+        "meta": {
+          "z": 1.4576430712123543,
+          "countPrev": 7,
+          "countCurr": 14,
+          "per10kPrev": 7.933809361895047,
+          "per10kCurr": 15.609320994536738,
+          "deltaPer10k": 7.67551163264169,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "commercial aviation",
+        "score": 0.8109192568119221,
+        "meta": {
+          "z": 1.7233728213009896,
+          "countPrev": 2,
+          "countCurr": 8,
+          "per10kPrev": 2.266802674827156,
+          "per10kCurr": 8.919611996878137,
+          "deltaPer10k": 6.652809322050981,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "independent companies",
+        "score": 0.7984542929340963,
+        "meta": {
+          "z": 1.6968821691366818,
+          "countPrev": 4,
+          "countCurr": 11,
+          "per10kPrev": 4.533605349654312,
+          "per10kCurr": 12.264466495707437,
+          "deltaPer10k": 7.730861146053124,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "classified",
+        "score": 0.7637067912805027,
+        "meta": {
+          "z": 0.9357352616277504,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.2299029992195343,
+          "deltaPer10k": 2.2299029992195343,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "cyberattacks",
+        "score": 0.7637067912805027,
+        "meta": {
+          "z": 0.9357352616277504,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.2299029992195343,
+          "deltaPer10k": 2.2299029992195343,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "deployment",
+        "score": 0.7637067912805027,
+        "meta": {
+          "z": 0.9357352616277504,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.2299029992195343,
+          "deltaPer10k": 2.2299029992195343,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "COVID-19",
+        "score": -1.3006489884270993,
+        "meta": {
+          "z": -2.22852962470774,
+          "countPrev": 14,
+          "countCurr": 4,
+          "per10kPrev": 15.867618723790095,
+          "per10kCurr": 4.4598059984390686,
+          "deltaPer10k": -11.407812725351025,
+          "distinctive": true,
+          "includes": [
+            "covid"
+          ]
+        }
+      },
+      {
+        "label": "aercap healthcare",
+        "score": -1.0653694199890185,
+        "meta": {
+          "z": -1.1654238929206013,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 4.533605349654312,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.533605349654312,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "aercap",
+        "score": -1.0092103073650014,
+        "meta": {
+          "z": -1.236539574849426,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 5.667006687067891,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.667006687067891,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "lockdowns",
+        "score": -0.8869255163052219,
+        "meta": {
+          "z": -0.9456548251302147,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.266802674827156,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.266802674827156,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "virus",
+        "score": -0.8869255163052219,
+        "meta": {
+          "z": -0.9456548251302147,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.266802674827156,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.266802674827156,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "decarbonization",
+        "score": -0.7986172975088641,
+        "meta": {
+          "z": -1.36834943335082,
+          "countPrev": 9,
+          "countCurr": 4,
+          "per10kPrev": 10.200612036722204,
+          "per10kCurr": 4.4598059984390686,
+          "deltaPer10k": -5.740806038283135,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "stakes",
+        "score": -0.7718027114878827,
+        "meta": {
+          "z": -0.9456548251302147,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.266802674827156,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.266802674827156,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "variants",
+        "score": -0.7718027114878827,
+        "meta": {
+          "z": -0.9456548251302147,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.266802674827156,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.266802674827156,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "sales dispositions",
+        "score": -0.7115669410821731,
+        "meta": {
+          "z": -0.9456548251302147,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.266802674827156,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.266802674827156,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "separate public",
+        "score": -0.7115669410821731,
+        "meta": {
+          "z": -0.9456548251302147,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.266802674827156,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.266802674827156,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "resurgences",
+        "score": -0.660023231474643,
+        "meta": {
+          "z": -0.9456548251302147,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.266802674827156,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.266802674827156,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "separate",
+        "score": -0.6363126908119305,
+        "meta": {
+          "z": -0.9116833130456409,
+          "countPrev": 7,
+          "countCurr": 4,
+          "per10kPrev": 7.933809361895047,
+          "per10kCurr": 4.4598059984390686,
+          "deltaPer10k": -3.474003363455979,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "taken",
+        "score": -0.5875767720054185,
+        "meta": {
+          "z": -1.2405413850698128,
+          "countPrev": 4,
+          "countCurr": 1,
+          "per10kPrev": 4.533605349654312,
+          "per10kCurr": 1.1149514996097671,
+          "deltaPer10k": -3.418653850044545,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "covid pandemic",
+        "score": -0.5842036063855837,
+        "meta": {
+          "z": -1.2415547033734398,
+          "countPrev": 7,
+          "countCurr": 3,
+          "per10kPrev": 7.933809361895047,
+          "per10kCurr": 3.3448544988293007,
+          "deltaPer10k": -4.588954863065746,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "separate companies",
+        "score": -0.573161420208419,
+        "meta": {
+          "z": -0.9482432047925601,
+          "countPrev": 3,
+          "countCurr": 1,
+          "per10kPrev": 3.4002040122407347,
+          "per10kCurr": 1.1149514996097671,
+          "deltaPer10k": -2.2852525126309677,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_risers_alt": [
+      {
+        "label": "commercial aviation",
+        "score": 1.7200694851856864,
+        "meta": {}
+      },
+      {
+        "label": "separation aerospace",
+        "score": 1.7137979277583435,
+        "meta": {}
+      },
+      {
+        "label": "Artificial intelligence",
+        "score": 1.0818051703517284,
+        "meta": {}
+      },
+      {
+        "label": "new technologies",
+        "score": 1.7106832468907616,
+        "meta": {}
+      },
+      {
+        "label": "results operations financial",
+        "score": 1.0336157944943505,
+        "meta": {}
+      },
+      {
+        "label": "product service",
+        "score": 0.49763480942849636,
+        "meta": {}
+      },
+      {
+        "label": "Geopolitical tensions",
+        "score": 1.180098178474294,
+        "meta": {}
+      },
+      {
+        "label": "machine learning",
+        "score": 1.180098178474294,
+        "meta": {}
+      },
+      {
+        "label": "economic conditions",
+        "score": 0.29594384085169745,
+        "meta": {}
+      },
+      {
+        "label": "addition suppliers",
+        "score": 0.24261583353845317,
+        "meta": {}
+      },
+      {
+        "label": "results operations cash",
+        "score": 0.0904257428661257,
+        "meta": {}
+      },
+      {
+        "label": "products services",
+        "score": 0.03573628305036469,
+        "meta": {}
+      },
+      {
+        "label": "Supply chain",
+        "score": 0.046254222249996424,
+        "meta": {}
+      }
+    ],
+    "top_fallers_alt": [
+      {
+        "label": "energy businesses",
+        "score": -1.732528536071281,
+        "meta": {}
+      },
+      {
+        "label": "ability meet",
+        "score": -0.9417433106637878,
+        "meta": {}
+      },
+      {
+        "label": "future adverse",
+        "score": -1.729371634269521,
+        "meta": {}
+      },
+      {
+        "label": "healthcare separation",
+        "score": -1.729371634269521,
+        "meta": {}
+      },
+      {
+        "label": "products meet",
+        "score": -1.729371634269521,
+        "meta": {}
+      },
+      {
+        "label": "financial risks",
+        "score": -1.0523426412710313,
+        "meta": {}
+      },
+      {
+        "label": "market new",
+        "score": -0.9385517435185848,
+        "meta": {}
+      },
+      {
+        "label": "meet cash",
+        "score": -0.9385517435185848,
+        "meta": {}
+      },
+      {
+        "label": "risks form",
+        "score": -0.9385517435185848,
+        "meta": {}
+      },
+      {
+        "label": "financial markets",
+        "score": -0.18557188853802797,
+        "meta": {}
+      },
+      {
+        "label": "new product",
+        "score": -0.1678610569735528,
+        "meta": {}
+      },
+      {
+        "label": "Interest rates",
+        "score": -0.08581618813833858,
+        "meta": {}
+      },
+      {
+        "label": "Intellectual property",
+        "score": -0.010807492220572756,
+        "meta": {}
+      },
+      {
+        "label": "Climate change",
+        "score": -0.009735647390687774,
+        "meta": {}
+      },
+      {
+        "label": "credit risk",
+        "score": -0.009641777708415677,
+        "meta": {}
+      }
+    ],
+    "summary_alt": "Adds emphasis on commercial aviation, separation aerospace, Artificial intelligence; de-emphasizes energy businesses, ability meet, future adverse."
+  },
+  "evidence": [
+    {
+      "year": 2023,
+      "paragraph_idx": 1,
+      "snippet": "STRATEGIC RISKS. Strategic risk relates to the Company's future business plans and strategies, including the risks associated with: our planned separation of GE Aerospace and GE Vernova into independent companies; the global macro-environment and conditions in our sectors; the global energy transition; competitive threats; the demand for our products and services and the success of our",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "vernova",
+        "aerospace"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 3,
+      "snippet": "Strategic plan - We may encounter challenges to executing our plan to separate GE Aerospace and GE Vernova into independent companies, or to completing the plan within the timeframes we anticipate, and we may not realize some or all of the expected benefits of the separations.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "vernova",
+        "aerospace"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 3,
+      "snippet": "In November 2021, we announced our plan to form three independent public companies from our (i) Aerospace business, (ii) HealthCare business and (iii) portfolio of energy businesses that we plan to combine as GE Vernova (Renewable Energy, Power, Digital and Energy Financial Services), to better position those businesses to deliver long-term growth and create value for customers, investors, and employees.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "vernova",
+        "aerospace"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 4,
+      "snippet": "The GE HealthCare business separation was, and the planned GE Vernova business separation is expected to be, effected through spin-offs by GE that are intended to be tax-free for the Company and its shareholders for U.S. federal income tax purposes and with all three resulting companies having investment grade credit ratings.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "vernova"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.0313,
+    "confidence": 1.0,
+    "coverage": 0.6218547314437726,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T05:02:58Z",
+    "git_commit": "77553f23af39ca9ca4d7337e78fce9b3d4e9594f",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "42d8ebb6d652853c7670c439b184bcafda4d618c864b160b0108689dc556a013",
+      "curr_text_sha256": "5316845cf41d84fa8b9f0f3527a56617073d663d9b0729619a1016cb691a3c8b",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

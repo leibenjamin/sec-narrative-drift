@@ -1,0 +1,73 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_minhash_boilerplate_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "WM",
+  "section": "10k_item1a",
+  "year_from": 2022,
+  "year_to": 2023,
+  "artifacts": {
+    "stats": {
+      "percent_reused": 0.08333333333333333,
+      "percent_new": 0.9166666666666666,
+      "reused_paragraphs": 10,
+      "total_paragraphs": 120
+    }
+  },
+  "evidence": [
+    {
+      "year": 2023,
+      "paragraph_idx": 36,
+      "snippet": "Some or all of the expected benefits of our sustainability-related investments and initiatives may not occur within the anticipated time periods or may cost more to achieve than anticipated.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 35,
+      "snippet": "Some or all of the expected benefits of our sustainability-related investments and initiatives may not occur within the anticipated time periods, or may cost more to achieve than anticipated.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 82,
+      "snippet": "We use computers, mobile devices, social networking and other online platforms to connect with our employees, customers, vendors, as well as other",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 74,
+      "snippet": "We use computers, mobile devices, social networking and other online platforms to connect with our employees, customers, and vendors.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 88,
+      "snippet": "Increased state, federal and international laws and regulations related to cybersecurity protections and disclosures will require additional resources for compliance, and any inability, or perceived inability, to adequately address new requirements could subject us to regulatory enforcement, private litigation, public criticism, disrupt our operations, cause us to lose customers, result in additional costs and legal liability, damage our reputation, and otherwise harm our business.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 82,
+      "snippet": "Increased state, federal and international laws and regulations related to cybersecurity protections and disclosures may require additional resources for compliance, and any inability, or perceived inability, to adequately address new requirements could subject us to regulatory enforcement, private litigation, and public criticism, disrupt our operations, cause us to lose customers, result in additional costs and legal liability, damage our reputation, and otherwise harm our business.",
+      "why": "Matching paragraph from prior year."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.9166666666666666,
+    "confidence": 1.0,
+    "coverage": 0.37740696494405696,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T05:02:55Z",
+    "git_commit": "77553f23af39ca9ca4d7337e78fce9b3d4e9594f",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "390613f8861992077c72559861b6a2a490e8f112445fb200b475d147f16de653",
+      "curr_text_sha256": "1aaddb195acb15820f16fc5ace1129d80964c3d455101fc8a04f6d97bc9df5cc",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

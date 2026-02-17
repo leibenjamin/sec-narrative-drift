@@ -1,0 +1,156 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_jsd_ngrams_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "WM",
+  "section": "10k_item1a",
+  "year_from": 2020,
+  "year_to": 2021,
+  "artifacts": {
+    "ranked_items": [
+      {
+        "label": "labor",
+        "score": 0.0011507479861910242
+      },
+      {
+        "label": "pace",
+        "score": 0.0006904487917146145
+      },
+      {
+        "label": "disposal",
+        "score": 0.000680710940919492
+      },
+      {
+        "label": "reporting",
+        "score": 0.0006064281382656155
+      },
+      {
+        "label": "financial reporting",
+        "score": 0.0006064281382656155
+      },
+      {
+        "label": "inflationary",
+        "score": 0.0005753739930955121
+      },
+      {
+        "label": "inflation",
+        "score": 0.0005753739930955121
+      },
+      {
+        "label": "macroeconomic",
+        "score": 0.0005753739930955121
+      },
+      {
+        "label": "pressures",
+        "score": 0.0005459936110782527
+      },
+      {
+        "label": "control",
+        "score": 0.000529445055283493
+      },
+      {
+        "label": "internal",
+        "score": 0.0005053781012304681
+      },
+      {
+        "label": "control financial",
+        "score": 0.000505356781888013
+      },
+      {
+        "label": "integrating",
+        "score": 0.000505356781888013
+      },
+      {
+        "label": "hcm",
+        "score": 0.00046029919447640965
+      },
+      {
+        "label": "labor market",
+        "score": 0.00046029919447640965
+      },
+      {
+        "label": "vaccine",
+        "score": 0.00046029919447640965
+      },
+      {
+        "label": "pace inflation",
+        "score": 0.00046029919447640965
+      },
+      {
+        "label": "erp hcm",
+        "score": 0.00046029919447640965
+      },
+      {
+        "label": "advanced",
+        "score": 0.00045473071935023517
+      },
+      {
+        "label": "advanced disposal",
+        "score": 0.00045473071935023517
+      }
+    ],
+    "stats": {
+      "jsd": 0.310197,
+      "tokens_prev": 2474,
+      "tokens_curr": 2173
+    }
+  },
+  "evidence": [
+    {
+      "year": 2021,
+      "paragraph_idx": 2,
+      "snippet": "However, uncertainty remains with respect to various factors that influence the pace of economic recovery, including the risks discussed below and the potential for future resurgence in transmission of COVID-19 and related business closures due to virus variants or otherwise.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "pace"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 5,
+      "snippet": "As we complete the integration of our prior acquisition of Advanced Disposal Services, Inc. (\u201cAdvanced Disposal\u201d), we may not continue to realize the strategic benefits and cost synergies anticipated.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "disposal"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 3,
+      "snippet": "We may not realize the strategic benefits and cost synergies that are anticipated from our acquisition of Advanced Disposal Services, Inc. (\u201cAdvanced Disposal\u201d), and we may encounter difficulties integrating Advanced Disposal\u2019s operations and systems that could impact the effectiveness of our internal controls over financial reporting.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "disposal",
+        "reporting",
+        "financial reporting"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 4,
+      "snippet": "The benefits that are expected to result from our acquisition of Advanced Disposal will depend, in part, on our ability to successfully integrate Advanced Disposal\u2019s operations and systems and realize anticipated cost synergies.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "disposal"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.310197,
+    "confidence": 1.0,
+    "coverage": 0.3731478853250071,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T05:02:54Z",
+    "git_commit": "77553f23af39ca9ca4d7337e78fce9b3d4e9594f",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "d09fa3665988ef7a7fade6ad0c0432d7938bf2653b8aaa2db9a2948f0e74e013",
+      "curr_text_sha256": "feebfde0925c43b08192e3e8b3f332e28ce1dd6de7576d245050e91a7f64b400",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

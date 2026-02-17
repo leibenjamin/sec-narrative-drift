@@ -1,0 +1,154 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_jsd_ngrams_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "KO",
+  "section": "10k_item1a",
+  "year_from": 2020,
+  "year_to": 2021,
+  "artifacts": {
+    "ranked_items": [
+      {
+        "label": "esg",
+        "score": 0.0005289326139849783
+      },
+      {
+        "label": "associates",
+        "score": 0.0004916420845624386
+      },
+      {
+        "label": "place",
+        "score": 0.00038238828799300775
+      },
+      {
+        "label": "brands bottling",
+        "score": 0.0003702528297894848
+      },
+      {
+        "label": "concentrate",
+        "score": 0.00032776138970829236
+      },
+      {
+        "label": "taken",
+        "score": 0.000248016669064114
+      },
+      {
+        "label": "crisis",
+        "score": 0.00021850759313886157
+      },
+      {
+        "label": "shelter place",
+        "score": 0.00021850759313886157
+      },
+      {
+        "label": "shelter",
+        "score": 0.00021850759313886157
+      },
+      {
+        "label": "total",
+        "score": 0.00021850759313886157
+      },
+      {
+        "label": "reorganization",
+        "score": 0.00021850759313886157
+      },
+      {
+        "label": "alcoholic",
+        "score": 0.00021850759313886157
+      },
+      {
+        "label": "charges",
+        "score": 0.00021850759313886157
+      },
+      {
+        "label": "month",
+        "score": 0.0002115730455939913
+      },
+      {
+        "label": "adequate",
+        "score": 0.0002115730455939913
+      },
+      {
+        "label": "cybersecurity",
+        "score": 0.00017884058493732337
+      },
+      {
+        "label": "taken future",
+        "score": 0.00016388069485414618
+      },
+      {
+        "label": "operations businesses",
+        "score": 0.00016388069485414618
+      },
+      {
+        "label": "associates agents",
+        "score": 0.00016388069485414618
+      },
+      {
+        "label": "segments",
+        "score": 0.00016388069485414618
+      }
+    ],
+    "stats": {
+      "jsd": 0.16075,
+      "tokens_prev": 4577,
+      "tokens_curr": 4727
+    }
+  },
+  "evidence": [
+    {
+      "year": 2021,
+      "paragraph_idx": 8,
+      "snippet": "We and our bottling partners have experienced temporary disruptions in certain of our operations; delays in delivery of concentrates, ingredients, packaging and equipment; temporary plant closures; production slowdowns; and difficulty or delays in sourcing key ingredients and beverage containers.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "concentrate"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 33,
+      "snippet": "We and our bottling partners use various ingredients in our business, including HFCS, sucrose, aspartame, acesulfame potassium, sucralose, saccharin, cyclamate, steviol glycosides, ascorbic acid, citric acid, phosphoric acid, caffeine and caramel color; other raw materials such as coffee, orange and other fruit juice and juice concentrates; packaging materials such as PET, bio-based PET and recycled PET for bottles; and aluminum cans and other containers.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "concentrate"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 4,
+      "snippet": "In particular, sales of our products in the away-from-home channels have been significantly negatively affected by shelter-in-place regulations or recommendations, closings of restaurants and cancellations of major sporting and other events that were imposed as a result of the initial COVID-19 outbreak.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "place"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 8,
+      "snippet": "experience, in the away-from-home channels while shelter-in-place and social distancing mandates or recommendations are in effect.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "place"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.16075,
+    "confidence": 1.0,
+    "coverage": 0.6695838837516512,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T05:02:52Z",
+    "git_commit": "77553f23af39ca9ca4d7337e78fce9b3d4e9594f",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "5b2e73706f009be79c12a24e3160b4480898609cb5b6c7b2c20be75d2854796a",
+      "curr_text_sha256": "0fac1e3d2bc2d8f5c69332b090a63e1cef7164b20263237cf14b772dc47bdf4a",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

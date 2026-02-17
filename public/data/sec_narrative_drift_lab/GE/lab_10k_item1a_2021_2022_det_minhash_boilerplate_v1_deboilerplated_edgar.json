@@ -1,0 +1,73 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_minhash_boilerplate_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "GE",
+  "section": "10k_item1a",
+  "year_from": 2021,
+  "year_to": 2022,
+  "artifacts": {
+    "stats": {
+      "percent_reused": 0.15436241610738255,
+      "percent_new": 0.8456375838926175,
+      "reused_paragraphs": 23,
+      "total_paragraphs": 149
+    }
+  },
+  "evidence": [
+    {
+      "year": 2022,
+      "paragraph_idx": 20,
+      "snippet": "We operate in virtually every part of the world, serve customers in over 170 countries and received 57% of our revenues for 2022 from outside the United States.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 28,
+      "snippet": "We operate in virtually every part of the world, serve customers in over 175 countries and received 56% of our revenues for 2021 from outside the United States.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 59,
+      "snippet": "Our businesses are also subject to technological change and advances, such as growth in industrial automation and increased digitization of the operations, infrastructure and solutions that customers demand across all the industries we serve.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 48,
+      "snippet": "Our businesses are subject to technological change and advances, such as growth in industrial automation and increased digitization of the operations, infrastructure and solutions that customers demand across all the industries we serve.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 61,
+      "snippet": "In addition, the research and development cycle involved in bringing products in our businesses to market is often lengthy, it is inherently difficult to predict the economic conditions or competitive dynamics that will exist when any new product is complete, and our investments, to the extent they result in bringing a product to market, may generate weaker returns than we anticipated at the outset.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 50,
+      "snippet": "In addition, the research and development cycle involved in bringing products in our businesses to market is often lengthy, it is inherently difficult to predict the economic conditions and competitive dynamics that will exist when any new product is complete, and our investments, to the extent they result in bringing a product to market, may generate weaker returns than we anticipated at the outset.",
+      "why": "Matching paragraph from prior year."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.8456375838926175,
+    "confidence": 1.0,
+    "coverage": 0.5806815025155098,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T05:02:57Z",
+    "git_commit": "77553f23af39ca9ca4d7337e78fce9b3d4e9594f",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "39716dffaae473350e80e09f321b76951c9c602d4391181bd1a330004eee0831",
+      "curr_text_sha256": "5fb20269a1106017107f38feb7ef37fd66c4e4c24ac56efef9351f454fc2ed94",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

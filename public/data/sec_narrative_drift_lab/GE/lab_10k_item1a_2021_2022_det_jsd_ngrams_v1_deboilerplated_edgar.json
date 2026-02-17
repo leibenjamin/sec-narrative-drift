@@ -1,0 +1,160 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_jsd_ngrams_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "GE",
+  "section": "10k_item1a",
+  "year_from": 2021,
+  "year_to": 2022,
+  "artifacts": {
+    "ranked_items": [
+      {
+        "label": "vernova",
+        "score": 0.0009658725048293626
+      },
+      {
+        "label": "ge vernova",
+        "score": 0.0009658725048293626
+      },
+      {
+        "label": "ge healthcare",
+        "score": 0.0009658725048293626
+      },
+      {
+        "label": "ge",
+        "score": 0.0006954986265922381
+      },
+      {
+        "label": "aerospace",
+        "score": 0.000643915003219575
+      },
+      {
+        "label": "vernova separation",
+        "score": 0.00051513200257566
+      },
+      {
+        "label": "transactions",
+        "score": 0.00043804979738756096
+      },
+      {
+        "label": "aerospace business",
+        "score": 0.000386349001931745
+      },
+      {
+        "label": "separation transaction",
+        "score": 0.000386349001931745
+      },
+      {
+        "label": "separation transactions",
+        "score": 0.00035620510510793576
+      },
+      {
+        "label": "skilled labor",
+        "score": 0.0003219575016097875
+      },
+      {
+        "label": "aircraft",
+        "score": 0.00025756600128783
+      },
+      {
+        "label": "ability meet",
+        "score": 0.00025756600128783
+      },
+      {
+        "label": "flows results",
+        "score": 0.00025756600128783
+      },
+      {
+        "label": "aercap ge",
+        "score": 0.00025756600128783
+      },
+      {
+        "label": "hughes",
+        "score": 0.0002463458696009197
+      },
+      {
+        "label": "baker",
+        "score": 0.0002463458696009197
+      },
+      {
+        "label": "transactions completed",
+        "score": 0.0002463458696009197
+      },
+      {
+        "label": "baker hughes",
+        "score": 0.0002463458696009197
+      },
+      {
+        "label": "meet",
+        "score": 0.00024549909635160404
+      }
+    ],
+    "stats": {
+      "jsd": 0.177711,
+      "tokens_prev": 3045,
+      "tokens_curr": 3883
+    }
+  },
+  "evidence": [
+    {
+      "year": 2022,
+      "paragraph_idx": 0,
+      "snippet": "In November 2021, we announced our plan to form three independent public companies from our (i) Aerospace business, (ii) HealthCare business and (iii) portfolio of energy businesses that we plan to combine as GE Vernova (Renewable Energy, Power, Digital and Energy Financial Services), to better position those businesses to deliver long-term growth and create value for customers, investors, and employees.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "vernova",
+        "ge vernova",
+        "ge",
+        "aerospace"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 1,
+      "snippet": "The GE HealthCare business separation was, and the planned GE Vernova business separation is expected to be, effected through spin-offs by GE that are intended to be tax-free for the Company and its shareholders for U.S. federal income tax purposes and with all three resulting companies having investment grade credit ratings.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "vernova",
+        "ge vernova",
+        "ge healthcare",
+        "ge"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 1,
+      "snippet": "The planned business separations are expected to be effected through spin-offs by GE that are intended to be tax-free for the Company\u2019s shareholders for U.S. federal income tax purposes.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "ge"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 2,
+      "snippet": "These separation transactions will be subject to the satisfaction of a number of customary conditions, including, among others, final approvals by GE\u2019s Board of Directors, receipt of tax rulings in certain jurisdictions and/or tax opinions from external counsel, the filing with the SEC and effectiveness of Form 10 registration statements, and satisfactory completion of financing.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "ge"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.177711,
+    "confidence": 1.0,
+    "coverage": 0.5806815025155098,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T05:02:57Z",
+    "git_commit": "77553f23af39ca9ca4d7337e78fce9b3d4e9594f",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "39716dffaae473350e80e09f321b76951c9c602d4391181bd1a330004eee0831",
+      "curr_text_sha256": "5fb20269a1106017107f38feb7ef37fd66c4e4c24ac56efef9351f454fc2ed94",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

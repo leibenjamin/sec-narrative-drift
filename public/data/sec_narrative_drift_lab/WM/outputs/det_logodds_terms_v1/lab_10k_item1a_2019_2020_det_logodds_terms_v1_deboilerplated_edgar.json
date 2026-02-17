@@ -1,0 +1,1023 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_logodds_terms_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "WM",
+  "section": "10k_item1a",
+  "year_from": 2019,
+  "year_to": 2020,
+  "artifacts": {
+    "top_risers": [
+      {
+        "label": "financial reporting",
+        "score": 1.1168062258545781,
+        "meta": {
+          "z": 1.484207788811375,
+          "countPrev": 0,
+          "countCurr": 12,
+          "per10kPrev": 0.0,
+          "per10kCurr": 11.793611793611793,
+          "deltaPer10k": 11.793611793611793,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "COVID-19",
+        "score": 0.9953460268479238,
+        "meta": {
+          "z": 1.4260918829477425,
+          "countPrev": 0,
+          "countCurr": 10,
+          "per10kPrev": 0.0,
+          "per10kCurr": 9.828009828009828,
+          "deltaPer10k": 9.828009828009828,
+          "distinctive": false,
+          "includes": [
+            "covid"
+          ]
+        }
+      },
+      {
+        "label": "effectiveness",
+        "score": 0.9256112261968098,
+        "meta": {
+          "z": 1.1341094158120875,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.9312039312039313,
+          "deltaPer10k": 3.9312039312039313,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "effectiveness internal",
+        "score": 0.8533713850090872,
+        "meta": {
+          "z": 1.1341094158120875,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.9312039312039313,
+          "deltaPer10k": 3.9312039312039313,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "basel",
+        "score": 0.7465374042283098,
+        "meta": {
+          "z": 0.914698391105316,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.9656019656019657,
+          "deltaPer10k": 1.9656019656019657,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "conclude",
+        "score": 0.7465374042283098,
+        "meta": {
+          "z": 0.914698391105316,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.9656019656019657,
+          "deltaPer10k": 1.9656019656019657,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "convention",
+        "score": 0.7465374042283098,
+        "meta": {
+          "z": 0.914698391105316,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.9656019656019657,
+          "deltaPer10k": 1.9656019656019657,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "distancing",
+        "score": 0.7465374042283098,
+        "meta": {
+          "z": 0.914698391105316,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.9656019656019657,
+          "deltaPer10k": 1.9656019656019657,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "staff",
+        "score": 0.7465374042283098,
+        "meta": {
+          "z": 0.914698391105316,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.9656019656019657,
+          "deltaPer10k": 1.9656019656019657,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "basel convention",
+        "score": 0.6882734787314934,
+        "meta": {
+          "z": 0.914698391105316,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.9656019656019657,
+          "deltaPer10k": 1.9656019656019657,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "conclude internal",
+        "score": 0.6882734787314934,
+        "meta": {
+          "z": 0.914698391105316,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.9656019656019657,
+          "deltaPer10k": 1.9656019656019657,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "difficulties integrating",
+        "score": 0.6882734787314934,
+        "meta": {
+          "z": 0.914698391105316,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.9656019656019657,
+          "deltaPer10k": 1.9656019656019657,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "internal",
+        "score": 0.6754619194896169,
+        "meta": {
+          "z": 1.4260918829477425,
+          "countPrev": 0,
+          "countCurr": 10,
+          "per10kPrev": 0.0,
+          "per10kCurr": 9.828009828009828,
+          "deltaPer10k": 9.828009828009828,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "controls",
+        "score": 0.6619065091562734,
+        "meta": {
+          "z": 1.1341094158120875,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.9312039312039313,
+          "deltaPer10k": 3.9312039312039313,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "Pandemic",
+        "score": 0.641767160690324,
+        "meta": {
+          "z": 1.3549526808179442,
+          "countPrev": 0,
+          "countCurr": 8,
+          "per10kPrev": 0.0,
+          "per10kCurr": 7.862407862407863,
+          "deltaPer10k": 7.862407862407863,
+          "distinctive": false,
+          "includes": [
+            "pandemic"
+          ]
+        }
+      }
+    ],
+    "top_fallers": [
+      {
+        "label": "planned acquisition",
+        "score": -1.2480208421006767,
+        "meta": {
+          "z": -1.3652290754337684,
+          "countPrev": 7,
+          "countCurr": 0,
+          "per10kPrev": 7.496251874062969,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -7.496251874062969,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "redemption",
+        "score": -1.1797283801662437,
+        "meta": {
+          "z": -1.2578461376268923,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 5.354465624330691,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.354465624330691,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "merger",
+        "score": -1.1129843480370263,
+        "meta": {
+          "z": -1.1866825338390858,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 4.283572499464554,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.283572499464554,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "completed",
+        "score": -1.0270883034784724,
+        "meta": {
+          "z": -1.0950987339561167,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 3.212679374598415,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.212679374598415,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "feature",
+        "score": -1.0270883034784724,
+        "meta": {
+          "z": -1.0950987339561167,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 3.212679374598415,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.212679374598415,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "aggregate",
+        "score": -0.906645087303199,
+        "meta": {
+          "z": -0.9666801616674009,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.141786249732277,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.141786249732277,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "principal",
+        "score": -0.906645087303199,
+        "meta": {
+          "z": -0.9666801616674009,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.141786249732277,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.141786249732277,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "pursuant",
+        "score": -0.906645087303199,
+        "meta": {
+          "z": -0.9666801616674009,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.141786249732277,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.141786249732277,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "redeem",
+        "score": -0.906645087303199,
+        "meta": {
+          "z": -0.9666801616674009,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.141786249732277,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.141786249732277,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "series",
+        "score": -0.906645087303199,
+        "meta": {
+          "z": -0.9666801616674009,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.141786249732277,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.141786249732277,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "trading",
+        "score": -0.906645087303199,
+        "meta": {
+          "z": -0.9666801616674009,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.141786249732277,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.141786249732277,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "agreement",
+        "score": -0.8937723889875949,
+        "meta": {
+          "z": -1.0950987339561167,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 3.212679374598415,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.212679374598415,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "unexpected",
+        "score": -0.7889626849984193,
+        "meta": {
+          "z": -0.9666801616674009,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.141786249732277,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.141786249732277,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "import recyclables",
+        "score": -0.7596594182553039,
+        "meta": {
+          "z": -1.009568535092724,
+          "countPrev": 3,
+          "countCurr": 1,
+          "per10kPrev": 3.212679374598415,
+          "per10kCurr": 0.9828009828009828,
+          "deltaPer10k": -2.229878391797432,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "planned",
+        "score": -0.7012389756149618,
+        "meta": {
+          "z": -1.9026127572897067,
+          "countPrev": 7,
+          "countCurr": 1,
+          "per10kPrev": 7.496251874062969,
+          "per10kCurr": 0.9828009828009828,
+          "deltaPer10k": -6.513450891261986,
+          "distinctive": false
+        }
+      }
+    ],
+    "summary": "Adds emphasis on financial reporting, COVID-19, effectiveness; de-emphasizes planned acquisition, redemption, merger.",
+    "ranked_items": [
+      {
+        "label": "financial reporting",
+        "score": 1.1168062258545781,
+        "meta": {
+          "z": 1.484207788811375,
+          "countPrev": 0,
+          "countCurr": 12,
+          "per10kPrev": 0.0,
+          "per10kCurr": 11.793611793611793,
+          "deltaPer10k": 11.793611793611793,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "COVID-19",
+        "score": 0.9953460268479238,
+        "meta": {
+          "z": 1.4260918829477425,
+          "countPrev": 0,
+          "countCurr": 10,
+          "per10kPrev": 0.0,
+          "per10kCurr": 9.828009828009828,
+          "deltaPer10k": 9.828009828009828,
+          "distinctive": false,
+          "includes": [
+            "covid"
+          ]
+        }
+      },
+      {
+        "label": "effectiveness",
+        "score": 0.9256112261968098,
+        "meta": {
+          "z": 1.1341094158120875,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.9312039312039313,
+          "deltaPer10k": 3.9312039312039313,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "effectiveness internal",
+        "score": 0.8533713850090872,
+        "meta": {
+          "z": 1.1341094158120875,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.9312039312039313,
+          "deltaPer10k": 3.9312039312039313,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "basel",
+        "score": 0.7465374042283098,
+        "meta": {
+          "z": 0.914698391105316,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.9656019656019657,
+          "deltaPer10k": 1.9656019656019657,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "conclude",
+        "score": 0.7465374042283098,
+        "meta": {
+          "z": 0.914698391105316,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.9656019656019657,
+          "deltaPer10k": 1.9656019656019657,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "convention",
+        "score": 0.7465374042283098,
+        "meta": {
+          "z": 0.914698391105316,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.9656019656019657,
+          "deltaPer10k": 1.9656019656019657,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "distancing",
+        "score": 0.7465374042283098,
+        "meta": {
+          "z": 0.914698391105316,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.9656019656019657,
+          "deltaPer10k": 1.9656019656019657,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "staff",
+        "score": 0.7465374042283098,
+        "meta": {
+          "z": 0.914698391105316,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.9656019656019657,
+          "deltaPer10k": 1.9656019656019657,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "basel convention",
+        "score": 0.6882734787314934,
+        "meta": {
+          "z": 0.914698391105316,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.9656019656019657,
+          "deltaPer10k": 1.9656019656019657,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "conclude internal",
+        "score": 0.6882734787314934,
+        "meta": {
+          "z": 0.914698391105316,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.9656019656019657,
+          "deltaPer10k": 1.9656019656019657,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "difficulties integrating",
+        "score": 0.6882734787314934,
+        "meta": {
+          "z": 0.914698391105316,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.9656019656019657,
+          "deltaPer10k": 1.9656019656019657,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "internal",
+        "score": 0.6754619194896169,
+        "meta": {
+          "z": 1.4260918829477425,
+          "countPrev": 0,
+          "countCurr": 10,
+          "per10kPrev": 0.0,
+          "per10kCurr": 9.828009828009828,
+          "deltaPer10k": 9.828009828009828,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "controls",
+        "score": 0.6619065091562734,
+        "meta": {
+          "z": 1.1341094158120875,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.9312039312039313,
+          "deltaPer10k": 3.9312039312039313,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "Pandemic",
+        "score": 0.641767160690324,
+        "meta": {
+          "z": 1.3549526808179442,
+          "countPrev": 0,
+          "countCurr": 8,
+          "per10kPrev": 0.0,
+          "per10kCurr": 7.862407862407863,
+          "deltaPer10k": 7.862407862407863,
+          "distinctive": false,
+          "includes": [
+            "pandemic"
+          ]
+        }
+      },
+      {
+        "label": "planned acquisition",
+        "score": -1.2480208421006767,
+        "meta": {
+          "z": -1.3652290754337684,
+          "countPrev": 7,
+          "countCurr": 0,
+          "per10kPrev": 7.496251874062969,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -7.496251874062969,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "redemption",
+        "score": -1.1797283801662437,
+        "meta": {
+          "z": -1.2578461376268923,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 5.354465624330691,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.354465624330691,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "merger",
+        "score": -1.1129843480370263,
+        "meta": {
+          "z": -1.1866825338390858,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 4.283572499464554,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.283572499464554,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "completed",
+        "score": -1.0270883034784724,
+        "meta": {
+          "z": -1.0950987339561167,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 3.212679374598415,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.212679374598415,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "feature",
+        "score": -1.0270883034784724,
+        "meta": {
+          "z": -1.0950987339561167,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 3.212679374598415,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.212679374598415,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "aggregate",
+        "score": -0.906645087303199,
+        "meta": {
+          "z": -0.9666801616674009,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.141786249732277,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.141786249732277,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "principal",
+        "score": -0.906645087303199,
+        "meta": {
+          "z": -0.9666801616674009,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.141786249732277,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.141786249732277,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "pursuant",
+        "score": -0.906645087303199,
+        "meta": {
+          "z": -0.9666801616674009,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.141786249732277,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.141786249732277,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "redeem",
+        "score": -0.906645087303199,
+        "meta": {
+          "z": -0.9666801616674009,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.141786249732277,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.141786249732277,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "series",
+        "score": -0.906645087303199,
+        "meta": {
+          "z": -0.9666801616674009,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.141786249732277,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.141786249732277,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "trading",
+        "score": -0.906645087303199,
+        "meta": {
+          "z": -0.9666801616674009,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.141786249732277,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.141786249732277,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "agreement",
+        "score": -0.8937723889875949,
+        "meta": {
+          "z": -1.0950987339561167,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 3.212679374598415,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.212679374598415,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "unexpected",
+        "score": -0.7889626849984193,
+        "meta": {
+          "z": -0.9666801616674009,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 2.141786249732277,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.141786249732277,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "import recyclables",
+        "score": -0.7596594182553039,
+        "meta": {
+          "z": -1.009568535092724,
+          "countPrev": 3,
+          "countCurr": 1,
+          "per10kPrev": 3.212679374598415,
+          "per10kCurr": 0.9828009828009828,
+          "deltaPer10k": -2.229878391797432,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "planned",
+        "score": -0.7012389756149618,
+        "meta": {
+          "z": -1.9026127572897067,
+          "countPrev": 7,
+          "countCurr": 1,
+          "per10kPrev": 7.496251874062969,
+          "per10kCurr": 0.9828009828009828,
+          "deltaPer10k": -6.513450891261986,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_risers_alt": [
+      {
+        "label": "financial reporting",
+        "score": 1.2792092757925335,
+        "meta": {}
+      },
+      {
+        "label": "control financial",
+        "score": 1.8959912658458844,
+        "meta": {}
+      },
+      {
+        "label": "increase operating costs",
+        "score": 1.887549553398812,
+        "meta": {}
+      },
+      {
+        "label": "internal controls",
+        "score": 0.7698278685967272,
+        "meta": {}
+      },
+      {
+        "label": "cash tax",
+        "score": 1.0394995526894926,
+        "meta": {}
+      },
+      {
+        "label": "customers waste service",
+        "score": 1.0394995526894926,
+        "meta": {}
+      },
+      {
+        "label": "employees customers",
+        "score": 1.0394995526894926,
+        "meta": {}
+      },
+      {
+        "label": "negatively affect operating results",
+        "score": 1.0394995526894926,
+        "meta": {}
+      },
+      {
+        "label": "waste industry",
+        "score": 1.0394995526894926,
+        "meta": {}
+      },
+      {
+        "label": "increase operating",
+        "score": 0.6359736856543412,
+        "meta": {}
+      },
+      {
+        "label": "fuel prices",
+        "score": 0.9392696084296919,
+        "meta": {}
+      },
+      {
+        "label": "environmental services",
+        "score": 0.7877788934676717,
+        "meta": {}
+      },
+      {
+        "label": "information security",
+        "score": 0.6306511375475043,
+        "meta": {}
+      },
+      {
+        "label": "results operations cash",
+        "score": 0.1126963587213563,
+        "meta": {}
+      },
+      {
+        "label": "Supply chain",
+        "score": 0.09797486985406678,
+        "meta": {}
+      }
+    ],
+    "top_fallers_alt": [
+      {
+        "label": "environmental damage",
+        "score": -2.0277896690225052,
+        "meta": {}
+      },
+      {
+        "label": "future business financial results",
+        "score": -2.021646126648739,
+        "meta": {}
+      },
+      {
+        "label": "operating expenses increase",
+        "score": -1.4617448399868884,
+        "meta": {}
+      },
+      {
+        "label": "increase operating expenses",
+        "score": -0.9913841256821794,
+        "meta": {}
+      },
+      {
+        "label": "environmental regulation",
+        "score": -0.8634403856585289,
+        "meta": {}
+      },
+      {
+        "label": "operating results future",
+        "score": -0.8634403856585289,
+        "meta": {}
+      },
+      {
+        "label": "changes regulations",
+        "score": -0.2481202435176586,
+        "meta": {}
+      },
+      {
+        "label": "Climate change",
+        "score": -0.1171731626359298,
+        "meta": {}
+      },
+      {
+        "label": "new service",
+        "score": -0.19674761757914494,
+        "meta": {}
+      },
+      {
+        "label": "operating results",
+        "score": -0.12448162089752346,
+        "meta": {}
+      },
+      {
+        "label": "laws regulations",
+        "score": -0.0711551357254332,
+        "meta": {}
+      },
+      {
+        "label": "Interest rates",
+        "score": -0.07021440920112498,
+        "meta": {}
+      },
+      {
+        "label": "Intellectual property",
+        "score": -0.07010770854440906,
+        "meta": {}
+      },
+      {
+        "label": "financial results",
+        "score": -0.06902246122523215,
+        "meta": {}
+      },
+      {
+        "label": "waste management",
+        "score": -0.06878303337011626,
+        "meta": {}
+      }
+    ],
+    "summary_alt": "Adds emphasis on financial reporting, control financial, increase operating costs; de-emphasizes environmental damage, future business financial results, operating expenses increase."
+  },
+  "evidence": [
+    {
+      "year": 2020,
+      "paragraph_idx": 2,
+      "snippet": "We may not realize the strategic benefits and cost synergies that are anticipated from our acquisition of Advanced Disposal Services, Inc. (\u201cAdvanced Disposal\u201d), and we may encounter difficulties integrating Advanced Disposal\u2019s operations and systems that could impact the effectiveness of our internal controls over financial reporting.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "financial reporting",
+        "effectiveness"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 5,
+      "snippet": "Controls and Procedures , in accordance with SEC staff guidance, we have excluded Advanced Disposal from the assessment of the effectiveness of our internal control over financial reporting as of December 31, 2020 contained in this Annual Report on Form 10-K; however, this exclusion may not extend beyond one year from the October 30, 2020 closing date.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "financial reporting",
+        "effectiveness"
+      ]
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 1,
+      "snippet": "Our planned acquisition of Advanced Disposal Services, Inc. (\u201cAdvanced Disposal\u201d) may not occur at all, may not occur in the expected time frame or may involve the divestiture of certain businesses and assets, which may negatively affect the trading price of our common stock and our future business and financial results.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "planned acquisition"
+      ]
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 2,
+      "snippet": "On April 14, 2019, we entered into an Agreement and Plan of Merger pursuant to which, among other things and subject to the satisfaction or waiver of specified conditions, we agreed to acquire Advanced Disposal.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "merger"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.0409,
+    "confidence": 1.0,
+    "coverage": 0.2925641176125359,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T05:02:54Z",
+    "git_commit": "77553f23af39ca9ca4d7337e78fce9b3d4e9594f",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "9e3486dcd0a51e8215c37803f23bf5202709952b852cd389c16bd303557f515a",
+      "curr_text_sha256": "869f4d68ad2f33579c245420606af7fa8840af169561441eb0f9b1ba03083820",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

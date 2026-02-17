@@ -1,0 +1,1031 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_logodds_terms_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "WM",
+  "section": "10k_item1a",
+  "year_from": 2020,
+  "year_to": 2021,
+  "artifacts": {
+    "top_risers": [
+      {
+        "label": "hcm",
+        "score": 1.1011178015566283,
+        "meta": {
+          "z": 1.1740302234358766,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.110152075626798,
+          "deltaPer10k": 4.110152075626798,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "vaccine",
+        "score": 1.1011178015566283,
+        "meta": {
+          "z": 1.1740302234358766,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.110152075626798,
+          "deltaPer10k": 4.110152075626798,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "erp hcm",
+        "score": 1.0732368761180626,
+        "meta": {
+          "z": 1.1740302234358766,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.110152075626798,
+          "deltaPer10k": 4.110152075626798,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ets",
+        "score": 1.0152682816408316,
+        "meta": {
+          "z": 1.082496028905445,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.082614056720099,
+          "deltaPer10k": 3.082614056720099,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "variants",
+        "score": 1.0152682816408316,
+        "meta": {
+          "z": 1.082496028905445,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.082614056720099,
+          "deltaPer10k": 3.082614056720099,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "COVID-19",
+        "score": 1.0041146966174517,
+        "meta": {
+          "z": 1.438655281449642,
+          "countPrev": 10,
+          "countCurr": 17,
+          "per10kPrev": 9.828009828009828,
+          "per10kCurr": 17.468146321413894,
+          "deltaPer10k": 7.640136493404066,
+          "distinctive": false,
+          "includes": [
+            "covid"
+          ]
+        }
+      },
+      {
+        "label": "Inflation",
+        "score": 0.9609731904697458,
+        "meta": {
+          "z": 1.64652972674939,
+          "countPrev": 0,
+          "countCurr": 12,
+          "per10kPrev": 0.0,
+          "per10kCurr": 12.330456226880395,
+          "deltaPer10k": 12.330456226880395,
+          "distinctive": false,
+          "includes": [
+            "inflationary pressures",
+            "inflationary",
+            "inflation"
+          ]
+        }
+      },
+      {
+        "label": "discussed",
+        "score": 0.8949132483582598,
+        "meta": {
+          "z": 0.9541714786923646,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.055076037813399,
+          "deltaPer10k": 2.055076037813399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "employers",
+        "score": 0.8949132483582598,
+        "meta": {
+          "z": 0.9541714786923646,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.055076037813399,
+          "deltaPer10k": 2.055076037813399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "influence",
+        "score": 0.8949132483582598,
+        "meta": {
+          "z": 0.9541714786923646,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.055076037813399,
+          "deltaPer10k": 2.055076037813399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "osha",
+        "score": 0.8949132483582598,
+        "meta": {
+          "z": 0.9541714786923646,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.055076037813399,
+          "deltaPer10k": 2.055076037813399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "resurgence",
+        "score": 0.8834866042893029,
+        "meta": {
+          "z": 1.082496028905445,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.082614056720099,
+          "deltaPer10k": 3.082614056720099,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "resurgence transmission",
+        "score": 0.8145344025667958,
+        "meta": {
+          "z": 1.082496028905445,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.082614056720099,
+          "deltaPer10k": 3.082614056720099,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "transmission covid",
+        "score": 0.8145344025667958,
+        "meta": {
+          "z": 1.082496028905445,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.082614056720099,
+          "deltaPer10k": 3.082614056720099,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "indicated",
+        "score": 0.7787536370660028,
+        "meta": {
+          "z": 0.9541714786923646,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.055076037813399,
+          "deltaPer10k": 2.055076037813399,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_fallers": [
+      {
+        "label": "advanced disposal",
+        "score": -1.3030278320437247,
+        "meta": {
+          "z": -2.1557405014136264,
+          "countPrev": 11,
+          "countCurr": 2,
+          "per10kPrev": 10.81081081081081,
+          "per10kCurr": 2.055076037813399,
+          "deltaPer10k": -8.75573477299741,
+          "distinctive": true
+        }
+      },
+      {
+        "label": "advanced",
+        "score": -1.2093308074987514,
+        "meta": {
+          "z": -2.0720652186427744,
+          "countPrev": 12,
+          "countCurr": 3,
+          "per10kPrev": 11.793611793611793,
+          "per10kCurr": 3.082614056720099,
+          "deltaPer10k": -8.710997736891695,
+          "distinctive": true
+        }
+      },
+      {
+        "label": "financial reporting",
+        "score": -1.1263984630815607,
+        "meta": {
+          "z": -1.496955634296853,
+          "countPrev": 12,
+          "countCurr": 0,
+          "per10kPrev": 11.793611793611793,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -11.793611793611793,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "internal",
+        "score": -0.9540881641577497,
+        "meta": {
+          "z": -2.014350990430328,
+          "countPrev": 10,
+          "countCurr": 2,
+          "per10kPrev": 9.828009828009828,
+          "per10kCurr": 2.055076037813399,
+          "deltaPer10k": -7.772933790196428,
+          "distinctive": true
+        }
+      },
+      {
+        "label": "effectiveness",
+        "score": -0.935933252497034,
+        "meta": {
+          "z": -1.1467565260523593,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.9312039312039313,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.9312039312039313,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "effectiveness internal",
+        "score": -0.8628878230455135,
+        "meta": {
+          "z": -1.1467565260523593,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.9312039312039313,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.9312039312039313,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ccpa",
+        "score": -0.86131307393739,
+        "meta": {
+          "z": -1.0553278087691946,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.9484029484029484,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.9484029484029484,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "conclude",
+        "score": -0.7567443541758722,
+        "meta": {
+          "z": -0.9272045035147519,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.9656019656019657,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.9656019656019657,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "staff",
+        "score": -0.7567443541758722,
+        "meta": {
+          "z": -0.9272045035147519,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.9656019656019657,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.9656019656019657,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "acquisition advanced",
+        "score": -0.7162119482691192,
+        "meta": {
+          "z": -1.184907234144398,
+          "countPrev": 4,
+          "countCurr": 1,
+          "per10kPrev": 3.9312039312039313,
+          "per10kCurr": 1.0275380189066996,
+          "deltaPer10k": -2.9036659122972317,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "conclude internal",
+        "score": -0.6976838216129848,
+        "meta": {
+          "z": -0.9272045035147519,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.9656019656019657,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.9656019656019657,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "difficulties integrating",
+        "score": -0.6976838216129848,
+        "meta": {
+          "z": -0.9272045035147519,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.9656019656019657,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.9656019656019657,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "recyclable commodity",
+        "score": -0.6976838216129848,
+        "meta": {
+          "z": -0.9272045035147519,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.9656019656019657,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.9656019656019657,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "synergies",
+        "score": -0.6915539189531649,
+        "meta": {
+          "z": -1.184907234144398,
+          "countPrev": 4,
+          "countCurr": 1,
+          "per10kPrev": 3.9312039312039313,
+          "per10kCurr": 1.0275380189066996,
+          "deltaPer10k": -2.9036659122972317,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ees",
+        "score": -0.671616953526526,
+        "meta": {
+          "z": -1.4179740681724589,
+          "countPrev": 5,
+          "countCurr": 1,
+          "per10kPrev": 4.914004914004914,
+          "per10kCurr": 1.0275380189066996,
+          "deltaPer10k": -3.886466895098214,
+          "distinctive": false
+        }
+      }
+    ],
+    "summary": "Adds emphasis on hcm, vaccine, erp hcm; de-emphasizes advanced disposal, advanced, financial reporting.",
+    "ranked_items": [
+      {
+        "label": "hcm",
+        "score": 1.1011178015566283,
+        "meta": {
+          "z": 1.1740302234358766,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.110152075626798,
+          "deltaPer10k": 4.110152075626798,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "vaccine",
+        "score": 1.1011178015566283,
+        "meta": {
+          "z": 1.1740302234358766,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.110152075626798,
+          "deltaPer10k": 4.110152075626798,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "erp hcm",
+        "score": 1.0732368761180626,
+        "meta": {
+          "z": 1.1740302234358766,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.110152075626798,
+          "deltaPer10k": 4.110152075626798,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ets",
+        "score": 1.0152682816408316,
+        "meta": {
+          "z": 1.082496028905445,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.082614056720099,
+          "deltaPer10k": 3.082614056720099,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "variants",
+        "score": 1.0152682816408316,
+        "meta": {
+          "z": 1.082496028905445,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.082614056720099,
+          "deltaPer10k": 3.082614056720099,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "COVID-19",
+        "score": 1.0041146966174517,
+        "meta": {
+          "z": 1.438655281449642,
+          "countPrev": 10,
+          "countCurr": 17,
+          "per10kPrev": 9.828009828009828,
+          "per10kCurr": 17.468146321413894,
+          "deltaPer10k": 7.640136493404066,
+          "distinctive": false,
+          "includes": [
+            "covid"
+          ]
+        }
+      },
+      {
+        "label": "Inflation",
+        "score": 0.9609731904697458,
+        "meta": {
+          "z": 1.64652972674939,
+          "countPrev": 0,
+          "countCurr": 12,
+          "per10kPrev": 0.0,
+          "per10kCurr": 12.330456226880395,
+          "deltaPer10k": 12.330456226880395,
+          "distinctive": false,
+          "includes": [
+            "inflationary pressures",
+            "inflationary",
+            "inflation"
+          ]
+        }
+      },
+      {
+        "label": "discussed",
+        "score": 0.8949132483582598,
+        "meta": {
+          "z": 0.9541714786923646,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.055076037813399,
+          "deltaPer10k": 2.055076037813399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "employers",
+        "score": 0.8949132483582598,
+        "meta": {
+          "z": 0.9541714786923646,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.055076037813399,
+          "deltaPer10k": 2.055076037813399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "influence",
+        "score": 0.8949132483582598,
+        "meta": {
+          "z": 0.9541714786923646,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.055076037813399,
+          "deltaPer10k": 2.055076037813399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "osha",
+        "score": 0.8949132483582598,
+        "meta": {
+          "z": 0.9541714786923646,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.055076037813399,
+          "deltaPer10k": 2.055076037813399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "resurgence",
+        "score": 0.8834866042893029,
+        "meta": {
+          "z": 1.082496028905445,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.082614056720099,
+          "deltaPer10k": 3.082614056720099,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "resurgence transmission",
+        "score": 0.8145344025667958,
+        "meta": {
+          "z": 1.082496028905445,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.082614056720099,
+          "deltaPer10k": 3.082614056720099,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "transmission covid",
+        "score": 0.8145344025667958,
+        "meta": {
+          "z": 1.082496028905445,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.082614056720099,
+          "deltaPer10k": 3.082614056720099,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "indicated",
+        "score": 0.7787536370660028,
+        "meta": {
+          "z": 0.9541714786923646,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.055076037813399,
+          "deltaPer10k": 2.055076037813399,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "advanced disposal",
+        "score": -1.3030278320437247,
+        "meta": {
+          "z": -2.1557405014136264,
+          "countPrev": 11,
+          "countCurr": 2,
+          "per10kPrev": 10.81081081081081,
+          "per10kCurr": 2.055076037813399,
+          "deltaPer10k": -8.75573477299741,
+          "distinctive": true
+        }
+      },
+      {
+        "label": "advanced",
+        "score": -1.2093308074987514,
+        "meta": {
+          "z": -2.0720652186427744,
+          "countPrev": 12,
+          "countCurr": 3,
+          "per10kPrev": 11.793611793611793,
+          "per10kCurr": 3.082614056720099,
+          "deltaPer10k": -8.710997736891695,
+          "distinctive": true
+        }
+      },
+      {
+        "label": "financial reporting",
+        "score": -1.1263984630815607,
+        "meta": {
+          "z": -1.496955634296853,
+          "countPrev": 12,
+          "countCurr": 0,
+          "per10kPrev": 11.793611793611793,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -11.793611793611793,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "internal",
+        "score": -0.9540881641577497,
+        "meta": {
+          "z": -2.014350990430328,
+          "countPrev": 10,
+          "countCurr": 2,
+          "per10kPrev": 9.828009828009828,
+          "per10kCurr": 2.055076037813399,
+          "deltaPer10k": -7.772933790196428,
+          "distinctive": true
+        }
+      },
+      {
+        "label": "effectiveness",
+        "score": -0.935933252497034,
+        "meta": {
+          "z": -1.1467565260523593,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.9312039312039313,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.9312039312039313,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "effectiveness internal",
+        "score": -0.8628878230455135,
+        "meta": {
+          "z": -1.1467565260523593,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.9312039312039313,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.9312039312039313,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ccpa",
+        "score": -0.86131307393739,
+        "meta": {
+          "z": -1.0553278087691946,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.9484029484029484,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.9484029484029484,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "conclude",
+        "score": -0.7567443541758722,
+        "meta": {
+          "z": -0.9272045035147519,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.9656019656019657,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.9656019656019657,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "staff",
+        "score": -0.7567443541758722,
+        "meta": {
+          "z": -0.9272045035147519,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.9656019656019657,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.9656019656019657,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "acquisition advanced",
+        "score": -0.7162119482691192,
+        "meta": {
+          "z": -1.184907234144398,
+          "countPrev": 4,
+          "countCurr": 1,
+          "per10kPrev": 3.9312039312039313,
+          "per10kCurr": 1.0275380189066996,
+          "deltaPer10k": -2.9036659122972317,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "conclude internal",
+        "score": -0.6976838216129848,
+        "meta": {
+          "z": -0.9272045035147519,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.9656019656019657,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.9656019656019657,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "difficulties integrating",
+        "score": -0.6976838216129848,
+        "meta": {
+          "z": -0.9272045035147519,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.9656019656019657,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.9656019656019657,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "recyclable commodity",
+        "score": -0.6976838216129848,
+        "meta": {
+          "z": -0.9272045035147519,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.9656019656019657,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.9656019656019657,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "synergies",
+        "score": -0.6915539189531649,
+        "meta": {
+          "z": -1.184907234144398,
+          "countPrev": 4,
+          "countCurr": 1,
+          "per10kPrev": 3.9312039312039313,
+          "per10kCurr": 1.0275380189066996,
+          "deltaPer10k": -2.9036659122972317,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ees",
+        "score": -0.671616953526526,
+        "meta": {
+          "z": -1.4179740681724589,
+          "countPrev": 5,
+          "countCurr": 1,
+          "per10kPrev": 4.914004914004914,
+          "per10kCurr": 1.0275380189066996,
+          "deltaPer10k": -3.886466895098214,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_risers_alt": [
+      {
+        "label": "Supply chain",
+        "score": 0.5391684590484669,
+        "meta": {}
+      },
+      {
+        "label": "cost increases",
+        "score": 2.009621973710308,
+        "meta": {}
+      },
+      {
+        "label": "customers result",
+        "score": 2.009621973710308,
+        "meta": {}
+      },
+      {
+        "label": "implementation new",
+        "score": 2.009621973710308,
+        "meta": {}
+      },
+      {
+        "label": "waste volumes",
+        "score": 2.009621973710308,
+        "meta": {}
+      },
+      {
+        "label": "human capital",
+        "score": 1.0616375224029158,
+        "meta": {}
+      },
+      {
+        "label": "labor shortages",
+        "score": 0.9102654059818391,
+        "meta": {}
+      },
+      {
+        "label": "Inflation",
+        "score": 0.9762196168479687,
+        "meta": {}
+      },
+      {
+        "label": "increased costs",
+        "score": 0.2481117086359803,
+        "meta": {}
+      },
+      {
+        "label": "natural gas",
+        "score": 0.14079325257356023,
+        "meta": {}
+      },
+      {
+        "label": "fuel prices",
+        "score": 0.33308419772493725,
+        "meta": {}
+      },
+      {
+        "label": "increase costs",
+        "score": 0.24702424200347384,
+        "meta": {}
+      },
+      {
+        "label": "class action",
+        "score": 0.18449687676399007,
+        "meta": {}
+      },
+      {
+        "label": "financial results",
+        "score": 0.14568715714771985,
+        "meta": {}
+      },
+      {
+        "label": "results operations cash",
+        "score": 0.1129671435273667,
+        "meta": {}
+      }
+    ],
+    "top_fallers_alt": [
+      {
+        "label": "financial reporting",
+        "score": -1.2912271875670394,
+        "meta": {}
+      },
+      {
+        "label": "control financial",
+        "score": -1.907961384413273,
+        "meta": {}
+      },
+      {
+        "label": "waste management",
+        "score": -0.6535106781365769,
+        "meta": {}
+      },
+      {
+        "label": "landfill gas",
+        "score": -0.4451847907906603,
+        "meta": {}
+      },
+      {
+        "label": "increase operating costs",
+        "score": -1.8995018473712957,
+        "meta": {}
+      },
+      {
+        "label": "internal controls",
+        "score": -0.781851781370527,
+        "meta": {}
+      },
+      {
+        "label": "increase costs operate",
+        "score": -1.3394823914014857,
+        "meta": {}
+      },
+      {
+        "label": "operate natural gas",
+        "score": -1.3394823914014857,
+        "meta": {}
+      },
+      {
+        "label": "operating costs",
+        "score": -1.3394823914014857,
+        "meta": {}
+      },
+      {
+        "label": "prices recycling",
+        "score": -1.3394823914014857,
+        "meta": {}
+      },
+      {
+        "label": "landfill disposal",
+        "score": -0.8688846509628441,
+        "meta": {}
+      },
+      {
+        "label": "increased operating costs",
+        "score": -0.5710288617770685,
+        "meta": {}
+      },
+      {
+        "label": "trade restrictions",
+        "score": -1.3367063481931396,
+        "meta": {}
+      },
+      {
+        "label": "gas prices",
+        "score": -0.4625142837422134,
+        "meta": {}
+      },
+      {
+        "label": "cybersecurity incident",
+        "score": -0.38418260803937443,
+        "meta": {}
+      }
+    ],
+    "summary_alt": "Adds emphasis on Supply chain, cost increases, customers result; de-emphasizes financial reporting, control financial, waste management."
+  },
+  "evidence": [
+    {
+      "year": 2021,
+      "paragraph_idx": 2,
+      "snippet": "However, uncertainty remains with respect to various factors that influence the pace of economic recovery, including the risks discussed below and the potential for future resurgence in transmission of COVID-19 and related business closures due to virus variants or otherwise.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "variants"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 5,
+      "snippet": "As we complete the integration of our prior acquisition of Advanced Disposal Services, Inc. (\u201cAdvanced Disposal\u201d), we may not continue to realize the strategic benefits and cost synergies anticipated.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "advanced disposal",
+        "advanced"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 3,
+      "snippet": "We may not realize the strategic benefits and cost synergies that are anticipated from our acquisition of Advanced Disposal Services, Inc. (\u201cAdvanced Disposal\u201d), and we may encounter difficulties integrating Advanced Disposal\u2019s operations and systems that could impact the effectiveness of our internal controls over financial reporting.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "advanced disposal",
+        "advanced",
+        "financial reporting",
+        "internal",
+        "effectiveness"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 4,
+      "snippet": "The benefits that are expected to result from our acquisition of Advanced Disposal will depend, in part, on our ability to successfully integrate Advanced Disposal\u2019s operations and systems and realize anticipated cost synergies.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "advanced disposal",
+        "advanced"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.0366,
+    "confidence": 1.0,
+    "coverage": 0.3731478853250071,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T05:02:54Z",
+    "git_commit": "77553f23af39ca9ca4d7337e78fce9b3d4e9594f",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "d09fa3665988ef7a7fade6ad0c0432d7938bf2653b8aaa2db9a2948f0e74e013",
+      "curr_text_sha256": "feebfde0925c43b08192e3e8b3f332e28ce1dd6de7576d245050e91a7f64b400",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_winnowing_fingerprint_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "KO",
+  "section": "10k_item1a",
+  "year_from": 2021,
+  "year_to": 2022,
+  "artifacts": {
+    "stats": {
+      "shared_fingerprints": 10876,
+      "prev_fingerprints": 17183,
+      "curr_fingerprints": 17397,
+      "shared_ratio": 0.6329511726706628
+    }
+  },
+  "evidence": [
+    {
+      "year": 2022,
+      "paragraph_idx": 0,
+      "snippet": "Unfavorable general economic and geopolitical conditions could negatively impact our financial results.\n\nOur business, o",
+      "why": "Shared fingerprint span."
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 0,
+      "snippet": "Unfavorable general economic and geopolitical conditions could negatively impact our financial results.\n\nOur business, op",
+      "why": "Shared fingerprint span."
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 0,
+      "snippet": "Unfavorable general economic and geopolitical conditions could negatively impact our financial results.\n\nOur business, operat",
+      "why": "Shared fingerprint span."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.6329511726706628,
+    "confidence": 1.0,
+    "coverage": 0.49756888168557534,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T05:02:52Z",
+    "git_commit": "77553f23af39ca9ca4d7337e78fce9b3d4e9594f",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "e6cfc8b78dd3ec509c30c6506ff9e388f0fbe1901a6373c20f2324d9ad1c3ec1",
+      "curr_text_sha256": "c57571334e0bb44ce275ccc4562aeb9807109f8ebce8ce33a03eb0811a07cf82",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

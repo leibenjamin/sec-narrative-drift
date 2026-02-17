@@ -1,0 +1,55 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_winnowing_fingerprint_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "KO",
+  "section": "10k_item1a",
+  "year_from": 2020,
+  "year_to": 2021,
+  "artifacts": {
+    "stats": {
+      "shared_fingerprints": 13405,
+      "prev_fingerprints": 22696,
+      "curr_fingerprints": 23273,
+      "shared_ratio": 0.590632710609799
+    }
+  },
+  "evidence": [
+    {
+      "year": 2021,
+      "paragraph_idx": 0,
+      "snippet": "In addition to the other information set forth in this report, you should carefully consider the following factors, which ",
+      "why": "Shared fingerprint span."
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 0,
+      "snippet": "In addition to the other information set forth in this report, you should carefully consider the following factors, which cou",
+      "why": "Shared fingerprint span."
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 0,
+      "snippet": "In addition to the other information set forth in this report, you should carefully consider the following factors, which could ",
+      "why": "Shared fingerprint span."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.590632710609799,
+    "confidence": 1.0,
+    "coverage": 0.6695838837516512,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T05:02:52Z",
+    "git_commit": "77553f23af39ca9ca4d7337e78fce9b3d4e9594f",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "5b2e73706f009be79c12a24e3160b4480898609cb5b6c7b2c20be75d2854796a",
+      "curr_text_sha256": "0fac1e3d2bc2d8f5c69332b090a63e1cef7164b20263237cf14b772dc47bdf4a",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

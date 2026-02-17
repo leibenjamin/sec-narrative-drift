@@ -1,0 +1,73 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_minhash_boilerplate_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "WM",
+  "section": "10k_item1a",
+  "year_from": 2019,
+  "year_to": 2020,
+  "artifacts": {
+    "stats": {
+      "percent_reused": 0.12149532710280374,
+      "percent_new": 0.8785046728971962,
+      "reused_paragraphs": 13,
+      "total_paragraphs": 107
+    }
+  },
+  "evidence": [
+    {
+      "year": 2020,
+      "paragraph_idx": 0,
+      "snippet": "Outlined below are some of the risks that we believe could affect our business and financial statements for 2021 and beyond and could cause actual results to be materially different from those that may be set forth in forward-looking statements made by the Company.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 0,
+      "snippet": "Outlined below are some of the risks that we believe could affect our business and financial statements for 2020 and beyond and could cause actual results to be materially different from those that may be set forth in forward-looking statements made by the Company.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 50,
+      "snippet": "Many other markets, both domestic and foreign, have also tightened their quality expectations and limited or restricted the import of certain recyclables.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 30,
+      "snippet": "Many other markets, both domestic and foreign, have tightened their quality expectations and limited or restricted the import of certain recyclables as well.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 58,
+      "snippet": "Reductions in market prices for recycling commodities, and reduction in demand for recycling commodities and recycling services, negatively impacted our operating income and cash flows in 2019.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 34,
+      "snippet": "Reductions in market prices for recycling commodities, and reduction in demand for recycling commodities and recycling services, have negatively impacted our operating income and cash flows in 2018 and 2019.",
+      "why": "Matching paragraph from prior year."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.8785046728971962,
+    "confidence": 1.0,
+    "coverage": 0.2925641176125359,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T05:02:54Z",
+    "git_commit": "77553f23af39ca9ca4d7337e78fce9b3d4e9594f",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "9e3486dcd0a51e8215c37803f23bf5202709952b852cd389c16bd303557f515a",
+      "curr_text_sha256": "869f4d68ad2f33579c245420606af7fa8840af169561441eb0f9b1ba03083820",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

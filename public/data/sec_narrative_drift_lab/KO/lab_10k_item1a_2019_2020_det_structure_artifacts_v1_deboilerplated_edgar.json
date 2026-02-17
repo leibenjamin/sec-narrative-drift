@@ -1,0 +1,75 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_structure_artifacts_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "KO",
+  "section": "10k_item1a",
+  "year_from": 2019,
+  "year_to": 2020,
+  "artifacts": {
+    "stats": {
+      "headings_prev": [],
+      "headings_curr": [
+        "RISKS RELATED TO OUR OPERATIONS",
+        "RISKS RELATED TO CONSUMER DEMAND FOR OUR PRODUCTS",
+        "RISKS RELATED TO THE COCA-COLA SYSTEM",
+        "RISKS RELATED TO REGULATORY AND LEGAL MATTERS",
+        "RISKS RELATED TO FINANCE, ACCOUNTING AND INVESTMENTS",
+        "RISKS RELATED TO INFORMATION TECHNOLOGY, DATA PRIVACY AND DIGITIZATION",
+        "RISKS RELATED TO ENVIRONMENTAL AND SOCIAL FACTORS"
+      ],
+      "headings_added": [
+        "RISKS RELATED TO OUR OPERATIONS",
+        "RISKS RELATED TO CONSUMER DEMAND FOR OUR PRODUCTS",
+        "RISKS RELATED TO THE COCA-COLA SYSTEM",
+        "RISKS RELATED TO REGULATORY AND LEGAL MATTERS",
+        "RISKS RELATED TO FINANCE, ACCOUNTING AND INVESTMENTS",
+        "RISKS RELATED TO INFORMATION TECHNOLOGY, DATA PRIVACY AND DIGITIZATION",
+        "RISKS RELATED TO ENVIRONMENTAL AND SOCIAL FACTORS"
+      ],
+      "headings_removed": [],
+      "paragraph_count_prev": 82,
+      "paragraph_count_curr": 114,
+      "length_chars_prev": 23232,
+      "length_chars_curr": 32571
+    }
+  },
+  "evidence": [
+    {
+      "year": 2020,
+      "paragraph_idx": 0,
+      "snippet": "The COVID-19 pandemic has had, and we expect will continue to have, certain negative impacts on our business, and such impacts have had, and may continue to have, a material adverse effect on our results of operations, financial condition and cash flows.",
+      "why": "Heading added: RISKS RELATED TO OUR OPERATIONS"
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 62,
+      "snippet": "Public debate and concern about perceived negative health consequences of certain ingredients in our beverage products, such as non-nutritive sweeteners and biotechnology-derived substances; substances that are present in our beverage products naturally or that occur as a result of the manufacturing process, such as 4-methylimidazole (\"4-MEI\"), a chemical compound that is formed during the manufacturing of certain types of caramel coloring used in cola-type beverages; or substances used in packaging materials, such as bisphenol A (\"BPA\"), an odorless, tasteless food-grade chemical commonly used in the food and beverage industries as a component in the coating of the interior of cans, may affect consumers' preferences and cause them to shift away from some of our beverage products.",
+      "why": "Heading added: RISKS RELATED TO CONSUMER DEMAND FOR OUR PRODUCTS"
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 64,
+      "snippet": "A deterioration of the financial condition or results of operations of one or more of our major bottling partners could adversely affect our net operating revenues from sales of concentrates and syrups; and, if such deterioration",
+      "why": "Heading added: RISKS RELATED TO THE COCA-COLA SYSTEM"
+    }
+  ],
+  "metrics": {
+    "drift_score": 1.0,
+    "confidence": 0.35,
+    "coverage": 0.3078431632369115,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T05:02:51Z",
+    "git_commit": "77553f23af39ca9ca4d7337e78fce9b3d4e9594f",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "ec7cdfb76a14ca922f221735d8fcf99c5aec72c358111823e412cdc0bdb41050",
+      "curr_text_sha256": "61bfa0824cedae26d98cc00ce8a2d66320e7989f9132c173bc42c03ea712a091",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

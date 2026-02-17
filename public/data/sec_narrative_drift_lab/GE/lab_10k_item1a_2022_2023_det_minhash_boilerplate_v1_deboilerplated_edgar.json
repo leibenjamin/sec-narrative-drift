@@ -1,0 +1,73 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_minhash_boilerplate_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "GE",
+  "section": "10k_item1a",
+  "year_from": 2022,
+  "year_to": 2023,
+  "artifacts": {
+    "stats": {
+      "percent_reused": 0.16312056737588654,
+      "percent_new": 0.8368794326241135,
+      "reused_paragraphs": 23,
+      "total_paragraphs": 141
+    }
+  },
+  "evidence": [
+    {
+      "year": 2023,
+      "paragraph_idx": 13,
+      "snippet": "Moreover, completion of the GE HealthCare separation resulted, and completion of the GE Vernova separation will result, in independent public companies that are smaller, less diversified companies with more limited businesses concentrated in their respective industries than GE was prior to the separation transactions.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 9,
+      "snippet": "Moreover, completion of the GE HealthCare separation has resulted, and completion of the GE Vernova separation will result in independent public companies that are smaller, less diversified companies with more limited businesses concentrated in their respective industries than GE was prior to the separation transactions.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 15,
+      "snippet": "In addition, the diversification of revenues, costs, and cash flows will diminish, such that each company\u2019s results of operations, cash flows, working capital, effective tax rate, and financing requirements may be subject to increased volatility and its ability to execute capital allocation plans, fund capital expenditures and investments, pay dividends and meet debt obligations and other liabilities may be diminished.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 11,
+      "snippet": "In addition, the diversification of revenues, costs, and cash flows will diminish, such that each company\u2019s results of operations, cash flows, working capital, effective tax rate, and financing requirements may be subject to increased volatility and its ability to execute of capital allocation plans, fund capital expenditures and investments, pay dividends and meet debt obligations and other liabilities may be diminished.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 19,
+      "snippet": "We operate in virtually every part of the world, serve customers in over 160 countries and received 57% of our revenues for 2023 from outside the United States.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 15,
+      "snippet": "We operate in virtually every part of the world, serve customers in over 170 countries and received 57% of our revenues for 2022 from outside the United States.",
+      "why": "Matching paragraph from prior year."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.8368794326241135,
+    "confidence": 1.0,
+    "coverage": 0.6218547314437726,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T05:02:58Z",
+    "git_commit": "77553f23af39ca9ca4d7337e78fce9b3d4e9594f",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "42d8ebb6d652853c7670c439b184bcafda4d618c864b160b0108689dc556a013",
+      "curr_text_sha256": "5316845cf41d84fa8b9f0f3527a56617073d663d9b0729619a1016cb691a3c8b",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

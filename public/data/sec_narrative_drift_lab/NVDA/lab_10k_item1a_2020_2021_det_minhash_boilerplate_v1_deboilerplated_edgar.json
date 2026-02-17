@@ -1,0 +1,73 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_minhash_boilerplate_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "NVDA",
+  "section": "10k_item1a",
+  "year_from": 2020,
+  "year_to": 2021,
+  "artifacts": {
+    "stats": {
+      "percent_reused": 0.1724137931034483,
+      "percent_new": 0.8275862068965517,
+      "reused_paragraphs": 25,
+      "total_paragraphs": 145
+    }
+  },
+  "evidence": [
+    {
+      "year": 2021,
+      "paragraph_idx": 0,
+      "snippet": "If we fail to meet the evolving needs of our markets, or to identify new products, services or technologies, our revenue and financial results may be adversely impacted.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 0,
+      "snippet": "If we fail to meet the evolving needs of our markets, or identify new products, services or technologies, our revenue and financial results may be adversely impacted.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 6,
+      "snippet": "We cannot assure you that our strategic direction will result in innovative products and technologies that provide value to our customers, partners, and ultimately, our shareholders.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 2,
+      "snippet": "We cannot assure you that our strategic direction will result in innovative products and technologies that provide value to our customers, partners and ultimately, our shareholders.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 18,
+      "snippet": "\u2022 a failure by our foundries to procure raw materials or to provide or allocate adequate, or any, manufacturing or test capacity for our products;",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 8,
+      "snippet": "a failure by our foundries to procure raw materials or to provide or allocate adequate or any manufacturing or test capacity for our products;",
+      "why": "Matching paragraph from prior year."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.8275862068965517,
+    "confidence": 1.0,
+    "coverage": 0.4167789685340863,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T05:02:49Z",
+    "git_commit": "77553f23af39ca9ca4d7337e78fce9b3d4e9594f",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "20b62b19cb33bb5cb41d651aaddc1d939f2bdeddd2d4f373f1e9803b95cd8b28",
+      "curr_text_sha256": "f185a5f8243e4b11cfb46f89bf804a468dfbc9f1ed1f591520a1f920a16e29e1",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

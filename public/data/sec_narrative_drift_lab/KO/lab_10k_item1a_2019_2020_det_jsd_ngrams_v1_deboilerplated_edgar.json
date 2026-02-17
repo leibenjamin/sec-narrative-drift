@@ -1,0 +1,156 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_jsd_ngrams_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "KO",
+  "section": "10k_item1a",
+  "year_from": 2019,
+  "year_to": 2020,
+  "artifacts": {
+    "ranked_items": [
+      {
+        "label": "pandemic",
+        "score": 0.002185065551966559
+      },
+      {
+        "label": "covid pandemic",
+        "score": 0.0014250427512825384
+      },
+      {
+        "label": "risks",
+        "score": 0.0011400342010260307
+      },
+      {
+        "label": "covid",
+        "score": 0.0010865118755934377
+      },
+      {
+        "label": "controlled",
+        "score": 0.0010506960861570791
+      },
+      {
+        "label": "company owned",
+        "score": 0.0009193590753874441
+      },
+      {
+        "label": "owned",
+        "score": 0.0009193590753874441
+      },
+      {
+        "label": "owned controlled",
+        "score": 0.0009193590753874441
+      },
+      {
+        "label": "risks related",
+        "score": 0.000855025650769523
+      },
+      {
+        "label": "consolidated bottling",
+        "score": 0.0007600228006840206
+      },
+      {
+        "label": "taken",
+        "score": 0.0007600228006840206
+      },
+      {
+        "label": "place",
+        "score": 0.000665019950598518
+      },
+      {
+        "label": "opinion",
+        "score": 0.000665019950598518
+      },
+      {
+        "label": "controlled bottling",
+        "score": 0.0006566850538481745
+      },
+      {
+        "label": "credit",
+        "score": 0.0006566850538481745
+      },
+      {
+        "label": "financial performance",
+        "score": 0.0006130039260104265
+      },
+      {
+        "label": "experienced",
+        "score": 0.0005700171005130154
+      },
+      {
+        "label": "home",
+        "score": 0.0005700171005130154
+      },
+      {
+        "label": "multi employer",
+        "score": 0.0005253480430785396
+      },
+      {
+        "label": "employer pension",
+        "score": 0.0005253480430785396
+      }
+    ],
+    "stats": {
+      "jsd": 0.264549,
+      "tokens_prev": 1904,
+      "tokens_curr": 2632
+    }
+  },
+  "evidence": [
+    {
+      "year": 2020,
+      "paragraph_idx": 0,
+      "snippet": "The COVID-19 pandemic has had, and we expect will continue to have, certain negative impacts on our business, and such impacts have had, and may continue to have, a material adverse effect on our results of operations, financial condition and cash flows.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "pandemic",
+        "covid"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 1,
+      "snippet": "The public health crisis caused by the COVID-19 pandemic and the measures that have been taken or that may be taken in the future by governments, businesses, including us and our bottling partners, and the public at large to limit the spread of COVID-19 have had, and we expect will continue to have, certain negative impacts on our business including, without limitation, the following:",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "pandemic",
+        "covid"
+      ]
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 33,
+      "snippet": "Our Company-owned or -controlled bottlers operate a large fleet of trucks and other motor vehicles to distribute and deliver beverage products to customers.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "controlled"
+      ]
+    },
+    {
+      "year": 2019,
+      "paragraph_idx": 34,
+      "snippet": "In addition, we use a significant amount of electricity, natural gas and other energy sources to operate our concentrate, syrup and juice production plants and the bottling plants and distribution facilities operated by our Company-owned or -controlled bottlers.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "controlled"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.264549,
+    "confidence": 1.0,
+    "coverage": 0.3078431632369115,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T05:02:51Z",
+    "git_commit": "77553f23af39ca9ca4d7337e78fce9b3d4e9594f",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "ec7cdfb76a14ca922f221735d8fcf99c5aec72c358111823e412cdc0bdb41050",
+      "curr_text_sha256": "61bfa0824cedae26d98cc00ce8a2d66320e7989f9132c173bc42c03ea712a091",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

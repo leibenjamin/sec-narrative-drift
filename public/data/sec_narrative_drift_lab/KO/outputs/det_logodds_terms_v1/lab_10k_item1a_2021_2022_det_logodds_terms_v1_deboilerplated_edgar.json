@@ -1,0 +1,1011 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_logodds_terms_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "KO",
+  "section": "10k_item1a",
+  "year_from": 2021,
+  "year_to": 2022,
+  "artifacts": {
+    "top_risers": [
+      {
+        "label": "goals targets",
+        "score": 1.1117319113838775,
+        "meta": {
+          "z": 1.8392588777825798,
+          "countPrev": 1,
+          "countCurr": 7,
+          "per10kPrev": 0.839066957543212,
+          "per10kCurr": 5.990073592332705,
+          "deltaPer10k": 5.151006634789494,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "targets",
+        "score": 1.0734567637426864,
+        "meta": {
+          "z": 1.8392588777825798,
+          "countPrev": 1,
+          "countCurr": 7,
+          "per10kPrev": 0.839066957543212,
+          "per10kCurr": 5.990073592332705,
+          "deltaPer10k": 5.151006634789494,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "russia",
+        "score": 0.863734910466136,
+        "meta": {
+          "z": 1.2375247518042785,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.278623994523361,
+          "deltaPer10k": 4.278623994523361,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ukraine",
+        "score": 0.863734910466136,
+        "meta": {
+          "z": 1.2375247518042785,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.278623994523361,
+          "deltaPer10k": 4.278623994523361,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "resulted",
+        "score": 0.8141036807959585,
+        "meta": {
+          "z": 1.1664151156936102,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.422899195618689,
+          "deltaPer10k": 3.422899195618689,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "supplies",
+        "score": 0.8141036807959585,
+        "meta": {
+          "z": 1.1664151156936102,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.422899195618689,
+          "deltaPer10k": 3.422899195618689,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "digitalize",
+        "score": 0.7502409482953882,
+        "meta": {
+          "z": 1.0749151528813397,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.567174396714017,
+          "deltaPer10k": 2.567174396714017,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ventures",
+        "score": 0.7502409482953882,
+        "meta": {
+          "z": 1.0749151528813397,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.567174396714017,
+          "deltaPer10k": 2.567174396714017,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "sustainability goals",
+        "score": 0.7480163745991514,
+        "meta": {
+          "z": 1.2375247518042785,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.278623994523361,
+          "deltaPer10k": 4.278623994523361,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "sourcing",
+        "score": 0.7257627891549406,
+        "meta": {
+          "z": 1.2435206504855987,
+          "countPrev": 1,
+          "countCurr": 4,
+          "per10kPrev": 0.839066957543212,
+          "per10kCurr": 3.422899195618689,
+          "deltaPer10k": 2.583832238075477,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "targets reduce",
+        "score": 0.7123169004324241,
+        "meta": {
+          "z": 0.9466515025153921,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.7114495978093445,
+          "deltaPer10k": 1.7114495978093445,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "targets resulting",
+        "score": 0.7123169004324241,
+        "meta": {
+          "z": 0.9466515025153921,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.7114495978093445,
+          "deltaPer10k": 1.7114495978093445,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "labor shortages",
+        "score": 0.7050344688837177,
+        "meta": {
+          "z": 1.1664151156936102,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.422899195618689,
+          "deltaPer10k": 3.422899195618689,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "materials supplies",
+        "score": 0.7050344688837177,
+        "meta": {
+          "z": 1.1664151156936102,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.422899195618689,
+          "deltaPer10k": 3.422899195618689,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "strategic relationships",
+        "score": 0.7050344688837177,
+        "meta": {
+          "z": 1.1664151156936102,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.422899195618689,
+          "deltaPer10k": 3.422899195618689,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_fallers": [
+      {
+        "label": "esg",
+        "score": -1.009544181049485,
+        "meta": {
+          "z": -1.4464344290709314,
+          "countPrev": 10,
+          "countCurr": 0,
+          "per10kPrev": 8.390669575432119,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -8.390669575432119,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ready",
+        "score": -0.8766563625756476,
+        "meta": {
+          "z": -0.9347056816048028,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.678133915086424,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.678133915086424,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "goals commitments",
+        "score": -0.6977318541666713,
+        "meta": {
+          "z": -1.1543336068227943,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.356267830172848,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.356267830172848,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "digitize",
+        "score": -0.6203346549835679,
+        "meta": {
+          "z": -1.0628802760501441,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.517200872629636,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.517200872629636,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "commitments reduce",
+        "score": -0.564978724063397,
+        "meta": {
+          "z": -0.9347056816048028,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.678133915086424,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.678133915086424,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "commitments resulting",
+        "score": -0.564978724063397,
+        "meta": {
+          "z": -0.9347056816048028,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.678133915086424,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.678133915086424,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "digitize coca",
+        "score": -0.5001297878679378,
+        "meta": {
+          "z": -1.0628802760501441,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.517200872629636,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.517200872629636,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "efforts digitize",
+        "score": -0.4398182606202695,
+        "meta": {
+          "z": -0.9347056816048028,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.678133915086424,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.678133915086424,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "materials aluminum",
+        "score": -0.4304450316345476,
+        "meta": {
+          "z": -1.2254144375137737,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 4.195334787716059,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.195334787716059,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "consolidated bottling",
+        "score": -0.42415502743900946,
+        "meta": {
+          "z": -1.2075077098557374,
+          "countPrev": 4,
+          "countCurr": 1,
+          "per10kPrev": 3.356267830172848,
+          "per10kCurr": 0.8557247989046722,
+          "deltaPer10k": -2.500543031268176,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "slowdowns",
+        "score": -0.3720371596488726,
+        "meta": {
+          "z": -0.5330399270396176,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 1.678133915086424,
+          "per10kCurr": 0.8557247989046722,
+          "deltaPer10k": -0.8224091161817518,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "spread",
+        "score": -0.3720371596488726,
+        "meta": {
+          "z": -0.5330399270396176,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 1.678133915086424,
+          "per10kCurr": 0.8557247989046722,
+          "deltaPer10k": -0.8224091161817518,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "aluminum",
+        "score": -0.35876979203719045,
+        "meta": {
+          "z": -1.3326951383610675,
+          "countPrev": 7,
+          "countCurr": 0,
+          "per10kPrev": 5.873468702802484,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.873468702802484,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "juice",
+        "score": -0.34553640661204393,
+        "meta": {
+          "z": -1.2835380777289314,
+          "countPrev": 6,
+          "countCurr": 0,
+          "per10kPrev": 5.034401745259272,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.034401745259272,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "orange",
+        "score": -0.329889162383269,
+        "meta": {
+          "z": -1.2254144375137737,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 4.195334787716059,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.195334787716059,
+          "distinctive": false
+        }
+      }
+    ],
+    "summary": "Adds emphasis on goals targets, targets, russia; de-emphasizes esg, ready, goals commitments.",
+    "ranked_items": [
+      {
+        "label": "goals targets",
+        "score": 1.1117319113838775,
+        "meta": {
+          "z": 1.8392588777825798,
+          "countPrev": 1,
+          "countCurr": 7,
+          "per10kPrev": 0.839066957543212,
+          "per10kCurr": 5.990073592332705,
+          "deltaPer10k": 5.151006634789494,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "targets",
+        "score": 1.0734567637426864,
+        "meta": {
+          "z": 1.8392588777825798,
+          "countPrev": 1,
+          "countCurr": 7,
+          "per10kPrev": 0.839066957543212,
+          "per10kCurr": 5.990073592332705,
+          "deltaPer10k": 5.151006634789494,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "russia",
+        "score": 0.863734910466136,
+        "meta": {
+          "z": 1.2375247518042785,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.278623994523361,
+          "deltaPer10k": 4.278623994523361,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ukraine",
+        "score": 0.863734910466136,
+        "meta": {
+          "z": 1.2375247518042785,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.278623994523361,
+          "deltaPer10k": 4.278623994523361,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "resulted",
+        "score": 0.8141036807959585,
+        "meta": {
+          "z": 1.1664151156936102,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.422899195618689,
+          "deltaPer10k": 3.422899195618689,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "supplies",
+        "score": 0.8141036807959585,
+        "meta": {
+          "z": 1.1664151156936102,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.422899195618689,
+          "deltaPer10k": 3.422899195618689,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "digitalize",
+        "score": 0.7502409482953882,
+        "meta": {
+          "z": 1.0749151528813397,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.567174396714017,
+          "deltaPer10k": 2.567174396714017,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ventures",
+        "score": 0.7502409482953882,
+        "meta": {
+          "z": 1.0749151528813397,
+          "countPrev": 0,
+          "countCurr": 3,
+          "per10kPrev": 0.0,
+          "per10kCurr": 2.567174396714017,
+          "deltaPer10k": 2.567174396714017,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "sustainability goals",
+        "score": 0.7480163745991514,
+        "meta": {
+          "z": 1.2375247518042785,
+          "countPrev": 0,
+          "countCurr": 5,
+          "per10kPrev": 0.0,
+          "per10kCurr": 4.278623994523361,
+          "deltaPer10k": 4.278623994523361,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "sourcing",
+        "score": 0.7257627891549406,
+        "meta": {
+          "z": 1.2435206504855987,
+          "countPrev": 1,
+          "countCurr": 4,
+          "per10kPrev": 0.839066957543212,
+          "per10kCurr": 3.422899195618689,
+          "deltaPer10k": 2.583832238075477,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "targets reduce",
+        "score": 0.7123169004324241,
+        "meta": {
+          "z": 0.9466515025153921,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.7114495978093445,
+          "deltaPer10k": 1.7114495978093445,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "targets resulting",
+        "score": 0.7123169004324241,
+        "meta": {
+          "z": 0.9466515025153921,
+          "countPrev": 0,
+          "countCurr": 2,
+          "per10kPrev": 0.0,
+          "per10kCurr": 1.7114495978093445,
+          "deltaPer10k": 1.7114495978093445,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "labor shortages",
+        "score": 0.7050344688837177,
+        "meta": {
+          "z": 1.1664151156936102,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.422899195618689,
+          "deltaPer10k": 3.422899195618689,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "materials supplies",
+        "score": 0.7050344688837177,
+        "meta": {
+          "z": 1.1664151156936102,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.422899195618689,
+          "deltaPer10k": 3.422899195618689,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "strategic relationships",
+        "score": 0.7050344688837177,
+        "meta": {
+          "z": 1.1664151156936102,
+          "countPrev": 0,
+          "countCurr": 4,
+          "per10kPrev": 0.0,
+          "per10kCurr": 3.422899195618689,
+          "deltaPer10k": 3.422899195618689,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "esg",
+        "score": -1.009544181049485,
+        "meta": {
+          "z": -1.4464344290709314,
+          "countPrev": 10,
+          "countCurr": 0,
+          "per10kPrev": 8.390669575432119,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -8.390669575432119,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "ready",
+        "score": -0.8766563625756476,
+        "meta": {
+          "z": -0.9347056816048028,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.678133915086424,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.678133915086424,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "goals commitments",
+        "score": -0.6977318541666713,
+        "meta": {
+          "z": -1.1543336068227943,
+          "countPrev": 4,
+          "countCurr": 0,
+          "per10kPrev": 3.356267830172848,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -3.356267830172848,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "digitize",
+        "score": -0.6203346549835679,
+        "meta": {
+          "z": -1.0628802760501441,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.517200872629636,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.517200872629636,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "commitments reduce",
+        "score": -0.564978724063397,
+        "meta": {
+          "z": -0.9347056816048028,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.678133915086424,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.678133915086424,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "commitments resulting",
+        "score": -0.564978724063397,
+        "meta": {
+          "z": -0.9347056816048028,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.678133915086424,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.678133915086424,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "digitize coca",
+        "score": -0.5001297878679378,
+        "meta": {
+          "z": -1.0628802760501441,
+          "countPrev": 3,
+          "countCurr": 0,
+          "per10kPrev": 2.517200872629636,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -2.517200872629636,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "efforts digitize",
+        "score": -0.4398182606202695,
+        "meta": {
+          "z": -0.9347056816048028,
+          "countPrev": 2,
+          "countCurr": 0,
+          "per10kPrev": 1.678133915086424,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -1.678133915086424,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "materials aluminum",
+        "score": -0.4304450316345476,
+        "meta": {
+          "z": -1.2254144375137737,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 4.195334787716059,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.195334787716059,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "consolidated bottling",
+        "score": -0.42415502743900946,
+        "meta": {
+          "z": -1.2075077098557374,
+          "countPrev": 4,
+          "countCurr": 1,
+          "per10kPrev": 3.356267830172848,
+          "per10kCurr": 0.8557247989046722,
+          "deltaPer10k": -2.500543031268176,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "slowdowns",
+        "score": -0.3720371596488726,
+        "meta": {
+          "z": -0.5330399270396176,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 1.678133915086424,
+          "per10kCurr": 0.8557247989046722,
+          "deltaPer10k": -0.8224091161817518,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "spread",
+        "score": -0.3720371596488726,
+        "meta": {
+          "z": -0.5330399270396176,
+          "countPrev": 2,
+          "countCurr": 1,
+          "per10kPrev": 1.678133915086424,
+          "per10kCurr": 0.8557247989046722,
+          "deltaPer10k": -0.8224091161817518,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "aluminum",
+        "score": -0.35876979203719045,
+        "meta": {
+          "z": -1.3326951383610675,
+          "countPrev": 7,
+          "countCurr": 0,
+          "per10kPrev": 5.873468702802484,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.873468702802484,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "juice",
+        "score": -0.34553640661204393,
+        "meta": {
+          "z": -1.2835380777289314,
+          "countPrev": 6,
+          "countCurr": 0,
+          "per10kPrev": 5.034401745259272,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -5.034401745259272,
+          "distinctive": false
+        }
+      },
+      {
+        "label": "orange",
+        "score": -0.329889162383269,
+        "meta": {
+          "z": -1.2254144375137737,
+          "countPrev": 5,
+          "countCurr": 0,
+          "per10kPrev": 4.195334787716059,
+          "per10kCurr": 0.0,
+          "deltaPer10k": -4.195334787716059,
+          "distinctive": false
+        }
+      }
+    ],
+    "top_risers_alt": [
+      {
+        "label": "information systems",
+        "score": 1.3642091299761407,
+        "meta": {}
+      },
+      {
+        "label": "legal requirements",
+        "score": 1.3416138360379293,
+        "meta": {}
+      },
+      {
+        "label": "countries increase",
+        "score": 1.6575220196136033,
+        "meta": {}
+      },
+      {
+        "label": "tax rates",
+        "score": 1.6575220196136033,
+        "meta": {}
+      },
+      {
+        "label": "use information systems",
+        "score": 1.6575220196136033,
+        "meta": {}
+      },
+      {
+        "label": "rates increase",
+        "score": 2.2552484607543635,
+        "meta": {}
+      },
+      {
+        "label": "reputation brands",
+        "score": 2.2552484607543635,
+        "meta": {}
+      },
+      {
+        "label": "consumer demand",
+        "score": 1.3391560444879227,
+        "meta": {}
+      },
+      {
+        "label": "labor shortages",
+        "score": 1.3391560444879227,
+        "meta": {}
+      },
+      {
+        "label": "continue result",
+        "score": 1.2258643948875623,
+        "meta": {}
+      },
+      {
+        "label": "markets products",
+        "score": 1.2258643948875623,
+        "meta": {}
+      },
+      {
+        "label": "increased costs",
+        "score": 0.9826077326005498,
+        "meta": {}
+      },
+      {
+        "label": "export controls",
+        "score": 1.6550621710940039,
+        "meta": {}
+      },
+      {
+        "label": "Supply chain",
+        "score": 0.10775091969281103,
+        "meta": {}
+      },
+      {
+        "label": "cybersecurity incident",
+        "score": 0.15871084474123265,
+        "meta": {}
+      }
+    ],
+    "top_fallers_alt": [
+      {
+        "label": "cost increases",
+        "score": -2.357109985665449,
+        "meta": {}
+      },
+      {
+        "label": "future subject",
+        "score": -2.357109985665449,
+        "meta": {}
+      },
+      {
+        "label": "increases cost",
+        "score": -2.357109985665449,
+        "meta": {}
+      },
+      {
+        "label": "use information",
+        "score": -2.357109985665449,
+        "meta": {}
+      },
+      {
+        "label": "world result",
+        "score": -1.2336219675745932,
+        "meta": {}
+      },
+      {
+        "label": "negatively affect business operating",
+        "score": -1.0847007917496905,
+        "meta": {}
+      },
+      {
+        "label": "reduce demand beverage products",
+        "score": -0.9714755393014807,
+        "meta": {}
+      },
+      {
+        "label": "information security",
+        "score": -1.756793641192031,
+        "meta": {}
+      },
+      {
+        "label": "foreign exchange",
+        "score": -0.9687609045660253,
+        "meta": {}
+      },
+      {
+        "label": "bottling partners",
+        "score": -0.12192094571140033,
+        "meta": {}
+      },
+      {
+        "label": "Inflation",
+        "score": -0.49964676157130405,
+        "meta": {}
+      },
+      {
+        "label": "Climate change",
+        "score": -0.1775938545487934,
+        "meta": {}
+      },
+      {
+        "label": "increase cost",
+        "score": -0.27150011015369024,
+        "meta": {}
+      },
+      {
+        "label": "demand products",
+        "score": -0.19839974756539513,
+        "meta": {}
+      },
+      {
+        "label": "laws regulations",
+        "score": -0.09941255131750593,
+        "meta": {}
+      }
+    ],
+    "summary_alt": "Adds emphasis on information systems, legal requirements, countries increase; de-emphasizes cost increases, future subject, increases cost."
+  },
+  "evidence": [
+    {
+      "year": 2022,
+      "paragraph_idx": 7,
+      "snippet": "While we have maintained our operations in Ukraine to the extent possible, our business in Ukraine has been disrupted due to the conflict.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "ukraine"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 8,
+      "snippet": "Although we currently do not anticipate that the suspension of our operations in Russia or the disruptions in Ukraine will have a material impact on our results of operations, the conflict has resulted, and could continue to result, in volatile commodity markets, supply chain disruptions, increased risk of cyber incidents or other disruptions to our information systems, reputational risk, heightened risks to employee safety, business disruptions (including labor shortages), reduced availability and increased costs for transportation, energy, packaging and raw materials and other input costs, additional sanctions, export controls and other legislation or regulations (including restrictions on the transfer of funds to and from Russia), or difficulty protecting and enforcing our intellectual property rights.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "russia",
+        "ukraine",
+        "resulted"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 50,
+      "snippet": "If we are not successful in our efforts to digitize the Coca-Cola system, our financial results could be negatively affected.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "digitize"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 52,
+      "snippet": "Therefore, one of our top priorities is to digitize the Coca-Cola system by, among other things, creating more relevant and more personalized experiences wherever our system interacts with consumers, whether in a digital environment or through digital devices in an otherwise physical environment; finding ways to create more powerful digital tools and capabilities for the Coca-Cola system\u2019s retail customers to enable them to grow their businesses; and digitizing operations through the use of data, artificial intelligence, automation, robotics and digital devices to increase efficiency and productivity.",
+      "why": "Paragraph containing shifted term.",
+      "highlights": [
+        "digitize"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.017,
+    "confidence": 1.0,
+    "coverage": 0.49756888168557534,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T05:02:52Z",
+    "git_commit": "77553f23af39ca9ca4d7337e78fce9b3d4e9594f",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "e6cfc8b78dd3ec509c30c6506ff9e388f0fbe1901a6373c20f2324d9ad1c3ec1",
+      "curr_text_sha256": "c57571334e0bb44ce275ccc4562aeb9807109f8ebce8ce33a03eb0811a07cf82",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

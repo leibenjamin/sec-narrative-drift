@@ -1,0 +1,154 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_jsd_ngrams_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "GE",
+  "section": "10k_item1a",
+  "year_from": 2020,
+  "year_to": 2021,
+  "artifacts": {
+    "ranked_items": [
+      {
+        "label": "ge capital",
+        "score": 0.0022973718066531886
+      },
+      {
+        "label": "ge",
+        "score": 0.0018211839635768308
+      },
+      {
+        "label": "capital",
+        "score": 0.001234772837750105
+      },
+      {
+        "label": "separation transactions",
+        "score": 0.0012057272042200451
+      },
+      {
+        "label": "independent",
+        "score": 0.0008289374529012811
+      },
+      {
+        "label": "internal control",
+        "score": 0.0008289374529012811
+      },
+      {
+        "label": "separation",
+        "score": 0.0008188403890713638
+      },
+      {
+        "label": "internal",
+        "score": 0.0007517186050665441
+      },
+      {
+        "label": "control financial",
+        "score": 0.0006782215523737754
+      },
+      {
+        "label": "ge ge",
+        "score": 0.0006432641058628928
+      },
+      {
+        "label": "ge form",
+        "score": 0.0006432641058628928
+      },
+      {
+        "label": "companies",
+        "score": 0.0006063466812681727
+      },
+      {
+        "label": "management",
+        "score": 0.0005539579241635871
+      },
+      {
+        "label": "financial reporting",
+        "score": 0.0004895634191005271
+      },
+      {
+        "label": "reporting",
+        "score": 0.0004895634191005271
+      },
+      {
+        "label": "stock",
+        "score": 0.000452147701582517
+      },
+      {
+        "label": "free",
+        "score": 0.000452147701582517
+      },
+      {
+        "label": "services operations",
+        "score": 0.000452147701582517
+      },
+      {
+        "label": "common",
+        "score": 0.000452147701582517
+      },
+      {
+        "label": "common stock",
+        "score": 0.000452147701582517
+      }
+    ],
+    "stats": {
+      "jsd": 0.256664,
+      "tokens_prev": 2721,
+      "tokens_curr": 3318
+    }
+  },
+  "evidence": [
+    {
+      "year": 2021,
+      "paragraph_idx": 0,
+      "snippet": "STRATEGIC RISKS. Strategic risk relates to the Company's future business plans and strategies, including the risks associated with: our strategic plan to separate into three public companies; the global macro-environment; the global energy transition; competitive threats, the demand for our products and services and the success of our investments in technology and innovation; our portfolio of businesses and capital allocation decisions; dispositions, acquisitions, joint ventures and restructuring activity; intellectual property; and other risks.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "capital"
+      ]
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 1,
+      "snippet": "Strategic plan - We may encounter challenges to executing our plan to separate GE into three public companies, or to completing the plan within the timeframes we anticipate, and we may not realize some or all of the expected benefits of the separations.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "ge"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 0,
+      "snippet": "STRATEGIC RISKS. Strategic risk relates to the Company's future business plans and strategies, including the risks associated with: the global macro-environment; competitive threats, the demand for our products and services and the success of our investments in technology and innovation; our portfolio of businesses and capital allocation decisions; dispositions, acquisitions, joint ventures and restructuring activity; intellectual property; and other risks.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "capital"
+      ]
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 3,
+      "snippet": "Across all of our businesses, we have experienced and expect to continue to experience operational challenges from the need to protect employee health and safety, site shutdowns, workplace disruptions and restrictions on the movement of people, raw materials and goods, both at our own facilities and at those of our customers and suppliers.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "ge"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.256664,
+    "confidence": 1.0,
+    "coverage": 0.5800170823964161,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T05:02:57Z",
+    "git_commit": "77553f23af39ca9ca4d7337e78fce9b3d4e9594f",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "5ecebc6c15c4f90f5f0df472955263405fb503609f881816b080072aa45e1385",
+      "curr_text_sha256": "8f866da359fb85c2abae05d82110bca644d22892b4b9eff8ae5dad728225c143",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

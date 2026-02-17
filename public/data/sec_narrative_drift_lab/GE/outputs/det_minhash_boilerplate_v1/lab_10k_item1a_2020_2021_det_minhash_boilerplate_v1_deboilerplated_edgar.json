@@ -1,0 +1,73 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_minhash_boilerplate_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "GE",
+  "section": "10k_item1a",
+  "year_from": 2020,
+  "year_to": 2021,
+  "artifacts": {
+    "stats": {
+      "percent_reused": 0.10236220472440945,
+      "percent_new": 0.8976377952755905,
+      "reused_paragraphs": 13,
+      "total_paragraphs": 127
+    }
+  },
+  "evidence": [
+    {
+      "year": 2021,
+      "paragraph_idx": 30,
+      "snippet": "We operate in virtually every part of the world, serve customers in over 175 countries and received 56% of our revenues for 2021 from outside the United States.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 10,
+      "snippet": "We operate in virtually every part of the world, serve customers in over 170 countries and received 56% of our revenues for 2020 from outside the United States.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 44,
+      "snippet": "Competitive environment - We are dependent on the maintenance of existing product lines and service relationships, market acceptance of new product and service introductions, and technology and innovation leadership for revenue and earnings growth.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 21,
+      "snippet": "Competitive environment - We are dependent on the maintenance of existing product lines and service relationships, market acceptance of new product and service introductions and technology and innovation leadership for revenue and earnings growth.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2021,
+      "paragraph_idx": 58,
+      "snippet": "We also participate in a number of joint ventures with other companies or government enterprises in various markets around the world, including joint ventures where we have a lesser degree of control over the business operations, which expose us to additional operational, financial, reputational, legal or compliance risks.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 42,
+      "snippet": "We also participate in a number of joint ventures with other companies or government enterprises in various markets around the world, including joint ventures where we have a lesser degree of control over the business operations, which may expose us to additional operational, financial, reputational, legal or compliance risks.",
+      "why": "Matching paragraph from prior year."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.8976377952755905,
+    "confidence": 1.0,
+    "coverage": 0.5800170823964161,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T05:02:57Z",
+    "git_commit": "77553f23af39ca9ca4d7337e78fce9b3d4e9594f",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "5ecebc6c15c4f90f5f0df472955263405fb503609f881816b080072aa45e1385",
+      "curr_text_sha256": "8f866da359fb85c2abae05d82110bca644d22892b4b9eff8ae5dad728225c143",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

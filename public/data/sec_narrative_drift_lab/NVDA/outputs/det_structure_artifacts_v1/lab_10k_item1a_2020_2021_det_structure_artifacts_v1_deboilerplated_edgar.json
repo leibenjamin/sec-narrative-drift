@@ -1,0 +1,61 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_structure_artifacts_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "NVDA",
+  "section": "10k_item1a",
+  "year_from": 2020,
+  "year_to": 2021,
+  "artifacts": {
+    "stats": {
+      "headings_prev": [
+        "We created GPU-based visual and accelerated computing platforms that address four large markets:"
+      ],
+      "headings_curr": [
+        "Our GPU-based visual and accelerated computing platforms address four large markets:"
+      ],
+      "headings_added": [
+        "Our GPU-based visual and accelerated computing platforms address four large markets:"
+      ],
+      "headings_removed": [
+        "We created GPU-based visual and accelerated computing platforms that address four large markets:"
+      ],
+      "paragraph_count_prev": 58,
+      "paragraph_count_curr": 145,
+      "length_chars_prev": 19484,
+      "length_chars_curr": 41278
+    }
+  },
+  "evidence": [
+    {
+      "year": 2021,
+      "paragraph_idx": 1,
+      "snippet": "For example, we must continue to accurately forecast demand, scale and optimize utilization in our data center business, and develop and deliver next-generation autonomous driving solutions to our partners and customers or our business could be negatively impacted.",
+      "why": "Heading added: Our GPU-based visual and accelerated computing platforms address four large markets:"
+    },
+    {
+      "year": 2020,
+      "paragraph_idx": 1,
+      "snippet": "We must also continue to develop the infrastructure needed to scale our business in these areas, including customer service and support.",
+      "why": "Heading removed: We created GPU-based visual and accelerated computing platforms that address four large markets:"
+    }
+  ],
+  "metrics": {
+    "drift_score": 1.0,
+    "confidence": 0.1,
+    "coverage": 0.4167789685340863,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T05:02:50Z",
+    "git_commit": "77553f23af39ca9ca4d7337e78fce9b3d4e9594f",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "20b62b19cb33bb5cb41d651aaddc1d939f2bdeddd2d4f373f1e9803b95cd8b28",
+      "curr_text_sha256": "f185a5f8243e4b11cfb46f89bf804a468dfbc9f1ed1f591520a1f920a16e29e1",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

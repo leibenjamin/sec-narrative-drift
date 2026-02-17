@@ -1,0 +1,55 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_winnowing_fingerprint_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "KO",
+  "section": "10k_item1a",
+  "year_from": 2022,
+  "year_to": 2023,
+  "artifacts": {
+    "stats": {
+      "shared_fingerprints": 7476,
+      "prev_fingerprints": 11484,
+      "curr_fingerprints": 12430,
+      "shared_ratio": 0.6509926854754441
+    }
+  },
+  "evidence": [
+    {
+      "year": 2023,
+      "paragraph_idx": 0,
+      "snippet": "Our business, operating results, financial condition and liquidity may be adversely affected by changes in global economi",
+      "why": "Shared fingerprint span."
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 0,
+      "snippet": "Our business, operating results, financial condition and liquidity may be adversely affected by changes in global economic ",
+      "why": "Shared fingerprint span."
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 0,
+      "snippet": "Our business, operating results, financial condition and liquidity may be adversely affected by changes in global economic con",
+      "why": "Shared fingerprint span."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.6509926854754441,
+    "confidence": 1.0,
+    "coverage": 0.3327357146140762,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-17T05:02:52Z",
+    "git_commit": "77553f23af39ca9ca4d7337e78fce9b3d4e9594f",
+    "script_version": "build_lab_outputs.py@v1",
+    "inputs": {
+      "prev_text_sha256": "ac5989f10f38d27e8c1e7e1184365b7b8bd8b2a6b29238f31ccfee5f98001212",
+      "curr_text_sha256": "2be32a089e50557072275dca3cdb9070ac1329a7dd99884d9a2e2782bd8a78be",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}
