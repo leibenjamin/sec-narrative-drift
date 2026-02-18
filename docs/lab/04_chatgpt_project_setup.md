@@ -19,7 +19,7 @@ This guide makes the LLM precompute workflow frictionless in a ChatGPT Project. 
 - `metrics.warnings` must include: `"Focuspack is a subset; verify in full compare pane."`
 - If signal is weak, include one conservative warning in `metrics.warnings`.
 - Delta brief citations must use ASCII-only format: `"YYYY para NN"`.
-- Never output `¶`, `Â¶`, or `Ã‚Â¶`; use only `"YYYY para NN"`.
+- Never use pilcrow-style citation symbols (including Unicode pilcrow and mojibake variants); use only `"YYYY para NN"`.
 
 Detector-specific rules:
 - `det_llm_delta_brief_v1`: `artifacts.delta_brief` required, include `>=2` inline citations in `"YYYY para NN"` format, keep evidence to `3-8` blocks, and target `>=2` evidence blocks per year when signal allows.
