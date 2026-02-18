@@ -47,6 +47,9 @@ def build_common_strict_output_rules_block(input_file: Optional[str]) -> list[st
     lines.append("- Do NOT output section_id.")
     lines.append("- Use null when unknown.")
     lines.append("- Numeric fields must stay numeric (no quoted numbers).")
+    lines.append('- In JSON string values, escape inner double quotes as \\" and backslashes as \\\\.')
+    lines.append("- Keep string values single-line JSON strings (no literal newlines).")
+    lines.append("- Prefer plain prose without nested quoted phrases to reduce escaping mistakes.")
     lines.append("- provenance.input_file MUST match the attached input file path.")
     if input_file:
         lines.append(f'- provenance.input_file is prefilled; keep EXACTLY: "{input_file}"')
@@ -95,7 +98,9 @@ def build_delta_brief_rules_block(
     lines: list[str] = []
     lines.append("- artifacts.delta_brief must include >= 2 inline citations total.")
     lines.append('- Citation format MUST be ASCII-only: "YYYY para NN" where NN = paragraph_idx+1.')
-    lines.append('- Never output ¶, Â¶, or Ã‚Â¶; use only "YYYY para NN".')
+    lines.append(
+        '- Never use pilcrow-style citation symbols (including Unicode pilcrow and mojibake variants); use only "YYYY para NN".'
+    )
     lines.append(
         f"- Encourage pairing: every claim should contrast {pair_label} with nearby citations."
     )

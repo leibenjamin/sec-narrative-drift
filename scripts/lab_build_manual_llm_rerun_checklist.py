@@ -216,19 +216,28 @@ def build_lines(
             continue
         lines.append(f"## Wave: {ticker} ({len(wave_jobs)} jobs)")
         lines.append("")
-        lines.append("| Job | Pair | Detector | Input | Output | Thread | Saved | Validated |")
-        lines.append("| --- | --- | --- | --- | --- | --- | --- | --- |")
+        lines.append("### Status")
+        lines.append("| Job | Thread | Saved | Validated | Pair | Detector |")
+        lines.append("| --- | --- | --- | --- | --- | --- |")
         for job in wave_jobs:
             pair = f"{job.year_from}-{job.year_to}"
+            lines.append(
+                f"| {job.job_id} | [ ] | [ ] | [ ] | {pair} | `{job.detector_id}` |"
+            )
+        lines.append("")
+
+        lines.append("### Job Details")
+        lines.append("| Job | Input | Output | Thread Title |")
+        lines.append("| --- | --- | --- | --- |")
+        for job in wave_jobs:
             input_path = (
                 f"{run_pack_path}/{job.input_rel_path}"
                 if run_pack_path != "<missing>" and job.input_rel_path
                 else job.input_rel_path or "<missing>"
             )
             lines.append(
-                f"| {job.job_id} | {pair} | `{job.detector_id}` | `{input_path}` | `{job.output_rel_path}` | [ ] | [ ] | [ ] |"
+                f"| {job.job_id} | `{input_path}` | `{job.output_rel_path}` | `{job.thread_title}` |"
             )
-            lines.append(f"|  |  | thread title | `{job.thread_title}` |  |  |  |  |")
         lines.append("")
 
     lines.append("## Notes")
