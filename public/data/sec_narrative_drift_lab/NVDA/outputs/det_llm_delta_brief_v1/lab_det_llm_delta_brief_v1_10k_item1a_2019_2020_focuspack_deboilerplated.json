@@ -1,92 +1,105 @@
 {
-  "lab_schema_version": "1.0",
-  "detector_id": "det_llm_delta_brief_v1",
-  "cleaning_lens": "deboilerplated",
-  "source_id": "edgar",
-  "ticker": "NVDA",
-  "section": "10k_item1a",
-  "year_from": 2019,
-  "year_to": 2020,
-  "artifacts": {
-    "delta_brief": "Between 2019 and 2020, NVDA continues to emphasize manufacturing as core risk exposure (2019 para 10; 2020 para 10). The earlier filing is relatively more anchored in manufacturing, while the later filing adds clearer weight to manufacturing (2019 para 9; 2020 para 8). Across both years, management frames these items as operational and financial execution pressures rather than isolated one-off events (2019 para 10; 2020 para 8). This comparison should be read as directional because the lens is a focuspack subset and not the full Item 1A text (2019 para 9; 2020 para 10). Overall, the narrative indicates continuity with selective shifts in emphasis instead of a full thematic reset (2019 para 10; 2020 para 10)."
-  },
-  "evidence": [
-    {
-      "year": 2019,
-      "paragraph_idx": 9,
-      "snippet": "could be harmed if manufacturing, logistics or other operations in these locations are disrupted for any reason, including natural disasters, high heat events or water shortages, information technology system failures, military actions or economic, business, labor, environmental, public health, regulatory or political issues.",
-      "why": "Supports 2019 risk narrative context for manufacturing, artificial_intelligence.",
-      "highlights": [
-        "manufacturing",
-        "artificial_intelligence",
-        "regulation"
-      ]
-    },
-    {
-      "year": 2019,
-      "paragraph_idx": 8,
-      "snippet": "In particular, revisions to laws or regulations or their interpretation and enforcement could result in increased taxation, trade sanctions, the imposition of import duties or tariffs, restrictions and controls on imports or exports, or other retaliatory actions, which could have an adverse effect on our business plans.",
-      "why": "Supports 2019 risk narrative context for regulation, sanctions.",
-      "highlights": [
-        "regulation",
-        "sanctions",
-        "export_controls"
-      ]
-    },
-    {
-      "year": 2019,
-      "paragraph_idx": 7,
-      "snippet": "Geopolitical change or changes in government regulations and policies in the United States or abroad also may result in changing regulatory requirements, trade policies, import duties and economic disruptions that could impact our operating strategies, product demand, access to global markets, hiring, and profitability.",
-      "why": "Supports 2019 risk narrative context for demand, regulation.",
-      "highlights": [
-        "demand",
-        "regulation",
-        "geopolitics"
-      ]
-    },
-    {
-      "year": 2020,
-      "paragraph_idx": 9,
-      "snippet": "Our operations could be harmed if manufacturing, logistics or other operations in these locations are disrupted for any reason, including natural disasters, high heat events or water shortages, information technology system failures, military actions or economic, business, labor, environmental, public health, regulatory or political issues.",
-      "why": "Supports 2020 risk narrative context for manufacturing, artificial_intelligence.",
-      "highlights": [
-        "manufacturing",
-        "artificial_intelligence",
-        "regulation"
-      ]
-    },
-    {
-      "year": 2020,
-      "paragraph_idx": 7,
-      "snippet": "Geopolitical change or changes in government regulations and policies in the United States or abroad may result in changing regulatory requirements, trade policies, import duties and economic disruptions that could impact our operating strategies, product demand, access to global markets, hiring, and profitability.",
-      "why": "Supports 2020 risk narrative context for demand, regulation.",
-      "highlights": [
-        "demand",
-        "regulation",
-        "geopolitics"
-      ]
-    },
-    {
-      "year": 2020,
-      "paragraph_idx": 8,
-      "snippet": "interpretation and enforcement could result in increased taxation, trade sanctions, the imposition of import duties or tariffs, restrictions and controls on imports or exports, or other retaliatory actions, which could have an adverse effect on our business plans.",
-      "why": "Supports 2020 risk narrative context for sanctions, export_controls.",
-      "highlights": [
-        "sanctions",
-        "export_controls",
-        "tax_policy"
-      ]
-    }
-  ],
-  "metrics": {
-    "drift_score": null,
-    "confidence": 0.5,
-    "coverage": 0.836735,
-    "warnings": [
-      "Focuspack is a subset; verify in full compare pane."
-    ]
-  },
-  "provenance": {
-    "input_file": "inputs/NVDA_2019_2020_focuspack_deboilerplated.json"
-  }
+"lab_schema_version": "1.0",
+"detector_id": "det_llm_delta_brief_v1",
+"cleaning_lens": "deboilerplated",
+"source_id": "edgar",
+"ticker": "NVDA",
+"section": "10k_item1a",
+"year_from": 2019,
+"year_to": 2020,
+"artifacts": {
+"delta_brief": "Between 2019 and 2020, NVDA's risk narrative shifts from broad macro/industry uncertainty toward more event-driven disruption, adding explicit coronavirus-related shutdowns and travel restrictions in early 2020 (2020 para 11) alongside continued geopolitical/regulatory uncertainty (2019 para 8). Where 2019 discusses cyber risk in abstract terms, noting threats are constantly evolving (2019 para 4), 2020 updates this to a more specific threat taxonomy (malware, phishing, cyber-attacks) and rising sophistication (2020 para 4). Trade and policy risk also becomes more operational in 2020: losing a large customer or being unable to sell due to U.S. trade restrictions is framed as likely harming results (2020 para 21), versus 2019's general warning that geopolitical and policy shifts can affect demand, access to markets, hiring, and profitability (2019 para 8). Acquisition integration risk is sharpened by naming the Mellanox acquisition in 2020 and stressing its challenges and risks (2020 para 28), while 2019 frames acquisition/integration risk generically without deal-specific detail (2019 para 14). The 2019 selection highlights concentrated exposure to China (including Hong Kong) via billings (2019 para 12); by 2020, the selected text emphasizes the financial impact of customer concentration and collection risk, especially under trade restrictions (2020 para 21). Taken together, 2020 layers crisis and transaction-specific risks (coronavirus, Mellanox) (2020 para 11; 2020 para 28) on top of the prior year's broader macro and technology risk framing (2019 para 8; 2019 para 4). This drift toward concrete, near-term mechanisms of harm may increase the perceived sensitivity to operational and policy shocks relative to the more structural exposures emphasized in 2019 (2020 para 21; 2019 para 12)."
+},
+"evidence": [
+{
+"year": 2019,
+"paragraph_idx": 3,
+"snippet": "These threats are constantly evolving, making it increasingly difficult to successfully defend against them or implement adequate preventative measures.",
+"why": "Baseline cyber-risk framing in 2019 is high-level and emphasizes the difficulty of defense against evolving threats; useful contrast against 2020's more specific cyber language.",
+"highlights": [
+"cybersecurity (generic)",
+"evolving threats"
+]
+},
+{
+"year": 2020,
+"paragraph_idx": 3,
+"snippet": "Security breaches, computer malware, phishing, and cyber-attacks have become more prevalent and sophisticated in recent years.",
+"why": "2020 reframes cyber risk with concrete attack vectors and a trend toward greater prevalence and sophistication, indicating a more explicit cybersecurity emphasis than 2019.",
+"highlights": [
+"cybersecurity (specific vectors)",
+"rising sophistication"
+]
+},
+{
+"year": 2019,
+"paragraph_idx": 7,
+"snippet": "Geopolitical change or changes in government regulations and policies in the United States or abroad also may result in changing regulatory requirements, trade policies, import duties and economic disruptions that could impact our operating strategies, product demand, access to global markets, hiring, and profitability.",
+"why": "Shows 2019's broad description of geopolitical and regulatory change affecting trade policies and market access, providing the macro baseline for later trade-restriction mechanisms in 2020.",
+"highlights": [
+"geopolitical/regulatory risk",
+"trade policy"
+]
+},
+{
+"year": 2020,
+"paragraph_idx": 20,
+"snippet": "The loss of any of our large customers, a significant reduction in purchases by them, or our inability to sell to a customer due to U.S. trade restrictions would likely harm our financial condition and results of operations, and any difficulties in collecting accounts receivable could harm our operating results and financial condition.",
+"why": "Adds a direct mechanism of harm tied to customer concentration and U.S. trade restrictions, making the trade-policy risk more immediate and financially explicit than the 2019 framing.",
+"highlights": [
+"customer concentration",
+"U.S. trade restrictions"
+]
+},
+{
+"year": 2019,
+"paragraph_idx": 11,
+"snippet": "Revenue from billings to China, including Hong Kong, was 24% of our revenue for fiscal year 2019, even if our customers' revenue is attributable to end customers that are located in a different location.",
+"why": "Quantifies exposure tied to China (including Hong Kong) billings in 2019, which helps contextualize 2020's increased focus on restrictions and disruption tied to China-related events.",
+"highlights": [
+"China/Hong Kong revenue exposure"
+]
+},
+{
+"year": 2020,
+"paragraph_idx": 10,
+"snippet": "In January 2020, a novel strain of coronavirus was identified in China, resulting in shutdowns of manufacturing and commerce, as well as global travel restrictions to contain the virus.",
+"why": "Introduces COVID-19 as a new, time-specific operational and supply-chain disruption risk in 2020, a notable addition relative to 2019's more general disruption language.",
+"highlights": [
+"COVID-19 disruption",
+"shutdowns/travel restrictions"
+]
+},
+{
+"year": 2019,
+"paragraph_idx": 13,
+"snippet": "We may not be able to realize the potential financial or strategic benefits of business acquisitions or strategic investments and we may not be able to successfully integrate acquisition targets, which could hurt our ability to grow our business, develop new products or sell our products.",
+"why": "2019 describes acquisition and integration risk in generic terms, serving as a baseline for the more deal-specific acquisition risk discussion that appears in 2020.",
+"highlights": [
+"acquisition integration risk (generic)"
+]
+},
+{
+"year": 2020,
+"paragraph_idx": 27,
+"snippet": "The Mellanox acquisition and other past or future acquisitions or investments involve significant challenges and risks, and could impair our ability to grow our business, develop new products or sell our products, and ultimately could have a negative impact on our growth or our financial results.",
+"why": "2020 names the Mellanox acquisition and emphasizes integration challenges, sharpening acquisition risk into a transaction-specific narrative compared with 2019.",
+"highlights": [
+"Mellanox acquisition",
+"integration risk"
+]
+}
+],
+"metrics": {
+"drift_score": null,
+"confidence": 0.5,
+"coverage": 0.11339749714525413,
+"warnings": [
+"Focuspack is a subset; verify in full compare pane.",
+"Lens coverage is low; additional risk-factor deltas may exist outside this subset."
+]
+},
+"provenance": {
+"input_file": "inputs/NVDA_2019_2020_focuspack_deboilerplated.json"
+}
 }
