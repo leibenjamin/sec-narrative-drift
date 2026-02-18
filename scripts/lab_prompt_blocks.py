@@ -5,6 +5,10 @@ from typing import Optional
 DETECTOR_DELTA_BRIEF = "det_llm_delta_brief_v1"
 DETECTOR_EXCERPT_PICKER = "det_llm_excerpt_picker_v1"
 SUPPORTED_DETECTORS = {DETECTOR_DELTA_BRIEF, DETECTOR_EXCERPT_PICKER}
+REQUIRED_TOP_LEVEL_KEYS = (
+    "lab_schema_version, detector_id, cleaning_lens, source_id, ticker, section, "
+    "year_from, year_to, artifacts, evidence, metrics, provenance"
+)
 
 FOCUSPACK_WARNING = "Focuspack is a subset; verify in full compare pane."
 DEFAULT_SNIPPET_MAX_CHARS = 350
@@ -37,8 +41,12 @@ def build_common_strict_output_rules_block(input_file: Optional[str]) -> list[st
     lines.append("- JSON ONLY.")
     lines.append("- No markdown.")
     lines.append("- No backticks.")
+    lines.append("- Output exactly one top-level JSON object.")
+    lines.append(f"- Top-level keys must be exactly: {REQUIRED_TOP_LEVEL_KEYS}.")
     lines.append("- No extra top-level keys.")
+    lines.append("- Do NOT output section_id.")
     lines.append("- Use null when unknown.")
+    lines.append("- Numeric fields must stay numeric (no quoted numbers).")
     lines.append("- provenance.input_file MUST match the attached input file path.")
     if input_file:
         lines.append(f'- provenance.input_file is prefilled; keep EXACTLY: "{input_file}"')
