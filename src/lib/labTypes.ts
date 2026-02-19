@@ -24,14 +24,17 @@ export type LabMetrics = {
 }
 
 export type LabProvenance = {
-  build_utc: string
-  git_commit: string
-  script_version: string
-  inputs: Record<string, string>
+  build_utc?: string
+  git_commit?: string
+  script_version?: string
+  inputs?: Record<string, string>
   notes?: string[]
   input_file?: string
   input_path?: string
   output_path?: string
+  model_provider?: string
+  model_name?: string
+  run_label?: string
   focuspack_meta?: Record<string, unknown>
 }
 

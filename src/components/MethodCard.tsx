@@ -1,6 +1,12 @@
-import { useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import EvidenceStack from "./EvidenceStack"
 import LabExcerptPickerPanel from "./LabExcerptPickerPanel"
+import {
+  buildDefaultLlmInputFile,
+  buildLlmThreadStarterText,
+  isLlmDetector,
+  loadLlmProjectInstructionsText,
+} from "../lib/labLlmRepro"
 import type { LabCleaningLens, LabOutput, RankedItem } from "../lib/labTypes"
 
 const EMPTY_ITEMS: RankedItem[] = []
@@ -78,10 +84,17 @@ export default function MethodCard({
   debugInfo,
 }: MethodCardProps) {
   const [copyState, setCopyState] = useState<"idle" | "copied" | "failed">("idle")
+  const [copyStarterState, setCopyStarterState] = useState<"idle" | "copied" | "failed">("idle")
+  const [copyInstructionsState, setCopyInstructionsState] = useState<"idle" | "copied" | "failed">(
+    "idle"
+  )
+  const [projectInstructions, setProjectInstructions] = useState<string>("")
+  const [projectInstructionsError, setProjectInstructionsError] = useState<string | null>(null)
   const warnings = output?.metrics.warnings ?? []
   const rankedItems = normalizeRankedList(output?.artifacts.ranked_items)
   const topRisers = normalizeRankedList(output?.artifacts.top_risers)
   const topFallers = normalizeRankedList(output?.artifacts.top_fallers)
+  const llmCard = isLlmDetector(detectorId)
   const isExcerptPicker = output?.detector_id === "det_llm_excerpt_picker_v1"
   const isDeltaBrief = output?.detector_id === "det_llm_delta_brief_v1"
   const deltaBriefRaw = isDeltaBrief ? output?.artifacts.delta_brief : null
@@ -91,6 +104,57 @@ export default function MethodCard({
       : deltaBriefRaw
         ? JSON.stringify(deltaBriefRaw, null, 2)
         : ""
+  const provenance = output?.provenance as Record<string, unknown> | undefined
+  const modelProvider =
+    typeof provenance?.model_provider === "string" ? provenance.model_provider : null
+  const modelName = typeof provenance?.model_name === "string" ? provenance.model_name : null
+  const runLabel = typeof provenance?.run_label === "string" ? provenance.run_label : null
+  const fallbackInputFile = debugInfo
+    ? buildDefaultLlmInputFile(
+        debugInfo.ticker,
+        debugInfo.yearFrom,
+        debugInfo.yearTo,
+        debugInfo.lens
+      )
+    : null
+  const inputFileForRerun =
+    typeof provenance?.input_file === "string" && provenance.input_file
+      ? provenance.input_file
+      : fallbackInputFile
+  const threadStarterText = useMemo(() => {
+    if (!llmCard || !debugInfo || !inputFileForRerun) return null
+    return buildLlmThreadStarterText({
+      ticker: debugInfo.ticker,
+      yearFrom: debugInfo.yearFrom,
+      yearTo: debugInfo.yearTo,
+      detectorId: debugInfo.detectorId || detectorId,
+      lens: debugInfo.lens,
+      inputFile: inputFileForRerun,
+      expectedOutputPath: debugInfo.expectedPath ?? null,
+      sourceId: output?.source_id ?? "edgar",
+    })
+  }, [llmCard, debugInfo, inputFileForRerun, detectorId, output?.source_id])
+
+  useEffect(() => {
+    if (!llmCard) return
+    let cancelled = false
+    loadLlmProjectInstructionsText()
+      .then((text) => {
+        if (!cancelled) {
+          setProjectInstructions(text)
+          setProjectInstructionsError(null)
+        }
+      })
+      .catch((error) => {
+        if (!cancelled) {
+          setProjectInstructions("")
+          setProjectInstructionsError(error instanceof Error ? error.message : "Failed to load.")
+        }
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [llmCard])
 
   const handleCopyDebug = async () => {
     if (!debugInfo) return
@@ -106,6 +170,18 @@ export default function MethodCard({
     }
     const didCopy = await copyTextToClipboard(JSON.stringify(payload, null, 2))
     setCopyState(didCopy ? "copied" : "failed")
+  }
+
+  const handleCopyThreadStarter = async () => {
+    if (!threadStarterText) return
+    const didCopy = await copyTextToClipboard(threadStarterText)
+    setCopyStarterState(didCopy ? "copied" : "failed")
+  }
+
+  const handleCopyProjectInstructions = async () => {
+    if (!projectInstructions) return
+    const didCopy = await copyTextToClipboard(projectInstructions)
+    setCopyInstructionsState(didCopy ? "copied" : "failed")
   }
 
   return (
@@ -164,6 +240,73 @@ export default function MethodCard({
         </div>
       ) : null}
 
+      {llmCard ? (
+        <div className="mt-3 rounded-md border border-sky-300/30 bg-sky-400/10 p-3 text-xs text-slate-100">
+          <div className="text-xs font-semibold uppercase tracking-wide text-sky-200">
+            Run this output yourself
+          </div>
+          <p className="mt-1 text-[11px] text-slate-200">
+            This detector is precomputed offline. Use the same input and starter text to rerun in
+            ChatGPT Desktop for reproducible outputs.
+          </p>
+          <div className="mt-2 space-y-1 text-[11px] text-slate-200">
+            <div>
+              Model:{" "}
+              <span className="text-slate-100">
+                {modelProvider && modelName ? `${modelProvider} / ${modelName}` : "not set"}
+              </span>
+            </div>
+            {runLabel ? (
+              <div>
+                Run label: <span className="text-slate-100">{runLabel}</span>
+              </div>
+            ) : null}
+            <div className="break-all">
+              Input file: <span className="text-slate-100">{inputFileForRerun ?? "not available"}</span>
+            </div>
+            <div className="break-all">
+              Expected output path:{" "}
+              <span className="text-slate-100">{debugInfo?.expectedPath ?? "not available"}</span>
+            </div>
+          </div>
+          <div className="mt-3 flex flex-wrap items-center gap-2">
+            <button
+              type="button"
+              onClick={handleCopyThreadStarter}
+              disabled={!threadStarterText}
+              className="rounded-md border border-white/20 bg-slate-900/60 px-2 py-1 text-[11px] text-slate-100 transition hover:border-white/40 disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              Copy thread starter
+            </button>
+            <button
+              type="button"
+              onClick={handleCopyProjectInstructions}
+              disabled={!projectInstructions}
+              className="rounded-md border border-white/20 bg-slate-900/60 px-2 py-1 text-[11px] text-slate-100 transition hover:border-white/40 disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              Copy project instructions
+            </button>
+            {copyStarterState === "copied" ? (
+              <span className="text-[11px] text-emerald-300">Starter copied.</span>
+            ) : null}
+            {copyStarterState === "failed" ? (
+              <span className="text-[11px] text-rose-300">Starter copy failed.</span>
+            ) : null}
+            {copyInstructionsState === "copied" ? (
+              <span className="text-[11px] text-emerald-300">Instructions copied.</span>
+            ) : null}
+            {copyInstructionsState === "failed" ? (
+              <span className="text-[11px] text-rose-300">Instructions copy failed.</span>
+            ) : null}
+          </div>
+          {projectInstructionsError ? (
+            <div className="mt-2 text-[11px] text-amber-100">
+              Instruction text fallback in use: {projectInstructionsError}
+            </div>
+          ) : null}
+        </div>
+      ) : null}
+
       {output ? (
         <div className="mt-4 space-y-4">
           {warnings.length ? (
@@ -181,7 +324,7 @@ export default function MethodCard({
                     key={item.label}
                     className="rounded-full border border-white/10 bg-white/5 px-2 py-1 text-xs text-slate-200"
                   >
-                    {item.label} · {item.score.toFixed(2)}
+                    {item.label} | {item.score.toFixed(2)}
                   </span>
                 ))}
               </div>

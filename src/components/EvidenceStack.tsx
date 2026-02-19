@@ -30,9 +30,7 @@ export default function EvidenceStack({
         return (
           <div key={`${block.year}-${idx}`} className="rounded-md border border-white/10 bg-white/5 p-3">
             <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-slate-300">
-              <span>
-                {block.year} • ¶{block.paragraph_idx + 1}
-              </span>
+              <span>{block.year} para {block.paragraph_idx + 1}</span>
               <span className="text-slate-400">{block.why}</span>
             </div>
             <p className="mt-2 text-sm text-slate-100">

@@ -501,7 +501,7 @@ export default function LabPanel({ ticker }: { ticker: string }) {
   }
 
   if (isLoadingCases) {
-    return <p className="text-sm text-slate-300">Loading lab cases?</p>
+    return <p className="text-sm text-slate-300">Loading lab cases...</p>
   }
 
   if (caseError) {
@@ -538,7 +538,7 @@ export default function LabPanel({ ticker }: { ticker: string }) {
           >
             Open methodology
           </a>
-          .
+          . LLM detector cards also include copy-ready rerun instructions.
         </p>
       </div>
 

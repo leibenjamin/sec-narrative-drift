@@ -167,7 +167,7 @@ function ExcerptCard({
       <div className="flex flex-wrap items-center justify-between gap-2">
         <div className="text-xs uppercase tracking-wide text-slate-300">{title}</div>
         <div className="text-[11px] text-slate-400">
-          {block.year} • ¶{block.paragraph_idx + 1}
+          {block.year} para {block.paragraph_idx + 1}
         </div>
       </div>
       <div className="text-[11px] text-slate-400">{block.why}</div>
@@ -341,7 +341,7 @@ export default function LabExcerptPickerPanel({ output }: { output: LabOutput })
           <div className="mt-2 text-[11px] text-amber-200/80">{effectiveStatus.error}</div>
         ) : null}
         {effectiveStatus.isLoading ? (
-          <div className="mt-2 text-[11px] text-slate-400">Loading full paragraphs…</div>
+          <div className="mt-2 text-[11px] text-slate-400">Loading full paragraphs...</div>
         ) : null}
       </div>
 

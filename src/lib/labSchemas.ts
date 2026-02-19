@@ -32,11 +32,18 @@ export const LabMetricsSchema = z.object({
 
 export const LabProvenanceSchema = z
   .object({
-    build_utc: z.string(),
-    git_commit: z.string(),
-    script_version: z.string(),
-    inputs: z.record(z.string(), z.string()),
+    build_utc: z.string().optional(),
+    git_commit: z.string().optional(),
+    script_version: z.string().optional(),
+    inputs: z.record(z.string(), z.string()).optional(),
     notes: z.array(z.string()).optional(),
+    input_file: z.string().optional(),
+    input_path: z.string().optional(),
+    output_path: z.string().optional(),
+    model_provider: z.string().optional(),
+    model_name: z.string().optional(),
+    run_label: z.string().optional(),
+    focuspack_meta: z.record(z.string(), z.unknown()).optional(),
   })
   .passthrough()
 
