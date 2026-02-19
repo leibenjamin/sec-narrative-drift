@@ -1,6 +1,6 @@
 ﻿# SEC Narrative Drift Lab - Remaining Work Plan (Codex Execution Doc)
 Last updated: 2026-02-19
-Scope: deterministic pipeline + React UI Lab tab
+Scope: deterministic pipeline + React UI Lab-first product flow
 Showcase tickers: NVDA, KO, WM, GE
 Core time window: 2019-2024 adjacent year pairs (include most recent even if low signal); 2024-2025 only if locally available
 
@@ -44,6 +44,12 @@ Core time window: 2019-2024 adjacent year pairs (include most recent even if low
 - Phase 4 complete (moderate cleanup):
   - stale/non-canonical data moved into `attic/`,
   - canonical docs added: `docs/00_DOC_INDEX.md`, `docs/PORTFOLIO_STORY.md`.
+- Phase 5 complete (Lab-first UI pivot):
+  - routes kept stable but behavior is now Lab-only (`/company/:ticker` always Lab),
+  - `tab=overview` normalized to `tab=lab`,
+  - Home/Showcase/Methodology rewritten around Lab narrative and showcase scope,
+  - runtime dependencies on legacy `src/lib/data.ts` + pre-Lab overview components removed,
+  - retired pre-Lab UI modules archived into `attic/`.
 
 Remaining human/manual work (post-hardening):
 - rerun all 42 LLM jobs with strict instructions and required provenance model metadata,

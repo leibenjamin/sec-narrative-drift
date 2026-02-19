@@ -21,6 +21,8 @@ This directory stores non-canonical historical artifacts that are not used by th
   - `public/data/sec_narrative_drift_lab/KO/lab_10k_item1a_*`
   - `public/data/sec_narrative_drift_lab/WM/lab_10k_item1a_*`
   - `public/data/sec_narrative_drift_lab/GE/lab_10k_item1a_*`
+- Pre-Lab runtime UI modules archived after Lab-first pivot:
+  - see `attic/legacy_ui_pre_lab_20260219.md`
 
 ## Safety checks used before moving
 - `lab_cases_v1.json` has no AAPL/TSLA case references.

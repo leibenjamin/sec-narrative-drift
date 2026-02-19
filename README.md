@@ -1,68 +1,41 @@
-# SEC Narrative Drift
+# SEC Narrative Drift Lab
 
-A small portfolio app that turns 10-K **Item 1A (Risk Factors)** into an auditable "what changed?" workflow:
-- **Drift timeline** (where the narrative shifts most year-to-year)
-- **Similarity heatmap** (pick a year pair)
-- **Term shifts** (distinctive terms; smoothed log-odds)
-- **Evidence-first compare** (representative excerpts + "View on SEC")
+Portfolio-focused, deterministic-first analysis of adjacent SEC 10-K Item 1A risk-factor years.
 
 Live: https://benlei.org/sec-narrative-drift/
 
-## What this is (and isn't)
+## Product direction
+- Lab-first UI and UX (Home, Showcase, Company Lab, Methodology).
+- Showcase scope: `NVDA`, `KO`, `WM`, `GE`.
+- Runtime reads static JSON only from `public/data/sec_narrative_drift_lab/`.
+- No runtime ML/LLM calls. LLM outputs are optional precomputed sidecars.
 
-This is **descriptive**, not causal. Drift is a reading prompt, not a conclusion.
+## Key guarantees
+- Deterministic detectors and fixed output envelopes.
+- SEC text treated as untrusted; rendered as text nodes only.
+- Explicit missing-artifact states with expected paths and copyable debug payloads.
+- Deep-link compatibility kept for `/company/:ticker?from=YYYY&to=YYYY` (Lab-only behavior).
 
-It also does **not** ship full filing text. The demo stores short excerpts only and links back to EDGAR for verification.
-
-## Methodology in brief
-
-- **Extraction:** Parse filing HTML, drop scripts/tables, locate Item 1A / Item 3.D via heading heuristics + TOC scoring, split into paragraphs, and score confidence.
-- **Drift:** TF-IDF cosine similarity between adjacent years; drift = 1 - similarity. (Optional) bootstrap CI bands and an approximate boilerplate-reuse score.
-- **Term shifts:** Smoothed log-odds with a Dirichlet prior; rank score applies a document-frequency penalty to downweight boilerplate. Phrases include PMI bigrams + an allowlist; the alternate lens uses TextRank keyphrases.
-- **Deterministic:** No LLMs or opaque models in the core metrics. Everything is reproducible from the text and parameters.
-
-## Data source
-
-- SEC EDGAR 10-K filings (public).
-- Section: Item 1A "Risk Factors".
-
-## Local dev
-
+## Local development
 ```bash
 npm install
 npm run dev
 ```
 
-## Build & deploy
-
+## Required gates
 ```bash
+npm run lab:predeploy
+npm run lab:portfolio
 npm run build
-npm run preview
 ```
 
-Static hosting (e.g., Cloudflare Pages / GitHub Pages) works well.
+## Canonical docs
+- `docs/00_DOC_INDEX.md`
+- `docs/LAB_REMAINING_WORK_PLAN.md`
+- `docs/PORTFOLIO_STORY.md`
+- `docs/SEC_TEXT_SAFETY.md`
+- `docs/lab/05_llm_reproducibility_contract.md`
 
-## Scripts (data build)
-
-See `scripts/README.md` for batch builds and how we fetch filings responsibly (User-Agent, rate limits, caching).
-
-## Related work (and how this differs)
-
-There are many ways to download/extract SEC sections. This project's focus is narrower: **auditable change signals + evidence UX**.
-
-- EDGAR-CRAWLER (WWW 2025): https://github.com/lefterisloukas/edgar-crawler  
-  Great for corpora; SEC Narrative Drift starts after extraction: change metrics + evidence UX.
-
-- itemseg (10-K item segmentation): https://pypi.org/project/itemseg/  
-  A stronger segmenter can be swapped in; the UI/metrics aren't married to one parser.
-
-- Boilerplate & stickiness framing (Harvard Forum, 2024):  
-  https://corpgov.law.harvard.edu/2024/03/26/covid-19-risk-factors-and-boilerplate-disclosure/
-
-- Disclosure evolution & stickiness (Dyer et al., JAE 2017):  
-  https://msbfile03.usc.edu/digitalmeasures/sticelaw/intellcont/Dyer%20et%20al.%202017-1.pdf
-
-- Crisis years reduce boilerplate (Nature HSSC, 2024):  
-  https://www.nature.com/articles/s41599-024-04169-w
-
-_Not affiliated with the above tools/papers._
+## Notes
+- `bundles/*` are local-only run artifacts for manual LLM jobs.
+- Archived non-canonical artifacts live under `attic/`.

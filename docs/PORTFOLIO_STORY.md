@@ -4,7 +4,7 @@
 This Lab shows how risk disclosures change year-over-year using deterministic detectors, then layers optional precomputed LLM summaries as an offline artifact.
 
 ## What to demo first (30 seconds)
-1. Open a showcase company and switch to the `Lab` tab.
+1. Open a showcase company page (company pages are now Lab-only).
 2. Show a recommended adjacent pair (for example `NVDA 2021-2022`).
 3. Explain:
    - deterministic detectors quantify shift/reuse/structure changes,

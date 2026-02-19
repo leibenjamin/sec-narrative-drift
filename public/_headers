@@ -5,16 +5,26 @@
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
   Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'
 
-# JSON data: immutable once published, long cache with revalidation
-/data/sec_narrative_drift/*.json
+# Lab JSON data (canonical runtime): long cache with revalidation
+/data/sec_narrative_drift_lab/*.json
   Cache-Control: public, max-age=86400, stale-while-revalidate=604800
 
-/data/sec_narrative_drift/*/*.json
+/data/sec_narrative_drift_lab/*/*.json
   Cache-Control: public, max-age=86400, stale-while-revalidate=604800
 
-# Index file: shorter cache for discovery
-/data/sec_narrative_drift/index.json
+/data/sec_narrative_drift_lab/*/*/*.json
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+
+/data/sec_narrative_drift_lab/*/*/*/*.json
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+
+# Lab registry is frequently refreshed while iterating
+/data/sec_narrative_drift_lab/lab_cases_v1.json
   Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
+# Legacy dataset remains published for backward compatibility only
+/data/sec_narrative_drift/*.json
+  Cache-Control: public, max-age=600, stale-while-revalidate=3600
 
 # Static assets: aggressive caching (hashed filenames)
 /assets/*

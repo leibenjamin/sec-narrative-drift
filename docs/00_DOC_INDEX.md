@@ -27,3 +27,4 @@
 ## Local-only artifacts
 - `bundles/*` - local run packs and handoff artifacts (kept uncommitted by policy).
 - `attic/*` - archived historical artifacts, not used by production runtime.
+  - `attic/legacy_ui_pre_lab_20260219.md` documents the hard Lab-first UI archive mapping.
