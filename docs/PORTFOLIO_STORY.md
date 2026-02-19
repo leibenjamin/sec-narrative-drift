@@ -16,6 +16,8 @@ This Lab shows how risk disclosures change year-over-year using deterministic de
 - No runtime LLM/ML calls.
 - SEC text is treated as untrusted and rendered as plain text nodes (no HTML injection APIs).
 - Canonical output contract is stable: `outputs/<detector_id>/<filename>.json`.
+- LLM layer is reproducible: users can rerun from published focuspack inputs and thread-starter instructions.
+- Provenance is model-aware (`model_provider`, `model_name`, optional `run_label`) to support future model-vs-model comparisons.
 
 ## Suggested walkthrough sequence
 1. Deterministic baseline:

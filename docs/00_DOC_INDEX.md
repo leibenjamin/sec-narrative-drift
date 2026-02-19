@@ -5,6 +5,7 @@
 - `docs/LAB_REMAINING_WORK_PLAN.md` - execution status and remaining work.
 - `docs/PORTFOLIO_STORY.md` - demo narrative for interviews and portfolio walkthroughs.
 - `docs/SEC_TEXT_SAFETY.md` - SEC text trust model and rendering safety rules.
+- `docs/lab/05_llm_reproducibility_contract.md` - strict manual LLM rerun contract and validation requirements.
 
 ## Product and contract docs
 - `docs/sec_narrative_drift_codex_spec_v1_13.md` - product/data contract baseline.

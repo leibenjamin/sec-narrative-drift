@@ -1,5 +1,5 @@
 ﻿# SEC Narrative Drift Lab - Remaining Work Plan (Codex Execution Doc)
-Last updated: 2026-02-17
+Last updated: 2026-02-19
 Scope: deterministic pipeline + React UI Lab tab
 Showcase tickers: NVDA, KO, WM, GE
 Core time window: 2019-2024 adjacent year pairs (include most recent even if low signal); 2024-2025 only if locally available
@@ -22,14 +22,21 @@ Core time window: 2019-2024 adjacent year pairs (include most recent even if low
   - RAW prerequisite audit added: `scripts/lab_build_raw_prereq_audit.py`,
   - RAW outputs backfilled for all eligible showcase adjacent pairs,
   - audit report added: `reports/lab_raw_prereq_audit.md`.
-- Phase 2 complete:
+- Phase 2 complete (baseline):
   - manifest/run-pack generator added: `scripts/lab_build_llm_run_manifest.py`,
   - manifest validator added: `scripts/lab_validate_llm_manifest_outputs.py`,
   - generated artifacts:
     - `reports/lab_llm_run_manifest.md`
     - `reports/lab_llm_run_manifest.json`
     - local-only `bundles/llm_run_pack_<UTCSTAMP>/inputs/*` + `THREAD_STARTERS.md`.
-  - current manifest/validator state: `42/42` LLM targets present, `missing=0`, `invalid=0`, `present_flag_mismatch=0`.
+  - current baseline manifest state: `42/42` LLM targets present.
+- Phase 2 hardening pass in progress:
+  - strict zero-touch reproducibility contract and docs refresh,
+  - strict validator upgrades (verbatim snippet mapping + provenance model metadata),
+  - stale run-pack replacement with strict starters (pending writable `bundles/` in this environment),
+  - Lab UI reproducibility panel and schema compatibility hardening.
+  - strict validator snapshot now intentionally reports legacy outputs as non-compliant:
+    `missing=0`, `invalid=42`, `present_flag_mismatch=0` (expected until manual reruns).
 - Phase 3 complete (implementation):
   - Lab explainer added ("What am I looking at?"),
   - explicit missing artifact states with expected path + requested URL + copy-debug payload,
@@ -38,8 +45,9 @@ Core time window: 2019-2024 adjacent year pairs (include most recent even if low
   - stale/non-canonical data moved into `attic/`,
   - canonical docs added: `docs/00_DOC_INDEX.md`, `docs/PORTFOLIO_STORY.md`.
 
-Remaining human/manual work:
-- Live/incognito screenshot verification on deployed site for final UX confirmation.
+Remaining human/manual work (post-hardening):
+- rerun all 42 LLM jobs with strict instructions and required provenance model metadata,
+- live/incognito screenshot verification on deployed site for final UX confirmation.
 
 ---
 
