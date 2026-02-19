@@ -21,42 +21,49 @@ const DETECTOR_CATALOG = [
     id: "det_logodds_terms_v1",
     label: "Log-odds terms",
     description: "Distinctive term shifts from the baseline log-odds detector.",
+    group: "core",
     defaultSelected: true,
   },
   {
     id: "det_jsd_ngrams_v1",
     label: "JSD n-grams",
     description: "Distributional drift using Jensen-Shannon divergence.",
+    group: "core",
     defaultSelected: true,
   },
   {
     id: "det_minhash_boilerplate_v1",
     label: "Minhash boilerplate",
     description: "Near-duplicate paragraph reuse estimates.",
+    group: "structure",
     defaultSelected: true,
   },
   {
     id: "det_winnowing_fingerprint_v1",
     label: "Winnowing fingerprints",
     description: "Shared fingerprint spans between years.",
+    group: "structure",
     defaultSelected: false,
   },
   {
     id: "det_structure_artifacts_v1",
     label: "Structure artifacts",
     description: "Heading and length changes across years.",
+    group: "structure",
     defaultSelected: true,
   },
   {
     id: "det_llm_delta_brief_v1",
     label: "LLM delta brief (precomputed)",
     description: "Precomputed narrative summary.",
+    group: "llm",
     defaultSelected: false,
   },
   {
     id: "det_llm_excerpt_picker_v1",
     label: "LLM excerpt picker (precomputed)",
     description: "Precomputed excerpt selection.",
+    group: "llm",
     defaultSelected: false,
   },
 ]
@@ -64,6 +71,19 @@ const DETECTOR_CATALOG = [
 const DEFAULT_SELECTED = DETECTOR_CATALOG.filter((det) => det.defaultSelected).map(
   (det) => det.id
 )
+const EXECUTIVE_READ_PRESET = ["det_logodds_terms_v1", "det_jsd_ngrams_v1"]
+const TECHNICAL_DEEP_DIVE_PRESET = [
+  "det_logodds_terms_v1",
+  "det_jsd_ngrams_v1",
+  "det_minhash_boilerplate_v1",
+  "det_winnowing_fingerprint_v1",
+  "det_structure_artifacts_v1",
+]
+const DETECTOR_GROUP_ORDER = [
+  { id: "core", label: "Core drift methods" },
+  { id: "structure", label: "Reuse and structure methods" },
+  { id: "llm", label: "LLM sidecars (precomputed)" },
+] as const
 const LENS_PREFERENCE_ORDER: LabCleaningLens[] = [
   "deboilerplated",
   "raw",
@@ -507,6 +527,34 @@ export default function LabPanel({
     return DETECTOR_CATALOG.filter((det) => selected.has(det.id))
   }, [selectedDetectors])
 
+  const detectorGroups = useMemo(() => {
+    return DETECTOR_GROUP_ORDER.map((group) => ({
+      ...group,
+      detectors: DETECTOR_CATALOG.filter((detector) => detector.group === group.id),
+    }))
+  }, [])
+
+  const selectedAvailableDetectorCount = useMemo(() => {
+    let count = 0
+    for (const detectorId of selectedDetectors) {
+      if (availableDetectorSet.has(detectorId)) {
+        count += 1
+      }
+    }
+    return count
+  }, [availableDetectorSet, selectedDetectors])
+
+  const selectedPairLabel = selectedCase
+    ? `${selectedCase.year_from}-${selectedCase.year_to}`
+    : "none"
+
+  const handleApplyPreset = (presetDetectorIds: string[], preferredLens: LabCleaningLens) => {
+    setSelectedDetectors(presetDetectorIds)
+    if (availableLenses.includes(preferredLens)) {
+      setLens(preferredLens)
+    }
+  }
+
   const handleReloadOutputs = () => {
     clearLabOutputCache()
     setReloadNonce((previous) => previous + 1)
@@ -581,6 +629,27 @@ export default function LabPanel({
         </p>
       </div>
 
+      <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="rounded-lg border border-white/10 bg-slate-900/50 p-3">
+          <div className="text-[11px] uppercase tracking-wide text-slate-400">Selected pair</div>
+          <div className="mt-1 text-sm font-semibold text-slate-100">{selectedPairLabel}</div>
+        </div>
+        <div className="rounded-lg border border-white/10 bg-slate-900/50 p-3">
+          <div className="text-[11px] uppercase tracking-wide text-slate-400">Lens</div>
+          <div className="mt-1 text-sm font-semibold text-slate-100">{lens}</div>
+        </div>
+        <div className="rounded-lg border border-white/10 bg-slate-900/50 p-3">
+          <div className="text-[11px] uppercase tracking-wide text-slate-400">Methods selected</div>
+          <div className="mt-1 text-sm font-semibold text-slate-100">{selectedDetectors.length}</div>
+        </div>
+        <div className="rounded-lg border border-white/10 bg-slate-900/50 p-3">
+          <div className="text-[11px] uppercase tracking-wide text-slate-400">Selected methods available</div>
+          <div className="mt-1 text-sm font-semibold text-slate-100">
+            {selectedAvailableDetectorCount}/{selectedDetectors.length}
+          </div>
+        </div>
+      </div>
+
       <div className="grid gap-4 lg:grid-cols-[2fr,1fr]">
         <div className="space-y-4 rounded-lg border border-white/10 bg-white/5 p-4">
           <div className="flex flex-wrap items-center justify-between gap-3">
@@ -627,39 +696,62 @@ export default function LabPanel({
                 </div>
               </div>
             </div>
-            <div className="mt-2 flex flex-wrap gap-3">
-              {DETECTOR_CATALOG.map((detector) => {
-                const isAvailable = availableDetectorSet.has(detector.id)
-                const isSelected = selectedDetectors.includes(detector.id)
-                return (
-                  <label
-                    key={detector.id}
-                    className={`flex items-center gap-2 rounded-full border px-3 py-1 text-xs ${
-                      isAvailable
-                        ? "border-white/10 bg-white/5 text-slate-200"
-                        : "border-amber-300/30 bg-amber-400/10 text-amber-100"
-                    }`}
-                  >
-                    <input
-                      type="checkbox"
-                      className="h-3 w-3"
-                      checked={isSelected}
-                      onChange={() => {
-                        setSelectedDetectors((prev) => {
-                          if (prev.includes(detector.id)) {
-                            return prev.filter((item) => item !== detector.id)
-                          }
-                          return [...prev, detector.id]
-                        })
-                      }}
-                    />
-                    <span>
-                      {detector.label}
-                      {!isAvailable ? " (missing artifact)" : ""}
-                    </span>
-                  </label>
-                )
-              })}
+            <div className="mt-3 flex flex-wrap items-center gap-2">
+              <button
+                type="button"
+                onClick={() => handleApplyPreset(EXECUTIVE_READ_PRESET, "deboilerplated")}
+                className="rounded-md border border-sky-300/30 bg-sky-400/10 px-2 py-1 text-[11px] text-sky-100 transition hover:border-sky-200/60"
+              >
+                30-second executive read
+              </button>
+              <button
+                type="button"
+                onClick={() => handleApplyPreset(TECHNICAL_DEEP_DIVE_PRESET, lens)}
+                className="rounded-md border border-white/20 bg-slate-900/60 px-2 py-1 text-[11px] text-slate-100 transition hover:border-white/40"
+              >
+                Technical deep dive
+              </button>
+            </div>
+            <div className="mt-3 space-y-3">
+              {detectorGroups.map((group) => (
+                <div key={group.id} className="rounded-md border border-white/10 bg-slate-950/30 p-3">
+                  <div className="text-[11px] uppercase tracking-wide text-slate-400">{group.label}</div>
+                  <div className="mt-2 flex flex-wrap gap-2">
+                    {group.detectors.map((detector) => {
+                      const isAvailable = availableDetectorSet.has(detector.id)
+                      const isSelected = selectedDetectors.includes(detector.id)
+                      return (
+                        <label
+                          key={detector.id}
+                          className={`flex items-center gap-2 rounded-full border px-3 py-1 text-xs ${
+                            isAvailable
+                              ? "border-white/10 bg-white/5 text-slate-200"
+                              : "border-amber-300/30 bg-amber-400/10 text-amber-100"
+                          }`}
+                        >
+                          <input
+                            type="checkbox"
+                            className="h-3 w-3"
+                            checked={isSelected}
+                            onChange={() => {
+                              setSelectedDetectors((prev) => {
+                                if (prev.includes(detector.id)) {
+                                  return prev.filter((item) => item !== detector.id)
+                                }
+                                return [...prev, detector.id]
+                              })
+                            }}
+                          />
+                          <span>
+                            {detector.label}
+                            {!isAvailable ? " (missing artifact)" : ""}
+                          </span>
+                        </label>
+                      )
+                    })}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>

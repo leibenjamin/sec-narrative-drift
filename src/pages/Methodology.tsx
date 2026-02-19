@@ -5,38 +5,37 @@ const DETECTORS = [
   {
     id: "det_logodds_terms_v1",
     label: "Log-odds terms",
-    summary: "Ranks distinctive terms with smoothed log-odds while downweighting boilerplate.",
+    summary: "Ranks distinctive term shifts while downweighting common boilerplate.",
   },
   {
     id: "det_jsd_ngrams_v1",
     label: "JSD n-grams",
-    summary: "Measures n-gram distribution shift with Jensen-Shannon divergence.",
+    summary: "Measures distribution drift in n-gram usage between adjacent years.",
   },
   {
     id: "det_minhash_boilerplate_v1",
     label: "Minhash boilerplate",
-    summary: "Estimates near-duplicate paragraph reuse across adjacent years.",
+    summary: "Estimates near-duplicate reuse across years.",
   },
   {
     id: "det_winnowing_fingerprint_v1",
     label: "Winnowing fingerprints",
-    summary: "Tracks exact overlapping fingerprint spans between two years.",
+    summary: "Tracks exact overlapping fingerprint spans.",
   },
   {
     id: "det_structure_artifacts_v1",
     label: "Structure artifacts",
-    summary: "Highlights heading and section-shape changes not obvious in term metrics.",
+    summary: "Highlights heading and section-shape changes not obvious in term stats.",
   },
   {
     id: "det_rbo_agreement_v1",
     label: "RBO agreement",
-    summary: "Checks rank-list agreement across detectors for the selected pair and lens.",
+    summary: "Checks rank-list agreement across deterministic detectors.",
   },
   {
     id: "det_llm_delta_brief_v1 + det_llm_excerpt_picker_v1",
     label: "LLM sidecars (precomputed)",
-    summary:
-      "Manual offline outputs only; used as transparent overlays, never as runtime model calls.",
+    summary: "Offline-only overlays for transparent model comparison; never runtime model calls.",
   },
 ]
 
@@ -46,16 +45,38 @@ export default function Methodology() {
       <div className="mx-auto max-w-5xl space-y-10 px-6 py-12">
         <header className="space-y-3">
           <p className="text-xs uppercase tracking-widest text-slate-300">Methodology</p>
-          <h1 className="text-3xl font-semibold">How SEC Narrative Drift Lab works</h1>
+          <h1 className="text-3xl font-semibold">How to read SEC Narrative Drift Lab</h1>
           <p className="max-w-4xl text-sm text-slate-300">
-            The shipped app is deterministic-first: it loads static JSON artifacts and renders
-            evidence as text. LLM outputs are optional precomputed sidecars that can be rerun by
-            anyone using the same inputs and instructions.
+            The product is deterministic-first and evidence-first. LLM outputs are optional
+            precomputed artifacts with reproducibility tooling, not runtime inference.
           </p>
         </header>
 
+        <section className="grid gap-4 rounded-xl border border-white/10 bg-slate-900/45 p-5 md:grid-cols-3">
+          <article className="rounded-md border border-sky-300/25 bg-sky-400/10 p-3">
+            <h2 className="text-sm font-semibold text-sky-100">Manager / Executive</h2>
+            <p className="mt-2 text-xs text-slate-100">
+              Ask: What changed, how strong is the shift, and which evidence lines support it?
+            </p>
+          </article>
+          <article className="rounded-md border border-white/10 bg-slate-950/35 p-3">
+            <h2 className="text-sm font-semibold text-slate-100">Analyst</h2>
+            <p className="mt-2 text-xs text-slate-200">
+              Cross-check top terms, distribution changes, and reuse/structure signals before
+              drawing interpretation.
+            </p>
+          </article>
+          <article className="rounded-md border border-white/10 bg-slate-950/35 p-3">
+            <h2 className="text-sm font-semibold text-slate-100">Engineer / Data Scientist</h2>
+            <p className="mt-2 text-xs text-slate-200">
+              Validate output envelopes, provenance fields, and snippet-to-paragraph mapping with
+              strict validators.
+            </p>
+          </article>
+        </section>
+
         <section className="space-y-3 rounded-xl border border-white/10 bg-slate-900/45 p-5">
-          <h2 className="text-xl font-semibold">Deterministic runtime contract</h2>
+          <h2 className="text-xl font-semibold">Runtime contract</h2>
           <ul className="list-disc space-y-2 pl-5 text-sm text-slate-200">
             <li>No runtime LLM/ML calls in the shipped app.</li>
             <li>No POS tagging in detector logic.</li>
@@ -80,10 +101,10 @@ export default function Methodology() {
         <section className="space-y-3 rounded-xl border border-white/10 bg-slate-900/45 p-5">
           <h2 className="text-xl font-semibold">Reproducible LLM sidecar flow</h2>
           <ol className="list-decimal space-y-2 pl-5 text-sm text-slate-200">
-            <li>Generate the run manifest and input bundles from deterministic scripts.</li>
-            <li>Run one manual thread per pair/detector in ChatGPT Desktop with strict JSON rules.</li>
+            <li>Generate run manifest and inputs from deterministic scripts.</li>
+            <li>Run one manual thread per pair and detector with strict JSON-only rules.</li>
             <li>Save outputs directly to canonical <code>outputs/&lt;detector_id&gt;/...</code> paths.</li>
-            <li>Run strict manifest validation before deployment.</li>
+            <li>Run strict manifest validator before deployment.</li>
           </ol>
           <p className="text-xs text-slate-400">
             Runtime instructions asset:{" "}
@@ -107,7 +128,7 @@ export default function Methodology() {
           <ul className="list-disc space-y-2 pl-5 text-sm text-slate-200">
             <li>SEC filing text is treated as untrusted input.</li>
             <li>No <code>dangerouslySetInnerHTML</code>, no <code>innerHTML</code> APIs, no raw HTML injection.</li>
-            <li>Highlights are rendered with safe React text nodes and mark spans.</li>
+            <li>Highlights are rendered with safe React text nodes and <code>&lt;mark&gt;</code> spans.</li>
             <li>External links open in a new tab with <code>rel="noopener noreferrer"</code>.</li>
           </ul>
         </section>

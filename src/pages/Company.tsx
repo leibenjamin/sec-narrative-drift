@@ -119,8 +119,8 @@ export default function Company() {
             </h1>
             <p className="max-w-3xl text-sm text-slate-300">
               SEC Narrative Drift Lab compares adjacent 10-K Item 1A risk-factor years with
-              deterministic detectors, then layers in optional precomputed LLM sidecars for
-              transparent model-to-model comparison.
+              deterministic detectors, then layers optional precomputed LLM sidecars for transparent
+              model-to-model comparison.
             </p>
           </div>
 
@@ -137,6 +137,22 @@ export default function Company() {
             >
               Methodology
             </Link>
+          </div>
+
+          <div className="grid gap-3 rounded-xl border border-white/10 bg-slate-900/45 p-4 md:grid-cols-2">
+            <div className="rounded-md border border-sky-300/25 bg-sky-400/10 p-3">
+              <div className="text-[11px] uppercase tracking-wide text-sky-100">30-second read</div>
+              <p className="mt-1 text-xs text-slate-100">
+                Start on deboilerplated lens with log-odds + JSD, then confirm with agreement.
+              </p>
+            </div>
+            <div className="rounded-md border border-white/10 bg-slate-950/35 p-3">
+              <div className="text-[11px] uppercase tracking-wide text-slate-300">Technical traceability</div>
+              <p className="mt-1 text-xs text-slate-200">
+                Every card maps to static artifact paths. Missing files surface explicit expected path
+                and debug payload.
+              </p>
+            </div>
           </div>
         </header>
 

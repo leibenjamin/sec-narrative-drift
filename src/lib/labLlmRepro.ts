@@ -85,7 +85,7 @@ export function buildLlmThreadStarterText(context: LlmThreadStarterContext): str
   lines.push("- Snippets must be verbatim and <= 350 chars.")
   lines.push("- highlights must be present and non-empty.")
   lines.push('- Delta citations must be ASCII-only format "YYYY para NN".')
-  lines.push('- Never output "¶", "Â¶", or "Ã‚Â¶".')
+  lines.push('- Never use pilcrow-style citation symbols; use "YYYY para NN" only.')
   lines.push("")
   lines.push("JSON SKELETON")
   lines.push("{")

@@ -61,13 +61,27 @@ export default function Companies() {
   return (
     <main className="min-h-screen page-fade">
       <div className="mx-auto max-w-6xl space-y-8 px-6 py-12">
-        <header className="space-y-3">
+        <header className="space-y-4">
           <p className="text-xs uppercase tracking-widest text-slate-300">Lab showcase</p>
-          <h1 className="text-3xl font-semibold">Company catalog</h1>
+          <h1 className="text-3xl font-semibold">Choose a company and pair</h1>
           <p className="max-w-3xl text-sm text-slate-300">
-            Curated Lab scope for portfolio walkthroughs. Each card routes directly into a
-            recommended adjacent year pair and keeps deep links stable for interview demos.
+            This catalog is curated for live demos with interview audiences. Each card routes
+            directly to a high-signal adjacent pair in the Lab view and preserves deep-link stability.
           </p>
+          <div className="grid gap-3 rounded-xl border border-white/10 bg-slate-900/45 p-4 md:grid-cols-3">
+            <div className="rounded-md border border-white/10 bg-slate-950/35 p-3">
+              <div className="text-[11px] uppercase tracking-wide text-slate-400">Fast path</div>
+              <div className="mt-1 text-sm text-slate-100">Open recommended pair first.</div>
+            </div>
+            <div className="rounded-md border border-white/10 bg-slate-950/35 p-3">
+              <div className="text-[11px] uppercase tracking-wide text-slate-400">Interpretation</div>
+              <div className="mt-1 text-sm text-slate-100">Deterministic evidence before LLM sidecars.</div>
+            </div>
+            <div className="rounded-md border border-white/10 bg-slate-950/35 p-3">
+              <div className="text-[11px] uppercase tracking-wide text-slate-400">Scope</div>
+              <div className="mt-1 text-sm text-slate-100">Showcase tickers only: NVDA, KO, WM, GE.</div>
+            </div>
+          </div>
         </header>
 
         <section className="grid gap-3 rounded-xl border border-white/10 bg-slate-900/45 p-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -114,7 +128,7 @@ export default function Companies() {
               return (
                 <article
                   key={summary.ticker}
-                  className="flex h-full flex-col rounded-xl border border-white/10 bg-slate-900/40 p-4"
+                  className="flex h-full flex-col rounded-xl border border-white/10 bg-slate-900/45 p-4 transition hover:border-sky-300/40"
                 >
                   <div className="flex items-start justify-between gap-2">
                     <div>

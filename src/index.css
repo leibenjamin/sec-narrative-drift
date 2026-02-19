@@ -7,29 +7,29 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --font-sans: "IBM Plex Sans", "Manrope", "Segoe UI", "Noto Sans", sans-serif;
-  --font-display: "IBM Plex Serif", "Iowan Old Style", "Georgia", serif;
+  --font-sans: "Space Grotesk", "Public Sans", "IBM Plex Sans", "Segoe UI", sans-serif;
+  --font-display: "Fraunces", "IBM Plex Serif", "Georgia", serif;
 
-  --bg: #0b0f14;
-  --bg-elevated: #0f172a;
-  --surface: rgba(15, 23, 42, 0.72);
-  --surface-strong: rgba(15, 23, 42, 0.92);
-  --surface-soft: rgba(148, 163, 184, 0.08);
-  --text: #e2e8f0;
-  --text-muted: #94a3b8;
-  --text-subtle: #64748b;
-  --border: rgba(148, 163, 184, 0.2);
-  --border-strong: rgba(148, 163, 184, 0.4);
+  --bg: #080d1a;
+  --bg-elevated: #0d1428;
+  --surface: rgba(15, 23, 42, 0.7);
+  --surface-strong: rgba(8, 13, 26, 0.9);
+  --surface-soft: rgba(148, 163, 184, 0.1);
+  --text: #e5edf9;
+  --text-muted: #9fb0c8;
+  --text-subtle: #73839d;
+  --border: rgba(148, 163, 184, 0.24);
+  --border-strong: rgba(148, 163, 184, 0.42);
 
-  --accent: #38bdf8;
-  --accent-strong: #0ea5e9;
-  --accent-soft: rgba(56, 189, 248, 0.18);
+  --accent: #40c4ff;
+  --accent-strong: #00a8f0;
+  --accent-soft: rgba(64, 196, 255, 0.2);
 
   --success: #34d399;
   --warning: #fbbf24;
   --danger: #fb7185;
 
-  --shadow: 0 12px 36px rgba(2, 6, 23, 0.35);
+  --shadow: 0 16px 44px rgba(2, 6, 23, 0.38);
 }
 
 * {
@@ -40,14 +40,15 @@ body {
   margin: 0;
   min-height: 100vh;
   font-family: var(--font-sans);
-  line-height: 1.5;
+  line-height: 1.6;
   font-weight: 400;
   color: var(--text);
   background-color: var(--bg);
   background-image:
-    radial-gradient(1200px circle at 15% -10%, rgba(56, 189, 248, 0.18), transparent 45%),
-    radial-gradient(900px circle at 85% 0%, rgba(251, 191, 36, 0.12), transparent 40%),
-    linear-gradient(180deg, rgba(15, 23, 42, 0.9), rgba(2, 6, 23, 0.95));
+    radial-gradient(1000px circle at 8% -8%, rgba(64, 196, 255, 0.2), transparent 46%),
+    radial-gradient(1100px circle at 88% -12%, rgba(15, 118, 110, 0.2), transparent 50%),
+    radial-gradient(900px circle at 50% 115%, rgba(2, 132, 199, 0.14), transparent 45%),
+    linear-gradient(180deg, rgba(15, 23, 42, 0.88), rgba(2, 6, 23, 0.96));
   background-attachment: fixed;
 }
 
@@ -69,7 +70,7 @@ h2,
 h3,
 h4 {
   font-family: var(--font-display);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.015em;
 }
 
 ::selection {

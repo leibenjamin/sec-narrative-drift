@@ -19,9 +19,7 @@ function buildCaseLink(ticker: string, pair: { from: number; to: number } | null
 }
 
 function summarizeMethods(summary: LabTickerSummary): string {
-  const detectorCount = summary.availableDetectors.length
-  const lensCount = summary.availableLenses.length
-  return `${detectorCount} methods across ${lensCount} lenses`
+  return `${summary.availableDetectors.length} methods across ${summary.availableLenses.length} lenses`
 }
 
 export default function Home() {
@@ -57,24 +55,24 @@ export default function Home() {
 
   return (
     <main className="min-h-screen page-fade">
-      <div className="mx-auto grid max-w-6xl gap-10 px-6 py-12">
+      <div className="mx-auto grid max-w-6xl gap-8 px-6 py-12">
         <section className="grid gap-6 rounded-2xl border border-white/10 bg-slate-900/45 p-6 shadow-[0_18px_48px_rgba(2,6,23,0.35)] lg:grid-cols-[1.45fr_0.55fr]">
           <div className="space-y-4">
             <p className="text-xs uppercase tracking-widest text-slate-300">SEC Narrative Drift Lab</p>
-            <h1 className="max-w-3xl text-3xl font-semibold leading-tight">
-              Deterministic risk-text analysis first, reproducible LLM sidecars second.
+            <h1 className="max-w-3xl text-4xl font-semibold leading-tight">
+              Deterministic risk-language evidence first, reproducible LLM overlays second.
             </h1>
             <p className="max-w-3xl text-sm text-slate-200">
-              Compare adjacent 10-K Item 1A years and inspect evidence directly. Each detector card
-              links outputs to canonical JSON paths so reviewers can rerun, audit, and compare models
-              without hidden runtime calls.
+              This Lab compares adjacent 10-K Item 1A years and keeps every result path-auditable.
+              Reviewers can inspect deterministic detectors, then rerun optional LLM sidecars with
+              the same input bundles and starter prompts.
             </p>
             <div className="flex flex-wrap items-center gap-2 pt-1">
               <Link
                 to={buildCaseLink(starter?.ticker ?? preferredTicker, starter?.defaultPair ?? null)}
                 className="inline-flex items-center rounded-md bg-sky-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-sky-500"
               >
-                Start with recommended case
+                Start recommended case
               </Link>
               <Link
                 to="/companies"
@@ -86,23 +84,59 @@ export default function Home() {
                 to="/methodology"
                 className="inline-flex items-center rounded-md border border-white/20 px-4 py-2 text-sm text-slate-200 transition hover:border-white/40 hover:bg-white/5"
               >
-                Read methodology
+                Methodology and reproducibility
               </Link>
             </div>
           </div>
 
           <aside className="space-y-3 rounded-xl border border-white/10 bg-slate-950/40 p-4">
-            <h2 className="text-sm font-semibold text-slate-100">What to do first</h2>
-            <ol className="space-y-2 text-sm text-slate-200">
-              <li>1. Open a showcase company.</li>
-              <li>2. Keep lens on deboilerplated for the first read.</li>
-              <li>3. Compare detector evidence before reading LLM sidecars.</li>
-            </ol>
+            <h2 className="text-sm font-semibold text-slate-100">Hiring demo framing</h2>
+            <ul className="space-y-2 text-sm text-slate-200">
+              <li>1. Show one adjacent pair and detector agreement.</li>
+              <li>2. Explain deterministic contract and path-level transparency.</li>
+              <li>3. Show optional LLM sidecar reproducibility workflow.</li>
+            </ul>
             <p className="text-xs text-slate-400">
-              All runtime results load from static Lab JSON under
-              <code className="ml-1 rounded bg-slate-950/70 px-1 py-0.5">public/data/sec_narrative_drift_lab/</code>.
+              Runtime data source:
+              <code className="ml-1 rounded bg-slate-950/70 px-1 py-0.5">
+                public/data/sec_narrative_drift_lab/
+              </code>
             </p>
           </aside>
+        </section>
+
+        <section className="grid gap-4 lg:grid-cols-2">
+          <article className="rounded-xl border border-sky-300/30 bg-sky-400/10 p-5">
+            <div className="text-xs uppercase tracking-widest text-sky-100">Path A</div>
+            <h2 className="mt-2 text-xl font-semibold text-slate-100">30-second executive read</h2>
+            <ol className="mt-3 space-y-1 text-sm text-slate-200">
+              <li>1. Open recommended pair (deboilerplated lens).</li>
+              <li>2. Read log-odds + JSD cards for top shift narrative.</li>
+              <li>3. Confirm with agreement matrix and one evidence excerpt.</li>
+            </ol>
+            <Link
+              to={buildCaseLink(starter?.ticker ?? preferredTicker, starter?.defaultPair ?? null)}
+              className="mt-4 inline-flex items-center rounded-md border border-sky-200/40 px-3 py-1.5 text-xs text-sky-100 transition hover:border-sky-100/70 hover:bg-sky-200/10"
+            >
+              Launch executive path
+            </Link>
+          </article>
+
+          <article className="rounded-xl border border-white/10 bg-slate-900/50 p-5">
+            <div className="text-xs uppercase tracking-widest text-slate-300">Path B</div>
+            <h2 className="mt-2 text-xl font-semibold text-slate-100">Technical deep dive</h2>
+            <ol className="mt-3 space-y-1 text-sm text-slate-200">
+              <li>1. Compare lenses and inspect structure/reuse detectors.</li>
+              <li>2. Open LLM sidecars and inspect expected input/output paths.</li>
+              <li>3. Validate reproducibility with manifest and strict validator.</li>
+            </ol>
+            <Link
+              to="/methodology"
+              className="mt-4 inline-flex items-center rounded-md border border-white/20 px-3 py-1.5 text-xs text-slate-100 transition hover:border-white/40 hover:bg-white/5"
+            >
+              Launch technical path
+            </Link>
+          </article>
         </section>
 
         <section className="space-y-4">
@@ -124,7 +158,7 @@ export default function Home() {
                   <Link
                     key={summary.ticker}
                     to={buildCaseLink(summary.ticker, summary.defaultPair)}
-                    className="rounded-xl border border-white/10 bg-slate-900/40 p-4 transition hover:border-sky-300/40 hover:bg-slate-900/60"
+                    className="rounded-xl border border-white/10 bg-slate-900/45 p-4 transition hover:border-sky-300/40 hover:bg-slate-900/65"
                   >
                     <div className="flex items-start justify-between gap-3">
                       <div>
