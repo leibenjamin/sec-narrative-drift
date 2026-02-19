@@ -18,6 +18,7 @@ from lab_llm_precompute_utils import resolve_bundle_paths, to_repo_relative  # t
 from lab_prompt_blocks import (  # type: ignore
     DETECTOR_DELTA_BRIEF,
     DETECTOR_EXCERPT_PICKER,
+    build_chatgpt_project_instructions_lines,
     build_prompt_template_detector_section_lines,
     build_prompt_templates_showcase_lines,
     build_thread_starter_lines,
@@ -90,6 +91,22 @@ def build_parser() -> argparse.ArgumentParser:
         default=str(REPO_ROOT / "reports" / "prompt2_sample_starters"),
         help="Directory for generated sample starter artifacts.",
     )
+    parser.add_argument(
+        "--instructions-report",
+        default=str(REPO_ROOT / "reports" / "lab_chatgpt_project_instructions.txt"),
+        help="Path to canonical report instructions text.",
+    )
+    parser.add_argument(
+        "--instructions-public",
+        default=str(
+            REPO_ROOT
+            / "public"
+            / "data"
+            / "sec_narrative_drift_lab"
+            / "llm_project_instructions_v1.txt"
+        ),
+        help="Path to canonical public instructions text.",
+    )
     return parser
 
 
@@ -116,6 +133,24 @@ def main(argv: Optional[list[str]] = None) -> int:
         actual_section = _extract_section(actual_full, f"## {detector_id}")
         _assert_lines_equal(f"prompt_section:{detector_id}", expected_section, actual_section)
 
+    expected_instructions = build_chatgpt_project_instructions_lines()
+    instructions_report = Path(args.instructions_report)
+    if not instructions_report.is_absolute():
+        instructions_report = REPO_ROOT / instructions_report
+    if instructions_report.exists():
+        actual_report_instructions = _read_lines(instructions_report)
+        _assert_lines_equal(
+            "project_instructions_report", expected_instructions, actual_report_instructions
+        )
+    instructions_public = Path(args.instructions_public)
+    if not instructions_public.is_absolute():
+        instructions_public = REPO_ROOT / instructions_public
+    if instructions_public.exists():
+        actual_public_instructions = _read_lines(instructions_public)
+        _assert_lines_equal(
+            "project_instructions_public", expected_instructions, actual_public_instructions
+        )
+
     sample_dir = Path(args.sample_out_dir)
     if sample_dir.exists():
         shutil.rmtree(sample_dir)
@@ -126,8 +161,7 @@ def main(argv: Optional[list[str]] = None) -> int:
     sample_year_to = 2024
     sample_lens = "focuspack_deboilerplated"
     sample_input = (
-        f"inputs/{sample_ticker}/"
-        f"lab_llm_focuspack_10k_item1a_{sample_year_from}_{sample_year_to}_deboilerplated.json"
+        f"inputs/{sample_ticker}_{sample_year_from}_{sample_year_to}_focuspack_deboilerplated.json"
     )
     sample_repo_input = (
         f"{to_repo_relative(bundle_paths.bundle_root)}/llm_inputs_focuspack/"
@@ -137,7 +171,7 @@ def main(argv: Optional[list[str]] = None) -> int:
     jobs: list[dict[str, Any]] = []
     for detector_id in (DETECTOR_DELTA_BRIEF, DETECTOR_EXCERPT_PICKER):
         output_path = (
-            f"public/data/sec_narrative_drift_lab/llm_outputs/{detector_id}/{sample_ticker}/"
+            f"public/data/sec_narrative_drift_lab/{sample_ticker}/outputs/{detector_id}/"
             f"lab_{detector_id}_10k_item1a_{sample_year_from}_{sample_year_to}_{sample_lens}.json"
         )
         jobs.append(
