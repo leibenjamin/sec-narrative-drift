@@ -35,7 +35,7 @@ Zero-touch policy:
 - `metrics.warnings` must include: `"Focuspack is a subset; verify in full compare pane."`
 - If signal is weak, include one conservative warning in `metrics.warnings`.
 - Delta brief citations must use ASCII-only format: `"YYYY para NN"`.
-- Never output `¶`, `Â¶`, or `Ã‚Â¶`.
+- Never use pilcrow-style citation symbols or mojibake variants; use only `"YYYY para NN"`.
 - Before final output, self-check JSON syntax: no unescaped `"` inside string values and no trailing commas.
 
 Detector-specific rules:

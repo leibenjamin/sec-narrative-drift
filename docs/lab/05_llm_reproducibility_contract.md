@@ -53,7 +53,7 @@ No extra provenance keys are allowed.
 For `det_llm_delta_brief_v1`:
 - At least two inline citations are required.
 - Allowed format only: `YYYY para NN`.
-- Disallowed tokens include: `¶`, `Â¶`, `Ã‚Â¶`.
+- Disallowed tokens include pilcrow-style citation symbols and mojibake variants.
 
 ## Validation Entry Point
 - Canonical validator:

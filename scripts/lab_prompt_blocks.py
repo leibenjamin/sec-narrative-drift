@@ -109,7 +109,9 @@ def build_delta_brief_rules_block(
     lines.append("- artifacts must contain ONLY: delta_brief.")
     lines.append("- artifacts.delta_brief must include >= 2 inline citations total.")
     lines.append('- Citation format MUST be ASCII-only: "YYYY para NN" where NN = paragraph_idx+1.')
-    lines.append('- Never output "¶", "Â¶", or "Ã‚Â¶".')
+    lines.append(
+        '- Never use pilcrow-style citation symbols. Use ASCII-only "YYYY para NN".'
+    )
     lines.append(
         f"- Encourage pairing: every claim should contrast {pair_label} with nearby citations."
     )
@@ -348,7 +350,7 @@ def build_chatgpt_project_instructions_lines() -> list[str]:
     lines.append(f'metrics.warnings must include: "{FOCUSPACK_WARNING}"')
     lines.append("If signal is weak, include one conservative warning in metrics.warnings.")
     lines.append('Citation format for delta brief must be ASCII-only: "YYYY para NN".')
-    lines.append('Never output ¶, Â¶, or Ã‚Â¶.')
+    lines.append('Never use pilcrow-style citation symbols; use "YYYY para NN" only.')
     lines.append('Before final output, self-check JSON syntax: no unescaped " inside string values and no trailing commas.')
     lines.append("")
     lines.append(f"For {DETECTOR_DELTA_BRIEF}:")

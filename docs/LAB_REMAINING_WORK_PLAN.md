@@ -33,7 +33,7 @@ Core time window: 2019-2024 adjacent year pairs (include most recent even if low
 - Phase 2 hardening pass in progress:
   - strict zero-touch reproducibility contract and docs refresh,
   - strict validator upgrades (verbatim snippet mapping + provenance model metadata),
-  - stale run-pack replacement with strict starters (pending writable `bundles/` in this environment),
+  - stale run-pack replaced with fresh strict starters (`bundles/llm_run_pack_20260219T190151Z`),
   - Lab UI reproducibility panel and schema compatibility hardening.
   - strict validator snapshot now intentionally reports legacy outputs as non-compliant:
     `missing=0`, `invalid=42`, `present_flag_mismatch=0` (expected until manual reruns).
@@ -53,7 +53,7 @@ Core time window: 2019-2024 adjacent year pairs (include most recent even if low
 
 Remaining human/manual work (post-hardening):
 - rerun all 42 LLM jobs with strict instructions and required provenance model metadata,
-- live/incognito screenshot verification on deployed site for final UX confirmation.
+- post-redesign live/incognito screenshot verification on deployed site for final UX confirmation.
 
 ---
 

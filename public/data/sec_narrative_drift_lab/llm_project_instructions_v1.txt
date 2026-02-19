@@ -21,7 +21,7 @@ metrics.confidence must be one of 0.25, 0.50, 0.75.
 metrics.warnings must include: "Focuspack is a subset; verify in full compare pane."
 If signal is weak, include one conservative warning in metrics.warnings.
 Citation format for delta brief must be ASCII-only: "YYYY para NN".
-Never output ¶, Â¶, or Ã‚Â¶.
+Never use pilcrow-style citation symbols; use "YYYY para NN" only.
 Before final output, self-check JSON syntax: no unescaped " inside string values and no trailing commas.
 
 For det_llm_delta_brief_v1:

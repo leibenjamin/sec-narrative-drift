@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated_at": "2026-02-18T23:09:41Z",
+  "updated_at": "2026-02-19T19:21:29Z",
   "notes": [
     "Generated deterministically from scanned lab outputs.",
     "Output links are canonicalized to ticker-local outputs/<detector_id>/<filename> paths."
@@ -19,6 +19,7 @@
         "det_winnowing_fingerprint_v1",
         "det_structure_artifacts_v1",
         "det_rbo_agreement_v1",
+        "det_llm_delta_brief_v1",
         "det_llm_excerpt_picker_v1"
       ],
       "outputs": [
@@ -93,6 +94,12 @@
           "cleaning_lens": "deboilerplated",
           "source_id": "edgar",
           "filename": "outputs/det_rbo_agreement_v1/lab_10k_item1a_2019_2020_det_rbo_agreement_v1_deboilerplated_edgar.json"
+        },
+        {
+          "detector_id": "det_llm_delta_brief_v1",
+          "cleaning_lens": "deboilerplated",
+          "source_id": "edgar",
+          "filename": "outputs/det_llm_delta_brief_v1/lab_det_llm_delta_brief_v1_10k_item1a_2019_2020_focuspack_deboilerplated.json"
         },
         {
           "detector_id": "det_llm_excerpt_picker_v1",
@@ -2219,8 +2226,8 @@
     }
   ],
   "provenance": {
-    "build_utc": "2026-02-18T23:09:41Z",
-    "git_commit": "d899a6a272597671f003b0a5a1a68ff365cac902",
+    "build_utc": "2026-02-19T19:21:29Z",
+    "git_commit": "e0da7a5b8b5dd571fa12751ceffab6e84fb64398",
     "script_version": "lab_build_cases_registry_v1.py@v1",
     "inputs": {
       "tickers": "NVDA,KO,WM,GE",

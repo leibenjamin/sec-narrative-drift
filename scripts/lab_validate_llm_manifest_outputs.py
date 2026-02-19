@@ -36,7 +36,11 @@ FOCUSPACK_WARNING = "Focuspack is a subset; verify in full compare pane."
 ALLOWED_CONFIDENCE: set[float] = {0.25, 0.50, 0.75}
 MAX_SNIPPET_CHARS = 350
 DELTA_BRIEF_CITATION_RE = re.compile(r"\b(20\d{2})\s+para\s+(\d+)\b", re.IGNORECASE)
-FORBIDDEN_CITATION_TOKENS = ("¶", "Â¶", "Ã‚Â¶")
+FORBIDDEN_CITATION_TOKENS: tuple[tuple[str, str], ...] = (
+    ("pilcrow", "\u00b6"),
+    ("mojibake_pilcrow_1", "\u00c2\u00b6"),
+    ("mojibake_pilcrow_2", "\u00c3\u201a\u00c2\u00b6"),
+)
 PROVENANCE_REQUIRED = ("input_file", "model_provider", "model_name")
 PROVENANCE_ALLOWED = set(PROVENANCE_REQUIRED + ("run_label",))
 
@@ -454,9 +458,12 @@ def validate_output_json(target: ManifestTarget, output_path: Path) -> list[str]
         if delta_brief is None or not delta_brief.strip():
             reasons.append("artifacts.delta_brief must be a non-empty string")
         else:
-            for token in FORBIDDEN_CITATION_TOKENS:
-                if token in delta_brief:
-                    reasons.append(f"delta_brief contains forbidden citation token: {token!r}")
+            for token_name, token_value in FORBIDDEN_CITATION_TOKENS:
+                if token_value in delta_brief:
+                    reasons.append(
+                        "delta_brief contains forbidden pilcrow-style citation token: "
+                        + token_name
+                    )
             citation_matches = DELTA_BRIEF_CITATION_RE.findall(delta_brief)
             if len(citation_matches) < 2:
                 reasons.append(
