@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react"
+import { useEffect, useMemo, useRef, useState } from "react"
 import AgreementMatrix from "./AgreementMatrix"
 import CleaningLensToggle from "./CleaningLensToggle"
 import MethodCard from "./MethodCard"
@@ -73,6 +73,13 @@ const LENS_PREFERENCE_ORDER: LabCleaningLens[] = [
 
 function buildCaseKey(caseItem: LabCase): string {
   return `${caseItem.year_from}-${caseItem.year_to}`
+}
+
+function findCaseKeyByPair(cases: LabCase[], pair: { from: number; to: number }): string | null {
+  const match = cases.find(
+    (entry) => entry.year_from === pair.from && entry.year_to === pair.to
+  )
+  return match ? buildCaseKey(match) : null
 }
 
 function normalizeLens(value: LabCleaningLens | string): LabCleaningLens {
@@ -157,12 +164,24 @@ async function copyTextToClipboard(text: string): Promise<boolean> {
   return copied
 }
 
-export default function LabPanel({ ticker }: { ticker: string }) {
+type LabPanelProps = {
+  ticker: string
+  requestedPair?: { from: number; to: number } | null
+  onSelectedPairChange?: (pair: { from: number; to: number }) => void
+}
+
+export default function LabPanel({
+  ticker,
+  requestedPair = null,
+  onSelectedPairChange,
+}: LabPanelProps) {
+  const syncedPairKeyRef = useRef<string | null>(null)
   const [cases, setCases] = useState<LabCase[]>([])
   const [isLoadingCases, setIsLoadingCases] = useState(true)
   const [caseError, setCaseError] = useState<string | null>(null)
   const [caseDebugPath, setCaseDebugPath] = useState<string | null>(null)
   const [selectedCaseKey, setSelectedCaseKey] = useState<string | null>(null)
+  const [prevRequestedCaseKey, setPrevRequestedCaseKey] = useState<string | null>(null)
   const [lens, setLens] = useState<LabCleaningLens>("deboilerplated")
   const [selectedDetectors, setSelectedDetectors] = useState<string[]>(DEFAULT_SELECTED)
   const [outputs, setOutputs] = useState<Record<string, LabOutput | null>>({})
@@ -221,6 +240,26 @@ export default function LabPanel({ ticker }: { ticker: string }) {
     if (!selectedCaseKey) return null
     return cases.find((item) => buildCaseKey(item) === selectedCaseKey) ?? null
   }, [cases, selectedCaseKey])
+
+  const requestedCaseKey = useMemo(() => {
+    if (!requestedPair || cases.length === 0) return null
+    return findCaseKeyByPair(cases, requestedPair)
+  }, [cases, requestedPair])
+
+  if (requestedCaseKey !== prevRequestedCaseKey) {
+    setPrevRequestedCaseKey(requestedCaseKey)
+    if (requestedCaseKey && requestedCaseKey !== selectedCaseKey) {
+      setSelectedCaseKey(requestedCaseKey)
+    }
+  }
+
+  useEffect(() => {
+    if (!selectedCase || !onSelectedPairChange) return
+    const pairKey = `${selectedCase.ticker}:${selectedCase.year_from}-${selectedCase.year_to}`
+    if (syncedPairKeyRef.current === pairKey) return
+    syncedPairKeyRef.current = pairKey
+    onSelectedPairChange({ from: selectedCase.year_from, to: selectedCase.year_to })
+  }, [onSelectedPairChange, selectedCase])
 
   const recommendedCases = useMemo(
     () => cases.filter((item) => item.tags?.includes("recommended")),

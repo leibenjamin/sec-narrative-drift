@@ -13,6 +13,7 @@ import type {
 
 const LAB_BASE_PATH = withBase("data/sec_narrative_drift_lab")
 const LAB_CASES_PATH = `${LAB_BASE_PATH}/lab_cases_v1.json`
+export const LAB_SHOWCASE_TICKERS = ["NVDA", "KO", "WM", "GE"] as const
 const LLM_DETECTORS = new Set<string>([
   "det_llm_delta_brief_v1",
   "det_llm_excerpt_picker_v1",
@@ -22,6 +23,16 @@ export type LabExpectedOutputArtifact = {
   filename: string
   repoPath: string
   requestUrl: string
+}
+
+export type LabTickerSummary = {
+  ticker: string
+  caseCount: number
+  recommendedCaseCount: number
+  availableLenses: LabCleaningLens[]
+  availableDetectors: string[]
+  defaultPair: { from: number; to: number } | null
+  latestPair: { from: number; to: number } | null
 }
 
 export class LabDataLoadError extends Error {
@@ -183,6 +194,118 @@ export async function listLabCasesForTicker(ticker: string): Promise<LabCase[]> 
     }
   }
   return filtered
+}
+
+export function listLabShowcaseTickers(): string[] {
+  return [...LAB_SHOWCASE_TICKERS]
+}
+
+export function isLabShowcaseTicker(ticker: string): boolean {
+  return LAB_SHOWCASE_TICKERS.includes(ticker.toUpperCase() as (typeof LAB_SHOWCASE_TICKERS)[number])
+}
+
+function compareCaseOrder(
+  left: Pick<LabCase, "year_from" | "year_to">,
+  right: Pick<LabCase, "year_from" | "year_to">
+): number {
+  if (left.year_to !== right.year_to) return left.year_to - right.year_to
+  return left.year_from - right.year_from
+}
+
+function pickDefaultCase(entries: LabCase[]): LabCase | null {
+  if (entries.length === 0) return null
+  const sorted = [...entries].sort(compareCaseOrder)
+  const recommended = sorted.filter((entry) => entry.tags?.includes("recommended"))
+  if (recommended.length > 0) {
+    return recommended[recommended.length - 1]
+  }
+  return sorted[sorted.length - 1]
+}
+
+function pickLatestCase(entries: LabCase[]): LabCase | null {
+  if (entries.length === 0) return null
+  const sorted = [...entries].sort(compareCaseOrder)
+  return sorted[sorted.length - 1]
+}
+
+function pushUniqueLens(list: LabCleaningLens[], lens: LabCleaningLens): void {
+  if (!list.includes(lens)) list.push(lens)
+}
+
+function pushUniqueDetector(list: string[], detectorId: string): void {
+  if (!list.includes(detectorId)) list.push(detectorId)
+}
+
+type TickerBucket = {
+  ticker: string
+  entries: LabCase[]
+}
+
+export async function listLabTickerSummaries(options?: {
+  showcaseOnly?: boolean
+}): Promise<LabTickerSummary[]> {
+  const registry = await loadLabCasesRegistry()
+  const buckets = new Map<string, TickerBucket>()
+
+  for (const entry of registry.cases ?? []) {
+    const ticker = entry.ticker.toUpperCase()
+    if (options?.showcaseOnly && !isLabShowcaseTicker(ticker)) continue
+    const existing = buckets.get(ticker)
+    if (existing) {
+      existing.entries.push(entry)
+    } else {
+      buckets.set(ticker, { ticker, entries: [entry] })
+    }
+  }
+
+  const summaries: LabTickerSummary[] = []
+  for (const bucket of buckets.values()) {
+    const defaultCase = pickDefaultCase(bucket.entries)
+    const latestCase = pickLatestCase(bucket.entries)
+    const availableLenses: LabCleaningLens[] = []
+    const availableDetectors: string[] = []
+    let recommendedCaseCount = 0
+
+    for (const entry of bucket.entries) {
+      if (entry.tags?.includes("recommended")) {
+        recommendedCaseCount += 1
+      }
+      for (const output of entry.outputs ?? []) {
+        pushUniqueLens(availableLenses, output.cleaning_lens)
+        pushUniqueDetector(availableDetectors, output.detector_id)
+      }
+    }
+
+    summaries.push({
+      ticker: bucket.ticker,
+      caseCount: bucket.entries.length,
+      recommendedCaseCount,
+      availableLenses,
+      availableDetectors,
+      defaultPair: defaultCase
+        ? { from: defaultCase.year_from, to: defaultCase.year_to }
+        : null,
+      latestPair: latestCase ? { from: latestCase.year_from, to: latestCase.year_to } : null,
+    })
+  }
+
+  const showcaseOrder = new Map<string, number>()
+  LAB_SHOWCASE_TICKERS.forEach((ticker, index) => {
+    showcaseOrder.set(ticker, index)
+  })
+
+  summaries.sort((left, right) => {
+    const leftShowcaseRank = showcaseOrder.get(left.ticker)
+    const rightShowcaseRank = showcaseOrder.get(right.ticker)
+    if (leftShowcaseRank !== undefined && rightShowcaseRank !== undefined) {
+      return leftShowcaseRank - rightShowcaseRank
+    }
+    if (leftShowcaseRank !== undefined) return -1
+    if (rightShowcaseRank !== undefined) return 1
+    return left.ticker.localeCompare(right.ticker)
+  })
+
+  return summaries
 }
 
 export function resolveLabOutputLink(

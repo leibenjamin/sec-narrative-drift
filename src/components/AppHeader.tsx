@@ -1,5 +1,4 @@
 import { Link, useLocation } from "react-router-dom"
-import { copy } from "../lib/copy"
 
 type NavItem = {
   to: string
@@ -7,9 +6,9 @@ type NavItem = {
 }
 
 const NAV_ITEMS: NavItem[] = [
-  { to: "/", label: copy.nav.home },
-  { to: "/companies", label: copy.nav.companies },
-  { to: "/methodology", label: copy.nav.methodology },
+  { to: "/", label: "Home" },
+  { to: "/companies", label: "Showcase" },
+  { to: "/methodology", label: "Methodology" },
 ]
 
 function isActive(pathname: string, to: string): boolean {
@@ -31,7 +30,7 @@ export default function AppHeader() {
             to="/"
             className="text-xs uppercase tracking-wider text-slate-200 hover:text-slate-50"
           >
-            {copy.global.appName}
+            SEC Narrative Drift Lab
           </Link>
           <span className="rounded bg-amber-600/80 px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wide text-amber-100">
             Beta

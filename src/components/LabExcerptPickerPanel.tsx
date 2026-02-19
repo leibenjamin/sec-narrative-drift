@@ -300,7 +300,7 @@ export default function LabExcerptPickerPanel({ output }: { output: LabOutput })
   const isLowCoverage = coverage !== null && coverage < 0.4
   const isDeboiler = output.cleaning_lens === "deboilerplated"
 
-  const compareUrl = `/company/${output.ticker}?tab=overview&from=${yearFrom}&to=${yearTo}#evidence`
+  const compareUrl = `/company/${output.ticker}?tab=lab&from=${yearFrom}&to=${yearTo}`
 
   const toggleKey = (key: string) => {
     setExpandedKeys((prev) => ({ ...prev, [key]: !prev[key] }))

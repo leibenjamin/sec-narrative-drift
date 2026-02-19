@@ -1,372 +1,166 @@
 import { useEffect, useMemo, useState } from "react"
 import { Link } from "react-router-dom"
-import { copy, t } from "../lib/copy"
-import { loadCompanyIndex, loadUniverseFeatured } from "../lib/data"
-import type {
-  CompanyIndex,
-  CompanyIndexRow,
-  QualityLevel,
-  UniverseFeatured,
-} from "../lib/types"
-import QualityBadge from "../components/QualityBadge"
+import { listLabTickerSummaries, type LabTickerSummary } from "../lib/labData"
 
-type CoverageFilter = "all" | "ge8"
-type QualityFilter = "all" | "high" | "high_med"
-type StoryFilter = "all" | "story"
-type SortMode = "featured" | "az" | "peak_drift" | "coverage"
-
-function normalize(s: string): string {
-  return s.trim().toLowerCase()
+const SHOWCASE_COMPANY_NAMES: Record<string, string> = {
+  NVDA: "NVIDIA",
+  KO: "Coca-Cola",
+  WM: "Waste Management",
+  GE: "General Electric",
 }
 
-function passesCoverage(row: CompanyIndexRow, f: CoverageFilter): boolean {
-  if (f === "all") return true
-  if (f === "ge8") return row.coverage.count >= 8
-  return true
-}
+type LensFilter = "all" | "deboilerplated" | "raw"
 
-function passesQuality(level: QualityLevel, f: QualityFilter): boolean {
-  if (f === "all") return true
-  if (f === "high") return level === "high"
-  if (f === "high_med") return level === "high" || level === "medium"
-  return true
-}
-
-function passesStory(isStory: boolean, f: StoryFilter): boolean {
-  if (f === "all") return true
-  return isStory
-}
-
-function passesExchange(exchange: string | undefined, filter: string): boolean {
-  if (filter === "all") return true
-  if (!exchange) return false
-  return exchange === filter
-}
-
-function formatCoverage(row: CompanyIndexRow): string {
-  const { count, minYear, maxYear } = row.coverage
-  return `${count}y ${minYear}-${maxYear}`
-}
-
-function formatLatestYear(row: CompanyIndexRow): string {
-  const { maxYear } = row.coverage
-  return maxYear ? `${copy.companies.latestYearLabel} ${maxYear}` : copy.companies.latestYearUnknown
+function buildLabLink(ticker: string, pair: { from: number; to: number } | null): string {
+  if (!pair) return `/company/${ticker}?tab=lab`
+  return `/company/${ticker}?tab=lab&from=${pair.from}&to=${pair.to}`
 }
 
 export default function Companies() {
-  const [index, setIndex] = useState<CompanyIndex | null>(null)
-  const [universe, setUniverse] = useState<UniverseFeatured | null>(null)
+  const [summaries, setSummaries] = useState<LabTickerSummary[]>([])
+  const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-
   const [query, setQuery] = useState("")
-  const [coverageFilter, setCoverageFilter] = useState<CoverageFilter>("all")
-  const [storyFilter, setStoryFilter] = useState<StoryFilter>("all")
-  const [exchangeFilter, setExchangeFilter] = useState("all")
-  const [qualityFilter, setQualityFilter] = useState<QualityFilter>("all")
-  const [sortMode, setSortMode] = useState<SortMode>("featured")
+  const [lensFilter, setLensFilter] = useState<LensFilter>("all")
 
   useEffect(() => {
-    let mounted = true
-    loadCompanyIndex()
-      .then((d) => {
-        if (!mounted) return
-        setIndex(d)
+    let cancelled = false
+    listLabTickerSummaries({ showcaseOnly: true })
+      .then((result) => {
+        if (cancelled) return
+        setSummaries(result)
+        setError(null)
       })
-      .catch((e) => {
-        if (!mounted) return
-        setError(e?.message ?? copy.global.errors.missingDataset)
+      .catch((loadError) => {
+        if (cancelled) return
+        setError(loadError instanceof Error ? loadError.message : "Failed to load Lab showcase data.")
       })
-    return () => {
-      mounted = false
-    }
-  }, [])
-
-  useEffect(() => {
-    let mounted = true
-    loadUniverseFeatured()
-      .then((data) => {
-        if (!mounted) return
-        setUniverse(data)
-      })
-      .catch(() => {
-        if (!mounted) return
-        setUniverse(null)
+      .finally(() => {
+        if (!cancelled) setIsLoading(false)
       })
     return () => {
-      mounted = false
+      cancelled = true
     }
   }, [])
-
-  const rows = useMemo(() => index?.companies ?? [], [index])
-
-  const storyTickers = useMemo(() => {
-    const set = new Set<string>()
-    if (universe?.stories) {
-      for (const story of universe.stories) {
-        if (story.ticker) {
-          set.add(story.ticker.toUpperCase())
-        }
-      }
-    }
-    return set
-  }, [universe])
-
-  const exchangeOptions = useMemo(() => {
-    const set = new Set<string>()
-    for (const row of rows) {
-      if (row.exchange) {
-        set.add(row.exchange)
-      }
-    }
-    const options = Array.from(set).sort((a, b) => a.localeCompare(b))
-    return ["all", ...options]
-  }, [rows])
-
-  const featuredRows = useMemo(() => {
-    return rows.filter((r) => !!r.featuredCase)
-  }, [rows])
 
   const filtered = useMemo(() => {
-    const q = normalize(query)
-    const base = rows.filter((r) => {
-      const hay = `${r.ticker} ${r.companyName ?? ""}`.toLowerCase()
-      return !q || hay.includes(q)
-    })
-
-    const afterFilters = base.filter((r) => {
-      const isStory = storyTickers.has(r.ticker)
-      return (
-        passesCoverage(r, coverageFilter) &&
-        passesQuality(r.quality.level, qualityFilter) &&
-        passesStory(isStory, storyFilter) &&
-        passesExchange(r.exchange, exchangeFilter)
-      )
-    })
-
-    const sorted = [...afterFilters].sort((a, b) => {
-      if (sortMode === "az") {
-        return a.ticker.localeCompare(b.ticker)
+    const normalizedQuery = query.trim().toLowerCase()
+    return summaries.filter((summary) => {
+      const companyName = SHOWCASE_COMPANY_NAMES[summary.ticker] ?? summary.ticker
+      if (
+        normalizedQuery &&
+        !`${summary.ticker} ${companyName}`.toLowerCase().includes(normalizedQuery)
+      ) {
+        return false
       }
-      if (sortMode === "coverage") {
-        return (b.coverage.count - a.coverage.count) || a.ticker.localeCompare(b.ticker)
-      }
-      if (sortMode === "peak_drift") {
-        const av = a.metricsSummary?.peakDrift?.value ?? -1
-        const bv = b.metricsSummary?.peakDrift?.value ?? -1
-        return (bv - av) || a.ticker.localeCompare(b.ticker)
-      }
-      const af = a.featuredCase ? 1 : 0
-      const bf = b.featuredCase ? 1 : 0
-      return (bf - af) || a.ticker.localeCompare(b.ticker)
+      if (lensFilter === "all") return true
+      return summary.availableLenses.includes(lensFilter)
     })
-
-    return sorted
-  }, [rows, query, coverageFilter, qualityFilter, storyFilter, exchangeFilter, sortMode, storyTickers])
+  }, [lensFilter, query, summaries])
 
   return (
     <main className="min-h-screen page-fade">
-      <div className="mx-auto max-w-5xl space-y-10 px-6 py-16">
+      <div className="mx-auto max-w-6xl space-y-8 px-6 py-12">
         <header className="space-y-3">
-          <p className="text-xs uppercase tracking-wider text-slate-300">{copy.global.appName}</p>
-          <h1 className="text-3xl font-semibold">{copy.companies.title}</h1>
-          <p className="text-sm text-slate-300">
-            {index
-              ? t(copy.companies.coverageLine, {
-                  n: index.companyCount,
-                  target: index.lookbackTargetYears,
-                })
-              : copy.global.loading.base}
+          <p className="text-xs uppercase tracking-widest text-slate-300">Lab showcase</p>
+          <h1 className="text-3xl font-semibold">Company catalog</h1>
+          <p className="max-w-3xl text-sm text-slate-300">
+            Curated Lab scope for portfolio walkthroughs. Each card routes directly into a
+            recommended adjacent year pair and keeps deep links stable for interview demos.
           </p>
         </header>
 
-        {error ? (
-          <div className="rounded-lg border border-white/10 bg-slate-900/60 p-4 text-sm text-slate-200">
-            {error}
-          </div>
-        ) : null}
-
-        <section className="space-y-4">
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <section className="grid gap-3 rounded-xl border border-white/10 bg-slate-900/45 p-4 sm:grid-cols-2 lg:grid-cols-3">
+          <label className="space-y-1 text-sm">
+            <span className="text-xs uppercase tracking-wide text-slate-400">Search</span>
             <input
               value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              className="rounded-md border border-white/15 bg-slate-950/40 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-400 focus:border-sky-400/60 focus:outline-none focus:ring-2 focus:ring-sky-400/20"
-              placeholder={copy.companies.searchPlaceholder}
-              aria-label={copy.companies.searchAria}
+              onChange={(event) => setQuery(event.target.value)}
+              className="w-full rounded-md border border-white/15 bg-slate-950/40 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-400 focus:border-sky-400/60 focus:outline-none focus:ring-2 focus:ring-sky-400/20"
+              placeholder="Ticker or company"
+              aria-label="Search showcase companies"
             />
+          </label>
 
+          <label className="space-y-1 text-sm">
+            <span className="text-xs uppercase tracking-wide text-slate-400">Lens availability</span>
             <select
-              value={coverageFilter}
-              onChange={(e) => setCoverageFilter(e.target.value as CoverageFilter)}
-              className="rounded-md border border-white/15 bg-slate-950/40 px-3 py-2 text-sm text-slate-200 focus:border-sky-400/60 focus:outline-none focus:ring-2 focus:ring-sky-400/20"
-              aria-label={copy.companies.coverageFilterAria}
+              value={lensFilter}
+              onChange={(event) => setLensFilter(event.target.value as LensFilter)}
+              className="w-full rounded-md border border-white/15 bg-slate-950/40 px-3 py-2 text-sm text-slate-100 focus:border-sky-400/60 focus:outline-none focus:ring-2 focus:ring-sky-400/20"
+              aria-label="Filter by lens availability"
             >
-              <option value="all">{copy.companies.filters.coverageAll}</option>
-              <option value="ge8">{copy.companies.filters.coverageGe8}</option>
+              <option value="all">All</option>
+              <option value="deboilerplated">Deboilerplated</option>
+              <option value="raw">Raw</option>
             </select>
+          </label>
 
-            <select
-              value={storyFilter}
-              onChange={(e) => setStoryFilter(e.target.value as StoryFilter)}
-              className="rounded-md border border-white/15 bg-slate-950/40 px-3 py-2 text-sm text-slate-200 focus:border-sky-400/60 focus:outline-none focus:ring-2 focus:ring-sky-400/20"
-              aria-label={copy.companies.storyFilterAria}
-            >
-              <option value="all">{copy.companies.filters.storyAll}</option>
-              <option value="story">{copy.companies.filters.storyOnly}</option>
-            </select>
-
-            <select
-              value={exchangeFilter}
-              onChange={(e) => setExchangeFilter(e.target.value)}
-              className="rounded-md border border-white/15 bg-slate-950/40 px-3 py-2 text-sm text-slate-200 focus:border-sky-400/60 focus:outline-none focus:ring-2 focus:ring-sky-400/20"
-              aria-label={copy.companies.exchangeFilterAria}
-            >
-              {exchangeOptions.map((exchange) => (
-                <option key={exchange} value={exchange}>
-                  {exchange === "all"
-                    ? copy.companies.filters.exchangeAll
-                    : exchange}
-                </option>
-              ))}
-            </select>
-
-            <select
-              value={qualityFilter}
-              onChange={(e) => setQualityFilter(e.target.value as QualityFilter)}
-              className="rounded-md border border-white/15 bg-slate-950/40 px-3 py-2 text-sm text-slate-200 focus:border-sky-400/60 focus:outline-none focus:ring-2 focus:ring-sky-400/20"
-              aria-label={copy.companies.qualityFilterAria}
-            >
-              <option value="all">{copy.companies.filters.qualityAll}</option>
-              <option value="high">{copy.companies.filters.qualityHigh}</option>
-              <option value="high_med">{copy.companies.filters.qualityHighMed}</option>
-            </select>
-
-            <select
-              value={sortMode}
-              onChange={(e) => setSortMode(e.target.value as SortMode)}
-              className="rounded-md border border-white/15 bg-slate-950/40 px-3 py-2 text-sm text-slate-200 focus:border-sky-400/60 focus:outline-none focus:ring-2 focus:ring-sky-400/20"
-              aria-label={copy.companies.sortAria}
-            >
-              <option value="featured">{copy.companies.sort.featured}</option>
-              <option value="az">{copy.companies.sort.az}</option>
-              <option value="peak_drift">{copy.companies.sort.peakDrift}</option>
-              <option value="coverage">{copy.companies.sort.coverage}</option>
-            </select>
+          <div className="self-end text-xs text-slate-400">
+            Showing {filtered.length} of {summaries.length} showcase companies.
           </div>
-          <p className="text-xs text-slate-400">{copy.companies.storyHelper}</p>
         </section>
 
-        {featuredRows.length ? (
-          <section className="space-y-3">
-            <h2 className="text-lg font-semibold">{copy.companies.featuredTitle}</h2>
-            <p className="text-xs text-slate-400">{copy.companies.featuredHelper}</p>
-            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 stagger-children">
-              {featuredRows.slice(0, 12).map((r) => {
-                const fc = r.featuredCase!
-                const link = `/company/${r.ticker}?from=${fc.from}&to=${fc.to}`
-                return (
-                  <Link
-                    key={r.ticker}
-                    to={link}
-                    className="rounded-lg border border-white/10 bg-slate-900/40 p-4 hover:bg-slate-900/60"
-                  >
-                    <div className="flex items-start justify-between gap-3">
-                      <div>
-                        <div className="text-sm font-semibold">{r.ticker}</div>
-                        <div className="text-xs text-slate-300">{r.companyName}</div>
-                      </div>
-                      <span className="rounded-full border border-sky-400/40 bg-sky-400/10 px-2 py-1 text-[11px] text-sky-100">
-                        {copy.companies.featuredChip}
-                      </span>
-                    </div>
-                    <div className="mt-3 text-sm font-medium">{fc.title}</div>
-                    <div className="mt-2 text-xs text-slate-300">{fc.blurb}</div>
-                    <div className="mt-3 flex flex-wrap gap-2 text-xs text-slate-300">
-                      <span className="rounded-full border border-white/15 bg-white/5 px-2 py-0.5">
-                        {t(copy.companies.compareYearsLabel, { from: fc.from, to: fc.to })}
-                      </span>
-                      {fc.tags?.slice(0, 2).map((tag) => (
-                        <span
-                          key={`${r.ticker}-${tag}`}
-                          className="rounded-full border border-white/15 bg-white/5 px-2 py-0.5"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </Link>
-                )
-              })}
-            </div>
-          </section>
-        ) : null}
-
-        <section className="space-y-3">
-          <div className="text-sm text-slate-300">
-            {t(copy.companies.resultsCount, { n: filtered.length })}
+        {isLoading ? (
+          <p className="text-sm text-slate-300">Loading showcase catalog...</p>
+        ) : error ? (
+          <div className="rounded-lg border border-amber-400/30 bg-amber-500/10 p-4 text-sm text-amber-100">
+            {error}
           </div>
-
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 stagger-children">
-            {filtered.map((r) => {
-              const auto = r.autoPair
-              const isStory = storyTickers.has(r.ticker)
-              const jump = auto
-                ? `/company/${r.ticker}?from=${auto.from}&to=${auto.to}`
-                : `/company/${r.ticker}`
+        ) : (
+          <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4 stagger-children">
+            {filtered.map((summary) => {
+              const companyName = SHOWCASE_COMPANY_NAMES[summary.ticker] ?? summary.ticker
               return (
-                <div key={r.ticker} className="rounded-lg border border-white/10 bg-slate-900/40 p-4">
-                  <div className="flex items-start justify-between gap-3">
+                <article
+                  key={summary.ticker}
+                  className="flex h-full flex-col rounded-xl border border-white/10 bg-slate-900/40 p-4"
+                >
+                  <div className="flex items-start justify-between gap-2">
                     <div>
-                      <Link to={`/company/${r.ticker}`} className="text-sm font-semibold hover:underline">
-                        {r.ticker}
-                      </Link>
-                      <div className="mt-1 text-xs text-slate-300">{r.companyName}</div>
+                      <h2 className="text-lg font-semibold">{summary.ticker}</h2>
+                      <p className="text-xs text-slate-300">{companyName}</p>
                     </div>
-                    <div className="flex flex-col items-end gap-2">
-                      {isStory ? (
-                        <span className="rounded-full border border-amber-400/40 bg-amber-400/10 px-2 py-1 text-[11px] text-amber-100">
-                          {copy.companies.storyChip}
-                        </span>
-                      ) : null}
-                      <QualityBadge level={r.quality.level} />
-                    </div>
+                    <span className="rounded-full border border-sky-300/30 bg-sky-400/10 px-2 py-0.5 text-[11px] text-sky-100">
+                      Showcase
+                    </span>
                   </div>
 
-                  <div className="mt-3 flex flex-wrap gap-2 text-xs text-slate-300">
-                    <span className="rounded-full border border-white/15 bg-white/5 px-2 py-1">
-                      {formatCoverage(r)}
-                    </span>
-                    <span className="rounded-full border border-white/15 bg-white/5 px-2 py-1">
-                      {formatLatestYear(r)}
-                    </span>
-                    {r.metricsSummary?.peakDrift ? (
-                      <span className="rounded-full border border-white/15 bg-white/5 px-2 py-1">
-                        {t(copy.companies.peakDriftLabel, {
-                          from: r.metricsSummary.peakDrift.from,
-                          to: r.metricsSummary.peakDrift.to,
-                          v: r.metricsSummary.peakDrift.value.toFixed(2),
-                        })}
-                      </span>
+                  <div className="mt-3 space-y-1 text-xs text-slate-300">
+                    <p>{summary.caseCount} adjacent year pairs</p>
+                    <p>{summary.availableDetectors.length} methods available</p>
+                    <p>Lenses: {summary.availableLenses.join(", ")}</p>
+                    {summary.defaultPair ? (
+                      <p>
+                        Recommended pair: {summary.defaultPair.from}-{summary.defaultPair.to}
+                      </p>
+                    ) : null}
+                    {summary.latestPair ? (
+                      <p>
+                        Latest pair: {summary.latestPair.from}-{summary.latestPair.to}
+                      </p>
                     ) : null}
                   </div>
 
-                  <div className="mt-4 flex gap-3">
+                  <div className="mt-4 flex flex-wrap gap-2">
                     <Link
-                      to={jump}
-                      className="inline-flex items-center rounded-md border border-white/20 px-3 py-2 text-xs text-slate-200 hover:border-white/40 hover:bg-white/5"
+                      to={buildLabLink(summary.ticker, summary.defaultPair)}
+                      className="inline-flex items-center rounded-md bg-sky-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-sky-500"
                     >
-                      {copy.companies.jumpBiggestShift}
+                      Open recommended
+                    </Link>
+                    <Link
+                      to={buildLabLink(summary.ticker, summary.latestPair)}
+                      className="inline-flex items-center rounded-md border border-white/20 px-3 py-1.5 text-xs text-slate-200 hover:border-white/40 hover:bg-white/5"
+                    >
+                      Open latest
                     </Link>
                   </div>
-                </div>
+                </article>
               )
             })}
-          </div>
-        </section>
-
-        <footer className="pt-8 text-xs text-slate-400">
-          {copy.global.sourceLine} {copy.global.caveatLine}
-        </footer>
+          </section>
+        )}
       </div>
     </main>
   )

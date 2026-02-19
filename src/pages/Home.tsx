@@ -1,205 +1,154 @@
-﻿// src/pages/Home.tsx
 import { useEffect, useMemo, useState } from "react"
 import { Link } from "react-router-dom"
-import { copy, t } from "../lib/copy"
 import {
-  loadCompanyIndex,
-  loadFeaturedCases,
-} from "../lib/data"
-import type { CompanyIndex, FeaturedCase } from "../lib/types"
+  listLabTickerSummaries,
+  listLabShowcaseTickers,
+  type LabTickerSummary,
+} from "../lib/labData"
+
+const SHOWCASE_COMPANY_NAMES: Record<string, string> = {
+  NVDA: "NVIDIA",
+  KO: "Coca-Cola",
+  WM: "Waste Management",
+  GE: "General Electric",
+}
+
+function buildCaseLink(ticker: string, pair: { from: number; to: number } | null): string {
+  if (!pair) return `/company/${ticker}?tab=lab`
+  return `/company/${ticker}?tab=lab&from=${pair.from}&to=${pair.to}`
+}
+
+function summarizeMethods(summary: LabTickerSummary): string {
+  const detectorCount = summary.availableDetectors.length
+  const lensCount = summary.availableLenses.length
+  return `${detectorCount} methods across ${lensCount} lenses`
+}
 
 export default function Home() {
-  const [index, setIndex] = useState<CompanyIndex | null>(null)
-  const [featuredCases, setFeaturedCases] = useState<FeaturedCase[]>([])
-  const [featuredError, setFeaturedError] = useState<string | null>(null)
-  const companyNameMap = useMemo(() => {
-    const map = new Map<string, string>()
-    if (!index) return map
-    for (const company of index.companies) {
-      if (company.ticker && company.companyName) {
-        map.set(company.ticker.toUpperCase(), company.companyName)
-      }
-    }
-    return map
-  }, [index])
+  const [summaries, setSummaries] = useState<LabTickerSummary[]>([])
+  const [error, setError] = useState<string | null>(null)
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    let mounted = true
-    loadCompanyIndex()
-      .then((data) => {
-        if (!mounted) return
-        setIndex(data)
+    let cancelled = false
+    listLabTickerSummaries({ showcaseOnly: true })
+      .then((result) => {
+        if (cancelled) return
+        setSummaries(result)
+        setError(null)
       })
-      .catch(() => {
-        if (!mounted) return
-        setIndex(null)
+      .catch((loadError) => {
+        if (cancelled) return
+        setError(loadError instanceof Error ? loadError.message : "Failed to load Lab showcase data.")
+      })
+      .finally(() => {
+        if (!cancelled) setIsLoading(false)
       })
     return () => {
-      mounted = false
+      cancelled = true
     }
   }, [])
 
-  useEffect(() => {
-    let mounted = true
-    loadFeaturedCases()
-      .then((data) => {
-        if (!mounted) return
-        setFeaturedCases(data.cases.slice(0, 6))
-      })
-      .catch((e) => {
-        if (!mounted) return
-        setFeaturedError(e?.message ?? copy.global.errors.missingDataset)
-      })
-    return () => {
-      mounted = false
-    }
-  }, [])
+  const preferredTicker = listLabShowcaseTickers()[0] ?? "NVDA"
+  const starter = useMemo(() => {
+    const preferred = summaries.find((entry) => entry.ticker === preferredTicker)
+    return preferred ?? summaries[0] ?? null
+  }, [preferredTicker, summaries])
 
   return (
     <main className="min-h-screen page-fade">
-      <div className="mx-auto max-w-6xl px-6 pt-8 pb-6 space-y-6">
-        <section className="grid gap-6 lg:grid-cols-[1.35fr_0.65fr]">
-          <header className="space-y-2">
-            <p className="text-xs uppercase tracking-wider text-slate-300">
-              {copy.global.appName}
-            </p>
-
-            <h1 className="text-2xl font-semibold leading-snug">
-              {copy.home.heroTitle}
+      <div className="mx-auto grid max-w-6xl gap-10 px-6 py-12">
+        <section className="grid gap-6 rounded-2xl border border-white/10 bg-slate-900/45 p-6 shadow-[0_18px_48px_rgba(2,6,23,0.35)] lg:grid-cols-[1.45fr_0.55fr]">
+          <div className="space-y-4">
+            <p className="text-xs uppercase tracking-widest text-slate-300">SEC Narrative Drift Lab</p>
+            <h1 className="max-w-3xl text-3xl font-semibold leading-tight">
+              Deterministic risk-text analysis first, reproducible LLM sidecars second.
             </h1>
-
-            <p className="text-sm text-slate-200">
-              {copy.global.subtitle}
+            <p className="max-w-3xl text-sm text-slate-200">
+              Compare adjacent 10-K Item 1A years and inspect evidence directly. Each detector card
+              links outputs to canonical JSON paths so reviewers can rerun, audit, and compare models
+              without hidden runtime calls.
             </p>
-
-            <p className="text-sm text-slate-200">
-              {copy.global.oneLiner}
-            </p>
-
-            <p className="text-xs text-slate-300">
-              {copy.home.heroFootnote}
-            </p>
-
-            <div className="flex flex-wrap gap-2 pt-1">
+            <div className="flex flex-wrap items-center gap-2 pt-1">
+              <Link
+                to={buildCaseLink(starter?.ticker ?? preferredTicker, starter?.defaultPair ?? null)}
+                className="inline-flex items-center rounded-md bg-sky-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-sky-500"
+              >
+                Start with recommended case
+              </Link>
               <Link
                 to="/companies"
-                className="inline-flex items-center rounded-md bg-sky-600 px-3 py-1.5 text-sm font-semibold text-white hover:bg-sky-500"
+                className="inline-flex items-center rounded-md border border-white/20 px-4 py-2 text-sm text-slate-200 transition hover:border-white/40 hover:bg-white/5"
               >
-                {copy.buttons.browseCompanies}
+                Open showcase catalog
               </Link>
-
               <Link
                 to="/methodology"
-                className="inline-flex items-center rounded-md border border-white/20 px-3 py-1.5 text-sm text-slate-200 hover:border-white/40 hover:bg-white/5"
+                className="inline-flex items-center rounded-md border border-white/20 px-4 py-2 text-sm text-slate-200 transition hover:border-white/40 hover:bg-white/5"
               >
-                {copy.nav.methodology}
+                Read methodology
               </Link>
             </div>
-          </header>
+          </div>
 
-          <aside className="rounded-lg border border-white/10 bg-slate-900/60 p-3 shadow-sm">
-            <div className="text-xs uppercase tracking-wider text-slate-300">
-              {copy.home.howToReadTitle}
-            </div>
-            <ol className="mt-2 space-y-1 text-sm text-slate-200">
-              <li>
-                <span className="text-slate-400">1.</span>{" "}
-                {copy.home.howToReadSteps.drift}
-              </li>
-              <li>
-                <span className="text-slate-400">2.</span>{" "}
-                {copy.home.howToReadSteps.similarity}
-              </li>
-              <li>
-                <span className="text-slate-400">3.</span>{" "}
-                {copy.home.howToReadSteps.evidence}
-              </li>
+          <aside className="space-y-3 rounded-xl border border-white/10 bg-slate-950/40 p-4">
+            <h2 className="text-sm font-semibold text-slate-100">What to do first</h2>
+            <ol className="space-y-2 text-sm text-slate-200">
+              <li>1. Open a showcase company.</li>
+              <li>2. Keep lens on deboilerplated for the first read.</li>
+              <li>3. Compare detector evidence before reading LLM sidecars.</li>
             </ol>
-            <p className="mt-2 text-xs text-slate-400 leading-snug">
-              {copy.global.sourceLine} {copy.global.caveatLine}
+            <p className="text-xs text-slate-400">
+              All runtime results load from static Lab JSON under
+              <code className="ml-1 rounded bg-slate-950/70 px-1 py-0.5">public/data/sec_narrative_drift_lab/</code>.
             </p>
           </aside>
         </section>
 
-        <section className="space-y-3">
-          <div className="flex flex-wrap items-end justify-between gap-2">
-            <div>
-              <h2 className="text-lg font-semibold">
-                {copy.home.featuredHeading}
-              </h2>
-              <p className="text-xs text-slate-300">
-                {copy.home.featuredHelper}
-              </p>
-            </div>
-            {index ? (
-              <p className="text-xs text-slate-400">
-                {t(copy.companies.coverageLine, {
-                  n: index.companyCount,
-                  target: index.lookbackTargetYears,
-                })}
-              </p>
-            ) : null}
+        <section className="space-y-4">
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <h2 className="text-xl font-semibold">Showcase companies</h2>
+            <p className="text-xs text-slate-400">Primary scope: NVDA, KO, WM, GE</p>
           </div>
-
-          {featuredCases.length ? (
-            <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3 stagger-children">
-              {featuredCases.map((featured) => {
-                const link = `/company/${featured.ticker}?from=${featured.defaultPair.from}&to=${featured.defaultPair.to}`
-                const companyName = companyNameMap.get(featured.ticker.toUpperCase())
+          {isLoading ? (
+            <p className="text-sm text-slate-300">Loading Lab showcase data...</p>
+          ) : error ? (
+            <p className="rounded-md border border-amber-400/30 bg-amber-500/10 px-3 py-2 text-sm text-amber-100">
+              {error}
+            </p>
+          ) : (
+            <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4 stagger-children">
+              {summaries.map((summary) => {
+                const companyName = SHOWCASE_COMPANY_NAMES[summary.ticker] ?? summary.ticker
                 return (
                   <Link
-                    key={featured.id}
-                    to={link}
-                    className="min-w-0 rounded-lg border border-white/10 bg-slate-900/40 p-2 hover:bg-slate-900/60"
-                    aria-label={featured.cta}
+                    key={summary.ticker}
+                    to={buildCaseLink(summary.ticker, summary.defaultPair)}
+                    className="rounded-xl border border-white/10 bg-slate-900/40 p-4 transition hover:border-sky-300/40 hover:bg-slate-900/60"
                   >
-                    <div className="flex items-start justify-between gap-2">
-                      <div className="min-w-0">
-                        <div className="text-sm font-semibold">{featured.ticker}</div>
-                        {companyName ? (
-                          <div className="text-xs text-slate-300 truncate">
-                            {companyName}
-                          </div>
-                        ) : null}
+                    <div className="flex items-start justify-between gap-3">
+                      <div>
+                        <div className="text-base font-semibold">{summary.ticker}</div>
+                        <div className="text-xs text-slate-300">{companyName}</div>
                       </div>
-                      <span className="rounded-full border border-sky-400/40 bg-sky-400/10 px-2 py-1 text-[11px] text-sky-100">
-                        {copy.companies.featuredChip}
+                      <span className="rounded-full border border-sky-300/30 bg-sky-400/10 px-2 py-0.5 text-[11px] text-sky-100">
+                        Showcase
                       </span>
                     </div>
-                    <div
-                      className="mt-1 text-sm font-medium leading-snug truncate"
-                      title={featured.headline}
-                    >
-                      {featured.headline}
-                    </div>
-                    {featured.hook ? (
-                      <div className="mt-0.5 text-xs text-slate-300 truncate" title={featured.hook}>
-                        {featured.hook}
-                      </div>
-                    ) : null}
-                    <div className="mt-1 flex flex-wrap gap-2 text-xs text-slate-300">
-                      <span className="rounded-full border border-white/15 bg-white/5 px-2 py-0.5">
-                        {t(copy.companies.compareYearsLabel, {
-                          from: featured.defaultPair.from,
-                          to: featured.defaultPair.to,
-                        })}
-                      </span>
-                      {featured.tags?.slice(0, 2).map((tag) => (
-                        <span
-                          key={`${featured.id}-${tag}`}
-                          className="rounded-full border border-white/15 bg-white/5 px-2 py-0.5"
-                        >
-                          {tag}
-                        </span>
-                      ))}
+                    <div className="mt-3 space-y-1 text-xs text-slate-300">
+                      <div>{summary.caseCount} adjacent pairs</div>
+                      <div>{summarizeMethods(summary)}</div>
+                      {summary.defaultPair ? (
+                        <div>
+                          Recommended: {summary.defaultPair.from}-{summary.defaultPair.to}
+                        </div>
+                      ) : null}
                     </div>
                   </Link>
                 )
               })}
             </div>
-          ) : featuredError ? (
-            <p className="text-xs text-slate-400">{featuredError}</p>
-          ) : null}
+          )}
         </section>
       </div>
     </main>
