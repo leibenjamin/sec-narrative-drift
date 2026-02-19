@@ -4,14 +4,14 @@ import argparse
 from pathlib import Path
 from typing import Optional
 
-SCRIPT_VERSION = "lab_emit_repair_prompts.py@v1"
+SCRIPT_VERSION = "lab_emit_repair_prompts.py@v2"
 
 
 def extract_errors(log_text: str) -> dict[str, list[str]]:
     issues: dict[str, list[str]] = {}
     current: Optional[str] = None
     for line in log_text.splitlines():
-        if line.startswith("- "):
+        if line.startswith("- ") and "det_llm_" in line and ": " in line:
             current = line[2:].strip()
             if current:
                 issues[current] = []
@@ -66,9 +66,14 @@ def main(argv: Optional[list[str]] = None) -> int:
     json_text = json_path.read_text(encoding="utf-8", errors="replace").strip()
 
     lines: list[str] = []
-    lines.append("You are repairing a validation failure in a Lab LLM output JSON.")
-    lines.append("Return corrected JSON only. No markdown. No backticks. No extra text.")
-    lines.append("Preserve all existing fields unless a change is required to fix validation errors.")
+    lines.append("You are repairing a validation failure in one Lab LLM output JSON.")
+    lines.append("Return corrected JSON only. No markdown. No backticks. No commentary.")
+    lines.append("Do not add or remove top-level keys.")
+    lines.append("Preserve existing content unless a change is required to fix listed validator errors.")
+    lines.append(
+        "Keep provenance keys restricted to input_file, model_provider, model_name, run_label."
+    )
+    lines.append("Keep delta citations in ASCII format only: YYYY para NN.")
     lines.append("")
     lines.append("Validation errors to fix:")
     if reasons:

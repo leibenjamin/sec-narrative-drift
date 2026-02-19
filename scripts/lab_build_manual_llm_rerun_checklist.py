@@ -6,11 +6,12 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Optional, cast
 
-SCRIPT_VERSION = "lab_build_manual_llm_rerun_checklist.py@v1"
+SCRIPT_VERSION = "lab_build_manual_llm_rerun_checklist.py@v3"
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_MANIFEST_PATH = REPO_ROOT / "reports" / "lab_llm_run_manifest.json"
 DEFAULT_OUT_PATH = REPO_ROOT / "reports" / "lab_llm_manual_rerun_checklist.md"
+BUNDLES_ROOT = REPO_ROOT / "bundles"
 
 TICKER_SORT_ORDER = {"NVDA": 0, "KO": 1, "WM": 2, "GE": 3}
 DETECTOR_SORT_ORDER = {
@@ -75,6 +76,26 @@ def write_text(path: Path, lines: list[str]) -> None:
         handle.write("\n")
 
 
+def _to_repo_posix(path: Path) -> str:
+    return path.relative_to(REPO_ROOT).as_posix()
+
+
+def find_latest_run_pack_path() -> Optional[str]:
+    if not BUNDLES_ROOT.exists():
+        return None
+    candidates: list[Path] = []
+    for entry in BUNDLES_ROOT.iterdir():
+        if not entry.is_dir():
+            continue
+        if not entry.name.startswith("llm_run_pack_"):
+            continue
+        candidates.append(entry)
+    if not candidates:
+        return None
+    latest = sorted(candidates, key=lambda item: item.name)[-1]
+    return _to_repo_posix(latest)
+
+
 def ticker_sort_key(ticker: str) -> int:
     return TICKER_SORT_ORDER.get(ticker.upper(), 999)
 
@@ -94,6 +115,15 @@ def build_jobs(manifest_path: Path) -> tuple[list[Job], str, str, str, str]:
     run_pack = as_dict(root.get("run_pack")) or {}
     run_pack_path = get_str(run_pack.get("path")) or "<missing>"
     thread_starters = get_str(run_pack.get("thread_starters")) or "<missing>"
+    if run_pack_path == "<missing>" or not run_pack_path:
+        fallback_run_pack_path = find_latest_run_pack_path()
+        if fallback_run_pack_path:
+            run_pack_path = fallback_run_pack_path
+            fallback_thread_starters = (
+                REPO_ROOT / run_pack_path / "THREAD_STARTERS.md"
+            )
+            if fallback_thread_starters.exists():
+                thread_starters = _to_repo_posix(fallback_thread_starters)
 
     entries = as_list(root.get("entries"))
     if entries is None:
@@ -191,7 +221,7 @@ def build_lines(
     lines.append("")
     lines.append("## Validation Loop")
     lines.append("- After each wave:")
-    lines.append("  - `python scripts/lab_validate_llm_manifest_outputs.py --allow-missing --report reports/lab_llm_manifest_validation.md`")
+    lines.append("  - `python scripts/lab_validate_llm_manifest_outputs.py --allow-missing --allow-invalid --report reports/lab_llm_manifest_validation.md`")
     lines.append("- After all 42 jobs:")
     lines.append("  - `python scripts/lab_validate_llm_manifest_outputs.py --report reports/lab_llm_manifest_validation.md`")
     lines.append("  - `npm run lab:predeploy`")
@@ -242,6 +272,9 @@ def build_lines(
 
     lines.append("## Notes")
     lines.append("- Keep `provenance.input_file` exactly `inputs/<TICKER>_<FROM>_<TO>_focuspack_deboilerplated.json`.")
+    lines.append("- Include `provenance.model_provider` and `provenance.model_name` (required).")
+    lines.append("- Optional but recommended: include `provenance.run_label` (for wave tracking).")
+    lines.append("- Do not include extra provenance keys.")
     lines.append('- Delta citations must be ASCII-only format: `"YYYY para NN"`.')
     lines.append("- Do not add top-level keys such as `section_id`.")
     lines.append("- Keep snippets verbatim and <=350 chars; highlights must be non-empty.")

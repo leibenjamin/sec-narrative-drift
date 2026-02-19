@@ -10,7 +10,7 @@ from typing import Any, Optional
 
 import sys
 
-SCRIPT_VERSION = "lab_build_llm_run_manifest.py@v1"
+SCRIPT_VERSION = "lab_build_llm_run_manifest.py@v2"
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 PUBLIC_LAB_ROOT = REPO_ROOT / "public" / "data" / "sec_narrative_drift_lab"
@@ -345,6 +345,21 @@ def write_thread_starters(
     write_text(path, lines)
 
 
+def find_latest_run_pack_path(run_pack_root: Path) -> Optional[Path]:
+    if not run_pack_root.exists():
+        return None
+    candidates: list[Path] = []
+    for entry in run_pack_root.iterdir():
+        if not entry.is_dir():
+            continue
+        if not entry.name.startswith("llm_run_pack_"):
+            continue
+        candidates.append(entry)
+    if not candidates:
+        return None
+    return sorted(candidates, key=lambda path: path.name)[-1]
+
+
 def parse_tickers(raw: str) -> list[str]:
     tokens = [token.strip().upper() for token in raw.split(",")]
     tickers: list[str] = []
@@ -528,12 +543,43 @@ def main(argv: Optional[list[str]] = None) -> int:
 
     run_pack_dir: Optional[Path] = None
     thread_starters_path: Optional[Path] = None
+    run_pack_generated_now = False
+    run_pack_root = Path(args.run_pack_root)
     entries_with_pack_paths: list[ManifestEntry] = []
     if args.skip_run_pack:
-        entries_with_pack_paths = entries
+        run_pack_dir = find_latest_run_pack_path(run_pack_root)
+        if run_pack_dir is not None:
+            candidate_thread_starters = run_pack_dir / "THREAD_STARTERS.md"
+            if candidate_thread_starters.exists():
+                thread_starters_path = candidate_thread_starters
+        for entry in entries:
+            filename = (
+                f"{entry.ticker}_{entry.year_from}_{entry.year_to}_focuspack_{entry.lens}.json"
+            )
+            run_pack_input_rel: Optional[str] = None
+            if run_pack_dir is not None:
+                candidate_input = run_pack_dir / "inputs" / filename
+                if candidate_input.exists():
+                    run_pack_input_rel = f"inputs/{filename}"
+            entries_with_pack_paths.append(
+                ManifestEntry(
+                    ticker=entry.ticker,
+                    year_from=entry.year_from,
+                    year_to=entry.year_to,
+                    section=entry.section,
+                    lens=entry.lens,
+                    source_id=entry.source_id,
+                    case_in_registry=entry.case_in_registry,
+                    input_source_path=entry.input_source_path,
+                    input_source_present=entry.input_source_present,
+                    run_pack_input_path=run_pack_input_rel,
+                    detectors=entry.detectors,
+                )
+            )
     else:
+        run_pack_generated_now = True
         stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
-        run_pack_dir = Path(args.run_pack_root) / f"llm_run_pack_{stamp}"
+        run_pack_dir = run_pack_root / f"llm_run_pack_{stamp}"
         inputs_dir = run_pack_dir / "inputs"
         inputs_dir.mkdir(parents=True, exist_ok=True)
         for entry in entries:
@@ -607,7 +653,7 @@ def main(argv: Optional[list[str]] = None) -> int:
             "detectors": list(LLM_DETECTORS),
         },
         "run_pack": {
-            "generated": run_pack_dir is not None,
+            "generated": run_pack_generated_now,
             "path": to_repo_relative(run_pack_dir) if run_pack_dir is not None else None,
             "thread_starters": (
                 to_repo_relative(thread_starters_path)

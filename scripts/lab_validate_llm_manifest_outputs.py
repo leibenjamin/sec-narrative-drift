@@ -1,4 +1,4 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
 import argparse
 import json
@@ -9,7 +9,7 @@ from typing import Optional
 
 import sys
 
-SCRIPT_VERSION = "lab_validate_llm_manifest_outputs.py@v2"
+SCRIPT_VERSION = "lab_validate_llm_manifest_outputs.py@v3"
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_MANIFEST_PATH = REPO_ROOT / "reports" / "lab_llm_run_manifest.json"
@@ -36,7 +36,9 @@ FOCUSPACK_WARNING = "Focuspack is a subset; verify in full compare pane."
 ALLOWED_CONFIDENCE: set[float] = {0.25, 0.50, 0.75}
 MAX_SNIPPET_CHARS = 350
 DELTA_BRIEF_CITATION_RE = re.compile(r"\b(20\d{2})\s+para\s+(\d+)\b", re.IGNORECASE)
-FORBIDDEN_CITATION_TOKENS = ("\u00B6", "\u00C2\u00B6", "\u00C3\u0082\u00C2\u00B6")
+FORBIDDEN_CITATION_TOKENS = ("¶", "Â¶", "Ã‚Â¶")
+PROVENANCE_REQUIRED = ("input_file", "model_provider", "model_name")
+PROVENANCE_ALLOWED = set(PROVENANCE_REQUIRED + ("run_label",))
 
 sys.path.append(str(Path(__file__).resolve().parent))
 from lab_llm_precompute_utils import (  # type: ignore
@@ -46,6 +48,7 @@ from lab_llm_precompute_utils import (  # type: ignore
     get_str,
     read_json,
 )
+from lab_validate_llm_outputs import build_paragraph_maps, resolve_input_file  # type: ignore
 
 
 @dataclass(frozen=True)
@@ -171,6 +174,97 @@ def parse_string_list(
     return values
 
 
+def _validate_artifact_keys(
+    detector_id: str, artifacts: dict[str, object], reasons: list[str]
+) -> None:
+    expected_keys = (
+        {"delta_brief"}
+        if detector_id == "det_llm_delta_brief_v1"
+        else {"selected_prev", "selected_curr"}
+    )
+    actual_keys = set(artifacts.keys())
+    if actual_keys != expected_keys:
+        missing = sorted(expected_keys.difference(actual_keys))
+        extra = sorted(actual_keys.difference(expected_keys))
+        if missing:
+            reasons.append(
+                f"artifacts missing key(s): {', '.join(missing)}"
+            )
+        if extra:
+            reasons.append(
+                f"artifacts has unexpected key(s): {', '.join(extra)}"
+            )
+
+
+def _validate_provenance_keys(
+    provenance: dict[str, object], reasons: list[str]
+) -> None:
+    keys = set(provenance.keys())
+    for key in PROVENANCE_REQUIRED:
+        if key not in keys:
+            reasons.append(f"provenance missing key: {key}")
+    extras = sorted(key for key in keys if key not in PROVENANCE_ALLOWED)
+    if extras:
+        reasons.append(
+            "provenance has unexpected key(s): " + ", ".join(extras)
+        )
+
+
+def _validate_evidence_snippet_mapping(
+    target: ManifestTarget,
+    provenance_input_file: str,
+    output_path: Path,
+    evidence_raw: list[object],
+    reasons: list[str],
+) -> None:
+    resolution = resolve_input_file(provenance_input_file, output_path)
+    input_path = resolution.path
+    if input_path is None:
+        reasons.append(
+            f"provenance.input_file not resolvable: {resolution.error or provenance_input_file}"
+        )
+        return
+
+    try:
+        input_payload_raw = read_json(input_path)
+    except json.JSONDecodeError as exc:
+        reasons.append(f"input JSON decode failed for provenance.input_file: {exc}")
+        return
+    input_payload = as_str_dict(input_payload_raw)
+    if input_payload is None:
+        reasons.append("input payload root is not an object")
+        return
+    paragraph_maps = build_paragraph_maps(input_payload)
+    if paragraph_maps is None:
+        reasons.append("input payload missing paragraph maps/focuspack_meta")
+        return
+
+    for idx, entry in enumerate(evidence_raw):
+        entry_dict = as_str_dict(entry)
+        if entry_dict is None:
+            continue
+        evidence_year = get_int(entry_dict.get("year"))
+        paragraph_idx = get_int(entry_dict.get("paragraph_idx"))
+        snippet = get_str(entry_dict.get("snippet"))
+        if evidence_year is None or paragraph_idx is None or snippet is None:
+            continue
+        if evidence_year == target.year_from:
+            paragraph_text = paragraph_maps.prev_map.get(paragraph_idx)
+        elif evidence_year == target.year_to:
+            paragraph_text = paragraph_maps.curr_map.get(paragraph_idx)
+        else:
+            continue
+        if paragraph_text is None:
+            reasons.append(
+                f"evidence[{idx}] paragraph_idx {paragraph_idx} not found in mapped FULL indices for year {evidence_year}"
+            )
+            continue
+        if snippet not in paragraph_text:
+            reasons.append(
+                f"evidence[{idx}] snippet is not a verbatim substring of mapped paragraph"
+            )
+
+
 def validate_output_json(target: ManifestTarget, output_path: Path) -> list[str]:
     reasons: list[str] = []
     try:
@@ -232,12 +326,14 @@ def validate_output_json(target: ManifestTarget, output_path: Path) -> list[str]
     if artifacts is None:
         reasons.append("artifacts must be an object")
         artifacts = {}
+    _validate_artifact_keys(target.detector_id, artifacts, reasons)
 
     evidence_raw = as_list(payload_dict.get("evidence"))
     evidence_prev_indices: list[int] = []
     evidence_curr_indices: list[int] = []
     if evidence_raw is None:
         reasons.append("evidence must be a list")
+        evidence_raw = []
     else:
         seen_prev: set[int] = set()
         seen_curr: set[int] = set()
@@ -314,13 +410,16 @@ def validate_output_json(target: ManifestTarget, output_path: Path) -> list[str]
         reasons.append(f'metrics.warnings must include "{FOCUSPACK_WARNING}"')
 
     provenance = as_str_dict(payload_dict.get("provenance"))
+    provenance_input_file = ""
     if provenance is None:
         reasons.append("provenance must be an object")
     else:
+        _validate_provenance_keys(provenance, reasons)
         input_file = get_str(provenance.get("input_file"))
         if input_file is None or not input_file.strip():
             reasons.append("provenance.input_file must be a non-empty string")
         else:
+            provenance_input_file = input_file
             expected_input_file = (
                 f"inputs/{target.ticker}_{target.year_from}_{target.year_to}_focuspack_{target.lens}.json"
             )
@@ -329,6 +428,26 @@ def validate_output_json(target: ManifestTarget, output_path: Path) -> list[str]
                     "provenance.input_file mismatch: "
                     + f"got {input_file!r}, expected {expected_input_file!r}"
                 )
+        model_provider = get_str(provenance.get("model_provider"))
+        if model_provider is None or not model_provider.strip():
+            reasons.append("provenance.model_provider must be a non-empty string")
+        model_name = get_str(provenance.get("model_name"))
+        if model_name is None or not model_name.strip():
+            reasons.append("provenance.model_name must be a non-empty string")
+        run_label = provenance.get("run_label")
+        if run_label is not None and (
+            get_str(run_label) is None or not get_str(run_label)
+        ):
+            reasons.append("provenance.run_label must be a non-empty string when present")
+
+    if provenance_input_file:
+        _validate_evidence_snippet_mapping(
+            target=target,
+            provenance_input_file=provenance_input_file,
+            output_path=output_path,
+            evidence_raw=evidence_raw,
+            reasons=reasons,
+        )
 
     if target.detector_id == "det_llm_delta_brief_v1":
         delta_brief = get_str(artifacts.get("delta_brief"))
@@ -343,6 +462,18 @@ def validate_output_json(target: ManifestTarget, output_path: Path) -> list[str]
                 reasons.append(
                     'delta_brief must include >=2 inline citations in "YYYY para NN" format'
                 )
+            else:
+                for year_text, para_text in citation_matches:
+                    year_val = int(year_text)
+                    para_val = int(para_text)
+                    if year_val not in (target.year_from, target.year_to):
+                        reasons.append(
+                            f'delta_brief citation year must be {target.year_from} or {target.year_to}, got {year_val}'
+                        )
+                    if para_val < 1:
+                        reasons.append(
+                            f'delta_brief citation paragraph number must be >=1, got {para_val}'
+                        )
 
     if target.detector_id == "det_llm_excerpt_picker_v1":
         selected_prev = parse_int_list(
@@ -494,6 +625,11 @@ def build_report(
     return lines
 
 
+def _parse_only_filter(value: str) -> list[str]:
+    parts = [token.strip() for token in value.split(",")]
+    return [token for token in parts if token]
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description="Validate LLM outputs referenced by reports/lab_llm_run_manifest.json."
@@ -513,6 +649,16 @@ def build_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="Return success even when manifest targets are missing.",
     )
+    parser.add_argument(
+        "--allow-invalid",
+        action="store_true",
+        help="Return success even when manifest targets are invalid.",
+    )
+    parser.add_argument(
+        "--only",
+        default="",
+        help="Comma-separated filter tokens; validate only targets whose expected path contains one token.",
+    )
     return parser
 
 
@@ -525,6 +671,14 @@ def main(argv: Optional[list[str]] = None) -> int:
         raise SystemExit(f"Manifest not found: {manifest_path}")
 
     targets = load_manifest_targets(manifest_path)
+    only_filters = _parse_only_filter(args.only)
+    if only_filters:
+        filtered_targets: list[ManifestTarget] = []
+        for target in targets:
+            if any(token in target.expected_output_path for token in only_filters):
+                filtered_targets.append(target)
+        targets = filtered_targets
+
     missing, invalid, manifest_mismatch = validate_targets(targets)
 
     report_lines = build_report(
@@ -555,7 +709,7 @@ def main(argv: Optional[list[str]] = None) -> int:
             print(line)
     print(f"Wrote validation report: {args.report}")
 
-    if invalid:
+    if invalid and not args.allow_invalid:
         return 1
     if missing and not args.allow_missing:
         return 1
