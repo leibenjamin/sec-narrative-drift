@@ -10,7 +10,9 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Optional, cast
 
-SCRIPT_VERSION = "lab_build_cases_registry_v1.py@v1"
+from lab_script_version import build_script_version
+
+SCRIPT_VERSION = build_script_version(Path(__file__), "v2")
 
 def find_repo_root(start: Path) -> Path:
     current = start if start.is_dir() else start.parent
@@ -313,6 +315,7 @@ def source_priority(rel_path: str, ticker: str) -> tuple[int, str]:
         return (0, rel_path)
     if rel_path.startswith(f"{ticker}/"):
         return (1, rel_path)
+    # Legacy queue-style path support retained for archive compatibility only.
     if rel_path.startswith("llm_outputs/"):
         return (2, rel_path)
     return (3, rel_path)

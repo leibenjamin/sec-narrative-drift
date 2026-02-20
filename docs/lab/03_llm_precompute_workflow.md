@@ -27,7 +27,7 @@ Status: canonical manual rerun workflow for Lab.
 - `input_file` (required)
 - `model_provider` (required)
 - `model_name` (required)
-- `run_label` (optional, recommended)
+- `run_label` (required; must start with `YYYY-MM_`)
 
 ## Canonical Validation Loop
 1. Wave progress:

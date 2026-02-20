@@ -9,11 +9,17 @@ from typing import Optional
 
 import sys
 
-SCRIPT_VERSION = "lab_validate_llm_outputs.py@v1"
+from lab_script_version import build_script_version
+
+SCRIPT_VERSION = build_script_version(Path(__file__), "v2")
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
+# Legacy default path retained for reference-only queue flow.
 DEFAULT_OUTPUTS_DIR = (
     REPO_ROOT / "public" / "data" / "sec_narrative_drift_lab" / "llm_outputs"
+)
+LAB_INPUTS_ROOT = (
+    REPO_ROOT / "public" / "data" / "sec_narrative_drift_lab" / "llm_inputs"
 )
 
 DEFAULT_REQUIRED_FIELDS = [
@@ -251,6 +257,14 @@ def _is_json_file(path: Path) -> bool:
     return path.is_file() and path.suffix.lower() == ".json"
 
 
+def _is_within(path: Path, root: Path) -> bool:
+    try:
+        path.resolve().relative_to(root.resolve())
+    except ValueError:
+        return False
+    return True
+
+
 def resolve_input_file(path_value: str, output_path: Path) -> ResolvedInputFile:
     del output_path  # deterministic repo-root resolution only
     if not path_value or not path_value.strip():
@@ -258,25 +272,26 @@ def resolve_input_file(path_value: str, output_path: Path) -> ResolvedInputFile:
 
     raw_path = Path(path_value.strip())
     if raw_path.is_absolute():
-        if _is_json_file(raw_path):
-            return ResolvedInputFile(path=raw_path, error=None)
+        absolute_path = raw_path.resolve()
+        if not _is_within(absolute_path, REPO_ROOT):
+            return ResolvedInputFile(
+                path=None,
+                error=(
+                    "provenance.input_file absolute paths must stay within repository root"
+                ),
+            )
+        if _is_json_file(absolute_path):
+            return ResolvedInputFile(path=absolute_path, error=None)
         return ResolvedInputFile(
             path=None,
             error=f"provenance.input_file not found or not JSON: {path_value}",
         )
 
-    repo_relative_candidate = REPO_ROOT / raw_path
-    if _is_json_file(repo_relative_candidate):
+    repo_relative_candidate = (REPO_ROOT / raw_path).resolve()
+    if _is_within(repo_relative_candidate, REPO_ROOT) and _is_json_file(repo_relative_candidate):
         return ResolvedInputFile(path=repo_relative_candidate, error=None)
 
-    llm_inputs_candidate = (
-        REPO_ROOT
-        / "public"
-        / "data"
-        / "sec_narrative_drift_lab"
-        / "llm_inputs"
-        / raw_path.name
-    )
+    llm_inputs_candidate = (LAB_INPUTS_ROOT / raw_path.name).resolve()
     if _is_json_file(llm_inputs_candidate):
         return ResolvedInputFile(path=llm_inputs_candidate, error=None)
 
@@ -284,11 +299,14 @@ def resolve_input_file(path_value: str, output_path: Path) -> ResolvedInputFile:
     matches: list[Path] = []
     if bundles_root.exists():
         for candidate in bundles_root.rglob(raw_path.name):
-            if not _is_json_file(candidate):
+            candidate_resolved = candidate.resolve()
+            if not _is_within(candidate_resolved, bundles_root):
                 continue
-            if candidate.parent.name != "inputs":
+            if not _is_json_file(candidate_resolved):
                 continue
-            matches.append(candidate)
+            if candidate_resolved.parent.name != "inputs":
+                continue
+            matches.append(candidate_resolved)
     matches = sorted(set(matches), key=lambda item: str(item))
     if len(matches) == 1:
         return ResolvedInputFile(path=matches[0], error=None)
@@ -945,7 +963,10 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--outputs-dir",
         default=str(DEFAULT_OUTPUTS_DIR),
-        help="Path to public/data/sec_narrative_drift_lab/llm_outputs",
+        help=(
+            "Path to legacy queue-style outputs directory "
+            "(public/data/sec_narrative_drift_lab/llm_outputs)."
+        ),
     )
     parser.add_argument(
         "--bundle",

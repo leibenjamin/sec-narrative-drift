@@ -39,15 +39,7 @@ export default function EvidenceStack({
         const blockKey = `${block.year}-${block.paragraph_idx}-${idx}`
         const isExpanded = Boolean(expandedSnippets[blockKey])
         const isLongSnippet = block.snippet.length > LONG_SNIPPET_THRESHOLD
-        const clampStyle =
-          !isExpanded && isLongSnippet
-            ? {
-                display: "-webkit-box",
-                WebkitLineClamp: 4,
-                WebkitBoxOrient: "vertical" as const,
-                overflow: "hidden",
-              }
-            : undefined
+        const snippetClass = !isExpanded && isLongSnippet ? "text-clamp-4" : ""
 
         return (
           <div
@@ -60,7 +52,9 @@ export default function EvidenceStack({
               </span>
               <span className="text-slate-400">{block.why}</span>
             </div>
-            <p className="mt-2 text-sm leading-relaxed text-slate-100" style={clampStyle}>
+            <p
+              className={`mt-2 text-sm leading-relaxed text-slate-100 ${snippetClass}`.trim()}
+            >
               {segments.map((segment, segIdx) =>
                 segment.highlight ? (
                   <mark

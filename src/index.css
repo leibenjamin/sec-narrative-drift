@@ -122,6 +122,22 @@ h4 {
   animation-delay: 280ms;
 }
 
+.text-clamp-4 {
+  display: -webkit-box;
+  line-clamp: 4;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.clipboard-staging-textarea {
+  position: fixed;
+  left: -10000px;
+  top: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
 @keyframes page-fade {
   from {
     opacity: 0;

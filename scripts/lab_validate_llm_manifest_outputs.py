@@ -11,9 +11,12 @@ import sys
 
 from lab_script_version import build_script_version
 
-SCRIPT_VERSION = build_script_version(Path(__file__), "v4")
+SCRIPT_VERSION = build_script_version(Path(__file__), "v5")
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
+LAB_OUTPUT_ROOT = (
+    REPO_ROOT / "public" / "data" / "sec_narrative_drift_lab"
+).resolve()
 DEFAULT_MANIFEST_PATH = REPO_ROOT / "reports" / "lab_llm_run_manifest.json"
 DEFAULT_REPORT_PATH = REPO_ROOT / "reports" / "lab_llm_manifest_validation.md"
 
@@ -81,6 +84,23 @@ class ValidationIssue:
     year_to: int
     detector_id: str
     reasons: list[str]
+
+
+def resolve_expected_output_path(expected_output_path: str) -> tuple[Optional[Path], Optional[str]]:
+    raw_path = Path(expected_output_path)
+    if raw_path.is_absolute():
+        return None, "expected_output_path must be repo-relative, not absolute"
+    resolved = (REPO_ROOT / raw_path).resolve()
+    try:
+        resolved.relative_to(LAB_OUTPUT_ROOT)
+    except ValueError:
+        return (
+            None,
+            "expected_output_path resolves outside public/data/sec_narrative_drift_lab",
+        )
+    if resolved.suffix.lower() != ".json":
+        return None, "expected_output_path must point to a .json file"
+    return resolved, None
 
 
 def write_text(path: Path, lines: list[str]) -> None:
@@ -552,7 +572,22 @@ def validate_targets(
     manifest_mismatch: list[ValidationIssue] = []
 
     for target in targets:
-        expected_abs = REPO_ROOT / Path(target.expected_output_path)
+        expected_abs, expected_path_error = resolve_expected_output_path(
+            target.expected_output_path
+        )
+        if expected_path_error is not None or expected_abs is None:
+            invalid.append(
+                ValidationIssue(
+                    issue_type="invalid_expected_path",
+                    expected_output_path=target.expected_output_path,
+                    ticker=target.ticker,
+                    year_from=target.year_from,
+                    year_to=target.year_to,
+                    detector_id=target.detector_id,
+                    reasons=[expected_path_error or "invalid expected path"],
+                )
+            )
+            continue
         exists_now = expected_abs.exists()
 
         if (

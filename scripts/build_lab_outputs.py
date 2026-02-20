@@ -14,9 +14,11 @@ from typing import Any, Optional, cast
 
 from sec_extract_item1a import extract_item1a_from_html, split_paragraphs
 from sec_segments import segment_text_v1
+from lab_script_version import build_script_version
 
 LAB_SCHEMA_VERSION = "1.0"
-SCRIPT_VERSION = "build_lab_outputs.py@v1"
+SCRIPT_VERSION = build_script_version(Path(__file__), "v2")
+LEGACY_DRIFT_ROOT = Path("public") / "data" / "sec_narrative_drift"
 
 DEFAULT_SECTION = "10k_item1a"
 DEFAULT_SOURCE = "edgar"
@@ -450,11 +452,10 @@ def load_shift_pair(
     year_to: int,
     section: str,
 ) -> Optional[dict[str, Any]]:
+    # Legacy source path retained for deterministic detector backfill compatibility.
     shifts_path = (
         root
-        / "public"
-        / "data"
-        / "sec_narrative_drift"
+        / LEGACY_DRIFT_ROOT
         / ticker.upper()
         / f"shifts_{section}.json"
     )
@@ -487,11 +488,10 @@ def load_excerpt_pair(
     year_to: int,
     section: str,
 ) -> Optional[dict[str, Any]]:
+    # Legacy source path retained for deterministic detector backfill compatibility.
     excerpts_path = (
         root
-        / "public"
-        / "data"
-        / "sec_narrative_drift"
+        / LEGACY_DRIFT_ROOT
         / ticker.upper()
         / f"excerpts_{section}.json"
     )
@@ -524,11 +524,10 @@ def load_metrics_drift(
     year_to: int,
     section: str,
 ) -> Optional[float]:
+    # Legacy source path retained for deterministic detector backfill compatibility.
     metrics_path = (
         root
-        / "public"
-        / "data"
-        / "sec_narrative_drift"
+        / LEGACY_DRIFT_ROOT
         / ticker.upper()
         / f"metrics_{section}.json"
     )

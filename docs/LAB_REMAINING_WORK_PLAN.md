@@ -54,6 +54,14 @@ Core time window: 2019-2024 adjacent year pairs (include most recent even if low
   - Home/Showcase/Methodology rewritten around Lab narrative and showcase scope,
   - runtime dependencies on legacy `src/lib/data.ts` + pre-Lab overview components removed,
   - retired pre-Lab UI modules archived into `attic/`.
+- Phase 6 security and best-practices hardening in progress:
+  - scheduled workflow moved from direct push to PR flow with pinned action SHAs and no test bypass,
+  - Python workflow dependencies pinned in `scripts/requirements.txt`,
+  - frontend loader enforces strict detector-aware LLM sidecar contract (provenance/artifacts),
+  - ticker/path containment hardening added in frontend loader + strict validator,
+  - CSP tightened to remove `style-src 'unsafe-inline'` after style-class refactor,
+  - lint scope now excludes local-only archival artifacts (`bundles/**`, `attic/**`, `handoff/**`),
+  - hash-aware `SCRIPT_VERSION` applied to remaining active legacy/bridge scripts.
 
 Remaining human/manual work (post-hardening):
 - rerun all 42 LLM jobs with strict instructions and required provenance model metadata,

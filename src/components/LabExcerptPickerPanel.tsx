@@ -153,14 +153,7 @@ function ExcerptCard({
 }: ExcerptCardProps) {
   const displayText = paragraphText ?? block.snippet
   const segments = splitBySnippet(displayText, block.snippet, block.highlights ?? [])
-  const clampStyle = isExpanded
-    ? undefined
-    : {
-        display: "-webkit-box",
-        WebkitLineClamp: 4,
-        WebkitBoxOrient: "vertical" as const,
-        overflow: "hidden",
-      }
+  const excerptClass = isExpanded ? "" : "text-clamp-4"
 
   return (
     <div className="rounded-lg border border-white/10 bg-slate-900/40 p-4 space-y-2">
@@ -171,7 +164,7 @@ function ExcerptCard({
         </div>
       </div>
       <div className="text-[11px] text-slate-400">{block.why}</div>
-      <p className="text-sm text-slate-100 leading-relaxed" style={clampStyle}>
+      <p className={`text-sm leading-relaxed text-slate-100 ${excerptClass}`.trim()}>
         {segments.map((segment, idx) =>
           segment.highlight ? (
             <mark
