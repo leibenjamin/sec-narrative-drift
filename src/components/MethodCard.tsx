@@ -109,6 +109,8 @@ export default function MethodCard({
     typeof provenance?.model_provider === "string" ? provenance.model_provider : null
   const modelName = typeof provenance?.model_name === "string" ? provenance.model_name : null
   const runLabel = typeof provenance?.run_label === "string" ? provenance.run_label : null
+  const runMonth =
+    runLabel && /^\d{4}-(0[1-9]|1[0-2])_/.test(runLabel) ? runLabel.slice(0, 7) : null
   const fallbackInputFile = debugInfo
     ? buildDefaultLlmInputFile(
         debugInfo.ticker,
@@ -259,6 +261,11 @@ export default function MethodCard({
             {runLabel ? (
               <div>
                 Run label: <span className="text-slate-100">{runLabel}</span>
+              </div>
+            ) : null}
+            {runMonth ? (
+              <div>
+                Run month: <span className="text-slate-100">{runMonth}</span>
               </div>
             ) : null}
             <div className="break-all">

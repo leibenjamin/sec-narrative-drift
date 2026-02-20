@@ -16,6 +16,9 @@ DEFAULT_SNIPPET_MAX_CHARS = 350
 PROVENANCE_REQUIRED_KEYS = ("input_file", "model_provider", "model_name")
 PROVENANCE_OPTIONAL_KEYS = ("run_label",)
 PROVENANCE_ALLOWED_KEYS = PROVENANCE_REQUIRED_KEYS + PROVENANCE_OPTIONAL_KEYS
+CAMPAIGN_MODEL_PROVIDER = "openai"
+CAMPAIGN_MODEL_NAME = "ChatGPT 5.2-Thinking (Extended Thinking)"
+RUN_LABEL_TEMPLATE = "YYYY-MM_<campaign_tag>"
 
 
 def is_supported_detector(detector_id: str) -> bool:
@@ -61,11 +64,50 @@ def build_common_strict_output_rules_block(input_file: Optional[str]) -> list[st
         lines.append(
             "- Set provenance.input_file EXACTLY to the attached input JSON filename (no omissions)."
         )
-    lines.append("- provenance.model_provider is required.")
-    lines.append("- provenance.model_name is required.")
-    lines.append("- provenance.run_label is optional and recommended for wave tracking.")
+    lines.append(
+        f'- provenance.model_provider MUST be exactly "{CAMPAIGN_MODEL_PROVIDER}".'
+    )
+    lines.append(
+        f'- provenance.model_name MUST be exactly "{CAMPAIGN_MODEL_NAME}".'
+    )
+    lines.append(
+        f'- provenance.run_label is required and must start with YYYY-MM_ (example: "{RUN_LABEL_TEMPLATE}").'
+    )
     lines.append(
         "- provenance keys allowed: input_file, model_provider, model_name, run_label (no extra provenance keys)."
+    )
+    return lines
+
+
+def build_pre_output_quality_gate_lines(
+    detector_id: str,
+    is_focuspack: bool,
+    snippet_max_chars: int = DEFAULT_SNIPPET_MAX_CHARS,
+) -> list[str]:
+    lines: list[str] = []
+    lines.append(
+        "- Verify every evidence.snippet is an exact contiguous substring of its mapped paragraph."
+    )
+    lines.append(
+        f"- Verify every evidence.snippet length is <= {snippet_max_chars}."
+    )
+    if is_focuspack:
+        lines.append(
+            "- Verify paragraph_idx values are FULL indices via focuspack_meta.selected_prev_indices/selected_curr_indices mapping."
+        )
+    else:
+        lines.append(
+            "- Verify paragraph_idx values are direct FULL indices in texts.prev_paragraphs/texts.curr_paragraphs."
+        )
+    lines.append("- Verify highlights is present and non-empty for every evidence block.")
+    if detector_id == DETECTOR_EXCERPT_PICKER:
+        lines.append(
+            "- Verify selected_prev/selected_curr are deduped FULL indices and include all evidence paragraph_idx values."
+        )
+    if detector_id == DETECTOR_DELTA_BRIEF:
+        lines.append('- Verify delta_brief citations are ASCII-only: "YYYY para NN".')
+    lines.append(
+        "- If any check fails, revise internally and do not output JSON until all checks pass."
     )
     return lines
 
@@ -198,9 +240,9 @@ def build_json_skeleton_lines(
     lines.append("  },")
     lines.append('  "provenance": {')
     lines.append(f'    "input_file": "{input_file}",')
-    lines.append('    "model_provider": "<provider>",')
-    lines.append('    "model_name": "<model>",')
-    lines.append('    "run_label": "<optional-run-label>"')
+    lines.append(f'    "model_provider": "{CAMPAIGN_MODEL_PROVIDER}",')
+    lines.append(f'    "model_name": "{CAMPAIGN_MODEL_NAME}",')
+    lines.append(f'    "run_label": "{RUN_LABEL_TEMPLATE}"')
     lines.append("  }")
     lines.append("}")
     return lines
@@ -269,6 +311,15 @@ def build_prompt_template_detector_section_lines(
     lines.append("METRICS RULES")
     lines.extend(build_metrics_rules_block())
     lines.append("")
+    lines.append("MANDATORY PRE-OUTPUT QUALITY GATE")
+    lines.extend(
+        build_pre_output_quality_gate_lines(
+            detector_id=detector_id,
+            is_focuspack=True,
+            snippet_max_chars=snippet_max_chars,
+        )
+    )
+    lines.append("")
     lines.append("JSON SKELETON (fill in values, keep keys exact)")
     lines.extend(
         build_json_skeleton_lines(
@@ -335,9 +386,15 @@ def build_chatgpt_project_instructions_lines() -> list[str]:
     lines.append(
         "provenance.input_file must be exactly: inputs/<TICKER>_<YEAR_FROM>_<YEAR_TO>_focuspack_deboilerplated.json"
     )
-    lines.append("provenance.model_provider is required.")
-    lines.append("provenance.model_name is required.")
-    lines.append("provenance.run_label is optional (recommended for wave tracking).")
+    lines.append(
+        f'provenance.model_provider must be exactly "{CAMPAIGN_MODEL_PROVIDER}".'
+    )
+    lines.append(
+        f'provenance.model_name must be exactly "{CAMPAIGN_MODEL_NAME}".'
+    )
+    lines.append(
+        f'provenance.run_label is required and must start with YYYY-MM_ (example: "{RUN_LABEL_TEMPLATE}").'
+    )
     lines.append(
         "Do not output extra provenance keys beyond input_file, model_provider, model_name, run_label."
     )
@@ -351,7 +408,19 @@ def build_chatgpt_project_instructions_lines() -> list[str]:
     lines.append("If signal is weak, include one conservative warning in metrics.warnings.")
     lines.append('Citation format for delta brief must be ASCII-only: "YYYY para NN".')
     lines.append('Never use pilcrow-style citation symbols; use "YYYY para NN" only.')
-    lines.append('Before final output, self-check JSON syntax: no unescaped " inside string values and no trailing commas.')
+    lines.append(
+        'Before final output, self-check JSON syntax: no unescaped " inside string values and no trailing commas.'
+    )
+    lines.append("Mandatory pre-output quality gate (must pass before final JSON):")
+    lines.append(
+        "- Every evidence.snippet is a verbatim contiguous substring of its mapped FULL-index paragraph."
+    )
+    lines.append(f"- Every evidence.snippet length is <= {DEFAULT_SNIPPET_MAX_CHARS}.")
+    lines.append(
+        "- Every paragraph_idx uses FULL-index mapping via focuspack_meta.selected_prev_indices/selected_curr_indices."
+    )
+    lines.append("- Every evidence block has non-empty highlights.")
+    lines.append("- If any check fails, revise internally and do not output JSON yet.")
     lines.append("")
     lines.append(f"For {DETECTOR_DELTA_BRIEF}:")
     lines.append("- artifacts must contain only delta_brief.")
@@ -382,11 +451,20 @@ def build_starter_checklist_lines(
             "- focuspack mapping applied: local i -> focuspack_meta.selected_prev/curr_indices[i]"
         )
     lines.append("- provenance.input_file matches attached input path exactly")
-    lines.append("- provenance.model_provider and provenance.model_name are present")
+    lines.append(f'- provenance.model_provider is exactly "{CAMPAIGN_MODEL_PROVIDER}"')
+    lines.append(f'- provenance.model_name is exactly "{CAMPAIGN_MODEL_NAME}"')
+    lines.append("- provenance.run_label is present and starts with YYYY-MM_")
     if detector_id == DETECTOR_EXCERPT_PICKER:
         lines.append("- selected_prev/curr cover evidence indices with no duplicates")
     if detector_id == DETECTOR_DELTA_BRIEF:
         lines.append("- delta_brief contains >=2 inline citations with ASCII format YYYY para NN")
+    lines.extend(
+        build_pre_output_quality_gate_lines(
+            detector_id=detector_id,
+            is_focuspack=is_focuspack,
+            snippet_max_chars=snippet_max_chars,
+        )
+    )
     return lines
 
 

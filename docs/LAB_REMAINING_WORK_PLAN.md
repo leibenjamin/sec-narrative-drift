@@ -1,5 +1,5 @@
 ﻿# SEC Narrative Drift Lab - Remaining Work Plan (Codex Execution Doc)
-Last updated: 2026-02-19
+Last updated: 2026-02-20
 Scope: deterministic pipeline + React UI Lab-first product flow
 Showcase tickers: NVDA, KO, WM, GE
 Core time window: 2019-2024 adjacent year pairs (include most recent even if low signal); 2024-2025 only if locally available
@@ -33,7 +33,11 @@ Core time window: 2019-2024 adjacent year pairs (include most recent even if low
 - Phase 2 hardening pass in progress:
   - strict zero-touch reproducibility contract and docs refresh,
   - strict validator upgrades (verbatim snippet mapping + provenance model metadata),
-  - stale run-pack replaced with fresh strict starters (`bundles/llm_run_pack_20260219T190151Z`),
+  - stale run-pack replaced with fresh strict starters (`bundles/llm_run_pack_20260220T032309Z`),
+  - campaign metadata lock enabled:
+    - `provenance.model_provider == "openai"`
+    - `provenance.model_name == "ChatGPT 5.2-Thinking (Extended Thinking)"`
+    - `provenance.run_label` required with `YYYY-MM_` prefix,
   - Lab UI reproducibility panel and schema compatibility hardening.
   - strict validator snapshot now intentionally reports legacy outputs as non-compliant:
     `missing=0`, `invalid=42`, `present_flag_mismatch=0` (expected until manual reruns).

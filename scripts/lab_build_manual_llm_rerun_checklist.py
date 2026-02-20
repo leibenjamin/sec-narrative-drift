@@ -6,7 +6,9 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Optional, cast
 
-SCRIPT_VERSION = "lab_build_manual_llm_rerun_checklist.py@v3"
+from lab_script_version import build_script_version
+
+SCRIPT_VERSION = build_script_version(Path(__file__), "v4")
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_MANIFEST_PATH = REPO_ROOT / "reports" / "lab_llm_run_manifest.json"
@@ -272,8 +274,9 @@ def build_lines(
 
     lines.append("## Notes")
     lines.append("- Keep `provenance.input_file` exactly `inputs/<TICKER>_<FROM>_<TO>_focuspack_deboilerplated.json`.")
-    lines.append("- Include `provenance.model_provider` and `provenance.model_name` (required).")
-    lines.append("- Optional but recommended: include `provenance.run_label` (for wave tracking).")
+    lines.append("- Keep `provenance.model_provider` exactly `openai` (required).")
+    lines.append("- Keep `provenance.model_name` exactly `ChatGPT 5.2-Thinking (Extended Thinking)` (required).")
+    lines.append("- Keep `provenance.run_label` required with `YYYY-MM_` prefix (example: `2026-02_openai_chatgpt52ext_wave_nvda_2021_2022_delta`).")
     lines.append("- Do not include extra provenance keys.")
     lines.append('- Delta citations must be ASCII-only format: `"YYYY para NN"`.')
     lines.append("- Do not add top-level keys such as `section_id`.")

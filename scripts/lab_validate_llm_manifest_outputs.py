@@ -9,7 +9,9 @@ from typing import Optional
 
 import sys
 
-SCRIPT_VERSION = "lab_validate_llm_manifest_outputs.py@v3"
+from lab_script_version import build_script_version
+
+SCRIPT_VERSION = build_script_version(Path(__file__), "v4")
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_MANIFEST_PATH = REPO_ROOT / "reports" / "lab_llm_run_manifest.json"
@@ -41,8 +43,11 @@ FORBIDDEN_CITATION_TOKENS: tuple[tuple[str, str], ...] = (
     ("mojibake_pilcrow_1", "\u00c2\u00b6"),
     ("mojibake_pilcrow_2", "\u00c3\u201a\u00c2\u00b6"),
 )
-PROVENANCE_REQUIRED = ("input_file", "model_provider", "model_name")
-PROVENANCE_ALLOWED = set(PROVENANCE_REQUIRED + ("run_label",))
+PROVENANCE_REQUIRED = ("input_file", "model_provider", "model_name", "run_label")
+PROVENANCE_ALLOWED = set(PROVENANCE_REQUIRED)
+EXPECTED_MODEL_PROVIDER = "openai"
+EXPECTED_MODEL_NAME = "ChatGPT 5.2-Thinking (Extended Thinking)"
+RUN_LABEL_RE = re.compile(r"^20\d{2}-(0[1-9]|1[0-2])_[A-Za-z0-9._-]+$")
 
 sys.path.append(str(Path(__file__).resolve().parent))
 from lab_llm_precompute_utils import (  # type: ignore
@@ -435,14 +440,27 @@ def validate_output_json(target: ManifestTarget, output_path: Path) -> list[str]
         model_provider = get_str(provenance.get("model_provider"))
         if model_provider is None or not model_provider.strip():
             reasons.append("provenance.model_provider must be a non-empty string")
+        elif model_provider != EXPECTED_MODEL_PROVIDER:
+            reasons.append(
+                "provenance.model_provider must be exactly "
+                + f"{EXPECTED_MODEL_PROVIDER!r}, got {model_provider!r}"
+            )
         model_name = get_str(provenance.get("model_name"))
         if model_name is None or not model_name.strip():
             reasons.append("provenance.model_name must be a non-empty string")
-        run_label = provenance.get("run_label")
-        if run_label is not None and (
-            get_str(run_label) is None or not get_str(run_label)
-        ):
-            reasons.append("provenance.run_label must be a non-empty string when present")
+        elif model_name != EXPECTED_MODEL_NAME:
+            reasons.append(
+                "provenance.model_name must be exactly "
+                + f"{EXPECTED_MODEL_NAME!r}, got {model_name!r}"
+            )
+        run_label = get_str(provenance.get("run_label"))
+        if run_label is None or not run_label.strip():
+            reasons.append("provenance.run_label must be a non-empty string")
+        elif RUN_LABEL_RE.fullmatch(run_label) is None:
+            reasons.append(
+                "provenance.run_label must match YYYY-MM_<campaign_tag> "
+                + f"(regex={RUN_LABEL_RE.pattern})"
+            )
 
     if provenance_input_file:
         _validate_evidence_snippet_mapping(

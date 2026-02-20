@@ -9,18 +9,29 @@ const LLM_DETECTORS = new Set<string>([
 const PROJECT_INSTRUCTIONS_PATH = withBase(
   "data/sec_narrative_drift_lab/llm_project_instructions_v1.txt"
 )
+const CAMPAIGN_MODEL_PROVIDER = "openai"
+const CAMPAIGN_MODEL_NAME = "ChatGPT 5.2-Thinking (Extended Thinking)"
+const RUN_LABEL_TEMPLATE = "YYYY-MM_<campaign_tag>"
 
 let projectInstructionsPromise: Promise<string> | null = null
 
 const FALLBACK_PROJECT_INSTRUCTIONS = [
   "Output must be JSON only (no markdown, no backticks, no commentary).",
   "Output exactly one top-level JSON object.",
+  "Top-level keys must match the Lab envelope exactly.",
   "No extra top-level keys.",
   "Never output section_id.",
   "Use only attached input file and thread starter prompt.",
   "provenance.input_file must match attached input path exactly.",
-  "provenance.model_provider and provenance.model_name are required.",
+  `provenance.model_provider must be exactly \"${CAMPAIGN_MODEL_PROVIDER}\".`,
+  `provenance.model_name must be exactly \"${CAMPAIGN_MODEL_NAME}\".`,
+  `provenance.run_label is required and must start with YYYY-MM_ (example: \"${RUN_LABEL_TEMPLATE}\").`,
+  "No extra provenance keys beyond input_file, model_provider, model_name, run_label.",
+  "paragraph_idx must be FULL index via focuspack_meta mappings.",
+  "Snippets must be verbatim substrings and <= 350 chars.",
+  "highlights must be present and non-empty for every evidence block.",
   'Delta citations must use ASCII format: "YYYY para NN".',
+  "If any quality check fails, revise before output.",
 ].join("\n")
 
 type LlmThreadStarterContext = {
@@ -77,15 +88,16 @@ export function buildLlmThreadStarterText(context: LlmThreadStarterContext): str
   lines.push("- Never output section_id.")
   lines.push("- Numeric fields must remain numeric (no quoted numbers).")
   lines.push("- provenance.input_file must match attached input path exactly.")
-  lines.push("- provenance.model_provider is required.")
-  lines.push("- provenance.model_name is required.")
-  lines.push("- provenance.run_label is optional.")
+  lines.push(`- provenance.model_provider must be exactly "${CAMPAIGN_MODEL_PROVIDER}".`)
+  lines.push(`- provenance.model_name must be exactly "${CAMPAIGN_MODEL_NAME}".`)
+  lines.push(`- provenance.run_label is required and must start with YYYY-MM_ (example: "${RUN_LABEL_TEMPLATE}").`)
   lines.push("- No extra provenance keys beyond input_file, model_provider, model_name, run_label.")
   lines.push("- paragraph_idx must be FULL index via focuspack_meta mappings.")
   lines.push("- Snippets must be verbatim and <= 350 chars.")
   lines.push("- highlights must be present and non-empty.")
   lines.push('- Delta citations must be ASCII-only format "YYYY para NN".')
   lines.push('- Never use pilcrow-style citation symbols; use "YYYY para NN" only.')
+  lines.push("- If any quality check fails, revise before output.")
   lines.push("")
   lines.push("JSON SKELETON")
   lines.push("{")
@@ -111,9 +123,9 @@ export function buildLlmThreadStarterText(context: LlmThreadStarterContext): str
   lines.push("  },")
   lines.push('  "provenance": {')
   lines.push(`    "input_file": "${inputFile}",`)
-  lines.push('    "model_provider": "<provider>",')
-  lines.push('    "model_name": "<model>",')
-  lines.push('    "run_label": "<optional-run-label>"')
+  lines.push(`    "model_provider": "${CAMPAIGN_MODEL_PROVIDER}",`)
+  lines.push(`    "model_name": "${CAMPAIGN_MODEL_NAME}",`)
+  lines.push(`    "run_label": "${RUN_LABEL_TEMPLATE}"`)
   lines.push("  }")
   lines.push("}")
   return lines.join("\n")

@@ -12,6 +12,9 @@ UTF8_BOM = b"\xef\xbb\xbf"
 
 sys.path.append(str(Path(__file__).resolve().parent))
 from lab_prompt_blocks import build_prompt_templates_showcase_lines  # type: ignore
+from lab_script_version import build_script_version
+
+SCRIPT_VERSION = build_script_version(Path(__file__), "v2")
 
 
 def find_latest_showcase_bundle(root: Path) -> Optional[Path]:
@@ -60,6 +63,7 @@ def main(argv: Optional[list[str]] = None) -> int:
     if output_path.read_bytes()[:3] == UTF8_BOM:
         raise SystemExit(f"UTF-8 BOM detected in {output_path}")
 
+    print(f"Script: {SCRIPT_VERSION}")
     print(f"Wrote prompt templates to {output_path}")
     return 0
 

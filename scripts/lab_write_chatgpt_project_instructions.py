@@ -5,8 +5,9 @@ from pathlib import Path
 from typing import Optional
 
 from lab_prompt_blocks import build_chatgpt_project_instructions_lines  # type: ignore
+from lab_script_version import build_script_version
 
-SCRIPT_VERSION = "lab_write_chatgpt_project_instructions.py@v1"
+SCRIPT_VERSION = build_script_version(Path(__file__), "v2")
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
 DEFAULT_REPORT_OUT = REPO_ROOT / "reports" / "lab_chatgpt_project_instructions.txt"

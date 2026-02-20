@@ -4,7 +4,9 @@ import argparse
 from pathlib import Path
 from typing import Optional
 
-SCRIPT_VERSION = "lab_emit_repair_prompts.py@v2"
+from lab_script_version import build_script_version
+
+SCRIPT_VERSION = build_script_version(Path(__file__), "v3")
 
 
 def extract_errors(log_text: str) -> dict[str, list[str]]:
@@ -73,6 +75,11 @@ def main(argv: Optional[list[str]] = None) -> int:
     lines.append(
         "Keep provenance keys restricted to input_file, model_provider, model_name, run_label."
     )
+    lines.append('Keep provenance.model_provider exactly "openai".')
+    lines.append(
+        'Keep provenance.model_name exactly "ChatGPT 5.2-Thinking (Extended Thinking)".'
+    )
+    lines.append("Keep provenance.run_label present and formatted as YYYY-MM_<campaign_tag>.")
     lines.append("Keep delta citations in ASCII format only: YYYY para NN.")
     lines.append("")
     lines.append("Validation errors to fix:")

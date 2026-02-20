@@ -8,7 +8,9 @@ from difflib import unified_diff
 from pathlib import Path
 from typing import Any, Optional
 
-SCRIPT_VERSION = "lab_prompt_consistency_check.py@v1"
+from lab_script_version import build_script_version
+
+SCRIPT_VERSION = build_script_version(Path(__file__), "v2")
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 

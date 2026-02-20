@@ -10,7 +10,9 @@ from typing import Any, Optional
 
 import sys
 
-SCRIPT_VERSION = "lab_build_llm_run_manifest.py@v2"
+from lab_script_version import build_script_version
+
+SCRIPT_VERSION = build_script_version(Path(__file__), "v3")
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 PUBLIC_LAB_ROOT = REPO_ROOT / "public" / "data" / "sec_narrative_drift_lab"
@@ -196,6 +198,27 @@ def write_json(path: Path, payload: dict[str, Any]) -> None:
         handle.write("\n")
 
 
+def build_run_pack_meta_payload(
+    generated_at_utc: str,
+    bundle_root: Path,
+    focus_index_path: Path,
+    run_pack_dir: Path,
+    thread_starters_path: Path,
+) -> dict[str, Any]:
+    prompt_blocks_path = Path(__file__).resolve().parent / "lab_prompt_blocks.py"
+    return {
+        "generated_at_utc": generated_at_utc,
+        "generator_script_versions": {
+            "lab_build_llm_run_manifest.py": SCRIPT_VERSION,
+            "lab_prompt_blocks.py": build_script_version(prompt_blocks_path, "v1"),
+        },
+        "source_bundle_root": to_repo_relative(bundle_root),
+        "source_focus_index_path": to_repo_relative(focus_index_path),
+        "run_pack_path": to_repo_relative(run_pack_dir),
+        "thread_starters_path": to_repo_relative(thread_starters_path),
+    }
+
+
 def entry_to_json_dict(entry: ManifestEntry) -> dict[str, Any]:
     detectors_payload: list[dict[str, Any]] = []
     for detector in entry.detectors:
@@ -230,6 +253,7 @@ def build_report_lines(
     bundle_root: Path,
     run_pack_dir: Optional[Path],
     run_pack_thread_starters: Optional[Path],
+    run_pack_meta_path: Optional[Path],
     entries: list[ManifestEntry],
     missing_input_rows: list[str],
 ) -> list[str]:
@@ -260,6 +284,10 @@ def build_report_lines(
         lines.append(f"Thread starters: {to_repo_relative(run_pack_thread_starters)}")
     else:
         lines.append("Thread starters: (not generated)")
+    if run_pack_meta_path is not None:
+        lines.append(f"Run pack metadata: {to_repo_relative(run_pack_meta_path)}")
+    else:
+        lines.append("Run pack metadata: (not generated)")
     lines.append("")
     lines.append("| Metric | Value |")
     lines.append("| --- | --- |")
@@ -543,6 +571,7 @@ def main(argv: Optional[list[str]] = None) -> int:
 
     run_pack_dir: Optional[Path] = None
     thread_starters_path: Optional[Path] = None
+    run_pack_meta_path: Optional[Path] = None
     run_pack_generated_now = False
     run_pack_root = Path(args.run_pack_root)
     entries_with_pack_paths: list[ManifestEntry] = []
@@ -552,6 +581,9 @@ def main(argv: Optional[list[str]] = None) -> int:
             candidate_thread_starters = run_pack_dir / "THREAD_STARTERS.md"
             if candidate_thread_starters.exists():
                 thread_starters_path = candidate_thread_starters
+            candidate_run_pack_meta = run_pack_dir / "RUN_PACK_META.json"
+            if candidate_run_pack_meta.exists():
+                run_pack_meta_path = candidate_run_pack_meta
         for entry in entries:
             filename = (
                 f"{entry.ticker}_{entry.year_from}_{entry.year_to}_focuspack_{entry.lens}.json"
@@ -609,6 +641,15 @@ def main(argv: Optional[list[str]] = None) -> int:
             )
         thread_starters_path = run_pack_dir / "THREAD_STARTERS.md"
         write_thread_starters(thread_starters_path, entries_with_pack_paths)
+        run_pack_meta_path = run_pack_dir / "RUN_PACK_META.json"
+        run_pack_meta_payload = build_run_pack_meta_payload(
+            generated_at_utc=generated_at_utc,
+            bundle_root=bundle_paths.bundle_root,
+            focus_index_path=bundle_paths.focus_index,
+            run_pack_dir=run_pack_dir,
+            thread_starters_path=thread_starters_path,
+        )
+        write_json(run_pack_meta_path, run_pack_meta_payload)
 
     report_lines = build_report_lines(
         generated_at_utc=generated_at_utc,
@@ -616,6 +657,7 @@ def main(argv: Optional[list[str]] = None) -> int:
         bundle_root=bundle_paths.bundle_root,
         run_pack_dir=run_pack_dir,
         run_pack_thread_starters=thread_starters_path,
+        run_pack_meta_path=run_pack_meta_path,
         entries=entries_with_pack_paths,
         missing_input_rows=missing_input_rows,
     )
@@ -660,6 +702,11 @@ def main(argv: Optional[list[str]] = None) -> int:
                 if thread_starters_path is not None
                 else None
             ),
+            "meta": (
+                to_repo_relative(run_pack_meta_path)
+                if run_pack_meta_path is not None
+                else None
+            ),
         },
         "summary": {
             "pair_count": total_pairs,
@@ -678,6 +725,8 @@ def main(argv: Optional[list[str]] = None) -> int:
         print(f"Wrote run pack: {to_repo_relative(run_pack_dir)}")
         if thread_starters_path is not None:
             print(f"Wrote thread starters: {to_repo_relative(thread_starters_path)}")
+        if run_pack_meta_path is not None:
+            print(f"Wrote run pack metadata: {to_repo_relative(run_pack_meta_path)}")
     print(
         "Manifest summary: "
         + f"pairs={total_pairs}, targets={total_targets}, "

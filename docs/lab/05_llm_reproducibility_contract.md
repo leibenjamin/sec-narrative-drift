@@ -43,9 +43,9 @@ No extra top-level keys are allowed.
 ## Provenance Contract
 `provenance` keys are restricted to:
 - `input_file` (required)
-- `model_provider` (required)
-- `model_name` (required)
-- `run_label` (optional)
+- `model_provider` (required, exact `openai`)
+- `model_name` (required, exact `ChatGPT 5.2-Thinking (Extended Thinking)`)
+- `run_label` (required, must start with `YYYY-MM_`)
 
 No extra provenance keys are allowed.
 
@@ -54,6 +54,14 @@ For `det_llm_delta_brief_v1`:
 - At least two inline citations are required.
 - Allowed format only: `YYYY para NN`.
 - Disallowed tokens include pilcrow-style citation symbols and mojibake variants.
+
+## Mandatory Pre-Output Quality Gate
+Before final JSON output in each manual thread:
+- Every `snippet` must be a contiguous verbatim substring of the mapped FULL-index paragraph.
+- Every `snippet` must be `<=350` chars.
+- Every evidence block must include non-empty `highlights`.
+- For excerpt picker, `selected_prev/selected_curr` must include all evidence indices and be deduped.
+- If any check fails, revise in-thread before final output.
 
 ## Validation Entry Point
 - Canonical validator:
