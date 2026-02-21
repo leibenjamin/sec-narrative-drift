@@ -1,5 +1,5 @@
 ﻿# SEC Narrative Drift Lab - Remaining Work Plan (Codex Execution Doc)
-Last updated: 2026-02-20
+Last updated: 2026-02-21
 Scope: deterministic pipeline + React UI Lab-first product flow
 Showcase tickers: NVDA, KO, WM, GE
 Core time window: 2019-2024 adjacent year pairs (include most recent even if low signal); 2024-2025 only if locally available
@@ -30,17 +30,12 @@ Core time window: 2019-2024 adjacent year pairs (include most recent even if low
     - `reports/lab_llm_run_manifest.json`
     - local-only `bundles/llm_run_pack_<UTCSTAMP>/inputs/*` + `THREAD_STARTERS.md`.
   - current baseline manifest state: `42/42` LLM targets present.
-- Phase 2 hardening pass in progress:
-  - strict zero-touch reproducibility contract and docs refresh,
-  - strict validator upgrades (verbatim snippet mapping + provenance model metadata),
-  - stale run-pack replaced with fresh strict starters (`bundles/llm_run_pack_20260220T032309Z`),
-  - campaign metadata lock enabled:
-    - `provenance.model_provider == "openai"`
-    - `provenance.model_name == "ChatGPT 5.2-Thinking (Extended Thinking)"`
-    - `provenance.run_label` required with `YYYY-MM_` prefix,
-  - Lab UI reproducibility panel and schema compatibility hardening.
-  - strict validator snapshot now intentionally reports legacy outputs as non-compliant:
-    `missing=0`, `invalid=42`, `present_flag_mismatch=0` (expected until manual reruns).
+- Phase 2 hardening pass complete for baseline ChatGPT campaign:
+  - strict zero-touch reproducibility contract and docs refreshed,
+  - strict validator enforces citation/evidence, snippet/verbatim, ordering, and provenance constraints,
+  - day-precision run labels enforced (`YYYY-MM-DD_...`),
+  - ChatGPT baseline strict snapshot is now clean on migrated paths:
+    `missing=0`, `invalid=0`, `present_flag_mismatch=0`.
 - Phase 3 complete (implementation):
   - Lab explainer added ("What am I looking at?"),
   - explicit missing artifact states with expected path + requested URL + copy-debug payload,
@@ -54,18 +49,32 @@ Core time window: 2019-2024 adjacent year pairs (include most recent even if low
   - Home/Showcase/Methodology rewritten around Lab narrative and showcase scope,
   - runtime dependencies on legacy `src/lib/data.ts` + pre-Lab overview components removed,
   - retired pre-Lab UI modules archived into `attic/`.
-- Phase 6 security and best-practices hardening in progress:
+- Phase 6 security and best-practices hardening complete:
   - scheduled workflow moved from direct push to PR flow with pinned action SHAs and no test bypass,
   - Python workflow dependencies pinned in `scripts/requirements.txt`,
   - frontend loader enforces strict detector-aware LLM sidecar contract (provenance/artifacts),
   - ticker/path containment hardening added in frontend loader + strict validator,
   - CSP tightened to remove `style-src 'unsafe-inline'` after style-class refactor,
   - lint scope now excludes local-only archival artifacts (`bundles/**`, `attic/**`, `handoff/**`),
-  - hash-aware `SCRIPT_VERSION` applied to remaining active legacy/bridge scripts.
+- hash-aware `SCRIPT_VERSION` applied to active workflow scripts.
+- Phase 7 (multi-LLM path/campaign refactor) in progress:
+  - single source-of-truth track/campaign registry added: `scripts/lab_output_tracks.py`,
+  - hard-cut output migration complete to canonical track-aware paths:
+    `.../outputs/<detector_id>/<track_slug>/lab_<...>__<track_slug>.json`,
+  - migration integrity reports emitted:
+    - `reports/lab_pre_migration_inventory.md`
+    - `reports/lab_pre_migration_hashes_chatgpt52ext_42.json`
+    - `reports/lab_post_migration_hashes_chatgpt52ext_42.json` (mismatch=0),
+  - additive public indexes generated:
+    - `public/data/sec_narrative_drift_lab/lab_llm_campaigns_v1.json`
+    - `public/data/sec_narrative_drift_lab/lab_llm_variants_v1.json`
+    - `public/data/sec_narrative_drift_lab/lab_method_tracks_v1.json`,
+  - Lab UI now supports campaign-aware LLM A/B compare selectors with query params (`llmA`, `llmB`), campaign metadata, and quick diff strip.
 
 Remaining human/manual work (post-hardening):
-- rerun all 42 LLM jobs with strict instructions and required provenance model metadata,
-- post-redesign live/incognito screenshot verification on deployed site for final UX confirmation.
+- run the Codex campaign (`openai_gpt53codex_xhigh_agent_2026-02-21`) for all 42 targets using the new run pack and strict validator loop,
+- publish screenshot verification for A/B compare states on deployed site,
+- finalize docs closeout (`docs/lab/06_llm_model_comparison_workflow.md`, checklist completion).
 
 ---
 

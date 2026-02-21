@@ -2,6 +2,12 @@ from __future__ import annotations
 
 from typing import Optional
 
+from lab_output_tracks import (
+    OutputTrack,
+    get_llm_campaign,
+    get_primary_llm_campaign,
+)
+
 DETECTOR_DELTA_BRIEF = "det_llm_delta_brief_v1"
 DETECTOR_EXCERPT_PICKER = "det_llm_excerpt_picker_v1"
 SUPPORTED_DETECTORS = {DETECTOR_DELTA_BRIEF, DETECTOR_EXCERPT_PICKER}
@@ -25,9 +31,20 @@ DELTA_SECTION_LABELS = ("Change:", "Drivers:", "Caveat:")
 PROVENANCE_REQUIRED_KEYS = ("input_file", "model_provider", "model_name")
 PROVENANCE_OPTIONAL_KEYS = ("run_label",)
 PROVENANCE_ALLOWED_KEYS = PROVENANCE_REQUIRED_KEYS + PROVENANCE_OPTIONAL_KEYS
-CAMPAIGN_MODEL_PROVIDER = "openai"
-CAMPAIGN_MODEL_NAME = "ChatGPT 5.2-Thinking (Extended Thinking)"
-RUN_LABEL_TEMPLATE = "YYYY-MM_<campaign_tag>"
+RUN_LABEL_TEMPLATE = "YYYY-MM-DD_<campaign_tag>"
+
+
+def resolve_campaign(
+    campaign_id: Optional[str] = None, campaign: Optional[OutputTrack] = None
+) -> OutputTrack:
+    if campaign is not None:
+        return campaign
+    if campaign_id:
+        selected = get_llm_campaign(campaign_id)
+        if selected is None:
+            raise SystemExit(f"Unknown campaign id: {campaign_id}")
+        return selected
+    return get_primary_llm_campaign()
 
 
 def is_supported_detector(detector_id: str) -> bool:
@@ -52,7 +69,10 @@ def _format_int_or_placeholder(value: int | str) -> str:
     return value
 
 
-def build_common_strict_output_rules_block(input_file: Optional[str]) -> list[str]:
+def build_common_strict_output_rules_block(
+    input_file: Optional[str], campaign: Optional[OutputTrack] = None
+) -> list[str]:
+    selected_campaign = resolve_campaign(campaign=campaign)
     lines: list[str] = []
     lines.append("- JSON ONLY.")
     lines.append("- No markdown.")
@@ -74,13 +94,13 @@ def build_common_strict_output_rules_block(input_file: Optional[str]) -> list[st
             "- Set provenance.input_file EXACTLY to the attached input JSON filename (no omissions)."
         )
     lines.append(
-        f'- provenance.model_provider MUST be exactly "{CAMPAIGN_MODEL_PROVIDER}".'
+        f'- provenance.model_provider MUST be exactly "{selected_campaign.model_provider}".'
     )
     lines.append(
-        f'- provenance.model_name MUST be exactly "{CAMPAIGN_MODEL_NAME}".'
+        f'- provenance.model_name MUST be exactly "{selected_campaign.model_name}".'
     )
     lines.append(
-        f'- provenance.run_label is required and must start with YYYY-MM_ (example: "{RUN_LABEL_TEMPLATE}").'
+        f'- provenance.run_label is required and must start with YYYY-MM-DD_ (example: "{RUN_LABEL_TEMPLATE}").'
     )
     lines.append(
         "- provenance keys allowed: input_file, model_provider, model_name, run_label (no extra provenance keys)."
@@ -248,9 +268,11 @@ def build_json_skeleton_lines(
     year_from: int | str,
     year_to: int | str,
     input_file: str,
+    campaign: Optional[OutputTrack] = None,
 ) -> list[str]:
     if detector_id not in SUPPORTED_DETECTORS:
         raise SystemExit(f"Unsupported detector_id: {detector_id}")
+    selected_campaign = resolve_campaign(campaign=campaign)
 
     highlights_placeholder = '["<tag>"]'
     if detector_id == DETECTOR_DELTA_BRIEF:
@@ -295,8 +317,8 @@ def build_json_skeleton_lines(
     lines.append("  },")
     lines.append('  "provenance": {')
     lines.append(f'    "input_file": "{input_file}",')
-    lines.append(f'    "model_provider": "{CAMPAIGN_MODEL_PROVIDER}",')
-    lines.append(f'    "model_name": "{CAMPAIGN_MODEL_NAME}",')
+    lines.append(f'    "model_provider": "{selected_campaign.model_provider}",')
+    lines.append(f'    "model_name": "{selected_campaign.model_name}",')
     lines.append(f'    "run_label": "{RUN_LABEL_TEMPLATE}"')
     lines.append("  }")
     lines.append("}")
@@ -349,12 +371,13 @@ def build_detector_prompt_lines(
 def build_prompt_template_detector_section_lines(
     detector_id: str,
     snippet_max_chars: int = DEFAULT_SNIPPET_MAX_CHARS,
+    campaign: Optional[OutputTrack] = None,
 ) -> list[str]:
     if detector_id not in SUPPORTED_DETECTORS:
         raise SystemExit(f"Unsupported detector_id: {detector_id}")
 
     lines: list[str] = [f"## {detector_id}", "STRICT OUTPUT RULES"]
-    lines.extend(build_common_strict_output_rules_block(input_file=None))
+    lines.extend(build_common_strict_output_rules_block(input_file=None, campaign=campaign))
     lines.append("")
     lines.append("EVIDENCE RULES")
     lines.extend(
@@ -393,6 +416,7 @@ def build_prompt_template_detector_section_lines(
             year_from="<year_from>",
             year_to="<year_to>",
             input_file="<input_file>",
+            campaign=campaign,
         )
     )
     lines.append("")
@@ -403,6 +427,7 @@ def build_prompt_template_detector_section_lines(
 
 def build_prompt_templates_showcase_lines(
     snippet_max_chars: int = DEFAULT_SNIPPET_MAX_CHARS,
+    campaign: Optional[OutputTrack] = None,
 ) -> list[str]:
     lines: list[str] = []
     lines.append("# LLM Prompt Templates (Showcase)")
@@ -420,19 +445,26 @@ def build_prompt_templates_showcase_lines(
     lines.append("")
     lines.extend(
         build_prompt_template_detector_section_lines(
-            DETECTOR_DELTA_BRIEF, snippet_max_chars=snippet_max_chars
+            DETECTOR_DELTA_BRIEF,
+            snippet_max_chars=snippet_max_chars,
+            campaign=campaign,
         )
     )
     lines.append("")
     lines.extend(
         build_prompt_template_detector_section_lines(
-            DETECTOR_EXCERPT_PICKER, snippet_max_chars=snippet_max_chars
+            DETECTOR_EXCERPT_PICKER,
+            snippet_max_chars=snippet_max_chars,
+            campaign=campaign,
         )
     )
     return lines
 
 
-def build_chatgpt_project_instructions_lines() -> list[str]:
+def build_chatgpt_project_instructions_lines(
+    campaign: Optional[OutputTrack] = None,
+) -> list[str]:
+    selected_campaign = resolve_campaign(campaign=campaign)
     lines: list[str] = []
     lines.append("Output must be JSON only (no markdown, no backticks, no commentary).")
     lines.append("Output exactly one top-level JSON object.")
@@ -449,13 +481,13 @@ def build_chatgpt_project_instructions_lines() -> list[str]:
         "provenance.input_file must be exactly: inputs/<TICKER>_<YEAR_FROM>_<YEAR_TO>_focuspack_deboilerplated.json"
     )
     lines.append(
-        f'provenance.model_provider must be exactly "{CAMPAIGN_MODEL_PROVIDER}".'
+        f'provenance.model_provider must be exactly "{selected_campaign.model_provider}".'
     )
     lines.append(
-        f'provenance.model_name must be exactly "{CAMPAIGN_MODEL_NAME}".'
+        f'provenance.model_name must be exactly "{selected_campaign.model_name}".'
     )
     lines.append(
-        f'provenance.run_label is required and must start with YYYY-MM_ (example: "{RUN_LABEL_TEMPLATE}").'
+        f'provenance.run_label is required and must start with YYYY-MM-DD_ (example: "{RUN_LABEL_TEMPLATE}").'
     )
     lines.append(
         "Do not output extra provenance keys beyond input_file, model_provider, model_name, run_label."
@@ -524,7 +556,9 @@ def build_starter_checklist_lines(
     detector_id: str,
     is_focuspack: bool,
     snippet_max_chars: int = DEFAULT_SNIPPET_MAX_CHARS,
+    campaign: Optional[OutputTrack] = None,
 ) -> list[str]:
+    selected_campaign = resolve_campaign(campaign=campaign)
     lines: list[str] = []
     lines.append("- evidence paragraph_idx are FULL indices")
     lines.append(f"- snippets are verbatim and <= {snippet_max_chars} chars")
@@ -539,9 +573,9 @@ def build_starter_checklist_lines(
             "- focuspack mapping applied: local i -> focuspack_meta.selected_prev/curr_indices[i]"
         )
     lines.append("- provenance.input_file matches attached input path exactly")
-    lines.append(f'- provenance.model_provider is exactly "{CAMPAIGN_MODEL_PROVIDER}"')
-    lines.append(f'- provenance.model_name is exactly "{CAMPAIGN_MODEL_NAME}"')
-    lines.append("- provenance.run_label is present and starts with YYYY-MM_")
+    lines.append(f'- provenance.model_provider is exactly "{selected_campaign.model_provider}"')
+    lines.append(f'- provenance.model_name is exactly "{selected_campaign.model_name}"')
+    lines.append("- provenance.run_label is present and starts with YYYY-MM-DD_")
     lines.append("- warnings are complete statements (no placeholder tails like 'Input file citation:' or 'Source:')")
     if detector_id == DETECTOR_EXCERPT_PICKER:
         lines.append("- selected_prev/curr exactly match deduped evidence indices for each year (no extras, no duplicates)")
@@ -580,6 +614,7 @@ def build_thread_starter_lines(
     output_path: Optional[str],
     repo_input_path: Optional[str] = None,
     snippet_max_chars: int = DEFAULT_SNIPPET_MAX_CHARS,
+    campaign: Optional[OutputTrack] = None,
 ) -> list[str]:
     if detector_id not in SUPPORTED_DETECTORS:
         raise SystemExit(f"Unsupported detector_id: {detector_id}")
@@ -598,7 +633,11 @@ def build_thread_starter_lines(
         lines.append(f"Save output to: {output_path}")
     lines.append("")
     lines.append("STRICT OUTPUT RULES")
-    lines.extend(build_common_strict_output_rules_block(input_file=input_path))
+    lines.extend(
+        build_common_strict_output_rules_block(
+            input_file=input_path, campaign=campaign
+        )
+    )
     lines.append("")
     lines.append("EVIDENCE RULES")
     lines.extend(
@@ -628,6 +667,7 @@ def build_thread_starter_lines(
             year_from=year_from,
             year_to=year_to,
             input_file=input_path,
+            campaign=campaign,
         )
     )
     lines.append("")
@@ -647,6 +687,7 @@ def build_thread_starter_lines(
             detector_id=detector_id,
             is_focuspack=is_focuspack,
             snippet_max_chars=snippet_max_chars,
+            campaign=campaign,
         )
     )
     lines.append("")

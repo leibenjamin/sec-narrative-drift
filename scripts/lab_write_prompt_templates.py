@@ -12,6 +12,10 @@ UTF8_BOM = b"\xef\xbb\xbf"
 
 sys.path.append(str(Path(__file__).resolve().parent))
 from lab_prompt_blocks import build_prompt_templates_showcase_lines  # type: ignore
+from lab_output_tracks import (  # type: ignore
+    DEFAULT_PRIMARY_LLM_CAMPAIGN_ID,
+    get_llm_campaign,
+)
 from lab_script_version import build_script_version
 
 SCRIPT_VERSION = build_script_version(Path(__file__), "v2")
@@ -41,6 +45,11 @@ def build_parser() -> argparse.ArgumentParser:
         default="",
         help="Showcase bundle directory (defaults to latest bundles/showcase_llm_inputs_*).",
     )
+    parser.add_argument(
+        "--campaign-id",
+        default=DEFAULT_PRIMARY_LLM_CAMPAIGN_ID,
+        help="Campaign id from scripts/lab_output_tracks.py.",
+    )
     return parser
 
 
@@ -54,8 +63,12 @@ def main(argv: Optional[list[str]] = None) -> int:
     if not bundle_dir.exists() or not bundle_dir.is_dir():
         raise SystemExit(f"Bundle directory not found: {bundle_dir}")
 
+    campaign = get_llm_campaign(args.campaign_id)
+    if campaign is None:
+        raise SystemExit(f"Unknown campaign id: {args.campaign_id}")
+
     output_path = bundle_dir / "prompt_templates_showcase.md"
-    prompt_lines = build_prompt_templates_showcase_lines()
+    prompt_lines = build_prompt_templates_showcase_lines(campaign=campaign)
     with output_path.open("w", encoding="utf-8", newline="\n") as handle:
         handle.write("\n".join(prompt_lines))
         handle.write("\n")
@@ -64,6 +77,7 @@ def main(argv: Optional[list[str]] = None) -> int:
         raise SystemExit(f"UTF-8 BOM detected in {output_path}")
 
     print(f"Script: {SCRIPT_VERSION}")
+    print(f"Campaign: {campaign.track_id}")
     print(f"Wrote prompt templates to {output_path}")
     return 0
 

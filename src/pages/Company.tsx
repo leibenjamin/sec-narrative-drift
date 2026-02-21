@@ -54,6 +54,9 @@ export default function Company() {
     return normalizePair(from, to)
   }, [searchParams])
 
+  const requestedLlmCampaignA = searchParams.get("llmA")
+  const requestedLlmCampaignB = searchParams.get("llmB")
+
   useEffect(() => {
     const tab = searchParams.get("tab")
     const from = parseYear(searchParams.get("from"))
@@ -77,6 +80,15 @@ export default function Company() {
       tab: "lab",
       from: String(pair.from),
       to: String(pair.to),
+    })
+    if (next.toString() === searchParams.toString()) return
+    setSearchParams(next, { replace: true })
+  }
+
+  const handleSelectedLlmCampaignsChange = (selection: { llmA: string; llmB: string }) => {
+    const next = mergeSearchParams(searchParams, {
+      llmA: selection.llmA,
+      llmB: selection.llmB,
     })
     if (next.toString() === searchParams.toString()) return
     setSearchParams(next, { replace: true })
@@ -160,6 +172,9 @@ export default function Company() {
           ticker={ticker}
           requestedPair={requestedPair}
           onSelectedPairChange={handleSelectedPairChange}
+          requestedLlmCampaignA={requestedLlmCampaignA}
+          requestedLlmCampaignB={requestedLlmCampaignB}
+          onSelectedLlmCampaignsChange={handleSelectedLlmCampaignsChange}
         />
       </div>
     </main>

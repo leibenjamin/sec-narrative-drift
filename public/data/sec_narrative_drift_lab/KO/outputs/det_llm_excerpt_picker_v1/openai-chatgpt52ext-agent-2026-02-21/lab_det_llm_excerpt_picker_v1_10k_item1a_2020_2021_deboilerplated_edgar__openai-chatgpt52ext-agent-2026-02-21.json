@@ -1,0 +1,143 @@
+{
+"lab_schema_version": "1.0",
+"detector_id": "det_llm_excerpt_picker_v1",
+"cleaning_lens": "deboilerplated",
+"source_id": "edgar",
+"ticker": "KO",
+"section": "10k_item1a",
+"year_from": 2020,
+"year_to": 2021,
+"artifacts": {
+"selected_prev": [
+1,
+4,
+17,
+164,
+183
+],
+"selected_curr": [
+1,
+6,
+10,
+145,
+171
+]
+},
+"evidence": [
+{
+"year": 2020,
+"paragraph_idx": 1,
+"snippet": "The COVID-19 pandemic has had, and we expect will continue to have, certain negative impacts on our business, and such impacts have had, and may continue to have, a material adverse effect on our results of operations, financial condition and cash flows.",
+"why": "Frames pandemic-driven operational and financial uncertainty as a material adverse factor across results, condition and cash flows.",
+"highlights": [
+"COVID-19",
+"demand shock"
+]
+},
+{
+"year": 2020,
+"paragraph_idx": 4,
+"snippet": "In particular, sales of our products in the away-from-home channels have been significantly negatively affected by shelter-in-place regulations or recommendations, closings of restaurants and cancellations of major sporting and other events that were imposed as a result of the initial COVID-19 outbreak.",
+"why": "Details how closures and event cancellations hit away-from-home channels, highlighting channel-mix exposure and sensitivity to public-health restrictions.",
+"highlights": [
+"COVID-19",
+"away-from-home"
+]
+},
+{
+"year": 2020,
+"paragraph_idx": 17,
+"snippet": "• Disruptions in supply chains have placed, and may continue to place, constraints on our and our bottling partners' ability to source beverage containers, such as glass bottles and cans, which has increased, and in the future may increase, our and their packaging costs.",
+"why": "Links COVID-era logistics constraints to container shortages and higher packaging costs, making supply chain resilience a direct margin lever.",
+"highlights": [
+"COVID-19",
+"supply chain"
+]
+},
+{
+"year": 2020,
+"paragraph_idx": 164,
+"snippet": "Because information systems are critical to many of the Company's operating activities, our business may be impacted by system shutdowns, service disruptions or security breaches.",
+"why": "Establishes dependence on information systems and the operational impact pathway from shutdowns, disruptions or breaches to business interruption.",
+"highlights": [
+"cybersecurity",
+"IT resilience"
+]
+},
+{
+"year": 2020,
+"paragraph_idx": 183,
+"snippet": "If we and our bottling partners fail to achieve or improperly report on our progress toward achieving our announced environmental goals and commitments, the resulting negative publicity could adversely affect consumer preference for our beverage products.",
+"why": "Signals reputational and demand risk if environmental commitments are missed or progress is misreported, linking sustainability execution to consumer preference.",
+"highlights": [
+"ESG",
+"packaging"
+]
+},
+{
+"year": 2021,
+"paragraph_idx": 1,
+"snippet": "The COVID-19 pandemic and related ongoing impacts may have a material adverse effect on our results of operations, financial condition and cash flows.",
+"why": "Recasts COVID-19 as an ongoing risk with potential for material adverse effects, keeping pandemic uncertainty central in the risk set.",
+"highlights": [
+"COVID-19",
+"ongoing impacts"
+]
+},
+{
+"year": 2021,
+"paragraph_idx": 6,
+"snippet": "if COVID-19 infection rates increase, the pandemic intensifies or expands geographically, or continued efforts to curb the pandemic are ineffective, the negative impacts of the pandemic on our sales could be more prolonged and may become more severe than we are currently experiencing.",
+"why": "Ties recovery in away-from-home and margins to fragile epidemiological conditions, emphasizing downside scenarios if infection rates rise or controls fail.",
+"highlights": [
+"COVID-19",
+"away-from-home"
+]
+},
+{
+"year": 2021,
+"paragraph_idx": 10,
+"snippet": "Although we are unable to predict the impact on our ability to source materials in the future, we expect supply chain pressures to continue into 2022.",
+"why": "Explicitly projects supply chain pressures into 2022, extending the cost and availability risk window beyond the immediate pandemic year.",
+"highlights": [
+"supply chain",
+"packaging costs"
+]
+},
+{
+"year": 2021,
+"paragraph_idx": 145,
+"snippet": "If we are unable to protect our information systems against service interruption, misappropriation of data or cybersecurity incidents, our operations could be disrupted, we may suffer financial losses and our reputation may be damaged.",
+"why": "Elevates cybersecurity to a standalone disruption and loss risk, covering service interruption, data misuse and reputational damage pathways.",
+"highlights": [
+"cybersecurity",
+"third-party services"
+]
+},
+{
+"year": 2021,
+"paragraph_idx": 171,
+"snippet": "Our ability to achieve our environmental, social and governance goals are subject to risks, many of which are outside of our control, and our reputation and brands could be harmed if we fail to meet such goals.",
+"why": "Broadens sustainability framing into ESG goals, noting many dependencies outside company control and the brand harm if goals are missed.",
+"highlights": [
+"ESG",
+"reputation"
+]
+}
+],
+"metrics": {
+"drift_score": null,
+"confidence": 0.75,
+"coverage": null,
+"warnings": [
+"Focuspack is a subset; verify in full compare pane.",
+"These excerpts emphasize COVID-19, supply chain, cybersecurity and ESG themes; other material risks may be present outside the selected paragraphs."
+]
+},
+"provenance": {
+"input_file": "inputs/KO_2020_2021_focuspack_deboilerplated.json",
+"model_provider": "openai",
+"model_name": "ChatGPT 5.2-Thinking (Extended Thinking)",
+"run_label":"2026-02-21_ko_2020_2021_focuspack"
+}
+}

@@ -6,14 +6,14 @@ const LLM_DETECTORS = new Set<string>([
   "det_llm_excerpt_picker_v1",
 ])
 
-const PROJECT_INSTRUCTIONS_PATH = withBase(
-  "data/sec_narrative_drift_lab/llm_project_instructions_v1.txt"
+const DEFAULT_INSTRUCTIONS_ASSET =
+  "llm_project_instructions_openai_chatgpt52ext_agent_2026-02-21.txt"
+const DEFAULT_PROJECT_INSTRUCTIONS_PATH = withBase(
+  `data/sec_narrative_drift_lab/${DEFAULT_INSTRUCTIONS_ASSET}`
 )
-const CAMPAIGN_MODEL_PROVIDER = "openai"
-const CAMPAIGN_MODEL_NAME = "ChatGPT 5.2-Thinking (Extended Thinking)"
-const RUN_LABEL_TEMPLATE = "YYYY-MM_<campaign_tag>"
+const RUN_LABEL_TEMPLATE = "YYYY-MM-DD_<campaign_tag>"
 
-let projectInstructionsPromise: Promise<string> | null = null
+const projectInstructionsPromiseByPath = new Map<string, Promise<string>>()
 
 const FALLBACK_PROJECT_INSTRUCTIONS = [
   "Output must be JSON only (no markdown, no backticks, no commentary).",
@@ -23,9 +23,9 @@ const FALLBACK_PROJECT_INSTRUCTIONS = [
   "Never output section_id.",
   "Use only attached input file and thread starter prompt.",
   "provenance.input_file must match attached input path exactly.",
-  `provenance.model_provider must be exactly "${CAMPAIGN_MODEL_PROVIDER}".`,
-  `provenance.model_name must be exactly "${CAMPAIGN_MODEL_NAME}".`,
-  `provenance.run_label is required and must start with YYYY-MM_ (example: "${RUN_LABEL_TEMPLATE}").`,
+  `provenance.model_provider must be exactly "<campaign model_provider>".`,
+  `provenance.model_name must be exactly "<campaign model_name>".`,
+  `provenance.run_label is required and must start with YYYY-MM-DD_ (example: "${RUN_LABEL_TEMPLATE}").`,
   "No extra provenance keys beyond input_file, model_provider, model_name, run_label.",
   "paragraph_idx must be FULL index via focuspack_meta mappings.",
   "Snippets must be verbatim substrings and <= 350 chars.",
@@ -40,8 +40,13 @@ type LlmThreadStarterContext = {
   yearTo: number
   detectorId: string
   lens: LabCleaningLens
+  campaignId: string
+  campaignDisplayName: string
+  modelProvider: string
+  modelName: string
   inputFile: string
   expectedOutputPath: string | null
+  runLabelTemplate: string
   sourceId?: string
 }
 
@@ -72,7 +77,7 @@ export function buildLlmThreadStarterText(context: LlmThreadStarterContext): str
   const sourceId = context.sourceId ?? "edgar"
   const lines: string[] = []
   lines.push(
-    `Thread Title: ${context.ticker.toUpperCase()} ${context.yearFrom}-${context.yearTo} ${context.detectorId} (focuspack_${context.lens})`
+    `Thread Title: ${context.ticker.toUpperCase()} ${context.yearFrom}-${context.yearTo} ${context.detectorId} (focuspack_${context.lens}) [${context.campaignDisplayName}]`
   )
   lines.push("")
   lines.push(`Attach this input file: ${inputFile}`)
@@ -88,9 +93,11 @@ export function buildLlmThreadStarterText(context: LlmThreadStarterContext): str
   lines.push("- Never output section_id.")
   lines.push("- Numeric fields must remain numeric (no quoted numbers).")
   lines.push("- provenance.input_file must match attached input path exactly.")
-  lines.push(`- provenance.model_provider must be exactly "${CAMPAIGN_MODEL_PROVIDER}".`)
-  lines.push(`- provenance.model_name must be exactly "${CAMPAIGN_MODEL_NAME}".`)
-  lines.push(`- provenance.run_label is required and must start with YYYY-MM_ (example: "${RUN_LABEL_TEMPLATE}").`)
+  lines.push(`- provenance.model_provider must be exactly "${context.modelProvider}".`)
+  lines.push(`- provenance.model_name must be exactly "${context.modelName}".`)
+  lines.push(
+    `- provenance.run_label is required and must start with YYYY-MM-DD_ (example: "${context.runLabelTemplate}").`
+  )
   lines.push("- No extra provenance keys beyond input_file, model_provider, model_name, run_label.")
   lines.push("- paragraph_idx must be FULL index via focuspack_meta mappings.")
   lines.push("- Snippets must be verbatim and <= 350 chars.")
@@ -123,17 +130,25 @@ export function buildLlmThreadStarterText(context: LlmThreadStarterContext): str
   lines.push("  },")
   lines.push('  "provenance": {')
   lines.push(`    "input_file": "${inputFile}",`)
-  lines.push(`    "model_provider": "${CAMPAIGN_MODEL_PROVIDER}",`)
-  lines.push(`    "model_name": "${CAMPAIGN_MODEL_NAME}",`)
-  lines.push(`    "run_label": "${RUN_LABEL_TEMPLATE}"`)
+  lines.push(`    "model_provider": "${context.modelProvider}",`)
+  lines.push(`    "model_name": "${context.modelName}",`)
+  lines.push(`    "run_label": "${context.runLabelTemplate}"`)
   lines.push("  }")
   lines.push("}")
   return lines.join("\n")
 }
 
-export async function loadLlmProjectInstructionsText(): Promise<string> {
-  if (!projectInstructionsPromise) {
-    projectInstructionsPromise = fetch(PROJECT_INSTRUCTIONS_PATH, {
+function resolveInstructionPath(assetName?: string): string {
+  if (assetName && assetName.trim().length > 0) {
+    return withBase(`data/sec_narrative_drift_lab/${assetName}`)
+  }
+  return DEFAULT_PROJECT_INSTRUCTIONS_PATH
+}
+
+export async function loadLlmProjectInstructionsText(assetName?: string): Promise<string> {
+  const path = resolveInstructionPath(assetName)
+  if (!projectInstructionsPromiseByPath.has(path)) {
+    const promise = fetch(path, {
       cache: "no-store",
       headers: { Accept: "text/plain" },
     })
@@ -148,6 +163,7 @@ export async function loadLlmProjectInstructionsText(): Promise<string> {
         return trimmed || FALLBACK_PROJECT_INSTRUCTIONS
       })
       .catch(() => FALLBACK_PROJECT_INSTRUCTIONS)
+    projectInstructionsPromiseByPath.set(path, promise)
   }
-  return projectInstructionsPromise
+  return projectInstructionsPromiseByPath.get(path)!
 }

@@ -1,5 +1,11 @@
 import { copy } from "./copy"
-import { LabCasesRegistrySchema, LabOutputSchema } from "./labSchemas"
+import {
+  LabCasesRegistrySchema,
+  LabLlmCampaignsIndexSchema,
+  LabLlmVariantsIndexSchema,
+  LabMethodTracksIndexSchema,
+  LabOutputSchema,
+} from "./labSchemas"
 import { withBase } from "./paths"
 import type { z } from "zod"
 import type {
@@ -7,22 +13,31 @@ import type {
   LabCasesRegistry,
   LabCaseOutputLink,
   LabCleaningLens,
+  LabLlmCampaign,
+  LabLlmCampaignsIndex,
+  LabLlmVariant,
+  LabLlmVariantsIndex,
+  LabMethodTracksIndex,
   LabOutput,
   LabSourceId,
 } from "./labTypes"
 
 const LAB_BASE_PATH = withBase("data/sec_narrative_drift_lab")
 const LAB_CASES_PATH = `${LAB_BASE_PATH}/lab_cases_v1.json`
+const LAB_LLM_CAMPAIGNS_PATH = `${LAB_BASE_PATH}/lab_llm_campaigns_v1.json`
+const LAB_LLM_VARIANTS_PATH = `${LAB_BASE_PATH}/lab_llm_variants_v1.json`
+const LAB_METHOD_TRACKS_PATH = `${LAB_BASE_PATH}/lab_method_tracks_v1.json`
 export const LAB_SHOWCASE_TICKERS = ["NVDA", "KO", "WM", "GE"] as const
 const LLM_DETECTORS = new Set<string>([
   "det_llm_delta_brief_v1",
   "det_llm_excerpt_picker_v1",
 ])
 const LAB_TICKER_RE = /^[A-Z0-9.-]{1,10}$/
-const LLM_RUN_LABEL_RE = /^20\d{2}-(0[1-9]|1[0-2])_[A-Za-z0-9._-]+$/
+const LLM_RUN_LABEL_RE = /^20\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])_[A-Za-z0-9._-]+$/
 const LLM_PROVENANCE_KEYS = ["input_file", "model_provider", "model_name", "run_label"] as const
-const LLM_MODEL_PROVIDER = "openai"
-const LLM_MODEL_NAME = "ChatGPT 5.2-Thinking (Extended Thinking)"
+const DEFAULT_DETERMINISTIC_TRACK_SLUG = "det-baseline-2026-02-21"
+const DEFAULT_PRIMARY_CAMPAIGN_ID = "openai_chatgpt52ext_agent_2026-02-21"
+const DEFAULT_COMPARE_CAMPAIGN_ID = "openai_gpt53codex_xhigh_agent_2026-02-21"
 
 export type LabExpectedOutputArtifact = {
   filename: string
@@ -55,6 +70,9 @@ export class LabDataLoadError extends Error {
 const outputCache = new Map<string, Promise<LabOutput>>()
 const inputCache = new Map<string, Promise<unknown>>()
 let casesPromise: Promise<LabCasesRegistry> | null = null
+let llmCampaignsPromise: Promise<LabLlmCampaignsIndex> | null = null
+let llmVariantsPromise: Promise<LabLlmVariantsIndex> | null = null
+let methodTracksPromise: Promise<LabMethodTracksIndex> | null = null
 
 export function clearLabOutputCache(): void {
   outputCache.clear()
@@ -71,7 +89,18 @@ function asRecord(value: unknown): Record<string, unknown> | null {
   return value as Record<string, unknown>
 }
 
-function validateLlmStrictPayload(payload: LabOutput, label: string, url: string): void {
+type LlmExpectation = {
+  campaignId?: string
+  modelProvider?: string
+  modelName?: string
+}
+
+function validateLlmStrictPayload(
+  payload: LabOutput,
+  label: string,
+  url: string,
+  expectation?: LlmExpectation
+): void {
   if (!LLM_DETECTORS.has(payload.detector_id)) return
 
   const provenance = asRecord(payload.provenance)
@@ -98,23 +127,35 @@ function validateLlmStrictPayload(payload: LabOutput, label: string, url: string
     )
   }
   const modelProvider = provenance.model_provider
-  if (modelProvider !== LLM_MODEL_PROVIDER) {
+  if (typeof modelProvider !== "string" || modelProvider.trim().length === 0) {
     throw new LabDataLoadError(
-      `Invalid ${label} payload (provenance.model_provider must be "${LLM_MODEL_PROVIDER}").`,
+      `Invalid ${label} payload (provenance.model_provider must be a non-empty string).`,
+      url
+    )
+  }
+  if (expectation?.modelProvider && modelProvider !== expectation.modelProvider) {
+    throw new LabDataLoadError(
+      `Invalid ${label} payload (provenance.model_provider must be "${expectation.modelProvider}").`,
       url
     )
   }
   const modelName = provenance.model_name
-  if (modelName !== LLM_MODEL_NAME) {
+  if (typeof modelName !== "string" || modelName.trim().length === 0) {
     throw new LabDataLoadError(
-      `Invalid ${label} payload (provenance.model_name must be "${LLM_MODEL_NAME}").`,
+      `Invalid ${label} payload (provenance.model_name must be a non-empty string).`,
+      url
+    )
+  }
+  if (expectation?.modelName && modelName !== expectation.modelName) {
+    throw new LabDataLoadError(
+      `Invalid ${label} payload (provenance.model_name must be "${expectation.modelName}").`,
       url
     )
   }
   const runLabel = provenance.run_label
   if (typeof runLabel !== "string" || LLM_RUN_LABEL_RE.test(runLabel) === false) {
     throw new LabDataLoadError(
-      `Invalid ${label} payload (provenance.run_label must match YYYY-MM_<campaign_tag>).`,
+      `Invalid ${label} payload (provenance.run_label must match YYYY-MM-DD_<campaign_tag>).`,
       url
     )
   }
@@ -315,6 +356,118 @@ export async function loadLabCasesRegistry(): Promise<LabCasesRegistry> {
   return casesPromise!
 }
 
+export async function loadLabLlmCampaignsIndex(): Promise<LabLlmCampaignsIndex> {
+  if (!llmCampaignsPromise) {
+    llmCampaignsPromise = fetchJson<unknown>(
+      LAB_LLM_CAMPAIGNS_PATH,
+      "LLM campaigns index is not available."
+    ).then((data) =>
+      parseLabPayload(
+        LabLlmCampaignsIndexSchema,
+        data,
+        "LabLlmCampaignsIndex",
+        LAB_LLM_CAMPAIGNS_PATH
+      )
+    )
+  }
+  return llmCampaignsPromise
+}
+
+export async function loadLabLlmVariantsIndex(): Promise<LabLlmVariantsIndex> {
+  if (!llmVariantsPromise) {
+    llmVariantsPromise = fetchJson<unknown>(
+      LAB_LLM_VARIANTS_PATH,
+      "LLM variants index is not available."
+    ).then((data) =>
+      parseLabPayload(
+        LabLlmVariantsIndexSchema,
+        data,
+        "LabLlmVariantsIndex",
+        LAB_LLM_VARIANTS_PATH
+      )
+    )
+  }
+  return llmVariantsPromise
+}
+
+export async function loadLabMethodTracksIndex(): Promise<LabMethodTracksIndex> {
+  if (!methodTracksPromise) {
+    methodTracksPromise = fetchJson<unknown>(
+      LAB_METHOD_TRACKS_PATH,
+      "Method tracks index is not available."
+    ).then((data) =>
+      parseLabPayload(
+        LabMethodTracksIndexSchema,
+        data,
+        "LabMethodTracksIndex",
+        LAB_METHOD_TRACKS_PATH
+      )
+    )
+  }
+  return methodTracksPromise
+}
+
+export async function listLabLlmCampaigns(): Promise<LabLlmCampaign[]> {
+  const index = await loadLabLlmCampaignsIndex()
+  return index.campaigns
+}
+
+export async function getDefaultLabLlmCampaignPair(): Promise<{
+  primaryCampaignId: string
+  compareCampaignId: string
+}> {
+  const index = await loadLabLlmCampaignsIndex()
+  const primaryExists = index.campaigns.some(
+    (campaign) => campaign.campaign_id === index.primary_campaign_id
+  )
+  const compareExists = index.campaigns.some(
+    (campaign) => campaign.campaign_id === index.compare_default_campaign_id
+  )
+  return {
+    primaryCampaignId: primaryExists
+      ? index.primary_campaign_id
+      : (index.campaigns[0]?.campaign_id ?? DEFAULT_PRIMARY_CAMPAIGN_ID),
+    compareCampaignId: compareExists
+      ? index.compare_default_campaign_id
+      : (index.campaigns[1]?.campaign_id ??
+        index.campaigns[0]?.campaign_id ??
+        DEFAULT_COMPARE_CAMPAIGN_ID),
+  }
+}
+
+export async function findLabLlmVariant(
+  entry: Pick<LabCase, "ticker" | "section" | "year_from" | "year_to">,
+  detectorId: string,
+  lens: LabCleaningLens,
+  campaignId: string
+): Promise<LabLlmVariant | null> {
+  const index = await loadLabLlmVariantsIndex()
+  for (const variant of index.variants) {
+    if (variant.ticker.toUpperCase() !== entry.ticker.toUpperCase()) continue
+    if (variant.section !== entry.section) continue
+    if (variant.year_from !== entry.year_from || variant.year_to !== entry.year_to) continue
+    if (variant.detector_id !== detectorId) continue
+    if (variant.lens !== lens) continue
+    if (variant.campaign_id !== campaignId) continue
+    return variant
+  }
+  return null
+}
+
+export async function getLabLlmCampaignById(campaignId: string): Promise<LabLlmCampaign | null> {
+  const index = await loadLabLlmCampaignsIndex()
+  for (const campaign of index.campaigns) {
+    if (campaign.campaign_id === campaignId) {
+      return campaign
+    }
+  }
+  return null
+}
+
+export function getDefaultDeterministicTrackSlug(): string {
+  return DEFAULT_DETERMINISTIC_TRACK_SLUG
+}
+
 export async function listLabCasesForTicker(ticker: string): Promise<LabCase[]> {
   const normalizedTicker = normalizeTickerSymbol(ticker)
   if (!normalizedTicker) return []
@@ -467,34 +620,50 @@ function buildCanonicalLabOutputFilename(
   entry: Pick<LabCase, "section" | "year_from" | "year_to">,
   detectorId: string,
   lens: LabCleaningLens,
-  sourceId: LabSourceId
+  sourceId: LabSourceId,
+  trackSlug: string
 ): string {
   const section = entry.section
   const yearFrom = entry.year_from
   const yearTo = entry.year_to
-  if (LLM_DETECTORS.has(detectorId)) {
-    return `outputs/${detectorId}/lab_${detectorId}_${section}_${yearFrom}_${yearTo}_focuspack_${lens}.json`
-  }
-  return `outputs/${detectorId}/lab_${section}_${yearFrom}_${yearTo}_${detectorId}_${lens}_${sourceId}.json`
+  const filename = `lab_${detectorId}_${section}_${yearFrom}_${yearTo}_${lens}_${sourceId}__${trackSlug}.json`
+  return `outputs/${detectorId}/${trackSlug}/${filename}`
 }
 
 export function buildExpectedLabOutputArtifact(
   entry: Pick<LabCase, "ticker" | "section" | "year_from" | "year_to">,
   detectorId: string,
   lens: LabCleaningLens,
-  sourceId: LabSourceId
+  sourceId: LabSourceId,
+  trackSlug: string
 ): LabExpectedOutputArtifact | null {
-  const filename = buildCanonicalLabOutputFilename(entry, detectorId, lens, sourceId)
+  const filename = buildCanonicalLabOutputFilename(
+    entry,
+    detectorId,
+    lens,
+    sourceId,
+    trackSlug
+  )
   const requestUrl = buildLabOutputRequestUrl(entry.ticker, filename)
   const repoPath = buildLabOutputRepoPath(entry.ticker, filename)
   if (!requestUrl || !repoPath) return null
   return { filename, repoPath, requestUrl }
 }
 
+export function buildExpectedLabOutputArtifactFromVariant(
+  variant: Pick<LabLlmVariant, "filename" | "expected_repo_path" | "request_url">
+): LabExpectedOutputArtifact {
+  return {
+    filename: variant.filename,
+    repoPath: variant.expected_repo_path,
+    requestUrl: withBase(variant.request_url),
+  }
+}
+
 export async function loadLabOutput(
   ticker: string,
   filename: string,
-  options?: { signal?: AbortSignal }
+  options?: { signal?: AbortSignal; llmExpectation?: LlmExpectation }
 ): Promise<LabOutput> {
   const normalizedTicker = normalizeTickerSymbol(ticker)
   if (!normalizedTicker) {
@@ -508,7 +677,11 @@ export async function loadLabOutput(
   if (!url) {
     throw new LabDataLoadError("Output file path is not usable.", filename)
   }
-  if (!outputCache.has(url)) {
+  const expectationKey = options?.llmExpectation
+    ? `|${options.llmExpectation.modelProvider ?? ""}|${options.llmExpectation.modelName ?? ""}`
+    : ""
+  const cacheKey = `${url}${expectationKey}`
+  if (!outputCache.has(cacheKey)) {
     const promise = fetchJson<unknown>(url, copy.global.errors.missingDataset, options)
       .then((data) => {
         const output = parseLabPayload(
@@ -517,19 +690,24 @@ export async function loadLabOutput(
           `LabOutput:${normalizedFilename}`,
           url
         )
-        validateLlmStrictPayload(output, `LabOutput:${normalizedFilename}`, url)
+        validateLlmStrictPayload(
+          output,
+          `LabOutput:${normalizedFilename}`,
+          url,
+          options?.llmExpectation
+        )
         return output
       })
       .catch((error) => {
         // Retry smoke (manual):
         // 1) First call rejects (404/invalid JSON) and evicts this URL from cache.
         // 2) After file/path is fixed, the next call re-fetches instead of reusing a stale rejection.
-        outputCache.delete(url)
+        outputCache.delete(cacheKey)
         throw error
       })
-    outputCache.set(url, promise)
+    outputCache.set(cacheKey, promise)
   }
-  return outputCache.get(url)!
+  return outputCache.get(cacheKey)!
 }
 
 export async function loadLabInputFile(

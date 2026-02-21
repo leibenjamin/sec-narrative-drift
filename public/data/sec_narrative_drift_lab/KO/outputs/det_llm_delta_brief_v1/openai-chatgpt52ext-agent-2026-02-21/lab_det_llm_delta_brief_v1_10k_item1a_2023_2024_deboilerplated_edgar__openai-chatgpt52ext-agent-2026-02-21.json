@@ -1,0 +1,100 @@
+{
+"lab_schema_version": "1.0",
+"detector_id": "det_llm_delta_brief_v1",
+"cleaning_lens": "deboilerplated",
+"source_id": "edgar",
+"ticker": "KO",
+"section": "10k_item1a",
+"year_from": 2023,
+"year_to": 2024,
+"artifacts": {
+"delta_brief": "Change: 2024 keeps the affordability and demand sensitivity frame but rolls forward the inflation horizon from 2023 into 2024-2025, signaling persistence rather than a transitory shock (2023 para 1; 2024 para 1). It also reframes growth execution risk by making marketing and innovation explicitly dependent on data analytics including artificial intelligence and machine learning, rather than treating digital capability as an adjacent enabler (2024 para 6). Finally, 2024 broadens demand headwinds from macro conditions to category-specific health and policy channels, calling out obesity concerns, weight-loss drugs, and sweetened-beverage taxes as potential demand suppressors (2024 para 26). Drivers: The company already flagged a tightening talent market for advanced technology and artificial intelligence and machine learning skills in 2023, which sets up why analytics capability becomes foregrounded in 2024 (2023 para 15; 2024 para 6). On the risk-control side, 2023 positioned generative artificial intelligence mainly as an accelerant for cyber adversaries, while 2024 adds a separate lane where artificial intelligence itself creates evolving compliance obligations that can raise costs or constrain use cases (2023 para 59; 2024 para 54). The addition of explicit health-policy demand drivers suggests management expects regulation and consumption-pattern shifts to be material variables alongside pricing and inflation dynamics (2024 para 26; 2024 para 1). Caveat: Focuspack coverage is partial, so some drift may reflect reorganization and emphasis rather than entirely new exposures; 2023 already contains artificial intelligence and machine learning capability and generative artificial intelligence cyber threat hooks (2023 para 15; 2023 para 59). The key difference in 2024 is the tighter coupling of analytics and artificial intelligence to core commercial execution and to an explicit, evolving regulatory perimeter around artificial intelligence (2024 para 6; 2024 para 54)."
+},
+"evidence": [
+{
+"year": 2023,
+"paragraph_idx": 0,
+"snippet": "products are sold have experienced, and could continue to experience, unfavorable changes in economic conditions, which could negatively affect the affordability of, and consumer demand for, our beverages, and certain markets in which our products are sold experienced intensified inflation throughout 2023, which may continue to accelerate in 2024.",
+"why": "Anchors baseline macro-demand risk: affordability and consumer demand sensitivity to inflation, with explicit spillover into the next year.",
+"highlights": [
+"macro inflation",
+"demand sensitivity"
+]
+},
+{
+"year": 2023,
+"paragraph_idx": 14,
+"snippet": "We may not be able to successfully compete for, attract or retain the highly skilled and diverse workforce that we want and may require for our future business needs, such as employees with advanced technology, artificial intelligence and machine learning, social media and digital marketing skills, and/or digital and analytics capabilities.",
+"why": "Shows 2023 already tied competitive talent markets to digital and AI/ML capabilities, framing execution risk as a capability constraint.",
+"highlights": [
+"talent",
+"AI/ML skills"
+]
+},
+{
+"year": 2023,
+"paragraph_idx": 58,
+"snippet": "Cybercriminals have increasingly demonstrated advanced capabilities, such as use of zero-day vulnerabilities, and rapid integration of new technology such as generative artificial intelligence.",
+"why": "Positions generative AI as an accelerator for attacker sophistication, supporting the view that 2023 treated genAI primarily as a threat multiplier in cybersecurity.",
+"highlights": [
+"cybersecurity",
+"generative AI"
+]
+},
+{
+"year": 2024,
+"paragraph_idx": 0,
+"snippet": "products are sold have experienced, and could continue to experience, unfavorable changes in economic conditions, which could negatively affect the affordability of, and consumer demand for, our beverages, and certain markets in which our products are sold experienced intensified inflation throughout 2024, which may continue in 2025.",
+"why": "Updates the same affordability-and-demand mechanism to 2024 inflation with carryover into 2025, keeping macro pressure as the steady-state backdrop.",
+"highlights": [
+"macro inflation",
+"timeline update"
+]
+},
+{
+"year": 2024,
+"paragraph_idx": 5,
+"snippet": "strengthen our capabilities in marketing, data analytics (including artificial intelligence and machine learning) and innovation to understand and maintain consumer interest, brand loyalty and market share while strategically expanding into other profitable categories of the commercial beverage industry, our business could be negatively affected.",
+"why": "Elevates analytics, including AI/ML, from a supporting capability to an explicit pillar of marketing and innovation needed to sustain brand loyalty and share.",
+"highlights": [
+"marketing analytics",
+"AI/ML"
+]
+},
+{
+"year": 2024,
+"paragraph_idx": 25,
+"snippet": "Ongoing public concern about obesity; other health-related public concerns surrounding consumption of sweetened beverages; the effects or perceived effects of the usage of weight-loss drugs on consumption patterns; potential new or increased taxes on sweetened beverages by government entities to reduce consumption or to raise revenue;",
+"why": "Introduces a more product-category-specific demand risk channel tied to health concerns, weight-loss drugs, and potential sweetened-beverage taxes.",
+"highlights": [
+"consumer health",
+"weight-loss drugs"
+]
+},
+{
+"year": 2024,
+"paragraph_idx": 53,
+"snippet": "The legal and regulatory landscape for certain new technologies, such as artificial intelligence, is uncertain and evolving, and our compliance obligations could increase our costs or limit how we may use these technologies.",
+"why": "Adds a distinct compliance-cost and constraint narrative around AI itself, not just AI-enabled threats, implying governance and permissible-use risk.",
+"highlights": [
+"AI regulation",
+"compliance costs"
+]
+}
+],
+"metrics": {
+"drift_score": null,
+"confidence": 0.5,
+"coverage": 0.3391791921746819,
+"warnings": [
+"Focuspack is a subset; verify in full compare pane.",
+"Some observed changes may reflect reordering or elaboration rather than new risk exposure."
+]
+},
+"provenance": {
+"input_file": "inputs/KO_2023_2024_focuspack_deboilerplated.json",
+"model_provider": "openai",
+"model_name": "ChatGPT 5.2-Thinking (Extended Thinking)",
+"run_label":"2026-02-21_showcase_llm_inputs"
+}
+}

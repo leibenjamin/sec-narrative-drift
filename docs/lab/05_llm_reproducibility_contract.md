@@ -49,9 +49,9 @@ No extra top-level keys are allowed.
 ## Provenance Contract
 `provenance` keys are restricted to:
 - `input_file` (required)
-- `model_provider` (required, exact `openai`)
-- `model_name` (required, exact `ChatGPT 5.2-Thinking (Extended Thinking)`)
-- `run_label` (required, must start with `YYYY-MM_`)
+- `model_provider` (required, exact campaign provider)
+- `model_name` (required, exact campaign model name)
+- `run_label` (required, must start with `YYYY-MM-DD_`)
 
 No extra provenance keys are allowed.
 

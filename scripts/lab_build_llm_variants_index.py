@@ -1,0 +1,285 @@
+from __future__ import annotations
+
+import argparse
+import json
+import re
+from datetime import datetime, timezone
+from pathlib import Path
+from typing import Any, Optional, cast
+
+from lab_output_tracks import (  # type: ignore
+    LLM_CAMPAIGNS,
+    LLM_DETECTORS,
+    canonical_output_relative_path,
+)
+from lab_script_version import build_script_version
+
+SCRIPT_VERSION = build_script_version(Path(__file__), "v1")
+REPO_ROOT = Path(__file__).resolve().parents[1]
+LAB_ROOT = REPO_ROOT / "public" / "data" / "sec_narrative_drift_lab"
+DEFAULT_REGISTRY_PATH = LAB_ROOT / "lab_cases_v1.json"
+DEFAULT_OUT_PATH = LAB_ROOT / "lab_llm_variants_v1.json"
+DEFAULT_REPORT_PATH = REPO_ROOT / "reports" / "lab_llm_variants_index_build.md"
+RUN_LABEL_RE = re.compile(r"^20\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])_[A-Za-z0-9._-]+$")
+
+
+def now_utc_iso() -> str:
+    return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+
+
+def as_dict(value: Any) -> Optional[dict[str, Any]]:
+    if not isinstance(value, dict):
+        return None
+    return cast(dict[str, Any], value)
+
+
+def as_list(value: Any) -> Optional[list[Any]]:
+    if isinstance(value, list):
+        return cast(list[Any], value)
+    return None
+
+
+def read_json(path: Path) -> Any:
+    return json.loads(path.read_text(encoding="utf-8-sig"))
+
+
+def write_json(path: Path, payload: dict[str, Any]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
+
+def write_text(path: Path, lines: list[str]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+
+def _request_url(ticker: str, rel_path_with_ticker: str) -> str:
+    trimmed = rel_path_with_ticker.replace("\\", "/")
+    prefix = f"{ticker.upper()}/"
+    if trimmed.startswith(prefix):
+        suffix = trimmed[len(prefix) :]
+    else:
+        suffix = trimmed
+    return f"data/sec_narrative_drift_lab/{ticker.upper()}/{suffix}"
+
+
+def _validate_variant_payload(
+    payload: dict[str, Any],
+    detector_id: str,
+    campaign_provider: str,
+    campaign_model: str,
+) -> tuple[bool, list[str], str]:
+    reasons: list[str] = []
+    provenance = as_dict(payload.get("provenance"))
+    run_label = ""
+    if provenance is None:
+        reasons.append("missing provenance object")
+    else:
+        provider = provenance.get("model_provider")
+        model = provenance.get("model_name")
+        run_label_raw = provenance.get("run_label")
+        if provider != campaign_provider:
+            reasons.append("model_provider mismatch")
+        if model != campaign_model:
+            reasons.append("model_name mismatch")
+        if not isinstance(run_label_raw, str) or RUN_LABEL_RE.fullmatch(run_label_raw) is None:
+            reasons.append("run_label invalid")
+        else:
+            run_label = run_label_raw
+    if payload.get("detector_id") != detector_id:
+        reasons.append("detector_id mismatch")
+    return (len(reasons) == 0, reasons, run_label)
+
+
+def build_variant_rows(registry_path: Path) -> tuple[list[dict[str, Any]], dict[str, int]]:
+    payload = read_json(registry_path)
+    root = as_dict(payload)
+    if root is None:
+        raise SystemExit(f"Registry root is not an object: {registry_path}")
+    cases = as_list(root.get("cases"))
+    if cases is None:
+        raise SystemExit(f"Registry missing list field 'cases': {registry_path}")
+
+    rows: list[dict[str, Any]] = []
+    stats = {
+        "targets": 0,
+        "present": 0,
+        "valid": 0,
+        "invalid": 0,
+        "missing": 0,
+    }
+
+    for case_any in cases:
+        case = as_dict(case_any)
+        if case is None:
+            continue
+        ticker = case.get("ticker")
+        section = case.get("section")
+        year_from = case.get("year_from")
+        year_to = case.get("year_to")
+        if not isinstance(ticker, str) or not isinstance(section, str):
+            continue
+        if not isinstance(year_from, int) or not isinstance(year_to, int):
+            continue
+
+        for detector_id in LLM_DETECTORS:
+            for campaign in LLM_CAMPAIGNS:
+                if campaign.model_provider is None or campaign.model_name is None:
+                    continue
+                rel = canonical_output_relative_path(
+                    ticker=ticker,
+                    detector_id=detector_id,
+                    section=section,
+                    year_from=year_from,
+                    year_to=year_to,
+                    cleaning_lens="deboilerplated",
+                    source_id="edgar",
+                    track_slug=campaign.track_slug,
+                )
+                repo_path = f"public/data/sec_narrative_drift_lab/{rel}"
+                request_url = _request_url(ticker, rel)
+                abs_path = REPO_ROOT / repo_path
+                present = abs_path.exists()
+                valid = False
+                reasons: list[str] = []
+                run_label = ""
+                if present:
+                    stats["present"] += 1
+                    try:
+                        output_payload = read_json(abs_path)
+                        output_dict = as_dict(output_payload)
+                        if output_dict is None:
+                            reasons = ["output root is not object"]
+                        else:
+                            valid, reasons, run_label = _validate_variant_payload(
+                                payload=output_dict,
+                                detector_id=detector_id,
+                                campaign_provider=campaign.model_provider,
+                                campaign_model=campaign.model_name,
+                            )
+                    except Exception as exc:  # noqa: BLE001
+                        reasons = [f"failed to parse output: {exc}"]
+                else:
+                    stats["missing"] += 1
+                    reasons = ["file not found"]
+
+                if valid:
+                    stats["valid"] += 1
+                elif present:
+                    stats["invalid"] += 1
+
+                stats["targets"] += 1
+                rows.append(
+                    {
+                        "ticker": ticker.upper(),
+                        "section": section,
+                        "year_from": year_from,
+                        "year_to": year_to,
+                        "lens": "deboilerplated",
+                        "source_id": "edgar",
+                        "detector_id": detector_id,
+                        "campaign_id": campaign.track_id,
+                        "campaign_slug": campaign.track_slug,
+                        "display_name": campaign.display_name,
+                        "model_provider": campaign.model_provider,
+                        "model_name": campaign.model_name,
+                        "filename": rel.split("/", 1)[1] if "/" in rel else rel,
+                        "expected_repo_path": repo_path,
+                        "request_url": request_url,
+                        "present": present,
+                        "valid": valid,
+                        "run_label": run_label,
+                        "validation_reasons": reasons,
+                    }
+                )
+    return rows, stats
+
+
+def build_payload(rows: list[dict[str, Any]]) -> dict[str, Any]:
+    return {
+        "version": "1.0",
+        "updated_at": now_utc_iso(),
+        "variants": rows,
+        "provenance": {
+            "script_version": SCRIPT_VERSION,
+            "notes": [
+                "Built from canonical path expectations in scripts/lab_output_tracks.py",
+                "Run-label contract enforced at day precision (YYYY-MM-DD_...).",
+            ],
+        },
+    }
+
+
+def build_report_lines(
+    registry_path: Path,
+    out_path: Path,
+    rows: list[dict[str, Any]],
+    stats: dict[str, int],
+) -> list[str]:
+    lines: list[str] = []
+    lines.append("# LLM Variants Index Build")
+    lines.append("")
+    lines.append(f"- script: `{SCRIPT_VERSION}`")
+    lines.append(f"- registry: `{registry_path.as_posix()}`")
+    lines.append(f"- out: `{out_path.as_posix()}`")
+    lines.append(f"- targets: `{stats['targets']}`")
+    lines.append(f"- present: `{stats['present']}`")
+    lines.append(f"- valid: `{stats['valid']}`")
+    lines.append(f"- invalid: `{stats['invalid']}`")
+    lines.append(f"- missing: `{stats['missing']}`")
+    lines.append("")
+    lines.append("## Invalid or Missing Rows")
+    missing = [row for row in rows if not row.get("valid")]
+    if not missing:
+        lines.append("- none")
+        return lines
+    for row in missing:
+        lines.append(
+            "- "
+            + f"{row['campaign_id']} {row['ticker']} {row['year_from']}-{row['year_to']} {row['detector_id']}: "
+            + f"{row['expected_repo_path']}"
+        )
+        for reason in row.get("validation_reasons", []):
+            lines.append(f"  - {reason}")
+    return lines
+
+
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(description="Build LLM variants index JSON.")
+    parser.add_argument("--registry", default=str(DEFAULT_REGISTRY_PATH))
+    parser.add_argument("--out", default=str(DEFAULT_OUT_PATH))
+    parser.add_argument("--report", default=str(DEFAULT_REPORT_PATH))
+    return parser
+
+
+def main(argv: Optional[list[str]] = None) -> int:
+    args = build_parser().parse_args(argv)
+    registry_path = Path(args.registry)
+    if not registry_path.is_absolute():
+        registry_path = REPO_ROOT / registry_path
+    out_path = Path(args.out)
+    if not out_path.is_absolute():
+        out_path = REPO_ROOT / out_path
+    report_path = Path(args.report)
+    if not report_path.is_absolute():
+        report_path = REPO_ROOT / report_path
+
+    rows, stats = build_variant_rows(registry_path=registry_path)
+    payload = build_payload(rows)
+    write_json(out_path, payload)
+    report_lines = build_report_lines(registry_path, out_path, rows, stats)
+    write_text(report_path, report_lines)
+
+    print(f"Script: {SCRIPT_VERSION}")
+    print(
+        "Summary: "
+        + f"targets={stats['targets']} present={stats['present']} "
+        + f"valid={stats['valid']} invalid={stats['invalid']} missing={stats['missing']}"
+    )
+    print(f"Wrote variants index: {out_path}")
+    print(f"Wrote report: {report_path}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

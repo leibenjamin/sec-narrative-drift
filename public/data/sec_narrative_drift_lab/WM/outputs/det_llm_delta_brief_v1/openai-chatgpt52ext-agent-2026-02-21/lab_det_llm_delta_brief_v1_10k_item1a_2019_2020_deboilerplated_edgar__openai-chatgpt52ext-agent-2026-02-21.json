@@ -1,0 +1,73 @@
+{
+"lab_schema_version": "1.0",
+"detector_id": "det_llm_delta_brief_v1",
+"cleaning_lens": "deboilerplated",
+"source_id": "edgar",
+"ticker": "WM",
+"section": "10k_item1a",
+"year_from": 2019,
+"year_to": 2020,
+"artifacts": {
+"delta_brief": "Change: In 2019, the risk emphasis centers on whether the planned Advanced Disposal transaction closes on time and on acceptable terms, with explicit downside to equity value and future results if it does not (2019 para 2). The same 2019 framing extends into deal-contingent financing mechanics, where a failure to close by a specified date triggers mandatory note redemption at a premium, shifting uncertainty into liquidity and capital structure stress (2019 para 8). In 2020, the narrative flips from pre-close contingency to post-close execution, focusing on integration difficulties that can impair internal control over financial reporting rather than merely delay the transaction (2020 para 3, 2020 para 6). The 2020 set also introduces a distinct macro shock channel via COVID-19, explicitly tying pandemic continuation to material impacts on operations, financial condition, and cash flows (2020 para 35). Drivers: The October 2020 closing converts merger probability risk into an integration-and-controls delivery risk, with a time-bounded exclusion from ICFR assessment that creates a deadline effect for bringing acquired operations into a control environment that can withstand testing and audit scrutiny (2020 para 6). This replaces the earlier tail-risk of a failed close forcing expensive redemption outcomes and market fallout, which in 2019 was framed as a direct mechanical trigger tied to deal timing (2019 para 8). Baseline regulatory burden remains a standing cost and constraint in the 2019 framing (2019 para 18), but the 2020 pandemic shock can amplify operational volatility and resource strain that make integration and compliance execution harder at the same time (2020 para 35). Caveat: Focuspack is a subset; verify in full compare pane (2019 para 18, 2020 para 35). Because excerpts are selected around trigger terms, confirm in the full Item 1A that other major risk pillars did not shift differently outside the acquisition, controls, and pandemic themes."
+},
+"evidence": [
+{
+"year": 2019,
+"paragraph_idx": 1,
+"snippet": "Our planned acquisition of Advanced Disposal Services, Inc. (\u201cAdvanced Disposal\u201d) may not occur at all, may not occur in the expected time frame or may involve the divestiture of certain businesses and assets, which may negatively affect the trading price of our common stock and our future business and financial results.",
+"why": "Anchors the 2019 risk set in transaction-close uncertainty and market/financial downside if the merger fails or is delayed.",
+"highlights": ["M&A close uncertainty"]
+},
+{
+"year": 2019,
+"paragraph_idx": 7,
+"snippet": "if the acquisition of Advanced Disposal is not completed on or prior to July 14, 2020, or if, prior to such date, the Agreement and Plan of Merger is terminated for any reason, we will be required to redeem all of such outstanding notes equal to 101% of the aggregate principal amounts of such notes, plus accrued but unpaid interest.",
+"why": "Shows how deal timing translated into a hard financing trigger in 2019, turning merger failure into liquidity and capital structure pressure.",
+"highlights": ["Deal-contingent redemption risk"]
+},
+{
+"year": 2019,
+"paragraph_idx": 17,
+"snippet": "Stringent government regulations at the federal, state, provincial and local level in the U.S. and Canada have a substantial impact on our business, and compliance with such regulations is costly.",
+"why": "Provides the baseline regulatory-cost risk that persists across years and can interact with later operational disruptions.",
+"highlights": ["Regulatory compliance cost"]
+},
+{
+"year": 2020,
+"paragraph_idx": 2,
+"snippet": "We may not realize the strategic benefits and cost synergies that are anticipated from our acquisition of Advanced Disposal Services, Inc. (\u201cAdvanced Disposal\u201d), and we may encounter difficulties integrating Advanced Disposal\u2019s operations and systems that could impact the effectiveness of our internal controls over financial reporting.",
+"why": "Marks the post-close shift in 2020 toward integration execution and explicit ICFR effectiveness risk, not merely deal completion.",
+"highlights": ["Integration and ICFR effectiveness"]
+},
+{
+"year": 2020,
+"paragraph_idx": 5,
+"snippet": "we have excluded Advanced Disposal from the assessment of the effectiveness of our internal control over financial reporting as of December 31, 2020 contained in this Annual Report on Form 10-K; however, this exclusion may not extend beyond one year from the October 30, 2020 closing date.",
+"why": "Introduces a time-bounded control-scope exclusion that creates a near-term deadline to integrate acquired operations into ICFR and sustain testing outcomes.",
+"highlights": ["ICFR scope exclusion deadline"]
+},
+{
+"year": 2020,
+"paragraph_idx": 34,
+"snippet": "The COVID-19 global pandemic has caused a significant disruption in social and commercial activity throughout North America, and the continuation of the COVID-19 pandemic, or other similar pandemic conditions, may have a material adverse impact on our business, financial condition, results of operations and cash flows.",
+"why": "Adds a new 2020 macro-disruption mechanism that can drive operational volatility and financial stress alongside integration and compliance demands.",
+"highlights": ["COVID-19 disruption risk"]
+}
+],
+"metrics": {
+"drift_score": null,
+"confidence": 0.5,
+"coverage": null,
+"warnings": [
+"Focuspack is a subset; verify in full compare pane.",
+"Input file reference: \uE200filecite\uE202turn0file0\uE201.",
+"The excerpt set appears centered on acquisition, controls, and COVID-19 triggers, so other risk themes may be underrepresented."
+]
+},
+"provenance": {
+"input_file": "inputs/WM_2019_2020_focuspack_deboilerplated.json",
+"model_provider": "openai",
+"model_name": "ChatGPT 5.2-Thinking (Extended Thinking)",
+"run_label":"2026-02-21_wm_2019_2020"
+}
+}

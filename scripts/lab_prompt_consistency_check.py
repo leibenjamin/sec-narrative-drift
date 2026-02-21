@@ -1,22 +1,25 @@
 from __future__ import annotations
 
 import argparse
-import json
-import shutil
-import sys
 from difflib import unified_diff
 from pathlib import Path
-from typing import Any, Optional
+from typing import Optional
+
+import sys
 
 from lab_script_version import build_script_version
 
-SCRIPT_VERSION = build_script_version(Path(__file__), "v4")
+SCRIPT_VERSION = build_script_version(Path(__file__), "v5")
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
 sys.path.append(str(Path(__file__).resolve().parent))
-from lab_emit_chatgpt_thread_starters import main as emit_thread_starters  # type: ignore
-from lab_llm_precompute_utils import resolve_bundle_paths, to_repo_relative  # type: ignore
+from lab_llm_precompute_utils import resolve_bundle_paths  # type: ignore
+from lab_output_tracks import (  # type: ignore
+    DEFAULT_PRIMARY_LLM_CAMPAIGN_ID,
+    canonical_output_relative_path,
+    get_llm_campaign,
+)
 from lab_prompt_blocks import (  # type: ignore
     DETECTOR_DELTA_BRIEF,
     DETECTOR_EXCERPT_PICKER,
@@ -29,14 +32,6 @@ from lab_prompt_blocks import (  # type: ignore
 
 def _read_lines(path: Path) -> list[str]:
     return path.read_text(encoding="utf-8-sig").splitlines()
-
-
-def _write_jsonl(path: Path, rows: list[dict[str, Any]]) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    with path.open("w", encoding="utf-8", newline="\n") as handle:
-        for row in rows:
-            handle.write(json.dumps(row, sort_keys=True))
-            handle.write("\n")
 
 
 def _extract_section(lines: list[str], section_header: str) -> list[str]:
@@ -83,9 +78,23 @@ def _assert_markers_present(label: str, text: str, markers: list[str]) -> None:
         )
 
 
+def _default_instruction_report_path(campaign_id: str) -> Path:
+    return REPO_ROOT / "reports" / f"lab_project_instructions_{campaign_id}.txt"
+
+
+def _default_instruction_public_path(campaign_asset_name: str) -> Path:
+    return (
+        REPO_ROOT
+        / "public"
+        / "data"
+        / "sec_narrative_drift_lab"
+        / campaign_asset_name
+    )
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="Check prompt/template consistency across canonical emitters."
+        description="Check campaign-aware prompt/instruction consistency against canonical emitters."
     )
     parser.add_argument(
         "--bundle",
@@ -93,30 +102,24 @@ def build_parser() -> argparse.ArgumentParser:
         help="Showcase LLM input bundle root (defaults to latest showcase_llm_inputs_*).",
     )
     parser.add_argument(
+        "--campaign-id",
+        default=DEFAULT_PRIMARY_LLM_CAMPAIGN_ID,
+        help="Campaign id from scripts/lab_output_tracks.py.",
+    )
+    parser.add_argument(
         "--prompt-templates",
         default="",
         help="Override path to prompt_templates_showcase.md.",
     )
     parser.add_argument(
-        "--sample-out-dir",
-        default=str(REPO_ROOT / "reports" / "prompt2_sample_starters"),
-        help="Directory for generated sample starter artifacts.",
-    )
-    parser.add_argument(
         "--instructions-report",
-        default=str(REPO_ROOT / "reports" / "lab_chatgpt_project_instructions.txt"),
-        help="Path to canonical report instructions text.",
+        default="",
+        help="Path to report instructions text. Defaults to reports/lab_project_instructions_<campaign_id>.txt.",
     )
     parser.add_argument(
         "--instructions-public",
-        default=str(
-            REPO_ROOT
-            / "public"
-            / "data"
-            / "sec_narrative_drift_lab"
-            / "llm_project_instructions_v1.txt"
-        ),
-        help="Path to canonical public instructions text.",
+        default="",
+        help="Path to public instructions text. Defaults to public/data/sec_narrative_drift_lab/<campaign_asset_name>.",
     )
     parser.add_argument(
         "--setup-doc",
@@ -135,6 +138,10 @@ def main(argv: Optional[list[str]] = None) -> int:
     parser = build_parser()
     args = parser.parse_args(argv)
 
+    campaign = get_llm_campaign(args.campaign_id)
+    if campaign is None or campaign.instructions_asset_name is None:
+        raise SystemExit(f"Unknown campaign id: {args.campaign_id}")
+
     bundle_paths = resolve_bundle_paths(
         args.bundle or None,
         None,
@@ -145,31 +152,47 @@ def main(argv: Optional[list[str]] = None) -> int:
     if prompt_path is None or not prompt_path.exists():
         raise SystemExit("prompt_templates_showcase.md not found.")
 
-    expected_full = build_prompt_templates_showcase_lines()
+    expected_full = build_prompt_templates_showcase_lines(campaign=campaign)
     actual_full = _read_lines(prompt_path)
     _assert_lines_equal("prompt_templates_showcase", expected_full, actual_full)
 
     for detector_id in (DETECTOR_DELTA_BRIEF, DETECTOR_EXCERPT_PICKER):
-        expected_section = build_prompt_template_detector_section_lines(detector_id)
+        expected_section = build_prompt_template_detector_section_lines(
+            detector_id,
+            campaign=campaign,
+        )
         actual_section = _extract_section(actual_full, f"## {detector_id}")
         _assert_lines_equal(f"prompt_section:{detector_id}", expected_section, actual_section)
 
-    expected_instructions = build_chatgpt_project_instructions_lines()
-    instructions_report = Path(args.instructions_report)
+    expected_instructions = build_chatgpt_project_instructions_lines(campaign=campaign)
+    instructions_report = (
+        Path(args.instructions_report)
+        if args.instructions_report
+        else _default_instruction_report_path(campaign.track_id)
+    )
     if not instructions_report.is_absolute():
         instructions_report = REPO_ROOT / instructions_report
     if instructions_report.exists():
         actual_report_instructions = _read_lines(instructions_report)
         _assert_lines_equal(
-            "project_instructions_report", expected_instructions, actual_report_instructions
+            "project_instructions_report",
+            expected_instructions,
+            actual_report_instructions,
         )
-    instructions_public = Path(args.instructions_public)
+
+    instructions_public = (
+        Path(args.instructions_public)
+        if args.instructions_public
+        else _default_instruction_public_path(campaign.instructions_asset_name)
+    )
     if not instructions_public.is_absolute():
         instructions_public = REPO_ROOT / instructions_public
     if instructions_public.exists():
         actual_public_instructions = _read_lines(instructions_public)
         _assert_lines_equal(
-            "project_instructions_public", expected_instructions, actual_public_instructions
+            "project_instructions_public",
+            expected_instructions,
+            actual_public_instructions,
         )
 
     setup_doc_path = Path(args.setup_doc)
@@ -195,8 +218,10 @@ def main(argv: Optional[list[str]] = None) -> int:
             "6-10` blocks with `>=3` blocks per year",
             "recommended `220-320` chars, hard cap `350`",
             "placeholder tails like `Input file citation:`, `Source:`, `Input source:` are invalid",
+            "YYYY-MM-DD_",
         ],
     )
+
     contract_doc_text = contract_doc_path.read_text(encoding="utf-8-sig")
     _assert_markers_present(
         "repro_contract_doc",
@@ -209,13 +234,9 @@ def main(argv: Optional[list[str]] = None) -> int:
             "`Change:`, `Drivers:`, `Caveat:`",
             "recommended `220-320` chars, hard cap `350`",
             "placeholder tails like `Input file citation:`, `Source:`, `Input source:` are invalid",
+            "YYYY-MM-DD_",
         ],
     )
-
-    sample_dir = Path(args.sample_out_dir)
-    if sample_dir.exists():
-        shutil.rmtree(sample_dir)
-    sample_dir.mkdir(parents=True, exist_ok=True)
 
     sample_ticker = "KO"
     sample_year_from = 2023
@@ -225,55 +246,22 @@ def main(argv: Optional[list[str]] = None) -> int:
         f"inputs/{sample_ticker}_{sample_year_from}_{sample_year_to}_focuspack_deboilerplated.json"
     )
     sample_repo_input = (
-        f"{to_repo_relative(bundle_paths.bundle_root)}/llm_inputs_focuspack/"
+        f"{bundle_paths.bundle_root.as_posix()}/llm_inputs_focuspack/"
         f"{sample_ticker}/lab_llm_focuspack_10k_item1a_{sample_year_from}_{sample_year_to}_deboilerplated.json"
     )
 
-    jobs: list[dict[str, Any]] = []
     for detector_id in (DETECTOR_DELTA_BRIEF, DETECTOR_EXCERPT_PICKER):
-        output_path = (
-            f"public/data/sec_narrative_drift_lab/{sample_ticker}/outputs/{detector_id}/"
-            f"lab_{detector_id}_10k_item1a_{sample_year_from}_{sample_year_to}_{sample_lens}.json"
+        output_path = canonical_output_relative_path(
+            ticker=sample_ticker,
+            detector_id=detector_id,
+            section="10k_item1a",
+            year_from=sample_year_from,
+            year_to=sample_year_to,
+            cleaning_lens="deboilerplated",
+            source_id="edgar",
+            track_slug=campaign.track_slug,
         )
-        jobs.append(
-            {
-                "job_id": f"{sample_ticker}_{sample_year_from}_{sample_year_to}_{detector_id}_{sample_lens}",
-                "ticker": sample_ticker,
-                "section": "10k_item1a",
-                "year_from": sample_year_from,
-                "year_to": sample_year_to,
-                "detector_id": detector_id,
-                "source_id": "edgar",
-                "input_lens": sample_lens,
-                "input_path": sample_input,
-                "repo_input_path": sample_repo_input,
-                "output_path": output_path,
-            }
-        )
-
-    jobs_path = sample_dir / "jobs.jsonl"
-    _write_jsonl(jobs_path, jobs)
-
-    emit_rc = emit_thread_starters(
-        [
-            "--jobs",
-            str(jobs_path),
-            "--prompt-templates",
-            str(prompt_path),
-        ]
-    )
-    if emit_rc != 0:
-        raise SystemExit(f"Starter generation failed with exit code {emit_rc}")
-
-    starters_dir = sample_dir / "thread_starters"
-    for detector_id in (DETECTOR_DELTA_BRIEF, DETECTOR_EXCERPT_PICKER):
-        starter_name = (
-            f"{sample_ticker}_{sample_year_from}_{sample_year_to}__{detector_id}__{sample_lens}.md"
-        )
-        starter_path = starters_dir / starter_name
-        if not starter_path.exists():
-            raise SystemExit(f"Missing generated starter: {starter_path}")
-        expected_starter = build_thread_starter_lines(
+        starter = build_thread_starter_lines(
             detector_id=detector_id,
             ticker=sample_ticker,
             year_from=sample_year_from,
@@ -282,30 +270,30 @@ def main(argv: Optional[list[str]] = None) -> int:
             source_id="edgar",
             input_lens=sample_lens,
             input_path=sample_input,
-            output_path=next(
-                row["output_path"] for row in jobs if row["detector_id"] == detector_id
-            ),
+            output_path=f"public/data/sec_narrative_drift_lab/{output_path}",
             repo_input_path=sample_repo_input,
+            campaign=campaign,
         )
-        actual_starter = _read_lines(starter_path)
-        _assert_lines_equal(f"starter:{detector_id}", expected_starter, actual_starter)
-
-    readme_lines = [
-        "# Prompt 2 Sample Starters",
-        "",
-        f"Script: {SCRIPT_VERSION}",
-        f"Prompt templates checked: {to_repo_relative(prompt_path)}",
-        f"Sample jobs: {to_repo_relative(jobs_path)}",
-        "",
-        "Generated starters:",
-        f"- {to_repo_relative(starters_dir / f'{sample_ticker}_{sample_year_from}_{sample_year_to}__{DETECTOR_DELTA_BRIEF}__{sample_lens}.md')}",
-        f"- {to_repo_relative(starters_dir / f'{sample_ticker}_{sample_year_from}_{sample_year_to}__{DETECTOR_EXCERPT_PICKER}__{sample_lens}.md')}",
-    ]
-    (sample_dir / "README.md").write_text("\n".join(readme_lines) + "\n", encoding="utf-8")
+        starter_text = "\n".join(starter)
+        starter_markers = [
+            "YYYY-MM-DD_",
+            campaign.model_name or "",
+            campaign.model_provider or "",
+            "evidence paragraph_idx are FULL indices",
+            "snippets are verbatim and <= 350 chars",
+        ]
+        if detector_id == DETECTOR_DELTA_BRIEF:
+            starter_markers.extend(["Change:", "Drivers:", "Caveat:"])
+        _assert_markers_present(
+            f"starter:{detector_id}",
+            starter_text,
+            starter_markers,
+        )
 
     print("Prompt consistency check: PASS")
+    print(f"Script: {SCRIPT_VERSION}")
+    print(f"Campaign: {campaign.track_id}")
     print(f"Prompt templates: {prompt_path}")
-    print(f"Sample starters dir: {sample_dir}")
     return 0
 
 

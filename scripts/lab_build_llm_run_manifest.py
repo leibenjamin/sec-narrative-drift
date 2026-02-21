@@ -11,8 +11,13 @@ from typing import Any, Optional
 import sys
 
 from lab_script_version import build_script_version
+from lab_output_tracks import (  # type: ignore
+    DEFAULT_PRIMARY_LLM_CAMPAIGN_ID,
+    canonical_output_relative_path,
+    get_llm_campaign,
+)
 
-SCRIPT_VERSION = build_script_version(Path(__file__), "v3")
+SCRIPT_VERSION = build_script_version(Path(__file__), "v4")
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 PUBLIC_LAB_ROOT = REPO_ROOT / "public" / "data" / "sec_narrative_drift_lab"
@@ -159,17 +164,20 @@ def expected_output_path(
     year_from: int,
     year_to: int,
     lens: str,
+    source_id: str,
+    track_slug: str,
 ) -> Path:
-    filename = (
-        f"lab_{detector_id}_{section}_{year_from}_{year_to}_focuspack_{lens}.json"
+    rel = canonical_output_relative_path(
+        ticker=ticker,
+        detector_id=detector_id,
+        section=section,
+        year_from=year_from,
+        year_to=year_to,
+        cleaning_lens=lens,
+        source_id=source_id,
+        track_slug=track_slug,
     )
-    return (
-        PUBLIC_LAB_ROOT
-        / ticker
-        / "outputs"
-        / detector_id
-        / filename
-    )
+    return PUBLIC_LAB_ROOT / rel
 
 
 def get_input_index_entry(
@@ -200,6 +208,7 @@ def write_json(path: Path, payload: dict[str, Any]) -> None:
 
 def build_run_pack_meta_payload(
     generated_at_utc: str,
+    campaign_id: str,
     bundle_root: Path,
     focus_index_path: Path,
     run_pack_dir: Path,
@@ -212,6 +221,7 @@ def build_run_pack_meta_payload(
             "lab_build_llm_run_manifest.py": SCRIPT_VERSION,
             "lab_prompt_blocks.py": build_script_version(prompt_blocks_path, "v1"),
         },
+        "campaign_id": campaign_id,
         "source_bundle_root": to_repo_relative(bundle_root),
         "source_focus_index_path": to_repo_relative(focus_index_path),
         "run_pack_path": to_repo_relative(run_pack_dir),
@@ -249,6 +259,9 @@ def entry_to_json_dict(entry: ManifestEntry) -> dict[str, Any]:
 
 def build_report_lines(
     generated_at_utc: str,
+    campaign_id: str,
+    campaign_slug: str,
+    campaign_display_name: str,
     registry_path: Path,
     bundle_root: Path,
     run_pack_dir: Optional[Path],
@@ -273,6 +286,9 @@ def build_report_lines(
     lines.append("")
     lines.append(f"Generated at (UTC): {generated_at_utc}")
     lines.append(f"Script: {SCRIPT_VERSION}")
+    lines.append(f"Campaign id: {campaign_id}")
+    lines.append(f"Campaign slug: {campaign_slug}")
+    lines.append(f"Campaign display: {campaign_display_name}")
     lines.append(f"Registry: {to_repo_relative(registry_path)}")
     lines.append(f"Inputs bundle root: {to_repo_relative(bundle_root)}")
     lines.append("")
@@ -339,7 +355,11 @@ def build_report_lines(
 def write_thread_starters(
     path: Path,
     entries: list[ManifestEntry],
+    campaign_id: str,
 ) -> None:
+    campaign = get_llm_campaign(campaign_id)
+    if campaign is None:
+        raise SystemExit(f"Unknown campaign id: {campaign_id}")
     lines: list[str] = []
     lines.append("# Thread Starters")
     lines.append("")
@@ -366,6 +386,7 @@ def write_thread_starters(
                 input_path=run_pack_input_path,
                 output_path=detector.expected_output_path,
                 repo_input_path=entry.input_source_path,
+                campaign=campaign,
             )
             lines.extend(starter_lines)
             lines.append("```")
@@ -447,6 +468,11 @@ def build_parser() -> argparse.ArgumentParser:
         help="Source id to place in thread starters.",
     )
     parser.add_argument(
+        "--campaign-id",
+        default=DEFAULT_PRIMARY_LLM_CAMPAIGN_ID,
+        help="Campaign id from scripts/lab_output_tracks.py.",
+    )
+    parser.add_argument(
         "--bundle",
         default="",
         help="Bundle root containing inputs_index_focuspack.json (defaults to latest showcase bundle).",
@@ -490,6 +516,9 @@ def main(argv: Optional[list[str]] = None) -> int:
     tickers = parse_tickers(args.tickers)
     if not tickers:
         raise SystemExit("No valid tickers were parsed from --tickers.")
+    campaign = get_llm_campaign(args.campaign_id)
+    if campaign is None:
+        raise SystemExit(f"Unknown campaign id: {args.campaign_id}")
 
     bundle_paths = resolve_bundle_paths(
         args.bundle or None,
@@ -544,6 +573,8 @@ def main(argv: Optional[list[str]] = None) -> int:
                     year_from=year_from,
                     year_to=year_to,
                     lens=args.lens,
+                    source_id=args.source_id,
+                    track_slug=campaign.track_slug,
                 )
                 detectors.append(
                     DetectorTarget(
@@ -611,7 +642,7 @@ def main(argv: Optional[list[str]] = None) -> int:
     else:
         run_pack_generated_now = True
         stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
-        run_pack_dir = run_pack_root / f"llm_run_pack_{stamp}"
+        run_pack_dir = run_pack_root / f"llm_run_pack_{stamp}_{campaign.track_id}"
         inputs_dir = run_pack_dir / "inputs"
         inputs_dir.mkdir(parents=True, exist_ok=True)
         for entry in entries:
@@ -640,10 +671,15 @@ def main(argv: Optional[list[str]] = None) -> int:
                 )
             )
         thread_starters_path = run_pack_dir / "THREAD_STARTERS.md"
-        write_thread_starters(thread_starters_path, entries_with_pack_paths)
+        write_thread_starters(
+            thread_starters_path,
+            entries_with_pack_paths,
+            campaign_id=campaign.track_id,
+        )
         run_pack_meta_path = run_pack_dir / "RUN_PACK_META.json"
         run_pack_meta_payload = build_run_pack_meta_payload(
             generated_at_utc=generated_at_utc,
+            campaign_id=campaign.track_id,
             bundle_root=bundle_paths.bundle_root,
             focus_index_path=bundle_paths.focus_index,
             run_pack_dir=run_pack_dir,
@@ -653,6 +689,9 @@ def main(argv: Optional[list[str]] = None) -> int:
 
     report_lines = build_report_lines(
         generated_at_utc=generated_at_utc,
+        campaign_id=campaign.track_id,
+        campaign_slug=campaign.track_slug,
+        campaign_display_name=campaign.display_name,
         registry_path=registry_path,
         bundle_root=bundle_paths.bundle_root,
         run_pack_dir=run_pack_dir,
@@ -681,6 +720,13 @@ def main(argv: Optional[list[str]] = None) -> int:
     manifest_payload: dict[str, Any] = {
         "generated_at_utc": generated_at_utc,
         "script_version": SCRIPT_VERSION,
+        "campaign": {
+            "campaign_id": campaign.track_id,
+            "campaign_slug": campaign.track_slug,
+            "display_name": campaign.display_name,
+            "model_provider": campaign.model_provider,
+            "model_name": campaign.model_name,
+        },
         "registry_path": to_repo_relative(registry_path),
         "bundle_root": to_repo_relative(bundle_paths.bundle_root),
         "focus_index_path": to_repo_relative(bundle_paths.focus_index),
@@ -719,6 +765,8 @@ def main(argv: Optional[list[str]] = None) -> int:
     }
     write_json(Path(args.out_json), manifest_payload)
 
+    print(f"Script: {SCRIPT_VERSION}")
+    print(f"Campaign: {campaign.track_id}")
     print(f"Wrote manifest markdown: {args.out_md}")
     print(f"Wrote manifest json: {args.out_json}")
     if run_pack_dir is not None:

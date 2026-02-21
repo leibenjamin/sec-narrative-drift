@@ -106,7 +106,9 @@ def detector_sort_key(detector_id: str) -> int:
     return DETECTOR_SORT_ORDER.get(detector_id, 999)
 
 
-def build_jobs(manifest_path: Path) -> tuple[list[Job], str, str, str, str]:
+def build_jobs(
+    manifest_path: Path,
+) -> tuple[list[Job], str, str, str, str, str, str, str]:
     payload = read_json(manifest_path)
     root = as_dict(payload)
     if root is None:
@@ -114,6 +116,10 @@ def build_jobs(manifest_path: Path) -> tuple[list[Job], str, str, str, str]:
 
     generated_at_utc = get_str(root.get("generated_at_utc")) or "<missing>"
     bundle_root = get_str(root.get("bundle_root")) or "<missing>"
+    campaign_obj = as_dict(root.get("campaign")) or {}
+    campaign_id = get_str(campaign_obj.get("campaign_id")) or "<missing>"
+    model_provider = get_str(campaign_obj.get("model_provider")) or "<missing>"
+    model_name = get_str(campaign_obj.get("model_name")) or "<missing>"
     run_pack = as_dict(root.get("run_pack")) or {}
     run_pack_path = get_str(run_pack.get("path")) or "<missing>"
     thread_starters = get_str(run_pack.get("thread_starters")) or "<missing>"
@@ -194,7 +200,16 @@ def build_jobs(manifest_path: Path) -> tuple[list[Job], str, str, str, str]:
             )
         )
 
-    return jobs, generated_at_utc, bundle_root, run_pack_path, thread_starters
+    return (
+        jobs,
+        generated_at_utc,
+        bundle_root,
+        run_pack_path,
+        thread_starters,
+        campaign_id,
+        model_provider,
+        model_name,
+    )
 
 
 def build_lines(
@@ -203,6 +218,9 @@ def build_lines(
     bundle_root: str,
     run_pack_path: str,
     thread_starters: str,
+    campaign_id: str,
+    model_provider: str,
+    model_name: str,
 ) -> list[str]:
     lines: list[str] = []
     lines.append("# Manual LLM Rerun Checklist (42 Jobs)")
@@ -210,6 +228,9 @@ def build_lines(
     lines.append(f"- script: `{SCRIPT_VERSION}`")
     lines.append(f"- manifest_generated_at_utc: `{generated_at_utc}`")
     lines.append(f"- bundle_root: `{bundle_root}`")
+    lines.append(f"- campaign_id: `{campaign_id}`")
+    lines.append(f"- model_provider: `{model_provider}`")
+    lines.append(f"- model_name: `{model_name}`")
     lines.append(f"- run_pack: `{run_pack_path}`")
     lines.append(f"- thread_starters: `{thread_starters}`")
     lines.append(f"- job_count: `{len(jobs)}`")
@@ -223,9 +244,20 @@ def build_lines(
     lines.append("")
     lines.append("## Validation Loop")
     lines.append("- After each wave:")
-    lines.append("  - `python scripts/lab_validate_llm_manifest_outputs.py --allow-missing --allow-invalid --report reports/lab_llm_manifest_validation.md`")
+    lines.append(
+        "  - "
+        + "`python scripts/lab_validate_llm_manifest_outputs.py "
+        + f"--campaign-id {campaign_id} "
+        + "--allow-missing --allow-invalid "
+        + "--report reports/lab_llm_manifest_validation.md`"
+    )
     lines.append("- After all 42 jobs:")
-    lines.append("  - `python scripts/lab_validate_llm_manifest_outputs.py --report reports/lab_llm_manifest_validation.md`")
+    lines.append(
+        "  - "
+        + "`python scripts/lab_validate_llm_manifest_outputs.py "
+        + f"--campaign-id {campaign_id} "
+        + "--report reports/lab_llm_manifest_validation.md`"
+    )
     lines.append("  - `npm run lab:predeploy`")
     lines.append("  - `npm run lab:portfolio`")
     lines.append("  - `npm run build`")
@@ -274,9 +306,9 @@ def build_lines(
 
     lines.append("## Notes")
     lines.append("- Keep `provenance.input_file` exactly `inputs/<TICKER>_<FROM>_<TO>_focuspack_deboilerplated.json`.")
-    lines.append("- Keep `provenance.model_provider` exactly `openai` (required).")
-    lines.append("- Keep `provenance.model_name` exactly `ChatGPT 5.2-Thinking (Extended Thinking)` (required).")
-    lines.append("- Keep `provenance.run_label` required with `YYYY-MM_` prefix (example: `2026-02_openai_chatgpt52ext_wave_nvda_2021_2022_delta`).")
+    lines.append(f"- Keep `provenance.model_provider` exactly `{model_provider}` (required).")
+    lines.append(f"- Keep `provenance.model_name` exactly `{model_name}` (required).")
+    lines.append("- Keep `provenance.run_label` required with `YYYY-MM-DD_` prefix (example: `2026-02-21_openai_chatgpt52ext_wave_nvda_2021_2022_delta`).")
     lines.append("- Do not include extra provenance keys.")
     lines.append('- Delta citations must be ASCII-only format: `"YYYY para NN"`.')
     lines.append("- Do not add top-level keys such as `section_id`.")
@@ -309,15 +341,25 @@ def main(argv: Optional[list[str]] = None) -> int:
     if not manifest_path.exists():
         raise SystemExit(f"Manifest not found: {manifest_path}")
 
-    jobs, generated_at_utc, bundle_root, run_pack_path, thread_starters = build_jobs(
-        manifest_path
-    )
+    (
+        jobs,
+        generated_at_utc,
+        bundle_root,
+        run_pack_path,
+        thread_starters,
+        campaign_id,
+        model_provider,
+        model_name,
+    ) = build_jobs(manifest_path)
     lines = build_lines(
         jobs=jobs,
         generated_at_utc=generated_at_utc,
         bundle_root=bundle_root,
         run_pack_path=run_pack_path,
         thread_starters=thread_starters,
+        campaign_id=campaign_id,
+        model_provider=model_provider,
+        model_name=model_name,
     )
     out_path = Path(args.out)
     if not out_path.is_absolute():

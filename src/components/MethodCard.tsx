@@ -16,6 +16,13 @@ type MethodCardProps = {
   title: string
   description?: string
   output: LabOutput | null
+  llmCampaign?: {
+    campaignId: string
+    campaignDisplayName: string
+    modelProvider: string
+    modelName: string
+    instructionsAsset?: string
+  } | null
   isLoading?: boolean
   emptyMessage?: string
   debugPath?: string | null
@@ -25,6 +32,8 @@ type MethodCardProps = {
     yearTo: number
     lens: LabCleaningLens
     detectorId: string
+    campaignId?: string | null
+    campaignDisplayName?: string | null
     expectedPath: string | null
     requestedUrl: string | null
     errorText: string | null
@@ -77,6 +86,7 @@ export default function MethodCard({
   title,
   description,
   output,
+  llmCampaign = null,
   isLoading,
   emptyMessage,
   debugPath,
@@ -108,8 +118,10 @@ export default function MethodCard({
     typeof provenance?.model_provider === "string" ? provenance.model_provider : null
   const modelName = typeof provenance?.model_name === "string" ? provenance.model_name : null
   const runLabel = typeof provenance?.run_label === "string" ? provenance.run_label : null
-  const runMonth =
-    runLabel && /^\d{4}-(0[1-9]|1[0-2])_/.test(runLabel) ? runLabel.slice(0, 7) : null
+  const runDate =
+    runLabel && /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])_/.test(runLabel)
+      ? runLabel.slice(0, 10)
+      : null
   const fallbackInputFile = debugInfo
     ? buildDefaultLlmInputFile(
         debugInfo.ticker,
@@ -123,23 +135,28 @@ export default function MethodCard({
       ? provenance.input_file
       : fallbackInputFile
   const threadStarterText = useMemo(() => {
-    if (!llmCard || !debugInfo || !inputFileForRerun) return null
+    if (!llmCard || !debugInfo || !inputFileForRerun || !llmCampaign) return null
     return buildLlmThreadStarterText({
       ticker: debugInfo.ticker,
       yearFrom: debugInfo.yearFrom,
       yearTo: debugInfo.yearTo,
       detectorId: debugInfo.detectorId || detectorId,
       lens: debugInfo.lens,
+      campaignId: llmCampaign.campaignId,
+      campaignDisplayName: llmCampaign.campaignDisplayName,
+      modelProvider: llmCampaign.modelProvider,
+      modelName: llmCampaign.modelName,
       inputFile: inputFileForRerun,
       expectedOutputPath: debugInfo.expectedPath ?? null,
+      runLabelTemplate: "YYYY-MM-DD_<campaign_tag>",
       sourceId: output?.source_id ?? "edgar",
     })
-  }, [llmCard, debugInfo, inputFileForRerun, detectorId, output?.source_id])
+  }, [llmCard, debugInfo, inputFileForRerun, llmCampaign, detectorId, output?.source_id])
 
   useEffect(() => {
     if (!llmCard) return
     let cancelled = false
-    loadLlmProjectInstructionsText()
+    loadLlmProjectInstructionsText(llmCampaign?.instructionsAsset)
       .then((text) => {
         if (!cancelled) {
           setProjectInstructions(text)
@@ -155,7 +172,7 @@ export default function MethodCard({
     return () => {
       cancelled = true
     }
-  }, [llmCard])
+  }, [llmCard, llmCampaign?.instructionsAsset])
 
   const handleCopyDebug = async () => {
     if (!debugInfo) return
@@ -164,6 +181,8 @@ export default function MethodCard({
       pair: `${debugInfo.yearFrom}-${debugInfo.yearTo}`,
       lens: debugInfo.lens,
       detector: debugInfo.detectorId || detectorId,
+      campaign_id: debugInfo.campaignId ?? null,
+      campaign_display_name: debugInfo.campaignDisplayName ?? null,
       expected_path: debugInfo.expectedPath,
       requested_url: debugInfo.requestedUrl,
       error: debugInfo.errorText,
@@ -254,17 +273,26 @@ export default function MethodCard({
             <div>
               Model:{" "}
               <span className="text-slate-100">
-                {modelProvider && modelName ? `${modelProvider} / ${modelName}` : "not set"}
+                {modelProvider && modelName
+                  ? `${modelProvider} / ${modelName}`
+                  : llmCampaign
+                    ? `${llmCampaign.modelProvider} / ${llmCampaign.modelName}`
+                    : "not set"}
               </span>
             </div>
+            {llmCampaign ? (
+              <div>
+                Campaign: <span className="text-slate-100">{llmCampaign.campaignDisplayName}</span>
+              </div>
+            ) : null}
             {runLabel ? (
               <div>
                 Run label: <span className="text-slate-100">{runLabel}</span>
               </div>
             ) : null}
-            {runMonth ? (
+            {runDate ? (
               <div>
-                Run month: <span className="text-slate-100">{runMonth}</span>
+                Run date: <span className="text-slate-100">{runDate}</span>
               </div>
             ) : null}
             <div className="break-all">

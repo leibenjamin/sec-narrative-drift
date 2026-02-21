@@ -1,0 +1,56 @@
+{
+  "version": "1.0",
+  "updated_at": "2026-02-21T19:23:42Z",
+  "tracks": [
+    {
+      "track_id": "det_baseline_2026-02-21",
+      "track_slug": "det-baseline-2026-02-21",
+      "kind": "deterministic",
+      "display_name": "Deterministic Baseline (2026-02-21)",
+      "detector_ids": [
+        "det_logodds_terms_v1",
+        "det_jsd_ngrams_v1",
+        "det_minhash_boilerplate_v1",
+        "det_winnowing_fingerprint_v1",
+        "det_structure_artifacts_v1",
+        "det_rbo_agreement_v1"
+      ],
+      "primary_for_runtime": true
+    },
+    {
+      "track_id": "openai_chatgpt52ext_agent_2026-02-21",
+      "track_slug": "openai-chatgpt52ext-agent-2026-02-21",
+      "kind": "llm",
+      "display_name": "ChatGPT 5.2-Thinking (Extended Thinking)",
+      "detector_ids": [
+        "det_llm_delta_brief_v1",
+        "det_llm_excerpt_picker_v1"
+      ],
+      "model_provider": "openai",
+      "model_name": "ChatGPT 5.2-Thinking (Extended Thinking)",
+      "primary_for_runtime": true,
+      "compare_default": false
+    },
+    {
+      "track_id": "openai_gpt53codex_xhigh_agent_2026-02-21",
+      "track_slug": "openai-gpt53codex-xhigh-agent-2026-02-21",
+      "kind": "llm",
+      "display_name": "GPT-5.3-Codex (Extra High Reasoning, Agent Mode)",
+      "detector_ids": [
+        "det_llm_delta_brief_v1",
+        "det_llm_excerpt_picker_v1"
+      ],
+      "model_provider": "openai",
+      "model_name": "GPT-5.3-Codex (Extra High Reasoning, Agent Mode)",
+      "primary_for_runtime": false,
+      "compare_default": true
+    }
+  ],
+  "provenance": {
+    "script_version": "lab_build_method_tracks_index.py@v1+0ddb0ed958",
+    "notes": [
+      "Generated from scripts/lab_output_tracks.py",
+      "Hard-cut canonical output paths include <track_slug> segment."
+    ]
+  }
+}

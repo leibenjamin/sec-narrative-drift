@@ -1,0 +1,117 @@
+{
+"lab_schema_version": "1.0",
+"detector_id": "det_llm_excerpt_picker_v1",
+"cleaning_lens": "deboilerplated",
+"source_id": "edgar",
+"ticker": "NVDA",
+"section": "10k_item1a",
+"year_from": 2024,
+"year_to": 2025,
+"artifacts": {
+"selected_prev": [
+12,
+19,
+80,
+169
+],
+"selected_curr": [
+9,
+19,
+121,
+183
+]
+},
+"evidence": [
+{
+"year": 2024,
+"paragraph_idx": 12,
+"snippet": "The timing and availability of these cloud services has changed and may continue to change, impacting our revenue, expenses, and development timelines.",
+"why": "Signals execution and recognition risk in scaling DGX Cloud offerings, where delivery timing can swing revenue and cost cadence.",
+"highlights": [
+"DGX Cloud services"
+]
+},
+{
+"year": 2024,
+"paragraph_idx": 19,
+"snippet": "This mismatch has resulted in both product shortages and excess inventory, has varied across our market platforms, and has significantly harmed our financial results.",
+"why": "Anchors the supply-demand mismatch mechanism to concrete financial harm via shortages, excess inventory, and platform-level variability.",
+"highlights": [
+"supply-demand mismatch"
+]
+},
+{
+"year": 2024,
+"paragraph_idx": 80,
+"snippet": "Although we have not received licenses from the USG to ship restricted products to China, we have started to ship alternatives to the China market in small volumes.",
+"why": "Frames export control exposure through licensing uncertainty and constrained China-market fulfillment via substitutes and limited volumes.",
+"highlights": [
+"export controls"
+]
+},
+{
+"year": 2024,
+"paragraph_idx": 169,
+"snippet": "In addition, changes in the tax laws of foreign jurisdictions could arise as a result of global implementation of the Inclusive Framework on Base Erosion and Profit Shifting and Pillar Two Model Rules announced by The Organization for Economic Cooperation and Development, or OECD.",
+"why": "Highlights cross-border tax regime shifts as a driver of higher uncertainty in effective tax rates and provisioning outcomes.",
+"highlights": [
+"tax policy",
+"Pillar Two"
+]
+},
+{
+"year": 2025,
+"paragraph_idx": 9,
+"snippet": "The timing and availability of these cloud services have changed and may continue to shift, impacting our revenue, expenses, and development timelines.",
+"why": "Reaffirms go-to-market and capacity timing risk for DGX Cloud, tying service availability volatility directly to financial timing impacts.",
+"highlights": [
+"DGX Cloud services"
+]
+},
+{
+"year": 2025,
+"paragraph_idx": 19,
+"snippet": "Significant mismatches between supply and demand have varied across our market platforms, resulted in both product shortages and excess inventory, significantly harmed our financial results and could reoccur.",
+"why": "Updates the supply-demand mismatch narrative with recurrence risk, keeping shortages, excess inventory, and financial harm as the core pathway.",
+"highlights": [
+"supply-demand mismatch"
+]
+},
+{
+"year": 2025,
+"paragraph_idx": 121,
+"snippet": "prohibit us from exporting our products to any or all customers in one or more markets, including but not limited to China and over 150 countries designated “Tier 2” by the January 2025 AI Diffusion IFR, and could negatively impact our manufacturing, testing and warehousing locations and options",
+"why": "Expands export control risk from China-specific licensing to broader multi-market restrictions with operational footprint and logistics implications.",
+"highlights": [
+"export controls",
+"AI Diffusion IFR"
+]
+},
+{
+"year": 2025,
+"paragraph_idx": 183,
+"snippet": "which involves the reallocation of taxing rights in respect of certain multinational enterprises above a fixed profit margin to the jurisdictions in which they carry on business (referred to as Pillar One), and imposes a minimum effective corporate tax rate (referred to as Pillar Two).",
+"why": "Adds structural detail on the Two-Pillar regime, tightening the link between global tax coordination and potential increases in effective tax rates.",
+"highlights": [
+"tax policy",
+"Pillar Two"
+]
+}
+],
+"metrics": {
+"drift_score": null,
+"confidence": 0.5,
+"coverage": null,
+"warnings": [
+"Focuspack is a subset; verify in full compare pane.",
+"Selected excerpts emphasize export controls, cloud services timing, supply-demand dynamics, and tax developments; other risk areas may be underrepresented.",
+"Input file citation is ."
+]
+},
+"provenance": {
+"input_file": "inputs/NVDA_2024_2025_focuspack_deboilerplated.json",
+"model_provider": "openai",
+"model_name": "ChatGPT 5.2-Thinking (Extended Thinking)",
+"run_label":"2026-02-21_sec_narrative_drift_lab"
+}
+}

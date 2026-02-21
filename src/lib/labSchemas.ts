@@ -98,3 +98,72 @@ export const LabCasesRegistrySchema = z.object({
   cases: z.array(LabCaseSchema),
   provenance: LabProvenanceSchema.optional(),
 })
+
+export const LabLlmCampaignSchema = z.object({
+  campaign_id: z.string(),
+  campaign_slug: z.string(),
+  display_name: z.string(),
+  model_provider: z.string(),
+  model_name: z.string(),
+  run_label_prefix_template: z.string().optional(),
+  instructions_asset: z.string().optional(),
+  primary_for_runtime: z.boolean().optional(),
+  compare_default: z.boolean().optional(),
+})
+
+export const LabLlmCampaignsIndexSchema = z.object({
+  version: z.string(),
+  updated_at: z.string(),
+  primary_campaign_id: z.string(),
+  compare_default_campaign_id: z.string(),
+  campaigns: z.array(LabLlmCampaignSchema),
+  provenance: LabProvenanceSchema.optional(),
+})
+
+export const LabLlmVariantSchema = z.object({
+  ticker: z.string(),
+  section: z.string(),
+  year_from: z.number(),
+  year_to: z.number(),
+  lens: LabCleaningLensSchema,
+  source_id: LabSourceIdSchema,
+  detector_id: z.string(),
+  campaign_id: z.string(),
+  campaign_slug: z.string(),
+  display_name: z.string(),
+  model_provider: z.string(),
+  model_name: z.string(),
+  filename: z.string(),
+  expected_repo_path: z.string(),
+  request_url: z.string(),
+  present: z.boolean(),
+  valid: z.boolean(),
+  run_label: z.string(),
+  validation_reasons: z.array(z.string()).optional(),
+})
+
+export const LabLlmVariantsIndexSchema = z.object({
+  version: z.string(),
+  updated_at: z.string(),
+  variants: z.array(LabLlmVariantSchema),
+  provenance: LabProvenanceSchema.optional(),
+})
+
+export const LabMethodTrackSchema = z.object({
+  track_id: z.string(),
+  track_slug: z.string(),
+  kind: z.enum(["deterministic", "llm"]),
+  display_name: z.string(),
+  detector_ids: z.array(z.string()),
+  model_provider: z.string().optional(),
+  model_name: z.string().optional(),
+  primary_for_runtime: z.boolean().optional(),
+  compare_default: z.boolean().optional(),
+})
+
+export const LabMethodTracksIndexSchema = z.object({
+  version: z.string(),
+  updated_at: z.string(),
+  tracks: z.array(LabMethodTrackSchema),
+  provenance: LabProvenanceSchema.optional(),
+})

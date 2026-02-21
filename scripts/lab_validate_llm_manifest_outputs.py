@@ -10,8 +10,13 @@ from typing import Optional
 import sys
 
 from lab_script_version import build_script_version
+from lab_output_tracks import (  # type: ignore
+    DEFAULT_PRIMARY_LLM_CAMPAIGN_ID,
+    LLM_CAMPAIGNS,
+    get_llm_campaign,
+)
 
-SCRIPT_VERSION = build_script_version(Path(__file__), "v8")
+SCRIPT_VERSION = build_script_version(Path(__file__), "v9")
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 LAB_OUTPUT_ROOT = (
@@ -52,9 +57,9 @@ FORBIDDEN_CITATION_TOKENS: tuple[tuple[str, str], ...] = (
 )
 PROVENANCE_REQUIRED = ("input_file", "model_provider", "model_name", "run_label")
 PROVENANCE_ALLOWED = set(PROVENANCE_REQUIRED)
-EXPECTED_MODEL_PROVIDER = "openai"
-EXPECTED_MODEL_NAME = "ChatGPT 5.2-Thinking (Extended Thinking)"
-RUN_LABEL_RE = re.compile(r"^20\d{2}-(0[1-9]|1[0-2])_[A-Za-z0-9._-]+$")
+RUN_LABEL_RE = re.compile(
+    r"^20\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])_[A-Za-z0-9._-]+$"
+)
 WARNING_PLACEHOLDER_TAIL_RE = re.compile(r"[:\-]\s*$")
 WARNING_PLACEHOLDER_VALUE_RE = re.compile(
     r"^\s*(input file citation|input file|input source|source)\s*:\s*$",
@@ -309,7 +314,12 @@ def _validate_evidence_snippet_mapping(
             )
 
 
-def validate_output_json(target: ManifestTarget, output_path: Path) -> list[str]:
+def validate_output_json(
+    target: ManifestTarget,
+    output_path: Path,
+    expected_model_provider: str,
+    expected_model_name: str,
+) -> list[str]:
     reasons: list[str] = []
     try:
         payload = json.loads(output_path.read_text(encoding="utf-8-sig"))
@@ -504,25 +514,25 @@ def validate_output_json(target: ManifestTarget, output_path: Path) -> list[str]
         model_provider = get_str(provenance.get("model_provider"))
         if model_provider is None or not model_provider.strip():
             reasons.append("provenance.model_provider must be a non-empty string")
-        elif model_provider != EXPECTED_MODEL_PROVIDER:
+        elif model_provider != expected_model_provider:
             reasons.append(
                 "provenance.model_provider must be exactly "
-                + f"{EXPECTED_MODEL_PROVIDER!r}, got {model_provider!r}"
+                + f"{expected_model_provider!r}, got {model_provider!r}"
             )
         model_name = get_str(provenance.get("model_name"))
         if model_name is None or not model_name.strip():
             reasons.append("provenance.model_name must be a non-empty string")
-        elif model_name != EXPECTED_MODEL_NAME:
+        elif model_name != expected_model_name:
             reasons.append(
                 "provenance.model_name must be exactly "
-                + f"{EXPECTED_MODEL_NAME!r}, got {model_name!r}"
+                + f"{expected_model_name!r}, got {model_name!r}"
             )
         run_label = get_str(provenance.get("run_label"))
         if run_label is None or not run_label.strip():
             reasons.append("provenance.run_label must be a non-empty string")
         elif RUN_LABEL_RE.fullmatch(run_label) is None:
             reasons.append(
-                "provenance.run_label must match YYYY-MM_<campaign_tag> "
+                "provenance.run_label must match YYYY-MM-DD_<campaign_tag> "
                 + f"(regex={RUN_LABEL_RE.pattern})"
             )
 
@@ -673,6 +683,8 @@ def validate_output_json(target: ManifestTarget, output_path: Path) -> list[str]
 
 def validate_targets(
     targets: list[ManifestTarget],
+    expected_model_provider: str,
+    expected_model_name: str,
 ) -> tuple[list[ValidationIssue], list[ValidationIssue], list[ValidationIssue]]:
     missing: list[ValidationIssue] = []
     invalid: list[ValidationIssue] = []
@@ -730,7 +742,12 @@ def validate_targets(
             )
             continue
 
-        reasons = validate_output_json(target, expected_abs)
+        reasons = validate_output_json(
+            target=target,
+            output_path=expected_abs,
+            expected_model_provider=expected_model_provider,
+            expected_model_name=expected_model_name,
+        )
         if reasons:
             invalid.append(
                 ValidationIssue(
@@ -763,6 +780,9 @@ def issue_lines(issues: list[ValidationIssue]) -> list[str]:
 
 def build_report(
     manifest_path: Path,
+    campaign_id: str,
+    expected_model_provider: str,
+    expected_model_name: str,
     target_count: int,
     missing: list[ValidationIssue],
     invalid: list[ValidationIssue],
@@ -772,6 +792,8 @@ def build_report(
     lines.append("# LLM Manifest Validation")
     lines.append("")
     lines.append(f"Manifest: {manifest_path.as_posix()}")
+    lines.append(f"Campaign: {campaign_id}")
+    lines.append(f"Expected model: {expected_model_provider} / {expected_model_name}")
     lines.append(f"Script: {SCRIPT_VERSION}")
     lines.append("")
     lines.append("| Metric | Value |")
@@ -797,6 +819,41 @@ def _parse_only_filter(value: str) -> list[str]:
     return [token for token in parts if token]
 
 
+def _normalize_expected_path(path_value: str) -> str:
+    return path_value.replace("\\", "/")
+
+
+def _filter_targets_for_campaign(
+    targets: list[ManifestTarget], campaign_slug: str
+) -> list[ManifestTarget]:
+    marker = f"/{campaign_slug}/"
+    filtered: list[ManifestTarget] = []
+    for target in targets:
+        normalized = "/" + _normalize_expected_path(target.expected_output_path).lstrip("/")
+        if marker in normalized:
+            filtered.append(target)
+    return filtered
+
+
+def build_matrix_report(
+    manifest_path: Path,
+    rows: list[tuple[str, str, str, int, int, int, int]],
+) -> list[str]:
+    lines: list[str] = []
+    lines.append("# LLM Campaign Matrix Validation")
+    lines.append("")
+    lines.append(f"Manifest: {manifest_path.as_posix()}")
+    lines.append(f"Script: {SCRIPT_VERSION}")
+    lines.append("")
+    lines.append("| Campaign | Model | Targets | Missing | Invalid | Present-flag mismatch |")
+    lines.append("| --- | --- | --- | --- | --- | --- |")
+    for campaign_id, provider, model, targets, missing, invalid, mismatch in rows:
+        lines.append(
+            f"| {campaign_id} | {provider} / {model} | {targets} | {missing} | {invalid} | {mismatch} |"
+        )
+    return lines
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description="Validate LLM outputs referenced by reports/lab_llm_run_manifest.json."
@@ -807,9 +864,19 @@ def build_parser() -> argparse.ArgumentParser:
         help="Path to reports/lab_llm_run_manifest.json",
     )
     parser.add_argument(
+        "--campaign-id",
+        default=DEFAULT_PRIMARY_LLM_CAMPAIGN_ID,
+        help="LLM campaign id (scripts/lab_output_tracks.py).",
+    )
+    parser.add_argument(
         "--report",
         default=str(DEFAULT_REPORT_PATH),
         help="Write markdown validation report to this path.",
+    )
+    parser.add_argument(
+        "--matrix-report",
+        default="",
+        help="Optional markdown path for per-campaign validation matrix.",
     )
     parser.add_argument(
         "--allow-missing",
@@ -846,16 +913,58 @@ def main(argv: Optional[list[str]] = None) -> int:
                 filtered_targets.append(target)
         targets = filtered_targets
 
-    missing, invalid, manifest_mismatch = validate_targets(targets)
+    all_targets = list(targets)
+
+    campaign = get_llm_campaign(args.campaign_id)
+    if campaign is None or campaign.model_provider is None or campaign.model_name is None:
+        raise SystemExit(f"Unknown or invalid campaign id: {args.campaign_id}")
+
+    scoped_targets = _filter_targets_for_campaign(targets, campaign.track_slug)
+    if scoped_targets:
+        targets = scoped_targets
+
+    missing, invalid, manifest_mismatch = validate_targets(
+        targets=targets,
+        expected_model_provider=campaign.model_provider,
+        expected_model_name=campaign.model_name,
+    )
 
     report_lines = build_report(
         manifest_path=manifest_path,
+        campaign_id=campaign.track_id,
+        expected_model_provider=campaign.model_provider,
+        expected_model_name=campaign.model_name,
         target_count=len(targets),
         missing=missing,
         invalid=invalid,
         manifest_mismatch=manifest_mismatch,
     )
     write_text(Path(args.report), report_lines)
+
+    if args.matrix_report:
+        rows: list[tuple[str, str, str, int, int, int, int]] = []
+        for item in LLM_CAMPAIGNS:
+            if item.model_provider is None or item.model_name is None:
+                continue
+            campaign_targets = _filter_targets_for_campaign(all_targets, item.track_slug)
+            missing_c, invalid_c, mismatch_c = validate_targets(
+                targets=campaign_targets,
+                expected_model_provider=item.model_provider,
+                expected_model_name=item.model_name,
+            )
+            rows.append(
+                (
+                    item.track_id,
+                    item.model_provider,
+                    item.model_name,
+                    len(campaign_targets),
+                    len(missing_c),
+                    len(invalid_c),
+                    len(mismatch_c),
+                )
+            )
+        matrix_lines = build_matrix_report(manifest_path=manifest_path, rows=rows)
+        write_text(Path(args.matrix_report), matrix_lines)
 
     print(
         "Manifest validation summary: "
@@ -875,6 +984,8 @@ def main(argv: Optional[list[str]] = None) -> int:
         for line in issue_lines(manifest_mismatch):
             print(line)
     print(f"Wrote validation report: {args.report}")
+    if args.matrix_report:
+        print(f"Wrote campaign matrix report: {args.matrix_report}")
 
     if invalid and not args.allow_invalid:
         return 1

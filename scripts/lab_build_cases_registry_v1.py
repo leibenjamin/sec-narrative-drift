@@ -586,9 +586,15 @@ def main(argv: Optional[list[str]] = None) -> int:
         )[0]
 
         ticker = selected.ticker
-        target_rel = f"{ticker}/outputs/{selected.detector_id}/{selected.abs_path.name}"
+        if selected.rel_path.startswith(f"{ticker}/outputs/"):
+            target_rel = selected.rel_path
+        else:
+            target_rel = f"{ticker}/outputs/{selected.detector_id}/{selected.abs_path.name}"
         target_abs = LAB_ROOT / target_rel
-        filename = f"outputs/{selected.detector_id}/{selected.abs_path.name}"
+        if target_rel.startswith(f"{ticker}/"):
+            filename = target_rel[len(f"{ticker}/") :]
+        else:
+            filename = f"outputs/{selected.detector_id}/{selected.abs_path.name}"
 
         same_target = False
         try:
@@ -718,7 +724,7 @@ def main(argv: Optional[list[str]] = None) -> int:
         "updated_at": build_utc,
         "notes": [
             "Generated deterministically from scanned lab outputs.",
-            "Output links are canonicalized to ticker-local outputs/<detector_id>/<filename> paths.",
+            "Output links preserve canonical ticker-local outputs paths, including track slug segments when present.",
         ],
         "cases": cases_payload,
         "provenance": {
@@ -727,7 +733,7 @@ def main(argv: Optional[list[str]] = None) -> int:
             "script_version": SCRIPT_VERSION,
             "inputs": provenance_inputs,
             "notes": [
-                "Selected outputs are synced into ticker-local outputs/<detector_id>/ paths when needed."
+                "Selected outputs are synced into canonical ticker-local outputs paths when needed."
             ],
         },
     }

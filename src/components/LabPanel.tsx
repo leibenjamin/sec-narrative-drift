@@ -4,17 +4,29 @@ import CleaningLensToggle from "./CleaningLensToggle"
 import MethodCard from "./MethodCard"
 import {
   LabDataLoadError,
+  buildExpectedLabOutputArtifactFromVariant,
   buildExpectedLabOutputArtifact,
   buildLabOutputRepoPath,
   buildLabOutputRequestUrl,
   clearLabOutputCache,
+  findLabLlmVariant,
   formatLabLoadDebug,
+  getDefaultDeterministicTrackSlug,
+  getDefaultLabLlmCampaignPair,
+  getLabLlmCampaignById,
   listLabCasesForTicker,
+  loadLabLlmCampaignsIndex,
   loadLabOutput,
   resolveLabOutputLink,
 } from "../lib/labData"
 import { withBase } from "../lib/paths"
-import type { LabCase, LabCleaningLens, LabOutput, LabSourceId } from "../lib/labTypes"
+import type {
+  LabCase,
+  LabCleaningLens,
+  LabLlmCampaign,
+  LabOutput,
+  LabSourceId,
+} from "../lib/labTypes"
 
 const DETECTOR_CATALOG = [
   {
@@ -90,6 +102,50 @@ const LENS_PREFERENCE_ORDER: LabCleaningLens[] = [
   "stage1_clean",
   "structure_aware",
 ]
+const LLM_DETECTOR_IDS = new Set<string>([
+  "det_llm_delta_brief_v1",
+  "det_llm_excerpt_picker_v1",
+])
+const DET_TRACK_SLUG = getDefaultDeterministicTrackSlug()
+
+function buildDetectorCardKey(detectorId: string, campaignId?: string): string {
+  if (campaignId) return `${detectorId}::${campaignId}`
+  return detectorId
+}
+
+function countDeltaCitations(output: LabOutput | null): number {
+  if (!output || output.detector_id !== "det_llm_delta_brief_v1") return 0
+  const raw = output.artifacts.delta_brief
+  if (typeof raw !== "string") return 0
+  const matches = raw.match(/\b20\d{2}\s+para\s+\d+\b/gi)
+  return matches ? matches.length : 0
+}
+
+function countEvidence(output: LabOutput | null): number {
+  if (!output) return 0
+  return Array.isArray(output.evidence) ? output.evidence.length : 0
+}
+
+function excerptEvidenceOverlapPercent(a: LabOutput | null, b: LabOutput | null): number | null {
+  if (!a || !b) return null
+  if (a.detector_id !== "det_llm_excerpt_picker_v1") return null
+  if (b.detector_id !== "det_llm_excerpt_picker_v1") return null
+  const setA = new Set<string>()
+  const setB = new Set<string>()
+  for (const block of a.evidence ?? []) {
+    setA.add(`${block.year}:${block.paragraph_idx}`)
+  }
+  for (const block of b.evidence ?? []) {
+    setB.add(`${block.year}:${block.paragraph_idx}`)
+  }
+  if (setA.size === 0 && setB.size === 0) return 100
+  const union = new Set<string>([...setA, ...setB])
+  let intersection = 0
+  for (const key of union) {
+    if (setA.has(key) && setB.has(key)) intersection += 1
+  }
+  return (intersection / union.size) * 100
+}
 
 function buildCaseKey(caseItem: LabCase): string {
   return `${caseItem.year_from}-${caseItem.year_to}`
@@ -155,6 +211,8 @@ type DetectorDebugInfo = {
   yearTo: number
   lens: LabCleaningLens
   detectorId: string
+  campaignId?: string | null
+  campaignDisplayName?: string | null
   expectedPath: string | null
   requestedUrl: string | null
   errorText: string | null
@@ -187,12 +245,18 @@ type LabPanelProps = {
   ticker: string
   requestedPair?: { from: number; to: number } | null
   onSelectedPairChange?: (pair: { from: number; to: number }) => void
+  requestedLlmCampaignA?: string | null
+  requestedLlmCampaignB?: string | null
+  onSelectedLlmCampaignsChange?: (selection: { llmA: string; llmB: string }) => void
 }
 
 export default function LabPanel({
   ticker,
   requestedPair = null,
   onSelectedPairChange,
+  requestedLlmCampaignA = null,
+  requestedLlmCampaignB = null,
+  onSelectedLlmCampaignsChange,
 }: LabPanelProps) {
   const syncedPairKeyRef = useRef<string | null>(null)
   const [cases, setCases] = useState<LabCase[]>([])
@@ -214,6 +278,9 @@ export default function LabPanel({
   )
   const [isLoadingOutputs, setIsLoadingOutputs] = useState(false)
   const [reloadNonce, setReloadNonce] = useState(0)
+  const [llmCampaignOptions, setLlmCampaignOptions] = useState<LabLlmCampaign[]>([])
+  const [selectedLlmCampaignA, setSelectedLlmCampaignA] = useState<string>("")
+  const [selectedLlmCampaignB, setSelectedLlmCampaignB] = useState<string>("")
 
   // Track previous values for render-time state adjustments (React recommended pattern)
   const [prevTicker, setPrevTicker] = useState(ticker)
@@ -254,6 +321,45 @@ export default function LabPanel({
       cancelled = true
     }
   }, [ticker])
+
+  useEffect(() => {
+    let cancelled = false
+    loadLabLlmCampaignsIndex()
+      .then(async (index) => {
+        if (cancelled) return
+        setLlmCampaignOptions(index.campaigns)
+        const defaults = await getDefaultLabLlmCampaignPair()
+        if (cancelled) return
+
+        const available = new Set(index.campaigns.map((campaign) => campaign.campaign_id))
+        const requestedA =
+          requestedLlmCampaignA && available.has(requestedLlmCampaignA)
+            ? requestedLlmCampaignA
+            : defaults.primaryCampaignId
+        const requestedB =
+          requestedLlmCampaignB && available.has(requestedLlmCampaignB)
+            ? requestedLlmCampaignB
+            : defaults.compareCampaignId
+        setSelectedLlmCampaignA(requestedA)
+        setSelectedLlmCampaignB(requestedB)
+      })
+      .catch(() => {
+        if (cancelled) return
+        setLlmCampaignOptions([])
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [requestedLlmCampaignA, requestedLlmCampaignB])
+
+  useEffect(() => {
+    if (!onSelectedLlmCampaignsChange) return
+    if (!selectedLlmCampaignA || !selectedLlmCampaignB) return
+    onSelectedLlmCampaignsChange({
+      llmA: selectedLlmCampaignA,
+      llmB: selectedLlmCampaignB,
+    })
+  }, [onSelectedLlmCampaignsChange, selectedLlmCampaignA, selectedLlmCampaignB])
 
   const selectedCase = useMemo(() => {
     if (!selectedCaseKey) return null
@@ -310,7 +416,7 @@ export default function LabPanel({
 
   // Build a key to track when output-loading dependencies change
   const outputRequestKey = selectedCase
-    ? `${buildCaseKey(selectedCase)}|${lens}|${selectedDetectors.join(",")}|reload:${reloadNonce}`
+    ? `${buildCaseKey(selectedCase)}|${lens}|${selectedDetectors.join(",")}|${selectedLlmCampaignA}|${selectedLlmCampaignB}|reload:${reloadNonce}`
     : null
   const [prevOutputRequestKey, setPrevOutputRequestKey] = useState(outputRequestKey)
 
@@ -345,72 +451,165 @@ export default function LabPanel({
       const nextOutputDebugInfo: Record<string, DetectorDebugInfo> = {}
 
       for (const detectorId of selectedDetectors) {
-        const expectedArtifact = buildExpectedLabOutputArtifact(
-          selectedCase,
-          detectorId,
-          lens,
-          sourceId
-        )
-        const link = resolveLabOutputLink(selectedCase, detectorId, lens, sourceId)
-        const fallbackExpectedPath = expectedArtifact?.repoPath ?? null
-        const fallbackRequestedUrl = expectedArtifact?.requestUrl ?? null
-        let requestedUrl = fallbackRequestedUrl
-        let expectedPath = fallbackExpectedPath
-        if (!link) {
-          nextOutputs[detectorId] = null
-          nextOutputDebugPaths[detectorId] = fallbackExpectedPath
-            ? `Missing artifact. Expected path: ${fallbackExpectedPath}`
-            : "Missing artifact."
-          nextOutputDebugInfo[detectorId] = {
-            ticker: selectedCase.ticker,
-            yearFrom: selectedCase.year_from,
-            yearTo: selectedCase.year_to,
-            lens,
+        const isLlm = LLM_DETECTOR_IDS.has(detectorId)
+        if (!isLlm) {
+          const expectedArtifact = buildExpectedLabOutputArtifact(
+            selectedCase,
             detectorId,
-            expectedPath: fallbackExpectedPath,
-            requestedUrl: fallbackRequestedUrl,
-            errorText: "Missing artifact: detector output is not listed for this case/lens.",
+            lens,
+            sourceId,
+            DET_TRACK_SLUG
+          )
+          const link = resolveLabOutputLink(selectedCase, detectorId, lens, sourceId)
+          const fallbackExpectedPath = expectedArtifact?.repoPath ?? null
+          const fallbackRequestedUrl = expectedArtifact?.requestUrl ?? null
+          let requestedUrl = fallbackRequestedUrl
+          let expectedPath = fallbackExpectedPath
+          const cardKey = buildDetectorCardKey(detectorId)
+          if (!link) {
+            nextOutputs[cardKey] = null
+            nextOutputDebugPaths[cardKey] = fallbackExpectedPath
+              ? `Missing artifact. Expected path: ${fallbackExpectedPath}`
+              : "Missing artifact."
+            nextOutputDebugInfo[cardKey] = {
+              ticker: selectedCase.ticker,
+              yearFrom: selectedCase.year_from,
+              yearTo: selectedCase.year_to,
+              lens,
+              detectorId,
+              expectedPath: fallbackExpectedPath,
+              requestedUrl: fallbackRequestedUrl,
+              errorText: "Missing artifact: detector output is not listed for this case/lens.",
+            }
+            continue
+          }
+          requestedUrl =
+            buildLabOutputRequestUrl(selectedCase.ticker, link.filename) ?? fallbackRequestedUrl
+          expectedPath =
+            buildLabOutputRepoPath(selectedCase.ticker, link.filename) ?? fallbackExpectedPath
+          try {
+            const output = await loadLabOutput(selectedCase.ticker, link.filename, {
+              signal: controller.signal,
+            })
+            nextOutputs[cardKey] = output
+            nextOutputDebugPaths[cardKey] = null
+            nextOutputDebugInfo[cardKey] = {
+              ticker: selectedCase.ticker,
+              yearFrom: selectedCase.year_from,
+              yearTo: selectedCase.year_to,
+              lens,
+              detectorId,
+              expectedPath,
+              requestedUrl,
+              errorText: null,
+            }
+          } catch (error) {
+            nextOutputs[cardKey] = null
+            nextOutputDebugPaths[cardKey] = formatLabLoadDebug(error)
+            let errorText = "Failed to load detector output."
+            if (error instanceof LabDataLoadError) {
+              const statusText = typeof error.status === "number" ? ` (status ${error.status})` : ""
+              errorText = `${error.message}${statusText}`
+              requestedUrl = error.url
+            } else if (error instanceof Error) {
+              errorText = error.message
+            }
+            nextOutputDebugInfo[cardKey] = {
+              ticker: selectedCase.ticker,
+              yearFrom: selectedCase.year_from,
+              yearTo: selectedCase.year_to,
+              lens,
+              detectorId,
+              expectedPath,
+              requestedUrl,
+              errorText,
+            }
           }
           continue
         }
-        requestedUrl = buildLabOutputRequestUrl(selectedCase.ticker, link.filename) ?? fallbackRequestedUrl
-        expectedPath = buildLabOutputRepoPath(selectedCase.ticker, link.filename) ?? fallbackExpectedPath
-        try {
-          const output = await loadLabOutput(selectedCase.ticker, link.filename, {
-            signal: controller.signal,
-          })
-          nextOutputs[detectorId] = output
-          nextOutputDebugPaths[detectorId] = null
-          nextOutputDebugInfo[detectorId] = {
-            ticker: selectedCase.ticker,
-            yearFrom: selectedCase.year_from,
-            yearTo: selectedCase.year_to,
-            lens,
-            detectorId,
-            expectedPath,
-            requestedUrl,
-            errorText: null,
+
+        const llmCampaignIds = [selectedLlmCampaignA, selectedLlmCampaignB].filter(Boolean)
+        for (const campaignId of llmCampaignIds) {
+          const cardKey = buildDetectorCardKey(detectorId, campaignId)
+          const campaign = await getLabLlmCampaignById(campaignId)
+          const variant = await findLabLlmVariant(selectedCase, detectorId, lens, campaignId)
+          const expectedArtifact = variant
+            ? buildExpectedLabOutputArtifactFromVariant(variant)
+            : buildExpectedLabOutputArtifact(
+                selectedCase,
+                detectorId,
+                lens,
+                sourceId,
+                campaign?.campaign_slug ?? campaignId
+              )
+          const expectedPath = expectedArtifact?.repoPath ?? null
+          let requestedUrl = expectedArtifact?.requestUrl ?? null
+          if (!variant) {
+            nextOutputs[cardKey] = null
+            nextOutputDebugPaths[cardKey] = expectedPath
+              ? `Missing artifact. Expected path: ${expectedPath}`
+              : "Missing artifact."
+            nextOutputDebugInfo[cardKey] = {
+              ticker: selectedCase.ticker,
+              yearFrom: selectedCase.year_from,
+              yearTo: selectedCase.year_to,
+              lens,
+              detectorId,
+              campaignId,
+              campaignDisplayName: campaign?.display_name ?? campaignId,
+              expectedPath,
+              requestedUrl,
+              errorText: "Missing artifact: campaign variant output is not indexed for this case/lens.",
+            }
+            continue
           }
-        } catch (error) {
-          nextOutputs[detectorId] = null
-          nextOutputDebugPaths[detectorId] = formatLabLoadDebug(error)
-          let errorText = "Failed to load detector output."
-          if (error instanceof LabDataLoadError) {
-            const statusText = typeof error.status === "number" ? ` (status ${error.status})` : ""
-            errorText = `${error.message}${statusText}`
-            requestedUrl = error.url
-          } else if (error instanceof Error) {
-            errorText = error.message
-          }
-          nextOutputDebugInfo[detectorId] = {
-            ticker: selectedCase.ticker,
-            yearFrom: selectedCase.year_from,
-            yearTo: selectedCase.year_to,
-            lens,
-            detectorId,
-            expectedPath,
-            requestedUrl,
-            errorText,
+
+          try {
+            const output = await loadLabOutput(selectedCase.ticker, variant.filename, {
+              signal: controller.signal,
+              llmExpectation: {
+                campaignId,
+                modelProvider: variant.model_provider,
+                modelName: variant.model_name,
+              },
+            })
+            nextOutputs[cardKey] = output
+            nextOutputDebugPaths[cardKey] = null
+            nextOutputDebugInfo[cardKey] = {
+              ticker: selectedCase.ticker,
+              yearFrom: selectedCase.year_from,
+              yearTo: selectedCase.year_to,
+              lens,
+              detectorId,
+              campaignId,
+              campaignDisplayName: variant.display_name,
+              expectedPath,
+              requestedUrl,
+              errorText: null,
+            }
+          } catch (error) {
+            nextOutputs[cardKey] = null
+            nextOutputDebugPaths[cardKey] = formatLabLoadDebug(error)
+            let errorText = "Failed to load detector output."
+            if (error instanceof LabDataLoadError) {
+              const statusText = typeof error.status === "number" ? ` (status ${error.status})` : ""
+              errorText = `${error.message}${statusText}`
+              requestedUrl = error.url
+            } else if (error instanceof Error) {
+              errorText = error.message
+            }
+            nextOutputDebugInfo[cardKey] = {
+              ticker: selectedCase.ticker,
+              yearFrom: selectedCase.year_from,
+              yearTo: selectedCase.year_to,
+              lens,
+              detectorId,
+              campaignId,
+              campaignDisplayName: variant.display_name,
+              expectedPath,
+              requestedUrl,
+              errorText,
+            }
           }
         }
       }
@@ -419,7 +618,8 @@ export default function LabPanel({
         selectedCase,
         "det_rbo_agreement_v1",
         lens,
-        sourceId
+        sourceId,
+        DET_TRACK_SLUG
       )
       const agreementLink = resolveLabOutputLink(
         selectedCase,
@@ -511,7 +711,14 @@ export default function LabPanel({
       cancelled = true
       controller.abort()
     }
-  }, [selectedCase, lens, selectedDetectors, sourceId])
+  }, [
+    selectedCase,
+    lens,
+    selectedDetectors,
+    sourceId,
+    selectedLlmCampaignA,
+    selectedLlmCampaignB,
+  ])
 
   const lensOptions = useMemo(() => {
     const base: LabCleaningLens[] = ["raw", "deboilerplated", "stage1_clean", "structure_aware"]
@@ -523,8 +730,81 @@ export default function LabPanel({
 
   const methodCards = useMemo(() => {
     const selected = new Set(selectedDetectors)
-    return DETECTOR_CATALOG.filter((det) => selected.has(det.id))
-  }, [selectedDetectors])
+    const campaignMap = new Map<string, LabLlmCampaign>()
+    for (const campaign of llmCampaignOptions) {
+      campaignMap.set(campaign.campaign_id, campaign)
+    }
+    const cards: Array<
+      (typeof DETECTOR_CATALOG)[number] & {
+        cardKey: string
+        campaignId?: string
+        campaign?: LabLlmCampaign | null
+      }
+    > = []
+    for (const detector of DETECTOR_CATALOG) {
+      if (!selected.has(detector.id)) continue
+      if (!LLM_DETECTOR_IDS.has(detector.id)) {
+        cards.push({
+          ...detector,
+          cardKey: buildDetectorCardKey(detector.id),
+          campaign: null,
+        })
+        continue
+      }
+      const selectedCampaignIds = Array.from(
+        new Set([selectedLlmCampaignA, selectedLlmCampaignB].filter(Boolean))
+      )
+      for (const campaignId of selectedCampaignIds) {
+        cards.push({
+          ...detector,
+          cardKey: buildDetectorCardKey(detector.id, campaignId),
+          campaignId,
+          campaign: campaignMap.get(campaignId) ?? null,
+        })
+      }
+    }
+    return cards
+  }, [selectedDetectors, llmCampaignOptions, selectedLlmCampaignA, selectedLlmCampaignB])
+
+  const llmCompareRows = useMemo(() => {
+    const rows: Array<{
+      detectorId: string
+      detectorLabel: string
+      confidenceDelta: number | null
+      evidenceDelta: number
+      citationDelta: number | null
+      overlapPercent: number | null
+    }> = []
+    if (!selectedLlmCampaignA || !selectedLlmCampaignB) return rows
+    for (const detector of DETECTOR_CATALOG) {
+      if (!LLM_DETECTOR_IDS.has(detector.id)) continue
+      if (!selectedDetectors.includes(detector.id)) continue
+      const outputA = outputs[buildDetectorCardKey(detector.id, selectedLlmCampaignA)] ?? null
+      const outputB = outputs[buildDetectorCardKey(detector.id, selectedLlmCampaignB)] ?? null
+      const confidenceA = outputA?.metrics.confidence ?? null
+      const confidenceB = outputB?.metrics.confidence ?? null
+      const confidenceDelta =
+        confidenceA !== null && confidenceB !== null ? confidenceA - confidenceB : null
+      const evidenceDelta = countEvidence(outputA) - countEvidence(outputB)
+      const citationDelta =
+        detector.id === "det_llm_delta_brief_v1"
+          ? countDeltaCitations(outputA) - countDeltaCitations(outputB)
+          : null
+      const overlapPercent =
+        detector.id === "det_llm_excerpt_picker_v1"
+          ? excerptEvidenceOverlapPercent(outputA, outputB)
+          : null
+      rows.push({
+        detectorId: detector.id,
+        detectorLabel: detector.label,
+        confidenceDelta,
+        evidenceDelta,
+        citationDelta,
+        overlapPercent,
+      })
+    }
+    return rows
+  }, [outputs, selectedLlmCampaignA, selectedLlmCampaignB, selectedDetectors])
 
   const detectorGroups = useMemo(() => {
     return DETECTOR_GROUP_ORDER.map((group) => ({
@@ -569,6 +849,8 @@ export default function LabPanel({
         pair: `${info.yearFrom}-${info.yearTo}`,
         lens: info.lens,
         detector: info.detectorId,
+        campaign_id: info.campaignId ?? null,
+        campaign_display_name: info.campaignDisplayName ?? null,
         expected_path: info.expectedPath,
         requested_url: info.requestedUrl,
         error: info.errorText,
@@ -675,6 +957,37 @@ export default function LabPanel({
             <div className="text-xs uppercase tracking-wide text-slate-400">Cleaning lens</div>
             <div className="mt-2">
               <CleaningLensToggle value={lens} options={lensOptions} onChange={setLens} />
+            </div>
+          </div>
+
+          <div className="grid gap-3 md:grid-cols-2">
+            <div>
+              <div className="text-xs uppercase tracking-wide text-slate-400">Model A (LLM)</div>
+              <select
+                value={selectedLlmCampaignA}
+                onChange={(event) => setSelectedLlmCampaignA(event.target.value)}
+                className="mt-2 w-full rounded-md border border-white/15 bg-slate-950/40 px-3 py-2 text-xs text-slate-100"
+              >
+                {llmCampaignOptions.map((campaign) => (
+                  <option key={campaign.campaign_id} value={campaign.campaign_id}>
+                    {campaign.display_name}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <div className="text-xs uppercase tracking-wide text-slate-400">Model B (LLM)</div>
+              <select
+                value={selectedLlmCampaignB}
+                onChange={(event) => setSelectedLlmCampaignB(event.target.value)}
+                className="mt-2 w-full rounded-md border border-white/15 bg-slate-950/40 px-3 py-2 text-xs text-slate-100"
+              >
+                {llmCampaignOptions.map((campaign) => (
+                  <option key={campaign.campaign_id} value={campaign.campaign_id}>
+                    {campaign.display_name}
+                  </option>
+                ))}
+              </select>
             </div>
           </div>
 
@@ -829,16 +1142,70 @@ export default function LabPanel({
         ) : null}
       </div>
 
+      {llmCompareRows.length ? (
+        <div className="rounded-xl border border-sky-300/25 bg-sky-400/10 p-4">
+          <h3 className="text-sm font-semibold text-sky-100">LLM A/B quick diff</h3>
+          <p className="mt-1 text-[11px] text-slate-200">
+            Deltas are Model A minus Model B for the selected pair/lens.
+          </p>
+          <div className="mt-3 overflow-x-auto">
+            <table className="min-w-full text-left text-[11px] text-slate-100">
+              <thead className="text-slate-300">
+                <tr>
+                  <th className="pr-4">Detector</th>
+                  <th className="pr-4">Confidence delta</th>
+                  <th className="pr-4">Evidence delta</th>
+                  <th className="pr-4">Citation delta</th>
+                  <th>Evidence overlap</th>
+                </tr>
+              </thead>
+              <tbody>
+                {llmCompareRows.map((row) => (
+                  <tr key={row.detectorId} className="border-t border-white/10">
+                    <td className="py-1 pr-4">{row.detectorLabel}</td>
+                    <td className="py-1 pr-4">
+                      {row.confidenceDelta === null ? "-" : row.confidenceDelta.toFixed(2)}
+                    </td>
+                    <td className="py-1 pr-4">{row.evidenceDelta}</td>
+                    <td className="py-1 pr-4">
+                      {row.citationDelta === null ? "-" : row.citationDelta}
+                    </td>
+                    <td className="py-1">
+                      {row.overlapPercent === null ? "-" : `${row.overlapPercent.toFixed(0)}%`}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      ) : null}
+
       <div className="grid gap-4">
         {methodCards.map((detector) => (
           <MethodCard
-            key={detector.id}
+            key={detector.cardKey}
             detectorId={detector.id}
-            title={detector.label}
+            title={
+              detector.campaign
+                ? `${detector.label} - ${detector.campaign.display_name}`
+                : detector.label
+            }
             description={detector.description}
-            output={outputs[detector.id] ?? null}
-            debugPath={outputDebugPaths[detector.id] ?? null}
-            debugInfo={outputDebugInfo[detector.id] ?? null}
+            llmCampaign={
+              detector.campaign
+                ? {
+                    campaignId: detector.campaign.campaign_id,
+                    campaignDisplayName: detector.campaign.display_name,
+                    modelProvider: detector.campaign.model_provider,
+                    modelName: detector.campaign.model_name,
+                    instructionsAsset: detector.campaign.instructions_asset,
+                  }
+                : null
+            }
+            output={outputs[detector.cardKey] ?? null}
+            debugPath={outputDebugPaths[detector.cardKey] ?? null}
+            debugInfo={outputDebugInfo[detector.cardKey] ?? null}
             isLoading={isLoadingOutputs}
             emptyMessage="No lab output for this detector/lens yet."
           />
