@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated_at": "2026-02-21T19:37:34Z",
+  "updated_at": "2026-02-21T21:39:45Z",
   "variants": [
     {
       "ticker": "NVDA",
@@ -39,12 +39,10 @@
       "filename": "outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2019_2020_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "expected_repo_path": "public/data/sec_narrative_drift_lab/NVDA/outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2019_2020_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "request_url": "data/sec_narrative_drift_lab/NVDA/outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2019_2020_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
-      "present": false,
-      "valid": false,
-      "run_label": "",
-      "validation_reasons": [
-        "file not found"
-      ]
+      "present": true,
+      "valid": true,
+      "run_label": "2026-02-21_codex_nvda_2019_2020_delta_brief",
+      "validation_reasons": []
     },
     {
       "ticker": "NVDA",
@@ -83,12 +81,10 @@
       "filename": "outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2019_2020_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "expected_repo_path": "public/data/sec_narrative_drift_lab/NVDA/outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2019_2020_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "request_url": "data/sec_narrative_drift_lab/NVDA/outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2019_2020_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
-      "present": false,
-      "valid": false,
-      "run_label": "",
-      "validation_reasons": [
-        "file not found"
-      ]
+      "present": true,
+      "valid": true,
+      "run_label": "2026-02-21_codex_nvda_2019_2020_excerpt_picker",
+      "validation_reasons": []
     },
     {
       "ticker": "NVDA",
@@ -127,12 +123,10 @@
       "filename": "outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2020_2021_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "expected_repo_path": "public/data/sec_narrative_drift_lab/NVDA/outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2020_2021_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "request_url": "data/sec_narrative_drift_lab/NVDA/outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2020_2021_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
-      "present": false,
-      "valid": false,
-      "run_label": "",
-      "validation_reasons": [
-        "file not found"
-      ]
+      "present": true,
+      "valid": true,
+      "run_label": "2026-02-21_codex_nvda_2020_2021_delta_brief",
+      "validation_reasons": []
     },
     {
       "ticker": "NVDA",
@@ -171,12 +165,10 @@
       "filename": "outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2020_2021_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "expected_repo_path": "public/data/sec_narrative_drift_lab/NVDA/outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2020_2021_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "request_url": "data/sec_narrative_drift_lab/NVDA/outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2020_2021_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
-      "present": false,
-      "valid": false,
-      "run_label": "",
-      "validation_reasons": [
-        "file not found"
-      ]
+      "present": true,
+      "valid": true,
+      "run_label": "2026-02-21_codex_nvda_2020_2021_excerpt_picker",
+      "validation_reasons": []
     },
     {
       "ticker": "NVDA",
@@ -215,12 +207,10 @@
       "filename": "outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2021_2022_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "expected_repo_path": "public/data/sec_narrative_drift_lab/NVDA/outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2021_2022_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "request_url": "data/sec_narrative_drift_lab/NVDA/outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2021_2022_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
-      "present": false,
-      "valid": false,
-      "run_label": "",
-      "validation_reasons": [
-        "file not found"
-      ]
+      "present": true,
+      "valid": true,
+      "run_label": "2026-02-21_codex_nvda_2021_2022_delta_brief",
+      "validation_reasons": []
     },
     {
       "ticker": "NVDA",
@@ -259,12 +249,10 @@
       "filename": "outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2021_2022_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "expected_repo_path": "public/data/sec_narrative_drift_lab/NVDA/outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2021_2022_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "request_url": "data/sec_narrative_drift_lab/NVDA/outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2021_2022_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
-      "present": false,
-      "valid": false,
-      "run_label": "",
-      "validation_reasons": [
-        "file not found"
-      ]
+      "present": true,
+      "valid": true,
+      "run_label": "2026-02-21_codex_nvda_2021_2022_excerpt_picker",
+      "validation_reasons": []
     },
     {
       "ticker": "NVDA",
@@ -303,12 +291,10 @@
       "filename": "outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2022_2023_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "expected_repo_path": "public/data/sec_narrative_drift_lab/NVDA/outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2022_2023_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "request_url": "data/sec_narrative_drift_lab/NVDA/outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2022_2023_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
-      "present": false,
-      "valid": false,
-      "run_label": "",
-      "validation_reasons": [
-        "file not found"
-      ]
+      "present": true,
+      "valid": true,
+      "run_label": "2026-02-21_codex_nvda_2022_2023_delta_brief",
+      "validation_reasons": []
     },
     {
       "ticker": "NVDA",
@@ -347,12 +333,10 @@
       "filename": "outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2022_2023_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "expected_repo_path": "public/data/sec_narrative_drift_lab/NVDA/outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2022_2023_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "request_url": "data/sec_narrative_drift_lab/NVDA/outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2022_2023_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
-      "present": false,
-      "valid": false,
-      "run_label": "",
-      "validation_reasons": [
-        "file not found"
-      ]
+      "present": true,
+      "valid": true,
+      "run_label": "2026-02-21_codex_nvda_2022_2023_excerpt_picker",
+      "validation_reasons": []
     },
     {
       "ticker": "NVDA",
@@ -391,12 +375,10 @@
       "filename": "outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2023_2024_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "expected_repo_path": "public/data/sec_narrative_drift_lab/NVDA/outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2023_2024_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "request_url": "data/sec_narrative_drift_lab/NVDA/outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2023_2024_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
-      "present": false,
-      "valid": false,
-      "run_label": "",
-      "validation_reasons": [
-        "file not found"
-      ]
+      "present": true,
+      "valid": true,
+      "run_label": "2026-02-21_codex_nvda_2023_2024_delta_brief",
+      "validation_reasons": []
     },
     {
       "ticker": "NVDA",
@@ -435,12 +417,10 @@
       "filename": "outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2023_2024_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "expected_repo_path": "public/data/sec_narrative_drift_lab/NVDA/outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2023_2024_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "request_url": "data/sec_narrative_drift_lab/NVDA/outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2023_2024_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
-      "present": false,
-      "valid": false,
-      "run_label": "",
-      "validation_reasons": [
-        "file not found"
-      ]
+      "present": true,
+      "valid": true,
+      "run_label": "2026-02-21_codex_nvda_2023_2024_excerpt_picker",
+      "validation_reasons": []
     },
     {
       "ticker": "NVDA",
@@ -479,12 +459,10 @@
       "filename": "outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2024_2025_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "expected_repo_path": "public/data/sec_narrative_drift_lab/NVDA/outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2024_2025_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "request_url": "data/sec_narrative_drift_lab/NVDA/outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2024_2025_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
-      "present": false,
-      "valid": false,
-      "run_label": "",
-      "validation_reasons": [
-        "file not found"
-      ]
+      "present": true,
+      "valid": true,
+      "run_label": "2026-02-21_codex_nvda_2024_2025_delta_brief",
+      "validation_reasons": []
     },
     {
       "ticker": "NVDA",
@@ -523,12 +501,10 @@
       "filename": "outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2024_2025_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "expected_repo_path": "public/data/sec_narrative_drift_lab/NVDA/outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2024_2025_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "request_url": "data/sec_narrative_drift_lab/NVDA/outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2024_2025_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
-      "present": false,
-      "valid": false,
-      "run_label": "",
-      "validation_reasons": [
-        "file not found"
-      ]
+      "present": true,
+      "valid": true,
+      "run_label": "2026-02-21_codex_nvda_2024_2025_excerpt_picker",
+      "validation_reasons": []
     },
     {
       "ticker": "KO",
@@ -567,12 +543,10 @@
       "filename": "outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2019_2020_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "expected_repo_path": "public/data/sec_narrative_drift_lab/KO/outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2019_2020_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "request_url": "data/sec_narrative_drift_lab/KO/outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2019_2020_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
-      "present": false,
-      "valid": false,
-      "run_label": "",
-      "validation_reasons": [
-        "file not found"
-      ]
+      "present": true,
+      "valid": true,
+      "run_label": "2026-02-21_codex_ko_2019_2020_delta_brief",
+      "validation_reasons": []
     },
     {
       "ticker": "KO",
@@ -611,12 +585,10 @@
       "filename": "outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2019_2020_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "expected_repo_path": "public/data/sec_narrative_drift_lab/KO/outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2019_2020_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "request_url": "data/sec_narrative_drift_lab/KO/outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2019_2020_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
-      "present": false,
-      "valid": false,
-      "run_label": "",
-      "validation_reasons": [
-        "file not found"
-      ]
+      "present": true,
+      "valid": true,
+      "run_label": "2026-02-21_codex_ko_2019_2020_excerpt_picker",
+      "validation_reasons": []
     },
     {
       "ticker": "KO",
@@ -655,12 +627,10 @@
       "filename": "outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2020_2021_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "expected_repo_path": "public/data/sec_narrative_drift_lab/KO/outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2020_2021_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "request_url": "data/sec_narrative_drift_lab/KO/outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2020_2021_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
-      "present": false,
-      "valid": false,
-      "run_label": "",
-      "validation_reasons": [
-        "file not found"
-      ]
+      "present": true,
+      "valid": true,
+      "run_label": "2026-02-21_codex_ko_2020_2021_delta_brief",
+      "validation_reasons": []
     },
     {
       "ticker": "KO",
@@ -699,12 +669,10 @@
       "filename": "outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2020_2021_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "expected_repo_path": "public/data/sec_narrative_drift_lab/KO/outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2020_2021_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "request_url": "data/sec_narrative_drift_lab/KO/outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2020_2021_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
-      "present": false,
-      "valid": false,
-      "run_label": "",
-      "validation_reasons": [
-        "file not found"
-      ]
+      "present": true,
+      "valid": true,
+      "run_label": "2026-02-21_codex_ko_2020_2021_excerpt_picker",
+      "validation_reasons": []
     },
     {
       "ticker": "KO",
@@ -743,12 +711,10 @@
       "filename": "outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2021_2022_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "expected_repo_path": "public/data/sec_narrative_drift_lab/KO/outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2021_2022_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "request_url": "data/sec_narrative_drift_lab/KO/outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2021_2022_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
-      "present": false,
-      "valid": false,
-      "run_label": "",
-      "validation_reasons": [
-        "file not found"
-      ]
+      "present": true,
+      "valid": true,
+      "run_label": "2026-02-21_codex_ko_2021_2022_delta_brief",
+      "validation_reasons": []
     },
     {
       "ticker": "KO",
@@ -787,12 +753,10 @@
       "filename": "outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2021_2022_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "expected_repo_path": "public/data/sec_narrative_drift_lab/KO/outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2021_2022_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "request_url": "data/sec_narrative_drift_lab/KO/outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2021_2022_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
-      "present": false,
-      "valid": false,
-      "run_label": "",
-      "validation_reasons": [
-        "file not found"
-      ]
+      "present": true,
+      "valid": true,
+      "run_label": "2026-02-21_codex_ko_2021_2022_excerpt_picker",
+      "validation_reasons": []
     },
     {
       "ticker": "KO",
@@ -831,12 +795,10 @@
       "filename": "outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2022_2023_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "expected_repo_path": "public/data/sec_narrative_drift_lab/KO/outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2022_2023_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "request_url": "data/sec_narrative_drift_lab/KO/outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2022_2023_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
-      "present": false,
-      "valid": false,
-      "run_label": "",
-      "validation_reasons": [
-        "file not found"
-      ]
+      "present": true,
+      "valid": true,
+      "run_label": "2026-02-21_codex_ko_2022_2023_delta_brief",
+      "validation_reasons": []
     },
     {
       "ticker": "KO",
@@ -875,12 +837,10 @@
       "filename": "outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2022_2023_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "expected_repo_path": "public/data/sec_narrative_drift_lab/KO/outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2022_2023_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "request_url": "data/sec_narrative_drift_lab/KO/outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2022_2023_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
-      "present": false,
-      "valid": false,
-      "run_label": "",
-      "validation_reasons": [
-        "file not found"
-      ]
+      "present": true,
+      "valid": true,
+      "run_label": "2026-02-21_codex_ko_2022_2023_excerpt_picker",
+      "validation_reasons": []
     },
     {
       "ticker": "KO",
@@ -919,12 +879,10 @@
       "filename": "outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2023_2024_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "expected_repo_path": "public/data/sec_narrative_drift_lab/KO/outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2023_2024_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "request_url": "data/sec_narrative_drift_lab/KO/outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2023_2024_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
-      "present": false,
-      "valid": false,
-      "run_label": "",
-      "validation_reasons": [
-        "file not found"
-      ]
+      "present": true,
+      "valid": true,
+      "run_label": "2026-02-21_codex_ko_2023_2024_delta_brief",
+      "validation_reasons": []
     },
     {
       "ticker": "KO",
@@ -963,12 +921,10 @@
       "filename": "outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2023_2024_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "expected_repo_path": "public/data/sec_narrative_drift_lab/KO/outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2023_2024_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "request_url": "data/sec_narrative_drift_lab/KO/outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2023_2024_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
-      "present": false,
-      "valid": false,
-      "run_label": "",
-      "validation_reasons": [
-        "file not found"
-      ]
+      "present": true,
+      "valid": true,
+      "run_label": "2026-02-21_codex_ko_2023_2024_excerpt_picker",
+      "validation_reasons": []
     },
     {
       "ticker": "WM",
@@ -1007,12 +963,10 @@
       "filename": "outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2019_2020_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "expected_repo_path": "public/data/sec_narrative_drift_lab/WM/outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2019_2020_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "request_url": "data/sec_narrative_drift_lab/WM/outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2019_2020_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
-      "present": false,
-      "valid": false,
-      "run_label": "",
-      "validation_reasons": [
-        "file not found"
-      ]
+      "present": true,
+      "valid": true,
+      "run_label": "2026-02-21_codex_wm_2019_2020_delta_brief",
+      "validation_reasons": []
     },
     {
       "ticker": "WM",
@@ -1051,12 +1005,10 @@
       "filename": "outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2019_2020_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "expected_repo_path": "public/data/sec_narrative_drift_lab/WM/outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2019_2020_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "request_url": "data/sec_narrative_drift_lab/WM/outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2019_2020_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
-      "present": false,
-      "valid": false,
-      "run_label": "",
-      "validation_reasons": [
-        "file not found"
-      ]
+      "present": true,
+      "valid": true,
+      "run_label": "2026-02-21_codex_wm_2019_2020_excerpt_picker",
+      "validation_reasons": []
     },
     {
       "ticker": "WM",
@@ -1095,12 +1047,10 @@
       "filename": "outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2020_2021_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "expected_repo_path": "public/data/sec_narrative_drift_lab/WM/outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2020_2021_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "request_url": "data/sec_narrative_drift_lab/WM/outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2020_2021_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
-      "present": false,
-      "valid": false,
-      "run_label": "",
-      "validation_reasons": [
-        "file not found"
-      ]
+      "present": true,
+      "valid": true,
+      "run_label": "2026-02-21_codex_wm_2020_2021_delta_brief",
+      "validation_reasons": []
     },
     {
       "ticker": "WM",
@@ -1139,12 +1089,10 @@
       "filename": "outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2020_2021_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "expected_repo_path": "public/data/sec_narrative_drift_lab/WM/outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2020_2021_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "request_url": "data/sec_narrative_drift_lab/WM/outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2020_2021_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
-      "present": false,
-      "valid": false,
-      "run_label": "",
-      "validation_reasons": [
-        "file not found"
-      ]
+      "present": true,
+      "valid": true,
+      "run_label": "2026-02-21_codex_wm_2020_2021_excerpt_picker",
+      "validation_reasons": []
     },
     {
       "ticker": "WM",
@@ -1183,12 +1131,10 @@
       "filename": "outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2021_2022_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "expected_repo_path": "public/data/sec_narrative_drift_lab/WM/outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2021_2022_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "request_url": "data/sec_narrative_drift_lab/WM/outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2021_2022_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
-      "present": false,
-      "valid": false,
-      "run_label": "",
-      "validation_reasons": [
-        "file not found"
-      ]
+      "present": true,
+      "valid": true,
+      "run_label": "2026-02-21_codex_wm_2021_2022_delta_brief",
+      "validation_reasons": []
     },
     {
       "ticker": "WM",
@@ -1227,12 +1173,10 @@
       "filename": "outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2021_2022_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "expected_repo_path": "public/data/sec_narrative_drift_lab/WM/outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2021_2022_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "request_url": "data/sec_narrative_drift_lab/WM/outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2021_2022_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
-      "present": false,
-      "valid": false,
-      "run_label": "",
-      "validation_reasons": [
-        "file not found"
-      ]
+      "present": true,
+      "valid": true,
+      "run_label": "2026-02-21_codex_wm_2021_2022_excerpt_picker",
+      "validation_reasons": []
     },
     {
       "ticker": "WM",
@@ -1271,12 +1215,10 @@
       "filename": "outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2022_2023_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "expected_repo_path": "public/data/sec_narrative_drift_lab/WM/outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2022_2023_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "request_url": "data/sec_narrative_drift_lab/WM/outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2022_2023_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
-      "present": false,
-      "valid": false,
-      "run_label": "",
-      "validation_reasons": [
-        "file not found"
-      ]
+      "present": true,
+      "valid": true,
+      "run_label": "2026-02-21_codex_wm_2022_2023_delta_brief",
+      "validation_reasons": []
     },
     {
       "ticker": "WM",
@@ -1315,12 +1257,10 @@
       "filename": "outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2022_2023_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "expected_repo_path": "public/data/sec_narrative_drift_lab/WM/outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2022_2023_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "request_url": "data/sec_narrative_drift_lab/WM/outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2022_2023_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
-      "present": false,
-      "valid": false,
-      "run_label": "",
-      "validation_reasons": [
-        "file not found"
-      ]
+      "present": true,
+      "valid": true,
+      "run_label": "2026-02-21_codex_wm_2022_2023_excerpt_picker",
+      "validation_reasons": []
     },
     {
       "ticker": "WM",
@@ -1359,12 +1299,10 @@
       "filename": "outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2023_2024_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "expected_repo_path": "public/data/sec_narrative_drift_lab/WM/outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2023_2024_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "request_url": "data/sec_narrative_drift_lab/WM/outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2023_2024_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
-      "present": false,
-      "valid": false,
-      "run_label": "",
-      "validation_reasons": [
-        "file not found"
-      ]
+      "present": true,
+      "valid": true,
+      "run_label": "2026-02-21_codex_wm_2023_2024_delta_brief",
+      "validation_reasons": []
     },
     {
       "ticker": "WM",
@@ -1403,12 +1341,10 @@
       "filename": "outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2023_2024_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "expected_repo_path": "public/data/sec_narrative_drift_lab/WM/outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2023_2024_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "request_url": "data/sec_narrative_drift_lab/WM/outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2023_2024_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
-      "present": false,
-      "valid": false,
-      "run_label": "",
-      "validation_reasons": [
-        "file not found"
-      ]
+      "present": true,
+      "valid": true,
+      "run_label": "2026-02-21_codex_wm_2023_2024_excerpt_picker",
+      "validation_reasons": []
     },
     {
       "ticker": "GE",
@@ -1447,12 +1383,10 @@
       "filename": "outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2019_2020_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "expected_repo_path": "public/data/sec_narrative_drift_lab/GE/outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2019_2020_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "request_url": "data/sec_narrative_drift_lab/GE/outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2019_2020_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
-      "present": false,
-      "valid": false,
-      "run_label": "",
-      "validation_reasons": [
-        "file not found"
-      ]
+      "present": true,
+      "valid": true,
+      "run_label": "2026-02-21_codex_ge_2019_2020_delta_brief",
+      "validation_reasons": []
     },
     {
       "ticker": "GE",
@@ -1491,12 +1425,10 @@
       "filename": "outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2019_2020_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "expected_repo_path": "public/data/sec_narrative_drift_lab/GE/outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2019_2020_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "request_url": "data/sec_narrative_drift_lab/GE/outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2019_2020_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
-      "present": false,
-      "valid": false,
-      "run_label": "",
-      "validation_reasons": [
-        "file not found"
-      ]
+      "present": true,
+      "valid": true,
+      "run_label": "2026-02-21_codex_ge_2019_2020_excerpt_picker",
+      "validation_reasons": []
     },
     {
       "ticker": "GE",
@@ -1535,12 +1467,10 @@
       "filename": "outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2020_2021_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "expected_repo_path": "public/data/sec_narrative_drift_lab/GE/outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2020_2021_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "request_url": "data/sec_narrative_drift_lab/GE/outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2020_2021_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
-      "present": false,
-      "valid": false,
-      "run_label": "",
-      "validation_reasons": [
-        "file not found"
-      ]
+      "present": true,
+      "valid": true,
+      "run_label": "2026-02-21_codex_ge_2020_2021_delta_brief",
+      "validation_reasons": []
     },
     {
       "ticker": "GE",
@@ -1579,12 +1509,10 @@
       "filename": "outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2020_2021_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "expected_repo_path": "public/data/sec_narrative_drift_lab/GE/outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2020_2021_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "request_url": "data/sec_narrative_drift_lab/GE/outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2020_2021_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
-      "present": false,
-      "valid": false,
-      "run_label": "",
-      "validation_reasons": [
-        "file not found"
-      ]
+      "present": true,
+      "valid": true,
+      "run_label": "2026-02-21_codex_ge_2020_2021_excerpt_picker",
+      "validation_reasons": []
     },
     {
       "ticker": "GE",
@@ -1623,12 +1551,10 @@
       "filename": "outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2021_2022_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "expected_repo_path": "public/data/sec_narrative_drift_lab/GE/outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2021_2022_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "request_url": "data/sec_narrative_drift_lab/GE/outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2021_2022_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
-      "present": false,
-      "valid": false,
-      "run_label": "",
-      "validation_reasons": [
-        "file not found"
-      ]
+      "present": true,
+      "valid": true,
+      "run_label": "2026-02-21_codex_ge_2021_2022_delta_brief",
+      "validation_reasons": []
     },
     {
       "ticker": "GE",
@@ -1667,12 +1593,10 @@
       "filename": "outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2021_2022_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "expected_repo_path": "public/data/sec_narrative_drift_lab/GE/outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2021_2022_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "request_url": "data/sec_narrative_drift_lab/GE/outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2021_2022_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
-      "present": false,
-      "valid": false,
-      "run_label": "",
-      "validation_reasons": [
-        "file not found"
-      ]
+      "present": true,
+      "valid": true,
+      "run_label": "2026-02-21_codex_ge_2021_2022_excerpt_picker",
+      "validation_reasons": []
     },
     {
       "ticker": "GE",
@@ -1711,12 +1635,10 @@
       "filename": "outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2022_2023_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "expected_repo_path": "public/data/sec_narrative_drift_lab/GE/outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2022_2023_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "request_url": "data/sec_narrative_drift_lab/GE/outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2022_2023_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
-      "present": false,
-      "valid": false,
-      "run_label": "",
-      "validation_reasons": [
-        "file not found"
-      ]
+      "present": true,
+      "valid": true,
+      "run_label": "2026-02-21_codex_ge_2022_2023_delta_brief",
+      "validation_reasons": []
     },
     {
       "ticker": "GE",
@@ -1755,12 +1677,10 @@
       "filename": "outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2022_2023_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "expected_repo_path": "public/data/sec_narrative_drift_lab/GE/outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2022_2023_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "request_url": "data/sec_narrative_drift_lab/GE/outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2022_2023_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
-      "present": false,
-      "valid": false,
-      "run_label": "",
-      "validation_reasons": [
-        "file not found"
-      ]
+      "present": true,
+      "valid": true,
+      "run_label": "2026-02-21_codex_ge_2022_2023_excerpt_picker",
+      "validation_reasons": []
     },
     {
       "ticker": "GE",
@@ -1799,12 +1719,10 @@
       "filename": "outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2023_2024_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "expected_repo_path": "public/data/sec_narrative_drift_lab/GE/outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2023_2024_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "request_url": "data/sec_narrative_drift_lab/GE/outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2023_2024_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
-      "present": false,
-      "valid": false,
-      "run_label": "",
-      "validation_reasons": [
-        "file not found"
-      ]
+      "present": true,
+      "valid": true,
+      "run_label": "2026-02-21_codex_ge_2023_2024_delta_brief",
+      "validation_reasons": []
     },
     {
       "ticker": "GE",
@@ -1843,12 +1761,10 @@
       "filename": "outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2023_2024_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "expected_repo_path": "public/data/sec_narrative_drift_lab/GE/outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2023_2024_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
       "request_url": "data/sec_narrative_drift_lab/GE/outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2023_2024_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-2026-02-21.json",
-      "present": false,
-      "valid": false,
-      "run_label": "",
-      "validation_reasons": [
-        "file not found"
-      ]
+      "present": true,
+      "valid": true,
+      "run_label": "2026-02-21_codex_ge_2023_2024_excerpt_picker",
+      "validation_reasons": []
     }
   ],
   "provenance": {
