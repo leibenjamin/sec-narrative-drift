@@ -19,6 +19,7 @@ This Lab shows how risk disclosures change year-over-year using deterministic de
 - LLM layer is reproducible: users can rerun from published focuspack inputs and thread-starter instructions.
 - Provenance is campaign-aware (`model_provider`, `model_name`, required day-precise `run_label`) to support future model-vs-model comparisons.
 - A/B compare is populated by two complete campaigns (`ChatGPT 5.2-Thinking (Extended Thinking)` and `GPT-5.3-Codex (Extra High Reasoning, Agent Mode)`), both strict-valid (`42/42`).
+- Current operational remainder: post-UX incognito screenshot closeout for three A/B compare states.
 
 ## Suggested walkthrough sequence
 1. Deterministic baseline:

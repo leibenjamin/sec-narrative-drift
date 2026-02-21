@@ -24,6 +24,8 @@ type MethodCardProps = {
     instructionsAsset?: string
   } | null
   isLoading?: boolean
+  isExpanded?: boolean
+  onToggleExpanded?: () => void
   emptyMessage?: string
   debugPath?: string | null
   debugInfo?: {
@@ -88,6 +90,8 @@ export default function MethodCard({
   output,
   llmCampaign = null,
   isLoading,
+  isExpanded = true,
+  onToggleExpanded,
   emptyMessage,
   debugPath,
   debugInfo,
@@ -211,65 +215,92 @@ export default function MethodCard({
           <h3 className="text-lg font-semibold text-slate-100">{title}</h3>
           {description ? <p className="text-xs text-slate-400">{description}</p> : null}
         </div>
-        <div className="flex flex-wrap gap-3 text-xs text-slate-300">
+        <div className="flex flex-wrap items-center gap-3 text-sm text-slate-300">
           <span>drift {formatMetric(output?.metrics.drift_score)}</span>
           <span>confidence {formatMetric(output?.metrics.confidence)}</span>
           <span>coverage {formatMetric(output?.metrics.coverage)}</span>
+          {onToggleExpanded ? (
+            <button
+              type="button"
+              onClick={onToggleExpanded}
+              className="rounded-md border border-white/20 bg-slate-900/60 px-2 py-1 text-xs text-slate-100 transition hover:border-white/40"
+            >
+              {isExpanded ? "Collapse" : "Expand"}
+            </button>
+          ) : null}
         </div>
       </header>
 
-      {isLoading ? (
-        <p className="mt-3 text-xs text-slate-400">Loading detector output...</p>
-      ) : null}
-
-      {!isLoading && !output ? (
-        <div className="mt-3 space-y-2 rounded-md border border-amber-400/30 bg-amber-400/10 p-3">
-          <p className="text-xs font-semibold text-amber-100">Missing artifact</p>
-          <p className="text-xs text-slate-200">{emptyMessage ?? "No lab output yet."}</p>
-          {debugInfo?.expectedPath ? (
-            <p className="break-all text-[11px] text-slate-200">
-              Expected path: <span className="text-slate-100">{debugInfo.expectedPath}</span>
+      {!isExpanded ? (
+        <div className="mt-3 rounded-md border border-white/10 bg-slate-900/35 p-3">
+          {isLoading ? (
+            <p className="text-xs text-slate-300">Loading detector output...</p>
+          ) : !output ? (
+            <p className="text-xs text-amber-200">
+              Missing artifact. Expand for expected path, requested URL, and copyable debug details.
             </p>
-          ) : null}
-          {debugInfo?.requestedUrl ? (
-            <p className="break-all text-[11px] text-slate-300">
-              Requested URL: <span className="text-slate-100">{debugInfo.requestedUrl}</span>
+          ) : (
+            <p className="text-xs text-slate-300">
+              Collapsed. Expand to inspect evidence, warnings, and reproducibility/debug details.
             </p>
-          ) : null}
-          {debugInfo?.errorText ? (
-            <p className="text-[11px] text-amber-100">{debugInfo.errorText}</p>
-          ) : null}
-          {debugPath ? <p className="break-all text-[11px] text-slate-300">{debugPath}</p> : null}
-          {debugInfo ? (
-            <div className="flex items-center gap-2">
-              <button
-                type="button"
-                onClick={handleCopyDebug}
-                className="rounded-md border border-white/20 bg-slate-900/60 px-2 py-1 text-[11px] text-slate-100 transition hover:border-white/40"
-              >
-                Copy debug info
-              </button>
-              {copyState === "copied" ? (
-                <span className="text-[11px] text-emerald-300">Copied.</span>
-              ) : null}
-              {copyState === "failed" ? (
-                <span className="text-[11px] text-rose-300">Copy failed.</span>
-              ) : null}
-            </div>
-          ) : null}
+          )}
         </div>
       ) : null}
 
-      {llmCard ? (
-        <div className="mt-3 rounded-md border border-sky-300/30 bg-sky-400/10 p-3 text-xs text-slate-100">
+      {isExpanded ? (
+        <>
+          {isLoading ? (
+            <p className="mt-3 text-xs text-slate-400">Loading detector output...</p>
+          ) : null}
+
+          {!isLoading && !output ? (
+            <div className="mt-3 space-y-2 rounded-md border border-amber-400/30 bg-amber-400/10 p-3">
+              <p className="text-xs font-semibold text-amber-100">Missing artifact</p>
+              <p className="text-xs text-slate-200">{emptyMessage ?? "No lab output yet."}</p>
+              {debugInfo?.expectedPath ? (
+                <p className="break-all text-xs text-slate-200">
+                  Expected path: <span className="text-slate-100">{debugInfo.expectedPath}</span>
+                </p>
+              ) : null}
+              {debugInfo?.requestedUrl ? (
+                <p className="break-all text-xs text-slate-300">
+                  Requested URL: <span className="text-slate-100">{debugInfo.requestedUrl}</span>
+                </p>
+              ) : null}
+              {debugInfo?.errorText ? (
+                <p className="text-xs text-amber-100">{debugInfo.errorText}</p>
+              ) : null}
+              {debugPath ? <p className="break-all text-xs text-slate-300">{debugPath}</p> : null}
+              {debugInfo ? (
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={handleCopyDebug}
+                    className="rounded-md border border-white/20 bg-slate-900/60 px-2 py-1 text-xs text-slate-100 transition hover:border-white/40"
+                  >
+                    Copy debug info
+                  </button>
+                  {copyState === "copied" ? (
+                    <span className="text-xs text-emerald-300">Copied.</span>
+                  ) : null}
+                  {copyState === "failed" ? (
+                    <span className="text-xs text-rose-300">Copy failed.</span>
+                  ) : null}
+                </div>
+              ) : null}
+            </div>
+          ) : null}
+
+          {llmCard ? (
+            <div className="mt-3 rounded-md border border-sky-300/30 bg-sky-400/10 p-3 text-xs text-slate-100">
           <div className="text-xs font-semibold uppercase tracking-wide text-sky-200">
             Run this output yourself
           </div>
-          <p className="mt-1 text-[11px] text-slate-200">
-            This detector is precomputed offline. Use the same input and starter text to rerun in
-            ChatGPT Desktop for reproducible outputs.
-          </p>
-          <div className="mt-2 space-y-1 text-[11px] text-slate-200">
+              <p className="mt-1 text-xs text-slate-200">
+                This detector is precomputed offline. Use the same input and starter text to rerun in
+                ChatGPT Desktop for reproducible outputs.
+              </p>
+              <div className="mt-2 space-y-1 text-xs text-slate-200">
             <div>
               Model:{" "}
               <span className="text-slate-100">
@@ -303,112 +334,114 @@ export default function MethodCard({
               <span className="text-slate-100">{debugInfo?.expectedPath ?? "not available"}</span>
             </div>
           </div>
-          <div className="mt-3 flex flex-wrap items-center gap-2">
-            <button
-              type="button"
-              onClick={handleCopyThreadStarter}
-              disabled={!threadStarterText}
-              className="rounded-md border border-white/20 bg-slate-900/60 px-2 py-1 text-[11px] text-slate-100 transition hover:border-white/40 disabled:cursor-not-allowed disabled:opacity-50"
-            >
-              Copy thread starter
-            </button>
-            <button
-              type="button"
-              onClick={handleCopyProjectInstructions}
-              disabled={!projectInstructions}
-              className="rounded-md border border-white/20 bg-slate-900/60 px-2 py-1 text-[11px] text-slate-100 transition hover:border-white/40 disabled:cursor-not-allowed disabled:opacity-50"
-            >
-              Copy project instructions
-            </button>
-            {copyStarterState === "copied" ? (
-              <span className="text-[11px] text-emerald-300">Starter copied.</span>
-            ) : null}
-            {copyStarterState === "failed" ? (
-              <span className="text-[11px] text-rose-300">Starter copy failed.</span>
-            ) : null}
-            {copyInstructionsState === "copied" ? (
-              <span className="text-[11px] text-emerald-300">Instructions copied.</span>
-            ) : null}
-            {copyInstructionsState === "failed" ? (
-              <span className="text-[11px] text-rose-300">Instructions copy failed.</span>
-            ) : null}
-          </div>
-          {projectInstructionsError ? (
-            <div className="mt-2 text-[11px] text-amber-100">
-              Instruction text fallback in use: {projectInstructionsError}
-            </div>
-          ) : null}
-        </div>
-      ) : null}
-
-      {output ? (
-        <div className="mt-4 space-y-4">
-          {warnings.length ? (
-            <div className="rounded-md border border-amber-400/30 bg-amber-400/10 p-3 text-xs text-amber-100">
-              Warnings: {warnings.join(", ")}
-            </div>
-          ) : null}
-
-          {rankedItems.length ? (
-            <div>
-              <div className="text-xs uppercase tracking-wide text-slate-400">Top ranked</div>
-              <div className="mt-2 flex flex-wrap gap-2">
-                {rankedItems.slice(0, 8).map((item) => (
-                  <span
-                    key={item.label}
-                    className="rounded-full border border-white/10 bg-white/5 px-2 py-1 text-xs text-slate-200"
-                  >
-                    {item.label} | {item.score.toFixed(2)}
-                  </span>
-                ))}
+              <div className="mt-3 flex flex-wrap items-center gap-2">
+                <button
+                  type="button"
+                  onClick={handleCopyThreadStarter}
+                  disabled={!threadStarterText}
+                  className="rounded-md border border-white/20 bg-slate-900/60 px-2 py-1 text-xs text-slate-100 transition hover:border-white/40 disabled:cursor-not-allowed disabled:opacity-50"
+                >
+                  Copy thread starter
+                </button>
+                <button
+                  type="button"
+                  onClick={handleCopyProjectInstructions}
+                  disabled={!projectInstructions}
+                  className="rounded-md border border-white/20 bg-slate-900/60 px-2 py-1 text-xs text-slate-100 transition hover:border-white/40 disabled:cursor-not-allowed disabled:opacity-50"
+                >
+                  Copy project instructions
+                </button>
+                {copyStarterState === "copied" ? (
+                  <span className="text-xs text-emerald-300">Starter copied.</span>
+                ) : null}
+                {copyStarterState === "failed" ? (
+                  <span className="text-xs text-rose-300">Starter copy failed.</span>
+                ) : null}
+                {copyInstructionsState === "copied" ? (
+                  <span className="text-xs text-emerald-300">Instructions copied.</span>
+                ) : null}
+                {copyInstructionsState === "failed" ? (
+                  <span className="text-xs text-rose-300">Instructions copy failed.</span>
+                ) : null}
               </div>
+              {projectInstructionsError ? (
+                <div className="mt-2 text-xs text-amber-100">
+                  Instruction text fallback in use: {projectInstructionsError}
+                </div>
+              ) : null}
             </div>
           ) : null}
 
-          {topRisers.length || topFallers.length ? (
-            <div className="grid gap-3 md:grid-cols-2">
-              <div>
-                <div className="text-xs uppercase tracking-wide text-slate-400">Risers</div>
-                <ul className="mt-2 space-y-1 text-xs text-slate-200">
-                  {topRisers.slice(0, 6).map((item) => (
-                    <li key={item.label}>{item.label}</li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <div className="text-xs uppercase tracking-wide text-slate-400">Fallers</div>
-                <ul className="mt-2 space-y-1 text-xs text-slate-200">
-                  {topFallers.slice(0, 6).map((item) => (
-                    <li key={item.label}>{item.label}</li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          ) : null}
+          {output ? (
+            <div className="mt-4 space-y-4">
+              {warnings.length ? (
+                <div className="rounded-md border border-amber-400/30 bg-amber-400/10 p-3 text-xs text-amber-100">
+                  Warnings: {warnings.join(", ")}
+                </div>
+              ) : null}
 
-          <div>
-            <div className="text-xs uppercase tracking-wide text-slate-400">Evidence</div>
-            <div className="mt-2">
-              {isDeltaBrief && deltaBriefText ? (
+              {rankedItems.length ? (
                 <div>
-                  <div className="text-xs uppercase tracking-wide text-slate-400">Delta brief</div>
-                  <div className="mt-2 whitespace-pre-wrap rounded-md border border-white/10 bg-white/5 p-3 text-xs text-slate-200">
-                    {deltaBriefText}
+                  <div className="text-xs uppercase tracking-wide text-slate-400">Top ranked</div>
+                  <div className="mt-2 flex flex-wrap gap-2">
+                    {rankedItems.slice(0, 8).map((item) => (
+                      <span
+                        key={item.label}
+                        className="rounded-full border border-white/10 bg-white/5 px-2 py-1 text-xs text-slate-200"
+                      >
+                        {item.label} | {item.score.toFixed(2)}
+                      </span>
+                    ))}
                   </div>
                 </div>
               ) : null}
 
-              {isExcerptPicker ? (
-                <LabExcerptPickerPanel output={output} />
-              ) : (
-                <EvidenceStack
-                  evidence={output.evidence ?? []}
-                  fallbackMessage="No evidence blocks for this detector yet."
-                />
-              )}
+              {topRisers.length || topFallers.length ? (
+                <div className="grid gap-3 md:grid-cols-2">
+                  <div>
+                    <div className="text-xs uppercase tracking-wide text-slate-400">Risers</div>
+                    <ul className="mt-2 space-y-1 text-xs text-slate-200">
+                      {topRisers.slice(0, 6).map((item) => (
+                        <li key={item.label}>{item.label}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div>
+                    <div className="text-xs uppercase tracking-wide text-slate-400">Fallers</div>
+                    <ul className="mt-2 space-y-1 text-xs text-slate-200">
+                      {topFallers.slice(0, 6).map((item) => (
+                        <li key={item.label}>{item.label}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              ) : null}
+
+              <div>
+                <div className="text-xs uppercase tracking-wide text-slate-400">Evidence</div>
+                <div className="mt-2">
+                  {isDeltaBrief && deltaBriefText ? (
+                    <div>
+                      <div className="text-xs uppercase tracking-wide text-slate-400">Delta brief</div>
+                      <div className="mt-2 whitespace-pre-wrap rounded-md border border-white/10 bg-white/5 p-3 text-xs text-slate-200">
+                        {deltaBriefText}
+                      </div>
+                    </div>
+                  ) : null}
+
+                  {isExcerptPicker ? (
+                    <LabExcerptPickerPanel output={output} />
+                  ) : (
+                    <EvidenceStack
+                      evidence={output.evidence ?? []}
+                      fallbackMessage="No evidence blocks for this detector yet."
+                    />
+                  )}
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
+          ) : null}
+        </>
       ) : null}
     </section>
   )

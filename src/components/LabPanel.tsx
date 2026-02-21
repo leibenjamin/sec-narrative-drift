@@ -55,7 +55,7 @@ const DETECTOR_CATALOG = [
     label: "Winnowing fingerprints",
     description: "Shared fingerprint spans between years.",
     group: "structure",
-    defaultSelected: false,
+    defaultSelected: true,
   },
   {
     id: "det_structure_artifacts_v1",
@@ -69,14 +69,14 @@ const DETECTOR_CATALOG = [
     label: "LLM delta brief (precomputed)",
     description: "Precomputed narrative summary.",
     group: "llm",
-    defaultSelected: false,
+    defaultSelected: true,
   },
   {
     id: "det_llm_excerpt_picker_v1",
     label: "LLM excerpt picker (precomputed)",
     description: "Precomputed excerpt selection.",
     group: "llm",
-    defaultSelected: false,
+    defaultSelected: true,
   },
 ]
 
@@ -90,12 +90,19 @@ const TECHNICAL_DEEP_DIVE_PRESET = [
   "det_minhash_boilerplate_v1",
   "det_winnowing_fingerprint_v1",
   "det_structure_artifacts_v1",
+  "det_llm_delta_brief_v1",
+  "det_llm_excerpt_picker_v1",
 ]
 const DETECTOR_GROUP_ORDER = [
   { id: "core", label: "Core drift methods" },
   { id: "structure", label: "Reuse and structure methods" },
   { id: "llm", label: "LLM sidecars (precomputed)" },
 ] as const
+const METHOD_GROUP_SECTION_IDS: Record<(typeof DETECTOR_GROUP_ORDER)[number]["id"], string> = {
+  core: "lab-core-methods",
+  structure: "lab-structure-methods",
+  llm: "lab-llm-methods",
+}
 const LENS_PREFERENCE_ORDER: LabCleaningLens[] = [
   "deboilerplated",
   "raw",
@@ -281,6 +288,10 @@ export default function LabPanel({
   const [llmCampaignOptions, setLlmCampaignOptions] = useState<LabLlmCampaign[]>([])
   const [selectedLlmCampaignA, setSelectedLlmCampaignA] = useState<string>("")
   const [selectedLlmCampaignB, setSelectedLlmCampaignB] = useState<string>("")
+  const [presetStatus, setPresetStatus] = useState<{ message: string; token: number } | null>(
+    null
+  )
+  const [expandedCards, setExpandedCards] = useState<Record<string, boolean>>({})
 
   // Track previous values for render-time state adjustments (React recommended pattern)
   const [prevTicker, setPrevTicker] = useState(ticker)
@@ -360,6 +371,16 @@ export default function LabPanel({
       llmB: selectedLlmCampaignB,
     })
   }, [onSelectedLlmCampaignsChange, selectedLlmCampaignA, selectedLlmCampaignB])
+
+  useEffect(() => {
+    if (!presetStatus) return
+    const timeoutId = window.setTimeout(() => {
+      setPresetStatus(null)
+    }, 2500)
+    return () => {
+      window.clearTimeout(timeoutId)
+    }
+  }, [presetStatus])
 
   const selectedCase = useMemo(() => {
     if (!selectedCaseKey) return null
@@ -766,6 +787,33 @@ export default function LabPanel({
     return cards
   }, [selectedDetectors, llmCampaignOptions, selectedLlmCampaignA, selectedLlmCampaignB])
 
+  const methodCardsKey = methodCards.map((card) => card.cardKey).join("|")
+  const [prevMethodCardsKey, setPrevMethodCardsKey] = useState(methodCardsKey)
+  if (prevMethodCardsKey !== methodCardsKey) {
+    setPrevMethodCardsKey(methodCardsKey)
+    setExpandedCards((previous) => {
+      const next: Record<string, boolean> = {}
+      for (let index = 0; index < methodCards.length; index += 1) {
+        const card = methodCards[index]
+        next[card.cardKey] =
+          Object.prototype.hasOwnProperty.call(previous, card.cardKey)
+            ? previous[card.cardKey]
+            : index < 2
+      }
+      const previousKeys = Object.keys(previous)
+      const nextKeys = Object.keys(next)
+      if (previousKeys.length !== nextKeys.length) {
+        return next
+      }
+      for (const key of nextKeys) {
+        if (previous[key] !== next[key]) {
+          return next
+        }
+      }
+      return previous
+    })
+  }
+
   const llmCompareRows = useMemo(() => {
     const rows: Array<{
       detectorId: string
@@ -813,6 +861,14 @@ export default function LabPanel({
     }))
   }, [])
 
+  const groupedMethodCards = useMemo(() => {
+    return DETECTOR_GROUP_ORDER.map((group) => ({
+      ...group,
+      sectionId: METHOD_GROUP_SECTION_IDS[group.id],
+      cards: methodCards.filter((card) => card.group === group.id),
+    })).filter((group) => group.cards.length > 0)
+  }, [methodCards])
+
   const selectedAvailableDetectorCount = useMemo(() => {
     let count = 0
     for (const detectorId of selectedDetectors) {
@@ -828,15 +884,68 @@ export default function LabPanel({
     : "none"
 
   const handleApplyPreset = (presetDetectorIds: string[], preferredLens: LabCleaningLens) => {
-    setSelectedDetectors(presetDetectorIds)
-    if (availableLenses.includes(preferredLens)) {
-      setLens(preferredLens)
+    const nextDetectors = [...new Set(presetDetectorIds)]
+    setSelectedDetectors([...nextDetectors])
+    let nextLens = lens
+    if (preferredLens === "deboilerplated") {
+      if (availableLenses.includes("deboilerplated")) {
+        nextLens = "deboilerplated"
+      } else {
+        const fallbackLens = pickPreferredAvailableLens(availableLenses)
+        if (fallbackLens) {
+          nextLens = fallbackLens
+        }
+      }
+      setLens(nextLens)
+      setPresetStatus({
+        message: `Applied 30-second executive read preset: ${nextDetectors.length} methods, lens=${nextLens}`,
+        token: Date.now(),
+      })
+      return
     }
+    if (!availableLenses.includes(nextLens)) {
+      const fallbackLens = pickPreferredAvailableLens(availableLenses)
+      if (fallbackLens) {
+        nextLens = fallbackLens
+        setLens(nextLens)
+      }
+    }
+    setPresetStatus({
+      message: `Applied Technical deep dive preset: ${nextDetectors.length} methods`,
+      token: Date.now(),
+    })
   }
 
   const handleReloadOutputs = () => {
     clearLabOutputCache()
     setReloadNonce((previous) => previous + 1)
+  }
+
+  const handleExpandAllCards = () => {
+    setExpandedCards((previous) => {
+      const next: Record<string, boolean> = { ...previous }
+      for (const card of methodCards) {
+        next[card.cardKey] = true
+      }
+      return next
+    })
+  }
+
+  const handleCollapseAllCards = () => {
+    setExpandedCards((previous) => {
+      const next: Record<string, boolean> = { ...previous }
+      for (const card of methodCards) {
+        next[card.cardKey] = false
+      }
+      return next
+    })
+  }
+
+  const handleToggleCardExpanded = (cardKey: string) => {
+    setExpandedCards((previous) => ({
+      ...previous,
+      [cardKey]: !previous[cardKey],
+    }))
   }
 
   const buildDebugPayload = (
@@ -912,19 +1021,19 @@ export default function LabPanel({
 
       <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
         <div className="rounded-lg border border-white/10 bg-slate-900/50 p-3">
-          <div className="text-[11px] uppercase tracking-wide text-slate-400">Selected pair</div>
+          <div className="text-xs uppercase tracking-wide text-slate-400">Selected pair</div>
           <div className="mt-1 text-sm font-semibold text-slate-100">{selectedPairLabel}</div>
         </div>
         <div className="rounded-lg border border-white/10 bg-slate-900/50 p-3">
-          <div className="text-[11px] uppercase tracking-wide text-slate-400">Lens</div>
+          <div className="text-xs uppercase tracking-wide text-slate-400">Lens</div>
           <div className="mt-1 text-sm font-semibold text-slate-100">{lens}</div>
         </div>
         <div className="rounded-lg border border-white/10 bg-slate-900/50 p-3">
-          <div className="text-[11px] uppercase tracking-wide text-slate-400">Methods selected</div>
+          <div className="text-xs uppercase tracking-wide text-slate-400">Methods selected</div>
           <div className="mt-1 text-sm font-semibold text-slate-100">{selectedDetectors.length}</div>
         </div>
         <div className="rounded-lg border border-white/10 bg-slate-900/50 p-3">
-          <div className="text-[11px] uppercase tracking-wide text-slate-400">Selected methods available</div>
+          <div className="text-xs uppercase tracking-wide text-slate-400">Selected methods available</div>
           <div className="mt-1 text-sm font-semibold text-slate-100">
             {selectedAvailableDetectorCount}/{selectedDetectors.length}
           </div>
@@ -1012,22 +1121,53 @@ export default function LabPanel({
               <button
                 type="button"
                 onClick={() => handleApplyPreset(EXECUTIVE_READ_PRESET, "deboilerplated")}
-                className="rounded-md border border-sky-300/30 bg-sky-400/10 px-2 py-1 text-[11px] text-sky-100 transition hover:border-sky-200/60"
+                className="rounded-md border border-sky-300/30 bg-sky-400/10 px-2 py-1 text-xs text-sky-100 transition hover:border-sky-200/60"
               >
                 30-second executive read
               </button>
               <button
                 type="button"
                 onClick={() => handleApplyPreset(TECHNICAL_DEEP_DIVE_PRESET, lens)}
-                className="rounded-md border border-white/20 bg-slate-900/60 px-2 py-1 text-[11px] text-slate-100 transition hover:border-white/40"
+                className="rounded-md border border-white/20 bg-slate-900/60 px-2 py-1 text-xs text-slate-100 transition hover:border-white/40"
               >
-                Technical deep dive
+                Technical deep dive preset
+              </button>
+              <button
+                type="button"
+                onClick={handleExpandAllCards}
+                className="rounded-md border border-white/20 bg-slate-900/60 px-2 py-1 text-xs text-slate-100 transition hover:border-white/40"
+              >
+                Expand all
+              </button>
+              <button
+                type="button"
+                onClick={handleCollapseAllCards}
+                className="rounded-md border border-white/20 bg-slate-900/60 px-2 py-1 text-xs text-slate-100 transition hover:border-white/40"
+              >
+                Collapse all
               </button>
             </div>
+            <div className="mt-2 flex flex-wrap items-center gap-3 text-xs text-slate-300">
+              <a className="underline decoration-white/30 underline-offset-2 hover:text-slate-100" href="#lab-agreement">
+                Agreement
+              </a>
+              <a className="underline decoration-white/30 underline-offset-2 hover:text-slate-100" href="#lab-core-methods">
+                Core methods
+              </a>
+              <a className="underline decoration-white/30 underline-offset-2 hover:text-slate-100" href="#lab-structure-methods">
+                Structure methods
+              </a>
+              <a className="underline decoration-white/30 underline-offset-2 hover:text-slate-100" href="#lab-llm-compare">
+                LLM compare
+              </a>
+            </div>
+            {presetStatus ? (
+              <p className="mt-2 text-xs text-emerald-300">{presetStatus.message}</p>
+            ) : null}
             <div className="mt-3 space-y-3">
               {detectorGroups.map((group) => (
                 <div key={group.id} className="rounded-md border border-white/10 bg-slate-950/30 p-3">
-                  <div className="text-[11px] uppercase tracking-wide text-slate-400">{group.label}</div>
+                  <div className="text-xs uppercase tracking-wide text-slate-400">{group.label}</div>
                   <div className="mt-2 flex flex-wrap gap-2">
                     {group.detectors.map((detector) => {
                       const isAvailable = availableDetectorSet.has(detector.id)
@@ -1094,7 +1234,7 @@ export default function LabPanel({
         </div>
       </div>
 
-      <div className="space-y-4">
+      <div id="lab-agreement" className="space-y-4">
         <div>
           <h3 className="text-lg font-semibold text-slate-100">Agreement</h3>
           <p className="text-xs text-slate-400">
@@ -1143,7 +1283,7 @@ export default function LabPanel({
       </div>
 
       {llmCompareRows.length ? (
-        <div className="rounded-xl border border-sky-300/25 bg-sky-400/10 p-4">
+        <div id="lab-llm-compare" className="rounded-xl border border-sky-300/25 bg-sky-400/10 p-4">
           <h3 className="text-sm font-semibold text-sky-100">LLM A/B quick diff</h3>
           <p className="mt-1 text-[11px] text-slate-200">
             Deltas are Model A minus Model B for the selected pair/lens.
@@ -1181,34 +1321,45 @@ export default function LabPanel({
         </div>
       ) : null}
 
-      <div className="grid gap-4">
-        {methodCards.map((detector) => (
-          <MethodCard
-            key={detector.cardKey}
-            detectorId={detector.id}
-            title={
-              detector.campaign
-                ? `${detector.label} - ${detector.campaign.display_name}`
-                : detector.label
-            }
-            description={detector.description}
-            llmCampaign={
-              detector.campaign
-                ? {
-                    campaignId: detector.campaign.campaign_id,
-                    campaignDisplayName: detector.campaign.display_name,
-                    modelProvider: detector.campaign.model_provider,
-                    modelName: detector.campaign.model_name,
-                    instructionsAsset: detector.campaign.instructions_asset,
+      <div className="space-y-6">
+        {groupedMethodCards.map((group) => (
+          <section key={group.id} id={group.sectionId} className="space-y-3">
+            <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-300">
+              {group.label}
+            </h3>
+            <div className="grid gap-4">
+              {group.cards.map((detector) => (
+                <MethodCard
+                  key={detector.cardKey}
+                  detectorId={detector.id}
+                  title={
+                    detector.campaign
+                      ? `${detector.label} - ${detector.campaign.display_name}`
+                      : detector.label
                   }
-                : null
-            }
-            output={outputs[detector.cardKey] ?? null}
-            debugPath={outputDebugPaths[detector.cardKey] ?? null}
-            debugInfo={outputDebugInfo[detector.cardKey] ?? null}
-            isLoading={isLoadingOutputs}
-            emptyMessage="No lab output for this detector/lens yet."
-          />
+                  description={detector.description}
+                  llmCampaign={
+                    detector.campaign
+                      ? {
+                          campaignId: detector.campaign.campaign_id,
+                          campaignDisplayName: detector.campaign.display_name,
+                          modelProvider: detector.campaign.model_provider,
+                          modelName: detector.campaign.model_name,
+                          instructionsAsset: detector.campaign.instructions_asset,
+                        }
+                      : null
+                  }
+                  output={outputs[detector.cardKey] ?? null}
+                  debugPath={outputDebugPaths[detector.cardKey] ?? null}
+                  debugInfo={outputDebugInfo[detector.cardKey] ?? null}
+                  isLoading={isLoadingOutputs}
+                  isExpanded={expandedCards[detector.cardKey] ?? false}
+                  onToggleExpanded={() => handleToggleCardExpanded(detector.cardKey)}
+                  emptyMessage="No lab output for this detector/lens yet."
+                />
+              ))}
+            </div>
+          </section>
         ))}
       </div>
     </section>

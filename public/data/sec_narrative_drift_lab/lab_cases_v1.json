@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated_at": "2026-02-21T21:39:57Z",
+  "updated_at": "2026-02-21T23:09:27Z",
   "notes": [
     "Generated deterministically from scanned lab outputs.",
     "Output links preserve canonical ticker-local outputs paths, including track slug segments when present."
@@ -2226,8 +2226,8 @@
     }
   ],
   "provenance": {
-    "build_utc": "2026-02-21T21:39:57Z",
-    "git_commit": "5db6b1103ab2314fdfe552f3f9bae55a5264b1b1",
+    "build_utc": "2026-02-21T23:09:27Z",
+    "git_commit": "98c4e558c08045b9dcdbd561acc3a8f2055b7f79",
     "script_version": "lab_build_cases_registry_v1.py@v2+0de09730bb",
     "inputs": {
       "tickers": "NVDA,KO,WM,GE",

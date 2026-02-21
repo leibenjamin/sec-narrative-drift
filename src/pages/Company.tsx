@@ -151,18 +151,23 @@ export default function Company() {
             </Link>
           </div>
 
-          <div className="grid gap-3 rounded-xl border border-white/10 bg-slate-900/45 p-4 md:grid-cols-2">
+          <div className="grid gap-3 rounded-xl border border-white/10 bg-slate-900/45 p-4 md:grid-cols-3">
             <div className="rounded-md border border-sky-300/25 bg-sky-400/10 p-3">
-              <div className="text-[11px] uppercase tracking-wide text-sky-100">30-second read</div>
-              <p className="mt-1 text-xs text-slate-100">
-                Start on deboilerplated lens with log-odds + JSD, then confirm with agreement.
+              <div className="text-xs uppercase tracking-wide text-sky-100">What changed</div>
+              <p className="mt-1 text-sm text-slate-100">
+                Compare adjacent years to see which risk themes intensified, faded, or stayed stable.
               </p>
             </div>
             <div className="rounded-md border border-white/10 bg-slate-950/35 p-3">
-              <div className="text-[11px] uppercase tracking-wide text-slate-300">Technical traceability</div>
-              <p className="mt-1 text-xs text-slate-200">
-                Every card maps to static artifact paths. Missing files surface explicit expected path
-                and debug payload.
+              <div className="text-xs uppercase tracking-wide text-slate-300">Why this matters</div>
+              <p className="mt-1 text-sm text-slate-200">
+                The same detectors and case controls make it easy to contrast company narratives and model choices side by side.
+              </p>
+            </div>
+            <div className="rounded-md border border-emerald-300/20 bg-emerald-400/10 p-3">
+              <div className="text-xs uppercase tracking-wide text-emerald-100">How confident</div>
+              <p className="mt-1 text-sm text-slate-100">
+                Confidence comes from deterministic baselines plus explicit evidence, provenance, and path-level debug states.
               </p>
             </div>
           </div>
