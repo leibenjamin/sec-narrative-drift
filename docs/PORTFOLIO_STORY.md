@@ -1,7 +1,7 @@
 # Portfolio Story: SEC Narrative Drift Lab
 
 ## One-line pitch
-This Lab shows how risk disclosures change year-over-year using deterministic detectors, then layers optional precomputed LLM summaries as an offline artifact.
+This Lab shows how risk disclosures change year-over-year using deterministic detectors, then layers offline precomputed LLM campaigns for side-by-side model comparison.
 
 ## What to demo first (30 seconds)
 1. Open a showcase company page (company pages are now Lab-only).
@@ -15,9 +15,10 @@ This Lab shows how risk disclosures change year-over-year using deterministic de
 - Runtime is deterministic static JSON only.
 - No runtime LLM/ML calls.
 - SEC text is treated as untrusted and rendered as plain text nodes (no HTML injection APIs).
-- Canonical output contract is stable: `outputs/<detector_id>/<filename>.json`.
+- Canonical output contract is stable and track-aware: `outputs/<detector_id>/<track_slug>/lab_<...>__<track_slug>.json`.
 - LLM layer is reproducible: users can rerun from published focuspack inputs and thread-starter instructions.
-- Provenance is model-aware (`model_provider`, `model_name`, required `run_label`) to support future model-vs-model comparisons.
+- Provenance is campaign-aware (`model_provider`, `model_name`, required day-precise `run_label`) to support future model-vs-model comparisons.
+- A/B compare is populated by two complete campaigns (`ChatGPT 5.2-Thinking (Extended Thinking)` and `GPT-5.3-Codex (Extra High Reasoning, Agent Mode)`), both strict-valid (`42/42`).
 
 ## Suggested walkthrough sequence
 1. Deterministic baseline:
@@ -27,13 +28,15 @@ This Lab shows how risk disclosures change year-over-year using deterministic de
 3. Agreement lens:
    - Show `det_rbo_agreement_v1` matrix and explain detector concordance.
 4. Optional LLM layer:
-   - Turn on `det_llm_delta_brief_v1` / `det_llm_excerpt_picker_v1`.
+   - Turn on `det_llm_delta_brief_v1` / `det_llm_excerpt_picker_v1` and compare `llmA` vs `llmB`.
+   - Call out quick-diff strip metrics (confidence, evidence count, citation/evidence overlap behavior).
    - If artifacts are missing, point to explicit path-aware missing state.
 
 ## Operational evidence to mention
 - `reports/portfolio_readiness_lab.md` (deterministic gate: GO).
 - `reports/lab_raw_prereq_audit.md` (RAW eligibility and coverage).
 - `reports/lab_llm_run_manifest.md` (complete roster + expected LLM artifact paths).
+- `reports/lab_llm_codex_quality_audit.md` (Codex quality-lock gates for diversity/consistency).
 
 ## FAQ-ready answers
 - Q: "Why deterministic-first?"

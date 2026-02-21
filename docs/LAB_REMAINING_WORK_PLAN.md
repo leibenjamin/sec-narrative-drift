@@ -1,5 +1,5 @@
 ﻿# SEC Narrative Drift Lab - Remaining Work Plan (Codex Execution Doc)
-Last updated: 2026-02-21
+Last updated: 2026-02-21 (closeout sync)
 Scope: deterministic pipeline + React UI Lab-first product flow
 Showcase tickers: NVDA, KO, WM, GE
 Core time window: 2019-2024 adjacent year pairs (include most recent even if low signal); 2024-2025 only if locally available
@@ -56,8 +56,8 @@ Core time window: 2019-2024 adjacent year pairs (include most recent even if low
   - ticker/path containment hardening added in frontend loader + strict validator,
   - CSP tightened to remove `style-src 'unsafe-inline'` after style-class refactor,
   - lint scope now excludes local-only archival artifacts (`bundles/**`, `attic/**`, `handoff/**`),
-- hash-aware `SCRIPT_VERSION` applied to active workflow scripts.
-- Phase 7 (multi-LLM path/campaign refactor) in progress:
+  - hash-aware `SCRIPT_VERSION` applied to active workflow scripts.
+- Phase 7 complete (multi-LLM path/campaign refactor + Codex quality lock):
   - single source-of-truth track/campaign registry added: `scripts/lab_output_tracks.py`,
   - hard-cut output migration complete to canonical track-aware paths:
     `.../outputs/<detector_id>/<track_slug>/lab_<...>__<track_slug>.json`,
@@ -70,11 +70,20 @@ Core time window: 2019-2024 adjacent year pairs (include most recent even if low
     - `public/data/sec_narrative_drift_lab/lab_llm_variants_v1.json`
     - `public/data/sec_narrative_drift_lab/lab_method_tracks_v1.json`,
   - Lab UI now supports campaign-aware LLM A/B compare selectors with query params (`llmA`, `llmB`), campaign metadata, and quick diff strip.
+  - Codex campaign artifacts regenerated and quality-uplifted across all 42 targets via `scripts/lab_generate_codex_campaign_outputs.py`,
+  - strict Codex validation clean: `targets=42`, `missing=0`, `invalid=0`, `present_flag_mismatch=0`,
+  - strict ChatGPT validation remains clean on migrated paths: `targets=42`, `missing=0`, `invalid=0`, `present_flag_mismatch=0`,
+  - variants index confirms both campaigns complete and valid (`84/84 present`, `84/84 valid`),
+  - non-blocking quality audit added and passing:
+    - `reports/lab_llm_codex_quality_audit.md`
+    - delta template uniqueness: `20/21`
+    - evidence-why uniqueness ratio: `0.464`
+    - confidence levels present: `0.50`, `0.75`.
 
 Remaining human/manual work (post-hardening):
-- run the Codex campaign (`openai_gpt53codex_xhigh_agent_2026-02-21`) for all 42 targets using the new run pack and strict validator loop,
-- publish screenshot verification for A/B compare states on deployed site,
-- finalize docs closeout (`docs/lab/06_llm_model_comparison_workflow.md`, checklist completion).
+- publish screenshot verification for A/B compare states on deployed site (incognito),
+- optional editorial fine-tuning passes for Codex prose style (not contract-blocking),
+- finalize checklist screenshot row after captures are attached.
 
 ---
 
