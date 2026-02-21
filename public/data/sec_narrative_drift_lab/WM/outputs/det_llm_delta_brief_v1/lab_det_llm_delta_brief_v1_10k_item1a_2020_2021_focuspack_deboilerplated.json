@@ -1,91 +1,79 @@
 {
-  "lab_schema_version": "1.0",
-  "detector_id": "det_llm_delta_brief_v1",
-  "cleaning_lens": "deboilerplated",
-  "source_id": "edgar",
-  "ticker": "WM",
-  "section": "10k_item1a",
-  "year_from": 2020,
-  "year_to": 2021,
-  "artifacts": {
-    "delta_brief": "Between 2020 and 2021, WM continues to emphasize cybersecurity and supply_chain as core risk exposure (2020 para 88; 2021 para 12). The earlier filing is relatively more anchored in cybersecurity, while the later filing adds clearer weight to supply_chain (2020 para 23; 2021 para 34). Across both years, management frames these items as operational and financial execution pressures rather than isolated one-off events (2020 para 88; 2021 para 34). This comparison should be read as directional because the lens is a focuspack subset and not the full Item 1A text (2020 para 23; 2021 para 12). Overall, the narrative indicates continuity with selective shifts in emphasis instead of a full thematic reset (2020 para 88; 2021 para 12)."
-  },
-  "evidence": [
-    {
-      "year": 2020,
-      "paragraph_idx": 87,
-      "snippet": "Further, as the Company pursues its strategy to grow through acquisitions, including our recent acquisition of Advanced Disposal, and to pursue new initiatives that improve our operations and cost structure, the Company is also expanding and improving its information technologies,",
-      "why": "Supports 2020 risk narrative context for cybersecurity, security.",
-      "highlights": [
-        "cybersecurity",
-        "security",
-        "cost_pressure"
-      ]
-    },
-    {
-      "year": 2020,
-      "paragraph_idx": 22,
-      "snippet": "The policies set forth under the previous U.S. administration, for example, included substantial changes to foreign trade policy and generally were in favor of reducing regulation and corporate taxation.",
-      "why": "Supports 2020 risk narrative context for regulation, tax_policy.",
-      "highlights": [
-        "regulation",
-        "tax_policy"
-      ]
-    },
-    {
-      "year": 2020,
-      "paragraph_idx": 18,
-      "snippet": "From time to time, the U.S. Congress has considered legislation authorizing states to adopt regulations, restrictions, or taxes on the importation of out-of-state or out-of-jurisdiction waste.",
-      "why": "Supports 2020 risk narrative context for regulation, tax_policy.",
-      "highlights": [
-        "regulation",
-        "tax_policy"
-      ]
-    },
-    {
-      "year": 2021,
-      "paragraph_idx": 11,
-      "snippet": "Risk Factors — Market disruption, including labor shortages and supply chain constraints, and macroeconomic pressures, including the heightened pace of inflation, have adversely impacted our business and results of operations .) Additionally, the market for employees that serve on our digital team is highly competitive.",
-      "why": "Supports 2021 risk narrative context for supply_chain, artificial_intelligence.",
-      "highlights": [
-        "supply_chain",
-        "artificial_intelligence",
-        "inflation"
-      ]
-    },
-    {
-      "year": 2021,
-      "paragraph_idx": 33,
-      "snippet": "We cannot currently predict the impact of any such vaccine requirements on our workforce, although implementation may result in our inability to perform or compete for certain contracts, as well as significant cost, operational disruption, attrition and difficulty securing future labor needs in the already-constrained labor market.",
-      "why": "Supports 2021 risk narrative context for artificial_intelligence, cost_pressure.",
-      "highlights": [
-        "artificial_intelligence",
-        "cost_pressure",
-        "labor"
-      ]
-    },
-    {
-      "year": 2021,
-      "paragraph_idx": 4,
-      "snippet": "We may not be able to maintain cost savings achieved through optimization efforts, due to inflationary cost pressure or otherwise.",
-      "why": "Supports 2021 risk narrative context for artificial_intelligence, inflation.",
-      "highlights": [
-        "artificial_intelligence",
-        "inflation",
-        "cost_pressure"
-      ]
-    }
-  ],
-  "metrics": {
-    "drift_score": null,
-    "confidence": 0.5,
-    "coverage": 0.272727,
-    "warnings": [
-      "Focuspack is a subset; verify in full compare pane.",
-      "Low signal: focuspack coverage is limited for this pair."
-    ]
-  },
-  "provenance": {
-    "input_file": "inputs/WM_2020_2021_focuspack_deboilerplated.json"
-  }
+"lab_schema_version": "1.0",
+"detector_id": "det_llm_delta_brief_v1",
+"cleaning_lens": "deboilerplated",
+"source_id": "edgar",
+"ticker": "WM",
+"section": "10k_item1a",
+"year_from": 2020,
+"year_to": 2021,
+"artifacts": {
+"delta_brief": "Change: In 2020, the risk set is anchored in execution risk from the Advanced Disposal deal and the immediate operating shock of COVID-19 restrictions that drove volume declines and cash-flow pressure (2020 para 4; 2020 para 37). In 2021, the narrative pivots toward sustaining optimization benefits under inflation, managing workforce and contract friction from vaccination mandates, and absorbing disruption from major back-office transformation (2021 para 5; 2021 para 31; 2021 para 72). The acquisition theme remains, but it is reframed from initial integration uncertainty to the possibility that late-stage integration still fails to preserve anticipated synergies (2020 para 4; 2021 para 6). Drivers: As pandemic conditions evolve, operational risk shifts from lost volumes to the prospect of attrition, compliance friction, and cost inflation that can erode savings and constrain execution (2020 para 37; 2021 para 31; 2021 para 5). In parallel, WM’s scaling technology footprint increases both exposure and dependency: 2020 flags rising cybersecurity exposure from IT expansion, while 2021 foregrounds execution risk in a multi-year ERP/HCM rollout that must integrate across systems and processes (2020 para 88; 2021 para 72). Across both years, management bandwidth is the amplifying mechanism, with integration and transformation work raising the consequence of external shocks and internal execution slips (2020 para 4; 2021 para 72). Caveat: Focuspack selection is trigger-term driven and may omit other material risks or mitigating context, so treat this drift as directional until validated against the full 10-K compare view. The apparent shift can also reflect reorganization of disclosures rather than a true change in underlying exposure, especially where themes persist but move to different sub-factors."
+},
+"evidence": [
+{
+"year": 2020,
+"paragraph_idx": 3,
+"snippet": "We may not realize the strategic benefits and cost synergies that are anticipated from our acquisition of Advanced Disposal Services, Inc. (“Advanced Disposal”), and we may encounter difficulties integrating Advanced Disposal’s operations and systems that could impact the effectiveness of our internal controls over financial reporting.",
+"why": "Establishes the 2020 core mechanism: large-scale acquisition integration may fail to deliver synergies and can impair control effectiveness, creating operational and reporting risk.",
+"highlights": ["M&A integration execution"]
+},
+{
+"year": 2020,
+"paragraph_idx": 36,
+"snippet": "During 2020 and continuing into 2021, federal, state and local governments throughout North America have imposed varying degrees of restriction on social and commercial activity to promote social distancing in an effort to slow the spread of COVID-19.",
+"why": "Pins the near-term shock driver in 2020: pandemic restrictions reduce activity levels, setting up downstream volume and cash flow pressure.",
+"highlights": ["COVID-19 operating restrictions"]
+},
+{
+"year": 2020,
+"paragraph_idx": 87,
+"snippet": "the Company is also expanding and improving its information technologies, resulting in a larger technological presence and corresponding exposure to cybersecurity risk.",
+"why": "Shows a structural risk layer emerging alongside growth initiatives: expanding IT footprint increases the attack surface and raises cybersecurity exposure.",
+"highlights": ["Cybersecurity exposure"]
+},
+{
+"year": 2021,
+"paragraph_idx": 4,
+"snippet": "We may not be able to maintain cost savings achieved through optimization efforts, due to inflationary cost pressure or otherwise.",
+"why": "Introduces a 2021 macro-to-operations linkage: inflation can directly unwind prior optimization gains, turning savings into a durability risk.",
+"highlights": ["Inflation cost pressure"]
+},
+{
+"year": 2021,
+"paragraph_idx": 5,
+"snippet": "As we complete the integration of our prior acquisition of Advanced Disposal Services, Inc. (“Advanced Disposal”), we may not continue to realize the strategic benefits and cost synergies anticipated.",
+"why": "Reframes the acquisition risk in 2021: the threat shifts from integration difficulty to sustaining realized benefits as integration reaches completion.",
+"highlights": ["Synergy retention risk"]
+},
+{
+"year": 2021,
+"paragraph_idx": 30,
+"snippet": "In September 2021, President Biden issued an executive order requiring all employers with U.S. government contracts to ensure that their U.S.-based employees, contractors and subcontractors that work on or in support of U.S. government contracts, with some exceptions, to be fully vaccinated against COVID-19.",
+"why": "Adds a distinct 2021 constraint channel: external mandates can affect workforce availability and ability to perform or compete for government-linked contracts.",
+"highlights": ["COVID-19 vaccine mandate"]
+},
+{
+"year": 2021,
+"paragraph_idx": 71,
+"snippet": "We are in the process of a complex, multi-year implementation of a new enterprise resource planning and human capital management (“ERP/HCM”) system.",
+"why": "Signals transformation execution risk in 2021: multi-year ERP/HCM implementation raises operational disruption and control risks during system transition.",
+"highlights": ["ERP/HCM implementation"]
+}
+],
+"metrics": {
+"drift_score": null,
+"confidence": 0.5,
+"coverage": 0.3731478853250071,
+"warnings": [
+"Focuspack is a subset; verify in full compare pane.",
+"Some material risk themes may be missing because the focuspack is selected using trigger terms rather than full-section coverage."
+]
+},
+"provenance": {
+"input_file": "inputs/WM_2020_2021_focuspack_deboilerplated.json",
+"model_provider": "openai",
+"model_name": "ChatGPT 5.2-Thinking (Extended Thinking)",
+"run_label": "2026-02_wm_2020_2021"
+}
 }

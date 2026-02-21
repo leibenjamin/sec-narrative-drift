@@ -30,29 +30,42 @@ Zero-touch policy:
 - In `provenance`, do not output extra keys beyond `input_file`, `model_provider`, `model_name`, `run_label`.
 - `paragraph_idx` must use FULL indices via `focuspack_meta.selected_prev_indices` and `focuspack_meta.selected_curr_indices`.
 - Snippets must be verbatim substrings from mapped paragraphs and `<=350` chars.
+- Why `<=350`: this campaign treats snippet length as a reproducibility/UX constraint so outputs stay comparable across operators and runs.
+- If mapped paragraph length is `>350`, do **not** copy the full paragraph; select a contiguous verbatim substring (recommended `220-320` chars, hard cap `350`) that preserves the risk mechanism.
+- Do not add synthetic ellipses or edits to snippets.
 - `highlights` must be present and non-empty for every evidence block.
 - `metrics.confidence` must be one of `0.25`, `0.50`, `0.75`.
 - `metrics.warnings` must include: `"Focuspack is a subset; verify in full compare pane."`
 - If signal is weak, include one conservative warning in `metrics.warnings`.
+- Warning entries must be complete statements; placeholder tails like `Input file citation:`, `Source:`, `Input source:` are invalid.
 - Delta brief citations must use ASCII-only format: `"YYYY para NN"`.
 - Never use pilcrow-style citation symbols or mojibake variants; use only `"YYYY para NN"`.
 - Before final output, self-check JSON syntax: no unescaped `"` inside string values and no trailing commas.
 - Mandatory pre-output quality gate:
   - every `snippet` is a contiguous verbatim substring of the mapped FULL-index paragraph,
   - every `snippet` is `<=350` chars,
+  - if mapped paragraph is `>350`, snippet is a strict contiguous trimmed substring `<=350` (recommended `220-320` chars),
+  - evidence blocks are sorted by `(year, paragraph_idx)` ascending,
+  - no duplicate evidence blocks share the same `(year, paragraph_idx)`,
   - every evidence block has non-empty `highlights`,
+  - every `highlights` list contains `1-3` values,
+  - every delta citation (`YYYY para NN`) maps to an evidence block (`year=YYYY`, `paragraph_idx=NN-1`),
+  - for excerpt picker, `selected_prev` and `selected_curr` exactly equal deduped evidence index sets for each year,
+  - for excerpt picker, `selected_prev` and `selected_curr` are sorted ascending,
   - if any check fails, revise before output.
 
 Detector-specific rules:
 - `det_llm_delta_brief_v1`:
   - `artifacts` must contain only `delta_brief`.
   - Include `>=2` inline citations in `"YYYY para NN"` format.
-  - Keep evidence to `3-8` blocks and target `>=2` blocks per year when signal allows.
+  - Keep evidence to `4-8` blocks with `>=2` blocks per year.
+  - `delta_brief` must contain non-empty sections in this order: `Change:`, `Drivers:`, `Caveat:`.
+  - Use mechanism-level, analyst-deep language tied directly to cited evidence.
 - `det_llm_excerpt_picker_v1`:
   - `artifacts` must contain only `selected_prev` and `selected_curr`.
-  - `selected_prev` and `selected_curr` must be deduped FULL indices.
-  - Each list must include all evidence `paragraph_idx` values for its year.
-  - Target evidence `6-10` balanced blocks.
+  - `selected_prev` and `selected_curr` must be deduped FULL indices and sorted ascending.
+  - Each list must exactly equal evidence `paragraph_idx` values for its year (no extras).
+  - Keep evidence to `6-10` blocks with `>=3` blocks per year.
 
 ## File Upload Strategy
 - `prompt_templates_showcase.md` is optional reference material only.

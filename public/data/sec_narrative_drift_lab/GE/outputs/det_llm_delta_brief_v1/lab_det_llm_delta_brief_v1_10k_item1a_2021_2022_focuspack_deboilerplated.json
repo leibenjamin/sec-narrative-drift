@@ -1,92 +1,109 @@
 {
-  "lab_schema_version": "1.0",
-  "detector_id": "det_llm_delta_brief_v1",
-  "cleaning_lens": "deboilerplated",
-  "source_id": "edgar",
-  "ticker": "GE",
-  "section": "10k_item1a",
-  "year_from": 2021,
-  "year_to": 2022,
-  "artifacts": {
-    "delta_brief": "Between 2021 and 2022, GE continues to emphasize supply_chain as core risk exposure (2021 para 23; 2022 para 23). The earlier filing is relatively more anchored in supply_chain, while the later filing adds clearer weight to supply_chain (2021 para 22; 2022 para 25). Across both years, management frames these items as operational and financial execution pressures rather than isolated one-off events (2021 para 23; 2022 para 25). This comparison should be read as directional because the lens is a focuspack subset and not the full Item 1A text (2021 para 22; 2022 para 23). Overall, the narrative indicates continuity with selective shifts in emphasis instead of a full thematic reset (2021 para 23; 2022 para 23)."
-  },
-  "evidence": [
-    {
-      "year": 2021,
-      "paragraph_idx": 22,
-      "snippet": "We also have experienced, and may continue experiencing, lower demand and volume for products and services, customer requests for potential payment deferrals or other contract modifications, supply chain under-liquidation, delays of deliveries and the achievement of other billing milestones,",
-      "why": "Supports 2021 risk narrative context for supply_chain, demand.",
-      "highlights": [
-        "supply_chain",
-        "demand",
-        "artificial_intelligence"
-      ]
-    },
-    {
-      "year": 2021,
-      "paragraph_idx": 21,
-      "snippet": "Across all of our businesses, we have experienced and expect to continue to experience operational challenges from the need to protect employee health and safety, site shutdowns, workplace disruptions and restrictions on the movement of people, raw materials and goods, both at our own facilities and at those of our customers and suppliers,",
-      "why": "Supports 2021 risk narrative context for supply_chain, artificial_intelligence.",
-      "highlights": [
-        "supply_chain",
-        "artificial_intelligence",
-        "inflation"
-      ]
-    },
-    {
-      "year": 2021,
-      "paragraph_idx": 25,
-      "snippet": "The ultimate impact of the COVID-19 pandemic on our operations and financial performance depends on many factors that are not within our control, including, but not limited, to: the severity and duration of the pandemic, including the impact of coronavirus variants and resurgences;",
-      "why": "Supports 2021 risk narrative context for artificial_intelligence, compliance.",
-      "highlights": [
-        "artificial_intelligence",
-        "compliance"
-      ]
-    },
-    {
-      "year": 2022,
-      "paragraph_idx": 22,
-      "snippet": "They are also affected by local and regional economic environments, supply chain constraints and policies in the U.S. and other markets that we serve, including factors such as continuing inflationary pressures in many markets, continuing increases in interest rates from recent historic lows, economic growth rates,",
-      "why": "Supports 2022 risk narrative context for supply_chain, artificial_intelligence.",
-      "highlights": [
-        "supply_chain",
-        "artificial_intelligence",
-        "inflation"
-      ]
-    },
-    {
-      "year": 2022,
-      "paragraph_idx": 24,
-      "snippet": "At the same time, Russia’s invasion of Ukraine and related political and economic consequences, such as sanctions and other measures imposed by the European Union, the U.S.",
-      "why": "Supports 2022 risk narrative context for supply_chain, artificial_intelligence.",
-      "highlights": [
-        "supply_chain",
-        "artificial_intelligence",
-        "sanctions"
-      ]
-    },
-    {
-      "year": 2022,
-      "paragraph_idx": 21,
-      "snippet": "Our operations and the execution of our business plans and strategies are subject to the effects of global economic trends, geopolitical risks and demand or supply shocks from events such as war or international conflict, a major terrorist attack, natural disasters or actual or threatened public health emergencies (such as COVID-19,",
-      "why": "Supports 2022 risk narrative context for supply_chain, demand.",
-      "highlights": [
-        "supply_chain",
-        "demand",
-        "geopolitics"
-      ]
-    }
-  ],
-  "metrics": {
-    "drift_score": null,
-    "confidence": 0.5,
-    "coverage": 0.228782,
-    "warnings": [
-      "Focuspack is a subset; verify in full compare pane.",
-      "Low signal: focuspack coverage is limited for this pair."
-    ]
-  },
-  "provenance": {
-    "input_file": "inputs/GE_2021_2022_focuspack_deboilerplated.json"
-  }
+"lab_schema_version": "1.0",
+"detector_id": "det_llm_delta_brief_v1",
+"cleaning_lens": "deboilerplated",
+"source_id": "edgar",
+"ticker": "GE",
+"section": "10k_item1a",
+"year_from": 2021,
+"year_to": 2022,
+"artifacts": {
+"delta_brief": "Change: In 2021 the separation story is framed as a planned three-way split, with risk centered on whether the transactions occur and on broad organizational disruption (2021 para 1, 2021 para 12). By 2022, HealthCare is treated as separated and the remaining work is described as a branded GE Vernova spin with explicit investment grade rating expectations, shifting the risk from strategic intent to financing and structure execution (2022 para 2). The 2022 excerpt set also elevates exogenous volatility, adding geopolitical shock pathways and macro instability as drivers of post-separation performance (2022 para 25). Drivers: The execution-mechanics list becomes more operationally specific in 2022, expanding from general management distraction and allocation concerns to concrete requirements like counterparty releases, transition service agreements, and standalone readiness that can directly interrupt contracting and delivery (2021 para 12, 2022 para 12). COVID exposure similarly narrows from a general recovery-stall narrative to a concentration risk tied to Aerospace’s weight in results, increasing sensitivity to air-traffic trajectories and customer health (2021 para 25, 2022 para 33). At the same time, 2021’s focuspack still highlights capital recycling via monetizing stakes such as Baker Hughes and AerCap, a theme not surfaced in the 2022 selected paragraphs as separation execution and macro risk take more page space (2021 para 53). Caveat: Focuspack is a subset of the full risk-factor section, so the apparent reprioritization may reflect selection and layout changes; verify the full compare pane before treating this as a comprehensive risk re-weighting."
+},
+"evidence": [
+{
+"year": 2021,
+"paragraph_idx": 0,
+"snippet": "In November 2021, we announced our plan to form three independent public companies from our (i) Aviation business, (ii) Healthcare business and (iii) combined Renewable Energy, Power and Digital businesses, in order to better position those businesses to deliver long-term growth and create value for customers, investors, and employees.",
+"why": "Baseline framing: the separation is still an announced plan, establishing the starting point for how execution, timing, and value-creation risks are described.",
+"highlights": [
+"separation plan",
+"three independent companies"
+]
+},
+{
+"year": 2021,
+"paragraph_idx": 11,
+"snippet": "diversion of management’s attention from ongoing business concerns and impact on the businesses of the Company; appropriately allocating assets and liabilities among the three companies, particularly given the staggered nature of the separation transactions; maintaining employee morale and retaining key management and ",
+"why": "2021 articulates separation risk at a high level (distraction, allocation, retention), which becomes a more detailed operational checklist in 2022.",
+"highlights": [
+"execution complexity",
+"management distraction"
+]
+},
+{
+"year": 2021,
+"paragraph_idx": 24,
+"snippet": "While our Aviation business is showing continued signs of recovery, the recently renewed intensity of the COVID-19 pandemic in many parts of the world could stall the recovery achieved to date and lead to future requests for payment deferrals, contract modifications, and similar actions across the aviation sector, which may lead to",
+"why": "Shows the 2021 COVID mechanism emphasizing recovery stalling and downstream commercial actions (deferrals/modifications) affecting Aviation cash flow and disputes.",
+"highlights": [
+"COVID-19 recovery stall",
+"customer deferrals"
+]
+},
+{
+"year": 2021,
+"paragraph_idx": 52,
+"snippet": "Over the past several years we have also been pursuing a variety of dispositions, including the ongoing monetization of our remaining equity ownership position in Baker Hughes and our plans to monetize our equity ownership position in AerCap.",
+"why": "Captures a 2021 risk emphasis on monetization and equity stake value realization, a theme not surfaced in the 2022 selected paragraphs as separation and macro risks dominate.",
+"highlights": [
+"portfolio monetization",
+"equity stake value"
+]
+},
+{
+"year": 2022,
+"paragraph_idx": 1,
+"snippet": "The GE HealthCare business separation was, and the planned GE Vernova business separation is expected to be, effected through spin-offs by GE that are intended to be tax-free for the Company and its shareholders for U.S. federal income tax purposes and with all three resulting companies having investment grade credit ratings.",
+"why": "Signals a shift from a generic three-way plan to executed/structured separations, adding financing and rating constraints as explicit completion conditions.",
+"highlights": [
+"HealthCare separation executed",
+"investment grade ratings"
+]
+},
+{
+"year": 2022,
+"paragraph_idx": 11,
+"snippet": "assigning customer contracts, guaranties and other contracts and instruments to each of the businesses, and obtaining releases from the counterparties to those contracts or beneficiaries of those instruments; providing financial or credit support for new business; assigning intellectual property to each of the businesses; establishing",
+"why": "Provides 2022’s more concrete operational failure modes (contract/guaranty assignment, releases, credit support, IP, transition readiness) that can directly disrupt operations during separation.",
+"highlights": [
+"counterparty releases",
+"standalone readiness"
+]
+},
+{
+"year": 2022,
+"paragraph_idx": 24,
+"snippet": "At the same time, Russia’s invasion of Ukraine and related political and economic consequences, such as sanctions and other measures imposed by the European Union, the U.S. and other countries and organizations in response, have also caused and may continue to cause disruption and instability in global markets, supply chains and industries",
+"why": "Introduces an explicit geopolitical shock channel, broadening the risk set beyond transaction mechanics to macro and supply-chain instability with potential reputational spillovers.",
+"highlights": [
+"geopolitical risk",
+"supply chain disruption"
+]
+},
+{
+"year": 2022,
+"paragraph_idx": 32,
+"snippet": "In particular, our Aerospace business constitutes a substantial portion of our financial results, and accordingly the adverse impacts that COVID-19 has had and may continue to have on commercial air traffic and operators, airlines, airframers, lessors, suppliers and other actors in the aviation sector more broadly are significant for GE.",
+"why": "Reframes pandemic exposure as a concentration risk tied to Aerospace’s weight in results, sharpening the mapping from aviation demand shocks to consolidated performance.",
+"highlights": [
+"Aerospace concentration",
+"COVID-19 aviation sector"
+]
+}
+],
+"metrics": {
+"drift_score": null,
+"confidence": 0.75,
+"coverage": null,
+"warnings": [
+"Focuspack is a subset; verify in full compare pane."
+]
+},
+"provenance": {
+"input_file": "inputs/GE_2021_2022_focuspack_deboilerplated.json",
+"model_provider": "openai",
+"model_name": "ChatGPT 5.2-Thinking (Extended Thinking)",
+"run_label": "2026-02_ge_item1a_delta_brief"
+}
 }

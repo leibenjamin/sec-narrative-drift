@@ -1,150 +1,133 @@
 {
-  "lab_schema_version": "1.0",
-  "detector_id": "det_llm_excerpt_picker_v1",
-  "cleaning_lens": "deboilerplated",
-  "source_id": "edgar",
-  "ticker": "NVDA",
-  "section": "10k_item1a",
-  "year_from": 2022,
-  "year_to": 2023,
-  "artifacts": {
-    "selected_prev": [
-      37,
-      128,
-      142,
-      129,
-      157
-    ],
-    "selected_curr": [
-      111,
-      194,
-      164,
-      96,
-      162
-    ]
-  },
-  "evidence": [
-    {
-      "year": 2022,
-      "paragraph_idx": 37,
-      "snippet": "• decrease in future demand, decrease in the cost of supply chain materials, or changes in the design of future products where we have entered into long-term supply commitments, including prepayments, particularly to the extent we are placing orders well in advance of our historical lead times and/or before the design of those products is final.",
-      "why": "Supports 2022 risk narrative context for supply_chain, demand.",
-      "highlights": [
-        "supply_chain",
-        "demand",
-        "artificial_intelligence"
-      ]
-    },
-    {
-      "year": 2022,
-      "paragraph_idx": 128,
-      "snippet": "For example, we may face increased compliance costs as a result of changes or increases in anti-competition legislation, regulation, administrative rule making, and enforcement activity resulting from growing public concern over concentration of economic power in corporations.",
-      "why": "Supports 2022 risk narrative context for regulation, compliance.",
-      "highlights": [
-        "regulation",
-        "compliance",
-        "competition"
-      ]
-    },
-    {
-      "year": 2022,
-      "paragraph_idx": 142,
-      "snippet": "Compliance with government regulation in the area of AI ethics may also increase the cost of related research and development.",
-      "why": "Supports 2022 risk narrative context for artificial_intelligence, regulation.",
-      "highlights": [
-        "artificial_intelligence",
-        "regulation",
-        "compliance"
-      ]
-    },
-    {
-      "year": 2022,
-      "paragraph_idx": 129,
-      "snippet": "For example, in response to the Russian invasion of Ukraine, the United States and certain allies have imposed economic sanctions and export control measures and may impose additional sanctions or export control measures, which have and could in the future result in, among other things,",
-      "why": "Supports 2022 risk narrative context for artificial_intelligence, sanctions.",
-      "highlights": [
-        "artificial_intelligence",
-        "sanctions",
-        "export_controls"
-      ]
-    },
-    {
-      "year": 2022,
-      "paragraph_idx": 157,
-      "snippet": "Concerns about our practices or the ultimate use of our products and services with regard to the collection, use, retention, security or disclosure of personal information or other privacy-related matters, including for use in AI, even if unfounded, could damage our reputation and adversely affect our operating results.",
-      "why": "Supports 2022 risk narrative context for security, artificial_intelligence.",
-      "highlights": [
-        "security",
-        "artificial_intelligence",
-        "privacy"
-      ]
-    },
-    {
-      "year": 2023,
-      "paragraph_idx": 111,
-      "snippet": "Breaches of our security measures, along with reported or perceived vulnerabilities or unapproved dissemination of proprietary information or sensitive or confidential data about us or third parties could expose us and the parties affected to a risk of loss or misuse of this information,",
-      "why": "Supports 2023 risk narrative context for security, regulation.",
-      "highlights": [
-        "security",
-        "regulation",
-        "litigation"
-      ]
-    },
-    {
-      "year": 2023,
-      "paragraph_idx": 194,
-      "snippet": "The California Privacy Rights Act of 2020, or CPRA, became operative in 2023, and restricts the use of certain categories of sensitive personal information; further restricts the use of cross-contextual advertising techniques; restricts the retention of personal information;",
-      "why": "Supports 2023 risk narrative context for artificial_intelligence, compliance.",
-      "highlights": [
-        "artificial_intelligence",
-        "compliance",
-        "privacy"
-      ]
-    },
-    {
-      "year": 2023,
-      "paragraph_idx": 164,
-      "snippet": "These restrictions impact exports of certain chips, as well as software, hardware, equipment, and technology used to develop, produce, and manufacture certain chips, to China (including Hong Kong and Macau) and Russia, and specifically impact our A100 and H100 integrated circuits,",
-      "why": "Supports 2023 risk narrative context for manufacturing, artificial_intelligence.",
-      "highlights": [
-        "manufacturing",
-        "artificial_intelligence",
-        "export_controls"
-      ]
-    },
-    {
-      "year": 2023,
-      "paragraph_idx": 96,
-      "snippet": "In general, if a product liability claim regarding any of our products is brought against us, even if the alleged damage is due to the actions or inactions of a third party, such as within our supply chain,",
-      "why": "Supports 2023 risk narrative context for supply_chain, artificial_intelligence.",
-      "highlights": [
-        "supply_chain",
-        "artificial_intelligence",
-        "cost_pressure"
-      ]
-    },
-    {
-      "year": 2023,
-      "paragraph_idx": 162,
-      "snippet": "Additional export restrictions may not only impact our ability to serve overseas markets, but also provoke responses from foreign governments, including China, that negatively impact our supply chain or our ability to provide our products and services to customers in all markets worldwide, which could also substantially reduce our revenue.",
-      "why": "Supports 2023 risk narrative context for supply_chain, artificial_intelligence.",
-      "highlights": [
-        "supply_chain",
-        "artificial_intelligence",
-        "export_controls"
-      ]
-    }
-  ],
-  "metrics": {
-    "drift_score": null,
-    "confidence": 0.5,
-    "coverage": 0.241379,
-    "warnings": [
-      "Focuspack is a subset; verify in full compare pane.",
-      "Low signal: focuspack coverage is limited for this pair."
-    ]
-  },
-  "provenance": {
-    "input_file": "inputs/NVDA_2022_2023_focuspack_deboilerplated.json"
-  }
+"lab_schema_version": "1.0",
+"detector_id": "det_llm_excerpt_picker_v1",
+"cleaning_lens": "deboilerplated",
+"source_id": "edgar",
+"ticker": "NVDA",
+"section": "10k_item1a",
+"year_from": 2022,
+"year_to": 2023,
+"artifacts": {
+"selected_prev": [
+30,
+88,
+129,
+141,
+157
+],
+"selected_curr": [
+11,
+44,
+109,
+163,
+193
+]
+},
+"evidence": [
+{
+"year": 2022,
+"paragraph_idx": 30,
+"snippet": "These conditions could lead to a significant mismatch between supply and demand, giving rise to product shortages or excess inventory.",
+"why": "Frames operational risk from volatile demand and constrained supply conditions, which can drive shortages or excess inventory and directly pressure results.",
+"highlights": [
+"supply-demand"
+]
+},
+{
+"year": 2022,
+"paragraph_idx": 88,
+"snippet": "For example, on February 23, 2022, we became aware of a security incident involving unauthorized access to our network by a group of independent criminal threat actors, not affiliated with any government or political cause.",
+"why": "Anchors cybersecurity exposure in a concrete incident, emphasizing that intrusions can disrupt operations and create downstream legal, financial, and reputational harm.",
+"highlights": [
+"cybersecurity"
+]
+},
+{
+"year": 2022,
+"paragraph_idx": 129,
+"snippet": "the United States and certain allies have imposed economic sanctions and export control measures and may impose additional sanctions or export control measures, which have and could in the future result in, among other things, severe or complete restrictions on exports to and other commerce and business dealings involving Russia, certain regions",
+"why": "Highlights geopolitical constraint risk where sanctions and export controls can restrict market access and disrupt commercial activity tied to affected regions or entities.",
+"highlights": [
+"export controls"
+]
+},
+{
+"year": 2022,
+"paragraph_idx": 141,
+"snippet": "if we enable or offer solutions that draw controversy due to their perceived or actual impact on society, or if we are unable to develop effective internal policies and frameworks relating to the responsible development and use of AI models and systems offered through our sales channels, we may experience brand or reputational harm, competitive",
+"why": "Connects AI adoption to governance and reputational liability, where controversy or weak internal frameworks can translate into competitive and legal downside.",
+"highlights": [
+"AI governance"
+]
+},
+{
+"year": 2022,
+"paragraph_idx": 157,
+"snippet": "Concerns about our practices or the ultimate use of our products and services with regard to the collection, use, retention, security or disclosure of personal information or other privacy-related matters, including for use in AI, even if unfounded, could damage our reputation and adversely affect our operating results.",
+"why": "Captures privacy risk as both a trust issue and an operating-results risk, including sensitivity around AI-related uses of personal information.",
+"highlights": [
+"privacy regulation"
+]
+},
+{
+"year": 2023,
+"paragraph_idx": 11,
+"snippet": "• Issues relating to the responsible use of our technologies, including AI, may result in reputational and financial harm and liability.",
+"why": "Keeps the AI responsibility theme explicitly in-scope year over year, tying responsible-use issues to financial and liability outcomes.",
+"highlights": [
+"AI governance"
+]
+},
+{
+"year": 2023,
+"paragraph_idx": 44,
+"snippet": "Our supply, which includes inventory on hand, purchase obligations and prepaid supply agreements, has grown significantly due to current supply chain conditions, complexity of our products, and recent reductions in demand.",
+"why": "Updates the supply-demand mechanism with balance-sheet and commitment detail, showing how demand reductions can strand prepaid supply and inventory.",
+"highlights": [
+"supply-demand"
+]
+},
+{
+"year": 2023,
+"paragraph_idx": 109,
+"snippet": "We must also continue to develop our security measures, ensure our suppliers have appropriate security measures in place, and continue to meet the evolving security requirements of our customers, applicable industry standards, and government regulations.",
+"why": "Extends cybersecurity exposure beyond internal controls to supplier posture and evolving regulatory and customer requirements, increasing compliance and execution burden.",
+"highlights": [
+"cybersecurity"
+]
+},
+{
+"year": 2023,
+"paragraph_idx": 163,
+"snippet": "During the third quarter of fiscal year 2023, the U.S. government, or USG, announced new export restrictions and export licensing requirements targeting China’s semiconductor and supercomputing industries.",
+"why": "Shows export-control risk becoming more specific and targeted, creating direct revenue and delivery constraints tied to regulated destinations and product classes.",
+"highlights": [
+"export controls"
+]
+},
+{
+"year": 2023,
+"paragraph_idx": 193,
+"snippet": "In the United States, federal, state and local authorities have enacted numerous data privacy and security laws, including for data breach notification, personal data privacy, and consumer protection.",
+"why": "Reinforces that privacy and data security risk is amplified by a growing and multi-layered regulatory environment, increasing compliance complexity and enforcement exposure.",
+"highlights": [
+"privacy regulation"
+]
+}
+],
+"metrics": {
+"drift_score": null,
+"confidence": 0.5,
+"coverage": 0.6946768589298123,
+"warnings": [
+"Focuspack is a subset; verify in full compare pane.",
+"Some excerpts are compact list items that may omit surrounding context present in the full filing."
+]
+},
+"provenance": {
+"input_file": "inputs/NVDA_2022_2023_focuspack_deboilerplated.json",
+"model_provider": "openai",
+"model_name": "ChatGPT 5.2-Thinking (Extended Thinking)",
+"run_label": "2026-02_nvda_2022_2023_excerpt_picker"
+}
 }

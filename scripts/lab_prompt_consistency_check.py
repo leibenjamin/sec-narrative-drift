@@ -10,7 +10,7 @@ from typing import Any, Optional
 
 from lab_script_version import build_script_version
 
-SCRIPT_VERSION = build_script_version(Path(__file__), "v2")
+SCRIPT_VERSION = build_script_version(Path(__file__), "v4")
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
@@ -74,6 +74,15 @@ def _assert_lines_equal(label: str, expected: list[str], actual: list[str]) -> N
     raise SystemExit(f"{label} mismatch:\n{diff}")
 
 
+def _assert_markers_present(label: str, text: str, markers: list[str]) -> None:
+    missing = [marker for marker in markers if marker not in text]
+    if missing:
+        raise SystemExit(
+            f"{label} missing required marker(s):\n"
+            + "\n".join(f"- {marker}" for marker in missing)
+        )
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description="Check prompt/template consistency across canonical emitters."
@@ -108,6 +117,16 @@ def build_parser() -> argparse.ArgumentParser:
             / "llm_project_instructions_v1.txt"
         ),
         help="Path to canonical public instructions text.",
+    )
+    parser.add_argument(
+        "--setup-doc",
+        default=str(REPO_ROOT / "docs" / "lab" / "04_chatgpt_project_setup.md"),
+        help="Path to docs/lab/04_chatgpt_project_setup.md.",
+    )
+    parser.add_argument(
+        "--contract-doc",
+        default=str(REPO_ROOT / "docs" / "lab" / "05_llm_reproducibility_contract.md"),
+        help="Path to docs/lab/05_llm_reproducibility_contract.md.",
     )
     return parser
 
@@ -152,6 +171,46 @@ def main(argv: Optional[list[str]] = None) -> int:
         _assert_lines_equal(
             "project_instructions_public", expected_instructions, actual_public_instructions
         )
+
+    setup_doc_path = Path(args.setup_doc)
+    if not setup_doc_path.is_absolute():
+        setup_doc_path = REPO_ROOT / setup_doc_path
+    contract_doc_path = Path(args.contract_doc)
+    if not contract_doc_path.is_absolute():
+        contract_doc_path = REPO_ROOT / contract_doc_path
+    if not setup_doc_path.exists():
+        raise SystemExit(f"Missing setup doc: {setup_doc_path}")
+    if not contract_doc_path.exists():
+        raise SystemExit(f"Missing reproducibility contract doc: {contract_doc_path}")
+
+    setup_doc_text = setup_doc_path.read_text(encoding="utf-8-sig")
+    _assert_markers_present(
+        "setup_doc",
+        setup_doc_text,
+        [
+            "exactly equal deduped evidence index sets for each year",
+            "sorted by `(year, paragraph_idx)` ascending",
+            "Change:`, `Drivers:`, `Caveat:`",
+            "4-8` blocks with `>=2` blocks per year",
+            "6-10` blocks with `>=3` blocks per year",
+            "recommended `220-320` chars, hard cap `350`",
+            "placeholder tails like `Input file citation:`, `Source:`, `Input source:` are invalid",
+        ],
+    )
+    contract_doc_text = contract_doc_path.read_text(encoding="utf-8-sig")
+    _assert_markers_present(
+        "repro_contract_doc",
+        contract_doc_text,
+        [
+            "exactly equal deduped evidence indices per year",
+            "sorted by `(year, paragraph_idx)` ascending",
+            "4-8` total with `>=2` per year",
+            "6-10` total with `>=3` per year",
+            "`Change:`, `Drivers:`, `Caveat:`",
+            "recommended `220-320` chars, hard cap `350`",
+            "placeholder tails like `Input file citation:`, `Source:`, `Input source:` are invalid",
+        ],
+    )
 
     sample_dir = Path(args.sample_out_dir)
     if sample_dir.exists():

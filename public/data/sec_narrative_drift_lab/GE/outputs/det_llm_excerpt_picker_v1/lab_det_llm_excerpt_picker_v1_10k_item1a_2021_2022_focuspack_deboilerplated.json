@@ -1,147 +1,144 @@
 {
-  "lab_schema_version": "1.0",
-  "detector_id": "det_llm_excerpt_picker_v1",
-  "cleaning_lens": "deboilerplated",
-  "source_id": "edgar",
-  "ticker": "GE",
-  "section": "10k_item1a",
-  "year_from": 2021,
-  "year_to": 2022,
-  "artifacts": {
-    "selected_prev": [
-      22,
-      21,
-      25,
-      16,
-      2
-    ],
-    "selected_curr": [
-      22,
-      24,
-      21,
-      23,
-      15
-    ]
-  },
-  "evidence": [
-    {
-      "year": 2021,
-      "paragraph_idx": 22,
-      "snippet": "We also have experienced, and may continue experiencing, lower demand and volume for products and services, customer requests for potential payment deferrals or other contract modifications, supply chain under-liquidation, delays of deliveries and the achievement of other billing milestones,",
-      "why": "Supports 2021 risk narrative context for supply_chain, demand.",
-      "highlights": [
-        "supply_chain",
-        "demand",
-        "artificial_intelligence"
-      ]
-    },
-    {
-      "year": 2021,
-      "paragraph_idx": 21,
-      "snippet": "Across all of our businesses, we have experienced and expect to continue to experience operational challenges from the need to protect employee health and safety, site shutdowns, workplace disruptions and restrictions on the movement of people, raw materials and goods, both at our own facilities and at those of our customers and suppliers,",
-      "why": "Supports 2021 risk narrative context for supply_chain, artificial_intelligence.",
-      "highlights": [
-        "supply_chain",
-        "artificial_intelligence",
-        "inflation"
-      ]
-    },
-    {
-      "year": 2021,
-      "paragraph_idx": 25,
-      "snippet": "The ultimate impact of the COVID-19 pandemic on our operations and financial performance depends on many factors that are not within our control, including, but not limited, to: the severity and duration of the pandemic, including the impact of coronavirus variants and resurgences;",
-      "why": "Supports 2021 risk narrative context for artificial_intelligence, compliance.",
-      "highlights": [
-        "artificial_intelligence",
-        "compliance"
-      ]
-    },
-    {
-      "year": 2021,
-      "paragraph_idx": 16,
-      "snippet": "In addition, the diversification of revenues, costs, and cash flows will diminish, such that each company’s results of operations, cash flows, working capital, effective tax rate, and financing requirements may be subject to increased volatility and its ability to fund capital expenditures and investments,",
-      "why": "Supports 2021 risk narrative context for tax_policy, cost_pressure.",
-      "highlights": [
-        "tax_policy",
-        "cost_pressure"
-      ]
-    },
-    {
-      "year": 2021,
-      "paragraph_idx": 2,
-      "snippet": "These separation transactions will be subject to the satisfaction of a number of customary conditions, including, among others, final approvals by GE’s Board of Directors, receipt of tax rulings in certain jurisdictions and/or tax opinions from external counsel, the filing with the SEC and effectiveness of Form 10 registration statements,",
-      "why": "Supports 2021 risk narrative context for artificial_intelligence, tax_policy.",
-      "highlights": [
-        "artificial_intelligence",
-        "tax_policy"
-      ]
-    },
-    {
-      "year": 2022,
-      "paragraph_idx": 22,
-      "snippet": "They are also affected by local and regional economic environments, supply chain constraints and policies in the U.S. and other markets that we serve, including factors such as continuing inflationary pressures in many markets, continuing increases in interest rates from recent historic lows, economic growth rates,",
-      "why": "Supports 2022 risk narrative context for supply_chain, artificial_intelligence.",
-      "highlights": [
-        "supply_chain",
-        "artificial_intelligence",
-        "inflation"
-      ]
-    },
-    {
-      "year": 2022,
-      "paragraph_idx": 24,
-      "snippet": "At the same time, Russia’s invasion of Ukraine and related political and economic consequences, such as sanctions and other measures imposed by the European Union, the U.S.",
-      "why": "Supports 2022 risk narrative context for supply_chain, artificial_intelligence.",
-      "highlights": [
-        "supply_chain",
-        "artificial_intelligence",
-        "sanctions"
-      ]
-    },
-    {
-      "year": 2022,
-      "paragraph_idx": 21,
-      "snippet": "Our operations and the execution of our business plans and strategies are subject to the effects of global economic trends, geopolitical risks and demand or supply shocks from events such as war or international conflict, a major terrorist attack, natural disasters or actual or threatened public health emergencies (such as COVID-19,",
-      "why": "Supports 2022 risk narrative context for supply_chain, demand.",
-      "highlights": [
-        "supply_chain",
-        "demand",
-        "geopolitics"
-      ]
-    },
-    {
-      "year": 2022,
-      "paragraph_idx": 23,
-      "snippet": "For example, ongoing inflationary pressures have caused and may continue to cause many of our material and labor costs to increase, which can adversely affect our profitability and cash flows, particularly when we are unable to increase customer contract values or pricing to offset those pressures.",
-      "why": "Supports 2022 risk narrative context for inflation, cost_pressure.",
-      "highlights": [
-        "inflation",
-        "cost_pressure",
-        "labor"
-      ]
-    },
-    {
-      "year": 2022,
-      "paragraph_idx": 15,
-      "snippet": "As a result, each company may be more vulnerable to global economic trends, geopolitical risks, demand or supply shocks, and changing market conditions, which could have a material adverse effect on its business, financial condition, cash flows and results of operations.",
-      "why": "Supports 2022 risk narrative context for supply_chain, demand.",
-      "highlights": [
-        "supply_chain",
-        "demand",
-        "geopolitics"
-      ]
-    }
-  ],
-  "metrics": {
-    "drift_score": null,
-    "confidence": 0.5,
-    "coverage": 0.228782,
-    "warnings": [
-      "Focuspack is a subset; verify in full compare pane.",
-      "Low signal: focuspack coverage is limited for this pair."
-    ]
-  },
-  "provenance": {
-    "input_file": "inputs/GE_2021_2022_focuspack_deboilerplated.json"
-  }
+"lab_schema_version": "1.0",
+"detector_id": "det_llm_excerpt_picker_v1",
+"cleaning_lens": "deboilerplated",
+"source_id": "edgar",
+"ticker": "GE",
+"section": "10k_item1a",
+"year_from": 2021,
+"year_to": 2022,
+"artifacts": {
+"selected_prev": [
+2,
+7,
+11,
+13,
+21
+],
+"selected_curr": [
+1,
+3,
+10,
+24,
+34
+]
+},
+"evidence": [
+{
+"year": 2021,
+"paragraph_idx": 2,
+"snippet": "These separation transactions will be subject to the satisfaction of a number of customary conditions, including, among others, final approvals by GE’s Board of Directors, receipt of tax rulings in certain jurisdictions and/or tax opinions from external counsel, the filing with the SEC and effectiveness of Form 10 registration statements,",
+"why": "Frames the separation as conditional on governance, regulatory and filing milestones, making execution timing and feasibility a core risk driver.",
+"highlights": [
+"separation",
+"execution risk"
+]
+},
+{
+"year": 2021,
+"paragraph_idx": 7,
+"snippet": "And, although we intend for the separation transactions to be tax-free to the Company’s shareholders for U.S. federal income tax purposes, we expect to incur non-U.S. cash taxes on the preparatory restructuring and may also incur non-cash tax expense including potential impairments of deferred tax assets.",
+"why": "Introduces tax friction and accounting impacts even if the transaction is structured as tax-free, signaling cash and earnings volatility around the restructuring.",
+"highlights": [
+"separation",
+"tax"
+]
+},
+{
+"year": 2021,
+"paragraph_idx": 11,
+"snippet": "Whether or not the separation transactions are completed, our businesses may face material challenges in connection with these transactions, including, without limitation the diversion of management’s attention from ongoing business concerns and impact on the businesses of the Company; appropriately allocating assets and liabilities",
+"why": "Emphasizes operational and execution drag (management distraction plus allocation complexity) that can impair performance even absent completion failure.",
+"highlights": [
+"separation",
+"management distraction"
+]
+},
+{
+"year": 2021,
+"paragraph_idx": 13,
+"snippet": "This poses risks in the form of personnel capacity constraints and institutional knowledge loss that could lead to missed performance or financial targets, loss of key personnel and harm to our reputation, and these risks are heightened with the additional interdependent actions that will be needed to complete the planned separation transactions.",
+"why": "Links restructuring activity to human-capital and institutional-knowledge loss, a mechanism that can cascade into missed targets and reputational damage during separation execution.",
+"highlights": [
+"separation",
+"workforce capacity"
+]
+},
+{
+"year": 2021,
+"paragraph_idx": 21,
+"snippet": "site shutdowns, workplace disruptions and restrictions on the movement of people, raw materials and goods, both at our own facilities and at those of our customers and suppliers, global supply chain disruptions and price inflation.",
+"why": "Captures the pandemic-era operating model shock: constrained labor and logistics plus inflation, directly pressuring delivery, costs, and margins.",
+"highlights": [
+"COVID-19",
+"supply chain"
+]
+},
+{
+"year": 2022,
+"paragraph_idx": 1,
+"snippet": "The GE HealthCare business separation was, and the planned GE Vernova business separation is expected to be, effected through spin-offs by GE that are intended to be tax-free for the Company and its shareholders for U.S. federal income tax purposes and with all three resulting companies having investment grade credit ratings.",
+"why": "Updates the separation narrative with named entities and a tighter financing outcome (investment grade), raising the bar on capital structure and execution discipline.",
+"highlights": [
+"separation",
+"tax"
+]
+},
+{
+"year": 2022,
+"paragraph_idx": 3,
+"snippet": "A failure to satisfy required conditions, or disruptions in market conditions, could delay the completion of the GE Vernova separation transaction for a significant period of time or prevent it from occurring at all.",
+"why": "Adds market-conditions disruption as an explicit gating factor, broadening execution risk beyond internal milestones to external financing and volatility.",
+"highlights": [
+"separation",
+"market conditions"
+]
+},
+{
+"year": 2022,
+"paragraph_idx": 10,
+"snippet": "If either of the separation transactions were ultimately determined to be taxable, we would incur a significant tax liability, while the distributions to the Company’s shareholders would become taxable and the new independent companies might incur income tax liabilities as well.",
+"why": "Makes the downside of failed tax-free treatment concrete and multi-party, increasing perceived tail risk for both GE and shareholders.",
+"highlights": [
+"separation",
+"tax"
+]
+},
+{
+"year": 2022,
+"paragraph_idx": 24,
+"snippet": "At the same time, Russia’s invasion of Ukraine and related political and economic consequences, such as sanctions and other measures imposed by the European Union, the U.S. and other countries and organizations in response, have also caused and may continue to cause disruption and instability in global markets, supply chains and industries",
+"why": "Introduces an acute geopolitical shock channel that propagates through markets and supply chains, extending the macro risk frame beyond COVID-era disruptions.",
+"highlights": [
+"geopolitical",
+"supply chain"
+]
+},
+{
+"year": 2022,
+"paragraph_idx": 34,
+"snippet": "Industry participants’ measures in response to these dynamics could lead to future requests for payment deferrals, contract modifications, and similar actions across the aviation sector, which may lead to additional charges, impairments and other adverse financial impacts, or to customer disputes.",
+"why": "Keeps COVID-19 tied to revenue-quality and credit-like risks (deferrals, modifications, disputes), highlighting how shocks translate into charges and impairment pressure.",
+"highlights": [
+"COVID-19",
+"customer deferrals"
+]
+}
+],
+"metrics": {
+"drift_score": null,
+"confidence": 0.5,
+"coverage": 0.5806815025155098,
+"warnings": [
+"Focuspack is a subset; verify in full compare pane.",
+"Excerpts emphasize separation execution, tax posture, and macro shocks; other risk domains may be present in the full filing.",
+"Input file is available here: ."
+]
+},
+"provenance": {
+"input_file": "inputs/GE_2021_2022_focuspack_deboilerplated.json",
+"model_provider": "openai",
+"model_name": "ChatGPT 5.2-Thinking (Extended Thinking)",
+"run_label": "2026-02_ge_excerpt_picker"
+}
 }

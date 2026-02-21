@@ -1,93 +1,93 @@
 {
-  "lab_schema_version": "1.0",
-  "detector_id": "det_llm_delta_brief_v1",
-  "cleaning_lens": "deboilerplated",
-  "source_id": "edgar",
-  "ticker": "NVDA",
-  "section": "10k_item1a",
-  "year_from": 2022,
-  "year_to": 2023,
-  "artifacts": {
-    "delta_brief": "Between 2022 and 2023, NVDA continues to emphasize supply_chain and security as core risk exposure (2022 para 38; 2023 para 112). The earlier filing is relatively more anchored in supply_chain, while the later filing adds clearer weight to security (2022 para 129; 2023 para 195). Across both years, management frames these items as operational and financial execution pressures rather than isolated one-off events (2022 para 38; 2023 para 195). This comparison should be read as directional because the lens is a focuspack subset and not the full Item 1A text (2022 para 129; 2023 para 112). Overall, the narrative indicates continuity with selective shifts in emphasis instead of a full thematic reset (2022 para 38; 2023 para 112)."
-  },
-  "evidence": [
-    {
-      "year": 2022,
-      "paragraph_idx": 37,
-      "snippet": "• decrease in future demand, decrease in the cost of supply chain materials, or changes in the design of future products where we have entered into long-term supply commitments, including prepayments, particularly to the extent we are placing orders well in advance of our historical lead times and/or before the design of those products is final.",
-      "why": "Supports 2022 risk narrative context for supply_chain, demand.",
-      "highlights": [
-        "supply_chain",
-        "demand",
-        "artificial_intelligence"
-      ]
-    },
-    {
-      "year": 2022,
-      "paragraph_idx": 128,
-      "snippet": "For example, we may face increased compliance costs as a result of changes or increases in anti-competition legislation, regulation, administrative rule making, and enforcement activity resulting from growing public concern over concentration of economic power in corporations.",
-      "why": "Supports 2022 risk narrative context for regulation, compliance.",
-      "highlights": [
-        "regulation",
-        "compliance",
-        "competition"
-      ]
-    },
-    {
-      "year": 2022,
-      "paragraph_idx": 142,
-      "snippet": "Compliance with government regulation in the area of AI ethics may also increase the cost of related research and development.",
-      "why": "Supports 2022 risk narrative context for artificial_intelligence, regulation.",
-      "highlights": [
-        "artificial_intelligence",
-        "regulation",
-        "compliance"
-      ]
-    },
-    {
-      "year": 2023,
-      "paragraph_idx": 111,
-      "snippet": "Breaches of our security measures, along with reported or perceived vulnerabilities or unapproved dissemination of proprietary information or sensitive or confidential data about us or third parties could expose us and the parties affected to a risk of loss or misuse of this information,",
-      "why": "Supports 2023 risk narrative context for security, regulation.",
-      "highlights": [
-        "security",
-        "regulation",
-        "litigation"
-      ]
-    },
-    {
-      "year": 2023,
-      "paragraph_idx": 194,
-      "snippet": "The California Privacy Rights Act of 2020, or CPRA, became operative in 2023, and restricts the use of certain categories of sensitive personal information; further restricts the use of cross-contextual advertising techniques; restricts the retention of personal information;",
-      "why": "Supports 2023 risk narrative context for artificial_intelligence, compliance.",
-      "highlights": [
-        "artificial_intelligence",
-        "compliance",
-        "privacy"
-      ]
-    },
-    {
-      "year": 2023,
-      "paragraph_idx": 164,
-      "snippet": "These restrictions impact exports of certain chips, as well as software, hardware, equipment, and technology used to develop, produce, and manufacture certain chips, to China (including Hong Kong and Macau) and Russia, and specifically impact our A100 and H100 integrated circuits,",
-      "why": "Supports 2023 risk narrative context for manufacturing, artificial_intelligence.",
-      "highlights": [
-        "manufacturing",
-        "artificial_intelligence",
-        "export_controls"
-      ]
-    }
-  ],
-  "metrics": {
-    "drift_score": null,
-    "confidence": 0.5,
-    "coverage": 0.241379,
-    "warnings": [
-      "Focuspack is a subset; verify in full compare pane.",
-      "Low signal: focuspack coverage is limited for this pair."
-    ]
-  },
-  "provenance": {
-    "input_file": "inputs/NVDA_2022_2023_focuspack_deboilerplated.json"
-  }
+"lab_schema_version": "1.0",
+"detector_id": "det_llm_delta_brief_v1",
+"cleaning_lens": "deboilerplated",
+"source_id": "edgar",
+"ticker": "NVDA",
+"section": "10k_item1a",
+"year_from": 2022,
+"year_to": 2023,
+"artifacts": {
+"delta_brief": "Change: In 2022, NVDA frames key risks as discrete shocks, highlighting a specific February 23, 2022 network intrusion with stolen credentials and leaked source code (2022 para 89) and the knock-on effects of the Russia-Ukraine war via sanctions and export controls (2022 para 130). In 2023, the emphasis shifts toward structural constraints tied to a platform and services posture, including multi-year cloud service agreements to support DGX Cloud and related R&D (2023 para 27) and a larger, more rigid supply position where purchase obligations and prepaid supply agreements represent more than half of total supply (2023 para 46). Geopolitical risk becomes more tightly scoped to China-focused semiconductor export licensing requirements (2023 para 164) rather than primarily broad sanctions spillovers (2022 para 130), and privacy risk becomes more concretely anchored in statutes becoming operative or effective in 2023 (2023 para 195). Drivers: The move into hosted AI infrastructure and software offerings increases exposure to third-party cloud capacity and contractual commitments, so operational risk is increasingly expressed as delivery and scaling obligations rather than only product-cycle uncertainty (2023 para 27). Simultaneously, demand volatility interacting with long-lead supply prepayments makes working capital and mix management a first-order risk, turning forecasting errors into potential stranded supply (2023 para 46). The tightening export-control perimeter around high-performance computing creates a direct channel for regulatory actions to remove addressable markets and disrupt the global supply chain (2023 para 164). Caveat: The 2022 disclosure also flags reputational and liability exposure from AI ethics failures (2022 para 142), so the 2023 shift should be read as an expansion in specificity and business-model linkage, not a wholesale replacement of prior themes. Focuspack evidence is partial; some perceived drift may reflect selective excerpting or reorganization rather than new underlying risk."
+},
+"evidence": [
+{
+"year": 2022,
+"paragraph_idx": 88,
+"snippet": "For example, on February 23, 2022, we became aware of a security incident involving unauthorized access to our network by a group of independent criminal threat actors, not affiliated with any government or political cause.",
+"why": "Anchors the 2022 risk narrative in a concrete, realized cyber event, emphasizing incident-driven operational and reputational exposure rather than only hypothetical vulnerabilities.",
+"highlights": [
+"Realized cyber incident"
+]
+},
+{
+"year": 2022,
+"paragraph_idx": 129,
+"snippet": "For example, in response to the Russian invasion of Ukraine, the United States and certain allies have imposed economic sanctions and export control measures and may impose additional sanctions or export control measures",
+"why": "Shows 2022 geopolitical framing focused on broad sanctions and export-control spillovers tied to the Russia-Ukraine conflict, providing a baseline for 2023's more targeted export-control discussion.",
+"highlights": [
+"Sanctions and export controls"
+]
+},
+{
+"year": 2022,
+"paragraph_idx": 141,
+"snippet": "AI poses emerging ethical issues and if we enable or offer solutions that draw controversy due to their perceived or actual impact on society, or if we are unable to develop effective internal policies and frameworks relating to the responsible development and use of AI models and systems offered through our sales channels",
+"why": "Establishes that AI-related exposure in 2022 is framed as ethics, governance, and reputational/legal liability tied to internal policy adequacy, which remains relevant as AI offerings expand.",
+"highlights": [
+"AI ethics governance risk"
+]
+},
+{
+"year": 2023,
+"paragraph_idx": 26,
+"snippet": "NVIDIA has partnered with leading cloud service providers to host these services in their data centers, and we entered into multi-year cloud service agreements in the second half of fiscal year 2023 to support these offerings and our research and development activities.",
+"why": "Signals a business-model shift toward cloud-hosted AI services with multi-year contractual dependencies, changing the risk surface toward capacity, delivery, and partner execution.",
+"highlights": [
+"Cloud services commitments"
+]
+},
+{
+"year": 2023,
+"paragraph_idx": 45,
+"snippet": "At the end of fiscal year 2023, purchase obligations and prepaid supply agreements represented more than half of our total supply.",
+"why": "Quantifies increased supply rigidity and pre-commitment risk, making demand forecasting errors and supply mix decisions more financially consequential in 2023.",
+"highlights": [
+"Supply precommitment rigidity"
+]
+},
+{
+"year": 2023,
+"paragraph_idx": 163,
+"snippet": "During the third quarter of fiscal year 2023, the U.S. government, or USG, announced new export restrictions and export licensing requirements targeting China’s semiconductor and supercomputing industries.",
+"why": "Introduces a more specific, China-targeted export-control mechanism that can directly constrain products, markets, and supply-chain operations, sharpening the geopolitical risk channel versus 2022's broader sanctions framing.",
+"highlights": [
+"China export licensing"
+]
+},
+{
+"year": 2023,
+"paragraph_idx": 194,
+"snippet": "The California Privacy Rights Act of 2020, or CPRA, became operative in 2023, and restricts the use of certain categories of sensitive personal information; further restricts the use of cross-contextual advertising techniques; restricts the retention of personal information",
+"why": "Moves privacy risk from general concern to concrete compliance obligations tied to laws becoming operative/effective in 2023, increasing regulatory and litigation exposure with specific statutory hooks.",
+"highlights": [
+"Privacy regulation specificity"
+]
+}
+],
+"metrics": {
+"drift_score": null,
+"confidence": 0.75,
+"coverage": 0.6946768589298123,
+"warnings": [
+"Focuspack is a subset; verify in full compare pane.",
+"Risk factor emphasis may reflect excerpt selection or reorganization rather than fully new underlying risk."
+]
+},
+"provenance": {
+"input_file": "inputs/NVDA_2022_2023_focuspack_deboilerplated.json",
+"model_provider": "openai",
+"model_name": "ChatGPT 5.2-Thinking (Extended Thinking)",
+"run_label": "2026-02_nvda_10k_item1a_2022_2023_delta"
+}
 }

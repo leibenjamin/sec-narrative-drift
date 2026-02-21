@@ -1,150 +1,143 @@
 {
-  "lab_schema_version": "1.0",
-  "detector_id": "det_llm_excerpt_picker_v1",
-  "cleaning_lens": "deboilerplated",
-  "source_id": "edgar",
-  "ticker": "GE",
-  "section": "10k_item1a",
-  "year_from": 2022,
-  "year_to": 2023,
-  "artifacts": {
-    "selected_prev": [
-      75,
-      17,
-      19,
-      16,
-      22
-    ],
-    "selected_curr": [
-      63,
-      50,
-      88,
-      78,
-      20
-    ]
-  },
-  "evidence": [
-    {
-      "year": 2022,
-      "paragraph_idx": 75,
-      "snippet": "We are operating in a supply-constrained environment and are facing, and may continue to face, supply-chain shortages, inflationary pressures, shortages of skilled labor, transportation and logistics challenges and manufacturing disruptions that impact our revenues, profitability and timeliness in fulfilling customer orders.",
-      "why": "Supports 2022 risk narrative context for supply_chain, manufacturing.",
-      "highlights": [
-        "supply_chain",
-        "manufacturing",
-        "artificial_intelligence"
-      ]
-    },
-    {
-      "year": 2022,
-      "paragraph_idx": 17,
-      "snippet": "They are also affected by local and regional economic environments, supply chain constraints and policies in the U.S. and other markets that we serve, including factors such as continuing inflationary pressures in many markets, continuing increases in interest rates from recent historic lows, economic growth rates,",
-      "why": "Supports 2022 risk narrative context for supply_chain, artificial_intelligence.",
-      "highlights": [
-        "supply_chain",
-        "artificial_intelligence",
-        "inflation"
-      ]
-    },
-    {
-      "year": 2022,
-      "paragraph_idx": 19,
-      "snippet": "At the same time, Russia’s invasion of Ukraine and related political and economic consequences, such as sanctions and other measures imposed by the European Union, the U.S.",
-      "why": "Supports 2022 risk narrative context for supply_chain, artificial_intelligence.",
-      "highlights": [
-        "supply_chain",
-        "artificial_intelligence",
-        "sanctions"
-      ]
-    },
-    {
-      "year": 2022,
-      "paragraph_idx": 16,
-      "snippet": "Our operations and the execution of our business plans and strategies are subject to the effects of global economic trends, geopolitical risks and demand or supply shocks from events such as war or international conflict, a major terrorist attack, natural disasters or actual or threatened public health emergencies (such as COVID-19,",
-      "why": "Supports 2022 risk narrative context for supply_chain, demand.",
-      "highlights": [
-        "supply_chain",
-        "demand",
-        "geopolitics"
-      ]
-    },
-    {
-      "year": 2022,
-      "paragraph_idx": 22,
-      "snippet": "Our operations and financial performance since early 2020 have been negatively impacted by the COVID-19 pandemic that has caused, and may continue to cause, a slowdown of economic activity (including the decrease in demand for a broad variety of goods and services),",
-      "why": "Supports 2022 risk narrative context for supply_chain, demand.",
-      "highlights": [
-        "supply_chain",
-        "demand",
-        "artificial_intelligence"
-      ]
-    },
-    {
-      "year": 2023,
-      "paragraph_idx": 63,
-      "snippet": "Particularly with newer product platforms and technologies, our businesses seek to reduce the costs of these products over time with experience, and risks related to our supply chain, the availability of skilled labor, product quality,",
-      "why": "Supports 2023 risk narrative context for supply_chain, artificial_intelligence.",
-      "highlights": [
-        "supply_chain",
-        "artificial_intelligence",
-        "cost_pressure"
-      ]
-    },
-    {
-      "year": 2023,
-      "paragraph_idx": 50,
-      "snippet": "In addition, our use of emerging and evolving technologies such as artificial intelligence and machine learning, which we expect to increase over time, presents business, reputational, legal and compliance risks related to data sourcing, design flaws, integration issues, security threats,",
-      "why": "Supports 2023 risk narrative context for security, artificial_intelligence.",
-      "highlights": [
-        "security",
-        "artificial_intelligence",
-        "compliance"
-      ]
-    },
-    {
-      "year": 2023,
-      "paragraph_idx": 88,
-      "snippet": "We also have access to sensitive, classified, confidential or personal data or information in certain of our businesses that is subject to privacy and security laws, regulations or customer-imposed controls.",
-      "why": "Supports 2023 risk narrative context for security, artificial_intelligence.",
-      "highlights": [
-        "security",
-        "artificial_intelligence",
-        "regulation"
-      ]
-    },
-    {
-      "year": 2023,
-      "paragraph_idx": 78,
-      "snippet": "Increased global cybersecurity requirements, vulnerabilities, threats, computer viruses and more sophisticated and targeted cyber-related attacks such as ransomware, as well as cybersecurity failures resulting from human or technological errors, pose risk to the security of GE's and its customers', partners',",
-      "why": "Supports 2023 risk narrative context for cybersecurity, security.",
-      "highlights": [
-        "cybersecurity",
-        "security",
-        "artificial_intelligence"
-      ]
-    },
-    {
-      "year": 2023,
-      "paragraph_idx": 20,
-      "snippet": "Our operations and the execution of our business plans and strategies are subject to the effects of global economic trends, geopolitical risks and demand or supply shocks from events such as war or international conflict, a major terrorist attack, natural disasters or actual or threatened public health pandemics or other emergencies.",
-      "why": "Supports 2023 risk narrative context for supply_chain, demand.",
-      "highlights": [
-        "supply_chain",
-        "demand",
-        "geopolitics"
-      ]
-    }
-  ],
-  "metrics": {
-    "drift_score": null,
-    "confidence": 0.5,
-    "coverage": 0.27972,
-    "warnings": [
-      "Focuspack is a subset; verify in full compare pane.",
-      "Low signal: focuspack coverage is limited for this pair."
-    ]
-  },
-  "provenance": {
-    "input_file": "inputs/GE_2022_2023_focuspack_deboilerplated.json"
-  }
+"lab_schema_version": "1.0",
+"detector_id": "det_llm_excerpt_picker_v1",
+"cleaning_lens": "deboilerplated",
+"source_id": "edgar",
+"ticker": "GE",
+"section": "10k_item1a",
+"year_from": 2022,
+"year_to": 2023,
+"artifacts": {
+"selected_prev": [
+2,
+5,
+6,
+30,
+75
+],
+"selected_curr": [
+3,
+6,
+9,
+34,
+80
+]
+},
+"evidence": [
+{
+"year": 2022,
+"paragraph_idx": 2,
+"snippet": "Strategic plan - We may encounter challenges to executing our plan to separate GE into three public companies, or to completing the plan within the timeframes we anticipate, and we may not realize some or all of the expected benefits of the separations.",
+"why": "Sets the core execution risk that the multi-entity separation may slip or fail to deliver expected benefits, creating uncertainty around strategy and timing.",
+"highlights": [
+"separation execution",
+"strategic plan"
+]
+},
+{
+"year": 2022,
+"paragraph_idx": 5,
+"snippet": "Moreover, there can be no assurance that either of the separation transactions will qualify as tax-free for U.S. purposes for the Company or its shareholders.",
+"why": "Introduces a binary structural risk: if separations are not tax-free, the transaction could trigger material tax costs for the company and shareholders.",
+"highlights": [
+"tax-free spin-off",
+"separation"
+]
+},
+{
+"year": 2022,
+"paragraph_idx": 6,
+"snippet": "including the diversion of management’s attention from ongoing business concerns and impact on the businesses of the Company; appropriately allocating assets and liabilities among GE Aerospace and GE Vernova; maintaining employee morale and retaining and attracting key management and other employees;",
+"why": "Details operational failure modes for the separation, including management distraction, allocation of assets and liabilities, and retention challenges that can impair ongoing performance.",
+"highlights": [
+"separation execution",
+"asset allocation"
+]
+},
+{
+"year": 2022,
+"paragraph_idx": 30,
+"snippet": "Energy transition - The strategic priorities and financial performance of many of our businesses are subject to market and other dynamics related to decarbonization, which can pose risks in addition to opportunities.",
+"why": "Frames decarbonization as a strategic forcing function that can shift demand, regulation, and technology priorities across GE businesses, creating both risk and opportunity volatility.",
+"highlights": [
+"energy transition",
+"decarbonization"
+]
+},
+{
+"year": 2022,
+"paragraph_idx": 75,
+"snippet": "We are operating in a supply-constrained environment and are facing, and may continue to face, supply-chain shortages, inflationary pressures, shortages of skilled labor, transportation and logistics challenges and manufacturing disruptions that impact our revenues, profitability and timeliness in fulfilling customer orders.",
+"why": "Highlights near-term execution pressure from shortages, logistics, labor constraints, and inflation that can delay deliveries and squeeze margins when costs cannot be passed through.",
+"highlights": [
+"supply chain",
+"inflation"
+]
+},
+{
+"year": 2023,
+"paragraph_idx": 3,
+"snippet": "Strategic plan - We may encounter challenges to executing our plan to separate GE Aerospace and GE Vernova into independent companies, or to completing the plan within the timeframes we anticipate, and we may not realize some or all of the expected benefits of the separations.",
+"why": "Updates the separation framing to two companies, keeping the same execution and timing risk while sharpening investor focus on Aerospace and GE Vernova as the endpoints.",
+"highlights": [
+"separation execution",
+"strategic plan"
+]
+},
+{
+"year": 2023,
+"paragraph_idx": 6,
+"snippet": "Moreover, there can be no assurance that the GE Vernova spin-off will qualify as tax-free for U.S. purposes for the Company or its shareholders.",
+"why": "Narrowed tax risk to the GE Vernova spin-off, emphasizing that tax status is not assured and could materially change the economics of the transaction.",
+"highlights": [
+"tax-free spin-off",
+"separation"
+]
+},
+{
+"year": 2023,
+"paragraph_idx": 9,
+"snippet": "For GE credit support that is not novated to GE Vernova with a release of GE, the failure of GE Vernova (or of a subsequent acquiror of all or a portion of GE Vernova's business) to perform under any relevant contract following the spin-off could result in claims for damages or other relief against GE.",
+"why": "Adds a concrete post-spin liability channel: if credit support is not novated, GE can face claims if GE Vernova or a successor fails to perform under supported contracts.",
+"highlights": [
+"credit support",
+"vernova separation"
+]
+},
+{
+"year": 2023,
+"paragraph_idx": 34,
+"snippet": "Trends related to the global energy transition and decarbonization will affect the relative competitiveness of different types of product and service offerings within and across our energy businesses and our Aerospace business.",
+"why": "Connects energy transition dynamics to competitive positioning, implying that decarbonization can reprice which technologies win and can pressure backlog, pricing, and investment returns.",
+"highlights": [
+"energy transition",
+"decarbonization"
+]
+},
+{
+"year": 2023,
+"paragraph_idx": 80,
+"snippet": "The risks in this area continue to grow, and cyberattacks are expected to accelerate on a global basis in frequency and impact as threat actors increasingly use artificial intelligence and other techniques to circumvent security controls, evade detection and remove forensic evidence.",
+"why": "Elevates cyber risk by noting expected acceleration in frequency and impact, with threat actors using artificial intelligence to evade controls and detection, raising resilience requirements.",
+"highlights": [
+"cybersecurity",
+"artificial intelligence"
+]
+}
+],
+"metrics": {
+"drift_score": null,
+"confidence": 0.5,
+"coverage": 0.6218547314437726,
+"warnings": [
+"Focuspack is a subset; verify in full compare pane.",
+"Selections emphasize separation, energy transition, and cyber themes; other risk shifts may exist outside the focuspack."
+]
+},
+"provenance": {
+"input_file": "inputs/GE_2022_2023_focuspack_deboilerplated.json",
+"model_provider": "openai",
+"model_name": "ChatGPT 5.2-Thinking (Extended Thinking)",
+"run_label": "2026-02_showcase"
+}
 }

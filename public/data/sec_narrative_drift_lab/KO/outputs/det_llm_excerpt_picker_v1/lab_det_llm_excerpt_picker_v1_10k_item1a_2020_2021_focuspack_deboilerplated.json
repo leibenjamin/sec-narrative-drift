@@ -1,149 +1,143 @@
 {
-  "lab_schema_version": "1.0",
-  "detector_id": "det_llm_excerpt_picker_v1",
-  "cleaning_lens": "deboilerplated",
-  "source_id": "edgar",
-  "ticker": "KO",
-  "section": "10k_item1a",
-  "year_from": 2020,
-  "year_to": 2021,
-  "artifacts": {
-    "selected_prev": [
-      74,
-      165,
-      14,
-      17,
-      9
-    ],
-    "selected_curr": [
-      28,
-      167,
-      146,
-      11,
-      154
-    ]
-  },
-  "evidence": [
-    {
-      "year": 2020,
-      "paragraph_idx": 74,
-      "snippet": "Consumer product preferences have evolved and continue to evolve as a result of, among other things, health, wellness and nutrition considerations, including concerns regarding caloric intake associated with sugar-sweetened beverages and the perceived undesirability of artificial ingredients; shifting consumer demographics;",
-      "why": "Supports 2020 risk narrative context for supply_chain, manufacturing.",
-      "highlights": [
-        "supply_chain",
-        "manufacturing",
-        "artificial_intelligence"
-      ]
-    },
-    {
-      "year": 2020,
-      "paragraph_idx": 165,
-      "snippet": "These incidents may be caused by failures during routine operations such as system upgrades or by user errors, as well as network or hardware failures, malicious or disruptive software, unintentional or malicious actions of employees or contractors, cyberattacks by common hackers,",
-      "why": "Supports 2020 risk narrative context for cybersecurity, artificial_intelligence.",
-      "highlights": [
-        "cybersecurity",
-        "artificial_intelligence",
-        "geopolitics"
-      ]
-    },
-    {
-      "year": 2020,
-      "paragraph_idx": 14,
-      "snippet": "These measures may not be sufficient to prevent the spread of COVID-19 among our employees and, therefore, we may face additional concentrate production disruptions in the future, which may place constraints on our ability to supply concentrates to our bottling partners in a timely manner or may increase our concentrate supply costs.",
-      "why": "Supports 2020 risk narrative context for supply_chain, artificial_intelligence.",
-      "highlights": [
-        "supply_chain",
-        "artificial_intelligence",
-        "cost_pressure"
-      ]
-    },
-    {
-      "year": 2020,
-      "paragraph_idx": 17,
-      "snippet": "• Disruptions in supply chains have placed, and may continue to place, constraints on our and our bottling partners' ability to source beverage containers, such as glass bottles and cans, which has increased, and in the future may increase, our and their packaging costs.",
-      "why": "Supports 2020 risk narrative context for supply_chain, artificial_intelligence.",
-      "highlights": [
-        "supply_chain",
-        "artificial_intelligence",
-        "cost_pressure"
-      ]
-    },
-    {
-      "year": 2020,
-      "paragraph_idx": 9,
-      "snippet": "• In certain COVID-19 affected markets, consumer demand has shifted away from some of our more profitable beverages and away-from-home consumption to lower-margin products and at-home consumption, and this shift in consumer purchasing patterns is likely to continue while shelter-in-place and social distancing behaviors are mandated or encouraged.",
-      "why": "Supports 2020 risk narrative context for demand, artificial_intelligence.",
-      "highlights": [
-        "demand",
-        "artificial_intelligence"
-      ]
-    },
-    {
-      "year": 2021,
-      "paragraph_idx": 28,
-      "snippet": "Failure to attract, hire, develop, motivate and retain highly skilled and diverse talent; to meet our goals related to fostering an inclusive and diverse culture, including increasing the number of underrepresented employees in the United States to develop and implement an adequate succession plan for our management team;",
-      "why": "Supports 2021 risk narrative context for artificial_intelligence, labor.",
-      "highlights": [
-        "artificial_intelligence",
-        "labor",
-        "talent"
-      ]
-    },
-    {
-      "year": 2021,
-      "paragraph_idx": 167,
-      "snippet": "significantly. Our security controls over personal data, the training of employees and vendors on data privacy and data security, and the policies, procedures and practices we implemented or may implement in the future may not prevent the improper disclosure of personal data by us or the third-party service providers and vendors whose technology,",
-      "why": "Supports 2021 risk narrative context for security, artificial_intelligence.",
-      "highlights": [
-        "security",
-        "artificial_intelligence",
-        "privacy"
-      ]
-    },
-    {
-      "year": 2021,
-      "paragraph_idx": 146,
-      "snippet": "We rely on networks and information systems and other technology (“information systems”), including the Internet and third-party hosted services, to support a variety of business processes and activities, including procurement and supply chain, manufacturing, distribution, invoicing and collection of payments, employee processes,",
-      "why": "Supports 2021 risk narrative context for supply_chain, manufacturing.",
-      "highlights": [
-        "supply_chain",
-        "manufacturing",
-        "artificial_intelligence"
-      ]
-    },
-    {
-      "year": 2021,
-      "paragraph_idx": 11,
-      "snippet": "In addition to the above risks, the COVID-19 pandemic may exacerbate other risks related to our business, including risks related to changes in the retail landscape or the loss of key retail or foodservice customers; fluctuations in input costs, inflation rates, and foreign currency exchange rates;",
-      "why": "Supports 2021 risk narrative context for artificial_intelligence, inflation.",
-      "highlights": [
-        "artificial_intelligence",
-        "inflation",
-        "cost_pressure"
-      ]
-    },
-    {
-      "year": 2021,
-      "paragraph_idx": 154,
-      "snippet": "These risks also may be present to the extent any of our bottling partners, distributors, joint venture partners or suppliers using separate information systems, not integrated with the information systems of the Company,",
-      "why": "Supports 2021 risk narrative context for cybersecurity, security.",
-      "highlights": [
-        "cybersecurity",
-        "security",
-        "cost_pressure"
-      ]
-    }
-  ],
-  "metrics": {
-    "drift_score": null,
-    "confidence": 0.5,
-    "coverage": 0.225131,
-    "warnings": [
-      "Focuspack is a subset; verify in full compare pane.",
-      "Low signal: focuspack coverage is limited for this pair."
-    ]
-  },
-  "provenance": {
-    "input_file": "inputs/KO_2020_2021_focuspack_deboilerplated.json"
-  }
+"lab_schema_version": "1.0",
+"detector_id": "det_llm_excerpt_picker_v1",
+"cleaning_lens": "deboilerplated",
+"source_id": "edgar",
+"ticker": "KO",
+"section": "10k_item1a",
+"year_from": 2020,
+"year_to": 2021,
+"artifacts": {
+"selected_prev": [
+1,
+4,
+17,
+164,
+183
+],
+"selected_curr": [
+1,
+6,
+10,
+145,
+171
+]
+},
+"evidence": [
+{
+"year": 2020,
+"paragraph_idx": 1,
+"snippet": "The COVID-19 pandemic has had, and we expect will continue to have, certain negative impacts on our business, and such impacts have had, and may continue to have, a material adverse effect on our results of operations, financial condition and cash flows.",
+"why": "Frames pandemic-driven operational and financial uncertainty as a material adverse factor across results, condition and cash flows.",
+"highlights": [
+"COVID-19",
+"demand shock"
+]
+},
+{
+"year": 2020,
+"paragraph_idx": 4,
+"snippet": "In particular, sales of our products in the away-from-home channels have been significantly negatively affected by shelter-in-place regulations or recommendations, closings of restaurants and cancellations of major sporting and other events that were imposed as a result of the initial COVID-19 outbreak.",
+"why": "Details how closures and event cancellations hit away-from-home channels, highlighting channel-mix exposure and sensitivity to public-health restrictions.",
+"highlights": [
+"COVID-19",
+"away-from-home"
+]
+},
+{
+"year": 2020,
+"paragraph_idx": 17,
+"snippet": "• Disruptions in supply chains have placed, and may continue to place, constraints on our and our bottling partners' ability to source beverage containers, such as glass bottles and cans, which has increased, and in the future may increase, our and their packaging costs.",
+"why": "Links COVID-era logistics constraints to container shortages and higher packaging costs, making supply chain resilience a direct margin lever.",
+"highlights": [
+"COVID-19",
+"supply chain"
+]
+},
+{
+"year": 2020,
+"paragraph_idx": 164,
+"snippet": "Because information systems are critical to many of the Company's operating activities, our business may be impacted by system shutdowns, service disruptions or security breaches.",
+"why": "Establishes dependence on information systems and the operational impact pathway from shutdowns, disruptions or breaches to business interruption.",
+"highlights": [
+"cybersecurity",
+"IT resilience"
+]
+},
+{
+"year": 2020,
+"paragraph_idx": 183,
+"snippet": "If we and our bottling partners fail to achieve or improperly report on our progress toward achieving our announced environmental goals and commitments, the resulting negative publicity could adversely affect consumer preference for our beverage products.",
+"why": "Signals reputational and demand risk if environmental commitments are missed or progress is misreported, linking sustainability execution to consumer preference.",
+"highlights": [
+"ESG",
+"packaging"
+]
+},
+{
+"year": 2021,
+"paragraph_idx": 1,
+"snippet": "The COVID-19 pandemic and related ongoing impacts may have a material adverse effect on our results of operations, financial condition and cash flows.",
+"why": "Recasts COVID-19 as an ongoing risk with potential for material adverse effects, keeping pandemic uncertainty central in the risk set.",
+"highlights": [
+"COVID-19",
+"ongoing impacts"
+]
+},
+{
+"year": 2021,
+"paragraph_idx": 6,
+"snippet": "if COVID-19 infection rates increase, the pandemic intensifies or expands geographically, or continued efforts to curb the pandemic are ineffective, the negative impacts of the pandemic on our sales could be more prolonged and may become more severe than we are currently experiencing.",
+"why": "Ties recovery in away-from-home and margins to fragile epidemiological conditions, emphasizing downside scenarios if infection rates rise or controls fail.",
+"highlights": [
+"COVID-19",
+"away-from-home"
+]
+},
+{
+"year": 2021,
+"paragraph_idx": 10,
+"snippet": "Although we are unable to predict the impact on our ability to source materials in the future, we expect supply chain pressures to continue into 2022.",
+"why": "Explicitly projects supply chain pressures into 2022, extending the cost and availability risk window beyond the immediate pandemic year.",
+"highlights": [
+"supply chain",
+"packaging costs"
+]
+},
+{
+"year": 2021,
+"paragraph_idx": 145,
+"snippet": "If we are unable to protect our information systems against service interruption, misappropriation of data or cybersecurity incidents, our operations could be disrupted, we may suffer financial losses and our reputation may be damaged.",
+"why": "Elevates cybersecurity to a standalone disruption and loss risk, covering service interruption, data misuse and reputational damage pathways.",
+"highlights": [
+"cybersecurity",
+"third-party services"
+]
+},
+{
+"year": 2021,
+"paragraph_idx": 171,
+"snippet": "Our ability to achieve our environmental, social and governance goals are subject to risks, many of which are outside of our control, and our reputation and brands could be harmed if we fail to meet such goals.",
+"why": "Broadens sustainability framing into ESG goals, noting many dependencies outside company control and the brand harm if goals are missed.",
+"highlights": [
+"ESG",
+"reputation"
+]
+}
+],
+"metrics": {
+"drift_score": null,
+"confidence": 0.75,
+"coverage": null,
+"warnings": [
+"Focuspack is a subset; verify in full compare pane.",
+"These excerpts emphasize COVID-19, supply chain, cybersecurity and ESG themes; other material risks may be present outside the selected paragraphs."
+]
+},
+"provenance": {
+"input_file": "inputs/KO_2020_2021_focuspack_deboilerplated.json",
+"model_provider": "openai",
+"model_name": "ChatGPT 5.2-Thinking (Extended Thinking)",
+"run_label": "2026-02_ko_2020_2021_focuspack"
+}
 }

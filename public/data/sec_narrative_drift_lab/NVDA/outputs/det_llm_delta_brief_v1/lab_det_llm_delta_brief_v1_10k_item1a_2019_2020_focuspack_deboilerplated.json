@@ -8,82 +8,60 @@
 "year_from": 2019,
 "year_to": 2020,
 "artifacts": {
-"delta_brief": "Between 2019 and 2020, NVDA's risk narrative shifts from broad macro/industry uncertainty toward more event-driven disruption, adding explicit coronavirus-related shutdowns and travel restrictions in early 2020 (2020 para 11) alongside continued geopolitical/regulatory uncertainty (2019 para 8). Where 2019 discusses cyber risk in abstract terms, noting threats are constantly evolving (2019 para 4), 2020 updates this to a more specific threat taxonomy (malware, phishing, cyber-attacks) and rising sophistication (2020 para 4). Trade and policy risk also becomes more operational in 2020: losing a large customer or being unable to sell due to U.S. trade restrictions is framed as likely harming results (2020 para 21), versus 2019's general warning that geopolitical and policy shifts can affect demand, access to markets, hiring, and profitability (2019 para 8). Acquisition integration risk is sharpened by naming the Mellanox acquisition in 2020 and stressing its challenges and risks (2020 para 28), while 2019 frames acquisition/integration risk generically without deal-specific detail (2019 para 14). The 2019 selection highlights concentrated exposure to China (including Hong Kong) via billings (2019 para 12); by 2020, the selected text emphasizes the financial impact of customer concentration and collection risk, especially under trade restrictions (2020 para 21). Taken together, 2020 layers crisis and transaction-specific risks (coronavirus, Mellanox) (2020 para 11; 2020 para 28) on top of the prior year's broader macro and technology risk framing (2019 para 8; 2019 para 4). This drift toward concrete, near-term mechanisms of harm may increase the perceived sensitivity to operational and policy shocks relative to the more structural exposures emphasized in 2019 (2020 para 21; 2019 para 12)."
+"delta_brief": "Change: Between 2019 and 2020, NVDA's risk narrative shifts from broadly framed operational resilience and macro uncertainty toward concrete, near-term disruption scenarios, explicitly foregrounding pandemic-driven shutdown and travel restriction impacts (2020 para 11). The 2020 text also sharpens downside linkage from customer concentration and U.S. trade restrictions to financial condition and results of operations (2020 para 21), whereas 2019 emphasizes more generalized exposure to evolving threats and policy volatility (2019 para 4; 2019 para 8). Drivers: The 2020 disclosure anchors external shock risk in an unfolding event (January 2020 coronavirus) that disrupts manufacturing, commerce, and travel, moving disruption language from hypothetical to realized with uncertain duration (2020 para 11). It tightens the revenue-risk mechanism by stating that losing large customers or being unable to sell due to trade restrictions would likely harm results and could compound through receivables collection risk (2020 para 21). Acquisition execution remains a theme, but 2020 makes it more deal-specific by naming the Mellanox acquisition as involving significant challenges and risks (2020 para 28) versus the more generic acquisition-risk framing in 2019 (2019 para 15). Caveat: Focuspack is a trigger-term subset, so this drift likely overweights pandemic and deal-specific language relative to other stable risk themes; validate against the full Item 1A compare pane before interpreting narrative priority shifts."
 },
 "evidence": [
 {
 "year": 2019,
 "paragraph_idx": 3,
 "snippet": "These threats are constantly evolving, making it increasingly difficult to successfully defend against them or implement adequate preventative measures.",
-"why": "Baseline cyber-risk framing in 2019 is high-level and emphasizes the difficulty of defense against evolving threats; useful contrast against 2020's more specific cyber language.",
+"why": "Provides the 2019 baseline framing of cybersecurity/technology threats as an evolving, hard-to-defend risk, supporting contrast with 2020's more specific event-driven disruptions.",
 "highlights": [
-"cybersecurity (generic)",
-"evolving threats"
-]
-},
-{
-"year": 2020,
-"paragraph_idx": 3,
-"snippet": "Security breaches, computer malware, phishing, and cyber-attacks have become more prevalent and sophisticated in recent years.",
-"why": "2020 reframes cyber risk with concrete attack vectors and a trend toward greater prevalence and sophistication, indicating a more explicit cybersecurity emphasis than 2019.",
-"highlights": [
-"cybersecurity (specific vectors)",
-"rising sophistication"
+"cyber-threat evolution"
 ]
 },
 {
 "year": 2019,
 "paragraph_idx": 7,
 "snippet": "Geopolitical change or changes in government regulations and policies in the United States or abroad also may result in changing regulatory requirements, trade policies, import duties and economic disruptions that could impact our operating strategies, product demand, access to global markets, hiring, and profitability.",
-"why": "Shows 2019's broad description of geopolitical and regulatory change affecting trade policies and market access, providing the macro baseline for later trade-restriction mechanisms in 2020.",
+"why": "Establishes a generalized geopolitical and trade-policy risk channel in 2019, useful as a baseline against 2020's tighter linkage between trade restrictions and financial results.",
 "highlights": [
-"geopolitical/regulatory risk",
-"trade policy"
-]
-},
-{
-"year": 2020,
-"paragraph_idx": 20,
-"snippet": "The loss of any of our large customers, a significant reduction in purchases by them, or our inability to sell to a customer due to U.S. trade restrictions would likely harm our financial condition and results of operations, and any difficulties in collecting accounts receivable could harm our operating results and financial condition.",
-"why": "Adds a direct mechanism of harm tied to customer concentration and U.S. trade restrictions, making the trade-policy risk more immediate and financially explicit than the 2019 framing.",
-"highlights": [
-"customer concentration",
-"U.S. trade restrictions"
+"geopolitical policy volatility"
 ]
 },
 {
 "year": 2019,
-"paragraph_idx": 11,
-"snippet": "Revenue from billings to China, including Hong Kong, was 24% of our revenue for fiscal year 2019, even if our customers' revenue is attributable to end customers that are located in a different location.",
-"why": "Quantifies exposure tied to China (including Hong Kong) billings in 2019, which helps contextualize 2020's increased focus on restrictions and disruption tied to China-related events.",
+"paragraph_idx": 14,
+"snippet": "The risks associated with past or future acquisitions or investments could impair our ability to grow our business, develop new products or sell our products, and ultimately could have a negative impact on our growth or our financial results.",
+"why": "Captures the pre-2020 generic acquisition/investment execution risk language, enabling comparison to 2020's deal-specific Mellanox integration emphasis.",
 "highlights": [
-"China/Hong Kong revenue exposure"
+"M&A execution baseline"
 ]
 },
 {
 "year": 2020,
 "paragraph_idx": 10,
 "snippet": "In January 2020, a novel strain of coronavirus was identified in China, resulting in shutdowns of manufacturing and commerce, as well as global travel restrictions to contain the virus.",
-"why": "Introduces COVID-19 as a new, time-specific operational and supply-chain disruption risk in 2020, a notable addition relative to 2019's more general disruption language.",
+"why": "Introduces a concrete external shock (COVID-19) and operational shutdown mechanism in 2020, marking a clear narrative shift from generalized disruption risk to an unfolding event.",
 "highlights": [
-"COVID-19 disruption",
-"shutdowns/travel restrictions"
+"COVID-19 disruption"
 ]
 },
 {
-"year": 2019,
-"paragraph_idx": 13,
-"snippet": "We may not be able to realize the potential financial or strategic benefits of business acquisitions or strategic investments and we may not be able to successfully integrate acquisition targets, which could hurt our ability to grow our business, develop new products or sell our products.",
-"why": "2019 describes acquisition and integration risk in generic terms, serving as a baseline for the more deal-specific acquisition risk discussion that appears in 2020.",
+"year": 2020,
+"paragraph_idx": 20,
+"snippet": "The loss of any of our large customers, a significant reduction in purchases by them, or our inability to sell to a customer due to U.S. trade restrictions would likely harm our financial condition and results of operations, and any difficulties in collecting accounts receivable could harm our operating results and financial condition.",
+"why": "Strengthens the downside pathway in 2020 by linking customer concentration and trade restrictions directly to results of operations and receivables risk, supporting the drift toward more explicit financial mechanisms.",
 "highlights": [
-"acquisition integration risk (generic)"
+"customer concentration",
+"trade restrictions"
 ]
 },
 {
 "year": 2020,
 "paragraph_idx": 27,
 "snippet": "The Mellanox acquisition and other past or future acquisitions or investments involve significant challenges and risks, and could impair our ability to grow our business, develop new products or sell our products, and ultimately could have a negative impact on our growth or our financial results.",
-"why": "2020 names the Mellanox acquisition and emphasizes integration challenges, sharpening acquisition risk into a transaction-specific narrative compared with 2019.",
+"why": "Makes acquisition risk more specific in 2020 by naming Mellanox and emphasizing integration challenges, indicating a shift from generic M&A boilerplate to a highlighted, transaction-specific execution risk.",
 "highlights": [
 "Mellanox acquisition",
 "integration risk"
@@ -92,14 +70,18 @@
 ],
 "metrics": {
 "drift_score": null,
-"confidence": 0.5,
+"confidence": 0.50,
 "coverage": 0.11339749714525413,
 "warnings": [
 "Focuspack is a subset; verify in full compare pane.",
-"Lens coverage is low; additional risk-factor deltas may exist outside this subset."
+"Lens coverage is low, so important stable risks may be omitted from this subset and the apparent drift may be exaggerated.",
+"Input file reference: ."
 ]
 },
 "provenance": {
-"input_file": "inputs/NVDA_2019_2020_focuspack_deboilerplated.json"
+"input_file": "inputs/NVDA_2019_2020_focuspack_deboilerplated.json",
+"model_provider": "openai",
+"model_name": "ChatGPT 5.2-Thinking (Extended Thinking)",
+"run_label": "2026-02_nvda_2019_2020_delta_brief"
 }
 }

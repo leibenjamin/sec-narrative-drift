@@ -16,29 +16,40 @@ provenance.run_label is required and must start with YYYY-MM_ (example: "YYYY-MM
 Do not output extra provenance keys beyond input_file, model_provider, model_name, run_label.
 paragraph_idx must use FULL indices via focuspack_meta.selected_prev_indices and selected_curr_indices.
 Snippets must be verbatim substrings from mapped paragraphs and <= 350 chars.
+If a mapped paragraph is longer than 350, do NOT copy the full paragraph; choose a contiguous verbatim substring (recommended 220-320 chars) preserving core risk mechanism.
+Do not add synthetic ellipses or edits to snippets.
 highlights must be present and non-empty for every evidence block.
 metrics.confidence must be one of 0.25, 0.50, 0.75.
 metrics.warnings must include: "Focuspack is a subset; verify in full compare pane."
 If signal is weak, include one conservative warning in metrics.warnings.
+metrics.warnings entries must be complete statements; placeholder tails like 'Input file citation:', 'Source:', or 'Input source:' are invalid.
 Citation format for delta brief must be ASCII-only: "YYYY para NN".
 Never use pilcrow-style citation symbols; use "YYYY para NN" only.
 Before final output, self-check JSON syntax: no unescaped " inside string values and no trailing commas.
 Mandatory pre-output quality gate (must pass before final JSON):
 - Every evidence.snippet is a verbatim contiguous substring of its mapped FULL-index paragraph.
 - Every evidence.snippet length is <= 350.
+- For each evidence block, if mapped paragraph > 350, snippet is a strict trimmed substring <= 350 (recommended 220-320 chars).
 - Every paragraph_idx uses FULL-index mapping via focuspack_meta.selected_prev_indices/selected_curr_indices.
 - Every evidence block has non-empty highlights.
+- Evidence blocks are sorted by (year, paragraph_idx) ascending.
+- No duplicate evidence blocks share the same (year, paragraph_idx).
+- Every delta citation "YYYY para NN" has a matching evidence block (year=YYYY, paragraph_idx=NN-1).
+- For excerpt picker, selected_prev and selected_curr exactly equal deduped evidence paragraph_idx sets for each year.
+- For excerpt picker, selected_prev and selected_curr are sorted ascending.
 - If any check fails, revise internally and do not output JSON yet.
 
 For det_llm_delta_brief_v1:
 - artifacts must contain only delta_brief.
 - Include >=2 inline citations in "YYYY para NN" format.
-- Evidence should be 3-8 blocks total.
-- Target >=2 evidence blocks from year_from and >=2 from year_to when signal allows.
+- Evidence must contain 4-8 blocks total, with >= 2 from each year.
+- delta_brief must contain labeled sections in order: "Change:", "Drivers:", "Caveat:".
+- Use mechanism-level, analyst-deep language tied directly to cited evidence.
 
 For det_llm_excerpt_picker_v1:
 - artifacts must contain only selected_prev and selected_curr.
 - selected_prev and selected_curr must be deduped FULL indices.
-- selected_prev must include all year_from evidence paragraph_idx values.
-- selected_curr must include all year_to evidence paragraph_idx values.
-- Evidence target: 6-10 balanced blocks across years.
+- selected_prev must exactly equal deduped year_from evidence paragraph_idx values (no extras).
+- selected_curr must exactly equal deduped year_to evidence paragraph_idx values (no extras).
+- selected_prev and selected_curr must be sorted ascending.
+- Evidence must contain 6-10 blocks total, with >= 3 from each year.

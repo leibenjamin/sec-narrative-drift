@@ -1,92 +1,110 @@
 {
-  "lab_schema_version": "1.0",
-  "detector_id": "det_llm_delta_brief_v1",
-  "cleaning_lens": "deboilerplated",
-  "source_id": "edgar",
-  "ticker": "KO",
-  "section": "10k_item1a",
-  "year_from": 2019,
-  "year_to": 2020,
-  "artifacts": {
-    "delta_brief": "Between 2019 and 2020, KO continues to emphasize supply_chain as core risk exposure (2019 para 43; 2020 para 14). The earlier filing is relatively more anchored in supply_chain, while the later filing adds clearer weight to supply_chain (2019 para 10; 2020 para 17). Across both years, management frames these items as operational and financial execution pressures rather than isolated one-off events (2019 para 43; 2020 para 17). This comparison should be read as directional because the lens is a focuspack subset and not the full Item 1A text (2019 para 10; 2020 para 14). Overall, the narrative indicates continuity with selective shifts in emphasis instead of a full thematic reset (2019 para 43; 2020 para 14)."
-  },
-  "evidence": [
-    {
-      "year": 2019,
-      "paragraph_idx": 42,
-      "snippet": "An increase in the cost, a sustained interruption in the supply, or a shortage of some of these ingredients, other raw materials, packaging materials, aluminum cans and other containers that may be caused by changes in or the enactment of new laws and regulations; a deterioration of our or our bottling partners' relationships with suppliers;",
-      "why": "Supports 2019 risk narrative context for supply_chain, artificial_intelligence.",
-      "highlights": [
-        "supply_chain",
-        "artificial_intelligence",
-        "regulation"
-      ]
-    },
-    {
-      "year": 2019,
-      "paragraph_idx": 9,
-      "snippet": "The changes introduced by the GDPR and the CCPA, as well as any other changes to existing personal data protection or privacy laws and the introduction of such laws in other jurisdictions, have subjected and may continue in the future to subject the Company to, among other things,",
-      "why": "Supports 2019 risk narrative context for security, privacy.",
-      "highlights": [
-        "security",
-        "privacy",
-        "cost_pressure"
-      ]
-    },
-    {
-      "year": 2019,
-      "paragraph_idx": 10,
-      "snippet": "Our security controls over personal data, the training of employees and vendors on data privacy and data security, and the policies, procedures and practices we implemented or may implement in the future may not prevent the improper disclosure of personal data.",
-      "why": "Supports 2019 risk narrative context for security, artificial_intelligence.",
-      "highlights": [
-        "security",
-        "artificial_intelligence",
-        "privacy"
-      ]
-    },
-    {
-      "year": 2020,
-      "paragraph_idx": 13,
-      "snippet": "These measures may not be sufficient to prevent the spread of COVID-19 among our employees and, therefore, we may face additional concentrate production disruptions in the future, which may place constraints on our ability to supply concentrates to our bottling partners in a timely manner or may increase our concentrate supply costs.",
-      "why": "Supports 2020 risk narrative context for supply_chain, artificial_intelligence.",
-      "highlights": [
-        "supply_chain",
-        "artificial_intelligence",
-        "cost_pressure"
-      ]
-    },
-    {
-      "year": 2020,
-      "paragraph_idx": 16,
-      "snippet": "• Disruptions in supply chains have placed, and may continue to place, constraints on our and our bottling partners' ability to source beverage containers, such as glass bottles and cans, which has increased, and in the future may increase, our and their packaging costs.",
-      "why": "Supports 2020 risk narrative context for supply_chain, artificial_intelligence.",
-      "highlights": [
-        "supply_chain",
-        "artificial_intelligence",
-        "cost_pressure"
-      ]
-    },
-    {
-      "year": 2020,
-      "paragraph_idx": 8,
-      "snippet": "• In certain COVID-19 affected markets, consumer demand has shifted away from some of our more profitable beverages and away-from-home consumption to lower-margin products and at-home consumption, and this shift in consumer purchasing patterns is likely to continue while shelter-in-place and social distancing behaviors are mandated or encouraged.",
-      "why": "Supports 2020 risk narrative context for demand, artificial_intelligence.",
-      "highlights": [
-        "demand",
-        "artificial_intelligence"
-      ]
-    }
-  ],
-  "metrics": {
-    "drift_score": null,
-    "confidence": 0.5,
-    "coverage": 0.316327,
-    "warnings": [
-      "Focuspack is a subset; verify in full compare pane.",
-      "Low signal: focuspack coverage is limited for this pair."
-    ]
-  },
-  "provenance": {
-    "input_file": "inputs/KO_2019_2020_focuspack_deboilerplated.json"
-  }
+"lab_schema_version": "1.0",
+"detector_id": "det_llm_delta_brief_v1",
+"cleaning_lens": "deboilerplated",
+"source_id": "edgar",
+"ticker": "KO",
+"section": "10k_item1a",
+"year_from": 2019,
+"year_to": 2020,
+"artifacts": {
+"delta_brief": "Change: 2020 reframes KO risk profile around an immediate pandemic demand shock, detailing sales declines and channel disruption rather than only listing generic macro and operational volatility (2020 para 1). It also adds a margin and mix mechanism, noting a shift from away-from-home to at-home consumption and from higher-profit beverages to lower-margin products (2020 para 9). By contrast, 2019 treats infectious disease as one of many supply-chain disruption vectors and does not elevate it to a standalone business-model stressor (2019 para 43). Drivers: The expansion reflects COVID-19-driven shutdowns and behavior changes that propagate through both demand and fulfillment, forcing tighter prioritization of brands and resources (2020 para 9; 2020 para 98). Management response language shifts toward a more programmatic reallocation agenda, emphasizing scalable innovation, marketing investment efficiency, and capability build to match durable behavior shifts (2020 para 11). That is a pivot from 2019's posture where marketing and innovation capability is framed mainly as a competitive necessity to sustain loyalty and category expansion (2019 para 3). Caveat: Competition and share capture remain explicit in 2020 alongside the pandemic narrative (2020 para 43), and privacy compliance exposure is still relevant given CCPA-related breach liability hooks already highlighted in 2019 (2019 para 9); the focuspack is a subset, so confirm whether the full compare view shows similar weighting across these risk clusters."
+},
+"evidence": [
+{
+"year": 2019,
+"paragraph_idx": 2,
+"snippet": "If we do not continuously strengthen our capabilities in marketing and innovation to maintain our brand loyalty and market share while we selectively expand into other profitable categories in the nonalcoholic beverage segment of the commercial beverage industry, our business could be negatively affected.",
+"why": "Shows the pre-pandemic framing: sustaining brand loyalty and category expansion depends on continued marketing and innovation capability, setting a baseline for later crisis-driven portfolio focus.",
+"highlights": [
+"marketing_innovation",
+"brand_loyalty"
+]
+},
+{
+"year": 2019,
+"paragraph_idx": 8,
+"snippet": "provides for a private right of action for data breaches and requires companies that process information about California residents to make disclosures to consumers about their data collection, use and sharing practices and to allow consumers to opt out of certain data sharing with third parties.",
+"why": "Anchors regulatory and litigation exposure around privacy compliance and breach liability just as major state privacy law becomes effective, a risk that remains relevant even when COVID-19 dominates the narrative.",
+"highlights": [
+"privacy_regulation",
+"litigation_exposure"
+]
+},
+{
+"year": 2019,
+"paragraph_idx": 42,
+"snippet": "trade disruptions; changes in supply chain; and increases in tariffs that may be caused by the United Kingdom's withdrawal from the European Union, commonly referred to as \"Brexit\"; or events such as natural disasters, widespread outbreaks of infectious diseases (such as the recent outbreak of the novel coronavirus COVID-19)",
+"why": "Provides the 2019 baseline where infectious disease appears as one of many supply-chain disruption drivers, foreshadowing but not yet centering the pandemic as a primary business risk.",
+"highlights": [
+"supply_chain_disruption",
+"infectious_disease"
+]
+},
+{
+"year": 2020,
+"paragraph_idx": 0,
+"snippet": "The COVID-19 pandemic has had, and we expect will continue to have, certain negative impacts on our business, and such impacts have had, and may continue to have, a material adverse effect on our results of operations, financial condition and cash flows.",
+"why": "Introduces COVID-19 as a top-level macro shock with material adverse effects across results, balance sheet, and cash flows, marking a step-change in risk emphasis versus 2019.",
+"highlights": [
+"pandemic_macro_shock",
+"financial_condition"
+]
+},
+{
+"year": 2020,
+"paragraph_idx": 8,
+"snippet": "• In certain COVID-19 affected markets, consumer demand has shifted away from some of our more profitable beverages and away-from-home consumption to lower-margin products and at-home consumption, and this shift in consumer purchasing patterns is likely to continue while shelter-in-place and social distancing behaviors are mandated or encouraged.",
+"why": "Specifies the transmission mechanism from COVID-19 to economics: channel and product-mix shifts toward at-home and lower-margin consumption that can compress profitability even when volumes stabilize.",
+"highlights": [
+"channel_shift",
+"margin_mix"
+]
+},
+{
+"year": 2020,
+"paragraph_idx": 10,
+"snippet": "initiatives that are scalable regionally or globally, as well as maintaining a disciplined approach to local experimentation; refreshing our marketing approach, with a focus on improving our marketing investment effectiveness and efficiency; and investing in new capabilities to capitalize on emerging shifts in consumer behaviors",
+"why": "Describes management actions aimed at adapting the operating model, including scalable innovation, marketing efficiency, and capability investment, translating the crisis into an execution and resource-allocation risk.",
+"highlights": [
+"strategy_acceleration",
+"marketing_efficiency"
+]
+},
+{
+"year": 2020,
+"paragraph_idx": 42,
+"snippet": "Our ability to maintain or gain share of sales in the global market or in various local markets and segments may be limited as a result of actions by competitors.",
+"why": "Shows that competitive dynamics remain an explicit risk even in the pandemic year, supporting the interpretation that COVID-19 is additive rather than a replacement for structural competition pressures.",
+"highlights": [
+"competitive_pressure",
+"market_share"
+]
+},
+{
+"year": 2020,
+"paragraph_idx": 97,
+"snippet": "The portfolio optimization is intended to free up resources to invest in growing trademarks and better position the Company to nurture promising local innovations, and graduate regional wins to the global stage.",
+"why": "Evidence of portfolio rationalization as a concrete lever to free resources and concentrate investment, reinforcing the shift toward focus and simplification in response to the crisis environment.",
+"highlights": [
+"portfolio_optimization",
+"resource_reallocation"
+]
+}
+],
+"metrics": {
+"drift_score": null,
+"confidence": 0.75,
+"coverage": 0.3078431632369115,
+"warnings": [
+"Focuspack is a subset; verify in full compare pane.",
+"COVID-19-triggered excerpts can over-represent pandemic and restructuring themes relative to other persistent risks."
+]
+},
+"provenance": {
+"input_file": "inputs/KO_2019_2020_focuspack_deboilerplated.json",
+"model_provider": "openai",
+"model_name": "ChatGPT 5.2-Thinking (Extended Thinking)",
+"run_label": "2026-02_ko_2019_2020"
+}
 }

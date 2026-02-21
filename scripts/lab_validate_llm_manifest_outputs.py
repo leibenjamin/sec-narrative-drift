@@ -11,7 +11,7 @@ import sys
 
 from lab_script_version import build_script_version
 
-SCRIPT_VERSION = build_script_version(Path(__file__), "v5")
+SCRIPT_VERSION = build_script_version(Path(__file__), "v8")
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 LAB_OUTPUT_ROOT = (
@@ -41,6 +41,10 @@ FOCUSPACK_WARNING = "Focuspack is a subset; verify in full compare pane."
 ALLOWED_CONFIDENCE: set[float] = {0.25, 0.50, 0.75}
 MAX_SNIPPET_CHARS = 350
 DELTA_BRIEF_CITATION_RE = re.compile(r"\b(20\d{2})\s+para\s+(\d+)\b", re.IGNORECASE)
+DELTA_BRIEF_SECTION_RE = re.compile(
+    r"^\s*Change:\s*(?P<change>.+?)\s+Drivers:\s*(?P<drivers>.+?)\s+Caveat:\s*(?P<caveat>.+?)\s*$",
+    re.DOTALL,
+)
 FORBIDDEN_CITATION_TOKENS: tuple[tuple[str, str], ...] = (
     ("pilcrow", "\u00b6"),
     ("mojibake_pilcrow_1", "\u00c2\u00b6"),
@@ -51,6 +55,17 @@ PROVENANCE_ALLOWED = set(PROVENANCE_REQUIRED)
 EXPECTED_MODEL_PROVIDER = "openai"
 EXPECTED_MODEL_NAME = "ChatGPT 5.2-Thinking (Extended Thinking)"
 RUN_LABEL_RE = re.compile(r"^20\d{2}-(0[1-9]|1[0-2])_[A-Za-z0-9._-]+$")
+WARNING_PLACEHOLDER_TAIL_RE = re.compile(r"[:\-]\s*$")
+WARNING_PLACEHOLDER_VALUE_RE = re.compile(
+    r"^\s*(input file citation|input file|input source|source)\s*:\s*$",
+    re.IGNORECASE,
+)
+DELTA_MIN_EVIDENCE = 4
+DELTA_MAX_EVIDENCE = 8
+DELTA_MIN_PER_YEAR = 2
+EXCERPT_MIN_EVIDENCE = 6
+EXCERPT_MAX_EVIDENCE = 10
+EXCERPT_MIN_PER_YEAR = 3
 
 sys.path.append(str(Path(__file__).resolve().parent))
 from lab_llm_precompute_utils import (  # type: ignore
@@ -360,6 +375,10 @@ def validate_output_json(target: ManifestTarget, output_path: Path) -> list[str]
     evidence_raw = as_list(payload_dict.get("evidence"))
     evidence_prev_indices: list[int] = []
     evidence_curr_indices: list[int] = []
+    evidence_pairs: set[tuple[int, int]] = set()
+    evidence_order_pairs: list[tuple[int, int]] = []
+    evidence_prev_count = 0
+    evidence_curr_count = 0
     if evidence_raw is None:
         reasons.append("evidence must be a list")
         evidence_raw = []
@@ -391,7 +410,7 @@ def validate_output_json(target: ManifestTarget, output_path: Path) -> list[str]
                 reasons.append(f"evidence[{idx}].snippet must be a non-empty string")
             elif len(snippet) > MAX_SNIPPET_CHARS:
                 reasons.append(
-                    f"evidence[{idx}].snippet length must be <= {MAX_SNIPPET_CHARS}"
+                    f"evidence[{idx}].snippet length must be <= {MAX_SNIPPET_CHARS} (got {len(snippet)})"
                 )
 
             why = get_str(entry_dict.get("why"))
@@ -403,20 +422,35 @@ def validate_output_json(target: ManifestTarget, output_path: Path) -> list[str]
             )
             if highlights is not None and len(highlights) < 1:
                 reasons.append(f"evidence[{idx}].highlights must include at least one value")
+            if highlights is not None and len(highlights) > 3:
+                reasons.append(f"evidence[{idx}].highlights must include at most three values")
 
             if evidence_year == target.year_from and paragraph_idx is not None and paragraph_idx >= 0:
+                evidence_prev_count += 1
                 if paragraph_idx not in seen_prev:
                     seen_prev.add(paragraph_idx)
                     evidence_prev_indices.append(paragraph_idx)
             if evidence_year == target.year_to and paragraph_idx is not None and paragraph_idx >= 0:
+                evidence_curr_count += 1
                 if paragraph_idx not in seen_curr:
                     seen_curr.add(paragraph_idx)
                     evidence_curr_indices.append(paragraph_idx)
+            if (
+                evidence_year in (target.year_from, target.year_to)
+                and paragraph_idx is not None
+                and paragraph_idx >= 0
+            ):
+                evidence_order_pairs.append((evidence_year, paragraph_idx))
+                evidence_pairs.add((evidence_year, paragraph_idx))
 
         if len(evidence_prev_indices) < 1:
             reasons.append("evidence must include at least one block for year_from")
         if len(evidence_curr_indices) < 1:
             reasons.append("evidence must include at least one block for year_to")
+        if len(evidence_order_pairs) != len(set(evidence_order_pairs)):
+            reasons.append("evidence must not include duplicate (year, paragraph_idx) entries")
+        if evidence_order_pairs != sorted(evidence_order_pairs):
+            reasons.append("evidence blocks must be sorted by (year, paragraph_idx) ascending")
 
     metrics = as_str_dict(payload_dict.get("metrics"))
     if metrics is None:
@@ -437,6 +471,16 @@ def validate_output_json(target: ManifestTarget, output_path: Path) -> list[str]
     warning_values = parse_string_list(metrics.get("warnings"), "metrics.warnings", reasons)
     if warning_values is not None and FOCUSPACK_WARNING not in warning_values:
         reasons.append(f'metrics.warnings must include "{FOCUSPACK_WARNING}"')
+    if warning_values is not None:
+        for idx, warning in enumerate(warning_values):
+            if WARNING_PLACEHOLDER_VALUE_RE.fullmatch(warning):
+                reasons.append(
+                    f"metrics.warnings[{idx}] must not be a placeholder value: {warning!r}"
+                )
+            elif WARNING_PLACEHOLDER_TAIL_RE.search(warning):
+                reasons.append(
+                    f"metrics.warnings[{idx}] must not end with placeholder tail punctuation: {warning!r}"
+                )
 
     provenance = as_str_dict(payload_dict.get("provenance"))
     provenance_input_file = ""
@@ -496,6 +540,11 @@ def validate_output_json(target: ManifestTarget, output_path: Path) -> list[str]
         if delta_brief is None or not delta_brief.strip():
             reasons.append("artifacts.delta_brief must be a non-empty string")
         else:
+            section_match = DELTA_BRIEF_SECTION_RE.fullmatch(delta_brief)
+            if section_match is None:
+                reasons.append(
+                    'delta_brief must contain non-empty sections in order: "Change:", "Drivers:", "Caveat:"'
+                )
             for token_name, token_value in FORBIDDEN_CITATION_TOKENS:
                 if token_value in delta_brief:
                     reasons.append(
@@ -508,6 +557,7 @@ def validate_output_json(target: ManifestTarget, output_path: Path) -> list[str]
                     'delta_brief must include >=2 inline citations in "YYYY para NN" format'
                 )
             else:
+                citation_pairs: list[tuple[int, int]] = []
                 for year_text, para_text in citation_matches:
                     year_val = int(year_text)
                     para_val = int(para_text)
@@ -519,6 +569,36 @@ def validate_output_json(target: ManifestTarget, output_path: Path) -> list[str]
                         reasons.append(
                             f'delta_brief citation paragraph number must be >=1, got {para_val}'
                         )
+                    if (
+                        year_val in (target.year_from, target.year_to)
+                        and para_val >= 1
+                    ):
+                        citation_pairs.append((year_val, para_val - 1))
+                missing_citation_pairs = sorted(
+                    {pair for pair in citation_pairs if pair not in evidence_pairs}
+                )
+                if missing_citation_pairs:
+                    formatted = ", ".join(
+                        f"{year} para {paragraph_idx + 1}"
+                        for year, paragraph_idx in missing_citation_pairs
+                    )
+                    reasons.append(
+                        "delta_brief citations must be represented in evidence blocks: "
+                        + formatted
+                    )
+        evidence_total = evidence_prev_count + evidence_curr_count
+        if evidence_total < DELTA_MIN_EVIDENCE or evidence_total > DELTA_MAX_EVIDENCE:
+            reasons.append(
+                f"det_llm_delta_brief_v1 evidence count must be {DELTA_MIN_EVIDENCE}-{DELTA_MAX_EVIDENCE}, got {evidence_total}"
+            )
+        if evidence_prev_count < DELTA_MIN_PER_YEAR:
+            reasons.append(
+                f"det_llm_delta_brief_v1 evidence count for year_from must be >= {DELTA_MIN_PER_YEAR}, got {evidence_prev_count}"
+            )
+        if evidence_curr_count < DELTA_MIN_PER_YEAR:
+            reasons.append(
+                f"det_llm_delta_brief_v1 evidence count for year_to must be >= {DELTA_MIN_PER_YEAR}, got {evidence_curr_count}"
+            )
 
     if target.detector_id == "det_llm_excerpt_picker_v1":
         selected_prev = parse_int_list(
@@ -530,36 +610,63 @@ def validate_output_json(target: ManifestTarget, output_path: Path) -> list[str]
         if selected_prev is not None:
             if len(selected_prev) != len(set(selected_prev)):
                 reasons.append("artifacts.selected_prev must not contain duplicates")
+            if selected_prev != sorted(selected_prev):
+                reasons.append("artifacts.selected_prev must be sorted ascending")
             for idx, value in enumerate(selected_prev):
                 if value < 0:
                     reasons.append(f"artifacts.selected_prev[{idx}] must be >= 0")
         if selected_curr is not None:
             if len(selected_curr) != len(set(selected_curr)):
                 reasons.append("artifacts.selected_curr must not contain duplicates")
+            if selected_curr != sorted(selected_curr):
+                reasons.append("artifacts.selected_curr must be sorted ascending")
             for idx, value in enumerate(selected_curr):
                 if value < 0:
                     reasons.append(f"artifacts.selected_curr[{idx}] must be >= 0")
 
-        if selected_prev is not None and evidence_prev_indices:
+        if selected_prev is not None:
             selected_prev_set = set(selected_prev)
-            missing_prev = [
-                idx for idx in evidence_prev_indices if idx not in selected_prev_set
-            ]
+            evidence_prev_set = set(evidence_prev_indices)
+            missing_prev = sorted(evidence_prev_set.difference(selected_prev_set))
             if missing_prev:
                 reasons.append(
                     "artifacts.selected_prev missing evidence paragraph_idx values: "
                     + ", ".join(str(idx) for idx in missing_prev)
                 )
-        if selected_curr is not None and evidence_curr_indices:
+            extra_prev = sorted(selected_prev_set.difference(evidence_prev_set))
+            if extra_prev:
+                reasons.append(
+                    "artifacts.selected_prev has extra paragraph_idx values not in evidence: "
+                    + ", ".join(str(idx) for idx in extra_prev)
+                )
+        if selected_curr is not None:
             selected_curr_set = set(selected_curr)
-            missing_curr = [
-                idx for idx in evidence_curr_indices if idx not in selected_curr_set
-            ]
+            evidence_curr_set = set(evidence_curr_indices)
+            missing_curr = sorted(evidence_curr_set.difference(selected_curr_set))
             if missing_curr:
                 reasons.append(
                     "artifacts.selected_curr missing evidence paragraph_idx values: "
                     + ", ".join(str(idx) for idx in missing_curr)
                 )
+            extra_curr = sorted(selected_curr_set.difference(evidence_curr_set))
+            if extra_curr:
+                reasons.append(
+                    "artifacts.selected_curr has extra paragraph_idx values not in evidence: "
+                    + ", ".join(str(idx) for idx in extra_curr)
+                )
+        evidence_total = evidence_prev_count + evidence_curr_count
+        if evidence_total < EXCERPT_MIN_EVIDENCE or evidence_total > EXCERPT_MAX_EVIDENCE:
+            reasons.append(
+                f"det_llm_excerpt_picker_v1 evidence count must be {EXCERPT_MIN_EVIDENCE}-{EXCERPT_MAX_EVIDENCE}, got {evidence_total}"
+            )
+        if evidence_prev_count < EXCERPT_MIN_PER_YEAR:
+            reasons.append(
+                f"det_llm_excerpt_picker_v1 evidence count for year_from must be >= {EXCERPT_MIN_PER_YEAR}, got {evidence_prev_count}"
+            )
+        if evidence_curr_count < EXCERPT_MIN_PER_YEAR:
+            reasons.append(
+                f"det_llm_excerpt_picker_v1 evidence count for year_to must be >= {EXCERPT_MIN_PER_YEAR}, got {evidence_curr_count}"
+            )
 
     return reasons
 
