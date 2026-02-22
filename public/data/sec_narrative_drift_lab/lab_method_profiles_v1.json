@@ -1,0 +1,233 @@
+{
+  "version": "1.0",
+  "updated_at": "2026-02-22T00:00:00Z",
+  "profiles": [
+    {
+      "detector_id": "det_logodds_terms_v1",
+      "short_purpose": "Highlights terms that became unusually distinctive in one year versus the adjacent year.",
+      "canonical_usage": "Weighted log-odds with informative priors is used to compare token distinctiveness across corpora with uneven counts.",
+      "this_app_deviation": "The lab applies the method to adjacent Item 1A sections only, after lens-specific cleaning and stop controls, then surfaces top evidence snippets instead of full corpus diagnostics.",
+      "when_it_works_well": "Works best when both years have comparable section length and the dominant risk themes are expressed with specific, repeated terminology.",
+      "failure_modes": [
+        "Can overreact to one-off proper nouns, legal entities, or formatting tokens when cleaning is weak.",
+        "Can understate gradual semantic drift when wording changes but core terms stay stable.",
+        "Can look noisy when section length changes sharply between years."
+      ],
+      "why_included_here": "It gives fast lexical drift intuition and a transparent ranked list that non-technical audiences can inspect immediately.",
+      "alternatives_not_chosen": [
+        "TF-IDF cosine-only scoring was not primary because it hides term-level directionality.",
+        "Embedding-only similarity was not primary because evidence traceability is weaker for quick audits."
+      ],
+      "current_industry_usage": "Still common in computational social science, policy-text comparison, and interpretable NLP diagnostics.",
+      "origin_claims": [
+        {
+          "title": "Fightin' Words: Lexical Feature Selection and Evaluation for Identifying the Content of Political Conflict",
+          "author_or_org": "Monroe, Colaresi, Quinn",
+          "year": 2008,
+          "url": "https://aclanthology.org/P08-1025/"
+        }
+      ]
+    },
+    {
+      "detector_id": "det_jsd_ngrams_v1",
+      "short_purpose": "Measures distributional drift in n-gram usage across adjacent years.",
+      "canonical_usage": "Jensen-Shannon divergence is used as a symmetric, bounded divergence measure between probability distributions.",
+      "this_app_deviation": "The lab applies JSD to filing-section n-gram distributions rather than broad document collections, then pairs scores with curated evidence snippets for interpretation.",
+      "when_it_works_well": "Works best when tokenization is stable and the pair has enough text volume for reliable n-gram distributions.",
+      "failure_modes": [
+        "High score can reflect style or formatting churn, not business-risk substance.",
+        "Low score can hide important but localized narrative changes.",
+        "Sensitive to tokenization and cleaning decisions."
+      ],
+      "why_included_here": "It provides a stable distribution-level signal that complements term-level rankings and helps detect broad wording shifts.",
+      "alternatives_not_chosen": [
+        "KL divergence was avoided as the primary drift score because asymmetry complicates stakeholder interpretation.",
+        "Wasserstein distance was not selected as baseline due additional modeling complexity for this scope."
+      ],
+      "current_industry_usage": "Widely used in NLP drift checks, topic distribution monitoring, and model/data shift diagnostics.",
+      "origin_claims": [
+        {
+          "title": "Divergence Measures Based on the Shannon Entropy",
+          "author_or_org": "Lin",
+          "year": 1991,
+          "url": "https://ieeexplore.ieee.org/document/61115"
+        }
+      ]
+    },
+    {
+      "detector_id": "det_minhash_boilerplate_v1",
+      "short_purpose": "Estimates how much language is near-duplicate across adjacent years.",
+      "canonical_usage": "MinHash approximates Jaccard similarity for large set comparisons at lower compute and memory cost.",
+      "this_app_deviation": "The lab uses paragraph-level shingles from Item 1A sections and reports reuse-oriented evidence instead of only a global similarity estimate.",
+      "when_it_works_well": "Works best when repeated legal language is substantial and the goal is separating boilerplate continuity from novel risk edits.",
+      "failure_modes": [
+        "Misses semantically similar paraphrases when exact shingle overlap is low.",
+        "Can overstate stability when legal boilerplate dominates section volume.",
+        "Threshold choices can change reuse counts materially."
+      ],
+      "why_included_here": "It separates true narrative change from repetitive filing boilerplate and improves confidence calibration for other drift detectors.",
+      "alternatives_not_chosen": [
+        "Exact full-text diff as primary reuse detector was avoided for fragility to minor edits.",
+        "Embedding-nearest-neighbor reuse detection was deferred due lower determinism."
+      ],
+      "current_industry_usage": "Still standard in near-duplicate detection, web/document deduplication, and scalable record-linkage pipelines.",
+      "origin_claims": [
+        {
+          "title": "On the Resemblance and Containment of Documents",
+          "author_or_org": "Broder",
+          "year": 1997,
+          "url": "https://dl.acm.org/doi/10.5555/258525.258538"
+        }
+      ]
+    },
+    {
+      "detector_id": "det_winnowing_fingerprint_v1",
+      "short_purpose": "Finds shared exact fingerprint spans that persist between years.",
+      "canonical_usage": "Winnowing selects representative fingerprints from k-grams to detect shared passages robustly with bounded guarantees.",
+      "this_app_deviation": "The lab applies winnowing to filing paragraphs for traceable overlap evidence and combines it with drift/structure cards rather than standalone plagiarism detection.",
+      "when_it_works_well": "Works best when overlap spans are exact or near-exact and reviewers need concrete retained-phrase anchors.",
+      "failure_modes": [
+        "Insensitive to semantic changes that keep only partial wording overlap.",
+        "Fingerprint density depends on k-gram/window settings.",
+        "Can surface low-value matches when repetitive disclosure templates dominate."
+      ],
+      "why_included_here": "It gives an interpretable exact-overlap lens that complements MinHash approximations and grounds structure-level continuity claims.",
+      "alternatives_not_chosen": [
+        "Suffix-array matching was not selected for baseline due implementation complexity for this product phase.",
+        "Pure edit-distance approaches were deprioritized for scale and readability tradeoffs."
+      ],
+      "current_industry_usage": "Used in document overlap checks, plagiarism systems, and code/text provenance tooling.",
+      "origin_claims": [
+        {
+          "title": "Winnowing: Local Algorithms for Document Fingerprinting",
+          "author_or_org": "Schleimer, Wilkerson, Aiken",
+          "year": 2003,
+          "url": "https://theory.stanford.edu/~aiken/publications/papers/sigmod03.pdf"
+        }
+      ]
+    },
+    {
+      "detector_id": "det_structure_artifacts_v1",
+      "short_purpose": "Flags heading, section-shape, and structural artifact changes between years.",
+      "canonical_usage": "Document structure analysis is commonly used to detect template changes, section drift, and formatting artifacts that can confound lexical metrics.",
+      "this_app_deviation": "The lab focuses on Item 1A heading/segment artifacts and links findings directly to evidence cards and deterministic agreement context.",
+      "when_it_works_well": "Works best when filings undergo template or heading reorganization that could otherwise distort lexical drift interpretation.",
+      "failure_modes": [
+        "Can report strong change when content is stable but formatting schema changed.",
+        "Can miss subtle semantic shifts when structure is unchanged.",
+        "Heading extraction heuristics can be brittle on irregular filings."
+      ],
+      "why_included_here": "It prevents false confidence from lexical-only signals by exposing structural churn explicitly.",
+      "alternatives_not_chosen": [
+        "Full document layout parsing with external OCR/layout engines was out of scope for deterministic static runtime.",
+        "Heavy template-classification models were excluded to keep runtime deterministic and transparent."
+      ],
+      "current_industry_usage": "Common in compliance document QA, contract analytics, and reporting template governance.",
+      "origin_claims": [
+        {
+          "title": "U.S. SEC Form 10-K General Instructions",
+          "author_or_org": "U.S. Securities and Exchange Commission",
+          "year": 2023,
+          "url": "https://www.sec.gov/about/forms/form10-k.pdf"
+        }
+      ]
+    },
+    {
+      "detector_id": "det_rbo_agreement_v1",
+      "short_purpose": "Quantifies rank-list agreement across deterministic detectors.",
+      "canonical_usage": "Rank-Biased Overlap compares top-weighted ranked lists with configurable depth sensitivity.",
+      "this_app_deviation": "The lab applies RBO as an agreement summary across detector outputs for the same case instead of IR-system benchmark ranking evaluation.",
+      "when_it_works_well": "Works best when multiple ranked detectors are available and stakeholders need a compact concordance view before deeper analysis.",
+      "failure_modes": [
+        "Can mask disagreements that occur below the top-weighted depth.",
+        "Agreement score can be high even when detector rationales differ.",
+        "Interpretation depends on ranked list quality from upstream detectors."
+      ],
+      "why_included_here": "It provides a compact consistency signal before users dive into method-specific evidence.",
+      "alternatives_not_chosen": [
+        "Kendall tau and Spearman were not primary because unequal list lengths and top-weighting are central here.",
+        "Pairwise overlap counts alone were too shallow for confidence framing."
+      ],
+      "current_industry_usage": "Used in IR evaluation and rank aggregation diagnostics where top-weighted overlap matters.",
+      "origin_claims": [
+        {
+          "title": "A Similarity Measure for Indefinite Rankings",
+          "author_or_org": "Webber, Moffat, Zobel",
+          "year": 2010,
+          "url": "https://dl.acm.org/doi/10.1145/1852102.1852106"
+        }
+      ]
+    },
+    {
+      "detector_id": "det_llm_delta_brief_v1",
+      "short_purpose": "Produces an evidence-cited narrative summary of directional risk changes.",
+      "canonical_usage": "LLM summarization is often used to condense long text into analyst-readable deltas with citation markers.",
+      "this_app_deviation": "The lab never calls models at runtime; summaries are precomputed offline under strict JSON and citation-to-evidence validation rules.",
+      "when_it_works_well": "Works best when evidence blocks are balanced across years and prompts enforce mechanism-level narrative structure.",
+      "failure_modes": [
+        "Can become templated or generic if prompt controls are weak.",
+        "Narrative may over-compress nuance if citations are sparse.",
+        "Quality can drift across model versions despite similar labels."
+      ],
+      "why_included_here": "It gives a fast narrative layer for comparison while keeping deterministic evidence and provenance constraints explicit.",
+      "alternatives_not_chosen": [
+        "Runtime model calls were rejected for security, determinism, and deploy-cost reasons.",
+        "Free-form prose without citation linkage was rejected due traceability risk."
+      ],
+      "current_industry_usage": "Used in analyst copilots and document-review workflows, usually with retrieval and grounding controls.",
+      "origin_claims": [
+        {
+          "title": "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models",
+          "author_or_org": "Wei et al.",
+          "year": 2022,
+          "url": "https://arxiv.org/abs/2201.11903"
+        },
+        {
+          "title": "GPT-4 Technical Report",
+          "author_or_org": "OpenAI",
+          "year": 2023,
+          "url": "https://arxiv.org/abs/2303.08774"
+        }
+      ]
+    },
+    {
+      "detector_id": "det_llm_excerpt_picker_v1",
+      "short_purpose": "Selects representative excerpt pairs with explicit rationale and highlights.",
+      "canonical_usage": "Extractive LLM workflows prioritize span selection tied to source passages for traceable review.",
+      "this_app_deviation": "The lab constrains outputs to strict excerpt-set equality, verbatim snippet checks, and bounded snippet length for reproducibility.",
+      "when_it_works_well": "Works best when representative paragraphs can be captured with concise verbatim spans and explicit why-rationale.",
+      "failure_modes": [
+        "Can favor obvious excerpts and miss subtle but material lines.",
+        "Selection quality degrades when evidence constraints are violated.",
+        "Model output style may vary unless campaign contract is tightly locked."
+      ],
+      "why_included_here": "It exposes concrete before-vs-after passages for side-by-side model and detector comparison.",
+      "alternatives_not_chosen": [
+        "Abstractive-only summaries were not accepted because exact source traceability is weaker.",
+        "Embedding-based excerpt retrieval was deferred to preserve strict deterministic auditability."
+      ],
+      "current_industry_usage": "Increasingly used in compliance and legal review copilots where grounded extraction is required.",
+      "origin_claims": [
+        {
+          "title": "Text Summarization with Pretrained Encoders",
+          "author_or_org": "Liu and Lapata",
+          "year": 2019,
+          "url": "https://aclanthology.org/D19-1387/"
+        },
+        {
+          "title": "Language Models are Few-Shot Learners",
+          "author_or_org": "Brown et al.",
+          "year": 2020,
+          "url": "https://arxiv.org/abs/2005.14165"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "script_version": "manual_method_profiles_v1",
+    "build_utc": "2026-02-22T00:00:00Z",
+    "notes": [
+      "Static sourced method background for Deep Dive v2 UI context drawer."
+    ]
+  }
+}

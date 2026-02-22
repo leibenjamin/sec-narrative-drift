@@ -107,6 +107,33 @@ export type LabMethodTracksIndex = {
   provenance?: LabProvenance
 }
 
+export type LabMethodProfileOriginClaim = {
+  title: string
+  author_or_org: string
+  year: number
+  url: string
+}
+
+export type LabMethodProfile = {
+  detector_id: string
+  short_purpose: string
+  canonical_usage: string
+  this_app_deviation: string
+  when_it_works_well: string
+  failure_modes: string[]
+  why_included_here: string
+  alternatives_not_chosen: string[]
+  current_industry_usage: string
+  origin_claims: LabMethodProfileOriginClaim[]
+}
+
+export type LabMethodProfilesIndex = {
+  version: string
+  updated_at: string
+  profiles: LabMethodProfile[]
+  provenance?: LabProvenance
+}
+
 export type LabArtifacts = {
   ranked_items?: RankedItem[]
   top_risers?: RankedItem[]

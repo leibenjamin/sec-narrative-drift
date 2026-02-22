@@ -3,6 +3,7 @@ import {
   LabCasesRegistrySchema,
   LabLlmCampaignsIndexSchema,
   LabLlmVariantsIndexSchema,
+  LabMethodProfilesIndexSchema,
   LabMethodTracksIndexSchema,
   LabOutputSchema,
 } from "./labSchemas"
@@ -17,6 +18,8 @@ import type {
   LabLlmCampaignsIndex,
   LabLlmVariant,
   LabLlmVariantsIndex,
+  LabMethodProfile,
+  LabMethodProfilesIndex,
   LabMethodTracksIndex,
   LabOutput,
   LabSourceId,
@@ -27,6 +30,7 @@ const LAB_CASES_PATH = `${LAB_BASE_PATH}/lab_cases_v1.json`
 const LAB_LLM_CAMPAIGNS_PATH = `${LAB_BASE_PATH}/lab_llm_campaigns_v1.json`
 const LAB_LLM_VARIANTS_PATH = `${LAB_BASE_PATH}/lab_llm_variants_v1.json`
 const LAB_METHOD_TRACKS_PATH = `${LAB_BASE_PATH}/lab_method_tracks_v1.json`
+const LAB_METHOD_PROFILES_PATH = `${LAB_BASE_PATH}/lab_method_profiles_v1.json`
 export const LAB_SHOWCASE_TICKERS = ["NVDA", "KO", "WM", "GE"] as const
 const LLM_DETECTORS = new Set<string>([
   "det_llm_delta_brief_v1",
@@ -73,6 +77,7 @@ let casesPromise: Promise<LabCasesRegistry> | null = null
 let llmCampaignsPromise: Promise<LabLlmCampaignsIndex> | null = null
 let llmVariantsPromise: Promise<LabLlmVariantsIndex> | null = null
 let methodTracksPromise: Promise<LabMethodTracksIndex> | null = null
+let methodProfilesPromise: Promise<LabMethodProfilesIndex> | null = null
 
 export function clearLabOutputCache(): void {
   outputCache.clear()
@@ -405,6 +410,40 @@ export async function loadLabMethodTracksIndex(): Promise<LabMethodTracksIndex> 
     )
   }
   return methodTracksPromise
+}
+
+export async function loadLabMethodProfilesIndex(): Promise<LabMethodProfilesIndex> {
+  if (!methodProfilesPromise) {
+    methodProfilesPromise = fetchJson<unknown>(
+      LAB_METHOD_PROFILES_PATH,
+      "Method profiles index is not available."
+    ).then((data) =>
+      parseLabPayload(
+        LabMethodProfilesIndexSchema,
+        data,
+        "LabMethodProfilesIndex",
+        LAB_METHOD_PROFILES_PATH
+      )
+    )
+  }
+  return methodProfilesPromise
+}
+
+export async function listLabMethodProfiles(): Promise<LabMethodProfile[]> {
+  const index = await loadLabMethodProfilesIndex()
+  return index.profiles
+}
+
+export async function getLabMethodProfileByDetectorId(
+  detectorId: string
+): Promise<LabMethodProfile | null> {
+  const index = await loadLabMethodProfilesIndex()
+  for (const profile of index.profiles) {
+    if (profile.detector_id === detectorId) {
+      return profile
+    }
+  }
+  return null
 }
 
 export async function listLabLlmCampaigns(): Promise<LabLlmCampaign[]> {

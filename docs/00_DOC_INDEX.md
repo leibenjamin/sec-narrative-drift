@@ -26,6 +26,7 @@
 - LLM campaigns index: `public/data/sec_narrative_drift_lab/lab_llm_campaigns_v1.json`
 - LLM variants index: `public/data/sec_narrative_drift_lab/lab_llm_variants_v1.json`
 - Method tracks index: `public/data/sec_narrative_drift_lab/lab_method_tracks_v1.json`
+- Method profiles index: `public/data/sec_narrative_drift_lab/lab_method_profiles_v1.json`
 
 ## Local-only artifacts
 - `bundles/*` - local run packs and handoff artifacts (kept uncommitted by policy).

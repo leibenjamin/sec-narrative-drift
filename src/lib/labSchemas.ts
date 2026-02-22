@@ -167,3 +167,30 @@ export const LabMethodTracksIndexSchema = z.object({
   tracks: z.array(LabMethodTrackSchema),
   provenance: LabProvenanceSchema.optional(),
 })
+
+export const LabMethodProfileOriginClaimSchema = z.object({
+  title: z.string(),
+  author_or_org: z.string(),
+  year: z.number(),
+  url: z.string(),
+})
+
+export const LabMethodProfileSchema = z.object({
+  detector_id: z.string(),
+  short_purpose: z.string(),
+  canonical_usage: z.string(),
+  this_app_deviation: z.string(),
+  when_it_works_well: z.string(),
+  failure_modes: z.array(z.string()),
+  why_included_here: z.string(),
+  alternatives_not_chosen: z.array(z.string()),
+  current_industry_usage: z.string(),
+  origin_claims: z.array(LabMethodProfileOriginClaimSchema),
+})
+
+export const LabMethodProfilesIndexSchema = z.object({
+  version: z.string(),
+  updated_at: z.string(),
+  profiles: z.array(LabMethodProfileSchema),
+  provenance: LabProvenanceSchema.optional(),
+})
