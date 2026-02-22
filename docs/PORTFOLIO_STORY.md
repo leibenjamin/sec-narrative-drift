@@ -19,6 +19,7 @@ This Lab shows how risk disclosures change year-over-year using deterministic de
 - LLM layer is reproducible: users can rerun from published focuspack inputs and thread-starter instructions.
 - Provenance is campaign-aware (`model_provider`, `model_name`, required day-precise `run_label`) to support future model-vs-model comparisons.
 - A/B compare is populated by two complete campaigns (`ChatGPT 5.2-Thinking (Extended Thinking)` and `GPT-5.3-Codex (Extra High Reasoning, Agent Mode)`), both strict-valid (`42/42`).
+- Deep Dive v2 adds detector signal-quality tiers plus sourced method-context drawers (canonical usage, this-app deviation, failure modes, alternatives, origins).
 - Current operational remainder: post-UX incognito screenshot closeout for three A/B compare states.
 
 ## Suggested walkthrough sequence
@@ -31,6 +32,7 @@ This Lab shows how risk disclosures change year-over-year using deterministic de
 4. Optional LLM layer:
    - Turn on `det_llm_delta_brief_v1` / `det_llm_excerpt_picker_v1` and compare `llmA` vs `llmB`.
    - Call out quick-diff strip metrics (confidence, evidence count, citation/evidence overlap behavior).
+   - In deep mode, open method context on first cards to explain detector intent and caveats to mixed audiences.
    - If artifacts are missing, point to explicit path-aware missing state.
 
 ## Operational evidence to mention

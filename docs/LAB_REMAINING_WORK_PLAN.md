@@ -82,6 +82,7 @@ Core time window: 2019-2024 adjacent year pairs (include most recent even if low
 
 Remaining human/manual work (post-hardening):
 - publish screenshot verification for A/B compare states on deployed site (incognito),
+- confirm Deep Dive v2 UX acceptance (active mode styling, signal banners, method context drawers),
 - optional editorial fine-tuning passes for Codex prose style (not contract-blocking),
 - finalize checklist screenshot row after captures are attached.
 
