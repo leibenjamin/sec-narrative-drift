@@ -14,6 +14,7 @@ import {
   getDefaultDeterministicTrackSlug,
   getDefaultLabLlmCampaignPair,
   getLabLlmCampaignById,
+  loadLabMethodProfilesIndex,
   listLabCasesForTicker,
   loadLabLlmCampaignsIndex,
   loadLabOutput,
@@ -24,6 +25,7 @@ import type {
   LabCase,
   LabCleaningLens,
   LabLlmCampaign,
+  LabMethodProfile,
   LabOutput,
   LabSourceId,
 } from "../lib/labTypes"
@@ -114,10 +116,15 @@ const LLM_DETECTOR_IDS = new Set<string>([
   "det_llm_excerpt_picker_v1",
 ])
 const DET_TRACK_SLUG = getDefaultDeterministicTrackSlug()
+type AnalysisMode = "executive" | "deep"
 
 function buildDetectorCardKey(detectorId: string, campaignId?: string): string {
   if (campaignId) return `${detectorId}::${campaignId}`
   return detectorId
+}
+
+function buildCardExpansionKey(scopeKey: string, cardKey: string): string {
+  return `${scopeKey}::${cardKey}`
 }
 
 function countDeltaCitations(output: LabOutput | null): number {
@@ -288,10 +295,14 @@ export default function LabPanel({
   const [llmCampaignOptions, setLlmCampaignOptions] = useState<LabLlmCampaign[]>([])
   const [selectedLlmCampaignA, setSelectedLlmCampaignA] = useState<string>("")
   const [selectedLlmCampaignB, setSelectedLlmCampaignB] = useState<string>("")
+  const [analysisMode, setAnalysisMode] = useState<AnalysisMode>("deep")
   const [presetStatus, setPresetStatus] = useState<{ message: string; token: number } | null>(
     null
   )
   const [expandedCards, setExpandedCards] = useState<Record<string, boolean>>({})
+  const [methodProfilesByDetector, setMethodProfilesByDetector] = useState<
+    Record<string, LabMethodProfile>
+  >({})
 
   // Track previous values for render-time state adjustments (React recommended pattern)
   const [prevTicker, setPrevTicker] = useState(ticker)
@@ -306,6 +317,8 @@ export default function LabPanel({
     setCaseDebugPath(null)
     setCases([])
     setSelectedCaseKey(null)
+    setExpandedCards({})
+    setAnalysisMode("deep")
   }
 
   useEffect(() => {
@@ -362,6 +375,26 @@ export default function LabPanel({
       cancelled = true
     }
   }, [requestedLlmCampaignA, requestedLlmCampaignB])
+
+  useEffect(() => {
+    let cancelled = false
+    loadLabMethodProfilesIndex()
+      .then((index) => {
+        if (cancelled) return
+        const next: Record<string, LabMethodProfile> = {}
+        for (const profile of index.profiles) {
+          next[profile.detector_id] = profile
+        }
+        setMethodProfilesByDetector(next)
+      })
+      .catch(() => {
+        if (cancelled) return
+        setMethodProfilesByDetector({})
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [])
 
   useEffect(() => {
     if (!onSelectedLlmCampaignsChange) return
@@ -787,30 +820,31 @@ export default function LabPanel({
     return cards
   }, [selectedDetectors, llmCampaignOptions, selectedLlmCampaignA, selectedLlmCampaignB])
 
-  const methodCardsKey = methodCards.map((card) => card.cardKey).join("|")
+  const expansionScopeKey = selectedCase
+    ? `${selectedCase.ticker}:${selectedCase.year_from}-${selectedCase.year_to}`
+    : `${ticker}:none`
+  const methodCardsKey = `${expansionScopeKey}|${methodCards.map((card) => card.cardKey).join("|")}`
   const [prevMethodCardsKey, setPrevMethodCardsKey] = useState(methodCardsKey)
   if (prevMethodCardsKey !== methodCardsKey) {
     setPrevMethodCardsKey(methodCardsKey)
     setExpandedCards((previous) => {
-      const next: Record<string, boolean> = {}
+      const next: Record<string, boolean> = { ...previous }
+      const visibleScopedKeys = new Set<string>()
       for (let index = 0; index < methodCards.length; index += 1) {
         const card = methodCards[index]
-        next[card.cardKey] =
-          Object.prototype.hasOwnProperty.call(previous, card.cardKey)
-            ? previous[card.cardKey]
-            : index < 2
-      }
-      const previousKeys = Object.keys(previous)
-      const nextKeys = Object.keys(next)
-      if (previousKeys.length !== nextKeys.length) {
-        return next
-      }
-      for (const key of nextKeys) {
-        if (previous[key] !== next[key]) {
-          return next
+        const scopedKey = buildCardExpansionKey(expansionScopeKey, card.cardKey)
+        visibleScopedKeys.add(scopedKey)
+        if (!Object.prototype.hasOwnProperty.call(next, scopedKey)) {
+          next[scopedKey] = index < 2
         }
       }
-      return previous
+      const scopePrefix = `${expansionScopeKey}::`
+      for (const existingKey of Object.keys(next)) {
+        if (existingKey.startsWith(scopePrefix) && !visibleScopedKeys.has(existingKey)) {
+          delete next[existingKey]
+        }
+      }
+      return next
     })
   }
 
@@ -879,15 +913,38 @@ export default function LabPanel({
     return count
   }, [availableDetectorSet, selectedDetectors])
 
+  const deepAutoOpenContextKeys = useMemo(() => {
+    return new Set(methodCards.slice(0, 2).map((card) => card.cardKey))
+  }, [methodCards])
+
+  const expandedCount = useMemo(() => {
+    let count = 0
+    for (const card of methodCards) {
+      const scopedKey = buildCardExpansionKey(expansionScopeKey, card.cardKey)
+      if (expandedCards[scopedKey]) {
+        count += 1
+      }
+    }
+    return count
+  }, [expandedCards, expansionScopeKey, methodCards])
+
   const selectedPairLabel = selectedCase
     ? `${selectedCase.year_from}-${selectedCase.year_to}`
     : "none"
+  const isExecutiveMode = analysisMode === "executive"
+  const isDeepMode = analysisMode === "deep"
+  const modeLabel = isDeepMode ? "Deep" : "Executive"
 
-  const handleApplyPreset = (presetDetectorIds: string[], preferredLens: LabCleaningLens) => {
+  const handleApplyPreset = (
+    presetDetectorIds: string[],
+    preferredLens: LabCleaningLens,
+    mode: AnalysisMode
+  ) => {
     const nextDetectors = [...new Set(presetDetectorIds)]
+    setAnalysisMode(mode)
     setSelectedDetectors([...nextDetectors])
-    let nextLens = lens
-    if (preferredLens === "deboilerplated") {
+    let nextLens = preferredLens
+    if (mode === "executive") {
       if (availableLenses.includes("deboilerplated")) {
         nextLens = "deboilerplated"
       } else {
@@ -911,7 +968,7 @@ export default function LabPanel({
       }
     }
     setPresetStatus({
-      message: `Applied Technical deep dive preset: ${nextDetectors.length} methods`,
+      message: `Applied Technical deep dive preset: ${nextDetectors.length} methods, lens=${nextLens}`,
       token: Date.now(),
     })
   }
@@ -925,7 +982,7 @@ export default function LabPanel({
     setExpandedCards((previous) => {
       const next: Record<string, boolean> = { ...previous }
       for (const card of methodCards) {
-        next[card.cardKey] = true
+        next[buildCardExpansionKey(expansionScopeKey, card.cardKey)] = true
       }
       return next
     })
@@ -935,16 +992,17 @@ export default function LabPanel({
     setExpandedCards((previous) => {
       const next: Record<string, boolean> = { ...previous }
       for (const card of methodCards) {
-        next[card.cardKey] = false
+        next[buildCardExpansionKey(expansionScopeKey, card.cardKey)] = false
       }
       return next
     })
   }
 
   const handleToggleCardExpanded = (cardKey: string) => {
+    const scopedKey = buildCardExpansionKey(expansionScopeKey, cardKey)
     setExpandedCards((previous) => ({
       ...previous,
-      [cardKey]: !previous[cardKey],
+      [scopedKey]: !previous[scopedKey],
     }))
   }
 
@@ -1120,15 +1178,25 @@ export default function LabPanel({
             <div className="mt-3 flex flex-wrap items-center gap-2">
               <button
                 type="button"
-                onClick={() => handleApplyPreset(EXECUTIVE_READ_PRESET, "deboilerplated")}
-                className="rounded-md border border-sky-300/30 bg-sky-400/10 px-2 py-1 text-xs text-sky-100 transition hover:border-sky-200/60"
+                onClick={() =>
+                  handleApplyPreset(EXECUTIVE_READ_PRESET, "deboilerplated", "executive")
+                }
+                className={`rounded-md border px-2 py-1 text-xs transition ${
+                  isExecutiveMode
+                    ? "border-sky-200/70 bg-sky-400/20 text-sky-100"
+                    : "border-white/20 bg-slate-900/60 text-slate-100 hover:border-white/40"
+                }`}
               >
                 30-second executive read
               </button>
               <button
                 type="button"
-                onClick={() => handleApplyPreset(TECHNICAL_DEEP_DIVE_PRESET, lens)}
-                className="rounded-md border border-white/20 bg-slate-900/60 px-2 py-1 text-xs text-slate-100 transition hover:border-white/40"
+                onClick={() => handleApplyPreset(TECHNICAL_DEEP_DIVE_PRESET, lens, "deep")}
+                className={`rounded-md border px-2 py-1 text-xs transition ${
+                  isDeepMode
+                    ? "border-emerald-200/70 bg-emerald-400/20 text-emerald-100"
+                    : "border-white/20 bg-slate-900/60 text-slate-100 hover:border-white/40"
+                }`}
               >
                 Technical deep dive preset
               </button>
@@ -1137,15 +1205,19 @@ export default function LabPanel({
                 onClick={handleExpandAllCards}
                 className="rounded-md border border-white/20 bg-slate-900/60 px-2 py-1 text-xs text-slate-100 transition hover:border-white/40"
               >
-                Expand all
+                Expand all ({expandedCount}/{methodCards.length} expanded)
               </button>
               <button
                 type="button"
                 onClick={handleCollapseAllCards}
                 className="rounded-md border border-white/20 bg-slate-900/60 px-2 py-1 text-xs text-slate-100 transition hover:border-white/40"
               >
-                Collapse all
+                Collapse all ({expandedCount}/{methodCards.length} expanded)
               </button>
+            </div>
+            <div className="mt-2 rounded-md border border-white/10 bg-slate-950/35 px-3 py-2 text-xs text-slate-200">
+              Mode: {modeLabel} | {selectedDetectors.length} methods selected | {expandedCount}/
+              {methodCards.length} expanded
             </div>
             <div className="mt-2 flex flex-wrap items-center gap-3 text-xs text-slate-300">
               <a className="underline decoration-white/30 underline-offset-2 hover:text-slate-100" href="#lab-agreement">
@@ -1161,6 +1233,41 @@ export default function LabPanel({
                 LLM compare
               </a>
             </div>
+            {isDeepMode ? (
+              <div className="mt-2 flex flex-wrap items-center gap-3 text-xs text-slate-300">
+                <span className="uppercase tracking-wide text-slate-400">Deep sections:</span>
+                <a
+                  className="underline decoration-white/30 underline-offset-2 hover:text-slate-100"
+                  href="#lab-agreement"
+                >
+                  Agreement
+                </a>
+                <a
+                  className="underline decoration-white/30 underline-offset-2 hover:text-slate-100"
+                  href="#lab-core-methods"
+                >
+                  Core methods
+                </a>
+                <a
+                  className="underline decoration-white/30 underline-offset-2 hover:text-slate-100"
+                  href="#lab-structure-methods"
+                >
+                  Structure methods
+                </a>
+                <a
+                  className="underline decoration-white/30 underline-offset-2 hover:text-slate-100"
+                  href="#lab-llm-compare"
+                >
+                  LLM compare
+                </a>
+                <a
+                  className="underline decoration-white/30 underline-offset-2 hover:text-slate-100"
+                  href="#lab-method-context"
+                >
+                  Method context
+                </a>
+              </div>
+            ) : null}
             {presetStatus ? (
               <p className="mt-2 text-xs text-emerald-300">{presetStatus.message}</p>
             ) : null}
@@ -1321,7 +1428,7 @@ export default function LabPanel({
         </div>
       ) : null}
 
-      <div className="space-y-6">
+      <div id="lab-method-context" className="space-y-6">
         {groupedMethodCards.map((group) => (
           <section key={group.id} id={group.sectionId} className="space-y-3">
             <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-300">
@@ -1353,7 +1460,13 @@ export default function LabPanel({
                   debugPath={outputDebugPaths[detector.cardKey] ?? null}
                   debugInfo={outputDebugInfo[detector.cardKey] ?? null}
                   isLoading={isLoadingOutputs}
-                  isExpanded={expandedCards[detector.cardKey] ?? false}
+                  analysisMode={analysisMode}
+                  methodProfile={methodProfilesByDetector[detector.id] ?? null}
+                  autoOpenContext={isDeepMode && deepAutoOpenContextKeys.has(detector.cardKey)}
+                  isExpanded={
+                    expandedCards[buildCardExpansionKey(expansionScopeKey, detector.cardKey)] ??
+                    false
+                  }
                   onToggleExpanded={() => handleToggleCardExpanded(detector.cardKey)}
                   emptyMessage="No lab output for this detector/lens yet."
                 />
