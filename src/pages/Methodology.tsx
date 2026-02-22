@@ -88,6 +88,10 @@ export default function Methodology() {
             The product is deterministic-first and evidence-first. LLM outputs are optional
             precomputed artifacts with reproducibility tooling, never runtime inference.
           </p>
+          <p className="max-w-4xl rounded-md border border-white/10 bg-slate-900/35 px-3 py-2 text-sm text-slate-200">
+            Use Executive mode for rapid read; use Deep mode for method caveats, sourced origins,
+            and model comparison.
+          </p>
         </header>
 
         <section className="grid gap-4 rounded-xl border border-white/10 bg-slate-900/45 p-5 md:grid-cols-2 xl:grid-cols-4">

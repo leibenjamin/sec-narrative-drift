@@ -171,6 +171,10 @@ export default function Company() {
               </p>
             </div>
           </div>
+          <p className="text-sm text-slate-300">
+            Deterministic baseline + dual-model A/B compare + path-level reproducibility in one
+            flow.
+          </p>
         </header>
 
         <LabPanel

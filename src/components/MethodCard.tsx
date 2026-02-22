@@ -160,6 +160,10 @@ function buildWeaknessReason(output: LabOutput | null): string {
   return `${weakness.join("; ")}.`
 }
 
+function buildDecisionSentence(signalSummary: SignalSummary): string {
+  return `Interpretation: ${signalSummary.summary} ${signalSummary.nextAction}`
+}
+
 function signalTierClasses(tier: SignalTier): string {
   if (tier === "high") return "border-emerald-300/25 bg-emerald-400/10 text-emerald-100"
   if (tier === "medium") return "border-sky-300/25 bg-sky-400/10 text-sky-100"
@@ -214,6 +218,9 @@ export default function MethodCard({
   const [projectInstructions, setProjectInstructions] = useState<string>("")
   const [projectInstructionsError, setProjectInstructionsError] = useState<string | null>(null)
   const [contextPreference, setContextPreference] = useState<"auto" | "open" | "closed">("auto")
+  const [diagnosticsPreference, setDiagnosticsPreference] = useState<"auto" | "open" | "closed">(
+    "auto"
+  )
 
   const warnings = output?.metrics.warnings ?? []
   const rankedItems = normalizeRankedList(output?.artifacts.ranked_items)
@@ -224,6 +231,7 @@ export default function MethodCard({
   const isDeltaBrief = output?.detector_id === "det_llm_delta_brief_v1"
   const signalSummary = useMemo(() => classifySignal(output), [output])
   const weaknessReason = useMemo(() => buildWeaknessReason(output), [output])
+  const decisionSentence = useMemo(() => buildDecisionSentence(signalSummary), [signalSummary])
 
   const deltaBriefRaw = isDeltaBrief ? output?.artifacts.delta_brief : null
   const deltaBriefText =
@@ -328,6 +336,14 @@ export default function MethodCard({
   const isContextOpen =
     contextPreference === "open" ||
     (contextPreference === "auto" && analysisMode === "deep" && autoOpenContext)
+  const defaultDiagnosticsOpen =
+    analysisMode !== "deep" ||
+    signalSummary.tier === "low" ||
+    signalSummary.tier === "insufficient"
+  const isDiagnosticsOpen =
+    diagnosticsPreference === "auto"
+      ? defaultDiagnosticsOpen
+      : diagnosticsPreference === "open"
 
   const handleToggleContext = () => {
     if (isContextOpen) {
@@ -337,12 +353,21 @@ export default function MethodCard({
     }
   }
 
+  const handleToggleDiagnostics = () => {
+    if (isDiagnosticsOpen) {
+      setDiagnosticsPreference("closed")
+    } else {
+      setDiagnosticsPreference("open")
+    }
+  }
+
   return (
     <section className="rounded-xl border border-white/10 bg-slate-950/40 p-5">
       <header className="flex flex-wrap items-start justify-between gap-3">
         <div>
           <h3 className="text-lg font-semibold text-slate-100">{title}</h3>
           {description ? <p className="text-sm text-slate-300">{description}</p> : null}
+          <p className="mt-2 text-sm text-slate-200">{decisionSentence}</p>
         </div>
         <div className="flex flex-wrap items-center gap-2 text-sm text-slate-300">
           <span>drift {formatMetric(output?.metrics.drift_score)}</span>
@@ -615,46 +640,72 @@ export default function MethodCard({
                 </div>
               ) : null}
 
-              {warnings.length ? (
-                <div className="rounded-md border border-amber-400/30 bg-amber-400/10 p-3 text-xs text-amber-100">
-                  Warnings: {warnings.join(", ")}
-                </div>
-              ) : null}
+              {warnings.length || rankedItems.length || topRisers.length || topFallers.length ? (
+                <div className="rounded-md border border-white/10 bg-slate-900/35 p-3">
+                  <div className="flex items-center justify-between gap-3">
+                    <div>
+                      <div className="text-xs font-semibold uppercase tracking-wide text-slate-200">
+                        Diagnostic details
+                      </div>
+                      <p className="mt-1 text-xs text-slate-400">
+                        Warnings, ranked terms, and riser/faller context.
+                      </p>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={handleToggleDiagnostics}
+                      className="rounded-md border border-white/20 bg-slate-900/60 px-2 py-1 text-xs text-slate-100 transition hover:border-white/40"
+                    >
+                      {isDiagnosticsOpen ? "Hide diagnostics" : "Show diagnostics"}
+                    </button>
+                  </div>
 
-              {rankedItems.length ? (
-                <div>
-                  <div className="text-xs uppercase tracking-wide text-slate-400">Top ranked</div>
-                  <div className="mt-2 flex flex-wrap gap-2">
-                    {rankedItems.slice(0, 8).map((item) => (
-                      <span
-                        key={item.label}
-                        className="rounded-full border border-white/10 bg-white/5 px-2 py-1 text-xs text-slate-200"
-                      >
-                        {item.label} | {item.score.toFixed(2)}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ) : null}
+                  {isDiagnosticsOpen ? (
+                    <div className="mt-3 space-y-4">
+                      {warnings.length ? (
+                        <div className="rounded-md border border-amber-400/30 bg-amber-400/10 p-3 text-xs text-amber-100">
+                          Warnings: {warnings.join(", ")}
+                        </div>
+                      ) : null}
 
-              {topRisers.length || topFallers.length ? (
-                <div className="grid gap-3 md:grid-cols-2">
-                  <div>
-                    <div className="text-xs uppercase tracking-wide text-slate-400">Risers</div>
-                    <ul className="mt-2 space-y-1 text-xs text-slate-200">
-                      {topRisers.slice(0, 6).map((item) => (
-                        <li key={item.label}>{item.label}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div>
-                    <div className="text-xs uppercase tracking-wide text-slate-400">Fallers</div>
-                    <ul className="mt-2 space-y-1 text-xs text-slate-200">
-                      {topFallers.slice(0, 6).map((item) => (
-                        <li key={item.label}>{item.label}</li>
-                      ))}
-                    </ul>
-                  </div>
+                      {rankedItems.length ? (
+                        <div>
+                          <div className="text-xs uppercase tracking-wide text-slate-400">Top ranked</div>
+                          <div className="mt-2 flex flex-wrap gap-2">
+                            {rankedItems.slice(0, 8).map((item) => (
+                              <span
+                                key={item.label}
+                                className="rounded-full border border-white/10 bg-white/5 px-2 py-1 text-xs text-slate-200"
+                              >
+                                {item.label} | {item.score.toFixed(2)}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      ) : null}
+
+                      {topRisers.length || topFallers.length ? (
+                        <div className="grid gap-3 md:grid-cols-2">
+                          <div>
+                            <div className="text-xs uppercase tracking-wide text-slate-400">Risers</div>
+                            <ul className="mt-2 space-y-1 text-xs text-slate-200">
+                              {topRisers.slice(0, 6).map((item) => (
+                                <li key={item.label}>{item.label}</li>
+                              ))}
+                            </ul>
+                          </div>
+                          <div>
+                            <div className="text-xs uppercase tracking-wide text-slate-400">Fallers</div>
+                            <ul className="mt-2 space-y-1 text-xs text-slate-200">
+                              {topFallers.slice(0, 6).map((item) => (
+                                <li key={item.label}>{item.label}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
+                      ) : null}
+                    </div>
+                  ) : null}
                 </div>
               ) : null}
 

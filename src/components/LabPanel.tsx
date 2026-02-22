@@ -161,6 +161,42 @@ function excerptEvidenceOverlapPercent(a: LabOutput | null, b: LabOutput | null)
   return (intersection / union.size) * 100
 }
 
+function buildLlmCompareRead(params: {
+  confidenceDelta: number | null
+  evidenceDelta: number
+  overlapPercent: number | null
+}): string {
+  const parts: string[] = []
+
+  if (params.confidenceDelta === null) {
+    parts.push("Confidence unavailable")
+  } else if (params.confidenceDelta >= 0.1) {
+    parts.push("A higher confidence")
+  } else if (params.confidenceDelta <= -0.1) {
+    parts.push("B higher confidence")
+  } else {
+    parts.push("Confidence similar")
+  }
+
+  if (params.evidenceDelta >= 2) {
+    parts.push("A broader evidence set")
+  } else if (params.evidenceDelta <= -2) {
+    parts.push("B broader evidence set")
+  }
+
+  if (params.overlapPercent !== null) {
+    if (params.overlapPercent < 40) {
+      parts.push("Divergent excerpt choices")
+    } else if (params.overlapPercent <= 75) {
+      parts.push("Partial overlap")
+    } else {
+      parts.push("High overlap")
+    }
+  }
+
+  return parts.join(", ")
+}
+
 function buildCaseKey(caseItem: LabCase): string {
   return `${caseItem.year_from}-${caseItem.year_to}`
 }
@@ -823,27 +859,36 @@ export default function LabPanel({
   const expansionScopeKey = selectedCase
     ? `${selectedCase.ticker}:${selectedCase.year_from}-${selectedCase.year_to}`
     : `${ticker}:none`
-  const methodCardsKey = `${expansionScopeKey}|${methodCards.map((card) => card.cardKey).join("|")}`
+  const methodCardsKey = `${expansionScopeKey}|mode:${analysisMode}|${methodCards
+    .map((card) => card.cardKey)
+    .join("|")}`
   const [prevMethodCardsKey, setPrevMethodCardsKey] = useState(methodCardsKey)
   if (prevMethodCardsKey !== methodCardsKey) {
     setPrevMethodCardsKey(methodCardsKey)
     setExpandedCards((previous) => {
       const next: Record<string, boolean> = { ...previous }
-      const visibleScopedKeys = new Set<string>()
-      for (let index = 0; index < methodCards.length; index += 1) {
-        const card = methodCards[index]
-        const scopedKey = buildCardExpansionKey(expansionScopeKey, card.cardKey)
-        visibleScopedKeys.add(scopedKey)
-        if (!Object.prototype.hasOwnProperty.call(next, scopedKey)) {
-          next[scopedKey] = index < 2
-        }
-      }
       const scopePrefix = `${expansionScopeKey}::`
+
+      // Reset scoped expansion defaults on mode/case/ticker changes.
       for (const existingKey of Object.keys(next)) {
-        if (existingKey.startsWith(scopePrefix) && !visibleScopedKeys.has(existingKey)) {
+        if (existingKey.startsWith(scopePrefix)) {
           delete next[existingKey]
         }
       }
+
+      const firstCoreCardKey = methodCards.find((card) => card.group === "core")?.cardKey ?? null
+      const firstLlmDetectorId = methodCards.find((card) => card.group === "llm")?.id ?? null
+
+      for (const card of methodCards) {
+        const scopedKey = buildCardExpansionKey(expansionScopeKey, card.cardKey)
+        const defaultExpanded =
+          analysisMode === "executive"
+            ? true
+            : card.cardKey === firstCoreCardKey ||
+              (card.group === "llm" && firstLlmDetectorId !== null && card.id === firstLlmDetectorId)
+        next[scopedKey] = defaultExpanded
+      }
+
       return next
     })
   }
@@ -856,6 +901,7 @@ export default function LabPanel({
       evidenceDelta: number
       citationDelta: number | null
       overlapPercent: number | null
+      readText: string
     }> = []
     if (!selectedLlmCampaignA || !selectedLlmCampaignB) return rows
     for (const detector of DETECTOR_CATALOG) {
@@ -883,6 +929,11 @@ export default function LabPanel({
         evidenceDelta,
         citationDelta,
         overlapPercent,
+        readText: buildLlmCompareRead({
+          confidenceDelta,
+          evidenceDelta,
+          overlapPercent,
+        }),
       })
     }
     return rows
@@ -1129,11 +1180,11 @@ export default function LabPanel({
 
           <div className="grid gap-3 md:grid-cols-2">
             <div>
-              <div className="text-xs uppercase tracking-wide text-slate-400">Model A (LLM)</div>
+              <div className="text-sm uppercase tracking-wide text-slate-400">Model A (LLM)</div>
               <select
                 value={selectedLlmCampaignA}
                 onChange={(event) => setSelectedLlmCampaignA(event.target.value)}
-                className="mt-2 w-full rounded-md border border-white/15 bg-slate-950/40 px-3 py-2 text-xs text-slate-100"
+                className="mt-2 w-full rounded-md border border-white/15 bg-slate-950/40 px-3 py-2 text-sm text-slate-100"
               >
                 {llmCampaignOptions.map((campaign) => (
                   <option key={campaign.campaign_id} value={campaign.campaign_id}>
@@ -1143,11 +1194,11 @@ export default function LabPanel({
               </select>
             </div>
             <div>
-              <div className="text-xs uppercase tracking-wide text-slate-400">Model B (LLM)</div>
+              <div className="text-sm uppercase tracking-wide text-slate-400">Model B (LLM)</div>
               <select
                 value={selectedLlmCampaignB}
                 onChange={(event) => setSelectedLlmCampaignB(event.target.value)}
-                className="mt-2 w-full rounded-md border border-white/15 bg-slate-950/40 px-3 py-2 text-xs text-slate-100"
+                className="mt-2 w-full rounded-md border border-white/15 bg-slate-950/40 px-3 py-2 text-sm text-slate-100"
               >
                 {llmCampaignOptions.map((campaign) => (
                   <option key={campaign.campaign_id} value={campaign.campaign_id}>
@@ -1160,19 +1211,9 @@ export default function LabPanel({
 
           <div>
             <div className="flex items-center justify-between gap-3">
-              <div className="text-xs uppercase tracking-wide text-slate-400">Methods</div>
-              <div className="flex items-center gap-2">
-                <button
-                  type="button"
-                  onClick={handleReloadOutputs}
-                  disabled={!selectedCase || isLoadingOutputs}
-                  className="rounded-md border border-white/15 bg-slate-900/50 px-2 py-1 text-[11px] text-slate-200 transition hover:border-white/35 disabled:cursor-not-allowed disabled:opacity-50"
-                >
-                  Reload outputs
-                </button>
-                <div className="text-[11px] text-slate-400">
-                  Available outputs: {availableDetectorIds.length}/{DETECTOR_CATALOG.length}
-                </div>
+              <div className="text-sm uppercase tracking-wide text-slate-300">Methods</div>
+              <div className="text-sm text-slate-400">
+                Available outputs: {availableDetectorIds.length}/{DETECTOR_CATALOG.length}
               </div>
             </div>
             <div className="mt-3 flex flex-wrap items-center gap-2">
@@ -1181,10 +1222,10 @@ export default function LabPanel({
                 onClick={() =>
                   handleApplyPreset(EXECUTIVE_READ_PRESET, "deboilerplated", "executive")
                 }
-                className={`rounded-md border px-2 py-1 text-xs transition ${
+                className={`rounded-md border px-2 py-1 text-sm transition ${
                   isExecutiveMode
-                    ? "border-sky-200/70 bg-sky-400/20 text-sky-100"
-                    : "border-white/20 bg-slate-900/60 text-slate-100 hover:border-white/40"
+                    ? "border-sky-200/80 bg-sky-400/25 text-sky-50 shadow-[0_0_0_1px_rgba(125,211,252,0.25)]"
+                    : "border-white/15 bg-slate-900/45 text-slate-300 hover:border-white/30 hover:text-slate-100"
                 }`}
               >
                 30-second executive read
@@ -1192,10 +1233,10 @@ export default function LabPanel({
               <button
                 type="button"
                 onClick={() => handleApplyPreset(TECHNICAL_DEEP_DIVE_PRESET, lens, "deep")}
-                className={`rounded-md border px-2 py-1 text-xs transition ${
+                className={`rounded-md border px-2 py-1 text-sm transition ${
                   isDeepMode
-                    ? "border-emerald-200/70 bg-emerald-400/20 text-emerald-100"
-                    : "border-white/20 bg-slate-900/60 text-slate-100 hover:border-white/40"
+                    ? "border-emerald-200/80 bg-emerald-400/25 text-emerald-50 shadow-[0_0_0_1px_rgba(110,231,183,0.25)]"
+                    : "border-white/15 bg-slate-900/45 text-slate-300 hover:border-white/30 hover:text-slate-100"
                 }`}
               >
                 Technical deep dive preset
@@ -1214,10 +1255,21 @@ export default function LabPanel({
               >
                 Collapse all ({expandedCount}/{methodCards.length} expanded)
               </button>
+              <div className="ml-auto flex items-center gap-2 text-xs text-slate-500">
+                <span className="uppercase tracking-wide text-slate-500">Utility</span>
+                <button
+                  type="button"
+                  onClick={handleReloadOutputs}
+                  disabled={!selectedCase || isLoadingOutputs}
+                  className="rounded-md border border-white/10 bg-slate-950/40 px-2 py-1 text-xs text-slate-300 transition hover:border-white/25 hover:text-slate-100 disabled:cursor-not-allowed disabled:opacity-50"
+                >
+                  Reload outputs
+                </button>
+              </div>
             </div>
-            <div className="mt-2 rounded-md border border-white/10 bg-slate-950/35 px-3 py-2 text-xs text-slate-200">
-              Mode: {modeLabel} | {selectedDetectors.length} methods selected | {expandedCount}/
-              {methodCards.length} expanded
+            <div className="mt-2 rounded-md border border-white/10 bg-slate-950/35 px-3 py-2 text-sm text-slate-200">
+              Mode: {modeLabel} | Pair: {selectedPairLabel} | Lens: {lens} | Methods selected:{" "}
+              {selectedDetectors.length} | Expanded: {expandedCount}/{methodCards.length}
             </div>
             <div className="mt-2 flex flex-wrap items-center gap-3 text-xs text-slate-300">
               <a className="underline decoration-white/30 underline-offset-2 hover:text-slate-100" href="#lab-agreement">
@@ -1404,6 +1456,7 @@ export default function LabPanel({
                   <th className="pr-4">Evidence delta</th>
                   <th className="pr-4">Citation delta</th>
                   <th>Evidence overlap</th>
+                  <th className="pl-4">Read</th>
                 </tr>
               </thead>
               <tbody>
@@ -1420,6 +1473,7 @@ export default function LabPanel({
                     <td className="py-1">
                       {row.overlapPercent === null ? "-" : `${row.overlapPercent.toFixed(0)}%`}
                     </td>
+                    <td className="py-1 pl-4 text-slate-200">{row.readText}</td>
                   </tr>
                 ))}
               </tbody>
