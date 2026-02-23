@@ -165,9 +165,11 @@ export default function Company() {
               </p>
             </div>
             <div className="rounded-md border border-emerald-300/20 bg-emerald-400/10 p-3">
-              <div className="text-xs uppercase tracking-wide text-emerald-100">How confident</div>
+              <div className="text-xs uppercase tracking-wide text-emerald-100">
+                How to read confidence
+              </div>
               <p className="mt-1 text-sm text-slate-100">
-                Confidence comes from deterministic baselines plus explicit evidence, provenance, and path-level debug states.
+                Confidence bands are heuristic tri-level signals (0.25/0.50/0.75) supported by deterministic baselines, explicit evidence, provenance, and path-level debug states.
               </p>
             </div>
           </div>

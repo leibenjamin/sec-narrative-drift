@@ -79,6 +79,13 @@ function formatMetric(value: number | null | undefined): string {
   return value.toFixed(3)
 }
 
+function formatConfidenceBand(value: number | null | undefined): string {
+  if (value === null || value === undefined || Number.isNaN(value)) return "-"
+  if (value >= 0.75) return `High (${value.toFixed(2)})`
+  if (value <= 0.25) return `Low (${value.toFixed(2)})`
+  return `Medium (${value.toFixed(2)})`
+}
+
 function classifySignal(output: LabOutput | null): SignalSummary {
   if (!output) {
     return {
@@ -269,6 +276,7 @@ export default function MethodCard({
       yearTo: debugInfo.yearTo,
       detectorId: debugInfo.detectorId || detectorId,
       lens: debugInfo.lens,
+      sectionId: output?.section ?? "10k_item1a",
       campaignId: llmCampaign.campaignId,
       campaignDisplayName: llmCampaign.campaignDisplayName,
       modelProvider: llmCampaign.modelProvider,
@@ -278,7 +286,15 @@ export default function MethodCard({
       runLabelTemplate: "YYYY-MM-DD_<campaign_tag>",
       sourceId: output?.source_id ?? "edgar",
     })
-  }, [llmCard, debugInfo, inputFileForRerun, llmCampaign, detectorId, output?.source_id])
+  }, [
+    llmCard,
+    debugInfo,
+    inputFileForRerun,
+    llmCampaign,
+    detectorId,
+    output?.section,
+    output?.source_id,
+  ])
 
   useEffect(() => {
     if (!llmCard) return
@@ -375,7 +391,11 @@ export default function MethodCard({
         </div>
         <div className="flex flex-wrap items-center gap-2 text-sm text-slate-300">
           <span>drift {formatMetric(output?.metrics.drift_score)}</span>
-          <span>confidence {formatMetric(output?.metrics.confidence)}</span>
+          <span
+            title="Ordinal tri-level score (0.25/0.50/0.75), not a calibrated probability or confidence interval."
+          >
+            confidence band (heuristic) {formatConfidenceBand(output?.metrics.confidence)}
+          </span>
           <span>coverage {formatMetric(output?.metrics.coverage)}</span>
           <button
             type="button"

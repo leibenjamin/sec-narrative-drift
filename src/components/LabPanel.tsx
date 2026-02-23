@@ -169,13 +169,13 @@ function buildLlmCompareRead(params: {
   const parts: string[] = []
 
   if (params.confidenceDelta === null) {
-    parts.push("Confidence unavailable")
+    parts.push("Confidence band unavailable")
   } else if (params.confidenceDelta >= 0.1) {
-    parts.push("A higher confidence")
+    parts.push("A higher confidence band")
   } else if (params.confidenceDelta <= -0.1) {
-    parts.push("B higher confidence")
+    parts.push("B higher confidence band")
   } else {
-    parts.push("Confidence similar")
+    parts.push("Confidence band similar")
   }
 
   if (params.evidenceDelta >= 2) {
@@ -1511,14 +1511,15 @@ export default function LabPanel({
         <div id="lab-llm-compare" className="rounded-xl border border-sky-300/25 bg-sky-400/10 p-4">
           <h3 className="text-sm font-semibold text-sky-100">LLM A/B quick diff</h3>
           <p className="mt-1 text-[11px] text-slate-200">
-            Deltas are Model A minus Model B for the selected pair/lens.
+            Deltas are Model A minus Model B for the selected pair/lens. Confidence band deltas are
+            ordinal (0.25/0.50/0.75), not calibrated probabilities.
           </p>
           <div className="mt-3 overflow-x-auto">
             <table className="min-w-full text-left text-[11px] text-slate-100">
               <thead className="text-slate-300">
                 <tr>
                   <th className="pr-4">Detector</th>
-                  <th className="pr-4">Confidence delta</th>
+                  <th className="pr-4">Band delta (A-B)</th>
                   <th className="pr-4">Evidence delta</th>
                   <th className="pr-4">Citation delta</th>
                   <th>Evidence overlap</th>

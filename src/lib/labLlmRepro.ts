@@ -41,6 +41,7 @@ type LlmThreadStarterContext = {
   yearTo: number
   detectorId: string
   lens: LabCleaningLens
+  sectionId?: string
   campaignId: string
   campaignDisplayName: string
   modelProvider: string
@@ -75,15 +76,52 @@ export function buildDefaultLlmInputFile(
   return `inputs/pair/${ticker.toUpperCase()}_${yearFrom}_${yearTo}_${section}_${lens}_${sourceId}.json`
 }
 
+function buildDefaultLlmYearInputFile(
+  ticker: string,
+  year: number,
+  pairYearFrom: number,
+  pairYearTo: number,
+  lens: LabCleaningLens,
+  section = "10k_item1a",
+  sourceId = "edgar"
+): string {
+  return `inputs/year/${ticker.toUpperCase()}_${year}_${section}_${lens}_${sourceId}__pair_${pairYearFrom}_${pairYearTo}.json`
+}
+
 export function buildLlmThreadStarterText(context: LlmThreadStarterContext): string {
   const inputFile = normalizeInputFile(context.inputFile)
   const sourceId = context.sourceId ?? "edgar"
+  const sectionId = context.sectionId ?? "10k_item1a"
   const lines: string[] = []
   lines.push(
     `Thread Title: ${context.ticker.toUpperCase()} ${context.yearFrom}-${context.yearTo} ${context.detectorId} (${context.lens}) [${context.campaignDisplayName}]`
   )
   lines.push("")
   lines.push(`Attach this input file: ${inputFile}`)
+  if (inputFile.startsWith("inputs/pair/")) {
+    lines.push(
+      `Attach this input file: ${buildDefaultLlmYearInputFile(
+        context.ticker,
+        context.yearFrom,
+        context.yearFrom,
+        context.yearTo,
+        context.lens,
+        sectionId,
+        sourceId
+      )}`
+    )
+    lines.push(
+      `Attach this input file: ${buildDefaultLlmYearInputFile(
+        context.ticker,
+        context.yearTo,
+        context.yearFrom,
+        context.yearTo,
+        context.lens,
+        sectionId,
+        sourceId
+      )}`
+    )
+  }
   if (context.expectedOutputPath) {
     lines.push(`Save output to: ${context.expectedOutputPath}`)
   }
