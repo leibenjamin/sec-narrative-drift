@@ -269,6 +269,7 @@ def build_json_skeleton_lines(
     year_to: int | str,
     input_file: str,
     campaign: Optional[OutputTrack] = None,
+    input_mode: str = "full_section_v2",
 ) -> list[str]:
     if detector_id not in SUPPORTED_DETECTORS:
         raise SystemExit(f"Unsupported detector_id: {detector_id}")
@@ -313,7 +314,12 @@ def build_json_skeleton_lines(
     lines.append('    "drift_score": null,')
     lines.append('    "confidence": 0.50,')
     lines.append('    "coverage": null,')
-    lines.append(f'    "warnings": ["{FOCUSPACK_WARNING}"]')
+    warning_text = (
+        FOCUSPACK_WARNING
+        if input_mode == "focuspack_v1"
+        else "Precomputed model output; validate against deterministic evidence and full paragraph context."
+    )
+    lines.append(f'    "warnings": ["{warning_text}"]')
     lines.append("  },")
     lines.append('  "provenance": {')
     lines.append(f'    "input_file": "{input_file}",')
@@ -419,6 +425,7 @@ def build_prompt_template_detector_section_lines(
             year_to="<year_to>",
             input_file="<input_file>",
             campaign=campaign,
+            input_mode=input_mode,
         )
     )
     lines.append("")
@@ -700,6 +707,7 @@ def build_thread_starter_lines(
             year_to=year_to,
             input_file=input_path,
             campaign=campaign,
+            input_mode=input_mode,
         )
     )
     lines.append("")

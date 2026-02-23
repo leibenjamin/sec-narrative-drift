@@ -31,6 +31,8 @@ class Job:
     lens: str
     detector_id: str
     input_rel_path: str
+    input_year_prev_rel_path: str
+    input_year_curr_rel_path: str
     output_rel_path: str
     thread_title: str
 
@@ -137,7 +139,7 @@ def build_jobs(
     if entries is None:
         raise SystemExit(f"Manifest missing entries[]: {manifest_path}")
 
-    pending_jobs: list[tuple[str, int, int, str, str, str, str]] = []
+    pending_jobs: list[tuple[str, int, int, str, str, str, str, str, str]] = []
     for entry_any in entries:
         entry = as_dict(entry_any)
         if entry is None:
@@ -148,6 +150,8 @@ def build_jobs(
         lens = get_str(entry.get("lens")) or ""
         input_obj = as_dict(entry.get("input")) or {}
         input_rel = get_str(input_obj.get("run_pack_path")) or ""
+        input_year_prev_rel = get_str(input_obj.get("run_pack_year_prev_path")) or ""
+        input_year_curr_rel = get_str(input_obj.get("run_pack_year_curr_path")) or ""
         detectors = as_list(entry.get("detectors")) or []
         if not ticker or year_from is None or year_to is None or not lens:
             continue
@@ -167,6 +171,8 @@ def build_jobs(
                     lens,
                     detector_id,
                     input_rel,
+                    input_year_prev_rel,
+                    input_year_curr_rel,
                     output_rel,
                 )
             )
@@ -183,7 +189,17 @@ def build_jobs(
 
     jobs: list[Job] = []
     for idx, item in enumerate(pending_jobs, start=1):
-        ticker, year_from, year_to, lens, detector_id, input_rel, output_rel = item
+        (
+            ticker,
+            year_from,
+            year_to,
+            lens,
+            detector_id,
+            input_rel,
+            input_year_prev_rel,
+            input_year_curr_rel,
+            output_rel,
+        ) = item
         job_id = f"J{idx:02d}"
         thread_title = f"{ticker} {year_from}-{year_to} {detector_id} ({lens})"
         jobs.append(
@@ -195,6 +211,8 @@ def build_jobs(
                 lens=lens,
                 detector_id=detector_id,
                 input_rel_path=input_rel,
+                input_year_prev_rel_path=input_year_prev_rel,
+                input_year_curr_rel_path=input_year_curr_rel,
                 output_rel_path=output_rel,
                 thread_title=thread_title,
             )
@@ -223,7 +241,7 @@ def build_lines(
     model_name: str,
 ) -> list[str]:
     lines: list[str] = []
-    lines.append("# Manual LLM Rerun Checklist (42 Jobs)")
+    lines.append(f"# Manual LLM Rerun Checklist ({len(jobs)} Jobs)")
     lines.append("")
     lines.append(f"- script: `{SCRIPT_VERSION}`")
     lines.append(f"- manifest_generated_at_utc: `{generated_at_utc}`")
@@ -291,16 +309,26 @@ def build_lines(
         lines.append("")
 
         lines.append("### Job Details")
-        lines.append("| Job | Input | Output | Thread Title |")
-        lines.append("| --- | --- | --- | --- |")
+        lines.append("| Job | Pair Manifest | Year Prev | Year Curr | Output | Thread Title |")
+        lines.append("| --- | --- | --- | --- | --- | --- |")
         for job in wave_jobs:
-            input_path = (
+            input_pair_path = (
                 f"{run_pack_path}/{job.input_rel_path}"
                 if run_pack_path != "<missing>" and job.input_rel_path
                 else job.input_rel_path or "<missing>"
             )
+            input_prev_path = (
+                f"{run_pack_path}/{job.input_year_prev_rel_path}"
+                if run_pack_path != "<missing>" and job.input_year_prev_rel_path
+                else job.input_year_prev_rel_path or "<missing>"
+            )
+            input_curr_path = (
+                f"{run_pack_path}/{job.input_year_curr_rel_path}"
+                if run_pack_path != "<missing>" and job.input_year_curr_rel_path
+                else job.input_year_curr_rel_path or "<missing>"
+            )
             lines.append(
-                f"| {job.job_id} | `{input_path}` | `{job.output_rel_path}` | `{job.thread_title}` |"
+                f"| {job.job_id} | `{input_pair_path}` | `{input_prev_path}` | `{input_curr_path}` | `{job.output_rel_path}` | `{job.thread_title}` |"
             )
         lines.append("")
 

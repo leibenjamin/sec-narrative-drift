@@ -527,6 +527,10 @@ def main(argv: Optional[list[str]] = None) -> int:
         args.prompt_templates or None,
     )
 
+    if bundle_paths.focus_index is None:
+        raise SystemExit("Focus index path not resolved — provide --inputs-index-focuspack or --bundle")
+    if bundle_paths.full_index is None:
+        raise SystemExit("Full index path not resolved — provide --inputs-index-full or --bundle")
     focus_index = load_input_index(bundle_paths.focus_index, bundle_paths.bundle_root)
     full_index = load_input_index(bundle_paths.full_index, bundle_paths.bundle_root)
 
