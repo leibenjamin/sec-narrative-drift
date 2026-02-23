@@ -1,5 +1,5 @@
 ﻿# SEC Narrative Drift Lab - Remaining Work Plan (Codex Execution Doc)
-Last updated: 2026-02-21 (closeout sync)
+Last updated: 2026-02-23 (full-section v2 crash-recovery sync)
 Scope: deterministic pipeline + React UI Lab-first product flow
 Showcase tickers: NVDA, KO, WM, GE
 Core time window: 2019-2024 adjacent year pairs (include most recent even if low signal); 2024-2025 only if locally available
@@ -22,14 +22,14 @@ Core time window: 2019-2024 adjacent year pairs (include most recent even if low
   - RAW prerequisite audit added: `scripts/lab_build_raw_prereq_audit.py`,
   - RAW outputs backfilled for all eligible showcase adjacent pairs,
   - audit report added: `reports/lab_raw_prereq_audit.md`.
-- Phase 2 complete (baseline):
+- Phase 2 complete (full-section v2 baseline):
   - manifest/run-pack generator added: `scripts/lab_build_llm_run_manifest.py`,
   - manifest validator added: `scripts/lab_validate_llm_manifest_outputs.py`,
   - generated artifacts:
     - `reports/lab_llm_run_manifest.md`
     - `reports/lab_llm_run_manifest.json`
     - local-only `bundles/llm_run_pack_<UTCSTAMP>/inputs/*` + `THREAD_STARTERS.md`.
-  - current baseline manifest state: `42/42` LLM targets present.
+  - current Codex full-section manifest state: `84/84` LLM targets present (`raw` + `deboilerplated`).
 - Phase 2 hardening pass complete for baseline ChatGPT campaign:
   - strict zero-touch reproducibility contract and docs refreshed,
   - strict validator enforces citation/evidence, snippet/verbatim, ordering, and provenance constraints,
@@ -57,7 +57,7 @@ Core time window: 2019-2024 adjacent year pairs (include most recent even if low
   - CSP tightened to remove `style-src 'unsafe-inline'` after style-class refactor,
   - lint scope now excludes local-only archival artifacts (`bundles/**`, `attic/**`, `handoff/**`),
   - hash-aware `SCRIPT_VERSION` applied to active workflow scripts.
-- Phase 7 complete (multi-LLM path/campaign refactor + Codex quality lock):
+- Phase 7 complete (multi-LLM path/campaign refactor + full-section v2 hard-cut):
   - single source-of-truth track/campaign registry added: `scripts/lab_output_tracks.py`,
   - hard-cut output migration complete to canonical track-aware paths:
     `.../outputs/<detector_id>/<track_slug>/lab_<...>__<track_slug>.json`,
@@ -69,11 +69,13 @@ Core time window: 2019-2024 adjacent year pairs (include most recent even if low
     - `public/data/sec_narrative_drift_lab/lab_llm_campaigns_v1.json`
     - `public/data/sec_narrative_drift_lab/lab_llm_variants_v1.json`
     - `public/data/sec_narrative_drift_lab/lab_method_tracks_v1.json`,
-  - Lab UI now supports campaign-aware LLM A/B compare selectors with query params (`llmA`, `llmB`), campaign metadata, and quick diff strip.
-  - Codex campaign artifacts regenerated and quality-uplifted across all 42 targets via `scripts/lab_generate_codex_campaign_outputs.py`,
-  - strict Codex validation clean: `targets=42`, `missing=0`, `invalid=0`, `present_flag_mismatch=0`,
-  - strict ChatGPT validation remains clean on migrated paths: `targets=42`, `missing=0`, `invalid=0`, `present_flag_mismatch=0`,
-  - variants index confirms both campaigns complete and valid (`84/84 present`, `84/84 valid`),
+  - Lab UI now supports campaign-aware LLM selectors with query params (`llmA`, `llmB`), campaign metadata, and quick diff strip.
+  - runtime hard-cut now shows runtime-visible `full_section_v2` campaigns only (`focuspack_v1` hidden),
+  - Codex full-section campaign artifacts regenerated across both lenses (`84` targets) via `scripts/lab_generate_codex_campaign_outputs.py`,
+  - strict Codex validation clean: `targets=84`, `missing=0`, `invalid=0`, `present_flag_mismatch=0`,
+  - ChatGPT full-section campaign intentionally pending for second wave: `targets=84`, `missing=84`, `invalid=0`, `present_flag_mismatch=0` (allow-missing validation),
+  - variants index now reflects runtime truth: `targets=252`, `present=168`, `valid=168`, `missing=84`,
+  - source/deboiler audit report added: `reports/lab_full_section_source_audit.md` (canonical source remains `sections/*.txt`, sec_cache used for audit comparison),
   - non-blocking quality audit added and passing:
     - `reports/lab_llm_codex_quality_audit.md`
     - delta template uniqueness: `20/21`
@@ -81,8 +83,8 @@ Core time window: 2019-2024 adjacent year pairs (include most recent even if low
     - confidence levels present: `0.50`, `0.75`.
 
 Remaining human/manual work (post-hardening):
-- publish screenshot verification for A/B compare states on deployed site (incognito),
-- confirm Deep Dive v3 UX acceptance (active mode strip, mode-aware default expansion, method interpretation headers, A/B read guidance),
+- publish screenshot verification for deployed Deep Dive v3 states (incognito),
+- complete ChatGPT full-section second wave (`84` outputs) before re-enabling full A/B compare defaults,
 - optional editorial fine-tuning passes for Codex prose style (not contract-blocking),
 - finalize checklist screenshot row after captures are attached.
 
@@ -211,9 +213,11 @@ Each entry includes:
 - input bundle path(s) you will attach to ChatGPT threads
 
 ## 2.3 Generate all LLM input bundles (Codex)
-Codex should generate the "thread-starter" input JSONs (focuspacks) for every manifest line:
-- put them under a dated bundle directory, e.g.
-  - `bundles/llm_run_pack_<UTCSTAMP>/inputs/<TICKER>_<YFROM>_<YTO>_focuspack_deboilerplated.json`
+Codex should generate full-section v2 run-pack inputs for every manifest line:
+- Pair manifest under:
+  - `bundles/llm_run_pack_<UTCSTAMP>_<CAMPAIGN_ID>/inputs/pair/<TICKER>_<YFROM>_<YTO>_10k_item1a_<LENS>_edgar.json`
+- Year files under:
+  - `bundles/llm_run_pack_<UTCSTAMP>_<CAMPAIGN_ID>/inputs/year/<TICKER>_<YEAR>_10k_item1a_<LENS>_edgar__pair_<YFROM>_<YTO>.json`
 
 Also generate:
 - `bundles/.../THREAD_STARTERS.md` that contains copy/paste ready prompts per pair.

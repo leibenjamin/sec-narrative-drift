@@ -16,11 +16,12 @@ This Lab shows how risk disclosures change year-over-year using deterministic de
 - No runtime LLM/ML calls.
 - SEC text is treated as untrusted and rendered as plain text nodes (no HTML injection APIs).
 - Canonical output contract is stable and track-aware: `outputs/<detector_id>/<track_slug>/lab_<...>__<track_slug>.json`.
-- LLM layer is reproducible: users can rerun from published focuspack inputs and thread-starter instructions.
+- LLM layer is reproducible: users can rerun from published full-section v2 pair/year inputs and thread-starter instructions.
 - Provenance is campaign-aware (`model_provider`, `model_name`, required day-precise `run_label`) to support future model-vs-model comparisons.
-- A/B compare is populated by two complete campaigns (`ChatGPT 5.2-Thinking (Extended Thinking)` and `GPT-5.3-Codex (Extra High Reasoning, Agent Mode)`), both strict-valid (`42/42`).
+- Runtime currently shows the Codex full-section v2 campaign (`GPT-5.3-Codex (Extra High Reasoning, Agent Mode)`) at strict-valid `84/84` while ChatGPT full-section v2 remains a pending second wave (`84` expected missing).
+- Focuspack-era campaigns are preserved for audit history but hidden from runtime selectors.
 - Deep Dive v3 adds persistent mode-state framing, signal-quality tiers, interpretation-first card headers, and sourced method-context drawers (canonical usage, this-app deviation, failure modes, alternatives, origins).
-- Current operational remainder: post-UX incognito screenshot closeout for three A/B compare states.
+- Current operational remainder: post-UX incognito screenshot closeout for full-section v2 Deep Dive states, then ChatGPT full-section second-wave generation to restore full A/B parity.
 
 ## Suggested walkthrough sequence
 1. Deterministic baseline:

@@ -30,7 +30,8 @@ No extra top-level keys are allowed.
 
 ## Evidence Contract
 - `paragraph_idx` values must be FULL indices.
-- For focuspack inputs, FULL index mapping must come from `focuspack_meta.selected_prev_indices` and `focuspack_meta.selected_curr_indices`.
+- For `full_section_v2`, `paragraph_idx` is a direct FULL index from referenced year input arrays.
+- Pair manifests reference year files under `year_inputs.prev` and `year_inputs.curr`; `provenance.input_file` points to the pair-manifest path.
 - Snippets must be verbatim substrings of mapped paragraphs.
 - Snippets must be `<=350` chars.
 - `<=350` is a campaign reproducibility/UX constraint so outputs remain comparable across operators and runs.
@@ -42,8 +43,7 @@ No extra top-level keys are allowed.
 
 ## Metrics Contract
 - `metrics.confidence` must be one of `0.25`, `0.50`, `0.75`.
-- `metrics.warnings` must include:
-  `"Focuspack is a subset; verify in full compare pane."`
+- `metrics.warnings` should include concise caveats when signal or coverage is limited.
 - `metrics.warnings` entries must be complete statements; placeholder tails like `Input file citation:`, `Source:`, `Input source:` are invalid.
 
 ## Provenance Contract
@@ -52,6 +52,9 @@ No extra top-level keys are allowed.
 - `model_provider` (required, exact campaign provider)
 - `model_name` (required, exact campaign model name)
 - `run_label` (required, must start with `YYYY-MM-DD_`)
+
+Canonical `provenance.input_file` pattern for v2:
+- `inputs/pair/<TICKER>_<YEAR_FROM>_<YEAR_TO>_10k_item1a_<LENS>_edgar.json`
 
 No extra provenance keys are allowed.
 
