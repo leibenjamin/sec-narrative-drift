@@ -42,12 +42,14 @@ export type LabLlmCampaign = {
   campaign_id: string
   campaign_slug: string
   display_name: string
+  input_mode?: "focuspack_v1" | "full_section_v2"
   model_provider: string
   model_name: string
   run_label_prefix_template?: string
   instructions_asset?: string
   primary_for_runtime?: boolean
   compare_default?: boolean
+  runtime_visible?: boolean
 }
 
 export type LabLlmCampaignsIndex = {
@@ -70,6 +72,8 @@ export type LabLlmVariant = {
   campaign_id: string
   campaign_slug: string
   display_name: string
+  input_mode?: "focuspack_v1" | "full_section_v2"
+  runtime_visible?: boolean
   model_provider: string
   model_name: string
   filename: string
@@ -78,6 +82,9 @@ export type LabLlmVariant = {
   present: boolean
   valid: boolean
   run_label: string
+  input_file?: string
+  year_input_prev?: string
+  year_input_curr?: string
   validation_reasons?: string[]
 }
 
@@ -96,8 +103,10 @@ export type LabMethodTrack = {
   detector_ids: string[]
   model_provider?: string
   model_name?: string
+  input_mode?: "focuspack_v1" | "full_section_v2" | "deterministic"
   primary_for_runtime?: boolean
   compare_default?: boolean
+  runtime_visible?: boolean
 }
 
 export type LabMethodTracksIndex = {

@@ -34,12 +34,14 @@ class OutputTrack:
     track_slug: str
     display_name: str
     kind: str
+    input_mode: Optional[str] = None
     model_provider: Optional[str] = None
     model_name: Optional[str] = None
     run_label_prefix_template: Optional[str] = None
     instructions_asset_name: Optional[str] = None
     primary_for_runtime: bool = False
     compare_default: bool = False
+    runtime_visible: bool = True
 
 
 DETERMINISTIC_BASELINE_TRACK = OutputTrack(
@@ -47,6 +49,7 @@ DETERMINISTIC_BASELINE_TRACK = OutputTrack(
     track_slug="det-baseline-2026-02-21",
     display_name="Deterministic Baseline (2026-02-21)",
     kind="deterministic",
+    input_mode="deterministic",
     primary_for_runtime=True,
 )
 
@@ -56,30 +59,60 @@ LLM_CAMPAIGNS: tuple[OutputTrack, ...] = (
         track_slug="openai-chatgpt52ext-agent-2026-02-21",
         display_name="ChatGPT 5.2-Thinking (Extended Thinking)",
         kind="llm",
+        input_mode="focuspack_v1",
         model_provider="openai",
         model_name="ChatGPT 5.2-Thinking (Extended Thinking)",
         run_label_prefix_template=f"{RUN_LABEL_DATE_PREFIX}_openai_chatgpt52ext_...",
         instructions_asset_name="llm_project_instructions_openai_chatgpt52ext_agent_2026-02-21.txt",
-        primary_for_runtime=True,
+        primary_for_runtime=False,
+        runtime_visible=False,
     ),
     OutputTrack(
         track_id="openai_gpt53codex_xhigh_agent_2026-02-21",
         track_slug="openai-gpt53codex-xhigh-agent-2026-02-21",
         display_name="GPT-5.3-Codex (Extra High Reasoning, Agent Mode)",
         kind="llm",
+        input_mode="focuspack_v1",
         model_provider="openai",
         model_name="GPT-5.3-Codex (Extra High Reasoning, Agent Mode)",
         run_label_prefix_template=f"{RUN_LABEL_DATE_PREFIX}_openai_gpt53codex_...",
         instructions_asset_name="llm_project_instructions_openai_gpt53codex_xhigh_agent_2026-02-21.txt",
+        compare_default=False,
+        runtime_visible=False,
+    ),
+    OutputTrack(
+        track_id="openai_gpt53codex_xhigh_agent_fullsec_2026-02-22",
+        track_slug="openai-gpt53codex-xhigh-agent-fullsec-2026-02-22",
+        display_name="GPT-5.3-Codex (Full Section v2)",
+        kind="llm",
+        input_mode="full_section_v2",
+        model_provider="openai",
+        model_name="GPT-5.3-Codex (Extra High Reasoning, Agent Mode)",
+        run_label_prefix_template=f"{RUN_LABEL_DATE_PREFIX}_openai_gpt53codex_fullsec_...",
+        instructions_asset_name="llm_project_instructions_openai_gpt53codex_xhigh_agent_fullsec_2026-02-22.txt",
+        primary_for_runtime=True,
+        runtime_visible=True,
+    ),
+    OutputTrack(
+        track_id="openai_chatgpt52ext_agent_fullsec_2026-02-22",
+        track_slug="openai-chatgpt52ext-agent-fullsec-2026-02-22",
+        display_name="ChatGPT 5.2-Thinking (Extended Thinking) (Full Section v2)",
+        kind="llm",
+        input_mode="full_section_v2",
+        model_provider="openai",
+        model_name="ChatGPT 5.2-Thinking (Extended Thinking)",
+        run_label_prefix_template=f"{RUN_LABEL_DATE_PREFIX}_openai_chatgpt52ext_fullsec_...",
+        instructions_asset_name="llm_project_instructions_openai_chatgpt52ext_agent_fullsec_2026-02-22.txt",
         compare_default=True,
+        runtime_visible=False,
     ),
 )
 
 TRACKS_BY_ID = {track.track_id: track for track in (DETERMINISTIC_BASELINE_TRACK, *LLM_CAMPAIGNS)}
 TRACKS_BY_SLUG = {track.track_slug: track for track in (DETERMINISTIC_BASELINE_TRACK, *LLM_CAMPAIGNS)}
 
-DEFAULT_PRIMARY_LLM_CAMPAIGN_ID = "openai_chatgpt52ext_agent_2026-02-21"
-DEFAULT_COMPARE_LLM_CAMPAIGN_ID = "openai_gpt53codex_xhigh_agent_2026-02-21"
+DEFAULT_PRIMARY_LLM_CAMPAIGN_ID = "openai_gpt53codex_xhigh_agent_fullsec_2026-02-22"
+DEFAULT_COMPARE_LLM_CAMPAIGN_ID = "openai_chatgpt52ext_agent_fullsec_2026-02-22"
 
 
 def is_llm_detector(detector_id: str) -> bool:
@@ -167,4 +200,3 @@ def strip_repo_prefix(path_value: str) -> str:
     if normalized.startswith("public/data/sec_narrative_drift_lab/"):
         return normalized[len("public/data/sec_narrative_drift_lab/") :]
     return normalized
-

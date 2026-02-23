@@ -56,8 +56,10 @@ def build_payload() -> dict[str, Any]:
                 "detector_ids": list(LLM_DETECTORS),
                 "model_provider": campaign.model_provider,
                 "model_name": campaign.model_name,
+                "input_mode": campaign.input_mode,
                 "primary_for_runtime": campaign.primary_for_runtime,
                 "compare_default": campaign.compare_default,
+                "runtime_visible": campaign.runtime_visible,
             }
         )
 

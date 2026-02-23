@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated_at": "2026-02-22T03:40:19Z",
+  "updated_at": "2026-02-23T04:07:55Z",
   "notes": [
     "Generated deterministically from scanned lab outputs.",
     "Output links preserve canonical ticker-local outputs paths, including track slug segments when present."
@@ -97,9 +97,21 @@
         },
         {
           "detector_id": "det_llm_delta_brief_v1",
+          "cleaning_lens": "raw",
+          "source_id": "edgar",
+          "filename": "outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-fullsec-2026-02-22/lab_det_llm_delta_brief_v1_10k_item1a_2019_2020_raw_edgar__openai-gpt53codex-xhigh-agent-fullsec-2026-02-22.json"
+        },
+        {
+          "detector_id": "det_llm_delta_brief_v1",
           "cleaning_lens": "deboilerplated",
           "source_id": "edgar",
           "filename": "outputs/det_llm_delta_brief_v1/openai-chatgpt52ext-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2019_2020_deboilerplated_edgar__openai-chatgpt52ext-agent-2026-02-21.json"
+        },
+        {
+          "detector_id": "det_llm_excerpt_picker_v1",
+          "cleaning_lens": "raw",
+          "source_id": "edgar",
+          "filename": "outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-fullsec-2026-02-22/lab_det_llm_excerpt_picker_v1_10k_item1a_2019_2020_raw_edgar__openai-gpt53codex-xhigh-agent-fullsec-2026-02-22.json"
         },
         {
           "detector_id": "det_llm_excerpt_picker_v1",
@@ -204,9 +216,21 @@
         },
         {
           "detector_id": "det_llm_delta_brief_v1",
+          "cleaning_lens": "raw",
+          "source_id": "edgar",
+          "filename": "outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-fullsec-2026-02-22/lab_det_llm_delta_brief_v1_10k_item1a_2020_2021_raw_edgar__openai-gpt53codex-xhigh-agent-fullsec-2026-02-22.json"
+        },
+        {
+          "detector_id": "det_llm_delta_brief_v1",
           "cleaning_lens": "deboilerplated",
           "source_id": "edgar",
           "filename": "outputs/det_llm_delta_brief_v1/openai-chatgpt52ext-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2020_2021_deboilerplated_edgar__openai-chatgpt52ext-agent-2026-02-21.json"
+        },
+        {
+          "detector_id": "det_llm_excerpt_picker_v1",
+          "cleaning_lens": "raw",
+          "source_id": "edgar",
+          "filename": "outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-fullsec-2026-02-22/lab_det_llm_excerpt_picker_v1_10k_item1a_2020_2021_raw_edgar__openai-gpt53codex-xhigh-agent-fullsec-2026-02-22.json"
         },
         {
           "detector_id": "det_llm_excerpt_picker_v1",
@@ -307,9 +331,21 @@
         },
         {
           "detector_id": "det_llm_delta_brief_v1",
+          "cleaning_lens": "raw",
+          "source_id": "edgar",
+          "filename": "outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-fullsec-2026-02-22/lab_det_llm_delta_brief_v1_10k_item1a_2021_2022_raw_edgar__openai-gpt53codex-xhigh-agent-fullsec-2026-02-22.json"
+        },
+        {
+          "detector_id": "det_llm_delta_brief_v1",
           "cleaning_lens": "deboilerplated",
           "source_id": "edgar",
           "filename": "outputs/det_llm_delta_brief_v1/openai-chatgpt52ext-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2021_2022_deboilerplated_edgar__openai-chatgpt52ext-agent-2026-02-21.json"
+        },
+        {
+          "detector_id": "det_llm_excerpt_picker_v1",
+          "cleaning_lens": "raw",
+          "source_id": "edgar",
+          "filename": "outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-fullsec-2026-02-22/lab_det_llm_excerpt_picker_v1_10k_item1a_2021_2022_raw_edgar__openai-gpt53codex-xhigh-agent-fullsec-2026-02-22.json"
         },
         {
           "detector_id": "det_llm_excerpt_picker_v1",
@@ -414,9 +450,21 @@
         },
         {
           "detector_id": "det_llm_delta_brief_v1",
+          "cleaning_lens": "raw",
+          "source_id": "edgar",
+          "filename": "outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-fullsec-2026-02-22/lab_det_llm_delta_brief_v1_10k_item1a_2022_2023_raw_edgar__openai-gpt53codex-xhigh-agent-fullsec-2026-02-22.json"
+        },
+        {
+          "detector_id": "det_llm_delta_brief_v1",
           "cleaning_lens": "deboilerplated",
           "source_id": "edgar",
           "filename": "outputs/det_llm_delta_brief_v1/openai-chatgpt52ext-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2022_2023_deboilerplated_edgar__openai-chatgpt52ext-agent-2026-02-21.json"
+        },
+        {
+          "detector_id": "det_llm_excerpt_picker_v1",
+          "cleaning_lens": "raw",
+          "source_id": "edgar",
+          "filename": "outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-fullsec-2026-02-22/lab_det_llm_excerpt_picker_v1_10k_item1a_2022_2023_raw_edgar__openai-gpt53codex-xhigh-agent-fullsec-2026-02-22.json"
         },
         {
           "detector_id": "det_llm_excerpt_picker_v1",
@@ -521,9 +569,21 @@
         },
         {
           "detector_id": "det_llm_delta_brief_v1",
+          "cleaning_lens": "raw",
+          "source_id": "edgar",
+          "filename": "outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-fullsec-2026-02-22/lab_det_llm_delta_brief_v1_10k_item1a_2023_2024_raw_edgar__openai-gpt53codex-xhigh-agent-fullsec-2026-02-22.json"
+        },
+        {
+          "detector_id": "det_llm_delta_brief_v1",
           "cleaning_lens": "deboilerplated",
           "source_id": "edgar",
           "filename": "outputs/det_llm_delta_brief_v1/openai-chatgpt52ext-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2023_2024_deboilerplated_edgar__openai-chatgpt52ext-agent-2026-02-21.json"
+        },
+        {
+          "detector_id": "det_llm_excerpt_picker_v1",
+          "cleaning_lens": "raw",
+          "source_id": "edgar",
+          "filename": "outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-fullsec-2026-02-22/lab_det_llm_excerpt_picker_v1_10k_item1a_2023_2024_raw_edgar__openai-gpt53codex-xhigh-agent-fullsec-2026-02-22.json"
         },
         {
           "detector_id": "det_llm_excerpt_picker_v1",
@@ -624,9 +684,21 @@
         },
         {
           "detector_id": "det_llm_delta_brief_v1",
+          "cleaning_lens": "raw",
+          "source_id": "edgar",
+          "filename": "outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-fullsec-2026-02-22/lab_det_llm_delta_brief_v1_10k_item1a_2024_2025_raw_edgar__openai-gpt53codex-xhigh-agent-fullsec-2026-02-22.json"
+        },
+        {
+          "detector_id": "det_llm_delta_brief_v1",
           "cleaning_lens": "deboilerplated",
           "source_id": "edgar",
           "filename": "outputs/det_llm_delta_brief_v1/openai-chatgpt52ext-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2024_2025_deboilerplated_edgar__openai-chatgpt52ext-agent-2026-02-21.json"
+        },
+        {
+          "detector_id": "det_llm_excerpt_picker_v1",
+          "cleaning_lens": "raw",
+          "source_id": "edgar",
+          "filename": "outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-fullsec-2026-02-22/lab_det_llm_excerpt_picker_v1_10k_item1a_2024_2025_raw_edgar__openai-gpt53codex-xhigh-agent-fullsec-2026-02-22.json"
         },
         {
           "detector_id": "det_llm_excerpt_picker_v1",
@@ -731,9 +803,21 @@
         },
         {
           "detector_id": "det_llm_delta_brief_v1",
+          "cleaning_lens": "raw",
+          "source_id": "edgar",
+          "filename": "outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-fullsec-2026-02-22/lab_det_llm_delta_brief_v1_10k_item1a_2019_2020_raw_edgar__openai-gpt53codex-xhigh-agent-fullsec-2026-02-22.json"
+        },
+        {
+          "detector_id": "det_llm_delta_brief_v1",
           "cleaning_lens": "deboilerplated",
           "source_id": "edgar",
           "filename": "outputs/det_llm_delta_brief_v1/openai-chatgpt52ext-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2019_2020_deboilerplated_edgar__openai-chatgpt52ext-agent-2026-02-21.json"
+        },
+        {
+          "detector_id": "det_llm_excerpt_picker_v1",
+          "cleaning_lens": "raw",
+          "source_id": "edgar",
+          "filename": "outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-fullsec-2026-02-22/lab_det_llm_excerpt_picker_v1_10k_item1a_2019_2020_raw_edgar__openai-gpt53codex-xhigh-agent-fullsec-2026-02-22.json"
         },
         {
           "detector_id": "det_llm_excerpt_picker_v1",
@@ -838,9 +922,21 @@
         },
         {
           "detector_id": "det_llm_delta_brief_v1",
+          "cleaning_lens": "raw",
+          "source_id": "edgar",
+          "filename": "outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-fullsec-2026-02-22/lab_det_llm_delta_brief_v1_10k_item1a_2020_2021_raw_edgar__openai-gpt53codex-xhigh-agent-fullsec-2026-02-22.json"
+        },
+        {
+          "detector_id": "det_llm_delta_brief_v1",
           "cleaning_lens": "deboilerplated",
           "source_id": "edgar",
           "filename": "outputs/det_llm_delta_brief_v1/openai-chatgpt52ext-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2020_2021_deboilerplated_edgar__openai-chatgpt52ext-agent-2026-02-21.json"
+        },
+        {
+          "detector_id": "det_llm_excerpt_picker_v1",
+          "cleaning_lens": "raw",
+          "source_id": "edgar",
+          "filename": "outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-fullsec-2026-02-22/lab_det_llm_excerpt_picker_v1_10k_item1a_2020_2021_raw_edgar__openai-gpt53codex-xhigh-agent-fullsec-2026-02-22.json"
         },
         {
           "detector_id": "det_llm_excerpt_picker_v1",
@@ -941,9 +1037,21 @@
         },
         {
           "detector_id": "det_llm_delta_brief_v1",
+          "cleaning_lens": "raw",
+          "source_id": "edgar",
+          "filename": "outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-fullsec-2026-02-22/lab_det_llm_delta_brief_v1_10k_item1a_2021_2022_raw_edgar__openai-gpt53codex-xhigh-agent-fullsec-2026-02-22.json"
+        },
+        {
+          "detector_id": "det_llm_delta_brief_v1",
           "cleaning_lens": "deboilerplated",
           "source_id": "edgar",
           "filename": "outputs/det_llm_delta_brief_v1/openai-chatgpt52ext-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2021_2022_deboilerplated_edgar__openai-chatgpt52ext-agent-2026-02-21.json"
+        },
+        {
+          "detector_id": "det_llm_excerpt_picker_v1",
+          "cleaning_lens": "raw",
+          "source_id": "edgar",
+          "filename": "outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-fullsec-2026-02-22/lab_det_llm_excerpt_picker_v1_10k_item1a_2021_2022_raw_edgar__openai-gpt53codex-xhigh-agent-fullsec-2026-02-22.json"
         },
         {
           "detector_id": "det_llm_excerpt_picker_v1",
@@ -1044,9 +1152,21 @@
         },
         {
           "detector_id": "det_llm_delta_brief_v1",
+          "cleaning_lens": "raw",
+          "source_id": "edgar",
+          "filename": "outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-fullsec-2026-02-22/lab_det_llm_delta_brief_v1_10k_item1a_2022_2023_raw_edgar__openai-gpt53codex-xhigh-agent-fullsec-2026-02-22.json"
+        },
+        {
+          "detector_id": "det_llm_delta_brief_v1",
           "cleaning_lens": "deboilerplated",
           "source_id": "edgar",
           "filename": "outputs/det_llm_delta_brief_v1/openai-chatgpt52ext-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2022_2023_deboilerplated_edgar__openai-chatgpt52ext-agent-2026-02-21.json"
+        },
+        {
+          "detector_id": "det_llm_excerpt_picker_v1",
+          "cleaning_lens": "raw",
+          "source_id": "edgar",
+          "filename": "outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-fullsec-2026-02-22/lab_det_llm_excerpt_picker_v1_10k_item1a_2022_2023_raw_edgar__openai-gpt53codex-xhigh-agent-fullsec-2026-02-22.json"
         },
         {
           "detector_id": "det_llm_excerpt_picker_v1",
@@ -1151,9 +1271,21 @@
         },
         {
           "detector_id": "det_llm_delta_brief_v1",
+          "cleaning_lens": "raw",
+          "source_id": "edgar",
+          "filename": "outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-fullsec-2026-02-22/lab_det_llm_delta_brief_v1_10k_item1a_2023_2024_raw_edgar__openai-gpt53codex-xhigh-agent-fullsec-2026-02-22.json"
+        },
+        {
+          "detector_id": "det_llm_delta_brief_v1",
           "cleaning_lens": "deboilerplated",
           "source_id": "edgar",
           "filename": "outputs/det_llm_delta_brief_v1/openai-chatgpt52ext-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2023_2024_deboilerplated_edgar__openai-chatgpt52ext-agent-2026-02-21.json"
+        },
+        {
+          "detector_id": "det_llm_excerpt_picker_v1",
+          "cleaning_lens": "raw",
+          "source_id": "edgar",
+          "filename": "outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-fullsec-2026-02-22/lab_det_llm_excerpt_picker_v1_10k_item1a_2023_2024_raw_edgar__openai-gpt53codex-xhigh-agent-fullsec-2026-02-22.json"
         },
         {
           "detector_id": "det_llm_excerpt_picker_v1",
@@ -1259,9 +1391,21 @@
         },
         {
           "detector_id": "det_llm_delta_brief_v1",
+          "cleaning_lens": "raw",
+          "source_id": "edgar",
+          "filename": "outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-fullsec-2026-02-22/lab_det_llm_delta_brief_v1_10k_item1a_2019_2020_raw_edgar__openai-gpt53codex-xhigh-agent-fullsec-2026-02-22.json"
+        },
+        {
+          "detector_id": "det_llm_delta_brief_v1",
           "cleaning_lens": "deboilerplated",
           "source_id": "edgar",
           "filename": "outputs/det_llm_delta_brief_v1/openai-chatgpt52ext-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2019_2020_deboilerplated_edgar__openai-chatgpt52ext-agent-2026-02-21.json"
+        },
+        {
+          "detector_id": "det_llm_excerpt_picker_v1",
+          "cleaning_lens": "raw",
+          "source_id": "edgar",
+          "filename": "outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-fullsec-2026-02-22/lab_det_llm_excerpt_picker_v1_10k_item1a_2019_2020_raw_edgar__openai-gpt53codex-xhigh-agent-fullsec-2026-02-22.json"
         },
         {
           "detector_id": "det_llm_excerpt_picker_v1",
@@ -1366,9 +1510,21 @@
         },
         {
           "detector_id": "det_llm_delta_brief_v1",
+          "cleaning_lens": "raw",
+          "source_id": "edgar",
+          "filename": "outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-fullsec-2026-02-22/lab_det_llm_delta_brief_v1_10k_item1a_2020_2021_raw_edgar__openai-gpt53codex-xhigh-agent-fullsec-2026-02-22.json"
+        },
+        {
+          "detector_id": "det_llm_delta_brief_v1",
           "cleaning_lens": "deboilerplated",
           "source_id": "edgar",
           "filename": "outputs/det_llm_delta_brief_v1/openai-chatgpt52ext-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2020_2021_deboilerplated_edgar__openai-chatgpt52ext-agent-2026-02-21.json"
+        },
+        {
+          "detector_id": "det_llm_excerpt_picker_v1",
+          "cleaning_lens": "raw",
+          "source_id": "edgar",
+          "filename": "outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-fullsec-2026-02-22/lab_det_llm_excerpt_picker_v1_10k_item1a_2020_2021_raw_edgar__openai-gpt53codex-xhigh-agent-fullsec-2026-02-22.json"
         },
         {
           "detector_id": "det_llm_excerpt_picker_v1",
@@ -1473,9 +1629,21 @@
         },
         {
           "detector_id": "det_llm_delta_brief_v1",
+          "cleaning_lens": "raw",
+          "source_id": "edgar",
+          "filename": "outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-fullsec-2026-02-22/lab_det_llm_delta_brief_v1_10k_item1a_2021_2022_raw_edgar__openai-gpt53codex-xhigh-agent-fullsec-2026-02-22.json"
+        },
+        {
+          "detector_id": "det_llm_delta_brief_v1",
           "cleaning_lens": "deboilerplated",
           "source_id": "edgar",
           "filename": "outputs/det_llm_delta_brief_v1/openai-chatgpt52ext-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2021_2022_deboilerplated_edgar__openai-chatgpt52ext-agent-2026-02-21.json"
+        },
+        {
+          "detector_id": "det_llm_excerpt_picker_v1",
+          "cleaning_lens": "raw",
+          "source_id": "edgar",
+          "filename": "outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-fullsec-2026-02-22/lab_det_llm_excerpt_picker_v1_10k_item1a_2021_2022_raw_edgar__openai-gpt53codex-xhigh-agent-fullsec-2026-02-22.json"
         },
         {
           "detector_id": "det_llm_excerpt_picker_v1",
@@ -1576,9 +1744,21 @@
         },
         {
           "detector_id": "det_llm_delta_brief_v1",
+          "cleaning_lens": "raw",
+          "source_id": "edgar",
+          "filename": "outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-fullsec-2026-02-22/lab_det_llm_delta_brief_v1_10k_item1a_2022_2023_raw_edgar__openai-gpt53codex-xhigh-agent-fullsec-2026-02-22.json"
+        },
+        {
+          "detector_id": "det_llm_delta_brief_v1",
           "cleaning_lens": "deboilerplated",
           "source_id": "edgar",
           "filename": "outputs/det_llm_delta_brief_v1/openai-chatgpt52ext-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2022_2023_deboilerplated_edgar__openai-chatgpt52ext-agent-2026-02-21.json"
+        },
+        {
+          "detector_id": "det_llm_excerpt_picker_v1",
+          "cleaning_lens": "raw",
+          "source_id": "edgar",
+          "filename": "outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-fullsec-2026-02-22/lab_det_llm_excerpt_picker_v1_10k_item1a_2022_2023_raw_edgar__openai-gpt53codex-xhigh-agent-fullsec-2026-02-22.json"
         },
         {
           "detector_id": "det_llm_excerpt_picker_v1",
@@ -1679,9 +1859,21 @@
         },
         {
           "detector_id": "det_llm_delta_brief_v1",
+          "cleaning_lens": "raw",
+          "source_id": "edgar",
+          "filename": "outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-fullsec-2026-02-22/lab_det_llm_delta_brief_v1_10k_item1a_2023_2024_raw_edgar__openai-gpt53codex-xhigh-agent-fullsec-2026-02-22.json"
+        },
+        {
+          "detector_id": "det_llm_delta_brief_v1",
           "cleaning_lens": "deboilerplated",
           "source_id": "edgar",
           "filename": "outputs/det_llm_delta_brief_v1/openai-chatgpt52ext-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2023_2024_deboilerplated_edgar__openai-chatgpt52ext-agent-2026-02-21.json"
+        },
+        {
+          "detector_id": "det_llm_excerpt_picker_v1",
+          "cleaning_lens": "raw",
+          "source_id": "edgar",
+          "filename": "outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-fullsec-2026-02-22/lab_det_llm_excerpt_picker_v1_10k_item1a_2023_2024_raw_edgar__openai-gpt53codex-xhigh-agent-fullsec-2026-02-22.json"
         },
         {
           "detector_id": "det_llm_excerpt_picker_v1",
@@ -1787,9 +1979,21 @@
         },
         {
           "detector_id": "det_llm_delta_brief_v1",
+          "cleaning_lens": "raw",
+          "source_id": "edgar",
+          "filename": "outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-fullsec-2026-02-22/lab_det_llm_delta_brief_v1_10k_item1a_2019_2020_raw_edgar__openai-gpt53codex-xhigh-agent-fullsec-2026-02-22.json"
+        },
+        {
+          "detector_id": "det_llm_delta_brief_v1",
           "cleaning_lens": "deboilerplated",
           "source_id": "edgar",
           "filename": "outputs/det_llm_delta_brief_v1/openai-chatgpt52ext-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2019_2020_deboilerplated_edgar__openai-chatgpt52ext-agent-2026-02-21.json"
+        },
+        {
+          "detector_id": "det_llm_excerpt_picker_v1",
+          "cleaning_lens": "raw",
+          "source_id": "edgar",
+          "filename": "outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-fullsec-2026-02-22/lab_det_llm_excerpt_picker_v1_10k_item1a_2019_2020_raw_edgar__openai-gpt53codex-xhigh-agent-fullsec-2026-02-22.json"
         },
         {
           "detector_id": "det_llm_excerpt_picker_v1",
@@ -1890,9 +2094,21 @@
         },
         {
           "detector_id": "det_llm_delta_brief_v1",
+          "cleaning_lens": "raw",
+          "source_id": "edgar",
+          "filename": "outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-fullsec-2026-02-22/lab_det_llm_delta_brief_v1_10k_item1a_2020_2021_raw_edgar__openai-gpt53codex-xhigh-agent-fullsec-2026-02-22.json"
+        },
+        {
+          "detector_id": "det_llm_delta_brief_v1",
           "cleaning_lens": "deboilerplated",
           "source_id": "edgar",
           "filename": "outputs/det_llm_delta_brief_v1/openai-chatgpt52ext-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2020_2021_deboilerplated_edgar__openai-chatgpt52ext-agent-2026-02-21.json"
+        },
+        {
+          "detector_id": "det_llm_excerpt_picker_v1",
+          "cleaning_lens": "raw",
+          "source_id": "edgar",
+          "filename": "outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-fullsec-2026-02-22/lab_det_llm_excerpt_picker_v1_10k_item1a_2020_2021_raw_edgar__openai-gpt53codex-xhigh-agent-fullsec-2026-02-22.json"
         },
         {
           "detector_id": "det_llm_excerpt_picker_v1",
@@ -1993,9 +2209,21 @@
         },
         {
           "detector_id": "det_llm_delta_brief_v1",
+          "cleaning_lens": "raw",
+          "source_id": "edgar",
+          "filename": "outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-fullsec-2026-02-22/lab_det_llm_delta_brief_v1_10k_item1a_2021_2022_raw_edgar__openai-gpt53codex-xhigh-agent-fullsec-2026-02-22.json"
+        },
+        {
+          "detector_id": "det_llm_delta_brief_v1",
           "cleaning_lens": "deboilerplated",
           "source_id": "edgar",
           "filename": "outputs/det_llm_delta_brief_v1/openai-chatgpt52ext-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2021_2022_deboilerplated_edgar__openai-chatgpt52ext-agent-2026-02-21.json"
+        },
+        {
+          "detector_id": "det_llm_excerpt_picker_v1",
+          "cleaning_lens": "raw",
+          "source_id": "edgar",
+          "filename": "outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-fullsec-2026-02-22/lab_det_llm_excerpt_picker_v1_10k_item1a_2021_2022_raw_edgar__openai-gpt53codex-xhigh-agent-fullsec-2026-02-22.json"
         },
         {
           "detector_id": "det_llm_excerpt_picker_v1",
@@ -2100,9 +2328,21 @@
         },
         {
           "detector_id": "det_llm_delta_brief_v1",
+          "cleaning_lens": "raw",
+          "source_id": "edgar",
+          "filename": "outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-fullsec-2026-02-22/lab_det_llm_delta_brief_v1_10k_item1a_2022_2023_raw_edgar__openai-gpt53codex-xhigh-agent-fullsec-2026-02-22.json"
+        },
+        {
+          "detector_id": "det_llm_delta_brief_v1",
           "cleaning_lens": "deboilerplated",
           "source_id": "edgar",
           "filename": "outputs/det_llm_delta_brief_v1/openai-chatgpt52ext-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2022_2023_deboilerplated_edgar__openai-chatgpt52ext-agent-2026-02-21.json"
+        },
+        {
+          "detector_id": "det_llm_excerpt_picker_v1",
+          "cleaning_lens": "raw",
+          "source_id": "edgar",
+          "filename": "outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-fullsec-2026-02-22/lab_det_llm_excerpt_picker_v1_10k_item1a_2022_2023_raw_edgar__openai-gpt53codex-xhigh-agent-fullsec-2026-02-22.json"
         },
         {
           "detector_id": "det_llm_excerpt_picker_v1",
@@ -2207,9 +2447,21 @@
         },
         {
           "detector_id": "det_llm_delta_brief_v1",
+          "cleaning_lens": "raw",
+          "source_id": "edgar",
+          "filename": "outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-fullsec-2026-02-22/lab_det_llm_delta_brief_v1_10k_item1a_2023_2024_raw_edgar__openai-gpt53codex-xhigh-agent-fullsec-2026-02-22.json"
+        },
+        {
+          "detector_id": "det_llm_delta_brief_v1",
           "cleaning_lens": "deboilerplated",
           "source_id": "edgar",
           "filename": "outputs/det_llm_delta_brief_v1/openai-chatgpt52ext-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2023_2024_deboilerplated_edgar__openai-chatgpt52ext-agent-2026-02-21.json"
+        },
+        {
+          "detector_id": "det_llm_excerpt_picker_v1",
+          "cleaning_lens": "raw",
+          "source_id": "edgar",
+          "filename": "outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-fullsec-2026-02-22/lab_det_llm_excerpt_picker_v1_10k_item1a_2023_2024_raw_edgar__openai-gpt53codex-xhigh-agent-fullsec-2026-02-22.json"
         },
         {
           "detector_id": "det_llm_excerpt_picker_v1",
@@ -2226,8 +2478,8 @@
     }
   ],
   "provenance": {
-    "build_utc": "2026-02-22T03:40:19Z",
-    "git_commit": "c0304ebb271a09072dc2d9a5a598789574885b7a",
+    "build_utc": "2026-02-23T04:07:55Z",
+    "git_commit": "ed21ef20400f37325e7d6dcd005e08857dbfed6e",
     "script_version": "lab_build_cases_registry_v1.py@v2+0de09730bb",
     "inputs": {
       "tickers": "NVDA,KO,WM,GE",

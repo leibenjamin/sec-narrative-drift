@@ -41,9 +41,7 @@ function asNumberArray(value: unknown): number[] | null {
   return output
 }
 
-function buildParagraphLookup(payload: unknown): ParagraphLookup | null {
-  const root = asRecord(payload)
-  if (!root) return null
+function buildLegacyParagraphLookup(root: Record<string, unknown>): ParagraphLookup | null {
   const texts = asRecord(root.texts)
   if (!texts) return null
   const prevParagraphs = asStringArray(texts.prev_paragraphs)
@@ -76,7 +74,40 @@ function buildParagraphLookup(payload: unknown): ParagraphLookup | null {
       currMap.set(idx, para)
     })
   }
+  return { prevMap, currMap }
+}
 
+function parseYearParagraphMap(payload: unknown): Map<number, string> | null {
+  const root = asRecord(payload)
+  if (!root) return null
+  const texts = asRecord(root.texts)
+  if (!texts) return null
+  const paragraphs = asStringArray(texts.paragraphs)
+  if (!paragraphs) return null
+  const output = new Map<number, string>()
+  paragraphs.forEach((paragraph, idx) => {
+    output.set(idx, paragraph)
+  })
+  return output
+}
+
+async function buildParagraphLookup(payload: unknown): Promise<ParagraphLookup | null> {
+  const root = asRecord(payload)
+  if (!root) return null
+  const yearInputs = asRecord(root.year_inputs)
+  if (!yearInputs) {
+    return buildLegacyParagraphLookup(root)
+  }
+  const prevRef = typeof yearInputs.prev === "string" ? yearInputs.prev : ""
+  const currRef = typeof yearInputs.curr === "string" ? yearInputs.curr : ""
+  if (!prevRef || !currRef) return null
+  const [prevPayload, currPayload] = await Promise.all([
+    loadLabInputFile(prevRef),
+    loadLabInputFile(currRef),
+  ])
+  const prevMap = parseYearParagraphMap(prevPayload)
+  const currMap = parseYearParagraphMap(currPayload)
+  if (!prevMap || !currMap) return null
   return { prevMap, currMap }
 }
 
@@ -227,9 +258,10 @@ export default function LabExcerptPickerPanel({ output }: { output: LabOutput })
     }
 
     loadLabInputFile(inputFile)
-      .then((payload) => {
+      .then(async (payload) => {
         if (cancelled) return
-        const lookup = buildParagraphLookup(payload)
+        const lookup = await buildParagraphLookup(payload)
+        if (cancelled) return
         if (!lookup) {
           setParagraphStatus({
             lookup: null,

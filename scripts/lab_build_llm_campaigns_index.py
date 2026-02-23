@@ -41,12 +41,14 @@ def build_payload() -> dict[str, Any]:
                 "campaign_id": campaign.track_id,
                 "campaign_slug": campaign.track_slug,
                 "display_name": campaign.display_name,
+                "input_mode": campaign.input_mode,
                 "model_provider": campaign.model_provider,
                 "model_name": campaign.model_name,
                 "run_label_prefix_template": campaign.run_label_prefix_template,
                 "instructions_asset": campaign.instructions_asset_name,
                 "primary_for_runtime": campaign.primary_for_runtime,
                 "compare_default": campaign.compare_default,
+                "runtime_visible": campaign.runtime_visible,
             }
         )
 

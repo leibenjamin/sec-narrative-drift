@@ -27,7 +27,8 @@ const FALLBACK_PROJECT_INSTRUCTIONS = [
   `provenance.model_name must be exactly "<campaign model_name>".`,
   `provenance.run_label is required and must start with YYYY-MM-DD_ (example: "${RUN_LABEL_TEMPLATE}").`,
   "No extra provenance keys beyond input_file, model_provider, model_name, run_label.",
-  "paragraph_idx must be FULL index via focuspack_meta mappings.",
+  "Attach pair manifest plus both year input files for each job.",
+  "paragraph_idx must be direct FULL indices from the referenced year input arrays.",
   "Snippets must be verbatim substrings and <= 350 chars.",
   "highlights must be present and non-empty for every evidence block.",
   'Delta citations must use ASCII format: "YYYY para NN".',
@@ -67,9 +68,11 @@ export function buildDefaultLlmInputFile(
   ticker: string,
   yearFrom: number,
   yearTo: number,
-  lens: LabCleaningLens
+  lens: LabCleaningLens,
+  section = "10k_item1a",
+  sourceId = "edgar"
 ): string {
-  return `inputs/${ticker.toUpperCase()}_${yearFrom}_${yearTo}_focuspack_${lens}.json`
+  return `inputs/pair/${ticker.toUpperCase()}_${yearFrom}_${yearTo}_${section}_${lens}_${sourceId}.json`
 }
 
 export function buildLlmThreadStarterText(context: LlmThreadStarterContext): string {
@@ -77,7 +80,7 @@ export function buildLlmThreadStarterText(context: LlmThreadStarterContext): str
   const sourceId = context.sourceId ?? "edgar"
   const lines: string[] = []
   lines.push(
-    `Thread Title: ${context.ticker.toUpperCase()} ${context.yearFrom}-${context.yearTo} ${context.detectorId} (focuspack_${context.lens}) [${context.campaignDisplayName}]`
+    `Thread Title: ${context.ticker.toUpperCase()} ${context.yearFrom}-${context.yearTo} ${context.detectorId} (${context.lens}) [${context.campaignDisplayName}]`
   )
   lines.push("")
   lines.push(`Attach this input file: ${inputFile}`)
@@ -99,7 +102,8 @@ export function buildLlmThreadStarterText(context: LlmThreadStarterContext): str
     `- provenance.run_label is required and must start with YYYY-MM-DD_ (example: "${context.runLabelTemplate}").`
   )
   lines.push("- No extra provenance keys beyond input_file, model_provider, model_name, run_label.")
-  lines.push("- paragraph_idx must be FULL index via focuspack_meta mappings.")
+  lines.push("- Attach pair manifest + both year input files for this job.")
+  lines.push("- paragraph_idx must be direct FULL indices from year inputs.")
   lines.push("- Snippets must be verbatim and <= 350 chars.")
   lines.push("- highlights must be present and non-empty.")
   lines.push('- Delta citations must be ASCII-only format "YYYY para NN".')
@@ -126,7 +130,7 @@ export function buildLlmThreadStarterText(context: LlmThreadStarterContext): str
   lines.push('    "drift_score": null,')
   lines.push('    "confidence": 0.50,')
   lines.push('    "coverage": null,')
-  lines.push('    "warnings": ["Focuspack is a subset; verify in full compare pane."]')
+  lines.push('    "warnings": ["Precomputed model output; validate against deterministic evidence and full paragraph context."]')
   lines.push("  },")
   lines.push('  "provenance": {')
   lines.push(`    "input_file": "${inputFile}",`)

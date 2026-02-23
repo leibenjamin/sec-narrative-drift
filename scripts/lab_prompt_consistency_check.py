@@ -152,7 +152,10 @@ def main(argv: Optional[list[str]] = None) -> int:
     if prompt_path is None or not prompt_path.exists():
         raise SystemExit("prompt_templates_showcase.md not found.")
 
-    expected_full = build_prompt_templates_showcase_lines(campaign=campaign)
+    expected_full = build_prompt_templates_showcase_lines(
+        campaign=campaign,
+        input_mode=campaign.input_mode or "full_section_v2",
+    )
     actual_full = _read_lines(prompt_path)
     _assert_lines_equal("prompt_templates_showcase", expected_full, actual_full)
 
@@ -160,11 +163,15 @@ def main(argv: Optional[list[str]] = None) -> int:
         expected_section = build_prompt_template_detector_section_lines(
             detector_id,
             campaign=campaign,
+            input_mode=campaign.input_mode or "full_section_v2",
         )
         actual_section = _extract_section(actual_full, f"## {detector_id}")
         _assert_lines_equal(f"prompt_section:{detector_id}", expected_section, actual_section)
 
-    expected_instructions = build_chatgpt_project_instructions_lines(campaign=campaign)
+    expected_instructions = build_chatgpt_project_instructions_lines(
+        campaign=campaign,
+        input_mode=campaign.input_mode or "full_section_v2",
+    )
     instructions_report = (
         Path(args.instructions_report)
         if args.instructions_report
@@ -241,13 +248,19 @@ def main(argv: Optional[list[str]] = None) -> int:
     sample_ticker = "KO"
     sample_year_from = 2023
     sample_year_to = 2024
-    sample_lens = "focuspack_deboilerplated"
+    sample_lens = "deboilerplated"
     sample_input = (
-        f"inputs/{sample_ticker}_{sample_year_from}_{sample_year_to}_focuspack_deboilerplated.json"
+        f"inputs/pair/{sample_ticker}_{sample_year_from}_{sample_year_to}_10k_item1a_{sample_lens}_edgar.json"
+    )
+    sample_year_prev = (
+        f"inputs/year/{sample_ticker}_{sample_year_from}_10k_item1a_{sample_lens}_edgar__pair_{sample_year_from}_{sample_year_to}.json"
+    )
+    sample_year_curr = (
+        f"inputs/year/{sample_ticker}_{sample_year_to}_10k_item1a_{sample_lens}_edgar__pair_{sample_year_from}_{sample_year_to}.json"
     )
     sample_repo_input = (
-        f"{bundle_paths.bundle_root.as_posix()}/llm_inputs_focuspack/"
-        f"{sample_ticker}/lab_llm_focuspack_10k_item1a_{sample_year_from}_{sample_year_to}_deboilerplated.json"
+        f"{bundle_paths.bundle_root.as_posix()}/inputs/pair/"
+        f"{sample_ticker}_{sample_year_from}_{sample_year_to}_10k_item1a_{sample_lens}_edgar.json"
     )
 
     for detector_id in (DETECTOR_DELTA_BRIEF, DETECTOR_EXCERPT_PICKER):
@@ -272,6 +285,8 @@ def main(argv: Optional[list[str]] = None) -> int:
             input_path=sample_input,
             output_path=f"public/data/sec_narrative_drift_lab/{output_path}",
             repo_input_path=sample_repo_input,
+            additional_input_paths=[sample_year_prev, sample_year_curr],
+            input_mode=campaign.input_mode or "full_section_v2",
             campaign=campaign,
         )
         starter_text = "\n".join(starter)

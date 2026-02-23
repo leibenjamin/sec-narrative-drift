@@ -17,10 +17,17 @@ from lab_script_version import build_script_version
 SCRIPT_VERSION = build_script_version(Path(__file__), "v1")
 REPO_ROOT = Path(__file__).resolve().parents[1]
 LAB_ROOT = REPO_ROOT / "public" / "data" / "sec_narrative_drift_lab"
+LLM_INPUTS_V2_ROOT = LAB_ROOT / "llm_inputs_v2"
 DEFAULT_REGISTRY_PATH = LAB_ROOT / "lab_cases_v1.json"
 DEFAULT_OUT_PATH = LAB_ROOT / "lab_llm_variants_v1.json"
 DEFAULT_REPORT_PATH = REPO_ROOT / "reports" / "lab_llm_variants_index_build.md"
 RUN_LABEL_RE = re.compile(r"^20\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])_[A-Za-z0-9._-]+$")
+
+
+def campaign_lenses(input_mode: Optional[str]) -> tuple[str, ...]:
+    if input_mode == "full_section_v2":
+        return ("raw", "deboilerplated")
+    return ("deboilerplated",)
 
 
 def now_utc_iso() -> str:
@@ -66,6 +73,7 @@ def _request_url(ticker: str, rel_path_with_ticker: str) -> str:
 def _validate_variant_payload(
     payload: dict[str, Any],
     detector_id: str,
+    lens: str,
     campaign_provider: str,
     campaign_model: str,
 ) -> tuple[bool, list[str], str]:
@@ -88,7 +96,43 @@ def _validate_variant_payload(
             run_label = run_label_raw
     if payload.get("detector_id") != detector_id:
         reasons.append("detector_id mismatch")
+    if payload.get("cleaning_lens") != lens:
+        reasons.append("cleaning_lens mismatch")
     return (len(reasons) == 0, reasons, run_label)
+
+
+def _resolve_input_file(input_file: str) -> Optional[Path]:
+    normalized = input_file.strip().replace("\\", "/").lstrip("./")
+    if not normalized:
+        return None
+    if normalized.startswith("inputs/"):
+        path = (LLM_INPUTS_V2_ROOT / normalized).resolve()
+    else:
+        path = (REPO_ROOT / normalized).resolve()
+    if path.exists() and path.is_file():
+        return path
+    return None
+
+
+def _load_year_refs(input_file: str) -> tuple[str, str]:
+    input_path = _resolve_input_file(input_file)
+    if input_path is None:
+        return ("", "")
+    try:
+        payload = read_json(input_path)
+    except Exception:
+        return ("", "")
+    root = as_dict(payload)
+    if root is None:
+        return ("", "")
+    year_inputs = as_dict(root.get("year_inputs"))
+    if year_inputs is None:
+        return ("", "")
+    prev = year_inputs.get("prev")
+    curr = year_inputs.get("curr")
+    prev_value = prev if isinstance(prev, str) else ""
+    curr_value = curr if isinstance(curr, str) else ""
+    return (prev_value, curr_value)
 
 
 def build_variant_rows(registry_path: Path) -> tuple[list[dict[str, Any]], dict[str, int]]:
@@ -126,72 +170,88 @@ def build_variant_rows(registry_path: Path) -> tuple[list[dict[str, Any]], dict[
             for campaign in LLM_CAMPAIGNS:
                 if campaign.model_provider is None or campaign.model_name is None:
                     continue
-                rel = canonical_output_relative_path(
-                    ticker=ticker,
-                    detector_id=detector_id,
-                    section=section,
-                    year_from=year_from,
-                    year_to=year_to,
-                    cleaning_lens="deboilerplated",
-                    source_id="edgar",
-                    track_slug=campaign.track_slug,
-                )
-                repo_path = f"public/data/sec_narrative_drift_lab/{rel}"
-                request_url = _request_url(ticker, rel)
-                abs_path = REPO_ROOT / repo_path
-                present = abs_path.exists()
-                valid = False
-                reasons: list[str] = []
-                run_label = ""
-                if present:
-                    stats["present"] += 1
-                    try:
-                        output_payload = read_json(abs_path)
-                        output_dict = as_dict(output_payload)
-                        if output_dict is None:
-                            reasons = ["output root is not object"]
-                        else:
-                            valid, reasons, run_label = _validate_variant_payload(
-                                payload=output_dict,
-                                detector_id=detector_id,
-                                campaign_provider=campaign.model_provider,
-                                campaign_model=campaign.model_name,
-                            )
-                    except Exception as exc:  # noqa: BLE001
-                        reasons = [f"failed to parse output: {exc}"]
-                else:
-                    stats["missing"] += 1
-                    reasons = ["file not found"]
+                for lens in campaign_lenses(campaign.input_mode):
+                    rel = canonical_output_relative_path(
+                        ticker=ticker,
+                        detector_id=detector_id,
+                        section=section,
+                        year_from=year_from,
+                        year_to=year_to,
+                        cleaning_lens=lens,
+                        source_id="edgar",
+                        track_slug=campaign.track_slug,
+                    )
+                    repo_path = f"public/data/sec_narrative_drift_lab/{rel}"
+                    request_url = _request_url(ticker, rel)
+                    abs_path = REPO_ROOT / repo_path
+                    present = abs_path.exists()
+                    valid = False
+                    reasons: list[str] = []
+                    run_label = ""
+                    input_file = ""
+                    year_input_prev = ""
+                    year_input_curr = ""
+                    if present:
+                        stats["present"] += 1
+                        try:
+                            output_payload = read_json(abs_path)
+                            output_dict = as_dict(output_payload)
+                            if output_dict is None:
+                                reasons = ["output root is not object"]
+                            else:
+                                valid, reasons, run_label = _validate_variant_payload(
+                                    payload=output_dict,
+                                    detector_id=detector_id,
+                                    lens=lens,
+                                    campaign_provider=campaign.model_provider,
+                                    campaign_model=campaign.model_name,
+                                )
+                                provenance = as_dict(output_dict.get("provenance"))
+                                if provenance is not None:
+                                    raw_input_file = provenance.get("input_file")
+                                    if isinstance(raw_input_file, str):
+                                        input_file = raw_input_file
+                                        year_input_prev, year_input_curr = _load_year_refs(input_file)
+                        except Exception as exc:  # noqa: BLE001
+                            reasons = [f"failed to parse output: {exc}"]
+                    else:
+                        stats["missing"] += 1
+                        reasons = ["file not found"]
 
-                if valid:
-                    stats["valid"] += 1
-                elif present:
-                    stats["invalid"] += 1
+                    if valid:
+                        stats["valid"] += 1
+                    elif present:
+                        stats["invalid"] += 1
 
-                stats["targets"] += 1
-                rows.append(
-                    {
-                        "ticker": ticker.upper(),
-                        "section": section,
-                        "year_from": year_from,
-                        "year_to": year_to,
-                        "lens": "deboilerplated",
-                        "source_id": "edgar",
-                        "detector_id": detector_id,
-                        "campaign_id": campaign.track_id,
-                        "campaign_slug": campaign.track_slug,
-                        "display_name": campaign.display_name,
-                        "model_provider": campaign.model_provider,
-                        "model_name": campaign.model_name,
-                        "filename": rel.split("/", 1)[1] if "/" in rel else rel,
-                        "expected_repo_path": repo_path,
-                        "request_url": request_url,
-                        "present": present,
-                        "valid": valid,
-                        "run_label": run_label,
-                        "validation_reasons": reasons,
-                    }
-                )
+                    stats["targets"] += 1
+                    rows.append(
+                        {
+                            "ticker": ticker.upper(),
+                            "section": section,
+                            "year_from": year_from,
+                            "year_to": year_to,
+                            "lens": lens,
+                            "source_id": "edgar",
+                            "detector_id": detector_id,
+                            "campaign_id": campaign.track_id,
+                            "campaign_slug": campaign.track_slug,
+                            "display_name": campaign.display_name,
+                            "input_mode": campaign.input_mode,
+                            "runtime_visible": campaign.runtime_visible,
+                            "model_provider": campaign.model_provider,
+                            "model_name": campaign.model_name,
+                            "filename": rel.split("/", 1)[1] if "/" in rel else rel,
+                            "expected_repo_path": repo_path,
+                            "request_url": request_url,
+                            "present": present,
+                            "valid": valid,
+                            "run_label": run_label,
+                            "input_file": input_file,
+                            "year_input_prev": year_input_prev,
+                            "year_input_curr": year_input_curr,
+                            "validation_reasons": reasons,
+                        }
+                    )
     return rows, stats
 
 

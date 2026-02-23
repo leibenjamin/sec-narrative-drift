@@ -52,13 +52,22 @@ class InputIndexEntry:
     section: str
     lens: str
     path: Path
+    input_mode: Optional[str] = None
+    year: Optional[int] = None
+    pair_year_from: Optional[int] = None
+    pair_year_to: Optional[int] = None
+    year_input_prev: Optional[str] = None
+    year_input_curr: Optional[str] = None
+    paragraph_count: Optional[int] = None
 
 
 @dataclass(frozen=True)
 class BundlePaths:
     bundle_root: Path
-    focus_index: Path
-    full_index: Path
+    focus_index: Optional[Path]
+    full_index: Optional[Path]
+    pair_index_v2: Optional[Path]
+    year_index_v2: Optional[Path]
     prompt_templates: Optional[Path]
 
 
@@ -71,9 +80,11 @@ def find_latest_bundle(root: Path) -> Optional[Path]:
             continue
         if not entry.name.startswith("showcase_llm_inputs_"):
             continue
-        if not (entry / "inputs_index_focuspack.json").exists():
-            continue
-        if not (entry / "inputs_index_full.json").exists():
+        has_legacy = (entry / "inputs_index_focuspack.json").exists()
+        has_v2 = (entry / "inputs_index_pair_v2.json").exists() and (
+            entry / "inputs_index_year_v2.json"
+        ).exists()
+        if not has_legacy and not has_v2:
             continue
         candidates.append(entry)
     if not candidates:
@@ -86,9 +97,13 @@ def resolve_bundle_paths(
     focus_index: Optional[str],
     full_index: Optional[str],
     prompt_templates: Optional[str],
+    pair_index_v2: Optional[str] = None,
+    year_index_v2: Optional[str] = None,
 ) -> BundlePaths:
     focus_path = Path(focus_index) if focus_index else None
     full_path = Path(full_index) if full_index else None
+    pair_v2_path = Path(pair_index_v2) if pair_index_v2 else None
+    year_v2_path = Path(year_index_v2) if year_index_v2 else None
     bundle_path = Path(bundle_root) if bundle_root else None
 
     if bundle_path is None:
@@ -96,22 +111,70 @@ def resolve_bundle_paths(
             bundle_path = focus_path.parent
         elif full_path is not None:
             bundle_path = full_path.parent
+        elif pair_v2_path is not None:
+            bundle_path = pair_v2_path.parent
+        elif year_v2_path is not None:
+            bundle_path = year_v2_path.parent
         else:
             bundle_path = find_latest_bundle(BUNDLES_ROOT)
             if bundle_path is None:
                 raise SystemExit("No LLM input bundle found. Provide --bundle or index paths.")
 
-    if focus_path is None:
-        focus_path = bundle_path / "inputs_index_focuspack.json"
-    if full_path is None:
-        full_path = bundle_path / "inputs_index_full.json"
+    if not bundle_path.is_absolute():
+        bundle_path = (REPO_ROOT / bundle_path).resolve()
+    if not bundle_path.exists():
+        raise SystemExit(f"Bundle root not found: {bundle_path}")
 
-    if not focus_path.exists():
+    if focus_path is None:
+        candidate = bundle_path / "inputs_index_focuspack.json"
+        if candidate.exists():
+            focus_path = candidate
+    elif not focus_path.is_absolute():
+        focus_path = (REPO_ROOT / focus_path).resolve()
+
+    if full_path is None:
+        candidate = bundle_path / "inputs_index_full.json"
+        if candidate.exists():
+            full_path = candidate
+    elif not full_path.is_absolute():
+        full_path = (REPO_ROOT / full_path).resolve()
+
+    if pair_v2_path is None:
+        candidate = bundle_path / "inputs_index_pair_v2.json"
+        if candidate.exists():
+            pair_v2_path = candidate
+    elif not pair_v2_path.is_absolute():
+        pair_v2_path = (REPO_ROOT / pair_v2_path).resolve()
+
+    if year_v2_path is None:
+        candidate = bundle_path / "inputs_index_year_v2.json"
+        if candidate.exists():
+            year_v2_path = candidate
+    elif not year_v2_path.is_absolute():
+        year_v2_path = (REPO_ROOT / year_v2_path).resolve()
+
+    if (
+        focus_path is None
+        and full_path is None
+        and pair_v2_path is None
+        and year_v2_path is None
+    ):
+        raise SystemExit(
+            "Bundle has no recognized input indexes (expected legacy inputs_index_focuspack/full or v2 inputs_index_pair_v2/year_v2)."
+        )
+
+    if focus_path is not None and not focus_path.exists():
         raise SystemExit(f"Focuspack index not found: {focus_path}")
-    if not full_path.exists():
+    if full_path is not None and not full_path.exists():
         raise SystemExit(f"Full index not found: {full_path}")
+    if pair_v2_path is not None and not pair_v2_path.exists():
+        raise SystemExit(f"Pair v2 index not found: {pair_v2_path}")
+    if year_v2_path is not None and not year_v2_path.exists():
+        raise SystemExit(f"Year v2 index not found: {year_v2_path}")
 
     prompt_path = Path(prompt_templates) if prompt_templates else None
+    if prompt_path is not None and not prompt_path.is_absolute():
+        prompt_path = (REPO_ROOT / prompt_path).resolve()
     if prompt_path is None:
         candidate = bundle_path / "prompt_templates_showcase.md"
         if candidate.exists():
@@ -121,23 +184,43 @@ def resolve_bundle_paths(
         bundle_root=bundle_path,
         focus_index=focus_path,
         full_index=full_path,
+        pair_index_v2=pair_v2_path,
+        year_index_v2=year_v2_path,
         prompt_templates=prompt_path,
     )
+
+
+def _resolve_pair_years(entry_dict: dict[str, Any]) -> tuple[Optional[int], Optional[int]]:
+    year_from = get_int(entry_dict.get("year_from"))
+    year_to = get_int(entry_dict.get("year_to"))
+    if year_from is not None and year_to is not None:
+        return year_from, year_to
+
+    pair_year_from = get_int(entry_dict.get("pair_year_from"))
+    pair_year_to = get_int(entry_dict.get("pair_year_to"))
+    if pair_year_from is not None and pair_year_to is not None:
+        return pair_year_from, pair_year_to
+
+    year_value = get_int(entry_dict.get("year"))
+    if year_value is not None:
+        return year_value, year_value
+    return None, None
 
 
 def load_input_index(path: Path, bundle_root: Path) -> dict[tuple[str, int, int, str, str], InputIndexEntry]:
     payload = read_json(path)
     payload_list = as_list(payload)
     if payload_list is None:
-        raise SystemExit(f"Input index invalid: {path}")
+        raise SystemExit(f"Input index invalid (must be JSON list): {path}")
+
     output: dict[tuple[str, int, int, str, str], InputIndexEntry] = {}
     for entry in payload_list:
         entry_dict = as_str_dict(entry)
         if entry_dict is None:
             continue
+
         ticker = get_str(entry_dict.get("ticker"))
-        year_from = get_int(entry_dict.get("year_from"))
-        year_to = get_int(entry_dict.get("year_to"))
+        year_from, year_to = _resolve_pair_years(entry_dict)
         section = get_str(entry_dict.get("section"))
         lens = get_str(entry_dict.get("lens"))
         path_value = get_str(entry_dict.get("path"))
@@ -150,8 +233,9 @@ def load_input_index(path: Path, bundle_root: Path) -> dict[tuple[str, int, int,
             or path_value is None
         ):
             continue
+
         rel_path = Path(path_value)
-        full_path = rel_path if rel_path.is_absolute() else bundle_root / rel_path
+        full_path = rel_path if rel_path.is_absolute() else (bundle_root / rel_path).resolve()
         key = (ticker.upper(), year_from, year_to, section, lens)
         output[key] = InputIndexEntry(
             ticker=ticker.upper(),
@@ -160,6 +244,13 @@ def load_input_index(path: Path, bundle_root: Path) -> dict[tuple[str, int, int,
             section=section,
             lens=lens,
             path=full_path,
+            input_mode=get_str(entry_dict.get("input_mode")),
+            year=get_int(entry_dict.get("year")),
+            pair_year_from=get_int(entry_dict.get("pair_year_from")),
+            pair_year_to=get_int(entry_dict.get("pair_year_to")),
+            year_input_prev=get_str(entry_dict.get("year_input_prev")),
+            year_input_curr=get_str(entry_dict.get("year_input_curr")),
+            paragraph_count=get_int(entry_dict.get("paragraph_count")),
         )
     return output
 

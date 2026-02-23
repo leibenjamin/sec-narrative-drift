@@ -42,7 +42,6 @@ REQUIRED_TOP_LEVEL_FIELDS = [
 REQUIRED_TOP_LEVEL_FIELD_SET = set(REQUIRED_TOP_LEVEL_FIELDS)
 EXPECTED_SCHEMA_VERSION = "1.0"
 
-FOCUSPACK_WARNING = "Focuspack is a subset; verify in full compare pane."
 ALLOWED_CONFIDENCE: set[float] = {0.25, 0.50, 0.75}
 MAX_SNIPPET_CHARS = 350
 DELTA_BRIEF_CITATION_RE = re.compile(r"\b(20\d{2})\s+para\s+(\d+)\b", re.IGNORECASE)
@@ -90,6 +89,7 @@ class ManifestTarget:
     year_to: int
     section: str
     lens: str
+    source_id: str
     detector_id: str
     expected_output_path: str
     manifest_present_flag: Optional[bool]
@@ -150,6 +150,7 @@ def load_manifest_targets(manifest_path: Path) -> list[ManifestTarget]:
         year_to = get_int(entry_dict.get("year_to"))
         section = get_str(entry_dict.get("section"))
         lens = get_str(entry_dict.get("lens"))
+        source_id = get_str(entry_dict.get("source_id"))
         detectors_raw = as_list(entry_dict.get("detectors"))
         if (
             ticker is None
@@ -157,6 +158,7 @@ def load_manifest_targets(manifest_path: Path) -> list[ManifestTarget]:
             or year_to is None
             or section is None
             or lens is None
+            or source_id is None
             or detectors_raw is None
         ):
             continue
@@ -179,6 +181,7 @@ def load_manifest_targets(manifest_path: Path) -> list[ManifestTarget]:
                     year_to=year_to,
                     section=section,
                     lens=lens,
+                    source_id=source_id,
                     detector_id=detector_id,
                     expected_output_path=expected_path,
                     manifest_present_flag=present_flag,
@@ -283,9 +286,9 @@ def _validate_evidence_snippet_mapping(
     if input_payload is None:
         reasons.append("input payload root is not an object")
         return
-    paragraph_maps = build_paragraph_maps(input_payload)
+    paragraph_maps = build_paragraph_maps(input_payload, input_payload_path=input_path)
     if paragraph_maps is None:
-        reasons.append("input payload missing paragraph maps/focuspack_meta")
+        reasons.append("input payload missing resolvable paragraph maps")
         return
 
     for idx, entry in enumerate(evidence_raw):
@@ -479,8 +482,6 @@ def validate_output_json(
             )
 
     warning_values = parse_string_list(metrics.get("warnings"), "metrics.warnings", reasons)
-    if warning_values is not None and FOCUSPACK_WARNING not in warning_values:
-        reasons.append(f'metrics.warnings must include "{FOCUSPACK_WARNING}"')
     if warning_values is not None:
         for idx, warning in enumerate(warning_values):
             if WARNING_PLACEHOLDER_VALUE_RE.fullmatch(warning):
@@ -504,7 +505,7 @@ def validate_output_json(
         else:
             provenance_input_file = input_file
             expected_input_file = (
-                f"inputs/{target.ticker}_{target.year_from}_{target.year_to}_focuspack_{target.lens}.json"
+                f"inputs/pair/{target.ticker}_{target.year_from}_{target.year_to}_{target.section}_{target.lens}_{target.source_id}.json"
             )
             if input_file != expected_input_file:
                 reasons.append(

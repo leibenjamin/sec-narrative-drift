@@ -40,8 +40,8 @@ const LAB_TICKER_RE = /^[A-Z0-9.-]{1,10}$/
 const LLM_RUN_LABEL_RE = /^20\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])_[A-Za-z0-9._-]+$/
 const LLM_PROVENANCE_KEYS = ["input_file", "model_provider", "model_name", "run_label"] as const
 const DEFAULT_DETERMINISTIC_TRACK_SLUG = "det-baseline-2026-02-21"
-const DEFAULT_PRIMARY_CAMPAIGN_ID = "openai_chatgpt52ext_agent_2026-02-21"
-const DEFAULT_COMPARE_CAMPAIGN_ID = "openai_gpt53codex_xhigh_agent_2026-02-21"
+const DEFAULT_PRIMARY_CAMPAIGN_ID = "openai_gpt53codex_xhigh_agent_fullsec_2026-02-22"
+const DEFAULT_COMPARE_CAMPAIGN_ID = "openai_chatgpt52ext_agent_fullsec_2026-02-22"
 
 export type LabExpectedOutputArtifact = {
   filename: string
@@ -265,14 +265,17 @@ function normalizeInputPath(pathValue: string): string | null {
     return withBase(normalized.replace(/^public\//, ""))
   }
   if (normalized.startsWith("bundles/")) {
-    const filename = normalized.split("/").pop()
+    const bundleTail = normalized.replace(/^bundles\/[^/]+\/?/, "")
+    if (!bundleTail) return null
+    if (bundleTail.startsWith("inputs/")) {
+      return withBase(`data/sec_narrative_drift_lab/llm_inputs_v2/${bundleTail}`)
+    }
+    const filename = bundleTail.split("/").pop()
     if (!filename) return null
     return withBase(`data/sec_narrative_drift_lab/llm_inputs/${filename}`)
   }
   if (normalized.startsWith("inputs/")) {
-    const filename = normalized.split("/").pop()
-    if (!filename) return null
-    return withBase(`data/sec_narrative_drift_lab/llm_inputs/${filename}`)
+    return withBase(`data/sec_narrative_drift_lab/llm_inputs_v2/${normalized}`)
   }
   if (!normalized.includes("/")) {
     return withBase(`data/sec_narrative_drift_lab/llm_inputs/${normalized}`)
@@ -282,7 +285,7 @@ function normalizeInputPath(pathValue: string): string | null {
 
 if (import.meta.env.DEV) {
   const smokeActual = normalizeInputPath("inputs/NVDA/foo.json")
-  const smokeExpected = `${LAB_BASE_PATH}/llm_inputs/foo.json`
+  const smokeExpected = `${LAB_BASE_PATH}/llm_inputs_v2/inputs/NVDA/foo.json`
   console.assert(
     smokeActual === smokeExpected,
     `normalizeInputPath smoke failed: expected ${smokeExpected}, got ${String(smokeActual)}`
@@ -448,28 +451,33 @@ export async function getLabMethodProfileByDetectorId(
 
 export async function listLabLlmCampaigns(): Promise<LabLlmCampaign[]> {
   const index = await loadLabLlmCampaignsIndex()
-  return index.campaigns
+  const runtimeCampaigns = index.campaigns.filter(
+    (campaign) =>
+      campaign.runtime_visible !== false && campaign.input_mode !== "focuspack_v1"
+  )
+  return runtimeCampaigns.length > 0 ? runtimeCampaigns : index.campaigns
 }
 
 export async function getDefaultLabLlmCampaignPair(): Promise<{
   primaryCampaignId: string
   compareCampaignId: string
 }> {
+  const campaigns = await listLabLlmCampaigns()
   const index = await loadLabLlmCampaignsIndex()
-  const primaryExists = index.campaigns.some(
+  const primaryExists = campaigns.some(
     (campaign) => campaign.campaign_id === index.primary_campaign_id
   )
-  const compareExists = index.campaigns.some(
+  const compareExists = campaigns.some(
     (campaign) => campaign.campaign_id === index.compare_default_campaign_id
   )
   return {
     primaryCampaignId: primaryExists
       ? index.primary_campaign_id
-      : (index.campaigns[0]?.campaign_id ?? DEFAULT_PRIMARY_CAMPAIGN_ID),
+      : (campaigns[0]?.campaign_id ?? DEFAULT_PRIMARY_CAMPAIGN_ID),
     compareCampaignId: compareExists
       ? index.compare_default_campaign_id
-      : (index.campaigns[1]?.campaign_id ??
-        index.campaigns[0]?.campaign_id ??
+      : (campaigns[1]?.campaign_id ??
+        campaigns[0]?.campaign_id ??
         DEFAULT_COMPARE_CAMPAIGN_ID),
   }
 }

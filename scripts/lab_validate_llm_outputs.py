@@ -21,6 +21,9 @@ DEFAULT_OUTPUTS_DIR = (
 LAB_INPUTS_ROOT = (
     REPO_ROOT / "public" / "data" / "sec_narrative_drift_lab" / "llm_inputs"
 )
+LAB_INPUTS_V2_ROOT = (
+    REPO_ROOT / "public" / "data" / "sec_narrative_drift_lab" / "llm_inputs_v2"
+)
 
 DEFAULT_REQUIRED_FIELDS = [
     "lab_schema_version",
@@ -266,11 +269,10 @@ def _is_within(path: Path, root: Path) -> bool:
 
 
 def resolve_input_file(path_value: str, output_path: Path) -> ResolvedInputFile:
-    del output_path  # deterministic repo-root resolution only
     if not path_value or not path_value.strip():
         return ResolvedInputFile(path=None, error="provenance.input_file missing")
 
-    raw_path = Path(path_value.strip())
+    raw_path = Path(path_value.strip().replace("\\", "/"))
     if raw_path.is_absolute():
         absolute_path = raw_path.resolve()
         if not _is_within(absolute_path, REPO_ROOT):
@@ -291,9 +293,28 @@ def resolve_input_file(path_value: str, output_path: Path) -> ResolvedInputFile:
     if _is_within(repo_relative_candidate, REPO_ROOT) and _is_json_file(repo_relative_candidate):
         return ResolvedInputFile(path=repo_relative_candidate, error=None)
 
+    normalized = path_value.strip().replace("\\", "/").lstrip("./")
+    if normalized.startswith("inputs/"):
+        v2_candidate = (LAB_INPUTS_V2_ROOT / normalized).resolve()
+        if _is_json_file(v2_candidate):
+            return ResolvedInputFile(path=v2_candidate, error=None)
+    if normalized.startswith("data/"):
+        data_candidate = (REPO_ROOT / "public" / normalized).resolve()
+        if _is_json_file(data_candidate):
+            return ResolvedInputFile(path=data_candidate, error=None)
+    if normalized.startswith("public/"):
+        public_candidate = (REPO_ROOT / normalized).resolve()
+        if _is_json_file(public_candidate):
+            return ResolvedInputFile(path=public_candidate, error=None)
+
     llm_inputs_candidate = (LAB_INPUTS_ROOT / raw_path.name).resolve()
     if _is_json_file(llm_inputs_candidate):
         return ResolvedInputFile(path=llm_inputs_candidate, error=None)
+
+    # v2 local run-pack references may be relative to pair-manifest location.
+    parent_candidate = (output_path.parent / raw_path).resolve()
+    if _is_within(parent_candidate, REPO_ROOT) and _is_json_file(parent_candidate):
+        return ResolvedInputFile(path=parent_candidate, error=None)
 
     bundles_root = REPO_ROOT / "bundles"
     matches: list[Path] = []
@@ -303,8 +324,6 @@ def resolve_input_file(path_value: str, output_path: Path) -> ResolvedInputFile:
             if not _is_within(candidate_resolved, bundles_root):
                 continue
             if not _is_json_file(candidate_resolved):
-                continue
-            if candidate_resolved.parent.name != "inputs":
                 continue
             matches.append(candidate_resolved)
     matches = sorted(set(matches), key=lambda item: str(item))
@@ -331,7 +350,53 @@ def normalize_output_stem(name: str) -> str:
     return name
 
 
-def build_paragraph_maps(input_payload: dict[str, object]) -> Optional[ParagraphMaps]:
+def _extract_year_paragraphs(payload: dict[str, object]) -> Optional[list[str]]:
+    texts = as_str_dict(payload.get("texts"))
+    if texts is None:
+        return None
+    year_raw = as_list(texts.get("paragraphs"))
+    if year_raw is None:
+        return None
+    output: list[str] = []
+    for item in year_raw:
+        if not isinstance(item, str):
+            return None
+        output.append(item)
+    return output
+
+
+def build_paragraph_maps(
+    input_payload: dict[str, object],
+    input_payload_path: Optional[Path] = None,
+) -> Optional[ParagraphMaps]:
+    year_inputs = as_str_dict(input_payload.get("year_inputs"))
+    if year_inputs is not None:
+        prev_ref = get_str(year_inputs.get("prev"))
+        curr_ref = get_str(year_inputs.get("curr"))
+        if prev_ref is None or curr_ref is None:
+            return None
+        anchor = input_payload_path if input_payload_path is not None else REPO_ROOT
+        prev_resolution = resolve_input_file(prev_ref, anchor)
+        curr_resolution = resolve_input_file(curr_ref, anchor)
+        if prev_resolution.path is None or curr_resolution.path is None:
+            return None
+        try:
+            prev_payload_raw = read_json(prev_resolution.path)
+            curr_payload_raw = read_json(curr_resolution.path)
+        except json.JSONDecodeError:
+            return None
+        prev_payload = as_str_dict(prev_payload_raw)
+        curr_payload = as_str_dict(curr_payload_raw)
+        if prev_payload is None or curr_payload is None:
+            return None
+        yr_prev = _extract_year_paragraphs(prev_payload)
+        yr_curr = _extract_year_paragraphs(curr_payload)
+        if yr_prev is None or yr_curr is None:
+            return None
+        prev_map = {idx: text for idx, text in enumerate(yr_prev)}
+        curr_map = {idx: text for idx, text in enumerate(yr_curr)}
+        return ParagraphMaps(prev_map=prev_map, curr_map=curr_map)
+
     texts = as_str_dict(input_payload.get("texts"))
     if texts is None:
         return None
@@ -409,6 +474,8 @@ def validate_outputs(
     if not outputs_dir.exists():
         return [ValidationIssue(outputs_dir, ["outputs directory not found"])]
 
+    if bundle_paths.focus_index is None or bundle_paths.full_index is None:
+        return [ValidationIssue(outputs_dir, ["bundle missing focus or full input index"])]
     focus_index = load_input_index(bundle_paths.focus_index, bundle_paths.bundle_root)
     full_index = load_input_index(bundle_paths.full_index, bundle_paths.bundle_root)
 
@@ -511,10 +578,6 @@ def validate_outputs(
                     warnings_list.append(item)
                 else:
                     reasons.append(f"metrics.warnings[{idx}] is not a string")
-            if FOCUSPACK_WARNING not in warnings_list:
-                reasons.append(
-                    f'metrics.warnings missing required warning: "{FOCUSPACK_WARNING}"'
-                )
 
         artifacts = as_str_dict(payload_dict.get("artifacts"))
         if artifacts is None:
@@ -594,9 +657,12 @@ def validate_outputs(
                     reasons.append("provenance.input_file JSON invalid")
                 else:
                     input_text_counts = load_text_counts(input_payload)
-                    paragraph_maps = build_paragraph_maps(input_payload)
+                    paragraph_maps = build_paragraph_maps(
+                        input_payload,
+                        input_payload_path=input_path,
+                    )
                     if paragraph_maps is None:
-                        reasons.append("provenance.input_file missing focuspack texts/meta")
+                        reasons.append("provenance.input_file missing resolvable paragraph maps")
         else:
             reasons.append("provenance.input_file missing")
 

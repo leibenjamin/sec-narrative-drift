@@ -68,7 +68,10 @@ def main(argv: Optional[list[str]] = None) -> int:
         raise SystemExit(f"Unknown campaign id: {args.campaign_id}")
 
     output_path = bundle_dir / "prompt_templates_showcase.md"
-    prompt_lines = build_prompt_templates_showcase_lines(campaign=campaign)
+    prompt_lines = build_prompt_templates_showcase_lines(
+        campaign=campaign,
+        input_mode=campaign.input_mode or "full_section_v2",
+    )
     with output_path.open("w", encoding="utf-8", newline="\n") as handle:
         handle.write("\n".join(prompt_lines))
         handle.write("\n")

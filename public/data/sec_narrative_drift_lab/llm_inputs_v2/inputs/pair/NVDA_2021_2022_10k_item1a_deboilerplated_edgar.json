@@ -1,0 +1,24 @@
+{
+  "schema_version": "2.0",
+  "input_mode": "full_section_v2",
+  "case": {
+    "ticker": "NVDA",
+    "section": "10k_item1a",
+    "year_from": 2021,
+    "year_to": 2022,
+    "source_id": "edgar"
+  },
+  "lens": {
+    "name": "deboilerplated",
+    "coverage": 0.9071391014780628,
+    "warnings": []
+  },
+  "year_inputs": {
+    "prev": "inputs/year/NVDA_2021_10k_item1a_deboilerplated_edgar__pair_2021_2022.json",
+    "curr": "inputs/year/NVDA_2022_10k_item1a_deboilerplated_edgar__pair_2021_2022.json"
+  },
+  "output_targets": {
+    "det_llm_delta_brief_v1": "lab_10k_item1a_2021_2022_det_llm_delta_brief_v1_deboilerplated_edgar.json",
+    "det_llm_excerpt_picker_v1": "lab_10k_item1a_2021_2022_det_llm_excerpt_picker_v1_deboilerplated_edgar.json"
+  }
+}

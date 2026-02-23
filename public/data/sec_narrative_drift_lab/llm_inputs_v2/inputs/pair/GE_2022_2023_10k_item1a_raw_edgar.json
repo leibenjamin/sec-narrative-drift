@@ -1,0 +1,24 @@
+{
+  "schema_version": "2.0",
+  "input_mode": "full_section_v2",
+  "case": {
+    "ticker": "GE",
+    "section": "10k_item1a",
+    "year_from": 2022,
+    "year_to": 2023,
+    "source_id": "edgar"
+  },
+  "lens": {
+    "name": "raw",
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "year_inputs": {
+    "prev": "inputs/year/GE_2022_10k_item1a_raw_edgar__pair_2022_2023.json",
+    "curr": "inputs/year/GE_2023_10k_item1a_raw_edgar__pair_2022_2023.json"
+  },
+  "output_targets": {
+    "det_llm_delta_brief_v1": "lab_10k_item1a_2022_2023_det_llm_delta_brief_v1_raw_edgar.json",
+    "det_llm_excerpt_picker_v1": "lab_10k_item1a_2022_2023_det_llm_excerpt_picker_v1_raw_edgar.json"
+  }
+}

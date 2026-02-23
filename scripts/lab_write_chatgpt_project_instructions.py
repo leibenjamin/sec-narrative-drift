@@ -63,7 +63,10 @@ def main(argv: Optional[list[str]] = None) -> int:
     campaign = get_llm_campaign(args.campaign_id)
     if campaign is None:
         raise SystemExit(f"Unknown campaign id: {args.campaign_id}")
-    lines = build_chatgpt_project_instructions_lines(campaign=campaign)
+    lines = build_chatgpt_project_instructions_lines(
+        campaign=campaign,
+        input_mode=campaign.input_mode or "full_section_v2",
+    )
 
     if args.out_report:
         report_path = Path(args.out_report)

@@ -387,11 +387,16 @@ export default function LabPanel({
     loadLabLlmCampaignsIndex()
       .then(async (index) => {
         if (cancelled) return
-        setLlmCampaignOptions(index.campaigns)
+        const runtimeCampaigns = index.campaigns.filter(
+          (campaign) =>
+            campaign.runtime_visible !== false && campaign.input_mode !== "focuspack_v1"
+        )
+        const options = runtimeCampaigns.length > 0 ? runtimeCampaigns : index.campaigns
+        setLlmCampaignOptions(options)
         const defaults = await getDefaultLabLlmCampaignPair()
         if (cancelled) return
 
-        const available = new Set(index.campaigns.map((campaign) => campaign.campaign_id))
+        const available = new Set(options.map((campaign) => campaign.campaign_id))
         const requestedA =
           requestedLlmCampaignA && available.has(requestedLlmCampaignA)
             ? requestedLlmCampaignA
@@ -401,7 +406,11 @@ export default function LabPanel({
             ? requestedLlmCampaignB
             : defaults.compareCampaignId
         setSelectedLlmCampaignA(requestedA)
-        setSelectedLlmCampaignB(requestedB)
+        if (options.length <= 1) {
+          setSelectedLlmCampaignB(requestedA)
+        } else {
+          setSelectedLlmCampaignB(requestedB === requestedA ? options[1]?.campaign_id ?? requestedA : requestedB)
+        }
       })
       .catch(() => {
         if (cancelled) return
@@ -1198,6 +1207,7 @@ export default function LabPanel({
               <select
                 value={selectedLlmCampaignB}
                 onChange={(event) => setSelectedLlmCampaignB(event.target.value)}
+                disabled={llmCampaignOptions.length <= 1}
                 className="mt-2 w-full rounded-md border border-white/15 bg-slate-950/40 px-3 py-2 text-sm text-slate-100"
               >
                 {llmCampaignOptions.map((campaign) => (
@@ -1206,6 +1216,11 @@ export default function LabPanel({
                   </option>
                 ))}
               </select>
+              {llmCampaignOptions.length <= 1 ? (
+                <div className="mt-1 text-xs text-slate-400">
+                  Second full-section campaign pending.
+                </div>
+              ) : null}
             </div>
           </div>
 

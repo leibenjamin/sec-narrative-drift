@@ -12,11 +12,11 @@ from typing import Any, Optional, cast
 from lab_output_tracks import get_llm_campaign
 from lab_script_version import build_script_version
 
-SCRIPT_VERSION = build_script_version(Path(__file__), "v2")
+SCRIPT_VERSION = build_script_version(Path(__file__), "v3")
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_MANIFEST = REPO_ROOT / "reports" / "lab_llm_run_manifest.json"
-FOCUSPACK_WARNING = "Focuspack is a subset; verify in full compare pane."
+FULL_SECTION_WARNING = "Precomputed model output; validate against deterministic evidence and full paragraph context."
 DEFAULT_RUN_DAY = "2026-02-21"
 MAX_SNIPPET = 350
 TARGET_SNIPPET = 300
@@ -166,10 +166,10 @@ DRIVERS_TEMPLATES: tuple[str, ...] = (
 )
 
 CAVEAT_TEMPLATES: tuple[str, ...] = (
-    "Focuspack evidence is sampled; verify emphasis and magnitude in the full compare pane.",
-    "Because focuspack is selective, treat this as directional and confirm with full-section context.",
-    "This summary is evidence-led but subset-bound; validate priority calls against the complete pair view.",
-    "Subset coverage can overweight trigger terms, so use the full compare pane before making ranking decisions.",
+    "Interpretation is precomputed from the full pair input; confirm priority calls with deterministic panels.",
+    "Use this as directional model synthesis and validate mechanism strength against underlying evidence cards.",
+    "Model synthesis can compress nuance; confirm scope and caveats in the full pair compare view.",
+    "Treat this as analyst aid, not ground truth; cross-check agreement and deterministic drift before ranking.",
 )
 
 
@@ -193,7 +193,7 @@ class ManifestEntry:
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Generate Codex campaign outputs from focuspack inputs."
+        description="Generate Codex campaign outputs from run-pack v2 pair/year inputs."
     )
     parser.add_argument(
         "--manifest",
@@ -436,6 +436,60 @@ def _select_indices(
     return selected
 
 
+def _resolve_ref_path(ref: str, input_file_path: Path, run_pack_root: Path) -> Optional[Path]:
+    cleaned = ref.strip().replace("\\", "/")
+    if not cleaned:
+        return None
+    raw = Path(cleaned)
+    candidates: list[Path] = []
+    if raw.is_absolute():
+        candidates.append(raw.resolve())
+    else:
+        candidates.append((run_pack_root / raw).resolve())
+        candidates.append((input_file_path.parent / raw).resolve())
+        candidates.append((REPO_ROOT / raw).resolve())
+        candidates.append(
+            (
+                REPO_ROOT
+                / "public"
+                / "data"
+                / "sec_narrative_drift_lab"
+                / "llm_inputs_v2"
+                / raw
+            ).resolve()
+        )
+    for candidate in candidates:
+        if candidate.exists() and candidate.is_file():
+            return candidate
+    return None
+
+
+def _load_year_paragraphs(path: Path) -> list[str]:
+    payload = _load_json(path)
+    if not isinstance(payload, dict):
+        raise SystemExit(f"year payload must be object: {path}")
+    payload = cast("dict[str, Any]", payload)
+    texts = payload.get("texts")
+    if not isinstance(texts, dict):
+        raise SystemExit(f"year payload missing texts object: {path}")
+    texts = cast("dict[str, Any]", texts)
+    paragraphs = texts.get("paragraphs")
+    if not isinstance(paragraphs, list):
+        raise SystemExit(f"year payload missing texts.paragraphs list: {path}")
+    paragraphs = cast("list[Any]", paragraphs)
+    return [str(item) for item in paragraphs]
+
+
+def _ordered_top_terms(paragraphs: list[str], take: int = 12) -> list[str]:
+    counts: Counter[str] = Counter()
+    for paragraph in paragraphs:
+        for token in _tokenize(paragraph):
+            if token in STOPWORDS or len(token) < 4:
+                continue
+            counts[token] += 1
+    return [term for term, _count in counts.most_common(take)]
+
+
 def _build_evidence_block(
     year: int, paragraph_idx: int, paragraph: str, trigger_terms: list[str]
 ) -> dict[str, object]:
@@ -631,56 +685,89 @@ def _build_manifest_entries(manifest: dict[str, Any]) -> tuple[list[ManifestEntr
 def _build_output_payload(
     entry: ManifestEntry,
     detector_id: str,
+    input_file_path: Path,
+    run_pack_root: Path,
     input_payload: dict[str, Any],
     model_provider: str,
     model_name: str,
     run_day: str,
 ) -> dict[str, Any]:
-    texts = input_payload.get("texts")
-    focuspack_meta = input_payload.get("focuspack_meta")
-    lens_meta = input_payload.get("lens")
-    if not isinstance(texts, dict) or not isinstance(focuspack_meta, dict):
-        raise SystemExit(f"input payload missing texts/focuspack_meta for {entry.input_file}")
-    texts = cast("dict[str, Any]", texts)
-    focuspack_meta = cast("dict[str, Any]", focuspack_meta)
-
-    prev_paragraphs_raw = texts.get("prev_paragraphs")
-    curr_paragraphs_raw = texts.get("curr_paragraphs")
-    selected_prev_raw = focuspack_meta.get("selected_prev_indices")
-    selected_curr_raw = focuspack_meta.get("selected_curr_indices")
-    trigger_terms_raw = focuspack_meta.get("trigger_terms")
-    if (
-        not isinstance(prev_paragraphs_raw, list)
-        or not isinstance(curr_paragraphs_raw, list)
-        or not isinstance(selected_prev_raw, list)
-        or not isinstance(selected_curr_raw, list)
-        or not isinstance(trigger_terms_raw, list)
-    ):
-        raise SystemExit(f"input payload malformed focuspack fields for {entry.input_file}")
-    prev_paragraphs_raw = cast("list[Any]", prev_paragraphs_raw)
-    curr_paragraphs_raw = cast("list[Any]", curr_paragraphs_raw)
-    selected_prev_raw = cast("list[Any]", selected_prev_raw)
-    selected_curr_raw = cast("list[Any]", selected_curr_raw)
-    trigger_terms_raw = cast("list[Any]", trigger_terms_raw)
-
-    prev_paragraphs = [str(item) for item in prev_paragraphs_raw]
-    curr_paragraphs = [str(item) for item in curr_paragraphs_raw]
-    selected_prev = [int(item) for item in selected_prev_raw]
-    selected_curr = [int(item) for item in selected_curr_raw]
-    trigger_terms = [_clean_ws(str(item)) for item in trigger_terms_raw if _clean_ws(str(item))]
-
-    if len(prev_paragraphs) != len(selected_prev) or len(curr_paragraphs) != len(selected_curr):
-        raise SystemExit(f"focuspack selected index mapping mismatch for {entry.input_file}")
-
-    prev_map = {selected_prev[i]: prev_paragraphs[i] for i in range(len(selected_prev))}
-    curr_map = {selected_curr[i]: curr_paragraphs[i] for i in range(len(selected_curr))}
-
+    prev_map: dict[int, str] = {}
+    curr_map: dict[int, str] = {}
     coverage = None
-    if isinstance(lens_meta, dict):
-        lens_meta = cast("dict[str, Any]", lens_meta)
-        raw_coverage = lens_meta.get("coverage")
-        if isinstance(raw_coverage, (int, float)) and not isinstance(raw_coverage, bool):
-            coverage = float(raw_coverage)
+    trigger_terms: list[str] = []
+
+    year_inputs = input_payload.get("year_inputs")
+    lens_meta = input_payload.get("lens")
+    if isinstance(year_inputs, dict):
+        year_inputs = cast("dict[str, Any]", year_inputs)
+        prev_ref = year_inputs.get("prev")
+        curr_ref = year_inputs.get("curr")
+        if not isinstance(prev_ref, str) or not isinstance(curr_ref, str):
+            raise SystemExit(f"pair input missing year_inputs.prev/curr for {entry.input_file}")
+        prev_path = _resolve_ref_path(prev_ref, input_file_path, run_pack_root)
+        curr_path = _resolve_ref_path(curr_ref, input_file_path, run_pack_root)
+        if prev_path is None or curr_path is None:
+            raise SystemExit(f"pair input year file reference unresolved for {entry.input_file}")
+        prev_paragraphs = _load_year_paragraphs(prev_path)
+        curr_paragraphs = _load_year_paragraphs(curr_path)
+        prev_map = {idx: text for idx, text in enumerate(prev_paragraphs)}
+        curr_map = {idx: text for idx, text in enumerate(curr_paragraphs)}
+        ordered_terms = _ordered_top_terms(prev_paragraphs + curr_paragraphs, take=10)
+        trigger_terms = [term for term in ordered_terms if term]
+        if isinstance(lens_meta, dict):
+            lens_meta = cast("dict[str, Any]", lens_meta)
+            raw_coverage = lens_meta.get("coverage")
+            if isinstance(raw_coverage, (int, float)) and not isinstance(raw_coverage, bool):
+                coverage = float(raw_coverage)
+    else:
+        # Legacy focuspack compatibility path.
+        texts = input_payload.get("texts")
+        focuspack_meta = input_payload.get("focuspack_meta")
+        if not isinstance(texts, dict) or not isinstance(focuspack_meta, dict):
+            raise SystemExit(
+                f"input payload missing year_inputs or legacy texts/focuspack_meta for {entry.input_file}"
+            )
+        texts = cast("dict[str, Any]", texts)
+        focuspack_meta = cast("dict[str, Any]", focuspack_meta)
+
+        prev_paragraphs_raw = texts.get("prev_paragraphs")
+        curr_paragraphs_raw = texts.get("curr_paragraphs")
+        selected_prev_raw = focuspack_meta.get("selected_prev_indices")
+        selected_curr_raw = focuspack_meta.get("selected_curr_indices")
+        trigger_terms_raw = focuspack_meta.get("trigger_terms")
+        if (
+            not isinstance(prev_paragraphs_raw, list)
+            or not isinstance(curr_paragraphs_raw, list)
+            or not isinstance(selected_prev_raw, list)
+            or not isinstance(selected_curr_raw, list)
+            or not isinstance(trigger_terms_raw, list)
+        ):
+            raise SystemExit(f"input payload malformed legacy focuspack fields for {entry.input_file}")
+        prev_paragraphs_raw = cast("list[Any]", prev_paragraphs_raw)
+        curr_paragraphs_raw = cast("list[Any]", curr_paragraphs_raw)
+        selected_prev_raw = cast("list[Any]", selected_prev_raw)
+        selected_curr_raw = cast("list[Any]", selected_curr_raw)
+        trigger_terms_raw = cast("list[Any]", trigger_terms_raw)
+
+        prev_paragraphs = [str(item) for item in prev_paragraphs_raw]
+        curr_paragraphs = [str(item) for item in curr_paragraphs_raw]
+        selected_prev = [int(item) for item in selected_prev_raw]
+        selected_curr = [int(item) for item in selected_curr_raw]
+        trigger_terms = [
+            _clean_ws(str(item)) for item in trigger_terms_raw if _clean_ws(str(item))
+        ]
+
+        if len(prev_paragraphs) != len(selected_prev) or len(curr_paragraphs) != len(selected_curr):
+            raise SystemExit(f"focuspack selected index mapping mismatch for {entry.input_file}")
+
+        prev_map = {selected_prev[i]: prev_paragraphs[i] for i in range(len(selected_prev))}
+        curr_map = {selected_curr[i]: curr_paragraphs[i] for i in range(len(selected_curr))}
+        if isinstance(lens_meta, dict):
+            lens_meta = cast("dict[str, Any]", lens_meta)
+            raw_coverage = lens_meta.get("coverage")
+            if isinstance(raw_coverage, (int, float)) and not isinstance(raw_coverage, bool):
+                coverage = float(raw_coverage)
 
     if detector_id == "det_llm_delta_brief_v1":
         prev_idxs = _select_indices(prev_map, trigger_terms, take_count=3)
@@ -765,7 +852,7 @@ def _build_output_payload(
             "confidence": confidence,
             "coverage": coverage,
             "warnings": [
-                FOCUSPACK_WARNING,
+                FULL_SECTION_WARNING,
                 "Generated by Codex campaign; review full compare pane for full context.",
             ],
         },
@@ -826,6 +913,8 @@ def main() -> None:
             payload = _build_output_payload(
                 entry=entry,
                 detector_id=detector.detector_id,
+                input_file_path=input_abs,
+                run_pack_root=run_pack_path,
                 input_payload=input_payload,
                 model_provider=campaign.model_provider,
                 model_name=campaign.model_name,

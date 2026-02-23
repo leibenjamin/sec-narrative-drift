@@ -103,12 +103,14 @@ export const LabLlmCampaignSchema = z.object({
   campaign_id: z.string(),
   campaign_slug: z.string(),
   display_name: z.string(),
+  input_mode: z.enum(["focuspack_v1", "full_section_v2"]).optional(),
   model_provider: z.string(),
   model_name: z.string(),
   run_label_prefix_template: z.string().optional(),
   instructions_asset: z.string().optional(),
   primary_for_runtime: z.boolean().optional(),
   compare_default: z.boolean().optional(),
+  runtime_visible: z.boolean().optional(),
 })
 
 export const LabLlmCampaignsIndexSchema = z.object({
@@ -131,6 +133,8 @@ export const LabLlmVariantSchema = z.object({
   campaign_id: z.string(),
   campaign_slug: z.string(),
   display_name: z.string(),
+  input_mode: z.enum(["focuspack_v1", "full_section_v2"]).optional(),
+  runtime_visible: z.boolean().optional(),
   model_provider: z.string(),
   model_name: z.string(),
   filename: z.string(),
@@ -139,6 +143,9 @@ export const LabLlmVariantSchema = z.object({
   present: z.boolean(),
   valid: z.boolean(),
   run_label: z.string(),
+  input_file: z.string().optional(),
+  year_input_prev: z.string().optional(),
+  year_input_curr: z.string().optional(),
   validation_reasons: z.array(z.string()).optional(),
 })
 
@@ -157,8 +164,10 @@ export const LabMethodTrackSchema = z.object({
   detector_ids: z.array(z.string()),
   model_provider: z.string().optional(),
   model_name: z.string().optional(),
+  input_mode: z.enum(["focuspack_v1", "full_section_v2", "deterministic"]).optional(),
   primary_for_runtime: z.boolean().optional(),
   compare_default: z.boolean().optional(),
+  runtime_visible: z.boolean().optional(),
 })
 
 export const LabMethodTracksIndexSchema = z.object({

@@ -238,7 +238,7 @@ def build_lines(
     lines.append("## Start Here")
     lines.append("1. Open `docs/lab/04_chatgpt_project_setup.md` and paste the Project Instructions into ChatGPT Desktop Project settings.")
     lines.append("2. Use one ChatGPT thread per job (strict isolation).")
-    lines.append("3. For each job, attach the exact input file from run pack `inputs/` and paste the matching starter from `THREAD_STARTERS.md`.")
+    lines.append("3. For each job, attach the exact pair manifest plus both year files from run pack `inputs/`, then paste the matching starter from `THREAD_STARTERS.md`.")
     lines.append("4. Save JSON directly to the exact output path listed for that job.")
     lines.append("5. After each ticker wave, run the validator command in the Validation Loop section.")
     lines.append("")
@@ -305,7 +305,7 @@ def build_lines(
         lines.append("")
 
     lines.append("## Notes")
-    lines.append("- Keep `provenance.input_file` exactly `inputs/<TICKER>_<FROM>_<TO>_focuspack_deboilerplated.json`.")
+    lines.append("- Keep `provenance.input_file` exactly `inputs/pair/<TICKER>_<FROM>_<TO>_<SECTION>_<LENS>_<SOURCE>.json`.")
     lines.append(f"- Keep `provenance.model_provider` exactly `{model_provider}` (required).")
     lines.append(f"- Keep `provenance.model_name` exactly `{model_name}` (required).")
     lines.append("- Keep `provenance.run_label` required with `YYYY-MM-DD_` prefix (example: `2026-02-21_openai_chatgpt52ext_wave_nvda_2021_2022_delta`).")
