@@ -93,11 +93,18 @@ def resolve_input_path_like_ui(input_file: str) -> Optional[Path]:
     if normalized.startswith("public/"):
         return REPO_ROOT / normalized
     if normalized.startswith("bundles/"):
+        marker = "/inputs/"
+        marker_idx = normalized.find(marker)
+        if marker_idx >= 0:
+            tail = normalized[marker_idx + 1 :]
+            return LAB_ROOT / "llm_inputs_v2" / tail
         basename = normalized.split("/")[-1]
         if not basename:
             return None
         return LAB_ROOT / "llm_inputs" / basename
     if normalized.startswith("inputs/"):
+        if normalized.startswith("inputs/pair/") or normalized.startswith("inputs/year/"):
+            return LAB_ROOT / "llm_inputs_v2" / normalized
         basename = normalized.split("/")[-1]
         if not basename:
             return None

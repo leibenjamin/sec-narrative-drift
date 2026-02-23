@@ -8,7 +8,9 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any, Optional, cast
 
-SCRIPT_VERSION = "build_showcase_llm_inputs_bundle.py@v1"
+from lab_script_version import build_script_version
+
+SCRIPT_VERSION = build_script_version(Path(__file__), "v2")
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 PUBLIC_LAB_ROOT = REPO_ROOT / "public" / "data" / "sec_narrative_drift_lab"
@@ -327,6 +329,72 @@ def build_full_payload(
     }
 
 
+def build_year_payload(
+    ticker: str,
+    section: str,
+    year: int,
+    lens: str,
+    source_id: str,
+    paragraphs: list[str],
+) -> dict[str, Any]:
+    return {
+        "case": {
+            "ticker": ticker,
+            "section": section,
+            "year": year,
+            "source_id": source_id,
+        },
+        "lens": {
+            "name": lens,
+        },
+        "texts": {
+            "paragraphs": paragraphs,
+        },
+    }
+
+
+def build_pair_manifest_payload(
+    ticker: str,
+    section: str,
+    year_from: int,
+    year_to: int,
+    lens: str,
+    source_id: str,
+    prev_year_input_path: str,
+    curr_year_input_path: str,
+    lens_pair: blo.LensPair,
+) -> dict[str, Any]:
+    output_targets = {
+        "det_llm_delta_brief_v1": blo.build_output_filename(
+            section, year_from, year_to, "det_llm_delta_brief_v1", lens, source_id
+        ),
+        "det_llm_excerpt_picker_v1": blo.build_output_filename(
+            section, year_from, year_to, "det_llm_excerpt_picker_v1", lens, source_id
+        ),
+    }
+    return {
+        "schema_version": "2.0",
+        "input_mode": "full_section_v2",
+        "case": {
+            "ticker": ticker,
+            "section": section,
+            "year_from": year_from,
+            "year_to": year_to,
+            "source_id": source_id,
+        },
+        "lens": {
+            "name": lens,
+            "coverage": lens_pair.coverage,
+            "warnings": lens_pair.warnings,
+        },
+        "year_inputs": {
+            "prev": prev_year_input_path,
+            "curr": curr_year_input_path,
+        },
+        "output_targets": output_targets,
+    }
+
+
 def build_focus_payload(
     ticker: str,
     section: str,
@@ -392,6 +460,11 @@ def build_parser() -> argparse.ArgumentParser:
         default="",
         help="Output bundle directory (default bundles/showcase_llm_inputs_<timestamp>)",
     )
+    parser.add_argument(
+        "--include-focuspack",
+        action="store_true",
+        help="Also emit legacy focuspack inputs/index (v1 compatibility mode).",
+    )
     return parser
 
 
@@ -408,13 +481,24 @@ def main(argv: Optional[list[str]] = None) -> int:
 
     tickers, section, pairs_per_ticker = load_roster(roster_path)
     hero_pairs = load_hero_pairs(hero_path)
+    hero_pair_count = 0
+    for pairs in hero_pairs.values():
+        hero_pair_count += len(pairs)
+    hero_ticker_count = 0
+    for pairs in hero_pairs.values():
+        if pairs:
+            hero_ticker_count += 1
 
-    full_dir = out_dir / "llm_inputs_full"
+    year_v2_dir = out_dir / "inputs" / "year"
+    pair_v2_dir = out_dir / "inputs" / "pair"
+    year_v2_dir.mkdir(parents=True, exist_ok=True)
+    pair_v2_dir.mkdir(parents=True, exist_ok=True)
     focus_dir = out_dir / "llm_inputs_focuspack"
-    full_dir.mkdir(parents=True, exist_ok=True)
-    focus_dir.mkdir(parents=True, exist_ok=True)
+    if args.include_focuspack:
+        focus_dir.mkdir(parents=True, exist_ok=True)
 
-    full_index: list[dict[str, Any]] = []
+    year_v2_index: list[dict[str, Any]] = []
+    pair_v2_index: list[dict[str, Any]] = []
     focus_index: list[dict[str, Any]] = []
 
     packet_lines: list[str] = []
@@ -425,23 +509,23 @@ def main(argv: Optional[list[str]] = None) -> int:
 
     for ticker in sorted(tickers):
         pairs = pairs_per_ticker.get(ticker, [])
-        hero_set = set(hero_pairs.get(ticker, []))
         for year_from, year_to in pairs:
             prev = blo.load_section_text(ticker, year_from, section, "edgar", REPO_ROOT)
             curr = blo.load_section_text(ticker, year_to, section, "edgar", REPO_ROOT)
             if prev is None or curr is None:
                 continue
 
-            lens_pairs: dict[str, blo.LensPair] = {}
-            lens_pairs["raw"] = blo.build_lens_pair(prev, curr, "raw")
-            deboiler_pair = blo.build_lens_pair(prev, curr, "deboilerplated")
-            if "fallback_to_raw" not in deboiler_pair.warnings:
-                lens_pairs["deboilerplated"] = deboiler_pair
+            lens_pairs: dict[str, blo.LensPair] = {
+                "raw": blo.build_lens_pair(prev, curr, "raw"),
+                "deboilerplated": blo.build_lens_pair(prev, curr, "deboilerplated"),
+            }
 
-            raw_full_prev = len(prev.text)
-            raw_full_curr = len(curr.text)
-            deboiler_full_prev = len(deboiler_pair.prev.text) if "deboilerplated" in lens_pairs else 0
-            deboiler_full_curr = len(deboiler_pair.curr.text) if "deboilerplated" in lens_pairs else 0
+            raw_pair = lens_pairs["raw"]
+            deboiler_pair = lens_pairs["deboilerplated"]
+            raw_full_prev = len(raw_pair.prev.text)
+            raw_full_curr = len(raw_pair.curr.text)
+            deboiler_full_prev = len(deboiler_pair.prev.text)
+            deboiler_full_curr = len(deboiler_pair.curr.text)
 
             focus_raw_prev = 0
             focus_raw_curr = 0
@@ -469,47 +553,127 @@ def main(argv: Optional[list[str]] = None) -> int:
                     focus_deboiler_prev = len(focus_prev_text)
                     focus_deboiler_curr = len(focus_curr_text)
 
-                focus_payload = build_focus_payload(
-                    ticker,
-                    section,
-                    year_from,
-                    year_to,
-                    lens_name,
-                    lens_pair,
-                    focus_prev,
-                    focus_curr,
-                    meta,
+                # Pair-relative year files are canonical because deboilerplated text is pair-dependent.
+                prev_year_name = (
+                    f"{ticker}_{year_from}_{section}_{lens_name}_edgar__pair_{year_from}_{year_to}.json"
+                )
+                curr_year_name = (
+                    f"{ticker}_{year_to}_{section}_{lens_name}_edgar__pair_{year_from}_{year_to}.json"
+                )
+                prev_year_rel = Path("inputs") / "year" / prev_year_name
+                curr_year_rel = Path("inputs") / "year" / curr_year_name
+
+                prev_year_payload = build_year_payload(
+                    ticker=ticker,
+                    section=section,
+                    year=year_from,
+                    lens=lens_name,
+                    source_id="edgar",
+                    paragraphs=lens_pair.prev.paragraphs,
+                )
+                curr_year_payload = build_year_payload(
+                    ticker=ticker,
+                    section=section,
+                    year=year_to,
+                    lens=lens_name,
+                    source_id="edgar",
+                    paragraphs=lens_pair.curr.paragraphs,
+                )
+                write_json(out_dir / prev_year_rel, prev_year_payload)
+                write_json(out_dir / curr_year_rel, curr_year_payload)
+
+                year_v2_index.append(
+                    {
+                        "schema_version": "2.0",
+                        "input_mode": "full_section_v2",
+                        "ticker": ticker,
+                        "year": year_from,
+                        "pair_year_from": year_from,
+                        "pair_year_to": year_to,
+                        "section": section,
+                        "lens": lens_name,
+                        "source_id": "edgar",
+                        "path": str(prev_year_rel).replace("\\", "/"),
+                        "paragraph_count": len(lens_pair.prev.paragraphs),
+                    }
+                )
+                year_v2_index.append(
+                    {
+                        "schema_version": "2.0",
+                        "input_mode": "full_section_v2",
+                        "ticker": ticker,
+                        "year": year_to,
+                        "pair_year_from": year_from,
+                        "pair_year_to": year_to,
+                        "section": section,
+                        "lens": lens_name,
+                        "source_id": "edgar",
+                        "path": str(curr_year_rel).replace("\\", "/"),
+                        "paragraph_count": len(lens_pair.curr.paragraphs),
+                    }
                 )
 
-                focus_rel = Path(ticker) / f"lab_llm_focuspack_{section}_{year_from}_{year_to}_{lens_name}.json"
-                write_json(focus_dir / focus_rel, focus_payload)
-                focus_index.append(
+                pair_name = (
+                    f"{ticker}_{year_from}_{year_to}_{section}_{lens_name}_edgar.json"
+                )
+                pair_rel = Path("inputs") / "pair" / pair_name
+                pair_payload = build_pair_manifest_payload(
+                    ticker=ticker,
+                    section=section,
+                    year_from=year_from,
+                    year_to=year_to,
+                    lens=lens_name,
+                    source_id="edgar",
+                    prev_year_input_path=str(prev_year_rel).replace("\\", "/"),
+                    curr_year_input_path=str(curr_year_rel).replace("\\", "/"),
+                    lens_pair=lens_pair,
+                )
+                write_json(out_dir / pair_rel, pair_payload)
+                pair_v2_index.append(
                     {
+                        "schema_version": "2.0",
+                        "input_mode": "full_section_v2",
                         "ticker": ticker,
                         "year_from": year_from,
                         "year_to": year_to,
                         "section": section,
                         "lens": lens_name,
-                        "path": str(Path("llm_inputs_focuspack") / focus_rel),
-                        "output_targets": focus_payload.get("output_targets"),
+                        "source_id": "edgar",
+                        "path": str(pair_rel).replace("\\", "/"),
+                        "year_input_prev": str(prev_year_rel).replace("\\", "/"),
+                        "year_input_curr": str(curr_year_rel).replace("\\", "/"),
+                        "output_targets": pair_payload.get("output_targets"),
                     }
                 )
 
-                if (year_from, year_to) in hero_set:
-                    full_payload = build_full_payload(
-                        ticker, section, year_from, year_to, lens_name, lens_pair
+                if args.include_focuspack:
+                    focus_payload = build_focus_payload(
+                        ticker,
+                        section,
+                        year_from,
+                        year_to,
+                        lens_name,
+                        lens_pair,
+                        focus_prev,
+                        focus_curr,
+                        meta,
                     )
-                    full_rel = Path(ticker) / f"lab_llm_full_{section}_{year_from}_{year_to}_{lens_name}.json"
-                    write_json(full_dir / full_rel, full_payload)
-                    full_index.append(
+                    focus_rel = Path(ticker) / (
+                        f"lab_llm_focuspack_{section}_{year_from}_{year_to}_{lens_name}.json"
+                    )
+                    write_json(focus_dir / focus_rel, focus_payload)
+                    focus_index.append(
                         {
+                            "schema_version": "1.0",
+                            "input_mode": "focuspack_v1",
                             "ticker": ticker,
                             "year_from": year_from,
                             "year_to": year_to,
                             "section": section,
                             "lens": lens_name,
-                            "path": str(Path("llm_inputs_full") / full_rel),
-                            "output_targets": full_payload.get("output_targets"),
+                            "source_id": "edgar",
+                            "path": str(Path("llm_inputs_focuspack") / focus_rel).replace("\\", "/"),
+                            "output_targets": focus_payload.get("output_targets"),
                         }
                     )
 
@@ -539,8 +703,10 @@ def main(argv: Optional[list[str]] = None) -> int:
                 + " |"
             )
 
-    write_json(out_dir / "inputs_index_full.json", full_index)
-    write_json(out_dir / "inputs_index_focuspack.json", focus_index)
+    write_json(out_dir / "inputs_index_year_v2.json", year_v2_index)
+    write_json(out_dir / "inputs_index_pair_v2.json", pair_v2_index)
+    if args.include_focuspack:
+        write_json(out_dir / "inputs_index_focuspack.json", focus_index)
 
     prompt_lines = build_prompt_templates_showcase_lines()
     (out_dir / "prompt_templates_showcase.md").write_text(
@@ -555,17 +721,22 @@ def main(argv: Optional[list[str]] = None) -> int:
         f"Created: {timestamp}",
         f"Roster: {roster_path}",
         f"Hero pairs: {hero_path}",
+        f"Hero pair count: {hero_pair_count}",
+        f"Hero tickers with pairs: {hero_ticker_count}",
         "",
         "Contents:",
-        "- llm_inputs_full/ (hero pairs only)",
-        "- llm_inputs_focuspack/ (all adjacent pairs)",
-        "- inputs_index_full.json",
-        "- inputs_index_focuspack.json",
+        "- inputs/year/ (v2 canonical per-year full-section inputs)",
+        "- inputs/pair/ (v2 canonical pair manifests referencing year inputs)",
+        "- inputs_index_year_v2.json",
+        "- inputs_index_pair_v2.json",
+        "- llm_inputs_focuspack/ and inputs_index_focuspack.json (optional legacy, when --include-focuspack is set)",
         "- prompt_templates_showcase.md",
         "- packet_sizes_report.md",
         "",
         "Notes:",
-        "- Focuspack uses reduced paragraph arrays with focuspack_meta for FULL index mapping.",
+        "- v2 canonical inputs are full-section and direct FULL-index based.",
+        "- pair manifests reference canonical per-year files and preserve provenance.input_file as a single path.",
+        "- Focuspack is legacy compatibility only and not default.",
         "- LLM outputs must be precomputed (no runtime API calls).",
     ]
     (out_dir / "README_bundle.md").write_text("\n".join(readme_lines), encoding="utf-8")

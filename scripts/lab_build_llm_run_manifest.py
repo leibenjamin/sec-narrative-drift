@@ -17,7 +17,7 @@ from lab_output_tracks import (  # type: ignore
     get_llm_campaign,
 )
 
-SCRIPT_VERSION = build_script_version(Path(__file__), "v4")
+SCRIPT_VERSION = build_script_version(Path(__file__), "v5")
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 PUBLIC_LAB_ROOT = REPO_ROOT / "public" / "data" / "sec_narrative_drift_lab"
@@ -30,12 +30,15 @@ DEFAULT_REQUIRED_START = 2019
 DEFAULT_REQUIRED_END = 2024
 DEFAULT_INCLUDE_LATEST_AFTER = 2024
 DEFAULT_SECTION = "10k_item1a"
-DEFAULT_LENS = "deboilerplated"
+DEFAULT_LENSES = "raw,deboilerplated"
 DEFAULT_SOURCE_ID = "edgar"
+DEFAULT_INPUT_MODE = "full_section_v2"
+SUPPORTED_INPUT_MODES = ("full_section_v2", "focuspack_v1")
 LLM_DETECTORS = ("det_llm_delta_brief_v1", "det_llm_excerpt_picker_v1")
 
 sys.path.append(str(Path(__file__).resolve().parent))
 from lab_llm_precompute_utils import (  # type: ignore
+    BundlePaths,
     InputIndexEntry,
     as_list,
     as_str_dict,
@@ -64,10 +67,15 @@ class ManifestEntry:
     section: str
     lens: str
     source_id: str
+    input_mode: str
     case_in_registry: bool
     input_source_path: Optional[str]
     input_source_present: bool
+    input_source_year_prev_path: Optional[str]
+    input_source_year_curr_path: Optional[str]
     run_pack_input_path: Optional[str]
+    run_pack_year_prev_path: Optional[str]
+    run_pack_year_curr_path: Optional[str]
     detectors: list[DetectorTarget]
 
     @property
@@ -82,6 +90,30 @@ class ManifestEntry:
 
 def _to_posix(path: Path) -> str:
     return path.as_posix()
+
+
+def _norm_rel_path(path_value: str) -> str:
+    return path_value.replace("\\", "/").lstrip("./")
+
+
+def _bundle_relative(path: Path, bundle_root: Path) -> Optional[str]:
+    try:
+        return _to_posix(path.resolve().relative_to(bundle_root.resolve()))
+    except Exception:
+        return None
+
+
+def parse_lenses(raw: str) -> list[str]:
+    values: list[str] = []
+    for token in raw.split(","):
+        lens = token.strip().lower()
+        if not lens:
+            continue
+        if lens not in values:
+            values.append(lens)
+    if not values:
+        raise SystemExit("No valid lenses parsed from --lenses.")
+    return values
 
 
 def load_registry_pairs(path: Path) -> dict[str, set[tuple[int, int]]]:
@@ -192,6 +224,48 @@ def get_input_index_entry(
     return index.get(key)
 
 
+def resolve_input_index(
+    input_mode: str,
+    bundle_paths: "BundlePaths",
+) -> tuple[dict[tuple[str, int, int, str, str], InputIndexEntry], Path]:
+    if input_mode == "full_section_v2":
+        if bundle_paths.pair_index_v2 is None:
+            raise SystemExit("Bundle missing inputs_index_pair_v2.json required for full_section_v2.")
+        return (
+            load_input_index(bundle_paths.pair_index_v2, bundle_paths.bundle_root),
+            bundle_paths.pair_index_v2,
+        )
+    if input_mode == "focuspack_v1":
+        if bundle_paths.focus_index is None:
+            raise SystemExit("Bundle missing inputs_index_focuspack.json required for focuspack_v1.")
+        return (
+            load_input_index(bundle_paths.focus_index, bundle_paths.bundle_root),
+            bundle_paths.focus_index,
+        )
+    raise SystemExit(f"Unsupported --input-mode: {input_mode}")
+
+
+def resolve_year_source_path(bundle_root: Path, rel_path: Optional[str]) -> Optional[Path]:
+    if rel_path is None:
+        return None
+    normalized = _norm_rel_path(rel_path)
+    if not normalized:
+        return None
+    candidate = (bundle_root / normalized).resolve()
+    if not candidate.exists():
+        return None
+    return candidate
+
+
+def copy_if_exists(source: Optional[Path], destination: Path) -> None:
+    if source is None:
+        return
+    if not source.exists():
+        return
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(source, destination)
+
+
 def write_text(path: Path, lines: list[str]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8", newline="\n") as handle:
@@ -209,8 +283,9 @@ def write_json(path: Path, payload: dict[str, Any]) -> None:
 def build_run_pack_meta_payload(
     generated_at_utc: str,
     campaign_id: str,
+    input_mode: str,
     bundle_root: Path,
-    focus_index_path: Path,
+    input_index_path: Path,
     run_pack_dir: Path,
     thread_starters_path: Path,
 ) -> dict[str, Any]:
@@ -222,8 +297,9 @@ def build_run_pack_meta_payload(
             "lab_prompt_blocks.py": build_script_version(prompt_blocks_path, "v1"),
         },
         "campaign_id": campaign_id,
+        "input_mode": input_mode,
         "source_bundle_root": to_repo_relative(bundle_root),
-        "source_focus_index_path": to_repo_relative(focus_index_path),
+        "source_input_index_path": to_repo_relative(input_index_path),
         "run_pack_path": to_repo_relative(run_pack_dir),
         "thread_starters_path": to_repo_relative(thread_starters_path),
     }
@@ -246,11 +322,16 @@ def entry_to_json_dict(entry: ManifestEntry) -> dict[str, Any]:
         "section": entry.section,
         "lens": entry.lens,
         "source_id": entry.source_id,
+        "input_mode": entry.input_mode,
         "case_in_registry": entry.case_in_registry,
         "input": {
             "source_path": entry.input_source_path,
             "source_present": entry.input_source_present,
+            "source_year_prev_path": entry.input_source_year_prev_path,
+            "source_year_curr_path": entry.input_source_year_curr_path,
             "run_pack_path": entry.run_pack_input_path,
+            "run_pack_year_prev_path": entry.run_pack_year_prev_path,
+            "run_pack_year_curr_path": entry.run_pack_year_curr_path,
         },
         "detectors": detectors_payload,
         "all_outputs_present": entry.all_outputs_present,
@@ -262,8 +343,10 @@ def build_report_lines(
     campaign_id: str,
     campaign_slug: str,
     campaign_display_name: str,
+    input_mode: str,
     registry_path: Path,
     bundle_root: Path,
+    input_index_path: Path,
     run_pack_dir: Optional[Path],
     run_pack_thread_starters: Optional[Path],
     run_pack_meta_path: Optional[Path],
@@ -289,8 +372,10 @@ def build_report_lines(
     lines.append(f"Campaign id: {campaign_id}")
     lines.append(f"Campaign slug: {campaign_slug}")
     lines.append(f"Campaign display: {campaign_display_name}")
+    lines.append(f"Input mode: {input_mode}")
     lines.append(f"Registry: {to_repo_relative(registry_path)}")
     lines.append(f"Inputs bundle root: {to_repo_relative(bundle_root)}")
+    lines.append(f"Input index: {to_repo_relative(input_index_path)}")
     lines.append("")
     if run_pack_dir is not None:
         lines.append(f"Run pack: {to_repo_relative(run_pack_dir)}")
@@ -307,13 +392,13 @@ def build_report_lines(
     lines.append("")
     lines.append("| Metric | Value |")
     lines.append("| --- | --- |")
-    lines.append(f"| Pair count | {total_pairs} |")
+    lines.append(f"| Pair-lens rows | {total_pairs} |")
     lines.append(f"| Detector targets | {total_targets} |")
     lines.append(f"| Present targets | {present_targets} |")
     lines.append(f"| Missing targets | {missing_targets} |")
     lines.append("")
-    lines.append("| Ticker | Pair | In registry | Input source | Delta brief | Excerpt picker |")
-    lines.append("| --- | --- | --- | --- | --- | --- |")
+    lines.append("| Ticker | Pair | Lens | In registry | Input source | Delta brief | Excerpt picker |")
+    lines.append("| --- | --- | --- | --- | --- | --- | --- |")
     for entry in entries:
         delta_status = "missing"
         excerpt_status = "missing"
@@ -326,7 +411,7 @@ def build_report_lines(
         input_status = "present" if entry.input_source_present else "missing"
         pair_label = f"{entry.year_from}-{entry.year_to}"
         lines.append(
-            f"| {entry.ticker} | {pair_label} | {registry_status} | {input_status} | {delta_status} | {excerpt_status} |"
+            f"| {entry.ticker} | {pair_label} | {entry.lens} | {registry_status} | {input_status} | {delta_status} | {excerpt_status} |"
         )
     lines.append("")
     lines.append("## Missing Canonical LLM Outputs")
@@ -337,7 +422,7 @@ def build_report_lines(
                 continue
             pair_label = f"{entry.year_from}-{entry.year_to}"
             lines.append(
-                f"- {entry.ticker} {pair_label} {detector.detector_id}: {detector.expected_output_path}"
+                f"- {entry.ticker} {pair_label} {entry.lens} {detector.detector_id}: {detector.expected_output_path}"
             )
             missing_lines_written = True
     if not missing_lines_written:
@@ -366,11 +451,17 @@ def write_thread_starters(
     lines.append("One section per pair + detector. Copy one code block at a time.")
     lines.append("")
     for entry in entries:
-        input_name = f"{entry.ticker}_{entry.year_from}_{entry.year_to}_focuspack_{entry.lens}.json"
-        run_pack_input_path = f"inputs/{input_name}"
+        run_pack_input_path = entry.run_pack_input_path or ""
+        if not run_pack_input_path:
+            continue
+        additional_inputs: list[str] = []
+        if entry.run_pack_year_prev_path:
+            additional_inputs.append(entry.run_pack_year_prev_path)
+        if entry.run_pack_year_curr_path:
+            additional_inputs.append(entry.run_pack_year_curr_path)
         for detector in entry.detectors:
             heading = (
-                f"## {entry.ticker} {entry.year_from}-{entry.year_to} {detector.detector_id}"
+                f"## {entry.ticker} {entry.year_from}-{entry.year_to} {entry.lens} {detector.detector_id}"
             )
             lines.append(heading)
             lines.append("")
@@ -382,10 +473,12 @@ def write_thread_starters(
                 year_to=entry.year_to,
                 section=entry.section,
                 source_id=entry.source_id,
-                input_lens=f"focuspack_{entry.lens}",
+                input_lens=entry.lens if entry.input_mode == "full_section_v2" else f"focuspack_{entry.lens}",
                 input_path=run_pack_input_path,
                 output_path=detector.expected_output_path,
                 repo_input_path=entry.input_source_path,
+                additional_input_paths=additional_inputs,
+                input_mode=entry.input_mode,
                 campaign=campaign,
             )
             lines.extend(starter_lines)
@@ -455,12 +548,12 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--section",
         default=DEFAULT_SECTION,
-        help="Section id for focuspack lookup and expected filenames.",
+        help="Section id for input lookup and expected filenames.",
     )
     parser.add_argument(
-        "--lens",
-        default=DEFAULT_LENS,
-        help="Cleaning lens for the run manifest (default deboilerplated).",
+        "--lenses",
+        default=DEFAULT_LENSES,
+        help="Comma-separated cleaning lenses for the run manifest.",
     )
     parser.add_argument(
         "--source-id",
@@ -473,14 +566,30 @@ def build_parser() -> argparse.ArgumentParser:
         help="Campaign id from scripts/lab_output_tracks.py.",
     )
     parser.add_argument(
+        "--input-mode",
+        default=DEFAULT_INPUT_MODE,
+        choices=SUPPORTED_INPUT_MODES,
+        help="Input mode: full_section_v2 (canonical) or focuspack_v1 (legacy).",
+    )
+    parser.add_argument(
         "--bundle",
         default="",
-        help="Bundle root containing inputs_index_focuspack.json (defaults to latest showcase bundle).",
+        help="Bundle root containing LLM input indexes (defaults to latest showcase bundle).",
     )
     parser.add_argument(
         "--inputs-index-focuspack",
         default="",
         help="Override focuspack index path.",
+    )
+    parser.add_argument(
+        "--inputs-index-pair-v2",
+        default="",
+        help="Override full-section v2 pair index path.",
+    )
+    parser.add_argument(
+        "--inputs-index-year-v2",
+        default="",
+        help="Override full-section v2 year index path.",
     )
     parser.add_argument(
         "--out-md",
@@ -513,6 +622,7 @@ def main(argv: Optional[list[str]] = None) -> int:
     if not registry_path.exists():
         raise SystemExit(f"Registry not found: {registry_path}")
 
+    lenses = parse_lenses(args.lenses)
     tickers = parse_tickers(args.tickers)
     if not tickers:
         raise SystemExit("No valid tickers were parsed from --tickers.")
@@ -525,8 +635,10 @@ def main(argv: Optional[list[str]] = None) -> int:
         args.inputs_index_focuspack or None,
         None,
         None,
+        args.inputs_index_pair_v2 or None,
+        args.inputs_index_year_v2 or None,
     )
-    focus_index = load_input_index(bundle_paths.focus_index, bundle_paths.bundle_root)
+    input_index, input_index_path = resolve_input_index(args.input_mode, bundle_paths)
 
     pairs_by_ticker = load_registry_pairs(registry_path)
     target_pairs = build_target_pairs(
@@ -545,60 +657,78 @@ def main(argv: Optional[list[str]] = None) -> int:
         pairs = target_pairs.get(ticker, [])
         case_pairs = pairs_by_ticker.get(ticker, set())
         for year_from, year_to in pairs:
-            input_entry = get_input_index_entry(
-                index=focus_index,
-                ticker=ticker,
-                year_from=year_from,
-                year_to=year_to,
-                section=args.section,
-                lens=args.lens,
-            )
-            input_source_path: Optional[str] = None
-            input_source_present = False
-            if input_entry is not None:
-                input_source_path = to_repo_relative(input_entry.path)
-                if input_entry.path.exists():
-                    input_source_present = True
-            if not input_source_present:
-                missing_input_rows.append(
-                    f"{ticker} {year_from}-{year_to} (section={args.section}, lens={args.lens})"
-                )
-
-            detectors: list[DetectorTarget] = []
-            for detector_id in LLM_DETECTORS:
-                expected_path_abs = expected_output_path(
+            for lens in lenses:
+                input_entry = get_input_index_entry(
+                    index=input_index,
                     ticker=ticker,
-                    detector_id=detector_id,
-                    section=args.section,
                     year_from=year_from,
                     year_to=year_to,
-                    lens=args.lens,
-                    source_id=args.source_id,
-                    track_slug=campaign.track_slug,
+                    section=args.section,
+                    lens=lens,
                 )
-                detectors.append(
-                    DetectorTarget(
+                input_source_path: Optional[str] = None
+                input_source_present = False
+                input_source_year_prev_path: Optional[str] = None
+                input_source_year_curr_path: Optional[str] = None
+                if input_entry is not None:
+                    input_source_path = to_repo_relative(input_entry.path)
+                    input_source_present = input_entry.path.exists()
+                    if args.input_mode == "full_section_v2":
+                        prev_source = resolve_year_source_path(
+                            bundle_paths.bundle_root, input_entry.year_input_prev
+                        )
+                        curr_source = resolve_year_source_path(
+                            bundle_paths.bundle_root, input_entry.year_input_curr
+                        )
+                        if prev_source is not None:
+                            input_source_year_prev_path = to_repo_relative(prev_source)
+                        if curr_source is not None:
+                            input_source_year_curr_path = to_repo_relative(curr_source)
+                if not input_source_present:
+                    missing_input_rows.append(
+                        f"{ticker} {year_from}-{year_to} (section={args.section}, lens={lens}, input_mode={args.input_mode})"
+                    )
+
+                detectors: list[DetectorTarget] = []
+                for detector_id in LLM_DETECTORS:
+                    expected_path_abs = expected_output_path(
+                        ticker=ticker,
                         detector_id=detector_id,
-                        expected_output_path=_to_posix(expected_path_abs.relative_to(REPO_ROOT)),
-                        present=expected_path_abs.exists(),
+                        section=args.section,
+                        year_from=year_from,
+                        year_to=year_to,
+                        lens=lens,
+                        source_id=args.source_id,
+                        track_slug=campaign.track_slug,
+                    )
+                    detectors.append(
+                        DetectorTarget(
+                            detector_id=detector_id,
+                            expected_output_path=_to_posix(expected_path_abs.relative_to(REPO_ROOT)),
+                            present=expected_path_abs.exists(),
+                        )
+                    )
+
+                entries.append(
+                    ManifestEntry(
+                        ticker=ticker,
+                        year_from=year_from,
+                        year_to=year_to,
+                        section=args.section,
+                        lens=lens,
+                        source_id=args.source_id,
+                        input_mode=args.input_mode,
+                        case_in_registry=(year_from, year_to) in case_pairs,
+                        input_source_path=input_source_path,
+                        input_source_present=input_source_present,
+                        input_source_year_prev_path=input_source_year_prev_path,
+                        input_source_year_curr_path=input_source_year_curr_path,
+                        run_pack_input_path=None,
+                        run_pack_year_prev_path=None,
+                        run_pack_year_curr_path=None,
+                        detectors=detectors,
                     )
                 )
-
-            entries.append(
-                ManifestEntry(
-                    ticker=ticker,
-                    year_from=year_from,
-                    year_to=year_to,
-                    section=args.section,
-                    lens=args.lens,
-                    source_id=args.source_id,
-                    case_in_registry=(year_from, year_to) in case_pairs,
-                    input_source_path=input_source_path,
-                    input_source_present=input_source_present,
-                    run_pack_input_path=None,
-                    detectors=detectors,
-                )
-            )
 
     run_pack_dir: Optional[Path] = None
     thread_starters_path: Optional[Path] = None
@@ -616,45 +746,44 @@ def main(argv: Optional[list[str]] = None) -> int:
             if candidate_run_pack_meta.exists():
                 run_pack_meta_path = candidate_run_pack_meta
         for entry in entries:
-            filename = (
-                f"{entry.ticker}_{entry.year_from}_{entry.year_to}_focuspack_{entry.lens}.json"
-            )
-            run_pack_input_rel: Optional[str] = None
-            if run_pack_dir is not None:
-                candidate_input = run_pack_dir / "inputs" / filename
-                if candidate_input.exists():
-                    run_pack_input_rel = f"inputs/{filename}"
-            entries_with_pack_paths.append(
-                ManifestEntry(
-                    ticker=entry.ticker,
-                    year_from=entry.year_from,
-                    year_to=entry.year_to,
-                    section=entry.section,
-                    lens=entry.lens,
-                    source_id=entry.source_id,
-                    case_in_registry=entry.case_in_registry,
-                    input_source_path=entry.input_source_path,
-                    input_source_present=entry.input_source_present,
-                    run_pack_input_path=run_pack_input_rel,
-                    detectors=entry.detectors,
-                )
-            )
+            entries_with_pack_paths.append(entry)
     else:
         run_pack_generated_now = True
         stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
         run_pack_dir = run_pack_root / f"llm_run_pack_{stamp}_{campaign.track_id}"
-        inputs_dir = run_pack_dir / "inputs"
-        inputs_dir.mkdir(parents=True, exist_ok=True)
+        run_pack_dir.mkdir(parents=True, exist_ok=True)
         for entry in entries:
-            filename = (
-                f"{entry.ticker}_{entry.year_from}_{entry.year_to}_focuspack_{entry.lens}.json"
-            )
-            run_pack_input_rel = f"inputs/{filename}"
-            run_pack_input_abs = run_pack_dir / "inputs" / filename
+            run_pack_input_rel: Optional[str] = None
+            run_pack_year_prev_rel: Optional[str] = None
+            run_pack_year_curr_rel: Optional[str] = None
+
             if entry.input_source_path is not None:
-                source_abs = REPO_ROOT / entry.input_source_path
+                source_abs = (REPO_ROOT / entry.input_source_path).resolve()
                 if source_abs.exists():
-                    shutil.copy2(source_abs, run_pack_input_abs)
+                    rel_from_bundle = _bundle_relative(source_abs, bundle_paths.bundle_root)
+                    if rel_from_bundle is None:
+                        rel_from_bundle = f"inputs/{source_abs.name}"
+                    run_pack_input_rel = _norm_rel_path(rel_from_bundle)
+                    copy_if_exists(source_abs, run_pack_dir / run_pack_input_rel)
+
+            if entry.input_source_year_prev_path is not None:
+                prev_abs = (REPO_ROOT / entry.input_source_year_prev_path).resolve()
+                if prev_abs.exists():
+                    rel_from_bundle = _bundle_relative(prev_abs, bundle_paths.bundle_root)
+                    if rel_from_bundle is None:
+                        rel_from_bundle = f"inputs/year/{prev_abs.name}"
+                    run_pack_year_prev_rel = _norm_rel_path(rel_from_bundle)
+                    copy_if_exists(prev_abs, run_pack_dir / run_pack_year_prev_rel)
+
+            if entry.input_source_year_curr_path is not None:
+                curr_abs = (REPO_ROOT / entry.input_source_year_curr_path).resolve()
+                if curr_abs.exists():
+                    rel_from_bundle = _bundle_relative(curr_abs, bundle_paths.bundle_root)
+                    if rel_from_bundle is None:
+                        rel_from_bundle = f"inputs/year/{curr_abs.name}"
+                    run_pack_year_curr_rel = _norm_rel_path(rel_from_bundle)
+                    copy_if_exists(curr_abs, run_pack_dir / run_pack_year_curr_rel)
+
             entries_with_pack_paths.append(
                 ManifestEntry(
                     ticker=entry.ticker,
@@ -663,10 +792,15 @@ def main(argv: Optional[list[str]] = None) -> int:
                     section=entry.section,
                     lens=entry.lens,
                     source_id=entry.source_id,
+                    input_mode=entry.input_mode,
                     case_in_registry=entry.case_in_registry,
                     input_source_path=entry.input_source_path,
                     input_source_present=entry.input_source_present,
+                    input_source_year_prev_path=entry.input_source_year_prev_path,
+                    input_source_year_curr_path=entry.input_source_year_curr_path,
                     run_pack_input_path=run_pack_input_rel,
+                    run_pack_year_prev_path=run_pack_year_prev_rel,
+                    run_pack_year_curr_path=run_pack_year_curr_rel,
                     detectors=entry.detectors,
                 )
             )
@@ -680,33 +814,37 @@ def main(argv: Optional[list[str]] = None) -> int:
         run_pack_meta_payload = build_run_pack_meta_payload(
             generated_at_utc=generated_at_utc,
             campaign_id=campaign.track_id,
+            input_mode=args.input_mode,
             bundle_root=bundle_paths.bundle_root,
-            focus_index_path=bundle_paths.focus_index,
+            input_index_path=input_index_path,
             run_pack_dir=run_pack_dir,
             thread_starters_path=thread_starters_path,
         )
         write_json(run_pack_meta_path, run_pack_meta_payload)
 
+    effective_entries = entries_with_pack_paths if entries_with_pack_paths else entries
     report_lines = build_report_lines(
         generated_at_utc=generated_at_utc,
         campaign_id=campaign.track_id,
         campaign_slug=campaign.track_slug,
         campaign_display_name=campaign.display_name,
+        input_mode=args.input_mode,
         registry_path=registry_path,
         bundle_root=bundle_paths.bundle_root,
+        input_index_path=input_index_path,
         run_pack_dir=run_pack_dir,
         run_pack_thread_starters=thread_starters_path,
         run_pack_meta_path=run_pack_meta_path,
-        entries=entries_with_pack_paths,
+        entries=effective_entries,
         missing_input_rows=missing_input_rows,
     )
     write_text(Path(args.out_md), report_lines)
 
-    total_pairs = len(entries_with_pack_paths)
+    total_pairs = len(effective_entries)
     total_targets = total_pairs * len(LLM_DETECTORS)
     present_targets = 0
     missing_targets = 0
-    for entry in entries_with_pack_paths:
+    for entry in effective_entries:
         for detector in entry.detectors:
             if detector.present:
                 present_targets += 1
@@ -714,7 +852,7 @@ def main(argv: Optional[list[str]] = None) -> int:
                 missing_targets += 1
 
     payload_entries: list[dict[str, Any]] = []
-    for entry in entries_with_pack_paths:
+    for entry in effective_entries:
         payload_entries.append(entry_to_json_dict(entry))
 
     manifest_payload: dict[str, Any] = {
@@ -726,19 +864,21 @@ def main(argv: Optional[list[str]] = None) -> int:
             "display_name": campaign.display_name,
             "model_provider": campaign.model_provider,
             "model_name": campaign.model_name,
+            "input_mode": campaign.input_mode,
         },
         "registry_path": to_repo_relative(registry_path),
         "bundle_root": to_repo_relative(bundle_paths.bundle_root),
-        "focus_index_path": to_repo_relative(bundle_paths.focus_index),
+        "input_index_path": to_repo_relative(input_index_path),
         "scope": {
             "tickers": tickers,
             "required_start_year": args.required_start,
             "required_end_year": args.required_end,
             "include_latest_after_year": args.include_latest_after,
             "section": args.section,
-            "lens": args.lens,
+            "lenses": lenses,
             "source_id": args.source_id,
             "detectors": list(LLM_DETECTORS),
+            "input_mode": args.input_mode,
         },
         "run_pack": {
             "generated": run_pack_generated_now,
@@ -755,7 +895,7 @@ def main(argv: Optional[list[str]] = None) -> int:
             ),
         },
         "summary": {
-            "pair_count": total_pairs,
+            "pair_lens_count": total_pairs,
             "target_count": total_targets,
             "present_target_count": present_targets,
             "missing_target_count": missing_targets,
@@ -767,17 +907,25 @@ def main(argv: Optional[list[str]] = None) -> int:
 
     print(f"Script: {SCRIPT_VERSION}")
     print(f"Campaign: {campaign.track_id}")
+    print(f"Input mode: {args.input_mode}")
     print(f"Wrote manifest markdown: {args.out_md}")
     print(f"Wrote manifest json: {args.out_json}")
-    if run_pack_dir is not None:
+    if run_pack_generated_now and run_pack_dir is not None:
         print(f"Wrote run pack: {to_repo_relative(run_pack_dir)}")
         if thread_starters_path is not None:
             print(f"Wrote thread starters: {to_repo_relative(thread_starters_path)}")
         if run_pack_meta_path is not None:
             print(f"Wrote run pack metadata: {to_repo_relative(run_pack_meta_path)}")
+    elif args.skip_run_pack:
+        print("Run pack generation skipped (--skip-run-pack)")
+        if run_pack_dir is not None:
+            print(
+                "Using latest existing run pack context: "
+                + f"{to_repo_relative(run_pack_dir)}"
+            )
     print(
         "Manifest summary: "
-        + f"pairs={total_pairs}, targets={total_targets}, "
+        + f"pair_rows={total_pairs}, targets={total_targets}, "
         + f"present={present_targets}, missing={missing_targets}, "
         + f"missing_inputs={len(missing_input_rows)}"
     )
