@@ -79,7 +79,12 @@ def _parse_args(argv: Optional[list[str]] = None) -> argparse.Namespace:
     parser.add_argument(
         "--clean",
         action="store_true",
-        help="Remove destination root before publishing.",
+        help="Remove destination root before publishing (default behavior).",
+    )
+    parser.add_argument(
+        "--no-clean",
+        action="store_true",
+        help="Preserve existing destination files and only overwrite by copied files.",
     )
     return parser.parse_args(argv)
 
@@ -118,7 +123,16 @@ def main(argv: Optional[list[str]] = None) -> int:
     year_index = cast(list[dict[str, object]], _yi_raw)
     pair_index = cast(list[dict[str, object]], _pi_raw)
 
-    if args.clean and out_root.exists():
+    if args.clean and args.no_clean:
+        raise SystemExit("Use only one of --clean or --no-clean.")
+
+    clean_publish = True
+    if args.no_clean:
+        clean_publish = False
+    if args.clean:
+        clean_publish = True
+
+    if clean_publish and out_root.exists():
         shutil.rmtree(out_root)
     out_root.mkdir(parents=True, exist_ok=True)
 
