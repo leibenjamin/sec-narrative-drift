@@ -37,10 +37,11 @@ This Lab shows how risk disclosures change year-over-year using deterministic de
    - If artifacts are missing, point to explicit path-aware missing state.
 
 ## Operational evidence to mention
-- `reports/portfolio_readiness_lab.md` (deterministic gate: GO).
-- `reports/lab_raw_prereq_audit.md` (RAW eligibility and coverage).
-- `reports/lab_llm_run_manifest.md` (complete roster + expected LLM artifact paths).
-- `reports/lab_llm_codex_quality_audit.md` (Codex quality-lock gates for diversity/consistency).
+- Local generated reports (`reports/*`, untracked by policy):
+  - `reports/portfolio_readiness_lab.md` (deterministic gate: GO).
+  - `reports/lab_raw_prereq_audit.md` (RAW eligibility and coverage).
+  - `reports/lab_llm_run_manifest.md` (complete roster + expected LLM artifact paths).
+  - `reports/lab_llm_codex_quality_audit.md` (Codex quality-lock gates for diversity/consistency).
 
 ## FAQ-ready answers
 - Q: "Why deterministic-first?"

@@ -81,12 +81,19 @@ Core time window: 2019-2024 adjacent year pairs (include most recent even if low
     - delta template uniqueness: `20/21`
     - evidence-why uniqueness ratio: `0.464`
     - confidence levels present: `0.50`, `0.75`.
+- Post-rewrite closeout hardening complete:
+  - local-only recurrence guard added: `scripts/lab_guard_local_only_paths.py`,
+  - `lab:predeploy` now runs `lab:guard-local` before registry/smoke,
+  - CI gate workflow added: `.github/workflows/lab_gates.yml`,
+  - full-section pipeline orchestrator added: `scripts/lab_run_fullsec_campaign_pipeline.py`.
 
 Remaining human/manual work (post-hardening):
 - publish screenshot verification for deployed Deep Dive v3 states (incognito),
 - complete ChatGPT full-section second wave (`84` outputs) before re-enabling full A/B compare defaults,
-- optional editorial fine-tuning passes for Codex prose style (not contract-blocking),
-- finalize checklist screenshot row after captures are attached.
+- optional editorial fine-tuning passes for Codex prose style (not contract-blocking).
+
+Repository policy note:
+- `reports/*`, `bundles/*`, `scripts/_reports/*`, `scripts/_cache/*`, and `analysis_exports/*` are local-only and intentionally untracked.
 
 ---
 

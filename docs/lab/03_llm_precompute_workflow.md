@@ -8,6 +8,7 @@ Status: canonical manual rerun workflow for Lab (`full_section_v2`).
 - `reports/lab_llm_run_manifest.json`
 - `reports/lab_llm_manual_rerun_checklist.md`
 - `scripts/lab_validate_llm_manifest_outputs.py`
+- `scripts/lab_run_fullsec_campaign_pipeline.py` (single-command orchestrator for full_section_v2 flow)
 
 ## Runtime Truth (Current Push)
 - Runtime-visible campaign: `openai_gpt53codex_xhigh_agent_fullsec_2026-02-22` (`84/84` strict-valid).
@@ -54,6 +55,15 @@ Status: canonical manual rerun workflow for Lab (`full_section_v2`).
    `npm run lab:predeploy`
    `npm run lab:portfolio`
    `npm run build`
+
+## Orchestrated Pipeline (Recommended)
+- Codex full-section refresh:
+  - `python scripts/lab_run_fullsec_campaign_pipeline.py --campaign-id openai_gpt53codex_xhigh_agent_fullsec_2026-02-22 --run-day YYYY-MM-DD`
+- ChatGPT full-section staging (manual generation wave):
+  - `python scripts/lab_run_fullsec_campaign_pipeline.py --campaign-id openai_chatgpt52ext_agent_fullsec_2026-02-22 --skip-generate --allow-missing --allow-invalid`
+- Publish step behavior:
+  - `scripts/lab_publish_llm_inputs_v2.py` now cleans stale mirror files by default.
+  - Pass `--no-clean` only when explicitly preserving existing mirror files.
 
 ## Legacy Notice
 Older queue and ingest flow docs remain for history and compatibility checks only.
