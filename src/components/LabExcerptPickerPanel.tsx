@@ -362,6 +362,11 @@ export default function LabExcerptPickerPanel({ output }: { output: LabOutput })
             Low coverage may also reflect missing paragraph lookups; check filing availability.
           </div>
         ) : null}
+        {(effectiveStatus.error || missingParagraphs > 0) ? (
+          <div className="mt-1 text-[11px] text-slate-300">
+            Context gaps usually indicate input availability/resolution issues, not model choice alone.
+          </div>
+        ) : null}
         {effectiveStatus.error ? (
           <div className="mt-2 text-[11px] text-amber-200/80">{effectiveStatus.error}</div>
         ) : null}

@@ -344,6 +344,10 @@ export default function MethodCard({
     diagnosticsPreference === "auto"
       ? defaultDiagnosticsOpen
       : diagnosticsPreference === "open"
+  const diagnosticsToneClass =
+    signalSummary.tier === "high" || signalSummary.tier === "medium"
+      ? "border-white/5 bg-slate-900/25"
+      : "border-white/10 bg-slate-900/35"
 
   const handleToggleContext = () => {
     if (isContextOpen) {
@@ -641,7 +645,7 @@ export default function MethodCard({
               ) : null}
 
               {warnings.length || rankedItems.length || topRisers.length || topFallers.length ? (
-                <div className="rounded-md border border-white/10 bg-slate-900/35 p-3">
+                <div className={`rounded-md border p-3 ${diagnosticsToneClass}`}>
                   <div className="flex items-center justify-between gap-3">
                     <div>
                       <div className="text-xs font-semibold uppercase tracking-wide text-slate-200">

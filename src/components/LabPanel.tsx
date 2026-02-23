@@ -948,6 +948,27 @@ export default function LabPanel({
     return rows
   }, [outputs, selectedLlmCampaignA, selectedLlmCampaignB, selectedDetectors])
 
+  const llmCompareSummary = useMemo(() => {
+    if (!llmCompareRows.length) return null
+    let best = llmCompareRows[0]
+    let bestScore = 0
+    for (const row of llmCompareRows) {
+      const confidenceWeight = row.confidenceDelta === null ? 0 : Math.abs(row.confidenceDelta) * 100
+      const evidenceWeight = Math.abs(row.evidenceDelta) * 5
+      const overlapWeight =
+        row.overlapPercent === null ? 0 : Math.max(0, 100 - row.overlapPercent) * 0.25
+      const score = confidenceWeight + evidenceWeight + overlapWeight
+      if (score > bestScore) {
+        best = row
+        bestScore = score
+      }
+    }
+    return {
+      detectorLabel: best.detectorLabel,
+      readText: best.readText,
+    }
+  }, [llmCompareRows])
+
   const detectorGroups = useMemo(() => {
     return DETECTOR_GROUP_ORDER.map((group) => ({
       ...group,
@@ -1224,6 +1245,31 @@ export default function LabPanel({
             </div>
           </div>
 
+          <div className="rounded-md border border-sky-300/20 bg-sky-400/10 px-3 py-2 text-sm text-slate-100">
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <div className="font-medium text-sky-100">Compare status</div>
+              <a
+                className="text-xs text-sky-200 underline decoration-sky-300/60 underline-offset-2 hover:text-sky-100"
+                href="#lab-llm-compare"
+              >
+                Jump to quick diff
+              </a>
+            </div>
+            <div className="mt-1 text-xs text-slate-200">
+              A/B availability: {llmCampaignOptions.length > 1 ? "A and B active" : "A only"} | Methods selected:{" "}
+              {selectedDetectors.length}
+            </div>
+            {llmCompareSummary ? (
+              <div className="mt-1 text-xs text-slate-200">
+                Top read: {llmCompareSummary.detectorLabel} - {llmCompareSummary.readText}
+              </div>
+            ) : (
+              <div className="mt-1 text-xs text-slate-300">
+                Quick diff appears after selecting one or more LLM detector cards.
+              </div>
+            )}
+          </div>
+
           <div>
             <div className="flex items-center justify-between gap-3">
               <div className="text-sm uppercase tracking-wide text-slate-300">Methods</div>
@@ -1286,6 +1332,11 @@ export default function LabPanel({
               Mode: {modeLabel} | Pair: {selectedPairLabel} | Lens: {lens} | Methods selected:{" "}
               {selectedDetectors.length} | Expanded: {expandedCount}/{methodCards.length}
             </div>
+            {llmCompareSummary ? (
+              <div className="mt-2 rounded-md border border-sky-300/20 bg-sky-400/10 px-3 py-2 text-xs text-slate-100">
+                Quick diff summary: {llmCompareSummary.detectorLabel} - {llmCompareSummary.readText}
+              </div>
+            ) : null}
             <div className="mt-2 flex flex-wrap items-center gap-3 text-xs text-slate-300">
               <a className="underline decoration-white/30 underline-offset-2 hover:text-slate-100" href="#lab-agreement">
                 Agreement
