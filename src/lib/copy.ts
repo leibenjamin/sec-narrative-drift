@@ -36,7 +36,7 @@ export const copy = {
       missingExcerpts: "We have metrics for this pair, but no excerpt set yet.",
       noShifts: 'No clear "top movers" for this year pair (which is itself a result).',
       lowConfidenceYear:
-        "This year's Item 1A / Item 3.D extraction is low confidence. Treat metrics with caution and use the View on SEC link to verify.",
+        "This year's Item 1A / Item 3.D extraction has a low confidence score (heuristic). Treat metrics with caution and use the View on SEC link to verify.",
     },
   },
 
@@ -221,7 +221,8 @@ export const copy = {
         t("Drift vs {prevYear}: {drift}", { prevYear, drift }),
       ciLine: ({ low, high }: { low: string; high: string }) => t("CI: {low}-{high}", { low, high }),
       boilerplateLine: ({ boilerplatePct }: { boilerplatePct: string }) => t("Boilerplate: {boilerplatePct}", { boilerplatePct }),
-      confidenceLine: ({ confidencePct }: { confidencePct: string }) => t("Extraction confidence: {confidencePct}", { confidencePct }),
+      confidenceLine: ({ confidencePct }: { confidencePct: string }) =>
+        t("Extraction confidence score (heuristic): {confidencePct}", { confidencePct }),
     },
   },
 
@@ -327,7 +328,7 @@ export const copy = {
     },
     viewOnSec: "View filing on SEC",
     emptyNoPair: "Select a year pair from the heatmap to compare.",
-    warnLowConfidence: "This excerpt set includes at least one low-confidence extraction year.",
+    warnLowConfidence: "This excerpt set includes at least one low extraction-confidence score year.",
   },
 
   methodology: {
@@ -348,7 +349,7 @@ export const copy = {
       whatNot:
         "A drift spike is not proof of a real-world event. It's a prompt to read the filing and form hypotheses. Treat this as descriptive analysis, not causality.",
       extraction:
-        "We download the filing HTML, drop scripts/tables, isolate Item 1A / Item 3.D via heading + TOC heuristics, and split the result into paragraphs. We record a confidence score for each year.",
+      "We download the filing HTML, drop scripts/tables, isolate Item 1A / Item 3.D via heading + TOC heuristics, and split the result into paragraphs. We record a heuristic confidence score for each year.",
       secAccess:
         "Always include a descriptive User-Agent with contact info and respect SEC fair-access limits (<= 10 requests/sec).",
       drift:
@@ -399,19 +400,19 @@ export const copy = {
   dataQuality: {
     title: "Data quality",
     helper:
-      "Extraction confidence reflects how reliably we isolated Item 1A / Item 3.D in the filing HTML (boundary markers + text density). Low confidence years are where HTML and reality briefly disagree.",
+      "Extraction confidence score reflects how reliably we isolated Item 1A / Item 3.D in the filing HTML (boundary markers + text density). It is a heuristic quality signal, not a statistical confidence interval.",
     badges: {
-      high: "High confidence",
-      medium: "Medium confidence",
-      low: "Low confidence",
+      high: "High confidence score",
+      medium: "Medium confidence score",
+      low: "Low confidence score",
       skipped: "Skipped (no reliable extract)",
     },
     guidance:
-      'If confidence is low, drift may reflect parsing noise. Use the "View on SEC" link to verify boundaries.',
+      'If confidence score is low, drift may reflect parsing noise. Use the "View on SEC" link to verify boundaries.',
   },
   sectionCapture: {
     label: "Section capture",
-    tooltipTitle: "Section capture confidence",
+    tooltipTitle: "Section capture confidence score (heuristic)",
     levels: {
       high: "Clean boundaries. The section start/end markers look like the real Item 1A / Item 3.D.",
       medium:

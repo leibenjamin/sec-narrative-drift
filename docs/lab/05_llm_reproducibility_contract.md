@@ -43,6 +43,7 @@ No extra top-level keys are allowed.
 
 ## Metrics Contract
 - `metrics.confidence` must be one of `0.25`, `0.50`, `0.75`.
+- `metrics.confidence` is an ordinal heuristic confidence band, not a calibrated probability or confidence interval.
 - `metrics.warnings` should include concise caveats when signal or coverage is limited.
 - `metrics.warnings` entries must be complete statements; placeholder tails like `Input file citation:`, `Source:`, `Input source:` are invalid.
 

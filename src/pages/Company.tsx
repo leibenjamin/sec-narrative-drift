@@ -169,7 +169,7 @@ export default function Company() {
                 How to read confidence
               </div>
               <p className="mt-1 text-sm text-slate-100">
-                Confidence bands are heuristic tri-level signals (0.25/0.50/0.75) supported by deterministic baselines, explicit evidence, provenance, and path-level debug states.
+                Confidence bands are heuristic tri-level signals (0.25/0.50/0.75), not probabilities or confidence intervals, supported by deterministic baselines, explicit evidence, provenance, and path-level debug states.
               </p>
             </div>
           </div>
