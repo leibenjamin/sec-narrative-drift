@@ -7,7 +7,7 @@ const LLM_DETECTORS = new Set<string>([
 ])
 
 const DEFAULT_INSTRUCTIONS_ASSET =
-  "llm_project_instructions_openai_chatgpt52ext_agent_2026-02-21.txt"
+  "llm_project_instructions_openai_gpt53codex_xhigh_agent_fullsec_2026-02-22.txt"
 const DEFAULT_PROJECT_INSTRUCTIONS_PATH = withBase(
   `data/sec_narrative_drift_lab/${DEFAULT_INSTRUCTIONS_ASSET}`
 )
@@ -76,7 +76,7 @@ export function buildDefaultLlmInputFile(
   return `inputs/pair/${ticker.toUpperCase()}_${yearFrom}_${yearTo}_${section}_${lens}_${sourceId}.json`
 }
 
-function buildDefaultLlmYearInputFile(
+export function buildDefaultLlmYearInputFile(
   ticker: string,
   year: number,
   pairYearFrom: number,
