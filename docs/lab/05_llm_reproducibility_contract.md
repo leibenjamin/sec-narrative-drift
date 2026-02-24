@@ -59,6 +59,11 @@ Canonical `provenance.input_file` pattern for v2:
 
 No extra provenance keys are allowed.
 
+## Runtime Security Presentation Rules
+- JSON-derived metadata links are same-origin-only in runtime UI.
+- Internal input/output paths may be opened directly when they resolve under `public/data/...`.
+- External metadata URLs are displayed as plain text with copy actions (non-clickable by policy).
+
 ## Citation Contract
 For `det_llm_delta_brief_v1`:
 - At least two inline citations are required.

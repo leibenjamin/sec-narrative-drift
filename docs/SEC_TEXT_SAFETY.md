@@ -15,6 +15,8 @@
 ## URL and Path Handling
 - Lab output files are fetched as static JSON only.
 - Output paths are normalized to canonical `outputs/<detector>/<filename>.json` forms.
+- JSON-metadata-derived links are restricted to same-origin path-like values only.
+- External metadata URLs (for example method origin references) are shown as text and copyable, not rendered as clickable links.
 - Debug views may show expected paths and request URLs as plain text for troubleshooting.
 
 ## Why This Matters
@@ -25,3 +27,4 @@
 - Search source for forbidden HTML injection APIs before release.
 - Confirm detector cards and agreement states render missing/debug data as plain text.
 - Keep runtime deterministic (no runtime ML/LLM execution in app code).
+- Ensure CI includes security gates: runtime dependency audit (`npm audit --omit=dev --audit-level=high`) and forbidden HTML API scan.

@@ -7,6 +7,7 @@
 - `docs/SEC_TEXT_SAFETY.md` - SEC text trust model and rendering safety rules.
 - `docs/lab/05_llm_reproducibility_contract.md` - strict manual LLM rerun contract and validation requirements.
 - `docs/lab/06_llm_model_comparison_workflow.md` - multi-campaign model-comparison workflow.
+- CI security gates include runtime dependency audit and forbidden HTML API scan via `.github/workflows/lab_gates.yml`.
 
 ## Product and contract docs
 - `docs/sec_narrative_drift_codex_spec_v1_13.md` - product/data contract baseline.
