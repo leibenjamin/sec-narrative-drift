@@ -283,6 +283,10 @@ function normalizeInputPath(pathValue: string): string | null {
   return withBase(`data/sec_narrative_drift_lab/${normalized}`)
 }
 
+export function buildLabInputRequestUrl(inputPath: string): string | null {
+  return normalizeInputPath(inputPath)
+}
+
 if (import.meta.env.DEV) {
   const smokeActual = normalizeInputPath("inputs/NVDA/foo.json")
   const smokeExpected = `${LAB_BASE_PATH}/llm_inputs_v2/inputs/NVDA/foo.json`

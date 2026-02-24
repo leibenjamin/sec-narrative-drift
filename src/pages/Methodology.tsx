@@ -1,5 +1,10 @@
-import { Link } from "react-router-dom"
+import { useEffect, useMemo, useState } from "react"
+import { Link, useSearchParams } from "react-router-dom"
+import { loadLabLlmCampaignsIndex } from "../lib/labData"
 import { withBase } from "../lib/paths"
+
+const DEFAULT_RUNTIME_INSTRUCTIONS_ASSET =
+  "llm_project_instructions_openai_gpt53codex_xhigh_agent_fullsec_2026-02-22.txt"
 
 const DETECTORS = [
   {
@@ -78,6 +83,48 @@ const DETECTORS = [
 ]
 
 export default function Methodology() {
+  const [searchParams] = useSearchParams()
+  const requestedCampaignId = searchParams.get("llmA")
+  const [instructionsAsset, setInstructionsAsset] = useState(DEFAULT_RUNTIME_INSTRUCTIONS_ASSET)
+  const [instructionsCampaignLabel, setInstructionsCampaignLabel] = useState(
+    "primary runtime campaign"
+  )
+
+  useEffect(() => {
+    let cancelled = false
+    loadLabLlmCampaignsIndex()
+      .then((index) => {
+        if (cancelled) return
+        const runtimeCampaigns = index.campaigns.filter(
+          (campaign) =>
+            campaign.runtime_visible !== false && campaign.input_mode !== "focuspack_v1"
+        )
+        const available = runtimeCampaigns.length > 0 ? runtimeCampaigns : index.campaigns
+        const selectedCampaign =
+          available.find((campaign) => campaign.campaign_id === requestedCampaignId) ??
+          available.find((campaign) => campaign.campaign_id === index.primary_campaign_id) ??
+          available[0] ??
+          null
+        if (!selectedCampaign) return
+        setInstructionsAsset(
+          selectedCampaign.instructions_asset?.trim() || DEFAULT_RUNTIME_INSTRUCTIONS_ASSET
+        )
+        setInstructionsCampaignLabel(selectedCampaign.display_name)
+      })
+      .catch(() => {
+        if (cancelled) return
+        setInstructionsCampaignLabel("primary runtime campaign")
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [requestedCampaignId])
+
+  const instructionsPath = useMemo(
+    () => withBase(`data/sec_narrative_drift_lab/${instructionsAsset}`),
+    [instructionsAsset]
+  )
+
   return (
     <main className="min-h-screen page-fade">
       <div className="mx-auto max-w-6xl space-y-10 px-6 py-12">
@@ -191,14 +238,37 @@ export default function Methodology() {
             <li>Run strict manifest validator before deployment.</li>
           </ol>
           <p className="text-xs text-slate-400">
-            Runtime instructions asset:{" "}
+            Runtime instructions asset (campaign-aware):{" "}
             <a
               className="text-sky-300 underline decoration-sky-300/60 underline-offset-2"
-              href={withBase("data/sec_narrative_drift_lab/llm_project_instructions_v1.txt")}
+              href={instructionsPath}
               target="_blank"
               rel="noopener noreferrer"
             >
-              llm_project_instructions_v1.txt
+              {instructionsAsset}
+            </a>
+          </p>
+          <p className="text-xs text-slate-400">
+            Selected campaign context: <span className="text-slate-200">{instructionsCampaignLabel}</span>
+          </p>
+          <p className="text-xs text-slate-400">
+            Full-section input indexes:{" "}
+            <a
+              className="text-sky-300 underline decoration-sky-300/60 underline-offset-2"
+              href={withBase("data/sec_narrative_drift_lab/llm_inputs_v2/inputs_index_pair_v2.json")}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              inputs_index_pair_v2.json
+            </a>{" "}
+            |{" "}
+            <a
+              className="text-sky-300 underline decoration-sky-300/60 underline-offset-2"
+              href={withBase("data/sec_narrative_drift_lab/llm_inputs_v2/inputs_index_year_v2.json")}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              inputs_index_year_v2.json
             </a>
           </p>
           <p className="text-xs text-slate-400">
@@ -216,6 +286,24 @@ export default function Methodology() {
             Source docs: <code>docs/SEC_TEXT_SAFETY.md</code> and{" "}
             <code>docs/lab/05_llm_reproducibility_contract.md</code>.
           </p>
+        </section>
+
+        <section className="space-y-3 rounded-xl border border-white/10 bg-slate-900/45 p-5">
+          <h2 className="text-xl font-semibold">Confidence semantics</h2>
+          <ul className="list-disc space-y-2 pl-5 text-sm text-slate-200">
+            <li>
+              Deterministic extraction confidence is a heuristic quality score for section-capture reliability.
+            </li>
+            <li>
+              LLM detector <span className="font-semibold text-slate-100">confidence band (heuristic)</span> is ordinal (`0.25`, `0.50`, `0.75`), not a calibrated probability.
+            </li>
+            <li>
+              A/B quick diff band deltas are directional compare aids, not statistical significance tests.
+            </li>
+            <li>
+              Treat confidence readouts as triage signals, then verify with evidence blocks and deterministic agreement.
+            </li>
+          </ul>
         </section>
 
         <section className="space-y-3 rounded-xl border border-white/10 bg-slate-900/45 p-5">
