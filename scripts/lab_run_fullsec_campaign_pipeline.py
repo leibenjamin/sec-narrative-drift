@@ -233,16 +233,19 @@ def main(argv: Optional[list[str]] = None) -> int:
     run_cmd(["python", "scripts/lab_build_llm_campaigns_index.py"])
     run_cmd(["python", "scripts/lab_build_method_tracks_index.py"])
     run_cmd(["python", "scripts/lab_build_llm_variants_index.py"])
-    run_cmd(
-        [
-            "python",
-            "scripts/lab_validate_llm_manifest_outputs.py",
-            "--manifest",
-            to_repo_rel(manifest_json),
-            "--matrix-report",
-            "reports/lab_llm_campaign_matrix_validation.md",
-        ]
-    )
+    matrix_cmd = [
+        "python",
+        "scripts/lab_validate_llm_manifest_outputs.py",
+        "--manifest",
+        to_repo_rel(manifest_json),
+        "--matrix-report",
+        "reports/lab_llm_campaign_matrix_validation.md",
+    ]
+    if args.allow_missing:
+        matrix_cmd.append("--allow-missing")
+    if args.allow_invalid:
+        matrix_cmd.append("--allow-invalid")
+    run_cmd(matrix_cmd)
 
     print(f"Script: {SCRIPT_VERSION}")
     print(f"Campaign id: {args.campaign_id}")
