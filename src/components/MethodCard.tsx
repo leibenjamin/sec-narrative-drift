@@ -9,6 +9,7 @@ import {
   loadLlmProjectInstructionsText,
 } from "../lib/labLlmRepro"
 import { withBase } from "../lib/paths"
+import { assertSameOriginPathLike } from "../lib/sanitize"
 import type {
   LabCleaningLens,
   LabMethodProfile,
@@ -210,21 +211,11 @@ async function copyTextToClipboard(text: string): Promise<boolean> {
 
 function resolveInputHref(pathValue: string | null | undefined): string | null {
   if (!pathValue) return null
-  const normalized = pathValue.replace(/\\/g, "/").replace(/^\.\/+/, "")
-  if (!normalized) return null
-  if (normalized.startsWith("http://") || normalized.startsWith("https://")) {
-    return normalized
+  try {
+    return assertSameOriginPathLike(pathValue)
+  } catch {
+    return null
   }
-  if (normalized.startsWith("inputs/")) {
-    return withBase(`data/sec_narrative_drift_lab/llm_inputs_v2/${normalized}`)
-  }
-  if (normalized.startsWith("public/")) {
-    return withBase(normalized.replace(/^public\//, ""))
-  }
-  if (normalized.startsWith("data/")) {
-    return withBase(normalized)
-  }
-  return null
 }
 
 export default function MethodCard({
@@ -251,6 +242,10 @@ export default function MethodCard({
   const [copyInstructionsState, setCopyInstructionsState] = useState<"idle" | "copied" | "failed">(
     "idle"
   )
+  const [copyClaimUrlState, setCopyClaimUrlState] = useState<"idle" | "copied" | "failed">(
+    "idle"
+  )
+  const [copiedClaimUrl, setCopiedClaimUrl] = useState<string | null>(null)
   const [projectInstructions, setProjectInstructions] = useState<string>("")
   const [projectInstructionsError, setProjectInstructionsError] = useState<string | null>(null)
   const [contextPreference, setContextPreference] = useState<"auto" | "open" | "closed">("auto")
@@ -324,11 +319,13 @@ export default function MethodCard({
           output?.source_id ?? "edgar"
         )
       : null)
-  const pairInputUrl = debugInfo?.inputFileUrl ?? resolveInputHref(pairInputFileForRerun)
-  const yearPrevInputUrl =
-    debugInfo?.yearInputPrevUrl ?? resolveInputHref(yearPrevInputFileForRerun)
-  const yearCurrInputUrl =
-    debugInfo?.yearInputCurrUrl ?? resolveInputHref(yearCurrInputFileForRerun)
+  const pairInputUrl = resolveInputHref(debugInfo?.inputFileUrl ?? pairInputFileForRerun)
+  const yearPrevInputUrl = resolveInputHref(
+    debugInfo?.yearInputPrevUrl ?? yearPrevInputFileForRerun
+  )
+  const yearCurrInputUrl = resolveInputHref(
+    debugInfo?.yearInputCurrUrl ?? yearCurrInputFileForRerun
+  )
   const threadStarterText = useMemo(() => {
     if (!llmCard || !debugInfo || !pairInputFileForRerun || !llmCampaign) return null
     return buildLlmThreadStarterText({
@@ -422,6 +419,12 @@ export default function MethodCard({
     if (!projectInstructions) return
     const didCopy = await copyTextToClipboard(projectInstructions)
     setCopyInstructionsState(didCopy ? "copied" : "failed")
+  }
+
+  const handleCopyClaimUrl = async (url: string) => {
+    const didCopy = await copyTextToClipboard(url)
+    setCopiedClaimUrl(url)
+    setCopyClaimUrlState(didCopy ? "copied" : "failed")
   }
 
   const shouldShowSignalBanner =
@@ -608,22 +611,49 @@ export default function MethodCard({
                     <div>
                       <div className="font-semibold text-slate-100">Origins and references</div>
                       <ul className="mt-1 space-y-2 text-slate-300">
-                        {methodProfile.origin_claims.map((claim) => (
-                          <li key={`${claim.title}:${claim.year}`}>
+                        {methodProfile.origin_claims.map((claim) => {
+                          const internalClaimHref = resolveInputHref(claim.url)
+                          return (
+                            <li key={`${claim.title}:${claim.year}`}>
                             <div className="font-medium text-slate-200">
                               {claim.title} ({claim.year})
                             </div>
                             <div>{claim.author_or_org}</div>
-                            <a
-                              href={claim.url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-sky-300 underline decoration-sky-300/60 underline-offset-2"
-                            >
-                              Source
-                            </a>
+                            {internalClaimHref ? (
+                              <a
+                                href={internalClaimHref}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-sky-300 underline decoration-sky-300/60 underline-offset-2"
+                              >
+                                Source
+                              </a>
+                            ) : (
+                              <div className="mt-1 flex flex-wrap items-center gap-2">
+                                <span className="text-amber-200">
+                                  External URL blocked by same-origin policy.
+                                </span>
+                                <button
+                                  type="button"
+                                  onClick={() => handleCopyClaimUrl(claim.url)}
+                                  className="rounded-md border border-white/20 bg-slate-900/60 px-2 py-1 text-xs text-slate-100 transition hover:border-white/40"
+                                >
+                                  Copy URL
+                                </button>
+                                {copiedClaimUrl === claim.url && copyClaimUrlState === "copied" ? (
+                                  <span className="text-emerald-300">Copied.</span>
+                                ) : null}
+                                {copiedClaimUrl === claim.url && copyClaimUrlState === "failed" ? (
+                                  <span className="text-rose-300">Copy failed.</span>
+                                ) : null}
+                              </div>
+                            )}
+                            {!internalClaimHref ? (
+                              <div className="break-all text-[11px] text-slate-400">{claim.url}</div>
+                            ) : null}
                           </li>
-                        ))}
+                          )
+                        })}
                       </ul>
                     </div>
                   ) : null}

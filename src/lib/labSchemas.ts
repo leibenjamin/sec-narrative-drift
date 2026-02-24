@@ -1,5 +1,48 @@
 import { z } from "zod"
 
+const URL_SCHEME_RE = /^[A-Za-z][A-Za-z0-9+.-]*:/
+
+function hasControlChars(value: string): boolean {
+  for (let index = 0; index < value.length; index += 1) {
+    const codePoint = value.charCodeAt(index)
+    if (codePoint <= 0x1f || codePoint === 0x7f) return true
+  }
+  return false
+}
+
+function isHttpsUrl(value: string): boolean {
+  try {
+    const parsed = new URL(value)
+    return parsed.protocol === "https:"
+  } catch {
+    return false
+  }
+}
+
+function isInternalPathLike(value: string): boolean {
+  const normalized = value.trim().replace(/\\/g, "/").replace(/^\.\/+/, "")
+  if (!normalized || hasControlChars(normalized)) return false
+  if (URL_SCHEME_RE.test(normalized) || normalized.startsWith("//")) return false
+  if (normalized.includes("..")) return false
+  return (
+    normalized.startsWith("/") ||
+    normalized.startsWith("data/") ||
+    normalized.startsWith("public/") ||
+    normalized.startsWith("inputs/") ||
+    normalized.startsWith("bundles/")
+  )
+}
+
+const InternalPathLikeSchema = z.string().refine(isInternalPathLike, {
+  message: "Must be an internal path-like value.",
+})
+
+const OptionalInternalPathLikeSchema = z.union([InternalPathLikeSchema, z.literal("")])
+
+const HttpsUrlSchema = z.string().url().refine(isHttpsUrl, {
+  message: "URL must use https.",
+})
+
 export const LabCleaningLensSchema = z.enum([
   "raw",
   "stage1_clean",
@@ -139,13 +182,13 @@ export const LabLlmVariantSchema = z.object({
   model_name: z.string(),
   filename: z.string(),
   expected_repo_path: z.string(),
-  request_url: z.string(),
+  request_url: InternalPathLikeSchema,
   present: z.boolean(),
   valid: z.boolean(),
   run_label: z.string(),
-  input_file: z.string().optional(),
-  year_input_prev: z.string().optional(),
-  year_input_curr: z.string().optional(),
+  input_file: OptionalInternalPathLikeSchema.optional(),
+  year_input_prev: OptionalInternalPathLikeSchema.optional(),
+  year_input_curr: OptionalInternalPathLikeSchema.optional(),
   validation_reasons: z.array(z.string()).optional(),
 })
 
@@ -181,7 +224,7 @@ export const LabMethodProfileOriginClaimSchema = z.object({
   title: z.string(),
   author_or_org: z.string(),
   year: z.number(),
-  url: z.string(),
+  url: HttpsUrlSchema,
 })
 
 export const LabMethodProfileSchema = z.object({

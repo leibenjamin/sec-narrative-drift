@@ -39,9 +39,18 @@ const LLM_DETECTORS = new Set<string>([
 const LAB_TICKER_RE = /^[A-Z0-9.-]{1,10}$/
 const LLM_RUN_LABEL_RE = /^20\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])_[A-Za-z0-9._-]+$/
 const LLM_PROVENANCE_KEYS = ["input_file", "model_provider", "model_name", "run_label"] as const
+const URL_SCHEME_RE = /^[A-Za-z][A-Za-z0-9+.-]*:/
 const DEFAULT_DETERMINISTIC_TRACK_SLUG = "det-baseline-2026-02-21"
 const DEFAULT_PRIMARY_CAMPAIGN_ID = "openai_gpt53codex_xhigh_agent_fullsec_2026-02-22"
 const DEFAULT_COMPARE_CAMPAIGN_ID = "openai_chatgpt52ext_agent_fullsec_2026-02-22"
+
+function hasControlChars(value: string): boolean {
+  for (let index = 0; index < value.length; index += 1) {
+    const codePoint = value.charCodeAt(index)
+    if (codePoint <= 0x1f || codePoint === 0x7f) return true
+  }
+  return false
+}
 
 export type LabExpectedOutputArtifact = {
   filename: string
@@ -255,8 +264,10 @@ export function buildLabOutputRepoPath(ticker: string, filename: string): string
 }
 
 function normalizeInputPath(pathValue: string): string | null {
-  const normalized = pathValue.replace(/\\/g, "/").replace(/^\.\/+/, "")
+  const normalized = pathValue.trim().replace(/\\/g, "/").replace(/^\.\/+/, "")
   if (!normalized || normalized.includes("..")) return null
+  if (hasControlChars(normalized)) return null
+  if (URL_SCHEME_RE.test(normalized) || normalized.startsWith("//")) return null
 
   if (normalized.startsWith("data/")) {
     return withBase(normalized)
