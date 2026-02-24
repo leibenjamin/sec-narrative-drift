@@ -3,6 +3,7 @@ import EvidenceStack from "./EvidenceStack"
 import LabExcerptPickerPanel from "./LabExcerptPickerPanel"
 import {
   buildDefaultLlmInputFile,
+  buildDefaultLlmYearInputFile,
   buildLlmThreadStarterText,
   isLlmDetector,
   loadLlmProjectInstructionsText,
@@ -57,6 +58,12 @@ type MethodCardProps = {
     campaignDisplayName?: string | null
     expectedPath: string | null
     requestedUrl: string | null
+    inputFile?: string | null
+    yearInputPrev?: string | null
+    yearInputCurr?: string | null
+    inputFileUrl?: string | null
+    yearInputPrevUrl?: string | null
+    yearInputCurrUrl?: string | null
     errorText: string | null
   } | null
 }
@@ -201,6 +208,25 @@ async function copyTextToClipboard(text: string): Promise<boolean> {
   return copied
 }
 
+function resolveInputHref(pathValue: string | null | undefined): string | null {
+  if (!pathValue) return null
+  const normalized = pathValue.replace(/\\/g, "/").replace(/^\.\/+/, "")
+  if (!normalized) return null
+  if (normalized.startsWith("http://") || normalized.startsWith("https://")) {
+    return normalized
+  }
+  if (normalized.startsWith("inputs/")) {
+    return withBase(`data/sec_narrative_drift_lab/llm_inputs_v2/${normalized}`)
+  }
+  if (normalized.startsWith("public/")) {
+    return withBase(normalized.replace(/^public\//, ""))
+  }
+  if (normalized.startsWith("data/")) {
+    return withBase(normalized)
+  }
+  return null
+}
+
 export default function MethodCard({
   detectorId,
   title,
@@ -219,6 +245,9 @@ export default function MethodCard({
 }: MethodCardProps) {
   const [copyState, setCopyState] = useState<"idle" | "copied" | "failed">("idle")
   const [copyStarterState, setCopyStarterState] = useState<"idle" | "copied" | "failed">("idle")
+  const [copyAttachmentsState, setCopyAttachmentsState] = useState<"idle" | "copied" | "failed">(
+    "idle"
+  )
   const [copyInstructionsState, setCopyInstructionsState] = useState<"idle" | "copied" | "failed">(
     "idle"
   )
@@ -268,8 +297,40 @@ export default function MethodCard({
     typeof provenance?.input_file === "string" && provenance.input_file
       ? provenance.input_file
       : fallbackInputFile
+  const pairInputFileForRerun = debugInfo?.inputFile ?? inputFileForRerun
+  const yearPrevInputFileForRerun =
+    debugInfo?.yearInputPrev ??
+    (debugInfo
+      ? buildDefaultLlmYearInputFile(
+          debugInfo.ticker,
+          debugInfo.yearFrom,
+          debugInfo.yearFrom,
+          debugInfo.yearTo,
+          debugInfo.lens,
+          output?.section ?? "10k_item1a",
+          output?.source_id ?? "edgar"
+        )
+      : null)
+  const yearCurrInputFileForRerun =
+    debugInfo?.yearInputCurr ??
+    (debugInfo
+      ? buildDefaultLlmYearInputFile(
+          debugInfo.ticker,
+          debugInfo.yearTo,
+          debugInfo.yearFrom,
+          debugInfo.yearTo,
+          debugInfo.lens,
+          output?.section ?? "10k_item1a",
+          output?.source_id ?? "edgar"
+        )
+      : null)
+  const pairInputUrl = debugInfo?.inputFileUrl ?? resolveInputHref(pairInputFileForRerun)
+  const yearPrevInputUrl =
+    debugInfo?.yearInputPrevUrl ?? resolveInputHref(yearPrevInputFileForRerun)
+  const yearCurrInputUrl =
+    debugInfo?.yearInputCurrUrl ?? resolveInputHref(yearCurrInputFileForRerun)
   const threadStarterText = useMemo(() => {
-    if (!llmCard || !debugInfo || !inputFileForRerun || !llmCampaign) return null
+    if (!llmCard || !debugInfo || !pairInputFileForRerun || !llmCampaign) return null
     return buildLlmThreadStarterText({
       ticker: debugInfo.ticker,
       yearFrom: debugInfo.yearFrom,
@@ -281,7 +342,7 @@ export default function MethodCard({
       campaignDisplayName: llmCampaign.campaignDisplayName,
       modelProvider: llmCampaign.modelProvider,
       modelName: llmCampaign.modelName,
-      inputFile: inputFileForRerun,
+      inputFile: pairInputFileForRerun,
       expectedOutputPath: debugInfo.expectedPath ?? null,
       runLabelTemplate: "YYYY-MM-DD_<campaign_tag>",
       sourceId: output?.source_id ?? "edgar",
@@ -289,7 +350,7 @@ export default function MethodCard({
   }, [
     llmCard,
     debugInfo,
-    inputFileForRerun,
+    pairInputFileForRerun,
     llmCampaign,
     detectorId,
     output?.section,
@@ -328,11 +389,27 @@ export default function MethodCard({
       campaign_display_name: debugInfo.campaignDisplayName ?? null,
       expected_path: debugInfo.expectedPath,
       requested_url: debugInfo.requestedUrl,
+      input_file: pairInputFileForRerun ?? null,
+      year_input_prev: yearPrevInputFileForRerun ?? null,
+      year_input_curr: yearCurrInputFileForRerun ?? null,
+      input_file_url: pairInputUrl ?? null,
+      year_input_prev_url: yearPrevInputUrl ?? null,
+      year_input_curr_url: yearCurrInputUrl ?? null,
       error: debugInfo.errorText,
       schema_issue_or_debug: debugPath ?? null,
     }
     const didCopy = await copyTextToClipboard(JSON.stringify(payload, null, 2))
     setCopyState(didCopy ? "copied" : "failed")
+  }
+
+  const handleCopyAttachmentPaths = async () => {
+    const lines: string[] = []
+    if (pairInputFileForRerun) lines.push(`Pair manifest: ${pairInputFileForRerun}`)
+    if (yearPrevInputFileForRerun) lines.push(`Year prev: ${yearPrevInputFileForRerun}`)
+    if (yearCurrInputFileForRerun) lines.push(`Year curr: ${yearCurrInputFileForRerun}`)
+    if (lines.length === 0) return
+    const didCopy = await copyTextToClipboard(lines.join("\n"))
+    setCopyAttachmentsState(didCopy ? "copied" : "failed")
   }
 
   const handleCopyThreadStarter = async () => {
@@ -599,8 +676,61 @@ export default function MethodCard({
                   </div>
                 ) : null}
                 <div className="break-all">
-                  Input file:{" "}
-                  <span className="text-slate-100">{inputFileForRerun ?? "not available"}</span>
+                  Pair manifest:{" "}
+                  <span className="text-slate-100">
+                    {pairInputFileForRerun ?? "not available"}
+                  </span>
+                  {pairInputUrl ? (
+                    <>
+                      {" "}
+                      <a
+                        href={pairInputUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sky-300 underline decoration-sky-300/60 underline-offset-2"
+                      >
+                        open
+                      </a>
+                    </>
+                  ) : null}
+                </div>
+                <div className="break-all">
+                  Year prev input:{" "}
+                  <span className="text-slate-100">
+                    {yearPrevInputFileForRerun ?? "not available"}
+                  </span>
+                  {yearPrevInputUrl ? (
+                    <>
+                      {" "}
+                      <a
+                        href={yearPrevInputUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sky-300 underline decoration-sky-300/60 underline-offset-2"
+                      >
+                        open
+                      </a>
+                    </>
+                  ) : null}
+                </div>
+                <div className="break-all">
+                  Year curr input:{" "}
+                  <span className="text-slate-100">
+                    {yearCurrInputFileForRerun ?? "not available"}
+                  </span>
+                  {yearCurrInputUrl ? (
+                    <>
+                      {" "}
+                      <a
+                        href={yearCurrInputUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sky-300 underline decoration-sky-300/60 underline-offset-2"
+                      >
+                        open
+                      </a>
+                    </>
+                  ) : null}
                 </div>
                 <div className="break-all">
                   Expected output path:{" "}
@@ -618,6 +748,16 @@ export default function MethodCard({
                 </button>
                 <button
                   type="button"
+                  onClick={handleCopyAttachmentPaths}
+                  disabled={
+                    !pairInputFileForRerun && !yearPrevInputFileForRerun && !yearCurrInputFileForRerun
+                  }
+                  className="rounded-md border border-white/20 bg-slate-900/60 px-2 py-1 text-xs text-slate-100 transition hover:border-white/40 disabled:cursor-not-allowed disabled:opacity-50"
+                >
+                  Copy all attachment paths
+                </button>
+                <button
+                  type="button"
                   onClick={handleCopyProjectInstructions}
                   disabled={!projectInstructions}
                   className="rounded-md border border-white/20 bg-slate-900/60 px-2 py-1 text-xs text-slate-100 transition hover:border-white/40 disabled:cursor-not-allowed disabled:opacity-50"
@@ -629,6 +769,12 @@ export default function MethodCard({
                 ) : null}
                 {copyStarterState === "failed" ? (
                   <span className="text-xs text-rose-300">Starter copy failed.</span>
+                ) : null}
+                {copyAttachmentsState === "copied" ? (
+                  <span className="text-xs text-emerald-300">Attachment paths copied.</span>
+                ) : null}
+                {copyAttachmentsState === "failed" ? (
+                  <span className="text-xs text-rose-300">Attachment copy failed.</span>
                 ) : null}
                 {copyInstructionsState === "copied" ? (
                   <span className="text-xs text-emerald-300">Instructions copied.</span>

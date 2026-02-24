@@ -6,6 +6,7 @@ import {
   LabDataLoadError,
   buildExpectedLabOutputArtifactFromVariant,
   buildExpectedLabOutputArtifact,
+  buildLabInputRequestUrl,
   buildLabOutputRepoPath,
   buildLabOutputRequestUrl,
   clearLabOutputCache,
@@ -20,6 +21,10 @@ import {
   loadLabOutput,
   resolveLabOutputLink,
 } from "../lib/labData"
+import {
+  buildDefaultLlmInputFile,
+  buildDefaultLlmYearInputFile,
+} from "../lib/labLlmRepro"
 import { withBase } from "../lib/paths"
 import type {
   LabCase,
@@ -265,6 +270,12 @@ type DetectorDebugInfo = {
   campaignDisplayName?: string | null
   expectedPath: string | null
   requestedUrl: string | null
+  inputFile?: string | null
+  yearInputPrev?: string | null
+  yearInputCurr?: string | null
+  inputFileUrl?: string | null
+  yearInputPrevUrl?: string | null
+  yearInputCurrUrl?: string | null
   errorText: string | null
 }
 
@@ -632,6 +643,38 @@ export default function LabPanel({
           const cardKey = buildDetectorCardKey(detectorId, campaignId)
           const campaign = await getLabLlmCampaignById(campaignId)
           const variant = await findLabLlmVariant(selectedCase, detectorId, lens, campaignId)
+          const fallbackInputFile = buildDefaultLlmInputFile(
+            selectedCase.ticker,
+            selectedCase.year_from,
+            selectedCase.year_to,
+            lens,
+            selectedCase.section,
+            sourceId
+          )
+          const fallbackYearInputPrev = buildDefaultLlmYearInputFile(
+            selectedCase.ticker,
+            selectedCase.year_from,
+            selectedCase.year_from,
+            selectedCase.year_to,
+            lens,
+            selectedCase.section,
+            sourceId
+          )
+          const fallbackYearInputCurr = buildDefaultLlmYearInputFile(
+            selectedCase.ticker,
+            selectedCase.year_to,
+            selectedCase.year_from,
+            selectedCase.year_to,
+            lens,
+            selectedCase.section,
+            sourceId
+          )
+          const inputFile = variant?.input_file ?? fallbackInputFile
+          const yearInputPrev = variant?.year_input_prev ?? fallbackYearInputPrev
+          const yearInputCurr = variant?.year_input_curr ?? fallbackYearInputCurr
+          const inputFileUrl = inputFile ? buildLabInputRequestUrl(inputFile) : null
+          const yearInputPrevUrl = yearInputPrev ? buildLabInputRequestUrl(yearInputPrev) : null
+          const yearInputCurrUrl = yearInputCurr ? buildLabInputRequestUrl(yearInputCurr) : null
           const expectedArtifact = variant
             ? buildExpectedLabOutputArtifactFromVariant(variant)
             : buildExpectedLabOutputArtifact(
@@ -658,6 +701,12 @@ export default function LabPanel({
               campaignDisplayName: campaign?.display_name ?? campaignId,
               expectedPath,
               requestedUrl,
+              inputFile,
+              yearInputPrev,
+              yearInputCurr,
+              inputFileUrl,
+              yearInputPrevUrl,
+              yearInputCurrUrl,
               errorText: "Missing artifact: campaign variant output is not indexed for this case/lens.",
             }
             continue
@@ -684,6 +733,12 @@ export default function LabPanel({
               campaignDisplayName: variant.display_name,
               expectedPath,
               requestedUrl,
+              inputFile,
+              yearInputPrev,
+              yearInputCurr,
+              inputFileUrl,
+              yearInputPrevUrl,
+              yearInputCurrUrl,
               errorText: null,
             }
           } catch (error) {
@@ -707,6 +762,12 @@ export default function LabPanel({
               campaignDisplayName: variant.display_name,
               expectedPath,
               requestedUrl,
+              inputFile,
+              yearInputPrev,
+              yearInputCurr,
+              inputFileUrl,
+              yearInputPrevUrl,
+              yearInputCurrUrl,
               errorText,
             }
           }
