@@ -249,6 +249,19 @@ def copy_queue_inputs_for_jobs(
     return len(copied), missing
 
 
+def safe_extract_zip(zip_handle: zipfile.ZipFile, extract_root: Path) -> None:
+    root_resolved = extract_root.resolve()
+    for member in zip_handle.infolist():
+        member_name = member.filename.replace("\\", "/")
+        member_path = Path(member_name)
+        if member_path.is_absolute() or ".." in member_path.parts:
+            raise SystemExit(f"Unsafe archive member path detected: {member.filename}")
+        destination = (extract_root / member_path).resolve()
+        if not destination.is_relative_to(root_resolved):
+            raise SystemExit(f"Archive member escapes extraction root: {member.filename}")
+        zip_handle.extract(member, extract_root)
+
+
 def self_check_showcase_queue_zip(
     zip_path: Path,
 ) -> tuple[bool, int, int, int]:
@@ -262,7 +275,7 @@ def self_check_showcase_queue_zip(
     extract_root.mkdir(parents=True, exist_ok=True)
     try:
         with zipfile.ZipFile(zip_path, "r") as zip_handle:
-            zip_handle.extractall(extract_root)
+            safe_extract_zip(zip_handle, extract_root)
 
         jobs_path = extract_root / "jobs.jsonl"
         if not jobs_path.exists():
