@@ -1,16 +1,29 @@
 {
   "version": "2.0",
-  "updated_at": "2026-02-07T20:30:37Z",
+  "updated_at": "2026-02-26T21:48:18Z",
   "tickers": [
     "NVDA",
+    "KO",
     "WM",
-    "GE",
-    "KO"
+    "GE"
   ],
   "section": "10k_item1a",
   "source_id": "edgar",
   "available_years_per_ticker": {
     "NVDA": [
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "KO": [
       2015,
       2016,
       2017,
@@ -33,7 +46,8 @@
       2021,
       2022,
       2023,
-      2024
+      2024,
+      2025
     ],
     "GE": [
       2015,
@@ -45,23 +59,38 @@
       2021,
       2022,
       2023,
-      2024
-    ],
-    "KO": [
-      2015,
-      2016,
-      2017,
-      2018,
-      2019,
-      2020,
-      2021,
-      2022,
-      2023,
-      2024
+      2024,
+      2025
     ]
   },
   "pairs_per_ticker": {
     "NVDA": [
+      {
+        "year_from": 2019,
+        "year_to": 2020
+      },
+      {
+        "year_from": 2020,
+        "year_to": 2021
+      },
+      {
+        "year_from": 2021,
+        "year_to": 2022
+      },
+      {
+        "year_from": 2022,
+        "year_to": 2023
+      },
+      {
+        "year_from": 2023,
+        "year_to": 2024
+      },
+      {
+        "year_from": 2024,
+        "year_to": 2025
+      }
+    ],
+    "KO": [
       {
         "year_from": 2019,
         "year_to": 2020
@@ -107,6 +136,10 @@
       {
         "year_from": 2023,
         "year_to": 2024
+      },
+      {
+        "year_from": 2024,
+        "year_to": 2025
       }
     ],
     "GE": [
@@ -129,28 +162,10 @@
       {
         "year_from": 2023,
         "year_to": 2024
-      }
-    ],
-    "KO": [
-      {
-        "year_from": 2019,
-        "year_to": 2020
       },
       {
-        "year_from": 2020,
-        "year_to": 2021
-      },
-      {
-        "year_from": 2021,
-        "year_to": 2022
-      },
-      {
-        "year_from": 2022,
-        "year_to": 2023
-      },
-      {
-        "year_from": 2023,
-        "year_to": 2024
+        "year_from": 2024,
+        "year_to": 2025
       }
     ]
   },

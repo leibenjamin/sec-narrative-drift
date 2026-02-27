@@ -1,0 +1,157 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_jsd_ngrams_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "WM",
+  "section": "10k_item1a",
+  "year_from": 2024,
+  "year_to": 2025,
+  "artifacts": {
+    "ranked_items": [
+      {
+        "label": "wm renewable",
+        "score": 0.0004937662017034934
+      },
+      {
+        "label": "stericycle",
+        "score": 0.000411807853598087
+      },
+      {
+        "label": "wm",
+        "score": 0.00037059927379123615
+      },
+      {
+        "label": "planned ongoing",
+        "score": 0.00037032465127762005
+      },
+      {
+        "label": "significant planned",
+        "score": 0.0002468831008517467
+      },
+      {
+        "label": "strategy includes",
+        "score": 0.0002468831008517467
+      },
+      {
+        "label": "ongoing investments",
+        "score": 0.0002468831008517467
+      },
+      {
+        "label": "agreements",
+        "score": 0.0002468831008517467
+      },
+      {
+        "label": "execute",
+        "score": 0.0002468831008517467
+      },
+      {
+        "label": "employment",
+        "score": 0.0002357999711670259
+      },
+      {
+        "label": "ongoing",
+        "score": 0.00022345722940711747
+      },
+      {
+        "label": "healthcare",
+        "score": 0.00022242942194018717
+      },
+      {
+        "label": "healthcare solutions",
+        "score": 0.00019929258322838847
+      },
+      {
+        "label": "reporting",
+        "score": 0.00018522627673482432
+      },
+      {
+        "label": "november",
+        "score": 0.00018516232563881003
+      },
+      {
+        "label": "includes significant",
+        "score": 0.00018516232563881003
+      },
+      {
+        "label": "disclosure",
+        "score": 0.00018516232563881003
+      },
+      {
+        "label": "port",
+        "score": 0.00018516232563881003
+      },
+      {
+        "label": "strike",
+        "score": 0.00018516232563881003
+      },
+      {
+        "label": "new restrictions",
+        "score": 0.00018516232563881003
+      }
+    ],
+    "stats": {
+      "jsd": 0.197242,
+      "tokens_prev": 4051,
+      "tokens_curr": 2810
+    }
+  },
+  "evidence": [
+    {
+      "year": 2025,
+      "paragraph_idx": 7,
+      "snippet": "We may not realize the strategic benefits, revenue and earnings growth, or cost synergies anticipated from the Stericycle acquisition.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "stericycle"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 8,
+      "snippet": "The acquired Stericycle business, which is now presented as our Healthcare Solutions segment, is subject to numerous risks and uncertainties such as decreases in the volume of medical waste and controlled substances wastes or personal and confidential information collected from customers; disruptions resulting from deployment of operational or technological systems, including with respect to Healthcare Solution\u2019s enterprise resource planning (\u201cERP\u201d) system and related billing and collection issues and delays; customer loss resulting from frustration due to billing or service issues; delayed revenue growth from planned pricing increases due to factors including customer retention, stabilization of customer data engagement systems and processes, and more prolonged development of market and customer-specific insights than initially planned; changing market conditions in the healthcare industry; competition and demand for services for the medical waste, controlled substances waste and secure information destruction industries; commodity price volatility; changes in regulation of the collection, transportation, treatment and disposal or destruction of medical waste and controlled substances waste or the proper handling and protection of personal and confidential information; the level of government enforcement of regulations governing medical waste and controlled substances waste collection and treatment or the proper handling and protection of personal and confidential information; and the outcome of pending, future or settled litigation or investigations.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "stericycle"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 5,
+      "snippet": "Execution of our strategy, including growth through acquisitions, such as our recent Stericycle acquisition, and our planned and ongoing expansion of our Recycling Processing and Sales and WM Renewable Energy segments, has caused, and may in the future, cause us to incur substantial additional indebtedness, which may divert capital away from our traditional business operations and other financial plans, and may introduce additional risks and volatility to our financial performance.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "wm renewable",
+        "stericycle",
+        "wm"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 8,
+      "snippet": "Supply chain, regulatory or permitting disruptions or delays could detrimentally impact the execution timeline for our planned and ongoing expansions of our Recycling Processing and Sales and WM Renewable Energy businesses.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "wm renewable",
+        "wm"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.197242,
+    "confidence": 1.0,
+    "coverage": 0.4256049726180182,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-26T21:40:59Z",
+    "git_commit": "8bcb3111a526be94846e285e2b5a3c5d0f6c2788",
+    "script_version": "build_lab_outputs.py@v2+a155741242",
+    "inputs": {
+      "prev_text_sha256": "ec656ab71eb903db88d5fc3b98e2b8e10ced284abecd2f202c9f3bfe9aab7c5d",
+      "curr_text_sha256": "45cbaa553e9947350ad6bb6b92df4d47ac14ea1cf56bfd324ce42fe31eeda9e1",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

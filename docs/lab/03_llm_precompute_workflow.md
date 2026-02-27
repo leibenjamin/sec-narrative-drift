@@ -14,6 +14,8 @@ Status: canonical manual rerun workflow for Lab (`full_section_v2`).
 - Runtime-visible campaign: `openai_gpt53codex_xhigh_agent_fullsec_2026-02-22` (`84/84` strict-valid).
 - Runtime-hidden pending campaign: `openai_chatgpt52ext_agent_fullsec_2026-02-22` (`84` expected missing until second wave).
 - `focuspack_v1` campaigns remain on disk for audit history only and are hidden in runtime selectors.
+- Runtime case scope is FY2022+ adjacent pairs only (`NVDA/KO/WM/GE` x `2022-2023`, `2023-2024`, `2024-2025`).
+- For pairs without LLM sidecars, runtime remains deterministic-first with explicit LLM missing/debug states.
 
 ## Zero-Touch Output Rule
 - LLM outputs are runtime-static artifacts, generated offline.

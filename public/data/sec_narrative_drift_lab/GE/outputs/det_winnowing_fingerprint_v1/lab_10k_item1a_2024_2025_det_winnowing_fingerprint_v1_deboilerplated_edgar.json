@@ -1,0 +1,55 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_winnowing_fingerprint_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "GE",
+  "section": "10k_item1a",
+  "year_from": 2024,
+  "year_to": 2025,
+  "artifacts": {
+    "stats": {
+      "shared_fingerprints": 9184,
+      "prev_fingerprints": 13801,
+      "curr_fingerprints": 13125,
+      "shared_ratio": 0.6997333333333333
+    }
+  },
+  "evidence": [
+    {
+      "year": 2025,
+      "paragraph_idx": 0,
+      "snippet": "STRATEGIC RISKS. Strategic risk relates to the Company\u2019s future business plans and strategies, including the risks assoc",
+      "why": "Shared fingerprint span."
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 0,
+      "snippet": "STRATEGIC RISKS. Strategic risk relates to the Company\u2019s future business plans and strategies, including the risks associ",
+      "why": "Shared fingerprint span."
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 0,
+      "snippet": "STRATEGIC RISKS. Strategic risk relates to the Company\u2019s future business plans and strategies, including the risks associated",
+      "why": "Shared fingerprint span."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.6997333333333333,
+    "confidence": 1.0,
+    "coverage": 0.5317901284564172,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-26T21:41:00Z",
+    "git_commit": "8bcb3111a526be94846e285e2b5a3c5d0f6c2788",
+    "script_version": "build_lab_outputs.py@v2+a155741242",
+    "inputs": {
+      "prev_text_sha256": "967ac87369cbe17e96f8d004e36bb7ef4880f085ee5533bdaabd2fa5cced5537",
+      "curr_text_sha256": "acf78b9b22eb0e338172ad504b6d1185188cd3df67e46e01e11ad3644e295ea1",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

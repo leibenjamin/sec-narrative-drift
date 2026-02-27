@@ -1,0 +1,109 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_structure_artifacts_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "GE",
+  "section": "10k_item1a",
+  "year_from": 2024,
+  "year_to": 2025,
+  "artifacts": {
+    "stats": {
+      "headings_prev": [
+        "26 2024 FORM 10-K",
+        "2024 FORM 10-K 27",
+        "28 2024 FORM 10-K",
+        "2024 FORM 10-K 29",
+        "30 2024 FORM 10-K",
+        "2024 FORM 10-K 31",
+        "32 2024 FORM 10-K"
+      ],
+      "headings_curr": [
+        "24 2025 FORM 10-K",
+        "2025 FORM 10-K 25",
+        "26 2025 FORM 10-K",
+        "2025 FORM 10-K 27",
+        "28 2025 FORM 10-K",
+        "2025 FORM 10-K 29",
+        "30 2025 FORM 10-K"
+      ],
+      "headings_added": [
+        "24 2025 FORM 10-K",
+        "2025 FORM 10-K 25",
+        "26 2025 FORM 10-K",
+        "2025 FORM 10-K 27",
+        "28 2025 FORM 10-K",
+        "2025 FORM 10-K 29",
+        "30 2025 FORM 10-K"
+      ],
+      "headings_removed": [
+        "26 2024 FORM 10-K",
+        "2024 FORM 10-K 27",
+        "28 2024 FORM 10-K",
+        "2024 FORM 10-K 29",
+        "30 2024 FORM 10-K",
+        "2024 FORM 10-K 31",
+        "32 2024 FORM 10-K"
+      ],
+      "paragraph_count_prev": 34,
+      "paragraph_count_curr": 32,
+      "length_chars_prev": 63500,
+      "length_chars_curr": 61733
+    }
+  },
+  "evidence": [
+    {
+      "year": 2025,
+      "paragraph_idx": 0,
+      "snippet": "our products and services, which could have a material adverse effect on our competitive position, results of operations, financial condition or cash flows.",
+      "why": "Heading added: 24 2025 FORM 10-K"
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 8,
+      "snippet": "face, along with others across the aerospace sector, increasing demand for transitioning to lower emission technologies, including low to no carbon products and services, the use of alternative energy and fuel sources and climate adaptation products and services. The aerospace sector\u2019s ambition to reduce carbon emissions over the coming decades is likely to depend in part on technologies that are not yet developed, deployed or widely adopted today, and it will likely require a combination of changes such as continued technological innovation in the fuel efficiency of engines, expanded use of low carbon fuels and the development of electric flight and hydrogen-based aviation technologies. The risk of insufficient availability, or higher cost, of low carbon fuels may compromise the pace and degree of emissions reduction. Our success in advancing these ambitions will depend in part on the actions of governments, regulators and other market participants to invest in infrastructure, create appropriate market incentives and to otherwise support the development of new technologies. We also face risks as our competitors may develop these new technologies before we do, their new technologies may be deemed by our customers to be superior to technologies we may develop, and their technologies may otherwise gain industry acceptance in advance of or instead of our products. In addition, as we and our competitors develop increasingly low-emissions technologies, demand for our older offerings may decrease or become nonexistent. We may also face climate-related reputational and litigation risks, which could adversely affect our business. Lastly, an increase in the frequency and severity of acute extreme weather events could damage our and our suppliers\u2019 facilities, products and other assets, and cause disruptions to our business and operations, supply chain and distribution networks, and could negatively impact the businesses of our partners, subcontractors, service providers, distributors and customers. Any of the foregoing could materially decrease our revenue and materially increase our costs and expenses.",
+      "why": "Heading added: 2025 FORM 10-K 25"
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 12,
+      "snippet": "position and the value of certain of our investments in research and development. In addition, we are subject to the enforcement of patents and other asserted intellectual property rights by third parties, including aggressive and opportunistic enforcement claims by non-practicing entities and others. Regardless of their merit, addressing such claims can be expensive and time-consuming, and may present challenges for our business. Claims that we have infringed third-party intellectual property rights could result in us being enjoined from offering some of our products and services or bringing to market new products and services and require us to pay substantial damages. The value of, or our ability to use, our intellectual property may also be negatively impacted by dependencies on third parties, such as our ability to obtain or renew on reasonable terms, or at all, licenses from such third parties, or our ability to secure or retain ownership or sufficient rights to use data in certain software analytics or services offerings.",
+      "why": "Heading added: 26 2025 FORM 10-K"
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 4,
+      "snippet": "when any new product is ready to enter into service. We also have dependencies on our suppliers and partners for commercial engine programs to develop, manufacture and service their share of an engine, and on the major airframers that we supply to timely and successfully develop, certify and commercialize aircraft that utilize our engines as well as to successfully sell those aircraft against aircraft powered by our competitors. A reduction in spending in the commercial aviation sector, or challenges for key industry participants, could have a significant effect on the demand for our products and services, which could have a material adverse effect on our competitive position, results of operations, financial condition or cash flows.",
+      "why": "Heading removed: 26 2024 FORM 10-K"
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 9,
+      "snippet": "pricing and taxes, energy taxes, product fuel efficiency standards, mandatory disclosure obligations, including U.S. government procurement-related contractual climate disclosures, could increase our operational and compliance expenditures and those of our customers and suppliers, including increased energy and raw materials costs and costs associated with manufacturing changes, and could require new or additional investments in product designs and facility upgrades. In addition, we face, along with others across the aerospace and defense sector, increasing demand for transitioning to lower emission technologies, including low to no carbon products and services, the use of alternative energy sources and other sustainable aviation technologies and climate adaptation products and services. Customers, regulators, institutional investors, the flying public and other stakeholders also continue to focus on environmental, social and governance issues, including our environmental sustainability practices and commitments with respect to our operations, products and suppliers. We anticipate that over time we will make additional investments in new technologies and capabilities and devote additional management and other resources in connection with these dynamics.",
+      "why": "Heading removed: 2024 FORM 10-K 27"
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 13,
+      "snippet": "independent companies might incur income tax liabilities. In addition, the Company may not achieve the anticipated benefits of the GE Vernova and GE HealthCare separations and may be exposed to additional risks, including potential liabilities pursuant to agreements entered into in connection with the spin-offs, the credit support provided to GE Vernova (see the Other Items \u2013 GE Vernova Parent Company Guarantees section within MD&A) and the various restructuring and business transformation actions that have brought changes across the Company\u2019s organizational structure, senior leadership, functional alignment, outsourcing and other areas. Any of these risks could result in a material adverse effect on the Company\u2019s business, reputation, results of operations, financial condition and cash flows.",
+      "why": "Heading removed: 28 2024 FORM 10-K"
+    }
+  ],
+  "metrics": {
+    "drift_score": 1.0,
+    "confidence": 0.7,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-26T21:41:00Z",
+    "git_commit": "8bcb3111a526be94846e285e2b5a3c5d0f6c2788",
+    "script_version": "build_lab_outputs.py@v2+a155741242",
+    "inputs": {
+      "prev_text_sha256": "e52b4b32b73cacf0f7dde38785d5e00f8634370d20ca5a6e5ea811d077091de1",
+      "curr_text_sha256": "451953ccc936ce9973e1aedeb3123235e30229754be0f3f42fe65e216298d12a",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

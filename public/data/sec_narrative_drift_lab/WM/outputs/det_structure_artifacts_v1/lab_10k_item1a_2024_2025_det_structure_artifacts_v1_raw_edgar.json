@@ -1,0 +1,56 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_structure_artifacts_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "WM",
+  "section": "10k_item1a",
+  "year_from": 2024,
+  "year_to": 2025,
+  "artifacts": {
+    "stats": {
+      "headings_prev": [
+        "Item 1A. Risk Factors.",
+        "Financial Risks",
+        "Item 1B. Unresolved Staff Comments."
+      ],
+      "headings_curr": [
+        "Item 1A. Risk Factors.",
+        "Financial Risks"
+      ],
+      "headings_added": [],
+      "headings_removed": [
+        "Item 1B. Unresolved Staff Comments."
+      ],
+      "paragraph_count_prev": 116,
+      "paragraph_count_curr": 91,
+      "length_chars_prev": 95311,
+      "length_chars_curr": 79797
+    }
+  },
+  "evidence": [
+    {
+      "year": 2024,
+      "paragraph_idx": 0,
+      "snippet": "Item 1B. Unresolved Staff Comments.",
+      "why": "Heading removed: Item 1B. Unresolved Staff Comments."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.3333333333333333,
+    "confidence": 0.25,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-26T21:40:59Z",
+    "git_commit": "8bcb3111a526be94846e285e2b5a3c5d0f6c2788",
+    "script_version": "build_lab_outputs.py@v2+a155741242",
+    "inputs": {
+      "prev_text_sha256": "3b00b2045a6f716096275d249ce5ef3df89c95a4be259e714dc6a17b881d2f9d",
+      "curr_text_sha256": "b87eecc5b67e331c5c3dc7f9197483def563533e05c395180604f01a7b966ee9",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

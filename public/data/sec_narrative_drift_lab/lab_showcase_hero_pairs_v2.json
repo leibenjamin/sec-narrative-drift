@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "updated_at": "2026-02-07T20:30:53Z",
+  "updated_at": "2026-02-26T21:48:28Z",
   "section": "10k_item1a",
   "source_id": "edgar",
   "hero_pairs_per_ticker": {
@@ -24,38 +24,38 @@
         ]
       },
       {
+        "year_from": 2020,
+        "year_to": 2021,
+        "tags": [
+          "structure"
+        ],
+        "scores": {
+          "boilerplate_score": 0.25,
+          "structure_score": 0.126886,
+          "drift_score": 0.067804,
+          "term_signal_score": 0.851941,
+          "meaningful_score": 0.0,
+          "overall_score": 0.263066
+        },
+        "warnings": [
+          "no_distinctive_terms"
+        ]
+      },
+      {
         "year_from": 2021,
         "year_to": 2022,
         "tags": [
           "meaningful"
         ],
         "scores": {
-          "boilerplate_score": 0.051948,
-          "structure_score": 0.6,
-          "drift_score": 0.273943,
+          "boilerplate_score": 0.038961,
+          "structure_score": 0.019358,
+          "drift_score": 0.111612,
           "term_signal_score": 2.960526,
-          "meaningful_score": 0.163767,
-          "overall_score": 0.529923
+          "meaningful_score": 0.067637,
+          "overall_score": 0.321174
         },
         "warnings": []
-      },
-      {
-        "year_from": 2022,
-        "year_to": 2023,
-        "tags": [
-          "structure"
-        ],
-        "scores": {
-          "boilerplate_score": 0.139785,
-          "structure_score": 0.777778,
-          "drift_score": 0.170119,
-          "term_signal_score": 1.00463,
-          "meaningful_score": 0.006682,
-          "overall_score": 0.494071
-        },
-        "warnings": [
-          "no_distinctive_terms"
-        ]
       },
       {
         "year_from": 2024,
@@ -76,6 +76,59 @@
         ]
       }
     ],
+    "KO": [
+      {
+        "year_from": 2019,
+        "year_to": 2020,
+        "tags": [
+          "structure"
+        ],
+        "scores": {
+          "boilerplate_score": 0.324675,
+          "structure_score": 0.043956,
+          "drift_score": 0.041345,
+          "term_signal_score": 2.068903,
+          "meaningful_score": 0.027921,
+          "overall_score": 0.226953
+        },
+        "warnings": []
+      },
+      {
+        "year_from": 2022,
+        "year_to": 2023,
+        "tags": [
+          "meaningful"
+        ],
+        "scores": {
+          "boilerplate_score": 0.328767,
+          "structure_score": 0.010471,
+          "drift_score": 0.021308,
+          "term_signal_score": 2.068896,
+          "meaningful_score": 0.014302,
+          "overall_score": 0.210232
+        },
+        "warnings": []
+      },
+      {
+        "year_from": 2024,
+        "year_to": 2025,
+        "tags": [
+          "boilerplate",
+          "most_recent"
+        ],
+        "scores": {
+          "boilerplate_score": 0.681159,
+          "structure_score": 0.111111,
+          "drift_score": 0.016771,
+          "term_signal_score": 1.107639,
+          "meaningful_score": 0.0,
+          "overall_score": 0.128986
+        },
+        "warnings": [
+          "no_distinctive_terms"
+        ]
+      }
+    ],
     "WM": [
       {
         "year_from": 2019,
@@ -87,7 +140,7 @@
           "boilerplate_score": 0.402174,
           "structure_score": 0.034258,
           "drift_score": 0.043582,
-          "term_signal_score": 0.988124,
+          "term_signal_score": 1.231497,
           "meaningful_score": 0.0,
           "overall_score": 0.189625
         },
@@ -105,26 +158,26 @@
           "boilerplate_score": 0.326087,
           "structure_score": 0.021894,
           "drift_score": 0.044745,
-          "term_signal_score": 4.082496,
+          "term_signal_score": 4.082702,
           "meaningful_score": 0.030154,
           "overall_score": 0.220804
         },
         "warnings": []
       },
       {
-        "year_from": 2023,
-        "year_to": 2024,
+        "year_from": 2024,
+        "year_to": 2025,
         "tags": [
           "structure",
           "most_recent"
         ],
         "scores": {
-          "boilerplate_score": 0.165217,
-          "structure_score": 0.059922,
-          "drift_score": 0.059062,
-          "term_signal_score": 2.334029,
-          "meaningful_score": 0.021445,
-          "overall_score": 0.276989
+          "boilerplate_score": 0.395604,
+          "structure_score": 0.333333,
+          "drift_score": 0.084859,
+          "term_signal_score": 2.049696,
+          "meaningful_score": 0.014718,
+          "overall_score": 0.287206
         },
         "warnings": []
       }
@@ -134,31 +187,15 @@
         "year_from": 2021,
         "year_to": 2022,
         "tags": [
-          "boilerplate"
+          "structure"
         ],
         "scores": {
           "boilerplate_score": 0.190476,
           "structure_score": 0.052562,
           "drift_score": 0.034362,
-          "term_signal_score": 2.040858,
-          "meaningful_score": 0.00081,
-          "overall_score": 0.25895
-        },
-        "warnings": []
-      },
-      {
-        "year_from": 2022,
-        "year_to": 2023,
-        "tags": [
-          "meaningful"
-        ],
-        "scores": {
-          "boilerplate_score": 0.02381,
-          "structure_score": 0.008976,
-          "drift_score": 0.049722,
-          "term_signal_score": 2.114675,
-          "meaningful_score": 0.003001,
-          "overall_score": 0.29675
+          "term_signal_score": 2.032509,
+          "meaningful_score": 0.010259,
+          "overall_score": 0.262729
         },
         "warnings": []
       },
@@ -166,67 +203,32 @@
         "year_from": 2023,
         "year_to": 2024,
         "tags": [
-          "structure",
-          "most_recent"
+          "meaningful"
         ],
         "scores": {
           "boilerplate_score": 0.0,
           "structure_score": 0.051707,
           "drift_score": 0.086437,
-          "term_signal_score": 4.231894,
+          "term_signal_score": 4.224933,
           "meaningful_score": 0.086437,
           "overall_score": 0.350087
         },
         "warnings": []
-      }
-    ],
-    "KO": [
-      {
-        "year_from": 2019,
-        "year_to": 2020,
-        "tags": [
-          "structure"
-        ],
-        "scores": {
-          "boilerplate_score": 0.324675,
-          "structure_score": 0.043956,
-          "drift_score": 0.041345,
-          "term_signal_score": 2.004711,
-          "meaningful_score": 0.026332,
-          "overall_score": 0.226317
-        },
-        "warnings": []
       },
       {
-        "year_from": 2022,
-        "year_to": 2023,
-        "tags": [
-          "meaningful"
-        ],
-        "scores": {
-          "boilerplate_score": 0.328767,
-          "structure_score": 0.010471,
-          "drift_score": 0.021308,
-          "term_signal_score": 2.068898,
-          "meaningful_score": 0.014303,
-          "overall_score": 0.210232
-        },
-        "warnings": []
-      },
-      {
-        "year_from": 2023,
-        "year_to": 2024,
+        "year_from": 2024,
+        "year_to": 2025,
         "tags": [
           "boilerplate",
           "most_recent"
         ],
         "scores": {
-          "boilerplate_score": 0.405405,
-          "structure_score": 0.00647,
-          "drift_score": 0.012389,
-          "term_signal_score": 0.94073,
+          "boilerplate_score": 0.25,
+          "structure_score": 1.0,
+          "drift_score": 0.064346,
+          "term_signal_score": 0.751548,
           "meaningful_score": 0.0,
-          "overall_score": 0.180319
+          "overall_score": 0.525
         },
         "warnings": [
           "no_distinctive_terms"
@@ -272,12 +274,12 @@
         "year_from": 2021,
         "year_to": 2022,
         "scores": {
-          "boilerplate_score": 0.051948,
-          "structure_score": 0.6,
-          "drift_score": 0.273943,
+          "boilerplate_score": 0.038961,
+          "structure_score": 0.019358,
+          "drift_score": 0.111612,
           "term_signal_score": 2.960526,
-          "meaningful_score": 0.163767,
-          "overall_score": 0.529923
+          "meaningful_score": 0.067637,
+          "overall_score": 0.321174
         },
         "warnings": [],
         "most_recent": false
@@ -286,12 +288,12 @@
         "year_from": 2022,
         "year_to": 2023,
         "scores": {
-          "boilerplate_score": 0.139785,
-          "structure_score": 0.777778,
-          "drift_score": 0.170119,
+          "boilerplate_score": 0.086022,
+          "structure_score": 0.07148,
+          "drift_score": 0.060088,
           "term_signal_score": 1.00463,
-          "meaningful_score": 0.006682,
-          "overall_score": 0.494071
+          "meaningful_score": 0.002508,
+          "overall_score": 0.296641
         },
         "warnings": [
           "no_distinctive_terms"
@@ -302,12 +304,12 @@
         "year_from": 2023,
         "year_to": 2024,
         "scores": {
-          "boilerplate_score": 0.163636,
-          "structure_score": 0.666667,
-          "drift_score": 0.119479,
+          "boilerplate_score": 0.063636,
+          "structure_score": 0.072063,
+          "drift_score": 0.044859,
           "term_signal_score": 4.195862,
-          "meaningful_score": 0.099928,
-          "overall_score": 0.49088
+          "meaningful_score": 0.042004,
+          "overall_score": 0.31933
         },
         "warnings": [],
         "most_recent": false
@@ -329,6 +331,100 @@
         "most_recent": true
       }
     ],
+    "KO": [
+      {
+        "year_from": 2019,
+        "year_to": 2020,
+        "scores": {
+          "boilerplate_score": 0.324675,
+          "structure_score": 0.043956,
+          "drift_score": 0.041345,
+          "term_signal_score": 2.068903,
+          "meaningful_score": 0.027921,
+          "overall_score": 0.226953
+        },
+        "warnings": [],
+        "most_recent": false
+      },
+      {
+        "year_from": 2020,
+        "year_to": 2021,
+        "scores": {
+          "boilerplate_score": 0.077922,
+          "structure_score": 0.007391,
+          "drift_score": 0.042423,
+          "term_signal_score": 1.189431,
+          "meaningful_score": 0.003328,
+          "overall_score": 0.280172
+        },
+        "warnings": [
+          "no_distinctive_terms"
+        ],
+        "most_recent": false
+      },
+      {
+        "year_from": 2021,
+        "year_to": 2022,
+        "scores": {
+          "boilerplate_score": 0.194805,
+          "structure_score": 0.002905,
+          "drift_score": 0.026152,
+          "term_signal_score": 1.22887,
+          "meaningful_score": 0.002656,
+          "overall_score": 0.243492
+        },
+        "warnings": [
+          "no_distinctive_terms"
+        ],
+        "most_recent": false
+      },
+      {
+        "year_from": 2022,
+        "year_to": 2023,
+        "scores": {
+          "boilerplate_score": 0.328767,
+          "structure_score": 0.010471,
+          "drift_score": 0.021308,
+          "term_signal_score": 2.068896,
+          "meaningful_score": 0.014302,
+          "overall_score": 0.210232
+        },
+        "warnings": [],
+        "most_recent": false
+      },
+      {
+        "year_from": 2023,
+        "year_to": 2024,
+        "scores": {
+          "boilerplate_score": 0.405405,
+          "structure_score": 0.00647,
+          "drift_score": 0.012389,
+          "term_signal_score": 1.159313,
+          "meaningful_score": 0.000396,
+          "overall_score": 0.180478
+        },
+        "warnings": [
+          "no_distinctive_terms"
+        ],
+        "most_recent": false
+      },
+      {
+        "year_from": 2024,
+        "year_to": 2025,
+        "scores": {
+          "boilerplate_score": 0.681159,
+          "structure_score": 0.111111,
+          "drift_score": 0.016771,
+          "term_signal_score": 1.107639,
+          "meaningful_score": 0.0,
+          "overall_score": 0.128986
+        },
+        "warnings": [
+          "no_distinctive_terms"
+        ],
+        "most_recent": true
+      }
+    ],
     "WM": [
       {
         "year_from": 2019,
@@ -337,7 +433,7 @@
           "boilerplate_score": 0.402174,
           "structure_score": 0.034258,
           "drift_score": 0.043582,
-          "term_signal_score": 0.988124,
+          "term_signal_score": 1.231497,
           "meaningful_score": 0.0,
           "overall_score": 0.189625
         },
@@ -353,7 +449,7 @@
           "boilerplate_score": 0.326087,
           "structure_score": 0.021894,
           "drift_score": 0.044745,
-          "term_signal_score": 4.082496,
+          "term_signal_score": 4.082702,
           "meaningful_score": 0.030154,
           "overall_score": 0.220804
         },
@@ -367,13 +463,11 @@
           "boilerplate_score": 0.358696,
           "structure_score": 0.037957,
           "drift_score": 0.037543,
-          "term_signal_score": 1.049089,
-          "meaningful_score": 0.000474,
-          "overall_score": 0.203968
+          "term_signal_score": 2.028796,
+          "meaningful_score": 0.006733,
+          "overall_score": 0.206471
         },
-        "warnings": [
-          "no_distinctive_terms"
-        ],
+        "warnings": [],
         "most_recent": false
       },
       {
@@ -383,9 +477,9 @@
           "boilerplate_score": 0.315789,
           "structure_score": 0.015727,
           "drift_score": 0.033807,
-          "term_signal_score": 1.064677,
-          "meaningful_score": 0.000572,
-          "overall_score": 0.21021
+          "term_signal_score": 1.239933,
+          "meaningful_score": 6.8e-05,
+          "overall_score": 0.210009
         },
         "warnings": [
           "no_distinctive_terms"
@@ -399,9 +493,23 @@
           "boilerplate_score": 0.165217,
           "structure_score": 0.059922,
           "drift_score": 0.059062,
-          "term_signal_score": 2.334029,
-          "meaningful_score": 0.021445,
-          "overall_score": 0.276989
+          "term_signal_score": 2.314599,
+          "meaningful_score": 0.018729,
+          "overall_score": 0.275903
+        },
+        "warnings": [],
+        "most_recent": false
+      },
+      {
+        "year_from": 2024,
+        "year_to": 2025,
+        "scores": {
+          "boilerplate_score": 0.395604,
+          "structure_score": 0.333333,
+          "drift_score": 0.084859,
+          "term_signal_score": 2.049696,
+          "meaningful_score": 0.014718,
+          "overall_score": 0.287206
         },
         "warnings": [],
         "most_recent": true
@@ -415,9 +523,9 @@
           "boilerplate_score": 0.076923,
           "structure_score": 0.04295,
           "drift_score": 0.048461,
-          "term_signal_score": 1.975159,
-          "meaningful_score": 0.0,
-          "overall_score": 0.289808
+          "term_signal_score": 1.975215,
+          "meaningful_score": 0.015759,
+          "overall_score": 0.296112
         },
         "warnings": [],
         "most_recent": false
@@ -429,9 +537,9 @@
           "boilerplate_score": 0.051282,
           "structure_score": 0.045859,
           "drift_score": 0.064815,
-          "term_signal_score": 1.976599,
-          "meaningful_score": 3.9e-05,
-          "overall_score": 0.298389
+          "term_signal_score": 1.976805,
+          "meaningful_score": 0.021692,
+          "overall_score": 0.30705
         },
         "warnings": [],
         "most_recent": false
@@ -443,9 +551,9 @@
           "boilerplate_score": 0.190476,
           "structure_score": 0.052562,
           "drift_score": 0.034362,
-          "term_signal_score": 2.040858,
-          "meaningful_score": 0.00081,
-          "overall_score": 0.25895
+          "term_signal_score": 2.032509,
+          "meaningful_score": 0.010259,
+          "overall_score": 0.262729
         },
         "warnings": [],
         "most_recent": false
@@ -457,9 +565,9 @@
           "boilerplate_score": 0.02381,
           "structure_score": 0.008976,
           "drift_score": 0.049722,
-          "term_signal_score": 2.114675,
-          "meaningful_score": 0.003001,
-          "overall_score": 0.29675
+          "term_signal_score": 2.114673,
+          "meaningful_score": 0.019049,
+          "overall_score": 0.303169
         },
         "warnings": [],
         "most_recent": false
@@ -471,85 +579,23 @@
           "boilerplate_score": 0.0,
           "structure_score": 0.051707,
           "drift_score": 0.086437,
-          "term_signal_score": 4.231894,
+          "term_signal_score": 4.224933,
           "meaningful_score": 0.086437,
           "overall_score": 0.350087
         },
         "warnings": [],
-        "most_recent": true
-      }
-    ],
-    "KO": [
-      {
-        "year_from": 2019,
-        "year_to": 2020,
-        "scores": {
-          "boilerplate_score": 0.324675,
-          "structure_score": 0.043956,
-          "drift_score": 0.041345,
-          "term_signal_score": 2.004711,
-          "meaningful_score": 0.026332,
-          "overall_score": 0.226317
-        },
-        "warnings": [],
         "most_recent": false
       },
       {
-        "year_from": 2020,
-        "year_to": 2021,
+        "year_from": 2024,
+        "year_to": 2025,
         "scores": {
-          "boilerplate_score": 0.077922,
-          "structure_score": 0.007391,
-          "drift_score": 0.042423,
-          "term_signal_score": 1.056398,
-          "meaningful_score": 0.004011,
-          "overall_score": 0.280445
-        },
-        "warnings": [
-          "no_distinctive_terms"
-        ],
-        "most_recent": false
-      },
-      {
-        "year_from": 2021,
-        "year_to": 2022,
-        "scores": {
-          "boilerplate_score": 0.194805,
-          "structure_score": 0.002905,
-          "drift_score": 0.026152,
-          "term_signal_score": 1.166415,
-          "meaningful_score": 0.004213,
-          "overall_score": 0.244115
-        },
-        "warnings": [
-          "no_distinctive_terms"
-        ],
-        "most_recent": false
-      },
-      {
-        "year_from": 2022,
-        "year_to": 2023,
-        "scores": {
-          "boilerplate_score": 0.328767,
-          "structure_score": 0.010471,
-          "drift_score": 0.021308,
-          "term_signal_score": 2.068898,
-          "meaningful_score": 0.014303,
-          "overall_score": 0.210232
-        },
-        "warnings": [],
-        "most_recent": false
-      },
-      {
-        "year_from": 2023,
-        "year_to": 2024,
-        "scores": {
-          "boilerplate_score": 0.405405,
-          "structure_score": 0.00647,
-          "drift_score": 0.012389,
-          "term_signal_score": 0.94073,
+          "boilerplate_score": 0.25,
+          "structure_score": 1.0,
+          "drift_score": 0.064346,
+          "term_signal_score": 0.751548,
           "meaningful_score": 0.0,
-          "overall_score": 0.180319
+          "overall_score": 0.525
         },
         "warnings": [
           "no_distinctive_terms"
@@ -568,7 +614,7 @@
     "Scores computed on raw lens; proxy metrics used when lab outputs missing."
   ],
   "provenance": {
-    "build_utc": "2026-02-07T20:30:53Z",
+    "build_utc": "2026-02-26T21:48:28Z",
     "script_version": "select_showcase_hero_pairs.py@v1"
   }
 }

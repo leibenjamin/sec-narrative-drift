@@ -1,0 +1,34 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_rbo_agreement_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "WM",
+  "section": "10k_item1a",
+  "year_from": 2024,
+  "year_to": 2025,
+  "artifacts": {
+    "detectors": [
+      "det_jsd_ngrams_v1"
+    ],
+    "matrix": []
+  },
+  "evidence": [],
+  "metrics": {
+    "drift_score": null,
+    "confidence": 0.0,
+    "coverage": null,
+    "warnings": [
+      "insufficient_ranked_lists"
+    ]
+  },
+  "provenance": {
+    "build_utc": "2026-02-26T21:40:59Z",
+    "git_commit": "8bcb3111a526be94846e285e2b5a3c5d0f6c2788",
+    "script_version": "build_lab_outputs.py@v2+a155741242",
+    "inputs": {
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

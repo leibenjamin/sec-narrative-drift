@@ -1,0 +1,145 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_jsd_ngrams_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "KO",
+  "section": "10k_item1a",
+  "year_from": 2024,
+  "year_to": 2025,
+  "artifacts": {
+    "ranked_items": [
+      {
+        "label": "range",
+        "score": 0.00013617484850548105
+      },
+      {
+        "label": "perspectives experiences",
+        "score": 0.00010213113637911078
+      },
+      {
+        "label": "consumers markets",
+        "score": 0.00010213113637911078
+      },
+      {
+        "label": "experiences backgrounds",
+        "score": 0.00010213113637911078
+      },
+      {
+        "label": "retail foodservice",
+        "score": 0.00010213113637911078
+      },
+      {
+        "label": "foodservice customers",
+        "score": 0.00010213113637911078
+      },
+      {
+        "label": "diverse",
+        "score": 0.00010213113637911078
+      },
+      {
+        "label": "diverse perspectives",
+        "score": 0.00010213113637911078
+      },
+      {
+        "label": "markets serve",
+        "score": 0.00010213113637911078
+      },
+      {
+        "label": "foodservice",
+        "score": 0.00010213113637911078
+      },
+      {
+        "label": "serve world",
+        "score": 0.00010213113637911078
+      },
+      {
+        "label": "perspectives",
+        "score": 0.00010213113637911078
+      },
+      {
+        "label": "talent diverse",
+        "score": 0.00010213113637911078
+      },
+      {
+        "label": "backgrounds reflect",
+        "score": 0.00010213113637911078
+      },
+      {
+        "label": "range consumers",
+        "score": 0.00010213113637911078
+      },
+      {
+        "label": "broad range",
+        "score": 0.00010213113637911078
+      },
+      {
+        "label": "backgrounds",
+        "score": 0.00010213113637911078
+      },
+      {
+        "label": "reflect broad",
+        "score": 0.00010213113637911078
+      },
+      {
+        "label": "broad",
+        "score": 0.00010213113637911078
+      },
+      {
+        "label": "key retail",
+        "score": 0.00010213113637911078
+      }
+    ],
+    "stats": {
+      "jsd": 0.016771,
+      "tokens_prev": 7344,
+      "tokens_curr": 7471
+    }
+  },
+  "evidence": [
+    {
+      "year": 2025,
+      "paragraph_idx": 10,
+      "snippet": "At times, we have experienced, and could continue to experience, disruptions in our manufacturing operations and supply chain. In connection with our manufacturing and bottling operations, we and our bottling partners are dependent upon, among other things, various ingredients and other raw materials and packaging materials. For additional information on the raw materials and supplies we use in our business, refer to the heading \u201cRaw Materials\u201d set forth in Part I, \u201cItem 1. Business\u201d of this report. Some of the raw materials and supplies used in the production of our products are available from a limited number of suppliers, or from a sole supplier, or are in short supply when seasonal demand is at its peak. We and our bottling partners may not be able to maintain favorable arrangements and relationships with these suppliers, and our contingency plans may not be effective in preventing disruptions that may arise from shortages of any ingredients or other raw materials. Furthermore, some of our suppliers are located in countries experiencing political instability or other risks and/or unfavorable economic conditions. In addition, adverse and extreme weather conditions may affect the supply of agricultural commodities from which key ingredients for our products are derived and manufactured. Any sustained or significant disruption to the manufacturing or sourcing of products or materials could increase costs and interrupt product supply, which could adversely impact our business.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "range"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 9,
+      "snippet": "If we are unable to attract or retain specialized talent or top talent with diverse perspectives, experiences and backgrounds that reflect the broad range of consumers and markets we serve around the world, our business could be negatively affected.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "range"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 10,
+      "snippet": "The success of our business depends on our Company\u2019s and the Coca-Cola system\u2019s ability to attract, hire, develop, motivate and retain a global workforce of top talent with diverse perspectives, experiences and backgrounds that reflect the broad range of consumers and markets we serve around the world; and in our ability to nurture a culture that supports our growth and aligns employees around the Company\u2019s purpose and work that matters most. Competition for, along with compensation and benefits expectations of, existing and prospective employees has increased, especially considering changing worker expectations and talent marketplace variability. In addition, the broader labor market is experiencing a shortage of qualified talent, which has further increased the competition we face for qualified employees. We may not be able to successfully compete for, attract or retain the workforce that we want and may require for our future business needs, such as employees with advanced technology, artificial intelligence and digital marketing skills, and/or digital and analytics capabilities. Changes in laws and policies could also make it more difficult for us to recruit or relocate specialized technical, professional and management personnel to meet our business needs. In addition, the unexpected loss of experienced and specialized employees due to an increase in aggressive recruiting for best-in-class talent could deplete our institutional knowledge base and erode our competitiveness. Failure to attract, hire, develop, motivate and retain specialized and/or top talent with diverse perspectives, experiences and backgrounds that reflect the broad range of consumers and markets we serve around the world; to develop and implement an adequate succession plan for our management team; to maintain a corporate culture that fosters innovation, collaboration and inclusion; or to design and successfully implement work models that meet the expectations of employees and prospective employees could disrupt our operations and adversely affect our business and our future success.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "range"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.016771,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-26T21:40:59Z",
+    "git_commit": "8bcb3111a526be94846e285e2b5a3c5d0f6c2788",
+    "script_version": "build_lab_outputs.py@v2+a155741242",
+    "inputs": {
+      "prev_text_sha256": "604daa670ec51ce1aa4c3f5b6fe7fe28634f36f90a480ccde248384d40986995",
+      "curr_text_sha256": "2a604542b9057b0a33dce41d4f587f108d13fdf737488f65e6e84745b9af4995",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

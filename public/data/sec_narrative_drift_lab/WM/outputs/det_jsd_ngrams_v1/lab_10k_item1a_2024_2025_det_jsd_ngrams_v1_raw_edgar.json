@@ -1,0 +1,157 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_jsd_ngrams_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "WM",
+  "section": "10k_item1a",
+  "year_from": 2024,
+  "year_to": 2025,
+  "artifacts": {
+    "ranked_items": [
+      {
+        "label": "wm renewable",
+        "score": 0.0002545338848234171
+      },
+      {
+        "label": "stericycle",
+        "score": 0.00022144370270644066
+      },
+      {
+        "label": "wm",
+        "score": 0.00020907345415976803
+      },
+      {
+        "label": "planned ongoing",
+        "score": 0.00019090041361756284
+      },
+      {
+        "label": "significant planned",
+        "score": 0.00012726694241170855
+      },
+      {
+        "label": "strategy includes",
+        "score": 0.00012726694241170855
+      },
+      {
+        "label": "ongoing investments",
+        "score": 0.00012726694241170855
+      },
+      {
+        "label": "includes significant",
+        "score": 9.545020680878142e-05
+      },
+      {
+        "label": "port",
+        "score": 9.545020680878142e-05
+      },
+      {
+        "label": "new restrictions",
+        "score": 9.545020680878142e-05
+      },
+      {
+        "label": "sales wm",
+        "score": 9.545020680878142e-05
+      },
+      {
+        "label": "self",
+        "score": 9.545020680878142e-05
+      },
+      {
+        "label": "port strike",
+        "score": 9.545020680878142e-05
+      },
+      {
+        "label": "investments yield",
+        "score": 9.545020680878142e-05
+      },
+      {
+        "label": "new presidential",
+        "score": 9.545020680878142e-05
+      },
+      {
+        "label": "significant new",
+        "score": 9.545020680878142e-05
+      },
+      {
+        "label": "performance investments",
+        "score": 9.545020680878142e-05
+      },
+      {
+        "label": "new administration",
+        "score": 9.545020680878142e-05
+      },
+      {
+        "label": "integration process",
+        "score": 9.545020680878142e-05
+      },
+      {
+        "label": "november",
+        "score": 9.545020680878142e-05
+      }
+    ],
+    "stats": {
+      "jsd": 0.084859,
+      "tokens_prev": 7858,
+      "tokens_curr": 6617
+    }
+  },
+  "evidence": [
+    {
+      "year": 2025,
+      "paragraph_idx": 9,
+      "snippet": "The acquired Stericycle business, which is now presented as our Healthcare Solutions segment, is subject to numerous risks and uncertainties such as decreases in the volume of medical waste and controlled substances wastes or personal and confidential information collected from customers; disruptions resulting from deployment of operational or technological systems, including with respect to Healthcare Solution\u2019s enterprise resource planning (\u201cERP\u201d) system and related billing and collection issues and delays; customer loss resulting from frustration due to billing or service issues; delayed revenue growth from planned pricing increases due to factors including customer retention, stabilization of customer data engagement systems and processes, and more prolonged development of market and customer-specific insights than initially planned; changing market conditions in the healthcare industry; competition and demand for services for the medical waste, controlled substances waste and secure information destruction industries; commodity price volatility; changes in regulation of the collection, transportation, treatment and disposal or destruction of medical waste and controlled substances waste or the proper handling and protection of personal and confidential information; the level of government enforcement of regulations governing medical waste and controlled substances waste collection and treatment or the proper handling and protection of personal and confidential information; and the outcome of pending, future or settled litigation or investigations. If we are unsuccessful in achieving financial and operational targets and implementing the Healthcare Solutions business strategy, it could negatively impact our realization of benefits from the acquisition, as well as our stock price and our future business and financial results.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "stericycle"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 10,
+      "snippet": "The benefits that are expected to result from our acquisition of Stericycle also depend, in part, on our ability to realize anticipated cost synergies. Our success in realizing these benefits and cost synergies, and the timing of this realization, depends on the successful integration of the Stericycle business. The acquisition of Stericycle may not result in realization of the benefits and cost synergies that we currently expect, and we cannot guarantee that these benefits and cost synergies will be achieved within anticipated time frames. Additionally, we have, and may continue to, incur substantial expenses in connection with the integration of the Stericycle business, which may exceed expectations and offset certain benefits.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "stericycle"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 3,
+      "snippet": "Execution of our strategy, including growth through acquisitions, such as our recent Stericycle acquisition, and our planned and ongoing expansion of our Recycling Processing and Sales and WM Renewable Energy segments, has caused, and may in the future, cause us to incur substantial additional indebtedness, which may divert capital away from our traditional business operations and other financial plans, and may introduce additional risks and volatility to our financial performance.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "wm renewable",
+        "stericycle",
+        "wm"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 8,
+      "snippet": "Supply chain, regulatory or permitting disruptions or delays could detrimentally impact the execution timeline for our planned and ongoing expansions of our Recycling Processing and Sales and WM Renewable Energy businesses.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "wm renewable",
+        "wm"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.084859,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-26T21:40:59Z",
+    "git_commit": "8bcb3111a526be94846e285e2b5a3c5d0f6c2788",
+    "script_version": "build_lab_outputs.py@v2+a155741242",
+    "inputs": {
+      "prev_text_sha256": "3b00b2045a6f716096275d249ce5ef3df89c95a4be259e714dc6a17b881d2f9d",
+      "curr_text_sha256": "b87eecc5b67e331c5c3dc7f9197483def563533e05c395180604f01a7b966ee9",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

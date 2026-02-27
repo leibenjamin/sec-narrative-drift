@@ -1,0 +1,109 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_structure_artifacts_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "GE",
+  "section": "10k_item1a",
+  "year_from": 2024,
+  "year_to": 2025,
+  "artifacts": {
+    "stats": {
+      "headings_prev": [
+        "26 2024 FORM 10-K",
+        "2024 FORM 10-K 27",
+        "28 2024 FORM 10-K",
+        "2024 FORM 10-K 29",
+        "30 2024 FORM 10-K",
+        "2024 FORM 10-K 31",
+        "32 2024 FORM 10-K"
+      ],
+      "headings_curr": [
+        "24 2025 FORM 10-K",
+        "2025 FORM 10-K 25",
+        "26 2025 FORM 10-K",
+        "2025 FORM 10-K 27",
+        "28 2025 FORM 10-K",
+        "2025 FORM 10-K 29",
+        "30 2025 FORM 10-K"
+      ],
+      "headings_added": [
+        "24 2025 FORM 10-K",
+        "2025 FORM 10-K 25",
+        "26 2025 FORM 10-K",
+        "2025 FORM 10-K 27",
+        "28 2025 FORM 10-K",
+        "2025 FORM 10-K 29",
+        "30 2025 FORM 10-K"
+      ],
+      "headings_removed": [
+        "26 2024 FORM 10-K",
+        "2024 FORM 10-K 27",
+        "28 2024 FORM 10-K",
+        "2024 FORM 10-K 29",
+        "30 2024 FORM 10-K",
+        "2024 FORM 10-K 31",
+        "32 2024 FORM 10-K"
+      ],
+      "paragraph_count_prev": 106,
+      "paragraph_count_curr": 103,
+      "length_chars_prev": 34598,
+      "length_chars_curr": 32829
+    }
+  },
+  "evidence": [
+    {
+      "year": 2025,
+      "paragraph_idx": 13,
+      "snippet": "our products and services, which could have a material adverse effect on our competitive position, results of operations, financial condition or cash flows.",
+      "why": "Heading added: 24 2025 FORM 10-K"
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 30,
+      "snippet": "face, along with others across the aerospace sector, increasing demand for transitioning to lower emission technologies, including low to no carbon products and services, the use of alternative energy and fuel sources and climate adaptation products and services.",
+      "why": "Heading added: 2025 FORM 10-K 25"
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 0,
+      "snippet": "position and the value of certain of our investments in research and development.",
+      "why": "Heading added: 26 2025 FORM 10-K"
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 0,
+      "snippet": "when any new product is ready to enter into service.",
+      "why": "Heading removed: 26 2024 FORM 10-K"
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 31,
+      "snippet": "pricing and taxes, energy taxes, product fuel efficiency standards, mandatory disclosure obligations, including U.S. government procurement-related contractual climate disclosures, could increase our operational and compliance expenditures and those of our customers and suppliers, including increased energy and raw materials costs and costs associated with manufacturing changes, and could require new or additional investments in product designs and facility upgrades.",
+      "why": "Heading removed: 2024 FORM 10-K 27"
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 0,
+      "snippet": "independent companies might incur income tax liabilities.",
+      "why": "Heading removed: 28 2024 FORM 10-K"
+    }
+  ],
+  "metrics": {
+    "drift_score": 1.0,
+    "confidence": 0.7,
+    "coverage": 0.5317901284564172,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-26T21:41:00Z",
+    "git_commit": "8bcb3111a526be94846e285e2b5a3c5d0f6c2788",
+    "script_version": "build_lab_outputs.py@v2+a155741242",
+    "inputs": {
+      "prev_text_sha256": "967ac87369cbe17e96f8d004e36bb7ef4880f085ee5533bdaabd2fa5cced5537",
+      "curr_text_sha256": "acf78b9b22eb0e338172ad504b6d1185188cd3df67e46e01e11ad3644e295ea1",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

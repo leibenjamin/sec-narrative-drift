@@ -16,6 +16,10 @@ LLM_DETECTORS = (
     "det_llm_excerpt_picker_v1",
 )
 
+MASTER_LLM_ARTIFACT_ID = "llm_outline_compare_v1"
+MASTER_LLM_RESEARCH_ARTIFACT_ID = "llm_outline_research_v1"
+MASTER_PROMPT_VERSION = "llm_master_compare_v3"
+
 DETERMINISTIC_DETECTORS = (
     "det_logodds_terms_v1",
     "det_jsd_ngrams_v1",
@@ -114,6 +118,13 @@ TRACKS_BY_SLUG = {track.track_slug: track for track in (DETERMINISTIC_BASELINE_T
 DEFAULT_PRIMARY_LLM_CAMPAIGN_ID = "openai_gpt53codex_xhigh_agent_fullsec_2026-02-22"
 DEFAULT_COMPARE_LLM_CAMPAIGN_ID = "openai_chatgpt52ext_agent_fullsec_2026-02-22"
 
+FY2022_RUNTIME_CASES: dict[str, tuple[tuple[int, int], ...]] = {
+    "NVDA": ((2022, 2023), (2023, 2024), (2024, 2025)),
+    "KO": ((2022, 2023), (2023, 2024), (2024, 2025)),
+    "WM": ((2022, 2023), (2023, 2024), (2024, 2025)),
+    "GE": ((2022, 2023), (2023, 2024), (2024, 2025)),
+}
+
 
 def is_llm_detector(detector_id: str) -> bool:
     return detector_id in LLM_DETECTORS
@@ -193,6 +204,74 @@ def canonical_output_relative_path(
         track_slug=track_slug,
     )
     return f"{ticker.upper()}/outputs/{detector_id}/{track_slug}/{filename}"
+
+
+def canonical_outline_compare_filename(
+    section: str,
+    year_from: int,
+    year_to: int,
+    cleaning_lens: str,
+    source_id: str,
+    track_slug: str,
+) -> str:
+    return (
+        f"lab_{MASTER_LLM_ARTIFACT_ID}_{section}_{year_from}_{year_to}_"
+        f"{cleaning_lens}_{source_id}__{track_slug}.json"
+    )
+
+
+def canonical_outline_compare_relative_path(
+    ticker: str,
+    section: str,
+    year_from: int,
+    year_to: int,
+    cleaning_lens: str,
+    source_id: str,
+    track_slug: str,
+) -> str:
+    filename = canonical_outline_compare_filename(
+        section=section,
+        year_from=year_from,
+        year_to=year_to,
+        cleaning_lens=cleaning_lens,
+        source_id=source_id,
+        track_slug=track_slug,
+    )
+    return f"{ticker.upper()}/outputs/{MASTER_LLM_ARTIFACT_ID}/{track_slug}/{filename}"
+
+
+def canonical_outline_research_filename(
+    section: str,
+    year_from: int,
+    year_to: int,
+    cleaning_lens: str,
+    source_id: str,
+    track_slug: str,
+) -> str:
+    return (
+        f"lab_{MASTER_LLM_RESEARCH_ARTIFACT_ID}_{section}_{year_from}_{year_to}_"
+        f"{cleaning_lens}_{source_id}__{track_slug}.json"
+    )
+
+
+def canonical_outline_research_relative_path(
+    ticker: str,
+    section: str,
+    year_from: int,
+    year_to: int,
+    cleaning_lens: str,
+    source_id: str,
+    track_slug: str,
+) -> str:
+    filename = canonical_outline_research_filename(
+        section=section,
+        year_from=year_from,
+        year_to=year_to,
+        cleaning_lens=cleaning_lens,
+        source_id=source_id,
+        track_slug=track_slug,
+    )
+    return f"{ticker.upper()}/outputs/{MASTER_LLM_RESEARCH_ARTIFACT_ID}/{track_slug}/{filename}"
 
 
 def strip_repo_prefix(path_value: str) -> str:

@@ -5,6 +5,8 @@ import {
   LabLlmVariantsIndexSchema,
   LabMethodProfilesIndexSchema,
   LabMethodTracksIndexSchema,
+  LabOutlineCompareOutputSchema,
+  LabOutlineResearchOutputSchema,
   LabOutputSchema,
 } from "./labSchemas"
 import { withBase } from "./paths"
@@ -21,6 +23,8 @@ import type {
   LabMethodProfile,
   LabMethodProfilesIndex,
   LabMethodTracksIndex,
+  LabOutlineCompareOutput,
+  LabOutlineResearchOutput,
   LabOutput,
   LabSourceId,
 } from "./labTypes"
@@ -43,6 +47,30 @@ const URL_SCHEME_RE = /^[A-Za-z][A-Za-z0-9+.-]*:/
 const DEFAULT_DETERMINISTIC_TRACK_SLUG = "det-baseline-2026-02-21"
 const DEFAULT_PRIMARY_CAMPAIGN_ID = "openai_gpt53codex_xhigh_agent_fullsec_2026-02-22"
 const DEFAULT_COMPARE_CAMPAIGN_ID = "openai_chatgpt52ext_agent_fullsec_2026-02-22"
+const OUTLINE_COMPARE_ARTIFACT_ID = "llm_outline_compare_v1"
+const OUTLINE_RESEARCH_ARTIFACT_ID = "llm_outline_research_v1"
+const ACTIVE_RUNTIME_PAIRS: Record<string, Array<{ from: number; to: number }>> = {
+  NVDA: [
+    { from: 2022, to: 2023 },
+    { from: 2023, to: 2024 },
+    { from: 2024, to: 2025 },
+  ],
+  KO: [
+    { from: 2022, to: 2023 },
+    { from: 2023, to: 2024 },
+    { from: 2024, to: 2025 },
+  ],
+  WM: [
+    { from: 2022, to: 2023 },
+    { from: 2023, to: 2024 },
+    { from: 2024, to: 2025 },
+  ],
+  GE: [
+    { from: 2022, to: 2023 },
+    { from: 2023, to: 2024 },
+    { from: 2024, to: 2025 },
+  ],
+}
 
 function hasControlChars(value: string): boolean {
   for (let index = 0; index < value.length; index += 1) {
@@ -81,6 +109,8 @@ export class LabDataLoadError extends Error {
 }
 
 const outputCache = new Map<string, Promise<LabOutput>>()
+const outlineCompareCache = new Map<string, Promise<LabOutlineCompareOutput>>()
+const outlineResearchCache = new Map<string, Promise<LabOutlineResearchOutput>>()
 const inputCache = new Map<string, Promise<unknown>>()
 let casesPromise: Promise<LabCasesRegistry> | null = null
 let llmCampaignsPromise: Promise<LabLlmCampaignsIndex> | null = null
@@ -90,12 +120,22 @@ let methodProfilesPromise: Promise<LabMethodProfilesIndex> | null = null
 
 export function clearLabOutputCache(): void {
   outputCache.clear()
+  outlineCompareCache.clear()
+  outlineResearchCache.clear()
 }
 
 function normalizeTickerSymbol(ticker: string): string | null {
   const normalized = ticker.trim().toUpperCase()
   if (!LAB_TICKER_RE.test(normalized)) return null
   return normalized
+}
+
+function isRuntimePairAllowed(ticker: string, yearFrom: number, yearTo: number): boolean {
+  const normalizedTicker = normalizeTickerSymbol(ticker)
+  if (!normalizedTicker) return false
+  const pairs = ACTIVE_RUNTIME_PAIRS[normalizedTicker]
+  if (!pairs) return false
+  return pairs.some((pair) => pair.from === yearFrom && pair.to === yearTo)
 }
 
 function asRecord(value: unknown): Record<string, unknown> | null {
@@ -516,6 +556,53 @@ export async function findLabLlmVariant(
   return null
 }
 
+export async function findLabOutlineCompareArtifactForCampaign(
+  entry: Pick<LabCase, "ticker" | "section" | "year_from" | "year_to">,
+  lens: LabCleaningLens,
+  campaignId: string
+): Promise<LabExpectedOutputArtifact | null> {
+  const index = await loadLabLlmVariantsIndex()
+  let variantWithMetadata: LabLlmVariant | null = null
+  for (const variant of index.variants) {
+    if (variant.ticker.toUpperCase() !== entry.ticker.toUpperCase()) continue
+    if (variant.section !== entry.section) continue
+    if (variant.year_from !== entry.year_from || variant.year_to !== entry.year_to) continue
+    if (variant.lens !== lens) continue
+    if (variant.campaign_id !== campaignId) continue
+    if (variant.outline_compare_expected_repo_path && variant.outline_compare_request_url) {
+      variantWithMetadata = variant
+      break
+    }
+  }
+  if (variantWithMetadata) {
+    const rawRequestUrl = variantWithMetadata.outline_compare_request_url
+    const rawRepoPath = variantWithMetadata.outline_compare_expected_repo_path
+    if (!rawRequestUrl || !rawRepoPath) return null
+    const requestUrl = buildLabInputRequestUrl(rawRequestUrl)
+    if (!requestUrl) return null
+    const normalizedRepoPath = rawRepoPath.replace(/\\/g, "/")
+    const marker = `/${entry.ticker.toUpperCase()}/`
+    const markerIndex = normalizedRepoPath.toUpperCase().indexOf(marker)
+    const filename =
+      markerIndex >= 0
+        ? normalizedRepoPath.slice(markerIndex + marker.length)
+        : normalizedRepoPath.replace(/^public\/data\/sec_narrative_drift_lab\/[A-Z0-9.-]+\//i, "")
+    return {
+      filename,
+      repoPath: rawRepoPath,
+      requestUrl,
+    }
+  }
+  const campaign = await getLabLlmCampaignById(campaignId)
+  if (!campaign) return null
+  return buildExpectedLabOutlineCompareArtifact(
+    entry,
+    lens,
+    "edgar",
+    campaign.campaign_slug
+  )
+}
+
 export async function getLabLlmCampaignById(campaignId: string): Promise<LabLlmCampaign | null> {
   const index = await loadLabLlmCampaignsIndex()
   for (const campaign of index.campaigns) {
@@ -537,6 +624,9 @@ export async function listLabCasesForTicker(ticker: string): Promise<LabCase[]> 
   const filtered: LabCase[] = []
   for (const entry of registry.cases ?? []) {
     if (entry.ticker.toUpperCase() === normalizedTicker) {
+      if (!isRuntimePairAllowed(entry.ticker, entry.year_from, entry.year_to)) {
+        continue
+      }
       filtered.push(entry)
     }
   }
@@ -599,6 +689,7 @@ export async function listLabTickerSummaries(options?: {
   const buckets = new Map<string, TickerBucket>()
 
   for (const entry of registry.cases ?? []) {
+    if (!isRuntimePairAllowed(entry.ticker, entry.year_from, entry.year_to)) continue
     const ticker = entry.ticker.toUpperCase()
     if (options?.showcaseOnly && !isLabShowcaseTicker(ticker)) continue
     const existing = buckets.get(ticker)
@@ -722,6 +813,68 @@ export function buildExpectedLabOutputArtifactFromVariant(
   }
 }
 
+function buildOutlineArtifactFilename(
+  artifactId: typeof OUTLINE_COMPARE_ARTIFACT_ID | typeof OUTLINE_RESEARCH_ARTIFACT_ID,
+  entry: Pick<LabCase, "section" | "year_from" | "year_to">,
+  lens: LabCleaningLens,
+  sourceId: LabSourceId,
+  campaignSlug: string
+): string {
+  return `lab_${artifactId}_${entry.section}_${entry.year_from}_${entry.year_to}_${lens}_${sourceId}__${campaignSlug}.json`
+}
+
+export function buildExpectedLabOutlineCompareArtifact(
+  entry: Pick<LabCase, "ticker" | "section" | "year_from" | "year_to">,
+  lens: LabCleaningLens,
+  sourceId: LabSourceId,
+  campaignSlug: string
+): LabExpectedOutputArtifact | null {
+  const normalizedTicker = normalizeTickerSymbol(entry.ticker)
+  if (!normalizedTicker) return null
+  const filename = buildOutlineArtifactFilename(
+    OUTLINE_COMPARE_ARTIFACT_ID,
+    entry,
+    lens,
+    sourceId,
+    campaignSlug
+  )
+  const relativeOutput = `outputs/${OUTLINE_COMPARE_ARTIFACT_ID}/${campaignSlug}/${filename}`
+  const requestUrl = buildLabOutputRequestUrl(normalizedTicker, relativeOutput)
+  const repoPath = buildLabOutputRepoPath(normalizedTicker, relativeOutput)
+  if (!requestUrl || !repoPath) return null
+  return {
+    filename: relativeOutput,
+    repoPath,
+    requestUrl,
+  }
+}
+
+export function buildExpectedLabOutlineResearchArtifact(
+  entry: Pick<LabCase, "ticker" | "section" | "year_from" | "year_to">,
+  lens: LabCleaningLens,
+  sourceId: LabSourceId,
+  campaignSlug: string
+): LabExpectedOutputArtifact | null {
+  const normalizedTicker = normalizeTickerSymbol(entry.ticker)
+  if (!normalizedTicker) return null
+  const filename = buildOutlineArtifactFilename(
+    OUTLINE_RESEARCH_ARTIFACT_ID,
+    entry,
+    lens,
+    sourceId,
+    campaignSlug
+  )
+  const relativeOutput = `outputs/${OUTLINE_RESEARCH_ARTIFACT_ID}/${campaignSlug}/${filename}`
+  const requestUrl = buildLabOutputRequestUrl(normalizedTicker, relativeOutput)
+  const repoPath = buildLabOutputRepoPath(normalizedTicker, relativeOutput)
+  if (!requestUrl || !repoPath) return null
+  return {
+    filename: relativeOutput,
+    repoPath,
+    requestUrl,
+  }
+}
+
 export async function loadLabOutput(
   ticker: string,
   filename: string,
@@ -770,6 +923,78 @@ export async function loadLabOutput(
     outputCache.set(cacheKey, promise)
   }
   return outputCache.get(cacheKey)!
+}
+
+export async function loadLabOutlineCompareOutput(
+  ticker: string,
+  filename: string,
+  options?: { signal?: AbortSignal }
+): Promise<LabOutlineCompareOutput> {
+  const normalizedTicker = normalizeTickerSymbol(ticker)
+  if (!normalizedTicker) {
+    throw new LabDataLoadError("Ticker format is invalid for outline output paths.", ticker)
+  }
+  const normalizedFilename = normalizeOutputFilename(filename)
+  if (!normalizedFilename) {
+    throw new LabDataLoadError("Outline output file path is not canonical.", filename)
+  }
+  const url = buildLabPath(normalizedTicker, filename)
+  if (!url) {
+    throw new LabDataLoadError("Outline output file path is not usable.", filename)
+  }
+  if (!outlineCompareCache.has(url)) {
+    const promise = fetchJson<unknown>(url, "Outline compare artifact is not available.", options)
+      .then((data) =>
+        parseLabPayload(
+          LabOutlineCompareOutputSchema,
+          data,
+          `LabOutlineCompareOutput:${normalizedFilename}`,
+          url
+        )
+      )
+      .catch((error) => {
+        outlineCompareCache.delete(url)
+        throw error
+      })
+    outlineCompareCache.set(url, promise)
+  }
+  return outlineCompareCache.get(url)!
+}
+
+export async function loadLabOutlineResearchOutput(
+  ticker: string,
+  filename: string,
+  options?: { signal?: AbortSignal }
+): Promise<LabOutlineResearchOutput> {
+  const normalizedTicker = normalizeTickerSymbol(ticker)
+  if (!normalizedTicker) {
+    throw new LabDataLoadError("Ticker format is invalid for research output paths.", ticker)
+  }
+  const normalizedFilename = normalizeOutputFilename(filename)
+  if (!normalizedFilename) {
+    throw new LabDataLoadError("Research output file path is not canonical.", filename)
+  }
+  const url = buildLabPath(normalizedTicker, filename)
+  if (!url) {
+    throw new LabDataLoadError("Research output file path is not usable.", filename)
+  }
+  if (!outlineResearchCache.has(url)) {
+    const promise = fetchJson<unknown>(url, "Outline research artifact is not available.", options)
+      .then((data) =>
+        parseLabPayload(
+          LabOutlineResearchOutputSchema,
+          data,
+          `LabOutlineResearchOutput:${normalizedFilename}`,
+          url
+        )
+      )
+      .catch((error) => {
+        outlineResearchCache.delete(url)
+        throw error
+      })
+    outlineResearchCache.set(url, promise)
+  }
+  return outlineResearchCache.get(url)!
 }
 
 export async function loadLabInputFile(

@@ -1,0 +1,136 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_jsd_ngrams_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "KO",
+  "section": "10k_item1a",
+  "year_from": 2024,
+  "year_to": 2025,
+  "artifacts": {
+    "ranked_items": [
+      {
+        "label": "range",
+        "score": 0.0005272871078302136
+      },
+      {
+        "label": "markets serve",
+        "score": 0.00039546533087266017
+      },
+      {
+        "label": "foodservice",
+        "score": 0.00039546533087266017
+      },
+      {
+        "label": "serve world",
+        "score": 0.00039546533087266017
+      },
+      {
+        "label": "experiences",
+        "score": 0.00039546533087266017
+      },
+      {
+        "label": "perspectives",
+        "score": 0.00039546533087266017
+      },
+      {
+        "label": "perspectives experiences",
+        "score": 0.00039546533087266017
+      },
+      {
+        "label": "talent diverse",
+        "score": 0.00039546533087266017
+      },
+      {
+        "label": "consumers markets",
+        "score": 0.00039546533087266017
+      },
+      {
+        "label": "serve",
+        "score": 0.00039546533087266017
+      },
+      {
+        "label": "backgrounds reflect",
+        "score": 0.00039546533087266017
+      },
+      {
+        "label": "experiences backgrounds",
+        "score": 0.00039546533087266017
+      },
+      {
+        "label": "retail foodservice",
+        "score": 0.00039546533087266017
+      },
+      {
+        "label": "range consumers",
+        "score": 0.00039546533087266017
+      },
+      {
+        "label": "broad range",
+        "score": 0.00039546533087266017
+      },
+      {
+        "label": "backgrounds",
+        "score": 0.00039546533087266017
+      },
+      {
+        "label": "reflect broad",
+        "score": 0.00039546533087266017
+      },
+      {
+        "label": "broad",
+        "score": 0.00039546533087266017
+      },
+      {
+        "label": "foodservice customers",
+        "score": 0.00039546533087266017
+      },
+      {
+        "label": "key retail",
+        "score": 0.00039546533087266017
+      }
+    ],
+    "stats": {
+      "jsd": 0.071471,
+      "tokens_prev": 1897,
+      "tokens_curr": 2024
+    }
+  },
+  "evidence": [
+    {
+      "year": 2024,
+      "paragraph_idx": 4,
+      "snippet": "Changes in the retail landscape or the loss of key retail or foodservice customers could adversely affect our financial results.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "foodservice"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 5,
+      "snippet": "In addition, our success depends in part on our ability to maintain good relationships with key retail and foodservice customers.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "foodservice"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.071471,
+    "confidence": 1.0,
+    "coverage": 0.255164060779564,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-26T21:40:59Z",
+    "git_commit": "8bcb3111a526be94846e285e2b5a3c5d0f6c2788",
+    "script_version": "build_lab_outputs.py@v2+a155741242",
+    "inputs": {
+      "prev_text_sha256": "67390cdd78f069859395b167127b52c8f554beb54d6300f9c23ceb918d6bac77",
+      "curr_text_sha256": "1479809c52f4607b7aa36cd122f625e3cd3d9ea49699960cc45d39e39ae2b171",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

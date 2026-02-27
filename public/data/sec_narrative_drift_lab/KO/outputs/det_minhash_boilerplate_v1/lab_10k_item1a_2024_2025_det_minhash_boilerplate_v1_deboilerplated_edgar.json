@@ -1,0 +1,73 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_minhash_boilerplate_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "KO",
+  "section": "10k_item1a",
+  "year_from": 2024,
+  "year_to": 2025,
+  "artifacts": {
+    "stats": {
+      "percent_reused": 0.3235294117647059,
+      "percent_new": 0.6764705882352942,
+      "reused_paragraphs": 22,
+      "total_paragraphs": 68
+    }
+  },
+  "evidence": [
+    {
+      "year": 2025,
+      "paragraph_idx": 7,
+      "snippet": "Some of the raw materials and supplies used in the production of our products are available from a limited number of suppliers, or from a sole supplier, or are in short supply when seasonal demand is at its peak.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 11,
+      "snippet": "Some of the raw materials and supplies used in the production of our products are available from a limited number of suppliers or from a sole supplier or are in short supply when seasonal demand is at its peak.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 9,
+      "snippet": "Any sustained or significant disruption to the manufacturing or sourcing of products or materials could increase costs and interrupt product supply, which could adversely impact our business.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 13,
+      "snippet": "Any sustained or significant disruption to the manufacturing or sourcing of products or materials could increase our costs and interrupt product supply, which could adversely impact our business.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 14,
+      "snippet": "If these labor relations are not effectively managed at the local level, they could escalate in the form of corporate campaigns supported by the labor organizations and could negatively affect our Company\u2019s overall reputation and brand image, which in turn could have a negative impact on our products\u2019 acceptance by consumers.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 18,
+      "snippet": "labor relations are not effectively managed at the local level, they could escalate in the form of corporate campaigns supported by the labor organizations and could negatively affect our Company\u2019s overall reputation and brand image, which in turn could have a negative impact on our products\u2019 acceptance by consumers.",
+      "why": "Matching paragraph from prior year."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.6764705882352942,
+    "confidence": 1.0,
+    "coverage": 0.255164060779564,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-26T21:40:59Z",
+    "git_commit": "8bcb3111a526be94846e285e2b5a3c5d0f6c2788",
+    "script_version": "build_lab_outputs.py@v2+a155741242",
+    "inputs": {
+      "prev_text_sha256": "67390cdd78f069859395b167127b52c8f554beb54d6300f9c23ceb918d6bac77",
+      "curr_text_sha256": "1479809c52f4607b7aa36cd122f625e3cd3d9ea49699960cc45d39e39ae2b171",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

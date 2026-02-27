@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react"
 import AgreementMatrix from "./AgreementMatrix"
 import CleaningLensToggle from "./CleaningLensToggle"
 import MethodCard from "./MethodCard"
+import OutlineComparePanel from "./OutlineComparePanel"
 import {
   LabDataLoadError,
   buildExpectedLabOutputArtifactFromVariant,
@@ -10,11 +11,13 @@ import {
   buildLabOutputRepoPath,
   buildLabOutputRequestUrl,
   clearLabOutputCache,
+  findLabOutlineCompareArtifactForCampaign,
   findLabLlmVariant,
   formatLabLoadDebug,
   getDefaultDeterministicTrackSlug,
   getDefaultLabLlmCampaignPair,
   getLabLlmCampaignById,
+  loadLabOutlineCompareOutput,
   loadLabMethodProfilesIndex,
   listLabCasesForTicker,
   loadLabLlmCampaignsIndex,
@@ -31,6 +34,7 @@ import type {
   LabCleaningLens,
   LabLlmCampaign,
   LabMethodProfile,
+  LabOutlineCompareOutput,
   LabOutput,
   LabSourceId,
 } from "../lib/labTypes"
@@ -90,6 +94,9 @@ const DETECTOR_CATALOG = [
 const DEFAULT_SELECTED = DETECTOR_CATALOG.filter((det) => det.defaultSelected).map(
   (det) => det.id
 )
+const DETERMINISTIC_DEFAULT_SELECTED = DETECTOR_CATALOG.filter(
+  (det) => det.group !== "llm"
+).map((det) => det.id)
 const EXECUTIVE_READ_PRESET = ["det_logodds_terms_v1", "det_jsd_ngrams_v1"]
 const TECHNICAL_DEEP_DIVE_PRESET = [
   "det_logodds_terms_v1",
@@ -206,6 +213,15 @@ function buildCaseKey(caseItem: LabCase): string {
   return `${caseItem.year_from}-${caseItem.year_to}`
 }
 
+function hasSameDetectorSelection(left: string[], right: string[]): boolean {
+  if (left.length !== right.length) return false
+  const rightSet = new Set(right)
+  for (const value of left) {
+    if (!rightSet.has(value)) return false
+  }
+  return true
+}
+
 function findCaseKeyByPair(cases: LabCase[], pair: { from: number; to: number }): string | null {
   const match = cases.find(
     (entry) => entry.year_from === pair.from && entry.year_to === pair.to
@@ -279,6 +295,12 @@ type DetectorDebugInfo = {
   errorText: string | null
 }
 
+type OutlineArtifactDebugInfo = {
+  expectedPath: string | null
+  requestedUrl: string | null
+  errorText: string | null
+}
+
 async function copyTextToClipboard(text: string): Promise<boolean> {
   if (typeof navigator !== "undefined" && navigator.clipboard?.writeText) {
     try {
@@ -320,6 +342,7 @@ export default function LabPanel({
   onSelectedLlmCampaignsChange,
 }: LabPanelProps) {
   const syncedPairKeyRef = useRef<string | null>(null)
+  const [presetTokenCounter, setPresetTokenCounter] = useState(0)
   const [cases, setCases] = useState<LabCase[]>([])
   const [isLoadingCases, setIsLoadingCases] = useState(true)
   const [caseError, setCaseError] = useState<string | null>(null)
@@ -338,6 +361,13 @@ export default function LabPanel({
     "idle"
   )
   const [isLoadingOutputs, setIsLoadingOutputs] = useState(false)
+  const [outlineOutputs, setOutlineOutputs] = useState<Record<string, LabOutlineCompareOutput | null>>(
+    {}
+  )
+  const [outlineDebugPaths, setOutlineDebugPaths] = useState<Record<string, string | null>>({})
+  const [outlineDebugInfo, setOutlineDebugInfo] = useState<Record<string, OutlineArtifactDebugInfo>>(
+    {}
+  )
   const [reloadNonce, setReloadNonce] = useState(0)
   const [llmCampaignOptions, setLlmCampaignOptions] = useState<LabLlmCampaign[]>([])
   const [selectedLlmCampaignA, setSelectedLlmCampaignA] = useState<string>("")
@@ -516,6 +546,27 @@ export default function LabPanel({
     [availableDetectorIds]
   )
 
+  // Adjust detector selection during render when LLM artifacts are unavailable (avoids sync setState in effect)
+  const detectorAvailKey = selectedCase ? availableDetectorIds.join(",") : null
+  const [prevDetectorAvailKey, setPrevDetectorAvailKey] = useState(detectorAvailKey)
+  if (detectorAvailKey !== prevDetectorAvailKey) {
+    setPrevDetectorAvailKey(detectorAvailKey)
+    if (selectedCase) {
+      const hasAnyLlmArtifacts = Array.from(LLM_DETECTOR_IDS).some((detectorId) =>
+        availableDetectorIds.includes(detectorId)
+      )
+      if (!hasAnyLlmArtifacts && hasSameDetectorSelection(selectedDetectors, DEFAULT_SELECTED)) {
+        setSelectedDetectors([...DETERMINISTIC_DEFAULT_SELECTED])
+        setPresetTokenCounter((c) => c + 1)
+        setPresetStatus({
+          message:
+            "LLM artifacts missing for this pair/lens. Showing deterministic-first method defaults.",
+          token: presetTokenCounter + 1,
+        })
+      }
+    }
+  }
+
   // Adjust lens during render when available lenses change (avoids sync setState in effect)
   if (availableLenses.length && !availableLenses.includes(lens)) {
     const nextLens = pickPreferredAvailableLens(availableLenses)
@@ -537,6 +588,9 @@ export default function LabPanel({
       setOutputs({})
       setOutputDebugPaths({})
       setOutputDebugInfo({})
+      setOutlineOutputs({})
+      setOutlineDebugPaths({})
+      setOutlineDebugInfo({})
       setAgreementOutput(null)
       setAgreementDebugPath(null)
       setAgreementDebugInfo(null)
@@ -559,6 +613,9 @@ export default function LabPanel({
       const nextOutputs: Record<string, LabOutput | null> = {}
       const nextOutputDebugPaths: Record<string, string | null> = {}
       const nextOutputDebugInfo: Record<string, DetectorDebugInfo> = {}
+      const nextOutlineOutputs: Record<string, LabOutlineCompareOutput | null> = {}
+      const nextOutlineDebugPaths: Record<string, string | null> = {}
+      const nextOutlineDebugInfo: Record<string, OutlineArtifactDebugInfo> = {}
 
       for (const detectorId of selectedDetectors) {
         const isLlm = LLM_DETECTOR_IDS.has(detectorId)
@@ -774,6 +831,52 @@ export default function LabPanel({
         }
       }
 
+      const selectedCampaignIds = Array.from(
+        new Set([selectedLlmCampaignA, selectedLlmCampaignB].filter(Boolean))
+      )
+      for (const campaignId of selectedCampaignIds) {
+        const artifact = await findLabOutlineCompareArtifactForCampaign(selectedCase, lens, campaignId)
+        if (!artifact) {
+          nextOutlineOutputs[campaignId] = null
+          nextOutlineDebugPaths[campaignId] = "Missing outline compare artifact metadata."
+          nextOutlineDebugInfo[campaignId] = {
+            expectedPath: null,
+            requestedUrl: null,
+            errorText: "Outline artifact metadata is not indexed for this case/lens/campaign.",
+          }
+          continue
+        }
+        let requestedUrl = artifact.requestUrl
+        try {
+          const output = await loadLabOutlineCompareOutput(selectedCase.ticker, artifact.filename, {
+            signal: controller.signal,
+          })
+          nextOutlineOutputs[campaignId] = output
+          nextOutlineDebugPaths[campaignId] = null
+          nextOutlineDebugInfo[campaignId] = {
+            expectedPath: artifact.repoPath,
+            requestedUrl,
+            errorText: null,
+          }
+        } catch (error) {
+          nextOutlineOutputs[campaignId] = null
+          nextOutlineDebugPaths[campaignId] = formatLabLoadDebug(error)
+          let errorText = "Failed to load outline compare output."
+          if (error instanceof LabDataLoadError) {
+            const statusText = typeof error.status === "number" ? ` (status ${error.status})` : ""
+            errorText = `${error.message}${statusText}`
+            requestedUrl = error.url
+          } else if (error instanceof Error) {
+            errorText = error.message
+          }
+          nextOutlineDebugInfo[campaignId] = {
+            expectedPath: artifact.repoPath,
+            requestedUrl,
+            errorText,
+          }
+        }
+      }
+
       const agreementExpectedArtifact = buildExpectedLabOutputArtifact(
         selectedCase,
         "det_rbo_agreement_v1",
@@ -857,6 +960,9 @@ export default function LabPanel({
         setOutputs(nextOutputs)
         setOutputDebugPaths(nextOutputDebugPaths)
         setOutputDebugInfo(nextOutputDebugInfo)
+        setOutlineOutputs(nextOutlineOutputs)
+        setOutlineDebugPaths(nextOutlineDebugPaths)
+        setOutlineDebugInfo(nextOutlineDebugInfo)
         setAgreementOutput(agreement)
         setAgreementDebugPath(nextAgreementDebugPath)
         setAgreementDebugInfo(nextAgreementDebugInfo)
@@ -878,6 +984,7 @@ export default function LabPanel({
     sourceId,
     selectedLlmCampaignA,
     selectedLlmCampaignB,
+    reloadNonce,
   ])
 
   const lensOptions = useMemo(() => {
@@ -1029,6 +1136,16 @@ export default function LabPanel({
       readText: best.readText,
     }
   }, [llmCompareRows])
+
+  const selectedCampaignA = useMemo(
+    () => llmCampaignOptions.find((campaign) => campaign.campaign_id === selectedLlmCampaignA) ?? null,
+    [llmCampaignOptions, selectedLlmCampaignA]
+  )
+
+  const selectedCampaignB = useMemo(
+    () => llmCampaignOptions.find((campaign) => campaign.campaign_id === selectedLlmCampaignB) ?? null,
+    [llmCampaignOptions, selectedLlmCampaignB]
+  )
 
   const detectorGroups = useMemo(() => {
     return DETECTOR_GROUP_ORDER.map((group) => ({
@@ -1399,6 +1516,9 @@ export default function LabPanel({
               </div>
             ) : null}
             <div className="mt-2 flex flex-wrap items-center gap-3 text-xs text-slate-300">
+              <a className="underline decoration-white/30 underline-offset-2 hover:text-slate-100" href="#lab-outline-compare">
+                Outline compare
+              </a>
               <a className="underline decoration-white/30 underline-offset-2 hover:text-slate-100" href="#lab-agreement">
                 Agreement
               </a>
@@ -1415,6 +1535,12 @@ export default function LabPanel({
             {isDeepMode ? (
               <div className="mt-2 flex flex-wrap items-center gap-3 text-xs text-slate-300">
                 <span className="uppercase tracking-wide text-slate-400">Deep sections:</span>
+                <a
+                  className="underline decoration-white/30 underline-offset-2 hover:text-slate-100"
+                  href="#lab-outline-compare"
+                >
+                  Outline compare
+                </a>
                 <a
                   className="underline decoration-white/30 underline-offset-2 hover:text-slate-100"
                   href="#lab-agreement"
@@ -1519,6 +1645,31 @@ export default function LabPanel({
           </div>
         </div>
       </div>
+
+      {selectedLlmCampaignA || selectedLlmCampaignB ? (
+        <OutlineComparePanel
+          modelALabel={(selectedCampaignA?.display_name ?? selectedLlmCampaignA) || "Model A"}
+          modelBLabel={(selectedCampaignB?.display_name ?? selectedLlmCampaignB) || "Model B"}
+          modelAOutput={
+            selectedLlmCampaignA ? outlineOutputs[selectedLlmCampaignA] ?? null : null
+          }
+          modelBOutput={
+            selectedLlmCampaignB ? outlineOutputs[selectedLlmCampaignB] ?? null : null
+          }
+          modelADebug={
+            selectedLlmCampaignA ? outlineDebugInfo[selectedLlmCampaignA] ?? null : null
+          }
+          modelBDebug={
+            selectedLlmCampaignB ? outlineDebugInfo[selectedLlmCampaignB] ?? null : null
+          }
+          modelADebugPath={
+            selectedLlmCampaignA ? outlineDebugPaths[selectedLlmCampaignA] ?? null : null
+          }
+          modelBDebugPath={
+            selectedLlmCampaignB ? outlineDebugPaths[selectedLlmCampaignB] ?? null : null
+          }
+        />
+      ) : null}
 
       <div id="lab-agreement" className="space-y-4">
         <div>

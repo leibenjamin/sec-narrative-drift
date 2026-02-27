@@ -11,6 +11,7 @@ from pathlib import Path
 from typing import Any, Optional, cast
 
 from lab_script_version import build_script_version
+from lab_output_tracks import FY2022_RUNTIME_CASES
 
 SCRIPT_VERSION = build_script_version(Path(__file__), "v2")
 
@@ -35,6 +36,8 @@ BUILD_REPORT_PATH = REPORTS_ROOT / "lab_cases_registry_build.md"
 VALID_LENSES = {"raw", "stage1_clean", "deboilerplated", "structure_aware"}
 VALID_SOURCES = {"edgar", "sraf_nd"}
 DEFAULT_TICKERS = ["NVDA", "KO", "WM", "GE"]
+DEFAULT_YEAR_MIN = 2022
+DEFAULT_YEAR_MAX = 2025
 
 DETECTOR_ORDER = [
     "det_logodds_terms_v1",
@@ -364,6 +367,32 @@ def build_candidate_pairs(
     return pairs
 
 
+def build_candidate_pairs_for_ticker(
+    ticker: str,
+    year_min: int,
+    year_max: int,
+    adjacent_only: bool,
+    include_most_recent_always: bool,
+) -> list[tuple[int, int]]:
+    ticker_upper = ticker.upper()
+    runtime_pairs = FY2022_RUNTIME_CASES.get(ticker_upper)
+    if runtime_pairs and adjacent_only:
+        filtered: list[tuple[int, int]] = []
+        for year_from, year_to in runtime_pairs:
+            if year_from < year_min or year_to > year_max:
+                continue
+            if not include_most_recent_always and (year_from, year_to) == (2024, 2025):
+                continue
+            filtered.append((year_from, year_to))
+        return filtered
+    return build_candidate_pairs(
+        year_min=year_min,
+        year_max=year_max,
+        adjacent_only=adjacent_only,
+        include_most_recent_always=include_most_recent_always,
+    )
+
+
 def load_hero_pairs() -> dict[str, dict[tuple[int, int], list[str]]]:
     hero_path = LAB_ROOT / "lab_showcase_hero_pairs_v2.json"
     output: dict[str, dict[tuple[int, int], list[str]]] = {}
@@ -478,8 +507,8 @@ def build_parser() -> argparse.ArgumentParser:
         default=DEFAULT_TICKERS,
         help="Tickers to include (space-separated and/or comma-separated).",
     )
-    parser.add_argument("--year-min", type=int, default=2019)
-    parser.add_argument("--year-max", type=int, default=2025)
+    parser.add_argument("--year-min", type=int, default=DEFAULT_YEAR_MIN)
+    parser.add_argument("--year-max", type=int, default=DEFAULT_YEAR_MAX)
     parser.add_argument(
         "--include-most-recent-always",
         action=argparse.BooleanOptionalAction,
@@ -522,12 +551,15 @@ def main(argv: Optional[list[str]] = None) -> int:
     if not registry_out_path.is_absolute():
         registry_out_path = REPO_ROOT / registry_out_path
 
-    candidate_pairs = build_candidate_pairs(
-        year_min=args.year_min,
-        year_max=args.year_max,
-        adjacent_only=bool(args.adjacent_only),
-        include_most_recent_always=bool(args.include_most_recent_always),
-    )
+    candidate_pairs_by_ticker: dict[str, list[tuple[int, int]]] = {}
+    for ticker in tickers:
+        candidate_pairs_by_ticker[ticker] = build_candidate_pairs_for_ticker(
+            ticker=ticker,
+            year_min=args.year_min,
+            year_max=args.year_max,
+            adjacent_only=bool(args.adjacent_only),
+            include_most_recent_always=bool(args.include_most_recent_always),
+        )
     hero_pairs = load_hero_pairs()
 
     all_inputs: list[InputRecord] = []
@@ -643,6 +675,7 @@ def main(argv: Optional[list[str]] = None) -> int:
         included_pairs_by_ticker[ticker] = []
         output_count_by_ticker[ticker] = 0
 
+        candidate_pairs = candidate_pairs_by_ticker.get(ticker, [])
         for year_from, year_to in candidate_pairs:
             case_key = CaseKey(
                 ticker=ticker,
@@ -718,6 +751,7 @@ def main(argv: Optional[list[str]] = None) -> int:
         "adjacent_only": str(bool(args.adjacent_only)).lower(),
         "include_most_recent_always": str(bool(args.include_most_recent_always)).lower(),
         "publish_lenses": ",".join(publish_lenses) if publish_lenses else "all",
+        "runtime_case_map_hard_cut": "fy2022_plus",
     }
     registry_payload = {
         "version": "1.0",

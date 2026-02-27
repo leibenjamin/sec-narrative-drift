@@ -1,0 +1,73 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_minhash_boilerplate_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "GE",
+  "section": "10k_item1a",
+  "year_from": 2024,
+  "year_to": 2025,
+  "artifacts": {
+    "stats": {
+      "percent_reused": 0.14563106796116504,
+      "percent_new": 0.854368932038835,
+      "reused_paragraphs": 15,
+      "total_paragraphs": 103
+    }
+  },
+  "evidence": [
+    {
+      "year": 2025,
+      "paragraph_idx": 8,
+      "snippet": "Any of these factors could have a negative impact on new orders or on agreements for the sale of our products and services given the long-term nature of those arrangements and could reduce our sales and profit margins.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 10,
+      "snippet": "Any of these factors could have a negative impact on new orders or on our agreements for the sale of our products and services given the long-term nature of those arrangements and could reduce our sales and profit margins.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 27,
+      "snippet": "Failure to comply with provisions of our government contracts or other applicable laws and regulations can lead to civil or criminal enforcement under the U.S. False Claims Act or similar enforcement legislation, including potentially significant financial penalties, suspension or debarment against new business and reputational harm.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 27,
+      "snippet": "Failure to comply with provisions of our government contracts or other applicable laws and regulations could lead to civil or criminal enforcement under the U.S. False Claims Act or similar enforcement legislation, including potentially significant financial penalties, suspension or debarment against new business and reputational harm.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 36,
+      "snippet": "With respect to acquisitions and business integrations, dispositions, separations, joint ventures and other inorganic investments, we may not complete announced transactions on a timely basis or at all (including as a result of regulatory approvals), and we also may not achieve expected returns, financial or operational synergies or other benefits on a timely basis or at all as a result of changes in strategy, integration challenges, investment risk or other factors.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 46,
+      "snippet": "With respect to acquisitions and business integrations, dispositions, separations, joint ventures and other inorganic investments, we may not complete announced transactions on a timely basis or at all, including as a result of regulatory approvals, achieve expected returns, financial or operational synergies or other benefits on a timely basis or at all as a result of changes in strategy, integration challenges, investment risk or other factors.",
+      "why": "Matching paragraph from prior year."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.854368932038835,
+    "confidence": 1.0,
+    "coverage": 0.5317901284564172,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-26T21:41:00Z",
+    "git_commit": "8bcb3111a526be94846e285e2b5a3c5d0f6c2788",
+    "script_version": "build_lab_outputs.py@v2+a155741242",
+    "inputs": {
+      "prev_text_sha256": "967ac87369cbe17e96f8d004e36bb7ef4880f085ee5533bdaabd2fa5cced5537",
+      "curr_text_sha256": "acf78b9b22eb0e338172ad504b6d1185188cd3df67e46e01e11ad3644e295ea1",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

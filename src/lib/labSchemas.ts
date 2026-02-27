@@ -189,6 +189,14 @@ export const LabLlmVariantSchema = z.object({
   input_file: OptionalInternalPathLikeSchema.optional(),
   year_input_prev: OptionalInternalPathLikeSchema.optional(),
   year_input_curr: OptionalInternalPathLikeSchema.optional(),
+  outline_compare_present: z.boolean().optional(),
+  outline_compare_valid: z.boolean().optional(),
+  outline_compare_expected_repo_path: OptionalInternalPathLikeSchema.optional(),
+  outline_compare_request_url: OptionalInternalPathLikeSchema.optional(),
+  outline_research_present: z.boolean().optional(),
+  outline_research_valid: z.boolean().optional(),
+  outline_research_expected_repo_path: OptionalInternalPathLikeSchema.optional(),
+  outline_research_request_url: OptionalInternalPathLikeSchema.optional(),
   validation_reasons: z.array(z.string()).optional(),
 })
 
@@ -245,4 +253,110 @@ export const LabMethodProfilesIndexSchema = z.object({
   updated_at: z.string(),
   profiles: z.array(LabMethodProfileSchema),
   provenance: LabProvenanceSchema.optional(),
+})
+
+const OutlineChangeClassSchema = z.enum([
+  "added",
+  "removed",
+  "moved",
+  "split",
+  "merged",
+  "reworded",
+  "intensified",
+  "softened",
+  "stable",
+])
+
+const LabOutlineNodeSchema = z.object({
+  node_id: z.string(),
+  parent_id: z.string().nullable(),
+  level: z.union([z.literal(1), z.literal(2), z.literal(3)]),
+  order: z.number().int().nonnegative(),
+  label: z.string(),
+  risk_thesis: z.string(),
+  evidence_paragraph_idx: z.array(z.number().int().nonnegative()),
+})
+
+const LabOutlineAlignmentSchema = z.object({
+  prev_node_id: z.string().nullable(),
+  curr_node_id: z.string().nullable(),
+  change_class: OutlineChangeClassSchema,
+  rationale: z.string(),
+  salience: z.number().min(0).max(1),
+})
+
+const LabOutlineMaterialChangeSchema = z.object({
+  id: z.string(),
+  title: z.string(),
+  change_class: z.enum([
+    "added",
+    "removed",
+    "moved",
+    "split",
+    "merged",
+    "reworded",
+    "intensified",
+    "softened",
+  ]),
+  salience: z.number().min(0).max(1),
+  caveat: z.string(),
+  evidence_refs: z.array(
+    z.object({
+      year: z.number().int(),
+      paragraph_idx: z.number().int().nonnegative(),
+    })
+  ),
+})
+
+const LabOutlineEvidenceSchema = z.object({
+  year: z.number().int(),
+  paragraph_idx: z.number().int().nonnegative(),
+  snippet: z.string(),
+  why: z.string(),
+  node_ids: z.array(z.string()),
+})
+
+export const LabOutlineCompareOutputSchema = z.object({
+  lab_schema_version: z.literal("1.0"),
+  artifact_schema_version: z.literal("1.0"),
+  artifact_id: z.literal("llm_outline_compare_v1"),
+  ticker: z.string(),
+  section: z.string(),
+  source_id: LabSourceIdSchema,
+  cleaning_lens: LabCleaningLensSchema,
+  year_from: z.number().int(),
+  year_to: z.number().int(),
+  outline_prev: z.array(LabOutlineNodeSchema),
+  outline_curr: z.array(LabOutlineNodeSchema),
+  node_alignment: z.array(LabOutlineAlignmentSchema),
+  material_changes: z.array(LabOutlineMaterialChangeSchema),
+  evidence_bank: z.array(LabOutlineEvidenceSchema),
+  lens_divergence: z.object({
+    materially_different: z.boolean(),
+    summary: z.string(),
+  }),
+  provenance: LabProvenanceSchema,
+})
+
+const LabOutlineResearchClaimSchema = z.object({
+  claim: z.string(),
+  source_url: HttpsUrlSchema,
+  source_date: z.string(),
+  support_label: z.enum(["support", "contradict", "unclear"]),
+  note: z.string(),
+})
+
+export const LabOutlineResearchOutputSchema = z.object({
+  lab_schema_version: z.literal("1.0"),
+  artifact_schema_version: z.literal("1.0"),
+  artifact_id: z.literal("llm_outline_research_v1"),
+  ticker: z.string(),
+  section: z.string(),
+  source_id: LabSourceIdSchema,
+  cleaning_lens: LabCleaningLensSchema,
+  year_from: z.number().int(),
+  year_to: z.number().int(),
+  trigger_reasons: z.array(z.string()),
+  claims: z.array(LabOutlineResearchClaimSchema),
+  provenance: LabProvenanceSchema,
 })

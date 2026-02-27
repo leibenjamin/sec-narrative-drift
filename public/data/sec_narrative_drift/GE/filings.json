@@ -164,5 +164,23 @@
         "toc_like_tail"
       ]
     }
+  },
+  {
+    "year": 2025,
+    "form": "10-K",
+    "filingDate": "2026-01-29",
+    "reportDate": "2025-12-31",
+    "accessionNumber": "0000040545-26-000008",
+    "primaryDocument": "ge-20251231.htm",
+    "secUrl": "https://www.sec.gov/Archives/edgar/data/40545/000004054526000008/ge-20251231.htm",
+    "extraction": {
+      "confidence": 0.6499999999999999,
+      "method": "blockdoc_scored",
+      "errors": [
+        "toc_detected",
+        "toc_like_tail",
+        "length_jump_vs_prev_year"
+      ]
+    }
   }
 ]

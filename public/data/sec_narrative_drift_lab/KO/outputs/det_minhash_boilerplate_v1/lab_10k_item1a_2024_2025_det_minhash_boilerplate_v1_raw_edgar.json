@@ -1,0 +1,73 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_minhash_boilerplate_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "KO",
+  "section": "10k_item1a",
+  "year_from": 2024,
+  "year_to": 2025,
+  "artifacts": {
+    "stats": {
+      "percent_reused": 0.6811594202898551,
+      "percent_new": 0.3188405797101449,
+      "reused_paragraphs": 47,
+      "total_paragraphs": 69
+    }
+  },
+  "evidence": [
+    {
+      "year": 2025,
+      "paragraph_idx": 0,
+      "snippet": "In addition to the other information set forth in this report, you should carefully consider the following factors, which could materially affect our business, financial condition and results of operations in future periods. The risks described below are not the only risks facing our Company. Additional risks not currently known to us or that we currently deem to be immaterial also may materially adversely affect our business, financial condition or results of operations in future periods.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 0,
+      "snippet": "In addition to the other information set forth in this report, you should carefully consider the following factors, which could materially affect our business, financial condition and results of operations in future periods. The risks described below are not the only risks facing our Company. Additional risks not currently known to us or that we currently deem to be immaterial also may materially adversely affect our business, financial condition or results of operations in future periods.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 3,
+      "snippet": "We operate in the highly competitive commercial beverage industry. For additional information regarding the competitive environment in which we operate, including the names of certain of our significant competitors, refer to the heading \u201cCompetition\u201d set forth in Part I, \u201cItem 1. Business\u201d of this report. Our ability to maintain or gain share of sales in the global market or in regional or local markets may be limited as a result of actions by competitors. Competitive pressures may cause the Company and our bottling partners to reduce prices we charge customers or may restrict our and our bottlers\u2019 ability to increase prices, as may be necessary in response to commodity and other cost increases. Such pressures may also increase marketing costs along with in-store placement, slotting and other marketing fees. In addition, the rapid growth of e\u2011commerce may create additional consumer price deflation by, among other things, facilitating comparison shopping, and could potentially threaten the value of some of our legacy route-to-market strategies and thus negatively affect revenues. If we do not continuously strengthen our capabilities in marketing, data analytics (including artificial intelligence and machine learning) and innovation to understand and maintain consumer interest, brand loyalty and market share while strategically expanding into other profitable categories of the commercial beverage industry, our business could be negatively affected.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 3,
+      "snippet": "We operate in the highly competitive commercial beverage industry. For additional information regarding the competitive environment in which we operate, including the names of certain of our significant competitors, refer to the heading \u201cCompetition\u201d set forth in Part I, \u201cItem 1. Business\u201d of this report. Our ability to maintain or gain share of sales in the global market or in regional or local markets may be limited as a result of actions by competitors. Competitive pressures may cause the Company and our bottling partners to reduce prices we charge customers or may restrict our and our bottlers\u2019 ability to increase prices, as may be necessary in response to commodity and other cost increases. Such pressures may also increase marketing costs along with in-store placement, slotting and other marketing fees. In addition, the rapid growth of e\u2011commerce may create additional consumer price deflation by, among other things, facilitating comparison shopping, and could potentially threaten the value of some of our legacy route-to-market strategies and thus negatively affect revenues. If we do not continuously strengthen our capabilities in marketing, data analytics (including artificial intelligence and machine learning) and innovation to understand and maintain consumer interest, brand loyalty and market share while strategically expanding into other profitable categories of the commercial beverage industry, our business could be negatively affected.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 6,
+      "snippet": "Our success depends in part on our ability to grow our business in emerging and developing markets, which in turn depends on economic and political conditions in those markets and on our ability to work with local bottlers to make necessary infrastructure enhancements to production facilities, distribution networks, sales equipment and technology. Additionally, we rely on local availability of talented management and employees to establish and manage our operations in these markets. Scarcity of, or heavy competition for, talented employees could impede our abilities in such markets. Moreover, the supply of our products in emerging and developing markets must match consumer demand for those products. Due to product price, limited purchasing power and cultural differences, our products may not be accepted in any particular emerging or developing market.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 6,
+      "snippet": "Our success depends in part on our ability to grow our business in emerging and developing markets, which in turn depends on economic and political conditions in those markets and on our ability to work with local bottlers to make necessary infrastructure enhancements to production facilities, distribution networks, sales equipment and technology. Additionally, we rely on local availability of talented management and employees to establish and manage our operations in these markets. Scarcity of, or heavy competition for, talented employees could impede our abilities in such markets. Moreover, the supply of our products in emerging and developing markets must match consumer demand for those products. Due to product price, limited purchasing power and cultural differences, our products may not be accepted in any particular emerging or developing market.",
+      "why": "Matching paragraph from prior year."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.3188405797101449,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-26T21:40:59Z",
+    "git_commit": "8bcb3111a526be94846e285e2b5a3c5d0f6c2788",
+    "script_version": "build_lab_outputs.py@v2+a155741242",
+    "inputs": {
+      "prev_text_sha256": "604daa670ec51ce1aa4c3f5b6fe7fe28634f36f90a480ccde248384d40986995",
+      "curr_text_sha256": "2a604542b9057b0a33dce41d4f587f108d13fdf737488f65e6e84745b9af4995",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

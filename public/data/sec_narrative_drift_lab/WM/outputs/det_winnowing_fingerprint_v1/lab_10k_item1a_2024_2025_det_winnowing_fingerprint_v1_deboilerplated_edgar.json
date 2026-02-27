@@ -1,0 +1,55 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_winnowing_fingerprint_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "WM",
+  "section": "10k_item1a",
+  "year_from": 2024,
+  "year_to": 2025,
+  "artifacts": {
+    "stats": {
+      "shared_fingerprints": 8369,
+      "prev_fingerprints": 19625,
+      "curr_fingerprints": 13440,
+      "shared_ratio": 0.6226934523809524
+    }
+  },
+  "evidence": [
+    {
+      "year": 2025,
+      "paragraph_idx": 0,
+      "snippet": "Our business, financial condition and results of operations are subject to numerous risks and uncertainties, some of whi",
+      "why": "Shared fingerprint span."
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 0,
+      "snippet": "Our business, financial condition and results of operations are subject to numerous risks and uncertainties, some of whic",
+      "why": "Shared fingerprint span."
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 0,
+      "snippet": "Our business, financial condition and results of operations are subject to numerous risks and uncertainties, some of which a",
+      "why": "Shared fingerprint span."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.6226934523809524,
+    "confidence": 1.0,
+    "coverage": 0.4256049726180182,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-26T21:41:00Z",
+    "git_commit": "8bcb3111a526be94846e285e2b5a3c5d0f6c2788",
+    "script_version": "build_lab_outputs.py@v2+a155741242",
+    "inputs": {
+      "prev_text_sha256": "ec656ab71eb903db88d5fc3b98e2b8e10ced284abecd2f202c9f3bfe9aab7c5d",
+      "curr_text_sha256": "45cbaa553e9947350ad6bb6b92df4d47ac14ea1cf56bfd324ce42fe31eeda9e1",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

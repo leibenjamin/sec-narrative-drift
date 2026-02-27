@@ -10,6 +10,8 @@ from typing import Any, Optional, cast
 from lab_output_tracks import (  # type: ignore
     LLM_CAMPAIGNS,
     LLM_DETECTORS,
+    canonical_outline_compare_relative_path,
+    canonical_outline_research_relative_path,
     canonical_output_relative_path,
 )
 from lab_script_version import build_script_version
@@ -101,6 +103,43 @@ def _validate_variant_payload(
     return (len(reasons) == 0, reasons, run_label)
 
 
+def _validate_outline_compare_payload(
+    payload: dict[str, Any],
+    lens: str,
+    campaign_provider: str,
+    campaign_model: str,
+) -> bool:
+    if payload.get("artifact_id") != "llm_outline_compare_v1":
+        return False
+    if payload.get("cleaning_lens") != lens:
+        return False
+    provenance = as_dict(payload.get("provenance"))
+    if provenance is None:
+        return False
+    if provenance.get("model_provider") != campaign_provider:
+        return False
+    if provenance.get("model_name") != campaign_model:
+        return False
+    run_label_raw = provenance.get("run_label")
+    if not isinstance(run_label_raw, str) or RUN_LABEL_RE.fullmatch(run_label_raw) is None:
+        return False
+    return True
+
+
+def _validate_outline_research_payload(
+    payload: dict[str, Any],
+    lens: str,
+) -> bool:
+    if payload.get("artifact_id") != "llm_outline_research_v1":
+        return False
+    if payload.get("cleaning_lens") != lens:
+        return False
+    claims = as_list(payload.get("claims"))
+    if claims is None:
+        return False
+    return True
+
+
 def _resolve_input_file(input_file: str) -> Optional[Path]:
     normalized = input_file.strip().replace("\\", "/").lstrip("./")
     if not normalized:
@@ -184,6 +223,64 @@ def build_variant_rows(registry_path: Path) -> tuple[list[dict[str, Any]], dict[
                     repo_path = f"public/data/sec_narrative_drift_lab/{rel}"
                     request_url = _request_url(ticker, rel)
                     abs_path = REPO_ROOT / repo_path
+                    outline_compare_rel = canonical_outline_compare_relative_path(
+                        ticker=ticker,
+                        section=section,
+                        year_from=year_from,
+                        year_to=year_to,
+                        cleaning_lens=lens,
+                        source_id="edgar",
+                        track_slug=campaign.track_slug,
+                    )
+                    outline_compare_repo_path = (
+                        f"public/data/sec_narrative_drift_lab/{outline_compare_rel}"
+                    )
+                    outline_compare_request_url = _request_url(ticker, outline_compare_rel)
+                    outline_compare_abs_path = REPO_ROOT / outline_compare_repo_path
+                    outline_compare_present = outline_compare_abs_path.exists()
+                    outline_compare_valid = False
+                    if outline_compare_present:
+                        try:
+                            outline_payload_raw = read_json(outline_compare_abs_path)
+                            outline_payload = as_dict(outline_payload_raw)
+                            if outline_payload is not None:
+                                outline_compare_valid = _validate_outline_compare_payload(
+                                    outline_payload,
+                                    lens=lens,
+                                    campaign_provider=campaign.model_provider,
+                                    campaign_model=campaign.model_name,
+                                )
+                        except Exception:
+                            outline_compare_valid = False
+
+                    outline_research_rel = canonical_outline_research_relative_path(
+                        ticker=ticker,
+                        section=section,
+                        year_from=year_from,
+                        year_to=year_to,
+                        cleaning_lens=lens,
+                        source_id="edgar",
+                        track_slug=campaign.track_slug,
+                    )
+                    outline_research_repo_path = (
+                        f"public/data/sec_narrative_drift_lab/{outline_research_rel}"
+                    )
+                    outline_research_request_url = _request_url(ticker, outline_research_rel)
+                    outline_research_abs_path = REPO_ROOT / outline_research_repo_path
+                    outline_research_present = outline_research_abs_path.exists()
+                    outline_research_valid = False
+                    if outline_research_present:
+                        try:
+                            outline_research_payload_raw = read_json(outline_research_abs_path)
+                            outline_research_payload = as_dict(outline_research_payload_raw)
+                            if outline_research_payload is not None:
+                                outline_research_valid = _validate_outline_research_payload(
+                                    outline_research_payload,
+                                    lens=lens,
+                                )
+                        except Exception:
+                            outline_research_valid = False
+
                     present = abs_path.exists()
                     valid = False
                     reasons: list[str] = []
@@ -249,6 +346,14 @@ def build_variant_rows(registry_path: Path) -> tuple[list[dict[str, Any]], dict[
                             "input_file": input_file,
                             "year_input_prev": year_input_prev,
                             "year_input_curr": year_input_curr,
+                            "outline_compare_present": outline_compare_present,
+                            "outline_compare_valid": outline_compare_valid,
+                            "outline_compare_expected_repo_path": outline_compare_repo_path,
+                            "outline_compare_request_url": outline_compare_request_url,
+                            "outline_research_present": outline_research_present,
+                            "outline_research_valid": outline_research_valid,
+                            "outline_research_expected_repo_path": outline_research_repo_path,
+                            "outline_research_request_url": outline_research_request_url,
                             "validation_reasons": reasons,
                         }
                     )

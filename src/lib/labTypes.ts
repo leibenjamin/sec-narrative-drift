@@ -85,6 +85,14 @@ export type LabLlmVariant = {
   input_file?: string
   year_input_prev?: string
   year_input_curr?: string
+  outline_compare_present?: boolean
+  outline_compare_valid?: boolean
+  outline_compare_expected_repo_path?: string
+  outline_compare_request_url?: string
+  outline_research_present?: boolean
+  outline_research_valid?: boolean
+  outline_research_expected_repo_path?: string
+  outline_research_request_url?: string
   validation_reasons?: string[]
 }
 
@@ -165,6 +173,100 @@ export type LabOutput = {
   artifacts: LabArtifacts
   evidence: EvidenceBlock[]
   metrics: LabMetrics
+  provenance: LabProvenance
+}
+
+export type OutlineChangeClass =
+  | "added"
+  | "removed"
+  | "moved"
+  | "split"
+  | "merged"
+  | "reworded"
+  | "intensified"
+  | "softened"
+  | "stable"
+
+export type LabOutlineNode = {
+  node_id: string
+  parent_id: string | null
+  level: 1 | 2 | 3
+  order: number
+  label: string
+  risk_thesis: string
+  evidence_paragraph_idx: number[]
+}
+
+export type LabOutlineAlignment = {
+  prev_node_id: string | null
+  curr_node_id: string | null
+  change_class: OutlineChangeClass
+  rationale: string
+  salience: number
+}
+
+export type LabOutlineMaterialChange = {
+  id: string
+  title: string
+  change_class: Exclude<OutlineChangeClass, "stable">
+  salience: number
+  caveat: string
+  evidence_refs: Array<{
+    year: number
+    paragraph_idx: number
+  }>
+}
+
+export type LabOutlineEvidence = {
+  year: number
+  paragraph_idx: number
+  snippet: string
+  why: string
+  node_ids: string[]
+}
+
+export type LabOutlineCompareOutput = {
+  lab_schema_version: "1.0"
+  artifact_schema_version: "1.0"
+  artifact_id: "llm_outline_compare_v1"
+  ticker: string
+  section: string
+  source_id: LabSourceId
+  cleaning_lens: LabCleaningLens
+  year_from: number
+  year_to: number
+  outline_prev: LabOutlineNode[]
+  outline_curr: LabOutlineNode[]
+  node_alignment: LabOutlineAlignment[]
+  material_changes: LabOutlineMaterialChange[]
+  evidence_bank: LabOutlineEvidence[]
+  lens_divergence: {
+    materially_different: boolean
+    summary: string
+  }
+  provenance: LabProvenance
+}
+
+export type LabOutlineResearchClaim = {
+  claim: string
+  source_url: string
+  source_date: string
+  support_label: "support" | "contradict" | "unclear"
+  note: string
+}
+
+export type LabOutlineResearchOutput = {
+  lab_schema_version: "1.0"
+  artifact_schema_version: "1.0"
+  artifact_id: "llm_outline_research_v1"
+  ticker: string
+  section: string
+  source_id: LabSourceId
+  cleaning_lens: LabCleaningLens
+  year_from: number
+  year_to: number
+  trigger_reasons: string[]
+  claims: LabOutlineResearchClaim[]
   provenance: LabProvenance
 }
 

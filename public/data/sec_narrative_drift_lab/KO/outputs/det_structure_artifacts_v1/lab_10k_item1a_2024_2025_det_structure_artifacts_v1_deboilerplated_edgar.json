@@ -1,0 +1,51 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_structure_artifacts_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "KO",
+  "section": "10k_item1a",
+  "year_from": 2024,
+  "year_to": 2025,
+  "artifacts": {
+    "stats": {
+      "headings_prev": [
+        "ITEM 1B. UNRESOLVED STAFF COMMENTS"
+      ],
+      "headings_curr": [],
+      "headings_added": [],
+      "headings_removed": [
+        "ITEM 1B. UNRESOLVED STAFF COMMENTS"
+      ],
+      "paragraph_count_prev": 61,
+      "paragraph_count_curr": 68,
+      "length_chars_prev": 23174,
+      "length_chars_curr": 24682
+    }
+  },
+  "evidence": [
+    {
+      "year": 2024,
+      "paragraph_idx": 0,
+      "snippet": "ITEM 1B. UNRESOLVED STAFF COMMENTS",
+      "why": "Heading removed: ITEM 1B. UNRESOLVED STAFF COMMENTS"
+    }
+  ],
+  "metrics": {
+    "drift_score": 1.0,
+    "confidence": 0.05,
+    "coverage": 0.255164060779564,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-26T21:40:59Z",
+    "git_commit": "8bcb3111a526be94846e285e2b5a3c5d0f6c2788",
+    "script_version": "build_lab_outputs.py@v2+a155741242",
+    "inputs": {
+      "prev_text_sha256": "67390cdd78f069859395b167127b52c8f554beb54d6300f9c23ceb918d6bac77",
+      "curr_text_sha256": "1479809c52f4607b7aa36cd122f625e3cd3d9ea49699960cc45d39e39ae2b171",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

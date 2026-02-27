@@ -1,0 +1,73 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_minhash_boilerplate_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "GE",
+  "section": "10k_item1a",
+  "year_from": 2024,
+  "year_to": 2025,
+  "artifacts": {
+    "stats": {
+      "percent_reused": 0.25,
+      "percent_new": 0.75,
+      "reused_paragraphs": 8,
+      "total_paragraphs": 32
+    }
+  },
+  "evidence": [
+    {
+      "year": 2025,
+      "paragraph_idx": 0,
+      "snippet": "RISK FACTORS. The following discussion of the material factors, events and uncertainties that may make an investment in the Company speculative or risky contains \u201cforward-looking statements,\" as discussed in the Forward-Looking Statements section. These risk factors may be important to understanding any statement in this report or elsewhere. The risks described below should not be considered a complete list of potential risks that we face, and additional risks not currently known to us or that we currently consider immaterial may also negatively impact us. The following information should be read in conjunction with the MD&A section and the consolidated financial statements and related notes. The risks we describe in this report or in our other SEC filings could, in ways we may not be able to accurately predict, recognize or control, have a material adverse effect on our business, reputation, financial position, results of operations, cash flows and stock price, and they could cause our future results to be materially different than we presently anticipate.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 0,
+      "snippet": "RISK FACTORS. The following discussion of the material factors, events and uncertainties that may make an investment in the Company speculative or risky contains \u201cforward-looking statements,\" as discussed in the Forward-Looking Statements section. These risk factors may be important to understanding any statement in this report or elsewhere. The risks described below should not be considered a complete list of potential risks that we face, and additional risks not currently known to us or that we currently consider immaterial may also negatively impact us. The following information should be read in conjunction with the MD&A section and the consolidated financial statements and related notes. The risks we describe in this report or in our other SEC filings could, in ways we may not be able to accurately predict, recognize or control, have a material adverse effect on our business, reputation, financial position, results of operations, cash flows and stock price, and they could cause our future results to be materially different than we presently anticipate.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 13,
+      "snippet": "OPERATIONAL RISKS. Operational risk relates to risks arising from systems, processes, people and external events that affect the operation of our business. It includes risks related to product safety, quality and performance; supply chain and business disruption; operational execution across product and service life cycles; and information management and data protection and security, including cybersecurity.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 15,
+      "snippet": "OPERATIONAL RISKS. Operational risk relates to risks arising from systems, processes, people and external events that affect the operation of our business. It includes risks related to product safety, quality and performance; supply chain and business disruption; operational execution across product and service life cycles; and information management and data protection and security, including cybersecurity.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 24,
+      "snippet": "FINANCIAL RISKS. Financial risk relates to our ability to meet financial goals and obligations and mitigate exposure to broad market risks. In addition to the risks to financial performance that most of the items described throughout our risk factors pose, financial risks include credit risk; funding and liquidity risks; and volatility in foreign currency exchange rates, interest rates and commodity prices. We also face financial risks associated with our run-off insurance and banking operations. Credit risk is the risk of financial loss arising from a customer or counterparty failure to meet its contractual obligations. Liquidity risk refers to the potential inability to meet contractual or contingent financial obligations (whether on- or off-balance sheet) as they arise, and could potentially impact our financial condition, cash flow or overall safety and soundness.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 25,
+      "snippet": "FINANCIAL RISKS. Financial risk relates to our ability to meet financial goals and obligations and mitigate exposure to broad market risks. In addition to the risks to financial performance that most of the items described throughout our risk factors pose, financial risks include credit risk; funding and liquidity risks; and volatility in foreign currency exchange rates, interest rates and commodity prices. We also face financial risks associated with our run-off insurance and banking operations. Credit risk is the risk of financial loss arising from a customer or counterparty failure to meet its contractual obligations. Liquidity risk refers to the potential inability to meet contractual or contingent financial obligations (whether on- or off-balance sheet) as they arise, and could potentially impact our financial condition, cash flow or overall safety and soundness.",
+      "why": "Matching paragraph from prior year."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.75,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-26T21:41:00Z",
+    "git_commit": "8bcb3111a526be94846e285e2b5a3c5d0f6c2788",
+    "script_version": "build_lab_outputs.py@v2+a155741242",
+    "inputs": {
+      "prev_text_sha256": "e52b4b32b73cacf0f7dde38785d5e00f8634370d20ca5a6e5ea811d077091de1",
+      "curr_text_sha256": "451953ccc936ce9973e1aedeb3123235e30229754be0f3f42fe65e216298d12a",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

@@ -1,0 +1,157 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_jsd_ngrams_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "GE",
+  "section": "10k_item1a",
+  "year_from": 2024,
+  "year_to": 2025,
+  "artifacts": {
+    "ranked_items": [
+      {
+        "label": "climate change",
+        "score": 0.0007011393514460999
+      },
+      {
+        "label": "recent",
+        "score": 0.00043821209465381246
+      },
+      {
+        "label": "certification",
+        "score": 0.0003683919690550746
+      },
+      {
+        "label": "change",
+        "score": 0.0003542178213026438
+      },
+      {
+        "label": "proprietary information",
+        "score": 0.0002762939767913059
+      },
+      {
+        "label": "environmental factors",
+        "score": 0.0002762939767913059
+      },
+      {
+        "label": "climate environmental",
+        "score": 0.0002762939767913059
+      },
+      {
+        "label": "confidential proprietary",
+        "score": 0.0002762939767913059
+      },
+      {
+        "label": "proprietary",
+        "score": 0.0002762939767913059
+      },
+      {
+        "label": "business information",
+        "score": 0.00026292725679228745
+      },
+      {
+        "label": "confidential business",
+        "score": 0.00026292725679228745
+      },
+      {
+        "label": "climate",
+        "score": 0.0002481660906682827
+      },
+      {
+        "label": "regarding",
+        "score": 0.0001841959845275373
+      },
+      {
+        "label": "aerospace sector",
+        "score": 0.0001841959845275373
+      },
+      {
+        "label": "cybersecurity vulnerabilities",
+        "score": 0.0001841959845275373
+      },
+      {
+        "label": "challenges business",
+        "score": 0.0001841959845275373
+      },
+      {
+        "label": "assess",
+        "score": 0.0001841959845275373
+      },
+      {
+        "label": "ge spin",
+        "score": 0.0001841959845275373
+      },
+      {
+        "label": "tax audits",
+        "score": 0.0001841959845275373
+      },
+      {
+        "label": "caused",
+        "score": 0.00017528483786152498
+      }
+    ],
+    "stats": {
+      "jsd": 0.128863,
+      "tokens_prev": 2853,
+      "tokens_curr": 2715
+    }
+  },
+  "evidence": [
+    {
+      "year": 2025,
+      "paragraph_idx": 3,
+      "snippet": "Our operations and performance are also affected by local and regional economic environments, supply chain constraints and policies in the U.S. and other markets that we serve, including factors such as inflationary pressures, interest rates, economic growth rates, the availability of skilled labor, monetary policy, exchange rates, currency volatility, commodity prices and sovereign debt levels.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "change"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 7,
+      "snippet": "Capital spending and demand for aircraft engines, aviation products and aftermarket parts and services by commercial airlines, lessors, other aircraft owners or operators and airframers are influenced by a wide variety of factors, including current and predicted traffic levels, passenger and cargo load factors, aircraft fuel prices, labor costs and other issues, airline consolidation, bankruptcies and restructuring activities, competition, the retirement of older aircraft, changes in production schedules, production capabilities and capacities of airframers, regulatory oversight and changes, regulatory certification timing, environmental regulations and related impacts, terrorism and related security concerns, aircraft safety incidents, general economic conditions (including inflationary pressures and new or increased tariffs), tightening of credit in financial markets, corporate profitability, cost reduction efforts and remaining performance obligation levels.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "certification",
+        "change"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 0,
+      "snippet": "STRATEGIC RISKS. Strategic risk relates to the Company\u2019s future business plans and strategies, including the risks associated with the global macro-environment; dynamics in the commercial aviation sector; competitive threats; the demand for our products and services and the success of our investments in technology and innovation; impacts of government spending, programs and contracts; climate change; our recent spin-offs; capital allocation decisions; acquisitions, dispositions, joint ventures and other inorganic investments; intellectual property; and other risks.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "climate change",
+        "recent",
+        "change"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 2,
+      "snippet": "Our operations and performance are also affected by local and regional economic environments, supply chain constraints and policies in the U.S. and other markets that we serve, including factors such as inflationary pressures in many markets, interest rates, economic growth rates, the availability of skilled labor, monetary policy, exchange rates, currency volatility, commodity prices and sovereign debt levels.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "change"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.128863,
+    "confidence": 1.0,
+    "coverage": 0.5317901284564172,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-26T21:41:00Z",
+    "git_commit": "8bcb3111a526be94846e285e2b5a3c5d0f6c2788",
+    "script_version": "build_lab_outputs.py@v2+a155741242",
+    "inputs": {
+      "prev_text_sha256": "967ac87369cbe17e96f8d004e36bb7ef4880f085ee5533bdaabd2fa5cced5537",
+      "curr_text_sha256": "acf78b9b22eb0e338172ad504b6d1185188cd3df67e46e01e11ad3644e295ea1",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

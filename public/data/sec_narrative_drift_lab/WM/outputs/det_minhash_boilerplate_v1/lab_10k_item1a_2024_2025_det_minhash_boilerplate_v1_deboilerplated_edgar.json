@@ -1,0 +1,73 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_minhash_boilerplate_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "WM",
+  "section": "10k_item1a",
+  "year_from": 2024,
+  "year_to": 2025,
+  "artifacts": {
+    "stats": {
+      "percent_reused": 0.1951219512195122,
+      "percent_new": 0.8048780487804879,
+      "reused_paragraphs": 24,
+      "total_paragraphs": 123
+    }
+  },
+  "evidence": [
+    {
+      "year": 2025,
+      "paragraph_idx": 10,
+      "snippet": "The acquisition of Stericycle may not result in realization of the benefits and cost synergies that we currently expect, and we cannot guarantee that these benefits and cost synergies will be achieved within anticipated time frames.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 19,
+      "snippet": "The acquisition of Stericycle may not result in realization of the benefits and cost synergies that we currently expect, and we cannot guarantee that these benefits and cost synergies will be achieved within anticipated time frames or at all.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 14,
+      "snippet": "Similar issues can also result in a significant increase in operating costs; for example, developments in recent years related to management of per- and polyfluoroalkyl substances (\u201cPFAS\u201d) have increased our landfill operating costs.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 26,
+      "snippet": "Similar issues can also result in a significant increase in operating costs; for example, developments in recent years related to management of per-and polyfluoroalkyl substances (\u201cPFAS\u201d) have increased our landfill operating costs.",
+      "why": "Matching paragraph from prior year."
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 56,
+      "snippet": "Counties and municipalities may have financial competitive advantages because tax revenues are available to them and tax-exempt financing is more readily available to them.",
+      "why": "Near-duplicate paragraph (Jaccard 1.00)."
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 83,
+      "snippet": "Counties and municipalities may have financial competitive advantages because tax revenues are available to them and tax-exempt financing is more readily available to",
+      "why": "Matching paragraph from prior year."
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.8048780487804879,
+    "confidence": 1.0,
+    "coverage": 0.4256049726180182,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-26T21:41:00Z",
+    "git_commit": "8bcb3111a526be94846e285e2b5a3c5d0f6c2788",
+    "script_version": "build_lab_outputs.py@v2+a155741242",
+    "inputs": {
+      "prev_text_sha256": "ec656ab71eb903db88d5fc3b98e2b8e10ced284abecd2f202c9f3bfe9aab7c5d",
+      "curr_text_sha256": "45cbaa553e9947350ad6bb6b92df4d47ac14ea1cf56bfd324ce42fe31eeda9e1",
+      "lens": "deboilerplated",
+      "source": "edgar"
+    }
+  }
+}

@@ -1,13 +1,14 @@
 # Portfolio Story: SEC Narrative Drift Lab
 
 ## One-line pitch
-This Lab shows how risk disclosures change year-over-year using deterministic detectors, then layers offline precomputed LLM campaigns for side-by-side model comparison.
+This Lab shows how risk disclosures change year-over-year using deterministic detectors and outline-aware offline LLM artifacts, with side-by-side model comparison and path-level reproducibility.
 
 ## What to demo first (30 seconds)
 1. Open a showcase company page (company pages are now Lab-only).
 2. Show a recommended adjacent pair (for example `NVDA 2021-2022`).
 3. Explain:
    - deterministic detectors quantify shift/reuse/structure changes,
+   - Outline Compare surfaces structure-aware material changes (added/removed/moved/reworded/intensified/softened),
    - lens toggle compares cleaned vs raw text effects,
    - missing artifacts are explicit with expected paths and copyable debug payloads.
 
@@ -19,6 +20,8 @@ This Lab shows how risk disclosures change year-over-year using deterministic de
 - LLM layer is reproducible: users can rerun from published full-section v2 pair/year inputs and thread-starter instructions.
 - Provenance is campaign-aware (`model_provider`, `model_name`, required day-precise `run_label`) to support future model-vs-model comparisons.
 - Runtime currently shows the Codex full-section v2 campaign (`GPT-5.3-Codex (Extra High Reasoning, Agent Mode)`) at strict-valid `84/84` while ChatGPT full-section v2 remains a pending second wave (`84` expected missing).
+- Active runtime pair scope is FY2022+ adjacent pairs only (12 pairs across NVDA/KO/WM/GE).
+- Newly added FY2025 pairs remain visible immediately with deterministic-first defaults when LLM sidecars are unavailable.
 - Focuspack-era campaigns are preserved for audit history but hidden from runtime selectors.
 - Deep Dive v3 adds persistent mode-state framing, signal-quality tiers, interpretation-first card headers, and sourced method-context drawers (canonical usage, this-app deviation, failure modes, alternatives, origins).
 - Current operational remainder: post-UX incognito screenshot closeout for full-section v2 Deep Dive states, then ChatGPT full-section second-wave generation to restore full A/B parity.

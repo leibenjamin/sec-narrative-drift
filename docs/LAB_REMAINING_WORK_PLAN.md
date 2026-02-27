@@ -2,7 +2,7 @@
 Last updated: 2026-02-23 (full-section v2 crash-recovery sync)
 Scope: deterministic pipeline + React UI Lab-first product flow
 Showcase tickers: NVDA, KO, WM, GE
-Core time window: 2019-2024 adjacent year pairs (include most recent even if low signal); 2024-2025 only if locally available
+Core time window: FY2022+ adjacent year pairs (12 runtime pairs: NVDA/KO/WM/GE x 2022-2023, 2023-2024, 2024-2025)
 
 ## Hard constraints (DO NOT VIOLATE)
 - Deterministic only in the shipped app; no runtime ML/LLM calls.
@@ -91,6 +91,8 @@ Remaining human/manual work (post-hardening):
 - publish screenshot verification for deployed Deep Dive v3 states (incognito),
 - complete ChatGPT full-section second wave (`84` outputs) before re-enabling full A/B compare defaults,
 - optional editorial fine-tuning passes for Codex prose style (not contract-blocking).
+- continue LLM-first pivot: master outline compare artifacts as canonical unit with deterministic projection to legacy LLM detector envelopes.
+- deterministic-first runtime behavior for pairs where LLM sidecars are not yet available (explicit missing/debug payloads remain required).
 
 Repository policy note:
 - `reports/*`, `bundles/*`, `scripts/_reports/*`, `scripts/_cache/*`, and `analysis_exports/*` are local-only and intentionally untracked.
@@ -144,7 +146,7 @@ Additionally, add cache headers for lab data to reduce confusion:
 
 Acceptance criteria for Phase 0:
 - Live registry `updated_at` matches latest deploy.
-- Live site shows deterministic outputs for all required pairs (2019-2024 adjacents) under deboilerplated.
+- Live site shows deterministic outputs for all required runtime pairs (FY2022+ adjacents) under deboilerplated.
 - No "empty card" that is actually caused by missing file/path/schema.
 
 ---
@@ -171,7 +173,7 @@ Codex task:
 If raw texts exist:
 - Run `build_lab_outputs.py` with `--lenses raw` for:
   - all tickers NVDA, KO, WM, GE
-  - all adjacent pairs 2019-2024 (and 2024-2025 only if prerequisites exist)
+  - all adjacent pairs in FY2022+ runtime scope (2022-2023, 2023-2024, 2024-2025)
   - detectors: the same 6 deterministic detectors
 
 Example shape (adjust to your CLI):

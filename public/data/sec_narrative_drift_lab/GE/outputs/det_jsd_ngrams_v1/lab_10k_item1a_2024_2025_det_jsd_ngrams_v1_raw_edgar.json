@@ -1,0 +1,154 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_jsd_ngrams_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "GE",
+  "section": "10k_item1a",
+  "year_from": 2024,
+  "year_to": 2025,
+  "artifacts": {
+    "ranked_items": [
+      {
+        "label": "climate change",
+        "score": 0.0003829583532790809
+      },
+      {
+        "label": "environmental factors",
+        "score": 0.00014750712951125972
+      },
+      {
+        "label": "confidential proprietary",
+        "score": 0.00014750712951125972
+      },
+      {
+        "label": "proprietary",
+        "score": 0.00014750712951125972
+      },
+      {
+        "label": "proprietary information",
+        "score": 0.00014750712951125972
+      },
+      {
+        "label": "climate environmental",
+        "score": 0.00014750712951125972
+      },
+      {
+        "label": "business information",
+        "score": 0.00014360938247965534
+      },
+      {
+        "label": "confidential business",
+        "score": 0.00014360938247965534
+      },
+      {
+        "label": "climate",
+        "score": 0.00014141312225300173
+      },
+      {
+        "label": "change",
+        "score": 0.0001394237017607116
+      },
+      {
+        "label": "recent",
+        "score": 0.000134499157045604
+      },
+      {
+        "label": "challenges business",
+        "score": 9.833808634083981e-05
+      },
+      {
+        "label": "assess",
+        "score": 9.833808634083981e-05
+      },
+      {
+        "label": "ge spin",
+        "score": 9.833808634083981e-05
+      },
+      {
+        "label": "tax audits",
+        "score": 9.833808634083981e-05
+      },
+      {
+        "label": "aerospace sector",
+        "score": 9.833808634083981e-05
+      },
+      {
+        "label": "cybersecurity vulnerabilities",
+        "score": 9.833808634083981e-05
+      },
+      {
+        "label": "recent elections",
+        "score": 9.573958831977022e-05
+      },
+      {
+        "label": "additional investments",
+        "score": 9.573958831977022e-05
+      },
+      {
+        "label": "change impacts",
+        "score": 9.573958831977022e-05
+      }
+    ],
+    "stats": {
+      "jsd": 0.064346,
+      "tokens_prev": 5223,
+      "tokens_curr": 5085
+    }
+  },
+  "evidence": [
+    {
+      "year": 2025,
+      "paragraph_idx": 1,
+      "snippet": "STRATEGIC RISKS. Strategic risk relates to the Company\u2019s future business plans and strategies, including the risks associated with the global macro-environment; dynamics in the commercial aviation sector; competitive threats; the demand for our products and services and the success of our investments in technology and innovation; impacts of government spending, programs and contracts; climate and environmental factors; the GE spin-offs; capital allocation decisions; acquisitions, dispositions, joint ventures and other inorganic investments; intellectual property; and other risks.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "environmental factors"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 7,
+      "snippet": "Climate and environmental factors - Our business and financial performance may be adversely affected by climate and environmental factors, including changes in regulations, customer demand, technologies and extreme weather. Environmental and climate-related laws or regulations, including regulations on greenhouse gas emissions caps, carbon pricing and taxes, energy taxes, product fuel efficiency standards and mandatory disclosure obligations, as well as industry actions in response, continue to evolve and reflect a range of views among global regulators and other stakeholders; these may present risks to our business and financial results and increase our operational and compliance expenditures and those of our customers and suppliers. In addition, we",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "environmental factors"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 1,
+      "snippet": "STRATEGIC RISKS. Strategic risk relates to the Company\u2019s future business plans and strategies, including the risks associated with the global macro-environment; dynamics in the commercial aviation sector; competitive threats; the demand for our products and services and the success of our investments in technology and innovation; impacts of government spending, programs and contracts; climate change; our recent spin-offs; capital allocation decisions; acquisitions, dispositions, joint ventures and other inorganic investments; intellectual property; and other risks.",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "climate change"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 8,
+      "snippet": "Climate change - Our business and financial performance may be adversely affected by climate change impacts, including changes in regulations, customer demand, technologies and extreme weather. Our business may be impacted by climate change and governmental and industry actions taken in response, which present a variety of risks to our business and financial results. Changes in environmental and climate-related laws or regulations, including regulations on greenhouse gas emissions caps, carbon",
+      "why": "Paragraph with high-contribution n-grams.",
+      "highlights": [
+        "climate change"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.064346,
+    "confidence": 1.0,
+    "coverage": 1.0,
+    "warnings": []
+  },
+  "provenance": {
+    "build_utc": "2026-02-26T21:41:00Z",
+    "git_commit": "8bcb3111a526be94846e285e2b5a3c5d0f6c2788",
+    "script_version": "build_lab_outputs.py@v2+a155741242",
+    "inputs": {
+      "prev_text_sha256": "e52b4b32b73cacf0f7dde38785d5e00f8634370d20ca5a6e5ea811d077091de1",
+      "curr_text_sha256": "451953ccc936ce9973e1aedeb3123235e30229754be0f3f42fe65e216298d12a",
+      "lens": "raw",
+      "source": "edgar"
+    }
+  }
+}

@@ -24,11 +24,9 @@ REQUIRED_DETECTORS = [
 ]
 OPTIONAL_LLM_DETECTORS = ["det_llm_delta_brief_v1", "det_llm_excerpt_picker_v1"]
 REQUIRED_ADJACENT_PAIRS = [
-    (2019, 2020),
-    (2020, 2021),
-    (2021, 2022),
     (2022, 2023),
     (2023, 2024),
+    (2024, 2025),
 ]
 
 
@@ -360,10 +358,7 @@ def main(argv: Optional[list[str]] = None) -> int:
     lines.append("- required_source: edgar")
     lines.append(f"- required_detectors: {', '.join(REQUIRED_DETECTORS)}")
     lines.append(f"- optional_llm_detectors: {', '.join(OPTIONAL_LLM_DETECTORS)}")
-    lines.append(
-        "- required_pairs: 2019-2020, 2020-2021, 2021-2022, 2022-2023, 2023-2024 "
-        "+ most recent adjacent pair if newer"
-    )
+    lines.append("- required_pairs: 2022-2023, 2023-2024, 2024-2025")
     lines.append(f"- rows_checked: {len(coverage_rows)}")
     lines.append(f"- required_failure_count: {len(required_failures)}")
     lines.append(f"- missing_required_pairs_count: {len(required_missing_pairs)}")
