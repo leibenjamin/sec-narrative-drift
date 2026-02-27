@@ -4,6 +4,14 @@ Scope: deterministic pipeline + React UI Lab-first product flow
 Showcase tickers: NVDA, KO, WM, GE
 Core time window: FY2022+ adjacent year pairs (12 runtime pairs: NVDA/KO/WM/GE x 2022-2023, 2023-2024, 2024-2025)
 
+## Superseding update (2026-02-27)
+- LLM runtime policy is now **real-run only**:
+  - runtime-visible: `openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27`
+  - runtime-hidden pending: `openai_chatgpt52ext_agent_fullsec_real_2026-02-27`
+  - synthetic full-section campaigns (`*_fullsec_2026-02-22`) are audit-only and runtime-hidden.
+- Full-section v2 input coverage is complete for all 12 FY2022+ adjacent pairs (including KO/WM/GE 2024-2025 raw + deboilerplated).
+- Outline Compare plumbing is in runtime, but no `llm_outline_compare_v1` artifacts are present yet; until real artifacts are generated, deterministic-first behavior plus explicit missing/debug states remains the canonical UX.
+
 ## Hard constraints (DO NOT VIOLATE)
 - Deterministic only in the shipped app; no runtime ML/LLM calls.
 - No POS taggers.

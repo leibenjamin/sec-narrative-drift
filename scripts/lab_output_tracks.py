@@ -87,26 +87,52 @@ LLM_CAMPAIGNS: tuple[OutputTrack, ...] = (
     OutputTrack(
         track_id="openai_gpt53codex_xhigh_agent_fullsec_2026-02-22",
         track_slug="openai-gpt53codex-xhigh-agent-fullsec-2026-02-22",
-        display_name="GPT-5.3-Codex (Full Section v2)",
+        display_name="GPT-5.3-Codex (Full Section v2, Synthetic Baseline)",
         kind="llm",
         input_mode="full_section_v2",
         model_provider="openai",
         model_name="GPT-5.3-Codex (Extra High Reasoning, Agent Mode)",
         run_label_prefix_template=f"{RUN_LABEL_DATE_PREFIX}_openai_gpt53codex_fullsec_...",
         instructions_asset_name="llm_project_instructions_openai_gpt53codex_xhigh_agent_fullsec_2026-02-22.txt",
-        primary_for_runtime=True,
-        runtime_visible=True,
+        primary_for_runtime=False,
+        runtime_visible=False,
     ),
     OutputTrack(
         track_id="openai_chatgpt52ext_agent_fullsec_2026-02-22",
         track_slug="openai-chatgpt52ext-agent-fullsec-2026-02-22",
-        display_name="ChatGPT 5.2-Thinking (Extended Thinking) (Full Section v2)",
+        display_name="ChatGPT 5.2-Thinking (Extended Thinking) (Full Section v2, Synthetic Baseline)",
         kind="llm",
         input_mode="full_section_v2",
         model_provider="openai",
         model_name="ChatGPT 5.2-Thinking (Extended Thinking)",
         run_label_prefix_template=f"{RUN_LABEL_DATE_PREFIX}_openai_chatgpt52ext_fullsec_...",
         instructions_asset_name="llm_project_instructions_openai_chatgpt52ext_agent_fullsec_2026-02-22.txt",
+        compare_default=False,
+        runtime_visible=False,
+    ),
+    OutputTrack(
+        track_id="openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27",
+        track_slug="openai-gpt53codex-xhigh-agent-fullsec-real-2026-02-27",
+        display_name="GPT-5.3-Codex (Full Section v2, Real Manual Runs)",
+        kind="llm",
+        input_mode="full_section_v2",
+        model_provider="openai",
+        model_name="GPT-5.3-Codex (Extra High Reasoning, Agent Mode)",
+        run_label_prefix_template=f"{RUN_LABEL_DATE_PREFIX}_openai_gpt53codex_fullsec_real_...",
+        instructions_asset_name="llm_project_instructions_openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27.txt",
+        primary_for_runtime=True,
+        runtime_visible=True,
+    ),
+    OutputTrack(
+        track_id="openai_chatgpt52ext_agent_fullsec_real_2026-02-27",
+        track_slug="openai-chatgpt52ext-agent-fullsec-real-2026-02-27",
+        display_name="ChatGPT 5.2-Thinking (Extended Thinking) (Full Section v2, Real Manual Runs)",
+        kind="llm",
+        input_mode="full_section_v2",
+        model_provider="openai",
+        model_name="ChatGPT 5.2-Thinking (Extended Thinking)",
+        run_label_prefix_template=f"{RUN_LABEL_DATE_PREFIX}_openai_chatgpt52ext_fullsec_real_...",
+        instructions_asset_name="llm_project_instructions_openai_chatgpt52ext_agent_fullsec_real_2026-02-27.txt",
         compare_default=True,
         runtime_visible=False,
     ),
@@ -115,8 +141,8 @@ LLM_CAMPAIGNS: tuple[OutputTrack, ...] = (
 TRACKS_BY_ID = {track.track_id: track for track in (DETERMINISTIC_BASELINE_TRACK, *LLM_CAMPAIGNS)}
 TRACKS_BY_SLUG = {track.track_slug: track for track in (DETERMINISTIC_BASELINE_TRACK, *LLM_CAMPAIGNS)}
 
-DEFAULT_PRIMARY_LLM_CAMPAIGN_ID = "openai_gpt53codex_xhigh_agent_fullsec_2026-02-22"
-DEFAULT_COMPARE_LLM_CAMPAIGN_ID = "openai_chatgpt52ext_agent_fullsec_2026-02-22"
+DEFAULT_PRIMARY_LLM_CAMPAIGN_ID = "openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27"
+DEFAULT_COMPARE_LLM_CAMPAIGN_ID = "openai_chatgpt52ext_agent_fullsec_real_2026-02-27"
 
 FY2022_RUNTIME_CASES: dict[str, tuple[tuple[int, int], ...]] = {
     "NVDA": ((2022, 2023), (2023, 2024), (2024, 2025)),

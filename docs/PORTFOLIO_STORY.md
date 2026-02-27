@@ -19,12 +19,15 @@ This Lab shows how risk disclosures change year-over-year using deterministic de
 - Canonical output contract is stable and track-aware: `outputs/<detector_id>/<track_slug>/lab_<...>__<track_slug>.json`.
 - LLM layer is reproducible: users can rerun from published full-section v2 pair/year inputs and thread-starter instructions.
 - Provenance is campaign-aware (`model_provider`, `model_name`, required day-precise `run_label`) to support future model-vs-model comparisons.
-- Runtime currently shows the Codex full-section v2 campaign (`GPT-5.3-Codex (Extra High Reasoning, Agent Mode)`) at strict-valid `84/84` while ChatGPT full-section v2 remains a pending second wave (`84` expected missing).
+- Runtime policy is real-run only for LLM lanes:
+  - synthetic full-section campaigns are hidden from selectors,
+  - real manual-run campaigns are the canonical lanes for model evidence,
+  - explicit missing/debug states remain visible until real artifacts are generated.
 - Active runtime pair scope is FY2022+ adjacent pairs only (12 pairs across NVDA/KO/WM/GE).
 - Newly added FY2025 pairs remain visible immediately with deterministic-first defaults when LLM sidecars are unavailable.
 - Focuspack-era campaigns are preserved for audit history but hidden from runtime selectors.
 - Deep Dive v3 adds persistent mode-state framing, signal-quality tiers, interpretation-first card headers, and sourced method-context drawers (canonical usage, this-app deviation, failure modes, alternatives, origins).
-- Current operational remainder: post-UX incognito screenshot closeout for full-section v2 Deep Dive states, then ChatGPT full-section second-wave generation to restore full A/B parity.
+- Current operational remainder: complete real master/manual LLM runs (Codex lane first, ChatGPT lane second), project to legacy detector envelopes, then enable full A/B parity for runtime selectors.
 
 ## Suggested walkthrough sequence
 1. Deterministic baseline:

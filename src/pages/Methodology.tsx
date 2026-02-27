@@ -4,7 +4,7 @@ import { loadLabLlmCampaignsIndex } from "../lib/labData"
 import { withBase } from "../lib/paths"
 
 const DEFAULT_RUNTIME_INSTRUCTIONS_ASSET =
-  "llm_project_instructions_openai_gpt53codex_xhigh_agent_fullsec_2026-02-22.txt"
+  "llm_project_instructions_openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27.txt"
 
 const DETECTORS = [
   {

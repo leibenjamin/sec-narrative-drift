@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated_at": "2026-02-27T02:23:39Z",
+  "updated_at": "2026-02-27T19:44:50Z",
   "tracks": [
     {
       "track_id": "det_baseline_2026-02-21",
@@ -53,7 +53,39 @@
       "track_id": "openai_gpt53codex_xhigh_agent_fullsec_2026-02-22",
       "track_slug": "openai-gpt53codex-xhigh-agent-fullsec-2026-02-22",
       "kind": "llm",
-      "display_name": "GPT-5.3-Codex (Full Section v2)",
+      "display_name": "GPT-5.3-Codex (Full Section v2, Synthetic Baseline)",
+      "detector_ids": [
+        "det_llm_delta_brief_v1",
+        "det_llm_excerpt_picker_v1"
+      ],
+      "model_provider": "openai",
+      "model_name": "GPT-5.3-Codex (Extra High Reasoning, Agent Mode)",
+      "input_mode": "full_section_v2",
+      "primary_for_runtime": false,
+      "compare_default": false,
+      "runtime_visible": false
+    },
+    {
+      "track_id": "openai_chatgpt52ext_agent_fullsec_2026-02-22",
+      "track_slug": "openai-chatgpt52ext-agent-fullsec-2026-02-22",
+      "kind": "llm",
+      "display_name": "ChatGPT 5.2-Thinking (Extended Thinking) (Full Section v2, Synthetic Baseline)",
+      "detector_ids": [
+        "det_llm_delta_brief_v1",
+        "det_llm_excerpt_picker_v1"
+      ],
+      "model_provider": "openai",
+      "model_name": "ChatGPT 5.2-Thinking (Extended Thinking)",
+      "input_mode": "full_section_v2",
+      "primary_for_runtime": false,
+      "compare_default": false,
+      "runtime_visible": false
+    },
+    {
+      "track_id": "openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27",
+      "track_slug": "openai-gpt53codex-xhigh-agent-fullsec-real-2026-02-27",
+      "kind": "llm",
+      "display_name": "GPT-5.3-Codex (Full Section v2, Real Manual Runs)",
       "detector_ids": [
         "det_llm_delta_brief_v1",
         "det_llm_excerpt_picker_v1"
@@ -66,10 +98,10 @@
       "runtime_visible": true
     },
     {
-      "track_id": "openai_chatgpt52ext_agent_fullsec_2026-02-22",
-      "track_slug": "openai-chatgpt52ext-agent-fullsec-2026-02-22",
+      "track_id": "openai_chatgpt52ext_agent_fullsec_real_2026-02-27",
+      "track_slug": "openai-chatgpt52ext-agent-fullsec-real-2026-02-27",
       "kind": "llm",
-      "display_name": "ChatGPT 5.2-Thinking (Extended Thinking) (Full Section v2)",
+      "display_name": "ChatGPT 5.2-Thinking (Extended Thinking) (Full Section v2, Real Manual Runs)",
       "detector_ids": [
         "det_llm_delta_brief_v1",
         "det_llm_excerpt_picker_v1"

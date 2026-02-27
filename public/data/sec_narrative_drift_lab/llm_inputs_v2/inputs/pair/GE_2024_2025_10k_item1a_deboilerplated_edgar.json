@@ -1,0 +1,24 @@
+{
+  "schema_version": "2.0",
+  "input_mode": "full_section_v2",
+  "case": {
+    "ticker": "GE",
+    "section": "10k_item1a",
+    "year_from": 2024,
+    "year_to": 2025,
+    "source_id": "edgar"
+  },
+  "lens": {
+    "name": "deboilerplated",
+    "coverage": 0.5317901284564172,
+    "warnings": []
+  },
+  "year_inputs": {
+    "prev": "inputs/year/GE_2024_10k_item1a_deboilerplated_edgar__pair_2024_2025.json",
+    "curr": "inputs/year/GE_2025_10k_item1a_deboilerplated_edgar__pair_2024_2025.json"
+  },
+  "output_targets": {
+    "det_llm_delta_brief_v1": "lab_10k_item1a_2024_2025_det_llm_delta_brief_v1_deboilerplated_edgar.json",
+    "det_llm_excerpt_picker_v1": "lab_10k_item1a_2024_2025_det_llm_excerpt_picker_v1_deboilerplated_edgar.json"
+  }
+}

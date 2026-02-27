@@ -11,8 +11,10 @@ Status: canonical manual rerun workflow for Lab (`full_section_v2`).
 - `scripts/lab_run_fullsec_campaign_pipeline.py` (single-command orchestrator for full_section_v2 flow)
 
 ## Runtime Truth (Current Push)
-- Runtime-visible campaign: `openai_gpt53codex_xhigh_agent_fullsec_2026-02-22` (`84/84` strict-valid).
-- Runtime-hidden pending campaign: `openai_chatgpt52ext_agent_fullsec_2026-02-22` (`84` expected missing until second wave).
+- Runtime policy is real-run LLM evidence only.
+- Runtime-visible campaign: `openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27` (manual lane; artifacts may be missing until jobs are completed).
+- Runtime-hidden pending campaign: `openai_chatgpt52ext_agent_fullsec_real_2026-02-27` (enable only after strict-valid coverage).
+- Synthetic full-section campaigns (`*_fullsec_2026-02-22`) remain on disk for audit history only and are hidden in runtime selectors.
 - `focuspack_v1` campaigns remain on disk for audit history only and are hidden in runtime selectors.
 - Runtime case scope is FY2022+ adjacent pairs only (`NVDA/KO/WM/GE` x `2022-2023`, `2023-2024`, `2024-2025`).
 - For pairs without LLM sidecars, runtime remains deterministic-first with explicit LLM missing/debug states.
@@ -59,10 +61,10 @@ Status: canonical manual rerun workflow for Lab (`full_section_v2`).
    `npm run build`
 
 ## Orchestrated Pipeline (Recommended)
-- Codex full-section refresh:
-  - `python scripts/lab_run_fullsec_campaign_pipeline.py --campaign-id openai_gpt53codex_xhigh_agent_fullsec_2026-02-22 --run-day YYYY-MM-DD`
-- ChatGPT full-section staging (manual generation wave):
-  - `python scripts/lab_run_fullsec_campaign_pipeline.py --campaign-id openai_chatgpt52ext_agent_fullsec_2026-02-22 --skip-generate --allow-missing --allow-invalid`
+- Codex full-section real-manual lane:
+  - `python scripts/lab_run_fullsec_campaign_pipeline.py --campaign-id openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27 --run-day YYYY-MM-DD --skip-generate --allow-missing --allow-invalid`
+- ChatGPT full-section real-manual lane:
+  - `python scripts/lab_run_fullsec_campaign_pipeline.py --campaign-id openai_chatgpt52ext_agent_fullsec_real_2026-02-27 --run-day YYYY-MM-DD --skip-generate --allow-missing --allow-invalid`
 - Publish step behavior:
   - `scripts/lab_publish_llm_inputs_v2.py` now cleans stale mirror files by default.
   - Pass `--no-clean` only when explicitly preserving existing mirror files.

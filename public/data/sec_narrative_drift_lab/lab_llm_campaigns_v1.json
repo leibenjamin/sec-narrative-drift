@@ -1,8 +1,8 @@
 {
   "version": "1.0",
-  "updated_at": "2026-02-27T02:23:39Z",
-  "primary_campaign_id": "openai_gpt53codex_xhigh_agent_fullsec_2026-02-22",
-  "compare_default_campaign_id": "openai_chatgpt52ext_agent_fullsec_2026-02-22",
+  "updated_at": "2026-02-27T19:44:49Z",
+  "primary_campaign_id": "openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27",
+  "compare_default_campaign_id": "openai_chatgpt52ext_agent_fullsec_real_2026-02-27",
   "campaigns": [
     {
       "campaign_id": "openai_chatgpt52ext_agent_2026-02-21",
@@ -33,25 +33,51 @@
     {
       "campaign_id": "openai_gpt53codex_xhigh_agent_fullsec_2026-02-22",
       "campaign_slug": "openai-gpt53codex-xhigh-agent-fullsec-2026-02-22",
-      "display_name": "GPT-5.3-Codex (Full Section v2)",
+      "display_name": "GPT-5.3-Codex (Full Section v2, Synthetic Baseline)",
       "input_mode": "full_section_v2",
       "model_provider": "openai",
       "model_name": "GPT-5.3-Codex (Extra High Reasoning, Agent Mode)",
       "run_label_prefix_template": "YYYY-MM-DD_openai_gpt53codex_fullsec_...",
       "instructions_asset": "llm_project_instructions_openai_gpt53codex_xhigh_agent_fullsec_2026-02-22.txt",
-      "primary_for_runtime": true,
+      "primary_for_runtime": false,
       "compare_default": false,
-      "runtime_visible": true
+      "runtime_visible": false
     },
     {
       "campaign_id": "openai_chatgpt52ext_agent_fullsec_2026-02-22",
       "campaign_slug": "openai-chatgpt52ext-agent-fullsec-2026-02-22",
-      "display_name": "ChatGPT 5.2-Thinking (Extended Thinking) (Full Section v2)",
+      "display_name": "ChatGPT 5.2-Thinking (Extended Thinking) (Full Section v2, Synthetic Baseline)",
       "input_mode": "full_section_v2",
       "model_provider": "openai",
       "model_name": "ChatGPT 5.2-Thinking (Extended Thinking)",
       "run_label_prefix_template": "YYYY-MM-DD_openai_chatgpt52ext_fullsec_...",
       "instructions_asset": "llm_project_instructions_openai_chatgpt52ext_agent_fullsec_2026-02-22.txt",
+      "primary_for_runtime": false,
+      "compare_default": false,
+      "runtime_visible": false
+    },
+    {
+      "campaign_id": "openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27",
+      "campaign_slug": "openai-gpt53codex-xhigh-agent-fullsec-real-2026-02-27",
+      "display_name": "GPT-5.3-Codex (Full Section v2, Real Manual Runs)",
+      "input_mode": "full_section_v2",
+      "model_provider": "openai",
+      "model_name": "GPT-5.3-Codex (Extra High Reasoning, Agent Mode)",
+      "run_label_prefix_template": "YYYY-MM-DD_openai_gpt53codex_fullsec_real_...",
+      "instructions_asset": "llm_project_instructions_openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27.txt",
+      "primary_for_runtime": true,
+      "compare_default": false,
+      "runtime_visible": true
+    },
+    {
+      "campaign_id": "openai_chatgpt52ext_agent_fullsec_real_2026-02-27",
+      "campaign_slug": "openai-chatgpt52ext-agent-fullsec-real-2026-02-27",
+      "display_name": "ChatGPT 5.2-Thinking (Extended Thinking) (Full Section v2, Real Manual Runs)",
+      "input_mode": "full_section_v2",
+      "model_provider": "openai",
+      "model_name": "ChatGPT 5.2-Thinking (Extended Thinking)",
+      "run_label_prefix_template": "YYYY-MM-DD_openai_chatgpt52ext_fullsec_real_...",
+      "instructions_asset": "llm_project_instructions_openai_chatgpt52ext_agent_fullsec_real_2026-02-27.txt",
       "primary_for_runtime": false,
       "compare_default": true,
       "runtime_visible": false
