@@ -16,8 +16,8 @@ if TYPE_CHECKING:
         def __init__(
             self,
             *,
-            stop_words: Optional[str | set[str]] = ...,
-            token_pattern: Optional[str] = ...,
+            stop_words: Optional[str | set[str]] = None,
+            token_pattern: Optional[str] = None,
         ) -> None: ...
 
         def fit_transform(self, raw_documents: Sequence[str]) -> Any: ...

@@ -11,9 +11,9 @@ if TYPE_CHECKING:
         def __init__(
             self,
             *,
-            stop_words: Optional[str | set[str]] = ...,
-            ngram_range: tuple[int, int] = ...,
-            max_features: Optional[int] = ...,
+            stop_words: Optional[str | set[str]] = None,
+            ngram_range: tuple[int, int] = (1, 1),
+            max_features: Optional[int] = None,
         ) -> None: ...
 
         def fit_transform(self, raw_documents: Sequence[str]) -> Any: ...
