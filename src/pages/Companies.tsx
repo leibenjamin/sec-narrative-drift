@@ -65,8 +65,8 @@ export default function Companies() {
           <p className="text-xs uppercase tracking-widest text-slate-300">Lab showcase</p>
           <h1 className="text-3xl font-semibold">Choose a company and pair</h1>
           <p className="max-w-3xl text-sm text-slate-300">
-            This catalog is curated for live demos with interview audiences. Each card routes
-            directly to a high-signal adjacent pair in the Lab view and preserves deep-link stability.
+            This catalog is curated for high-signal adjacent pair analysis. Each card routes
+            directly to a recommended Lab case and preserves deep-link stability.
           </p>
           <div className="grid gap-3 rounded-xl border border-white/10 bg-slate-900/45 p-4 md:grid-cols-3">
             <div className="rounded-md border border-white/10 bg-slate-950/35 p-3">

@@ -5,6 +5,7 @@ import hashlib
 import json
 import shutil
 import subprocess
+import time
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
@@ -566,8 +567,22 @@ def main(argv: Optional[list[str]] = None) -> int:
     output_candidates: dict[
         tuple[str, str, int, int, str, str, str], list[LabOutputRecord]
     ] = {}
+    scan_started = time.monotonic()
+    last_scan_heartbeat = scan_started
+    scanned_files = 0
 
     for path in sorted(LAB_ROOT.rglob("*.json"), key=lambda item: str(item).lower()):
+        scanned_files += 1
+        now = time.monotonic()
+        if now - last_scan_heartbeat >= 300:
+            elapsed = int(now - scan_started)
+            print(
+                "[progress] registry_scan "
+                + f"files={scanned_files} inputs={len(all_inputs)} "
+                + f"output_buckets={len(output_candidates)} elapsed={elapsed}s",
+                flush=True,
+            )
+            last_scan_heartbeat = now
         rel_str = path.relative_to(LAB_ROOT).as_posix()
         if rel_str == "lab_cases_v1.json":
             continue
@@ -609,7 +624,11 @@ def main(argv: Optional[list[str]] = None) -> int:
     copied_count = 0
     synced_count = 0
 
+    normalize_started = time.monotonic()
+    last_normalize_heartbeat = normalize_started
+    normalized_seen = 0
     for key in sorted(output_candidates.keys()):
+        normalized_seen += 1
         candidates = output_candidates[key]
         if not candidates:
             continue
@@ -662,6 +681,16 @@ def main(argv: Optional[list[str]] = None) -> int:
                 abs_path=target_abs,
             )
         )
+        now = time.monotonic()
+        if now - last_normalize_heartbeat >= 300:
+            elapsed = int(now - normalize_started)
+            print(
+                "[progress] registry_normalize "
+                + f"keys={normalized_seen}/{len(output_candidates)} "
+                + f"copied={copied_count} synced={synced_count} elapsed={elapsed}s",
+                flush=True,
+            )
+            last_normalize_heartbeat = now
 
     cases_payload: list[dict[str, Any]] = []
     missing_pairs_by_ticker: dict[str, list[tuple[int, int]]] = {}

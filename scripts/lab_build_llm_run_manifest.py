@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import json
 import shutil
+import time
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
@@ -653,11 +654,29 @@ def main(argv: Optional[list[str]] = None) -> int:
 
     entries: list[ManifestEntry] = []
     missing_input_rows: list[str] = []
+    entry_started = time.monotonic()
+    last_entry_heartbeat = entry_started
+    total_pair_lens_targets = 0
+    for ticker in tickers:
+        total_pair_lens_targets += len(target_pairs.get(ticker, [])) * len(lenses)
+    built_pair_lens_targets = 0
     for ticker in tickers:
         pairs = target_pairs.get(ticker, [])
         case_pairs = pairs_by_ticker.get(ticker, set())
         for year_from, year_to in pairs:
             for lens in lenses:
+                built_pair_lens_targets += 1
+                now = time.monotonic()
+                if now - last_entry_heartbeat >= 300:
+                    elapsed = int(now - entry_started)
+                    print(
+                        "[progress] run_manifest_entries "
+                        + f"rows={built_pair_lens_targets}/{total_pair_lens_targets} "
+                        + f"entries={len(entries)} missing_inputs={len(missing_input_rows)} "
+                        + f"elapsed={elapsed}s",
+                        flush=True,
+                    )
+                    last_entry_heartbeat = now
                 input_entry = get_input_index_entry(
                     index=input_index,
                     ticker=ticker,
@@ -752,7 +771,20 @@ def main(argv: Optional[list[str]] = None) -> int:
         stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
         run_pack_dir = run_pack_root / f"llm_run_pack_{stamp}_{campaign.track_id}"
         run_pack_dir.mkdir(parents=True, exist_ok=True)
+        copy_started = time.monotonic()
+        last_copy_heartbeat = copy_started
+        copied_entries = 0
         for entry in entries:
+            copied_entries += 1
+            now = time.monotonic()
+            if now - last_copy_heartbeat >= 300:
+                elapsed = int(now - copy_started)
+                print(
+                    "[progress] run_manifest_run_pack "
+                    + f"entries={copied_entries}/{len(entries)} elapsed={elapsed}s",
+                    flush=True,
+                )
+                last_copy_heartbeat = now
             run_pack_input_rel: Optional[str] = None
             run_pack_year_prev_rel: Optional[str] = None
             run_pack_year_curr_rel: Optional[str] = None

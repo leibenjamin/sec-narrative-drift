@@ -90,11 +90,11 @@ export default function Home() {
           </div>
 
           <aside className="space-y-3 rounded-xl border border-white/10 bg-slate-950/40 p-4">
-            <h2 className="text-sm font-semibold text-slate-100">Hiring demo framing</h2>
+            <h2 className="text-sm font-semibold text-slate-100">How to use this page</h2>
             <ul className="space-y-2 text-sm text-slate-200">
-              <li>1. Show one adjacent pair and detector agreement.</li>
-              <li>2. Explain deterministic contract and path-level transparency.</li>
-              <li>3. Show optional LLM sidecar reproducibility workflow.</li>
+              <li>1. Start with one adjacent pair and detector agreement.</li>
+              <li>2. Verify path-level evidence and deterministic coverage.</li>
+              <li>3. Compare optional LLM sidecars with reproducibility controls.</li>
             </ul>
             <p className="text-xs text-slate-400">
               Runtime data source:

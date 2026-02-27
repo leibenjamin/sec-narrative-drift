@@ -16,6 +16,7 @@ Core time window: FY2022+ adjacent year pairs (12 runtime pairs: NVDA/KO/WM/GE x
 - Deterministic only in the shipped app; no runtime ML/LLM calls.
 - No POS taggers.
 - Do NOT change baseline public JSON schemas or lab output envelope keys.
+- Public-facing tone must remain audience-neutral (see `docs/PUBLIC_TONE_POLICY.md`).
 - Treat SEC-derived text as untrusted:
   - No HTML rendering of SEC text (no `dangerouslySetInnerHTML`, no raw HTML injection).
   - Highlighting must be done with safe React nodes, not HTML strings.
@@ -25,7 +26,7 @@ Core time window: FY2022+ adjacent year pairs (12 runtime pairs: NVDA/KO/WM/GE x
 - Phase 0 complete:
   - deterministic baseline shipped/locked,
   - post-deploy helper added: `scripts/lab_postdeploy_verify.py`,
-  - gates passing: `npm run lab:predeploy`, `npm run lab:portfolio`, `npm run build`.
+  - gates passing: `npm run lab:predeploy`, `npm run lab:readiness`, `npm run build`.
 - Phase 1 complete:
   - RAW prerequisite audit added: `scripts/lab_build_raw_prereq_audit.py`,
   - RAW outputs backfilled for all eligible showcase adjacent pairs,
@@ -50,7 +51,7 @@ Core time window: FY2022+ adjacent year pairs (12 runtime pairs: NVDA/KO/WM/GE x
   - SEC text safety doc added: `docs/SEC_TEXT_SAFETY.md`.
 - Phase 4 complete (moderate cleanup):
   - stale/non-canonical data moved into `attic/`,
-  - canonical docs added: `docs/00_DOC_INDEX.md`, `docs/PORTFOLIO_STORY.md`.
+  - canonical docs added: `docs/00_DOC_INDEX.md`, `docs/PRODUCT_STORY.md`.
 - Phase 5 complete (Lab-first UI pivot):
   - routes kept stable but behavior is now Lab-only (`/company/:ticker` always Lab),
   - `tab=overview` normalized to `tab=lab`,
@@ -118,8 +119,8 @@ Goal: Get the GO deterministic Lab state deployed and verifiably live.
    - `lab: UI reload button / cache fixes` (if applicable)
 
 ## 0.2 Run the predeploy gates locally (must pass)
-- `npm run lab:predeploy`  (registry + smoke; portfolio gate may be separate depending on current package.json)
-- `npm run lab:portfolio`  (must be GO for the deterministic baseline)
+- `npm run lab:predeploy`  (registry + smoke; readiness gate may be separate depending on current package.json)
+- `npm run lab:readiness`  (must be GO for the deterministic baseline)
 - `npm run build`
 
 ## 0.3 Deploy
@@ -190,7 +191,7 @@ Example shape (adjust to your CLI):
 ## 1.3 Rebuild registry + gates
 - `npm run lab:registry`
 - `npm run lab:smoke`
-- `npm run lab:portfolio` should remain GO (it should not require raw unless you explicitly add that requirement)
+- `npm run lab:readiness` should remain GO (it should not require raw unless you explicitly add that requirement)
 - `npm run build`
 
 ## 1.4 UI sanity check
@@ -210,7 +211,7 @@ Key rule: LLM runs do NOT happen at runtime.
 They are offline precompute artifacts stored as JSON.
 
 ## 2.1 Decide the required LLM coverage
-For a portfolio-ready experience, recommended:
+For a production-ready experience, recommended:
 - For every required adjacent pair (2019-2024) for each showcase ticker:
   - LLM delta brief (precomputed)
   - LLM excerpt picker (precomputed)
@@ -261,8 +262,8 @@ Acceptance criteria for Phase 2:
 
 ---
 
-# PHASE 3 - Portfolio polish (make it obvious, credible, and safe)
-Goal: Hiring managers should "get it" in 30 seconds, and experts shouldn't cringe.
+# PHASE 3 - Product polish (make it obvious, credible, and safe)
+Goal: Public users should "get it" in 30 seconds, and experts should trust the details.
 
 ## 3.1 UX: reduce confusion, increase trust
 - Add a small "What am I looking at?" explainer at top of Lab:
@@ -302,7 +303,7 @@ Acceptance criteria for Phase 3:
 ---
 
 # PHASE 4 - Repo cleanup (remove pre-Lab clutter without breaking archaeology)
-Goal: reduce Codex confusion and improve portfolio impression.
+Goal: reduce Codex confusion and improve product clarity.
 
 ## 4.1 Create an /attic (or /archive) policy
 - Move old bundles/scripts/docs that are not part of the shipped product into:
@@ -321,11 +322,11 @@ Goal: reduce Codex confusion and improve portfolio impression.
 Create/update:
 - `docs/00_DOC_INDEX.md` (single source of truth)
 - `docs/LAB_REMAINING_WORK_PLAN.md` (this doc)
-- `docs/PORTFOLIO_STORY.md` (how to demo the app in an interview)
+- `docs/PRODUCT_STORY.md` (how to walk through the app concisely)
 
 Acceptance criteria for Phase 4:
 - Repo tree reads clean and intentional.
-- New contributors (or hiring managers) can find the "main path" fast.
+- New contributors can find the "main path" fast.
 - Codex Agent Mode is less likely to latch onto dead code.
 
 ---
@@ -345,7 +346,7 @@ Do:
    - lists every required adjacent pair (2019-2024) for NVDA/KO/WM/GE and the expected LLM output paths.
 5) Run:
    - `npm run lab:predeploy`
-   - `npm run lab:portfolio`
+   - `npm run lab:readiness`
    - `npm run build`
 6) If all pass, commit with a single clean commit:
    - `lab: ship deterministic baseline + manifests`

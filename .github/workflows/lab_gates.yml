@@ -56,8 +56,11 @@ jobs:
       - name: Run lab predeploy
         run: npm run lab:predeploy
 
-      - name: Run lab portfolio gate
-        run: npm run lab:portfolio
+      - name: Run public tone guard
+        run: npm run lab:guard-tone
+
+      - name: Run lab readiness gate
+        run: npm run lab:readiness
 
       - name: Run production build
         run: npm run build

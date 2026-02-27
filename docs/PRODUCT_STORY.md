@@ -1,9 +1,9 @@
-# Portfolio Story: SEC Narrative Drift Lab
+# Product Story: SEC Narrative Drift Lab
 
 ## One-line pitch
 This Lab shows how risk disclosures change year-over-year using deterministic detectors and outline-aware offline LLM artifacts, with side-by-side model comparison and path-level reproducibility.
 
-## What to demo first (30 seconds)
+## Fast walkthrough (30 seconds)
 1. Open a showcase company page (company pages are now Lab-only).
 2. Show a recommended adjacent pair (for example `NVDA 2021-2022`).
 3. Explain:
@@ -12,7 +12,7 @@ This Lab shows how risk disclosures change year-over-year using deterministic de
    - lens toggle compares cleaned vs raw text effects,
    - missing artifacts are explicit with expected paths and copyable debug payloads.
 
-## Key credibility points
+## Core credibility points
 - Runtime is deterministic static JSON only.
 - No runtime LLM/ML calls.
 - SEC text is treated as untrusted and rendered as plain text nodes (no HTML injection APIs).
@@ -44,7 +44,7 @@ This Lab shows how risk disclosures change year-over-year using deterministic de
 
 ## Operational evidence to mention
 - Local generated reports (`reports/*`, untracked by policy):
-  - `reports/portfolio_readiness_lab.md` (deterministic gate: GO).
+  - `reports/lab_runtime_readiness.md` (deterministic gate: GO).
   - `reports/lab_raw_prereq_audit.md` (RAW eligibility and coverage).
   - `reports/lab_llm_run_manifest.md` (complete roster + expected LLM artifact paths).
   - `reports/lab_llm_codex_quality_audit.md` (Codex quality-lock gates for diversity/consistency).

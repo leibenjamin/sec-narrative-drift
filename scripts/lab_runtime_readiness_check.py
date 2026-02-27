@@ -6,12 +6,12 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Optional, cast
 
-SCRIPT_VERSION = "lab_portfolio_readiness_check.py@v1"
+SCRIPT_VERSION = "lab_runtime_readiness_check.py@v1"
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 LAB_ROOT = REPO_ROOT / "public" / "data" / "sec_narrative_drift_lab"
 REGISTRY_PATH = LAB_ROOT / "lab_cases_v1.json"
-REPORT_PATH = REPO_ROOT / "reports" / "portfolio_readiness_lab.md"
+REPORT_PATH = REPO_ROOT / "reports" / "lab_runtime_readiness.md"
 
 REQUIRED_TICKERS = ["NVDA", "KO", "WM", "GE"]
 REQUIRED_DETECTORS = [
@@ -225,7 +225,7 @@ def pair_sort_key(pair: tuple[str, int, int]) -> tuple[int, int, int]:
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description=(
-            "Audit deterministic lab portfolio readiness across NVDA/KO/WM/GE. "
+            "Audit deterministic lab runtime readiness across NVDA/KO/WM/GE. "
             "Fails when required deboilerplated outputs are missing."
         )
     )
@@ -349,7 +349,7 @@ def main(argv: Optional[list[str]] = None) -> int:
 
     report_path.parent.mkdir(parents=True, exist_ok=True)
     lines: list[str] = []
-    lines.append("# Lab Portfolio Readiness Check")
+    lines.append("# Lab Runtime Readiness Check")
     lines.append("")
     lines.append(f"- script: {SCRIPT_VERSION}")
     lines.append(f"- registry: {to_repo_rel(registry_path)}")
@@ -417,7 +417,7 @@ def main(argv: Optional[list[str]] = None) -> int:
 
     if required_failures:
         print(
-            "Portfolio readiness check FAILED: "
+            "Runtime readiness check FAILED: "
             + f"required_failure_count={len(required_failures)}, "
             + f"optional_missing_count={optional_missing_count}, "
             + f"optional_broken_count={optional_broken_count}, "
@@ -426,7 +426,7 @@ def main(argv: Optional[list[str]] = None) -> int:
         return 1
 
     print(
-        "Portfolio readiness check OK: "
+        "Runtime readiness check OK: "
         + f"optional_missing_count={optional_missing_count}, "
         + f"optional_broken_count={optional_broken_count}, "
         + f"report={to_repo_rel(report_path)}"

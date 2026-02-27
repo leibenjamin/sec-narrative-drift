@@ -277,10 +277,10 @@ def build_lines(
         + "--report reports/lab_llm_manifest_validation.md`"
     )
     lines.append("  - `npm run lab:predeploy`")
-    lines.append("  - `npm run lab:portfolio`")
+    lines.append("  - `npm run lab:readiness`")
     lines.append("  - `npm run build`")
     lines.append("")
-    lines.append("## Portfolio-First Quick Pass (8 jobs)")
+    lines.append("## Quick Pass (8 jobs)")
     lines.append("If you want early visible quality gains before completing all 42 jobs, do these first:")
     lines.append("- NVDA 2021-2022: delta brief + excerpt picker")
     lines.append("- KO 2023-2024: delta brief + excerpt picker")

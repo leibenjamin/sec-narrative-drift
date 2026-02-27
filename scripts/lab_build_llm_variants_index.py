@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Optional, cast
@@ -182,6 +183,7 @@ def build_variant_rows(registry_path: Path) -> tuple[list[dict[str, Any]], dict[
     cases = as_list(root.get("cases"))
     if cases is None:
         raise SystemExit(f"Registry missing list field 'cases': {registry_path}")
+    total_cases = len(cases)
 
     rows: list[dict[str, Any]] = []
     stats = {
@@ -191,8 +193,24 @@ def build_variant_rows(registry_path: Path) -> tuple[list[dict[str, Any]], dict[
         "invalid": 0,
         "missing": 0,
     }
+    started = time.monotonic()
+    last_heartbeat = started
+    processed_cases = 0
 
     for case_any in cases:
+        processed_cases += 1
+        now = time.monotonic()
+        if now - last_heartbeat >= 300:
+            elapsed = int(now - started)
+            print(
+                "[progress] variants_index "
+                + f"cases={processed_cases}/{total_cases} "
+                + f"rows={len(rows)} targets={stats['targets']} "
+                + f"present={stats['present']} missing={stats['missing']} "
+                + f"elapsed={elapsed}s",
+                flush=True,
+            )
+            last_heartbeat = now
         case = as_dict(case_any)
         if case is None:
             continue

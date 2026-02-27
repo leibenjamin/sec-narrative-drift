@@ -1,9 +1,9 @@
 // src/lib/copy.ts
 /**
- * SEC Narrative Drift -- Copy System (Single public tone)
+ * SEC Narrative Drift -- Copy System
  *
- * Portfolio guidance: ship ONE public tone. Keep humor understated and embedded in a few
- * high-traffic helpers/footnotes. Some people gave feedback that I should edit down my tone for professional credibility.
+ * Keep one audience-neutral public tone. Keep humor understated and limited
+ * to a small number of high-traffic helpers/footnotes.
  *
  * Usage:
  *   import { copy, t } from "@/lib/copy";
@@ -32,7 +32,7 @@ export const copy = {
     },
     errors: {
       missingDataset:
-        "We couldn't load this dataset. Try a featured case -- those are curated and demo-safe.",
+        "We couldn't load this dataset. Try a featured case for a stable starting point.",
       missingExcerpts: "We have metrics for this pair, but no excerpt set yet.",
       noShifts: 'No clear "top movers" for this year pair (which is itself a result).',
       lowConfidenceYear:
@@ -62,7 +62,7 @@ export const copy = {
     heroTitle: "Narrative Drift, by the numbers -- and by the paragraph",
     heroBody:
       "Pick a company and see how its 10-K / 20-F Risk Factors language changes year-to-year, where the biggest shifts happen, and the terms that move the most.",
-    heroFootnote: "Featured cases are precomputed, because live demos are a form of optimism.",
+    heroFootnote: "Featured cases are precomputed for stable, reproducible comparisons.",
     featuredHeading: "Featured cases",
     featuredHelper: "Curated story cases with a recommended year pair. Click one to start.",
     howToReadTitle: "How to read this",

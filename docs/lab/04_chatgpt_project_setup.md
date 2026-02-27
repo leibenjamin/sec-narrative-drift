@@ -93,7 +93,7 @@ Use this deterministic sequence:
    `python scripts/lab_validate_llm_manifest_outputs.py --report reports/lab_llm_manifest_validation.md`
 5. Run deterministic gates:
    `npm run lab:predeploy`
-   `npm run lab:portfolio`
+   `npm run lab:readiness`
    `npm run build`
 
 ## Fast Parse Check (catch quote errors early)

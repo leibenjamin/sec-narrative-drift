@@ -3,7 +3,8 @@
 ## Start here
 - `docs/00_DOC_INDEX.md` - this file.
 - `docs/LAB_REMAINING_WORK_PLAN.md` - execution status and remaining work.
-- `docs/PORTFOLIO_STORY.md` - demo narrative for interviews and portfolio walkthroughs.
+- `docs/PRODUCT_STORY.md` - public product narrative and walkthrough order.
+- `docs/PUBLIC_TONE_POLICY.md` - public-facing language policy and banned framing.
 - `docs/SEC_TEXT_SAFETY.md` - SEC text trust model and rendering safety rules.
 - `docs/lab/05_llm_reproducibility_contract.md` - strict manual LLM rerun contract and validation requirements.
 - `docs/lab/06_llm_model_comparison_workflow.md` - multi-campaign model-comparison workflow.
@@ -17,7 +18,7 @@
 ## Local generated reports (not committed)
 - `reports/*` are generated locally for validation and operator workflows, then kept untracked by policy.
 - Typical local artifacts:
-  - `reports/portfolio_readiness_lab.md` - deterministic readiness gate.
+  - `reports/lab_runtime_readiness.md` - deterministic readiness gate.
   - `reports/lab_raw_prereq_audit.md` - RAW prerequisite and coverage audit.
   - `reports/lab_llm_run_manifest.md` - LLM run manifest (human-readable).
   - `reports/lab_llm_run_manifest.json` - LLM run manifest (machine-readable).

@@ -1,6 +1,6 @@
 # SEC Narrative Drift Lab
 
-Portfolio-focused, deterministic-first analysis of adjacent SEC 10-K Item 1A risk-factor years.
+Deterministic-first analysis of adjacent SEC 10-K Item 1A risk-factor years.
 
 Live: https://benlei.org/sec-narrative-drift/
 
@@ -25,14 +25,14 @@ npm run dev
 ## Required gates
 ```bash
 npm run lab:predeploy
-npm run lab:portfolio
+npm run lab:readiness
 npm run build
 ```
 
 ## Canonical docs
 - `docs/00_DOC_INDEX.md`
 - `docs/LAB_REMAINING_WORK_PLAN.md`
-- `docs/PORTFOLIO_STORY.md`
+- `docs/PRODUCT_STORY.md`
 - `docs/SEC_TEXT_SAFETY.md`
 - `docs/lab/05_llm_reproducibility_contract.md`
 

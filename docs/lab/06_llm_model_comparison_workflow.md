@@ -64,5 +64,5 @@ UX behavior:
 ## Required Gates
 After build/data logic changes:
 1. `npm run lab:predeploy`
-2. `npm run lab:portfolio`
+2. `npm run lab:readiness`
 3. `npm run build`

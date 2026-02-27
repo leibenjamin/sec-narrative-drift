@@ -143,13 +143,13 @@ export default function Methodology() {
 
         <section className="grid gap-4 rounded-xl border border-white/10 bg-slate-900/45 p-5 md:grid-cols-2 xl:grid-cols-4">
           <article className="rounded-md border border-sky-300/25 bg-sky-400/10 p-3">
-            <h2 className="text-sm font-semibold text-sky-100">Manager / Executive</h2>
+            <h2 className="text-sm font-semibold text-sky-100">Quick reader</h2>
             <p className="mt-2 text-xs text-slate-100">
               Ask: what changed, how strong is the signal, and which evidence lines support it.
             </p>
           </article>
           <article className="rounded-md border border-white/10 bg-slate-950/35 p-3">
-            <h2 className="text-sm font-semibold text-slate-100">Recruiter</h2>
+            <h2 className="text-sm font-semibold text-slate-100">Product reviewer</h2>
             <p className="mt-2 text-xs text-slate-200">
               Look for deterministic baseline + A/B model compare + reproducibility controls in one
               flow.
@@ -310,11 +310,11 @@ export default function Methodology() {
           <h2 className="text-xl font-semibold">Interpretation cheatsheet</h2>
           <ul className="list-disc space-y-2 pl-5 text-sm text-slate-200">
             <li>
-              <span className="font-semibold text-slate-100">Manager:</span> start with the three
+              <span className="font-semibold text-slate-100">Quick reader:</span> start with the three
               top summary prompts and the agreement table.
             </li>
             <li>
-              <span className="font-semibold text-slate-100">Recruiter:</span> emphasize deterministic
+              <span className="font-semibold text-slate-100">Product reviewer:</span> emphasize deterministic
               baseline + A/B model compare + explicit debug/repro controls.
             </li>
             <li>

@@ -57,7 +57,7 @@ Status: canonical manual rerun workflow for Lab (`full_section_v2`).
    `python scripts/lab_validate_llm_manifest_outputs.py --report reports/lab_llm_manifest_validation.md`
 3. Deterministic gates:
    `npm run lab:predeploy`
-   `npm run lab:portfolio`
+   `npm run lab:readiness`
    `npm run build`
 
 ## Orchestrated Pipeline (Recommended)
