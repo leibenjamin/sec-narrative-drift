@@ -5,7 +5,7 @@ This Lab shows how risk disclosures change year-over-year using deterministic de
 
 ## Fast walkthrough (30 seconds)
 1. Open a showcase company page (company pages are now Lab-only).
-2. Show a recommended adjacent pair (for example `NVDA 2021-2022`).
+2. Show a recommended adjacent pair (for example `NVDA 2023-2024`).
 3. Explain:
    - deterministic detectors quantify shift/reuse/structure changes,
    - Outline Compare surfaces structure-aware material changes (added/removed/moved/reworded/intensified/softened),

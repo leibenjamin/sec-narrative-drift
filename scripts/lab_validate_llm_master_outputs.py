@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import time
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Optional
@@ -471,11 +472,27 @@ def validate_targets(
     targets: list[MasterTarget],
     expected_model_provider: str,
     expected_model_name: str,
+    *,
+    verbose_progress: bool = False,
+    progress_interval_sec: int = 300,
 ) -> tuple[list[ValidationIssue], list[ValidationIssue], list[ValidationIssue]]:
     missing: list[ValidationIssue] = []
     invalid: list[ValidationIssue] = []
     mismatch: list[ValidationIssue] = []
-    for target in targets:
+    started = time.monotonic()
+    last_heartbeat = started
+    total = len(targets)
+    for index, target in enumerate(targets, start=1):
+        now = time.monotonic()
+        if verbose_progress or now - last_heartbeat >= progress_interval_sec:
+            elapsed = int(now - started)
+            print(
+                "[progress] master_validate "
+                + f"targets={index}/{total} missing={len(missing)} invalid={len(invalid)} "
+                + f"mismatch={len(mismatch)} elapsed={elapsed}s",
+                flush=True,
+            )
+            last_heartbeat = now
         output_path = (REPO_ROOT / target.expected_output_path).resolve()
         if output_path.suffix.lower() != ".json":
             invalid.append(
@@ -593,10 +610,22 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--allow-missing", action="store_true")
     parser.add_argument("--allow-invalid", action="store_true")
     parser.add_argument("--only", default="")
+    parser.add_argument(
+        "--verbose-progress",
+        action="store_true",
+        help="Emit progress lines for each target validated.",
+    )
+    parser.add_argument(
+        "--progress-interval-sec",
+        type=int,
+        default=300,
+        help="Heartbeat interval in seconds for long-running operations.",
+    )
     return parser
 
 
 def main(argv: Optional[list[str]] = None) -> int:
+    started = time.monotonic()
     args = build_parser().parse_args(argv)
     manifest_path = Path(args.manifest)
     if not manifest_path.is_absolute():
@@ -622,10 +651,13 @@ def main(argv: Optional[list[str]] = None) -> int:
         if marker in ("/" + target.expected_output_path.replace("\\", "/").lstrip("/"))
     ]
 
+    print(f"[phase] validate master outputs start (script={SCRIPT_VERSION})", flush=True)
     missing, invalid, mismatch = validate_targets(
         targets=targets,
         expected_model_provider=campaign.model_provider,
         expected_model_name=campaign.model_name,
+        verbose_progress=bool(args.verbose_progress),
+        progress_interval_sec=max(1, int(args.progress_interval_sec)),
     )
     report_lines = build_report(
         manifest_path=manifest_path,
@@ -640,13 +672,16 @@ def main(argv: Optional[list[str]] = None) -> int:
     report_path = Path(args.report)
     if not report_path.is_absolute():
         report_path = (REPO_ROOT / report_path).resolve()
+    print("[phase] write master validation report", flush=True)
     write_text(report_path, report_lines)
+    elapsed = int(time.monotonic() - started)
     print(
         "Master validation summary: "
         + f"targets={len(targets)}, missing={len(missing)}, invalid={len(invalid)}, "
         + f"present_flag_mismatch={len(mismatch)}"
     )
     print(f"Wrote validation report: {report_path}")
+    print(f"Elapsed: {elapsed}s")
     if invalid and not args.allow_invalid:
         return 1
     if missing and not args.allow_missing:

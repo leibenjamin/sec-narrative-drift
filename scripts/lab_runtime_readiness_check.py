@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import time
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Optional, cast
@@ -239,10 +240,22 @@ def build_parser() -> argparse.ArgumentParser:
         default=str(REPORT_PATH),
         help="Output markdown report path",
     )
+    parser.add_argument(
+        "--verbose-progress",
+        action="store_true",
+        help="Emit progress lines while evaluating ticker/pair coverage.",
+    )
+    parser.add_argument(
+        "--progress-interval-sec",
+        type=int,
+        default=300,
+        help="Heartbeat interval in seconds for long-running operations.",
+    )
     return parser
 
 
 def main(argv: Optional[list[str]] = None) -> int:
+    started = time.monotonic()
     args = build_parser().parse_args(argv)
     registry_path = Path(args.registry)
     report_path = Path(args.report)
@@ -256,8 +269,21 @@ def main(argv: Optional[list[str]] = None) -> int:
     required_failures: list[str] = []
     required_missing_pairs: set[tuple[str, int, int]] = set()
     latest_pairs: dict[str, Optional[tuple[int, int]]] = {}
+    progress_interval_sec = max(1, int(args.progress_interval_sec))
+    last_heartbeat = started
 
-    for ticker in REQUIRED_TICKERS:
+    for ticker_index, ticker in enumerate(REQUIRED_TICKERS, start=1):
+        now = time.monotonic()
+        if args.verbose_progress or now - last_heartbeat >= progress_interval_sec:
+            elapsed = int(now - started)
+            print(
+                "[progress] runtime_readiness "
+                + f"tickers={ticker_index}/{len(REQUIRED_TICKERS)} "
+                + f"coverage_rows={len(coverage_rows)} required_failures={len(required_failures)} "
+                + f"elapsed={elapsed}s",
+                flush=True,
+            )
+            last_heartbeat = now
         ticker_adjacent_pairs = adjacent_pairs_by_ticker.get(ticker, set())
         latest_pair = pick_latest_pair(ticker_adjacent_pairs)
         latest_pairs[ticker] = latest_pair
@@ -415,13 +441,14 @@ def main(argv: Optional[list[str]] = None) -> int:
 
     report_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
+    elapsed = int(time.monotonic() - started)
     if required_failures:
         print(
             "Runtime readiness check FAILED: "
             + f"required_failure_count={len(required_failures)}, "
             + f"optional_missing_count={optional_missing_count}, "
             + f"optional_broken_count={optional_broken_count}, "
-            + f"report={to_repo_rel(report_path)}"
+            + f"report={to_repo_rel(report_path)}, elapsed={elapsed}s"
         )
         return 1
 
@@ -429,7 +456,7 @@ def main(argv: Optional[list[str]] = None) -> int:
         "Runtime readiness check OK: "
         + f"optional_missing_count={optional_missing_count}, "
         + f"optional_broken_count={optional_broken_count}, "
-        + f"report={to_repo_rel(report_path)}"
+        + f"report={to_repo_rel(report_path)}, elapsed={elapsed}s"
     )
     return 0
 

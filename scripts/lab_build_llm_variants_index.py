@@ -175,7 +175,12 @@ def _load_year_refs(input_file: str) -> tuple[str, str]:
     return (prev_value, curr_value)
 
 
-def build_variant_rows(registry_path: Path) -> tuple[list[dict[str, Any]], dict[str, int]]:
+def build_variant_rows(
+    registry_path: Path,
+    *,
+    verbose_progress: bool = False,
+    progress_interval_sec: int = 300,
+) -> tuple[list[dict[str, Any]], dict[str, int]]:
     payload = read_json(registry_path)
     root = as_dict(payload)
     if root is None:
@@ -200,7 +205,7 @@ def build_variant_rows(registry_path: Path) -> tuple[list[dict[str, Any]], dict[
     for case_any in cases:
         processed_cases += 1
         now = time.monotonic()
-        if now - last_heartbeat >= 300:
+        if verbose_progress or now - last_heartbeat >= progress_interval_sec:
             elapsed = int(now - started)
             print(
                 "[progress] variants_index "
@@ -432,10 +437,22 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--registry", default=str(DEFAULT_REGISTRY_PATH))
     parser.add_argument("--out", default=str(DEFAULT_OUT_PATH))
     parser.add_argument("--report", default=str(DEFAULT_REPORT_PATH))
+    parser.add_argument(
+        "--verbose-progress",
+        action="store_true",
+        help="Emit progress lines for each processed case.",
+    )
+    parser.add_argument(
+        "--progress-interval-sec",
+        type=int,
+        default=300,
+        help="Heartbeat interval in seconds for long-running operations.",
+    )
     return parser
 
 
 def main(argv: Optional[list[str]] = None) -> int:
+    started = time.monotonic()
     args = build_parser().parse_args(argv)
     registry_path = Path(args.registry)
     if not registry_path.is_absolute():
@@ -447,12 +464,19 @@ def main(argv: Optional[list[str]] = None) -> int:
     if not report_path.is_absolute():
         report_path = REPO_ROOT / report_path
 
-    rows, stats = build_variant_rows(registry_path=registry_path)
+    print(f"[phase] build variants rows start (script={SCRIPT_VERSION})", flush=True)
+    rows, stats = build_variant_rows(
+        registry_path=registry_path,
+        verbose_progress=bool(args.verbose_progress),
+        progress_interval_sec=max(1, int(args.progress_interval_sec)),
+    )
+    print("[phase] write variants index and report", flush=True)
     payload = build_payload(rows)
     write_json(out_path, payload)
     report_lines = build_report_lines(registry_path, out_path, rows, stats)
     write_text(report_path, report_lines)
 
+    elapsed = int(time.monotonic() - started)
     print(f"Script: {SCRIPT_VERSION}")
     print(
         "Summary: "
@@ -461,6 +485,7 @@ def main(argv: Optional[list[str]] = None) -> int:
     )
     print(f"Wrote variants index: {out_path}")
     print(f"Wrote report: {report_path}")
+    print(f"Elapsed: {elapsed}s")
     return 0
 
 

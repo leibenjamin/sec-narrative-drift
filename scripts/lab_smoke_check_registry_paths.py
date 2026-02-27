@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import time
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Optional, cast
@@ -130,10 +131,22 @@ def build_parser() -> argparse.ArgumentParser:
         default=str(REGISTRY_PATH),
         help="Path to lab_cases_v1.json",
     )
+    parser.add_argument(
+        "--verbose-progress",
+        action="store_true",
+        help="Emit progress lines while scanning cases and outputs.",
+    )
+    parser.add_argument(
+        "--progress-interval-sec",
+        type=int,
+        default=300,
+        help="Heartbeat interval in seconds for long-running operations.",
+    )
     return parser
 
 
 def main(argv: Optional[list[str]] = None) -> int:
+    started = time.monotonic()
     args = build_parser().parse_args(argv)
     registry_path = Path(args.registry)
     if not registry_path.exists():
@@ -150,8 +163,21 @@ def main(argv: Optional[list[str]] = None) -> int:
     issues: list[CheckIssue] = []
     checked_cases = 0
     checked_outputs = 0
+    total_cases = len(cases_any)
+    progress_interval_sec = max(1, int(args.progress_interval_sec))
+    last_heartbeat = started
 
-    for case_any in cases_any:
+    for case_index, case_any in enumerate(cases_any, start=1):
+        now = time.monotonic()
+        if args.verbose_progress or now - last_heartbeat >= progress_interval_sec:
+            elapsed = int(now - started)
+            print(
+                "[progress] smoke_registry_paths "
+                + f"cases={case_index}/{total_cases} checked_cases={checked_cases} "
+                + f"checked_outputs={checked_outputs} issues={len(issues)} elapsed={elapsed}s",
+                flush=True,
+            )
+            last_heartbeat = now
         case = as_dict(case_any)
         if case is None:
             continue
@@ -316,17 +342,18 @@ def main(argv: Optional[list[str]] = None) -> int:
             )
     REPORT_PATH.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
+    elapsed = int(time.monotonic() - started)
     if hard_fail_count > 0:
         print(
             "Registry path smoke check FAILED: "
             + f"hard_fail_count={hard_fail_count}, warn_count={warn_count}, "
-            + f"report={to_repo_rel(REPORT_PATH)}"
+            + f"report={to_repo_rel(REPORT_PATH)}, elapsed={elapsed}s"
         )
         return 1
 
     print(
         "Registry path smoke check OK: "
-        + f"warn_count={warn_count}, report={to_repo_rel(REPORT_PATH)}"
+        + f"warn_count={warn_count}, report={to_repo_rel(REPORT_PATH)}, elapsed={elapsed}s"
     )
     return 0
 

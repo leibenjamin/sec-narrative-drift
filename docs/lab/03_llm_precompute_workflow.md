@@ -1,14 +1,20 @@
 # LLM Precompute Workflow (Showcase v3)
 
-Status: canonical manual rerun workflow for Lab (`full_section_v2`).
+Status: canonical manual rerun workflow for Lab (`full_section_v2`, master-first).
 
 ## Canonical Entry Points
 - `docs/lab/04_chatgpt_project_setup.md`
 - `reports/lab_project_instructions_<campaign_id>.txt`
-- `reports/lab_llm_run_manifest.json`
-- `reports/lab_llm_manual_rerun_checklist.md`
+- `reports/lab_llm_master_manifest_<campaign>.json`
+- `reports/lab_llm_master_thread_starters_<campaign>.md`
+- `reports/lab_llm_master_validation_<campaign>.md`
+- `reports/lab_llm_manual_rerun_checklist.md` (legacy detector checklist; compatibility only)
 - `scripts/lab_validate_llm_manifest_outputs.py`
 - `scripts/lab_run_fullsec_campaign_pipeline.py` (single-command orchestrator for full_section_v2 flow)
+- `scripts/lab_build_llm_master_manifest.py`
+- `scripts/lab_emit_master_thread_starters.py`
+- `scripts/lab_validate_llm_master_outputs.py`
+- `scripts/lab_project_master_to_detectors.py`
 
 ## Runtime Truth (Current Push)
 - Runtime policy is real-run LLM evidence only.
@@ -24,6 +30,11 @@ Status: canonical manual rerun workflow for Lab (`full_section_v2`).
 - Each output should be directly saveable to canonical path as valid JSON.
 - Avoid post-generation patching and reconciliation as a normal step.
 - If recurring issues appear, improve prompt blocks and thread starters first.
+
+## Canonical Job Counts
+- Master jobs per campaign: `12 pairs x 2 lenses = 24`.
+- Projection outputs per campaign (legacy detector compatibility): `24 x 2 detectors = 48`.
+- Prefer master-first execution; do not run detector-by-detector manual jobs as primary workflow.
 
 ## Canonical Paths
 - Output path:

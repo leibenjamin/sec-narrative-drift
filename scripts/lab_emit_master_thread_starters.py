@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import time
 from pathlib import Path
 from typing import Any, Optional
 
@@ -49,10 +50,22 @@ def build_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument("--manifest", default=str(DEFAULT_MANIFEST))
     parser.add_argument("--out", default=str(DEFAULT_OUT))
+    parser.add_argument(
+        "--verbose-progress",
+        action="store_true",
+        help="Emit progress lines for each starter emitted.",
+    )
+    parser.add_argument(
+        "--progress-interval-sec",
+        type=int,
+        default=300,
+        help="Heartbeat interval in seconds for long-running operations.",
+    )
     return parser
 
 
 def main(argv: Optional[list[str]] = None) -> int:
+    started = time.monotonic()
     args = build_parser().parse_args(argv)
     manifest_path = Path(args.manifest)
     if not manifest_path.is_absolute():
@@ -92,7 +105,12 @@ def main(argv: Optional[list[str]] = None) -> int:
     lines.append("3. Year curr input JSON")
     lines.append("")
 
+    print(f"[phase] emit master thread starters (script={SCRIPT_VERSION})", flush=True)
     emitted = 0
+    total_entries = len(entries)
+    loop_started = time.monotonic()
+    last_heartbeat = loop_started
+    progress_interval_sec = max(1, int(args.progress_interval_sec))
     for entry_any in entries:
         entry = as_dict(entry_any)
         if entry is None:
@@ -112,6 +130,15 @@ def main(argv: Optional[list[str]] = None) -> int:
         if not pair_path:
             continue
         emitted += 1
+        now = time.monotonic()
+        if args.verbose_progress or now - last_heartbeat >= progress_interval_sec:
+            elapsed = int(now - loop_started)
+            print(
+                "[progress] master_thread_starters "
+                + f"entries_seen={emitted}/{total_entries} elapsed={elapsed}s",
+                flush=True,
+            )
+            last_heartbeat = now
 
         lines.append(f"## {ticker} {year_from}-{year_to} {lens}")
         lines.append("")
@@ -144,10 +171,13 @@ def main(argv: Optional[list[str]] = None) -> int:
         lines.append("```")
         lines.append("")
 
+    print("[phase] write starter markdown", flush=True)
     write_text(out_path, lines)
+    elapsed = int(time.monotonic() - started)
     print(f"Script: {SCRIPT_VERSION}")
     print(f"Wrote master thread starters: {out_path}")
     print(f"Jobs emitted: {emitted}")
+    print(f"Elapsed: {elapsed}s")
     return 0
 
 

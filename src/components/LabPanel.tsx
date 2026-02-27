@@ -1137,6 +1137,31 @@ export default function LabPanel({
     }
   }, [llmCompareRows])
 
+  const deterministicContrastSummary = useMemo(() => {
+    let deterministicSelected = 0
+    let deterministicAvailable = 0
+    let llmSelected = 0
+    let llmAvailable = 0
+    for (const card of methodCards) {
+      const hasOutput = Boolean(outputs[card.cardKey])
+      if (LLM_DETECTOR_IDS.has(card.id)) {
+        llmSelected += 1
+        if (hasOutput) llmAvailable += 1
+      } else {
+        deterministicSelected += 1
+        if (hasOutput) deterministicAvailable += 1
+      }
+    }
+    const deterministicText = `Deterministic coverage ${deterministicAvailable}/${deterministicSelected}`
+    if (llmSelected === 0) {
+      return `${deterministicText}; no LLM sidecars selected.`
+    }
+    if (llmAvailable === 0) {
+      return `${deterministicText}; LLM sidecars missing for this pair/lens, so interpretation should stay deterministic-first.`
+    }
+    return `${deterministicText}; LLM sidecars available ${llmAvailable}/${llmSelected}. Use agreement and evidence blocks to reconcile disagreements.`
+  }, [methodCards, outputs])
+
   const selectedCampaignA = useMemo(
     () => llmCampaignOptions.find((campaign) => campaign.campaign_id === selectedLlmCampaignA) ?? null,
     [llmCampaignOptions, selectedLlmCampaignA]
@@ -1515,6 +1540,9 @@ export default function LabPanel({
                 Quick diff summary: {llmCompareSummary.detectorLabel} - {llmCompareSummary.readText}
               </div>
             ) : null}
+            <div className="mt-2 rounded-md border border-white/10 bg-slate-950/35 px-3 py-2 text-xs text-slate-200">
+              Deterministic contrast: {deterministicContrastSummary}
+            </div>
             <div className="mt-2 flex flex-wrap items-center gap-3 text-xs text-slate-300">
               <a className="underline decoration-white/30 underline-offset-2 hover:text-slate-100" href="#lab-outline-compare">
                 Outline compare

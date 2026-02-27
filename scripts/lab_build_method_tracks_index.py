@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Optional
@@ -34,7 +35,11 @@ def write_json(path: Path, payload: dict[str, Any]) -> None:
     path.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
 
-def build_payload() -> dict[str, Any]:
+def build_payload(
+    *,
+    verbose_progress: bool = False,
+    progress_interval_sec: int = 300,
+) -> dict[str, Any]:
     tracks: list[dict[str, Any]] = []
     tracks.append(
         {
@@ -46,7 +51,10 @@ def build_payload() -> dict[str, Any]:
             "primary_for_runtime": True,
         }
     )
-    for campaign in LLM_CAMPAIGNS:
+    started = time.monotonic()
+    last_heartbeat = started
+    total = len(LLM_CAMPAIGNS)
+    for index, campaign in enumerate(LLM_CAMPAIGNS, start=1):
         tracks.append(
             {
                 "track_id": campaign.track_id,
@@ -62,6 +70,15 @@ def build_payload() -> dict[str, Any]:
                 "runtime_visible": campaign.runtime_visible,
             }
         )
+        now = time.monotonic()
+        if verbose_progress or now - last_heartbeat >= progress_interval_sec:
+            elapsed = int(now - started)
+            print(
+                "[progress] method_tracks_index "
+                + f"campaign_tracks={index}/{total} elapsed={elapsed}s",
+                flush=True,
+            )
+            last_heartbeat = now
 
     return {
         "version": "1.0",
@@ -84,18 +101,37 @@ def build_parser() -> argparse.ArgumentParser:
         default=str(DEFAULT_OUT_PATH),
         help="Output path for lab_method_tracks_v1.json",
     )
+    parser.add_argument(
+        "--verbose-progress",
+        action="store_true",
+        help="Emit progress lines for each campaign track processed.",
+    )
+    parser.add_argument(
+        "--progress-interval-sec",
+        type=int,
+        default=300,
+        help="Heartbeat interval in seconds for long-running operations.",
+    )
     return parser
 
 
 def main(argv: Optional[list[str]] = None) -> int:
+    started = time.monotonic()
     args = build_parser().parse_args(argv)
     out_path = Path(args.out)
     if not out_path.is_absolute():
         out_path = REPO_ROOT / out_path
-    payload = build_payload()
+    print(f"[phase] build method tracks index start (script={SCRIPT_VERSION})", flush=True)
+    payload = build_payload(
+        verbose_progress=bool(args.verbose_progress),
+        progress_interval_sec=max(1, int(args.progress_interval_sec)),
+    )
+    print("[phase] write method tracks index", flush=True)
     write_json(out_path, payload)
+    elapsed = int(time.monotonic() - started)
     print(f"Script: {SCRIPT_VERSION}")
     print(f"Wrote method tracks index: {out_path}")
+    print(f"Elapsed: {elapsed}s")
     return 0
 
 

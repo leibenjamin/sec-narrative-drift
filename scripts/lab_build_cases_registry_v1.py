@@ -536,10 +536,22 @@ def build_parser() -> argparse.ArgumentParser:
         default=str(REGISTRY_PATH),
         help="Output path for lab_cases_v1.json.",
     )
+    parser.add_argument(
+        "--verbose-progress",
+        action="store_true",
+        help="Emit progress lines for each scanned and normalized item.",
+    )
+    parser.add_argument(
+        "--progress-interval-sec",
+        type=int,
+        default=300,
+        help="Heartbeat interval in seconds for long-running operations.",
+    )
     return parser
 
 
 def main(argv: Optional[list[str]] = None) -> int:
+    started = time.monotonic()
     args = build_parser().parse_args(argv)
     tickers = parse_tickers(args.tickers)
     if not tickers:
@@ -570,11 +582,12 @@ def main(argv: Optional[list[str]] = None) -> int:
     scan_started = time.monotonic()
     last_scan_heartbeat = scan_started
     scanned_files = 0
+    progress_interval_sec = max(1, int(args.progress_interval_sec))
 
     for path in sorted(LAB_ROOT.rglob("*.json"), key=lambda item: str(item).lower()):
         scanned_files += 1
         now = time.monotonic()
-        if now - last_scan_heartbeat >= 300:
+        if args.verbose_progress or now - last_scan_heartbeat >= progress_interval_sec:
             elapsed = int(now - scan_started)
             print(
                 "[progress] registry_scan "
@@ -682,7 +695,7 @@ def main(argv: Optional[list[str]] = None) -> int:
             )
         )
         now = time.monotonic()
-        if now - last_normalize_heartbeat >= 300:
+        if args.verbose_progress or now - last_normalize_heartbeat >= progress_interval_sec:
             elapsed = int(now - normalize_started)
             print(
                 "[progress] registry_normalize "
@@ -957,11 +970,13 @@ def main(argv: Optional[list[str]] = None) -> int:
 
     BUILD_REPORT_PATH.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
+    elapsed = int(time.monotonic() - started)
     print(
         "Lab registry build complete: "
         + f"cases={len(cases_payload)} "
         + f"registry={to_repo_rel(registry_out_path)} "
-        + f"report={to_repo_rel(BUILD_REPORT_PATH)}"
+        + f"report={to_repo_rel(BUILD_REPORT_PATH)} "
+        + f"elapsed={elapsed}s"
     )
     return 0
 

@@ -24,6 +24,35 @@ Top-level keys are fixed:
 
 No extra top-level keys are allowed.
 
+## Master Artifact Contract (`llm_outline_compare_v1`)
+This is the canonical LLM output unit for FY2022+ runtime.
+
+Required top-level keys:
+- `lab_schema_version`
+- `artifact_schema_version`
+- `artifact_id`
+- `ticker`
+- `section`
+- `source_id`
+- `cleaning_lens`
+- `year_from`
+- `year_to`
+- `outline_prev`
+- `outline_curr`
+- `node_alignment`
+- `material_changes`
+- `evidence_bank`
+- `lens_divergence`
+- `provenance`
+
+Hard requirements:
+- `artifact_id` must be `llm_outline_compare_v1`.
+- `node_alignment.change_class` must be one of:
+  - `added`, `removed`, `moved`, `split`, `merged`, `reworded`, `intensified`, `softened`, `stable`.
+- All paragraph indices must resolve against full-year paragraph arrays referenced by `provenance.input_file`.
+- Evidence snippets must remain verbatim substrings and obey `<=350` char limit.
+- Runtime LLM detector outputs are deterministic projections from this master artifact; they are not the canonical manual job unit.
+
 ## Detector Artifact Contract
 - `det_llm_delta_brief_v1`: `artifacts` must contain only `delta_brief`.
 - `det_llm_excerpt_picker_v1`: `artifacts` must contain only `selected_prev`, `selected_curr`.

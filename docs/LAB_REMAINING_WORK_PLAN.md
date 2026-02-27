@@ -12,6 +12,17 @@ Core time window: FY2022+ adjacent year pairs (12 runtime pairs: NVDA/KO/WM/GE x
 - Full-section v2 input coverage is complete for all 12 FY2022+ adjacent pairs (including KO/WM/GE 2024-2025 raw + deboilerplated).
 - Outline Compare plumbing is in runtime, but no `llm_outline_compare_v1` artifacts are present yet; until real artifacts are generated, deterministic-first behavior plus explicit missing/debug states remains the canonical UX.
 
+## Canonical execution now (decision-locked)
+- Runtime scope is fixed to 12 FY2022+ adjacent pairs only.
+- LLM runtime policy is real-run only (synthetic lanes are audit-only and hidden).
+- Canonical LLM unit is `llm_outline_compare_v1` master artifacts (`24` jobs per campaign: `12` pairs x `2` lenses).
+- Legacy LLM detector envelopes are compatibility projections from master artifacts:
+  - `det_llm_delta_brief_v1`
+  - `det_llm_excerpt_picker_v1`
+- If LLM artifacts are missing, runtime must remain deterministic-first and path-explicit.
+
+Note: detailed phase logs below this section are retained as historical execution record and may include superseded intermediate milestones.
+
 ## Hard constraints (DO NOT VIOLATE)
 - Deterministic only in the shipped app; no runtime ML/LLM calls.
 - No POS taggers.

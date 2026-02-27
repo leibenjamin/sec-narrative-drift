@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Optional
@@ -172,10 +173,22 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--inputs-index-year-v2", default="")
     parser.add_argument("--out-md", default=str(DEFAULT_OUT_MD))
     parser.add_argument("--out-json", default=str(DEFAULT_OUT_JSON))
+    parser.add_argument(
+        "--verbose-progress",
+        action="store_true",
+        help="Emit progress lines for each pair/lens row built.",
+    )
+    parser.add_argument(
+        "--progress-interval-sec",
+        type=int,
+        default=300,
+        help="Heartbeat interval in seconds for long-running operations.",
+    )
     return parser
 
 
 def main(argv: Optional[list[str]] = None) -> int:
+    started = time.monotonic()
     args = build_parser().parse_args(argv)
     registry_path = Path(args.registry)
     if not registry_path.is_absolute():
@@ -210,14 +223,32 @@ def main(argv: Optional[list[str]] = None) -> int:
         include_after_year=args.include_latest_after,
     )
 
+    print(f"[phase] build master manifest rows (script={SCRIPT_VERSION})", flush=True)
     entries: list[dict[str, Any]] = []
     missing_inputs: list[str] = []
     summary_targets = 0
     summary_present = 0
+    progress_interval_sec = max(1, int(args.progress_interval_sec))
+    loop_started = time.monotonic()
+    last_heartbeat = loop_started
+    total_rows = sum(len(target_pairs.get(ticker, [])) * len(lenses) for ticker in tickers)
+    processed_rows = 0
     for ticker in tickers:
         case_pairs = pairs_by_ticker.get(ticker, set())
         for year_from, year_to in target_pairs.get(ticker, []):
             for lens in lenses:
+                processed_rows += 1
+                now = time.monotonic()
+                if args.verbose_progress or now - last_heartbeat >= progress_interval_sec:
+                    elapsed = int(now - loop_started)
+                    print(
+                        "[progress] master_manifest "
+                        + f"rows={processed_rows}/{total_rows} "
+                        + f"master_present={summary_present}/{summary_targets} "
+                        + f"missing_inputs={len(missing_inputs)} elapsed={elapsed}s",
+                        flush=True,
+                    )
+                    last_heartbeat = now
                 input_entry = resolve_input_entry(
                     pair_index,
                     ticker=ticker,
@@ -334,6 +365,7 @@ def main(argv: Optional[list[str]] = None) -> int:
     out_json = Path(args.out_json)
     if not out_json.is_absolute():
         out_json = (REPO_ROOT / out_json).resolve()
+    print("[phase] write master manifest outputs", flush=True)
     write_json(out_json, payload)
 
     report_lines = [
@@ -384,6 +416,7 @@ def main(argv: Optional[list[str]] = None) -> int:
         report_lines.append("- none")
     write_text(out_md, report_lines)
 
+    elapsed = int(time.monotonic() - started)
     print(f"Script: {SCRIPT_VERSION}")
     print(f"Wrote master manifest json: {out_json}")
     print(f"Wrote master manifest report: {out_md}")
@@ -392,6 +425,7 @@ def main(argv: Optional[list[str]] = None) -> int:
         + f"pair_rows={len(entries)} master_present={summary_present}/{summary_targets} "
         + f"missing_inputs={len(missing_inputs)}"
     )
+    print(f"Elapsed: {elapsed}s")
     return 0
 
 

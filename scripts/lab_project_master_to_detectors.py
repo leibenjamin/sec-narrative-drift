@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import time
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Optional
@@ -388,10 +389,22 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--manifest", default=str(DEFAULT_MANIFEST_PATH))
     parser.add_argument("--campaign-id", default=DEFAULT_PRIMARY_LLM_CAMPAIGN_ID)
     parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument(
+        "--verbose-progress",
+        action="store_true",
+        help="Emit progress lines for each projection entry processed.",
+    )
+    parser.add_argument(
+        "--progress-interval-sec",
+        type=int,
+        default=300,
+        help="Heartbeat interval in seconds for long-running operations.",
+    )
     return parser
 
 
 def main(argv: Optional[list[str]] = None) -> int:
+    started = time.monotonic()
     args = build_parser().parse_args(argv)
     manifest_path = Path(args.manifest)
     if not manifest_path.is_absolute():
@@ -402,10 +415,25 @@ def main(argv: Optional[list[str]] = None) -> int:
     if campaign is None:
         raise SystemExit(f"Unknown campaign id: {args.campaign_id}")
 
+    print(f"[phase] project master artifacts start (script={SCRIPT_VERSION})", flush=True)
     entries = load_projection_entries(manifest_path, campaign.track_slug)
     generated = 0
     skipped = 0
-    for entry in entries:
+    loop_started = time.monotonic()
+    last_heartbeat = loop_started
+    total_entries = len(entries)
+    progress_interval_sec = max(1, int(args.progress_interval_sec))
+    for index, entry in enumerate(entries, start=1):
+        now = time.monotonic()
+        if args.verbose_progress or now - last_heartbeat >= progress_interval_sec:
+            elapsed = int(now - loop_started)
+            print(
+                "[progress] master_projection "
+                + f"entries={index}/{total_entries} generated={generated} skipped={skipped} "
+                + f"elapsed={elapsed}s",
+                flush=True,
+            )
+            last_heartbeat = now
         master_payload = parse_master_payload(entry.master_output_path)
         if master_payload is None:
             skipped += 1
@@ -454,11 +482,13 @@ def main(argv: Optional[list[str]] = None) -> int:
                 write_json(destination, payload)
             generated += 1
 
+    elapsed = int(time.monotonic() - started)
     print(f"Script: {SCRIPT_VERSION}")
     print(f"Campaign: {campaign.track_id}")
     print(f"Projection summary: entries={len(entries)} generated={generated} skipped={skipped}")
     if args.dry_run:
         print("Dry run mode enabled (no files written).")
+    print(f"Elapsed: {elapsed}s")
     return 0
 
 
