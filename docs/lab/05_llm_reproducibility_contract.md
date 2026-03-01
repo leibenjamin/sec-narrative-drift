@@ -53,6 +53,21 @@ Hard requirements:
 - Evidence snippets must remain verbatim substrings and obey `<=350` char limit.
 - Runtime LLM detector outputs are deterministic projections from this master artifact; they are not the canonical manual job unit.
 
+## Manual Job-Pass Contract
+Each one-paste manual job must satisfy all of the following:
+- Exactly one `PRECHECK_OK` line is printed.
+- Output JSON is written to the expected canonical path.
+- Shell-safe parse check succeeds (no shell-specific redirection assumptions).
+- Master validator runs with strict single-target controls:
+  - `--only-mode exact_path`
+  - `--expect-target-count 1`
+  - `--fail-if-target-count-mismatch`
+- Job status line from validator is present:
+  - `JOB_VALIDATE targets=<n> missing=<n> invalid=<n> mismatch=<n> present_mismatch=<n> status=<PASS|FAIL>`
+- Quality blocker audit passes for the output:
+  - `python scripts/lab_audit_master_output_quality.py --output "<path>" --mode blockers ...`
+- Exactly one final status line is printed for the job thread.
+
 ## Detector Artifact Contract
 - `det_llm_delta_brief_v1`: `artifacts` must contain only `delta_brief`.
 - `det_llm_excerpt_picker_v1`: `artifacts` must contain only `selected_prev`, `selected_curr`.
@@ -111,7 +126,20 @@ Before final JSON output in each manual thread:
 - For delta brief, evidence count must be `4-8` total with `>=2` per year.
 - For excerpt picker, evidence count must be `6-10` total with `>=3` per year.
 - Delta brief must include non-empty sections in order: `Change:`, `Drivers:`, `Caveat:`.
+- Prefer snippet boundaries at sentence/clause ends when possible under the 350-char cap.
+- Avoid obvious mid-word snippet clipping when avoidable.
+- Avoid page-number prefix artifacts in snippet starts unless required for evidence fidelity.
 - If any check fails, revise in-thread before final output.
+
+## Schema-Unlock Governance Gate (Required Before v2)
+Baseline policy remains locked for shipped runtime contracts:
+- Do not change public JSON schemas or detector envelope keys unless explicitly unlocked.
+
+Before implementing `llm_outline_compare_v2`:
+1. Record explicit unlock approval in canonical docs.
+2. Define migration and rollback plan for runtime compatibility.
+3. Keep `llm_outline_compare_v1` available during migration.
+4. Provide deterministic v2->v1 projection for legacy detector envelopes and existing UI paths.
 
 ## Validation Entry Point
 - Canonical validator:

@@ -611,6 +611,23 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--allow-invalid", action="store_true")
     parser.add_argument("--only", default="")
     parser.add_argument(
+        "--only-mode",
+        choices=("substring", "basename", "exact_path"),
+        default="substring",
+        help="Matching mode for --only tokens.",
+    )
+    parser.add_argument(
+        "--expect-target-count",
+        type=int,
+        default=None,
+        help="Expected number of targets after filtering.",
+    )
+    parser.add_argument(
+        "--fail-if-target-count-mismatch",
+        action="store_true",
+        help="Fail when filtered target count != --expect-target-count.",
+    )
+    parser.add_argument(
         "--verbose-progress",
         action="store_true",
         help="Emit progress lines for each target validated.",
@@ -622,6 +639,20 @@ def build_parser() -> argparse.ArgumentParser:
         help="Heartbeat interval in seconds for long-running operations.",
     )
     return parser
+
+
+def normalize_path_like(path_value: str) -> str:
+    return path_value.replace("\\", "/").strip()
+
+
+def matches_only_token(path_value: str, token: str, mode: str) -> bool:
+    normalized_path = normalize_path_like(path_value)
+    normalized_token = normalize_path_like(token)
+    if mode == "basename":
+        return Path(normalized_path).name == Path(normalized_token).name
+    if mode == "exact_path":
+        return normalized_path.lstrip("/") == normalized_token.lstrip("/")
+    return normalized_token in normalized_path
 
 
 def main(argv: Optional[list[str]] = None) -> int:
@@ -642,7 +673,14 @@ def main(argv: Optional[list[str]] = None) -> int:
         targets = [
             target
             for target in targets
-            if any(token in target.expected_output_path for token in filters)
+            if any(
+                matches_only_token(
+                    target.expected_output_path,
+                    token,
+                    mode=str(args.only_mode),
+                )
+                for token in filters
+            )
         ]
     marker = f"/{campaign.track_slug}/"
     targets = [
@@ -650,6 +688,10 @@ def main(argv: Optional[list[str]] = None) -> int:
         for target in targets
         if marker in ("/" + target.expected_output_path.replace("\\", "/").lstrip("/"))
     ]
+    target_count_mismatch = False
+    if args.expect_target_count is not None:
+        expected_count = int(args.expect_target_count)
+        target_count_mismatch = len(targets) != expected_count
 
     print(f"[phase] validate master outputs start (script={SCRIPT_VERSION})", flush=True)
     missing, invalid, mismatch = validate_targets(
@@ -682,11 +724,26 @@ def main(argv: Optional[list[str]] = None) -> int:
     )
     print(f"Wrote validation report: {report_path}")
     print(f"Elapsed: {elapsed}s")
+    should_fail = False
+    if target_count_mismatch and bool(args.fail_if_target_count_mismatch):
+        should_fail = True
+        expected_count = int(args.expect_target_count) if args.expect_target_count is not None else -1
+        print(
+            "Target count mismatch: "
+            + f"expected={expected_count}, actual={len(targets)}"
+        )
     if invalid and not args.allow_invalid:
-        return 1
+        should_fail = True
     if missing and not args.allow_missing:
-        return 1
-    return 0
+        should_fail = True
+    status = "FAIL" if should_fail else "PASS"
+    target_count_mismatch_count = 1 if target_count_mismatch else 0
+    print(
+        "JOB_VALIDATE "
+        + f"targets={len(targets)} missing={len(missing)} invalid={len(invalid)} "
+        + f"mismatch={target_count_mismatch_count} present_mismatch={len(mismatch)} status={status}"
+    )
+    return 1 if should_fail else 0
 
 
 if __name__ == "__main__":

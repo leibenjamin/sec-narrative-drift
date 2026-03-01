@@ -2,19 +2,94 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import time
 from pathlib import Path
 from typing import Any, Optional
 
 from lab_script_version import build_script_version
+from lab_output_tracks import get_llm_campaign
 
 SCRIPT_VERSION = build_script_version(Path(__file__), "v1")
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_MANIFEST = REPO_ROOT / "reports" / "lab_llm_master_manifest.json"
 DEFAULT_OUT = REPO_ROOT / "reports" / "lab_llm_master_thread_starters.md"
+DEFAULT_VALIDATION_REPORT = REPO_ROOT / "reports" / "lab_llm_master_validation.md"
+DEFAULT_QUALITY_REPORT = REPO_ROOT / "reports" / "lab_llm_master_quality.md"
+DEFAULT_BATCH_PROGRESS_REPORT = REPO_ROOT / "reports" / "lab_llm_master_batch_progress.md"
+DEFAULT_BATCH_PROGRESS_JSON = REPO_ROOT / "reports" / "lab_llm_master_batch_progress.json"
 PROMPT_SYSTEM_PATH = REPO_ROOT / "docs" / "lab" / "llm_master_compare_v3_system.md"
 PROMPT_USER_TEMPLATE_PATH = REPO_ROOT / "docs" / "lab" / "llm_master_compare_v3_user_template.md"
 PROMPT_SELF_CHECK_PATH = REPO_ROOT / "docs" / "lab" / "llm_master_compare_v3_self_check.md"
+
+OUTPUT_SHAPE_MIN = {
+    "lab_schema_version": "1.0",
+    "artifact_schema_version": "1.0",
+    "artifact_id": "llm_outline_compare_v1",
+    "ticker": "<ticker>",
+    "section": "10k_item1a",
+    "source_id": "edgar",
+    "cleaning_lens": "<raw|deboilerplated>",
+    "year_from": 2022,
+    "year_to": 2023,
+    "outline_prev": [
+        {
+            "node_id": "prev_root",
+            "parent_id": None,
+            "level": 1,
+            "order": 0,
+            "label": "...",
+            "risk_thesis": "...",
+            "evidence_paragraph_idx": [0],
+        }
+    ],
+    "outline_curr": [
+        {
+            "node_id": "curr_root",
+            "parent_id": None,
+            "level": 1,
+            "order": 0,
+            "label": "...",
+            "risk_thesis": "...",
+            "evidence_paragraph_idx": [0],
+        }
+    ],
+    "node_alignment": [
+        {
+            "prev_node_id": "prev_root",
+            "curr_node_id": "curr_root",
+            "change_class": "stable",
+            "rationale": "...",
+            "salience": 0.5,
+        }
+    ],
+    "material_changes": [
+        {
+            "id": "mc_1",
+            "title": "...",
+            "change_class": "reworded",
+            "salience": 0.7,
+            "caveat": "...",
+            "evidence_refs": [{"year": 2022, "paragraph_idx": 0}, {"year": 2023, "paragraph_idx": 0}],
+        }
+    ],
+    "evidence_bank": [
+        {
+            "year": 2022,
+            "paragraph_idx": 0,
+            "snippet": "...",
+            "why": "...",
+            "node_ids": ["prev_root"],
+        }
+    ],
+    "lens_divergence": {"materially_different": False, "summary": "..."},
+    "provenance": {
+        "input_file": "inputs/pair/<pair_basename>.json",
+        "model_provider": "<model_provider>",
+        "model_name": "<model_name>",
+        "run_label": "YYYY-MM-DD_<campaign_tag>",
+    },
+}
 
 
 def read_json(path: Path) -> Any:
@@ -44,12 +119,415 @@ def write_text(path: Path, lines: list[str]) -> None:
     path.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
+def workspace_display(path: Path) -> str:
+    try:
+        return path.resolve().relative_to(REPO_ROOT.resolve()).as_posix()
+    except ValueError:
+        return path.resolve().as_posix()
+
+
+def resolve_from_manifest(
+    raw_path: str,
+    *,
+    bundle_root: Optional[Path],
+    pair_abs_path: Optional[Path],
+) -> str:
+    if not raw_path:
+        return ""
+    candidate = Path(raw_path)
+    if candidate.is_absolute():
+        return workspace_display(candidate)
+    direct = (REPO_ROOT / candidate).resolve()
+    if direct.exists():
+        return workspace_display(direct)
+    if bundle_root is not None:
+        via_bundle = (bundle_root / candidate).resolve()
+        if via_bundle.exists():
+            return workspace_display(via_bundle)
+    if pair_abs_path is not None:
+        try:
+            pair_bundle_root = pair_abs_path.parents[2]
+            via_pair_root = (pair_bundle_root / candidate).resolve()
+            if via_pair_root.exists():
+                return workspace_display(via_pair_root)
+        except IndexError:
+            pass
+    # fallback to a path-like value so the operator can still diagnose quickly
+    return candidate.as_posix()
+
+
+def emit_prompt_block(lines: list[str], title: str, block: str) -> None:
+    lines.append(title)
+    for raw in block.splitlines():
+        lines.append(raw.rstrip())
+
+
+def extract_year_paragraph_count(path_like: str) -> Optional[int]:
+    path = Path(path_like)
+    if not path.is_absolute():
+        path = (REPO_ROOT / path).resolve()
+    if not path.exists():
+        return None
+    try:
+        payload = read_json(path)
+    except Exception:  # noqa: BLE001
+        return None
+    if not isinstance(payload, dict):
+        return None
+    texts = payload.get("texts")
+    if not isinstance(texts, dict):
+        return None
+    paragraphs = texts.get("paragraphs")
+    if not isinstance(paragraphs, list):
+        return None
+    return len(paragraphs)
+
+
+def build_run_label_template(campaign_id: str, ticker: str, year_from: object, year_to: object) -> str:
+    campaign_tag = campaign_id
+    if re.fullmatch(r".+_20\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])", campaign_id):
+        campaign_tag = campaign_id.rsplit("_", 1)[0]
+    return (
+        f"YYYY-MM-DD_{campaign_tag}_{str(ticker).lower()}_"
+        + f"{year_from}_{year_to}_outline_compare"
+    )
+
+
+def emit_batch_checkpoint_block(
+    *,
+    lines: list[str],
+    completed_jobs: int,
+    total_jobs: int,
+    manifest_path: str,
+    campaign_id: str,
+    validation_report: str,
+    quality_report: str,
+    progress_md: str,
+    progress_json: str,
+) -> None:
+    lines.append(f"### Batch Checkpoint After Job {completed_jobs:02d}")
+    lines.append(
+        "Run these commands before starting the next job block "
+        + f"({completed_jobs}/{total_jobs} complete):"
+    )
+    lines.append("```bash")
+    lines.append(
+        f'python scripts/lab_validate_llm_master_outputs.py --manifest "{manifest_path}" --campaign-id "{campaign_id}" --allow-missing --allow-invalid --report "{validation_report}"'
+    )
+    lines.append(
+        f'python scripts/lab_audit_master_output_quality.py --manifest "{manifest_path}" --campaign-id "{campaign_id}" --allow-missing --mode blockers --report "{quality_report}"'
+    )
+    lines.append(
+        "python scripts/lab_record_master_progress.py "
+        + f'--manifest "{manifest_path}" '
+        + f'--campaign-id "{campaign_id}" '
+        + f'--report-md "{progress_md}" '
+        + f'--history-json "{progress_json}" '
+        + f'--label "after_job_{completed_jobs:02d}"'
+    )
+    lines.append("```")
+    lines.append("")
+
+
+def build_json_parse_command(output_path: str) -> str:
+    normalized = output_path.replace("\\", "/")
+    escaped = normalized.replace("'", "\\'")
+    command = (
+        "import json, pathlib; "
+        + f"json.loads(pathlib.Path(r'{escaped}').read_text(encoding='utf-8-sig')); "
+        + "print('JSON_OK')"
+    )
+    return f'python -c "{command}"'
+
+
+def emit_legacy_block(
+    *,
+    lines: list[str],
+    ticker: str,
+    year_from: object,
+    year_to: object,
+    lens: str,
+    section: str,
+    source_id: str,
+    pair_path: str,
+    prev_path: str,
+    curr_path: str,
+    output_path: str,
+    canonical_input_file: str,
+    system_block: str,
+    user_template: str,
+    self_check: str,
+) -> None:
+    lines.append(f"## {ticker} {year_from}-{year_to} {lens}")
+    lines.append("")
+    lines.append("```text")
+    lines.append(f"Thread title: {ticker} {year_from}-{year_to} outline compare ({lens})")
+    lines.append(f"Read this input file from workspace: {pair_path}")
+    if prev_path:
+        lines.append(f"Read this input file from workspace: {prev_path}")
+    if curr_path:
+        lines.append(f"Read this input file from workspace: {curr_path}")
+    lines.append(f"Save output to: {output_path}")
+    lines.append("")
+    lines.append(
+        f"Case context: ticker={ticker}, pair={year_from}-{year_to}, section={section}, lens={lens}, source={source_id}"
+    )
+    lines.append(f"Canonical provenance.input_file: {canonical_input_file}")
+    lines.append("")
+    lines.append("SYSTEM PROMPT")
+    lines.append(system_block)
+    lines.append("")
+    lines.append("USER PROMPT TEMPLATE")
+    lines.append(user_template)
+    lines.append("")
+    lines.append("SELF-CHECK GATE (must pass before final JSON)")
+    lines.append(self_check)
+    lines.append("")
+    lines.append("Output requirements:")
+    lines.append("- JSON only, one top-level object.")
+    lines.append("- artifact_id must be llm_outline_compare_v1.")
+    lines.append("- provenance.input_file must use canonical `inputs/pair/<basename>.json`.")
+    lines.append("- Evidence paragraph indices must map to full-year paragraph arrays.")
+    lines.append("- Do not include markdown or commentary outside JSON.")
+    lines.append("```")
+    lines.append("")
+
+
+def emit_vscode_autowrite_block(
+    *,
+    lines: list[str],
+    job_number: int,
+    ticker: str,
+    year_from: object,
+    year_to: object,
+    lens: str,
+    section: str,
+    source_id: str,
+    pair_path: str,
+    prev_path: str,
+    curr_path: str,
+    output_path: str,
+    canonical_input_file: str,
+    manifest_path: str,
+    campaign_id: str,
+    validation_report: str,
+    quality_report: str,
+    only_token: str,
+    system_block: str,
+    user_template: str,
+    self_check: str,
+) -> None:
+    lines.append(f"## Job {job_number:02d} - {ticker} {year_from}-{year_to} {lens}")
+    lines.append("COPY FROM NEXT LINE THROUGH END_STARTER AND PASTE INTO A FRESH CODEX THREAD:")
+    lines.append("BEGIN_STARTER")
+    lines.append("You are Codex operating inside this workspace. Execute this job end-to-end.")
+    lines.append("Do not ask for manual file attachments or manual save steps.")
+    lines.append("")
+    lines.append("Execution mode: AUTOWRITE_VALIDATE")
+    lines.append(f"Thread title: {ticker} {year_from}-{year_to} outline compare ({lens})")
+    lines.append(
+        f"Case context: ticker={ticker}, pair={year_from}-{year_to}, section={section}, lens={lens}, source={source_id}"
+    )
+    lines.append("")
+    lines.append("1) Read and parse these workspace JSON files:")
+    lines.append(f"- Pair manifest: {pair_path}")
+    lines.append(f"- Year prev: {prev_path}")
+    lines.append(f"- Year curr: {curr_path}")
+    lines.append("")
+    lines.append("2) Preflight checks before generation:")
+    lines.append("- Fail hard if any file is missing/unreadable or invalid JSON.")
+    lines.append("- Compute prev/curr paragraph counts from year files.")
+    lines.append("- Print exactly one preflight line:")
+    lines.append(
+        f"PRECHECK_OK ticker={ticker} pair={year_from}-{year_to} lens={lens} provenance_input_file={canonical_input_file} prev_paragraphs=<N> curr_paragraphs=<N>"
+    )
+    lines.append("")
+    lines.append("3) Generate exactly one JSON object for `llm_outline_compare_v1` using the prompt contract below.")
+    emit_prompt_block(lines, "SYSTEM PROMPT", system_block)
+    lines.append("")
+    emit_prompt_block(lines, "USER PROMPT TEMPLATE", user_template)
+    lines.append("")
+    emit_prompt_block(lines, "SELF-CHECK GATE (must pass before final JSON)", self_check)
+    lines.append("")
+    lines.append("4) Hard failure policy:")
+    lines.append("- If schema requirements cannot be satisfied, do not fabricate data.")
+    lines.append('- Return exactly: {"error":"HARD_FAILURE","reason":"<short reason>"}')
+    lines.append("- Never paraphrase snippets in evidence; use contiguous verbatim substrings only.")
+    lines.append("")
+    lines.append("5) Write output JSON directly to this path:")
+    lines.append(f"- {output_path}")
+    lines.append("")
+    lines.append("6) Run immediate checks exactly:")
+    lines.append(f"- {build_json_parse_command(output_path)}")
+    lines.append(
+        f'- python scripts/lab_validate_llm_master_outputs.py --manifest "{manifest_path}" --campaign-id "{campaign_id}" --allow-missing --allow-invalid --only "{only_token}" --only-mode "exact_path" --expect-target-count 1 --fail-if-target-count-mismatch --report "{validation_report}"'
+    )
+    lines.append(
+        f'- python scripts/lab_audit_master_output_quality.py --output "{output_path}" --mode blockers --report "{quality_report}"'
+    )
+    lines.append("")
+    lines.append("7) Print exactly one final status line:")
+    lines.append("- Success: WRITE_OK JSON_OK VALIDATION_OK")
+    lines.append("- Failure: FAILED: <short reason list>")
+    lines.append("END_STARTER")
+    lines.append("")
+
+
+def emit_vscode_autowrite_v2_block(
+    *,
+    lines: list[str],
+    job_number: int,
+    ticker: str,
+    year_from: object,
+    year_to: object,
+    lens: str,
+    section: str,
+    source_id: str,
+    pair_path: str,
+    prev_path: str,
+    curr_path: str,
+    output_path: str,
+    canonical_input_file: str,
+    manifest_path: str,
+    campaign_id: str,
+    validation_report: str,
+    quality_report: str,
+    only_token: str,
+    system_block: str,
+    user_template: str,
+    self_check: str,
+    model_provider: str,
+    model_name: str,
+    run_label_template: str,
+    expected_prev_paragraphs: Optional[int],
+    expected_curr_paragraphs: Optional[int],
+) -> None:
+    lines.append(f"## Job {job_number:02d} - {ticker} {year_from}-{year_to} {lens}")
+    lines.append("COPY FROM NEXT LINE THROUGH END_STARTER AND PASTE INTO A FRESH CODEX THREAD:")
+    lines.append("BEGIN_STARTER")
+    lines.append("You are Codex operating inside this workspace. Execute this job end-to-end.")
+    lines.append("Do not ask for manual file attachments or manual save steps.")
+    lines.append(
+        "Execution focus: do not inspect unrelated scripts/docs unless a required gate fails."
+    )
+    lines.append("")
+    lines.append("Execution mode: AUTOWRITE_VALIDATE")
+    lines.append(f"Thread title: {ticker} {year_from}-{year_to} outline compare ({lens})")
+    lines.append(
+        f"Case context: ticker={ticker}, pair={year_from}-{year_to}, section={section}, lens={lens}, source={source_id}"
+    )
+    lines.append("")
+    lines.append("JOB_META")
+    lines.append(
+        json.dumps(
+            {
+                "job_id": f"{ticker}_{year_from}_{year_to}_{lens}_{source_id}",
+                "model_provider": model_provider,
+                "model_name": model_name,
+                "run_label_template": run_label_template,
+                "provenance_input_file": canonical_input_file,
+                "expected_prev_paragraphs": expected_prev_paragraphs,
+                "expected_curr_paragraphs": expected_curr_paragraphs,
+                "output_path": output_path,
+            },
+            indent=2,
+            ensure_ascii=False,
+        )
+    )
+    lines.append("")
+    lines.append("OUTPUT_SHAPE_MIN")
+    lines.append(json.dumps(OUTPUT_SHAPE_MIN, indent=2, ensure_ascii=False))
+    lines.append("")
+    lines.append("1) Read and parse these workspace JSON files:")
+    lines.append(f"- Pair manifest: {pair_path}")
+    lines.append(f"- Year prev: {prev_path}")
+    lines.append(f"- Year curr: {curr_path}")
+    lines.append("")
+    lines.append("2) Preflight checks before generation:")
+    lines.append("- Fail hard if any file is missing/unreadable or invalid JSON.")
+    lines.append("- Compute prev/curr paragraph counts from year files.")
+    if expected_prev_paragraphs is not None and expected_curr_paragraphs is not None:
+        lines.append(
+            "- Expected counts from bundle indexing: "
+            + f"prev={expected_prev_paragraphs}, curr={expected_curr_paragraphs}."
+        )
+    lines.append("- Print exactly one preflight line:")
+    lines.append(
+        f"PRECHECK_OK ticker={ticker} pair={year_from}-{year_to} lens={lens} provenance_input_file={canonical_input_file} prev_paragraphs=<N> curr_paragraphs=<N>"
+    )
+    lines.append("")
+    lines.append("3) Generate exactly one JSON object for `llm_outline_compare_v1` using the prompt contract below.")
+    emit_prompt_block(lines, "SYSTEM PROMPT", system_block)
+    lines.append("")
+    emit_prompt_block(lines, "USER PROMPT TEMPLATE", user_template)
+    lines.append("")
+    emit_prompt_block(lines, "SELF-CHECK GATE (must pass before final JSON)", self_check)
+    lines.append("")
+    lines.append("4) Hard failure policy:")
+    lines.append("- If schema requirements cannot be satisfied, do not fabricate data.")
+    lines.append('- Return exactly: {"error":"HARD_FAILURE","reason":"<short reason>"}')
+    lines.append("- Never paraphrase snippets in evidence; use contiguous verbatim substrings only.")
+    lines.append("")
+    lines.append("5) Write output JSON directly to this path:")
+    lines.append(f"- {output_path}")
+    lines.append("")
+    lines.append("6) Run immediate checks exactly:")
+    lines.append(f"- {build_json_parse_command(output_path)}")
+    lines.append(
+        f'- python scripts/lab_validate_llm_master_outputs.py --manifest "{manifest_path}" --campaign-id "{campaign_id}" --allow-missing --allow-invalid --only "{only_token}" --only-mode "exact_path" --expect-target-count 1 --fail-if-target-count-mismatch --report "{validation_report}"'
+    )
+    lines.append(
+        f'- python scripts/lab_audit_master_output_quality.py --output "{output_path}" --mode blockers --report "{quality_report}"'
+    )
+    lines.append(
+        "- Note: validator present_flag_mismatch can be non-blocking during incremental manual runs."
+    )
+    lines.append("")
+    lines.append("7) Print exactly one final status line:")
+    lines.append("- Success: WRITE_OK JSON_OK VALIDATION_OK")
+    lines.append("- Failure: FAILED: <short reason list>")
+    lines.append("END_STARTER")
+    lines.append("")
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description="Emit canonical thread starters for llm_outline_compare_v1 master jobs."
     )
     parser.add_argument("--manifest", default=str(DEFAULT_MANIFEST))
     parser.add_argument("--out", default=str(DEFAULT_OUT))
+    parser.add_argument(
+        "--validation-report",
+        default=str(DEFAULT_VALIDATION_REPORT),
+        help="Validation report path inserted into vscode_autowrite starter checks.",
+    )
+    parser.add_argument(
+        "--quality-report",
+        default=str(DEFAULT_QUALITY_REPORT),
+        help="Quality report path inserted into vscode_autowrite starter checks.",
+    )
+    parser.add_argument(
+        "--format",
+        choices=("vscode_autowrite", "vscode_autowrite_v2", "legacy"),
+        default="vscode_autowrite",
+        help="Starter output format. vscode_autowrite is optimized for one-paste VS Code runs.",
+    )
+    parser.add_argument(
+        "--batch-size",
+        type=int,
+        default=6,
+        help="When using vscode_autowrite_v2, emit governance checkpoints every N jobs.",
+    )
+    parser.add_argument(
+        "--batch-progress-report",
+        default=str(DEFAULT_BATCH_PROGRESS_REPORT),
+        help="Batch progress markdown report used by vscode_autowrite_v2 checkpoints.",
+    )
+    parser.add_argument(
+        "--batch-progress-json",
+        default=str(DEFAULT_BATCH_PROGRESS_JSON),
+        help="Batch progress JSON history used by vscode_autowrite_v2 checkpoints.",
+    )
     parser.add_argument(
         "--verbose-progress",
         action="store_true",
@@ -86,6 +564,37 @@ def main(argv: Optional[list[str]] = None) -> int:
     campaign_dict = as_dict(manifest_dict.get("campaign")) or {}
     campaign_id = str(campaign_dict.get("campaign_id") or "<campaign_id>")
     campaign_name = str(campaign_dict.get("display_name") or "<campaign_display>")
+    campaign_track = get_llm_campaign(campaign_id)
+    model_provider = (
+        campaign_track.model_provider
+        if campaign_track is not None and campaign_track.model_provider
+        else "<model_provider>"
+    )
+    model_name = (
+        campaign_track.model_name
+        if campaign_track is not None and campaign_track.model_name
+        else "<model_name>"
+    )
+    bundle_root_raw = str(manifest_dict.get("bundle_root") or "")
+    bundle_root: Optional[Path] = None
+    if bundle_root_raw:
+        bundle_candidate = Path(bundle_root_raw)
+        if bundle_candidate.is_absolute():
+            bundle_root = bundle_candidate.resolve()
+        else:
+            bundle_root = (REPO_ROOT / bundle_candidate).resolve()
+    validation_report_path = Path(args.validation_report)
+    if not validation_report_path.is_absolute():
+        validation_report_path = (REPO_ROOT / validation_report_path).resolve()
+    quality_report_path = Path(args.quality_report)
+    if not quality_report_path.is_absolute():
+        quality_report_path = (REPO_ROOT / quality_report_path).resolve()
+    batch_progress_report_path = Path(args.batch_progress_report)
+    if not batch_progress_report_path.is_absolute():
+        batch_progress_report_path = (REPO_ROOT / batch_progress_report_path).resolve()
+    batch_progress_json_path = Path(args.batch_progress_json)
+    if not batch_progress_json_path.is_absolute():
+        batch_progress_json_path = (REPO_ROOT / batch_progress_json_path).resolve()
 
     system_block = load_prompt_block(PROMPT_SYSTEM_PATH).strip()
     user_template = load_prompt_block(PROMPT_USER_TEMPLATE_PATH).strip()
@@ -98,11 +607,22 @@ def main(argv: Optional[list[str]] = None) -> int:
     lines.append(f"- manifest: `{manifest_path.as_posix()}`")
     lines.append(f"- campaign: `{campaign_id}`")
     lines.append(f"- campaign display: `{campaign_name}`")
+    lines.append(f"- output format: `{args.format}`")
     lines.append("")
-    lines.append("Run one thread per pair/lens. Attach exactly three files per job:")
-    lines.append("1. Pair manifest JSON")
-    lines.append("2. Year prev input JSON")
-    lines.append("3. Year curr input JSON")
+    lines.append("Run one thread per pair/lens.")
+    if args.format in {"vscode_autowrite", "vscode_autowrite_v2"}:
+        lines.append("Each job block is paste-ready for a fresh VS Code Codex thread:")
+        lines.append("1. Reads pair/year files directly from workspace")
+        lines.append("2. Writes output to canonical path")
+        lines.append("3. Runs parse + validator + quality blocker checks immediately")
+        if args.format == "vscode_autowrite_v2":
+            lines.append("4. Includes JOB_META constants + output skeleton to reduce exploration overhead")
+            lines.append("5. Inserts batch governance checkpoints every N jobs")
+    else:
+        lines.append("Legacy format:")
+        lines.append("1. Read pair manifest JSON")
+        lines.append("2. Read year prev input JSON")
+        lines.append("3. Read year curr input JSON")
     lines.append("")
 
     print(f"[phase] emit master thread starters (script={SCRIPT_VERSION})", flush=True)
@@ -123,12 +643,41 @@ def main(argv: Optional[list[str]] = None) -> int:
         lens = str(entry.get("lens") or "")
         section = str(entry.get("section") or "10k_item1a")
         source_id = str(entry.get("source_id") or "edgar")
-        pair_path = str(input_block.get("source_path") or "")
-        prev_path = str(input_block.get("source_year_prev_path") or "")
-        curr_path = str(input_block.get("source_year_curr_path") or "")
+        pair_path_raw = str(input_block.get("source_path") or "")
+        prev_path_raw = str(input_block.get("source_year_prev_path") or "")
+        curr_path_raw = str(input_block.get("source_year_curr_path") or "")
         output_path = str(master_output.get("expected_output_path") or "")
-        if not pair_path:
+        if not pair_path_raw:
             continue
+        pair_abs = (REPO_ROOT / pair_path_raw).resolve() if not Path(pair_path_raw).is_absolute() else Path(pair_path_raw).resolve()
+        pair_path = resolve_from_manifest(
+            pair_path_raw, bundle_root=bundle_root, pair_abs_path=pair_abs
+        )
+        prev_path = resolve_from_manifest(
+            prev_path_raw, bundle_root=bundle_root, pair_abs_path=pair_abs
+        )
+        curr_path = resolve_from_manifest(
+            curr_path_raw, bundle_root=bundle_root, pair_abs_path=pair_abs
+        )
+        pair_basename = Path(pair_path_raw).name
+        canonical_input_file = f"inputs/pair/{pair_basename}" if pair_basename else ""
+        output_display = resolve_from_manifest(
+            output_path, bundle_root=None, pair_abs_path=None
+        )
+        manifest_display = workspace_display(manifest_path)
+        validation_report_display = workspace_display(validation_report_path)
+        quality_report_display = workspace_display(quality_report_path)
+        batch_progress_report_display = workspace_display(batch_progress_report_path)
+        batch_progress_json_display = workspace_display(batch_progress_json_path)
+        only_token = output_display
+        expected_prev_paragraphs = extract_year_paragraph_count(prev_path)
+        expected_curr_paragraphs = extract_year_paragraph_count(curr_path)
+        run_label_template = build_run_label_template(
+            campaign_id=campaign_id,
+            ticker=ticker,
+            year_from=year_from,
+            year_to=year_to,
+        )
         emitted += 1
         now = time.monotonic()
         if args.verbose_progress or now - last_heartbeat >= progress_interval_sec:
@@ -140,36 +689,90 @@ def main(argv: Optional[list[str]] = None) -> int:
             )
             last_heartbeat = now
 
-        lines.append(f"## {ticker} {year_from}-{year_to} {lens}")
-        lines.append("")
-        lines.append("```text")
-        lines.append(f"Thread title: {ticker} {year_from}-{year_to} outline compare ({lens})")
-        lines.append(f"Attach this input file: {pair_path}")
-        if prev_path:
-            lines.append(f"Attach this input file: {prev_path}")
-        if curr_path:
-            lines.append(f"Attach this input file: {curr_path}")
-        lines.append(f"Save output to: {output_path}")
-        lines.append("")
-        lines.append(f"Case context: ticker={ticker}, pair={year_from}-{year_to}, section={section}, lens={lens}, source={source_id}")
-        lines.append("")
-        lines.append("SYSTEM PROMPT")
-        lines.append(system_block)
-        lines.append("")
-        lines.append("USER PROMPT TEMPLATE")
-        lines.append(user_template)
-        lines.append("")
-        lines.append("SELF-CHECK GATE (must pass before final JSON)")
-        lines.append(self_check)
-        lines.append("")
-        lines.append("Output requirements:")
-        lines.append("- JSON only, one top-level object.")
-        lines.append("- artifact_id must be llm_outline_compare_v1.")
-        lines.append("- provenance.input_file must exactly match the attached pair manifest path.")
-        lines.append("- Evidence paragraph indices must map to full-year paragraph arrays.")
-        lines.append("- Do not include markdown or commentary outside JSON.")
-        lines.append("```")
-        lines.append("")
+        if args.format == "legacy":
+            emit_legacy_block(
+                lines=lines,
+                ticker=ticker,
+                year_from=year_from,
+                year_to=year_to,
+                lens=lens,
+                section=section,
+                source_id=source_id,
+                pair_path=pair_path,
+                prev_path=prev_path,
+                curr_path=curr_path,
+                output_path=output_display,
+                canonical_input_file=canonical_input_file,
+                system_block=system_block,
+                user_template=user_template,
+                self_check=self_check,
+            )
+        elif args.format == "vscode_autowrite":
+            emit_vscode_autowrite_block(
+                lines=lines,
+                job_number=emitted,
+                ticker=ticker,
+                year_from=year_from,
+                year_to=year_to,
+                lens=lens,
+                section=section,
+                source_id=source_id,
+                pair_path=pair_path,
+                prev_path=prev_path,
+                curr_path=curr_path,
+                output_path=output_display,
+                canonical_input_file=canonical_input_file,
+                manifest_path=manifest_display,
+                campaign_id=campaign_id,
+                validation_report=validation_report_display,
+                quality_report=quality_report_display,
+                only_token=only_token,
+                system_block=system_block,
+                user_template=user_template,
+                self_check=self_check,
+            )
+        else:
+            emit_vscode_autowrite_v2_block(
+                lines=lines,
+                job_number=emitted,
+                ticker=ticker,
+                year_from=year_from,
+                year_to=year_to,
+                lens=lens,
+                section=section,
+                source_id=source_id,
+                pair_path=pair_path,
+                prev_path=prev_path,
+                curr_path=curr_path,
+                output_path=output_display,
+                canonical_input_file=canonical_input_file,
+                manifest_path=manifest_display,
+                campaign_id=campaign_id,
+                validation_report=validation_report_display,
+                quality_report=quality_report_display,
+                only_token=only_token,
+                system_block=system_block,
+                user_template=user_template,
+                self_check=self_check,
+                model_provider=model_provider,
+                model_name=model_name,
+                run_label_template=run_label_template,
+                expected_prev_paragraphs=expected_prev_paragraphs,
+                expected_curr_paragraphs=expected_curr_paragraphs,
+            )
+            batch_size = max(1, int(args.batch_size))
+            if emitted % batch_size == 0 and emitted < total_entries:
+                emit_batch_checkpoint_block(
+                    lines=lines,
+                    completed_jobs=emitted,
+                    total_jobs=total_entries,
+                    manifest_path=manifest_display,
+                    campaign_id=campaign_id,
+                    validation_report=validation_report_display,
+                    quality_report=quality_report_display,
+                    progress_md=batch_progress_report_display,
+                    progress_json=batch_progress_json_display,
+                )
 
     print("[phase] write starter markdown", flush=True)
     write_text(out_path, lines)

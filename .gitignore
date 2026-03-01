@@ -35,6 +35,15 @@ docs/*
 AGENTS.md
 !docs/PRODUCT_STORY.md
 !docs/PUBLIC_TONE_POLICY.md
+!docs/lab/
+docs/lab/*
+!docs/lab/03_llm_precompute_workflow.md
+!docs/lab/05_llm_reproducibility_contract.md
+!docs/lab/06_llm_model_comparison_workflow.md
+!docs/lab/07_codex_real_run_profile.md
+!docs/lab/llm_master_compare_v3_system.md
+!docs/lab/llm_master_compare_v3_user_template.md
+!docs/lab/llm_master_compare_v3_self_check.md
 
 # Pipeline cache
 scripts/_cache/*
@@ -100,6 +109,8 @@ public/data/sec_narrative_drift_metrics/
 
 # Lab data (keep local until ready to deploy)
 public/data/sec_narrative_drift_lab_candidates*/
+# Local flat detector mirrors (canonical tracked paths are under outputs/<detector>/...)
+public/data/sec_narrative_drift_lab/*/lab_10k_item1a_*_det_*_edgar.json
 chatgpt_review_prompt2_sync_20260207_182131.zip
 chatgpt_review_prompt2_sync_20260207_183103.zip
 chatgpt_review_prompt2_sync_20260207_183237.zip

@@ -47,6 +47,7 @@ ALLOWLIST_PATTERNS = [
     re.compile(r"chatgpt", re.IGNORECASE),
     re.compile(r"codex", re.IGNORECASE),
     re.compile(r"SEC", re.IGNORECASE),
+    re.compile(r'"lab:portfolio"\s*:', re.IGNORECASE),
 ]
 
 TEXT_EXTENSIONS = {

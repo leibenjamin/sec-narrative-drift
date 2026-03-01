@@ -1,0 +1,832 @@
+{
+  "lab_schema_version": "1.0",
+  "artifact_schema_version": "1.0",
+  "artifact_id": "llm_outline_compare_v1",
+  "ticker": "NVDA",
+  "section": "10k_item1a",
+  "source_id": "edgar",
+  "cleaning_lens": "raw",
+  "year_from": 2022,
+  "year_to": 2023,
+  "outline_prev": [
+    {
+      "node_id": "p_root_market",
+      "parent_id": null,
+      "level": 1,
+      "order": 0,
+      "label": "Market Execution and Demand Formation",
+      "risk_thesis": "The 2022 risk sequence centers on competitive intensity and demand-timing execution.",
+      "evidence_paragraph_idx": [
+        0,
+        5,
+        9
+      ]
+    },
+    {
+      "node_id": "p_market_competition",
+      "parent_id": "p_root_market",
+      "level": 2,
+      "order": 0,
+      "label": "Competitive pressure and platform cadence",
+      "risk_thesis": "Rapidly changing product standards and entrants can erode share if release cadence slips.",
+      "evidence_paragraph_idx": [
+        5,
+        6
+      ]
+    },
+    {
+      "node_id": "p_market_designwins",
+      "parent_id": "p_market_competition",
+      "level": 3,
+      "order": 0,
+      "label": "Design-win timing dependency",
+      "risk_thesis": "Lengthy design-win cycles create downside if anticipated customer features miss market timing.",
+      "evidence_paragraph_idx": [
+        3,
+        4
+      ]
+    },
+    {
+      "node_id": "p_market_demandforecast",
+      "parent_id": "p_root_market",
+      "level": 2,
+      "order": 1,
+      "label": "Demand forecasting and inventory mismatch",
+      "risk_thesis": "Long lead times force forecasts that can overbuild or underbuild supply.",
+      "evidence_paragraph_idx": [
+        9,
+        11,
+        12
+      ]
+    },
+    {
+      "node_id": "p_market_supplycommit",
+      "parent_id": "p_market_demandforecast",
+      "level": 3,
+      "order": 0,
+      "label": "Long-term supply commitments",
+      "risk_thesis": "Advance commitments and prepayments increase downside when demand assumptions miss.",
+      "evidence_paragraph_idx": [
+        9,
+        10,
+        12
+      ]
+    },
+    {
+      "node_id": "p_root_operations",
+      "parent_id": null,
+      "level": 1,
+      "order": 1,
+      "label": "Operational Resilience and Supplier Dependence",
+      "risk_thesis": "Execution resilience depends on third-party manufacturing, product reliability, and cyber defense.",
+      "evidence_paragraph_idx": [
+        14,
+        18,
+        29
+      ]
+    },
+    {
+      "node_id": "p_ops_foundry",
+      "parent_id": "p_root_operations",
+      "level": 2,
+      "order": 0,
+      "label": "Foundry concentration and manufacturing control limits",
+      "risk_thesis": "Reliance on external foundries constrains direct control over capacity and process transitions.",
+      "evidence_paragraph_idx": [
+        14,
+        15,
+        16
+      ]
+    },
+    {
+      "node_id": "p_ops_wafer",
+      "parent_id": "p_ops_foundry",
+      "level": 3,
+      "order": 0,
+      "label": "No internal wafer fabrication buffer",
+      "risk_thesis": "Lack of owned wafer fabrication removes an internal fallback when foundry conditions tighten.",
+      "evidence_paragraph_idx": [
+        14
+      ]
+    },
+    {
+      "node_id": "p_ops_product_security",
+      "parent_id": "p_root_operations",
+      "level": 2,
+      "order": 1,
+      "label": "Defects, vulnerabilities, and breach exposure",
+      "risk_thesis": "Complex hardware/software stacks can fail or be exploited, with remediation and reputational cost.",
+      "evidence_paragraph_idx": [
+        18,
+        29,
+        31
+      ]
+    },
+    {
+      "node_id": "p_ops_threatactors",
+      "parent_id": "p_ops_product_security",
+      "level": 3,
+      "order": 0,
+      "label": "Nation-state and criminal threat actor pressure",
+      "risk_thesis": "Escalating attacker sophistication increases operational and incident-response burden.",
+      "evidence_paragraph_idx": [
+        33,
+        34
+      ]
+    },
+    {
+      "node_id": "p_root_external",
+      "parent_id": null,
+      "level": 1,
+      "order": 2,
+      "label": "External Policy, Climate, and Financial Obligations",
+      "risk_thesis": "Regulatory change, geopolitical actions, climate exposure, and financial obligations widen exogenous risk channels.",
+      "evidence_paragraph_idx": [
+        23,
+        50,
+        63,
+        70,
+        73
+      ]
+    },
+    {
+      "node_id": "p_ext_geopolitical",
+      "parent_id": "p_root_external",
+      "level": 2,
+      "order": 0,
+      "label": "Trade controls, sanctions, and geopolitical conflict",
+      "risk_thesis": "Trade and national security actions can restrict shipments, licensing, and market access.",
+      "evidence_paragraph_idx": [
+        51,
+        52
+      ]
+    },
+    {
+      "node_id": "p_ext_ai_controls",
+      "parent_id": "p_ext_geopolitical",
+      "level": 3,
+      "order": 0,
+      "label": "AI-related regulatory restriction risk",
+      "risk_thesis": "Rising strategic focus on AI raises the probability of additional product restrictions.",
+      "evidence_paragraph_idx": [
+        52,
+        55
+      ]
+    },
+    {
+      "node_id": "p_ext_climate",
+      "parent_id": "p_root_external",
+      "level": 2,
+      "order": 1,
+      "label": "Climate and infrastructure stressors",
+      "risk_thesis": "Climate conditions and related regulation can disrupt operations and increase cost burden.",
+      "evidence_paragraph_idx": [
+        23,
+        24,
+        26
+      ]
+    },
+    {
+      "node_id": "p_ext_privacy_tax_debt",
+      "parent_id": "p_root_external",
+      "level": 2,
+      "order": 2,
+      "label": "Privacy, tax, and indebtedness constraints",
+      "risk_thesis": "Compliance with privacy regimes, tax rules, and debt obligations creates persistent financial and legal exposure.",
+      "evidence_paragraph_idx": [
+        63,
+        70,
+        73
+      ]
+    },
+    {
+      "node_id": "p_ext_crossborder_privacy",
+      "parent_id": "p_ext_privacy_tax_debt",
+      "level": 3,
+      "order": 0,
+      "label": "Cross-border data and tax complexity",
+      "risk_thesis": "Cross-jurisdiction privacy transfer rules and tax audits add execution complexity and cost.",
+      "evidence_paragraph_idx": [
+        65,
+        66,
+        70
+      ]
+    }
+  ],
+  "outline_curr": [
+    {
+      "node_id": "c_root_summary",
+      "parent_id": null,
+      "level": 1,
+      "order": 0,
+      "label": "Front-Loaded Risk Index and Market Execution",
+      "risk_thesis": "The 2023 section opens with a bullet index before expanding into detailed demand and execution mechanics.",
+      "evidence_paragraph_idx": [
+        1,
+        14
+      ]
+    },
+    {
+      "node_id": "c_summary_bullets",
+      "parent_id": "c_root_summary",
+      "level": 2,
+      "order": 0,
+      "label": "Bulletized top-risk index",
+      "risk_thesis": "A compact bullet set pre-positions major risk themes before narrative detail.",
+      "evidence_paragraph_idx": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "node_id": "c_summary_to_detail",
+      "parent_id": "c_summary_bullets",
+      "level": 3,
+      "order": 0,
+      "label": "Index-to-detail transition",
+      "risk_thesis": "The disclosure transitions from summary bullets into expanded market and supply analysis.",
+      "evidence_paragraph_idx": [
+        14,
+        19
+      ]
+    },
+    {
+      "node_id": "c_market_demand",
+      "parent_id": "c_root_summary",
+      "level": 2,
+      "order": 1,
+      "label": "Demand estimation and market adaptation",
+      "risk_thesis": "Forecasting error, channel behavior, and shifting customer needs drive revenue volatility risk.",
+      "evidence_paragraph_idx": [
+        19,
+        21,
+        23
+      ]
+    },
+    {
+      "node_id": "c_market_supplymismatch",
+      "parent_id": "c_market_demand",
+      "level": 3,
+      "order": 0,
+      "label": "Supply mismatch under extended lead times",
+      "risk_thesis": "Lead-time and commitment structures can magnify under- or over-supply outcomes.",
+      "evidence_paragraph_idx": [
+        25,
+        26,
+        28
+      ]
+    },
+    {
+      "node_id": "c_root_operations",
+      "parent_id": null,
+      "level": 1,
+      "order": 1,
+      "label": "Supplier Dependency and Product Resilience",
+      "risk_thesis": "Supplier concentration, product defects, and cyber incidents remain core operational risk channels.",
+      "evidence_paragraph_idx": [
+        31,
+        32,
+        33
+      ]
+    },
+    {
+      "node_id": "c_ops_foundry",
+      "parent_id": "c_root_operations",
+      "level": 2,
+      "order": 0,
+      "label": "Foundry dependence and process control limitations",
+      "risk_thesis": "Foundry dependence remains explicit and detailed in manufacturing execution language.",
+      "evidence_paragraph_idx": [
+        31,
+        32
+      ]
+    },
+    {
+      "node_id": "c_ops_control_limits",
+      "parent_id": "c_ops_foundry",
+      "level": 3,
+      "order": 0,
+      "label": "Third-party manufacturing control boundaries",
+      "risk_thesis": "External fabrication and packaging partners constrain direct control of quality and capacity.",
+      "evidence_paragraph_idx": [
+        31,
+        32
+      ]
+    },
+    {
+      "node_id": "c_ops_product_security",
+      "parent_id": "c_root_operations",
+      "level": 2,
+      "order": 1,
+      "label": "Defect remediation and cyberattack exposure",
+      "risk_thesis": "Product defects and threat-actor attacks are framed with direct remediation and revenue downside.",
+      "evidence_paragraph_idx": [
+        33,
+        37,
+        40
+      ]
+    },
+    {
+      "node_id": "c_ops_incident_costs",
+      "parent_id": "c_ops_product_security",
+      "level": 3,
+      "order": 0,
+      "label": "Incident response cost and service disruption",
+      "risk_thesis": "Security events can trigger direct remediation cost and service-level disruption.",
+      "evidence_paragraph_idx": [
+        41,
+        42
+      ]
+    },
+    {
+      "node_id": "c_root_policy",
+      "parent_id": null,
+      "level": 1,
+      "order": 2,
+      "label": "Regulatory, Geopolitical, and AI Governance Expansion",
+      "risk_thesis": "Policy risk expands from general compliance exposure to explicit export-control and AI governance constraints.",
+      "evidence_paragraph_idx": [
+        62,
+        65,
+        66,
+        73
+      ]
+    },
+    {
+      "node_id": "c_policy_export_controls",
+      "parent_id": "c_root_policy",
+      "level": 2,
+      "order": 0,
+      "label": "Export controls and China licensing constraints",
+      "risk_thesis": "Export-control language becomes specific to chip families, licensing, and China operations.",
+      "evidence_paragraph_idx": [
+        65,
+        66,
+        67
+      ]
+    },
+    {
+      "node_id": "c_policy_china_licenses",
+      "parent_id": "c_policy_export_controls",
+      "level": 3,
+      "order": 0,
+      "label": "USG license timing and alternative product risk",
+      "risk_thesis": "License uncertainty and alternative product substitution add concrete revenue and execution risk.",
+      "evidence_paragraph_idx": [
+        66,
+        68,
+        69
+      ]
+    },
+    {
+      "node_id": "c_policy_responsible_ai",
+      "parent_id": "c_root_policy",
+      "level": 2,
+      "order": 1,
+      "label": "Responsible AI scrutiny and liability",
+      "risk_thesis": "Responsible-use language now ties AI concerns to reputational and financial liability.",
+      "evidence_paragraph_idx": [
+        73
+      ]
+    },
+    {
+      "node_id": "c_policy_ai_liability",
+      "parent_id": "c_policy_responsible_ai",
+      "level": 3,
+      "order": 0,
+      "label": "AI controversy-to-liability pathway",
+      "risk_thesis": "Ethical or misuse controversy is linked to direct legal and financial consequences.",
+      "evidence_paragraph_idx": [
+        73
+      ]
+    },
+    {
+      "node_id": "c_root_financial",
+      "parent_id": null,
+      "level": 1,
+      "order": 3,
+      "label": "Climate, Data Governance, Tax, and Capital Structure",
+      "risk_thesis": "Climate effects, data obligations, tax exposure, and indebtedness are grouped as ongoing financial resilience constraints.",
+      "evidence_paragraph_idx": [
+        44,
+        78,
+        85,
+        89
+      ]
+    },
+    {
+      "node_id": "c_fin_climate",
+      "parent_id": "c_root_financial",
+      "level": 2,
+      "order": 0,
+      "label": "Climate impact horizon and compliance burden",
+      "risk_thesis": "Climate risk remains present but is framed as long-term alongside regulatory burden.",
+      "evidence_paragraph_idx": [
+        44,
+        45,
+        46
+      ]
+    },
+    {
+      "node_id": "c_fin_privacy",
+      "parent_id": "c_root_financial",
+      "level": 2,
+      "order": 1,
+      "label": "Data privacy and security law proliferation",
+      "risk_thesis": "Privacy obligations are restated with expanded legal and operational specificity.",
+      "evidence_paragraph_idx": [
+        78,
+        80,
+        82
+      ]
+    },
+    {
+      "node_id": "c_fin_crossborder",
+      "parent_id": "c_fin_privacy",
+      "level": 3,
+      "order": 0,
+      "label": "Cross-border transfer and localization constraints",
+      "risk_thesis": "Transfer restrictions and localization rules increase compliance effort for global data flows.",
+      "evidence_paragraph_idx": [
+        81,
+        82
+      ]
+    },
+    {
+      "node_id": "c_fin_tax_debt",
+      "parent_id": "c_root_financial",
+      "level": 2,
+      "order": 2,
+      "label": "Tax exposure and indebtedness obligations",
+      "risk_thesis": "Tax uncertainty and debt servicing obligations continue as financial-position constraints.",
+      "evidence_paragraph_idx": [
+        85,
+        89,
+        90
+      ]
+    },
+    {
+      "node_id": "c_fin_refinance",
+      "parent_id": "c_fin_tax_debt",
+      "level": 3,
+      "order": 0,
+      "label": "Refinancing and covenant execution risk",
+      "risk_thesis": "Debt refinancing and covenant compliance remain downside channels for cash-flow flexibility.",
+      "evidence_paragraph_idx": [
+        89,
+        91
+      ]
+    }
+  ],
+  "node_alignment": [
+    {
+      "prev_node_id": "p_root_market",
+      "curr_node_id": "c_root_summary",
+      "change_class": "reworded",
+      "rationale": "2023 keeps the market-execution opening but inserts a front-loaded summary layer before detailed discussion, unlike 2022's immediate narrative start.",
+      "salience": 0.74
+    },
+    {
+      "prev_node_id": null,
+      "curr_node_id": "c_summary_bullets",
+      "change_class": "added",
+      "rationale": "The explicit bulletized top-risk index in early 2023 paragraphs has no direct structural counterpart in 2022.",
+      "salience": 0.87
+    },
+    {
+      "prev_node_id": "p_market_competition",
+      "curr_node_id": "c_market_demand",
+      "change_class": "moved",
+      "rationale": "Competition and demand mechanics remain present but are reorganized under a summary-to-detail flow in 2023.",
+      "salience": 0.62
+    },
+    {
+      "prev_node_id": "p_market_demandforecast",
+      "curr_node_id": "c_market_supplymismatch",
+      "change_class": "intensified",
+      "rationale": "Both years discuss forecast error, but 2023 expands the mismatch pathway with explicit channel and commitment mechanics.",
+      "salience": 0.76
+    },
+    {
+      "prev_node_id": "p_root_operations",
+      "curr_node_id": "c_root_operations",
+      "change_class": "stable",
+      "rationale": "Supplier dependency and product resilience remain a core branch in both years with similar hierarchical placement.",
+      "salience": 0.51
+    },
+    {
+      "prev_node_id": "p_ops_foundry",
+      "curr_node_id": "c_ops_foundry",
+      "change_class": "reworded",
+      "rationale": "Foundry dependency persists, but 2023 updates the wording from absence of owned fabrication toward detailed partner-process dependence.",
+      "salience": 0.79
+    },
+    {
+      "prev_node_id": "p_ops_product_security",
+      "curr_node_id": "c_ops_product_security",
+      "change_class": "intensified",
+      "rationale": "2023 links defects and cyber exposure more directly to remediation expense and market-share consequences than 2022's broader cautionary framing.",
+      "salience": 0.68
+    },
+    {
+      "prev_node_id": "p_root_external",
+      "curr_node_id": "c_root_policy",
+      "change_class": "split",
+      "rationale": "2022 combines policy, climate, privacy, tax, and debt under one external branch, while 2023 splits policy/AI governance from financial-governance topics.",
+      "salience": 0.73
+    },
+    {
+      "prev_node_id": "p_ext_geopolitical",
+      "curr_node_id": "c_policy_export_controls",
+      "change_class": "intensified",
+      "rationale": "General trade-policy language in 2022 is replaced by concrete chip-specific export-control and licensing constraints in 2023.",
+      "salience": 0.94
+    },
+    {
+      "prev_node_id": "p_ext_ai_controls",
+      "curr_node_id": "c_policy_responsible_ai",
+      "change_class": "intensified",
+      "rationale": "AI-related risk shifts from reputational concern to explicit reputational-and-financial liability and policy constraints in 2023.",
+      "salience": 0.69
+    },
+    {
+      "prev_node_id": "p_ext_climate",
+      "curr_node_id": "c_fin_climate",
+      "change_class": "softened",
+      "rationale": "Climate risk language remains but moves from 'increasingly adverse impact' in 2022 to a longer-horizon 'long-term impact' lead-in during 2023.",
+      "salience": 0.57
+    },
+    {
+      "prev_node_id": "p_ext_privacy_tax_debt",
+      "curr_node_id": "c_root_financial",
+      "change_class": "moved",
+      "rationale": "Privacy, tax, and debt content is retained but relocated into a dedicated financial-resilience branch in 2023.",
+      "salience": 0.55
+    },
+    {
+      "prev_node_id": "p_ext_crossborder_privacy",
+      "curr_node_id": "c_fin_crossborder",
+      "change_class": "stable",
+      "rationale": "Cross-border data-transfer constraints remain present in both years with comparable subordinate placement.",
+      "salience": 0.47
+    },
+    {
+      "prev_node_id": "p_ext_privacy_tax_debt",
+      "curr_node_id": "c_fin_tax_debt",
+      "change_class": "split",
+      "rationale": "A single 2022 compliance cluster separates into distinct privacy and tax/debt sub-branches in 2023.",
+      "salience": 0.58
+    }
+  ],
+  "material_changes": [
+    {
+      "id": "mc_export_controls_2023_q3",
+      "title": "new export restrictions and export licensing requirements targeting China go beyond Government actions, including trade protection",
+      "change_class": "intensified",
+      "salience": 0.94,
+      "caveat": "The contrast uses 2022 para 52 and 2023 para 67; 2022 evidence is broad policy framing while 2023 evidence is event-specific, so part of the salience comes from disclosure granularity rather than pure risk incidence.",
+      "evidence_refs": [
+        {
+          "year": 2022,
+          "paragraph_idx": 51
+        },
+        {
+          "year": 2023,
+          "paragraph_idx": 66
+        }
+      ]
+    },
+    {
+      "id": "mc_added_bullet_index",
+      "title": "Added bullet index: Failure to meet the evolving needs of our industry and markets appears before narrative detail",
+      "change_class": "added",
+      "salience": 0.87,
+      "caveat": "Evidence is anchored to 2023 para 2 versus 2022 para 1; the 2022 paragraph may summarize risks in prose elsewhere, so this finding isolates structural placement at section open rather than total topic coverage.",
+      "evidence_refs": [
+        {
+          "year": 2022,
+          "paragraph_idx": 0
+        },
+        {
+          "year": 2023,
+          "paragraph_idx": 1
+        }
+      ]
+    },
+    {
+      "id": "mc_foundry_rewording",
+      "title": "We do not manufacture ... wafer fabrication facility becomes We depend on foundries to manufacture our semiconductor wafers",
+      "change_class": "reworded",
+      "salience": 0.79,
+      "caveat": "This mapping compares 2022 para 15 and 2023 para 33 only; surrounding supplier bullets in adjacent paragraphs could add qualifiers about packaging, testing, and contract terms not repeated in the cited snippets.",
+      "evidence_refs": [
+        {
+          "year": 2022,
+          "paragraph_idx": 14
+        },
+        {
+          "year": 2023,
+          "paragraph_idx": 32
+        }
+      ]
+    },
+    {
+      "id": "mc_ai_liability_intensified",
+      "title": "responsible use of ... AI shifts from reputational harm and liability to reputational and financial harm and liability",
+      "change_class": "intensified",
+      "salience": 0.69,
+      "caveat": "Comparison uses 2022 para 56 and 2023 para 74; both snippets are lead sentences, so later sentence detail on ethical mechanisms and mitigation controls is not fully represented.",
+      "evidence_refs": [
+        {
+          "year": 2022,
+          "paragraph_idx": 55
+        },
+        {
+          "year": 2023,
+          "paragraph_idx": 73
+        }
+      ]
+    },
+    {
+      "id": "mc_climate_horizon_softened",
+      "title": "increasingly adverse impact is reframed with long-term impact on our business lead language",
+      "change_class": "softened",
+      "salience": 0.57,
+      "caveat": "The climate comparison is based on 2022 para 24 and 2023 para 45; because 2023 para 45 also repeats the 2022 phrase later in the same paragraph, the shift is primarily in opening emphasis rather than complete topic replacement.",
+      "evidence_refs": [
+        {
+          "year": 2022,
+          "paragraph_idx": 23
+        },
+        {
+          "year": 2023,
+          "paragraph_idx": 44
+        }
+      ]
+    },
+    {
+      "id": "mc_privacy_reworded",
+      "title": "stringent and changing data privacy and security obligations becomes laws, rules, regulations, and other obligations",
+      "change_class": "reworded",
+      "salience": 0.48,
+      "caveat": "Evidence compares 2022 para 64 and 2023 para 79 opening lines; statutory examples and cross-border transfer mechanics appear in later paragraphs and are not captured in this head-sentence pair.",
+      "evidence_refs": [
+        {
+          "year": 2022,
+          "paragraph_idx": 63
+        },
+        {
+          "year": 2023,
+          "paragraph_idx": 78
+        }
+      ]
+    }
+  ],
+  "evidence_bank": [
+    {
+      "year": 2022,
+      "paragraph_idx": 0,
+      "snippet": "In evaluating NVIDIA, the following risk factors should be considered in addition to the other information in this Annual Report on Form 10-K.",
+      "why": "Establishes the shared opening risk-factor frame used as the baseline for structural comparison.",
+      "node_ids": [
+        "p_root_market"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 14,
+      "snippet": "We do not manufacture the semiconductors used for our products and do not own or operate a wafer fabrication facility.",
+      "why": "Captures the explicit lack of owned wafer fabrication used in foundry-dependence comparisons.",
+      "node_ids": [
+        "p_ops_foundry",
+        "p_ops_wafer"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 23,
+      "snippet": "Climate change may have an increasingly adverse impact on our business and those of our customers, partners and vendors.",
+      "why": "Provides the 2022 climate anchor language increasingly adverse impact for horizon-shift assessment.",
+      "node_ids": [
+        "p_ext_climate"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 51,
+      "snippet": "Government actions, including trade protection and national security policies of U.S. and foreign government bodies, such as tariffs, import or export regulations, including deemed export restrictions, trade and economic sanctions, decrees,",
+      "why": "Represents broad 2022 trade-protection and national-security policy exposure before 2023 chip-specific controls.",
+      "node_ids": [
+        "p_ext_geopolitical"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 55,
+      "snippet": "Concerns relating to the responsible use of new and evolving technologies, such as AI, in our products and services, may result in reputational harm and liability, and may cause us to incur costs to resolve such issues.",
+      "why": "Anchors the 2022 responsible-AI phrasing centered on reputational harm and liability.",
+      "node_ids": [
+        "p_ext_ai_controls"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 63,
+      "snippet": "We are subject to stringent and changing data privacy and security obligations.",
+      "why": "Supplies baseline privacy-obligation wording for 2022-to-2023 legal phrasing changes.",
+      "node_ids": [
+        "p_ext_privacy_tax_debt",
+        "p_ext_crossborder_privacy"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 73,
+      "snippet": "As of January 30, 2022, we had outstanding a total of $11 billion in notes due by 2060.",
+      "why": "Shows legacy indebtedness and refinancing exposure that continues in 2023 financial risk branches.",
+      "node_ids": [
+        "p_ext_privacy_tax_debt"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 1,
+      "snippet": "• Failure to meet the evolving needs of our industry and markets may adversely impact our financial results.",
+      "why": "Demonstrates the added bulletized risk index format at the start of the 2023 section.",
+      "node_ids": [
+        "c_root_summary",
+        "c_summary_bullets"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 32,
+      "snippet": "We depend on foundries to manufacture our semiconductor wafers using their fabrication equipment and techniques.",
+      "why": "Provides 2023 foundry-dependence wording used to compare supplier-control framing.",
+      "node_ids": [
+        "c_ops_foundry",
+        "c_ops_control_limits"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 44,
+      "snippet": "Climate change may have a long-term impact on our business. Climate change may have an increasingly adverse impact on our business and those of our customers, partners and vendors.",
+      "why": "Captures 2023 climate lead sentence introducing a long-term framing before detailed impacts.",
+      "node_ids": [
+        "c_fin_climate"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 66,
+      "snippet": "During the third quarter of fiscal year 2023, the U.S. government, or USG, announced new export restrictions and export licensing requirements targeting China’s semiconductor and supercomputing industries.",
+      "why": "Records the explicit 2023 Q3 USG export-control event and China-targeted licensing constraints.",
+      "node_ids": [
+        "c_policy_export_controls",
+        "c_policy_china_licenses"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 73,
+      "snippet": "Issues relating to the responsible use of our technologies, including AI in our offerings, may result in reputational and financial harm and liability.",
+      "why": "Anchors 2023 responsible-AI language that adds explicit financial-harm wording.",
+      "node_ids": [
+        "c_policy_responsible_ai",
+        "c_policy_ai_liability"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 78,
+      "snippet": "We are subject to stringent and changing data privacy and security laws, rules, regulations, and other obligations.",
+      "why": "Supplies 2023 privacy opening language with expanded legal taxonomy.",
+      "node_ids": [
+        "c_fin_privacy",
+        "c_fin_crossborder"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 89,
+      "snippet": "Our indebtedness could adversely affect our financial position and cash flows from operations, and prevent us from implementing our strategy or fulfilling our contractual obligations.",
+      "why": "Shows continued indebtedness constraints in the 2023 financial branch.",
+      "node_ids": [
+        "c_fin_tax_debt",
+        "c_fin_refinance"
+      ]
+    }
+  ],
+  "lens_divergence": {
+    "materially_different": false,
+    "summary": "Single-lens raw artifact; divergence versus deboilerplated is not evaluated inside this file."
+  },
+  "provenance": {
+    "input_file": "inputs/pair/NVDA_2022_2023_10k_item1a_raw_edgar.json",
+    "model_provider": "openai",
+    "model_name": "GPT-5.3-Codex (Extra High Reasoning, Agent Mode)",
+    "run_label": "2026-02-27_openai_gpt53codex_fullsec_real_nvda_2022_2023_outline_compare"
+  }
+}

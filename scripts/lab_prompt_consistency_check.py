@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import argparse
+import json
+import re
 from difflib import unified_diff
 from pathlib import Path
 from typing import Optional
@@ -12,6 +14,8 @@ from lab_script_version import build_script_version
 SCRIPT_VERSION = build_script_version(Path(__file__), "v5")
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
+DEFAULT_MASTER_STARTERS = REPO_ROOT / "reports" / "lab_llm_master_thread_starters_codex_real.md"
+DEFAULT_MASTER_MANIFEST = REPO_ROOT / "reports" / "lab_llm_master_manifest_codex_real.json"
 
 sys.path.append(str(Path(__file__).resolve().parent))
 from lab_llm_precompute_utils import resolve_bundle_paths  # type: ignore
@@ -131,7 +135,80 @@ def build_parser() -> argparse.ArgumentParser:
         default=str(REPO_ROOT / "docs" / "lab" / "05_llm_reproducibility_contract.md"),
         help="Path to docs/lab/05_llm_reproducibility_contract.md.",
     )
+    parser.add_argument(
+        "--master-starters",
+        default=str(DEFAULT_MASTER_STARTERS),
+        help="Path to generated master thread starters markdown.",
+    )
+    parser.add_argument(
+        "--master-manifest",
+        default=str(DEFAULT_MASTER_MANIFEST),
+        help="Path to master manifest used for thread starters.",
+    )
     return parser
+
+
+def _check_master_starters(master_starters_path: Path, master_manifest_path: Path, campaign_slug: str) -> None:
+    if not master_starters_path.exists():
+        raise SystemExit(f"Missing master starters file: {master_starters_path}")
+    if not master_manifest_path.exists():
+        raise SystemExit(f"Missing master manifest file: {master_manifest_path}")
+
+    starters_text = master_starters_path.read_text(encoding="utf-8-sig")
+    _assert_markers_present(
+        "master_starters",
+        starters_text,
+        [
+            "--only-mode \"exact_path\"",
+            "--expect-target-count 1",
+            "--fail-if-target-count-mismatch",
+            "lab_audit_master_output_quality.py --output",
+            "python -c \"import json, pathlib;",
+        ],
+    )
+    if "> NUL" in starters_text:
+        raise SystemExit("master_starters includes shell-fragile `> NUL` redirection.")
+
+    manifest_payload = json.loads(master_manifest_path.read_text(encoding="utf-8-sig"))
+    if not isinstance(manifest_payload, dict):
+        raise SystemExit("master manifest root must be an object")
+    entries = manifest_payload.get("entries")
+    if not isinstance(entries, list):
+        raise SystemExit("master manifest missing entries list")
+
+    expected_paths: list[str] = []
+    for entry in entries:
+        if not isinstance(entry, dict):
+            continue
+        master_output = entry.get("master_output")
+        if not isinstance(master_output, dict):
+            continue
+        expected_output_path = master_output.get("expected_output_path")
+        if not isinstance(expected_output_path, str):
+            continue
+        normalized = "/" + expected_output_path.replace("\\", "/").lstrip("/")
+        if f"/{campaign_slug}/" not in normalized:
+            continue
+        expected_paths.append(expected_output_path.replace("\\", "/").lstrip("/"))
+
+    if not expected_paths:
+        raise SystemExit("master manifest yielded no campaign paths for starter verification")
+
+    only_tokens = re.findall(r'--only "([^"]+)"', starters_text)
+    if not only_tokens:
+        raise SystemExit("master starters missing --only tokens")
+    if len(only_tokens) != len(expected_paths):
+        raise SystemExit(
+            "master starters token count mismatch: "
+            + f"tokens={len(only_tokens)} manifest_targets={len(expected_paths)}"
+        )
+    for token in only_tokens:
+        normalized_token = token.replace("\\", "/").lstrip("/")
+        match_count = sum(1 for expected_path in expected_paths if expected_path == normalized_token)
+        if match_count != 1:
+            raise SystemExit(
+                f"starter --only token must map to exactly one expected path: token={token!r}, matches={match_count}"
+            )
 
 
 def main(argv: Optional[list[str]] = None) -> int:
@@ -304,6 +381,18 @@ def main(argv: Optional[list[str]] = None) -> int:
             starter_text,
             starter_markers,
         )
+
+    master_starters_path = Path(args.master_starters)
+    if not master_starters_path.is_absolute():
+        master_starters_path = REPO_ROOT / master_starters_path
+    master_manifest_path = Path(args.master_manifest)
+    if not master_manifest_path.is_absolute():
+        master_manifest_path = REPO_ROOT / master_manifest_path
+    _check_master_starters(
+        master_starters_path=master_starters_path,
+        master_manifest_path=master_manifest_path,
+        campaign_slug=campaign.track_slug,
+    )
 
     print("Prompt consistency check: PASS")
     print(f"Script: {SCRIPT_VERSION}")

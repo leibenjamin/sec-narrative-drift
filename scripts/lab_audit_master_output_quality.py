@@ -1,0 +1,714 @@
+from __future__ import annotations
+
+import argparse
+import json
+import re
+import statistics
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Optional
+
+from lab_script_version import build_script_version
+from lab_output_tracks import DEFAULT_PRIMARY_LLM_CAMPAIGN_ID, get_llm_campaign
+from lab_llm_precompute_utils import as_list, as_str_dict, get_int, get_str
+from lab_validate_llm_master_outputs import (
+    DEFAULT_MANIFEST_PATH,
+    MasterTarget,
+    load_targets,
+    matches_only_token,
+    normalize_path_like,
+    validate_payload,
+)
+from lab_validate_llm_outputs import build_paragraph_maps, resolve_input_file
+
+SCRIPT_VERSION = build_script_version(Path(__file__), "v1")
+REPO_ROOT = Path(__file__).resolve().parents[1]
+DEFAULT_REPORT_PATH = REPO_ROOT / "reports" / "lab_llm_master_quality.md"
+
+BOUNDARY_CHARS = set(" \t\r\n,.;:!?)]}\"'/-")
+SENTENCE_END_CHARS = {".", "!", "?"}
+CLAUSE_END_CHARS = {",", ";", ":"}
+GENERIC_PHRASES = (
+    "remains a risk",
+    "continues to be a risk",
+    "risk remains",
+    "is a concern",
+    "could adversely affect",
+    "may adversely impact",
+    "broad risk",
+    "general risk",
+    "ongoing risk",
+    "directional shift",
+)
+TOKEN_RE = re.compile(r"[A-Za-z][A-Za-z0-9'-]{4,}")
+PAGE_PREFIX_RE = re.compile(r"^\s*\d{1,3}\s")
+YEAR_OR_REF_RE = re.compile(r"\b(19|20)\d{2}\b|\bpara(?:graph)?\b|\bidx\b|\bindex\b", re.IGNORECASE)
+
+
+@dataclass(frozen=True)
+class AuditIssue:
+    code: str
+    detail: str
+    severity: str  # blocker|advisory
+
+
+@dataclass(frozen=True)
+class OutputAudit:
+    path: Path
+    blockers: list[AuditIssue]
+    advisories: list[AuditIssue]
+    quality_score: int
+
+
+def parse_output_filename(path: Path) -> Optional[dict[str, object]]:
+    match = re.search(
+        r"lab_llm_outline_compare_v1_(?P<section>.+?)_(?P<year_from>\d{4})_(?P<year_to>\d{4})_(?P<lens>.+)_(?P<source_id>[a-zA-Z0-9]+)__",
+        path.name,
+    )
+    if match is None:
+        return None
+    year_from = int(match.group("year_from"))
+    year_to = int(match.group("year_to"))
+    section = match.group("section")
+    lens = match.group("lens")
+    source_id = match.group("source_id")
+    normalized = path.as_posix().replace("\\", "/")
+    ticker_match = re.search(r"/sec_narrative_drift_lab/(?P<ticker>[A-Z]+)/outputs/", normalized)
+    if ticker_match is None:
+        return None
+    ticker = ticker_match.group("ticker")
+    return {
+        "ticker": ticker,
+        "year_from": year_from,
+        "year_to": year_to,
+        "section": section,
+        "lens": lens,
+        "source_id": source_id,
+    }
+
+
+def infer_target_from_output(path: Path) -> Optional[MasterTarget]:
+    parsed = parse_output_filename(path)
+    if parsed is None:
+        return None
+    if not isinstance(parsed.get("ticker"), str):
+        return None
+    ticker = str(parsed["ticker"])
+    year_from = int(parsed["year_from"])
+    year_to = int(parsed["year_to"])
+    section = str(parsed["section"])
+    lens = str(parsed["lens"])
+    source_id = str(parsed["source_id"])
+    relative = path
+    try:
+        relative = path.resolve().relative_to(REPO_ROOT.resolve())
+    except ValueError:
+        relative = path
+    return MasterTarget(
+        ticker=ticker,
+        year_from=year_from,
+        year_to=year_to,
+        section=section,
+        lens=lens,
+        source_id=source_id,
+        expected_output_path=relative.as_posix(),
+        manifest_present_flag=None,
+    )
+
+
+def load_payload(path: Path) -> Optional[dict[str, object]]:
+    try:
+        payload_raw = json.loads(path.read_text(encoding="utf-8-sig"))
+    except json.JSONDecodeError:
+        return None
+    payload = as_str_dict(payload_raw)
+    if payload is None:
+        return None
+    output: dict[str, object] = {}
+    for key, value in payload.items():
+        output[key] = value
+    return output
+
+
+def tokenize(text: str) -> set[str]:
+    tokens: set[str] = set()
+    for match in TOKEN_RE.finditer(text.lower()):
+        tokens.add(match.group(0))
+    return tokens
+
+
+def classify_boundary(paragraph_text: str, snippet: str, start_idx: int) -> str:
+    end_idx = start_idx + len(snippet)
+    start_boundary = start_idx == 0 or paragraph_text[start_idx - 1] in BOUNDARY_CHARS
+    end_boundary = end_idx >= len(paragraph_text) or paragraph_text[end_idx] in BOUNDARY_CHARS
+    if not start_boundary or not end_boundary:
+        return "hard_cut"
+    stripped = snippet.rstrip()
+    if stripped and stripped[-1] in SENTENCE_END_CHARS:
+        return "sentence"
+    if stripped and stripped[-1] in CLAUSE_END_CHARS:
+        return "clause"
+    return "clause"
+
+
+def collect_paragraph_maps(path: Path, payload: dict[str, object]) -> tuple[Optional[dict[int, str]], Optional[dict[int, str]], list[AuditIssue]]:
+    issues: list[AuditIssue] = []
+    provenance = as_str_dict(payload.get("provenance")) or {}
+    input_file_value = get_str(provenance.get("input_file"))
+    if input_file_value is None or not input_file_value.strip():
+        issues.append(
+            AuditIssue(
+                code="missing_provenance_input_file",
+                detail="provenance.input_file is missing.",
+                severity="blocker",
+            )
+        )
+        return None, None, issues
+    resolution = resolve_input_file(input_file_value, path)
+    if resolution.path is None:
+        issues.append(
+            AuditIssue(
+                code="unresolvable_input_file",
+                detail=f"Unable to resolve provenance.input_file: {resolution.error}",
+                severity="blocker",
+            )
+        )
+        return None, None, issues
+    try:
+        input_payload_raw = json.loads(resolution.path.read_text(encoding="utf-8-sig"))
+    except json.JSONDecodeError as exc:
+        issues.append(
+            AuditIssue(
+                code="invalid_input_json",
+                detail=f"Input payload JSON is invalid: {exc}",
+                severity="blocker",
+            )
+        )
+        return None, None, issues
+    input_payload = as_str_dict(input_payload_raw)
+    if input_payload is None:
+        issues.append(
+            AuditIssue(
+                code="invalid_input_payload_shape",
+                detail="Resolved input payload root is not an object.",
+                severity="blocker",
+            )
+        )
+        return None, None, issues
+    maps = build_paragraph_maps(input_payload, input_payload_path=resolution.path)
+    if maps is None:
+        issues.append(
+            AuditIssue(
+                code="missing_paragraph_maps",
+                detail="Unable to build paragraph maps from provenance.input_file.",
+                severity="blocker",
+            )
+        )
+        return None, None, issues
+    prev_map: dict[int, str] = {}
+    curr_map: dict[int, str] = {}
+    for idx, text in maps.prev_map.items():
+        prev_map[idx] = text
+    for idx, text in maps.curr_map.items():
+        curr_map[idx] = text
+    return prev_map, curr_map, issues
+
+
+def evaluate_output(
+    path: Path,
+    target: MasterTarget,
+    expected_model_provider: str,
+    expected_model_name: str,
+) -> OutputAudit:
+    blockers: list[AuditIssue] = []
+    advisories: list[AuditIssue] = []
+
+    reasons = validate_payload(
+        target=target,
+        path=path,
+        expected_model_provider=expected_model_provider,
+        expected_model_name=expected_model_name,
+    )
+    for reason in reasons:
+        blockers.append(
+            AuditIssue(
+                code="validator_failure",
+                detail=reason,
+                severity="blocker",
+            )
+        )
+
+    payload = load_payload(path)
+    if payload is None:
+        blockers.append(
+            AuditIssue(
+                code="invalid_json",
+                detail="Output JSON cannot be parsed into an object.",
+                severity="blocker",
+            )
+        )
+        return OutputAudit(path=path, blockers=blockers, advisories=advisories, quality_score=0)
+
+    prev_map, curr_map, map_issues = collect_paragraph_maps(path, payload)
+    blockers.extend(map_issues)
+
+    evidence_list_any = as_list(payload.get("evidence_bank")) or []
+    evidence_entries: list[dict[str, object]] = []
+    evidence_lookup: dict[tuple[int, int], dict[str, object]] = {}
+    for item in evidence_list_any:
+        evidence_dict = as_str_dict(item)
+        if evidence_dict is None:
+            continue
+        normalized: dict[str, object] = {}
+        for key, value in evidence_dict.items():
+            normalized[key] = value
+        evidence_entries.append(normalized)
+        year = get_int(evidence_dict.get("year"))
+        paragraph_idx = get_int(evidence_dict.get("paragraph_idx"))
+        if year is not None and paragraph_idx is not None and paragraph_idx >= 0:
+            evidence_lookup[(year, paragraph_idx)] = normalized
+
+    hard_cut_count = 0
+    boundary_total = 0
+    page_prefix_count = 0
+    for index, evidence in enumerate(evidence_entries):
+        year = get_int(evidence.get("year"))
+        paragraph_idx = get_int(evidence.get("paragraph_idx"))
+        snippet = get_str(evidence.get("snippet"))
+        if year is None or paragraph_idx is None or snippet is None:
+            continue
+        paragraph_text: Optional[str] = None
+        if prev_map is not None and curr_map is not None:
+            if year == target.year_from:
+                paragraph_text = prev_map.get(paragraph_idx)
+            elif year == target.year_to:
+                paragraph_text = curr_map.get(paragraph_idx)
+        if paragraph_text is None:
+            continue
+        start_idx = paragraph_text.find(snippet)
+        if start_idx < 0:
+            continue
+        boundary_total += 1
+        classification = classify_boundary(paragraph_text, snippet, start_idx)
+        if classification == "hard_cut":
+            hard_cut_count += 1
+        if PAGE_PREFIX_RE.match(snippet):
+            page_prefix_count += 1
+            advisories.append(
+                AuditIssue(
+                    code="snippet_starts_with_page_prefix",
+                    detail=f"evidence_bank[{index}] snippet begins with page-number style prefix.",
+                    severity="advisory",
+                )
+            )
+        end_idx = start_idx + len(snippet)
+        # Obvious mid-token clipping: snippet cuts through alphanumeric token boundaries.
+        if start_idx > 0 and start_idx < len(paragraph_text):
+            if paragraph_text[start_idx - 1].isalnum() and snippet[0].isalnum():
+                blockers.append(
+                    AuditIssue(
+                        code="snippet_mid_token_start",
+                        detail=f"evidence_bank[{index}] snippet starts mid-token.",
+                        severity="blocker",
+                    )
+                )
+        if end_idx > 0 and end_idx < len(paragraph_text):
+            if paragraph_text[end_idx - 1].isalnum() and paragraph_text[end_idx].isalnum():
+                blockers.append(
+                    AuditIssue(
+                        code="snippet_mid_token_end",
+                        detail=f"evidence_bank[{index}] snippet ends mid-token.",
+                        severity="blocker",
+                    )
+                )
+
+    if boundary_total > 0:
+        hard_cut_ratio = hard_cut_count / boundary_total
+        if hard_cut_ratio > 0.35:
+            advisories.append(
+                AuditIssue(
+                    code="high_hard_cut_ratio",
+                    detail=f"Hard-cut snippet ratio is high ({hard_cut_ratio:.2f}).",
+                    severity="advisory",
+                )
+            )
+    if page_prefix_count > 0:
+        advisories.append(
+            AuditIssue(
+                code="page_prefix_noise",
+                detail=f"{page_prefix_count} snippets begin with page-prefix artifacts.",
+                severity="advisory",
+            )
+        )
+
+    material_changes_any = as_list(payload.get("material_changes")) or []
+    material_changes: list[dict[str, object]] = []
+    for change in material_changes_any:
+        change_dict = as_str_dict(change)
+        if change_dict is None:
+            continue
+        normalized: dict[str, object] = {}
+        for key, value in change_dict.items():
+            normalized[key] = value
+        material_changes.append(normalized)
+
+    for idx, change in enumerate(material_changes):
+        caveat = get_str(change.get("caveat")) or ""
+        evidence_refs_any = as_list(change.get("evidence_refs")) or []
+        evidence_tokens: set[str] = set()
+        for ref_any in evidence_refs_any:
+            ref = as_str_dict(ref_any)
+            if ref is None:
+                continue
+            year = get_int(ref.get("year"))
+            paragraph_idx = get_int(ref.get("paragraph_idx"))
+            if year is None or paragraph_idx is None:
+                continue
+            linked = evidence_lookup.get((year, paragraph_idx))
+            if linked is None:
+                continue
+            linked_snippet = get_str(linked.get("snippet"))
+            if linked_snippet is None:
+                continue
+            evidence_tokens.update(tokenize(linked_snippet))
+        caveat_tokens = tokenize(caveat)
+        overlap = evidence_tokens.intersection(caveat_tokens)
+        has_ref_signal = YEAR_OR_REF_RE.search(caveat) is not None
+        if len(caveat.strip()) < 40:
+            blockers.append(
+                AuditIssue(
+                    code="caveat_too_short",
+                    detail=f"material_changes[{idx}] caveat is too short for case-specific limitation.",
+                    severity="blocker",
+                )
+            )
+        if not overlap and not has_ref_signal:
+            blockers.append(
+                AuditIssue(
+                    code="caveat_not_specific",
+                    detail=f"material_changes[{idx}] caveat lacks evidence-specific anchors.",
+                    severity="blocker",
+                )
+            )
+
+    generic_hits = 0
+    generic_candidates = 0
+    node_alignment_any = as_list(payload.get("node_alignment")) or []
+    for row_any in node_alignment_any:
+        row = as_str_dict(row_any)
+        if row is None:
+            continue
+        rationale = (get_str(row.get("rationale")) or "").lower()
+        generic_candidates += 1
+        if any(phrase in rationale for phrase in GENERIC_PHRASES):
+            generic_hits += 1
+    for change in material_changes:
+        for key in ("title", "caveat"):
+            value = (get_str(change.get(key)) or "").lower()
+            generic_candidates += 1
+            if any(phrase in value for phrase in GENERIC_PHRASES):
+                generic_hits += 1
+    if generic_candidates > 0:
+        generic_ratio = generic_hits / generic_candidates
+        if generic_ratio > 0.18:
+            advisories.append(
+                AuditIssue(
+                    code="generic_phrase_density",
+                    detail=f"Generic phrase ratio is high ({generic_ratio:.2f}).",
+                    severity="advisory",
+                )
+            )
+
+    salience_values: list[float] = []
+    for change in material_changes:
+        salience_raw = change.get("salience")
+        if isinstance(salience_raw, bool):
+            continue
+        if isinstance(salience_raw, (int, float)):
+            salience_values.append(float(salience_raw))
+    if len(salience_values) >= 3:
+        spread = max(salience_values) - min(salience_values)
+        if spread < 0.2:
+            advisories.append(
+                AuditIssue(
+                    code="low_salience_spread",
+                    detail=f"Material-change salience spread is low ({spread:.2f}).",
+                    severity="advisory",
+                )
+            )
+        stdev = statistics.pstdev(salience_values)
+        if stdev < 0.08:
+            advisories.append(
+                AuditIssue(
+                    code="flat_salience_distribution",
+                    detail=f"Material-change salience stdev is low ({stdev:.2f}).",
+                    severity="advisory",
+                )
+            )
+        descending = all(
+            salience_values[i] >= salience_values[i + 1]
+            for i in range(len(salience_values) - 1)
+        )
+        if not descending:
+            advisories.append(
+                AuditIssue(
+                    code="salience_not_ranked_desc",
+                    detail="Material changes are not ordered by descending salience.",
+                    severity="advisory",
+                )
+            )
+
+    ref_counts: dict[tuple[int, int], int] = {}
+    total_refs = 0
+    for change in material_changes:
+        evidence_refs_any = as_list(change.get("evidence_refs")) or []
+        for ref_any in evidence_refs_any:
+            ref = as_str_dict(ref_any)
+            if ref is None:
+                continue
+            year = get_int(ref.get("year"))
+            paragraph_idx = get_int(ref.get("paragraph_idx"))
+            if year is None or paragraph_idx is None:
+                continue
+            pair = (year, paragraph_idx)
+            ref_counts[pair] = ref_counts.get(pair, 0) + 1
+            total_refs += 1
+    if total_refs > 0 and ref_counts:
+        max_ref_use = max(ref_counts.values())
+        concentration = max_ref_use / total_refs
+        unique_ratio = len(ref_counts) / total_refs
+        if concentration > 0.4:
+            advisories.append(
+                AuditIssue(
+                    code="evidence_ref_concentration",
+                    detail=f"Evidence reference concentration is high ({concentration:.2f}).",
+                    severity="advisory",
+                )
+            )
+        if unique_ratio < 0.55:
+            advisories.append(
+                AuditIssue(
+                    code="low_evidence_ref_diversity",
+                    detail=f"Evidence reference uniqueness ratio is low ({unique_ratio:.2f}).",
+                    severity="advisory",
+                )
+            )
+
+    class_counts: dict[str, int] = {}
+    for row_any in node_alignment_any:
+        row = as_str_dict(row_any)
+        if row is None:
+            continue
+        change_class = get_str(row.get("change_class"))
+        if change_class is None:
+            continue
+        class_counts[change_class] = class_counts.get(change_class, 0) + 1
+    total_alignment_rows = sum(class_counts.values())
+    if total_alignment_rows > 0:
+        stable_reworded = class_counts.get("stable", 0) + class_counts.get("reworded", 0)
+        ratio = stable_reworded / total_alignment_rows
+        if ratio > 0.75:
+            advisories.append(
+                AuditIssue(
+                    code="stable_reworded_bias",
+                    detail=f"Stable/reworded share is high ({ratio:.2f}).",
+                    severity="advisory",
+                )
+            )
+
+    score = 100
+    score -= min(80, len(blockers) * 12)
+    score -= min(25, len(advisories) * 4)
+    score = max(0, min(100, score))
+    return OutputAudit(path=path, blockers=blockers, advisories=advisories, quality_score=score)
+
+
+def build_markdown_report(
+    audits: list[OutputAudit],
+    missing_paths: list[str],
+    mode: str,
+) -> list[str]:
+    blockers_count = sum(len(item.blockers) for item in audits)
+    advisories_count = sum(len(item.advisories) for item in audits)
+    avg_score = 0.0
+    if audits:
+        avg_score = sum(item.quality_score for item in audits) / len(audits)
+
+    lines: list[str] = []
+    lines.append("# LLM Master Output Quality Audit")
+    lines.append("")
+    lines.append(f"Script: {SCRIPT_VERSION}")
+    lines.append(f"Mode: {mode}")
+    lines.append("")
+    lines.append("| Metric | Value |")
+    lines.append("| --- | --- |")
+    lines.append(f"| Audited files | {len(audits)} |")
+    lines.append(f"| Missing files | {len(missing_paths)} |")
+    lines.append(f"| Blockers | {blockers_count} |")
+    lines.append(f"| Advisories | {advisories_count} |")
+    lines.append(f"| Average quality score | {avg_score:.1f} |")
+    lines.append("")
+    if missing_paths:
+        lines.append("## Missing Files")
+        for path in missing_paths:
+            lines.append(f"- {path}")
+        lines.append("")
+    for audit in audits:
+        lines.append(f"## {normalize_path_like(str(audit.path))}")
+        lines.append(f"- quality_score: {audit.quality_score}")
+        if audit.blockers:
+            lines.append("- blockers:")
+            for issue in audit.blockers:
+                lines.append(f"  - [{issue.code}] {issue.detail}")
+        else:
+            lines.append("- blockers: none")
+        if audit.advisories:
+            lines.append("- advisories:")
+            for issue in audit.advisories:
+                lines.append(f"  - [{issue.code}] {issue.detail}")
+        else:
+            lines.append("- advisories: none")
+        lines.append("")
+    return lines
+
+
+def parse_output_paths(value: str) -> list[Path]:
+    parts = [item.strip() for item in value.split(",") if item.strip()]
+    output: list[Path] = []
+    for part in parts:
+        candidate = Path(part)
+        if not candidate.is_absolute():
+            candidate = (REPO_ROOT / candidate).resolve()
+        output.append(candidate)
+    return output
+
+
+def resolve_targets_from_manifest(
+    manifest_path: Path,
+    campaign_id: str,
+    only: str,
+    only_mode: str,
+) -> list[MasterTarget]:
+    campaign = get_llm_campaign(campaign_id)
+    if campaign is None:
+        raise SystemExit(f"Unknown campaign id: {campaign_id}")
+    targets = load_targets(manifest_path)
+    if only:
+        filters = [item.strip() for item in only.split(",") if item.strip()]
+        targets = [
+            target
+            for target in targets
+            if any(
+                matches_only_token(target.expected_output_path, token, only_mode)
+                for token in filters
+            )
+        ]
+    marker = f"/{campaign.track_slug}/"
+    return [
+        target
+        for target in targets
+        if marker in ("/" + target.expected_output_path.replace("\\", "/").lstrip("/"))
+    ]
+
+
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(description="Audit llm_outline_compare_v1 output quality.")
+    parser.add_argument("--output", default="", help="Single output path or comma-separated output paths.")
+    parser.add_argument("--manifest", default=str(DEFAULT_MANIFEST_PATH))
+    parser.add_argument("--campaign-id", default=DEFAULT_PRIMARY_LLM_CAMPAIGN_ID)
+    parser.add_argument("--only", default="", help="Optional manifest target filter token(s).")
+    parser.add_argument(
+        "--only-mode",
+        choices=("substring", "basename", "exact_path"),
+        default="substring",
+        help="Matching mode for --only token(s).",
+    )
+    parser.add_argument(
+        "--mode",
+        choices=("blockers", "advisory", "both"),
+        default="both",
+        help="Gate mode used for return code decisions.",
+    )
+    parser.add_argument("--allow-missing", action="store_true")
+    parser.add_argument("--report", default=str(DEFAULT_REPORT_PATH))
+    return parser
+
+
+def main(argv: Optional[list[str]] = None) -> int:
+    args = build_parser().parse_args(argv)
+    campaign = get_llm_campaign(args.campaign_id)
+    if campaign is None or campaign.model_provider is None or campaign.model_name is None:
+        raise SystemExit(f"Unknown or invalid campaign id: {args.campaign_id}")
+
+    missing_paths: list[str] = []
+    path_target_pairs: list[tuple[Path, MasterTarget]] = []
+
+    if args.output.strip():
+        output_paths = parse_output_paths(args.output)
+        for output_path in output_paths:
+            target = infer_target_from_output(output_path)
+            if target is None:
+                raise SystemExit(f"Unable to infer output metadata from path: {output_path}")
+            path_target_pairs.append((output_path, target))
+    else:
+        manifest_path = Path(args.manifest)
+        if not manifest_path.is_absolute():
+            manifest_path = (REPO_ROOT / manifest_path).resolve()
+        if not manifest_path.exists():
+            raise SystemExit(f"Manifest not found: {manifest_path}")
+        targets = resolve_targets_from_manifest(
+            manifest_path=manifest_path,
+            campaign_id=args.campaign_id,
+            only=args.only,
+            only_mode=args.only_mode,
+        )
+        for target in targets:
+            output_path = (REPO_ROOT / target.expected_output_path).resolve()
+            if not output_path.exists():
+                missing_paths.append(target.expected_output_path)
+                continue
+            path_target_pairs.append((output_path, target))
+
+    audits: list[OutputAudit] = []
+    for output_path, target in path_target_pairs:
+        if not output_path.exists():
+            missing_paths.append(normalize_path_like(str(output_path)))
+            continue
+        audits.append(
+            evaluate_output(
+                path=output_path,
+                target=target,
+                expected_model_provider=campaign.model_provider,
+                expected_model_name=campaign.model_name,
+            )
+        )
+
+    blocker_count = sum(len(item.blockers) for item in audits)
+    advisory_count = sum(len(item.advisories) for item in audits)
+    if missing_paths and not args.allow_missing:
+        blocker_count += len(missing_paths)
+
+    report_lines = build_markdown_report(audits=audits, missing_paths=missing_paths, mode=str(args.mode))
+    report_path = Path(args.report)
+    if not report_path.is_absolute():
+        report_path = (REPO_ROOT / report_path).resolve()
+    report_path.parent.mkdir(parents=True, exist_ok=True)
+    report_path.write_text("\n".join(report_lines) + "\n", encoding="utf-8")
+
+    should_fail = False
+    mode = str(args.mode)
+    if mode in {"blockers", "both"}:
+        if blocker_count > 0:
+            should_fail = True
+    status = "FAIL" if should_fail else "PASS"
+    print(
+        "QUALITY_AUDIT "
+        + f"files={len(audits)} missing={len(missing_paths)} blockers={blocker_count} "
+        + f"advisories={advisory_count} status={status}"
+    )
+    print(f"Wrote quality report: {report_path}")
+    return 1 if should_fail else 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

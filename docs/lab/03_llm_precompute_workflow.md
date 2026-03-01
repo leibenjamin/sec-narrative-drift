@@ -31,6 +31,21 @@ Status: canonical manual rerun workflow for Lab (`full_section_v2`, master-first
 - Avoid post-generation patching and reconciliation as a normal step.
 - If recurring issues appear, improve prompt blocks and thread starters first.
 
+## Job-Pass Contract (One-Paste Hardened)
+Each manual master job is considered PASS only when all of the following are true:
+- Exactly one `PRECHECK_OK ...` line is printed.
+- Output JSON write succeeds at the canonical path.
+- Shell-safe parse check succeeds (`JSON_OK` expected).
+- `scripts/lab_validate_llm_master_outputs.py` runs with strict single-target controls:
+  - `--only-mode exact_path`
+  - `--expect-target-count 1`
+  - `--fail-if-target-count-mismatch`
+- Master quality blocker audit passes:
+  - `python scripts/lab_audit_master_output_quality.py --output "<path>" --mode blockers ...`
+- Exactly one final status line is printed:
+  - success: `WRITE_OK JSON_OK VALIDATION_OK`
+  - failure: `FAILED: ...`
+
 ## Canonical Job Counts
 - Master jobs per campaign: `12 pairs x 2 lenses = 24`.
 - Projection outputs per campaign (legacy detector compatibility): `24 x 2 detectors = 48`.
@@ -66,7 +81,9 @@ Status: canonical manual rerun workflow for Lab (`full_section_v2`, master-first
    `python scripts/lab_validate_llm_manifest_outputs.py --allow-missing --allow-invalid --report reports/lab_llm_manifest_validation.md`
 2. Final strict:
    `python scripts/lab_validate_llm_manifest_outputs.py --report reports/lab_llm_manifest_validation.md`
-3. Deterministic gates:
+3. Master quality audit (blockers + advisory):
+   `python scripts/lab_audit_master_output_quality.py --manifest reports/lab_llm_master_manifest.json --campaign-id <campaign_id> --mode both --allow-missing --report reports/lab_llm_master_quality.md`
+4. Deterministic gates:
    `npm run lab:predeploy`
    `npm run lab:readiness`
    `npm run build`

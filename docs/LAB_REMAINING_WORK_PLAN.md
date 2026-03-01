@@ -33,6 +33,14 @@ Note: detailed phase logs below this section are retained as historical executio
   - Highlighting must be done with safe React nodes, not HTML strings.
   - Avoid inserting untrusted text into attribute contexts (id/class/style/href).
 
+## Schema-Unlock Governance (v2 planning gate)
+- `llm_outline_compare_v1` remains the canonical runtime contract until unlock is explicitly approved.
+- Any `llm_outline_compare_v2` work must stay behind a documented governance gate:
+  - explicit unlock sign-off in canonical docs,
+  - migration + rollback plan approved,
+  - deterministic v2->v1 projection path documented and tested,
+  - no runtime breakage for existing v1 paths, validators, or UI contracts.
+
 ## Current status (as reported by operator/Codex)
 - Phase 0 complete:
   - deterministic baseline shipped/locked,
@@ -113,6 +121,7 @@ Remaining human/manual work (post-hardening):
 - optional editorial fine-tuning passes for Codex prose style (not contract-blocking).
 - continue LLM-first pivot: master outline compare artifacts as canonical unit with deterministic projection to legacy LLM detector envelopes.
 - deterministic-first runtime behavior for pairs where LLM sidecars are not yet available (explicit missing/debug payloads remain required).
+- codify and follow the Codex real run profile + 6-job checkpoint cadence in `docs/lab/07_codex_real_run_profile.md`.
 
 Repository policy note:
 - `reports/*`, `bundles/*`, `scripts/_reports/*`, `scripts/_cache/*`, and `analysis_exports/*` are local-only and intentionally untracked.

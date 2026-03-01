@@ -8,6 +8,7 @@
 - `docs/SEC_TEXT_SAFETY.md` - SEC text trust model and rendering safety rules.
 - `docs/lab/05_llm_reproducibility_contract.md` - strict manual LLM rerun contract and validation requirements.
 - `docs/lab/06_llm_model_comparison_workflow.md` - multi-campaign model-comparison workflow.
+- `docs/lab/07_codex_real_run_profile.md` - operational profile for 24-job Codex real master runs and batch governance cadence.
 - CI security gates include runtime dependency audit and forbidden HTML API scan via `.github/workflows/lab_gates.yml`.
 
 ## Product and contract docs
