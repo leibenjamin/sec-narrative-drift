@@ -1,8 +1,17 @@
 # Codex Real Run Profile (24 Master Jobs)
 
-Last updated: 2026-03-01
+Last updated: 2026-03-02
 Scope: `llm_outline_compare_v1` manual Codex jobs generated from
 `reports/lab_llm_master_thread_starters_codex_real.md`.
+
+Canonical starter policy:
+- `reports/lab_llm_master_thread_starters_codex_real.md` is the single canonical Codex real-run starter file.
+- It must be generated with `vscode_autowrite_v3` profile (JOB_META + strict preflight count lock).
+- Variant files such as `*_v2.md` or `*_legacy.md` are non-canonical and compatibility-only.
+
+Companion canonical docs:
+- `docs/lab/03_llm_precompute_workflow.md`
+- `docs/lab/05_llm_reproducibility_contract.md`
 
 ## Purpose
 - Keep the current one-job-per-thread starter workflow unchanged for active production runs.
@@ -18,6 +27,7 @@ Scope: `llm_outline_compare_v1` manual Codex jobs generated from
 
 ## Per-Job Contract (Must Keep)
 - Read exactly three inputs (`pair`, `year prev`, `year curr`) from workspace paths in the starter.
+- Preflight counts must come from `year_payload.texts.paragraphs` and must match `JOB_META.expected_prev_paragraphs` and `JOB_META.expected_curr_paragraphs`; mismatches are hard failures.
 - Emit exactly one preflight line:
   - `PRECHECK_OK ... prev_paragraphs=<N> curr_paragraphs=<N>`
 - Write exactly one output JSON at the canonical starter path.

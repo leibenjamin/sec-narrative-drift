@@ -1,23 +1,28 @@
-# LLM Precompute Queue (Legacy)
+﻿# LLM Precompute Queue (Legacy Pointer)
 
-Status: legacy and non-canonical for current showcase manual reruns.
+Status: legacy and non-canonical for current Lab manual reruns.
 
-Use this file only for historical context around earlier queue and ingest experiments.
+This file is intentionally minimal and exists only to redirect older queue/checklist references.
 
-## Canonical Manual Rerun Flow
-Use these instead:
-- `docs/lab/04_chatgpt_project_setup.md`
-- `reports/lab_chatgpt_project_instructions.txt`
-- `reports/lab_llm_run_manifest.json`
-- `reports/lab_llm_manual_rerun_checklist.md`
-- `scripts/lab_validate_llm_manifest_outputs.py`
+## Use These Canonical Docs Instead
+- `docs/lab/03_llm_precompute_workflow.md`
+- `docs/lab/05_llm_reproducibility_contract.md`
+- `docs/lab/07_codex_real_run_profile.md`
 
-## Why this is legacy
-- This queue doc references older `llm_outputs/...` layouts and older validation steps.
-- Current canonical flow writes directly to `<TICKER>/outputs/<detector_id>/...` and validates against manifest targets.
-- Current reproducibility contract requires standardized model metadata in output provenance.
+## Canonical Local Artifacts (Master-First)
+- `reports/lab_llm_master_manifest_codex_real.json`
+- `reports/lab_llm_master_manifest_chatgpt_real.json`
+- `reports/lab_llm_master_thread_starters_codex_real.md`
+- `reports/lab_llm_master_thread_starters_chatgpt_real.md`
+- `reports/lab_llm_master_validation_codex_real.md`
+- `reports/lab_llm_master_validation_chatgpt_real.md`
 
-## Legacy Scripts (for archaeology only)
+## Why This Queue Doc Is Legacy
+- Earlier queue docs centered detector-first run-manifest flow.
+- Current canonical flow is master-first (`llm_outline_compare_v1`) with deterministic projection for legacy detector envelopes.
+- Starter hardening and strict exact-path single-target validation are now enforced at job level.
+
+## Legacy Scripts (Archive/Archaeology)
 - `scripts/lab_make_llm_precompute_queue.py`
 - `scripts/lab_validate_llm_outputs.py`
 - `scripts/lab_ingest_llm_outputs.py`

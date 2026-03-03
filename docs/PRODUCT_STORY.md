@@ -46,8 +46,10 @@ This Lab shows how risk disclosures change year-over-year using deterministic de
 - Local generated reports (`reports/*`, untracked by policy):
   - `reports/lab_runtime_readiness.md` (deterministic gate: GO).
   - `reports/lab_raw_prereq_audit.md` (RAW eligibility and coverage).
-  - `reports/lab_llm_run_manifest.md` (complete roster + expected LLM artifact paths).
-  - `reports/lab_llm_codex_quality_audit.md` (Codex quality-lock gates for diversity/consistency).
+  - `reports/lab_llm_master_manifest_codex_real.json` (Codex real-run job roster + canonical output paths).
+  - `reports/lab_llm_master_thread_starters_codex_real.md` (canonical Codex starter source).
+  - `reports/lab_llm_master_validation_codex_real.md` and `reports/lab_llm_master_quality_codex_real.md` (checkpoint validation and blocker audit).
+  - `reports/lab_llm_master_manifest_chatgpt_real.json` (pending compare-lane roster for strict-valid completion).
 
 ## FAQ-ready answers
 - Q: "Why deterministic-first?"

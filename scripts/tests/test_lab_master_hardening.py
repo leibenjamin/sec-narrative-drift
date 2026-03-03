@@ -11,6 +11,7 @@ sys.path.insert(0, str(ROOT_DIR))
 
 import lab_audit_master_output_quality as quality_audit  # noqa: E402
 import lab_emit_master_thread_starters as emit_starters  # noqa: E402
+import lab_prompt_consistency_check as prompt_consistency  # noqa: E402
 import lab_validate_llm_master_outputs as master_validate  # noqa: E402
 from lab_output_tracks import DEFAULT_PRIMARY_LLM_CAMPAIGN_ID, get_llm_campaign  # noqa: E402
 
@@ -330,6 +331,77 @@ class TestStarterEmitterHardening(unittest.TestCase):
             self.assertIn("python -c \"import json, pathlib;", text)
             self.assertIn(f'--only "{expected_output_path}"', text)
 
+    def test_emitter_default_format_is_v3(self) -> None:
+        campaign = get_llm_campaign(DEFAULT_PRIMARY_LLM_CAMPAIGN_ID)
+        if campaign is None:
+            self.fail("Default campaign not found for unit test.")
+        expected_output_path = (
+            f"public/data/sec_narrative_drift_lab/NVDA/outputs/llm_outline_compare_v1/"
+            f"{campaign.track_slug}/unit_test_output.json"
+        )
+        manifest = make_single_entry_manifest(DEFAULT_PRIMARY_LLM_CAMPAIGN_ID, expected_output_path)
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            manifest_path = root / "manifest.json"
+            out_path = root / "starters_default.md"
+            write_json(manifest_path, manifest)
+            rc = emit_starters.main(
+                [
+                    "--manifest",
+                    str(manifest_path),
+                    "--out",
+                    str(out_path),
+                ]
+            )
+            self.assertEqual(rc, 0)
+            text = out_path.read_text(encoding="utf-8")
+            self.assertIn("- output format: `vscode_autowrite_v3`", text)
+            self.assertIn("JOB_META", text)
+            self.assertIn("OUTPUT_SHAPE_MIN", text)
+            self.assertIn(
+                "Execution focus: do not inspect unrelated scripts/docs unless a required gate fails.",
+                text,
+            )
+            self.assertIn("year_payload.texts.paragraphs", text)
+            self.assertIn(
+                "If observed counts do not exactly match JOB_META.expected_prev_paragraphs / JOB_META.expected_curr_paragraphs",
+                text,
+            )
+
+    def test_emitter_v3_preflight_lock_markers(self) -> None:
+        campaign = get_llm_campaign(DEFAULT_PRIMARY_LLM_CAMPAIGN_ID)
+        if campaign is None:
+            self.fail("Default campaign not found for unit test.")
+        expected_output_path = (
+            f"public/data/sec_narrative_drift_lab/NVDA/outputs/llm_outline_compare_v1/"
+            f"{campaign.track_slug}/unit_test_output.json"
+        )
+        manifest = make_single_entry_manifest(DEFAULT_PRIMARY_LLM_CAMPAIGN_ID, expected_output_path)
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            manifest_path = root / "manifest.json"
+            out_path = root / "starters_v3.md"
+            write_json(manifest_path, manifest)
+            rc = emit_starters.main(
+                [
+                    "--manifest",
+                    str(manifest_path),
+                    "--out",
+                    str(out_path),
+                    "--format",
+                    "vscode_autowrite_v3",
+                ]
+            )
+            self.assertEqual(rc, 0)
+            text = out_path.read_text(encoding="utf-8")
+            self.assertIn("PREV_COUNT", text)
+            self.assertIn("CURR_COUNT", text)
+            self.assertIn("PRECHECK_MATCH prev=", text)
+            self.assertIn("preflight paragraph count mismatch", text)
+            self.assertIn("--only-mode \"exact_path\"", text)
+            self.assertIn("--expect-target-count 1", text)
+            self.assertIn("--fail-if-target-count-mismatch", text)
+
     def test_emitter_v2_includes_job_meta_and_shape_min(self) -> None:
         campaign = get_llm_campaign(DEFAULT_PRIMARY_LLM_CAMPAIGN_ID)
         if campaign is None:
@@ -364,6 +436,158 @@ class TestStarterEmitterHardening(unittest.TestCase):
                 "present_flag_mismatch can be non-blocking during incremental manual runs",
                 text,
             )
+
+
+class TestPromptConsistencyDocGuards(unittest.TestCase):
+    def _write_doc(self, path: Path, content: str) -> None:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(content, encoding="utf-8")
+
+    def test_doc_guards_pass_with_required_markers(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            doc_index = root / "docs" / "00_DOC_INDEX.md"
+            remaining_plan = root / "docs" / "LAB_REMAINING_WORK_PLAN.md"
+            comparison_doc = root / "docs" / "lab" / "06_llm_model_comparison_workflow.md"
+
+            self._write_doc(
+                doc_index,
+                "\n".join(
+                    [
+                        "`docs/_archive/legacy_context_20260302/00_README_doc_index.md`",
+                        "`docs/_archive/legacy_context_20260302/sec_narrative_drift_codex_spec_v1_13.md`",
+                        "`docs/_archive/legacy_context_20260302/sec_narrative_drift_codex_implementation_checklist_v1_13.md`",
+                        "`reports/lab_llm_master_manifest_codex_real.json`",
+                        "`reports/lab_llm_master_thread_starters_codex_real.md`",
+                        "`reports/lab_llm_master_validation_codex_real.md`",
+                    ]
+                ),
+            )
+            self._write_doc(
+                remaining_plan,
+                "\n".join(
+                    [
+                        "`openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27`",
+                        "`openai_chatgpt52ext_agent_fullsec_real_2026-02-27`",
+                        "`llm_outline_compare_v1`",
+                        "`docs/lab/08_remaining_work_plan_history.md`",
+                    ]
+                ),
+            )
+            self._write_doc(
+                comparison_doc,
+                "\n".join(
+                    [
+                        "`openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27`",
+                        "`openai-gpt53codex-xhigh-agent-fullsec-real-2026-02-27`",
+                        "`openai_chatgpt52ext_agent_fullsec_real_2026-02-27`",
+                        "`openai-chatgpt52ext-agent-fullsec-real-2026-02-27`",
+                        "runtime-visible",
+                        "runtime-hidden",
+                    ]
+                ),
+            )
+
+            prompt_consistency.check_canonical_docs(doc_index, remaining_plan, comparison_doc)
+
+    def test_doc_guards_fail_on_missing_required_marker(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            doc_index = root / "docs" / "00_DOC_INDEX.md"
+            remaining_plan = root / "docs" / "LAB_REMAINING_WORK_PLAN.md"
+            comparison_doc = root / "docs" / "lab" / "06_llm_model_comparison_workflow.md"
+
+            self._write_doc(
+                doc_index,
+                "\n".join(
+                    [
+                        "`docs/_archive/legacy_context_20260302/00_README_doc_index.md`",
+                        "`docs/_archive/legacy_context_20260302/sec_narrative_drift_codex_spec_v1_13.md`",
+                        "`docs/_archive/legacy_context_20260302/sec_narrative_drift_codex_implementation_checklist_v1_13.md`",
+                        "`reports/lab_llm_master_manifest_codex_real.json`",
+                        "`reports/lab_llm_master_thread_starters_codex_real.md`",
+                        "`reports/lab_llm_master_validation_codex_real.md`",
+                    ]
+                ),
+            )
+            self._write_doc(
+                remaining_plan,
+                "\n".join(
+                    [
+                        "`openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27`",
+                        "`openai_chatgpt52ext_agent_fullsec_real_2026-02-27`",
+                        "`llm_outline_compare_v1`",
+                        "`docs/lab/08_remaining_work_plan_history.md`",
+                    ]
+                ),
+            )
+            # Missing required runtime-hidden marker on purpose.
+            self._write_doc(
+                comparison_doc,
+                "\n".join(
+                    [
+                        "`openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27`",
+                        "`openai-gpt53codex-xhigh-agent-fullsec-real-2026-02-27`",
+                        "`openai_chatgpt52ext_agent_fullsec_real_2026-02-27`",
+                        "`openai-chatgpt52ext-agent-fullsec-real-2026-02-27`",
+                        "runtime-visible",
+                    ]
+                ),
+            )
+
+            with self.assertRaises(SystemExit) as ctx:
+                prompt_consistency.check_canonical_docs(doc_index, remaining_plan, comparison_doc)
+            self.assertIn("comparison_doc missing required marker(s)", str(ctx.exception))
+
+    def test_doc_guards_fail_on_stale_marker(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            doc_index = root / "docs" / "00_DOC_INDEX.md"
+            remaining_plan = root / "docs" / "LAB_REMAINING_WORK_PLAN.md"
+            comparison_doc = root / "docs" / "lab" / "06_llm_model_comparison_workflow.md"
+
+            self._write_doc(
+                doc_index,
+                "\n".join(
+                    [
+                        "`docs/_archive/legacy_context_20260302/00_README_doc_index.md`",
+                        "`docs/_archive/legacy_context_20260302/sec_narrative_drift_codex_spec_v1_13.md`",
+                        "`docs/_archive/legacy_context_20260302/sec_narrative_drift_codex_implementation_checklist_v1_13.md`",
+                        "`reports/lab_llm_master_manifest_codex_real.json`",
+                        "`reports/lab_llm_master_thread_starters_codex_real.md`",
+                        "`reports/lab_llm_master_validation_codex_real.md`",
+                        "`docs/00_README_doc_index.md`",
+                    ]
+                ),
+            )
+            self._write_doc(
+                remaining_plan,
+                "\n".join(
+                    [
+                        "`openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27`",
+                        "`openai_chatgpt52ext_agent_fullsec_real_2026-02-27`",
+                        "`llm_outline_compare_v1`",
+                        "`docs/lab/08_remaining_work_plan_history.md`",
+                    ]
+                ),
+            )
+            self._write_doc(
+                comparison_doc,
+                "\n".join(
+                    [
+                        "`openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27`",
+                        "`openai-gpt53codex-xhigh-agent-fullsec-real-2026-02-27`",
+                        "`openai_chatgpt52ext_agent_fullsec_real_2026-02-27`",
+                        "`openai-chatgpt52ext-agent-fullsec-real-2026-02-27`",
+                        "runtime-visible",
+                        "runtime-hidden",
+                    ]
+                ),
+            )
+
+            with self.assertRaises(SystemExit) as ctx:
+                prompt_consistency.check_canonical_docs(doc_index, remaining_plan, comparison_doc)
+            self.assertIn("doc_index contains forbidden marker(s)", str(ctx.exception))
 
 
 class TestMasterQualityAuditHardening(unittest.TestCase):

@@ -5,17 +5,20 @@ import json
 import re
 from difflib import unified_diff
 from pathlib import Path
-from typing import Optional
+from typing import Any, Optional, cast
 
 import sys
 
 from lab_script_version import build_script_version
 
-SCRIPT_VERSION = build_script_version(Path(__file__), "v5")
+SCRIPT_VERSION = build_script_version(Path(__file__), "v6")
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_MASTER_STARTERS = REPO_ROOT / "reports" / "lab_llm_master_thread_starters_codex_real.md"
 DEFAULT_MASTER_MANIFEST = REPO_ROOT / "reports" / "lab_llm_master_manifest_codex_real.json"
+DEFAULT_DOC_INDEX = REPO_ROOT / "docs" / "00_DOC_INDEX.md"
+DEFAULT_REMAINING_PLAN_DOC = REPO_ROOT / "docs" / "LAB_REMAINING_WORK_PLAN.md"
+DEFAULT_MODEL_COMPARISON_DOC = REPO_ROOT / "docs" / "lab" / "06_llm_model_comparison_workflow.md"
 
 sys.path.append(str(Path(__file__).resolve().parent))
 from lab_llm_precompute_utils import resolve_bundle_paths  # type: ignore
@@ -82,6 +85,15 @@ def _assert_markers_present(label: str, text: str, markers: list[str]) -> None:
         )
 
 
+def _assert_markers_absent(label: str, text: str, markers: list[str]) -> None:
+    present = [marker for marker in markers if marker in text]
+    if present:
+        raise SystemExit(
+            f"{label} contains forbidden marker(s):\n"
+            + "\n".join(f"- {marker}" for marker in present)
+        )
+
+
 def _default_instruction_report_path(campaign_id: str) -> Path:
     return REPO_ROOT / "reports" / f"lab_project_instructions_{campaign_id}.txt"
 
@@ -145,7 +157,102 @@ def build_parser() -> argparse.ArgumentParser:
         default=str(DEFAULT_MASTER_MANIFEST),
         help="Path to master manifest used for thread starters.",
     )
+    parser.add_argument(
+        "--doc-index",
+        default=str(DEFAULT_DOC_INDEX),
+        help="Path to docs/00_DOC_INDEX.md.",
+    )
+    parser.add_argument(
+        "--remaining-plan-doc",
+        default=str(DEFAULT_REMAINING_PLAN_DOC),
+        help="Path to docs/LAB_REMAINING_WORK_PLAN.md.",
+    )
+    parser.add_argument(
+        "--comparison-doc",
+        default=str(DEFAULT_MODEL_COMPARISON_DOC),
+        help="Path to docs/lab/06_llm_model_comparison_workflow.md.",
+    )
     return parser
+
+
+def check_canonical_docs(doc_index_path: Path, remaining_plan_path: Path, comparison_doc_path: Path) -> None:
+    if not doc_index_path.exists():
+        raise SystemExit(f"Missing canonical doc index: {doc_index_path}")
+    if not remaining_plan_path.exists():
+        raise SystemExit(f"Missing remaining work plan doc: {remaining_plan_path}")
+    if not comparison_doc_path.exists():
+        raise SystemExit(f"Missing model comparison doc: {comparison_doc_path}")
+
+    doc_index_text = doc_index_path.read_text(encoding="utf-8-sig")
+    _assert_markers_present(
+        "doc_index",
+        doc_index_text,
+        [
+            "`docs/_archive/legacy_context_20260302/00_README_doc_index.md`",
+            "`docs/_archive/legacy_context_20260302/sec_narrative_drift_codex_spec_v1_13.md`",
+            "`docs/_archive/legacy_context_20260302/sec_narrative_drift_codex_implementation_checklist_v1_13.md`",
+            "`reports/lab_llm_master_manifest_codex_real.json`",
+            "`reports/lab_llm_master_thread_starters_codex_real.md`",
+            "`reports/lab_llm_master_validation_codex_real.md`",
+        ],
+    )
+    _assert_markers_absent(
+        "doc_index",
+        doc_index_text,
+        [
+            "`docs/00_README_doc_index.md`",
+            "`docs/sec_narrative_drift_codex_spec_v1_13.md`",
+            "`docs/sec_narrative_drift_codex_implementation_checklist_v1_13.md`",
+            "`reports/lab_llm_run_manifest.md`",
+            "`reports/lab_llm_run_manifest.json`",
+        ],
+    )
+
+    remaining_plan_text = remaining_plan_path.read_text(encoding="utf-8-sig")
+    _assert_markers_present(
+        "remaining_plan_doc",
+        remaining_plan_text,
+        [
+            "`openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27`",
+            "`openai_chatgpt52ext_agent_fullsec_real_2026-02-27`",
+            "`llm_outline_compare_v1`",
+            "`docs/lab/08_remaining_work_plan_history.md`",
+        ],
+    )
+    _assert_markers_absent(
+        "remaining_plan_doc",
+        remaining_plan_text,
+        [
+            "# PHASE 0 - Ship and lock the deterministic baseline",
+            "# CODEx: One-shot Agent Prompt (surgical execution)",
+            "`reports/lab_llm_run_manifest.md`",
+            "`reports/lab_llm_run_manifest.json`",
+        ],
+    )
+
+    comparison_text = comparison_doc_path.read_text(encoding="utf-8-sig")
+    _assert_markers_present(
+        "comparison_doc",
+        comparison_text,
+        [
+            "`openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27`",
+            "`openai-gpt53codex-xhigh-agent-fullsec-real-2026-02-27`",
+            "`openai_chatgpt52ext_agent_fullsec_real_2026-02-27`",
+            "`openai-chatgpt52ext-agent-fullsec-real-2026-02-27`",
+            "runtime-visible",
+            "runtime-hidden",
+        ],
+    )
+    _assert_markers_absent(
+        "comparison_doc",
+        comparison_text,
+        [
+            "`openai_chatgpt52ext_agent_2026-02-21`",
+            "`openai_gpt53codex_xhigh_agent_2026-02-21`",
+            "`openai-chatgpt52ext-agent-2026-02-21`",
+            "`openai-gpt53codex-xhigh-agent-2026-02-21`",
+        ],
+    )
 
 
 def _check_master_starters(master_starters_path: Path, master_manifest_path: Path, campaign_slug: str) -> None:
@@ -159,6 +266,19 @@ def _check_master_starters(master_starters_path: Path, master_manifest_path: Pat
         "master_starters",
         starters_text,
         [
+            "Execution focus: do not inspect unrelated scripts/docs unless a required gate fails.",
+            "JOB_META",
+            "\"job_id\":",
+            "\"model_provider\":",
+            "\"model_name\":",
+            "\"run_label_template\":",
+            "\"provenance_input_file\":",
+            "\"expected_prev_paragraphs\":",
+            "\"expected_curr_paragraphs\":",
+            "\"output_path\":",
+            "year_payload.texts.paragraphs",
+            "If observed counts do not exactly match JOB_META.expected_prev_paragraphs / JOB_META.expected_curr_paragraphs",
+            "preflight paragraph count mismatch",
             "--only-mode \"exact_path\"",
             "--expect-target-count 1",
             "--fail-if-target-count-mismatch",
@@ -172,18 +292,21 @@ def _check_master_starters(master_starters_path: Path, master_manifest_path: Pat
     manifest_payload = json.loads(master_manifest_path.read_text(encoding="utf-8-sig"))
     if not isinstance(manifest_payload, dict):
         raise SystemExit("master manifest root must be an object")
-    entries = manifest_payload.get("entries")
+    manifest_data = cast(dict[str, Any], manifest_payload)
+    entries = manifest_data.get("entries")
     if not isinstance(entries, list):
         raise SystemExit("master manifest missing entries list")
 
     expected_paths: list[str] = []
-    for entry in entries:
+    for entry in entries:  # type: ignore[reportUnknownVariableType]
         if not isinstance(entry, dict):
             continue
-        master_output = entry.get("master_output")
+        entry_data = cast(dict[str, Any], entry)
+        master_output = entry_data.get("master_output")
         if not isinstance(master_output, dict):
             continue
-        expected_output_path = master_output.get("expected_output_path")
+        output_data = cast(dict[str, Any], master_output)
+        expected_output_path = output_data.get("expected_output_path")
         if not isinstance(expected_output_path, str):
             continue
         normalized = "/" + expected_output_path.replace("\\", "/").lstrip("/")
@@ -285,6 +408,15 @@ def main(argv: Optional[list[str]] = None) -> int:
     contract_doc_path = Path(args.contract_doc)
     if not contract_doc_path.is_absolute():
         contract_doc_path = REPO_ROOT / contract_doc_path
+    doc_index_path = Path(args.doc_index)
+    if not doc_index_path.is_absolute():
+        doc_index_path = REPO_ROOT / doc_index_path
+    remaining_plan_path = Path(args.remaining_plan_doc)
+    if not remaining_plan_path.is_absolute():
+        remaining_plan_path = REPO_ROOT / remaining_plan_path
+    comparison_doc_path = Path(args.comparison_doc)
+    if not comparison_doc_path.is_absolute():
+        comparison_doc_path = REPO_ROOT / comparison_doc_path
     if not setup_doc_path.exists():
         raise SystemExit(f"Missing setup doc: {setup_doc_path}")
     if not contract_doc_path.exists():
@@ -320,6 +452,11 @@ def main(argv: Optional[list[str]] = None) -> int:
             "placeholder tails like `Input file citation:`, `Source:`, `Input source:` are invalid",
             "YYYY-MM-DD_",
         ],
+    )
+    check_canonical_docs(
+        doc_index_path=doc_index_path,
+        remaining_plan_path=remaining_plan_path,
+        comparison_doc_path=comparison_doc_path,
     )
 
     sample_ticker = "KO"

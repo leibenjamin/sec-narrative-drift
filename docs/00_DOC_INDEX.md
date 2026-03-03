@@ -1,40 +1,46 @@
-# Documentation Index (Lab Canonical)
+﻿# Documentation Index (Lab Canonical)
 
-## Start here
+## Start Here
 - `docs/00_DOC_INDEX.md` - this file.
-- `docs/LAB_REMAINING_WORK_PLAN.md` - execution status and remaining work.
+- `docs/LAB_REMAINING_WORK_PLAN.md` - active execution status and remaining work.
 - `docs/PRODUCT_STORY.md` - public product narrative and walkthrough order.
 - `docs/PUBLIC_TONE_POLICY.md` - public-facing language policy and banned framing.
 - `docs/SEC_TEXT_SAFETY.md` - SEC text trust model and rendering safety rules.
-- `docs/lab/05_llm_reproducibility_contract.md` - strict manual LLM rerun contract and validation requirements.
-- `docs/lab/06_llm_model_comparison_workflow.md` - multi-campaign model-comparison workflow.
-- `docs/lab/07_codex_real_run_profile.md` - operational profile for 24-job Codex real master runs and batch governance cadence.
-- CI security gates include runtime dependency audit and forbidden HTML API scan via `.github/workflows/lab_gates.yml`.
+- `docs/lab/03_llm_precompute_workflow.md` - canonical precompute workflow (`full_section_v2`, master-first).
+- `docs/lab/05_llm_reproducibility_contract.md` - strict manual LLM output contract.
+- `docs/lab/06_llm_model_comparison_workflow.md` - campaign-aware model comparison workflow.
+- `docs/lab/07_codex_real_run_profile.md` - Codex real-run operating profile.
+- `docs/lab/08_remaining_work_plan_history.md` - archived/superseded execution narrative.
 
-## Product and contract docs
-- `docs/sec_narrative_drift_codex_spec_v1_13.md` - product/data contract baseline.
-- `docs/sec_narrative_drift_codex_implementation_checklist_v1_13.md` - ticketed implementation checklist.
-- `docs/00_README_doc_index.md` - historical canonical index retained for compatibility.
+## Archived Legacy References (Reference Only)
+Legacy contract/docs remain available under archive paths and are not canonical execution sources:
+- `docs/_archive/legacy_context_20260302/00_README_doc_index.md`
+- `docs/_archive/legacy_context_20260302/sec_narrative_drift_codex_spec_v1_13.md`
+- `docs/_archive/legacy_context_20260302/sec_narrative_drift_codex_implementation_checklist_v1_13.md`
 
-## Local generated reports (not committed)
-- `reports/*` are generated locally for validation and operator workflows, then kept untracked by policy.
-- Typical local artifacts:
-  - `reports/lab_runtime_readiness.md` - deterministic readiness gate.
-  - `reports/lab_raw_prereq_audit.md` - RAW prerequisite and coverage audit.
-  - `reports/lab_llm_run_manifest.md` - LLM run manifest (human-readable).
-  - `reports/lab_llm_run_manifest.json` - LLM run manifest (machine-readable).
-  - `reports/lab_execution_checklist.md` - phase execution tracker.
+## Canonical Manual LLM Run Artifacts (Local)
+`reports/*` stays local/untracked by policy. Typical active artifacts:
+- `reports/lab_llm_master_manifest_codex_real.json`
+- `reports/lab_llm_master_manifest_chatgpt_real.json`
+- `reports/lab_llm_master_thread_starters_codex_real.md`
+- `reports/lab_llm_master_thread_starters_chatgpt_real.md`
+- `reports/lab_llm_master_validation_codex_real.md`
+- `reports/lab_llm_master_validation_chatgpt_real.md`
+- `reports/lab_llm_master_quality_codex_real.md`
+- `reports/lab_llm_master_quality_<campaign>.md` (generated during checkpoint audits)
 
-## Canonical runtime data paths
+Compatibility-only artifacts may still appear locally (`reports/lab_llm_run_manifest.*`, legacy checklist docs) but are not canonical for real-run master execution.
+
+## Canonical Runtime Data Paths
 - Registry: `public/data/sec_narrative_drift_lab/lab_cases_v1.json`
-- Output files: `public/data/sec_narrative_drift_lab/<TICKER>/outputs/<detector_id>/<track_slug>/lab_<...>__<track_slug>.json`
+- Detector/master outputs: `public/data/sec_narrative_drift_lab/<TICKER>/outputs/<detector_id>/<track_slug>/lab_<...>__<track_slug>.json`
 - LLM campaigns index: `public/data/sec_narrative_drift_lab/lab_llm_campaigns_v1.json`
 - LLM variants index: `public/data/sec_narrative_drift_lab/lab_llm_variants_v1.json`
 - Method tracks index: `public/data/sec_narrative_drift_lab/lab_method_tracks_v1.json`
 - Method profiles index: `public/data/sec_narrative_drift_lab/lab_method_profiles_v1.json`
 
-## Local-only artifacts
-- `reports/*` - local validation/checklist outputs (never committed).
-- `bundles/*` - local run packs and handoff artifacts (kept uncommitted by policy).
-- `attic/*` - archived historical artifacts, not used by production runtime.
-  - `attic/legacy_ui_pre_lab_20260219.md` documents the hard Lab-first UI archive mapping.
+## Local-Only Artifact Policy
+- `reports/*` - validation/checkpoint outputs (untracked local workflow files).
+- `bundles/*` - run-pack inputs and handoff artifacts (untracked local files).
+- `scripts/_cache/*` and `scripts/_reports/*` - local caches/intermediate reports.
+- `attic/*` - archived historical artifacts not used by production runtime.

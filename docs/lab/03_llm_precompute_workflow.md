@@ -1,20 +1,30 @@
-# LLM Precompute Workflow (Showcase v3)
+﻿# LLM Precompute Workflow (Showcase v3)
 
 Status: canonical manual rerun workflow for Lab (`full_section_v2`, master-first).
 
 ## Canonical Entry Points
 - `docs/lab/04_chatgpt_project_setup.md`
+- `docs/lab/07_codex_real_run_profile.md`
 - `reports/lab_project_instructions_<campaign_id>.txt`
 - `reports/lab_llm_master_manifest_<campaign>.json`
 - `reports/lab_llm_master_thread_starters_<campaign>.md`
 - `reports/lab_llm_master_validation_<campaign>.md`
 - `reports/lab_llm_manual_rerun_checklist.md` (legacy detector checklist; compatibility only)
-- `scripts/lab_validate_llm_manifest_outputs.py`
 - `scripts/lab_run_fullsec_campaign_pipeline.py` (single-command orchestrator for full_section_v2 flow)
 - `scripts/lab_build_llm_master_manifest.py`
 - `scripts/lab_emit_master_thread_starters.py`
 - `scripts/lab_validate_llm_master_outputs.py`
+- `scripts/lab_record_master_progress.py`
 - `scripts/lab_project_master_to_detectors.py`
+
+## Canonical Starter File (Codex Real Runs)
+- Single-source starter file:
+  - `reports/lab_llm_master_thread_starters_codex_real.md`
+- Canonical generation profile:
+  - `scripts/lab_emit_master_thread_starters.py --format vscode_autowrite_v3`
+- Non-canonical compatibility artifacts:
+  - `reports/lab_llm_master_thread_starters_codex_real_v2.md`
+  - `reports/lab_llm_master_thread_starters_codex_real_legacy.md`
 
 ## Runtime Truth (Current Push)
 - Runtime policy is real-run LLM evidence only.
@@ -77,13 +87,15 @@ Each manual master job is considered PASS only when all of the following are tru
 - `run_label` (required; must start with `YYYY-MM-DD_`)
 
 ## Canonical Validation Loop
-1. Wave progress:
-   `python scripts/lab_validate_llm_manifest_outputs.py --allow-missing --allow-invalid --report reports/lab_llm_manifest_validation.md`
-2. Final strict:
-   `python scripts/lab_validate_llm_manifest_outputs.py --report reports/lab_llm_manifest_validation.md`
-3. Master quality audit (blockers + advisory):
-   `python scripts/lab_audit_master_output_quality.py --manifest reports/lab_llm_master_manifest.json --campaign-id <campaign_id> --mode both --allow-missing --report reports/lab_llm_master_quality.md`
-4. Deterministic gates:
+1. Wave progress (Codex real):
+   `python scripts/lab_validate_llm_master_outputs.py --manifest reports/lab_llm_master_manifest_codex_real.json --campaign-id openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27 --allow-missing --allow-invalid --report reports/lab_llm_master_validation_codex_real.md`
+2. Wave progress (ChatGPT real):
+   `python scripts/lab_validate_llm_master_outputs.py --manifest reports/lab_llm_master_manifest_chatgpt_real.json --campaign-id openai_chatgpt52ext_agent_fullsec_real_2026-02-27 --allow-missing --allow-invalid --report reports/lab_llm_master_validation_chatgpt_real.md`
+3. Master quality audit (blockers):
+   `python scripts/lab_audit_master_output_quality.py --manifest reports/lab_llm_master_manifest_<campaign>.json --campaign-id <campaign_id> --allow-missing --mode blockers --report reports/lab_llm_master_quality_<campaign>.md`
+4. Checkpoint progress capture:
+   `python scripts/lab_record_master_progress.py --manifest reports/lab_llm_master_manifest_<campaign>.json --campaign-id <campaign_id> --report-md reports/lab_llm_master_batch_progress_<campaign>.md --history-json reports/lab_llm_master_batch_progress_<campaign>.json --label after_job_XX`
+5. Deterministic gates:
    `npm run lab:predeploy`
    `npm run lab:readiness`
    `npm run build`
@@ -101,3 +113,4 @@ Each manual master job is considered PASS only when all of the following are tru
 Older queue and ingest flow docs remain for history and compatibility checks only.
 They are non-canonical for current showcase manual reruns.
 Legacy `focuspack_v1` inputs remain on disk for audit only and are runtime-hidden.
+Detector-first validator flow via `scripts/lab_validate_llm_manifest_outputs.py` remains compatibility-only.
