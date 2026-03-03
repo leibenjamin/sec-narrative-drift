@@ -26,6 +26,19 @@ Status: canonical manual rerun workflow for Lab (`full_section_v2`, master-first
   - `reports/lab_llm_master_thread_starters_codex_real_v2.md`
   - `reports/lab_llm_master_thread_starters_codex_real_legacy.md`
 
+## Prompt Templates (Campaign-Scoped)
+- Bundle root: `bundles/showcase_llm_inputs_full_section_v2_20260222/`
+- Primary Codex canonical template:
+  - `prompt_templates_showcase.md`
+- Compare ChatGPT template:
+  - `prompt_templates_showcase__openai-chatgpt52ext-agent-fullsec-real-2026-02-27.md`
+- Regeneration commands:
+  - `python scripts/lab_write_prompt_templates.py --bundle bundles/showcase_llm_inputs_full_section_v2_20260222 --campaign-id openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27`
+  - `python scripts/lab_write_prompt_templates.py --bundle bundles/showcase_llm_inputs_full_section_v2_20260222 --campaign-id openai_chatgpt52ext_agent_fullsec_real_2026-02-27 --out prompt_templates_showcase__openai-chatgpt52ext-agent-fullsec-real-2026-02-27.md`
+- Consistency checker behavior:
+  - If `--prompt-templates` is omitted, primary campaign checks `prompt_templates_showcase.md`.
+  - Non-primary campaigns require `prompt_templates_showcase__<track_slug>.md` and hard-fail with a remediation command when missing.
+
 ## Runtime Truth (Current Push)
 - Runtime policy is real-run LLM evidence only.
 - Runtime-visible campaign: `openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27` (manual lane; artifacts may be missing until jobs are completed).
@@ -99,6 +112,12 @@ Each manual master job is considered PASS only when all of the following are tru
    `npm run lab:predeploy`
    `npm run lab:readiness`
    `npm run build`
+
+## Prompt Consistency Commands
+- Codex real:
+  - `python scripts/lab_prompt_consistency_check.py --bundle bundles/showcase_llm_inputs_full_section_v2_20260222 --campaign-id openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27`
+- ChatGPT real:
+  - `python scripts/lab_prompt_consistency_check.py --bundle bundles/showcase_llm_inputs_full_section_v2_20260222 --campaign-id openai_chatgpt52ext_agent_fullsec_real_2026-02-27 --master-starters reports/lab_llm_master_thread_starters_chatgpt_real.md --master-manifest reports/lab_llm_master_manifest_chatgpt_real.json`
 
 ## Orchestrated Pipeline (Recommended)
 - Codex full-section real-manual lane:

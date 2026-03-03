@@ -18,7 +18,7 @@ from lab_output_tracks import (  # type: ignore
 )
 from lab_script_version import build_script_version
 
-SCRIPT_VERSION = build_script_version(Path(__file__), "v2")
+SCRIPT_VERSION = build_script_version(Path(__file__), "v3")
 
 
 def find_latest_showcase_bundle(root: Path) -> Optional[Path]:
@@ -50,6 +50,14 @@ def build_parser() -> argparse.ArgumentParser:
         default=DEFAULT_PRIMARY_LLM_CAMPAIGN_ID,
         help="Campaign id from scripts/lab_output_tracks.py.",
     )
+    parser.add_argument(
+        "--out",
+        default="",
+        help=(
+            "Output filename/path for prompt templates. Relative values resolve from the "
+            "selected bundle directory. Defaults to prompt_templates_showcase.md."
+        ),
+    )
     return parser
 
 
@@ -67,7 +75,14 @@ def main(argv: Optional[list[str]] = None) -> int:
     if campaign is None:
         raise SystemExit(f"Unknown campaign id: {args.campaign_id}")
 
-    output_path = bundle_dir / "prompt_templates_showcase.md"
+    if args.out:
+        output_path = Path(args.out)
+        if not output_path.is_absolute():
+            output_path = bundle_dir / output_path
+    else:
+        output_path = bundle_dir / "prompt_templates_showcase.md"
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+
     prompt_lines = build_prompt_templates_showcase_lines(
         campaign=campaign,
         input_mode=campaign.input_mode or "full_section_v2",

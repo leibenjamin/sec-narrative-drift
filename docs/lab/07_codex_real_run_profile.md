@@ -13,6 +13,10 @@ Companion canonical docs:
 - `docs/lab/03_llm_precompute_workflow.md`
 - `docs/lab/05_llm_reproducibility_contract.md`
 
+Prompt template pairing (full_section_v2 bundle):
+- Primary Codex: `prompt_templates_showcase.md`
+- Compare ChatGPT: `prompt_templates_showcase__openai-chatgpt52ext-agent-fullsec-real-2026-02-27.md`
+
 ## Purpose
 - Keep the current one-job-per-thread starter workflow unchanged for active production runs.
 - Avoid schema drift and non-deterministic execution behavior.
@@ -46,6 +50,10 @@ python scripts/lab_validate_llm_master_outputs.py --manifest "reports/lab_llm_ma
 python scripts/lab_audit_master_output_quality.py --manifest "reports/lab_llm_master_manifest_codex_real.json" --campaign-id "openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27" --allow-missing --mode blockers --report "reports/lab_llm_master_quality_codex_real.md"
 python scripts/lab_record_master_progress.py --manifest "reports/lab_llm_master_manifest_codex_real.json" --campaign-id "openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27" --report-md "reports/lab_llm_master_batch_progress_codex_real.md" --history-json "reports/lab_llm_master_batch_progress_codex_real.json" --label "after_job_XX"
 ```
+
+Final checkpoint reminder:
+- After completing job `24`, run the same progress command with:
+  - `--label "after_job_24"`
 
 Track these deltas after each checkpoint:
 - `present`

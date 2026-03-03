@@ -21,6 +21,9 @@ Scope: active canonical work only (deterministic runtime + `llm_outline_compare_
 
 ## Current State Snapshot
 - Canonical starter hardening is active (`vscode_autowrite_v3`, JOB_META, strict preflight count lock).
+- Prompt-template hardening is campaign-scoped:
+  - primary codex template: `prompt_templates_showcase.md`
+  - compare chatgpt template: `prompt_templates_showcase__openai-chatgpt52ext-agent-fullsec-real-2026-02-27.md`
 - Full-section v2 inputs for all runtime pairs/lenses are available locally.
 - Codex real and ChatGPT real master manifests/instructions/starters are generated and maintained.
 - Runtime can surface outline compare artifacts when present and falls back to explicit deterministic-first missing states when absent.

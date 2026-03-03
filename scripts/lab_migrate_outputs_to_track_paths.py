@@ -17,7 +17,7 @@ from lab_output_tracks import (  # type: ignore
 )
 from lab_script_version import build_script_version
 
-SCRIPT_VERSION = build_script_version(Path(__file__), "v1")
+SCRIPT_VERSION = build_script_version(Path(__file__), "v2")
 REPO_ROOT = Path(__file__).resolve().parents[1]
 LAB_ROOT = REPO_ROOT / "public" / "data" / "sec_narrative_drift_lab"
 DEFAULT_REGISTRY = LAB_ROOT / "lab_cases_v1.json"
@@ -80,7 +80,12 @@ def copy_if_needed(source: Path, destination: Path) -> bool:
     return True
 
 
-def build_rows(registry_path: Path) -> tuple[dict[str, Any], list[MigrationRow]]:
+def build_rows(
+    registry_path: Path,
+    *,
+    deterministic_only: bool = False,
+    legacy_no_track_only: bool = False,
+) -> tuple[dict[str, Any], list[MigrationRow]]:
     payload = read_json(registry_path)
     if not isinstance(payload, dict):
         raise SystemExit(f"Registry root is not an object: {registry_path}")
@@ -120,6 +125,14 @@ def build_rows(registry_path: Path) -> tuple[dict[str, Any], list[MigrationRow]]
             filename = str(output.get("filename", ""))
             if not detector_id or not filename:
                 continue
+            if deterministic_only and is_llm_detector(detector_id):
+                continue
+            normalized_filename = normalize_rel(filename)
+            if legacy_no_track_only:
+                if "/det-baseline-2026-02-21/" in normalized_filename:
+                    continue
+                if "/openai-" in normalized_filename:
+                    continue
             old_rel = f"{ticker}/{normalize_rel(filename)}"
 
             if is_llm_detector(detector_id):
@@ -216,6 +229,16 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--det-report", default=str(DEFAULT_DET_REPORT))
     parser.add_argument("--no-hard-cut", action="store_true")
     parser.add_argument(
+        "--deterministic-only",
+        action="store_true",
+        help="Only migrate deterministic detector output rows.",
+    )
+    parser.add_argument(
+        "--legacy-no-track-only",
+        action="store_true",
+        help="Only migrate legacy rows whose filename has no track segment.",
+    )
+    parser.add_argument(
         "--plan-only",
         action="store_true",
         help="Write map/reports only; do not copy/remove files and do not rewrite registry.",
@@ -238,7 +261,11 @@ def main(argv: Optional[list[str]] = None) -> int:
     if not det_report_path.is_absolute():
         det_report_path = REPO_ROOT / det_report_path
 
-    registry_payload, rows = build_rows(registry_path)
+    registry_payload, rows = build_rows(
+        registry_path,
+        deterministic_only=args.deterministic_only,
+        legacy_no_track_only=args.legacy_no_track_only,
+    )
     copied = 0
     removed = 0
     if not args.plan_only:

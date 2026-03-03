@@ -13,7 +13,11 @@ import lab_audit_master_output_quality as quality_audit  # noqa: E402
 import lab_emit_master_thread_starters as emit_starters  # noqa: E402
 import lab_prompt_consistency_check as prompt_consistency  # noqa: E402
 import lab_validate_llm_master_outputs as master_validate  # noqa: E402
-from lab_output_tracks import DEFAULT_PRIMARY_LLM_CAMPAIGN_ID, get_llm_campaign  # noqa: E402
+from lab_output_tracks import (  # noqa: E402
+    DEFAULT_COMPARE_LLM_CAMPAIGN_ID,
+    DEFAULT_PRIMARY_LLM_CAMPAIGN_ID,
+    get_llm_campaign,
+)
 
 
 PAIR_INPUT_FILE = "inputs/pair/NVDA_2022_2023_10k_item1a_raw_edgar.json"
@@ -436,6 +440,116 @@ class TestStarterEmitterHardening(unittest.TestCase):
                 "present_flag_mismatch can be non-blocking during incremental manual runs",
                 text,
             )
+
+    def test_chatgpt_master_starter_v3_markers(self) -> None:
+        campaign = get_llm_campaign(DEFAULT_COMPARE_LLM_CAMPAIGN_ID)
+        if campaign is None:
+            self.fail("Compare campaign not found for unit test.")
+        expected_output_path = (
+            f"public/data/sec_narrative_drift_lab/NVDA/outputs/llm_outline_compare_v1/"
+            f"{campaign.track_slug}/unit_test_output.json"
+        )
+        manifest = make_single_entry_manifest(DEFAULT_COMPARE_LLM_CAMPAIGN_ID, expected_output_path)
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            manifest_path = root / "manifest_chatgpt.json"
+            out_path = root / "starters_chatgpt_v3.md"
+            write_json(manifest_path, manifest)
+            rc = emit_starters.main(
+                [
+                    "--manifest",
+                    str(manifest_path),
+                    "--out",
+                    str(out_path),
+                    "--format",
+                    "vscode_autowrite_v3",
+                ]
+            )
+            self.assertEqual(rc, 0)
+            text = out_path.read_text(encoding="utf-8")
+            self.assertIn("- output format: `vscode_autowrite_v3`", text)
+            self.assertIn("BEGIN_STARTER", text)
+            self.assertIn("Execution focus: do not inspect unrelated scripts/docs unless a required gate fails.", text)
+            self.assertIn("JOB_META", text)
+            self.assertIn("year_payload.texts.paragraphs", text)
+            self.assertIn("--only-mode \"exact_path\"", text)
+            self.assertIn("--expect-target-count 1", text)
+            self.assertIn("--fail-if-target-count-mismatch", text)
+            self.assertIn(f'--only "{expected_output_path}"', text)
+
+
+class TestPromptTemplateResolutionHardening(unittest.TestCase):
+    def _bundle_paths(
+        self,
+        bundle_root: Path,
+        prompt_templates: Path | None = None,
+    ) -> prompt_consistency.BundlePaths:
+        return prompt_consistency.BundlePaths(
+            bundle_root=bundle_root,
+            focus_index=None,
+            full_index=None,
+            pair_index_v2=None,
+            year_index_v2=None,
+            prompt_templates=prompt_templates,
+        )
+
+    def test_non_primary_campaign_prefers_campaign_scoped_prompt_template(self) -> None:
+        campaign = get_llm_campaign(DEFAULT_COMPARE_LLM_CAMPAIGN_ID)
+        if campaign is None:
+            self.fail("Compare campaign not found for unit test.")
+        with tempfile.TemporaryDirectory() as tmpdir:
+            bundle_root = Path(tmpdir)
+            canonical_path = bundle_root / "prompt_templates_showcase.md"
+            canonical_path.write_text("codex-canonical", encoding="utf-8")
+            campaign_path = bundle_root / (
+                f"prompt_templates_showcase__{campaign.track_slug}.md"
+            )
+            campaign_path.write_text("chatgpt-campaign", encoding="utf-8")
+            resolved = prompt_consistency.resolve_prompt_templates_path(
+                bundle_paths=self._bundle_paths(bundle_root),
+                campaign_id=campaign.track_id,
+                campaign_slug=campaign.track_slug,
+                prompt_templates_override="",
+            )
+            self.assertEqual(campaign_path, resolved)
+
+    def test_non_primary_campaign_missing_scoped_template_fails_with_remediation(self) -> None:
+        campaign = get_llm_campaign(DEFAULT_COMPARE_LLM_CAMPAIGN_ID)
+        if campaign is None:
+            self.fail("Compare campaign not found for unit test.")
+        with tempfile.TemporaryDirectory() as tmpdir:
+            bundle_root = Path(tmpdir)
+            (bundle_root / "prompt_templates_showcase.md").write_text(
+                "codex-canonical", encoding="utf-8"
+            )
+            expected_filename = f"prompt_templates_showcase__{campaign.track_slug}.md"
+            with self.assertRaises(SystemExit) as ctx:
+                prompt_consistency.resolve_prompt_templates_path(
+                    bundle_paths=self._bundle_paths(bundle_root),
+                    campaign_id=campaign.track_id,
+                    campaign_slug=campaign.track_slug,
+                    prompt_templates_override="",
+                )
+            message = str(ctx.exception)
+            self.assertIn("Missing campaign-scoped prompt template for non-primary campaign", message)
+            self.assertIn(expected_filename, message)
+            self.assertIn("python scripts/lab_write_prompt_templates.py", message)
+
+    def test_prompt_template_override_takes_precedence(self) -> None:
+        campaign = get_llm_campaign(DEFAULT_COMPARE_LLM_CAMPAIGN_ID)
+        if campaign is None:
+            self.fail("Compare campaign not found for unit test.")
+        with tempfile.TemporaryDirectory() as tmpdir:
+            bundle_root = Path(tmpdir)
+            override_path = bundle_root / "prompt_templates_override.md"
+            override_path.write_text("override", encoding="utf-8")
+            resolved = prompt_consistency.resolve_prompt_templates_path(
+                bundle_paths=self._bundle_paths(bundle_root, prompt_templates=override_path),
+                campaign_id=campaign.track_id,
+                campaign_slug=campaign.track_slug,
+                prompt_templates_override=str(override_path),
+            )
+            self.assertEqual(override_path, resolved)
 
 
 class TestPromptConsistencyDocGuards(unittest.TestCase):

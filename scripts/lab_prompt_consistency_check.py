@@ -11,7 +11,7 @@ import sys
 
 from lab_script_version import build_script_version
 
-SCRIPT_VERSION = build_script_version(Path(__file__), "v6")
+SCRIPT_VERSION = build_script_version(Path(__file__), "v7")
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_MASTER_STARTERS = REPO_ROOT / "reports" / "lab_llm_master_thread_starters_codex_real.md"
@@ -19,9 +19,10 @@ DEFAULT_MASTER_MANIFEST = REPO_ROOT / "reports" / "lab_llm_master_manifest_codex
 DEFAULT_DOC_INDEX = REPO_ROOT / "docs" / "00_DOC_INDEX.md"
 DEFAULT_REMAINING_PLAN_DOC = REPO_ROOT / "docs" / "LAB_REMAINING_WORK_PLAN.md"
 DEFAULT_MODEL_COMPARISON_DOC = REPO_ROOT / "docs" / "lab" / "06_llm_model_comparison_workflow.md"
+PROMPT_TEMPLATES_CANONICAL_FILENAME = "prompt_templates_showcase.md"
 
 sys.path.append(str(Path(__file__).resolve().parent))
-from lab_llm_precompute_utils import resolve_bundle_paths  # type: ignore
+from lab_llm_precompute_utils import BundlePaths, resolve_bundle_paths  # type: ignore
 from lab_output_tracks import (  # type: ignore
     DEFAULT_PRIMARY_LLM_CAMPAIGN_ID,
     canonical_output_relative_path,
@@ -108,6 +109,49 @@ def _default_instruction_public_path(campaign_asset_name: str) -> Path:
     )
 
 
+def _campaign_prompt_templates_filename(campaign_slug: str) -> str:
+    return f"prompt_templates_showcase__{campaign_slug}.md"
+
+
+def resolve_prompt_templates_path(
+    *,
+    bundle_paths: BundlePaths,
+    campaign_id: str,
+    campaign_slug: str,
+    prompt_templates_override: str,
+) -> Path:
+    if prompt_templates_override:
+        prompt_path = bundle_paths.prompt_templates
+        if prompt_path is None or not prompt_path.exists():
+            raise SystemExit("prompt_templates override path not found.")
+        return prompt_path
+
+    canonical_prompt_path = bundle_paths.bundle_root / PROMPT_TEMPLATES_CANONICAL_FILENAME
+    if campaign_id == DEFAULT_PRIMARY_LLM_CAMPAIGN_ID:
+        if not canonical_prompt_path.exists():
+            raise SystemExit("prompt_templates_showcase.md not found for primary campaign.")
+        return canonical_prompt_path
+
+    campaign_prompt_path = bundle_paths.bundle_root / _campaign_prompt_templates_filename(
+        campaign_slug
+    )
+    if campaign_prompt_path.exists():
+        return campaign_prompt_path
+
+    write_cmd = (
+        "python scripts/lab_write_prompt_templates.py "
+        + f'--bundle "{bundle_paths.bundle_root.as_posix()}" '
+        + f'--campaign-id "{campaign_id}" '
+        + f'--out "{campaign_prompt_path.name}"'
+    )
+    raise SystemExit(
+        "Missing campaign-scoped prompt template for non-primary campaign: "
+        + f"{campaign_prompt_path}\n"
+        + "Generate it with:\n"
+        + write_cmd
+    )
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description="Check campaign-aware prompt/instruction consistency against canonical emitters."
@@ -125,7 +169,11 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--prompt-templates",
         default="",
-        help="Override path to prompt_templates_showcase.md.",
+        help=(
+            "Override path to prompt templates markdown. By default: primary campaign "
+            "uses prompt_templates_showcase.md; non-primary campaigns require "
+            "prompt_templates_showcase__<track_slug>.md in the selected bundle."
+        ),
     )
     parser.add_argument(
         "--instructions-report",
@@ -342,15 +390,19 @@ def main(argv: Optional[list[str]] = None) -> int:
     if campaign is None or campaign.instructions_asset_name is None:
         raise SystemExit(f"Unknown campaign id: {args.campaign_id}")
 
+    prompt_templates_override = args.prompt_templates or ""
     bundle_paths = resolve_bundle_paths(
         args.bundle or None,
         None,
         None,
-        args.prompt_templates or None,
+        prompt_templates_override or None,
     )
-    prompt_path = bundle_paths.prompt_templates
-    if prompt_path is None or not prompt_path.exists():
-        raise SystemExit("prompt_templates_showcase.md not found.")
+    prompt_path = resolve_prompt_templates_path(
+        bundle_paths=bundle_paths,
+        campaign_id=campaign.track_id,
+        campaign_slug=campaign.track_slug,
+        prompt_templates_override=prompt_templates_override,
+    )
 
     expected_full = build_prompt_templates_showcase_lines(
         campaign=campaign,
