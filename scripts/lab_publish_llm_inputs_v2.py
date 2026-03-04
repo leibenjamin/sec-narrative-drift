@@ -122,6 +122,18 @@ def main(argv: Optional[list[str]] = None) -> int:
         raise SystemExit("v2 indexes must be JSON lists")
     year_index = cast(list[dict[str, object]], _yi_raw)
     pair_index = cast(list[dict[str, object]], _pi_raw)
+    year_integrity_fields = 0
+    if year_index:
+        first_year = year_index[0]
+        for key in ("payload_sha256", "payload_bytes", "paragraphs_sha256"):
+            if key in first_year:
+                year_integrity_fields += 1
+    pair_integrity_fields = 0
+    if pair_index:
+        first_pair = pair_index[0]
+        for key in ("pair_payload_sha256", "prev_payload_sha256", "curr_payload_sha256"):
+            if key in first_pair:
+                pair_integrity_fields += 1
 
     if args.clean and args.no_clean:
         raise SystemExit("Use only one of --clean or --no-clean.")
@@ -163,6 +175,8 @@ def main(argv: Optional[list[str]] = None) -> int:
     lines.append(f"- copied_input_files: `{copied_files}`")
     lines.append(f"- year_index_rows: `{len(year_index)}`")
     lines.append(f"- pair_index_rows: `{len(pair_index)}`")
+    lines.append(f"- year_integrity_fields_detected: `{year_integrity_fields}`")
+    lines.append(f"- pair_integrity_fields_detected: `{pair_integrity_fields}`")
     lines.append("")
     lines.append("## Published Artifacts")
     lines.append(f"- `{(out_root / 'inputs_index_year_v2.json').relative_to(REPO_ROOT).as_posix()}`")

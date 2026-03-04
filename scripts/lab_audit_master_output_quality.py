@@ -62,7 +62,7 @@ class OutputAudit:
 
 def parse_output_filename(path: Path) -> Optional[dict[str, object]]:
     match = re.search(
-        r"lab_llm_outline_compare_v1_(?P<section>.+?)_(?P<year_from>\d{4})_(?P<year_to>\d{4})_(?P<lens>.+)_(?P<source_id>[a-zA-Z0-9]+)__",
+        r"lab_(?P<artifact_id>llm_outline_compare_v[12])_(?P<section>.+?)_(?P<year_from>\d{4})_(?P<year_to>\d{4})_(?P<lens>.+)_(?P<source_id>[a-zA-Z0-9]+)__",
         path.name,
     )
     if match is None:
@@ -70,6 +70,7 @@ def parse_output_filename(path: Path) -> Optional[dict[str, object]]:
     year_from = int(match.group("year_from"))
     year_to = int(match.group("year_to"))
     section = match.group("section")
+    artifact_id = match.group("artifact_id")
     lens = match.group("lens")
     source_id = match.group("source_id")
     normalized = path.as_posix().replace("\\", "/")
@@ -82,6 +83,7 @@ def parse_output_filename(path: Path) -> Optional[dict[str, object]]:
         "year_from": year_from,
         "year_to": year_to,
         "section": section,
+        "artifact_id": artifact_id,
         "lens": lens,
         "source_id": source_id,
     }
@@ -94,11 +96,12 @@ def infer_target_from_output(path: Path) -> Optional[MasterTarget]:
     if not isinstance(parsed.get("ticker"), str):
         return None
     ticker = str(parsed["ticker"])
-    year_from = int(parsed["year_from"])
-    year_to = int(parsed["year_to"])
+    year_from = int(str(parsed["year_from"]))
+    year_to = int(str(parsed["year_to"]))
     section = str(parsed["section"])
     lens = str(parsed["lens"])
     source_id = str(parsed["source_id"])
+    artifact_id = str(parsed["artifact_id"])
     relative = path
     try:
         relative = path.resolve().relative_to(REPO_ROOT.resolve())
@@ -113,6 +116,8 @@ def infer_target_from_output(path: Path) -> Optional[MasterTarget]:
         source_id=source_id,
         expected_output_path=relative.as_posix(),
         manifest_present_flag=None,
+        expected_artifact_id=artifact_id,
+        source_master_v2_path=None,
     )
 
 
@@ -228,6 +233,8 @@ def evaluate_output(
         path=path,
         expected_model_provider=expected_model_provider,
         expected_model_name=expected_model_name,
+        expected_artifact_id=target.expected_artifact_id,
+        source_master_v2_path=target.source_master_v2_path,
     )
     for reason in reasons:
         blockers.append(
@@ -352,6 +359,66 @@ def evaluate_output(
             normalized[key] = value
         material_changes.append(normalized)
 
+    if target.expected_artifact_id == "llm_outline_compare_v2":
+        change_mechanisms_any = as_list(payload.get("change_mechanisms")) or []
+        if not change_mechanisms_any:
+            blockers.append(
+                AuditIssue(
+                    code="missing_change_mechanisms",
+                    detail="v2 payload must include non-empty change_mechanisms.",
+                    severity="blocker",
+                )
+            )
+        else:
+            mechanism_ref_pairs: set[tuple[int, int]] = set()
+            for idx, mechanism_any in enumerate(change_mechanisms_any):
+                mechanism = as_str_dict(mechanism_any)
+                if mechanism is None:
+                    blockers.append(
+                        AuditIssue(
+                            code="invalid_change_mechanism_row",
+                            detail=f"change_mechanisms[{idx}] must be object.",
+                            severity="blocker",
+                        )
+                    )
+                    continue
+                for key in ("mechanism", "transmission_channel", "business_effect", "time_horizon"):
+                    value = get_str(mechanism.get(key)) or ""
+                    if not value.strip():
+                        blockers.append(
+                            AuditIssue(
+                                code="incomplete_change_mechanism_row",
+                                detail=f"change_mechanisms[{idx}].{key} must be non-empty.",
+                                severity="blocker",
+                            )
+                        )
+                evidence_refs_any = as_list(mechanism.get("evidence_refs")) or []
+                for ref_any in evidence_refs_any:
+                    ref = as_str_dict(ref_any)
+                    year = get_int(ref.get("year")) if ref is not None else None
+                    paragraph_idx = get_int(ref.get("paragraph_idx")) if ref is not None else None
+                    if year is None or paragraph_idx is None:
+                        continue
+                    mechanism_ref_pairs.add((year, paragraph_idx))
+            material_ref_pairs: set[tuple[int, int]] = set()
+            for change in material_changes:
+                evidence_refs_any = as_list(change.get("evidence_refs")) or []
+                for ref_any in evidence_refs_any:
+                    ref = as_str_dict(ref_any)
+                    year = get_int(ref.get("year")) if ref is not None else None
+                    paragraph_idx = get_int(ref.get("paragraph_idx")) if ref is not None else None
+                    if year is None or paragraph_idx is None:
+                        continue
+                    material_ref_pairs.add((year, paragraph_idx))
+            if material_ref_pairs and not (material_ref_pairs.intersection(mechanism_ref_pairs)):
+                blockers.append(
+                    AuditIssue(
+                        code="lexical_only_change_claims",
+                        detail="material_changes evidence does not overlap any change_mechanisms evidence refs.",
+                        severity="blocker",
+                    )
+                )
+
     for idx, change in enumerate(material_changes):
         caveat = get_str(change.get("caveat")) or ""
         evidence_refs_any = as_list(change.get("evidence_refs")) or []
@@ -460,6 +527,7 @@ def evaluate_output(
 
     ref_counts: dict[tuple[int, int], int] = {}
     total_refs = 0
+    opening_refs = 0
     for change in material_changes:
         evidence_refs_any = as_list(change.get("evidence_refs")) or []
         for ref_any in evidence_refs_any:
@@ -473,6 +541,8 @@ def evaluate_output(
             pair = (year, paragraph_idx)
             ref_counts[pair] = ref_counts.get(pair, 0) + 1
             total_refs += 1
+            if paragraph_idx == 0:
+                opening_refs += 1
     if total_refs > 0 and ref_counts:
         max_ref_use = max(ref_counts.values())
         concentration = max_ref_use / total_refs
@@ -490,6 +560,15 @@ def evaluate_output(
                 AuditIssue(
                     code="low_evidence_ref_diversity",
                     detail=f"Evidence reference uniqueness ratio is low ({unique_ratio:.2f}).",
+                    severity="advisory",
+                )
+            )
+        opening_ratio = opening_refs / total_refs
+        if opening_ratio > 0.35:
+            advisories.append(
+                AuditIssue(
+                    code="opening_paragraph_overuse",
+                    detail=f"Opening paragraph reference ratio is high ({opening_ratio:.2f}).",
                     severity="advisory",
                 )
             )
@@ -586,13 +665,14 @@ def parse_output_paths(value: str) -> list[Path]:
 def resolve_targets_from_manifest(
     manifest_path: Path,
     campaign_id: str,
+    target_field: str,
     only: str,
     only_mode: str,
 ) -> list[MasterTarget]:
     campaign = get_llm_campaign(campaign_id)
     if campaign is None:
         raise SystemExit(f"Unknown campaign id: {campaign_id}")
-    targets = load_targets(manifest_path)
+    targets = load_targets(manifest_path, target_field=target_field)
     if only:
         filters = [item.strip() for item in only.split(",") if item.strip()]
         targets = [
@@ -612,10 +692,21 @@ def resolve_targets_from_manifest(
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="Audit llm_outline_compare_v1 output quality.")
+    parser = argparse.ArgumentParser(description="Audit llm_outline_compare_v1/v2 output quality.")
     parser.add_argument("--output", default="", help="Single output path or comma-separated output paths.")
     parser.add_argument("--manifest", default=str(DEFAULT_MANIFEST_PATH))
     parser.add_argument("--campaign-id", default=DEFAULT_PRIMARY_LLM_CAMPAIGN_ID)
+    parser.add_argument(
+        "--artifact-id",
+        choices=("auto", "llm_outline_compare_v1", "llm_outline_compare_v2"),
+        default="auto",
+        help="Expected artifact id. `auto` infers from manifest target metadata/path.",
+    )
+    parser.add_argument(
+        "--target-field",
+        default="master_output",
+        help="Manifest entry field containing expected output path metadata.",
+    )
     parser.add_argument("--only", default="", help="Optional manifest target filter token(s).")
     parser.add_argument(
         "--only-mode",
@@ -659,9 +750,27 @@ def main(argv: Optional[list[str]] = None) -> int:
         targets = resolve_targets_from_manifest(
             manifest_path=manifest_path,
             campaign_id=args.campaign_id,
+            target_field=str(args.target_field),
             only=args.only,
             only_mode=args.only_mode,
         )
+        if str(args.artifact_id) != "auto":
+            forced_artifact = str(args.artifact_id)
+            targets = [
+                MasterTarget(
+                    ticker=target.ticker,
+                    year_from=target.year_from,
+                    year_to=target.year_to,
+                    section=target.section,
+                    lens=target.lens,
+                    source_id=target.source_id,
+                    expected_output_path=target.expected_output_path,
+                    manifest_present_flag=target.manifest_present_flag,
+                    expected_artifact_id=forced_artifact,
+                    source_master_v2_path=target.source_master_v2_path,
+                )
+                for target in targets
+            ]
         for target in targets:
             output_path = (REPO_ROOT / target.expected_output_path).resolve()
             if not output_path.exists():
@@ -674,6 +783,20 @@ def main(argv: Optional[list[str]] = None) -> int:
         if not output_path.exists():
             missing_paths.append(normalize_path_like(str(output_path)))
             continue
+        if str(args.artifact_id) != "auto":
+            forced_artifact = str(args.artifact_id)
+            target = MasterTarget(
+                ticker=target.ticker,
+                year_from=target.year_from,
+                year_to=target.year_to,
+                section=target.section,
+                lens=target.lens,
+                source_id=target.source_id,
+                expected_output_path=target.expected_output_path,
+                manifest_present_flag=target.manifest_present_flag,
+                expected_artifact_id=forced_artifact,
+                source_master_v2_path=target.source_master_v2_path,
+            )
         audits.append(
             evaluate_output(
                 path=output_path,

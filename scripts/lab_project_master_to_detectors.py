@@ -52,7 +52,9 @@ def load_projection_entries(
         entry = as_str_dict(entry_any)
         if entry is None:
             continue
-        master_output = as_str_dict(entry.get("master_output"))
+        master_output = as_str_dict(entry.get("projected_master_output_v1"))
+        if master_output is None:
+            master_output = as_str_dict(entry.get("master_output"))
         projection_outputs = as_list(entry.get("projection_outputs"))
         if master_output is None or projection_outputs is None:
             continue

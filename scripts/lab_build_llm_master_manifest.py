@@ -12,6 +12,7 @@ from lab_output_tracks import (
     DEFAULT_PRIMARY_LLM_CAMPAIGN_ID,
     LLM_DETECTORS,
     canonical_outline_compare_relative_path,
+    canonical_outline_compare_v2_relative_path,
     canonical_output_relative_path,
     get_llm_campaign,
 )
@@ -266,7 +267,7 @@ def main(argv: Optional[list[str]] = None) -> int:
                         f"{ticker} {year_from}-{year_to} {lens} ({args.section})"
                     )
 
-                master_rel = canonical_outline_compare_relative_path(
+                master_v2_rel = canonical_outline_compare_v2_relative_path(
                     ticker=ticker,
                     section=args.section,
                     year_from=year_from,
@@ -275,11 +276,22 @@ def main(argv: Optional[list[str]] = None) -> int:
                     source_id=args.source_id,
                     track_slug=campaign.track_slug,
                 )
-                master_repo_path = f"public/data/sec_narrative_drift_lab/{master_rel}"
-                master_present = (REPO_ROOT / master_repo_path).exists()
-                if master_present:
+                master_v2_repo_path = f"public/data/sec_narrative_drift_lab/{master_v2_rel}"
+                master_v2_present = (REPO_ROOT / master_v2_repo_path).exists()
+                if master_v2_present:
                     summary_present += 1
                 summary_targets += 1
+                runtime_v1_rel = canonical_outline_compare_relative_path(
+                    ticker=ticker,
+                    section=args.section,
+                    year_from=year_from,
+                    year_to=year_to,
+                    cleaning_lens=lens,
+                    source_id=args.source_id,
+                    track_slug=campaign.track_slug,
+                )
+                runtime_v1_repo_path = f"public/data/sec_narrative_drift_lab/{runtime_v1_rel}"
+                runtime_v1_present = (REPO_ROOT / runtime_v1_repo_path).exists()
 
                 projection_outputs: list[dict[str, Any]] = []
                 for detector_id in LLM_DETECTORS:
@@ -316,10 +328,42 @@ def main(argv: Optional[list[str]] = None) -> int:
                             "source_present": source_present,
                             "source_year_prev_path": source_year_prev,
                             "source_year_curr_path": source_year_curr,
+                            "integrity": {
+                                "pair_payload_sha256": input_entry.pair_payload_sha256
+                                if input_entry
+                                else None,
+                                "pair_payload_bytes": input_entry.pair_payload_bytes
+                                if input_entry
+                                else None,
+                                "prev_payload_sha256": input_entry.prev_payload_sha256
+                                if input_entry
+                                else None,
+                                "curr_payload_sha256": input_entry.curr_payload_sha256
+                                if input_entry
+                                else None,
+                                "prev_paragraph_count": input_entry.prev_paragraph_count
+                                if input_entry
+                                else None,
+                                "curr_paragraph_count": input_entry.curr_paragraph_count
+                                if input_entry
+                                else None,
+                                "prev_paragraphs_sha256": input_entry.prev_paragraphs_sha256
+                                if input_entry
+                                else None,
+                                "curr_paragraphs_sha256": input_entry.curr_paragraphs_sha256
+                                if input_entry
+                                else None,
+                            },
                         },
                         "master_output": {
-                            "expected_output_path": master_repo_path,
-                            "present": master_present,
+                            "artifact_id": "llm_outline_compare_v2",
+                            "expected_output_path": master_v2_repo_path,
+                            "present": master_v2_present,
+                        },
+                        "projected_master_output_v1": {
+                            "artifact_id": "llm_outline_compare_v1",
+                            "expected_output_path": runtime_v1_repo_path,
+                            "present": runtime_v1_present,
                         },
                         "projection_outputs": projection_outputs,
                     }
@@ -345,7 +389,8 @@ def main(argv: Optional[list[str]] = None) -> int:
             "section": args.section,
             "source_id": args.source_id,
             "lenses": lenses,
-            "master_artifact_id": "llm_outline_compare_v1",
+            "master_artifact_id": "llm_outline_compare_v2",
+            "runtime_projected_artifact_id": "llm_outline_compare_v1",
             "projection_detectors": list(LLM_DETECTORS),
         },
         "bundle_root": to_repo_relative(bundle_paths.bundle_root),
@@ -380,13 +425,16 @@ def main(argv: Optional[list[str]] = None) -> int:
         f"- master_present: `{summary_present}/{summary_targets}`",
         f"- missing_inputs: `{len(missing_inputs)}`",
         "",
-        "| Ticker | Pair | Lens | Input | Master | Delta | Excerpt |",
-        "| --- | --- | --- | --- | --- | --- | --- |",
+        "| Ticker | Pair | Lens | Input | Master v2 | Runtime v1 | Delta | Excerpt |",
+        "| --- | --- | --- | --- | --- | --- | --- | --- |",
     ]
     for entry in entries:
         pair_label = f"{entry['year_from']}-{entry['year_to']}"
         input_state = "present" if entry["input"]["source_present"] else "missing"
         master_state = "present" if entry["master_output"]["present"] else "missing"
+        runtime_state = (
+            "present" if entry["projected_master_output_v1"]["present"] else "missing"
+        )
         detector_states: dict[str, str] = {}
         for detector in entry["projection_outputs"]:
             detector_states[detector["detector_id"]] = (
@@ -401,6 +449,7 @@ def main(argv: Optional[list[str]] = None) -> int:
                     str(entry["lens"]),
                     input_state,
                     master_state,
+                    runtime_state,
                     detector_states.get("det_llm_delta_brief_v1", "-"),
                     detector_states.get("det_llm_excerpt_picker_v1", "-"),
                 ]

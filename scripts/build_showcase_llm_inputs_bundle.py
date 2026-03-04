@@ -1,6 +1,7 @@
 ﻿from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import sys
 import zipfile
@@ -337,7 +338,13 @@ def build_year_payload(
     source_id: str,
     paragraphs: list[str],
 ) -> dict[str, Any]:
+    paragraphs_sha256 = hashlib.sha256(
+        json.dumps(paragraphs, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+    ).hexdigest()
+    chars_total = sum(len(paragraph) for paragraph in paragraphs)
     return {
+        "schema_version": "2.0",
+        "input_mode": "full_section_v2",
         "case": {
             "ticker": ticker,
             "section": section,
@@ -349,6 +356,11 @@ def build_year_payload(
         },
         "texts": {
             "paragraphs": paragraphs,
+        },
+        "integrity": {
+            "paragraph_count": len(paragraphs),
+            "paragraphs_sha256": paragraphs_sha256,
+            "paragraph_chars_total": chars_total,
         },
     }
 
@@ -363,6 +375,8 @@ def build_pair_manifest_payload(
     prev_year_input_path: str,
     curr_year_input_path: str,
     lens_pair: blo.LensPair,
+    prev_paragraphs_sha256: str,
+    curr_paragraphs_sha256: str,
 ) -> dict[str, Any]:
     output_targets = {
         "det_llm_delta_brief_v1": blo.build_output_filename(
@@ -390,6 +404,26 @@ def build_pair_manifest_payload(
         "year_inputs": {
             "prev": prev_year_input_path,
             "curr": curr_year_input_path,
+        },
+        "input_identity": {
+            "pair_ticker": ticker,
+            "pair_year_from": year_from,
+            "pair_year_to": year_to,
+            "pair_section": section,
+            "pair_lens": lens,
+            "pair_source_id": source_id,
+            "year_input_prev": prev_year_input_path,
+            "year_input_curr": curr_year_input_path,
+            "year_input_prev_paragraphs_sha256": prev_paragraphs_sha256,
+            "year_input_curr_paragraphs_sha256": curr_paragraphs_sha256,
+        },
+        "integrity": {
+            "prev_paragraph_count": len(lens_pair.prev.paragraphs),
+            "curr_paragraph_count": len(lens_pair.curr.paragraphs),
+            "prev_paragraphs_sha256": prev_paragraphs_sha256,
+            "curr_paragraphs_sha256": curr_paragraphs_sha256,
+            "year_inputs_prev": prev_year_input_path,
+            "year_inputs_curr": curr_year_input_path,
         },
         "output_targets": output_targets,
     }
@@ -441,6 +475,10 @@ def build_focus_payload(
 def write_json(path: Path, payload: Any) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
+
+
+def file_sha256(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -579,8 +617,24 @@ def main(argv: Optional[list[str]] = None) -> int:
                     source_id="edgar",
                     paragraphs=lens_pair.curr.paragraphs,
                 )
-                write_json(out_dir / prev_year_rel, prev_year_payload)
-                write_json(out_dir / curr_year_rel, curr_year_payload)
+                prev_year_abs = out_dir / prev_year_rel
+                curr_year_abs = out_dir / curr_year_rel
+                write_json(prev_year_abs, prev_year_payload)
+                write_json(curr_year_abs, curr_year_payload)
+                prev_year_file_sha256 = file_sha256(prev_year_abs)
+                curr_year_file_sha256 = file_sha256(curr_year_abs)
+                prev_year_file_bytes = prev_year_abs.stat().st_size
+                curr_year_file_bytes = curr_year_abs.stat().st_size
+                prev_year_integrity = cast(
+                    dict[str, Any], prev_year_payload.get("integrity") or {}
+                )
+                curr_year_integrity = cast(
+                    dict[str, Any], curr_year_payload.get("integrity") or {}
+                )
+                prev_paragraphs_sha256 = str(prev_year_integrity.get("paragraphs_sha256") or "")
+                curr_paragraphs_sha256 = str(curr_year_integrity.get("paragraphs_sha256") or "")
+                prev_paragraph_chars_total = int(prev_year_integrity.get("paragraph_chars_total") or 0)
+                curr_paragraph_chars_total = int(curr_year_integrity.get("paragraph_chars_total") or 0)
 
                 year_v2_index.append(
                     {
@@ -595,6 +649,10 @@ def main(argv: Optional[list[str]] = None) -> int:
                         "source_id": "edgar",
                         "path": str(prev_year_rel).replace("\\", "/"),
                         "paragraph_count": len(lens_pair.prev.paragraphs),
+                        "paragraph_chars_total": prev_paragraph_chars_total,
+                        "paragraphs_sha256": prev_paragraphs_sha256,
+                        "payload_sha256": prev_year_file_sha256,
+                        "payload_bytes": prev_year_file_bytes,
                     }
                 )
                 year_v2_index.append(
@@ -610,6 +668,10 @@ def main(argv: Optional[list[str]] = None) -> int:
                         "source_id": "edgar",
                         "path": str(curr_year_rel).replace("\\", "/"),
                         "paragraph_count": len(lens_pair.curr.paragraphs),
+                        "paragraph_chars_total": curr_paragraph_chars_total,
+                        "paragraphs_sha256": curr_paragraphs_sha256,
+                        "payload_sha256": curr_year_file_sha256,
+                        "payload_bytes": curr_year_file_bytes,
                     }
                 )
 
@@ -627,8 +689,13 @@ def main(argv: Optional[list[str]] = None) -> int:
                     prev_year_input_path=str(prev_year_rel).replace("\\", "/"),
                     curr_year_input_path=str(curr_year_rel).replace("\\", "/"),
                     lens_pair=lens_pair,
+                    prev_paragraphs_sha256=prev_paragraphs_sha256,
+                    curr_paragraphs_sha256=curr_paragraphs_sha256,
                 )
-                write_json(out_dir / pair_rel, pair_payload)
+                pair_abs = out_dir / pair_rel
+                write_json(pair_abs, pair_payload)
+                pair_payload_sha256 = file_sha256(pair_abs)
+                pair_payload_bytes = pair_abs.stat().st_size
                 pair_v2_index.append(
                     {
                         "schema_version": "2.0",
@@ -642,6 +709,14 @@ def main(argv: Optional[list[str]] = None) -> int:
                         "path": str(pair_rel).replace("\\", "/"),
                         "year_input_prev": str(prev_year_rel).replace("\\", "/"),
                         "year_input_curr": str(curr_year_rel).replace("\\", "/"),
+                        "prev_paragraph_count": len(lens_pair.prev.paragraphs),
+                        "curr_paragraph_count": len(lens_pair.curr.paragraphs),
+                        "prev_paragraphs_sha256": prev_paragraphs_sha256,
+                        "curr_paragraphs_sha256": curr_paragraphs_sha256,
+                        "prev_payload_sha256": prev_year_file_sha256,
+                        "curr_payload_sha256": curr_year_file_sha256,
+                        "pair_payload_sha256": pair_payload_sha256,
+                        "pair_payload_bytes": pair_payload_bytes,
                         "output_targets": pair_payload.get("output_targets"),
                     }
                 )
@@ -736,6 +811,7 @@ def main(argv: Optional[list[str]] = None) -> int:
         "Notes:",
         "- v2 canonical inputs are full-section and direct FULL-index based.",
         "- pair manifests reference canonical per-year files and preserve provenance.input_file as a single path.",
+        "- year/pair payloads and v2 indexes include additive integrity metadata (sha256, bytes, paragraph counts).",
         "- Focuspack is legacy compatibility only and not default.",
         "- LLM outputs must be precomputed (no runtime API calls).",
     ]

@@ -59,6 +59,18 @@ class InputIndexEntry:
     year_input_prev: Optional[str] = None
     year_input_curr: Optional[str] = None
     paragraph_count: Optional[int] = None
+    paragraph_chars_total: Optional[int] = None
+    paragraphs_sha256: Optional[str] = None
+    payload_sha256: Optional[str] = None
+    payload_bytes: Optional[int] = None
+    pair_payload_sha256: Optional[str] = None
+    pair_payload_bytes: Optional[int] = None
+    prev_payload_sha256: Optional[str] = None
+    curr_payload_sha256: Optional[str] = None
+    prev_paragraph_count: Optional[int] = None
+    curr_paragraph_count: Optional[int] = None
+    prev_paragraphs_sha256: Optional[str] = None
+    curr_paragraphs_sha256: Optional[str] = None
 
 
 @dataclass(frozen=True)
@@ -251,6 +263,18 @@ def load_input_index(path: Path, bundle_root: Path) -> dict[tuple[str, int, int,
             year_input_prev=get_str(entry_dict.get("year_input_prev")),
             year_input_curr=get_str(entry_dict.get("year_input_curr")),
             paragraph_count=get_int(entry_dict.get("paragraph_count")),
+            paragraph_chars_total=get_int(entry_dict.get("paragraph_chars_total")),
+            paragraphs_sha256=get_str(entry_dict.get("paragraphs_sha256")),
+            payload_sha256=get_str(entry_dict.get("payload_sha256")),
+            payload_bytes=get_int(entry_dict.get("payload_bytes")),
+            pair_payload_sha256=get_str(entry_dict.get("pair_payload_sha256")),
+            pair_payload_bytes=get_int(entry_dict.get("pair_payload_bytes")),
+            prev_payload_sha256=get_str(entry_dict.get("prev_payload_sha256")),
+            curr_payload_sha256=get_str(entry_dict.get("curr_payload_sha256")),
+            prev_paragraph_count=get_int(entry_dict.get("prev_paragraph_count")),
+            curr_paragraph_count=get_int(entry_dict.get("curr_paragraph_count")),
+            prev_paragraphs_sha256=get_str(entry_dict.get("prev_paragraphs_sha256")),
+            curr_paragraphs_sha256=get_str(entry_dict.get("curr_paragraphs_sha256")),
         )
     return output
 

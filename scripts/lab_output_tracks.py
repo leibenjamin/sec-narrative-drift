@@ -17,6 +17,7 @@ LLM_DETECTORS = (
 )
 
 MASTER_LLM_ARTIFACT_ID = "llm_outline_compare_v1"
+MASTER_LLM_ARTIFACT_ID_V2 = "llm_outline_compare_v2"
 MASTER_LLM_RESEARCH_ARTIFACT_ID = "llm_outline_research_v1"
 MASTER_PROMPT_VERSION = "llm_master_compare_v3"
 
@@ -239,9 +240,10 @@ def canonical_outline_compare_filename(
     cleaning_lens: str,
     source_id: str,
     track_slug: str,
+    artifact_id: str = MASTER_LLM_ARTIFACT_ID,
 ) -> str:
     return (
-        f"lab_{MASTER_LLM_ARTIFACT_ID}_{section}_{year_from}_{year_to}_"
+        f"lab_{artifact_id}_{section}_{year_from}_{year_to}_"
         f"{cleaning_lens}_{source_id}__{track_slug}.json"
     )
 
@@ -254,6 +256,7 @@ def canonical_outline_compare_relative_path(
     cleaning_lens: str,
     source_id: str,
     track_slug: str,
+    artifact_id: str = MASTER_LLM_ARTIFACT_ID,
 ) -> str:
     filename = canonical_outline_compare_filename(
         section=section,
@@ -262,8 +265,49 @@ def canonical_outline_compare_relative_path(
         cleaning_lens=cleaning_lens,
         source_id=source_id,
         track_slug=track_slug,
+        artifact_id=artifact_id,
     )
-    return f"{ticker.upper()}/outputs/{MASTER_LLM_ARTIFACT_ID}/{track_slug}/{filename}"
+    return f"{ticker.upper()}/outputs/{artifact_id}/{track_slug}/{filename}"
+
+
+def canonical_outline_compare_v2_filename(
+    section: str,
+    year_from: int,
+    year_to: int,
+    cleaning_lens: str,
+    source_id: str,
+    track_slug: str,
+) -> str:
+    return canonical_outline_compare_filename(
+        section=section,
+        year_from=year_from,
+        year_to=year_to,
+        cleaning_lens=cleaning_lens,
+        source_id=source_id,
+        track_slug=track_slug,
+        artifact_id=MASTER_LLM_ARTIFACT_ID_V2,
+    )
+
+
+def canonical_outline_compare_v2_relative_path(
+    ticker: str,
+    section: str,
+    year_from: int,
+    year_to: int,
+    cleaning_lens: str,
+    source_id: str,
+    track_slug: str,
+) -> str:
+    return canonical_outline_compare_relative_path(
+        ticker=ticker,
+        section=section,
+        year_from=year_from,
+        year_to=year_to,
+        cleaning_lens=cleaning_lens,
+        source_id=source_id,
+        track_slug=track_slug,
+        artifact_id=MASTER_LLM_ARTIFACT_ID_V2,
+    )
 
 
 def canonical_outline_research_filename(

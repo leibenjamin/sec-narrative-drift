@@ -314,7 +314,8 @@ def _check_master_starters(master_starters_path: Path, master_manifest_path: Pat
         "master_starters",
         starters_text,
         [
-            "Execution focus: do not inspect unrelated scripts/docs unless a required gate fails.",
+            "Execution focus: use only the declared pair/year input files plus this embedded prompt contract.",
+            "Forbidden sources: do not inspect existing output artifacts",
             "JOB_META",
             "\"job_id\":",
             "\"model_provider\":",
@@ -323,10 +324,17 @@ def _check_master_starters(master_starters_path: Path, master_manifest_path: Pat
             "\"provenance_input_file\":",
             "\"expected_prev_paragraphs\":",
             "\"expected_curr_paragraphs\":",
-            "\"output_path\":",
+            "\"expected_pair_sha256\":",
+            "\"expected_prev_sha256\":",
+            "\"expected_curr_sha256\":",
+            "\"output_path_v2\":",
+            "\"projected_output_path_v1\":",
             "year_payload.texts.paragraphs",
-            "If observed counts do not exactly match JOB_META.expected_prev_paragraphs / JOB_META.expected_curr_paragraphs",
-            "preflight paragraph count mismatch",
+            "preflight input lock mismatch",
+            "lab_project_master_v2_to_v1.py",
+            "--artifact-id \"llm_outline_compare_v2\"",
+            "--artifact-id \"llm_outline_compare_v1\"",
+            "--target-field \"projected_master_output_v1\"",
             "--only-mode \"exact_path\"",
             "--expect-target-count 1",
             "--fail-if-target-count-mismatch",
@@ -350,17 +358,18 @@ def _check_master_starters(master_starters_path: Path, master_manifest_path: Pat
         if not isinstance(entry, dict):
             continue
         entry_data = cast(dict[str, Any], entry)
-        master_output = entry_data.get("master_output")
-        if not isinstance(master_output, dict):
-            continue
-        output_data = cast(dict[str, Any], master_output)
-        expected_output_path = output_data.get("expected_output_path")
-        if not isinstance(expected_output_path, str):
-            continue
-        normalized = "/" + expected_output_path.replace("\\", "/").lstrip("/")
-        if f"/{campaign_slug}/" not in normalized:
-            continue
-        expected_paths.append(expected_output_path.replace("\\", "/").lstrip("/"))
+        for field in ("master_output", "projected_master_output_v1"):
+            output_block = entry_data.get(field)
+            if not isinstance(output_block, dict):
+                continue
+            output_data = cast(dict[str, Any], output_block)
+            expected_output_path = output_data.get("expected_output_path")
+            if not isinstance(expected_output_path, str):
+                continue
+            normalized = "/" + expected_output_path.replace("\\", "/").lstrip("/")
+            if f"/{campaign_slug}/" not in normalized:
+                continue
+            expected_paths.append(expected_output_path.replace("\\", "/").lstrip("/"))
 
     if not expected_paths:
         raise SystemExit("master manifest yielded no campaign paths for starter verification")
@@ -368,18 +377,21 @@ def _check_master_starters(master_starters_path: Path, master_manifest_path: Pat
     only_tokens = re.findall(r'--only "([^"]+)"', starters_text)
     if not only_tokens:
         raise SystemExit("master starters missing --only tokens")
-    if len(only_tokens) != len(expected_paths):
+    normalized_tokens = [token.replace("\\", "/").lstrip("/") for token in only_tokens]
+    expected_set = set(expected_paths)
+    token_set = set(normalized_tokens)
+    unknown = sorted(token for token in token_set if token not in expected_set)
+    if unknown:
         raise SystemExit(
-            "master starters token count mismatch: "
-            + f"tokens={len(only_tokens)} manifest_targets={len(expected_paths)}"
+            "starter --only tokens include paths not present in manifest targets: "
+            + ", ".join(unknown[:5])
         )
-    for token in only_tokens:
-        normalized_token = token.replace("\\", "/").lstrip("/")
-        match_count = sum(1 for expected_path in expected_paths if expected_path == normalized_token)
-        if match_count != 1:
-            raise SystemExit(
-                f"starter --only token must map to exactly one expected path: token={token!r}, matches={match_count}"
-            )
+    missing_expected = sorted(path for path in expected_set if path not in token_set)
+    if missing_expected:
+        raise SystemExit(
+            "starter --only tokens missing expected manifest targets: "
+            + ", ".join(missing_expected[:5])
+        )
 
 
 def main(argv: Optional[list[str]] = None) -> int:

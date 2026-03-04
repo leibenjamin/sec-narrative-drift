@@ -59,7 +59,16 @@ def load_year_paragraph(path: Path, idx: int) -> str:
     return payload["texts"]["paragraphs"][idx]
 
 
-def make_single_entry_manifest(campaign_id: str, expected_output_path: str) -> dict[str, Any]:
+def make_single_entry_manifest(
+    campaign_id: str,
+    expected_output_path_v2: str,
+    expected_output_path_v1: str | None = None,
+) -> dict[str, Any]:
+    projected_v1 = (
+        expected_output_path_v1
+        if expected_output_path_v1 is not None
+        else expected_output_path_v2.replace("/llm_outline_compare_v2/", "/llm_outline_compare_v2/")
+    )
     return {
         "campaign": {
             "campaign_id": campaign_id,
@@ -77,9 +86,20 @@ def make_single_entry_manifest(campaign_id: str, expected_output_path: str) -> d
                     "source_path": "bundles/showcase_llm_inputs_full_section_v2_20260222/inputs/pair/NVDA_2022_2023_10k_item1a_raw_edgar.json",
                     "source_year_prev_path": "bundles/showcase_llm_inputs_full_section_v2_20260222/inputs/year/NVDA_2022_10k_item1a_raw_edgar__pair_2022_2023.json",
                     "source_year_curr_path": "bundles/showcase_llm_inputs_full_section_v2_20260222/inputs/year/NVDA_2023_10k_item1a_raw_edgar__pair_2022_2023.json",
+                    "integrity": {
+                        "pair_payload_sha256": "unit_pair_sha",
+                        "prev_payload_sha256": "unit_prev_sha",
+                        "curr_payload_sha256": "unit_curr_sha",
+                    },
                 },
                 "master_output": {
-                    "expected_output_path": expected_output_path,
+                    "artifact_id": "llm_outline_compare_v2",
+                    "expected_output_path": expected_output_path_v2,
+                    "present": False,
+                },
+                "projected_master_output_v1": {
+                    "artifact_id": "llm_outline_compare_v1",
+                    "expected_output_path": projected_v1,
                     "present": False,
                 },
             }
@@ -261,7 +281,7 @@ class TestMasterValidatorHardening(unittest.TestCase):
         if campaign is None:
             self.fail("Default campaign not found for unit test.")
         expected_output_path = (
-            f"public/data/sec_narrative_drift_lab/NVDA/outputs/llm_outline_compare_v1/"
+            f"public/data/sec_narrative_drift_lab/NVDA/outputs/llm_outline_compare_v2/"
             f"{campaign.track_slug}/unit_test_output.json"
         )
         manifest = make_single_entry_manifest(DEFAULT_PRIMARY_LLM_CAMPAIGN_ID, expected_output_path)
@@ -300,7 +320,7 @@ class TestStarterEmitterHardening(unittest.TestCase):
         if campaign is None:
             self.fail("Default campaign not found for unit test.")
         expected_output_path = (
-            f"public/data/sec_narrative_drift_lab/NVDA/outputs/llm_outline_compare_v1/"
+            f"public/data/sec_narrative_drift_lab/NVDA/outputs/llm_outline_compare_v2/"
             f"{campaign.track_slug}/unit_test_output.json"
         )
         manifest = make_single_entry_manifest(DEFAULT_PRIMARY_LLM_CAMPAIGN_ID, expected_output_path)
@@ -335,12 +355,12 @@ class TestStarterEmitterHardening(unittest.TestCase):
             self.assertIn("python -c \"import json, pathlib;", text)
             self.assertIn(f'--only "{expected_output_path}"', text)
 
-    def test_emitter_default_format_is_v3(self) -> None:
+    def test_emitter_default_format_is_v4(self) -> None:
         campaign = get_llm_campaign(DEFAULT_PRIMARY_LLM_CAMPAIGN_ID)
         if campaign is None:
             self.fail("Default campaign not found for unit test.")
         expected_output_path = (
-            f"public/data/sec_narrative_drift_lab/NVDA/outputs/llm_outline_compare_v1/"
+            f"public/data/sec_narrative_drift_lab/NVDA/outputs/llm_outline_compare_v2/"
             f"{campaign.track_slug}/unit_test_output.json"
         )
         manifest = make_single_entry_manifest(DEFAULT_PRIMARY_LLM_CAMPAIGN_ID, expected_output_path)
@@ -359,32 +379,33 @@ class TestStarterEmitterHardening(unittest.TestCase):
             )
             self.assertEqual(rc, 0)
             text = out_path.read_text(encoding="utf-8")
-            self.assertIn("- output format: `vscode_autowrite_v3`", text)
+            self.assertIn("- output format: `vscode_autowrite_v4`", text)
             self.assertIn("JOB_META", text)
             self.assertIn("OUTPUT_SHAPE_MIN", text)
             self.assertIn(
-                "Execution focus: do not inspect unrelated scripts/docs unless a required gate fails.",
+                "Execution focus: use only the declared pair/year input files plus this embedded prompt contract.",
                 text,
             )
             self.assertIn("year_payload.texts.paragraphs", text)
             self.assertIn(
-                "If observed counts do not exactly match JOB_META.expected_prev_paragraphs / JOB_META.expected_curr_paragraphs",
+                "\"expected_pair_sha256\":",
                 text,
             )
+            self.assertIn("lab_project_master_v2_to_v1.py", text)
 
-    def test_emitter_v3_preflight_lock_markers(self) -> None:
+    def test_emitter_v4_preflight_lock_markers(self) -> None:
         campaign = get_llm_campaign(DEFAULT_PRIMARY_LLM_CAMPAIGN_ID)
         if campaign is None:
             self.fail("Default campaign not found for unit test.")
         expected_output_path = (
-            f"public/data/sec_narrative_drift_lab/NVDA/outputs/llm_outline_compare_v1/"
+            f"public/data/sec_narrative_drift_lab/NVDA/outputs/llm_outline_compare_v2/"
             f"{campaign.track_slug}/unit_test_output.json"
         )
         manifest = make_single_entry_manifest(DEFAULT_PRIMARY_LLM_CAMPAIGN_ID, expected_output_path)
         with tempfile.TemporaryDirectory() as tmpdir:
             root = Path(tmpdir)
             manifest_path = root / "manifest.json"
-            out_path = root / "starters_v3.md"
+            out_path = root / "starters_v4.md"
             write_json(manifest_path, manifest)
             rc = emit_starters.main(
                 [
@@ -393,7 +414,7 @@ class TestStarterEmitterHardening(unittest.TestCase):
                     "--out",
                     str(out_path),
                     "--format",
-                    "vscode_autowrite_v3",
+                    "vscode_autowrite_v4",
                 ]
             )
             self.assertEqual(rc, 0)
@@ -401,17 +422,19 @@ class TestStarterEmitterHardening(unittest.TestCase):
             self.assertIn("PREV_COUNT", text)
             self.assertIn("CURR_COUNT", text)
             self.assertIn("PRECHECK_MATCH prev=", text)
-            self.assertIn("preflight paragraph count mismatch", text)
+            self.assertIn("preflight input lock mismatch", text)
+            self.assertIn("Forbidden sources: do not inspect existing output artifacts", text)
             self.assertIn("--only-mode \"exact_path\"", text)
             self.assertIn("--expect-target-count 1", text)
             self.assertIn("--fail-if-target-count-mismatch", text)
+            self.assertIn("--target-field \"projected_master_output_v1\"", text)
 
     def test_emitter_v2_includes_job_meta_and_shape_min(self) -> None:
         campaign = get_llm_campaign(DEFAULT_PRIMARY_LLM_CAMPAIGN_ID)
         if campaign is None:
             self.fail("Default campaign not found for unit test.")
         expected_output_path = (
-            f"public/data/sec_narrative_drift_lab/NVDA/outputs/llm_outline_compare_v1/"
+            f"public/data/sec_narrative_drift_lab/NVDA/outputs/llm_outline_compare_v2/"
             f"{campaign.track_slug}/unit_test_output.json"
         )
         manifest = make_single_entry_manifest(DEFAULT_PRIMARY_LLM_CAMPAIGN_ID, expected_output_path)
@@ -441,19 +464,19 @@ class TestStarterEmitterHardening(unittest.TestCase):
                 text,
             )
 
-    def test_chatgpt_master_starter_v3_markers(self) -> None:
+    def test_chatgpt_master_starter_v4_markers(self) -> None:
         campaign = get_llm_campaign(DEFAULT_COMPARE_LLM_CAMPAIGN_ID)
         if campaign is None:
             self.fail("Compare campaign not found for unit test.")
         expected_output_path = (
-            f"public/data/sec_narrative_drift_lab/NVDA/outputs/llm_outline_compare_v1/"
+            f"public/data/sec_narrative_drift_lab/NVDA/outputs/llm_outline_compare_v2/"
             f"{campaign.track_slug}/unit_test_output.json"
         )
         manifest = make_single_entry_manifest(DEFAULT_COMPARE_LLM_CAMPAIGN_ID, expected_output_path)
         with tempfile.TemporaryDirectory() as tmpdir:
             root = Path(tmpdir)
             manifest_path = root / "manifest_chatgpt.json"
-            out_path = root / "starters_chatgpt_v3.md"
+            out_path = root / "starters_chatgpt_v4.md"
             write_json(manifest_path, manifest)
             rc = emit_starters.main(
                 [
@@ -462,14 +485,14 @@ class TestStarterEmitterHardening(unittest.TestCase):
                     "--out",
                     str(out_path),
                     "--format",
-                    "vscode_autowrite_v3",
+                    "vscode_autowrite_v4",
                 ]
             )
             self.assertEqual(rc, 0)
             text = out_path.read_text(encoding="utf-8")
-            self.assertIn("- output format: `vscode_autowrite_v3`", text)
+            self.assertIn("- output format: `vscode_autowrite_v4`", text)
             self.assertIn("BEGIN_STARTER", text)
-            self.assertIn("Execution focus: do not inspect unrelated scripts/docs unless a required gate fails.", text)
+            self.assertIn("Execution focus: use only the declared pair/year input files plus this embedded prompt contract.", text)
             self.assertIn("JOB_META", text)
             self.assertIn("year_payload.texts.paragraphs", text)
             self.assertIn("--only-mode \"exact_path\"", text)
@@ -718,6 +741,8 @@ class TestMasterQualityAuditHardening(unittest.TestCase):
                 source_id="edgar",
                 expected_output_path="public/data/sec_narrative_drift_lab/NVDA/outputs/llm_outline_compare_v1/unit_test/unit_output.json",
                 manifest_present_flag=None,
+                expected_artifact_id="llm_outline_compare_v1",
+                source_master_v2_path=None,
             )
             return quality_audit.evaluate_output(
                 output_path,
