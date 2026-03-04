@@ -1,4 +1,6 @@
 {
+  "schema_version": "2.0",
+  "input_mode": "full_section_v2",
   "case": {
     "ticker": "GE",
     "section": "10k_item1a",
@@ -114,5 +116,10 @@
       "Moreover, we sell products and services in growth markets where claims arising from alleged violations of law, product failures or other incidents involving our products and services are adjudicated within legal systems that are less developed and less reliable than those of the U.S. or other more developed markets, and this can create additional uncertainty about the outcome of proceedings before courts or other governmental bodies in such markets.",
       "LEGAL PROCEEDINGS. Refer to Legal Matters and Environmental, Health and Safety Matters in Note 23 for information relating to legal proceedings."
     ]
+  },
+  "integrity": {
+    "paragraph_count": 103,
+    "paragraphs_sha256": "5afd35ecf3cfb3ca09e376af629e66b9c5dc57592c9b9efb000f4dc74b2fc232",
+    "paragraph_chars_total": 32634
   }
 }

@@ -1,4 +1,6 @@
 {
+  "schema_version": "2.0",
+  "input_mode": "full_section_v2",
   "case": {
     "ticker": "GE",
     "section": "10k_item1a",
@@ -114,5 +116,10 @@
       "Suspension or debarment, depending on the entity involved and length of time, can limit our ability to bid on or perform U.S. government contracts or business with other government-related customers, and this could adversely affect our results of operations, financial position and cash flows.",
       "Additionally, like many other industrial companies, we and our subsidiaries are defendants in lawsuits claiming losses and injuries related to alleged exposure by workers and others to asbestos, polychlorinated biphenyls (PCBs) or other hazardous materials."
     ]
+  },
+  "integrity": {
+    "paragraph_count": 103,
+    "paragraphs_sha256": "84a865b984605151dcabff1bc218f84c86b5646786c2b0bbe8e314556788da42",
+    "paragraph_chars_total": 31974
   }
 }

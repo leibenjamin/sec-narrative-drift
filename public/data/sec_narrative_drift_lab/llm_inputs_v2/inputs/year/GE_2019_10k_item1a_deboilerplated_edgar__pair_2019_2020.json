@@ -1,4 +1,6 @@
 {
+  "schema_version": "2.0",
+  "input_mode": "full_section_v2",
   "case": {
     "ticker": "GE",
     "section": "10k_item1a",
@@ -109,5 +111,10 @@
       "See Note 23 to the consolidated financial statements for further information about legal proceedings and other loss contingencies .",
       "Refer to Legal Matters and Environmental, Health and Safety Matters in Note 23 to the consolidated financial statements for information relating to legal proceedings."
     ]
+  },
+  "integrity": {
+    "paragraph_count": 98,
+    "paragraphs_sha256": "fc960c0f0f9c29344103da9a03f8c03bf99deb8e6c504362bafe0ea15f4294f2",
+    "paragraph_chars_total": 28476
   }
 }

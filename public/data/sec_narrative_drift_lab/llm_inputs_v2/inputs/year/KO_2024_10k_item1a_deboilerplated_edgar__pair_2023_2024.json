@@ -1,4 +1,6 @@
 {
+  "schema_version": "2.0",
+  "input_mode": "full_section_v2",
   "case": {
     "ticker": "KO",
     "section": "10k_item1a",
@@ -97,5 +99,10 @@
       "In addition, we and our bottling partners have taken, and continue to take, actions to reduce the Coca-Cola system\u2019s carbon footprint, for example, by increasing our use of recycled packaging materials, expanding our renewable energy usage, and participating in environmental and sustainability programs and initiatives organized or sponsored by nongovernmental organizations and other groups to reduce greenhouse gas emissions industrywide.",
       "If we fail to achieve or improperly report on our progress toward achieving our emission reduction goals, or if we and our bottling partners discontinue our sustainability initiatives to reduce the Coca-Cola system\u2019s carbon footprint, the resulting negative publicity could adversely affect consumer preference for our beverage products."
     ]
+  },
+  "integrity": {
+    "paragraph_count": 86,
+    "paragraphs_sha256": "31051ba0eb4166c2ea91a74d2bbdcab6681443d3cbcda88f63b9dfa6ead8f94c",
+    "paragraph_chars_total": 30998
   }
 }

@@ -1,4 +1,6 @@
 {
+  "schema_version": "2.0",
+  "input_mode": "full_section_v2",
   "case": {
     "ticker": "NVDA",
     "section": "10k_item1a",
@@ -88,5 +90,10 @@
       "We are required to comply with the covenants set forth in our indenture and our ability to comply may be affected by events beyond our control. If we breach any of the covenants and do not obtain a waiver from the note holders or lenders, then any outstanding indebtedness may be declared immediately due and payable. Changes by any rating agency to our credit rating may negatively impact the value and liquidity of our securities, restrict our ability to obtain financing in the future and affect the terms of any such financing.",
       "Our status as a Delaware corporation and the anti-takeover provisions of the Delaware General Corporation Law may discourage, delay, or prevent a change in control. Our certificate of incorporation and bylaws contain provisions that could make it more difficult for a third party to acquire a majority of our outstanding voting stock. These provisions include the ability of our Board of Directors to create and issue preferred stock, change the number of directors, and to make, amend or repeal our bylaws without prior shareholder approval; the inability of our shareholders to act by written consent or to call special meetings; advance notice requirements for director nominations and shareholder proposals; and a super-majority voting requirement to amend some provisions in our certificate of incorporation and bylaws. In 2000, we entered into an agreement with Microsoft to develop and sell graphics chips and license certain technology to Microsoft and its licensees for use in the Xbox. Under the agreement, if someone makes an offer to purchase at least 30% of the outstanding shares of our common stock, Microsoft may have first and last rights of refusal to purchase the stock. These provisions could delay or prevent a change in control of NVIDIA, discourage proxy contests, and make it more difficult for shareholders to elect directors of their choosing and to cause us to take other corporate actions they desire."
     ]
+  },
+  "integrity": {
+    "paragraph_count": 77,
+    "paragraphs_sha256": "7cd52a2392c164ba9f3a8989629072a15c0ab2296b250edafbf698ae4871d5a9",
+    "paragraph_chars_total": 62642
   }
 }

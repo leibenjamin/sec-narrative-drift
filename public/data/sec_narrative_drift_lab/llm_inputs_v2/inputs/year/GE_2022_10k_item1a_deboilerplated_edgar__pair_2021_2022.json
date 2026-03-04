@@ -1,4 +1,6 @@
 {
+  "schema_version": "2.0",
+  "input_mode": "full_section_v2",
   "case": {
     "ticker": "GE",
     "section": "10k_item1a",
@@ -160,5 +162,10 @@
       "Under the direction of our Chief Executive Officer and Chief Financial Officer, we evaluated our disclosure controls and procedures and internal control over financial reporting and concluded that our disclosure controls and procedures were effective as of December 31, 2022.",
       "There have been no changes in the Company\u2019s internal control over financial reporting during the quarter ended December 31, 2022, that have materially affected, or are reasonably likely to materially affect, its internal control over financial reporting."
     ]
+  },
+  "integrity": {
+    "paragraph_count": 149,
+    "paragraphs_sha256": "a7d7dec654908f9461a534645d0bd83ec132a469b549d0db55e21edaf2f16e0a",
+    "paragraph_chars_total": 45916
   }
 }

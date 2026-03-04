@@ -17,6 +17,26 @@
     "prev": "inputs/year/KO_2023_10k_item1a_raw_edgar__pair_2023_2024.json",
     "curr": "inputs/year/KO_2024_10k_item1a_raw_edgar__pair_2023_2024.json"
   },
+  "input_identity": {
+    "pair_ticker": "KO",
+    "pair_year_from": 2023,
+    "pair_year_to": 2024,
+    "pair_section": "10k_item1a",
+    "pair_lens": "raw",
+    "pair_source_id": "edgar",
+    "year_input_prev": "inputs/year/KO_2023_10k_item1a_raw_edgar__pair_2023_2024.json",
+    "year_input_curr": "inputs/year/KO_2024_10k_item1a_raw_edgar__pair_2023_2024.json",
+    "year_input_prev_paragraphs_sha256": "7deeb5dc0c45e5ae77c67ce842d1a019b12f6afe7292aca248447bd9d377f5a3",
+    "year_input_curr_paragraphs_sha256": "90ee2fee22021f391c1ca64c898c8ac58f137968a0003e9d28f290f7f98455cc"
+  },
+  "integrity": {
+    "prev_paragraph_count": 73,
+    "curr_paragraph_count": 74,
+    "prev_paragraphs_sha256": "7deeb5dc0c45e5ae77c67ce842d1a019b12f6afe7292aca248447bd9d377f5a3",
+    "curr_paragraphs_sha256": "90ee2fee22021f391c1ca64c898c8ac58f137968a0003e9d28f290f7f98455cc",
+    "year_inputs_prev": "inputs/year/KO_2023_10k_item1a_raw_edgar__pair_2023_2024.json",
+    "year_inputs_curr": "inputs/year/KO_2024_10k_item1a_raw_edgar__pair_2023_2024.json"
+  },
   "output_targets": {
     "det_llm_delta_brief_v1": "lab_10k_item1a_2023_2024_det_llm_delta_brief_v1_raw_edgar.json",
     "det_llm_excerpt_picker_v1": "lab_10k_item1a_2023_2024_det_llm_excerpt_picker_v1_raw_edgar.json"

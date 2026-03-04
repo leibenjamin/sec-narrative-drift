@@ -1,4 +1,6 @@
 {
+  "schema_version": "2.0",
+  "input_mode": "full_section_v2",
   "case": {
     "ticker": "WM",
     "section": "10k_item1a",
@@ -173,5 +175,10 @@
       "To the extent our obligations for claims are more than we estimated, our insurance coverage is inadequate to cover our obligations, or our",
       "insurers are unable to meet their obligations, the requirement that we pay such obligations could have a material adverse effect on our financial results."
     ]
+  },
+  "integrity": {
+    "paragraph_count": 162,
+    "paragraphs_sha256": "e5fc27f2fdbd6559e4dd3f9664bad2504d03646af387d4d977d818ce4ca633d6",
+    "paragraph_chars_total": 39077
   }
 }

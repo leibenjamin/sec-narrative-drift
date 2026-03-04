@@ -1,4 +1,6 @@
 {
+  "schema_version": "2.0",
+  "input_mode": "full_section_v2",
   "case": {
     "ticker": "NVDA",
     "section": "10k_item1a",
@@ -69,5 +71,10 @@
       "For example, multiple securities litigation claims have recently been filed against us and certain of our officers based on the dissemination of allegedly false and misleading statements related to channel inventory and the impact of cryptocurrency mining on GPU demand.",
       "In addition, a stockholder, purporting to act on behalf of the Company, filed a derivative lawsuit seeking to assert claims on behalf of the Company against the members of our board of directors and certain officers based on the dissemination of allegedly false and misleading statements related to channel inventory and the impact of cryptocurrency mining on GPU demand."
     ]
+  },
+  "integrity": {
+    "paragraph_count": 58,
+    "paragraphs_sha256": "549f240d700d74f89e010285338c86d0979791f4b4759162c2d05ff02abaf986",
+    "paragraph_chars_total": 13629
   }
 }

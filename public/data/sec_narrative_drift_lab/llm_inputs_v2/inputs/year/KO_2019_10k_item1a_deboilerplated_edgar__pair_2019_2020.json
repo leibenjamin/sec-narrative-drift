@@ -1,4 +1,6 @@
 {
+  "schema_version": "2.0",
+  "input_mode": "full_section_v2",
   "case": {
     "ticker": "KO",
     "section": "10k_item1a",
@@ -93,5 +95,10 @@
       "Such events could impair our ability to manage our business around the world, could disrupt our supply of raw materials and ingredients, and could impact production, transportation and delivery of concentrates, syrups and finished products.",
       "In addition, such events could cause disruption of regional or global economic activity, which could affect consumers' purchasing power in the affected areas and, therefore, reduce demand for our products."
     ]
+  },
+  "integrity": {
+    "paragraph_count": 82,
+    "paragraphs_sha256": "61911ab10ef944399d74bc81afdf29c9c29b9c6cd4d44da38961ac24e5a0b2fb",
+    "paragraph_chars_total": 21483
   }
 }

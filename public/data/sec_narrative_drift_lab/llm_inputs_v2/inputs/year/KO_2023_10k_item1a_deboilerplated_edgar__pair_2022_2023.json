@@ -1,4 +1,6 @@
 {
+  "schema_version": "2.0",
+  "input_mode": "full_section_v2",
   "case": {
     "ticker": "KO",
     "section": "10k_item1a",
@@ -103,5 +105,10 @@
       "Increased demand for food products; decreased agricultural productivity in certain regions of the world as a result of changing weather patterns; loss of biodiversity; increased agricultural regulations, including regulation of ingredient sourcing due diligence; and other factors have in the past, and may in the future, limit the availability and/or increase the cost of such agricultural commodities and could impact the food security of communities around the world.",
       "The physical effects and transition costs of climate change and legal, regulatory or market initiatives to address climate change could have a long-term adverse impact on our business and results of operations."
     ]
+  },
+  "integrity": {
+    "paragraph_count": 92,
+    "paragraphs_sha256": "7b605fd015d88ee492999b1e1f41c4076db0e46f9d1176bc5a94120b383bb543",
+    "paragraph_chars_total": 29498
   }
 }

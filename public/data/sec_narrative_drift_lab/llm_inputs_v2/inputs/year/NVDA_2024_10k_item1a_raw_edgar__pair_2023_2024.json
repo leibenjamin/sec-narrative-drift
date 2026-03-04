@@ -1,4 +1,6 @@
 {
+  "schema_version": "2.0",
+  "input_mode": "full_section_v2",
   "case": {
     "ticker": "NVDA",
     "section": "10k_item1a",
@@ -121,5 +123,10 @@
       "immediately due and payable. Changes to our credit rating may negatively impact the value and liquidity of our securities, restrict our ability to obtain future financing and affect the terms of any such financing.",
       "The anti-takeover provisions of the Delaware General Corporation Law may discourage, delay, or prevent a change in control. Provisions in our certificate of incorporation and bylaws could make it more difficult for a third party to acquire a majority of our outstanding stock. These provisions include the ability of our Board of Directors to create and issue preferred stock, change the number of directors, and to make, amend or repeal our bylaws without prior shareholder approval; the inability of our shareholders to act by written consent or call special meetings; advance notice requirements for director nominations and shareholder proposals; and a super-majority voting requirement to amend some provisions in our certificate of incorporation and bylaws. Under our agreement with Microsoft for the Xbox, if someone makes an offer to purchase at least 30% of our outstanding common stock, Microsoft may have first and last rights of refusal to purchase the stock. These provisions could delay or prevent a change in control of NVIDIA, discourage proxy contests, and make it more difficult for shareholders to elect directors of their choosing and to cause us to take other corporate actions they desire."
     ]
+  },
+  "integrity": {
+    "paragraph_count": 110,
+    "paragraphs_sha256": "d0c10dc874fcb73e053ad4362129c900cf9fdbe74e388831a9befce3d2e82c16",
+    "paragraph_chars_total": 95766
   }
 }

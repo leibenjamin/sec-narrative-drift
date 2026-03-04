@@ -1,4 +1,6 @@
 {
+  "schema_version": "2.0",
+  "input_mode": "full_section_v2",
   "case": {
     "ticker": "WM",
     "section": "10k_item1a",
@@ -223,5 +225,10 @@
       "Increases in the costs of obtaining adequate financial assurance, or the inadequacy of our insurance coverages, could negatively impact our liquidity and increase our liabilities.",
       "To the extent our obligations for claims are more than we estimated, our insurance coverage is inadequate to cover our obligations, or our insurers are unable to meet their obligations, the requirement that we pay such obligations could have a material adverse effect on our financial results."
     ]
+  },
+  "integrity": {
+    "paragraph_count": 212,
+    "paragraphs_sha256": "81054e7f45c2d2362bcdd39989b71da25ec6bdd16a5f0f7edd263795a716785b",
+    "paragraph_chars_total": 52618
   }
 }

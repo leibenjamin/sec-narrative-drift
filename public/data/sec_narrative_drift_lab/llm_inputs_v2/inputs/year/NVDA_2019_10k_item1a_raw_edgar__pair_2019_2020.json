@@ -1,4 +1,6 @@
 {
+  "schema_version": "2.0",
+  "input_mode": "full_section_v2",
   "case": {
     "ticker": "NVDA",
     "section": "10k_item1a",
@@ -51,5 +53,10 @@
       "Delaware law and provisions in our certificate of incorporation, our bylaws and our agreement with Microsoft Corporation could delay or prevent a change in control. Our status as a Delaware corporation and the anti-takeover provisions of the Delaware General Corporation Law may discourage, delay, or prevent a change in control by prohibiting us from engaging in a business combination with an interested shareholder for a period of three years after the person becomes an interested shareholder, even if a change of control would be beneficial to our existing shareholders. In addition, our certificate of incorporation and bylaws contain provisions that could make it more difficult for a third party to acquire a majority of our outstanding voting stock. These provisions include the following: the ability of our Board of Directors to create and issue preferred stock without prior shareholder approval; the prohibition of shareholder action by written consent; advance notice requirements for director nominations and shareholder proposals; the ability of our Board of Directors to increase or decrease the number of directors without shareholder approval; a super-majority voting requirement to amend some provisions in our certificate of incorporation and bylaws; the inability of our shareholders to call special meetings of shareholders; and the ability of our Board of Directors to make, amend or repeal our bylaws.",
       "On March 5, 2000, we entered into an agreement with Microsoft in which we agreed to develop and sell graphics chips and to license certain technology to Microsoft and its licensees for use in the Xbox. Under the agreement, if an individual or corporation makes an offer to purchase shares equal to or greater than 30% of the outstanding shares of our common stock, Microsoft may have first and last rights of refusal to purchase the stock. The Microsoft provision and the other factors listed above could also delay or prevent a change in control of NVIDIA. These provisions could also discourage proxy contests and make it more difficult for shareholders to elect directors of their choosing and to cause us to take other corporate actions they desire."
     ]
+  },
+  "integrity": {
+    "paragraph_count": 40,
+    "paragraphs_sha256": "a8c5b1432611e09f7ad254f83dbc100ec6f8b8e242d2be862616d9b09f28550b",
+    "paragraph_chars_total": 42571
   }
 }

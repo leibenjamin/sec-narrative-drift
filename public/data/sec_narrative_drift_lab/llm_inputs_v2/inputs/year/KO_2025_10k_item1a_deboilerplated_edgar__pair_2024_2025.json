@@ -1,4 +1,6 @@
 {
+  "schema_version": "2.0",
+  "input_mode": "full_section_v2",
   "case": {
     "ticker": "KO",
     "section": "10k_item1a",
@@ -79,5 +81,10 @@
       "Decreased agricultural productivity in certain regions of the world as a result of changing weather patterns may limit the availability or increase the cost of key agricultural commodities, such as sugarcane, corn, sugar beets, citrus and other fruits, coffee and tea, which are important ingredients for our products, and could impact the food security of communities around the world.",
       "Ongoing concern over climate change also may result in additional legal or regulatory requirements designed to reduce or mitigate the effects of carbon dioxide and other greenhouse gas emissions on the environment, and/or may result in increased disclosure obligations."
     ]
+  },
+  "integrity": {
+    "paragraph_count": 68,
+    "paragraphs_sha256": "eeeb657a92ce15f63eba704aa2ecafdb0825d6ebdd56cf4ed093d274297631f5",
+    "paragraph_chars_total": 23746
   }
 }

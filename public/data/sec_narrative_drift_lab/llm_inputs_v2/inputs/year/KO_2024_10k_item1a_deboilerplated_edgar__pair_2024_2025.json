@@ -1,4 +1,6 @@
 {
+  "schema_version": "2.0",
+  "input_mode": "full_section_v2",
   "case": {
     "ticker": "KO",
     "section": "10k_item1a",
@@ -72,5 +74,10 @@
       "sugarcane, corn, sugar beets, citrus and other fruits, coffee and tea, which are important ingredients for our products, and could impact the food security of communities around the world.",
       "Increasing concern over climate change also may result in additional legal or regulatory requirements designed to reduce or mitigate the effects of carbon dioxide and other greenhouse gas emissions on the environment, and/or may result in increased disclosure obligations."
     ]
+  },
+  "integrity": {
+    "paragraph_count": 61,
+    "paragraphs_sha256": "1308fbdf6f1205aa473619b8ae3d7ded45bc88d5d44e04999cf82bb5d88f14dc",
+    "paragraph_chars_total": 22090
   }
 }

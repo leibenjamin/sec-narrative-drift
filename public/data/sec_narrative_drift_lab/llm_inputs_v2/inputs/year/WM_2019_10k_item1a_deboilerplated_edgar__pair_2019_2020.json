@@ -1,4 +1,6 @@
 {
+  "schema_version": "2.0",
+  "input_mode": "full_section_v2",
   "case": {
     "ticker": "WM",
     "section": "10k_item1a",
@@ -94,5 +96,10 @@
       "We may experience adverse impacts on our reported results of operations as a result of adopting new accounting standards or interpretations.",
       "Our implementation of and compliance with changes in accounting rules, including new accounting rules and interpretations, could adversely affect our reported financial position or operating results or cause unanticipated fluctuations in our reported operating results in future periods."
     ]
+  },
+  "integrity": {
+    "paragraph_count": 83,
+    "paragraphs_sha256": "0d20c22825341fee296d8106e30d1418166219c2b233ea02da1a80977b354d38",
+    "paragraph_chars_total": 18745
   }
 }

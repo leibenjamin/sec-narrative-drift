@@ -1,4 +1,6 @@
 {
+  "schema_version": "2.0",
+  "input_mode": "full_section_v2",
   "case": {
     "ticker": "WM",
     "section": "10k_item1a",
@@ -120,5 +122,10 @@
       "In accordance with U.S. Generally Accepted Accounting Principles (\u201cGAAP\u201d), we capitalize certain expenditures and advances relating to disposal site and other facility development, expansion projects, acquisitions, software development costs and other projects.",
       "Depending on various factors, including potential legislative changes, future withdrawals could have a material adverse effect on results of operations or cash flows for a particular reporting period, and our on-going costs of participation in Multiemployer Pension Plans may increase."
     ]
+  },
+  "integrity": {
+    "paragraph_count": 109,
+    "paragraphs_sha256": "185f5231ef8e0df4662d75a287a5514ff47f75561ea3fb1703022d3139a36187",
+    "paragraph_chars_total": 26616
   }
 }

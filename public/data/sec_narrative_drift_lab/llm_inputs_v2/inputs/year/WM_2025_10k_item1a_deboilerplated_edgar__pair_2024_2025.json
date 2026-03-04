@@ -1,4 +1,6 @@
 {
+  "schema_version": "2.0",
+  "input_mode": "full_section_v2",
   "case": {
     "ticker": "WM",
     "section": "10k_item1a",
@@ -134,5 +136,10 @@
       "We had $1.1 billion of outstanding borrowings (net of related discount on issuance) under our commercial paper program and $227 million of letters of credit issued, both supported by this facility, leaving unused and available credit capacity of $2.2 billion as of December 31, 2025.",
       "Events that have in the past and may in the future lead to an impairment include, but are not limited to, shutting down or divesting an underperforming or non-strategic asset or operation, abandoning a development project, project cost overruns or the denial of an expansion permit."
     ]
+  },
+  "integrity": {
+    "paragraph_count": 123,
+    "paragraphs_sha256": "8d47531d1e0ed4efcf8a37db8eb51f905ee3cf8e33c2ce9cc238cdba15b673de",
+    "paragraph_chars_total": 31231
   }
 }

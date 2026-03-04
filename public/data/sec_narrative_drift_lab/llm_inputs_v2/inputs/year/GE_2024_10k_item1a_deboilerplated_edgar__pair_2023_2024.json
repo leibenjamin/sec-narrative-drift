@@ -1,4 +1,6 @@
 {
+  "schema_version": "2.0",
+  "input_mode": "full_section_v2",
   "case": {
     "ticker": "GE",
     "section": "10k_item1a",
@@ -186,5 +188,10 @@
       "For example, when we investigate potential noncompliance under U.S. and non-U.S. law involving our employees, partners or third parties we work with, in some circumstances we make self-disclosures about our findings to the relevant authorities who may pursue or decline to pursue enforcement proceedings against us in connection with those matters.",
       "LEGAL PROCEEDINGS. Refer to Legal Matters and Environmental, Health and Safety Matters in Note 24 to the consolidated financial statements for further information relating to our legal matters."
     ]
+  },
+  "integrity": {
+    "paragraph_count": 175,
+    "paragraphs_sha256": "2da731070a6132a8cab7ecbb9f6a0ab03b2a917e3ef89b7de8a882e33cfb928d",
+    "paragraph_chars_total": 50989
   }
 }

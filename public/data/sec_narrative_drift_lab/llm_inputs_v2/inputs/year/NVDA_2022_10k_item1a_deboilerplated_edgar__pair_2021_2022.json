@@ -1,4 +1,6 @@
 {
+  "schema_version": "2.0",
+  "input_mode": "full_section_v2",
   "case": {
     "ticker": "NVDA",
     "section": "10k_item1a",
@@ -268,5 +270,10 @@
       "Under the agreement, if someone makes an offer to purchase at least 30% of the outstanding shares of our common stock, Microsoft may have first and last rights of refusal to purchase the stock.",
       "These provisions could delay or prevent a change in control of NVIDIA, discourage proxy contests, and make it more difficult for shareholders to elect directors of their choosing and to cause us to take other corporate actions they desire."
     ]
+  },
+  "integrity": {
+    "paragraph_count": 257,
+    "paragraphs_sha256": "760b9f0f50e75fd9283810a6fe0b8db164017904fa51b9af8d8122d82af719d7",
+    "paragraph_chars_total": 58018
   }
 }

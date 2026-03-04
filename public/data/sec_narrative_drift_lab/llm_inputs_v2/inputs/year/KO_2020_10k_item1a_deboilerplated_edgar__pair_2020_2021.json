@@ -1,4 +1,6 @@
 {
+  "schema_version": "2.0",
+  "input_mode": "full_section_v2",
   "case": {
     "ticker": "KO",
     "section": "10k_item1a",
@@ -202,5 +204,10 @@
       "Climate change may also exacerbate water scarcity and cause a further deterioration of water quality in affected regions, which could limit water availability for the Coca-Cola system's",
       "In addition, from time to time we establish and publicly announce goals and commitments to reduce the Coca-Cola system's carbon footprint by increasing our use of recycled packaging materials and participating in environmental and sustainability programs and initiatives organized or sponsored by nongovernmental organizations and other groups to reduce greenhouse gas emissions industrywide."
     ]
+  },
+  "integrity": {
+    "paragraph_count": 191,
+    "paragraphs_sha256": "d2d152e659765c923c4094ee727b5b7b9cd18caa77889d8df7be38dff0b791cc",
+    "paragraph_chars_total": 53941
   }
 }

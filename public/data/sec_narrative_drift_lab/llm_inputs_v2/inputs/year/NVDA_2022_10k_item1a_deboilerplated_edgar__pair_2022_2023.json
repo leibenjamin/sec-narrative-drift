@@ -1,4 +1,6 @@
 {
+  "schema_version": "2.0",
+  "input_mode": "full_section_v2",
   "case": {
     "ticker": "NVDA",
     "section": "10k_item1a",
@@ -207,5 +209,10 @@
       "In 2000, we entered into an agreement with Microsoft to develop and sell graphics chips and license certain technology to Microsoft and its licensees for use in the Xbox.",
       "Under the agreement, if someone makes an offer to purchase at least 30% of the outstanding shares of our common stock, Microsoft may have first and last rights of refusal to purchase the stock."
     ]
+  },
+  "integrity": {
+    "paragraph_count": 196,
+    "paragraphs_sha256": "be30ffa9b6255a4986d777e5218da1647e4fecd092e1818a45a167537186a530",
+    "paragraph_chars_total": 44709
   }
 }

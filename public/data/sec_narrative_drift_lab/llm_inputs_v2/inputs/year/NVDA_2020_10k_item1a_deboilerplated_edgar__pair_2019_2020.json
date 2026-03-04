@@ -1,4 +1,6 @@
 {
+  "schema_version": "2.0",
+  "input_mode": "full_section_v2",
   "case": {
     "ticker": "NVDA",
     "section": "10k_item1a",
@@ -43,5 +45,10 @@
       "For example, the European Union adopted the General Data Protection Regulation, or GDPR, which requires companies to meet new requirements effective as of May 2018 regarding the handling of personal data, including its use, protection and the ability of persons whose data is stored to correct or delete such data about themselves.",
       "We may be required to incur significant expense to comply with changes in, or remedy violations of, these laws and regulations."
     ]
+  },
+  "integrity": {
+    "paragraph_count": 32,
+    "paragraphs_sha256": "a3a91187fd22cb7c2e9cb99378d4c73e9c70b68c8204ddae207c053efd464640",
+    "paragraph_chars_total": 6693
   }
 }

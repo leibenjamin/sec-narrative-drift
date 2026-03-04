@@ -1,4 +1,6 @@
 {
+  "schema_version": "2.0",
+  "input_mode": "full_section_v2",
   "case": {
     "ticker": "WM",
     "section": "10k_item1a",
@@ -134,5 +136,10 @@
       "We also carry a significant amount of goodwill on our Consolidated Balance Sheets, which is required to be assessed for impairment annually, and more frequently in the case of certain triggering events.",
       "See Notes 10 and 11 to the Consolidated Financial Statements for more information related to our participation in Multiemployer Pension Plans."
     ]
+  },
+  "integrity": {
+    "paragraph_count": 123,
+    "paragraphs_sha256": "51744dc0c038dabb780992d0a7203b973337083abbfd864bd81f3c55a52c0949",
+    "paragraph_chars_total": 27006
   }
 }

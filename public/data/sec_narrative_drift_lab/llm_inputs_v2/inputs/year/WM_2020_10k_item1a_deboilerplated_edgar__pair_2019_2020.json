@@ -1,4 +1,6 @@
 {
+  "schema_version": "2.0",
+  "input_mode": "full_section_v2",
   "case": {
     "ticker": "WM",
     "section": "10k_item1a",
@@ -118,5 +120,10 @@
       "Additionally, declining waste volumes and development of, and customer preference for, alternatives to traditional waste disposal could warrant asset impairments.",
       "Depending on various factors, including potential legislative changes, future withdrawals could have a material adverse effect on results of operations or cash flows for a particular reporting period, and our on-going costs of participation in Multiemployer Pension Plans may increase."
     ]
+  },
+  "integrity": {
+    "paragraph_count": 107,
+    "paragraphs_sha256": "9afa7af8fa915fa76519bdd20492efef76bb99a58856784fdd32148db11a4784",
+    "paragraph_chars_total": 23865
   }
 }

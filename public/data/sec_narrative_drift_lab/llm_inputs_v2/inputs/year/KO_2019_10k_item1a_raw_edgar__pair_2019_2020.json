@@ -1,4 +1,6 @@
 {
+  "schema_version": "2.0",
+  "input_mode": "full_section_v2",
   "case": {
     "ticker": "KO",
     "section": "10k_item1a",
@@ -78,5 +80,10 @@
       "In June 2015, we and Monster entered into a long-term strategic relationship in the global energy drink category. If we are unable to successfully manage our complex relationship with Monster, or if for any other reason we fail to realize all or a",
       "Because of our global presence and worldwide operations, our business could be affected by large-scale terrorist acts, cyber-strikes and radiological attacks, especially those directed against the United States or other major industrialized countries; the outbreak or escalation of armed hostilities; major natural disasters; or widespread outbreaks of infectious diseases such as the recent outbreak of the novel coronavirus COVID-19. Such events could impair our ability to manage our business around the world, could disrupt our supply of raw materials and ingredients, and could impact production, transportation and delivery of concentrates, syrups and finished products. In addition, such events could cause disruption of regional or global economic activity, which could affect consumers' purchasing power in the affected areas and, therefore, reduce demand for our products."
     ]
+  },
+  "integrity": {
+    "paragraph_count": 67,
+    "paragraphs_sha256": "b6daee79c29e58a8fdcdfcc5c3835652461a36ee5157083ba7ab4789e8374db1",
+    "paragraph_chars_total": 69845
   }
 }

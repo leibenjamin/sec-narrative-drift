@@ -1,4 +1,6 @@
 {
+  "schema_version": "2.0",
+  "input_mode": "full_section_v2",
   "case": {
     "ticker": "GE",
     "section": "10k_item1a",
@@ -119,5 +121,10 @@
       "There can be no assurance that the risk management and compliance programs we have adopted will mitigate legal and compliance risks, particularly in light of the global and diverse nature of our operations and the current enforcement environment.",
       "LEGAL PROCEEDINGS. Refer to Legal Matters and Environmental, Health and Safety Matters in Note 23 for information relating to legal proceedings."
     ]
+  },
+  "integrity": {
+    "paragraph_count": 108,
+    "paragraphs_sha256": "e57f888dacf57b7a5f3c84139a5b258d0091026f693fe82b02a183c5654d855d",
+    "paragraph_chars_total": 34795
   }
 }

@@ -1,4 +1,6 @@
 {
+  "schema_version": "2.0",
+  "input_mode": "full_section_v2",
   "case": {
     "ticker": "GE",
     "section": "10k_item1a",
@@ -117,5 +119,10 @@
       "These types of proceedings involving claims about past financial performance and reporting, as well as any future claims that may arise about past or current misconduct, even if unfounded, may have a significant impact on our reputation and how we are viewed by investors, customers and others.",
       "LEGAL PROCEEDINGS. Refer to Legal Matters and Environmental, Health and Safety Matters in Note 24 to the consolidated financial statements for further information relating to our legal matters."
     ]
+  },
+  "integrity": {
+    "paragraph_count": 106,
+    "paragraphs_sha256": "dab8c64ec147927525ab486889202b992bc4aff29d6a50dc2d8ffd7842d14a4f",
+    "paragraph_chars_total": 33609
   }
 }

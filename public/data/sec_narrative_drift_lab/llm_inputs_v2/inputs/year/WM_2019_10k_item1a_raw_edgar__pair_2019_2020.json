@@ -1,4 +1,6 @@
 {
+  "schema_version": "2.0",
+  "input_mode": "full_section_v2",
   "case": {
     "ticker": "WM",
     "section": "10k_item1a",
@@ -98,5 +100,10 @@
       "The timing of the final resolutions to these types of matters is often uncertain. Additionally, the possible outcomes or resolutions to these matters could include adverse judgments or settlements, either of which could require substantial payments, adversely affecting our liquidity.",
       "Our implementation of and compliance with changes in accounting rules, including new accounting rules and interpretations, could adversely affect our reported financial position or operating results or cause unanticipated fluctuations in our reported operating results in future periods."
     ]
+  },
+  "integrity": {
+    "paragraph_count": 87,
+    "paragraphs_sha256": "b4c4d56c4eba75c89b98eff2c8a68f3723dd47f45dbfca9c15fb16b3acfcde7d",
+    "paragraph_chars_total": 62265
   }
 }

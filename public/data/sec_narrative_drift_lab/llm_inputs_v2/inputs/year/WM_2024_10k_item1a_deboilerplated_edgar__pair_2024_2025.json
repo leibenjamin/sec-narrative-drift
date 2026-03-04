@@ -1,4 +1,6 @@
 {
+  "schema_version": "2.0",
+  "input_mode": "full_section_v2",
   "case": {
     "ticker": "WM",
     "section": "10k_item1a",
@@ -191,5 +193,10 @@
       "Depending on various factors, including potential legislative changes, future withdrawals could have a material adverse effect on results of operations or cash flows for a particular reporting period, and our ongoing costs of participation in Multiemployer Pension Plans may increase.",
       "See Notes 9 and 10 to the Consolidated Financial Statements for more information related to our participation in Multiemployer Pension Plans."
     ]
+  },
+  "integrity": {
+    "paragraph_count": 180,
+    "paragraphs_sha256": "fa87edd23d6de5e8ff0e6781b2ffb650ffc819f40f2026730e8502c398ab29c6",
+    "paragraph_chars_total": 45206
   }
 }

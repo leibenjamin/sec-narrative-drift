@@ -1,4 +1,6 @@
 {
+  "schema_version": "2.0",
+  "input_mode": "full_section_v2",
   "case": {
     "ticker": "WM",
     "section": "10k_item1a",
@@ -131,5 +133,10 @@
       "In the event we are unable to obtain sufficient surety bonding, letters of credit or third-party insurance coverage at reasonable cost, or one or more states cease to view captive insurance as adequate coverage, we would need to rely on other forms of financial assurance.",
       "Depending on various factors, including potential legislative changes, future withdrawals could have a material adverse effect on results of operations or cash flows for a particular reporting period, and our ongoing costs of participation in Multiemployer Pension Plans may increase."
     ]
+  },
+  "integrity": {
+    "paragraph_count": 120,
+    "paragraphs_sha256": "84a192c3f7f5e95136fa9f85d02e873844e7968828dd9f7bb10922371019811b",
+    "paragraph_chars_total": 30061
   }
 }

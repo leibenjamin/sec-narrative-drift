@@ -1,4 +1,6 @@
 {
+  "schema_version": "2.0",
+  "input_mode": "full_section_v2",
   "case": {
     "ticker": "GE",
     "section": "10k_item1a",
@@ -53,5 +55,10 @@
       "MANAGEMENT\u2019S ANNUAL REPORT ON INTERNAL CONTROL OVER FINANCIAL REPORTING. Management is responsible for establishing and maintaining adequate internal control over financial reporting for the Company. With our participation, an evaluation of the effectiveness of our internal control over financial reporting was conducted as of December 31, 2022, based on the framework and criteria established in Internal Control \u2013 Integrated Framework (2013) issued by the Committee of Sponsoring Organizations of the Treadway Commission.",
       "DISCLOSURE CONTROLS. Under the direction of our Chief Executive Officer and Chief Financial Officer, we evaluated our disclosure controls and procedures and internal control over financial reporting and concluded that our disclosure controls and procedures were effective as of December 31, 2022. There have been no changes in the Company\u2019s internal control over financial reporting during the quarter ended December 31, 2022, that have materially affected, or are reasonably likely to materially affect, its internal control over financial reporting."
     ]
+  },
+  "integrity": {
+    "paragraph_count": 42,
+    "paragraphs_sha256": "df7af89b85129798d0ddbbcf6888b45d7c652145f3bba310f2b3144670fedcfc",
+    "paragraph_chars_total": 73836
   }
 }

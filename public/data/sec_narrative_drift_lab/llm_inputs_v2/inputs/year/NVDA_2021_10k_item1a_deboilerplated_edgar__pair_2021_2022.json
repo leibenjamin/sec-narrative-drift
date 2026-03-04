@@ -1,4 +1,6 @@
 {
+  "schema_version": "2.0",
+  "input_mode": "full_section_v2",
   "case": {
     "ticker": "NVDA",
     "section": "10k_item1a",
@@ -239,5 +241,10 @@
       "Our indebtedness may limit our ability to use our cash flow or borrow additional funds for working capital, capital expenditures, acquisitions and general corporate and other purposes.",
       "Additionally, our obligation to make payments related to the Notes could impact our cash balance and limit our ability to use our cash for our capital return program and our other liquidity needs, including working capital, capital expenditures, acquisitions, investments and other general corporate purposes."
     ]
+  },
+  "integrity": {
+    "paragraph_count": 228,
+    "paragraphs_sha256": "6d495948ef47cba61d91ee021bb95bf33cc8e3269cd25e2662417b81ebc1741c",
+    "paragraph_chars_total": 51899
   }
 }

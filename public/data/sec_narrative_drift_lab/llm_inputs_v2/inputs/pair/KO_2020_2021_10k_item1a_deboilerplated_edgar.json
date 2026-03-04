@@ -17,6 +17,26 @@
     "prev": "inputs/year/KO_2020_10k_item1a_deboilerplated_edgar__pair_2020_2021.json",
     "curr": "inputs/year/KO_2021_10k_item1a_deboilerplated_edgar__pair_2020_2021.json"
   },
+  "input_identity": {
+    "pair_ticker": "KO",
+    "pair_year_from": 2020,
+    "pair_year_to": 2021,
+    "pair_section": "10k_item1a",
+    "pair_lens": "deboilerplated",
+    "pair_source_id": "edgar",
+    "year_input_prev": "inputs/year/KO_2020_10k_item1a_deboilerplated_edgar__pair_2020_2021.json",
+    "year_input_curr": "inputs/year/KO_2021_10k_item1a_deboilerplated_edgar__pair_2020_2021.json",
+    "year_input_prev_paragraphs_sha256": "d2d152e659765c923c4094ee727b5b7b9cd18caa77889d8df7be38dff0b791cc",
+    "year_input_curr_paragraphs_sha256": "b6cd7dfd1218585461db24eb71e7be6e2c9167c9a4f3ad2affeff3c0a0ae3724"
+  },
+  "integrity": {
+    "prev_paragraph_count": 191,
+    "curr_paragraph_count": 191,
+    "prev_paragraphs_sha256": "d2d152e659765c923c4094ee727b5b7b9cd18caa77889d8df7be38dff0b791cc",
+    "curr_paragraphs_sha256": "b6cd7dfd1218585461db24eb71e7be6e2c9167c9a4f3ad2affeff3c0a0ae3724",
+    "year_inputs_prev": "inputs/year/KO_2020_10k_item1a_deboilerplated_edgar__pair_2020_2021.json",
+    "year_inputs_curr": "inputs/year/KO_2021_10k_item1a_deboilerplated_edgar__pair_2020_2021.json"
+  },
   "output_targets": {
     "det_llm_delta_brief_v1": "lab_10k_item1a_2020_2021_det_llm_delta_brief_v1_deboilerplated_edgar.json",
     "det_llm_excerpt_picker_v1": "lab_10k_item1a_2020_2021_det_llm_excerpt_picker_v1_deboilerplated_edgar.json"

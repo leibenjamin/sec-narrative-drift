@@ -17,6 +17,26 @@
     "prev": "inputs/year/GE_2024_10k_item1a_deboilerplated_edgar__pair_2024_2025.json",
     "curr": "inputs/year/GE_2025_10k_item1a_deboilerplated_edgar__pair_2024_2025.json"
   },
+  "input_identity": {
+    "pair_ticker": "GE",
+    "pair_year_from": 2024,
+    "pair_year_to": 2025,
+    "pair_section": "10k_item1a",
+    "pair_lens": "deboilerplated",
+    "pair_source_id": "edgar",
+    "year_input_prev": "inputs/year/GE_2024_10k_item1a_deboilerplated_edgar__pair_2024_2025.json",
+    "year_input_curr": "inputs/year/GE_2025_10k_item1a_deboilerplated_edgar__pair_2024_2025.json",
+    "year_input_prev_paragraphs_sha256": "dab8c64ec147927525ab486889202b992bc4aff29d6a50dc2d8ffd7842d14a4f",
+    "year_input_curr_paragraphs_sha256": "84a865b984605151dcabff1bc218f84c86b5646786c2b0bbe8e314556788da42"
+  },
+  "integrity": {
+    "prev_paragraph_count": 106,
+    "curr_paragraph_count": 103,
+    "prev_paragraphs_sha256": "dab8c64ec147927525ab486889202b992bc4aff29d6a50dc2d8ffd7842d14a4f",
+    "curr_paragraphs_sha256": "84a865b984605151dcabff1bc218f84c86b5646786c2b0bbe8e314556788da42",
+    "year_inputs_prev": "inputs/year/GE_2024_10k_item1a_deboilerplated_edgar__pair_2024_2025.json",
+    "year_inputs_curr": "inputs/year/GE_2025_10k_item1a_deboilerplated_edgar__pair_2024_2025.json"
+  },
   "output_targets": {
     "det_llm_delta_brief_v1": "lab_10k_item1a_2024_2025_det_llm_delta_brief_v1_deboilerplated_edgar.json",
     "det_llm_excerpt_picker_v1": "lab_10k_item1a_2024_2025_det_llm_excerpt_picker_v1_deboilerplated_edgar.json"

@@ -1,4 +1,6 @@
 {
+  "schema_version": "2.0",
+  "input_mode": "full_section_v2",
   "case": {
     "ticker": "WM",
     "section": "10k_item1a",
@@ -146,5 +148,10 @@
       "Events that have in the past and may in the future lead to an impairment include, but are not limited to, shutting down a facility or operation, abandoning a development project, project cost overruns or the denial of an expansion permit.",
       "We also carry a significant amount of goodwill on our Consolidated Balance Sheets, which is required to be assessed for impairment annually, and more frequently in the case of certain triggering events."
     ]
+  },
+  "integrity": {
+    "paragraph_count": 135,
+    "paragraphs_sha256": "bbc3b267ffeadc906b54d34d1acd03b411f74365b830f01fc905339533bb5d14",
+    "paragraph_chars_total": 34178
   }
 }

@@ -1,4 +1,6 @@
 {
+  "schema_version": "2.0",
+  "input_mode": "full_section_v2",
   "case": {
     "ticker": "NVDA",
     "section": "10k_item1a",
@@ -209,5 +211,10 @@
       "our business. For example, we are defending on appeal the dismissal of a securities class action lawsuit from multiple shareholders asserting claims that we and certain of our officers made false and/or misleading statements related to channel inventory and the impact of cryptocurrency mining on GPU demand in 2017 and 2018.",
       "If we breach any of the covenants without a waiver from the note holders or lenders, then any outstanding indebtedness may be declared immediately due and payable."
     ]
+  },
+  "integrity": {
+    "paragraph_count": 198,
+    "paragraphs_sha256": "b1fbc09cc585601a128ba2259957b0e03260c79a07eed45c85271261d4269db6",
+    "paragraph_chars_total": 48115
   }
 }

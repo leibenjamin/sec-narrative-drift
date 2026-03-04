@@ -1,4 +1,6 @@
 {
+  "schema_version": "2.0",
+  "input_mode": "full_section_v2",
   "case": {
     "ticker": "KO",
     "section": "10k_item1a",
@@ -102,5 +104,10 @@
       "Increased frequency or duration of extreme weather conditions could also impair production capabilities, disrupt our supply chain or impact demand for our products.",
       "The effects of climate change and legal or regulatory initiatives to address climate change could have a long-term adverse impact on our business and results of operations."
     ]
+  },
+  "integrity": {
+    "paragraph_count": 91,
+    "paragraphs_sha256": "d8cc0041b089c69eaf5ce592d55a6da17eee1b503219439ebea487ba541911bb",
+    "paragraph_chars_total": 27346
   }
 }

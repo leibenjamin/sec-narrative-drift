@@ -1,4 +1,6 @@
 {
+  "schema_version": "2.0",
+  "input_mode": "full_section_v2",
   "case": {
     "ticker": "NVDA",
     "section": "10k_item1a",
@@ -28,5 +30,10 @@
       "If we or one of our indemnitees is unable to obtain a license from a third party for technology that we use or that is used in one of our products, we could be subject to substantial liabilities or have to suspend or discontinue the manufacture and sale of one or more of our products.",
       "For example, the European Union adopted the General Data Protection Regulation, or GDPR, which requires companies to meet new requirements beginning in May 2018 regarding the handling of personal data, including its use, protection and the ability of persons whose data is stored to correct or delete such data about themselves."
     ]
+  },
+  "integrity": {
+    "paragraph_count": 17,
+    "paragraphs_sha256": "38e32586b17464f92fe5fb9e31f66fbd6bda75d7dcf1945adf2769bd64cf747d",
+    "paragraph_chars_total": 4038
   }
 }

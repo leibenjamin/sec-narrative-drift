@@ -10,7 +10,11 @@
     "lens": "raw",
     "source_id": "edgar",
     "path": "inputs/year/GE_2019_10k_item1a_raw_edgar__pair_2019_2020.json",
-    "paragraph_count": 26
+    "paragraph_count": 26,
+    "paragraph_chars_total": 50818,
+    "paragraphs_sha256": "9805f451c91a9eeb25c3eb30334cd6fd279a76c0474dbf842ffa3ba1cec94b05",
+    "payload_sha256": "c0483cba6322fa7353e813d4ebecd39105dfa418951e95044daccb48218db3d8",
+    "payload_bytes": 51625
   },
   {
     "schema_version": "2.0",
@@ -23,7 +27,11 @@
     "lens": "raw",
     "source_id": "edgar",
     "path": "inputs/year/GE_2020_10k_item1a_raw_edgar__pair_2019_2020.json",
-    "paragraph_count": 25
+    "paragraph_count": 25,
+    "paragraph_chars_total": 57021,
+    "paragraphs_sha256": "a1d5921c2526bd89f9ada52dd84d928c1ab9e5a212a4850564eb072727719e17",
+    "payload_sha256": "37c378a7b89044d0b1146566b7f690a5605400f8e58e2de6ab36c0272689614e",
+    "payload_bytes": 57857
   },
   {
     "schema_version": "2.0",
@@ -36,7 +44,11 @@
     "lens": "deboilerplated",
     "source_id": "edgar",
     "path": "inputs/year/GE_2019_10k_item1a_deboilerplated_edgar__pair_2019_2020.json",
-    "paragraph_count": 98
+    "paragraph_count": 98,
+    "paragraph_chars_total": 28476,
+    "paragraphs_sha256": "fc960c0f0f9c29344103da9a03f8c03bf99deb8e6c504362bafe0ea15f4294f2",
+    "payload_sha256": "41efb425062c83830061fc42a621ada69a40d666a25ac1f4fff559d806fb0ba7",
+    "payload_bytes": 30071
   },
   {
     "schema_version": "2.0",
@@ -49,7 +61,11 @@
     "lens": "deboilerplated",
     "source_id": "edgar",
     "path": "inputs/year/GE_2020_10k_item1a_deboilerplated_edgar__pair_2019_2020.json",
-    "paragraph_count": 108
+    "paragraph_count": 108,
+    "paragraph_chars_total": 34795,
+    "paragraphs_sha256": "e57f888dacf57b7a5f3c84139a5b258d0091026f693fe82b02a183c5654d855d",
+    "payload_sha256": "24ddeaca642f02829be93c4d4fe8af6df99e5e2c824d1da6fba04571ea795778",
+    "payload_bytes": 36541
   },
   {
     "schema_version": "2.0",
@@ -62,7 +78,11 @@
     "lens": "raw",
     "source_id": "edgar",
     "path": "inputs/year/GE_2020_10k_item1a_raw_edgar__pair_2020_2021.json",
-    "paragraph_count": 25
+    "paragraph_count": 25,
+    "paragraph_chars_total": 57021,
+    "paragraphs_sha256": "a1d5921c2526bd89f9ada52dd84d928c1ab9e5a212a4850564eb072727719e17",
+    "payload_sha256": "37c378a7b89044d0b1146566b7f690a5605400f8e58e2de6ab36c0272689614e",
+    "payload_bytes": 57857
   },
   {
     "schema_version": "2.0",
@@ -75,7 +95,11 @@
     "lens": "raw",
     "source_id": "edgar",
     "path": "inputs/year/GE_2021_10k_item1a_raw_edgar__pair_2020_2021.json",
-    "paragraph_count": 39
+    "paragraph_count": 39,
+    "paragraph_chars_total": 63871,
+    "paragraphs_sha256": "6857b79faab4f263ef1691d4281c4a74b9f339cfbd566b88fa7112c44702bcf4",
+    "payload_sha256": "5949548693b30f64ac9e5eceff4cc13375e8e44562b5871c9cee23c1431fb04a",
+    "payload_bytes": 64901
   },
   {
     "schema_version": "2.0",
@@ -88,7 +112,11 @@
     "lens": "deboilerplated",
     "source_id": "edgar",
     "path": "inputs/year/GE_2020_10k_item1a_deboilerplated_edgar__pair_2020_2021.json",
-    "paragraph_count": 103
+    "paragraph_count": 103,
+    "paragraph_chars_total": 32634,
+    "paragraphs_sha256": "5afd35ecf3cfb3ca09e376af629e66b9c5dc57592c9b9efb000f4dc74b2fc232",
+    "payload_sha256": "66dc5dbd3dd492ef3662edcad1e149ddcf80a3105bdca47eee8f761af08279e3",
+    "payload_bytes": 34288
   },
   {
     "schema_version": "2.0",
@@ -101,7 +129,11 @@
     "lens": "deboilerplated",
     "source_id": "edgar",
     "path": "inputs/year/GE_2021_10k_item1a_deboilerplated_edgar__pair_2020_2021.json",
-    "paragraph_count": 127
+    "paragraph_count": 127,
+    "paragraph_chars_total": 38656,
+    "paragraphs_sha256": "d4bcc0d37223f45a7f9b6150c962fc3298630f93613052c2e3175cb45ae87157",
+    "payload_sha256": "143702b5c64d3c2d55fc5d8147888a32f838a7f01b77e7e8d851ef45b4355773",
+    "payload_bytes": 40604
   },
   {
     "schema_version": "2.0",
@@ -114,7 +146,11 @@
     "lens": "raw",
     "source_id": "edgar",
     "path": "inputs/year/GE_2021_10k_item1a_raw_edgar__pair_2021_2022.json",
-    "paragraph_count": 39
+    "paragraph_count": 39,
+    "paragraph_chars_total": 63871,
+    "paragraphs_sha256": "6857b79faab4f263ef1691d4281c4a74b9f339cfbd566b88fa7112c44702bcf4",
+    "payload_sha256": "5949548693b30f64ac9e5eceff4cc13375e8e44562b5871c9cee23c1431fb04a",
+    "payload_bytes": 64901
   },
   {
     "schema_version": "2.0",
@@ -127,7 +163,11 @@
     "lens": "raw",
     "source_id": "edgar",
     "path": "inputs/year/GE_2022_10k_item1a_raw_edgar__pair_2021_2022.json",
-    "paragraph_count": 42
+    "paragraph_count": 42,
+    "paragraph_chars_total": 73836,
+    "paragraphs_sha256": "df7af89b85129798d0ddbbcf6888b45d7c652145f3bba310f2b3144670fedcfc",
+    "payload_sha256": "288ee660ef9b9c59ec9d919dbb6f6a7875230c2716722d5b5c52e00b3fa1d3f5",
+    "payload_bytes": 74924
   },
   {
     "schema_version": "2.0",
@@ -140,7 +180,11 @@
     "lens": "deboilerplated",
     "source_id": "edgar",
     "path": "inputs/year/GE_2021_10k_item1a_deboilerplated_edgar__pair_2021_2022.json",
-    "paragraph_count": 122
+    "paragraph_count": 122,
+    "paragraph_chars_total": 36147,
+    "paragraphs_sha256": "97b07fcf16231b9d9b5e2f6f42497bf27ee3594dd97939feec36e52aba148fc7",
+    "payload_sha256": "5251b8f21b8303f2f420f5f691ced706e40f8945f07d6fa740c3225c39bc7aab",
+    "payload_bytes": 38035
   },
   {
     "schema_version": "2.0",
@@ -153,7 +197,11 @@
     "lens": "deboilerplated",
     "source_id": "edgar",
     "path": "inputs/year/GE_2022_10k_item1a_deboilerplated_edgar__pair_2021_2022.json",
-    "paragraph_count": 149
+    "paragraph_count": 149,
+    "paragraph_chars_total": 45916,
+    "paragraphs_sha256": "a7d7dec654908f9461a534645d0bd83ec132a469b549d0db55e21edaf2f16e0a",
+    "payload_sha256": "198e15f154bfb605e3bb64ee62737a0e261d70e9219a0b09afa61393a1cea0b7",
+    "payload_bytes": 48121
   },
   {
     "schema_version": "2.0",
@@ -166,7 +214,11 @@
     "lens": "raw",
     "source_id": "edgar",
     "path": "inputs/year/GE_2022_10k_item1a_raw_edgar__pair_2022_2023.json",
-    "paragraph_count": 42
+    "paragraph_count": 42,
+    "paragraph_chars_total": 73836,
+    "paragraphs_sha256": "df7af89b85129798d0ddbbcf6888b45d7c652145f3bba310f2b3144670fedcfc",
+    "payload_sha256": "288ee660ef9b9c59ec9d919dbb6f6a7875230c2716722d5b5c52e00b3fa1d3f5",
+    "payload_bytes": 74924
   },
   {
     "schema_version": "2.0",
@@ -179,7 +231,11 @@
     "lens": "raw",
     "source_id": "edgar",
     "path": "inputs/year/GE_2023_10k_item1a_raw_edgar__pair_2022_2023.json",
-    "paragraph_count": 34
+    "paragraph_count": 34,
+    "paragraph_chars_total": 71964,
+    "paragraphs_sha256": "d38f87b47606e802a0c9f97e4a32169b12aac1d6cbaff9ffbab81455efd51ecf",
+    "payload_sha256": "1847b6e723478da03c9d04c2d3f0423acaf1266e9a35d1b059f83d99290d5ccf",
+    "payload_bytes": 72914
   },
   {
     "schema_version": "2.0",
@@ -192,7 +248,11 @@
     "lens": "deboilerplated",
     "source_id": "edgar",
     "path": "inputs/year/GE_2022_10k_item1a_deboilerplated_edgar__pair_2022_2023.json",
-    "paragraph_count": 145
+    "paragraph_count": 145,
+    "paragraph_chars_total": 44677,
+    "paragraphs_sha256": "edada455fe0c313eb172275b9decb8fe76d7af13dfaf8923a5afc1be6841a661",
+    "payload_sha256": "d1b9ea0433ef9161b9c424b0b6012f750b4a10733d695c2a10a1802620404574",
+    "payload_bytes": 46853
   },
   {
     "schema_version": "2.0",
@@ -205,7 +265,11 @@
     "lens": "deboilerplated",
     "source_id": "edgar",
     "path": "inputs/year/GE_2023_10k_item1a_deboilerplated_edgar__pair_2022_2023.json",
-    "paragraph_count": 141
+    "paragraph_count": 141,
+    "paragraph_chars_total": 43899,
+    "paragraphs_sha256": "638ac6da9981ff42db029aee88d89fd5f8134d436b91f7069ba5fd8e8c59677d",
+    "payload_sha256": "28414b1d8fa674fb61ae0f9ec0041e0c0eb65b6367df207c08fed44d26c066e4",
+    "payload_bytes": 45996
   },
   {
     "schema_version": "2.0",
@@ -218,7 +282,11 @@
     "lens": "raw",
     "source_id": "edgar",
     "path": "inputs/year/GE_2023_10k_item1a_raw_edgar__pair_2023_2024.json",
-    "paragraph_count": 34
+    "paragraph_count": 34,
+    "paragraph_chars_total": 71964,
+    "paragraphs_sha256": "d38f87b47606e802a0c9f97e4a32169b12aac1d6cbaff9ffbab81455efd51ecf",
+    "payload_sha256": "1847b6e723478da03c9d04c2d3f0423acaf1266e9a35d1b059f83d99290d5ccf",
+    "payload_bytes": 72914
   },
   {
     "schema_version": "2.0",
@@ -231,7 +299,11 @@
     "lens": "raw",
     "source_id": "edgar",
     "path": "inputs/year/GE_2024_10k_item1a_raw_edgar__pair_2023_2024.json",
-    "paragraph_count": 34
+    "paragraph_count": 34,
+    "paragraph_chars_total": 63106,
+    "paragraphs_sha256": "8f387463aeb5b69fc69b1ea2f810d3bd3fcd52b1c0521a8348a843fe8eccc243",
+    "payload_sha256": "de69ac2a4122187dad40413a0e7be60354332946a4bc02f026bccf4cadaaaf52",
+    "payload_bytes": 64015
   },
   {
     "schema_version": "2.0",
@@ -244,7 +316,11 @@
     "lens": "deboilerplated",
     "source_id": "edgar",
     "path": "inputs/year/GE_2023_10k_item1a_deboilerplated_edgar__pair_2023_2024.json",
-    "paragraph_count": 193
+    "paragraph_count": 193,
+    "paragraph_chars_total": 59780,
+    "paragraphs_sha256": "bf410deb3f513782b7d156a72be438d9380438bf7fdb24bf87b1b254f5ecaa3f",
+    "payload_sha256": "61f00ba65315b4ecbb55783609c2c853e6e9c98051cfca5a219b09109c6acdd4",
+    "payload_bytes": 62486
   },
   {
     "schema_version": "2.0",
@@ -257,7 +333,11 @@
     "lens": "deboilerplated",
     "source_id": "edgar",
     "path": "inputs/year/GE_2024_10k_item1a_deboilerplated_edgar__pair_2023_2024.json",
-    "paragraph_count": 175
+    "paragraph_count": 175,
+    "paragraph_chars_total": 50989,
+    "paragraphs_sha256": "2da731070a6132a8cab7ecbb9f6a0ab03b2a917e3ef89b7de8a882e33cfb928d",
+    "payload_sha256": "2a30a88051aa85fa902002342efbb5d2cbd19ecd8023d4e8c5e26ce6b387896b",
+    "payload_bytes": 53456
   },
   {
     "schema_version": "2.0",
@@ -270,7 +350,11 @@
     "lens": "raw",
     "source_id": "edgar",
     "path": "inputs/year/GE_2024_10k_item1a_raw_edgar__pair_2024_2025.json",
-    "paragraph_count": 34
+    "paragraph_count": 34,
+    "paragraph_chars_total": 63106,
+    "paragraphs_sha256": "8f387463aeb5b69fc69b1ea2f810d3bd3fcd52b1c0521a8348a843fe8eccc243",
+    "payload_sha256": "de69ac2a4122187dad40413a0e7be60354332946a4bc02f026bccf4cadaaaf52",
+    "payload_bytes": 64015
   },
   {
     "schema_version": "2.0",
@@ -283,7 +367,11 @@
     "lens": "raw",
     "source_id": "edgar",
     "path": "inputs/year/GE_2025_10k_item1a_raw_edgar__pair_2024_2025.json",
-    "paragraph_count": 32
+    "paragraph_count": 32,
+    "paragraph_chars_total": 61380,
+    "paragraphs_sha256": "c6e87357436ed78904be373e7a6bad971cfbb1eb38da5d8048bc98de8e76e5ae",
+    "payload_sha256": "6a6586abed619a247065ff66ac5c379d409d30289b2b15f6175ec94a06358373",
+    "payload_bytes": 62257
   },
   {
     "schema_version": "2.0",
@@ -296,7 +384,11 @@
     "lens": "deboilerplated",
     "source_id": "edgar",
     "path": "inputs/year/GE_2024_10k_item1a_deboilerplated_edgar__pair_2024_2025.json",
-    "paragraph_count": 106
+    "paragraph_count": 106,
+    "paragraph_chars_total": 33609,
+    "paragraphs_sha256": "dab8c64ec147927525ab486889202b992bc4aff29d6a50dc2d8ffd7842d14a4f",
+    "payload_sha256": "3cc9769fdcba563b8ff8e8b0120fbd5b0be00f96733fd7a3cf166a34fac1ff0f",
+    "payload_bytes": 35281
   },
   {
     "schema_version": "2.0",
@@ -309,7 +401,11 @@
     "lens": "deboilerplated",
     "source_id": "edgar",
     "path": "inputs/year/GE_2025_10k_item1a_deboilerplated_edgar__pair_2024_2025.json",
-    "paragraph_count": 103
+    "paragraph_count": 103,
+    "paragraph_chars_total": 31974,
+    "paragraphs_sha256": "84a865b984605151dcabff1bc218f84c86b5646786c2b0bbe8e314556788da42",
+    "payload_sha256": "23ee0772778504d2879cd88c9e84411410985d06279d290da4e46f17dc1315c2",
+    "payload_bytes": 33603
   },
   {
     "schema_version": "2.0",
@@ -322,7 +418,11 @@
     "lens": "raw",
     "source_id": "edgar",
     "path": "inputs/year/KO_2019_10k_item1a_raw_edgar__pair_2019_2020.json",
-    "paragraph_count": 67
+    "paragraph_count": 67,
+    "paragraph_chars_total": 69845,
+    "paragraphs_sha256": "b6daee79c29e58a8fdcdfcc5c3835652461a36ee5157083ba7ab4789e8374db1",
+    "payload_sha256": "a46e5d1d720086370a4ef6226bc69715ea2d2fc43fb4ba583ec1a5b24633eead",
+    "payload_bytes": 71096
   },
   {
     "schema_version": "2.0",
@@ -335,7 +435,11 @@
     "lens": "raw",
     "source_id": "edgar",
     "path": "inputs/year/KO_2020_10k_item1a_raw_edgar__pair_2019_2020.json",
-    "paragraph_count": 77
+    "paragraph_count": 77,
+    "paragraph_chars_total": 78821,
+    "paragraphs_sha256": "4e0c86977571c141d555283e5f2beed9d910c112e5a2aa1a48e962a8d180f52e",
+    "payload_sha256": "053b291376343aa9e135f0562107da8cbd6c2f4e9fb69b4a1759e752d8ea3e60",
+    "payload_bytes": 80244
   },
   {
     "schema_version": "2.0",
@@ -348,7 +452,11 @@
     "lens": "deboilerplated",
     "source_id": "edgar",
     "path": "inputs/year/KO_2019_10k_item1a_deboilerplated_edgar__pair_2019_2020.json",
-    "paragraph_count": 82
+    "paragraph_count": 82,
+    "paragraph_chars_total": 21483,
+    "paragraphs_sha256": "61911ab10ef944399d74bc81afdf29c9c29b9c6cd4d44da38961ac24e5a0b2fb",
+    "payload_sha256": "0988c0a9ce6d5663b8161ee867fc9dd39f4280f569dcc040a3cd1ae3bdf77ea0",
+    "payload_bytes": 22868
   },
   {
     "schema_version": "2.0",
@@ -361,7 +469,11 @@
     "lens": "deboilerplated",
     "source_id": "edgar",
     "path": "inputs/year/KO_2020_10k_item1a_deboilerplated_edgar__pair_2019_2020.json",
-    "paragraph_count": 114
+    "paragraph_count": 114,
+    "paragraph_chars_total": 30673,
+    "paragraphs_sha256": "0903f7c22bbfcf0b57d8e0ece03d9758fd2148678b230cad37f1781d0a4b92ce",
+    "payload_sha256": "acb71dede6577c024fb13d87bc311d09dbeda3cef4be4d6e8936cd09f3574f28",
+    "payload_bytes": 32465
   },
   {
     "schema_version": "2.0",
@@ -374,7 +486,11 @@
     "lens": "raw",
     "source_id": "edgar",
     "path": "inputs/year/KO_2020_10k_item1a_raw_edgar__pair_2020_2021.json",
-    "paragraph_count": 77
+    "paragraph_count": 77,
+    "paragraph_chars_total": 78821,
+    "paragraphs_sha256": "4e0c86977571c141d555283e5f2beed9d910c112e5a2aa1a48e962a8d180f52e",
+    "payload_sha256": "053b291376343aa9e135f0562107da8cbd6c2f4e9fb69b4a1759e752d8ea3e60",
+    "payload_bytes": 80244
   },
   {
     "schema_version": "2.0",
@@ -387,7 +503,11 @@
     "lens": "raw",
     "source_id": "edgar",
     "path": "inputs/year/KO_2021_10k_item1a_raw_edgar__pair_2020_2021.json",
-    "paragraph_count": 77
+    "paragraph_count": 77,
+    "paragraph_chars_total": 80511,
+    "paragraphs_sha256": "61f19c0458d2673bc9b32560c07bddc61b2f0aef27d89d954b44b2be49e7c378",
+    "payload_sha256": "340ee7fc1d0c0be13c63d023fa88c7ed00afccc5334a6b4e0e92ec8def338b90",
+    "payload_bytes": 82362
   },
   {
     "schema_version": "2.0",
@@ -400,7 +520,11 @@
     "lens": "deboilerplated",
     "source_id": "edgar",
     "path": "inputs/year/KO_2020_10k_item1a_deboilerplated_edgar__pair_2020_2021.json",
-    "paragraph_count": 191
+    "paragraph_count": 191,
+    "paragraph_chars_total": 53941,
+    "paragraphs_sha256": "d2d152e659765c923c4094ee727b5b7b9cd18caa77889d8df7be38dff0b791cc",
+    "payload_sha256": "3ed605625de43ab3f58d8eadf781711da59791bf4766abead735a68478f34ac7",
+    "payload_bytes": 56610
   },
   {
     "schema_version": "2.0",
@@ -413,7 +537,11 @@
     "lens": "deboilerplated",
     "source_id": "edgar",
     "path": "inputs/year/KO_2021_10k_item1a_deboilerplated_edgar__pair_2020_2021.json",
-    "paragraph_count": 191
+    "paragraph_count": 191,
+    "paragraph_chars_total": 54290,
+    "paragraphs_sha256": "b6cd7dfd1218585461db24eb71e7be6e2c9167c9a4f3ad2affeff3c0a0ae3724",
+    "payload_sha256": "edb8b3890134e45895f6d88e6a7fd659fce5a76a5ec8ec4e6164262059f9707f",
+    "payload_bytes": 57327
   },
   {
     "schema_version": "2.0",
@@ -426,7 +554,11 @@
     "lens": "raw",
     "source_id": "edgar",
     "path": "inputs/year/KO_2021_10k_item1a_raw_edgar__pair_2021_2022.json",
-    "paragraph_count": 77
+    "paragraph_count": 77,
+    "paragraph_chars_total": 80511,
+    "paragraphs_sha256": "61f19c0458d2673bc9b32560c07bddc61b2f0aef27d89d954b44b2be49e7c378",
+    "payload_sha256": "340ee7fc1d0c0be13c63d023fa88c7ed00afccc5334a6b4e0e92ec8def338b90",
+    "payload_bytes": 82362
   },
   {
     "schema_version": "2.0",
@@ -439,7 +571,11 @@
     "lens": "raw",
     "source_id": "edgar",
     "path": "inputs/year/KO_2022_10k_item1a_raw_edgar__pair_2021_2022.json",
-    "paragraph_count": 69
+    "paragraph_count": 69,
+    "paragraph_chars_total": 81644,
+    "paragraphs_sha256": "0fa92f1641d3a9c1fb680f85a4a2e5b6f6fa487bf9a3fbfeb57f2c5c65d26ccc",
+    "payload_sha256": "09492ca3b2458fe7be900cf731eba71624d3b3720180cc926b314b33b644c76f",
+    "payload_bytes": 83362
   },
   {
     "schema_version": "2.0",
@@ -452,7 +588,11 @@
     "lens": "deboilerplated",
     "source_id": "edgar",
     "path": "inputs/year/KO_2021_10k_item1a_deboilerplated_edgar__pair_2021_2022.json",
-    "paragraph_count": 136
+    "paragraph_count": 136,
+    "paragraph_chars_total": 40425,
+    "paragraphs_sha256": "fb2bd5c9a6ee34207f778182b182dc1f0a5df1921876ad6323762bdba40e7d14",
+    "payload_sha256": "c5ade5518cdf71fdbc1228251256c667af39dad9b6d0d48223e6d2ad7c699c7f",
+    "payload_bytes": 42567
   },
   {
     "schema_version": "2.0",
@@ -465,7 +605,11 @@
     "lens": "deboilerplated",
     "source_id": "edgar",
     "path": "inputs/year/KO_2022_10k_item1a_deboilerplated_edgar__pair_2021_2022.json",
-    "paragraph_count": 130
+    "paragraph_count": 130,
+    "paragraph_chars_total": 41255,
+    "paragraphs_sha256": "3fed490436b604f5bf4735ba3c25313091b23a5df2685e2422e1105254955d12",
+    "payload_sha256": "23956e92d5c9e17d7332edd473b17287d72684b7bf84986a7f85221a37cdab65",
+    "payload_bytes": 43291
   },
   {
     "schema_version": "2.0",
@@ -478,7 +622,11 @@
     "lens": "raw",
     "source_id": "edgar",
     "path": "inputs/year/KO_2022_10k_item1a_raw_edgar__pair_2022_2023.json",
-    "paragraph_count": 69
+    "paragraph_count": 69,
+    "paragraph_chars_total": 81644,
+    "paragraphs_sha256": "0fa92f1641d3a9c1fb680f85a4a2e5b6f6fa487bf9a3fbfeb57f2c5c65d26ccc",
+    "payload_sha256": "09492ca3b2458fe7be900cf731eba71624d3b3720180cc926b314b33b644c76f",
+    "payload_bytes": 83362
   },
   {
     "schema_version": "2.0",
@@ -491,7 +639,11 @@
     "lens": "raw",
     "source_id": "edgar",
     "path": "inputs/year/KO_2023_10k_item1a_raw_edgar__pair_2022_2023.json",
-    "paragraph_count": 73
+    "paragraph_count": 73,
+    "paragraph_chars_total": 84291,
+    "paragraphs_sha256": "7deeb5dc0c45e5ae77c67ce842d1a019b12f6afe7292aca248447bd9d377f5a3",
+    "payload_sha256": "752d21ce3b66a0a83d5346e3d0d52fd26b0a6302b27359e7a66301b3729a37ac",
+    "payload_bytes": 86068
   },
   {
     "schema_version": "2.0",
@@ -504,7 +656,11 @@
     "lens": "deboilerplated",
     "source_id": "edgar",
     "path": "inputs/year/KO_2022_10k_item1a_deboilerplated_edgar__pair_2022_2023.json",
-    "paragraph_count": 91
+    "paragraph_count": 91,
+    "paragraph_chars_total": 27346,
+    "paragraphs_sha256": "d8cc0041b089c69eaf5ce592d55a6da17eee1b503219439ebea487ba541911bb",
+    "payload_sha256": "d419dd975c4be4dad00f400b42c89cf9e960373e2193a128ba99059e33ca35a9",
+    "payload_bytes": 28892
   },
   {
     "schema_version": "2.0",
@@ -517,7 +673,11 @@
     "lens": "deboilerplated",
     "source_id": "edgar",
     "path": "inputs/year/KO_2023_10k_item1a_deboilerplated_edgar__pair_2022_2023.json",
-    "paragraph_count": 92
+    "paragraph_count": 92,
+    "paragraph_chars_total": 29498,
+    "paragraphs_sha256": "7b605fd015d88ee492999b1e1f41c4076db0e46f9d1176bc5a94120b383bb543",
+    "payload_sha256": "f980d0079286dd70d3cca92cb3ce90cf523e1bb72c56cf303f2f855875de6731",
+    "payload_bytes": 31065
   },
   {
     "schema_version": "2.0",
@@ -530,7 +690,11 @@
     "lens": "raw",
     "source_id": "edgar",
     "path": "inputs/year/KO_2023_10k_item1a_raw_edgar__pair_2023_2024.json",
-    "paragraph_count": 73
+    "paragraph_count": 73,
+    "paragraph_chars_total": 84291,
+    "paragraphs_sha256": "7deeb5dc0c45e5ae77c67ce842d1a019b12f6afe7292aca248447bd9d377f5a3",
+    "payload_sha256": "752d21ce3b66a0a83d5346e3d0d52fd26b0a6302b27359e7a66301b3729a37ac",
+    "payload_bytes": 86068
   },
   {
     "schema_version": "2.0",
@@ -543,7 +707,11 @@
     "lens": "raw",
     "source_id": "edgar",
     "path": "inputs/year/KO_2024_10k_item1a_raw_edgar__pair_2023_2024.json",
-    "paragraph_count": 74
+    "paragraph_count": 74,
+    "paragraph_chars_total": 85889,
+    "paragraphs_sha256": "90ee2fee22021f391c1ca64c898c8ac58f137968a0003e9d28f290f7f98455cc",
+    "payload_sha256": "575aa54b79b18daf85762e1cd209d2bfc9269e4f11c08abefc82b049a737f3e2",
+    "payload_bytes": 87647
   },
   {
     "schema_version": "2.0",
@@ -556,7 +724,11 @@
     "lens": "deboilerplated",
     "source_id": "edgar",
     "path": "inputs/year/KO_2023_10k_item1a_deboilerplated_edgar__pair_2023_2024.json",
-    "paragraph_count": 81
+    "paragraph_count": 81,
+    "paragraph_chars_total": 28899,
+    "paragraphs_sha256": "5b4ab968d26ba4ba5368292c7be392f6d356e04be7e2b4bbb128a045409e7eb3",
+    "payload_sha256": "3128cc05a52f9b68d8400163c4eaeb8b8b234721a2c22724ff3559009963501e",
+    "payload_bytes": 30405
   },
   {
     "schema_version": "2.0",
@@ -569,7 +741,11 @@
     "lens": "deboilerplated",
     "source_id": "edgar",
     "path": "inputs/year/KO_2024_10k_item1a_deboilerplated_edgar__pair_2023_2024.json",
-    "paragraph_count": 86
+    "paragraph_count": 86,
+    "paragraph_chars_total": 30998,
+    "paragraphs_sha256": "31051ba0eb4166c2ea91a74d2bbdcab6681443d3cbcda88f63b9dfa6ead8f94c",
+    "payload_sha256": "b2496872f29e81198dd82af0f21a8ce81fadc141896a2bddc13e788a14ce6d9f",
+    "payload_bytes": 32534
   },
   {
     "schema_version": "2.0",
@@ -582,7 +758,11 @@
     "lens": "raw",
     "source_id": "edgar",
     "path": "inputs/year/KO_2024_10k_item1a_raw_edgar__pair_2024_2025.json",
-    "paragraph_count": 74
+    "paragraph_count": 74,
+    "paragraph_chars_total": 85889,
+    "paragraphs_sha256": "90ee2fee22021f391c1ca64c898c8ac58f137968a0003e9d28f290f7f98455cc",
+    "payload_sha256": "575aa54b79b18daf85762e1cd209d2bfc9269e4f11c08abefc82b049a737f3e2",
+    "payload_bytes": 87647
   },
   {
     "schema_version": "2.0",
@@ -595,7 +775,11 @@
     "lens": "raw",
     "source_id": "edgar",
     "path": "inputs/year/KO_2025_10k_item1a_raw_edgar__pair_2024_2025.json",
-    "paragraph_count": 69
+    "paragraph_count": 69,
+    "paragraph_chars_total": 87081,
+    "paragraphs_sha256": "783be752c0c9af23109301703808fa9651140b067a2c71410e35cd7fec7269da",
+    "payload_sha256": "cb54b33b28b771033e6af560c6b6120a5b449f93624c4019831eaa4e78f3d6f2",
+    "payload_bytes": 88809
   },
   {
     "schema_version": "2.0",
@@ -608,7 +792,11 @@
     "lens": "deboilerplated",
     "source_id": "edgar",
     "path": "inputs/year/KO_2024_10k_item1a_deboilerplated_edgar__pair_2024_2025.json",
-    "paragraph_count": 61
+    "paragraph_count": 61,
+    "paragraph_chars_total": 22090,
+    "paragraphs_sha256": "1308fbdf6f1205aa473619b8ae3d7ded45bc88d5d44e04999cf82bb5d88f14dc",
+    "payload_sha256": "494648a2b4be4a96c6243eae0963b25e79a0c9c618aee5aee463fdb812845005",
+    "payload_bytes": 23361
   },
   {
     "schema_version": "2.0",
@@ -621,7 +809,11 @@
     "lens": "deboilerplated",
     "source_id": "edgar",
     "path": "inputs/year/KO_2025_10k_item1a_deboilerplated_edgar__pair_2024_2025.json",
-    "paragraph_count": 68
+    "paragraph_count": 68,
+    "paragraph_chars_total": 23746,
+    "paragraphs_sha256": "eeeb657a92ce15f63eba704aa2ecafdb0825d6ebdd56cf4ed093d274297631f5",
+    "payload_sha256": "51dec661a3f8f86494e8f4a4aa13c1bb53c45448aa58ecd945c11f44ff43c54b",
+    "payload_bytes": 25119
   },
   {
     "schema_version": "2.0",
@@ -634,7 +826,11 @@
     "lens": "raw",
     "source_id": "edgar",
     "path": "inputs/year/NVDA_2019_10k_item1a_raw_edgar__pair_2019_2020.json",
-    "paragraph_count": 40
+    "paragraph_count": 40,
+    "paragraph_chars_total": 42571,
+    "paragraphs_sha256": "a8c5b1432611e09f7ad254f83dbc100ec6f8b8e242d2be862616d9b09f28550b",
+    "payload_sha256": "f6edc1ffb2ee4d05cb33baac8ca95b988d2d4e5264eeb89a193ae7cc68cba182",
+    "payload_bytes": 43517
   },
   {
     "schema_version": "2.0",
@@ -647,7 +843,11 @@
     "lens": "raw",
     "source_id": "edgar",
     "path": "inputs/year/NVDA_2020_10k_item1a_raw_edgar__pair_2019_2020.json",
-    "paragraph_count": 45
+    "paragraph_count": 45,
+    "paragraph_chars_total": 46389,
+    "paragraphs_sha256": "0ca78188fa62de50362bce51ef8b42974b050ef83bca0c98338da0c3ab520d40",
+    "payload_sha256": "6b2e7cb93ff52ba0db6544a8201199d28a6ac8b7ff0f9a5a1a535c506c6edb13",
+    "payload_bytes": 47390
   },
   {
     "schema_version": "2.0",
@@ -660,7 +860,11 @@
     "lens": "deboilerplated",
     "source_id": "edgar",
     "path": "inputs/year/NVDA_2019_10k_item1a_deboilerplated_edgar__pair_2019_2020.json",
-    "paragraph_count": 17
+    "paragraph_count": 17,
+    "paragraph_chars_total": 4038,
+    "paragraphs_sha256": "38e32586b17464f92fe5fb9e31f66fbd6bda75d7dcf1945adf2769bd64cf747d",
+    "payload_sha256": "3e15aad78579424fdcc4da8dd07091970be0d02b28a8211dca647e01b67c4bcf",
+    "payload_bytes": 4686
   },
   {
     "schema_version": "2.0",
@@ -673,7 +877,11 @@
     "lens": "deboilerplated",
     "source_id": "edgar",
     "path": "inputs/year/NVDA_2020_10k_item1a_deboilerplated_edgar__pair_2019_2020.json",
-    "paragraph_count": 32
+    "paragraph_count": 32,
+    "paragraph_chars_total": 6693,
+    "paragraphs_sha256": "a3a91187fd22cb7c2e9cb99378d4c73e9c70b68c8204ddae207c053efd464640",
+    "payload_sha256": "eeafd41375334f9afad53ca993e0c23cb7618b43ea6aeac4c98454ba6b08b311",
+    "payload_bytes": 7506
   },
   {
     "schema_version": "2.0",
@@ -686,7 +894,11 @@
     "lens": "raw",
     "source_id": "edgar",
     "path": "inputs/year/NVDA_2020_10k_item1a_raw_edgar__pair_2020_2021.json",
-    "paragraph_count": 45
+    "paragraph_count": 45,
+    "paragraph_chars_total": 46389,
+    "paragraphs_sha256": "0ca78188fa62de50362bce51ef8b42974b050ef83bca0c98338da0c3ab520d40",
+    "payload_sha256": "6b2e7cb93ff52ba0db6544a8201199d28a6ac8b7ff0f9a5a1a535c506c6edb13",
+    "payload_bytes": 47390
   },
   {
     "schema_version": "2.0",
@@ -699,7 +911,11 @@
     "lens": "raw",
     "source_id": "edgar",
     "path": "inputs/year/NVDA_2021_10k_item1a_raw_edgar__pair_2020_2021.json",
-    "paragraph_count": 56
+    "paragraph_count": 56,
+    "paragraph_chars_total": 67990,
+    "paragraphs_sha256": "a91cb67e25ee1c21273d48131d9f2e9f1756b88ab8634d546b174989364f75b6",
+    "payload_sha256": "36af4a373e73a5e682eea2c26a7087d919c32cc059134f2129c91599643b89fa",
+    "payload_bytes": 69517
   },
   {
     "schema_version": "2.0",
@@ -712,7 +928,11 @@
     "lens": "deboilerplated",
     "source_id": "edgar",
     "path": "inputs/year/NVDA_2020_10k_item1a_deboilerplated_edgar__pair_2020_2021.json",
-    "paragraph_count": 58
+    "paragraph_count": 58,
+    "paragraph_chars_total": 13629,
+    "paragraphs_sha256": "549f240d700d74f89e010285338c86d0979791f4b4759162c2d05ff02abaf986",
+    "payload_sha256": "eb97c92448e405a40299a6f973a77458d88c314393254c0a7cb1300a4a0827c3",
+    "payload_bytes": 14754
   },
   {
     "schema_version": "2.0",
@@ -725,7 +945,11 @@
     "lens": "deboilerplated",
     "source_id": "edgar",
     "path": "inputs/year/NVDA_2021_10k_item1a_deboilerplated_edgar__pair_2020_2021.json",
-    "paragraph_count": 145
+    "paragraph_count": 145,
+    "paragraph_chars_total": 33935,
+    "paragraphs_sha256": "7f7b4a0733d993454cd50349d7dcf34128c3a22700b743deed32397a0fcde570",
+    "payload_sha256": "ef948b84ef91ee17cbb2c22efabacb6713debe27ec14fcbab328abd895b104ee",
+    "payload_bytes": 36173
   },
   {
     "schema_version": "2.0",
@@ -738,7 +962,11 @@
     "lens": "raw",
     "source_id": "edgar",
     "path": "inputs/year/NVDA_2021_10k_item1a_raw_edgar__pair_2021_2022.json",
-    "paragraph_count": 56
+    "paragraph_count": 56,
+    "paragraph_chars_total": 67990,
+    "paragraphs_sha256": "a91cb67e25ee1c21273d48131d9f2e9f1756b88ab8634d546b174989364f75b6",
+    "payload_sha256": "36af4a373e73a5e682eea2c26a7087d919c32cc059134f2129c91599643b89fa",
+    "payload_bytes": 69517
   },
   {
     "schema_version": "2.0",
@@ -751,7 +979,11 @@
     "lens": "raw",
     "source_id": "edgar",
     "path": "inputs/year/NVDA_2022_10k_item1a_raw_edgar__pair_2021_2022.json",
-    "paragraph_count": 77
+    "paragraph_count": 77,
+    "paragraph_chars_total": 62642,
+    "paragraphs_sha256": "7cd52a2392c164ba9f3a8989629072a15c0ab2296b250edafbf698ae4871d5a9",
+    "payload_sha256": "b93508502ac68c2c2191099f95881c2383d5fcd9c0bf36059ab025ff8cb680c8",
+    "payload_bytes": 64065
   },
   {
     "schema_version": "2.0",
@@ -764,7 +996,11 @@
     "lens": "deboilerplated",
     "source_id": "edgar",
     "path": "inputs/year/NVDA_2021_10k_item1a_deboilerplated_edgar__pair_2021_2022.json",
-    "paragraph_count": 228
+    "paragraph_count": 228,
+    "paragraph_chars_total": 51899,
+    "paragraphs_sha256": "6d495948ef47cba61d91ee021bb95bf33cc8e3269cd25e2662417b81ebc1741c",
+    "payload_sha256": "eb63c8b31302177f544d1692941849481c23c2bf8c99d94364669477e7e0d52f",
+    "payload_bytes": 55045
   },
   {
     "schema_version": "2.0",
@@ -777,7 +1013,11 @@
     "lens": "deboilerplated",
     "source_id": "edgar",
     "path": "inputs/year/NVDA_2022_10k_item1a_deboilerplated_edgar__pair_2021_2022.json",
-    "paragraph_count": 257
+    "paragraph_count": 257,
+    "paragraph_chars_total": 58018,
+    "paragraphs_sha256": "760b9f0f50e75fd9283810a6fe0b8db164017904fa51b9af8d8122d82af719d7",
+    "payload_sha256": "8af44e1ece95d667caee20bcc7be7dd71f4871c7ef288feff9388ae484fa3bb8",
+    "payload_bytes": 61528
   },
   {
     "schema_version": "2.0",
@@ -790,7 +1030,11 @@
     "lens": "raw",
     "source_id": "edgar",
     "path": "inputs/year/NVDA_2022_10k_item1a_raw_edgar__pair_2022_2023.json",
-    "paragraph_count": 77
+    "paragraph_count": 77,
+    "paragraph_chars_total": 62642,
+    "paragraphs_sha256": "7cd52a2392c164ba9f3a8989629072a15c0ab2296b250edafbf698ae4871d5a9",
+    "payload_sha256": "b93508502ac68c2c2191099f95881c2383d5fcd9c0bf36059ab025ff8cb680c8",
+    "payload_bytes": 64065
   },
   {
     "schema_version": "2.0",
@@ -803,7 +1047,11 @@
     "lens": "raw",
     "source_id": "edgar",
     "path": "inputs/year/NVDA_2023_10k_item1a_raw_edgar__pair_2022_2023.json",
-    "paragraph_count": 93
+    "paragraph_count": 93,
+    "paragraph_chars_total": 86665,
+    "paragraphs_sha256": "a8d4fc248d2dbb8706bde6e1e5e01858993f01e7469ebe631d9daec65aa422bf",
+    "payload_sha256": "26328db1392c1441e0d858245f552450dec341a9d551fb4d773edb3a2c83bb81",
+    "payload_bytes": 88709
   },
   {
     "schema_version": "2.0",
@@ -816,7 +1064,11 @@
     "lens": "deboilerplated",
     "source_id": "edgar",
     "path": "inputs/year/NVDA_2022_10k_item1a_deboilerplated_edgar__pair_2022_2023.json",
-    "paragraph_count": 196
+    "paragraph_count": 196,
+    "paragraph_chars_total": 44709,
+    "paragraphs_sha256": "be30ffa9b6255a4986d777e5218da1647e4fecd092e1818a45a167537186a530",
+    "payload_sha256": "1c78461b83518ecfa24e19c514e90bb3e1ca7fb602c42addf146925b6c3f1ac6",
+    "payload_bytes": 47463
   },
   {
     "schema_version": "2.0",
@@ -829,7 +1081,11 @@
     "lens": "deboilerplated",
     "source_id": "edgar",
     "path": "inputs/year/NVDA_2023_10k_item1a_deboilerplated_edgar__pair_2022_2023.json",
-    "paragraph_count": 239
+    "paragraph_count": 239,
+    "paragraph_chars_total": 56842,
+    "paragraphs_sha256": "471a87edec1fb3e6785923eadd8fe74806bfa82a9daec551d4a2e7bcc1fac540",
+    "payload_sha256": "81859b4b853694e779a98659454ae99559f986de5174934892adadeaa64b8fdf",
+    "payload_bytes": 60184
   },
   {
     "schema_version": "2.0",
@@ -842,7 +1098,11 @@
     "lens": "raw",
     "source_id": "edgar",
     "path": "inputs/year/NVDA_2023_10k_item1a_raw_edgar__pair_2023_2024.json",
-    "paragraph_count": 93
+    "paragraph_count": 93,
+    "paragraph_chars_total": 86665,
+    "paragraphs_sha256": "a8d4fc248d2dbb8706bde6e1e5e01858993f01e7469ebe631d9daec65aa422bf",
+    "payload_sha256": "26328db1392c1441e0d858245f552450dec341a9d551fb4d773edb3a2c83bb81",
+    "payload_bytes": 88709
   },
   {
     "schema_version": "2.0",
@@ -855,7 +1115,11 @@
     "lens": "raw",
     "source_id": "edgar",
     "path": "inputs/year/NVDA_2024_10k_item1a_raw_edgar__pair_2023_2024.json",
-    "paragraph_count": 110
+    "paragraph_count": 110,
+    "paragraph_chars_total": 95766,
+    "paragraphs_sha256": "d0c10dc874fcb73e053ad4362129c900cf9fdbe74e388831a9befce3d2e82c16",
+    "payload_sha256": "76dad4e74fb6a75741d91adc9b813f2310d31f12be13e0995fd314d45efb861d",
+    "payload_bytes": 97678
   },
   {
     "schema_version": "2.0",
@@ -868,7 +1132,11 @@
     "lens": "deboilerplated",
     "source_id": "edgar",
     "path": "inputs/year/NVDA_2023_10k_item1a_deboilerplated_edgar__pair_2023_2024.json",
-    "paragraph_count": 198
+    "paragraph_count": 198,
+    "paragraph_chars_total": 48115,
+    "paragraphs_sha256": "b1fbc09cc585601a128ba2259957b0e03260c79a07eed45c85271261d4269db6",
+    "payload_sha256": "9a8c0a12437fe559e53644773ad492ad568c60115fca80fc8541bad65b4ffaf3",
+    "payload_bytes": 50951
   },
   {
     "schema_version": "2.0",
@@ -881,7 +1149,11 @@
     "lens": "deboilerplated",
     "source_id": "edgar",
     "path": "inputs/year/NVDA_2024_10k_item1a_deboilerplated_edgar__pair_2023_2024.json",
-    "paragraph_count": 274
+    "paragraph_count": 274,
+    "paragraph_chars_total": 65176,
+    "paragraphs_sha256": "fb8478b43bc7f24e2ba5f1a523c42e09d7f8356b5d7342356d48741d9053a313",
+    "payload_sha256": "5c107e26ec511fab0069cb988ab24039bac29b69b99eea45dccc6e4dad62aa35",
+    "payload_bytes": 68893
   },
   {
     "schema_version": "2.0",
@@ -894,7 +1166,11 @@
     "lens": "raw",
     "source_id": "edgar",
     "path": "inputs/year/NVDA_2024_10k_item1a_raw_edgar__pair_2024_2025.json",
-    "paragraph_count": 110
+    "paragraph_count": 110,
+    "paragraph_chars_total": 95766,
+    "paragraphs_sha256": "d0c10dc874fcb73e053ad4362129c900cf9fdbe74e388831a9befce3d2e82c16",
+    "payload_sha256": "76dad4e74fb6a75741d91adc9b813f2310d31f12be13e0995fd314d45efb861d",
+    "payload_bytes": 97678
   },
   {
     "schema_version": "2.0",
@@ -907,7 +1183,11 @@
     "lens": "raw",
     "source_id": "edgar",
     "path": "inputs/year/NVDA_2025_10k_item1a_raw_edgar__pair_2024_2025.json",
-    "paragraph_count": 115
+    "paragraph_count": 115,
+    "paragraph_chars_total": 98626,
+    "paragraphs_sha256": "1c9fda10079cf5b51f0708e39d5798d59601bae0e909d26d3db3260070928890",
+    "payload_sha256": "867ba0b6de2ad73016c3a6c5bf2247f698fbad0bea832539660a8101c58fe5b9",
+    "payload_bytes": 100653
   },
   {
     "schema_version": "2.0",
@@ -920,7 +1200,11 @@
     "lens": "deboilerplated",
     "source_id": "edgar",
     "path": "inputs/year/NVDA_2024_10k_item1a_deboilerplated_edgar__pair_2024_2025.json",
-    "paragraph_count": 179
+    "paragraph_count": 179,
+    "paragraph_chars_total": 41672,
+    "paragraphs_sha256": "1851981a304e7a7c9c82d3a0b6ce384834e1280b3b74afd1b3f570adff0fcf29",
+    "payload_sha256": "ea417a7cfe529a8c70d9149fa2c5083a91443adb7b697a8ac7048da163c9f452",
+    "payload_bytes": 44234
   },
   {
     "schema_version": "2.0",
@@ -933,7 +1217,11 @@
     "lens": "deboilerplated",
     "source_id": "edgar",
     "path": "inputs/year/NVDA_2025_10k_item1a_deboilerplated_edgar__pair_2024_2025.json",
-    "paragraph_count": 190
+    "paragraph_count": 190,
+    "paragraph_chars_total": 46099,
+    "paragraphs_sha256": "cb713fc0aa19d47aadfc30872123b020a87364489ce168b39fae7347b9b00869",
+    "payload_sha256": "c72478b407c639256e6b7114166c61fab404a6b6b97a160c44bacbe9ae37b5b3",
+    "payload_bytes": 48827
   },
   {
     "schema_version": "2.0",
@@ -946,7 +1234,11 @@
     "lens": "raw",
     "source_id": "edgar",
     "path": "inputs/year/WM_2019_10k_item1a_raw_edgar__pair_2019_2020.json",
-    "paragraph_count": 87
+    "paragraph_count": 87,
+    "paragraph_chars_total": 62265,
+    "paragraphs_sha256": "b4c4d56c4eba75c89b98eff2c8a68f3723dd47f45dbfca9c15fb16b3acfcde7d",
+    "payload_sha256": "e706661fce3e615378218855f08563e9874e97456e1f466818e4e1021646f0f1",
+    "payload_bytes": 63981
   },
   {
     "schema_version": "2.0",
@@ -959,7 +1251,11 @@
     "lens": "raw",
     "source_id": "edgar",
     "path": "inputs/year/WM_2020_10k_item1a_raw_edgar__pair_2019_2020.json",
-    "paragraph_count": 92
+    "paragraph_count": 92,
+    "paragraph_chars_total": 68645,
+    "paragraphs_sha256": "46e529a631ce7392806884d98a71c9920ea4a25c930240c9539951ae1ac14793",
+    "payload_sha256": "2b95c5ebb56aceb3f2872abe8893ceca3007b98fe9d0aed58b491d8da49fc3ea",
+    "payload_bytes": 70461
   },
   {
     "schema_version": "2.0",
@@ -972,7 +1268,11 @@
     "lens": "deboilerplated",
     "source_id": "edgar",
     "path": "inputs/year/WM_2019_10k_item1a_deboilerplated_edgar__pair_2019_2020.json",
-    "paragraph_count": 83
+    "paragraph_count": 83,
+    "paragraph_chars_total": 18745,
+    "paragraphs_sha256": "0d20c22825341fee296d8106e30d1418166219c2b233ea02da1a80977b354d38",
+    "payload_sha256": "3bef25d449a5e10803379ac15c374d909b5a45aae404d89e5bdf450d6c096ddc",
+    "payload_bytes": 20163
   },
   {
     "schema_version": "2.0",
@@ -985,7 +1285,11 @@
     "lens": "deboilerplated",
     "source_id": "edgar",
     "path": "inputs/year/WM_2020_10k_item1a_deboilerplated_edgar__pair_2019_2020.json",
-    "paragraph_count": 107
+    "paragraph_count": 107,
+    "paragraph_chars_total": 23865,
+    "paragraphs_sha256": "9afa7af8fa915fa76519bdd20492efef76bb99a58856784fdd32148db11a4784",
+    "payload_sha256": "a862b52fdbee83763a31c4c61c4b22095e76d114954c34ff60e5827c99771991",
+    "payload_bytes": 25588
   },
   {
     "schema_version": "2.0",
@@ -998,7 +1302,11 @@
     "lens": "raw",
     "source_id": "edgar",
     "path": "inputs/year/WM_2020_10k_item1a_raw_edgar__pair_2020_2021.json",
-    "paragraph_count": 92
+    "paragraph_count": 92,
+    "paragraph_chars_total": 68645,
+    "paragraphs_sha256": "46e529a631ce7392806884d98a71c9920ea4a25c930240c9539951ae1ac14793",
+    "payload_sha256": "2b95c5ebb56aceb3f2872abe8893ceca3007b98fe9d0aed58b491d8da49fc3ea",
+    "payload_bytes": 70461
   },
   {
     "schema_version": "2.0",
@@ -1011,7 +1319,11 @@
     "lens": "raw",
     "source_id": "edgar",
     "path": "inputs/year/WM_2021_10k_item1a_raw_edgar__pair_2020_2021.json",
-    "paragraph_count": 89
+    "paragraph_count": 89,
+    "paragraph_chars_total": 64577,
+    "paragraphs_sha256": "c033a1a00d4d9fb19a12674e254c5b5f22a27e6424390e72130057fbb0f0e658",
+    "payload_sha256": "373766a46fd3229a19f0419c6b469b4c9a144cd821374d6af06c27846d2ca6ad",
+    "payload_bytes": 66315
   },
   {
     "schema_version": "2.0",
@@ -1024,7 +1336,11 @@
     "lens": "deboilerplated",
     "source_id": "edgar",
     "path": "inputs/year/WM_2020_10k_item1a_deboilerplated_edgar__pair_2020_2021.json",
-    "paragraph_count": 123
+    "paragraph_count": 123,
+    "paragraph_chars_total": 27006,
+    "paragraphs_sha256": "51744dc0c038dabb780992d0a7203b973337083abbfd864bd81f3c55a52c0949",
+    "payload_sha256": "3c9d318618f58108e8d5171e137c076bcb32449a38a5ba9f832a36b2a340a8b0",
+    "payload_bytes": 28920
   },
   {
     "schema_version": "2.0",
@@ -1037,7 +1353,11 @@
     "lens": "deboilerplated",
     "source_id": "edgar",
     "path": "inputs/year/WM_2021_10k_item1a_deboilerplated_edgar__pair_2020_2021.json",
-    "paragraph_count": 108
+    "paragraph_count": 108,
+    "paragraph_chars_total": 24136,
+    "paragraphs_sha256": "87c56afe4a368fcda836368906d1b8f344cf1b859811476b815a9c677d2acbe1",
+    "payload_sha256": "f72ac2f404cf443517ee2270f792c614201b2b38042b775f513633c81abcba9a",
+    "payload_bytes": 25845
   },
   {
     "schema_version": "2.0",
@@ -1050,7 +1370,11 @@
     "lens": "raw",
     "source_id": "edgar",
     "path": "inputs/year/WM_2021_10k_item1a_raw_edgar__pair_2021_2022.json",
-    "paragraph_count": 89
+    "paragraph_count": 89,
+    "paragraph_chars_total": 64577,
+    "paragraphs_sha256": "c033a1a00d4d9fb19a12674e254c5b5f22a27e6424390e72130057fbb0f0e658",
+    "payload_sha256": "373766a46fd3229a19f0419c6b469b4c9a144cd821374d6af06c27846d2ca6ad",
+    "payload_bytes": 66315
   },
   {
     "schema_version": "2.0",
@@ -1063,7 +1387,11 @@
     "lens": "raw",
     "source_id": "edgar",
     "path": "inputs/year/WM_2022_10k_item1a_raw_edgar__pair_2021_2022.json",
-    "paragraph_count": 92
+    "paragraph_count": 92,
+    "paragraph_chars_total": 71875,
+    "paragraphs_sha256": "9d1f2491d44f9fda60e12f25ac8f95ef0e693633efaa902c76110cf9f2c3a9b7",
+    "payload_sha256": "bbb54fdf6eaeb351ae7ac00cce1ef42362bd2792d9cc8c4e8bc84526e5e9ed29",
+    "payload_bytes": 73725
   },
   {
     "schema_version": "2.0",
@@ -1076,7 +1404,11 @@
     "lens": "deboilerplated",
     "source_id": "edgar",
     "path": "inputs/year/WM_2021_10k_item1a_deboilerplated_edgar__pair_2021_2022.json",
-    "paragraph_count": 119
+    "paragraph_count": 119,
+    "paragraph_chars_total": 26832,
+    "paragraphs_sha256": "a966cd914aaa05ef9ca7fa2584a8928bfd43e49e4b25409ef1265c66f41500ee",
+    "payload_sha256": "b49c31ef1ad106d51052c15c9ab77cb63e9f32996caf0830c2e66af1b1fd9f1b",
+    "payload_bytes": 28672
   },
   {
     "schema_version": "2.0",
@@ -1089,7 +1421,11 @@
     "lens": "deboilerplated",
     "source_id": "edgar",
     "path": "inputs/year/WM_2022_10k_item1a_deboilerplated_edgar__pair_2021_2022.json",
-    "paragraph_count": 135
+    "paragraph_count": 135,
+    "paragraph_chars_total": 34178,
+    "paragraphs_sha256": "bbc3b267ffeadc906b54d34d1acd03b411f74365b830f01fc905339533bb5d14",
+    "payload_sha256": "f1e855be83110c88bfc867c99e35adae16b1c35250e3c3a43a5317461f5c7ab3",
+    "payload_bytes": 36273
   },
   {
     "schema_version": "2.0",
@@ -1102,7 +1438,11 @@
     "lens": "raw",
     "source_id": "edgar",
     "path": "inputs/year/WM_2022_10k_item1a_raw_edgar__pair_2022_2023.json",
-    "paragraph_count": 92
+    "paragraph_count": 92,
+    "paragraph_chars_total": 71875,
+    "paragraphs_sha256": "9d1f2491d44f9fda60e12f25ac8f95ef0e693633efaa902c76110cf9f2c3a9b7",
+    "payload_sha256": "bbb54fdf6eaeb351ae7ac00cce1ef42362bd2792d9cc8c4e8bc84526e5e9ed29",
+    "payload_bytes": 73725
   },
   {
     "schema_version": "2.0",
@@ -1115,7 +1455,11 @@
     "lens": "raw",
     "source_id": "edgar",
     "path": "inputs/year/WM_2023_10k_item1a_raw_edgar__pair_2022_2023.json",
-    "paragraph_count": 95
+    "paragraph_count": 95,
+    "paragraph_chars_total": 75717,
+    "paragraphs_sha256": "8b397dbf6f6eecb82d6bb5db7b947976b3b4cfdee98ad1f7e40a0165fc44c973",
+    "payload_sha256": "77f0775fddd2c5690b31acfe2e9820326cb0d77c18b68bfc4cdaa7a77a73795a",
+    "payload_bytes": 77543
   },
   {
     "schema_version": "2.0",
@@ -1128,7 +1472,11 @@
     "lens": "deboilerplated",
     "source_id": "edgar",
     "path": "inputs/year/WM_2022_10k_item1a_deboilerplated_edgar__pair_2022_2023.json",
-    "paragraph_count": 109
+    "paragraph_count": 109,
+    "paragraph_chars_total": 26616,
+    "paragraphs_sha256": "185f5231ef8e0df4662d75a287a5514ff47f75561ea3fb1703022d3139a36187",
+    "payload_sha256": "2331c8827da780f2f1116db3362d217d364ac3de7828b371962656927b1da6fe",
+    "payload_bytes": 28540
   },
   {
     "schema_version": "2.0",
@@ -1141,7 +1489,11 @@
     "lens": "deboilerplated",
     "source_id": "edgar",
     "path": "inputs/year/WM_2023_10k_item1a_deboilerplated_edgar__pair_2022_2023.json",
-    "paragraph_count": 120
+    "paragraph_count": 120,
+    "paragraph_chars_total": 30061,
+    "paragraphs_sha256": "84a192c3f7f5e95136fa9f85d02e873844e7968828dd9f7bb10922371019811b",
+    "payload_sha256": "2cf389c0780cf635dfefe87fefb81a18b8c9d3ee1924bd4b2bd12ce46661ff99",
+    "payload_bytes": 32044
   },
   {
     "schema_version": "2.0",
@@ -1154,7 +1506,11 @@
     "lens": "raw",
     "source_id": "edgar",
     "path": "inputs/year/WM_2023_10k_item1a_raw_edgar__pair_2023_2024.json",
-    "paragraph_count": 95
+    "paragraph_count": 95,
+    "paragraph_chars_total": 75717,
+    "paragraphs_sha256": "8b397dbf6f6eecb82d6bb5db7b947976b3b4cfdee98ad1f7e40a0165fc44c973",
+    "payload_sha256": "77f0775fddd2c5690b31acfe2e9820326cb0d77c18b68bfc4cdaa7a77a73795a",
+    "payload_bytes": 77543
   },
   {
     "schema_version": "2.0",
@@ -1167,7 +1523,11 @@
     "lens": "raw",
     "source_id": "edgar",
     "path": "inputs/year/WM_2024_10k_item1a_raw_edgar__pair_2023_2024.json",
-    "paragraph_count": 116
+    "paragraph_count": 116,
+    "paragraph_chars_total": 90004,
+    "paragraphs_sha256": "c4888cab7979be07203d92772c956655c0aca29f7f0856a0000a1b9e35bae59e",
+    "payload_sha256": "089b667a3c8e13ca14a24ea971698241c78c7f484748ebceb9fac1fe1313ff10",
+    "payload_bytes": 92097
   },
   {
     "schema_version": "2.0",
@@ -1180,7 +1540,11 @@
     "lens": "deboilerplated",
     "source_id": "edgar",
     "path": "inputs/year/WM_2023_10k_item1a_deboilerplated_edgar__pair_2023_2024.json",
-    "paragraph_count": 162
+    "paragraph_count": 162,
+    "paragraph_chars_total": 39077,
+    "paragraphs_sha256": "e5fc27f2fdbd6559e4dd3f9664bad2504d03646af387d4d977d818ce4ca633d6",
+    "payload_sha256": "23fbb7c0f2cdd226a904486f0a8bdb2702e20bf68056e6bfb1f8bcaf93bb5499",
+    "payload_bytes": 41567
   },
   {
     "schema_version": "2.0",
@@ -1193,7 +1557,11 @@
     "lens": "deboilerplated",
     "source_id": "edgar",
     "path": "inputs/year/WM_2024_10k_item1a_deboilerplated_edgar__pair_2023_2024.json",
-    "paragraph_count": 212
+    "paragraph_count": 212,
+    "paragraph_chars_total": 52618,
+    "paragraphs_sha256": "81054e7f45c2d2362bcdd39989b71da25ec6bdd16a5f0f7edd263795a716785b",
+    "payload_sha256": "60f6e675f3e5db3617431bc036871cac91b4d84b988be46de0ba7dee9e407bae",
+    "payload_bytes": 55693
   },
   {
     "schema_version": "2.0",
@@ -1206,7 +1574,11 @@
     "lens": "raw",
     "source_id": "edgar",
     "path": "inputs/year/WM_2024_10k_item1a_raw_edgar__pair_2024_2025.json",
-    "paragraph_count": 116
+    "paragraph_count": 116,
+    "paragraph_chars_total": 90004,
+    "paragraphs_sha256": "c4888cab7979be07203d92772c956655c0aca29f7f0856a0000a1b9e35bae59e",
+    "payload_sha256": "089b667a3c8e13ca14a24ea971698241c78c7f484748ebceb9fac1fe1313ff10",
+    "payload_bytes": 92097
   },
   {
     "schema_version": "2.0",
@@ -1219,7 +1591,11 @@
     "lens": "raw",
     "source_id": "edgar",
     "path": "inputs/year/WM_2025_10k_item1a_raw_edgar__pair_2024_2025.json",
-    "paragraph_count": 91
+    "paragraph_count": 91,
+    "paragraph_chars_total": 75127,
+    "paragraphs_sha256": "99698f86ed290bba9e1af867db416aab4905776819bdc8b29e6600b24484a4d2",
+    "payload_sha256": "e6606fdf0f5012f73526526f54b6bfa993184b065ba98d4c5540b4e4db3a2ff1",
+    "payload_bytes": 76854
   },
   {
     "schema_version": "2.0",
@@ -1232,7 +1608,11 @@
     "lens": "deboilerplated",
     "source_id": "edgar",
     "path": "inputs/year/WM_2024_10k_item1a_deboilerplated_edgar__pair_2024_2025.json",
-    "paragraph_count": 180
+    "paragraph_count": 180,
+    "paragraph_chars_total": 45206,
+    "paragraphs_sha256": "fa87edd23d6de5e8ff0e6781b2ffb650ffc819f40f2026730e8502c398ab29c6",
+    "payload_sha256": "c1a1687a0251358461713ea048794357341a69e4ff76fb066b401b1469676d97",
+    "payload_bytes": 47884
   },
   {
     "schema_version": "2.0",
@@ -1245,6 +1625,10 @@
     "lens": "deboilerplated",
     "source_id": "edgar",
     "path": "inputs/year/WM_2025_10k_item1a_deboilerplated_edgar__pair_2024_2025.json",
-    "paragraph_count": 123
+    "paragraph_count": 123,
+    "paragraph_chars_total": 31231,
+    "paragraphs_sha256": "8d47531d1e0ed4efcf8a37db8eb51f905ee3cf8e33c2ce9cc238cdba15b673de",
+    "payload_sha256": "87ebe18652531e565cb3a58caf1e1c58f82f25c5ca9aa36dd474b110383680d3",
+    "payload_bytes": 33177
   }
 ]

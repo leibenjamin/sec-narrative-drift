@@ -17,6 +17,26 @@
     "prev": "inputs/year/NVDA_2020_10k_item1a_deboilerplated_edgar__pair_2020_2021.json",
     "curr": "inputs/year/NVDA_2021_10k_item1a_deboilerplated_edgar__pair_2020_2021.json"
   },
+  "input_identity": {
+    "pair_ticker": "NVDA",
+    "pair_year_from": 2020,
+    "pair_year_to": 2021,
+    "pair_section": "10k_item1a",
+    "pair_lens": "deboilerplated",
+    "pair_source_id": "edgar",
+    "year_input_prev": "inputs/year/NVDA_2020_10k_item1a_deboilerplated_edgar__pair_2020_2021.json",
+    "year_input_curr": "inputs/year/NVDA_2021_10k_item1a_deboilerplated_edgar__pair_2020_2021.json",
+    "year_input_prev_paragraphs_sha256": "549f240d700d74f89e010285338c86d0979791f4b4759162c2d05ff02abaf986",
+    "year_input_curr_paragraphs_sha256": "7f7b4a0733d993454cd50349d7dcf34128c3a22700b743deed32397a0fcde570"
+  },
+  "integrity": {
+    "prev_paragraph_count": 58,
+    "curr_paragraph_count": 145,
+    "prev_paragraphs_sha256": "549f240d700d74f89e010285338c86d0979791f4b4759162c2d05ff02abaf986",
+    "curr_paragraphs_sha256": "7f7b4a0733d993454cd50349d7dcf34128c3a22700b743deed32397a0fcde570",
+    "year_inputs_prev": "inputs/year/NVDA_2020_10k_item1a_deboilerplated_edgar__pair_2020_2021.json",
+    "year_inputs_curr": "inputs/year/NVDA_2021_10k_item1a_deboilerplated_edgar__pair_2020_2021.json"
+  },
   "output_targets": {
     "det_llm_delta_brief_v1": "lab_10k_item1a_2020_2021_det_llm_delta_brief_v1_deboilerplated_edgar.json",
     "det_llm_excerpt_picker_v1": "lab_10k_item1a_2020_2021_det_llm_excerpt_picker_v1_deboilerplated_edgar.json"

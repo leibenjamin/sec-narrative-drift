@@ -1,4 +1,6 @@
 {
+  "schema_version": "2.0",
+  "input_mode": "full_section_v2",
   "case": {
     "ticker": "NVDA",
     "section": "10k_item1a",
@@ -250,5 +252,10 @@
       "These provisions include the ability of our Board of Directors to create and issue preferred stock, change the number of directors, and to make, amend or repeal our bylaws without prior shareholder approval; the inability of our shareholders to act by written consent or call special meetings; advance notice requirements for director nominations and shareholder proposals; and a super-majority voting requirement to amend some provisions in our certificate of incorporation and bylaws.",
       "Under our agreement with Microsoft for the Xbox, if someone makes an offer to purchase at least 30% of our outstanding common stock, Microsoft may have first and last rights of refusal to purchase the stock."
     ]
+  },
+  "integrity": {
+    "paragraph_count": 239,
+    "paragraphs_sha256": "471a87edec1fb3e6785923eadd8fe74806bfa82a9daec551d4a2e7bcc1fac540",
+    "paragraph_chars_total": 56842
   }
 }

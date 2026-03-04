@@ -1,4 +1,6 @@
 {
+  "schema_version": "2.0",
+  "input_mode": "full_section_v2",
   "case": {
     "ticker": "NVDA",
     "section": "10k_item1a",
@@ -285,5 +287,10 @@
       "For example, we are defending a securities class action lawsuit from multiple shareholders asserting claims that we and certain of our officers made false and/or misleading statements related to channel inventory and the impact of cryptocurrency mining on GPU demand in 2017 and 2018.",
       "If we breach any of the covenants without a waiver from the note holders or lenders, then any outstanding indebtedness may be declared"
     ]
+  },
+  "integrity": {
+    "paragraph_count": 274,
+    "paragraphs_sha256": "fb8478b43bc7f24e2ba5f1a523c42e09d7f8356b5d7342356d48741d9053a313",
+    "paragraph_chars_total": 65176
   }
 }

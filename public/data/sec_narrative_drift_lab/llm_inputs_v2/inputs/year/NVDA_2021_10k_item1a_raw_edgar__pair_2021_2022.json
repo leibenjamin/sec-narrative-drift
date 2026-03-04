@@ -1,4 +1,6 @@
 {
+  "schema_version": "2.0",
+  "input_mode": "full_section_v2",
   "case": {
     "ticker": "NVDA",
     "section": "10k_item1a",
@@ -67,5 +69,10 @@
       "Our indebtedness could adversely affect our financial position and prevent us from implementing our strategy or fulfilling our contractual obligations. In March 2020, we issued $1.50 billion of the 2.85% Notes Due 2030, $1.00 billion of the 3.50% Notes Due 2040, $2.00 billion of the 3.50% Notes Due 2050, and $500 million of the 3.70% Notes Due 2060, or collectively, the March 2020 Notes. In September 2016, we issued $1.00 billion of the 2.20% Notes Due 2021 and $1.00 billion of the 3.20% Notes Due 2026, or collectively, the September 2016 Notes.",
       "Our indebtedness may limit our ability to use our cash flow or borrow additional funds for working capital, capital expenditures, acquisitions and general corporate and other purposes. Additionally, our obligation to make payments related to the Notes could impact our cash balance and limit our ability to use our cash for our capital return program and our other liquidity needs, including working capital, capital expenditures, acquisitions, investments and other general corporate purposes."
     ]
+  },
+  "integrity": {
+    "paragraph_count": 56,
+    "paragraphs_sha256": "a91cb67e25ee1c21273d48131d9f2e9f1756b88ab8634d546b174989364f75b6",
+    "paragraph_chars_total": 67990
   }
 }
