@@ -1,6 +1,6 @@
 ﻿# LLM Precompute Workflow (Showcase v3)
 
-Status: canonical manual rerun workflow for Lab (`full_section_v2`, master-first).
+Status: canonical manual rerun workflow for Lab (`full_section_v2`, master-v2-first with runtime v1 projection).
 
 ## Canonical Entry Points
 - `docs/lab/04_chatgpt_project_setup.md`
@@ -16,12 +16,13 @@ Status: canonical manual rerun workflow for Lab (`full_section_v2`, master-first
 - `scripts/lab_validate_llm_master_outputs.py`
 - `scripts/lab_record_master_progress.py`
 - `scripts/lab_project_master_to_detectors.py`
+- `scripts/lab_build_portable_master_run_pack.py` (script-free reproducibility export)
 
 ## Canonical Starter File (Codex Real Runs)
 - Single-source starter file:
   - `reports/lab_llm_master_thread_starters_codex_real.md`
 - Canonical generation profile:
-  - `scripts/lab_emit_master_thread_starters.py --format vscode_autowrite_v3`
+  - `scripts/lab_emit_master_thread_starters.py --format vscode_autowrite_v4`
 - Non-canonical compatibility artifacts:
   - `reports/lab_llm_master_thread_starters_codex_real_v2.md`
   - `reports/lab_llm_master_thread_starters_codex_real_legacy.md`
@@ -50,14 +51,16 @@ Status: canonical manual rerun workflow for Lab (`full_section_v2`, master-first
 
 ## Zero-Touch Output Rule
 - LLM outputs are runtime-static artifacts, generated offline.
-- Each output should be directly saveable to canonical path as valid JSON.
+- Each v2 output should be directly saveable to canonical path as valid JSON.
+- Each v2 output should then project deterministically to canonical runtime v1 path.
 - Avoid post-generation patching and reconciliation as a normal step.
 - If recurring issues appear, improve prompt blocks and thread starters first.
 
 ## Job-Pass Contract (One-Paste Hardened)
 Each manual master job is considered PASS only when all of the following are true:
 - Exactly one `PRECHECK_OK ...` line is printed.
-- Output JSON write succeeds at the canonical path.
+- v2 output JSON write succeeds at the canonical path.
+- v2 to v1 projection succeeds to runtime path.
 - Shell-safe parse check succeeds (`JSON_OK` expected).
 - `scripts/lab_validate_llm_master_outputs.py` runs with strict single-target controls:
   - `--only-mode exact_path`

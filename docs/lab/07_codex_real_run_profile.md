@@ -6,7 +6,7 @@ Scope: `llm_outline_compare_v1` manual Codex jobs generated from
 
 Canonical starter policy:
 - `reports/lab_llm_master_thread_starters_codex_real.md` is the single canonical Codex real-run starter file.
-- It must be generated with `vscode_autowrite_v3` profile (JOB_META + strict preflight count lock).
+- It must be generated with `vscode_autowrite_v4` profile (JOB_META + strict input hash/path/count lock + v2->v1 projection checks).
 - Variant files such as `*_v2.md` or `*_legacy.md` are non-canonical and compatibility-only.
 
 Companion canonical docs:
@@ -32,13 +32,16 @@ Prompt template pairing (full_section_v2 bundle):
 ## Per-Job Contract (Must Keep)
 - Read exactly three inputs (`pair`, `year prev`, `year curr`) from workspace paths in the starter.
 - Preflight counts must come from `year_payload.texts.paragraphs` and must match `JOB_META.expected_prev_paragraphs` and `JOB_META.expected_curr_paragraphs`; mismatches are hard failures.
+- Preflight must verify pair/year SHA256 locks and pair manifest linkage (`case`, `lens`, `year_inputs`) before generation.
 - Emit exactly one preflight line:
   - `PRECHECK_OK ... prev_paragraphs=<N> curr_paragraphs=<N>`
-- Write exactly one output JSON at the canonical starter path.
+- Write v2 output JSON at canonical v2 starter path.
+- Project v2 output deterministically to canonical runtime v1 path.
 - Run exactly three immediate checks:
   - JSON parse check
-  - master validator (`--only-mode exact_path`, strict single-target flags)
-  - blocker quality audit
+  - master validator (`--only-mode exact_path`, strict single-target flags) for v2
+  - blocker quality audit for v2
+  - projection command and runtime v1 parse/validator checks
 - Emit exactly one final status line.
 
 ## Batch Governance Cadence
@@ -63,6 +66,7 @@ Track these deltas after each checkpoint:
 ## Quality Meaningfulness Policy
 - Keep structure-aware 3-level outlines and explicit node alignment.
 - Keep case-specific caveats tied to evidence limitations.
+- Keep explicit mechanism fields (`driver -> exposure -> impact`, transmission channel, business effect, time horizon).
 - For manual review, confirm:
   - top 3 material changes are mechanism-level shifts (not only lexical restatements),
   - at least one material change uses non-opening paragraph evidence from both years when feasible,
@@ -86,6 +90,9 @@ multi_agent = true
 Notes:
 - `collaboration_modes` may stay enabled globally, but do not turn on Plan Mode for execution threads.
 - `multi_agent` may stay enabled globally, but do not use multi-agent inside one starter job thread.
+
+Portable reproducibility export:
+- `python scripts/lab_build_portable_master_run_pack.py --manifest reports/lab_llm_master_manifest_codex_real.json --campaign-id openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27 --out-dir bundles/portable_master_run_pack_v1 --clean`
 
 ## Non-Blocking Validation Note
 During incremental manual production runs, `present_flag_mismatch` can appear when outputs are written but manifest `present` flags are not yet rebuilt. Treat this as non-blocking until manifest regeneration.

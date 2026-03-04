@@ -7,6 +7,14 @@ This contract defines the current canonical manual LLM run standard for showcase
 - Save-ready output JSON with zero post-processing.
 - Transparent provenance for future model-versus-model comparisons.
 
+## Canonical Authoring Artifact (Current)
+- Canonical manual authoring artifact is now `llm_outline_compare_v2`.
+- Runtime-compatible artifact remains `llm_outline_compare_v1`, generated deterministically from v2.
+- Runtime UI continues to read `llm_outline_compare_v1` during this phase.
+- Validation now covers:
+  - v2 schema/evidence integrity
+  - v2 -> v1 projection equivalence for runtime files
+
 ## Output Contract
 Top-level keys are fixed:
 - `lab_schema_version`
@@ -24,8 +32,8 @@ Top-level keys are fixed:
 
 No extra top-level keys are allowed.
 
-## Master Artifact Contract (`llm_outline_compare_v1`)
-This is the canonical LLM output unit for FY2022+ runtime.
+## Master Artifact Contract (`llm_outline_compare_v2`)
+This is the canonical manual LLM output unit for FY2022+ runs.
 
 Required top-level keys:
 - `lab_schema_version`
@@ -43,20 +51,34 @@ Required top-level keys:
 - `material_changes`
 - `evidence_bank`
 - `lens_divergence`
+- `risk_graph_prev`
+- `risk_graph_curr`
+- `change_mechanisms`
+- `uncertainty_and_limits`
+- `investor_relevance`
+- `projection_contract`
 - `provenance`
 
 Hard requirements:
-- `artifact_id` must be `llm_outline_compare_v1`.
+- `artifact_id` must be `llm_outline_compare_v2`.
 - `node_alignment.change_class` must be one of:
   - `added`, `removed`, `moved`, `split`, `merged`, `reworded`, `intensified`, `softened`, `stable`.
 - All paragraph indices must resolve against full-year paragraph arrays referenced by `provenance.input_file`.
 - Evidence snippets must remain verbatim substrings and obey `<=350` char limit.
-- Runtime LLM detector outputs are deterministic projections from this master artifact; they are not the canonical manual job unit.
+- `risk_graph_prev/risk_graph_curr` must encode explicit `driver -> exposure -> impact`.
+- Each `change_mechanisms` row must include `mechanism`, `transmission_channel`, `business_effect`, `time_horizon`.
+- `projection_contract.projects_to_artifact_id` must be `llm_outline_compare_v1`.
+
+## Runtime Projection Contract (`llm_outline_compare_v1`)
+- Runtime-visible `llm_outline_compare_v1` artifacts are deterministic projections of v2.
+- v1 fields `outline_prev`, `outline_curr`, `node_alignment`, `material_changes`, `evidence_bank`, and `lens_divergence` must match their v2 source exactly.
+- Any v1 runtime file without a resolvable corresponding v2 source is invalid under current policy.
 
 ## Manual Job-Pass Contract
 Each one-paste manual job must satisfy all of the following:
 - Exactly one `PRECHECK_OK` line is printed.
-- Output JSON is written to the expected canonical path.
+- v2 output JSON is written to the expected canonical path.
+- v2 output is projected to v1 runtime path deterministically.
 - Shell-safe parse check succeeds (no shell-specific redirection assumptions).
 - Master validator runs with strict single-target controls:
   - `--only-mode exact_path`
@@ -67,6 +89,21 @@ Each one-paste manual job must satisfy all of the following:
 - Quality blocker audit passes for the output:
   - `python scripts/lab_audit_master_output_quality.py --output "<path>" --mode blockers ...`
 - Exactly one final status line is printed for the job thread.
+
+## Portable Run-Pack Contract (Script-Free Reproduction)
+Portable run packs must include:
+- `job/job_meta.json`
+- `inputs/pair.json`
+- `inputs/year_prev.json`
+- `inputs/year_curr.json`
+- `checksums/sha256_manifest.json`
+- `starter/THREAD_STARTER.txt`
+- `README_PORTABLE.md`
+
+Portable starters:
+- must use only local relative file paths from the pack root
+- must not require workspace-only scripts or repo-specific paths
+- must include local Python preflight/hash checks and JSON parse checks
 
 ## Detector Artifact Contract
 - `det_llm_delta_brief_v1`: `artifacts` must contain only `delta_brief`.

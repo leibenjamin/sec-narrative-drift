@@ -1,4 +1,4 @@
-Build `llm_outline_compare_v1` for the attached case.
+Build `llm_outline_compare_v2` for the attached case.
 
 Required sections:
 1. `outline_prev`
@@ -7,7 +7,13 @@ Required sections:
 4. `material_changes`
 5. `evidence_bank`
 6. `lens_divergence`
-7. `provenance`
+7. `risk_graph_prev`
+8. `risk_graph_curr`
+9. `change_mechanisms`
+10. `uncertainty_and_limits`
+11. `investor_relevance`
+12. `projection_contract`
+13. `provenance`
 
 Modeling requirements:
 - Create a 3-level outline for each year with stable `node_id` values.
@@ -25,3 +31,6 @@ Modeling requirements:
 - Ensure every `material_changes.evidence_refs` item resolves to an `evidence_bank` entry.
 - For change classes other than `added`/`removed`, ensure evidence coverage references both years.
 - Keep filing-only claims in this artifact (no external web claims here).
+- `risk_graph_prev` and `risk_graph_curr` must encode explicit `driver -> exposure -> impact` structure.
+- Every `change_mechanisms` row must include `mechanism`, `transmission_channel`, `business_effect`, and `time_horizon`.
+- Include at least one top-ranked material change that cites non-opening paragraphs for both years when available.
