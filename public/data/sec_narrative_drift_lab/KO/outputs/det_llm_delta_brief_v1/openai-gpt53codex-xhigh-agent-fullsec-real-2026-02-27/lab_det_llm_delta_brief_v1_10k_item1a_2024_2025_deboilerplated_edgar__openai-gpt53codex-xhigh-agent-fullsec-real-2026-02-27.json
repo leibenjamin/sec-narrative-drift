@@ -1,0 +1,110 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_llm_delta_brief_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "KO",
+  "section": "10k_item1a",
+  "year_from": 2024,
+  "year_to": 2025,
+  "artifacts": {
+    "delta_brief": "Change: Pillar Two 'side-by-side framework' adds 'largely exempting U.S.-headquartered companies' wording (intensified); New statement that 'one bottler accounted for 10% of our net operating revenues' plus conduct spillover (added) (2024 para 21; 2024 para 34) Drivers: Evidence shows topic movement, rewording intensity, and selective expansion/contraction in the risk narrative. (2024 para 35; 2025 para 33) Caveat: Limitation: Tax evidence in 2024 para 33-34 and 2025 para 37-39 describes framework direction but does not provide country-level earnings mix or quantified cash-tax sensitivity."
+  },
+  "evidence": [
+    {
+      "year": 2024,
+      "paragraph_idx": 20,
+      "snippet": "Ongoing public concern about obesity; other health-related public concerns surrounding consumption of sweetened beverages; the effects or perceived effects of the usage of weight-loss drugs on consumption patterns;",
+      "why": "Prior-year obesity, sweetener tax, and weight-loss-drug demand channel.",
+      "highlights": [
+        "ongoing",
+        "public"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 33,
+      "snippet": "Numerous countries have enacted legislation that implemented certain aspects of Pillar Two effective January 1, 2024, while many others have indicated their intent to adopt, or have adopted, legislation effective in 2025.",
+      "why": "Prior-year baseline Pillar Two adoption state.",
+      "highlights": [
+        "numerous",
+        "countries"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 34,
+      "snippet": "The OECD and implementing countries are expected to continue to make further revisions to their legislation and release additional guidance.",
+      "why": "Prior-year OECD revision uncertainty baseline.",
+      "highlights": [
+        "oecd",
+        "implementing"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 32,
+      "snippet": "For the year ended December 31, 2025, one bottler accounted for 10% of our net operating revenues, which are reflected in our EMEA and Asia Pacific operating segments.",
+      "why": "Current-year bottler concentration disclosure at 10% of net operating revenues.",
+      "highlights": [
+        "year",
+        "ended"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 33,
+      "snippet": "Further, actions by our bottling partners, including related to product quality, safety, marketing practices, labor relations, regulatory compliance, sustainability, or other matters could adversely affect the reputation, consumer perception, or value of our brands, even if we are not directly responsible for such actions.",
+      "why": "Current-year partner-action spillover to reputation and brand value.",
+      "highlights": [
+        "further",
+        "actions"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 37,
+      "snippet": "In June 2025, the Group of Seven (“G7”) released a statement announcing an understanding of a potential side-by-side system approach to the Pillar Two framework that would exclude U.S.-parented groups from certain Pillar Two provisions in recognition of existing U.S. minimum tax rules.",
+      "why": "Current-year G7 side-by-side system signal.",
+      "highlights": [
+        "june",
+        "group"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 38,
+      "snippet": "In January 2026, the OECD issued further administrative guidance introducing a side-by-side framework under Pillar Two, largely exempting U.S.-headquartered companies from the application of Pillar Two.",
+      "why": "Current-year OECD side-by-side guidance with U.S.-headquartered exemption language.",
+      "highlights": [
+        "january",
+        "oecd"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 39,
+      "snippet": "The OECD and implementing countries are expected to continue to make further revisions to their legislation and release additional guidance intended to adopt this side-by-side framework into law in each of the member countries.",
+      "why": "Current-year ongoing revision path to codify side-by-side framework.",
+      "highlights": [
+        "oecd",
+        "implementing"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.6,
+    "confidence": 0.75,
+    "coverage": 1.0,
+    "warnings": [
+      "Projected deterministically from llm_outline_compare_runtime master artifact.",
+      "Only the deboilerplated lens is provided for this case, so no cross-lens divergence is measured here."
+    ]
+  },
+  "provenance": {
+    "input_file": "inputs/pair/KO_2024_2025_10k_item1a_deboilerplated_edgar.json",
+    "model_provider": "openai",
+    "model_name": "GPT-5.3-Codex (Extra High Reasoning, Agent Mode)",
+    "run_label": "2026-02-27_openai_gpt53codex_xhigh_agent_fullsec_real_ko_2024_2025_outline_compare"
+  }
+}

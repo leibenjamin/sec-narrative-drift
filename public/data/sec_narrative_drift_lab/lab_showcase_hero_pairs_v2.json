@@ -1,114 +1,31 @@
 {
   "version": "2.0",
-  "updated_at": "2026-02-26T21:48:28Z",
+  "updated_at": "2026-03-05T21:41:47Z",
   "section": "10k_item1a",
   "source_id": "edgar",
   "hero_pairs_per_ticker": {
     "NVDA": [
       {
-        "year_from": 2019,
-        "year_to": 2020,
-        "tags": [
-          "boilerplate"
-        ],
-        "scores": {
-          "boilerplate_score": 0.555556,
-          "structure_score": 0.032839,
-          "drift_score": 0.013387,
-          "term_signal_score": 0.872352,
-          "meaningful_score": 3.6e-05,
-          "overall_score": 0.1432
-        },
-        "warnings": [
-          "no_distinctive_terms"
-        ]
-      },
-      {
-        "year_from": 2020,
-        "year_to": 2021,
-        "tags": [
-          "structure"
-        ],
-        "scores": {
-          "boilerplate_score": 0.25,
-          "structure_score": 0.126886,
-          "drift_score": 0.067804,
-          "term_signal_score": 0.851941,
-          "meaningful_score": 0.0,
-          "overall_score": 0.263066
-        },
-        "warnings": [
-          "no_distinctive_terms"
-        ]
-      },
-      {
-        "year_from": 2021,
-        "year_to": 2022,
-        "tags": [
-          "meaningful"
-        ],
-        "scores": {
-          "boilerplate_score": 0.038961,
-          "structure_score": 0.019358,
-          "drift_score": 0.111612,
-          "term_signal_score": 2.960526,
-          "meaningful_score": 0.067637,
-          "overall_score": 0.321174
-        },
-        "warnings": []
-      },
-      {
         "year_from": 2024,
         "year_to": 2025,
         "tags": [
+          "boilerplate",
           "most_recent"
         ],
         "scores": {
-          "boilerplate_score": 0.313043,
-          "structure_score": 0.012423,
-          "drift_score": 0.02381,
-          "term_signal_score": 1.007486,
-          "meaningful_score": 0.000761,
-          "overall_score": 0.210118
+          "boilerplate_score": 0.307692,
+          "structure_score": 0.014165,
+          "drift_score": 0.023445,
+          "term_signal_score": 0.0,
+          "meaningful_score": 0.0,
+          "overall_score": 0.211942
         },
         "warnings": [
-          "no_distinctive_terms"
+          "missing_term_shift"
         ]
       }
     ],
     "KO": [
-      {
-        "year_from": 2019,
-        "year_to": 2020,
-        "tags": [
-          "structure"
-        ],
-        "scores": {
-          "boilerplate_score": 0.324675,
-          "structure_score": 0.043956,
-          "drift_score": 0.041345,
-          "term_signal_score": 2.068903,
-          "meaningful_score": 0.027921,
-          "overall_score": 0.226953
-        },
-        "warnings": []
-      },
-      {
-        "year_from": 2022,
-        "year_to": 2023,
-        "tags": [
-          "meaningful"
-        ],
-        "scores": {
-          "boilerplate_score": 0.328767,
-          "structure_score": 0.010471,
-          "drift_score": 0.021308,
-          "term_signal_score": 2.068896,
-          "meaningful_score": 0.014302,
-          "overall_score": 0.210232
-        },
-        "warnings": []
-      },
       {
         "year_from": 2024,
         "year_to": 2025,
@@ -120,101 +37,37 @@
           "boilerplate_score": 0.681159,
           "structure_score": 0.111111,
           "drift_score": 0.016771,
-          "term_signal_score": 1.107639,
+          "term_signal_score": 0.0,
           "meaningful_score": 0.0,
           "overall_score": 0.128986
         },
         "warnings": [
-          "no_distinctive_terms"
+          "missing_term_shift"
         ]
       }
     ],
     "WM": [
       {
-        "year_from": 2019,
-        "year_to": 2020,
-        "tags": [
-          "boilerplate"
-        ],
-        "scores": {
-          "boilerplate_score": 0.402174,
-          "structure_score": 0.034258,
-          "drift_score": 0.043582,
-          "term_signal_score": 1.231497,
-          "meaningful_score": 0.0,
-          "overall_score": 0.189625
-        },
-        "warnings": [
-          "no_distinctive_terms"
-        ]
-      },
-      {
-        "year_from": 2020,
-        "year_to": 2021,
-        "tags": [
-          "meaningful"
-        ],
-        "scores": {
-          "boilerplate_score": 0.326087,
-          "structure_score": 0.021894,
-          "drift_score": 0.044745,
-          "term_signal_score": 4.082702,
-          "meaningful_score": 0.030154,
-          "overall_score": 0.220804
-        },
-        "warnings": []
-      },
-      {
         "year_from": 2024,
         "year_to": 2025,
         "tags": [
-          "structure",
+          "boilerplate",
           "most_recent"
         ],
         "scores": {
           "boilerplate_score": 0.395604,
           "structure_score": 0.333333,
           "drift_score": 0.084859,
-          "term_signal_score": 2.049696,
-          "meaningful_score": 0.014718,
-          "overall_score": 0.287206
+          "term_signal_score": 0.0,
+          "meaningful_score": 0.0,
+          "overall_score": 0.281319
         },
-        "warnings": []
+        "warnings": [
+          "missing_term_shift"
+        ]
       }
     ],
     "GE": [
-      {
-        "year_from": 2021,
-        "year_to": 2022,
-        "tags": [
-          "structure"
-        ],
-        "scores": {
-          "boilerplate_score": 0.190476,
-          "structure_score": 0.052562,
-          "drift_score": 0.034362,
-          "term_signal_score": 2.032509,
-          "meaningful_score": 0.010259,
-          "overall_score": 0.262729
-        },
-        "warnings": []
-      },
-      {
-        "year_from": 2023,
-        "year_to": 2024,
-        "tags": [
-          "meaningful"
-        ],
-        "scores": {
-          "boilerplate_score": 0.0,
-          "structure_score": 0.051707,
-          "drift_score": 0.086437,
-          "term_signal_score": 4.224933,
-          "meaningful_score": 0.086437,
-          "overall_score": 0.350087
-        },
-        "warnings": []
-      },
       {
         "year_from": 2024,
         "year_to": 2025,
@@ -226,12 +79,12 @@
           "boilerplate_score": 0.25,
           "structure_score": 1.0,
           "drift_score": 0.064346,
-          "term_signal_score": 0.751548,
+          "term_signal_score": 0.0,
           "meaningful_score": 0.0,
           "overall_score": 0.525
         },
         "warnings": [
-          "no_distinctive_terms"
+          "missing_term_shift"
         ]
       }
     ]
@@ -239,175 +92,23 @@
   "full_scoring_table": {
     "NVDA": [
       {
-        "year_from": 2019,
-        "year_to": 2020,
-        "scores": {
-          "boilerplate_score": 0.555556,
-          "structure_score": 0.032839,
-          "drift_score": 0.013387,
-          "term_signal_score": 0.872352,
-          "meaningful_score": 3.6e-05,
-          "overall_score": 0.1432
-        },
-        "warnings": [
-          "no_distinctive_terms"
-        ],
-        "most_recent": false
-      },
-      {
-        "year_from": 2020,
-        "year_to": 2021,
-        "scores": {
-          "boilerplate_score": 0.25,
-          "structure_score": 0.126886,
-          "drift_score": 0.067804,
-          "term_signal_score": 0.851941,
-          "meaningful_score": 0.0,
-          "overall_score": 0.263066
-        },
-        "warnings": [
-          "no_distinctive_terms"
-        ],
-        "most_recent": false
-      },
-      {
-        "year_from": 2021,
-        "year_to": 2022,
-        "scores": {
-          "boilerplate_score": 0.038961,
-          "structure_score": 0.019358,
-          "drift_score": 0.111612,
-          "term_signal_score": 2.960526,
-          "meaningful_score": 0.067637,
-          "overall_score": 0.321174
-        },
-        "warnings": [],
-        "most_recent": false
-      },
-      {
-        "year_from": 2022,
-        "year_to": 2023,
-        "scores": {
-          "boilerplate_score": 0.086022,
-          "structure_score": 0.07148,
-          "drift_score": 0.060088,
-          "term_signal_score": 1.00463,
-          "meaningful_score": 0.002508,
-          "overall_score": 0.296641
-        },
-        "warnings": [
-          "no_distinctive_terms"
-        ],
-        "most_recent": false
-      },
-      {
-        "year_from": 2023,
-        "year_to": 2024,
-        "scores": {
-          "boilerplate_score": 0.063636,
-          "structure_score": 0.072063,
-          "drift_score": 0.044859,
-          "term_signal_score": 4.195862,
-          "meaningful_score": 0.042004,
-          "overall_score": 0.31933
-        },
-        "warnings": [],
-        "most_recent": false
-      },
-      {
         "year_from": 2024,
         "year_to": 2025,
         "scores": {
-          "boilerplate_score": 0.313043,
-          "structure_score": 0.012423,
-          "drift_score": 0.02381,
-          "term_signal_score": 1.007486,
-          "meaningful_score": 0.000761,
-          "overall_score": 0.210118
+          "boilerplate_score": 0.307692,
+          "structure_score": 0.014165,
+          "drift_score": 0.023445,
+          "term_signal_score": 0.0,
+          "meaningful_score": 0.0,
+          "overall_score": 0.211942
         },
         "warnings": [
-          "no_distinctive_terms"
+          "missing_term_shift"
         ],
         "most_recent": true
       }
     ],
     "KO": [
-      {
-        "year_from": 2019,
-        "year_to": 2020,
-        "scores": {
-          "boilerplate_score": 0.324675,
-          "structure_score": 0.043956,
-          "drift_score": 0.041345,
-          "term_signal_score": 2.068903,
-          "meaningful_score": 0.027921,
-          "overall_score": 0.226953
-        },
-        "warnings": [],
-        "most_recent": false
-      },
-      {
-        "year_from": 2020,
-        "year_to": 2021,
-        "scores": {
-          "boilerplate_score": 0.077922,
-          "structure_score": 0.007391,
-          "drift_score": 0.042423,
-          "term_signal_score": 1.189431,
-          "meaningful_score": 0.003328,
-          "overall_score": 0.280172
-        },
-        "warnings": [
-          "no_distinctive_terms"
-        ],
-        "most_recent": false
-      },
-      {
-        "year_from": 2021,
-        "year_to": 2022,
-        "scores": {
-          "boilerplate_score": 0.194805,
-          "structure_score": 0.002905,
-          "drift_score": 0.026152,
-          "term_signal_score": 1.22887,
-          "meaningful_score": 0.002656,
-          "overall_score": 0.243492
-        },
-        "warnings": [
-          "no_distinctive_terms"
-        ],
-        "most_recent": false
-      },
-      {
-        "year_from": 2022,
-        "year_to": 2023,
-        "scores": {
-          "boilerplate_score": 0.328767,
-          "structure_score": 0.010471,
-          "drift_score": 0.021308,
-          "term_signal_score": 2.068896,
-          "meaningful_score": 0.014302,
-          "overall_score": 0.210232
-        },
-        "warnings": [],
-        "most_recent": false
-      },
-      {
-        "year_from": 2023,
-        "year_to": 2024,
-        "scores": {
-          "boilerplate_score": 0.405405,
-          "structure_score": 0.00647,
-          "drift_score": 0.012389,
-          "term_signal_score": 1.159313,
-          "meaningful_score": 0.000396,
-          "overall_score": 0.180478
-        },
-        "warnings": [
-          "no_distinctive_terms"
-        ],
-        "most_recent": false
-      },
       {
         "year_from": 2024,
         "year_to": 2025,
@@ -415,91 +116,17 @@
           "boilerplate_score": 0.681159,
           "structure_score": 0.111111,
           "drift_score": 0.016771,
-          "term_signal_score": 1.107639,
+          "term_signal_score": 0.0,
           "meaningful_score": 0.0,
           "overall_score": 0.128986
         },
         "warnings": [
-          "no_distinctive_terms"
+          "missing_term_shift"
         ],
         "most_recent": true
       }
     ],
     "WM": [
-      {
-        "year_from": 2019,
-        "year_to": 2020,
-        "scores": {
-          "boilerplate_score": 0.402174,
-          "structure_score": 0.034258,
-          "drift_score": 0.043582,
-          "term_signal_score": 1.231497,
-          "meaningful_score": 0.0,
-          "overall_score": 0.189625
-        },
-        "warnings": [
-          "no_distinctive_terms"
-        ],
-        "most_recent": false
-      },
-      {
-        "year_from": 2020,
-        "year_to": 2021,
-        "scores": {
-          "boilerplate_score": 0.326087,
-          "structure_score": 0.021894,
-          "drift_score": 0.044745,
-          "term_signal_score": 4.082702,
-          "meaningful_score": 0.030154,
-          "overall_score": 0.220804
-        },
-        "warnings": [],
-        "most_recent": false
-      },
-      {
-        "year_from": 2021,
-        "year_to": 2022,
-        "scores": {
-          "boilerplate_score": 0.358696,
-          "structure_score": 0.037957,
-          "drift_score": 0.037543,
-          "term_signal_score": 2.028796,
-          "meaningful_score": 0.006733,
-          "overall_score": 0.206471
-        },
-        "warnings": [],
-        "most_recent": false
-      },
-      {
-        "year_from": 2022,
-        "year_to": 2023,
-        "scores": {
-          "boilerplate_score": 0.315789,
-          "structure_score": 0.015727,
-          "drift_score": 0.033807,
-          "term_signal_score": 1.239933,
-          "meaningful_score": 6.8e-05,
-          "overall_score": 0.210009
-        },
-        "warnings": [
-          "no_distinctive_terms"
-        ],
-        "most_recent": false
-      },
-      {
-        "year_from": 2023,
-        "year_to": 2024,
-        "scores": {
-          "boilerplate_score": 0.165217,
-          "structure_score": 0.059922,
-          "drift_score": 0.059062,
-          "term_signal_score": 2.314599,
-          "meaningful_score": 0.018729,
-          "overall_score": 0.275903
-        },
-        "warnings": [],
-        "most_recent": false
-      },
       {
         "year_from": 2024,
         "year_to": 2025,
@@ -507,85 +134,17 @@
           "boilerplate_score": 0.395604,
           "structure_score": 0.333333,
           "drift_score": 0.084859,
-          "term_signal_score": 2.049696,
-          "meaningful_score": 0.014718,
-          "overall_score": 0.287206
+          "term_signal_score": 0.0,
+          "meaningful_score": 0.0,
+          "overall_score": 0.281319
         },
-        "warnings": [],
+        "warnings": [
+          "missing_term_shift"
+        ],
         "most_recent": true
       }
     ],
     "GE": [
-      {
-        "year_from": 2019,
-        "year_to": 2020,
-        "scores": {
-          "boilerplate_score": 0.076923,
-          "structure_score": 0.04295,
-          "drift_score": 0.048461,
-          "term_signal_score": 1.975215,
-          "meaningful_score": 0.015759,
-          "overall_score": 0.296112
-        },
-        "warnings": [],
-        "most_recent": false
-      },
-      {
-        "year_from": 2020,
-        "year_to": 2021,
-        "scores": {
-          "boilerplate_score": 0.051282,
-          "structure_score": 0.045859,
-          "drift_score": 0.064815,
-          "term_signal_score": 1.976805,
-          "meaningful_score": 0.021692,
-          "overall_score": 0.30705
-        },
-        "warnings": [],
-        "most_recent": false
-      },
-      {
-        "year_from": 2021,
-        "year_to": 2022,
-        "scores": {
-          "boilerplate_score": 0.190476,
-          "structure_score": 0.052562,
-          "drift_score": 0.034362,
-          "term_signal_score": 2.032509,
-          "meaningful_score": 0.010259,
-          "overall_score": 0.262729
-        },
-        "warnings": [],
-        "most_recent": false
-      },
-      {
-        "year_from": 2022,
-        "year_to": 2023,
-        "scores": {
-          "boilerplate_score": 0.02381,
-          "structure_score": 0.008976,
-          "drift_score": 0.049722,
-          "term_signal_score": 2.114673,
-          "meaningful_score": 0.019049,
-          "overall_score": 0.303169
-        },
-        "warnings": [],
-        "most_recent": false
-      },
-      {
-        "year_from": 2023,
-        "year_to": 2024,
-        "scores": {
-          "boilerplate_score": 0.0,
-          "structure_score": 0.051707,
-          "drift_score": 0.086437,
-          "term_signal_score": 4.224933,
-          "meaningful_score": 0.086437,
-          "overall_score": 0.350087
-        },
-        "warnings": [],
-        "most_recent": false
-      },
       {
         "year_from": 2024,
         "year_to": 2025,
@@ -593,12 +152,12 @@
           "boilerplate_score": 0.25,
           "structure_score": 1.0,
           "drift_score": 0.064346,
-          "term_signal_score": 0.751548,
+          "term_signal_score": 0.0,
           "meaningful_score": 0.0,
           "overall_score": 0.525
         },
         "warnings": [
-          "no_distinctive_terms"
+          "missing_term_shift"
         ],
         "most_recent": true
       }
@@ -608,13 +167,13 @@
     "High boilerplate hero: max boilerplate_score, require no missing_text.",
     "Structure hero: max structure_score, require no missing_text.",
     "Meaningful hero: maximize drift_score * (1 - boilerplate_score) * term_signal_norm, exclude missing_text and missing_term_shift.",
-    "Most recent hero: newest adjacent pair available (prefer 2024-2025 if present).",
+    "Most recent hero: newest adjacent pair available from current filing coverage.",
     "Ensure at least 3 hero pairs per ticker; fill with highest overall_score.",
     "Cap hero pairs at 5 per ticker.",
     "Scores computed on raw lens; proxy metrics used when lab outputs missing."
   ],
   "provenance": {
-    "build_utc": "2026-02-26T21:48:28Z",
+    "build_utc": "2026-03-05T21:41:47Z",
     "script_version": "select_showcase_hero_pairs.py@v1"
   }
 }

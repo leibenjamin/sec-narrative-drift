@@ -1,0 +1,143 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_llm_excerpt_picker_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "GE",
+  "section": "10k_item1a",
+  "year_from": 2024,
+  "year_to": 2025,
+  "artifacts": {
+    "selected_prev": [
+      7,
+      43,
+      67,
+      80,
+      102
+    ],
+    "selected_curr": [
+      2,
+      29,
+      68,
+      74,
+      76
+    ]
+  },
+  "evidence": [
+    {
+      "year": 2024,
+      "paragraph_idx": 7,
+      "snippet": "Further, political changes and trends such as populism, protectionism, economic nationalism and sentiment toward multinational companies, as well as tariffs, export controls, restrictions on outbound investment or other trade barriers, sanctions, technical or local content regulations,",
+      "why": "Shows 2024 macro risk language centered on populism/protectionism and broad trade barriers.",
+      "highlights": [
+        "further",
+        "political"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 43,
+      "snippet": "In addition, climate-related litigation and government investigations could be commenced against us, could be costly to defend and could adversely affect our business.",
+      "why": "Captures explicit litigation and investigation exposure in 2024 climate disclosure.",
+      "highlights": [
+        "addition",
+        "climate-related"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 67,
+      "snippet": "For example, successfully executing the significant production and delivery ramp efforts in connection with the growth of newer engine platforms such as the LEAP depends in part on our suppliers having access to the materials, skilled labor and production capacity they require and making timely deliveries to us,",
+      "why": "Shows supplier-dependent LEAP production ramp execution dependency in 2024.",
+      "highlights": [
+        "example",
+        "successfully"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 80,
+      "snippet": "We have experienced, and expect to continue to experience, cyberattacks of varying degrees of sophistication and various cybersecurity incidents, such as distributed denial of service attacks and phishing attacks.",
+      "why": "Anchors baseline cyberattack incidence disclosure in 2024.",
+      "highlights": [
+        "have",
+        "experienced"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 102,
+      "snippet": "For example, legislative or regulatory measures by U.S. federal, state or non-U.S. governments, or rules, interpretations or audits under new or existing tax laws such as global minimum taxes or other changes to the treatment of global income, could increase our cash tax costs and effective tax rate.",
+      "why": "Anchors prospective tax-law and audit interpretation cost pressure in 2024.",
+      "highlights": [
+        "example",
+        "legislative"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 2,
+      "snippet": "Political developments or policy shifts in areas such as tariffs, export controls, including restrictions on rare earth minerals or other trade barriers, sanctions, technical or local content regulations, currency controls, global tax laws or other laws and policies,",
+      "why": "Shows 2025 policy-risk language adding rare-earth and global-tax policy vectors.",
+      "highlights": [
+        "political",
+        "developments"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 29,
+      "snippet": "Environmental and climate-related laws or regulations, including regulations on greenhouse gas emissions caps, carbon pricing and taxes, energy taxes, product fuel efficiency standards and mandatory disclosure obligations, as well as industry actions in response,",
+      "why": "Captures broadened climate/environment regulatory burden framing in 2025.",
+      "highlights": [
+        "environmental",
+        "climate-related"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 68,
+      "snippet": "For example, the anticipated significant growth of the LEAP installed base and services in the coming years will require considerable effort and execution to meet the delivery, performance, durability, time on wing and repair turnaround time expectations of customers.",
+      "why": "Shows explicit installed-base service execution targets in 2025 LEAP discussion.",
+      "highlights": [
+        "example",
+        "anticipated"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 74,
+      "snippet": "While to date no incidents have materially impacted our business, there is no guarantee that material incidents will not occur in the future.",
+      "why": "Adds explicit statement on no material cyber impact to date and forward uncertainty.",
+      "highlights": [
+        "while",
+        "date"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 76,
+      "snippet": "In addition, we may acquire companies with cybersecurity vulnerabilities or unsophisticated security measures, which in turn would expose us to cybersecurity, operational, and financial risks.",
+      "why": "Introduces acquisition-linked cybersecurity vulnerability channel in 2025.",
+      "highlights": [
+        "addition",
+        "acquire"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.6,
+    "confidence": 0.75,
+    "coverage": 1.0,
+    "warnings": [
+      "Projected deterministically from llm_outline_compare_runtime master artifact.",
+      "Within the deboilerplated lens, year-over-year differences are mainly specificity shifts in policy, cyber, and execution wording rather than a restructured risk taxonomy."
+    ]
+  },
+  "provenance": {
+    "input_file": "inputs/pair/GE_2024_2025_10k_item1a_deboilerplated_edgar.json",
+    "model_provider": "openai",
+    "model_name": "GPT-5.3-Codex (Extra High Reasoning, Agent Mode)",
+    "run_label": "2026-03-05_openai_gpt53codex_xhigh_agent_fullsec_real_ge_2024_2025_outline_compare"
+  }
+}

@@ -1,0 +1,792 @@
+{
+  "lab_schema_version": "1.0",
+  "artifact_schema_version": "1.0",
+  "artifact_id": "llm_outline_compare_structured",
+  "ticker": "NVDA",
+  "section": "10k_item1a",
+  "source_id": "edgar",
+  "cleaning_lens": "deboilerplated",
+  "year_from": 2022,
+  "year_to": 2023,
+  "outline_prev": [
+    {
+      "node_id": "prev_root",
+      "parent_id": null,
+      "level": 1,
+      "order": 0,
+      "label": "FY2022 Item 1A",
+      "risk_thesis": "Risk stack spans demand volatility, execution constraints, and regulation.",
+      "evidence_paragraph_idx": [
+        0,
+        41,
+        122
+      ]
+    },
+    {
+      "node_id": "prev_market",
+      "parent_id": "prev_root",
+      "level": 2,
+      "order": 0,
+      "label": "Market demand",
+      "risk_thesis": "Forecast error from fast change and channel behavior drives volatility.",
+      "evidence_paragraph_idx": [
+        0,
+        20,
+        30
+      ]
+    },
+    {
+      "node_id": "prev_ops",
+      "parent_id": "prev_root",
+      "level": 2,
+      "order": 1,
+      "label": "Operations",
+      "risk_thesis": "Long lead times plus third-party dependence can impair fulfillment and margins.",
+      "evidence_paragraph_idx": [
+        27,
+        41,
+        46
+      ]
+    },
+    {
+      "node_id": "prev_reg",
+      "parent_id": "prev_root",
+      "level": 2,
+      "order": 2,
+      "label": "Regulation/geopolitics",
+      "risk_thesis": "Export controls and privacy/AI laws can reduce access and raise cost.",
+      "evidence_paragraph_idx": [
+        129,
+        135,
+        155
+      ]
+    },
+    {
+      "node_id": "prev_market_vol",
+      "parent_id": "prev_market",
+      "level": 3,
+      "order": 0,
+      "label": "Demand volatility",
+      "risk_thesis": "Crypto and channel shifts can produce spikes and drops.",
+      "evidence_paragraph_idx": [
+        20,
+        22,
+        30
+      ]
+    },
+    {
+      "node_id": "prev_ops_supply",
+      "parent_id": "prev_ops",
+      "level": 3,
+      "order": 0,
+      "label": "Supply commitments",
+      "risk_thesis": "Non-cancellable ordering can lead to excess inventory and cost.",
+      "evidence_paragraph_idx": [
+        41,
+        45
+      ]
+    },
+    {
+      "node_id": "prev_ops_cyber",
+      "parent_id": "prev_ops",
+      "level": 3,
+      "order": 1,
+      "label": "Cyber continuity",
+      "risk_thesis": "Incident and supplier-system exposure can disrupt operations.",
+      "evidence_paragraph_idx": [
+        88,
+        90,
+        93
+      ]
+    },
+    {
+      "node_id": "prev_reg_export",
+      "parent_id": "prev_reg",
+      "level": 3,
+      "order": 0,
+      "label": "Export controls",
+      "risk_thesis": "Sanctions and AI controls can constrain overseas demand.",
+      "evidence_paragraph_idx": [
+        129,
+        135,
+        136
+      ]
+    },
+    {
+      "node_id": "prev_reg_privacy",
+      "parent_id": "prev_reg",
+      "level": 3,
+      "order": 1,
+      "label": "Privacy/data rules",
+      "risk_thesis": "Expanding privacy obligations create penalties and process friction.",
+      "evidence_paragraph_idx": [
+        161,
+        165
+      ]
+    }
+  ],
+  "outline_curr": [
+    {
+      "node_id": "curr_root",
+      "parent_id": null,
+      "level": 1,
+      "order": 0,
+      "label": "FY2023 Item 1A",
+      "risk_thesis": "Core structure remains but with more concrete supply and export-control detail.",
+      "evidence_paragraph_idx": [
+        0,
+        44,
+        147
+      ]
+    },
+    {
+      "node_id": "curr_market",
+      "parent_id": "curr_root",
+      "level": 2,
+      "order": 0,
+      "label": "Market demand",
+      "risk_thesis": "Demand remains volatile due to transitions, concentration, and downstream behavior.",
+      "evidence_paragraph_idx": [
+        5,
+        46,
+        67
+      ]
+    },
+    {
+      "node_id": "curr_ops",
+      "parent_id": "curr_root",
+      "level": 2,
+      "order": 1,
+      "label": "Operations",
+      "risk_thesis": "Committed supply and recurring cyber/quality risks drive execution exposure.",
+      "evidence_paragraph_idx": [
+        35,
+        44,
+        105
+      ]
+    },
+    {
+      "node_id": "curr_reg",
+      "parent_id": "curr_root",
+      "level": 2,
+      "order": 2,
+      "label": "Regulation/geopolitics",
+      "risk_thesis": "Named China controls and operative privacy requirements increase constraint risk.",
+      "evidence_paragraph_idx": [
+        155,
+        163,
+        194
+      ]
+    },
+    {
+      "node_id": "curr_market_vol",
+      "parent_id": "curr_market",
+      "level": 3,
+      "order": 0,
+      "label": "Demand volatility",
+      "risk_thesis": "Crypto-linked and architecture-transition swings still affect demand visibility.",
+      "evidence_paragraph_idx": [
+        67,
+        69,
+        71
+      ]
+    },
+    {
+      "node_id": "curr_ops_supply",
+      "parent_id": "curr_ops",
+      "level": 3,
+      "order": 0,
+      "label": "Supply commitments",
+      "risk_thesis": "Supply mix now explicitly concentrated in obligations and prepaids.",
+      "evidence_paragraph_idx": [
+        44,
+        45
+      ]
+    },
+    {
+      "node_id": "curr_ops_cyber",
+      "parent_id": "curr_ops",
+      "level": 3,
+      "order": 1,
+      "label": "Cyber continuity",
+      "risk_thesis": "Risk language now includes prior incidents and partner exposure.",
+      "evidence_paragraph_idx": [
+        112,
+        113
+      ]
+    },
+    {
+      "node_id": "curr_reg_export",
+      "parent_id": "curr_reg",
+      "level": 3,
+      "order": 0,
+      "label": "Export controls",
+      "risk_thesis": "Restrictions are product-specific and tied to China-related licensing.",
+      "evidence_paragraph_idx": [
+        163,
+        164
+      ]
+    },
+    {
+      "node_id": "curr_reg_privacy",
+      "parent_id": "curr_reg",
+      "level": 3,
+      "order": 1,
+      "label": "Privacy/data rules",
+      "risk_thesis": "CPRA is operative and China transfer approvals add friction.",
+      "evidence_paragraph_idx": [
+        194,
+        205
+      ]
+    }
+  ],
+  "node_alignment": [
+    {
+      "prev_node_id": "prev_root",
+      "curr_node_id": "curr_root",
+      "change_class": "stable",
+      "rationale": "Top-level architecture is preserved across years.",
+      "salience": 0.3
+    },
+    {
+      "prev_node_id": "prev_market",
+      "curr_node_id": "curr_market",
+      "change_class": "stable",
+      "rationale": "Demand uncertainty mechanism remains forecast error under volatile end demand.",
+      "salience": 0.55
+    },
+    {
+      "prev_node_id": "prev_market_vol",
+      "curr_node_id": "curr_market_vol",
+      "change_class": "reworded",
+      "rationale": "Crypto/channel volatility persists with updated wording around current market context.",
+      "salience": 0.62
+    },
+    {
+      "prev_node_id": "prev_ops",
+      "curr_node_id": "curr_ops",
+      "change_class": "intensified",
+      "rationale": "Operational exposure adds explicit concentration of committed supply in 2023.",
+      "salience": 0.82
+    },
+    {
+      "prev_node_id": "prev_ops_supply",
+      "curr_node_id": "curr_ops_supply",
+      "change_class": "intensified",
+      "rationale": "Narrative moves from non-cancellable behavior to quantified supply concentration.",
+      "salience": 0.93
+    },
+    {
+      "prev_node_id": "prev_ops_cyber",
+      "curr_node_id": "curr_ops_cyber",
+      "change_class": "intensified",
+      "rationale": "Cyber risk shifts from one named event to recurring-incident framing.",
+      "salience": 0.84
+    },
+    {
+      "prev_node_id": "prev_reg",
+      "curr_node_id": "curr_reg",
+      "change_class": "intensified",
+      "rationale": "Regulatory language moves from possible constraints to named implemented controls.",
+      "salience": 0.88
+    },
+    {
+      "prev_node_id": "prev_reg_export",
+      "curr_node_id": "curr_reg_export",
+      "change_class": "intensified",
+      "rationale": "Potential AI restriction language becomes specific China-focused product controls.",
+      "salience": 0.95
+    },
+    {
+      "prev_node_id": "prev_reg_privacy",
+      "curr_node_id": "curr_reg_privacy",
+      "change_class": "intensified",
+      "rationale": "Pending CPRA and EU items progress to operative CPRA and CAC transfer approval terms.",
+      "salience": 0.78
+    }
+  ],
+  "material_changes": [
+    {
+      "id": "mc_1",
+      "title": "\"purchase obligations and prepaid supply agreements represented more than half of our total supply\" sharpened commitment risk",
+      "change_class": "intensified",
+      "salience": 0.93,
+      "caveat": "2023 para 45 gives a point-in-time share, but 2022 para 41 and para 45 do not provide a directly comparable percentage baseline for magnitude.",
+      "evidence_refs": [
+        {
+          "year": 2022,
+          "paragraph_idx": 41
+        },
+        {
+          "year": 2022,
+          "paragraph_idx": 45
+        },
+        {
+          "year": 2023,
+          "paragraph_idx": 44
+        },
+        {
+          "year": 2023,
+          "paragraph_idx": 45
+        }
+      ]
+    },
+    {
+      "id": "mc_2",
+      "title": "\"new export restrictions and export licensing requirements targeting China's semiconductor and supercomputing industries\" became explicit",
+      "change_class": "intensified",
+      "salience": 0.9,
+      "caveat": "2022 para 135-136 states prospective AI restrictions, while 2023 para 163-164 names control scope but still omits customer-level revenue mapping.",
+      "evidence_refs": [
+        {
+          "year": 2022,
+          "paragraph_idx": 135
+        },
+        {
+          "year": 2022,
+          "paragraph_idx": 136
+        },
+        {
+          "year": 2023,
+          "paragraph_idx": 163
+        },
+        {
+          "year": 2023,
+          "paragraph_idx": 164
+        }
+      ]
+    },
+    {
+      "id": "mc_3",
+      "title": "From \"security incident involving unauthorized access\" to incidents that \"has occurred in the past\"",
+      "change_class": "intensified",
+      "salience": 0.82,
+      "caveat": "2022 para 88/90 describes one event, while 2023 para 112/113 broadens recurrence language without incident-count frequency detail.",
+      "evidence_refs": [
+        {
+          "year": 2022,
+          "paragraph_idx": 88
+        },
+        {
+          "year": 2022,
+          "paragraph_idx": 90
+        },
+        {
+          "year": 2023,
+          "paragraph_idx": 112
+        },
+        {
+          "year": 2023,
+          "paragraph_idx": 113
+        }
+      ]
+    },
+    {
+      "id": "mc_4",
+      "title": "Privacy language shifted from \"will further expand in 2023\" to \"CPRA became operative in 2023\" with CAC transfer approval",
+      "change_class": "intensified",
+      "salience": 0.76,
+      "caveat": "Evidence spans different jurisdictions: 2022 para 161/165 and 2023 para 194/205 identify rule changes but do not provide a harmonized compliance-cost estimate.",
+      "evidence_refs": [
+        {
+          "year": 2022,
+          "paragraph_idx": 161
+        },
+        {
+          "year": 2022,
+          "paragraph_idx": 165
+        },
+        {
+          "year": 2023,
+          "paragraph_idx": 194
+        },
+        {
+          "year": 2023,
+          "paragraph_idx": 205
+        }
+      ]
+    }
+  ],
+  "evidence_bank": [
+    {
+      "year": 2022,
+      "paragraph_idx": 41,
+      "snippet": "In periods of shortages impacting the semiconductor industry and/or limited supply or capacity in our supply chain, as we are in today, we have placed and may continue to place non-cancellable inventory orders in advance of our historical lead times, and pay premiums and/or provide deposits to secure future supply and capacity.",
+      "why": "Non-cancellable ordering behavior under shortages.",
+      "node_ids": [
+        "prev_ops_supply"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 45,
+      "snippet": "These actions may increase our product costs and trigger significant excess inventory or other charges if there is a partial or complete reduction in long-term demand for our products or if such demand is served by our competitors, which could negatively impact our gross margins and our overall financial results.",
+      "why": "Cost and excess inventory downside from long-lead actions.",
+      "node_ids": [
+        "prev_ops_supply"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 88,
+      "snippet": "For example, on February 23, 2022, we became aware of a security incident involving unauthorized access to our network by a group of independent criminal threat actors, not affiliated with any government or political cause.",
+      "why": "Named 2022 unauthorized-access incident.",
+      "node_ids": [
+        "prev_ops_cyber"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 90,
+      "snippet": "The threat actors misappropriated certain NVIDIA proprietary information, including NVIDIA source code, and leaked some of that information online.",
+      "why": "Source-code exfiltration evidence.",
+      "node_ids": [
+        "prev_ops_cyber"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 135,
+      "snippet": "The increasing focus on the strategic importance of AI technologies may result in additional regulatory restrictions that target products",
+      "why": "AI restrictions described as emerging in 2022.",
+      "node_ids": [
+        "prev_reg_export"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 136,
+      "snippet": "Such restrictions could limit our ability to serve demand abroad and could negatively impact our business and financial results.",
+      "why": "Potential demand-abroad limitation channel.",
+      "node_ids": [
+        "prev_reg_export"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 161,
+      "snippet": "Furthermore, there exists a proposed European regulation related to AI that, if adopted, could impose onerous obligations and could require us to change our business practices.",
+      "why": "Proposed EU AI regulation burden in 2022.",
+      "node_ids": [
+        "prev_reg_privacy"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 165,
+      "snippet": "California’s privacy laws will further expand in 2023 under the California Privacy Rights Act of 2020, or CPRA, which may restrict the use of certain categories of sensitive personal information; further restrict the use of cross-contextual advertising techniques; restrict the retention of personal information; expand the types of data breaches",
+      "why": "CPRA expansion expected in 2023.",
+      "node_ids": [
+        "prev_reg_privacy"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 44,
+      "snippet": "Our supply, which includes inventory on hand, purchase obligations and prepaid supply agreements, has grown significantly due to current supply chain conditions, complexity of our products, and recent reductions in demand.",
+      "why": "Supply grew through inventory, obligations, and prepaids.",
+      "node_ids": [
+        "curr_ops_supply"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 45,
+      "snippet": "At the end of fiscal year 2023, purchase obligations and prepaid supply agreements represented more than half of our total supply.",
+      "why": "Obligations/prepaids exceed half of total supply.",
+      "node_ids": [
+        "curr_ops_supply"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 112,
+      "snippet": "Breaches of our GFN security measures, which have happened in the past, could expose our partners to a risk of loss or misuse of this source code, damage both us and our partners, and expose NVIDIA to potential litigation and liability.",
+      "why": "GFN breach history referenced.",
+      "node_ids": [
+        "curr_ops_cyber"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 113,
+      "snippet": "If we or a third party we rely on experience a security incident, which has occurred in the past, or are perceived to have experienced a security incident, we may experience adverse consequences, including government enforcement actions, additional reporting requirements and/or oversight, restrictions on processing data, litigation,",
+      "why": "Recurring incident framing in 2023.",
+      "node_ids": [
+        "curr_ops_cyber"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 163,
+      "snippet": "During the third quarter of fiscal year 2023, the U.S. government, or USG, announced new export restrictions and export licensing requirements targeting China’s semiconductor and supercomputing industries.",
+      "why": "USG China semiconductor export restrictions announced.",
+      "node_ids": [
+        "curr_reg_export"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 164,
+      "snippet": "These restrictions impact exports of certain chips, as well as software, hardware, equipment, and technology used to develop, produce, and manufacture certain chips, to China (including Hong Kong and Macau) and Russia, and specifically impact our A100 and H100 integrated circuits, DGX or any other systems or boards which incorporate A100 or H100",
+      "why": "A100/H100 and related system scope is named.",
+      "node_ids": [
+        "curr_reg_export"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 194,
+      "snippet": "The California Privacy Rights Act of 2020, or CPRA, became operative in 2023, and restricts the use of certain categories of sensitive personal information; further restricts the use of cross-contextual advertising techniques; restricts the retention of personal information; expands the types of data breaches subject to the private right of action;",
+      "why": "CPRA became operative in 2023.",
+      "node_ids": [
+        "curr_reg_privacy"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 205,
+      "snippet": "Data broadly defined as important under China law, including personal data, may not be transferable outside of China without prior assessment and approval by the Cyberspace Administration of China, or CAC.",
+      "why": "China CAC approval needed for some data transfer.",
+      "node_ids": [
+        "curr_reg_privacy"
+      ]
+    }
+  ],
+  "lens_divergence": {
+    "materially_different": false,
+    "summary": "For this pair, deboilerplated text retains the same mechanisms; observed shifts come from filing-year content rather than lens drift."
+  },
+  "risk_graph_prev": [
+    {
+      "id": "rg_prev_1",
+      "driver": "Long lead times and non-cancellable supply actions.",
+      "exposure": "Inventory commitments can exceed realized demand.",
+      "impact": "Excess inventory charges and gross-margin pressure.",
+      "evidence_paragraph_idx": [
+        41,
+        45
+      ]
+    },
+    {
+      "id": "rg_prev_2",
+      "driver": "Emerging AI export restrictions and sanctions.",
+      "exposure": "Market-access and shipment pathways may be constrained.",
+      "impact": "Revenue pressure from reduced demand abroad.",
+      "evidence_paragraph_idx": [
+        135,
+        136
+      ]
+    },
+    {
+      "id": "rg_prev_3",
+      "driver": "Unauthorized access incident and source-code exfiltration.",
+      "exposure": "Critical systems and data can be compromised.",
+      "impact": "Remediation cost, liability, and reputation harm.",
+      "evidence_paragraph_idx": [
+        88,
+        90
+      ]
+    }
+  ],
+  "risk_graph_curr": [
+    {
+      "id": "rg_curr_1",
+      "driver": "Supply concentration in obligations and prepaids.",
+      "exposure": "Lower flexibility to rebalance quickly when demand shifts.",
+      "impact": "Greater mismatch risk and financial volatility.",
+      "evidence_paragraph_idx": [
+        44,
+        45
+      ]
+    },
+    {
+      "id": "rg_curr_2",
+      "driver": "USG China-focused chip controls and licensing.",
+      "exposure": "Named AI products face export gating.",
+      "impact": "Potential demand and competitive-position downside.",
+      "evidence_paragraph_idx": [
+        163,
+        164
+      ]
+    },
+    {
+      "id": "rg_curr_3",
+      "driver": "Recurring-incident cyber posture and partner exposure.",
+      "exposure": "Security events can recur across NVIDIA and ecosystem systems.",
+      "impact": "Operational disruption and regulatory/litigation consequences.",
+      "evidence_paragraph_idx": [
+        112,
+        113
+      ]
+    }
+  ],
+  "change_mechanisms": [
+    {
+      "id": "mech_1",
+      "mechanism": "Committed supply concentration increased.",
+      "transmission_channel": "Obligations/prepaids lock in supply before demand is known.",
+      "business_effect": "Higher excess-inventory and margin-risk sensitivity.",
+      "time_horizon": "near_term",
+      "evidence_refs": [
+        {
+          "year": 2022,
+          "paragraph_idx": 41
+        },
+        {
+          "year": 2022,
+          "paragraph_idx": 45
+        },
+        {
+          "year": 2023,
+          "paragraph_idx": 44
+        },
+        {
+          "year": 2023,
+          "paragraph_idx": 45
+        }
+      ]
+    },
+    {
+      "id": "mech_2",
+      "mechanism": "Export controls moved from potential to implemented scope.",
+      "transmission_channel": "Licensing gates shipments of covered chips/systems.",
+      "business_effect": "Reduced addressable demand and added compliance friction.",
+      "time_horizon": "near_term",
+      "evidence_refs": [
+        {
+          "year": 2022,
+          "paragraph_idx": 135
+        },
+        {
+          "year": 2022,
+          "paragraph_idx": 136
+        },
+        {
+          "year": 2023,
+          "paragraph_idx": 163
+        },
+        {
+          "year": 2023,
+          "paragraph_idx": 164
+        }
+      ]
+    },
+    {
+      "id": "mech_3",
+      "mechanism": "Cyber disclosure broadened to recurrence.",
+      "transmission_channel": "Repeated incidents increase remediation/enforcement cycle risk.",
+      "business_effect": "Higher recurring operating and continuity burden.",
+      "time_horizon": "ongoing",
+      "evidence_refs": [
+        {
+          "year": 2022,
+          "paragraph_idx": 88
+        },
+        {
+          "year": 2022,
+          "paragraph_idx": 90
+        },
+        {
+          "year": 2023,
+          "paragraph_idx": 112
+        },
+        {
+          "year": 2023,
+          "paragraph_idx": 113
+        }
+      ]
+    },
+    {
+      "id": "mech_4",
+      "mechanism": "Privacy obligations became operational and cross-border constrained.",
+      "transmission_channel": "CPRA enforcement and CAC transfer approvals add jurisdictional gates.",
+      "business_effect": "More compliance overhead and data-flow constraints.",
+      "time_horizon": "mid_term",
+      "evidence_refs": [
+        {
+          "year": 2022,
+          "paragraph_idx": 165
+        },
+        {
+          "year": 2023,
+          "paragraph_idx": 194
+        },
+        {
+          "year": 2023,
+          "paragraph_idx": 205
+        }
+      ]
+    }
+  ],
+  "uncertainty_and_limits": [
+    {
+      "id": "limit_1",
+      "limitation": "The cited paragraphs provide policy/channel language but not customer-level revenue attribution, so effect sizing remains directional rather than quantified.",
+      "evidence_refs": [
+        {
+          "year": 2022,
+          "paragraph_idx": 135
+        },
+        {
+          "year": 2023,
+          "paragraph_idx": 163
+        }
+      ]
+    },
+    {
+      "id": "limit_2",
+      "limitation": "Cyber references compare one named 2022 event with generalized 2023 recurrence language, so the underlying incident-rate trend cannot be measured from these rows alone.",
+      "evidence_refs": [
+        {
+          "year": 2022,
+          "paragraph_idx": 88
+        },
+        {
+          "year": 2023,
+          "paragraph_idx": 113
+        }
+      ]
+    }
+  ],
+  "investor_relevance": [
+    {
+      "id": "inv_1",
+      "why_it_matters": "Supply commitments and export-control specificity increase near-term sensitivity of margins, inventory, and China-related AI revenue channels.",
+      "evidence_refs": [
+        {
+          "year": 2023,
+          "paragraph_idx": 45
+        },
+        {
+          "year": 2023,
+          "paragraph_idx": 164
+        }
+      ]
+    },
+    {
+      "id": "inv_2",
+      "why_it_matters": "Operative privacy and transfer controls can add recurring compliance burden that compounds with existing execution risk.",
+      "evidence_refs": [
+        {
+          "year": 2023,
+          "paragraph_idx": 194
+        },
+        {
+          "year": 2023,
+          "paragraph_idx": 205
+        }
+      ]
+    }
+  ],
+  "projection_contract": {
+    "projects_to_artifact_id": "llm_outline_compare_runtime",
+    "projection_version": "1.0"
+  },
+  "provenance": {
+    "input_file": "inputs/pair/NVDA_2022_2023_10k_item1a_deboilerplated_edgar.json",
+    "model_provider": "openai",
+    "model_name": "GPT-5.3-Codex (Extra High Reasoning, Agent Mode)",
+    "run_label": "2026-02-27_openai_gpt53codex_xhigh_agent_fullsec_real_nvda_2022_2023_outline_compare"
+  }
+}

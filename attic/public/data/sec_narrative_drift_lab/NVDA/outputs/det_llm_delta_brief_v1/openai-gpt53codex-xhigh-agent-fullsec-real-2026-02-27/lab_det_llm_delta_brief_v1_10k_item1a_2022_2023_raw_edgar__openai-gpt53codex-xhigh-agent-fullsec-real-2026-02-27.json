@@ -1,0 +1,110 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_llm_delta_brief_v1",
+  "cleaning_lens": "raw",
+  "source_id": "edgar",
+  "ticker": "NVDA",
+  "section": "10k_item1a",
+  "year_from": 2022,
+  "year_to": 2023,
+  "artifacts": {
+    "delta_brief": "Change: \"new export restrictions and export licensing requirements\" target China chip sales (intensified); \"NVIDIA AI cloud services\" separates cloud execution risk from generic R&D risk (split) (2022 para 3; 2022 para 13) Drivers: Evidence shows topic movement, rewording intensity, and selective expansion/contraction in the risk narrative. (2022 para 32; 2022 para 54) Caveat: 2022 para 53 is a continuation paragraph with broad wording, while 2023 paras 66-67 add product/transition specificity but do not quantify exact revenue at risk."
+  },
+  "evidence": [
+    {
+      "year": 2022,
+      "paragraph_idx": 2,
+      "snippet": "We make considerable investments in research and development and business offerings in markets where we have a limited operating history, which may not produce meaningful revenue for several years, if at all.",
+      "why": "Baseline new-market monetization risk.",
+      "highlights": [
+        "make",
+        "considerable"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 12,
+      "snippet": "we have placed and may continue to place non-cancellable inventory orders in advance of our historical lead times, and pay premiums and/or provide deposits to secure future supply and capacity.",
+      "why": "Shows 2022 commitment exposure.",
+      "highlights": [
+        "have",
+        "placed"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 31,
+      "snippet": "on February 23, 2022, we became aware of a security incident involving unauthorized access to our network by a group of independent criminal threat actors, not affiliated with any government or political cause.",
+      "why": "Event-specific cyber disclosure in 2022.",
+      "highlights": [
+        "february",
+        "became"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 53,
+      "snippet": "services capable of enabling or facilitating AI, including some or all of our product and service offerings. Such restrictions could limit our ability to serve demand abroad and could negatively impact our business and financial results.",
+      "why": "Broad AI-related export restriction baseline.",
+      "highlights": [
+        "services",
+        "capable"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 17,
+      "snippet": "We will offer enterprise customers NVIDIA AI cloud services directly and through our network of partners. Examples of these services include NVIDIA DGX Cloud, which is cloud-based infrastructure and software for training AI models, and customizable pretrained AI models.",
+      "why": "Named AI cloud model execution risk.",
+      "highlights": [
+        "will",
+        "offer"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 22,
+      "snippet": "At the end of fiscal year 2023, purchase obligations and prepaid supply agreements represented more than half of our total supply. We may incur inventory provisions if our inventory or supply commitments are misaligned with demand for our products.",
+      "why": "Quantified supply-commitment intensity.",
+      "highlights": [
+        "fiscal",
+        "year"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 66,
+      "snippet": "During the third quarter of fiscal year 2023, the U.S. government, or USG, announced new export restrictions and export licensing requirements targeting China’s semiconductor and supercomputing industries.",
+      "why": "Enacted export-license expansion.",
+      "highlights": [
+        "during",
+        "third"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 67,
+      "snippet": "We are required to transition certain operations out of China (including Hong Kong), which could be costly and time consuming, and adversely affect our research and development and supply and distribution operations, as well as our revenue, during any such transition period.",
+      "why": "Operational transition burden.",
+      "highlights": [
+        "required",
+        "transition"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.72,
+    "confidence": 0.75,
+    "coverage": 1.0,
+    "warnings": [
+      "Projected deterministically from llm_outline_compare_runtime master artifact.",
+      "Only raw-lens inputs were provided for this case; no deboilerplated counterpart is available in-scope for this artifact."
+    ]
+  },
+  "provenance": {
+    "input_file": "inputs/pair/NVDA_2022_2023_10k_item1a_raw_edgar.json",
+    "model_provider": "openai",
+    "model_name": "GPT-5.3-Codex (Extra High Reasoning, Agent Mode)",
+    "run_label": "2026-03-04_openai_gpt53codex_xhigh_agent_fullsec_real_nvda_2022_2023_outline_compare"
+  }
+}

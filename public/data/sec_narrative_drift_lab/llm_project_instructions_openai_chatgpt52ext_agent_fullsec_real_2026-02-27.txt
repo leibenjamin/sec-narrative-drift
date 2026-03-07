@@ -12,8 +12,8 @@ Use only the attached input file plus thread starter prompt. Do not use memory o
 provenance.input_file must be exactly: inputs/pair/<TICKER>_<YEAR_FROM>_<YEAR_TO>_<SECTION>_<LENS>_<SOURCE>.json
 Attach three files for each job: pair manifest + year prev input + year curr input.
 provenance.model_provider must be exactly "openai".
-provenance.model_name must be exactly "ChatGPT 5.2-Thinking (Extended Thinking)".
-provenance.run_label is required and must start with YYYY-MM-DD_ (example: "YYYY-MM-DD_<campaign_tag>").
+provenance.model_name must be exactly "ChatGPT 5.4-Thinking (Extended Thinking)".
+provenance.run_label is required and must start with YYYY-MM-DD_ (example: "YYYY-MM-DD_openai_chatgpt54ext_fullsec_real_<campaign_tag>").
 Do not output extra provenance keys beyond input_file, model_provider, model_name, run_label.
 paragraph_idx must use direct FULL indices from year inputs (no focuspack index remapping).
 Snippets must be verbatim substrings from mapped paragraphs and <= 350 chars.

@@ -1,0 +1,759 @@
+{
+  "lab_schema_version": "1.0",
+  "artifact_schema_version": "1.0",
+  "artifact_id": "llm_outline_compare_structured",
+  "ticker": "WM",
+  "section": "10k_item1a",
+  "source_id": "edgar",
+  "cleaning_lens": "raw",
+  "year_from": 2024,
+  "year_to": 2025,
+  "outline_prev": [
+    {
+      "node_id": "prev_root",
+      "parent_id": null,
+      "level": 1,
+      "order": 0,
+      "label": "WM 2024 risk map",
+      "risk_thesis": "Risk structure centers on regulation, labor/disruption, technology and policy-driven energy economics.",
+      "evidence_paragraph_idx": [
+        0
+      ]
+    },
+    {
+      "node_id": "prev_reg",
+      "parent_id": "prev_root",
+      "level": 2,
+      "order": 1,
+      "label": "Regulatory pressure",
+      "risk_thesis": "EPR and permitting rules shape volume mix and growth timing.",
+      "evidence_paragraph_idx": [
+        13,
+        18,
+        26
+      ]
+    },
+    {
+      "node_id": "prev_ops",
+      "parent_id": "prev_root",
+      "level": 2,
+      "order": 2,
+      "label": "Operations and market",
+      "risk_thesis": "Labor and trade shocks pressure cost and volume stability.",
+      "evidence_paragraph_idx": [
+        31,
+        47,
+        54
+      ]
+    },
+    {
+      "node_id": "prev_tech",
+      "parent_id": "prev_root",
+      "level": 2,
+      "order": 3,
+      "label": "Technology and cyber",
+      "risk_thesis": "Digital dependence and AI adoption create legal and operational risk.",
+      "evidence_paragraph_idx": [
+        76,
+        78,
+        84
+      ]
+    },
+    {
+      "node_id": "prev_energy",
+      "parent_id": "prev_root",
+      "level": 2,
+      "order": 4,
+      "label": "Renewable policy risk",
+      "risk_thesis": "RIN/RFS policy volatility affects Renewable Energy returns.",
+      "evidence_paragraph_idx": [
+        93,
+        94
+      ]
+    },
+    {
+      "node_id": "prev_legal",
+      "parent_id": "prev_root",
+      "level": 2,
+      "order": 5,
+      "label": "Legacy compliance",
+      "risk_thesis": "Stericycle-related enforcement obligations remain a downside vector.",
+      "evidence_paragraph_idx": [
+        106
+      ]
+    },
+    {
+      "node_id": "prev_epr",
+      "parent_id": "prev_reg",
+      "level": 3,
+      "order": 6,
+      "label": "EPR design uncertainty",
+      "risk_thesis": "Producer-responsibility implementation may alter waste and recycling streams.",
+      "evidence_paragraph_idx": [
+        18
+      ]
+    },
+    {
+      "node_id": "prev_labor",
+      "parent_id": "prev_ops",
+      "level": 3,
+      "order": 7,
+      "label": "Union and wage exposure",
+      "risk_thesis": "Union leverage and wage channels can increase operating expense.",
+      "evidence_paragraph_idx": [
+        31
+      ]
+    },
+    {
+      "node_id": "prev_disrupt",
+      "parent_id": "prev_ops",
+      "level": 3,
+      "order": 8,
+      "label": "Tariff and pandemic shocks",
+      "risk_thesis": "Trade restrictions and major external events can disrupt volumes and costs.",
+      "evidence_paragraph_idx": [
+        54,
+        70
+      ]
+    },
+    {
+      "node_id": "prev_cyber",
+      "parent_id": "prev_tech",
+      "level": 3,
+      "order": 9,
+      "label": "System disruption risk",
+      "risk_thesis": "Cyber incidents can cause service interruption, cost and reputation damage.",
+      "evidence_paragraph_idx": [
+        76,
+        84
+      ]
+    },
+    {
+      "node_id": "prev_rin",
+      "parent_id": "prev_energy",
+      "level": 3,
+      "order": 10,
+      "label": "RFS target downside",
+      "risk_thesis": "Policy changes to renewable fuel targets can weaken RIN-linked economics.",
+      "evidence_paragraph_idx": [
+        94
+      ]
+    },
+    {
+      "node_id": "prev_steri",
+      "parent_id": "prev_legal",
+      "level": 3,
+      "order": 11,
+      "label": "Monitor obligations",
+      "risk_thesis": "The filing states explicit monitor and self-reporting commitments.",
+      "evidence_paragraph_idx": [
+        106
+      ]
+    }
+  ],
+  "outline_curr": [
+    {
+      "node_id": "curr_root",
+      "parent_id": null,
+      "level": 1,
+      "order": 0,
+      "label": "WM 2025 risk map",
+      "risk_thesis": "The same pillars remain, but selected channels are condensed and more explicit.",
+      "evidence_paragraph_idx": [
+        0
+      ]
+    },
+    {
+      "node_id": "curr_reg",
+      "parent_id": "curr_root",
+      "level": 2,
+      "order": 1,
+      "label": "Regulatory pressure",
+      "risk_thesis": "EPR/legal uncertainty and trade-policy shifts remain central.",
+      "evidence_paragraph_idx": [
+        11,
+        15,
+        17
+      ]
+    },
+    {
+      "node_id": "curr_ops",
+      "parent_id": "curr_root",
+      "level": 2,
+      "order": 2,
+      "label": "Operations and market",
+      "risk_thesis": "Labor cost channels and disruption factors are grouped more tightly.",
+      "evidence_paragraph_idx": [
+        26,
+        42,
+        43
+      ]
+    },
+    {
+      "node_id": "curr_tech",
+      "parent_id": "curr_root",
+      "level": 2,
+      "order": 3,
+      "label": "Technology and cyber",
+      "risk_thesis": "AI governance and autonomous-tech cyber safety risks are explicit.",
+      "evidence_paragraph_idx": [
+        66,
+        69,
+        72
+      ]
+    },
+    {
+      "node_id": "curr_energy",
+      "parent_id": "curr_root",
+      "level": 2,
+      "order": 4,
+      "label": "Renewable policy risk",
+      "risk_thesis": "RFS downside is described with explicit target and exemption actions.",
+      "evidence_paragraph_idx": [
+        76,
+        77
+      ]
+    },
+    {
+      "node_id": "curr_legal",
+      "parent_id": "curr_root",
+      "level": 2,
+      "order": 5,
+      "label": "Legacy compliance",
+      "risk_thesis": "Stericycle legal exposure remains but monitor detail is condensed.",
+      "evidence_paragraph_idx": [
+        85
+      ]
+    },
+    {
+      "node_id": "curr_epr",
+      "parent_id": "curr_reg",
+      "level": 3,
+      "order": 6,
+      "label": "EPR rollback risk",
+      "risk_thesis": "Affordability pushback and constitutional review raise planning uncertainty.",
+      "evidence_paragraph_idx": [
+        15
+      ]
+    },
+    {
+      "node_id": "curr_labor",
+      "parent_id": "curr_ops",
+      "level": 3,
+      "order": 7,
+      "label": "Labor cost specificity",
+      "risk_thesis": "Multiemployer pension withdrawal and minimum-wage channels are explicit.",
+      "evidence_paragraph_idx": [
+        26
+      ]
+    },
+    {
+      "node_id": "curr_disrupt",
+      "parent_id": "curr_ops",
+      "level": 3,
+      "order": 8,
+      "label": "Merged disruption channel",
+      "risk_thesis": "Pandemics, tariffs and macro shocks are combined into one paragraph.",
+      "evidence_paragraph_idx": [
+        43
+      ]
+    },
+    {
+      "node_id": "curr_cyber",
+      "parent_id": "curr_tech",
+      "level": 3,
+      "order": 9,
+      "label": "Autonomous-tech cyber risk",
+      "risk_thesis": "New operating technologies create added cybersecurity safety exposure.",
+      "evidence_paragraph_idx": [
+        69
+      ]
+    },
+    {
+      "node_id": "curr_rin",
+      "parent_id": "curr_energy",
+      "level": 3,
+      "order": 10,
+      "label": "Explicit blending target cuts",
+      "risk_thesis": "The text names reduced blending targets and exemption activity.",
+      "evidence_paragraph_idx": [
+        76
+      ]
+    },
+    {
+      "node_id": "curr_steri",
+      "parent_id": "curr_legal",
+      "level": 3,
+      "order": 11,
+      "label": "Outcome-focused compliance",
+      "risk_thesis": "Narrative shifts to adverse consequences over monitor mechanics.",
+      "evidence_paragraph_idx": [
+        85
+      ]
+    }
+  ],
+  "node_alignment": [
+    {
+      "prev_node_id": "prev_root",
+      "curr_node_id": "curr_root",
+      "change_class": "stable",
+      "rationale": "Top-level structure is retained across years with the same major risk families.",
+      "salience": 0.52
+    },
+    {
+      "prev_node_id": "prev_epr",
+      "curr_node_id": "curr_epr",
+      "change_class": "intensified",
+      "rationale": "2025 adds rollback and constitutional-review language, shifting from adoption-only uncertainty to program durability risk.",
+      "salience": 0.9
+    },
+    {
+      "prev_node_id": "prev_labor",
+      "curr_node_id": "curr_labor",
+      "change_class": "intensified",
+      "rationale": "2025 directly names pension-withdrawal and minimum-wage channels that were less explicit in 2024 headings.",
+      "salience": 0.86
+    },
+    {
+      "prev_node_id": "prev_disrupt",
+      "curr_node_id": "curr_disrupt",
+      "change_class": "merged",
+      "rationale": "Separate 2024 tariff/pandemic channels are consolidated into one 2025 disruption paragraph.",
+      "salience": 0.8
+    },
+    {
+      "prev_node_id": "prev_rin",
+      "curr_node_id": "curr_rin",
+      "change_class": "intensified",
+      "rationale": "Wording moves from potential target reductions to explicit retroactive and forward-year reduction actions.",
+      "salience": 0.74
+    },
+    {
+      "prev_node_id": "prev_cyber",
+      "curr_node_id": "curr_cyber",
+      "change_class": "intensified",
+      "rationale": "Cyber exposure now references autonomous and remote-controlled operating technologies as direct vectors.",
+      "salience": 0.66
+    },
+    {
+      "prev_node_id": "prev_steri",
+      "curr_node_id": "curr_steri",
+      "change_class": "softened",
+      "rationale": "Detailed monitor/self-reporting obligations are replaced by higher-level adverse-outcome language.",
+      "salience": 0.67
+    }
+  ],
+  "material_changes": [
+    {
+      "id": "mc_1",
+      "title": "EPR text adds scale back previously enacted EPR requirements and constitutional review",
+      "change_class": "intensified",
+      "salience": 0.91,
+      "caveat": "2025 paragraph 15 begins mid-thought, so part of the apparent intensification may come from paragraph-boundary extraction rather than entirely new standalone drafting.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 18
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 15
+        }
+      ]
+    },
+    {
+      "id": "mc_2",
+      "title": "Labor section now names Multiemployer Pension Plan withdrawals and minimum wages",
+      "change_class": "intensified",
+      "salience": 0.86,
+      "caveat": "The 2024 comparator is a broad paragraph and the 2025 comparator is a concise headline, so part of the shift can be presentation compression rather than a full scope expansion.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 31
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 26
+        }
+      ]
+    },
+    {
+      "id": "mc_3",
+      "title": "Disruption narrative merges tariffs on foreign trade with pandemics or widespread social restrictions",
+      "change_class": "merged",
+      "salience": 0.8,
+      "caveat": "2025 paragraph 43 aggregates multiple channels in one dense block, limiting exact one-to-one mapping versus the more separated 2024 presentation.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 54
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 43
+        }
+      ]
+    },
+    {
+      "id": "mc_4",
+      "title": "Renewable policy language adds retroactively lowered 2024 blending volumes detail",
+      "change_class": "intensified",
+      "salience": 0.74,
+      "caveat": "The selected 2025 sentence is drawn from a long blended policy paragraph, so emphasis on target-setting may overrepresent that channel relative to adjacent content in the same paragraph.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 94
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 76
+        }
+      ]
+    },
+    {
+      "id": "mc_5",
+      "title": "Stericycle wording shifts from independent compliance monitor detail to penalty outcomes",
+      "change_class": "softened",
+      "salience": 0.67,
+      "caveat": "This comparison uses one sentence in each year (2024 paragraph 106 and 2025 paragraph 85), so reduced monitor specificity could partly reflect drafting compression.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 106
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 85
+        }
+      ]
+    }
+  ],
+  "evidence_bank": [
+    {
+      "year": 2024,
+      "paragraph_idx": 18,
+      "snippet": "EPR regulations are designed to place either partial or total responsibility on producers of consumer-packaged goods and other products to fund the post-use life cycle of the products and packaging they create.",
+      "why": "2024 baseline EPR mechanism.",
+      "node_ids": [
+        "prev_epr"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 15,
+      "snippet": "affordability have led some jurisdictions to scale back previously enacted EPR requirements, and certain programs have faced lawsuits and potential constitutional review, creating uncertainty for long-term planning.",
+      "why": "2025 EPR rollback/legal challenge wording.",
+      "node_ids": [
+        "curr_epr"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 31,
+      "snippet": "Labor unions continually attempt to organize our employees, and these efforts will likely continue in the future.",
+      "why": "2024 union-cost pressure baseline.",
+      "node_ids": [
+        "prev_labor"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 26,
+      "snippet": "Increases in our labor costs as a result of unions organizing, Multiemployer Pension Plan withdrawals, changes in regulations related to labor unions or increases in minimum wages, could adversely affect our future results.",
+      "why": "2025 labor channels explicitly named.",
+      "node_ids": [
+        "curr_labor"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 54,
+      "snippet": "Significant new restrictions and tariffs on foreign trade could negatively impact commodity prices and our recycling export business.",
+      "why": "2024 tariff/recycling export channel.",
+      "node_ids": [
+        "prev_disrupt"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 43,
+      "snippet": "Major external events, like pandemics or widespread social restrictions, could also have an adverse impact on our volumes, costs and operations.",
+      "why": "2025 pandemic disruption statement.",
+      "node_ids": [
+        "curr_disrupt"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 94,
+      "snippet": "The new U.S. presidential administration could seek to reduce existing renewable fuel targets in a new rulemaking or otherwise set reduced targets for renewable fuels under the RFS program in future rulemakings.",
+      "why": "2024 RFS downside wording.",
+      "node_ids": [
+        "prev_rin"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 76,
+      "snippet": "the current administration has retroactively lowered 2024 blending volumes, proposed reductions for 2025, set low targets for 2026",
+      "why": "2025 explicit target-reduction actions.",
+      "node_ids": [
+        "curr_rin"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 106,
+      "snippet": "Stericycle engaged an independent compliance monitor for two years and is required to undertake compliance with self-reporting obligations for an additional year through November 2025 .",
+      "why": "2024 monitor/self-reporting detail.",
+      "node_ids": [
+        "prev_steri"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 85,
+      "snippet": "Resolution of these matters may result in adverse consequences, including permit revocations or denials and civil, criminal and administrative penalties.",
+      "why": "2025 outcome-focused compliance wording.",
+      "node_ids": [
+        "curr_steri"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 76,
+      "snippet": "The information technology systems and networks that we, our customers, suppliers, and other third parties rely on can be vulnerable to disruptions from cyberattacks, power failures, telecommunications outages, major events like natural disasters, acts of war or terrorism, employee errors, and other unexpected or uncontrollable occurrences.",
+      "why": "2024 cyber exposure baseline.",
+      "node_ids": [
+        "prev_cyber"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 69,
+      "snippet": "Certain new technologies, such as the use of autonomous vehicles, remote-controlled equipment, virtual reality, automation and artificial intelligence, present new and significant cybersecurity safety risks that must be analyzed and addressed before implementation.",
+      "why": "2025 autonomous-tech cyber risk.",
+      "node_ids": [
+        "curr_cyber"
+      ]
+    }
+  ],
+  "lens_divergence": {
+    "materially_different": false,
+    "summary": "Only raw-lens inputs were supplied for this case; divergence commentary is limited to raw-paragraph boundary and density effects."
+  },
+  "risk_graph_prev": [
+    {
+      "id": "rg_prev_1",
+      "driver": "EPR and trade policy shifts",
+      "exposure": "Recycling stream mix and export demand",
+      "impact": "Volume and margin pressure",
+      "evidence_paragraph_idx": [
+        18,
+        54
+      ]
+    },
+    {
+      "id": "rg_prev_2",
+      "driver": "Unionization and wage channels",
+      "exposure": "Labor cost base",
+      "impact": "Higher operating expense and potential disruption",
+      "evidence_paragraph_idx": [
+        31
+      ]
+    },
+    {
+      "id": "rg_prev_3",
+      "driver": "RFS/RIN policy volatility",
+      "exposure": "Renewable Energy return assumptions",
+      "impact": "Cash-flow variability and investment uncertainty",
+      "evidence_paragraph_idx": [
+        94
+      ]
+    }
+  ],
+  "risk_graph_curr": [
+    {
+      "id": "rg_curr_1",
+      "driver": "EPR rollback and legal challenge risk",
+      "exposure": "Program durability assumptions",
+      "impact": "Planning uncertainty for managed streams",
+      "evidence_paragraph_idx": [
+        15
+      ]
+    },
+    {
+      "id": "rg_curr_2",
+      "driver": "Labor channels include pension withdrawal and wage floors",
+      "exposure": "Operating labor cost structure",
+      "impact": "Margin compression and bargaining friction",
+      "evidence_paragraph_idx": [
+        26
+      ]
+    },
+    {
+      "id": "rg_curr_3",
+      "driver": "RFS target reductions and exemptions",
+      "exposure": "RIN-linked monetization",
+      "impact": "Renewable segment downside volatility",
+      "evidence_paragraph_idx": [
+        76
+      ]
+    }
+  ],
+  "change_mechanisms": [
+    {
+      "id": "mech_1",
+      "mechanism": "EPR legal/program durability risk rose",
+      "transmission_channel": "Rollback and litigation alter program design confidence",
+      "business_effect": "Harder volume and quality planning in recycling streams",
+      "time_horizon": "near_term",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 18
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 15
+        }
+      ]
+    },
+    {
+      "id": "mech_2",
+      "mechanism": "Labor risk became explicit multi-channel",
+      "transmission_channel": "Union, pension-withdrawal and wage-floor pressures raise cost base",
+      "business_effect": "Lower margin flexibility",
+      "time_horizon": "near_term",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 31
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 26
+        }
+      ]
+    },
+    {
+      "id": "mech_3",
+      "mechanism": "Tariff and pandemic shocks are narratively merged",
+      "transmission_channel": "External shocks concurrently affect demand and operating continuity",
+      "business_effect": "More correlated downside in volume and costs",
+      "time_horizon": "near_term",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 54
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 43
+        }
+      ]
+    },
+    {
+      "id": "mech_4",
+      "mechanism": "RFS downside shifted from possible to explicit actions",
+      "transmission_channel": "Target reductions and exemptions weaken expected credit economics",
+      "business_effect": "Higher Renewable Energy return volatility",
+      "time_horizon": "medium_term",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 94
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 76
+        }
+      ]
+    },
+    {
+      "id": "mech_5",
+      "mechanism": "Stericycle compliance disclosure lost monitor detail",
+      "transmission_channel": "Narrative moved from oversight mechanics to consequence summary",
+      "business_effect": "Less specificity on oversight while penalty exposure remains",
+      "time_horizon": "near_term",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 106
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 85
+        }
+      ]
+    }
+  ],
+  "uncertainty_and_limits": [
+    {
+      "id": "limit_1",
+      "limitation": "The EPR comparison relies on 2025 paragraph 15, which begins with carryover phrasing, creating a boundary limitation when measuring net-new wording intensity.",
+      "evidence_refs": [
+        {
+          "year": 2025,
+          "paragraph_idx": 15
+        }
+      ]
+    },
+    {
+      "id": "limit_2",
+      "limitation": "Renewable-policy comparison uses dense paragraphs (2024 paragraph 94 and 2025 paragraph 76) that bundle multiple policy channels, limiting precise single-driver attribution.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 94
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 76
+        }
+      ]
+    }
+  ],
+  "investor_relevance": [
+    {
+      "id": "inv_1",
+      "why_it_matters": "Explicit labor-channel naming improves visibility into cost sensitivity that can change operating leverage assumptions.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 31
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 26
+        }
+      ]
+    },
+    {
+      "id": "inv_2",
+      "why_it_matters": "More explicit renewable-fuel downside language can change expectations for cash-flow stability in growth investments.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 94
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 76
+        }
+      ]
+    }
+  ],
+  "projection_contract": {
+    "projects_to_artifact_id": "llm_outline_compare_runtime",
+    "projection_version": "1.0"
+  },
+  "provenance": {
+    "input_file": "inputs/pair/WM_2024_2025_10k_item1a_raw_edgar.json",
+    "model_provider": "openai",
+    "model_name": "GPT-5.3-Codex (Extra High Reasoning, Agent Mode)",
+    "run_label": "2026-03-05_openai_gpt53codex_xhigh_agent_fullsec_real_wm_2024_2025_outline_compare"
+  }
+}

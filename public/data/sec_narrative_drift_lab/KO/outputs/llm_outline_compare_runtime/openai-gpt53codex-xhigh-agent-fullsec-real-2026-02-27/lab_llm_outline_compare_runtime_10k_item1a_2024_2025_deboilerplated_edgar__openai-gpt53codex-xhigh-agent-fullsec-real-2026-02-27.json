@@ -1,0 +1,669 @@
+{
+  "lab_schema_version": "1.0",
+  "artifact_schema_version": "1.0",
+  "ticker": "KO",
+  "section": "10k_item1a",
+  "source_id": "edgar",
+  "cleaning_lens": "deboilerplated",
+  "year_from": 2024,
+  "year_to": 2025,
+  "outline_prev": [
+    {
+      "node_id": "prev_root",
+      "parent_id": null,
+      "level": 1,
+      "order": 0,
+      "label": "Risk Factor Architecture",
+      "risk_thesis": "Risks are organized across demand, execution, policy, and resilience blocks.",
+      "evidence_paragraph_idx": [
+        0,
+        20,
+        33,
+        52
+      ]
+    },
+    {
+      "node_id": "prev_market",
+      "parent_id": "prev_root",
+      "level": 2,
+      "order": 1,
+      "label": "Demand Pressure",
+      "risk_thesis": "Macro, conflict, and health channels pressure demand.",
+      "evidence_paragraph_idx": [
+        0,
+        1,
+        20,
+        21
+      ]
+    },
+    {
+      "node_id": "prev_market_macro",
+      "parent_id": "prev_market",
+      "level": 3,
+      "order": 2,
+      "label": "Macro and Conflict Shock",
+      "risk_thesis": "Named conflicts and weak conditions can disrupt operations and affordability.",
+      "evidence_paragraph_idx": [
+        0,
+        1
+      ]
+    },
+    {
+      "node_id": "prev_market_health",
+      "parent_id": "prev_market",
+      "level": 3,
+      "order": 3,
+      "label": "Health and Preference Shift",
+      "risk_thesis": "Obesity concerns, taxes, and ingredient perceptions can reduce demand.",
+      "evidence_paragraph_idx": [
+        20,
+        21
+      ]
+    },
+    {
+      "node_id": "prev_ops",
+      "parent_id": "prev_root",
+      "level": 2,
+      "order": 4,
+      "label": "Execution and Supply",
+      "risk_thesis": "Supply volatility and quality events can interrupt availability and margins.",
+      "evidence_paragraph_idx": [
+        14,
+        17,
+        22,
+        23
+      ]
+    },
+    {
+      "node_id": "prev_ops_quality",
+      "parent_id": "prev_ops",
+      "level": 3,
+      "order": 5,
+      "label": "Quality and Recall Exposure",
+      "risk_thesis": "Recalls can drive product loss, liability, and reputational damage.",
+      "evidence_paragraph_idx": [
+        22,
+        23,
+        25
+      ]
+    },
+    {
+      "node_id": "prev_policy",
+      "parent_id": "prev_root",
+      "level": 2,
+      "order": 6,
+      "label": "Tax and Legal Framework",
+      "risk_thesis": "Tax-rule evolution and legal outcomes can change costs and cash flows.",
+      "evidence_paragraph_idx": [
+        31,
+        33,
+        34,
+        42
+      ]
+    },
+    {
+      "node_id": "prev_policy_tax",
+      "parent_id": "prev_policy",
+      "level": 3,
+      "order": 7,
+      "label": "Pillar Two Baseline",
+      "risk_thesis": "Adoption timeline and OECD revisions create tax uncertainty.",
+      "evidence_paragraph_idx": [
+        33,
+        34
+      ]
+    },
+    {
+      "node_id": "prev_resilience",
+      "parent_id": "prev_root",
+      "level": 2,
+      "order": 8,
+      "label": "Data and Climate Resilience",
+      "risk_thesis": "Data compliance and climate-resource stress add operating and compliance risk.",
+      "evidence_paragraph_idx": [
+        47,
+        52,
+        55,
+        57,
+        60
+      ]
+    }
+  ],
+  "outline_curr": [
+    {
+      "node_id": "curr_root",
+      "parent_id": null,
+      "level": 1,
+      "order": 0,
+      "label": "Risk Factor Architecture",
+      "risk_thesis": "Same architecture with sharper partner-concentration and tax-framework updates.",
+      "evidence_paragraph_idx": [
+        0,
+        17,
+        32,
+        37,
+        60
+      ]
+    },
+    {
+      "node_id": "curr_market",
+      "parent_id": "curr_root",
+      "level": 2,
+      "order": 1,
+      "label": "Demand Pressure",
+      "risk_thesis": "Demand risk remains macro and health driven, with an explicit AI channel.",
+      "evidence_paragraph_idx": [
+        0,
+        16,
+        17,
+        19
+      ]
+    },
+    {
+      "node_id": "curr_market_macro",
+      "parent_id": "curr_market",
+      "level": 3,
+      "order": 2,
+      "label": "Macro Affordability Stress",
+      "risk_thesis": "Inflation and weak conditions dominate macro framing.",
+      "evidence_paragraph_idx": [
+        0
+      ]
+    },
+    {
+      "node_id": "curr_market_health",
+      "parent_id": "curr_market",
+      "level": 3,
+      "order": 3,
+      "label": "Health Policy and Demand",
+      "risk_thesis": "Childhood-disease initiatives and benefit-program constraints expand demand risk.",
+      "evidence_paragraph_idx": [
+        16,
+        17,
+        18
+      ]
+    },
+    {
+      "node_id": "curr_market_ai",
+      "parent_id": "curr_market",
+      "level": 3,
+      "order": 4,
+      "label": "AI-Mediated Discovery",
+      "risk_thesis": "AI across digital platforms reshapes how consumers engage with brands.",
+      "evidence_paragraph_idx": [
+        19
+      ]
+    },
+    {
+      "node_id": "curr_ops",
+      "parent_id": "curr_root",
+      "level": 2,
+      "order": 5,
+      "label": "Execution and Partner Dependence",
+      "risk_thesis": "Quality accountability widens and partner concentration is explicit.",
+      "evidence_paragraph_idx": [
+        20,
+        21,
+        24,
+        32,
+        33
+      ]
+    },
+    {
+      "node_id": "curr_ops_quality",
+      "parent_id": "curr_ops",
+      "level": 3,
+      "order": 6,
+      "label": "Expanded Recall Pathway",
+      "risk_thesis": "Recall triggers broaden and connect to remediation-driven lost sales.",
+      "evidence_paragraph_idx": [
+        20,
+        21,
+        24
+      ]
+    },
+    {
+      "node_id": "curr_ops_bottler",
+      "parent_id": "curr_ops",
+      "level": 3,
+      "order": 7,
+      "label": "Bottler Concentration Spillover",
+      "risk_thesis": "Single-bottler exposure and partner conduct can transmit into revenue and brand outcomes.",
+      "evidence_paragraph_idx": [
+        32,
+        33
+      ]
+    },
+    {
+      "node_id": "curr_policy",
+      "parent_id": "curr_root",
+      "level": 2,
+      "order": 8,
+      "label": "Tax and Legal Framework",
+      "risk_thesis": "Pillar Two guidance adds applicability shifts while legal risk remains broad.",
+      "evidence_paragraph_idx": [
+        34,
+        37,
+        38,
+        45,
+        47
+      ]
+    },
+    {
+      "node_id": "curr_policy_tax",
+      "parent_id": "curr_policy",
+      "level": 3,
+      "order": 9,
+      "label": "Pillar Two Side-by-Side Shift",
+      "risk_thesis": "G7/OECD side-by-side framing may change applicability for U.S.-parented groups.",
+      "evidence_paragraph_idx": [
+        36,
+        37,
+        38,
+        39
+      ]
+    },
+    {
+      "node_id": "curr_resilience",
+      "parent_id": "curr_root",
+      "level": 2,
+      "order": 10,
+      "label": "Data and Climate Resilience",
+      "risk_thesis": "Data and sustainability compliance burdens remain structurally persistent.",
+      "evidence_paragraph_idx": [
+        53,
+        55,
+        60,
+        63,
+        65,
+        67
+      ]
+    }
+  ],
+  "node_alignment": [
+    {
+      "prev_node_id": "prev_root",
+      "curr_node_id": "curr_root",
+      "change_class": "stable",
+      "rationale": "Both years keep the same high-level architecture, so structure is stable while emphasis changes inside nodes.",
+      "salience": 0.62
+    },
+    {
+      "prev_node_id": "prev_market",
+      "curr_node_id": "curr_market",
+      "change_class": "stable",
+      "rationale": "Demand risk still runs through affordability and health channels in both years.",
+      "salience": 0.69
+    },
+    {
+      "prev_node_id": "prev_market_macro",
+      "curr_node_id": "curr_market_macro",
+      "change_class": "softened",
+      "rationale": "Specific conflict language in 2024 is replaced by broader macro-inflation language in 2025.",
+      "salience": 0.67
+    },
+    {
+      "prev_node_id": "prev_market_health",
+      "curr_node_id": "curr_market_health",
+      "change_class": "intensified",
+      "rationale": "2025 adds agency chronic-disease initiative language and benefit-program restrictions, broadening policy demand transmission.",
+      "salience": 0.82
+    },
+    {
+      "prev_node_id": "prev_market_health",
+      "curr_node_id": "curr_market_ai",
+      "change_class": "split",
+      "rationale": "Part of demand narrative that was embedded in broad preference wording is separated into an explicit AI-discovery mechanism.",
+      "salience": 0.74
+    },
+    {
+      "prev_node_id": "prev_ops",
+      "curr_node_id": "curr_ops",
+      "change_class": "intensified",
+      "rationale": "Operational risk expands from generic execution to explicit partner concentration and conduct spillover channels.",
+      "salience": 0.85
+    },
+    {
+      "prev_node_id": "prev_ops_quality",
+      "curr_node_id": "curr_ops_quality",
+      "change_class": "intensified",
+      "rationale": "Current-year recall text adds contract manufacturers and broader defect categories, increasing event pathways.",
+      "salience": 0.8
+    },
+    {
+      "prev_node_id": null,
+      "curr_node_id": "curr_ops_bottler",
+      "change_class": "added",
+      "rationale": "A stand-alone concentration and partner-conduct node appears in 2025 and is not separately stated in 2024.",
+      "salience": 0.88
+    },
+    {
+      "prev_node_id": "prev_policy",
+      "curr_node_id": "curr_policy",
+      "change_class": "stable",
+      "rationale": "Tax/legal block persists with the same compliance-to-earnings mechanism.",
+      "salience": 0.7
+    },
+    {
+      "prev_node_id": "prev_policy_tax",
+      "curr_node_id": "curr_policy_tax",
+      "change_class": "intensified",
+      "rationale": "2025 adds G7/OECD side-by-side developments beyond the 2024 baseline adoption timeline.",
+      "salience": 0.92
+    },
+    {
+      "prev_node_id": "prev_resilience",
+      "curr_node_id": "curr_resilience",
+      "change_class": "stable",
+      "rationale": "Data-governance and climate-resource channels remain present with similar exposure logic.",
+      "salience": 0.64
+    }
+  ],
+  "material_changes": [
+    {
+      "id": "mc_1",
+      "title": "Pillar Two 'side-by-side framework' adds 'largely exempting U.S.-headquartered companies' wording",
+      "change_class": "intensified",
+      "salience": 0.93,
+      "caveat": "Limitation: Tax evidence in 2024 para 33-34 and 2025 para 37-39 describes framework direction but does not provide country-level earnings mix or quantified cash-tax sensitivity.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 33
+        },
+        {
+          "year": 2024,
+          "paragraph_idx": 34
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 37
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 38
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 39
+        }
+      ]
+    },
+    {
+      "id": "mc_2",
+      "title": "New statement that 'one bottler accounted for 10% of our net operating revenues' plus conduct spillover",
+      "change_class": "added",
+      "salience": 0.86,
+      "caveat": "Limitation: The concentration claim is single-year in 2025 para 32 with conduct context in para 33, so persistence cannot be tested from this pair alone.",
+      "evidence_refs": [
+        {
+          "year": 2025,
+          "paragraph_idx": 32
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 33
+        }
+      ]
+    },
+    {
+      "id": "mc_3",
+      "title": "Health channel expands with 'childhood chronic diseases' and 'artificial intelligence across digital platforms'",
+      "change_class": "intensified",
+      "salience": 0.79,
+      "caveat": "Limitation: Demand evidence from 2024 para 20-21 and 2025 para 16-17 plus para 19 is qualitative and provides no measured elasticity by market.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 20
+        },
+        {
+          "year": 2024,
+          "paragraph_idx": 21
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 16
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 17
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 19
+        }
+      ]
+    },
+    {
+      "id": "mc_4",
+      "title": "Recall language adds 'contract manufacturers' and explicit 'mislabeling, misbranding, spoilage, undeclared allergens'",
+      "change_class": "intensified",
+      "salience": 0.71,
+      "caveat": "Limitation: The cited recall expansion (2024 para 22-23 vs 2025 para 20-21 and para 24) does not include incident counts or remediation cost distributions.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 22
+        },
+        {
+          "year": 2024,
+          "paragraph_idx": 23
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 20
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 21
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 24
+        }
+      ]
+    },
+    {
+      "id": "mc_5",
+      "title": "'disruption to our operations due to international conflicts' shifts to broad economic-condition wording",
+      "change_class": "softened",
+      "salience": 0.58,
+      "caveat": "Limitation: This contrast uses 2024 para 1 against 2025 para 0, so paragraph-boundary mapping may miss conflict references outside these cited lines.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 1
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 0
+        }
+      ]
+    }
+  ],
+  "evidence_bank": [
+    {
+      "year": 2024,
+      "paragraph_idx": 1,
+      "snippet": "Throughout 2024, the Company faced disruption to our operations due to international conflicts, including the conflict between Russia and Ukraine and conflicts in the Middle East.",
+      "why": "Prior-year explicit conflict disruption language.",
+      "node_ids": [
+        "prev_market_macro"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 0,
+      "snippet": "Many of the jurisdictions in which our products are sold have experienced, and could continue to experience, unfavorable changes in economic conditions, which could negatively affect the affordability of, and consumer demand for, our beverages,",
+      "why": "Current-year macro affordability and inflation framing.",
+      "node_ids": [
+        "curr_market_macro"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 20,
+      "snippet": "Ongoing public concern about obesity; other health-related public concerns surrounding consumption of sweetened beverages; the effects or perceived effects of the usage of weight-loss drugs on consumption patterns;",
+      "why": "Prior-year obesity, sweetener tax, and weight-loss-drug demand channel.",
+      "node_ids": [
+        "prev_market_health"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 21,
+      "snippet": "Consumer product preferences have evolved and continue to evolve as a result of, among other things, health, wellness and nutrition considerations, including concerns regarding caloric intake associated with sweetened beverages and the perceived undesirability of artificial ingredients or processing;",
+      "why": "Prior-year consumer preference and ingredient perception expansion.",
+      "node_ids": [
+        "prev_market_health"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 16,
+      "snippet": "Recent activities and proposals by U.S. federal and state government agencies and initiatives have focused on potential drivers behind the rise in childhood chronic diseases.",
+      "why": "Current-year U.S. agency focus on childhood chronic diseases.",
+      "node_ids": [
+        "curr_market_health"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 17,
+      "snippet": "Continued governmental focus on such initiatives, as well as ongoing public concern about obesity; other health-related public concerns surrounding consumption of sweetened beverages; the effects or perceived effects of the usage of weight-loss drugs on consumption patterns;",
+      "why": "Current-year health-policy and SNAP-related demand pressure language.",
+      "node_ids": [
+        "curr_market_health"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 19,
+      "snippet": "The increasing use of data analytics, automation and artificial intelligence across digital platforms is further reshaping how consumers discover, evaluate and engage with brands.",
+      "why": "Current-year AI and digital-platform discovery mechanism.",
+      "node_ids": [
+        "curr_market_ai"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 22,
+      "snippet": "However, despite our strong commitment to product safety and quality, we or our bottling partners at times have not met, and may not always meet, these standards, particularly as we expand our product offerings through innovation or acquisitions into beverage categories, such as value-added dairy and plant-based beverages,",
+      "why": "Prior-year quality perimeter around Company and bottling partners.",
+      "node_ids": [
+        "prev_ops_quality"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 23,
+      "snippet": "We and our bottling partners have had, and may in the future need, to recall products if they become contaminated or adulterated by any means, or if they are mislabeled or do not meet applicable regulatory requirements.",
+      "why": "Prior-year recall trigger language for contamination and mislabeling.",
+      "node_ids": [
+        "prev_ops_quality"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 20,
+      "snippet": "However, despite our strong commitment to product safety and quality, we, our bottling partners or contract manufacturers at times have not met, and may not always meet, these standards, including as we expand our product offerings through innovation or acquisitions.",
+      "why": "Current-year quality perimeter includes contract manufacturers.",
+      "node_ids": [
+        "curr_ops_quality"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 21,
+      "snippet": "We, our bottling partners or contract manufacturers have recalled, and could in the future recall, products due to product quality or safety issues, including actual or alleged mislabeling, misbranding, spoilage, undeclared allergens, contamination or adulteration by any means,",
+      "why": "Current-year recall taxonomy includes misbranding and allergens.",
+      "node_ids": [
+        "curr_ops_quality"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 24,
+      "snippet": "A recall or any decrease in production resulting from remediation efforts due to quality or safety issues may also lead to lost sales due to the unavailability of product for a period of time, and could also subject us to liability claims, negative publicity or changes in consumer demand,",
+      "why": "Current-year recall/remediation links to lost sales and liability.",
+      "node_ids": [
+        "curr_ops_quality"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 33,
+      "snippet": "Numerous countries have enacted legislation that implemented certain aspects of Pillar Two effective January 1, 2024, while many others have indicated their intent to adopt, or have adopted, legislation effective in 2025.",
+      "why": "Prior-year baseline Pillar Two adoption state.",
+      "node_ids": [
+        "prev_policy_tax"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 34,
+      "snippet": "The OECD and implementing countries are expected to continue to make further revisions to their legislation and release additional guidance.",
+      "why": "Prior-year OECD revision uncertainty baseline.",
+      "node_ids": [
+        "prev_policy_tax"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 37,
+      "snippet": "In June 2025, the Group of Seven (“G7”) released a statement announcing an understanding of a potential side-by-side system approach to the Pillar Two framework that would exclude U.S.-parented groups from certain Pillar Two provisions in recognition of existing U.S. minimum tax rules.",
+      "why": "Current-year G7 side-by-side system signal.",
+      "node_ids": [
+        "curr_policy_tax"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 38,
+      "snippet": "In January 2026, the OECD issued further administrative guidance introducing a side-by-side framework under Pillar Two, largely exempting U.S.-headquartered companies from the application of Pillar Two.",
+      "why": "Current-year OECD side-by-side guidance with U.S.-headquartered exemption language.",
+      "node_ids": [
+        "curr_policy_tax"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 39,
+      "snippet": "The OECD and implementing countries are expected to continue to make further revisions to their legislation and release additional guidance intended to adopt this side-by-side framework into law in each of the member countries.",
+      "why": "Current-year ongoing revision path to codify side-by-side framework.",
+      "node_ids": [
+        "curr_policy_tax"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 32,
+      "snippet": "For the year ended December 31, 2025, one bottler accounted for 10% of our net operating revenues, which are reflected in our EMEA and Asia Pacific operating segments.",
+      "why": "Current-year bottler concentration disclosure at 10% of net operating revenues.",
+      "node_ids": [
+        "curr_ops_bottler"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 33,
+      "snippet": "Further, actions by our bottling partners, including related to product quality, safety, marketing practices, labor relations, regulatory compliance, sustainability, or other matters could adversely affect the reputation, consumer perception, or value of our brands, even if we are not directly responsible for such actions.",
+      "why": "Current-year partner-action spillover to reputation and brand value.",
+      "node_ids": [
+        "curr_ops_bottler"
+      ]
+    }
+  ],
+  "lens_divergence": {
+    "materially_different": false,
+    "summary": "Only the deboilerplated lens is provided for this case, so no cross-lens divergence is measured here."
+  },
+  "provenance": {
+    "input_file": "inputs/pair/KO_2024_2025_10k_item1a_deboilerplated_edgar.json",
+    "model_provider": "openai",
+    "model_name": "GPT-5.3-Codex (Extra High Reasoning, Agent Mode)",
+    "run_label": "2026-02-27_openai_gpt53codex_xhigh_agent_fullsec_real_ko_2024_2025_outline_compare"
+  },
+  "artifact_id": "llm_outline_compare_runtime"
+}

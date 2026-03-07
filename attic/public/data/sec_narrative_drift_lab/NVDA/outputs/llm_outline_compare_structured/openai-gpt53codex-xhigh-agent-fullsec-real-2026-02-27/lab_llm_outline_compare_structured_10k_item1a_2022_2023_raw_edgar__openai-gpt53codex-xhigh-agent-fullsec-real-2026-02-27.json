@@ -1,0 +1,1009 @@
+{
+  "lab_schema_version": "1.0",
+  "artifact_schema_version": "1.0",
+  "artifact_id": "llm_outline_compare_structured",
+  "ticker": "NVDA",
+  "section": "10k_item1a",
+  "source_id": "edgar",
+  "cleaning_lens": "raw",
+  "year_from": 2022,
+  "year_to": 2023,
+  "outline_prev": [
+    {
+      "node_id": "prev_root",
+      "parent_id": null,
+      "level": 1,
+      "order": 0,
+      "label": "2022 risk map",
+      "risk_thesis": "Demand forecasting, supply dependency, cyber disruption, and policy exposure define 2022 risk architecture.",
+      "evidence_paragraph_idx": [
+        1,
+        9,
+        29,
+        51
+      ]
+    },
+    {
+      "node_id": "prev_market",
+      "parent_id": "prev_root",
+      "level": 2,
+      "order": 1,
+      "label": "Market execution",
+      "risk_thesis": "Fast technology and competition changes pressure roadmap execution.",
+      "evidence_paragraph_idx": [
+        1,
+        5,
+        6
+      ]
+    },
+    {
+      "node_id": "prev_market_exec",
+      "parent_id": "prev_market",
+      "level": 3,
+      "order": 2,
+      "label": "New-market monetization",
+      "risk_thesis": "R&D in newer areas may not generate meaningful revenue.",
+      "evidence_paragraph_idx": [
+        2,
+        4
+      ]
+    },
+    {
+      "node_id": "prev_market_competition",
+      "parent_id": "prev_market",
+      "level": 3,
+      "order": 3,
+      "label": "Competitive pressure",
+      "risk_thesis": "Rivals can pressure price and share.",
+      "evidence_paragraph_idx": [
+        5
+      ]
+    },
+    {
+      "node_id": "prev_demand_supply",
+      "parent_id": "prev_root",
+      "level": 2,
+      "order": 4,
+      "label": "Demand vs supply",
+      "risk_thesis": "Long lead times and commitments can create shortage or excess.",
+      "evidence_paragraph_idx": [
+        9,
+        12,
+        14
+      ]
+    },
+    {
+      "node_id": "prev_demand_forecast",
+      "parent_id": "prev_demand_supply",
+      "level": 3,
+      "order": 5,
+      "label": "Forecast volatility",
+      "risk_thesis": "Channel, crypto, and pandemic effects increase forecast error.",
+      "evidence_paragraph_idx": [
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "node_id": "prev_supply_dependency",
+      "parent_id": "prev_demand_supply",
+      "level": 3,
+      "order": 6,
+      "label": "Third-party supply",
+      "risk_thesis": "Foundry/subcontractor reliance reduces control over volume and timing.",
+      "evidence_paragraph_idx": [
+        14,
+        15,
+        17
+      ]
+    },
+    {
+      "node_id": "prev_security_ops",
+      "parent_id": "prev_root",
+      "level": 2,
+      "order": 7,
+      "label": "Cyber and continuity",
+      "risk_thesis": "Cyber and disaster events can disrupt operations and increase costs.",
+      "evidence_paragraph_idx": [
+        29,
+        31,
+        37
+      ]
+    },
+    {
+      "node_id": "prev_cyber_incident",
+      "parent_id": "prev_security_ops",
+      "level": 3,
+      "order": 8,
+      "label": "Named cyber incident",
+      "risk_thesis": "2022 includes a specific unauthorized-access event.",
+      "evidence_paragraph_idx": [
+        31,
+        33,
+        34
+      ]
+    },
+    {
+      "node_id": "prev_disruption",
+      "parent_id": "prev_security_ops",
+      "level": 3,
+      "order": 9,
+      "label": "Pandemic/conflict disruption",
+      "risk_thesis": "COVID and geopolitical conflict can disrupt operations and demand.",
+      "evidence_paragraph_idx": [
+        37,
+        43,
+        46
+      ]
+    },
+    {
+      "node_id": "prev_policy_compliance",
+      "parent_id": "prev_root",
+      "level": 2,
+      "order": 10,
+      "label": "Policy/compliance",
+      "risk_thesis": "Trade controls, AI restrictions, and privacy rules can constrain growth.",
+      "evidence_paragraph_idx": [
+        51,
+        53,
+        63,
+        65
+      ]
+    },
+    {
+      "node_id": "prev_export_controls",
+      "parent_id": "prev_policy_compliance",
+      "level": 3,
+      "order": 11,
+      "label": "Broad export controls",
+      "risk_thesis": "General sanctions/export limits may block shipments.",
+      "evidence_paragraph_idx": [
+        51,
+        52,
+        53,
+        54
+      ]
+    },
+    {
+      "node_id": "prev_data_ai_reg",
+      "parent_id": "prev_policy_compliance",
+      "level": 3,
+      "order": 12,
+      "label": "AI/privacy rules",
+      "risk_thesis": "Responsible-AI and privacy regulation can raise liability and cost.",
+      "evidence_paragraph_idx": [
+        55,
+        63,
+        65,
+        67
+      ]
+    }
+  ],
+  "outline_curr": [
+    {
+      "node_id": "curr_root",
+      "parent_id": null,
+      "level": 1,
+      "order": 0,
+      "label": "2023 risk map",
+      "risk_thesis": "2023 keeps the core stack but adds explicit AI cloud and China licensing execution risk.",
+      "evidence_paragraph_idx": [
+        14,
+        22,
+        40,
+        66
+      ]
+    },
+    {
+      "node_id": "curr_market",
+      "parent_id": "curr_root",
+      "level": 2,
+      "order": 1,
+      "label": "Market execution",
+      "risk_thesis": "Rapid change plus software/cloud model execution pressure.",
+      "evidence_paragraph_idx": [
+        14,
+        15,
+        17,
+        18
+      ]
+    },
+    {
+      "node_id": "curr_market_exec",
+      "parent_id": "curr_market",
+      "level": 3,
+      "order": 2,
+      "label": "AI cloud execution",
+      "risk_thesis": "Direct cloud offerings can consume resources before scaling.",
+      "evidence_paragraph_idx": [
+        17
+      ]
+    },
+    {
+      "node_id": "curr_market_competition",
+      "parent_id": "curr_market",
+      "level": 3,
+      "order": 3,
+      "label": "Cloud/customer substitution",
+      "risk_thesis": "Cloud rivals and customer self-build can displace demand.",
+      "evidence_paragraph_idx": [
+        18
+      ]
+    },
+    {
+      "node_id": "curr_demand_supply",
+      "parent_id": "curr_root",
+      "level": 2,
+      "order": 4,
+      "label": "Demand vs supply",
+      "risk_thesis": "Commitments plus demand shifts increase mismatch risk.",
+      "evidence_paragraph_idx": [
+        19,
+        20,
+        22,
+        23
+      ]
+    },
+    {
+      "node_id": "curr_demand_forecast",
+      "parent_id": "curr_demand_supply",
+      "level": 3,
+      "order": 5,
+      "label": "Transition volatility",
+      "risk_thesis": "Architecture and new-use-case transitions drive volatility.",
+      "evidence_paragraph_idx": [
+        23,
+        27,
+        29
+      ]
+    },
+    {
+      "node_id": "curr_supply_dependency",
+      "parent_id": "curr_demand_supply",
+      "level": 3,
+      "order": 6,
+      "label": "Third-party supply",
+      "risk_thesis": "Supplier/component issues can constrain deliveries and increase warranty cost.",
+      "evidence_paragraph_idx": [
+        31,
+        33,
+        34
+      ]
+    },
+    {
+      "node_id": "curr_security_ops",
+      "parent_id": "curr_root",
+      "level": 2,
+      "order": 7,
+      "label": "Cyber and continuity",
+      "risk_thesis": "Persistent nation-state and ransomware exposure threatens operations.",
+      "evidence_paragraph_idx": [
+        37,
+        39,
+        40
+      ]
+    },
+    {
+      "node_id": "curr_cyber_incident",
+      "parent_id": "curr_security_ops",
+      "level": 3,
+      "order": 8,
+      "label": "Persistent threat framing",
+      "risk_thesis": "2023 emphasizes continuing threat intensity over one named event.",
+      "evidence_paragraph_idx": [
+        39,
+        40,
+        41
+      ]
+    },
+    {
+      "node_id": "curr_disruption",
+      "parent_id": "curr_security_ops",
+      "level": 3,
+      "order": 9,
+      "label": "Residual COVID effect",
+      "risk_thesis": "COVID appears as a risk amplifier rather than a standalone block.",
+      "evidence_paragraph_idx": [
+        56,
+        58
+      ]
+    },
+    {
+      "node_id": "curr_policy_compliance",
+      "parent_id": "curr_root",
+      "level": 2,
+      "order": 10,
+      "label": "Policy/compliance",
+      "risk_thesis": "Compliance risk becomes more operational with licensing and data-transfer constraints.",
+      "evidence_paragraph_idx": [
+        62,
+        66,
+        78,
+        82
+      ]
+    },
+    {
+      "node_id": "curr_export_controls",
+      "parent_id": "curr_policy_compliance",
+      "level": 3,
+      "order": 11,
+      "label": "China licensing execution",
+      "risk_thesis": "USG rules directly affect products, operations, and customer support in China.",
+      "evidence_paragraph_idx": [
+        66,
+        67,
+        68,
+        69
+      ]
+    },
+    {
+      "node_id": "curr_data_ai_reg",
+      "parent_id": "curr_policy_compliance",
+      "level": 3,
+      "order": 12,
+      "label": "Localization and transfers",
+      "risk_thesis": "AI governance and localization laws increase operational complexity.",
+      "evidence_paragraph_idx": [
+        73,
+        78,
+        82,
+        84
+      ]
+    }
+  ],
+  "node_alignment": [
+    {
+      "prev_node_id": "prev_root",
+      "curr_node_id": "curr_root",
+      "change_class": "stable",
+      "rationale": "Core framework is retained while 2023 expands explicit AI cloud and export-license execution detail.",
+      "salience": 0.86
+    },
+    {
+      "prev_node_id": "prev_market",
+      "curr_node_id": "curr_market",
+      "change_class": "reworded",
+      "rationale": "Both years stress market change, but 2023 adds software/cloud execution pathways.",
+      "salience": 0.72
+    },
+    {
+      "prev_node_id": "prev_market_exec",
+      "curr_node_id": "curr_market_exec",
+      "change_class": "split",
+      "rationale": "General 2022 monetization uncertainty is split into explicit AI cloud execution risk in 2023.",
+      "salience": 0.88
+    },
+    {
+      "prev_node_id": "prev_market_competition",
+      "curr_node_id": "curr_market_competition",
+      "change_class": "stable",
+      "rationale": "Competitive pressure persists with explicit cloud/customer substitution examples in 2023.",
+      "salience": 0.66
+    },
+    {
+      "prev_node_id": "prev_demand_supply",
+      "curr_node_id": "curr_demand_supply",
+      "change_class": "intensified",
+      "rationale": "Potential mismatch in 2022 becomes explicit commitment overhang in 2023.",
+      "salience": 0.84
+    },
+    {
+      "prev_node_id": "prev_demand_forecast",
+      "curr_node_id": "curr_demand_forecast",
+      "change_class": "reworded",
+      "rationale": "Volatility remains, but 2023 pivots from pandemic emphasis to transition/use-case drivers.",
+      "salience": 0.7
+    },
+    {
+      "prev_node_id": "prev_supply_dependency",
+      "curr_node_id": "curr_supply_dependency",
+      "change_class": "stable",
+      "rationale": "Third-party dependency stays central with added component-defect detail in 2023.",
+      "salience": 0.65
+    },
+    {
+      "prev_node_id": "prev_security_ops",
+      "curr_node_id": "curr_security_ops",
+      "change_class": "stable",
+      "rationale": "Cyber/continuity risk remains while 2023 highlights conflict-linked attack escalation.",
+      "salience": 0.74
+    },
+    {
+      "prev_node_id": "prev_cyber_incident",
+      "curr_node_id": "curr_cyber_incident",
+      "change_class": "softened",
+      "rationale": "2022 includes a dated incident example; 2023 shifts to generic persistent-threat framing.",
+      "salience": 0.69
+    },
+    {
+      "prev_node_id": "prev_disruption",
+      "curr_node_id": "curr_disruption",
+      "change_class": "softened",
+      "rationale": "COVID moves from dedicated adverse-impact narrative to a shorter amplifying clause.",
+      "salience": 0.62
+    },
+    {
+      "prev_node_id": "prev_policy_compliance",
+      "curr_node_id": "curr_policy_compliance",
+      "change_class": "intensified",
+      "rationale": "General compliance burden evolves into concrete licensing and transfer constraints.",
+      "salience": 0.9
+    },
+    {
+      "prev_node_id": "prev_export_controls",
+      "curr_node_id": "curr_export_controls",
+      "change_class": "intensified",
+      "rationale": "Possible AI controls in 2022 become enacted product-level restrictions in 2023.",
+      "salience": 0.95
+    },
+    {
+      "prev_node_id": "prev_data_ai_reg",
+      "curr_node_id": "curr_data_ai_reg",
+      "change_class": "intensified",
+      "rationale": "Privacy/AI governance thread is retained and operationalized through localization/transfer rules.",
+      "salience": 0.78
+    }
+  ],
+  "material_changes": [
+    {
+      "id": "mc_1",
+      "title": "\"new export restrictions and export licensing requirements\" target China chip sales",
+      "change_class": "intensified",
+      "salience": 0.94,
+      "caveat": "2022 para 53 is a continuation paragraph with broad wording, while 2023 paras 66-67 add product/transition specificity but do not quantify exact revenue at risk.",
+      "evidence_refs": [
+        {
+          "year": 2022,
+          "paragraph_idx": 53
+        },
+        {
+          "year": 2023,
+          "paragraph_idx": 66
+        },
+        {
+          "year": 2023,
+          "paragraph_idx": 67
+        }
+      ]
+    },
+    {
+      "id": "mc_2",
+      "title": "\"NVIDIA AI cloud services\" separates cloud execution risk from generic R&D risk",
+      "change_class": "split",
+      "salience": 0.88,
+      "caveat": "2022 para 2 is high-level limited-history language; 2023 para 17 adds concrete cloud-service execution detail without a standalone revenue baseline.",
+      "evidence_refs": [
+        {
+          "year": 2022,
+          "paragraph_idx": 2
+        },
+        {
+          "year": 2023,
+          "paragraph_idx": 17
+        }
+      ]
+    },
+    {
+      "id": "mc_3",
+      "title": "\"purchase obligations ... more than half of our total supply\" raises commitment overhang",
+      "change_class": "intensified",
+      "salience": 0.82,
+      "caveat": "2022 para 12 and 2023 para 22 both describe commitment risk, but only 2023 gives a share metric and neither cited paragraph gives product-level dollar exposure.",
+      "evidence_refs": [
+        {
+          "year": 2022,
+          "paragraph_idx": 12
+        },
+        {
+          "year": 2023,
+          "paragraph_idx": 22
+        }
+      ]
+    },
+    {
+      "id": "mc_4",
+      "title": "Removal of \"February 23, 2022 ... unauthorized access\" incident detail",
+      "change_class": "softened",
+      "salience": 0.73,
+      "caveat": "2022 para 31 is event-specific while 2023 para 40 is generalized threat language; this is a disclosure-coverage difference, not direct evidence on incident frequency.",
+      "evidence_refs": [
+        {
+          "year": 2022,
+          "paragraph_idx": 31
+        },
+        {
+          "year": 2023,
+          "paragraph_idx": 40
+        }
+      ]
+    },
+    {
+      "id": "mc_5",
+      "title": "\"cross-border personal data transfer laws\" add China-linked operational friction",
+      "change_class": "intensified",
+      "salience": 0.67,
+      "caveat": "2022 para 65 presents global privacy-law movement, while 2023 para 82 adds transfer and localization mechanics; cited evidence still lacks jurisdiction-level cost quantification.",
+      "evidence_refs": [
+        {
+          "year": 2022,
+          "paragraph_idx": 65
+        },
+        {
+          "year": 2023,
+          "paragraph_idx": 82
+        }
+      ]
+    },
+    {
+      "id": "mc_6",
+      "title": "COVID wording shifts from \"has impacted, and continues to impact\" to risk amplification",
+      "change_class": "softened",
+      "salience": 0.61,
+      "caveat": "2022 para 43 is a dedicated pandemic-impact sentence, while 2023 para 58 is a short amplifier clause; the pair does not quantify residual pandemic sensitivity.",
+      "evidence_refs": [
+        {
+          "year": 2022,
+          "paragraph_idx": 43
+        },
+        {
+          "year": 2023,
+          "paragraph_idx": 58
+        }
+      ]
+    }
+  ],
+  "evidence_bank": [
+    {
+      "year": 2022,
+      "paragraph_idx": 2,
+      "snippet": "We make considerable investments in research and development and business offerings in markets where we have a limited operating history, which may not produce meaningful revenue for several years, if at all.",
+      "why": "Baseline new-market monetization risk.",
+      "node_ids": [
+        "prev_market_exec",
+        "prev_market"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 12,
+      "snippet": "we have placed and may continue to place non-cancellable inventory orders in advance of our historical lead times, and pay premiums and/or provide deposits to secure future supply and capacity.",
+      "why": "Shows 2022 commitment exposure.",
+      "node_ids": [
+        "prev_demand_supply",
+        "prev_demand_forecast"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 31,
+      "snippet": "on February 23, 2022, we became aware of a security incident involving unauthorized access to our network by a group of independent criminal threat actors, not affiliated with any government or political cause.",
+      "why": "Event-specific cyber disclosure in 2022.",
+      "node_ids": [
+        "prev_cyber_incident",
+        "prev_security_ops"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 37,
+      "snippet": "Our worldwide operations could be disrupted by natural disasters and extreme weather conditions, power or water shortages, telecommunications failures, cloud service provider outages, terrorist attacks, or acts of violence, political and/or civil unrest, acts of war or other military actions,",
+      "why": "Broad continuity/disruption vectors.",
+      "node_ids": [
+        "prev_disruption",
+        "prev_security_ops"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 43,
+      "snippet": "COVID-19 has impacted, and continues to impact, our workforce and operations and those of our customers, partners, vendors and suppliers.",
+      "why": "Standalone pandemic-impact wording in 2022.",
+      "node_ids": [
+        "prev_disruption"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 53,
+      "snippet": "services capable of enabling or facilitating AI, including some or all of our product and service offerings. Such restrictions could limit our ability to serve demand abroad and could negatively impact our business and financial results.",
+      "why": "Broad AI-related export restriction baseline.",
+      "node_ids": [
+        "prev_export_controls",
+        "prev_policy_compliance"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 65,
+      "snippet": "Worldwide regulatory authorities are considering and have approved various legislative proposals concerning data protection. The European Union adopted the General Data Protection Regulation, or GDPR, and the United Kingdom similarly adopted the U.K.",
+      "why": "Global privacy-regulation baseline.",
+      "node_ids": [
+        "prev_data_ai_reg",
+        "prev_policy_compliance"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 17,
+      "snippet": "We will offer enterprise customers NVIDIA AI cloud services directly and through our network of partners. Examples of these services include NVIDIA DGX Cloud, which is cloud-based infrastructure and software for training AI models, and customizable pretrained AI models.",
+      "why": "Named AI cloud model execution risk.",
+      "node_ids": [
+        "curr_market_exec",
+        "curr_market"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 20,
+      "snippet": "We build finished products and maintain inventory in advance of anticipated demand.",
+      "why": "Inventory-build exposure in 2023.",
+      "node_ids": [
+        "curr_demand_supply"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 22,
+      "snippet": "At the end of fiscal year 2023, purchase obligations and prepaid supply agreements represented more than half of our total supply. We may incur inventory provisions if our inventory or supply commitments are misaligned with demand for our products.",
+      "why": "Quantified supply-commitment intensity.",
+      "node_ids": [
+        "curr_demand_supply",
+        "curr_market_exec"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 40,
+      "snippet": "Threat actors, sophisticated nation-states, and nation-state-supported actors now engage and are expected to continue to engage in cyber-attacks.",
+      "why": "Persistent nation-state threat framing.",
+      "node_ids": [
+        "curr_cyber_incident",
+        "curr_security_ops"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 58,
+      "snippet": "The impact of COVID-19 can also exacerbate other risks discussed in these risk factors.",
+      "why": "COVID as amplifier in 2023.",
+      "node_ids": [
+        "curr_disruption"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 66,
+      "snippet": "During the third quarter of fiscal year 2023, the U.S. government, or USG, announced new export restrictions and export licensing requirements targeting China’s semiconductor and supercomputing industries.",
+      "why": "Enacted export-license expansion.",
+      "node_ids": [
+        "curr_export_controls",
+        "curr_policy_compliance"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 67,
+      "snippet": "We are required to transition certain operations out of China (including Hong Kong), which could be costly and time consuming, and adversely affect our research and development and supply and distribution operations, as well as our revenue, during any such transition period.",
+      "why": "Operational transition burden.",
+      "node_ids": [
+        "curr_export_controls"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 68,
+      "snippet": "We have engaged with customers in China to provide alternative products not subject to the new license requirements, such as our new A800 offering.",
+      "why": "Alternative-product response pathway.",
+      "node_ids": [
+        "curr_export_controls"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 69,
+      "snippet": "Our results and competitive position may be harmed if customers in China do not want to purchase our alternative product offerings, if customers purchase product from competitors, if customers develop their own internal solution, if we are unable to provide contractual warranty or other extended service obligations,",
+      "why": "Competitive/revenue downside from licensing response.",
+      "node_ids": [
+        "curr_export_controls",
+        "curr_policy_compliance"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 82,
+      "snippet": "Certain jurisdictions have enacted data localization laws and cross-border personal data transfer laws. For example, the GDPR generally restricts the transfer of personal data to countries outside of the EEA.",
+      "why": "Localization and transfer-law operational constraints.",
+      "node_ids": [
+        "curr_data_ai_reg",
+        "curr_policy_compliance"
+      ]
+    }
+  ],
+  "lens_divergence": {
+    "materially_different": false,
+    "summary": "Only raw-lens inputs were provided for this case; no deboilerplated counterpart is available in-scope for this artifact."
+  },
+  "risk_graph_prev": [
+    {
+      "id": "rg_prev_1",
+      "driver": "Rapid market/technology change",
+      "exposure": "Need to match demand and product transitions",
+      "impact": "Share or pricing pressure can reduce revenue",
+      "evidence_paragraph_idx": [
+        1,
+        5
+      ]
+    },
+    {
+      "id": "rg_prev_2",
+      "driver": "Long lead times and commitments",
+      "exposure": "Forecast errors create shortage or excess",
+      "impact": "Inventory charges and margin pressure",
+      "evidence_paragraph_idx": [
+        9,
+        12
+      ]
+    },
+    {
+      "id": "rg_prev_3",
+      "driver": "Cyber and supplier-system dependence",
+      "exposure": "Unauthorized access and supply-chain attack paths",
+      "impact": "Operational disruption and remediation costs",
+      "evidence_paragraph_idx": [
+        31,
+        33
+      ]
+    },
+    {
+      "id": "rg_prev_4",
+      "driver": "Sanctions and export controls",
+      "exposure": "Sales/shipments to overseas markets constrained",
+      "impact": "Revenue and roadmap execution pressure",
+      "evidence_paragraph_idx": [
+        51,
+        53
+      ]
+    }
+  ],
+  "risk_graph_curr": [
+    {
+      "id": "rg_curr_1",
+      "driver": "Direct AI cloud rollout",
+      "exposure": "Investment and scaling risk in new service model",
+      "impact": "Costs may rise before revenue scales",
+      "evidence_paragraph_idx": [
+        17,
+        18
+      ]
+    },
+    {
+      "id": "rg_curr_2",
+      "driver": "Elevated purchase obligations",
+      "exposure": "Commitments stay high as demand mix changes",
+      "impact": "Excess inventory and margin pressure",
+      "evidence_paragraph_idx": [
+        20,
+        22
+      ]
+    },
+    {
+      "id": "rg_curr_3",
+      "driver": "USG licensing expansion",
+      "exposure": "Product restrictions and China transition requirements",
+      "impact": "Revenue loss and competitive disadvantage",
+      "evidence_paragraph_idx": [
+        66,
+        67,
+        69
+      ]
+    },
+    {
+      "id": "rg_curr_4",
+      "driver": "Persistent nation-state cyber risk",
+      "exposure": "NVIDIA and supplier systems remain attack targets",
+      "impact": "Service disruption and higher security spend",
+      "evidence_paragraph_idx": [
+        39,
+        40
+      ]
+    }
+  ],
+  "change_mechanisms": [
+    {
+      "id": "mech_1",
+      "mechanism": "AI export controls moved from broad possibility to enacted license rules",
+      "transmission_channel": "Licensing gates and China transition steps constrain fulfillment",
+      "business_effect": "Potential demand loss plus compliance/transition cost",
+      "time_horizon": "near_term",
+      "evidence_refs": [
+        {
+          "year": 2022,
+          "paragraph_idx": 53
+        },
+        {
+          "year": 2023,
+          "paragraph_idx": 66
+        },
+        {
+          "year": 2023,
+          "paragraph_idx": 67
+        },
+        {
+          "year": 2023,
+          "paragraph_idx": 68
+        },
+        {
+          "year": 2023,
+          "paragraph_idx": 69
+        }
+      ]
+    },
+    {
+      "id": "mech_2",
+      "mechanism": "New-market risk narrative becomes named AI cloud execution risk",
+      "transmission_channel": "Direct-service delivery and cloud commitments raise fixed operating burden",
+      "business_effect": "Scale uncertainty can delay returns on investment",
+      "time_horizon": "near_term",
+      "evidence_refs": [
+        {
+          "year": 2022,
+          "paragraph_idx": 2
+        },
+        {
+          "year": 2023,
+          "paragraph_idx": 17
+        },
+        {
+          "year": 2023,
+          "paragraph_idx": 22
+        }
+      ]
+    },
+    {
+      "id": "mech_3",
+      "mechanism": "Supply commitments remain high under uncertain demand",
+      "transmission_channel": "Inventory build and prepaid obligations absorb working capital",
+      "business_effect": "Potential write-downs and gross-margin pressure",
+      "time_horizon": "near_term",
+      "evidence_refs": [
+        {
+          "year": 2022,
+          "paragraph_idx": 12
+        },
+        {
+          "year": 2023,
+          "paragraph_idx": 20
+        },
+        {
+          "year": 2023,
+          "paragraph_idx": 22
+        }
+      ]
+    },
+    {
+      "id": "mech_4",
+      "mechanism": "Cyber emphasis shifts from one incident to persistent threat-state posture",
+      "transmission_channel": "Ongoing nation-state and supplier attack surface drives recurring response work",
+      "business_effect": "Sustained security spend and disruption risk",
+      "time_horizon": "medium_term",
+      "evidence_refs": [
+        {
+          "year": 2022,
+          "paragraph_idx": 31
+        },
+        {
+          "year": 2022,
+          "paragraph_idx": 37
+        },
+        {
+          "year": 2023,
+          "paragraph_idx": 40
+        }
+      ]
+    }
+  ],
+  "uncertainty_and_limits": [
+    {
+      "id": "limit_1",
+      "limitation": "2022 para 53 is a continuation-style paragraph, so baseline scope for AI export restrictions is less boundary-complete than 2023 chip-level language.",
+      "evidence_refs": [
+        {
+          "year": 2022,
+          "paragraph_idx": 53
+        },
+        {
+          "year": 2023,
+          "paragraph_idx": 66
+        }
+      ]
+    },
+    {
+      "id": "limit_2",
+      "limitation": "Supply evidence includes the phrase \"more than half of our total supply\" but does not provide product-level dollar amounts or maturity timing.",
+      "evidence_refs": [
+        {
+          "year": 2022,
+          "paragraph_idx": 12
+        },
+        {
+          "year": 2023,
+          "paragraph_idx": 22
+        }
+      ]
+    },
+    {
+      "id": "limit_3",
+      "limitation": "Incident-specific detail appears in 2022 para 31 but not in 2023 para 40, so year-over-year incident frequency cannot be inferred from this pair alone.",
+      "evidence_refs": [
+        {
+          "year": 2022,
+          "paragraph_idx": 31
+        },
+        {
+          "year": 2023,
+          "paragraph_idx": 40
+        }
+      ]
+    }
+  ],
+  "investor_relevance": [
+    {
+      "id": "inv_1",
+      "why_it_matters": "China licensing and alternative-product uptake can materially shift near-term data-center growth and competitive position.",
+      "evidence_refs": [
+        {
+          "year": 2023,
+          "paragraph_idx": 66
+        },
+        {
+          "year": 2023,
+          "paragraph_idx": 68
+        },
+        {
+          "year": 2023,
+          "paragraph_idx": 69
+        }
+      ]
+    },
+    {
+      "id": "inv_2",
+      "why_it_matters": "High supply commitments under uncertain demand can increase earnings volatility through inventory and margin effects.",
+      "evidence_refs": [
+        {
+          "year": 2022,
+          "paragraph_idx": 12
+        },
+        {
+          "year": 2023,
+          "paragraph_idx": 22
+        }
+      ]
+    },
+    {
+      "id": "inv_3",
+      "why_it_matters": "Direct AI cloud-service expansion introduces execution risk before software/cloud revenue fully scales.",
+      "evidence_refs": [
+        {
+          "year": 2022,
+          "paragraph_idx": 2
+        },
+        {
+          "year": 2023,
+          "paragraph_idx": 17
+        }
+      ]
+    }
+  ],
+  "projection_contract": {
+    "projects_to_artifact_id": "llm_outline_compare_runtime",
+    "projection_version": "1.0"
+  },
+  "provenance": {
+    "input_file": "inputs/pair/NVDA_2022_2023_10k_item1a_raw_edgar.json",
+    "model_provider": "openai",
+    "model_name": "GPT-5.3-Codex (Extra High Reasoning, Agent Mode)",
+    "run_label": "2026-03-04_openai_gpt53codex_xhigh_agent_fullsec_real_nvda_2022_2023_outline_compare"
+  }
+}

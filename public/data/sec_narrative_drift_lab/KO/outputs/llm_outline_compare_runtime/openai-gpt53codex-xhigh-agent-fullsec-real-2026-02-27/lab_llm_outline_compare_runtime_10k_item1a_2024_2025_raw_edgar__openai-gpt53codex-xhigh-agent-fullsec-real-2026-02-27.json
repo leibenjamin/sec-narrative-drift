@@ -1,0 +1,853 @@
+{
+  "lab_schema_version": "1.0",
+  "artifact_schema_version": "1.0",
+  "ticker": "KO",
+  "section": "10k_item1a",
+  "source_id": "edgar",
+  "cleaning_lens": "raw",
+  "year_from": 2024,
+  "year_to": 2025,
+  "outline_prev": [
+    {
+      "node_id": "prev_root",
+      "parent_id": null,
+      "level": 1,
+      "order": 0,
+      "label": "KO 2024 Item 1A Risk Architecture",
+      "risk_thesis": "The 2024 risk section spans macro demand, system execution, legal-financial exposure, and technology/sustainability fragility.",
+      "evidence_paragraph_idx": [
+        0
+      ]
+    },
+    {
+      "node_id": "prev_mkt_ops",
+      "parent_id": "prev_root",
+      "level": 2,
+      "order": 1,
+      "label": "Demand, Competition, and Execution",
+      "risk_thesis": "Growth depends on resilient demand, innovation execution, and workforce capacity in volatile markets.",
+      "evidence_paragraph_idx": [
+        1,
+        4,
+        9
+      ]
+    },
+    {
+      "node_id": "prev_mkt_macro",
+      "parent_id": "prev_mkt_ops",
+      "level": 3,
+      "order": 2,
+      "label": "Macro and Competitive Pressure",
+      "risk_thesis": "Inflation, geopolitical instability, and category competition can suppress revenue and margins.",
+      "evidence_paragraph_idx": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "node_id": "prev_mkt_exec",
+      "parent_id": "prev_mkt_ops",
+      "level": 3,
+      "order": 3,
+      "label": "Innovation, Productivity, and Talent",
+      "risk_thesis": "Execution quality depends on innovation cadence, productivity actions, and talent retention depth.",
+      "evidence_paragraph_idx": [
+        4,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "node_id": "prev_supply",
+      "parent_id": "prev_root",
+      "level": 2,
+      "order": 4,
+      "label": "Supply and Partner Network",
+      "risk_thesis": "Input volatility and partner execution can transmit cost and availability shocks to operating results.",
+      "evidence_paragraph_idx": [
+        11,
+        17
+      ]
+    },
+    {
+      "node_id": "prev_supply_inputs",
+      "parent_id": "prev_supply",
+      "level": 3,
+      "order": 5,
+      "label": "Input Cost and Supply Continuity",
+      "risk_thesis": "Commodity, logistics, and energy disruptions can raise cost and constrain fulfillment.",
+      "evidence_paragraph_idx": [
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ]
+    },
+    {
+      "node_id": "prev_supply_partners",
+      "parent_id": "prev_supply",
+      "level": 3,
+      "order": 6,
+      "label": "M&A, Third Parties, and Labor",
+      "risk_thesis": "Integration friction, third-party dependence, and labor dynamics can weaken execution consistency.",
+      "evidence_paragraph_idx": [
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ]
+    },
+    {
+      "node_id": "prev_reg_brand",
+      "parent_id": "prev_root",
+      "level": 2,
+      "order": 7,
+      "label": "Consumer, Regulatory, and Brand",
+      "risk_thesis": "Health scrutiny, regulatory shifts, and brand perception can directly alter demand and costs.",
+      "evidence_paragraph_idx": [
+        24,
+        30
+      ]
+    },
+    {
+      "node_id": "prev_reg_health",
+      "parent_id": "prev_reg_brand",
+      "level": 3,
+      "order": 8,
+      "label": "Health and Ingredient Scrutiny",
+      "risk_thesis": "Public-health narratives and ingredient concerns can trigger taxes, constraints, and demand softness.",
+      "evidence_paragraph_idx": [
+        24,
+        25,
+        26,
+        27,
+        28,
+        29
+      ]
+    },
+    {
+      "node_id": "prev_reg_system",
+      "parent_id": "prev_reg_brand",
+      "level": 3,
+      "order": 9,
+      "label": "Digital and Bottler System Risks",
+      "risk_thesis": "Digital adaptation and bottler alignment failures can impair growth and profitability.",
+      "evidence_paragraph_idx": [
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ]
+    },
+    {
+      "node_id": "prev_legal_fin",
+      "parent_id": "prev_root",
+      "level": 2,
+      "order": 10,
+      "label": "Legal, Tax, and Financial Structure",
+      "risk_thesis": "Tax disputes, compliance burden, and financial-market exposures can pressure cash flow and earnings.",
+      "evidence_paragraph_idx": [
+        37,
+        51
+      ]
+    },
+    {
+      "node_id": "prev_tax_legal",
+      "parent_id": "prev_legal_fin",
+      "level": 3,
+      "order": 11,
+      "label": "Tax and Legal Contingencies",
+      "risk_thesis": "OECD changes, IRS litigation, and broad regulatory regimes can create material liabilities.",
+      "evidence_paragraph_idx": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        47,
+        50
+      ]
+    },
+    {
+      "node_id": "prev_financial",
+      "parent_id": "prev_legal_fin",
+      "level": 3,
+      "order": 12,
+      "label": "Currency, Debt, and Valuation",
+      "risk_thesis": "FX swings, leverage, counterparty risk, and impairment assumptions may dilute reported performance.",
+      "evidence_paragraph_idx": [
+        51,
+        52,
+        53,
+        54,
+        55
+      ]
+    },
+    {
+      "node_id": "prev_tech_esg",
+      "parent_id": "prev_root",
+      "level": 2,
+      "order": 13,
+      "label": "Technology, Privacy, and Sustainability",
+      "risk_thesis": "Cyber disruption and sustainability execution gaps can create operational and reputational downside.",
+      "evidence_paragraph_idx": [
+        56,
+        63,
+        69
+      ]
+    },
+    {
+      "node_id": "prev_cyber_privacy",
+      "parent_id": "prev_tech_esg",
+      "level": 3,
+      "order": 14,
+      "label": "Cybersecurity and Data Protection",
+      "risk_thesis": "System outages and cyber incidents can disrupt operations, trigger legal action, and harm trust.",
+      "evidence_paragraph_idx": [
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62
+      ]
+    },
+    {
+      "node_id": "prev_sustain_climate",
+      "parent_id": "prev_tech_esg",
+      "level": 3,
+      "order": 15,
+      "label": "Sustainability, Packaging, and Climate",
+      "risk_thesis": "Sustainability scrutiny, packaging policy, water stress, and climate effects can raise costs and reduce demand.",
+      "evidence_paragraph_idx": [
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73
+      ]
+    }
+  ],
+  "outline_curr": [
+    {
+      "node_id": "curr_root",
+      "parent_id": null,
+      "level": 1,
+      "order": 0,
+      "label": "KO 2025 Item 1A Risk Architecture",
+      "risk_thesis": "The 2025 risk section keeps the same backbone while adding specific updates in talent wording, policy pressure, and tax guidance.",
+      "evidence_paragraph_idx": [
+        0
+      ]
+    },
+    {
+      "node_id": "curr_mkt_ops",
+      "parent_id": "curr_root",
+      "level": 2,
+      "order": 1,
+      "label": "Demand, Competition, and Execution",
+      "risk_thesis": "Commercial growth still relies on macro resilience, portfolio execution, and workforce capability.",
+      "evidence_paragraph_idx": [
+        1,
+        4,
+        8
+      ]
+    },
+    {
+      "node_id": "curr_mkt_macro",
+      "parent_id": "curr_mkt_ops",
+      "level": 3,
+      "order": 2,
+      "label": "Macro and Competitive Pressure",
+      "risk_thesis": "Inflation, geopolitical disruption, and competitive intensity remain persistent margin and demand risks.",
+      "evidence_paragraph_idx": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "node_id": "curr_mkt_exec",
+      "parent_id": "curr_mkt_ops",
+      "level": 3,
+      "order": 3,
+      "label": "Innovation, Productivity, and Talent",
+      "risk_thesis": "Execution risk remains but talent language is reframed around retaining and inspiring outstanding talent.",
+      "evidence_paragraph_idx": [
+        4,
+        7,
+        8
+      ]
+    },
+    {
+      "node_id": "curr_supply",
+      "parent_id": "curr_root",
+      "level": 2,
+      "order": 4,
+      "label": "Supply and Partner Network",
+      "risk_thesis": "Cost inflation and partner execution continue to influence availability, pricing, and delivery reliability.",
+      "evidence_paragraph_idx": [
+        9,
+        14
+      ]
+    },
+    {
+      "node_id": "curr_supply_inputs",
+      "parent_id": "curr_supply",
+      "level": 3,
+      "order": 5,
+      "label": "Input Cost and Supply Continuity",
+      "risk_thesis": "Commodity, logistics, and operational interruptions remain key constraints on profitability.",
+      "evidence_paragraph_idx": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ]
+    },
+    {
+      "node_id": "curr_supply_partners",
+      "parent_id": "curr_supply",
+      "level": 3,
+      "order": 6,
+      "label": "M&A, Third Parties, and Labor",
+      "risk_thesis": "Integration and relationship management risks still shape system stability and operational throughput.",
+      "evidence_paragraph_idx": [
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ]
+    },
+    {
+      "node_id": "curr_reg_brand",
+      "parent_id": "curr_root",
+      "level": 2,
+      "order": 7,
+      "label": "Consumer, Regulatory, and Brand",
+      "risk_thesis": "Health-policy scrutiny and system-channel execution risks remain central to demand durability.",
+      "evidence_paragraph_idx": [
+        20,
+        26
+      ]
+    },
+    {
+      "node_id": "curr_reg_health",
+      "parent_id": "curr_reg_brand",
+      "level": 3,
+      "order": 8,
+      "label": "Health and Ingredient Scrutiny",
+      "risk_thesis": "The section adds language about recent government initiatives while retaining obesity and ingredient concerns.",
+      "evidence_paragraph_idx": [
+        20,
+        21,
+        22,
+        23,
+        24,
+        25
+      ]
+    },
+    {
+      "node_id": "curr_reg_system",
+      "parent_id": "curr_reg_brand",
+      "level": 3,
+      "order": 9,
+      "label": "Digital and Bottler System Risks",
+      "risk_thesis": "Digital adaptation and bottler concentration/alignment can influence growth and bargaining outcomes.",
+      "evidence_paragraph_idx": [
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32
+      ]
+    },
+    {
+      "node_id": "curr_legal_fin",
+      "parent_id": "curr_root",
+      "level": 2,
+      "order": 10,
+      "label": "Legal, Tax, and Financial Structure",
+      "risk_thesis": "Tax policy evolution, legal contingencies, and financial exposures still drive downside variability.",
+      "evidence_paragraph_idx": [
+        33,
+        48
+      ]
+    },
+    {
+      "node_id": "curr_tax_legal",
+      "parent_id": "curr_legal_fin",
+      "level": 3,
+      "order": 11,
+      "label": "Tax and Legal Contingencies",
+      "risk_thesis": "Pillar Two updates and IRS litigation detail continue to frame potential liability and compliance burden.",
+      "evidence_paragraph_idx": [
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        43,
+        46
+      ]
+    },
+    {
+      "node_id": "curr_financial",
+      "parent_id": "curr_legal_fin",
+      "level": 3,
+      "order": 12,
+      "label": "Currency, Debt, and Valuation",
+      "risk_thesis": "FX movements, capital structure choices, and impairment judgments remain earnings and valuation sensitivities.",
+      "evidence_paragraph_idx": [
+        48,
+        49,
+        50,
+        51,
+        52,
+        53
+      ]
+    },
+    {
+      "node_id": "curr_tech_esg",
+      "parent_id": "curr_root",
+      "level": 2,
+      "order": 13,
+      "label": "Technology, Privacy, and Sustainability",
+      "risk_thesis": "Cyber resilience and sustainability execution continue to shape operational and reputational risk.",
+      "evidence_paragraph_idx": [
+        54,
+        60,
+        65
+      ]
+    },
+    {
+      "node_id": "curr_cyber_privacy",
+      "parent_id": "curr_tech_esg",
+      "level": 3,
+      "order": 14,
+      "label": "Cybersecurity and Data Protection",
+      "risk_thesis": "Cyberattack exposure persists, with legal adequacy and insurance sufficiency explicitly discussed.",
+      "evidence_paragraph_idx": [
+        54,
+        55,
+        56,
+        57,
+        58,
+        59
+      ]
+    },
+    {
+      "node_id": "curr_sustain_climate",
+      "parent_id": "curr_tech_esg",
+      "level": 3,
+      "order": 15,
+      "label": "Sustainability, Packaging, and Climate",
+      "risk_thesis": "Sustainability reporting pressure and climate physical/transition effects remain long-term risks.",
+      "evidence_paragraph_idx": [
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68
+      ]
+    }
+  ],
+  "node_alignment": [
+    {
+      "prev_node_id": "prev_root",
+      "curr_node_id": "curr_root",
+      "change_class": "stable",
+      "rationale": "Both years preserve the same top-level risk architecture spanning demand, system execution, legal-financial exposure, and technology/sustainability risk blocks.",
+      "salience": 0.55
+    },
+    {
+      "prev_node_id": "prev_mkt_ops",
+      "curr_node_id": "curr_mkt_ops",
+      "change_class": "stable",
+      "rationale": "The demand/competition parent node remains in the opening section with comparable scope and sequencing before supply-chain content.",
+      "salience": 0.52
+    },
+    {
+      "prev_node_id": "prev_mkt_macro",
+      "curr_node_id": "curr_mkt_macro",
+      "change_class": "stable",
+      "rationale": "Macro inflation, geopolitical disruption, and competitive pressure continue to operate through the same demand and margin transmission channel.",
+      "salience": 0.48
+    },
+    {
+      "prev_node_id": "prev_mkt_exec",
+      "curr_node_id": "curr_mkt_exec",
+      "change_class": "reworded",
+      "rationale": "The talent mechanism shifts from hiring/development diversity wording to retain-and-inspire framing while keeping the same workforce-execution dependency.",
+      "salience": 0.86
+    },
+    {
+      "prev_node_id": "prev_supply",
+      "curr_node_id": "curr_supply",
+      "change_class": "stable",
+      "rationale": "Supply and partner-network risks remain clustered immediately after execution risks, with no material change to cost/availability transmission logic.",
+      "salience": 0.5
+    },
+    {
+      "prev_node_id": "prev_supply_inputs",
+      "curr_node_id": "curr_supply_inputs",
+      "change_class": "stable",
+      "rationale": "Commodity, transportation, and input-cost exposures are still described as direct drivers of margin pressure and potential fulfillment constraints.",
+      "salience": 0.46
+    },
+    {
+      "prev_node_id": "prev_supply_partners",
+      "curr_node_id": "curr_supply_partners",
+      "change_class": "stable",
+      "rationale": "Integration, third-party dependency, and labor-relation risk remain grouped with the same operational-friction mechanism across years.",
+      "salience": 0.44
+    },
+    {
+      "prev_node_id": "prev_reg_brand",
+      "curr_node_id": "curr_reg_brand",
+      "change_class": "intensified",
+      "rationale": "The 2025 section adds new policy-initiative wording inside the same health/brand node, increasing explicit government-activity emphasis.",
+      "salience": 0.72
+    },
+    {
+      "prev_node_id": "prev_reg_health",
+      "curr_node_id": "curr_reg_health",
+      "change_class": "intensified",
+      "rationale": "2025 introduces 'Recent activities and proposals' language, tightening the link between public-health concern and near-term regulatory action risk.",
+      "salience": 0.82
+    },
+    {
+      "prev_node_id": "prev_reg_system",
+      "curr_node_id": "curr_reg_system",
+      "change_class": "added",
+      "rationale": "The bottler-dependency node adds an explicit one-bottler revenue concentration statistic in 2025, increasing specificity of concentration exposure.",
+      "salience": 0.72
+    },
+    {
+      "prev_node_id": "prev_legal_fin",
+      "curr_node_id": "curr_legal_fin",
+      "change_class": "reworded",
+      "rationale": "The parent legal-financial block keeps the same scope, but tax-policy detail is updated with new multilateral guidance references.",
+      "salience": 0.68
+    },
+    {
+      "prev_node_id": "prev_tax_legal",
+      "curr_node_id": "curr_tax_legal",
+      "change_class": "added",
+      "rationale": "Pillar Two discussion gains side-by-side framework references in 2025, adding a new contrast mechanism for how minimum-tax rules may apply.",
+      "salience": 0.78
+    },
+    {
+      "prev_node_id": "prev_financial",
+      "curr_node_id": "curr_financial",
+      "change_class": "stable",
+      "rationale": "FX, debt, derivatives, and impairment channels remain in the same order with comparable business-effect pathways.",
+      "salience": 0.42
+    },
+    {
+      "prev_node_id": "prev_tech_esg",
+      "curr_node_id": "curr_tech_esg",
+      "change_class": "reworded",
+      "rationale": "Technology/privacy and sustainability remain coupled under one parent, with wording refinements rather than a topology change.",
+      "salience": 0.66
+    },
+    {
+      "prev_node_id": "prev_cyber_privacy",
+      "curr_node_id": "curr_cyber_privacy",
+      "change_class": "moved",
+      "rationale": "Cyber detail is redistributed across paragraph boundaries (including insurance language) while preserving the same disruption-to-financial-impact mechanism.",
+      "salience": 0.58
+    },
+    {
+      "prev_node_id": "prev_sustain_climate",
+      "curr_node_id": "curr_sustain_climate",
+      "change_class": "softened",
+      "rationale": "The anti-ESG clause in 2025 appears with reduced consequence specificity in-paragraph, softening explicit downside articulation despite similar trigger language.",
+      "salience": 0.64
+    }
+  ],
+  "material_changes": [
+    {
+      "id": "mc_1",
+      "title": "\"attract, retain and inspire\" replaces \"diverse perspectives, experiences and backgrounds\" talent framing",
+      "change_class": "reworded",
+      "salience": 0.86,
+      "caveat": "Comparison uses paragraph 10 (2024) and paragraph 8 (2025); paragraph 9 (2024) also covers talent and may duplicate some language, so the observed shift can partly reflect consolidation.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 10
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 8
+        }
+      ]
+    },
+    {
+      "id": "mc_2",
+      "title": "\"Recent activities and proposals\" added to obesity/chronic disease risk language",
+      "change_class": "intensified",
+      "salience": 0.82,
+      "caveat": "Paragraph 20 (2025) adds initiative wording, but surrounding paragraphs 21-25 still share broad demand/cost language with 2024 paragraph 24, limiting precision on incremental magnitude.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 24
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 20
+        }
+      ]
+    },
+    {
+      "id": "mc_3",
+      "title": "\"side-by-side framework under Pillar Two\" introduced in minimum-tax narrative",
+      "change_class": "added",
+      "salience": 0.78,
+      "caveat": "Paragraph 35 (2025) cites June 2025 and January 2026 guidance, but jurisdiction-by-jurisdiction enactment status is not enumerated in the cited text, constraining impact quantification.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 39
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 35
+        }
+      ]
+    },
+    {
+      "id": "mc_4",
+      "title": "\"one bottler accounted for 10% of our net operating revenues\" disclosure added",
+      "change_class": "added",
+      "salience": 0.72,
+      "caveat": "Paragraph 30 (2025) provides a single-year concentration datapoint, while paragraph 34 (2024) lacks a directly comparable percentage, so trend inference across years is limited.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 34
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 30
+        }
+      ]
+    },
+    {
+      "id": "mc_5",
+      "title": "\"anti-ESG sentiment ... may result\" now omits \"market access restrictions\" consequences",
+      "change_class": "softened",
+      "salience": 0.64,
+      "caveat": "Paragraph 60 (2025) ends at 'may result' without the explicit consequence list present in paragraph 63 (2024), but nearby paragraph boundaries may carry continuation text not captured in this pair.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 63
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 60
+        }
+      ]
+    }
+  ],
+  "evidence_bank": [
+    {
+      "year": 2024,
+      "paragraph_idx": 10,
+      "snippet": "ability to attract, hire, develop, motivate and retain a global workforce of top talent with diverse perspectives, experiences and backgrounds that reflect the broad range of consumers and markets we serve around the world;",
+      "why": "Baseline talent-risk framing emphasizes diversity-linked workforce composition and lifecycle actions.",
+      "node_ids": [
+        "prev_mkt_exec"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 24,
+      "snippet": "There is concern among consumers, public health professionals and government agencies about the health problems associated with obesity and other chronic diseases. Ongoing public concern about obesity; other health-related public concerns surrounding consumption of sweetened beverages;",
+      "why": "Establishes pre-2025 health-policy risk baseline for obesity and sweetened beverage scrutiny.",
+      "node_ids": [
+        "prev_reg_health"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 34,
+      "snippet": "We generate a significant portion of our net operating revenues by selling concentrates and syrups to independent bottling partners. As independent companies, our bottling partners, some of which are publicly traded companies, make their own business decisions that may not always align with our interests. In addition,",
+      "why": "Captures baseline bottler-alignment risk description without explicit single-bottler concentration percentage.",
+      "node_ids": [
+        "prev_reg_system"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 39,
+      "snippet": "Numerous countries have enacted legislation that implemented certain aspects of Pillar Two effective January 1, 2024, while many others have indicated their intent to adopt, or have adopted, legislation effective in 2025.",
+      "why": "Provides prior-year Pillar Two implementation baseline before the side-by-side update.",
+      "node_ids": [
+        "prev_tax_legal"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 41,
+      "snippet": "For instance, the United States Internal Revenue Service (“IRS”) is seeking to increase our U.S. taxable income for tax years 2007 through 2009 by an amount that creates a potential additional U.S. federal income tax liability of approximately $3.3 billion for that period, plus interest.",
+      "why": "Anchors IRS litigation exposure and potential cash-flow effects for tax risk continuity.",
+      "node_ids": [
+        "prev_tax_legal"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 56,
+      "snippet": "If we are unable to protect our information systems against service interruption, misappropriation of data or cybersecurity incidents, our operations could be disrupted, we may suffer financial losses and our reputation may be damaged.",
+      "why": "Cyber risk thesis sentence used for risk-graph continuity between years.",
+      "node_ids": [
+        "prev_cyber_privacy"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 63,
+      "snippet": "At the same time, there also exists “anti-ESG” sentiment among certain stakeholders and government entities, which may result in scrutiny, reputational risk, product boycotts, lawsuits or market access restrictions from these parties regarding our sustainability policies, practices or initiatives.",
+      "why": "Contains explicit anti-ESG consequence list used for 2024-to-2025 sustainability wording contrast.",
+      "node_ids": [
+        "prev_sustain_climate"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 71,
+      "snippet": "There is increasing concern that a gradual increase in global average temperatures due to increased concentration of carbon dioxide and other greenhouse gases in the atmosphere is causing significant changes in weather patterns around the globe and an increase in the frequency and severity of natural disasters.",
+      "why": "Climate physical-risk baseline phrasing for sustainability risk graph.",
+      "node_ids": [
+        "prev_sustain_climate"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 8,
+      "snippet": "ability to attract, retain and inspire a global workforce of outstanding talent and to nurture a culture that supports our growth and aligns employees around the Company’s purpose and work that matters most. Competition for, along with compensation and benefits expectations of, existing and prospective employees has increased,",
+      "why": "Updated talent framing centers retain/inspire language and outstanding talent wording.",
+      "node_ids": [
+        "curr_mkt_exec"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 20,
+      "snippet": "There is ongoing concern among consumers, public health professionals and government agencies about the health problems associated with obesity and other chronic diseases. Recent activities and proposals by U.S.",
+      "why": "Introduces new wording tied to recent government activities and childhood chronic disease initiatives.",
+      "node_ids": [
+        "curr_reg_health"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 30,
+      "snippet": "For the year ended December 31, 2025, one bottler accounted for 10% of our net operating revenues, which are reflected in our EMEA and Asia Pacific operating segments. As independent companies, our bottling partners, some of which are publicly traded companies,",
+      "why": "Adds explicit single-bottler concentration figure in the bottler dependency discussion.",
+      "node_ids": [
+        "curr_reg_system"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 35,
+      "snippet": "In June 2025, the Group of Seven (“G7”) released a statement announcing an understanding of a potential side-by-side system approach to the Pillar Two framework that would exclude U.S.-parented groups from certain Pillar Two provisions in recognition of existing U.S. minimum tax rules. In January 2026,",
+      "why": "New Pillar Two side-by-side update with June 2025 G7 statement and 2026 OECD guidance.",
+      "node_ids": [
+        "curr_tax_legal"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 37,
+      "snippet": "For instance, the United States Internal Revenue Service (“IRS”) is seeking to increase our U.S. taxable income for tax years 2007 through 2009 by an amount that creates a potential additional U.S. federal income tax liability of approximately $3.3 billion for that period, plus interest.",
+      "why": "Maintains IRS litigation exposure context in the updated tax section layout.",
+      "node_ids": [
+        "curr_tax_legal"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 54,
+      "snippet": "If we are unable to protect our information systems against service interruption, misappropriation of data or cybersecurity incidents, our operations could be disrupted, we may suffer financial losses and our reputation may be damaged.",
+      "why": "Cyber risk thesis sentence retained for year-over-year graph continuity.",
+      "node_ids": [
+        "curr_cyber_privacy"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 57,
+      "snippet": "While we have purchased cybersecurity insurance, there are no assurances that the coverage would be sufficient in type or amount in relation to any incurred losses. Moreover, as cyberattacks increase in frequency and magnitude,",
+      "why": "Insurance adequacy caveat retained and positioned in the 2025 cybersecurity disclosure sequence.",
+      "node_ids": [
+        "curr_cyber_privacy"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 60,
+      "snippet": "At the same time, there also exists “anti-ESG” sentiment among certain stakeholders and government entities, which may result",
+      "why": "2025 sustainability paragraph preserves anti-ESG trigger but with reduced consequence specificity in this paragraph boundary.",
+      "node_ids": [
+        "curr_sustain_climate"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 67,
+      "snippet": "There is ongoing concern that a gradual increase in global average temperatures due to increased concentration of carbon dioxide and other greenhouse gases in the atmosphere is causing significant changes in weather patterns around the globe and an increase in the frequency and severity of natural disasters.",
+      "why": "Climate risk framing remains central and ties physical effects to long-term business impact.",
+      "node_ids": [
+        "curr_sustain_climate"
+      ]
+    }
+  ],
+  "lens_divergence": {
+    "materially_different": false,
+    "summary": "This artifact is generated from the raw lens only; no separate deboilerplated counterpart is included here, so divergence is not materially observable within this output."
+  },
+  "provenance": {
+    "input_file": "inputs/pair/KO_2024_2025_10k_item1a_raw_edgar.json",
+    "model_provider": "openai",
+    "model_name": "GPT-5.3-Codex (Extra High Reasoning, Agent Mode)",
+    "run_label": "2026-03-05_openai_gpt53codex_xhigh_agent_fullsec_real_ko_2024_2025_outline_compare"
+  },
+  "artifact_id": "llm_outline_compare_runtime"
+}

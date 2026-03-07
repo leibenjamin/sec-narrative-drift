@@ -1,0 +1,110 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_llm_delta_brief_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "NVDA",
+  "section": "10k_item1a",
+  "year_from": 2022,
+  "year_to": 2023,
+  "artifacts": {
+    "delta_brief": "Change: \"purchase obligations and prepaid supply agreements represented more than half of our total supply\" sharpened commitment risk (intensified); \"new export restrictions and export licensing requirements targeting China's semiconductor and supercomputing industries\" became explicit (intensified) (2022 para 42; 2022 para 46) Drivers: Evidence shows topic movement, rewording intensity, and selective expansion/contraction in the risk narrative. (2022 para 136; 2022 para 137) Caveat: 2023 para 45 gives a point-in-time share, but 2022 para 41 and para 45 do not provide a directly comparable percentage baseline for magnitude."
+  },
+  "evidence": [
+    {
+      "year": 2022,
+      "paragraph_idx": 41,
+      "snippet": "In periods of shortages impacting the semiconductor industry and/or limited supply or capacity in our supply chain, as we are in today, we have placed and may continue to place non-cancellable inventory orders in advance of our historical lead times, and pay premiums and/or provide deposits to secure future supply and capacity.",
+      "why": "Non-cancellable ordering behavior under shortages.",
+      "highlights": [
+        "periods",
+        "shortages"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 45,
+      "snippet": "These actions may increase our product costs and trigger significant excess inventory or other charges if there is a partial or complete reduction in long-term demand for our products or if such demand is served by our competitors, which could negatively impact our gross margins and our overall financial results.",
+      "why": "Cost and excess inventory downside from long-lead actions.",
+      "highlights": [
+        "these",
+        "actions"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 135,
+      "snippet": "The increasing focus on the strategic importance of AI technologies may result in additional regulatory restrictions that target products",
+      "why": "AI restrictions described as emerging in 2022.",
+      "highlights": [
+        "increasing",
+        "focus"
+      ]
+    },
+    {
+      "year": 2022,
+      "paragraph_idx": 136,
+      "snippet": "Such restrictions could limit our ability to serve demand abroad and could negatively impact our business and financial results.",
+      "why": "Potential demand-abroad limitation channel.",
+      "highlights": [
+        "such",
+        "restrictions"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 44,
+      "snippet": "Our supply, which includes inventory on hand, purchase obligations and prepaid supply agreements, has grown significantly due to current supply chain conditions, complexity of our products, and recent reductions in demand.",
+      "why": "Supply grew through inventory, obligations, and prepaids.",
+      "highlights": [
+        "supply",
+        "which"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 45,
+      "snippet": "At the end of fiscal year 2023, purchase obligations and prepaid supply agreements represented more than half of our total supply.",
+      "why": "Obligations/prepaids exceed half of total supply.",
+      "highlights": [
+        "fiscal",
+        "year"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 163,
+      "snippet": "During the third quarter of fiscal year 2023, the U.S. government, or USG, announced new export restrictions and export licensing requirements targeting China’s semiconductor and supercomputing industries.",
+      "why": "USG China semiconductor export restrictions announced.",
+      "highlights": [
+        "during",
+        "third"
+      ]
+    },
+    {
+      "year": 2023,
+      "paragraph_idx": 164,
+      "snippet": "These restrictions impact exports of certain chips, as well as software, hardware, equipment, and technology used to develop, produce, and manufacture certain chips, to China (including Hong Kong and Macau) and Russia, and specifically impact our A100 and H100 integrated circuits, DGX or any other systems or boards which incorporate A100 or H100",
+      "why": "A100/H100 and related system scope is named.",
+      "highlights": [
+        "these",
+        "restrictions"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.48,
+    "confidence": 0.75,
+    "coverage": 1.0,
+    "warnings": [
+      "Projected deterministically from llm_outline_compare_runtime master artifact.",
+      "For this pair, deboilerplated text retains the same mechanisms; observed shifts come from filing-year content rather than lens drift."
+    ]
+  },
+  "provenance": {
+    "input_file": "inputs/pair/NVDA_2022_2023_10k_item1a_deboilerplated_edgar.json",
+    "model_provider": "openai",
+    "model_name": "GPT-5.3-Codex (Extra High Reasoning, Agent Mode)",
+    "run_label": "2026-02-27_openai_gpt53codex_xhigh_agent_fullsec_real_nvda_2022_2023_outline_compare"
+  }
+}

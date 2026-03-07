@@ -1,0 +1,579 @@
+{
+  "lab_schema_version": "1.0",
+  "artifact_schema_version": "1.0",
+  "ticker": "NVDA",
+  "section": "10k_item1a",
+  "source_id": "edgar",
+  "cleaning_lens": "deboilerplated",
+  "year_from": 2024,
+  "year_to": 2025,
+  "outline_prev": [
+    {
+      "node_id": "prev_root",
+      "parent_id": null,
+      "level": 1,
+      "order": 0,
+      "label": "FY2024 Item 1A Risk Architecture",
+      "risk_thesis": "The 2024 structure concentrates on execution volatility, export-control pressure centered on China, and financing/compliance constraints.",
+      "evidence_paragraph_idx": [
+        0,
+        2
+      ]
+    },
+    {
+      "node_id": "prev_market_execution",
+      "parent_id": "prev_root",
+      "level": 2,
+      "order": 0,
+      "label": "Market And Execution Risks",
+      "risk_thesis": "Operational execution depends on demand forecasting, supply availability, and product-transition timing.",
+      "evidence_paragraph_idx": [
+        16,
+        35
+      ]
+    },
+    {
+      "node_id": "prev_supply_cadence",
+      "parent_id": "prev_market_execution",
+      "level": 3,
+      "order": 0,
+      "label": "Lead Times And Transition Cadence",
+      "risk_thesis": "Long manufacturing lead times combined with transition frequency can create supply-demand mismatches and fulfillment pressure.",
+      "evidence_paragraph_idx": [
+        35,
+        47
+      ]
+    },
+    {
+      "node_id": "prev_channel_competition",
+      "parent_id": "prev_market_execution",
+      "level": 3,
+      "order": 1,
+      "label": "Channel And Adoption Dependence",
+      "risk_thesis": "Demand outcomes depend on partner channels, customer behavior, and uncertain long-term trajectory of generative AI demand.",
+      "evidence_paragraph_idx": [
+        55,
+        109
+      ]
+    },
+    {
+      "node_id": "prev_policy_regulatory",
+      "parent_id": "prev_root",
+      "level": 2,
+      "order": 1,
+      "label": "Policy And Regulatory Risks",
+      "risk_thesis": "Geopolitical and regulatory actions govern market access, operating models, and compliance obligations.",
+      "evidence_paragraph_idx": [
+        121,
+        129
+      ]
+    },
+    {
+      "node_id": "prev_export_controls_china",
+      "parent_id": "prev_policy_regulatory",
+      "level": 3,
+      "order": 0,
+      "label": "Export Controls And China Exposure",
+      "risk_thesis": "U.S. export controls and licensing uncertainty constrain China-related sales mix, operations, and downstream product demand.",
+      "evidence_paragraph_idx": [
+        80,
+        129,
+        138,
+        144
+      ]
+    },
+    {
+      "node_id": "prev_ai_privacy_compliance",
+      "parent_id": "prev_policy_regulatory",
+      "level": 3,
+      "order": 1,
+      "label": "AI, Privacy, And Legal Compliance",
+      "risk_thesis": "Broad global rules on AI and data handling can drive legal exposure, remediation burden, and business-practice changes.",
+      "evidence_paragraph_idx": [
+        121,
+        158,
+        162
+      ]
+    },
+    {
+      "node_id": "prev_capital_structure",
+      "parent_id": "prev_root",
+      "level": 2,
+      "order": 2,
+      "label": "Capital And Tax Structure",
+      "risk_thesis": "Debt-service commitments and tax-policy sensitivity can reduce strategic flexibility and pressure cash flows.",
+      "evidence_paragraph_idx": [
+        167,
+        172
+      ]
+    },
+    {
+      "node_id": "prev_debt_tax_constraints",
+      "parent_id": "prev_capital_structure",
+      "level": 3,
+      "order": 0,
+      "label": "Debt Covenants And Tax-Rate Sensitivity",
+      "risk_thesis": "Contractual debt terms and tax-rate changes can increase financing risk and operational constraints.",
+      "evidence_paragraph_idx": [
+        174,
+        167
+      ]
+    }
+  ],
+  "outline_curr": [
+    {
+      "node_id": "curr_root",
+      "parent_id": null,
+      "level": 1,
+      "order": 0,
+      "label": "FY2025 Item 1A Risk Architecture",
+      "risk_thesis": "The 2025 structure preserves core execution and compliance themes while adding explicit global AI-export and cyber-regulatory mechanisms.",
+      "evidence_paragraph_idx": [
+        0,
+        2
+      ]
+    },
+    {
+      "node_id": "curr_market_execution",
+      "parent_id": "curr_root",
+      "level": 2,
+      "order": 0,
+      "label": "Market And Execution Risks",
+      "risk_thesis": "Execution risk remains anchored in long lead times, demand accuracy, and product-cadence effects on adoption and cost.",
+      "evidence_paragraph_idx": [
+        16,
+        31
+      ]
+    },
+    {
+      "node_id": "curr_supply_cadence",
+      "parent_id": "curr_market_execution",
+      "level": 3,
+      "order": 0,
+      "label": "Lead Times And Adoption Timing",
+      "risk_thesis": "Long lead times and customer adoption lag can directly affect revenue timing and supply-chain cost.",
+      "evidence_paragraph_idx": [
+        16,
+        46
+      ]
+    },
+    {
+      "node_id": "curr_channel_competition",
+      "parent_id": "curr_market_execution",
+      "level": 3,
+      "order": 1,
+      "label": "Channel And China Competition",
+      "risk_thesis": "Export-limited offerings and partner/customer model shifts increase channel dependence and competitive pressure.",
+      "evidence_paragraph_idx": [
+        67,
+        95
+      ]
+    },
+    {
+      "node_id": "curr_policy_regulatory",
+      "parent_id": "curr_root",
+      "level": 2,
+      "order": 1,
+      "label": "Policy And Regulatory Risks",
+      "risk_thesis": "Regulatory exposure expands from broad compliance obligations to explicit global export and AI-governance enforcement channels.",
+      "evidence_paragraph_idx": [
+        109,
+        121
+      ]
+    },
+    {
+      "node_id": "curr_export_controls_global",
+      "parent_id": "curr_policy_regulatory",
+      "level": 3,
+      "order": 0,
+      "label": "Global Export Controls And Licensing",
+      "risk_thesis": "Export controls evolve into worldwide licensing constraints with direct inventory, shipment, and competitive effects.",
+      "evidence_paragraph_idx": [
+        121,
+        131,
+        154
+      ]
+    },
+    {
+      "node_id": "curr_verified_user_tiers",
+      "parent_id": "curr_policy_regulatory",
+      "level": 3,
+      "order": 1,
+      "label": "Verified-End-User Tiering",
+      "risk_thesis": "UVEU/NVEU status creates a gatekeeping layer that can reshape customer access and competitive dynamics.",
+      "evidence_paragraph_idx": [
+        135,
+        138
+      ]
+    },
+    {
+      "node_id": "curr_ai_privacy_compliance",
+      "parent_id": "curr_policy_regulatory",
+      "level": 3,
+      "order": 2,
+      "label": "AI And Cyber Compliance Enforcement",
+      "risk_thesis": "EU AI Act timing and NIS2 obligations introduce concrete resilience requirements and administrative-fine exposure.",
+      "evidence_paragraph_idx": [
+        115,
+        178,
+        179
+      ]
+    },
+    {
+      "node_id": "curr_capital_structure",
+      "parent_id": "curr_root",
+      "level": 2,
+      "order": 2,
+      "label": "Capital And Tax Structure",
+      "risk_thesis": "Debt and tax-policy sensitivity remain as recurring constraints on cash flow and financing flexibility.",
+      "evidence_paragraph_idx": [
+        183,
+        188
+      ]
+    },
+    {
+      "node_id": "curr_debt_tax_constraints",
+      "parent_id": "curr_capital_structure",
+      "level": 3,
+      "order": 0,
+      "label": "Debt Covenants And Tax-Rate Sensitivity",
+      "risk_thesis": "Debt covenants and tax changes can still impair refinancing options and strategic flexibility.",
+      "evidence_paragraph_idx": [
+        189,
+        184
+      ]
+    }
+  ],
+  "node_alignment": [
+    {
+      "prev_node_id": "prev_root",
+      "curr_node_id": "curr_root",
+      "change_class": "stable",
+      "rationale": "Both years keep a three-part architecture linking execution risk, policy/regulatory constraints, and capital-structure sensitivity.",
+      "salience": 0.52
+    },
+    {
+      "prev_node_id": "prev_market_execution",
+      "curr_node_id": "curr_market_execution",
+      "change_class": "stable",
+      "rationale": "Execution risk remains centered on demand forecasting and supply readiness, with 2025 preserving the same mechanism while tightening wording.",
+      "salience": 0.58
+    },
+    {
+      "prev_node_id": "prev_supply_cadence",
+      "curr_node_id": "curr_supply_cadence",
+      "change_class": "moved",
+      "rationale": "2024 embeds long lead-time risk under transition cadence, while 2025 moves the same lead-time mismatch mechanism into a direct core risk statement and ties it to adoption timing.",
+      "salience": 0.74
+    },
+    {
+      "prev_node_id": "prev_channel_competition",
+      "curr_node_id": "curr_channel_competition",
+      "change_class": "reworded",
+      "rationale": "The channel-dependence mechanism persists, but 2025 reframes it with explicit China competitiveness and partner-model changes rather than 2024's broader demand-trajectory framing.",
+      "salience": 0.63
+    },
+    {
+      "prev_node_id": "prev_policy_regulatory",
+      "curr_node_id": "curr_policy_regulatory",
+      "change_class": "intensified",
+      "rationale": "Regulatory exposure shifts from broad compliance lists in 2024 to more operationally explicit control regimes in 2025, increasing transmission from policy change to revenue and cost outcomes.",
+      "salience": 0.82
+    },
+    {
+      "prev_node_id": "prev_export_controls_china",
+      "curr_node_id": "curr_export_controls_global",
+      "change_class": "intensified",
+      "rationale": "2024 describes export controls as an increasing focus, while 2025 adds a 120-day compliance period and worldwide ECCN licensing gate, converting a regional constraint into a global shipment-approval mechanism.",
+      "salience": 0.94
+    },
+    {
+      "prev_node_id": "prev_export_controls_china",
+      "curr_node_id": "curr_verified_user_tiers",
+      "change_class": "split",
+      "rationale": "Part of the 2024 export-control uncertainty is separated in 2025 into a distinct customer-tier mechanism (UVEU/NVEU) that directly governs market access.",
+      "salience": 0.85
+    },
+    {
+      "prev_node_id": "prev_ai_privacy_compliance",
+      "curr_node_id": "curr_ai_privacy_compliance",
+      "change_class": "intensified",
+      "rationale": "2024 states EU AI Act burden at a high level, whereas 2025 adds implementation timing and NIS2 resilience/fine channels, increasing enforceability specificity.",
+      "salience": 0.88
+    },
+    {
+      "prev_node_id": "prev_capital_structure",
+      "curr_node_id": "curr_capital_structure",
+      "change_class": "stable",
+      "rationale": "Debt and tax exposures remain a separate risk branch in both years with no structural relocation.",
+      "salience": 0.46
+    },
+    {
+      "prev_node_id": "prev_debt_tax_constraints",
+      "curr_node_id": "curr_debt_tax_constraints",
+      "change_class": "reworded",
+      "rationale": "The same debt-covenant and tax-rate mechanism persists with minor textual edits but no change in transmission path.",
+      "salience": 0.49
+    }
+  ],
+  "material_changes": [
+    {
+      "id": "mc_1",
+      "title": "\"worldwide licensing requirement\" extends prior \"focus of export control restrictions\" language",
+      "change_class": "intensified",
+      "salience": 0.97,
+      "caveat": "Comparison is anchored to 2024 paragraph 129 and 2025 paragraphs 131 and 154; this coverage does not include the long product-enumeration paragraph 134, so product-by-product scope could be understated.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 129
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 131
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 154
+        }
+      ]
+    },
+    {
+      "id": "mc_2",
+      "title": "\"China represented a mid-single digit percentage\" shifts to \"market in China ... highly competitive\"",
+      "change_class": "reworded",
+      "salience": 0.9,
+      "caveat": "The contrast uses 2024 paragraph 80 and 2025 paragraph 67, which mix a quantified share disclosure with qualitative competition wording, so direct magnitude comparability is limited.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 80
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 67
+        }
+      ]
+    },
+    {
+      "id": "mc_3",
+      "title": "\"closed process ... no clear standards\" is recast through \"Universal Verified End Users\" tiering",
+      "change_class": "intensified",
+      "salience": 0.86,
+      "caveat": "Evidence is bounded to 2024 paragraph 138 and 2025 paragraphs 135 and 138; this omits adjacent retaliation and transition paragraphs, so second-order policy responses are only partially covered.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 138
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 135
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 138
+        }
+      ]
+    },
+    {
+      "id": "mc_4",
+      "title": "\"EU AI Act ... obligations\" gains dated applicability and \"Non-compliance with NIS2\" fine language",
+      "change_class": "intensified",
+      "salience": 0.8,
+      "caveat": "This change references 2024 paragraph 162 and 2025 paragraphs 115, 178, and 179; it does not include implementation-cost detail paragraphs, so cost-range specificity remains constrained.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 162
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 115
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 178
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 179
+        }
+      ]
+    },
+    {
+      "id": "mc_5",
+      "title": "\"long manufacturing lead times\" risk is moved into direct demand-mismatch and revenue-timing language",
+      "change_class": "moved",
+      "salience": 0.73,
+      "caveat": "Mapping uses 2024 paragraph 35 and 2025 paragraphs 16 and 46; because inventory-commitment paragraphs are not cited, this row captures framing movement more than full balance-sheet exposure.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 35
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 16
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 46
+        }
+      ]
+    }
+  ],
+  "evidence_bank": [
+    {
+      "year": 2024,
+      "paragraph_idx": 129,
+      "snippet": "As geopolitical tensions have increased, semiconductors associated with AI, including GPUs and associated products, are increasingly the focus of export control restrictions proposed by stakeholders in the U.S. and its allies.",
+      "why": "Establishes the 2024 baseline as export controls becoming a policy focus.",
+      "node_ids": [
+        "prev_policy_regulatory",
+        "prev_export_controls_china"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 131,
+      "snippet": "After a 120-day delayed compliance period, the IFR will, unless modified, impose a worldwide licensing requirement on all products classified under Export Control Classification Numbers, or ECCNs, 3A090.a, 4A090.a, or corresponding .z ECCNs, including all related software and technology.",
+      "why": "Shows the 2025 shift to an explicit worldwide licensing requirement with a compliance clock.",
+      "node_ids": [
+        "curr_policy_regulatory",
+        "curr_export_controls_global"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 154,
+      "snippet": "If additional products are subject to worldwide licensing requirements, we may incur significant inventory provisions and excess purchase obligation charges.",
+      "why": "Quantifies downstream inventory and purchase-obligation exposure from expanded licensing scope.",
+      "node_ids": [
+        "curr_export_controls_global"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 80,
+      "snippet": "China represented a mid-single digit percentage of our Data Center revenue in the fourth quarter of fiscal year 2024 due to USG licensing requirements and we expect China to be in a similar range in the first quarter of fiscal year 2025.",
+      "why": "Provides a concrete 2024 China revenue-share framing tied to licensing constraints.",
+      "node_ids": [
+        "prev_export_controls_china"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 67,
+      "snippet": "The market in China, where our offerings are limited by export controls, is highly competitive and we expect it to remain competitive going forward.",
+      "why": "Reframes China risk around persistent competitive pressure under export-limited offerings.",
+      "node_ids": [
+        "curr_channel_competition",
+        "curr_export_controls_global"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 138,
+      "snippet": "The USG is evaluating license requests in a closed process that does not have clear standards or an opportunity for review.",
+      "why": "Captures prior-year licensing-process opacity and review uncertainty.",
+      "node_ids": [
+        "prev_export_controls_china"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 135,
+      "snippet": "The AI Diffusion IFR would confer special benefits on select “Universal Verified End Users”, or UVEU, and lesser benefits on “National Verified End Users”, or NVEU.",
+      "why": "Introduces UVEU/NVEU customer-tier mechanics in the AI Diffusion IFR.",
+      "node_ids": [
+        "curr_verified_user_tiers"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 138,
+      "snippet": "The AI Diffusion IFR would limit access to the market for IT services and computing infrastructure, by favoring a select number of government-approved firms that achieve UVEU status.",
+      "why": "Defines the market-access channel through government-approved UVEU status.",
+      "node_ids": [
+        "curr_verified_user_tiers"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 162,
+      "snippet": "Furthermore, the EU AI Act could impose onerous obligations that may disproportionately impact and disadvantage us and require us to change our business practices.",
+      "why": "Captures prior-year EU AI Act risk as a general obligations statement.",
+      "node_ids": [
+        "prev_ai_privacy_compliance"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 115,
+      "snippet": "For example, the EU AI Act became effective on August 1, 2024 and will be fully applicable after a two-year transitional period.",
+      "why": "Adds dated implementation timing for EU AI Act applicability.",
+      "node_ids": [
+        "curr_ai_privacy_compliance"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 178,
+      "snippet": "Additionally, Europe’s Network and Information Security Directive, or NIS2, regulates resilience and incident response capabilities of entities operating in a number of sectors, including the digital infrastructure sector.",
+      "why": "Adds explicit NIS2 resilience and incident-response requirements.",
+      "node_ids": [
+        "curr_ai_privacy_compliance"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 179,
+      "snippet": "Non-compliance with NIS2 may lead to administrative fines of a maximum of 10 million Euros or up to 2% of the total worldwide revenue of the preceding fiscal year.",
+      "why": "Adds explicit NIS2 administrative fine exposure.",
+      "node_ids": [
+        "curr_ai_privacy_compliance"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 35,
+      "snippet": "The increased frequency of these transitions may magnify the challenges associated with managing our supply and demand due to long manufacturing lead times.",
+      "why": "Places long lead-time risk in 2024 product-transition/supply-demand management context.",
+      "node_ids": [
+        "prev_market_execution",
+        "prev_supply_cadence"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 16,
+      "snippet": "Long manufacturing lead times and uncertain supply and component availability, combined with a failure to estimate customer demand accurately, has led and could lead to mismatches between supply and demand.",
+      "why": "Moves long lead-time mismatch language into direct 2025 core risk framing.",
+      "node_ids": [
+        "curr_market_execution",
+        "curr_supply_cadence"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 46,
+      "snippet": "Customers may delay purchasing existing products as we increase the frequency of new products or may not be able to adopt our new products as fast as forecasted, both impacting the timing of our revenue and supply chain cost.",
+      "why": "Extends 2025 lead-time risk to adoption-delay effects on revenue timing and supply-chain cost.",
+      "node_ids": [
+        "curr_supply_cadence"
+      ]
+    }
+  ],
+  "lens_divergence": {
+    "materially_different": false,
+    "summary": "Only the deboilerplated lens was provided in this case input set, so no cross-lens divergence comparison is available within filing evidence."
+  },
+  "provenance": {
+    "input_file": "inputs/pair/NVDA_2024_2025_10k_item1a_deboilerplated_edgar.json",
+    "model_provider": "openai",
+    "model_name": "GPT-5.3-Codex (Extra High Reasoning, Agent Mode)",
+    "run_label": "2026-02-27_openai_gpt53codex_xhigh_agent_fullsec_real_nvda_2024_2025_outline_compare"
+  },
+  "artifact_id": "llm_outline_compare_runtime"
+}

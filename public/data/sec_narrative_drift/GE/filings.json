@@ -131,56 +131,5 @@
         "toc_detected"
       ]
     }
-  },
-  {
-    "year": 2023,
-    "form": "10-K",
-    "filingDate": "2024-02-02",
-    "reportDate": "2023-12-31",
-    "accessionNumber": "0000040545-24-000027",
-    "primaryDocument": "ge-20231231.htm",
-    "secUrl": "https://www.sec.gov/Archives/edgar/data/40545/000004054524000027/ge-20231231.htm",
-    "extraction": {
-      "confidence": 0.95,
-      "method": "blockdoc_scored",
-      "errors": [
-        "toc_detected"
-      ]
-    }
-  },
-  {
-    "year": 2024,
-    "form": "10-K",
-    "filingDate": "2025-02-03",
-    "reportDate": "2024-12-31",
-    "accessionNumber": "0000040545-25-000015",
-    "primaryDocument": "ge-20241231.htm",
-    "secUrl": "https://www.sec.gov/Archives/edgar/data/40545/000004054525000015/ge-20241231.htm",
-    "extraction": {
-      "confidence": 0.6499999999999999,
-      "method": "blockdoc_scored",
-      "errors": [
-        "toc_detected",
-        "toc_like_tail"
-      ]
-    }
-  },
-  {
-    "year": 2025,
-    "form": "10-K",
-    "filingDate": "2026-01-29",
-    "reportDate": "2025-12-31",
-    "accessionNumber": "0000040545-26-000008",
-    "primaryDocument": "ge-20251231.htm",
-    "secUrl": "https://www.sec.gov/Archives/edgar/data/40545/000004054526000008/ge-20251231.htm",
-    "extraction": {
-      "confidence": 0.6499999999999999,
-      "method": "blockdoc_scored",
-      "errors": [
-        "toc_detected",
-        "toc_like_tail",
-        "length_jump_vs_prev_year"
-      ]
-    }
   }
 ]

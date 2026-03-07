@@ -1,0 +1,110 @@
+{
+  "lab_schema_version": "1.0",
+  "detector_id": "det_llm_delta_brief_v1",
+  "cleaning_lens": "deboilerplated",
+  "source_id": "edgar",
+  "ticker": "WM",
+  "section": "10k_item1a",
+  "year_from": 2024,
+  "year_to": 2025,
+  "artifacts": {
+    "delta_brief": "Change: Trade language shifts from ?could have a negative impact? to ?have a negative impact? on recycling export business (intensified); RFS risk moves from ?could seek to reduce existing renewable fuel targets? to ?retroactively lowered 2024 blending volumes? (intensified) (2024 para 36; 2024 para 87) Drivers: Evidence shows topic movement, rewording intensity, and selective expansion/contraction in the risk narrative. (2024 para 152; 2025 para 21) Caveat: Caveat: This contrast is anchored to 2024 para 35 and 2025 paras 20/53; the cited text establishes direction and channels but does not quantify what share of margin pressure is tariff-driven versus commodity-cycle effects."
+  },
+  "evidence": [
+    {
+      "year": 2024,
+      "paragraph_idx": 35,
+      "snippet": "Significant new restrictions and tariffs on foreign trade could have a negative impact on our recycling export business and our cross-border commerce, particularly with Canada, and could increase the cost of certain equipment and other materials used in our operations that we procure from outside the U.S.",
+      "why": "Frames trade restrictions and tariffs as a potential downside to export economics and input costs.",
+      "highlights": [
+        "significant",
+        "restrictions"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 86,
+      "snippet": "The increase in market prices in 2024 for recyclable commodities resulted in a year-over-year increase in revenue of $245 million, and the decline in market prices in 2023 for recyclable commodities resulted in a year-over-year decrease in revenue of $308 million.",
+      "why": "Provides prior-year commodity revenue context used for year-over-year contrast.",
+      "highlights": [
+        "increase",
+        "market"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 151,
+      "snippet": "The new U.S. presidential administration could seek to reduce existing renewable fuel targets in a new rulemaking or otherwise set reduced targets for renewable fuels under the RFS program in future rulemakings.",
+      "why": "Shows policy risk framed as potential future reductions in renewable fuel targets.",
+      "highlights": [
+        "presidential",
+        "administration"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 20,
+      "snippet": "The current U.S. presidential administration has implemented substantial changes to foreign trade policy and is generally in favor of reducing regulation, including environmental regulation.",
+      "why": "States that substantial foreign trade policy changes were implemented in the current year context.",
+      "highlights": [
+        "current",
+        "presidential"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 53,
+      "snippet": "Significant restrictions and tariffs on foreign trade have a negative impact on our recycling export business and our cross-border commerce, particularly with Canada, decrease paper mills’ demand for recycled corrugated cardboard used in packaging and increase the cost of certain equipment and other materials used in our operations",
+      "why": "Reframes tariffs and restrictions as current realized pressure on recycling exports and costs.",
+      "highlights": [
+        "significant",
+        "restrictions"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 58,
+      "snippet": "The fluctuations in the market prices or demand for these commodities can affect our operating income and cash flows negatively, as we experienced in 2025, or positively, as we experienced in 2024.",
+      "why": "Updates commodity-cycle polarity to a negative 2025 versus positive 2024 statement.",
+      "highlights": [
+        "fluctuations",
+        "market"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 104,
+      "snippet": "Changes to federal and state renewable fuel policies could affect the financial performance of our Renewable Energy segment.",
+      "why": "States direct financial-performance sensitivity to renewable fuel policy changes.",
+      "highlights": [
+        "changes",
+        "federal"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 109,
+      "snippet": "While the previous rules under the RFS program reflected the outsized role of biogas under the program and delivered reforms benefiting the solid waste sector, the current administration has retroactively lowered 2024 blending volumes, proposed reductions for 2025,",
+      "why": "Documents concrete RFS policy resets, including retroactive and forward-year target reductions.",
+      "highlights": [
+        "while",
+        "previous"
+      ]
+    }
+  ],
+  "metrics": {
+    "drift_score": 0.6,
+    "confidence": 0.75,
+    "coverage": 1.0,
+    "warnings": [
+      "Projected deterministically from llm_outline_compare_runtime master artifact.",
+      "This run uses only the deboilerplated lens; no cross-lens comparison input was provided. Within this lens, the core risk architecture is consistent across years with targeted intensification in policy and market channels."
+    ]
+  },
+  "provenance": {
+    "input_file": "inputs/pair/WM_2024_2025_10k_item1a_deboilerplated_edgar.json",
+    "model_provider": "openai",
+    "model_name": "GPT-5.3-Codex (Extra High Reasoning, Agent Mode)",
+    "run_label": "2026-03-05_openai_gpt53codex_xhigh_agent_fullsec_real_wm_2024_2025_outline_compare"
+  }
+}

@@ -1,0 +1,1019 @@
+{
+  "lab_schema_version": "1.0",
+  "artifact_schema_version": "1.0",
+  "artifact_id": "llm_outline_compare_structured",
+  "ticker": "GE",
+  "section": "10k_item1a",
+  "source_id": "edgar",
+  "cleaning_lens": "deboilerplated",
+  "year_from": 2024,
+  "year_to": 2025,
+  "outline_prev": [
+    {
+      "node_id": "prev_root",
+      "parent_id": null,
+      "level": 1,
+      "order": 0,
+      "label": "GE 2024 Item 1A risk architecture",
+      "risk_thesis": "The filing organizes downside risk into strategic demand/technology pressures, execution fragility, and financial-regulatory constraints.",
+      "evidence_paragraph_idx": [
+        0
+      ]
+    },
+    {
+      "node_id": "prev_strategic",
+      "parent_id": "prev_root",
+      "level": 2,
+      "order": 0,
+      "label": "Strategic positioning and market structure",
+      "risk_thesis": "Macro shocks, aviation cycle volatility, technology competition, climate transition and portfolio moves can reset growth assumptions.",
+      "evidence_paragraph_idx": [
+        1,
+        14,
+        28
+      ]
+    },
+    {
+      "node_id": "prev_operational",
+      "parent_id": "prev_root",
+      "level": 2,
+      "order": 1,
+      "label": "Operational execution and resilience",
+      "risk_thesis": "Supplier performance, production ramp execution and cyber resilience determine delivery reliability and contract economics.",
+      "evidence_paragraph_idx": [
+        63,
+        72,
+        80
+      ]
+    },
+    {
+      "node_id": "prev_finlegal",
+      "parent_id": "prev_root",
+      "level": 2,
+      "order": 2,
+      "label": "Financial, regulatory and legal constraints",
+      "risk_thesis": "Customer credit, insurance reserve assumptions, liquidity access and legal/tax changes can pressure cash flows and valuation.",
+      "evidence_paragraph_idx": [
+        87,
+        94,
+        101
+      ]
+    },
+    {
+      "node_id": "prev_macro_policy",
+      "parent_id": "prev_strategic",
+      "level": 3,
+      "order": 0,
+      "label": "Global macro, conflict and policy disruption",
+      "risk_thesis": "Geopolitical conflict and protectionist policy shifts can depress demand and disrupt cross-border operations and supply chains.",
+      "evidence_paragraph_idx": [
+        5,
+        7,
+        8
+      ]
+    },
+    {
+      "node_id": "prev_competition_ai",
+      "parent_id": "prev_strategic",
+      "level": 3,
+      "order": 1,
+      "label": "Competition, innovation and AI integration",
+      "risk_thesis": "Under-investment or failed commercialization of advanced and AI-enabled technologies can weaken program competitiveness.",
+      "evidence_paragraph_idx": [
+        15,
+        19,
+        21
+      ]
+    },
+    {
+      "node_id": "prev_climate_transition",
+      "parent_id": "prev_strategic",
+      "level": 3,
+      "order": 2,
+      "label": "Climate transition technology and fuel pathway",
+      "risk_thesis": "Decarbonization expectations depend on uncertain technology readiness, fuel availability and infrastructure support.",
+      "evidence_paragraph_idx": [
+        28,
+        31,
+        37
+      ]
+    },
+    {
+      "node_id": "prev_climate_litigation",
+      "parent_id": "prev_strategic",
+      "level": 3,
+      "order": 3,
+      "label": "Climate reputation and litigation exposure",
+      "risk_thesis": "Stakeholder scrutiny and climate-related legal actions create additional reputation and defense-cost channels.",
+      "evidence_paragraph_idx": [
+        33,
+        43
+      ]
+    },
+    {
+      "node_id": "prev_portfolio_spin",
+      "parent_id": "prev_strategic",
+      "level": 3,
+      "order": 4,
+      "label": "Inorganic actions and spin-off liabilities",
+      "risk_thesis": "Execution of separations and portfolio actions can leave contingent liabilities and tax uncertainty.",
+      "evidence_paragraph_idx": [
+        46,
+        51
+      ]
+    },
+    {
+      "node_id": "prev_ip_cyber",
+      "parent_id": "prev_strategic",
+      "level": 3,
+      "order": 5,
+      "label": "Intellectual property and confidential-data threats",
+      "risk_thesis": "IP enforcement conflicts and cyber-enabled theft can erode competitive advantage and impair commercialization.",
+      "evidence_paragraph_idx": [
+        54,
+        57,
+        60
+      ]
+    },
+    {
+      "node_id": "prev_supply_execution",
+      "parent_id": "prev_operational",
+      "level": 3,
+      "order": 0,
+      "label": "Supply chain and delivery-ramp execution",
+      "risk_thesis": "Supplier bottlenecks and quality/performance gaps can break ramp plans, trigger delays and impair margins.",
+      "evidence_paragraph_idx": [
+        67,
+        69,
+        74
+      ]
+    },
+    {
+      "node_id": "prev_cyber_regulatory",
+      "parent_id": "prev_operational",
+      "level": 3,
+      "order": 1,
+      "label": "Cyber incident and compliance burden",
+      "risk_thesis": "Persistent cyberattack activity and evolving cross-jurisdictional requirements increase disruption and compliance costs.",
+      "evidence_paragraph_idx": [
+        80,
+        81,
+        86
+      ]
+    },
+    {
+      "node_id": "prev_customer_insurance",
+      "parent_id": "prev_finlegal",
+      "level": 3,
+      "order": 0,
+      "label": "Customer credit cyclicality and insurance reserve sensitivity",
+      "risk_thesis": "Customer health and reserve-model assumptions can create incremental capital needs and receivable risk.",
+      "evidence_paragraph_idx": [
+        87,
+        92,
+        93
+      ]
+    },
+    {
+      "node_id": "prev_liquidity_tax_legal",
+      "parent_id": "prev_finlegal",
+      "level": 3,
+      "order": 1,
+      "label": "Liquidity, tax policy and legal proceedings",
+      "risk_thesis": "Credit-market access, tax-rule shifts and litigation can increase cash cost and constrain strategic flexibility.",
+      "evidence_paragraph_idx": [
+        94,
+        101,
+        104
+      ]
+    }
+  ],
+  "outline_curr": [
+    {
+      "node_id": "curr_root",
+      "parent_id": null,
+      "level": 1,
+      "order": 0,
+      "label": "GE 2025 Item 1A risk architecture",
+      "risk_thesis": "The 2025 structure preserves the strategic-operational-financial scaffold while adding specificity in policy, cyber and execution channels.",
+      "evidence_paragraph_idx": [
+        0
+      ]
+    },
+    {
+      "node_id": "curr_strategic",
+      "parent_id": "curr_root",
+      "level": 2,
+      "order": 0,
+      "label": "Strategic positioning and market structure",
+      "risk_thesis": "Macro policy shifts, aerospace competition, climate transition and spin-off obligations remain primary strategic risk drivers.",
+      "evidence_paragraph_idx": [
+        1,
+        14,
+        28
+      ]
+    },
+    {
+      "node_id": "curr_operational",
+      "parent_id": "curr_root",
+      "level": 2,
+      "order": 1,
+      "label": "Operational execution and resilience",
+      "risk_thesis": "Delivery-ramp execution, cyber incident containment and supplier/compliance performance govern near-term operational outcomes.",
+      "evidence_paragraph_idx": [
+        59,
+        65,
+        73
+      ]
+    },
+    {
+      "node_id": "curr_finlegal",
+      "parent_id": "curr_root",
+      "level": 2,
+      "order": 2,
+      "label": "Financial, regulatory and legal constraints",
+      "risk_thesis": "Liquidity conditions, insurance reserve assumptions, tax enforcement and legal exposure remain recurring cash-risk channels.",
+      "evidence_paragraph_idx": [
+        84,
+        90,
+        98
+      ]
+    },
+    {
+      "node_id": "curr_macro_policy",
+      "parent_id": "curr_strategic",
+      "level": 3,
+      "order": 0,
+      "label": "Global macro and policy-control exposure",
+      "risk_thesis": "The macro narrative emphasizes tariff/export-control and sanctions pathways, including constrained critical-input availability.",
+      "evidence_paragraph_idx": [
+        2,
+        5,
+        6
+      ]
+    },
+    {
+      "node_id": "curr_competition_ai",
+      "parent_id": "curr_strategic",
+      "level": 3,
+      "order": 1,
+      "label": "Innovation race and AI adoption",
+      "risk_thesis": "Competitive standing depends on scaling new technology platforms and responsible AI integration under legal/compliance constraints.",
+      "evidence_paragraph_idx": [
+        14,
+        16,
+        21
+      ]
+    },
+    {
+      "node_id": "curr_climate_transition",
+      "parent_id": "curr_strategic",
+      "level": 3,
+      "order": 2,
+      "label": "Climate/environment regulation and technology pathway",
+      "risk_thesis": "Climate risk is framed as converging regulation, industry actions and technology/fuel transition dependencies.",
+      "evidence_paragraph_idx": [
+        28,
+        29,
+        31,
+        32
+      ]
+    },
+    {
+      "node_id": "curr_portfolio_spin",
+      "parent_id": "curr_strategic",
+      "level": 3,
+      "order": 3,
+      "label": "Inorganic actions and spin-off liabilities",
+      "risk_thesis": "Separation agreements and post-spin support arrangements preserve contingent liabilities after portfolio restructuring.",
+      "evidence_paragraph_idx": [
+        36,
+        40,
+        42
+      ]
+    },
+    {
+      "node_id": "curr_ip_cyber",
+      "parent_id": "curr_strategic",
+      "level": 3,
+      "order": 4,
+      "label": "Intellectual property and data-security pressure",
+      "risk_thesis": "IP disputes and unauthorized access attempts remain channels for margin erosion and competitive leakage.",
+      "evidence_paragraph_idx": [
+        43,
+        47,
+        50
+      ]
+    },
+    {
+      "node_id": "curr_supply_execution",
+      "parent_id": "curr_operational",
+      "level": 3,
+      "order": 0,
+      "label": "LEAP installed-base and service execution",
+      "risk_thesis": "Execution risk expands from production ramp to installed-base service performance metrics and turnaround expectations.",
+      "evidence_paragraph_idx": [
+        59,
+        68,
+        70
+      ]
+    },
+    {
+      "node_id": "curr_cyber_regulatory",
+      "parent_id": "curr_operational",
+      "level": 3,
+      "order": 1,
+      "label": "Cyber incidents and evolving framework obligations",
+      "risk_thesis": "Repeated incident experience and expanding cybersecurity requirements raise disruption and enforcement exposure.",
+      "evidence_paragraph_idx": [
+        73,
+        74,
+        83
+      ]
+    },
+    {
+      "node_id": "curr_cyber_mna",
+      "parent_id": "curr_operational",
+      "level": 3,
+      "order": 2,
+      "label": "Acquisition-origin cybersecurity vulnerability",
+      "risk_thesis": "M&A can import weak controls that amplify operational and financial cyber downside.",
+      "evidence_paragraph_idx": [
+        76
+      ]
+    },
+    {
+      "node_id": "curr_customer_insurance",
+      "parent_id": "curr_finlegal",
+      "level": 3,
+      "order": 0,
+      "label": "Customer cyclicality and insurance reserve assumptions",
+      "risk_thesis": "Cyclical customer demand and reserve-model inputs, now explicitly including inflation, can alter capital needs.",
+      "evidence_paragraph_idx": [
+        84,
+        88,
+        89
+      ]
+    },
+    {
+      "node_id": "curr_liquidity_tax_legal",
+      "parent_id": "curr_finlegal",
+      "level": 3,
+      "order": 1,
+      "label": "Liquidity, tax enforcement and legal exposure",
+      "risk_thesis": "Debt-market conditions and explicit ongoing tax-audit dispute channels increase potential cash-flow volatility.",
+      "evidence_paragraph_idx": [
+        90,
+        98,
+        100
+      ]
+    }
+  ],
+  "node_alignment": [
+    {
+      "prev_node_id": "prev_root",
+      "curr_node_id": "curr_root",
+      "change_class": "stable",
+      "rationale": "Both years retain the same top-level architecture: strategic channels feed execution risk, then propagate into financial/legal outcomes.",
+      "salience": 0.62
+    },
+    {
+      "prev_node_id": "prev_strategic",
+      "curr_node_id": "curr_strategic",
+      "change_class": "stable",
+      "rationale": "Strategic section scope remains anchored to macro, aviation demand, technology competition and climate transition mechanisms in both years.",
+      "salience": 0.64
+    },
+    {
+      "prev_node_id": "prev_operational",
+      "curr_node_id": "curr_operational",
+      "change_class": "stable",
+      "rationale": "Operational sections in both years still center on delivery execution dependencies, but 2025 deepens service and cyber specificity.",
+      "salience": 0.66
+    },
+    {
+      "prev_node_id": "prev_finlegal",
+      "curr_node_id": "curr_finlegal",
+      "change_class": "stable",
+      "rationale": "Both filings preserve the same mechanism chain from liquidity/tax/legal constraints to cash-flow and financing pressure.",
+      "salience": 0.63
+    },
+    {
+      "prev_node_id": "prev_macro_policy",
+      "curr_node_id": "curr_macro_policy",
+      "change_class": "reworded",
+      "rationale": "2024 emphasizes broad populism/protectionism shocks, while 2025 rewires the same channel into named policy tools such as rare-earth export controls and global tax law shifts.",
+      "salience": 0.86
+    },
+    {
+      "prev_node_id": "prev_competition_ai",
+      "curr_node_id": "curr_competition_ai",
+      "change_class": "stable",
+      "rationale": "Innovation and AI integration remain the direct mechanism linking technology investment decisions to competitive position in both years.",
+      "salience": 0.44
+    },
+    {
+      "prev_node_id": "prev_climate_transition",
+      "curr_node_id": "curr_climate_transition",
+      "change_class": "softened",
+      "rationale": "2025 compresses climate disclosure into environmental/regulatory transition mechanics, reducing stand-alone emphasis on reputational and litigation pathways that were separately explicit in 2024.",
+      "salience": 0.79
+    },
+    {
+      "prev_node_id": "prev_climate_litigation",
+      "curr_node_id": null,
+      "change_class": "removed",
+      "rationale": "A dedicated 2024 climate-litigation node is not separately retained in 2025; litigation risk appears absorbed into broader regulatory language.",
+      "salience": 0.74
+    },
+    {
+      "prev_node_id": "prev_portfolio_spin",
+      "curr_node_id": "curr_portfolio_spin",
+      "change_class": "stable",
+      "rationale": "Spin-off taxability and post-separation liability mechanics persist year-over-year with largely consistent placement.",
+      "salience": 0.5
+    },
+    {
+      "prev_node_id": "prev_ip_cyber",
+      "curr_node_id": "curr_ip_cyber",
+      "change_class": "stable",
+      "rationale": "Both years keep the same IP/cyber theft mechanism: unauthorized access and enforcement disputes can erode competitive assets.",
+      "salience": 0.56
+    },
+    {
+      "prev_node_id": "prev_supply_execution",
+      "curr_node_id": "curr_supply_execution",
+      "change_class": "intensified",
+      "rationale": "2025 extends the same LEAP ramp pathway from production dependency toward explicit installed-base service metrics, increasing execution specificity.",
+      "salience": 0.82
+    },
+    {
+      "prev_node_id": "prev_cyber_regulatory",
+      "curr_node_id": "curr_cyber_regulatory",
+      "change_class": "intensified",
+      "rationale": "The cyber channel moves from generic incident expectation in 2024 to explicit no-material-impact-to-date disclosure plus named framework obligations in 2025.",
+      "salience": 0.81
+    },
+    {
+      "prev_node_id": null,
+      "curr_node_id": "curr_cyber_mna",
+      "change_class": "added",
+      "rationale": "2025 introduces a new transmission channel where acquired entities can import cybersecurity vulnerabilities into GE operations.",
+      "salience": 0.77
+    },
+    {
+      "prev_node_id": "prev_customer_insurance",
+      "curr_node_id": "curr_customer_insurance",
+      "change_class": "reworded",
+      "rationale": "Insurance reserve risk remains, but 2025 sharpens assumption detail by adding inflation alongside rate/morbidity/mortality inputs.",
+      "salience": 0.47
+    },
+    {
+      "prev_node_id": "prev_liquidity_tax_legal",
+      "curr_node_id": "curr_liquidity_tax_legal",
+      "change_class": "intensified",
+      "rationale": "Tax risk advances from potential policy change in 2024 to active audit disagreement and assessment risk in 2025, tightening the enforcement mechanism.",
+      "salience": 0.78
+    }
+  ],
+  "material_changes": [
+    {
+      "id": "mc_1",
+      "title": "Macro policy wording adds 'restrictions on rare earth minerals' versus 2024 focus on 'populism, protectionism'",
+      "change_class": "reworded",
+      "salience": 0.91,
+      "caveat": "Evidence is bounded to 2024 para 7 and 2025 para 2; both are trimmed clause snippets, so adjacent conflict examples in nearby paragraphs are not fully represented in this row.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 7
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 2
+        }
+      ]
+    },
+    {
+      "id": "mc_2",
+      "title": "2024 'climate-related litigation and government investigations' loses stand-alone emphasis under 2025 'Environmental and climate-related laws' framing",
+      "change_class": "softened",
+      "salience": 0.88,
+      "caveat": "This comparison uses 2024 para 43 and 2025 para 29; para 29 is a long paragraph summarized by one contiguous clause, so removed litigation emphasis is inferred from section structure rather than a direct negation sentence.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 43
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 29
+        }
+      ]
+    },
+    {
+      "id": "mc_3",
+      "title": "LEAP execution shifts toward 'installed base' with explicit 'time on wing and repair turnaround time expectations'",
+      "change_class": "intensified",
+      "salience": 0.84,
+      "caveat": "The row relies on 2024 para 67 and 2025 para 68, which capture ramp mechanics but not the full contract-penalty language that appears in adjacent operational paragraphs.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 67
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 68
+        }
+      ]
+    },
+    {
+      "id": "mc_4",
+      "title": "Cyber disclosure adds 'While to date no incidents have materially impacted our business' and 'acquire companies with cybersecurity vulnerabilities'",
+      "change_class": "intensified",
+      "salience": 0.8,
+      "caveat": "Evidence spans 2024 para 80 plus 2025 paras 74 and 76; this captures incident-impact and M&A vulnerability channels, but does not quantify incident frequency or severity distribution.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 80
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 74
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 76
+        }
+      ]
+    },
+    {
+      "id": "mc_5",
+      "title": "Tax risk becomes explicit through 'ongoing tax audits in various jurisdictions'",
+      "change_class": "intensified",
+      "salience": 0.73,
+      "caveat": "Anchored to 2024 para 102 and 2025 para 98 only; these references establish audit/enforcement language but do not isolate jurisdiction-level magnitude of potential assessments.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 102
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 98
+        }
+      ]
+    }
+  ],
+  "evidence_bank": [
+    {
+      "year": 2024,
+      "paragraph_idx": 7,
+      "snippet": "Further, political changes and trends such as populism, protectionism, economic nationalism and sentiment toward multinational companies, as well as tariffs, export controls, restrictions on outbound investment or other trade barriers, sanctions, technical or local content regulations,",
+      "why": "Shows 2024 macro risk language centered on populism/protectionism and broad trade barriers.",
+      "node_ids": [
+        "prev_macro_policy"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 28,
+      "snippet": "Climate change - Our business and financial performance may be adversely affected by climate change impacts, including changes in regulations, customer demand, technologies and extreme weather.",
+      "why": "Defines the 2024 climate-change risk framing for strategic risk.",
+      "node_ids": [
+        "prev_climate_transition"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 43,
+      "snippet": "In addition, climate-related litigation and government investigations could be commenced against us, could be costly to defend and could adversely affect our business.",
+      "why": "Captures explicit litigation and investigation exposure in 2024 climate disclosure.",
+      "node_ids": [
+        "prev_climate_litigation"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 51,
+      "snippet": "Recent spin-offs - The completed GE HealthCare and GE Vernova separations entail certain risks and potential liabilities, including the risk that one or both is determined to be a taxable transaction.",
+      "why": "Anchors spin-off taxability risk retained after GE separations.",
+      "node_ids": [
+        "prev_portfolio_spin"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 67,
+      "snippet": "For example, successfully executing the significant production and delivery ramp efforts in connection with the growth of newer engine platforms such as the LEAP depends in part on our suppliers having access to the materials, skilled labor and production capacity they require and making timely deliveries to us,",
+      "why": "Shows supplier-dependent LEAP production ramp execution dependency in 2024.",
+      "node_ids": [
+        "prev_supply_execution"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 80,
+      "snippet": "We have experienced, and expect to continue to experience, cyberattacks of varying degrees of sophistication and various cybersecurity incidents, such as distributed denial of service attacks and phishing attacks.",
+      "why": "Anchors baseline cyberattack incidence disclosure in 2024.",
+      "node_ids": [
+        "prev_cyber_regulatory"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 92,
+      "snippet": "For example, it is possible that results of our statutory testing of insurance reserves in future years will require additional capital contributions to our insurance subsidiaries,",
+      "why": "Shows insurance-reserve testing as a capital call pathway in 2024.",
+      "node_ids": [
+        "prev_customer_insurance"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 102,
+      "snippet": "For example, legislative or regulatory measures by U.S. federal, state or non-U.S. governments, or rules, interpretations or audits under new or existing tax laws such as global minimum taxes or other changes to the treatment of global income, could increase our cash tax costs and effective tax rate.",
+      "why": "Anchors prospective tax-law and audit interpretation cost pressure in 2024.",
+      "node_ids": [
+        "prev_liquidity_tax_legal"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 2,
+      "snippet": "Political developments or policy shifts in areas such as tariffs, export controls, including restrictions on rare earth minerals or other trade barriers, sanctions, technical or local content regulations, currency controls, global tax laws or other laws and policies,",
+      "why": "Shows 2025 policy-risk language adding rare-earth and global-tax policy vectors.",
+      "node_ids": [
+        "curr_macro_policy"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 29,
+      "snippet": "Environmental and climate-related laws or regulations, including regulations on greenhouse gas emissions caps, carbon pricing and taxes, energy taxes, product fuel efficiency standards and mandatory disclosure obligations, as well as industry actions in response,",
+      "why": "Captures broadened climate/environment regulatory burden framing in 2025.",
+      "node_ids": [
+        "curr_climate_transition"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 40,
+      "snippet": "GE spin-offs - The completed GE HealthCare and GE Vernova separations entail certain risks and potential liabilities, including the risk that one or both is determined to be a taxable transaction.",
+      "why": "Anchors continuation of GE spin-off taxability risk in 2025.",
+      "node_ids": [
+        "curr_portfolio_spin"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 68,
+      "snippet": "For example, the anticipated significant growth of the LEAP installed base and services in the coming years will require considerable effort and execution to meet the delivery, performance, durability, time on wing and repair turnaround time expectations of customers.",
+      "why": "Shows explicit installed-base service execution targets in 2025 LEAP discussion.",
+      "node_ids": [
+        "curr_supply_execution"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 74,
+      "snippet": "While to date no incidents have materially impacted our business, there is no guarantee that material incidents will not occur in the future.",
+      "why": "Adds explicit statement on no material cyber impact to date and forward uncertainty.",
+      "node_ids": [
+        "curr_cyber_regulatory"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 76,
+      "snippet": "In addition, we may acquire companies with cybersecurity vulnerabilities or unsophisticated security measures, which in turn would expose us to cybersecurity, operational, and financial risks.",
+      "why": "Introduces acquisition-linked cybersecurity vulnerability channel in 2025.",
+      "node_ids": [
+        "curr_cyber_mna"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 83,
+      "snippet": "Expanding global cybersecurity requirements, such as the Department of War's NIST and Cybersecurity Maturity Model Certification requirements, also impose additional obligations on us and our suppliers, heightening the risk of noncompliance, operational disruptions and regulatory enforcement.",
+      "why": "Adds named external cybersecurity compliance frameworks affecting operations.",
+      "node_ids": [
+        "curr_cyber_regulatory"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 89,
+      "snippet": "Our statutory testing of insurance reserves is subject to a variety of assumptions, including assumptions about inflation, the discount rate (which is sensitive to changes in market interest rates), morbidity, mortality and future long-term care premium increases.",
+      "why": "Shows inflation added to insurance reserve testing assumptions in 2025.",
+      "node_ids": [
+        "curr_customer_insurance"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 98,
+      "snippet": "We are also subject to ongoing tax audits in various jurisdictions, and tax authorities may disagree with positions we have taken and assess additional taxes that could be material.",
+      "why": "Adds explicit ongoing tax-audit disagreement and assessment risk in 2025.",
+      "node_ids": [
+        "curr_liquidity_tax_legal"
+      ]
+    }
+  ],
+  "lens_divergence": {
+    "materially_different": false,
+    "summary": "Within the deboilerplated lens, year-over-year differences are mainly specificity shifts in policy, cyber, and execution wording rather than a restructured risk taxonomy."
+  },
+  "risk_graph_prev": [
+    {
+      "id": "rg_prev_1",
+      "driver": "Protectionist and geopolitical policy shifts",
+      "exposure": "Cross-border operations, supply chains and demand planning",
+      "impact": "Order volatility and margin pressure from disrupted trade and customer activity",
+      "evidence_paragraph_idx": [
+        7
+      ]
+    },
+    {
+      "id": "rg_prev_2",
+      "driver": "Climate transition, litigation and extreme-weather dynamics",
+      "exposure": "Compliance spend, reputation, and operational continuity",
+      "impact": "Higher operating costs and potential legal-defense burden",
+      "evidence_paragraph_idx": [
+        28,
+        43
+      ]
+    },
+    {
+      "id": "rg_prev_3",
+      "driver": "Supplier-dependent LEAP production ramp",
+      "exposure": "Material availability, labor capacity and on-time deliveries",
+      "impact": "Delivery slippage and adverse profit/cash-flow effects",
+      "evidence_paragraph_idx": [
+        67
+      ]
+    },
+    {
+      "id": "rg_prev_4",
+      "driver": "Persistent cyberattack activity",
+      "exposure": "IT systems and protected operational data",
+      "impact": "Service disruption, remediation costs and reputational damage",
+      "evidence_paragraph_idx": [
+        80
+      ]
+    },
+    {
+      "id": "rg_prev_5",
+      "driver": "Tax-rule interpretation and audit exposure",
+      "exposure": "Global income treatment and compliance posture",
+      "impact": "Higher cash tax costs and effective tax-rate pressure",
+      "evidence_paragraph_idx": [
+        102
+      ]
+    }
+  ],
+  "risk_graph_curr": [
+    {
+      "id": "rg_curr_1",
+      "driver": "Policy controls including rare-earth export restrictions",
+      "exposure": "Input availability, trade flows and cost structure",
+      "impact": "Demand disruption and elevated operating-cost volatility",
+      "evidence_paragraph_idx": [
+        2
+      ]
+    },
+    {
+      "id": "rg_curr_2",
+      "driver": "Evolving environmental/climate regulation and industry actions",
+      "exposure": "Compliance programs and transition technology investment",
+      "impact": "Incremental spending burden and execution risk against emissions ambitions",
+      "evidence_paragraph_idx": [
+        29
+      ]
+    },
+    {
+      "id": "rg_curr_3",
+      "driver": "LEAP installed-base growth and service targets",
+      "exposure": "Delivery, durability, time-on-wing and turnaround execution",
+      "impact": "Potential contractual shortfalls and customer-service pressure",
+      "evidence_paragraph_idx": [
+        68
+      ]
+    },
+    {
+      "id": "rg_curr_4",
+      "driver": "Cyber incidents plus expanding external framework obligations",
+      "exposure": "Control effectiveness across internal systems, suppliers and new acquisitions",
+      "impact": "Operational disruption, enforcement risk and incremental cyber spend",
+      "evidence_paragraph_idx": [
+        74,
+        76,
+        83
+      ]
+    },
+    {
+      "id": "rg_curr_5",
+      "driver": "Ongoing tax audits and authority disagreement",
+      "exposure": "Tax positions across jurisdictions",
+      "impact": "Material additional tax assessments and liquidity pressure",
+      "evidence_paragraph_idx": [
+        98
+      ]
+    }
+  ],
+  "change_mechanisms": [
+    {
+      "id": "mech_1",
+      "mechanism": "Macro risk language shifts from broad political trends to named policy-control levers.",
+      "transmission_channel": "Tariff/export-control and sanctions constraints alter sourcing and customer-demand conditions.",
+      "business_effect": "Higher forecast variance in orders, costs and regional execution outcomes.",
+      "time_horizon": "near_term",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 7
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 2
+        }
+      ]
+    },
+    {
+      "id": "mech_2",
+      "mechanism": "Climate narrative consolidates around evolving laws, disclosure and transition technology dependencies.",
+      "transmission_channel": "Regulatory and industry requirements require ongoing compliance/process and product adaptation.",
+      "business_effect": "Potentially higher compliance spending and reprioritized capital allocation.",
+      "time_horizon": "medium_term",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 43
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 29
+        }
+      ]
+    },
+    {
+      "id": "mech_3",
+      "mechanism": "Execution risk migrates from production ramp dependence toward installed-base service-performance targets.",
+      "transmission_channel": "Supplier throughput and service turnaround capability determine fulfillment reliability.",
+      "business_effect": "Shortfalls can create delivery delays, penalty exposure and lower cash conversion.",
+      "time_horizon": "near_term",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 67
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 68
+        }
+      ]
+    },
+    {
+      "id": "mech_4",
+      "mechanism": "Cyber risk disclosure adds explicit incident-impact caveat and acquisition-origin vulnerability channel.",
+      "transmission_channel": "Attack attempts and imported weak controls increase compromise probability and remediation scope.",
+      "business_effect": "Potential operational outages, response costs and enforcement exposure rise.",
+      "time_horizon": "near_term",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 80
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 74
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 76
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 83
+        }
+      ]
+    },
+    {
+      "id": "mech_5",
+      "mechanism": "Tax risk shifts from mostly prospective policy wording to active audit disagreement language.",
+      "transmission_channel": "Jurisdictional audits and authority interpretation disputes can trigger assessments.",
+      "business_effect": "Cash tax obligations and effective tax rate may become more volatile.",
+      "time_horizon": "medium_term",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 102
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 98
+        }
+      ]
+    }
+  ],
+  "uncertainty_and_limits": [
+    {
+      "id": "limit_1",
+      "limitation": "The climate comparison uses one explicit 2024 litigation sentence (para 43) against one long 2025 regulatory paragraph (para 29), so omission conclusions are based on section placement rather than line-by-line negation.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 43
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 29
+        }
+      ]
+    },
+    {
+      "id": "limit_2",
+      "limitation": "Insurance-reserve evidence is partial: 2024 para 92 is an illustrative capital-contribution example, while 2025 para 89 lists assumptions without quantitative sensitivity ranges.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 92
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 89
+        }
+      ]
+    },
+    {
+      "id": "limit_3",
+      "limitation": "Cyber framework specificity relies on 2025 para 83 phrasing only; the filing text names frameworks but does not provide implementation-status or control-effectiveness metrics.",
+      "evidence_refs": [
+        {
+          "year": 2025,
+          "paragraph_idx": 83
+        }
+      ]
+    }
+  ],
+  "investor_relevance": [
+    {
+      "id": "inv_1",
+      "why_it_matters": "LEAP risk disclosure now ties execution to installed-base service metrics (time on wing, turnaround), which can affect service revenue realization timing and margin reliability.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 67
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 68
+        }
+      ]
+    },
+    {
+      "id": "inv_2",
+      "why_it_matters": "Cyber downside broadens from baseline incident frequency to explicit future-material-incident possibility plus acquisition-origin vulnerabilities and external compliance obligations.",
+      "evidence_refs": [
+        {
+          "year": 2025,
+          "paragraph_idx": 74
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 76
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 83
+        }
+      ]
+    },
+    {
+      "id": "inv_3",
+      "why_it_matters": "Tax wording moves toward active audit dispute language, increasing the likelihood that tax outcomes affect near-to-medium-term cash planning.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 102
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 98
+        }
+      ]
+    }
+  ],
+  "projection_contract": {
+    "projects_to_artifact_id": "llm_outline_compare_runtime",
+    "projection_version": "1.0"
+  },
+  "provenance": {
+    "input_file": "inputs/pair/GE_2024_2025_10k_item1a_deboilerplated_edgar.json",
+    "model_provider": "openai",
+    "model_name": "GPT-5.3-Codex (Extra High Reasoning, Agent Mode)",
+    "run_label": "2026-03-05_openai_gpt53codex_xhigh_agent_fullsec_real_ge_2024_2025_outline_compare"
+  }
+}

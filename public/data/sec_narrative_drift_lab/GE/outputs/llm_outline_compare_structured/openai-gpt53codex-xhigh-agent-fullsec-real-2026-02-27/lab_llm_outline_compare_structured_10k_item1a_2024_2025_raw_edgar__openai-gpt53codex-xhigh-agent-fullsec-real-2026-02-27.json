@@ -1,0 +1,801 @@
+{
+  "lab_schema_version": "1.0",
+  "artifact_schema_version": "1.0",
+  "artifact_id": "llm_outline_compare_structured",
+  "ticker": "GE",
+  "section": "10k_item1a",
+  "source_id": "edgar",
+  "cleaning_lens": "raw",
+  "year_from": 2024,
+  "year_to": 2025,
+  "outline_prev": [
+    {
+      "node_id": "prev_root",
+      "parent_id": null,
+      "level": 1,
+      "order": 0,
+      "label": "Risk Factors",
+      "risk_thesis": "2024 uses four major risk pillars.",
+      "evidence_paragraph_idx": [
+        0
+      ]
+    },
+    {
+      "node_id": "prev_strat",
+      "parent_id": "prev_root",
+      "level": 2,
+      "order": 1,
+      "label": "Strategic Risks",
+      "risk_thesis": "Macro, aviation, policy, and transition risks.",
+      "evidence_paragraph_idx": [
+        1
+      ]
+    },
+    {
+      "node_id": "prev_oper",
+      "parent_id": "prev_root",
+      "level": 2,
+      "order": 2,
+      "label": "Operational Risks",
+      "risk_thesis": "Execution, supply, quality, and cyber risks.",
+      "evidence_paragraph_idx": [
+        15
+      ]
+    },
+    {
+      "node_id": "prev_fin",
+      "parent_id": "prev_root",
+      "level": 2,
+      "order": 3,
+      "label": "Financial Risks",
+      "risk_thesis": "Counterparty, runoff, and liquidity risk.",
+      "evidence_paragraph_idx": [
+        25
+      ]
+    },
+    {
+      "node_id": "prev_legal",
+      "parent_id": "prev_root",
+      "level": 2,
+      "order": 4,
+      "label": "Legal and Compliance Risks",
+      "risk_thesis": "Regulatory and litigation exposure.",
+      "evidence_paragraph_idx": [
+        30
+      ]
+    },
+    {
+      "node_id": "prev_macro",
+      "parent_id": "prev_strat",
+      "level": 3,
+      "order": 5,
+      "label": "Macro and Geopolitical",
+      "risk_thesis": "Trade and conflict shocks can disrupt demand and cost.",
+      "evidence_paragraph_idx": [
+        2
+      ]
+    },
+    {
+      "node_id": "prev_gov",
+      "parent_id": "prev_strat",
+      "level": 3,
+      "order": 6,
+      "label": "Government Programs",
+      "risk_thesis": "Defense spending and contract rules drive exposure.",
+      "evidence_paragraph_idx": [
+        7
+      ]
+    },
+    {
+      "node_id": "prev_climate",
+      "parent_id": "prev_strat",
+      "level": 3,
+      "order": 7,
+      "label": "Climate Transition",
+      "risk_thesis": "Climate goals rely on immature technologies.",
+      "evidence_paragraph_idx": [
+        10
+      ]
+    },
+    {
+      "node_id": "prev_cyber",
+      "parent_id": "prev_oper",
+      "level": 3,
+      "order": 8,
+      "label": "Cybersecurity",
+      "risk_thesis": "Cyber incidents plus compliance burden can disrupt operations.",
+      "evidence_paragraph_idx": [
+        22,
+        24
+      ]
+    },
+    {
+      "node_id": "prev_reg",
+      "parent_id": "prev_legal",
+      "level": 3,
+      "order": 9,
+      "label": "Regulatory and Tax",
+      "risk_thesis": "Regulatory and tax-law shifts can raise costs.",
+      "evidence_paragraph_idx": [
+        32
+      ]
+    }
+  ],
+  "outline_curr": [
+    {
+      "node_id": "curr_root",
+      "parent_id": null,
+      "level": 1,
+      "order": 0,
+      "label": "Risk Factors",
+      "risk_thesis": "2025 keeps the same four-pillar structure.",
+      "evidence_paragraph_idx": [
+        0
+      ]
+    },
+    {
+      "node_id": "curr_strat",
+      "parent_id": "curr_root",
+      "level": 2,
+      "order": 1,
+      "label": "Strategic Risks",
+      "risk_thesis": "Strategic pillar persists with revised wording.",
+      "evidence_paragraph_idx": [
+        1
+      ]
+    },
+    {
+      "node_id": "curr_oper",
+      "parent_id": "curr_root",
+      "level": 2,
+      "order": 2,
+      "label": "Operational Risks",
+      "risk_thesis": "Operational pillar keeps cyber and execution focus.",
+      "evidence_paragraph_idx": [
+        13
+      ]
+    },
+    {
+      "node_id": "curr_fin",
+      "parent_id": "curr_root",
+      "level": 2,
+      "order": 3,
+      "label": "Financial Risks",
+      "risk_thesis": "Financial pillar remains counterparty/liquidity oriented.",
+      "evidence_paragraph_idx": [
+        24
+      ]
+    },
+    {
+      "node_id": "curr_legal",
+      "parent_id": "curr_root",
+      "level": 2,
+      "order": 4,
+      "label": "Legal and Compliance Risks",
+      "risk_thesis": "Regulatory and legal contingency exposure remains.",
+      "evidence_paragraph_idx": [
+        28
+      ]
+    },
+    {
+      "node_id": "curr_macro",
+      "parent_id": "curr_strat",
+      "level": 3,
+      "order": 5,
+      "label": "Macro and Geopolitical",
+      "risk_thesis": "Policy tools like export controls are more explicit.",
+      "evidence_paragraph_idx": [
+        2
+      ]
+    },
+    {
+      "node_id": "curr_gov",
+      "parent_id": "curr_strat",
+      "level": 3,
+      "order": 6,
+      "label": "Government Programs",
+      "risk_thesis": "Government-risk language broadens to business-wide scope.",
+      "evidence_paragraph_idx": [
+        6
+      ]
+    },
+    {
+      "node_id": "curr_climate",
+      "parent_id": "curr_strat",
+      "level": 3,
+      "order": 7,
+      "label": "Climate and Environmental",
+      "risk_thesis": "Climate framing broadens while fuel constraints remain.",
+      "evidence_paragraph_idx": [
+        7,
+        8
+      ]
+    },
+    {
+      "node_id": "curr_cyber",
+      "parent_id": "curr_oper",
+      "level": 3,
+      "order": 8,
+      "label": "Cybersecurity",
+      "risk_thesis": "Unauthorized-access and named framework obligations are explicit.",
+      "evidence_paragraph_idx": [
+        20,
+        23
+      ]
+    },
+    {
+      "node_id": "curr_reg",
+      "parent_id": "curr_legal",
+      "level": 3,
+      "order": 9,
+      "label": "Regulatory and Tax",
+      "risk_thesis": "Tax-audit dispute risk is directly stated.",
+      "evidence_paragraph_idx": [
+        29,
+        30
+      ]
+    }
+  ],
+  "node_alignment": [
+    {
+      "prev_node_id": "prev_root",
+      "curr_node_id": "curr_root",
+      "change_class": "stable",
+      "rationale": "Both years retain the same four-pillar hierarchy with no top-level structural break.",
+      "salience": 0.55
+    },
+    {
+      "prev_node_id": "prev_strat",
+      "curr_node_id": "curr_strat",
+      "change_class": "stable",
+      "rationale": "Strategic pillar remains broad in both years; revisions are at subtopic wording level.",
+      "salience": 0.54
+    },
+    {
+      "prev_node_id": "prev_macro",
+      "curr_node_id": "curr_macro",
+      "change_class": "reworded",
+      "rationale": "2025 replaces named conflict examples with policy-instrument language including rare earth restrictions.",
+      "salience": 0.83
+    },
+    {
+      "prev_node_id": "prev_gov",
+      "curr_node_id": "curr_gov",
+      "change_class": "intensified",
+      "rationale": "Risk scope shifts from defense-business wording to business-wide wording and adds policy spillover channels.",
+      "salience": 0.81
+    },
+    {
+      "prev_node_id": "prev_climate",
+      "curr_node_id": "curr_climate",
+      "change_class": "reworded",
+      "rationale": "Climate section is retitled and broadened to environmental framing while transition dependency remains.",
+      "salience": 0.69
+    },
+    {
+      "prev_node_id": "prev_oper",
+      "curr_node_id": "curr_oper",
+      "change_class": "stable",
+      "rationale": "Operational pillar remains stable with cybersecurity as the primary changed mechanism.",
+      "salience": 0.5
+    },
+    {
+      "prev_node_id": "prev_cyber",
+      "curr_node_id": "curr_cyber",
+      "change_class": "intensified",
+      "rationale": "2025 adds unauthorized-access incident outcome and named compliance frameworks, increasing enforcement linkage.",
+      "salience": 0.9
+    },
+    {
+      "prev_node_id": "prev_fin",
+      "curr_node_id": "curr_fin",
+      "change_class": "stable",
+      "rationale": "Financial pillar continuity remains across counterparty and liquidity channels.",
+      "salience": 0.49
+    },
+    {
+      "prev_node_id": "prev_legal",
+      "curr_node_id": "curr_legal",
+      "change_class": "stable",
+      "rationale": "Legal/compliance top-level organization is unchanged.",
+      "salience": 0.46
+    },
+    {
+      "prev_node_id": "prev_reg",
+      "curr_node_id": "curr_reg",
+      "change_class": "intensified",
+      "rationale": "2025 adds explicit ongoing tax-audit disagreement language and product/certification requirements.",
+      "salience": 0.86
+    }
+  ],
+  "material_changes": [
+    {
+      "id": "mc_1",
+      "title": "“phishing attacks that resulted in unauthorized access to systems and data” appears in 2025 disclosure",
+      "change_class": "intensified",
+      "salience": 0.92,
+      "caveat": "2024 para 22 and 2025 para 20 identify attack types but do not report incident frequency, duration, or dollar losses, so severity comparison is disclosure-limited.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 22
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 20
+        }
+      ]
+    },
+    {
+      "id": "mc_2",
+      "title": "“tax authorities may disagree ... assess additional taxes that could be material” is newly explicit",
+      "change_class": "intensified",
+      "salience": 0.84,
+      "caveat": "2024 para 32 and 2025 para 29 do not provide jurisdiction-level amounts or probability weights, so expected cash tax impact remains unquantified.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 32
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 29
+        }
+      ]
+    },
+    {
+      "id": "mc_3",
+      "title": "Macro wording adds “restrictions on rare earth minerals” and drops named conflict examples",
+      "change_class": "reworded",
+      "salience": 0.78,
+      "caveat": "2024 para 2 and 2025 para 2 are broad narrative statements without program-level exposure mapping, limiting attribution of the incremental policy channel.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 2
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 2
+        }
+      ]
+    },
+    {
+      "id": "mc_4",
+      "title": "Government risk shifts from “Our defense business is subject” to “Our business is subject”",
+      "change_class": "intensified",
+      "salience": 0.71,
+      "caveat": "2024 para 7 and 2025 para 6 show broader wording but no segment-level revenue breakout outside defense, so scope expansion cannot be numerically sized.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 7
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 6
+        }
+      ]
+    },
+    {
+      "id": "mc_5",
+      "title": "Section retitles to “Climate and environmental factors” while preserving transition dependency",
+      "change_class": "reworded",
+      "salience": 0.63,
+      "caveat": "2024 para 10 and 2025 para 7 describe transition dependence but provide no milestone baseline or adoption-rate assumptions, so pace comparison is directional only.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 10
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 7
+        }
+      ]
+    }
+  ],
+  "evidence_bank": [
+    {
+      "year": 2024,
+      "paragraph_idx": 2,
+      "snippet": "More recently, there is risk of wider conflict in the Middle East that could have significant adverse impacts on the region and business activity in addition to the humanitarian and other consequences of the current conflict.",
+      "why": "2024 macro uses named conflict example.",
+      "node_ids": [
+        "prev_macro"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 7,
+      "snippet": "Government programs and contracts - Our defense business is subject to risks from changes in government spending that can adversely affect our business strategy or financial performance, in addition to risks related to regulations and compliance with government contracts.",
+      "why": "2024 government risk is defense-scoped.",
+      "node_ids": [
+        "prev_gov"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 10,
+      "snippet": "The achievement of aerospace and defense sector climate goals over the coming decades is likely to depend in part on technologies that are not yet developed, deployed or widely adopted today.",
+      "why": "2024 climate thesis depends on not-yet-deployed tech.",
+      "node_ids": [
+        "prev_climate"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 22,
+      "snippet": "We have experienced, and expect to continue to experience, cyberattacks of varying degrees of sophistication and various cybersecurity incidents, such as distributed denial of service attacks and phishing attacks.",
+      "why": "2024 cyber disclosure gives incident baseline.",
+      "node_ids": [
+        "prev_cyber"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 24,
+      "snippet": "Cybersecurity-related and data privacy and protection laws and regulatory regimes are evolving, can vary significantly by country and present increasing compliance challenges",
+      "why": "2024 cyber compliance pressure is explicit.",
+      "node_ids": [
+        "prev_cyber"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 32,
+      "snippet": "Potential changes to tax laws, including changes to taxation of global income, may have an effect on our subsidiaries’ structure, operations, sales, liquidity, cash flows, capital requirements, effective tax rate and performance.",
+      "why": "2024 tax risk is law-change focused.",
+      "node_ids": [
+        "prev_reg"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 2,
+      "snippet": "Political developments or policy shifts in areas such as tariffs, export controls, including restrictions on rare earth minerals or other trade barriers, sanctions, technical or local content regulations, currency controls, global tax laws or other laws and policies, have been and may continue to be disruptive and costly to our business.",
+      "why": "2025 macro adds policy instrument specificity.",
+      "node_ids": [
+        "curr_macro"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 6,
+      "snippet": "Government programs and contracts - Our business is subject to risks from changes in government spending and policies that can adversely affect our business strategy or financial performance, in addition to risks related to regulations and compliance with government contracts.",
+      "why": "2025 broadens government risk scope.",
+      "node_ids": [
+        "curr_gov"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 7,
+      "snippet": "Climate and environmental factors - Our business and financial performance may be adversely affected by climate and environmental factors, including changes in regulations, customer demand, technologies and extreme weather.",
+      "why": "2025 retitles climate section.",
+      "node_ids": [
+        "curr_climate"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 8,
+      "snippet": "The risk of insufficient availability, or higher cost, of low carbon fuels may compromise the pace and degree of emissions reduction.",
+      "why": "2025 keeps low-carbon fuel dependency.",
+      "node_ids": [
+        "curr_climate"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 20,
+      "snippet": "We have experienced, and expect to continue to experience, cyberattacks of varying degrees of sophistication and various cybersecurity incidents, such as distributed denial of service attacks and phishing attacks that resulted in unauthorized access to systems and data.",
+      "why": "2025 adds unauthorized-access wording.",
+      "node_ids": [
+        "curr_cyber"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 23,
+      "snippet": "Expanding global cybersecurity requirements, such as the Department of War's NIST and Cybersecurity Maturity Model Certification requirements, also impose additional obligations on us and our suppliers, heightening the risk of noncompliance, operational disruptions and regulatory enforcement.",
+      "why": "2025 names cyber compliance frameworks.",
+      "node_ids": [
+        "curr_cyber"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 29,
+      "snippet": "We are also subject to ongoing tax audits in various jurisdictions, and tax authorities may disagree with positions we have taken and assess additional taxes that could be material.",
+      "why": "2025 makes tax audit disagreement explicit.",
+      "node_ids": [
+        "curr_reg"
+      ]
+    }
+  ],
+  "lens_divergence": {
+    "materially_different": false,
+    "summary": "Only raw-lens inputs were provided in this job; no deboilerplated companion file was supplied, so no filing-grounded cross-lens divergence can be established here."
+  },
+  "risk_graph_prev": [
+    {
+      "id": "rg_prev_1",
+      "driver": "Geopolitical conflict and trade-policy shifts",
+      "exposure": "Global supply chain and customer demand channels",
+      "impact": "Order volatility and margin pressure",
+      "evidence_paragraph_idx": [
+        2
+      ]
+    },
+    {
+      "id": "rg_prev_2",
+      "driver": "Defense spending and policy priorities",
+      "exposure": "Government contract demand and compliance obligations",
+      "impact": "Growth pressure and penalty risk",
+      "evidence_paragraph_idx": [
+        7
+      ]
+    },
+    {
+      "id": "rg_prev_3",
+      "driver": "Cyberattacks and ecosystem interconnection",
+      "exposure": "System/data integrity and operational uptime",
+      "impact": "Downtime, remediation cost, and reputational harm",
+      "evidence_paragraph_idx": [
+        22,
+        24
+      ]
+    },
+    {
+      "id": "rg_prev_4",
+      "driver": "Tax and regulatory change",
+      "exposure": "Compliance burden and global-income tax treatment",
+      "impact": "Higher costs and potential liquidity pressure",
+      "evidence_paragraph_idx": [
+        32
+      ]
+    }
+  ],
+  "risk_graph_curr": [
+    {
+      "id": "rg_curr_1",
+      "driver": "Tariffs and export controls including rare earth restrictions",
+      "exposure": "Input availability and cross-border operating model",
+      "impact": "Cost escalation and competitive pressure",
+      "evidence_paragraph_idx": [
+        2
+      ]
+    },
+    {
+      "id": "rg_curr_2",
+      "driver": "Government spending and policy changes",
+      "exposure": "Contract pipeline and enterprise planning decisions",
+      "impact": "Growth drag and allocation constraints",
+      "evidence_paragraph_idx": [
+        6
+      ]
+    },
+    {
+      "id": "rg_curr_3",
+      "driver": "Unauthorized-access incidents and cyber framework obligations",
+      "exposure": "Data/system security and supplier ecosystem resilience",
+      "impact": "Operational disruption and enforcement downside",
+      "evidence_paragraph_idx": [
+        20,
+        23
+      ]
+    },
+    {
+      "id": "rg_curr_4",
+      "driver": "Ongoing tax audits and regulatory changes",
+      "exposure": "Tax positions and compliance costs",
+      "impact": "Potentially material tax cash outflows",
+      "evidence_paragraph_idx": [
+        29,
+        30
+      ]
+    }
+  ],
+  "change_mechanisms": [
+    {
+      "id": "mech_1",
+      "mechanism": "Macro channel shifted from named conflicts to explicit policy tools.",
+      "transmission_channel": "Trade controls and rare-earth restrictions transmit into input and cost volatility.",
+      "business_effect": "Higher exposure to competitiveness and margin pressure.",
+      "time_horizon": "near_term",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 2
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 2
+        }
+      ]
+    },
+    {
+      "id": "mech_2",
+      "mechanism": "Government-contract disclosure broadened from defense-only scope to enterprise scope.",
+      "transmission_channel": "Policy and spending shifts can now affect contract outcomes and planning decisions.",
+      "business_effect": "Wider business sensitivity to public-sector policy shifts.",
+      "time_horizon": "near_term",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 7
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 6
+        }
+      ]
+    },
+    {
+      "id": "mech_3",
+      "mechanism": "Climate framing broadened while transition dependencies persisted.",
+      "transmission_channel": "Technology readiness and low-carbon fuel availability remain gating constraints.",
+      "business_effect": "Sustained transition investment burden with demand-mix risk.",
+      "time_horizon": "medium_term",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 10
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 7
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 8
+        }
+      ]
+    },
+    {
+      "id": "mech_4",
+      "mechanism": "Cyber disclosure moved to explicit unauthorized-access outcomes plus named frameworks.",
+      "transmission_channel": "Incident response and NIST/CMMC-style obligations raise compliance and remediation load.",
+      "business_effect": "Greater combined operational, legal, and reputational downside if incidents escalate.",
+      "time_horizon": "near_term",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 22
+        },
+        {
+          "year": 2024,
+          "paragraph_idx": 24
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 20
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 23
+        }
+      ]
+    },
+    {
+      "id": "mech_5",
+      "mechanism": "Regulatory narrative adds explicit tax-audit disagreement risk.",
+      "transmission_channel": "Audit disputes can convert policy uncertainty into assessed tax obligations.",
+      "business_effect": "Potential downside to cash flow and effective tax rate.",
+      "time_horizon": "medium_term",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 32
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 29
+        }
+      ]
+    }
+  ],
+  "uncertainty_and_limits": [
+    {
+      "id": "limit_1",
+      "limitation": "2024 para 2 and 2025 para 2 describe macro-policy risk broadly and do not provide region/program exposure splits, constraining quantitative attribution.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 2
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 2
+        }
+      ]
+    },
+    {
+      "id": "limit_2",
+      "limitation": "2024 para 22 and 2025 para 20/23 disclose incident/compliance channels but omit incident counts and loss metrics, limiting severity trend measurement.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 22
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 20
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 23
+        }
+      ]
+    },
+    {
+      "id": "limit_3",
+      "limitation": "2024 para 32 and 2025 para 29 do not include probability-weighted or jurisdiction-level tax amounts, so expected cash-tax impact remains bounded.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 32
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 29
+        }
+      ]
+    }
+  ],
+  "investor_relevance": [
+    {
+      "id": "inv_1",
+      "why_it_matters": "2025 cyber text now explicitly references unauthorized access and named framework obligations, increasing perceived event-to-enforcement linkage.",
+      "evidence_refs": [
+        {
+          "year": 2025,
+          "paragraph_idx": 20
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 23
+        }
+      ]
+    },
+    {
+      "id": "inv_2",
+      "why_it_matters": "Explicit tax-audit disagreement wording in 2025 highlights a direct cash-tax downside channel.",
+      "evidence_refs": [
+        {
+          "year": 2025,
+          "paragraph_idx": 29
+        },
+        {
+          "year": 2024,
+          "paragraph_idx": 32
+        }
+      ]
+    },
+    {
+      "id": "inv_3",
+      "why_it_matters": "Government program wording broadens from defense-only scope to business-wide scope, implying wider policy sensitivity.",
+      "evidence_refs": [
+        {
+          "year": 2025,
+          "paragraph_idx": 6
+        },
+        {
+          "year": 2024,
+          "paragraph_idx": 7
+        }
+      ]
+    }
+  ],
+  "projection_contract": {
+    "projects_to_artifact_id": "llm_outline_compare_runtime",
+    "projection_version": "1.0"
+  },
+  "provenance": {
+    "input_file": "inputs/pair/GE_2024_2025_10k_item1a_raw_edgar.json",
+    "model_provider": "openai",
+    "model_name": "GPT-5.3-Codex (Extra High Reasoning, Agent Mode)",
+    "run_label": "2026-03-05_openai_gpt53codex_xhigh_agent_fullsec_real_ge_2024_2025_outline_compare"
+  }
+}

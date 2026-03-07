@@ -1,0 +1,1001 @@
+{
+  "lab_schema_version": "1.0",
+  "artifact_schema_version": "1.0",
+  "artifact_id": "llm_outline_compare_structured",
+  "ticker": "NVDA",
+  "section": "10k_item1a",
+  "source_id": "edgar",
+  "cleaning_lens": "raw",
+  "year_from": 2024,
+  "year_to": 2025,
+  "outline_prev": [
+    {
+      "node_id": "prev_root",
+      "parent_id": null,
+      "level": 1,
+      "order": 0,
+      "label": "Item 1A risk architecture",
+      "risk_thesis": "The 2024 section frames execution risk around scaling AI demand under supply, regulatory, and security constraints.",
+      "evidence_paragraph_idx": [
+        10,
+        59,
+        69
+      ]
+    },
+    {
+      "node_id": "prev_supply_ops",
+      "parent_id": "prev_root",
+      "level": 2,
+      "order": 0,
+      "label": "Supply-demand execution",
+      "risk_thesis": "Long lead times and demand uncertainty can create shortages, overbuild, and margin pressure.",
+      "evidence_paragraph_idx": [
+        10,
+        14
+      ]
+    },
+    {
+      "node_id": "prev_market_channel",
+      "parent_id": "prev_root",
+      "level": 2,
+      "order": 1,
+      "label": "Market and channel concentration",
+      "risk_thesis": "A limited set of partners/customers can amplify order volatility and bargaining pressure.",
+      "evidence_paragraph_idx": [
+        59
+      ]
+    },
+    {
+      "node_id": "prev_security_resilience",
+      "parent_id": "prev_root",
+      "level": 2,
+      "order": 2,
+      "label": "Cyber and operational resilience",
+      "risk_thesis": "Nation-state and third-party cyber exposure can disrupt operations and customer trust.",
+      "evidence_paragraph_idx": [
+        43
+      ]
+    },
+    {
+      "node_id": "prev_regulatory_geo",
+      "parent_id": "prev_root",
+      "level": 2,
+      "order": 3,
+      "label": "Regulatory and geopolitical controls",
+      "risk_thesis": "Export-control shifts and AI-policy scrutiny can constrain shipments, demand capture, and global operations.",
+      "evidence_paragraph_idx": [
+        69,
+        75,
+        79,
+        84
+      ]
+    },
+    {
+      "node_id": "prev_supply_leadtime",
+      "parent_id": "prev_supply_ops",
+      "level": 3,
+      "order": 0,
+      "label": "Long lead-time outsourcing",
+      "risk_thesis": "Reliance on third-party manufacturing extends reaction time to demand errors.",
+      "evidence_paragraph_idx": [
+        10
+      ]
+    },
+    {
+      "node_id": "prev_supply_transition",
+      "parent_id": "prev_supply_ops",
+      "level": 3,
+      "order": 1,
+      "label": "Demand surge transition risk",
+      "risk_thesis": "Post-surge transition planning can misalign commitments and realized demand.",
+      "evidence_paragraph_idx": [
+        14
+      ]
+    },
+    {
+      "node_id": "prev_channel_concentration",
+      "parent_id": "prev_market_channel",
+      "level": 3,
+      "order": 2,
+      "label": "Large customer concentration",
+      "risk_thesis": "Revenue tied to a small set of large channel customers increases earnings sensitivity.",
+      "evidence_paragraph_idx": [
+        59
+      ]
+    },
+    {
+      "node_id": "prev_cyber_thirdparty",
+      "parent_id": "prev_security_resilience",
+      "level": 3,
+      "order": 3,
+      "label": "Third-party cyber dependency",
+      "risk_thesis": "Supply-chain and infrastructure dependencies widen the attack surface.",
+      "evidence_paragraph_idx": [
+        43
+      ]
+    },
+    {
+      "node_id": "prev_ai_regulation",
+      "parent_id": "prev_regulatory_geo",
+      "level": 3,
+      "order": 4,
+      "label": "Contemplated AI restrictions",
+      "risk_thesis": "Potential model/governance restrictions were positioned as emerging compliance burden.",
+      "evidence_paragraph_idx": [
+        69
+      ]
+    },
+    {
+      "node_id": "prev_export_controls",
+      "parent_id": "prev_regulatory_geo",
+      "level": 3,
+      "order": 5,
+      "label": "Export licensing constraints",
+      "risk_thesis": "Broad control language plus named licensing actions implied constrained market access.",
+      "evidence_paragraph_idx": [
+        75,
+        76,
+        79
+      ]
+    },
+    {
+      "node_id": "prev_taiwan_dependency",
+      "parent_id": "prev_regulatory_geo",
+      "level": 3,
+      "order": 6,
+      "label": "Taiwan supply dependency",
+      "risk_thesis": "Single-region emphasis on Taiwan highlighted concentrated upstream exposure.",
+      "evidence_paragraph_idx": [
+        84
+      ]
+    }
+  ],
+  "outline_curr": [
+    {
+      "node_id": "curr_root",
+      "parent_id": null,
+      "level": 1,
+      "order": 0,
+      "label": "Item 1A risk architecture",
+      "risk_thesis": "The 2025 section keeps the same pillars but adds specific policy and execution triggers with sharper transmission paths.",
+      "evidence_paragraph_idx": [
+        18,
+        59,
+        70,
+        82
+      ]
+    },
+    {
+      "node_id": "curr_supply_ops",
+      "parent_id": "curr_root",
+      "level": 2,
+      "order": 0,
+      "label": "Supply-demand execution",
+      "risk_thesis": "Capacity expansion, faster cadence, and transition complexity raise mismatch and margin-risk sensitivity.",
+      "evidence_paragraph_idx": [
+        18,
+        19
+      ]
+    },
+    {
+      "node_id": "curr_market_channel",
+      "parent_id": "curr_root",
+      "level": 2,
+      "order": 1,
+      "label": "Market and channel concentration",
+      "risk_thesis": "Concentration disclosure shifts to multiple named direct customers while dependence on partner channels remains.",
+      "evidence_paragraph_idx": [
+        59
+      ]
+    },
+    {
+      "node_id": "curr_security_resilience",
+      "parent_id": "curr_root",
+      "level": 2,
+      "order": 2,
+      "label": "Cyber and operational resilience",
+      "risk_thesis": "Cyber posture now explicitly includes AI-model data sourcing and third-party data integrity concerns.",
+      "evidence_paragraph_idx": [
+        43
+      ]
+    },
+    {
+      "node_id": "curr_regulatory_geo",
+      "parent_id": "curr_root",
+      "level": 2,
+      "order": 3,
+      "label": "Regulatory and geopolitical controls",
+      "risk_thesis": "Regulatory risk shifts from broad warning to concrete AI-act timing and expanded export-control mechanics.",
+      "evidence_paragraph_idx": [
+        70,
+        76,
+        82,
+        95
+      ]
+    },
+    {
+      "node_id": "curr_supply_leadtime",
+      "parent_id": "curr_supply_ops",
+      "level": 3,
+      "order": 0,
+      "label": "Expanded capacity commitments",
+      "risk_thesis": "Higher prepaid and supplier commitments increase downside if demand/mix shifts.",
+      "evidence_paragraph_idx": [
+        18
+      ]
+    },
+    {
+      "node_id": "curr_supply_transition",
+      "parent_id": "curr_supply_ops",
+      "level": 3,
+      "order": 1,
+      "label": "Cadence and yield execution",
+      "risk_thesis": "Faster launches increase probability that yield or qualification issues hit margins.",
+      "evidence_paragraph_idx": [
+        19
+      ]
+    },
+    {
+      "node_id": "curr_channel_concentration",
+      "parent_id": "curr_market_channel",
+      "level": 3,
+      "order": 2,
+      "label": "Three-customer direct concentration",
+      "risk_thesis": "Disclosure of three large direct customers highlights multi-account concentration dependence.",
+      "evidence_paragraph_idx": [
+        59
+      ]
+    },
+    {
+      "node_id": "curr_cyber_thirdparty",
+      "parent_id": "curr_security_resilience",
+      "level": 3,
+      "order": 3,
+      "label": "AI-data and third-party cyber surface",
+      "risk_thesis": "Third-party model data and supplier systems broaden pathways to security and integrity failures.",
+      "evidence_paragraph_idx": [
+        43
+      ]
+    },
+    {
+      "node_id": "curr_ai_regulation",
+      "parent_id": "curr_regulatory_geo",
+      "level": 3,
+      "order": 4,
+      "label": "Enacted AI regulation timing",
+      "risk_thesis": "EU AI Act timing introduces dated compliance milestones rather than hypothetical restrictions.",
+      "evidence_paragraph_idx": [
+        70
+      ]
+    },
+    {
+      "node_id": "curr_export_controls",
+      "parent_id": "curr_regulatory_geo",
+      "level": 3,
+      "order": 5,
+      "label": "Expanded export-control scope",
+      "risk_thesis": "Export-control language now references wider-country scope and broader licensing pathways.",
+      "evidence_paragraph_idx": [
+        76
+      ]
+    },
+    {
+      "node_id": "curr_ai_diffusion_ifr",
+      "parent_id": "curr_regulatory_geo",
+      "level": 3,
+      "order": 6,
+      "label": "AI Diffusion IFR framework",
+      "risk_thesis": "The IFR adds explicit global licensing, tiering, market-access and cost channels.",
+      "evidence_paragraph_idx": [
+        82,
+        84,
+        85,
+        87,
+        89
+      ]
+    },
+    {
+      "node_id": "curr_taiwan_sk_dependency",
+      "parent_id": "curr_regulatory_geo",
+      "level": 3,
+      "order": 7,
+      "label": "Taiwan and South Korea dependency",
+      "risk_thesis": "Supply dependency is expanded to two key overseas geographies.",
+      "evidence_paragraph_idx": [
+        95
+      ]
+    }
+  ],
+  "node_alignment": [
+    {
+      "prev_node_id": "prev_root",
+      "curr_node_id": "curr_root",
+      "change_class": "stable",
+      "rationale": "Top-level structure remains a multi-pillar risk architecture, but downstream nodes increase mechanism specificity.",
+      "salience": 0.55
+    },
+    {
+      "prev_node_id": "prev_supply_ops",
+      "curr_node_id": "curr_supply_ops",
+      "change_class": "intensified",
+      "rationale": "Supply-demand framing is preserved while 2025 adds explicit capacity-expansion and cadence effects on execution risk.",
+      "salience": 0.76
+    },
+    {
+      "prev_node_id": "prev_market_channel",
+      "curr_node_id": "curr_market_channel",
+      "change_class": "reworded",
+      "rationale": "Concentration risk remains, but 2025 shifts from single-customer emphasis to three named direct customers.",
+      "salience": 0.68
+    },
+    {
+      "prev_node_id": "prev_security_resilience",
+      "curr_node_id": "curr_security_resilience",
+      "change_class": "intensified",
+      "rationale": "Cyber baseline is retained while 2025 adds AI-model data sourcing as a direct security-integrity channel.",
+      "salience": 0.63
+    },
+    {
+      "prev_node_id": "prev_regulatory_geo",
+      "curr_node_id": "curr_regulatory_geo",
+      "change_class": "intensified",
+      "rationale": "Regulatory/geopolitical node moves from broad restrictions to concrete policy milestones and broader export-control mechanics.",
+      "salience": 0.9
+    },
+    {
+      "prev_node_id": "prev_supply_leadtime",
+      "curr_node_id": "curr_supply_leadtime",
+      "change_class": "reworded",
+      "rationale": "Lead-time dependency persists, but 2025 emphasizes active expansion of supply/capacity commitments.",
+      "salience": 0.61
+    },
+    {
+      "prev_node_id": "prev_supply_transition",
+      "curr_node_id": "curr_supply_transition",
+      "change_class": "intensified",
+      "rationale": "Transition risk remains but 2025 adds a concrete margin hit mechanism tied to Blackwell yield.",
+      "salience": 0.85
+    },
+    {
+      "prev_node_id": "prev_channel_concentration",
+      "curr_node_id": "curr_channel_concentration",
+      "change_class": "split",
+      "rationale": "2024 concentration centered on Customer A while 2025 enumerates A/B/C directly, splitting concentration across named accounts.",
+      "salience": 0.74
+    },
+    {
+      "prev_node_id": "prev_cyber_thirdparty",
+      "curr_node_id": "curr_cyber_thirdparty",
+      "change_class": "intensified",
+      "rationale": "Third-party cyber exposure is retained and extended to AI-model training data provenance and resilience.",
+      "salience": 0.62
+    },
+    {
+      "prev_node_id": "prev_ai_regulation",
+      "curr_node_id": "curr_ai_regulation",
+      "change_class": "intensified",
+      "rationale": "Contemplated AI restrictions in 2024 become dated enacted-rule references in 2025 (EU AI Act timing).",
+      "salience": 0.71
+    },
+    {
+      "prev_node_id": "prev_export_controls",
+      "curr_node_id": "curr_export_controls",
+      "change_class": "intensified",
+      "rationale": "Export-control narrative shifts from broad China-focused warning to wider-country scope language tied to the IFR context.",
+      "salience": 0.88
+    },
+    {
+      "prev_node_id": null,
+      "curr_node_id": "curr_ai_diffusion_ifr",
+      "change_class": "added",
+      "rationale": "A distinct IFR sub-node appears in 2025, introducing explicit tiering, licensing, market-size and compliance-cost channels not separately structured in 2024.",
+      "salience": 0.96
+    },
+    {
+      "prev_node_id": "prev_taiwan_dependency",
+      "curr_node_id": "curr_taiwan_sk_dependency",
+      "change_class": "intensified",
+      "rationale": "Geographic dependency expands from Taiwan-only wording to Taiwan plus South Korea supply exposure.",
+      "salience": 0.7
+    }
+  ],
+  "material_changes": [
+    {
+      "id": "mc_1",
+      "title": "AI Diffusion IFR introduces Tier 2 market-access constraints and worldwide licensing mechanics",
+      "change_class": "intensified",
+      "salience": 0.95,
+      "caveat": "Cited 2025 paras 82/84/85 are forward-looking IFR statements and 2024 paras 75/79 are export-control baselines, so the comparison captures disclosed mechanism specificity rather than realized financial magnitude.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 75
+        },
+        {
+          "year": 2024,
+          "paragraph_idx": 79
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 82
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 84
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 85
+        }
+      ]
+    },
+    {
+      "id": "mc_2",
+      "title": "Transition-risk language now cites low-yielding Blackwell material as a gross-margin channel",
+      "change_class": "intensified",
+      "salience": 0.86,
+      "caveat": "The contrast uses 2024 paras 10/14 versus 2025 paras 18/19; the cited sentences identify mechanism direction but do not provide comparable unit volumes or inventory valuation detail to size effect.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 10
+        },
+        {
+          "year": 2024,
+          "paragraph_idx": 14
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 18
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 19
+        }
+      ]
+    },
+    {
+      "id": "mc_3",
+      "title": "Customer concentration shifts from Customer A at 13% to direct Customers A, B and C at 12%, 11%, and 11%",
+      "change_class": "split",
+      "salience": 0.78,
+      "caveat": "Both 2024 para 59 and 2025 para 59 are concentration excerpts, but each references broader channel context outside the snippet boundary, limiting full attribution across direct versus indirect pathways.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 59
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 59
+        }
+      ]
+    },
+    {
+      "id": "mc_4",
+      "title": "Supply dependency wording expands from especially in Taiwan to especially in Taiwan and South Korea",
+      "change_class": "intensified",
+      "salience": 0.69,
+      "caveat": "The shift is evidenced by concise statements in 2024 para 84 and 2025 para 95, but those lines do not quantify component share, supplier count, or substitutability by geography.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 84
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 95
+        }
+      ]
+    },
+    {
+      "id": "mc_5",
+      "title": "AI governance moves from contemplated restrictions to EU AI Act became effective on August 1, 2024",
+      "change_class": "intensified",
+      "salience": 0.62,
+      "caveat": "The 2024 para 69 language already anticipates restrictions, while 2025 para 70 adds dated enactment detail; impact severity remains scenario-dependent because neither cited snippet quantifies compliance spend.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 69
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 70
+        }
+      ]
+    }
+  ],
+  "evidence_bank": [
+    {
+      "year": 2024,
+      "paragraph_idx": 10,
+      "snippet": "We use third parties to manufacture and assemble our products, and we have long manufacturing lead times.",
+      "why": "Anchors baseline lead-time and outsourced manufacturing constraints.",
+      "node_ids": [
+        "prev_supply_leadtime"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 14,
+      "snippet": "Demand for our data center systems and products surged in fiscal year 2024.",
+      "why": "Establishes demand-surge context before 2025 cadence changes.",
+      "node_ids": [
+        "prev_supply_transition"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 43,
+      "snippet": "Individuals, groups of hackers and sophisticated organizations, including nation-states and nation-state-supported actors, and other threat actors have engaged and are expected to continue to engage in cyber-attacks.",
+      "why": "Defines prior-year cyber threat actor framing.",
+      "node_ids": [
+        "prev_cyber_thirdparty"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 59,
+      "snippet": "Sales to one customer, Customer A, represented 13% of total revenue for fiscal year 2024, which was attributable to the Compute & Networking segment.",
+      "why": "Provides 2024 customer concentration anchor for comparison.",
+      "node_ids": [
+        "prev_channel_concentration"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 69,
+      "snippet": "Governments and regulators are considering imposing restrictions on the hardware, software, and systems used to develop frontier foundation models and generative AI.",
+      "why": "Captures pre-2025 baseline of contemplated AI-governance restrictions.",
+      "node_ids": [
+        "prev_ai_regulation"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 75,
+      "snippet": "Such controls have been and may again be very broad in scope and application, prohibit us from exporting our products to any or all customers in one or more markets, including but not limited to China,",
+      "why": "Shows broad export-control language before the 2025 IFR detail.",
+      "node_ids": [
+        "prev_export_controls"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 76,
+      "snippet": "Export controls could disrupt our supply chain and distribution channels, negatively impacting our ability to serve demand, including in markets outside China and for our gaming products.",
+      "why": "Links policy controls to supply-chain and demand fulfillment risk.",
+      "node_ids": [
+        "prev_export_controls"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 79,
+      "snippet": "On October 23, 2023, the USG informed us that the licensing requirements were effective immediately for shipments of our A100, A800, H100, H800, and L40S products.",
+      "why": "Pins down prior-year explicit licensing trigger language.",
+      "node_ids": [
+        "prev_export_controls"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 84,
+      "snippet": "Finally, our business depends on our ability to receive consistent and reliable supply from our overseas partners, especially in Taiwan.",
+      "why": "Baseline geographic supply dependency statement in 2024.",
+      "node_ids": [
+        "prev_taiwan_dependency"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 18,
+      "snippet": "We continue to increase our supply and capacity purchases with existing and new suppliers to support our demand projections and increasing complexity of our data center products.",
+      "why": "Shows expanded 2025 capacity-commitment posture.",
+      "node_ids": [
+        "curr_supply_leadtime"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 19,
+      "snippet": "For example, our gross margins in the second quarter of fiscal year 2025 were negatively impacted by inventory provisions for low-yielding Blackwell material.",
+      "why": "Introduces explicit Blackwell yield-driven margin impact.",
+      "node_ids": [
+        "curr_supply_transition"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 43,
+      "snippet": "We have incorporated third-party data into some of our AI models and used open-source datasets to train our models and may continue to do so.",
+      "why": "Adds explicit AI-model data dependency inside cyber risk section.",
+      "node_ids": [
+        "curr_cyber_thirdparty"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 59,
+      "snippet": "Sales to direct Customers A, B and C represented 12%, 11% and 11% of total revenue, respectively, for fiscal year 2025, all of which were primarily attributable to the Compute & Networking segment.",
+      "why": "Provides tri-customer concentration disclosure used for year-over-year shift.",
+      "node_ids": [
+        "curr_channel_concentration"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 70,
+      "snippet": "For example, the EU AI Act became effective on August 1, 2024 and will be fully applicable after a two-year transitional period.",
+      "why": "Adds concrete enacted AI-regulation timing detail.",
+      "node_ids": [
+        "curr_ai_regulation"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 76,
+      "snippet": "Such controls have been and may again be very broad in scope and application, prohibit us from exporting our products to any or all customers in one or more markets, including but not limited to China and over 150 countries designated",
+      "why": "Expands export-control scope to a larger country set.",
+      "node_ids": [
+        "curr_export_controls"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 82,
+      "snippet": "After a 120-day delayed compliance period, the IFR will, unless modified, impose a worldwide licensing requirement on all products classified under Export Control Classification Numbers, or ECCNs, 3A090.a, 4A090.a, or corresponding .z ECCNs, including all related software and technology.",
+      "why": "Core 2025 AI Diffusion IFR licensing mechanism statement.",
+      "node_ids": [
+        "curr_ai_diffusion_ifr"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 84,
+      "snippet": "The AI Diffusion IFR would have numerous effects that may negatively impact our long-term financial results and competitive position, including but not limited to the following.",
+      "why": "Introduces explicit long-term impact framing for IFR.",
+      "node_ids": [
+        "curr_ai_diffusion_ifr"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 85,
+      "snippet": "The AI Diffusion IFR would reduce the market for U.S.-designed and manufactured computing products and services, by expressly limiting exports, reexports, and transfers of covered products to Tier 2 countries and companies in Tier 1 countries that are either headquartered in Tier 2, or have an ultimate parent headquartered in a Tier 2 country.",
+      "why": "States market-contraction channel tied to Tier 2 restrictions.",
+      "node_ids": [
+        "curr_ai_diffusion_ifr"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 87,
+      "snippet": "The AI Diffusion IFR would increase our and our customers’ costs of doing business, creating compliance challenges and risks, and impact our supply and distribution chains, which will be subject to new compliance burdens and related extraterritorial regulatory obligations.",
+      "why": "Captures explicit compliance-cost and supply-chain burden.",
+      "node_ids": [
+        "curr_ai_diffusion_ifr"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 89,
+      "snippet": "licensing requirement could impact our ability to complete development of products in a timely manner, support existing customers using covered products, or supply customers with covered products outside the impacted regions, and may require us to transition certain operations out of one or more of the identified countries.",
+      "why": "Connects IFR licensing to development/support and operational transition risk.",
+      "node_ids": [
+        "curr_ai_diffusion_ifr"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 95,
+      "snippet": "Finally, our business depends on our ability to receive consistent and reliable supply from our overseas partners, especially in Taiwan and South Korea.",
+      "why": "Shows expanded geographic supply dependency statement in 2025.",
+      "node_ids": [
+        "curr_taiwan_sk_dependency"
+      ]
+    }
+  ],
+  "lens_divergence": {
+    "materially_different": false,
+    "summary": "Raw filing text is analyzed directly; no deboilerplated lens is introduced in this artifact, so divergence is not assessed as material here."
+  },
+  "risk_graph_prev": [
+    {
+      "id": "rg_prev_1",
+      "driver": "Long manufacturing lead times with outsourced production",
+      "exposure": "Capacity and inventory commitments can lag real demand shifts",
+      "impact": "Shortage/excess cycles can pressure margins and financial results",
+      "evidence_paragraph_idx": [
+        10,
+        14
+      ]
+    },
+    {
+      "id": "rg_prev_2",
+      "driver": "Escalating export-control and licensing actions",
+      "exposure": "Ability to ship AI products into restricted markets",
+      "impact": "Reduced demand capture and added operational friction",
+      "evidence_paragraph_idx": [
+        75,
+        76,
+        79
+      ]
+    },
+    {
+      "id": "rg_prev_3",
+      "driver": "Large-customer/channel concentration",
+      "exposure": "Revenue reliance on a small set of counterparties",
+      "impact": "Order changes by few accounts can move total results materially",
+      "evidence_paragraph_idx": [
+        59
+      ]
+    },
+    {
+      "id": "rg_prev_4",
+      "driver": "Nation-state and third-party cyber threats",
+      "exposure": "Critical systems and external service dependencies",
+      "impact": "Operational disruption, liability, and reputational harm",
+      "evidence_paragraph_idx": [
+        43
+      ]
+    }
+  ],
+  "risk_graph_curr": [
+    {
+      "id": "rg_curr_1",
+      "driver": "Faster product cadence plus expanded supply commitments",
+      "exposure": "Transition execution, inventory, and yield management",
+      "impact": "Inventory provisions and gross-margin downside when execution slips",
+      "evidence_paragraph_idx": [
+        18,
+        19
+      ]
+    },
+    {
+      "id": "rg_curr_2",
+      "driver": "AI Diffusion IFR and broadened export-control scope",
+      "exposure": "Global licensing obligations and restricted country/customer access",
+      "impact": "Addressable-market reduction, higher compliance costs, and competitive pressure",
+      "evidence_paragraph_idx": [
+        76,
+        82,
+        84,
+        85,
+        87,
+        89
+      ]
+    },
+    {
+      "id": "rg_curr_3",
+      "driver": "Named multi-customer concentration",
+      "exposure": "Compute & Networking revenue concentrated in direct A/B/C accounts",
+      "impact": "Demand volatility if top direct customers alter purchasing patterns",
+      "evidence_paragraph_idx": [
+        59
+      ]
+    },
+    {
+      "id": "rg_curr_4",
+      "driver": "AI-model data and third-party cyber dependency",
+      "exposure": "Data integrity and supplier security controls",
+      "impact": "Security incidents can impair trust, reliability, and revenue continuity",
+      "evidence_paragraph_idx": [
+        43
+      ]
+    }
+  ],
+  "change_mechanisms": [
+    {
+      "id": "mech_1",
+      "mechanism": "Export-control narrative moves from broad controls to explicit IFR licensing/tier structure.",
+      "transmission_channel": "Wider licensing scope and tiering reduce who can be served and increase approvals/compliance friction.",
+      "business_effect": "Lower reachable demand and potentially higher operating cost to support compliant distribution.",
+      "time_horizon": "near_term",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 75
+        },
+        {
+          "year": 2024,
+          "paragraph_idx": 79
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 82
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 84
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 85
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 87
+        }
+      ]
+    },
+    {
+      "id": "mech_2",
+      "mechanism": "Higher cadence and capacity commitments increase sensitivity to product-transition execution quality.",
+      "transmission_channel": "Demand or yield miss flows into inventory provisions and gross-margin outcomes.",
+      "business_effect": "Earnings volatility rises when transition assumptions diverge from realized manufacturing outcomes.",
+      "time_horizon": "near_term",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 10
+        },
+        {
+          "year": 2024,
+          "paragraph_idx": 14
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 18
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 19
+        }
+      ]
+    },
+    {
+      "id": "mech_3",
+      "mechanism": "Concentration disclosure shifts from one primary account to three named direct accounts.",
+      "transmission_channel": "Order timing and mix decisions by a small set of customers propagate quickly into reported revenue.",
+      "business_effect": "Revenue predictability depends on a narrow customer base despite channel breadth.",
+      "time_horizon": "near_term",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 59
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 59
+        }
+      ]
+    },
+    {
+      "id": "mech_4",
+      "mechanism": "AI-governance discussion advances from contemplated limits to enacted EU AI Act timing.",
+      "transmission_channel": "Dated regulatory milestones translate policy risk into concrete compliance planning requirements.",
+      "business_effect": "Potential delays/cost increases in model deployment and customer onboarding workflows.",
+      "time_horizon": "medium_term",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 69
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 70
+        }
+      ]
+    }
+  ],
+  "uncertainty_and_limits": [
+    {
+      "id": "limit_1",
+      "limitation": "The IFR excerpts in 2025 paras 82/84/85/87 are stated as prospective effects (e.g., licensing requirements that would apply), so evidence supports mechanism direction but not realized revenue impact size.",
+      "evidence_refs": [
+        {
+          "year": 2025,
+          "paragraph_idx": 82
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 85
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 87
+        }
+      ]
+    },
+    {
+      "id": "limit_2",
+      "limitation": "Customer concentration comparison relies on single cited paragraphs (2024 para 59; 2025 para 59) that summarize concentration but do not fully decompose direct-versus-indirect concentration continuity.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 59
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 59
+        }
+      ]
+    },
+    {
+      "id": "limit_3",
+      "limitation": "Geographic supply dependency contrast (2024 para 84 vs 2025 para 95) is explicit in wording but does not include supplier-level spend, alternate sourcing depth, or lead-time sensitivity metrics.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 84
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 95
+        }
+      ]
+    }
+  ],
+  "investor_relevance": [
+    {
+      "id": "inv_1",
+      "why_it_matters": "AI Diffusion IFR and Tier 2 language add concrete pathways from policy to addressable-market limits and compliance burden, which can alter growth durability assumptions.",
+      "evidence_refs": [
+        {
+          "year": 2025,
+          "paragraph_idx": 82
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 84
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 85
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 87
+        }
+      ]
+    },
+    {
+      "id": "inv_2",
+      "why_it_matters": "The explicit low-yielding Blackwell margin statement links transition execution to profitability, making near-term gross-margin tracking more decision-useful.",
+      "evidence_refs": [
+        {
+          "year": 2025,
+          "paragraph_idx": 19
+        },
+        {
+          "year": 2024,
+          "paragraph_idx": 14
+        }
+      ]
+    },
+    {
+      "id": "inv_3",
+      "why_it_matters": "The move to A/B/C direct concentration disclosure plus Taiwan-and-South-Korea supply dependency sharpens concentration and supply fragility monitoring in downside cases.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 59
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 59
+        },
+        {
+          "year": 2024,
+          "paragraph_idx": 84
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 95
+        }
+      ]
+    }
+  ],
+  "projection_contract": {
+    "projects_to_artifact_id": "llm_outline_compare_runtime",
+    "projection_version": "1.0"
+  },
+  "provenance": {
+    "input_file": "inputs/pair/NVDA_2024_2025_10k_item1a_raw_edgar.json",
+    "model_provider": "openai",
+    "model_name": "GPT-5.3-Codex (Extra High Reasoning, Agent Mode)",
+    "run_label": "2026-03-06_openai_gpt53codex_xhigh_agent_fullsec_real_nvda_2024_2025_outline_compare"
+  }
+}
