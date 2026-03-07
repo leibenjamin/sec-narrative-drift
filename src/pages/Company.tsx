@@ -10,6 +10,20 @@ const SHOWCASE_COMPANY_NAMES: Record<string, string> = {
   GE: "General Electric",
 }
 
+const SHOWCASE_COMPANY_SECTORS: Record<string, string> = {
+  NVDA: "Semiconductors / AI Infrastructure",
+  KO: "Consumer Staples / Beverages",
+  WM: "Industrials / Waste Services",
+  GE: "Industrials / Aerospace & Energy",
+}
+
+const SHOWCASE_COMPANY_CONTEXT: Record<string, string> = {
+  NVDA: "As the dominant GPU supplier for AI training, NVIDIA's risk disclosures track the rapid evolution of export controls, supply concentration, and demand cyclicality in the AI hardware market.",
+  KO: "As a global defensive stock with 200+ markets, Coca-Cola's risk disclosures track currency exposure, regulatory shifts in sugar taxation, supply chain resilience, and the ongoing portfolio pivot toward non-carbonated beverages.",
+  WM: "As the largest US waste hauler, Waste Management's risk disclosures track environmental regulation, landfill capacity, and the economics of recycling and sustainability mandates.",
+  GE: "Following its three-way split, GE Aerospace's risk disclosures track defense procurement cycles, supply chain constraints, and the transition to next-generation engine programs.",
+}
+
 type Pair = { from: number; to: number }
 
 function parseYear(value: string | null): number | null {
@@ -129,11 +143,21 @@ export default function Company() {
             <h1 className="text-3xl font-semibold">
               {displayName} ({ticker})
             </h1>
+            {SHOWCASE_COMPANY_SECTORS[ticker] ? (
+              <p className="text-sm font-medium text-slate-400">
+                {SHOWCASE_COMPANY_SECTORS[ticker]}
+              </p>
+            ) : null}
             <p className="max-w-3xl text-sm text-slate-300">
-              SEC Narrative Drift Lab compares adjacent 10-K Item 1A risk-factor years with
-              deterministic detectors, then layers optional precomputed LLM sidecars for transparent
-              model-to-model comparison.
+              Year-over-year analysis of {displayName}'s 10-K risk disclosures (Item 1A) — surfacing
+              which risk themes intensified, which faded, and where the narrative shifted between
+              adjacent filing years.
             </p>
+            {SHOWCASE_COMPANY_CONTEXT[ticker] ? (
+              <p className="max-w-3xl text-sm text-slate-400">
+                {SHOWCASE_COMPANY_CONTEXT[ticker]}
+              </p>
+            ) : null}
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
@@ -153,30 +177,30 @@ export default function Company() {
 
           <div className="grid gap-3 rounded-xl border border-white/10 bg-slate-900/45 p-4 md:grid-cols-3">
             <div className="rounded-md border border-sky-300/25 bg-sky-400/10 p-3">
-              <div className="text-xs uppercase tracking-wide text-sky-100">What changed</div>
+              <div className="text-xs uppercase tracking-wide text-sky-100">Risk narrative drift</div>
               <p className="mt-1 text-sm text-slate-100">
-                Compare adjacent years to see which risk themes intensified, faded, or stayed stable.
+                Identifies which risk themes {displayName} added, removed, intensified, or softened compared
+                to the prior year's filing — using both statistical detectors and LLM-based analysis.
               </p>
             </div>
             <div className="rounded-md border border-white/10 bg-slate-950/35 p-3">
               <div className="text-xs uppercase tracking-wide text-slate-300">Why this matters</div>
               <p className="mt-1 text-sm text-slate-200">
-                The same detectors and case controls make it easy to contrast company narratives and model choices side by side.
+                Changes in risk language often precede strategic shifts, regulatory responses, or emerging
+                exposures. Comparing across methods separates real narrative change from boilerplate churn.
               </p>
             </div>
             <div className="rounded-md border border-emerald-300/20 bg-emerald-400/10 p-3">
               <div className="text-xs uppercase tracking-wide text-emerald-100">
-                How to read confidence
+                How to read results
               </div>
               <p className="mt-1 text-sm text-slate-100">
-                Confidence bands are heuristic tri-level signals (0.25/0.50/0.75), not probabilities or confidence intervals, supported by deterministic baselines, explicit evidence, provenance, and path-level debug states.
+                Each method card shows a drift score, confidence band, and supporting evidence excerpts.
+                The Insight Lens at the top provides an executive summary. Use the agreement matrix
+                to see where methods converge or diverge.
               </p>
             </div>
           </div>
-          <p className="text-sm text-slate-300">
-            Deterministic baseline + dual-model A/B compare + path-level reproducibility in one
-            flow.
-          </p>
         </header>
 
         <LabPanel

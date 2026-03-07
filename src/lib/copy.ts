@@ -32,7 +32,7 @@ export const copy = {
     },
     errors: {
       missingDataset:
-        "We couldn't load this dataset. Try a featured case for a stable starting point.",
+        "This output could not be loaded. The data file may not exist for this combination.",
       missingExcerpts: "We have metrics for this pair, but no excerpt set yet.",
       noShifts: 'No clear "top movers" for this year pair (which is itself a result).',
       lowConfidenceYear:

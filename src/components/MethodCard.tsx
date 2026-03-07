@@ -98,9 +98,9 @@ function classifySignal(output: LabOutput | null): SignalSummary {
   if (!output) {
     return {
       tier: "insufficient",
-      summary: "No detector payload loaded.",
-      reason: "This card has no output artifact yet.",
-      nextAction: "Use the expected path and debug payload to recover the missing artifact first.",
+      summary: "Analysis not available.",
+      reason: "Output artifact has not been generated for this method/lens combination yet.",
+      nextAction: "Review other available methods or check the debug details below.",
     }
   }
 
@@ -113,10 +113,10 @@ function classifySignal(output: LabOutput | null): SignalSummary {
   if (evidenceCount < 2 || confidence === null || coverage === null || drift === null) {
     return {
       tier: "insufficient",
-      summary: "Signal is insufficient for strong interpretation.",
+      summary: "Too little evidence to draw conclusions from this method alone.",
       reason:
-        "One or more core diagnostics are missing or too thin (evidence, confidence, coverage, or drift).",
-      nextAction: "Cross-check agreement plus at least two core deterministic cards before concluding.",
+        "Key metrics are missing or the evidence base is too thin for reliable interpretation.",
+      nextAction: "Cross-reference with at least two other methods before interpreting.",
     }
   }
 
@@ -129,33 +129,33 @@ function classifySignal(output: LabOutput | null): SignalSummary {
   ) {
     return {
       tier: "high",
-      summary: "Signal looks strong for this detector.",
-      reason: "Confidence, coverage, evidence volume, and warning profile are all supportive.",
-      nextAction: "Validate with agreement and one orthogonal method before final interpretation.",
+      summary: "Strong evidence of meaningful narrative change detected.",
+      reason: "High confidence, broad coverage, and substantial supporting evidence.",
+      nextAction: "Check the agreement matrix to see if other methods confirm this finding.",
     }
   }
 
   if (confidence < 0.45 || coverage < 0.45 || warningsCount >= 2 || evidenceCount < 3) {
     return {
       tier: "low",
-      summary: "Signal is weak and easy to over-read.",
+      summary: "Weak signal — treat as directional only.",
       reason:
-        "At least one quality indicator is weak (confidence, coverage, warning load, or sparse evidence).",
-      nextAction: "Treat as directional only and prioritize JSD/log-odds plus agreement cross-checks.",
+        "Low confidence, limited coverage, or sparse evidence makes this finding unreliable on its own.",
+      nextAction: "Use the core drift methods and agreement matrix as the primary reference instead.",
     }
   }
 
   return {
     tier: "medium",
-    summary: "Signal is usable with caveats.",
-    reason: "Metrics are acceptable but not uniformly strong across all quality checks.",
-    nextAction: "Use this card with structure/reuse context before drawing a durable conclusion.",
+    summary: "Moderate evidence of narrative change — review supporting excerpts.",
+    reason: "Metrics are acceptable but not uniformly strong. Interpret with context from other methods.",
+    nextAction: "Compare with the agreement matrix and at least one other method before concluding.",
   }
 }
 
 function buildWeaknessReason(output: LabOutput | null): string {
   if (!output) {
-    return "No output is loaded, so no evidence-level interpretation is possible."
+    return "No output available for this method."
   }
 
   const weakness: string[] = []
@@ -164,19 +164,19 @@ function buildWeaknessReason(output: LabOutput | null): string {
   const warningsCount = output.metrics.warnings.length
   const evidenceCount = output.evidence.length
 
-  if (warningsCount > 0) weakness.push(`warnings present (${warningsCount})`)
-  if (confidence !== null && confidence < 0.6) weakness.push(`confidence is ${confidence.toFixed(2)}`)
-  if (coverage !== null && coverage < 0.6) weakness.push(`coverage is ${coverage.toFixed(2)}`)
-  if (evidenceCount < 4) weakness.push(`limited evidence blocks (${evidenceCount})`)
+  if (warningsCount > 0) weakness.push(`${warningsCount} warning${warningsCount > 1 ? "s" : ""}`)
+  if (confidence !== null && confidence < 0.6) weakness.push(`low confidence (${confidence.toFixed(2)})`)
+  if (coverage !== null && coverage < 0.6) weakness.push(`limited coverage (${coverage.toFixed(2)})`)
+  if (evidenceCount < 4) weakness.push(`only ${evidenceCount} evidence excerpt${evidenceCount !== 1 ? "s" : ""}`)
 
   if (weakness.length === 0) {
-    return "Even strong detector metrics can miss cross-method disagreement or structure-driven artifacts."
+    return "Metrics look healthy, but always cross-reference with other methods for a complete picture."
   }
-  return `${weakness.join("; ")}.`
+  return `Caveats: ${weakness.join("; ")}.`
 }
 
 function buildDecisionSentence(signalSummary: SignalSummary): string {
-  return `Interpretation: ${signalSummary.summary} ${signalSummary.nextAction}`
+  return signalSummary.summary
 }
 
 function signalTierClasses(tier: SignalTier): string {
@@ -470,13 +470,15 @@ export default function MethodCard({
           <p className="mt-2 text-sm text-slate-200">{decisionSentence}</p>
         </div>
         <div className="flex flex-wrap items-center gap-2 text-sm text-slate-300">
-          <span>drift {formatMetric(output?.metrics.drift_score)}</span>
+          <span title="Magnitude of year-over-year narrative change detected">Drift: {formatMetric(output?.metrics.drift_score)}</span>
+          <span className="text-slate-500">|</span>
           <span
-            title="Ordinal tri-level score (0.25/0.50/0.75), not a calibrated probability or confidence interval."
+            title="Heuristic confidence band (Low / Medium / High) — not a calibrated probability"
           >
-            confidence band (heuristic) {formatConfidenceBand(output?.metrics.confidence)}
+            Confidence: {formatConfidenceBand(output?.metrics.confidence)}
           </span>
-          <span>coverage {formatMetric(output?.metrics.coverage)}</span>
+          <span className="text-slate-500">|</span>
+          <span title="Proportion of the risk section covered by this method's analysis">Coverage: {formatMetric(output?.metrics.coverage)}</span>
           <button
             type="button"
             onClick={handleToggleContext}
@@ -520,8 +522,8 @@ export default function MethodCard({
 
           {!isLoading && !output ? (
             <div className="mt-3 space-y-2 rounded-md border border-amber-400/30 bg-amber-400/10 p-3">
-              <p className="text-xs font-semibold text-amber-100">Missing artifact</p>
-              <p className="text-xs text-slate-200">{emptyMessage ?? "No lab output yet."}</p>
+              <p className="text-xs font-semibold text-amber-100">Analysis not available</p>
+              <p className="text-xs text-slate-200">{emptyMessage ?? "No output available for this configuration."}</p>
               {debugInfo?.expectedPath ? (
                 <p className="break-all text-xs text-slate-200">
                   Expected path: <span className="text-slate-100">{debugInfo.expectedPath}</span>
@@ -671,13 +673,13 @@ export default function MethodCard({
           </div>
 
           {llmCard ? (
-            <div className="mt-3 rounded-md border border-sky-300/30 bg-sky-400/10 p-3 text-xs text-slate-100">
-              <div className="text-xs font-semibold uppercase tracking-wide text-sky-200">
-                Run this output yourself
-              </div>
-              <p className="mt-1 text-xs text-slate-200">
-                This detector is precomputed offline. Use the same input and starter text to rerun in
-                ChatGPT Desktop for reproducible outputs.
+            <details className="mt-3 rounded-md border border-sky-300/30 bg-sky-400/10 p-3 text-xs text-slate-100">
+              <summary className="cursor-pointer text-xs font-semibold uppercase tracking-wide text-sky-200">
+                Reproducibility — run this analysis yourself
+              </summary>
+              <p className="mt-2 text-xs text-slate-200">
+                This analysis was precomputed offline. You can reproduce it using the same
+                inputs and model configuration below.
               </p>
               <div className="mt-2 space-y-1 text-xs text-slate-200">
                 <div>
@@ -818,24 +820,20 @@ export default function MethodCard({
                   Instruction text fallback in use: {projectInstructionsError}
                 </div>
               ) : null}
-            </div>
+            </details>
           ) : null}
 
           {output ? (
             <div className="mt-4 space-y-4">
               {shouldShowSignalBanner ? (
                 <div className={`rounded-md border p-3 text-xs ${signalTierClasses(signalSummary.tier)}`}>
-                  <div className="font-semibold">Signal quality: {signalSummary.tier.toUpperCase()}</div>
-                  <p className="mt-1">{signalSummary.summary}</p>
-                  <p className="mt-1 text-slate-100">{signalSummary.reason}</p>
+                  <div className="font-semibold">
+                    Evidence strength: {signalSummary.tier === "high" ? "Strong" : signalSummary.tier === "medium" ? "Moderate" : signalSummary.tier === "low" ? "Weak" : "Insufficient"}
+                  </div>
+                  <p className="mt-1">{signalSummary.reason}</p>
+                  <p className="mt-1 text-slate-100">{weaknessReason}</p>
                   <p className="mt-1 text-slate-100">
-                    <span className="font-semibold">
-                      {analysisMode === "deep" ? "Why signal may be weak:" : "Interpretation note:"}
-                    </span>{" "}
-                    {weaknessReason}
-                  </p>
-                  <p className="mt-1 text-slate-100">
-                    <span className="font-semibold">Next best action:</span> {signalSummary.nextAction}
+                    <span className="font-semibold">Suggested next step:</span> {signalSummary.nextAction}
                   </p>
                 </div>
               ) : null}

@@ -4,22 +4,19 @@ import CleaningLensToggle from "./CleaningLensToggle"
 import MethodCard from "./MethodCard"
 import InsightLensPanel from "./InsightLensPanel"
 import OutlineComparePanel from "./OutlineComparePanel"
+import RiskNarrativeSummary from "./RiskNarrativeSummary"
 import {
   LabDataLoadError,
-  buildExpectedLabOutputArtifactFromVariant,
   buildExpectedLabOutputArtifact,
-  buildLabInputRequestUrl,
   buildLabOutputRepoPath,
   buildLabOutputRequestUrl,
   clearLabOutputCache,
   findLabOutlineCompareArtifactForCampaign,
   findLabOutlineCompareStructuredArtifactForCampaign,
   findLabOutlineCompareInsightArtifactForCampaign,
-  findLabLlmVariant,
   formatLabLoadDebug,
   getDefaultDeterministicTrackSlug,
   getDefaultLabLlmCampaignPair,
-  getLabLlmCampaignById,
   loadLabOutlineCompareOutput,
   loadLabOutlineCompareStructuredOutput,
   loadLabOutlineCompareInsightOutput,
@@ -29,10 +26,6 @@ import {
   loadLabOutput,
   resolveLabOutputLink,
 } from "../lib/labData"
-import {
-  buildDefaultLlmInputFile,
-  buildDefaultLlmYearInputFile,
-} from "../lib/labLlmRepro"
 import { withBase } from "../lib/paths"
 import { formatFiscalYearRange } from "../lib/fiscalYear"
 import type {
@@ -51,50 +44,36 @@ const DETECTOR_CATALOG = [
   {
     id: "det_logodds_terms_v1",
     label: "Log-odds terms",
-    description: "Distinctive term shifts from the baseline log-odds detector.",
+    description: "Which specific risk terms were elevated or dropped compared to the prior year.",
     group: "core",
     defaultSelected: true,
   },
   {
     id: "det_jsd_ngrams_v1",
     label: "JSD n-grams",
-    description: "Distributional drift using Jensen-Shannon divergence.",
+    description: "How much the overall risk language distribution shifted between filing years.",
     group: "core",
     defaultSelected: true,
   },
   {
     id: "det_minhash_boilerplate_v1",
     label: "Minhash boilerplate",
-    description: "Near-duplicate paragraph reuse estimates.",
+    description: "How much of the risk section is recycled boilerplate vs. genuinely new disclosure.",
     group: "structure",
     defaultSelected: true,
   },
   {
     id: "det_winnowing_fingerprint_v1",
     label: "Winnowing fingerprints",
-    description: "Shared fingerprint spans between years.",
+    description: "Exact text spans that carried over unchanged, revealing structural continuity.",
     group: "structure",
     defaultSelected: true,
   },
   {
     id: "det_structure_artifacts_v1",
     label: "Structure artifacts",
-    description: "Heading and length changes across years.",
+    description: "Heading reorganizations and section-length changes that may signal disclosure restructuring.",
     group: "structure",
-    defaultSelected: true,
-  },
-  {
-    id: "det_llm_delta_brief_v1",
-    label: "LLM delta brief (precomputed)",
-    description: "Precomputed narrative summary.",
-    group: "llm",
-    defaultSelected: true,
-  },
-  {
-    id: "det_llm_excerpt_picker_v1",
-    label: "LLM excerpt picker (precomputed)",
-    description: "Precomputed excerpt selection.",
-    group: "llm",
     defaultSelected: true,
   },
 ]
@@ -102,9 +81,6 @@ const DETECTOR_CATALOG = [
 const DEFAULT_SELECTED = DETECTOR_CATALOG.filter((det) => det.defaultSelected).map(
   (det) => det.id
 )
-const DETERMINISTIC_DEFAULT_SELECTED = DETECTOR_CATALOG.filter(
-  (det) => det.group !== "llm"
-).map((det) => det.id)
 const EXECUTIVE_READ_PRESET = ["det_logodds_terms_v1", "det_jsd_ngrams_v1"]
 const TECHNICAL_DEEP_DIVE_PRESET = [
   "det_logodds_terms_v1",
@@ -112,18 +88,14 @@ const TECHNICAL_DEEP_DIVE_PRESET = [
   "det_minhash_boilerplate_v1",
   "det_winnowing_fingerprint_v1",
   "det_structure_artifacts_v1",
-  "det_llm_delta_brief_v1",
-  "det_llm_excerpt_picker_v1",
 ]
 const DETECTOR_GROUP_ORDER = [
-  { id: "core", label: "Core drift methods" },
-  { id: "structure", label: "Reuse and structure methods" },
-  { id: "llm", label: "LLM sidecars (precomputed)" },
+  { id: "core", label: "Core drift analysis" },
+  { id: "structure", label: "Reuse and structural change" },
 ] as const
 const METHOD_GROUP_SECTION_IDS: Record<(typeof DETECTOR_GROUP_ORDER)[number]["id"], string> = {
   core: "lab-core-methods",
   structure: "lab-structure-methods",
-  llm: "lab-llm-methods",
 }
 const LENS_PREFERENCE_ORDER: LabCleaningLens[] = [
   "deboilerplated",
@@ -131,10 +103,6 @@ const LENS_PREFERENCE_ORDER: LabCleaningLens[] = [
   "stage1_clean",
   "structure_aware",
 ]
-const LLM_DETECTOR_IDS = new Set<string>([
-  "det_llm_delta_brief_v1",
-  "det_llm_excerpt_picker_v1",
-])
 const DET_TRACK_SLUG = getDefaultDeterministicTrackSlug()
 type AnalysisMode = "executive" | "deep"
 
@@ -145,76 +113,6 @@ function buildDetectorCardKey(detectorId: string, campaignId?: string): string {
 
 function buildCardExpansionKey(scopeKey: string, cardKey: string): string {
   return `${scopeKey}::${cardKey}`
-}
-
-function countDeltaCitations(output: LabOutput | null): number {
-  if (!output || output.detector_id !== "det_llm_delta_brief_v1") return 0
-  const raw = output.artifacts.delta_brief
-  if (typeof raw !== "string") return 0
-  const matches = raw.match(/\b20\d{2}\s+para\s+\d+\b/gi)
-  return matches ? matches.length : 0
-}
-
-function countEvidence(output: LabOutput | null): number {
-  if (!output) return 0
-  return Array.isArray(output.evidence) ? output.evidence.length : 0
-}
-
-function excerptEvidenceOverlapPercent(a: LabOutput | null, b: LabOutput | null): number | null {
-  if (!a || !b) return null
-  if (a.detector_id !== "det_llm_excerpt_picker_v1") return null
-  if (b.detector_id !== "det_llm_excerpt_picker_v1") return null
-  const setA = new Set<string>()
-  const setB = new Set<string>()
-  for (const block of a.evidence ?? []) {
-    setA.add(`${block.year}:${block.paragraph_idx}`)
-  }
-  for (const block of b.evidence ?? []) {
-    setB.add(`${block.year}:${block.paragraph_idx}`)
-  }
-  if (setA.size === 0 && setB.size === 0) return 100
-  const union = new Set<string>([...setA, ...setB])
-  let intersection = 0
-  for (const key of union) {
-    if (setA.has(key) && setB.has(key)) intersection += 1
-  }
-  return (intersection / union.size) * 100
-}
-
-function buildLlmCompareRead(params: {
-  confidenceDelta: number | null
-  evidenceDelta: number
-  overlapPercent: number | null
-}): string {
-  const parts: string[] = []
-
-  if (params.confidenceDelta === null) {
-    parts.push("Confidence band unavailable")
-  } else if (params.confidenceDelta >= 0.1) {
-    parts.push("A higher confidence band")
-  } else if (params.confidenceDelta <= -0.1) {
-    parts.push("B higher confidence band")
-  } else {
-    parts.push("Confidence band similar")
-  }
-
-  if (params.evidenceDelta >= 2) {
-    parts.push("A broader evidence set")
-  } else if (params.evidenceDelta <= -2) {
-    parts.push("B broader evidence set")
-  }
-
-  if (params.overlapPercent !== null) {
-    if (params.overlapPercent < 40) {
-      parts.push("Divergent excerpt choices")
-    } else if (params.overlapPercent <= 75) {
-      parts.push("Partial overlap")
-    } else {
-      parts.push("High overlap")
-    }
-  }
-
-  return parts.join(", ")
 }
 
 function buildCaseKey(caseItem: LabCase): string {
@@ -570,27 +468,6 @@ export default function LabPanel({
     [availableDetectorIds]
   )
 
-  // Adjust detector selection during render when LLM artifacts are unavailable (avoids sync setState in effect)
-  const detectorAvailKey = selectedCase ? availableDetectorIds.join(",") : null
-  const [prevDetectorAvailKey, setPrevDetectorAvailKey] = useState(detectorAvailKey)
-  if (detectorAvailKey !== prevDetectorAvailKey) {
-    setPrevDetectorAvailKey(detectorAvailKey)
-    if (selectedCase) {
-      const hasAnyLlmArtifacts = Array.from(LLM_DETECTOR_IDS).some((detectorId) =>
-        availableDetectorIds.includes(detectorId)
-      )
-      if (!hasAnyLlmArtifacts && hasSameDetectorSelection(selectedDetectors, DEFAULT_SELECTED)) {
-        setSelectedDetectors([...DETERMINISTIC_DEFAULT_SELECTED])
-        setPresetTokenCounter((c) => c + 1)
-        setPresetStatus({
-          message:
-            "LLM artifacts missing for this pair/lens. Showing deterministic-first method defaults.",
-          token: presetTokenCounter + 1,
-        })
-      }
-    }
-  }
-
   // Adjust lens during render when available lenses change (avoids sync setState in effect)
   if (availableLenses.length && !availableLenses.includes(lens)) {
     const nextLens = pickPreferredAvailableLens(availableLenses)
@@ -654,8 +531,7 @@ export default function LabPanel({
       const nextInsightDebugInfo: Record<string, OutlineArtifactDebugInfo> = {}
 
       for (const detectorId of selectedDetectors) {
-        const isLlm = LLM_DETECTOR_IDS.has(detectorId)
-        if (!isLlm) {
+        {
           const expectedArtifact = buildExpectedLabOutputArtifact(
             selectedCase,
             detectorId,
@@ -682,7 +558,7 @@ export default function LabPanel({
               detectorId,
               expectedPath: fallbackExpectedPath,
               requestedUrl: fallbackRequestedUrl,
-              errorText: "Missing artifact: detector output is not listed for this case/lens.",
+              errorText: "No precomputed output exists for this method and cleaning lens combination.",
             }
             continue
           }
@@ -725,142 +601,6 @@ export default function LabPanel({
               detectorId,
               expectedPath,
               requestedUrl,
-              errorText,
-            }
-          }
-          continue
-        }
-
-        const llmCampaignIds = [selectedLlmCampaignA, selectedLlmCampaignB].filter(Boolean)
-        for (const campaignId of llmCampaignIds) {
-          const cardKey = buildDetectorCardKey(detectorId, campaignId)
-          const campaign = await getLabLlmCampaignById(campaignId)
-          const variant = await findLabLlmVariant(selectedCase, detectorId, lens, campaignId)
-          const fallbackInputFile = buildDefaultLlmInputFile(
-            selectedCase.ticker,
-            selectedCase.year_from,
-            selectedCase.year_to,
-            lens,
-            selectedCase.section,
-            sourceId
-          )
-          const fallbackYearInputPrev = buildDefaultLlmYearInputFile(
-            selectedCase.ticker,
-            selectedCase.year_from,
-            selectedCase.year_from,
-            selectedCase.year_to,
-            lens,
-            selectedCase.section,
-            sourceId
-          )
-          const fallbackYearInputCurr = buildDefaultLlmYearInputFile(
-            selectedCase.ticker,
-            selectedCase.year_to,
-            selectedCase.year_from,
-            selectedCase.year_to,
-            lens,
-            selectedCase.section,
-            sourceId
-          )
-          const inputFile = variant?.input_file ?? fallbackInputFile
-          const yearInputPrev = variant?.year_input_prev ?? fallbackYearInputPrev
-          const yearInputCurr = variant?.year_input_curr ?? fallbackYearInputCurr
-          const inputFileUrl = inputFile ? buildLabInputRequestUrl(inputFile) : null
-          const yearInputPrevUrl = yearInputPrev ? buildLabInputRequestUrl(yearInputPrev) : null
-          const yearInputCurrUrl = yearInputCurr ? buildLabInputRequestUrl(yearInputCurr) : null
-          const expectedArtifact = variant
-            ? buildExpectedLabOutputArtifactFromVariant(variant)
-            : buildExpectedLabOutputArtifact(
-                selectedCase,
-                detectorId,
-                lens,
-                sourceId,
-                campaign?.campaign_slug ?? campaignId
-              )
-          const expectedPath = expectedArtifact?.repoPath ?? null
-          let requestedUrl = expectedArtifact?.requestUrl ?? null
-          if (!variant) {
-            nextOutputs[cardKey] = null
-            nextOutputDebugPaths[cardKey] = expectedPath
-              ? `Missing artifact. Expected path: ${expectedPath}`
-              : "Missing artifact."
-            nextOutputDebugInfo[cardKey] = {
-              ticker: selectedCase.ticker,
-              yearFrom: selectedCase.year_from,
-              yearTo: selectedCase.year_to,
-              lens,
-              detectorId,
-              campaignId,
-              campaignDisplayName: campaign?.display_name ?? campaignId,
-              expectedPath,
-              requestedUrl,
-              inputFile,
-              yearInputPrev,
-              yearInputCurr,
-              inputFileUrl,
-              yearInputPrevUrl,
-              yearInputCurrUrl,
-              errorText: "Missing artifact: campaign variant output is not indexed for this case/lens.",
-            }
-            continue
-          }
-
-          try {
-            const output = await loadLabOutput(selectedCase.ticker, variant.filename, {
-              signal: controller.signal,
-              llmExpectation: {
-                campaignId,
-                modelProvider: variant.model_provider,
-                modelName: variant.model_name,
-              },
-            })
-            nextOutputs[cardKey] = output
-            nextOutputDebugPaths[cardKey] = null
-            nextOutputDebugInfo[cardKey] = {
-              ticker: selectedCase.ticker,
-              yearFrom: selectedCase.year_from,
-              yearTo: selectedCase.year_to,
-              lens,
-              detectorId,
-              campaignId,
-              campaignDisplayName: variant.display_name,
-              expectedPath,
-              requestedUrl,
-              inputFile,
-              yearInputPrev,
-              yearInputCurr,
-              inputFileUrl,
-              yearInputPrevUrl,
-              yearInputCurrUrl,
-              errorText: null,
-            }
-          } catch (error) {
-            nextOutputs[cardKey] = null
-            nextOutputDebugPaths[cardKey] = formatLabLoadDebug(error)
-            let errorText = "Failed to load detector output."
-            if (error instanceof LabDataLoadError) {
-              const statusText = typeof error.status === "number" ? ` (status ${error.status})` : ""
-              errorText = `${error.message}${statusText}`
-              requestedUrl = error.url
-            } else if (error instanceof Error) {
-              errorText = error.message
-            }
-            nextOutputDebugInfo[cardKey] = {
-              ticker: selectedCase.ticker,
-              yearFrom: selectedCase.year_from,
-              yearTo: selectedCase.year_to,
-              lens,
-              detectorId,
-              campaignId,
-              campaignDisplayName: variant.display_name,
-              expectedPath,
-              requestedUrl,
-              inputFile,
-              yearInputPrev,
-              yearInputCurr,
-              inputFileUrl,
-              yearInputPrevUrl,
-              yearInputCurrUrl,
               errorText,
             }
           }
@@ -1125,41 +865,11 @@ export default function LabPanel({
 
   const methodCards = useMemo(() => {
     const selected = new Set(selectedDetectors)
-    const campaignMap = new Map<string, LabLlmCampaign>()
-    for (const campaign of llmCampaignOptions) {
-      campaignMap.set(campaign.campaign_id, campaign)
-    }
-    const cards: Array<
-      (typeof DETECTOR_CATALOG)[number] & {
-        cardKey: string
-        campaignId?: string
-        campaign?: LabLlmCampaign | null
-      }
-    > = []
-    for (const detector of DETECTOR_CATALOG) {
-      if (!selected.has(detector.id)) continue
-      if (!LLM_DETECTOR_IDS.has(detector.id)) {
-        cards.push({
-          ...detector,
-          cardKey: buildDetectorCardKey(detector.id),
-          campaign: null,
-        })
-        continue
-      }
-      const selectedCampaignIds = Array.from(
-        new Set([selectedLlmCampaignA, selectedLlmCampaignB].filter(Boolean))
-      )
-      for (const campaignId of selectedCampaignIds) {
-        cards.push({
-          ...detector,
-          cardKey: buildDetectorCardKey(detector.id, campaignId),
-          campaignId,
-          campaign: campaignMap.get(campaignId) ?? null,
-        })
-      }
-    }
-    return cards
-  }, [selectedDetectors, llmCampaignOptions, selectedLlmCampaignA, selectedLlmCampaignB])
+    return DETECTOR_CATALOG.filter((det) => selected.has(det.id)).map((det) => ({
+      ...det,
+      cardKey: buildDetectorCardKey(det.id),
+    }))
+  }, [selectedDetectors])
 
   const expansionScopeKey = selectedCase
     ? `${selectedCase.ticker}:${selectedCase.year_from}-${selectedCase.year_to}`
@@ -1182,15 +892,11 @@ export default function LabPanel({
       }
 
       const firstCoreCardKey = methodCards.find((card) => card.group === "core")?.cardKey ?? null
-      const firstLlmDetectorId = methodCards.find((card) => card.group === "llm")?.id ?? null
 
       for (const card of methodCards) {
         const scopedKey = buildCardExpansionKey(expansionScopeKey, card.cardKey)
         const defaultExpanded =
-          analysisMode === "executive"
-            ? true
-            : card.cardKey === firstCoreCardKey ||
-              (card.group === "llm" && firstLlmDetectorId !== null && card.id === firstLlmDetectorId)
+          analysisMode === "executive" ? true : card.cardKey === firstCoreCardKey
         next[scopedKey] = defaultExpanded
       }
 
@@ -1198,96 +904,14 @@ export default function LabPanel({
     })
   }
 
-  const llmCompareRows = useMemo(() => {
-    const rows: Array<{
-      detectorId: string
-      detectorLabel: string
-      confidenceDelta: number | null
-      evidenceDelta: number
-      citationDelta: number | null
-      overlapPercent: number | null
-      readText: string
-    }> = []
-    if (!selectedLlmCampaignA || !selectedLlmCampaignB) return rows
-    for (const detector of DETECTOR_CATALOG) {
-      if (!LLM_DETECTOR_IDS.has(detector.id)) continue
-      if (!selectedDetectors.includes(detector.id)) continue
-      const outputA = outputs[buildDetectorCardKey(detector.id, selectedLlmCampaignA)] ?? null
-      const outputB = outputs[buildDetectorCardKey(detector.id, selectedLlmCampaignB)] ?? null
-      const confidenceA = outputA?.metrics.confidence ?? null
-      const confidenceB = outputB?.metrics.confidence ?? null
-      const confidenceDelta =
-        confidenceA !== null && confidenceB !== null ? confidenceA - confidenceB : null
-      const evidenceDelta = countEvidence(outputA) - countEvidence(outputB)
-      const citationDelta =
-        detector.id === "det_llm_delta_brief_v1"
-          ? countDeltaCitations(outputA) - countDeltaCitations(outputB)
-          : null
-      const overlapPercent =
-        detector.id === "det_llm_excerpt_picker_v1"
-          ? excerptEvidenceOverlapPercent(outputA, outputB)
-          : null
-      rows.push({
-        detectorId: detector.id,
-        detectorLabel: detector.label,
-        confidenceDelta,
-        evidenceDelta,
-        citationDelta,
-        overlapPercent,
-        readText: buildLlmCompareRead({
-          confidenceDelta,
-          evidenceDelta,
-          overlapPercent,
-        }),
-      })
-    }
-    return rows
-  }, [outputs, selectedLlmCampaignA, selectedLlmCampaignB, selectedDetectors])
-
-  const llmCompareSummary = useMemo(() => {
-    if (!llmCompareRows.length) return null
-    let best = llmCompareRows[0]
-    let bestScore = 0
-    for (const row of llmCompareRows) {
-      const confidenceWeight = row.confidenceDelta === null ? 0 : Math.abs(row.confidenceDelta) * 100
-      const evidenceWeight = Math.abs(row.evidenceDelta) * 5
-      const overlapWeight =
-        row.overlapPercent === null ? 0 : Math.max(0, 100 - row.overlapPercent) * 0.25
-      const score = confidenceWeight + evidenceWeight + overlapWeight
-      if (score > bestScore) {
-        best = row
-        bestScore = score
-      }
-    }
-    return {
-      detectorLabel: best.detectorLabel,
-      readText: best.readText,
-    }
-  }, [llmCompareRows])
-
-  const deterministicContrastSummary = useMemo(() => {
-    let deterministicSelected = 0
-    let deterministicAvailable = 0
-    let llmSelected = 0
-    let llmAvailable = 0
+  const methodCoverageSummary = useMemo(() => {
+    let selected = 0
+    let available = 0
     for (const card of methodCards) {
-      const hasOutput = Boolean(outputs[card.cardKey])
-      if (LLM_DETECTOR_IDS.has(card.id)) {
-        llmSelected += 1
-        if (hasOutput) llmAvailable += 1
-      } else {
-        deterministicSelected += 1
-        if (hasOutput) deterministicAvailable += 1
-      }
+      selected += 1
+      if (outputs[card.cardKey]) available += 1
     }
-    const deterministicText = `Deterministic coverage ${deterministicAvailable}/${deterministicSelected}`
-    if (llmSelected === 0) {
-      return `${deterministicText}; no LLM sidecars selected.`
-    }
-    if (llmAvailable === 0) {
-      return `${deterministicText}; LLM sidecars missing for this pair/lens, so interpretation should stay deterministic-first.`
-    }
-    return `${deterministicText}; LLM sidecars available ${llmAvailable}/${llmSelected}. Use agreement and evidence blocks to reconcile disagreements.`
+    return `Method coverage ${available}/${selected}`
   }, [methodCards, outputs])
 
   const selectedCompareCampaignIds = useMemo(
@@ -1494,41 +1118,44 @@ export default function LabPanel({
   return (
     <section className="space-y-6">
       <div className="rounded-lg border border-white/10 bg-white/5 p-4 text-sm text-slate-200">
-        <h3 className="text-sm font-semibold text-slate-100">What am I looking at?</h3>
+        <h3 className="text-sm font-semibold text-slate-100">How to read this page</h3>
         <p className="mt-2 text-xs text-slate-300">
-          This Lab compares adjacent years of 10-K risk text and surfaces what shifted, what stayed
-          similar, and where detectors disagree. Start with the default deboilerplated lens for the
-          cleanest signal, then switch lenses to inspect raw wording effects.
+          Below you'll find the results of multiple independent analytical methods applied
+          to adjacent years of 10-K Item 1A risk disclosures. Each method surfaces different
+          dimensions of narrative change — from specific term shifts to structural reorganization
+          to AI-generated summaries. The <strong className="text-slate-100">Insight Lens</strong> at
+          the top provides an executive digest, and the <strong className="text-slate-100">agreement
+          matrix</strong> shows where methods converge.
         </p>
         <p className="mt-2 text-xs text-slate-400">
-          Looking for the method details?{" "}
+          The default "deboilerplated" lens strips recurring legal boilerplate for the
+          cleanest signal. Switch lenses to compare raw vs. cleaned results.{" "}
           <a
             className="text-sky-300 underline decoration-sky-300/60 underline-offset-2"
             href={withBase("methodology")}
           >
-            Open methodology
+            Full methodology
           </a>
-          . LLM detector cards also include copy-ready rerun instructions.
         </p>
       </div>
 
       <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
         <div className="rounded-lg border border-white/10 bg-slate-900/50 p-3">
-          <div className="text-xs uppercase tracking-wide text-slate-400">Selected pair</div>
+          <div className="text-xs uppercase tracking-wide text-slate-400">Filing years compared</div>
           <div className="mt-1 text-sm font-semibold text-slate-100">{selectedPairLabel}</div>
         </div>
         <div className="rounded-lg border border-white/10 bg-slate-900/50 p-3">
-          <div className="text-xs uppercase tracking-wide text-slate-400">Lens</div>
-          <div className="mt-1 text-sm font-semibold text-slate-100">{lens}</div>
+          <div className="text-xs uppercase tracking-wide text-slate-400">Cleaning lens</div>
+          <div className="mt-1 text-sm font-semibold text-slate-100">{lens === "deboilerplated" ? "Deboilerplated (recommended)" : lens === "raw" ? "Raw text" : lens === "stage1_clean" ? "Stage 1 cleaned" : lens === "structure_aware" ? "Structure-aware" : lens}</div>
         </div>
         <div className="rounded-lg border border-white/10 bg-slate-900/50 p-3">
-          <div className="text-xs uppercase tracking-wide text-slate-400">Methods selected</div>
-          <div className="mt-1 text-sm font-semibold text-slate-100">{selectedDetectors.length}</div>
+          <div className="text-xs uppercase tracking-wide text-slate-400">Active methods</div>
+          <div className="mt-1 text-sm font-semibold text-slate-100">{selectedDetectors.length} of {DETECTOR_CATALOG.length}</div>
         </div>
         <div className="rounded-lg border border-white/10 bg-slate-900/50 p-3">
-          <div className="text-xs uppercase tracking-wide text-slate-400">Selected methods available</div>
+          <div className="text-xs uppercase tracking-wide text-slate-400">Results available</div>
           <div className="mt-1 text-sm font-semibold text-slate-100">
-            {selectedAvailableDetectorCount}/{selectedDetectors.length}
+            {selectedAvailableDetectorCount} of {selectedDetectors.length} methods
           </div>
         </div>
       </div>
@@ -1601,27 +1228,19 @@ export default function LabPanel({
 
           <div className="rounded-md border border-sky-300/20 bg-sky-400/10 px-3 py-2 text-sm text-slate-100">
             <div className="flex flex-wrap items-center justify-between gap-2">
-              <div className="font-medium text-sky-100">Compare status</div>
+              <div className="font-medium text-sky-100">AI model comparison</div>
               <a
                 className="text-xs text-sky-200 underline decoration-sky-300/60 underline-offset-2 hover:text-sky-100"
-                href="#lab-llm-compare"
+                href="#lab-outline-compare"
               >
-                Jump to quick diff
+                Jump to outline compare
               </a>
             </div>
             <div className="mt-1 text-xs text-slate-200">
-              A/B availability: {llmCampaignOptions.length > 1 ? "A and B active" : "A only"} | Methods selected:{" "}
-              {selectedDetectors.length}
+              {llmCampaignOptions.length > 1
+                ? "Two AI models active — their results are compared side by side in the outline compare and risk narrative sections."
+                : "One AI model active. Add a second for side-by-side comparison."}
             </div>
-            {llmCompareSummary ? (
-              <div className="mt-1 text-xs text-slate-200">
-                Top read: {llmCompareSummary.detectorLabel} - {llmCompareSummary.readText}
-              </div>
-            ) : (
-              <div className="mt-1 text-xs text-slate-300">
-                Quick diff appears after selecting one or more LLM detector cards.
-              </div>
-            )}
           </div>
 
           <div>
@@ -1683,26 +1302,14 @@ export default function LabPanel({
               </div>
             </div>
             <div className="mt-2 rounded-md border border-white/10 bg-slate-950/35 px-3 py-2 text-sm text-slate-200">
-              Mode: {modeLabel} | Pair: {selectedPairLabel} | Lens: {lens} | Methods selected:{" "}
-              {selectedDetectors.length} | Expanded: {expandedCount}/{methodCards.length}
+              Reading mode: {modeLabel} | Filing years: {selectedPairLabel} | {selectedDetectors.length} methods active | {expandedCount} of {methodCards.length} expanded
             </div>
-            {llmCompareSummary ? (
-              <div className="mt-2 rounded-md border border-sky-300/20 bg-sky-400/10 px-3 py-2 text-xs text-slate-100">
-                Quick diff summary: {llmCompareSummary.detectorLabel} - {llmCompareSummary.readText}
-              </div>
-            ) : null}
             <div className="mt-2 rounded-md border border-white/10 bg-slate-950/35 px-3 py-2 text-xs text-slate-200">
-              Deterministic contrast: {deterministicContrastSummary}
+              {methodCoverageSummary}
             </div>
             <div className="mt-2 flex flex-wrap items-center gap-3 text-xs text-slate-300">
-              <a className="underline decoration-white/30 underline-offset-2 hover:text-slate-100" href="#lab-insight-lens">
-                Insight lens
-              </a>
-              <a className="underline decoration-white/30 underline-offset-2 hover:text-slate-100" href="#lab-outline-compare">
-                Outline compare
-              </a>
-              <a className="underline decoration-white/30 underline-offset-2 hover:text-slate-100" href="#lab-agreement">
-                Agreement
+              <a className="underline decoration-white/30 underline-offset-2 hover:text-slate-100" href="#lab-risk-narrative">
+                Risk narrative
               </a>
               <a className="underline decoration-white/30 underline-offset-2 hover:text-slate-100" href="#lab-core-methods">
                 Core methods
@@ -1710,49 +1317,19 @@ export default function LabPanel({
               <a className="underline decoration-white/30 underline-offset-2 hover:text-slate-100" href="#lab-structure-methods">
                 Structure methods
               </a>
-              <a className="underline decoration-white/30 underline-offset-2 hover:text-slate-100" href="#lab-llm-compare">
-                LLM compare
+              <a className="underline decoration-white/30 underline-offset-2 hover:text-slate-100" href="#lab-agreement">
+                Agreement
+              </a>
+              <a className="underline decoration-white/30 underline-offset-2 hover:text-slate-100" href="#lab-outline-compare">
+                Outline compare
+              </a>
+              <a className="underline decoration-white/30 underline-offset-2 hover:text-slate-100" href="#lab-insight-lens">
+                Insight lens
               </a>
             </div>
             {isDeepMode ? (
               <div className="mt-2 flex flex-wrap items-center gap-3 text-xs text-slate-300">
-                <span className="uppercase tracking-wide text-slate-400">Deep sections:</span>
-                <a
-                  className="underline decoration-white/30 underline-offset-2 hover:text-slate-100"
-                  href="#lab-insight-lens"
-                >
-                  Insight lens
-                </a>
-                <a
-                  className="underline decoration-white/30 underline-offset-2 hover:text-slate-100"
-                  href="#lab-outline-compare"
-                >
-                  Outline compare
-                </a>
-                <a
-                  className="underline decoration-white/30 underline-offset-2 hover:text-slate-100"
-                  href="#lab-agreement"
-                >
-                  Agreement
-                </a>
-                <a
-                  className="underline decoration-white/30 underline-offset-2 hover:text-slate-100"
-                  href="#lab-core-methods"
-                >
-                  Core methods
-                </a>
-                <a
-                  className="underline decoration-white/30 underline-offset-2 hover:text-slate-100"
-                  href="#lab-structure-methods"
-                >
-                  Structure methods
-                </a>
-                <a
-                  className="underline decoration-white/30 underline-offset-2 hover:text-slate-100"
-                  href="#lab-llm-compare"
-                >
-                  LLM compare
-                </a>
+                <span className="uppercase tracking-wide text-slate-400">Also in deep mode:</span>
                 <a
                   className="underline decoration-white/30 underline-offset-2 hover:text-slate-100"
                   href="#lab-method-context"
@@ -1834,6 +1411,146 @@ export default function LabPanel({
         </div>
       </div>
 
+      {selectedCase && (selectedLlmCampaignA || selectedLlmCampaignB) ? (
+        <RiskNarrativeSummary
+          ticker={ticker}
+          yearFrom={selectedCase.year_from}
+          yearTo={selectedCase.year_to}
+          modelALabel={(selectedCampaignA?.display_name ?? selectedLlmCampaignA) || "Model A"}
+          modelBLabel={(selectedCampaignB?.display_name ?? selectedLlmCampaignB) || "Model B"}
+          modelARuntime={selectedLlmCampaignA ? outlineOutputs[selectedLlmCampaignA] ?? null : null}
+          modelBRuntime={selectedLlmCampaignB ? outlineOutputs[selectedLlmCampaignB] ?? null : null}
+          modelAStructured={selectedLlmCampaignA ? structuredOutlineOutputs[selectedLlmCampaignA] ?? null : null}
+          modelBStructured={selectedLlmCampaignB ? structuredOutlineOutputs[selectedLlmCampaignB] ?? null : null}
+        />
+      ) : null}
+
+      <div id="lab-method-context" className="space-y-6">
+        {groupedMethodCards.map((group) => (
+          <section key={group.id} id={group.sectionId} className="space-y-3">
+            <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-300">
+              {group.label}
+            </h3>
+            <div className="grid gap-4">
+              {group.cards.map((detector) => (
+                <MethodCard
+                  key={detector.cardKey}
+                  detectorId={detector.id}
+                  title={detector.label}
+                  description={detector.description}
+                  llmCampaign={null}
+                  output={outputs[detector.cardKey] ?? null}
+                  debugPath={outputDebugPaths[detector.cardKey] ?? null}
+                  debugInfo={outputDebugInfo[detector.cardKey] ?? null}
+                  isLoading={isLoadingOutputs}
+                  analysisMode={analysisMode}
+                  methodProfile={methodProfilesByDetector[detector.id] ?? null}
+                  autoOpenContext={isDeepMode && deepAutoOpenContextKeys.has(detector.cardKey)}
+                  isExpanded={
+                    expandedCards[buildCardExpansionKey(expansionScopeKey, detector.cardKey)] ??
+                    false
+                  }
+                  onToggleExpanded={() => handleToggleCardExpanded(detector.cardKey)}
+                  emptyMessage="No output available for this method, lens, and model combination. Try the deboilerplated lens or a different ticker for available results."
+                />
+              ))}
+            </div>
+          </section>
+        ))}
+      </div>
+
+      <div id="lab-agreement" className="space-y-4">
+        <div>
+          <h3 className="text-lg font-semibold text-slate-100">Cross-method agreement</h3>
+          <p className="text-xs text-slate-400">
+            Shows how much different analytical methods agree on which risk themes changed.
+            High agreement (green) means convergent findings; low agreement (amber) means the methods detected different signals.
+          </p>
+        </div>
+        <AgreementMatrix output={agreementOutput} />
+        {!agreementOutput ? (
+          <div className="space-y-2 rounded-md border border-amber-400/30 bg-amber-400/10 p-3 text-xs text-slate-200">
+            <p className="font-semibold text-amber-100">Missing artifact</p>
+            {agreementDebugInfo?.expectedPath ? (
+              <p className="break-all text-[11px] text-slate-100">
+                Expected path: {agreementDebugInfo.expectedPath}
+              </p>
+            ) : null}
+            {agreementDebugInfo?.requestedUrl ? (
+              <p className="break-all text-[11px] text-slate-300">
+                Requested URL: {agreementDebugInfo.requestedUrl}
+              </p>
+            ) : null}
+            {agreementDebugInfo?.errorText ? (
+              <p className="text-[11px] text-amber-100">{agreementDebugInfo.errorText}</p>
+            ) : null}
+            {agreementDebugPath ? (
+              <p className="break-all text-[11px] text-slate-300">{agreementDebugPath}</p>
+            ) : null}
+            {agreementDebugInfo ? (
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={handleCopyAgreementDebug}
+                  className="rounded-md border border-white/20 bg-slate-900/60 px-2 py-1 text-[11px] text-slate-100 transition hover:border-white/40"
+                >
+                  Copy debug info
+                </button>
+                {agreementCopyState === "copied" ? (
+                  <span className="text-[11px] text-emerald-300">Copied.</span>
+                ) : null}
+                {agreementCopyState === "failed" ? (
+                  <span className="text-[11px] text-rose-300">Copy failed.</span>
+                ) : null}
+              </div>
+            ) : null}
+          </div>
+        ) : null}
+      </div>
+
+      {selectedLlmCampaignA || selectedLlmCampaignB ? (
+        <OutlineComparePanel
+          modelALabel={(selectedCampaignA?.display_name ?? selectedLlmCampaignA) || "Model A"}
+          modelBLabel={(selectedCampaignB?.display_name ?? selectedLlmCampaignB) || "Model B"}
+          modelAOutput={
+            selectedLlmCampaignA ? outlineOutputs[selectedLlmCampaignA] ?? null : null
+          }
+          modelBOutput={
+            selectedLlmCampaignB ? outlineOutputs[selectedLlmCampaignB] ?? null : null
+          }
+          modelADebug={
+            selectedLlmCampaignA ? outlineDebugInfo[selectedLlmCampaignA] ?? null : null
+          }
+          modelBDebug={
+            selectedLlmCampaignB ? outlineDebugInfo[selectedLlmCampaignB] ?? null : null
+          }
+          modelADebugPath={
+            selectedLlmCampaignA ? outlineDebugPaths[selectedLlmCampaignA] ?? null : null
+          }
+          modelBDebugPath={
+            selectedLlmCampaignB ? outlineDebugPaths[selectedLlmCampaignB] ?? null : null
+          }
+          modelAStructuredOutput={
+            selectedLlmCampaignA ? structuredOutlineOutputs[selectedLlmCampaignA] ?? null : null
+          }
+          modelBStructuredOutput={
+            selectedLlmCampaignB ? structuredOutlineOutputs[selectedLlmCampaignB] ?? null : null
+          }
+          modelAStructuredDebug={
+            selectedLlmCampaignA ? structuredOutlineDebugInfo[selectedLlmCampaignA] ?? null : null
+          }
+          modelBStructuredDebug={
+            selectedLlmCampaignB ? structuredOutlineDebugInfo[selectedLlmCampaignB] ?? null : null
+          }
+          modelAStructuredDebugPath={
+            selectedLlmCampaignA ? structuredOutlineDebugPaths[selectedLlmCampaignA] ?? null : null
+          }
+          modelBStructuredDebugPath={
+            selectedLlmCampaignB ? structuredOutlineDebugPaths[selectedLlmCampaignB] ?? null : null
+          }
+        />
+      ) : null}
+
       {selectedLlmCampaignA || selectedLlmCampaignB ? (
         selectedCompareCampaignIds.length > 0 && !hasAnyInsightOutput ? (
           <section
@@ -1882,187 +1599,6 @@ export default function LabPanel({
           />
         )
       ) : null}
-
-      {selectedLlmCampaignA || selectedLlmCampaignB ? (
-        <OutlineComparePanel
-          modelALabel={(selectedCampaignA?.display_name ?? selectedLlmCampaignA) || "Model A"}
-          modelBLabel={(selectedCampaignB?.display_name ?? selectedLlmCampaignB) || "Model B"}
-          modelAOutput={
-            selectedLlmCampaignA ? outlineOutputs[selectedLlmCampaignA] ?? null : null
-          }
-          modelBOutput={
-            selectedLlmCampaignB ? outlineOutputs[selectedLlmCampaignB] ?? null : null
-          }
-          modelADebug={
-            selectedLlmCampaignA ? outlineDebugInfo[selectedLlmCampaignA] ?? null : null
-          }
-          modelBDebug={
-            selectedLlmCampaignB ? outlineDebugInfo[selectedLlmCampaignB] ?? null : null
-          }
-          modelADebugPath={
-            selectedLlmCampaignA ? outlineDebugPaths[selectedLlmCampaignA] ?? null : null
-          }
-          modelBDebugPath={
-            selectedLlmCampaignB ? outlineDebugPaths[selectedLlmCampaignB] ?? null : null
-          }
-          modelAStructuredOutput={
-            selectedLlmCampaignA ? structuredOutlineOutputs[selectedLlmCampaignA] ?? null : null
-          }
-          modelBStructuredOutput={
-            selectedLlmCampaignB ? structuredOutlineOutputs[selectedLlmCampaignB] ?? null : null
-          }
-          modelAStructuredDebug={
-            selectedLlmCampaignA ? structuredOutlineDebugInfo[selectedLlmCampaignA] ?? null : null
-          }
-          modelBStructuredDebug={
-            selectedLlmCampaignB ? structuredOutlineDebugInfo[selectedLlmCampaignB] ?? null : null
-          }
-          modelAStructuredDebugPath={
-            selectedLlmCampaignA ? structuredOutlineDebugPaths[selectedLlmCampaignA] ?? null : null
-          }
-          modelBStructuredDebugPath={
-            selectedLlmCampaignB ? structuredOutlineDebugPaths[selectedLlmCampaignB] ?? null : null
-          }
-        />
-      ) : null}
-
-      <div id="lab-agreement" className="space-y-4">
-        <div>
-          <h3 className="text-lg font-semibold text-slate-100">Agreement</h3>
-          <p className="text-xs text-slate-400">
-            Rank-biased overlap across available ranked lists for this case.
-          </p>
-        </div>
-        <AgreementMatrix output={agreementOutput} />
-        {!agreementOutput ? (
-          <div className="space-y-2 rounded-md border border-amber-400/30 bg-amber-400/10 p-3 text-xs text-slate-200">
-            <p className="font-semibold text-amber-100">Missing artifact</p>
-            {agreementDebugInfo?.expectedPath ? (
-              <p className="break-all text-[11px] text-slate-100">
-                Expected path: {agreementDebugInfo.expectedPath}
-              </p>
-            ) : null}
-            {agreementDebugInfo?.requestedUrl ? (
-              <p className="break-all text-[11px] text-slate-300">
-                Requested URL: {agreementDebugInfo.requestedUrl}
-              </p>
-            ) : null}
-            {agreementDebugInfo?.errorText ? (
-              <p className="text-[11px] text-amber-100">{agreementDebugInfo.errorText}</p>
-            ) : null}
-            {agreementDebugPath ? (
-              <p className="break-all text-[11px] text-slate-300">{agreementDebugPath}</p>
-            ) : null}
-            {agreementDebugInfo ? (
-              <div className="flex items-center gap-2">
-                <button
-                  type="button"
-                  onClick={handleCopyAgreementDebug}
-                  className="rounded-md border border-white/20 bg-slate-900/60 px-2 py-1 text-[11px] text-slate-100 transition hover:border-white/40"
-                >
-                  Copy debug info
-                </button>
-                {agreementCopyState === "copied" ? (
-                  <span className="text-[11px] text-emerald-300">Copied.</span>
-                ) : null}
-                {agreementCopyState === "failed" ? (
-                  <span className="text-[11px] text-rose-300">Copy failed.</span>
-                ) : null}
-              </div>
-            ) : null}
-          </div>
-        ) : null}
-      </div>
-
-      {llmCompareRows.length ? (
-        <div id="lab-llm-compare" className="rounded-xl border border-sky-300/25 bg-sky-400/10 p-4">
-          <h3 className="text-sm font-semibold text-sky-100">LLM A/B quick diff</h3>
-          <p className="mt-1 text-[11px] text-slate-200">
-            Deltas are Model A minus Model B for the selected pair/lens. Confidence band deltas are
-            ordinal (0.25/0.50/0.75), not calibrated probabilities.
-          </p>
-          <div className="mt-3 overflow-x-auto">
-            <table className="min-w-full text-left text-[11px] text-slate-100">
-              <thead className="text-slate-300">
-                <tr>
-                  <th className="pr-4">Detector</th>
-                  <th className="pr-4">Band delta (A-B)</th>
-                  <th className="pr-4">Evidence delta</th>
-                  <th className="pr-4">Citation delta</th>
-                  <th>Evidence overlap</th>
-                  <th className="pl-4">Read</th>
-                </tr>
-              </thead>
-              <tbody>
-                {llmCompareRows.map((row) => (
-                  <tr key={row.detectorId} className="border-t border-white/10">
-                    <td className="py-1 pr-4">{row.detectorLabel}</td>
-                    <td className="py-1 pr-4">
-                      {row.confidenceDelta === null ? "-" : row.confidenceDelta.toFixed(2)}
-                    </td>
-                    <td className="py-1 pr-4">{row.evidenceDelta}</td>
-                    <td className="py-1 pr-4">
-                      {row.citationDelta === null ? "-" : row.citationDelta}
-                    </td>
-                    <td className="py-1">
-                      {row.overlapPercent === null ? "-" : `${row.overlapPercent.toFixed(0)}%`}
-                    </td>
-                    <td className="py-1 pl-4 text-slate-200">{row.readText}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      ) : null}
-
-      <div id="lab-method-context" className="space-y-6">
-        {groupedMethodCards.map((group) => (
-          <section key={group.id} id={group.sectionId} className="space-y-3">
-            <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-300">
-              {group.label}
-            </h3>
-            <div className="grid gap-4">
-              {group.cards.map((detector) => (
-                <MethodCard
-                  key={detector.cardKey}
-                  detectorId={detector.id}
-                  title={
-                    detector.campaign
-                      ? `${detector.label} - ${detector.campaign.display_name}`
-                      : detector.label
-                  }
-                  description={detector.description}
-                  llmCampaign={
-                    detector.campaign
-                      ? {
-                          campaignId: detector.campaign.campaign_id,
-                          campaignDisplayName: detector.campaign.display_name,
-                          modelProvider: detector.campaign.model_provider,
-                          modelName: detector.campaign.model_name,
-                          instructionsAsset: detector.campaign.instructions_asset,
-                        }
-                      : null
-                  }
-                  output={outputs[detector.cardKey] ?? null}
-                  debugPath={outputDebugPaths[detector.cardKey] ?? null}
-                  debugInfo={outputDebugInfo[detector.cardKey] ?? null}
-                  isLoading={isLoadingOutputs}
-                  analysisMode={analysisMode}
-                  methodProfile={methodProfilesByDetector[detector.id] ?? null}
-                  autoOpenContext={isDeepMode && deepAutoOpenContextKeys.has(detector.cardKey)}
-                  isExpanded={
-                    expandedCards[buildCardExpansionKey(expansionScopeKey, detector.cardKey)] ??
-                    false
-                  }
-                  onToggleExpanded={() => handleToggleCardExpanded(detector.cardKey)}
-                  emptyMessage="No lab output for this detector/lens yet."
-                />
-              ))}
-            </div>
-          </section>
-        ))}
-      </div>
     </section>
   )
 }

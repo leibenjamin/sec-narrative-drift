@@ -553,9 +553,27 @@ export async function findLabLlmVariant(
     if (variant.detector_id !== detectorId) continue
     if (variant.lens !== lens) continue
     if (variant.campaign_id !== campaignId) continue
+    if (variant.present === false || variant.valid === false) return null
     return variant
   }
   return null
+}
+
+export async function hasAnyCampaignDetectorData(
+  entry: Pick<LabCase, "ticker" | "section" | "year_from" | "year_to">,
+  lens: LabCleaningLens,
+  campaignId: string
+): Promise<boolean> {
+  const index = await loadLabLlmVariantsIndex()
+  for (const variant of index.variants) {
+    if (variant.ticker.toUpperCase() !== entry.ticker.toUpperCase()) continue
+    if (variant.section !== entry.section) continue
+    if (variant.year_from !== entry.year_from || variant.year_to !== entry.year_to) continue
+    if (variant.lens !== lens) continue
+    if (variant.campaign_id !== campaignId) continue
+    if (variant.present === true && variant.valid === true) return true
+  }
+  return false
 }
 
 function deriveTickerRelativeOutputPath(rawRepoPath: string, ticker: string): string {
@@ -589,7 +607,11 @@ export async function findLabOutlineCompareArtifactForCampaign(
     if (variant.year_from !== entry.year_from || variant.year_to !== entry.year_to) continue
     if (variant.lens !== lens) continue
     if (variant.campaign_id !== campaignId) continue
-    if (variant.outline_compare_expected_repo_path && variant.outline_compare_request_url) {
+    if (
+      variant.outline_compare_present !== false &&
+      variant.outline_compare_expected_repo_path &&
+      variant.outline_compare_request_url
+    ) {
       variantWithMetadata = variant
       break
     }
@@ -634,6 +656,7 @@ export async function findLabOutlineCompareInsightArtifactForCampaign(
     if (variant.campaign_id !== campaignId) continue
 
     if (
+      variant.outline_compare_insight_present !== false &&
       variant.outline_compare_insight_expected_repo_path &&
       variant.outline_compare_insight_request_url
     ) {
@@ -646,7 +669,7 @@ export async function findLabOutlineCompareInsightArtifactForCampaign(
       }
     }
 
-    if (variant.outline_compare_expected_repo_path) {
+    if (variant.outline_compare_present !== false && variant.outline_compare_expected_repo_path) {
       const projectedRepoPath = projectOutlineRuntimePathToInsight(variant.outline_compare_expected_repo_path)
       if (!projectedRepoPath) continue
       const projectedRequestPath = variant.outline_compare_request_url
