@@ -600,7 +600,7 @@ def main(argv: Optional[list[str]] = None) -> int:
         "High boilerplate hero: max boilerplate_score, require no missing_text.",
         "Structure hero: max structure_score, require no missing_text.",
         "Meaningful hero: maximize drift_score * (1 - boilerplate_score) * term_signal_norm, exclude missing_text and missing_term_shift.",
-        "Most recent hero: newest adjacent pair available (prefer 2024-2025 if present).",
+        "Most recent hero: newest adjacent pair available from current filing coverage.",
         "Ensure at least 3 hero pairs per ticker; fill with highest overall_score.",
         "Cap hero pairs at 5 per ticker.",
         "Scores computed on raw lens; proxy metrics used when lab outputs missing.",

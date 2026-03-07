@@ -19,7 +19,7 @@ This file is intentionally minimal and exists only to redirect older queue/check
 
 ## Why This Queue Doc Is Legacy
 - Earlier queue docs centered detector-first run-manifest flow.
-- Current canonical flow is master-first (`llm_outline_compare_v1`) with deterministic projection for legacy detector envelopes.
+- Current canonical flow is master-first (`llm_outline_compare_structured`) with deterministic projection to `llm_outline_compare_runtime` and then legacy detector envelopes.
 - Starter hardening and strict exact-path single-target validation are now enforced at job level.
 
 ## Legacy Scripts (Archive/Archaeology)

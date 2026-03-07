@@ -1,4 +1,4 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 import argparse
 import json
@@ -12,6 +12,7 @@ from lab_output_tracks import (  # type: ignore
     LLM_CAMPAIGNS,
     LLM_DETECTORS,
     canonical_outline_compare_relative_path,
+    canonical_outline_insight_relative_path,
     canonical_outline_research_relative_path,
     canonical_output_relative_path,
 )
@@ -109,8 +110,9 @@ def _validate_outline_compare_payload(
     lens: str,
     campaign_provider: str,
     campaign_model: str,
+    expected_artifact_id: str = "llm_outline_compare_runtime",
 ) -> bool:
-    if payload.get("artifact_id") != "llm_outline_compare_v1":
+    if payload.get("artifact_id") != expected_artifact_id:
         return False
     if payload.get("cleaning_lens") != lens:
         return False
@@ -272,9 +274,41 @@ def build_variant_rows(
                                     lens=lens,
                                     campaign_provider=campaign.model_provider,
                                     campaign_model=campaign.model_name,
+                                    expected_artifact_id="llm_outline_compare_runtime",
                                 )
                         except Exception:
                             outline_compare_valid = False
+
+                    outline_compare_insight_rel = canonical_outline_insight_relative_path(
+                        ticker=ticker,
+                        section=section,
+                        year_from=year_from,
+                        year_to=year_to,
+                        cleaning_lens=lens,
+                        source_id="edgar",
+                        track_slug=campaign.track_slug,
+                    )
+                    outline_compare_insight_repo_path = (
+                        f"public/data/sec_narrative_drift_lab/{outline_compare_insight_rel}"
+                    )
+                    outline_compare_insight_request_url = _request_url(ticker, outline_compare_insight_rel)
+                    outline_compare_insight_abs_path = REPO_ROOT / outline_compare_insight_repo_path
+                    outline_compare_insight_present = outline_compare_insight_abs_path.exists()
+                    outline_compare_insight_valid = False
+                    if outline_compare_insight_present:
+                        try:
+                            outline_insight_payload_raw = read_json(outline_compare_insight_abs_path)
+                            outline_insight_payload = as_dict(outline_insight_payload_raw)
+                            if outline_insight_payload is not None:
+                                outline_compare_insight_valid = _validate_outline_compare_payload(
+                                    outline_insight_payload,
+                                    lens=lens,
+                                    campaign_provider=campaign.model_provider,
+                                    campaign_model=campaign.model_name,
+                                    expected_artifact_id="llm_outline_compare_insight",
+                                )
+                        except Exception:
+                            outline_compare_insight_valid = False
 
                     outline_research_rel = canonical_outline_research_relative_path(
                         ticker=ticker,
@@ -373,6 +407,10 @@ def build_variant_rows(
                             "outline_compare_valid": outline_compare_valid,
                             "outline_compare_expected_repo_path": outline_compare_repo_path,
                             "outline_compare_request_url": outline_compare_request_url,
+                            "outline_compare_insight_present": outline_compare_insight_present,
+                            "outline_compare_insight_valid": outline_compare_insight_valid,
+                            "outline_compare_insight_expected_repo_path": outline_compare_insight_repo_path,
+                            "outline_compare_insight_request_url": outline_compare_insight_request_url,
                             "outline_research_present": outline_research_present,
                             "outline_research_valid": outline_research_valid,
                             "outline_research_expected_repo_path": outline_research_repo_path,
@@ -491,3 +529,5 @@ def main(argv: Optional[list[str]] = None) -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+
+

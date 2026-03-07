@@ -10,7 +10,7 @@ Use master artifacts as the primary execution unit:
 - `scripts/lab_validate_llm_master_outputs.py`
 - `scripts/lab_audit_master_output_quality.py`
 
-Compatibility-only detector artifacts (`det_llm_delta_brief_v1`, `det_llm_excerpt_picker_v1`) are produced by deterministic projection from `llm_outline_compare_v1` and are not the primary manual generation unit.
+Compatibility-only detector artifacts (`det_llm_delta_brief_v1`, `det_llm_excerpt_picker_v1`) are produced by deterministic projection from `llm_outline_compare_runtime` (which is projected from `llm_outline_compare_structured` in the production lane) and are not the primary manual generation unit.
 
 ## Campaign-Aware Setup
 1. Choose campaign id from `scripts/lab_output_tracks.py`.

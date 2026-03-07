@@ -1,4 +1,4 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 import argparse
 import json
@@ -25,6 +25,7 @@ sys.path.append(str(Path(__file__).resolve().parent))
 from lab_llm_precompute_utils import BundlePaths, resolve_bundle_paths  # type: ignore
 from lab_output_tracks import (  # type: ignore
     DEFAULT_PRIMARY_LLM_CAMPAIGN_ID,
+    EXECUTION_VENUE_CHATGPT_DESKTOP,
     canonical_output_relative_path,
     get_llm_campaign,
 )
@@ -95,6 +96,14 @@ def _assert_markers_absent(label: str, text: str, markers: list[str]) -> None:
         )
 
 
+
+def _extract_validate_pairs(starters_text: str) -> set[tuple[str, str]]:
+    pattern = re.compile(
+        r'lab_validate_llm_master_outputs\.py[^\n]*--artifact-id "([^"]+)"[^\n]*--target-field "([^"]+)"'
+    )
+    return {(artifact_id, target_field) for artifact_id, target_field in pattern.findall(starters_text)}
+
+
 def _default_instruction_report_path(campaign_id: str) -> Path:
     return REPO_ROOT / "reports" / f"lab_project_instructions_{campaign_id}.txt"
 
@@ -163,8 +172,11 @@ def build_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument(
         "--campaign-id",
-        default=DEFAULT_PRIMARY_LLM_CAMPAIGN_ID,
-        help="Campaign id from scripts/lab_output_tracks.py.",
+        default="",
+        help=(
+            "Campaign id from scripts/lab_output_tracks.py. If omitted, auto-detect from "
+            "--master-manifest campaign.campaign_id; falls back to primary campaign."
+        ),
     )
     parser.add_argument(
         "--prompt-templates",
@@ -223,6 +235,31 @@ def build_parser() -> argparse.ArgumentParser:
     return parser
 
 
+def _resolve_campaign_id(raw_campaign_id: str, master_manifest_arg: str) -> str:
+    campaign_id = raw_campaign_id.strip()
+    if campaign_id:
+        return campaign_id
+
+    manifest_path = Path(master_manifest_arg)
+    if not manifest_path.is_absolute():
+        manifest_path = REPO_ROOT / manifest_path
+    if manifest_path.exists():
+        try:
+            payload = json.loads(manifest_path.read_text(encoding="utf-8-sig"))
+        except json.JSONDecodeError:
+            payload = None
+        if isinstance(payload, dict):
+            typed_payload = cast(dict[str, object], payload)
+            campaign = typed_payload.get("campaign")
+            if isinstance(campaign, dict):
+                typed_campaign = cast(dict[str, object], campaign)
+                detected = typed_campaign.get("campaign_id")
+                if isinstance(detected, str) and detected.strip():
+                    return detected.strip()
+
+    return DEFAULT_PRIMARY_LLM_CAMPAIGN_ID
+
+
 def check_canonical_docs(doc_index_path: Path, remaining_plan_path: Path, comparison_doc_path: Path) -> None:
     if not doc_index_path.exists():
         raise SystemExit(f"Missing canonical doc index: {doc_index_path}")
@@ -263,7 +300,7 @@ def check_canonical_docs(doc_index_path: Path, remaining_plan_path: Path, compar
         [
             "`openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27`",
             "`openai_chatgpt52ext_agent_fullsec_real_2026-02-27`",
-            "`llm_outline_compare_v1`",
+            "`llm_outline_compare_runtime`",
             "`docs/lab/08_remaining_work_plan_history.md`",
         ],
     )
@@ -303,7 +340,7 @@ def check_canonical_docs(doc_index_path: Path, remaining_plan_path: Path, compar
     )
 
 
-def _check_master_starters(master_starters_path: Path, master_manifest_path: Path, campaign_slug: str) -> None:
+def _check_master_starters(master_starters_path: Path, master_manifest_path: Path, campaign_slug: str, execution_venue: str) -> None:
     if not master_starters_path.exists():
         raise SystemExit(f"Missing master starters file: {master_starters_path}")
     if not master_manifest_path.exists():
@@ -327,23 +364,190 @@ def _check_master_starters(master_starters_path: Path, master_manifest_path: Pat
             "\"expected_pair_sha256\":",
             "\"expected_prev_sha256\":",
             "\"expected_curr_sha256\":",
-            "\"output_path_v2\":",
-            "\"projected_output_path_v1\":",
-            "year_payload.texts.paragraphs",
+            "\"projected_output_path_runtime\":",
+            "texts.paragraphs",
             "preflight input lock mismatch",
-            "lab_project_master_v2_to_v1.py",
-            "--artifact-id \"llm_outline_compare_v2\"",
-            "--artifact-id \"llm_outline_compare_v1\"",
-            "--target-field \"projected_master_output_v1\"",
+            "--artifact-id \"llm_outline_compare_runtime\"",
+            "--target-field \"projected_master_output_runtime\"",
             "--only-mode \"exact_path\"",
             "--expect-target-count 1",
             "--fail-if-target-count-mismatch",
             "lab_audit_master_output_quality.py --output",
+            "--strict-depth",
             "python -c \"import json, pathlib;",
+        ],
+    )
+    _assert_markers_absent(
+        "master_starters",
+        starters_text,
+        [
+            "year_payload.texts.paragraphs",
         ],
     )
     if "> NUL" in starters_text:
         raise SystemExit("master_starters includes shell-fragile `> NUL` redirection.")
+
+    format_match = re.search(r"- output format: `([^`]+)`", starters_text)
+    starter_format = format_match.group(1) if format_match else ""
+    is_v5 = starter_format == "vscode_autowrite_insight_exp"
+    is_v4 = starter_format == "vscode_autowrite_structured_prod"
+    is_chatgpt_desktop = execution_venue == EXECUTION_VENUE_CHATGPT_DESKTOP
+
+    validate_pairs = _extract_validate_pairs(starters_text)
+    if is_v5:
+        if is_chatgpt_desktop:
+            _assert_markers_present(
+                "master_starters_v5_chatgpt_desktop",
+                starters_text,
+                [
+                    "COPY FROM NEXT LINE THROUGH END_STARTER AND PASTE INTO A FRESH CHATGPT DESKTOP THREAD:",
+                    "Execution mode: MANUAL_CHATGPT_DESKTOP_INSIGHT_EXP",
+                    "INPUT_ATTACHMENTS (attach before generation):",
+                    "LOCAL_POSTCHECK (run in workspace terminal after saving model JSON):",
+                    "Operator save target for insight JSON (you cannot write files directly from this chat):",
+                    "\"output_path_insight\":",
+                    "--artifact-id \"llm_outline_compare_insight\"",
+                    "--target-field \"projected_master_output_structured\"",
+                    "lab_project_master_v3_to_v2.py",
+                    "Build `llm_outline_compare_insight`",
+                    "`executive_digest`",
+                    "`insight_cards`",
+                    "`evidence_map`",
+                    "`ui_contract`",
+                ],
+            )
+            _assert_markers_absent(
+                "master_starters_v5_chatgpt_desktop",
+                starters_text,
+                [
+                    "You are Codex operating inside this workspace. Execute this job end-to-end.",
+                    "You are ChatGPT running a manual desktop job for this workspace.",
+                    "1. Reads pair/year files directly from workspace",
+                    "PRECHECK_OK ticker=",
+                    "COPY FROM NEXT LINE THROUGH END_STARTER AND PASTE INTO A FRESH CODEX THREAD:",
+                    "Execution mode: AUTOWRITE_VALIDATE_INSIGHT_EXP",
+                    "Windows-safe write guardrail (required for large artifacts):",
+                    "Write output JSON directly to this structured path:",
+                    "Write output JSON directly to this insight path:",
+                    "Build `llm_outline_compare_structured`",
+                ],
+            )
+        else:
+            _assert_markers_present(
+                "master_starters_v5",
+                starters_text,
+                [
+                    "Execution mode: AUTOWRITE_VALIDATE_INSIGHT_EXP",
+                    "\"output_path_insight\":",
+                    "--artifact-id \"llm_outline_compare_insight\"",
+                    "--target-field \"projected_master_output_structured\"",
+                    "lab_project_master_v3_to_v2.py",
+                    "Build `llm_outline_compare_insight`",
+                    "`executive_digest`",
+                    "`insight_cards`",
+                    "`evidence_map`",
+                    "`ui_contract`",
+                    "Windows-safe write guardrail (required for large artifacts):",
+                    "Do not use one-shot oversized inline write commands for large JSON writes.",
+                    "temporary workspace-relative generator script path",
+                    "`Set-Content` + `Add-Content`",
+                ],
+            )
+            _assert_markers_absent(
+                "master_starters_v5",
+                starters_text,
+                [
+                    "Build `llm_outline_compare_structured`",
+                ],
+            )
+    elif is_v4:
+        if is_chatgpt_desktop:
+            _assert_markers_present(
+                "master_starters_v4_chatgpt_desktop",
+                starters_text,
+                [
+                    "COPY FROM NEXT LINE THROUGH END_STARTER AND PASTE INTO A FRESH CHATGPT DESKTOP THREAD:",
+                    "Execution mode: MANUAL_CHATGPT_DESKTOP_STRUCTURED_PROD",
+                    "INPUT_ATTACHMENTS (attach before generation):",
+                    "LOCAL_POSTCHECK (run in workspace terminal after saving model JSON):",
+                    "Operator save target (you cannot write files directly from this chat):",
+                    "\"output_path_structured\":",
+                    "--artifact-id \"llm_outline_compare_structured\"",
+                    "--target-field \"master_output\"",
+                    "lab_project_master_v2_to_v1.py",
+                    "Build `llm_outline_compare_structured`",
+                ],
+            )
+            _assert_markers_absent(
+                "master_starters_v4_chatgpt_desktop",
+                starters_text,
+                [
+                    "You are Codex operating inside this workspace. Execute this job end-to-end.",
+                    "You are ChatGPT running a manual desktop job for this workspace.",
+                    "1. Reads pair/year files directly from workspace",
+                    "PRECHECK_OK ticker=",
+                    "COPY FROM NEXT LINE THROUGH END_STARTER AND PASTE INTO A FRESH CODEX THREAD:",
+                    "Execution mode: AUTOWRITE_VALIDATE_STRUCTURED_PROD",
+                    "Windows-safe write guardrail (required for large artifacts):",
+                    "Write output JSON directly to this structured path:",
+                    "Write output JSON directly to this insight path:",
+                ],
+            )
+        else:
+            _assert_markers_present(
+                "master_starters_v4",
+                starters_text,
+                [
+                    "Execution mode: AUTOWRITE_VALIDATE_STRUCTURED_PROD",
+                    "\"output_path_structured\":",
+                    "--artifact-id \"llm_outline_compare_structured\"",
+                    "--target-field \"master_output\"",
+                    "lab_project_master_v2_to_v1.py",
+                    "Build `llm_outline_compare_structured`",
+                    "Windows-safe write guardrail (required for large artifacts):",
+                    "Do not use one-shot oversized inline write commands for large JSON writes.",
+                    "temporary workspace-relative generator script path",
+                    "`Set-Content` + `Add-Content`",
+                ],
+            )
+            _assert_markers_absent(
+                "master_starters_v4",
+                starters_text,
+                [
+                    "--target-field \"projected_master_output_structured\"",
+                    "lab_project_master_v3_to_v2.py",
+                    "Build `llm_outline_compare_insight`",
+                ],
+            )
+    else:
+        raise SystemExit("master_starters output format must be vscode_autowrite_structured_prod or vscode_autowrite_insight_exp")
+
+    expected_pairs = {
+        ("llm_outline_compare_structured", "master_output"),
+        ("llm_outline_compare_runtime", "projected_master_output_runtime"),
+    }
+    if is_v5:
+        expected_pairs = {
+            ("llm_outline_compare_insight", "master_output"),
+            ("llm_outline_compare_structured", "projected_master_output_structured"),
+            ("llm_outline_compare_runtime", "projected_master_output_runtime"),
+        }
+    missing_pairs = sorted(pair for pair in expected_pairs if pair not in validate_pairs)
+    if missing_pairs:
+        formatted = ", ".join(f"{a}/{t}" for a, t in missing_pairs)
+        raise SystemExit(f"master_starters missing required validate artifact/target-field pair(s): {formatted}")
+
+    allowed_pairs = expected_pairs | {
+        ("llm_outline_compare_structured", "master_output"),
+        ("llm_outline_compare_insight", "master_output"),
+    }
+    unexpected_pairs = sorted(pair for pair in validate_pairs if pair not in allowed_pairs)
+    if unexpected_pairs:
+        formatted = ", ".join(f"{a}/{t}" for a, t in unexpected_pairs)
+        raise SystemExit(
+            "master_starters includes incompatible validate artifact/target-field pair(s): "
+            + formatted
+        )
 
     manifest_payload = json.loads(master_manifest_path.read_text(encoding="utf-8-sig"))
     if not isinstance(manifest_payload, dict):
@@ -354,23 +558,81 @@ def _check_master_starters(master_starters_path: Path, master_manifest_path: Pat
         raise SystemExit("master manifest missing entries list")
 
     expected_paths: list[str] = []
+    manifest_issues: list[str] = []
     for entry in entries:  # type: ignore[reportUnknownVariableType]
         if not isinstance(entry, dict):
             continue
         entry_data = cast(dict[str, Any], entry)
-        for field in ("master_output", "projected_master_output_v1"):
-            output_block = entry_data.get(field)
-            if not isinstance(output_block, dict):
-                continue
-            output_data = cast(dict[str, Any], output_block)
-            expected_output_path = output_data.get("expected_output_path")
-            if not isinstance(expected_output_path, str):
-                continue
-            normalized = "/" + expected_output_path.replace("\\", "/").lstrip("/")
-            if f"/{campaign_slug}/" not in normalized:
-                continue
-            expected_paths.append(expected_output_path.replace("\\", "/").lstrip("/"))
+        ticker = str(entry_data.get("ticker") or "?")
+        year_from = str(entry_data.get("year_from") or "?")
+        year_to = str(entry_data.get("year_to") or "?")
+        lens = str(entry_data.get("lens") or "?")
+        case_label = f"{ticker} {year_from}-{year_to} {lens}"
 
+        master_output = entry_data.get("master_output")
+        if not isinstance(master_output, dict):
+            continue
+        master_data = cast(dict[str, Any], master_output)
+        master_path = master_data.get("expected_output_path")
+        if not isinstance(master_path, str):
+            continue
+        normalized_master = master_path.replace("\\", "/").lstrip("/")
+        if f"/{campaign_slug}/" not in "/" + normalized_master:
+            continue
+
+        master_artifact_id = master_data.get("artifact_id")
+        projected_v2 = entry_data.get("projected_master_output_structured")
+        projected_v1 = entry_data.get("projected_master_output_runtime")
+
+        if is_v5:
+            if master_artifact_id != "llm_outline_compare_insight" or "llm_outline_compare_insight" not in normalized_master:
+                manifest_issues.append(case_label + ": master_output must be llm_outline_compare_insight")
+                continue
+            if not isinstance(projected_v2, dict):
+                manifest_issues.append(case_label + ": missing projected_master_output_structured")
+                continue
+            projected_v2_data = cast(dict[str, Any], projected_v2)
+            projected_v2_path = projected_v2_data.get("expected_output_path")
+            if not isinstance(projected_v2_path, str):
+                manifest_issues.append(case_label + ": projected_master_output_structured missing expected_output_path")
+                continue
+            normalized_v2 = projected_v2_path.replace("\\", "/").lstrip("/")
+            if projected_v2_data.get("artifact_id") != "llm_outline_compare_structured" or "llm_outline_compare_structured" not in normalized_v2:
+                manifest_issues.append(case_label + ": projected_master_output_structured must be llm_outline_compare_structured")
+                continue
+            if not isinstance(projected_v1, dict):
+                manifest_issues.append(case_label + ": missing projected_master_output_runtime")
+                continue
+            projected_v1_data = cast(dict[str, Any], projected_v1)
+            projected_v1_path = projected_v1_data.get("expected_output_path")
+            if not isinstance(projected_v1_path, str):
+                manifest_issues.append(case_label + ": projected_master_output_runtime missing expected_output_path")
+                continue
+
+            expected_paths.append(normalized_master)
+            expected_paths.append(normalized_v2)
+            expected_paths.append(projected_v1_path.replace("\\", "/").lstrip("/"))
+        else:
+            if master_artifact_id not in {None, "llm_outline_compare_structured"} or "llm_outline_compare_structured" not in normalized_master:
+                manifest_issues.append(case_label + ": master_output must be llm_outline_compare_structured for v4 starters")
+                continue
+            if not isinstance(projected_v1, dict):
+                manifest_issues.append(case_label + ": missing projected_master_output_runtime")
+                continue
+            projected_v1_data = cast(dict[str, Any], projected_v1)
+            projected_v1_path = projected_v1_data.get("expected_output_path")
+            if not isinstance(projected_v1_path, str):
+                manifest_issues.append(case_label + ": projected_master_output_runtime missing expected_output_path")
+                continue
+
+            expected_paths.append(normalized_master)
+            expected_paths.append(projected_v1_path.replace("\\", "/").lstrip("/"))
+
+    if manifest_issues:
+        raise SystemExit(
+            "master manifest starter-compatibility issues:\n"
+            + "\n".join(f"- {item}" for item in manifest_issues[:10])
+        )
     if not expected_paths:
         raise SystemExit("master manifest yielded no campaign paths for starter verification")
 
@@ -393,14 +655,14 @@ def _check_master_starters(master_starters_path: Path, master_manifest_path: Pat
             + ", ".join(missing_expected[:5])
         )
 
-
 def main(argv: Optional[list[str]] = None) -> int:
     parser = build_parser()
     args = parser.parse_args(argv)
 
-    campaign = get_llm_campaign(args.campaign_id)
+    resolved_campaign_id = _resolve_campaign_id(args.campaign_id, args.master_manifest)
+    campaign = get_llm_campaign(resolved_campaign_id)
     if campaign is None or campaign.instructions_asset_name is None:
-        raise SystemExit(f"Unknown campaign id: {args.campaign_id}")
+        raise SystemExit(f"Unknown campaign id: {resolved_campaign_id}")
 
     prompt_templates_override = args.prompt_templates or ""
     bundle_paths = resolve_bundle_paths(
@@ -593,6 +855,7 @@ def main(argv: Optional[list[str]] = None) -> int:
         master_starters_path=master_starters_path,
         master_manifest_path=master_manifest_path,
         campaign_slug=campaign.track_slug,
+        execution_venue=campaign.execution_venue,
     )
 
     print("Prompt consistency check: PASS")
@@ -604,3 +867,13 @@ def main(argv: Optional[list[str]] = None) -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+
+
+
+
+
+
+
+
+
+

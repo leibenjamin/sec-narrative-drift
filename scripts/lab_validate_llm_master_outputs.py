@@ -1,4 +1,4 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 import argparse
 import json
@@ -57,6 +57,15 @@ TOP_LEVEL_KEYS_V2 = TOP_LEVEL_KEYS_V1.union(
         "projection_contract",
     }
 )
+TOP_LEVEL_KEYS_V3 = TOP_LEVEL_KEYS_V2.union(
+    {
+        "executive_digest",
+        "insight_cards",
+        "evidence_map",
+        "insight_coverage",
+        "ui_contract",
+    }
+)
 
 
 @dataclass(frozen=True)
@@ -70,7 +79,7 @@ class MasterTarget:
     expected_output_path: str
     manifest_present_flag: Optional[bool]
     expected_artifact_id: str
-    source_master_v2_path: Optional[str]
+    source_master_structured_path: Optional[str]
 
 
 @dataclass(frozen=True)
@@ -90,9 +99,11 @@ def write_text(path: Path, lines: list[str]) -> None:
 
 def infer_artifact_id_from_path(path_value: str) -> str:
     normalized = path_value.replace("\\", "/")
-    if "/llm_outline_compare_v2/" in normalized or "llm_outline_compare_v2_" in normalized:
-        return "llm_outline_compare_v2"
-    return "llm_outline_compare_v1"
+    if "/llm_outline_compare_insight/" in normalized or "llm_outline_compare_insight_" in normalized:
+        return "llm_outline_compare_insight"
+    if "/llm_outline_compare_structured/" in normalized or "llm_outline_compare_structured_" in normalized:
+        return "llm_outline_compare_structured"
+    return "llm_outline_compare_runtime"
 
 
 def load_targets(path: Path, target_field: str = "master_output") -> list[MasterTarget]:
@@ -109,7 +120,8 @@ def load_targets(path: Path, target_field: str = "master_output") -> list[Master
         if entry is None:
             continue
         target_block = as_str_dict(entry.get(target_field))
-        source_master_v2 = as_str_dict(entry.get("master_output"))
+        source_master_block = as_str_dict(entry.get("master_output"))
+        projected_v2_block = as_str_dict(entry.get("projected_master_output_structured"))
         if target_block is None:
             continue
         ticker = get_str(entry.get("ticker"))
@@ -123,11 +135,11 @@ def load_targets(path: Path, target_field: str = "master_output") -> list[Master
         expected_artifact_id = get_str(target_block.get("artifact_id"))
         if expected_artifact_id is None and expected is not None:
             expected_artifact_id = infer_artifact_id_from_path(expected)
-        source_master_v2_path = (
-            get_str(source_master_v2.get("expected_output_path"))
-            if source_master_v2 is not None
-            else None
-        )
+        source_master_structured_path = None
+        if target_field == "projected_master_output_runtime" and projected_v2_block is not None:
+            source_master_structured_path = get_str(projected_v2_block.get("expected_output_path"))
+        elif source_master_block is not None:
+            source_master_structured_path = get_str(source_master_block.get("expected_output_path"))
         present: Optional[bool] = None
         if isinstance(present_flag, bool):
             present = present_flag
@@ -151,8 +163,8 @@ def load_targets(path: Path, target_field: str = "master_output") -> list[Master
                 source_id=source_id,
                 expected_output_path=expected,
                 manifest_present_flag=present,
-                expected_artifact_id=expected_artifact_id or "llm_outline_compare_v1",
-                source_master_v2_path=source_master_v2_path,
+                expected_artifact_id=expected_artifact_id or "llm_outline_compare_runtime",
+                source_master_structured_path=source_master_structured_path,
             )
         )
     return targets
@@ -216,7 +228,7 @@ def validate_payload(
     expected_model_provider: str,
     expected_model_name: str,
     expected_artifact_id: str,
-    source_master_v2_path: Optional[str] = None,
+    source_master_structured_path: Optional[str] = None,
 ) -> list[str]:
     reasons: list[str] = []
     try:
@@ -228,7 +240,12 @@ def validate_payload(
         return ["JSON root must be an object"]
 
     keys = set(payload.keys())
-    required_top_keys = TOP_LEVEL_KEYS_V2 if expected_artifact_id == "llm_outline_compare_v2" else TOP_LEVEL_KEYS_V1
+    if expected_artifact_id == "llm_outline_compare_insight":
+        required_top_keys = TOP_LEVEL_KEYS_V3
+    elif expected_artifact_id == "llm_outline_compare_structured":
+        required_top_keys = TOP_LEVEL_KEYS_V2
+    else:
+        required_top_keys = TOP_LEVEL_KEYS_V1
     missing_keys = sorted(required_top_keys.difference(keys))
     extra_keys = sorted(keys.difference(required_top_keys))
     if missing_keys:
@@ -415,7 +432,7 @@ def validate_payload(
         if summary is None or not summary.strip():
             reasons.append("lens_divergence.summary must be non-empty string")
 
-    if expected_artifact_id == "llm_outline_compare_v2":
+    if expected_artifact_id in {"llm_outline_compare_structured", "llm_outline_compare_insight"}:
         def validate_graph_nodes(label: str) -> None:
             graph_nodes = as_list(payload.get(label))
             if graph_nodes is None or not graph_nodes:
@@ -514,11 +531,211 @@ def validate_payload(
         if projection_contract is None:
             reasons.append("projection_contract must be an object")
         else:
-            if get_str(projection_contract.get("projects_to_artifact_id")) != "llm_outline_compare_v1":
-                reasons.append("projection_contract.projects_to_artifact_id must be llm_outline_compare_v1")
+            if get_str(projection_contract.get("projects_to_artifact_id")) != "llm_outline_compare_runtime":
+                reasons.append("projection_contract.projects_to_artifact_id must be llm_outline_compare_runtime")
             projection_version = get_str(projection_contract.get("projection_version"))
             if projection_version is None or not projection_version.strip():
                 reasons.append("projection_contract.projection_version must be non-empty string")
+
+    if expected_artifact_id == "llm_outline_compare_insight":
+        executive_digest = as_str_dict(payload.get("executive_digest"))
+        if executive_digest is None:
+            reasons.append("executive_digest must be an object")
+        else:
+            summary_text = get_str(executive_digest.get("summary_text"))
+            audience = get_str(executive_digest.get("audience"))
+            reading_time = get_int(executive_digest.get("reading_time_sec_estimate"))
+            if summary_text is None or not summary_text.strip():
+                reasons.append("executive_digest.summary_text must be non-empty string")
+            if audience != "investor_analyst":
+                reasons.append("executive_digest.audience must be investor_analyst")
+            if reading_time is None or reading_time <= 0:
+                reasons.append("executive_digest.reading_time_sec_estimate must be positive int")
+
+        evidence_map_any = as_list(payload.get("evidence_map"))
+        evidence_map_ids: set[str] = set()
+        evidence_map_pairs: set[tuple[int, int]] = set()
+        evidence_map_insight_ids: set[str] = set()
+        if evidence_map_any is None or not evidence_map_any:
+            reasons.append("evidence_map must be a non-empty list")
+            evidence_map_any = []
+        for idx, row_any in enumerate(evidence_map_any):
+            row = as_str_dict(row_any)
+            if row is None:
+                reasons.append(f"evidence_map[{idx}] must be an object")
+                continue
+            evidence_id = get_str(row.get("evidence_id"))
+            year = get_int(row.get("year"))
+            paragraph_idx = get_int(row.get("paragraph_idx"))
+            snippet = get_str(row.get("snippet"))
+            char_start = row.get("char_start")
+            char_end = row.get("char_end")
+            row_insight_ids = as_list(row.get("insight_ids"))
+            if evidence_id is None or not evidence_id.strip():
+                reasons.append(f"evidence_map[{idx}].evidence_id must be non-empty string")
+            elif evidence_id in evidence_map_ids:
+                reasons.append(f"evidence_map[{idx}] has duplicate evidence_id")
+            else:
+                evidence_map_ids.add(evidence_id)
+            if year not in (target.year_from, target.year_to):
+                reasons.append(f"evidence_map[{idx}].year must match pair years")
+            if paragraph_idx is None or paragraph_idx < 0:
+                reasons.append(f"evidence_map[{idx}].paragraph_idx must be non-negative int")
+            elif year is not None:
+                pair = (year, paragraph_idx)
+                if pair in evidence_map_pairs:
+                    reasons.append(f"evidence_map[{idx}] has duplicate (year, paragraph_idx)")
+                evidence_map_pairs.add(pair)
+            if snippet is None or not snippet.strip():
+                reasons.append(f"evidence_map[{idx}].snippet must be non-empty")
+            elif len(snippet) > 350:
+                reasons.append(f"evidence_map[{idx}].snippet exceeds 350 chars")
+            if char_start is not None and get_int(char_start) is None:
+                reasons.append(f"evidence_map[{idx}].char_start must be int or null")
+            if char_end is not None and get_int(char_end) is None:
+                reasons.append(f"evidence_map[{idx}].char_end must be int or null")
+            if row_insight_ids is None:
+                reasons.append(f"evidence_map[{idx}].insight_ids must be a list")
+            else:
+                for j, insight_id in enumerate(row_insight_ids):
+                    if not isinstance(insight_id, str) or not insight_id.strip():
+                        reasons.append(f"evidence_map[{idx}].insight_ids[{j}] must be non-empty string")
+                    else:
+                        evidence_map_insight_ids.add(insight_id)
+
+        insight_cards_any = as_list(payload.get("insight_cards"))
+        insight_ids: set[str] = set()
+        if insight_cards_any is None or not insight_cards_any:
+            reasons.append("insight_cards must be a non-empty list")
+            insight_cards_any = []
+        for idx, card_any in enumerate(insight_cards_any):
+            card = as_str_dict(card_any)
+            if card is None:
+                reasons.append(f"insight_cards[{idx}] must be an object")
+                continue
+            card_id = get_str(card.get("id"))
+            insight_type = get_str(card.get("insight_type"))
+            title = get_str(card.get("title"))
+            claim = get_str(card.get("claim"))
+            why_it_matters = get_str(card.get("why_it_matters"))
+            confidence_band = get_str(card.get("confidence_band"))
+            counterpoint = get_str(card.get("counterpoint_or_limit"))
+            salience = card.get("salience")
+            if card_id is None or not card_id.strip():
+                reasons.append(f"insight_cards[{idx}].id must be non-empty string")
+            elif card_id in insight_ids:
+                reasons.append(f"insight_cards[{idx}] has duplicate id")
+            else:
+                insight_ids.add(card_id)
+            if insight_type not in {"difference", "similarity"}:
+                reasons.append(f"insight_cards[{idx}].insight_type must be difference or similarity")
+            for key, value in (
+                ("title", title),
+                ("claim", claim),
+                ("why_it_matters", why_it_matters),
+                ("confidence_band", confidence_band),
+                ("counterpoint_or_limit", counterpoint),
+            ):
+                if value is None or not value.strip():
+                    reasons.append(f"insight_cards[{idx}].{key} must be non-empty string")
+            if isinstance(salience, bool) or not isinstance(salience, (int, float)):
+                reasons.append(f"insight_cards[{idx}].salience must be numeric")
+            else:
+                salience_value = float(salience)
+                if salience_value < 0 or salience_value > 1:
+                    reasons.append(f"insight_cards[{idx}].salience must be between 0 and 1")
+
+            prev_refs = as_list(card.get("evidence_refs_prev"))
+            curr_refs = as_list(card.get("evidence_refs_curr"))
+            evidence_ref_ids = as_list(card.get("evidence_ref_ids"))
+            if prev_refs is None or not prev_refs:
+                reasons.append(f"insight_cards[{idx}].evidence_refs_prev must be non-empty list")
+            else:
+                for j, ref_any in enumerate(prev_refs):
+                    ref = as_str_dict(ref_any)
+                    year = get_int(ref.get("year")) if ref is not None else None
+                    paragraph_idx = get_int(ref.get("paragraph_idx")) if ref is not None else None
+                    if year != target.year_from or paragraph_idx is None or paragraph_idx < 0:
+                        reasons.append(f"insight_cards[{idx}].evidence_refs_prev[{j}] must map to year_from and non-negative paragraph_idx")
+                    elif evidence_map_pairs and (year, paragraph_idx) not in evidence_map_pairs:
+                        reasons.append(f"insight_cards[{idx}] prev ref ({year},{paragraph_idx}) missing from evidence_map")
+            if curr_refs is None or not curr_refs:
+                reasons.append(f"insight_cards[{idx}].evidence_refs_curr must be non-empty list")
+            else:
+                for j, ref_any in enumerate(curr_refs):
+                    ref = as_str_dict(ref_any)
+                    year = get_int(ref.get("year")) if ref is not None else None
+                    paragraph_idx = get_int(ref.get("paragraph_idx")) if ref is not None else None
+                    if year != target.year_to or paragraph_idx is None or paragraph_idx < 0:
+                        reasons.append(f"insight_cards[{idx}].evidence_refs_curr[{j}] must map to year_to and non-negative paragraph_idx")
+                    elif evidence_map_pairs and (year, paragraph_idx) not in evidence_map_pairs:
+                        reasons.append(f"insight_cards[{idx}] curr ref ({year},{paragraph_idx}) missing from evidence_map")
+            if evidence_ref_ids is None or not evidence_ref_ids:
+                reasons.append(f"insight_cards[{idx}].evidence_ref_ids must be non-empty list")
+            else:
+                for j, evidence_id_any in enumerate(evidence_ref_ids):
+                    if not isinstance(evidence_id_any, str) or not evidence_id_any.strip():
+                        reasons.append(f"insight_cards[{idx}].evidence_ref_ids[{j}] must be non-empty string")
+                    elif evidence_map_ids and evidence_id_any not in evidence_map_ids:
+                        reasons.append(f"insight_cards[{idx}] evidence_ref_ids[{j}] not found in evidence_map")
+
+        for insight_id in evidence_map_insight_ids:
+            if insight_id not in insight_ids:
+                reasons.append(f"evidence_map insight_id {insight_id!r} not found in insight_cards")
+
+        insight_coverage = as_str_dict(payload.get("insight_coverage"))
+        if insight_coverage is None:
+            reasons.append("insight_coverage must be an object")
+        else:
+            diff_count = get_int(insight_coverage.get("difference_count"))
+            sim_count = get_int(insight_coverage.get("similarity_count"))
+            if diff_count is None or diff_count < 0:
+                reasons.append("insight_coverage.difference_count must be non-negative int")
+            if sim_count is None or sim_count < 0:
+                reasons.append("insight_coverage.similarity_count must be non-negative int")
+
+        ui_contract = as_str_dict(payload.get("ui_contract"))
+        if ui_contract is None:
+            reasons.append("ui_contract must be an object")
+        else:
+            default_id = get_str(ui_contract.get("default_selected_insight_id"))
+            order_any = as_list(ui_contract.get("recommended_insight_order"))
+            clusters_any = as_list(ui_contract.get("suggested_clusters"))
+            if default_id is None or not default_id.strip():
+                reasons.append("ui_contract.default_selected_insight_id must be non-empty string")
+            elif insight_ids and default_id not in insight_ids:
+                reasons.append("ui_contract.default_selected_insight_id must reference insight_cards id")
+            if order_any is None:
+                reasons.append("ui_contract.recommended_insight_order must be a list")
+            else:
+                for idx, item in enumerate(order_any):
+                    if not isinstance(item, str) or not item.strip():
+                        reasons.append(f"ui_contract.recommended_insight_order[{idx}] must be non-empty string")
+                    elif insight_ids and item not in insight_ids:
+                        reasons.append(f"ui_contract.recommended_insight_order[{idx}] missing insight id")
+            if clusters_any is None:
+                reasons.append("ui_contract.suggested_clusters must be a list")
+            else:
+                for idx, cluster_any in enumerate(clusters_any):
+                    cluster = as_str_dict(cluster_any)
+                    if cluster is None:
+                        reasons.append(f"ui_contract.suggested_clusters[{idx}] must be an object")
+                        continue
+                    cluster_id = get_str(cluster.get("cluster_id"))
+                    label = get_str(cluster.get("label"))
+                    cluster_insights = as_list(cluster.get("insight_ids"))
+                    if cluster_id is None or not cluster_id.strip():
+                        reasons.append(f"ui_contract.suggested_clusters[{idx}].cluster_id must be non-empty string")
+                    if label is None or not label.strip():
+                        reasons.append(f"ui_contract.suggested_clusters[{idx}].label must be non-empty string")
+                    if cluster_insights is None:
+                        reasons.append(f"ui_contract.suggested_clusters[{idx}].insight_ids must be a list")
+                    else:
+                        for j, insight_id_any in enumerate(cluster_insights):
+                            if not isinstance(insight_id_any, str) or not insight_id_any.strip():
+                                reasons.append(f"ui_contract.suggested_clusters[{idx}].insight_ids[{j}] must be non-empty string")
+                            elif insight_ids and insight_id_any not in insight_ids:
+                                reasons.append(f"ui_contract.suggested_clusters[{idx}].insight_ids[{j}] missing insight id")
 
     provenance = as_str_dict(payload.get("provenance"))
     input_file = ""
@@ -603,24 +820,49 @@ def validate_payload(
                                 f"evidence_bank[{idx}] snippet not verbatim in mapped paragraph"
                             )
 
-    if expected_artifact_id == "llm_outline_compare_v1" and source_master_v2_path:
-        source_v2_path = Path(source_master_v2_path)
-        if not source_v2_path.is_absolute():
-            source_v2_path = (REPO_ROOT / source_v2_path).resolve()
-        if not source_v2_path.exists():
+                    if expected_artifact_id == "llm_outline_compare_insight":
+                        evidence_map_any = as_list(payload.get("evidence_map")) or []
+                        for idx, row_any in enumerate(evidence_map_any):
+                            row = as_str_dict(row_any)
+                            if row is None:
+                                continue
+                            year = get_int(row.get("year"))
+                            paragraph_idx = get_int(row.get("paragraph_idx"))
+                            snippet = get_str(row.get("snippet"))
+                            if (
+                                year is None
+                                or paragraph_idx is None
+                                or paragraph_idx < 0
+                                or snippet is None
+                            ):
+                                continue
+                            paragraph_text = prev_map.get(paragraph_idx) if year == target.year_from else curr_map.get(paragraph_idx)
+                            if paragraph_text is None:
+                                continue
+                            if snippet not in paragraph_text:
+                                reasons.append(
+                                    f"evidence_map[{idx}] snippet not verbatim in mapped paragraph"
+                                )
+
+    if expected_artifact_id == "llm_outline_compare_runtime" and source_master_structured_path:
+        source_structured_path = Path(source_master_structured_path)
+        if not source_structured_path.is_absolute():
+            source_structured_path = (REPO_ROOT / source_structured_path).resolve()
+        if not source_structured_path.exists():
             reasons.append(
-                f"projection source v2 missing for v1 artifact: {source_v2_path.as_posix()}"
+                f"projection source structured missing for runtime artifact: {source_structured_path.as_posix()}"
             )
         else:
             try:
-                source_v2_payload_raw = json.loads(source_v2_path.read_text(encoding="utf-8-sig"))
-                source_v2_payload = as_str_dict(source_v2_payload_raw)
+                source_structured_payload_raw = json.loads(source_structured_path.read_text(encoding="utf-8-sig"))
+                source_structured_payload = as_str_dict(source_structured_payload_raw)
             except Exception as exc:  # noqa: BLE001
-                source_v2_payload = None
-                reasons.append(f"projection source v2 unreadable: {exc}")
-            if source_v2_payload is not None:
-                if source_v2_payload.get("artifact_id") != "llm_outline_compare_v2":
-                    reasons.append("projection source artifact_id must be llm_outline_compare_v2")
+                source_structured_payload = None
+                reasons.append(f"projection source structured unreadable: {exc}")
+            if source_structured_payload is not None:
+                source_artifact_id = get_str(source_structured_payload.get("artifact_id"))
+                if source_artifact_id not in {"llm_outline_compare_structured", "llm_outline_compare_insight"}:
+                    reasons.append("projection source artifact_id must be llm_outline_compare_structured or llm_outline_compare_insight")
                 projection_fields = (
                     "outline_prev",
                     "outline_curr",
@@ -630,7 +872,7 @@ def validate_payload(
                     "lens_divergence",
                 )
                 for field in projection_fields:
-                    if payload.get(field) != source_v2_payload.get(field):
+                    if payload.get(field) != source_structured_payload.get(field):
                         reasons.append(f"projection_equivalence_mismatch in field '{field}'")
 
     return reasons
@@ -707,7 +949,7 @@ def validate_targets(
             expected_model_provider=expected_model_provider,
             expected_model_name=expected_model_name,
             expected_artifact_id=target.expected_artifact_id,
-            source_master_v2_path=target.source_master_v2_path,
+            source_master_structured_path=target.source_master_structured_path,
         )
         if reasons:
             invalid.append(
@@ -773,12 +1015,12 @@ def build_report(
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="Validate llm_outline_compare_v1/v2 outputs.")
+    parser = argparse.ArgumentParser(description="Validate llm_outline_compare_runtime/structured/insight outputs.")
     parser.add_argument("--manifest", default=str(DEFAULT_MANIFEST_PATH))
     parser.add_argument("--campaign-id", default=DEFAULT_PRIMARY_LLM_CAMPAIGN_ID)
     parser.add_argument(
         "--artifact-id",
-        choices=("auto", "llm_outline_compare_v1", "llm_outline_compare_v2"),
+        choices=("auto", "llm_outline_compare_runtime", "llm_outline_compare_structured", "llm_outline_compare_insight"),
         default="auto",
         help="Expected artifact id. `auto` uses manifest target metadata/path inference.",
     )
@@ -787,7 +1029,14 @@ def build_parser() -> argparse.ArgumentParser:
         default="master_output",
         help="Manifest entry field containing expected_output_path and optional artifact_id.",
     )
-    parser.add_argument("--report", default=str(DEFAULT_REPORT_PATH))
+    parser.add_argument(
+        "--report",
+        default="",
+        help=(
+            "Validation report path. If omitted, writes a campaign/artifact-scoped "
+            "report under reports/."
+        ),
+    )
     parser.add_argument("--allow-missing", action="store_true")
     parser.add_argument("--allow-invalid", action="store_true")
     parser.add_argument("--only", default="")
@@ -826,6 +1075,57 @@ def normalize_path_like(path_value: str) -> str:
     return path_value.replace("\\", "/").strip()
 
 
+def _sanitize_token(value: str) -> str:
+    token = re.sub(r"[^a-z0-9]+", "_", value.lower()).strip("_")
+    return token or "campaign"
+
+
+def _campaign_slug_token(campaign_id: str) -> str:
+    campaign = get_llm_campaign(campaign_id)
+    if campaign is not None:
+        if campaign.track_id == "openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27":
+            return "codex_real"
+        if campaign.track_id == "openai_chatgpt52ext_agent_fullsec_real_2026-02-27":
+            return "chatgpt_real"
+        return _sanitize_token(campaign.track_slug)
+    return _sanitize_token(campaign_id)
+
+
+def _artifact_suffix(target_field: str, forced_artifact_id: str, targets: list[MasterTarget]) -> str:
+    if forced_artifact_id != "auto":
+        artifact_id = forced_artifact_id
+    elif target_field == "projected_master_output_runtime":
+        artifact_id = "llm_outline_compare_runtime"
+    elif target_field == "projected_master_output_structured":
+        artifact_id = "llm_outline_compare_structured"
+    elif targets:
+        artifact_id = targets[0].expected_artifact_id
+    else:
+        artifact_id = "llm_outline_compare_runtime"
+
+    if artifact_id == "llm_outline_compare_insight":
+        return "insight"
+    if artifact_id == "llm_outline_compare_structured":
+        return "structured"
+    return "runtime"
+
+
+def default_report_path_for_args(
+    *,
+    campaign_id: str,
+    target_field: str,
+    artifact_id: str,
+    targets: list[MasterTarget],
+) -> Path:
+    campaign_token = _campaign_slug_token(campaign_id)
+    artifact_token = _artifact_suffix(target_field, artifact_id, targets)
+    if artifact_token == "structured":
+        filename = f"lab_llm_master_validation_{campaign_token}.md"
+    else:
+        filename = f"lab_llm_master_validation_{campaign_token}_{artifact_token}.md"
+    return REPO_ROOT / "reports" / filename
+
+
 def matches_only_token(path_value: str, token: str, mode: str) -> bool:
     normalized_path = normalize_path_like(path_value)
     normalized_token = normalize_path_like(token)
@@ -862,7 +1162,7 @@ def main(argv: Optional[list[str]] = None) -> int:
                 expected_output_path=target.expected_output_path,
                 manifest_present_flag=target.manifest_present_flag,
                 expected_artifact_id=forced_artifact_id,
-                source_master_v2_path=target.source_master_v2_path,
+                source_master_structured_path=target.source_master_structured_path,
             )
             for target in targets
         ]
@@ -909,7 +1209,13 @@ def main(argv: Optional[list[str]] = None) -> int:
         invalid=invalid,
         mismatch=mismatch,
     )
-    report_path = Path(args.report)
+    report_arg = str(args.report).strip()
+    report_path = Path(report_arg) if report_arg else default_report_path_for_args(
+        campaign_id=campaign.track_id,
+        target_field=str(args.target_field),
+        artifact_id=str(args.artifact_id),
+        targets=targets,
+    )
     if not report_path.is_absolute():
         report_path = (REPO_ROOT / report_path).resolve()
     print("[phase] write master validation report", flush=True)
@@ -946,3 +1252,5 @@ def main(argv: Optional[list[str]] = None) -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+
+

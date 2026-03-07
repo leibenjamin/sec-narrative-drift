@@ -51,6 +51,18 @@ def resolve_input_path(raw_path: str, pair_path: str) -> Path:
     return via_bundle
 
 
+
+def extract_paragraph_count(payload: object) -> int:
+    payload_dict = as_str_dict(payload)
+    if payload_dict is None:
+        return -1
+    texts = as_str_dict(payload_dict.get("texts"))
+    if texts is None:
+        return -1
+    paragraphs = as_list(texts.get("paragraphs"))
+    return len(paragraphs) if paragraphs is not None else -1
+
+
 def build_starter_text(job_meta: dict[str, Any]) -> str:
     return "\n".join(
         [
@@ -73,12 +85,12 @@ def build_starter_text(job_meta: dict[str, Any]) -> str:
             "- Print exactly one line: PRECHECK_OK ...",
             "",
             "Generation:",
-            "- Generate one JSON object with artifact_id llm_outline_compare_v2 into outputs/master_v2.json.",
-            "- Generate deterministic projected llm_outline_compare_v1 into outputs/master_v1.json using v2 shared fields.",
+            "- Generate one JSON object with artifact_id llm_outline_compare_structured into outputs/master_structured.json.",
+            "- Generate deterministic projected llm_outline_compare_runtime into outputs/master_runtime.json using structured shared fields.",
             "",
             "Checks:",
-            "- python -c \"import json, pathlib; json.loads(pathlib.Path('outputs/master_v2.json').read_text(encoding='utf-8-sig')); print('JSON_OK_V2')\"",
-            "- python -c \"import json, pathlib; json.loads(pathlib.Path('outputs/master_v1.json').read_text(encoding='utf-8-sig')); print('JSON_OK_V1')\"",
+            "- python -c \"import json, pathlib; json.loads(pathlib.Path('outputs/master_structured.json').read_text(encoding='utf-8-sig')); print('JSON_OK_STRUCTURED')\"",
+            "- python -c \"import json, pathlib; json.loads(pathlib.Path('outputs/master_runtime.json').read_text(encoding='utf-8-sig')); print('JSON_OK_RUNTIME')\"",
             "",
             "Final status line:",
             "- Success: WRITE_OK JSON_OK VALIDATION_OK",
@@ -187,16 +199,8 @@ def main(argv: Optional[list[str]] = None) -> int:
 
         prev_payload = json.loads(prev_dst.read_text(encoding="utf-8-sig"))
         curr_payload = json.loads(curr_dst.read_text(encoding="utf-8-sig"))
-        prev_count = -1
-        curr_count = -1
-        if isinstance(prev_payload, dict):
-            prev_texts = prev_payload.get("texts")
-            prev_paras = prev_texts.get("paragraphs") if isinstance(prev_texts, dict) else None
-            prev_count = len(prev_paras) if isinstance(prev_paras, list) else -1
-        if isinstance(curr_payload, dict):
-            curr_texts = curr_payload.get("texts")
-            curr_paras = curr_texts.get("paragraphs") if isinstance(curr_texts, dict) else None
-            curr_count = len(curr_paras) if isinstance(curr_paras, list) else -1
+        prev_count = extract_paragraph_count(prev_payload)
+        curr_count = extract_paragraph_count(curr_payload)
 
         checksum_payload = {
             "pair_sha256": sha256_file(pair_dst),
@@ -216,8 +220,8 @@ def main(argv: Optional[list[str]] = None) -> int:
             "source_id": source_id,
             "expected_prev_paragraphs": prev_count,
             "expected_curr_paragraphs": curr_count,
-            "output_master_v2": "outputs/master_v2.json",
-            "output_master_v1": "outputs/master_v1.json",
+            "output_master_structured": "outputs/master_structured.json",
+            "output_master_runtime": "outputs/master_runtime.json",
         }
         write_json(job_meta_root / "job_meta.json", job_meta)
         (starter_root / "THREAD_STARTER.txt").write_text(

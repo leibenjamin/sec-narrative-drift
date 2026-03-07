@@ -7,6 +7,12 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Optional, cast
 
+from lab_output_tracks import (
+    CORE4_SHOWCASE_TICKERS,
+    LEGACY_FIXED_WINDOW_RUNTIME_CASES,
+    pick_latest_adjacent_pair,
+)
+
 SCRIPT_VERSION = "lab_runtime_readiness_check.py@v1"
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -14,7 +20,7 @@ LAB_ROOT = REPO_ROOT / "public" / "data" / "sec_narrative_drift_lab"
 REGISTRY_PATH = LAB_ROOT / "lab_cases_v1.json"
 REPORT_PATH = REPO_ROOT / "reports" / "lab_runtime_readiness.md"
 
-REQUIRED_TICKERS = ["NVDA", "KO", "WM", "GE"]
+REQUIRED_TICKERS = list(CORE4_SHOWCASE_TICKERS)
 REQUIRED_DETECTORS = [
     "det_logodds_terms_v1",
     "det_jsd_ngrams_v1",
@@ -24,11 +30,11 @@ REQUIRED_DETECTORS = [
     "det_rbo_agreement_v1",
 ]
 OPTIONAL_LLM_DETECTORS = ["det_llm_delta_brief_v1", "det_llm_excerpt_picker_v1"]
-REQUIRED_ADJACENT_PAIRS = [
-    (2022, 2023),
-    (2023, 2024),
-    (2024, 2025),
-]
+PAIR_POLICY_LATEST_TWO = "latest_two"
+PAIR_POLICY_FIXED_WINDOW = "fixed_window"
+LEGACY_REQUIRED_ADJACENT_PAIRS = list(
+    LEGACY_FIXED_WINDOW_RUNTIME_CASES.get("NVDA", ((2022, 2023), (2023, 2024), (2024, 2025)))
+)
 
 
 @dataclass(frozen=True)
@@ -109,20 +115,6 @@ def to_repo_rel(path: Path) -> str:
         return path.resolve().relative_to(REPO_ROOT).as_posix()
     except Exception:
         return path.as_posix()
-
-
-def pick_latest_pair(pairs: set[tuple[int, int]]) -> Optional[tuple[int, int]]:
-    latest: Optional[tuple[int, int]] = None
-    for pair in pairs:
-        if latest is None:
-            latest = pair
-            continue
-        if pair[1] > latest[1]:
-            latest = pair
-            continue
-        if pair[1] == latest[1] and pair[0] > latest[0]:
-            latest = pair
-    return latest
 
 
 def parse_registry(
@@ -241,6 +233,15 @@ def build_parser() -> argparse.ArgumentParser:
         help="Output markdown report path",
     )
     parser.add_argument(
+        "--pair-policy",
+        choices=(PAIR_POLICY_LATEST_TWO, PAIR_POLICY_FIXED_WINDOW),
+        default=PAIR_POLICY_LATEST_TWO,
+        help=(
+            "Pair policy for required runtime coverage. latest_two checks the latest adjacent "
+            "pair per ticker; fixed_window preserves the legacy 2022-2025 adjacent set."
+        ),
+    )
+    parser.add_argument(
         "--verbose-progress",
         action="store_true",
         help="Emit progress lines while evaluating ticker/pair coverage.",
@@ -285,19 +286,16 @@ def main(argv: Optional[list[str]] = None) -> int:
             )
             last_heartbeat = now
         ticker_adjacent_pairs = adjacent_pairs_by_ticker.get(ticker, set())
-        latest_pair = pick_latest_pair(ticker_adjacent_pairs)
+        latest_pair = pick_latest_adjacent_pair(ticker_adjacent_pairs)
         latest_pairs[ticker] = latest_pair
 
         required_pairs: list[tuple[int, int]] = []
-        for pair in REQUIRED_ADJACENT_PAIRS:
-            required_pairs.append(pair)
-        if latest_pair is not None:
-            already_included = False
-            for pair in required_pairs:
-                if pair == latest_pair:
-                    already_included = True
-                    break
-            if not already_included:
+        if args.pair_policy == PAIR_POLICY_LATEST_TWO:
+            if latest_pair is not None:
+                required_pairs.append(latest_pair)
+        else:
+            required_pairs.extend(LEGACY_REQUIRED_ADJACENT_PAIRS)
+            if latest_pair is not None and latest_pair not in required_pairs:
                 required_pairs.append(latest_pair)
 
         ticker_outputs = outputs_by_ticker.get(ticker, {})
@@ -384,7 +382,15 @@ def main(argv: Optional[list[str]] = None) -> int:
     lines.append("- required_source: edgar")
     lines.append(f"- required_detectors: {', '.join(REQUIRED_DETECTORS)}")
     lines.append(f"- optional_llm_detectors: {', '.join(OPTIONAL_LLM_DETECTORS)}")
-    lines.append("- required_pairs: 2022-2023, 2023-2024, 2024-2025")
+    lines.append(f"- pair_policy: {args.pair_policy}")
+    if args.pair_policy == PAIR_POLICY_FIXED_WINDOW:
+        lines.append(
+            "- required_pairs: "
+            + ", ".join(f"{year_from}-{year_to}" for year_from, year_to in LEGACY_REQUIRED_ADJACENT_PAIRS)
+            + " (+ latest pair when outside fixed window)"
+        )
+    else:
+        lines.append("- required_pairs: latest adjacent pair per ticker from registry")
     lines.append(f"- rows_checked: {len(coverage_rows)}")
     lines.append(f"- required_failure_count: {len(required_failures)}")
     lines.append(f"- missing_required_pairs_count: {len(required_missing_pairs)}")

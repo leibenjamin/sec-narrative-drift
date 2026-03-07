@@ -1,12 +1,12 @@
-# Codex Real Run Profile (24 Master Jobs)
+# Codex Real Run Profile (8 Master Jobs - FY2024->FY2025 Cohort)
 
-Last updated: 2026-03-02
-Scope: `llm_outline_compare_v1` manual Codex jobs generated from
+Last updated: 2026-03-05
+Scope: `llm_outline_compare_structured` manual Codex jobs generated from
 `reports/lab_llm_master_thread_starters_codex_real.md`.
 
 Canonical starter policy:
 - `reports/lab_llm_master_thread_starters_codex_real.md` is the single canonical Codex real-run starter file.
-- It must be generated with `vscode_autowrite_v4` profile (JOB_META + strict input hash/path/count lock + v2->v1 projection checks).
+- It must be generated with `vscode_autowrite_structured_prod` profile (JOB_META + strict input hash/path/count lock + structured->runtime projection checks).
 - Variant files such as `*_v2.md` or `*_legacy.md` are non-canonical and compatibility-only.
 
 Companion canonical docs:
@@ -16,6 +16,11 @@ Companion canonical docs:
 Prompt template pairing (full_section_v2 bundle):
 - Primary Codex: `prompt_templates_showcase.md`
 - Compare ChatGPT: `prompt_templates_showcase__openai-chatgpt52ext-agent-fullsec-real-2026-02-27.md`
+
+## Anchored Cohort Policy
+- Current production cohort is frozen to FY2024->FY2025 for Core4 (`NVDA`, `KO`, `WM`, `GE`).
+- Fiscal-year caveat: filings may be submitted in the next calendar year; year pairing follows fiscal years derived from `reportDate`/`filingDate`.
+- FY2025->FY2026 remains an optional expansion lane and is not the default showcase cohort in this phase.
 
 ## Purpose
 - Keep the current one-job-per-thread starter workflow unchanged for active production runs.
@@ -31,17 +36,18 @@ Prompt template pairing (full_section_v2 bundle):
 
 ## Per-Job Contract (Must Keep)
 - Read exactly three inputs (`pair`, `year prev`, `year curr`) from workspace paths in the starter.
-- Preflight counts must come from `year_payload.texts.paragraphs` and must match `JOB_META.expected_prev_paragraphs` and `JOB_META.expected_curr_paragraphs`; mismatches are hard failures.
+- Preflight counts must come from `texts.paragraphs` and must match `JOB_META.expected_prev_paragraphs` and `JOB_META.expected_curr_paragraphs`; mismatches are hard failures.
 - Preflight must verify pair/year SHA256 locks and pair manifest linkage (`case`, `lens`, `year_inputs`) before generation.
 - Emit exactly one preflight line:
   - `PRECHECK_OK ... prev_paragraphs=<N> curr_paragraphs=<N>`
-- Write v2 output JSON at canonical v2 starter path.
-- Project v2 output deterministically to canonical runtime v1 path.
+- Write structured output JSON at canonical structured starter path.
+- For large artifact writes on Windows, use a temporary workspace-relative generator script built in small chunks (`Set-Content` + `Add-Content`), execute it, then remove it.
+- Project structured output deterministically to canonical runtime path.
 - Run exactly three immediate checks:
   - JSON parse check
-  - master validator (`--only-mode exact_path`, strict single-target flags) for v2
-  - blocker quality audit for v2
-  - projection command and runtime v1 parse/validator checks
+  - master validator (`--only-mode exact_path`, strict single-target flags) for structured
+  - blocker quality audit for structured
+  - projection command and runtime parse/validator checks
 - Emit exactly one final status line.
 
 ## Batch Governance Cadence
@@ -50,13 +56,15 @@ Run checkpoints every 6 jobs.
 Required commands:
 ```bash
 python scripts/lab_validate_llm_master_outputs.py --manifest "reports/lab_llm_master_manifest_codex_real.json" --campaign-id "openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27" --allow-missing --allow-invalid --report "reports/lab_llm_master_validation_codex_real.md"
-python scripts/lab_audit_master_output_quality.py --manifest "reports/lab_llm_master_manifest_codex_real.json" --campaign-id "openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27" --allow-missing --mode blockers --report "reports/lab_llm_master_quality_codex_real.md"
+python scripts/lab_audit_master_output_quality.py --manifest "reports/lab_llm_master_manifest_codex_real.json" --campaign-id "openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27" --allow-missing --mode blockers --strict-depth --report "reports/lab_llm_master_quality_codex_real.md"
 python scripts/lab_record_master_progress.py --manifest "reports/lab_llm_master_manifest_codex_real.json" --campaign-id "openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27" --report-md "reports/lab_llm_master_batch_progress_codex_real.md" --history-json "reports/lab_llm_master_batch_progress_codex_real.json" --label "after_job_XX"
+python scripts/lab_build_llm_variants_index.py
+python scripts/lab_runtime_readiness_check.py
 ```
 
 Final checkpoint reminder:
-- After completing job `24`, run the same progress command with:
-  - `--label "after_job_24"`
+- After completing job `8`, run the same progress command with:
+  - `--label "after_job_8"`
 
 Track these deltas after each checkpoint:
 - `present`
@@ -96,3 +104,15 @@ Portable reproducibility export:
 
 ## Non-Blocking Validation Note
 During incremental manual production runs, `present_flag_mismatch` can appear when outputs are written but manifest `present` flags are not yet rebuilt. Treat this as non-blocking until manifest regeneration.
+
+
+
+
+
+## Insight Promotion Criteria
+Insight lane remains experimental until all of the following pass for a full campaign:
+- `24/24` insight `master_output` artifacts present.
+- Zero blocker audits for insight outputs and projected structured outputs.
+- Runtime panel smoke checks pass, including explicit missing-state behavior when insight artifacts are absent.
+
+

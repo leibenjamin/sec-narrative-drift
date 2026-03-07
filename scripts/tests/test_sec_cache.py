@@ -12,16 +12,17 @@ class RequestsResponse(Protocol):
 
     def raise_for_status(self) -> None: ...
 
-    def iter_content(self, chunk_size: int = ...) -> Iterable[bytes]: ...
+    def iter_content(self, chunk_size: int = 1) -> Iterable[Any]: ...
 
 
 class RequestsSession(Protocol):
     def get(
         self,
         url: str,
-        headers: dict[str, str] | None = ...,
-        timeout: float | None = ...,
-        stream: bool = ...,
+        *,
+        headers: dict[str, str] | None = None,
+        timeout: float | None = None,
+        stream: bool = False,
     ) -> RequestsResponse: ...
 
 

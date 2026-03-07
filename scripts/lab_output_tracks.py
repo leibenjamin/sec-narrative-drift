@@ -10,16 +10,22 @@ SCRIPT_VERSION = build_script_version(Path(__file__), "v1")
 
 RUN_LABEL_DATE_PREFIX = "YYYY-MM-DD"
 RUN_LABEL_PATTERN = r"^20\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])_[A-Za-z0-9._-]+$"
+EXECUTION_VENUE_VSCODE_AGENT = "vscode_agent"
+EXECUTION_VENUE_CHATGPT_DESKTOP = "chatgpt_desktop"
 
 LLM_DETECTORS = (
     "det_llm_delta_brief_v1",
     "det_llm_excerpt_picker_v1",
 )
 
-MASTER_LLM_ARTIFACT_ID = "llm_outline_compare_v1"
-MASTER_LLM_ARTIFACT_ID_V2 = "llm_outline_compare_v2"
+MASTER_LLM_ARTIFACT_ID_RUNTIME = "llm_outline_compare_runtime"
+MASTER_LLM_ARTIFACT_ID_STRUCTURED = "llm_outline_compare_structured"
+MASTER_LLM_ARTIFACT_ID_INSIGHT = "llm_outline_compare_insight"
+MASTER_LLM_ARTIFACT_ID = MASTER_LLM_ARTIFACT_ID_RUNTIME
+MASTER_LLM_ARTIFACT_ID_V2 = MASTER_LLM_ARTIFACT_ID_STRUCTURED
+MASTER_LLM_ARTIFACT_ID_V3 = MASTER_LLM_ARTIFACT_ID_INSIGHT
 MASTER_LLM_RESEARCH_ARTIFACT_ID = "llm_outline_research_v1"
-MASTER_PROMPT_VERSION = "llm_master_compare_v3"
+MASTER_PROMPT_VERSION = "llm_master_compare_structured"
 
 DETERMINISTIC_DETECTORS = (
     "det_logodds_terms_v1",
@@ -44,6 +50,7 @@ class OutputTrack:
     model_name: Optional[str] = None
     run_label_prefix_template: Optional[str] = None
     instructions_asset_name: Optional[str] = None
+    execution_venue: str = EXECUTION_VENUE_VSCODE_AGENT
     primary_for_runtime: bool = False
     compare_default: bool = False
     runtime_visible: bool = True
@@ -69,6 +76,7 @@ LLM_CAMPAIGNS: tuple[OutputTrack, ...] = (
         model_name="ChatGPT 5.2-Thinking (Extended Thinking)",
         run_label_prefix_template=f"{RUN_LABEL_DATE_PREFIX}_openai_chatgpt52ext_...",
         instructions_asset_name="llm_project_instructions_openai_chatgpt52ext_agent_2026-02-21.txt",
+        execution_venue=EXECUTION_VENUE_CHATGPT_DESKTOP,
         primary_for_runtime=False,
         runtime_visible=False,
     ),
@@ -108,6 +116,7 @@ LLM_CAMPAIGNS: tuple[OutputTrack, ...] = (
         model_name="ChatGPT 5.2-Thinking (Extended Thinking)",
         run_label_prefix_template=f"{RUN_LABEL_DATE_PREFIX}_openai_chatgpt52ext_fullsec_...",
         instructions_asset_name="llm_project_instructions_openai_chatgpt52ext_agent_fullsec_2026-02-22.txt",
+        execution_venue=EXECUTION_VENUE_CHATGPT_DESKTOP,
         compare_default=False,
         runtime_visible=False,
     ),
@@ -127,15 +136,16 @@ LLM_CAMPAIGNS: tuple[OutputTrack, ...] = (
     OutputTrack(
         track_id="openai_chatgpt52ext_agent_fullsec_real_2026-02-27",
         track_slug="openai-chatgpt52ext-agent-fullsec-real-2026-02-27",
-        display_name="ChatGPT 5.2-Thinking (Extended Thinking) (Full Section v2, Real Manual Runs)",
+        display_name="ChatGPT 5.4-Thinking (Extended Thinking) (Full Section v2, Real Manual Runs)",
         kind="llm",
         input_mode="full_section_v2",
         model_provider="openai",
-        model_name="ChatGPT 5.2-Thinking (Extended Thinking)",
-        run_label_prefix_template=f"{RUN_LABEL_DATE_PREFIX}_openai_chatgpt52ext_fullsec_real_...",
+        model_name="ChatGPT 5.4-Thinking (Extended Thinking)",
+        run_label_prefix_template=f"{RUN_LABEL_DATE_PREFIX}_openai_chatgpt54ext_fullsec_real_...",
         instructions_asset_name="llm_project_instructions_openai_chatgpt52ext_agent_fullsec_real_2026-02-27.txt",
+        execution_venue=EXECUTION_VENUE_CHATGPT_DESKTOP,
         compare_default=True,
-        runtime_visible=False,
+        runtime_visible=True,
     ),
 )
 
@@ -145,12 +155,28 @@ TRACKS_BY_SLUG = {track.track_slug: track for track in (DETERMINISTIC_BASELINE_T
 DEFAULT_PRIMARY_LLM_CAMPAIGN_ID = "openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27"
 DEFAULT_COMPARE_LLM_CAMPAIGN_ID = "openai_chatgpt52ext_agent_fullsec_real_2026-02-27"
 
-FY2022_RUNTIME_CASES: dict[str, tuple[tuple[int, int], ...]] = {
+CORE4_SHOWCASE_TICKERS: tuple[str, ...] = ("NVDA", "KO", "WM", "GE")
+LEGACY_FIXED_WINDOW_RUNTIME_CASES: dict[str, tuple[tuple[int, int], ...]] = {
     "NVDA": ((2022, 2023), (2023, 2024), (2024, 2025)),
     "KO": ((2022, 2023), (2023, 2024), (2024, 2025)),
     "WM": ((2022, 2023), (2023, 2024), (2024, 2025)),
     "GE": ((2022, 2023), (2023, 2024), (2024, 2025)),
 }
+# Backward-compatible alias retained for legacy callers.
+FY2022_RUNTIME_CASES = LEGACY_FIXED_WINDOW_RUNTIME_CASES
+
+
+def pick_latest_adjacent_pair(
+    pairs: set[tuple[int, int]] | tuple[tuple[int, int], ...],
+) -> Optional[tuple[int, int]]:
+    candidates: list[tuple[int, int]] = []
+    for year_from, year_to in pairs:
+        if year_to != year_from + 1:
+            continue
+        candidates.append((year_from, year_to))
+    if not candidates:
+        return None
+    return sorted(candidates, key=lambda item: (item[1], item[0]))[-1]
 
 
 def is_llm_detector(detector_id: str) -> bool:
@@ -240,7 +266,7 @@ def canonical_outline_compare_filename(
     cleaning_lens: str,
     source_id: str,
     track_slug: str,
-    artifact_id: str = MASTER_LLM_ARTIFACT_ID,
+    artifact_id: str = MASTER_LLM_ARTIFACT_ID_RUNTIME,
 ) -> str:
     return (
         f"lab_{artifact_id}_{section}_{year_from}_{year_to}_"
@@ -256,7 +282,7 @@ def canonical_outline_compare_relative_path(
     cleaning_lens: str,
     source_id: str,
     track_slug: str,
-    artifact_id: str = MASTER_LLM_ARTIFACT_ID,
+    artifact_id: str = MASTER_LLM_ARTIFACT_ID_RUNTIME,
 ) -> str:
     filename = canonical_outline_compare_filename(
         section=section,
@@ -285,7 +311,7 @@ def canonical_outline_compare_v2_filename(
         cleaning_lens=cleaning_lens,
         source_id=source_id,
         track_slug=track_slug,
-        artifact_id=MASTER_LLM_ARTIFACT_ID_V2,
+        artifact_id=MASTER_LLM_ARTIFACT_ID_STRUCTURED,
     )
 
 
@@ -306,7 +332,49 @@ def canonical_outline_compare_v2_relative_path(
         cleaning_lens=cleaning_lens,
         source_id=source_id,
         track_slug=track_slug,
-        artifact_id=MASTER_LLM_ARTIFACT_ID_V2,
+        artifact_id=MASTER_LLM_ARTIFACT_ID_STRUCTURED,
+    )
+
+
+
+
+def canonical_outline_compare_v3_filename(
+    section: str,
+    year_from: int,
+    year_to: int,
+    cleaning_lens: str,
+    source_id: str,
+    track_slug: str,
+) -> str:
+    return canonical_outline_compare_filename(
+        section=section,
+        year_from=year_from,
+        year_to=year_to,
+        cleaning_lens=cleaning_lens,
+        source_id=source_id,
+        track_slug=track_slug,
+        artifact_id=MASTER_LLM_ARTIFACT_ID_INSIGHT,
+    )
+
+
+def canonical_outline_compare_v3_relative_path(
+    ticker: str,
+    section: str,
+    year_from: int,
+    year_to: int,
+    cleaning_lens: str,
+    source_id: str,
+    track_slug: str,
+) -> str:
+    return canonical_outline_compare_relative_path(
+        ticker=ticker,
+        section=section,
+        year_from=year_from,
+        year_to=year_to,
+        cleaning_lens=cleaning_lens,
+        source_id=source_id,
+        track_slug=track_slug,
+        artifact_id=MASTER_LLM_ARTIFACT_ID_INSIGHT,
     )
 
 
@@ -344,8 +412,132 @@ def canonical_outline_research_relative_path(
     return f"{ticker.upper()}/outputs/{MASTER_LLM_RESEARCH_ARTIFACT_ID}/{track_slug}/{filename}"
 
 
+
+def canonical_outline_runtime_filename(
+    section: str,
+    year_from: int,
+    year_to: int,
+    cleaning_lens: str,
+    source_id: str,
+    track_slug: str,
+) -> str:
+    return canonical_outline_compare_filename(
+        section=section,
+        year_from=year_from,
+        year_to=year_to,
+        cleaning_lens=cleaning_lens,
+        source_id=source_id,
+        track_slug=track_slug,
+        artifact_id=MASTER_LLM_ARTIFACT_ID_RUNTIME,
+    )
+
+
+def canonical_outline_runtime_relative_path(
+    ticker: str,
+    section: str,
+    year_from: int,
+    year_to: int,
+    cleaning_lens: str,
+    source_id: str,
+    track_slug: str,
+) -> str:
+    return canonical_outline_compare_relative_path(
+        ticker=ticker,
+        section=section,
+        year_from=year_from,
+        year_to=year_to,
+        cleaning_lens=cleaning_lens,
+        source_id=source_id,
+        track_slug=track_slug,
+        artifact_id=MASTER_LLM_ARTIFACT_ID_RUNTIME,
+    )
+
+
+def canonical_outline_structured_filename(
+    section: str,
+    year_from: int,
+    year_to: int,
+    cleaning_lens: str,
+    source_id: str,
+    track_slug: str,
+) -> str:
+    return canonical_outline_compare_v2_filename(
+        section=section,
+        year_from=year_from,
+        year_to=year_to,
+        cleaning_lens=cleaning_lens,
+        source_id=source_id,
+        track_slug=track_slug,
+    )
+
+
+def canonical_outline_structured_relative_path(
+    ticker: str,
+    section: str,
+    year_from: int,
+    year_to: int,
+    cleaning_lens: str,
+    source_id: str,
+    track_slug: str,
+) -> str:
+    return canonical_outline_compare_v2_relative_path(
+        ticker=ticker,
+        section=section,
+        year_from=year_from,
+        year_to=year_to,
+        cleaning_lens=cleaning_lens,
+        source_id=source_id,
+        track_slug=track_slug,
+    )
+
+
+def canonical_outline_insight_filename(
+    section: str,
+    year_from: int,
+    year_to: int,
+    cleaning_lens: str,
+    source_id: str,
+    track_slug: str,
+) -> str:
+    return canonical_outline_compare_v3_filename(
+        section=section,
+        year_from=year_from,
+        year_to=year_to,
+        cleaning_lens=cleaning_lens,
+        source_id=source_id,
+        track_slug=track_slug,
+    )
+
+
+def canonical_outline_insight_relative_path(
+    ticker: str,
+    section: str,
+    year_from: int,
+    year_to: int,
+    cleaning_lens: str,
+    source_id: str,
+    track_slug: str,
+) -> str:
+    return canonical_outline_compare_v3_relative_path(
+        ticker=ticker,
+        section=section,
+        year_from=year_from,
+        year_to=year_to,
+        cleaning_lens=cleaning_lens,
+        source_id=source_id,
+        track_slug=track_slug,
+    )
 def strip_repo_prefix(path_value: str) -> str:
     normalized = path_value.replace("\\", "/")
     if normalized.startswith("public/data/sec_narrative_drift_lab/"):
         return normalized[len("public/data/sec_narrative_drift_lab/") :]
     return normalized
+
+
+
+
+
+
+
+
+

@@ -1,4 +1,4 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 import argparse
 import json
@@ -8,7 +8,11 @@ from pathlib import Path
 from typing import Any, Optional, cast
 
 from lab_script_version import build_script_version
-from lab_output_tracks import get_llm_campaign
+from lab_output_tracks import (
+    EXECUTION_VENUE_CHATGPT_DESKTOP,
+    EXECUTION_VENUE_VSCODE_AGENT,
+    get_llm_campaign,
+)
 
 SCRIPT_VERSION = build_script_version(Path(__file__), "v1")
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -18,14 +22,18 @@ DEFAULT_VALIDATION_REPORT = REPO_ROOT / "reports" / "lab_llm_master_validation.m
 DEFAULT_QUALITY_REPORT = REPO_ROOT / "reports" / "lab_llm_master_quality.md"
 DEFAULT_BATCH_PROGRESS_REPORT = REPO_ROOT / "reports" / "lab_llm_master_batch_progress.md"
 DEFAULT_BATCH_PROGRESS_JSON = REPO_ROOT / "reports" / "lab_llm_master_batch_progress.json"
-PROMPT_SYSTEM_PATH = REPO_ROOT / "docs" / "lab" / "llm_master_compare_v3_system.md"
-PROMPT_USER_TEMPLATE_PATH = REPO_ROOT / "docs" / "lab" / "llm_master_compare_v3_user_template.md"
-PROMPT_SELF_CHECK_PATH = REPO_ROOT / "docs" / "lab" / "llm_master_compare_v3_self_check.md"
+LEGACY_FORMATS = {"vscode_autowrite", "vscode_autowrite_v2", "vscode_autowrite_v3", "legacy"}
+PROMPT_SYSTEM_V2_PATH = REPO_ROOT / "docs" / "lab" / "llm_master_compare_structured_system.md"
+PROMPT_USER_TEMPLATE_V2_PATH = REPO_ROOT / "docs" / "lab" / "llm_master_compare_structured_user_template.md"
+PROMPT_SELF_CHECK_V2_PATH = REPO_ROOT / "docs" / "lab" / "llm_master_compare_structured_self_check.md"
+PROMPT_SYSTEM_V3_PATH = REPO_ROOT / "docs" / "lab" / "llm_master_compare_insight_system.md"
+PROMPT_USER_TEMPLATE_V3_PATH = REPO_ROOT / "docs" / "lab" / "llm_master_compare_insight_user_template.md"
+PROMPT_SELF_CHECK_V3_PATH = REPO_ROOT / "docs" / "lab" / "llm_master_compare_insight_self_check.md"
 
 OUTPUT_SHAPE_MIN = {
     "lab_schema_version": "1.0",
     "artifact_schema_version": "1.0",
-    "artifact_id": "llm_outline_compare_v2",
+    "artifact_id": "llm_outline_compare_structured",
     "ticker": "<ticker>",
     "section": "10k_item1a",
     "source_id": "edgar",
@@ -126,7 +134,7 @@ OUTPUT_SHAPE_MIN = {
         }
     ],
     "projection_contract": {
-        "projects_to_artifact_id": "llm_outline_compare_v1",
+        "projects_to_artifact_id": "llm_outline_compare_runtime",
         "projection_version": "1.0",
     },
     "provenance": {
@@ -134,6 +142,58 @@ OUTPUT_SHAPE_MIN = {
         "model_provider": "<model_provider>",
         "model_name": "<model_name>",
         "run_label": "YYYY-MM-DD_<campaign_tag>",
+    },
+}
+
+OUTPUT_SHAPE_MIN_V3 = {
+    **OUTPUT_SHAPE_MIN,
+    "artifact_id": "llm_outline_compare_insight",
+    "executive_digest": {
+        "summary_text": "...",
+        "audience": "investor_analyst",
+        "reading_time_sec_estimate": 540,
+    },
+    "insight_cards": [
+        {
+            "id": "ins_1",
+            "insight_type": "difference",
+            "title": "...",
+            "claim": "...",
+            "why_it_matters": "...",
+            "salience": 0.8,
+            "confidence_band": "medium",
+            "evidence_refs_prev": [{"year": 2022, "paragraph_idx": 0}],
+            "evidence_refs_curr": [{"year": 2023, "paragraph_idx": 0}],
+            "evidence_ref_ids": ["ev_1", "ev_2"],
+            "counterpoint_or_limit": "...",
+        }
+    ],
+    "evidence_map": [
+        {
+            "evidence_id": "ev_1",
+            "year": 2022,
+            "paragraph_idx": 0,
+            "snippet": "...",
+            "char_start": 0,
+            "char_end": 120,
+            "insight_ids": ["ins_1"],
+        }
+    ],
+    "insight_coverage": {
+        "difference_count": 1,
+        "similarity_count": 1,
+        "per_year_evidence_spread": {"2022": 4, "2023": 4},
+    },
+    "ui_contract": {
+        "default_selected_insight_id": "ins_1",
+        "recommended_insight_order": ["ins_1"],
+        "suggested_clusters": [
+            {
+                "cluster_id": "cluster_1",
+                "label": "Core",
+                "insight_ids": ["ins_1"],
+            }
+        ],
     },
 }
 
@@ -157,7 +217,8 @@ def as_list(value: Any) -> Optional[list[Any]]:
 def load_prompt_block(path: Path) -> str:
     if not path.exists():
         return f"[missing prompt block: {path.as_posix()}]"
-    return path.read_text(encoding="utf-8")
+    # Use utf-8-sig so BOM-prefixed prompt files do not leak U+FEFF into starters.
+    return path.read_text(encoding="utf-8-sig")
 
 
 def write_text(path: Path, lines: list[str]) -> None:
@@ -208,6 +269,74 @@ def emit_prompt_block(lines: list[str], title: str, block: str) -> None:
         lines.append(raw.rstrip())
 
 
+def ensure_insight_manifest_compatible(entries: list[Any]) -> None:
+    issues: list[str] = []
+    checked = 0
+    for entry_any in entries:
+        entry = as_dict(entry_any)
+        if entry is None:
+            continue
+        master_output = as_dict(entry.get("master_output"))
+        if master_output is None:
+            continue
+        expected_master = str(master_output.get("expected_output_path") or "")
+        normalized_master = expected_master.replace("\\", "/")
+        if "llm_outline_compare" not in normalized_master:
+            continue
+        checked += 1
+        artifact_id = str(master_output.get("artifact_id") or "")
+        projected_v2 = as_dict(entry.get("projected_master_output_structured"))
+        projected_v2_artifact = str(projected_v2.get("artifact_id") or "") if projected_v2 else ""
+        projected_v2_path = str(projected_v2.get("expected_output_path") or "") if projected_v2 else ""
+        normalized_projected_v2 = projected_v2_path.replace("\\", "/")
+        projected_runtime = as_dict(entry.get("projected_master_output_runtime"))
+        projected_runtime_artifact = (
+            str(projected_runtime.get("artifact_id") or "") if projected_runtime else ""
+        )
+        projected_runtime_path = (
+            str(projected_runtime.get("expected_output_path") or "") if projected_runtime else ""
+        )
+        normalized_projected_runtime = projected_runtime_path.replace("\\", "/")
+
+        ticker = str(entry.get("ticker") or "?")
+        year_from = str(entry.get("year_from") or "?")
+        year_to = str(entry.get("year_to") or "?")
+        lens = str(entry.get("lens") or "?")
+        case_label = f"{ticker} {year_from}-{year_to} {lens}"
+
+        if artifact_id != "llm_outline_compare_insight" or "llm_outline_compare_insight" not in normalized_master:
+            issues.append(case_label + ": master_output must target llm_outline_compare_insight")
+            continue
+        if not projected_v2 or projected_v2_artifact != "llm_outline_compare_structured":
+            issues.append(case_label + ": missing projected_master_output_structured artifact block")
+            continue
+        if "llm_outline_compare_structured" not in normalized_projected_v2:
+            issues.append(case_label + ": projected_master_output_structured path must target llm_outline_compare_structured")
+            continue
+        if (
+            not projected_runtime
+            or projected_runtime_artifact != "llm_outline_compare_runtime"
+            or "llm_outline_compare_runtime" not in normalized_projected_runtime
+        ):
+            issues.append(
+                case_label
+                + ": projected_master_output_runtime must target llm_outline_compare_runtime"
+            )
+
+    if checked == 0:
+        raise SystemExit(
+            "vscode_autowrite_insight_exp requires manifest entries with llm_outline_compare_insight master_output targets."
+        )
+    if issues:
+        preview = "\n".join(f"- {item}" for item in issues[:8])
+        suffix = "" if len(issues) <= 8 else f"\n- ... (+{len(issues) - 8} more)"
+        raise SystemExit(
+            "vscode_autowrite_insight_exp manifest incompatibility:\n"
+            + preview
+            + suffix
+            + "\nRebuild an insight manifest (master_output=insight + projected_master_output_structured + projected_master_output_runtime)."
+        )
+
 def extract_year_paragraph_count(path_like: str) -> Optional[int]:
     path = Path(path_like)
     if not path.is_absolute():
@@ -231,15 +360,33 @@ def extract_year_paragraph_count(path_like: str) -> Optional[int]:
     return len(cast(list[Any], paragraphs))
 
 
-def build_run_label_template(campaign_id: str, ticker: str, year_from: object, year_to: object) -> str:
-    campaign_tag = campaign_id
-    if re.fullmatch(r".+_20\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])", campaign_id):
-        campaign_tag = campaign_id.rsplit("_", 1)[0]
+def build_run_label_template(
+    campaign_id: str,
+    ticker: str,
+    year_from: object,
+    year_to: object,
+    run_label_prefix_template: Optional[str] = None,
+) -> str:
+    campaign_tag = ""
+    if isinstance(run_label_prefix_template, str) and run_label_prefix_template:
+        prefix = run_label_prefix_template
+        if prefix.startswith("YYYY-MM-DD_"):
+            prefix = prefix[len("YYYY-MM-DD_") :]
+        if prefix.endswith("_..."):
+            prefix = prefix[:-4]
+        elif prefix.endswith("..."):
+            prefix = prefix[:-3]
+        campaign_tag = prefix.rstrip("_")
+
+    if not campaign_tag:
+        campaign_tag = campaign_id
+        if re.fullmatch(r".+_20\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])", campaign_id):
+            campaign_tag = campaign_id.rsplit("_", 1)[0]
+
     return (
         f"YYYY-MM-DD_{campaign_tag}_{str(ticker).lower()}_"
         + f"{year_from}_{year_to}_outline_compare"
     )
-
 
 def emit_batch_checkpoint_block(
     *,
@@ -248,10 +395,7 @@ def emit_batch_checkpoint_block(
     total_jobs: int,
     manifest_path: str,
     campaign_id: str,
-    validation_report: str,
-    quality_report: str,
-    progress_md: str,
-    progress_json: str,
+    master_artifact_id: str,
 ) -> None:
     lines.append(f"### Batch Checkpoint After Job {completed_jobs:02d}")
     lines.append(
@@ -259,20 +403,28 @@ def emit_batch_checkpoint_block(
         + f"({completed_jobs}/{total_jobs} complete):"
     )
     lines.append("```bash")
+    manifest_md = manifest_path[:-5] + ".md" if manifest_path.endswith(".json") else manifest_path + ".md"
     lines.append(
-        f'python scripts/lab_validate_llm_master_outputs.py --manifest "{manifest_path}" --campaign-id "{campaign_id}" --allow-missing --allow-invalid --report "{validation_report}"'
+        "python scripts/lab_build_llm_master_manifest.py "
+        + f'--campaign-id "{campaign_id}" '
+        + f'--master-artifact-id "{master_artifact_id}" '
+        + f'--out-json "{manifest_path}" '
+        + f'--out-md "{manifest_md}"'
     )
     lines.append(
-        f'python scripts/lab_audit_master_output_quality.py --manifest "{manifest_path}" --campaign-id "{campaign_id}" --allow-missing --mode blockers --report "{quality_report}"'
+        f'python scripts/lab_validate_llm_master_outputs.py --manifest "{manifest_path}" --campaign-id "{campaign_id}" --artifact-id "{master_artifact_id}" --target-field "master_output" --allow-missing --allow-invalid'
+    )
+    lines.append(
+        f'python scripts/lab_audit_master_output_quality.py --manifest "{manifest_path}" --campaign-id "{campaign_id}" --artifact-id "{master_artifact_id}" --target-field "master_output" --allow-missing --mode blockers --strict-depth'
     )
     lines.append(
         "python scripts/lab_record_master_progress.py "
         + f'--manifest "{manifest_path}" '
         + f'--campaign-id "{campaign_id}" '
-        + f'--report-md "{progress_md}" '
-        + f'--history-json "{progress_json}" '
         + f'--label "after_job_{completed_jobs:02d}"'
     )
+    lines.append("python scripts/lab_build_llm_variants_index.py")
+    lines.append("python scripts/lab_runtime_readiness_check.py")
     lines.append("```")
     lines.append("")
 
@@ -286,6 +438,52 @@ def build_json_parse_command(output_path: str) -> str:
         + "print('JSON_OK')"
     )
     return f'python -c "{command}"'
+
+
+def build_paragraph_count_command(year_path: str, label: str) -> str:
+    normalized = year_path.replace("\\", "/")
+    escaped = normalized.replace("'", "\\'")
+    command = (
+        "import json, pathlib; "
+        + f"d=json.loads(pathlib.Path(r'{escaped}').read_text(encoding='utf-8-sig')); "
+        + "t=d.get('texts'); "
+        + "p=t.get('paragraphs') if isinstance(t, dict) else None; "
+        + f"print('{label}', len(p) if isinstance(p, list) else 'INVALID')"
+    )
+    return f'python -c "{command}"'
+
+
+OUTLINE_ARTIFACT_IDS = {
+    "runtime": "llm_outline_compare_runtime",
+    "structured": "llm_outline_compare_structured",
+    "insight": "llm_outline_compare_insight",
+}
+
+
+def remap_outline_artifact_path(output_path: str, target_artifact: str) -> str:
+    normalized = output_path.replace("\\", "/")
+    if not normalized:
+        return normalized
+    target_token = OUTLINE_ARTIFACT_IDS.get(target_artifact, target_artifact)
+    for artifact_token in OUTLINE_ARTIFACT_IDS.values():
+        normalized = normalized.replace(f"/{artifact_token}/", f"/{target_token}/")
+        normalized = normalized.replace(
+            f"lab_{artifact_token}_",
+            f"lab_{target_token}_",
+        )
+    return normalized
+
+
+def derive_structured_output_path_from_insight(output_path_insight: str) -> str:
+    return remap_outline_artifact_path(output_path_insight, "structured")
+
+
+def derive_insight_output_path(output_path: str) -> str:
+    return remap_outline_artifact_path(output_path, "insight")
+
+
+def derive_runtime_output_path(output_path: str) -> str:
+    return remap_outline_artifact_path(output_path, "runtime")
 
 
 def build_integrity_precheck_command(
@@ -396,7 +594,7 @@ def emit_legacy_block(
     lines.append("")
     lines.append("Output requirements:")
     lines.append("- JSON only, one top-level object.")
-    lines.append("- artifact_id must be llm_outline_compare_v1.")
+    lines.append("- artifact_id must be llm_outline_compare_runtime.")
     lines.append("- provenance.input_file must use canonical `inputs/pair/<basename>.json`.")
     lines.append("- Evidence paragraph indices must map to full-year paragraph arrays.")
     lines.append("- Do not include markdown or commentary outside JSON.")
@@ -421,8 +619,6 @@ def emit_vscode_autowrite_block(
     canonical_input_file: str,
     manifest_path: str,
     campaign_id: str,
-    validation_report: str,
-    quality_report: str,
     only_token: str,
     system_block: str,
     user_template: str,
@@ -453,7 +649,7 @@ def emit_vscode_autowrite_block(
         f"PRECHECK_OK ticker={ticker} pair={year_from}-{year_to} lens={lens} provenance_input_file={canonical_input_file} prev_paragraphs=<N> curr_paragraphs=<N>"
     )
     lines.append("")
-    lines.append("3) Generate exactly one JSON object for `llm_outline_compare_v1` using the prompt contract below.")
+    lines.append("3) Generate exactly one JSON object for `llm_outline_compare_runtime` using the prompt contract below.")
     emit_prompt_block(lines, "SYSTEM PROMPT", system_block)
     lines.append("")
     emit_prompt_block(lines, "USER PROMPT TEMPLATE", user_template)
@@ -471,10 +667,10 @@ def emit_vscode_autowrite_block(
     lines.append("6) Run immediate checks exactly:")
     lines.append(f"- {build_json_parse_command(output_path)}")
     lines.append(
-        f'- python scripts/lab_validate_llm_master_outputs.py --manifest "{manifest_path}" --campaign-id "{campaign_id}" --allow-missing --allow-invalid --only "{only_token}" --only-mode "exact_path" --expect-target-count 1 --fail-if-target-count-mismatch --report "{validation_report}"'
+        f'- python scripts/lab_validate_llm_master_outputs.py --manifest "{manifest_path}" --campaign-id "{campaign_id}" --allow-missing --allow-invalid --only "{only_token}" --only-mode "exact_path" --expect-target-count 1 --fail-if-target-count-mismatch'
     )
     lines.append(
-        f'- python scripts/lab_audit_master_output_quality.py --output "{output_path}" --mode blockers --report "{quality_report}"'
+        f'- python scripts/lab_audit_master_output_quality.py --output "{output_path}" --mode blockers --strict-depth'
     )
     lines.append("")
     lines.append("7) Print exactly one final status line:")
@@ -501,8 +697,6 @@ def emit_vscode_autowrite_v2_block(
     canonical_input_file: str,
     manifest_path: str,
     campaign_id: str,
-    validation_report: str,
-    quality_report: str,
     only_token: str,
     system_block: str,
     user_template: str,
@@ -567,7 +761,7 @@ def emit_vscode_autowrite_v2_block(
         f"PRECHECK_OK ticker={ticker} pair={year_from}-{year_to} lens={lens} provenance_input_file={canonical_input_file} prev_paragraphs=<N> curr_paragraphs=<N>"
     )
     lines.append("")
-    lines.append("3) Generate exactly one JSON object for `llm_outline_compare_v1` using the prompt contract below.")
+    lines.append("3) Generate exactly one JSON object for `llm_outline_compare_runtime` using the prompt contract below.")
     emit_prompt_block(lines, "SYSTEM PROMPT", system_block)
     lines.append("")
     emit_prompt_block(lines, "USER PROMPT TEMPLATE", user_template)
@@ -585,10 +779,10 @@ def emit_vscode_autowrite_v2_block(
     lines.append("6) Run immediate checks exactly:")
     lines.append(f"- {build_json_parse_command(output_path)}")
     lines.append(
-        f'- python scripts/lab_validate_llm_master_outputs.py --manifest "{manifest_path}" --campaign-id "{campaign_id}" --allow-missing --allow-invalid --only "{only_token}" --only-mode "exact_path" --expect-target-count 1 --fail-if-target-count-mismatch --report "{validation_report}"'
+        f'- python scripts/lab_validate_llm_master_outputs.py --manifest "{manifest_path}" --campaign-id "{campaign_id}" --allow-missing --allow-invalid --only "{only_token}" --only-mode "exact_path" --expect-target-count 1 --fail-if-target-count-mismatch'
     )
     lines.append(
-        f'- python scripts/lab_audit_master_output_quality.py --output "{output_path}" --mode blockers --report "{quality_report}"'
+        f'- python scripts/lab_audit_master_output_quality.py --output "{output_path}" --mode blockers --strict-depth'
     )
     lines.append(
         "- Note: validator present_flag_mismatch can be non-blocking during incremental manual runs."
@@ -618,8 +812,6 @@ def emit_vscode_autowrite_v3_block(
     canonical_input_file: str,
     manifest_path: str,
     campaign_id: str,
-    validation_report: str,
-    quality_report: str,
     only_token: str,
     system_block: str,
     user_template: str,
@@ -674,19 +866,11 @@ def emit_vscode_autowrite_v3_block(
     lines.append("2) Preflight checks before generation:")
     lines.append("- Fail hard if any file is missing/unreadable or invalid JSON.")
     lines.append(
-        "- Compute prev/curr paragraph counts from `year_payload.texts.paragraphs` (not top-level `paragraphs`)."
+        "- Compute prev/curr paragraph counts from `texts.paragraphs` (not top-level `paragraphs`)."
     )
     lines.append("- Run extraction templates exactly with the two year files:")
-    lines.append(
-        '- python -c "import json, pathlib; d=json.loads(pathlib.Path(r\''
-        + prev_path.replace("\\", "/")
-        + '\').read_text(encoding=\'utf-8-sig\')); t=d.get(\'texts\'); p=t.get(\'paragraphs\') if isinstance(t, dict) else None; print(\'PREV_COUNT\', len(p) if isinstance(p, list) else \'INVALID\')"'
-    )
-    lines.append(
-        '- python -c "import json, pathlib; d=json.loads(pathlib.Path(r\''
-        + curr_path.replace("\\", "/")
-        + '\').read_text(encoding=\'utf-8-sig\')); t=d.get(\'texts\'); p=t.get(\'paragraphs\') if isinstance(t, dict) else None; print(\'CURR_COUNT\', len(p) if isinstance(p, list) else \'INVALID\')"'
-    )
+    lines.append(f"- {build_paragraph_count_command(prev_path, 'PREV_COUNT')}")
+    lines.append(f"- {build_paragraph_count_command(curr_path, 'CURR_COUNT')}")
     if expected_prev_paragraphs is not None and expected_curr_paragraphs is not None:
         lines.append(
             "- Expected counts from bundle indexing: "
@@ -722,7 +906,7 @@ def emit_vscode_autowrite_v3_block(
         f"PRECHECK_OK ticker={ticker} pair={year_from}-{year_to} lens={lens} provenance_input_file={canonical_input_file} prev_paragraphs=<N> curr_paragraphs=<N>"
     )
     lines.append("")
-    lines.append("3) Generate exactly one JSON object for `llm_outline_compare_v1` using the prompt contract below.")
+    lines.append("3) Generate exactly one JSON object for `llm_outline_compare_runtime` using the prompt contract below.")
     emit_prompt_block(lines, "SYSTEM PROMPT", system_block)
     lines.append("")
     emit_prompt_block(lines, "USER PROMPT TEMPLATE", user_template)
@@ -740,10 +924,10 @@ def emit_vscode_autowrite_v3_block(
     lines.append("6) Run immediate checks exactly:")
     lines.append(f"- {build_json_parse_command(output_path)}")
     lines.append(
-        f'- python scripts/lab_validate_llm_master_outputs.py --manifest "{manifest_path}" --campaign-id "{campaign_id}" --allow-missing --allow-invalid --only "{only_token}" --only-mode "exact_path" --expect-target-count 1 --fail-if-target-count-mismatch --report "{validation_report}"'
+        f'- python scripts/lab_validate_llm_master_outputs.py --manifest "{manifest_path}" --campaign-id "{campaign_id}" --allow-missing --allow-invalid --only "{only_token}" --only-mode "exact_path" --expect-target-count 1 --fail-if-target-count-mismatch'
     )
     lines.append(
-        f'- python scripts/lab_audit_master_output_quality.py --output "{output_path}" --mode blockers --report "{quality_report}"'
+        f'- python scripts/lab_audit_master_output_quality.py --output "{output_path}" --mode blockers --strict-depth'
     )
     lines.append(
         "- Note: validator present_flag_mismatch can be non-blocking during incremental manual runs."
@@ -756,7 +940,7 @@ def emit_vscode_autowrite_v3_block(
     lines.append("")
 
 
-def emit_vscode_autowrite_v4_block(
+def emit_vscode_autowrite_structured_prod_block(
     *,
     lines: list[str],
     job_number: int,
@@ -769,15 +953,13 @@ def emit_vscode_autowrite_v4_block(
     pair_path: str,
     prev_path: str,
     curr_path: str,
-    output_path_v2: str,
-    output_path_v1: str,
+    output_path_structured: str,
+    output_path_runtime: str,
     canonical_input_file: str,
     manifest_path: str,
     campaign_id: str,
-    validation_report: str,
-    quality_report: str,
-    only_token_v2: str,
-    only_token_v1: str,
+    only_token_structured: str,
+    only_token_runtime: str,
     system_block: str,
     user_template: str,
     self_check: str,
@@ -802,7 +984,7 @@ def emit_vscode_autowrite_v4_block(
         "Forbidden sources: do not inspect existing output artifacts (including sibling raw/deboiler files) as templates unless a required gate fails."
     )
     lines.append("")
-    lines.append("Execution mode: AUTOWRITE_VALIDATE_V4")
+    lines.append("Execution mode: AUTOWRITE_VALIDATE_STRUCTURED_PROD")
     lines.append(f"Thread title: {ticker} {year_from}-{year_to} outline compare ({lens})")
     lines.append(
         f"Case context: ticker={ticker}, pair={year_from}-{year_to}, section={section}, lens={lens}, source={source_id}"
@@ -822,8 +1004,8 @@ def emit_vscode_autowrite_v4_block(
                 "expected_pair_sha256": expected_pair_sha256,
                 "expected_prev_sha256": expected_prev_sha256,
                 "expected_curr_sha256": expected_curr_sha256,
-                "output_path_v2": output_path_v2,
-                "projected_output_path_v1": output_path_v1,
+                "output_path_structured": output_path_structured,
+                "projected_output_path_runtime": output_path_runtime,
             },
             indent=2,
             ensure_ascii=False,
@@ -841,18 +1023,10 @@ def emit_vscode_autowrite_v4_block(
     lines.append("2) Preflight checks before generation:")
     lines.append("- Fail hard if any file is missing/unreadable or invalid JSON.")
     lines.append("- Verify pair manifest schema/input_mode/case/year_inputs linkage and file SHA256 locks.")
-    lines.append("- Verify prev/curr counts from `year_payload.texts.paragraphs` against JOB_META expected counts.")
+    lines.append("- Verify prev/curr counts from `texts.paragraphs` against JOB_META expected counts.")
     lines.append("- Run extraction templates exactly with the two year files:")
-    lines.append(
-        '- python -c "import json, pathlib; d=json.loads(pathlib.Path(r\''
-        + prev_path.replace("\\", "/")
-        + '\').read_text(encoding=\'utf-8-sig\')); t=d.get(\'texts\'); p=t.get(\'paragraphs\') if isinstance(t, dict) else None; print(\'PREV_COUNT\', len(p) if isinstance(p, list) else \'INVALID\')"'
-    )
-    lines.append(
-        '- python -c "import json, pathlib; d=json.loads(pathlib.Path(r\''
-        + curr_path.replace("\\", "/")
-        + '\').read_text(encoding=\'utf-8-sig\')); t=d.get(\'texts\'); p=t.get(\'paragraphs\') if isinstance(t, dict) else None; print(\'CURR_COUNT\', len(p) if isinstance(p, list) else \'INVALID\')"'
-    )
+    lines.append(f"- {build_paragraph_count_command(prev_path, 'PREV_COUNT')}")
+    lines.append(f"- {build_paragraph_count_command(curr_path, 'CURR_COUNT')}")
     lines.append(
         "- Expected counts from bundle indexing: "
         + f"prev={expected_prev_paragraphs}, curr={expected_curr_paragraphs}."
@@ -868,35 +1042,61 @@ def emit_vscode_autowrite_v4_block(
         f"PRECHECK_OK ticker={ticker} pair={year_from}-{year_to} lens={lens} provenance_input_file={canonical_input_file} prev_paragraphs=<N> curr_paragraphs=<N>"
     )
     lines.append("")
-    lines.append("3) Generate exactly one JSON object for `llm_outline_compare_v2` using the prompt contract below.")
+    lines.append("3) Generate exactly one JSON object for `llm_outline_compare_structured` using the prompt contract below.")
     emit_prompt_block(lines, "SYSTEM PROMPT", system_block)
     lines.append("")
     emit_prompt_block(lines, "USER PROMPT TEMPLATE", user_template)
     lines.append("")
     emit_prompt_block(lines, "SELF-CHECK GATE (must pass before final JSON)", self_check)
     lines.append("")
+    lines.append("STRICT-DEPTH ADDENDUM (must pass before final JSON)")
+    lines.append("- material_changes must contain at least 4 rows.")
+    lines.append(
+        "- Use unique material-change evidence refs per year: >=4 when year paragraph_count>=50, else >=3."
+    )
+    lines.append(
+        "- At least one top-3 material change (by salience) must cite non-opening paragraphs in both years."
+    )
+    lines.append(
+        "- For each year with paragraph_count>=30, material-change refs must span at least two section terciles."
+    )
+    lines.append(
+        "- Keep shallow-reference ratios below strict blocker thresholds: opening<=0.35, concentration<=0.50, unique-ref-ratio>=0.50."
+    )
+    lines.append("")
     lines.append("4) Hard failure policy:")
     lines.append("- If schema requirements cannot be satisfied, do not fabricate data.")
     lines.append('- Return exactly: {"error":"HARD_FAILURE","reason":"<short reason>"}')
     lines.append("- Never paraphrase snippets in evidence; use contiguous verbatim substrings only.")
     lines.append("")
-    lines.append("5) Write output JSON directly to this v2 path:")
-    lines.append(f"- {output_path_v2}")
+    lines.append("4.5) Windows-safe write guardrail (required for large artifacts):")
+    lines.append("- Do not use one-shot oversized inline write commands for large JSON writes.")
+    lines.append(
+        "- Use a temporary workspace-relative generator script path (for example under `scripts/`)."
+    )
+    lines.append(
+        "- Build temporary script content in small chunks using `Set-Content` + `Add-Content`."
+    )
+    lines.append("- Run the temporary script to write the artifact, then remove the temporary script.")
+    lines.append("- Keep artifact target paths and validation/projection command sequence unchanged.")
+    lines.append("")
+    lines.append("5) Write output JSON directly to this structured path:")
+    lines.append(f"- {output_path_structured}")
     lines.append("")
     lines.append("6) Run immediate checks exactly:")
-    lines.append(f"- {build_json_parse_command(output_path_v2)}")
+    lines.append(f"- {build_json_parse_command(output_path_structured)}")
     lines.append(
-        f'- python scripts/lab_validate_llm_master_outputs.py --manifest "{manifest_path}" --campaign-id "{campaign_id}" --artifact-id "llm_outline_compare_v2" --target-field "master_output" --allow-missing --allow-invalid --only "{only_token_v2}" --only-mode "exact_path" --expect-target-count 1 --fail-if-target-count-mismatch --report "{validation_report}"'
+        f'- python scripts/lab_validate_llm_master_outputs.py --manifest "{manifest_path}" --campaign-id "{campaign_id}" --artifact-id "llm_outline_compare_structured" --target-field "master_output" --allow-missing --allow-invalid --only "{only_token_structured}" --only-mode "exact_path" --expect-target-count 1 --fail-if-target-count-mismatch'
     )
     lines.append(
-        f'- python scripts/lab_audit_master_output_quality.py --output "{output_path_v2}" --artifact-id "llm_outline_compare_v2" --mode blockers --report "{quality_report}"'
+        f'- python scripts/lab_audit_master_output_quality.py --output "{output_path_structured}" --campaign-id "{campaign_id}" --artifact-id "llm_outline_compare_structured" --mode blockers --strict-depth'
     )
     lines.append(
-        f'- python scripts/lab_project_master_v2_to_v1.py --manifest "{manifest_path}" --campaign-id "{campaign_id}" --only "{only_token_v2}" --only-mode "exact_path"'
+        f'- python scripts/lab_project_master_v2_to_v1.py --manifest "{manifest_path}" --campaign-id "{campaign_id}" --only "{only_token_structured}" --only-mode "exact_path"'
     )
-    lines.append(f"- {build_json_parse_command(output_path_v1)}")
+    lines.append(f"- {build_json_parse_command(output_path_runtime)}")
     lines.append(
-        f'- python scripts/lab_validate_llm_master_outputs.py --manifest "{manifest_path}" --campaign-id "{campaign_id}" --artifact-id "llm_outline_compare_v1" --target-field "projected_master_output_v1" --allow-missing --allow-invalid --only "{only_token_v1}" --only-mode "exact_path" --expect-target-count 1 --fail-if-target-count-mismatch --report "{validation_report}"'
+        f'- python scripts/lab_validate_llm_master_outputs.py --manifest "{manifest_path}" --campaign-id "{campaign_id}" --artifact-id "llm_outline_compare_runtime" --target-field "projected_master_output_runtime" --allow-missing --allow-invalid --only "{only_token_runtime}" --only-mode "exact_path" --expect-target-count 1 --fail-if-target-count-mismatch'
     )
     lines.append("")
     lines.append("7) Print exactly one final status line:")
@@ -906,9 +1106,470 @@ def emit_vscode_autowrite_v4_block(
     lines.append("")
 
 
+def emit_vscode_autowrite_insight_exp_block(
+    *,
+    lines: list[str],
+    job_number: int,
+    ticker: str,
+    year_from: object,
+    year_to: object,
+    lens: str,
+    section: str,
+    source_id: str,
+    pair_path: str,
+    prev_path: str,
+    curr_path: str,
+    output_path_insight: str,
+    output_path_structured: str,
+    output_path_runtime: str,
+    canonical_input_file: str,
+    manifest_path: str,
+    campaign_id: str,
+    only_token_insight: str,
+    only_token_structured: str,
+    only_token_runtime: str,
+    system_block: str,
+    user_template: str,
+    self_check: str,
+    model_provider: str,
+    model_name: str,
+    run_label_template: str,
+    expected_prev_paragraphs: Optional[int],
+    expected_curr_paragraphs: Optional[int],
+    expected_pair_sha256: str,
+    expected_prev_sha256: str,
+    expected_curr_sha256: str,
+) -> None:
+    lines.append(f"## Job {job_number:02d} - {ticker} {year_from}-{year_to} {lens}")
+    lines.append("COPY FROM NEXT LINE THROUGH END_STARTER AND PASTE INTO A FRESH CODEX THREAD:")
+    lines.append("BEGIN_STARTER")
+    lines.append("You are Codex operating inside this workspace. Execute this job end-to-end.")
+    lines.append("Do not ask for manual file attachments or manual save steps.")
+    lines.append(
+        "Execution focus: use only the declared pair/year input files plus this embedded prompt contract."
+    )
+    lines.append(
+        "Forbidden sources: do not inspect existing output artifacts (including sibling raw/deboiler files) as templates unless a required gate fails."
+    )
+    lines.append("")
+    lines.append("Execution mode: AUTOWRITE_VALIDATE_INSIGHT_EXP")
+    lines.append(f"Thread title: {ticker} {year_from}-{year_to} insight lens compare ({lens})")
+    lines.append(
+        f"Case context: ticker={ticker}, pair={year_from}-{year_to}, section={section}, lens={lens}, source={source_id}"
+    )
+    lines.append("")
+    lines.append("JOB_META")
+    lines.append(
+        json.dumps(
+            {
+                "job_id": f"{ticker}_{year_from}_{year_to}_{lens}_{source_id}",
+                "model_provider": model_provider,
+                "model_name": model_name,
+                "run_label_template": run_label_template,
+                "provenance_input_file": canonical_input_file,
+                "expected_prev_paragraphs": expected_prev_paragraphs,
+                "expected_curr_paragraphs": expected_curr_paragraphs,
+                "expected_pair_sha256": expected_pair_sha256,
+                "expected_prev_sha256": expected_prev_sha256,
+                "expected_curr_sha256": expected_curr_sha256,
+                "output_path_insight": output_path_insight,
+                "projected_output_path_structured": output_path_structured,
+                "projected_output_path_runtime": output_path_runtime,
+            },
+            indent=2,
+            ensure_ascii=False,
+        )
+    )
+    lines.append("")
+    lines.append("OUTPUT_SHAPE_MIN")
+    lines.append(json.dumps(OUTPUT_SHAPE_MIN_V3, indent=2, ensure_ascii=False))
+    lines.append("")
+    lines.append("1) Read and parse these workspace JSON files:")
+    lines.append(f"- Pair manifest: {pair_path}")
+    lines.append(f"- Year prev: {prev_path}")
+    lines.append(f"- Year curr: {curr_path}")
+    lines.append("")
+    lines.append("2) Preflight checks before generation:")
+    lines.append("- Fail hard if any file is missing/unreadable or invalid JSON.")
+    lines.append("- Verify pair manifest schema/input_mode/case/year_inputs linkage and file SHA256 locks.")
+    lines.append("- Verify prev/curr counts from `texts.paragraphs` against JOB_META expected counts.")
+    lines.append("- Run extraction templates exactly with the two year files:")
+    lines.append(f"- {build_paragraph_count_command(prev_path, 'PREV_COUNT')}")
+    lines.append(f"- {build_paragraph_count_command(curr_path, 'CURR_COUNT')}")
+    lines.append(
+        "- Expected counts from bundle indexing: "
+        + f"prev={expected_prev_paragraphs}, curr={expected_curr_paragraphs}."
+    )
+    lines.append(
+        f"- {build_integrity_precheck_command(ticker=ticker, year_from=year_from, year_to=year_to, lens=lens, section=section, source_id=source_id, pair_path=pair_path, prev_path=prev_path, curr_path=curr_path, expected_prev_paragraphs=expected_prev_paragraphs, expected_curr_paragraphs=expected_curr_paragraphs, expected_pair_sha256=expected_pair_sha256, expected_prev_sha256=expected_prev_sha256, expected_curr_sha256=expected_curr_sha256)}"
+    )
+    lines.append(
+        "- If any lock check fails, stop and emit exactly: `{\"error\":\"HARD_FAILURE\",\"reason\":\"preflight input lock mismatch\"}`"
+    )
+    lines.append("- Print exactly one preflight line after checks pass:")
+    lines.append(
+        f"PRECHECK_OK ticker={ticker} pair={year_from}-{year_to} lens={lens} provenance_input_file={canonical_input_file} prev_paragraphs=<N> curr_paragraphs=<N>"
+    )
+    lines.append("")
+    lines.append("3) Generate exactly one JSON object for `llm_outline_compare_insight` using the prompt contract below.")
+    emit_prompt_block(lines, "SYSTEM PROMPT", system_block)
+    lines.append("")
+    emit_prompt_block(lines, "USER PROMPT TEMPLATE", user_template)
+    lines.append("")
+    emit_prompt_block(lines, "SELF-CHECK GATE (must pass before final JSON)", self_check)
+    lines.append("")
+    lines.append("STRICT-DEPTH ADDENDUM (must pass before final JSON)")
+    lines.append("- material_changes must contain at least 4 rows.")
+    lines.append("- insight_cards must contain at least 4 rows with at least one `difference` and one `similarity`.")
+    lines.append("- executive_digest.summary_text must stay within 450-650 words.")
+    lines.append(
+        "- Use unique material-change evidence refs per year: >=4 when year paragraph_count>=50, else >=3."
+    )
+    lines.append(
+        "- At least one top-3 material change (by salience) must cite non-opening paragraphs in both years."
+    )
+    lines.append(
+        "- For each year with paragraph_count>=30, material-change refs and insight refs must span at least two section terciles."
+    )
+    lines.append(
+        "- Keep shallow-reference ratios below strict blocker thresholds: opening<=0.35, concentration<=0.50, unique-ref-ratio>=0.50."
+    )
+    lines.append("- All insight evidence_ref_ids must resolve to evidence_map entries.")
+    lines.append("")
+    lines.append("4) Hard failure policy:")
+    lines.append("- If schema requirements cannot be satisfied, do not fabricate data.")
+    lines.append('- Return exactly: {"error":"HARD_FAILURE","reason":"<short reason>"}')
+    lines.append("- Never paraphrase snippets in evidence; use contiguous verbatim substrings only.")
+    lines.append("")
+    lines.append("4.5) Windows-safe write guardrail (required for large artifacts):")
+    lines.append("- Do not use one-shot oversized inline write commands for large JSON writes.")
+    lines.append(
+        "- Use a temporary workspace-relative generator script path (for example under `scripts/`)."
+    )
+    lines.append(
+        "- Build temporary script content in small chunks using `Set-Content` + `Add-Content`."
+    )
+    lines.append("- Run the temporary script to write the artifact, then remove the temporary script.")
+    lines.append("- Keep artifact target paths and validation/projection command sequence unchanged.")
+    lines.append("")
+    lines.append("5) Write output JSON directly to this insight path:")
+    lines.append(f"- {output_path_insight}")
+    lines.append("")
+    lines.append("6) Run immediate checks exactly:")
+    lines.append(f"- {build_json_parse_command(output_path_insight)}")
+    lines.append(
+        f'- python scripts/lab_validate_llm_master_outputs.py --manifest "{manifest_path}" --campaign-id "{campaign_id}" --artifact-id "llm_outline_compare_insight" --target-field "master_output" --allow-missing --allow-invalid --only "{only_token_insight}" --only-mode "exact_path" --expect-target-count 1 --fail-if-target-count-mismatch'
+    )
+    lines.append(
+        f'- python scripts/lab_audit_master_output_quality.py --output "{output_path_insight}" --campaign-id "{campaign_id}" --artifact-id "llm_outline_compare_insight" --mode blockers --strict-depth'
+    )
+    lines.append(
+        f'- python scripts/lab_project_master_v3_to_v2.py --manifest "{manifest_path}" --campaign-id "{campaign_id}" --only "{only_token_insight}" --only-mode "exact_path"'
+    )
+    lines.append(f"- {build_json_parse_command(output_path_structured)}")
+    lines.append(
+        f'- python scripts/lab_validate_llm_master_outputs.py --manifest "{manifest_path}" --campaign-id "{campaign_id}" --artifact-id "llm_outline_compare_structured" --target-field "projected_master_output_structured" --allow-missing --allow-invalid --only "{only_token_structured}" --only-mode "exact_path" --expect-target-count 1 --fail-if-target-count-mismatch'
+    )
+    lines.append(
+        f'- python scripts/lab_audit_master_output_quality.py --output "{output_path_structured}" --campaign-id "{campaign_id}" --artifact-id "llm_outline_compare_structured" --mode blockers --strict-depth'
+    )
+    lines.append(
+        f'- python scripts/lab_project_master_v2_to_v1.py --manifest "{manifest_path}" --campaign-id "{campaign_id}" --only "{only_token_structured}" --only-mode "exact_path"'
+    )
+    lines.append(f"- {build_json_parse_command(output_path_runtime)}")
+    lines.append(
+        f'- python scripts/lab_validate_llm_master_outputs.py --manifest "{manifest_path}" --campaign-id "{campaign_id}" --artifact-id "llm_outline_compare_runtime" --target-field "projected_master_output_runtime" --allow-missing --allow-invalid --only "{only_token_runtime}" --only-mode "exact_path" --expect-target-count 1 --fail-if-target-count-mismatch'
+    )
+    lines.append("")
+    lines.append("7) Print exactly one final status line:")
+    lines.append("- Success: WRITE_OK JSON_OK VALIDATION_OK")
+    lines.append("- Failure: FAILED: <short reason list>")
+    lines.append("END_STARTER")
+    lines.append("")
+
+
+def emit_chatgpt_desktop_structured_prod_block(
+    *,
+    lines: list[str],
+    job_number: int,
+    ticker: str,
+    year_from: object,
+    year_to: object,
+    lens: str,
+    section: str,
+    source_id: str,
+    pair_path: str,
+    prev_path: str,
+    curr_path: str,
+    output_path_structured: str,
+    output_path_runtime: str,
+    canonical_input_file: str,
+    manifest_path: str,
+    campaign_id: str,
+    only_token_structured: str,
+    only_token_runtime: str,
+    system_block: str,
+    user_template: str,
+    self_check: str,
+    model_provider: str,
+    model_name: str,
+    run_label_template: str,
+    expected_prev_paragraphs: Optional[int],
+    expected_curr_paragraphs: Optional[int],
+    expected_pair_sha256: str,
+    expected_prev_sha256: str,
+    expected_curr_sha256: str,
+) -> None:
+    lines.append(f"## Job {job_number:02d} - {ticker} {year_from}-{year_to} {lens}")
+    lines.append("COPY FROM NEXT LINE THROUGH END_STARTER AND PASTE INTO A FRESH CHATGPT DESKTOP THREAD:")
+    lines.append("BEGIN_STARTER")
+    lines.append("You are ChatGPT running a manual desktop job using the attached case files.")
+    lines.append("Use only the three attached JSON input files plus this embedded prompt contract.")
+    lines.append("Do not ask to execute shell commands; local validation/projection commands are run by the operator after you return JSON.")
+    lines.append(
+        "Execution focus: use only the declared pair/year input files plus this embedded prompt contract."
+    )
+    lines.append(
+        "Forbidden sources: do not inspect existing output artifacts (including sibling raw/deboiler files) as templates unless a required gate fails."
+    )
+    lines.append("")
+    lines.append("Execution mode: MANUAL_CHATGPT_DESKTOP_STRUCTURED_PROD")
+    lines.append(f"Thread title: {ticker} {year_from}-{year_to} outline compare ({lens})")
+    lines.append(
+        f"Case context: ticker={ticker}, pair={year_from}-{year_to}, section={section}, lens={lens}, source={source_id}"
+    )
+    lines.append("")
+    lines.append("JOB_META")
+    lines.append(
+        json.dumps(
+            {
+                "job_id": f"{ticker}_{year_from}_{year_to}_{lens}_{source_id}",
+                "model_provider": model_provider,
+                "model_name": model_name,
+                "run_label_template": run_label_template,
+                "provenance_input_file": canonical_input_file,
+                "expected_prev_paragraphs": expected_prev_paragraphs,
+                "expected_curr_paragraphs": expected_curr_paragraphs,
+                "expected_pair_sha256": expected_pair_sha256,
+                "expected_prev_sha256": expected_prev_sha256,
+                "expected_curr_sha256": expected_curr_sha256,
+                "output_path_structured": output_path_structured,
+                "projected_output_path_runtime": output_path_runtime,
+            },
+            indent=2,
+            ensure_ascii=False,
+        )
+    )
+    lines.append("")
+    lines.append("OUTPUT_SHAPE_MIN")
+    lines.append(json.dumps(OUTPUT_SHAPE_MIN, indent=2, ensure_ascii=False))
+    lines.append("")
+    lines.append("INPUT_ATTACHMENTS (attach before generation):")
+    lines.append(f"- Pair manifest: {pair_path}")
+    lines.append(f"- Year prev: {prev_path}")
+    lines.append(f"- Year curr: {curr_path}")
+    lines.append("")
+    lines.append("Preflight expectations (from attached inputs):")
+    lines.append("- Fail hard if any attached file is missing/unreadable or invalid JSON.")
+    lines.append("- Verify pair manifest schema/input_mode/case/year_inputs linkage and file SHA256 locks against JOB_META.")
+    lines.append("- Verify prev/curr counts from `texts.paragraphs` against JOB_META expected counts.")
+    lines.append('- If any lock check fails, emit exactly: `{"error":"HARD_FAILURE","reason":"preflight input lock mismatch"}`.')
+    lines.append("- If preflight passes, proceed directly to final artifact JSON output (no extra preamble lines).")
+    lines.append("")
+    lines.append("Generate exactly one JSON object for `llm_outline_compare_structured` using the prompt contract below.")
+    emit_prompt_block(lines, "SYSTEM PROMPT", system_block)
+    lines.append("")
+    emit_prompt_block(lines, "USER PROMPT TEMPLATE", user_template)
+    lines.append("")
+    emit_prompt_block(lines, "SELF-CHECK GATE (must pass before final JSON)", self_check)
+    lines.append("")
+    lines.append("STRICT-DEPTH ADDENDUM (must pass before final JSON)")
+    lines.append("- material_changes must contain at least 4 rows.")
+    lines.append(
+        "- Use unique material-change evidence refs per year: >=4 when year paragraph_count>=50, else >=3."
+    )
+    lines.append(
+        "- At least one top-3 material change (by salience) must cite non-opening paragraphs in both years."
+    )
+    lines.append(
+        "- For each year with paragraph_count>=30, material-change refs must span at least two section terciles."
+    )
+    lines.append(
+        "- Keep shallow-reference ratios below strict blocker thresholds: opening<=0.35, concentration<=0.50, unique-ref-ratio>=0.50."
+    )
+    lines.append("")
+    lines.append("Hard failure policy:")
+    lines.append("- If schema requirements cannot be satisfied, do not fabricate data.")
+    lines.append('- Return exactly: {"error":"HARD_FAILURE","reason":"<short reason>"}')
+    lines.append("- Never paraphrase snippets in evidence; use contiguous verbatim substrings only.")
+    lines.append("")
+    lines.append("Operator save target (you cannot write files directly from this chat):")
+    lines.append(f"- {output_path_structured}")
+    lines.append("")
+    lines.append("Return the final JSON object in-chat (or as a downloadable JSON file if the client supports files).")
+    lines.append("Return JSON only, one top-level object, no markdown.")
+    lines.append("END_STARTER")
+    lines.append("")
+    lines.append("LOCAL_POSTCHECK (run in workspace terminal after saving model JSON):")
+    lines.append(f"- {build_json_parse_command(output_path_structured)}")
+    lines.append(
+        f'- python scripts/lab_validate_llm_master_outputs.py --manifest "{manifest_path}" --campaign-id "{campaign_id}" --artifact-id "llm_outline_compare_structured" --target-field "master_output" --allow-missing --allow-invalid --only "{only_token_structured}" --only-mode "exact_path" --expect-target-count 1 --fail-if-target-count-mismatch'
+    )
+    lines.append(
+        f'- python scripts/lab_audit_master_output_quality.py --output "{output_path_structured}" --campaign-id "{campaign_id}" --artifact-id "llm_outline_compare_structured" --mode blockers --strict-depth'
+    )
+    lines.append(
+        f'- python scripts/lab_project_master_v2_to_v1.py --manifest "{manifest_path}" --campaign-id "{campaign_id}" --only "{only_token_structured}" --only-mode "exact_path"'
+    )
+    lines.append(f"- {build_json_parse_command(output_path_runtime)}")
+    lines.append(
+        f'- python scripts/lab_validate_llm_master_outputs.py --manifest "{manifest_path}" --campaign-id "{campaign_id}" --artifact-id "llm_outline_compare_runtime" --target-field "projected_master_output_runtime" --allow-missing --allow-invalid --only "{only_token_runtime}" --only-mode "exact_path" --expect-target-count 1 --fail-if-target-count-mismatch'
+    )
+    lines.append("- Final local status line: Success => WRITE_OK JSON_OK VALIDATION_OK")
+    lines.append("")
+
+
+def emit_chatgpt_desktop_insight_exp_block(
+    *,
+    lines: list[str],
+    job_number: int,
+    ticker: str,
+    year_from: object,
+    year_to: object,
+    lens: str,
+    section: str,
+    source_id: str,
+    pair_path: str,
+    prev_path: str,
+    curr_path: str,
+    output_path_insight: str,
+    output_path_structured: str,
+    output_path_runtime: str,
+    canonical_input_file: str,
+    manifest_path: str,
+    campaign_id: str,
+    only_token_insight: str,
+    only_token_structured: str,
+    only_token_runtime: str,
+    system_block: str,
+    user_template: str,
+    self_check: str,
+    model_provider: str,
+    model_name: str,
+    run_label_template: str,
+    expected_prev_paragraphs: Optional[int],
+    expected_curr_paragraphs: Optional[int],
+    expected_pair_sha256: str,
+    expected_prev_sha256: str,
+    expected_curr_sha256: str,
+) -> None:
+    lines.append(f"## Job {job_number:02d} - {ticker} {year_from}-{year_to} {lens}")
+    lines.append("COPY FROM NEXT LINE THROUGH END_STARTER AND PASTE INTO A FRESH CHATGPT DESKTOP THREAD:")
+    lines.append("BEGIN_STARTER")
+    lines.append("You are ChatGPT running a manual desktop job using the attached case files.")
+    lines.append("Use only the three attached JSON input files plus this embedded prompt contract.")
+    lines.append("Do not ask to execute shell commands; local validation/projection commands are run by the operator after you return JSON.")
+    lines.append(
+        "Execution focus: use only the declared pair/year input files plus this embedded prompt contract."
+    )
+    lines.append(
+        "Forbidden sources: do not inspect existing output artifacts (including sibling raw/deboiler files) as templates unless a required gate fails."
+    )
+    lines.append("")
+    lines.append("Execution mode: MANUAL_CHATGPT_DESKTOP_INSIGHT_EXP")
+    lines.append(f"Thread title: {ticker} {year_from}-{year_to} insight lens compare ({lens})")
+    lines.append(
+        f"Case context: ticker={ticker}, pair={year_from}-{year_to}, section={section}, lens={lens}, source={source_id}"
+    )
+    lines.append("")
+    lines.append("JOB_META")
+    lines.append(
+        json.dumps(
+            {
+                "job_id": f"{ticker}_{year_from}_{year_to}_{lens}_{source_id}",
+                "model_provider": model_provider,
+                "model_name": model_name,
+                "run_label_template": run_label_template,
+                "provenance_input_file": canonical_input_file,
+                "expected_prev_paragraphs": expected_prev_paragraphs,
+                "expected_curr_paragraphs": expected_curr_paragraphs,
+                "expected_pair_sha256": expected_pair_sha256,
+                "expected_prev_sha256": expected_prev_sha256,
+                "expected_curr_sha256": expected_curr_sha256,
+                "output_path_insight": output_path_insight,
+                "projected_output_path_structured": output_path_structured,
+                "projected_output_path_runtime": output_path_runtime,
+            },
+            indent=2,
+            ensure_ascii=False,
+        )
+    )
+    lines.append("")
+    lines.append("OUTPUT_SHAPE_MIN")
+    lines.append(json.dumps(OUTPUT_SHAPE_MIN_V3, indent=2, ensure_ascii=False))
+    lines.append("")
+    lines.append("INPUT_ATTACHMENTS (attach before generation):")
+    lines.append(f"- Pair manifest: {pair_path}")
+    lines.append(f"- Year prev: {prev_path}")
+    lines.append(f"- Year curr: {curr_path}")
+    lines.append("")
+    lines.append("Generate exactly one JSON object for `llm_outline_compare_insight` using the prompt contract below.")
+    emit_prompt_block(lines, "SYSTEM PROMPT", system_block)
+    lines.append("")
+    emit_prompt_block(lines, "USER PROMPT TEMPLATE", user_template)
+    lines.append("")
+    emit_prompt_block(lines, "SELF-CHECK GATE (must pass before final JSON)", self_check)
+    lines.append("")
+    lines.append("STRICT-DEPTH ADDENDUM (must pass before final JSON)")
+    lines.append("- material_changes must contain at least 4 rows.")
+    lines.append("- insight_cards must contain at least 4 rows with at least one `difference` and one `similarity`.")
+    lines.append("- executive_digest.summary_text must stay within 450-650 words.")
+    lines.append("- All insight evidence_ref_ids must resolve to evidence_map entries.")
+    lines.append("")
+    lines.append("Hard failure policy:")
+    lines.append("- If schema requirements cannot be satisfied, do not fabricate data.")
+    lines.append('- Return exactly: {"error":"HARD_FAILURE","reason":"<short reason>"}')
+    lines.append("- Never paraphrase snippets in evidence; use contiguous verbatim substrings only.")
+    lines.append("")
+    lines.append("Operator save target for insight JSON (you cannot write files directly from this chat):")
+    lines.append(f"- {output_path_insight}")
+    lines.append("")
+    lines.append("Return the final JSON object in-chat (or as a downloadable JSON file if the client supports files).")
+    lines.append("Return JSON only, one top-level object, no markdown.")
+    lines.append("END_STARTER")
+    lines.append("")
+    lines.append("LOCAL_POSTCHECK (run in workspace terminal after saving model JSON):")
+    lines.append(f"- {build_json_parse_command(output_path_insight)}")
+    lines.append(
+        f'- python scripts/lab_validate_llm_master_outputs.py --manifest "{manifest_path}" --campaign-id "{campaign_id}" --artifact-id "llm_outline_compare_insight" --target-field "master_output" --allow-missing --allow-invalid --only "{only_token_insight}" --only-mode "exact_path" --expect-target-count 1 --fail-if-target-count-mismatch'
+    )
+    lines.append(
+        f'- python scripts/lab_audit_master_output_quality.py --output "{output_path_insight}" --campaign-id "{campaign_id}" --artifact-id "llm_outline_compare_insight" --mode blockers --strict-depth'
+    )
+    lines.append(
+        f'- python scripts/lab_project_master_v3_to_v2.py --manifest "{manifest_path}" --campaign-id "{campaign_id}" --only "{only_token_insight}" --only-mode "exact_path"'
+    )
+    lines.append(f"- {build_json_parse_command(output_path_structured)}")
+    lines.append(
+        f'- python scripts/lab_validate_llm_master_outputs.py --manifest "{manifest_path}" --campaign-id "{campaign_id}" --artifact-id "llm_outline_compare_structured" --target-field "projected_master_output_structured" --allow-missing --allow-invalid --only "{only_token_structured}" --only-mode "exact_path" --expect-target-count 1 --fail-if-target-count-mismatch'
+    )
+    lines.append(
+        f'- python scripts/lab_audit_master_output_quality.py --output "{output_path_structured}" --campaign-id "{campaign_id}" --artifact-id "llm_outline_compare_structured" --mode blockers --strict-depth'
+    )
+    lines.append(
+        f'- python scripts/lab_project_master_v2_to_v1.py --manifest "{manifest_path}" --campaign-id "{campaign_id}" --only "{only_token_structured}" --only-mode "exact_path"'
+    )
+    lines.append(f"- {build_json_parse_command(output_path_runtime)}")
+    lines.append(
+        f'- python scripts/lab_validate_llm_master_outputs.py --manifest "{manifest_path}" --campaign-id "{campaign_id}" --artifact-id "llm_outline_compare_runtime" --target-field "projected_master_output_runtime" --allow-missing --allow-invalid --only "{only_token_runtime}" --only-mode "exact_path" --expect-target-count 1 --fail-if-target-count-mismatch'
+    )
+    lines.append("- Final local status line: Success => WRITE_OK JSON_OK VALIDATION_OK")
+    lines.append("")
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="Emit canonical thread starters for llm_outline_compare_v2 master jobs."
+        description="Emit canonical thread starters for llm_outline_compare_structured/insight master jobs."
     )
     parser.add_argument("--manifest", default=str(DEFAULT_MANIFEST))
     parser.add_argument("--out", default=str(DEFAULT_OUT))
@@ -928,27 +1589,36 @@ def build_parser() -> argparse.ArgumentParser:
             "vscode_autowrite",
             "vscode_autowrite_v2",
             "vscode_autowrite_v3",
-            "vscode_autowrite_v4",
+            "vscode_autowrite_structured_prod",
+            "vscode_autowrite_insight_exp",
             "legacy",
         ),
-        default="vscode_autowrite_v4",
-        help="Starter output format. vscode_autowrite_v4 is the canonical one-paste VS Code run profile.",
+        default="vscode_autowrite_structured_prod",
+        help=(
+            "Starter output format. Canonical: vscode_autowrite_structured_prod/"
+            "vscode_autowrite_insight_exp. Legacy formats require --allow-legacy-formats."
+        ),
+    )
+    parser.add_argument(
+        "--allow-legacy-formats",
+        action="store_true",
+        help="Allow emitting legacy starter formats (vscode_autowrite/v2/v3/legacy).",
     )
     parser.add_argument(
         "--batch-size",
         type=int,
         default=6,
-        help="When using vscode_autowrite_v2/v3/v4, emit governance checkpoints every N jobs.",
+        help="When using vscode_autowrite_v2/v3 and structured_prod/insight_exp, emit governance checkpoints every N jobs.",
     )
     parser.add_argument(
         "--batch-progress-report",
         default=str(DEFAULT_BATCH_PROGRESS_REPORT),
-        help="Batch progress markdown report used by vscode_autowrite_v2/v3 checkpoints.",
+        help="Batch progress markdown report used by vscode_autowrite_v2/v3 and structured_prod/insight_exp checkpoints.",
     )
     parser.add_argument(
         "--batch-progress-json",
         default=str(DEFAULT_BATCH_PROGRESS_JSON),
-        help="Batch progress JSON history used by vscode_autowrite_v2/v3 checkpoints.",
+        help="Batch progress JSON history used by vscode_autowrite_v2/v3 and structured_prod/insight_exp checkpoints.",
     )
     parser.add_argument(
         "--verbose-progress",
@@ -967,6 +1637,14 @@ def build_parser() -> argparse.ArgumentParser:
 def main(argv: Optional[list[str]] = None) -> int:
     started = time.monotonic()
     args = build_parser().parse_args(argv)
+    if args.format in LEGACY_FORMATS and not bool(args.allow_legacy_formats):
+        raise SystemExit(
+            "Legacy starter formats are disabled by default. "
+            "Use --format vscode_autowrite_structured_prod (production) or "
+            "--format vscode_autowrite_insight_exp (experimental), or pass "
+            "--allow-legacy-formats to opt in."
+        )
+
     manifest_path = Path(args.manifest)
     if not manifest_path.is_absolute():
         manifest_path = (REPO_ROOT / manifest_path).resolve()
@@ -987,6 +1665,12 @@ def main(argv: Optional[list[str]] = None) -> int:
     campaign_id = str(campaign_dict.get("campaign_id") or "<campaign_id>")
     campaign_name = str(campaign_dict.get("display_name") or "<campaign_display>")
     campaign_track = get_llm_campaign(campaign_id)
+    campaign_execution_venue = (
+        campaign_track.execution_venue
+        if campaign_track is not None
+        else EXECUTION_VENUE_VSCODE_AGENT
+    )
+    is_chatgpt_desktop_venue = campaign_execution_venue == EXECUTION_VENUE_CHATGPT_DESKTOP
     model_provider = (
         campaign_track.model_provider
         if campaign_track is not None and campaign_track.model_provider
@@ -1018,12 +1702,18 @@ def main(argv: Optional[list[str]] = None) -> int:
     if not batch_progress_json_path.is_absolute():
         batch_progress_json_path = (REPO_ROOT / batch_progress_json_path).resolve()
 
-    system_block = load_prompt_block(PROMPT_SYSTEM_PATH).strip()
-    user_template = load_prompt_block(PROMPT_USER_TEMPLATE_PATH).strip()
-    self_check = load_prompt_block(PROMPT_SELF_CHECK_PATH).strip()
+    system_block_v2 = load_prompt_block(PROMPT_SYSTEM_V2_PATH).strip()
+    user_template_v2 = load_prompt_block(PROMPT_USER_TEMPLATE_V2_PATH).strip()
+    self_check_v2 = load_prompt_block(PROMPT_SELF_CHECK_V2_PATH).strip()
+    system_block_v3 = load_prompt_block(PROMPT_SYSTEM_V3_PATH).strip()
+    user_template_v3 = load_prompt_block(PROMPT_USER_TEMPLATE_V3_PATH).strip()
+    self_check_v3 = load_prompt_block(PROMPT_SELF_CHECK_V3_PATH).strip()
+
+    if args.format == "vscode_autowrite_insight_exp":
+        ensure_insight_manifest_compatible(entries)
 
     lines: list[str] = []
-    lines.append("# Master Thread Starters (llm_outline_compare_v2)")
+    lines.append("# Master Thread Starters (llm_outline_compare_structured/insight)")
     lines.append("")
     lines.append(f"- script: `{SCRIPT_VERSION}`")
     lines.append(f"- manifest: `{manifest_path.as_posix()}`")
@@ -1032,17 +1722,29 @@ def main(argv: Optional[list[str]] = None) -> int:
     lines.append(f"- output format: `{args.format}`")
     lines.append("")
     lines.append("Run one thread per pair/lens.")
-    if args.format in {"vscode_autowrite", "vscode_autowrite_v2", "vscode_autowrite_v3", "vscode_autowrite_v4"}:
-        lines.append("Each job block is paste-ready for a fresh VS Code Codex thread:")
-        lines.append("1. Reads pair/year files directly from workspace")
-        lines.append("2. Writes output to canonical path(s)")
+    if args.format in {"vscode_autowrite", "vscode_autowrite_v2", "vscode_autowrite_v3", "vscode_autowrite_structured_prod", "vscode_autowrite_insight_exp"}:
+        if is_chatgpt_desktop_venue:
+            lines.append("Each job block includes a BEGIN_STARTER prompt for a fresh ChatGPT Desktop thread plus LOCAL_POSTCHECK terminal commands.")
+        else:
+            lines.append("Each job block is paste-ready for a fresh VS Code Codex thread:")
+        if is_chatgpt_desktop_venue:
+            lines.append("1. Uses only the three attached input files")
+        else:
+            lines.append("1. Reads pair/year files directly from workspace")
+        if is_chatgpt_desktop_venue:
+            lines.append("2. Returns JSON; operator saves to canonical path(s)")
+        else:
+            lines.append("2. Writes output to canonical path(s)")
         lines.append("3. Runs parse + validator + quality blocker checks immediately")
-        if args.format in {"vscode_autowrite_v2", "vscode_autowrite_v3", "vscode_autowrite_v4"}:
+        if args.format in {"vscode_autowrite_v2", "vscode_autowrite_v3", "vscode_autowrite_structured_prod", "vscode_autowrite_insight_exp"}:
             lines.append("4. Includes JOB_META constants + output skeleton to reduce exploration overhead")
-            lines.append("5. Applies strict preflight lock on year_payload.texts.paragraphs counts")
-            if args.format == "vscode_autowrite_v4":
+            lines.append("5. Applies strict preflight lock on texts.paragraphs counts")
+            if args.format == "vscode_autowrite_structured_prod":
                 lines.append("6. Enforces SHA/path input locks and explicit no-template policy")
-                lines.append("7. Projects llm_outline_compare_v2 to runtime llm_outline_compare_v1")
+                lines.append("7. Projects llm_outline_compare_structured to runtime llm_outline_compare_runtime")
+            elif args.format == "vscode_autowrite_insight_exp":
+                lines.append("6. Enforces SHA/path input locks and explicit no-template policy")
+                lines.append("7. Projects llm_outline_compare_insight to structured, then structured to runtime")
             else:
                 lines.append("6. Inserts batch governance checkpoints every N jobs")
     else:
@@ -1053,6 +1755,12 @@ def main(argv: Optional[list[str]] = None) -> int:
     lines.append("")
 
     print(f"[phase] emit master thread starters (script={SCRIPT_VERSION})", flush=True)
+    checkpoint_artifact_id = (
+        "llm_outline_compare_insight"
+        if args.format == "vscode_autowrite_insight_exp"
+        else "llm_outline_compare_structured"
+    )
+
     emitted = 0
     total_entries = len(entries)
     loop_started = time.monotonic()
@@ -1064,7 +1772,8 @@ def main(argv: Optional[list[str]] = None) -> int:
             continue
         input_block = as_dict(entry.get("input")) or {}
         master_output = as_dict(entry.get("master_output")) or {}
-        projected_master_output_v1 = as_dict(entry.get("projected_master_output_v1")) or {}
+        projected_master_output_structured = as_dict(entry.get("projected_master_output_structured")) or {}
+        projected_master_output_runtime = as_dict(entry.get("projected_master_output_runtime")) or {}
         ticker = str(entry.get("ticker") or "")
         year_from = entry.get("year_from")
         year_to = entry.get("year_to")
@@ -1075,8 +1784,11 @@ def main(argv: Optional[list[str]] = None) -> int:
         prev_path_raw = str(input_block.get("source_year_prev_path") or "")
         curr_path_raw = str(input_block.get("source_year_curr_path") or "")
         output_path = str(master_output.get("expected_output_path") or "")
-        projected_output_path_v1 = str(
-            projected_master_output_v1.get("expected_output_path") or ""
+        projected_output_path_structured = str(
+            projected_master_output_structured.get("expected_output_path") or ""
+        )
+        projected_output_path_runtime = str(
+            projected_master_output_runtime.get("expected_output_path") or ""
         )
         input_integrity = as_dict(input_block.get("integrity")) or {}
         expected_pair_sha256 = str(input_integrity.get("pair_payload_sha256") or "")
@@ -1096,19 +1808,34 @@ def main(argv: Optional[list[str]] = None) -> int:
         )
         pair_basename = Path(pair_path_raw).name
         canonical_input_file = f"inputs/pair/{pair_basename}" if pair_basename else ""
+        master_artifact_id = str(master_output.get("artifact_id") or "").strip()
         output_display = resolve_from_manifest(
             output_path, bundle_root=None, pair_abs_path=None
+        )
+        if master_artifact_id == "llm_outline_compare_insight":
+            output_insight_raw = output_path
+        else:
+            output_insight_raw = derive_insight_output_path(output_path)
+        output_display_insight = resolve_from_manifest(
+            output_insight_raw, bundle_root=None, pair_abs_path=None
         )
         manifest_display = workspace_display(manifest_path)
         validation_report_display = workspace_display(validation_report_path)
         quality_report_display = workspace_display(quality_report_path)
         batch_progress_report_display = workspace_display(batch_progress_report_path)
         batch_progress_json_display = workspace_display(batch_progress_json_path)
-        only_token = output_display
-        runtime_output_display = resolve_from_manifest(
-            projected_output_path_v1, bundle_root=None, pair_abs_path=None
+        projected_structured_raw = projected_output_path_structured or derive_structured_output_path_from_insight(output_insight_raw)
+        projected_output_display_structured = resolve_from_manifest(
+            projected_structured_raw, bundle_root=None, pair_abs_path=None
         )
-        only_token_v1 = runtime_output_display
+        runtime_raw = projected_output_path_runtime or derive_runtime_output_path(projected_structured_raw)
+        runtime_output_display = resolve_from_manifest(
+            runtime_raw, bundle_root=None, pair_abs_path=None
+        )
+        only_token = output_display
+        only_token_insight = output_display_insight
+        only_token_structured = projected_output_display_structured
+        only_token_runtime = runtime_output_display
         expected_prev_paragraphs = extract_year_paragraph_count(prev_path)
         expected_curr_paragraphs = extract_year_paragraph_count(curr_path)
         run_label_template = build_run_label_template(
@@ -1116,6 +1843,11 @@ def main(argv: Optional[list[str]] = None) -> int:
             ticker=ticker,
             year_from=year_from,
             year_to=year_to,
+            run_label_prefix_template=(
+                campaign_track.run_label_prefix_template
+                if campaign_track is not None
+                else None
+            ),
         )
         emitted += 1
         now = time.monotonic()
@@ -1142,9 +1874,9 @@ def main(argv: Optional[list[str]] = None) -> int:
                 curr_path=curr_path,
                 output_path=output_display,
                 canonical_input_file=canonical_input_file,
-                system_block=system_block,
-                user_template=user_template,
-                self_check=self_check,
+                system_block=system_block_v2,
+                user_template=user_template_v2,
+                self_check=self_check_v2,
             )
         elif args.format == "vscode_autowrite":
             emit_vscode_autowrite_block(
@@ -1163,12 +1895,10 @@ def main(argv: Optional[list[str]] = None) -> int:
                 canonical_input_file=canonical_input_file,
                 manifest_path=manifest_display,
                 campaign_id=campaign_id,
-                validation_report=validation_report_display,
-                quality_report=quality_report_display,
                 only_token=only_token,
-                system_block=system_block,
-                user_template=user_template,
-                self_check=self_check,
+                system_block=system_block_v2,
+                user_template=user_template_v2,
+                self_check=self_check_v2,
             )
         elif args.format == "vscode_autowrite_v2":
             emit_vscode_autowrite_v2_block(
@@ -1187,12 +1917,10 @@ def main(argv: Optional[list[str]] = None) -> int:
                 canonical_input_file=canonical_input_file,
                 manifest_path=manifest_display,
                 campaign_id=campaign_id,
-                validation_report=validation_report_display,
-                quality_report=quality_report_display,
                 only_token=only_token,
-                system_block=system_block,
-                user_template=user_template,
-                self_check=self_check,
+                system_block=system_block_v2,
+                user_template=user_template_v2,
+                self_check=self_check_v2,
                 model_provider=model_provider,
                 model_name=model_name,
                 run_label_template=run_label_template,
@@ -1207,10 +1935,7 @@ def main(argv: Optional[list[str]] = None) -> int:
                     total_jobs=total_entries,
                     manifest_path=manifest_display,
                     campaign_id=campaign_id,
-                    validation_report=validation_report_display,
-                    quality_report=quality_report_display,
-                    progress_md=batch_progress_report_display,
-                    progress_json=batch_progress_json_display,
+                    master_artifact_id=checkpoint_artifact_id,
                 )
         elif args.format == "vscode_autowrite_v3":
             emit_vscode_autowrite_v3_block(
@@ -1229,12 +1954,10 @@ def main(argv: Optional[list[str]] = None) -> int:
                 canonical_input_file=canonical_input_file,
                 manifest_path=manifest_display,
                 campaign_id=campaign_id,
-                validation_report=validation_report_display,
-                quality_report=quality_report_display,
                 only_token=only_token,
-                system_block=system_block,
-                user_template=user_template,
-                self_check=self_check,
+                system_block=system_block_v2,
+                user_template=user_template_v2,
+                self_check=self_check_v2,
                 model_provider=model_provider,
                 model_name=model_name,
                 run_label_template=run_label_template,
@@ -1249,13 +1972,15 @@ def main(argv: Optional[list[str]] = None) -> int:
                     total_jobs=total_entries,
                     manifest_path=manifest_display,
                     campaign_id=campaign_id,
-                    validation_report=validation_report_display,
-                    quality_report=quality_report_display,
-                    progress_md=batch_progress_report_display,
-                    progress_json=batch_progress_json_display,
+                    master_artifact_id=checkpoint_artifact_id,
                 )
-        else:
-            emit_vscode_autowrite_v4_block(
+        elif args.format == "vscode_autowrite_structured_prod":
+            emit_structured_block = (
+                emit_chatgpt_desktop_structured_prod_block
+                if is_chatgpt_desktop_venue
+                else emit_vscode_autowrite_structured_prod_block
+            )
+            emit_structured_block(
                 lines=lines,
                 job_number=emitted,
                 ticker=ticker,
@@ -1267,18 +1992,16 @@ def main(argv: Optional[list[str]] = None) -> int:
                 pair_path=pair_path,
                 prev_path=prev_path,
                 curr_path=curr_path,
-                output_path_v2=output_display,
-                output_path_v1=runtime_output_display,
+                output_path_structured=output_display,
+                output_path_runtime=runtime_output_display,
                 canonical_input_file=canonical_input_file,
                 manifest_path=manifest_display,
                 campaign_id=campaign_id,
-                validation_report=validation_report_display,
-                quality_report=quality_report_display,
-                only_token_v2=only_token,
-                only_token_v1=only_token_v1,
-                system_block=system_block,
-                user_template=user_template,
-                self_check=self_check,
+                only_token_structured=only_token,
+                only_token_runtime=only_token_runtime,
+                system_block=system_block_v2,
+                user_template=user_template_v2,
+                self_check=self_check_v2,
                 model_provider=model_provider,
                 model_name=model_name,
                 run_label_template=run_label_template,
@@ -1296,11 +2019,59 @@ def main(argv: Optional[list[str]] = None) -> int:
                     total_jobs=total_entries,
                     manifest_path=manifest_display,
                     campaign_id=campaign_id,
-                    validation_report=validation_report_display,
-                    quality_report=quality_report_display,
-                    progress_md=batch_progress_report_display,
-                    progress_json=batch_progress_json_display,
+                    master_artifact_id=checkpoint_artifact_id,
                 )
+        elif args.format == "vscode_autowrite_insight_exp":
+            emit_insight_block = (
+                emit_chatgpt_desktop_insight_exp_block
+                if is_chatgpt_desktop_venue
+                else emit_vscode_autowrite_insight_exp_block
+            )
+            emit_insight_block(
+                lines=lines,
+                job_number=emitted,
+                ticker=ticker,
+                year_from=year_from,
+                year_to=year_to,
+                lens=lens,
+                section=section,
+                source_id=source_id,
+                pair_path=pair_path,
+                prev_path=prev_path,
+                curr_path=curr_path,
+                output_path_insight=output_display_insight,
+                output_path_structured=projected_output_display_structured,
+                output_path_runtime=runtime_output_display,
+                canonical_input_file=canonical_input_file,
+                manifest_path=manifest_display,
+                campaign_id=campaign_id,
+                only_token_insight=only_token_insight,
+                only_token_structured=only_token_structured,
+                only_token_runtime=only_token_runtime,
+                system_block=system_block_v3,
+                user_template=user_template_v3,
+                self_check=self_check_v3,
+                model_provider=model_provider,
+                model_name=model_name,
+                run_label_template=run_label_template,
+                expected_prev_paragraphs=expected_prev_paragraphs,
+                expected_curr_paragraphs=expected_curr_paragraphs,
+                expected_pair_sha256=expected_pair_sha256,
+                expected_prev_sha256=expected_prev_sha256,
+                expected_curr_sha256=expected_curr_sha256,
+            )
+            batch_size = max(1, int(args.batch_size))
+            if emitted % batch_size == 0 and emitted < total_entries:
+                emit_batch_checkpoint_block(
+                    lines=lines,
+                    completed_jobs=emitted,
+                    total_jobs=total_entries,
+                    manifest_path=manifest_display,
+                    campaign_id=campaign_id,
+                    master_artifact_id=checkpoint_artifact_id,
+                )
+        else:
+            raise SystemExit(f"Unknown starter format: {args.format}")
 
     print("[phase] write starter markdown", flush=True)
     write_text(out_path, lines)
@@ -1314,3 +2085,27 @@ def main(argv: Optional[list[str]] = None) -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

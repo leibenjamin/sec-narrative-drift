@@ -1,4 +1,4 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 import argparse
 import json
@@ -52,7 +52,9 @@ def load_projection_entries(
         entry = as_str_dict(entry_any)
         if entry is None:
             continue
-        master_output = as_str_dict(entry.get("projected_master_output_v1"))
+        master_output = as_str_dict(entry.get("projected_master_output_runtime"))
+        if master_output is None:
+            master_output = as_str_dict(entry.get("projected_master_output_v1"))
         if master_output is None:
             master_output = as_str_dict(entry.get("master_output"))
         projection_outputs = as_list(entry.get("projection_outputs"))
@@ -119,7 +121,7 @@ def parse_master_payload(path: Path) -> Optional[dict[str, Any]]:
     payload_dict = as_str_dict(payload)
     if payload_dict is None:
         return None
-    if payload_dict.get("artifact_id") != "llm_outline_compare_v1":
+    if payload_dict.get("artifact_id") not in {"llm_outline_compare_runtime", "llm_outline_compare_v1"}:
         return None
     return payload_dict
 
@@ -255,7 +257,7 @@ def build_metrics(
         confidence = 0.50
     else:
         confidence = 0.25
-    warnings: list[str] = ["Projected deterministically from llm_outline_compare_v1 master artifact."]
+    warnings: list[str] = ["Projected deterministically from llm_outline_compare_runtime master artifact."]
     if lens_divergence:
         warnings.append(lens_divergence)
     return {
@@ -386,7 +388,7 @@ def build_output_payload(
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="Project llm_outline_compare_v1 master artifacts into existing LLM detector envelopes."
+        description="Project llm_outline_compare_runtime master artifacts into existing LLM detector envelopes."
     )
     parser.add_argument("--manifest", default=str(DEFAULT_MANIFEST_PATH))
     parser.add_argument("--campaign-id", default=DEFAULT_PRIMARY_LLM_CAMPAIGN_ID)
@@ -496,3 +498,6 @@ def main(argv: Optional[list[str]] = None) -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+
+
+

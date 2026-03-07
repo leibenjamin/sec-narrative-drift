@@ -1,4 +1,4 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 import argparse
 import hashlib
@@ -12,7 +12,7 @@ from pathlib import Path
 from typing import Any, Optional, cast
 
 from lab_script_version import build_script_version
-from lab_output_tracks import FY2022_RUNTIME_CASES
+from lab_output_tracks import LEGACY_FIXED_WINDOW_RUNTIME_CASES, pick_latest_adjacent_pair
 
 SCRIPT_VERSION = build_script_version(Path(__file__), "v2")
 
@@ -38,7 +38,10 @@ VALID_LENSES = {"raw", "stage1_clean", "deboilerplated", "structure_aware"}
 VALID_SOURCES = {"edgar", "sraf_nd"}
 DEFAULT_TICKERS = ["NVDA", "KO", "WM", "GE"]
 DEFAULT_YEAR_MIN = 2022
-DEFAULT_YEAR_MAX = 2025
+DEFAULT_YEAR_MAX = 2030
+
+PAIR_POLICY_LATEST_TWO = "latest_two"
+PAIR_POLICY_FIXED_WINDOW = "fixed_window"
 
 DETECTOR_ORDER = [
     "det_logodds_terms_v1",
@@ -274,7 +277,10 @@ def parse_lab_output(path: Path) -> Optional[LabOutputRecord]:
 
 def parse_input_record(path: Path) -> Optional[InputRecord]:
     rel_path = path.relative_to(LAB_ROOT).as_posix()
-    if not rel_path.startswith("llm_inputs/"):
+    if not (
+        rel_path.startswith("llm_inputs/")
+        or rel_path.startswith("llm_inputs_v2/inputs/pair/")
+    ):
         return None
 
     payload = read_json(path)
@@ -348,7 +354,11 @@ def sync_file_deterministic(source: Path, destination: Path) -> bool:
 
 
 def build_candidate_pairs(
-    year_min: int, year_max: int, adjacent_only: bool, include_most_recent_always: bool
+    year_min: int,
+    year_max: int,
+    adjacent_only: bool,
+    include_latest_pair: bool,
+    latest_pair: Optional[tuple[int, int]],
 ) -> list[tuple[int, int]]:
     pairs: list[tuple[int, int]] = []
     if adjacent_only:
@@ -359,10 +369,8 @@ def build_candidate_pairs(
             for right in range(left + 1, year_max + 1):
                 pairs.append((left, right))
 
-    if include_most_recent_always:
-        most_recent = (2024, 2025)
-        if year_min <= 2024 and year_max >= 2025 and most_recent not in pairs:
-            pairs.append(most_recent)
+    if include_latest_pair and latest_pair is not None and latest_pair not in pairs:
+        pairs.append(latest_pair)
 
     pairs.sort(key=lambda item: (item[0], item[1]))
     return pairs
@@ -373,24 +381,40 @@ def build_candidate_pairs_for_ticker(
     year_min: int,
     year_max: int,
     adjacent_only: bool,
-    include_most_recent_always: bool,
+    include_latest_pair: bool,
+    pair_policy: str,
+    available_pairs: set[tuple[int, int]],
 ) -> list[tuple[int, int]]:
     ticker_upper = ticker.upper()
-    runtime_pairs = FY2022_RUNTIME_CASES.get(ticker_upper)
+    if pair_policy == PAIR_POLICY_LATEST_TWO:
+        filtered_pairs: set[tuple[int, int]] = {
+            (min(year_from, year_to), max(year_from, year_to))
+            for year_from, year_to in available_pairs
+            if min(year_from, year_to) >= year_min
+        }
+        latest = pick_latest_adjacent_pair(filtered_pairs)
+        if latest is None:
+            return []
+        return [latest]
+
+    runtime_pairs = LEGACY_FIXED_WINDOW_RUNTIME_CASES.get(ticker_upper)
+    latest = pick_latest_adjacent_pair(available_pairs)
     if runtime_pairs and adjacent_only:
         filtered: list[tuple[int, int]] = []
         for year_from, year_to in runtime_pairs:
             if year_from < year_min or year_to > year_max:
                 continue
-            if not include_most_recent_always and (year_from, year_to) == (2024, 2025):
-                continue
             filtered.append((year_from, year_to))
+        if include_latest_pair and latest is not None and latest not in filtered:
+            filtered.append(latest)
+        filtered.sort(key=lambda item: (item[0], item[1]))
         return filtered
     return build_candidate_pairs(
         year_min=year_min,
         year_max=year_max,
         adjacent_only=adjacent_only,
-        include_most_recent_always=include_most_recent_always,
+        include_latest_pair=include_latest_pair,
+        latest_pair=latest,
     )
 
 
@@ -511,10 +535,19 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--year-min", type=int, default=DEFAULT_YEAR_MIN)
     parser.add_argument("--year-max", type=int, default=DEFAULT_YEAR_MAX)
     parser.add_argument(
+        "--pair-policy",
+        choices=(PAIR_POLICY_LATEST_TWO, PAIR_POLICY_FIXED_WINDOW),
+        default=PAIR_POLICY_LATEST_TWO,
+        help=(
+            "Pair selection policy. latest_two selects the latest adjacent fiscal-year pair "
+            "per ticker from available inputs/outputs; fixed_window preserves legacy range behavior."
+        ),
+    )
+    parser.add_argument(
         "--include-most-recent-always",
         action=argparse.BooleanOptionalAction,
         default=True,
-        help="Always include 2024-2025 pair if files exist.",
+        help="In fixed_window mode, include the latest adjacent pair when available.",
     )
     parser.add_argument(
         "--adjacent-only",
@@ -565,15 +598,11 @@ def main(argv: Optional[list[str]] = None) -> int:
         registry_out_path = REPO_ROOT / registry_out_path
 
     candidate_pairs_by_ticker: dict[str, list[tuple[int, int]]] = {}
-    for ticker in tickers:
-        candidate_pairs_by_ticker[ticker] = build_candidate_pairs_for_ticker(
-            ticker=ticker,
-            year_min=args.year_min,
-            year_max=args.year_max,
-            adjacent_only=bool(args.adjacent_only),
-            include_most_recent_always=bool(args.include_most_recent_always),
-        )
     hero_pairs = load_hero_pairs()
+
+    available_pairs_by_ticker: dict[str, set[tuple[int, int]]] = {}
+    for ticker in tickers:
+        available_pairs_by_ticker[ticker] = set()
 
     all_inputs: list[InputRecord] = []
     output_candidates: dict[
@@ -605,6 +634,14 @@ def main(argv: Optional[list[str]] = None) -> int:
             parsed_input = None
         if parsed_input is not None:
             all_inputs.append(parsed_input)
+            if parsed_input.ticker in available_pairs_by_ticker:
+                if (
+                    args.pair_policy != PAIR_POLICY_FIXED_WINDOW
+                    or (parsed_input.year_from >= args.year_min and parsed_input.year_to <= args.year_max)
+                ):
+                    available_pairs_by_ticker[parsed_input.ticker].add(
+                        (parsed_input.year_from, parsed_input.year_to)
+                    )
 
         try:
             parsed_output = parse_lab_output(path)
@@ -616,10 +653,18 @@ def main(argv: Optional[list[str]] = None) -> int:
             continue
         if publish_lens_set and parsed_output.cleaning_lens not in publish_lens_set:
             continue
-        if parsed_output.year_from < args.year_min or parsed_output.year_to > args.year_max:
+        if (
+            args.pair_policy == PAIR_POLICY_FIXED_WINDOW
+            and (parsed_output.year_from < args.year_min or parsed_output.year_to > args.year_max)
+        ):
             continue
         if args.adjacent_only and parsed_output.year_to != parsed_output.year_from + 1:
             continue
+
+        available_pairs_by_ticker[parsed_output.ticker].add(
+            (parsed_output.year_from, parsed_output.year_to)
+        )
+
         key = (
             parsed_output.ticker,
             parsed_output.section,
@@ -631,6 +676,17 @@ def main(argv: Optional[list[str]] = None) -> int:
         )
         bucket = output_candidates.setdefault(key, [])
         bucket.append(parsed_output)
+
+    for ticker in tickers:
+        candidate_pairs_by_ticker[ticker] = build_candidate_pairs_for_ticker(
+            ticker=ticker,
+            year_min=args.year_min,
+            year_max=args.year_max,
+            adjacent_only=bool(args.adjacent_only),
+            include_latest_pair=bool(args.include_most_recent_always),
+            pair_policy=args.pair_policy,
+            available_pairs=available_pairs_by_ticker.get(ticker, set()),
+        )
 
     normalized_links_by_case: dict[CaseKey, list[OutputLink]] = {}
     normalized_files: list[str] = []
@@ -791,9 +847,12 @@ def main(argv: Optional[list[str]] = None) -> int:
         "year_min": str(args.year_min),
         "year_max": str(args.year_max),
         "adjacent_only": str(bool(args.adjacent_only)).lower(),
+        "pair_policy": str(args.pair_policy),
         "include_most_recent_always": str(bool(args.include_most_recent_always)).lower(),
         "publish_lenses": ",".join(publish_lenses) if publish_lenses else "all",
-        "runtime_case_map_hard_cut": "fy2022_plus",
+        "runtime_case_map_hard_cut": (
+            "latest_two_per_ticker" if args.pair_policy == PAIR_POLICY_LATEST_TWO else "legacy_fixed_window"
+        ),
     }
     registry_payload = {
         "version": "1.0",
@@ -824,7 +883,8 @@ def main(argv: Optional[list[str]] = None) -> int:
     lines.append(f"- tickers: {', '.join(tickers)}")
     lines.append(
         f"- options: year_min={args.year_min}, year_max={args.year_max}, "
-        + f"adjacent_only={bool(args.adjacent_only)}, include_most_recent_always={bool(args.include_most_recent_always)}, "
+        + f"adjacent_only={bool(args.adjacent_only)}, pair_policy={args.pair_policy}, "
+        + f"include_most_recent_always={bool(args.include_most_recent_always)}, "
         + f"publish_lenses={','.join(publish_lenses) if publish_lenses else 'all'}"
     )
     lines.append(f"- cases_written: {len(cases_payload)}")

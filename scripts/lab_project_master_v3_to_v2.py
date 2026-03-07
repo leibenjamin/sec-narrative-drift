@@ -15,7 +15,7 @@ from lab_validate_llm_master_outputs import DEFAULT_MANIFEST_PATH, matches_only_
 SCRIPT_VERSION = build_script_version(Path(__file__), "v1")
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
-RUNTIME_FIELDS = (
+STRUCTURED_FIELDS = (
     "lab_schema_version",
     "artifact_schema_version",
     "ticker",
@@ -30,15 +30,21 @@ RUNTIME_FIELDS = (
     "material_changes",
     "evidence_bank",
     "lens_divergence",
+    "risk_graph_prev",
+    "risk_graph_curr",
+    "change_mechanisms",
+    "uncertainty_and_limits",
+    "investor_relevance",
+    "projection_contract",
     "provenance",
 )
 
 
 @dataclass(frozen=True)
 class ProjectionTarget:
-    source_structured_path: Path
-    target_runtime_path: Path
-    source_structured_display: str
+    source_insight_path: Path
+    target_structured_path: Path
+    source_insight_display: str
 
 
 def resolve_repo_relative(path_value: str) -> Path:
@@ -48,6 +54,16 @@ def resolve_repo_relative(path_value: str) -> Path:
 def write_json(path: Path, payload: dict[str, Any]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
+
+def derive_structured_path_from_insight(insight_path: str) -> Optional[str]:
+    normalized = insight_path.replace("\\", "/")
+    if "llm_outline_compare_insight" not in normalized:
+        return None
+    return (
+        normalized.replace("/llm_outline_compare_insight/", "/llm_outline_compare_structured/")
+        .replace("lab_llm_outline_compare_insight_", "lab_llm_outline_compare_structured_")
+    )
 
 
 def load_targets(
@@ -71,39 +87,49 @@ def load_targets(
         if entry is None:
             continue
         master_output = as_str_dict(entry.get("master_output"))
-        projected_v1 = as_str_dict(entry.get("projected_master_output_runtime"))
-        if master_output is None or projected_v1 is None:
+        projected_v2 = as_str_dict(entry.get("projected_master_output_structured"))
+        if master_output is None:
             continue
-        source_structured = get_str(master_output.get("expected_output_path"))
-        target_runtime = get_str(projected_v1.get("expected_output_path"))
-        if source_structured is None or target_runtime is None:
+        source_insight = get_str(master_output.get("expected_output_path"))
+        source_artifact_id = get_str(master_output.get("artifact_id"))
+        if source_insight is None:
             continue
-        normalized = "/" + source_structured.replace("\\", "/").lstrip("/")
+        if source_artifact_id not in {None, "llm_outline_compare_insight"} and "llm_outline_compare_insight" not in source_insight:
+            continue
+
+        normalized = "/" + source_insight.replace("\\", "/").lstrip("/")
         if f"/{campaign_slug}/" not in normalized:
             continue
-        if filters and not any(matches_only_token(source_structured, token, mode=only_mode) for token in filters):
+        if filters and not any(matches_only_token(source_insight, token, mode=only_mode) for token in filters):
             continue
+
+        target_structured = get_str(projected_v2.get("expected_output_path")) if projected_v2 is not None else None
+        if not target_structured:
+            target_structured = derive_structured_path_from_insight(source_insight)
+        if not target_structured:
+            continue
+
         targets.append(
             ProjectionTarget(
-                source_structured_path=resolve_repo_relative(source_structured),
-                target_runtime_path=resolve_repo_relative(target_runtime),
-                source_structured_display=source_structured,
+                source_insight_path=resolve_repo_relative(source_insight),
+                target_structured_path=resolve_repo_relative(target_structured),
+                source_insight_display=source_insight,
             )
         )
     return targets
 
 
-def project_payload(structured_payload: dict[str, Any]) -> dict[str, Any]:
+def project_payload(insight_payload: dict[str, Any]) -> dict[str, Any]:
     output: dict[str, Any] = {}
-    for field in RUNTIME_FIELDS:
-        output[field] = structured_payload.get(field)
-    output["artifact_id"] = "llm_outline_compare_runtime"
+    for field in STRUCTURED_FIELDS:
+        output[field] = insight_payload.get(field)
+    output["artifact_id"] = "llm_outline_compare_structured"
     return output
 
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="Project llm_outline_compare_structured master artifacts into runtime llm_outline_compare_runtime outputs."
+        description="Project llm_outline_compare_insight master artifacts into llm_outline_compare_structured outputs."
     )
     parser.add_argument("--manifest", default=str(DEFAULT_MANIFEST_PATH))
     parser.add_argument("--campaign-id", default=DEFAULT_PRIMARY_LLM_CAMPAIGN_ID)
@@ -112,7 +138,7 @@ def build_parser() -> argparse.ArgumentParser:
         "--only-mode",
         choices=("substring", "basename", "exact_path"),
         default="substring",
-        help="Matching mode for --only token(s) against source structured path.",
+        help="Matching mode for --only token(s) against source insight path.",
     )
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument(
@@ -141,7 +167,7 @@ def main(argv: Optional[list[str]] = None) -> int:
     if not manifest_path.exists():
         raise SystemExit(f"Manifest not found: {manifest_path}")
 
-    print(f"[phase] structured->runtime projection start (script={SCRIPT_VERSION})", flush=True)
+    print(f"[phase] insight->structured projection start (script={SCRIPT_VERSION})", flush=True)
     targets = load_targets(
         manifest_path=manifest_path,
         campaign_slug=campaign.track_slug,
@@ -157,16 +183,16 @@ def main(argv: Optional[list[str]] = None) -> int:
         now = time.monotonic()
         if args.verbose_progress or now - last_heartbeat >= interval:
             print(
-                "[progress] structured_to_runtime_projection "
+                "[progress] insight_to_structured_projection "
                 + f"targets={index}/{len(targets)} projected={projected} skipped={skipped}",
                 flush=True,
             )
             last_heartbeat = now
-        if not target.source_structured_path.exists():
+        if not target.source_insight_path.exists():
             skipped += 1
             continue
         try:
-            payload_raw = json.loads(target.source_structured_path.read_text(encoding="utf-8-sig"))
+            payload_raw = json.loads(target.source_insight_path.read_text(encoding="utf-8-sig"))
         except json.JSONDecodeError:
             skipped += 1
             continue
@@ -174,17 +200,17 @@ def main(argv: Optional[list[str]] = None) -> int:
         if payload is None:
             skipped += 1
             continue
-        if payload.get("artifact_id") != "llm_outline_compare_structured":
+        if payload.get("artifact_id") != "llm_outline_compare_insight":
             skipped += 1
             continue
         output_payload = project_payload(payload)
         if not args.dry_run:
-            write_json(target.target_runtime_path, output_payload)
+            write_json(target.target_structured_path, output_payload)
         projected += 1
 
     elapsed = int(time.monotonic() - started)
     print(
-        "STRUCTURED_TO_RUNTIME_PROJECTION "
+        "INSIGHT_TO_STRUCTURED_PROJECTION "
         + f"targets={len(targets)} projected={projected} skipped={skipped} dry_run={bool(args.dry_run)}"
     )
     print(f"Elapsed: {elapsed}s")

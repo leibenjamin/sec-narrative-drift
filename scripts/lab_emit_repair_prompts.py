@@ -4,7 +4,7 @@ import argparse
 import json
 import re
 from pathlib import Path
-from typing import Optional
+from typing import Optional, cast
 
 from lab_script_version import build_script_version
 
@@ -125,13 +125,30 @@ def build_focused_payload(
             continue
         value = payload[key]
         if isinstance(value, list) and key in index_hints:
+            items: list[object] = cast(list[object], value)
             selected: list[object] = []
             for idx in sorted(index_hints[key]):
-                if 0 <= idx < len(value):
-                    selected.append(value[idx])
+                if 0 <= idx < len(items):
+                    selected.append(items[idx])
             focused[f"{key}__indexed_focus"] = selected
         focused[key] = value
     return focused
+
+
+
+def as_object_dict(value: object) -> Optional[dict[str, object]]:
+    if not isinstance(value, dict):
+        return None
+    raw = cast(dict[object, object], value)
+    output: dict[str, object] = {}
+    for key, item in raw.items():
+        if isinstance(key, str):
+            output[key] = item
+    return output
+
+
+def get_text(value: object) -> str:
+    return value if isinstance(value, str) else ""
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -166,33 +183,29 @@ def main(argv: Optional[list[str]] = None) -> int:
 
     json_text = json_path.read_text(encoding="utf-8", errors="replace").strip()
     try:
-        payload_raw = json.loads(json_text)
+        payload_loaded: object = json.loads(json_text)
     except json.JSONDecodeError:
-        payload_raw = {}
-    payload = payload_raw if isinstance(payload_raw, dict) else {}
+        payload_loaded = {}
+    payload = as_object_dict(payload_loaded) or {}
 
-    artifact_id = ""
-    detector_id = ""
-    if isinstance(payload, dict):
-        artifact_id = str(payload.get("artifact_id") or "")
-        detector_id = str(payload.get("detector_id") or "")
-    provenance = payload.get("provenance") if isinstance(payload, dict) else None
-    provenance_dict = provenance if isinstance(provenance, dict) else {}
-    model_provider = str(provenance_dict.get("model_provider") or "")
-    model_name = str(provenance_dict.get("model_name") or "")
-    run_label = str(provenance_dict.get("run_label") or "")
+    artifact_id = get_text(payload.get("artifact_id"))
+    detector_id = get_text(payload.get("detector_id"))
+    provenance_dict = as_object_dict(payload.get("provenance")) or {}
+    model_provider = get_text(provenance_dict.get("model_provider"))
+    model_name = get_text(provenance_dict.get("model_name"))
+    run_label = get_text(provenance_dict.get("run_label"))
 
     focus_keys = infer_focus_keys(reasons)
     index_hints = extract_index_hints(reasons)
-    focused_payload = build_focused_payload(payload if isinstance(payload, dict) else {}, focus_keys, index_hints)
+    focused_payload = build_focused_payload(payload, focus_keys, index_hints)
 
     lines: list[str] = []
     lines.append("You are repairing a validation failure in one Lab LLM output JSON file.")
     lines.append("Return corrected JSON only. No markdown. No backticks. No commentary.")
     lines.append("Do not add or remove top-level keys.")
     lines.append("Preserve existing content unless a change is required to fix listed validator errors.")
-    if artifact_id == "llm_outline_compare_v1":
-        lines.append("This is a master artifact repair (`llm_outline_compare_v1`).")
+    if artifact_id in {"llm_outline_compare_runtime", "llm_outline_compare_v1"}:
+        lines.append("This is a master artifact repair (`llm_outline_compare_runtime`).")
         lines.append("Maintain top-level key set and required master sections exactly.")
         lines.append("Keep all evidence snippets verbatim contiguous substrings from mapped input paragraphs.")
     elif detector_id in {"det_llm_delta_brief_v1", "det_llm_excerpt_picker_v1"}:

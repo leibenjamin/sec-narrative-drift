@@ -15,6 +15,8 @@ Primary real-run campaign (runtime-visible):
 Compare-lane real-run campaign (runtime-hidden pending strict-valid completion):
 - `campaign_id`: `openai_chatgpt52ext_agent_fullsec_real_2026-02-27`
 - `campaign_slug`: `openai-chatgpt52ext-agent-fullsec-real-2026-02-27`
+- Lineage note: campaign id/slug intentionally keep the `chatgpt52ext` token for path continuity.
+- Active model for this manual compare campaign is `ChatGPT 5.4-Thinking (Extended Thinking)`; new run labels use the `chatgpt54ext` token.
 
 Campaign metadata source of truth:
 - `scripts/lab_output_tracks.py`
@@ -31,7 +33,7 @@ All detector outputs (deterministic and LLM) use track-aware paths:
 
 ## Master-First Workflow
 1. Build or refresh campaign master manifest and starters.
-2. Execute manual master jobs (`llm_outline_compare_v1`) with one starter thread per job.
+2. Execute manual master jobs (`llm_outline_compare_structured`) with one starter thread per job (with deterministic projection to `llm_outline_compare_runtime`).
 3. Validate outputs with strict single-target controls.
 4. Run blocker-quality audit.
 5. Project master artifacts to compatibility detector envelopes.
@@ -67,3 +69,6 @@ After build/data logic changes:
 
 ## Legacy Note
 Older 2026-02-21 campaign docs and detector-first run-manifest procedures are historical only and non-canonical for current full-section real runs.
+
+
+

@@ -35,7 +35,7 @@ Historical goals included:
 - manual ChatGPT detector runs,
 - post-run validation and compatibility migration.
 
-This phase narrative is now superseded by canonical master-first execution (`llm_outline_compare_v1`) with deterministic projection to detector envelopes.
+This phase narrative is now superseded by canonical master-first execution (`llm_outline_compare_structured`) with deterministic projection to `llm_outline_compare_runtime` and then detector envelopes.
 
 ## Superseded Phase Narrative: PHASE 3 (Product Polish)
 Historical goals included:

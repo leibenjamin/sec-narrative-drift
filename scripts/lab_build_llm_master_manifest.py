@@ -1,4 +1,4 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 import argparse
 import json
@@ -11,10 +11,12 @@ from lab_script_version import build_script_version
 from lab_output_tracks import (
     DEFAULT_PRIMARY_LLM_CAMPAIGN_ID,
     LLM_DETECTORS,
-    canonical_outline_compare_relative_path,
-    canonical_outline_compare_v2_relative_path,
+    canonical_outline_runtime_relative_path,
+    canonical_outline_structured_relative_path,
+    canonical_outline_insight_relative_path,
     canonical_output_relative_path,
     get_llm_campaign,
+    pick_latest_adjacent_pair,
 )
 from lab_llm_precompute_utils import (
     InputIndexEntry,
@@ -38,6 +40,8 @@ DEFAULT_TICKERS = ("NVDA", "KO", "WM", "GE")
 DEFAULT_REQUIRED_START = 2022
 DEFAULT_REQUIRED_END = 2025
 DEFAULT_INCLUDE_LATEST_AFTER = 2025
+PAIR_POLICY_LATEST_TWO = "latest_two"
+PAIR_POLICY_FIXED_WINDOW = "fixed_window"
 DEFAULT_SECTION = "10k_item1a"
 DEFAULT_LENSES = "raw,deboilerplated"
 DEFAULT_SOURCE_ID = "edgar"
@@ -104,16 +108,13 @@ def build_required_pairs(start_year: int, end_year: int) -> list[tuple[int, int]
 def pick_extra_pair(
     pairs: set[tuple[int, int]], include_after_year: int
 ) -> Optional[tuple[int, int]]:
-    candidates: list[tuple[int, int]] = []
+    candidates: set[tuple[int, int]] = set()
     for year_from, year_to in pairs:
-        if year_to <= include_after_year:
+        normalized = (min(year_from, year_to), max(year_from, year_to))
+        if normalized[1] <= include_after_year:
             continue
-        if year_to != year_from + 1:
-            continue
-        candidates.append((year_from, year_to))
-    if not candidates:
-        return None
-    return sorted(candidates, key=lambda item: (item[1], item[0]))[-1]
+        candidates.add(normalized)
+    return pick_latest_adjacent_pair(candidates)
 
 
 def build_target_pairs(
@@ -122,9 +123,20 @@ def build_target_pairs(
     start_year: int,
     end_year: int,
     include_after_year: int,
+    pair_policy: str,
 ) -> dict[str, list[tuple[int, int]]]:
-    required = build_required_pairs(start_year, end_year)
     output: dict[str, list[tuple[int, int]]] = {}
+    if pair_policy == PAIR_POLICY_LATEST_TWO:
+        for ticker in tickers:
+            case_pairs = pairs_by_ticker.get(ticker, set())
+            latest = pick_latest_adjacent_pair(case_pairs)
+            if latest is None:
+                output[ticker] = []
+            else:
+                output[ticker] = [latest]
+        return output
+
+    required = build_required_pairs(start_year, end_year)
     for ticker in tickers:
         case_pairs = pairs_by_ticker.get(ticker, set())
         merged = list(required)
@@ -166,9 +178,27 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--required-start", type=int, default=DEFAULT_REQUIRED_START)
     parser.add_argument("--required-end", type=int, default=DEFAULT_REQUIRED_END)
     parser.add_argument("--include-latest-after", type=int, default=DEFAULT_INCLUDE_LATEST_AFTER)
+    parser.add_argument(
+        "--pair-policy",
+        choices=(PAIR_POLICY_LATEST_TWO, PAIR_POLICY_FIXED_WINDOW),
+        default=PAIR_POLICY_LATEST_TWO,
+        help=(
+            "Target pair policy. latest_two selects one latest adjacent fiscal-year pair per ticker "
+            "from registry cases. fixed_window preserves the legacy required-start/end window."
+        ),
+    )
     parser.add_argument("--section", default=DEFAULT_SECTION)
     parser.add_argument("--lenses", default=DEFAULT_LENSES)
     parser.add_argument("--source-id", default=DEFAULT_SOURCE_ID)
+    parser.add_argument(
+        "--master-artifact-id",
+        choices=("llm_outline_compare_structured", "llm_outline_compare_insight"),
+        default="llm_outline_compare_structured",
+        help=(
+            "Primary authoring artifact for master_output. "
+            "structured is production; insight is experimental."
+        ),
+    )
     parser.add_argument("--bundle", default="")
     parser.add_argument("--inputs-index-pair-v2", default="")
     parser.add_argument("--inputs-index-year-v2", default="")
@@ -215,6 +245,16 @@ def main(argv: Optional[list[str]] = None) -> int:
     pair_index = load_input_index(bundle_paths.pair_index_v2, bundle_paths.bundle_root)
     pairs_by_ticker = load_registry_pairs(registry_path)
     tickers = parse_tickers(args.tickers)
+    if args.pair_policy == PAIR_POLICY_LATEST_TWO:
+        for input_entry in pair_index.values():
+            ticker_up = input_entry.ticker.upper()
+            if ticker_up not in tickers:
+                continue
+            normalized_pair = (
+                min(input_entry.year_from, input_entry.year_to),
+                max(input_entry.year_from, input_entry.year_to),
+            )
+            pairs_by_ticker.setdefault(ticker_up, set()).add(normalized_pair)
     lenses = parse_lenses(args.lenses)
     target_pairs = build_target_pairs(
         pairs_by_ticker=pairs_by_ticker,
@@ -222,6 +262,7 @@ def main(argv: Optional[list[str]] = None) -> int:
         start_year=args.required_start,
         end_year=args.required_end,
         include_after_year=args.include_latest_after,
+        pair_policy=args.pair_policy,
     )
 
     print(f"[phase] build master manifest rows (script={SCRIPT_VERSION})", flush=True)
@@ -267,21 +308,52 @@ def main(argv: Optional[list[str]] = None) -> int:
                         f"{ticker} {year_from}-{year_to} {lens} ({args.section})"
                     )
 
-                master_v2_rel = canonical_outline_compare_v2_relative_path(
-                    ticker=ticker,
-                    section=args.section,
-                    year_from=year_from,
-                    year_to=year_to,
-                    cleaning_lens=lens,
-                    source_id=args.source_id,
-                    track_slug=campaign.track_slug,
-                )
-                master_v2_repo_path = f"public/data/sec_narrative_drift_lab/{master_v2_rel}"
-                master_v2_present = (REPO_ROOT / master_v2_repo_path).exists()
-                if master_v2_present:
+                if args.master_artifact_id == "llm_outline_compare_insight":
+                    master_rel = canonical_outline_insight_relative_path(
+                        ticker=ticker,
+                        section=args.section,
+                        year_from=year_from,
+                        year_to=year_to,
+                        cleaning_lens=lens,
+                        source_id=args.source_id,
+                        track_slug=campaign.track_slug,
+                    )
+                    projected_master_structured_rel: Optional[str] = canonical_outline_structured_relative_path(
+                        ticker=ticker,
+                        section=args.section,
+                        year_from=year_from,
+                        year_to=year_to,
+                        cleaning_lens=lens,
+                        source_id=args.source_id,
+                        track_slug=campaign.track_slug,
+                    )
+                else:
+                    master_rel = canonical_outline_structured_relative_path(
+                        ticker=ticker,
+                        section=args.section,
+                        year_from=year_from,
+                        year_to=year_to,
+                        cleaning_lens=lens,
+                        source_id=args.source_id,
+                        track_slug=campaign.track_slug,
+                    )
+                    projected_master_structured_rel = None
+
+                master_repo_path = f"public/data/sec_narrative_drift_lab/{master_rel}"
+                master_present = (REPO_ROOT / master_repo_path).exists()
+                if master_present:
                     summary_present += 1
                 summary_targets += 1
-                runtime_v1_rel = canonical_outline_compare_relative_path(
+
+                projected_master_structured_repo_path: Optional[str] = None
+                projected_master_structured_present: Optional[bool] = None
+                if projected_master_structured_rel is not None:
+                    projected_master_structured_repo_path = (
+                        f"public/data/sec_narrative_drift_lab/{projected_master_structured_rel}"
+                    )
+                    projected_master_structured_present = (REPO_ROOT / projected_master_structured_repo_path).exists()
+
+                runtime_rel = canonical_outline_runtime_relative_path(
                     ticker=ticker,
                     section=args.section,
                     year_from=year_from,
@@ -290,9 +362,8 @@ def main(argv: Optional[list[str]] = None) -> int:
                     source_id=args.source_id,
                     track_slug=campaign.track_slug,
                 )
-                runtime_v1_repo_path = f"public/data/sec_narrative_drift_lab/{runtime_v1_rel}"
-                runtime_v1_present = (REPO_ROOT / runtime_v1_repo_path).exists()
-
+                runtime_repo_path = f"public/data/sec_narrative_drift_lab/{runtime_rel}"
+                runtime_present = (REPO_ROOT / runtime_repo_path).exists()
                 projection_outputs: list[dict[str, Any]] = []
                 for detector_id in LLM_DETECTORS:
                     rel = canonical_output_relative_path(
@@ -356,14 +427,21 @@ def main(argv: Optional[list[str]] = None) -> int:
                             },
                         },
                         "master_output": {
-                            "artifact_id": "llm_outline_compare_v2",
-                            "expected_output_path": master_v2_repo_path,
-                            "present": master_v2_present,
+                            "artifact_id": args.master_artifact_id,
+                            "expected_output_path": master_repo_path,
+                            "present": master_present,
                         },
-                        "projected_master_output_v1": {
-                            "artifact_id": "llm_outline_compare_v1",
-                            "expected_output_path": runtime_v1_repo_path,
-                            "present": runtime_v1_present,
+                        "projected_master_output_structured": {
+                            "artifact_id": "llm_outline_compare_structured",
+                            "expected_output_path": projected_master_structured_repo_path,
+                            "present": projected_master_structured_present,
+                        }
+                        if projected_master_structured_repo_path is not None
+                        else None,
+                        "projected_master_output_runtime": {
+                            "artifact_id": "llm_outline_compare_runtime",
+                            "expected_output_path": runtime_repo_path,
+                            "present": runtime_present,
                         },
                         "projection_outputs": projection_outputs,
                     }
@@ -386,11 +464,15 @@ def main(argv: Optional[list[str]] = None) -> int:
             "required_start_year": args.required_start,
             "required_end_year": args.required_end,
             "include_latest_after_year": args.include_latest_after,
+            "pair_policy": args.pair_policy,
             "section": args.section,
             "source_id": args.source_id,
             "lenses": lenses,
-            "master_artifact_id": "llm_outline_compare_v2",
-            "runtime_projected_artifact_id": "llm_outline_compare_v1",
+            "master_artifact_id": args.master_artifact_id,
+            "projected_master_artifact_id": "llm_outline_compare_structured"
+            if args.master_artifact_id == "llm_outline_compare_insight"
+            else None,
+            "runtime_projected_artifact_id": "llm_outline_compare_runtime",
             "projection_detectors": list(LLM_DETECTORS),
         },
         "bundle_root": to_repo_relative(bundle_paths.bundle_root),
@@ -404,6 +486,14 @@ def main(argv: Optional[list[str]] = None) -> int:
         "entries": entries,
     }
 
+
+    for entry in entries:
+        if entry.get("projected_master_output_structured") is None:
+            entry.pop("projected_master_output_structured", None)
+
+    scope_block: dict[str, Any] | None = payload.get("scope")
+    if isinstance(scope_block, dict) and scope_block.get("projected_master_artifact_id") is None:
+        scope_block.pop("projected_master_artifact_id", None)
     out_md = Path(args.out_md)
     if not out_md.is_absolute():
         out_md = (REPO_ROOT / out_md).resolve()
@@ -412,6 +502,22 @@ def main(argv: Optional[list[str]] = None) -> int:
         out_json = (REPO_ROOT / out_json).resolve()
     print("[phase] write master manifest outputs", flush=True)
     write_json(out_json, payload)
+
+    master_column_label = ("Master insight" if args.master_artifact_id == "llm_outline_compare_insight" else "Master structured")
+    if args.master_artifact_id == "llm_outline_compare_insight":
+        report_header = (
+            "| Ticker | Pair | Lens | Input | "
+            + master_column_label
+            + " | Projected structured | Runtime | Delta | Excerpt |"
+        )
+        report_separator = "| --- | --- | --- | --- | --- | --- | --- | --- | --- |"
+    else:
+        report_header = (
+            "| Ticker | Pair | Lens | Input | "
+            + master_column_label
+            + " | Runtime | Delta | Excerpt |"
+        )
+        report_separator = "| --- | --- | --- | --- | --- | --- | --- | --- |"
 
     report_lines = [
         "# LLM Master Manifest",
@@ -422,40 +528,47 @@ def main(argv: Optional[list[str]] = None) -> int:
         f"- bundle_root: `{to_repo_relative(bundle_paths.bundle_root)}`",
         f"- pair_index: `{to_repo_relative(bundle_paths.pair_index_v2)}`",
         f"- pair_lens_rows: `{len(entries)}`",
+        f"- pair_policy: `{args.pair_policy}`",
         f"- master_present: `{summary_present}/{summary_targets}`",
         f"- missing_inputs: `{len(missing_inputs)}`",
+        f"- master_artifact_id: `{args.master_artifact_id}`",
         "",
-        "| Ticker | Pair | Lens | Input | Master v2 | Runtime v1 | Delta | Excerpt |",
-        "| --- | --- | --- | --- | --- | --- | --- | --- |",
+        report_header,
+        report_separator,
     ]
     for entry in entries:
         pair_label = f"{entry['year_from']}-{entry['year_to']}"
         input_state = "present" if entry["input"]["source_present"] else "missing"
         master_state = "present" if entry["master_output"]["present"] else "missing"
         runtime_state = (
-            "present" if entry["projected_master_output_v1"]["present"] else "missing"
+            "present" if entry["projected_master_output_runtime"]["present"] else "missing"
         )
+        projected_structured_state = "-"
+        projected_structured: dict[str, Any] | None = entry.get("projected_master_output_structured")
+        if isinstance(projected_structured, dict):
+            projected_structured_state = "present" if projected_structured.get("present") else "missing"
         detector_states: dict[str, str] = {}
         for detector in entry["projection_outputs"]:
             detector_states[detector["detector_id"]] = (
                 "present" if detector["present"] else "missing"
             )
-        report_lines.append(
-            "| "
-            + " | ".join(
-                [
-                    str(entry["ticker"]),
-                    pair_label,
-                    str(entry["lens"]),
-                    input_state,
-                    master_state,
-                    runtime_state,
-                    detector_states.get("det_llm_delta_brief_v1", "-"),
-                    detector_states.get("det_llm_excerpt_picker_v1", "-"),
-                ]
-            )
-            + " |"
+        row_values = [
+            str(entry["ticker"]),
+            pair_label,
+            str(entry["lens"]),
+            input_state,
+            master_state,
+        ]
+        if args.master_artifact_id == "llm_outline_compare_insight":
+            row_values.append(projected_structured_state)
+        row_values.extend(
+            [
+                runtime_state,
+                detector_states.get("det_llm_delta_brief_v1", "-"),
+                detector_states.get("det_llm_excerpt_picker_v1", "-"),
+            ]
         )
+        report_lines.append("| " + " | ".join(row_values) + " |")
     report_lines.append("")
     report_lines.append("## Missing Inputs")
     if missing_inputs:
@@ -480,3 +593,14 @@ def main(argv: Optional[list[str]] = None) -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+
+
+
+
+
+
+
+
+
+
+

@@ -19,13 +19,14 @@ class RequestsResponse(Protocol):
 
     def raise_for_status(self) -> None: ...
 
-    def iter_content(self, chunk_size: int = 1) -> Iterable[bytes]: ...
+    def iter_content(self, chunk_size: int = 1) -> Iterable[Any]: ...
 
 
 class RequestsSession(Protocol):
     def get(
         self,
         url: str,
+        *,
         headers: Optional[dict[str, str]] = None,
         timeout: Optional[float] = None,
         stream: bool = False,
@@ -822,6 +823,8 @@ def build_primary_doc_url(cik10: str, accession: str, primary_doc: str) -> str:
 
 def load_fixture_html(primary_doc: str, allow_sample: bool) -> Optional[bytes]:
     if not allow_sample:
+        return None
+    if ".." in primary_doc or "/" in primary_doc or "\\" in primary_doc:
         return None
     fixture_path = FIXTURES_DIR / primary_doc
     if fixture_path.exists():

@@ -6,7 +6,7 @@ import re
 import statistics
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Optional
+from typing import Optional, cast
 
 from lab_script_version import build_script_version
 from lab_output_tracks import DEFAULT_PRIMARY_LLM_CAMPAIGN_ID, get_llm_campaign
@@ -23,7 +23,54 @@ from lab_validate_llm_outputs import build_paragraph_maps, resolve_input_file
 
 SCRIPT_VERSION = build_script_version(Path(__file__), "v1")
 REPO_ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_REPORT_PATH = REPO_ROOT / "reports" / "lab_llm_master_quality.md"
+
+def _sanitize_token(value: str) -> str:
+    cleaned = re.sub(r"[^a-zA-Z0-9]+", "_", value.strip().lower())
+    cleaned = cleaned.strip("_")
+    return cleaned or "unknown"
+
+
+def _campaign_slug_token(campaign_id: str) -> str:
+    campaign = get_llm_campaign(campaign_id)
+    if campaign is not None:
+        if campaign.track_id == "openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27":
+            return "codex_real"
+        if campaign.track_id == "openai_chatgpt52ext_agent_fullsec_real_2026-02-27":
+            return "chatgpt_real"
+        return _sanitize_token(campaign.track_slug)
+    return _sanitize_token(campaign_id)
+
+
+def _artifact_suffix(target_field: str, forced_artifact_id: str, targets: list[MasterTarget]) -> str:
+    if forced_artifact_id != "auto":
+        artifact_id = forced_artifact_id
+    elif target_field == "projected_master_output_runtime":
+        artifact_id = "llm_outline_compare_runtime"
+    elif target_field == "projected_master_output_structured":
+        artifact_id = "llm_outline_compare_structured"
+    elif targets:
+        artifact_id = targets[0].expected_artifact_id
+    else:
+        artifact_id = "llm_outline_compare_runtime"
+
+    if artifact_id == "llm_outline_compare_insight":
+        return "insight"
+    if artifact_id == "llm_outline_compare_structured":
+        return "structured"
+    return "runtime"
+
+
+def default_quality_report_path_for_args(
+    *,
+    campaign_id: str,
+    target_field: str,
+    artifact_id: str,
+    targets: list[MasterTarget],
+) -> Path:
+    campaign_token = _campaign_slug_token(campaign_id)
+    artifact_token = _artifact_suffix(target_field, artifact_id, targets)
+    filename = f"lab_llm_master_quality_{campaign_token}_{artifact_token}.md"
+    return REPO_ROOT / "reports" / filename
 
 BOUNDARY_CHARS = set(" \t\r\n,.;:!?)]}\"'/-")
 SENTENCE_END_CHARS = {".", "!", "?"}
@@ -62,7 +109,7 @@ class OutputAudit:
 
 def parse_output_filename(path: Path) -> Optional[dict[str, object]]:
     match = re.search(
-        r"lab_(?P<artifact_id>llm_outline_compare_v[12])_(?P<section>.+?)_(?P<year_from>\d{4})_(?P<year_to>\d{4})_(?P<lens>.+)_(?P<source_id>[a-zA-Z0-9]+)__",
+        r"lab_(?P<artifact_id>llm_outline_compare_(?:runtime|structured|insight))_(?P<section>.+?)_(?P<year_from>\d{4})_(?P<year_to>\d{4})_(?P<lens>.+)_(?P<source_id>[a-zA-Z0-9]+)__",
         path.name,
     )
     if match is None:
@@ -117,7 +164,7 @@ def infer_target_from_output(path: Path) -> Optional[MasterTarget]:
         expected_output_path=relative.as_posix(),
         manifest_present_flag=None,
         expected_artifact_id=artifact_id,
-        source_master_v2_path=None,
+        source_master_structured_path=None,
     )
 
 
@@ -224,6 +271,8 @@ def evaluate_output(
     target: MasterTarget,
     expected_model_provider: str,
     expected_model_name: str,
+    *,
+    strict_depth: bool = False,
 ) -> OutputAudit:
     blockers: list[AuditIssue] = []
     advisories: list[AuditIssue] = []
@@ -234,7 +283,7 @@ def evaluate_output(
         expected_model_provider=expected_model_provider,
         expected_model_name=expected_model_name,
         expected_artifact_id=target.expected_artifact_id,
-        source_master_v2_path=target.source_master_v2_path,
+        source_master_structured_path=target.source_master_structured_path,
     )
     for reason in reasons:
         blockers.append(
@@ -359,13 +408,28 @@ def evaluate_output(
             normalized[key] = value
         material_changes.append(normalized)
 
-    if target.expected_artifact_id == "llm_outline_compare_v2":
+    material_ref_unique_by_year: dict[int, set[int]] = {
+        target.year_from: set(),
+        target.year_to: set(),
+    }
+    for change in material_changes:
+        evidence_refs_any = as_list(change.get("evidence_refs")) or []
+        for ref_any in evidence_refs_any:
+            ref = as_str_dict(ref_any)
+            year = get_int(ref.get("year")) if ref is not None else None
+            paragraph_idx = get_int(ref.get("paragraph_idx")) if ref is not None else None
+            if year is None or paragraph_idx is None:
+                continue
+            if year in material_ref_unique_by_year:
+                material_ref_unique_by_year[year].add(paragraph_idx)
+
+    if target.expected_artifact_id in {"llm_outline_compare_structured", "llm_outline_compare_insight"}:
         change_mechanisms_any = as_list(payload.get("change_mechanisms")) or []
         if not change_mechanisms_any:
             blockers.append(
                 AuditIssue(
                     code="missing_change_mechanisms",
-                    detail="v2 payload must include non-empty change_mechanisms.",
+                    detail="structured payload must include non-empty change_mechanisms.",
                     severity="blocker",
                 )
             )
@@ -572,6 +636,312 @@ def evaluate_output(
                     severity="advisory",
                 )
             )
+        if strict_depth and target.expected_artifact_id in {"llm_outline_compare_structured", "llm_outline_compare_insight"}:
+            if opening_ratio > 0.35:
+                blockers.append(
+                    AuditIssue(
+                        code="opening_paragraph_overuse_blocker",
+                        detail=f"Opening paragraph reference ratio exceeds strict threshold ({opening_ratio:.2f} > 0.35).",
+                        severity="blocker",
+                    )
+                )
+            if concentration > 0.50:
+                blockers.append(
+                    AuditIssue(
+                        code="evidence_ref_concentration_blocker",
+                        detail=f"Evidence reference concentration exceeds strict threshold ({concentration:.2f} > 0.50).",
+                        severity="blocker",
+                    )
+                )
+            if unique_ratio < 0.50:
+                blockers.append(
+                    AuditIssue(
+                        code="low_evidence_ref_diversity_blocker",
+                        detail=f"Evidence reference uniqueness is below strict threshold ({unique_ratio:.2f} < 0.50).",
+                        severity="blocker",
+                    )
+                )
+
+    if strict_depth and target.expected_artifact_id in {"llm_outline_compare_structured", "llm_outline_compare_insight"}:
+        if len(material_changes) < 4:
+            blockers.append(
+                AuditIssue(
+                    code="insufficient_material_change_rows",
+                    detail=f"Strict depth mode requires >=4 material_changes rows; got {len(material_changes)}.",
+                    severity="blocker",
+                )
+            )
+
+        prev_count = len(prev_map) if prev_map is not None else 0
+        curr_count = len(curr_map) if curr_map is not None else 0
+        if prev_count <= 0 or curr_count <= 0:
+            blockers.append(
+                AuditIssue(
+                    code="insufficient_biyear_material_ref_coverage",
+                    detail="Strict depth mode could not resolve year paragraph counts from paragraph maps.",
+                    severity="blocker",
+                )
+            )
+        else:
+            coverage_failures: list[str] = []
+            for year, paragraph_count in (
+                (target.year_from, prev_count),
+                (target.year_to, curr_count),
+            ):
+                required = 4 if paragraph_count >= 50 else 3
+                observed = len(material_ref_unique_by_year.get(year, set()))
+                if observed < required:
+                    coverage_failures.append(
+                        f"year={year} observed_unique_refs={observed} required={required} paragraph_count={paragraph_count}"
+                    )
+            if coverage_failures:
+                blockers.append(
+                    AuditIssue(
+                        code="insufficient_biyear_material_ref_coverage",
+                        detail="; ".join(coverage_failures),
+                        severity="blocker",
+                    )
+                )
+
+            def tercile_bucket(idx: int, paragraph_count: int) -> int:
+                if paragraph_count <= 0:
+                    return 0
+                return min(2, (idx * 3) // paragraph_count)
+
+            for year, paragraph_count, code in (
+                (target.year_from, prev_count, "narrow_material_ref_span_prev"),
+                (target.year_to, curr_count, "narrow_material_ref_span_curr"),
+            ):
+                if paragraph_count < 30:
+                    continue
+                refs = material_ref_unique_by_year.get(year, set())
+                buckets = {tercile_bucket(idx, paragraph_count) for idx in refs}
+                if len(buckets) < 2:
+                    blockers.append(
+                        AuditIssue(
+                            code=code,
+                            detail=(
+                                f"Strict depth mode requires material refs to span >=2 terciles "
+                                f"for year {year}; observed_terciles={sorted(buckets)} refs={sorted(refs)}."
+                            ),
+                            severity="blocker",
+                        )
+                    )
+
+        ranked_changes: list[dict[str, object]] = []
+        for change in material_changes:
+            salience_raw = change.get("salience")
+            if isinstance(salience_raw, bool) or not isinstance(salience_raw, (int, float)):
+                continue
+            ranked_changes.append(change)
+        ranked_changes.sort(key=lambda change: float(cast(float, change.get("salience", 0.0))), reverse=True)
+        top_ranked = ranked_changes[:3]
+        if top_ranked:
+            found_top3_non_opening_biyear = False
+            for change in top_ranked:
+                refs_by_year: dict[int, list[int]] = {
+                    target.year_from: [],
+                    target.year_to: [],
+                }
+                evidence_refs_any = as_list(change.get("evidence_refs")) or []
+                for ref_any in evidence_refs_any:
+                    ref = as_str_dict(ref_any)
+                    year = get_int(ref.get("year")) if ref is not None else None
+                    paragraph_idx = get_int(ref.get("paragraph_idx")) if ref is not None else None
+                    if year is None or paragraph_idx is None:
+                        continue
+                    if year in refs_by_year:
+                        refs_by_year[year].append(paragraph_idx)
+                if (
+                    refs_by_year[target.year_from]
+                    and refs_by_year[target.year_to]
+                    and any(idx > 0 for idx in refs_by_year[target.year_from])
+                    and any(idx > 0 for idx in refs_by_year[target.year_to])
+                ):
+                    found_top3_non_opening_biyear = True
+                    break
+            if not found_top3_non_opening_biyear:
+                blockers.append(
+                    AuditIssue(
+                        code="missing_top3_non_opening_biyear_change",
+                        detail="Strict depth mode requires at least one top-3 material change with non-opening evidence refs in both years.",
+                        severity="blocker",
+                    )
+                )
+
+    if target.expected_artifact_id == "llm_outline_compare_insight":
+        executive_digest = as_str_dict(payload.get("executive_digest")) or {}
+        summary_text = get_str(executive_digest.get("summary_text")) or ""
+        digest_word_count = len(summary_text.split())
+        if digest_word_count < 450 or digest_word_count > 650:
+            blockers.append(
+                AuditIssue(
+                    code="digest_length_out_of_budget",
+                    detail=f"executive_digest.summary_text word count out of range ({digest_word_count}, expected 450-650).",
+                    severity="blocker",
+                )
+            )
+
+        insight_cards_any = as_list(payload.get("insight_cards")) or []
+        if len(insight_cards_any) < 4:
+            blockers.append(
+                AuditIssue(
+                    code="insufficient_insight_card_rows",
+                    detail=f"insight_cards must contain at least 4 rows; got {len(insight_cards_any)}.",
+                    severity="blocker",
+                )
+            )
+
+        evidence_map_any = as_list(payload.get("evidence_map")) or []
+        evidence_ids: set[str] = set()
+        evidence_pairs: set[tuple[int, int]] = set()
+        for row_any in evidence_map_any:
+            row = as_str_dict(row_any)
+            if row is None:
+                continue
+            evidence_id = get_str(row.get("evidence_id"))
+            year = get_int(row.get("year"))
+            paragraph_idx = get_int(row.get("paragraph_idx"))
+            if evidence_id:
+                evidence_ids.add(evidence_id)
+            if year is not None and paragraph_idx is not None and paragraph_idx >= 0:
+                evidence_pairs.add((year, paragraph_idx))
+
+        difference_count = 0
+        similarity_count = 0
+        unresolved_link_count = 0
+        ref_counts_v3: dict[tuple[int, int], int] = {}
+        refs_by_year_v3: dict[int, set[int]] = {
+            target.year_from: set(),
+            target.year_to: set(),
+        }
+        for idx, card_any in enumerate(insight_cards_any):
+            card = as_str_dict(card_any)
+            if card is None:
+                continue
+            insight_type = get_str(card.get("insight_type")) or ""
+            if insight_type == "difference":
+                difference_count += 1
+            elif insight_type == "similarity":
+                similarity_count += 1
+
+            evidence_ref_ids = as_list(card.get("evidence_ref_ids")) or []
+            for evidence_id_any in evidence_ref_ids:
+                if isinstance(evidence_id_any, str) and evidence_id_any:
+                    if evidence_ids and evidence_id_any not in evidence_ids:
+                        unresolved_link_count += 1
+                else:
+                    unresolved_link_count += 1
+
+            for list_key in ("evidence_refs_prev", "evidence_refs_curr"):
+                refs_any = as_list(card.get(list_key)) or []
+                for ref_any in refs_any:
+                    ref = as_str_dict(ref_any)
+                    year = get_int(ref.get("year")) if ref is not None else None
+                    paragraph_idx = get_int(ref.get("paragraph_idx")) if ref is not None else None
+                    if year is None or paragraph_idx is None or paragraph_idx < 0:
+                        unresolved_link_count += 1
+                        continue
+                    pair = (year, paragraph_idx)
+                    ref_counts_v3[pair] = ref_counts_v3.get(pair, 0) + 1
+                    if year in refs_by_year_v3:
+                        refs_by_year_v3[year].add(paragraph_idx)
+                    if evidence_pairs and pair not in evidence_pairs:
+                        unresolved_link_count += 1
+
+        if difference_count < 1:
+            blockers.append(
+                AuditIssue(
+                    code="missing_difference_insights",
+                    detail="insight_cards must include at least one difference insight.",
+                    severity="blocker",
+                )
+            )
+        if similarity_count < 1:
+            blockers.append(
+                AuditIssue(
+                    code="missing_similarity_insights",
+                    detail="insight_cards must include at least one similarity insight.",
+                    severity="blocker",
+                )
+            )
+        if unresolved_link_count > 0:
+            blockers.append(
+                AuditIssue(
+                    code="unresolved_insight_evidence_links",
+                    detail=f"Found {unresolved_link_count} unresolved insight/evidence references.",
+                    severity="blocker",
+                )
+            )
+
+        if ref_counts_v3:
+            total_refs_v3 = sum(ref_counts_v3.values())
+            max_ref_use_v3 = max(ref_counts_v3.values())
+            unique_ratio_v3 = len(ref_counts_v3) / total_refs_v3
+            concentration_v3 = max_ref_use_v3 / total_refs_v3
+            opening_ratio_v3 = sum(v for (_, idx), v in ref_counts_v3.items() if idx == 0) / total_refs_v3
+            if concentration_v3 > 0.50:
+                blockers.append(
+                    AuditIssue(
+                        code="insight_evidence_ref_concentration_blocker",
+                        detail=f"Insight evidence concentration exceeds strict threshold ({concentration_v3:.2f} > 0.50).",
+                        severity="blocker",
+                    )
+                )
+            if unique_ratio_v3 < 0.50:
+                blockers.append(
+                    AuditIssue(
+                        code="insight_low_evidence_ref_diversity_blocker",
+                        detail=f"Insight evidence uniqueness below strict threshold ({unique_ratio_v3:.2f} < 0.50).",
+                        severity="blocker",
+                    )
+                )
+            if opening_ratio_v3 > 0.35:
+                blockers.append(
+                    AuditIssue(
+                        code="insight_opening_paragraph_overuse_blocker",
+                        detail=f"Insight opening-paragraph ratio exceeds strict threshold ({opening_ratio_v3:.2f} > 0.35).",
+                        severity="blocker",
+                    )
+                )
+
+            prev_count = len(prev_map) if prev_map is not None else 0
+            curr_count = len(curr_map) if curr_map is not None else 0
+            for year, paragraph_count in ((target.year_from, prev_count), (target.year_to, curr_count)):
+                if paragraph_count <= 0:
+                    continue
+                required = 4 if paragraph_count >= 50 else 3
+                observed = len(refs_by_year_v3.get(year, set()))
+                if observed < required:
+                    blockers.append(
+                        AuditIssue(
+                            code="insufficient_insight_biyear_ref_coverage",
+                            detail=f"year={year} observed_unique_refs={observed} required={required} paragraph_count={paragraph_count}",
+                            severity="blocker",
+                        )
+                    )
+
+            def tercile_bucket_v3(idx: int, paragraph_count: int) -> int:
+                if paragraph_count <= 0:
+                    return 0
+                return min(2, (idx * 3) // paragraph_count)
+
+            for year, paragraph_count, code in (
+                (target.year_from, prev_count, "narrow_insight_ref_span_prev"),
+                (target.year_to, curr_count, "narrow_insight_ref_span_curr"),
+            ):
+                if paragraph_count < 30:
+                    continue
+                buckets = {tercile_bucket_v3(idx, paragraph_count) for idx in refs_by_year_v3.get(year, set())}
+                if len(buckets) < 2:
+                    blockers.append(
+                        AuditIssue(
+                            code=code,
+                            detail=f"Insight refs must span >=2 terciles for year {year}; observed_terciles={sorted(buckets)}.",
+                            severity="blocker",
+                        )
+                    )
+
 
     class_counts: dict[str, int] = {}
     for row_any in node_alignment_any:
@@ -692,13 +1062,13 @@ def resolve_targets_from_manifest(
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="Audit llm_outline_compare_v1/v2 output quality.")
+    parser = argparse.ArgumentParser(description="Audit llm_outline_compare_runtime/structured/insight output quality.")
     parser.add_argument("--output", default="", help="Single output path or comma-separated output paths.")
     parser.add_argument("--manifest", default=str(DEFAULT_MANIFEST_PATH))
     parser.add_argument("--campaign-id", default=DEFAULT_PRIMARY_LLM_CAMPAIGN_ID)
     parser.add_argument(
         "--artifact-id",
-        choices=("auto", "llm_outline_compare_v1", "llm_outline_compare_v2"),
+        choices=("auto", "llm_outline_compare_runtime", "llm_outline_compare_structured", "llm_outline_compare_insight"),
         default="auto",
         help="Expected artifact id. `auto` infers from manifest target metadata/path.",
     )
@@ -720,8 +1090,24 @@ def build_parser() -> argparse.ArgumentParser:
         default="both",
         help="Gate mode used for return code decisions.",
     )
+    parser.add_argument(
+        "--strict-depth",
+        action="store_true",
+        help=(
+            "Enable stricter depth blockers for structured/insight outputs "
+            "(material-change count, bi-year evidence breadth, top-ranked non-opening bi-year coverage, "
+            "section-span coverage, and shallow-reference blocker promotion)."
+        ),
+    )
     parser.add_argument("--allow-missing", action="store_true")
-    parser.add_argument("--report", default=str(DEFAULT_REPORT_PATH))
+    parser.add_argument(
+        "--report",
+        default="",
+        help=(
+            "Quality report path. If omitted, writes a campaign/artifact-scoped "
+            "report under reports/."
+        ),
+    )
     return parser
 
 
@@ -767,7 +1153,7 @@ def main(argv: Optional[list[str]] = None) -> int:
                     expected_output_path=target.expected_output_path,
                     manifest_present_flag=target.manifest_present_flag,
                     expected_artifact_id=forced_artifact,
-                    source_master_v2_path=target.source_master_v2_path,
+                    source_master_structured_path=target.source_master_structured_path,
                 )
                 for target in targets
             ]
@@ -795,7 +1181,7 @@ def main(argv: Optional[list[str]] = None) -> int:
                 expected_output_path=target.expected_output_path,
                 manifest_present_flag=target.manifest_present_flag,
                 expected_artifact_id=forced_artifact,
-                source_master_v2_path=target.source_master_v2_path,
+                source_master_structured_path=target.source_master_structured_path,
             )
         audits.append(
             evaluate_output(
@@ -803,6 +1189,7 @@ def main(argv: Optional[list[str]] = None) -> int:
                 target=target,
                 expected_model_provider=campaign.model_provider,
                 expected_model_name=campaign.model_name,
+                strict_depth=bool(args.strict_depth),
             )
         )
 
@@ -812,7 +1199,13 @@ def main(argv: Optional[list[str]] = None) -> int:
         blocker_count += len(missing_paths)
 
     report_lines = build_markdown_report(audits=audits, missing_paths=missing_paths, mode=str(args.mode))
-    report_path = Path(args.report)
+    report_arg = str(args.report).strip()
+    report_path = Path(report_arg) if report_arg else default_quality_report_path_for_args(
+        campaign_id=campaign.track_id,
+        target_field=str(args.target_field),
+        artifact_id=str(args.artifact_id),
+        targets=[target for _, target in path_target_pairs],
+    )
     if not report_path.is_absolute():
         report_path = (REPO_ROOT / report_path).resolve()
     report_path.parent.mkdir(parents=True, exist_ok=True)
@@ -835,3 +1228,6 @@ def main(argv: Optional[list[str]] = None) -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+
+
+

@@ -1,4 +1,4 @@
-# LLM Reproducibility Contract (Lab)
+﻿# LLM Reproducibility Contract (Lab)
 
 This contract defines the current canonical manual LLM run standard for showcase Lab outputs.
 
@@ -8,12 +8,12 @@ This contract defines the current canonical manual LLM run standard for showcase
 - Transparent provenance for future model-versus-model comparisons.
 
 ## Canonical Authoring Artifact (Current)
-- Canonical manual authoring artifact is now `llm_outline_compare_v2`.
-- Runtime-compatible artifact remains `llm_outline_compare_v1`, generated deterministically from v2.
-- Runtime UI continues to read `llm_outline_compare_v1` during this phase.
+- Canonical manual authoring artifact is now `llm_outline_compare_structured`.
+- Runtime-compatible artifact remains `llm_outline_compare_runtime`, generated deterministically from structured outputs.
+- Runtime UI continues to read `llm_outline_compare_runtime` during this phase.
 - Validation now covers:
-  - v2 schema/evidence integrity
-  - v2 -> v1 projection equivalence for runtime files
+  - structured schema/evidence integrity
+  - structured -> runtime projection equivalence for runtime files
 
 ## Output Contract
 Top-level keys are fixed:
@@ -32,8 +32,10 @@ Top-level keys are fixed:
 
 No extra top-level keys are allowed.
 
-## Master Artifact Contract (`llm_outline_compare_v2`)
-This is the canonical manual LLM output unit for FY2022+ runs.
+## Master Artifact Contract (`llm_outline_compare_structured`)
+This is the canonical manual LLM output unit for current anchored showcase runs (FY2024->FY2025 across Core4).
+- Fiscal-year caveat: annual filings may be filed in the next calendar year; `year_from`/`year_to` reflect fiscal years derived from `reportDate`/`filingDate`.
+- Expansion path: FY2025->FY2026 can be added as an explicit additional lane when released coverage is broad enough.
 
 Required top-level keys:
 - `lab_schema_version`
@@ -60,25 +62,25 @@ Required top-level keys:
 - `provenance`
 
 Hard requirements:
-- `artifact_id` must be `llm_outline_compare_v2`.
+- `artifact_id` must be `llm_outline_compare_structured`.
 - `node_alignment.change_class` must be one of:
   - `added`, `removed`, `moved`, `split`, `merged`, `reworded`, `intensified`, `softened`, `stable`.
 - All paragraph indices must resolve against full-year paragraph arrays referenced by `provenance.input_file`.
 - Evidence snippets must remain verbatim substrings and obey `<=350` char limit.
 - `risk_graph_prev/risk_graph_curr` must encode explicit `driver -> exposure -> impact`.
 - Each `change_mechanisms` row must include `mechanism`, `transmission_channel`, `business_effect`, `time_horizon`.
-- `projection_contract.projects_to_artifact_id` must be `llm_outline_compare_v1`.
+- `projection_contract.projects_to_artifact_id` must be `llm_outline_compare_runtime`.
 
-## Runtime Projection Contract (`llm_outline_compare_v1`)
-- Runtime-visible `llm_outline_compare_v1` artifacts are deterministic projections of v2.
-- v1 fields `outline_prev`, `outline_curr`, `node_alignment`, `material_changes`, `evidence_bank`, and `lens_divergence` must match their v2 source exactly.
-- Any v1 runtime file without a resolvable corresponding v2 source is invalid under current policy.
+## Runtime Projection Contract (`llm_outline_compare_runtime`)
+- Runtime-visible `llm_outline_compare_runtime` artifacts are deterministic projections of structured outputs.
+- v1 fields `outline_prev`, `outline_curr`, `node_alignment`, `material_changes`, `evidence_bank`, and `lens_divergence` must match their structured source exactly.
+- Any runtime file without a resolvable corresponding structured source is invalid under current policy.
 
 ## Manual Job-Pass Contract
 Each one-paste manual job must satisfy all of the following:
 - Exactly one `PRECHECK_OK` line is printed.
-- v2 output JSON is written to the expected canonical path.
-- v2 output is projected to v1 runtime path deterministically.
+- structured output JSON is written to the expected canonical path.
+- structured output is projected to runtime path deterministically.
 - Shell-safe parse check succeeds (no shell-specific redirection assumptions).
 - Master validator runs with strict single-target controls:
   - `--only-mode exact_path`
@@ -87,8 +89,20 @@ Each one-paste manual job must satisfy all of the following:
 - Job status line from validator is present:
   - `JOB_VALIDATE targets=<n> missing=<n> invalid=<n> mismatch=<n> present_mismatch=<n> status=<PASS|FAIL>`
 - Quality blocker audit passes for the output:
-  - `python scripts/lab_audit_master_output_quality.py --output "<path>" --mode blockers ...`
+  - `python scripts/lab_audit_master_output_quality.py --output "<path>" --mode blockers --strict-depth ...`
 - Exactly one final status line is printed for the job thread.
+
+Strict-depth blockers (`--strict-depth`, `llm_outline_compare_structured`):
+- `material_changes` must have at least 4 rows.
+- Material-change evidence refs must cover each year with unique refs:
+  - if year paragraph count >= 50: at least 4 unique refs
+  - otherwise: at least 3 unique refs
+- Among top-3 material changes by salience, at least one row must reference both years with non-opening paragraphs in each year.
+- For each year with paragraph count >= 30, material refs must span at least two section terciles.
+- Shallow-reference patterns are blockers in strict mode:
+  - opening paragraph ratio > 0.35
+  - evidence ref concentration > 0.50
+  - unique-ref ratio < 0.50
 
 ## Portable Run-Pack Contract (Script-Free Reproduction)
 Portable run packs must include:
@@ -135,7 +149,7 @@ Portable starters:
 - `model_name` (required, exact campaign model name)
 - `run_label` (required, must start with `YYYY-MM-DD_`)
 
-Canonical `provenance.input_file` pattern for v2:
+Canonical `provenance.input_file` pattern for structured:
 - `inputs/pair/<TICKER>_<YEAR_FROM>_<YEAR_TO>_10k_item1a_<LENS>_edgar.json`
 
 No extra provenance keys are allowed.
@@ -168,22 +182,37 @@ Before final JSON output in each manual thread:
 - Avoid page-number prefix artifacts in snippet starts unless required for evidence fidelity.
 - If any check fails, revise in-thread before final output.
 
-## Schema-Unlock Governance Gate (Required Before v2)
+## Schema-Unlock Governance Gate (Required Before Structured Cutover)
 Baseline policy remains locked for shipped runtime contracts:
 - Do not change public JSON schemas or detector envelope keys unless explicitly unlocked.
 
-Before implementing `llm_outline_compare_v2`:
+Before implementing `llm_outline_compare_structured`:
 1. Record explicit unlock approval in canonical docs.
 2. Define migration and rollback plan for runtime compatibility.
-3. Keep `llm_outline_compare_v1` available during migration.
-4. Provide deterministic v2->v1 projection for legacy detector envelopes and existing UI paths.
+3. Keep `llm_outline_compare_runtime` available during migration.
+4. Provide deterministic structured->runtime projection for legacy detector envelopes and existing UI paths.
 
 ## Validation Entry Point
 - Canonical validator:
-  `python scripts/lab_validate_llm_manifest_outputs.py`
+  `python scripts/lab_validate_llm_master_outputs.py`
 
 Recommended usage:
 1. Progress:
-   `python scripts/lab_validate_llm_manifest_outputs.py --allow-missing --allow-invalid --report reports/lab_llm_manifest_validation.md`
+   `python scripts/lab_validate_llm_master_outputs.py --manifest reports/lab_llm_master_manifest_<campaign>.json --campaign-id <campaign_id> --allow-missing --allow-invalid --report reports/lab_llm_master_validation_<campaign>.md`
 2. Final strict:
-   `python scripts/lab_validate_llm_manifest_outputs.py --report reports/lab_llm_manifest_validation.md`
+   `python scripts/lab_validate_llm_master_outputs.py --manifest reports/lab_llm_master_manifest_<campaign>.json --campaign-id <campaign_id> --report reports/lab_llm_master_validation_<campaign>.md`
+
+Compatibility note:
+- `scripts/lab_validate_llm_manifest_outputs.py` remains legacy-only for detector-manifest workflows and is non-canonical for master-manifest production runs.
+
+
+
+## Rename Governance Unlock (Approved)
+- Approved: schema/envelope artifact-id rename from numeric version labels to role-based labels:
+  - `llm_outline_compare_v1` -> `llm_outline_compare_runtime`
+  - `llm_outline_compare_v2` -> `llm_outline_compare_structured`
+  - `llm_outline_compare_v3` -> `llm_outline_compare_insight`
+- Approved: manifest target-field rename:
+  - `projected_master_output_v1` -> `projected_master_output_runtime`
+  - `projected_master_output_v2` -> `projected_master_output_structured`
+- Rollback plan: migration script can re-map ids/fields deterministically in reverse before publication.

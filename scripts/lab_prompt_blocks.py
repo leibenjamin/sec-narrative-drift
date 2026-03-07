@@ -1,4 +1,4 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 from typing import Optional
 
@@ -32,6 +32,15 @@ PROVENANCE_REQUIRED_KEYS = ("input_file", "model_provider", "model_name")
 PROVENANCE_OPTIONAL_KEYS = ("run_label",)
 PROVENANCE_ALLOWED_KEYS = PROVENANCE_REQUIRED_KEYS + PROVENANCE_OPTIONAL_KEYS
 RUN_LABEL_TEMPLATE = "YYYY-MM-DD_<campaign_tag>"
+
+
+def _run_label_template_for_campaign(campaign: OutputTrack) -> str:
+    template = campaign.run_label_prefix_template
+    if isinstance(template, str) and template:
+        if template.endswith("..."):
+            return template[:-3] + "<campaign_tag>"
+        return template
+    return RUN_LABEL_TEMPLATE
 
 
 def resolve_campaign(
@@ -100,7 +109,7 @@ def build_common_strict_output_rules_block(
         f'- provenance.model_name MUST be exactly "{selected_campaign.model_name}".'
     )
     lines.append(
-        f'- provenance.run_label is required and must start with YYYY-MM-DD_ (example: "{RUN_LABEL_TEMPLATE}").'
+        f'- provenance.run_label is required and must start with YYYY-MM-DD_ (example: "{_run_label_template_for_campaign(selected_campaign)}").'
     )
     lines.append(
         "- provenance keys allowed: input_file, model_provider, model_name, run_label (no extra provenance keys)."
@@ -325,7 +334,7 @@ def build_json_skeleton_lines(
     lines.append(f'    "input_file": "{input_file}",')
     lines.append(f'    "model_provider": "{selected_campaign.model_provider}",')
     lines.append(f'    "model_name": "{selected_campaign.model_name}",')
-    lines.append(f'    "run_label": "{RUN_LABEL_TEMPLATE}"')
+    lines.append(f'    "run_label": "{_run_label_template_for_campaign(selected_campaign)}"')
     lines.append("  }")
     lines.append("}")
     return lines
@@ -511,7 +520,7 @@ def build_chatgpt_project_instructions_lines(
         f'provenance.model_name must be exactly "{selected_campaign.model_name}".'
     )
     lines.append(
-        f'provenance.run_label is required and must start with YYYY-MM-DD_ (example: "{RUN_LABEL_TEMPLATE}").'
+        f'provenance.run_label is required and must start with YYYY-MM-DD_ (example: "{_run_label_template_for_campaign(selected_campaign)}").'
     )
     lines.append(
         "Do not output extra provenance keys beyond input_file, model_provider, model_name, run_label."
@@ -734,3 +743,4 @@ def build_thread_starter_lines(
     lines.append("REPAIR MODE")
     lines.append("Given validator errors pasted below, output corrected JSON only.")
     return lines
+

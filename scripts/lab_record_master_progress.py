@@ -2,11 +2,12 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import time
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Optional
+from typing import Any, Optional, cast
 
 from lab_audit_master_output_quality import evaluate_output
 from lab_output_tracks import DEFAULT_PRIMARY_LLM_CAMPAIGN_ID, get_llm_campaign
@@ -20,8 +21,33 @@ from lab_validate_llm_master_outputs import (
 
 SCRIPT_VERSION = build_script_version(Path(__file__), "v1")
 DEFAULT_MANIFEST_PATH = REPO_ROOT / "reports" / "lab_llm_master_manifest.json"
-DEFAULT_REPORT_MD = REPO_ROOT / "reports" / "lab_llm_master_batch_progress.md"
-DEFAULT_HISTORY_JSON = REPO_ROOT / "reports" / "lab_llm_master_batch_progress.json"
+
+
+def _sanitize_token(value: str) -> str:
+    cleaned = re.sub(r"[^a-zA-Z0-9]+", "_", value.strip().lower())
+    cleaned = cleaned.strip("_")
+    return cleaned or "unknown"
+
+
+def _campaign_slug_token(campaign_id: str) -> str:
+    campaign = get_llm_campaign(campaign_id)
+    if campaign is not None:
+        if campaign.track_id == "openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27":
+            return "codex_real"
+        if campaign.track_id == "openai_chatgpt52ext_agent_fullsec_real_2026-02-27":
+            return "chatgpt_real"
+        return _sanitize_token(campaign.track_slug)
+    return _sanitize_token(campaign_id)
+
+
+def default_report_md_for_campaign(campaign_id: str) -> Path:
+    token = _campaign_slug_token(campaign_id)
+    return REPO_ROOT / "reports" / f"lab_llm_master_batch_progress_{token}.md"
+
+
+def default_history_json_for_campaign(campaign_id: str) -> Path:
+    token = _campaign_slug_token(campaign_id)
+    return REPO_ROOT / "reports" / f"lab_llm_master_batch_progress_{token}.json"
 
 
 @dataclass(frozen=True)
@@ -53,11 +79,13 @@ class ProgressSnapshot:
 def as_dict_list(value: object) -> list[dict[str, object]]:
     if not isinstance(value, list):
         return []
+    typed_list = cast(list[Any], value)
     output: list[dict[str, object]] = []
-    for item in value:
+    for item in typed_list:
         if isinstance(item, dict):
+            typed_dict = cast(dict[Any, Any], item)
             normalized: dict[str, object] = {}
-            for key, sub in item.items():
+            for key, sub in typed_dict.items():
                 if isinstance(key, str):
                     normalized[key] = sub
             output.append(normalized)
@@ -220,8 +248,22 @@ def build_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument("--manifest", default=str(DEFAULT_MANIFEST_PATH))
     parser.add_argument("--campaign-id", default=DEFAULT_PRIMARY_LLM_CAMPAIGN_ID)
-    parser.add_argument("--report-md", default=str(DEFAULT_REPORT_MD))
-    parser.add_argument("--history-json", default=str(DEFAULT_HISTORY_JSON))
+    parser.add_argument(
+        "--report-md",
+        default="",
+        help=(
+            "Markdown progress report path. If omitted, writes a campaign-scoped "
+            "report under reports/."
+        ),
+    )
+    parser.add_argument(
+        "--history-json",
+        default="",
+        help=(
+            "Progress history JSON path. If omitted, writes a campaign-scoped "
+            "history file under reports/."
+        ),
+    )
     parser.add_argument("--label", default="")
     return parser
 
@@ -235,10 +277,13 @@ def main(argv: Optional[list[str]] = None) -> int:
     if not manifest_path.exists():
         raise SystemExit(f"Manifest not found: {manifest_path}")
 
-    report_md = Path(args.report_md)
+    report_md_arg = str(args.report_md).strip()
+    report_md = Path(report_md_arg) if report_md_arg else default_report_md_for_campaign(str(args.campaign_id))
     if not report_md.is_absolute():
         report_md = (REPO_ROOT / report_md).resolve()
-    history_json = Path(args.history_json)
+
+    history_json_arg = str(args.history_json).strip()
+    history_json = Path(history_json_arg) if history_json_arg else default_history_json_for_campaign(str(args.campaign_id))
     if not history_json.is_absolute():
         history_json = (REPO_ROOT / history_json).resolve()
 
