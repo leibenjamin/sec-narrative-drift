@@ -33,7 +33,7 @@ export const copy = {
     errors: {
       missingDataset:
         "This output could not be loaded. The data file may not exist for this combination.",
-      missingExcerpts: "We have metrics for this pair, but no excerpt set yet.",
+      missingExcerpts: "Metrics are available for this pair, but no excerpt set yet.",
       noShifts: 'No clear "top movers" for this year pair (which is itself a result).',
       lowConfidenceYear:
         "This year's Item 1A / Item 3.D extraction has a low confidence score (heuristic). Treat metrics with caution and use the View on SEC link to verify.",

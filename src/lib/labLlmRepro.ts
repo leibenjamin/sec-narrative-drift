@@ -1,10 +1,7 @@
 import { withBase } from "./paths"
 import type { LabCleaningLens } from "./labTypes"
 
-const LLM_DETECTORS = new Set<string>([
-  "det_llm_delta_brief_v1",
-  "det_llm_excerpt_picker_v1",
-])
+const LLM_DETECTORS = new Set<string>([])
 
 const DEFAULT_INSTRUCTIONS_ASSET =
   "llm_project_instructions_openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27.txt"
@@ -158,11 +155,8 @@ export function buildLlmThreadStarterText(context: LlmThreadStarterContext): str
   lines.push('  "section": "10k_item1a",')
   lines.push(`  "year_from": ${context.yearFrom},`)
   lines.push(`  "year_to": ${context.yearTo},`)
-  if (context.detectorId === "det_llm_delta_brief_v1") {
-    lines.push('  "artifacts": { "delta_brief": "<summary>" },')
-  } else {
-    lines.push('  "artifacts": { "selected_prev": [], "selected_curr": [] },')
-  }
+  lines.push('  "artifacts": {},')
+
   lines.push('  "evidence": [],')
   lines.push('  "metrics": {')
   lines.push('    "drift_score": null,')

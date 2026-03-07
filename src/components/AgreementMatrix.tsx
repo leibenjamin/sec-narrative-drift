@@ -10,8 +10,6 @@ const DETECTOR_DISPLAY_NAMES: Record<string, string> = {
   det_minhash_boilerplate_v1: "Minhash boilerplate",
   det_winnowing_fingerprint_v1: "Winnowing fingerprints",
   det_structure_artifacts_v1: "Structure artifacts",
-  det_llm_delta_brief_v1: "AI delta brief",
-  det_llm_excerpt_picker_v1: "AI excerpt picker",
   det_rbo_agreement_v1: "Agreement (RBO)",
 }
 

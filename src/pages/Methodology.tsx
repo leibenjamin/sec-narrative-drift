@@ -61,25 +61,6 @@ const DETECTORS = [
     deviation:
       "Used as cross-detector quality framing for one case/lens, not broad IR benchmark scoring.",
   },
-  {
-    id: "det_llm_delta_brief_v1",
-    label: "LLM delta brief (precomputed)",
-    summary:
-      "Offline-only narrative summary with strict citation and provenance contract checks.",
-    whyUsed: "Gives a compact narrative layer for model-vs-model comparison against deterministic anchors.",
-    knownLimitation: "Can become templated unless strict campaign controls and audits are enforced.",
-    deviation:
-      "Precomputed sidecar only; no runtime model calls and no schema drift from deterministic envelope.",
-  },
-  {
-    id: "det_llm_excerpt_picker_v1",
-    label: "LLM excerpt picker (precomputed)",
-    summary: "Offline-only excerpt selection with strict verbatim and mapping checks.",
-    whyUsed: "Provides concrete before-vs-after passages for transparent model comparison.",
-    knownLimitation: "Quality falls quickly if selected-set and snippet constraints are not enforced.",
-    deviation:
-      "Strict zero-touch contract (exact selected sets, verbatim checks, bounded snippet length).",
-  },
 ]
 
 export default function Methodology() {
@@ -132,42 +113,15 @@ export default function Methodology() {
           <p className="text-xs uppercase tracking-widest text-slate-300">Methodology</p>
           <h1 className="text-3xl font-semibold">How to read SEC Narrative Drift Lab</h1>
           <p className="max-w-4xl text-sm text-slate-300">
-            The product is deterministic-first and evidence-first. LLM outputs are optional
-            precomputed artifacts with reproducibility tooling, never runtime inference.
+            Every result here starts from deterministic, reproducible methods applied directly to SEC
+            filing text. AI-generated analyses are precomputed sidecars with full provenance — never
+            runtime inference.
           </p>
           <p className="max-w-4xl rounded-md border border-white/10 bg-slate-900/35 px-3 py-2 text-sm text-slate-200">
-            Use Executive mode for rapid read; use Deep mode for method caveats, sourced origins,
-            and model comparison.
+            Executive mode gives a rapid overview of what changed and how strong the signal is. Deep
+            mode expands each method with caveats, sourced origins, and structural detail.
           </p>
         </header>
-
-        <section className="grid gap-4 rounded-xl border border-white/10 bg-slate-900/45 p-5 md:grid-cols-2 xl:grid-cols-4">
-          <article className="rounded-md border border-sky-300/25 bg-sky-400/10 p-3">
-            <h2 className="text-sm font-semibold text-sky-100">Quick reader</h2>
-            <p className="mt-2 text-xs text-slate-100">
-              Ask: what changed, how strong is the signal, and which evidence lines support it.
-            </p>
-          </article>
-          <article className="rounded-md border border-white/10 bg-slate-950/35 p-3">
-            <h2 className="text-sm font-semibold text-slate-100">Product reviewer</h2>
-            <p className="mt-2 text-xs text-slate-200">
-              Look for deterministic baseline + A/B model compare + reproducibility controls in one
-              flow.
-            </p>
-          </article>
-          <article className="rounded-md border border-white/10 bg-slate-950/35 p-3">
-            <h2 className="text-sm font-semibold text-slate-100">Engineer / Data Scientist</h2>
-            <p className="mt-2 text-xs text-slate-200">
-              Validate path-level provenance, strict JSON contracts, and deterministic fallback states.
-            </p>
-          </article>
-          <article className="rounded-md border border-white/10 bg-slate-950/35 p-3">
-            <h2 className="text-sm font-semibold text-slate-100">Analyst / Consultant</h2>
-            <p className="mt-2 text-xs text-slate-200">
-              Follow the sequence: core drift, structure/reuse context, then LLM overlays.
-            </p>
-          </article>
-        </section>
 
         <section className="space-y-3 rounded-xl border border-white/10 bg-slate-900/45 p-5">
           <h2 className="text-xl font-semibold">Runtime contract</h2>
@@ -292,40 +246,43 @@ export default function Methodology() {
           <h2 className="text-xl font-semibold">Confidence semantics</h2>
           <ul className="list-disc space-y-2 pl-5 text-sm text-slate-200">
             <li>
-              Deterministic extraction confidence is a heuristic quality score for section-capture reliability.
+              Extraction confidence is a heuristic quality score for section-capture reliability, not
+              a calibrated probability.
             </li>
             <li>
-              LLM detector <span className="font-semibold text-slate-100">confidence band (heuristic)</span> is ordinal (`0.25`, `0.50`, `0.75`), not a calibrated probability.
+              Per-method <span className="font-semibold text-slate-100">confidence bands</span> are
+              ordinal tiers (Low / Medium / High), useful for triage but not for statistical claims.
             </li>
             <li>
-              A/B quick diff band deltas are directional compare aids, not statistical significance tests.
-            </li>
-            <li>
-              Treat confidence readouts as triage signals, then verify with evidence blocks and deterministic agreement.
+              Treat all confidence readouts as directional signals. Verify with evidence blocks,
+              the agreement matrix, and cross-method consistency before drawing conclusions.
             </li>
           </ul>
         </section>
 
         <section className="space-y-3 rounded-xl border border-white/10 bg-slate-900/45 p-5">
-          <h2 className="text-xl font-semibold">Interpretation cheatsheet</h2>
-          <ul className="list-disc space-y-2 pl-5 text-sm text-slate-200">
+          <h2 className="text-xl font-semibold">Suggested reading order</h2>
+          <ol className="list-decimal space-y-2 pl-5 text-sm text-slate-200">
             <li>
-              <span className="font-semibold text-slate-100">Quick reader:</span> start with the three
-              top summary prompts and the agreement table.
+              <span className="font-semibold text-slate-100">Risk narrative summary</span> — start
+              here for the structural drift score, top material changes, and investor-relevant
+              takeaways.
             </li>
             <li>
-              <span className="font-semibold text-slate-100">Product reviewer:</span> emphasize deterministic
-              baseline + A/B model compare + explicit debug/repro controls.
+              <span className="font-semibold text-slate-100">Deterministic methods</span> — review
+              per-method drift scores, evidence excerpts, and the agreement matrix to see where
+              methods converge or disagree.
             </li>
             <li>
-              <span className="font-semibold text-slate-100">Engineer/Data Scientist:</span> inspect
-              campaign provenance, output paths, and strict validator contracts.
+              <span className="font-semibold text-slate-100">Outline comparison</span> — drill into
+              the AI-generated structural analysis for specific change mechanisms, evidence
+              provenance, and analysis limitations.
             </li>
             <li>
-              <span className="font-semibold text-slate-100">Analyst/Consultant:</span> validate core
-              drift first, then structure/reuse, then LLM narrative overlays.
+              <span className="font-semibold text-slate-100">Method context</span> — expand any
+              method card to see canonical usage, known failure modes, and sourced references.
             </li>
-          </ul>
+          </ol>
         </section>
 
         <section className="space-y-3 rounded-xl border border-white/10 bg-slate-900/45 p-5">

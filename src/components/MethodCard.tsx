@@ -1,13 +1,6 @@
 import { useEffect, useMemo, useState } from "react"
 import EvidenceStack from "./EvidenceStack"
-import LabExcerptPickerPanel from "./LabExcerptPickerPanel"
-import {
-  buildDefaultLlmInputFile,
-  buildDefaultLlmYearInputFile,
-  buildLlmThreadStarterText,
-  isLlmDetector,
-  loadLlmProjectInstructionsText,
-} from "../lib/labLlmRepro"
+import { isLlmDetector } from "../lib/labLlmRepro"
 import { withBase } from "../lib/paths"
 import { assertSameOriginPathLike } from "../lib/sanitize"
 import type {
@@ -258,19 +251,10 @@ export default function MethodCard({
   const topRisers = normalizeRankedList(output?.artifacts.top_risers)
   const topFallers = normalizeRankedList(output?.artifacts.top_fallers)
   const llmCard = isLlmDetector(detectorId)
-  const isExcerptPicker = output?.detector_id === "det_llm_excerpt_picker_v1"
-  const isDeltaBrief = output?.detector_id === "det_llm_delta_brief_v1"
   const signalSummary = useMemo(() => classifySignal(output), [output])
   const weaknessReason = useMemo(() => buildWeaknessReason(output), [output])
   const decisionSentence = useMemo(() => buildDecisionSentence(signalSummary), [signalSummary])
 
-  const deltaBriefRaw = isDeltaBrief ? output?.artifacts.delta_brief : null
-  const deltaBriefText =
-    typeof deltaBriefRaw === "string"
-      ? deltaBriefRaw.trim()
-      : deltaBriefRaw
-        ? JSON.stringify(deltaBriefRaw, null, 2)
-        : ""
   const provenance = output?.provenance as Record<string, unknown> | undefined
   const modelProvider =
     typeof provenance?.model_provider === "string" ? provenance.model_provider : null
@@ -910,23 +894,10 @@ export default function MethodCard({
               <div>
                 <div className="text-xs uppercase tracking-wide text-slate-400">Evidence</div>
                 <div className="mt-2">
-                  {isDeltaBrief && deltaBriefText ? (
-                    <div>
-                      <div className="text-xs uppercase tracking-wide text-slate-400">Delta brief</div>
-                      <div className="mt-2 whitespace-pre-wrap rounded-md border border-white/10 bg-white/5 p-3 text-xs text-slate-200">
-                        {deltaBriefText}
-                      </div>
-                    </div>
-                  ) : null}
-
-                  {isExcerptPicker ? (
-                    <LabExcerptPickerPanel output={output} />
-                  ) : (
-                    <EvidenceStack
-                      evidence={output.evidence ?? []}
-                      fallbackMessage="No evidence blocks for this detector yet."
-                    />
-                  )}
+                  <EvidenceStack
+                    evidence={output.evidence ?? []}
+                    fallbackMessage="No evidence blocks for this detector yet."
+                  />
                 </div>
               </div>
             </div>

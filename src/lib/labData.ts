@@ -40,13 +40,7 @@ const LAB_LLM_VARIANTS_PATH = `${LAB_BASE_PATH}/lab_llm_variants_v1.json`
 const LAB_METHOD_TRACKS_PATH = `${LAB_BASE_PATH}/lab_method_tracks_v1.json`
 const LAB_METHOD_PROFILES_PATH = `${LAB_BASE_PATH}/lab_method_profiles_v1.json`
 export const LAB_SHOWCASE_TICKERS = ["NVDA", "KO", "WM", "GE"] as const
-const LLM_DETECTORS = new Set<string>([
-  "det_llm_delta_brief_v1",
-  "det_llm_excerpt_picker_v1",
-])
 const LAB_TICKER_RE = /^[A-Z0-9.-]{1,10}$/
-const LLM_RUN_LABEL_RE = /^20\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])_[A-Za-z0-9._-]+$/
-const LLM_PROVENANCE_KEYS = ["input_file", "model_provider", "model_name", "run_label"] as const
 const URL_SCHEME_RE = /^[A-Za-z][A-Za-z0-9+.-]*:/
 const DEFAULT_DETERMINISTIC_TRACK_SLUG = "det-baseline-2026-02-21"
 const DEFAULT_PRIMARY_CAMPAIGN_ID = "openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27"
@@ -138,144 +132,6 @@ function isRuntimePairAllowed(ticker: string, yearFrom: number, yearTo: number):
   const pairs = ACTIVE_RUNTIME_PAIRS[normalizedTicker]
   if (!pairs) return false
   return pairs.some((pair) => pair.from === yearFrom && pair.to === yearTo)
-}
-
-function asRecord(value: unknown): Record<string, unknown> | null {
-  if (!value || typeof value !== "object" || Array.isArray(value)) return null
-  return value as Record<string, unknown>
-}
-
-type LlmExpectation = {
-  campaignId?: string
-  modelProvider?: string
-  modelName?: string
-}
-
-function validateLlmStrictPayload(
-  payload: LabOutput,
-  label: string,
-  url: string,
-  expectation?: LlmExpectation
-): void {
-  if (!LLM_DETECTORS.has(payload.detector_id)) return
-
-  const provenance = asRecord(payload.provenance)
-  if (!provenance) {
-    throw new LabDataLoadError(`Invalid ${label} payload (provenance must be an object).`, url)
-  }
-  const provenanceKeys = Object.keys(provenance).sort()
-  const expectedProvenanceKeys = [...LLM_PROVENANCE_KEYS].sort()
-  if (
-    provenanceKeys.length !== expectedProvenanceKeys.length ||
-    provenanceKeys.some((key, index) => key !== expectedProvenanceKeys[index])
-  ) {
-    throw new LabDataLoadError(
-      `Invalid ${label} payload (LLM provenance keys must be exactly: ${expectedProvenanceKeys.join(", ")}).`,
-      url
-    )
-  }
-
-  const inputFile = provenance.input_file
-  if (typeof inputFile !== "string" || inputFile.trim().length === 0) {
-    throw new LabDataLoadError(
-      `Invalid ${label} payload (provenance.input_file must be a non-empty string).`,
-      url
-    )
-  }
-  const modelProvider = provenance.model_provider
-  if (typeof modelProvider !== "string" || modelProvider.trim().length === 0) {
-    throw new LabDataLoadError(
-      `Invalid ${label} payload (provenance.model_provider must be a non-empty string).`,
-      url
-    )
-  }
-  if (expectation?.modelProvider && modelProvider !== expectation.modelProvider) {
-    throw new LabDataLoadError(
-      `Invalid ${label} payload (provenance.model_provider must be "${expectation.modelProvider}").`,
-      url
-    )
-  }
-  const modelName = provenance.model_name
-  if (typeof modelName !== "string" || modelName.trim().length === 0) {
-    throw new LabDataLoadError(
-      `Invalid ${label} payload (provenance.model_name must be a non-empty string).`,
-      url
-    )
-  }
-  if (expectation?.modelName && modelName !== expectation.modelName) {
-    throw new LabDataLoadError(
-      `Invalid ${label} payload (provenance.model_name must be "${expectation.modelName}").`,
-      url
-    )
-  }
-  const runLabel = provenance.run_label
-  if (typeof runLabel !== "string" || LLM_RUN_LABEL_RE.test(runLabel) === false) {
-    throw new LabDataLoadError(
-      `Invalid ${label} payload (provenance.run_label must match YYYY-MM-DD_<campaign_tag>).`,
-      url
-    )
-  }
-
-  const artifacts = asRecord(payload.artifacts)
-  if (!artifacts) {
-    throw new LabDataLoadError(`Invalid ${label} payload (artifacts must be an object).`, url)
-  }
-  const artifactKeys = Object.keys(artifacts).sort()
-  if (payload.detector_id === "det_llm_delta_brief_v1") {
-    if (artifactKeys.length !== 1 || artifactKeys[0] !== "delta_brief") {
-      throw new LabDataLoadError(
-        `Invalid ${label} payload (artifacts must contain only delta_brief).`,
-        url
-      )
-    }
-    const deltaBrief = artifacts.delta_brief
-    if (typeof deltaBrief !== "string" || deltaBrief.trim().length === 0) {
-      throw new LabDataLoadError(
-        `Invalid ${label} payload (artifacts.delta_brief must be a non-empty string).`,
-        url
-      )
-    }
-    return
-  }
-
-  if (
-    artifactKeys.length !== 2 ||
-    artifactKeys[0] !== "selected_curr" ||
-    artifactKeys[1] !== "selected_prev"
-  ) {
-    throw new LabDataLoadError(
-      `Invalid ${label} payload (artifacts must contain only selected_prev and selected_curr).`,
-      url
-    )
-  }
-  const selectedPrev = artifacts.selected_prev
-  const selectedCurr = artifacts.selected_curr
-  if (!Array.isArray(selectedPrev) || !Array.isArray(selectedCurr)) {
-    throw new LabDataLoadError(
-      `Invalid ${label} payload (selected_prev and selected_curr must be arrays).`,
-      url
-    )
-  }
-  const seenPrev = new Set<number>()
-  for (const value of selectedPrev) {
-    if (!Number.isInteger(value) || value < 0 || seenPrev.has(value)) {
-      throw new LabDataLoadError(
-        `Invalid ${label} payload (selected_prev must be deduped non-negative integers).`,
-        url
-      )
-    }
-    seenPrev.add(value)
-  }
-  const seenCurr = new Set<number>()
-  for (const value of selectedCurr) {
-    if (!Number.isInteger(value) || value < 0 || seenCurr.has(value)) {
-      throw new LabDataLoadError(
-        `Invalid ${label} payload (selected_curr must be deduped non-negative integers).`,
-        url
-      )
-    }
-    seenCurr.add(value)
-  }
 }
 
 function normalizeOutputFilename(pathValue: string): string | null {
@@ -1020,7 +876,7 @@ export function buildExpectedLabOutlineResearchArtifact(
 export async function loadLabOutput(
   ticker: string,
   filename: string,
-  options?: { signal?: AbortSignal; llmExpectation?: LlmExpectation }
+  options?: { signal?: AbortSignal }
 ): Promise<LabOutput> {
   const normalizedTicker = normalizeTickerSymbol(ticker)
   if (!normalizedTicker) {
@@ -1034,10 +890,7 @@ export async function loadLabOutput(
   if (!url) {
     throw new LabDataLoadError("Output file path is not usable.", filename)
   }
-  const expectationKey = options?.llmExpectation
-    ? `|${options.llmExpectation.modelProvider ?? ""}|${options.llmExpectation.modelName ?? ""}`
-    : ""
-  const cacheKey = `${url}${expectationKey}`
+  const cacheKey = url
   if (!outputCache.has(cacheKey)) {
     const promise = fetchJson<unknown>(url, copy.global.errors.missingDataset, options)
       .then((data) => {
@@ -1046,12 +899,6 @@ export async function loadLabOutput(
           normalizeLabOutputPayload(data),
           `LabOutput:${normalizedFilename}`,
           url
-        )
-        validateLlmStrictPayload(
-          output,
-          `LabOutput:${normalizedFilename}`,
-          url,
-          options?.llmExpectation
         )
         return output
       })
