@@ -1,4 +1,4 @@
-export type LabCleaningLens = "raw" | "stage1_clean" | "deboilerplated" | "structure_aware"
+﻿export type LabCleaningLens = "raw" | "stage1_clean" | "deboilerplated" | "structure_aware"
 
 export type LabSourceId = "edgar" | "sraf_nd"
 
@@ -89,6 +89,10 @@ export type LabLlmVariant = {
   outline_compare_valid?: boolean
   outline_compare_expected_repo_path?: string
   outline_compare_request_url?: string
+  outline_compare_insight_present?: boolean
+  outline_compare_insight_valid?: boolean
+  outline_compare_insight_expected_repo_path?: string
+  outline_compare_insight_request_url?: string
   outline_research_present?: boolean
   outline_research_valid?: boolean
   outline_research_expected_repo_path?: string
@@ -205,16 +209,18 @@ export type LabOutlineAlignment = {
   salience: number
 }
 
+export type LabOutlineEvidenceRef = {
+  year: number
+  paragraph_idx: number
+}
+
 export type LabOutlineMaterialChange = {
   id: string
   title: string
   change_class: Exclude<OutlineChangeClass, "stable">
   salience: number
   caveat: string
-  evidence_refs: Array<{
-    year: number
-    paragraph_idx: number
-  }>
+  evidence_refs: LabOutlineEvidenceRef[]
 }
 
 export type LabOutlineEvidence = {
@@ -225,10 +231,39 @@ export type LabOutlineEvidence = {
   node_ids: string[]
 }
 
+export type LabOutlineRiskGraphRow = {
+  id: string
+  driver: string
+  exposure: string
+  impact: string
+  evidence_paragraph_idx: number[]
+}
+
+export type LabOutlineChangeMechanismRow = {
+  id: string
+  mechanism: string
+  transmission_channel: string
+  business_effect: string
+  time_horizon: "near_term" | "medium_term" | "long_term"
+  evidence_refs: LabOutlineEvidenceRef[]
+}
+
+export type LabOutlineLimitRow = {
+  id: string
+  limitation: string
+  evidence_refs: LabOutlineEvidenceRef[]
+}
+
+export type LabOutlineInvestorRelevanceRow = {
+  id: string
+  why_it_matters: string
+  evidence_refs: LabOutlineEvidenceRef[]
+}
+
 export type LabOutlineCompareOutput = {
   lab_schema_version: "1.0"
   artifact_schema_version: "1.0"
-  artifact_id: "llm_outline_compare_v1"
+  artifact_id: "llm_outline_compare_runtime"
   ticker: string
   section: string
   source_id: LabSourceId
@@ -245,6 +280,96 @@ export type LabOutlineCompareOutput = {
     summary: string
   }
   provenance: LabProvenance
+}
+
+export type LabOutlineCompareV2Output = {
+  lab_schema_version: "1.0"
+  artifact_schema_version: "1.0"
+  artifact_id: "llm_outline_compare_structured"
+  ticker: string
+  section: string
+  source_id: LabSourceId
+  cleaning_lens: LabCleaningLens
+  year_from: number
+  year_to: number
+  outline_prev: LabOutlineNode[]
+  outline_curr: LabOutlineNode[]
+  node_alignment: LabOutlineAlignment[]
+  material_changes: LabOutlineMaterialChange[]
+  evidence_bank: LabOutlineEvidence[]
+  lens_divergence: {
+    materially_different: boolean
+    summary: string
+  }
+  risk_graph_prev: LabOutlineRiskGraphRow[]
+  risk_graph_curr: LabOutlineRiskGraphRow[]
+  change_mechanisms: LabOutlineChangeMechanismRow[]
+  uncertainty_and_limits: LabOutlineLimitRow[]
+  investor_relevance: LabOutlineInvestorRelevanceRow[]
+  projection_contract: {
+    projects_to_artifact_id: "llm_outline_compare_runtime"
+    projection_version: string
+  }
+  provenance: LabProvenance
+}
+
+export type LabOutlineInsightExecutiveDigest = {
+  summary_text: string
+  audience: "investor_analyst"
+  reading_time_sec_estimate: number
+}
+
+export type LabOutlineInsightType = "difference" | "similarity"
+
+export type LabOutlineInsightCard = {
+  id: string
+  insight_type: LabOutlineInsightType
+  title: string
+  claim: string
+  why_it_matters: string
+  salience: number
+  confidence_band: string
+  evidence_refs_prev: LabOutlineEvidenceRef[]
+  evidence_refs_curr: LabOutlineEvidenceRef[]
+  evidence_ref_ids: string[]
+  counterpoint_or_limit: string
+}
+
+export type LabOutlineInsightEvidenceMapEntry = {
+  evidence_id: string
+  year: number
+  paragraph_idx: number
+  snippet: string
+  char_start?: number | null
+  char_end?: number | null
+  insight_ids: string[]
+}
+
+export type LabOutlineInsightCoverage = {
+  difference_count: number
+  similarity_count: number
+  per_year_evidence_spread: Record<string, number>
+}
+
+export type LabOutlineInsightUiCluster = {
+  cluster_id: string
+  label: string
+  insight_ids: string[]
+}
+
+export type LabOutlineInsightUiContract = {
+  default_selected_insight_id: string
+  recommended_insight_order: string[]
+  suggested_clusters: LabOutlineInsightUiCluster[]
+}
+
+export type LabOutlineCompareInsightOutput = Omit<LabOutlineCompareV2Output, "artifact_id"> & {
+  artifact_id: "llm_outline_compare_insight"
+  executive_digest: LabOutlineInsightExecutiveDigest
+  insight_cards: LabOutlineInsightCard[]
+  evidence_map: LabOutlineInsightEvidenceMapEntry[]
+  insight_coverage: LabOutlineInsightCoverage
+  ui_contract: LabOutlineInsightUiContract
 }
 
 export type LabOutlineResearchClaim = {
@@ -295,3 +420,5 @@ export type LabCasesRegistry = {
   cases: LabCase[]
   provenance?: LabProvenance
 }
+
+

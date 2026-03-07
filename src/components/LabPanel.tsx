@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react"
 import AgreementMatrix from "./AgreementMatrix"
 import CleaningLensToggle from "./CleaningLensToggle"
 import MethodCard from "./MethodCard"
+import InsightLensPanel from "./InsightLensPanel"
 import OutlineComparePanel from "./OutlineComparePanel"
 import {
   LabDataLoadError,
@@ -12,12 +13,16 @@ import {
   buildLabOutputRequestUrl,
   clearLabOutputCache,
   findLabOutlineCompareArtifactForCampaign,
+  findLabOutlineCompareStructuredArtifactForCampaign,
+  findLabOutlineCompareInsightArtifactForCampaign,
   findLabLlmVariant,
   formatLabLoadDebug,
   getDefaultDeterministicTrackSlug,
   getDefaultLabLlmCampaignPair,
   getLabLlmCampaignById,
   loadLabOutlineCompareOutput,
+  loadLabOutlineCompareStructuredOutput,
+  loadLabOutlineCompareInsightOutput,
   loadLabMethodProfilesIndex,
   listLabCasesForTicker,
   loadLabLlmCampaignsIndex,
@@ -29,12 +34,15 @@ import {
   buildDefaultLlmYearInputFile,
 } from "../lib/labLlmRepro"
 import { withBase } from "../lib/paths"
+import { formatFiscalYearRange } from "../lib/fiscalYear"
 import type {
   LabCase,
   LabCleaningLens,
   LabLlmCampaign,
   LabMethodProfile,
   LabOutlineCompareOutput,
+  LabOutlineCompareV2Output,
+  LabOutlineCompareInsightOutput,
   LabOutput,
   LabSourceId,
 } from "../lib/labTypes"
@@ -368,6 +376,22 @@ export default function LabPanel({
   const [outlineDebugInfo, setOutlineDebugInfo] = useState<Record<string, OutlineArtifactDebugInfo>>(
     {}
   )
+  const [structuredOutlineOutputs, setStructuredOutlineOutputs] = useState<
+    Record<string, LabOutlineCompareV2Output | null>
+  >({})
+  const [structuredOutlineDebugPaths, setStructuredOutlineDebugPaths] = useState<
+    Record<string, string | null>
+  >({})
+  const [structuredOutlineDebugInfo, setStructuredOutlineDebugInfo] = useState<
+    Record<string, OutlineArtifactDebugInfo>
+  >({})
+  const [insightOutputs, setInsightOutputs] = useState<Record<string, LabOutlineCompareInsightOutput | null>>(
+    {}
+  )
+  const [insightDebugPaths, setInsightDebugPaths] = useState<Record<string, string | null>>({})
+  const [insightDebugInfo, setInsightDebugInfo] = useState<Record<string, OutlineArtifactDebugInfo>>(
+    {}
+  )
   const [reloadNonce, setReloadNonce] = useState(0)
   const [llmCampaignOptions, setLlmCampaignOptions] = useState<LabLlmCampaign[]>([])
   const [selectedLlmCampaignA, setSelectedLlmCampaignA] = useState<string>("")
@@ -591,6 +615,12 @@ export default function LabPanel({
       setOutlineOutputs({})
       setOutlineDebugPaths({})
       setOutlineDebugInfo({})
+      setStructuredOutlineOutputs({})
+      setStructuredOutlineDebugPaths({})
+      setStructuredOutlineDebugInfo({})
+      setInsightOutputs({})
+      setInsightDebugPaths({})
+      setInsightDebugInfo({})
       setAgreementOutput(null)
       setAgreementDebugPath(null)
       setAgreementDebugInfo(null)
@@ -616,6 +646,12 @@ export default function LabPanel({
       const nextOutlineOutputs: Record<string, LabOutlineCompareOutput | null> = {}
       const nextOutlineDebugPaths: Record<string, string | null> = {}
       const nextOutlineDebugInfo: Record<string, OutlineArtifactDebugInfo> = {}
+      const nextStructuredOutlineOutputs: Record<string, LabOutlineCompareV2Output | null> = {}
+      const nextStructuredOutlineDebugPaths: Record<string, string | null> = {}
+      const nextStructuredOutlineDebugInfo: Record<string, OutlineArtifactDebugInfo> = {}
+      const nextInsightOutputs: Record<string, LabOutlineCompareInsightOutput | null> = {}
+      const nextInsightDebugPaths: Record<string, string | null> = {}
+      const nextInsightDebugInfo: Record<string, OutlineArtifactDebugInfo> = {}
 
       for (const detectorId of selectedDetectors) {
         const isLlm = LLM_DETECTOR_IDS.has(detectorId)
@@ -877,6 +913,92 @@ export default function LabPanel({
         }
       }
 
+      for (const campaignId of selectedCampaignIds) {
+        const artifact = await findLabOutlineCompareStructuredArtifactForCampaign(selectedCase, lens, campaignId)
+        if (!artifact) {
+          nextStructuredOutlineOutputs[campaignId] = null
+          nextStructuredOutlineDebugPaths[campaignId] = "Missing structured outline artifact metadata."
+          nextStructuredOutlineDebugInfo[campaignId] = {
+            expectedPath: null,
+            requestedUrl: null,
+            errorText: "Structured outline artifact metadata is not indexed for this case/lens/campaign.",
+          }
+          continue
+        }
+        let requestedUrl = artifact.requestUrl
+        try {
+          const output = await loadLabOutlineCompareStructuredOutput(selectedCase.ticker, artifact.filename, {
+            signal: controller.signal,
+          })
+          nextStructuredOutlineOutputs[campaignId] = output
+          nextStructuredOutlineDebugPaths[campaignId] = null
+          nextStructuredOutlineDebugInfo[campaignId] = {
+            expectedPath: artifact.repoPath,
+            requestedUrl,
+            errorText: null,
+          }
+        } catch (error) {
+          nextStructuredOutlineOutputs[campaignId] = null
+          nextStructuredOutlineDebugPaths[campaignId] = formatLabLoadDebug(error)
+          let errorText = "Failed to load structured outline output."
+          if (error instanceof LabDataLoadError) {
+            const statusText = typeof error.status === "number" ? ` (status ${error.status})` : ""
+            errorText = `${error.message}${statusText}`
+            requestedUrl = error.url
+          } else if (error instanceof Error) {
+            errorText = error.message
+          }
+          nextStructuredOutlineDebugInfo[campaignId] = {
+            expectedPath: artifact.repoPath,
+            requestedUrl,
+            errorText,
+          }
+        }
+      }
+
+      for (const campaignId of selectedCampaignIds) {
+        const artifact = await findLabOutlineCompareInsightArtifactForCampaign(selectedCase, lens, campaignId)
+        if (!artifact) {
+          nextInsightOutputs[campaignId] = null
+          nextInsightDebugPaths[campaignId] = "Missing insight lens artifact metadata."
+          nextInsightDebugInfo[campaignId] = {
+            expectedPath: null,
+            requestedUrl: null,
+            errorText: "Insight lens artifact metadata is not indexed for this case/lens/campaign.",
+          }
+          continue
+        }
+        let requestedUrl = artifact.requestUrl
+        try {
+          const output = await loadLabOutlineCompareInsightOutput(selectedCase.ticker, artifact.filename, {
+            signal: controller.signal,
+          })
+          nextInsightOutputs[campaignId] = output
+          nextInsightDebugPaths[campaignId] = null
+          nextInsightDebugInfo[campaignId] = {
+            expectedPath: artifact.repoPath,
+            requestedUrl,
+            errorText: null,
+          }
+        } catch (error) {
+          nextInsightOutputs[campaignId] = null
+          nextInsightDebugPaths[campaignId] = formatLabLoadDebug(error)
+          let errorText = "Failed to load insight lens output."
+          if (error instanceof LabDataLoadError) {
+            const statusText = typeof error.status === "number" ? ` (status ${error.status})` : ""
+            errorText = `${error.message}${statusText}`
+            requestedUrl = error.url
+          } else if (error instanceof Error) {
+            errorText = error.message
+          }
+          nextInsightDebugInfo[campaignId] = {
+            expectedPath: artifact.repoPath,
+            requestedUrl,
+            errorText,
+          }
+        }
+      }
+
       const agreementExpectedArtifact = buildExpectedLabOutputArtifact(
         selectedCase,
         "det_rbo_agreement_v1",
@@ -963,6 +1085,12 @@ export default function LabPanel({
         setOutlineOutputs(nextOutlineOutputs)
         setOutlineDebugPaths(nextOutlineDebugPaths)
         setOutlineDebugInfo(nextOutlineDebugInfo)
+        setStructuredOutlineOutputs(nextStructuredOutlineOutputs)
+        setStructuredOutlineDebugPaths(nextStructuredOutlineDebugPaths)
+        setStructuredOutlineDebugInfo(nextStructuredOutlineDebugInfo)
+        setInsightOutputs(nextInsightOutputs)
+        setInsightDebugPaths(nextInsightDebugPaths)
+        setInsightDebugInfo(nextInsightDebugInfo)
         setAgreementOutput(agreement)
         setAgreementDebugPath(nextAgreementDebugPath)
         setAgreementDebugInfo(nextAgreementDebugInfo)
@@ -1162,6 +1290,29 @@ export default function LabPanel({
     return `${deterministicText}; LLM sidecars available ${llmAvailable}/${llmSelected}. Use agreement and evidence blocks to reconcile disagreements.`
   }, [methodCards, outputs])
 
+  const selectedCompareCampaignIds = useMemo(
+    () => Array.from(new Set([selectedLlmCampaignA, selectedLlmCampaignB].filter(Boolean))),
+    [selectedLlmCampaignA, selectedLlmCampaignB]
+  )
+
+  const hasAnyInsightOutput = useMemo(
+    () => selectedCompareCampaignIds.some((campaignId) => Boolean(insightOutputs[campaignId] ?? null)),
+    [insightOutputs, selectedCompareCampaignIds]
+  )
+
+  const compactInsightItems = useMemo(
+    () =>
+      selectedCompareCampaignIds.map((campaignId) => ({
+        campaignId,
+        label:
+          (llmCampaignOptions.find((campaign) => campaign.campaign_id === campaignId)?.display_name ??
+            campaignId),
+        debug: insightDebugInfo[campaignId] ?? null,
+        debugPath: insightDebugPaths[campaignId] ?? null,
+      })),
+    [insightDebugInfo, insightDebugPaths, llmCampaignOptions, selectedCompareCampaignIds]
+  )
+
   const selectedCampaignA = useMemo(
     () => llmCampaignOptions.find((campaign) => campaign.campaign_id === selectedLlmCampaignA) ?? null,
     [llmCampaignOptions, selectedLlmCampaignA]
@@ -1213,7 +1364,7 @@ export default function LabPanel({
   }, [expandedCards, expansionScopeKey, methodCards])
 
   const selectedPairLabel = selectedCase
-    ? `${selectedCase.year_from}-${selectedCase.year_to}`
+    ? formatFiscalYearRange(selectedCase.year_from, selectedCase.year_to)
     : "none"
   const isExecutiveMode = analysisMode === "executive"
   const isDeepMode = analysisMode === "deep"
@@ -1394,7 +1545,7 @@ export default function LabPanel({
               >
                 {cases.map((item) => (
                   <option key={buildCaseKey(item)} value={buildCaseKey(item)}>
-                    {item.year_from} - {item.year_to}
+                    {formatFiscalYearRange(item.year_from, item.year_to)}
                   </option>
                 ))}
               </select>
@@ -1544,6 +1695,9 @@ export default function LabPanel({
               Deterministic contrast: {deterministicContrastSummary}
             </div>
             <div className="mt-2 flex flex-wrap items-center gap-3 text-xs text-slate-300">
+              <a className="underline decoration-white/30 underline-offset-2 hover:text-slate-100" href="#lab-insight-lens">
+                Insight lens
+              </a>
               <a className="underline decoration-white/30 underline-offset-2 hover:text-slate-100" href="#lab-outline-compare">
                 Outline compare
               </a>
@@ -1563,6 +1717,12 @@ export default function LabPanel({
             {isDeepMode ? (
               <div className="mt-2 flex flex-wrap items-center gap-3 text-xs text-slate-300">
                 <span className="uppercase tracking-wide text-slate-400">Deep sections:</span>
+                <a
+                  className="underline decoration-white/30 underline-offset-2 hover:text-slate-100"
+                  href="#lab-insight-lens"
+                >
+                  Insight lens
+                </a>
                 <a
                   className="underline decoration-white/30 underline-offset-2 hover:text-slate-100"
                   href="#lab-outline-compare"
@@ -1665,7 +1825,7 @@ export default function LabPanel({
                       : "border-white/10 bg-slate-950/40 text-slate-200 hover:border-white/30"
                   }`}
                 >
-                  {item.ticker} {item.year_from} - {item.year_to}
+                  {item.ticker} {formatFiscalYearRange(item.year_from, item.year_to)}
                   <div className="mt-1 text-[11px] text-slate-400">{item.why_interesting}</div>
                 </button>
               )
@@ -1673,6 +1833,55 @@ export default function LabPanel({
           </div>
         </div>
       </div>
+
+      {selectedLlmCampaignA || selectedLlmCampaignB ? (
+        selectedCompareCampaignIds.length > 0 && !hasAnyInsightOutput ? (
+          <section
+            id="lab-insight-lens"
+            className="rounded-xl border border-amber-300/20 bg-slate-950/30 p-4 text-sm text-slate-200"
+          >
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <h3 className="text-sm font-semibold text-amber-100">Insight Lens</h3>
+                <p className="mt-1 text-[11px] text-slate-300">
+                  Insight artifacts were not generated for the selected compare models. The active compare view
+                  is using runtime plus structured outline artifacts instead.
+                </p>
+              </div>
+              <a
+                className="text-xs text-amber-100 underline decoration-amber-300/40 underline-offset-2 hover:text-amber-50"
+                href="#lab-outline-compare"
+              >
+                Jump to outline compare
+              </a>
+            </div>
+            <div className="mt-3 grid gap-2 md:grid-cols-2">
+              {compactInsightItems.map((item) => (
+                <div key={item.campaignId} className="rounded-md border border-white/10 bg-slate-900/35 p-3 text-xs">
+                  <div className="font-medium text-slate-100">{item.label}</div>
+                  <div className="mt-1 text-slate-300">
+                    {item.debug?.errorText ?? "No insight sidecar present for this campaign/case/lens."}
+                  </div>
+                  {item.debug?.expectedPath ? (
+                    <div className="mt-1 break-all text-[11px] text-slate-400">Expected path: {item.debug.expectedPath}</div>
+                  ) : null}
+                </div>
+              ))}
+            </div>
+          </section>
+        ) : (
+          <InsightLensPanel
+            modelALabel={(selectedCampaignA?.display_name ?? selectedLlmCampaignA) || "Model A"}
+            modelBLabel={(selectedCampaignB?.display_name ?? selectedLlmCampaignB) || "Model B"}
+            modelAOutput={selectedLlmCampaignA ? insightOutputs[selectedLlmCampaignA] ?? null : null}
+            modelBOutput={selectedLlmCampaignB ? insightOutputs[selectedLlmCampaignB] ?? null : null}
+            modelADebug={selectedLlmCampaignA ? insightDebugInfo[selectedLlmCampaignA] ?? null : null}
+            modelBDebug={selectedLlmCampaignB ? insightDebugInfo[selectedLlmCampaignB] ?? null : null}
+            modelADebugPath={selectedLlmCampaignA ? insightDebugPaths[selectedLlmCampaignA] ?? null : null}
+            modelBDebugPath={selectedLlmCampaignB ? insightDebugPaths[selectedLlmCampaignB] ?? null : null}
+          />
+        )
+      ) : null}
 
       {selectedLlmCampaignA || selectedLlmCampaignB ? (
         <OutlineComparePanel
@@ -1695,6 +1904,24 @@ export default function LabPanel({
           }
           modelBDebugPath={
             selectedLlmCampaignB ? outlineDebugPaths[selectedLlmCampaignB] ?? null : null
+          }
+          modelAStructuredOutput={
+            selectedLlmCampaignA ? structuredOutlineOutputs[selectedLlmCampaignA] ?? null : null
+          }
+          modelBStructuredOutput={
+            selectedLlmCampaignB ? structuredOutlineOutputs[selectedLlmCampaignB] ?? null : null
+          }
+          modelAStructuredDebug={
+            selectedLlmCampaignA ? structuredOutlineDebugInfo[selectedLlmCampaignA] ?? null : null
+          }
+          modelBStructuredDebug={
+            selectedLlmCampaignB ? structuredOutlineDebugInfo[selectedLlmCampaignB] ?? null : null
+          }
+          modelAStructuredDebugPath={
+            selectedLlmCampaignA ? structuredOutlineDebugPaths[selectedLlmCampaignA] ?? null : null
+          }
+          modelBStructuredDebugPath={
+            selectedLlmCampaignB ? structuredOutlineDebugPaths[selectedLlmCampaignB] ?? null : null
           }
         />
       ) : null}
@@ -1839,3 +2066,5 @@ export default function LabPanel({
     </section>
   )
 }
+
+

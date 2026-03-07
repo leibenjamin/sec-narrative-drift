@@ -6,6 +6,8 @@ import {
   LabMethodProfilesIndexSchema,
   LabMethodTracksIndexSchema,
   LabOutlineCompareOutputSchema,
+  LabOutlineCompareV2OutputSchema,
+  LabOutlineCompareInsightOutputSchema,
   LabOutlineResearchOutputSchema,
   LabOutputSchema,
 } from "./labSchemas"
@@ -24,6 +26,8 @@ import type {
   LabMethodProfilesIndex,
   LabMethodTracksIndex,
   LabOutlineCompareOutput,
+  LabOutlineCompareV2Output,
+  LabOutlineCompareInsightOutput,
   LabOutlineResearchOutput,
   LabOutput,
   LabSourceId,
@@ -47,27 +51,21 @@ const URL_SCHEME_RE = /^[A-Za-z][A-Za-z0-9+.-]*:/
 const DEFAULT_DETERMINISTIC_TRACK_SLUG = "det-baseline-2026-02-21"
 const DEFAULT_PRIMARY_CAMPAIGN_ID = "openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27"
 const DEFAULT_COMPARE_CAMPAIGN_ID = "openai_chatgpt52ext_agent_fullsec_real_2026-02-27"
-const OUTLINE_COMPARE_ARTIFACT_ID = "llm_outline_compare_v1"
+const OUTLINE_COMPARE_STRUCTURED_ARTIFACT_ID = "llm_outline_compare_structured"
+const OUTLINE_COMPARE_ARTIFACT_ID = "llm_outline_compare_runtime"
+const OUTLINE_COMPARE_INSIGHT_ARTIFACT_ID = "llm_outline_compare_insight"
 const OUTLINE_RESEARCH_ARTIFACT_ID = "llm_outline_research_v1"
 const ACTIVE_RUNTIME_PAIRS: Record<string, Array<{ from: number; to: number }>> = {
   NVDA: [
-    { from: 2022, to: 2023 },
-    { from: 2023, to: 2024 },
     { from: 2024, to: 2025 },
   ],
   KO: [
-    { from: 2022, to: 2023 },
-    { from: 2023, to: 2024 },
     { from: 2024, to: 2025 },
   ],
   WM: [
-    { from: 2022, to: 2023 },
-    { from: 2023, to: 2024 },
     { from: 2024, to: 2025 },
   ],
   GE: [
-    { from: 2022, to: 2023 },
-    { from: 2023, to: 2024 },
     { from: 2024, to: 2025 },
   ],
 }
@@ -110,6 +108,8 @@ export class LabDataLoadError extends Error {
 
 const outputCache = new Map<string, Promise<LabOutput>>()
 const outlineCompareCache = new Map<string, Promise<LabOutlineCompareOutput>>()
+const outlineCompareStructuredCache = new Map<string, Promise<LabOutlineCompareV2Output>>()
+const outlineCompareInsightCache = new Map<string, Promise<LabOutlineCompareInsightOutput>>()
 const outlineResearchCache = new Map<string, Promise<LabOutlineResearchOutput>>()
 const inputCache = new Map<string, Promise<unknown>>()
 let casesPromise: Promise<LabCasesRegistry> | null = null
@@ -121,6 +121,8 @@ let methodProfilesPromise: Promise<LabMethodProfilesIndex> | null = null
 export function clearLabOutputCache(): void {
   outputCache.clear()
   outlineCompareCache.clear()
+  outlineCompareStructuredCache.clear()
+  outlineCompareInsightCache.clear()
   outlineResearchCache.clear()
 }
 
@@ -556,6 +558,24 @@ export async function findLabLlmVariant(
   return null
 }
 
+function deriveTickerRelativeOutputPath(rawRepoPath: string, ticker: string): string {
+  const normalizedRepoPath = rawRepoPath.replace(/\\/g, "/")
+  const marker = `/${ticker.toUpperCase()}/`
+  const markerIndex = normalizedRepoPath.toUpperCase().indexOf(marker)
+  if (markerIndex >= 0) {
+    return normalizedRepoPath.slice(markerIndex + marker.length)
+  }
+  return normalizedRepoPath.replace(/^public\/data\/sec_narrative_drift_lab\/[A-Z0-9.-]+\//i, "")
+}
+
+function projectOutlineRuntimePathToInsight(pathValue: string): string | null {
+  const normalized = pathValue.replace(/\\/g, "/")
+  if (!normalized.includes("llm_outline_compare_runtime")) return null
+  return normalized
+    .replace(/\/llm_outline_compare_runtime\//g, "/llm_outline_compare_insight/")
+    .replace(/lab_llm_outline_compare_runtime_/g, "lab_llm_outline_compare_insight_")
+}
+
 export async function findLabOutlineCompareArtifactForCampaign(
   entry: Pick<LabCase, "ticker" | "section" | "year_from" | "year_to">,
   lens: LabCleaningLens,
@@ -580,27 +600,71 @@ export async function findLabOutlineCompareArtifactForCampaign(
     if (!rawRequestUrl || !rawRepoPath) return null
     const requestUrl = buildLabInputRequestUrl(rawRequestUrl)
     if (!requestUrl) return null
-    const normalizedRepoPath = rawRepoPath.replace(/\\/g, "/")
-    const marker = `/${entry.ticker.toUpperCase()}/`
-    const markerIndex = normalizedRepoPath.toUpperCase().indexOf(marker)
-    const filename =
-      markerIndex >= 0
-        ? normalizedRepoPath.slice(markerIndex + marker.length)
-        : normalizedRepoPath.replace(/^public\/data\/sec_narrative_drift_lab\/[A-Z0-9.-]+\//i, "")
     return {
-      filename,
+      filename: deriveTickerRelativeOutputPath(rawRepoPath, entry.ticker),
       repoPath: rawRepoPath,
       requestUrl,
     }
   }
   const campaign = await getLabLlmCampaignById(campaignId)
   if (!campaign) return null
-  return buildExpectedLabOutlineCompareArtifact(
-    entry,
-    lens,
-    "edgar",
-    campaign.campaign_slug
-  )
+  return buildExpectedLabOutlineCompareArtifact(entry, lens, "edgar", campaign.campaign_slug)
+}
+
+export async function findLabOutlineCompareStructuredArtifactForCampaign(
+  entry: Pick<LabCase, "ticker" | "section" | "year_from" | "year_to">,
+  lens: LabCleaningLens,
+  campaignId: string
+): Promise<LabExpectedOutputArtifact | null> {
+  const campaign = await getLabLlmCampaignById(campaignId)
+  if (!campaign) return null
+  return buildExpectedLabOutlineCompareStructuredArtifact(entry, lens, "edgar", campaign.campaign_slug)
+}
+export async function findLabOutlineCompareInsightArtifactForCampaign(
+  entry: Pick<LabCase, "ticker" | "section" | "year_from" | "year_to">,
+  lens: LabCleaningLens,
+  campaignId: string
+): Promise<LabExpectedOutputArtifact | null> {
+  const index = await loadLabLlmVariantsIndex()
+  for (const variant of index.variants) {
+    if (variant.ticker.toUpperCase() !== entry.ticker.toUpperCase()) continue
+    if (variant.section !== entry.section) continue
+    if (variant.year_from !== entry.year_from || variant.year_to !== entry.year_to) continue
+    if (variant.lens !== lens) continue
+    if (variant.campaign_id !== campaignId) continue
+
+    if (
+      variant.outline_compare_insight_expected_repo_path &&
+      variant.outline_compare_insight_request_url
+    ) {
+      const requestUrl = buildLabInputRequestUrl(variant.outline_compare_insight_request_url)
+      if (!requestUrl) continue
+      return {
+        filename: deriveTickerRelativeOutputPath(variant.outline_compare_insight_expected_repo_path, entry.ticker),
+        repoPath: variant.outline_compare_insight_expected_repo_path,
+        requestUrl,
+      }
+    }
+
+    if (variant.outline_compare_expected_repo_path) {
+      const projectedRepoPath = projectOutlineRuntimePathToInsight(variant.outline_compare_expected_repo_path)
+      if (!projectedRepoPath) continue
+      const projectedRequestPath = variant.outline_compare_request_url
+        ? projectOutlineRuntimePathToInsight(variant.outline_compare_request_url)
+        : null
+      const requestUrl = projectedRequestPath ? buildLabInputRequestUrl(projectedRequestPath) : null
+      if (!requestUrl) continue
+      return {
+        filename: deriveTickerRelativeOutputPath(projectedRepoPath, entry.ticker),
+        repoPath: projectedRepoPath,
+        requestUrl,
+      }
+    }
+  }
+
+  const campaign = await getLabLlmCampaignById(campaignId)
+  if (!campaign) return null
+  return buildExpectedLabOutlineCompareInsightArtifact(entry, lens, "edgar", campaign.campaign_slug)
 }
 
 export async function getLabLlmCampaignById(campaignId: string): Promise<LabLlmCampaign | null> {
@@ -814,7 +878,11 @@ export function buildExpectedLabOutputArtifactFromVariant(
 }
 
 function buildOutlineArtifactFilename(
-  artifactId: typeof OUTLINE_COMPARE_ARTIFACT_ID | typeof OUTLINE_RESEARCH_ARTIFACT_ID,
+  artifactId:
+    | typeof OUTLINE_COMPARE_STRUCTURED_ARTIFACT_ID
+    | typeof OUTLINE_COMPARE_ARTIFACT_ID
+    | typeof OUTLINE_COMPARE_INSIGHT_ARTIFACT_ID
+    | typeof OUTLINE_RESEARCH_ARTIFACT_ID,
   entry: Pick<LabCase, "section" | "year_from" | "year_to">,
   lens: LabCleaningLens,
   sourceId: LabSourceId,
@@ -823,6 +891,31 @@ function buildOutlineArtifactFilename(
   return `lab_${artifactId}_${entry.section}_${entry.year_from}_${entry.year_to}_${lens}_${sourceId}__${campaignSlug}.json`
 }
 
+export function buildExpectedLabOutlineCompareStructuredArtifact(
+  entry: Pick<LabCase, "ticker" | "section" | "year_from" | "year_to">,
+  lens: LabCleaningLens,
+  sourceId: LabSourceId,
+  campaignSlug: string
+): LabExpectedOutputArtifact | null {
+  const normalizedTicker = normalizeTickerSymbol(entry.ticker)
+  if (!normalizedTicker) return null
+  const filename = buildOutlineArtifactFilename(
+    OUTLINE_COMPARE_STRUCTURED_ARTIFACT_ID,
+    entry,
+    lens,
+    sourceId,
+    campaignSlug
+  )
+  const relativeOutput = `outputs/${OUTLINE_COMPARE_STRUCTURED_ARTIFACT_ID}/${campaignSlug}/${filename}`
+  const requestUrl = buildLabOutputRequestUrl(normalizedTicker, relativeOutput)
+  const repoPath = buildLabOutputRepoPath(normalizedTicker, relativeOutput)
+  if (!requestUrl || !repoPath) return null
+  return {
+    filename: relativeOutput,
+    repoPath,
+    requestUrl,
+  }
+}
 export function buildExpectedLabOutlineCompareArtifact(
   entry: Pick<LabCase, "ticker" | "section" | "year_from" | "year_to">,
   lens: LabCleaningLens,
@@ -839,6 +932,32 @@ export function buildExpectedLabOutlineCompareArtifact(
     campaignSlug
   )
   const relativeOutput = `outputs/${OUTLINE_COMPARE_ARTIFACT_ID}/${campaignSlug}/${filename}`
+  const requestUrl = buildLabOutputRequestUrl(normalizedTicker, relativeOutput)
+  const repoPath = buildLabOutputRepoPath(normalizedTicker, relativeOutput)
+  if (!requestUrl || !repoPath) return null
+  return {
+    filename: relativeOutput,
+    repoPath,
+    requestUrl,
+  }
+}
+
+export function buildExpectedLabOutlineCompareInsightArtifact(
+  entry: Pick<LabCase, "ticker" | "section" | "year_from" | "year_to">,
+  lens: LabCleaningLens,
+  sourceId: LabSourceId,
+  campaignSlug: string
+): LabExpectedOutputArtifact | null {
+  const normalizedTicker = normalizeTickerSymbol(entry.ticker)
+  if (!normalizedTicker) return null
+  const filename = buildOutlineArtifactFilename(
+    OUTLINE_COMPARE_INSIGHT_ARTIFACT_ID,
+    entry,
+    lens,
+    sourceId,
+    campaignSlug
+  )
+  const relativeOutput = `outputs/${OUTLINE_COMPARE_INSIGHT_ARTIFACT_ID}/${campaignSlug}/${filename}`
   const requestUrl = buildLabOutputRequestUrl(normalizedTicker, relativeOutput)
   const repoPath = buildLabOutputRepoPath(normalizedTicker, relativeOutput)
   if (!requestUrl || !repoPath) return null
@@ -961,6 +1080,77 @@ export async function loadLabOutlineCompareOutput(
   return outlineCompareCache.get(url)!
 }
 
+export async function loadLabOutlineCompareStructuredOutput(
+  ticker: string,
+  filename: string,
+  options?: { signal?: AbortSignal }
+): Promise<LabOutlineCompareV2Output> {
+  const normalizedTicker = normalizeTickerSymbol(ticker)
+  if (!normalizedTicker) {
+    throw new LabDataLoadError("Ticker format is invalid for outline output paths.", ticker)
+  }
+  const normalizedFilename = normalizeOutputFilename(filename)
+  if (!normalizedFilename) {
+    throw new LabDataLoadError("Outline output file path is not canonical.", filename)
+  }
+  const url = buildLabPath(normalizedTicker, filename)
+  if (!url) {
+    throw new LabDataLoadError("Outline output file path is not usable.", filename)
+  }
+  if (!outlineCompareStructuredCache.has(url)) {
+    const promise = fetchJson<unknown>(url, "Structured outline artifact is not available.", options)
+      .then((data) =>
+        parseLabPayload(
+          LabOutlineCompareV2OutputSchema,
+          data,
+          `LabOutlineCompareV2Output:${normalizedFilename}`,
+          url
+        )
+      )
+      .catch((error) => {
+        outlineCompareStructuredCache.delete(url)
+        throw error
+      })
+    outlineCompareStructuredCache.set(url, promise)
+  }
+  return outlineCompareStructuredCache.get(url)!
+}
+export async function loadLabOutlineCompareInsightOutput(
+  ticker: string,
+  filename: string,
+  options?: { signal?: AbortSignal }
+): Promise<LabOutlineCompareInsightOutput> {
+  const normalizedTicker = normalizeTickerSymbol(ticker)
+  if (!normalizedTicker) {
+    throw new LabDataLoadError("Ticker format is invalid for outline output paths.", ticker)
+  }
+  const normalizedFilename = normalizeOutputFilename(filename)
+  if (!normalizedFilename) {
+    throw new LabDataLoadError("Outline output file path is not canonical.", filename)
+  }
+  const url = buildLabPath(normalizedTicker, filename)
+  if (!url) {
+    throw new LabDataLoadError("Outline output file path is not usable.", filename)
+  }
+  if (!outlineCompareInsightCache.has(url)) {
+    const promise = fetchJson<unknown>(url, "Insight lens artifact is not available.", options)
+      .then((data) =>
+        parseLabPayload(
+          LabOutlineCompareInsightOutputSchema,
+          data,
+          `LabOutlineCompareInsightOutput:${normalizedFilename}`,
+          url
+        )
+      )
+      .catch((error) => {
+        outlineCompareInsightCache.delete(url)
+        throw error
+      })
+    outlineCompareInsightCache.set(url, promise)
+  }
+  return outlineCompareInsightCache.get(url)!
+}
+
 export async function loadLabOutlineResearchOutput(
   ticker: string,
   filename: string,
@@ -1022,3 +1212,5 @@ export function formatLabLoadDebug(error: unknown): string | null {
   }
   return "Lab data error: unknown failure."
 }
+
+

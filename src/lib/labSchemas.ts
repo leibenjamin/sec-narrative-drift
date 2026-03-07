@@ -1,4 +1,4 @@
-import { z } from "zod"
+﻿import { z } from "zod"
 
 const URL_SCHEME_RE = /^[A-Za-z][A-Za-z0-9+.-]*:/
 
@@ -193,6 +193,10 @@ export const LabLlmVariantSchema = z.object({
   outline_compare_valid: z.boolean().optional(),
   outline_compare_expected_repo_path: OptionalInternalPathLikeSchema.optional(),
   outline_compare_request_url: OptionalInternalPathLikeSchema.optional(),
+  outline_compare_insight_present: z.boolean().optional(),
+  outline_compare_insight_valid: z.boolean().optional(),
+  outline_compare_insight_expected_repo_path: OptionalInternalPathLikeSchema.optional(),
+  outline_compare_insight_request_url: OptionalInternalPathLikeSchema.optional(),
   outline_research_present: z.boolean().optional(),
   outline_research_valid: z.boolean().optional(),
   outline_research_expected_repo_path: OptionalInternalPathLikeSchema.optional(),
@@ -285,6 +289,11 @@ const LabOutlineAlignmentSchema = z.object({
   salience: z.number().min(0).max(1),
 })
 
+const LabOutlineEvidenceRefSchema = z.object({
+  year: z.number().int(),
+  paragraph_idx: z.number().int().nonnegative(),
+})
+
 const LabOutlineMaterialChangeSchema = z.object({
   id: z.string(),
   title: z.string(),
@@ -300,12 +309,7 @@ const LabOutlineMaterialChangeSchema = z.object({
   ]),
   salience: z.number().min(0).max(1),
   caveat: z.string(),
-  evidence_refs: z.array(
-    z.object({
-      year: z.number().int(),
-      paragraph_idx: z.number().int().nonnegative(),
-    })
-  ),
+  evidence_refs: z.array(LabOutlineEvidenceRefSchema),
 })
 
 const LabOutlineEvidenceSchema = z.object({
@@ -316,10 +320,43 @@ const LabOutlineEvidenceSchema = z.object({
   node_ids: z.array(z.string()),
 })
 
-export const LabOutlineCompareOutputSchema = z.object({
+const LabOutlineRiskGraphRowSchema = z.object({
+  id: z.string(),
+  driver: z.string(),
+  exposure: z.string(),
+  impact: z.string(),
+  evidence_paragraph_idx: z.array(z.number().int().nonnegative()),
+})
+
+const LabOutlineChangeMechanismRowSchema = z.object({
+  id: z.string(),
+  mechanism: z.string(),
+  transmission_channel: z.string(),
+  business_effect: z.string(),
+  time_horizon: z.enum(["near_term", "medium_term", "long_term"]),
+  evidence_refs: z.array(LabOutlineEvidenceRefSchema),
+})
+
+const LabOutlineLimitRowSchema = z.object({
+  id: z.string(),
+  limitation: z.string(),
+  evidence_refs: z.array(LabOutlineEvidenceRefSchema),
+})
+
+const LabOutlineInvestorRelevanceRowSchema = z.object({
+  id: z.string(),
+  why_it_matters: z.string(),
+  evidence_refs: z.array(LabOutlineEvidenceRefSchema),
+})
+
+const LabOutlineProjectionContractSchema = z.object({
+  projects_to_artifact_id: z.literal("llm_outline_compare_runtime"),
+  projection_version: z.string(),
+})
+
+const LabOutlineCompareBaseSchema = z.object({
   lab_schema_version: z.literal("1.0"),
   artifact_schema_version: z.literal("1.0"),
-  artifact_id: z.literal("llm_outline_compare_v1"),
   ticker: z.string(),
   section: z.string(),
   source_id: LabSourceIdSchema,
@@ -336,6 +373,77 @@ export const LabOutlineCompareOutputSchema = z.object({
     summary: z.string(),
   }),
   provenance: LabProvenanceSchema,
+})
+
+export const LabOutlineCompareOutputSchema = LabOutlineCompareBaseSchema.extend({
+  artifact_id: z.literal("llm_outline_compare_runtime"),
+})
+
+export const LabOutlineCompareV2OutputSchema = LabOutlineCompareBaseSchema.extend({
+  artifact_id: z.literal("llm_outline_compare_structured"),
+  risk_graph_prev: z.array(LabOutlineRiskGraphRowSchema),
+  risk_graph_curr: z.array(LabOutlineRiskGraphRowSchema),
+  change_mechanisms: z.array(LabOutlineChangeMechanismRowSchema),
+  uncertainty_and_limits: z.array(LabOutlineLimitRowSchema),
+  investor_relevance: z.array(LabOutlineInvestorRelevanceRowSchema),
+  projection_contract: LabOutlineProjectionContractSchema,
+})
+
+const LabOutlineInsightExecutiveDigestSchema = z.object({
+  summary_text: z.string(),
+  audience: z.literal("investor_analyst"),
+  reading_time_sec_estimate: z.number().int().positive(),
+})
+
+const LabOutlineInsightCardSchema = z.object({
+  id: z.string(),
+  insight_type: z.enum(["difference", "similarity"]),
+  title: z.string(),
+  claim: z.string(),
+  why_it_matters: z.string(),
+  salience: z.number().min(0).max(1),
+  confidence_band: z.string(),
+  evidence_refs_prev: z.array(LabOutlineEvidenceRefSchema),
+  evidence_refs_curr: z.array(LabOutlineEvidenceRefSchema),
+  evidence_ref_ids: z.array(z.string()),
+  counterpoint_or_limit: z.string(),
+})
+
+const LabOutlineInsightEvidenceMapSchema = z.object({
+  evidence_id: z.string(),
+  year: z.number().int(),
+  paragraph_idx: z.number().int().nonnegative(),
+  snippet: z.string(),
+  char_start: z.number().int().nonnegative().nullable().optional(),
+  char_end: z.number().int().nonnegative().nullable().optional(),
+  insight_ids: z.array(z.string()),
+})
+
+const LabOutlineInsightCoverageSchema = z.object({
+  difference_count: z.number().int().nonnegative(),
+  similarity_count: z.number().int().nonnegative(),
+  per_year_evidence_spread: z.record(z.string(), z.number()).optional().default({}),
+})
+
+const LabOutlineInsightUiContractSchema = z.object({
+  default_selected_insight_id: z.string(),
+  recommended_insight_order: z.array(z.string()),
+  suggested_clusters: z.array(
+    z.object({
+      cluster_id: z.string(),
+      label: z.string(),
+      insight_ids: z.array(z.string()),
+    })
+  ),
+})
+
+export const LabOutlineCompareInsightOutputSchema = LabOutlineCompareV2OutputSchema.extend({
+  artifact_id: z.literal("llm_outline_compare_insight"),
+  executive_digest: LabOutlineInsightExecutiveDigestSchema,
+  insight_cards: z.array(LabOutlineInsightCardSchema),
+  evidence_map: z.array(LabOutlineInsightEvidenceMapSchema),
+  insight_coverage: LabOutlineInsightCoverageSchema,
+  ui_contract: LabOutlineInsightUiContractSchema,
 })
 
 const LabOutlineResearchClaimSchema = z.object({
@@ -360,3 +468,5 @@ export const LabOutlineResearchOutputSchema = z.object({
   claims: z.array(LabOutlineResearchClaimSchema),
   provenance: LabProvenanceSchema,
 })
+
+

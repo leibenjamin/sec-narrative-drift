@@ -1,10 +1,11 @@
-import { useEffect, useMemo, useState } from "react"
+﻿import { useEffect, useMemo, useState } from "react"
 import { Link } from "react-router-dom"
 import {
   listLabTickerSummaries,
   listLabShowcaseTickers,
   type LabTickerSummary,
 } from "../lib/labData"
+import { formatFiscalYearRange } from "../lib/fiscalYear"
 
 const SHOWCASE_COMPANY_NAMES: Record<string, string> = {
   NVDA: "NVIDIA",
@@ -174,7 +175,7 @@ export default function Home() {
                       <div>{summarizeMethods(summary)}</div>
                       {summary.defaultPair ? (
                         <div>
-                          Recommended: {summary.defaultPair.from}-{summary.defaultPair.to}
+                          Recommended: {formatFiscalYearRange(summary.defaultPair.from, summary.defaultPair.to)}
                         </div>
                       ) : null}
                     </div>
@@ -188,3 +189,4 @@ export default function Home() {
     </main>
   )
 }
+

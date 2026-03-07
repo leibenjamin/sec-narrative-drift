@@ -45,7 +45,7 @@ export default class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBo
             <p className="text-sm text-slate-300 mb-6">
               {copy.global.errors.missingDataset}
             </p>
-            {this.state.error && (
+            {import.meta.env.DEV && this.state.error && (
               <details className="mb-6">
                 <summary className="text-xs text-slate-400 cursor-pointer hover:text-slate-300">
                   Technical details

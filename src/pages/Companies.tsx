@@ -1,6 +1,7 @@
-import { useEffect, useMemo, useState } from "react"
+﻿import { useEffect, useMemo, useState } from "react"
 import { Link } from "react-router-dom"
 import { listLabTickerSummaries, type LabTickerSummary } from "../lib/labData"
+import { formatFiscalYearRange } from "../lib/fiscalYear"
 
 const SHOWCASE_COMPANY_NAMES: Record<string, string> = {
   NVDA: "NVIDIA",
@@ -146,12 +147,12 @@ export default function Companies() {
                     <p>Lenses: {summary.availableLenses.join(", ")}</p>
                     {summary.defaultPair ? (
                       <p>
-                        Recommended pair: {summary.defaultPair.from}-{summary.defaultPair.to}
+                        Recommended pair: {formatFiscalYearRange(summary.defaultPair.from, summary.defaultPair.to)}
                       </p>
                     ) : null}
                     {summary.latestPair ? (
                       <p>
-                        Latest pair: {summary.latestPair.from}-{summary.latestPair.to}
+                        Latest pair: {formatFiscalYearRange(summary.latestPair.from, summary.latestPair.to)}
                       </p>
                     ) : null}
                   </div>
@@ -179,3 +180,4 @@ export default function Companies() {
     </main>
   )
 }
+
