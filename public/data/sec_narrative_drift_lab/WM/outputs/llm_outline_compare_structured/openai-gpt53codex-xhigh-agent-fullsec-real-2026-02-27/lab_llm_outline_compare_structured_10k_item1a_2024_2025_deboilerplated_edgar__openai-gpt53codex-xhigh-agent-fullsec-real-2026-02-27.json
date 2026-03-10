@@ -14,127 +14,164 @@
       "parent_id": null,
       "level": 1,
       "order": 0,
-      "label": "WM 2024 Item 1A risk architecture",
-      "risk_thesis": "Risk framing centers on execution of Stericycle integration, policy-sensitive sustainability investments, and macro cost volatility.",
+      "label": "2024 Risk Architecture",
+      "risk_thesis": "2024 risk framing links growth execution, regulatory load, sustainability policy dependence, and control-system resilience.",
       "evidence_paragraph_idx": [
-        35
+        2
       ]
     },
     {
-      "node_id": "prev_growth",
+      "node_id": "prev_strategy",
       "parent_id": "prev_root",
       "level": 2,
-      "order": 1,
-      "label": "Growth strategy and policy dependencies",
-      "risk_thesis": "Acquisition and expansion strategy depends on integration performance and stable external policy conditions.",
+      "order": 0,
+      "label": "Growth And Acquisition Execution",
+      "risk_thesis": "Acquisition-led expansion and new service lines are framed as earnings and execution risks.",
       "evidence_paragraph_idx": [
-        5,
-        35,
-        151
+        5
       ]
     },
     {
-      "node_id": "prev_growth_stericycle",
-      "parent_id": "prev_growth",
+      "node_id": "prev_strategy_stericycle",
+      "parent_id": "prev_strategy",
       "level": 3,
-      "order": 2,
-      "label": "Stericycle integration and synergy realization",
-      "risk_thesis": "Benefit realization depends on integration execution, cost synergies, and management bandwidth.",
+      "order": 0,
+      "label": "Stericycle Integration Burden",
+      "risk_thesis": "Management attention and integration complexity can delay synergy realization and harm performance.",
       "evidence_paragraph_idx": [
-        13,
-        16,
+        16
+      ]
+    },
+    {
+      "node_id": "prev_strategy_synergies",
+      "parent_id": "prev_strategy",
+      "level": 3,
+      "order": 1,
+      "label": "Synergy Timing Uncertainty",
+      "risk_thesis": "Expected Stericycle benefits may miss timelines or fail to materialize.",
+      "evidence_paragraph_idx": [
         19
       ]
     },
     {
-      "node_id": "prev_growth_trade",
-      "parent_id": "prev_growth",
-      "level": 3,
-      "order": 3,
-      "label": "Trade and renewable-fuel policy sensitivity",
-      "risk_thesis": "Potential policy shifts in trade and RFS rules could weaken returns from recycling exports and renewable investments.",
+      "node_id": "prev_regulatory",
+      "parent_id": "prev_root",
+      "level": 2,
+      "order": 1,
+      "label": "Regulatory And Enforcement Exposure",
+      "risk_thesis": "Environmental and operational regulation can constrain siting, raise costs, and increase legal exposure.",
       "evidence_paragraph_idx": [
-        35,
-        146,
+        21
+      ]
+    },
+    {
+      "node_id": "prev_reg_policy_shift",
+      "parent_id": "prev_regulatory",
+      "level": 3,
+      "order": 0,
+      "label": "Policy Direction Uncertainty",
+      "risk_thesis": "A new administration could change trade and environmental policy with uncertain timing and scope.",
+      "evidence_paragraph_idx": [
+        33
+      ]
+    },
+    {
+      "node_id": "prev_reg_epr_pfAS",
+      "parent_id": "prev_regulatory",
+      "level": 3,
+      "order": 1,
+      "label": "EPR And PFAS Cost Pressure",
+      "risk_thesis": "EPR and PFAS developments increase compliance burden and operating costs.",
+      "evidence_paragraph_idx": [
+        28
+      ]
+    },
+    {
+      "node_id": "prev_sustainability",
+      "parent_id": "prev_root",
+      "level": 2,
+      "order": 2,
+      "label": "Sustainability Investment Execution",
+      "risk_thesis": "Meeting sustainability goals depends on technology, policy, and delivery assumptions that may not hold.",
+      "evidence_paragraph_idx": [
+        56
+      ]
+    },
+    {
+      "node_id": "prev_sust_rng_policy",
+      "parent_id": "prev_sustainability",
+      "level": 3,
+      "order": 0,
+      "label": "RNG Policy Sensitivity",
+      "risk_thesis": "Renewable fuel returns depend on RFS target-setting and exemption decisions.",
+      "evidence_paragraph_idx": [
         151
       ]
     },
     {
-      "node_id": "prev_market",
+      "node_id": "prev_sust_disclosure",
+      "parent_id": "prev_sustainability",
+      "level": 3,
+      "order": 1,
+      "label": "Greenwashing Litigation Risk",
+      "risk_thesis": "Sustainability disclosures face rising scrutiny and litigation-style challenge risk.",
+      "evidence_paragraph_idx": [
+        70
+      ]
+    },
+    {
+      "node_id": "prev_technology",
+      "parent_id": "prev_root",
+      "level": 2,
+      "order": 3,
+      "label": "Technology And Data-Security Exposure",
+      "risk_thesis": "Digital dependence raises cyber, AI-governance, and reporting-system disruption risk.",
+      "evidence_paragraph_idx": [
+        121
+      ]
+    },
+    {
+      "node_id": "prev_tech_ai_cyber",
+      "parent_id": "prev_technology",
+      "level": 3,
+      "order": 0,
+      "label": "AI And Cyber Threat Evolution",
+      "risk_thesis": "AI regulatory uncertainty and increasingly sophisticated intrusions can raise incident severity.",
+      "evidence_paragraph_idx": [
+        125
+      ]
+    },
+    {
+      "node_id": "prev_tech_controls",
+      "parent_id": "prev_technology",
+      "level": 3,
+      "order": 1,
+      "label": "Post-Acquisition Control Integration",
+      "risk_thesis": "Integrating Stericycle into internal control over financial reporting is resource-intensive and time-sensitive.",
+      "evidence_paragraph_idx": [
+        161
+      ]
+    },
+    {
+      "node_id": "prev_financing",
       "parent_id": "prev_root",
       "level": 2,
       "order": 4,
-      "label": "Operating and market pressure channels",
-      "risk_thesis": "Labor tightness, inflation, and commodity swings are presented as primary margin and service-capacity pressures.",
+      "label": "Leverage And Rate Exposure",
+      "risk_thesis": "Debt and refinancing sensitivity can pressure financing flexibility after acquisition activity.",
       "evidence_paragraph_idx": [
-        73,
-        86,
-        91
-      ]
-    },
-    {
-      "node_id": "prev_market_labor",
-      "parent_id": "prev_market",
-      "level": 3,
-      "order": 5,
-      "label": "Labor availability and wage inflation",
-      "risk_thesis": "Hiring/retention constraints and union-related wage pressure threaten service continuity and cost discipline.",
-      "evidence_paragraph_idx": [
-        41,
-        49,
-        73
-      ]
-    },
-    {
-      "node_id": "prev_market_commodity",
-      "parent_id": "prev_market",
-      "level": 3,
-      "order": 6,
-      "label": "Commodity and renewable economics volatility",
-      "risk_thesis": "Recycling commodity prices and RIN-linked economics create earnings variability and uncertain payback timing.",
-      "evidence_paragraph_idx": [
-        76,
-        85,
-        86,
-        91
-      ]
-    },
-    {
-      "node_id": "prev_tech",
-      "parent_id": "prev_root",
-      "level": 2,
-      "order": 7,
-      "label": "Technology, cyber, and control environment",
-      "risk_thesis": "Digital dependency and integration complexity elevate cyber/privacy exposure and control execution risk.",
-      "evidence_paragraph_idx": [
-        125,
-        128,
         174
       ]
     },
     {
-      "node_id": "prev_tech_cyber",
-      "parent_id": "prev_tech",
+      "node_id": "prev_fin_leverage",
+      "parent_id": "prev_financing",
       "level": 3,
-      "order": 8,
-      "label": "Cybersecurity and privacy enforcement",
-      "risk_thesis": "Frequent intrusion attempts and tighter enforcement create liability and operational continuity risk.",
+      "order": 0,
+      "label": "Leverage Normalization Target",
+      "risk_thesis": "The expected post-Stericycle deleveraging path is explicit and execution-dependent.",
       "evidence_paragraph_idx": [
-        125,
-        128,
-        133
-      ]
-    },
-    {
-      "node_id": "prev_tech_finance",
-      "parent_id": "prev_tech",
-      "level": 3,
-      "order": 9,
-      "label": "Capital markets and variable-rate exposure",
-      "risk_thesis": "Higher leverage and short-term rate exposure can pressure financing costs and strategic flexibility.",
-      "evidence_paragraph_idx": [
-        161,
-        174
+        173
       ]
     }
   ],
@@ -144,126 +181,164 @@
       "parent_id": null,
       "level": 1,
       "order": 0,
-      "label": "WM 2025 Item 1A risk architecture",
-      "risk_thesis": "Risk framing keeps the same structure but shifts several policy and market channels from contingency language to realized pressure.",
+      "label": "2025 Risk Architecture",
+      "risk_thesis": "2025 framing keeps the same pillars but increases specificity around policy actions, cyber precision, and post-close controls.",
       "evidence_paragraph_idx": [
-        53
+        1
       ]
     },
     {
-      "node_id": "curr_growth",
+      "node_id": "curr_strategy",
       "parent_id": "curr_root",
       "level": 2,
-      "order": 1,
-      "label": "Growth strategy and policy dependencies",
-      "risk_thesis": "Growth still depends on Stericycle integration and policy-sensitive expansion, with more explicit near-term policy outcomes.",
+      "order": 0,
+      "label": "Growth And Acquisition Execution",
+      "risk_thesis": "Growth strategy still centers on acquisition integration, debt capacity, and segment expansion volatility.",
       "evidence_paragraph_idx": [
-        2,
-        20,
-        109
+        2
       ]
     },
     {
-      "node_id": "curr_growth_stericycle",
-      "parent_id": "curr_growth",
+      "node_id": "curr_strategy_stericycle",
+      "parent_id": "curr_strategy",
       "level": 3,
-      "order": 2,
-      "label": "Healthcare Solutions integration outcomes",
-      "risk_thesis": "Synergy realization remains tied to integration execution, volume trends, and cost discipline.",
+      "order": 0,
+      "label": "Healthcare Solutions Performance Delivery",
+      "risk_thesis": "Stericycle benefit realization depends on revenue growth, target attainment, and disciplined integration.",
       "evidence_paragraph_idx": [
-        7,
-        8,
+        7
+      ]
+    },
+    {
+      "node_id": "curr_strategy_synergies",
+      "parent_id": "curr_strategy",
+      "level": 3,
+      "order": 1,
+      "label": "Integration Cost Persistence",
+      "risk_thesis": "Continuing integration expense can offset acquisition benefits.",
+      "evidence_paragraph_idx": [
         11
       ]
     },
     {
-      "node_id": "curr_growth_trade",
-      "parent_id": "curr_growth",
-      "level": 3,
-      "order": 3,
-      "label": "Implemented trade and RFS policy effects",
-      "risk_thesis": "Current-year language emphasizes already implemented trade restrictions and concrete RFS target resets.",
+      "node_id": "curr_regulatory",
+      "parent_id": "curr_root",
+      "level": 2,
+      "order": 1,
+      "label": "Regulatory And Enforcement Exposure",
+      "risk_thesis": "Regulatory complexity remains broad, with added uncertainty from policy reversals and trade actions.",
       "evidence_paragraph_idx": [
-        20,
-        53,
+        12
+      ]
+    },
+    {
+      "node_id": "curr_reg_policy_shift",
+      "parent_id": "curr_regulatory",
+      "level": 3,
+      "order": 0,
+      "label": "Implemented Trade And Deregulatory Shift",
+      "risk_thesis": "The filing now states that policy changes have been implemented, not just signaled.",
+      "evidence_paragraph_idx": [
+        20
+      ]
+    },
+    {
+      "node_id": "curr_reg_epr_affordability",
+      "parent_id": "curr_regulatory",
+      "level": 3,
+      "order": 1,
+      "label": "EPR Program Rollback Risk",
+      "risk_thesis": "Affordability and constitutional-review pressures introduce downside to EPR planning assumptions.",
+      "evidence_paragraph_idx": [
+        16
+      ]
+    },
+    {
+      "node_id": "curr_sustainability",
+      "parent_id": "curr_root",
+      "level": 2,
+      "order": 2,
+      "label": "Sustainability Investment Execution",
+      "risk_thesis": "Sustainability claims and investment outcomes remain dependent on policy and operational assumptions.",
+      "evidence_paragraph_idx": [
+        40
+      ]
+    },
+    {
+      "node_id": "curr_sust_rng_policy",
+      "parent_id": "curr_sustainability",
+      "level": 3,
+      "order": 0,
+      "label": "RFS Target Compression",
+      "risk_thesis": "RFS rule changes are framed as realized reductions that can weaken renewable fuel economics.",
+      "evidence_paragraph_idx": [
         109
       ]
     },
     {
-      "node_id": "curr_market",
+      "node_id": "curr_sust_disclosure",
+      "parent_id": "curr_sustainability",
+      "level": 3,
+      "order": 1,
+      "label": "Greenwashing Scrutiny Continuity",
+      "risk_thesis": "External scrutiny of sustainability claims remains active across regulators and private actors.",
+      "evidence_paragraph_idx": [
+        50
+      ]
+    },
+    {
+      "node_id": "curr_technology",
+      "parent_id": "curr_root",
+      "level": 2,
+      "order": 3,
+      "label": "Technology And Data-Security Exposure",
+      "risk_thesis": "Cloud and digital scale amplify cyber, privacy, and internal-control execution risk.",
+      "evidence_paragraph_idx": [
+        81
+      ]
+    },
+    {
+      "node_id": "curr_tech_ai_cyber",
+      "parent_id": "curr_technology",
+      "level": 3,
+      "order": 0,
+      "label": "AI-Enabled Cyber Escalation",
+      "risk_thesis": "AI capability gains are explicitly tied to higher precision and likelihood of cyber incidents.",
+      "evidence_paragraph_idx": [
+        88
+      ]
+    },
+    {
+      "node_id": "curr_tech_controls_erp",
+      "parent_id": "curr_technology",
+      "level": 3,
+      "order": 1,
+      "label": "Stericycle ERP And Reporting Controls",
+      "risk_thesis": "ERP and control integration are presented as direct threats to reporting quality if remediation lags.",
+      "evidence_paragraph_idx": [
+        115
+      ]
+    },
+    {
+      "node_id": "curr_financing",
       "parent_id": "curr_root",
       "level": 2,
       "order": 4,
-      "label": "Operating and market pressure channels",
-      "risk_thesis": "Cost and demand channels remain central, with explicit 2025 commodity downside and customer willingness-to-pay pressure.",
+      "label": "Leverage And Rate Exposure",
+      "risk_thesis": "Debt sensitivity and leverage execution remain explicit determinants of financing quality.",
       "evidence_paragraph_idx": [
-        51,
-        58,
-        69
-      ]
-    },
-    {
-      "node_id": "curr_market_labor",
-      "parent_id": "curr_market",
-      "level": 3,
-      "order": 5,
-      "label": "Labor, pension, and employment compliance",
-      "risk_thesis": "Workforce risk now explicitly couples talent pressure with employment-regulation compliance obligations.",
-      "evidence_paragraph_idx": [
-        28,
-        35
-      ]
-    },
-    {
-      "node_id": "curr_market_commodity",
-      "parent_id": "curr_market",
-      "level": 3,
-      "order": 6,
-      "label": "Commodity downside and demand mix shift",
-      "risk_thesis": "Commodity volatility remains but is paired with current-year downside and lower premium demand for sustainability offerings.",
-      "evidence_paragraph_idx": [
-        53,
-        58,
-        59,
-        69
-      ]
-    },
-    {
-      "node_id": "curr_tech",
-      "parent_id": "curr_root",
-      "level": 2,
-      "order": 7,
-      "label": "Technology, cyber, and control environment",
-      "risk_thesis": "Technology dependence remains high, with explicit AI-enabled cyber escalation and sustained control execution risk.",
-      "evidence_paragraph_idx": [
-        84,
-        87,
         120
       ]
     },
     {
-      "node_id": "curr_tech_cyber",
-      "parent_id": "curr_tech",
+      "node_id": "curr_fin_leverage",
+      "parent_id": "curr_financing",
       "level": 3,
-      "order": 8,
-      "label": "AI-accelerated cyber and privacy exposure",
-      "risk_thesis": "Cyber risk language adds explicit AI-capability acceleration while preserving regulatory enforcement emphasis.",
+      "order": 0,
+      "label": "Leverage Reduction Execution",
+      "risk_thesis": "Failure to reduce leverage after the acquisition is linked to possible credit-rating pressure.",
       "evidence_paragraph_idx": [
-        84,
-        87,
-        93
-      ]
-    },
-    {
-      "node_id": "curr_tech_finance",
-      "parent_id": "curr_tech",
-      "level": 3,
-      "order": 9,
-      "label": "Financing sensitivity and leverage path",
-      "risk_thesis": "Rate-sensitive debt exposure remains material as integration-era leverage reduction targets are monitored.",
-      "evidence_paragraph_idx": [
-        115,
-        120
+        119
       ]
     }
   ],
@@ -272,84 +347,148 @@
       "prev_node_id": "prev_root",
       "curr_node_id": "curr_root",
       "change_class": "stable",
-      "rationale": "Both years retain a three-domain architecture (growth/policy, market operations, technology/finance), with 2025 tightening language around realized policy outcomes rather than changing section structure.",
-      "salience": 0.45
+      "rationale": "Both years use the same top-level structure, but 2025 increases specificity in downstream nodes.",
+      "salience": 0.68
     },
     {
-      "prev_node_id": "prev_growth",
-      "curr_node_id": "curr_growth",
+      "prev_node_id": "prev_strategy",
+      "curr_node_id": "curr_strategy",
       "change_class": "stable",
-      "rationale": "Growth risk remains anchored to acquisition execution and regulatory dependencies in both years, with the transmission channel still running through integration execution and policy conditions.",
+      "rationale": "The acquisition-led growth thesis persists, with debt and integration risk still serving as the transmission path.",
+      "salience": 0.72
+    },
+    {
+      "prev_node_id": "prev_strategy_stericycle",
+      "curr_node_id": "curr_strategy_stericycle",
+      "change_class": "reworded",
+      "rationale": "The Stericycle node shifts from management-bandwidth framing to explicit Healthcare Solutions performance delivery.",
+      "salience": 0.74
+    },
+    {
+      "prev_node_id": "prev_strategy_synergies",
+      "curr_node_id": "curr_strategy_synergies",
+      "change_class": "stable",
+      "rationale": "Both years retain the same mechanism: integration costs can offset expected acquisition benefits.",
       "salience": 0.62
     },
     {
-      "prev_node_id": "prev_growth_stericycle",
-      "curr_node_id": "curr_growth_stericycle",
-      "change_class": "reworded",
-      "rationale": "Stericycle language shifts from setup-oriented integration framing to outcome-oriented realization framing, while the core mechanism (integration execution driving benefits realization) remains the same.",
+      "prev_node_id": "prev_regulatory",
+      "curr_node_id": "curr_regulatory",
+      "change_class": "stable",
+      "rationale": "Regulatory burden remains a core pillar, with 2025 compressing the same constraints into denser language.",
+      "salience": 0.7
+    },
+    {
+      "prev_node_id": "prev_reg_policy_shift",
+      "curr_node_id": "curr_reg_policy_shift",
+      "change_class": "intensified",
+      "rationale": "Language moves from policy intentions in 2024 to implemented changes in 2025, increasing immediacy of trade and rulemaking effects.",
+      "salience": 0.84
+    },
+    {
+      "prev_node_id": "prev_reg_epr_pfAS",
+      "curr_node_id": "curr_reg_epr_affordability",
+      "change_class": "split",
+      "rationale": "2024 bundles EPR with PFAS cost pressure, while 2025 separates EPR into affordability and constitutional-review channels.",
       "salience": 0.66
     },
     {
-      "prev_node_id": "prev_growth_trade",
-      "curr_node_id": "curr_growth_trade",
+      "prev_node_id": "prev_sustainability",
+      "curr_node_id": "curr_sustainability",
+      "change_class": "stable",
+      "rationale": "Sustainability execution risk remains structurally constant with policy and delivery dependencies in both years.",
+      "salience": 0.77
+    },
+    {
+      "prev_node_id": "prev_sust_rng_policy",
+      "curr_node_id": "curr_sust_rng_policy",
       "change_class": "intensified",
-      "rationale": "Trade and renewable-fuel policy risk moves from hypothetical (?could seek?) in 2024 to enacted trade constraints and explicit RFS target reductions in 2025, increasing immediacy of policy transmission to earnings.",
+      "rationale": "RFS exposure shifts from possible future reductions to explicit retroactive and forward-period target compression.",
       "salience": 0.92
     },
     {
-      "prev_node_id": "prev_market",
-      "curr_node_id": "curr_market",
+      "prev_node_id": "prev_sust_disclosure",
+      "curr_node_id": "curr_sust_disclosure",
       "change_class": "stable",
-      "rationale": "Both years preserve market-pressure framing around labor, inflation, and commodity channels, with 2025 adding more explicit customer-demand mix pressure within the same mechanism.",
-      "salience": 0.58
+      "rationale": "Greenwashing scrutiny remains present in both years with the same regulatory and private-enforcement pathway.",
+      "salience": 0.61
     },
     {
-      "prev_node_id": "prev_market_labor",
-      "curr_node_id": "curr_market_labor",
+      "prev_node_id": "prev_technology",
+      "curr_node_id": "curr_technology",
+      "change_class": "stable",
+      "rationale": "Technology risk remains anchored in cloud dependence and system integrity, while 2025 tightens cyber-incident framing.",
+      "salience": 0.73
+    },
+    {
+      "prev_node_id": "prev_tech_ai_cyber",
+      "curr_node_id": "curr_tech_ai_cyber",
       "change_class": "intensified",
-      "rationale": "Labor risk broadens from hiring/retention pressure in 2024 to combined staffing plus employment-regulation compliance obligations in 2025, adding a second cost/compliance transmission path.",
+      "rationale": "2025 explicitly links AI capability progression to incident likelihood and precision, adding a direct threat-acceleration mechanism.",
+      "salience": 0.77
+    },
+    {
+      "prev_node_id": "prev_tech_controls",
+      "curr_node_id": "curr_tech_controls_erp",
+      "change_class": "intensified",
+      "rationale": "Control-integration risk evolves from exclusion/disclosure framing to explicit ERP-linked reporting disruption.",
       "salience": 0.71
     },
     {
-      "prev_node_id": "prev_market_commodity",
-      "curr_node_id": "curr_market_commodity",
-      "change_class": "split",
-      "rationale": "2024 commodity volatility focus splits in 2025 into two explicit mechanisms: realized commodity price decline and customer willingness-to-pay erosion for sustainability-linked offerings.",
-      "salience": 0.79
-    },
-    {
-      "prev_node_id": "prev_tech",
-      "curr_node_id": "curr_tech",
+      "prev_node_id": "prev_financing",
+      "curr_node_id": "curr_financing",
       "change_class": "stable",
-      "rationale": "Technology/cyber/finance remains a separate domain in both years, preserving the risk pathway from system dependency to operational and financial disruption.",
-      "salience": 0.52
+      "rationale": "Both years keep leverage and interest-rate sensitivity as a financing risk backbone.",
+      "salience": 0.67
     },
     {
-      "prev_node_id": "prev_tech_cyber",
-      "curr_node_id": "curr_tech_cyber",
+      "prev_node_id": "prev_fin_leverage",
+      "curr_node_id": "curr_fin_leverage",
       "change_class": "intensified",
-      "rationale": "Cyber exposure is carried forward but 2025 explicitly links AI capability progression to threat sophistication, increasing expected attack effectiveness and compliance burden.",
-      "salience": 0.64
-    },
-    {
-      "prev_node_id": "prev_tech_finance",
-      "curr_node_id": "curr_tech_finance",
-      "change_class": "intensified",
-      "rationale": "Financing sensitivity is structurally unchanged, but the higher amount of debt exposed within 12 months in 2025 raises the scale of rate-through-earnings transmission risk.",
-      "salience": 0.6
+      "rationale": "2025 introduces explicit credit-rating downside if deleveraging misses plan versus 2024 target-level guidance.",
+      "salience": 0.7
     }
   ],
   "material_changes": [
     {
       "id": "mc_1",
-      "title": "Trade language shifts from ?could have a negative impact? to ?have a negative impact? on recycling export business",
+      "title": "RFS program 'retroactively lowered 2024 blending volumes' replaces conditional 2024 target-cut framing",
       "change_class": "intensified",
       "salience": 0.92,
-      "caveat": "Caveat: This contrast is anchored to 2024 para 35 and 2025 paras 20/53; the cited text establishes direction and channels but does not quantify what share of margin pressure is tariff-driven versus commodity-cycle effects.",
+      "caveat": "Evidence is concentrated in paragraph 151 (2024) and paragraph 109 (2025); it states policy direction but does not quantify RIN price ranges or segment-level earnings sensitivity.",
       "evidence_refs": [
         {
           "year": 2024,
-          "paragraph_idx": 35
+          "paragraph_idx": 151
+        },
+        {
+          "year": 2024,
+          "paragraph_idx": 150
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 109
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 108
+        }
+      ]
+    },
+    {
+      "id": "mc_2",
+      "title": "'implemented substantial changes to foreign trade policy' hardens earlier 'called for substantial changes' language",
+      "change_class": "intensified",
+      "salience": 0.84,
+      "caveat": "Paragraphs 33-34 (2024) and 20-21 (2025) describe policy posture and timing uncertainty, but they do not isolate margin impact by recycling export corridor.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 33
+        },
+        {
+          "year": 2024,
+          "paragraph_idx": 34
         },
         {
           "year": 2025,
@@ -357,87 +496,78 @@
         },
         {
           "year": 2025,
-          "paragraph_idx": 53
-        }
-      ]
-    },
-    {
-      "id": "mc_2",
-      "title": "RFS risk moves from ?could seek to reduce existing renewable fuel targets? to ?retroactively lowered 2024 blending volumes?",
-      "change_class": "intensified",
-      "salience": 0.86,
-      "caveat": "Caveat: The year-over-year comparison uses 2024 para 151 and 2025 paras 104/109; these paragraphs identify policy actions but do not provide a modeled earnings bridge from target resets to segment-level cash flow.",
-      "evidence_refs": [
-        {
-          "year": 2024,
-          "paragraph_idx": 151
-        },
-        {
-          "year": 2025,
-          "paragraph_idx": 104
-        },
-        {
-          "year": 2025,
-          "paragraph_idx": 109
+          "paragraph_idx": 21
         }
       ]
     },
     {
       "id": "mc_3",
-      "title": "Commodity narrative updates to ?decline in market prices in 2025? with ?decrease in revenue of $166 million?",
+      "title": "'progression of the capabilities of artificial intelligence' raises cyber-incident precision channel",
       "change_class": "intensified",
-      "salience": 0.79,
-      "caveat": "Caveat: Evidence combines 2024 para 86 with 2025 paras 58/59; para 59 is a short carry-over sentence and does not by itself describe full period mix, so interpretation relies on adjacent commodity context rather than isolated attribution.",
+      "salience": 0.77,
+      "caveat": "The cited paragraphs (125 and 133 in 2024; 88 and 93 in 2025) specify risk direction but omit incident-frequency baselines and remediation cost bands.",
       "evidence_refs": [
         {
           "year": 2024,
-          "paragraph_idx": 86
+          "paragraph_idx": 125
+        },
+        {
+          "year": 2024,
+          "paragraph_idx": 133
         },
         {
           "year": 2025,
-          "paragraph_idx": 58
+          "paragraph_idx": 88
         },
         {
           "year": 2025,
-          "paragraph_idx": 59
+          "paragraph_idx": 93
         }
       ]
     },
     {
       "id": "mc_4",
-      "title": "Workforce risk adds ?comply with applicable employment regulations? alongside hiring and wage pressure",
-      "change_class": "intensified",
+      "title": "'Stericycle’s ERP system' and leverage-reduction execution become explicit post-close constraints",
+      "change_class": "split",
       "salience": 0.71,
-      "caveat": "Caveat: The comparison references 2024 para 41 and 2025 paras 28/35; the text identifies added compliance exposure but does not quantify incremental cost by regulation type or jurisdiction.",
+      "caveat": "Paragraphs 16 and 161 (2024) versus 115 and 119 (2025) show control and leverage channels, but they do not provide milestone dates for remediation completion.",
       "evidence_refs": [
         {
           "year": 2024,
-          "paragraph_idx": 41
+          "paragraph_idx": 16
+        },
+        {
+          "year": 2024,
+          "paragraph_idx": 161
         },
         {
           "year": 2025,
-          "paragraph_idx": 28
+          "paragraph_idx": 115
         },
         {
           "year": 2025,
-          "paragraph_idx": 35
+          "paragraph_idx": 119
         }
       ]
     },
     {
       "id": "mc_5",
-      "title": "Interest-rate exposure reference rises from ?$2.7 billion? to ?$2.9 billion? debt due within 12 months",
-      "change_class": "intensified",
-      "salience": 0.64,
-      "caveat": "Caveat: This relies on 2024 para 174 and 2025 para 120, which are point-in-time debt figures and do not disclose the maturity ladder or hedging profile needed for full sensitivity modeling.",
+      "title": "'scale back previously enacted EPR requirements' introduces affordability-and-review uncertainty",
+      "change_class": "added",
+      "salience": 0.63,
+      "caveat": "EPR evidence in paragraph 28 (2024) and paragraphs 15-16 (2025) captures policy uncertainty, but not jurisdiction-by-jurisdiction revenue exposure.",
       "evidence_refs": [
         {
           "year": 2024,
-          "paragraph_idx": 174
+          "paragraph_idx": 28
         },
         {
           "year": 2025,
-          "paragraph_idx": 120
+          "paragraph_idx": 15
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 16
         }
       ]
     }
@@ -445,230 +575,274 @@
   "evidence_bank": [
     {
       "year": 2024,
-      "paragraph_idx": 35,
-      "snippet": "Significant new restrictions and tariffs on foreign trade could have a negative impact on our recycling export business and our cross-border commerce, particularly with Canada, and could increase the cost of certain equipment and other materials used in our operations that we procure from outside the U.S.",
-      "why": "Frames trade restrictions and tariffs as a potential downside to export economics and input costs.",
+      "paragraph_idx": 16,
+      "snippet": "There is a significant degree of difficulty and management attention inherent in the process of integrating an acquisition of this size.",
+      "why": "Shows integration management burden for a large acquisition.",
       "node_ids": [
-        "prev_growth_trade",
-        "prev_market_commodity"
+        "prev_strategy_stericycle"
       ]
     },
     {
       "year": 2024,
-      "paragraph_idx": 41,
-      "snippet": "If we are unable to attract, hire or retain key team members and a high-quality workforce, or if our succession planning does not develop an adequate pipeline of future leaders, it could disrupt our business, jeopardize our strategic priorities and result in increased costs, negatively impacting our results of operations.",
-      "why": "Defines baseline workforce execution risk centered on hiring and retention.",
+      "paragraph_idx": 28,
+      "snippet": "Regulations establishing extended producer responsibility (“EPR”) are being considered or implemented in many places around the world, including in certain states in the U.S. and provinces in Canada.",
+      "why": "Establishes baseline EPR policy expansion risk in 2024.",
       "node_ids": [
-        "prev_market_labor"
+        "prev_reg_epr_pfAS"
       ]
     },
     {
       "year": 2024,
-      "paragraph_idx": 86,
-      "snippet": "The increase in market prices in 2024 for recyclable commodities resulted in a year-over-year increase in revenue of $245 million, and the decline in market prices in 2023 for recyclable commodities resulted in a year-over-year decrease in revenue of $308 million.",
-      "why": "Provides prior-year commodity revenue context used for year-over-year contrast.",
+      "paragraph_idx": 33,
+      "snippet": "The new U.S. presidential administration has called for substantial changes to areas of foreign trade policy and has generally appeared to be in favor of reducing regulation, including environmental regulation.",
+      "why": "Captures 2024 framing that policy changes were signaled by the new administration.",
       "node_ids": [
-        "prev_market_commodity"
+        "prev_reg_policy_shift"
       ]
     },
     {
       "year": 2024,
-      "paragraph_idx": 128,
-      "snippet": "We are regularly the target of attempted cyber intrusions, have experienced cyber intrusions, and we anticipate continuing to be subject to such attempts as cyber intrusions become increasingly sophisticated and more difficult to predict and protect against.",
-      "why": "Anchors persistent cyber intrusion pressure in the prior year.",
+      "paragraph_idx": 34,
+      "snippet": "We do not know what impact the change in U.S. presidential administration will have on specific regulatory policies impacting our industry and our Company, especially given the number of rules currently in litigation, nor can we predict the timing of any such changes.",
+      "why": "Adds uncertainty over timing and scope of regulatory shifts.",
       "node_ids": [
-        "prev_tech_cyber"
+        "prev_reg_policy_shift"
       ]
     },
     {
       "year": 2024,
-      "paragraph_idx": 146,
-      "snippet": "Our sustainability growth strategy includes significant planned and ongoing investments in our WM Renewable Energy segment; changes to federal and state renewable fuel policies could affect our financial performance, and such investments may not yield the results anticipated.",
-      "why": "Establishes renewable fuel policy dependence for planned WM Renewable Energy investments.",
+      "paragraph_idx": 70,
+      "snippet": "Public statements with respect to sustainability matters are becoming increasingly subject to heightened scrutiny from public and governmental authorities related to the risk of potential “greenwashing,” i.e. , misleading information or false claims overstating potential sustainability benefits.",
+      "why": "Documents greenwashing scrutiny in sustainability disclosures.",
       "node_ids": [
-        "prev_growth_trade",
-        "prev_market_commodity"
+        "prev_sust_disclosure"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 121,
+      "snippet": "Should these systems be compromised or cease to function effectively, we may face substantial costs to repair or replace them, as well as potential liability, loss of crucial data, reputational harm, and interruptions to our services or operations.",
+      "why": "Describes direct operational and liability effects from system compromise.",
+      "node_ids": [
+        "prev_technology"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 125,
+      "snippet": "Artificial intelligence technologies are subject to a variety of laws, including intellectual property, privacy, data protection and cybersecurity, consumer protection, competition, and equal opportunity laws, and are expected to be subject to increased regulation and new laws or new applications of existing laws.",
+      "why": "Defines AI-specific regulatory exposure baseline.",
+      "node_ids": [
+        "prev_tech_ai_cyber"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 133,
+      "snippet": "Regulatory enforcement action concerning privacy infringement and security incidents is generally increasing, including significant fines recently imposed by European regulators.",
+      "why": "Provides prior-year enforcement context for privacy/security incidents.",
+      "node_ids": [
+        "prev_tech_ai_cyber"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 150,
+      "snippet": "The value of the RINs is set through a market established by the RFS program, which market has historically been very volatile.",
+      "why": "Shows RIN market volatility as a value transmission channel.",
+      "node_ids": [
+        "prev_sust_rng_policy"
       ]
     },
     {
       "year": 2024,
       "paragraph_idx": 151,
       "snippet": "The new U.S. presidential administration could seek to reduce existing renewable fuel targets in a new rulemaking or otherwise set reduced targets for renewable fuels under the RFS program in future rulemakings.",
-      "why": "Shows policy risk framed as potential future reductions in renewable fuel targets.",
+      "why": "States 2024 conditional risk of future RFS target reductions.",
       "node_ids": [
-        "prev_growth_trade"
+        "prev_sust_rng_policy"
       ]
     },
     {
       "year": 2024,
-      "paragraph_idx": 174,
-      "snippet": "We have $2.7 billion of debt as of December 31, 2024 that is exposed to changes in market interest rates within the next 12 months, associated with our commercial paper borrowings and tax-exempt bonds.",
-      "why": "Quantifies prior-year variable-rate debt exposed within 12 months.",
+      "paragraph_idx": 161,
+      "snippet": "Controls and Procedures, in accordance with SEC staff guidance, we have excluded Stericycle from the assessment of the effectiveness of our internal control over financial reporting as of December 31, 2024 contained in this Annual Report on Form 10-K; however, this exclusion may not extend beyond one year from the November 4, 2024 closing date.",
+      "why": "Shows temporary internal-control exclusion for Stericycle post-close.",
       "node_ids": [
-        "prev_tech_finance"
+        "prev_tech_controls"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 173,
+      "snippet": "We have communicated the Company’s expectation that our leverage will return to targeted levels about 18 months after the November 2024 acquisition of Stericycle.",
+      "why": "Anchors planned deleveraging timeline after acquisition close.",
+      "node_ids": [
+        "prev_fin_leverage"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 15,
+      "snippet": "Regulations establishing extended producer responsibility (“EPR”) are being considered or implemented in many places around the world, including in certain states in the U.S. and provinces and territories in Canada.",
+      "why": "Maintains EPR policy coverage in 2025.",
+      "node_ids": [
+        "curr_reg_epr_affordability"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 16,
+      "snippet": "affordability have led some jurisdictions to scale back previously enacted EPR requirements, and certain programs have faced lawsuits and potential constitutional review, creating uncertainty for long-term planning.",
+      "why": "Adds affordability and constitutional-review uncertainty to EPR programs.",
+      "node_ids": [
+        "curr_reg_epr_affordability"
       ]
     },
     {
       "year": 2025,
       "paragraph_idx": 20,
       "snippet": "The current U.S. presidential administration has implemented substantial changes to foreign trade policy and is generally in favor of reducing regulation, including environmental regulation.",
-      "why": "States that substantial foreign trade policy changes were implemented in the current year context.",
+      "why": "States implemented trade-policy and deregulatory shift.",
       "node_ids": [
-        "curr_growth_trade"
+        "curr_reg_policy_shift"
       ]
     },
     {
       "year": 2025,
-      "paragraph_idx": 28,
-      "snippet": "If we are unable to attract, hire, develop and retain key team members and a high-quality workforce, and comply with applicable employment regulations, it could result in business and strategic disruption and increased costs, negatively impacting our results of operations.",
-      "why": "Adds compliance with employment regulations as a direct workforce execution risk dimension.",
+      "paragraph_idx": 21,
+      "snippet": "The impact and timing of these shifts in regulatory policy impacting our industry and our Company remain uncertain, as many are subject to ongoing litigation and agency review.",
+      "why": "Retains litigation and agency-review timing uncertainty.",
       "node_ids": [
-        "curr_market_labor"
+        "curr_reg_policy_shift"
       ]
     },
     {
       "year": 2025,
-      "paragraph_idx": 35,
-      "snippet": "Increases in our labor costs as a result of unions organizing, Multiemployer Pension Plan withdrawals, changes in regulations related to labor unions or increases in minimum wages, could adversely affect our future results.",
-      "why": "Expands labor-cost channel to include pension-withdrawal exposure with union and wage pressure.",
+      "paragraph_idx": 45,
+      "snippet": "Favorable expectations regarding potential investment tax credits or other benefits stemming from the IRA and the OBBBA may not materialize or could fail to meet expectations.",
+      "why": "Introduces IRA and OBBBA benefit-realization uncertainty.",
       "node_ids": [
-        "curr_market_labor"
+        "curr_sustainability"
       ]
     },
     {
       "year": 2025,
-      "paragraph_idx": 53,
-      "snippet": "Significant restrictions and tariffs on foreign trade have a negative impact on our recycling export business and our cross-border commerce, particularly with Canada, decrease paper mills’ demand for recycled corrugated cardboard used in packaging and increase the cost of certain equipment and other materials used in our operations",
-      "why": "Reframes tariffs and restrictions as current realized pressure on recycling exports and costs.",
+      "paragraph_idx": 50,
+      "snippet": "Public statements with respect to sustainability matters are subject to heightened scrutiny related to the risk of potential “greenwashing,” i.e. , allegations of misleading information or false claims overstating potential sustainability benefits made by governmental authorities, non-governmental organizations and other private actors.",
+      "why": "Confirms continued greenwashing scrutiny by multiple actor types.",
       "node_ids": [
-        "curr_growth_trade",
-        "curr_market_commodity"
-      ]
-    },
-    {
-      "year": 2025,
-      "paragraph_idx": 58,
-      "snippet": "The fluctuations in the market prices or demand for these commodities can affect our operating income and cash flows negatively, as we experienced in 2025, or positively, as we experienced in 2024.",
-      "why": "Updates commodity-cycle polarity to a negative 2025 versus positive 2024 statement.",
-      "node_ids": [
-        "curr_market_commodity"
-      ]
-    },
-    {
-      "year": 2025,
-      "paragraph_idx": 59,
-      "snippet": "The decline in market prices in 2025 for recyclable commodities resulted in a year-over-year decrease in revenue of $166 million, and",
-      "why": "Adds explicit numeric 2025 recycling revenue decline.",
-      "node_ids": [
-        "curr_market_commodity"
-      ]
-    },
-    {
-      "year": 2025,
-      "paragraph_idx": 69,
-      "snippet": "While sustainability remains a priority for many customers, we have observed a shift in prioritization by some companies with respect to sustainability objectives, including a decreased willingness to pay premium prices for recycled materials or enhanced sustainability solutions, which impacts demand for, and viability of, some of our offerings.",
-      "why": "Introduces reduced customer willingness to pay premium prices for recycled and sustainability offerings.",
-      "node_ids": [
-        "curr_market_commodity"
+        "curr_sust_disclosure"
       ]
     },
     {
       "year": 2025,
       "paragraph_idx": 84,
       "snippet": "Artificial intelligence technologies are subject to a variety of laws and compliance risk, including intellectual property, data protection and privacy, cybersecurity, consumer protection, competition, and equal opportunity laws, and are expected to be subject to increased regulation and new laws or new applications of existing laws.",
-      "why": "Highlights expanding AI-specific compliance exposure across legal domains.",
+      "why": "Maintains AI law and compliance-risk framing in 2025.",
       "node_ids": [
-        "curr_tech_cyber"
+        "curr_tech_ai_cyber"
       ]
     },
     {
       "year": 2025,
-      "paragraph_idx": 87,
-      "snippet": "We are regularly the target of attempted cyber intrusions, have experienced cyber intrusions, and anticipate continuing to be subject to such attempts as cyber intrusions become increasingly sophisticated and more difficult to predict and protect against.",
-      "why": "Anchors ongoing and increasing cyber-intrusion attempts in current-year language.",
+      "paragraph_idx": 88,
+      "snippet": "Technological advancements, including the progression of the capabilities of artificial intelligence, also increase the risk, likelihood and precision of cyber incidents.",
+      "why": "Adds explicit AI-capability progression as a cyber risk amplifier.",
       "node_ids": [
-        "curr_tech_cyber"
+        "curr_tech_ai_cyber"
       ]
     },
     {
       "year": 2025,
       "paragraph_idx": 93,
       "snippet": "Regulatory enforcement action concerning privacy infringement and security incidents is generally increasing, including significant fines recently imposed by U.K. and European regulators.",
-      "why": "Supports heightened privacy/security enforcement risk with regulator fine references.",
+      "why": "Updates regulatory-enforcement context to include U.K. and European fines.",
       "node_ids": [
-        "curr_tech_cyber"
+        "curr_tech_ai_cyber"
       ]
     },
     {
       "year": 2025,
-      "paragraph_idx": 104,
-      "snippet": "Changes to federal and state renewable fuel policies could affect the financial performance of our Renewable Energy segment.",
-      "why": "States direct financial-performance sensitivity to renewable fuel policy changes.",
+      "paragraph_idx": 108,
+      "snippet": "The value of the RINs is set through a market established by the RFS program, which market has historically been volatile.",
+      "why": "Keeps RIN market volatility mechanism in current year.",
       "node_ids": [
-        "curr_growth_trade",
-        "curr_market_commodity"
+        "curr_sust_rng_policy"
       ]
     },
     {
       "year": 2025,
       "paragraph_idx": 109,
-      "snippet": "While the previous rules under the RFS program reflected the outsized role of biogas under the program and delivered reforms benefiting the solid waste sector, the current administration has retroactively lowered 2024 blending volumes, proposed reductions for 2025,",
-      "why": "Documents concrete RFS policy resets, including retroactive and forward-year target reductions.",
+      "snippet": "the current administration has retroactively lowered 2024 blending volumes, proposed reductions for 2025, set low targets for 2026–2027 and begun to grant small refinery exemptions from RFS program requirements.",
+      "why": "Shows realized RFS target reductions and exemption activity under current administration.",
       "node_ids": [
-        "curr_growth_trade"
+        "curr_sust_rng_policy"
       ]
     },
     {
       "year": 2025,
-      "paragraph_idx": 120,
-      "snippet": "We have $2.9 billion of debt as of December 31, 2025 that is exposed to changes in market interest rates within the next 12 months, associated with our commercial paper borrowings and tax-exempt bonds.",
-      "why": "Quantifies current-year variable-rate debt exposed within 12 months.",
+      "paragraph_idx": 115,
+      "snippet": "including issues related to Stericycle’s ERP system or difficulties integrating Stericycle’s operations and systems into our system of internal control over financial reporting",
+      "why": "Makes Stericycle ERP/internal-control integration risk explicit.",
       "node_ids": [
-        "curr_tech_finance"
+        "curr_tech_controls_erp"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 119,
+      "snippet": "If we do not achieve our projected reduction in leverage following our acquisition of Stericycle, it could negatively impact our credit ratings.",
+      "why": "Links deleveraging underperformance to potential credit-rating impact.",
+      "node_ids": [
+        "curr_fin_leverage"
       ]
     }
   ],
   "lens_divergence": {
     "materially_different": false,
-    "summary": "This run uses only the deboilerplated lens; no cross-lens comparison input was provided. Within this lens, the core risk architecture is consistent across years with targeted intensification in policy and market channels."
+    "summary": "This run only includes the deboilerplated lens input, so divergence versus raw text cannot be empirically measured in this artifact."
   },
   "risk_graph_prev": [
     {
       "id": "rg_prev_1",
-      "driver": "Potential trade restrictions and tariffs",
-      "exposure": "Recycling exports, cross-border commerce, and imported equipment inputs",
-      "impact": "Potential pressure on commodity demand and operating costs",
+      "driver": "Potential RFS target reductions and refinery exemptions",
+      "exposure": "Renewable fuel credit pricing and RNG project economics",
+      "impact": "Lower or delayed cash returns in WM Renewable Energy investments",
       "evidence_paragraph_idx": [
-        35,
-        76
-      ]
-    },
-    {
-      "id": "rg_prev_2",
-      "driver": "Potential adverse renewable fuel policy shifts",
-      "exposure": "RNG investment economics and Renewable Energy segment returns",
-      "impact": "Delayed payback and lower-than-expected financial performance",
-      "evidence_paragraph_idx": [
-        146,
+        150,
         151
       ]
     },
     {
-      "id": "rg_prev_3",
-      "driver": "Labor scarcity and wage pressure",
-      "exposure": "Service capacity, staffing continuity, and cost base",
-      "impact": "Execution disruption and margin compression",
+      "id": "rg_prev_2",
+      "driver": "Large-acquisition integration complexity",
+      "exposure": "Management bandwidth and Stericycle operating stabilization",
+      "impact": "Synergy delays, added expense, and weaker near-term execution",
       "evidence_paragraph_idx": [
-        41,
-        73
+        16,
+        19,
+        20
+      ]
+    },
+    {
+      "id": "rg_prev_3",
+      "driver": "Broad environmental and healthcare-waste regulation",
+      "exposure": "Permitting, compliance, and enforcement obligations",
+      "impact": "Operating-cost inflation and legal/penalty risk",
+      "evidence_paragraph_idx": [
+        22,
+        28,
+        31
       ]
     },
     {
       "id": "rg_prev_4",
-      "driver": "Cyber intrusion attempts and privacy enforcement",
-      "exposure": "Sensitive data, systems integrity, and operational continuity",
-      "impact": "Liability, remediation costs, and reputational damage",
+      "driver": "AI governance and cyber intrusion escalation",
+      "exposure": "System reliability, data protection, and incident response",
+      "impact": "Service interruption, remediation spend, and reputational loss",
       "evidence_paragraph_idx": [
+        125,
         128,
         133
       ]
@@ -677,59 +851,80 @@
   "risk_graph_curr": [
     {
       "id": "rg_curr_1",
-      "driver": "Implemented trade restrictions and tariff pressure",
-      "exposure": "Recycling export demand, cross-border flows, and imported equipment cost",
-      "impact": "Observed commodity-price pressure and higher operating cost risk",
+      "driver": "Implemented trade-policy and deregulatory shifts",
+      "exposure": "Export demand, compliance planning, and cross-border operations",
+      "impact": "Margin volatility and delayed planning confidence",
       "evidence_paragraph_idx": [
         20,
-        53,
-        58
+        21,
+        53
       ]
     },
     {
       "id": "rg_curr_2",
-      "driver": "RFS target resets and renewable policy volatility",
-      "exposure": "Renewable Energy segment economics and forecasted returns",
-      "impact": "Higher volatility in projected segment performance",
+      "driver": "Retroactive and forward RFS target compression",
+      "exposure": "RIN market value and renewable fuel revenue stack",
+      "impact": "Downward pressure on expected Renewable Energy returns",
       "evidence_paragraph_idx": [
-        104,
+        108,
         109
       ]
     },
     {
       "id": "rg_curr_3",
-      "driver": "Workforce pressure plus employment compliance obligations",
-      "exposure": "Hiring/retention execution and labor-cost structure",
-      "impact": "Increased operating expense and execution risk",
+      "driver": "AI-capability progression and larger digital footprint",
+      "exposure": "Cyber incident likelihood, privacy enforcement, and response obligations",
+      "impact": "Higher business-disruption risk and potential fine exposure",
       "evidence_paragraph_idx": [
-        28,
-        35,
-        51
+        88,
+        93,
+        95
       ]
     },
     {
       "id": "rg_curr_4",
-      "driver": "AI-capability progression in cyber threat landscape",
-      "exposure": "Data security, cloud systems, and regulatory compliance posture",
-      "impact": "Higher likelihood and cost of cyber/privacy incidents",
+      "driver": "Stericycle ERP/control integration plus leverage execution",
+      "exposure": "Financial-reporting controls and credit-profile resilience",
+      "impact": "Potential rating pressure and financing cost sensitivity",
       "evidence_paragraph_idx": [
-        84,
-        87,
-        93
+        115,
+        119,
+        120
       ]
     }
   ],
   "change_mechanisms": [
     {
       "id": "mech_1",
-      "mechanism": "Tariff and trade restrictions reduce export attractiveness while raising imported input costs.",
-      "transmission_channel": "Trade policy changes -> commodity demand and procurement cost shifts -> recycling margin pressure.",
-      "business_effect": "Lower recycling contribution and tighter operating economics in cross-border flows.",
+      "mechanism": "RFS target cuts and exemptions weaken renewable-credit expectations",
+      "transmission_channel": "Policy changes alter expected RIN demand and pricing dynamics.",
+      "business_effect": "RNG investment payback and segment return assumptions become less favorable.",
       "time_horizon": "near_term",
       "evidence_refs": [
         {
           "year": 2024,
-          "paragraph_idx": 35
+          "paragraph_idx": 151
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 109
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 108
+        }
+      ]
+    },
+    {
+      "id": "mech_2",
+      "mechanism": "Trade-policy implementation and litigation uncertainty raise planning friction",
+      "transmission_channel": "Policy posture changes affect tariff and regulatory assumptions used in operating plans.",
+      "business_effect": "Recycling export economics and capital-allocation confidence can become more volatile.",
+      "time_horizon": "near_term",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 33
         },
         {
           "year": 2025,
@@ -737,87 +932,70 @@
         },
         {
           "year": 2025,
-          "paragraph_idx": 53
-        }
-      ]
-    },
-    {
-      "id": "mech_2",
-      "mechanism": "RFS and related renewable-fuel policy resets alter expected credit economics for RNG projects.",
-      "transmission_channel": "Policy target changes -> credit market/value expectations -> return profile of Renewable Energy investments.",
-      "business_effect": "Greater uncertainty in Renewable Energy segment performance and capital deployment pacing.",
-      "time_horizon": "medium_term",
-      "evidence_refs": [
-        {
-          "year": 2024,
-          "paragraph_idx": 151
-        },
-        {
-          "year": 2025,
-          "paragraph_idx": 104
-        },
-        {
-          "year": 2025,
-          "paragraph_idx": 109
+          "paragraph_idx": 21
         }
       ]
     },
     {
       "id": "mech_3",
-      "mechanism": "Commodity downcycle shifts pricing from prior-year upside to current-year downside.",
-      "transmission_channel": "Lower recyclable commodity prices -> lower recycling revenue realization -> earnings volatility.",
-      "business_effect": "Reduced year-over-year revenue contribution from recyclable commodities.",
+      "mechanism": "AI advancement increases cyber-attack precision",
+      "transmission_channel": "Higher-quality intrusion attempts stress detection, containment, and compliance response.",
+      "business_effect": "Incident remediation, regulatory, and reputational costs can rise.",
       "time_horizon": "near_term",
       "evidence_refs": [
         {
           "year": 2024,
-          "paragraph_idx": 86
+          "paragraph_idx": 125
         },
         {
           "year": 2025,
-          "paragraph_idx": 58
+          "paragraph_idx": 88
         },
         {
           "year": 2025,
-          "paragraph_idx": 59
+          "paragraph_idx": 93
         }
       ]
     },
     {
       "id": "mech_4",
-      "mechanism": "Workforce risk broadens from staffing pressure to staffing plus employment-regulation compliance.",
-      "transmission_channel": "Labor market tightness + compliance obligations -> higher wage/benefit and control costs -> operating margin pressure.",
-      "business_effect": "Higher cost-to-serve and higher execution friction in frontline operations.",
-      "time_horizon": "near_term",
+      "mechanism": "Post-close ERP/control integration and deleveraging execution interact",
+      "transmission_channel": "Control remediation demands management capacity while leverage targets constrain flexibility.",
+      "business_effect": "Reporting-quality risk and credit-metric pressure can appear simultaneously.",
+      "time_horizon": "medium_term",
       "evidence_refs": [
         {
           "year": 2024,
-          "paragraph_idx": 41
+          "paragraph_idx": 161
         },
         {
           "year": 2025,
-          "paragraph_idx": 28
+          "paragraph_idx": 115
         },
         {
           "year": 2025,
-          "paragraph_idx": 35
+          "paragraph_idx": 119
         }
       ]
     },
     {
       "id": "mech_5",
-      "mechanism": "Higher variable-rate debt increases sensitivity to interest-rate resets.",
-      "transmission_channel": "Larger debt exposed within 12 months -> higher repricing sensitivity -> financing-cost pressure.",
-      "business_effect": "Potential reduction in cash-flow flexibility for strategic investment and deleveraging.",
-      "time_horizon": "near_term",
+      "mechanism": "EPR affordability pushback changes program durability assumptions",
+      "transmission_channel": "Scaled-back requirements and review risk alter jurisdictional compliance trajectories.",
+      "business_effect": "Demand and planning assumptions tied to EPR rollout become less predictable.",
+      "time_horizon": "medium_term",
       "evidence_refs": [
         {
           "year": 2024,
-          "paragraph_idx": 174
+          "paragraph_idx": 28
         },
         {
           "year": 2025,
-          "paragraph_idx": 120
+          "paragraph_idx": 15
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 16
         }
       ]
     }
@@ -825,21 +1003,7 @@
   "uncertainty_and_limits": [
     {
       "id": "limit_1",
-      "limitation": "The 2025 numeric commodity reference is split across adjacent text (paras 58-59), so the isolated $166 million line does not on its own capture full demand, pricing, and mix context.",
-      "evidence_refs": [
-        {
-          "year": 2025,
-          "paragraph_idx": 58
-        },
-        {
-          "year": 2025,
-          "paragraph_idx": 59
-        }
-      ]
-    },
-    {
-      "id": "limit_2",
-      "limitation": "RFS policy evidence identifies directional and enacted target changes but does not provide a quantified bridge from policy adjustments to WM segment-level EBITDA outcomes.",
+      "limitation": "Policy snippets in paragraphs 151 (2024) and 109 (2025) indicate direction but do not provide quantified Renewable Energy segment sensitivity.",
       "evidence_refs": [
         {
           "year": 2024,
@@ -852,16 +1016,30 @@
       ]
     },
     {
-      "id": "limit_3",
-      "limitation": "Tariff references identify exposure channels for exports and procurement costs, but the cited paragraphs do not decompose tariff effects from concurrent macro or customer-demand shifts.",
+      "id": "limit_2",
+      "limitation": "Control-integration evidence (161 in 2024; 115 in 2025) states risk channels but does not include dated remediation milestones or control-test outcomes.",
       "evidence_refs": [
         {
           "year": 2024,
-          "paragraph_idx": 35
+          "paragraph_idx": 161
         },
         {
           "year": 2025,
-          "paragraph_idx": 53
+          "paragraph_idx": 115
+        }
+      ]
+    },
+    {
+      "id": "limit_3",
+      "limitation": "EPR evidence identifies policy uncertainty but lacks jurisdiction-specific revenue mix and implementation timing granularity.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 28
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 16
         }
       ]
     }
@@ -869,51 +1047,51 @@
   "investor_relevance": [
     {
       "id": "inv_1",
-      "why_it_matters": "The move from contingent to realized tariff pressure plus explicit 2025 commodity downside can directly change recycling revenue sensitivity and margin expectations.",
+      "why_it_matters": "RFS rule compression and RIN volatility directly affect expected return timing for WM Renewable Energy investments.",
       "evidence_refs": [
         {
           "year": 2025,
-          "paragraph_idx": 53
+          "paragraph_idx": 109
         },
         {
           "year": 2025,
-          "paragraph_idx": 58
-        },
-        {
-          "year": 2025,
-          "paragraph_idx": 59
+          "paragraph_idx": 108
         }
       ]
     },
     {
       "id": "inv_2",
-      "why_it_matters": "Renewable policy resets affect the risk-adjusted return profile of WM Renewable Energy investments and therefore the durability of growth assumptions tied to that segment.",
+      "why_it_matters": "Stericycle ERP/control execution combined with leverage targets can influence credit risk and funding flexibility.",
       "evidence_refs": [
         {
+          "year": 2025,
+          "paragraph_idx": 115
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 119
+        },
+        {
           "year": 2024,
-          "paragraph_idx": 151
-        },
-        {
-          "year": 2025,
-          "paragraph_idx": 104
-        },
-        {
-          "year": 2025,
-          "paragraph_idx": 109
+          "paragraph_idx": 173
         }
       ]
     },
     {
       "id": "inv_3",
-      "why_it_matters": "Higher debt exposed to near-term rate resets can influence financing cost trajectory and free-cash-flow flexibility during post-acquisition integration.",
+      "why_it_matters": "Implemented trade-policy shifts and unresolved litigation timing can alter export-margin assumptions used in valuation models.",
       "evidence_refs": [
         {
           "year": 2024,
-          "paragraph_idx": 174
+          "paragraph_idx": 33
         },
         {
           "year": 2025,
-          "paragraph_idx": 120
+          "paragraph_idx": 20
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 21
         }
       ]
     }
@@ -926,6 +1104,6 @@
     "input_file": "inputs/pair/WM_2024_2025_10k_item1a_deboilerplated_edgar.json",
     "model_provider": "openai",
     "model_name": "GPT-5.3-Codex (Extra High Reasoning, Agent Mode)",
-    "run_label": "2026-03-05_openai_gpt53codex_xhigh_agent_fullsec_real_wm_2024_2025_outline_compare"
+    "run_label": "2026-03-08_openai_gpt53codex_xhigh_agent_fullsec_real_wm_2024_2025_outline_compare"
   }
 }

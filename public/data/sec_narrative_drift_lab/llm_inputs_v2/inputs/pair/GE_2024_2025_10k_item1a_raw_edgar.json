@@ -38,7 +38,45 @@
     "year_inputs_curr": "inputs/year/GE_2025_10k_item1a_raw_edgar__pair_2024_2025.json"
   },
   "output_targets": {
-    "det_llm_delta_brief_v1": "lab_10k_item1a_2024_2025_det_llm_delta_brief_v1_raw_edgar.json",
-    "det_llm_excerpt_picker_v1": "lab_10k_item1a_2024_2025_det_llm_excerpt_picker_v1_raw_edgar.json"
+    "llm_outline_compare_structured": "lab_llm_outline_compare_structured_10k_item1a_2024_2025_raw_edgar.json",
+    "llm_outline_compare_runtime": "lab_llm_outline_compare_runtime_10k_item1a_2024_2025_raw_edgar.json"
+  },
+  "analysis_expectations": {
+    "focus_signals": [
+      {
+        "id": "ge_leap_services_execution_ramp",
+        "priority": "high",
+        "focus_summary": "Surface the 2025 LEAP / GE9X installed-base and service-execution ramp, not just macro, policy, or generic operational framing.",
+        "paragraph_hints": {
+          "curr": [
+            18
+          ]
+        },
+        "anchor_groups": [
+          [
+            "LEAP",
+            "GE9X"
+          ],
+          [
+            "installed base",
+            "services",
+            "time on wing",
+            "repair turnaround",
+            "delivery",
+            "durability"
+          ]
+        ],
+        "surface_requirements": {
+          "required_sections": [
+            "material_changes"
+          ],
+          "required_any_of_sections": [
+            "change_mechanisms",
+            "investor_relevance"
+          ],
+          "top_material_change_rank_max": 3
+        }
+      }
+    ]
   }
 }

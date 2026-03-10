@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated_at": "2026-02-22T00:00:00Z",
+  "updated_at": "2026-03-07T00:00:00Z",
   "profiles": [
     {
       "detector_id": "det_logodds_terms_v1",
@@ -157,77 +157,13 @@
           "url": "https://dl.acm.org/doi/10.1145/1852102.1852106"
         }
       ]
-    },
-    {
-      "detector_id": "det_llm_delta_brief_v1",
-      "short_purpose": "Produces an evidence-cited narrative summary of directional risk changes.",
-      "canonical_usage": "LLM summarization is often used to condense long text into analyst-readable deltas with citation markers.",
-      "this_app_deviation": "The lab never calls models at runtime; summaries are precomputed offline under strict JSON and citation-to-evidence validation rules.",
-      "when_it_works_well": "Works best when evidence blocks are balanced across years and prompts enforce mechanism-level narrative structure.",
-      "failure_modes": [
-        "Can become templated or generic if prompt controls are weak.",
-        "Narrative may over-compress nuance if citations are sparse.",
-        "Quality can drift across model versions despite similar labels."
-      ],
-      "why_included_here": "It gives a fast narrative layer for comparison while keeping deterministic evidence and provenance constraints explicit.",
-      "alternatives_not_chosen": [
-        "Runtime model calls were rejected for security, determinism, and deploy-cost reasons.",
-        "Free-form prose without citation linkage was rejected due traceability risk."
-      ],
-      "current_industry_usage": "Used in analyst copilots and document-review workflows, usually with retrieval and grounding controls.",
-      "origin_claims": [
-        {
-          "title": "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models",
-          "author_or_org": "Wei et al.",
-          "year": 2022,
-          "url": "https://arxiv.org/abs/2201.11903"
-        },
-        {
-          "title": "GPT-4 Technical Report",
-          "author_or_org": "OpenAI",
-          "year": 2023,
-          "url": "https://arxiv.org/abs/2303.08774"
-        }
-      ]
-    },
-    {
-      "detector_id": "det_llm_excerpt_picker_v1",
-      "short_purpose": "Selects representative excerpt pairs with explicit rationale and highlights.",
-      "canonical_usage": "Extractive LLM workflows prioritize span selection tied to source passages for traceable review.",
-      "this_app_deviation": "The lab constrains outputs to strict excerpt-set equality, verbatim snippet checks, and bounded snippet length for reproducibility.",
-      "when_it_works_well": "Works best when representative paragraphs can be captured with concise verbatim spans and explicit why-rationale.",
-      "failure_modes": [
-        "Can favor obvious excerpts and miss subtle but material lines.",
-        "Selection quality degrades when evidence constraints are violated.",
-        "Model output style may vary unless campaign contract is tightly locked."
-      ],
-      "why_included_here": "It exposes concrete before-vs-after passages for side-by-side model and detector comparison.",
-      "alternatives_not_chosen": [
-        "Abstractive-only summaries were not accepted because exact source traceability is weaker.",
-        "Embedding-based excerpt retrieval was deferred to preserve strict deterministic auditability."
-      ],
-      "current_industry_usage": "Increasingly used in compliance and legal review copilots where grounded extraction is required.",
-      "origin_claims": [
-        {
-          "title": "Text Summarization with Pretrained Encoders",
-          "author_or_org": "Liu and Lapata",
-          "year": 2019,
-          "url": "https://aclanthology.org/D19-1387/"
-        },
-        {
-          "title": "Language Models are Few-Shot Learners",
-          "author_or_org": "Brown et al.",
-          "year": 2020,
-          "url": "https://arxiv.org/abs/2005.14165"
-        }
-      ]
     }
   ],
   "provenance": {
     "script_version": "manual_method_profiles_v1",
     "build_utc": "2026-02-22T00:00:00Z",
     "notes": [
-      "Static sourced method background for Deep Dive v2 UI context drawer."
+      "Static sourced method background for active deterministic methods only."
     ]
   }
 }

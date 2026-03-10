@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated_at": "2026-03-07T02:59:52Z",
+  "updated_at": "2026-03-10T06:07:46Z",
   "notes": [
     "Generated deterministically from scanned lab outputs.",
     "Output links preserve canonical ticker-local outputs paths, including track slug segments when present."
@@ -18,9 +18,7 @@
         "det_minhash_boilerplate_v1",
         "det_winnowing_fingerprint_v1",
         "det_structure_artifacts_v1",
-        "det_rbo_agreement_v1",
-        "det_llm_delta_brief_v1",
-        "det_llm_excerpt_picker_v1"
+        "det_rbo_agreement_v1"
       ],
       "outputs": [
         {
@@ -94,30 +92,6 @@
           "cleaning_lens": "deboilerplated",
           "source_id": "edgar",
           "filename": "outputs/det_rbo_agreement_v1/det-baseline-2026-02-21/lab_det_rbo_agreement_v1_10k_item1a_2024_2025_deboilerplated_edgar__det-baseline-2026-02-21.json"
-        },
-        {
-          "detector_id": "det_llm_delta_brief_v1",
-          "cleaning_lens": "raw",
-          "source_id": "edgar",
-          "filename": "outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-fullsec-2026-02-22/lab_det_llm_delta_brief_v1_10k_item1a_2024_2025_raw_edgar__openai-gpt53codex-xhigh-agent-fullsec-2026-02-22.json"
-        },
-        {
-          "detector_id": "det_llm_delta_brief_v1",
-          "cleaning_lens": "deboilerplated",
-          "source_id": "edgar",
-          "filename": "outputs/det_llm_delta_brief_v1/openai-chatgpt52ext-agent-2026-02-21/lab_det_llm_delta_brief_v1_10k_item1a_2024_2025_deboilerplated_edgar__openai-chatgpt52ext-agent-2026-02-21.json"
-        },
-        {
-          "detector_id": "det_llm_excerpt_picker_v1",
-          "cleaning_lens": "raw",
-          "source_id": "edgar",
-          "filename": "outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-fullsec-2026-02-22/lab_det_llm_excerpt_picker_v1_10k_item1a_2024_2025_raw_edgar__openai-gpt53codex-xhigh-agent-fullsec-2026-02-22.json"
-        },
-        {
-          "detector_id": "det_llm_excerpt_picker_v1",
-          "cleaning_lens": "deboilerplated",
-          "source_id": "edgar",
-          "filename": "outputs/det_llm_excerpt_picker_v1/openai-chatgpt52ext-agent-2026-02-21/lab_det_llm_excerpt_picker_v1_10k_item1a_2024_2025_deboilerplated_edgar__openai-chatgpt52ext-agent-2026-02-21.json"
         }
       ],
       "tags": [
@@ -138,9 +112,7 @@
         "det_minhash_boilerplate_v1",
         "det_winnowing_fingerprint_v1",
         "det_structure_artifacts_v1",
-        "det_rbo_agreement_v1",
-        "det_llm_delta_brief_v1",
-        "det_llm_excerpt_picker_v1"
+        "det_rbo_agreement_v1"
       ],
       "outputs": [
         {
@@ -214,18 +186,6 @@
           "cleaning_lens": "deboilerplated",
           "source_id": "edgar",
           "filename": "outputs/det_rbo_agreement_v1/det-baseline-2026-02-21/lab_det_rbo_agreement_v1_10k_item1a_2024_2025_deboilerplated_edgar__det-baseline-2026-02-21.json"
-        },
-        {
-          "detector_id": "det_llm_delta_brief_v1",
-          "cleaning_lens": "deboilerplated",
-          "source_id": "edgar",
-          "filename": "outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-fullsec-real-2026-02-27/lab_det_llm_delta_brief_v1_10k_item1a_2024_2025_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-fullsec-real-2026-02-27.json"
-        },
-        {
-          "detector_id": "det_llm_excerpt_picker_v1",
-          "cleaning_lens": "deboilerplated",
-          "source_id": "edgar",
-          "filename": "outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-fullsec-real-2026-02-27/lab_det_llm_excerpt_picker_v1_10k_item1a_2024_2025_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-fullsec-real-2026-02-27.json"
         }
       ],
       "tags": [
@@ -246,9 +206,7 @@
         "det_minhash_boilerplate_v1",
         "det_winnowing_fingerprint_v1",
         "det_structure_artifacts_v1",
-        "det_rbo_agreement_v1",
-        "det_llm_delta_brief_v1",
-        "det_llm_excerpt_picker_v1"
+        "det_rbo_agreement_v1"
       ],
       "outputs": [
         {
@@ -322,18 +280,6 @@
           "cleaning_lens": "deboilerplated",
           "source_id": "edgar",
           "filename": "outputs/det_rbo_agreement_v1/det-baseline-2026-02-21/lab_det_rbo_agreement_v1_10k_item1a_2024_2025_deboilerplated_edgar__det-baseline-2026-02-21.json"
-        },
-        {
-          "detector_id": "det_llm_delta_brief_v1",
-          "cleaning_lens": "deboilerplated",
-          "source_id": "edgar",
-          "filename": "outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-fullsec-real-2026-02-27/lab_det_llm_delta_brief_v1_10k_item1a_2024_2025_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-fullsec-real-2026-02-27.json"
-        },
-        {
-          "detector_id": "det_llm_excerpt_picker_v1",
-          "cleaning_lens": "deboilerplated",
-          "source_id": "edgar",
-          "filename": "outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-fullsec-real-2026-02-27/lab_det_llm_excerpt_picker_v1_10k_item1a_2024_2025_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-fullsec-real-2026-02-27.json"
         }
       ],
       "tags": [
@@ -354,9 +300,7 @@
         "det_minhash_boilerplate_v1",
         "det_winnowing_fingerprint_v1",
         "det_structure_artifacts_v1",
-        "det_rbo_agreement_v1",
-        "det_llm_delta_brief_v1",
-        "det_llm_excerpt_picker_v1"
+        "det_rbo_agreement_v1"
       ],
       "outputs": [
         {
@@ -430,18 +374,6 @@
           "cleaning_lens": "deboilerplated",
           "source_id": "edgar",
           "filename": "outputs/det_rbo_agreement_v1/det-baseline-2026-02-21/lab_det_rbo_agreement_v1_10k_item1a_2024_2025_deboilerplated_edgar__det-baseline-2026-02-21.json"
-        },
-        {
-          "detector_id": "det_llm_delta_brief_v1",
-          "cleaning_lens": "deboilerplated",
-          "source_id": "edgar",
-          "filename": "outputs/det_llm_delta_brief_v1/openai-gpt53codex-xhigh-agent-fullsec-real-2026-02-27/lab_det_llm_delta_brief_v1_10k_item1a_2024_2025_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-fullsec-real-2026-02-27.json"
-        },
-        {
-          "detector_id": "det_llm_excerpt_picker_v1",
-          "cleaning_lens": "deboilerplated",
-          "source_id": "edgar",
-          "filename": "outputs/det_llm_excerpt_picker_v1/openai-gpt53codex-xhigh-agent-fullsec-real-2026-02-27/lab_det_llm_excerpt_picker_v1_10k_item1a_2024_2025_deboilerplated_edgar__openai-gpt53codex-xhigh-agent-fullsec-real-2026-02-27.json"
         }
       ],
       "tags": [
@@ -452,9 +384,9 @@
     }
   ],
   "provenance": {
-    "build_utc": "2026-03-07T02:59:52Z",
-    "git_commit": "a08666842b572ae0d28da0edf8f301004427a42b",
-    "script_version": "lab_build_cases_registry_v1.py@v2+2f5210f6cb",
+    "build_utc": "2026-03-10T06:07:46Z",
+    "git_commit": "0afafd620192aa6c07ccefbfab941d69693eddb0",
+    "script_version": "lab_build_cases_registry_v1.py@v2+9205ce585c",
     "inputs": {
       "tickers": "NVDA,KO,WM,GE",
       "year_min": "2022",

@@ -1,0 +1,1375 @@
+{
+  "lab_schema_version": "1.0",
+  "artifact_schema_version": "1.0",
+  "ticker": "KO",
+  "section": "10k_item1a",
+  "source_id": "edgar",
+  "cleaning_lens": "deboilerplated",
+  "year_from": 2024,
+  "year_to": 2025,
+  "outline_prev": [
+    {
+      "node_id": "prev_root",
+      "parent_id": null,
+      "level": 1,
+      "order": 0,
+      "label": "KO 2024 Item 1A risk outline",
+      "risk_thesis": "The 2024 risk section centers on affordability and geopolitical pressure, workforce and supply execution, health and product-quality scrutiny, tax and compliance exposure, digital/data risk, and sustainability-resource constraints.",
+      "evidence_paragraph_idx": [
+        0,
+        20,
+        41,
+        55
+      ]
+    },
+    {
+      "node_id": "prev_commercial_external",
+      "parent_id": "prev_root",
+      "level": 2,
+      "order": 1,
+      "label": "Commercial demand, channel and external disruption",
+      "risk_thesis": "Macro weakness, geopolitical frictions, customer concentration, and execution distractions could weaken demand and profitability before operational mitigants can offset them.",
+      "evidence_paragraph_idx": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "node_id": "prev_macro_trade_geo",
+      "parent_id": "prev_commercial_external",
+      "level": 3,
+      "order": 2,
+      "label": "Affordability, conflict and cross-border trade friction",
+      "risk_thesis": "Inflation, international conflict and cross-border restrictions can reduce beverage affordability and constrain profit repatriation and trade flows.",
+      "evidence_paragraph_idx": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "node_id": "prev_customer_channel_innovation",
+      "parent_id": "prev_commercial_external",
+      "level": 3,
+      "order": 3,
+      "label": "Innovation bets, retail relationships and portfolio moves",
+      "risk_thesis": "Innovation misses, customer losses and disruptive portfolio actions can impair sales execution and weaken corporate reputation or controls.",
+      "evidence_paragraph_idx": [
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "node_id": "prev_people_inputs",
+      "parent_id": "prev_root",
+      "level": 2,
+      "order": 4,
+      "label": "Talent, labor and input-cost execution",
+      "risk_thesis": "Human-capital execution and volatile supply inputs affect the Company’s ability to run the system, protect margins and keep product flowing.",
+      "evidence_paragraph_idx": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ]
+    },
+    {
+      "node_id": "prev_talent_workforce",
+      "parent_id": "prev_people_inputs",
+      "level": 3,
+      "order": 5,
+      "label": "Specialized talent, succession and work-model execution",
+      "risk_thesis": "Failure to attract specialized and top talent, maintain succession plans and implement acceptable work models could disrupt operations and future growth.",
+      "evidence_paragraph_idx": [
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "node_id": "prev_supply_input_cost",
+      "parent_id": "prev_people_inputs",
+      "level": 3,
+      "order": 6,
+      "label": "Supplier concentration, commodity volatility and cost pass-through",
+      "risk_thesis": "Supplier concentration, weather and broad input volatility can raise costs and interrupt supply, with volume risk if price increases lag or backfire.",
+      "evidence_paragraph_idx": [
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ]
+    },
+    {
+      "node_id": "prev_labor_relations",
+      "parent_id": "prev_people_inputs",
+      "level": 3,
+      "order": 7,
+      "label": "Local labor relations and corporate campaigns",
+      "risk_thesis": "Poorly managed local labor relations can escalate into campaigns that damage brand image and consumer acceptance.",
+      "evidence_paragraph_idx": [
+        18
+      ]
+    },
+    {
+      "node_id": "prev_health_brand",
+      "parent_id": "prev_root",
+      "level": 2,
+      "order": 8,
+      "label": "Health, quality and brand acceptance",
+      "risk_thesis": "Health perceptions, shifting tastes, recalls and brand-image setbacks could reduce demand, increase costs and impair category expansion.",
+      "evidence_paragraph_idx": [
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30
+      ]
+    },
+    {
+      "node_id": "prev_health_regulation_preferences",
+      "parent_id": "prev_health_brand",
+      "level": 3,
+      "order": 9,
+      "label": "Obesity scrutiny, sweetener regulation and preference shifts",
+      "risk_thesis": "Public-health concern and evolving beverage preferences can spur regulation, taxes and demand shifts away from sweetened or disfavored products.",
+      "evidence_paragraph_idx": [
+        19,
+        20,
+        21
+      ]
+    },
+    {
+      "node_id": "prev_quality_recall",
+      "parent_id": "prev_health_brand",
+      "level": 3,
+      "order": 10,
+      "label": "Product safety failures, inspections and recalls",
+      "risk_thesis": "Quality failures or inspections can trigger recalls, inventory losses, liability and negative publicity.",
+      "evidence_paragraph_idx": [
+        22,
+        23,
+        24,
+        25
+      ]
+    },
+    {
+      "node_id": "prev_ingredient_brand_humanrights",
+      "parent_id": "prev_health_brand",
+      "level": 3,
+      "order": 11,
+      "label": "Ingredient controversy, brand image and human-rights spillover",
+      "risk_thesis": "Ingredient/process controversy, weak brand response and human-rights failures can harm consumer preferences and talent retention.",
+      "evidence_paragraph_idx": [
+        26,
+        27,
+        28,
+        29
+      ]
+    },
+    {
+      "node_id": "prev_alcohol_expansion",
+      "parent_id": "prev_health_brand",
+      "level": 3,
+      "order": 12,
+      "label": "Alcohol-category expansion",
+      "risk_thesis": "Entering alcohol channels adds operational and trademark-governance exposure outside the traditional beverage footprint.",
+      "evidence_paragraph_idx": [
+        30
+      ]
+    },
+    {
+      "node_id": "prev_tax_legal",
+      "parent_id": "prev_root",
+      "level": 2,
+      "order": 13,
+      "label": "Tax, policy and legal-compliance exposure",
+      "risk_thesis": "Global tax-rule change, product-policy interventions and multi-jurisdiction compliance obligations can raise cost, limit sales and create litigation or enforcement exposure.",
+      "evidence_paragraph_idx": [
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42
+      ]
+    },
+    {
+      "node_id": "prev_global_tax_disputes",
+      "parent_id": "prev_tax_legal",
+      "level": 3,
+      "order": 14,
+      "label": "OECD tax reform and Brazilian tax dispute",
+      "risk_thesis": "Pillar One and Pillar Two uncertainty plus the blocked-income litigation create potential tax-cost and legal-outcome volatility.",
+      "evidence_paragraph_idx": [
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ]
+    },
+    {
+      "node_id": "prev_product_packaging_policy",
+      "parent_id": "prev_tax_legal",
+      "level": 3,
+      "order": 15,
+      "label": "Sweetener taxes, packaging mandates and reformulation risk",
+      "risk_thesis": "Excise-tax proposals and environmental or health requirements can inhibit sales or force reformulation.",
+      "evidence_paragraph_idx": [
+        37,
+        38,
+        39
+      ]
+    },
+    {
+      "node_id": "prev_global_compliance_litigation",
+      "parent_id": "prev_tax_legal",
+      "level": 3,
+      "order": 16,
+      "label": "Litigation and global regulatory compliance",
+      "risk_thesis": "Broad regulatory obligations across competition, data, labor and corruption regimes can trigger investigations, penalties, operational disruption and reputation damage.",
+      "evidence_paragraph_idx": [
+        40,
+        41,
+        42
+      ]
+    },
+    {
+      "node_id": "prev_financial_digital",
+      "parent_id": "prev_root",
+      "level": 2,
+      "order": 17,
+      "label": "Financial, cybersecurity and data exposure",
+      "risk_thesis": "Currency swings, asset impairment, cyber disruption and privacy requirements can hurt earnings quality, operations and trust.",
+      "evidence_paragraph_idx": [
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50
+      ]
+    },
+    {
+      "node_id": "prev_fx_impairment",
+      "parent_id": "prev_financial_digital",
+      "level": 3,
+      "order": 18,
+      "label": "Currency volatility and impairment risk",
+      "risk_thesis": "Global instability can move currencies and raise the risk of asset impairment charges.",
+      "evidence_paragraph_idx": [
+        43,
+        44
+      ]
+    },
+    {
+      "node_id": "prev_cybersecurity",
+      "parent_id": "prev_financial_digital",
+      "level": 3,
+      "order": 19,
+      "label": "Operational cyber incident exposure",
+      "risk_thesis": "Routine failures, malicious actors and geopolitical shocks can disrupt systems and operations through cyber events.",
+      "evidence_paragraph_idx": [
+        45,
+        46
+      ]
+    },
+    {
+      "node_id": "prev_data_privacy",
+      "parent_id": "prev_financial_digital",
+      "level": 3,
+      "order": 20,
+      "label": "Privacy, security adequacy and data-law costs",
+      "risk_thesis": "Evolving privacy laws can require costly system changes and expose the Company to enforcement, litigation and revenue loss after data misuse.",
+      "evidence_paragraph_idx": [
+        47,
+        48,
+        49,
+        50
+      ]
+    },
+    {
+      "node_id": "prev_sustainability_resources",
+      "parent_id": "prev_root",
+      "level": 2,
+      "order": 21,
+      "label": "Sustainability, packaging, water and climate",
+      "risk_thesis": "Disclosure pressure, packaging scrutiny, water scarcity and climate-linked agricultural stress can raise costs, constrain supply and increase regulatory burden.",
+      "evidence_paragraph_idx": [
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ]
+    },
+    {
+      "node_id": "prev_esg_disclosure",
+      "parent_id": "prev_sustainability_resources",
+      "level": 3,
+      "order": 22,
+      "label": "Anti-ESG backlash and sustainability reporting",
+      "risk_thesis": "The Company faces both stakeholder backlash and expanding disclosure requirements, with reporting methodology changes complicating comparability.",
+      "evidence_paragraph_idx": [
+        51,
+        52,
+        53
+      ]
+    },
+    {
+      "node_id": "prev_packaging_water",
+      "parent_id": "prev_sustainability_resources",
+      "level": 3,
+      "order": 23,
+      "label": "Packaging waste, water scarcity and sustainable agriculture",
+      "risk_thesis": "Packaging criticism, water scarcity and agricultural-program execution can hurt sourcing, affordability and community food security.",
+      "evidence_paragraph_idx": [
+        54,
+        55,
+        56
+      ]
+    },
+    {
+      "node_id": "prev_climate_agriculture",
+      "parent_id": "prev_sustainability_resources",
+      "level": 3,
+      "order": 24,
+      "label": "Climate change, natural disasters and crop availability",
+      "risk_thesis": "Climate-driven weather volatility can reduce crop availability, raise ingredient costs and increase disclosure or regulatory obligations.",
+      "evidence_paragraph_idx": [
+        57,
+        58,
+        59,
+        60
+      ]
+    }
+  ],
+  "outline_curr": [
+    {
+      "node_id": "curr_root",
+      "parent_id": null,
+      "level": 1,
+      "order": 0,
+      "label": "KO 2025 Item 1A risk outline",
+      "risk_thesis": "The 2025 risk section keeps the same broad risk spine but adds more explicit cost pass-through, demand-channel, contract-manufacturing, bottler-dependence and tax-framework detail.",
+      "evidence_paragraph_idx": [
+        0,
+        17,
+        37,
+        46,
+        63
+      ]
+    },
+    {
+      "node_id": "curr_commercial_external",
+      "parent_id": "curr_root",
+      "level": 2,
+      "order": 1,
+      "label": "Commercial demand, channel and external disruption",
+      "risk_thesis": "Affordability pressure, cross-border trade friction, customer dependence and execution distractions remain front-end demand risks.",
+      "evidence_paragraph_idx": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "node_id": "curr_macro_trade_geo",
+      "parent_id": "curr_commercial_external",
+      "level": 3,
+      "order": 2,
+      "label": "Affordability, cross-border trade friction and tariff pass-through",
+      "risk_thesis": "Inflation and cross-border restrictions, including tariffs that raise supplier sourcing costs, can squeeze affordability and profitability.",
+      "evidence_paragraph_idx": [
+        0,
+        1
+      ]
+    },
+    {
+      "node_id": "curr_customer_channel_innovation",
+      "parent_id": "curr_commercial_external",
+      "level": 3,
+      "order": 3,
+      "label": "Innovation bets, customer relationships and reputation spillover",
+      "risk_thesis": "Innovation misses, key-customer losses and negative publicity from strategic actions can weaken sales and reputation.",
+      "evidence_paragraph_idx": [
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "node_id": "curr_people_inputs",
+      "parent_id": "curr_root",
+      "level": 2,
+      "order": 4,
+      "label": "Talent, labor and input-cost execution",
+      "risk_thesis": "Workforce quality and volatile supply inputs continue to shape operating resilience, margin protection and product availability.",
+      "evidence_paragraph_idx": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ]
+    },
+    {
+      "node_id": "curr_talent_workforce",
+      "parent_id": "curr_people_inputs",
+      "level": 3,
+      "order": 5,
+      "label": "Outstanding talent, succession and work-model execution",
+      "risk_thesis": "Failure to attract, retain and inspire outstanding talent or maintain succession and workable operating models could disrupt the business.",
+      "evidence_paragraph_idx": [
+        5,
+        6
+      ]
+    },
+    {
+      "node_id": "curr_supply_input_cost",
+      "parent_id": "curr_people_inputs",
+      "level": 3,
+      "order": 6,
+      "label": "Supplier concentration, tariff pass-through and cost recovery",
+      "risk_thesis": "Supplier concentration, weather and tariff-inflated sourcing costs can interrupt supply and pressure margins if pricing does not recover the increase.",
+      "evidence_paragraph_idx": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ]
+    },
+    {
+      "node_id": "curr_labor_relations",
+      "parent_id": "curr_people_inputs",
+      "level": 3,
+      "order": 7,
+      "label": "Local labor relations and corporate campaigns",
+      "risk_thesis": "Escalated labor campaigns can still damage brand image and consumer acceptance.",
+      "evidence_paragraph_idx": [
+        14
+      ]
+    },
+    {
+      "node_id": "curr_health_brand",
+      "parent_id": "curr_root",
+      "level": 2,
+      "order": 8,
+      "label": "Health, quality, brand and system-partner acceptance",
+      "risk_thesis": "Demand can be hit by chronic-disease scrutiny, changing discovery patterns, quality failures and partner-driven brand spillovers.",
+      "evidence_paragraph_idx": [
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33
+      ]
+    },
+    {
+      "node_id": "curr_health_regulation_preferences",
+      "parent_id": "curr_health_brand",
+      "level": 3,
+      "order": 9,
+      "label": "Chronic-disease scrutiny, SNAP restrictions and digital discovery shifts",
+      "risk_thesis": "Health-policy initiatives, program eligibility changes, processed-food concerns and AI-shaped discovery can move consumers away from affected products.",
+      "evidence_paragraph_idx": [
+        15,
+        16,
+        17,
+        18,
+        19
+      ]
+    },
+    {
+      "node_id": "curr_quality_recall",
+      "parent_id": "curr_health_brand",
+      "level": 3,
+      "order": 10,
+      "label": "Contract-manufacturing quality failures, recalls and remediation",
+      "risk_thesis": "Broader third-party manufacturing exposure raises the risk of recalls, downtime, liability and demand loss after quality failures.",
+      "evidence_paragraph_idx": [
+        20,
+        21,
+        22,
+        23,
+        24
+      ]
+    },
+    {
+      "node_id": "curr_ingredient_brand_humanrights",
+      "parent_id": "curr_health_brand",
+      "level": 3,
+      "order": 11,
+      "label": "Ingredient controversy, brand image and human-rights spillover",
+      "risk_thesis": "Ingredient/process controversy, weak brand response and human-rights failures can still erode consumer preference and talent retention.",
+      "evidence_paragraph_idx": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30
+      ]
+    },
+    {
+      "node_id": "curr_alcohol_bottler_system",
+      "parent_id": "curr_health_brand",
+      "level": 3,
+      "order": 12,
+      "label": "Alcohol expansion, bottler concentration and partner spillover",
+      "risk_thesis": "Alcohol activity, a disclosed 10% bottler revenue concentration and partner misconduct can transmit operational or reputation shocks into brand value.",
+      "evidence_paragraph_idx": [
+        31,
+        32,
+        33
+      ]
+    },
+    {
+      "node_id": "curr_tax_legal",
+      "parent_id": "curr_root",
+      "level": 2,
+      "order": 13,
+      "label": "Tax, policy and legal-compliance exposure",
+      "risk_thesis": "Tax reform, product-policy interventions and global compliance rules remain material, but the 2025 text adds more explicit Pillar Two redesign detail.",
+      "evidence_paragraph_idx": [
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49
+      ]
+    },
+    {
+      "node_id": "curr_global_tax_disputes",
+      "parent_id": "curr_tax_legal",
+      "level": 3,
+      "order": 14,
+      "label": "Pillar Two redesign and Brazilian tax dispute",
+      "risk_thesis": "Tax exposure remains uncertain, but the filing now describes a side-by-side framework that could reduce Pillar Two application to U.S.-headquartered groups.",
+      "evidence_paragraph_idx": [
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41
+      ]
+    },
+    {
+      "node_id": "curr_product_packaging_policy",
+      "parent_id": "curr_tax_legal",
+      "level": 3,
+      "order": 15,
+      "label": "Sweetener taxes, packaging mandates and reformulation risk",
+      "risk_thesis": "Sweetener-tax proposals, packaging laws and reformulation requirements can still inhibit sales and raise compliance cost.",
+      "evidence_paragraph_idx": [
+        42,
+        43,
+        44
+      ]
+    },
+    {
+      "node_id": "curr_global_compliance_litigation",
+      "parent_id": "curr_tax_legal",
+      "level": 3,
+      "order": 16,
+      "label": "Litigation and global regulatory compliance",
+      "risk_thesis": "Broad global compliance duties can still drive enforcement, corrective-action costs, plant disruption and reputational damage.",
+      "evidence_paragraph_idx": [
+        45,
+        46,
+        47,
+        48,
+        49
+      ]
+    },
+    {
+      "node_id": "curr_financial_digital",
+      "parent_id": "curr_root",
+      "level": 2,
+      "order": 17,
+      "label": "Financial, cybersecurity and data exposure",
+      "risk_thesis": "Currency swings, asset impairment, cyber threats and more explicit privacy-operational rules remain important earnings and trust risks.",
+      "evidence_paragraph_idx": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57
+      ]
+    },
+    {
+      "node_id": "curr_fx_impairment",
+      "parent_id": "curr_financial_digital",
+      "level": 3,
+      "order": 18,
+      "label": "Currency volatility, tariffs and impairment risk",
+      "risk_thesis": "Trade disputes and tariffs join other macro shocks that can move currencies and interact with impairment risk.",
+      "evidence_paragraph_idx": [
+        49,
+        50
+      ]
+    },
+    {
+      "node_id": "curr_cybersecurity",
+      "parent_id": "curr_financial_digital",
+      "level": 3,
+      "order": 19,
+      "label": "Operational cyber incident exposure",
+      "risk_thesis": "System failures, malicious actors and catastrophic events can still disrupt operations through cyber incidents.",
+      "evidence_paragraph_idx": [
+        51,
+        52
+      ]
+    },
+    {
+      "node_id": "curr_data_privacy",
+      "parent_id": "curr_financial_digital",
+      "level": 3,
+      "order": 20,
+      "label": "Privacy operations, penalties and cross-border transfers",
+      "risk_thesis": "Data laws now explicitly impose operational duties, penalties and transfer restrictions that can raise costs and limit business growth.",
+      "evidence_paragraph_idx": [
+        52,
+        53,
+        54,
+        55,
+        56,
+        57
+      ]
+    },
+    {
+      "node_id": "curr_sustainability_resources",
+      "parent_id": "curr_root",
+      "level": 2,
+      "order": 21,
+      "label": "Sustainability, packaging, water and climate",
+      "risk_thesis": "Disclosure pressure, anti-ESG backlash, packaging scrutiny, water scarcity and climate-linked agricultural risk remain a long-arc operating burden.",
+      "evidence_paragraph_idx": [
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67
+      ]
+    },
+    {
+      "node_id": "curr_esg_disclosure",
+      "parent_id": "curr_sustainability_resources",
+      "level": 3,
+      "order": 22,
+      "label": "Anti-ESG backlash and sustainability reporting",
+      "risk_thesis": "The filing emphasizes both cross-jurisdiction reporting expansion and the possibility of correcting previously reported data.",
+      "evidence_paragraph_idx": [
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    {
+      "node_id": "curr_packaging_water",
+      "parent_id": "curr_sustainability_resources",
+      "level": 3,
+      "order": 23,
+      "label": "Packaging waste, water scarcity and sustainable agriculture",
+      "risk_thesis": "Packaging inefficiency, water scarcity and sustainable-agriculture execution can affect sourcing, affordability and regulatory exposure.",
+      "evidence_paragraph_idx": [
+        62,
+        63,
+        64
+      ]
+    },
+    {
+      "node_id": "curr_climate_agriculture",
+      "parent_id": "curr_sustainability_resources",
+      "level": 3,
+      "order": 24,
+      "label": "Climate change, natural disasters and crop availability",
+      "risk_thesis": "Climate change can still increase disaster frequency, reduce crop availability and raise disclosure or regulatory obligations.",
+      "evidence_paragraph_idx": [
+        65,
+        66,
+        67
+      ]
+    }
+  ],
+  "node_alignment": [
+    {
+      "prev_node_id": "prev_root",
+      "curr_node_id": "curr_root",
+      "change_class": "stable",
+      "rationale": "The overall architecture remains the same six-part risk spine, with 2025 preserving the same major operating exposures while adding detail inside existing themes.",
+      "salience": 0.54
+    },
+    {
+      "prev_node_id": "prev_commercial_external",
+      "curr_node_id": "curr_commercial_external",
+      "change_class": "stable",
+      "rationale": "The front-end commercial section still begins with affordability, cross-border friction, customer dependence and execution-distraction risk rather than creating a new topic cluster.",
+      "salience": 0.58
+    },
+    {
+      "prev_node_id": "prev_macro_trade_geo",
+      "curr_node_id": "curr_macro_trade_geo",
+      "change_class": "intensified",
+      "rationale": "2025 removes the stand-alone conflict sentence but sharpens the transmission channel by adding tariffs that increase suppliers’ sourcing costs, linking trade friction more directly to cost pressure.",
+      "salience": 0.72
+    },
+    {
+      "prev_node_id": "prev_customer_channel_innovation",
+      "curr_node_id": "curr_customer_channel_innovation",
+      "change_class": "reworded",
+      "rationale": "The customer-risk node narrows from retail and foodservice wording to key customers generally, while keeping the same mechanism of customer loss and strategic-action distraction hurting performance.",
+      "salience": 0.57
+    },
+    {
+      "prev_node_id": "prev_people_inputs",
+      "curr_node_id": "curr_people_inputs",
+      "change_class": "stable",
+      "rationale": "The workforce-and-input section remains a bridge between commercial demand pressure and downstream quality or regulatory consequences.",
+      "salience": 0.56
+    },
+    {
+      "prev_node_id": "prev_talent_workforce",
+      "curr_node_id": "curr_talent_workforce",
+      "change_class": "reworded",
+      "rationale": "2025 shifts from specialized and diverse talent language to attracting, retaining and inspiring outstanding talent, but the direct mechanism remains operational disruption through weaker succession, culture and work-model execution.",
+      "salience": 0.61
+    },
+    {
+      "prev_node_id": "prev_supply_input_cost",
+      "curr_node_id": "curr_supply_input_cost",
+      "change_class": "intensified",
+      "rationale": "2025 makes the cost channel more explicit by adding supplier-sourcing tariffs and preserving the warning that pricing may fail to offset higher costs or may reduce volume.",
+      "salience": 0.79
+    },
+    {
+      "prev_node_id": "prev_labor_relations",
+      "curr_node_id": "curr_labor_relations",
+      "change_class": "stable",
+      "rationale": "The labor-relations disclosure keeps the same escalation mechanism from local issues to corporate campaigns to brand-image damage and weaker consumer acceptance.",
+      "salience": 0.46
+    },
+    {
+      "prev_node_id": "prev_health_brand",
+      "curr_node_id": "curr_health_brand",
+      "change_class": "intensified",
+      "rationale": "The same broad health-and-brand cluster remains, but 2025 adds more explicit policy triggers, channel-discovery language, third-party manufacturing exposure and partner spillover.",
+      "salience": 0.83
+    },
+    {
+      "prev_node_id": "prev_health_regulation_preferences",
+      "curr_node_id": "curr_health_regulation_preferences",
+      "change_class": "intensified",
+      "rationale": "2025 expands from obesity, taxes and sweetener regulation to chronic-disease initiatives, SNAP eligibility pressure, processed-food concerns and AI-shaped consumer discovery, widening the ways demand could weaken.",
+      "salience": 0.88
+    },
+    {
+      "prev_node_id": "prev_quality_recall",
+      "curr_node_id": "curr_quality_recall",
+      "change_class": "intensified",
+      "rationale": "The recall node broadens from bottling-partner quality failures to include contract manufacturers, specific failure modes such as undeclared allergens, and production losses from remediation efforts.",
+      "salience": 0.84
+    },
+    {
+      "prev_node_id": "prev_ingredient_brand_humanrights",
+      "curr_node_id": "curr_ingredient_brand_humanrights",
+      "change_class": "stable",
+      "rationale": "Ingredient controversy, brand-image slippage and human-rights spillover remain linked to the same outcome channel of weaker consumer preference and talent retention.",
+      "salience": 0.55
+    },
+    {
+      "prev_node_id": "prev_alcohol_expansion",
+      "curr_node_id": "curr_alcohol_bottler_system",
+      "change_class": "merged",
+      "rationale": "The stand-alone alcohol expansion disclosure is retained in 2025 but merged with new bottler concentration and partner-conduct language, turning a narrow portfolio-adjacency risk into a wider system-dependence node.",
+      "salience": 0.76
+    },
+    {
+      "prev_node_id": "prev_tax_legal",
+      "curr_node_id": "curr_tax_legal",
+      "change_class": "stable",
+      "rationale": "The 2025 filing keeps tax, product-policy and compliance matters in one consolidated legal-policy section rather than redistributing them across new categories.",
+      "salience": 0.59
+    },
+    {
+      "prev_node_id": "prev_global_tax_disputes",
+      "curr_node_id": "curr_global_tax_disputes",
+      "change_class": "softened",
+      "rationale": "The tax-reform discussion still stresses uncertainty, but 2025 adds G7 and OECD side-by-side framework language that could narrow Pillar Two application to U.S.-headquartered groups.",
+      "salience": 0.81
+    },
+    {
+      "prev_node_id": "prev_product_packaging_policy",
+      "curr_node_id": "curr_product_packaging_policy",
+      "change_class": "stable",
+      "rationale": "The product-policy node still links sweetener taxes and environmental requirements to reduced sales or reformulation needs, even though the wording is refreshed.",
+      "salience": 0.5
+    },
+    {
+      "prev_node_id": "prev_global_compliance_litigation",
+      "curr_node_id": "curr_global_compliance_litigation",
+      "change_class": "reworded",
+      "rationale": "2025 preserves the same enforcement and corrective-action mechanism while refreshing examples to include ingredients or processing and product safety and quality.",
+      "salience": 0.6
+    },
+    {
+      "prev_node_id": "prev_financial_digital",
+      "curr_node_id": "curr_financial_digital",
+      "change_class": "stable",
+      "rationale": "Currency, impairment, cyber and privacy risks remain grouped as a financially consequential infrastructure block in both years.",
+      "salience": 0.53
+    },
+    {
+      "prev_node_id": "prev_fx_impairment",
+      "curr_node_id": "curr_fx_impairment",
+      "change_class": "reworded",
+      "rationale": "The currency-risk node keeps the same macro-volatility mechanism but 2025 now names tariffs among the shocks that can disturb exchange rates.",
+      "salience": 0.58
+    },
+    {
+      "prev_node_id": "prev_cybersecurity",
+      "curr_node_id": "curr_cybersecurity",
+      "change_class": "stable",
+      "rationale": "Cyber incidents are still framed as arising from routine failures, malicious actors and catastrophic events that interrupt operations.",
+      "salience": 0.48
+    },
+    {
+      "prev_node_id": "prev_data_privacy",
+      "curr_node_id": "curr_data_privacy",
+      "change_class": "intensified",
+      "rationale": "2025 turns a general privacy-cost node into a more operational one by expressly adding penalties for noncompliance and cross-border transfer restrictions.",
+      "salience": 0.7
+    },
+    {
+      "prev_node_id": "prev_sustainability_resources",
+      "curr_node_id": "curr_sustainability_resources",
+      "change_class": "stable",
+      "rationale": "Sustainability reporting, packaging waste, water scarcity and climate-agriculture risk remain grouped together as a long-horizon resource constraint section.",
+      "salience": 0.52
+    },
+    {
+      "prev_node_id": "prev_esg_disclosure",
+      "curr_node_id": "curr_esg_disclosure",
+      "change_class": "intensified",
+      "rationale": "The disclosure node becomes more specific in 2025 by adding across-jurisdiction standards and the possibility of correcting previously reported data.",
+      "salience": 0.66
+    },
+    {
+      "prev_node_id": "prev_packaging_water",
+      "curr_node_id": "curr_packaging_water",
+      "change_class": "intensified",
+      "rationale": "2025 keeps the same packaging and water concerns but adds inefficient collection and recycling language plus more sustainable agriculture wording, tightening the resource-efficiency mechanism.",
+      "salience": 0.64
+    },
+    {
+      "prev_node_id": "prev_climate_agriculture",
+      "curr_node_id": "curr_climate_agriculture",
+      "change_class": "stable",
+      "rationale": "Climate-driven disaster frequency, crop availability pressure and disclosure obligations remain materially unchanged in structure and consequence.",
+      "salience": 0.49
+    }
+  ],
+  "material_changes": [
+    {
+      "id": "mc_1",
+      "title": "SNAP restrictions and sweetened-beverage initiatives widen demand risk",
+      "change_class": "intensified",
+      "salience": 0.89,
+      "caveat": "The 2024 filing already covered obesity, taxes and ingredient regulation, so the change is a more specific policy-demand pathway rather than a quantified jump in demand loss.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 20
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 17
+        }
+      ]
+    },
+    {
+      "id": "mc_2",
+      "title": "contract manufacturers, undeclared allergens and remediation efforts broaden recall exposure",
+      "change_class": "intensified",
+      "salience": 0.84,
+      "caveat": "The recall discussion is spread across adjacent paragraphs in both years, so the comparison captures broader failure modes and downstream effects rather than a single sentence replacement.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 23
+        },
+        {
+          "year": 2024,
+          "paragraph_idx": 25
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 21
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 24
+        }
+      ]
+    },
+    {
+      "id": "mc_3",
+      "title": "side-by-side framework and largely exempting U.S.-headquartered companies soften Pillar Two exposure",
+      "change_class": "softened",
+      "salience": 0.79,
+      "caveat": "The softer framing depends on future guidance and intended adoption into law, and the filing does not quantify how much exposure would actually be removed.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 33
+        },
+        {
+          "year": 2024,
+          "paragraph_idx": 34
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 37
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 38
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 39
+        }
+      ]
+    },
+    {
+      "id": "mc_4",
+      "title": "tariffs that increase suppliers’ sourcing costs tighten cost pass-through risk",
+      "change_class": "intensified",
+      "salience": 0.74,
+      "caveat": "Tariff wording also appears in broader macro and trade language, so the boundary between external-policy risk and input-cost risk is partially overlapping in the filing.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 15
+        },
+        {
+          "year": 2024,
+          "paragraph_idx": 17
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 11
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 13
+        }
+      ]
+    },
+    {
+      "id": "mc_5",
+      "title": "one bottler accounted for 10% of our net operating revenues adds concentration and partner spillover risk",
+      "change_class": "added",
+      "salience": 0.68,
+      "caveat": "No 2024 paragraph provides a directly comparable concentration disclosure, so the year-over-year signal is disclosure presence rather than a measured change in dependence.",
+      "evidence_refs": [
+        {
+          "year": 2025,
+          "paragraph_idx": 32
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 33
+        }
+      ]
+    },
+    {
+      "id": "mc_6",
+      "title": "operational requirements, significant penalties and cross-border data transfers intensify privacy compliance burden",
+      "change_class": "intensified",
+      "salience": 0.63,
+      "caveat": "The 2024 filing already described costly privacy-system changes, so the 2025 shift is added specificity about obligations and transfer constraints rather than a new risk category.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 47
+        },
+        {
+          "year": 2024,
+          "paragraph_idx": 48
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 53
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 54
+        }
+      ]
+    }
+  ],
+  "evidence_bank": [
+    {
+      "year": 2024,
+      "paragraph_idx": 15,
+      "snippet": "governmental actions or controls or import/export restrictions, such as new, expanded or retaliatory tariffs, sanctions, quotas or trade barriers; port congestion or delays; transport capacity constraints;",
+      "why": "Shows the 2024 supply-chain cost node already included tariffs and trade barriers as a broad input-volatility driver.",
+      "node_ids": [
+        "prev_supply_input_cost"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 17,
+      "snippet": "price increases are not sufficient to offset higher costs adequately or in a timely manner, and/or if they result in significant decreases in sales volume",
+      "why": "Pins the margin-risk mechanism to imperfect cost recovery and demand loss from price increases.",
+      "node_ids": [
+        "prev_supply_input_cost"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 20,
+      "snippet": "potential new or increased taxes on sweetened beverages by government entities to reduce consumption or to raise revenue; potential new or increased governmental regulations",
+      "why": "Anchors the 2024 health-policy discussion around taxes, ingredient regulation and sweetened-beverage scrutiny.",
+      "node_ids": [
+        "prev_health_regulation_preferences"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 21,
+      "snippet": "the perceived undesirability of artificial ingredients or processing; concerns regarding the perceived health effects of, or location of origin of, ingredients, raw materials or substances in our products or packaging",
+      "why": "Captures the 2024 consumer-preference language before 2025 adds processed-food and AI-discovery detail.",
+      "node_ids": [
+        "prev_health_regulation_preferences"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 22,
+      "snippet": "we or our bottling partners at times have not met, and may not always meet, these standards, particularly as we expand our product offerings through innovation or acquisitions",
+      "why": "Shows that 2024 quality risk was framed around the Company and bottling partners, without the later contract-manufacturer expansion.",
+      "node_ids": [
+        "prev_quality_recall"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 23,
+      "snippet": "We and our bottling partners have had, and may in the future need, to recall products if they become contaminated or adulterated by any means, or if they are mislabeled or do not meet applicable regulatory requirements.",
+      "why": "Provides the baseline 2024 recall triggers and affected parties.",
+      "node_ids": [
+        "prev_quality_recall"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 25,
+      "snippet": "A widespread product recall could result in significant losses due to the costs of a recall, the destruction of product inventory, and lost sales due to the unavailability of product for a period of time",
+      "why": "Captures the 2024 consequences of a widespread recall for cost, inventory and sales.",
+      "node_ids": [
+        "prev_quality_recall"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 33,
+      "snippet": "Numerous countries have enacted legislation that implemented certain aspects of Pillar Two effective January 1, 2024, while many others have indicated their intent to adopt, or have adopted, legislation effective in 2025.",
+      "why": "Shows the 2024 Pillar Two baseline as multi-country implementation and adoption risk.",
+      "node_ids": [
+        "prev_global_tax_disputes"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 34,
+      "snippet": "The OECD and implementing countries are expected to continue to make further revisions to their legislation and release additional guidance.",
+      "why": "Shows that 2024 still expected further revisions and guidance, creating the comparison baseline for 2025’s side-by-side framework detail.",
+      "node_ids": [
+        "prev_global_tax_disputes"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 47,
+      "snippet": "Data protection laws and regulations around the world often require “reasonable,” “appropriate” or “adequate” technical and organizational security measures",
+      "why": "Provides the 2024 baseline for general privacy-security adequacy requirements.",
+      "node_ids": [
+        "prev_data_privacy"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 48,
+      "snippet": "These requirements with respect to personal data have subjected and may continue in the future to subject the Company to, among other things, additional costs and expenses",
+      "why": "Shows the 2024 privacy burden as added cost and system changes before 2025 adds more specific operational duties.",
+      "node_ids": [
+        "prev_data_privacy"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 11,
+      "snippet": "governmental actions or controls or import/export restrictions, such as new, expanded or retaliatory tariffs, including tariffs that increase suppliers’ sourcing costs, sanctions, quotas or trade barriers;",
+      "why": "Shows the 2025 addition linking tariffs directly to suppliers’ sourcing costs inside the input-volatility paragraph.",
+      "node_ids": [
+        "curr_supply_input_cost"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 13,
+      "snippet": "price increases are not sufficient to offset higher costs adequately or in a timely manner, and/or if they result in significant decreases in sales volume",
+      "why": "Preserves the 2025 statement that pricing may fail to recover higher costs or may reduce volume.",
+      "node_ids": [
+        "curr_supply_input_cost"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 16,
+      "snippet": "Recent activities and proposals by U.S. federal and state government agencies and initiatives have focused on potential drivers behind the rise in childhood chronic diseases.",
+      "why": "Introduces the new 2025 sentence on government initiatives around childhood chronic diseases.",
+      "node_ids": [
+        "curr_health_regulation_preferences"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 17,
+      "snippet": "changes in funding for or restrictions on the inclusion of our products in benefit programs, such as the Supplemental Nutrition Assistance Program (SNAP) in the United States",
+      "why": "Shows 2025 expansion of demand risk into program eligibility and SNAP-related restrictions.",
+      "node_ids": [
+        "curr_health_regulation_preferences"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 18,
+      "snippet": "the perceived undesirability of processed foods and ingredients and artificial ingredients; concerns regarding the perceived health effects of, or location of origin of, ingredients, raw materials or substances in our products or packaging",
+      "why": "Captures 2025 preference-shift language around processed foods, ingredients and affordability.",
+      "node_ids": [
+        "curr_health_regulation_preferences"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 19,
+      "snippet": "The increasing use of data analytics, automation and artificial intelligence across digital platforms is further reshaping how consumers discover, evaluate and engage with brands.",
+      "why": "Adds the 2025 digital-discovery mechanism through data analytics, automation and artificial intelligence.",
+      "node_ids": [
+        "curr_health_regulation_preferences"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 20,
+      "snippet": "we, our bottling partners or contract manufacturers at times have not met, and may not always meet, these standards, including as we expand our product offerings through innovation or acquisitions.",
+      "why": "Shows the 2025 expansion of quality exposure to contract manufacturers.",
+      "node_ids": [
+        "curr_quality_recall"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 21,
+      "snippet": "actual or alleged mislabeling, misbranding, spoilage, undeclared allergens, contamination or adulteration by any means, or failure to meet applicable regulatory requirements.",
+      "why": "Lists the new 2025 recall failure modes, including undeclared allergens and misbranding.",
+      "node_ids": [
+        "curr_quality_recall"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 24,
+      "snippet": "A recall or any decrease in production resulting from remediation efforts due to quality or safety issues may also lead to lost sales",
+      "why": "Shows that 2025 explicitly adds production decreases from remediation efforts to recall consequences.",
+      "node_ids": [
+        "curr_quality_recall"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 32,
+      "snippet": "For the year ended December 31, 2025, one bottler accounted for 10% of our net operating revenues",
+      "why": "Introduces the new bottler concentration disclosure in 2025.",
+      "node_ids": [
+        "curr_alcohol_bottler_system"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 33,
+      "snippet": "actions by our bottling partners, including related to product quality, safety, marketing practices, labor relations, regulatory compliance, sustainability, or other matters could adversely affect the reputation",
+      "why": "Shows the new 2025 reputational spillover from bottling-partner actions.",
+      "node_ids": [
+        "curr_alcohol_bottler_system"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 37,
+      "snippet": "a potential side-by-side system approach to the Pillar Two framework that would exclude U.S.-parented groups from certain Pillar Two provisions",
+      "why": "Introduces the G7 side-by-side framework concept in the 2025 Pillar Two discussion.",
+      "node_ids": [
+        "curr_global_tax_disputes"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 38,
+      "snippet": "In January 2026, the OECD issued further administrative guidance introducing a side-by-side framework under Pillar Two, largely exempting U.S.-headquartered companies from the application of Pillar Two.",
+      "why": "Shows the 2025 guidance that largely exempts U.S.-headquartered companies from Pillar Two.",
+      "node_ids": [
+        "curr_global_tax_disputes"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 39,
+      "snippet": "release additional guidance intended to adopt this side-by-side framework into law in each of the member countries.",
+      "why": "Keeps the residual uncertainty by noting intended adoption of the side-by-side framework into law.",
+      "node_ids": [
+        "curr_global_tax_disputes"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 53,
+      "snippet": "These laws impose operational requirements for companies receiving or processing personal data, and many provide for significant penalties for noncompliance.",
+      "why": "Shows the new 2025 specificity that privacy laws impose operational requirements and penalties.",
+      "node_ids": [
+        "curr_data_privacy"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 54,
+      "snippet": "Some laws and regulations also impose obligations or restrictions regarding cross-border data transfers of personal data.",
+      "why": "Adds the explicit 2025 cross-border transfer restriction.",
+      "node_ids": [
+        "curr_data_privacy"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 60,
+      "snippet": "evolving legal and regulatory requirements, including mandatory due diligence, disclosure and reporting requirements, as well as a variety of voluntary disclosure frameworks and standards across jurisdictions.",
+      "why": "Shows the 2025 sustainability-reporting emphasis on evolving requirements across jurisdictions.",
+      "node_ids": [
+        "curr_esg_disclosure"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 61,
+      "snippet": "as well as correction of identified errors in data reporting.",
+      "why": "Adds the 2025 reporting-quality caveat that previously reported data may be corrected.",
+      "node_ids": [
+        "curr_esg_disclosure"
+      ]
+    }
+  ],
+  "lens_divergence": {
+    "materially_different": false,
+    "summary": "Only the deboilerplated lens was provided in the attached inputs, so cross-lens divergence cannot be assessed from this case file alone."
+  },
+  "provenance": {
+    "input_file": "inputs/pair/KO_2024_2025_10k_item1a_deboilerplated_edgar.json",
+    "model_provider": "openai",
+    "model_name": "ChatGPT 5.4-Thinking (Extended Thinking)",
+    "run_label": "2026-03-06_openai_chatgpt54ext_fullsec_real_ko_2024_2025_outline_compare"
+  },
+  "artifact_id": "llm_outline_compare_runtime"
+}

@@ -38,7 +38,7 @@
     "year_inputs_curr": "inputs/year/NVDA_2025_10k_item1a_raw_edgar__pair_2024_2025.json"
   },
   "output_targets": {
-    "det_llm_delta_brief_v1": "lab_10k_item1a_2024_2025_det_llm_delta_brief_v1_raw_edgar.json",
-    "det_llm_excerpt_picker_v1": "lab_10k_item1a_2024_2025_det_llm_excerpt_picker_v1_raw_edgar.json"
+    "llm_outline_compare_structured": "lab_llm_outline_compare_structured_10k_item1a_2024_2025_raw_edgar.json",
+    "llm_outline_compare_runtime": "lab_llm_outline_compare_runtime_10k_item1a_2024_2025_raw_edgar.json"
   }
 }

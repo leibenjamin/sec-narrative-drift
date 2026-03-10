@@ -1,0 +1,1158 @@
+{
+  "lab_schema_version": "1.0",
+  "artifact_schema_version": "1.0",
+  "ticker": "NVDA",
+  "section": "10k_item1a",
+  "source_id": "edgar",
+  "cleaning_lens": "deboilerplated",
+  "year_from": 2024,
+  "year_to": 2025,
+  "outline_prev": [
+    {
+      "node_id": "prev_root",
+      "parent_id": null,
+      "level": 1,
+      "order": 0,
+      "label": "NVIDIA 2024 Item 1A Risk Factors",
+      "risk_thesis": "The 2024 risk section centers on scaling AI demand through partners and supply constraints while managing competition, export controls, and operational-regulatory complexity.",
+      "evidence_paragraph_idx": [
+        0,
+        2,
+        123
+      ]
+    },
+    {
+      "node_id": "prev_commercial",
+      "parent_id": "prev_root",
+      "level": 2,
+      "order": 1,
+      "label": "Market expansion, AI services, and competition",
+      "risk_thesis": "NVIDIA faces execution risk from entering AI cloud and software offerings while competing in rapidly shifting end markets.",
+      "evidence_paragraph_idx": [
+        10,
+        14,
+        15
+      ]
+    },
+    {
+      "node_id": "prev_commercial_cloud",
+      "parent_id": "prev_commercial",
+      "level": 3,
+      "order": 1,
+      "label": "DGX Cloud and software monetization",
+      "risk_thesis": "Direct DGX Cloud and software offerings can shift revenue timing, expense levels, and customer adoption paths.",
+      "evidence_paragraph_idx": [
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "node_id": "prev_commercial_competition",
+      "parent_id": "prev_commercial",
+      "level": 3,
+      "order": 2,
+      "label": "Competitive intensity and product relevance",
+      "risk_thesis": "Competitive pricing, functionality gaps, and shifting industry standards can erode demand and pricing power.",
+      "evidence_paragraph_idx": [
+        8,
+        14,
+        15
+      ]
+    },
+    {
+      "node_id": "prev_supply",
+      "parent_id": "prev_root",
+      "level": 2,
+      "order": 2,
+      "label": "Supply-demand planning and architecture transitions",
+      "risk_thesis": "Long lead times, prepaid capacity, and faster architecture cadence make forecast errors and transition execution financially consequential.",
+      "evidence_paragraph_idx": [
+        17,
+        23,
+        30,
+        34
+      ]
+    },
+    {
+      "node_id": "prev_supply_commitments",
+      "parent_id": "prev_supply",
+      "level": 3,
+      "order": 1,
+      "label": "Capacity commitments and mismatch risk",
+      "risk_thesis": "Forecast errors can turn supply commitments and component shortages into product shortages, excess inventory, or higher product costs.",
+      "evidence_paragraph_idx": [
+        17,
+        23,
+        25,
+        30
+      ]
+    },
+    {
+      "node_id": "prev_supply_transitions",
+      "parent_id": "prev_supply",
+      "level": 3,
+      "order": 2,
+      "label": "Architecture cadence and transition execution",
+      "risk_thesis": "Broader and faster Data Center launches plus concurrent architectures can create revenue volatility, delays, and inventory or warranty costs.",
+      "evidence_paragraph_idx": [
+        34,
+        36,
+        39,
+        40
+      ]
+    },
+    {
+      "node_id": "prev_demand",
+      "parent_id": "prev_root",
+      "level": 2,
+      "order": 3,
+      "label": "Use-case volatility and ecosystem dependence",
+      "risk_thesis": "Demand is hard to forecast when generative AI, crypto, and third-party applications create shifting usage patterns.",
+      "evidence_paragraph_idx": [
+        53,
+        55,
+        61,
+        62
+      ]
+    },
+    {
+      "node_id": "prev_demand_new_use_cases",
+      "parent_id": "prev_demand",
+      "level": 3,
+      "order": 1,
+      "label": "Generative AI and emergent-use demand volatility",
+      "risk_thesis": "New use cases can spike or fade unpredictably, making revenue and forward demand hard to estimate.",
+      "evidence_paragraph_idx": [
+        53,
+        55,
+        58,
+        59
+      ]
+    },
+    {
+      "node_id": "prev_demand_ecosystem",
+      "parent_id": "prev_demand",
+      "level": 3,
+      "order": 2,
+      "label": "Third-party application and content dependence",
+      "risk_thesis": "Platform demand depends on developers, customers, and publishers maintaining applications and content on reasonable terms.",
+      "evidence_paragraph_idx": [
+        61,
+        62
+      ]
+    },
+    {
+      "node_id": "prev_operations",
+      "parent_id": "prev_root",
+      "level": 2,
+      "order": 4,
+      "label": "Product integrity, cybersecurity, and global operations",
+      "risk_thesis": "Quality failures, cyber incidents, and geopolitical or infrastructure disruptions can interrupt delivery and harm reputation.",
+      "evidence_paragraph_idx": [
+        63,
+        71,
+        84,
+        99,
+        101
+      ]
+    },
+    {
+      "node_id": "prev_operations_quality",
+      "parent_id": "prev_operations",
+      "level": 3,
+      "order": 1,
+      "label": "Quality, defects, and supplier execution",
+      "risk_thesis": "Defects, security vulnerabilities, and partner-manufacturing reliance can trigger recalls, write-offs, and support costs.",
+      "evidence_paragraph_idx": [
+        63,
+        71,
+        73
+      ]
+    },
+    {
+      "node_id": "prev_operations_cyber_geo",
+      "parent_id": "prev_operations",
+      "level": 3,
+      "order": 2,
+      "label": "Cybersecurity and geopolitical disruption",
+      "risk_thesis": "Cyber-attacks, third-party system dependence, Israel conflict exposure, and power or water constraints can impair operations and customer deployment.",
+      "evidence_paragraph_idx": [
+        84,
+        90,
+        99,
+        101
+      ]
+    },
+    {
+      "node_id": "prev_customers",
+      "parent_id": "prev_root",
+      "level": 2,
+      "order": 5,
+      "label": "Customer and channel concentration",
+      "risk_thesis": "Revenue concentration and indirect channel sales make forecasting, collections, and quarter-end execution sensitive to a few counterparties.",
+      "evidence_paragraph_idx": [
+        104,
+        105,
+        107,
+        110
+      ]
+    },
+    {
+      "node_id": "prev_customers_concentration",
+      "parent_id": "prev_customers",
+      "level": 3,
+      "order": 1,
+      "label": "Large direct and indirect customer dependence",
+      "risk_thesis": "A few direct and indirect customers account for large revenue shares, while purchase-order flexibility and channel credit can shift timing.",
+      "evidence_paragraph_idx": [
+        105,
+        108,
+        110,
+        111
+      ]
+    },
+    {
+      "node_id": "prev_governance",
+      "parent_id": "prev_root",
+      "level": 2,
+      "order": 6,
+      "label": "People, systems, and regulatory-financial governance",
+      "risk_thesis": "Talent retention, systems reliability, export controls, ESG or privacy rules, tax, and capital structure create broad compliance and financing risk.",
+      "evidence_paragraph_idx": [
+        114,
+        119,
+        123,
+        149,
+        159,
+        172
+      ]
+    },
+    {
+      "node_id": "prev_governance_talent_systems",
+      "parent_id": "prev_governance",
+      "level": 3,
+      "order": 1,
+      "label": "Talent and internal systems execution",
+      "risk_thesis": "Retention, succession, and information-system continuity are necessary to execute strategy and preserve internal controls.",
+      "evidence_paragraph_idx": [
+        114,
+        117,
+        118
+      ]
+    },
+    {
+      "node_id": "prev_governance_regulation",
+      "parent_id": "prev_governance",
+      "level": 3,
+      "order": 2,
+      "label": "Export controls, AI regulation, and geopolitical compliance",
+      "risk_thesis": "Rising regulator attention and export controls can restrict shipments, raise compliance cost, and weaken competitive position.",
+      "evidence_paragraph_idx": [
+        123,
+        130,
+        133,
+        141,
+        147
+      ]
+    },
+    {
+      "node_id": "prev_governance_sustainability_privacy",
+      "parent_id": "prev_governance",
+      "level": 3,
+      "order": 3,
+      "label": "Sustainability, privacy, tax, and leverage constraints",
+      "risk_thesis": "ESG disclosure, privacy regimes, tax changes, and indebtedness can add cost, liability, and financing constraints.",
+      "evidence_paragraph_idx": [
+        149,
+        152,
+        159,
+        166,
+        172
+      ]
+    }
+  ],
+  "outline_curr": [
+    {
+      "node_id": "curr_root",
+      "parent_id": null,
+      "level": 1,
+      "order": 0,
+      "label": "NVIDIA 2025 Item 1A Risk Factors",
+      "risk_thesis": "The 2025 risk section keeps the same overall structure but sharpens supply-chain execution, expands export-control exposure, and adds standalone proceedings risk.",
+      "evidence_paragraph_idx": [
+        0,
+        2,
+        109
+      ]
+    },
+    {
+      "node_id": "curr_commercial",
+      "parent_id": "curr_root",
+      "level": 2,
+      "order": 1,
+      "label": "Market expansion, AI services, and competition",
+      "risk_thesis": "NVIDIA continues to push AI cloud and software offerings while facing intense competition and evolving market needs.",
+      "evidence_paragraph_idx": [
+        10,
+        13,
+        14
+      ]
+    },
+    {
+      "node_id": "curr_commercial_cloud",
+      "parent_id": "curr_commercial",
+      "level": 3,
+      "order": 1,
+      "label": "DGX Cloud and software monetization",
+      "risk_thesis": "DGX Cloud and standalone software remain execution-sensitive offerings whose timing and cost profile can shift.",
+      "evidence_paragraph_idx": [
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "node_id": "curr_commercial_competition",
+      "parent_id": "curr_commercial",
+      "level": 3,
+      "order": 2,
+      "label": "Competitive intensity and product relevance",
+      "risk_thesis": "Competition can pressure both pricing and demand as offerings, standards, and customer needs evolve.",
+      "evidence_paragraph_idx": [
+        8,
+        13,
+        14,
+        15
+      ]
+    },
+    {
+      "node_id": "curr_supply",
+      "parent_id": "curr_root",
+      "level": 2,
+      "order": 2,
+      "label": "Supply-demand planning and annual product cadence",
+      "risk_thesis": "Long manufacturing lead times, prepaid supply commitments, and a faster annual Data Center cadence amplify the cost of forecast errors.",
+      "evidence_paragraph_idx": [
+        2,
+        17,
+        31,
+        38
+      ]
+    },
+    {
+      "node_id": "curr_supply_commitments",
+      "parent_id": "curr_supply",
+      "level": 3,
+      "order": 1,
+      "label": "Long lead times and commitment mismatch risk",
+      "risk_thesis": "Advance builds, deposits, and non-cancellable orders can turn demand changes into shortages, write-downs, or higher costs.",
+      "evidence_paragraph_idx": [
+        17,
+        19,
+        20,
+        26,
+        31,
+        34
+      ]
+    },
+    {
+      "node_id": "curr_supply_transitions",
+      "parent_id": "curr_supply",
+      "level": 3,
+      "order": 2,
+      "label": "Annual architecture cadence and execution strain",
+      "risk_thesis": "A yearly Data Center solution cadence and more configurations tie transition execution more directly to volatility, margins, and roadmap cost.",
+      "evidence_paragraph_idx": [
+        38,
+        39,
+        43,
+        44,
+        45
+      ]
+    },
+    {
+      "node_id": "curr_demand",
+      "parent_id": "curr_root",
+      "level": 2,
+      "order": 3,
+      "label": "Use-case volatility and ecosystem dependence",
+      "risk_thesis": "Demand remains difficult to forecast when AI and other fast-moving use cases create mercurial adoption patterns.",
+      "evidence_paragraph_idx": [
+        47,
+        48,
+        50,
+        51
+      ]
+    },
+    {
+      "node_id": "curr_demand_new_use_cases",
+      "parent_id": "curr_demand",
+      "level": 3,
+      "order": 1,
+      "label": "Generative AI and trendy-application demand volatility",
+      "risk_thesis": "Mercurial or trendy applications can create inconsistent spikes, aftermarket effects, and poor forward visibility.",
+      "evidence_paragraph_idx": [
+        47,
+        48,
+        50,
+        51
+      ]
+    },
+    {
+      "node_id": "curr_demand_ecosystem",
+      "parent_id": "curr_demand",
+      "level": 3,
+      "order": 2,
+      "label": "Third-party application and channel demand drivers",
+      "risk_thesis": "Developer adoption, channel inventory, and policy shifts remain core drivers of demand timing and volume.",
+      "evidence_paragraph_idx": [
+        27,
+        28,
+        29,
+        30
+      ]
+    },
+    {
+      "node_id": "curr_operations",
+      "parent_id": "curr_root",
+      "level": 2,
+      "order": 4,
+      "label": "Product integrity, cybersecurity, and global operations",
+      "risk_thesis": "Quality failures, security incidents, supplier incidents, and worldwide disruption scenarios can interrupt operations and damage trust.",
+      "evidence_paragraph_idx": [
+        53,
+        59,
+        70,
+        79,
+        84,
+        88
+      ]
+    },
+    {
+      "node_id": "curr_operations_quality",
+      "parent_id": "curr_operations",
+      "level": 3,
+      "order": 1,
+      "label": "Quality, defects, and supplier execution",
+      "risk_thesis": "Manufacturing complexity, partner reliance, and AI-training defects can create recall, warranty, and write-off risk.",
+      "evidence_paragraph_idx": [
+        53,
+        55,
+        59,
+        61
+      ]
+    },
+    {
+      "node_id": "curr_operations_cyber_geo",
+      "parent_id": "curr_operations",
+      "level": 3,
+      "order": 2,
+      "label": "Cybersecurity, data integrity, and geopolitical disruption",
+      "risk_thesis": "Insider or supplier incidents, AI-output integrity issues, and geopolitical or infrastructure disruptions can impair service, trust, and revenue.",
+      "evidence_paragraph_idx": [
+        70,
+        72,
+        75,
+        77,
+        79,
+        84,
+        87
+      ]
+    },
+    {
+      "node_id": "curr_customers",
+      "parent_id": "curr_root",
+      "level": 2,
+      "order": 5,
+      "label": "Customer and channel concentration",
+      "risk_thesis": "A broader set of large customers plus partner-system complexity make revenue timing and selling capacity sensitive to a concentrated channel stack.",
+      "evidence_paragraph_idx": [
+        91,
+        92,
+        93,
+        98
+      ]
+    },
+    {
+      "node_id": "curr_customers_concentration",
+      "parent_id": "curr_customers",
+      "level": 3,
+      "order": 1,
+      "label": "Multiple large customers and integrator dependence",
+      "risk_thesis": "Several 10%+ direct customers, indirect concentration, and system-integrator execution risk can affect timing, mix, and collections.",
+      "evidence_paragraph_idx": [
+        92,
+        94,
+        95,
+        98,
+        99
+      ]
+    },
+    {
+      "node_id": "curr_governance",
+      "parent_id": "curr_root",
+      "level": 2,
+      "order": 6,
+      "label": "People, systems, and regulatory-compliance governance",
+      "risk_thesis": "Talent retention, systems reliability, proceedings risk, export controls, AI regulation, and ESG or privacy rules create expanding governance burden.",
+      "evidence_paragraph_idx": [
+        7,
+        102,
+        109,
+        112,
+        162,
+        177
+      ]
+    },
+    {
+      "node_id": "curr_governance_talent_systems",
+      "parent_id": "curr_governance",
+      "level": 3,
+      "order": 1,
+      "label": "Talent and internal systems execution",
+      "risk_thesis": "Retention, succession, and business-process continuity remain necessary to execute strategy and preserve controls.",
+      "evidence_paragraph_idx": [
+        102,
+        105,
+        106
+      ]
+    },
+    {
+      "node_id": "curr_governance_proceedings",
+      "parent_id": "curr_governance",
+      "level": 3,
+      "order": 2,
+      "label": "Litigation, investigations, and regulatory proceedings",
+      "risk_thesis": "NVIDIA now flags legal and regulatory proceedings as a distinct burden that can consume resources and complicate counterpart relations.",
+      "evidence_paragraph_idx": [
+        7,
+        112,
+        113
+      ]
+    },
+    {
+      "node_id": "curr_governance_regulation",
+      "parent_id": "curr_governance",
+      "level": 3,
+      "order": 3,
+      "label": "Worldwide export controls and AI regulation",
+      "risk_thesis": "Competition inquiries, AI regulation, worldwide licensing proposals, and foreign retaliation or standards can restrict shipments and raise compliance costs.",
+      "evidence_paragraph_idx": [
+        109,
+        112,
+        114,
+        123,
+        131,
+        148,
+        158,
+        160
+      ]
+    },
+    {
+      "node_id": "curr_governance_sustainability_privacy",
+      "parent_id": "curr_governance",
+      "level": 3,
+      "order": 4,
+      "label": "Sustainability, privacy, AI-compliance, and tax obligations",
+      "risk_thesis": "ESG disclosure, AI-governance rules, privacy laws, NIS2 exposure, and international tax changes can raise cost, liability, and operating friction.",
+      "evidence_paragraph_idx": [
+        162,
+        167,
+        177,
+        179,
+        185
+      ]
+    }
+  ],
+  "node_alignment": [
+    {
+      "prev_node_id": "prev_root",
+      "curr_node_id": "curr_root",
+      "change_class": "stable",
+      "rationale": "The section still organizes risk around commercialization, supply execution, operations, customers, and governance, but 2025 redistributes emphasis within the same overall architecture.",
+      "salience": 0.58
+    },
+    {
+      "prev_node_id": "prev_commercial",
+      "curr_node_id": "curr_commercial",
+      "change_class": "stable",
+      "rationale": "Commercial expansion risk remains anchored in AI services and competition rather than shifting to a new business model category.",
+      "salience": 0.44
+    },
+    {
+      "prev_node_id": "prev_commercial_cloud",
+      "curr_node_id": "curr_commercial_cloud",
+      "change_class": "reworded",
+      "rationale": "2025 trims some product examples but preserves the same mechanism where DGX Cloud and software timing affect revenue, expense, and development timing.",
+      "salience": 0.39
+    },
+    {
+      "prev_node_id": "prev_commercial_competition",
+      "curr_node_id": "curr_commercial_competition",
+      "change_class": "stable",
+      "rationale": "Competition still works through pricing, functionality, and evolving market needs, with 2025 adding only modest wording updates around customer and market needs.",
+      "salience": 0.36
+    },
+    {
+      "prev_node_id": "prev_supply",
+      "curr_node_id": "curr_supply",
+      "change_class": "intensified",
+      "rationale": "2025 moves supply mismatch into the opening bullet list and spells out long manufacturing lead times, advance builds, and annual Data Center cadence, making supply execution more central and operationally specified.",
+      "salience": 0.93
+    },
+    {
+      "prev_node_id": "prev_supply_commitments",
+      "curr_node_id": "curr_supply_commitments",
+      "change_class": "intensified",
+      "rationale": "The 2025 filing tightens the mechanism from general forecast error and deposits to explicit non-cancellable orders, prepaid agreements, and reduced ability to unwind commitments when orders change.",
+      "salience": 0.9
+    },
+    {
+      "prev_node_id": "prev_supply_transitions",
+      "curr_node_id": "curr_supply_transitions",
+      "change_class": "intensified",
+      "rationale": "2025 converts the broader and faster cadence language into an annual Data Center solution cadence and adds a Blackwell yield example, linking launch tempo more directly to margin and roadmap execution.",
+      "salience": 0.91
+    },
+    {
+      "prev_node_id": "prev_demand",
+      "curr_node_id": "curr_demand",
+      "change_class": "stable",
+      "rationale": "Demand volatility remains driven by emergent AI use cases and forecasting difficulty rather than a different end-market thesis.",
+      "salience": 0.42
+    },
+    {
+      "prev_node_id": "prev_demand_new_use_cases",
+      "curr_node_id": "curr_demand_new_use_cases",
+      "change_class": "reworded",
+      "rationale": "2025 reframes the same uncertainty around generative AI and crypto with more colorful wording about mercurial or trendy applications, but the contrast mechanism is still unpredictable demand swings.",
+      "salience": 0.37
+    },
+    {
+      "prev_node_id": "prev_demand_ecosystem",
+      "curr_node_id": "curr_demand_ecosystem",
+      "change_class": "reworded",
+      "rationale": "The ecosystem node shifts from platform-developer dependence to a broader list of channel, developer, and policy demand drivers without changing the core third-party dependence mechanism.",
+      "salience": 0.35
+    },
+    {
+      "prev_node_id": "prev_operations",
+      "curr_node_id": "curr_operations",
+      "change_class": "intensified",
+      "rationale": "2025 adds more explicit supplier-incident, insider-error, and AI-output integrity language, widening the operational failure chain from product defects and cyber risk to trust and resilience issues.",
+      "salience": 0.76
+    },
+    {
+      "prev_node_id": "prev_operations_quality",
+      "curr_node_id": "curr_operations_quality",
+      "change_class": "intensified",
+      "rationale": "The quality node expands from defects and supplier control loss to explicit AI-training-data defects and greater manufacturing-complexity examples that can impair margins and product timing.",
+      "salience": 0.68
+    },
+    {
+      "prev_node_id": "prev_operations_cyber_geo",
+      "curr_node_id": "curr_operations_cyber_geo",
+      "change_class": "intensified",
+      "rationale": "2025 keeps the cyber and geopolitical-disruption structure but adds concrete employee-posting and AI-output-integrity pathways that connect incidents more directly to trust and revenue effects.",
+      "salience": 0.73
+    },
+    {
+      "prev_node_id": "prev_customers",
+      "curr_node_id": "curr_customers",
+      "change_class": "intensified",
+      "rationale": "The concentration section broadens from a few channel-linked customers to several large direct customers plus system-complexity risk in selling advanced data center systems.",
+      "salience": 0.71
+    },
+    {
+      "prev_node_id": "prev_customers_concentration",
+      "curr_node_id": "curr_customers_concentration",
+      "change_class": "intensified",
+      "rationale": "2025 shifts the mechanism from one major direct customer and one large indirect customer to a portfolio of 10%+ direct customers, indirect concentration, and integrator-specification dependence.",
+      "salience": 0.74
+    },
+    {
+      "prev_node_id": "prev_governance",
+      "curr_node_id": "curr_governance",
+      "change_class": "intensified",
+      "rationale": "Governance risk becomes more expansive in 2025 because proceedings burden and worldwide AI or export compliance are elevated within the same people-systems-regulation frame.",
+      "salience": 0.84
+    },
+    {
+      "prev_node_id": "prev_governance_talent_systems",
+      "curr_node_id": "curr_governance_talent_systems",
+      "change_class": "stable",
+      "rationale": "The talent and systems mechanism remains continuity, retention, and control preservation rather than a newly defined workforce risk.",
+      "salience": 0.41
+    },
+    {
+      "prev_node_id": "prev_governance_regulation",
+      "curr_node_id": "curr_governance_regulation",
+      "change_class": "intensified",
+      "rationale": "2025 broadens the regulatory mechanism from regulator interest and China-centered export limits to competition inquiries, AI regulation, worldwide licensing, foreign standards responses, and retaliatory trade dynamics.",
+      "salience": 0.96
+    },
+    {
+      "prev_node_id": "prev_governance_sustainability_privacy",
+      "curr_node_id": "curr_governance_sustainability_privacy",
+      "change_class": "intensified",
+      "rationale": "The 2025 filing extends the prior ESG and privacy theme into AI-governance, NIS2 penalty exposure, and internal-use AI risk, increasing the compliance pathways beyond general disclosure and privacy-law burden.",
+      "salience": 0.8
+    },
+    {
+      "prev_node_id": null,
+      "curr_node_id": "curr_governance_proceedings",
+      "change_class": "added",
+      "rationale": "2025 elevates litigation, investigations, and regulatory proceedings into a standalone subtopic instead of leaving legal burden implicit inside broader compliance language.",
+      "salience": 0.83
+    }
+  ],
+  "material_changes": [
+    {
+      "id": "mc_1",
+      "title": "AI Diffusion IFR and worldwide licensing requirement broaden export-control exposure",
+      "change_class": "intensified",
+      "salience": 0.96,
+      "caveat": "The 2025 filing spreads the AI Diffusion IFR consequences across many adjacent paragraphs, so this contrast captures the scope expansion but not every listed covered product, country, or compliance branch.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 130
+        },
+        {
+          "year": 2024,
+          "paragraph_idx": 141
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 123
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 131
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 148
+        }
+      ]
+    },
+    {
+      "id": "mc_2",
+      "title": "Long manufacturing lead times and low-yielding Blackwell material make supply-demand mismatch more concrete",
+      "change_class": "intensified",
+      "salience": 0.91,
+      "caveat": "2024 already described mismatch and faster cadence, so the increment here is the new front-loaded lead-time framing and Blackwell example, not the creation of a wholly new supply category.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 17
+        },
+        {
+          "year": 2024,
+          "paragraph_idx": 34
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 17
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 38
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 44
+        }
+      ]
+    },
+    {
+      "id": "mc_3",
+      "title": "litigation, investigations, and regulatory proceedings becomes a standalone risk heading",
+      "change_class": "added",
+      "salience": 0.83,
+      "caveat": "The proceedings theme is explicit at the bullet level, but the supplied deboilerplated text does not provide a long dedicated proceedings subsection, so the filing evidence is strong on elevation and lighter on case-by-case detail.",
+      "evidence_refs": [
+        {
+          "year": 2025,
+          "paragraph_idx": 7
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 112
+        }
+      ]
+    },
+    {
+      "id": "mc_4",
+      "title": "integrity of our AI outputs and NIS2 broaden privacy and AI-compliance risk",
+      "change_class": "intensified",
+      "salience": 0.8,
+      "caveat": "The 2025 governance discussion mixes cyber, privacy, AI-model, and regional compliance issues together, so the evidence supports broader burden but does not isolate how much each subtopic contributes to the increase.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 90
+        },
+        {
+          "year": 2024,
+          "paragraph_idx": 159
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 75
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 177
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 179
+        }
+      ]
+    },
+    {
+      "id": "mc_5",
+      "title": "Customers A, B and C and advanced data center systems reshape concentration risk",
+      "change_class": "intensified",
+      "salience": 0.74,
+      "caveat": "Customer identities remain anonymized as lettered customers and the indirect-customer exposure still runs through intermediaries, which limits precise persistence mapping from the 2024 concentration mix to the 2025 mix.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 105
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 92
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 95
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 98
+        }
+      ]
+    }
+  ],
+  "evidence_bank": [
+    {
+      "year": 2024,
+      "paragraph_idx": 17,
+      "snippet": "If our estimates of customer demand are inaccurate, as we have experienced in the past, there could be a significant mismatch between supply and demand.",
+      "why": "Baseline statement that demand-estimation errors can create supply-demand mismatch.",
+      "node_ids": [
+        "prev_supply",
+        "prev_supply_commitments"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 34,
+      "snippet": "We will have a broader and faster Data Center product launch cadence to meet a growing and diverse set of AI opportunities.",
+      "why": "Shows 2024 already framed faster Data Center launch cadence as a transition risk.",
+      "node_ids": [
+        "prev_supply",
+        "prev_supply_transitions"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 90,
+      "snippet": "Applicable data privacy and security obligations may require us to notify relevant stakeholders, including affected individuals, customers, regulators and investors, of security incidents, and mandatory disclosure of such incidents could lead to negative publicity.",
+      "why": "Captures the 2024 privacy/security-notification framing before 2025 adds AI-output and NIS2 specificity.",
+      "node_ids": [
+        "prev_operations_cyber_geo",
+        "prev_governance_sustainability_privacy"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 105,
+      "snippet": "Sales to one customer, Customer A, represented 13% of total revenue for fiscal year 2024, which was attributable to the Compute & Networking segment.",
+      "why": "Quantifies the 2024 direct-customer concentration baseline.",
+      "node_ids": [
+        "prev_customers",
+        "prev_customers_concentration"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 123,
+      "snippet": "Our position in markets relating to AI has led to increased interest in our business from regulators worldwide, including the European Union, the United States, the United Kingdom and China.",
+      "why": "Shows regulator attention around AI markets before 2025 broadens the proceeding and competition language.",
+      "node_ids": [
+        "prev_governance",
+        "prev_governance_regulation"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 130,
+      "snippet": "Such controls have been and may again be very broad in scope and application, prohibit us from exporting our products to any or all customers in one or more markets, including but not limited to China",
+      "why": "Summarizes the 2024 export-control framing as broad but still principally described around China-market limits.",
+      "node_ids": [
+        "prev_governance",
+        "prev_governance_regulation"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 141,
+      "snippet": "Our competitive position has been harmed, and our competitive position and future results may be further harmed, over the long-term, if there are further changes in the USG’s export controls",
+      "why": "Links export controls to long-term competitive harm in the 2024 filing.",
+      "node_ids": [
+        "prev_governance",
+        "prev_governance_regulation"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 159,
+      "snippet": "In the past few years, numerous U.S. states have enacted comprehensive privacy laws that impose certain obligations on covered businesses, including providing specific disclosures in privacy notices and affording residents with certain rights concerning their personal data.",
+      "why": "Represents the 2024 privacy-law baseline before 2025 adds AI-output and NIS2 language.",
+      "node_ids": [
+        "prev_governance_sustainability_privacy"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 172,
+      "snippet": "Our indebtedness could adversely affect our financial position and cash flows from operations, and prevent us from implementing our strategy or fulfilling our contractual obligations.",
+      "why": "Shows 2024 still carried an explicit indebtedness risk.",
+      "node_ids": [
+        "prev_governance"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 2,
+      "snippet": "• Long manufacturing lead times and uncertain supply and component availability, combined with a failure to estimate customer demand accurately has led and could lead to mismatches between supply and demand.",
+      "why": "2025 elevates long lead times and demand mismatch into the opening bullet list.",
+      "node_ids": [
+        "curr_supply",
+        "curr_supply_commitments"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 7,
+      "snippet": "• Our business is exposed to the burden and risks associated with litigation, investigations, and regulatory proceedings.",
+      "why": "2025 adds a standalone bullet for litigation, investigations, and regulatory proceedings.",
+      "node_ids": [
+        "curr_governance",
+        "curr_governance_proceedings"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 17,
+      "snippet": "We have long manufacturing lead times and build finished products and maintain inventory in advance of anticipated demand.",
+      "why": "Makes long manufacturing lead times and advance inventory builds explicit in the main supply section.",
+      "node_ids": [
+        "curr_supply",
+        "curr_supply_commitments"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 38,
+      "snippet": "We have introduced a new product and architecture cadence of our Data Center solutions where we seek to complete new computing solutions each year and provide a greater variety of Data Center offerings.",
+      "why": "Specifies an annual Data Center solution cadence in 2025.",
+      "node_ids": [
+        "curr_supply",
+        "curr_supply_transitions"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 44,
+      "snippet": "For example, our gross margins in the second quarter of fiscal year 2025 were negatively impacted by inventory provisions for low-yielding Blackwell material.",
+      "why": "Provides a concrete Blackwell yield example linking cadence risk to gross margin impact.",
+      "node_ids": [
+        "curr_supply",
+        "curr_supply_transitions"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 72,
+      "snippet": "We have in the past experienced, and may in the future experience, security incidents arising from a failure to properly handle sensitive information or adhere to our security policies and access control mechanisms, including, for example, employees posting company data on third-party websites without permission",
+      "why": "Adds a more concrete insider/error handling example to the security discussion.",
+      "node_ids": [
+        "curr_operations_cyber_geo"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 75,
+      "snippet": "These datasets may be flawed, insufficient, or contain certain biased information, and may otherwise decrease resilience to security incidents that may compromise the integrity of our AI outputs, leading to potential reputational damage, regulatory scrutiny, or adverse impacts on the performance and reliability of our products",
+      "why": "Adds AI-output integrity and product-reliability consequences to the data/privacy risk narrative.",
+      "node_ids": [
+        "curr_operations_cyber_geo",
+        "curr_governance_sustainability_privacy"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 91,
+      "snippet": "We have experienced periods where we receive a significant amount of our revenue from a limited number of customers, and this trend may continue.",
+      "why": "States that large-customer concentration remains a live trend in 2025.",
+      "node_ids": [
+        "curr_customers",
+        "curr_customers_concentration"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 92,
+      "snippet": "Sales to direct Customers A, B and C represented 12%, 11% and 11% of total revenue, respectively, for fiscal year 2025, all of which were primarily attributable to the Compute & Networking segment.",
+      "why": "Quantifies a broader set of 10%+ direct customers in 2025.",
+      "node_ids": [
+        "curr_customers",
+        "curr_customers_concentration"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 95,
+      "snippet": "Changes in our partners' or customers' business models or their ownership can reduce the number of partners available to us and harm our ability to sell our advanced data center systems to customers.",
+      "why": "Adds partner-ownership/model changes as a sales-channel risk for advanced data center systems.",
+      "node_ids": [
+        "curr_customers",
+        "curr_customers_concentration"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 98,
+      "snippet": "For fiscal year 2025, an indirect customer which primarily purchases our products through system integrators and distributors, including through Customer B, is estimated to represent 10% or more of total revenue, attributable to the Compute & Networking segment.",
+      "why": "Shows continued indirect-customer concentration through the partner stack in 2025.",
+      "node_ids": [
+        "curr_customers",
+        "curr_customers_concentration"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 99,
+      "snippet": "If end demand increases or our finished goods supply availability is concentrated near a quarter end, the system integrators, distributors, and channel partners may have limited ability to increase their credit, which could impact the timing and amount of our revenue.",
+      "why": "Connects partner credit capacity to quarter-end revenue timing.",
+      "node_ids": [
+        "curr_customers",
+        "curr_customers_concentration"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 112,
+      "snippet": "We have also received, and continue to receive, broad requests for information from competition regulators in the European Union, the United States, the United Kingdom, China, and South Korea",
+      "why": "Provides nearby detail for the new proceedings/regulatory burden theme.",
+      "node_ids": [
+        "curr_governance",
+        "curr_governance_proceedings",
+        "curr_governance_regulation"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 123,
+      "snippet": "Such controls have been and may again be very broad in scope and application, prohibit us from exporting our products to any or all customers in one or more markets, including but not limited to China and over 150 countries designated “Tier 2” by the January 2025 AI Diffusion IFR",
+      "why": "Shows 2025 expansion from China-focused controls to a broader AI Diffusion IFR perimeter.",
+      "node_ids": [
+        "curr_governance",
+        "curr_governance_regulation"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 131,
+      "snippet": "After a 120-day delayed compliance period, the IFR will, unless modified, impose a worldwide licensing requirement on all products classified under Export Control Classification Numbers, or ECCNs, 3A090.a, 4A090.a, or corresponding .z ECCNs, including all related software and technology.",
+      "why": "Makes the prospective worldwide licensing requirement explicit in 2025.",
+      "node_ids": [
+        "curr_governance",
+        "curr_governance_regulation"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 135,
+      "snippet": "The AI Diffusion IFR would confer special benefits on select “Universal Verified End Users”, or UVEU, and lesser benefits on “National Verified End Users”, or NVEU.",
+      "why": "Introduces the UVEU/NVEU structure inside the AI Diffusion IFR discussion.",
+      "node_ids": [
+        "curr_governance",
+        "curr_governance_regulation"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 148,
+      "snippet": "The requirements have a disproportionate impact on NVIDIA and already have disadvantaged and may in the future disadvantage NVIDIA against certain of our competitors who sell products that are not subject to the new restrictions or may be able to acquire licenses for their products.",
+      "why": "States that the 2025 requirements disproportionately disadvantage NVIDIA versus some competitors.",
+      "node_ids": [
+        "curr_governance",
+        "curr_governance_regulation"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 158,
+      "snippet": "As another example, an agency of the Chinese government announced an Action Plan that endorses new standards regarding the compute performance per watt and per memory bandwidth of accelerators used in new and renovated data centers in China.",
+      "why": "Adds a China-side standards response risk that was not explicit in 2024.",
+      "node_ids": [
+        "curr_governance",
+        "curr_governance_regulation"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 162,
+      "snippet": "Certain shareholder advocacy groups, investment funds, shareholders and other market participants, customers and government regulators have focused on corporate sustainability practices and disclosures, including those associated with climate change and human rights.",
+      "why": "Marks continuing ESG scrutiny in 2025.",
+      "node_ids": [
+        "curr_governance_sustainability_privacy"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 167,
+      "snippet": "Leveraging AI capabilities to potentially improve our internal functions and operations may present further risks, costs, and challenges.",
+      "why": "Adds internal-use AI as its own risk vector inside governance/compliance language.",
+      "node_ids": [
+        "curr_governance_sustainability_privacy"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 177,
+      "snippet": "Furthermore, the EU AI Act and similar legislation could impose onerous obligations that may disproportionately impact and disadvantage us and require us to change our business practices.",
+      "why": "Adds EU AI Act-like obligations directly to the privacy/AI-compliance section.",
+      "node_ids": [
+        "curr_governance_sustainability_privacy"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 179,
+      "snippet": "Non-compliance with NIS2 may lead to administrative fines of a maximum of 10 million Euros or up to 2% of the total worldwide revenue of the preceding fiscal year.",
+      "why": "Quantifies NIS2 sanction exposure in 2025.",
+      "node_ids": [
+        "curr_governance_sustainability_privacy"
+      ]
+    }
+  ],
+  "lens_divergence": {
+    "materially_different": false,
+    "summary": "Only the deboilerplated lens was supplied for both years, so no cross-lens divergence assessment was possible within this run."
+  },
+  "provenance": {
+    "input_file": "inputs/pair/NVDA_2024_2025_10k_item1a_deboilerplated_edgar.json",
+    "model_provider": "openai",
+    "model_name": "ChatGPT 5.4-Thinking (Extended Thinking)",
+    "run_label": "2026-03-06_openai_chatgpt54ext_fullsec_real_nvda_2024_2025_outline_compare"
+  },
+  "artifact_id": "llm_outline_compare_runtime"
+}

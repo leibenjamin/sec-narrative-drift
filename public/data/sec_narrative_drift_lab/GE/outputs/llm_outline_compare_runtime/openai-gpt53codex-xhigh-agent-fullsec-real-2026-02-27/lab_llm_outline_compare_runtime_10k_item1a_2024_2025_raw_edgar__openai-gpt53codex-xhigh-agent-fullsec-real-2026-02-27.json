@@ -13,110 +13,213 @@
       "parent_id": null,
       "level": 1,
       "order": 0,
-      "label": "Risk Factors",
-      "risk_thesis": "2024 uses four major risk pillars.",
+      "label": "GE Aerospace 2024 Item 1A risk architecture",
+      "risk_thesis": "The section frames enterprise risk across strategic, operational, financial, and legal channels with explicit links to profitability, cash flows, and competitive position.",
       "evidence_paragraph_idx": [
         0
       ]
     },
     {
-      "node_id": "prev_strat",
+      "node_id": "prev_strategic",
       "parent_id": "prev_root",
       "level": 2,
-      "order": 1,
-      "label": "Strategic Risks",
-      "risk_thesis": "Macro, aviation, policy, and transition risks.",
+      "order": 0,
+      "label": "Strategic risks",
+      "risk_thesis": "Strategy risk is driven by macro/geopolitical volatility, aviation-cycle dynamics, technology competition, climate transition, and portfolio actions.",
       "evidence_paragraph_idx": [
         1
       ]
     },
     {
-      "node_id": "prev_oper",
+      "node_id": "prev_strat_macro",
+      "parent_id": "prev_strategic",
+      "level": 3,
+      "order": 0,
+      "label": "Global macro-environment and geopolitical disruption",
+      "risk_thesis": "Geopolitical conflict, trade barriers, and inflationary pressures can disrupt supply chains, operating model economics, and end-market demand.",
+      "evidence_paragraph_idx": [
+        2
+      ]
+    },
+    {
+      "node_id": "prev_strat_aviation",
+      "parent_id": "prev_strategic",
+      "level": 3,
+      "order": 1,
+      "label": "Commercial aviation cycle and partner dependencies",
+      "risk_thesis": "Demand cyclicality and dependencies on suppliers, partners, and airframers can reduce order conversion, deliveries, and service profitability.",
+      "evidence_paragraph_idx": [
+        3,
+        4
+      ]
+    },
+    {
+      "node_id": "prev_strat_competition",
+      "parent_id": "prev_strategic",
+      "level": 3,
+      "order": 2,
+      "label": "Competitive environment and technology investment",
+      "risk_thesis": "Long development cycles and uncertain R&D returns can weaken technology leadership and margin trajectory if innovation bets underperform.",
+      "evidence_paragraph_idx": [
+        5,
+        6
+      ]
+    },
+    {
+      "node_id": "prev_strat_policy_climate",
+      "parent_id": "prev_strategic",
+      "level": 3,
+      "order": 3,
+      "label": "Government programs, climate transition, and policy shocks",
+      "risk_thesis": "Defense budget shifts and climate-transition requirements can drive compliance burden, investment needs, and execution risk across products and operations.",
+      "evidence_paragraph_idx": [
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "node_id": "prev_strat_portfolio",
+      "parent_id": "prev_strategic",
+      "level": 3,
+      "order": 4,
+      "label": "Inorganic investments, spin-offs, and intellectual property",
+      "risk_thesis": "M&A, separations, joint ventures, and IP enforcement dependencies can dilute expected returns and create legal or operational drag.",
+      "evidence_paragraph_idx": [
+        11,
+        12,
+        13,
+        14
+      ]
+    },
+    {
+      "node_id": "prev_operational",
       "parent_id": "prev_root",
       "level": 2,
-      "order": 2,
-      "label": "Operational Risks",
-      "risk_thesis": "Execution, supply, quality, and cyber risks.",
+      "order": 1,
+      "label": "Operational risks",
+      "risk_thesis": "Operational risk centers on product quality, supply-chain resilience, execution of ramps, and cyber resilience of internal and third-party systems.",
       "evidence_paragraph_idx": [
         15
       ]
     },
     {
-      "node_id": "prev_fin",
+      "node_id": "prev_ops_quality",
+      "parent_id": "prev_operational",
+      "level": 3,
+      "order": 0,
+      "label": "Product safety and quality performance",
+      "risk_thesis": "Design or production failures can trigger direct cost, fleet disruption, and material reputational damage.",
+      "evidence_paragraph_idx": [
+        16,
+        17
+      ]
+    },
+    {
+      "node_id": "prev_ops_supply_exec",
+      "parent_id": "prev_operational",
+      "level": 3,
+      "order": 1,
+      "label": "Supply chain constraints and LEAP/GE9X execution",
+      "risk_thesis": "Supplier constraints and platform-ramp execution risk can impair delivery, durability, contractual performance, and margin outcomes.",
+      "evidence_paragraph_idx": [
+        18,
+        19
+      ]
+    },
+    {
+      "node_id": "prev_ops_cyber",
+      "parent_id": "prev_operational",
+      "level": 3,
+      "order": 2,
+      "label": "Cybersecurity and data-protection exposure",
+      "risk_thesis": "Cyber threats and evolving privacy/security requirements can produce operational disruption, regulatory costs, and reputational harm.",
+      "evidence_paragraph_idx": [
+        20,
+        21,
+        22,
+        23,
+        24
+      ]
+    },
+    {
+      "node_id": "prev_financial",
       "parent_id": "prev_root",
       "level": 2,
-      "order": 3,
-      "label": "Financial Risks",
-      "risk_thesis": "Counterparty, runoff, and liquidity risk.",
+      "order": 2,
+      "label": "Financial risks",
+      "risk_thesis": "Financial risk emphasizes customer credit quality, residual run-off financial exposures, and refinancing/liquidity sensitivity.",
       "evidence_paragraph_idx": [
         25
+      ]
+    },
+    {
+      "node_id": "prev_fin_customers",
+      "parent_id": "prev_financial",
+      "level": 3,
+      "order": 0,
+      "label": "Customers and counterparties",
+      "risk_thesis": "Customer financial stress or sector disruption can delay orders, weaken collections, and pressure aerospace demand.",
+      "evidence_paragraph_idx": [
+        26,
+        27
+      ]
+    },
+    {
+      "node_id": "prev_fin_runoff",
+      "parent_id": "prev_financial",
+      "level": 3,
+      "order": 1,
+      "label": "Run-off insurance and Bank BPH exposure",
+      "risk_thesis": "Legacy insurance reserve testing and Poland mortgage litigation can require additional capital support and increase funding strain.",
+      "evidence_paragraph_idx": [
+        28
+      ]
+    },
+    {
+      "node_id": "prev_fin_liquidity",
+      "parent_id": "prev_financial",
+      "level": 3,
+      "order": 2,
+      "label": "Borrowings and liquidity",
+      "risk_thesis": "Downgrades and adverse credit-market conditions can raise funding cost and constrain refinancing flexibility.",
+      "evidence_paragraph_idx": [
+        29
       ]
     },
     {
       "node_id": "prev_legal",
       "parent_id": "prev_root",
       "level": 2,
-      "order": 4,
-      "label": "Legal and Compliance Risks",
-      "risk_thesis": "Regulatory and litigation exposure.",
+      "order": 3,
+      "label": "Legal and compliance risks",
+      "risk_thesis": "Regulatory change and litigation exposure remain broad channels for compliance cost, business restrictions, and contingent losses.",
       "evidence_paragraph_idx": [
         30
       ]
     },
     {
-      "node_id": "prev_macro",
-      "parent_id": "prev_strat",
-      "level": 3,
-      "order": 5,
-      "label": "Macro and Geopolitical",
-      "risk_thesis": "Trade and conflict shocks can disrupt demand and cost.",
-      "evidence_paragraph_idx": [
-        2
-      ]
-    },
-    {
-      "node_id": "prev_gov",
-      "parent_id": "prev_strat",
-      "level": 3,
-      "order": 6,
-      "label": "Government Programs",
-      "risk_thesis": "Defense spending and contract rules drive exposure.",
-      "evidence_paragraph_idx": [
-        7
-      ]
-    },
-    {
-      "node_id": "prev_climate",
-      "parent_id": "prev_strat",
-      "level": 3,
-      "order": 7,
-      "label": "Climate Transition",
-      "risk_thesis": "Climate goals rely on immature technologies.",
-      "evidence_paragraph_idx": [
-        10
-      ]
-    },
-    {
-      "node_id": "prev_cyber",
-      "parent_id": "prev_oper",
-      "level": 3,
-      "order": 8,
-      "label": "Cybersecurity",
-      "risk_thesis": "Cyber incidents plus compliance burden can disrupt operations.",
-      "evidence_paragraph_idx": [
-        22,
-        24
-      ]
-    },
-    {
-      "node_id": "prev_reg",
+      "node_id": "prev_legal_reg",
       "parent_id": "prev_legal",
       "level": 3,
-      "order": 9,
-      "label": "Regulatory and Tax",
-      "risk_thesis": "Regulatory and tax-law shifts can raise costs.",
+      "order": 0,
+      "label": "Regulatory and policy changes",
+      "risk_thesis": "Trade, climate, cybersecurity, AI, sanctions, and tax-policy changes can increase compliance burden and alter market access economics.",
       "evidence_paragraph_idx": [
+        31,
         32
+      ]
+    },
+    {
+      "node_id": "prev_legal_proceedings",
+      "parent_id": "prev_legal",
+      "level": 3,
+      "order": 1,
+      "label": "Legal proceedings and contingent liabilities",
+      "risk_thesis": "Material proceedings and trailing liabilities can exceed reserve estimates and impair financial performance.",
+      "evidence_paragraph_idx": [
+        33
       ]
     }
   ],
@@ -126,112 +229,211 @@
       "parent_id": null,
       "level": 1,
       "order": 0,
-      "label": "Risk Factors",
-      "risk_thesis": "2025 keeps the same four-pillar structure.",
+      "label": "GE Aerospace 2025 Item 1A risk architecture",
+      "risk_thesis": "The 2025 structure keeps the same four major risk buckets while adding sharper execution and compliance transmission channels in selected nodes.",
       "evidence_paragraph_idx": [
         0
       ]
     },
     {
-      "node_id": "curr_strat",
+      "node_id": "curr_strategic",
       "parent_id": "curr_root",
       "level": 2,
-      "order": 1,
-      "label": "Strategic Risks",
-      "risk_thesis": "Strategic pillar persists with revised wording.",
+      "order": 0,
+      "label": "Strategic risks",
+      "risk_thesis": "Strategic risk still combines macro/aviation cyclicality, innovation competition, policy and climate pressure, and portfolio execution.",
       "evidence_paragraph_idx": [
         1
       ]
     },
     {
-      "node_id": "curr_oper",
+      "node_id": "curr_strat_macro",
+      "parent_id": "curr_strategic",
+      "level": 3,
+      "order": 0,
+      "label": "Global macro-environment and geopolitical disruption",
+      "risk_thesis": "Macroeconomic and geopolitical disruption continues to threaten demand, costs, and operating continuity across geographies.",
+      "evidence_paragraph_idx": [
+        2
+      ]
+    },
+    {
+      "node_id": "curr_strat_aviation",
+      "parent_id": "curr_strategic",
+      "level": 3,
+      "order": 1,
+      "label": "Commercial aviation cycle, certification timing, and tariff pressure",
+      "risk_thesis": "Commercial aviation risk now explicitly folds certification timing and tariff-linked cost pressure into the demand and delivery channel.",
+      "evidence_paragraph_idx": [
+        3
+      ]
+    },
+    {
+      "node_id": "curr_strat_competition",
+      "parent_id": "curr_strategic",
+      "level": 3,
+      "order": 2,
+      "label": "Competitive environment and innovation positioning",
+      "risk_thesis": "Competition framing now adds dependence on winning major aircraft platforms and sustaining leadership depth while preserving R&D returns.",
+      "evidence_paragraph_idx": [
+        4,
+        5
+      ]
+    },
+    {
+      "node_id": "curr_strat_policy_climate",
+      "parent_id": "curr_strategic",
+      "level": 3,
+      "order": 3,
+      "label": "Government programs plus climate and environmental factors",
+      "risk_thesis": "Government program disruption and climate/environment transition continue to drive compliance, investment, and weather-related operating exposure.",
+      "evidence_paragraph_idx": [
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "node_id": "curr_strat_portfolio",
+      "parent_id": "curr_strategic",
+      "level": 3,
+      "order": 4,
+      "label": "Inorganic investments, GE spin-offs, and intellectual property",
+      "risk_thesis": "Portfolio actions, spin-off obligations, and IP disputes remain material pathways to strategic underperformance and liability.",
+      "evidence_paragraph_idx": [
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "node_id": "curr_operational",
       "parent_id": "curr_root",
       "level": 2,
-      "order": 2,
-      "label": "Operational Risks",
-      "risk_thesis": "Operational pillar keeps cyber and execution focus.",
+      "order": 1,
+      "label": "Operational risks",
+      "risk_thesis": "Operational risk remains concentrated in product quality, supply and execution bottlenecks, and cyber resilience under higher compliance expectations.",
       "evidence_paragraph_idx": [
         13
       ]
     },
     {
-      "node_id": "curr_fin",
+      "node_id": "curr_ops_quality",
+      "parent_id": "curr_operational",
+      "level": 3,
+      "order": 0,
+      "label": "Product safety and quality performance",
+      "risk_thesis": "Product failure and quality lapses continue to create direct cost, delivery, and reputational downside.",
+      "evidence_paragraph_idx": [
+        14,
+        15
+      ]
+    },
+    {
+      "node_id": "curr_ops_supply_exec",
+      "parent_id": "curr_operational",
+      "level": 3,
+      "order": 1,
+      "label": "Supply chain constraints and LEAP/GE9X installed base services execution",
+      "risk_thesis": "Execution risk now explicitly links LEAP/GE9X installed base growth to delivery, durability, time on wing, and repair turnaround requirements.",
+      "evidence_paragraph_idx": [
+        16,
+        17,
+        18
+      ]
+    },
+    {
+      "node_id": "curr_ops_cyber",
+      "parent_id": "curr_operational",
+      "level": 3,
+      "order": 2,
+      "label": "Cybersecurity incidents, supplier exposure, and compliance obligations",
+      "risk_thesis": "Cyber risk adds incident-specific and supplier-linked pathways, plus explicit CMMC/NIST-related compliance burden.",
+      "evidence_paragraph_idx": [
+        19,
+        20,
+        21,
+        22,
+        23
+      ]
+    },
+    {
+      "node_id": "curr_financial",
       "parent_id": "curr_root",
       "level": 2,
-      "order": 3,
-      "label": "Financial Risks",
-      "risk_thesis": "Financial pillar remains counterparty/liquidity oriented.",
+      "order": 2,
+      "label": "Financial risks",
+      "risk_thesis": "Financial risk still tracks customer credit quality, legacy financial-services obligations, and funding/liquidity resilience.",
       "evidence_paragraph_idx": [
         24
+      ]
+    },
+    {
+      "node_id": "curr_fin_customers",
+      "parent_id": "curr_financial",
+      "level": 3,
+      "order": 0,
+      "label": "Customers and counterparties",
+      "risk_thesis": "Customer exposure now explicitly includes certification delays and production challenges alongside macro and funding stress.",
+      "evidence_paragraph_idx": [
+        25
+      ]
+    },
+    {
+      "node_id": "curr_fin_runoff",
+      "parent_id": "curr_financial",
+      "level": 3,
+      "order": 1,
+      "label": "Run-off insurance and Bank BPH exposure",
+      "risk_thesis": "Legacy insurance and Bank BPH litigation exposure remains a long-tail capital and earnings risk.",
+      "evidence_paragraph_idx": [
+        26
+      ]
+    },
+    {
+      "node_id": "curr_fin_liquidity",
+      "parent_id": "curr_financial",
+      "level": 3,
+      "order": 2,
+      "label": "Borrowings and liquidity",
+      "risk_thesis": "Funding access and credit-rating pressure remain central to capital allocation flexibility.",
+      "evidence_paragraph_idx": [
+        27
       ]
     },
     {
       "node_id": "curr_legal",
       "parent_id": "curr_root",
       "level": 2,
-      "order": 4,
-      "label": "Legal and Compliance Risks",
-      "risk_thesis": "Regulatory and legal contingency exposure remains.",
+      "order": 3,
+      "label": "Legal and compliance risks",
+      "risk_thesis": "Legal/compliance risk continues to capture regulatory shifts, tax exposure, and material litigation outcomes.",
       "evidence_paragraph_idx": [
         28
       ]
     },
     {
-      "node_id": "curr_macro",
-      "parent_id": "curr_strat",
-      "level": 3,
-      "order": 5,
-      "label": "Macro and Geopolitical",
-      "risk_thesis": "Policy tools like export controls are more explicit.",
-      "evidence_paragraph_idx": [
-        2
-      ]
-    },
-    {
-      "node_id": "curr_gov",
-      "parent_id": "curr_strat",
-      "level": 3,
-      "order": 6,
-      "label": "Government Programs",
-      "risk_thesis": "Government-risk language broadens to business-wide scope.",
-      "evidence_paragraph_idx": [
-        6
-      ]
-    },
-    {
-      "node_id": "curr_climate",
-      "parent_id": "curr_strat",
-      "level": 3,
-      "order": 7,
-      "label": "Climate and Environmental",
-      "risk_thesis": "Climate framing broadens while fuel constraints remain.",
-      "evidence_paragraph_idx": [
-        7,
-        8
-      ]
-    },
-    {
-      "node_id": "curr_cyber",
-      "parent_id": "curr_oper",
-      "level": 3,
-      "order": 8,
-      "label": "Cybersecurity",
-      "risk_thesis": "Unauthorized-access and named framework obligations are explicit.",
-      "evidence_paragraph_idx": [
-        20,
-        23
-      ]
-    },
-    {
-      "node_id": "curr_reg",
+      "node_id": "curr_legal_reg",
       "parent_id": "curr_legal",
       "level": 3,
-      "order": 9,
-      "label": "Regulatory and Tax",
-      "risk_thesis": "Tax-audit dispute risk is directly stated.",
+      "order": 0,
+      "label": "Regulatory and tax-policy changes",
+      "risk_thesis": "Regulatory burden persists with added emphasis on ongoing tax-audit disagreement risk.",
       "evidence_paragraph_idx": [
         29,
         30
+      ]
+    },
+    {
+      "node_id": "curr_legal_proceedings",
+      "parent_id": "curr_legal",
+      "level": 3,
+      "order": 1,
+      "label": "Legal proceedings and contingent liabilities",
+      "risk_thesis": "Proceedings risk remains broad and includes legacy-liability channels that can exceed reserve estimates.",
+      "evidence_paragraph_idx": [
+        31
       ]
     }
   ],
@@ -240,148 +442,197 @@
       "prev_node_id": "prev_root",
       "curr_node_id": "curr_root",
       "change_class": "stable",
-      "rationale": "Both years retain the same four-pillar hierarchy with no top-level structural break.",
-      "salience": 0.55
+      "rationale": "The top-level architecture remains a four-bucket risk structure with adverse-effect framing tied to profitability, cash flows, and competitive position.",
+      "salience": 0.42
     },
     {
-      "prev_node_id": "prev_strat",
-      "curr_node_id": "curr_strat",
+      "prev_node_id": "prev_strategic",
+      "curr_node_id": "curr_strategic",
       "change_class": "stable",
-      "rationale": "Strategic pillar remains broad in both years; revisions are at subtopic wording level.",
+      "rationale": "Strategic risk still aggregates macro, aviation, competition, policy/climate, and portfolio themes, with most movement occurring inside subnodes.",
+      "salience": 0.48
+    },
+    {
+      "prev_node_id": "prev_strat_macro",
+      "curr_node_id": "curr_strat_macro",
+      "change_class": "reworded",
+      "rationale": "Macro-geopolitical risk remains intact, while adjacent 2025 nodes absorb more explicit tariff and certification channels that were previously less explicit.",
+      "salience": 0.59
+    },
+    {
+      "prev_node_id": "prev_strat_aviation",
+      "curr_node_id": "curr_strat_aviation",
+      "change_class": "intensified",
+      "rationale": "The aviation node adds explicit regulatory certification timing and new or increased tariffs as demand-and-delivery constraints, tightening the transmission channel.",
+      "salience": 0.72
+    },
+    {
+      "prev_node_id": "prev_strat_competition",
+      "curr_node_id": "curr_strat_competition",
+      "change_class": "reworded",
+      "rationale": "Competition risk remains focused on innovation economics, but 2025 adds platform-win and leadership-depth language that sharpens execution dependence.",
+      "salience": 0.58
+    },
+    {
+      "prev_node_id": "prev_strat_policy_climate",
+      "curr_node_id": "curr_strat_policy_climate",
+      "change_class": "merged",
+      "rationale": "Government-program and climate-environment language is consolidated and streamlined while preserving the core compliance and transition risk mechanism.",
+      "salience": 0.66
+    },
+    {
+      "prev_node_id": "prev_strat_portfolio",
+      "curr_node_id": "curr_strat_portfolio",
+      "change_class": "reworded",
+      "rationale": "Portfolio, spin-off, and IP risks persist with updated wording and some compression of legacy detail rather than a thematic shift.",
       "salience": 0.54
     },
     {
-      "prev_node_id": "prev_macro",
-      "curr_node_id": "curr_macro",
-      "change_class": "reworded",
-      "rationale": "2025 replaces named conflict examples with policy-instrument language including rare earth restrictions.",
-      "salience": 0.83
-    },
-    {
-      "prev_node_id": "prev_gov",
-      "curr_node_id": "curr_gov",
-      "change_class": "intensified",
-      "rationale": "Risk scope shifts from defense-business wording to business-wide wording and adds policy spillover channels.",
-      "salience": 0.81
-    },
-    {
-      "prev_node_id": "prev_climate",
-      "curr_node_id": "curr_climate",
-      "change_class": "reworded",
-      "rationale": "Climate section is retitled and broadened to environmental framing while transition dependency remains.",
-      "salience": 0.69
-    },
-    {
-      "prev_node_id": "prev_oper",
-      "curr_node_id": "curr_oper",
+      "prev_node_id": "prev_operational",
+      "curr_node_id": "curr_operational",
       "change_class": "stable",
-      "rationale": "Operational pillar remains stable with cybersecurity as the primary changed mechanism.",
-      "salience": 0.5
+      "rationale": "Operational risk remains centered on quality, supply/execution, and cybersecurity, with specificity changes in subordinate nodes.",
+      "salience": 0.51
     },
     {
-      "prev_node_id": "prev_cyber",
-      "curr_node_id": "curr_cyber",
+      "prev_node_id": "prev_ops_supply_exec",
+      "curr_node_id": "curr_ops_supply_exec",
       "change_class": "intensified",
-      "rationale": "2025 adds unauthorized-access incident outcome and named compliance frameworks, increasing enforcement linkage.",
-      "salience": 0.9
+      "rationale": "2025 shifts from general platform ramp wording to explicit LEAP/GE9X installed-base services execution with delivery, time-on-wing, and repair-turnaround expectations.",
+      "salience": 0.91
     },
     {
-      "prev_node_id": "prev_fin",
-      "curr_node_id": "curr_fin",
+      "prev_node_id": "prev_ops_cyber",
+      "curr_node_id": "curr_ops_cyber",
+      "change_class": "intensified",
+      "rationale": "Cyber risk moves from broad legal/regime language to explicit supplier-obligation and named CMMC/NIST compliance pathways in the same risk channel.",
+      "salience": 0.78
+    },
+    {
+      "prev_node_id": "prev_financial",
+      "curr_node_id": "curr_financial",
       "change_class": "stable",
-      "rationale": "Financial pillar continuity remains across counterparty and liquidity channels.",
-      "salience": 0.49
+      "rationale": "Financial risk continues to combine customer credit, legacy run-off exposure, and liquidity/refinancing sensitivity.",
+      "salience": 0.47
+    },
+    {
+      "prev_node_id": "prev_fin_customers",
+      "curr_node_id": "curr_fin_customers",
+      "change_class": "intensified",
+      "rationale": "The customer risk mechanism now explicitly includes certification delays and production challenges as channels for delayed purchases and fulfillment stress.",
+      "salience": 0.84
+    },
+    {
+      "prev_node_id": "prev_fin_runoff",
+      "curr_node_id": "curr_fin_runoff",
+      "change_class": "reworded",
+      "rationale": "Run-off insurance and Bank BPH liabilities remain materially similar with incremental wording changes and assumption updates.",
+      "salience": 0.56
+    },
+    {
+      "prev_node_id": "prev_fin_liquidity",
+      "curr_node_id": "curr_fin_liquidity",
+      "change_class": "stable",
+      "rationale": "Liquidity framing remains tied to credit ratings, refinancing access, and capital-allocation constraints under stressed markets.",
+      "salience": 0.53
     },
     {
       "prev_node_id": "prev_legal",
       "curr_node_id": "curr_legal",
       "change_class": "stable",
-      "rationale": "Legal/compliance top-level organization is unchanged.",
-      "salience": 0.46
+      "rationale": "Legal/compliance remains a dedicated top-level bucket linking regulation and proceedings to cash-flow and operating constraints.",
+      "salience": 0.44
     },
     {
-      "prev_node_id": "prev_reg",
-      "curr_node_id": "curr_reg",
-      "change_class": "intensified",
-      "rationale": "2025 adds explicit ongoing tax-audit disagreement language and product/certification requirements.",
-      "salience": 0.86
+      "prev_node_id": "prev_legal_reg",
+      "curr_node_id": "curr_legal_reg",
+      "change_class": "reworded",
+      "rationale": "Regulatory exposure is preserved while tax-risk language shifts toward ongoing audits and disagreements with authorities.",
+      "salience": 0.63
+    },
+    {
+      "prev_node_id": "prev_legal_proceedings",
+      "curr_node_id": "curr_legal_proceedings",
+      "change_class": "stable",
+      "rationale": "Legal-proceedings risk keeps the same contingent-liability mechanism, with examples updated but no structural reclassification.",
+      "salience": 0.55
     }
   ],
   "material_changes": [
     {
       "id": "mc_1",
-      "title": "“phishing attacks that resulted in unauthorized access to systems and data” appears in 2025 disclosure",
+      "title": "LEAP/GE9X installed base services ramp adds explicit time on wing and repair turnaround execution risk",
       "change_class": "intensified",
-      "salience": 0.92,
-      "caveat": "2024 para 22 and 2025 para 20 identify attack types but do not report incident frequency, duration, or dollar losses, so severity comparison is disclosure-limited.",
+      "salience": 0.91,
+      "caveat": "2024 para 19 already flags LEAP or GE9X ramp risk, so the shift is specificity: 2025 para 18 adds installed base/services delivery, durability, time on wing, and repair turnaround expectations without quantifying baseline performance.",
       "evidence_refs": [
         {
           "year": 2024,
-          "paragraph_idx": 22
+          "paragraph_idx": 19
         },
         {
           "year": 2025,
-          "paragraph_idx": 20
+          "paragraph_idx": 18
         }
       ]
     },
     {
       "id": "mc_2",
-      "title": "“tax authorities may disagree ... assess additional taxes that could be material” is newly explicit",
+      "title": "Customers and counterparties now include certification delays or production challenges in order-to-cash risk",
       "change_class": "intensified",
       "salience": 0.84,
-      "caveat": "2024 para 32 and 2025 para 29 do not provide jurisdiction-level amounts or probability weights, so expected cash tax impact remains unquantified.",
+      "caveat": "The comparison uses one broad paragraph per year (2024 para 26 and 2025 para 25), so the channel is clear but unsegmented by customer cohort, region, or exposure size.",
       "evidence_refs": [
         {
           "year": 2024,
-          "paragraph_idx": 32
+          "paragraph_idx": 26
         },
         {
           "year": 2025,
-          "paragraph_idx": 29
+          "paragraph_idx": 25
         }
       ]
     },
     {
       "id": "mc_3",
-      "title": "Macro wording adds “restrictions on rare earth minerals” and drops named conflict examples",
-      "change_class": "reworded",
+      "title": "Cybersecurity compliance language adds Department of War NIST/CMMC supplier-obligation channel",
+      "change_class": "intensified",
       "salience": 0.78,
-      "caveat": "2024 para 2 and 2025 para 2 are broad narrative statements without program-level exposure mapping, limiting attribution of the incremental policy channel.",
+      "caveat": "The raw text in 2025 para 23 includes extraction-style wording (\"Department of War's NIST\"), but relative to 2024 para 24 it still materially adds named compliance obligations and supplier spillover language.",
       "evidence_refs": [
         {
           "year": 2024,
-          "paragraph_idx": 2
+          "paragraph_idx": 24
         },
         {
           "year": 2025,
-          "paragraph_idx": 2
+          "paragraph_idx": 23
         }
       ]
     },
     {
       "id": "mc_4",
-      "title": "Government risk shifts from “Our defense business is subject” to “Our business is subject”",
+      "title": "Commercial aviation risk list now names regulatory certification timing and new or increased tariffs",
       "change_class": "intensified",
-      "salience": 0.71,
-      "caveat": "2024 para 7 and 2025 para 6 show broader wording but no segment-level revenue breakout outside defense, so scope expansion cannot be numerically sized.",
+      "salience": 0.72,
+      "caveat": "Both years present long factor lists in one paragraph (2024 para 3 and 2025 para 3), so this is a wording-intensity shift rather than a standalone quantified risk node.",
       "evidence_refs": [
         {
           "year": 2024,
-          "paragraph_idx": 7
+          "paragraph_idx": 3
         },
         {
           "year": 2025,
-          "paragraph_idx": 6
+          "paragraph_idx": 3
         }
       ]
     },
     {
       "id": "mc_5",
-      "title": "Section retitles to “Climate and environmental factors” while preserving transition dependency",
-      "change_class": "reworded",
-      "salience": 0.63,
-      "caveat": "2024 para 10 and 2025 para 7 describe transition dependence but provide no milestone baseline or adoption-rate assumptions, so pace comparison is directional only.",
+      "title": "Climate and environmental factors consolidate disclosure but retain low carbon fuels dependency",
+      "change_class": "merged",
+      "salience": 0.65,
+      "caveat": "The climate comparison spans differently split raw paragraphs (notably 2025 para 8 beginning mid-continuation), so interpretation is bounded by extraction boundaries rather than a single aligned sentence block.",
       "evidence_refs": [
         {
           "year": 2024,
@@ -389,7 +640,7 @@
         },
         {
           "year": 2025,
-          "paragraph_idx": 7
+          "paragraph_idx": 8
         }
       ]
     }
@@ -397,131 +648,104 @@
   "evidence_bank": [
     {
       "year": 2024,
-      "paragraph_idx": 2,
-      "snippet": "More recently, there is risk of wider conflict in the Middle East that could have significant adverse impacts on the region and business activity in addition to the humanitarian and other consequences of the current conflict.",
-      "why": "2024 macro uses named conflict example.",
+      "paragraph_idx": 3,
+      "snippet": "Supply chain capacity shortfalls and disruptions, including for new parts and services, continue to pose challenges and risks for our business as well as other industry participants.",
+      "why": "Baseline commercial-aviation paragraph before 2025 adds certification-timing and tariff language.",
       "node_ids": [
-        "prev_macro"
-      ]
-    },
-    {
-      "year": 2024,
-      "paragraph_idx": 7,
-      "snippet": "Government programs and contracts - Our defense business is subject to risks from changes in government spending that can adversely affect our business strategy or financial performance, in addition to risks related to regulations and compliance with government contracts.",
-      "why": "2024 government risk is defense-scoped.",
-      "node_ids": [
-        "prev_gov"
+        "prev_strat_aviation"
       ]
     },
     {
       "year": 2024,
       "paragraph_idx": 10,
-      "snippet": "The achievement of aerospace and defense sector climate goals over the coming decades is likely to depend in part on technologies that are not yet developed, deployed or widely adopted today.",
-      "why": "2024 climate thesis depends on not-yet-deployed tech.",
+      "snippet": "The risk of insufficient availability, or higher cost, of low carbon fuels (such as sustainable aviation fuels or hydrogen) may compromise the pace and degree of emissions reduction.",
+      "why": "Captures the low-carbon-fuel availability mechanism in the longer 2024 climate transition discussion.",
       "node_ids": [
-        "prev_climate"
+        "prev_strat_policy_climate"
       ]
     },
     {
       "year": 2024,
-      "paragraph_idx": 22,
-      "snippet": "We have experienced, and expect to continue to experience, cyberattacks of varying degrees of sophistication and various cybersecurity incidents, such as distributed denial of service attacks and phishing attacks.",
-      "why": "2024 cyber disclosure gives incident baseline.",
+      "paragraph_idx": 19,
+      "snippet": "We also face operational risks in connection with launching or ramping newer product platforms, such as the LEAP or GE9X engines.",
+      "why": "Provides the 2024 operational baseline for LEAP/GE9X ramp risk before installed-base services specificity in 2025.",
       "node_ids": [
-        "prev_cyber"
+        "prev_ops_supply_exec"
       ]
     },
     {
       "year": 2024,
       "paragraph_idx": 24,
       "snippet": "Cybersecurity-related and data privacy and protection laws and regulatory regimes are evolving, can vary significantly by country and present increasing compliance challenges",
-      "why": "2024 cyber compliance pressure is explicit.",
+      "why": "Baseline cyber/privacy regime language used to contrast the more specific 2025 compliance-obligation phrasing.",
       "node_ids": [
-        "prev_cyber"
+        "prev_ops_cyber"
       ]
     },
     {
       "year": 2024,
-      "paragraph_idx": 32,
-      "snippet": "Potential changes to tax laws, including changes to taxation of global income, may have an effect on our subsidiaries’ structure, operations, sales, liquidity, cash flows, capital requirements, effective tax rate and performance.",
-      "why": "2024 tax risk is law-change focused.",
+      "paragraph_idx": 26,
+      "snippet": "Existing or potential customers may delay or cancel plans to purchase our products and services and may not be able to fulfill their obligations to us in a timely fashion or at all as a result of business deterioration, cash flow shortages or difficulty obtaining funding",
+      "why": "Baseline customer/counterparty fulfillment-risk wording before 2025 certification-delay and production-challenge additions.",
       "node_ids": [
-        "prev_reg"
+        "prev_fin_customers"
       ]
     },
     {
       "year": 2025,
-      "paragraph_idx": 2,
-      "snippet": "Political developments or policy shifts in areas such as tariffs, export controls, including restrictions on rare earth minerals or other trade barriers, sanctions, technical or local content regulations, currency controls, global tax laws or other laws and policies, have been and may continue to be disruptive and costly to our business.",
-      "why": "2025 macro adds policy instrument specificity.",
+      "paragraph_idx": 3,
+      "snippet": "regulatory oversight and changes, regulatory certification timing, environmental regulations and related impacts, terrorism and related security concerns, aircraft safety incidents, general economic conditions (including inflationary pressures and new or increased tariffs)",
+      "why": "Shows the explicit insertion of certification timing and tariff pressure into the commercial aviation factor set.",
       "node_ids": [
-        "curr_macro"
-      ]
-    },
-    {
-      "year": 2025,
-      "paragraph_idx": 6,
-      "snippet": "Government programs and contracts - Our business is subject to risks from changes in government spending and policies that can adversely affect our business strategy or financial performance, in addition to risks related to regulations and compliance with government contracts.",
-      "why": "2025 broadens government risk scope.",
-      "node_ids": [
-        "curr_gov"
-      ]
-    },
-    {
-      "year": 2025,
-      "paragraph_idx": 7,
-      "snippet": "Climate and environmental factors - Our business and financial performance may be adversely affected by climate and environmental factors, including changes in regulations, customer demand, technologies and extreme weather.",
-      "why": "2025 retitles climate section.",
-      "node_ids": [
-        "curr_climate"
+        "curr_strat_aviation"
       ]
     },
     {
       "year": 2025,
       "paragraph_idx": 8,
       "snippet": "The risk of insufficient availability, or higher cost, of low carbon fuels may compromise the pace and degree of emissions reduction.",
-      "why": "2025 keeps low-carbon fuel dependency.",
+      "why": "Confirms that low-carbon-fuel availability remains a core transition constraint in 2025.",
       "node_ids": [
-        "curr_climate"
+        "curr_strat_policy_climate"
       ]
     },
     {
       "year": 2025,
-      "paragraph_idx": 20,
-      "snippet": "We have experienced, and expect to continue to experience, cyberattacks of varying degrees of sophistication and various cybersecurity incidents, such as distributed denial of service attacks and phishing attacks that resulted in unauthorized access to systems and data.",
-      "why": "2025 adds unauthorized-access wording.",
+      "paragraph_idx": 18,
+      "snippet": "the anticipated significant growth of the LEAP installed base and services in the coming years will require considerable effort and execution to meet the delivery, performance, durability, time on wing and repair turnaround time expectations of customers.",
+      "why": "Focus-signal evidence for LEAP/GE9X installed base services execution with delivery, durability, time on wing, and repair turnaround expectations.",
       "node_ids": [
-        "curr_cyber"
+        "curr_ops_supply_exec"
       ]
     },
     {
       "year": 2025,
       "paragraph_idx": 23,
       "snippet": "Expanding global cybersecurity requirements, such as the Department of War's NIST and Cybersecurity Maturity Model Certification requirements, also impose additional obligations on us and our suppliers, heightening the risk of noncompliance, operational disruptions and regulatory enforcement.",
-      "why": "2025 names cyber compliance frameworks.",
+      "why": "Captures the named CMMC/NIST-related compliance burden and supplier-linked enforcement channel in cyber risk.",
       "node_ids": [
-        "curr_cyber"
+        "curr_ops_cyber"
       ]
     },
     {
       "year": 2025,
-      "paragraph_idx": 29,
-      "snippet": "We are also subject to ongoing tax audits in various jurisdictions, and tax authorities may disagree with positions we have taken and assess additional taxes that could be material.",
-      "why": "2025 makes tax audit disagreement explicit.",
+      "paragraph_idx": 25,
+      "snippet": "Existing or potential customers may delay or cancel plans to purchase our products and services and may not be able to fulfill their obligations to us in a timely fashion or at all as a result of certification delays or production challenges, business deterioration, cash flow shortages or difficulty obtaining funding",
+      "why": "Shows the newly explicit certification-delay and production-challenge channel in customer/counterparty risk.",
       "node_ids": [
-        "curr_reg"
+        "curr_fin_customers"
       ]
     }
   ],
   "lens_divergence": {
     "materially_different": false,
-    "summary": "Only raw-lens inputs were provided in this job; no deboilerplated companion file was supplied, so no filing-grounded cross-lens divergence can be established here."
+    "summary": "Only the raw lens was provided for this job, so divergence between raw and deboilerplated views cannot be evaluated from the allowed inputs."
   },
   "provenance": {
     "input_file": "inputs/pair/GE_2024_2025_10k_item1a_raw_edgar.json",
     "model_provider": "openai",
     "model_name": "GPT-5.3-Codex (Extra High Reasoning, Agent Mode)",
-    "run_label": "2026-03-05_openai_gpt53codex_xhigh_agent_fullsec_real_ge_2024_2025_outline_compare"
+    "run_label": "2026-03-09_openai_gpt53codex_fullsec_real_ge_2024_2025_outline_compare"
   },
   "artifact_id": "llm_outline_compare_runtime"
 }

@@ -38,7 +38,44 @@
     "year_inputs_curr": "inputs/year/WM_2025_10k_item1a_raw_edgar__pair_2024_2025.json"
   },
   "output_targets": {
-    "det_llm_delta_brief_v1": "lab_10k_item1a_2024_2025_det_llm_delta_brief_v1_raw_edgar.json",
-    "det_llm_excerpt_picker_v1": "lab_10k_item1a_2024_2025_det_llm_excerpt_picker_v1_raw_edgar.json"
+    "llm_outline_compare_structured": "lab_llm_outline_compare_structured_10k_item1a_2024_2025_raw_edgar.json",
+    "llm_outline_compare_runtime": "lab_llm_outline_compare_runtime_10k_item1a_2024_2025_raw_edgar.json"
+  },
+  "analysis_expectations": {
+    "focus_signals": [
+      {
+        "id": "wm_healthcare_solutions_execution_deterioration",
+        "priority": "high",
+        "focus_summary": "Surface the 2025 Healthcare Solutions / Stericycle deterioration, especially the ERP, billing, collection, customer-loss, and planned-pricing-delay channel.",
+        "paragraph_hints": {
+          "curr": [
+            9
+          ]
+        },
+        "anchor_groups": [
+          [
+            "Healthcare Solutions",
+            "Stericycle"
+          ],
+          [
+            "ERP",
+            "billing",
+            "collection",
+            "customer loss",
+            "planned pricing increases"
+          ]
+        ],
+        "surface_requirements": {
+          "required_sections": [
+            "material_changes"
+          ],
+          "required_any_of_sections": [
+            "change_mechanisms",
+            "investor_relevance"
+          ],
+          "top_material_change_rank_max": 3
+        }
+      }
+    ]
   }
 }

@@ -1,0 +1,1336 @@
+{
+  "lab_schema_version": "1.0",
+  "artifact_schema_version": "1.0",
+  "ticker": "WM",
+  "section": "10k_item1a",
+  "source_id": "edgar",
+  "cleaning_lens": "deboilerplated",
+  "year_from": 2024,
+  "year_to": 2025,
+  "outline_prev": [
+    {
+      "node_id": "prev_root",
+      "parent_id": null,
+      "level": 1,
+      "order": 0,
+      "label": "WM 2024 Item 1A Risk Factors",
+      "risk_thesis": "The 2024 section frames WM’s risk profile around Stericycle integration, regulated growth spending, labor and commodity volatility, and expanding technology, privacy and renewable-energy execution risk.",
+      "evidence_paragraph_idx": [
+        0,
+        1,
+        5,
+        13,
+        79,
+        128,
+        146
+      ]
+    },
+    {
+      "node_id": "prev_strategy",
+      "parent_id": "prev_root",
+      "level": 2,
+      "order": 1,
+      "label": "Growth strategy, pricing discipline and Stericycle integration",
+      "risk_thesis": "WM warns that pricing discipline, acquisition-led growth and segment expansion can pressure volume, margins, leverage and execution capacity.",
+      "evidence_paragraph_idx": [
+        2,
+        4,
+        5,
+        6,
+        8,
+        10,
+        12
+      ]
+    },
+    {
+      "node_id": "prev_strategy_growth",
+      "parent_id": "prev_strategy",
+      "level": 3,
+      "order": 1,
+      "label": "Acquisitions, indebtedness and execution risk",
+      "risk_thesis": "Acquisitions and planned recycling and renewable-energy expansion may add debt, budget pressure, integration difficulty and permitting delays before earnings improve.",
+      "evidence_paragraph_idx": [
+        5,
+        6,
+        7,
+        8,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "node_id": "prev_strategy_stericycle",
+      "parent_id": "prev_strategy",
+      "level": 3,
+      "order": 2,
+      "label": "Stericycle performance and synergy realization",
+      "risk_thesis": "Stericycle-specific risks center on Healthcare Solutions volumes, ERP and billing disruption, management distraction and uncertain synergy realization.",
+      "evidence_paragraph_idx": [
+        13,
+        14,
+        15,
+        17,
+        18,
+        19,
+        20,
+        21
+      ]
+    },
+    {
+      "node_id": "prev_regulatory",
+      "parent_id": "prev_root",
+      "level": 2,
+      "order": 2,
+      "label": "Regulatory, permitting and operational liability",
+      "risk_thesis": "Environmental, health, safety and trade rules can restrict facilities and services, increase costs and expose WM to penalties or permitting delays.",
+      "evidence_paragraph_idx": [
+        22,
+        23,
+        27,
+        28,
+        30,
+        32,
+        34,
+        35,
+        38,
+        39
+      ]
+    },
+    {
+      "node_id": "prev_regulatory_env",
+      "parent_id": "prev_regulatory",
+      "level": 3,
+      "order": 1,
+      "label": "Environmental, PFAS, EPR and trade-policy change",
+      "risk_thesis": "PFAS, EPR, landfill and trade-policy developments can raise landfill costs, change recycling economics and complicate long-term planning.",
+      "evidence_paragraph_idx": [
+        27,
+        28,
+        33,
+        34,
+        79,
+        87,
+        88,
+        90
+      ]
+    },
+    {
+      "node_id": "prev_regulatory_healthcare",
+      "parent_id": "prev_regulatory",
+      "level": 3,
+      "order": 2,
+      "label": "Healthcare waste, information destruction and incident exposure",
+      "risk_thesis": "The new healthcare and secure-information activities add medical-waste, controlled-substances and data-handling rules plus accident and enforcement exposure.",
+      "evidence_paragraph_idx": [
+        29,
+        30,
+        31,
+        32,
+        35,
+        36,
+        37
+      ]
+    },
+    {
+      "node_id": "prev_people",
+      "parent_id": "prev_root",
+      "level": 2,
+      "order": 3,
+      "label": "Workforce, labor, reputation and sustainability execution",
+      "risk_thesis": "Hiring competition, union pressure, reputation risk and ambitious sustainability execution can all raise costs or disrupt service and strategy.",
+      "evidence_paragraph_idx": [
+        40,
+        43,
+        45,
+        46,
+        52,
+        56,
+        58,
+        71,
+        75
+      ]
+    },
+    {
+      "node_id": "prev_people_workforce",
+      "parent_id": "prev_people",
+      "level": 3,
+      "order": 1,
+      "label": "Hiring, retention and union cost pressure",
+      "risk_thesis": "Front-line driver shortages, digital talent competition and union leverage can increase wage and training costs and slow technology adoption.",
+      "evidence_paragraph_idx": [
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        52,
+        53
+      ]
+    },
+    {
+      "node_id": "prev_people_sustainability",
+      "parent_id": "prev_people",
+      "level": 3,
+      "order": 2,
+      "label": "Sustainability goals, fleet transition and disclosure scrutiny",
+      "risk_thesis": "WM’s emissions goals, recycling and renewable investments, greenwashing scrutiny and fleet-transition mandates may require more capital and may not achieve planned returns on time.",
+      "evidence_paragraph_idx": [
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        75
+      ]
+    },
+    {
+      "node_id": "prev_market",
+      "parent_id": "prev_root",
+      "level": 2,
+      "order": 4,
+      "label": "Commodity, recycling and macro demand volatility",
+      "risk_thesis": "Commodity prices, trade disruption, inflation and customer demand shifts can swing recycling revenue, margins and healthcare-service volumes.",
+      "evidence_paragraph_idx": [
+        76,
+        79,
+        81,
+        82,
+        85,
+        86,
+        87,
+        90,
+        95,
+        99,
+        100,
+        101,
+        103,
+        104,
+        105
+      ]
+    },
+    {
+      "node_id": "prev_market_recycling",
+      "parent_id": "prev_market",
+      "level": 3,
+      "order": 1,
+      "label": "Recycling prices, trade restrictions and waste-flow shifts",
+      "risk_thesis": "Port strikes, tariffs, export restrictions, quality requirements and landfill-diversion rules can cut commodity prices and change landfill and recycling economics.",
+      "evidence_paragraph_idx": [
+        76,
+        79,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        94,
+        98
+      ]
+    },
+    {
+      "node_id": "prev_market_macro",
+      "parent_id": "prev_market",
+      "level": 3,
+      "order": 2,
+      "label": "Macroeconomic, customer credit and healthcare volume sensitivity",
+      "risk_thesis": "Inflation, interest rates, pricing limits, weak consumer goods demand and municipal or customer credit stress can pressure cash flow and service demand.",
+      "evidence_paragraph_idx": [
+        81,
+        82,
+        95,
+        96,
+        97,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105
+      ]
+    },
+    {
+      "node_id": "prev_tech",
+      "parent_id": "prev_root",
+      "level": 2,
+      "order": 5,
+      "label": "Technology, intellectual property and cyber/privacy",
+      "risk_thesis": "Automation and digitalization promise efficiency but expose WM to product-development, IP, cyber and data-protection failures.",
+      "evidence_paragraph_idx": [
+        109,
+        114,
+        120,
+        128,
+        134,
+        136,
+        138,
+        142
+      ]
+    },
+    {
+      "node_id": "prev_tech_innovation",
+      "parent_id": "prev_tech",
+      "level": 3,
+      "order": 1,
+      "label": "Automation, innovation and breakthrough-technology risk",
+      "risk_thesis": "WM’s automation and new-technology investments may be delayed, fail to scale or be leapfrogged by protected competitor technologies.",
+      "evidence_paragraph_idx": [
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119
+      ]
+    },
+    {
+      "node_id": "prev_tech_cyber",
+      "parent_id": "prev_tech",
+      "level": 3,
+      "order": 2,
+      "label": "Cyber intrusion, AI and privacy compliance exposure",
+      "risk_thesis": "Growing dependence on cloud systems and remote access expands cyber, AI-governance, breach-notification and privacy-liability exposure.",
+      "evidence_paragraph_idx": [
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        136,
+        137,
+        138,
+        140,
+        141,
+        142
+      ]
+    },
+    {
+      "node_id": "prev_policy_capital",
+      "parent_id": "prev_root",
+      "level": 2,
+      "order": 6,
+      "label": "Renewable-fuel policy, controls and capital structure",
+      "risk_thesis": "Renewable-energy economics, climate costs, internal-control integration and post-acquisition leverage create additional balance-sheet and reporting risk.",
+      "evidence_paragraph_idx": [
+        146,
+        147,
+        150,
+        151,
+        155,
+        156,
+        160,
+        161,
+        164,
+        166,
+        169,
+        171,
+        173,
+        174,
+        176,
+        177,
+        178
+      ]
+    },
+    {
+      "node_id": "prev_policy_renewable",
+      "parent_id": "prev_policy_capital",
+      "level": 3,
+      "order": 1,
+      "label": "RIN policy, renewable investments and climate extremes",
+      "risk_thesis": "RIN volatility, possible federal target cuts, permitting needs and climate-driven storm damage can delay or reduce returns on renewable-energy projects.",
+      "evidence_paragraph_idx": [
+        146,
+        147,
+        148,
+        149,
+        150,
+        151,
+        152,
+        153,
+        155,
+        156,
+        157,
+        158,
+        160
+      ]
+    },
+    {
+      "node_id": "prev_policy_controls_capital",
+      "parent_id": "prev_policy_capital",
+      "level": 3,
+      "order": 2,
+      "label": "Internal controls, enforcement, leverage and impairment",
+      "risk_thesis": "Stericycle control integration, enforcement matters, borrowing costs, leverage targets and impairment or pension exposures can hurt reporting quality and capital flexibility.",
+      "evidence_paragraph_idx": [
+        161,
+        162,
+        163,
+        164,
+        165,
+        166,
+        167,
+        168,
+        169,
+        170,
+        171,
+        173,
+        174,
+        175,
+        176,
+        177,
+        178
+      ]
+    }
+  ],
+  "outline_curr": [
+    {
+      "node_id": "curr_root",
+      "parent_id": null,
+      "level": 1,
+      "order": 0,
+      "label": "WM 2025 Item 1A Risk Factors",
+      "risk_thesis": "The 2025 section keeps the same broad WM risk map but sharpens enacted trade and renewable-policy pressure, Healthcare Solutions operating friction, and AI-enabled cyber exposure.",
+      "evidence_paragraph_idx": [
+        0,
+        2,
+        8,
+        20,
+        53,
+        84,
+        104,
+        119
+      ]
+    },
+    {
+      "node_id": "curr_strategy",
+      "parent_id": "curr_root",
+      "level": 2,
+      "order": 1,
+      "label": "Growth strategy, integration and acquisition returns",
+      "risk_thesis": "WM continues to frame growth through acquisitions and segment expansion as a leverage and execution tradeoff, with Healthcare Solutions now carrying more specific commercial and systems risk.",
+      "evidence_paragraph_idx": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        7,
+        8,
+        10,
+        11
+      ]
+    },
+    {
+      "node_id": "curr_strategy_growth",
+      "parent_id": "curr_strategy",
+      "level": 3,
+      "order": 1,
+      "label": "Acquisitions, indebtedness and execution risk",
+      "risk_thesis": "Acquisitions and expansion may still add debt and compliance burden, but 2025 stresses missed revenue growth and budget control alongside integration risk.",
+      "evidence_paragraph_idx": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "node_id": "curr_strategy_healthcare",
+      "parent_id": "curr_strategy",
+      "level": 3,
+      "order": 2,
+      "label": "Healthcare Solutions performance, billing friction and synergy realization",
+      "risk_thesis": "Healthcare Solutions risk now explicitly includes ERP-related billing delays, customer loss, delayed pricing realization and continued integration expense.",
+      "evidence_paragraph_idx": [
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    },
+    {
+      "node_id": "curr_regulatory",
+      "parent_id": "curr_root",
+      "level": 2,
+      "order": 2,
+      "label": "Regulatory, permitting and operational liability",
+      "risk_thesis": "WM continues to face broad environmental and operational regulation, with 2025 emphasizing policy reversals, EPR litigation and healthcare-incineration exposure.",
+      "evidence_paragraph_idx": [
+        12,
+        13,
+        15,
+        16,
+        18,
+        20,
+        22,
+        23,
+        26
+      ]
+    },
+    {
+      "node_id": "curr_regulatory_policy",
+      "parent_id": "curr_regulatory",
+      "level": 3,
+      "order": 1,
+      "label": "Environmental, EPR and deregulatory-policy shift",
+      "risk_thesis": "PFAS, EPR rollback risk, deregulatory rulings and foreign-trade policy changes make planning more volatile even where WM has already adapted operations.",
+      "evidence_paragraph_idx": [
+        14,
+        15,
+        16,
+        17,
+        20,
+        21,
+        26,
+        27
+      ]
+    },
+    {
+      "node_id": "curr_regulatory_healthcare",
+      "parent_id": "curr_regulatory",
+      "level": 3,
+      "order": 2,
+      "label": "Healthcare waste, incineration and information-destruction exposure",
+      "risk_thesis": "Healthcare Solutions adds medical-waste transport, incineration and confidential-information handling risk with insurance, scrutiny and penalty exposure.",
+      "evidence_paragraph_idx": [
+        18,
+        19,
+        22,
+        23,
+        24,
+        25
+      ]
+    },
+    {
+      "node_id": "curr_people",
+      "parent_id": "curr_root",
+      "level": 2,
+      "order": 3,
+      "label": "Workforce, labor and sustainability execution",
+      "risk_thesis": "Hiring, compliance with employment rules, union and pension costs, and sustainability execution remain linked to service quality and cost inflation.",
+      "evidence_paragraph_idx": [
+        28,
+        32,
+        33,
+        35,
+        39,
+        40,
+        43,
+        50
+      ]
+    },
+    {
+      "node_id": "curr_people_workforce",
+      "parent_id": "curr_people",
+      "level": 3,
+      "order": 1,
+      "label": "Hiring, retention, employment regulation and pension pressure",
+      "risk_thesis": "2025 broadens workforce risk from labor scarcity alone to include wage-hour and employment-eligibility compliance and explicit Multiemployer Pension Plan withdrawal cost.",
+      "evidence_paragraph_idx": [
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        38
+      ]
+    },
+    {
+      "node_id": "curr_people_sustainability",
+      "parent_id": "curr_people",
+      "level": 3,
+      "order": 2,
+      "label": "Sustainability goals, electric-fleet transition and benefit realization",
+      "risk_thesis": "WM keeps its sustainability-goal execution risk but emphasizes whether investments deliver results and benefits on time and on budget.",
+      "evidence_paragraph_idx": [
+        39,
+        40,
+        41,
+        42,
+        43,
+        45,
+        46,
+        47,
+        48,
+        50
+      ]
+    },
+    {
+      "node_id": "curr_market",
+      "parent_id": "curr_root",
+      "level": 2,
+      "order": 4,
+      "label": "Commodity, recycling and macro demand volatility",
+      "risk_thesis": "2025 converts several 2024 market contingencies into stated pressure from tariffs, weaker commodity prices and softer customer willingness to pay for sustainability offerings.",
+      "evidence_paragraph_idx": [
+        51,
+        53,
+        58,
+        61,
+        64,
+        66,
+        69,
+        71,
+        72
+      ]
+    },
+    {
+      "node_id": "curr_market_recycling",
+      "parent_id": "curr_market",
+      "level": 3,
+      "order": 1,
+      "label": "Recycling prices, tariffs and sustainability-demand softness",
+      "risk_thesis": "Tariffs, weaker export demand, counterpart availability and softer willingness to pay for recycled-content offerings now weigh more directly on recycling economics.",
+      "evidence_paragraph_idx": [
+        53,
+        58,
+        59,
+        61,
+        62,
+        63,
+        64,
+        65,
+        68,
+        69
+      ]
+    },
+    {
+      "node_id": "curr_market_macro",
+      "parent_id": "curr_market",
+      "level": 3,
+      "order": 2,
+      "label": "Macroeconomic, consumer-trend and healthcare volume sensitivity",
+      "risk_thesis": "Major external events, inflation, consumer-priority shifts, municipal financing stress and healthcare-waste volumes remain direct drivers of margin and cash-flow risk.",
+      "evidence_paragraph_idx": [
+        51,
+        52,
+        54,
+        55,
+        66,
+        67,
+        70,
+        71,
+        72,
+        73
+      ]
+    },
+    {
+      "node_id": "curr_tech",
+      "parent_id": "curr_root",
+      "level": 2,
+      "order": 5,
+      "label": "Technology, intellectual property and cyber/privacy",
+      "risk_thesis": "WM retains its innovation and cybersecurity risk themes but adds more explicit AI-governance and privacy-use-case detail.",
+      "evidence_paragraph_idx": [
+        74,
+        75,
+        81,
+        84,
+        87,
+        94,
+        97,
+        100,
+        102
+      ]
+    },
+    {
+      "node_id": "curr_tech_innovation",
+      "parent_id": "curr_tech",
+      "level": 3,
+      "order": 1,
+      "label": "Automation, innovation and breakthrough-technology risk",
+      "risk_thesis": "Strategic technology investment still carries development, scaling, patent-protection and system-implementation risk that could block expected returns.",
+      "evidence_paragraph_idx": [
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        82
+      ]
+    },
+    {
+      "node_id": "curr_tech_cyber",
+      "parent_id": "curr_tech",
+      "level": 3,
+      "order": 2,
+      "label": "Cyber intrusion, AI governance and privacy compliance exposure",
+      "risk_thesis": "2025 tightens the cyber thesis by adding AI-driven attack precision, broader privacy obligations and specific phone, text and email compliance focus.",
+      "evidence_paragraph_idx": [
+        81,
+        83,
+        84,
+        85,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102
+      ]
+    },
+    {
+      "node_id": "curr_policy_capital",
+      "parent_id": "curr_root",
+      "level": 2,
+      "order": 6,
+      "label": "Renewable-fuel policy, controls and capital structure",
+      "risk_thesis": "Renewable-fuel rules, climate extremes, control integration and leverage targets remain a late-section cluster, but 2025 makes policy deterioration and ratings pressure more explicit.",
+      "evidence_paragraph_idx": [
+        104,
+        105,
+        108,
+        109,
+        110,
+        114,
+        115,
+        116,
+        118,
+        119,
+        120,
+        122
+      ]
+    },
+    {
+      "node_id": "curr_policy_renewable",
+      "parent_id": "curr_policy_capital",
+      "level": 3,
+      "order": 1,
+      "label": "RFS policy, renewable investments and climate extremes",
+      "risk_thesis": "WM still depends on renewable-fuel credits and tax incentives, but 2025 now points to retroactive and proposed federal target reductions and small-refinery exemptions.",
+      "evidence_paragraph_idx": [
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        113
+      ]
+    },
+    {
+      "node_id": "curr_policy_controls_capital",
+      "parent_id": "curr_policy_capital",
+      "level": 3,
+      "order": 2,
+      "label": "Internal controls, investigations, leverage and impairment",
+      "risk_thesis": "ERP-linked reporting risk, inherited investigations, leverage-reduction execution and interest-rate exposure define the 2025 control and capital narrative.",
+      "evidence_paragraph_idx": [
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122
+      ]
+    }
+  ],
+  "node_alignment": [
+    {
+      "prev_node_id": "prev_root",
+      "curr_node_id": "curr_root",
+      "change_class": "stable",
+      "rationale": "Both years keep the same broad architecture of strategy/integration, regulation, labor, market volatility, technology and renewable-policy risk, with 2025 mainly sharpening specificity inside that scaffold.",
+      "salience": 0.56
+    },
+    {
+      "prev_node_id": "prev_strategy",
+      "curr_node_id": "curr_strategy",
+      "change_class": "stable",
+      "rationale": "The opening cluster in both years centers on acquisition-led growth and capital diversion, but 2025 ties the same growth thesis more directly to integration returns rather than only expansion ambition.",
+      "salience": 0.63
+    },
+    {
+      "prev_node_id": "prev_strategy_growth",
+      "curr_node_id": "curr_strategy_growth",
+      "change_class": "reworded",
+      "rationale": "Both years warn that acquisitions and expansion may miss earnings timing, but 2025 adds failure to achieve targeted revenue growth and cost control as the mechanism for underperformance.",
+      "salience": 0.66
+    },
+    {
+      "prev_node_id": "prev_strategy_stericycle",
+      "curr_node_id": "curr_strategy_healthcare",
+      "change_class": "intensified",
+      "rationale": "The Stericycle node shifts from general ERP and billing delays in 2024 to explicit Healthcare Solutions billing friction, customer loss and delayed pricing realization in 2025, making the commercial transmission channel clearer.",
+      "salience": 0.89
+    },
+    {
+      "prev_node_id": "prev_regulatory",
+      "curr_node_id": "curr_regulatory",
+      "change_class": "stable",
+      "rationale": "Both years preserve a large regulation-and-liability block, but 2025 concentrates it into fewer paragraphs and gives more weight to enacted policy shifts and rollback risk.",
+      "salience": 0.61
+    },
+    {
+      "prev_node_id": "prev_regulatory_env",
+      "curr_node_id": "curr_regulatory_policy",
+      "change_class": "intensified",
+      "rationale": "2024 described EPR expansion and uncertain federal-policy change, while 2025 adds scaled-back EPR programs, lawsuits, constitutional review and deregulatory rulings, turning policy uncertainty into more concrete planning friction.",
+      "salience": 0.83
+    },
+    {
+      "prev_node_id": "prev_regulatory_healthcare",
+      "curr_node_id": "curr_regulatory_healthcare",
+      "change_class": "reworded",
+      "rationale": "The healthcare-regulation node persists, but 2025 recasts it around actual Healthcare Solutions operating attributes such as incineration and secure information destruction rather than acquisition-entry framing alone.",
+      "salience": 0.67
+    },
+    {
+      "prev_node_id": "prev_people",
+      "curr_node_id": "curr_people",
+      "change_class": "stable",
+      "rationale": "Workforce and sustainability execution remain bundled as operating-cost and execution risks in both years, even though 2025 trims brand-reputation language and adds employment-compliance detail.",
+      "salience": 0.58
+    },
+    {
+      "prev_node_id": "prev_people_workforce",
+      "curr_node_id": "curr_people_workforce",
+      "change_class": "intensified",
+      "rationale": "2024 focused on hiring competition and union leverage, while 2025 adds employment-law compliance and explicit Multiemployer Pension Plan withdrawal cost, widening the labor-cost mechanism.",
+      "salience": 0.72
+    },
+    {
+      "prev_node_id": "prev_people_sustainability",
+      "curr_node_id": "curr_people_sustainability",
+      "change_class": "reworded",
+      "rationale": "Both years warn that sustainability investments may miss timing and budget, but 2025 shifts the emphasis from stated goals and disclosure scrutiny toward realized results and benefits.",
+      "salience": 0.64
+    },
+    {
+      "prev_node_id": "prev_market",
+      "curr_node_id": "curr_market",
+      "change_class": "stable",
+      "rationale": "Market volatility remains a core theme, yet 2025 converts several previously prospective disruptions into stated current pressure on recycling economics and customer demand.",
+      "salience": 0.74
+    },
+    {
+      "prev_node_id": "prev_market_recycling",
+      "curr_node_id": "curr_market_recycling",
+      "change_class": "intensified",
+      "rationale": "The recycling node moves from possible tariff and export downside plus a 2024 upswing to 2025 statements that restrictions and tariffs have a negative impact and that some customers are less willing to pay premium sustainability prices.",
+      "salience": 0.92
+    },
+    {
+      "prev_node_id": "prev_market_macro",
+      "curr_node_id": "curr_market_macro",
+      "change_class": "intensified",
+      "rationale": "Macroeconomic sensitivity persists in both years, but 2025 adds consumer-priority changes and ongoing financing pressure, making revenue and margin transmission channels more explicit.",
+      "salience": 0.76
+    },
+    {
+      "prev_node_id": "prev_tech",
+      "curr_node_id": "curr_tech",
+      "change_class": "stable",
+      "rationale": "Technology risk stays split between innovation upside and cyber/privacy downside, with 2025 mainly sharpening AI and privacy specifics rather than changing the node’s role.",
+      "salience": 0.6
+    },
+    {
+      "prev_node_id": "prev_tech_innovation",
+      "curr_node_id": "curr_tech_innovation",
+      "change_class": "stable",
+      "rationale": "Both years keep the same innovation thesis: automation and new-service investments may fail to scale or be outcompeted despite ongoing spending.",
+      "salience": 0.54
+    },
+    {
+      "prev_node_id": "prev_tech_cyber",
+      "curr_node_id": "curr_tech_cyber",
+      "change_class": "intensified",
+      "rationale": "2025 preserves the breach and privacy framework from 2024 but adds AI as a force that increases the likelihood and precision of cyber incidents and names a new phone-text-email compliance focus.",
+      "salience": 0.81
+    },
+    {
+      "prev_node_id": "prev_policy_capital",
+      "curr_node_id": "curr_policy_capital",
+      "change_class": "stable",
+      "rationale": "The closing cluster remains a mix of renewable-policy, reporting-control and leverage risk, though 2025 states some policy setbacks and ratings consequences more directly.",
+      "salience": 0.71
+    },
+    {
+      "prev_node_id": "prev_policy_renewable",
+      "curr_node_id": "curr_policy_renewable",
+      "change_class": "intensified",
+      "rationale": "2024 warned the administration could reduce renewable targets, while 2025 states that blending volumes were retroactively lowered, future targets reduced and exemptions granted, increasing direct policy downside for project economics.",
+      "salience": 0.95
+    },
+    {
+      "prev_node_id": "prev_policy_controls_capital",
+      "curr_node_id": "curr_policy_controls_capital",
+      "change_class": "intensified",
+      "rationale": "The control-and-capital node shifts from a temporary ICFR exclusion and leverage target statement in 2024 to ERP-linked reporting risk and potential credit-rating pressure in 2025.",
+      "salience": 0.78
+    }
+  ],
+  "material_changes": [
+    {
+      "id": "mc_1",
+      "title": "RFS program 'retroactively lowered 2024 blending volumes'",
+      "change_class": "intensified",
+      "salience": 0.95,
+      "caveat": "Caveat: the 2024 citation states only that the administration could seek lower targets, while the 2025 citation names actual and proposed rule outcomes; the filing still does not quantify project-by-project RIN sensitivity or EBITDA impact.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 146
+        },
+        {
+          "year": 2024,
+          "paragraph_idx": 151
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 104
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 109
+        }
+      ]
+    },
+    {
+      "id": "mc_2",
+      "title": "Trade restrictions 'have a negative impact' and commodity prices turned down in 2025",
+      "change_class": "intensified",
+      "salience": 0.92,
+      "caveat": "Caveat: the 2024 evidence speaks in downside-possibility terms and uses a 2024 positive commodity benchmark, while the 2025 evidence states current impact but does not isolate how much of the decline comes from tariffs versus broader demand weakness.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 79
+        },
+        {
+          "year": 2024,
+          "paragraph_idx": 86
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 53
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 59
+        }
+      ]
+    },
+    {
+      "id": "mc_3",
+      "title": "Healthcare Solutions 'ERP' system, 'billing and collection issues and delays,' and 'customer loss'",
+      "change_class": "intensified",
+      "salience": 0.88,
+      "caveat": "Caveat: the 2024 evidence already mentioned ERP implementation and billing delays, so the change is a specificity expansion rather than a brand-new risk; neither year provides churn or receivables metrics to measure the size of the problem.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 14
+        },
+        {
+          "year": 2024,
+          "paragraph_idx": 15
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 8
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 9
+        }
+      ]
+    },
+    {
+      "id": "mc_4",
+      "title": "Some customers show a 'decreased willingness to pay premium prices'",
+      "change_class": "added",
+      "salience": 0.78,
+      "caveat": "Caveat: this is tagged as added because the supplied 2024 filing text does not make the same explicit willingness-to-pay point; that does not prove the commercial pressure was absent in 2024, only that it was not stated in the cited paragraphs.",
+      "evidence_refs": [
+        {
+          "year": 2025,
+          "paragraph_idx": 69
+        }
+      ]
+    },
+    {
+      "id": "mc_5",
+      "title": "EPR programs may be 'scale back previously enacted' and face 'constitutional review'",
+      "change_class": "intensified",
+      "salience": 0.71,
+      "caveat": "Caveat: the 2024 and 2025 paragraphs are both high-level policy summaries, so the intensity judgment comes from newly stated rollback and litigation language, not from facility-level permit or revenue evidence.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 28
+        },
+        {
+          "year": 2024,
+          "paragraph_idx": 34
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 16
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 17
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 21
+        }
+      ]
+    },
+    {
+      "id": "mc_6",
+      "title": "Artificial intelligence can increase the 'risk, likelihood and precision of cyber incidents'",
+      "change_class": "intensified",
+      "salience": 0.64,
+      "caveat": "Caveat: the 2024 filing already described increasingly sophisticated intrusions and cross-border notification pressure, so the 2025 change is the explicit AI-enabled attack mechanism and new compliance focus, not proof of a disclosed incident increase.",
+      "evidence_refs": [
+        {
+          "year": 2024,
+          "paragraph_idx": 128
+        },
+        {
+          "year": 2024,
+          "paragraph_idx": 134
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 84
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 88
+        },
+        {
+          "year": 2025,
+          "paragraph_idx": 99
+        }
+      ]
+    }
+  ],
+  "evidence_bank": [
+    {
+      "year": 2024,
+      "paragraph_idx": 14,
+      "snippet": "disruptions resulting from deployment of systems, including with respect to the implementation of Stericycle’s enterprise resource planning system and billing and collection delays that Stericycle has experienced following the launch of such system upgrade;",
+      "why": "2024 baseline for Stericycle integration risk, centered on system deployment and billing delays rather than explicit customer attrition.",
+      "node_ids": [
+        "prev_strategy_stericycle",
+        "prev_policy_controls_capital"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 15,
+      "snippet": "Should the Stericycle business be unsuccessful in achieving financial and operational targets and implementing the WM Healthcare Solutions business strategy, it could negatively impact our realization of benefits from the acquisition, as well as our stock price and our future business and financial results.",
+      "why": "2024 statement tying Stericycle operating underperformance to acquisition-benefit realization and stock-price risk.",
+      "node_ids": [
+        "prev_strategy_stericycle"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 28,
+      "snippet": "Regulations establishing extended producer responsibility (“EPR”) are being considered or implemented in many places around the world, including in certain states in the U.S. and provinces in Canada.",
+      "why": "2024 baseline showing EPR as an expansionary regulatory theme rather than a rollback or litigation theme.",
+      "node_ids": [
+        "prev_regulatory_env"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 34,
+      "snippet": "We do not know what impact the change in U.S. presidential administration will have on specific regulatory policies impacting our industry and our Company, especially given the number of rules currently in litigation, nor can we predict the timing of any such changes.",
+      "why": "2024 statement that administration-driven regulatory change was uncertain in content and timing.",
+      "node_ids": [
+        "prev_regulatory_env"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 79,
+      "snippet": "Significant new restrictions and tariffs on foreign trade could have a negative impact on our recycling export business and our cross-border commerce, particularly with Canada,",
+      "why": "2024 framing of tariffs and trade restrictions as downside possibilities for recycling exports and cross-border commerce.",
+      "node_ids": [
+        "prev_market_recycling",
+        "prev_regulatory_env"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 86,
+      "snippet": "The increase in market prices in 2024 for recyclable commodities resulted in a year-over-year increase in revenue of $245 million, and the decline in market prices in 2023 for recyclable commodities resulted in a year-over-year decrease in revenue of $308 million.",
+      "why": "2024 commodity-price benchmark showing prior positive revenue swing in recyclable commodities.",
+      "node_ids": [
+        "prev_market_recycling"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 128,
+      "snippet": "We are regularly the target of attempted cyber intrusions, have experienced cyber intrusions, and we anticipate continuing to be subject to such attempts as cyber intrusions become increasingly sophisticated and more difficult to predict and protect against.",
+      "why": "2024 baseline cyber statement emphasizing persistent and increasingly sophisticated intrusions.",
+      "node_ids": [
+        "prev_tech_cyber"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 134,
+      "snippet": "short notification deadlines in international jurisdictions in the event of a significant cybersecurity incident that impacts us globally; it may not be possible for us to comply with such notification deadlines due to the time required to conduct investigations and assess the impact of such incident.",
+      "why": "2024 international cyber-notification exposure linked to Stericycle integration.",
+      "node_ids": [
+        "prev_tech_cyber"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 146,
+      "snippet": "Our sustainability growth strategy includes significant planned and ongoing investments in our WM Renewable Energy segment; changes to federal and state renewable fuel policies could affect our financial performance, and such investments may not yield the results anticipated.",
+      "why": "2024 umbrella statement that renewable-fuel policy changes could affect WM Renewable Energy returns.",
+      "node_ids": [
+        "prev_policy_renewable"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 151,
+      "snippet": "The new U.S. presidential administration could seek to reduce existing renewable fuel targets in a new rulemaking or otherwise set reduced targets for renewable fuels under the RFS program in future rulemakings.",
+      "why": "2024 policy wording framed target cuts as something the new administration could seek in future rulemakings.",
+      "node_ids": [
+        "prev_policy_renewable"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 161,
+      "snippet": "Controls and Procedures, in accordance with SEC staff guidance, we have excluded Stericycle from the assessment of the effectiveness of our internal control over financial reporting as of December 31, 2024 contained in this Annual Report on Form 10-K; however, this exclusion may not extend beyond one year from the November 4, 2024 closing date.",
+      "why": "2024 control-risk baseline showing Stericycle was excluded from ICFR effectiveness assessment on a temporary basis.",
+      "node_ids": [
+        "prev_policy_controls_capital"
+      ]
+    },
+    {
+      "year": 2024,
+      "paragraph_idx": 173,
+      "snippet": "We have communicated the Company’s expectation that our leverage will return to targeted levels about 18 months after the November 2024 acquisition of Stericycle.",
+      "why": "2024 leverage baseline describing management’s target to return leverage to planned levels after the acquisition.",
+      "node_ids": [
+        "prev_policy_controls_capital"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 8,
+      "snippet": "disruptions resulting from deployment of operational or technological systems, including with respect to Healthcare Solution’s enterprise resource planning (“ERP”) system and related billing and collection issues and delays; customer loss resulting from frustration due to billing or service issues;",
+      "why": "2025 sharpens Healthcare Solutions integration risk with ERP, billing delays and explicit customer loss from service friction.",
+      "node_ids": [
+        "curr_strategy_healthcare"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 9,
+      "snippet": "If we are unsuccessful in achieving financial and operational targets and implementing the Healthcare Solutions business strategy, it could negatively impact our realization of benefits from the acquisition, as well as our stock price and our future business and financial results.",
+      "why": "2025 statement connecting Healthcare Solutions underperformance to acquisition-benefit realization and future financial results.",
+      "node_ids": [
+        "curr_strategy_healthcare"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 16,
+      "snippet": "affordability have led some jurisdictions to scale back previously enacted EPR requirements, and certain programs have faced lawsuits and potential constitutional review, creating uncertainty for long-term planning.",
+      "why": "2025 adds scale-back, lawsuit and constitutional-review language to the EPR discussion.",
+      "node_ids": [
+        "curr_regulatory_policy"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 17,
+      "snippet": "Conversely, changes in program requirements or deregulatory rulings in jurisdictions where we have adapted to meet customer demand could affect our operations, financial condition or results of operations.",
+      "why": "2025 adds deregulatory-ruling risk in places where WM already adapted operations to prior requirements.",
+      "node_ids": [
+        "curr_regulatory_policy"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 21,
+      "snippet": "The impact and timing of these shifts in regulatory policy impacting our industry and our Company remain uncertain, as many are subject to ongoing litigation and agency review.",
+      "why": "2025 keeps timing uncertainty but only after describing implemented policy shifts.",
+      "node_ids": [
+        "curr_regulatory_policy"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 53,
+      "snippet": "Significant restrictions and tariffs on foreign trade have a negative impact on our recycling export business and our cross-border commerce, particularly with Canada, decrease paper mills’ demand for recycled corrugated cardboard used in packaging",
+      "why": "2025 turns tariffs from a possibility into a stated current drag on recycling exports and downstream paper-mill demand.",
+      "node_ids": [
+        "curr_market_recycling"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 59,
+      "snippet": "The decline in market prices in 2025 for recyclable commodities resulted in a year-over-year decrease in revenue of $166 million, and",
+      "why": "2025 commodity-price evidence showing a negative year-over-year recycling revenue movement in 2025.",
+      "node_ids": [
+        "curr_market_recycling"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 69,
+      "snippet": "While sustainability remains a priority for many customers, we have observed a shift in prioritization by some companies with respect to sustainability objectives, including a decreased willingness to pay premium prices for recycled materials or enhanced sustainability solutions, which impacts demand for, and viability of, some of our offerings.",
+      "why": "2025 adds explicit customer willingness-to-pay weakness for recycled materials and enhanced sustainability solutions.",
+      "node_ids": [
+        "curr_market_recycling",
+        "curr_market_macro"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 84,
+      "snippet": "Artificial intelligence technologies are subject to a variety of laws and compliance risk, including intellectual property, data protection and privacy, cybersecurity, consumer protection, competition, and equal opportunity laws, and are expected to be subject to increased regulation and new laws or new applications of existing laws.",
+      "why": "2025 preserves the AI governance and compliance frame within the cyber/privacy cluster.",
+      "node_ids": [
+        "curr_tech_cyber"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 88,
+      "snippet": "Technological advancements, including the progression of the capabilities of artificial intelligence, also increase the risk, likelihood and precision of cyber incidents.",
+      "why": "2025 adds the specific mechanism that AI capability growth increases the likelihood and precision of cyber incidents.",
+      "node_ids": [
+        "curr_tech_cyber"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 99,
+      "snippet": "One recent focus area involves the use of phone, text and email information for sales, marketing and other business purposes.",
+      "why": "2025 names phone, text and email uses as a concrete new privacy compliance focus area.",
+      "node_ids": [
+        "curr_tech_cyber"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 104,
+      "snippet": "Changes to federal and state renewable fuel policies could affect the financial performance of our Renewable Energy segment.",
+      "why": "2025 renewable-energy umbrella statement paralleling the 2024 policy-risk baseline.",
+      "node_ids": [
+        "curr_policy_renewable"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 109,
+      "snippet": "retroactively lowered 2024 blending volumes, proposed reductions for 2025, set low targets for 2026–2027 and begun to grant small refinery exemptions from RFS program requirements.",
+      "why": "2025 specifies actual and proposed RFS target reductions and exemptions rather than only possible future policy change.",
+      "node_ids": [
+        "curr_policy_renewable"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 115,
+      "snippet": "including issues related to Stericycle’s ERP system or difficulties integrating Stericycle’s operations and systems into our system of internal control over financial reporting, and if we are unable to correct any issues encountered in a timely manner, our ability to record, process, summarize, and report financial data may be adversely affected",
+      "why": "2025 control-risk language directly links Stericycle ERP issues to financial reporting disruption.",
+      "node_ids": [
+        "curr_policy_controls_capital",
+        "curr_strategy_healthcare"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 119,
+      "snippet": "If we do not achieve our projected reduction in leverage following our acquisition of Stericycle, it could negatively impact our credit ratings.",
+      "why": "2025 adds explicit credit-rating downside if leverage reduction after the acquisition misses projections.",
+      "node_ids": [
+        "curr_policy_controls_capital"
+      ]
+    },
+    {
+      "year": 2025,
+      "paragraph_idx": 120,
+      "snippet": "We have $2.9 billion of debt as of December 31, 2025 that is exposed to changes in market interest rates within the next 12 months, associated with our commercial paper borrowings and tax-exempt bonds.",
+      "why": "2025 quantifies current debt exposure to interest-rate changes within the next twelve months.",
+      "node_ids": [
+        "curr_policy_controls_capital"
+      ]
+    }
+  ],
+  "lens_divergence": {
+    "materially_different": false,
+    "summary": "Only the deboilerplated lens is present in the supplied inputs. Because no paired raw or alternate-lens artifact was provided, there is no filing-text basis inside this job to mark lens-level divergence."
+  },
+  "provenance": {
+    "input_file": "inputs/pair/WM_2024_2025_10k_item1a_deboilerplated_edgar.json",
+    "model_provider": "openai",
+    "model_name": "ChatGPT 5.4-Thinking (Extended Thinking)",
+    "run_label": "2026-03-06_openai_chatgpt54ext_fullsec_real_wm_2024_2025_outline_compare"
+  },
+  "artifact_id": "llm_outline_compare_runtime"
+}
