@@ -179,15 +179,10 @@ function normalizeInputPath(pathValue: string): string | null {
     if (bundleTail.startsWith("inputs/")) {
       return withBase(`data/sec_narrative_drift_lab/llm_inputs_v2/${bundleTail}`)
     }
-    const filename = bundleTail.split("/").pop()
-    if (!filename) return null
-    return withBase(`data/sec_narrative_drift_lab/llm_inputs/${filename}`)
+    return null
   }
   if (normalized.startsWith("inputs/")) {
     return withBase(`data/sec_narrative_drift_lab/llm_inputs_v2/${normalized}`)
-  }
-  if (!normalized.includes("/")) {
-    return withBase(`data/sec_narrative_drift_lab/llm_inputs/${normalized}`)
   }
   return withBase(`data/sec_narrative_drift_lab/${normalized}`)
 }

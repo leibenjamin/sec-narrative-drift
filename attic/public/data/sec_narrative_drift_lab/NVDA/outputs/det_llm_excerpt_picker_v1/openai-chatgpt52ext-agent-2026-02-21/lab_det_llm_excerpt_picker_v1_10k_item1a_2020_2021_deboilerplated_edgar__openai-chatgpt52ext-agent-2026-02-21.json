@@ -1,0 +1,121 @@
+﻿{
+"lab_schema_version": "1.0",
+"detector_id": "det_llm_excerpt_picker_v1",
+"cleaning_lens": "deboilerplated",
+"source_id": "edgar",
+"ticker": "NVDA",
+"section": "10k_item1a",
+"year_from": 2020,
+"year_to": 2021,
+"artifacts": {
+"selected_prev": [
+7,
+15,
+24,
+56
+],
+"selected_curr": [
+17,
+34,
+68,
+138
+]
+},
+"evidence": [
+{
+"year": 2020,
+"paragraph_idx": 7,
+"snippet": "a lack of guaranteed supply of wafers and other components and potential higher wafer and component prices due to supply constraints;",
+"why": "Anchors the core supply-side fragility: NVDA depends on upstream wafer/component availability and pricing, making execution sensitive to external capacity constraints.",
+"highlights": [
+"supply chain",
+"foundry capacity"
+]
+},
+{
+"year": 2020,
+"paragraph_idx": 15,
+"snippet": "Our products are complex and may contain defects or security vulnerabilities, or experience failures or unsatisfactory performance due to any number of issues in design, fabrication, packaging, materials and/or use within a system.",
+"why": "Captures product-quality and security exposure: complexity creates latent defect and vulnerability risk that can cascade into costs, reputational damage, and lost design wins.",
+"highlights": [
+"product quality",
+"security vulnerabilities"
+]
+},
+{
+"year": 2020,
+"paragraph_idx": 24,
+"snippet": "In January 2020, a novel strain of coronavirus was identified in China, resulting in shutdowns of manufacturing and commerce, as well as global travel restrictions to contain the virus.",
+"why": "Introduces the pandemic as an operational shock vector, tying macro public-health events to manufacturing continuity and logistics disruption.",
+"highlights": [
+"COVID-19",
+"operations disruption"
+]
+},
+{
+"year": 2020,
+"paragraph_idx": 56,
+"snippet": "For example, multiple securities litigation claims have recently been filed against us and certain of our officers based on the dissemination of allegedly false and misleading statements related to channel inventory and the impact of cryptocurrency mining on GPU demand.",
+"why": "Shows litigation risk tied to demand drivers and disclosure: channel inventory dynamics and cryptocurrency mining can trigger claims that amplify financial and reputational downside.",
+"highlights": [
+"litigation",
+"cryptocurrency"
+]
+},
+{
+"year": 2021,
+"paragraph_idx": 17,
+"snippet": "• a lack of guaranteed supply of wafers and other components and potential higher wafer and component prices, which could be impacted by our failure to correctly estimate demand and to place orders with our suppliers in sufficient quantities and/or in a timely manner;",
+"why": "Evolves the same supply constraint into an execution narrative: the risk is not only external shortage, but also internal demand estimation and ordering discipline that affects availability and cost.",
+"highlights": [
+"supply chain",
+"demand forecasting"
+]
+},
+{
+"year": 2021,
+"paragraph_idx": 34,
+"snippet": "Changes to cryptocurrency standards and processes including, but not limited to, the pending Ethereum 2.0 standard may also create increased aftermarket resales of our GPUs and may reduce demand for our new GPUs.",
+"why": "Adds a specific mechanism for crypto-linked demand volatility: protocol shifts can move demand from new GPUs to resale markets, pressuring forecast accuracy and sell-through.",
+"highlights": [
+"cryptocurrency",
+"demand volatility"
+]
+},
+{
+"year": 2021,
+"paragraph_idx": 68,
+"snippet": "A recession or financial market correction resulting from the lack of containment and spread of COVID-19 could impact overall technology spending, adversely affecting demand for our products, our business and the value of our common stock.",
+"why": "Connects COVID-19 to second-order macro effects: containment failure can translate into recessionary pressure that reduces tech spending and product demand.",
+"highlights": [
+"COVID-19",
+"demand risk"
+]
+},
+{
+"year": 2021,
+"paragraph_idx": 138,
+"snippet": "For example, we are currently defending ourselves in a shareholder lawsuit claiming that we and certain of our officers made false and/or misleading statements related to channel inventory and the impact of cryptocurrency mining on GPU demand in 2017 and 2018.",
+"why": "Updates litigation posture from recently filed claims to active defense, reinforcing that disclosure and crypto-driven demand narratives can persist as multi-year legal exposure.",
+"highlights": [
+"litigation",
+"cryptocurrency"
+]
+}
+],
+"metrics": {
+"drift_score": null,
+"confidence": 0.5,
+"coverage": null,
+"warnings": [
+"Focuspack is a subset; verify in full compare pane.",
+"Excerpts emphasize trigger-dense paragraphs and may underrepresent other risk themes in the full filing."
+]
+},
+"provenance": {
+"input_file": "inputs/NVDA_2020_2021_focuspack_deboilerplated.json",
+"model_provider": "openai",
+"model_name": "ChatGPT 5.2-Thinking (Extended Thinking)",
+"run_label":"2026-02-21_sec_narrative_drift_lab"
+}
+}

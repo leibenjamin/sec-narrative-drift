@@ -274,10 +274,7 @@ def parse_lab_output(path: Path) -> Optional[LabOutputRecord]:
 
 def parse_input_record(path: Path) -> Optional[InputRecord]:
     rel_path = path.relative_to(LAB_ROOT).as_posix()
-    if not (
-        rel_path.startswith("llm_inputs/")
-        or rel_path.startswith("llm_inputs_v2/inputs/pair/")
-    ):
+    if not rel_path.startswith("llm_inputs_v2/inputs/pair/"):
         return None
 
     payload = read_json(path)
@@ -322,10 +319,7 @@ def source_priority(rel_path: str, ticker: str) -> tuple[int, str]:
         return (0, rel_path)
     if rel_path.startswith(f"{ticker}/"):
         return (1, rel_path)
-    # Legacy queue-style path support retained for archive compatibility only.
-    if rel_path.startswith("llm_outputs/"):
-        return (2, rel_path)
-    return (3, rel_path)
+    return (2, rel_path)
 
 
 def sha256_file(path: Path) -> str:
@@ -507,17 +501,15 @@ def normalize_input_url(path_value: str) -> Optional[str]:
     if normalized.startswith("public/"):
         return normalized[len("public/") :]
     if normalized.startswith("bundles/"):
-        basename = normalized.split("/")[-1]
-        if not basename:
+        bundle_parts = normalized.split("/", 2)
+        if len(bundle_parts) < 3:
             return None
-        return f"data/sec_narrative_drift_lab/llm_inputs/{basename}"
+        remainder = bundle_parts[2]
+        if not remainder.startswith("inputs/"):
+            return None
+        return f"data/sec_narrative_drift_lab/llm_inputs_v2/{remainder}"
     if normalized.startswith("inputs/"):
-        basename = normalized.split("/")[-1]
-        if not basename:
-            return None
-        return f"data/sec_narrative_drift_lab/llm_inputs/{basename}"
-    if "/" not in normalized:
-        return f"data/sec_narrative_drift_lab/llm_inputs/{normalized}"
+        return f"data/sec_narrative_drift_lab/llm_inputs_v2/{normalized}"
     return f"data/sec_narrative_drift_lab/{normalized}"
 
 

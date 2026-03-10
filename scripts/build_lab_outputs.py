@@ -30,8 +30,6 @@ DEFAULT_DETECTORS = [
     "det_winnowing_fingerprint_v1",
     "det_structure_artifacts_v1",
     "det_rbo_agreement_v1",
-    "det_llm_delta_brief_v1",
-    "det_llm_excerpt_picker_v1",
 ]
 
 RAW_LENS = "raw"
@@ -1551,27 +1549,10 @@ def main(argv: Optional[list[str]] = None) -> int:
     }
     write_json(out_dir / "lab_cases_v1.json", registry_payload)
 
-    summary_payload = {
-        "build_utc": build_utc,
-        "git_commit": get_git_commit(),
-        "script_version": SCRIPT_VERSION,
-        "source_id": args.source,
-        "lenses": lenses,
-        "detectors": detectors,
-        "cases_planned": len(cases),
-        "cases_written": len(registry_entries),
-        "outputs_written": outputs_written,
-        "outputs_linked": outputs_linked,
-        "outputs_total": outputs_written + outputs_linked,
-        "registry": "lab_cases_v1.json",
-        "notes": ["Build complete marker."],
-    }
-    write_json(out_dir / "lab_build_complete.json", summary_payload)
-
     print(
         "Lab build complete. "
         f"cases={len(registry_entries)} outputs_written={outputs_written} "
-        f"outputs_linked={outputs_linked} marker=lab_build_complete.json"
+        f"outputs_linked={outputs_linked}"
     )
     return 0
 
