@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react"
+﻿import { useEffect, useMemo, useRef, useState } from "react"
 import AgreementMatrix from "./AgreementMatrix"
 import CleaningLensToggle from "./CleaningLensToggle"
 import MethodCard from "./MethodCard"
@@ -43,36 +43,41 @@ import type {
 const DETECTOR_CATALOG = [
   {
     id: "det_logodds_terms_v1",
-    label: "Log-odds terms",
-    description: "Which specific risk terms were elevated or dropped compared to the prior year.",
+    label: "What language moved most?",
+    technicalLabel: "Log-odds terms",
+    description: "Ranks the specific risk terms that rose or fell most between filing years.",
     group: "core",
     defaultSelected: true,
   },
   {
     id: "det_jsd_ngrams_v1",
-    label: "JSD n-grams",
-    description: "How much the overall risk language distribution shifted between filing years.",
+    label: "How much did the distribution shift?",
+    technicalLabel: "JSD n-grams",
+    description: "Measures how far the overall Item 1A language distribution moved year over year.",
     group: "core",
     defaultSelected: true,
   },
   {
     id: "det_minhash_boilerplate_v1",
-    label: "Minhash boilerplate",
-    description: "How much of the risk section is recycled boilerplate vs. genuinely new disclosure.",
+    label: "How much language was reused?",
+    technicalLabel: "Minhash boilerplate",
+    description: "Estimates how much of the risk section still behaves like recycled boilerplate.",
     group: "structure",
     defaultSelected: true,
   },
   {
     id: "det_winnowing_fingerprint_v1",
-    label: "Winnowing fingerprints",
-    description: "Exact text spans that carried over unchanged, revealing structural continuity.",
+    label: "Which exact spans carried over?",
+    technicalLabel: "Winnowing fingerprints",
+    description: "Surfaces exact reused spans so continuity is visible instead of inferred.",
     group: "structure",
     defaultSelected: true,
   },
   {
     id: "det_structure_artifacts_v1",
-    label: "Structure artifacts",
-    description: "Heading reorganizations and section-length changes that may signal disclosure restructuring.",
+    label: "Where did the structure change?",
+    technicalLabel: "Structure artifacts",
+    description: "Highlights heading moves and section-shape changes that alter how the filing is organized.",
     group: "structure",
     defaultSelected: true,
   },
@@ -90,8 +95,8 @@ const TECHNICAL_DEEP_DIVE_PRESET = [
   "det_structure_artifacts_v1",
 ]
 const DETECTOR_GROUP_ORDER = [
-  { id: "core", label: "Core drift analysis" },
-  { id: "structure", label: "Reuse and structural change" },
+  { id: "core", label: "What changed most" },
+  { id: "structure", label: "Structure and reuse" },
 ] as const
 const METHOD_GROUP_SECTION_IDS: Record<(typeof DETECTOR_GROUP_ORDER)[number]["id"], string> = {
   core: "lab-core-methods",
@@ -117,15 +122,6 @@ function buildCardExpansionKey(scopeKey: string, cardKey: string): string {
 
 function buildCaseKey(caseItem: LabCase): string {
   return `${caseItem.year_from}-${caseItem.year_to}`
-}
-
-function hasSameDetectorSelection(left: string[], right: string[]): boolean {
-  if (left.length !== right.length) return false
-  const rightSet = new Set(right)
-  for (const value of left) {
-    if (!rightSet.has(value)) return false
-  }
-  return true
 }
 
 function findCaseKeyByPair(cases: LabCase[], pair: { from: number; to: number }): string | null {
@@ -248,7 +244,6 @@ export default function LabPanel({
   onSelectedLlmCampaignsChange,
 }: LabPanelProps) {
   const syncedPairKeyRef = useRef<string | null>(null)
-  const [presetTokenCounter, setPresetTokenCounter] = useState(0)
   const [cases, setCases] = useState<LabCase[]>([])
   const [isLoadingCases, setIsLoadingCases] = useState(true)
   const [caseError, setCaseError] = useState<string | null>(null)
@@ -891,12 +886,9 @@ export default function LabPanel({
         }
       }
 
-      const firstCoreCardKey = methodCards.find((card) => card.group === "core")?.cardKey ?? null
-
       for (const card of methodCards) {
         const scopedKey = buildCardExpansionKey(expansionScopeKey, card.cardKey)
-        const defaultExpanded =
-          analysisMode === "executive" ? true : card.cardKey === firstCoreCardKey
+        const defaultExpanded = analysisMode === "deep" ? true : card.group === "core"
         next[scopedKey] = defaultExpanded
       }
 
@@ -946,6 +938,9 @@ export default function LabPanel({
     () => llmCampaignOptions.find((campaign) => campaign.campaign_id === selectedLlmCampaignB) ?? null,
     [llmCampaignOptions, selectedLlmCampaignB]
   )
+
+  const selectedCampaignLabelA = selectedCampaignA?.display_name ?? selectedLlmCampaignA ?? ""
+  const selectedCampaignLabelB = selectedCampaignB?.display_name ?? selectedLlmCampaignB ?? ""
 
   const detectorGroups = useMemo(() => {
     return DETECTOR_GROUP_ORDER.map((group) => ({
@@ -1120,12 +1115,12 @@ export default function LabPanel({
       <div className="rounded-lg border border-white/10 bg-white/5 p-4 text-sm text-slate-200">
         <h3 className="text-sm font-semibold text-slate-100">How to read this page</h3>
         <p className="mt-2 text-xs text-slate-300">
-          Below you'll find the results of multiple independent analytical methods applied
-          to adjacent years of 10-K Item 1A risk disclosures. Each method surfaces different
-          dimensions of narrative change — from specific term shifts to structural reorganization
-          to AI-generated summaries. The <strong className="text-slate-100">Insight Lens</strong> at
-          the top provides an executive digest, and the <strong className="text-slate-100">agreement
-          matrix</strong> shows where methods converge.
+          Below you'll find multiple independent analytical methods applied to adjacent years of
+          10-K Item 1A risk disclosures. Each method surfaces a different dimension of narrative
+          change, from specific term shifts to reuse patterns and structural reorganization. Start
+          with the <strong className="text-slate-100">risk narrative summary</strong>, then use the{" "}
+          <strong className="text-slate-100">agreement matrix</strong> to see where methods
+          converge before drilling into outline compare details.
         </p>
         <p className="mt-2 text-xs text-slate-400">
           The default "deboilerplated" lens strips recurring legal boilerplate for the
@@ -1191,7 +1186,7 @@ export default function LabPanel({
 
           <div className="grid gap-3 md:grid-cols-2">
             <div>
-              <div className="text-sm uppercase tracking-wide text-slate-400">Model A (LLM)</div>
+              <div className="text-sm uppercase tracking-wide text-slate-400">Compare campaign A</div>
               <select
                 value={selectedLlmCampaignA}
                 onChange={(event) => setSelectedLlmCampaignA(event.target.value)}
@@ -1205,7 +1200,7 @@ export default function LabPanel({
               </select>
             </div>
             <div>
-              <div className="text-sm uppercase tracking-wide text-slate-400">Model B (LLM)</div>
+              <div className="text-sm uppercase tracking-wide text-slate-400">Compare campaign B</div>
               <select
                 value={selectedLlmCampaignB}
                 onChange={(event) => setSelectedLlmCampaignB(event.target.value)}
@@ -1228,7 +1223,7 @@ export default function LabPanel({
 
           <div className="rounded-md border border-sky-300/20 bg-sky-400/10 px-3 py-2 text-sm text-slate-100">
             <div className="flex flex-wrap items-center justify-between gap-2">
-              <div className="font-medium text-sky-100">AI model comparison</div>
+              <div className="font-medium text-sky-100">Compare campaigns</div>
               <a
                 className="text-xs text-sky-200 underline decoration-sky-300/60 underline-offset-2 hover:text-sky-100"
                 href="#lab-outline-compare"
@@ -1237,15 +1232,13 @@ export default function LabPanel({
               </a>
             </div>
             <div className="mt-1 text-xs text-slate-200">
-              {llmCampaignOptions.length > 1
-                ? "Two AI models active — their results are compared side by side in the outline compare and risk narrative sections."
-                : "One AI model active. Add a second for side-by-side comparison."}
+              {selectedCompareCampaignIds.length > 1 ? `Active side-by-side view: ${selectedCampaignLabelA} versus ${selectedCampaignLabelB}. The narrative and outline sections keep both campaigns visible at once.` : "One compare campaign is active. Add a second campaign for a true side-by-side read."}
             </div>
           </div>
 
           <div>
             <div className="flex items-center justify-between gap-3">
-              <div className="text-sm uppercase tracking-wide text-slate-300">Methods</div>
+              <div className="text-sm uppercase tracking-wide text-slate-300">Deterministic questions</div>
               <div className="text-sm text-slate-400">
                 Available outputs: {availableDetectorIds.length}/{DETECTOR_CATALOG.length}
               </div>
@@ -1302,7 +1295,7 @@ export default function LabPanel({
               </div>
             </div>
             <div className="mt-2 rounded-md border border-white/10 bg-slate-950/35 px-3 py-2 text-sm text-slate-200">
-              Reading mode: {modeLabel} | Filing years: {selectedPairLabel} | {selectedDetectors.length} methods active | {expandedCount} of {methodCards.length} expanded
+              Reading mode: {modeLabel} | Filing years: {selectedPairLabel} | {selectedDetectors.length} questions active | {expandedCount} of {methodCards.length} cards expanded
             </div>
             <div className="mt-2 rounded-md border border-white/10 bg-slate-950/35 px-3 py-2 text-xs text-slate-200">
               {methodCoverageSummary}
@@ -1416,12 +1409,13 @@ export default function LabPanel({
           ticker={ticker}
           yearFrom={selectedCase.year_from}
           yearTo={selectedCase.year_to}
-          modelALabel={(selectedCampaignA?.display_name ?? selectedLlmCampaignA) || "Model A"}
-          modelBLabel={(selectedCampaignB?.display_name ?? selectedLlmCampaignB) || "Model B"}
+          modelALabel={selectedCampaignLabelA}
+          modelBLabel={selectedCampaignLabelB}
           modelARuntime={selectedLlmCampaignA ? outlineOutputs[selectedLlmCampaignA] ?? null : null}
           modelBRuntime={selectedLlmCampaignB ? outlineOutputs[selectedLlmCampaignB] ?? null : null}
           modelAStructured={selectedLlmCampaignA ? structuredOutlineOutputs[selectedLlmCampaignA] ?? null : null}
           modelBStructured={selectedLlmCampaignB ? structuredOutlineOutputs[selectedLlmCampaignB] ?? null : null}
+          analysisMode={analysisMode}
         />
       ) : null}
 
@@ -1437,7 +1431,7 @@ export default function LabPanel({
                   key={detector.cardKey}
                   detectorId={detector.id}
                   title={detector.label}
-                  description={detector.description}
+                  description={`${detector.technicalLabel}. ${detector.description}`}
                   llmCampaign={null}
                   output={outputs[detector.cardKey] ?? null}
                   debugPath={outputDebugPaths[detector.cardKey] ?? null}
@@ -1461,10 +1455,9 @@ export default function LabPanel({
 
       <div id="lab-agreement" className="space-y-4">
         <div>
-          <h3 className="text-lg font-semibold text-slate-100">Cross-method agreement</h3>
+          <h3 className="text-lg font-semibold text-slate-100">Where methods agree</h3>
           <p className="text-xs text-slate-400">
-            Shows how much different analytical methods agree on which risk themes changed.
-            High agreement (green) means convergent findings; low agreement (amber) means the methods detected different signals.
+            Shows how much the deterministic methods converge on the same ranked risk themes. High agreement means the detectors are reinforcing one another; low agreement means the filing needs a more careful method-by-method read.
           </p>
         </div>
         <AgreementMatrix output={agreementOutput} />
@@ -1510,8 +1503,8 @@ export default function LabPanel({
 
       {selectedLlmCampaignA || selectedLlmCampaignB ? (
         <OutlineComparePanel
-          modelALabel={(selectedCampaignA?.display_name ?? selectedLlmCampaignA) || "Model A"}
-          modelBLabel={(selectedCampaignB?.display_name ?? selectedLlmCampaignB) || "Model B"}
+          modelALabel={selectedCampaignLabelA}
+          modelBLabel={selectedCampaignLabelB}
           modelAOutput={
             selectedLlmCampaignA ? outlineOutputs[selectedLlmCampaignA] ?? null : null
           }
@@ -1548,6 +1541,7 @@ export default function LabPanel({
           modelBStructuredDebugPath={
             selectedLlmCampaignB ? structuredOutlineDebugPaths[selectedLlmCampaignB] ?? null : null
           }
+          analysisMode={analysisMode}
         />
       ) : null}
 
@@ -1588,8 +1582,8 @@ export default function LabPanel({
           </section>
         ) : (
           <InsightLensPanel
-            modelALabel={(selectedCampaignA?.display_name ?? selectedLlmCampaignA) || "Model A"}
-            modelBLabel={(selectedCampaignB?.display_name ?? selectedLlmCampaignB) || "Model B"}
+            modelALabel={selectedCampaignLabelA}
+            modelBLabel={selectedCampaignLabelB}
             modelAOutput={selectedLlmCampaignA ? insightOutputs[selectedLlmCampaignA] ?? null : null}
             modelBOutput={selectedLlmCampaignB ? insightOutputs[selectedLlmCampaignB] ?? null : null}
             modelADebug={selectedLlmCampaignA ? insightDebugInfo[selectedLlmCampaignA] ?? null : null}
@@ -1602,5 +1596,16 @@ export default function LabPanel({
     </section>
   )
 }
+
+
+
+
+
+
+
+
+
+
+
 
 

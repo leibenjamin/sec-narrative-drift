@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom"
+﻿import { Link, useLocation } from "react-router-dom"
 
 type NavItem = {
   to: string
@@ -23,15 +23,18 @@ export default function AppHeader() {
   const { pathname } = useLocation()
 
   return (
-    <header className="border-b border-white/10 bg-slate-950/70 backdrop-blur">
+    <header className="sticky top-0 z-30 border-b border-white/10 bg-slate-950/78 backdrop-blur">
       <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-6 py-4">
-        <div className="flex items-center gap-2">
-          <Link
-            to="/"
-            className="text-xs uppercase tracking-wider text-slate-200 hover:text-slate-50"
-          >
-            SEC Narrative Drift Lab
-          </Link>
+        <div className="flex items-center gap-3">
+          <div>
+            <Link
+              to="/"
+              className="text-xs uppercase tracking-[0.24em] text-slate-200 hover:text-slate-50"
+            >
+              SEC Narrative Drift Lab
+            </Link>
+            <div className="mt-1 text-[11px] text-slate-400">Investor-first, evidence-backed filing comparison</div>
+          </div>
           <span className="rounded bg-amber-600/80 px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wide text-amber-100">
             Beta
           </span>

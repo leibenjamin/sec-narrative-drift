@@ -1,4 +1,4 @@
-import { useMemo, useState, type ReactNode } from "react"
+﻿import { useMemo, useState, type ReactNode } from "react"
 import { formatFiscalYearLabel } from "../lib/fiscalYear"
 import type {
   LabOutlineChangeMechanismRow,
@@ -12,6 +12,8 @@ import type {
   LabOutlineRiskGraphRow,
   OutlineChangeClass,
 } from "../lib/labTypes"
+
+type AnalysisMode = "executive" | "deep"
 
 type OutlineArtifactDebugInfo = {
   expectedPath: string | null
@@ -34,6 +36,20 @@ type OutlineComparePanelProps = {
   modelBStructuredDebug?: OutlineArtifactDebugInfo | null
   modelAStructuredDebugPath?: string | null
   modelBStructuredDebugPath?: string | null
+  analysisMode?: AnalysisMode
+}
+
+type OutlineCompareColumn = {
+  id: "A" | "B"
+  label: string
+  runtime: LabOutlineCompareOutput | null
+  structured: LabOutlineCompareV2Output | null
+  runtimeDebug: OutlineArtifactDebugInfo | null
+  runtimeDebugPath: string | null
+  structuredDebug: OutlineArtifactDebugInfo | null
+  structuredDebugPath: string | null
+  accentClass: string
+  accentSurfaceClass: string
 }
 
 const CHANGE_CLASSES: Array<{ id: "all" | OutlineChangeClass; label: string }> = [
@@ -84,6 +100,46 @@ function buildAlignmentSummary(output: LabOutlineCompareOutput): string {
   return parts.join(" | ")
 }
 
+function buildEvidenceKey(ref: LabOutlineEvidenceRef): string {
+  return `${ref.year}:${ref.paragraph_idx}`
+}
+
+function buildEvidenceLookup(evidenceBank: LabOutlineEvidence[]): Map<string, LabOutlineEvidence> {
+  const lookup = new Map<string, LabOutlineEvidence>()
+  for (const row of evidenceBank) {
+    lookup.set(`${row.year}:${row.paragraph_idx}`, row)
+  }
+  return lookup
+}
+
+function formatEvidenceRef(ref: LabOutlineEvidenceRef): string {
+  return `${ref.year} para ${ref.paragraph_idx + 1}`
+}
+
+function sortMaterialChanges(output: LabOutlineCompareOutput | null): LabOutlineMaterialChange[] {
+  if (!output) return []
+  return [...output.material_changes].sort((left, right) => right.salience - left.salience)
+}
+
+function buildPanelCompareSummary(columns: OutlineCompareColumn[]): string {
+  const available = columns.filter((column) => column.runtime)
+  if (available.length < 2) {
+    return "One compare campaign is active. Shared filters still apply, but the panel is currently a single-column read."
+  }
+
+  const leftLead = sortMaterialChanges(available[0].runtime)[0]
+  const rightLead = sortMaterialChanges(available[1].runtime)[0]
+  if (!leftLead || !rightLead) {
+    return "Lead material changes are missing for at least one campaign."
+  }
+
+  if (leftLead.title === rightLead.title) {
+    return `Both campaigns converge on the same lead change: ${leftLead.title}`
+  }
+
+  return `${available[0].label} leads with "${leftLead.title}"; ${available[1].label} leads with "${rightLead.title}".`
+}
+
 function renderMissingPanel(
   label: string,
   debug: OutlineArtifactDebugInfo | null | undefined,
@@ -106,29 +162,13 @@ function renderMissingPanel(
   )
 }
 
-function buildEvidenceKey(ref: LabOutlineEvidenceRef): string {
-  return `${ref.year}:${ref.paragraph_idx}`
-}
-
-function buildEvidenceLookup(evidenceBank: LabOutlineEvidence[]): Map<string, LabOutlineEvidence> {
-  const lookup = new Map<string, LabOutlineEvidence>()
-  for (const row of evidenceBank) {
-    lookup.set(`${row.year}:${row.paragraph_idx}`, row)
-  }
-  return lookup
-}
-
-function formatEvidenceRef(ref: LabOutlineEvidenceRef): string {
-  return `${ref.year} para ${ref.paragraph_idx + 1}`
-}
-
 function renderEvidenceRefs(
   refs: LabOutlineEvidenceRef[],
   evidenceLookup: Map<string, LabOutlineEvidence>
 ) {
   if (refs.length === 0) return null
   return (
-    <div className="mt-2 space-y-2">
+    <div className="mt-3 space-y-2">
       <div className="flex flex-wrap gap-2 text-[11px]">
         {refs.map((ref, index) => (
           <span key={`${buildEvidenceKey(ref)}:${index}`} className="rounded bg-slate-900/60 px-2 py-0.5 text-slate-200">
@@ -154,12 +194,11 @@ function renderEvidenceRefs(
 function renderOutlineColumn(
   label: string,
   output: LabOutlineCompareOutput,
-  which: "prev" | "curr"
+  which: "prev" | "curr",
+  analysisMode: AnalysisMode
 ) {
   const nodes = which === "prev" ? output.outline_prev : output.outline_curr
-  const levelOneNodes = nodes
-    .filter((node) => node.level === 1)
-    .sort((a, b) => a.order - b.order)
+  const levelOneNodes = nodes.filter((node) => node.level === 1).sort((a, b) => a.order - b.order)
   const childByParent = new Map<string, typeof nodes>()
   for (const node of nodes) {
     if (!node.parent_id) continue
@@ -167,22 +206,23 @@ function renderOutlineColumn(
     bucket.push(node)
     childByParent.set(node.parent_id, bucket)
   }
+  const maxLevelTwo = analysisMode === "executive" ? 3 : 4
 
   return (
     <div className="rounded-md border border-white/10 bg-slate-950/35 p-3">
       <h4 className="text-xs font-semibold uppercase tracking-wide text-slate-300">{label}</h4>
       <div className="mt-2 space-y-2 text-xs text-slate-200">
         {levelOneNodes.map((root) => {
-          const l2Nodes = (childByParent.get(root.node_id) ?? [])
+          const levelTwoNodes = (childByParent.get(root.node_id) ?? [])
             .filter((node) => node.level === 2)
             .sort((a, b) => a.order - b.order)
           return (
             <div key={root.node_id} className="rounded border border-white/10 bg-slate-900/40 p-2">
               <p className="font-semibold text-slate-100">{root.label}</p>
               <p className="mt-1 text-[11px] text-slate-300">{root.risk_thesis}</p>
-              {l2Nodes.length ? (
+              {levelTwoNodes.length > 0 ? (
                 <div className="mt-2 space-y-1">
-                  {l2Nodes.slice(0, 4).map((node) => (
+                  {levelTwoNodes.slice(0, maxLevelTwo).map((node) => (
                     <div key={node.node_id} className="text-[11px] text-slate-300">
                       {node.label}
                     </div>
@@ -230,8 +270,10 @@ function renderRiskGraphCard(props: {
   title: string
   rows: LabOutlineRiskGraphRow[]
   year: number
+  analysisMode: AnalysisMode
 }) {
-  const { title, rows, year } = props
+  const { title, rows, year, analysisMode } = props
+  const maxRows = analysisMode === "executive" ? 2 : 3
   return (
     <div className="rounded-md border border-white/10 bg-slate-950/35 p-3">
       <h4 className="text-xs font-semibold uppercase tracking-wide text-slate-300">{title}</h4>
@@ -239,7 +281,7 @@ function renderRiskGraphCard(props: {
         {rows.length === 0 ? (
           <p className="text-slate-400">No risk-graph rows in the structured sidecar.</p>
         ) : (
-          rows.slice(0, 3).map((row) => (
+          rows.slice(0, maxRows).map((row) => (
             <div key={row.id} className="rounded border border-white/10 bg-slate-900/40 p-2">
               <div className="font-medium text-slate-100">{row.driver}</div>
               <div className="mt-1 text-[11px] text-slate-300">Exposure: {row.exposure}</div>
@@ -250,6 +292,156 @@ function renderRiskGraphCard(props: {
             </div>
           ))
         )}
+      </div>
+    </div>
+  )
+}
+
+function renderCompareColumn(props: {
+  column: OutlineCompareColumn
+  selectedClass: "all" | OutlineChangeClass
+  needleOnly: boolean
+  analysisMode: AnalysisMode
+}) {
+  const { column, selectedClass, needleOnly, analysisMode } = props
+  const runtime = column.runtime
+  const structured = column.structured
+  const maxChanges = analysisMode === "executive" ? 4 : 6
+
+  if (!runtime) {
+    return (
+      <div className="space-y-3 rounded-2xl border border-white/10 bg-slate-950/35 p-4">
+        <div className={`inline-flex rounded-full border px-2.5 py-1 text-[11px] font-medium ${column.accentClass}`}>
+          {column.label || `Campaign ${column.id}`}
+        </div>
+        {renderMissingPanel(column.label || `Campaign ${column.id}`, column.runtimeDebug, column.runtimeDebugPath)}
+      </div>
+    )
+  }
+
+  const filteredChanges = sortMaterialChanges(runtime)
+    .filter((change) => (selectedClass === "all" ? true : change.change_class === selectedClass))
+    .filter((change) => (needleOnly ? isNeedleChange(change) : true))
+    .slice(0, maxChanges)
+  const summary = buildAlignmentSummary(runtime)
+  const evidenceLookup = structured ? buildEvidenceLookup(structured.evidence_bank) : new Map<string, LabOutlineEvidence>()
+
+  return (
+    <div className="space-y-4 rounded-2xl border border-white/10 bg-slate-950/35 p-4 shadow-[0_18px_40px_rgba(2,6,23,0.25)]">
+      <div className="flex flex-wrap items-start justify-between gap-3">
+        <div>
+          <div className={`inline-flex rounded-full border px-2.5 py-1 text-[11px] font-medium ${column.accentClass}`}>
+            {column.label || `Campaign ${column.id}`}
+          </div>
+          <p className="mt-2 text-sm font-semibold text-slate-100">{runtime.material_changes.length} material changes surfaced</p>
+          <p className="mt-1 text-[11px] text-slate-400">{summary}</p>
+        </div>
+        <div className={`rounded-xl border px-3 py-2 text-xs ${column.accentSurfaceClass}`}>
+          <div className="font-medium text-slate-100">Lead row</div>
+          <p className="mt-1 text-slate-200">{sortMaterialChanges(runtime)[0]?.title ?? "Unavailable"}</p>
+        </div>
+      </div>
+
+      <div className="space-y-3">
+        <h4 className="text-xs font-semibold uppercase tracking-wide text-slate-300">Material changes</h4>
+        {filteredChanges.length === 0 ? (
+          <p className="rounded-md border border-white/10 bg-slate-950/35 px-3 py-2 text-xs text-slate-300">
+            No changes matched the active filters.
+          </p>
+        ) : (
+          filteredChanges.map((change) => (
+            <div key={`${column.id}:${change.id}`} className="rounded-md border border-white/10 bg-slate-950/35 p-3 text-xs text-slate-200">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <div className="font-semibold text-slate-100">{change.title}</div>
+                <div className="rounded-full border border-white/20 bg-white/5 px-2 py-0.5 text-[11px] text-slate-200">
+                  {formatClassLabel(change.change_class)} | salience {change.salience.toFixed(2)}
+                </div>
+              </div>
+              <p className="mt-2 text-[11px] text-slate-300">{change.caveat}</p>
+              {renderEvidenceRefs(change.evidence_refs, evidenceLookup)}
+            </div>
+          ))
+        )}
+      </div>
+
+      {structured ? (
+        <>
+          <div className="rounded-md border border-white/10 bg-slate-950/30 px-3 py-2 text-xs text-slate-200">
+            Structured sidecar coverage: investor relevance {structured.investor_relevance.length} |
+            mechanisms {structured.change_mechanisms.length} | limits {structured.uncertainty_and_limits.length}
+          </div>
+
+          <div className="grid gap-3 xl:grid-cols-2">
+            {renderStructuredListCard({
+              title: "Why it matters",
+              items: structured.investor_relevance.slice(0, analysisMode === "executive" ? 2 : 3),
+              evidenceLookup,
+              emptyText: "No investor-relevance rows in the structured sidecar.",
+              renderBody: (item) => (
+                <p className="text-[11px] text-slate-200">
+                  {(item as LabOutlineInvestorRelevanceRow).why_it_matters}
+                </p>
+              ),
+            })}
+            {renderStructuredListCard({
+              title: "Change mechanisms",
+              items: structured.change_mechanisms.slice(0, analysisMode === "executive" ? 2 : 3),
+              evidenceLookup,
+              emptyText: "No mechanism rows in the structured sidecar.",
+              renderBody: (item) => {
+                const mechanism = item as LabOutlineChangeMechanismRow
+                return (
+                  <>
+                    <p className="text-[11px] font-medium text-slate-100">{mechanism.mechanism}</p>
+                    <p className="mt-1 text-[11px] text-slate-300">Channel: {mechanism.transmission_channel}</p>
+                    <p className="mt-1 text-[11px] text-slate-300">Business effect: {mechanism.business_effect}</p>
+                    <p className="mt-1 text-[11px] text-slate-400">{formatTimeHorizon(mechanism.time_horizon)}</p>
+                  </>
+                )
+              },
+            })}
+          </div>
+
+          <div className="grid gap-3 xl:grid-cols-2">
+            {renderStructuredListCard({
+              title: "Uncertainty and limits",
+              items: structured.uncertainty_and_limits.slice(0, 3),
+              evidenceLookup,
+              emptyText: "No limitation rows in the structured sidecar.",
+              renderBody: (item) => (
+                <p className="text-[11px] text-slate-200">
+                  {(item as LabOutlineLimitRow).limitation}
+                </p>
+              ),
+            })}
+            <div className="space-y-3">
+              {renderRiskGraphCard({
+                title: `${formatFiscalYearLabel(structured.year_from)} risk graph`,
+                rows: structured.risk_graph_prev,
+                year: structured.year_from,
+                analysisMode,
+              })}
+              {renderRiskGraphCard({
+                title: `${formatFiscalYearLabel(structured.year_to)} risk graph`,
+                rows: structured.risk_graph_curr,
+                year: structured.year_to,
+                analysisMode,
+              })}
+            </div>
+          </div>
+        </>
+      ) : (
+        <div className="rounded-md border border-white/10 bg-slate-950/30 px-3 py-2 text-xs text-slate-300">
+          Structured sidecar unavailable for {column.label || `Campaign ${column.id}`}. Showing runtime-only compare.
+          {column.structuredDebug?.errorText ? ` ${column.structuredDebug.errorText}` : ""}
+          {column.structuredDebug?.expectedPath ? ` Expected path: ${column.structuredDebug.expectedPath}` : ""}
+          {column.structuredDebugPath ? ` ${column.structuredDebugPath}` : ""}
+        </div>
+      )}
+
+      <div className="grid gap-3 lg:grid-cols-2">
+        {renderOutlineColumn(`${formatFiscalYearLabel(runtime.year_from)} outline`, runtime, "prev", analysisMode)}
+        {renderOutlineColumn(`${formatFiscalYearLabel(runtime.year_to)} outline`, runtime, "curr", analysisMode)}
       </div>
     </div>
   )
@@ -270,77 +462,80 @@ export default function OutlineComparePanel({
   modelBStructuredDebug = null,
   modelAStructuredDebugPath = null,
   modelBStructuredDebugPath = null,
+  analysisMode = "deep",
 }: OutlineComparePanelProps) {
-  const [activeModel, setActiveModel] = useState<"A" | "B">("A")
   const [selectedClass, setSelectedClass] = useState<"all" | OutlineChangeClass>("all")
   const [needleOnly, setNeedleOnly] = useState(false)
 
-  const activeOutput = activeModel === "A" ? modelAOutput : modelBOutput
-  const activeStructuredOutput = activeModel === "A" ? modelAStructuredOutput : modelBStructuredOutput
-  const activeStructuredDebug = activeModel === "A" ? modelAStructuredDebug : modelBStructuredDebug
-  const activeStructuredDebugPath = activeModel === "A" ? modelAStructuredDebugPath : modelBStructuredDebugPath
-  const activeModelLabel = activeModel === "A" ? modelALabel : modelBLabel
+  const columns = useMemo(() => {
+    const configured: OutlineCompareColumn[] = [
+      {
+        id: "A",
+        label: modelALabel,
+        runtime: modelAOutput,
+        structured: modelAStructuredOutput,
+        runtimeDebug: modelADebug,
+        runtimeDebugPath: modelADebugPath,
+        structuredDebug: modelAStructuredDebug,
+        structuredDebugPath: modelAStructuredDebugPath,
+        accentClass: "border-sky-200/70 bg-sky-400/18 text-sky-50",
+        accentSurfaceClass: "border-sky-300/20 bg-sky-400/10 text-sky-50",
+      },
+      {
+        id: "B",
+        label: modelBLabel,
+        runtime: modelBOutput,
+        structured: modelBStructuredOutput,
+        runtimeDebug: modelBDebug,
+        runtimeDebugPath: modelBDebugPath,
+        structuredDebug: modelBStructuredDebug,
+        structuredDebugPath: modelBStructuredDebugPath,
+        accentClass: "border-emerald-200/70 bg-emerald-400/18 text-emerald-50",
+        accentSurfaceClass: "border-emerald-300/20 bg-emerald-400/10 text-emerald-50",
+      },
+    ]
 
-  const filteredChanges = useMemo(() => {
-    if (!activeOutput) return []
-    return activeOutput.material_changes
-      .filter((change) => (selectedClass === "all" ? true : change.change_class === selectedClass))
-      .filter((change) => (needleOnly ? isNeedleChange(change) : true))
-      .sort((a, b) => b.salience - a.salience)
-  }, [activeOutput, needleOnly, selectedClass])
-
-  const summary = useMemo(() => {
-    if (!activeOutput) return "Outline compare output unavailable."
-    return buildAlignmentSummary(activeOutput)
-  }, [activeOutput])
-
-  const evidenceLookup = useMemo(() => {
-    if (!activeStructuredOutput) return new Map<string, LabOutlineEvidence>()
-    return buildEvidenceLookup(activeStructuredOutput.evidence_bank)
-  }, [activeStructuredOutput])
+    return configured.filter((column) => {
+      if (column.label.trim().length > 0) return true
+      return Boolean(column.runtime || column.structured)
+    })
+  }, [
+    modelALabel,
+    modelAOutput,
+    modelAStructuredOutput,
+    modelADebug,
+    modelADebugPath,
+    modelAStructuredDebug,
+    modelAStructuredDebugPath,
+    modelBLabel,
+    modelBOutput,
+    modelBStructuredOutput,
+    modelBDebug,
+    modelBDebugPath,
+    modelBStructuredDebug,
+    modelBStructuredDebugPath,
+  ])
 
   return (
-    <section id="lab-outline-compare" className="space-y-4 rounded-xl border border-emerald-300/25 bg-emerald-400/10 p-4">
+    <section id="lab-outline-compare" className="space-y-4 rounded-[1.4rem] border border-emerald-300/25 bg-emerald-400/10 p-4 shadow-[0_18px_48px_rgba(2,6,23,0.32)]">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <div>
-          <h3 className="text-sm font-semibold text-emerald-100">Outline Compare</h3>
-          <p className="mt-1 text-[11px] text-slate-200">
-            Filing-first structure-aware comparison. Runtime data anchors the compare, and structured sidecars
-            add the investor, mechanism, and limitation sections.
+        <div className="max-w-3xl">
+          <p className="text-[11px] uppercase tracking-[0.24em] text-emerald-100">Deep compare view</p>
+          <h3 className="mt-2 text-lg font-semibold text-emerald-50">Outline Compare</h3>
+          <p className="mt-1 text-[12px] text-slate-200">
+            Shared filters apply to both campaigns. Use this section to compare ranked material changes,
+            mechanisms, investor relevance, limits, and the underlying outline structure side by side.
           </p>
         </div>
-        <div className="flex flex-wrap items-center gap-2">
-          <button
-            type="button"
-            onClick={() => setActiveModel("A")}
-            className={`rounded-md border px-2 py-1 text-xs transition ${
-              activeModel === "A"
-                ? "border-sky-200/70 bg-sky-400/25 text-sky-50"
-                : "border-white/20 bg-slate-900/50 text-slate-200"
-            }`}
-          >
-            Model A
-          </button>
-          <button
-            type="button"
-            onClick={() => setActiveModel("B")}
-            className={`rounded-md border px-2 py-1 text-xs transition ${
-              activeModel === "B"
-                ? "border-emerald-200/70 bg-emerald-400/25 text-emerald-50"
-                : "border-white/20 bg-slate-900/50 text-slate-200"
-            }`}
-          >
-            Model B
-          </button>
+        <div className="rounded-xl border border-white/10 bg-slate-950/40 px-3 py-2 text-[11px] text-slate-200">
+          {analysisMode === "executive"
+            ? "Executive mode: four material changes per campaign."
+            : "Deep mode: six material changes plus full structured context per campaign."}
         </div>
-      </div>
-
-      <div className="rounded-md border border-white/10 bg-slate-950/30 px-3 py-2 text-sm text-slate-100">
-        Active model: {activeModelLabel}
       </div>
 
       <div className="rounded-md border border-white/10 bg-slate-950/30 px-3 py-2 text-xs text-slate-200">
-        Structure summary: {summary}
+        {buildPanelCompareSummary(columns)}
       </div>
 
       <div className="flex flex-wrap items-center gap-2">
@@ -366,123 +561,18 @@ export default function OutlineComparePanel({
         </label>
       </div>
 
-      {!modelAOutput ? renderMissingPanel(modelALabel, modelADebug, modelADebugPath) : null}
-      {!modelBOutput ? renderMissingPanel(modelBLabel, modelBDebug, modelBDebugPath) : null}
-
-      {activeOutput ? (
-        <>
-          <div className="space-y-2">
-            <h4 className="text-xs font-semibold uppercase tracking-wide text-slate-300">
-              Material changes ({filteredChanges.length})
-            </h4>
-            {filteredChanges.length === 0 ? (
-              <p className="rounded-md border border-white/10 bg-slate-950/35 px-3 py-2 text-xs text-slate-300">
-                No changes matched the active filters.
-              </p>
-            ) : (
-              filteredChanges.slice(0, 6).map((change) => (
-                <div
-                  key={change.id}
-                  className="rounded-md border border-white/10 bg-slate-950/35 p-3 text-xs text-slate-200"
-                >
-                  <div className="flex flex-wrap items-center justify-between gap-2">
-                    <div className="font-semibold text-slate-100">{change.title}</div>
-                    <div className="rounded-full border border-white/20 bg-white/5 px-2 py-0.5 text-[11px] text-slate-200">
-                      {formatClassLabel(change.change_class)} | salience {change.salience.toFixed(2)}
-                    </div>
-                  </div>
-                  <p className="mt-1 text-[11px] text-slate-300">{change.caveat}</p>
-                  <div className="mt-2 flex flex-wrap gap-2 text-[11px]">
-                    {change.evidence_refs.map((ref, index) => (
-                      <span key={`${change.id}:${index}`} className="rounded bg-slate-900/60 px-2 py-0.5 text-slate-200">
-                        {formatEvidenceRef(ref)}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ))
-            )}
+      <div className={`grid gap-4 ${columns.length > 1 ? "2xl:grid-cols-2" : "grid-cols-1"}`}>
+        {columns.map((column) => (
+          <div key={`outline-column-${column.id}`}>
+            {renderCompareColumn({
+              column,
+              selectedClass,
+              needleOnly,
+              analysisMode,
+            })}
           </div>
-
-          {activeStructuredOutput ? (
-            <>
-              <div className="rounded-md border border-white/10 bg-slate-950/30 px-3 py-2 text-xs text-slate-200">
-                Structured sidecar coverage: investor relevance {activeStructuredOutput.investor_relevance.length} |
-                mechanisms {activeStructuredOutput.change_mechanisms.length} | limits {activeStructuredOutput.uncertainty_and_limits.length}
-              </div>
-
-              <div className="grid gap-3 xl:grid-cols-2">
-                {renderStructuredListCard({
-                  title: "Why it matters",
-                  items: activeStructuredOutput.investor_relevance.slice(0, 3),
-                  evidenceLookup,
-                  emptyText: "No investor-relevance rows in the structured sidecar.",
-                  renderBody: (item) => (
-                    <p className="text-[11px] text-slate-200">
-                      {(item as LabOutlineInvestorRelevanceRow).why_it_matters}
-                    </p>
-                  ),
-                })}
-                {renderStructuredListCard({
-                  title: "Change mechanisms",
-                  items: activeStructuredOutput.change_mechanisms.slice(0, 3),
-                  evidenceLookup,
-                  emptyText: "No mechanism rows in the structured sidecar.",
-                  renderBody: (item) => {
-                    const mechanism = item as LabOutlineChangeMechanismRow
-                    return (
-                      <>
-                        <p className="text-[11px] font-medium text-slate-100">{mechanism.mechanism}</p>
-                        <p className="mt-1 text-[11px] text-slate-300">Channel: {mechanism.transmission_channel}</p>
-                        <p className="mt-1 text-[11px] text-slate-300">Business effect: {mechanism.business_effect}</p>
-                        <p className="mt-1 text-[11px] text-slate-400">{formatTimeHorizon(mechanism.time_horizon)}</p>
-                      </>
-                    )
-                  },
-                })}
-              </div>
-
-              <div className="grid gap-3 xl:grid-cols-2">
-                {renderStructuredListCard({
-                  title: "Uncertainty and limits",
-                  items: activeStructuredOutput.uncertainty_and_limits.slice(0, 3),
-                  evidenceLookup,
-                  emptyText: "No limitation rows in the structured sidecar.",
-                  renderBody: (item) => (
-                    <p className="text-[11px] text-slate-200">
-                      {(item as LabOutlineLimitRow).limitation}
-                    </p>
-                  ),
-                })}
-                <div className="space-y-3">
-                  {renderRiskGraphCard({
-                    title: `${formatFiscalYearLabel(activeStructuredOutput.year_from)} risk graph`,
-                    rows: activeStructuredOutput.risk_graph_prev,
-                    year: activeStructuredOutput.year_from,
-                  })}
-                  {renderRiskGraphCard({
-                    title: `${formatFiscalYearLabel(activeStructuredOutput.year_to)} risk graph`,
-                    rows: activeStructuredOutput.risk_graph_curr,
-                    year: activeStructuredOutput.year_to,
-                  })}
-                </div>
-              </div>
-            </>
-          ) : (
-            <div className="rounded-md border border-white/10 bg-slate-950/30 px-3 py-2 text-xs text-slate-300">
-              Structured sidecar unavailable for {activeModelLabel}. Showing runtime-only compare.
-              {activeStructuredDebug?.errorText ? ` ${activeStructuredDebug.errorText}` : ""}
-              {activeStructuredDebug?.expectedPath ? ` Expected path: ${activeStructuredDebug.expectedPath}` : ""}
-              {activeStructuredDebugPath ? ` ${activeStructuredDebugPath}` : ""}
-            </div>
-          )}
-
-          <div className="grid gap-3 lg:grid-cols-2">
-            {renderOutlineColumn(`${formatFiscalYearLabel(activeOutput.year_from)} outline`, activeOutput, "prev")}
-            {renderOutlineColumn(`${formatFiscalYearLabel(activeOutput.year_to)} outline`, activeOutput, "curr")}
-          </div>
-        </>
-      ) : null}
+        ))}
+      </div>
     </section>
   )
 }
