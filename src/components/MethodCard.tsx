@@ -1,6 +1,12 @@
 import { useEffect, useMemo, useState } from "react"
 import EvidenceStack from "./EvidenceStack"
-import { isLlmDetector } from "../lib/labLlmRepro"
+import {
+  buildDefaultLlmInputFile,
+  buildDefaultLlmYearInputFile,
+  buildLlmThreadStarterText,
+  isLlmDetector,
+  loadLlmProjectInstructionsText,
+} from "../lib/labLlmRepro"
 import { withBase } from "../lib/paths"
 import { assertSameOriginPathLike } from "../lib/sanitize"
 import type {

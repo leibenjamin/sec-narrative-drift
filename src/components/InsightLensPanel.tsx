@@ -502,7 +502,7 @@ export default function InsightLensPanel({
 
       {!modelAOutput && !modelBOutput ? (
         <div className="rounded-md border border-amber-400/30 bg-amber-400/10 p-3 text-xs text-amber-100">
-          Insight artifacts are missing for both selected models. Use the debug paths below to verify precomputed output availability.
+          Insight artifacts are missing for both selected compare campaigns. Use the debug paths below to verify precomputed output availability.
         </div>
       ) : null}
       {!modelAOutput ? renderMissingPanel(modelALabel, modelADebug, modelADebugPath) : null}

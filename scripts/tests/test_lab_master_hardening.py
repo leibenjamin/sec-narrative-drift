@@ -3,15 +3,19 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
-from typing import Any
+from typing import Any, cast
 
 ROOT_DIR = Path(__file__).resolve().parents[1]
 REPO_ROOT = ROOT_DIR.parent
 sys.path.insert(0, str(ROOT_DIR))
 
+import build_lab_outputs as blo  # noqa: E402
+import build_showcase_llm_inputs_bundle as inputs_bundle  # noqa: E402
 import lab_audit_master_output_quality as quality_audit  # noqa: E402
 import lab_emit_master_thread_starters as emit_starters  # noqa: E402
+import lab_case_focus_expectations as focus_expectations  # noqa: E402
 import lab_prompt_consistency_check as prompt_consistency  # noqa: E402
+import lab_verify_master_input_locks as input_lock_verify  # noqa: E402
 import lab_validate_llm_master_outputs as master_validate  # noqa: E402
 from lab_output_tracks import (  # noqa: E402
     DEFAULT_COMPARE_LLM_CAMPAIGN_ID,
@@ -40,6 +44,44 @@ YEAR_CURR_PATH = (
 )
 FIXTURE_INPUTS_ROOT = YEAR_PREV_PATH.parents[1]
 PAIR_INPUT_SOURCE_PATH = FIXTURE_INPUTS_ROOT / "pair" / "NVDA_2022_2023_10k_item1a_raw_edgar.json"
+
+
+def load_pair_input_source_payload() -> dict[str, Any]:
+    raw = json.loads(PAIR_INPUT_SOURCE_PATH.read_text(encoding="utf-8-sig"))
+    if not isinstance(raw, dict):
+        raise AssertionError("Fixture pair payload root must be an object.")
+    return cast(dict[str, Any], raw)
+
+
+def make_focus_signal(
+    *,
+    signal_id: str,
+    anchor_groups: list[list[str]],
+    focus_summary: str = "Unit-test focus signal.",
+    paragraph_hints_curr: list[int] | None = None,
+    top_rank_max: int = 3,
+    required_any_of_sections: list[str] | None = None,
+) -> dict[str, Any]:
+    return {
+        "id": signal_id,
+        "priority": "high",
+        "focus_summary": focus_summary,
+        "paragraph_hints": {
+            "curr": paragraph_hints_curr or [14],
+        },
+        "anchor_groups": anchor_groups,
+        "surface_requirements": {
+            "required_sections": ["material_changes"],
+            "required_any_of_sections": required_any_of_sections or ["change_mechanisms", "investor_relevance"],
+            "top_material_change_rank_max": top_rank_max,
+        },
+    }
+
+
+def build_pair_payload_with_focus_signal(signal: dict[str, Any]) -> dict[str, Any]:
+    payload = load_pair_input_source_payload()
+    payload["analysis_expectations"] = {"focus_signals": [signal]}
+    return payload
 
 
 def write_json(path: Path, payload: dict[str, Any]) -> None:
@@ -718,6 +760,77 @@ class TestMasterValidatorHardening(unittest.TestCase):
             )
         )
 
+    def test_validation_report_path_uses_scratch_for_filtered_runs(self) -> None:
+        campaign = get_llm_campaign(DEFAULT_PRIMARY_LLM_CAMPAIGN_ID)
+        if campaign is None:
+            self.fail("Default campaign not found for unit test.")
+        expected_output_path = (
+            f"public/data/sec_narrative_drift_lab/NVDA/outputs/llm_outline_compare_structured/"
+            f"{campaign.track_slug}/unit_test_output.json"
+        )
+        manifest_targets = [
+            master_validate.MasterTarget(
+                ticker="NVDA",
+                year_from=2022,
+                year_to=2023,
+                section="10k_item1a",
+                lens="raw",
+                source_id="edgar",
+                expected_output_path=expected_output_path,
+                manifest_present_flag=False,
+                expected_artifact_id="llm_outline_compare_structured",
+                source_master_structured_path=expected_output_path,
+            )
+        ]
+        report_path, is_scratch = master_validate.resolve_report_path_for_args(
+            report_arg="",
+            campaign_id=DEFAULT_PRIMARY_LLM_CAMPAIGN_ID,
+            target_field="master_output",
+            artifact_id="llm_outline_compare_structured",
+            targets=manifest_targets,
+            only=expected_output_path,
+            only_mode="exact_path",
+        )
+        self.assertTrue(is_scratch)
+        self.assertTrue(
+            report_path.name.startswith("_tmp_validation_codex_real_structured_exact_path_")
+        )
+        self.assertNotEqual(report_path.name, "lab_llm_master_validation_codex_real.md")
+
+    def test_validation_report_path_stays_canonical_without_filter(self) -> None:
+        campaign = get_llm_campaign(DEFAULT_PRIMARY_LLM_CAMPAIGN_ID)
+        if campaign is None:
+            self.fail("Default campaign not found for unit test.")
+        expected_output_path = (
+            f"public/data/sec_narrative_drift_lab/NVDA/outputs/llm_outline_compare_structured/"
+            f"{campaign.track_slug}/unit_test_output.json"
+        )
+        manifest_targets = [
+            master_validate.MasterTarget(
+                ticker="NVDA",
+                year_from=2022,
+                year_to=2023,
+                section="10k_item1a",
+                lens="raw",
+                source_id="edgar",
+                expected_output_path=expected_output_path,
+                manifest_present_flag=False,
+                expected_artifact_id="llm_outline_compare_structured",
+                source_master_structured_path=expected_output_path,
+            )
+        ]
+        report_path, is_scratch = master_validate.resolve_report_path_for_args(
+            report_arg="",
+            campaign_id=DEFAULT_PRIMARY_LLM_CAMPAIGN_ID,
+            target_field="master_output",
+            artifact_id="llm_outline_compare_structured",
+            targets=manifest_targets,
+            only="",
+            only_mode="exact_path",
+        )
+        self.assertFalse(is_scratch)
+        self.assertEqual(report_path.name, "lab_llm_master_validation_codex_real.md")
+
     def test_target_count_mismatch_fails_when_enabled(self) -> None:
         campaign = get_llm_campaign(DEFAULT_PRIMARY_LLM_CAMPAIGN_ID)
         if campaign is None:
@@ -943,6 +1056,53 @@ class TestStarterEmitterHardening(unittest.TestCase):
                 text,
             )
 
+    def test_emitter_includes_case_specific_coverage_gate_when_pair_manifest_declares_focus_signals(self) -> None:
+        campaign = get_llm_campaign(DEFAULT_PRIMARY_LLM_CAMPAIGN_ID)
+        if campaign is None:
+            self.fail("Default campaign not found for unit test.")
+        expected_output_path = (
+            f"public/data/sec_narrative_drift_lab/NVDA/outputs/llm_outline_compare_structured/"
+            f"{campaign.track_slug}/unit_test_output.json"
+        )
+        pair_payload = build_pair_payload_with_focus_signal(
+            make_focus_signal(
+                signal_id="unit_focus_signal",
+                anchor_groups=[["stericycle"], ["billing"]],
+                focus_summary="Unit-test focus summary.",
+                paragraph_hints_curr=[14],
+            )
+        )
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            pair_path = root / "pair.json"
+            write_json(pair_path, pair_payload)
+            manifest = make_single_entry_manifest(DEFAULT_PRIMARY_LLM_CAMPAIGN_ID, expected_output_path)
+            manifest["entries"][0]["input"]["source_path"] = str(pair_path)
+            manifest["entries"][0]["input"]["source_year_prev_path"] = str(YEAR_PREV_PATH)
+            manifest["entries"][0]["input"]["source_year_curr_path"] = str(YEAR_CURR_PATH)
+            manifest_path = root / "manifest_focus.json"
+            out_path = root / "starters_focus.md"
+            write_json(manifest_path, manifest)
+            rc = emit_starters.main(
+                [
+                    "--manifest",
+                    str(manifest_path),
+                    "--out",
+                    str(out_path),
+                    "--format",
+                    "vscode_autowrite_structured_prod",
+                ]
+            )
+            self.assertEqual(rc, 0)
+            text_rendered = out_path.read_text(encoding="utf-8")
+            self.assertIn("CASE-SPECIFIC COVERAGE GATE", text_rendered)
+            self.assertIn("unit_focus_signal", text_rendered)
+            self.assertIn("curr=[14]", text_rendered)
+            self.assertIn("top-3 material_changes row", text_rendered)
+            self.assertIn("material_changes.title` and outline `label` fields may lightly normalize obvious extraction artifacts", text_rendered)
+            self.assertIn("Never paraphrase snippets in evidence; use contiguous verbatim substrings only.", text_rendered)
+
+
     def test_chatgpt_master_starter_v4_markers(self) -> None:
         campaign = get_llm_campaign(DEFAULT_COMPARE_LLM_CAMPAIGN_ID)
         if campaign is None:
@@ -969,7 +1129,7 @@ class TestStarterEmitterHardening(unittest.TestCase):
             )
             self.assertEqual(rc, 0)
             text = out_path.read_text(encoding="utf-8")
-            self.assertIn("- output format: `vscode_autowrite_structured_prod`", text)
+            self.assertIn("- output format: `chatgpt_desktop_structured_prod`", text)
             self.assertIn("BEGIN_STARTER", text)
             self.assertIn("COPY FROM NEXT LINE THROUGH END_STARTER AND PASTE INTO A FRESH CHATGPT DESKTOP THREAD:", text)
             self.assertIn("Execution mode: MANUAL_CHATGPT_DESKTOP_STRUCTURED_PROD", text)
@@ -1118,12 +1278,38 @@ class TestPromptTemplateResolutionHardening(unittest.TestCase):
             self.assertEqual(override_path, resolved)
 
 
+class TestCampaignTrackMetadata(unittest.TestCase):
+    def test_default_compare_campaign_id_matches_chatgpt54_real(self) -> None:
+        self.assertEqual(
+            "openai_chatgpt54ext_agent_fullsec_real_2026-03-06",
+            DEFAULT_COMPARE_LLM_CAMPAIGN_ID,
+        )
+
+    def test_claude_code_campaign_registered_hidden_runtime(self) -> None:
+        campaign = get_llm_campaign("anthropic_claudeopus46_claudecode_fullsec_real_2026-03-09")
+        if campaign is None:
+            self.fail("Claude Code campaign not found for unit test.")
+        self.assertEqual("anthropic", campaign.model_provider)
+        self.assertEqual("Claude Opus 4.6 (Thinking, Max)", campaign.model_name)
+        self.assertEqual("claude_real", campaign.report_token)
+        self.assertEqual("vscode_agent", campaign.execution_venue)
+        self.assertFalse(campaign.runtime_visible)
+        self.assertFalse(campaign.compare_default)
+
+
 class TestPromptConsistencyDocGuards(unittest.TestCase):
     def _write_doc(self, path: Path, content: str) -> None:
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(content, encoding="utf-8")
 
+    def _compare_campaign(self):
+        campaign = get_llm_campaign(DEFAULT_COMPARE_LLM_CAMPAIGN_ID)
+        if campaign is None:
+            self.fail("Compare campaign not found for unit test.")
+        return campaign
+
     def test_doc_guards_pass_with_required_markers(self) -> None:
+        compare_campaign = self._compare_campaign()
         with tempfile.TemporaryDirectory() as tmpdir:
             root = Path(tmpdir)
             doc_index = root / "docs" / "00_DOC_INDEX.md"
@@ -1148,7 +1334,7 @@ class TestPromptConsistencyDocGuards(unittest.TestCase):
                 "\n".join(
                     [
                         "`openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27`",
-                        "`openai_chatgpt52ext_agent_fullsec_real_2026-02-27`",
+                        f"`{compare_campaign.track_id}`",
                         "`llm_outline_compare_runtime`",
                         "`docs/lab/08_remaining_work_plan_history.md`",
                     ]
@@ -1160,10 +1346,10 @@ class TestPromptConsistencyDocGuards(unittest.TestCase):
                     [
                         "`openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27`",
                         "`openai-gpt53codex-xhigh-agent-fullsec-real-2026-02-27`",
-                        "`openai_chatgpt52ext_agent_fullsec_real_2026-02-27`",
-                        "`openai-chatgpt52ext-agent-fullsec-real-2026-02-27`",
+                        f"`{compare_campaign.track_id}`",
+                        f"`{compare_campaign.track_slug}`",
                         "runtime-visible",
-                        "runtime-hidden",
+                        "runtime_visible=true",
                     ]
                 ),
             )
@@ -1171,6 +1357,7 @@ class TestPromptConsistencyDocGuards(unittest.TestCase):
             prompt_consistency.check_canonical_docs(doc_index, remaining_plan, comparison_doc)
 
     def test_doc_guards_fail_on_missing_required_marker(self) -> None:
+        compare_campaign = self._compare_campaign()
         with tempfile.TemporaryDirectory() as tmpdir:
             root = Path(tmpdir)
             doc_index = root / "docs" / "00_DOC_INDEX.md"
@@ -1195,21 +1382,20 @@ class TestPromptConsistencyDocGuards(unittest.TestCase):
                 "\n".join(
                     [
                         "`openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27`",
-                        "`openai_chatgpt52ext_agent_fullsec_real_2026-02-27`",
+                        f"`{compare_campaign.track_id}`",
                         "`llm_outline_compare_runtime`",
                         "`docs/lab/08_remaining_work_plan_history.md`",
                     ]
                 ),
             )
-            # Missing required runtime-hidden marker on purpose.
             self._write_doc(
                 comparison_doc,
                 "\n".join(
                     [
                         "`openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27`",
                         "`openai-gpt53codex-xhigh-agent-fullsec-real-2026-02-27`",
-                        "`openai_chatgpt52ext_agent_fullsec_real_2026-02-27`",
-                        "`openai-chatgpt52ext-agent-fullsec-real-2026-02-27`",
+                        f"`{compare_campaign.track_id}`",
+                        f"`{compare_campaign.track_slug}`",
                         "runtime-visible",
                     ]
                 ),
@@ -1220,6 +1406,7 @@ class TestPromptConsistencyDocGuards(unittest.TestCase):
             self.assertIn("comparison_doc missing required marker(s)", str(ctx.exception))
 
     def test_doc_guards_fail_on_stale_marker(self) -> None:
+        compare_campaign = self._compare_campaign()
         with tempfile.TemporaryDirectory() as tmpdir:
             root = Path(tmpdir)
             doc_index = root / "docs" / "00_DOC_INDEX.md"
@@ -1245,7 +1432,7 @@ class TestPromptConsistencyDocGuards(unittest.TestCase):
                 "\n".join(
                     [
                         "`openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27`",
-                        "`openai_chatgpt52ext_agent_fullsec_real_2026-02-27`",
+                        f"`{compare_campaign.track_id}`",
                         "`llm_outline_compare_runtime`",
                         "`docs/lab/08_remaining_work_plan_history.md`",
                     ]
@@ -1257,10 +1444,10 @@ class TestPromptConsistencyDocGuards(unittest.TestCase):
                     [
                         "`openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27`",
                         "`openai-gpt53codex-xhigh-agent-fullsec-real-2026-02-27`",
-                        "`openai_chatgpt52ext_agent_fullsec_real_2026-02-27`",
-                        "`openai-chatgpt52ext-agent-fullsec-real-2026-02-27`",
+                        f"`{compare_campaign.track_id}`",
+                        f"`{compare_campaign.track_slug}`",
                         "runtime-visible",
-                        "runtime-hidden",
+                        "runtime_visible=true",
                     ]
                 ),
             )
@@ -1270,7 +1457,156 @@ class TestPromptConsistencyDocGuards(unittest.TestCase):
             self.assertIn("doc_index contains forbidden marker(s)", str(ctx.exception))
 
 
+class TestBundlePairExpectationsHardening(unittest.TestCase):
+    def test_pair_manifest_payload_includes_focus_signals_for_wm_raw(self) -> None:
+        lens_pair = blo.LensPair(
+            prev=blo.SectionText(year=2024, text="prev", paragraphs=["prev"]),
+            curr=blo.SectionText(year=2025, text="curr", paragraphs=["curr"] * 10),
+            coverage=1.0,
+            warnings=[],
+            lens="raw",
+        )
+        payload = inputs_bundle.build_pair_manifest_payload(
+            ticker="WM",
+            section="10k_item1a",
+            year_from=2024,
+            year_to=2025,
+            lens="raw",
+            source_id="edgar",
+            prev_year_input_path="inputs/year/WM_2024_10k_item1a_raw_edgar__pair_2024_2025.json",
+            curr_year_input_path="inputs/year/WM_2025_10k_item1a_raw_edgar__pair_2024_2025.json",
+            lens_pair=lens_pair,
+            prev_paragraphs_sha256="prev_sha",
+            curr_paragraphs_sha256="curr_sha",
+        )
+        analysis_expectations: dict[str, Any] = payload["analysis_expectations"]
+        self.assertIsInstance(analysis_expectations, dict)
+        focus_signals: list[dict[str, Any]] = analysis_expectations["focus_signals"]
+        self.assertIsInstance(focus_signals, list)
+        self.assertEqual("wm_healthcare_solutions_execution_deterioration", focus_signals[0]["id"])
+        self.assertEqual([9], focus_signals[0]["paragraph_hints"]["curr"])
+
+    def test_pair_manifest_payload_rejects_out_of_range_focus_hints(self) -> None:
+        lens_pair = blo.LensPair(
+            prev=blo.SectionText(year=2024, text="prev", paragraphs=["prev"]),
+            curr=blo.SectionText(year=2025, text="curr", paragraphs=["curr"]),
+            coverage=1.0,
+            warnings=[],
+            lens="raw",
+        )
+        with self.assertRaises(SystemExit) as ctx:
+            inputs_bundle.build_pair_manifest_payload(
+                ticker="WM",
+                section="10k_item1a",
+                year_from=2024,
+                year_to=2025,
+                lens="raw",
+                source_id="edgar",
+                prev_year_input_path="inputs/year/WM_2024_10k_item1a_raw_edgar__pair_2024_2025.json",
+                curr_year_input_path="inputs/year/WM_2025_10k_item1a_raw_edgar__pair_2024_2025.json",
+                lens_pair=lens_pair,
+                prev_paragraphs_sha256="prev_sha",
+                curr_paragraphs_sha256="curr_sha",
+            )
+        self.assertIn("Invalid analysis_expectations paragraph_hints", str(ctx.exception))
+
+    def test_pair_manifest_payload_omits_focus_signals_for_unlisted_case(self) -> None:
+        lens_pair = blo.LensPair(
+            prev=blo.SectionText(year=2024, text="prev", paragraphs=["prev"]),
+            curr=blo.SectionText(year=2025, text="curr", paragraphs=["curr"]),
+            coverage=1.0,
+            warnings=[],
+            lens="raw",
+        )
+        payload = inputs_bundle.build_pair_manifest_payload(
+            ticker="NVDA",
+            section="10k_item1a",
+            year_from=2024,
+            year_to=2025,
+            lens="raw",
+            source_id="edgar",
+            prev_year_input_path="inputs/year/NVDA_2024_10k_item1a_raw_edgar__pair_2024_2025.json",
+            curr_year_input_path="inputs/year/NVDA_2025_10k_item1a_raw_edgar__pair_2024_2025.json",
+            lens_pair=lens_pair,
+            prev_paragraphs_sha256="prev_sha",
+            curr_paragraphs_sha256="curr_sha",
+        )
+        self.assertNotIn("analysis_expectations", payload)
+
+
 class TestMasterQualityAuditHardening(unittest.TestCase):
+    def test_quality_report_path_uses_scratch_for_filtered_runs(self) -> None:
+        campaign = get_llm_campaign(DEFAULT_PRIMARY_LLM_CAMPAIGN_ID)
+        if campaign is None:
+            self.fail("Default campaign not found for unit test.")
+        expected_output_path = (
+            f"public/data/sec_narrative_drift_lab/NVDA/outputs/llm_outline_compare_structured/"
+            f"{campaign.track_slug}/unit_test_output.json"
+        )
+        targets = [
+            master_validate.MasterTarget(
+                ticker='NVDA',
+                year_from=2022,
+                year_to=2023,
+                section='10k_item1a',
+                lens='raw',
+                source_id='edgar',
+                expected_output_path=expected_output_path,
+                manifest_present_flag=False,
+                expected_artifact_id='llm_outline_compare_structured',
+                source_master_structured_path=expected_output_path,
+            )
+        ]
+        report_path, is_scratch = quality_audit.resolve_quality_report_path_for_args(
+            report_arg='',
+            campaign_id=DEFAULT_PRIMARY_LLM_CAMPAIGN_ID,
+            target_field='master_output',
+            artifact_id='llm_outline_compare_structured',
+            targets=targets,
+            output='',
+            only=expected_output_path,
+            only_mode='exact_path',
+        )
+        self.assertTrue(is_scratch)
+        self.assertTrue(report_path.name.startswith('_tmp_quality_codex_real_structured_exact_path_'))
+        self.assertNotEqual(report_path.name, 'lab_llm_master_quality_codex_real_structured.md')
+
+    def test_quality_report_path_uses_scratch_for_output_runs(self) -> None:
+        campaign = get_llm_campaign(DEFAULT_PRIMARY_LLM_CAMPAIGN_ID)
+        if campaign is None:
+            self.fail("Default campaign not found for unit test.")
+        expected_output_path = (
+            f"public/data/sec_narrative_drift_lab/NVDA/outputs/llm_outline_compare_structured/"
+            f"{campaign.track_slug}/unit_test_output.json"
+        )
+        targets = [
+            master_validate.MasterTarget(
+                ticker='NVDA',
+                year_from=2022,
+                year_to=2023,
+                section='10k_item1a',
+                lens='raw',
+                source_id='edgar',
+                expected_output_path=expected_output_path,
+                manifest_present_flag=False,
+                expected_artifact_id='llm_outline_compare_structured',
+                source_master_structured_path=expected_output_path,
+            )
+        ]
+        report_path, is_scratch = quality_audit.resolve_quality_report_path_for_args(
+            report_arg='',
+            campaign_id=DEFAULT_PRIMARY_LLM_CAMPAIGN_ID,
+            target_field='master_output',
+            artifact_id='llm_outline_compare_structured',
+            targets=targets,
+            output=expected_output_path,
+            only='',
+            only_mode='exact_path',
+        )
+        self.assertTrue(is_scratch)
+        self.assertTrue(report_path.name.startswith('_tmp_quality_codex_real_structured_output_path_'))
+        self.assertNotEqual(report_path.name, 'lab_llm_master_quality_codex_real_structured.md')
+
     def _stage_fixture_input_mirror(self) -> list[Path]:
         mapping = [
             (PAIR_INPUT_SOURCE_PATH, REPO_ROOT / "inputs" / "pair" / PAIR_INPUT_SOURCE_PATH.name),
@@ -1349,6 +1685,29 @@ class TestMasterQualityAuditHardening(unittest.TestCase):
         finally:
             if stage_fixture_inputs:
                 self._cleanup_fixture_input_mirror(created_paths)
+
+    def _evaluate_payload_with_focus_signal(
+        self,
+        payload: dict[str, Any],
+        signal: dict[str, Any],
+        *,
+        pair_filename: str = "NVDA_2022_2023_10k_item1a_raw_edgar_focus.json",
+    ) -> quality_audit.OutputAudit:
+        created_paths = self._stage_fixture_input_mirror()
+        pair_path = REPO_ROOT / "inputs" / "pair" / pair_filename
+        try:
+            write_json(pair_path, build_pair_payload_with_focus_signal(signal))
+            created_paths.append(pair_path)
+            payload_local = json.loads(json.dumps(payload))
+            payload_local["provenance"]["input_file"] = f"inputs/pair/{pair_filename}"
+            return self._evaluate_payload(
+                payload_local,
+                expected_artifact_id="llm_outline_compare_structured",
+                strict_depth=True,
+                stage_fixture_inputs=False,
+            )
+        finally:
+            self._cleanup_fixture_input_mirror(created_paths)
 
     def test_quality_audit_strong_payload_has_no_blockers(self) -> None:
         payload = build_valid_payload()
@@ -1526,6 +1885,53 @@ class TestMasterQualityAuditHardening(unittest.TestCase):
         self.assertIn("low_evidence_ref_diversity_blocker", codes)
 
 
+    def test_quality_audit_strict_depth_focus_signal_passes_when_surfaced(self) -> None:
+        payload = build_valid_v2_strict_payload()
+        payload["material_changes"][0]["title"] = "Stericycle billing deterioration at 2022 para 5 and 2023 para 15"
+        payload["change_mechanisms"][0]["mechanism"] = "Stericycle billing deterioration"
+        signal = make_focus_signal(
+            signal_id="unit_focus_signal",
+            anchor_groups=[["stericycle"], ["billing"]],
+        )
+        audit = self._evaluate_payload_with_focus_signal(payload, signal)
+        codes = [issue.code for issue in audit.blockers]
+        self.assertNotIn("missing_required_focus_signal", codes)
+        self.assertNotIn("required_focus_signal_not_top_ranked", codes)
+        self.assertNotIn("required_focus_signal_missing_supporting_surface", codes)
+
+    def test_quality_audit_strict_depth_blocks_missing_required_focus_signal(self) -> None:
+        payload = build_valid_v2_strict_payload()
+        signal = make_focus_signal(
+            signal_id="unit_focus_signal_missing",
+            anchor_groups=[["stericycle"], ["billing"]],
+        )
+        audit = self._evaluate_payload_with_focus_signal(payload, signal)
+        codes = [issue.code for issue in audit.blockers]
+        self.assertIn("missing_required_focus_signal", codes)
+
+    def test_quality_audit_strict_depth_blocks_focus_signal_not_top_ranked(self) -> None:
+        payload = build_valid_v2_strict_payload()
+        payload["material_changes"][3]["title"] = "Stericycle billing deterioration at 2022 para 70 and 2023 para 80"
+        payload["change_mechanisms"][3]["mechanism"] = "Stericycle billing deterioration"
+        signal = make_focus_signal(
+            signal_id="unit_focus_signal_rank",
+            anchor_groups=[["stericycle"], ["billing"]],
+        )
+        audit = self._evaluate_payload_with_focus_signal(payload, signal)
+        codes = [issue.code for issue in audit.blockers]
+        self.assertIn("required_focus_signal_not_top_ranked", codes)
+
+    def test_quality_audit_strict_depth_blocks_focus_signal_missing_supporting_surface(self) -> None:
+        payload = build_valid_v2_strict_payload()
+        payload["material_changes"][0]["title"] = "Stericycle billing deterioration at 2022 para 5 and 2023 para 15"
+        signal = make_focus_signal(
+            signal_id="unit_focus_signal_support",
+            anchor_groups=[["stericycle"], ["billing"]],
+        )
+        audit = self._evaluate_payload_with_focus_signal(payload, signal)
+        codes = [issue.code for issue in audit.blockers]
+        self.assertIn("required_focus_signal_missing_supporting_surface", codes)
+
     def test_quality_audit_v3_strong_payload_has_no_blockers(self) -> None:
         payload = build_valid_v3_payload()
         audit = self._evaluate_payload(
@@ -1567,6 +1973,280 @@ class TestMasterQualityAuditHardening(unittest.TestCase):
             strict_depth=True,
         )
         self.assertIn("unresolved_insight_evidence_links", [issue.code for issue in audit.blockers])
+
+
+class TestPromptConsistencyFocusSignalGuards(unittest.TestCase):
+    def test_collect_focus_signal_ids_from_entry_reads_pair_manifest(self) -> None:
+        signal = make_focus_signal(
+            signal_id="unit_focus_signal_ids",
+            anchor_groups=[["stericycle"], ["billing"]],
+            paragraph_hints_curr=[14],
+        )
+        pair_payload = build_pair_payload_with_focus_signal(signal)
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            pair_path = root / "pair.json"
+            write_json(pair_path, pair_payload)
+            entry = {"input": {"source_path": str(pair_path)}}
+            signal_ids = prompt_consistency._collect_focus_signal_ids_from_entry(entry)  # pyright: ignore[reportPrivateUsage]
+            self.assertEqual(["unit_focus_signal_ids"], signal_ids)
+
+    def test_master_starter_check_requires_focus_signal_markers(self) -> None:
+        campaign = get_llm_campaign(DEFAULT_PRIMARY_LLM_CAMPAIGN_ID)
+        if campaign is None:
+            self.fail("Default campaign not found for unit test.")
+        expected_output_path = (
+            f"public/data/sec_narrative_drift_lab/NVDA/outputs/llm_outline_compare_structured/"
+            f"{campaign.track_slug}/unit_test_output.json"
+        )
+        pair_payload = build_pair_payload_with_focus_signal(
+            make_focus_signal(
+                signal_id="unit_focus_signal_gate",
+                anchor_groups=[["stericycle"], ["billing"]],
+                paragraph_hints_curr=[14],
+            )
+        )
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            pair_path = root / "pair.json"
+            write_json(pair_path, pair_payload)
+            manifest = make_single_entry_manifest(DEFAULT_PRIMARY_LLM_CAMPAIGN_ID, expected_output_path)
+            manifest["entries"][0]["input"]["source_path"] = str(pair_path)
+            manifest["entries"][0]["input"]["source_year_prev_path"] = str(YEAR_PREV_PATH)
+            manifest["entries"][0]["input"]["source_year_curr_path"] = str(YEAR_CURR_PATH)
+            manifest_path = root / "manifest.json"
+            out_path = root / "starters.md"
+            validation_report = root / "validation.md"
+            quality_report = root / "quality.md"
+            write_json(manifest_path, manifest)
+            rc = emit_starters.main(
+                [
+                    "--manifest",
+                    str(manifest_path),
+                    "--out",
+                    str(out_path),
+                    "--validation-report",
+                    str(validation_report),
+                    "--quality-report",
+                    str(quality_report),
+                    "--format",
+                    "vscode_autowrite_structured_prod",
+                ]
+            )
+            self.assertEqual(rc, 0)
+
+            prompt_consistency._check_master_starters(  # pyright: ignore[reportPrivateUsage]
+                master_starters_path=out_path,
+                master_manifest_path=manifest_path,
+                campaign_slug=campaign.track_slug,
+                execution_venue=campaign.execution_venue,
+            )
+
+            rendered = out_path.read_text(encoding="utf-8")
+            rendered = rendered.replace("CASE-SPECIFIC COVERAGE GATE", "CASE-SPECIFIC COVERAGE")
+            out_path.write_text(rendered, encoding="utf-8")
+            with self.assertRaises(SystemExit) as ctx:
+                prompt_consistency._check_master_starters(  # pyright: ignore[reportPrivateUsage]
+                    master_starters_path=out_path,
+                    master_manifest_path=manifest_path,
+                    campaign_slug=campaign.track_slug,
+                    execution_venue=campaign.execution_venue,
+                )
+            self.assertIn("master_starters_focus_signals missing required marker(s)", str(ctx.exception))
+
+
+class TestFocusSignalHintValidation(unittest.TestCase):
+    def test_shared_validator_flags_out_of_range_hint(self) -> None:
+        signal = make_focus_signal(
+            signal_id="unit_focus_signal_invalid",
+            anchor_groups=[["stericycle"], ["billing"]],
+            paragraph_hints_curr=[999],
+        )
+        issues = focus_expectations.validate_focus_signal_paragraph_hints(
+            {"focus_signals": [signal]},
+            prev_paragraph_count=10,
+            curr_paragraph_count=20,
+        )
+        self.assertEqual(1, len(issues))
+        self.assertIn("focus_signal=unit_focus_signal_invalid", issues[0])
+        self.assertIn("curr_paragraph_hint=999", issues[0])
+        self.assertIn("paragraph_count=20", issues[0])
+
+    def test_emitter_fails_on_invalid_focus_signal_hint(self) -> None:
+        campaign = get_llm_campaign(DEFAULT_PRIMARY_LLM_CAMPAIGN_ID)
+        if campaign is None:
+            self.fail("Default campaign not found for unit test.")
+        expected_output_path = (
+            f"public/data/sec_narrative_drift_lab/NVDA/outputs/llm_outline_compare_structured/"
+            f"{campaign.track_slug}/unit_test_output.json"
+        )
+        pair_payload = build_pair_payload_with_focus_signal(
+            make_focus_signal(
+                signal_id="unit_focus_signal_invalid_emit",
+                anchor_groups=[["stericycle"], ["billing"]],
+                paragraph_hints_curr=[999],
+            )
+        )
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            pair_path = root / "pair.json"
+            write_json(pair_path, pair_payload)
+            manifest = make_single_entry_manifest(DEFAULT_PRIMARY_LLM_CAMPAIGN_ID, expected_output_path)
+            manifest["entries"][0]["input"]["source_path"] = str(pair_path)
+            manifest["entries"][0]["input"]["source_year_prev_path"] = str(YEAR_PREV_PATH)
+            manifest["entries"][0]["input"]["source_year_curr_path"] = str(YEAR_CURR_PATH)
+            manifest_path = root / "manifest_invalid_focus.json"
+            out_path = root / "starters_invalid_focus.md"
+            write_json(manifest_path, manifest)
+            with self.assertRaises(SystemExit) as ctx:
+                emit_starters.main(
+                    [
+                        "--manifest",
+                        str(manifest_path),
+                        "--out",
+                        str(out_path),
+                        "--format",
+                        "vscode_autowrite_structured_prod",
+                    ]
+                )
+        self.assertIn("Invalid analysis_expectations paragraph_hints", str(ctx.exception))
+
+    def test_verify_manifest_flags_invalid_focus_signal_hint(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            pair_path = root / "pair.json"
+            pair_payload = build_pair_payload_with_focus_signal(
+                make_focus_signal(
+                    signal_id="unit_focus_signal_invalid_manifest",
+                    anchor_groups=[["stericycle"], ["billing"]],
+                    paragraph_hints_curr=[999],
+                )
+            )
+            write_json(pair_path, pair_payload)
+            manifest = make_single_entry_manifest(
+                DEFAULT_PRIMARY_LLM_CAMPAIGN_ID,
+                "public/data/sec_narrative_drift_lab/NVDA/outputs/llm_outline_compare_structured/openai-gpt53codex-xhigh-agent-fullsec-real-2026-02-27/unit_test_output.json",
+                "public/data/sec_narrative_drift_lab/NVDA/outputs/llm_outline_compare_runtime/openai-gpt53codex-xhigh-agent-fullsec-real-2026-02-27/unit_test_output.json",
+            )
+            entry = manifest["entries"][0]
+            entry["input"]["source_path"] = str(pair_path)
+            entry["input"]["source_year_prev_path"] = str(YEAR_PREV_PATH)
+            entry["input"]["source_year_curr_path"] = str(YEAR_CURR_PATH)
+            entry["input"]["integrity"] = {
+                "pair_payload_sha256": input_lock_verify.file_sha256(pair_path),
+                "prev_payload_sha256": input_lock_verify.file_sha256(YEAR_PREV_PATH),
+                "curr_payload_sha256": input_lock_verify.file_sha256(YEAR_CURR_PATH),
+                "prev_paragraph_count": input_lock_verify.year_paragraph_count(YEAR_PREV_PATH),
+                "curr_paragraph_count": input_lock_verify.year_paragraph_count(YEAR_CURR_PATH),
+            }
+            manifest_path = root / "manifest_invalid_focus.json"
+            write_json(manifest_path, manifest)
+            _, issues = input_lock_verify.verify_manifest(manifest_path)
+        self.assertIn("invalid_focus_signal_hint", [issue.code for issue in issues])
+
+
+class TestMasterInputLockVerifier(unittest.TestCase):
+    def _manifest_entry(self) -> tuple[dict[str, Any], str, int, int, str, str, str]:
+        pair_sha = input_lock_verify.file_sha256(PAIR_INPUT_SOURCE_PATH)
+        prev_sha = input_lock_verify.file_sha256(YEAR_PREV_PATH)
+        curr_sha = input_lock_verify.file_sha256(YEAR_CURR_PATH)
+        prev_count = input_lock_verify.year_paragraph_count(YEAR_PREV_PATH)
+        curr_count = input_lock_verify.year_paragraph_count(YEAR_CURR_PATH)
+        if prev_count is None or curr_count is None:
+            self.fail("Fixture year files missing paragraph counts.")
+        manifest = make_single_entry_manifest(
+            DEFAULT_PRIMARY_LLM_CAMPAIGN_ID,
+            "public/data/sec_narrative_drift_lab/NVDA/outputs/llm_outline_compare_structured/openai-gpt53codex-xhigh-agent-fullsec-real-2026-02-27/unit_test_output.json",
+            "public/data/sec_narrative_drift_lab/NVDA/outputs/llm_outline_compare_runtime/openai-gpt53codex-xhigh-agent-fullsec-real-2026-02-27/unit_test_output.json",
+        )
+        entry = manifest["entries"][0]
+        entry["input"]["integrity"] = {
+            "pair_payload_sha256": pair_sha,
+            "prev_payload_sha256": prev_sha,
+            "curr_payload_sha256": curr_sha,
+            "prev_paragraph_count": prev_count,
+            "curr_paragraph_count": curr_count,
+        }
+        return entry, pair_sha, prev_count, curr_count, prev_sha, curr_sha, entry["master_output"]["expected_output_path"]
+
+    def _write_starter(self, path: Path, *, pair_sha: str, prev_sha: str, curr_sha: str, prev_count: int, curr_count: int, output_path: str, runtime_path: str) -> None:
+        payload = {
+            "provenance_input_file": PAIR_INPUT_FILE,
+            "expected_prev_paragraphs": prev_count,
+            "expected_curr_paragraphs": curr_count,
+            "expected_pair_sha256": pair_sha,
+            "expected_prev_sha256": prev_sha,
+            "expected_curr_sha256": curr_sha,
+            "output_path_structured": output_path,
+            "projected_output_path_runtime": runtime_path,
+        }
+        path.write_text("BEGIN_STARTER\nJOB_META\n" + json.dumps(payload, indent=2) + "\nEND_STARTER\n", encoding="utf-8")
+
+    def test_verify_manifest_flags_pair_sha_mismatch(self) -> None:
+        entry, pair_sha, _prev_count, _curr_count, _prev_sha, _curr_sha, _ = self._manifest_entry()
+        with tempfile.TemporaryDirectory() as tmpdir:
+            manifest_path = Path(tmpdir) / "manifest.json"
+            manifest: dict[str, Any] = {
+                "campaign": {"campaign_id": DEFAULT_PRIMARY_LLM_CAMPAIGN_ID},
+                "entries": [entry],
+            }
+            manifest["entries"][0]["input"]["integrity"]["pair_payload_sha256"] = pair_sha[:-1] + ("0" if pair_sha[-1] != "0" else "1")
+            write_json(manifest_path, manifest)
+            _, issues = input_lock_verify.verify_manifest(manifest_path)
+        self.assertIn("manifest_pair_sha_mismatch", [issue.code for issue in issues])
+
+    def test_verify_starters_passes_with_matching_job_meta(self) -> None:
+        entry, pair_sha, prev_count, curr_count, prev_sha, curr_sha, output_path = self._manifest_entry()
+        runtime_path = entry["projected_master_output_runtime"]["expected_output_path"]
+        with tempfile.TemporaryDirectory() as tmpdir:
+            starters_path = Path(tmpdir) / "starters.md"
+            self._write_starter(
+                starters_path,
+                pair_sha=pair_sha,
+                prev_sha=prev_sha,
+                curr_sha=curr_sha,
+                prev_count=prev_count,
+                curr_count=curr_count,
+                output_path=output_path,
+                runtime_path=runtime_path,
+            )
+            issues = input_lock_verify.verify_starters(starters_path, {PAIR_INPUT_FILE: entry})
+        self.assertEqual([], issues)
+
+    def test_verify_starters_flags_pair_sha_mismatch(self) -> None:
+        entry, pair_sha, prev_count, curr_count, prev_sha, curr_sha, output_path = self._manifest_entry()
+        runtime_path = entry["projected_master_output_runtime"]["expected_output_path"]
+        bad_pair_sha = pair_sha[:-1] + ("0" if pair_sha[-1] != "0" else "1")
+        with tempfile.TemporaryDirectory() as tmpdir:
+            starters_path = Path(tmpdir) / "starters.md"
+            self._write_starter(
+                starters_path,
+                pair_sha=bad_pair_sha,
+                prev_sha=prev_sha,
+                curr_sha=curr_sha,
+                prev_count=prev_count,
+                curr_count=curr_count,
+                output_path=output_path,
+                runtime_path=runtime_path,
+            )
+            issues = input_lock_verify.verify_starters(starters_path, {PAIR_INPUT_FILE: entry})
+        self.assertIn("starter_pair_sha_mismatch", [issue.code for issue in issues])
+
+
+    def test_extract_job_meta_blocks_ignores_header_mentions(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            starters_path = Path(tmpdir) / "starters.md"
+            starters_path.write_text(
+                "Includes JOB_META constants and examples.\n"
+                + '{"error":"HARD_FAILURE","reason":"example"}\n'
+                + "JOB_META\n"
+                + json.dumps({"provenance_input_file": PAIR_INPUT_FILE, "expected_prev_paragraphs": 1}, indent=2)
+                + "\n",
+                encoding="utf-8",
+            )
+            blocks = input_lock_verify.extract_job_meta_blocks(starters_path)
+        self.assertEqual(1, len(blocks))
+        self.assertEqual(PAIR_INPUT_FILE, blocks[0].get("provenance_input_file"))
 
 
 if __name__ == "__main__":

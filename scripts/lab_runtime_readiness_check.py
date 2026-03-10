@@ -29,7 +29,7 @@ REQUIRED_DETECTORS = [
     "det_structure_artifacts_v1",
     "det_rbo_agreement_v1",
 ]
-OPTIONAL_LLM_DETECTORS = ["det_llm_delta_brief_v1", "det_llm_excerpt_picker_v1"]
+OPTIONAL_LLM_DETECTORS: list[str] = []
 PAIR_POLICY_LATEST_TWO = "latest_two"
 PAIR_POLICY_FIXED_WINDOW = "fixed_window"
 LEGACY_REQUIRED_ADJACENT_PAIRS = list(
@@ -381,7 +381,8 @@ def main(argv: Optional[list[str]] = None) -> int:
     lines.append("- required_lens: deboilerplated")
     lines.append("- required_source: edgar")
     lines.append(f"- required_detectors: {', '.join(REQUIRED_DETECTORS)}")
-    lines.append(f"- optional_llm_detectors: {', '.join(OPTIONAL_LLM_DETECTORS)}")
+    optional_llm = ", ".join(OPTIONAL_LLM_DETECTORS) if OPTIONAL_LLM_DETECTORS else "none"
+    lines.append(f"- optional_llm_detectors: {optional_llm}")
     lines.append(f"- pair_policy: {args.pair_policy}")
     if args.pair_policy == PAIR_POLICY_FIXED_WINDOW:
         lines.append(

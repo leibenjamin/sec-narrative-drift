@@ -44,7 +44,7 @@ const LAB_TICKER_RE = /^[A-Z0-9.-]{1,10}$/
 const URL_SCHEME_RE = /^[A-Za-z][A-Za-z0-9+.-]*:/
 const DEFAULT_DETERMINISTIC_TRACK_SLUG = "det-baseline-2026-02-21"
 const DEFAULT_PRIMARY_CAMPAIGN_ID = "openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27"
-const DEFAULT_COMPARE_CAMPAIGN_ID = "openai_chatgpt52ext_agent_fullsec_real_2026-02-27"
+const DEFAULT_COMPARE_CAMPAIGN_ID = "openai_chatgpt54ext_agent_fullsec_real_2026-03-06"
 const OUTLINE_COMPARE_STRUCTURED_ARTIFACT_ID = "llm_outline_compare_structured"
 const OUTLINE_COMPARE_ARTIFACT_ID = "llm_outline_compare_runtime"
 const OUTLINE_COMPARE_INSIGHT_ARTIFACT_ID = "llm_outline_compare_insight"
@@ -1082,5 +1082,3 @@ export function formatLabLoadDebug(error: unknown): string | null {
   }
   return "Lab data error: unknown failure."
 }
-
-

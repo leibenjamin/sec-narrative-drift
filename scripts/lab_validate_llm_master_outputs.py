@@ -9,7 +9,11 @@ from pathlib import Path
 from typing import Any, Optional
 
 from lab_script_version import build_script_version
-from lab_output_tracks import DEFAULT_PRIMARY_LLM_CAMPAIGN_ID, get_llm_campaign
+from lab_output_tracks import (
+    DEFAULT_PRIMARY_LLM_CAMPAIGN_ID,
+    get_llm_campaign,
+    get_report_token_for_campaign_id,
+)
 from lab_llm_precompute_utils import as_list, as_str_dict, get_int, get_str, read_json
 from lab_validate_llm_outputs import build_paragraph_maps, resolve_input_file
 
@@ -18,6 +22,7 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_MANIFEST_PATH = REPO_ROOT / "reports" / "lab_llm_master_manifest.json"
 DEFAULT_REPORT_PATH = REPO_ROOT / "reports" / "lab_llm_master_validation.md"
 RUN_LABEL_RE = re.compile(r"^20\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])_[A-Za-z0-9._-]+$")
+REPORT_TOKEN_SANITIZE_RE = re.compile(r"[^A-Za-z0-9._-]+")
 ALLOWED_CHANGE_CLASSES = {
     "added",
     "removed",
@@ -1075,20 +1080,8 @@ def normalize_path_like(path_value: str) -> str:
     return path_value.replace("\\", "/").strip()
 
 
-def _sanitize_token(value: str) -> str:
-    token = re.sub(r"[^a-z0-9]+", "_", value.lower()).strip("_")
-    return token or "campaign"
-
-
 def _campaign_slug_token(campaign_id: str) -> str:
-    campaign = get_llm_campaign(campaign_id)
-    if campaign is not None:
-        if campaign.track_id == "openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27":
-            return "codex_real"
-        if campaign.track_id == "openai_chatgpt52ext_agent_fullsec_real_2026-02-27":
-            return "chatgpt_real"
-        return _sanitize_token(campaign.track_slug)
-    return _sanitize_token(campaign_id)
+    return get_report_token_for_campaign_id(campaign_id)
 
 
 def _artifact_suffix(target_field: str, forced_artifact_id: str, targets: list[MasterTarget]) -> str:
@@ -1124,6 +1117,69 @@ def default_report_path_for_args(
     else:
         filename = f"lab_llm_master_validation_{campaign_token}_{artifact_token}.md"
     return REPO_ROOT / "reports" / filename
+
+
+def _sanitize_report_token(value: str, *, fallback: str = "filtered") -> str:
+    token = REPORT_TOKEN_SANITIZE_RE.sub("_", value.replace("\\", "/").strip())
+    token = token.strip("._-")
+    if not token:
+        return fallback
+    if len(token) > 72:
+        token = token[-72:]
+    return token
+
+
+def default_scratch_report_path_for_args(
+    *,
+    campaign_id: str,
+    target_field: str,
+    artifact_id: str,
+    targets: list[MasterTarget],
+    only: str,
+    only_mode: str,
+) -> Path:
+    campaign_token = _campaign_slug_token(campaign_id)
+    artifact_token = _artifact_suffix(target_field, artifact_id, targets)
+    filter_slug = _sanitize_report_token(only, fallback="filtered")
+    filename = (
+        f"_tmp_validation_{campaign_token}_{artifact_token}_{only_mode}_{filter_slug}.md"
+    )
+    return REPO_ROOT / "reports" / filename
+
+
+def resolve_report_path_for_args(
+    *,
+    report_arg: str,
+    campaign_id: str,
+    target_field: str,
+    artifact_id: str,
+    targets: list[MasterTarget],
+    only: str,
+    only_mode: str,
+) -> tuple[Path, bool]:
+    if report_arg:
+        return Path(report_arg), False
+    if only.strip():
+        return (
+            default_scratch_report_path_for_args(
+                campaign_id=campaign_id,
+                target_field=target_field,
+                artifact_id=artifact_id,
+                targets=targets,
+                only=only,
+                only_mode=only_mode,
+            ),
+            True,
+        )
+    return (
+        default_report_path_for_args(
+            campaign_id=campaign_id,
+            target_field=target_field,
+            artifact_id=artifact_id,
+            targets=targets,
+        ),
+        False,
+    )
 
 
 def matches_only_token(path_value: str, token: str, mode: str) -> bool:
@@ -1210,14 +1266,22 @@ def main(argv: Optional[list[str]] = None) -> int:
         mismatch=mismatch,
     )
     report_arg = str(args.report).strip()
-    report_path = Path(report_arg) if report_arg else default_report_path_for_args(
+    report_path, is_scratch_report = resolve_report_path_for_args(
+        report_arg=report_arg,
         campaign_id=campaign.track_id,
         target_field=str(args.target_field),
         artifact_id=str(args.artifact_id),
         targets=targets,
+        only=str(args.only),
+        only_mode=str(args.only_mode),
     )
     if not report_path.is_absolute():
         report_path = (REPO_ROOT / report_path).resolve()
+    if is_scratch_report:
+        print(
+            f"[note] auto-selected scratch validation report for filtered run: {report_path}",
+            flush=True,
+        )
     print("[phase] write master validation report", flush=True)
     write_text(report_path, report_lines)
     elapsed = int(time.monotonic() - started)

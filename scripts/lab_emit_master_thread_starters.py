@@ -14,6 +14,8 @@ from lab_output_tracks import (
     get_llm_campaign,
 )
 
+from lab_case_focus_expectations import assert_focus_signal_paragraph_hints_valid
+
 SCRIPT_VERSION = build_script_version(Path(__file__), "v1")
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_MANIFEST = REPO_ROOT / "reports" / "lab_llm_master_manifest.json"
@@ -233,6 +235,18 @@ def workspace_display(path: Path) -> str:
         return path.resolve().as_posix()
 
 
+def display_output_format(*, format_name: str, execution_venue: str) -> str:
+    if execution_venue != EXECUTION_VENUE_CHATGPT_DESKTOP:
+        return format_name
+    if format_name == "vscode_autowrite_structured_prod":
+        return "chatgpt_desktop_structured_prod"
+    if format_name == "vscode_autowrite_insight_exp":
+        return "chatgpt_desktop_insight_exp"
+    if format_name.startswith("vscode_"):
+        return format_name.replace("vscode_", "chatgpt_desktop_", 1)
+    return format_name
+
+
 def resolve_from_manifest(
     raw_path: str,
     *,
@@ -267,6 +281,113 @@ def emit_prompt_block(lines: list[str], title: str, block: str) -> None:
     lines.append(title)
     for raw in block.splitlines():
         lines.append(raw.rstrip())
+
+
+def load_analysis_expectations(
+    pair_path: Path,
+    *,
+    prev_paragraph_count: Optional[int],
+    curr_paragraph_count: Optional[int],
+    context: str,
+) -> Optional[dict[str, Any]]:
+    try:
+        payload = read_json(pair_path)
+    except Exception:  # noqa: BLE001
+        return None
+    payload_dict = as_dict(payload)
+    if payload_dict is None:
+        return None
+    analysis_expectations = as_dict(payload_dict.get("analysis_expectations"))
+    if analysis_expectations is None:
+        return None
+    if prev_paragraph_count is None or curr_paragraph_count is None:
+        raise SystemExit(
+            f"Cannot validate analysis_expectations paragraph_hints for {context}: "
+            + "missing prev/curr paragraph counts."
+        )
+    assert_focus_signal_paragraph_hints_valid(
+        analysis_expectations,
+        prev_paragraph_count=prev_paragraph_count,
+        curr_paragraph_count=curr_paragraph_count,
+        context=context,
+    )
+    focus_signals_any = as_list(analysis_expectations.get("focus_signals")) or []
+    focus_signals: list[dict[str, Any]] = []
+    for signal_any in focus_signals_any:
+        signal = as_dict(signal_any)
+        if signal is None:
+            continue
+        normalized: dict[str, Any] = {}
+        for key, value in signal.items():
+            normalized[key] = value
+        focus_signals.append(normalized)
+    if not focus_signals:
+        return None
+    return {"focus_signals": focus_signals}
+
+
+def _format_focus_group(values: list[str]) -> str:
+    return "{" + ", ".join(values) + "}"
+
+
+def _format_focus_hints(signal: dict[str, Any]) -> str:
+    hints = as_dict(signal.get("paragraph_hints")) or {}
+    rendered: list[str] = []
+    for year_key in ("prev", "curr"):
+        indices_any = as_list(hints.get(year_key)) or []
+        indices = [str(item) for item in indices_any if isinstance(item, int)]
+        if indices:
+            rendered.append(f"{year_key}=[{', '.join(indices)}]")
+    return "; ".join(rendered) if rendered else "none"
+
+
+def emit_case_specific_coverage_gate(
+    lines: list[str],
+    analysis_expectations: Optional[dict[str, Any]],
+) -> None:
+    if analysis_expectations is None:
+        return
+    focus_signals_any = as_list(analysis_expectations.get("focus_signals")) or []
+    focus_signals = [as_dict(item) for item in focus_signals_any]
+    focus_signals = [item for item in focus_signals if item is not None]
+    if not focus_signals:
+        return
+    lines.append("CASE-SPECIFIC COVERAGE GATE (required when pair manifest provides analysis_expectations)")
+    lines.append("- The pair manifest includes focus signals that must be satisfied before final JSON.")
+    lines.append("- Inspect the hinted paragraphs directly and test the anchor groups against surfaced analysis, not evidence_bank only.")
+    lines.append("- If a stronger company-specific operational or commercial shift is present, do not bury it behind weaker macro, policy, talent, or generic framing rows.")
+    for signal in focus_signals:
+        signal_id = str(signal.get("id") or "unknown_signal")
+        priority = str(signal.get("priority") or "unspecified")
+        summary = str(signal.get("focus_summary") or "")
+        lines.append(f"- Focus signal `{signal_id}` (priority={priority})")
+        if summary:
+            lines.append(f"  - Focus: {summary}")
+        lines.append(f"  - Paragraph hints: {_format_focus_hints(signal)}")
+        anchor_groups_any = as_list(signal.get("anchor_groups")) or []
+        if anchor_groups_any:
+            lines.append("  - Anchor groups:")
+            for group_any in anchor_groups_any:
+                group = as_list(group_any) or []
+                values = [str(item) for item in group if isinstance(item, str) and item.strip()]
+                if values:
+                    lines.append(f"    - one of {_format_focus_group(values)}")
+        surface_requirements = as_dict(signal.get("surface_requirements")) or {}
+        rank_max = surface_requirements.get("top_material_change_rank_max")
+        required_any_of = as_list(surface_requirements.get("required_any_of_sections")) or []
+        required_any_of_clean = [str(item) for item in required_any_of if isinstance(item, str) and item.strip()]
+        if isinstance(rank_max, int) and rank_max > 0:
+            lines.append(f"  - Required surfacing: top-{rank_max} material_changes row")
+        else:
+            lines.append("  - Required surfacing: material_changes row")
+        if required_any_of_clean:
+            lines.append(
+                "  - Supporting surface: at least one of {"
+                + ", ".join(required_any_of_clean)
+                + "}"
+            )
+    lines.append("- A focus signal is not satisfied by citing the paragraph only in evidence_bank.")
+    lines.append("- If any high-priority focus signal is absent from surfaced sections, revise before final output.")
 
 
 def ensure_insight_manifest_compatible(entries: list[Any]) -> None:
@@ -971,6 +1092,7 @@ def emit_vscode_autowrite_structured_prod_block(
     expected_pair_sha256: str,
     expected_prev_sha256: str,
     expected_curr_sha256: str,
+    analysis_expectations: Optional[dict[str, Any]] = None,
 ) -> None:
     lines.append(f"## Job {job_number:02d} - {ticker} {year_from}-{year_to} {lens}")
     lines.append("COPY FROM NEXT LINE THROUGH END_STARTER AND PASTE INTO A FRESH CODEX THREAD:")
@@ -1064,6 +1186,9 @@ def emit_vscode_autowrite_structured_prod_block(
         "- Keep shallow-reference ratios below strict blocker thresholds: opening<=0.35, concentration<=0.50, unique-ref-ratio>=0.50."
     )
     lines.append("")
+    emit_case_specific_coverage_gate(lines, analysis_expectations)
+    if analysis_expectations is not None:
+        lines.append("")
     lines.append("4) Hard failure policy:")
     lines.append("- If schema requirements cannot be satisfied, do not fabricate data.")
     lines.append('- Return exactly: {"error":"HARD_FAILURE","reason":"<short reason>"}')
@@ -1139,6 +1264,7 @@ def emit_vscode_autowrite_insight_exp_block(
     expected_pair_sha256: str,
     expected_prev_sha256: str,
     expected_curr_sha256: str,
+    analysis_expectations: Optional[dict[str, Any]] = None,
 ) -> None:
     lines.append(f"## Job {job_number:02d} - {ticker} {year_from}-{year_to} {lens}")
     lines.append("COPY FROM NEXT LINE THROUGH END_STARTER AND PASTE INTO A FRESH CODEX THREAD:")
@@ -1236,6 +1362,9 @@ def emit_vscode_autowrite_insight_exp_block(
     )
     lines.append("- All insight evidence_ref_ids must resolve to evidence_map entries.")
     lines.append("")
+    emit_case_specific_coverage_gate(lines, analysis_expectations)
+    if analysis_expectations is not None:
+        lines.append("")
     lines.append("4) Hard failure policy:")
     lines.append("- If schema requirements cannot be satisfied, do not fabricate data.")
     lines.append('- Return exactly: {"error":"HARD_FAILURE","reason":"<short reason>"}')
@@ -1319,6 +1448,7 @@ def emit_chatgpt_desktop_structured_prod_block(
     expected_pair_sha256: str,
     expected_prev_sha256: str,
     expected_curr_sha256: str,
+    analysis_expectations: Optional[dict[str, Any]] = None,
 ) -> None:
     lines.append(f"## Job {job_number:02d} - {ticker} {year_from}-{year_to} {lens}")
     lines.append("COPY FROM NEXT LINE THROUGH END_STARTER AND PASTE INTO A FRESH CHATGPT DESKTOP THREAD:")
@@ -1398,6 +1528,9 @@ def emit_chatgpt_desktop_structured_prod_block(
         "- Keep shallow-reference ratios below strict blocker thresholds: opening<=0.35, concentration<=0.50, unique-ref-ratio>=0.50."
     )
     lines.append("")
+    emit_case_specific_coverage_gate(lines, analysis_expectations)
+    if analysis_expectations is not None:
+        lines.append("")
     lines.append("Hard failure policy:")
     lines.append("- If schema requirements cannot be satisfied, do not fabricate data.")
     lines.append('- Return exactly: {"error":"HARD_FAILURE","reason":"<short reason>"}')
@@ -1462,6 +1595,7 @@ def emit_chatgpt_desktop_insight_exp_block(
     expected_pair_sha256: str,
     expected_prev_sha256: str,
     expected_curr_sha256: str,
+    analysis_expectations: Optional[dict[str, Any]] = None,
 ) -> None:
     lines.append(f"## Job {job_number:02d} - {ticker} {year_from}-{year_to} {lens}")
     lines.append("COPY FROM NEXT LINE THROUGH END_STARTER AND PASTE INTO A FRESH CHATGPT DESKTOP THREAD:")
@@ -1526,6 +1660,9 @@ def emit_chatgpt_desktop_insight_exp_block(
     lines.append("- executive_digest.summary_text must stay within 450-650 words.")
     lines.append("- All insight evidence_ref_ids must resolve to evidence_map entries.")
     lines.append("")
+    emit_case_specific_coverage_gate(lines, analysis_expectations)
+    if analysis_expectations is not None:
+        lines.append("")
     lines.append("Hard failure policy:")
     lines.append("- If schema requirements cannot be satisfied, do not fabricate data.")
     lines.append('- Return exactly: {"error":"HARD_FAILURE","reason":"<short reason>"}')
@@ -1719,14 +1856,14 @@ def main(argv: Optional[list[str]] = None) -> int:
     lines.append(f"- manifest: `{manifest_path.as_posix()}`")
     lines.append(f"- campaign: `{campaign_id}`")
     lines.append(f"- campaign display: `{campaign_name}`")
-    lines.append(f"- output format: `{args.format}`")
+    lines.append(f"- output format: `{display_output_format(format_name=args.format, execution_venue=campaign_execution_venue)}`")
     lines.append("")
     lines.append("Run one thread per pair/lens.")
     if args.format in {"vscode_autowrite", "vscode_autowrite_v2", "vscode_autowrite_v3", "vscode_autowrite_structured_prod", "vscode_autowrite_insight_exp"}:
         if is_chatgpt_desktop_venue:
             lines.append("Each job block includes a BEGIN_STARTER prompt for a fresh ChatGPT Desktop thread plus LOCAL_POSTCHECK terminal commands.")
         else:
-            lines.append("Each job block is paste-ready for a fresh VS Code Codex thread:")
+            lines.append("Each job block is paste-ready for a fresh VS Code agent thread:")
         if is_chatgpt_desktop_venue:
             lines.append("1. Uses only the three attached input files")
         else:
@@ -1820,10 +1957,6 @@ def main(argv: Optional[list[str]] = None) -> int:
             output_insight_raw, bundle_root=None, pair_abs_path=None
         )
         manifest_display = workspace_display(manifest_path)
-        validation_report_display = workspace_display(validation_report_path)
-        quality_report_display = workspace_display(quality_report_path)
-        batch_progress_report_display = workspace_display(batch_progress_report_path)
-        batch_progress_json_display = workspace_display(batch_progress_json_path)
         projected_structured_raw = projected_output_path_structured or derive_structured_output_path_from_insight(output_insight_raw)
         projected_output_display_structured = resolve_from_manifest(
             projected_structured_raw, bundle_root=None, pair_abs_path=None
@@ -1838,6 +1971,12 @@ def main(argv: Optional[list[str]] = None) -> int:
         only_token_runtime = runtime_output_display
         expected_prev_paragraphs = extract_year_paragraph_count(prev_path)
         expected_curr_paragraphs = extract_year_paragraph_count(curr_path)
+        analysis_expectations = load_analysis_expectations(
+            pair_abs,
+            prev_paragraph_count=expected_prev_paragraphs,
+            curr_paragraph_count=expected_curr_paragraphs,
+            context=f"{ticker} {year_from}-{year_to} {section} {lens} {source_id}",
+        )
         run_label_template = build_run_label_template(
             campaign_id=campaign_id,
             ticker=ticker,
@@ -2010,6 +2149,7 @@ def main(argv: Optional[list[str]] = None) -> int:
                 expected_pair_sha256=expected_pair_sha256,
                 expected_prev_sha256=expected_prev_sha256,
                 expected_curr_sha256=expected_curr_sha256,
+                analysis_expectations=analysis_expectations,
             )
             batch_size = max(1, int(args.batch_size))
             if emitted % batch_size == 0 and emitted < total_entries:
@@ -2059,6 +2199,7 @@ def main(argv: Optional[list[str]] = None) -> int:
                 expected_pair_sha256=expected_pair_sha256,
                 expected_prev_sha256=expected_prev_sha256,
                 expected_curr_sha256=expected_curr_sha256,
+                analysis_expectations=analysis_expectations,
             )
             batch_size = max(1, int(args.batch_size))
             if emitted % batch_size == 0 and emitted < total_entries:

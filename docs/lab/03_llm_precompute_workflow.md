@@ -1,151 +1,122 @@
 ﻿# LLM Precompute Workflow (Showcase v3)
 
-Status: canonical manual rerun workflow for Lab (`full_section_v2`, master-structured-first with runtime projection).
+Status: canonical manual outline-compare workflow for the shipped `full_section_v2` experience.
+
+## Current Shipped Scope
+- Active showcase scope is FY2024 -> FY2025 only for `NVDA`, `KO`, `WM`, and `GE`.
+- The shipped model-analysis surface is outline compare.
+- Runtime-visible compare campaigns are:
+  - `openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27`
+  - `openai_chatgpt54ext_agent_fullsec_real_2026-03-06`
+- Pre-registered but runtime-hidden workspace-aware lane:
+  - `anthropic_claudeopus46_claudecode_fullsec_real_2026-03-09`
+- Archive-only compatibility lane:
+  - `openai_chatgpt52ext_agent_fullsec_real_2026-02-27`
 
 ## Canonical Entry Points
 - `docs/lab/04_chatgpt_project_setup.md`
+- `docs/lab/05_llm_reproducibility_contract.md`
 - `docs/lab/07_codex_real_run_profile.md`
+- `docs/lab/09_master_run_troubleshooting_and_sources_of_truth.md`
 - `reports/lab_project_instructions_<campaign_id>.txt`
 - `reports/lab_llm_master_manifest_<campaign>.json`
 - `reports/lab_llm_master_thread_starters_<campaign>.md`
 - `reports/lab_llm_master_validation_<campaign>.md`
-- `reports/lab_llm_manual_rerun_checklist.md` (legacy detector checklist; compatibility only)
-- `scripts/lab_run_fullsec_campaign_pipeline.py` (single-command orchestrator; canonical default is master-manifest flow, legacy detector-manifest only via explicit opt-in)
+- `scripts/lab_run_fullsec_campaign_pipeline.py`
 - `scripts/lab_build_llm_master_manifest.py`
 - `scripts/lab_emit_master_thread_starters.py`
+- `scripts/lab_verify_master_input_locks.py`
+- `scripts/lab_prompt_consistency_check.py`
 - `scripts/lab_validate_llm_master_outputs.py`
+- `scripts/lab_audit_master_output_quality.py`
 - `scripts/lab_record_master_progress.py`
-- `scripts/lab_project_master_to_detectors.py`
-- `scripts/lab_build_portable_master_run_pack.py` (script-free reproducibility export)
+- `scripts/lab_project_master_v2_to_v1.py`
+- `scripts/lab_build_portable_master_run_pack.py`
 
-## Canonical Starter File (Codex Real Runs)
-- Single-source starter file:
-  - `reports/lab_llm_master_thread_starters_codex_real.md`
-- Canonical generation profile:
-  - `scripts/lab_emit_master_thread_starters.py --format vscode_autowrite_structured_prod`
-- Non-canonical compatibility artifacts:
-  - `reports/lab_llm_master_thread_starters_codex_real_v2.md`
-  - `reports/lab_llm_master_thread_starters_codex_real_legacy.md`
+## Canonical Execution Chain
+1. Build or select the active bundle.
+2. Publish `public/data/sec_narrative_drift_lab/llm_inputs_v2` from that bundle.
+3. Rebuild the campaign master manifest.
+4. Emit the matching master thread starters.
+5. Verify master input locks against live bundle files and the public input mirror.
+6. Run prompt consistency against the generated manifest/starters and canonical docs.
+7. Validate outputs, run blocker audit, record batch progress, and refresh campaign/index/readiness metadata.
 
-## Prompt Templates (Campaign-Scoped)
-- Bundle root: `bundles/showcase_llm_inputs_full_section_v2_20260222/`
-- Primary Codex canonical template:
-  - `prompt_templates_showcase.md`
-- Compare ChatGPT template:
-  - `prompt_templates_showcase__openai-chatgpt52ext-agent-fullsec-real-2026-02-27.md`
-  - Lineage note: this compare campaign intentionally keeps the `chatgpt52ext` id/slug token for compatibility.
-  - Active model for new manual runs is `ChatGPT 5.4-Thinking (Extended Thinking)`; run labels use `chatgpt54ext`.
-- Regeneration commands:
-  - `python scripts/lab_write_prompt_templates.py --bundle bundles/showcase_llm_inputs_full_section_v2_20260222 --campaign-id openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27`
-  - `python scripts/lab_write_prompt_templates.py --bundle bundles/showcase_llm_inputs_full_section_v2_20260222 --campaign-id openai_chatgpt52ext_agent_fullsec_real_2026-02-27 --out prompt_templates_showcase__openai-chatgpt52ext-agent-fullsec-real-2026-02-27.md`
-- Consistency checker behavior:
-  - If `--prompt-templates` is omitted, primary campaign checks `prompt_templates_showcase.md`.
-  - Non-primary campaigns require `prompt_templates_showcase__<track_slug>.md` and hard-fail with a remediation command when missing.
+## Canonical Manual Authoring Unit
+- Manual authoring artifact: `llm_outline_compare_structured`
+- Deterministic runtime artifact: `llm_outline_compare_runtime`
+- Optional experimental sidecar: `llm_outline_compare_insight`
 
-## Runtime Truth (Current Push)
-- Runtime policy is real-run LLM evidence only.
-- Runtime-visible campaign: `openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27` (manual lane; artifacts may be missing until jobs are completed).
-- Runtime-hidden pending campaign: `openai_chatgpt52ext_agent_fullsec_real_2026-02-27` (enable only after strict-valid coverage).
-- Synthetic full-section campaigns (`*_fullsec_2026-02-22`) remain on disk for audit history only and are hidden in runtime selectors.
-- `focuspack_v1` campaigns remain on disk for audit history only and are hidden in runtime selectors.
-- Runtime case scope is anchored to FY2024->FY2025 for Core4 (`NVDA`, `KO`, `WM`, `GE`) for current showcase comparability.
-- For pairs without LLM sidecars, runtime remains deterministic-first with explicit LLM missing/debug states.
-- Fiscal-year caveat: annual filings may be filed in the next calendar year; pair selection follows fiscal years derived from `reportDate`/`filingDate`.
+`llm_outline_compare_structured` is the only canonical manual authoring unit for the current shipped compare workflow.
 
-## Zero-Touch Output Rule
-- LLM outputs are runtime-static artifacts, generated offline.
-- Each structured output should be directly saveable to canonical path as valid JSON.
-- Each structured output should then project deterministically to canonical runtime path.
-- Avoid post-generation patching and reconciliation as a normal step.
-- If recurring issues appear, improve prompt blocks and thread starters first.
-
-## Job-Pass Contract (One-Paste Hardened)
-Each manual master job is considered PASS only when all of the following are true:
-- Exactly one `PRECHECK_OK ...` line is printed.
-- Preflight paragraph counts are read from `texts.paragraphs` in the year payloads.
-- structured output JSON write succeeds at the canonical path.
-- structured to runtime projection succeeds to runtime path.
-- Shell-safe parse check succeeds (`JSON_OK` expected).
-- `scripts/lab_validate_llm_master_outputs.py` runs with strict single-target controls:
-  - `--only-mode exact_path`
-  - `--expect-target-count 1`
-  - `--fail-if-target-count-mismatch`
-- Master quality blocker audit passes:
-  - `python scripts/lab_audit_master_output_quality.py --output "<path>" --mode blockers --strict-depth ...`
-- Exactly one final status line is printed:
-  - success: `WRITE_OK JSON_OK VALIDATION_OK`
-  - failure: `FAILED: ...`
+## Output Rule
+- LLM outputs are generated offline and committed as static JSON artifacts.
+- Operators should save structured JSON directly to the canonical structured output path when the client has workspace access.
+- Runtime compare JSON is created later by deterministic projection, not by a second model run.
+- Do not normalize low-quality outputs by hand-editing content. Fix prompts, starters, or rerun the job instead.
 
 ## Canonical Job Counts
-- Master jobs per campaign in current Core4 FY2024->FY2025 anchored scope: `4 pairs x 2 lenses = 8`.
-- Projection outputs per campaign (legacy detector compatibility) in current scope: `8 x 2 detectors = 16`.
-- Prefer master-first execution; do not run detector-by-detector manual jobs as primary workflow.
+- Current scope per campaign: `4` tickers x `2` lenses = `8` structured jobs.
+- Deterministic runtime projection per campaign: `8` runtime outputs.
+- Insight artifacts are optional and are not required for shipped compare availability.
 
 ## Canonical Paths
-- Output path:
-  `public/data/sec_narrative_drift_lab/<TICKER>/outputs/<detector_id>/<track_slug>/lab_<detector_id>_10k_item1a_<YEAR_FROM>_<YEAR_TO>_<LENS>_edgar__<track_slug>.json`
-- Input attachment paths (full_section_v2):
-  - Pair manifest: `bundles/llm_run_pack_<UTCSTAMP>_<CAMPAIGN_ID>/inputs/pair/<TICKER>_<YEAR_FROM>_<YEAR_TO>_10k_item1a_<LENS>_edgar.json`
-  - Year prev: `bundles/llm_run_pack_<UTCSTAMP>_<CAMPAIGN_ID>/inputs/year/<TICKER>_<YEAR_FROM>_10k_item1a_<LENS>_edgar__pair_<YEAR_FROM>_<YEAR_TO>.json`
-  - Year curr: `bundles/llm_run_pack_<UTCSTAMP>_<CAMPAIGN_ID>/inputs/year/<TICKER>_<YEAR_TO>_10k_item1a_<LENS>_edgar__pair_<YEAR_FROM>_<YEAR_TO>.json`
-- Public mirror for runtime transparency:
+- Structured output path:
+  `public/data/sec_narrative_drift_lab/<TICKER>/outputs/llm_outline_compare_structured/<track_slug>/lab_llm_outline_compare_structured_10k_item1a_<YEAR_FROM>_<YEAR_TO>_<LENS>_edgar__<track_slug>.json`
+- Runtime output path:
+  `public/data/sec_narrative_drift_lab/<TICKER>/outputs/llm_outline_compare_runtime/<track_slug>/lab_llm_outline_compare_runtime_10k_item1a_<YEAR_FROM>_<YEAR_TO>_<LENS>_edgar__<track_slug>.json`
+- Full-section input mirror:
   - `public/data/sec_narrative_drift_lab/llm_inputs_v2/inputs/pair/...`
   - `public/data/sec_narrative_drift_lab/llm_inputs_v2/inputs/year/...`
-- `provenance.input_file` value:
+- Canonical `provenance.input_file` value:
   `inputs/pair/<TICKER>_<YEAR_FROM>_<YEAR_TO>_10k_item1a_<LENS>_edgar.json`
+- Local bundle pair manifests may include optional `analysis_expectations.focus_signals` metadata for hard manual-run cases.
+- That metadata is for starter/audit hardening only and does not change shipped compare artifact schemas.
+- `analysis_expectations.paragraph_hints` are fail-fast canonical inputs: if a hint falls outside the linked year arrays, fix the source expectations first and regenerate downstream artifacts.
+- Raw-lens reruns may lightly normalize only non-evidence display titles/labels when correcting obvious extraction artifacts; do not hand-edit committed output JSON.
 
-## Source Canonical Note
-- Canonical full-section source for this push is:
-  `scripts/_reports/risk_extraction_bundle/sections/<TICKER>_<YEAR>_item_1a.txt`.
-- `data/sec_cache` and `scripts/_cache` are audit references, not canonical replacements in this release.
-- See `reports/lab_full_section_source_audit.md` for deterministic source/deboiler comparisons.
+## Rerun By Venue
+- ChatGPT Desktop campaigns run directly from the thread starter plus the three attached input files.
+- Workspace-aware Codex and Claude Code campaigns run from declared workspace paths and may write artifacts locally.
+- If starter/input files are reused outside the original workspace, users must update workspace-relative file paths before rerun.
+- End-user formatting for self-run outputs is a planned follow-up helper and is not part of the current canonical pipeline.
 
-## Required Provenance for Manual Runs
-- `input_file` (required)
-- `model_provider` (required)
-- `model_name` (required)
-- `run_label` (required; must start with `YYYY-MM-DD_`)
-
-## Canonical Validation Loop
-1. Wave progress (Codex real):
-   `python scripts/lab_validate_llm_master_outputs.py --manifest reports/lab_llm_master_manifest_codex_real.json --campaign-id openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27 --allow-missing --allow-invalid --report reports/lab_llm_master_validation_codex_real.md`
-2. Wave progress (ChatGPT real):
-   `python scripts/lab_validate_llm_master_outputs.py --manifest reports/lab_llm_master_manifest_chatgpt_real.json --campaign-id openai_chatgpt52ext_agent_fullsec_real_2026-02-27 --allow-missing --allow-invalid --report reports/lab_llm_master_validation_chatgpt_real.md`
-3. Master quality audit (blockers):
-   `python scripts/lab_audit_master_output_quality.py --manifest reports/lab_llm_master_manifest_<campaign>.json --campaign-id <campaign_id> --allow-missing --mode blockers --strict-depth --report reports/lab_llm_master_quality_<campaign>.md`
-4. Checkpoint progress capture:
-   `python scripts/lab_record_master_progress.py --manifest reports/lab_llm_master_manifest_<campaign>.json --campaign-id <campaign_id> --report-md reports/lab_llm_master_batch_progress_<campaign>.md --history-json reports/lab_llm_master_batch_progress_<campaign>.json --label after_job_XX`
-5. Deterministic gates:
-   `npm run lab:predeploy`
-   `npm run lab:readiness`
-   `npm run build`
+## Validation Loop
+1. Validate structured outputs against the campaign manifest.
+2. Run blocker quality audit, including `--strict-depth` when required.
+3. Project structured outputs to runtime via `scripts/lab_project_master_v2_to_v1.py`.
+4. Validate runtime outputs.
+5. Refresh campaign progress, variants, and readiness metadata.
+6. Run deterministic repo gates:
+   - `npm run lab:predeploy`
+   - `npm run lab:readiness`
+   - `npm run build`
 
 ## Prompt Consistency Commands
 - Codex real:
-  - `python scripts/lab_prompt_consistency_check.py --bundle bundles/showcase_llm_inputs_full_section_v2_20260222 --campaign-id openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27`
+  - `python scripts/lab_prompt_consistency_check.py --bundle bundles/showcase_llm_inputs_full_section_v2_20260305_2425anchor --campaign-id openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27`
 - ChatGPT real:
-  - `python scripts/lab_prompt_consistency_check.py --bundle bundles/showcase_llm_inputs_full_section_v2_20260222 --campaign-id openai_chatgpt52ext_agent_fullsec_real_2026-02-27 --master-starters reports/lab_llm_master_thread_starters_chatgpt_real.md --master-manifest reports/lab_llm_master_manifest_chatgpt_real.json`
+  - `python scripts/lab_prompt_consistency_check.py --bundle bundles/showcase_llm_inputs_full_section_v2_20260305_2425anchor --campaign-id openai_chatgpt54ext_agent_fullsec_real_2026-03-06 --master-starters reports/lab_llm_master_thread_starters_chatgpt_real.md --master-manifest reports/lab_llm_master_manifest_chatgpt_real.json`
+- Codex insight:
+  - `python scripts/lab_prompt_consistency_check.py --bundle bundles/showcase_llm_inputs_full_section_v2_20260305_2425anchor --campaign-id openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27 --master-starters reports/lab_llm_master_thread_starters_codex_real_insight.md --master-manifest reports/lab_llm_master_manifest_codex_real_insight.json`
 
-## Orchestrated Pipeline (Recommended)
-- Codex full-section real-manual lane (canonical master-manifest mode):
+## Lock Verification Commands
+- Codex real:
+  - `python scripts/lab_verify_master_input_locks.py --bundle bundles/showcase_llm_inputs_full_section_v2_20260305_2425anchor --campaign-id openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27 --master-manifest reports/lab_llm_master_manifest_codex_real.json --master-starters reports/lab_llm_master_thread_starters_codex_real.md`
+- ChatGPT real:
+  - `python scripts/lab_verify_master_input_locks.py --bundle bundles/showcase_llm_inputs_full_section_v2_20260305_2425anchor --campaign-id openai_chatgpt54ext_agent_fullsec_real_2026-03-06 --master-manifest reports/lab_llm_master_manifest_chatgpt_real.json --master-starters reports/lab_llm_master_thread_starters_chatgpt_real.md`
+- Codex insight:
+  - `python scripts/lab_verify_master_input_locks.py --bundle bundles/showcase_llm_inputs_full_section_v2_20260305_2425anchor --campaign-id openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27 --master-manifest reports/lab_llm_master_manifest_codex_real_insight.json --master-starters reports/lab_llm_master_thread_starters_codex_real_insight.md`
+
+## Recommended Orchestrated Runs
+- Codex real-manual lane:
   - `python scripts/lab_run_fullsec_campaign_pipeline.py --campaign-id openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27 --run-day YYYY-MM-DD --skip-generate --allow-missing --allow-invalid`
-- ChatGPT full-section real-manual lane (canonical master-manifest mode):
-  - `python scripts/lab_run_fullsec_campaign_pipeline.py --campaign-id openai_chatgpt52ext_agent_fullsec_real_2026-02-27 --run-day YYYY-MM-DD --skip-generate --allow-missing --allow-invalid`
-- Legacy detector-manifest compatibility path (explicit opt-in only):
-  - `python scripts/lab_run_fullsec_campaign_pipeline.py --campaign-id <campaign_id> --legacy-detector-manifest --allow-missing --allow-invalid`
-- Publish step behavior:
-  - `scripts/lab_publish_llm_inputs_v2.py` now cleans stale mirror files by default.
-  - Pass `--no-clean` only when explicitly preserving existing mirror files.
+- ChatGPT real-manual lane:
+  - `python scripts/lab_run_fullsec_campaign_pipeline.py --campaign-id openai_chatgpt54ext_agent_fullsec_real_2026-03-06 --run-day YYYY-MM-DD --skip-generate --allow-missing --allow-invalid`
+- Claude Code real-manual lane:
+  - `python scripts/lab_run_fullsec_campaign_pipeline.py --campaign-id anthropic_claudeopus46_claudecode_fullsec_real_2026-03-09 --run-day YYYY-MM-DD --skip-generate --allow-missing --allow-invalid`
 
-## Legacy Notice
-Older queue and ingest flow docs remain for history and compatibility checks only.
-They are non-canonical for current showcase manual reruns.
-Legacy `focuspack_v1` inputs remain on disk for audit only and are runtime-hidden.
-Detector-first validator flow via `scripts/lab_validate_llm_manifest_outputs.py` remains compatibility-only.
-
-
-
-
-
-
-
+## Legacy Note
+- Older `focuspack_v1` campaigns remain on disk for archive and audit only.
+- Older detector-shaped LLM artifacts (`det_llm_delta_brief_v1`, `det_llm_excerpt_picker_v1`) are archive-only and are not part of the active shipped runtime surface.
+- Detector-first validator flows remain compatibility-only and should not drive the current showcase workflow.

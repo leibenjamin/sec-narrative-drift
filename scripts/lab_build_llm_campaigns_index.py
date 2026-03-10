@@ -39,11 +39,12 @@ def build_payload(
     verbose_progress: bool = False,
     progress_interval_sec: int = 300,
 ) -> dict[str, Any]:
+    public_campaigns = [campaign for campaign in LLM_CAMPAIGNS if campaign.runtime_visible]
     campaigns: list[dict[str, Any]] = []
     started = time.monotonic()
     last_heartbeat = started
-    total = len(LLM_CAMPAIGNS)
-    for index, campaign in enumerate(LLM_CAMPAIGNS, start=1):
+    total = len(public_campaigns)
+    for index, campaign in enumerate(public_campaigns, start=1):
         campaigns.append(
             {
                 "campaign_id": campaign.track_id,
@@ -78,7 +79,7 @@ def build_payload(
         "provenance": {
             "script_version": SCRIPT_VERSION,
             "notes": [
-                "Generated from scripts/lab_output_tracks.py",
+                "Generated from scripts/lab_output_tracks.py (runtime-visible campaigns only)",
                 "Day-precise run label contract: YYYY-MM-DD_<campaign_tag>",
             ],
         },

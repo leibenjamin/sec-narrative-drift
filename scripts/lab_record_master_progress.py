@@ -10,7 +10,11 @@ from pathlib import Path
 from typing import Any, Optional, cast
 
 from lab_audit_master_output_quality import evaluate_output
-from lab_output_tracks import DEFAULT_PRIMARY_LLM_CAMPAIGN_ID, get_llm_campaign
+from lab_output_tracks import (
+    DEFAULT_PRIMARY_LLM_CAMPAIGN_ID,
+    get_llm_campaign,
+    get_report_token_for_campaign_id,
+)
 from lab_script_version import build_script_version
 from lab_validate_llm_master_outputs import (
     REPO_ROOT,
@@ -23,21 +27,8 @@ SCRIPT_VERSION = build_script_version(Path(__file__), "v1")
 DEFAULT_MANIFEST_PATH = REPO_ROOT / "reports" / "lab_llm_master_manifest.json"
 
 
-def _sanitize_token(value: str) -> str:
-    cleaned = re.sub(r"[^a-zA-Z0-9]+", "_", value.strip().lower())
-    cleaned = cleaned.strip("_")
-    return cleaned or "unknown"
-
-
 def _campaign_slug_token(campaign_id: str) -> str:
-    campaign = get_llm_campaign(campaign_id)
-    if campaign is not None:
-        if campaign.track_id == "openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27":
-            return "codex_real"
-        if campaign.track_id == "openai_chatgpt52ext_agent_fullsec_real_2026-02-27":
-            return "chatgpt_real"
-        return _sanitize_token(campaign.track_slug)
-    return _sanitize_token(campaign_id)
+    return get_report_token_for_campaign_id(campaign_id)
 
 
 def default_report_md_for_campaign(campaign_id: str) -> Path:

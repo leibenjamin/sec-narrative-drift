@@ -336,7 +336,7 @@ def build_lines(
     lines.append("- Keep `provenance.input_file` exactly `inputs/pair/<TICKER>_<FROM>_<TO>_<SECTION>_<LENS>_<SOURCE>.json`.")
     lines.append(f"- Keep `provenance.model_provider` exactly `{model_provider}` (required).")
     lines.append(f"- Keep `provenance.model_name` exactly `{model_name}` (required).")
-    lines.append("- Keep `provenance.run_label` required with `YYYY-MM-DD_` prefix (example: `2026-02-21_openai_chatgpt52ext_wave_nvda_2021_2022_delta`).")
+    lines.append("- Keep `provenance.run_label` required with `YYYY-MM-DD_` prefix (example: `2026-03-06_openai_chatgpt54ext_fullsec_real_nvda_2024_2025_outline_compare`).")
     lines.append("- Do not include extra provenance keys.")
     lines.append('- Delta citations must be ASCII-only format: `"YYYY para NN"`.')
     lines.append("- Do not add top-level keys such as `section_id`.")

@@ -12,6 +12,7 @@ from typing import Optional
 SCRIPT_VERSION = "lab_build_health_review_pack.py@v1"
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
+ATTIC_ROOT = REPO_ROOT / "attic"
 BUNDLES_ROOT = REPO_ROOT / "bundles"
 
 REGISTRY_PATH = Path("public/data/sec_narrative_drift_lab/lab_cases_v1.json")
@@ -22,7 +23,6 @@ WORKSPACE_HANDOFF_PATH = Path("reports/lab_workspace_handoff.md")
 CHANGED_SOURCE_FILES = [
     "src/lib/paths.ts",
     "src/lib/labData.ts",
-    "src/lib/data.ts",
     "src/components/LabPanel.tsx",
     "src/components/MethodCard.tsx",
     "scripts/lab_build_cases_health_reports.py",
@@ -31,10 +31,11 @@ CHANGED_SOURCE_FILES = [
 
 CORE_CONTEXT_FILES = [
     "AGENTS.md",
-    "docs/00_README_doc_index.md",
-    "docs/sec_narrative_drift_codex_spec_v1_13.md",
-    "docs/sec_narrative_drift_codex_implementation_checklist_v1_13.md",
-    "docs/lab/00_LAB_CANONICAL_SPEC.md",
+    "docs/00_DOC_INDEX.md",
+    "docs/_archive/legacy_context_20260302/sec_narrative_drift_codex_spec_v1_13.md",
+    "docs/_archive/legacy_context_20260302/sec_narrative_drift_codex_implementation_checklist_v1_13.md",
+    "docs/LAB_ARCHITECTURE_AND_GOALS.md",
+    "docs/lab/05_llm_reproducibility_contract.md",
     "src/lib/labSchemas.ts",
     "src/lib/labTypes.ts",
     "src/components/AgreementMatrix.tsx",
@@ -91,9 +92,12 @@ def build_parser() -> argparse.ArgumentParser:
 
 def must_exist(rel_path: str) -> Path:
     path = REPO_ROOT / rel_path
-    if not path.exists() or not path.is_file():
-        raise SystemExit(f"Missing required file for review pack: {rel_path}")
-    return path
+    if path.exists() and path.is_file():
+        return path
+    attic_path = ATTIC_ROOT / rel_path
+    if attic_path.exists() and attic_path.is_file():
+        return attic_path
+    raise SystemExit(f"Missing required file for review pack: {rel_path}")
 
 
 def build_file_list() -> list[str]:
@@ -106,19 +110,25 @@ def build_file_list() -> list[str]:
         seen.add(rel_path)
         files.append(rel_path)
 
+    def add_if_available(rel_path: str) -> None:
+        candidate = REPO_ROOT / rel_path
+        attic_candidate = ATTIC_ROOT / rel_path
+        if candidate.exists() or attic_candidate.exists():
+            add(rel_path)
+
     add(str(REGISTRY_PATH).replace("\\", "/"))
     add(str(HEALTH_REPORT_PATH).replace("\\", "/"))
     add(str(SUMMARY_REPORT_PATH).replace("\\", "/"))
     add(str(WORKSPACE_HANDOFF_PATH).replace("\\", "/"))
 
     for rel_path in CHANGED_SOURCE_FILES:
-        add(rel_path)
+        add_if_available(rel_path)
     for rel_path in CORE_CONTEXT_FILES:
-        add(rel_path)
+        add_if_available(rel_path)
     for rel_path in KO_SAMPLE_OUTPUTS:
-        add(rel_path)
+        add_if_available(rel_path)
     for rel_path in NVDA_SAMPLE_OUTPUTS:
-        add(rel_path)
+        add_if_available(rel_path)
 
     return files
 
@@ -144,31 +154,9 @@ def build_readme(file_paths: list[str], timestamp: str) -> str:
     lines.append("- KO 2023-2024 sample outputs and NVDA 2023-2024 sample outputs.")
     lines.append("- Core Lab scripts/spec/context files and workspace handoff map.")
     lines.append("")
-    lines.append("## KO Expected Output Paths (2023-2024)")
-    lines.append(
-        "- public/data/sec_narrative_drift_lab/KO/outputs/det_logodds_terms_v1/lab_10k_item1a_2023_2024_det_logodds_terms_v1_deboilerplated_edgar.json"
-    )
-    lines.append(
-        "- public/data/sec_narrative_drift_lab/KO/outputs/det_jsd_ngrams_v1/lab_10k_item1a_2023_2024_det_jsd_ngrams_v1_deboilerplated_edgar.json"
-    )
-    lines.append(
-        "- public/data/sec_narrative_drift_lab/KO/outputs/det_minhash_boilerplate_v1/lab_10k_item1a_2023_2024_det_minhash_boilerplate_v1_deboilerplated_edgar.json"
-    )
-    lines.append(
-        "- public/data/sec_narrative_drift_lab/KO/outputs/det_winnowing_fingerprint_v1/lab_10k_item1a_2023_2024_det_winnowing_fingerprint_v1_deboilerplated_edgar.json"
-    )
-    lines.append(
-        "- public/data/sec_narrative_drift_lab/KO/outputs/det_structure_artifacts_v1/lab_10k_item1a_2023_2024_det_structure_artifacts_v1_deboilerplated_edgar.json"
-    )
-    lines.append(
-        "- public/data/sec_narrative_drift_lab/KO/outputs/det_rbo_agreement_v1/lab_10k_item1a_2023_2024_det_rbo_agreement_v1_deboilerplated_edgar.json"
-    )
-    lines.append(
-        "- public/data/sec_narrative_drift_lab/KO/outputs/det_llm_delta_brief_v1/lab_det_llm_delta_brief_v1_10k_item1a_2023_2024_focuspack_deboilerplated.json"
-    )
-    lines.append(
-        "- public/data/sec_narrative_drift_lab/KO/outputs/det_llm_excerpt_picker_v1/lab_det_llm_excerpt_picker_v1_10k_item1a_2023_2024_focuspack_deboilerplated.json"
-    )
+    lines.append("## Sample Output Inclusion")
+    lines.append("- Sample output files are included when they are present in the current workspace or archived under attic/.")
+    lines.append("- Active runtime outputs stay under public/data/sec_narrative_drift_lab/; legacy archaeology files may be sourced from attic/.")
     lines.append("")
     lines.append("## File Count")
     lines.append(f"- {len(file_paths)} files (plus README.md and manifest.json)")

@@ -12,7 +12,11 @@ from pathlib import Path
 from typing import Any, Optional, cast
 
 from lab_script_version import build_script_version
-from lab_output_tracks import LEGACY_FIXED_WINDOW_RUNTIME_CASES, pick_latest_adjacent_pair
+from lab_output_tracks import (
+    DETERMINISTIC_DETECTORS,
+    LEGACY_FIXED_WINDOW_RUNTIME_CASES,
+    pick_latest_adjacent_pair,
+)
 
 SCRIPT_VERSION = build_script_version(Path(__file__), "v2")
 
@@ -43,16 +47,7 @@ DEFAULT_YEAR_MAX = 2030
 PAIR_POLICY_LATEST_TWO = "latest_two"
 PAIR_POLICY_FIXED_WINDOW = "fixed_window"
 
-DETECTOR_ORDER = [
-    "det_logodds_terms_v1",
-    "det_jsd_ngrams_v1",
-    "det_minhash_boilerplate_v1",
-    "det_winnowing_fingerprint_v1",
-    "det_structure_artifacts_v1",
-    "det_rbo_agreement_v1",
-    "det_llm_delta_brief_v1",
-    "det_llm_excerpt_picker_v1",
-]
+DETECTOR_ORDER = list(DETERMINISTIC_DETECTORS)
 LENS_ORDER = ["raw", "deboilerplated", "stage1_clean", "structure_aware"]
 
 
@@ -256,6 +251,8 @@ def parse_lab_output(path: Path) -> Optional[LabOutputRecord]:
     if cleaning_lens not in VALID_LENSES:
         return None
     if source_id not in VALID_SOURCES:
+        return None
+    if detector_id not in DETECTOR_ORDER:
         return None
 
     yf = min(year_from, year_to)

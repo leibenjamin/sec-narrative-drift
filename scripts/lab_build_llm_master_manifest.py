@@ -10,11 +10,9 @@ from typing import Any, Optional
 from lab_script_version import build_script_version
 from lab_output_tracks import (
     DEFAULT_PRIMARY_LLM_CAMPAIGN_ID,
-    LLM_DETECTORS,
     canonical_outline_runtime_relative_path,
     canonical_outline_structured_relative_path,
     canonical_outline_insight_relative_path,
-    canonical_output_relative_path,
     get_llm_campaign,
     pick_latest_adjacent_pair,
 )
@@ -365,25 +363,6 @@ def main(argv: Optional[list[str]] = None) -> int:
                 runtime_repo_path = f"public/data/sec_narrative_drift_lab/{runtime_rel}"
                 runtime_present = (REPO_ROOT / runtime_repo_path).exists()
                 projection_outputs: list[dict[str, Any]] = []
-                for detector_id in LLM_DETECTORS:
-                    rel = canonical_output_relative_path(
-                        ticker=ticker,
-                        detector_id=detector_id,
-                        section=args.section,
-                        year_from=year_from,
-                        year_to=year_to,
-                        cleaning_lens=lens,
-                        source_id=args.source_id,
-                        track_slug=campaign.track_slug,
-                    )
-                    repo_path = f"public/data/sec_narrative_drift_lab/{rel}"
-                    projection_outputs.append(
-                        {
-                            "detector_id": detector_id,
-                            "expected_output_path": repo_path,
-                            "present": (REPO_ROOT / repo_path).exists(),
-                        }
-                    )
 
                 entries.append(
                     {
@@ -473,7 +452,7 @@ def main(argv: Optional[list[str]] = None) -> int:
             if args.master_artifact_id == "llm_outline_compare_insight"
             else None,
             "runtime_projected_artifact_id": "llm_outline_compare_runtime",
-            "projection_detectors": list(LLM_DETECTORS),
+            "projection_detectors": [],
         },
         "bundle_root": to_repo_relative(bundle_paths.bundle_root),
         "pair_index_path": to_repo_relative(bundle_paths.pair_index_v2),
@@ -508,16 +487,16 @@ def main(argv: Optional[list[str]] = None) -> int:
         report_header = (
             "| Ticker | Pair | Lens | Input | "
             + master_column_label
-            + " | Projected structured | Runtime | Delta | Excerpt |"
+            + " | Projected structured | Runtime |"
         )
-        report_separator = "| --- | --- | --- | --- | --- | --- | --- | --- | --- |"
+        report_separator = "| --- | --- | --- | --- | --- | --- | --- |"
     else:
         report_header = (
             "| Ticker | Pair | Lens | Input | "
             + master_column_label
-            + " | Runtime | Delta | Excerpt |"
+            + " | Runtime |"
         )
-        report_separator = "| --- | --- | --- | --- | --- | --- | --- | --- |"
+        report_separator = "| --- | --- | --- | --- | --- | --- |"
 
     report_lines = [
         "# LLM Master Manifest",
@@ -547,11 +526,6 @@ def main(argv: Optional[list[str]] = None) -> int:
         projected_structured: dict[str, Any] | None = entry.get("projected_master_output_structured")
         if isinstance(projected_structured, dict):
             projected_structured_state = "present" if projected_structured.get("present") else "missing"
-        detector_states: dict[str, str] = {}
-        for detector in entry["projection_outputs"]:
-            detector_states[detector["detector_id"]] = (
-                "present" if detector["present"] else "missing"
-            )
         row_values = [
             str(entry["ticker"]),
             pair_label,
@@ -561,13 +535,7 @@ def main(argv: Optional[list[str]] = None) -> int:
         ]
         if args.master_artifact_id == "llm_outline_compare_insight":
             row_values.append(projected_structured_state)
-        row_values.extend(
-            [
-                runtime_state,
-                detector_states.get("det_llm_delta_brief_v1", "-"),
-                detector_states.get("det_llm_excerpt_picker_v1", "-"),
-            ]
-        )
+        row_values.append(runtime_state)
         report_lines.append("| " + " | ".join(row_values) + " |")
     report_lines.append("")
     report_lines.append("## Missing Inputs")

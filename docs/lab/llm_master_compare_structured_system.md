@@ -10,7 +10,9 @@ Operating constraints:
 - Every snippet must be contiguous and verbatim from mapped paragraph text.
 - Prefer contiguous snippets that end on sentence or clause boundaries when available within the 350-char cap.
 - Avoid snippets that begin with page-number artifacts unless the artifact is required to preserve evidentiary meaning.
+- For raw-lens outputs, `material_changes.title` and outline `label` fields may lightly normalize obvious extraction artifacts when the wording preserves filing meaning and retains anchor terms from cited evidence.
 - Keep provenance exact: `input_file`, `model_provider`, `model_name`, `run_label`.
+- Use non-flat salience only when the filing evidence supports rank separation; do not manufacture precision unsupported by the text.
 
 Failure policy:
 - If any required input file cannot be read or parsed, do not fabricate output.

@@ -8,6 +8,11 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Optional
 
+from lab_output_tracks import (
+    DEFAULT_PRIMARY_LLM_CAMPAIGN_ID,
+    get_llm_campaign,
+    get_report_token_for_campaign_id,
+)
 from lab_script_version import build_script_version
 
 SCRIPT_VERSION = build_script_version(Path(__file__), "v1")
@@ -18,6 +23,8 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 class PipelinePaths:
     manifest_md: Path
     manifest_json: Path
+    starter_report: Path
+    lock_report: Path
     validation_report: Path
     quality_report: Path
     progress_report_md: Path
@@ -46,12 +53,7 @@ def run_cmd(args: list[str]) -> None:
 
 
 def campaign_slug_token(campaign_id: str) -> str:
-    if "chatgpt52ext" in campaign_id:
-        return "chatgpt_real"
-    if "gpt53codex_xhigh" in campaign_id:
-        return "codex_real"
-    sanitized = "".join(ch if ch.isalnum() else "_" for ch in campaign_id.lower())
-    return sanitized.strip("_") or "campaign"
+    return get_report_token_for_campaign_id(campaign_id)
 
 
 def artifact_slug_token(master_artifact_id: str) -> str:
@@ -60,30 +62,44 @@ def artifact_slug_token(master_artifact_id: str) -> str:
     return "structured"
 
 
+def master_starter_format(master_artifact_id: str) -> str:
+    if master_artifact_id == "llm_outline_compare_insight":
+        return "vscode_autowrite_insight_exp"
+    return "vscode_autowrite_structured_prod"
+
+
 def default_master_paths(campaign_id: str, master_artifact_id: str) -> PipelinePaths:
     campaign_token = campaign_slug_token(campaign_id)
     artifact_token = artifact_slug_token(master_artifact_id)
 
     manifest_base = f"lab_llm_master_manifest_{campaign_token}"
+    starter_base = f"lab_llm_master_thread_starters_{campaign_token}"
     validation_base = f"lab_llm_master_validation_{campaign_token}"
     quality_base = f"lab_llm_master_quality_{campaign_token}_{artifact_token}"
+    lock_base = f"lab_llm_master_input_locks_{campaign_token}_{artifact_token}"
 
+    progress_base = f"lab_llm_master_batch_progress_{campaign_token}"
     if artifact_token == "insight":
         manifest_base = f"{manifest_base}_insight"
+        starter_base = f"{starter_base}_insight"
         validation_base = f"{validation_base}_insight"
+        progress_base = f"{progress_base}_insight"
 
     return PipelinePaths(
         manifest_md=REPO_ROOT / "reports" / f"{manifest_base}.md",
         manifest_json=REPO_ROOT / "reports" / f"{manifest_base}.json",
+        starter_report=REPO_ROOT / "reports" / f"{starter_base}.md",
+        lock_report=REPO_ROOT / "reports" / f"{lock_base}.md",
         validation_report=REPO_ROOT / "reports" / f"{validation_base}.md",
         quality_report=REPO_ROOT / "reports" / f"{quality_base}.md",
-        progress_report_md=REPO_ROOT / "reports" / f"lab_llm_master_batch_progress_{campaign_token}.md",
-        progress_history_json=REPO_ROOT / "reports" / f"lab_llm_master_batch_progress_{campaign_token}.json",
+        progress_report_md=REPO_ROOT / "reports" / f"{progress_base}.md",
+        progress_history_json=REPO_ROOT / "reports" / f"{progress_base}.json",
     )
 
 
 def default_legacy_paths(campaign_id: str) -> tuple[Path, Path, Path]:
-    if "chatgpt52ext" in campaign_id:
+    token = campaign_slug_token(campaign_id)
+    if token == "chatgpt_real":
         return (
             REPO_ROOT / "reports" / "lab_llm_run_manifest_chatgpt52ext.md",
             REPO_ROOT / "reports" / "lab_llm_run_manifest_chatgpt52ext.json",
@@ -145,6 +161,16 @@ def build_parser() -> argparse.ArgumentParser:
         help="Manifest JSON output path (defaults by campaign/artifact).",
     )
     parser.add_argument(
+        "--starter-report",
+        default="",
+        help="Thread starters markdown output path (defaults by campaign/artifact).",
+    )
+    parser.add_argument(
+        "--lock-report",
+        default="",
+        help="Input-lock verification report output path (defaults by campaign/artifact).",
+    )
+    parser.add_argument(
         "--validation-report",
         default="",
         help="Validator report output path (defaults by campaign/artifact).",
@@ -167,7 +193,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--skip-generate",
         action="store_true",
-        help="Skip output generation step (required for canonical master-manifest mode).",
+        help="Legacy compatibility flag; canonical master mode remains manual-output-only.",
     )
     parser.add_argument(
         "--allow-missing",
@@ -221,6 +247,32 @@ def publish_bundle(bundle_path: Path, no_clean_publish: bool) -> None:
     if no_clean_publish:
         publish_cmd.append("--no-clean")
     run_cmd(publish_cmd)
+
+
+def write_project_instructions(campaign_id: str) -> None:
+    run_cmd([
+        "python",
+        "scripts/lab_write_chatgpt_project_instructions.py",
+        "--campaign-id",
+        campaign_id,
+    ])
+
+
+def write_prompt_templates(*, campaign_id: str, bundle_path: Path) -> None:
+    campaign = get_llm_campaign(campaign_id)
+    if campaign is None:
+        raise SystemExit(f"Unknown campaign id: {campaign_id}")
+    cmd = [
+        "python",
+        "scripts/lab_write_prompt_templates.py",
+        "--bundle",
+        to_repo_rel(bundle_path),
+        "--campaign-id",
+        campaign_id,
+    ]
+    if campaign.track_id != DEFAULT_PRIMARY_LLM_CAMPAIGN_ID:
+        cmd.extend(["--out", f"prompt_templates_showcase__{campaign.track_slug}.md"])
+    run_cmd(cmd)
 
 
 def run_legacy_pipeline(
@@ -324,6 +376,88 @@ def run_legacy_pipeline(
     run_cmd(matrix_cmd)
 
 
+def emit_master_starters(
+    *,
+    campaign_id: str,
+    master_artifact_id: str,
+    manifest_json: Path,
+    starter_report: Path,
+    validation_report: Path,
+    quality_report: Path,
+    progress_report_md: Path,
+    progress_history_json: Path,
+) -> None:
+    run_cmd(
+        [
+            "python",
+            "scripts/lab_emit_master_thread_starters.py",
+            "--manifest",
+            to_repo_rel(manifest_json),
+            "--out",
+            to_repo_rel(starter_report),
+            "--validation-report",
+            to_repo_rel(validation_report),
+            "--quality-report",
+            to_repo_rel(quality_report),
+            "--batch-progress-report",
+            to_repo_rel(progress_report_md),
+            "--batch-progress-json",
+            to_repo_rel(progress_history_json),
+            "--format",
+            master_starter_format(master_artifact_id),
+        ]
+    )
+
+
+def verify_master_locks(
+    *,
+    campaign_id: str,
+    bundle_path: Path,
+    manifest_json: Path,
+    starter_report: Path,
+    lock_report: Path,
+) -> None:
+    run_cmd(
+        [
+            "python",
+            "scripts/lab_verify_master_input_locks.py",
+            "--campaign-id",
+            campaign_id,
+            "--bundle",
+            to_repo_rel(bundle_path),
+            "--master-manifest",
+            to_repo_rel(manifest_json),
+            "--master-starters",
+            to_repo_rel(starter_report),
+            "--report",
+            to_repo_rel(lock_report),
+        ]
+    )
+
+
+def run_prompt_consistency(
+    *,
+    campaign_id: str,
+    bundle_path: Path,
+    manifest_json: Path,
+    starter_report: Path,
+) -> None:
+    run_cmd(
+        [
+            "python",
+            "scripts/lab_prompt_consistency_check.py",
+            "--bundle",
+            to_repo_rel(bundle_path),
+            "--campaign-id",
+            campaign_id,
+            "--master-starters",
+            to_repo_rel(starter_report),
+            "--master-manifest",
+            to_repo_rel(manifest_json),
+        ]
+    )
+
+
 def run_master_pipeline(
     *,
     campaign_id: str,
@@ -331,6 +465,8 @@ def run_master_pipeline(
     bundle_path: Path,
     manifest_md: Path,
     manifest_json: Path,
+    starter_report: Path,
+    lock_report: Path,
     validation_report: Path,
     quality_report: Path,
     progress_report_md: Path,
@@ -363,10 +499,35 @@ def run_master_pipeline(
     )
 
     if not skip_generate:
-        raise SystemExit(
-            "Canonical master-manifest mode does not support auto generation. "
-            "Run manual LLM jobs from generated starters, or use --legacy-detector-manifest."
+        print(
+            "[note] canonical master-manifest mode remains manual-output-only; proceeding with manifest, starters, verification, and validation orchestration.",
+            flush=True,
         )
+
+    write_project_instructions(campaign_id)
+    emit_master_starters(
+        campaign_id=campaign_id,
+        master_artifact_id=master_artifact_id,
+        manifest_json=manifest_json,
+        starter_report=starter_report,
+        validation_report=validation_report,
+        quality_report=quality_report,
+        progress_report_md=progress_report_md,
+        progress_history_json=progress_history_json,
+    )
+    verify_master_locks(
+        campaign_id=campaign_id,
+        bundle_path=bundle_path,
+        manifest_json=manifest_json,
+        starter_report=starter_report,
+        lock_report=lock_report,
+    )
+    run_prompt_consistency(
+        campaign_id=campaign_id,
+        bundle_path=bundle_path,
+        manifest_json=manifest_json,
+        starter_report=starter_report,
+    )
 
     validate_cmd = [
         "python",
@@ -407,7 +568,15 @@ def run_master_pipeline(
     ]
     if allow_missing:
         quality_cmd.append("--allow-missing")
-    run_cmd(quality_cmd)
+    try:
+        run_cmd(quality_cmd)
+    except subprocess.CalledProcessError:
+        if not allow_invalid:
+            raise
+        print(
+            "[warn] quality audit reported blockers; continuing because --allow-invalid was set.",
+            flush=True,
+        )
 
     run_cmd(
         [
@@ -442,6 +611,8 @@ def main(argv: Optional[list[str]] = None) -> int:
         paths = PipelinePaths(
             manifest_md=resolve_path(str(args.manifest_md), legacy_md),
             manifest_json=resolve_path(str(args.manifest_json), legacy_json),
+            starter_report=Path(),
+            lock_report=Path(),
             validation_report=resolve_path(str(args.validation_report), legacy_validation),
             quality_report=Path(),
             progress_report_md=Path(),
@@ -455,6 +626,8 @@ def main(argv: Optional[list[str]] = None) -> int:
         paths = PipelinePaths(
             manifest_md=resolve_path(str(args.manifest_md), master_defaults.manifest_md),
             manifest_json=resolve_path(str(args.manifest_json), master_defaults.manifest_json),
+            starter_report=resolve_path(str(args.starter_report), master_defaults.starter_report),
+            lock_report=resolve_path(str(args.lock_report), master_defaults.lock_report),
             validation_report=resolve_path(
                 str(args.validation_report),
                 master_defaults.validation_report,
@@ -475,6 +648,7 @@ def main(argv: Optional[list[str]] = None) -> int:
         raise SystemExit(f"Bundle not found: {bundle_path}")
 
     publish_bundle(bundle_path=bundle_path, no_clean_publish=bool(args.no_clean_publish))
+    write_prompt_templates(campaign_id=args.campaign_id, bundle_path=bundle_path)
 
     if args.legacy_detector_manifest:
         run_legacy_pipeline(
@@ -497,6 +671,8 @@ def main(argv: Optional[list[str]] = None) -> int:
             bundle_path=bundle_path,
             manifest_md=paths.manifest_md,
             manifest_json=paths.manifest_json,
+            starter_report=paths.starter_report,
+            lock_report=paths.lock_report,
             validation_report=paths.validation_report,
             quality_report=paths.quality_report,
             progress_report_md=paths.progress_report_md,
@@ -518,6 +694,8 @@ def main(argv: Optional[list[str]] = None) -> int:
     print(f"Manifest json: {to_repo_rel(paths.manifest_json)}")
     print(f"Validation report: {to_repo_rel(paths.validation_report)}")
     if not args.legacy_detector_manifest:
+        print(f"Thread starters: {to_repo_rel(paths.starter_report)}")
+        print(f"Lock report: {to_repo_rel(paths.lock_report)}")
         print(f"Quality report: {to_repo_rel(paths.quality_report)}")
         print(f"Progress report: {to_repo_rel(paths.progress_report_md)}")
         print(f"Progress history: {to_repo_rel(paths.progress_history_json)}")

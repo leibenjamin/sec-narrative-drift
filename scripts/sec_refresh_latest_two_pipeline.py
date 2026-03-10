@@ -304,99 +304,43 @@ def main(argv: Optional[list[str]] = None) -> int:
         )
         run_cmd(["python", "scripts/lab_build_llm_variants_index.py"], dry_run=args.dry_run, env=run_env)
 
-        manifest_cmds = [
+        master_pipeline_cmds = [
             [
                 "python",
-                "scripts/lab_build_llm_master_manifest.py",
+                "scripts/lab_run_fullsec_campaign_pipeline.py",
                 "--campaign-id",
                 "openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27",
                 "--master-artifact-id",
                 "llm_outline_compare_structured",
-                "--pair-policy",
-                "latest_two",
-                "--out-json",
-                "reports/lab_llm_master_manifest_codex_real.json",
-                "--out-md",
-                "reports/lab_llm_master_manifest_codex_real.md",
             ],
             [
                 "python",
-                "scripts/lab_build_llm_master_manifest.py",
+                "scripts/lab_run_fullsec_campaign_pipeline.py",
                 "--campaign-id",
-                "openai_chatgpt52ext_agent_fullsec_real_2026-02-27",
+                "openai_chatgpt54ext_agent_fullsec_real_2026-03-06",
                 "--master-artifact-id",
                 "llm_outline_compare_structured",
-                "--pair-policy",
-                "latest_two",
-                "--out-json",
-                "reports/lab_llm_master_manifest_chatgpt_real.json",
-                "--out-md",
-                "reports/lab_llm_master_manifest_chatgpt_real.md",
             ],
             [
                 "python",
-                "scripts/lab_build_llm_master_manifest.py",
+                "scripts/lab_run_fullsec_campaign_pipeline.py",
                 "--campaign-id",
                 "openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27",
                 "--master-artifact-id",
                 "llm_outline_compare_insight",
-                "--pair-policy",
-                "latest_two",
-                "--out-json",
-                "reports/lab_llm_master_manifest_codex_real_insight.json",
-                "--out-md",
-                "reports/lab_llm_master_manifest_codex_real_insight.md",
             ],
         ]
-        for cmd in manifest_cmds:
-            cmd.extend(["--bundle", to_repo_rel(bundle_out)])
-            run_cmd(cmd, dry_run=args.dry_run, env=run_env)
-
-        starter_cmds = [
-            [
-                "python",
-                "scripts/lab_emit_master_thread_starters.py",
-                "--manifest",
-                "reports/lab_llm_master_manifest_codex_real.json",
-                "--out",
-                "reports/lab_llm_master_thread_starters_codex_real.md",
-                "--validation-report",
-                "reports/lab_llm_master_validation_codex_real.md",
-                "--quality-report",
-                "reports/lab_llm_master_quality_codex_real.md",
-                "--format",
-                "vscode_autowrite_structured_prod",
-            ],
-            [
-                "python",
-                "scripts/lab_emit_master_thread_starters.py",
-                "--manifest",
-                "reports/lab_llm_master_manifest_chatgpt_real.json",
-                "--out",
-                "reports/lab_llm_master_thread_starters_chatgpt_real.md",
-                "--validation-report",
-                "reports/lab_llm_master_validation_chatgpt_real.md",
-                "--quality-report",
-                "reports/lab_llm_master_quality_chatgpt_real.md",
-                "--format",
-                "vscode_autowrite_structured_prod",
-            ],
-            [
-                "python",
-                "scripts/lab_emit_master_thread_starters.py",
-                "--manifest",
-                "reports/lab_llm_master_manifest_codex_real_insight.json",
-                "--out",
-                "reports/lab_llm_master_thread_starters_codex_real_insight.md",
-                "--validation-report",
-                "reports/lab_llm_master_validation_codex_real.md",
-                "--quality-report",
-                "reports/lab_llm_master_quality_codex_real.md",
-                "--format",
-                "vscode_autowrite_insight_exp",
-            ],
-        ]
-        for cmd in starter_cmds:
+        for cmd in master_pipeline_cmds:
+            cmd.extend(
+                [
+                    "--bundle",
+                    to_repo_rel(bundle_out),
+                    "--skip-generate",
+                    "--allow-missing",
+                    "--allow-invalid",
+                    "--no-clean-publish",
+                ]
+            )
             run_cmd(cmd, dry_run=args.dry_run, env=run_env)
 
     print("Latest-two targeted refresh pipeline complete.")

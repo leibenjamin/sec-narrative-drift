@@ -23,9 +23,11 @@ Modeling requirements:
 - Minimize false novelty:
   - if content is mainly relocated/reordered, prefer `moved`/`stable` over `added`/`removed`.
 - In `material_changes`, rank by salience (0-1) and include explicit caveat text.
+- When the filing supports different rank strengths, use meaningfully separated salience values rather than near-flat spacing; do not invent separation unsupported by evidence.
 - In `material_changes`, prioritize substantive meaning shifts over lexical restatements.
 - Use case-specific caveats tied to evidence quality/coverage (no generic caveats).
 - Each `material_changes.title` must include case-specific anchor language that appears in cited evidence snippets.
+- For raw-lens outputs, only `material_changes.title` and outline `label` fields may lightly normalize obvious extraction artifacts; do not normalize evidence text, snippets, or evidence-bearing prose.
 - Each `node_alignment.rationale` must describe a direct contrast mechanism between years, not tone-only restatement.
 - Each caveat must state a concrete evidence-quality limitation (coverage, boundary, mapping, or specificity constraint).
 - Ensure every `material_changes.evidence_refs` item resolves to an `evidence_bank` entry.

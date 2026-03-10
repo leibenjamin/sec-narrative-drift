@@ -11,12 +11,13 @@ from lab_output_tracks import (  # type: ignore
     DETERMINISTIC_BASELINE_TRACK,
     DETERMINISTIC_DETECTORS,
     LLM_CAMPAIGNS,
-    LLM_DETECTORS,
 )
 from lab_script_version import build_script_version
 
 SCRIPT_VERSION = build_script_version(Path(__file__), "v1")
 REPO_ROOT = Path(__file__).resolve().parents[1]
+LLM_RUNTIME_ARTIFACT_IDS = ["llm_outline_compare_runtime"]
+
 DEFAULT_OUT_PATH = (
     REPO_ROOT
     / "public"
@@ -51,17 +52,18 @@ def build_payload(
             "primary_for_runtime": True,
         }
     )
+    public_campaigns = [campaign for campaign in LLM_CAMPAIGNS if campaign.runtime_visible]
     started = time.monotonic()
     last_heartbeat = started
-    total = len(LLM_CAMPAIGNS)
-    for index, campaign in enumerate(LLM_CAMPAIGNS, start=1):
+    total = len(public_campaigns)
+    for index, campaign in enumerate(public_campaigns, start=1):
         tracks.append(
             {
                 "track_id": campaign.track_id,
                 "track_slug": campaign.track_slug,
                 "kind": "llm",
                 "display_name": campaign.display_name,
-                "detector_ids": list(LLM_DETECTORS),
+                "detector_ids": list(LLM_RUNTIME_ARTIFACT_IDS),
                 "model_provider": campaign.model_provider,
                 "model_name": campaign.model_name,
                 "input_mode": campaign.input_mode,
@@ -87,7 +89,7 @@ def build_payload(
         "provenance": {
             "script_version": SCRIPT_VERSION,
             "notes": [
-                "Generated from scripts/lab_output_tracks.py",
+                "Generated from scripts/lab_output_tracks.py (runtime-visible tracks only)",
                 "Hard-cut canonical output paths include <track_slug> segment.",
             ],
         },

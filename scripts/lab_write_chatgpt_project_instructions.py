@@ -4,7 +4,7 @@ import argparse
 from pathlib import Path
 from typing import Optional
 
-from lab_prompt_blocks import build_chatgpt_project_instructions_lines  # type: ignore
+from lab_prompt_blocks import build_project_instructions_lines  # type: ignore
 from lab_output_tracks import (  # type: ignore
     DEFAULT_PRIMARY_LLM_CAMPAIGN_ID,
     get_llm_campaign,
@@ -63,7 +63,7 @@ def main(argv: Optional[list[str]] = None) -> int:
     campaign = get_llm_campaign(args.campaign_id)
     if campaign is None:
         raise SystemExit(f"Unknown campaign id: {args.campaign_id}")
-    lines = build_chatgpt_project_instructions_lines(
+    lines = build_project_instructions_lines(
         campaign=campaign,
         input_mode=campaign.input_mode or "full_section_v2",
     )

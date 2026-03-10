@@ -24,6 +24,7 @@ PROMPT_TEMPLATES_CANONICAL_FILENAME = "prompt_templates_showcase.md"
 sys.path.append(str(Path(__file__).resolve().parent))
 from lab_llm_precompute_utils import BundlePaths, resolve_bundle_paths  # type: ignore
 from lab_output_tracks import (  # type: ignore
+    DEFAULT_COMPARE_LLM_CAMPAIGN_ID,
     DEFAULT_PRIMARY_LLM_CAMPAIGN_ID,
     EXECUTION_VENUE_CHATGPT_DESKTOP,
     canonical_output_relative_path,
@@ -32,11 +33,12 @@ from lab_output_tracks import (  # type: ignore
 from lab_prompt_blocks import (  # type: ignore
     DETECTOR_DELTA_BRIEF,
     DETECTOR_EXCERPT_PICKER,
-    build_chatgpt_project_instructions_lines,
+    build_project_instructions_lines,
     build_prompt_template_detector_section_lines,
     build_prompt_templates_showcase_lines,
     build_thread_starter_lines,
 )
+from lab_verify_master_input_locks import verify_master_input_locks  # type: ignore
 
 
 def _read_lines(path: Path) -> list[str]:
@@ -95,6 +97,47 @@ def _assert_markers_absent(label: str, text: str, markers: list[str]) -> None:
             + "\n".join(f"- {marker}" for marker in present)
         )
 
+
+
+def _resolve_repo_relative_path(raw_path: str) -> Path:
+    path = Path(raw_path)
+    if path.is_absolute():
+        return path
+    return REPO_ROOT / path
+
+
+def _collect_focus_signal_ids_from_entry(entry_data: dict[str, Any]) -> list[str]:
+    input_info = entry_data.get("input")
+    if not isinstance(input_info, dict):
+        return []
+    source_path = input_info.get("source_path")
+    if not isinstance(source_path, str) or not source_path.strip():
+        return []
+    pair_path = _resolve_repo_relative_path(source_path.strip())
+    if not pair_path.exists():
+        return []
+
+    try:
+        payload = json.loads(pair_path.read_text(encoding="utf-8-sig"))
+    except json.JSONDecodeError:
+        return []
+    if not isinstance(payload, dict):
+        return []
+    analysis_expectations = payload.get("analysis_expectations")
+    if not isinstance(analysis_expectations, dict):
+        return []
+    focus_signals = analysis_expectations.get("focus_signals")
+    if not isinstance(focus_signals, list):
+        return []
+
+    signal_ids: list[str] = []
+    for signal in focus_signals:
+        if not isinstance(signal, dict):
+            continue
+        signal_id = signal.get("id")
+        if isinstance(signal_id, str) and signal_id.strip() and signal_id not in signal_ids:
+            signal_ids.append(signal_id)
+    return signal_ids
 
 
 def _extract_validate_pairs(starters_text: str) -> set[tuple[str, str]]:
@@ -268,6 +311,10 @@ def check_canonical_docs(doc_index_path: Path, remaining_plan_path: Path, compar
     if not comparison_doc_path.exists():
         raise SystemExit(f"Missing model comparison doc: {comparison_doc_path}")
 
+    compare_campaign = get_llm_campaign(DEFAULT_COMPARE_LLM_CAMPAIGN_ID)
+    if compare_campaign is None:
+        raise SystemExit("Compare campaign metadata unavailable for doc checks.")
+
     doc_index_text = doc_index_path.read_text(encoding="utf-8-sig")
     _assert_markers_present(
         "doc_index",
@@ -298,8 +345,8 @@ def check_canonical_docs(doc_index_path: Path, remaining_plan_path: Path, compar
         "remaining_plan_doc",
         remaining_plan_text,
         [
-            "`openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27`",
-            "`openai_chatgpt52ext_agent_fullsec_real_2026-02-27`",
+            f"`{DEFAULT_PRIMARY_LLM_CAMPAIGN_ID}`",
+            f"`{compare_campaign.track_id}`",
             "`llm_outline_compare_runtime`",
             "`docs/lab/08_remaining_work_plan_history.md`",
         ],
@@ -320,12 +367,12 @@ def check_canonical_docs(doc_index_path: Path, remaining_plan_path: Path, compar
         "comparison_doc",
         comparison_text,
         [
-            "`openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27`",
+            f"`{DEFAULT_PRIMARY_LLM_CAMPAIGN_ID}`",
             "`openai-gpt53codex-xhigh-agent-fullsec-real-2026-02-27`",
-            "`openai_chatgpt52ext_agent_fullsec_real_2026-02-27`",
-            "`openai-chatgpt52ext-agent-fullsec-real-2026-02-27`",
+            f"`{compare_campaign.track_id}`",
+            f"`{compare_campaign.track_slug}`",
             "runtime-visible",
-            "runtime-hidden",
+            "runtime_visible=true",
         ],
     )
     _assert_markers_absent(
@@ -389,8 +436,8 @@ def _check_master_starters(master_starters_path: Path, master_manifest_path: Pat
 
     format_match = re.search(r"- output format: `([^`]+)`", starters_text)
     starter_format = format_match.group(1) if format_match else ""
-    is_v5 = starter_format == "vscode_autowrite_insight_exp"
-    is_v4 = starter_format == "vscode_autowrite_structured_prod"
+    is_v5 = starter_format in {"vscode_autowrite_insight_exp", "chatgpt_desktop_insight_exp"}
+    is_v4 = starter_format in {"vscode_autowrite_structured_prod", "chatgpt_desktop_structured_prod"}
     is_chatgpt_desktop = execution_venue == EXECUTION_VENUE_CHATGPT_DESKTOP
 
     validate_pairs = _extract_validate_pairs(starters_text)
@@ -520,7 +567,7 @@ def _check_master_starters(master_starters_path: Path, master_manifest_path: Pat
                 ],
             )
     else:
-        raise SystemExit("master_starters output format must be vscode_autowrite_structured_prod or vscode_autowrite_insight_exp")
+        raise SystemExit("master_starters output format must be one of vscode_autowrite_structured_prod, chatgpt_desktop_structured_prod, vscode_autowrite_insight_exp, or chatgpt_desktop_insight_exp")
 
     expected_pairs = {
         ("llm_outline_compare_structured", "master_output"),
@@ -559,6 +606,7 @@ def _check_master_starters(master_starters_path: Path, master_manifest_path: Pat
 
     expected_paths: list[str] = []
     manifest_issues: list[str] = []
+    expected_focus_signal_ids: list[str] = []
     for entry in entries:  # type: ignore[reportUnknownVariableType]
         if not isinstance(entry, dict):
             continue
@@ -628,6 +676,10 @@ def _check_master_starters(master_starters_path: Path, master_manifest_path: Pat
             expected_paths.append(normalized_master)
             expected_paths.append(projected_v1_path.replace("\\", "/").lstrip("/"))
 
+        for signal_id in _collect_focus_signal_ids_from_entry(entry_data):
+            if signal_id not in expected_focus_signal_ids:
+                expected_focus_signal_ids.append(signal_id)
+
     if manifest_issues:
         raise SystemExit(
             "master manifest starter-compatibility issues:\n"
@@ -653,6 +705,12 @@ def _check_master_starters(master_starters_path: Path, master_manifest_path: Pat
         raise SystemExit(
             "starter --only tokens missing expected manifest targets: "
             + ", ".join(missing_expected[:5])
+        )
+    if expected_focus_signal_ids:
+        _assert_markers_present(
+            "master_starters_focus_signals",
+            starters_text,
+            ["CASE-SPECIFIC COVERAGE GATE"] + expected_focus_signal_ids,
         )
 
 def main(argv: Optional[list[str]] = None) -> int:
@@ -694,7 +752,7 @@ def main(argv: Optional[list[str]] = None) -> int:
         actual_section = _extract_section(actual_full, f"## {detector_id}")
         _assert_lines_equal(f"prompt_section:{detector_id}", expected_section, actual_section)
 
-    expected_instructions = build_chatgpt_project_instructions_lines(
+    expected_instructions = build_project_instructions_lines(
         campaign=campaign,
         input_mode=campaign.input_mode or "full_section_v2",
     )
@@ -769,14 +827,13 @@ def main(argv: Optional[list[str]] = None) -> int:
         "repro_contract_doc",
         contract_doc_text,
         [
-            "exactly equal deduped evidence indices per year",
-            "sorted by `(year, paragraph_idx)` ascending",
-            "4-8` total with `>=2` per year",
-            "6-10` total with `>=3` per year",
-            "`Change:`, `Drivers:`, `Caveat:`",
-            "recommended `220-320` chars, hard cap `350`",
-            "placeholder tails like `Input file citation:`, `Source:`, `Input source:` are invalid",
-            "YYYY-MM-DD_",
+            "`llm_outline_compare_structured`",
+            "`llm_outline_compare_runtime`",
+            "`analysis_expectations.focus_signals`",
+            "Evidence snippets must be `<=350` chars.",
+            "`material_changes` must have at least `4` rows.",
+            "Required signal surfacing is evaluated on surfaced analytical sections, not evidence-bank presence alone.",
+            "`provenance.run_label` must start with `YYYY-MM-DD_`.",
         ],
     )
     check_canonical_docs(
@@ -857,6 +914,19 @@ def main(argv: Optional[list[str]] = None) -> int:
         campaign_slug=campaign.track_slug,
         execution_venue=campaign.execution_venue,
     )
+
+    lock_issues = verify_master_input_locks(
+        bundle_arg=str(bundle_paths.bundle_root),
+        master_manifest_path=master_manifest_path,
+        master_starters_path=master_starters_path,
+    )
+    if lock_issues:
+        preview = "\n".join(
+            f"- [{issue.layer}] {issue.code}: {issue.detail}" for issue in lock_issues[:10]
+        )
+        raise SystemExit(
+            "master input lock verification failed:\n" + preview
+        )
 
     print("Prompt consistency check: PASS")
     print(f"Script: {SCRIPT_VERSION}")

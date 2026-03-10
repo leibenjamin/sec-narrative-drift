@@ -51,11 +51,17 @@ Per starter thread, run the exact checks embedded in the starter:
    - `--expect-target-count 1`
    - `--fail-if-target-count-mismatch`
 3. blocker audit for the single output path.
+   - When you run a one-file check with `scripts/lab_audit_master_output_quality.py --output ...` and omit `--report`, the script now auto-writes a scratch `_tmp_*` report instead of clobbering the canonical whole-campaign quality report.
 
 ## Checkpoint Validation (Batch)
 After each wave/checkpoint:
 - `python scripts/lab_validate_llm_master_outputs.py --manifest "reports/lab_llm_master_manifest_<campaign>.json" --campaign-id "<campaign_id>" --allow-missing --allow-invalid --report "reports/lab_llm_master_validation_<campaign>.md"`
-- `python scripts/lab_audit_master_output_quality.py --manifest "reports/lab_llm_master_manifest_<campaign>.json" --campaign-id "<campaign_id>" --allow-missing --mode blockers --report "reports/lab_llm_master_quality_<campaign>.md"`
+- `python scripts/lab_audit_master_output_quality.py --manifest "reports/lab_llm_master_manifest_<campaign>.json" --campaign-id "<campaign_id>" --allow-missing --mode blockers --report "reports/lab_llm_master_quality_<campaign>_structured.md"`
 
 ## Legacy Compatibility Note
 Older detector-first run-manifest/checklist workflow (`reports/lab_llm_run_manifest.*`, `docs/lab/04_llm_precompute_queue.md`) is retained for compatibility and archive context only.
+## Venue Notes
+- ChatGPT Desktop campaigns run directly from the starter text plus the three attached inputs.
+- Workspace-aware Codex and Claude Code campaigns use analogous campaign instructions but read declared workspace paths.
+- If those workspace-aware starter/input files are reused outside the original workspace, users must update the file paths before rerun.
+- A helper for formatting user self-run outputs outside the app is planned but not yet part of the canonical workflow.

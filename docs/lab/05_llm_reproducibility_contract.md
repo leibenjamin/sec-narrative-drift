@@ -1,42 +1,70 @@
 ﻿# LLM Reproducibility Contract (Lab)
 
-This contract defines the current canonical manual LLM run standard for showcase Lab outputs.
+This contract defines the canonical manual LLM run standard for SEC Narrative Drift Lab.
 
 ## Objectives
-- Reproducible manual runs across threads and operators.
-- Save-ready output JSON with zero post-processing.
-- Transparent provenance for future model-versus-model comparisons.
+- Reproducible manual runs across operators and threads.
+- Save-ready JSON with deterministic validation and projection.
+- Clear provenance for model-versus-model comparison.
 
-## Canonical Authoring Artifact (Current)
-- Canonical manual authoring artifact is now `llm_outline_compare_structured`.
-- Runtime-compatible artifact remains `llm_outline_compare_runtime`, generated deterministically from structured outputs.
-- Runtime UI continues to read `llm_outline_compare_runtime` during this phase.
-- Validation now covers:
-  - structured schema/evidence integrity
-  - structured -> runtime projection equivalence for runtime files
+## Canonical Manual Authoring Unit
+- Canonical manual authoring artifact: `llm_outline_compare_structured`
+- Deterministic runtime projection artifact: `llm_outline_compare_runtime`
+- Experimental optional artifact: `llm_outline_compare_insight`
 
-## Output Contract
-Top-level keys are fixed:
-- `lab_schema_version`
-- `detector_id`
-- `cleaning_lens`
-- `source_id`
-- `ticker`
-- `section`
-- `year_from`
-- `year_to`
-- `artifacts`
-- `evidence`
-- `metrics`
-- `provenance`
+`llm_outline_compare_structured` is the only canonical manual authoring unit for the current shipped compare experience.
 
-No extra top-level keys are allowed.
+## Active Scope
+- Active shipped scope is FY2024 -> FY2025 only for `NVDA`, `KO`, `WM`, and `GE`.
+- Campaign identity and output paths remain track-aware and stable.
+- Active compare-visible ChatGPT campaign is `openai_chatgpt54ext_agent_fullsec_real_2026-03-06`.
+- Archived compatibility-only ChatGPT real identity is `openai_chatgpt52ext_agent_fullsec_real_2026-02-27`.
+- Pre-registered hidden workspace-aware Claude lane is `anthropic_claudeopus46_claudecode_fullsec_real_2026-03-09`.
 
-## Master Artifact Contract (`llm_outline_compare_structured`)
-This is the canonical manual LLM output unit for current anchored showcase runs (FY2024->FY2025 across Core4).
-- Fiscal-year caveat: annual filings may be filed in the next calendar year; `year_from`/`year_to` reflect fiscal years derived from `reportDate`/`filingDate`.
-- Expansion path: FY2025->FY2026 can be added as an explicit additional lane when released coverage is broad enough.
+## Manual Input Contract
+Each outline-compare job uses exactly three input JSON files:
+- pair manifest
+- year prev input
+- year curr input
 
+The pair manifest is the canonical `provenance.input_file` target:
+- `inputs/pair/<TICKER>_<YEAR_FROM>_<YEAR_TO>_10k_item1a_<LENS>_edgar.json`
+
+The pair manifest must resolve its year files through:
+- `year_inputs.prev`
+- `year_inputs.curr`
+
+Optional local-only pair-manifest metadata may also be present for hard cases:
+- `analysis_expectations.focus_signals`
+
+This field is for manual run hardening and audit enforcement only. It is not part of any shipped compare artifact schema.
+
+Each focus signal may declare:
+- stable `id`
+- `priority`
+- `paragraph_hints`
+- `anchor_groups`
+- `surface_requirements`
+
+## Output Handling by Venue
+
+### Workspace-Aware Agents
+If the model has direct workspace access, it may write the structured artifact directly to its canonical output path and then run deterministic validation and projection.
+
+Workspace-aware campaigns include Codex and Claude Code lanes that read starter-declared workspace paths.
+
+If operators export those starter/input files outside the original workspace, they must update the workspace-relative file paths before rerun.
+
+### ChatGPT Desktop or Non-Workspace Clients
+If the model does not have direct workspace access, it must not claim to write files itself.
+
+It must instead:
+- return the final JSON object in-chat, or
+- return a downloadable JSON file when the client supports file output.
+
+The operator then saves that JSON to the canonical structured output path before running local validation and projection.
+
+## Structured Artifact Contract (`llm_outline_compare_structured`)
 Required top-level keys:
 - `lab_schema_version`
 - `artifact_schema_version`
@@ -62,157 +90,52 @@ Required top-level keys:
 - `provenance`
 
 Hard requirements:
-- `artifact_id` must be `llm_outline_compare_structured`.
+- `artifact_id` must be exactly `llm_outline_compare_structured`.
+- `lab_schema_version` and `artifact_schema_version` must be `1.0`.
 - `node_alignment.change_class` must be one of:
-  - `added`, `removed`, `moved`, `split`, `merged`, `reworded`, `intensified`, `softened`, `stable`.
-- All paragraph indices must resolve against full-year paragraph arrays referenced by `provenance.input_file`.
-- Evidence snippets must remain verbatim substrings and obey `<=350` char limit.
-- `risk_graph_prev/risk_graph_curr` must encode explicit `driver -> exposure -> impact`.
-- Each `change_mechanisms` row must include `mechanism`, `transmission_channel`, `business_effect`, `time_horizon`.
+  - `added`, `removed`, `moved`, `split`, `merged`, `reworded`, `intensified`, `softened`, `stable`
 - `projection_contract.projects_to_artifact_id` must be `llm_outline_compare_runtime`.
+- `risk_graph_prev` and `risk_graph_curr` must encode explicit `driver -> exposure -> impact` rows.
+- Every `change_mechanisms` row must include `mechanism`, `transmission_channel`, `business_effect`, and `time_horizon`.
+- Every evidence reference used in material changes, change mechanisms, limits, or investor relevance must resolve to an `evidence_bank` entry.
 
 ## Runtime Projection Contract (`llm_outline_compare_runtime`)
-- Runtime-visible `llm_outline_compare_runtime` artifacts are deterministic projections of structured outputs.
-- v1 fields `outline_prev`, `outline_curr`, `node_alignment`, `material_changes`, `evidence_bank`, and `lens_divergence` must match their structured source exactly.
-- Any runtime file without a resolvable corresponding structured source is invalid under current policy.
-
-## Manual Job-Pass Contract
-Each one-paste manual job must satisfy all of the following:
-- Exactly one `PRECHECK_OK` line is printed.
-- structured output JSON is written to the expected canonical path.
-- structured output is projected to runtime path deterministically.
-- Shell-safe parse check succeeds (no shell-specific redirection assumptions).
-- Master validator runs with strict single-target controls:
-  - `--only-mode exact_path`
-  - `--expect-target-count 1`
-  - `--fail-if-target-count-mismatch`
-- Job status line from validator is present:
-  - `JOB_VALIDATE targets=<n> missing=<n> invalid=<n> mismatch=<n> present_mismatch=<n> status=<PASS|FAIL>`
-- Quality blocker audit passes for the output:
-  - `python scripts/lab_audit_master_output_quality.py --output "<path>" --mode blockers --strict-depth ...`
-- Exactly one final status line is printed for the job thread.
-
-Strict-depth blockers (`--strict-depth`, `llm_outline_compare_structured`):
-- `material_changes` must have at least 4 rows.
-- Material-change evidence refs must cover each year with unique refs:
-  - if year paragraph count >= 50: at least 4 unique refs
-  - otherwise: at least 3 unique refs
-- Among top-3 material changes by salience, at least one row must reference both years with non-opening paragraphs in each year.
-- For each year with paragraph count >= 30, material refs must span at least two section terciles.
-- Shallow-reference patterns are blockers in strict mode:
-  - opening paragraph ratio > 0.35
-  - evidence ref concentration > 0.50
-  - unique-ref ratio < 0.50
-
-## Portable Run-Pack Contract (Script-Free Reproduction)
-Portable run packs must include:
-- `job/job_meta.json`
-- `inputs/pair.json`
-- `inputs/year_prev.json`
-- `inputs/year_curr.json`
-- `checksums/sha256_manifest.json`
-- `starter/THREAD_STARTER.txt`
-- `README_PORTABLE.md`
-
-Portable starters:
-- must use only local relative file paths from the pack root
-- must not require workspace-only scripts or repo-specific paths
-- must include local Python preflight/hash checks and JSON parse checks
-
-## Detector Artifact Contract
-- `det_llm_delta_brief_v1`: `artifacts` must contain only `delta_brief`.
-- `det_llm_excerpt_picker_v1`: `artifacts` must contain only `selected_prev`, `selected_curr`.
+- Runtime compare artifacts are deterministic projections of structured artifacts.
+- Runtime fields shared with structured must match their structured source exactly.
+- Any runtime artifact without a resolvable structured source is invalid.
+- Runtime projection is deterministic post-processing; it is not a second model run.
 
 ## Evidence Contract
-- `paragraph_idx` values must be FULL indices.
-- For `full_section_v2`, `paragraph_idx` is a direct FULL index from referenced year input arrays.
-- Pair manifests reference year files under `year_inputs.prev` and `year_inputs.curr`; `provenance.input_file` points to the pair-manifest path.
-- Snippets must be verbatim substrings of mapped paragraphs.
-- Snippets must be `<=350` chars.
-- `<=350` is a campaign reproducibility/UX constraint so outputs remain comparable across operators and runs.
-- If mapped paragraph length is `>350`, snippet must be a contiguous verbatim trimmed substring (recommended `220-320` chars, hard cap `350`).
+- All paragraph indices are full-year paragraph indices.
+- For `full_section_v2`, `paragraph_idx` is the direct full index from the year input arrays.
+- Evidence snippets must be contiguous verbatim substrings of the mapped paragraph text.
+- Evidence snippets must be `<=350` chars.
+- If the mapped paragraph is longer than `350` chars, the snippet must be a contiguous trimmed substring that preserves the mechanism under discussion.
 - Synthetic ellipses or edited snippets are not allowed.
 - Evidence blocks must be sorted by `(year, paragraph_idx)` ascending.
 - Duplicate evidence blocks with the same `(year, paragraph_idx)` are not allowed.
-- `highlights` is required for every evidence block with `1-3` non-empty values.
+- Avoid page-number prefix artifacts at snippet starts unless required for fidelity.
+- For raw-lens outputs, only `material_changes.title` and outline `label` fields may lightly normalize obvious extraction artifacts; evidence text and evidence-bearing prose remain verbatim-grounded only.
 
-## Metrics Contract
-- `metrics.confidence` must be one of `0.25`, `0.50`, `0.75`.
-- `metrics.confidence` is an ordinal heuristic confidence band, not a calibrated probability or confidence interval.
-- `metrics.warnings` should include concise caveats when signal or coverage is limited.
-- `metrics.warnings` entries must be complete statements; placeholder tails like `Input file citation:`, `Source:`, `Input source:` are invalid.
+## Analytical Depth Gate (`--strict-depth`)
+Strict-depth blockers for `llm_outline_compare_structured`:
+- `material_changes` must have at least `4` rows.
+- Use distinct evidence coverage across years when paragraph counts are high enough to support it.
+- Include at least one top-ranked non-opening-paragraph material change when available.
+- Avoid shallow opening-paragraph concentration.
+
+## Focus-Signal Gate
+When the pair manifest provides `analysis_expectations.focus_signals`:
+- Required signal surfacing is evaluated on surfaced analytical sections, not evidence-bank presence alone.
+- Surfacing must satisfy any required rank or section constraints declared in the focus signal.
+- Signals are starter/audit hardening inputs only; they do not create new shipped schema fields.
+- `analysis_expectations.paragraph_hints` must stay in range for the linked prev/curr year files; canonical bundle, starter, and lock-verification flows now fail fast when they do not.
 
 ## Provenance Contract
-`provenance` keys are restricted to:
-- `input_file` (required)
-- `model_provider` (required, exact campaign provider)
-- `model_name` (required, exact campaign model name)
-- `run_label` (required, must start with `YYYY-MM-DD_`)
+- `provenance.input_file` must match the canonical pair-manifest path.
+- `provenance.model_provider` and `provenance.model_name` must match the selected campaign exactly.
+- `provenance.run_label` must start with `YYYY-MM-DD_`.
+- Day precision is mandatory for truthful public run history and campaign comparison.
 
-Canonical `provenance.input_file` pattern for structured:
-- `inputs/pair/<TICKER>_<YEAR_FROM>_<YEAR_TO>_10k_item1a_<LENS>_edgar.json`
-
-No extra provenance keys are allowed.
-
-## Runtime Security Presentation Rules
-- JSON-derived metadata links are same-origin-only in runtime UI.
-- Internal input/output paths may be opened directly when they resolve under `public/data/...`.
-- External metadata URLs are displayed as plain text with copy actions (non-clickable by policy).
-
-## Citation Contract
-For `det_llm_delta_brief_v1`:
-- At least two inline citations are required.
-- Allowed format only: `YYYY para NN`.
-- Disallowed tokens include pilcrow-style citation symbols and mojibake variants.
-- Every citation must map to an evidence block with matching year and `paragraph_idx = NN - 1`.
-
-## Mandatory Pre-Output Quality Gate
-Before final JSON output in each manual thread:
-- Every `snippet` must be a contiguous verbatim substring of the mapped FULL-index paragraph.
-- Every `snippet` must be `<=350` chars.
-- For mapped paragraphs `>350` chars, snippet must be a strict contiguous trimmed substring `<=350` (recommended `220-320` chars).
-- Evidence blocks are sorted by `(year, paragraph_idx)` ascending with no duplicates.
-- Every evidence block includes `highlights` with `1-3` non-empty values.
-- For excerpt picker, `selected_prev/selected_curr` must exactly equal deduped evidence indices per year (no extras) and be sorted ascending.
-- For delta brief, evidence count must be `4-8` total with `>=2` per year.
-- For excerpt picker, evidence count must be `6-10` total with `>=3` per year.
-- Delta brief must include non-empty sections in order: `Change:`, `Drivers:`, `Caveat:`.
-- Prefer snippet boundaries at sentence/clause ends when possible under the 350-char cap.
-- Avoid obvious mid-word snippet clipping when avoidable.
-- Avoid page-number prefix artifacts in snippet starts unless required for evidence fidelity.
-- If any check fails, revise in-thread before final output.
-
-## Schema-Unlock Governance Gate (Required Before Structured Cutover)
-Baseline policy remains locked for shipped runtime contracts:
-- Do not change public JSON schemas or detector envelope keys unless explicitly unlocked.
-
-Before implementing `llm_outline_compare_structured`:
-1. Record explicit unlock approval in canonical docs.
-2. Define migration and rollback plan for runtime compatibility.
-3. Keep `llm_outline_compare_runtime` available during migration.
-4. Provide deterministic structured->runtime projection for legacy detector envelopes and existing UI paths.
-
-## Validation Entry Point
-- Canonical validator:
-  `python scripts/lab_validate_llm_master_outputs.py`
-
-Recommended usage:
-1. Progress:
-   `python scripts/lab_validate_llm_master_outputs.py --manifest reports/lab_llm_master_manifest_<campaign>.json --campaign-id <campaign_id> --allow-missing --allow-invalid --report reports/lab_llm_master_validation_<campaign>.md`
-2. Final strict:
-   `python scripts/lab_validate_llm_master_outputs.py --manifest reports/lab_llm_master_manifest_<campaign>.json --campaign-id <campaign_id> --report reports/lab_llm_master_validation_<campaign>.md`
-
-Compatibility note:
-- `scripts/lab_validate_llm_manifest_outputs.py` remains legacy-only for detector-manifest workflows and is non-canonical for master-manifest production runs.
-
-
-
-## Rename Governance Unlock (Approved)
-- Approved: schema/envelope artifact-id rename from numeric version labels to role-based labels:
-  - `llm_outline_compare_v1` -> `llm_outline_compare_runtime`
-  - `llm_outline_compare_v2` -> `llm_outline_compare_structured`
-  - `llm_outline_compare_v3` -> `llm_outline_compare_insight`
-- Approved: manifest target-field rename:
-  - `projected_master_output_v1` -> `projected_master_output_runtime`
-  - `projected_master_output_v2` -> `projected_master_output_structured`
-- Rollback plan: migration script can re-map ids/fields deterministically in reverse before publication.
+## Source-of-Truth Reminder
+If a rerun unexpectedly fails preflight on counts or SHA locks, treat that as a source-of-truth problem first, not a model-quality problem first. Use `scripts/lab_verify_master_input_locks.py` and `docs/lab/09_master_run_troubleshooting_and_sources_of_truth.md` before rerunning the same starter unchanged.

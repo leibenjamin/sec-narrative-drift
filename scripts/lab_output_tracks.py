@@ -54,6 +54,7 @@ class OutputTrack:
     primary_for_runtime: bool = False
     compare_default: bool = False
     runtime_visible: bool = True
+    report_token: Optional[str] = None
 
 
 DETERMINISTIC_BASELINE_TRACK = OutputTrack(
@@ -132,11 +133,12 @@ LLM_CAMPAIGNS: tuple[OutputTrack, ...] = (
         instructions_asset_name="llm_project_instructions_openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27.txt",
         primary_for_runtime=True,
         runtime_visible=True,
+        report_token="codex_real",
     ),
     OutputTrack(
         track_id="openai_chatgpt52ext_agent_fullsec_real_2026-02-27",
         track_slug="openai-chatgpt52ext-agent-fullsec-real-2026-02-27",
-        display_name="ChatGPT 5.4-Thinking (Extended Thinking) (Full Section v2, Real Manual Runs)",
+        display_name="ChatGPT 5.4-Thinking (Extended Thinking) (Full Section v2, Archived Legacy Identity)",
         kind="llm",
         input_mode="full_section_v2",
         model_provider="openai",
@@ -144,8 +146,40 @@ LLM_CAMPAIGNS: tuple[OutputTrack, ...] = (
         run_label_prefix_template=f"{RUN_LABEL_DATE_PREFIX}_openai_chatgpt54ext_fullsec_real_...",
         instructions_asset_name="llm_project_instructions_openai_chatgpt52ext_agent_fullsec_real_2026-02-27.txt",
         execution_venue=EXECUTION_VENUE_CHATGPT_DESKTOP,
+        compare_default=False,
+        runtime_visible=False,
+        report_token="chatgpt_real",
+    ),
+    OutputTrack(
+        track_id="openai_chatgpt54ext_agent_fullsec_real_2026-03-06",
+        track_slug="openai-chatgpt54ext-agent-fullsec-real-2026-03-06",
+        display_name="ChatGPT 5.4-Thinking (Extended Thinking) (Full Section v2, Real Manual Runs)",
+        kind="llm",
+        input_mode="full_section_v2",
+        model_provider="openai",
+        model_name="ChatGPT 5.4-Thinking (Extended Thinking)",
+        run_label_prefix_template=f"{RUN_LABEL_DATE_PREFIX}_openai_chatgpt54ext_fullsec_real_...",
+        instructions_asset_name="llm_project_instructions_openai_chatgpt54ext_agent_fullsec_real_2026-03-06.txt",
+        execution_venue=EXECUTION_VENUE_CHATGPT_DESKTOP,
         compare_default=True,
         runtime_visible=True,
+        report_token="chatgpt_real",
+    ),
+    OutputTrack(
+        track_id="anthropic_claudeopus46_claudecode_fullsec_real_2026-03-09",
+        track_slug="anthropic-claudeopus46-claudecode-fullsec-real-2026-03-09",
+        display_name="Claude Opus 4.6 (Thinking, Max) (Full Section v2, Real Manual Runs)",
+        kind="llm",
+        input_mode="full_section_v2",
+        model_provider="anthropic",
+        model_name="Claude Opus 4.6 (Thinking, Max)",
+        run_label_prefix_template=f"{RUN_LABEL_DATE_PREFIX}_anthropic_claudeopus46_claudecode_fullsec_real_...",
+        instructions_asset_name="llm_project_instructions_anthropic_claudeopus46_claudecode_fullsec_real_2026-03-09.txt",
+        execution_venue=EXECUTION_VENUE_VSCODE_AGENT,
+        primary_for_runtime=False,
+        compare_default=False,
+        runtime_visible=False,
+        report_token="claude_real",
     ),
 )
 
@@ -153,7 +187,7 @@ TRACKS_BY_ID = {track.track_id: track for track in (DETERMINISTIC_BASELINE_TRACK
 TRACKS_BY_SLUG = {track.track_slug: track for track in (DETERMINISTIC_BASELINE_TRACK, *LLM_CAMPAIGNS)}
 
 DEFAULT_PRIMARY_LLM_CAMPAIGN_ID = "openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27"
-DEFAULT_COMPARE_LLM_CAMPAIGN_ID = "openai_chatgpt52ext_agent_fullsec_real_2026-02-27"
+DEFAULT_COMPARE_LLM_CAMPAIGN_ID = "openai_chatgpt54ext_agent_fullsec_real_2026-03-06"
 
 CORE4_SHOWCASE_TICKERS: tuple[str, ...] = ("NVDA", "KO", "WM", "GE")
 LEGACY_FIXED_WINDOW_RUNTIME_CASES: dict[str, tuple[tuple[int, int], ...]] = {
@@ -210,6 +244,24 @@ def get_compare_default_llm_campaign() -> OutputTrack:
     if campaign is None:
         raise SystemExit("Compare-default LLM campaign is not configured.")
     return campaign
+
+
+def sanitize_report_token(value: str) -> str:
+    sanitized = "".join(ch if ch.isalnum() else "_" for ch in value.lower())
+    return sanitized.strip("_") or "campaign"
+
+
+def get_report_token(track: OutputTrack) -> str:
+    if isinstance(track.report_token, str) and track.report_token.strip():
+        return track.report_token.strip()
+    return sanitize_report_token(track.track_slug)
+
+
+def get_report_token_for_campaign_id(campaign_id: str) -> str:
+    campaign = get_llm_campaign(campaign_id)
+    if campaign is not None:
+        return get_report_token(campaign)
+    return sanitize_report_token(campaign_id)
 
 
 def get_track_slug_for_detector(detector_id: str, campaign_id: Optional[str] = None) -> str:

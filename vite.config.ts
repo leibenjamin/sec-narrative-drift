@@ -3,12 +3,19 @@ import react from "@vitejs/plugin-react"
 import tailwindcss from "@tailwindcss/vite"
 
 const URL_SCHEME_RE = /^[A-Za-z][A-Za-z0-9+.-]*:/
-const CONTROL_CHAR_RE = /[\u0000-\u001F\u007F]/
+function hasControlChars(value: string): boolean {
+  for (let index = 0; index < value.length; index += 1) {
+    const code = value.charCodeAt(index)
+    if (code <= 0x1f || code === 0x7f) return true
+  }
+  return false
+}
+
 
 function normalizeBasePath(rawValue: string | undefined): string {
   const candidate = (rawValue ?? "/").trim()
   if (!candidate) return "/"
-  if (CONTROL_CHAR_RE.test(candidate)) {
+  if (hasControlChars(candidate)) {
     throw new Error("VITE_BASE_PATH contains control characters.")
   }
   if (URL_SCHEME_RE.test(candidate) || candidate.startsWith("//")) {

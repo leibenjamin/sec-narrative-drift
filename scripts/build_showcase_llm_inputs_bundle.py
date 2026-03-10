@@ -20,6 +20,10 @@ PUBLIC_BASELINE_ROOT = REPO_ROOT / "public" / "data" / "sec_narrative_drift"
 sys.path.append(str(Path(__file__).resolve().parent))
 import build_lab_outputs as blo  # type: ignore
 from lab_prompt_blocks import build_prompt_templates_showcase_lines  # type: ignore
+from lab_case_focus_expectations import (  # type: ignore
+    assert_focus_signal_paragraph_hints_valid,
+    get_pair_analysis_expectations,
+)
 
 
 def read_json(path: Path) -> Any:
@@ -293,6 +297,24 @@ def select_focus_indices(
     return sorted_prev, sorted_curr, meta
 
 
+
+
+def build_outline_output_targets(
+    section: str,
+    year_from: int,
+    year_to: int,
+    lens: str,
+    source_id: str,
+) -> dict[str, str]:
+    return {
+        "llm_outline_compare_structured": (
+            f"lab_llm_outline_compare_structured_{section}_{year_from}_{year_to}_{lens}_{source_id}.json"
+        ),
+        "llm_outline_compare_runtime": (
+            f"lab_llm_outline_compare_runtime_{section}_{year_from}_{year_to}_{lens}_{source_id}.json"
+        ),
+    }
+
 def build_full_payload(
     ticker: str,
     section: str,
@@ -301,14 +323,13 @@ def build_full_payload(
     lens: str,
     lens_pair: blo.LensPair,
 ) -> dict[str, Any]:
-    output_targets = {
-        "det_llm_delta_brief_v1": blo.build_output_filename(
-            section, year_from, year_to, "det_llm_delta_brief_v1", lens, "edgar"
-        ),
-        "det_llm_excerpt_picker_v1": blo.build_output_filename(
-            section, year_from, year_to, "det_llm_excerpt_picker_v1", lens, "edgar"
-        ),
-    }
+    output_targets = build_outline_output_targets(
+        section=section,
+        year_from=year_from,
+        year_to=year_to,
+        lens=lens,
+        source_id="edgar",
+    )
     return {
         "case": {
             "ticker": ticker,
@@ -378,15 +399,14 @@ def build_pair_manifest_payload(
     prev_paragraphs_sha256: str,
     curr_paragraphs_sha256: str,
 ) -> dict[str, Any]:
-    output_targets = {
-        "det_llm_delta_brief_v1": blo.build_output_filename(
-            section, year_from, year_to, "det_llm_delta_brief_v1", lens, source_id
-        ),
-        "det_llm_excerpt_picker_v1": blo.build_output_filename(
-            section, year_from, year_to, "det_llm_excerpt_picker_v1", lens, source_id
-        ),
-    }
-    return {
+    output_targets = build_outline_output_targets(
+        section=section,
+        year_from=year_from,
+        year_to=year_to,
+        lens=lens,
+        source_id=source_id,
+    )
+    payload: dict[str, Any] = {
         "schema_version": "2.0",
         "input_mode": "full_section_v2",
         "case": {
@@ -427,6 +447,23 @@ def build_pair_manifest_payload(
         },
         "output_targets": output_targets,
     }
+    analysis_expectations = get_pair_analysis_expectations(
+        ticker=ticker,
+        section=section,
+        year_from=year_from,
+        year_to=year_to,
+        lens=lens,
+        source_id=source_id,
+    )
+    if analysis_expectations is not None:
+        assert_focus_signal_paragraph_hints_valid(
+            analysis_expectations,
+            prev_paragraph_count=len(lens_pair.prev.paragraphs),
+            curr_paragraph_count=len(lens_pair.curr.paragraphs),
+            context=f"{ticker} {year_from}-{year_to} {section} {lens} {source_id}",
+        )
+        payload["analysis_expectations"] = analysis_expectations
+    return payload
 
 
 def build_focus_payload(
@@ -440,14 +477,13 @@ def build_focus_payload(
     focus_curr: list[int],
     meta: dict[str, Any],
 ) -> dict[str, Any]:
-    output_targets = {
-        "det_llm_delta_brief_v1": blo.build_output_filename(
-            section, year_from, year_to, "det_llm_delta_brief_v1", lens, "edgar"
-        ),
-        "det_llm_excerpt_picker_v1": blo.build_output_filename(
-            section, year_from, year_to, "det_llm_excerpt_picker_v1", lens, "edgar"
-        ),
-    }
+    output_targets = build_outline_output_targets(
+        section=section,
+        year_from=year_from,
+        year_to=year_to,
+        lens=lens,
+        source_id="edgar",
+    )
     prev_paras = [lens_pair.prev.paragraphs[i] for i in focus_prev]
     curr_paras = [lens_pair.curr.paragraphs[i] for i in focus_curr]
     return {

@@ -9,7 +9,11 @@ from pathlib import Path
 from typing import Optional, cast
 
 from lab_script_version import build_script_version
-from lab_output_tracks import DEFAULT_PRIMARY_LLM_CAMPAIGN_ID, get_llm_campaign
+from lab_output_tracks import (
+    DEFAULT_PRIMARY_LLM_CAMPAIGN_ID,
+    get_llm_campaign,
+    get_report_token_for_campaign_id,
+)
 from lab_llm_precompute_utils import as_list, as_str_dict, get_int, get_str
 from lab_validate_llm_master_outputs import (
     DEFAULT_MANIFEST_PATH,
@@ -24,21 +28,8 @@ from lab_validate_llm_outputs import build_paragraph_maps, resolve_input_file
 SCRIPT_VERSION = build_script_version(Path(__file__), "v1")
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
-def _sanitize_token(value: str) -> str:
-    cleaned = re.sub(r"[^a-zA-Z0-9]+", "_", value.strip().lower())
-    cleaned = cleaned.strip("_")
-    return cleaned or "unknown"
-
-
 def _campaign_slug_token(campaign_id: str) -> str:
-    campaign = get_llm_campaign(campaign_id)
-    if campaign is not None:
-        if campaign.track_id == "openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27":
-            return "codex_real"
-        if campaign.track_id == "openai_chatgpt52ext_agent_fullsec_real_2026-02-27":
-            return "chatgpt_real"
-        return _sanitize_token(campaign.track_slug)
-    return _sanitize_token(campaign_id)
+    return get_report_token_for_campaign_id(campaign_id)
 
 
 def _artifact_suffix(target_field: str, forced_artifact_id: str, targets: list[MasterTarget]) -> str:
@@ -71,6 +62,73 @@ def default_quality_report_path_for_args(
     artifact_token = _artifact_suffix(target_field, artifact_id, targets)
     filename = f"lab_llm_master_quality_{campaign_token}_{artifact_token}.md"
     return REPO_ROOT / "reports" / filename
+
+
+def _sanitize_report_token(value: str, *, fallback: str = "filtered") -> str:
+    token = re.sub(r"[^A-Za-z0-9._-]+", "_", value.replace("\\", "/").strip())
+    token = token.strip("._-")
+    if not token:
+        return fallback
+    if len(token) > 72:
+        token = token[-72:]
+    return token
+
+
+def default_scratch_quality_report_path_for_args(
+    *,
+    campaign_id: str,
+    target_field: str,
+    artifact_id: str,
+    targets: list[MasterTarget],
+    only: str,
+    only_mode: str,
+) -> Path:
+    campaign_token = _campaign_slug_token(campaign_id)
+    artifact_token = _artifact_suffix(target_field, artifact_id, targets)
+    filter_slug = _sanitize_report_token(only, fallback="filtered")
+    filename = f"_tmp_quality_{campaign_token}_{artifact_token}_{only_mode}_{filter_slug}.md"
+    return REPO_ROOT / "reports" / filename
+
+
+def resolve_quality_report_path_for_args(
+    *,
+    report_arg: str,
+    campaign_id: str,
+    target_field: str,
+    artifact_id: str,
+    targets: list[MasterTarget],
+    output: str,
+    only: str,
+    only_mode: str,
+) -> tuple[Path, bool]:
+    if report_arg:
+        return Path(report_arg), False
+    filter_value = only.strip()
+    filter_mode_value = only_mode
+    if not filter_value and output.strip():
+        filter_value = output.strip()
+        filter_mode_value = 'output_path'
+    if filter_value:
+        return (
+            default_scratch_quality_report_path_for_args(
+                campaign_id=campaign_id,
+                target_field=target_field,
+                artifact_id=artifact_id,
+                targets=targets,
+                only=filter_value,
+                only_mode=filter_mode_value,
+            ),
+            True,
+        )
+    return (
+        default_quality_report_path_for_args(
+            campaign_id=campaign_id,
+            target_field=target_field,
+            artifact_id=artifact_id,
+            targets=targets,
+        ),
+        False,
+    )
 
 BOUNDARY_CHARS = set(" \t\r\n,.;:!?)]}\"'/-")
 SENTENCE_END_CHARS = {".", "!", "?"}
@@ -189,6 +247,52 @@ def tokenize(text: str) -> set[str]:
     return tokens
 
 
+def normalize_match_text(text: str) -> str:
+    return re.sub(r"[^a-z0-9]+", " ", text.lower()).strip()
+
+
+def contains_anchor(text_norm: str, anchor: str) -> bool:
+    anchor_norm = normalize_match_text(anchor)
+    if not anchor_norm:
+        return False
+    padded = f" {text_norm} "
+    return f" {anchor_norm} " in padded
+
+
+def signal_matches_text(text: str, anchor_groups_any: object) -> bool:
+    text_norm = normalize_match_text(text)
+    if not text_norm:
+        return False
+    anchor_groups = as_list(anchor_groups_any) or []
+    if not anchor_groups:
+        return False
+    for group_any in anchor_groups:
+        group = as_list(group_any) or []
+        anchors = [str(item) for item in group if isinstance(item, str) and item.strip()]
+        if not anchors:
+            return False
+        if not any(contains_anchor(text_norm, anchor) for anchor in anchors):
+            return False
+    return True
+
+
+def collect_signal_match_indexes(
+    rows: list[dict[str, object]],
+    keys: tuple[str, ...],
+    signal: dict[str, object],
+) -> list[int]:
+    matches: list[int] = []
+    for idx, row in enumerate(rows):
+        pieces: list[str] = []
+        for key in keys:
+            value = get_str(row.get(key))
+            if value:
+                pieces.append(value)
+        if pieces and signal_matches_text(" ".join(pieces), signal.get("anchor_groups")):
+            matches.append(idx)
+    return matches
+
+
 def classify_boundary(paragraph_text: str, snippet: str, start_idx: int) -> str:
     end_idx = start_idx + len(snippet)
     start_boundary = start_idx == 0 or paragraph_text[start_idx - 1] in BOUNDARY_CHARS
@@ -203,7 +307,10 @@ def classify_boundary(paragraph_text: str, snippet: str, start_idx: int) -> str:
     return "clause"
 
 
-def collect_paragraph_maps(path: Path, payload: dict[str, object]) -> tuple[Optional[dict[int, str]], Optional[dict[int, str]], list[AuditIssue]]:
+def resolve_input_payload(
+    path: Path,
+    payload: dict[str, object],
+) -> tuple[Optional[Path], Optional[dict[str, object]], list[AuditIssue]]:
     issues: list[AuditIssue] = []
     provenance = as_str_dict(payload.get("provenance")) or {}
     input_file_value = get_str(provenance.get("input_file"))
@@ -237,8 +344,8 @@ def collect_paragraph_maps(path: Path, payload: dict[str, object]) -> tuple[Opti
             )
         )
         return None, None, issues
-    input_payload = as_str_dict(input_payload_raw)
-    if input_payload is None:
+    input_payload_dict = as_str_dict(input_payload_raw)
+    if input_payload_dict is None:
         issues.append(
             AuditIssue(
                 code="invalid_input_payload_shape",
@@ -247,7 +354,20 @@ def collect_paragraph_maps(path: Path, payload: dict[str, object]) -> tuple[Opti
             )
         )
         return None, None, issues
-    maps = build_paragraph_maps(input_payload, input_payload_path=resolution.path)
+    input_payload: dict[str, object] = {}
+    for key, value in input_payload_dict.items():
+        input_payload[key] = value
+    return resolution.path, input_payload, issues
+
+
+def collect_paragraph_maps(
+    input_payload_path: Optional[Path],
+    input_payload: Optional[dict[str, object]],
+) -> tuple[Optional[dict[int, str]], Optional[dict[int, str]], list[AuditIssue]]:
+    issues: list[AuditIssue] = []
+    if input_payload_path is None or input_payload is None:
+        return None, None, issues
+    maps = build_paragraph_maps(input_payload, input_payload_path=input_payload_path)
     if maps is None:
         issues.append(
             AuditIssue(
@@ -305,7 +425,10 @@ def evaluate_output(
         )
         return OutputAudit(path=path, blockers=blockers, advisories=advisories, quality_score=0)
 
-    prev_map, curr_map, map_issues = collect_paragraph_maps(path, payload)
+    input_payload_path, input_payload, input_issues = resolve_input_payload(path, payload)
+    blockers.extend(input_issues)
+
+    prev_map, curr_map, map_issues = collect_paragraph_maps(input_payload_path, input_payload)
     blockers.extend(map_issues)
 
     evidence_list_any = as_list(payload.get("evidence_bank")) or []
@@ -769,6 +892,105 @@ def evaluate_output(
                     )
                 )
 
+        analysis_expectations = as_str_dict(input_payload.get("analysis_expectations")) if input_payload else None
+        focus_signals_any = as_list(analysis_expectations.get("focus_signals")) if analysis_expectations else []
+        if focus_signals_any:
+            ranked_change_positions: list[int] = []
+            for position, change in enumerate(material_changes):
+                salience_raw = change.get("salience")
+                if isinstance(salience_raw, bool) or not isinstance(salience_raw, (int, float)):
+                    continue
+                ranked_change_positions.append(position)
+            ranked_change_positions.sort(
+                key=lambda idx: float(cast(float, material_changes[idx].get("salience", 0.0))),
+                reverse=True,
+            )
+            mechanism_rows = [
+                cast(dict[str, object], row)
+                for row in (as_str_dict(item) for item in (as_list(payload.get("change_mechanisms")) or []))
+                if row is not None
+            ]
+            investor_rows = [
+                cast(dict[str, object], row)
+                for row in (as_str_dict(item) for item in (as_list(payload.get("investor_relevance")) or []))
+                if row is not None
+            ]
+            for signal_any in focus_signals_any:
+                signal = as_str_dict(signal_any)
+                if signal is None:
+                    continue
+                signal_id = get_str(signal.get("id")) or "unknown_signal"
+                surface_requirements = as_str_dict(signal.get("surface_requirements")) or {}
+                material_matches = collect_signal_match_indexes(
+                    material_changes,
+                    ("title", "caveat"),
+                    signal,
+                )
+                required_sections_any = as_list(surface_requirements.get("required_sections")) or []
+                requires_material_changes = any(
+                    isinstance(section_name, str) and section_name == "material_changes"
+                    for section_name in required_sections_any
+                )
+                if requires_material_changes and not material_matches:
+                    blockers.append(
+                        AuditIssue(
+                            code="missing_required_focus_signal",
+                            detail=f"focus_signal={signal_id} missing from required material_changes surface.",
+                            severity="blocker",
+                        )
+                    )
+                    continue
+                top_rank_max = get_int(surface_requirements.get("top_material_change_rank_max"))
+                if top_rank_max is not None and top_rank_max > 0 and material_matches:
+                    top_positions = set(ranked_change_positions[:top_rank_max])
+                    if not any(idx in top_positions for idx in material_matches):
+                        blockers.append(
+                            AuditIssue(
+                                code="required_focus_signal_not_top_ranked",
+                                detail=(
+                                    f"focus_signal={signal_id} is present but not surfaced within top-{top_rank_max} "
+                                    "material_changes by salience."
+                                ),
+                                severity="blocker",
+                            )
+                        )
+                required_any_of_sections_any = as_list(surface_requirements.get("required_any_of_sections")) or []
+                required_any_of_sections = [
+                    str(item)
+                    for item in required_any_of_sections_any
+                    if isinstance(item, str) and item.strip()
+                ]
+                if required_any_of_sections:
+                    supporting_matches = False
+                    for section_name in required_any_of_sections:
+                        if section_name == "change_mechanisms":
+                            if collect_signal_match_indexes(
+                                mechanism_rows,
+                                ("mechanism", "transmission_channel", "business_effect"),
+                                signal,
+                            ):
+                                supporting_matches = True
+                                break
+                        elif section_name == "investor_relevance":
+                            if collect_signal_match_indexes(
+                                investor_rows,
+                                ("why_it_matters",),
+                                signal,
+                            ):
+                                supporting_matches = True
+                                break
+                    if not supporting_matches:
+                        blockers.append(
+                            AuditIssue(
+                                code="required_focus_signal_missing_supporting_surface",
+                                detail=(
+                                    f"focus_signal={signal_id} missing required supporting surface in one of "
+                                    f"{required_any_of_sections}."
+                                ),
+                                severity="blocker",
+                            )
+                        )
+
     if target.expected_artifact_id == "llm_outline_compare_insight":
         executive_digest = as_str_dict(payload.get("executive_digest")) or {}
         summary_text = get_str(executive_digest.get("summary_text")) or ""
@@ -1200,14 +1422,23 @@ def main(argv: Optional[list[str]] = None) -> int:
 
     report_lines = build_markdown_report(audits=audits, missing_paths=missing_paths, mode=str(args.mode))
     report_arg = str(args.report).strip()
-    report_path = Path(report_arg) if report_arg else default_quality_report_path_for_args(
+    report_path, is_scratch_report = resolve_quality_report_path_for_args(
+        report_arg=report_arg,
         campaign_id=campaign.track_id,
         target_field=str(args.target_field),
         artifact_id=str(args.artifact_id),
         targets=[target for _, target in path_target_pairs],
+        output=str(args.output),
+        only=str(args.only),
+        only_mode=str(args.only_mode),
     )
     if not report_path.is_absolute():
         report_path = (REPO_ROOT / report_path).resolve()
+    if is_scratch_report:
+        print(
+            f"[note] auto-selected scratch quality report for filtered run: {report_path}",
+            flush=True,
+        )
     report_path.parent.mkdir(parents=True, exist_ok=True)
     report_path.write_text("\n".join(report_lines) + "\n", encoding="utf-8")
 
