@@ -4,6 +4,7 @@ import argparse
 import hashlib
 import json
 import math
+import os
 import re
 import subprocess
 from collections import Counter
@@ -13,13 +14,37 @@ from pathlib import Path
 from typing import Any, Optional, cast
 
 from sec_extract_item1a import extract_item1a_from_html, split_paragraphs
+from sec_metrics import (
+    DF_PENALTY_EPS,
+    DF_PENALTY_FLOOR,
+    DF_PENALTY_GAMMA_PHRASE,
+    DF_PENALTY_GAMMA_UNI,
+    DF_PENALTY_OVERRIDE_COUNT,
+    DF_PENALTY_OVERRIDE_MAX_DF_FRAC,
+    DF_PENALTY_OVERRIDE_MIN_PENALTY,
+    DF_PENALTY_OVERRIDE_Z,
+    NO_DISTINCTIVE_COUNT_MIN,
+    NO_DISTINCTIVE_Z_MIN,
+    PRIOR_FLOOR,
+    PRIOR_MASS_DEFAULT,
+    SCORE_DF_MIN,
+    bigrams as sec_bigrams,
+    build_shift_summary,
+    canonicalize_counts,
+    count_allowlist_phrases,
+    extract_terms,
+    get_canonical_terms,
+    merge_includes,
+    pmi_keep_bigrams,
+    tokenize as sec_tokenize,
+    tokenize_segments,
+    textrank_keyphrases,
+)
 from sec_segments import segment_text_v1
 from lab_script_version import build_script_version
 
 LAB_SCHEMA_VERSION = "1.0"
 SCRIPT_VERSION = build_script_version(Path(__file__), "v2")
-LEGACY_DRIFT_ROOT = Path("public") / "data" / "sec_narrative_drift"
-
 DEFAULT_SECTION = "10k_item1a"
 DEFAULT_SOURCE = "edgar"
 DEFAULT_LENSES = ["raw", "deboilerplated"]
@@ -443,143 +468,206 @@ def find_paragraphs_with_terms(
 
 
 
-def load_shift_pair(
-    root: Path,
-    ticker: str,
-    year_from: int,
-    year_to: int,
-    section: str,
-) -> Optional[dict[str, Any]]:
-    # Legacy source path retained for deterministic detector backfill compatibility.
-    shifts_path = (
-        root
-        / LEGACY_DRIFT_ROOT
-        / ticker.upper()
-        / f"shifts_{section}.json"
-    )
-    if not shifts_path.exists():
-        return None
-    payload = read_json(shifts_path)
-    root_dict = as_str_dict(payload)
-    if root_dict is None:
-        return None
-    year_pairs = as_list(root_dict.get("yearPairs"))
-    if year_pairs is None:
-        return None
-    for entry in year_pairs:
-        entry_dict = as_str_dict(entry)
-        if entry_dict is None:
-            continue
-        from_year = entry_dict.get("from")
-        to_year = entry_dict.get("to")
-        if not isinstance(from_year, int) or not isinstance(to_year, int):
-            continue
-        if from_year == year_from and to_year == year_to:
-            return entry_dict
-    return None
+def resolve_prior_mass() -> float:
+    raw = os.getenv("TERM_SHIFT_PRIOR_MASS")
+    if raw:
+        try:
+            value = float(raw)
+            if value > 0:
+                return value
+        except ValueError:
+            pass
+    return PRIOR_MASS_DEFAULT
 
 
-def load_excerpt_pair(
-    root: Path,
-    ticker: str,
-    year_from: int,
-    year_to: int,
-    section: str,
-) -> Optional[dict[str, Any]]:
-    # Legacy source path retained for deterministic detector backfill compatibility.
-    excerpts_path = (
-        root
-        / LEGACY_DRIFT_ROOT
-        / ticker.upper()
-        / f"excerpts_{section}.json"
-    )
-    if not excerpts_path.exists():
-        return None
-    payload = read_json(excerpts_path)
-    root_dict = as_str_dict(payload)
-    if root_dict is None:
-        return None
-    pairs = as_list(root_dict.get("pairs"))
-    if pairs is None:
-        return None
-    for entry in pairs:
-        entry_dict = as_str_dict(entry)
-        if entry_dict is None:
-            continue
-        from_year = entry_dict.get("from")
-        to_year = entry_dict.get("to")
-        if not isinstance(from_year, int) or not isinstance(to_year, int):
-            continue
-        if from_year == year_from and to_year == year_to:
-            return entry_dict
-    return None
+def build_primary_term_counts_for_pair(
+    prev_text: str,
+    curr_text: str,
+) -> tuple[Counter[str], Counter[str], dict[str, list[str]]]:
+    pooled_tokens: list[list[str]] = []
+    for text_value in (prev_text, curr_text):
+        pooled_tokens.extend(tokenize_segments(text_value))
+    bigram_keep = pmi_keep_bigrams(pooled_tokens)
+    canonical_terms = get_canonical_terms()
+
+    raw_counts: list[Counter[str]] = []
+    for text_value in (prev_text, curr_text):
+        counts: Counter[str] = Counter(sec_tokenize(text_value))
+        for seg_tokens in tokenize_segments(text_value):
+            for phrase in sec_bigrams(seg_tokens):
+                if phrase in bigram_keep:
+                    counts[phrase] += 1
+        counts.update(count_allowlist_phrases(text_value))
+        raw_counts.append(counts)
+
+    if not canonical_terms:
+        return raw_counts[0], raw_counts[1], {}
+
+    prev_normalized, includes_prev = canonicalize_counts(raw_counts[0], canonical_terms)
+    curr_normalized, includes_curr = canonicalize_counts(raw_counts[1], canonical_terms)
+    includes_by_term = merge_includes(includes_prev, includes_curr)
+    return prev_normalized, curr_normalized, includes_by_term
 
 
-def load_metrics_drift(
-    root: Path,
-    ticker: str,
-    year_from: int,
-    year_to: int,
-    section: str,
-) -> Optional[float]:
-    # Legacy source path retained for deterministic detector backfill compatibility.
-    metrics_path = (
-        root
-        / LEGACY_DRIFT_ROOT
-        / ticker.upper()
-        / f"metrics_{section}.json"
-    )
-    if not metrics_path.exists():
-        return None
-    payload = read_json(metrics_path)
-    root_dict = as_str_dict(payload)
-    if root_dict is None:
-        return None
-    years = as_list(root_dict.get("years"))
-    drift = as_list(root_dict.get("drift_vs_prev"))
-    if years is None or drift is None:
-        return None
-    for idx, year in enumerate(years):
-        if not isinstance(year, int):
-            continue
-        if year == year_to and idx > 0:
-            value = drift[idx]
-            if isinstance(value, (int, float)):
-                return float(value)
-            return None
-    return None
+def build_alt_term_counts_for_pair(prev_text: str, curr_text: str) -> tuple[Counter[str], Counter[str]]:
+    canonical_terms = get_canonical_terms()
+    counts_by_text: list[Counter[str]] = []
+    for text_value in (prev_text, curr_text):
+        counts: Counter[str] = Counter()
+        counts.update(textrank_keyphrases(text_value))
+        counts.update(count_allowlist_phrases(text_value))
+        if canonical_terms:
+            normalized, _includes = canonicalize_counts(counts, canonical_terms)
+            counts = normalized
+        counts_by_text.append(counts)
+    return counts_by_text[0], counts_by_text[1]
 
 
-def parse_ranked_items(raw_list: Any) -> list[dict[str, Any]]:
-    items: list[dict[str, Any]] = []
-    if not isinstance(raw_list, list):
-        return items
-    typed_list = cast(list[Any], raw_list)
-    for entry in typed_list:
-        if isinstance(entry, str):
-            items.append({"label": entry, "score": 0.0})
+def build_year_df(counts_by_year: list[Counter[str]]) -> dict[str, int]:
+    year_df: dict[str, int] = {}
+    for counts in counts_by_year:
+        for term in counts.keys():
+            year_df[term] = year_df.get(term, 0) + 1
+    return year_df
+
+
+def compute_log_odds_stats(
+    counts_prev: Counter[str],
+    counts_curr: Counter[str],
+    background_counts: Counter[str],
+    total_background: int,
+    prior_mass: float,
+    year_df: dict[str, int],
+    num_years: int,
+) -> dict[str, dict[str, Any]]:
+    vocab = set(counts_prev.keys()) | set(counts_curr.keys())
+    if not vocab:
+        return {}
+
+    total_prev = sum(counts_prev.values())
+    total_curr = sum(counts_curr.values())
+    if total_prev <= 0 or total_curr <= 0:
+        return {}
+
+    uniform_prior = 1.0 / max(1, len(vocab))
+    stats: dict[str, dict[str, Any]] = {}
+    for term in vocab:
+        count_prev = counts_prev.get(term, 0)
+        count_curr = counts_curr.get(term, 0)
+        if total_background > 0:
+            background_prob = background_counts.get(term, 0) / total_background
+        else:
+            background_prob = uniform_prior
+
+        alpha_i = max(prior_mass * background_prob, PRIOR_FLOOR)
+        denom_prev = total_prev + prior_mass - (count_prev + alpha_i)
+        denom_curr = total_curr + prior_mass - (count_curr + alpha_i)
+        if denom_prev <= 0 or denom_curr <= 0:
             continue
-        if not isinstance(entry, dict):
+
+        log_prev = math.log((count_prev + alpha_i) / denom_prev)
+        log_curr = math.log((count_curr + alpha_i) / denom_curr)
+        score = log_curr - log_prev
+        z_value = score / math.sqrt((1 / (count_curr + alpha_i)) + (1 / (count_prev + alpha_i)))
+
+        per10k_prev = count_prev / total_prev * 10000.0 if total_prev else 0.0
+        per10k_curr = count_curr / total_curr * 10000.0 if total_curr else 0.0
+        delta_per10k = per10k_curr - per10k_prev
+        df_frac = year_df.get(term, 0) / num_years if num_years else 0.0
+        distinctive = (
+            abs(z_value) >= 2.0
+            and max(count_prev, count_curr) >= 3
+            and abs(delta_per10k) >= 0.25
+            and df_frac <= 0.70
+        )
+
+        stats[term] = {
+            "term": term,
+            "score": score,
+            "z": z_value,
+            "countPrev": count_prev,
+            "countCurr": count_curr,
+            "per10kPrev": per10k_prev,
+            "per10kCurr": per10k_curr,
+            "deltaPer10k": delta_per10k,
+            "distinctive": distinctive,
+        }
+    return stats
+
+
+def build_df_penalty_scores(
+    stats: dict[str, dict[str, Any]],
+    year_df: dict[str, int],
+    num_years: int,
+) -> dict[str, float]:
+    scores: dict[str, float] = {}
+    if not num_years:
+        return scores
+    for term, item in stats.items():
+        df_frac = year_df.get(term, 0) / num_years
+        gamma = DF_PENALTY_GAMMA_PHRASE if " " in term else DF_PENALTY_GAMMA_UNI
+        df_penalty = max(DF_PENALTY_FLOOR, (1 - df_frac + DF_PENALTY_EPS) ** gamma)
+        if abs(float(item["z"])) >= DF_PENALTY_OVERRIDE_Z and max(int(item["countPrev"]), int(item["countCurr"])) >= DF_PENALTY_OVERRIDE_COUNT:
+            if df_frac <= DF_PENALTY_OVERRIDE_MAX_DF_FRAC:
+                df_penalty = max(df_penalty, DF_PENALTY_OVERRIDE_MIN_PENALTY)
+        scores[term] = float(item["z"]) * df_penalty
+    return scores
+
+
+def build_ranked_shift_items(
+    items: list[dict[str, Any]],
+    includes_by_term: dict[str, list[str]],
+    limit: int = 15,
+) -> list[dict[str, Any]]:
+    output: list[dict[str, Any]] = []
+    for item in items[:limit]:
+        term = item.get("term")
+        if not isinstance(term, str):
             continue
-        entry_dict = cast(dict[str, Any], entry)
-        term: Any = entry_dict.get("term")
-        score: Any = entry_dict.get("score")
-        if isinstance(term, str) and isinstance(score, (int, float)):
-            meta: dict[str, Any] = {}
-            for key in (
-                "z",
-                "countPrev",
-                "countCurr",
-                "per10kPrev",
-                "per10kCurr",
-                "deltaPer10k",
-                "distinctive",
-                "includes",
-            ):
-                if key in entry_dict:
-                    meta[key] = entry_dict.get(key)
-            items.append({"label": term, "score": float(score), "meta": meta})
-    return items
+        meta: dict[str, Any] = {
+            "z": float(item.get("z", 0.0)),
+            "countPrev": int(item.get("countPrev", 0)),
+            "countCurr": int(item.get("countCurr", 0)),
+            "per10kPrev": float(item.get("per10kPrev", 0.0)),
+            "per10kCurr": float(item.get("per10kCurr", 0.0)),
+            "deltaPer10k": float(item.get("deltaPer10k", 0.0)),
+            "distinctive": bool(item.get("distinctive", False)),
+        }
+        includes = includes_by_term.get(term)
+        if includes:
+            meta["includes"] = list(includes)
+        output.append({"label": term, "score": float(item.get("score", 0.0)), "meta": meta})
+    return output
+
+
+def build_ranked_alt_items(items: list[dict[str, Any]], limit: int = 15) -> list[dict[str, Any]]:
+    output: list[dict[str, Any]] = []
+    for item in items[:limit]:
+        term = item.get("term")
+        if not isinstance(term, str):
+            continue
+        output.append({"label": term, "score": float(item.get("score", 0.0))})
+    return output
+
+
+def compute_cosine_drift_from_counts(counts_prev: Counter[str], counts_curr: Counter[str]) -> Optional[float]:
+    vocab = set(counts_prev.keys()) | set(counts_curr.keys())
+    if not vocab:
+        return None
+    dot_product = 0.0
+    prev_norm_sq = 0.0
+    curr_norm_sq = 0.0
+    for term in vocab:
+        prev_value = float(counts_prev.get(term, 0))
+        curr_value = float(counts_curr.get(term, 0))
+        dot_product += prev_value * curr_value
+        prev_norm_sq += prev_value * prev_value
+        curr_norm_sq += curr_value * curr_value
+    if prev_norm_sq <= 0.0 or curr_norm_sq <= 0.0:
+        return None
+    similarity = dot_product / math.sqrt(prev_norm_sq * curr_norm_sq)
+    similarity = max(0.0, min(1.0, similarity))
+    return round(1.0 - similarity, 6)
 
 
 def det_logodds_terms_v1(
@@ -590,16 +678,130 @@ def det_logodds_terms_v1(
     section: str,
     lens_pair: LensPair,
 ) -> tuple[dict[str, Any], list[dict[str, Any]], dict[str, Any]]:
+    del root, ticker, year_from, year_to, section
     warnings: list[str] = []
-    shift_pair = load_shift_pair(root, ticker, year_from, year_to, section)
-    if shift_pair is None:
-        warnings.append("missing_shifts_pair")
-        artifacts = {"top_risers": [], "top_fallers": []}
-        metrics = make_metrics(None, 0.0, lens_pair.coverage, warnings)
-        return artifacts, [], metrics
 
-    top_risers = parse_ranked_items(shift_pair.get("topRisers"))
-    top_fallers = parse_ranked_items(shift_pair.get("topFallers"))
+    counts_prev, counts_curr, includes_by_term = build_primary_term_counts_for_pair(
+        lens_pair.prev.text,
+        lens_pair.curr.text,
+    )
+    counts_prev_alt, counts_curr_alt = build_alt_term_counts_for_pair(
+        lens_pair.prev.text,
+        lens_pair.curr.text,
+    )
+
+    background_counts = Counter[str]()
+    background_counts.update(counts_prev)
+    background_counts.update(counts_curr)
+    total_background = sum(background_counts.values())
+    year_df = build_year_df([counts_prev, counts_curr])
+    num_years = 2
+    prior_mass = resolve_prior_mass()
+
+    stats = compute_log_odds_stats(
+        counts_prev,
+        counts_curr,
+        background_counts,
+        total_background,
+        prior_mass,
+        year_df,
+        num_years,
+    )
+    fallback_scores = build_df_penalty_scores(stats, year_df, num_years)
+
+    has_distinctive = any(bool(item.get("distinctive")) for item in stats.values())
+    fallback_items = [
+        item
+        for item in stats.values()
+        if bool(item.get("distinctive")) or max(int(item.get("countPrev", 0)), int(item.get("countCurr", 0))) >= 2
+    ]
+    if not has_distinctive:
+        filtered_items: list[dict[str, Any]] = []
+        for item in fallback_items:
+            term = item.get("term")
+            if not isinstance(term, str):
+                continue
+            score_df = fallback_scores.get(term, float(item.get("z", 0.0)))
+            if abs(score_df) < SCORE_DF_MIN:
+                continue
+            if not (
+                abs(float(item.get("z", 0.0))) >= NO_DISTINCTIVE_Z_MIN
+                or max(int(item.get("countPrev", 0)), int(item.get("countCurr", 0))) >= NO_DISTINCTIVE_COUNT_MIN
+            ):
+                continue
+            filtered_items.append(item)
+        fallback_items = filtered_items
+
+    for term, item in stats.items():
+        item["score"] = fallback_scores.get(term, float(item.get("z", 0.0)))
+
+    def score_bucket(value: float) -> float:
+        return round(value, 9)
+
+    def sort_key_riser(item: dict[str, Any]) -> tuple[float, int, int, float, str]:
+        term_value = item.get("term")
+        term = term_value if isinstance(term_value, str) else ""
+        score_df = fallback_scores.get(term, float(item.get("z", 0.0)))
+        min_count = min(int(item.get("countPrev", 0)), int(item.get("countCurr", 0)))
+        total_count = int(item.get("countPrev", 0)) + int(item.get("countCurr", 0))
+        abs_delta = abs(float(item.get("deltaPer10k", 0.0)))
+        return (-score_bucket(score_df), -min_count, -total_count, -abs_delta, term)
+
+    def sort_key_faller(item: dict[str, Any]) -> tuple[float, int, int, float, str]:
+        term_value = item.get("term")
+        term = term_value if isinstance(term_value, str) else ""
+        score_df = fallback_scores.get(term, float(item.get("z", 0.0)))
+        min_count = min(int(item.get("countPrev", 0)), int(item.get("countCurr", 0)))
+        total_count = int(item.get("countPrev", 0)) + int(item.get("countCurr", 0))
+        abs_delta = abs(float(item.get("deltaPer10k", 0.0)))
+        return (score_bucket(score_df), -min_count, -total_count, -abs_delta, term)
+
+    riser_pool = [item for item in fallback_items if float(item.get("score", 0.0)) > 0]
+    faller_pool = [item for item in fallback_items if float(item.get("score", 0.0)) < 0]
+    sorted_risers = sorted(riser_pool, key=sort_key_riser)
+    sorted_fallers = sorted(faller_pool, key=sort_key_faller)
+
+    if has_distinctive:
+        top_risers = build_ranked_shift_items(sorted_risers, includes_by_term)
+        top_fallers = build_ranked_shift_items(sorted_fallers, includes_by_term)
+    else:
+        top_risers = build_ranked_shift_items(sorted_risers, includes_by_term) if len(sorted_risers) >= 3 else []
+        top_fallers = build_ranked_shift_items(sorted_fallers, includes_by_term) if len(sorted_fallers) >= 3 else []
+
+    if not has_distinctive:
+        summary = "No strong distinctive term shifts detected."
+    else:
+        summary = build_shift_summary(extract_terms(top_risers), extract_terms(top_fallers))
+
+    background_counts_alt = Counter[str]()
+    background_counts_alt.update(counts_prev_alt)
+    background_counts_alt.update(counts_curr_alt)
+    total_background_alt = sum(background_counts_alt.values())
+    year_df_alt = build_year_df([counts_prev_alt, counts_curr_alt])
+    stats_alt = compute_log_odds_stats(
+        counts_prev_alt,
+        counts_curr_alt,
+        background_counts_alt,
+        total_background_alt,
+        prior_mass,
+        year_df_alt,
+        num_years,
+    )
+    alt_risers = [item for item in stats_alt.values() if float(item.get("z", 0.0)) > 0]
+    alt_fallers = [item for item in stats_alt.values() if float(item.get("z", 0.0)) < 0]
+    sorted_risers_alt = sorted(alt_risers, key=lambda item: (-float(item.get("z", 0.0)), str(item.get("term", ""))))
+    sorted_fallers_alt = sorted(alt_fallers, key=lambda item: (float(item.get("z", 0.0)), str(item.get("term", ""))))
+    top_risers_alt = build_ranked_alt_items(sorted_risers_alt)
+    top_fallers_alt = build_ranked_alt_items(sorted_fallers_alt)
+    summary_alt = ""
+    if top_risers_alt or top_fallers_alt:
+        riser_terms_alt = [item["label"] for item in top_risers_alt if isinstance(item.get("label"), str)]
+        faller_terms_alt = [item["label"] for item in top_fallers_alt if isinstance(item.get("label"), str)]
+        summary_alt = build_shift_summary(riser_terms_alt, faller_terms_alt)
+
+    min_primary_total = min(sum(counts_prev.values()), sum(counts_curr.values()))
+    if min_primary_total < 500:
+        warnings.append("thin_counts")
     if len(top_risers) < 3 or len(top_fallers) < 3:
         warnings.append("thin_counts")
     if not top_risers and not top_fallers:
@@ -608,99 +810,46 @@ def det_logodds_terms_v1(
     artifacts: dict[str, Any] = {
         "top_risers": top_risers,
         "top_fallers": top_fallers,
-        "summary": shift_pair.get("summary", ""),
+        "summary": summary,
+        "ranked_items": [*top_risers, *top_fallers],
     }
-    ranked_items: list[dict[str, Any]] = []
-    for item in top_risers:
-        ranked_items.append(item)
-    for item in top_fallers:
-        ranked_items.append(item)
-    artifacts["ranked_items"] = ranked_items
-
-    alt_risers = parse_ranked_items(shift_pair.get("topRisersAlt"))
-    alt_fallers = parse_ranked_items(shift_pair.get("topFallersAlt"))
-    if alt_risers or alt_fallers:
-        artifacts["top_risers_alt"] = alt_risers
-        artifacts["top_fallers_alt"] = alt_fallers
-        artifacts["summary_alt"] = shift_pair.get("summaryAlt", "")
-
-    drift_score = load_metrics_drift(root, ticker, year_from, year_to, section)
-    confidence = (
-        min(1.0, (len(top_risers) + len(top_fallers)) / 20.0)
-        if (top_risers or top_fallers)
-        else 0.0
-    )
+    if top_risers_alt or top_fallers_alt:
+        artifacts["top_risers_alt"] = top_risers_alt
+        artifacts["top_fallers_alt"] = top_fallers_alt
+        artifacts["summary_alt"] = summary_alt or summary
 
     evidence: list[dict[str, Any]] = []
-    if lens_pair.lens == RAW_LENS:
-        excerpt_pair = load_excerpt_pair(root, ticker, year_from, year_to, section)
-        if excerpt_pair is not None:
-            highlights = excerpt_pair.get("highlightTerms")
-            highlight_terms: list[str] = []
-            if isinstance(highlights, list):
-                typed_highlights = cast(list[Any], highlights)
-                for term in typed_highlights:
-                    if isinstance(term, str):
-                        highlight_terms.append(term)
-            reps = excerpt_pair.get("representativeParagraphs")
-            if isinstance(reps, list):
-                typed_reps = cast(list[Any], reps)
-                for rep in typed_reps:
-                    rep_dict = as_str_dict(rep)
-                    if rep_dict is None:
-                        continue
-                    year = rep_dict.get("year")
-                    paragraph_idx = rep_dict.get("paragraphIndex")
-                    text = rep_dict.get("text")
-                    if (
-                        not isinstance(year, int)
-                        or not isinstance(paragraph_idx, int)
-                        or not isinstance(text, str)
-                    ):
-                        continue
-                    evidence.append(
-                        {
-                            "year": year,
-                            "paragraph_idx": paragraph_idx,
-                            "snippet": text,
-                            "why": "Representative paragraph from baseline excerpts.",
-                            "highlights": highlight_terms,
-                        }
-                    )
-    if not evidence:
-        terms: list[str] = []
-        for item in top_risers[:5]:
-            label = item.get("label")
-            if isinstance(label, str):
-                terms.append(label)
-        for item in top_fallers[:5]:
-            label = item.get("label")
-            if isinstance(label, str):
-                terms.append(label)
-        for hit in find_paragraphs_with_terms(lens_pair.curr.paragraphs, terms, max_hits=2):
-            evidence.append(
-                {
-                    "year": year_to,
-                    "paragraph_idx": hit.get("paragraph_idx", 0),
-                    "snippet": hit.get("snippet", ""),
-                    "why": "Paragraph containing shifted term.",
-                    "highlights": hit.get("highlights", []),
-                }
-            )
-        for hit in find_paragraphs_with_terms(lens_pair.prev.paragraphs, terms, max_hits=2):
-            evidence.append(
-                {
-                    "year": year_from,
-                    "paragraph_idx": hit.get("paragraph_idx", 0),
-                    "snippet": hit.get("snippet", ""),
-                    "why": "Paragraph containing shifted term.",
-                    "highlights": hit.get("highlights", []),
-                }
-            )
+    evidence_terms: list[str] = []
+    for item in [*top_risers[:5], *top_fallers[:5]]:
+        label = item.get("label")
+        if isinstance(label, str) and label not in evidence_terms:
+            evidence_terms.append(label)
 
+    for hit in find_paragraphs_with_terms(lens_pair.curr.paragraphs, evidence_terms, max_hits=2):
+        evidence.append(
+            {
+                "year": lens_pair.curr.year,
+                "paragraph_idx": hit.get("paragraph_idx", 0),
+                "snippet": hit.get("snippet", ""),
+                "why": "Paragraph containing shifted term.",
+                "highlights": hit.get("highlights", []),
+            }
+        )
+    for hit in find_paragraphs_with_terms(lens_pair.prev.paragraphs, evidence_terms, max_hits=2):
+        evidence.append(
+            {
+                "year": lens_pair.prev.year,
+                "paragraph_idx": hit.get("paragraph_idx", 0),
+                "snippet": hit.get("snippet", ""),
+                "why": "Paragraph containing shifted term.",
+                "highlights": hit.get("highlights", []),
+            }
+        )
+
+    drift_score = compute_cosine_drift_from_counts(counts_prev, counts_curr)
+    confidence = min(1.0, min_primary_total / 1000.0) if min_primary_total else 0.0
     metrics = make_metrics(drift_score, confidence, lens_pair.coverage, warnings + lens_pair.warnings)
     return artifacts, evidence, metrics
-
 
 
 def jsd_contributions(

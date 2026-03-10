@@ -63,3 +63,5 @@ This directory stores non-canonical historical artifacts that are not used by th
 - Compatibility scripts may fall back to attic copies when older review-pack or archaeology workflows still reference these files.
 - Local project-instruction text assets that were removed from the shipped public runtime surface once thread starters and input files became sufficient for public reruns.
 
+
+- The old featured/universe public dataset surface (`public/data/sec_narrative_drift/**` and `public/data/sec_narrative_drift_metrics/**`) was retired from the active repo surface and is preserved through Git history rather than attic copies.

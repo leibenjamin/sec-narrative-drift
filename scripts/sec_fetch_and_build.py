@@ -1560,7 +1560,7 @@ def load_existing_filings_for_cache_only(out_dir: Path) -> list[dict[str, Any]]:
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="Fetch SEC filings and build JSON outputs.")
+    parser = argparse.ArgumentParser(description="Fetch SEC filings and build local legacy JSON outputs from cache or live SEC data.")
     parser.add_argument("--ticker", required=True, help="Ticker symbol (e.g., AAPL).")
     parser.add_argument(
         "--years",
@@ -1577,7 +1577,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--out",
         default=None,
-        help="Output folder for JSON artifacts (default: public/data/sec_narrative_drift/<ticker>).",
+        help="Output folder for local historical JSON artifacts (default: data/legacy_featured_item1a/<ticker>).",
     )
     parser.add_argument(
         "--limit",
@@ -1672,9 +1672,8 @@ def main(argv: Optional[list[str]] = None) -> int:
     ticker = args.ticker.upper().strip()
     default_out_dir = (
         Path(__file__).resolve().parents[1]
-        / "public"
         / "data"
-        / "sec_narrative_drift"
+        / "legacy_featured_item1a"
         / ticker
     )
     out_dir = Path(args.out) if args.out else default_out_dir
@@ -2432,7 +2431,7 @@ def main(argv: Optional[list[str]] = None) -> int:
     write_json(out_dir / "shifts_10k_item1a.json", shifts)
     write_json(out_dir / "excerpts_10k_item1a.json", excerpts)
 
-    metrics_root = out_dir.parent.parent / "sec_narrative_drift_metrics" / ticker
+    metrics_root = out_dir.parent.parent / "legacy_featured_item1a_metrics" / ticker
     metrics_root.mkdir(parents=True, exist_ok=True)
     write_json(
         metrics_root / "deboilerplated_drift_10k_item1a.json",
