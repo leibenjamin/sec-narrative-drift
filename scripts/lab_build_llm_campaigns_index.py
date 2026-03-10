@@ -14,7 +14,7 @@ from lab_output_tracks import (  # type: ignore
 )
 from lab_script_version import build_script_version
 
-SCRIPT_VERSION = build_script_version(Path(__file__), "v1")
+SCRIPT_VERSION = build_script_version(Path(__file__), "v2")
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_OUT_PATH = (
     REPO_ROOT
@@ -54,7 +54,6 @@ def build_payload(
                 "model_provider": campaign.model_provider,
                 "model_name": campaign.model_name,
                 "run_label_prefix_template": campaign.run_label_prefix_template,
-                "instructions_asset": campaign.instructions_asset_name,
                 "primary_for_runtime": campaign.primary_for_runtime,
                 "compare_default": campaign.compare_default,
                 "runtime_visible": campaign.runtime_visible,
@@ -81,6 +80,7 @@ def build_payload(
             "notes": [
                 "Generated from scripts/lab_output_tracks.py (runtime-visible campaigns only)",
                 "Day-precise run label contract: YYYY-MM-DD_<campaign_tag>",
+                "Project instruction assets are local operator artifacts and are excluded from the public index.",
             ],
         },
     }

@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated_at": "2026-03-10T04:09:58Z",
+  "updated_at": "2026-03-10T21:24:47Z",
   "primary_campaign_id": "openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27",
   "compare_default_campaign_id": "openai_chatgpt54ext_agent_fullsec_real_2026-03-06",
   "campaigns": [
@@ -12,7 +12,6 @@
       "model_provider": "openai",
       "model_name": "GPT-5.3-Codex (Extra High Reasoning, Agent Mode)",
       "run_label_prefix_template": "YYYY-MM-DD_openai_gpt53codex_fullsec_real_...",
-      "instructions_asset": "llm_project_instructions_openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27.txt",
       "primary_for_runtime": true,
       "compare_default": false,
       "runtime_visible": true
@@ -25,17 +24,17 @@
       "model_provider": "openai",
       "model_name": "ChatGPT 5.4-Thinking (Extended Thinking)",
       "run_label_prefix_template": "YYYY-MM-DD_openai_chatgpt54ext_fullsec_real_...",
-      "instructions_asset": "llm_project_instructions_openai_chatgpt54ext_agent_fullsec_real_2026-03-06.txt",
       "primary_for_runtime": false,
       "compare_default": true,
       "runtime_visible": true
     }
   ],
   "provenance": {
-    "script_version": "lab_build_llm_campaigns_index.py@v1+ad6d077925",
+    "script_version": "lab_build_llm_campaigns_index.py@v2+987fc12676",
     "notes": [
       "Generated from scripts/lab_output_tracks.py (runtime-visible campaigns only)",
-      "Day-precise run label contract: YYYY-MM-DD_<campaign_tag>"
+      "Day-precise run label contract: YYYY-MM-DD_<campaign_tag>",
+      "Project instruction assets are local operator artifacts and are excluded from the public index."
     ]
   }
 }

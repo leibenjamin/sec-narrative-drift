@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import re
 import time
 from dataclasses import dataclass
 from datetime import datetime, timezone

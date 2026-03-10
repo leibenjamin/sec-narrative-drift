@@ -1,4 +1,4 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
 import argparse
 import json
@@ -110,7 +110,8 @@ def _collect_focus_signal_ids_from_entry(entry_data: dict[str, Any]) -> list[str
     input_info = entry_data.get("input")
     if not isinstance(input_info, dict):
         return []
-    source_path = input_info.get("source_path")
+    input_dict = cast(dict[str, Any], input_info)
+    source_path: str | None = input_dict.get("source_path")
     if not isinstance(source_path, str) or not source_path.strip():
         return []
     pair_path = _resolve_repo_relative_path(source_path.strip())
@@ -123,10 +124,11 @@ def _collect_focus_signal_ids_from_entry(entry_data: dict[str, Any]) -> list[str
         return []
     if not isinstance(payload, dict):
         return []
-    analysis_expectations = payload.get("analysis_expectations")
+    payload_dict = cast(dict[str, Any], payload)
+    analysis_expectations: dict[str, Any] | None = payload_dict.get("analysis_expectations")
     if not isinstance(analysis_expectations, dict):
         return []
-    focus_signals = analysis_expectations.get("focus_signals")
+    focus_signals: list[Any] | None = analysis_expectations.get("focus_signals")
     if not isinstance(focus_signals, list):
         return []
 
@@ -134,7 +136,8 @@ def _collect_focus_signal_ids_from_entry(entry_data: dict[str, Any]) -> list[str
     for signal in focus_signals:
         if not isinstance(signal, dict):
             continue
-        signal_id = signal.get("id")
+        signal_dict = cast(dict[str, Any], signal)
+        signal_id: str | None = signal_dict.get("id")
         if isinstance(signal_id, str) and signal_id.strip() and signal_id not in signal_ids:
             signal_ids.append(signal_id)
     return signal_ids
@@ -149,16 +152,6 @@ def _extract_validate_pairs(starters_text: str) -> set[tuple[str, str]]:
 
 def _default_instruction_report_path(campaign_id: str) -> Path:
     return REPO_ROOT / "reports" / f"lab_project_instructions_{campaign_id}.txt"
-
-
-def _default_instruction_public_path(campaign_asset_name: str) -> Path:
-    return (
-        REPO_ROOT
-        / "public"
-        / "data"
-        / "sec_narrative_drift_lab"
-        / campaign_asset_name
-    )
 
 
 def _campaign_prompt_templates_filename(campaign_slug: str) -> str:
@@ -719,7 +712,7 @@ def main(argv: Optional[list[str]] = None) -> int:
 
     resolved_campaign_id = _resolve_campaign_id(args.campaign_id, args.master_manifest)
     campaign = get_llm_campaign(resolved_campaign_id)
-    if campaign is None or campaign.instructions_asset_name is None:
+    if campaign is None:
         raise SystemExit(f"Unknown campaign id: {resolved_campaign_id}")
 
     prompt_templates_override = args.prompt_templates or ""
@@ -770,22 +763,6 @@ def main(argv: Optional[list[str]] = None) -> int:
             expected_instructions,
             actual_report_instructions,
         )
-
-    instructions_public = (
-        Path(args.instructions_public)
-        if args.instructions_public
-        else _default_instruction_public_path(campaign.instructions_asset_name)
-    )
-    if not instructions_public.is_absolute():
-        instructions_public = REPO_ROOT / instructions_public
-    if instructions_public.exists():
-        actual_public_instructions = _read_lines(instructions_public)
-        _assert_lines_equal(
-            "project_instructions_public",
-            expected_instructions,
-            actual_public_instructions,
-        )
-
     setup_doc_path = Path(args.setup_doc)
     if not setup_doc_path.is_absolute():
         setup_doc_path = REPO_ROOT / setup_doc_path
@@ -937,6 +914,9 @@ def main(argv: Optional[list[str]] = None) -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+
+
+
 
 
 

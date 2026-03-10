@@ -61,3 +61,5 @@ This directory stores non-canonical historical artifacts that are not used by th
 - Legacy `det_llm_delta_brief_v1` and `det_llm_excerpt_picker_v1` public-output trees that are no longer part of the active shipped runtime surface.
 - Legacy flat `public/data/sec_narrative_drift_lab/llm_inputs/` and `llm_outputs/` mirrors that were superseded by `llm_inputs_v2` and outline-compare runtime outputs.
 - Compatibility scripts may fall back to attic copies when older review-pack or archaeology workflows still reference these files.
+- Local project-instruction text assets that were removed from the shipped public runtime surface once thread starters and input files became sufficient for public reruns.
+

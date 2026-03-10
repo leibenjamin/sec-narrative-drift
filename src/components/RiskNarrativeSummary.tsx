@@ -256,7 +256,7 @@ function renderCampaignNarrativeColumn(props: {
             {runtime.material_changes.length} material changes | top salience {runtime.material_changes[0]?.salience.toFixed(2) ?? "n/a"}
           </p>
         </div>
-        <div className="min-w-[160px] rounded-xl border border-white/10 bg-slate-900/55 p-3 text-right">
+        <div className="min-w-40 rounded-xl border border-white/10 bg-slate-900/55 p-3 text-right">
           <div className="text-[11px] uppercase tracking-wide text-slate-400">Structural drift</div>
           <div className="mt-1 text-2xl font-semibold text-slate-100">{(drift.score * 100).toFixed(0)}%</div>
           <div className="mt-1 text-[11px] text-slate-400">

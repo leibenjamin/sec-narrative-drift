@@ -1,37 +1,6 @@
-import { withBase } from "./paths"
 import type { LabCleaningLens } from "./labTypes"
 
 const LLM_DETECTORS = new Set<string>([])
-
-const DEFAULT_INSTRUCTIONS_ASSET =
-  "llm_project_instructions_openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27.txt"
-const DEFAULT_PROJECT_INSTRUCTIONS_PATH = withBase(
-  `data/sec_narrative_drift_lab/${DEFAULT_INSTRUCTIONS_ASSET}`
-)
-const RUN_LABEL_TEMPLATE = "YYYY-MM-DD_<campaign_tag>"
-
-const projectInstructionsPromiseByPath = new Map<string, Promise<string>>()
-
-const FALLBACK_PROJECT_INSTRUCTIONS = [
-  "Output must be JSON only (no markdown, no backticks, no commentary).",
-  "Output exactly one top-level JSON object.",
-  "Top-level keys must match the Lab envelope exactly.",
-  "No extra top-level keys.",
-  "Never output section_id.",
-  "Use only attached input file and thread starter prompt.",
-  "provenance.input_file must match attached input path exactly.",
-  `provenance.model_provider must be exactly "<campaign model_provider>".`,
-  `provenance.model_name must be exactly "<campaign model_name>".`,
-  `provenance.run_label is required and must start with YYYY-MM-DD_ (example: "${RUN_LABEL_TEMPLATE}").`,
-  "No extra provenance keys beyond input_file, model_provider, model_name, run_label.",
-  "Attach pair manifest plus both year input files for each job.",
-  "paragraph_idx must be direct FULL indices from the referenced year input arrays.",
-  "Snippets must be verbatim substrings and <= 350 chars.",
-  "highlights must be present and non-empty for every evidence block.",
-  'Delta citations must use ASCII format: "YYYY para NN".',
-  "If any quality check fails, revise before output.",
-].join("\n")
-
 type LlmThreadStarterContext = {
   ticker: string
   yearFrom: number
@@ -172,34 +141,4 @@ export function buildLlmThreadStarterText(context: LlmThreadStarterContext): str
   lines.push("  }")
   lines.push("}")
   return lines.join("\n")
-}
-
-function resolveInstructionPath(assetName?: string): string {
-  if (assetName && assetName.trim().length > 0) {
-    return withBase(`data/sec_narrative_drift_lab/${assetName}`)
-  }
-  return DEFAULT_PROJECT_INSTRUCTIONS_PATH
-}
-
-export async function loadLlmProjectInstructionsText(assetName?: string): Promise<string> {
-  const path = resolveInstructionPath(assetName)
-  if (!projectInstructionsPromiseByPath.has(path)) {
-    const promise = fetch(path, {
-      cache: "no-store",
-      headers: { Accept: "text/plain" },
-    })
-      .then(async (response) => {
-        if (!response.ok) {
-          throw new Error(`instructions fetch failed: ${response.status}`)
-        }
-        return response.text()
-      })
-      .then((text) => {
-        const trimmed = text.trim()
-        return trimmed || FALLBACK_PROJECT_INSTRUCTIONS
-      })
-      .catch(() => FALLBACK_PROJECT_INSTRUCTIONS)
-    projectInstructionsPromiseByPath.set(path, promise)
-  }
-  return projectInstructionsPromiseByPath.get(path)!
 }

@@ -1,10 +1,5 @@
-﻿import { useEffect, useMemo, useState } from "react"
-import { Link, useSearchParams } from "react-router-dom"
-import { loadLabLlmCampaignsIndex } from "../lib/labData"
+import { Link } from "react-router-dom"
 import { withBase } from "../lib/paths"
-
-const DEFAULT_RUNTIME_INSTRUCTIONS_ASSET =
-  "llm_project_instructions_openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27.txt"
 
 const DETECTORS = [
   {
@@ -70,48 +65,6 @@ const DETECTORS = [
 ]
 
 export default function Methodology() {
-  const [searchParams] = useSearchParams()
-  const requestedCampaignId = searchParams.get("llmA")
-  const [instructionsAsset, setInstructionsAsset] = useState(DEFAULT_RUNTIME_INSTRUCTIONS_ASSET)
-  const [instructionsCampaignLabel, setInstructionsCampaignLabel] = useState(
-    "primary runtime campaign"
-  )
-
-  useEffect(() => {
-    let cancelled = false
-    loadLabLlmCampaignsIndex()
-      .then((index) => {
-        if (cancelled) return
-        const runtimeCampaigns = index.campaigns.filter(
-          (campaign) =>
-            campaign.runtime_visible !== false && campaign.input_mode !== "focuspack_v1"
-        )
-        const available = runtimeCampaigns.length > 0 ? runtimeCampaigns : index.campaigns
-        const selectedCampaign =
-          available.find((campaign) => campaign.campaign_id === requestedCampaignId) ??
-          available.find((campaign) => campaign.campaign_id === index.primary_campaign_id) ??
-          available[0] ??
-          null
-        if (!selectedCampaign) return
-        setInstructionsAsset(
-          selectedCampaign.instructions_asset?.trim() || DEFAULT_RUNTIME_INSTRUCTIONS_ASSET
-        )
-        setInstructionsCampaignLabel(selectedCampaign.display_name)
-      })
-      .catch(() => {
-        if (cancelled) return
-        setInstructionsCampaignLabel("primary runtime campaign")
-      })
-    return () => {
-      cancelled = true
-    }
-  }, [requestedCampaignId])
-
-  const instructionsPath = useMemo(
-    () => withBase(`data/sec_narrative_drift_lab/${instructionsAsset}`),
-    [instructionsAsset]
-  )
-
   return (
     <main className="min-h-screen page-fade">
       <div className="mx-auto max-w-6xl space-y-10 px-6 py-12">
@@ -126,7 +79,7 @@ export default function Methodology() {
         </header>
 
         <section className="grid gap-4 lg:grid-cols-[1.15fr_0.85fr]">
-          <article className="rounded-[1.5rem] border border-sky-300/25 bg-sky-400/10 p-5">
+          <article className="rounded-3xl border border-sky-300/25 bg-sky-400/10 p-5">
             <div className="text-xs uppercase tracking-[0.24em] text-sky-100">Fast path</div>
             <h2 className="mt-2 text-xl font-semibold text-slate-100">How to read a case in 60 seconds</h2>
             <ol className="mt-4 space-y-2 text-sm text-slate-200">
@@ -137,7 +90,7 @@ export default function Methodology() {
             </ol>
           </article>
 
-          <article className="rounded-[1.5rem] border border-white/10 bg-slate-900/45 p-5">
+          <article className="rounded-3xl border border-white/10 bg-slate-900/45 p-5">
             <div className="text-xs uppercase tracking-[0.24em] text-slate-300">Core trust model</div>
             <ul className="mt-4 space-y-2 text-sm text-slate-200">
               <li>No runtime LLM or ML calls in the shipped app.</li>
@@ -207,18 +160,7 @@ export default function Methodology() {
               <li>Project it deterministically into runtime outputs and validate before deployment.</li>
             </ol>
             <p className="text-xs text-slate-400">
-              Runtime instructions asset for the selected compare campaign:
-              <a
-                className="ml-1 text-sky-300 underline decoration-sky-300/60 underline-offset-2"
-                href={instructionsPath}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {instructionsAsset}
-              </a>
-            </p>
-            <p className="text-xs text-slate-400">
-              Selected campaign context: <span className="text-slate-200">{instructionsCampaignLabel}</span>
+              Public reruns only need the pair manifest, both year input files, and the generated thread starter. Separate project-instructions files are archived operator artifacts, not part of the shipped runtime surface.
             </p>
           </article>
 

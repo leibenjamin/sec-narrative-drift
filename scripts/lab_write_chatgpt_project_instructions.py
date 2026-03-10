@@ -11,17 +11,10 @@ from lab_output_tracks import (  # type: ignore
 )
 from lab_script_version import build_script_version
 
-SCRIPT_VERSION = build_script_version(Path(__file__), "v2")
+SCRIPT_VERSION = build_script_version(Path(__file__), "v3")
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
 DEFAULT_REPORT_OUT = REPO_ROOT / "reports" / "lab_chatgpt_project_instructions.txt"
-DEFAULT_PUBLIC_OUT = (
-    REPO_ROOT
-    / "public"
-    / "data"
-    / "sec_narrative_drift_lab"
-    / "llm_project_instructions_v1.txt"
-)
 
 
 def write_text(path: Path, lines: list[str]) -> None:
@@ -48,12 +41,12 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--out-public",
         default="",
-        help="Optional explicit public output path.",
+        help="Optional explicit archive output path. Omit to keep instructions local-only.",
     )
     parser.add_argument(
         "--write-legacy-primary-alias",
         action="store_true",
-        help="When set for primary campaign, also write legacy *_v1 instruction alias files.",
+        help="When set for primary campaign, also write the legacy local report alias.",
     )
     return parser
 
@@ -76,34 +69,26 @@ def main(argv: Optional[list[str]] = None) -> int:
         report_path = (
             REPO_ROOT / "reports" / f"lab_project_instructions_{campaign.track_id}.txt"
         )
-    if args.out_public:
-        public_path = Path(args.out_public)
-        if not public_path.is_absolute():
-            public_path = REPO_ROOT / public_path
-    else:
-        asset_name = campaign.instructions_asset_name or f"llm_project_instructions_{campaign.track_id}.txt"
-        public_path = (
-            REPO_ROOT
-            / "public"
-            / "data"
-            / "sec_narrative_drift_lab"
-            / asset_name
-        )
 
     write_text(report_path, lines)
-    write_text(public_path, lines)
+
+    optional_archive_path: Path | None = None
+    if args.out_public:
+        optional_archive_path = Path(args.out_public)
+        if not optional_archive_path.is_absolute():
+            optional_archive_path = REPO_ROOT / optional_archive_path
+        write_text(optional_archive_path, lines)
 
     if args.write_legacy_primary_alias and args.campaign_id == DEFAULT_PRIMARY_LLM_CAMPAIGN_ID:
         write_text(DEFAULT_REPORT_OUT, lines)
-        write_text(DEFAULT_PUBLIC_OUT, lines)
 
     print(f"Script: {SCRIPT_VERSION}")
     print(f"Campaign: {campaign.track_id}")
     print(f"Wrote report instructions: {report_path}")
-    print(f"Wrote public instructions: {public_path}")
+    if optional_archive_path is not None:
+        print(f"Wrote optional archive instructions: {optional_archive_path}")
     if args.write_legacy_primary_alias and args.campaign_id == DEFAULT_PRIMARY_LLM_CAMPAIGN_ID:
         print(f"Wrote legacy report alias: {DEFAULT_REPORT_OUT}")
-        print(f"Wrote legacy public alias: {DEFAULT_PUBLIC_OUT}")
     return 0
 
 

@@ -1,11 +1,10 @@
-import { useEffect, useMemo, useState } from "react"
+import { useMemo, useState } from "react"
 import EvidenceStack from "./EvidenceStack"
 import {
   buildDefaultLlmInputFile,
   buildDefaultLlmYearInputFile,
   buildLlmThreadStarterText,
   isLlmDetector,
-  loadLlmProjectInstructionsText,
 } from "../lib/labLlmRepro"
 import { withBase } from "../lib/paths"
 import { assertSameOriginPathLike } from "../lib/sanitize"
@@ -38,7 +37,6 @@ type MethodCardProps = {
     campaignDisplayName: string
     modelProvider: string
     modelName: string
-    instructionsAsset?: string
   } | null
   methodProfile?: LabMethodProfile | null
   analysisMode?: AnalysisMode
@@ -137,7 +135,7 @@ function classifySignal(output: LabOutput | null): SignalSummary {
   if (confidence < 0.45 || coverage < 0.45 || warningsCount >= 2 || evidenceCount < 3) {
     return {
       tier: "low",
-      summary: "Weak signal — treat as directional only.",
+      summary: "Weak signal â€” treat as directional only.",
       reason:
         "Low confidence, limited coverage, or sparse evidence makes this finding unreliable on its own.",
       nextAction: "Use the core drift methods and agreement matrix as the primary reference instead.",
@@ -146,7 +144,7 @@ function classifySignal(output: LabOutput | null): SignalSummary {
 
   return {
     tier: "medium",
-    summary: "Moderate evidence of narrative change — review supporting excerpts.",
+    summary: "Moderate evidence of narrative change â€” review supporting excerpts.",
     reason: "Metrics are acceptable but not uniformly strong. Interpret with context from other methods.",
     nextAction: "Compare with the agreement matrix and at least one other method before concluding.",
   }
@@ -238,15 +236,10 @@ export default function MethodCard({
   const [copyAttachmentsState, setCopyAttachmentsState] = useState<"idle" | "copied" | "failed">(
     "idle"
   )
-  const [copyInstructionsState, setCopyInstructionsState] = useState<"idle" | "copied" | "failed">(
-    "idle"
-  )
   const [copyClaimUrlState, setCopyClaimUrlState] = useState<"idle" | "copied" | "failed">(
     "idle"
   )
   const [copiedClaimUrl, setCopiedClaimUrl] = useState<string | null>(null)
-  const [projectInstructions, setProjectInstructions] = useState<string>("")
-  const [projectInstructionsError, setProjectInstructionsError] = useState<string | null>(null)
   const [contextPreference, setContextPreference] = useState<"auto" | "open" | "closed">("auto")
   const [diagnosticsPreference, setDiagnosticsPreference] = useState<"auto" | "open" | "closed">(
     "auto"
@@ -344,26 +337,6 @@ export default function MethodCard({
     output?.source_id,
   ])
 
-  useEffect(() => {
-    if (!llmCard) return
-    let cancelled = false
-    loadLlmProjectInstructionsText(llmCampaign?.instructionsAsset)
-      .then((text) => {
-        if (!cancelled) {
-          setProjectInstructions(text)
-          setProjectInstructionsError(null)
-        }
-      })
-      .catch((error) => {
-        if (!cancelled) {
-          setProjectInstructions("")
-          setProjectInstructionsError(error instanceof Error ? error.message : "Failed to load.")
-        }
-      })
-    return () => {
-      cancelled = true
-    }
-  }, [llmCard, llmCampaign?.instructionsAsset])
 
   const handleCopyDebug = async () => {
     if (!debugInfo) return
@@ -405,11 +378,6 @@ export default function MethodCard({
     setCopyStarterState(didCopy ? "copied" : "failed")
   }
 
-  const handleCopyProjectInstructions = async () => {
-    if (!projectInstructions) return
-    const didCopy = await copyTextToClipboard(projectInstructions)
-    setCopyInstructionsState(didCopy ? "copied" : "failed")
-  }
 
   const handleCopyClaimUrl = async (url: string) => {
     const didCopy = await copyTextToClipboard(url)
@@ -463,7 +431,7 @@ export default function MethodCard({
           <span title="Magnitude of year-over-year narrative change detected">Drift: {formatMetric(output?.metrics.drift_score)}</span>
           <span className="text-slate-500">|</span>
           <span
-            title="Heuristic confidence band (Low / Medium / High) — not a calibrated probability"
+            title="Heuristic confidence band (Low / Medium / High) â€” not a calibrated probability"
           >
             Confidence: {formatConfidenceBand(output?.metrics.confidence)}
           </span>
@@ -665,7 +633,7 @@ export default function MethodCard({
           {llmCard ? (
             <details className="mt-3 rounded-md border border-sky-300/30 bg-sky-400/10 p-3 text-xs text-slate-100">
               <summary className="cursor-pointer text-xs font-semibold uppercase tracking-wide text-sky-200">
-                Reproducibility — run this analysis yourself
+                Reproducibility â€” run this analysis yourself
               </summary>
               <p className="mt-2 text-xs text-slate-200">
                 This analysis was precomputed offline. You can reproduce it using the same
@@ -778,14 +746,6 @@ export default function MethodCard({
                 >
                   Copy all attachment paths
                 </button>
-                <button
-                  type="button"
-                  onClick={handleCopyProjectInstructions}
-                  disabled={!projectInstructions}
-                  className="rounded-md border border-white/20 bg-slate-900/60 px-2 py-1 text-xs text-slate-100 transition hover:border-white/40 disabled:cursor-not-allowed disabled:opacity-50"
-                >
-                  Copy project instructions
-                </button>
                 {copyStarterState === "copied" ? (
                   <span className="text-xs text-emerald-300">Starter copied.</span>
                 ) : null}
@@ -798,18 +758,8 @@ export default function MethodCard({
                 {copyAttachmentsState === "failed" ? (
                   <span className="text-xs text-rose-300">Attachment copy failed.</span>
                 ) : null}
-                {copyInstructionsState === "copied" ? (
-                  <span className="text-xs text-emerald-300">Instructions copied.</span>
-                ) : null}
-                {copyInstructionsState === "failed" ? (
-                  <span className="text-xs text-rose-300">Instructions copy failed.</span>
-                ) : null}
               </div>
-              {projectInstructionsError ? (
-                <div className="mt-2 text-xs text-amber-100">
-                  Instruction text fallback in use: {projectInstructionsError}
-                </div>
-              ) : null}
+              <p className="mt-2 text-xs text-slate-400">The thread starter already carries the required output contract. Pair and year input files are the only public attachments needed for reruns.</p>
             </details>
           ) : null}
 

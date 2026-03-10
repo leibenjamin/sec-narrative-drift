@@ -1,4 +1,4 @@
-﻿# Master Run Troubleshooting and Sources of Truth
+# Master Run Troubleshooting and Sources of Truth
 
 Last updated: 2026-03-09
 
@@ -162,7 +162,7 @@ When you see stale-lock behavior, run this order:
 ## Future Campaign Onboarding Checklist
 1. Add the campaign to `scripts/lab_output_tracks.py` with truthful id, slug, model name, execution venue, and runtime visibility.
 2. Regenerate public campaign/method/variant indexes.
-3. Generate project instructions.
+3. Generate local archived project instructions only if an operator workflow still needs them; public reruns use inputs plus thread starters.
 4. Build the master manifest.
 5. Emit master starters.
 6. Run the lock verifier.
@@ -171,3 +171,4 @@ When you see stale-lock behavior, run this order:
 
 ## Deferred Follow-Up
 A helper for formatting/parsing end-user self-run campaign outputs outside the app is still planned. Do not treat that as part of the current canonical master-run pipeline.
+
