@@ -135,7 +135,7 @@ function classifySignal(output: LabOutput | null): SignalSummary {
   if (confidence < 0.45 || coverage < 0.45 || warningsCount >= 2 || evidenceCount < 3) {
     return {
       tier: "low",
-      summary: "Weak signal â€” treat as directional only.",
+      summary: "Weak signal — treat as directional only.",
       reason:
         "Low confidence, limited coverage, or sparse evidence makes this finding unreliable on its own.",
       nextAction: "Use the core drift methods and agreement matrix as the primary reference instead.",
@@ -144,7 +144,7 @@ function classifySignal(output: LabOutput | null): SignalSummary {
 
   return {
     tier: "medium",
-    summary: "Moderate evidence of narrative change â€” review supporting excerpts.",
+    summary: "Moderate evidence of narrative change — review supporting excerpts.",
     reason: "Metrics are acceptable but not uniformly strong. Interpret with context from other methods.",
     nextAction: "Compare with the agreement matrix and at least one other method before concluding.",
   }
@@ -431,7 +431,7 @@ export default function MethodCard({
           <span title="Magnitude of year-over-year narrative change detected">Drift: {formatMetric(output?.metrics.drift_score)}</span>
           <span className="text-slate-500">|</span>
           <span
-            title="Heuristic confidence band (Low / Medium / High) â€” not a calibrated probability"
+            title="Heuristic confidence band (Low / Medium / High) — not a calibrated probability"
           >
             Confidence: {formatConfidenceBand(output?.metrics.confidence)}
           </span>
@@ -633,7 +633,7 @@ export default function MethodCard({
           {llmCard ? (
             <details className="mt-3 rounded-md border border-sky-300/30 bg-sky-400/10 p-3 text-xs text-slate-100">
               <summary className="cursor-pointer text-xs font-semibold uppercase tracking-wide text-sky-200">
-                Reproducibility â€” run this analysis yourself
+                Reproducibility — run this analysis yourself
               </summary>
               <p className="mt-2 text-xs text-slate-200">
                 This analysis was precomputed offline. You can reproduce it using the same

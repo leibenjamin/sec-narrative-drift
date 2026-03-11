@@ -8,13 +8,14 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
+    "lab:guard-mojibake": "python scripts/lab_guard_mojibake.py",
     "lab:guard-local": "python scripts/lab_guard_local_only_paths.py",
     "lab:guard-tone": "python scripts/lab_guard_public_tone.py",
     "lab:registry": "python scripts/lab_build_cases_registry_v1.py --out public/data/sec_narrative_drift_lab/lab_cases_v1.json",
     "lab:smoke": "python scripts/lab_smoke_check_registry_paths.py --registry public/data/sec_narrative_drift_lab/lab_cases_v1.json",
     "lab:portfolio": "python scripts/lab_runtime_readiness_check.py",
     "lab:readiness": "python scripts/lab_runtime_readiness_check.py",
-    "lab:predeploy": "npm run lab:guard-local && npm run lab:guard-tone && npm run lab:registry && npm run lab:smoke",
+    "lab:predeploy": "npm run lab:guard-mojibake && npm run lab:guard-local && npm run lab:guard-tone && npm run lab:registry && npm run lab:smoke",
     "lab:llm-progress": "python scripts/lab_record_master_progress.py"
   },
   "dependencies": {
