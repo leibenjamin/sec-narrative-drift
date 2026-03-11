@@ -7,6 +7,8 @@ import {
 } from "../lib/labData"
 import { formatFiscalYearRange } from "../lib/fiscalYear"
 
+const ACTIVE_SCOPE_LABEL = "FY2024 to FY2025"
+
 const SHOWCASE_COMPANY_NAMES: Record<string, string> = {
   NVDA: "NVIDIA",
   KO: "Coca-Cola",
@@ -24,6 +26,11 @@ const SHOWCASE_THESES: Record<string, string> = {
 function buildCaseLink(ticker: string, pair: { from: number; to: number } | null): string {
   if (!pair) return `/company/${ticker}?tab=lab`
   return `/company/${ticker}?tab=lab&from=${pair.from}&to=${pair.to}`
+}
+
+function getActivePair(summary: LabTickerSummary | null): { from: number; to: number } | null {
+  if (!summary) return null
+  return summary.defaultPair ?? summary.latestPair ?? null
 }
 
 function summarizeMethods(summary: LabTickerSummary): string {
@@ -45,7 +52,7 @@ export default function Home() {
       })
       .catch((loadError) => {
         if (cancelled) return
-        setError(loadError instanceof Error ? loadError.message : "Failed to load Lab showcase data.")
+        setError(loadError instanceof Error ? loadError.message : "Failed to load company data.")
       })
       .finally(() => {
         if (!cancelled) setIsLoading(false)
@@ -68,30 +75,30 @@ export default function Home() {
           <div className="space-y-5">
             <p className="text-xs uppercase tracking-[0.28em] text-sky-100">SEC Narrative Drift Lab</p>
             <h1 className="max-w-4xl text-4xl font-semibold leading-tight text-slate-50 sm:text-5xl">
-              See what changed in 10-K risk language before the story disappears into boilerplate.
+              Open one company and see where the risk story actually changed.
             </h1>
             <p className="max-w-3xl text-base text-slate-200">
-              This app compares adjacent Item 1A years for four showcase companies using deterministic text methods first,
-              then places Codex and ChatGPT outline-compare artifacts beside that baseline with path-level evidence and
-              reproducible offline provenance.
+              The shipped Lab focuses on one active FY2024 to FY2025 Item 1A case for each Core4 company. Start with the
+              compare-first narrative summary, confirm it with deterministic methods, then audit the side-by-side Codex and
+              ChatGPT reads with filing-backed evidence.
             </p>
             <div className="flex flex-wrap gap-2 text-xs text-slate-200">
-              <span className="rounded-full border border-sky-300/30 bg-sky-400/12 px-3 py-1">Core4 FY2024 to FY2025</span>
-              <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">Deterministic first</span>
+              <span className="rounded-full border border-sky-300/30 bg-sky-400/12 px-3 py-1">Core4 {ACTIVE_SCOPE_LABEL}</span>
+              <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">One active case per company</span>
               <span className="rounded-full border border-emerald-300/25 bg-emerald-400/10 px-3 py-1">Codex vs ChatGPT compare</span>
             </div>
             <div className="flex flex-wrap items-center gap-3 pt-1">
               <Link
-                to={buildCaseLink(starter?.ticker ?? preferredTicker, starter?.defaultPair ?? null)}
+                to={buildCaseLink(starter?.ticker ?? preferredTicker, getActivePair(starter))}
                 className="inline-flex items-center rounded-full bg-sky-500 px-5 py-2.5 text-sm font-semibold text-slate-950 transition hover:bg-sky-400"
               >
-                Start recommended case
+                Open first company case
               </Link>
               <Link
                 to="/companies"
                 className="inline-flex items-center rounded-full border border-white/20 px-5 py-2.5 text-sm text-slate-200 transition hover:border-white/40 hover:bg-white/5"
               >
-                Browse showcase companies
+                Browse companies
               </Link>
               <Link
                 to="/methodology"
@@ -104,11 +111,11 @@ export default function Home() {
 
           <aside className="space-y-4 rounded-[1.4rem] border border-white/10 bg-slate-950/55 p-5">
             <div>
-              <div className="text-xs uppercase tracking-[0.24em] text-slate-400">60-second evaluation flow</div>
+              <div className="text-xs uppercase tracking-[0.24em] text-slate-400">Default reading flow</div>
               <ol className="mt-3 space-y-3 text-sm text-slate-200">
-                <li>1. Read the lead narrative change and its paired prior-year versus current-year evidence.</li>
-                <li>2. Check whether the deterministic methods agree on the same risk shift.</li>
-                <li>3. Compare Codex and ChatGPT to see whether the divergence is substantive or just framing.</li>
+                <li>1. Read the risk narrative summary and the paired prior-year versus current-year evidence.</li>
+                <li>2. Check the two core deterministic methods and agreement to confirm the filing signal.</li>
+                <li>3. Open outline compare when you want the deeper structural audit.</li>
               </ol>
             </div>
             <div className="rounded-xl border border-white/10 bg-white/5 p-4 text-sm text-slate-200">
@@ -128,59 +135,40 @@ export default function Home() {
 
         <section className="grid gap-4 lg:grid-cols-3">
           <article className="rounded-[1.35rem] border border-sky-300/25 bg-sky-400/10 p-5">
-            <div className="text-xs uppercase tracking-[0.24em] text-sky-100">Executive path</div>
-            <h2 className="mt-2 text-xl font-semibold text-slate-100">Fast investor read</h2>
+            <div className="text-xs uppercase tracking-[0.24em] text-sky-100">Step 1</div>
+            <h2 className="mt-2 text-xl font-semibold text-slate-100">Read the lead narrative</h2>
             <p className="mt-3 text-sm text-slate-200">
-              Start with the risk narrative summary, two core deterministic methods, and the agreement panel.
+              Open a company and start with the risk narrative summary, paired filing evidence, and the side-by-side compare lanes.
             </p>
           </article>
           <article className="rounded-[1.35rem] border border-white/10 bg-slate-900/50 p-5">
-            <div className="text-xs uppercase tracking-[0.24em] text-slate-300">Compare path</div>
-            <h2 className="mt-2 text-xl font-semibold text-slate-100">Model-on-model judgment</h2>
+            <div className="text-xs uppercase tracking-[0.24em] text-slate-300">Step 2</div>
+            <h2 className="mt-2 text-xl font-semibold text-slate-100">Confirm the filing signal</h2>
             <p className="mt-3 text-sm text-slate-200">
-              Keep Codex and ChatGPT on screen together so salience, framing, and evidence discipline are visible.
+              Use the two core deterministic methods plus agreement to separate real narrative movement from boilerplate churn.
             </p>
           </article>
           <article className="rounded-[1.35rem] border border-emerald-300/20 bg-emerald-400/10 p-5">
-            <div className="text-xs uppercase tracking-[0.24em] text-emerald-100">Deep path</div>
-            <h2 className="mt-2 text-xl font-semibold text-slate-100">Audit the structure</h2>
+            <div className="text-xs uppercase tracking-[0.24em] text-emerald-100">Step 3</div>
+            <h2 className="mt-2 text-xl font-semibold text-slate-100">Audit the deeper structure</h2>
             <p className="mt-3 text-sm text-slate-200">
-              Drill into outline compare, mechanisms, investor relevance, limitations, and path-explicit diagnostics.
+              Use outline compare for mechanisms, investor relevance, limits, and structure when you want a deeper case read.
             </p>
           </article>
-        </section>
-
-        <section className="grid gap-4 lg:grid-cols-3">
-          <div className="rounded-[1.35rem] border border-white/10 bg-slate-900/45 p-5">
-            <div className="text-xs uppercase tracking-[0.24em] text-slate-400">What changed most</div>
-            <p className="mt-2 text-sm text-slate-200">
-              Log-odds and JSD give a fast, evidence-backed baseline before any model summary enters the picture.
-            </p>
-          </div>
-          <div className="rounded-[1.35rem] border border-white/10 bg-slate-900/45 p-5">
-            <div className="text-xs uppercase tracking-[0.24em] text-slate-400">What was reused</div>
-            <p className="mt-2 text-sm text-slate-200">
-              Reuse and structure detectors show whether the filing really changed or just reorganized familiar language.
-            </p>
-          </div>
-          <div className="rounded-[1.35rem] border border-white/10 bg-slate-900/45 p-5">
-            <div className="text-xs uppercase tracking-[0.24em] text-slate-400">Where the models disagree</div>
-            <p className="mt-2 text-sm text-slate-200">
-              Outline compare puts the lead rows, evidence, mechanisms, and limitations side by side instead of hiding them behind toggles.
-            </p>
-          </div>
         </section>
 
         <section className="space-y-4">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <div>
-              <h2 className="text-2xl font-semibold text-slate-50">Showcase companies</h2>
-              <p className="mt-1 text-sm text-slate-400">Current shipped scope: NVDA, KO, WM, and GE across adjacent FY2024 to FY2025 pairs.</p>
+              <h2 className="text-2xl font-semibold text-slate-50">Companies</h2>
+              <p className="mt-1 text-sm text-slate-400">
+                Current shipped scope: NVDA, KO, WM, and GE, each with one active {ACTIVE_SCOPE_LABEL} case.
+              </p>
             </div>
             <p className="text-xs text-slate-400">Compare-visible campaigns: Codex real and ChatGPT real</p>
           </div>
           {isLoading ? (
-            <p className="text-sm text-slate-300">Loading Lab showcase data...</p>
+            <p className="text-sm text-slate-300">Loading company data...</p>
           ) : error ? (
             <p className="rounded-md border border-amber-400/30 bg-amber-500/10 px-3 py-2 text-sm text-amber-100">
               {error}
@@ -189,10 +177,11 @@ export default function Home() {
             <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4 stagger-children">
               {summaries.map((summary) => {
                 const companyName = SHOWCASE_COMPANY_NAMES[summary.ticker] ?? summary.ticker
+                const activePair = getActivePair(summary)
                 return (
                   <Link
                     key={summary.ticker}
-                    to={buildCaseLink(summary.ticker, summary.defaultPair)}
+                    to={buildCaseLink(summary.ticker, activePair)}
                     className="rounded-[1.45rem] border border-white/10 bg-slate-900/50 p-5 transition hover:border-sky-300/40 hover:bg-slate-900/68"
                   >
                     <div className="flex items-start justify-between gap-3">
@@ -201,16 +190,18 @@ export default function Home() {
                         <div className="text-xs text-slate-300">{companyName}</div>
                       </div>
                       <span className="rounded-full border border-sky-300/30 bg-sky-400/10 px-2 py-0.5 text-[11px] text-sky-100">
-                        Showcase
+                        Core4
                       </span>
                     </div>
-                    <p className="mt-4 text-sm text-slate-200">{SHOWCASE_THESES[summary.ticker] ?? "Review the adjacent filing pair in the Lab experience."}</p>
+                    <p className="mt-4 text-sm text-slate-200">
+                      {SHOWCASE_THESES[summary.ticker] ?? "Review the active filing-to-filing comparison in the Lab experience."}
+                    </p>
                     <div className="mt-4 space-y-1 text-xs text-slate-400">
-                      <div>{summary.caseCount} adjacent pair</div>
+                      <div>Active case: {activePair ? formatFiscalYearRange(activePair.from, activePair.to) : ACTIVE_SCOPE_LABEL}</div>
                       <div>{summarizeMethods(summary)}</div>
-                      {summary.defaultPair ? (
-                        <div>Recommended: {formatFiscalYearRange(summary.defaultPair.from, summary.defaultPair.to)}</div>
-                      ) : null}
+                    </div>
+                    <div className="mt-4 inline-flex items-center rounded-full border border-white/15 px-3 py-1 text-xs text-slate-100">
+                      Open company case
                     </div>
                   </Link>
                 )
@@ -222,5 +213,3 @@ export default function Home() {
     </main>
   )
 }
-
-

@@ -129,7 +129,7 @@ export default function Company() {
               <li aria-hidden="true" className="text-slate-500">/</li>
               <li>
                 <Link to="/companies" className="hover:text-slate-100">
-                  Showcase
+                  Companies
                 </Link>
               </li>
               <li aria-hidden="true" className="text-slate-500">/</li>
@@ -164,18 +164,26 @@ export default function Company() {
             </div>
 
             <aside className="space-y-3 rounded-[1.25rem] border border-white/10 bg-slate-950/55 p-4">
-              <div className="text-xs uppercase tracking-[0.24em] text-slate-400">How to use this case</div>
+              <div className="text-xs uppercase tracking-[0.24em] text-slate-400">Active case</div>
+              <div className="rounded-xl border border-white/10 bg-white/5 p-3 text-sm text-slate-100">
+                FY2024 to FY2025 Item 1A
+              </div>
+              <div className="text-xs uppercase tracking-[0.24em] text-slate-400">Visible compare lanes</div>
+              <div className="rounded-xl border border-white/10 bg-white/5 p-3 text-sm text-slate-200">
+                Codex real and ChatGPT 5.4 real
+              </div>
+              <div className="text-xs uppercase tracking-[0.24em] text-slate-400">Default read</div>
               <ol className="space-y-2 text-sm text-slate-200">
-                <li>1. Start with the risk narrative summary and lead evidence pair.</li>
-                <li>2. Check whether the deterministic methods agree on the same story.</li>
-                <li>3. Use outline compare to see where Codex and ChatGPT differ in salience or framing.</li>
+                <li>1. Start with the risk narrative summary and paired filing evidence.</li>
+                <li>2. Confirm the signal with the core deterministic methods and agreement.</li>
+                <li>3. Open outline compare when you want the deeper structural audit.</li>
               </ol>
               <div className="flex flex-wrap gap-2 pt-1">
                 <Link
                   to="/companies"
                   className="inline-flex items-center rounded-full border border-white/20 px-3 py-1.5 text-xs text-slate-200 hover:border-white/40 hover:bg-white/5"
                 >
-                  Browse showcase
+                  Browse companies
                 </Link>
                 <Link
                   to="/methodology"
@@ -186,27 +194,6 @@ export default function Company() {
               </div>
             </aside>
           </section>
-
-          <div className="grid gap-3 md:grid-cols-3">
-            <div className="rounded-xl border border-sky-300/25 bg-sky-400/10 p-4">
-              <div className="text-xs uppercase tracking-[0.24em] text-sky-100">Risk narrative drift</div>
-              <p className="mt-2 text-sm text-slate-100">
-                See which themes were added, removed, intensified, or softened using deterministic detectors plus precomputed outline-compare sidecars.
-              </p>
-            </div>
-            <div className="rounded-xl border border-white/10 bg-slate-950/35 p-4">
-              <div className="text-xs uppercase tracking-[0.24em] text-slate-300">Investor read</div>
-              <p className="mt-2 text-sm text-slate-200">
-                The useful question is not whether the filing changed. It is whether the company is now emphasizing a more important operating, regulatory, or commercial risk channel.
-              </p>
-            </div>
-            <div className="rounded-xl border border-emerald-300/20 bg-emerald-400/10 p-4">
-              <div className="text-xs uppercase tracking-[0.24em] text-emerald-100">Compare-first flow</div>
-              <p className="mt-2 text-sm text-slate-100">
-                The page now puts the paired campaign read first, then deterministic support, then agreement, then the deeper outline-compare drill-down.
-              </p>
-            </div>
-          </div>
         </header>
 
         <LabPanel

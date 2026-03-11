@@ -7,7 +7,7 @@ type NavItem = {
 
 const NAV_ITEMS: NavItem[] = [
   { to: "/", label: "Home" },
-  { to: "/companies", label: "Showcase" },
+  { to: "/companies", label: "Companies" },
   { to: "/methodology", label: "Methodology" },
 ]
 
@@ -62,3 +62,4 @@ export default function AppHeader() {
     </header>
   )
 }
+

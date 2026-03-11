@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+﻿import { Link } from "react-router-dom"
 import { withBase } from "../lib/paths"
 
 const DETECTORS = [
@@ -70,11 +70,13 @@ export default function Methodology() {
       <div className="mx-auto max-w-6xl space-y-10 px-6 py-12">
         <header className="space-y-4">
           <p className="text-xs uppercase tracking-[0.28em] text-slate-300">Methodology</p>
-          <h1 className="text-3xl font-semibold text-slate-50 sm:text-4xl">How to evaluate one case quickly, then audit it deeply</h1>
+          <h1 className="text-3xl font-semibold text-slate-50 sm:text-4xl">
+            How to evaluate one case quickly, then audit it deeply
+          </h1>
           <p className="max-w-4xl text-sm text-slate-300">
-            Every result starts from deterministic methods applied directly to SEC filing text. Model-produced compare artifacts are
-            offline sidecars with explicit provenance, never runtime inference. The product is built to move from fast investor read
-            to audit trail without changing tools.
+            Every company page lands on one active FY2024 to FY2025 Item 1A case. The public flow starts with a compare-first
+            narrative summary, then confirms the filing signal with deterministic methods, then opens the deeper structural audit
+            when you want it. Model-produced compare artifacts are offline sidecars with explicit provenance, never runtime inference.
           </p>
         </header>
 
@@ -83,10 +85,11 @@ export default function Methodology() {
             <div className="text-xs uppercase tracking-[0.24em] text-sky-100">Fast path</div>
             <h2 className="mt-2 text-xl font-semibold text-slate-100">How to read a case in 60 seconds</h2>
             <ol className="mt-4 space-y-2 text-sm text-slate-200">
-              <li>1. Read the lead material change and the paired prior-year versus current-year evidence.</li>
+              <li>1. Open a company page and start with the risk narrative summary and paired prior-year versus current-year evidence.</li>
               <li>2. Check the two core deterministic methods to see whether the language shift looks real.</li>
               <li>3. Use the agreement panel to decide whether the filing needs a deeper method-by-method read.</li>
-              <li>4. Only then compare Codex and ChatGPT framing in the outline view.</li>
+              <li>4. Open outline compare for mechanisms, investor relevance, limits, and side-by-side model framing.</li>
+              <li>5. Treat Insight Lens as optional when it is available, not as part of the default path.</li>
             </ol>
           </article>
 
@@ -154,13 +157,13 @@ export default function Methodology() {
           <article className="space-y-3 rounded-[1.45rem] border border-white/10 bg-slate-900/45 p-5">
             <h2 className="text-xl font-semibold text-slate-100">How the model sidecars are produced</h2>
             <ol className="list-decimal space-y-2 pl-5 text-sm text-slate-200">
-              <li>Generate pair and year inputs from deterministic scripts.</li>
-              <li>Run one manual thread per pair, lens, and campaign under the strict JSON-only outline-compare contract.</li>
+              <li>Generate case and year inputs from deterministic scripts.</li>
+              <li>Run one manual thread per case, lens, and campaign under the strict JSON-only outline-compare contract.</li>
               <li>Write the structured artifact to its canonical output path.</li>
               <li>Project it deterministically into runtime outputs and validate before deployment.</li>
             </ol>
             <p className="text-xs text-slate-400">
-              Public reruns only need the pair manifest, both year input files, and the generated thread starter. Separate project-instructions files are archived operator artifacts, not part of the shipped runtime surface.
+              The shipped app never invokes a model at runtime. Users only see the projected runtime artifacts and the structured evidence they were derived from.
             </p>
           </article>
 
@@ -226,7 +229,7 @@ export default function Methodology() {
             to="/companies"
             className="inline-flex items-center rounded-full border border-white/20 px-4 py-2 text-slate-200 hover:border-white/40 hover:bg-white/5"
           >
-            Open showcase catalog
+            Open companies
           </Link>
         </footer>
       </div>

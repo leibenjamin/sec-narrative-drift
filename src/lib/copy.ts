@@ -49,8 +49,8 @@ export const copy = {
   },
 
   buttons: {
-    exploreFeatured: "Explore a featured case",
-    browseCompanies: "Browse list of companies",
+    exploreFeatured: "Open first company case",
+    browseCompanies: "Browse companies",
     startTour: "Start tour",
     resetSelection: "Reset selection",
     details: "Details",
@@ -62,9 +62,9 @@ export const copy = {
     heroTitle: "Narrative Drift, by the numbers -- and by the paragraph",
     heroBody:
       "Pick a company and see how its 10-K / 20-F Risk Factors language changes year-to-year, where the biggest shifts happen, and the terms that move the most.",
-    heroFootnote: "Featured cases are precomputed for stable, reproducible comparisons.",
-    featuredHeading: "Featured cases",
-    featuredHelper: "Curated story cases with a recommended year pair. Click one to start.",
+    heroFootnote: "Each company card opens one active case with precomputed outputs.",
+    featuredHeading: "Companies",
+    featuredHelper: "Each company card opens one active FY2024 to FY2025 case. Click one to start.",
     howToReadTitle: "How to read this",
     howToReadSteps: {
       drift: "Drift timeline: spot the year the wording changes most.",
@@ -78,7 +78,7 @@ export const copy = {
   },
 
   companies: {
-    title: "Company directory",
+    title: "Companies",
     coverageLine: "{n} companies, up to {target} years each.",
     searchPlaceholder: "Search ticker or name",
     searchAria: "Search companies",
@@ -98,17 +98,17 @@ export const copy = {
       qualityHighMed: "Quality: high + medium",
     },
     sort: {
-      featured: "Sort: featured cases",
+      featured: "Sort: Core4 first",
       az: "Sort: A-Z",
       peakDrift: "Sort: peak drift",
       coverage: "Sort: coverage",
     },
-    featuredTitle: "Featured cases",
-    featuredHelper: "Curated story cases with a recommended year pair.",
+    featuredTitle: "Companies",
+    featuredHelper: "Each company card opens one active FY2024 to FY2025 case.",
     featuredChip: "Featured",
     storyChip: "Story",
     storyHelper:
-      "Story filter highlights a broader set of notable narrative shifts; featured cases are the curated picks.",
+      "Story filter highlights notable narrative shifts; the shipped public scope currently centers the Core4 companies.",
     compareYearsLabel: "Compare {from}-{to}",
     resultsCount: "{n} results",
     peakDriftLabel: "Peak drift {from}-{to}: {v}",

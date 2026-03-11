@@ -7,7 +7,7 @@ import re
 from collections import Counter
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Mapping, Optional, Sequence, TYPE_CHECKING, TypedDict, cast
+from typing import Any, Mapping, Optional, Sequence, TYPE_CHECKING, TypedDict, Union, cast
 
 if TYPE_CHECKING:
     ENGLISH_STOP_WORDS: set[str] = set()
@@ -652,7 +652,7 @@ def round_value(value: Optional[float], digits: int = 2) -> Optional[float]:
     return round(float(value), digits)
 
 
-def extract_terms(items: Sequence[TermBase], limit: int = 3) -> list[str]:
+def extract_terms(items: Sequence[Union[TermBase, Mapping[str, Any]]], limit: int = 3) -> list[str]:
     terms: list[str] = []
     for item in items:
         terms.append(item["term"])
