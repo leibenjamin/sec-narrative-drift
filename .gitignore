@@ -62,6 +62,8 @@ docs/_archive/legacy_context_20260302/*
 scripts/_cache/*
 !scripts/_cache/metrics_demo/
 !scripts/_cache/metrics_demo/**
+data/legacy_featured_item1a/
+data/legacy_featured_item1a_metrics/
 data/sec_cache/
 
 # Local reports (non-public)
@@ -77,6 +79,41 @@ chatgpt_bundle_*/
 chatgpt_bundle_*.zip
 chatgpt_review_bundle_*.zip
 chatgpt_upload_bundle_*.zip
+review_bundle_chatgpt_ux_storytelling_*/
+review_bundle_chatgpt_ux_storytelling_*.zip
+stage2_fixture_inventory_*/
+stage3_protocol_lab_foundations_*/
+stage3_protocol_lab_foundations_*.zip
+wave4a_control_plane_prune_*/
+wave4a_control_plane_prune_*.zip
+wave4a5_ablation_readiness_*/
+wave4a5_ablation_readiness_*.zip
+wave4b_run_lineage_reviewability_*/
+wave4b_run_lineage_reviewability_*.zip
+wave4c1_nvda_real_runs_*/
+wave4c1_nvda_real_runs_*.zip
+wave4c15_capture_boundary_*/
+wave4c15_capture_boundary_*.zip
+wave4c175_golden_path_capture_*/
+wave4c175_golden_path_capture_*.zip
+wave4c2a_first_real_p1_*/
+wave4c2a_first_real_p1_*.zip
+claude_alignment_patch_*/
+claude_alignment_patch_*.zip
+wave4c3a_desktop_core_run_packet_*/
+wave4c3a_desktop_core_run_packet_*.zip
+wave4c3a5_desktop_packet_hardened_*/
+wave4c3a5_desktop_packet_hardened_*.zip
+wave4c3a6_split_default_flip_*/
+wave4c3a6_split_default_flip_*.zip
+wave4d0_matrix_canonization_discovery_*/
+wave4d0_matrix_canonization_discovery_*.zip
+wave4d1_nvda_matrix_canonized_*/
+wave4d1_nvda_matrix_canonized_*.zip
+wave4d15_nvda_story_layer_*/
+wave4d15_nvda_story_layer_*.zip
+wave4d2_second_company_desktop_packet_*/
+wave4d2_second_company_desktop_packet_*.zip
 
 # Local fixture experiments (keep untracked)
 scripts/sample_fixtures/cost-20190901.htm
@@ -136,6 +173,9 @@ chatgpt_review_pack_lab_health_20260216_154326.zip
 
 # Local scratch files
 scripts/_tmp_*.txt
+
+# Local temporary run inputs
+tmp_*
 
 # Local exploratory ticker outputs (not part of current public core set)
 public/data/sec_narrative_drift/EVAX/
