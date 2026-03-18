@@ -2,7 +2,7 @@ import argparse
 import re
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any, Optional, TYPE_CHECKING, TypedDict, cast
+from typing import Any, Optional, TYPE_CHECKING, TypedDict, Union, cast
 
 if TYPE_CHECKING:
     from typing import Iterable
@@ -12,7 +12,11 @@ if TYPE_CHECKING:
         attrs: dict[str, Any]
         children: Iterable[Any]
 
+        def find(self, name: Any = None, **kwargs: Any) -> Optional["Tag"]: ...
+
         def find_all(self, name: Any = None, **kwargs: Any) -> list["Tag"]: ...
+
+        def find_parent(self, name: Any = None, **kwargs: Any) -> Optional["Tag"]: ...
 
         def decompose(self) -> None: ...
 
@@ -33,6 +37,8 @@ if TYPE_CHECKING:
         ) -> None: ...
 
         def __call__(self, name: Any = None, **kwargs: Any) -> list[Tag]: ...
+
+        def find(self, name: Any = None, **kwargs: Any) -> Optional[Tag]: ...
 
         def find_all(self, name: Any = None, **kwargs: Any) -> list[Tag]: ...
 
@@ -110,6 +116,11 @@ CANDIDATE_NEAR_TIE_TOC_MARGIN = 0.06
 CANDIDATE_ITEM1A_RISK_ADJ_BONUS = 0.06
 CANDIDATE_HEADER_REPEAT_PENALTY = 0.25
 CANDIDATE_FOLLOWUP_ITEM_PENALTY = 0.20
+CANDIDATE_OVERVIEW_TABLE_PENALTY = 0.40
+# Warnings that mark a candidate as structurally suspect (not a real heading).
+_STRUCTURAL_SUSPECT_WARNINGS = frozenset(
+    {"header_footer_repeat", "risk_overview_table", "toc_entry_page_num"}
+)
 ITEM1A_RISK_CLOSE_CHARS = 60
 CANDIDATE_TOC_PAGE_MAX_DELTA = 3
 
@@ -1106,6 +1117,238 @@ def _build_blockdoc_from_tags(tags: list[Tag]) -> BlockDoc:
     return BlockDoc(blocks=blocks, full_text=full_text, offsets=offsets)
 
 
+# ---------------------------------------------------------------------------
+# Card-layout table detection and column-major reordering
+# ---------------------------------------------------------------------------
+# Some filings (e.g., ASML 20-F) use CSS-positioned multi-column "card"
+# tables where each column is a risk factor card (title row + body row).
+# The DOM reads row-by-row, grouping all titles then all bodies.  For correct
+# reading order we need column-by-column: title1+body1, title2+body2, …
+# The functions below detect these tables and reorder the block_tags list.
+
+_CARD_TABLE_MIN_COLS = 7
+_CARD_TABLE_CONTENT_WIDTH_MIN = 100  # pt
+_CARD_TABLE_MIN_CONTENT_COLS = 3
+_CARD_TABLE_MIN_ROWS = 4
+
+
+def _build_table_column_grid(
+    table_tag: Tag,
+) -> tuple[dict[tuple[int, int], Tag], int, int]:
+    """Build (row, col) -> <td>/<th> mapping, handling rowspan/colspan.
+
+    Returns (grid, n_cols, n_rows).
+    """
+    tbody = table_tag.find("tbody")
+    container = tbody if tbody else table_tag
+    rows = container.find_all("tr", recursive=False)
+
+    grid: dict[tuple[int, int], Tag] = {}
+    occupied: set[tuple[int, int]] = set()
+    max_col = 0
+
+    for row_idx, row in enumerate(rows):
+        cells = row.find_all(["td", "th"], recursive=False)
+        col_idx = 0
+        for cell in cells:
+            while (row_idx, col_idx) in occupied:
+                col_idx += 1
+            rowspan = int(cell.get("rowspan", 1))
+            colspan = int(cell.get("colspan", 1))
+            for r in range(rowspan):
+                for c in range(colspan):
+                    occupied.add((row_idx + r, col_idx + c))
+                    grid[(row_idx + r, col_idx + c)] = cell
+            max_col = max(max_col, col_idx + colspan)
+            col_idx += colspan
+
+    return grid, max_col, len(rows)
+
+
+def _detect_card_layout(table_tag: Tag) -> Optional[dict[str, Any]]:
+    """Return layout info if *table_tag* uses a card-column pattern, else None.
+
+    Detection criteria (conservative to avoid false positives):
+    * First <tr> is a width-definition row: all cells empty, each with an
+      explicit ``width:…pt`` style.
+    * ≥ 7 columns, ≥ 3 of which are "content" columns (> 100 pt).
+    * ≥ 4 rows total.
+    """
+    tbody = table_tag.find("tbody")
+    container = tbody if tbody else table_tag
+    rows = container.find_all("tr", recursive=False)
+    if len(rows) < _CARD_TABLE_MIN_ROWS:
+        return None
+
+    first_cells = rows[0].find_all(["td", "th"], recursive=False)
+    if len(first_cells) < _CARD_TABLE_MIN_COLS:
+        return None
+
+    col_widths: list[float] = []
+    for cell in first_cells:
+        # Width-definition cells must be empty and have a width style.
+        if cell.get_text(strip=True):
+            return None
+        style = cell.get("style", "")
+        m = re.search(r"width:\s*([\d.]+)pt", style)
+        col_widths.append(float(m.group(1)) if m else 0)
+
+    content_cols = [i for i, w in enumerate(col_widths) if w > _CARD_TABLE_CONTENT_WIDTH_MIN]
+    if len(content_cols) < _CARD_TABLE_MIN_CONTENT_COLS:
+        return None
+
+    grid, n_cols, n_rows = _build_table_column_grid(table_tag)
+    return {
+        "table": table_tag,
+        "grid": grid,
+        "col_widths": col_widths,
+        "content_cols": content_cols,
+        "n_cols": n_cols,
+        "n_rows": n_rows,
+    }
+
+
+def _assign_column_group(col_idx: int, content_cols: list[int]) -> int:
+    """Map a column index to its content-column group (0-based)."""
+    for g, cc in enumerate(content_cols):
+        if col_idx <= cc:
+            return g
+    return len(content_cols) - 1
+
+
+def _reorder_card_table_block_tags(
+    block_tags: list[Tag], soup: Union[Tag, "BeautifulSoup"]
+) -> list[Tag]:
+    """Reorder *block_tags* so card-layout tables are read column-by-column.
+
+    For every table that matches the card-layout pattern, block tags that are
+    descendants of that table are rearranged so that all blocks belonging to
+    column-group 0 come first (in their original row order), then column-group
+    1, etc.  Tags that are table-structure elements (``table``, ``tbody``,
+    ``tr``) or not inside any ``<td>`` are kept in front of the column groups.
+
+    Non-card-table block tags are left in their original positions.
+    """
+    card_infos: list[dict[str, Any]] = []
+    for table in soup.find_all("table"):
+        info = _detect_card_layout(table)
+        if info is not None:
+            card_infos.append(info)
+
+    if not card_infos:
+        return block_tags
+
+    result = list(block_tags)
+
+    for info in card_infos:
+        table = info["table"]
+        grid = info["grid"]
+        content_cols = info["content_cols"]
+
+        # Map cell-id → column group
+        cell_group: dict[int, int] = {}
+        for (_, col), cell in grid.items():
+            cid = id(cell)
+            if cid not in cell_group:
+                cell_group[cid] = _assign_column_group(col, content_cols)
+
+        # Identify which entries in *result* belong to this table.
+        table_desc_ids = {id(tag) for tag in table.find_all(BLOCK_TAGS)}
+        table_desc_ids.add(id(table))
+        table_indices = [i for i, tag in enumerate(result) if id(tag) in table_desc_ids]
+        if not table_indices:
+            continue
+        first_idx = table_indices[0]
+        last_idx = table_indices[-1]
+
+        # Classify each tag in the range by column group.
+        range_tags = result[first_idx : last_idx + 1]
+        grouped: dict[int, list[Tag]] = {}
+        for tag in range_tags:
+            td_ancestor: Optional[Tag] = None
+            if tag.name in ("td", "th"):
+                td_ancestor = tag
+            elif tag.name not in ("table", "tbody", "thead", "tfoot", "tr"):
+                td_ancestor = tag.find_parent("td") or tag.find_parent("th")
+
+            if td_ancestor is None:
+                g = -1  # structural / non-cell tag
+            else:
+                g = cell_group.get(id(td_ancestor), -1)
+            grouped.setdefault(g, []).append(tag)
+
+        # Column-major ordering: structural tags, then each group in order.
+        reordered: list[Tag] = []
+        if -1 in grouped:
+            reordered.extend(grouped[-1])
+        for g in sorted(k for k in grouped if k >= 0):
+            reordered.extend(grouped[g])
+
+        result[first_idx : last_idx + 1] = reordered
+
+    return result
+
+
+# ---------------------------------------------------------------------------
+# Risk overview/index table detection (for candidate penalty)
+# ---------------------------------------------------------------------------
+_OVERVIEW_RE = re.compile(r"\boverview\b", re.IGNORECASE)
+_OVERVIEW_LOOKBEHIND_BLOCKS = 12
+_OVERVIEW_LOOKAHEAD_BLOCKS = 30
+_OVERVIEW_DENSE_THRESHOLD = 10
+
+
+def _is_risk_overview_table(blocks: list[Block], candidate_idx: int) -> bool:
+    """Return True if the candidate block appears to be inside a risk-factor
+    overview/index table rather than being the actual section heading.
+
+    Pattern: a short "Risk factor(s)" block preceded (within 12 blocks) by
+    text containing "overview" and followed by a dense run of short blocks
+    (10+ blocks under 160 chars) without any narrative-length body text.
+    """
+    text = blocks[candidate_idx].text.strip()
+    if len(text) > 30:
+        return False
+
+    # Look behind for "overview" indicator.
+    start = max(0, candidate_idx - _OVERVIEW_LOOKBEHIND_BLOCKS)
+    has_overview = False
+    for i in range(start, candidate_idx):
+        if _OVERVIEW_RE.search(blocks[i].text):
+            has_overview = True
+            break
+    if not has_overview:
+        return False
+
+    # Look ahead for a dense run of short blocks with no narrative body text.
+    end = min(len(blocks), candidate_idx + _OVERVIEW_LOOKAHEAD_BLOCKS)
+    short_count = 0
+    for i in range(candidate_idx + 1, end):
+        if len(blocks[i].text) >= NARRATIVE_MIN_CHARS:
+            return False  # body text found — not an overview table
+        if len(blocks[i].text) < 160:
+            short_count += 1
+
+    return short_count >= _OVERVIEW_DENSE_THRESHOLD
+
+
+def _is_toc_entry_candidate(blocks: list[Block], candidate_idx: int) -> bool:
+    """Return True if the candidate block appears to be a TOC/navigation entry.
+
+    Pattern: a short heading-like block immediately followed (within 2 blocks)
+    by a page-number block.  This is a reliable indicator of TOC-style listings
+    even when the broader TOC scoring doesn't reach the ``tocLike`` threshold.
+    """
+    text = blocks[candidate_idx].text.strip()
+    if len(text) > 40:
+        return False
+    end = min(len(blocks), candidate_idx + 3)
+    for i in range(candidate_idx + 1, end):
+        if _is_page_number_line(blocks[i].text):
+            return True
+    return False
+
+
 def prepare_html_for_extraction(html: str) -> PreparedHtml:
     """Parse HTML once and prepare all components needed for extraction.
 
@@ -1130,6 +1373,7 @@ def prepare_html_for_extraction(html: str) -> PreparedHtml:
         tag.decompose()
 
     block_tags = list(soup.find_all(BLOCK_TAGS))
+    block_tags = _reorder_card_table_block_tags(block_tags, soup)
     block_doc = _build_blockdoc_from_tags(block_tags)
 
     return PreparedHtml(soup=soup, block_tags=block_tags, block_doc=block_doc)
@@ -3934,6 +4178,47 @@ def _apply_confidence_adjustments(
     return max(0.05, min(adjusted, 0.95))
 
 
+_RF_CONTINUED_RE = re.compile(r"^Risk\s+factors?\s*(\(continued\))?$", re.IGNORECASE)
+_PAGE_BREAK_STRATEGIC_RE = re.compile(r"^STRATEGIC\s+REPORT$", re.IGNORECASE)
+_RF_CONTINUED_LOOKAHEAD = 18
+
+
+def _find_rf_continued_boundary(
+    blocks: list[Block], start_idx: int
+) -> Optional[int]:
+    """For 20-F filings whose body uses 'Risk factors (continued)' page headers
+    instead of standard Item numbering (e.g. ASML): find the first page-break
+    block ('STRATEGIC REPORT') after the start that is NOT followed within
+    ``_RF_CONTINUED_LOOKAHEAD`` blocks by 'Risk factors' or
+    'Risk factors (continued)'.
+
+    Returns the block index of that page-break block, or ``None`` if no such
+    boundary is found (meaning either the filing doesn't use the pattern or
+    the risk factors section runs to the end of the filing).
+    """
+    # First verify the filing actually uses the pattern.
+    has_continued = any(
+        _RF_CONTINUED_RE.match(b.text.strip())
+        for b in blocks[start_idx + 1 : min(start_idx + 800, len(blocks))]
+    )
+    if not has_continued:
+        return None
+
+    for i in range(start_idx + 1, len(blocks)):
+        if not _PAGE_BREAK_STRATEGIC_RE.match(blocks[i].text.strip()):
+            continue
+        # Check whether the next ~18 blocks contain a 'Risk factors' header,
+        # indicating we're still inside the Risk Factors section.
+        is_rf_page = False
+        for j in range(i + 1, min(i + _RF_CONTINUED_LOOKAHEAD, len(blocks))):
+            if _RF_CONTINUED_RE.match(blocks[j].text.strip()):
+                is_rf_page = True
+                break
+        if not is_rf_page:
+            return i
+    return None
+
+
 def find_end_marker_blockdoc(
     block_doc: BlockDoc, start_idx: int, form_type: str
 ) -> tuple[Optional[int], Optional[str], bool]:
@@ -4524,11 +4809,17 @@ def analyze_blockdoc_candidates(block_doc: BlockDoc) -> dict[str, Any]:
     idx_item4 = None
     if not has_non_anchor_rule():
         start_search = toc_region_end_idx or 0
-        idx_item3 = _find_heading_index(blocks, ITEM_3_BLOCK, start=start_search)
-        idx_key_info = _find_heading_index(blocks, KEY_INFORMATION_BLOCK, start=start_search)
-        if idx_item3 is None:
-            idx_item3 = idx_key_info
-        if idx_item3 is not None:
+        # Search for successive Item 3 / Item 4 pairs, skipping cross-reference
+        # table entries where the distance between them is too short to contain
+        # actual risk narrative (e.g., ASML 20-F form reference tables).
+        _search_from = start_search
+        while _search_from < len(blocks):
+            idx_item3 = _find_heading_index(blocks, ITEM_3_BLOCK, start=_search_from)
+            idx_key_info = _find_heading_index(blocks, KEY_INFORMATION_BLOCK, start=_search_from)
+            if idx_item3 is None:
+                idx_item3 = idx_key_info
+            if idx_item3 is None:
+                break
             idx_item4 = None
             for candidate in range(idx_item3 + 1, len(blocks)):
                 block = blocks[candidate]
@@ -4540,6 +4831,17 @@ def analyze_blockdoc_candidates(block_doc: BlockDoc) -> dict[str, Any]:
                     continue
                 idx_item4 = candidate
                 break
+            # If the region around Item 3 has no narrative content (blocks
+            # >= 200 chars), it is likely a cross-reference / form-item mapping
+            # table rather than the real body section.  Skip forward past
+            # whatever Item 4 we found (or past this Item 3) and keep looking.
+            if not _has_nearby_narrative(blocks, idx_item3):
+                _search_from = (idx_item4 + 1) if idx_item4 is not None else (idx_item3 + 1)
+                idx_item3 = None
+                idx_item4 = None
+                continue
+            break
+        if idx_item3 is not None:
             end = idx_item4 if idx_item4 is not None else len(blocks)
             for idx in range(idx_item3, end):
                 block = blocks[idx]
@@ -4699,8 +5001,18 @@ def analyze_blockdoc_candidates(block_doc: BlockDoc) -> dict[str, Any]:
         dense_followup = _dense_item_followup(blocks, idx)
         if dense_followup:
             warnings.append("toc_like_followup")
+        risk_overview = _is_risk_overview_table(blocks, idx)
+        if risk_overview:
+            warnings.append("risk_overview_table")
+        toc_entry = _is_toc_entry_candidate(blocks, idx)
+        if toc_entry:
+            warnings.append("toc_entry_page_num")
         if repeated_header:
             score = max(0.05, min(score - CANDIDATE_HEADER_REPEAT_PENALTY, 0.95))
+        if risk_overview:
+            score = max(0.05, min(score - CANDIDATE_OVERVIEW_TABLE_PENALTY, 0.95))
+        if toc_entry:
+            score = max(0.05, min(score - CANDIDATE_TOC_HEAD_PENALTY, 0.95))
         if dense_followup:
             score = max(0.05, min(score - CANDIDATE_FOLLOWUP_ITEM_PENALTY, 0.95))
         if toc_score["tocLike"]:
@@ -4826,7 +5138,9 @@ def analyze_blockdoc_candidates(block_doc: BlockDoc) -> dict[str, Any]:
                         page_candidates_clean = [
                             item
                             for item in page_candidates
-                            if "header_footer_repeat" not in item[0].warnings
+                            if not _STRUCTURAL_SUSPECT_WARNINGS.intersection(
+                                item[0].warnings
+                            )
                         ]
                         page_candidates_use = page_candidates
                         if page_candidates_clean:
@@ -4893,7 +5207,9 @@ def analyze_blockdoc_candidates(block_doc: BlockDoc) -> dict[str, Any]:
                         clean_candidates: list[StartCandidate] = [
                             candidate
                             for candidate in near_ties
-                            if "header_footer_repeat" not in candidate.warnings
+                            if not _STRUCTURAL_SUSPECT_WARNINGS.intersection(
+                                candidate.warnings
+                            )
                         ]
                         has_clean = False
                         if clean_candidates:
@@ -4935,7 +5251,9 @@ def analyze_blockdoc_candidates(block_doc: BlockDoc) -> dict[str, Any]:
                             )
                             if page_hint is None:
                                 continue
-                            if has_clean and "header_footer_repeat" in candidate.warnings:
+                            if has_clean and _STRUCTURAL_SUSPECT_WARNINGS.intersection(
+                                candidate.warnings
+                            ):
                                 continue
                             if page_hint >= toc_start_int:
                                 if (
@@ -4963,7 +5281,7 @@ def analyze_blockdoc_candidates(block_doc: BlockDoc) -> dict[str, Any]:
                         elif best_candidate is not None:
                             selected = best_candidate
                 if selected is None:
-                    near_ties.sort(key=lambda candidate: candidate.idx)
+                    near_ties.sort(key=lambda candidate: (-candidate.score, candidate.idx))
                     selected = near_ties[0]
             else:
                 selected = pool[0]
@@ -5454,6 +5772,26 @@ def extract_item1a_from_blockdoc(
                 end_block_idx = page_end_idx
                 end_marker = "toc_page_end"
                 end_fallback = True
+    # -- Boundary refinement via "Risk factors (continued)" pattern -----------
+    # When the start marker is a bare "risk_factors_heading" (non-standard body
+    # structure, e.g. ASML 20-F) and the end marker is a fallback or missing,
+    # try to find the end by detecting the page break that leaves the Risk
+    # Factors section (first page header not followed by "Risk factors
+    # (continued)").  The helper self-gates: if the filing doesn't use the
+    # "Risk factors (continued)" page-header pattern, it returns None.
+    if (end_fallback or end_block_idx is None) and selected.rule in (
+        "risk_factors_heading",
+        "risk_factors_prefix",
+    ):
+        rf_boundary = _find_rf_continued_boundary(block_doc.blocks, selected.idx)
+        if rf_boundary is not None and _end_marker_distance_ok(
+            block_doc, selected.idx, rf_boundary
+        ):
+            if end_block_idx is None or rf_boundary < end_block_idx:
+                end_block_idx = rf_boundary
+                end_marker = "rf_continued_boundary"
+                end_fallback = False  # high-confidence structural signal
+
     end_fallback_for_conf = end_fallback
     if end_fallback and toc_map is not None and isinstance(end_marker, str):
         next_label = toc_map.get("next_label")
@@ -5746,6 +6084,12 @@ def extract_item1a_from_blockdoc(
             if "length_out_of_band" not in warnings:
                 warnings.append("length_out_of_band")
             gate_reasons.append("length_out_of_band")
+
+    if form_type == "20-F" and len(section) < 2000:
+        quality_gate_failed = True
+        if "length_out_of_band" not in warnings:
+            warnings.append("length_out_of_band")
+        gate_reasons.append("length_out_of_band")
 
     if toc_map is not None and "length_out_of_band" in warnings:
         risk_start = toc_map.get("risk_page_start")

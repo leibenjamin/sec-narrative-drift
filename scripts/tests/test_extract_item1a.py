@@ -187,6 +187,45 @@ class TestExtractItem1A(unittest.TestCase):
                 msg=f"Selected candidate inside TOC region: idx={selected_idx} toc_end={toc_end}",
             )
 
+    def test_risk_overview_candidate_penalized_in_favor_of_real_heading(self) -> None:
+        overview_items = [f"Short topic {idx}" for idx in range(1, 33)]
+        text = "\n\n".join(
+            [
+                "ITEM 1. BUSINESS",
+                "Business narrative long enough to stay clearly outside the risk section. " * 8,
+                "Risk factor overview",
+                "ITEM 1A.",
+                "Risk Factors",
+                "5",
+                *overview_items,
+                "ITEM 1A. RISK FACTORS",
+                "These risks could materially affect results and operations and financial condition. "
+                * 80,
+                "ITEM 1B. Unresolved Staff Comments",
+            ]
+        )
+        doc = build_blockdoc_from_text(text)
+        analysis = analyze_blockdoc_candidates(doc)
+        selected = analysis.get("selected")
+        candidates = analysis.get("candidates", [])
+
+        if selected is None:
+            self.fail("Expected a selected candidate")
+
+        selected_idx = getattr(selected, "idx", None)
+        if not isinstance(selected_idx, int):
+            self.fail("Selected candidate idx missing")
+
+        self.assertEqual(selected_idx, 38)
+        early_candidate = next(
+            (candidate for candidate in candidates if getattr(candidate, "idx", None) == 3),
+            None,
+        )
+        if early_candidate is None:
+            self.fail("Expected an early overview candidate to be present")
+        self.assertIn("risk_overview_table", early_candidate.warnings)
+        self.assertIn("toc_entry_page_num", early_candidate.warnings)
+
     def test_heading_like_classification(self) -> None:
         sample = "\n\n".join(
             [
