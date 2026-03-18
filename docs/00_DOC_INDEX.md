@@ -11,6 +11,7 @@
 - `docs/lab/05_llm_reproducibility_contract.md` - strict manual LLM output contract for outline-compare runs.
 - `docs/lab/06_llm_model_comparison_workflow.md` - campaign-aware model comparison workflow.
 - `docs/lab/07_codex_real_run_profile.md` - Codex real-run operating profile.
+- `docs/lab/11_claude_code_real_run_profile.md` - Claude Code real-run operating profile.
 - `docs/lab/09_master_run_troubleshooting_and_sources_of_truth.md` - canonical source-of-truth and recovery guide for bundle -> mirror -> manifest -> starter drift.
 - `docs/lab/10_case_quality_review_log.md` - canonical human-review ledger for keep/defer/rerun decisions on active case artifacts.
 - `docs/lab/08_remaining_work_plan_history.md` - archived and superseded execution narrative.

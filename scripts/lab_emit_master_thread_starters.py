@@ -247,6 +247,40 @@ def display_output_format(*, format_name: str, execution_venue: str) -> str:
     return format_name
 
 
+def workspace_agent_display_name(*, campaign_id: str, model_provider: str, model_name: str) -> str:
+    campaign_lower = campaign_id.lower()
+    model_lower = model_name.lower()
+    if model_provider == "anthropic" or "claude" in campaign_lower or "claude" in model_lower:
+        return "Claude Code"
+    if "codex" in campaign_lower or "codex" in model_lower:
+        return "Codex"
+    return "workspace-aware agent"
+
+
+def workspace_agent_copy_line(*, campaign_id: str, model_provider: str, model_name: str) -> str:
+    display_name = workspace_agent_display_name(
+        campaign_id=campaign_id,
+        model_provider=model_provider,
+        model_name=model_name,
+    )
+    if display_name == "workspace-aware agent":
+        return "COPY FROM NEXT LINE THROUGH END_STARTER AND PASTE INTO A FRESH WORKSPACE-AWARE AGENT THREAD:"
+    return f"COPY FROM NEXT LINE THROUGH END_STARTER AND PASTE INTO A FRESH {display_name.upper()} THREAD:"
+
+
+def workspace_agent_intro_line(*, campaign_id: str, model_provider: str, model_name: str) -> str:
+    display_name = workspace_agent_display_name(
+        campaign_id=campaign_id,
+        model_provider=model_provider,
+        model_name=model_name,
+    )
+    if display_name == "Claude Code":
+        return "You are Claude Code operating inside this workspace. Execute this job end-to-end."
+    if display_name == "Codex":
+        return "You are Codex operating inside this workspace. Execute this job end-to-end."
+    return "You are a workspace-aware coding agent operating inside this workspace. Execute this job end-to-end."
+
+
 def resolve_from_manifest(
     raw_path: str,
     *,
@@ -744,11 +778,25 @@ def emit_vscode_autowrite_block(
     system_block: str,
     user_template: str,
     self_check: str,
+    model_provider: str,
+    model_name: str,
 ) -> None:
     lines.append(f"## Job {job_number:02d} - {ticker} {year_from}-{year_to} {lens}")
-    lines.append("COPY FROM NEXT LINE THROUGH END_STARTER AND PASTE INTO A FRESH CODEX THREAD:")
+    lines.append(
+        workspace_agent_copy_line(
+            campaign_id=campaign_id,
+            model_provider=model_provider,
+            model_name=model_name,
+        )
+    )
     lines.append("BEGIN_STARTER")
-    lines.append("You are Codex operating inside this workspace. Execute this job end-to-end.")
+    lines.append(
+        workspace_agent_intro_line(
+            campaign_id=campaign_id,
+            model_provider=model_provider,
+            model_name=model_name,
+        )
+    )
     lines.append("Do not ask for manual file attachments or manual save steps.")
     lines.append("")
     lines.append("Execution mode: AUTOWRITE_VALIDATE")
@@ -829,9 +877,21 @@ def emit_vscode_autowrite_v2_block(
     expected_curr_paragraphs: Optional[int],
 ) -> None:
     lines.append(f"## Job {job_number:02d} - {ticker} {year_from}-{year_to} {lens}")
-    lines.append("COPY FROM NEXT LINE THROUGH END_STARTER AND PASTE INTO A FRESH CODEX THREAD:")
+    lines.append(
+        workspace_agent_copy_line(
+            campaign_id=campaign_id,
+            model_provider=model_provider,
+            model_name=model_name,
+        )
+    )
     lines.append("BEGIN_STARTER")
-    lines.append("You are Codex operating inside this workspace. Execute this job end-to-end.")
+    lines.append(
+        workspace_agent_intro_line(
+            campaign_id=campaign_id,
+            model_provider=model_provider,
+            model_name=model_name,
+        )
+    )
     lines.append("Do not ask for manual file attachments or manual save steps.")
     lines.append(
         "Execution focus: do not inspect unrelated scripts/docs unless a required gate fails."
@@ -944,9 +1004,21 @@ def emit_vscode_autowrite_v3_block(
     expected_curr_paragraphs: Optional[int],
 ) -> None:
     lines.append(f"## Job {job_number:02d} - {ticker} {year_from}-{year_to} {lens}")
-    lines.append("COPY FROM NEXT LINE THROUGH END_STARTER AND PASTE INTO A FRESH CODEX THREAD:")
+    lines.append(
+        workspace_agent_copy_line(
+            campaign_id=campaign_id,
+            model_provider=model_provider,
+            model_name=model_name,
+        )
+    )
     lines.append("BEGIN_STARTER")
-    lines.append("You are Codex operating inside this workspace. Execute this job end-to-end.")
+    lines.append(
+        workspace_agent_intro_line(
+            campaign_id=campaign_id,
+            model_provider=model_provider,
+            model_name=model_name,
+        )
+    )
     lines.append("Do not ask for manual file attachments or manual save steps.")
     lines.append(
         "Execution focus: do not inspect unrelated scripts/docs unless a required gate fails."
@@ -1095,9 +1167,21 @@ def emit_vscode_autowrite_structured_prod_block(
     analysis_expectations: Optional[dict[str, Any]] = None,
 ) -> None:
     lines.append(f"## Job {job_number:02d} - {ticker} {year_from}-{year_to} {lens}")
-    lines.append("COPY FROM NEXT LINE THROUGH END_STARTER AND PASTE INTO A FRESH CODEX THREAD:")
+    lines.append(
+        workspace_agent_copy_line(
+            campaign_id=campaign_id,
+            model_provider=model_provider,
+            model_name=model_name,
+        )
+    )
     lines.append("BEGIN_STARTER")
-    lines.append("You are Codex operating inside this workspace. Execute this job end-to-end.")
+    lines.append(
+        workspace_agent_intro_line(
+            campaign_id=campaign_id,
+            model_provider=model_provider,
+            model_name=model_name,
+        )
+    )
     lines.append("Do not ask for manual file attachments or manual save steps.")
     lines.append(
         "Execution focus: use only the declared pair/year input files plus this embedded prompt contract."
@@ -1267,9 +1351,21 @@ def emit_vscode_autowrite_insight_exp_block(
     analysis_expectations: Optional[dict[str, Any]] = None,
 ) -> None:
     lines.append(f"## Job {job_number:02d} - {ticker} {year_from}-{year_to} {lens}")
-    lines.append("COPY FROM NEXT LINE THROUGH END_STARTER AND PASTE INTO A FRESH CODEX THREAD:")
+    lines.append(
+        workspace_agent_copy_line(
+            campaign_id=campaign_id,
+            model_provider=model_provider,
+            model_name=model_name,
+        )
+    )
     lines.append("BEGIN_STARTER")
-    lines.append("You are Codex operating inside this workspace. Execute this job end-to-end.")
+    lines.append(
+        workspace_agent_intro_line(
+            campaign_id=campaign_id,
+            model_provider=model_provider,
+            model_name=model_name,
+        )
+    )
     lines.append("Do not ask for manual file attachments or manual save steps.")
     lines.append(
         "Execution focus: use only the declared pair/year input files plus this embedded prompt contract."
@@ -1863,7 +1959,15 @@ def main(argv: Optional[list[str]] = None) -> int:
         if is_chatgpt_desktop_venue:
             lines.append("Each job block includes a BEGIN_STARTER prompt for a fresh ChatGPT Desktop thread plus LOCAL_POSTCHECK terminal commands.")
         else:
-            lines.append("Each job block is paste-ready for a fresh VS Code agent thread:")
+            lines.append(
+                "Each job block is paste-ready for a fresh "
+                + workspace_agent_display_name(
+                    campaign_id=campaign_id,
+                    model_provider=model_provider,
+                    model_name=model_name,
+                )
+                + " thread:"
+            )
         if is_chatgpt_desktop_venue:
             lines.append("1. Uses only the three attached input files")
         else:
@@ -2038,6 +2142,8 @@ def main(argv: Optional[list[str]] = None) -> int:
                 system_block=system_block_v2,
                 user_template=user_template_v2,
                 self_check=self_check_v2,
+                model_provider=model_provider,
+                model_name=model_name,
             )
         elif args.format == "vscode_autowrite_v2":
             emit_vscode_autowrite_v2_block(

@@ -1153,6 +1153,43 @@ class TestStarterEmitterHardening(unittest.TestCase):
             self.assertIn("1. Uses only the three attached input files", text)
 
 
+    def test_claude_master_starter_v4_markers(self) -> None:
+        campaign = get_llm_campaign("anthropic_claudeopus46_claudecode_fullsec_real_2026-03-09")
+        if campaign is None:
+            self.fail("Claude campaign not found for unit test.")
+        expected_output_path = (
+            f"public/data/sec_narrative_drift_lab/NVDA/outputs/llm_outline_compare_structured/"
+            f"{campaign.track_slug}/unit_test_output.json"
+        )
+        manifest = make_single_entry_manifest(campaign.track_id, expected_output_path)
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            manifest_path = root / "manifest_claude.json"
+            out_path = root / "starters_claude_v4.md"
+            write_json(manifest_path, manifest)
+            rc = emit_starters.main(
+                [
+                    "--manifest",
+                    str(manifest_path),
+                    "--out",
+                    str(out_path),
+                    "--format",
+                    "vscode_autowrite_structured_prod",
+                ]
+            )
+            self.assertEqual(rc, 0)
+            text = out_path.read_text(encoding="utf-8")
+            self.assertIn("- output format: `vscode_autowrite_structured_prod`", text)
+            self.assertIn("Each job block is paste-ready for a fresh Claude Code thread:", text)
+            self.assertIn("COPY FROM NEXT LINE THROUGH END_STARTER AND PASTE INTO A FRESH CLAUDE CODE THREAD:", text)
+            self.assertIn("You are Claude Code operating inside this workspace. Execute this job end-to-end.", text)
+            self.assertIn("Execution mode: AUTOWRITE_VALIDATE_STRUCTURED_PROD", text)
+            self.assertIn("PRECHECK_OK ticker=", text)
+            self.assertIn(f'--only "{expected_output_path}"', text)
+            self.assertNotIn("fresh VS Code agent thread", text)
+            self.assertNotIn("You are Codex operating inside this workspace. Execute this job end-to-end.", text)
+
+
     def test_emitter_v5_includes_v3_projection_chain(self) -> None:
         campaign = get_llm_campaign(DEFAULT_PRIMARY_LLM_CAMPAIGN_ID)
         if campaign is None:

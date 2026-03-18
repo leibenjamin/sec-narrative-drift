@@ -17,6 +17,7 @@ Status: canonical manual outline-compare workflow for the shipped `full_section_
 - `docs/lab/04_chatgpt_project_setup.md`
 - `docs/lab/05_llm_reproducibility_contract.md`
 - `docs/lab/07_codex_real_run_profile.md`
+- `docs/lab/11_claude_code_real_run_profile.md`
 - `docs/lab/09_master_run_troubleshooting_and_sources_of_truth.md`
 - `reports/lab_project_instructions_<campaign_id>.txt`
 - `reports/lab_llm_master_manifest_<campaign>.json`
@@ -78,6 +79,7 @@ Status: canonical manual outline-compare workflow for the shipped `full_section_
 ## Rerun By Venue
 - ChatGPT Desktop campaigns run directly from the thread starter plus the three attached input files.
 - Workspace-aware Codex and Claude Code campaigns run from declared workspace paths and may write artifacts locally.
+- Use `docs/lab/07_codex_real_run_profile.md` for Codex threads and `docs/lab/11_claude_code_real_run_profile.md` for Claude Code threads.
 - If starter/input files are reused outside the original workspace, users must update workspace-relative file paths before rerun.
 - End-user formatting for self-run outputs is a planned follow-up helper and is not part of the current canonical pipeline.
 
