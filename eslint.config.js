@@ -11,6 +11,7 @@ export default defineConfig([
     'bundles/**',
     'attic/**',
     'handoff/**',
+    'scripts/_tmp_test_runs/**',
   ]),
   {
     files: ['**/*.{ts,tsx}'],

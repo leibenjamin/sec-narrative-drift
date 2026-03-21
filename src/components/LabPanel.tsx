@@ -1,10 +1,11 @@
-﻿import { useEffect, useMemo, useRef, useState } from "react"
+import { useEffect, useMemo, useRef, useState } from "react"
 import { Link } from "react-router-dom"
 import AgreementMatrix from "./AgreementMatrix"
 import CleaningLensToggle from "./CleaningLensToggle"
 import MethodCard from "./MethodCard"
 import InsightLensPanel from "./InsightLensPanel"
 import OutlineComparePanel from "./OutlineComparePanel"
+import ProtocolLabPilotMatrixPanel from "./ProtocolLabPilotMatrixPanel"
 import RiskNarrativeSummary from "./RiskNarrativeSummary"
 import {
   LabDataLoadError,
@@ -28,6 +29,14 @@ import {
   resolveLabOutputLink,
 } from "../lib/labData"
 import { formatFiscalYearRange } from "../lib/fiscalYear"
+import {
+  formatProtocolLabMatrixLoadDebug,
+  loadEffortRobustnessCaseForTicker,
+  loadEffortRobustnessSummary,
+  loadPilotMatrixBundleForCase,
+  loadPilotMatrixBundleForTicker,
+} from "../lib/protocolLabMatrixData.ts"
+import { formatPilotStatusLabel } from "../lib/protocolLabMatrixPresentation.ts"
 import type {
   LabCase,
   LabCleaningLens,
@@ -39,6 +48,10 @@ import type {
   LabOutput,
   LabSourceId,
 } from "../lib/labTypes"
+import type {
+  ProtocolLabEffortRobustnessBundle,
+  ProtocolLabPilotMatrixBundle,
+} from "../lib/protocolLabMatrixTypes.ts"
 
 const DETECTOR_CATALOG = [
   {
@@ -110,6 +123,18 @@ const LENS_PREFERENCE_ORDER: LabCleaningLens[] = [
 ]
 const DET_TRACK_SLUG = getDefaultDeterministicTrackSlug()
 type AnalysisMode = "executive" | "deep"
+
+type PilotMatrixTarget =
+  | {
+      mode: "case"
+      ticker: string
+      yearFrom: number
+      yearTo: number
+    }
+  | {
+      mode: "ticker"
+      ticker: string
+    }
 
 function buildDetectorCardKey(detectorId: string, campaignId?: string): string {
   if (campaignId) return `${detectorId}::${campaignId}`
@@ -297,6 +322,17 @@ export default function LabPanel({
   const [methodProfilesByDetector, setMethodProfilesByDetector] = useState<
     Record<string, LabMethodProfile>
   >({})
+  const [pilotMatrixBundle, setPilotMatrixBundle] = useState<ProtocolLabPilotMatrixBundle | null>(
+    null
+  )
+  const [isLoadingPilotMatrix, setIsLoadingPilotMatrix] = useState(false)
+  const [pilotMatrixError, setPilotMatrixError] = useState<string | null>(null)
+  const [pilotMatrixDebugText, setPilotMatrixDebugText] = useState<string | null>(null)
+  const [effortRobustnessBundle, setEffortRobustnessBundle] =
+    useState<ProtocolLabEffortRobustnessBundle | null>(null)
+  const [isLoadingEffortRobustness, setIsLoadingEffortRobustness] = useState(false)
+  const [effortRobustnessError, setEffortRobustnessError] = useState<string | null>(null)
+  const [effortRobustnessDebugText, setEffortRobustnessDebugText] = useState<string | null>(null)
 
   // Track previous values for render-time state adjustments (React recommended pattern)
   const [prevTicker, setPrevTicker] = useState(ticker)
@@ -315,6 +351,14 @@ export default function LabPanel({
     setLens("deboilerplated")
     setSelectedDetectors(DEFAULT_SELECTED)
     setAnalysisMode("executive")
+    setPilotMatrixBundle(null)
+    setIsLoadingPilotMatrix(false)
+    setPilotMatrixError(null)
+    setPilotMatrixDebugText(null)
+    setEffortRobustnessBundle(null)
+    setIsLoadingEffortRobustness(false)
+    setEffortRobustnessError(null)
+    setEffortRobustnessDebugText(null)
   }
 
   useEffect(() => {
@@ -424,6 +468,175 @@ export default function LabPanel({
     if (!selectedCaseKey) return null
     return cases.find((item) => buildCaseKey(item) === selectedCaseKey) ?? null
   }, [cases, selectedCaseKey])
+
+  const pilotMatrixTarget = useMemo<PilotMatrixTarget | null>(() => {
+    if (
+      selectedCase &&
+      selectedCase.ticker === "NVDA" &&
+      selectedCase.year_from === 2024 &&
+      selectedCase.year_to === 2025
+    ) {
+      return {
+        mode: "case",
+        ticker: selectedCase.ticker,
+        yearFrom: selectedCase.year_from,
+        yearTo: selectedCase.year_to,
+      }
+    }
+    if (!selectedCase && ticker === "LLY") {
+      return {
+        mode: "ticker",
+        ticker,
+      }
+    }
+    return null
+  }, [selectedCase, ticker])
+
+  const isPilotMatrixSelectedCase = pilotMatrixTarget?.mode === "case"
+  const isPilotOnlyMatrixView = pilotMatrixTarget?.mode === "ticker"
+
+  const pilotMatrixRequestKey = useMemo(() => {
+    if (!pilotMatrixTarget) return null
+    if (pilotMatrixTarget.mode === "case") {
+      return `${pilotMatrixTarget.ticker}:${pilotMatrixTarget.yearFrom}-${pilotMatrixTarget.yearTo}`
+    }
+    return `${pilotMatrixTarget.ticker}:pilot_only`
+  }, [pilotMatrixTarget])
+  const [prevPilotMatrixRequestKey, setPrevPilotMatrixRequestKey] = useState(pilotMatrixRequestKey)
+
+  if (prevPilotMatrixRequestKey !== pilotMatrixRequestKey) {
+    setPrevPilotMatrixRequestKey(pilotMatrixRequestKey)
+    if (!pilotMatrixRequestKey) {
+      setPilotMatrixBundle(null)
+      setIsLoadingPilotMatrix(false)
+      setPilotMatrixError(null)
+      setPilotMatrixDebugText(null)
+      setEffortRobustnessBundle(null)
+      setIsLoadingEffortRobustness(false)
+      setEffortRobustnessError(null)
+      setEffortRobustnessDebugText(null)
+    } else {
+      setIsLoadingPilotMatrix(true)
+      setPilotMatrixError(null)
+      setPilotMatrixDebugText(null)
+      setIsLoadingEffortRobustness(true)
+      setEffortRobustnessError(null)
+      setEffortRobustnessDebugText(null)
+    }
+  }
+
+  useEffect(() => {
+    if (!pilotMatrixTarget) {
+      return
+    }
+
+    let cancelled = false
+    const controller = new AbortController()
+
+    const loadPromise =
+      pilotMatrixTarget.mode === "case"
+        ? loadPilotMatrixBundleForCase({
+            ticker: pilotMatrixTarget.ticker,
+            yearFrom: pilotMatrixTarget.yearFrom,
+            yearTo: pilotMatrixTarget.yearTo,
+            signal: controller.signal,
+          })
+        : loadPilotMatrixBundleForTicker({
+            ticker: pilotMatrixTarget.ticker,
+            signal: controller.signal,
+          })
+
+    loadPromise
+      .then((bundle) => {
+        if (cancelled) return
+        if (!bundle) {
+          setPilotMatrixBundle(null)
+          setPilotMatrixError("Integrated pilot matrix registry entry is not available for this view.")
+          setPilotMatrixDebugText(null)
+          return
+        }
+        setPilotMatrixBundle(bundle)
+        setPilotMatrixError(null)
+        setPilotMatrixDebugText(null)
+      })
+      .catch((error) => {
+        if (cancelled) return
+        setPilotMatrixBundle(null)
+        setPilotMatrixError(
+          error instanceof Error ? error.message : "Failed to load integrated pilot matrix."
+        )
+        setPilotMatrixDebugText(formatProtocolLabMatrixLoadDebug(error))
+      })
+      .finally(() => {
+        if (!cancelled) setIsLoadingPilotMatrix(false)
+      })
+
+    return () => {
+      cancelled = true
+      controller.abort()
+    }
+  }, [pilotMatrixTarget])
+
+  useEffect(() => {
+    if (!pilotMatrixTarget) {
+      return
+    }
+
+    let cancelled = false
+
+    Promise.allSettled([
+      loadEffortRobustnessCaseForTicker({
+        ticker: pilotMatrixTarget.ticker,
+      }),
+      loadEffortRobustnessSummary(),
+    ])
+      .then(([caseResult, summaryResult]) => {
+        if (cancelled) return
+
+        if (caseResult.status === "rejected") {
+          setEffortRobustnessBundle(null)
+          setEffortRobustnessError(
+            caseResult.reason instanceof Error
+              ? caseResult.reason.message
+              : "Failed to load effort robustness."
+          )
+          setEffortRobustnessDebugText(formatProtocolLabMatrixLoadDebug(caseResult.reason))
+          return
+        }
+
+        if (!caseResult.value) {
+          setEffortRobustnessBundle(null)
+          setEffortRobustnessError("Effort robustness artifact is not available for this pilot slice.")
+          setEffortRobustnessDebugText(null)
+          return
+        }
+
+        setEffortRobustnessBundle({
+          case_artifact: caseResult.value,
+          summary_artifact: summaryResult.status === "fulfilled" ? summaryResult.value : null,
+        })
+
+        if (summaryResult.status === "rejected") {
+          setEffortRobustnessError(
+            summaryResult.reason instanceof Error
+              ? summaryResult.reason.message
+              : "Failed to load effort robustness summary."
+          )
+          setEffortRobustnessDebugText(formatProtocolLabMatrixLoadDebug(summaryResult.reason))
+          return
+        }
+
+        setEffortRobustnessError(null)
+        setEffortRobustnessDebugText(null)
+      })
+      .finally(() => {
+        if (!cancelled) setIsLoadingEffortRobustness(false)
+      })
+
+    return () => {
+      cancelled = true
+    }
+  }, [pilotMatrixTarget])
 
   const requestedCaseKey = useMemo(() => {
     if (!requestedPair || cases.length === 0) return null
@@ -981,7 +1194,12 @@ export default function LabPanel({
 
   const selectedPairLabel = selectedCase
     ? formatFiscalYearRange(selectedCase.year_from, selectedCase.year_to)
-    : "none"
+    : pilotMatrixBundle
+      ? formatFiscalYearRange(
+          pilotMatrixBundle.matrix.pair_info.year_from,
+          pilotMatrixBundle.matrix.pair_info.year_to
+        )
+      : "none"
   const isExecutiveMode = analysisMode === "executive"
   const isDeepMode = analysisMode === "deep"
   const modeLabel = isDeepMode ? "Deep review" : "Quick read"
@@ -1101,6 +1319,113 @@ export default function LabPanel({
   }
 
   if (!cases.length) {
+    if (isPilotOnlyMatrixView) {
+      const pilotPairInfo = pilotMatrixBundle?.matrix.pair_info ?? null
+      const pilotPairLabel = pilotPairInfo
+        ? formatFiscalYearRange(pilotPairInfo.year_from, pilotPairInfo.year_to)
+        : "FY2024 to FY2025"
+      const pilotStatusLabel = pilotMatrixBundle?.matrix.pilot_status.state
+        ? formatPilotStatusLabel(pilotMatrixBundle.matrix.pilot_status.state)
+        : isLoadingPilotMatrix
+          ? formatPilotStatusLabel("loading")
+          : formatPilotStatusLabel("unavailable")
+
+      return (
+        <section className="space-y-6">
+          <div className="rounded-[1.35rem] border border-white/10 bg-white/5 p-4 text-sm text-slate-200 shadow-[0_16px_40px_rgba(2,6,23,0.18)]">
+            <div className="grid gap-4 lg:grid-cols-[1.35fr,0.65fr]">
+              <div className="space-y-4">
+                <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+                  <div className="rounded-lg border border-white/10 bg-slate-900/50 p-3">
+                    <div className="text-xs uppercase tracking-wide text-slate-400">Active case</div>
+                    <div className="mt-1 text-sm font-semibold text-slate-100">{pilotPairLabel}</div>
+                  </div>
+                  <div className="rounded-lg border border-white/10 bg-slate-900/50 p-3">
+                    <div className="text-xs uppercase tracking-wide text-slate-400">Pilot lanes</div>
+                    <div className="mt-1 text-sm font-semibold text-slate-100">
+                      02 hero / 03 main comparator / 00 recovered control
+                    </div>
+                  </div>
+                  <div className="rounded-lg border border-white/10 bg-slate-900/50 p-3">
+                    <div className="text-xs uppercase tracking-wide text-slate-400">Pilot status</div>
+                    <div className="mt-1 text-sm font-semibold text-slate-100">{pilotStatusLabel}</div>
+                  </div>
+                  <div className="rounded-lg border border-white/10 bg-slate-900/50 p-3">
+                    <div className="text-xs uppercase tracking-wide text-slate-400">Lower audit</div>
+                    <div className="mt-1 text-sm font-semibold text-slate-100">Not yet integrated</div>
+                  </div>
+                </div>
+
+                <div className="rounded-lg border border-white/10 bg-slate-950/35 p-4">
+                  <div className="text-xs uppercase tracking-wide text-slate-400">Pilot-first read</div>
+                  <p className="mt-2 text-sm text-slate-100">
+                    This issuer currently ships as an integrated pilot slice only. Start with the
+                    filing-shift story, lane comparison, and effort-robustness read below, then
+                    stop at the matrix proof boundary instead of inferring missing lower audit
+                    surfaces.
+                  </p>
+                  <p className="mt-3 text-xs text-slate-400">
+                    The legacy risk narrative, deterministic methods, agreement, and outline
+                    compare stack are intentionally deferred for LLY FY2024 to FY2025 in this wave.
+                  </p>
+                </div>
+              </div>
+
+              <div className="rounded-lg border border-sky-300/20 bg-sky-400/10 p-4">
+                <div className="text-xs uppercase tracking-wide text-sky-100">Default flow</div>
+                <p className="mt-2 text-sm text-slate-100">
+                  Start with why this case matters, what changed in the filing, how the lanes
+                  differ, and the effort-robustness read. Then inspect the lane cards, details,
+                  and matrix caveat. Lower audit surfaces are explicitly unavailable for this issuer
+                  in this wave.
+                </p>
+                <p className="mt-3 text-xs text-slate-200">
+                  This keeps the second pilot honest without synthesizing a fake full lab case or
+                  promoting LLY into the legacy runtime.
+                </p>
+                <Link
+                  className="mt-3 inline-flex text-xs text-sky-100 underline decoration-sky-300/60 underline-offset-2 hover:text-sky-50"
+                  to="/methodology"
+                >
+                  Full methodology
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          <ProtocolLabPilotMatrixPanel
+            bundle={pilotMatrixBundle}
+            isLoading={isLoadingPilotMatrix}
+            error={pilotMatrixError}
+            debugText={pilotMatrixDebugText}
+            effortRobustness={effortRobustnessBundle}
+            isLoadingEffortRobustness={isLoadingEffortRobustness}
+            effortRobustnessError={effortRobustnessError}
+            effortRobustnessDebugText={effortRobustnessDebugText}
+          />
+
+          <section
+            id="lab-lower-audit-unavailable"
+            className="rounded-[1.25rem] border border-amber-300/20 bg-amber-400/10 p-4 text-sm text-slate-200"
+          >
+            <div className="text-xs uppercase tracking-wide text-amber-100">
+              Lower audit surfaces not yet integrated
+            </div>
+            <p className="mt-2 text-sm text-slate-100">
+              LLY currently ships as a pilot-matrix-only slice for FY2024 to FY2025 Item 1A. The
+              legacy risk narrative summary, deterministic method cards, agreement matrix, and
+              outline compare surfaces are intentionally deferred until a full lower-audit lab stack
+              exists for this issuer.
+            </p>
+            <p className="mt-3 text-xs text-slate-300">
+              This wave does not backfill <code>sec_narrative_drift_lab</code>, invent an 01 lane,
+              or add a broader multi-company matrix framework.
+            </p>
+          </section>
+        </section>
+      )
+    }
+
     return (
       <div className="rounded-lg border border-white/10 bg-white/5 p-4 text-sm text-slate-300">
         No lab cases found for this ticker yet.
@@ -1127,8 +1452,14 @@ export default function LabPanel({
                 </div>
               </div>
               <div className="rounded-lg border border-white/10 bg-slate-900/50 p-3">
-                <div className="text-xs uppercase tracking-wide text-slate-400">Reading mode</div>
-                <div className="mt-1 text-sm font-semibold text-slate-100">{modeLabel}</div>
+                <div className="text-xs uppercase tracking-wide text-slate-400">
+                  {isPilotMatrixSelectedCase ? "Pilot matrix" : "Reading mode"}
+                </div>
+                <div className="mt-1 text-sm font-semibold text-slate-100">
+                  {isPilotMatrixSelectedCase
+                    ? "02 hero / 03 compare / 01 secondary / 00 recovered control"
+                    : modeLabel}
+                </div>
               </div>
               <div className="rounded-lg border border-white/10 bg-slate-900/50 p-3">
                 <div className="text-xs uppercase tracking-wide text-slate-400">Results available</div>
@@ -1138,7 +1469,126 @@ export default function LabPanel({
               </div>
             </div>
 
-            <div className="grid gap-4 lg:grid-cols-[1.15fr,0.85fr]">
+            {isPilotMatrixSelectedCase ? (
+              <div className="rounded-lg border border-white/10 bg-slate-950/35 p-4">
+                <div className="text-xs uppercase tracking-wide text-slate-400">Pilot-first read</div>
+                <p className="mt-2 text-sm text-slate-100">
+                  This NVDA case opens with the filing-shift story, lane comparison, and effort-robustness read below. Cleaning lens and reading mode controls stay available inside Advanced controls so the audit surfaces do not lead the page.
+                </p>
+                <p className="mt-3 text-xs text-slate-400">
+                  The existing risk narrative, deterministic methods, agreement, and outline compare surfaces remain below the matrix for follow-through and audit.
+                </p>
+              </div>
+            ) : (
+              <div className="grid gap-4 lg:grid-cols-[1.15fr,0.85fr]">
+                <div className="rounded-lg border border-white/10 bg-slate-950/35 p-4">
+                  <div className="text-xs uppercase tracking-wide text-slate-400">Cleaning lens</div>
+                  <div className="mt-3">
+                    <CleaningLensToggle value={lens} options={lensOptions} onChange={setLens} />
+                  </div>
+                  <p className="mt-3 text-xs text-slate-400">
+                    {lens === "deboilerplated"
+                      ? "Deboilerplated is the default filing-cleaning view because it strips recurring legal boilerplate for a cleaner first read."
+                      : "Switch lenses to compare the default cleaned view with the raw filing text and other preprocessing variants."}
+                  </p>
+                </div>
+
+                <div className="rounded-lg border border-white/10 bg-slate-950/35 p-4">
+                  <div className="text-xs uppercase tracking-wide text-slate-400">Reading mode</div>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    <button
+                      type="button"
+                      onClick={() => handleApplyPreset(EXECUTIVE_READ_PRESET, "deboilerplated", "executive")}
+                      className={`rounded-md border px-3 py-1.5 text-sm transition ${
+                        isExecutiveMode
+                          ? "border-sky-200/80 bg-sky-400/25 text-sky-50 shadow-[0_0_0_1px_rgba(125,211,252,0.25)]"
+                          : "border-white/15 bg-slate-900/45 text-slate-300 hover:border-white/30 hover:text-slate-100"
+                      }`}
+                    >
+                      Quick read
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => handleApplyPreset(TECHNICAL_DEEP_DIVE_PRESET, lens, "deep")}
+                      className={`rounded-md border px-3 py-1.5 text-sm transition ${
+                        isDeepMode
+                          ? "border-emerald-200/80 bg-emerald-400/25 text-emerald-50 shadow-[0_0_0_1px_rgba(110,231,183,0.25)]"
+                          : "border-white/15 bg-slate-900/45 text-slate-300 hover:border-white/30 hover:text-slate-100"
+                      }`}
+                    >
+                      Deep review
+                    </button>
+                  </div>
+                  <p className="mt-3 text-xs text-slate-400">
+                    {isExecutiveMode
+                      ? "Quick read keeps the two core deterministic methods in view first."
+                      : "Deep review restores the full deterministic set and richer method context."}
+                  </p>
+                  {presetStatus ? (
+                    <p className="mt-2 text-xs text-emerald-300">{presetStatus.message}</p>
+                  ) : null}
+                </div>
+              </div>
+            )}
+          </div>
+
+          <div className="rounded-lg border border-sky-300/20 bg-sky-400/10 p-4">
+            <div className="text-xs uppercase tracking-wide text-sky-100">Default flow</div>
+            <p className="mt-2 text-sm text-slate-100">
+              {isPilotMatrixSelectedCase
+                ? "Start with the story layer below: why this case matters, what changed in the filing, how the lanes differ, and whether the same winner survives lower effort. Then move into the risk narrative summary, confirm the signal with the core methods and agreement, and use outline compare for the deeper structural audit."
+                : "Start with the risk narrative summary below, then confirm the filing signal with the core methods and agreement, then open outline compare for the deeper structural audit."}
+            </p>
+            <p className="mt-3 text-xs text-slate-200">
+              {isPilotMatrixSelectedCase
+                ? "Advanced controls keep cleaning lens, reading mode, campaign overrides, detector selection, utilities, and anchor navigation available without leading the page."
+                : "Advanced controls stay available for campaign overrides, detector selection, utilities, and anchor navigation."}
+            </p>
+            <Link
+              className="mt-3 inline-flex text-xs text-sky-100 underline decoration-sky-300/60 underline-offset-2 hover:text-sky-50"
+              to="/methodology"
+            >
+              Full methodology
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {isPilotMatrixSelectedCase ? (
+        <ProtocolLabPilotMatrixPanel
+          bundle={pilotMatrixBundle}
+          isLoading={isLoadingPilotMatrix}
+          error={pilotMatrixError}
+          debugText={pilotMatrixDebugText}
+          effortRobustness={effortRobustnessBundle}
+          isLoadingEffortRobustness={isLoadingEffortRobustness}
+          effortRobustnessError={effortRobustnessError}
+          effortRobustnessDebugText={effortRobustnessDebugText}
+        />
+      ) : null}
+
+      {selectedCase && (selectedLlmCampaignA || selectedLlmCampaignB) ? (
+        <RiskNarrativeSummary
+          ticker={ticker}
+          yearFrom={selectedCase.year_from}
+          yearTo={selectedCase.year_to}
+          modelALabel={selectedCampaignLabelA}
+          modelBLabel={selectedCampaignLabelB}
+          modelARuntime={selectedLlmCampaignA ? outlineOutputs[selectedLlmCampaignA] ?? null : null}
+          modelBRuntime={selectedLlmCampaignB ? outlineOutputs[selectedLlmCampaignB] ?? null : null}
+          modelAStructured={selectedLlmCampaignA ? structuredOutlineOutputs[selectedLlmCampaignA] ?? null : null}
+          modelBStructured={selectedLlmCampaignB ? structuredOutlineOutputs[selectedLlmCampaignB] ?? null : null}
+          analysisMode={analysisMode}
+        />
+      ) : null}
+
+      <details className="rounded-[1.2rem] border border-white/10 bg-white/5 p-4">
+        <summary className="cursor-pointer list-none text-sm font-semibold text-slate-100">
+          Advanced controls
+        </summary>
+        <div className="mt-4 space-y-4 text-sm text-slate-200">
+          {isPilotMatrixSelectedCase ? (
+            <div className="grid gap-3 md:grid-cols-2">
               <div className="rounded-lg border border-white/10 bg-slate-950/35 p-4">
                 <div className="text-xs uppercase tracking-wide text-slate-400">Cleaning lens</div>
                 <div className="mt-3">
@@ -1146,11 +1596,10 @@ export default function LabPanel({
                 </div>
                 <p className="mt-3 text-xs text-slate-400">
                   {lens === "deboilerplated"
-                    ? "Deboilerplated is the default filing-cleaning view because it strips recurring legal boilerplate for a cleaner first read."
+                    ? "Deboilerplated remains the default filing-cleaning view for a cleaner deterministic read below the matrix."
                     : "Switch lenses to compare the default cleaned view with the raw filing text and other preprocessing variants."}
                 </p>
               </div>
-
               <div className="rounded-lg border border-white/10 bg-slate-950/35 p-4">
                 <div className="text-xs uppercase tracking-wide text-slate-400">Reading mode</div>
                 <div className="mt-3 flex flex-wrap gap-2">
@@ -1187,48 +1636,8 @@ export default function LabPanel({
                 ) : null}
               </div>
             </div>
-          </div>
+          ) : null}
 
-          <div className="rounded-lg border border-sky-300/20 bg-sky-400/10 p-4">
-            <div className="text-xs uppercase tracking-wide text-sky-100">Default flow</div>
-            <p className="mt-2 text-sm text-slate-100">
-              Start with the risk narrative summary below, then confirm the filing signal with the core methods and agreement,
-              then open outline compare for the deeper structural audit.
-            </p>
-            <p className="mt-3 text-xs text-slate-200">
-              Advanced controls stay available for campaign overrides, detector selection, utilities, and anchor navigation.
-            </p>
-            <Link
-              className="mt-3 inline-flex text-xs text-sky-100 underline decoration-sky-300/60 underline-offset-2 hover:text-sky-50"
-              to="/methodology"
-            >
-              Full methodology
-            </Link>
-          </div>
-        </div>
-      </div>
-
-      {selectedCase && (selectedLlmCampaignA || selectedLlmCampaignB) ? (
-
-        <RiskNarrativeSummary
-          ticker={ticker}
-          yearFrom={selectedCase.year_from}
-          yearTo={selectedCase.year_to}
-          modelALabel={selectedCampaignLabelA}
-          modelBLabel={selectedCampaignLabelB}
-          modelARuntime={selectedLlmCampaignA ? outlineOutputs[selectedLlmCampaignA] ?? null : null}
-          modelBRuntime={selectedLlmCampaignB ? outlineOutputs[selectedLlmCampaignB] ?? null : null}
-          modelAStructured={selectedLlmCampaignA ? structuredOutlineOutputs[selectedLlmCampaignA] ?? null : null}
-          modelBStructured={selectedLlmCampaignB ? structuredOutlineOutputs[selectedLlmCampaignB] ?? null : null}
-          analysisMode={analysisMode}
-        />
-      ) : null}
-
-      <details className="rounded-[1.2rem] border border-white/10 bg-white/5 p-4">
-        <summary className="cursor-pointer list-none text-sm font-semibold text-slate-100">
-          Advanced controls
-        </summary>
-        <div className="mt-4 space-y-4 text-sm text-slate-200">
           {hasMultipleCases ? (
             <div className="rounded-lg border border-white/10 bg-slate-950/35 p-4">
               <div className="text-xs uppercase tracking-wide text-slate-400">Case override</div>
@@ -1366,6 +1775,11 @@ export default function LabPanel({
             <div className="rounded-lg border border-white/10 bg-slate-950/35 p-4">
               <div className="text-xs uppercase tracking-wide text-slate-400">Jump to section</div>
               <div className="mt-3 flex flex-wrap items-center gap-3 text-xs text-slate-300">
+                {isPilotMatrixSelectedCase ? (
+                  <a className="underline decoration-white/30 underline-offset-2 hover:text-slate-100" href="#lab-pilot-matrix">
+                    Pilot matrix
+                  </a>
+                ) : null}
                 <a className="underline decoration-white/30 underline-offset-2 hover:text-slate-100" href="#lab-risk-narrative">
                   Risk narrative
                 </a>
@@ -1558,14 +1972,6 @@ export default function LabPanel({
     </section>
   )
 }
-
-
-
-
-
-
-
-
 
 
 

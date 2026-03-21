@@ -7,6 +7,7 @@
   Cross-Origin-Opener-Policy: same-origin
   Cross-Origin-Resource-Policy: same-origin
   X-Permitted-Cross-Domain-Policies: none
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
 
 # Lab JSON data (canonical runtime): long cache with revalidation
 /data/sec_narrative_drift_lab/*.json

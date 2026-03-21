@@ -1,10 +1,11 @@
-﻿import { useEffect, useMemo } from "react"
+import { useEffect, useMemo } from "react"
 import { Link, useParams, useSearchParams } from "react-router-dom"
 import LabPanel from "../components/LabPanel"
 import { listLabShowcaseTickers } from "../lib/labData"
 
 const SHOWCASE_COMPANY_NAMES: Record<string, string> = {
   NVDA: "NVIDIA",
+  LLY: "Eli Lilly and Company",
   KO: "Coca-Cola",
   WM: "Waste Management",
   GE: "General Electric",
@@ -12,6 +13,7 @@ const SHOWCASE_COMPANY_NAMES: Record<string, string> = {
 
 const SHOWCASE_COMPANY_SECTORS: Record<string, string> = {
   NVDA: "Semiconductors / AI Infrastructure",
+  LLY: "Pharmaceuticals / Cardiometabolic and Obesity",
   KO: "Consumer Staples / Beverages",
   WM: "Industrials / Waste Services",
   GE: "Industrials / Aerospace & Energy",
@@ -19,16 +21,36 @@ const SHOWCASE_COMPANY_SECTORS: Record<string, string> = {
 
 const SHOWCASE_COMPANY_CONTEXT: Record<string, string> = {
   NVDA: "As the dominant GPU supplier for AI training, NVIDIA's risk disclosures track the rapid evolution of export controls, supply concentration, and demand cyclicality in the AI hardware market.",
+  LLY: "As Eli Lilly's obesity and cardiometabolic franchises become a larger share of the business, its risk disclosures now reveal whether pricing access, reimbursement design, and commercialization channels are moving closer to the center of near-term execution risk.",
   KO: "As a global beverage company operating in 200+ markets, Coca-Cola's risk disclosures track currency exposure, sugar-tax and labeling regulation, supply chain resilience, and product-mix shifts across beverage categories.",
   WM: "As the largest US waste hauler, Waste Management's risk disclosures track environmental regulation, landfill capacity, and the economics of recycling and sustainability mandates.",
   GE: "Following its three-way split, GE Aerospace's risk disclosures track defense procurement cycles, supply chain constraints, and the transition to next-generation engine programs.",
 }
 
 const SHOWCASE_COMPANY_THESIS: Record<string, string> = {
-  NVDA: "Use this page to see whether export controls and supply concentration are becoming more central, or simply being restated with different wording.",
+  NVDA: "Start with the filing shift and why it matters, then compare how the four lanes surface NVDA's export-control and supply-execution story and whether that winner holds up under lower effort before moving into the audit layers below.",
+  LLY: "Start with the filing shift and why it matters, then compare how the three pilot lanes surface Lilly's pricing-access, concentration, and policy-channel story and the lower-effort robustness read before stopping at the matrix proof boundary for this issuer.",
   KO: "Use this page to separate true regulatory and product-mix shifts from the defensive-company boilerplate that appears stable year after year.",
   WM: "Use this page to track when operational execution and sustainability economics become more important than generic environmental or policy language.",
   GE: "Use this page to see whether GE Aerospace's filing is emphasizing services execution and installed-base risk more than broader macro or trade-policy framing.",
+}
+
+const COMPANY_VISIBLE_LANES: Record<string, string> = {
+  NVDA: "02 hero, 03 main comparator, 01 secondary comparator, 00 recovered control",
+  LLY: "02 hero, 03 main comparator, 00 recovered control",
+}
+
+const COMPANY_DEFAULT_READ: Record<string, string[]> = {
+  NVDA: [
+    "1. Start with what changed in NVDA's filing and why it matters.",
+    "2. Compare how the four lanes emphasize the same filing differently, then check the effort-robustness block.",
+    "3. Use the narrative, deterministic methods, agreement, and outline compare below for the deeper audit.",
+  ],
+  LLY: [
+    "1. Start with why this case matters and what changed in Lilly's filing.",
+    "2. Compare how 02, 03, and recovered B0 tell the same fixed filing pair differently, then read the effort-robustness block.",
+    "3. Use the matrix caveat and auditability notes as the stopping boundary; legacy lower audit surfaces are not yet integrated for this issuer.",
+  ],
 }
 
 type Pair = { from: number; to: number }
@@ -95,6 +117,12 @@ export default function Company() {
   }, [searchParams, setSearchParams])
 
   const displayName = SHOWCASE_COMPANY_NAMES[ticker] ?? ticker
+  const defaultReadItems =
+    COMPANY_DEFAULT_READ[ticker] ?? [
+      "1. Start with the risk narrative summary and paired filing evidence.",
+      "2. Confirm the signal with the core deterministic methods and agreement.",
+      "3. Open outline compare when you want the deeper structural audit.",
+    ]
 
   const handleSelectedPairChange = (pair: Pair) => {
     const next = mergeSearchParams(searchParams, {
@@ -170,13 +198,13 @@ export default function Company() {
               </div>
               <div className="text-xs uppercase tracking-[0.24em] text-slate-400">Visible compare lanes</div>
               <div className="rounded-xl border border-white/10 bg-white/5 p-3 text-sm text-slate-200">
-                Codex real and ChatGPT 5.4 real
+                {COMPANY_VISIBLE_LANES[ticker] ?? "Codex real and ChatGPT 5.4 real"}
               </div>
               <div className="text-xs uppercase tracking-[0.24em] text-slate-400">Default read</div>
               <ol className="space-y-2 text-sm text-slate-200">
-                <li>1. Start with the risk narrative summary and paired filing evidence.</li>
-                <li>2. Confirm the signal with the core deterministic methods and agreement.</li>
-                <li>3. Open outline compare when you want the deeper structural audit.</li>
+                {defaultReadItems.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
               </ol>
               <div className="flex flex-wrap gap-2 pt-1">
                 <Link

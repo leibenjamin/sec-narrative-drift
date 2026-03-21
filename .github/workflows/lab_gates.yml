@@ -41,7 +41,7 @@ jobs:
 
       - name: Scan for forbidden HTML injection APIs
         run: |
-          PATTERN="dangerouslySetInnerHTML\\s*=|\\binnerHTML\\s*=|insertAdjacentHTML\\s*\\("
+          PATTERN="dangerouslySetInnerHTML\\s*=|\\binnerHTML\\s*=|insertAdjacentHTML\\s*\\(|\\bouterHTML\\s*=|document\\.write\\s*\\(|\\beval\\s*\\("
           if command -v rg >/dev/null 2>&1; then
             MATCHES="$(rg -n "$PATTERN" src --glob '!**/*.md' || true)"
           else
@@ -50,6 +50,20 @@ jobs:
           if [ -n "$MATCHES" ]; then
             echo "$MATCHES"
             echo "Forbidden HTML injection API usage found in src/." >&2
+            exit 1
+          fi
+
+      - name: Scan for unsafe URI schemes in source
+        run: |
+          PATTERN='href\s*=\s*[{"`'"'"']?\s*[`"'"'"']?\s*javascript\s*:|href\s*=\s*[{"`'"'"']?\s*[`"'"'"']?\s*data\s*:\s*text/html'
+          if command -v rg >/dev/null 2>&1; then
+            MATCHES="$(rg -ni "$PATTERN" src --glob '!**/*.md' || true)"
+          else
+            MATCHES="$(grep -R -niE "$PATTERN" src || true)"
+          fi
+          if [ -n "$MATCHES" ]; then
+            echo "$MATCHES"
+            echo "Unsafe URI scheme in href found in src/." >&2
             exit 1
           fi
 
