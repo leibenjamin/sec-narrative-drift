@@ -114,6 +114,8 @@ wave4d15_nvda_story_layer_*/
 wave4d15_nvda_story_layer_*.zip
 wave4d2_second_company_desktop_packet_*/
 wave4d2_second_company_desktop_packet_*.zip
+wave*/
+wave*.zip
 
 # Local fixture experiments (keep untracked)
 scripts/sample_fixtures/cost-20190901.htm
@@ -129,6 +131,7 @@ __pycache__/
 
 # Claude Code session files
 .claude/
+.codex/
 
 # Windows artifact
 nul
@@ -173,6 +176,7 @@ chatgpt_review_pack_lab_health_20260216_154326.zip
 
 # Local scratch files
 scripts/_tmp_*.txt
+scripts/_tmp_test_runs/
 
 # Local temporary run inputs
 tmp_*
