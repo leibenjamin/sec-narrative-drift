@@ -1,42 +1,47 @@
-﻿# SEC Narrative Drift Lab
+# Document Protocol Lab
 
-Investor-first, evidence-backed comparison of how SEC 10-K Item 1A risk disclosures change from one fiscal year to the next.
+Document Protocol Lab currently ships a bounded SEC Item 1A pilot across three fixtures: NVDA, LLY, and KO.
 
-Live: https://benlei.org/sec-narrative-drift/
+Document Protocol Lab is a bounded, evidence-first lab for testing how document-comparison workflows speak, prove, and stop.
 
-## What this app does
-- Covers the current Core4 scope only: `NVDA`, `KO`, `WM`, and `GE`.
-- Opens one active FY2024 to FY2025 Item 1A case per company.
-- Starts with a compare-first risk narrative summary, then confirms the filing signal with deterministic methods and agreement.
-- Adds precomputed outline-compare sidecars from Codex and ChatGPT, shown side by side with explicit evidence and provenance.
-- Keeps missing artifacts explicit instead of silently falling back.
+Live pilot: https://benlei.org/sec-narrative-drift/
 
-## Why this matters
-Item 1A language often changes before a company has fully translated the shift into cleaner management messaging elsewhere. The useful question is not just whether the filing changed, but whether the company is emphasizing a more important operating, regulatory, or commercial risk channel than it did a year earlier.
+## What currently ships
+- The public app is a compact SEC Item 1A pilot inside Document Protocol Lab.
+- The visible fixture system is intentionally fixed to `NVDA`, `LLY`, and `KO`.
+- `NVDA` is the clearest first signal, `LLY` is the policy-heavy bounded contrast case, and `KO` is the restraint / low-drift honesty check.
+- Company pages are intended to land the filing answer first, explain why the fixture matters to the protocol second, and keep deeper audit surfaces third.
+- `Fresh vs reused` remains a bounded secondary lens rather than the default first read.
+- Missing artifacts stay explicit instead of silently falling back.
 
-This project is built to help investors, competitors, analysts, and technical reviewers answer that question quickly, then audit the evidence in detail.
+## Current pilot framing
+- Current pilot/workstream name: `SEC Narrative Drift`.
+- Mounted public entry remains `https://benlei.org/sec-narrative-drift/`.
+- The current pilot is deliberately narrow; it is not a broad issuer gallery, benchmark suite, or whole-filing research platform.
+- `lab_cases_v1.json` remains the lower runtime registry, not the public case list.
 
-## Product guarantees
-- Runtime reads static JSON only from `public/data/sec_narrative_drift_lab/`.
+## Start with
+- `NVDA` for the strongest first filing shift.
+- `LLY` for policy, pricing, and industry-geometry contrast.
+- `KO` for the restraint check that shows the workflow staying honest on a mostly stable filing.
+
+## Product discipline
+- Static JSON only at runtime.
 - No runtime ML or LLM calls.
 - SEC text is treated as untrusted and rendered as plain text only.
-- Public JSON schemas remain fixed unless explicitly unlocked.
-- Model outputs are offline sidecars with deterministic validation and projection.
+- Top-level public positioning is defined by `current_case_mix_v2.json`, `start_here_v1.json`, and `demo_share_v3.json`.
+- Lower runtime coverage can remain broader than the public fixture set without changing the visible product claim.
 
-## Current public scope
-- One active FY2024 to FY2025 Item 1A case per company.
-- Active compare-visible campaigns:
-  - `openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27`
-  - `openai_chatgpt54ext_agent_fullsec_real_2026-03-06`
-- Hidden preregistered workspace-aware lane:
-  - `anthropic_claudeopus46_claudecode_fullsec_real_2026-03-09`
+## Current runtime notes
+- `NVDA` and `KO` retain lower runtime-registry integration.
+- `LLY` is a bounded visible case and does not yet ship the full lower-audit runtime stack in `lab_cases_v1.json`.
+- Background lower-runtime cases can remain present locally without changing the public fixture claim.
 
 ## How to read one case
-1. Start with the risk narrative summary and the paired prior-year versus current-year evidence.
-2. Check the two core deterministic methods to see whether the filing language really moved.
-3. Use the agreement panel to see whether the deterministic methods reinforce the same story.
-4. Open outline compare to inspect mechanisms, investor relevance, limits, and side-by-side framing.
-5. Treat Insight Lens as optional when it is available, not as part of the default flow.
+1. Start with the filing answer and paired evidence.
+2. Read the protocol layer to see why that fixture is in the lab and what the comparison geometry adds.
+3. Use deterministic methods and the deeper audit only when you want more structure, mechanisms, and limits.
+4. Treat `Fresh vs reused` as a bounded secondary lens, not the default first read.
 
 ## Local development
 ```bash

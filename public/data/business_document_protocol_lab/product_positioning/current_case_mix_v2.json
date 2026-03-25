@@ -1,0 +1,39 @@
+{
+  "artifact_schema_id": "current_case_mix_v2",
+  "artifact_id": "current_case_mix_v2",
+  "visible_pilots": [
+    {
+      "ticker": "NVDA",
+      "company_name": "NVIDIA",
+      "year_from": 2024,
+      "year_to": 2025,
+      "role": "vivid/high-signal",
+      "role_label": "Vivid / high-signal",
+      "why_case_exists": "The clearest adjacent-year risk-story shift in the current product, spanning export controls, supply concentration, and AI demand concentration.",
+      "best_for": "The clearest first signal"
+    },
+    {
+      "ticker": "LLY",
+      "company_name": "Eli Lilly and Company",
+      "year_from": 2024,
+      "year_to": 2025,
+      "role": "vivid/high-signal",
+      "role_label": "Vivid / policy-heavy",
+      "why_case_exists": "A vivid case with different pricing, reimbursement, policy, and concentration pressure, so the product does not read like a semiconductor-only story.",
+      "best_for": "Policy, pricing, and industry contrast"
+    },
+    {
+      "ticker": "KO",
+      "company_name": "Coca-Cola",
+      "year_from": 2024,
+      "year_to": 2025,
+      "role": "skeptic/low-drift restraint case",
+      "role_label": "Restraint / low-drift",
+      "why_case_exists": "The restraint case: mostly stable, selectively sharpened, and useful because it tests whether the workflow stays honest without dramatic filing churn.",
+      "best_for": "A low-drift restraint check"
+    }
+  ],
+  "product_statement": "The current live product is a bounded Document Protocol Lab pilot for three SEC Item 1A fixtures.",
+  "anti_hype_statement": "Document Protocol Lab currently ships this deliberately compact three-case pilot, not a broad issuer catalog or research platform.",
+  "why_this_mix_matters": "NVDA gives the clearest first filing answer, LLY tests the protocol in a bounded policy-heavy setting, and KO checks whether the same workflow stays honest on a mostly stable filing."
+}
