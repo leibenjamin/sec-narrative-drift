@@ -7,7 +7,7 @@ type NavItem = {
 
 const NAV_ITEMS: NavItem[] = [
   { to: "/", label: "Home" },
-  { to: "/companies", label: "Companies" },
+  { to: "/companies", label: "Cases" },
   { to: "/methodology", label: "Methodology" },
 ]
 
@@ -31,9 +31,11 @@ export default function AppHeader() {
               to="/"
               className="text-xs uppercase tracking-[0.24em] text-slate-200 hover:text-slate-50"
             >
-              SEC Narrative Drift Lab
+              Document Protocol Lab
             </Link>
-            <div className="mt-1 text-[11px] text-slate-400">Investor-first, evidence-backed filing comparison</div>
+            <div className="mt-1 text-[11px] text-slate-400">
+              Current live pilot: bounded SEC Item 1A comparison
+            </div>
           </div>
           <span className="rounded bg-amber-600/80 px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wide text-amber-100">
             Beta
@@ -62,4 +64,3 @@ export default function AppHeader() {
     </header>
   )
 }
-
