@@ -33,8 +33,10 @@ import {
   formatProtocolLabMatrixLoadDebug,
   loadEffortRobustnessCaseForTicker,
   loadEffortRobustnessSummary,
+  loadNoveltyLedgerCaseForTicker,
   loadPilotMatrixBundleForCase,
   loadPilotMatrixBundleForTicker,
+  loadSkepticCaseForTicker,
 } from "../lib/protocolLabMatrixData.ts"
 import { formatPilotStatusLabel } from "../lib/protocolLabMatrixPresentation.ts"
 import type {
@@ -50,7 +52,9 @@ import type {
 } from "../lib/labTypes"
 import type {
   ProtocolLabEffortRobustnessBundle,
+  ProtocolLabNoveltyLedgerCase,
   ProtocolLabPilotMatrixBundle,
+  ProtocolLabSkepticCaseCanonizedMatrix,
 } from "../lib/protocolLabMatrixTypes.ts"
 
 const DETECTOR_CATALOG = [
@@ -333,6 +337,16 @@ export default function LabPanel({
   const [isLoadingEffortRobustness, setIsLoadingEffortRobustness] = useState(false)
   const [effortRobustnessError, setEffortRobustnessError] = useState<string | null>(null)
   const [effortRobustnessDebugText, setEffortRobustnessDebugText] = useState<string | null>(null)
+  const [noveltyLedgerArtifact, setNoveltyLedgerArtifact] =
+    useState<ProtocolLabNoveltyLedgerCase | null>(null)
+  const [isLoadingNoveltyLedger, setIsLoadingNoveltyLedger] = useState(false)
+  const [noveltyLedgerError, setNoveltyLedgerError] = useState<string | null>(null)
+  const [noveltyLedgerDebugText, setNoveltyLedgerDebugText] = useState<string | null>(null)
+  const [skepticCaseArtifact, setSkepticCaseArtifact] =
+    useState<ProtocolLabSkepticCaseCanonizedMatrix | null>(null)
+  const [isLoadingSkepticCase, setIsLoadingSkepticCase] = useState(false)
+  const [skepticCaseError, setSkepticCaseError] = useState<string | null>(null)
+  const [skepticCaseDebugText, setSkepticCaseDebugText] = useState<string | null>(null)
 
   // Track previous values for render-time state adjustments (React recommended pattern)
   const [prevTicker, setPrevTicker] = useState(ticker)
@@ -359,6 +373,14 @@ export default function LabPanel({
     setIsLoadingEffortRobustness(false)
     setEffortRobustnessError(null)
     setEffortRobustnessDebugText(null)
+    setNoveltyLedgerArtifact(null)
+    setIsLoadingNoveltyLedger(false)
+    setNoveltyLedgerError(null)
+    setNoveltyLedgerDebugText(null)
+    setSkepticCaseArtifact(null)
+    setIsLoadingSkepticCase(false)
+    setSkepticCaseError(null)
+    setSkepticCaseDebugText(null)
   }
 
   useEffect(() => {
@@ -472,7 +494,7 @@ export default function LabPanel({
   const pilotMatrixTarget = useMemo<PilotMatrixTarget | null>(() => {
     if (
       selectedCase &&
-      selectedCase.ticker === "NVDA" &&
+      (selectedCase.ticker === "NVDA" || selectedCase.ticker === "KO") &&
       selectedCase.year_from === 2024 &&
       selectedCase.year_to === 2025
     ) {
@@ -515,6 +537,14 @@ export default function LabPanel({
       setIsLoadingEffortRobustness(false)
       setEffortRobustnessError(null)
       setEffortRobustnessDebugText(null)
+      setNoveltyLedgerArtifact(null)
+      setIsLoadingNoveltyLedger(false)
+      setNoveltyLedgerError(null)
+      setNoveltyLedgerDebugText(null)
+      setSkepticCaseArtifact(null)
+      setIsLoadingSkepticCase(false)
+      setSkepticCaseError(null)
+      setSkepticCaseDebugText(null)
     } else {
       setIsLoadingPilotMatrix(true)
       setPilotMatrixError(null)
@@ -522,6 +552,12 @@ export default function LabPanel({
       setIsLoadingEffortRobustness(true)
       setEffortRobustnessError(null)
       setEffortRobustnessDebugText(null)
+      setIsLoadingNoveltyLedger(true)
+      setNoveltyLedgerError(null)
+      setNoveltyLedgerDebugText(null)
+      setIsLoadingSkepticCase(true)
+      setSkepticCaseError(null)
+      setSkepticCaseDebugText(null)
     }
   }
 
@@ -551,7 +587,7 @@ export default function LabPanel({
         if (cancelled) return
         if (!bundle) {
           setPilotMatrixBundle(null)
-          setPilotMatrixError("Integrated pilot matrix registry entry is not available for this view.")
+          setPilotMatrixError("Integrated case-comparison registry entry is not available for this view.")
           setPilotMatrixDebugText(null)
           return
         }
@@ -563,12 +599,96 @@ export default function LabPanel({
         if (cancelled) return
         setPilotMatrixBundle(null)
         setPilotMatrixError(
-          error instanceof Error ? error.message : "Failed to load integrated pilot matrix."
+          error instanceof Error ? error.message : "Failed to load integrated case comparison."
         )
         setPilotMatrixDebugText(formatProtocolLabMatrixLoadDebug(error))
       })
       .finally(() => {
         if (!cancelled) setIsLoadingPilotMatrix(false)
+      })
+
+    return () => {
+      cancelled = true
+      controller.abort()
+    }
+  }, [pilotMatrixTarget])
+
+  useEffect(() => {
+    if (!pilotMatrixTarget) {
+      return
+    }
+
+    let cancelled = false
+    const controller = new AbortController()
+
+    loadSkepticCaseForTicker({
+      ticker: pilotMatrixTarget.ticker,
+      signal: controller.signal,
+    })
+      .then((artifact) => {
+        if (cancelled) return
+        if (!artifact) {
+          setSkepticCaseArtifact(null)
+          setSkepticCaseError("Restraint-case artifact is not available for this bounded case view.")
+          setSkepticCaseDebugText(null)
+          return
+        }
+        setSkepticCaseArtifact(artifact)
+        setSkepticCaseError(null)
+        setSkepticCaseDebugText(null)
+      })
+      .catch((error) => {
+        if (cancelled) return
+        setSkepticCaseArtifact(null)
+        setSkepticCaseError(
+          error instanceof Error ? error.message : "Failed to load restraint-case artifact."
+        )
+        setSkepticCaseDebugText(formatProtocolLabMatrixLoadDebug(error))
+      })
+      .finally(() => {
+        if (!cancelled) setIsLoadingSkepticCase(false)
+      })
+
+    return () => {
+      cancelled = true
+      controller.abort()
+    }
+  }, [pilotMatrixTarget])
+
+  useEffect(() => {
+    if (!pilotMatrixTarget) {
+      return
+    }
+
+    let cancelled = false
+    const controller = new AbortController()
+
+    loadNoveltyLedgerCaseForTicker({
+      ticker: pilotMatrixTarget.ticker,
+      signal: controller.signal,
+    })
+      .then((artifact) => {
+        if (cancelled) return
+        if (!artifact) {
+          setNoveltyLedgerArtifact(null)
+          setNoveltyLedgerError("Fresh-vs-reused artifact is not available for this bounded case view.")
+          setNoveltyLedgerDebugText(null)
+          return
+        }
+        setNoveltyLedgerArtifact(artifact)
+        setNoveltyLedgerError(null)
+        setNoveltyLedgerDebugText(null)
+      })
+      .catch((error) => {
+        if (cancelled) return
+        setNoveltyLedgerArtifact(null)
+        setNoveltyLedgerError(
+          error instanceof Error ? error.message : "Failed to load novelty ledger."
+        )
+        setNoveltyLedgerDebugText(formatProtocolLabMatrixLoadDebug(error))
+      })
+      .finally(() => {
+        if (!cancelled) setIsLoadingNoveltyLedger(false)
       })
 
     return () => {
@@ -606,7 +726,7 @@ export default function LabPanel({
 
         if (!caseResult.value) {
           setEffortRobustnessBundle(null)
-          setEffortRobustnessError("Effort robustness artifact is not available for this pilot slice.")
+          setEffortRobustnessError("Effort-robustness artifact is not available for this bounded case view.")
           setEffortRobustnessDebugText(null)
           return
         }
@@ -1204,6 +1324,16 @@ export default function LabPanel({
   const isDeepMode = analysisMode === "deep"
   const modeLabel = isDeepMode ? "Deep review" : "Quick read"
   const hasMultipleCases = cases.length > 1
+  const isSkepticPilotSelectedCase = isPilotMatrixSelectedCase && ticker === "KO"
+  const pilotMatrixSurfaceLabel = isSkepticPilotSelectedCase
+    ? "Primary read / restraint note / Fresh vs reused"
+    : "Primary read / Comparison read / Secondary comparison / Control read"
+  const pilotFirstReadText = isSkepticPilotSelectedCase
+    ? "Below the filing answer, this KO case explains why restraint matters, how the low-drift check should be read, and where Fresh vs reused adds bounded context without replacing the main answer."
+    : "Below the filing answer, this case explains why the fixture is in the lab, how the comparison reads differ, and where Fresh vs reused or lower-effort checks add context without replacing the main answer."
+  const pilotDefaultFlowText = isSkepticPilotSelectedCase
+    ? "Use the protocol layer next, then open advanced controls and lower audit only if you want to pressure-test the low-drift read in more detail."
+    : "Use the protocol layer next, then open advanced controls and lower audit only if you want to inspect methods, disagreement, or structure more closely."
 
   const handleApplyPreset = (
     presetDetectorIds: string[],
@@ -1341,47 +1471,45 @@ export default function LabPanel({
                     <div className="mt-1 text-sm font-semibold text-slate-100">{pilotPairLabel}</div>
                   </div>
                   <div className="rounded-lg border border-white/10 bg-slate-900/50 p-3">
-                    <div className="text-xs uppercase tracking-wide text-slate-400">Pilot lanes</div>
+                    <div className="text-xs uppercase tracking-wide text-slate-400">Available reads</div>
                     <div className="mt-1 text-sm font-semibold text-slate-100">
-                      02 hero / 03 main comparator / 00 recovered control
+                      Primary read / Comparison read / Control read
                     </div>
                   </div>
                   <div className="rounded-lg border border-white/10 bg-slate-900/50 p-3">
-                    <div className="text-xs uppercase tracking-wide text-slate-400">Pilot status</div>
+                    <div className="text-xs uppercase tracking-wide text-slate-400">Scope</div>
                     <div className="mt-1 text-sm font-semibold text-slate-100">{pilotStatusLabel}</div>
                   </div>
                   <div className="rounded-lg border border-white/10 bg-slate-900/50 p-3">
-                    <div className="text-xs uppercase tracking-wide text-slate-400">Lower audit</div>
+                    <div className="text-xs uppercase tracking-wide text-slate-400">Further audit</div>
                     <div className="mt-1 text-sm font-semibold text-slate-100">Not yet integrated</div>
                   </div>
                 </div>
 
                 <div className="rounded-lg border border-white/10 bg-slate-950/35 p-4">
-                  <div className="text-xs uppercase tracking-wide text-slate-400">Pilot-first read</div>
+                  <div className="text-xs uppercase tracking-wide text-slate-400">Filing answer</div>
                   <p className="mt-2 text-sm text-slate-100">
-                    This issuer currently ships as an integrated pilot slice only. Start with the
-                    filing-shift story, lane comparison, and effort-robustness read below, then
-                    stop at the matrix proof boundary instead of inferring missing lower audit
-                    surfaces.
+                    LLY&apos;s visible case centers on pricing access, reimbursement design,
+                    concentration pressure, and policy geometry. Read the filing-shift story and
+                    bounded comparison reads below first, then treat the stopping point as part of
+                    the protocol&apos;s honesty rather than a missing fake full audit.
                   </p>
                   <p className="mt-3 text-xs text-slate-400">
-                    The legacy risk narrative, deterministic methods, agreement, and outline
-                    compare stack are intentionally deferred for LLY FY2024 to FY2025 in this wave.
+                    This issuer currently ships as a bounded visible case inside Document Protocol
+                    Lab&apos;s SEC Item 1A pilot.
                   </p>
                 </div>
               </div>
 
               <div className="rounded-lg border border-sky-300/20 bg-sky-400/10 p-4">
-                <div className="text-xs uppercase tracking-wide text-sky-100">Default flow</div>
+                <div className="text-xs uppercase tracking-wide text-sky-100">Boundary note</div>
                 <p className="mt-2 text-sm text-slate-100">
-                  Start with why this case matters, what changed in the filing, how the lanes
-                  differ, and the effort-robustness read. Then inspect the lane cards, details,
-                  and matrix caveat. Lower audit surfaces are explicitly unavailable for this issuer
-                  in this wave.
+                  LLY intentionally ships as a bounded visible case. The public surface shows the
+                  filing answer, protocol meaning, and Fresh vs reused honestly without pretending
+                  the deeper lower audit is broader than it is today.
                 </p>
                 <p className="mt-3 text-xs text-slate-200">
-                  This keeps the second pilot honest without synthesizing a fake full lab case or
-                  promoting LLY into the legacy runtime.
+                  That boundary is part of the product claim: scope honesty is visible, not hidden.
                 </p>
                 <Link
                   className="mt-3 inline-flex text-xs text-sky-100 underline decoration-sky-300/60 underline-offset-2 hover:text-sky-50"
@@ -1402,6 +1530,14 @@ export default function LabPanel({
             isLoadingEffortRobustness={isLoadingEffortRobustness}
             effortRobustnessError={effortRobustnessError}
             effortRobustnessDebugText={effortRobustnessDebugText}
+            noveltyLedger={noveltyLedgerArtifact}
+            isLoadingNoveltyLedger={isLoadingNoveltyLedger}
+            noveltyLedgerError={noveltyLedgerError}
+            noveltyLedgerDebugText={noveltyLedgerDebugText}
+            skepticCase={skepticCaseArtifact}
+            isLoadingSkepticCase={isLoadingSkepticCase}
+            skepticCaseError={skepticCaseError}
+            skepticCaseDebugText={skepticCaseDebugText}
           />
 
           <section
@@ -1409,17 +1545,16 @@ export default function LabPanel({
             className="rounded-[1.25rem] border border-amber-300/20 bg-amber-400/10 p-4 text-sm text-slate-200"
           >
             <div className="text-xs uppercase tracking-wide text-amber-100">
-              Lower audit surfaces not yet integrated
+              Deeper audit intentionally deferred
             </div>
             <p className="mt-2 text-sm text-slate-100">
-              LLY currently ships as a pilot-matrix-only slice for FY2024 to FY2025 Item 1A. The
-              legacy risk narrative summary, deterministic method cards, agreement matrix, and
-              outline compare surfaces are intentionally deferred until a full lower-audit lab stack
-              exists for this issuer.
+              LLY stays public as a bounded visible case for FY2024 to FY2025 Item 1A. The
+              protocol layer and novelty read are live; the full lower-audit runtime stack remains
+              intentionally deferred until a true runtime case exists for this issuer.
             </p>
             <p className="mt-3 text-xs text-slate-300">
-              This wave does not backfill <code>sec_narrative_drift_lab</code>, invent an 01 lane,
-              or add a broader multi-company matrix framework.
+              This keeps the visible policy-heavy case honest instead of filling the gap with a
+              broader claim than the runtime actually supports.
             </p>
           </section>
         </section>
@@ -1435,6 +1570,21 @@ export default function LabPanel({
 
   return (
     <section className="space-y-6">
+      {selectedCase && (selectedLlmCampaignA || selectedLlmCampaignB) ? (
+        <RiskNarrativeSummary
+          ticker={ticker}
+          yearFrom={selectedCase.year_from}
+          yearTo={selectedCase.year_to}
+          modelALabel={selectedCampaignLabelA}
+          modelBLabel={selectedCampaignLabelB}
+          modelARuntime={selectedLlmCampaignA ? outlineOutputs[selectedLlmCampaignA] ?? null : null}
+          modelBRuntime={selectedLlmCampaignB ? outlineOutputs[selectedLlmCampaignB] ?? null : null}
+          modelAStructured={selectedLlmCampaignA ? structuredOutlineOutputs[selectedLlmCampaignA] ?? null : null}
+          modelBStructured={selectedLlmCampaignB ? structuredOutlineOutputs[selectedLlmCampaignB] ?? null : null}
+          analysisMode={analysisMode}
+        />
+      ) : null}
+
       <div className="rounded-[1.35rem] border border-white/10 bg-white/5 p-4 text-sm text-slate-200 shadow-[0_16px_40px_rgba(2,6,23,0.18)]">
         <div className="grid gap-4 lg:grid-cols-[1.35fr,0.65fr]">
           <div className="space-y-4">
@@ -1453,11 +1603,11 @@ export default function LabPanel({
               </div>
               <div className="rounded-lg border border-white/10 bg-slate-900/50 p-3">
                 <div className="text-xs uppercase tracking-wide text-slate-400">
-                  {isPilotMatrixSelectedCase ? "Pilot matrix" : "Reading mode"}
+                  {isPilotMatrixSelectedCase ? "Case comparison" : "Reading mode"}
                 </div>
                 <div className="mt-1 text-sm font-semibold text-slate-100">
                   {isPilotMatrixSelectedCase
-                    ? "02 hero / 03 compare / 01 secondary / 00 recovered control"
+                    ? pilotMatrixSurfaceLabel
                     : modeLabel}
                 </div>
               </div>
@@ -1471,12 +1621,14 @@ export default function LabPanel({
 
             {isPilotMatrixSelectedCase ? (
               <div className="rounded-lg border border-white/10 bg-slate-950/35 p-4">
-                <div className="text-xs uppercase tracking-wide text-slate-400">Pilot-first read</div>
+                <div className="text-xs uppercase tracking-wide text-slate-400">Protocol meaning</div>
                 <p className="mt-2 text-sm text-slate-100">
-                  This NVDA case opens with the filing-shift story, lane comparison, and effort-robustness read below. Cleaning lens and reading mode controls stay available inside Advanced controls so the audit surfaces do not lead the page.
+                  {pilotFirstReadText}
                 </p>
                 <p className="mt-3 text-xs text-slate-400">
-                  The existing risk narrative, deterministic methods, agreement, and outline compare surfaces remain below the matrix for follow-through and audit.
+                  The filing answer above should be the first voice on the page. The matrix and the
+                  lower audit stay here to explain why the case matters to the protocol and how much
+                  more inspection it deserves.
                 </p>
               </div>
             ) : (
@@ -1533,11 +1685,11 @@ export default function LabPanel({
           </div>
 
           <div className="rounded-lg border border-sky-300/20 bg-sky-400/10 p-4">
-            <div className="text-xs uppercase tracking-wide text-sky-100">Default flow</div>
+            <div className="text-xs uppercase tracking-wide text-sky-100">Audit route</div>
             <p className="mt-2 text-sm text-slate-100">
               {isPilotMatrixSelectedCase
-                ? "Start with the story layer below: why this case matters, what changed in the filing, how the lanes differ, and whether the same winner survives lower effort. Then move into the risk narrative summary, confirm the signal with the core methods and agreement, and use outline compare for the deeper structural audit."
-                : "Start with the risk narrative summary below, then confirm the filing signal with the core methods and agreement, then open outline compare for the deeper structural audit."}
+                ? pilotDefaultFlowText
+                : "Use advanced controls and lower audit only when you want to inspect methods, disagreement, or structure more closely."}
             </p>
             <p className="mt-3 text-xs text-slate-200">
               {isPilotMatrixSelectedCase
@@ -1564,21 +1716,14 @@ export default function LabPanel({
           isLoadingEffortRobustness={isLoadingEffortRobustness}
           effortRobustnessError={effortRobustnessError}
           effortRobustnessDebugText={effortRobustnessDebugText}
-        />
-      ) : null}
-
-      {selectedCase && (selectedLlmCampaignA || selectedLlmCampaignB) ? (
-        <RiskNarrativeSummary
-          ticker={ticker}
-          yearFrom={selectedCase.year_from}
-          yearTo={selectedCase.year_to}
-          modelALabel={selectedCampaignLabelA}
-          modelBLabel={selectedCampaignLabelB}
-          modelARuntime={selectedLlmCampaignA ? outlineOutputs[selectedLlmCampaignA] ?? null : null}
-          modelBRuntime={selectedLlmCampaignB ? outlineOutputs[selectedLlmCampaignB] ?? null : null}
-          modelAStructured={selectedLlmCampaignA ? structuredOutlineOutputs[selectedLlmCampaignA] ?? null : null}
-          modelBStructured={selectedLlmCampaignB ? structuredOutlineOutputs[selectedLlmCampaignB] ?? null : null}
-          analysisMode={analysisMode}
+          noveltyLedger={noveltyLedgerArtifact}
+          isLoadingNoveltyLedger={isLoadingNoveltyLedger}
+          noveltyLedgerError={noveltyLedgerError}
+          noveltyLedgerDebugText={noveltyLedgerDebugText}
+          skepticCase={skepticCaseArtifact}
+          isLoadingSkepticCase={isLoadingSkepticCase}
+          skepticCaseError={skepticCaseError}
+          skepticCaseDebugText={skepticCaseDebugText}
         />
       ) : null}
 
@@ -1972,8 +2117,3 @@ export default function LabPanel({
     </section>
   )
 }
-
-
-
-
-

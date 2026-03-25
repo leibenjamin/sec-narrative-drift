@@ -1,0 +1,72 @@
+{
+  "artifact_schema_id": "pilot_matrix_cell_v1",
+  "cell_id": "03_p2_i2_tagged_protocol",
+  "matrix_id": "NVDA_2024_2025_10k_item1a__desktop_pilot_matrix_v1",
+  "fixture_id": "NVDA_2024_2025_10k_item1a",
+  "label": "P2 + i2 tagged protocol",
+  "short_label": "P2+i2",
+  "role": "main_comparator",
+  "lane_position": 2,
+  "protocol_input_identity": {
+    "protocol_id": "p2_tagged_input_contract_v1",
+    "protocol_label": "P2 tagged-input contract",
+    "input_pack_id": "i2_tagged_document_packet_v1",
+    "input_label": "i2 tagged document packet",
+    "display_text": "P2 tagged-input contract + i2 tagged document packet"
+  },
+  "headline": "FY2025 keeps NVDA's core Item 1A risk architecture but shifts the emphasis from FY2024's Hopper-era ramp and generic next-generation constraint language toward more explicit execution risk around scaling data center supply, annual product cadence and Blackwell transition, alongside broader AI export-control exposure.",
+  "summary": "The lead shift is operational: FY2024 framed demand as surging with Hopper supply improving and next-generation products expected to be supply-constrained, while FY2025 foregrounds growing supplier and contract-manufacturer complexity, a yearly Data Center solution cadence, and a concrete Blackwell-related gross-margin hit from low-yielding material.",
+  "card_takeaway": "Main comparator on the same tagged substrate, showing how protocol framing alone changes the first-read story.",
+  "why_this_lane_matters": "This is the main comparator because it holds i2 fixed and isolates the effect of changing the protocol from P1 to P2.",
+  "output_shape_info": {
+    "contract_mode": "canonical_protocol_json",
+    "display_text": "Canonical change brief plus evidence bundle",
+    "canonical_structured": true
+  },
+  "evidence_richness_tier": "high",
+  "evidence_count_total": 13,
+  "auditability_note": "High auditability on the same tagged substrate, but the protocol emphasis shifts which claims lead the narrative.",
+  "strengths": [
+    "Same tagged substrate as the primary read isolates protocol-only differences.",
+    "Keeps an evidence-addressable structured output shape."
+  ],
+  "limitations": [
+    "Less compelling than the primary read on this case because the sharper regulatory story is less foregrounded.",
+    "Protocol emphasis can change first-read usefulness even when the evidence base is the same."
+  ],
+  "evidence_preview": [
+    {
+      "evidence_id": "ev_01",
+      "year_label": "FY2024",
+      "paragraph_id": "nvda_2024_p068",
+      "quote_text": "Demand for our data center systems and products surged in fiscal year 2024. Entering fiscal year 2025, we are gathering customer demand indications across several product transitions. We have demand visibility for our new data center products ramping later in fiscal year 2025. We have increased our supply and capacity purchases with existing suppliers, added new vendors and entered into prepaid manufacturing and capacity agreements. These increased purchase volumes, the number of suppliers, and the integration of new vendors into our supply chain may create more complexity and execution risk. We may continue to enter into new supplier and capacity arrangements. Our purchase commitments and obligations for inventory and manufacturing capacity at the end of fiscal year 2024 were impacted by shortening lead times for certain components. Supply of Hopper architecture products is improving, and demand remains very strong. We expect our next-generation products to be supply-constrained based upon demand indications. We may incur inventory provisions or impairments if our inventory or supply or capacity commitments exceed demand for our products or demand declines.",
+      "short_note": "FY2024 demand/supply baseline centers on strong Hopper demand and next-generation supply constraint."
+    },
+    {
+      "evidence_id": "ev_02",
+      "year_label": "FY2025",
+      "paragraph_id": "nvda_2025_p073",
+      "quote_text": "We continue to increase our supply and capacity purchases with existing and new suppliers to support our demand projections and increasing complexity of our data center products. With these additions, we have also entered and may continue to enter into prepaid manufacturing and capacity agreements to supply both current and future products. The increased purchase volumes and integration of new suppliers and contract manufacturers into our supply chain creates more complexity in managing multiple suppliers with variations in production planning, execution and logistics. Our expanding product portfolio and varying component compatibility and quality may lead to increased inventory levels. We have incurred and may in the future incur inventory provisions or impairments if our inventory or supply or capacity commitments exceed demand for our products or demand declines.",
+      "short_note": "FY2025 adds supplier and contract-manufacturer integration complexity."
+    },
+    {
+      "evidence_id": "ev_03",
+      "year_label": "FY2025",
+      "paragraph_id": "nvda_2025_p074",
+      "quote_text": "Product transitions are complex and we often ship both new and prior architecture products simultaneously as our channel partners prepare to ship and support new products. We are generally in various stages of transitioning the architectures of our Data Center, Gaming, Professional Visualization, and Automotive products. The computing industry is experiencing a broader and faster launch cadence of accelerated computing platforms to meet a growing and diverse set of AI opportunities. We have introduced a new product and architecture cadence of our Data Center solutions where we seek to complete new computing solutions each year and provide a greater variety of Data Center offerings. The increased frequency of these transitions and the larger number of products and product configurations may magnify the challenges associated with managing our supply and demand which may further create volatility in our revenue. Qualification time for new products, customers anticipating product transitions, and channel partners reducing channel inventory of prior architectures ahead of new product introductions can reduce, or create volatility in, our revenue. We have experienced and may in the future experience reduced demand for current generation architectures when customers anticipate transitions, and we may be unable to sell multiple product architectures at the same time for current and future architecture transitions. Our financial results have been and may in the future be negatively impacted if we are unable to execute our architectural transitions as planned for any reason. The increased frequency and complexity of newly introduced products could result in unanticipated quality or production issues that could increase the magnitude of inventory provisions, warranty, or other costs or result in product delays. For example, our gross margins in the second quarter of fiscal year 2025 were negatively impacted by inventory provisions for low-yielding Blackwell material.",
+      "short_note": "FY2025 makes annual data-center cadence and Blackwell yield pressure explicit."
+    }
+  ],
+  "raw_source_refs": {
+    "response_path": "wave4c3a6_split_default_flip_20260317_1702/03_p2_i2_tagged_protocol/response.json",
+    "run_manifest_path": "wave4c3a6_split_default_flip_20260317_1702/03_p2_i2_tagged_protocol/run_manifest.json"
+  },
+  "normalization_status": {
+    "kind": "canonical_json",
+    "recovered": false,
+    "source_json_parseable": true,
+    "recovery_boundary": null,
+    "required_labels_found": [],
+    "note": "Parsed directly from the canonical structured Desktop response JSON."
+  }
+}

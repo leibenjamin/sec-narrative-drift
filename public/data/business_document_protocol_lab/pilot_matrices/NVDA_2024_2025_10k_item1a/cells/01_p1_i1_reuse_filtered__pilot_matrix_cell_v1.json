@@ -1,0 +1,72 @@
+{
+  "artifact_schema_id": "pilot_matrix_cell_v1",
+  "cell_id": "01_p1_i1_reuse_filtered",
+  "matrix_id": "NVDA_2024_2025_10k_item1a__desktop_pilot_matrix_v1",
+  "fixture_id": "NVDA_2024_2025_10k_item1a",
+  "label": "P1 + i1 reuse filtered",
+  "short_label": "P1+i1",
+  "role": "secondary_comparator",
+  "lane_position": 3,
+  "protocol_input_identity": {
+    "protocol_id": "p1_structured_contract_v1",
+    "protocol_label": "P1 structured contract",
+    "input_pack_id": "i1_reuse_filtered_v1",
+    "input_label": "i1 reuse-filtered input",
+    "display_text": "P1 structured contract + i1 reuse-filtered input"
+  },
+  "headline": "FY2025 reframes NVDA's Item 1A toward more immediate execution and policy constraints by elevating supply-demand mismatch to the lead risk, adding a new top-level litigation/proceedings warning, and expanding export-control discussion from broad market restrictions to worldwide AI Diffusion IFR and Tier 2 exposure.",
+  "summary": "The clearest lead shift is supply execution: FY2024 discussed demand-estimation mismatch within the body, while FY2025 moves long lead times, component availability, and forecast error into the opening bullet.",
+  "card_takeaway": "Useful structured read, but the filtered input is less audit-rich than the tagged packet and stays behind the primary read as the best opening pass.",
+  "why_this_lane_matters": "This remains the repaired canonical replacement-v2 result and shows what is lost when the input pack is filtered rather than fully tagged.",
+  "output_shape_info": {
+    "contract_mode": "canonical_protocol_json",
+    "display_text": "Canonical change brief plus evidence bundle",
+    "canonical_structured": true
+  },
+  "evidence_richness_tier": "medium",
+  "evidence_count_total": 10,
+  "auditability_note": "Moderate auditability: canonical JSON is intact, but evidence points back to year files instead of paragraph-addressable tagged packet lines.",
+  "strengths": [
+    "Useful canonical structured output even on the smaller filtered input pack.",
+    "Shows that bounded protocol alone already improves over ad hoc control output."
+  ],
+  "limitations": [
+    "Paragraph ids are unavailable, so audit trace is weaker than the i2 tagged runs.",
+    "Filtered input compresses context and can blur specificity or omission structure."
+  ],
+  "evidence_preview": [
+    {
+      "evidence_id": "ev_01",
+      "year_label": "FY2024",
+      "paragraph_id": "",
+      "quote_text": "If our estimates of customer demand are inaccurate, as we have experienced in the past, there could be a significant mismatch between supply and demand.",
+      "short_note": "FY2024 supply-demand mismatch appears in the body, not as the lead bullet."
+    },
+    {
+      "evidence_id": "ev_02",
+      "year_label": "FY2025",
+      "paragraph_id": "",
+      "quote_text": "• Long manufacturing lead times and uncertain supply and component availability, combined with a failure to estimate customer demand accurately has led and could lead to mismatches between supply and demand.",
+      "short_note": "FY2025 elevates supply-demand mismatch into the opening bullet set."
+    },
+    {
+      "evidence_id": "ev_03",
+      "year_label": "FY2024",
+      "paragraph_id": "",
+      "quote_text": "• We are subject to complex laws, rules and regulations, and political and other actions, which may adversely impact our business.",
+      "short_note": "FY2024 top-level legal/regulatory bullet is broad and generic."
+    }
+  ],
+  "raw_source_refs": {
+    "response_path": "wave4c3a6_split_default_flip_20260317_1702/01_p1_i1_reuse_filtered/response.json",
+    "run_manifest_path": "wave4c3a6_split_default_flip_20260317_1702/01_p1_i1_reuse_filtered/run_manifest.json"
+  },
+  "normalization_status": {
+    "kind": "canonical_json",
+    "recovered": false,
+    "source_json_parseable": true,
+    "recovery_boundary": null,
+    "required_labels_found": [],
+    "note": "Parsed directly from the canonical structured Desktop response JSON."
+  }
+}

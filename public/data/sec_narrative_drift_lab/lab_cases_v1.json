@@ -1,9 +1,11 @@
 {
   "version": "1.0",
-  "updated_at": "2026-03-21T05:18:02Z",
+  "updated_at": "2026-03-25T20:53:04Z",
   "notes": [
     "Generated deterministically from scanned lab outputs.",
-    "Output links preserve canonical ticker-local outputs paths, including track slug segments when present."
+    "Output links preserve canonical ticker-local outputs paths, including track slug segments when present.",
+    "Visible pilot system is defined by current_case_mix_v2.json and start_here_v1.json, not by this lower runtime registry.",
+    "cases[] remains the lower runtime registry and may include legacy background cases that are outside the current visible pilot system."
   ],
   "cases": [
     {
@@ -96,6 +98,7 @@
       ],
       "tags": [
         "recommended",
+        "visible_pilot_integrated",
         "boilerplate",
         "most_recent"
       ]
@@ -190,6 +193,7 @@
       ],
       "tags": [
         "recommended",
+        "visible_pilot_integrated",
         "boilerplate",
         "most_recent"
       ]
@@ -284,6 +288,7 @@
       ],
       "tags": [
         "recommended",
+        "legacy_background_case",
         "boilerplate",
         "most_recent"
       ]
@@ -378,15 +383,16 @@
       ],
       "tags": [
         "recommended",
+        "legacy_background_case",
         "boilerplate",
         "most_recent"
       ]
     }
   ],
   "provenance": {
-    "build_utc": "2026-03-21T05:18:02Z",
-    "git_commit": "4adaf8fc18f17a575c7435912192933614bb4161",
-    "script_version": "lab_build_cases_registry_v1.py@v2+0920a83802",
+    "build_utc": "2026-03-25T20:53:04Z",
+    "git_commit": "6037415277e97c0119d71b41bc033a7f87ca1bce",
+    "script_version": "lab_build_cases_registry_v1.py@v2+31ef4d5cef",
     "inputs": {
       "tickers": "NVDA,KO,WM,GE",
       "year_min": "2022",
@@ -395,7 +401,11 @@
       "pair_policy": "latest_two",
       "include_most_recent_always": "true",
       "publish_lenses": "all",
-      "runtime_case_map_hard_cut": "latest_two_per_ticker"
+      "runtime_case_map_hard_cut": "latest_two_per_ticker",
+      "visible_pilot_artifacts": "public/data/business_document_protocol_lab/product_positioning/current_case_mix_v2.json,public/data/business_document_protocol_lab/product_positioning/start_here_v1.json",
+      "visible_pilot_tickers": "NVDA,LLY,KO",
+      "visible_pilot_integrated_runtime_cases": "NVDA,KO",
+      "visible_pilot_bounded_non_registry_cases": "LLY"
     },
     "notes": [
       "Selected outputs are synced into canonical ticker-local outputs paths when needed."

@@ -1,0 +1,77 @@
+{
+  "artifact_schema_id": "pilot_matrix_cell_v1",
+  "cell_id": "00_b0_unstructured_frontier_baseline",
+  "matrix_id": "LLY_2024_2025_10k_item1a__desktop_pilot_matrix_v1",
+  "fixture_id": "LLY_2024_2025_10k_item1a",
+  "label": "B0 unstructured frontier baseline",
+  "short_label": "B0",
+  "role": "control",
+  "lane_position": 3,
+  "protocol_input_identity": {
+    "protocol_id": null,
+    "protocol_label": "Unstructured Desktop baseline",
+    "input_pack_id": "i2_tagged_document_packet_v1",
+    "input_label": "i2 tagged document packet",
+    "display_text": "No canonical protocol + i2 tagged document packet"
+  },
+  "headline": "FY2025 keeps familiar pricing, access, competition, technology, and supply-chain risk themes, but makes them materially more specific around obesity-franchise commercialization, cardiometabolic concentration, and policy/channel execution. [ev_01][ev_04][ev_08][ev_10][ev_13][ev_02][ev_03][ev_05][ev_07][ev_09][ev_11][ev_14]",
+  "summary": "Compared with FY2024’s more general discussion of payer pressure and IRA implementation, FY2025 adds a new U.S. government pricing/access arrangement, explicit Medicaid and international-benchmark pricing risk, and a LillyDirect/self-pay obesity access channel risk. [ev_01][ev_02][ev_03][ev_04][ev_05]\nThe concentration signal also intensified: products with more than $3 billion of revenue rose from 75% of total revenue in 2024 to 82% in 2025, while Mounjaro and Zepbound alone accounted for 56% of 2025 revenue versus 48% for Mounjaro, Trulicity, and Zepbound in 2024. [ev_06][ev_07]\nFY2025 further adds concrete access friction and policy detail, including CVS Caremark’s removal of preferred Zepbound coverage on some plans, HHS selection of Trulicity and Verzenio for Medicare-set prices effective in 2028, continued 340B expansion, and Medicaid rebate-calculation risk. [ev_05][ev_09]\nOutside pricing, the 2025 filing broadens execution risk by adding AI partnerships and investment uncertainty, AI-enabled competition, sharper competition language tied to China and technology, and more explicit tariff language around possible expiry of pharmaceutical exemptions and limited ability to offset added costs. [ev_11][ev_12][ev_14][ev_15][ev_17]",
+  "card_takeaway": "Honest control lane on the same tagged substrate, but it remains ad hoc and visibly noncanonical even after deterministic recovery.",
+  "why_this_lane_matters": "This is the control because it uses the same tagged substrate as the primary read without the structured contract, making baseline gains visible without pretending B0 is canonical.",
+  "output_shape_info": {
+    "contract_mode": "desktop_packet_baseline_json",
+    "display_text": "Recovered ad hoc brief plus evidence array",
+    "canonical_structured": false
+  },
+  "evidence_richness_tier": "baseline",
+  "evidence_count_total": 17,
+  "auditability_note": "Recovered control: evidence items remain usable, but the brief came from a malformed noncanonical Desktop envelope and stays visibly distinct.",
+  "strengths": [
+    "Shares the same i2 tagged substrate as the primary read, so the control comparison stays honest.",
+    "Still surfaces a readable filing delta with usable evidence snippets around pricing, access, concentration, and policy pressure."
+  ],
+  "limitations": [
+    "Ad hoc response envelope is not canonical structured JSON.",
+    "Recovery is deterministic but this lane should not be mistaken for a structured protocol output."
+  ],
+  "evidence_preview": [
+    {
+      "evidence_id": "ev_01",
+      "year_label": "FY2024",
+      "paragraph_id": "lly_2024_p019",
+      "quote_text": "Public and private payers continue to take aggressive steps to control their expenditures for pharmaceuticals by placing restrictions on pricing and reimbursement for, and patient access to, our medicines. These pressures have negatively affected, and we expect will continue to negatively affect, our consolidated results of operations. Governments and private payers worldwide have intensified their scrutiny of, and actions intended to address, pricing, reimbursement, and access to pharmaceutical products and are demanding greater commercial and clinical value from pharmaceutical companies in the form of strong product differentiation and demonstrated value. We continue to experience scrutiny on the pricing of current and potential diabetes, obesity, and Alzheimer's disease products due to payer concern over projected growth in these markets and, for certain of these drugs, the anticipated duration of treatment. We have also observed scrutiny of pricing and access disparities across jurisdictions.",
+      "short_note": "FY2024 baseline payer/pricing/access pressure."
+    },
+    {
+      "evidence_id": "ev_02",
+      "year_label": "FY2025",
+      "paragraph_id": "lly_2025_p018",
+      "quote_text": "In November 2025, we announced preliminary voluntary agreements with the U.S. government in which, among other arrangements, we agreed to implement measures to lower Medicaid and certain other drug prices for U.S. patients and to launch new medicines with a more balanced pricing approach across developed nations. We face risks and uncertainty associated with these arrangements and negotiating the definitive agreements, including potential delays and the possibility of unfavorable terms related to pricing, access, and other key objectives. Among other risks, we may fail to adequately capitalize on the additional U.S. access to our obesity medicines resulting from these agreements, particularly if the revenues generated from such expanded access are insufficient to offset pricing concessions. Moreover, the outcome of these arrangements and broader U.S. policy efforts to align domestic pharmaceutical pricing with international benchmarks from countries with competing healthcare cost containment priorities is uncertain and could negatively impact our pricing strategies, product demand or access, or competitive positioning across global markets, and may result in reduced revenue in certain markets.",
+      "short_note": "New FY2025 voluntary U.S. pricing/access arrangements and international benchmark risk."
+    },
+    {
+      "evidence_id": "ev_03",
+      "year_label": "FY2025",
+      "paragraph_id": "lly_2025_p019",
+      "quote_text": "In general, securing and growing access for our obesity medicines is an important factor in the success of our business. Among other considerations, payers in various international markets do not currently provide coverage for obesity medicines for weight loss indications, requiring patient self-pay. In addition, patient self-pay sales through LillyDirect represented a growing portion of our business in 2025, and we have launched, and continue to explore, new partnerships and tools, including through LillyDirect, to further expand access to our medicines. Our financial results and prospects are subject to risks related to the level and pace of patient participation in cash-pay markets, which may be influenced by pricing, economic conditions, and competitive offerings, as well as regulatory or other actions that could restrict our ability to benefit from such markets, and uncertainty regarding our ability to secure reimbursement coverage in such markets over time.",
+      "short_note": "New FY2025 LillyDirect and self-pay obesity access risk."
+    }
+  ],
+  "raw_source_refs": {
+    "response_path": "wave4d2_lly_desktop_packet_20260318_1851/00_b0_unstructured_frontier_baseline/response.json",
+    "run_manifest_path": "wave4d2_lly_desktop_packet_20260318_1851/00_b0_unstructured_frontier_baseline/run_manifest.json"
+  },
+  "normalization_status": {
+    "kind": "recovered_noncanonical_json",
+    "recovered": true,
+    "source_json_parseable": false,
+    "recovery_boundary": "\",\n\"evidence\": [",
+    "required_labels_found": [
+      "Bottom line:",
+      "What changed:",
+      "Why it matters:",
+      "Caveat:"
+    ],
+    "note": "Recovered deterministically from a noncanonical Desktop baseline file by slicing the literal brief/evidence boundary and parsing the valid evidence array directly."
+  }
+}

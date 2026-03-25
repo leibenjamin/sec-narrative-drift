@@ -1,0 +1,72 @@
+{
+  "artifact_schema_id": "pilot_matrix_cell_v1",
+  "cell_id": "03_p2_i2_tagged_protocol",
+  "matrix_id": "LLY_2024_2025_10k_item1a__desktop_pilot_matrix_v1",
+  "fixture_id": "LLY_2024_2025_10k_item1a",
+  "label": "P2 + i2 tagged protocol",
+  "short_label": "P2+i2",
+  "role": "main_comparator",
+  "lane_position": 2,
+  "protocol_input_identity": {
+    "protocol_id": "p2_tagged_input_contract_v1",
+    "protocol_label": "P2 tagged-input contract",
+    "input_pack_id": "i2_tagged_document_packet_v1",
+    "input_label": "i2 tagged document packet",
+    "display_text": "P2 tagged-input contract + i2 tagged document packet"
+  },
+  "headline": "FY2025 moves Lilly's risk emphasis toward obesity-franchise commercialization and policy exposure, adding specific risk around the November 2025 U.S. pricing agreements, LillyDirect cash-pay access, and greater revenue concentration in Mounjaro and Zepbound.",
+  "summary": "Compared with FY2024's broad warning that payers and governments were pressuring pricing, reimbursement, and access, FY2025 turns that theme into a more company-specific obesity-access risk by tying pricing concessions to expanded U.S. obesity access, cash-pay participation, and LillyDirect.",
+  "card_takeaway": "Main comparator on the same tagged substrate, showing how protocol framing alone changes the first-read story.",
+  "why_this_lane_matters": "This is the main comparator because it holds i2 fixed and isolates the effect of changing the protocol from P1 to P2.",
+  "output_shape_info": {
+    "contract_mode": "canonical_protocol_json",
+    "display_text": "Canonical structured brief plus evidence bundle",
+    "canonical_structured": true
+  },
+  "evidence_richness_tier": "high",
+  "evidence_count_total": 12,
+  "auditability_note": "High auditability on the same tagged substrate, but the protocol emphasis shifts which claims lead the narrative.",
+  "strengths": [
+    "Same tagged substrate as the primary read isolates protocol-only differences.",
+    "Keeps an evidence-addressable structured output shape."
+  ],
+  "limitations": [
+    "Less compelling than the primary read on this case because the filing-first synthesis is less complete.",
+    "Protocol emphasis can change first-read usefulness even when the evidence base is the same."
+  ],
+  "evidence_preview": [
+    {
+      "evidence_id": "lly_2024_p000",
+      "year_label": "FY2024",
+      "paragraph_id": "lly_2024_p000",
+      "quote_text": "Item 1A. Risk Factors",
+      "short_note": null
+    },
+    {
+      "evidence_id": "lly_2025_p000",
+      "year_label": "FY2025",
+      "paragraph_id": "lly_2025_p000",
+      "quote_text": "Item 1A. Risk Factors",
+      "short_note": null
+    },
+    {
+      "evidence_id": "lly_2024_p019",
+      "year_label": "FY2024",
+      "paragraph_id": "lly_2024_p019",
+      "quote_text": "Public and private payers continue to take aggressive steps to control their expenditures for pharmaceuticals by placing restrictions on pricing and reimbursement for, and patient access to, our medicines. These pressures have negatively affected, and we expect will continue to negatively affect, our consolidated results of operations. Governments and private payers worldwide have intensified their scrutiny of, and actions intended to address, pricing, reimbursement, and access to pharmaceutical products and are demanding greater commercial and clinical value from pharmaceutical companies in the form of strong product differentiation and demonstrated value. We continue to experience scrutiny on the pricing of current and potential diabetes, obesity, and Alzheimer's disease products due to payer concern over projected growth in these markets and, for certain of these drugs, the anticipated duration of treatment. We have also observed scrutiny of pricing and access disparities across jurisdictions.",
+      "short_note": null
+    }
+  ],
+  "raw_source_refs": {
+    "response_path": "wave4d2_lly_desktop_packet_20260318_1851/03_p2_i2_tagged_protocol/response.json",
+    "run_manifest_path": "wave4d2_lly_desktop_packet_20260318_1851/03_p2_i2_tagged_protocol/run_manifest.json"
+  },
+  "normalization_status": {
+    "kind": "canonical_json",
+    "recovered": false,
+    "source_json_parseable": true,
+    "recovery_boundary": null,
+    "required_labels_found": [],
+    "note": "Parsed directly from the canonical structured Desktop response JSON."
+  }
+}

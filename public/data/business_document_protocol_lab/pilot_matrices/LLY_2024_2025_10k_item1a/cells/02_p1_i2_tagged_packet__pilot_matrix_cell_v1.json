@@ -1,0 +1,72 @@
+{
+  "artifact_schema_id": "pilot_matrix_cell_v1",
+  "cell_id": "02_p1_i2_tagged_packet",
+  "matrix_id": "LLY_2024_2025_10k_item1a__desktop_pilot_matrix_v1",
+  "fixture_id": "LLY_2024_2025_10k_item1a",
+  "label": "P1 + i2 tagged packet",
+  "short_label": "P1+i2",
+  "role": "hero",
+  "lane_position": 1,
+  "protocol_input_identity": {
+    "protocol_id": "p1_structured_contract_v1",
+    "protocol_label": "P1 structured contract",
+    "input_pack_id": "i2_tagged_document_packet_v1",
+    "input_label": "i2 tagged document packet",
+    "display_text": "P1 structured contract + i2 tagged document packet"
+  },
+  "headline": "FY2025 leaves Lilly's Item 1A structure largely intact, but it shifts the practical center of risk toward obesity-medicine pricing and access, heavier revenue concentration, and more specific channel and policy exposures, while also sharpening competition, tariff, AI, and marketing-regulatory language.",
+  "summary": "The clearest shift is from broad payer pressure in FY2024 to a more company-specific FY2025 access-and-pricing story. FY2024 emphasized generalized scrutiny on diabetes, obesity, and Alzheimer's pricing and Jardiance's Medicare negotiation outcome, but FY2025 adds preliminary U.S. government pricing arrangements, LillyDirect and self-pay dependence for obesity medicines, and new IRA selection of Trulicity and Verzenio, making reimbursement and access risk feel more immediate and issuer-specific.",
+  "card_takeaway": "Best first read on the fixed LLY case: strongest balance of specificity, novelty separation, and evidence-addressable audit trail.",
+  "why_this_lane_matters": "This is the primary read because it gives the clearest filing delta while staying contract-bounded and paragraph-addressable.",
+  "output_shape_info": {
+    "contract_mode": "canonical_protocol_json",
+    "display_text": "Canonical structured brief plus evidence bundle",
+    "canonical_structured": true
+  },
+  "evidence_richness_tier": "high",
+  "evidence_count_total": 18,
+  "auditability_note": "High auditability: tagged evidence and paragraph ids make claim-to-text tracing straightforward.",
+  "strengths": [
+    "Strongest balance of readability and specificity on the fixed LLY pair.",
+    "Tagged paragraph evidence makes audit follow-through straightforward."
+  ],
+  "limitations": [
+    "Still a read of one issuer-year pair rather than a benchmark result.",
+    "Large reused scaffolds mean a handful of targeted FY2025 additions carry much of the visible change signal."
+  ],
+  "evidence_preview": [
+    {
+      "evidence_id": "lly_2024_p006",
+      "year_label": "FY2024",
+      "paragraph_id": "lly_2024_p006",
+      "quote_text": "Regulatory agencies establish high hurdles for the efficacy and safety of new products and indications. Delay, uncertainty, unpredictability, and inconsistency in drug approval processes across markets and agencies can result in delays in product launches, lost market opportunities, impairment of inventories, and other negative impacts. In addition, it can be very difficult to predict revenue growth rates of, or variability in demand for, new or future products and indications, which in some cases leads to difficulty meeting product demand or, on the other hand, lower volume growth, excess inventory and related financial charges.",
+      "short_note": "FY2024 baseline regulatory and demand language"
+    },
+    {
+      "evidence_id": "lly_2024_p019",
+      "year_label": "FY2024",
+      "paragraph_id": "lly_2024_p019",
+      "quote_text": "Public and private payers continue to take aggressive steps to control their expenditures for pharmaceuticals by placing restrictions on pricing and reimbursement for, and patient access to, our medicines. These pressures have negatively affected, and we expect will continue to negatively affect, our consolidated results of operations. Governments and private payers worldwide have intensified their scrutiny of, and actions intended to address, pricing, reimbursement, and access to pharmaceutical products and are demanding greater commercial and clinical value from pharmaceutical companies in the form of strong product differentiation and demonstrated value. We continue to experience scrutiny on the pricing of current and potential diabetes, obesity, and Alzheimer's disease products due to payer concern over projected growth in these markets and, for certain of these drugs, the anticipated duration of treatment. We have also observed scrutiny of pricing and access disparities across jurisdictions.",
+      "short_note": "FY2024 pricing and access baseline"
+    },
+    {
+      "evidence_id": "lly_2024_p020",
+      "year_label": "FY2024",
+      "paragraph_id": "lly_2024_p020",
+      "quote_text": "Additional policies, regulations, legislation, or enforcement, including because of the regulatory priorities of the U.S. executive branch and regulatory authorities worldwide, could adversely impact our business and consolidated results of operations. For example, in August 2023, HHS selected Jardiance, which is part of our collaboration with Boehringer Ingelheim, as one of the first ten medicines subject to government-set prices in Medicare effective in 2026. In August 2024, HHS announced the government-set prices for these first ten medicines with Jardiance subject to a 66% discount compared to the 2023 U.S. calendar year list price for a 30-day supply and discounts for the other nine medicines ranging from approximately 38% to 79% below list price. Given our product portfolio, we expect additional products will be selected in future years, which would have the effect of accelerating revenue erosion. The effect of reducing prices and reimbursement for certain of our products could significantly impact our business and consolidated results of operations. Within the U.S., state level transparency initiatives, importation rules, reporting requirements, and mandated programs, including the establishment of drug affordability boards with the power to set upper payment limits on certain drugs in state-regulated plans, have also increased administrative costs, in some cases, compromised confidential business practices and otherwise detrimentally impacted our business. Certain states have also undertaken efforts to codify 340B contract pharmacies into statute or impose other state law mandates, which increase the cost of 340B programs. To date, several states have passed contract pharmacy legislation, which have been subject to various legal challenges. For more details, see Item 1, \"Business—Regulations and Private Payer Actions Affecting Pharmaceutical Pricing, Reimbursement, and Access.\"",
+      "short_note": "FY2024 IRA and 340B discussion"
+    }
+  ],
+  "raw_source_refs": {
+    "response_path": "wave4d2_lly_desktop_packet_20260318_1851/02_p1_i2_tagged_packet/response.json",
+    "run_manifest_path": "wave4d2_lly_desktop_packet_20260318_1851/02_p1_i2_tagged_packet/run_manifest.json"
+  },
+  "normalization_status": {
+    "kind": "canonical_json",
+    "recovered": false,
+    "source_json_parseable": true,
+    "recovery_boundary": null,
+    "required_labels_found": [],
+    "note": "Parsed directly from the canonical structured Desktop response JSON."
+  }
+}

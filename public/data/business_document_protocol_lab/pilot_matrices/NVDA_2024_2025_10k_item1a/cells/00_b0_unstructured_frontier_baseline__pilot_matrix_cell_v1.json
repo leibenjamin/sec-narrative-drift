@@ -1,0 +1,77 @@
+{
+  "artifact_schema_id": "pilot_matrix_cell_v1",
+  "cell_id": "00_b0_unstructured_frontier_baseline",
+  "matrix_id": "NVDA_2024_2025_10k_item1a__desktop_pilot_matrix_v1",
+  "fixture_id": "NVDA_2024_2025_10k_item1a",
+  "label": "B0 unstructured frontier baseline",
+  "short_label": "B0",
+  "role": "control",
+  "lane_position": 4,
+  "protocol_input_identity": {
+    "protocol_id": null,
+    "protocol_label": "Unstructured Desktop baseline",
+    "input_pack_id": "i2_tagged_document_packet_v1",
+    "input_label": "i2 tagged document packet",
+    "display_text": "No canonical protocol + i2 tagged document packet"
+  },
+  "headline": "NVDA's FY2025 Item 1A keeps the same broad risk map, but it sharpens where execution can fail: longer lead times and component uncertainty are now fused directly into the supply-demand mismatch risk [ev_02], product-transition risk is framed around a more explicit annual Data Center cadence and a disclosed Blackwell yield hit [ev_04], and regulatory exposure is stated more directly around export restrictions and tariffs [ev_09][ev_10].",
+  "summary": "In FY2024, the supply narrative centered on demand-estimation errors, a broader and faster Data Center launch cadence, and expectations that next-generation products could be supply-constrained even as Hopper supply improved [ev_01][ev_03][ev_05]. In FY2025, NVDA rewrites that section to emphasize long manufacturing lead times and uncertain component availability [ev_02], continued prepaids and new suppliers with added inventory-risk from supply-chain complexity [ev_06], an explicit annualized product cadence with Blackwell-related low yields hurting Q2 FY2025 gross margin [ev_04], and customer ability to invest in AI infrastructure as a named demand variable [ev_07]. On regulation, FY2025 explicitly calls out export restrictions on NVIDIA products and tariffs, whereas FY2024 used broader political and regulatory wording and more transitional China language [ev_08][ev_09][ev_10][ev_11].",
+  "card_takeaway": "Honest control lane on the same tagged substrate, but it remains ad hoc and visibly noncanonical even after deterministic recovery.",
+  "why_this_lane_matters": "This is the control because it uses the same tagged substrate as the primary read without the structured contract, making baseline gains visible without pretending B0 is canonical.",
+  "output_shape_info": {
+    "contract_mode": "desktop_packet_baseline_json",
+    "display_text": "Recovered ad hoc brief plus evidence array",
+    "canonical_structured": false
+  },
+  "evidence_richness_tier": "baseline",
+  "evidence_count_total": 11,
+  "auditability_note": "Recovered control: evidence items remain usable, but the brief came from a malformed noncanonical Desktop envelope and stays visibly distinct.",
+  "strengths": [
+    "Shares the same i2 tagged substrate as the primary read, so the control comparison is honest.",
+    "Still surfaces a readable filing delta with usable evidence snippets."
+  ],
+  "limitations": [
+    "Ad hoc response envelope is not canonical structured JSON.",
+    "Recovery is deterministic but this lane should not be mistaken for a structured protocol output."
+  ],
+  "evidence_preview": [
+    {
+      "evidence_id": "ev_01",
+      "year_label": "FY2024",
+      "paragraph_id": "nvda_2024_p049",
+      "quote_text": "Failure to estimate customer demand accurately has led and could lead to mismatches between supply and demand.",
+      "short_note": "FY2024 summary framing of the core supply-demand risk."
+    },
+    {
+      "evidence_id": "ev_02",
+      "year_label": "FY2025",
+      "paragraph_id": "nvda_2025_p050",
+      "quote_text": "Long manufacturing lead times and uncertain supply and component availability, combined with a failure to estimate customer demand accurately, has led and could lead to mismatches between supply and demand.",
+      "short_note": "FY2025 expands the same risk to explicitly include lead-time and component-availability constraints."
+    },
+    {
+      "evidence_id": "ev_03",
+      "year_label": "FY2024",
+      "paragraph_id": "nvda_2024_p069",
+      "quote_text": "We will have a broader and faster Data Center product launch cadence to meet a growing and diverse set of AI opportunities.",
+      "short_note": "FY2024 already flags faster product-transition cadence."
+    }
+  ],
+  "raw_source_refs": {
+    "response_path": "wave4c3a6_split_default_flip_20260317_1702/00_b0_unstructured_frontier_baseline/response.json",
+    "run_manifest_path": "wave4c3a6_split_default_flip_20260317_1702/00_b0_unstructured_frontier_baseline/run_manifest.json"
+  },
+  "normalization_status": {
+    "kind": "recovered_noncanonical_json",
+    "recovered": true,
+    "source_json_parseable": false,
+    "recovery_boundary": "\",\n\"evidence\": [",
+    "required_labels_found": [
+      "Bottom line:",
+      "What changed:",
+      "Why it matters:",
+      "Caveat:"
+    ],
+    "note": "Recovered deterministically from a noncanonical Desktop baseline file by slicing the literal brief/evidence boundary and parsing the valid evidence array directly."
+  }
+}

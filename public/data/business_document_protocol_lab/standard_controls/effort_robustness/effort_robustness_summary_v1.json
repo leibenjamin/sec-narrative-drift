@@ -1,0 +1,12 @@
+{
+  "artifact_schema_id": "effort_robustness_summary_v1",
+  "artifact_id": "effort_robustness_summary_v1",
+  "covered_issuers": [
+    "NVDA",
+    "LLY"
+  ],
+  "cross_case_pattern_summary": "Across NVDA and LLY, 02 is the most effort-robust lane, 03 still adds a meaningful same-substrate comparison but is more variance-sensitive, and 00 remains a readable control.",
+  "protocol_value_under_lower_effort": "The current two-issuer slice still supports a bounded claim that protocol structure adds value under reduced reasoning effort, but the claim remains pilot-grade and explicitly limited by the malformed LLY structured standard raw files.",
+  "still_should_not_claim": "It still should not claim benchmark-grade rigor, third-issuer generalization, whole-filing or external-research overlays, or equal-lane P4 expansion.",
+  "integrity_note": "LLY_02_p1_i2_tagged_packet_standard and LLY_03_p2_i2_tagged_protocol_standard fail JSON parseability in their current canonical raw form; the other four runs pass the bounded validator."
+}

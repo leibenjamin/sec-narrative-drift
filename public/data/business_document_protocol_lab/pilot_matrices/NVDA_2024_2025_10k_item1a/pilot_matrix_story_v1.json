@@ -1,0 +1,29 @@
+{
+  "artifact_schema_id": "pilot_matrix_story_v1",
+  "matrix_id": "NVDA_2024_2025_10k_item1a__desktop_pilot_matrix_v1",
+  "fixture_id": "NVDA_2024_2025_10k_item1a",
+  "consensus_findings": [
+    "Across all four lanes, FY2025 keeps NVDA's broad Item 1A map but sharpens the filing through added specificity rather than a full rewrite.",
+    "Multiple lanes agree that FY2025 makes export-control and AI-regulatory exposure more explicit, moving beyond the prior year's broader legal and political framing.",
+    "Multiple lanes agree that FY2025 sharpens the operational story around long lead times, supplier complexity, and a faster annual data-center product cadence.",
+    "The lanes broadly converge that FY2025 ties execution risk to more concrete business effects such as inventory pressure, margin volatility, and shipment timing risk."
+  ],
+  "disagreement_findings": [
+    "The primary read leads with the regulatory and export-control shift, while the comparison and secondary reads lead more heavily with supply execution and product-transition pressure.",
+    "The primary and comparison reads share the same tagged evidence substrate, but protocol framing alone changes which risk story feels like the best first read.",
+    "The secondary comparison stays useful, but its reuse-filtered input makes the read less audit-rich than the tagged-packet reads even when the high-level conclusion overlaps.",
+    "The control read is honest on the same tagged substrate, but it is recovered from a noncanonical ad hoc response and should not be read like a structured lane."
+  ],
+  "why_this_case_matters": "NVDA is a useful first case because the FY2024 to FY2025 filing pair contains real movement in export controls and AI-infrastructure execution risk while still preserving enough reused structure to show what protocol and input treatment actually change.",
+  "investor_read": "The slice is useful because the FY2025 edits do not read like abstract wording drift. They sharpen where AI demand can fail to turn into shipped, profitable product and where policy can cap market access. The practical comparison question is whether the first read points you to regulatory constraint, supply execution, or a blurred mix of both.",
+  "protocol_read": "Methodologically, this case is useful because the filing pair is stable enough to hold constant while the different reads expose different kinds of judgment. The structured tagged reads separate evidence and novelty better, protocol alone changes the lead story, filtered input weakens audit trace, and B0 shows what the same substrate looks like without a canonical contract.",
+  "caveat": "This remains a single-company, single-pair case view. It supports a product judgment about readability, emphasis control, and auditability on NVDA, but it does not establish a multi-company benchmark or prove that one protocol will win universally outside this case.",
+  "display_priority_order": [
+    "why_this_case_matters",
+    "consensus_findings",
+    "investor_read",
+    "disagreement_findings",
+    "protocol_read",
+    "caveat"
+  ]
+}

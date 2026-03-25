@@ -43,6 +43,8 @@ VALID_SOURCES = {"edgar", "sraf_nd"}
 DEFAULT_TICKERS = ["NVDA", "KO", "WM", "GE"]
 DEFAULT_YEAR_MIN = 2022
 DEFAULT_YEAR_MAX = 2030
+VISIBLE_PILOT_TICKERS = {"NVDA", "LLY", "KO"}
+VISIBLE_PILOT_INTEGRATED_TICKERS = {"NVDA", "KO"}
 
 PAIR_POLICY_LATEST_TWO = "latest_two"
 PAIR_POLICY_FIXED_WINDOW = "fixed_window"
@@ -463,10 +465,14 @@ def get_lens_rank(lens: str) -> tuple[int, str]:
     return (999, lens)
 
 
-def build_tags(hero_tags: list[str], is_featured: bool) -> Optional[list[str]]:
+def build_tags(ticker: str, hero_tags: list[str], is_featured: bool) -> Optional[list[str]]:
     tags: list[str] = []
     if is_featured:
         tags.append("recommended")
+    if ticker in VISIBLE_PILOT_INTEGRATED_TICKERS:
+        tags.append("visible_pilot_integrated")
+    elif ticker not in VISIBLE_PILOT_TICKERS:
+        tags.append("legacy_background_case")
     for tag in hero_tags:
         if tag == "recommended":
             continue
@@ -792,7 +798,7 @@ def main(argv: Optional[list[str]] = None) -> int:
 
             hero_tags = hero_pairs.get(ticker, {}).get((year_from, year_to), [])
             is_featured = len(hero_tags) > 0
-            tags = build_tags(hero_tags, is_featured)
+            tags = build_tags(ticker, hero_tags, is_featured)
             if is_featured:
                 featured_pairs_by_ticker[ticker].append((year_from, year_to))
 
@@ -842,6 +848,13 @@ def main(argv: Optional[list[str]] = None) -> int:
         "runtime_case_map_hard_cut": (
             "latest_two_per_ticker" if args.pair_policy == PAIR_POLICY_LATEST_TWO else "legacy_fixed_window"
         ),
+        "visible_pilot_artifacts": (
+            "public/data/business_document_protocol_lab/product_positioning/current_case_mix_v2.json,"
+            + "public/data/business_document_protocol_lab/product_positioning/start_here_v1.json"
+        ),
+        "visible_pilot_tickers": "NVDA,LLY,KO",
+        "visible_pilot_integrated_runtime_cases": "NVDA,KO",
+        "visible_pilot_bounded_non_registry_cases": "LLY",
     }
     registry_payload = {
         "version": "1.0",
@@ -849,6 +862,8 @@ def main(argv: Optional[list[str]] = None) -> int:
         "notes": [
             "Generated deterministically from scanned lab outputs.",
             "Output links preserve canonical ticker-local outputs paths, including track slug segments when present.",
+            "Visible pilot system is defined by current_case_mix_v2.json and start_here_v1.json, not by this lower runtime registry.",
+            "cases[] remains the lower runtime registry and may include legacy background cases that are outside the current visible pilot system.",
         ],
         "cases": cases_payload,
         "provenance": {

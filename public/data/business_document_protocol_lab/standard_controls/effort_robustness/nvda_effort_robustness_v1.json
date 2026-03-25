@@ -1,0 +1,39 @@
+{
+  "artifact_schema_id": "effort_robustness_case_v1",
+  "artifact_id": "nvda_effort_robustness_v1",
+  "fixture_id": "NVDA_2024_2025_10k_item1a",
+  "issuer": {
+    "ticker": "NVDA",
+    "issuer_name": "NVIDIA Corporation"
+  },
+  "pair_info": {
+    "ticker": "NVDA",
+    "issuer_name": "NVIDIA Corporation",
+    "year_from": 2024,
+    "year_to": 2025,
+    "form_type": "10-K",
+    "section_id": "item_1a"
+  },
+  "headline": "NVDA keeps the same visible read under standard effort: 02 stays first, 03 still matters, and 00 remains control-only.",
+  "stable_findings": [
+    "02 remains the strongest default lane on the fixed NVDA pair.",
+    "03 still changes the lead story relative to 02 while holding the tagged packet fixed.",
+    "00 still functions as a readable control on the same tagged substrate."
+  ],
+  "weakened_under_standard": [
+    "The standard wave is still a bounded control packet, so the claim stays narrower than a broader benchmark-style comparison.",
+    "03 still trails 02 as the default lane, so reduced reasoning does not reverse the ordering.",
+    "00 stays noncanonical and ad hoc, so it still cannot support a structured-lane claim."
+  ],
+  "lane_robustness": {
+    "02": "02 remains the strongest default lane on the fixed NVDA pair.",
+    "03": "03 still changes the lead story relative to 02 while holding the tagged packet fixed.",
+    "00": "00 still functions as a readable control on the same tagged substrate. 00 stays noncanonical and ad hoc, so it still cannot support a structured-lane claim."
+  },
+  "winner_stayed_same": true,
+  "comparator_remained_meaningful": true,
+  "control_remained_useful": true,
+  "lane_order_materially_changed": false,
+  "integrity_note": "NVDA shows no capture-integrity failure on the visible standard lanes.",
+  "caveat": "On this fixed NVDA pair, protocol value still appears visible under standard thinking, but the claim remains a bounded pilot finding rather than a benchmark."
+}

@@ -1,0 +1,46 @@
+{
+  "artifact_schema_id": "skeptic_case_canonized_matrix_v1",
+  "artifact_id": "KO_2024_2025_10k_item1a__ko_canonized_matrix_v1",
+  "fixture_id": "KO_2024_2025_10k_item1a",
+  "issuer": {
+    "ticker": "KO",
+    "issuer_name": "The Coca-Cola Company"
+  },
+  "pair_info": {
+    "ticker": "KO",
+    "issuer_name": "The Coca-Cola Company",
+    "year_from": 2024,
+    "year_to": 2025,
+    "form_type": "10-K",
+    "section_id": "item_1a"
+  },
+  "canonical_run_ids": [
+    "KO_02_p1_i2_tagged_packet",
+    "KO_02_p1_i2_tagged_packet_standard",
+    "KO_04_p4_i2_novelty_ledger_extended_v2",
+    "KO_05_p4_i2_novelty_ledger_standard_v2"
+  ],
+  "finding_summary": "KO's FY2025 Item 1A is mostly stable overall, but it selectively sharpens health-policy and demand language, product-quality and recall execution, bottler concentration, partner-conduct spillover, and Pillar Two updates.",
+  "skeptic_case_role_statement": "KO is the lower-drift skeptic case. Its job is to prove that the product can still be useful when a filing changes selectively rather than dramatically.",
+  "agreement_snapshot": {
+    "02_standard_vs_extended": {
+      "broadly_agree": true,
+      "note": "Yes. Both 02 runs read KO as mostly stable with selective sharpening in health-policy and demand pressure, product-quality and recall execution, bottler exposure, and Pillar Two detail."
+    },
+    "p4_standard_vs_extended": {
+      "broadly_agree": true,
+      "note": "Yes. Both P4 runs keep freshness narrow, treat most visible movement as broadened carryover, and preserve a disciplined boundary around what should not be overstated."
+    }
+  },
+  "supports_visible_limited_integration": true,
+  "visible_integration_note": "Yes. KO should be visible as a limited third pilot because all four runs were usable and the low-drift verdict is product-legible without requiring new routes or a broader issuer gallery.",
+  "known_quality_caveats": [
+    "All four KO runs were usable as saved and did not require deterministic transport or evidence-row correction.",
+    "The main caveat is analytical restraint: beyond Pillar Two, the two P4 runs do not name exactly the same extra 2025 specifics as fresh, which is why KO should be framed as a skeptic case rather than a novelty showcase."
+  ],
+  "product_interpretation": "The product is more credible when it can surface selective sharpening on KO with restraint instead of only reading dramatic filing rewrites like NVDA and LLY.",
+  "framing_note": "Mostly stable, selectively sharpened. The point here is disciplined detection, not dramatic novelty hunting.",
+  "short_quality_caveat": "All four KO runs were usable as saved. The caution here is overreading, not transport repair.",
+  "quality_note_path": "data/business_document_protocol_lab/skeptic_cases/KO_2024_2025_10k_item1a/ko_quality_notes_v1.json",
+  "p1_vs_p4_summary_path": "data/business_document_protocol_lab/skeptic_cases/KO_2024_2025_10k_item1a/ko_p1_vs_p4_summary_v1.json"
+}

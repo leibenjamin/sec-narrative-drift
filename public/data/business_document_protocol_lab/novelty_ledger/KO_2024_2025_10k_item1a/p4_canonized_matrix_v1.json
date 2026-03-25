@@ -1,0 +1,346 @@
+{
+  "artifact_schema_id": "p4_canonized_matrix_v1",
+  "artifact_id": "KO_2024_2025_10k_item1a__p4_canonized_matrix_v1",
+  "fixture_id": "KO_2024_2025_10k_item1a",
+  "issuer": {
+    "ticker": "KO",
+    "issuer_name": "The Coca-Cola Company"
+  },
+  "pair_info": {
+    "ticker": "KO",
+    "issuer_name": "The Coca-Cola Company",
+    "year_from": 2024,
+    "year_to": 2025,
+    "form_type": "10-K",
+    "section_id": "item_1a"
+  },
+  "canonical_run_ids": [
+    "KO_04_p4_i2_novelty_ledger_extended_v2",
+    "KO_05_p4_i2_novelty_ledger_standard_v2"
+  ],
+  "canonized_runs": [
+    {
+      "run_id": "KO_04_p4_i2_novelty_ledger_extended_v2",
+      "reasoning_variant": "extended",
+      "source_response_path": "wave4e5_third_issuer_skeptic_packet_20260322_0353/KO_04_p4_i2_novelty_ledger_extended_v2/response.json",
+      "source_run_manifest_path": "wave4e5_third_issuer_skeptic_packet_20260322_0353/KO_04_p4_i2_novelty_ledger_extended_v2/run_manifest.json",
+      "canonization_status": "canonized_as_is",
+      "quality_note_ids": [
+        "ko_04_p4_i2_novelty_ledger_extended_v2__no_blocking_issue_observed"
+      ],
+      "repair_summary": null
+    },
+    {
+      "run_id": "KO_05_p4_i2_novelty_ledger_standard_v2",
+      "reasoning_variant": "standard",
+      "source_response_path": "wave4e5_third_issuer_skeptic_packet_20260322_0353/KO_05_p4_i2_novelty_ledger_standard_v2/response.json",
+      "source_run_manifest_path": "wave4e5_third_issuer_skeptic_packet_20260322_0353/KO_05_p4_i2_novelty_ledger_standard_v2/run_manifest.json",
+      "canonization_status": "canonized_as_is",
+      "quality_note_ids": [
+        "ko_05_p4_i2_novelty_ledger_standard_v2__no_blocking_issue_observed"
+      ],
+      "repair_summary": null
+    }
+  ],
+  "issuer_finding_summary": "Across the canonized KO P4 runs, the freshest movement is narrow and concentrated in dated Pillar Two updates plus a small number of sharper 2025 specifics, while most of the filing remains a reused framework with broadened examples inside older risk families.",
+  "p4_role_statement": "This Fresh vs reused lens is useful on KO because it keeps freshness claims disciplined. It stays secondary because the primary read still gives the better broad first pass on a mostly stable filing.",
+  "known_quality_caveats": [
+    "Both KO P4 runs were parseable and usable as saved; no transport or evidence-row correction was required during canonization.",
+    "The standard and extended P4 runs differ slightly on which extra 2025 specifics beyond Pillar Two deserve the 'fresh' label, but both keep freshness narrow and do not change the broad verdict."
+  ],
+  "standard_and_extended_broadly_agree": true,
+  "standard_and_extended_agreement_note": "Yes. Both runs agree that KO is mostly reused structure with a narrow set of fresh specifics, that supplier-cost tariffs and health-policy pressure are broadened carryover themes, and that boundary cases should not be overstated.",
+  "suitable_for_limited_app_integration": true,
+  "integration_note": "Suitable for the existing compact secondary module because the freshness verdict stays narrow and disciplined across both runs.",
+  "comparison_to_02": {
+    "where_p4_adds_value": "Fresh vs reused adds a cleaner secondary check than the primary read, especially for separating dated Pillar Two updates from broadened carryover themes like tariff pass-through, health-policy pressure, recall execution, and privacy compliance.",
+    "where_02_remains_stronger": "The primary read remains stronger as the broad default synthesis because it integrates the full filing shift instead of focusing only on freshness classification.",
+    "why_secondary_only": "Fresh vs reused is useful on KO precisely because it is narrower and more disciplined about freshness. That makes it a compact second lens, not a replacement for the primary read."
+  },
+  "module_sections": {
+    "fresh_2025_specifics": [
+      {
+        "item_id": "pillar_two_side_by_side_framework",
+        "label": "Pillar Two side-by-side framework update",
+        "text": "FY2025 newly adds dated Pillar Two side-by-side disclosures tied to the June 2025 G7 understanding and January 2026 OECD guidance.",
+        "support_level": "both",
+        "source_run_ids": [
+          "KO_04_p4_i2_novelty_ledger_extended_v2",
+          "KO_05_p4_i2_novelty_ledger_standard_v2"
+        ],
+        "evidence_preview": [
+          {
+            "evidence_id": "ev20",
+            "year_label": "FY2025",
+            "paragraph_id": "ko_2025_p037",
+            "quote_text": "In June 2025, the Group of Seven (\u201cG7\u201d) released a statement announcing an understanding of a potential side-by-side system approach",
+            "short_note": null,
+            "run_id": "KO_04_p4_i2_novelty_ledger_extended_v2"
+          },
+          {
+            "evidence_id": "ev08",
+            "year_label": "FY2025",
+            "paragraph_id": "ko_2025_p037",
+            "quote_text": "In June 2025, the Group of Seven (\u201cG7\u201d) released a statement announcing an understanding of a potential side-by-side system approach to the Pillar Two framework",
+            "short_note": "New date-linked Pillar Two development in FY2025.",
+            "run_id": "KO_05_p4_i2_novelty_ledger_standard_v2"
+          }
+        ]
+      },
+      {
+        "item_id": "bottler_concentration_and_partner_conduct",
+        "label": "Bottler concentration and partner-conduct spillover",
+        "text": "FY2025 newly discloses that one bottler represented 10% of net operating revenues and newly makes bottling-partner conduct a more explicit reputational and execution spillover channel.",
+        "support_level": "extended_primary_standard_compatible",
+        "source_run_ids": [
+          "KO_04_p4_i2_novelty_ledger_extended_v2"
+        ],
+        "evidence_preview": [
+          {
+            "evidence_id": "ev17",
+            "year_label": "FY2025",
+            "paragraph_id": "ko_2025_p032",
+            "quote_text": "one bottler accounted for 10% of our net operating revenues",
+            "short_note": null,
+            "run_id": "KO_04_p4_i2_novelty_ledger_extended_v2"
+          },
+          {
+            "evidence_id": "ev18",
+            "year_label": "FY2025",
+            "paragraph_id": "ko_2025_p033",
+            "quote_text": "actions by our bottling partners, including related to product quality, safety, marketing practices, labor relations, regulatory compliance, sustainability, or other matters",
+            "short_note": null,
+            "run_id": "KO_04_p4_i2_novelty_ledger_extended_v2"
+          }
+        ]
+      }
+    ],
+    "intensified_or_broadened_points": [
+      {
+        "item_id": "tariff_supplier_cost_pass_through",
+        "label": "Tariff risk widened to supplier sourcing costs",
+        "text": "The tariff theme already existed in FY2024, but FY2025 broadens it by explicitly adding supplier-cost pass-through.",
+        "support_level": "both",
+        "source_run_ids": [
+          "KO_04_p4_i2_novelty_ledger_extended_v2",
+          "KO_05_p4_i2_novelty_ledger_standard_v2"
+        ],
+        "evidence_preview": [
+          {
+            "evidence_id": "ev05",
+            "year_label": "FY2024",
+            "paragraph_id": "ko_2024_p002",
+            "quote_text": "new, expanded or retaliatory tariffs;",
+            "short_note": null,
+            "run_id": "KO_04_p4_i2_novelty_ledger_extended_v2"
+          },
+          {
+            "evidence_id": "ev11",
+            "year_label": "FY2025",
+            "paragraph_id": "ko_2025_p011",
+            "quote_text": "such as new, expanded or retaliatory tariffs, including tariffs that increase suppliers\u2019 sourcing costs, sanctions, quotas or trade barriers;",
+            "short_note": "FY2025 adds supplier-cost pass-through specificity.",
+            "run_id": "KO_05_p4_i2_novelty_ledger_standard_v2"
+          }
+        ]
+      },
+      {
+        "item_id": "health_policy_and_snap_pressure",
+        "label": "Sweetened-beverage demand risk broadened with childhood-disease and SNAP examples",
+        "text": "FY2025 keeps the existing sweetened-beverage demand theme but sharpens it with childhood chronic disease initiatives and benefit-program restrictions such as SNAP.",
+        "support_level": "both",
+        "source_run_ids": [
+          "KO_04_p4_i2_novelty_ledger_extended_v2",
+          "KO_05_p4_i2_novelty_ledger_standard_v2"
+        ],
+        "evidence_preview": [
+          {
+            "evidence_id": "ev08",
+            "year_label": "FY2025",
+            "paragraph_id": "ko_2025_p016",
+            "quote_text": "Recent activities and proposals by U.S. federal and state government agencies and initiatives have focused on potential drivers behind the rise in childhood chronic diseases.",
+            "short_note": null,
+            "run_id": "KO_04_p4_i2_novelty_ledger_extended_v2"
+          },
+          {
+            "evidence_id": "ev03",
+            "year_label": "FY2025",
+            "paragraph_id": "ko_2025_p017",
+            "quote_text": "changes in funding for or restrictions on the inclusion of our products in benefit programs, such as the Supplemental Nutrition Assistance Program (SNAP) in the United States",
+            "short_note": "Benefit-program restriction example added in FY2025.",
+            "run_id": "KO_05_p4_i2_novelty_ledger_standard_v2"
+          }
+        ]
+      },
+      {
+        "item_id": "quality_and_recall_execution",
+        "label": "Product-quality execution broadened to contract manufacturers and remediation consequences",
+        "text": "The quality and recall theme persists, but FY2025 widens the operational perimeter to contract manufacturers, more specific triggers, and remediation-driven production effects.",
+        "support_level": "both",
+        "source_run_ids": [
+          "KO_04_p4_i2_novelty_ledger_extended_v2",
+          "KO_05_p4_i2_novelty_ledger_standard_v2"
+        ],
+        "evidence_preview": [
+          {
+            "evidence_id": "ev14",
+            "year_label": "FY2025",
+            "paragraph_id": "ko_2025_p020",
+            "quote_text": "we, our bottling partners or contract manufacturers at times have not met, and may not always meet, these standards",
+            "short_note": null,
+            "run_id": "KO_04_p4_i2_novelty_ledger_extended_v2"
+          },
+          {
+            "evidence_id": "ev14",
+            "year_label": "FY2025",
+            "paragraph_id": "ko_2025_p024",
+            "quote_text": "A recall or any decrease in production resulting from remediation efforts due to quality or safety issues may also lead to lost sales due to the unavailability of product for a period of time",
+            "short_note": "FY2025 adds remediation-driven production-loss consequence.",
+            "run_id": "KO_05_p4_i2_novelty_ledger_standard_v2"
+          }
+        ]
+      }
+    ],
+    "reused_framework_language": [
+      {
+        "item_id": "macro_affordability_and_inflation",
+        "label": "Macro affordability and inflation frame remains",
+        "text": "Both years keep the same basic warning that inflation and weaker economic conditions can pressure beverage affordability and consumer demand.",
+        "support_level": "extended_primary_standard_compatible",
+        "source_run_ids": [
+          "KO_04_p4_i2_novelty_ledger_extended_v2"
+        ],
+        "evidence_preview": [
+          {
+            "evidence_id": "ev01",
+            "year_label": "FY2024",
+            "paragraph_id": "ko_2024_p000",
+            "quote_text": "experienced intensified inflation throughout 2024, which may continue in 2025.",
+            "short_note": null,
+            "run_id": "KO_04_p4_i2_novelty_ledger_extended_v2"
+          },
+          {
+            "evidence_id": "ev02",
+            "year_label": "FY2025",
+            "paragraph_id": "ko_2025_p000",
+            "quote_text": "experienced high rates of inflation throughout 2025, which may continue in 2026.",
+            "short_note": null,
+            "run_id": "KO_04_p4_i2_novelty_ledger_extended_v2"
+          }
+        ]
+      },
+      {
+        "item_id": "supply_chain_input_volatility",
+        "label": "Supply-chain input volatility framework remains",
+        "text": "The broad warning that raw materials and other inputs face volatility and availability pressure remains materially reused across the two filings.",
+        "support_level": "extended_primary_standard_compatible",
+        "source_run_ids": [
+          "KO_04_p4_i2_novelty_ledger_extended_v2"
+        ],
+        "evidence_preview": [
+          {
+            "evidence_id": "ev03",
+            "year_label": "FY2024",
+            "paragraph_id": "ko_2024_p014",
+            "quote_text": "are subject to price volatility and fluctuations in availability caused by many factors.",
+            "short_note": null,
+            "run_id": "KO_04_p4_i2_novelty_ledger_extended_v2"
+          },
+          {
+            "evidence_id": "ev04",
+            "year_label": "FY2025",
+            "paragraph_id": "ko_2025_p010",
+            "quote_text": "are subject to price volatility and fluctuations in availability caused by many factors.",
+            "short_note": null,
+            "run_id": "KO_04_p4_i2_novelty_ledger_extended_v2"
+          }
+        ]
+      },
+      {
+        "item_id": "ai_regulatory_perimeter",
+        "label": "AI and sustainability stay inside recurring compliance scaffolds",
+        "text": "AI, sustainability reporting, and climate-related obligations remain recurring compliance families rather than wholly new FY2025 risk maps.",
+        "support_level": "standard_primary_extended_compatible",
+        "source_run_ids": [
+          "KO_05_p4_i2_novelty_ledger_standard_v2"
+        ],
+        "evidence_preview": [
+          {
+            "evidence_id": "ev23",
+            "year_label": "FY2025",
+            "paragraph_id": "ko_2025_p046",
+            "quote_text": "machine learning and artificial intelligence (including generative artificial intelligence)",
+            "short_note": "AI remains in FY2025 regulatory list.",
+            "run_id": "KO_05_p4_i2_novelty_ledger_standard_v2"
+          },
+          {
+            "evidence_id": "ev25",
+            "year_label": "FY2025",
+            "paragraph_id": "ko_2025_p060",
+            "quote_text": "mandatory due diligence, disclosure and reporting requirements, as well as a variety of voluntary disclosure frameworks and standards across jurisdictions.",
+            "short_note": "Sustainability reporting framework remains in FY2025.",
+            "run_id": "KO_05_p4_i2_novelty_ledger_standard_v2"
+          }
+        ]
+      }
+    ],
+    "boundary_notes": [
+      {
+        "item_id": "named_conflicts_generalized",
+        "label": "Named geopolitical conflicts disappear, but the broader theme remains",
+        "text": "FY2024 named Russia-Ukraine and Middle East conflicts directly, while FY2025 generalizes the language. That looks more like example swapping than a disappearance of geopolitical risk.",
+        "support_level": "both",
+        "source_run_ids": [
+          "KO_04_p4_i2_novelty_ledger_extended_v2",
+          "KO_05_p4_i2_novelty_ledger_standard_v2"
+        ],
+        "evidence_preview": [
+          {
+            "evidence_id": "ev28",
+            "year_label": "FY2024",
+            "paragraph_id": "ko_2024_p001",
+            "quote_text": "including the conflict between Russia and Ukraine and conflicts in the Middle East.",
+            "short_note": null,
+            "run_id": "KO_04_p4_i2_novelty_ledger_extended_v2"
+          },
+          {
+            "evidence_id": "ev19",
+            "year_label": "FY2025",
+            "paragraph_id": "ko_2025_p049",
+            "quote_text": "Global events, including political instability, international conflicts, trade disputes, tariffs, economic sanctions, inflation, increasing interest rates and emerging market volatility",
+            "short_note": "Broader generalized geopolitical framing in FY2025.",
+            "run_id": "KO_05_p4_i2_novelty_ledger_standard_v2"
+          }
+        ]
+      },
+      {
+        "item_id": "named_product_examples_generalized",
+        "label": "Named nontraditional beverage examples were generalized, not clearly removed",
+        "text": "FY2025 drops the prior named value-added dairy and plant-based beverage examples, but the underlying product-expansion and safety complexity theme remains.",
+        "support_level": "standard_primary_extended_compatible",
+        "source_run_ids": [
+          "KO_05_p4_i2_novelty_ledger_standard_v2"
+        ],
+        "evidence_preview": [
+          {
+            "evidence_id": "ev20",
+            "year_label": "FY2024",
+            "paragraph_id": "ko_2024_p022",
+            "quote_text": "such as value-added dairy and plant-based beverages, that are beyond our traditional range of beverage products.",
+            "short_note": "Named nontraditional product-category examples in FY2024.",
+            "run_id": "KO_05_p4_i2_novelty_ledger_standard_v2"
+          },
+          {
+            "evidence_id": "ev21",
+            "year_label": "FY2025",
+            "paragraph_id": "ko_2025_p020",
+            "quote_text": "including as we expand our product offerings through innovation or acquisitions.",
+            "short_note": "Generalized expansion wording in FY2025.",
+            "run_id": "KO_05_p4_i2_novelty_ledger_standard_v2"
+          }
+        ]
+      }
+    ]
+  },
+  "quality_note_path": "data/business_document_protocol_lab/novelty_ledger/ko_p4_quality_notes_v1.json"
+}

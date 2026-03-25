@@ -1,0 +1,39 @@
+{
+  "artifact_schema_id": "effort_robustness_case_v1",
+  "artifact_id": "lly_effort_robustness_v1",
+  "fixture_id": "LLY_2024_2025_10k_item1a",
+  "issuer": {
+    "ticker": "LLY",
+    "issuer_name": "Eli Lilly and Company"
+  },
+  "pair_info": {
+    "ticker": "LLY",
+    "issuer_name": "Eli Lilly and Company",
+    "year_from": 2024,
+    "year_to": 2025,
+    "form_type": "10-K",
+    "section_id": "item_1a"
+  },
+  "headline": "LLY keeps the same visible read under standard effort, but the structured standard captures still carry an explicit integrity caveat.",
+  "stable_findings": [
+    "02 remains the intended strongest first-read lane on the fixed LLY pair.",
+    "03 still matters as the intended same-substrate comparator to 02 after the rerun-backed canonization step.",
+    "00 still functions as a readable control on the same tagged substrate."
+  ],
+  "weakened_under_standard": [
+    "The canonical standard raw file is malformed JSON, which weakens machine-audit reliability relative to the extended pilot surface.",
+    "The canonical standard raw file is malformed JSON, which limits machine validation and keeps the reduced-reasoning claim pilot-grade.",
+    "00 stays noncanonical and ad hoc, so it still cannot support a structured-lane claim."
+  ],
+  "lane_robustness": {
+    "02": "02 remains the intended strongest first-read lane on the fixed LLY pair. The canonical standard raw file is malformed JSON, which weakens machine-audit reliability relative to the extended pilot surface.",
+    "03": "03 still matters as the intended same-substrate comparator to 02 after the rerun-backed canonization step. The canonical standard raw file is malformed JSON, which limits machine validation and keeps the reduced-reasoning claim pilot-grade.",
+    "00": "00 still functions as a readable control on the same tagged substrate. 00 stays noncanonical and ad hoc, so it still cannot support a structured-lane claim."
+  },
+  "winner_stayed_same": true,
+  "comparator_remained_meaningful": true,
+  "control_remained_useful": true,
+  "lane_order_materially_changed": false,
+  "integrity_note": "LLY keeps an explicit capture-integrity caveat: saved standard raw JSON is malformed for lanes 02, 03.",
+  "caveat": "On this fixed LLY pair, protocol value still appears directionally visible under standard thinking, but the claim remains pilot-grade and explicitly bounded by capture-integrity failure on the structured lanes."
+}

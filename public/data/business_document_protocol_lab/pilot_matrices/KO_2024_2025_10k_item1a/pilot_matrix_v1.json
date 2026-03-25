@@ -1,0 +1,39 @@
+{
+  "artifact_schema_id": "pilot_matrix_v1",
+  "matrix_id": "KO_2024_2025_10k_item1a__desktop_pilot_matrix_v1",
+  "fixture_id": "KO_2024_2025_10k_item1a",
+  "pair_info": {
+    "ticker": "KO",
+    "issuer_name": "The Coca-Cola Company",
+    "year_from": 2024,
+    "year_to": 2025,
+    "form_type": "10-K",
+    "section_id": "item_1a"
+  },
+  "pilot_status": {
+    "state": "pilot_active_skeptic_case_slice",
+    "note": "KO is the lower-drift restraint case inside this bounded case view. The visible comparison intentionally stays one-read so the app can show restraint rather than fabricate extra compare lanes."
+  },
+  "lane_roles": {
+    "02_p1_i2_tagged_packet": "hero"
+  },
+  "ordered_cell_ids": [
+    "02_p1_i2_tagged_packet"
+  ],
+  "selected_default_cell_id": "02_p1_i2_tagged_packet",
+  "comparison_pairs": [],
+  "takeaways": [
+    "KO shows that the product can still surface useful filing signal when the pair is mostly stable and selectively sharpened.",
+    "Keeping the visible comparison centered on the primary read avoids panel sprawl and keeps the restraint case legible.",
+    "Fresh vs reused remains available below as a compact secondary check rather than becoming a peer read in the comparison."
+  ],
+  "caveats": [
+    "This is a bounded single-issuer, single-pair restraint-case view, not a benchmark.",
+    "The absence of visible comparison, secondary, and control reads is intentional and should be read as product discipline, not missing hidden winners.",
+    "Claims here improve credibility beyond vivid cases, but they do not justify broad issuer expansion, overlays, or equal-weight promotion of Fresh vs reused."
+  ],
+  "cell_paths": {
+    "02_p1_i2_tagged_packet": "data/business_document_protocol_lab/pilot_matrices/KO_2024_2025_10k_item1a/cells/02_p1_i2_tagged_packet__pilot_matrix_cell_v1.json"
+  },
+  "review_path": "data/business_document_protocol_lab/pilot_matrices/KO_2024_2025_10k_item1a/pilot_matrix_review_v1.json"
+}

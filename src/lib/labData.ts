@@ -39,7 +39,9 @@ const LAB_LLM_CAMPAIGNS_PATH = `${LAB_BASE_PATH}/lab_llm_campaigns_v1.json`
 const LAB_LLM_VARIANTS_PATH = `${LAB_BASE_PATH}/lab_llm_variants_v1.json`
 const LAB_METHOD_TRACKS_PATH = `${LAB_BASE_PATH}/lab_method_tracks_v1.json`
 const LAB_METHOD_PROFILES_PATH = `${LAB_BASE_PATH}/lab_method_profiles_v1.json`
-export const LAB_SHOWCASE_TICKERS = ["NVDA", "KO", "WM", "GE"] as const
+// Visible top-level pilots are now the bounded three-case system. The lower runtime registry can
+// still include additional background cases.
+export const LAB_SHOWCASE_TICKERS = ["NVDA", "LLY", "KO"] as const
 const LAB_TICKER_RE = /^[A-Z0-9.-]{1,10}$/
 const URL_SCHEME_RE = /^[A-Za-z][A-Za-z0-9+.-]*:/
 const DEFAULT_DETERMINISTIC_TRACK_SLUG = "det-baseline-2026-02-21"
@@ -51,6 +53,9 @@ const OUTLINE_COMPARE_INSIGHT_ARTIFACT_ID = "llm_outline_compare_insight"
 const OUTLINE_RESEARCH_ARTIFACT_ID = "llm_outline_research_v1"
 const ACTIVE_RUNTIME_PAIRS: Record<string, Array<{ from: number; to: number }>> = {
   NVDA: [
+    { from: 2024, to: 2025 },
+  ],
+  LLY: [
     { from: 2024, to: 2025 },
   ],
   KO: [

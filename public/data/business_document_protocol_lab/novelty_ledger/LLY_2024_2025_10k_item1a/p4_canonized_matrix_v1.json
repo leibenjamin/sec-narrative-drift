@@ -1,0 +1,256 @@
+{
+  "artifact_schema_id": "p4_canonized_matrix_v1",
+  "artifact_id": "LLY_2024_2025_10k_item1a__p4_canonized_matrix_v1",
+  "fixture_id": "LLY_2024_2025_10k_item1a",
+  "issuer": {
+    "ticker": "LLY",
+    "issuer_name": "Eli Lilly and Company"
+  },
+  "pair_info": {
+    "ticker": "LLY",
+    "issuer_name": "Eli Lilly and Company",
+    "year_from": 2024,
+    "year_to": 2025,
+    "form_type": "10-K",
+    "section_id": "item_1a"
+  },
+  "canonical_run_ids": [
+    "LLY_04_p4_i2_novelty_ledger_extended_v2",
+    "LLY_05_p4_i2_novelty_ledger_standard_v2"
+  ],
+  "canonized_runs": [
+    {
+      "run_id": "LLY_04_p4_i2_novelty_ledger_extended_v2",
+      "reasoning_variant": "extended",
+      "source_response_path": "wave4e37a_lly_p4_transfer_packet_20260321_2221/LLY_04_p4_i2_novelty_ledger_extended_v2/response.json",
+      "source_run_manifest_path": "wave4e37a_lly_p4_transfer_packet_20260321_2221/LLY_04_p4_i2_novelty_ledger_extended_v2/run_manifest.json",
+      "canonization_status": "canonized_as_is",
+      "quality_note_ids": [],
+      "repair_summary": null
+    },
+    {
+      "run_id": "LLY_05_p4_i2_novelty_ledger_standard_v2",
+      "reasoning_variant": "standard",
+      "source_response_path": "wave4e37a_lly_p4_transfer_packet_20260321_2221/LLY_05_p4_i2_novelty_ledger_standard_v2/response.json",
+      "source_run_manifest_path": "wave4e37a_lly_p4_transfer_packet_20260321_2221/LLY_05_p4_i2_novelty_ledger_standard_v2/run_manifest.json",
+      "canonization_status": "canonized_with_evidence_row_correction",
+      "quality_note_ids": [
+        "lly_ev04_exact_substring_correction"
+      ],
+      "repair_summary": "Replaced ev04 quote_text with the exact filing substring from lly_2025_p029. No analytical text or category assignment changed."
+    }
+  ],
+  "issuer_finding_summary": "Across the canonized LLY P4 runs, the strongest freshness signal is a small set of new pricing-and-access specifics, while most of the visible year-over-year movement broadens existing pricing, channel, concentration, competition, tariff, and AI themes rather than introducing wholly new risk families.",
+  "p4_role_statement": "This Fresh vs reused lens is useful for checking whether FY2025 really introduces new pricing and access detail or mainly sharpens an older pharma risk framework. It stays secondary because the primary read is still the broader and more robust first read.",
+  "known_quality_caveats": [
+    "The LLY standard P4 raw response remained parseable, but one evidence row required an exact-substring quote correction against the cited filing paragraph.",
+    "That correction was limited to quote text for ev04 and did not change the analytical meaning or the broad verdict."
+  ],
+  "standard_and_extended_broadly_agree": true,
+  "standard_and_extended_agreement_note": "Yes. Both runs agree that the freshest movement sits in pricing-and-access specifics, that obesity-access/channel detail is broader rather than wholly new, and that most of the filing still rides on a reused framework.",
+  "suitable_for_limited_app_integration": true,
+  "integration_note": "Suitable for a compact secondary module because the same product-legible pattern holds across the extended run and the corrected standard run.",
+  "comparison_to_02": {
+    "where_p4_adds_value": "Fresh vs reused adds a clearer split between genuinely new pricing-access specifics, broadened carryover themes, reused framework language, and boundary cases.",
+    "where_02_remains_stronger": "The primary read remains stronger as the main first-read synthesis because it integrates the full issuer story and is less sensitive to narrow classification decisions.",
+    "why_secondary_only": "Fresh vs reused is useful precisely because it is narrower. That narrowness makes it valuable as a second lens, not as a replacement for the primary read."
+  },
+  "module_sections": {
+    "fresh_2025_specifics": [
+      {
+        "item_id": "us_pricing_arrangements",
+        "label": "New U.S. pricing arrangements",
+        "text": "FY2025 adds newly disclosed U.S. voluntary pricing agreements rather than just refreshing older pricing-pressure language.",
+        "support_level": "both",
+        "source_run_ids": [
+          "LLY_04_p4_i2_novelty_ledger_extended_v2",
+          "LLY_05_p4_i2_novelty_ledger_standard_v2"
+        ],
+        "evidence_preview": [
+          {
+            "run_id": "LLY_04_p4_i2_novelty_ledger_extended_v2",
+            "evidence_id": "ev01",
+            "year_label": "FY2025",
+            "paragraph_id": "lly_2025_p018",
+            "quote_text": "In November 2025, we announced preliminary voluntary agreements with the U.S. government",
+            "short_note": "New U.S. voluntary-agreement disclosure"
+          },
+          {
+            "run_id": "LLY_05_p4_i2_novelty_ledger_standard_v2",
+            "evidence_id": "ev01",
+            "year_label": "FY2025",
+            "paragraph_id": "lly_2025_p018",
+            "quote_text": "In November 2025, we announced preliminary voluntary agreements with the U.S. government",
+            "short_note": "New date-linked U.S. pricing arrangement disclosure."
+          }
+        ]
+      },
+      {
+        "item_id": "updated_medicare_selection",
+        "label": "Updated Medicare selection example",
+        "text": "FY2025 updates the Medicare negotiation story with Lilly-specific 2026 selection detail, making the next pricing wave more concrete.",
+        "support_level": "both",
+        "source_run_ids": [
+          "LLY_04_p4_i2_novelty_ledger_extended_v2",
+          "LLY_05_p4_i2_novelty_ledger_standard_v2"
+        ],
+        "evidence_preview": [
+          {
+            "run_id": "LLY_04_p4_i2_novelty_ledger_extended_v2",
+            "evidence_id": "ev04",
+            "year_label": "FY2025",
+            "paragraph_id": "lly_2025_p020",
+            "quote_text": "In January 2026, HHS selected Trulicity and Verzenio as additional medicines subject to government-set prices to be effective in 2028.",
+            "short_note": "New HHS selection of Trulicity and Verzenio"
+          },
+          {
+            "run_id": "LLY_05_p4_i2_novelty_ledger_standard_v2",
+            "evidence_id": "ev03",
+            "year_label": "FY2025",
+            "paragraph_id": "lly_2025_p020",
+            "quote_text": "In January 2026, HHS selected Trulicity and Verzenio as additional medicines subject to government-set prices to be effective in 2028.",
+            "short_note": "Updated Medicare negotiation example."
+          }
+        ]
+      }
+    ],
+    "intensified_or_broadened_points": [
+      {
+        "item_id": "obesity_access_channel",
+        "label": "Obesity-access and channel pressure broaden",
+        "text": "FY2025 broadens the older pricing/access theme into LillyDirect, self-pay, and more concrete obesity-coverage friction.",
+        "support_level": "both",
+        "source_run_ids": [
+          "LLY_04_p4_i2_novelty_ledger_extended_v2",
+          "LLY_05_p4_i2_novelty_ledger_standard_v2"
+        ],
+        "evidence_preview": [
+          {
+            "run_id": "LLY_04_p4_i2_novelty_ledger_extended_v2",
+            "evidence_id": "ev09",
+            "year_label": "FY2025",
+            "paragraph_id": "lly_2025_p017",
+            "quote_text": "Public and private actors continue to take aggressive steps to control expenditures for pharmaceuticals",
+            "short_note": "FY2025 public/private actor pricing/access framing"
+          },
+          {
+            "run_id": "LLY_05_p4_i2_novelty_ledger_standard_v2",
+            "evidence_id": "ev02",
+            "year_label": "FY2025",
+            "paragraph_id": "lly_2025_p019",
+            "quote_text": "patient self-pay sales through LillyDirect represented a growing portion of our business in 2025",
+            "short_note": "New cash-pay/LillyDirect access disclosure."
+          }
+        ]
+      },
+      {
+        "item_id": "competition_tariff_ai",
+        "label": "Competition, tariff, and AI pressure broaden",
+        "text": "Most of the remaining FY2025 movement is broader scope inside existing competition, global-operations, tariff, and AI themes rather than a new risk family.",
+        "support_level": "extended_primary_standard_compatible",
+        "source_run_ids": [
+          "LLY_04_p4_i2_novelty_ledger_extended_v2"
+        ],
+        "evidence_preview": [
+          {
+            "run_id": "LLY_04_p4_i2_novelty_ledger_extended_v2",
+            "evidence_id": "ev28",
+            "year_label": "FY2025",
+            "paragraph_id": "lly_2025_p067",
+            "quote_text": "AI may enable new competitors in drug discovery and enhance the capabilities of existing competitors",
+            "short_note": "AI-enabled competitors"
+          }
+        ]
+      }
+    ],
+    "reused_framework_language": [
+      {
+        "item_id": "core_rd_frame",
+        "label": "Core R&D uncertainty stays intact",
+        "text": "The filing still relies on the same broad pharma R&D uncertainty frame across both years.",
+        "support_level": "both",
+        "source_run_ids": [
+          "LLY_04_p4_i2_novelty_ledger_extended_v2",
+          "LLY_05_p4_i2_novelty_ledger_standard_v2"
+        ],
+        "evidence_preview": [
+          {
+            "run_id": "LLY_04_p4_i2_novelty_ledger_extended_v2",
+            "evidence_id": "ev36",
+            "year_label": "FY2024",
+            "paragraph_id": "lly_2024_p003",
+            "quote_text": "Pharmaceutical research and development is very costly and highly uncertain",
+            "short_note": "FY2024 R&D uncertainty framing"
+          },
+          {
+            "run_id": "LLY_05_p4_i2_novelty_ledger_standard_v2",
+            "evidence_id": "ev10",
+            "year_label": "FY2024",
+            "paragraph_id": "lly_2024_p003",
+            "quote_text": "Pharmaceutical research and development is very costly and highly uncertain",
+            "short_note": "Stable R&D headline in FY2024."
+          }
+        ]
+      }
+    ],
+    "boundary_notes": [
+      {
+        "item_id": "jardiance_to_new_examples",
+        "label": "New Medicare examples do not erase the old pricing theme",
+        "text": "FY2025 swaps out the older Jardiance detail for newer Trulicity and Verzenio examples, but that is still the same underlying government-pricing risk family.",
+        "support_level": "both",
+        "source_run_ids": [
+          "LLY_04_p4_i2_novelty_ledger_extended_v2",
+          "LLY_05_p4_i2_novelty_ledger_standard_v2"
+        ],
+        "evidence_preview": [
+          {
+            "run_id": "LLY_04_p4_i2_novelty_ledger_extended_v2",
+            "evidence_id": "ev05",
+            "year_label": "FY2024",
+            "paragraph_id": "lly_2024_p020",
+            "quote_text": "In August 2024, HHS announced the government-set prices for these first ten medicines with Jardiance subject to a 66% discount",
+            "short_note": "Prior-year Jardiance discount detail"
+          },
+          {
+            "run_id": "LLY_05_p4_i2_novelty_ledger_standard_v2",
+            "evidence_id": "ev07",
+            "year_label": "FY2024",
+            "paragraph_id": "lly_2024_p020",
+            "quote_text": "In August 2024, HHS announced the government-set prices for these first ten medicines with Jardiance subject to a 66% discount compared to the 2023 U.S. calendar year list price for a 30-day supply",
+            "short_note": "Prior-year pricing-control example."
+          }
+        ]
+      },
+      {
+        "item_id": "tirzepatide_generalized",
+        "label": "The tirzepatide snapshot was generalized, not clearly removed",
+        "text": "FY2025 drops the older tirzepatide-specific supply snapshot, but the broader manufacturing-and-demand theme remains, so this should not be overstated as a true removal.",
+        "support_level": "both",
+        "source_run_ids": [
+          "LLY_04_p4_i2_novelty_ledger_extended_v2",
+          "LLY_05_p4_i2_novelty_ledger_standard_v2"
+        ],
+        "evidence_preview": [
+          {
+            "run_id": "LLY_04_p4_i2_novelty_ledger_extended_v2",
+            "evidence_id": "ev21",
+            "year_label": "FY2024",
+            "paragraph_id": "lly_2024_p054",
+            "quote_text": "demand for our incretin medicines exceeded production",
+            "short_note": "FY2024 named incretin supply example"
+          },
+          {
+            "run_id": "LLY_05_p4_i2_novelty_ledger_standard_v2",
+            "evidence_id": "ev20",
+            "year_label": "FY2024",
+            "paragraph_id": "lly_2024_p054",
+            "quote_text": "While tirzepatide supply currently exceeds demand in the U.S., demand remains dynamic",
+            "short_note": "Concrete 2024 tirzepatide supply snapshot."
+          }
+        ]
+      }
+    ]
+  },
+  "quality_note_path": "data/business_document_protocol_lab/novelty_ledger/lly_p4_quality_notes_v1.json"
+}

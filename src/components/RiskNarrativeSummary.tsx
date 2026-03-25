@@ -461,13 +461,14 @@ export default function RiskNarrativeSummary({
     >
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div className="max-w-3xl">
-          <p className="text-[11px] uppercase tracking-[0.24em] text-slate-400">Compare-first narrative read</p>
+          <p className="text-[11px] uppercase tracking-[0.24em] text-slate-400">Filing answer</p>
           <h3 className="mt-2 text-xl font-semibold text-slate-100">
-            Risk narrative changes: {ticker} {formatFiscalYearLabel(yearFrom)} to {formatFiscalYearLabel(yearTo)}
+            What changed in {ticker}&apos;s filing: {formatFiscalYearLabel(yearFrom)} to {formatFiscalYearLabel(yearTo)}
           </h3>
           <p className="mt-2 text-sm text-slate-300">
-            Start here for the lead story, paired filing evidence, and the places where Codex and ChatGPT are
-            saying the same thing versus emphasizing different parts of the same filing pair.
+            Start here for the lead filing answer, paired evidence, and the places where Codex and
+            ChatGPT reinforce the same shift versus emphasizing different parts of the same filing
+            pair before you move into protocol or audit detail.
           </p>
         </div>
         <div className="rounded-2xl border border-white/10 bg-slate-950/45 px-4 py-3 text-right">

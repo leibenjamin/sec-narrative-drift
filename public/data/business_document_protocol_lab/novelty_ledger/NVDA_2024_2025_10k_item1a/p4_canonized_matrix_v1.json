@@ -1,0 +1,248 @@
+{
+  "artifact_schema_id": "p4_canonized_matrix_v1",
+  "artifact_id": "NVDA_2024_2025_10k_item1a__p4_canonized_matrix_v1",
+  "fixture_id": "NVDA_2024_2025_10k_item1a",
+  "issuer": {
+    "ticker": "NVDA",
+    "issuer_name": "NVIDIA Corporation"
+  },
+  "pair_info": {
+    "ticker": "NVDA",
+    "issuer_name": "NVIDIA Corporation",
+    "year_from": 2024,
+    "year_to": 2025,
+    "form_type": "10-K",
+    "section_id": "item_1a"
+  },
+  "canonical_run_ids": [
+    "NVDA_04_p4_i2_novelty_ledger_extended_v2",
+    "NVDA_05_p4_i2_novelty_ledger_standard_v2"
+  ],
+  "canonized_runs": [
+    {
+      "run_id": "NVDA_04_p4_i2_novelty_ledger_extended_v2",
+      "reasoning_variant": "extended",
+      "source_response_path": "wave4e35_nvda_p4_tightened_packet_20260320_1824/NVDA_04_p4_i2_novelty_ledger_extended_v2/response.json",
+      "source_run_manifest_path": "wave4e35_nvda_p4_tightened_packet_20260320_1824/NVDA_04_p4_i2_novelty_ledger_extended_v2/run_manifest.json",
+      "canonization_status": "canonized_as_is",
+      "quality_note_ids": [],
+      "repair_summary": null
+    },
+    {
+      "run_id": "NVDA_05_p4_i2_novelty_ledger_standard_v2",
+      "reasoning_variant": "standard",
+      "source_response_path": "wave4e35_nvda_p4_tightened_packet_20260320_1824/NVDA_05_p4_i2_novelty_ledger_standard_v2/response.json",
+      "source_run_manifest_path": "wave4e35_nvda_p4_tightened_packet_20260320_1824/NVDA_05_p4_i2_novelty_ledger_standard_v2/run_manifest.json",
+      "canonization_status": "canonized_with_transport_repair",
+      "quality_note_ids": [
+        "nvda_transport_only_quote_repair",
+        "nvda_manifest_review_required_evidence_row"
+      ],
+      "repair_summary": "Applied deterministic transport-only escaping to the two unescaped internal \"AI Diffusion\" quotations in the raw JSON payload."
+    }
+  ],
+  "issuer_finding_summary": "Across the canonized NVDA P4 runs, novelty is concentrated in a small number of named AI-regulation and export-control specifics, while the broader FY2025 move is better read as intensified supply-execution and export-control detail layered onto a largely reused Item 1A structure.",
+  "p4_role_statement": "This Fresh vs reused lens separates genuinely new disclosure from intensified or reused filing structure. It is narrower than the main summary and stays secondary because the primary read still delivers the better first read.",
+  "known_quality_caveats": [
+    "The NVDA standard P4 raw response required deterministic transport repair for unescaped internal quotation marks around AI Diffusion.",
+    "The repaired NVDA standard object still carries one manifest-linked evidence row for the main caveat instead of a filing paragraph; that quality debt is logged, not silently rewritten."
+  ],
+  "standard_and_extended_broadly_agree": true,
+  "standard_and_extended_agreement_note": "Yes. Both runs treat AI Diffusion as the clearest fresh point, keep Blackwell and supply execution in the intensified bucket, and read most of the filing as reused framework language rather than a wholly new risk map.",
+  "suitable_for_limited_app_integration": true,
+  "integration_note": "Suitable for a compact secondary module because the core fresh-versus-reused pattern holds across both runs even after the standard-run transport repair.",
+  "comparison_to_02": {
+    "where_p4_adds_value": "Fresh vs reused adds a cleaner secondary check than the primary read, especially around AI Diffusion, the EU AI Act, and Blackwell as a new example inside an older risk family.",
+    "where_02_remains_stronger": "The primary read remains stronger as the broad default synthesis because it leads with the main filing shift and stays more robust and investor-readable.",
+    "why_secondary_only": "Fresh vs reused is too narrow and slightly more quality-sensitive to replace the primary read, but it is useful as a bounded second lens on novelty claims."
+  },
+  "module_sections": {
+    "fresh_2025_specifics": [
+      {
+        "item_id": "ai_diffusion_ifr",
+        "label": "AI Diffusion IFR",
+        "text": "FY2025 adds the January 2025 AI Diffusion rule as a newly named worldwide export-control regime rather than just another example inside the older export-control theme.",
+        "support_level": "both",
+        "source_run_ids": [
+          "NVDA_04_p4_i2_novelty_ledger_extended_v2",
+          "NVDA_05_p4_i2_novelty_ledger_standard_v2"
+        ],
+        "evidence_preview": [
+          {
+            "run_id": "NVDA_04_p4_i2_novelty_ledger_extended_v2",
+            "evidence_id": "ev_01",
+            "year_label": "FY2025",
+            "paragraph_id": "nvda_2025_p182",
+            "quote_text": "On January 15, 2025, the USG published the \u201cAI Diffusion\u201d IFR in the Federal Register.",
+            "short_note": "Fresh named export-control regime"
+          },
+          {
+            "run_id": "NVDA_05_p4_i2_novelty_ledger_standard_v2",
+            "evidence_id": "ev01",
+            "year_label": "FY2025",
+            "paragraph_id": "nvda_2025_p182",
+            "quote_text": "On January 15, 2025, the USG published the \u201cAI Diffusion\u201d IFR in the Federal Register.",
+            "short_note": "New dated export-control regime disclosure in FY2025."
+          }
+        ]
+      },
+      {
+        "item_id": "eu_ai_act",
+        "label": "EU AI Act",
+        "text": "FY2025 newly names the EU AI Act and links it to model training, deployment, and release constraints in Europe.",
+        "support_level": "extended_primary_standard_compatible",
+        "source_run_ids": [
+          "NVDA_04_p4_i2_novelty_ledger_extended_v2"
+        ],
+        "evidence_preview": [
+          {
+            "run_id": "NVDA_04_p4_i2_novelty_ledger_extended_v2",
+            "evidence_id": "ev_03",
+            "year_label": "FY2025",
+            "paragraph_id": "nvda_2025_p169",
+            "quote_text": "the EU AI Act became effective on August 1, 2024",
+            "short_note": "Fresh named AI-regulation regime"
+          }
+        ]
+      }
+    ],
+    "intensified_or_broadened_points": [
+      {
+        "item_id": "supply_and_blackwell",
+        "label": "Supply and product cadence details",
+        "text": "FY2025 intensifies the existing supply and transition story by elevating long lead times, annual data-center cadence, and a concrete Blackwell yield example.",
+        "support_level": "both",
+        "source_run_ids": [
+          "NVDA_04_p4_i2_novelty_ledger_extended_v2",
+          "NVDA_05_p4_i2_novelty_ledger_standard_v2"
+        ],
+        "evidence_preview": [
+          {
+            "run_id": "NVDA_04_p4_i2_novelty_ledger_extended_v2",
+            "evidence_id": "ev_08",
+            "year_label": "FY2025",
+            "paragraph_id": "nvda_2025_p074",
+            "quote_text": "our gross margins in the second quarter of fiscal year 2025 were negatively impacted by inventory provisions for low-yielding Blackwell material.",
+            "short_note": "Current-year Blackwell example"
+          },
+          {
+            "run_id": "NVDA_05_p4_i2_novelty_ledger_standard_v2",
+            "evidence_id": "ev06",
+            "year_label": "FY2025",
+            "paragraph_id": "nvda_2025_p074",
+            "quote_text": "our gross margins in the second quarter of fiscal year 2025 were negatively impacted by inventory provisions for low-yielding Blackwell material.",
+            "short_note": "Concrete FY2025 Blackwell example within existing transition/supply risk."
+          }
+        ]
+      },
+      {
+        "item_id": "export_control_spillovers",
+        "label": "Export-control spillovers broaden",
+        "text": "FY2025 broadens the existing export-control theme with wider operational spillovers, including tariffs and market-access consequences beyond the older framing.",
+        "support_level": "both",
+        "source_run_ids": [
+          "NVDA_04_p4_i2_novelty_ledger_extended_v2",
+          "NVDA_05_p4_i2_novelty_ledger_standard_v2"
+        ],
+        "evidence_preview": [
+          {
+            "run_id": "NVDA_04_p4_i2_novelty_ledger_extended_v2",
+            "evidence_id": "ev_11",
+            "year_label": "FY2024",
+            "paragraph_id": "nvda_2024_p163",
+            "quote_text": "requests for information from regulators in the European Union, the United Kingdom, and China regarding our sales of GPUs",
+            "short_note": "Narrower prior inquiry scope"
+          },
+          {
+            "run_id": "NVDA_05_p4_i2_novelty_ledger_standard_v2",
+            "evidence_id": "ev04",
+            "year_label": "FY2025",
+            "paragraph_id": "nvda_2025_p070",
+            "quote_text": "government actions or changes in governmental policies, such as export controls, increased restrictions on gaming usage, or tariffs; and",
+            "short_note": "FY2025 adds tariffs to the demand-risk bullet list."
+          }
+        ]
+      }
+    ],
+    "reused_framework_language": [
+      {
+        "item_id": "supplier_dependence",
+        "label": "Supplier dependence stays familiar",
+        "text": "The core warning that NVIDIA depends on third-party manufacturing and supplier execution remains materially reused across both years.",
+        "support_level": "extended_primary_standard_compatible",
+        "source_run_ids": [
+          "NVDA_04_p4_i2_novelty_ledger_extended_v2"
+        ],
+        "evidence_preview": [
+          {
+            "run_id": "NVDA_04_p4_i2_novelty_ledger_extended_v2",
+            "evidence_id": "ev_14",
+            "year_label": "FY2024",
+            "paragraph_id": "nvda_2024_p079",
+            "quote_text": "Dependency on third-party suppliers and their technology to manufacture, assemble, test, or package our products reduces our control over product quantity and quality, manufacturing yields, and product delivery schedules and could harm our business.",
+            "short_note": "Stable supplier-dependence frame"
+          }
+        ]
+      }
+    ],
+    "boundary_notes": [
+      {
+        "item_id": "blackwell_boundary",
+        "label": "Blackwell is a new example, not a new risk family",
+        "text": "The Blackwell disclosure is genuinely new language in FY2025, but it still sits inside the older transition, yield, and inventory-risk family.",
+        "support_level": "both",
+        "source_run_ids": [
+          "NVDA_04_p4_i2_novelty_ledger_extended_v2",
+          "NVDA_05_p4_i2_novelty_ledger_standard_v2"
+        ],
+        "evidence_preview": [
+          {
+            "run_id": "NVDA_04_p4_i2_novelty_ledger_extended_v2",
+            "evidence_id": "ev_08",
+            "year_label": "FY2025",
+            "paragraph_id": "nvda_2025_p074",
+            "quote_text": "our gross margins in the second quarter of fiscal year 2025 were negatively impacted by inventory provisions for low-yielding Blackwell material.",
+            "short_note": "Current-year Blackwell example"
+          },
+          {
+            "run_id": "NVDA_05_p4_i2_novelty_ledger_standard_v2",
+            "evidence_id": "ev06",
+            "year_label": "FY2025",
+            "paragraph_id": "nvda_2025_p074",
+            "quote_text": "our gross margins in the second quarter of fiscal year 2025 were negatively impacted by inventory provisions for low-yielding Blackwell material.",
+            "short_note": "Concrete FY2025 Blackwell example within existing transition/supply risk."
+          }
+        ]
+      },
+      {
+        "item_id": "fresh_vs_family_boundary",
+        "label": "Fresh regimes do not make the whole risk family new",
+        "text": "AI Diffusion and the EU AI Act are fresh named specifics, but they do not turn the broader export-control and AI-regulation theme into a wholly new risk family.",
+        "support_level": "extended_primary_standard_compatible",
+        "source_run_ids": [
+          "NVDA_04_p4_i2_novelty_ledger_extended_v2",
+          "NVDA_04_p4_i2_novelty_ledger_extended_v2"
+        ],
+        "evidence_preview": [
+          {
+            "run_id": "NVDA_04_p4_i2_novelty_ledger_extended_v2",
+            "evidence_id": "ev_01",
+            "year_label": "FY2025",
+            "paragraph_id": "nvda_2025_p182",
+            "quote_text": "On January 15, 2025, the USG published the \u201cAI Diffusion\u201d IFR in the Federal Register.",
+            "short_note": "Fresh named export-control regime"
+          },
+          {
+            "run_id": "NVDA_04_p4_i2_novelty_ledger_extended_v2",
+            "evidence_id": "ev_03",
+            "year_label": "FY2025",
+            "paragraph_id": "nvda_2025_p169",
+            "quote_text": "the EU AI Act became effective on August 1, 2024",
+            "short_note": "Fresh named AI-regulation regime"
+          }
+        ]
+      }
+    ]
+  },
+  "quality_note_path": "data/business_document_protocol_lab/novelty_ledger/nvda_p4_quality_notes_v1.json"
+}

@@ -1,0 +1,72 @@
+{
+  "artifact_schema_id": "pilot_matrix_cell_v1",
+  "cell_id": "02_p1_i2_tagged_packet",
+  "matrix_id": "KO_2024_2025_10k_item1a__desktop_pilot_matrix_v1",
+  "fixture_id": "KO_2024_2025_10k_item1a",
+  "label": "P1 + i2 tagged packet",
+  "short_label": "P1+i2",
+  "role": "hero",
+  "lane_position": 1,
+  "protocol_input_identity": {
+    "protocol_id": "p1_structured_contract_v1",
+    "protocol_label": "P1 structured contract",
+    "input_pack_id": "i2_tagged_document_packet_v1",
+    "input_label": "i2 tagged document packet",
+    "display_text": "P1 structured contract + i2 tagged document packet"
+  },
+  "headline": "FY2025 Item 1A appears mostly stable overall, but it selectively sharpens consumer-demand and product-quality language, adds explicit bottler concentration and reputational spillover exposure, and refreshes the Pillar Two discussion with 2025 to 2026 framework developments rather than broadly recasting the risk section.",
+  "summary": "The clearest emphasis shift is toward consumer-health and demand-shaping pressures: FY2025 adds U.S. childhood-chronic-disease policy attention, SNAP-related benefit-program language, affordability and spending-pattern pressure, and a new sentence on data analytics, automation and artificial intelligence reshaping how consumers engage with brands.",
+  "card_takeaway": "Best first read on the low-drift KO case: useful, specific, and restrained without forcing drama into a mostly stable filing.",
+  "why_this_lane_matters": "This is the primary read because it gives the clearest broad filing shift on KO while keeping the proof boundary compact and the emphasis disciplined.",
+  "output_shape_info": {
+    "contract_mode": "canonical_protocol_json",
+    "display_text": "Canonical change brief plus evidence bundle",
+    "canonical_structured": true
+  },
+  "evidence_richness_tier": "high",
+  "evidence_count_total": 18,
+  "auditability_note": "High auditability: tagged evidence and paragraph ids keep the selective-sharpening read grounded in the saved packet.",
+  "strengths": [
+    "Keeps the filing shift legible without overstating a low-drift case as a dramatic rewrite.",
+    "Tagged paragraph evidence makes it straightforward to audit the specific sharpened points that do matter."
+  ],
+  "limitations": [
+    "This remains a single-company, single-pair case view rather than a benchmark result.",
+    "Much of KO's Item 1A remains reused structure, so the product value comes from restraint as much as novelty detection."
+  ],
+  "evidence_preview": [
+    {
+      "evidence_id": "ev_01",
+      "year_label": "FY2024",
+      "paragraph_id": "ko_2024_p020",
+      "quote_text": "Ongoing public concern about obesity; other health-related public concerns surrounding consumption of sweetened beverages; the effects or perceived effects of the usage of weight-loss drugs on consumption patterns; potential new or increased taxes on sweetened beverages by government entities to reduce consumption or to raise revenue; potential new or increased governmental regulations on particular ingredients or additives in our beverages and packaging, or on manufacturing processes; additional governmental regulations concerning the advertising, marketing, labeling, packaging or sale of our sweetened beverages; and negative publicity resulting from actual or threatened legal actions against us or other companies in our industry relating to the marketing, labeling or sale of sweetened beverages may reduce demand for, or increase the cost of, our sweetened beverages, which could adversely affect our profitability.",
+      "short_note": "Baseline sweetened-beverage health and regulatory risk framing."
+    },
+    {
+      "evidence_id": "ev_02",
+      "year_label": "FY2025",
+      "paragraph_id": "ko_2025_p016",
+      "quote_text": "Recent activities and proposals by U.S. federal and state government agencies and initiatives have focused on potential drivers behind the rise in childhood chronic diseases.",
+      "short_note": "New childhood-chronic-disease governmental initiative reference."
+    },
+    {
+      "evidence_id": "ev_03",
+      "year_label": "FY2025",
+      "paragraph_id": "ko_2025_p017",
+      "quote_text": "Continued governmental focus on such initiatives, as well as ongoing public concern about obesity; other health-related public concerns surrounding consumption of sweetened beverages; the effects or perceived effects of the usage of weight-loss drugs on consumption patterns; potential new or increased taxes on sweetened beverages by government entities to reduce consumption or to raise revenue; potential new or increased governmental regulations on particular ingredients or additives in our beverages and packaging, or on manufacturing processes; additional governmental regulations concerning the advertising, marketing, labeling, packaging or sale of our sweetened beverages; changes in funding for or restrictions on the inclusion of our products in benefit programs, such as the Supplemental Nutrition Assistance Program (SNAP) in the United States\u037e and negative publicity resulting from actual or threatened legal actions against us or other companies in our industry relating to the marketing, labeling or sale of sweetened beverages may reduce demand for, or increase the cost of, our sweetened beverages, which could adversely affect our profitability.",
+      "short_note": "Adds SNAP and benefit-program restriction language to the health and regulatory risk discussion."
+    }
+  ],
+  "raw_source_refs": {
+    "response_path": "wave4e5_third_issuer_skeptic_packet_20260322_0353/KO_02_p1_i2_tagged_packet/response.json",
+    "run_manifest_path": "wave4e5_third_issuer_skeptic_packet_20260322_0353/KO_02_p1_i2_tagged_packet/run_manifest.json"
+  },
+  "normalization_status": {
+    "kind": "canonical_json",
+    "recovered": false,
+    "source_json_parseable": true,
+    "recovery_boundary": null,
+    "required_labels_found": [],
+    "note": "Parsed directly from the canonical structured Desktop response JSON."
+  }
+}

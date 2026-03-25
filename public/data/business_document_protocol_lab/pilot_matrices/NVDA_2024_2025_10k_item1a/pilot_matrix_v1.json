@@ -1,0 +1,70 @@
+{
+  "artifact_schema_id": "pilot_matrix_v1",
+  "matrix_id": "NVDA_2024_2025_10k_item1a__desktop_pilot_matrix_v1",
+  "fixture_id": "NVDA_2024_2025_10k_item1a",
+  "pair_info": {
+    "ticker": "NVDA",
+    "issuer_name": "NVIDIA Corporation",
+    "year_from": 2024,
+    "year_to": 2025,
+    "form_type": "10-K",
+    "section_id": "item_1a"
+  },
+  "pilot_status": {
+    "state": "pilot_active_two_case_slice",
+    "note": "Sourced from the saved ChatGPT Desktop packet captured on March 17, 2026. Roles are fixed for the NVDA slice inside this bounded two-case integration."
+  },
+  "lane_roles": {
+    "02_p1_i2_tagged_packet": "hero",
+    "03_p2_i2_tagged_protocol": "main_comparator",
+    "01_p1_i1_reuse_filtered": "secondary_comparator",
+    "00_b0_unstructured_frontier_baseline": "control"
+  },
+  "ordered_cell_ids": [
+    "02_p1_i2_tagged_packet",
+    "03_p2_i2_tagged_protocol",
+    "01_p1_i1_reuse_filtered",
+    "00_b0_unstructured_frontier_baseline"
+  ],
+  "selected_default_cell_id": "02_p1_i2_tagged_packet",
+  "comparison_pairs": [
+    {
+      "pair_id": "00_to_02_control_vs_hero",
+      "left_cell_id": "00_b0_unstructured_frontier_baseline",
+      "right_cell_id": "02_p1_i2_tagged_packet",
+      "label": "Control read vs Primary read",
+      "purpose": "Same tagged substrate; isolates the effect of structured contract discipline and output shape."
+    },
+    {
+      "pair_id": "01_to_02_input_treatment",
+      "left_cell_id": "01_p1_i1_reuse_filtered",
+      "right_cell_id": "02_p1_i2_tagged_packet",
+      "label": "Secondary comparison vs Primary read",
+      "purpose": "Same P1 contract; isolates filtered reuse input versus tagged packet input."
+    },
+    {
+      "pair_id": "02_to_03_protocol_shift",
+      "left_cell_id": "02_p1_i2_tagged_packet",
+      "right_cell_id": "03_p2_i2_tagged_protocol",
+      "label": "Primary read vs Comparison read",
+      "purpose": "Same tagged substrate; isolates protocol framing changes between P1 and P2."
+    }
+  ],
+  "takeaways": [
+    "On this fixed NVDA Item 1A pair, moving from the control read to the primary read materially improves usefulness, specificity, and auditability without changing the underlying tagged evidence substrate.",
+    "Holding the P1 contract fixed while moving from the secondary comparison to the primary read shows that the tagged packet materially lifts evidence richness and novelty separation over the reuse-filtered input.",
+    "Holding the i2 tagged substrate fixed while moving from the primary read to the comparison read shows that protocol framing alone changes which risk story leads and how the evidence is organized."
+  ],
+  "caveats": [
+    "This is a single-issuer, single-year-pair case comparison, not a benchmark.",
+    "B0 is an honest recovered control lane and should not be read as a canonical structured run.",
+    "Claims here are limited to this NVDA Desktop case view and do not yet generalize across issuers or overlays."
+  ],
+  "cell_paths": {
+    "02_p1_i2_tagged_packet": "data/business_document_protocol_lab/pilot_matrices/NVDA_2024_2025_10k_item1a/cells/02_p1_i2_tagged_packet__pilot_matrix_cell_v1.json",
+    "03_p2_i2_tagged_protocol": "data/business_document_protocol_lab/pilot_matrices/NVDA_2024_2025_10k_item1a/cells/03_p2_i2_tagged_protocol__pilot_matrix_cell_v1.json",
+    "01_p1_i1_reuse_filtered": "data/business_document_protocol_lab/pilot_matrices/NVDA_2024_2025_10k_item1a/cells/01_p1_i1_reuse_filtered__pilot_matrix_cell_v1.json",
+    "00_b0_unstructured_frontier_baseline": "data/business_document_protocol_lab/pilot_matrices/NVDA_2024_2025_10k_item1a/cells/00_b0_unstructured_frontier_baseline__pilot_matrix_cell_v1.json"
+  },
+  "review_path": "data/business_document_protocol_lab/pilot_matrices/NVDA_2024_2025_10k_item1a/pilot_matrix_review_v1.json"
+}

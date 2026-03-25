@@ -1,0 +1,72 @@
+{
+  "artifact_schema_id": "pilot_matrix_cell_v1",
+  "cell_id": "02_p1_i2_tagged_packet",
+  "matrix_id": "NVDA_2024_2025_10k_item1a__desktop_pilot_matrix_v1",
+  "fixture_id": "NVDA_2024_2025_10k_item1a",
+  "label": "P1 + i2 tagged packet",
+  "short_label": "P1+i2",
+  "role": "hero",
+  "lane_position": 1,
+  "protocol_input_identity": {
+    "protocol_id": "p1_structured_contract_v1",
+    "protocol_label": "P1 structured contract",
+    "input_pack_id": "i2_tagged_document_packet_v1",
+    "input_label": "i2 tagged document packet",
+    "display_text": "P1 structured contract + i2 tagged document packet"
+  },
+  "headline": "Compared with FY2024, NVDA's FY2025 Item 1A keeps most of the prior risk architecture but materially intensifies the regulatory story around AI/export controls, broadens the supply-execution story toward long lead times and annual data-center product cadence, and makes customer concentration more explicit by disclosing three direct 10%+ customers.",
+  "summary": "The biggest lead shift is regulatory. FY2024 framed the issue as broad legal and political exposure, with export controls described mainly through China and Country Group restrictions. FY2025 moves that risk to the center by explicitly naming export restrictions in the headline, adding frontier-model and generative-AI regulation, and introducing the January 2025 AI Diffusion IFR as a worldwide licensing and market-access regime.",
+  "card_takeaway": "Best first read on the fixed NVDA case: strongest balance of specificity, novelty separation, and evidence-addressable audit trail.",
+  "why_this_lane_matters": "This is the primary read because it gives the clearest filing delta while staying contract-bounded and paragraph-addressable.",
+  "output_shape_info": {
+    "contract_mode": "canonical_protocol_json",
+    "display_text": "Canonical change brief plus evidence bundle",
+    "canonical_structured": true
+  },
+  "evidence_richness_tier": "high",
+  "evidence_count_total": 18,
+  "auditability_note": "High auditability: tagged evidence and paragraph ids make claim-to-text tracing straightforward.",
+  "strengths": [
+    "Strongest balance of readability and specificity on the fixed NVDA pair.",
+    "Tagged paragraph evidence makes audit follow-through straightforward."
+  ],
+  "limitations": [
+    "Still a read of one issuer-year pair rather than a benchmark result.",
+    "Large reused scaffolds mean added specifics carry most of the visible change signal."
+  ],
+  "evidence_preview": [
+    {
+      "evidence_id": "ev_01",
+      "year_label": "FY2024",
+      "paragraph_id": "nvda_2024_p162",
+      "quote_text": "Our operations could be affected by the complex laws, rules and regulations to which our business is subject, and political and other actions may adversely impact our business.",
+      "short_note": "Baseline regulatory headline is generic."
+    },
+    {
+      "evidence_id": "ev_02",
+      "year_label": "FY2025",
+      "paragraph_id": "nvda_2025_p167",
+      "quote_text": "We are subject to complex laws, rules, regulations, and political and other actions, including restrictions on the export of our products, which may adversely impact our business.",
+      "short_note": "FY2025 headline explicitly adds export restrictions."
+    },
+    {
+      "evidence_id": "ev_03",
+      "year_label": "FY2025",
+      "paragraph_id": "nvda_2025_p169",
+      "quote_text": "Governments and regulators are also considering, and in certain cases, have imposed restrictions on the hardware, software, and systems used to develop frontier foundation models and generative AI. For example, the EU AI Act became effective on August 1, 2024 and will be fully applicable after a two-year transitional period. The EU AI Act may impact our ability to train, deploy, or release AI models in the EU. Several states are considering enacting or have already enacted regulations concerning AI technologies, which may impact our ability to train, deploy, or release AI models, and increase our compliance costs. Restrictions under these and any other regulations, if implemented, could increase the costs and burdens to us and our customers, delay or halt deployment of new systems using our products, and reduce the number of new entrants and customers, negatively impacting our business and financial results. Revisions to laws or regulations or their interpretation and enforcement could also result in increased taxation, trade sanctions, the imposition of or increase to import duties or tariffs, restrictions and controls on imports or exports, or other retaliatory actions, which could have an adverse effect on our business plans or impact the timing of our shipments. Additionally, changes in the public perception of governments in the regions where we operate or plan to operate could negatively impact our business and results of operations.",
+      "short_note": "FY2025 adds frontier-model/generative-AI regulatory constraints and EU AI Act example."
+    }
+  ],
+  "raw_source_refs": {
+    "response_path": "wave4c3a6_split_default_flip_20260317_1702/02_p1_i2_tagged_packet/response.json",
+    "run_manifest_path": "wave4c3a6_split_default_flip_20260317_1702/02_p1_i2_tagged_packet/run_manifest.json"
+  },
+  "normalization_status": {
+    "kind": "canonical_json",
+    "recovered": false,
+    "source_json_parseable": true,
+    "recovery_boundary": null,
+    "required_labels_found": [],
+    "note": "Parsed directly from the canonical structured Desktop response JSON."
+  }
+}
