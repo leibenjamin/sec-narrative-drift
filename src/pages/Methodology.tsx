@@ -1,5 +1,10 @@
 ﻿import { Link } from "react-router-dom"
+import PageMetadata from "../components/PageMetadata"
 import { withBase } from "../lib/paths"
+
+const METHODOLOGY_TITLE = "Methodology | Document Protocol Lab"
+const METHODOLOGY_DESCRIPTION =
+  "How Document Protocol Lab works: static-runtime architecture, evidence-grounded outputs, bounded fixture selection, and auditability without runtime model calls."
 
 const DETECTORS = [
   {
@@ -67,29 +72,31 @@ const DETECTORS = [
 export default function Methodology() {
   return (
     <main className="min-h-screen page-fade">
+      <PageMetadata title={METHODOLOGY_TITLE} description={METHODOLOGY_DESCRIPTION} />
       <div className="mx-auto max-w-6xl space-y-10 px-6 py-12">
         <header className="space-y-4">
           <p className="text-xs uppercase tracking-[0.28em] text-slate-300">Methodology</p>
           <h1 className="text-3xl font-semibold text-slate-50 sm:text-4xl">
-            How to evaluate one case quickly, then audit it deeply
+            How the protocol works
           </h1>
           <p className="max-w-4xl text-sm text-slate-300">
-            Every company page lands on one active FY2024 to FY2025 Item 1A case. The public flow starts with a compare-first
-            narrative summary, then confirms the filing signal with deterministic methods, then opens the deeper structural audit
-            when you want it. Model-produced compare artifacts are offline sidecars with explicit provenance, never runtime inference.
+            Document Protocol Lab is not trying to be a broad research platform. The current live
+            product is a bounded SEC Item 1A pilot: three fixed fixtures, static-runtime data,
+            evidence-grounded outputs, and a reading order that keeps the filing answer first, the
+            protocol meaning second, and the deeper audit third.
           </p>
         </header>
 
         <section className="grid gap-4 lg:grid-cols-[1.15fr_0.85fr]">
           <article className="rounded-3xl border border-sky-300/25 bg-sky-400/10 p-5">
-            <div className="text-xs uppercase tracking-[0.24em] text-sky-100">Fast path</div>
-            <h2 className="mt-2 text-xl font-semibold text-slate-100">How to read a case in 60 seconds</h2>
+            <div className="text-xs uppercase tracking-[0.24em] text-sky-100">Reading order</div>
+            <h2 className="mt-2 text-xl font-semibold text-slate-100">How one case should unfold</h2>
             <ol className="mt-4 space-y-2 text-sm text-slate-200">
-              <li>1. Open a company page and start with the risk narrative summary and paired prior-year versus current-year evidence.</li>
-              <li>2. Check the two core deterministic methods to see whether the language shift looks real.</li>
-              <li>3. Use the agreement panel to decide whether the filing needs a deeper method-by-method read.</li>
-              <li>4. Open outline compare for mechanisms, investor relevance, limits, and side-by-side model framing.</li>
-              <li>5. Treat Insight Lens as optional when it is available, not as part of the default path.</li>
+              <li>1. Start with the filing answer and paired evidence.</li>
+              <li>2. Use the protocol layer to understand why this fixture is in the lab and what the comparison geometry adds.</li>
+              <li>3. Check deterministic methods only when you want to pressure-test the answer.</li>
+              <li>4. Open agreement, structure compare, and deeper lenses only when you want more audit detail.</li>
+              <li>5. Keep bounded stopping points explicit instead of inferring broader coverage than the runtime actually supports.</li>
             </ol>
           </article>
 
@@ -97,15 +104,40 @@ export default function Methodology() {
             <div className="text-xs uppercase tracking-[0.24em] text-slate-300">Core trust model</div>
             <ul className="mt-4 space-y-2 text-sm text-slate-200">
               <li>No runtime LLM or ML calls in the shipped app.</li>
-              <li>Frontend reads static Lab JSON only from <code>data/sec_narrative_drift_lab/</code>.</li>
+              <li>Frontend reads static JSON only from the shipped <code>public/data/...</code> trees.</li>
               <li>SEC text is treated as untrusted input and rendered as plain text only.</li>
               <li>Missing artifacts stay visible with expected paths instead of silently falling back.</li>
+              <li>Model-produced compare artifacts are offline sidecars with explicit provenance, never runtime inference.</li>
             </ul>
           </article>
         </section>
 
+        <section className="grid gap-4 lg:grid-cols-3">
+          <article className="rounded-[1.35rem] border border-white/10 bg-slate-900/45 p-5">
+            <div className="text-xs uppercase tracking-[0.24em] text-slate-400">Fixture selection</div>
+            <p className="mt-3 text-sm text-slate-200">
+              The public pilot stays fixed to NVDA, LLY, and KO so the protocol can be evaluated
+              across vivid change, bounded policy-heavy change, and restraint.
+            </p>
+          </article>
+          <article className="rounded-[1.35rem] border border-white/10 bg-slate-900/45 p-5">
+            <div className="text-xs uppercase tracking-[0.24em] text-slate-400">Freshness and reuse</div>
+            <p className="mt-3 text-sm text-slate-200">
+              Fresh vs reused is a bounded secondary lens. It helps separate genuinely new detail
+              from repeated structure, but it does not replace the main filing answer.
+            </p>
+          </article>
+          <article className="rounded-[1.35rem] border border-white/10 bg-slate-900/45 p-5">
+            <div className="text-xs uppercase tracking-[0.24em] text-slate-400">Auditability</div>
+            <p className="mt-3 text-sm text-slate-200">
+              The audit stack exists to let readers inspect method agreement, structure, limits,
+              and provenance without making those controls the first thing they see.
+            </p>
+          </article>
+        </section>
+
         <section className="space-y-4 rounded-[1.45rem] border border-white/10 bg-slate-900/45 p-5">
-          <h2 className="text-xl font-semibold text-slate-100">What each deterministic method answers</h2>
+          <h2 className="text-xl font-semibold text-slate-100">What the audit methods answer</h2>
           <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
             {DETECTORS.map((detector) => (
               <article key={detector.id} id={`detector-${detector.id}`} className="rounded-xl border border-white/10 bg-slate-950/35 p-4">
@@ -119,7 +151,7 @@ export default function Methodology() {
         </section>
 
         <section className="space-y-4 rounded-[1.45rem] border border-white/10 bg-slate-900/45 p-5">
-          <h2 className="text-xl font-semibold text-slate-100">Why these methods are here</h2>
+          <h2 className="text-xl font-semibold text-slate-100">Why these methods are in the pilot</h2>
           <div className="overflow-x-auto">
             <table className="min-w-full text-left text-xs text-slate-100">
               <thead className="text-slate-300">
@@ -174,6 +206,7 @@ export default function Methodology() {
               <li>Per-method confidence bands are ordinal triage aids, not statistical confidence intervals.</li>
               <li>High agreement is useful, but it does not remove the need to inspect the filing evidence.</li>
               <li>Treat model rows as structured interpretations anchored to evidence, not ground truth by themselves.</li>
+              <li>Bounded visible cases can stop earlier than full-runtime cases; that stopping point is an explicit product decision, not a hidden fallback.</li>
             </ul>
           </article>
         </section>
