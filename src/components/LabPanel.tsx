@@ -6,6 +6,7 @@ import InsightLensPanel from "./InsightLensPanel"
 import OutlineComparePanel from "./OutlineComparePanel"
 import ProtocolLabPilotMatrixPanel from "./ProtocolLabPilotMatrixPanel"
 import RiskNarrativeSummary from "./RiskNarrativeSummary"
+import VisibleCaseAnswerSummary from "./VisibleCaseAnswerSummary"
 import {
   LabDataLoadError,
   buildExpectedLabOutputArtifact,
@@ -1421,6 +1422,14 @@ export default function LabPanel({
     if (isPilotOnlyMatrixView) {
       return (
         <section className="space-y-6">
+          {pilotMatrixBundle ? (
+            <VisibleCaseAnswerSummary
+              bundle={pilotMatrixBundle}
+              noveltyLedger={noveltyLedgerArtifact}
+              effortRobustness={effortRobustnessBundle}
+            />
+          ) : null}
+
           <ProtocolLabPilotMatrixPanel
             bundle={pilotMatrixBundle}
             isLoading={isLoadingPilotMatrix}
@@ -1444,18 +1453,37 @@ export default function LabPanel({
             id="lab-lower-audit-unavailable"
             className="rounded-[1.25rem] border border-amber-300/20 bg-amber-400/10 p-4 text-sm text-slate-200"
           >
-            <div className="text-xs uppercase tracking-wide text-amber-100">
-              Deeper audit intentionally deferred
+            <div className="text-xs uppercase tracking-wide text-amber-100">Scope boundary</div>
+            <div className="mt-3 grid gap-3 md:grid-cols-3">
+              <article className="rounded-lg border border-white/10 bg-slate-950/35 p-3">
+                <div className="text-[11px] uppercase tracking-wide text-slate-300">
+                  Available here
+                </div>
+                <p className="mt-2 text-sm text-slate-100">
+                  The bounded filing answer, protocol meaning, Fresh vs reused, and the matched-effort
+                  integrity surface are part of this public LLY slice.
+                </p>
+              </article>
+              <article className="rounded-lg border border-white/10 bg-slate-950/35 p-3">
+                <div className="text-[11px] uppercase tracking-wide text-slate-300">
+                  Intentionally not here
+                </div>
+                <p className="mt-2 text-sm text-slate-100">
+                  The full lower-audit runtime stack, broader benchmark-style claims, and the deeper
+                  multi-panel runtime route are not part of the public LLY surface.
+                </p>
+              </article>
+              <article className="rounded-lg border border-white/10 bg-slate-950/35 p-3">
+                <div className="text-[11px] uppercase tracking-wide text-slate-300">
+                  Why the stop matters
+                </div>
+                <p className="mt-2 text-sm text-slate-100">
+                  Stopping here keeps the visible policy-heavy case aligned with what the shipped
+                  product actually supports instead of implying audit depth that this issuer does not
+                  currently expose.
+                </p>
+              </article>
             </div>
-            <p className="mt-2 text-sm text-slate-100">
-              LLY stays public as a bounded visible case for FY2024 to FY2025 Item 1A. The
-              protocol layer and novelty read are live; the full lower-audit runtime stack remains
-              intentionally deferred until a true runtime case exists for this issuer.
-            </p>
-            <p className="mt-3 text-xs text-slate-300">
-              This keeps the visible policy-heavy case honest instead of filling the gap with a
-              broader claim than the runtime actually supports.
-            </p>
           </section>
         </section>
       )

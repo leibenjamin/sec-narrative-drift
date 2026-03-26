@@ -453,8 +453,8 @@ export default function ProtocolLabPilotMatrixPanel({
             </h2>
             <p className="mt-2 max-w-3xl text-sm text-slate-200">
               {isSkepticMode
-                ? "This view keeps the filing pair fixed and shows why the restraint case is still useful when the filing is mostly stable and selectively sharpened. Fresh vs reused remains a bounded secondary check."
-                : "This view keeps the filing pair fixed and shows why the case is in the lab, how the visible reads differ, and where the protocol boundary sits."}
+                ? "This is the second-layer protocol read after the filing answer: why the restraint case stays visible, what the visible reads add, and where the protocol boundary sits."
+                : "This is the second-layer protocol read after the filing answer: why this fixture is in the lab, what the visible reads add, and where the protocol boundary sits."}
             </p>
           </div>
 
@@ -500,9 +500,11 @@ export default function ProtocolLabPilotMatrixPanel({
         </div>
 
         <div className="space-y-3 rounded-[1.1rem] border border-sky-300/20 bg-sky-400/10 p-4">
-          <div className="text-xs uppercase tracking-wide text-sky-100">Why this case matters</div>
+          <div className="text-xs uppercase tracking-wide text-sky-100">
+            Why this fixture is in the lab
+          </div>
           <p className="text-sm text-slate-100">{story.why_this_case_matters}</p>
-          <div className="pt-2 text-xs uppercase tracking-wide text-slate-300">Scope note</div>
+          <div className="pt-2 text-xs uppercase tracking-wide text-slate-300">Pilot scope</div>
           <p className="text-sm text-slate-200">{bundle.matrix.pilot_status.note}</p>
         </div>
       </div>
@@ -511,21 +513,21 @@ export default function ProtocolLabPilotMatrixPanel({
         <article className="space-y-4 rounded-[1.1rem] border border-sky-300/20 bg-slate-950/35 p-4">
           <div>
             <div className="text-xs uppercase tracking-wide text-sky-100">
-              What changed in {pairInfo.ticker}&apos;s filing
+              {isSkepticMode ? "What the visible checks add" : "What the visible reads add"}
             </div>
-            <p className="mt-2 text-sm text-slate-200">{story.investor_read}</p>
+            <p className="mt-2 text-sm text-slate-200">{story.protocol_read}</p>
           </div>
-          {renderBulletList(story.consensus_findings, "text-slate-100")}
+          {renderBulletList(bundle.matrix.takeaways, "text-slate-100")}
         </article>
 
         <article className="space-y-4 rounded-[1.1rem] border border-amber-300/20 bg-slate-950/35 p-4">
           <div>
             <div className="text-xs uppercase tracking-wide text-amber-100">
-              {isSkepticMode ? "What the restraint check shows" : "How the reads differ"}
+              Protocol boundary
             </div>
-            <p className="mt-2 text-sm text-slate-200">{story.protocol_read}</p>
+            <p className="mt-2 text-sm text-slate-200">{story.caveat}</p>
           </div>
-          {renderBulletList(story.disagreement_findings, "text-slate-100")}
+          {renderBulletList(bundle.matrix.caveats, "text-slate-100")}
         </article>
       </div>
 
