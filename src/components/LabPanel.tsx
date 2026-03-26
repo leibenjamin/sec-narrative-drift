@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useRef, useState } from "react"
-import { Link } from "react-router-dom"
 import AgreementMatrix from "./AgreementMatrix"
 import CleaningLensToggle from "./CleaningLensToggle"
 import MethodCard from "./MethodCard"
@@ -38,7 +37,6 @@ import {
   loadPilotMatrixBundleForTicker,
   loadSkepticCaseForTicker,
 } from "../lib/protocolLabMatrixData.ts"
-import { formatPilotStatusLabel } from "../lib/protocolLabMatrixPresentation.ts"
 import type {
   LabCase,
   LabCleaningLens,
@@ -1287,16 +1285,6 @@ export default function LabPanel({
     })).filter((group) => group.cards.length > 0)
   }, [methodCards])
 
-  const selectedAvailableDetectorCount = useMemo(() => {
-    let count = 0
-    for (const detectorId of selectedDetectors) {
-      if (availableDetectorSet.has(detectorId)) {
-        count += 1
-      }
-    }
-    return count
-  }, [availableDetectorSet, selectedDetectors])
-
   const deepAutoOpenContextKeys = useMemo(() => {
     return new Set(methodCards.slice(0, 2).map((card) => card.cardKey))
   }, [methodCards])
@@ -1312,28 +1300,9 @@ export default function LabPanel({
     return count
   }, [expandedCards, expansionScopeKey, methodCards])
 
-  const selectedPairLabel = selectedCase
-    ? formatFiscalYearRange(selectedCase.year_from, selectedCase.year_to)
-    : pilotMatrixBundle
-      ? formatFiscalYearRange(
-          pilotMatrixBundle.matrix.pair_info.year_from,
-          pilotMatrixBundle.matrix.pair_info.year_to
-        )
-      : "none"
   const isExecutiveMode = analysisMode === "executive"
   const isDeepMode = analysisMode === "deep"
-  const modeLabel = isDeepMode ? "Deep review" : "Quick read"
   const hasMultipleCases = cases.length > 1
-  const isSkepticPilotSelectedCase = isPilotMatrixSelectedCase && ticker === "KO"
-  const pilotMatrixSurfaceLabel = isSkepticPilotSelectedCase
-    ? "Primary read / restraint note / Fresh vs reused"
-    : "Primary read / Comparison read / Secondary comparison / Control read"
-  const pilotFirstReadText = isSkepticPilotSelectedCase
-    ? "Below the filing answer, this KO case explains why restraint matters, how the low-drift check should be read, and where Fresh vs reused adds bounded context without replacing the main answer."
-    : "Below the filing answer, this case explains why the fixture is in the lab, how the comparison reads differ, and where Fresh vs reused or lower-effort checks add context without replacing the main answer."
-  const pilotDefaultFlowText = isSkepticPilotSelectedCase
-    ? "Use the protocol layer next, then open advanced controls and lower audit only if you want to pressure-test the low-drift read in more detail."
-    : "Use the protocol layer next, then open advanced controls and lower audit only if you want to inspect methods, disagreement, or structure more closely."
 
   const handleApplyPreset = (
     presetDetectorIds: string[],
@@ -1450,77 +1419,8 @@ export default function LabPanel({
 
   if (!cases.length) {
     if (isPilotOnlyMatrixView) {
-      const pilotPairInfo = pilotMatrixBundle?.matrix.pair_info ?? null
-      const pilotPairLabel = pilotPairInfo
-        ? formatFiscalYearRange(pilotPairInfo.year_from, pilotPairInfo.year_to)
-        : "FY2024 to FY2025"
-      const pilotStatusLabel = pilotMatrixBundle?.matrix.pilot_status.state
-        ? formatPilotStatusLabel(pilotMatrixBundle.matrix.pilot_status.state)
-        : isLoadingPilotMatrix
-          ? formatPilotStatusLabel("loading")
-          : formatPilotStatusLabel("unavailable")
-
       return (
         <section className="space-y-6">
-          <div className="rounded-[1.35rem] border border-white/10 bg-white/5 p-4 text-sm text-slate-200 shadow-[0_16px_40px_rgba(2,6,23,0.18)]">
-            <div className="grid gap-4 lg:grid-cols-[1.35fr,0.65fr]">
-              <div className="space-y-4">
-                <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-                  <div className="rounded-lg border border-white/10 bg-slate-900/50 p-3">
-                    <div className="text-xs uppercase tracking-wide text-slate-400">Active case</div>
-                    <div className="mt-1 text-sm font-semibold text-slate-100">{pilotPairLabel}</div>
-                  </div>
-                  <div className="rounded-lg border border-white/10 bg-slate-900/50 p-3">
-                    <div className="text-xs uppercase tracking-wide text-slate-400">Available reads</div>
-                    <div className="mt-1 text-sm font-semibold text-slate-100">
-                      Primary read / Comparison read / Control read
-                    </div>
-                  </div>
-                  <div className="rounded-lg border border-white/10 bg-slate-900/50 p-3">
-                    <div className="text-xs uppercase tracking-wide text-slate-400">Scope</div>
-                    <div className="mt-1 text-sm font-semibold text-slate-100">{pilotStatusLabel}</div>
-                  </div>
-                  <div className="rounded-lg border border-white/10 bg-slate-900/50 p-3">
-                    <div className="text-xs uppercase tracking-wide text-slate-400">Further audit</div>
-                    <div className="mt-1 text-sm font-semibold text-slate-100">Not yet integrated</div>
-                  </div>
-                </div>
-
-                <div className="rounded-lg border border-white/10 bg-slate-950/35 p-4">
-                  <div className="text-xs uppercase tracking-wide text-slate-400">Filing answer</div>
-                  <p className="mt-2 text-sm text-slate-100">
-                    LLY&apos;s visible case centers on pricing access, reimbursement design,
-                    concentration pressure, and policy geometry. Read the filing-shift story and
-                    bounded comparison reads below first, then treat the stopping point as part of
-                    the protocol&apos;s honesty rather than a missing fake full audit.
-                  </p>
-                  <p className="mt-3 text-xs text-slate-400">
-                    This issuer currently ships as a bounded visible case inside Document Protocol
-                    Lab&apos;s SEC Item 1A pilot.
-                  </p>
-                </div>
-              </div>
-
-              <div className="rounded-lg border border-sky-300/20 bg-sky-400/10 p-4">
-                <div className="text-xs uppercase tracking-wide text-sky-100">Boundary note</div>
-                <p className="mt-2 text-sm text-slate-100">
-                  LLY intentionally ships as a bounded visible case. The public surface shows the
-                  filing answer, protocol meaning, and Fresh vs reused honestly without pretending
-                  the deeper lower audit is broader than it is today.
-                </p>
-                <p className="mt-3 text-xs text-slate-200">
-                  That boundary is part of the product claim: scope honesty is visible, not hidden.
-                </p>
-                <Link
-                  className="mt-3 inline-flex text-xs text-sky-100 underline decoration-sky-300/60 underline-offset-2 hover:text-sky-50"
-                  to="/methodology"
-                >
-                  Full methodology
-                </Link>
-              </div>
-            </div>
-          </div>
-
           <ProtocolLabPilotMatrixPanel
             bundle={pilotMatrixBundle}
             isLoading={isLoadingPilotMatrix}
@@ -1584,127 +1484,6 @@ export default function LabPanel({
           analysisMode={analysisMode}
         />
       ) : null}
-
-      <div className="rounded-[1.35rem] border border-white/10 bg-white/5 p-4 text-sm text-slate-200 shadow-[0_16px_40px_rgba(2,6,23,0.18)]">
-        <div className="grid gap-4 lg:grid-cols-[1.35fr,0.65fr]">
-          <div className="space-y-4">
-            <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-              <div className="rounded-lg border border-white/10 bg-slate-900/50 p-3">
-                <div className="text-xs uppercase tracking-wide text-slate-400">Active case</div>
-                <div className="mt-1 text-sm font-semibold text-slate-100">{selectedPairLabel}</div>
-              </div>
-              <div className="rounded-lg border border-white/10 bg-slate-900/50 p-3">
-                <div className="text-xs uppercase tracking-wide text-slate-400">Compare lanes</div>
-                <div className="mt-1 text-sm font-semibold text-slate-100">
-                  {selectedCompareCampaignIds.length > 1
-                    ? `${selectedCampaignLabelA} vs ${selectedCampaignLabelB}`
-                    : selectedCampaignLabelA || selectedCampaignLabelB || "Pending compare lane"}
-                </div>
-              </div>
-              <div className="rounded-lg border border-white/10 bg-slate-900/50 p-3">
-                <div className="text-xs uppercase tracking-wide text-slate-400">
-                  {isPilotMatrixSelectedCase ? "Case comparison" : "Reading mode"}
-                </div>
-                <div className="mt-1 text-sm font-semibold text-slate-100">
-                  {isPilotMatrixSelectedCase
-                    ? pilotMatrixSurfaceLabel
-                    : modeLabel}
-                </div>
-              </div>
-              <div className="rounded-lg border border-white/10 bg-slate-900/50 p-3">
-                <div className="text-xs uppercase tracking-wide text-slate-400">Results available</div>
-                <div className="mt-1 text-sm font-semibold text-slate-100">
-                  {selectedAvailableDetectorCount} of {selectedDetectors.length} methods
-                </div>
-              </div>
-            </div>
-
-            {isPilotMatrixSelectedCase ? (
-              <div className="rounded-lg border border-white/10 bg-slate-950/35 p-4">
-                <div className="text-xs uppercase tracking-wide text-slate-400">Protocol meaning</div>
-                <p className="mt-2 text-sm text-slate-100">
-                  {pilotFirstReadText}
-                </p>
-                <p className="mt-3 text-xs text-slate-400">
-                  The filing answer above should be the first voice on the page. The matrix and the
-                  lower audit stay here to explain why the case matters to the protocol and how much
-                  more inspection it deserves.
-                </p>
-              </div>
-            ) : (
-              <div className="grid gap-4 lg:grid-cols-[1.15fr,0.85fr]">
-                <div className="rounded-lg border border-white/10 bg-slate-950/35 p-4">
-                  <div className="text-xs uppercase tracking-wide text-slate-400">Cleaning lens</div>
-                  <div className="mt-3">
-                    <CleaningLensToggle value={lens} options={lensOptions} onChange={setLens} />
-                  </div>
-                  <p className="mt-3 text-xs text-slate-400">
-                    {lens === "deboilerplated"
-                      ? "Deboilerplated is the default filing-cleaning view because it strips recurring legal boilerplate for a cleaner first read."
-                      : "Switch lenses to compare the default cleaned view with the raw filing text and other preprocessing variants."}
-                  </p>
-                </div>
-
-                <div className="rounded-lg border border-white/10 bg-slate-950/35 p-4">
-                  <div className="text-xs uppercase tracking-wide text-slate-400">Reading mode</div>
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    <button
-                      type="button"
-                      onClick={() => handleApplyPreset(EXECUTIVE_READ_PRESET, "deboilerplated", "executive")}
-                      className={`rounded-md border px-3 py-1.5 text-sm transition ${
-                        isExecutiveMode
-                          ? "border-sky-200/80 bg-sky-400/25 text-sky-50 shadow-[0_0_0_1px_rgba(125,211,252,0.25)]"
-                          : "border-white/15 bg-slate-900/45 text-slate-300 hover:border-white/30 hover:text-slate-100"
-                      }`}
-                    >
-                      Quick read
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => handleApplyPreset(TECHNICAL_DEEP_DIVE_PRESET, lens, "deep")}
-                      className={`rounded-md border px-3 py-1.5 text-sm transition ${
-                        isDeepMode
-                          ? "border-emerald-200/80 bg-emerald-400/25 text-emerald-50 shadow-[0_0_0_1px_rgba(110,231,183,0.25)]"
-                          : "border-white/15 bg-slate-900/45 text-slate-300 hover:border-white/30 hover:text-slate-100"
-                      }`}
-                    >
-                      Deep review
-                    </button>
-                  </div>
-                  <p className="mt-3 text-xs text-slate-400">
-                    {isExecutiveMode
-                      ? "Quick read keeps the two core deterministic methods in view first."
-                      : "Deep review restores the full deterministic set and richer method context."}
-                  </p>
-                  {presetStatus ? (
-                    <p className="mt-2 text-xs text-emerald-300">{presetStatus.message}</p>
-                  ) : null}
-                </div>
-              </div>
-            )}
-          </div>
-
-          <div className="rounded-lg border border-sky-300/20 bg-sky-400/10 p-4">
-            <div className="text-xs uppercase tracking-wide text-sky-100">Audit route</div>
-            <p className="mt-2 text-sm text-slate-100">
-              {isPilotMatrixSelectedCase
-                ? pilotDefaultFlowText
-                : "Use advanced controls and lower audit only when you want to inspect methods, disagreement, or structure more closely."}
-            </p>
-            <p className="mt-3 text-xs text-slate-200">
-              {isPilotMatrixSelectedCase
-                ? "Advanced controls keep cleaning lens, reading mode, campaign overrides, detector selection, utilities, and anchor navigation available without leading the page."
-                : "Advanced controls stay available for campaign overrides, detector selection, utilities, and anchor navigation."}
-            </p>
-            <Link
-              className="mt-3 inline-flex text-xs text-sky-100 underline decoration-sky-300/60 underline-offset-2 hover:text-sky-50"
-              to="/methodology"
-            >
-              Full methodology
-            </Link>
-          </div>
-        </div>
-      </div>
 
       {isPilotMatrixSelectedCase ? (
         <ProtocolLabPilotMatrixPanel

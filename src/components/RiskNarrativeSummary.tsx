@@ -1,10 +1,12 @@
-﻿import { useMemo } from "react"
+import { useMemo } from "react"
 import { formatFiscalYearLabel } from "../lib/fiscalYear"
 import type {
   LabOutlineCompareOutput,
   LabOutlineCompareV2Output,
   LabOutlineEvidence,
   LabOutlineEvidenceRef,
+  LabOutlineInvestorRelevanceRow,
+  LabOutlineLimitRow,
   LabOutlineMaterialChange,
 } from "../lib/labTypes"
 
@@ -31,6 +33,45 @@ type NarrativeCampaignColumn = {
   accentClass: string
   accentTextClass: string
   accentSurfaceClass: string
+}
+
+type AvailableNarrativeCampaignColumn = NarrativeCampaignColumn & {
+  runtime: LabOutlineCompareOutput
+}
+
+type EvidenceSelection = {
+  ref: LabOutlineEvidenceRef | null
+  evidence: LabOutlineEvidence | null
+  note: string | null
+}
+
+type SharedLeadMatch = {
+  leftColumn: AvailableNarrativeCampaignColumn
+  rightColumn: AvailableNarrativeCampaignColumn
+  leftChange: LabOutlineMaterialChange
+  rightChange: LabOutlineMaterialChange
+  overlapRatio: number
+  sharedTokens: string[]
+}
+
+type CompareReadsSummary = {
+  headline: string
+  divergenceLabel: "substantive" | "stylistic" | "single"
+  divergenceText: string
+}
+
+type LeadSummary = {
+  primaryColumn: AvailableNarrativeCampaignColumn
+  primaryChange: LabOutlineMaterialChange
+  secondaryColumn: AvailableNarrativeCampaignColumn | null
+  secondaryChange: LabOutlineMaterialChange | null
+  whatChanged: string
+  secondaryNote: string | null
+  whyItMatters: string
+  caution: string
+  prevEvidence: EvidenceSelection
+  currEvidence: EvidenceSelection
+  isLowDrift: boolean
 }
 
 const CHANGE_CLASS_DISPLAY: Record<string, { label: string; color: string }> = {
@@ -81,6 +122,10 @@ function formatEvidenceRef(ref: LabOutlineEvidenceRef): string {
   return `${ref.year} para ${ref.paragraph_idx + 1}`
 }
 
+function buildEvidenceRefKey(ref: LabOutlineEvidenceRef): string {
+  return `${ref.year}:${ref.paragraph_idx}`
+}
+
 function buildAlignmentDistribution(output: LabOutlineCompareOutput): Map<string, number> {
   const counts = new Map<string, number>()
   for (const row of output.node_alignment) {
@@ -95,6 +140,11 @@ function buildEvidenceLookup(bank: LabOutlineEvidence[]): Map<string, LabOutline
     lookup.set(`${row.year}:${row.paragraph_idx}`, row)
   }
   return lookup
+}
+
+function buildColumnEvidenceLookup(column: NarrativeCampaignColumn): Map<string, LabOutlineEvidence> {
+  const bank = column.structured?.evidence_bank ?? column.runtime?.evidence_bank ?? []
+  return buildEvidenceLookup(bank)
 }
 
 function buildDriftScore(output: LabOutlineCompareOutput): { score: number; label: string } {
@@ -127,58 +177,66 @@ function tokenizeTitle(title: string): string[] {
     .filter((token) => token.length >= 3 && !TITLE_STOP_WORDS.has(token))
 }
 
-function buildLeadComparison(columns: NarrativeCampaignColumn[]): {
-  headline: string
-  divergenceLabel: "substantive" | "stylistic" | "single"
-  divergenceText: string
-} {
-  const available = columns.filter((column) => sortMaterialChanges(column.runtime)[0])
-  if (available.length < 2) {
-    return {
-      headline: "One compare campaign is active for this filing pair.",
-      divergenceLabel: "single",
-      divergenceText:
-        "Use the deterministic agreement view below to cross-check the lead story until a second campaign is available.",
-    }
-  }
-
-  const leftLead = sortMaterialChanges(available[0].runtime)[0]
-  const rightLead = sortMaterialChanges(available[1].runtime)[0]
-  if (!leftLead || !rightLead) {
-    return {
-      headline: "Lead-change comparison is unavailable.",
-      divergenceLabel: "single",
-      divergenceText: "At least one campaign is missing ranked material-change rows.",
-    }
-  }
-
-  const leftTokens = new Set(tokenizeTitle(leftLead.title))
-  const rightTokens = new Set(tokenizeTitle(rightLead.title))
+function compareChangeTitles(left: LabOutlineMaterialChange, right: LabOutlineMaterialChange) {
+  const leftTokens = new Set(tokenizeTitle(left.title))
+  const rightTokens = new Set(tokenizeTitle(right.title))
   const sharedTokens: string[] = []
+
   for (const token of leftTokens) {
     if (rightTokens.has(token)) {
       sharedTokens.push(token)
     }
   }
+
   const unionSize = new Set([...leftTokens, ...rightTokens]).size
   const overlapRatio = unionSize > 0 ? sharedTokens.length / unionSize : 0
-  const sameClass = leftLead.change_class === rightLead.change_class
+  const sameClass = left.change_class === right.change_class
+  const isShared = overlapRatio >= 0.3 || (sameClass && overlapRatio >= 0.18)
 
-  if (overlapRatio >= 0.3 || (sameClass && overlapRatio >= 0.18)) {
-    const sharedTheme = sharedTokens.slice(0, 4).join(", ") || "a similar operating-risk channel"
-    return {
-      headline: `Both campaigns lead with the same core shift: ${sharedTheme}.`,
-      divergenceLabel: "stylistic",
-      divergenceText: `${available[0].label} frames it as "${leftLead.title}", while ${available[1].label} frames it as "${rightLead.title}". The difference looks more like emphasis and wording than a different lead story.`,
+  return {
+    sharedTokens,
+    overlapRatio,
+    isShared,
+  }
+}
+
+function describeSharedTheme(sharedTokens: string[]): string {
+  return sharedTokens.slice(0, 4).join(", ") || "a similar operating-risk channel"
+}
+
+function countSharedEvidenceRefs(
+  leftRefs: LabOutlineEvidenceRef[],
+  rightRefs: LabOutlineEvidenceRef[]
+): number {
+  const rightKeys = new Set(rightRefs.map((ref) => buildEvidenceRefKey(ref)))
+  let count = 0
+  for (const ref of leftRefs) {
+    if (rightKeys.has(buildEvidenceRefKey(ref))) {
+      count += 1
+    }
+  }
+  return count
+}
+
+function selectBestEvidenceBoundRow<T extends { evidence_refs: LabOutlineEvidenceRef[] }>(
+  rows: T[],
+  targetRefs: LabOutlineEvidenceRef[]
+): T | null {
+  if (rows.length === 0) return null
+  if (targetRefs.length === 0) return rows[0]
+
+  let bestRow: T | null = null
+  let bestScore = -1
+
+  for (const row of rows) {
+    const score = countSharedEvidenceRefs(row.evidence_refs, targetRefs)
+    if (score > bestScore) {
+      bestScore = score
+      bestRow = row
     }
   }
 
-  return {
-    headline: `${available[0].label} leads with "${leftLead.title}", while ${available[1].label} leads with "${rightLead.title}".`,
-    divergenceLabel: "substantive",
-    divergenceText:
-      "The two campaigns emphasize different lead mechanisms. Compare the paired evidence before treating them as interchangeable summaries.",
-  }
+  return bestScore > 0 ? bestRow : rows[0]
 }
 
 function findEvidenceForRef(
@@ -193,8 +251,9 @@ function renderEvidenceCard(props: {
   year: number
   ref: LabOutlineEvidenceRef | null
   evidence: LabOutlineEvidence | null
+  note?: string | null
 }) {
-  const { heading, year, ref, evidence } = props
+  const { heading, year, ref, evidence, note = null } = props
   return (
     <div className="rounded-lg border border-white/10 bg-slate-950/45 p-3">
       <div className="text-[11px] uppercase tracking-wide text-slate-400">{heading}</div>
@@ -203,14 +262,287 @@ function renderEvidenceCard(props: {
           <div className="mt-1 text-[11px] text-slate-500">{formatEvidenceRef(ref)}</div>
           <p className="mt-2 text-xs text-slate-100">"{evidence.snippet}"</p>
           <p className="mt-1 text-[11px] text-slate-400">{evidence.why}</p>
+          {note ? <p className="mt-2 text-[11px] text-slate-500">{note}</p> : null}
+        </>
+      ) : ref ? (
+        <>
+          <div className="mt-1 text-[11px] text-slate-500">{formatEvidenceRef(ref)}</div>
+          <p className="mt-2 text-xs text-slate-400">
+            {note ?? "The surfaced reference did not resolve to a stored evidence snippet."}
+          </p>
         </>
       ) : (
         <p className="mt-2 text-xs text-slate-400">
-          No {year}-year evidence reference was surfaced for this change.
+          {note ?? `No ${year}-year evidence reference was surfaced for this lead change.`}
         </p>
       )}
     </div>
   )
+}
+
+function filterAvailableColumns(columns: NarrativeCampaignColumn[]): AvailableNarrativeCampaignColumn[] {
+  return columns.filter((column): column is AvailableNarrativeCampaignColumn => Boolean(column.runtime))
+}
+
+function buildSharedLeadMatch(columns: NarrativeCampaignColumn[]): SharedLeadMatch | null {
+  const available = filterAvailableColumns(columns).slice(0, 2)
+  if (available.length < 2) {
+    return null
+  }
+
+  const leftChanges = sortMaterialChanges(available[0].runtime).slice(0, 3)
+  const rightChanges = sortMaterialChanges(available[1].runtime).slice(0, 3)
+  let bestMatch: SharedLeadMatch | null = null
+  let bestMaxSalience = -1
+  let bestTotalSalience = -1
+
+  for (const leftChange of leftChanges) {
+    for (const rightChange of rightChanges) {
+      const overlap = compareChangeTitles(leftChange, rightChange)
+      if (!overlap.isShared) {
+        continue
+      }
+
+      const maxSalience = Math.max(leftChange.salience, rightChange.salience)
+      const totalSalience = leftChange.salience + rightChange.salience
+      if (
+        maxSalience > bestMaxSalience ||
+        (maxSalience === bestMaxSalience && totalSalience > bestTotalSalience)
+      ) {
+        bestMaxSalience = maxSalience
+        bestTotalSalience = totalSalience
+        bestMatch = {
+          leftColumn: available[0],
+          rightColumn: available[1],
+          leftChange,
+          rightChange,
+          overlapRatio: overlap.overlapRatio,
+          sharedTokens: overlap.sharedTokens,
+        }
+      }
+    }
+  }
+
+  return bestMatch
+}
+
+function selectLeadEvidenceForYear(
+  year: number,
+  primaryColumn: NarrativeCampaignColumn,
+  primaryChange: LabOutlineMaterialChange,
+  secondaryColumn: NarrativeCampaignColumn | null,
+  secondaryChange: LabOutlineMaterialChange | null
+): EvidenceSelection {
+  const candidates = [
+    {
+      column: primaryColumn,
+      change: primaryChange,
+      note: null,
+    },
+    ...(secondaryColumn && secondaryChange
+      ? [
+          {
+            column: secondaryColumn,
+            change: secondaryChange,
+            note: `Using ${secondaryColumn.label || `Campaign ${secondaryColumn.id}`} evidence for this year because it is the clearest paired excerpt available.`,
+          },
+        ]
+      : []),
+  ]
+
+  let unresolvedSelection: EvidenceSelection | null = null
+
+  for (const candidate of candidates) {
+    const ref = candidate.change.evidence_refs.find((item) => item.year === year) ?? null
+    if (!ref) {
+      continue
+    }
+
+    const evidence = findEvidenceForRef(ref, buildColumnEvidenceLookup(candidate.column))
+    if (evidence) {
+      return {
+        ref,
+        evidence,
+        note: candidate.note,
+      }
+    }
+
+    if (!unresolvedSelection) {
+      unresolvedSelection = {
+        ref,
+        evidence: null,
+        note: "The surfaced reference did not resolve to a stored evidence snippet.",
+      }
+    }
+  }
+
+  return (
+    unresolvedSelection ?? {
+      ref: null,
+      evidence: null,
+      note: `No ${year}-year evidence reference was surfaced for this lead change.`,
+    }
+  )
+}
+
+function selectWhyItMattersRow(
+  column: NarrativeCampaignColumn,
+  change: LabOutlineMaterialChange
+): LabOutlineInvestorRelevanceRow | null {
+  const rows = column.structured?.investor_relevance ?? []
+  return selectBestEvidenceBoundRow(rows, change.evidence_refs)
+}
+
+function selectLimitationRow(
+  column: NarrativeCampaignColumn,
+  change: LabOutlineMaterialChange
+): LabOutlineLimitRow | null {
+  const rows = column.structured?.uncertainty_and_limits ?? []
+  return selectBestEvidenceBoundRow(rows, change.evidence_refs)
+}
+
+function buildLeadSummary(
+  columns: NarrativeCampaignColumn[],
+  yearFrom: number,
+  yearTo: number
+): LeadSummary | null {
+  const available = filterAvailableColumns(columns).slice(0, 2)
+  if (available.length === 0) {
+    return null
+  }
+
+  const sharedMatch = buildSharedLeadMatch(available)
+  const isLowDrift = available.every((column) => buildDriftScore(column.runtime).label === "Low drift")
+
+  let primaryColumn: AvailableNarrativeCampaignColumn
+  let primaryChange: LabOutlineMaterialChange | null
+  let secondaryColumn: AvailableNarrativeCampaignColumn | null = null
+  let secondaryChange: LabOutlineMaterialChange | null = null
+
+  if (sharedMatch) {
+    const leftIsPrimary = sharedMatch.leftChange.salience >= sharedMatch.rightChange.salience
+    primaryColumn = leftIsPrimary ? sharedMatch.leftColumn : sharedMatch.rightColumn
+    primaryChange = leftIsPrimary ? sharedMatch.leftChange : sharedMatch.rightChange
+    secondaryColumn = leftIsPrimary ? sharedMatch.rightColumn : sharedMatch.leftColumn
+    secondaryChange = leftIsPrimary ? sharedMatch.rightChange : sharedMatch.leftChange
+  } else {
+    primaryColumn = available[0]
+    primaryChange = sortMaterialChanges(primaryColumn.runtime)[0] ?? null
+
+    if (available[1]) {
+      secondaryColumn = available[1]
+      secondaryChange = sortMaterialChanges(secondaryColumn.runtime)[0] ?? null
+    }
+  }
+
+  if (!primaryChange) {
+    return null
+  }
+
+  const primaryLabel = primaryColumn.label || `Campaign ${primaryColumn.id}`
+  const secondaryLabel = secondaryColumn?.label || (secondaryColumn ? `Campaign ${secondaryColumn.id}` : "")
+
+  let whatChanged: string
+  let secondaryNote: string | null = null
+
+  if (sharedMatch && secondaryChange && secondaryColumn) {
+    whatChanged = isLowDrift
+      ? `Both visible reads still describe a low-drift filing. The main movement is selective sharpening around ${primaryChange.title}.`
+      : `Both visible reads converge on the same filing shift: ${primaryChange.title}.`
+    secondaryNote = `${secondaryLabel} frames the same shift as "${secondaryChange.title}".`
+  } else if (secondaryChange && secondaryColumn) {
+    whatChanged = isLowDrift
+      ? `This filing still reads as low drift. The clearest surfaced movement is ${primaryChange.title}.`
+      : `${primaryLabel} leads with: ${primaryChange.title}.`
+    secondaryNote = `${secondaryLabel} instead leads with "${secondaryChange.title}".`
+  } else {
+    whatChanged = isLowDrift
+      ? `This filing still reads as low drift. The clearest surfaced movement is ${primaryChange.title}.`
+      : `The clearest surfaced filing shift is ${primaryChange.title}.`
+  }
+
+  const whyItMattersRow =
+    selectWhyItMattersRow(primaryColumn, primaryChange) ??
+    (secondaryColumn && secondaryChange ? selectWhyItMattersRow(secondaryColumn, secondaryChange) : null)
+  const limitationRow =
+    selectLimitationRow(primaryColumn, primaryChange) ??
+    (secondaryColumn && secondaryChange ? selectLimitationRow(secondaryColumn, secondaryChange) : null)
+
+  const whyItMatters =
+    whyItMattersRow?.why_it_matters ??
+    "No structured why-it-matters row was surfaced for this lead change."
+  const baseCaution = limitationRow?.limitation ?? primaryChange.caveat
+  const caution = isLowDrift
+    ? `Low drift is part of the signal here. Read this as selective sharpening rather than a wholesale rewrite. ${baseCaution}`
+    : baseCaution
+
+  return {
+    primaryColumn,
+    primaryChange,
+    secondaryColumn,
+    secondaryChange,
+    whatChanged,
+    secondaryNote,
+    whyItMatters,
+    caution,
+    prevEvidence: selectLeadEvidenceForYear(
+      yearFrom,
+      primaryColumn,
+      primaryChange,
+      secondaryColumn,
+      secondaryChange
+    ),
+    currEvidence: selectLeadEvidenceForYear(
+      yearTo,
+      primaryColumn,
+      primaryChange,
+      secondaryColumn,
+      secondaryChange
+    ),
+    isLowDrift,
+  }
+}
+
+function buildCompareReadsSummary(columns: NarrativeCampaignColumn[]): CompareReadsSummary {
+  const available = filterAvailableColumns(columns).slice(0, 2)
+  if (available.length < 2) {
+    return {
+      headline: "One visible compare read is active for this filing pair.",
+      divergenceLabel: "single",
+      divergenceText:
+        "Use the deterministic agreement view below to cross-check the lead story until a second compare lane is available.",
+    }
+  }
+
+  const sharedMatch = buildSharedLeadMatch(available)
+  if (sharedMatch) {
+    const leftLabel = sharedMatch.leftColumn.label || `Campaign ${sharedMatch.leftColumn.id}`
+    const rightLabel = sharedMatch.rightColumn.label || `Campaign ${sharedMatch.rightColumn.id}`
+    return {
+      headline: `Both visible reads point to the same core shift: ${describeSharedTheme(sharedMatch.sharedTokens)}.`,
+      divergenceLabel: "stylistic",
+      divergenceText: `${leftLabel} frames it as "${sharedMatch.leftChange.title}", while ${rightLabel} frames it as "${sharedMatch.rightChange.title}". The difference looks more like emphasis and wording than a different lead story.`,
+    }
+  }
+
+  const leftLead = sortMaterialChanges(available[0].runtime)[0]
+  const rightLead = sortMaterialChanges(available[1].runtime)[0]
+  if (!leftLead || !rightLead) {
+    return {
+      headline: "Lead-change comparison is unavailable.",
+      divergenceLabel: "single",
+      divergenceText: "At least one campaign is missing ranked material-change rows.",
+    }
+  }
+
+  const leftLabel = available[0].label || `Campaign ${available[0].id}`
+  const rightLabel = available[1].label || `Campaign ${available[1].id}`
+  return {
+    headline: `${leftLabel} leads with "${leftLead.title}", while ${rightLabel} leads with "${rightLead.title}".`,
+    divergenceLabel: "substantive",
+    divergenceText:
+      "The two visible reads emphasize different lead mechanisms. Compare the paired evidence before treating them as interchangeable summaries.",
+  }
 }
 
 function renderCampaignNarrativeColumn(props: {
@@ -237,8 +569,7 @@ function renderCampaignNarrativeColumn(props: {
   }
 
   const drift = buildDriftScore(runtime)
-  const alignmentCounts = buildAlignmentDistribution(runtime)
-  const evidenceLookup = structured ? buildEvidenceLookup(structured.evidence_bank) : new Map<string, LabOutlineEvidence>()
+  const evidenceLookup = buildColumnEvidenceLookup(column)
   const topChanges = sortMaterialChanges(runtime).slice(0, analysisMode === "executive" ? 3 : 5)
   const investorItems = structured?.investor_relevance.slice(0, analysisMode === "executive" ? 2 : 3) ?? []
   const mechanismItems = structured?.change_mechanisms.slice(0, analysisMode === "executive" ? 2 : 3) ?? []
@@ -246,35 +577,21 @@ function renderCampaignNarrativeColumn(props: {
 
   return (
     <div className="space-y-4 rounded-2xl border border-white/10 bg-slate-950/35 p-4 shadow-[0_18px_40px_rgba(2,6,23,0.25)]">
-      <div className="flex flex-wrap items-start justify-between gap-3">
-        <div>
-          <div className={`inline-flex rounded-full border px-2.5 py-1 text-[11px] font-medium ${column.accentClass}`}>
-            {column.label}
-          </div>
-          <p className={`mt-2 text-sm font-semibold ${column.accentTextClass}`}>{drift.label}</p>
-          <p className="text-xs text-slate-400">
-            {runtime.material_changes.length} material changes | top salience {runtime.material_changes[0]?.salience.toFixed(2) ?? "n/a"}
-          </p>
+      <div className="space-y-2">
+        <div className={`inline-flex rounded-full border px-2.5 py-1 text-[11px] font-medium ${column.accentClass}`}>
+          {column.label}
         </div>
-        <div className="min-w-40 rounded-xl border border-white/10 bg-slate-900/55 p-3 text-right">
-          <div className="text-[11px] uppercase tracking-wide text-slate-400">Structural drift</div>
-          <div className="mt-1 text-2xl font-semibold text-slate-100">{(drift.score * 100).toFixed(0)}%</div>
-          <div className="mt-1 text-[11px] text-slate-400">
-            {(["added", "removed", "intensified", "softened", "split", "stable"] as const)
-              .map((changeClass) => {
-                const count = alignmentCounts.get(changeClass) ?? 0
-                return count > 0 ? `${changeClass}:${count}` : null
-              })
-              .filter((value) => Boolean(value))
-              .join(" | ")}
-          </div>
-        </div>
+        <p className={`text-sm font-semibold ${column.accentTextClass}`}>
+          {topChanges[0]?.title ?? "No lead change surfaced."}
+        </p>
+        <p className="text-xs text-slate-400">
+          {drift.label} | {runtime.material_changes.length} material changes surfaced
+        </p>
       </div>
 
       <div className={`rounded-xl border px-3 py-2 text-xs ${column.accentSurfaceClass}`}>
-        <div className="font-medium text-slate-100">Lead narrative</div>
-        <p className="mt-1 text-slate-200">{topChanges[0]?.title ?? "No lead change surfaced."}</p>
-        <p className="mt-1 text-slate-400">{runtime.lens_divergence.summary}</p>
+        <div className="font-medium text-slate-100">Campaign framing</div>
+        <p className="mt-1 text-slate-200">{runtime.lens_divergence.summary}</p>
       </div>
 
       <div className="space-y-3">
@@ -440,7 +757,8 @@ export default function RiskNarrativeSummary({
   }, [modelALabel, modelARuntime, modelAStructured, modelBLabel, modelBRuntime, modelBStructured])
 
   const hasAnyRuntime = columns.some((column) => column.runtime)
-  const compareSummary = useMemo(() => buildLeadComparison(columns), [columns])
+  const leadSummary = useMemo(() => buildLeadSummary(columns, yearFrom, yearTo), [columns, yearFrom, yearTo])
+  const compareSummary = useMemo(() => buildCompareReadsSummary(columns), [columns])
 
   if (!hasAnyRuntime) {
     return (
@@ -466,9 +784,9 @@ export default function RiskNarrativeSummary({
             What changed in {ticker}&apos;s filing: {formatFiscalYearLabel(yearFrom)} to {formatFiscalYearLabel(yearTo)}
           </h3>
           <p className="mt-2 text-sm text-slate-300">
-            Start here for the lead filing answer, paired evidence, and the places where Codex and
-            ChatGPT reinforce the same shift versus emphasizing different parts of the same filing
-            pair before you move into protocol or audit detail.
+            Start with the filing answer, why it matters, and paired evidence. Open Compare reads only
+            when you want to see where the visible runs line up or diverge before moving deeper into
+            protocol or audit detail.
           </p>
         </div>
         <div className="rounded-2xl border border-white/10 bg-slate-950/45 px-4 py-3 text-right">
@@ -484,48 +802,109 @@ export default function RiskNarrativeSummary({
         </div>
       </div>
 
-      <div className="grid gap-3 xl:grid-cols-[1.35fr,0.65fr,0.65fr]">
-        <div className="rounded-2xl border border-white/10 bg-slate-950/45 p-4">
-          <div className="flex flex-wrap items-center gap-2">
-            <span
-              className={`rounded-full border px-2.5 py-1 text-[11px] font-medium ${
-                compareSummary.divergenceLabel === "substantive"
-                  ? "border-amber-300/35 bg-amber-400/12 text-amber-100"
-                  : compareSummary.divergenceLabel === "stylistic"
-                    ? "border-sky-300/35 bg-sky-400/12 text-sky-100"
-                    : "border-white/15 bg-white/5 text-slate-200"
-              }`}
-            >
-              {compareSummary.divergenceLabel === "single"
-                ? "Single campaign"
-                : `${compareSummary.divergenceLabel} divergence`}
-            </span>
-          </div>
-          <p className="mt-3 text-base font-semibold text-slate-100">{compareSummary.headline}</p>
-          <p className="mt-2 text-sm text-slate-300">{compareSummary.divergenceText}</p>
-        </div>
-        {columns.slice(0, 2).map((column) => {
-          const runtime = column.runtime
-          const drift = runtime ? buildDriftScore(runtime) : null
-          const lead = runtime ? sortMaterialChanges(runtime)[0] : null
-          return (
-            <div key={`compare-summary-${column.id}`} className="rounded-2xl border border-white/10 bg-slate-950/45 p-4">
-              <div className={`inline-flex rounded-full border px-2.5 py-1 text-[11px] font-medium ${column.accentClass}`}>
-                {column.label || `Campaign ${column.id}`}
+      {leadSummary ? (
+        <>
+          <div className="grid gap-4 xl:grid-cols-[1.15fr,0.85fr]">
+            <article className="rounded-2xl border border-white/10 bg-slate-950/45 p-4">
+              <div className="flex flex-wrap items-center gap-2">
+                {formatClassBadge(leadSummary.primaryChange.change_class)}
+                <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] text-slate-200">
+                  {leadSummary.primaryColumn.label || `Campaign ${leadSummary.primaryColumn.id}`}
+                </span>
+                {leadSummary.isLowDrift ? (
+                  <span className="rounded-full border border-sky-300/25 bg-sky-400/10 px-2.5 py-1 text-[11px] text-sky-100">
+                    Low-drift signal
+                  </span>
+                ) : null}
               </div>
-              {runtime && drift ? (
-                <>
-                  <div className="mt-3 text-xl font-semibold text-slate-100">{(drift.score * 100).toFixed(0)}%</div>
-                  <p className="text-xs text-slate-300">{drift.label}</p>
-                  <p className="mt-2 text-xs text-slate-400">Lead change: {lead?.title ?? "Unavailable"}</p>
-                </>
-              ) : (
-                <p className="mt-3 text-xs text-slate-400">No runtime compare artifact loaded for this campaign.</p>
-              )}
+              <div className="mt-4">
+                <div className="text-[11px] uppercase tracking-wide text-slate-400">What changed</div>
+                <p className="mt-2 text-lg font-semibold text-slate-100">{leadSummary.whatChanged}</p>
+                {leadSummary.secondaryNote ? (
+                  <p className="mt-2 text-sm text-slate-300">{leadSummary.secondaryNote}</p>
+                ) : null}
+              </div>
+            </article>
+
+            <div className="grid gap-4">
+              <article className="rounded-2xl border border-white/10 bg-slate-950/45 p-4">
+                <div className="text-[11px] uppercase tracking-wide text-slate-400">Why it matters</div>
+                <p className="mt-2 text-sm text-slate-100">{leadSummary.whyItMatters}</p>
+              </article>
+              <article className="rounded-2xl border border-amber-300/20 bg-amber-400/8 p-4">
+                <div className="text-[11px] uppercase tracking-wide text-amber-100">Caution / signal</div>
+                <p className="mt-2 text-sm text-slate-100">{leadSummary.caution}</p>
+              </article>
             </div>
-          )
-        })}
-      </div>
+          </div>
+
+          <div className="grid gap-3 xl:grid-cols-2">
+            {renderEvidenceCard({
+              heading: `${formatFiscalYearLabel(yearFrom)} filing evidence`,
+              year: yearFrom,
+              ref: leadSummary.prevEvidence.ref,
+              evidence: leadSummary.prevEvidence.evidence,
+              note: leadSummary.prevEvidence.note,
+            })}
+            {renderEvidenceCard({
+              heading: `${formatFiscalYearLabel(yearTo)} filing evidence`,
+              year: yearTo,
+              ref: leadSummary.currEvidence.ref,
+              evidence: leadSummary.currEvidence.evidence,
+              note: leadSummary.currEvidence.note,
+            })}
+          </div>
+        </>
+      ) : null}
+
+      <details className="rounded-2xl border border-white/10 bg-slate-950/35 p-4">
+        <summary className="cursor-pointer list-none text-sm font-semibold text-slate-100">
+          Compare reads
+        </summary>
+        <div className="mt-4 grid gap-3 xl:grid-cols-[1.35fr,0.65fr,0.65fr]">
+          <div className="rounded-2xl border border-white/10 bg-slate-950/45 p-4">
+            <div className="flex flex-wrap items-center gap-2">
+              <span
+                className={`rounded-full border px-2.5 py-1 text-[11px] font-medium ${
+                  compareSummary.divergenceLabel === "substantive"
+                    ? "border-amber-300/35 bg-amber-400/12 text-amber-100"
+                    : compareSummary.divergenceLabel === "stylistic"
+                      ? "border-sky-300/35 bg-sky-400/12 text-sky-100"
+                      : "border-white/15 bg-white/5 text-slate-200"
+                }`}
+              >
+                {compareSummary.divergenceLabel === "single"
+                  ? "Single campaign"
+                  : `${compareSummary.divergenceLabel} divergence`}
+              </span>
+            </div>
+            <p className="mt-3 text-base font-semibold text-slate-100">{compareSummary.headline}</p>
+            <p className="mt-2 text-sm text-slate-300">{compareSummary.divergenceText}</p>
+          </div>
+
+          {columns.slice(0, 2).map((column) => {
+            const runtime = column.runtime
+            const drift = runtime ? buildDriftScore(runtime) : null
+            const lead = runtime ? sortMaterialChanges(runtime)[0] : null
+            return (
+              <div key={`compare-summary-${column.id}`} className="rounded-2xl border border-white/10 bg-slate-950/45 p-4">
+                <div className={`inline-flex rounded-full border px-2.5 py-1 text-[11px] font-medium ${column.accentClass}`}>
+                  {column.label || `Campaign ${column.id}`}
+                </div>
+                {runtime && drift ? (
+                  <>
+                    <div className="mt-3 text-xl font-semibold text-slate-100">{(drift.score * 100).toFixed(0)}%</div>
+                    <p className="text-xs text-slate-300">{drift.label}</p>
+                    <p className="mt-2 text-xs text-slate-400">Lead change: {lead?.title ?? "Unavailable"}</p>
+                  </>
+                ) : (
+                  <p className="mt-3 text-xs text-slate-400">No runtime compare artifact loaded for this campaign.</p>
+                )}
+              </div>
+            )
+          })}
+        </div>
+      </details>
 
       <div className={`grid gap-4 ${columns.length > 1 ? "2xl:grid-cols-2" : "grid-cols-1"}`}>
         {columns.map((column) => (

@@ -444,17 +444,17 @@ export default function ProtocolLabPilotMatrixPanel({
         <div className="space-y-4">
           <div>
             <div className="text-xs uppercase tracking-[0.22em] text-sky-100">
-              {pairInfo.ticker} case comparison
+              Protocol meaning
             </div>
             <h2 className="mt-2 text-xl font-semibold text-slate-50">
               {isSkepticMode
-                ? "Start with the filing shift, then read the restraint case with care"
-                : "Start with the filing shift, then compare how each read frames it"}
+                ? "How the restraint read fits this filing pair"
+                : "How the visible reads frame this filing pair"}
             </h2>
             <p className="mt-2 max-w-3xl text-sm text-slate-200">
               {isSkepticMode
-                ? "This view keeps the filing pair fixed and tests whether the product stays useful when the filing is mostly stable and selectively sharpened. The primary read stays first, and Fresh vs reused remains a bounded secondary check."
-                : "This view keeps the filing pair fixed and shows how structure and framing change the first read, the audit trail, and the boundary of the claim."}
+                ? "This view keeps the filing pair fixed and shows why the restraint case is still useful when the filing is mostly stable and selectively sharpened. Fresh vs reused remains a bounded secondary check."
+                : "This view keeps the filing pair fixed and shows why the case is in the lab, how the visible reads differ, and where the protocol boundary sits."}
             </p>
           </div>
 
