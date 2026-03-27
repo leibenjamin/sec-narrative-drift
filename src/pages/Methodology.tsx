@@ -117,7 +117,8 @@ export default function Methodology() {
             <div className="text-xs uppercase tracking-[0.24em] text-slate-400">Fixture selection</div>
             <p className="mt-3 text-sm text-slate-200">
               The public pilot stays fixed to NVDA, LLY, and KO so the protocol can be evaluated
-              across vivid change, bounded policy-heavy change, and restraint.
+              across the strongest first signal, a policy-heavy bounded contrast, and a
+              restraint / low-drift honesty check.
             </p>
           </article>
           <article className="rounded-[1.35rem] border border-white/10 bg-slate-900/45 p-5">

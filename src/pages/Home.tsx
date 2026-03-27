@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import PageMetadata from "../components/PageMetadata"
-import ProtocolLabUseCaseGuide from "../components/ProtocolLabUseCaseGuide"
 import { formatFiscalYearRange } from "../lib/fiscalYear"
 import {
   buildProtocolLabCaseHref,
@@ -14,10 +13,9 @@ import {
   type ProtocolLabVisiblePilotSystem,
 } from "../lib/protocolLabProductPositioning"
 
-const HERO_TITLE =
-  "A bounded document-comparison lab, demonstrated through three SEC fixtures."
+const HERO_TITLE = "Document Protocol Lab is a bounded SEC Item 1A pilot."
 const HERO_SUBHEAD =
-  "The current live pilot uses NVDA, LLY, and KO to show vivid change, bounded policy-heavy change, and restraint."
+  "The public surface stays fixed to three fixtures so the product thesis stays legible: strongest first signal, policy-heavy bounded contrast, and low-drift restraint."
 const HOME_TITLE = "Document Protocol Lab | SEC Item 1A pilot"
 const HOME_META_DESCRIPTION =
   "Document Protocol Lab is a bounded, evidence-first SEC Item 1A pilot across NVDA, LLY, and KO: answer first, evidence nearby, audit on demand."
@@ -84,7 +82,7 @@ export default function Home() {
         description={demoShare?.canonical_share_description ?? HOME_META_DESCRIPTION}
       />
       <div className="mx-auto grid max-w-6xl gap-8 px-6 py-12">
-        <section className="grid gap-6 rounded-[1.8rem] border border-white/10 bg-linear-to-br from-slate-950/82 via-slate-900/62 to-slate-950/46 p-6 shadow-[0_26px_60px_rgba(2,6,23,0.38)] lg:grid-cols-[1.35fr_0.65fr]">
+        <section className="grid gap-6 rounded-[1.8rem] border border-white/10 bg-linear-to-br from-slate-950/82 via-slate-900/62 to-slate-950/46 p-6 shadow-[0_26px_60px_rgba(2,6,23,0.38)] lg:grid-cols-[1.2fr_0.8fr]">
           <div className="space-y-5">
             <div className="space-y-3">
               <p className="text-xs uppercase tracking-[0.28em] text-sky-100">Document Protocol Lab</p>
@@ -93,9 +91,23 @@ export default function Home() {
               </h1>
               <p className="max-w-3xl text-lg text-sky-100/95">{HERO_SUBHEAD}</p>
               <p className="max-w-3xl text-base text-slate-200">
-                This pilot asks a narrower question than a research platform: can a live document
-                workflow land the filing answer first, keep the evidence close to the claim, and
-                leave the deeper audit available without forcing it to lead the page?
+                This lab tests a narrow product claim: can an evidence-first document workflow put
+                the filing answer first, explain the protocol meaning second, and leave the deeper
+                audit third instead of making it lead the page?
+              </p>
+            </div>
+
+            <div className="rounded-[1.25rem] border border-white/10 bg-slate-950/45 p-4">
+              <div className="text-xs uppercase tracking-[0.24em] text-slate-400">
+                Why this pilot stays bounded
+              </div>
+              <p className="mt-3 text-sm text-slate-100">
+                {currentCaseMix?.product_statement ??
+                  "The current live product is a bounded Document Protocol Lab pilot for three SEC Item 1A fixtures."}
+              </p>
+              <p className="mt-2 text-sm text-slate-300">
+                {currentCaseMix?.anti_hype_statement ??
+                  "This remains an intentionally compact three-case product, not a broad issuer catalog or research platform."}
               </p>
             </div>
 
@@ -107,18 +119,16 @@ export default function Home() {
                 SEC Item 1A pilot
               </span>
               <span className="rounded-full border border-emerald-300/25 bg-emerald-400/10 px-3 py-1">
-                Answer first
+                Filing answer first
               </span>
               <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">
-                Audit on demand
+                Static JSON only
               </span>
             </div>
 
             <div className="flex flex-wrap items-stretch gap-3 pt-1">
               <Link
-                to={
-                  recommendedPilot?.href ?? buildProtocolLabCaseHref("NVDA", 2024, 2025)
-                }
+                to={recommendedPilot?.href ?? buildProtocolLabCaseHref("NVDA", 2024, 2025)}
                 className="inline-flex w-full items-center justify-center rounded-full bg-sky-500 px-5 py-2.5 text-sm font-semibold text-slate-950 transition hover:bg-sky-400 sm:w-auto"
               >
                 Open the NVDA fixture
@@ -145,92 +155,98 @@ export default function Home() {
           </div>
 
           <aside className="space-y-4 rounded-[1.3rem] border border-white/10 bg-slate-950/55 p-5">
-            <div>
-              <div className="text-xs uppercase tracking-[0.24em] text-slate-400">Current pilot</div>
-              {isLoading ? (
-                <p className="mt-3 text-sm text-slate-300">Loading start guidance...</p>
-              ) : !visiblePilotSystem || !currentCaseMix || !startHere || !recommendedPilot ? (
-                <p className="mt-3 rounded-lg border border-amber-400/30 bg-amber-500/10 px-3 py-2 text-sm text-amber-100">
-                  Start guidance is unavailable because the case list did not load cleanly.
-                </p>
-              ) : (
-                <div className="mt-3 space-y-3">
-                  <Link
-                    to={recommendedPilot.href}
-                    className="block rounded-2xl border border-sky-300/25 bg-sky-400/12 p-4 transition hover:border-sky-200/40 hover:bg-sky-400/16"
-                  >
-                    <div className="flex items-center justify-between gap-3">
-                      <div className="text-sm font-semibold text-slate-50">{`Start with ${recommendedPilot.ticker}`}</div>
-                      <span className="rounded-full border border-sky-300/30 bg-sky-400/15 px-2 py-0.5 text-[11px] text-sky-100">
-                        {recommendedPilot.ticker}
-                      </span>
+            <div className="text-xs uppercase tracking-[0.24em] text-slate-400">Recommended start</div>
+            {isLoading ? (
+              <p className="text-sm text-slate-300">Loading start guidance...</p>
+            ) : !visiblePilotSystem || !currentCaseMix || !startHere || !recommendedPilot ? (
+              <p className="rounded-lg border border-amber-400/30 bg-amber-500/10 px-3 py-2 text-sm text-amber-100">
+                Start guidance is unavailable because the case list did not load cleanly.
+              </p>
+            ) : (
+              <>
+                <Link
+                  to={recommendedPilot.href}
+                  className="block rounded-[1.2rem] border border-sky-300/25 bg-sky-400/12 p-4 transition hover:border-sky-200/40 hover:bg-sky-400/16"
+                >
+                  <div className="flex items-center justify-between gap-3">
+                    <div>
+                      <div className="text-sm font-semibold text-slate-50">
+                        {`Start with ${recommendedPilot.ticker}`}
+                      </div>
+                      <div className="mt-1 text-[11px] uppercase tracking-wide text-sky-100/85">
+                        {recommendedPilot.role_label}
+                      </div>
+                    </div>
+                    <span className="rounded-full border border-sky-300/30 bg-sky-400/15 px-2 py-0.5 text-[11px] text-sky-100">
+                      {formatPilotPairLabel(recommendedPilot)}
+                    </span>
+                  </div>
+                  <p className="mt-3 text-sm text-slate-100">{recommendedPilot.why_case_exists}</p>
+                  <div className="mt-3 rounded-xl border border-white/10 bg-slate-950/30 p-3">
+                    <div className="text-[11px] uppercase tracking-wide text-slate-400">
+                      Why start here
                     </div>
                     <p className="mt-2 text-sm text-slate-100">{recommendedPilot.guidance.why_pick}</p>
                     <p className="mt-2 text-xs text-slate-300">
                       {recommendedPilot.guidance.what_you_learn}
                     </p>
-                  </Link>
-
-                  <div className="space-y-2">
-                    {alternativeFirstPilots.map((pilot) => (
-                      <Link
-                        key={pilot.ticker}
-                        to={pilot.href}
-                        className="block rounded-xl border border-white/10 bg-white/5 px-4 py-3 transition hover:border-white/20 hover:bg-white/8"
-                      >
-                        <div className="flex items-center justify-between gap-3">
-                          <div className="text-sm font-medium text-slate-100">
-                            {pilot.company_name}
-                          </div>
-                          <span className="text-xs text-slate-400">{pilot.ticker}</span>
-                        </div>
-                        <p className="mt-2 text-sm text-slate-200">{pilot.guidance.why_pick}</p>
-                      </Link>
-                    ))}
                   </div>
+                </Link>
 
-                  <ProtocolLabUseCaseGuide visiblePilots={visiblePilots} />
+                <div className="space-y-2">
+                  <div className="text-xs uppercase tracking-[0.24em] text-slate-400">
+                    Alternate first paths
+                  </div>
+                  {alternativeFirstPilots.map((pilot) => (
+                    <Link
+                      key={pilot.ticker}
+                      to={pilot.href}
+                      className="block rounded-xl border border-white/10 bg-white/5 px-4 py-3 transition hover:border-white/20 hover:bg-white/8"
+                    >
+                      <div className="flex items-center justify-between gap-3">
+                        <div className="text-sm font-medium text-slate-100">{pilot.company_name}</div>
+                        <span className="text-[11px] uppercase tracking-wide text-slate-400">
+                          {pilot.role_label}
+                        </span>
+                      </div>
+                      <p className="mt-2 text-sm text-slate-200">{pilot.guidance.why_pick}</p>
+                    </Link>
+                  ))}
                 </div>
-              )}
-            </div>
-
-            <div className="rounded-xl border border-white/10 bg-white/5 p-4 text-sm text-slate-200">
-              <div className="text-xs uppercase tracking-[0.24em] text-slate-400">Why these fixtures</div>
-              <p className="mt-2">
-                {currentCaseMix?.why_this_mix_matters ??
-                  "Three selected cases are enough to show the workflow clearly without widening the product."}
-              </p>
-            </div>
+              </>
+            )}
           </aside>
         </section>
 
         <section className="space-y-4">
           <div className="flex flex-wrap items-start justify-between gap-3">
             <div>
-              <h2 className="text-2xl font-semibold text-slate-50">Current pilot fixtures</h2>
+              <h2 className="text-2xl font-semibold text-slate-50">Why these three fixtures</h2>
               <p className="mt-1 max-w-3xl text-sm text-slate-400">
-                {currentCaseMix?.product_statement ?? "Loading selected cases..."}
+                {currentCaseMix?.why_this_mix_matters ??
+                  "Three selected cases are enough to show the workflow clearly without widening the product."}
               </p>
             </div>
-            <p className="max-w-md text-xs text-slate-400">
-              {currentCaseMix?.anti_hype_statement ??
-                "This remains an intentionally compact three-case product."}
-            </p>
+            <Link
+              to="/companies"
+              className="inline-flex items-center rounded-full border border-white/20 px-4 py-2 text-xs text-slate-200 transition hover:border-white/40 hover:bg-white/5"
+            >
+              Open the chooser page
+            </Link>
           </div>
 
           {isLoading ? (
-            <p className="text-sm text-slate-300">Loading selected cases...</p>
+            <p className="text-sm text-slate-300">Loading selected fixtures...</p>
           ) : !visiblePilotSystem || !currentCaseMix || !startHere ? (
             <p className="rounded-xl border border-amber-400/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-100">
-              Selected case cards are unavailable because the case list did not load cleanly.
+              Fixture rationale is unavailable because the case list did not load cleanly.
             </p>
           ) : (
             <div className="grid gap-4 lg:grid-cols-3 stagger-children">
               {visiblePilots.map((pilot) => (
-                <Link
+                <article
                   key={pilot.ticker}
-                  to={pilot.href}
-                  className="rounded-[1.4rem] border border-white/10 bg-slate-900/50 p-5 transition hover:border-sky-300/35 hover:bg-slate-900/68"
+                  className="rounded-[1.35rem] border border-white/10 bg-slate-900/50 p-5"
                 >
                   <div className="flex items-start justify-between gap-3">
                     <div>
@@ -242,26 +258,30 @@ export default function Home() {
                     </span>
                   </div>
                   <p className="mt-4 text-sm text-slate-200">{pilot.why_case_exists}</p>
-                  <div className="mt-4 space-y-1 text-xs text-slate-400">
-                    <div>Active case: {formatPilotPairLabel(pilot)}</div>
-                    <div>Best for: {pilot.best_for}</div>
+                  <div className="mt-4 rounded-xl border border-white/10 bg-white/5 p-3 text-sm text-slate-200">
+                    <div className="text-[11px] uppercase tracking-wide text-slate-400">
+                      What this fixture proves
+                    </div>
+                    <p className="mt-2">{pilot.guidance.what_you_learn}</p>
                   </div>
-                  <div className="mt-4 rounded-xl border border-white/10 bg-white/5 p-3 text-xs text-slate-300">
-                    <div className="font-medium text-slate-100">{pilot.guidance.why_pick}</div>
-                    <div className="mt-1">{pilot.guidance.what_you_learn}</div>
+                  <div className="mt-4 flex items-center justify-between gap-3 text-xs text-slate-400">
+                    <span>{pilot.best_for}</span>
+                    <Link
+                      to={pilot.href}
+                      className="text-sky-200 transition hover:text-sky-100"
+                    >
+                      {`Open ${pilot.ticker}`}
+                    </Link>
                   </div>
-                  <div className="mt-4 inline-flex items-center rounded-full border border-white/15 px-3 py-1 text-xs text-slate-100">
-                    {`Open ${pilot.ticker} case`}
-                  </div>
-                </Link>
+                </article>
               ))}
             </div>
           )}
         </section>
 
-        <section className="grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">
+        <section className="grid gap-4 lg:grid-cols-[1.15fr_0.85fr]">
           <div className="rounded-[1.35rem] border border-white/10 bg-slate-900/45 p-5">
-            <div className="text-xs uppercase tracking-[0.24em] text-slate-400">Reading flow</div>
+            <div className="text-xs uppercase tracking-[0.24em] text-slate-400">Default reading order</div>
             {isLoading ? (
               <p className="mt-3 text-sm text-slate-300">Loading reading flow...</p>
             ) : !startHere ? (
@@ -287,15 +307,15 @@ export default function Home() {
           </div>
 
           <div className="rounded-[1.35rem] border border-emerald-300/20 bg-emerald-400/10 p-5">
-            <div className="text-xs uppercase tracking-[0.24em] text-emerald-100">Reading cues</div>
+            <div className="text-xs uppercase tracking-[0.24em] text-emerald-100">Pilot boundary</div>
             <p className="mt-3 text-sm text-slate-100">
-              On company pages, the filing answer should land first. The protocol layer explains
-              why the fixture is in the lab. The deeper audit stays available when you need to
-              inspect methods, disagreement, or structure more closely.
+              Start with the filing answer on a company page. Use the protocol layer to understand
+              why the fixture is in the lab. Open the deeper audit only when you want the extra
+              structure, method detail, or provenance.
             </p>
             <p className="mt-3 text-sm text-slate-200">
-              Static JSON only. No runtime model calls. Filing text stays untrusted and the deeper
-              audit remains optional.
+              Static JSON only. No runtime model calls. Filing text stays untrusted and the public
+              pilot stops before it implies broader coverage than it actually ships.
             </p>
           </div>
         </section>
