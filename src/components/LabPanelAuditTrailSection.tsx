@@ -152,10 +152,10 @@ export default function LabPanelAuditTrailSection({
   return (
     <section
       id="lab-audit-trail"
-      className="space-y-6 rounded-[1.4rem] border border-white/10 bg-slate-950/18 p-5"
+      className="space-y-5 rounded-[1.4rem] border border-white/10 bg-slate-950/16 p-4 sm:space-y-6 sm:p-5"
     >
       <div className="max-w-3xl">
-        <p className="text-[11px] uppercase tracking-[0.24em] text-slate-400">Audit trail</p>
+        <p className="text-[11px] uppercase tracking-[0.24em] text-slate-300">Audit trail</p>
         <h2 className="mt-2 text-xl font-semibold text-slate-100">How we checked the filing answer</h2>
         <p className="mt-2 text-sm text-slate-300">
           This lower layer is for pressure-testing the answer above. Start with the filing answer,
@@ -171,7 +171,7 @@ export default function LabPanelAuditTrailSection({
             <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-300">
               {group.label}
             </h3>
-            <div className="grid gap-4">
+            <div className="grid gap-3 sm:gap-4">
               {group.cards.map((detector) => (
                 <MethodCard
                   key={detector.cardKey}
@@ -285,12 +285,14 @@ export default function LabPanelAuditTrailSection({
         selectedCompareCampaignIds.length > 0 && !hasAnyInsightOutput ? (
           <div
             id="lab-insight-lens"
-            className="rounded-lg border border-white/10 bg-slate-950/24 px-4 py-3 text-sm text-slate-200"
+            className="rounded-lg border border-white/10 bg-slate-950/20 px-3 py-3 text-sm text-slate-200 sm:px-4"
           >
-            <div className="text-xs uppercase tracking-wide text-slate-400">Optional insight lens</div>
+            <div className="text-[10px] uppercase tracking-[0.24em] text-slate-400">
+              Optional insight lens
+            </div>
             <p className="mt-2 text-sm text-slate-200">
-              No optional insight sidecar is published for the selected compare lanes. Runtime and
-              structured outline artifacts above remain the shipped compare path.
+              Optional insight sidecars are not published for these compare lanes. The shipped compare
+              path remains the filing answer plus the outline audit above.
             </p>
             <div className="mt-3 flex flex-wrap gap-2 text-[11px] text-slate-300">
               {compactInsightItems.map((item) => (

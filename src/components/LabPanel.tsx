@@ -697,7 +697,7 @@ export default function LabPanel({
   }
 
   return (
-    <section className="space-y-6">
+    <section className="space-y-5 sm:space-y-6">
       {selectedCase ? (
         <LabPanelFilingAnswerSection
           selectedCase={selectedCase}

@@ -163,9 +163,12 @@ export default function Company() {
         title={`${displayName} (${ticker}) | Document Protocol Lab`}
         description={companyMetaDescription}
       />
-      <div className="mx-auto max-w-6xl space-y-8 px-6 py-10">
-        <header className="space-y-4">
-          <nav className="text-xs uppercase tracking-[0.24em] text-slate-300" aria-label="Breadcrumb">
+      <div className="mx-auto max-w-6xl space-y-6 px-5 py-7 sm:space-y-8 sm:px-6 sm:py-10">
+        <header className="space-y-3 sm:space-y-4">
+          <nav
+            className="text-[11px] uppercase tracking-[0.24em] text-slate-300 sm:text-xs"
+            aria-label="Breadcrumb"
+          >
             <ol className="flex flex-wrap items-center gap-2">
               <li>
                 <Link to="/" className="hover:text-slate-100">
@@ -185,44 +188,46 @@ export default function Company() {
             </ol>
           </nav>
 
-          <section className="rounded-[1.45rem] border border-white/10 bg-linear-to-br from-slate-950/80 via-slate-900/58 to-slate-950/40 p-5 shadow-[0_22px_56px_rgba(2,6,23,0.35)]">
-            <div className="flex flex-wrap items-start justify-between gap-4">
-              <div className="space-y-3">
-                <p className="text-xs uppercase tracking-[0.28em] text-sky-100">Current pilot case</p>
-                <h1 className="text-3xl font-semibold text-slate-50 sm:text-4xl">
+          <section className="rounded-[1.45rem] border border-white/10 bg-linear-to-br from-slate-950/80 via-slate-900/58 to-slate-950/40 p-4 shadow-[0_22px_56px_rgba(2,6,23,0.35)] sm:p-5">
+            <div className="flex flex-wrap items-start justify-between gap-3 sm:gap-4">
+              <div className="space-y-2.5 sm:space-y-3">
+                <p className="text-[11px] uppercase tracking-[0.28em] text-sky-100 sm:text-xs">
+                  Current pilot case
+                </p>
+                <h1 className="text-2xl leading-tight font-semibold text-slate-50 sm:text-4xl">
                   {displayName} ({ticker})
                 </h1>
                 {SHOWCASE_COMPANY_SECTORS[ticker] ? (
                   <p className="text-sm font-medium text-slate-400">{SHOWCASE_COMPANY_SECTORS[ticker]}</p>
                 ) : null}
               </div>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-1.5 sm:gap-2">
                 <Link
                   to="/companies"
-                  className="inline-flex items-center rounded-full border border-white/20 px-3 py-1.5 text-xs text-slate-200 hover:border-white/40 hover:bg-white/5"
+                  className="inline-flex items-center rounded-full border border-white/20 px-2.5 py-1 text-[11px] text-slate-200 hover:border-white/40 hover:bg-white/5 sm:px-3 sm:py-1.5 sm:text-xs"
                 >
                   Back to 3 fixtures
                 </Link>
                 <Link
                   to="/methodology"
-                  className="inline-flex items-center rounded-full border border-white/20 px-3 py-1.5 text-xs text-slate-200 hover:border-white/40 hover:bg-white/5"
+                  className="inline-flex items-center rounded-full border border-white/20 px-2.5 py-1 text-[11px] text-slate-200 hover:border-white/40 hover:bg-white/5 sm:px-3 sm:py-1.5 sm:text-xs"
                 >
                   Methodology
                 </Link>
               </div>
             </div>
-            <div className="mt-4 flex flex-wrap gap-2 text-xs text-slate-200">
-              <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5">
+            <div className="mt-3 flex flex-wrap gap-1.5 text-[11px] text-slate-200 sm:mt-4 sm:gap-2 sm:text-xs">
+              <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 sm:px-3 sm:py-1.5">
                 Fixture role: {visiblePilot?.role_label ?? "Visible pilot"}
               </span>
-              <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5">
+              <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 sm:px-3 sm:py-1.5">
                 Filing pair: {activeCaseLabel}
               </span>
-              <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5">
+              <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 sm:px-3 sm:py-1.5">
                 Bounded SEC Item 1A pilot
               </span>
             </div>
-            <p className="mt-4 max-w-4xl text-sm text-slate-300">{inlineCue}</p>
+            <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-300 sm:mt-4">{inlineCue}</p>
           </section>
         </header>
 

@@ -89,7 +89,7 @@ export default function LabPanelAdvancedControls({
   showMethodContextJump,
 }: LabPanelAdvancedControlsProps) {
   return (
-    <details className="rounded-[1.1rem] border border-white/10 bg-slate-950/22 p-4">
+    <details className="rounded-[1.1rem] border border-white/10 bg-slate-950/18 p-3 sm:p-4">
       <summary className="cursor-pointer list-none text-sm font-semibold text-slate-100">
         Advanced controls
       </summary>
@@ -97,7 +97,7 @@ export default function LabPanelAdvancedControls({
         Power-user controls for changing lanes, methods, and diagnostics. They stay below the answer
         and protocol layers on purpose.
       </p>
-      <div className="mt-4 space-y-4 text-sm text-slate-200">
+      <div className="mt-3 space-y-4 text-sm text-slate-200">
         {isPilotMatrixSelectedCase ? (
           <div className="grid gap-3 md:grid-cols-2">
             <div className="rounded-lg border border-white/10 bg-slate-950/35 p-4">

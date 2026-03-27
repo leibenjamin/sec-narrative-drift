@@ -428,18 +428,18 @@ export default function MethodCard({
   }
 
   return (
-    <section className="rounded-xl border border-white/10 bg-slate-950/40 p-5">
+    <section className="rounded-xl border border-white/10 bg-slate-950/38 p-4 sm:p-5">
       <header className="flex flex-wrap items-start justify-between gap-3">
         <div className="max-w-3xl">
           <h3 className="text-lg font-semibold text-slate-100">{title}</h3>
           {description ? <p className="text-sm text-slate-300">{description}</p> : null}
-          <div className="mt-3 text-[11px] uppercase tracking-wide text-slate-400">Takeaway</div>
+          <div className="mt-2 text-[10px] uppercase tracking-[0.24em] text-slate-400">Takeaway</div>
           <p className="mt-1 text-sm text-slate-100">{decisionSentence}</p>
           {output ? <p className="mt-2 text-xs text-slate-400">{weaknessReason}</p> : null}
         </div>
-        <div className="flex flex-wrap items-center gap-2 text-sm text-slate-300">
+        <div className="flex flex-wrap items-center gap-1.5 text-sm text-slate-300 sm:gap-2">
           <span
-            className={`rounded-full border px-2.5 py-1 text-[11px] font-medium ${signalTierClasses(signalSummary.tier)}`}
+            className={`rounded-full border px-2.5 py-1 text-[10px] font-medium ${signalTierClasses(signalSummary.tier)}`}
           >
             {signalTierLabel(signalSummary.tier)} evidence
           </span>
@@ -463,7 +463,7 @@ export default function MethodCard({
       </header>
 
       {!isExpanded ? (
-        <div className="mt-3 rounded-md border border-white/10 bg-slate-900/35 p-3">
+        <div className="mt-2 rounded-md border border-white/10 bg-slate-900/30 p-2.5 sm:mt-3 sm:p-3">
           {isLoading ? (
             <p className="text-xs text-slate-300">Loading detector output...</p>
           ) : !output ? (
@@ -522,7 +522,10 @@ export default function MethodCard({
             </div>
           ) : null}
 
-          <div id={`method-context-${detectorId}`} className="mt-3 rounded-md border border-white/10 bg-slate-900/35 p-3">
+          <div
+            id={`method-context-${detectorId}`}
+            className="mt-3 rounded-md border border-white/10 bg-slate-900/30 p-3"
+          >
             <div className="flex flex-wrap items-center justify-between gap-2">
               <h4 className="text-xs font-semibold uppercase tracking-wide text-slate-200">
                 Method context
@@ -631,7 +634,7 @@ export default function MethodCard({
               )
             ) : (
               <p className="mt-2 text-xs text-slate-300">
-                Expand this drawer for canonical usage, deviations, caveats, and sourced origins.
+                Open method context for canonical usage, deviations, caveats, and sourced origins.
               </p>
             )}
           </div>

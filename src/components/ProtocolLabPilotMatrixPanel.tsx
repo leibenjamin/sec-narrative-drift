@@ -438,46 +438,46 @@ export default function ProtocolLabPilotMatrixPanel({
   return (
     <section
       id="lab-pilot-matrix"
-      className="space-y-5 rounded-[1.35rem] border border-white/10 bg-linear-to-br from-slate-950/75 via-slate-900/65 to-slate-950/40 p-5 shadow-[0_18px_40px_rgba(2,6,23,0.2)]"
+      className="space-y-4 rounded-[1.35rem] border border-white/10 bg-linear-to-br from-slate-950/75 via-slate-900/65 to-slate-950/40 p-4 shadow-[0_18px_40px_rgba(2,6,23,0.2)] sm:space-y-5 sm:p-5"
     >
-      <div className="grid gap-4 lg:grid-cols-[1.15fr,0.85fr]">
-        <div className="space-y-4">
+      <div className="grid gap-3 sm:gap-4 lg:grid-cols-[1.15fr,0.85fr]">
+        <div className="space-y-3 sm:space-y-4">
           <div>
-            <div className="text-xs uppercase tracking-[0.22em] text-sky-100">
+            <div className="text-[11px] uppercase tracking-[0.24em] text-sky-100">
               Protocol meaning
             </div>
-            <h2 className="mt-2 text-xl font-semibold text-slate-50">
+            <h2 className="mt-1.5 text-lg font-semibold text-slate-50 sm:mt-2 sm:text-xl">
               {isSkepticMode
                 ? "How the restraint read fits this filing pair"
                 : "How the visible reads frame this filing pair"}
             </h2>
-            <p className="mt-2 max-w-3xl text-sm text-slate-200">
+            <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-200">
               {isSkepticMode
-                ? "This is the second-layer protocol read after the filing answer: why the restraint case stays visible, what the visible reads add, and where the protocol boundary sits."
-                : "This is the second-layer protocol read after the filing answer: why this fixture is in the lab, what the visible reads add, and where the protocol boundary sits."}
+                ? "Second layer after the filing answer: why the restraint case stays visible, what the visible reads add, and where the protocol boundary sits."
+                : "Second layer after the filing answer: why this fixture is in the lab, what the visible reads add, and where the protocol boundary sits."}
             </p>
           </div>
 
           <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-            <div className="rounded-lg border border-white/10 bg-slate-900/50 p-3">
-              <div className="text-xs uppercase tracking-wide text-slate-400">Fixture</div>
+            <div className="rounded-lg border border-white/10 bg-slate-900/42 p-3">
+              <div className="text-[10px] uppercase tracking-[0.22em] text-slate-400">Fixture</div>
               <div className="mt-1 text-sm font-semibold text-slate-100">{fixtureLabel}</div>
               <div className="mt-1 text-xs text-slate-400">{sectionLabel}</div>
             </div>
-            <div className="rounded-lg border border-white/10 bg-slate-900/50 p-3">
-              <div className="text-xs uppercase tracking-wide text-slate-400">Primary read</div>
+            <div className="rounded-lg border border-white/10 bg-slate-900/42 p-3">
+              <div className="text-[10px] uppercase tracking-[0.22em] text-slate-400">Primary read</div>
               <div className="mt-1 text-sm font-semibold text-slate-100">
                 {bundle.cells_by_id[bundle.matrix.selected_default_cell_id]
                   ? renderPublicCellLabel(bundle.cells_by_id[bundle.matrix.selected_default_cell_id])
                   : renderPublicLaneText(bundle.matrix.selected_default_cell_id)}
               </div>
             </div>
-            <div className="rounded-lg border border-white/10 bg-slate-900/50 p-3">
-              <div className="text-xs uppercase tracking-wide text-slate-400">Scope</div>
+            <div className="rounded-lg border border-white/10 bg-slate-900/42 p-3">
+              <div className="text-[10px] uppercase tracking-[0.22em] text-slate-400">Scope</div>
               <div className="mt-1 text-sm font-semibold text-slate-100">{pilotStatusLabel}</div>
             </div>
-            <div className="rounded-lg border border-white/10 bg-slate-900/50 p-3">
-              <div className="text-xs uppercase tracking-wide text-slate-400">Read order</div>
+            <div className="rounded-lg border border-white/10 bg-slate-900/42 p-3">
+              <div className="text-[10px] uppercase tracking-[0.22em] text-slate-400">Read order</div>
               <div className="mt-1 text-sm font-semibold text-slate-100">
                 {bundle.ordered_cells.map((cell) => renderPublicCellLabel(cell)).join(" -> ")}
               </div>
@@ -485,11 +485,11 @@ export default function ProtocolLabPilotMatrixPanel({
           </div>
 
           {bundle.matrix.comparison_pairs.length > 0 ? (
-            <div className="flex flex-wrap gap-2 text-xs text-slate-200">
+            <div className="flex flex-wrap gap-1.5 text-[11px] text-slate-200 sm:gap-2 sm:text-xs">
               {bundle.matrix.comparison_pairs.map((pair) => (
                 <span
                   key={pair.pair_id}
-                  className="rounded-full border border-white/10 bg-slate-900/45 px-3 py-1.5"
+                  className="rounded-full border border-white/10 bg-slate-900/38 px-2.5 py-1 sm:px-3 sm:py-1.5"
                   title={pair.purpose}
                 >
                   {renderPublicLaneText(pair.label)}: {formatPilotComparisonPurpose(pair)}
@@ -499,20 +499,20 @@ export default function ProtocolLabPilotMatrixPanel({
           ) : null}
         </div>
 
-        <div className="space-y-3 rounded-[1.1rem] border border-sky-300/20 bg-sky-400/10 p-4">
-          <div className="text-xs uppercase tracking-wide text-sky-100">
+        <div className="space-y-2.5 rounded-[1.1rem] border border-sky-300/20 bg-sky-400/8 p-3 sm:p-4">
+          <div className="text-[10px] uppercase tracking-[0.24em] text-sky-100">
             Why this fixture is in the lab
           </div>
           <p className="text-sm text-slate-100">{story.why_this_case_matters}</p>
-          <div className="pt-2 text-xs uppercase tracking-wide text-slate-300">Pilot scope</div>
+          <div className="pt-1.5 text-[10px] uppercase tracking-[0.24em] text-slate-300">Pilot scope</div>
           <p className="text-sm text-slate-200">{bundle.matrix.pilot_status.note}</p>
         </div>
       </div>
 
-      <div className="grid gap-4 lg:grid-cols-2">
-        <article className="space-y-4 rounded-[1.1rem] border border-sky-300/20 bg-slate-950/35 p-4">
+      <div className="grid gap-3 sm:gap-4 lg:grid-cols-2">
+        <article className="space-y-3 rounded-[1.1rem] border border-sky-300/20 bg-slate-950/35 p-3 sm:p-4">
           <div>
-            <div className="text-xs uppercase tracking-wide text-sky-100">
+            <div className="text-[10px] uppercase tracking-[0.24em] text-sky-100">
               {isSkepticMode ? "What the visible checks add" : "What the visible reads add"}
             </div>
             <p className="mt-2 text-sm text-slate-200">{story.protocol_read}</p>
@@ -520,9 +520,9 @@ export default function ProtocolLabPilotMatrixPanel({
           {renderBulletList(bundle.matrix.takeaways, "text-slate-100")}
         </article>
 
-        <article className="space-y-4 rounded-[1.1rem] border border-amber-300/20 bg-slate-950/35 p-4">
+        <article className="space-y-3 rounded-[1.1rem] border border-amber-300/20 bg-slate-950/35 p-3 sm:p-4">
           <div>
-            <div className="text-xs uppercase tracking-wide text-amber-100">
+            <div className="text-[10px] uppercase tracking-[0.24em] text-amber-100">
               Protocol boundary
             </div>
             <p className="mt-2 text-sm text-slate-200">{story.caveat}</p>
@@ -532,17 +532,17 @@ export default function ProtocolLabPilotMatrixPanel({
       </div>
 
       {skepticCase ? (
-        <section className="rounded-[1.1rem] border border-sky-300/20 bg-sky-400/10 p-4">
-          <div className="text-xs uppercase tracking-wide text-sky-100">Restraint case</div>
+        <section className="rounded-[1.1rem] border border-sky-300/20 bg-sky-400/8 p-3 sm:p-4">
+          <div className="text-[10px] uppercase tracking-[0.24em] text-sky-100">Restraint case</div>
           <p className="mt-2 text-sm text-slate-100">{skepticCase.framing_note}</p>
         </section>
       ) : null}
 
       {effortRobustness ? (
-        <section className="space-y-4 rounded-[1.1rem] border border-emerald-300/20 bg-emerald-400/10 p-4">
+        <section className="space-y-3 sm:space-y-4 rounded-[1.1rem] border border-emerald-300/20 bg-emerald-400/8 p-3 sm:p-4">
           <div className="flex flex-wrap items-start justify-between gap-3">
             <div>
-              <div className="text-xs uppercase tracking-wide text-emerald-100">
+              <div className="text-[10px] uppercase tracking-[0.24em] text-emerald-100">
                 Effort robustness
               </div>
               <p className="mt-2 max-w-3xl text-sm text-slate-100">
@@ -626,10 +626,10 @@ export default function ProtocolLabPilotMatrixPanel({
       ) : null}
 
       {!effortRobustness && skepticCase ? (
-        <section className="space-y-4 rounded-[1.1rem] border border-emerald-300/20 bg-emerald-400/10 p-4">
+        <section className="space-y-3 sm:space-y-4 rounded-[1.1rem] border border-emerald-300/20 bg-emerald-400/8 p-3 sm:p-4">
           <div className="flex flex-wrap items-start justify-between gap-3">
             <div>
-              <div className="text-xs uppercase tracking-wide text-emerald-100">
+              <div className="text-[10px] uppercase tracking-[0.24em] text-emerald-100">
                 Matched-effort restraint check
               </div>
               <p className="mt-2 max-w-3xl text-sm text-slate-100">{skepticCase.finding_summary}</p>
@@ -676,11 +676,11 @@ export default function ProtocolLabPilotMatrixPanel({
       ) : null}
 
       {noveltyLedger ? (
-        <section className="space-y-4 rounded-[1.1rem] border border-sky-300/20 bg-sky-400/10 p-4">
+        <section className="space-y-3 sm:space-y-4 rounded-[1.1rem] border border-sky-300/20 bg-sky-400/8 p-3 sm:p-4">
           <div className="flex flex-wrap items-start justify-between gap-3">
             <div>
-              <div className="text-xs uppercase tracking-wide text-sky-100">Fresh vs reused</div>
-              <p className="mt-2 max-w-3xl text-sm text-slate-100">
+              <div className="text-[10px] uppercase tracking-[0.24em] text-sky-100">Fresh vs reused</div>
+              <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-100">
                 This view separates new disclosure from reused filing structure. It is narrower
                 than the main summary, but useful for checking whether the filing truly introduced
                 new risk detail.

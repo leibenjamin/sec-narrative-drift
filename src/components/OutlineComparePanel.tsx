@@ -520,11 +520,11 @@ export default function OutlineComparePanel({
   return (
     <section
       id="lab-outline-compare"
-      className="space-y-4 rounded-[1.4rem] border border-white/10 bg-slate-950/25 p-4"
+      className="space-y-3 rounded-[1.4rem] border border-white/10 bg-slate-950/22 p-3 sm:space-y-4 sm:p-4"
     >
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="max-w-3xl">
-          <p className="text-[11px] uppercase tracking-[0.24em] text-slate-400">Deeper audit</p>
+          <p className="text-[11px] uppercase tracking-[0.24em] text-slate-300">Deeper audit</p>
           <h3 className="mt-2 text-lg font-semibold text-slate-100">Structure audit</h3>
           <p className="mt-1 text-[12px] text-slate-300">
             Use this lower layer only when you want to compare how each visible read structured the
@@ -534,18 +534,18 @@ export default function OutlineComparePanel({
         <button
           type="button"
           onClick={() => setIsExpanded((previous) => !previous)}
-          className="rounded-md border border-white/20 bg-slate-900/55 px-3 py-1.5 text-xs text-slate-100 transition hover:border-white/35"
+          className="rounded-md border border-white/20 bg-slate-900/50 px-2.5 py-1.5 text-xs text-slate-100 transition hover:border-white/35"
         >
           {isExpanded ? "Hide structure audit" : "Open structure audit"}
         </button>
       </div>
 
-      <div className="rounded-md border border-white/10 bg-slate-950/30 px-3 py-2 text-xs text-slate-200">
+      <div className="rounded-md border border-white/10 bg-slate-950/28 px-3 py-2 text-xs text-slate-200">
         {buildPanelCompareSummary(columns)}
       </div>
 
       {!isExpanded ? (
-        <p className="text-xs text-slate-400">
+        <p className="text-[11px] text-slate-400">
           Closed by default so the filing answer and protocol meaning stay primary. Open this panel
           for side-by-side ranked changes, structured mechanisms, limits, and outline structure.
         </p>

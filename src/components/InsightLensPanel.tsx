@@ -475,11 +475,11 @@ export default function InsightLensPanel({
   return (
     <section
       id="lab-insight-lens"
-      className="space-y-4 rounded-xl border border-white/10 bg-slate-950/20 p-4"
+      className="space-y-3 rounded-xl border border-white/10 bg-slate-950/18 p-3 sm:space-y-4 sm:p-4"
     >
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <p className="text-[11px] uppercase tracking-[0.24em] text-slate-400">Optional deep review</p>
+          <p className="text-[11px] uppercase tracking-[0.24em] text-slate-300">Optional deep review</p>
           <h3 className="mt-2 text-sm font-semibold text-slate-100">Insight lens</h3>
           <p className="mt-1 text-[11px] text-slate-300">
             Paragraph-level drilldown is optional. The shipped compare path is still the filing answer,
@@ -498,9 +498,9 @@ export default function InsightLensPanel({
       </div>
 
       {!modelAOutput && !modelBOutput ? (
-        <div className="rounded-md border border-amber-400/25 bg-amber-400/8 p-3 text-xs text-slate-200">
-          Insight sidecars are not published for the selected compare lanes. The shipped compare flow is
-          using runtime plus structured outline artifacts instead.
+        <div className="rounded-md border border-amber-400/20 bg-amber-400/7 p-3 text-xs text-slate-200">
+          Optional insight sidecars are not published for these compare lanes. The shipped compare flow
+          stays with the runtime and structured outline artifacts instead.
         </div>
       ) : null}
       {!modelAOutput ? renderMissingPanel(modelALabel, modelADebug, modelADebugPath) : null}

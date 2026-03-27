@@ -35,33 +35,33 @@ export default function AgreementMatrix({ output }: AgreementMatrixProps) {
 
   if (!output) {
     return (
-      <div className="rounded-lg border border-white/10 bg-white/5 p-4 text-xs text-slate-300">
-        Agreement matrix not available for this filing pair and lens combination.
+      <div className="rounded-lg border border-white/10 bg-white/4 p-3 text-xs text-slate-300">
+        Agreement matrix is unavailable for this filing pair and lens combination.
       </div>
     )
   }
 
   if (!detectors.length || !matrix.length) {
     return (
-      <div className="rounded-lg border border-white/10 bg-white/5 p-4 text-xs text-slate-300">
-        Agreement matrix requires results from at least two methods.
+      <div className="rounded-lg border border-white/10 bg-white/4 p-3 text-xs text-slate-300">
+        Agreement matrix stays unavailable until at least two methods have usable outputs.
       </div>
     )
   }
 
   return (
-    <div className="space-y-3">
-      <p className="max-w-3xl text-xs text-slate-300">
+    <div className="space-y-2">
+      <p className="max-w-3xl text-[11px] text-slate-300">
         High agreement means different detectors are surfacing similar risk movement. Low agreement
         means the answer needs a slower method-by-method read rather than a quick consensus take.
       </p>
-      <div className="overflow-x-auto rounded-lg border border-white/10 bg-white/5">
+      <div className="overflow-x-auto rounded-lg border border-white/10 bg-white/4">
         <table className="min-w-full text-left text-xs text-slate-200">
           <thead className="bg-white/5 text-[11px] uppercase tracking-wide text-slate-400">
             <tr>
-              <th className="px-3 py-2">Method</th>
+              <th className="px-2.5 py-2">Method</th>
               {detectors.map((det) => (
-                <th key={det} className="px-3 py-2" title={det}>
+                <th key={det} className="px-2.5 py-2" title={det}>
                   {formatDetectorName(det)}
                 </th>
               ))}
@@ -70,13 +70,13 @@ export default function AgreementMatrix({ output }: AgreementMatrixProps) {
           <tbody>
             {matrix.map((row, rowIdx) => (
               <tr key={detectors[rowIdx] ?? rowIdx} className="border-t border-white/10">
-                <td className="px-3 py-2 font-medium text-slate-300" title={detectors[rowIdx]}>
+                <td className="px-2.5 py-2 font-medium text-slate-300" title={detectors[rowIdx]}>
                   {formatDetectorName(detectors[rowIdx] ?? "")}
                 </td>
                 {row.map((cell, colIdx) => (
                   <td
                     key={`${rowIdx}-${colIdx}`}
-                    className={`px-3 py-2 ${cellColorClass(cell, rowIdx === colIdx)}`}
+                    className={`px-2.5 py-2 ${cellColorClass(cell, rowIdx === colIdx)}`}
                   >
                     {cell === null || cell === undefined ? "-" : cell.toFixed(3)}
                   </td>

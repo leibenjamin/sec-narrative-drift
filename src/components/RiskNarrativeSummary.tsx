@@ -775,22 +775,22 @@ export default function RiskNarrativeSummary({
   return (
     <section
       id="lab-risk-narrative"
-      className="space-y-5 rounded-[1.4rem] border border-slate-500/25 bg-linear-to-b from-slate-900/70 via-slate-950/55 to-slate-950/35 p-5 shadow-[0_18px_48px_rgba(2,6,23,0.35)]"
+      className="space-y-4 rounded-[1.4rem] border border-slate-500/25 bg-linear-to-b from-slate-900/70 via-slate-950/55 to-slate-950/35 p-4 shadow-[0_18px_48px_rgba(2,6,23,0.35)] sm:space-y-5 sm:p-5"
     >
-      <div className="flex flex-wrap items-start justify-between gap-4">
+      <div className="flex flex-wrap items-start justify-between gap-3 sm:gap-4">
         <div className="max-w-3xl">
-          <p className="text-[11px] uppercase tracking-[0.24em] text-slate-400">Filing answer</p>
-          <h3 className="mt-2 text-xl font-semibold text-slate-100">
+          <p className="text-[11px] uppercase tracking-[0.24em] text-sky-100">Filing answer</p>
+          <h3 className="mt-1.5 text-lg font-semibold text-slate-100 sm:mt-2 sm:text-xl">
             What changed in {ticker}&apos;s filing: {formatFiscalYearLabel(yearFrom)} to {formatFiscalYearLabel(yearTo)}
           </h3>
-          <p className="mt-2 text-sm text-slate-300">
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-300">
             Start with the filing answer, why it matters, and paired evidence. Open Compare reads only
             when you want to see where the visible runs line up or diverge before moving deeper into
             protocol or audit detail.
           </p>
         </div>
-        <div className="rounded-2xl border border-white/10 bg-slate-950/45 px-4 py-3 text-right">
-          <div className="text-[11px] uppercase tracking-wide text-slate-400">Reading mode</div>
+        <div className="w-full rounded-2xl border border-white/10 bg-slate-950/38 px-3 py-2.5 text-left sm:w-auto sm:px-4 sm:py-3 sm:text-right">
+          <div className="text-[10px] uppercase tracking-[0.22em] text-slate-400">Reading mode</div>
           <div className="mt-1 text-sm font-semibold text-slate-100">
             {analysisMode === "executive" ? "Executive" : "Deep"}
           </div>
@@ -804,8 +804,8 @@ export default function RiskNarrativeSummary({
 
       {leadSummary ? (
         <>
-          <div className="grid gap-4 xl:grid-cols-[1.15fr,0.85fr]">
-            <article className="rounded-2xl border border-white/10 bg-slate-950/45 p-4">
+          <div className="grid gap-3 sm:gap-4 xl:grid-cols-[1.15fr,0.85fr]">
+            <article className="rounded-2xl border border-white/10 bg-slate-950/42 p-3 sm:p-4">
               <div className="flex flex-wrap items-center gap-2">
                 {formatClassBadge(leadSummary.primaryChange.change_class)}
                 <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] text-slate-200">
@@ -817,22 +817,22 @@ export default function RiskNarrativeSummary({
                   </span>
                 ) : null}
               </div>
-              <div className="mt-4">
-                <div className="text-[11px] uppercase tracking-wide text-slate-400">What changed</div>
-                <p className="mt-2 text-lg font-semibold text-slate-100">{leadSummary.whatChanged}</p>
+              <div className="mt-3">
+                <div className="text-[10px] uppercase tracking-[0.24em] text-slate-300">What changed</div>
+                <p className="mt-2 text-base font-semibold text-slate-100 sm:text-lg">{leadSummary.whatChanged}</p>
                 {leadSummary.secondaryNote ? (
                   <p className="mt-2 text-sm text-slate-300">{leadSummary.secondaryNote}</p>
                 ) : null}
               </div>
             </article>
 
-            <div className="grid gap-4">
-              <article className="rounded-2xl border border-white/10 bg-slate-950/45 p-4">
-                <div className="text-[11px] uppercase tracking-wide text-slate-400">Why it matters</div>
+            <div className="grid gap-3 sm:gap-4">
+              <article className="rounded-2xl border border-white/10 bg-slate-950/38 p-3 sm:p-4">
+                <div className="text-[10px] uppercase tracking-[0.24em] text-slate-300">Why it matters</div>
                 <p className="mt-2 text-sm text-slate-100">{leadSummary.whyItMatters}</p>
               </article>
-              <article className="rounded-2xl border border-amber-300/20 bg-amber-400/8 p-4">
-                <div className="text-[11px] uppercase tracking-wide text-amber-100">Caution / signal</div>
+              <article className="rounded-2xl border border-amber-300/20 bg-amber-400/7 p-3 sm:p-4">
+                <div className="text-[10px] uppercase tracking-[0.24em] text-amber-100">Caution / signal</div>
                 <p className="mt-2 text-sm text-slate-100">{leadSummary.caution}</p>
               </article>
             </div>
@@ -857,12 +857,12 @@ export default function RiskNarrativeSummary({
         </>
       ) : null}
 
-      <details className="rounded-2xl border border-white/10 bg-slate-950/35 p-4">
-        <summary className="cursor-pointer list-none text-sm font-semibold text-slate-100">
+      <details className="rounded-2xl border border-white/10 bg-slate-950/30 p-3 sm:p-4">
+        <summary className="cursor-pointer list-none text-sm font-medium text-slate-100">
           Compare reads
         </summary>
-        <div className="mt-4 space-y-3">
-          <div className="rounded-2xl border border-white/10 bg-slate-950/45 p-4">
+        <div className="mt-3 space-y-3">
+          <div className="rounded-2xl border border-white/10 bg-slate-950/40 p-3 sm:p-4">
             <div className="flex flex-wrap items-center gap-2">
               <span
                 className={`rounded-full border px-2.5 py-1 text-[11px] font-medium ${
@@ -878,7 +878,7 @@ export default function RiskNarrativeSummary({
                   : `${compareSummary.divergenceLabel} divergence`}
               </span>
             </div>
-            <p className="mt-3 text-base font-semibold text-slate-100">{compareSummary.headline}</p>
+            <p className="mt-2 text-base font-semibold text-slate-100">{compareSummary.headline}</p>
             <p className="mt-2 text-sm text-slate-300">{compareSummary.divergenceText}</p>
           </div>
 
@@ -889,7 +889,7 @@ export default function RiskNarrativeSummary({
               return (
                 <article
                   key={`compare-summary-${column.id}`}
-                  className="rounded-2xl border border-white/10 bg-slate-950/30 p-4"
+                  className="rounded-2xl border border-white/10 bg-slate-950/28 p-3 sm:p-4"
                 >
                   <div
                     className={`inline-flex rounded-full border px-2.5 py-1 text-[11px] font-medium ${column.accentClass}`}
@@ -919,8 +919,8 @@ export default function RiskNarrativeSummary({
             })}
           </div>
 
-          <details className="rounded-2xl border border-white/10 bg-slate-950/25 p-4">
-            <summary className="cursor-pointer list-none text-sm font-semibold text-slate-100">
+          <details className="rounded-2xl border border-white/10 bg-slate-950/22 p-3 sm:p-4">
+            <summary className="cursor-pointer list-none text-sm font-medium text-slate-100">
               Open deeper compare detail
             </summary>
             <p className="mt-3 text-xs text-slate-400">

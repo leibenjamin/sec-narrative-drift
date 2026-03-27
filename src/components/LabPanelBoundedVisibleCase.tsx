@@ -59,9 +59,9 @@ export default function LabPanelBoundedVisibleCase({
 
       <section
         id="lab-lower-audit-unavailable"
-        className="rounded-[1.25rem] border border-amber-300/20 bg-amber-400/10 p-4 text-sm text-slate-200"
+        className="rounded-[1.25rem] border border-amber-300/20 bg-amber-400/8 p-3 text-sm text-slate-200 sm:p-4"
       >
-        <div className="text-xs uppercase tracking-wide text-amber-100">Scope boundary</div>
+        <div className="text-[11px] uppercase tracking-[0.24em] text-amber-100">Scope boundary</div>
         <div className="mt-3 grid gap-3 md:grid-cols-3">
           <article className="rounded-lg border border-white/10 bg-slate-950/35 p-3">
             <div className="text-[11px] uppercase tracking-wide text-slate-300">Available here</div>
