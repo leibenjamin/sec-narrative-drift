@@ -29,7 +29,7 @@ const SHOWCASE_COMPANY_SECTORS: Record<string, string> = {
 const SHOWCASE_COMPANY_TOP_CUE: Record<string, string> = {
   NVDA: "Read the filing answer first; use the protocol layer and audit below only to pressure-test it.",
   LLY: "Bounded case: take the filing answer first, use protocol meaning second, then stop at the explicit scope boundary.",
-  KO: "Low drift is the point here: read the answer as selective sharpening, not forced novelty.",
+  KO: "Low drift is the point here: take the filing answer first, then read the protocol layer as selective sharpening, not forced novelty.",
   WM: "Read the filing answer first, then use the lower protocol and audit layers only as supporting checks.",
   GE: "Read the filing answer first, then use the lower protocol and audit layers only as supporting checks.",
 }
@@ -133,10 +133,10 @@ export default function Company() {
     : requestedPair
       ? `${formatFiscalYearRange(requestedPair.from, requestedPair.to)} Item 1A`
       : "FY2024 to FY2025 Item 1A"
-  const companyMetaDescription = `Document Protocol Lab pilot case for ${displayName}: start with the filing answer, then the protocol meaning, then the deeper audit only when you need it.`
+  const companyMetaDescription = `Document Protocol Lab visible pilot fixture for ${displayName}: start with the filing answer, then the protocol meaning, then the deeper audit only when you need it.`
   const inlineCue =
     SHOWCASE_COMPANY_TOP_CUE[ticker] ??
-    "Read the filing answer first, then use the protocol layer and deeper audit only as secondary checks."
+    "Read the filing answer first, then use the protocol meaning and deeper audit only as secondary checks."
 
   const handleSelectedPairChange = (pair: Pair) => {
     const next = mergeSearchParams(searchParams, {
@@ -192,7 +192,7 @@ export default function Company() {
             <div className="flex flex-wrap items-start justify-between gap-3 sm:gap-4">
               <div className="space-y-2.5 sm:space-y-3">
                 <p className="text-[11px] uppercase tracking-[0.28em] text-sky-100 sm:text-xs">
-                  Current pilot case
+                  Current pilot fixture
                 </p>
                 <h1 className="text-2xl leading-tight font-semibold text-slate-50 sm:text-4xl">
                   {displayName} ({ticker})

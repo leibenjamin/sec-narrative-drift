@@ -2,7 +2,7 @@
 
 Document Protocol Lab currently ships a bounded SEC Item 1A pilot across three fixtures: NVDA, LLY, and KO.
 
-Document Protocol Lab is a bounded, evidence-first lab for testing how document-comparison workflows speak, prove, and stop.
+Document Protocol Lab is a bounded, evidence-first SEC Item 1A pilot for testing how a document workflow answers, proves, and stops on real filings.
 
 Live pilot: https://benlei.org/sec-narrative-drift/
 
@@ -18,7 +18,7 @@ Live pilot: https://benlei.org/sec-narrative-drift/
 - Current pilot/workstream name: `SEC Narrative Drift`.
 - Mounted public entry remains `https://benlei.org/sec-narrative-drift/`.
 - The current pilot is deliberately narrow; it is not a broad issuer gallery, benchmark suite, or whole-filing research platform.
-- `lab_cases_v1.json` remains the lower runtime registry, not the public case list.
+- `lab_cases_v1.json` remains the lower backstage runtime registry, not the public case list.
 
 ## Start with
 - `NVDA` for the strongest first filing shift.
@@ -33,9 +33,9 @@ Live pilot: https://benlei.org/sec-narrative-drift/
 - Lower runtime coverage can remain broader than the public fixture set without changing the visible product claim.
 
 ## Current runtime notes
-- `NVDA` and `KO` retain lower runtime-registry integration.
-- `LLY` is a bounded visible case and does not yet ship the full lower-audit runtime stack in `lab_cases_v1.json`.
-- Background lower-runtime cases can remain present locally without changing the public fixture claim.
+- `NVDA` and `KO` retain lower backstage runtime-registry integration.
+- `LLY` is a bounded visible case and does not yet ship the full lower-audit runtime stack surfaced through `lab_cases_v1.json`.
+- The lower runtime registry can remain broader backstage without widening the visible three-fixture claim.
 
 ## How to read one case
 1. Start with the filing answer and paired evidence.
@@ -52,15 +52,18 @@ npm run dev
 ## Required gates
 ```bash
 npm run lint
+npm run build
 npm run lab:predeploy
 npm run lab:readiness
-npm run build
 ```
 
 ## Canonical docs
 - `docs/00_DOC_INDEX.md`
 - `docs/LAB_REMAINING_WORK_PLAN.md`
+- `docs/LAB_ARCHITECTURE_AND_GOALS.md`
 - `docs/PRODUCT_STORY.md`
+- `docs/DEMO_READINESS.md`
+- `docs/REMAINING_SEAMS.md`
 - `docs/SEC_TEXT_SAFETY.md`
 - `docs/lab/05_llm_reproducibility_contract.md`
 - `docs/lab/10_case_quality_review_log.md`

@@ -15,7 +15,7 @@ import {
 
 const HERO_TITLE = "Document Protocol Lab is a bounded SEC Item 1A pilot."
 const HERO_SUBHEAD =
-  "The public surface stays fixed to three fixtures so the product thesis stays legible: strongest first signal, policy-heavy bounded contrast, and low-drift restraint."
+  "The visible pilot stays fixed to three fixtures so the product thesis stays legible: strongest first signal, policy-heavy bounded contrast, and low-drift restraint."
 const HOME_TITLE = "Document Protocol Lab | SEC Item 1A pilot"
 const HOME_META_DESCRIPTION =
   "Document Protocol Lab is a bounded, evidence-first SEC Item 1A pilot across NVDA, LLY, and KO: answer first, evidence nearby, audit on demand."
@@ -314,8 +314,9 @@ export default function Home() {
               structure, method detail, or provenance.
             </p>
             <p className="mt-3 text-sm text-slate-200">
-              Static JSON only. No runtime model calls. Filing text stays untrusted and the public
-              pilot stops before it implies broader coverage than it actually ships.
+              Static JSON only. No runtime model calls. Filing text stays untrusted, and the lower
+              runtime registry can remain broader backstage without changing the visible
+              three-fixture claim.
             </p>
           </div>
         </section>

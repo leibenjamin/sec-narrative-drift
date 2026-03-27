@@ -5,6 +5,8 @@
 - `docs/LAB_REMAINING_WORK_PLAN.md` - active execution status and remaining work.
 - `docs/LAB_ARCHITECTURE_AND_GOALS.md` - canonical product/runtime architecture, design goals, and shipped-surface principles.
 - `docs/PRODUCT_STORY.md` - public product narrative and walkthrough order.
+- `docs/DEMO_READINESS.md` - compact walkthrough and speaking notes for the current public pilot.
+- `docs/REMAINING_SEAMS.md` - brief note on the remaining public/runtime seams and manual follow-ups.
 - `docs/PUBLIC_TONE_POLICY.md` - public-facing language policy and banned framing.
 - `docs/SEC_TEXT_SAFETY.md` - SEC text trust model and rendering safety rules.
 - `docs/lab/03_llm_precompute_workflow.md` - canonical precompute workflow (`full_section_v2`, master-first).

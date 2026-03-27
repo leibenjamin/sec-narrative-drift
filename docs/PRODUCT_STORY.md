@@ -1,22 +1,22 @@
-﻿# Product Story: SEC Narrative Drift Lab
+# Product Story: Document Protocol Lab
 
 ## One-line pitch
-This Lab shows where a company's Item 1A risk story changed from FY2024 to FY2025 using deterministic detectors plus precomputed compare artifacts with explicit evidence and provenance.
+Document Protocol Lab currently ships a bounded SEC Item 1A pilot across NVDA, LLY, and KO, showing how an evidence-first workflow answers first, explains protocol meaning second, and keeps deeper audit third.
 
 ## What makes the product distinctive
-- Users choose a company, not a year pair.
-- The default reading path starts with a compare-first risk narrative summary instead of raw metrics.
-- Codex and ChatGPT stay visible side by side as the public compare lanes.
-- Deterministic methods remain the reproducible baseline underneath the model sidecars.
+- Users choose one of three visible fixtures, not a broad issuer gallery.
+- The default reading path starts with the filing answer and nearby evidence instead of raw metrics.
+- The protocol layer stays visible as the second read so each fixture has an explicit reason to exist.
+- Deeper audit remains available, but it does not lead the page.
+- Deterministic methods remain the reproducible baseline underneath any model sidecars.
 - Missing artifacts stay explicit instead of being silently hidden.
 
 ## Fast walkthrough
-1. Open a company page.
-2. Land on that company's one active FY2024 to FY2025 case.
-3. Read the risk narrative summary first.
-4. Check the two core deterministic methods and the agreement panel.
-5. Open outline compare for mechanisms, investor relevance, limits, and side-by-side framing.
-6. Treat Insight Lens as optional when it is present.
+1. Open Home or Cases.
+2. Start with NVDA unless you specifically want the bounded LLY contrast or the KO restraint case.
+3. Read the filing answer first.
+4. Use the protocol layer to understand why that fixture is in the lab.
+5. Open deeper audit only when you want more structure, methods, or provenance.
 
 ## Core credibility points
 - Runtime is static JSON only.
@@ -24,15 +24,15 @@ This Lab shows where a company's Item 1A risk story changed from FY2024 to FY202
 - SEC text is treated as untrusted and rendered as plain text only.
 - Public output paths and campaign metadata remain stable.
 - Model outputs are offline sidecars with deterministic validation and runtime projection.
-- Current shipped scope is Core4 only: `NVDA`, `KO`, `WM`, and `GE` across FY2024 to FY2025.
-- Visible compare lanes are the truthful Codex real and ChatGPT 5.4 real campaigns.
+- The visible public pilot is fixed to `NVDA`, `LLY`, and `KO` for FY2024 to FY2025.
+- `LLY` remains explicitly bounded and does not imply the full lower-audit runtime stack.
+- Lower runtime registries can remain broader backstage without changing the visible pilot claim.
 
 ## Public walkthrough sequence
-1. Start with the risk narrative summary and paired filing evidence.
-2. Confirm the signal with the two core deterministic methods.
-3. Use agreement to see whether the deterministic methods reinforce the same story.
-4. Open outline compare for the deeper structural audit.
-5. Mention Insight Lens only when the sidecar is actually present.
+1. Start with the filing answer and paired evidence.
+2. Read the protocol meaning second so the fixture role is explicit.
+3. Open deeper audit and provenance only when you need more structure or pressure-testing.
+4. Mention optional insight only when the sidecar is actually present.
 
 ## Public case-study framing
 - Problem:
@@ -45,12 +45,14 @@ This Lab shows where a company's Item 1A risk story changed from FY2024 to FY202
   users can move from headline interpretation to filing evidence without changing tools.
 
 ## Operator note
-Local validation artifacts exist for operators, but they are not part of the shipped UX or the public product story.
+Local validation artifacts and broader runtime registries can exist backstage, but they are not the public case list and should not widen the visible three-fixture claim.
 
 ## FAQ-ready answers
+- Q: Why only three visible fixtures?
+  A: Because the current product claim is intentionally narrow. NVDA gives the strongest first signal, LLY pressure-tests the protocol in a bounded policy-heavy case, and KO checks whether the same workflow stays honest on a mostly stable filing.
 - Q: Why deterministic-first?
   A: Because the deploy surface stays reproducible and path-auditable. Model outputs are offline sidecars, not runtime inference.
-- Q: What does model comparison add?
-  A: It shows whether two strong model lanes agree on the lead story, or whether the filing supports multiple plausible emphases.
+- Q: How should LLY be described honestly?
+  A: As a bounded visible case. The filing answer and protocol meaning are public, but the full lower-audit runtime stack is intentionally not implied for that issuer.
 - Q: How do you prevent injection risks from filing text?
   A: The app follows `docs/SEC_TEXT_SAFETY.md`: no HTML rendering, only safe text-node rendering and controlled `<mark>` spans.

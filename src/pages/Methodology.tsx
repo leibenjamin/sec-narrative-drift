@@ -81,9 +81,9 @@ export default function Methodology() {
           </h1>
           <p className="max-w-4xl text-sm text-slate-300">
             Document Protocol Lab is not trying to be a broad research platform. The current live
-            product is a bounded SEC Item 1A pilot: three fixed fixtures, static-runtime data,
-            evidence-grounded outputs, and a reading order that keeps the filing answer first, the
-            protocol meaning second, and the deeper audit third.
+            product is a bounded SEC Item 1A pilot: three fixed visible fixtures, static-runtime
+            data, evidence-grounded outputs, and a reading order that keeps the filing answer
+            first, the protocol meaning second, and the deeper audit third.
           </p>
         </header>
 
@@ -118,7 +118,8 @@ export default function Methodology() {
             <p className="mt-3 text-sm text-slate-200">
               The public pilot stays fixed to NVDA, LLY, and KO so the protocol can be evaluated
               across the strongest first signal, a policy-heavy bounded contrast, and a
-              restraint / low-drift honesty check.
+              restraint / low-drift honesty check. The lower runtime registry can remain broader
+              backstage without widening that visible claim.
             </p>
           </article>
           <article className="rounded-[1.35rem] border border-white/10 bg-slate-900/45 p-5">

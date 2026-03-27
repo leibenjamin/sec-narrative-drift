@@ -54,7 +54,7 @@ export default function Companies() {
             Choose the fixture that matches your goal.
           </h1>
           <p className="max-w-3xl text-sm text-slate-300">
-            This is the lean chooser for the bounded three-fixture pilot. Pick the strongest first
+            This is the lean chooser for the visible three-fixture pilot. Pick the strongest first
             signal, the policy-heavy bounded contrast, or the restraint / low-drift honesty check.
           </p>
           <div className="flex flex-wrap gap-2 text-xs text-slate-200">
@@ -100,7 +100,7 @@ export default function Companies() {
             <ProtocolLabUseCaseGuide
               visiblePilots={visiblePilots}
               title="Choose by goal"
-              description="Each option below is a fixed protocol-demo fixture for a different first question."
+              description="Each option below is a fixed visible pilot fixture for a different first question."
             />
 
             <section className="grid gap-4 lg:grid-cols-[1.05fr_0.95fr]">
@@ -123,8 +123,9 @@ export default function Companies() {
                   meaning second, deeper audit third.
                 </p>
                 <p className="mt-2 text-sm text-slate-200">
-                  The app stays static JSON only at runtime, and LLY remains explicitly bounded so
-                  the chooser does not imply more audit depth than that case actually exposes.
+                  The app stays static JSON only at runtime. LLY remains explicitly bounded, and
+                  the lower runtime registry can stay broader backstage without widening the visible
+                  chooser claim.
                 </p>
               </article>
             </section>

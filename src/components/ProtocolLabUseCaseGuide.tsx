@@ -53,7 +53,7 @@ function resolveHref(
 export default function ProtocolLabUseCaseGuide({
   visiblePilots,
   title = "Choose by goal",
-  description = "Each option below is a fixed protocol-demo fixture.",
+  description = "Each option below is a fixed visible pilot fixture.",
   className = "",
 }: ProtocolLabUseCaseGuideProps) {
   return (

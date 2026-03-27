@@ -941,7 +941,7 @@ export default function ProtocolLabPilotMatrixPanel({
               <div className="rounded-lg border border-white/10 bg-white/5 p-3">
                 <div className="text-xs uppercase tracking-wide text-slate-400">Scope boundary</div>
                 <p className="mt-2 text-sm text-slate-100">
-                  {issuerLabel} remains a bounded comparison view. Claims are filing-first and
+                  {issuerLabel} remains a bounded visible pilot view. Claims are filing-first and
                   bounded to this fixed year pair.
                 </p>
               </div>
