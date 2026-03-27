@@ -183,6 +183,13 @@ function signalTierClasses(tier: SignalTier): string {
   return "border-rose-300/35 bg-rose-400/10 text-rose-100"
 }
 
+function signalTierLabel(tier: SignalTier): string {
+  if (tier === "high") return "Strong"
+  if (tier === "medium") return "Moderate"
+  if (tier === "low") return "Weak"
+  return "Insufficient"
+}
+
 async function copyTextToClipboard(text: string): Promise<boolean> {
   if (typeof navigator !== "undefined" && navigator.clipboard?.writeText) {
     try {
@@ -389,11 +396,12 @@ export default function MethodCard({
     !!output && (analysisMode === "deep" || signalSummary.tier === "low" || signalSummary.tier === "insufficient")
   const isContextOpen =
     contextPreference === "open" ||
-    (contextPreference === "auto" && analysisMode === "deep" && autoOpenContext)
+    (contextPreference === "auto" &&
+      analysisMode === "deep" &&
+      autoOpenContext &&
+      signalSummary.tier === "insufficient")
   const defaultDiagnosticsOpen =
-    analysisMode !== "deep" ||
-    signalSummary.tier === "low" ||
-    signalSummary.tier === "insufficient"
+    signalSummary.tier === "low" || signalSummary.tier === "insufficient"
   const isDiagnosticsOpen =
     diagnosticsPreference === "auto"
       ? defaultDiagnosticsOpen
@@ -422,21 +430,19 @@ export default function MethodCard({
   return (
     <section className="rounded-xl border border-white/10 bg-slate-950/40 p-5">
       <header className="flex flex-wrap items-start justify-between gap-3">
-        <div>
+        <div className="max-w-3xl">
           <h3 className="text-lg font-semibold text-slate-100">{title}</h3>
           {description ? <p className="text-sm text-slate-300">{description}</p> : null}
-          <p className="mt-2 text-sm text-slate-200">{decisionSentence}</p>
+          <div className="mt-3 text-[11px] uppercase tracking-wide text-slate-400">Takeaway</div>
+          <p className="mt-1 text-sm text-slate-100">{decisionSentence}</p>
+          {output ? <p className="mt-2 text-xs text-slate-400">{weaknessReason}</p> : null}
         </div>
         <div className="flex flex-wrap items-center gap-2 text-sm text-slate-300">
-          <span title="Magnitude of year-over-year narrative change detected">Drift: {formatMetric(output?.metrics.drift_score)}</span>
-          <span className="text-slate-500">|</span>
           <span
-            title="Heuristic confidence band (Low / Medium / High) — not a calibrated probability"
+            className={`rounded-full border px-2.5 py-1 text-[11px] font-medium ${signalTierClasses(signalSummary.tier)}`}
           >
-            Confidence: {formatConfidenceBand(output?.metrics.confidence)}
+            {signalTierLabel(signalSummary.tier)} evidence
           </span>
-          <span className="text-slate-500">|</span>
-          <span title="Proportion of the risk section covered by this method's analysis">Coverage: {formatMetric(output?.metrics.coverage)}</span>
           <button
             type="button"
             onClick={handleToggleContext}
@@ -462,11 +468,11 @@ export default function MethodCard({
             <p className="text-xs text-slate-300">Loading detector output...</p>
           ) : !output ? (
             <p className="text-xs text-amber-200">
-              Missing artifact. Expand for expected path, requested URL, and copyable debug details.
+              Unavailable for this lane. Expand for the expected path, requested URL, and copyable debug details.
             </p>
           ) : (
             <p className="text-xs text-slate-300">
-              Collapsed. Signal: {signalSummary.summary} Expand to inspect evidence, caveats, and context.
+              {signalSummary.summary} Expand for excerpts, metrics, caveats, and method context.
             </p>
           )}
         </div>
@@ -768,7 +774,7 @@ export default function MethodCard({
               {shouldShowSignalBanner ? (
                 <div className={`rounded-md border p-3 text-xs ${signalTierClasses(signalSummary.tier)}`}>
                   <div className="font-semibold">
-                    Evidence strength: {signalSummary.tier === "high" ? "Strong" : signalSummary.tier === "medium" ? "Moderate" : signalSummary.tier === "low" ? "Weak" : "Insufficient"}
+                    Evidence strength: {signalTierLabel(signalSummary.tier)}
                   </div>
                   <p className="mt-1">{signalSummary.reason}</p>
                   <p className="mt-1 text-slate-100">{weaknessReason}</p>
@@ -778,15 +784,14 @@ export default function MethodCard({
                 </div>
               ) : null}
 
-              {warnings.length || rankedItems.length || topRisers.length || topFallers.length ? (
-                <div className={`rounded-md border p-3 ${diagnosticsToneClass}`}>
+              <div className={`rounded-md border p-3 ${diagnosticsToneClass}`}>
                   <div className="flex items-center justify-between gap-3">
                     <div>
                       <div className="text-xs font-semibold uppercase tracking-wide text-slate-200">
-                        Diagnostic details
+                        Method details
                       </div>
                       <p className="mt-1 text-xs text-slate-400">
-                        Warnings, ranked terms, and riser/faller context.
+                        Metrics, warnings, ranked terms, and riser/faller context.
                       </p>
                     </div>
                     <button
@@ -800,6 +805,27 @@ export default function MethodCard({
 
                   {isDiagnosticsOpen ? (
                     <div className="mt-3 space-y-4">
+                      <div className="grid gap-2 sm:grid-cols-3">
+                        <div className="rounded-md border border-white/10 bg-slate-950/35 px-3 py-2 text-xs text-slate-200">
+                          <div className="text-[11px] uppercase tracking-wide text-slate-400">Drift</div>
+                          <div className="mt-1 font-medium text-slate-100">
+                            {formatMetric(output?.metrics.drift_score)}
+                          </div>
+                        </div>
+                        <div className="rounded-md border border-white/10 bg-slate-950/35 px-3 py-2 text-xs text-slate-200">
+                          <div className="text-[11px] uppercase tracking-wide text-slate-400">Confidence</div>
+                          <div className="mt-1 font-medium text-slate-100">
+                            {formatConfidenceBand(output?.metrics.confidence)}
+                          </div>
+                        </div>
+                        <div className="rounded-md border border-white/10 bg-slate-950/35 px-3 py-2 text-xs text-slate-200">
+                          <div className="text-[11px] uppercase tracking-wide text-slate-400">Coverage</div>
+                          <div className="mt-1 font-medium text-slate-100">
+                            {formatMetric(output?.metrics.coverage)}
+                          </div>
+                        </div>
+                      </div>
+
                       {warnings.length ? (
                         <div className="rounded-md border border-amber-400/30 bg-amber-400/10 p-3 text-xs text-amber-100">
                           Warnings: {warnings.join(", ")}
@@ -845,7 +871,6 @@ export default function MethodCard({
                     </div>
                   ) : null}
                 </div>
-              ) : null}
 
               <div>
                 <div className="text-xs uppercase tracking-wide text-slate-400">Evidence</div>

@@ -50,33 +50,42 @@ export default function AgreementMatrix({ output }: AgreementMatrixProps) {
   }
 
   return (
-    <div className="overflow-x-auto rounded-lg border border-white/10 bg-white/5">
-      <table className="min-w-full text-left text-xs text-slate-200">
-        <thead className="bg-white/5 text-[11px] uppercase tracking-wide text-slate-400">
-          <tr>
-            <th className="px-3 py-2">Method</th>
-            {detectors.map((det) => (
-              <th key={det} className="px-3 py-2" title={det}>
-                {formatDetectorName(det)}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {matrix.map((row, rowIdx) => (
-            <tr key={detectors[rowIdx] ?? rowIdx} className="border-t border-white/10">
-              <td className="px-3 py-2 font-medium text-slate-300" title={detectors[rowIdx]}>
-                {formatDetectorName(detectors[rowIdx] ?? "")}
-              </td>
-              {row.map((cell, colIdx) => (
-                <td key={`${rowIdx}-${colIdx}`} className={`px-3 py-2 ${cellColorClass(cell, rowIdx === colIdx)}`}>
-                  {cell === null || cell === undefined ? "-" : cell.toFixed(3)}
-                </td>
+    <div className="space-y-3">
+      <p className="max-w-3xl text-xs text-slate-300">
+        High agreement means different detectors are surfacing similar risk movement. Low agreement
+        means the answer needs a slower method-by-method read rather than a quick consensus take.
+      </p>
+      <div className="overflow-x-auto rounded-lg border border-white/10 bg-white/5">
+        <table className="min-w-full text-left text-xs text-slate-200">
+          <thead className="bg-white/5 text-[11px] uppercase tracking-wide text-slate-400">
+            <tr>
+              <th className="px-3 py-2">Method</th>
+              {detectors.map((det) => (
+                <th key={det} className="px-3 py-2" title={det}>
+                  {formatDetectorName(det)}
+                </th>
               ))}
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {matrix.map((row, rowIdx) => (
+              <tr key={detectors[rowIdx] ?? rowIdx} className="border-t border-white/10">
+                <td className="px-3 py-2 font-medium text-slate-300" title={detectors[rowIdx]}>
+                  {formatDetectorName(detectors[rowIdx] ?? "")}
+                </td>
+                {row.map((cell, colIdx) => (
+                  <td
+                    key={`${rowIdx}-${colIdx}`}
+                    className={`px-3 py-2 ${cellColorClass(cell, rowIdx === colIdx)}`}
+                  >
+                    {cell === null || cell === undefined ? "-" : cell.toFixed(3)}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   )
 }

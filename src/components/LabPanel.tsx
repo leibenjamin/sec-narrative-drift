@@ -1024,11 +1024,12 @@ export default function LabPanel({
         const artifact = await findLabOutlineCompareInsightArtifactForCampaign(selectedCase, lens, campaignId)
         if (!artifact) {
           nextInsightOutputs[campaignId] = null
-          nextInsightDebugPaths[campaignId] = "Missing insight lens artifact metadata."
+          nextInsightDebugPaths[campaignId] =
+            "Optional insight lens sidecar is not published for this compare lane."
           nextInsightDebugInfo[campaignId] = {
             expectedPath: null,
             requestedUrl: null,
-            errorText: "Insight lens artifact metadata is not indexed for this case/lens/campaign.",
+            errorText: "Optional insight lens sidecar not available for this case/lens/campaign.",
           }
           continue
         }
@@ -1217,7 +1218,7 @@ export default function LabPanel({
 
       for (const card of methodCards) {
         const scopedKey = buildCardExpansionKey(expansionScopeKey, card.cardKey)
-        const defaultExpanded = analysisMode === "deep" ? true : card.group === "core"
+        const defaultExpanded = false
         next[scopedKey] = defaultExpanded
       }
 
@@ -1534,393 +1535,439 @@ export default function LabPanel({
         />
       ) : null}
 
-      <details className="rounded-[1.2rem] border border-white/10 bg-white/5 p-4">
-        <summary className="cursor-pointer list-none text-sm font-semibold text-slate-100">
-          Advanced controls
-        </summary>
-        <div className="mt-4 space-y-4 text-sm text-slate-200">
-          {isPilotMatrixSelectedCase ? (
-            <div className="grid gap-3 md:grid-cols-2">
-              <div className="rounded-lg border border-white/10 bg-slate-950/35 p-4">
-                <div className="text-xs uppercase tracking-wide text-slate-400">Cleaning lens</div>
-                <div className="mt-3">
-                  <CleaningLensToggle value={lens} options={lensOptions} onChange={setLens} />
-                </div>
-                <p className="mt-3 text-xs text-slate-400">
-                  {lens === "deboilerplated"
-                    ? "Deboilerplated remains the default filing-cleaning view for a cleaner deterministic read below the matrix."
-                    : "Switch lenses to compare the default cleaned view with the raw filing text and other preprocessing variants."}
-                </p>
-              </div>
-              <div className="rounded-lg border border-white/10 bg-slate-950/35 p-4">
-                <div className="text-xs uppercase tracking-wide text-slate-400">Reading mode</div>
-                <div className="mt-3 flex flex-wrap gap-2">
-                  <button
-                    type="button"
-                    onClick={() => handleApplyPreset(EXECUTIVE_READ_PRESET, "deboilerplated", "executive")}
-                    className={`rounded-md border px-3 py-1.5 text-sm transition ${
-                      isExecutiveMode
-                        ? "border-sky-200/80 bg-sky-400/25 text-sky-50 shadow-[0_0_0_1px_rgba(125,211,252,0.25)]"
-                        : "border-white/15 bg-slate-900/45 text-slate-300 hover:border-white/30 hover:text-slate-100"
-                    }`}
-                  >
-                    Quick read
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => handleApplyPreset(TECHNICAL_DEEP_DIVE_PRESET, lens, "deep")}
-                    className={`rounded-md border px-3 py-1.5 text-sm transition ${
-                      isDeepMode
-                        ? "border-emerald-200/80 bg-emerald-400/25 text-emerald-50 shadow-[0_0_0_1px_rgba(110,231,183,0.25)]"
-                        : "border-white/15 bg-slate-900/45 text-slate-300 hover:border-white/30 hover:text-slate-100"
-                    }`}
-                  >
-                    Deep review
-                  </button>
-                </div>
-                <p className="mt-3 text-xs text-slate-400">
-                  {isExecutiveMode
-                    ? "Quick read keeps the two core deterministic methods in view first."
-                    : "Deep review restores the full deterministic set and richer method context."}
-                </p>
-                {presetStatus ? (
-                  <p className="mt-2 text-xs text-emerald-300">{presetStatus.message}</p>
-                ) : null}
-              </div>
-            </div>
-          ) : null}
-
-          {hasMultipleCases ? (
-            <div className="rounded-lg border border-white/10 bg-slate-950/35 p-4">
-              <div className="text-xs uppercase tracking-wide text-slate-400">Case override</div>
-              <select
-                value={selectedCaseKey ?? ""}
-                onChange={(event) => setSelectedCaseKey(event.target.value)}
-                className="mt-3 w-full rounded-md border border-white/15 bg-slate-950/40 px-3 py-2 text-sm text-slate-100"
-              >
-                {cases.map((item) => (
-                  <option key={buildCaseKey(item)} value={buildCaseKey(item)}>
-                    {formatFiscalYearRange(item.year_from, item.year_to)}
-                  </option>
-                ))}
-              </select>
-            </div>
-          ) : null}
-
-          {llmCampaignOptions.length > 1 ? (
-            <div className="grid gap-3 md:grid-cols-2">
-              <div className="rounded-lg border border-white/10 bg-slate-950/35 p-4">
-                <div className="text-xs uppercase tracking-wide text-slate-400">Compare campaign A</div>
-                <select
-                  value={selectedLlmCampaignA}
-                  onChange={(event) => setSelectedLlmCampaignA(event.target.value)}
-                  className="mt-3 w-full rounded-md border border-white/15 bg-slate-950/40 px-3 py-2 text-sm text-slate-100"
-                >
-                  {llmCampaignOptions.map((campaign) => (
-                    <option key={campaign.campaign_id} value={campaign.campaign_id}>
-                      {campaign.display_name}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <div className="rounded-lg border border-white/10 bg-slate-950/35 p-4">
-                <div className="text-xs uppercase tracking-wide text-slate-400">Compare campaign B</div>
-                <select
-                  value={selectedLlmCampaignB}
-                  onChange={(event) => setSelectedLlmCampaignB(event.target.value)}
-                  disabled={llmCampaignOptions.length <= 1}
-                  className="mt-3 w-full rounded-md border border-white/15 bg-slate-950/40 px-3 py-2 text-sm text-slate-100"
-                >
-                  {llmCampaignOptions.map((campaign) => (
-                    <option key={campaign.campaign_id} value={campaign.campaign_id}>
-                      {campaign.display_name}
-                    </option>
-                  ))}
-                </select>
-                {llmCampaignOptions.length <= 1 ? (
-                  <div className="mt-2 text-xs text-slate-400">Second full-section campaign pending.</div>
-                ) : null}
-              </div>
-            </div>
-          ) : null}
-
-          <div className="rounded-lg border border-white/10 bg-slate-950/35 p-4">
-            <div className="flex items-center justify-between gap-3">
-              <div className="text-xs uppercase tracking-wide text-slate-400">Deterministic methods</div>
-              <div className="text-xs text-slate-500">Available outputs: {availableDetectorIds.length}/{DETECTOR_CATALOG.length}</div>
-            </div>
-            <div className="mt-3 space-y-3">
-              {detectorGroups.map((group) => (
-                <div key={group.id} className="rounded-md border border-white/10 bg-slate-900/35 p-3">
-                  <div className="text-xs uppercase tracking-wide text-slate-400">{group.label}</div>
-                  <div className="mt-2 flex flex-wrap gap-2">
-                    {group.detectors.map((detector) => {
-                      const isAvailable = availableDetectorSet.has(detector.id)
-                      const isSelected = selectedDetectors.includes(detector.id)
-                      return (
-                        <label
-                          key={detector.id}
-                          className={`flex items-center gap-2 rounded-full border px-3 py-1 text-xs ${
-                            isAvailable
-                              ? "border-white/10 bg-white/5 text-slate-200"
-                              : "border-amber-300/30 bg-amber-400/10 text-amber-100"
-                          }`}
-                        >
-                          <input
-                            type="checkbox"
-                            className="h-3 w-3"
-                            checked={isSelected}
-                            onChange={() => {
-                              setSelectedDetectors((prev) => {
-                                if (prev.includes(detector.id)) {
-                                  return prev.filter((item) => item !== detector.id)
-                                }
-                                return [...prev, detector.id]
-                              })
-                            }}
-                          />
-                          <span>
-                            {detector.label}
-                            {!isAvailable ? " (missing artifact)" : ""}
-                          </span>
-                        </label>
-                      )
-                    })}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="grid gap-3 lg:grid-cols-[1fr,0.8fr]">
-            <div className="rounded-lg border border-white/10 bg-slate-950/35 p-4">
-              <div className="text-xs uppercase tracking-wide text-slate-400">Utilities</div>
-              <div className="mt-3 flex flex-wrap items-center gap-2">
-                <button
-                  type="button"
-                  onClick={handleExpandAllCards}
-                  className="rounded-md border border-white/20 bg-slate-900/60 px-2 py-1 text-xs text-slate-100 transition hover:border-white/40"
-                >
-                  Expand all ({expandedCount}/{methodCards.length} expanded)
-                </button>
-                <button
-                  type="button"
-                  onClick={handleCollapseAllCards}
-                  className="rounded-md border border-white/20 bg-slate-900/60 px-2 py-1 text-xs text-slate-100 transition hover:border-white/40"
-                >
-                  Collapse all ({expandedCount}/{methodCards.length} expanded)
-                </button>
-                <button
-                  type="button"
-                  onClick={handleReloadOutputs}
-                  disabled={!selectedCase || isLoadingOutputs}
-                  className="rounded-md border border-white/10 bg-slate-950/40 px-2 py-1 text-xs text-slate-300 transition hover:border-white/25 hover:text-slate-100 disabled:cursor-not-allowed disabled:opacity-50"
-                >
-                  Reload outputs
-                </button>
-              </div>
-              <div className="mt-3 rounded-md border border-white/10 bg-slate-900/35 px-3 py-2 text-xs text-slate-300">
-                {methodCoverageSummary}
-              </div>
-            </div>
-
-            <div className="rounded-lg border border-white/10 bg-slate-950/35 p-4">
-              <div className="text-xs uppercase tracking-wide text-slate-400">Jump to section</div>
-              <div className="mt-3 flex flex-wrap items-center gap-3 text-xs text-slate-300">
-                {isPilotMatrixSelectedCase ? (
-                  <a className="underline decoration-white/30 underline-offset-2 hover:text-slate-100" href="#lab-pilot-matrix">
-                    Pilot matrix
-                  </a>
-                ) : null}
-                <a className="underline decoration-white/30 underline-offset-2 hover:text-slate-100" href="#lab-risk-narrative">
-                  Risk narrative
-                </a>
-                <a className="underline decoration-white/30 underline-offset-2 hover:text-slate-100" href="#lab-core-methods">
-                  Core methods
-                </a>
-                <a className="underline decoration-white/30 underline-offset-2 hover:text-slate-100" href="#lab-structure-methods">
-                  Structure methods
-                </a>
-                <a className="underline decoration-white/30 underline-offset-2 hover:text-slate-100" href="#lab-agreement">
-                  Agreement
-                </a>
-                <a className="underline decoration-white/30 underline-offset-2 hover:text-slate-100" href="#lab-outline-compare">
-                  Outline compare
-                </a>
-                {hasAnyInsightOutput ? (
-                  <a className="underline decoration-white/30 underline-offset-2 hover:text-slate-100" href="#lab-insight-lens">
-                    Insight lens
-                  </a>
-                ) : null}
-                {isDeepMode ? (
-                  <a className="underline decoration-white/30 underline-offset-2 hover:text-slate-100" href="#lab-method-context">
-                    Method context
-                  </a>
-                ) : null}
-              </div>
-            </div>
-          </div>
-        </div>
-      </details>
-
-      <div id="lab-method-context" className="space-y-6">
-        {groupedMethodCards.map((group) => (
-          <section key={group.id} id={group.sectionId} className="space-y-3">
-            <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-300">
-              {group.label}
-            </h3>
-            <div className="grid gap-4">
-              {group.cards.map((detector) => (
-                <MethodCard
-                  key={detector.cardKey}
-                  detectorId={detector.id}
-                  title={detector.label}
-                  description={`${detector.technicalLabel}. ${detector.description}`}
-                  llmCampaign={null}
-                  output={outputs[detector.cardKey] ?? null}
-                  debugPath={outputDebugPaths[detector.cardKey] ?? null}
-                  debugInfo={outputDebugInfo[detector.cardKey] ?? null}
-                  isLoading={isLoadingOutputs}
-                  analysisMode={analysisMode}
-                  methodProfile={methodProfilesByDetector[detector.id] ?? null}
-                  autoOpenContext={isDeepMode && deepAutoOpenContextKeys.has(detector.cardKey)}
-                  isExpanded={
-                    expandedCards[buildCardExpansionKey(expansionScopeKey, detector.cardKey)] ??
-                    false
-                  }
-                  onToggleExpanded={() => handleToggleCardExpanded(detector.cardKey)}
-                  emptyMessage="No output available for this method, lens, and model combination. Try the deboilerplated lens or a different ticker for available results."
-                />
-              ))}
-            </div>
-          </section>
-        ))}
-      </div>
-
-      <div id="lab-agreement" className="space-y-4">
-        <div>
-          <h3 className="text-lg font-semibold text-slate-100">Where methods agree</h3>
-          <p className="text-xs text-slate-400">
-            Shows how much the deterministic methods converge on the same ranked risk themes. High agreement means the detectors are reinforcing one another; low agreement means the filing needs a more careful method-by-method read.
+      <section
+        id="lab-audit-trail"
+        className="space-y-6 rounded-[1.4rem] border border-white/10 bg-slate-950/18 p-5"
+      >
+        <div className="max-w-3xl">
+          <p className="text-[11px] uppercase tracking-[0.24em] text-slate-400">Audit trail</p>
+          <h2 className="mt-2 text-xl font-semibold text-slate-100">How we checked the filing answer</h2>
+          <p className="mt-2 text-sm text-slate-300">
+            This lower layer is for pressure-testing the answer above. Start with the filing answer,
+            then the protocol meaning, and only then use controls, methods, and deeper compare surfaces.
           </p>
         </div>
-        <AgreementMatrix output={agreementOutput} />
-        {!agreementOutput ? (
-          <div className="space-y-2 rounded-md border border-amber-400/30 bg-amber-400/10 p-3 text-xs text-slate-200">
-            <p className="font-semibold text-amber-100">Missing artifact</p>
-            {agreementDebugInfo?.expectedPath ? (
-              <p className="break-all text-[11px] text-slate-100">
-                Expected path: {agreementDebugInfo.expectedPath}
-              </p>
-            ) : null}
-            {agreementDebugInfo?.requestedUrl ? (
-              <p className="break-all text-[11px] text-slate-300">
-                Requested URL: {agreementDebugInfo.requestedUrl}
-              </p>
-            ) : null}
-            {agreementDebugInfo?.errorText ? (
-              <p className="text-[11px] text-amber-100">{agreementDebugInfo.errorText}</p>
-            ) : null}
-            {agreementDebugPath ? (
-              <p className="break-all text-[11px] text-slate-300">{agreementDebugPath}</p>
-            ) : null}
-            {agreementDebugInfo ? (
-              <div className="flex items-center gap-2">
-                <button
-                  type="button"
-                  onClick={handleCopyAgreementDebug}
-                  className="rounded-md border border-white/20 bg-slate-900/60 px-2 py-1 text-[11px] text-slate-100 transition hover:border-white/40"
-                >
-                  Copy debug info
-                </button>
-                {agreementCopyState === "copied" ? (
-                  <span className="text-[11px] text-emerald-300">Copied.</span>
-                ) : null}
-                {agreementCopyState === "failed" ? (
-                  <span className="text-[11px] text-rose-300">Copy failed.</span>
-                ) : null}
+
+        <details className="rounded-[1.1rem] border border-white/10 bg-slate-950/22 p-4">
+          <summary className="cursor-pointer list-none text-sm font-semibold text-slate-100">
+            Advanced controls
+          </summary>
+          <p className="mt-3 max-w-3xl text-xs text-slate-400">
+            Power-user controls for changing lanes, methods, and diagnostics. They stay below the answer
+            and protocol layers on purpose.
+          </p>
+          <div className="mt-4 space-y-4 text-sm text-slate-200">
+            {isPilotMatrixSelectedCase ? (
+              <div className="grid gap-3 md:grid-cols-2">
+                <div className="rounded-lg border border-white/10 bg-slate-950/35 p-4">
+                  <div className="text-xs uppercase tracking-wide text-slate-400">Cleaning lens</div>
+                  <div className="mt-3">
+                    <CleaningLensToggle value={lens} options={lensOptions} onChange={setLens} />
+                  </div>
+                  <p className="mt-3 text-xs text-slate-400">
+                    {lens === "deboilerplated"
+                      ? "Deboilerplated remains the default filing-cleaning view for a cleaner deterministic read below the matrix."
+                      : "Switch lenses to compare the default cleaned view with the raw filing text and other preprocessing variants."}
+                  </p>
+                </div>
+                <div className="rounded-lg border border-white/10 bg-slate-950/35 p-4">
+                  <div className="text-xs uppercase tracking-wide text-slate-400">Reading mode</div>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    <button
+                      type="button"
+                      onClick={() => handleApplyPreset(EXECUTIVE_READ_PRESET, "deboilerplated", "executive")}
+                      className={`rounded-md border px-3 py-1.5 text-sm transition ${
+                        isExecutiveMode
+                          ? "border-sky-200/80 bg-sky-400/25 text-sky-50 shadow-[0_0_0_1px_rgba(125,211,252,0.25)]"
+                          : "border-white/15 bg-slate-900/45 text-slate-300 hover:border-white/30 hover:text-slate-100"
+                      }`}
+                    >
+                      Quick read
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => handleApplyPreset(TECHNICAL_DEEP_DIVE_PRESET, lens, "deep")}
+                      className={`rounded-md border px-3 py-1.5 text-sm transition ${
+                        isDeepMode
+                          ? "border-emerald-200/80 bg-emerald-400/25 text-emerald-50 shadow-[0_0_0_1px_rgba(110,231,183,0.25)]"
+                          : "border-white/15 bg-slate-900/45 text-slate-300 hover:border-white/30 hover:text-slate-100"
+                      }`}
+                    >
+                      Deep review
+                    </button>
+                  </div>
+                  <p className="mt-3 text-xs text-slate-400">
+                    {isExecutiveMode
+                      ? "Quick read keeps the two core deterministic methods in view first."
+                      : "Deep review restores the full deterministic set and richer method context."}
+                  </p>
+                  {presetStatus ? <p className="mt-2 text-xs text-emerald-300">{presetStatus.message}</p> : null}
+                </div>
               </div>
             ) : null}
-          </div>
-        ) : null}
-      </div>
 
-      {selectedLlmCampaignA || selectedLlmCampaignB ? (
-        <OutlineComparePanel
-          modelALabel={selectedCampaignLabelA}
-          modelBLabel={selectedCampaignLabelB}
-          modelAOutput={
-            selectedLlmCampaignA ? outlineOutputs[selectedLlmCampaignA] ?? null : null
-          }
-          modelBOutput={
-            selectedLlmCampaignB ? outlineOutputs[selectedLlmCampaignB] ?? null : null
-          }
-          modelADebug={
-            selectedLlmCampaignA ? outlineDebugInfo[selectedLlmCampaignA] ?? null : null
-          }
-          modelBDebug={
-            selectedLlmCampaignB ? outlineDebugInfo[selectedLlmCampaignB] ?? null : null
-          }
-          modelADebugPath={
-            selectedLlmCampaignA ? outlineDebugPaths[selectedLlmCampaignA] ?? null : null
-          }
-          modelBDebugPath={
-            selectedLlmCampaignB ? outlineDebugPaths[selectedLlmCampaignB] ?? null : null
-          }
-          modelAStructuredOutput={
-            selectedLlmCampaignA ? structuredOutlineOutputs[selectedLlmCampaignA] ?? null : null
-          }
-          modelBStructuredOutput={
-            selectedLlmCampaignB ? structuredOutlineOutputs[selectedLlmCampaignB] ?? null : null
-          }
-          modelAStructuredDebug={
-            selectedLlmCampaignA ? structuredOutlineDebugInfo[selectedLlmCampaignA] ?? null : null
-          }
-          modelBStructuredDebug={
-            selectedLlmCampaignB ? structuredOutlineDebugInfo[selectedLlmCampaignB] ?? null : null
-          }
-          modelAStructuredDebugPath={
-            selectedLlmCampaignA ? structuredOutlineDebugPaths[selectedLlmCampaignA] ?? null : null
-          }
-          modelBStructuredDebugPath={
-            selectedLlmCampaignB ? structuredOutlineDebugPaths[selectedLlmCampaignB] ?? null : null
-          }
-          analysisMode={analysisMode}
-        />
-      ) : null}
+            {hasMultipleCases ? (
+              <div className="rounded-lg border border-white/10 bg-slate-950/35 p-4">
+                <div className="text-xs uppercase tracking-wide text-slate-400">Case override</div>
+                <select
+                  value={selectedCaseKey ?? ""}
+                  onChange={(event) => setSelectedCaseKey(event.target.value)}
+                  className="mt-3 w-full rounded-md border border-white/15 bg-slate-950/40 px-3 py-2 text-sm text-slate-100"
+                >
+                  {cases.map((item) => (
+                    <option key={buildCaseKey(item)} value={buildCaseKey(item)}>
+                      {formatFiscalYearRange(item.year_from, item.year_to)}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            ) : null}
 
-      {selectedLlmCampaignA || selectedLlmCampaignB ? (
-        selectedCompareCampaignIds.length > 0 && !hasAnyInsightOutput ? (
-          <div
-            id="lab-insight-lens"
-            className="rounded-lg border border-amber-300/20 bg-slate-950/30 px-4 py-3 text-sm text-slate-200"
-          >
-            <div className="text-xs uppercase tracking-wide text-amber-100">Optional insight layer</div>
-            <p className="mt-2 text-sm text-slate-200">
-              Insight Lens sidecars are not available for the selected compare lanes. The shipped compare flow is using
-              runtime plus structured outline artifacts instead.
-            </p>
-            <div className="mt-3 flex flex-wrap gap-2 text-[11px] text-slate-300">
-              {compactInsightItems.map((item) => (
-                <span key={item.campaignId} className="rounded-full border border-white/10 bg-slate-900/35 px-2 py-1">
-                  {item.label}: {item.debug?.errorText ?? "No insight sidecar present."}
-                </span>
-              ))}
+            {llmCampaignOptions.length > 1 ? (
+              <div className="grid gap-3 md:grid-cols-2">
+                <div className="rounded-lg border border-white/10 bg-slate-950/35 p-4">
+                  <div className="text-xs uppercase tracking-wide text-slate-400">Compare campaign A</div>
+                  <select
+                    value={selectedLlmCampaignA}
+                    onChange={(event) => setSelectedLlmCampaignA(event.target.value)}
+                    className="mt-3 w-full rounded-md border border-white/15 bg-slate-950/40 px-3 py-2 text-sm text-slate-100"
+                  >
+                    {llmCampaignOptions.map((campaign) => (
+                      <option key={campaign.campaign_id} value={campaign.campaign_id}>
+                        {campaign.display_name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div className="rounded-lg border border-white/10 bg-slate-950/35 p-4">
+                  <div className="text-xs uppercase tracking-wide text-slate-400">Compare campaign B</div>
+                  <select
+                    value={selectedLlmCampaignB}
+                    onChange={(event) => setSelectedLlmCampaignB(event.target.value)}
+                    disabled={llmCampaignOptions.length <= 1}
+                    className="mt-3 w-full rounded-md border border-white/15 bg-slate-950/40 px-3 py-2 text-sm text-slate-100"
+                  >
+                    {llmCampaignOptions.map((campaign) => (
+                      <option key={campaign.campaign_id} value={campaign.campaign_id}>
+                        {campaign.display_name}
+                      </option>
+                    ))}
+                  </select>
+                  {llmCampaignOptions.length <= 1 ? (
+                    <div className="mt-2 text-xs text-slate-400">Second full-section campaign pending.</div>
+                  ) : null}
+                </div>
+              </div>
+            ) : null}
+
+            <div className="rounded-lg border border-white/10 bg-slate-950/35 p-4">
+              <div className="flex items-center justify-between gap-3">
+                <div className="text-xs uppercase tracking-wide text-slate-400">Deterministic methods</div>
+                <div className="text-xs text-slate-500">
+                  Available outputs: {availableDetectorIds.length}/{DETECTOR_CATALOG.length}
+                </div>
+              </div>
+              <div className="mt-3 space-y-3">
+                {detectorGroups.map((group) => (
+                  <div key={group.id} className="rounded-md border border-white/10 bg-slate-900/35 p-3">
+                    <div className="text-xs uppercase tracking-wide text-slate-400">{group.label}</div>
+                    <div className="mt-2 flex flex-wrap gap-2">
+                      {group.detectors.map((detector) => {
+                        const isAvailable = availableDetectorSet.has(detector.id)
+                        const isSelected = selectedDetectors.includes(detector.id)
+                        return (
+                          <label
+                            key={detector.id}
+                            className={`flex items-center gap-2 rounded-full border px-3 py-1 text-xs ${
+                              isAvailable
+                                ? "border-white/10 bg-white/5 text-slate-200"
+                                : "border-amber-300/30 bg-amber-400/10 text-amber-100"
+                            }`}
+                          >
+                            <input
+                              type="checkbox"
+                              className="h-3 w-3"
+                              checked={isSelected}
+                              onChange={() => {
+                                setSelectedDetectors((prev) => {
+                                  if (prev.includes(detector.id)) {
+                                    return prev.filter((item) => item !== detector.id)
+                                  }
+                                  return [...prev, detector.id]
+                                })
+                              }}
+                            />
+                            <span>
+                              {detector.label}
+                              {!isAvailable ? " (missing artifact)" : ""}
+                            </span>
+                          </label>
+                        )
+                      })}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="grid gap-3 lg:grid-cols-[1fr,0.8fr]">
+              <div className="rounded-lg border border-white/10 bg-slate-950/35 p-4">
+                <div className="text-xs uppercase tracking-wide text-slate-400">Utilities</div>
+                <div className="mt-3 flex flex-wrap items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={handleExpandAllCards}
+                    className="rounded-md border border-white/20 bg-slate-900/60 px-2 py-1 text-xs text-slate-100 transition hover:border-white/40"
+                  >
+                    Expand all ({expandedCount}/{methodCards.length} expanded)
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleCollapseAllCards}
+                    className="rounded-md border border-white/20 bg-slate-900/60 px-2 py-1 text-xs text-slate-100 transition hover:border-white/40"
+                  >
+                    Collapse all ({expandedCount}/{methodCards.length} expanded)
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleReloadOutputs}
+                    disabled={!selectedCase || isLoadingOutputs}
+                    className="rounded-md border border-white/10 bg-slate-950/40 px-2 py-1 text-xs text-slate-300 transition hover:border-white/25 hover:text-slate-100 disabled:cursor-not-allowed disabled:opacity-50"
+                  >
+                    Reload outputs
+                  </button>
+                </div>
+                <div className="mt-3 rounded-md border border-white/10 bg-slate-900/35 px-3 py-2 text-xs text-slate-300">
+                  {methodCoverageSummary}
+                </div>
+              </div>
+
+              <div className="rounded-lg border border-white/10 bg-slate-950/35 p-4">
+                <div className="text-xs uppercase tracking-wide text-slate-400">Jump to section</div>
+                <div className="mt-3 flex flex-wrap items-center gap-3 text-xs text-slate-300">
+                  {isPilotMatrixSelectedCase ? (
+                    <a
+                      className="underline decoration-white/30 underline-offset-2 hover:text-slate-100"
+                      href="#lab-pilot-matrix"
+                    >
+                      Protocol
+                    </a>
+                  ) : null}
+                  <a
+                    className="underline decoration-white/30 underline-offset-2 hover:text-slate-100"
+                    href="#lab-risk-narrative"
+                  >
+                    Filing answer
+                  </a>
+                  <a
+                    className="underline decoration-white/30 underline-offset-2 hover:text-slate-100"
+                    href="#lab-core-methods"
+                  >
+                    Core methods
+                  </a>
+                  <a
+                    className="underline decoration-white/30 underline-offset-2 hover:text-slate-100"
+                    href="#lab-structure-methods"
+                  >
+                    Structure methods
+                  </a>
+                  <a
+                    className="underline decoration-white/30 underline-offset-2 hover:text-slate-100"
+                    href="#lab-agreement"
+                  >
+                    Agreement
+                  </a>
+                  <a
+                    className="underline decoration-white/30 underline-offset-2 hover:text-slate-100"
+                    href="#lab-outline-compare"
+                  >
+                    Structure audit
+                  </a>
+                  {(hasAnyInsightOutput || compactInsightItems.length > 0) ? (
+                    <a
+                      className="underline decoration-white/30 underline-offset-2 hover:text-slate-100"
+                      href="#lab-insight-lens"
+                    >
+                      Insight lens
+                    </a>
+                  ) : null}
+                  {isDeepMode ? (
+                    <a
+                      className="underline decoration-white/30 underline-offset-2 hover:text-slate-100"
+                      href="#lab-method-context"
+                    >
+                      Method context
+                    </a>
+                  ) : null}
+                </div>
+              </div>
             </div>
           </div>
-        ) : (
-          <InsightLensPanel
+        </details>
+
+        <div id="lab-method-context" className="space-y-6">
+          {groupedMethodCards.map((group) => (
+            <section key={group.id} id={group.sectionId} className="space-y-3">
+              <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-300">
+                {group.label}
+              </h3>
+              <div className="grid gap-4">
+                {group.cards.map((detector) => (
+                  <MethodCard
+                    key={detector.cardKey}
+                    detectorId={detector.id}
+                    title={detector.label}
+                    description={`${detector.technicalLabel}. ${detector.description}`}
+                    llmCampaign={null}
+                    output={outputs[detector.cardKey] ?? null}
+                    debugPath={outputDebugPaths[detector.cardKey] ?? null}
+                    debugInfo={outputDebugInfo[detector.cardKey] ?? null}
+                    isLoading={isLoadingOutputs}
+                    analysisMode={analysisMode}
+                    methodProfile={methodProfilesByDetector[detector.id] ?? null}
+                    autoOpenContext={isDeepMode && deepAutoOpenContextKeys.has(detector.cardKey)}
+                    isExpanded={
+                      expandedCards[buildCardExpansionKey(expansionScopeKey, detector.cardKey)] ??
+                      false
+                    }
+                    onToggleExpanded={() => handleToggleCardExpanded(detector.cardKey)}
+                    emptyMessage="No output available for this method, lens, and model combination. Try the deboilerplated lens or a different ticker for available results."
+                  />
+                ))}
+              </div>
+            </section>
+          ))}
+        </div>
+
+        <div id="lab-agreement" className="space-y-4">
+          <div>
+            <h3 className="text-lg font-semibold text-slate-100">Where methods agree</h3>
+            <p className="text-xs text-slate-400">
+              Cross-check how much the deterministic methods reinforce the same ranked risk themes before
+              leaning on any single audit surface.
+            </p>
+          </div>
+          <AgreementMatrix output={agreementOutput} />
+          {!agreementOutput ? (
+            <div className="space-y-2 rounded-md border border-amber-400/30 bg-amber-400/10 p-3 text-xs text-slate-200">
+              <p className="font-semibold text-amber-100">Missing artifact</p>
+              {agreementDebugInfo?.expectedPath ? (
+                <p className="break-all text-[11px] text-slate-100">
+                  Expected path: {agreementDebugInfo.expectedPath}
+                </p>
+              ) : null}
+              {agreementDebugInfo?.requestedUrl ? (
+                <p className="break-all text-[11px] text-slate-300">
+                  Requested URL: {agreementDebugInfo.requestedUrl}
+                </p>
+              ) : null}
+              {agreementDebugInfo?.errorText ? (
+                <p className="text-[11px] text-amber-100">{agreementDebugInfo.errorText}</p>
+              ) : null}
+              {agreementDebugPath ? (
+                <p className="break-all text-[11px] text-slate-300">{agreementDebugPath}</p>
+              ) : null}
+              {agreementDebugInfo ? (
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={handleCopyAgreementDebug}
+                    className="rounded-md border border-white/20 bg-slate-900/60 px-2 py-1 text-[11px] text-slate-100 transition hover:border-white/40"
+                  >
+                    Copy debug info
+                  </button>
+                  {agreementCopyState === "copied" ? (
+                    <span className="text-[11px] text-emerald-300">Copied.</span>
+                  ) : null}
+                  {agreementCopyState === "failed" ? (
+                    <span className="text-[11px] text-rose-300">Copy failed.</span>
+                  ) : null}
+                </div>
+              ) : null}
+            </div>
+          ) : null}
+        </div>
+
+        {selectedLlmCampaignA || selectedLlmCampaignB ? (
+          <OutlineComparePanel
             modelALabel={selectedCampaignLabelA}
             modelBLabel={selectedCampaignLabelB}
-            modelAOutput={selectedLlmCampaignA ? insightOutputs[selectedLlmCampaignA] ?? null : null}
-            modelBOutput={selectedLlmCampaignB ? insightOutputs[selectedLlmCampaignB] ?? null : null}
-            modelADebug={selectedLlmCampaignA ? insightDebugInfo[selectedLlmCampaignA] ?? null : null}
-            modelBDebug={selectedLlmCampaignB ? insightDebugInfo[selectedLlmCampaignB] ?? null : null}
-            modelADebugPath={selectedLlmCampaignA ? insightDebugPaths[selectedLlmCampaignA] ?? null : null}
-            modelBDebugPath={selectedLlmCampaignB ? insightDebugPaths[selectedLlmCampaignB] ?? null : null}
+            modelAOutput={
+              selectedLlmCampaignA ? outlineOutputs[selectedLlmCampaignA] ?? null : null
+            }
+            modelBOutput={
+              selectedLlmCampaignB ? outlineOutputs[selectedLlmCampaignB] ?? null : null
+            }
+            modelADebug={
+              selectedLlmCampaignA ? outlineDebugInfo[selectedLlmCampaignA] ?? null : null
+            }
+            modelBDebug={
+              selectedLlmCampaignB ? outlineDebugInfo[selectedLlmCampaignB] ?? null : null
+            }
+            modelADebugPath={
+              selectedLlmCampaignA ? outlineDebugPaths[selectedLlmCampaignA] ?? null : null
+            }
+            modelBDebugPath={
+              selectedLlmCampaignB ? outlineDebugPaths[selectedLlmCampaignB] ?? null : null
+            }
+            modelAStructuredOutput={
+              selectedLlmCampaignA ? structuredOutlineOutputs[selectedLlmCampaignA] ?? null : null
+            }
+            modelBStructuredOutput={
+              selectedLlmCampaignB ? structuredOutlineOutputs[selectedLlmCampaignB] ?? null : null
+            }
+            modelAStructuredDebug={
+              selectedLlmCampaignA ? structuredOutlineDebugInfo[selectedLlmCampaignA] ?? null : null
+            }
+            modelBStructuredDebug={
+              selectedLlmCampaignB ? structuredOutlineDebugInfo[selectedLlmCampaignB] ?? null : null
+            }
+            modelAStructuredDebugPath={
+              selectedLlmCampaignA ? structuredOutlineDebugPaths[selectedLlmCampaignA] ?? null : null
+            }
+            modelBStructuredDebugPath={
+              selectedLlmCampaignB ? structuredOutlineDebugPaths[selectedLlmCampaignB] ?? null : null
+            }
+            analysisMode={analysisMode}
           />
-        )
-      ) : null}
+        ) : null}
+
+        {selectedLlmCampaignA || selectedLlmCampaignB ? (
+          selectedCompareCampaignIds.length > 0 && !hasAnyInsightOutput ? (
+            <div
+              id="lab-insight-lens"
+              className="rounded-lg border border-white/10 bg-slate-950/24 px-4 py-3 text-sm text-slate-200"
+            >
+              <div className="text-xs uppercase tracking-wide text-slate-400">Optional insight lens</div>
+              <p className="mt-2 text-sm text-slate-200">
+                No optional insight sidecar is published for the selected compare lanes. Runtime and
+                structured outline artifacts above remain the shipped compare path.
+              </p>
+              <div className="mt-3 flex flex-wrap gap-2 text-[11px] text-slate-300">
+                {compactInsightItems.map((item) => (
+                  <span
+                    key={item.campaignId}
+                    className="rounded-full border border-white/10 bg-slate-900/35 px-2 py-1"
+                  >
+                    {item.label}: {item.debug?.errorText ?? "No insight sidecar present."}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ) : (
+            <InsightLensPanel
+              modelALabel={selectedCampaignLabelA}
+              modelBLabel={selectedCampaignLabelB}
+              modelAOutput={selectedLlmCampaignA ? insightOutputs[selectedLlmCampaignA] ?? null : null}
+              modelBOutput={selectedLlmCampaignB ? insightOutputs[selectedLlmCampaignB] ?? null : null}
+              modelADebug={selectedLlmCampaignA ? insightDebugInfo[selectedLlmCampaignA] ?? null : null}
+              modelBDebug={selectedLlmCampaignB ? insightDebugInfo[selectedLlmCampaignB] ?? null : null}
+              modelADebugPath={selectedLlmCampaignA ? insightDebugPaths[selectedLlmCampaignA] ?? null : null}
+              modelBDebugPath={selectedLlmCampaignB ? insightDebugPaths[selectedLlmCampaignB] ?? null : null}
+            />
+          )
+        ) : null}
+      </section>
     </section>
   )
 }

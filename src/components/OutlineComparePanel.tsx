@@ -466,6 +466,7 @@ export default function OutlineComparePanel({
 }: OutlineComparePanelProps) {
   const [selectedClass, setSelectedClass] = useState<"all" | OutlineChangeClass>("all")
   const [needleOnly, setNeedleOnly] = useState(false)
+  const [isExpanded, setIsExpanded] = useState(false)
 
   const columns = useMemo(() => {
     const configured: OutlineCompareColumn[] = [
@@ -517,62 +518,85 @@ export default function OutlineComparePanel({
   ])
 
   return (
-    <section id="lab-outline-compare" className="space-y-4 rounded-[1.4rem] border border-emerald-300/25 bg-emerald-400/10 p-4 shadow-[0_18px_48px_rgba(2,6,23,0.32)]">
+    <section
+      id="lab-outline-compare"
+      className="space-y-4 rounded-[1.4rem] border border-white/10 bg-slate-950/25 p-4"
+    >
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="max-w-3xl">
-          <p className="text-[11px] uppercase tracking-[0.24em] text-emerald-100">Deep compare view</p>
-          <h3 className="mt-2 text-lg font-semibold text-emerald-50">Outline Compare</h3>
-          <p className="mt-1 text-[12px] text-slate-200">
-            Shared filters apply to both campaigns. Use this section to compare ranked material changes,
-            mechanisms, investor relevance, limits, and the underlying outline structure side by side.
+          <p className="text-[11px] uppercase tracking-[0.24em] text-slate-400">Deeper audit</p>
+          <h3 className="mt-2 text-lg font-semibold text-slate-100">Structure audit</h3>
+          <p className="mt-1 text-[12px] text-slate-300">
+            Use this lower layer only when you want to compare how each visible read structured the
+            filing, what it ranked, and where the deeper audit detail differs.
           </p>
         </div>
-        <div className="rounded-xl border border-white/10 bg-slate-950/40 px-3 py-2 text-[11px] text-slate-200">
-          {analysisMode === "executive"
-            ? "Executive mode: four material changes per campaign."
-            : "Deep mode: six material changes plus full structured context per campaign."}
-        </div>
+        <button
+          type="button"
+          onClick={() => setIsExpanded((previous) => !previous)}
+          className="rounded-md border border-white/20 bg-slate-900/55 px-3 py-1.5 text-xs text-slate-100 transition hover:border-white/35"
+        >
+          {isExpanded ? "Hide structure audit" : "Open structure audit"}
+        </button>
       </div>
 
       <div className="rounded-md border border-white/10 bg-slate-950/30 px-3 py-2 text-xs text-slate-200">
         {buildPanelCompareSummary(columns)}
       </div>
 
-      <div className="flex flex-wrap items-center gap-2">
-        <select
-          value={selectedClass}
-          onChange={(event) => setSelectedClass(event.target.value as "all" | OutlineChangeClass)}
-          className="rounded-md border border-white/20 bg-slate-950/50 px-2 py-1 text-xs text-slate-100"
-        >
-          {CHANGE_CLASSES.map((option) => (
-            <option key={option.id} value={option.id}>
-              {option.label}
-            </option>
-          ))}
-        </select>
-        <label className="flex items-center gap-2 rounded-md border border-white/20 bg-slate-950/50 px-2 py-1 text-xs text-slate-200">
-          <input
-            type="checkbox"
-            checked={needleOnly}
-            onChange={(event) => setNeedleOnly(event.target.checked)}
-            className="h-3 w-3"
-          />
-          Needle changes only
-        </label>
-      </div>
-
-      <div className={`grid gap-4 ${columns.length > 1 ? "2xl:grid-cols-2" : "grid-cols-1"}`}>
-        {columns.map((column) => (
-          <div key={`outline-column-${column.id}`}>
-            {renderCompareColumn({
-              column,
-              selectedClass,
-              needleOnly,
-              analysisMode,
-            })}
+      {!isExpanded ? (
+        <p className="text-xs text-slate-400">
+          Closed by default so the filing answer and protocol meaning stay primary. Open this panel
+          for side-by-side ranked changes, structured mechanisms, limits, and outline structure.
+        </p>
+      ) : (
+        <>
+          <div className="rounded-xl border border-white/10 bg-slate-950/25 p-3">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <div className="text-xs text-slate-300">
+                {analysisMode === "executive"
+                  ? "Executive mode shows four material changes per campaign."
+                  : "Deep mode shows six material changes plus structured context per campaign."}
+              </div>
+              <div className="flex flex-wrap items-center gap-2">
+                <select
+                  value={selectedClass}
+                  onChange={(event) => setSelectedClass(event.target.value as "all" | OutlineChangeClass)}
+                  className="rounded-md border border-white/20 bg-slate-950/50 px-2 py-1 text-xs text-slate-100"
+                >
+                  {CHANGE_CLASSES.map((option) => (
+                    <option key={option.id} value={option.id}>
+                      {option.label}
+                    </option>
+                  ))}
+                </select>
+                <label className="flex items-center gap-2 rounded-md border border-white/20 bg-slate-950/50 px-2 py-1 text-xs text-slate-200">
+                  <input
+                    type="checkbox"
+                    checked={needleOnly}
+                    onChange={(event) => setNeedleOnly(event.target.checked)}
+                    className="h-3 w-3"
+                  />
+                  Needle changes only
+                </label>
+              </div>
+            </div>
           </div>
-        ))}
-      </div>
+
+          <div className={`grid gap-4 ${columns.length > 1 ? "2xl:grid-cols-2" : "grid-cols-1"}`}>
+            {columns.map((column) => (
+              <div key={`outline-column-${column.id}`}>
+                {renderCompareColumn({
+                  column,
+                  selectedClass,
+                  needleOnly,
+                  analysisMode,
+                })}
+              </div>
+            ))}
+          </div>
+        </>
+      )}
     </section>
   )
 }

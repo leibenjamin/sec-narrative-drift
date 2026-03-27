@@ -511,8 +511,11 @@ export async function findLabOutlineCompareInsightArtifactForCampaign(
     if (variant.lens !== lens) continue
     if (variant.campaign_id !== campaignId) continue
 
+    if (variant.outline_compare_insight_present === false) {
+      return null
+    }
+
     if (
-      variant.outline_compare_insight_present !== false &&
       variant.outline_compare_insight_expected_repo_path &&
       variant.outline_compare_insight_request_url
     ) {
@@ -525,7 +528,11 @@ export async function findLabOutlineCompareInsightArtifactForCampaign(
       }
     }
 
-    if (variant.outline_compare_present !== false && variant.outline_compare_expected_repo_path) {
+    if (
+      variant.outline_compare_insight_present === undefined &&
+      variant.outline_compare_present !== false &&
+      variant.outline_compare_expected_repo_path
+    ) {
       const projectedRepoPath = projectOutlineRuntimePathToInsight(variant.outline_compare_expected_repo_path)
       if (!projectedRepoPath) continue
       const projectedRequestPath = variant.outline_compare_request_url
@@ -539,6 +546,8 @@ export async function findLabOutlineCompareInsightArtifactForCampaign(
         requestUrl,
       }
     }
+
+    return null
   }
 
   const campaign = await getLabLlmCampaignById(campaignId)

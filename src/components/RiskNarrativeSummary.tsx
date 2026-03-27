@@ -861,7 +861,7 @@ export default function RiskNarrativeSummary({
         <summary className="cursor-pointer list-none text-sm font-semibold text-slate-100">
           Compare reads
         </summary>
-        <div className="mt-4 grid gap-3 xl:grid-cols-[1.35fr,0.65fr,0.65fr]">
+        <div className="mt-4 space-y-3">
           <div className="rounded-2xl border border-white/10 bg-slate-950/45 p-4">
             <div className="flex flex-wrap items-center gap-2">
               <span
@@ -882,42 +882,66 @@ export default function RiskNarrativeSummary({
             <p className="mt-2 text-sm text-slate-300">{compareSummary.divergenceText}</p>
           </div>
 
-          {columns.slice(0, 2).map((column) => {
-            const runtime = column.runtime
-            const drift = runtime ? buildDriftScore(runtime) : null
-            const lead = runtime ? sortMaterialChanges(runtime)[0] : null
-            return (
-              <div key={`compare-summary-${column.id}`} className="rounded-2xl border border-white/10 bg-slate-950/45 p-4">
-                <div className={`inline-flex rounded-full border px-2.5 py-1 text-[11px] font-medium ${column.accentClass}`}>
-                  {column.label || `Campaign ${column.id}`}
-                </div>
-                {runtime && drift ? (
-                  <>
-                    <div className="mt-3 text-xl font-semibold text-slate-100">{(drift.score * 100).toFixed(0)}%</div>
-                    <p className="text-xs text-slate-300">{drift.label}</p>
-                    <p className="mt-2 text-xs text-slate-400">Lead change: {lead?.title ?? "Unavailable"}</p>
-                  </>
-                ) : (
-                  <p className="mt-3 text-xs text-slate-400">No runtime compare artifact loaded for this campaign.</p>
-                )}
-              </div>
-            )
-          })}
-        </div>
-      </details>
-
-      <div className={`grid gap-4 ${columns.length > 1 ? "2xl:grid-cols-2" : "grid-cols-1"}`}>
-        {columns.map((column) => (
-          <div key={`risk-column-${column.id}`}>
-            {renderCampaignNarrativeColumn({
-              column,
-              analysisMode,
-              yearFrom,
-              yearTo,
+          <div className={`grid gap-3 ${columns.length > 1 ? "xl:grid-cols-2" : "grid-cols-1"}`}>
+            {columns.slice(0, 2).map((column) => {
+              const runtime = column.runtime
+              const lead = runtime ? sortMaterialChanges(runtime)[0] : null
+              return (
+                <article
+                  key={`compare-summary-${column.id}`}
+                  className="rounded-2xl border border-white/10 bg-slate-950/30 p-4"
+                >
+                  <div
+                    className={`inline-flex rounded-full border px-2.5 py-1 text-[11px] font-medium ${column.accentClass}`}
+                  >
+                    {column.label || `Campaign ${column.id}`}
+                  </div>
+                  {runtime ? (
+                    <>
+                      <div className="mt-3 text-[11px] uppercase tracking-wide text-slate-400">
+                        Lead read
+                      </div>
+                      <p className="mt-1 text-sm font-semibold text-slate-100">
+                        {lead?.title ?? "No lead change surfaced."}
+                      </p>
+                      <p className="mt-2 text-xs text-slate-300">{runtime.lens_divergence.summary}</p>
+                      <p className="mt-2 text-[11px] text-slate-500">
+                        {runtime.material_changes.length} ranked material changes available in deeper compare detail.
+                      </p>
+                    </>
+                  ) : (
+                    <p className="mt-3 text-xs text-slate-400">
+                      No runtime compare artifact loaded for this campaign.
+                    </p>
+                  )}
+                </article>
+              )
             })}
           </div>
-        ))}
-      </div>
+
+          <details className="rounded-2xl border border-white/10 bg-slate-950/25 p-4">
+            <summary className="cursor-pointer list-none text-sm font-semibold text-slate-100">
+              Open deeper compare detail
+            </summary>
+            <p className="mt-3 text-xs text-slate-400">
+              Use this only when you want each campaign&apos;s ranked changes, mechanisms, limitations,
+              and paired evidence in full.
+            </p>
+            <div className={`mt-4 grid gap-4 ${columns.length > 1 ? "2xl:grid-cols-2" : "grid-cols-1"}`}>
+              {columns.map((column) => (
+                <div key={`risk-column-${column.id}`}>
+                  {renderCampaignNarrativeColumn({
+                    column,
+                    analysisMode,
+                    yearFrom,
+                    yearTo,
+                  })}
+                </div>
+              ))}
+            </div>
+          </details>
+        </div>
+      </details>
     </section>
   )
 }

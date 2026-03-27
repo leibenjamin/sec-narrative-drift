@@ -98,15 +98,15 @@ function renderMissingPanel(
   debugPath: string | null | undefined
 ) {
   return (
-    <div className="rounded-md border border-amber-400/30 bg-amber-400/10 p-3 text-xs text-slate-200">
-      <div className="font-semibold text-amber-100">{label}: insight lens artifact missing</div>
+    <div className="rounded-md border border-white/10 bg-slate-950/30 p-3 text-xs text-slate-200">
+      <div className="font-semibold text-slate-100">{label}: insight lens unavailable</div>
       {debug?.expectedPath ? (
         <p className="mt-1 break-all text-[11px] text-slate-100">Expected path: {debug.expectedPath}</p>
       ) : null}
       {debug?.requestedUrl ? (
         <p className="mt-1 break-all text-[11px] text-slate-300">Requested URL: {debug.requestedUrl}</p>
       ) : null}
-      {debug?.errorText ? <p className="mt-1 text-[11px] text-amber-100">{debug.errorText}</p> : null}
+      {debug?.errorText ? <p className="mt-1 text-[11px] text-slate-300">{debug.errorText}</p> : null}
       {debugPath ? <p className="mt-1 break-all text-[11px] text-slate-300">{debugPath}</p> : null}
     </div>
   )
@@ -182,7 +182,14 @@ export default function InsightLensPanel({
   modelBDebugPath = null,
 }: InsightLensPanelProps) {
   const [activeModel, setActiveModel] = useState<"A" | "B">("A")
-  const activeOutput = activeModel === "A" ? modelAOutput : modelBOutput
+  const [isExpanded, setIsExpanded] = useState(false)
+  const resolvedActiveModel =
+    activeModel === "A" && !modelAOutput && modelBOutput
+      ? "B"
+      : activeModel === "B" && !modelBOutput && modelAOutput
+        ? "A"
+        : activeModel
+  const activeOutput = resolvedActiveModel === "A" ? modelAOutput : modelBOutput
 
   const [selectedInsightId, setSelectedInsightId] = useState<string | null>(null)
   const [hoveredInsightId, setHoveredInsightId] = useState<string | null>(null)
@@ -466,57 +473,84 @@ export default function InsightLensPanel({
   }
 
   return (
-    <section id="lab-insight-lens" className="space-y-4 rounded-xl border border-sky-300/25 bg-sky-400/10 p-4">
+    <section
+      id="lab-insight-lens"
+      className="space-y-4 rounded-xl border border-white/10 bg-slate-950/20 p-4"
+    >
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h3 className="text-sm font-semibold text-sky-100">Insight Lens</h3>
-          <p className="mt-1 text-[11px] text-slate-200">
-            Evidence-first digest with direct paragraph drilldown for fast side-by-side review.
+          <p className="text-[11px] uppercase tracking-[0.24em] text-slate-400">Optional deep review</p>
+          <h3 className="mt-2 text-sm font-semibold text-slate-100">Insight lens</h3>
+          <p className="mt-1 text-[11px] text-slate-300">
+            Paragraph-level drilldown is optional. The shipped compare path is still the filing answer,
+            protocol meaning, and audit trail above.
           </p>
         </div>
-        <div className="flex flex-wrap items-center gap-2">
+        {modelAOutput || modelBOutput ? (
           <button
             type="button"
-            onClick={() => setActiveModel("A")}
-            className={`rounded-md border px-2 py-1 text-xs transition ${
-              activeModel === "A"
-                ? "border-sky-200/70 bg-sky-400/25 text-sky-50"
-                : "border-white/20 bg-slate-900/50 text-slate-200"
-            }`}
+            onClick={() => setIsExpanded((previous) => !previous)}
+            className="rounded-md border border-white/20 bg-slate-900/55 px-3 py-1.5 text-xs text-slate-100 transition hover:border-white/35"
           >
-            Model A
+            {isExpanded ? "Hide insight lens" : "Open insight lens"}
           </button>
-          <button
-            type="button"
-            onClick={() => setActiveModel("B")}
-            className={`rounded-md border px-2 py-1 text-xs transition ${
-              activeModel === "B"
-                ? "border-emerald-200/70 bg-emerald-400/25 text-emerald-50"
-                : "border-white/20 bg-slate-900/50 text-slate-200"
-            }`}
-          >
-            Model B
-          </button>
-        </div>
+        ) : null}
       </div>
 
       {!modelAOutput && !modelBOutput ? (
-        <div className="rounded-md border border-amber-400/30 bg-amber-400/10 p-3 text-xs text-amber-100">
-          Insight artifacts are missing for both selected compare campaigns. Use the debug paths below to verify precomputed output availability.
+        <div className="rounded-md border border-amber-400/25 bg-amber-400/8 p-3 text-xs text-slate-200">
+          Insight sidecars are not published for the selected compare lanes. The shipped compare flow is
+          using runtime plus structured outline artifacts instead.
         </div>
       ) : null}
       {!modelAOutput ? renderMissingPanel(modelALabel, modelADebug, modelADebugPath) : null}
       {!modelBOutput ? renderMissingPanel(modelBLabel, modelBDebug, modelBDebugPath) : null}
 
-      {activeOutput ? (
+      {activeOutput && !isExpanded ? (
+        <div className="rounded-md border border-white/10 bg-slate-950/30 p-3 text-sm text-slate-100">
+          <div className="font-medium">{resolvedActiveModel === "A" ? modelALabel : modelBLabel}</div>
+          <div className="mt-1 text-xs text-slate-300">{activeOutput.executive_digest.summary_text}</div>
+          <div className="mt-2 text-[11px] text-slate-400">
+            Open this panel only if you want insight cards and direct paragraph drilldown.
+          </div>
+        </div>
+      ) : null}
+
+      {activeOutput && isExpanded ? (
         <div className="space-y-4">
-          <div className="rounded-md border border-white/10 bg-slate-950/30 p-3 text-sm text-slate-100">
-            <div className="font-medium">{activeModel === "A" ? modelALabel : modelBLabel}</div>
-            <div className="mt-1 text-xs text-slate-300">
-              {activeOutput.executive_digest.summary_text}
+          <div className="flex flex-wrap items-center justify-between gap-3 rounded-md border border-white/10 bg-slate-950/30 p-3 text-sm text-slate-100">
+            <div>
+              <div className="font-medium">{resolvedActiveModel === "A" ? modelALabel : modelBLabel}</div>
+              <div className="mt-1 text-xs text-slate-300">
+                {activeOutput.executive_digest.summary_text}
+              </div>
+              <div className="mt-2 text-[11px] text-slate-400">
+                Audience: {activeOutput.executive_digest.audience} | Estimated read: {activeOutput.executive_digest.reading_time_sec_estimate}s
+              </div>
             </div>
-            <div className="mt-2 text-[11px] text-slate-400">
-              Audience: {activeOutput.executive_digest.audience} | Estimated read: {activeOutput.executive_digest.reading_time_sec_estimate}s
+            <div className="flex flex-wrap items-center gap-2">
+              <button
+                type="button"
+                onClick={() => setActiveModel("A")}
+                className={`rounded-md border px-2 py-1 text-xs transition ${
+                  resolvedActiveModel === "A"
+                    ? "border-sky-200/70 bg-sky-400/25 text-sky-50"
+                    : "border-white/20 bg-slate-900/50 text-slate-200"
+                }`}
+              >
+                Model A
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveModel("B")}
+                className={`rounded-md border px-2 py-1 text-xs transition ${
+                  resolvedActiveModel === "B"
+                    ? "border-emerald-200/70 bg-emerald-400/25 text-emerald-50"
+                    : "border-white/20 bg-slate-900/50 text-slate-200"
+                }`}
+              >
+                Model B
+              </button>
             </div>
           </div>
 
@@ -629,5 +663,3 @@ export default function InsightLensPanel({
     </section>
   )
 }
-
-
