@@ -1,55 +1,68 @@
 # Document Protocol Lab
 
-Document Protocol Lab currently ships a bounded SEC Item 1A pilot across three fixtures: NVDA, LLY, and KO.
+Document Protocol Lab is a bounded, evidence-first pilot for testing how a document-comparison workflow answers, proves, and stops on real SEC risk disclosures.
 
-Document Protocol Lab is a bounded, evidence-first SEC Item 1A pilot for testing how a document workflow answers, proves, and stops on real filings.
+**Current public pilot:** SEC Item 1A across three fixtures: `NVDA`, `LLY`, and `KO`.
 
-Live pilot: https://benlei.org/sec-narrative-drift/
+**Status:** bounded public pilot, not a broad issuer gallery.
 
-## What currently ships
-- The public app is a compact SEC Item 1A pilot inside Document Protocol Lab.
-- The visible fixture system is intentionally fixed to `NVDA`, `LLY`, and `KO`.
-- `NVDA` is the clearest first signal, `LLY` is the policy-heavy bounded contrast case, and `KO` is the restraint / low-drift honesty check.
-- Company pages are intended to land the filing answer first, explain why the fixture matters to the protocol second, and keep deeper audit surfaces third.
-- `Fresh vs reused` remains a bounded secondary lens rather than the default first read.
-- Missing artifacts stay explicit instead of silently falling back.
+Live pilot: `https://benlei.org/sec-narrative-drift/`
 
-## Current pilot framing
-- Current pilot/workstream name: `SEC Narrative Drift`.
-- Mounted public entry remains `https://benlei.org/sec-narrative-drift/`.
-- The current pilot is deliberately narrow; it is not a broad issuer gallery, benchmark suite, or whole-filing research platform.
-- `lab_cases_v1.json` remains the lower backstage runtime registry, not the public case list.
+## What this repo shows
 
-## Start with
-- `NVDA` for the strongest first filing shift.
-- `LLY` for policy, pricing, and industry-geometry contrast.
-- `KO` for the restraint check that shows the workflow staying honest on a mostly stable filing.
+- A compact public pilot inside Document Protocol Lab.
+- Three deliberately chosen fixtures rather than a broad company browser.
+- Company pages that surface:
+  1. the filing answer,
+  2. why the fixture matters to the protocol,
+  3. deeper audit only when you want it.
+- A static-runtime model: precomputed JSON only, with no runtime ML or LLM calls.
+
+## Why these fixtures
+
+- **`NVDA`** shows the clearest first filing shift.
+- **`LLY`** is a policy-heavy bounded contrast case.
+- **`KO`** is the restraint check that shows the workflow staying honest on a mostly stable filing.
+
+## Start here
+
+- Start with **`NVDA`** for the fastest read on what the workflow does well.
+- Open **`LLY`** to see how the visible product stays useful while stopping honestly.
+- Read **`KO`** to understand why low-drift cases matter to the protocol.
+
+## How to read a case
+
+1. Start with the filing answer and paired evidence.
+2. Read the protocol layer to see why that fixture is in the lab.
+3. Open the deeper audit only when you want more structure, mechanisms, or limits.
+4. Treat `Fresh vs reused` as a bounded secondary lens, not the default first read.
+
+## Scope boundaries
+
+This public pilot is intentionally narrow. It uses SEC Item 1A risk sections as a bounded demonstration corpus rather than trying to be a broad issuer gallery or whole-filing research platform.
+
+The visible public fixture set is fixed to `NVDA`, `LLY`, and `KO`.
+
+Internal runtime coverage is broader than the visible public fixture set. That broader backstage coverage does not change the public claim for this shipped pilot.
+
+`LLY` is a deliberately bounded visible case. It ships the first read and protocol layer, but not the full lower-audit runtime stack used by the deeper integrated cases.
 
 ## Product discipline
+
 - Static JSON only at runtime.
 - No runtime ML or LLM calls.
 - SEC text is treated as untrusted and rendered as plain text only.
-- Top-level public positioning is defined by `current_case_mix_v2.json`, `start_here_v1.json`, and `demo_share_v3.json`.
 - Lower runtime coverage can remain broader than the public fixture set without changing the visible product claim.
 
-## Current runtime notes
-- `NVDA` and `KO` retain lower backstage runtime-registry integration.
-- `LLY` is a bounded visible case and does not yet ship the full lower-audit runtime stack surfaced through `lab_cases_v1.json`.
-- The lower runtime registry can remain broader backstage without widening the visible three-fixture claim.
-
-## How to read one case
-1. Start with the filing answer and paired evidence.
-2. Read the protocol layer to see why that fixture is in the lab and what the comparison geometry adds.
-3. Use deterministic methods and the deeper audit only when you want more structure, mechanisms, and limits.
-4. Treat `Fresh vs reused` as a bounded secondary lens, not the default first read.
-
 ## Local development
+
 ```bash
 npm install
 npm run dev
 ```
 
 ## Required gates
+
 ```bash
 npm run lint
 npm run build
@@ -57,18 +70,15 @@ npm run lab:predeploy
 npm run lab:readiness
 ```
 
-## Canonical docs
-- `docs/00_DOC_INDEX.md`
-- `docs/LAB_REMAINING_WORK_PLAN.md`
-- `docs/LAB_ARCHITECTURE_AND_GOALS.md`
-- `docs/PRODUCT_STORY.md`
+## Further reading
+
 - `docs/DEMO_READINESS.md`
 - `docs/REMAINING_SEAMS.md`
-- `docs/SEC_TEXT_SAFETY.md`
-- `docs/lab/05_llm_reproducibility_contract.md`
-- `docs/lab/10_case_quality_review_log.md`
+- `docs/LAB_ARCHITECTURE_AND_GOALS.md`
+- `docs/00_DOC_INDEX.md`
 
 ## Notes
+
 - `bundles/*` are local-only run artifacts for manual LLM jobs.
 - `reports/*` are local operator artifacts and remain untracked.
 - Archived non-canonical artifacts live under `attic/`.
