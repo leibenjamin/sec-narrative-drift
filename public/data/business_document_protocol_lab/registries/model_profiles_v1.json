@@ -1,0 +1,26 @@
+{
+  "artifact_status": "complete",
+  "registry_id": "model_profiles_v1",
+  "version": "1.0",
+  "updated_at_utc": "2026-03-14T06:13:39Z",
+  "items": [
+    {
+      "model_profile_id": "m_primary_strong_reasoning_v1",
+      "display_name": "Primary Strong Reasoning",
+      "provider": "openai",
+      "notes": [
+        "Stable internal ID for the local GPT-5.3-Codex lane.",
+        "Concrete local runner bindings now live in runner_bindings_local_v1."
+      ]
+    },
+    {
+      "model_profile_id": "m_alternate_strong_reasoning_v1",
+      "display_name": "Alternate Strong Reasoning",
+      "provider": "openai",
+      "notes": [
+        "Stable internal ID for the local ChatGPT 5.4-Thinking lane.",
+        "Concrete local runner bindings now live in runner_bindings_local_v1."
+      ]
+    }
+  ]
+}

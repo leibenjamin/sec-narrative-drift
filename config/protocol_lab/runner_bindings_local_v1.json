@@ -1,0 +1,41 @@
+{
+  "artifact_status": "complete",
+  "registry_id": "runner_bindings_local_v1",
+  "version": "1.0",
+  "updated_at_utc": "2026-03-15T23:10:00Z",
+  "items": [
+    {
+      "runner_binding_id": "rb_openai_gpt53codex_real_local_v1",
+      "model_profile_id": "m_primary_strong_reasoning_v1",
+      "binding_kind": "local_campaign",
+      "campaign_id": "openai_gpt53codex_xhigh_agent_fullsec_real_2026-02-27",
+      "display_name": "Local GPT-5.3-Codex Real Lane",
+      "notes": [
+        "Concrete local runner binding for the current Codex strong-reasoning lane.",
+        "Execution-specific campaign identity is intentionally separated from the stable model profile."
+      ]
+    },
+    {
+      "runner_binding_id": "rb_anthropic_claude_code_opus46_real_local_v1",
+      "model_profile_id": "m_primary_strong_reasoning_v1",
+      "binding_kind": "local_campaign",
+      "campaign_id": "anthropic_claudeopus46_claudecode_fullsec_real_2026-03-09",
+      "display_name": "Local Claude Code Opus 4.6 Real Lane",
+      "notes": [
+        "Concrete local runner binding for the first Protocol Lab Claude Code strong-reasoning lane.",
+        "Anthropic Claude Code / Opus 4.6 real local runs keep raw capture artifacts local-only under reports/protocol_lab/raw_runs/."
+      ]
+    },
+    {
+      "runner_binding_id": "rb_openai_chatgpt54ext_real_local_v1",
+      "model_profile_id": "m_alternate_strong_reasoning_v1",
+      "binding_kind": "local_campaign",
+      "campaign_id": "openai_chatgpt54ext_agent_fullsec_real_2026-03-06",
+      "display_name": "Local ChatGPT 5.4-Thinking Real Lane",
+      "notes": [
+        "Concrete local runner binding for the current ChatGPT strong-reasoning lane.",
+        "Execution-specific campaign identity is intentionally separated from the stable model profile."
+      ]
+    }
+  ]
+}

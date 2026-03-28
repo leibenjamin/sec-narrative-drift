@@ -1,0 +1,206 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "artifact_status": "complete",
+  "$id": "protocol_lab/change_brief_eval_v1.schema.json",
+  "title": "Protocol Lab Change Brief Eval v1",
+  "type": "object",
+  "required": [
+    "artifact_status",
+    "artifact_schema_id",
+    "change_brief_eval_id",
+    "run_request_id",
+    "hard_checks",
+    "rubric_bands",
+    "failure_tags",
+    "reviewer_notes",
+    "evaluated_artifact_ids"
+  ],
+  "properties": {
+    "artifact_status": {
+      "type": "string",
+      "enum": [
+        "complete",
+        "scaffolded",
+        "pending",
+        "blocked",
+        "not_attempted"
+      ]
+    },
+    "artifact_status_note": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "artifact_schema_id": {
+      "const": "change_brief_eval_v1"
+    },
+    "change_brief_eval_id": {
+      "type": "string"
+    },
+    "run_request_id": {
+      "type": "string"
+    },
+    "hard_checks": {
+      "type": "object",
+      "required": [
+        "output_present",
+        "evidence_bundle_present",
+        "section_objects_present",
+        "evidence_refs_resolved"
+      ],
+      "properties": {
+        "output_present": {
+          "type": "string",
+          "enum": [
+            "pass",
+            "fail",
+            "not_run"
+          ]
+        },
+        "evidence_bundle_present": {
+          "type": "string",
+          "enum": [
+            "pass",
+            "fail",
+            "not_run"
+          ]
+        },
+        "section_objects_present": {
+          "type": "string",
+          "enum": [
+            "pass",
+            "fail",
+            "not_run"
+          ]
+        },
+        "evidence_refs_resolved": {
+          "type": "string",
+          "enum": [
+            "pass",
+            "fail",
+            "not_run"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "rubric_bands": {
+      "type": "object",
+      "required": [
+        "evidence_grounding",
+        "novelty_separation",
+        "specificity",
+        "caveat_honesty",
+        "overall_usefulness"
+      ],
+      "properties": {
+        "evidence_grounding": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "strong",
+                "fair",
+                "weak"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "novelty_separation": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "strong",
+                "fair",
+                "weak"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "specificity": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "strong",
+                "fair",
+                "weak"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "caveat_honesty": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "strong",
+                "fair",
+                "weak"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "overall_usefulness": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "strong",
+                "fair",
+                "weak"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "failure_tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "reviewer_notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evaluated_artifact_ids": {
+      "type": "object",
+      "required": [
+        "change_brief_output_id",
+        "evidence_bundle_id"
+      ],
+      "properties": {
+        "change_brief_output_id": {
+          "type": "string"
+        },
+        "evidence_bundle_id": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

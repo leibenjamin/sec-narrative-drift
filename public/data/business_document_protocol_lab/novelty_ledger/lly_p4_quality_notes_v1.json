@@ -1,0 +1,23 @@
+{
+  "artifact_schema_id": "p4_quality_notes_v1",
+  "artifact_id": "lly_p4_quality_notes_v1",
+  "fixture_id": "LLY_2024_2025_10k_item1a",
+  "issuer": {
+    "ticker": "LLY",
+    "issuer_name": "Eli Lilly and Company"
+  },
+  "notes": [
+    {
+      "note_id": "lly_ev04_exact_substring_correction",
+      "issue_type": "exact_substring_quote_mismatch",
+      "affected_run_id": "LLY_05_p4_i2_novelty_ledger_standard_v2",
+      "issue_family": "evidence-row integrity",
+      "deterministic_repair_allowed": true,
+      "repair_applied_in_canonization": true,
+      "changes_broad_analytical_verdict": false,
+      "review_note": "Evidence row ev04 was corrected to the exact filing substring from lly_2025_p029. Only quote text changed; the analytical classification and broad verdict stayed the same.",
+      "response_path": "wave4e37a_lly_p4_transfer_packet_20260321_2221/LLY_05_p4_i2_novelty_ledger_standard_v2/response.json",
+      "run_manifest_path": "wave4e37a_lly_p4_transfer_packet_20260321_2221/LLY_05_p4_i2_novelty_ledger_standard_v2/run_manifest.json"
+    }
+  ]
+}

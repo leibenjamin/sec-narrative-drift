@@ -1,0 +1,132 @@
+{
+    "artifact_status": "complete",
+    "artifact_status_note": null,
+    "artifact_schema_id": "source_case_manifest_v1",
+    "source_case_manifest_id": "ASML_2024_2025_20f_item3d__source_case_manifest_v1",
+    "fixture_id": "ASML_2024_2025_20f_item3d",
+    "ticker": "ASML",
+    "issuer_name": "ASML Holding N.V.",
+    "form_type": "20-F",
+    "section_id": "item_3d",
+    "year_from": 2024,
+    "year_to": 2025,
+    "source_filing_paths": {
+        "2024": "data/sec_cache/filings/0000937966/0000937966-25-000009/filing.txt.gz",
+        "2025": "data/sec_cache/filings/0000937966/0001628280-26-011378/filing.txt.gz"
+    },
+    "years": [
+        {
+            "fiscal_year": 2024,
+            "year_label": "FY2024",
+            "status": "complete",
+            "status_note": null,
+            "accession_number": "0000937966-25-000009",
+            "filing_date": "2025-03-05",
+            "report_date": "2024-12-31",
+            "cik": "0000937966",
+            "form_type": "20-F",
+            "section_id": "item_3d",
+            "filing_meta_path": "data/sec_cache/filings/0000937966/0000937966-25-000009/filing_meta.json",
+            "filing_text_path": "data/sec_cache/filings/0000937966/0000937966-25-000009/filing.txt.gz",
+            "risk_raw_text_path": "data/sec_cache/filings/0000937966/0000937966-25-000009/risk/item_3d.raw.txt.gz",
+            "risk_clean_text_path": "data/sec_cache/filings/0000937966/0000937966-25-000009/risk/item_3d.txt.gz",
+            "risk_segments_path": "data/sec_cache/filings/0000937966/0000937966-25-000009/risk/item_3d.segments.json.gz",
+            "rf_meta_path": "data/sec_cache/filings/0000937966/0000937966-25-000009/risk/rf_meta.json",
+            "reuse_filtered_year_input_path": null,
+            "extraction_metadata": {
+                "source_origin": "ticker_year_index",
+                "rf_meta_method": "blockdoc_scored",
+                "rf_meta_confidence": 0.95,
+                "rf_meta_status": "REVIEW",
+                "rf_meta_warnings": [
+                    "toc_detected"
+                ],
+                "rf_meta_candidate_count": 17
+            },
+            "integrity": {
+                "filing_text_sha256": "2bc4a151f006e1b074a61906c4a36c9521ccce997be929409542a6a3690fe8e5",
+                "risk_text_sha256": "09d883d84e0c0aa7f30f75dbf05d6731de2bdfa6da09b67d1e781c5b226b55dd",
+                "risk_paragraph_count": 938,
+                "required_paths_exist": true
+            },
+            "availability_status": "available",
+            "extraction_quality_status": "review_required",
+            "analysis_readiness_status": "pilot_ready",
+            "qc_summary": {
+                "quality_gate_result": "review",
+                "confidence_band": "high",
+                "paragraph_count_plausibility": "plausible",
+                "severe_warning_flags": [],
+                "readiness_derivation_note": "High-confidence after rf_continued_boundary, card-layout reorder, and start-candidate fixes: confidence 0.95."
+            }
+        },
+        {
+            "fiscal_year": 2025,
+            "year_label": "FY2025",
+            "status": "complete",
+            "status_note": null,
+            "accession_number": "0001628280-26-011378",
+            "filing_date": "2026-02-25",
+            "report_date": "2025-12-31",
+            "cik": "0000937966",
+            "form_type": "20-F",
+            "section_id": "item_3d",
+            "filing_meta_path": "data/sec_cache/filings/0000937966/0001628280-26-011378/filing_meta.json",
+            "filing_text_path": "data/sec_cache/filings/0000937966/0001628280-26-011378/filing.txt.gz",
+            "risk_raw_text_path": "data/sec_cache/filings/0000937966/0001628280-26-011378/risk/item_3d.raw.txt.gz",
+            "risk_clean_text_path": "data/sec_cache/filings/0000937966/0001628280-26-011378/risk/item_3d.txt.gz",
+            "risk_segments_path": "data/sec_cache/filings/0000937966/0001628280-26-011378/risk/item_3d.segments.json.gz",
+            "rf_meta_path": "data/sec_cache/filings/0000937966/0001628280-26-011378/risk/rf_meta.json",
+            "reuse_filtered_year_input_path": null,
+            "extraction_metadata": {
+                "source_origin": "ticker_year_index",
+                "rf_meta_method": "blockdoc_scored",
+                "rf_meta_confidence": 0.95,
+                "rf_meta_status": "REVIEW",
+                "rf_meta_warnings": [
+                    "header_footer_repeat",
+                    "toc_detected"
+                ],
+                "rf_meta_candidate_count": 16
+            },
+            "integrity": {
+                "filing_text_sha256": "66ea24d5366e45271c196c706b692df05cd67f137267cbdc5e18c9e24373a281",
+                "risk_text_sha256": "26bb385a8508c11b8850eda6913623a13087527e7af33de594cb03a7c231d07f",
+                "risk_paragraph_count": 888,
+                "required_paths_exist": true
+            },
+            "availability_status": "available",
+            "extraction_quality_status": "review_required",
+            "analysis_readiness_status": "pilot_ready",
+            "qc_summary": {
+                "quality_gate_result": "review",
+                "confidence_band": "high",
+                "paragraph_count_plausibility": "plausible",
+                "severe_warning_flags": [],
+                "readiness_derivation_note": "High-confidence after rf_continued_boundary, card-layout reorder, and start-candidate fixes: confidence 0.95."
+            }
+        }
+    ],
+    "pair_reuse_filtered_input_path": null,
+    "integrity": {
+        "complete_year_count": 2,
+        "all_required_files_present": true
+    },
+    "notes": [
+        "ASML is a 20-F filer; risk factors are in Item 3.D.",
+        "FY2024+FY2025 extraction fixed with rf_continued_boundary end-marker detection.",
+        "Card-layout table column reordering applied for correct title+body reading order.",
+        "Start candidate selection improved: overview-table and TOC-entry penalties prevent false starts.",
+        "Both years now confidence 0.95; fixture promoted from blocked to pilot_ready."
+    ],
+    "availability_status": "available",
+    "extraction_quality_status": "review_required",
+    "analysis_readiness_status": "pilot_ready",
+    "qc_summary": {
+        "quality_gate_result": "review",
+        "confidence_band": "high",
+        "paragraph_count_plausibility": "plausible",
+        "severe_warning_flags": [],
+        "readiness_derivation_note": "Both years high-confidence (0.95) with correct reading order after card-layout and start-candidate fixes."
+    }
+}

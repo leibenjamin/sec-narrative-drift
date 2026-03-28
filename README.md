@@ -1,5 +1,7 @@
 # Document Protocol Lab
 
+Document Protocol Lab currently ships a bounded SEC Item 1A pilot across three fixtures: NVDA, LLY, and KO.
+
 Document Protocol Lab is a bounded, evidence-first pilot for testing how a document-comparison workflow answers, proves, and stops on real SEC risk disclosures.
 
 **Current public pilot:** SEC Item 1A across three fixtures: `NVDA`, `LLY`, and `KO`.
@@ -76,6 +78,7 @@ npm run lab:readiness
 - `docs/REMAINING_SEAMS.md`
 - `docs/LAB_ARCHITECTURE_AND_GOALS.md`
 - `docs/00_DOC_INDEX.md`
+- `public/data/business_document_protocol_lab/product_positioning/demo_share_v3.json`
 
 ## Notes
 

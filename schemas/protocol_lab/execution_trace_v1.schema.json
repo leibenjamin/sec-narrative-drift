@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "artifact_status": "complete",
+  "$id": "protocol_lab/execution_trace_v1.schema.json",
+  "title": "Protocol Lab Execution Trace v1",
+  "type": "object",
+  "required": [
+    "artifact_status",
+    "artifact_schema_id",
+    "execution_trace_id",
+    "run_request_id",
+    "prompt_render_id",
+    "runner_binding_id",
+    "step_label",
+    "run_state",
+    "started_at",
+    "finished_at",
+    "raw_response_path",
+    "parse_status",
+    "postprocess_status",
+    "usage_metadata",
+    "error_note",
+    "notes"
+  ],
+  "properties": {
+    "artifact_status": {
+      "type": "string",
+      "enum": [
+        "complete",
+        "scaffolded",
+        "pending",
+        "blocked",
+        "not_attempted"
+      ]
+    },
+    "artifact_status_note": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "artifact_schema_id": {
+      "const": "execution_trace_v1"
+    },
+    "execution_trace_id": {
+      "type": "string"
+    },
+    "run_request_id": {
+      "type": "string"
+    },
+    "prompt_render_id": {
+      "type": "string"
+    },
+    "runner_binding_id": {
+      "type": "string"
+    },
+    "step_label": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "run_state": {
+      "type": "string",
+      "enum": [
+        "scaffolded",
+        "rendered",
+        "submitted",
+        "awaiting_capture",
+        "capture_missing",
+        "captured",
+        "completed",
+        "parse_failed",
+        "postprocess_failed",
+        "validated",
+        "reviewed"
+      ]
+    },
+    "started_at": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "finished_at": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "raw_response_path": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "parse_status": {
+      "type": "string",
+      "enum": [
+        "not_run",
+        "pending",
+        "passed",
+        "failed",
+        "not_applicable"
+      ]
+    },
+    "postprocess_status": {
+      "type": "string",
+      "enum": [
+        "not_run",
+        "pending",
+        "passed",
+        "failed",
+        "not_applicable"
+      ]
+    },
+    "usage_metadata": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": true
+    },
+    "error_note": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}

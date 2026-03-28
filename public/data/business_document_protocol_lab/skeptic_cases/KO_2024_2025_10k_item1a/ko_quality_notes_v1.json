@@ -1,0 +1,63 @@
+{
+  "artifact_schema_id": "skeptic_case_quality_notes_v1",
+  "artifact_id": "ko_quality_notes_v1",
+  "fixture_id": "KO_2024_2025_10k_item1a",
+  "issuer": {
+    "ticker": "KO",
+    "issuer_name": "The Coca-Cola Company"
+  },
+  "run_notes": [
+    {
+      "run_id": "KO_02_p1_i2_tagged_packet",
+      "lane_family": "02",
+      "reasoning_variant": "extended",
+      "status": "usable_as_saved",
+      "issue_family": "none",
+      "issue_type": "no_blocking_issue_observed",
+      "correction_needed": false,
+      "changes_broad_analytical_verdict": false,
+      "review_note": "Parsed cleanly and stayed usable without correction. The restrained low-drift read held.",
+      "response_path": "wave4e5_third_issuer_skeptic_packet_20260322_0353/KO_02_p1_i2_tagged_packet/response.json",
+      "run_manifest_path": "wave4e5_third_issuer_skeptic_packet_20260322_0353/KO_02_p1_i2_tagged_packet/run_manifest.json"
+    },
+    {
+      "run_id": "KO_02_p1_i2_tagged_packet_standard",
+      "lane_family": "02",
+      "reasoning_variant": "standard",
+      "status": "usable_as_saved",
+      "issue_family": "none",
+      "issue_type": "no_blocking_issue_observed",
+      "correction_needed": false,
+      "changes_broad_analytical_verdict": false,
+      "review_note": "Parsed cleanly and stayed usable without correction. The restrained low-drift read held.",
+      "response_path": "wave4e5_third_issuer_skeptic_packet_20260322_0353/KO_02_p1_i2_tagged_packet_standard/response.json",
+      "run_manifest_path": "wave4e5_third_issuer_skeptic_packet_20260322_0353/KO_02_p1_i2_tagged_packet_standard/run_manifest.json"
+    },
+    {
+      "run_id": "KO_04_p4_i2_novelty_ledger_extended_v2",
+      "lane_family": "p4",
+      "reasoning_variant": "extended",
+      "status": "usable_as_saved",
+      "issue_family": "none",
+      "issue_type": "no_blocking_issue_observed",
+      "correction_needed": false,
+      "changes_broad_analytical_verdict": false,
+      "review_note": "Parsed cleanly and stayed usable without correction. The broad verdict held.",
+      "response_path": "wave4e5_third_issuer_skeptic_packet_20260322_0353/KO_04_p4_i2_novelty_ledger_extended_v2/response.json",
+      "run_manifest_path": "wave4e5_third_issuer_skeptic_packet_20260322_0353/KO_04_p4_i2_novelty_ledger_extended_v2/run_manifest.json"
+    },
+    {
+      "run_id": "KO_05_p4_i2_novelty_ledger_standard_v2",
+      "lane_family": "p4",
+      "reasoning_variant": "standard",
+      "status": "usable_as_saved",
+      "issue_family": "none",
+      "issue_type": "no_blocking_issue_observed",
+      "correction_needed": false,
+      "changes_broad_analytical_verdict": false,
+      "review_note": "Parsed cleanly and stayed usable without correction. The broad verdict held.",
+      "response_path": "wave4e5_third_issuer_skeptic_packet_20260322_0353/KO_05_p4_i2_novelty_ledger_standard_v2/response.json",
+      "run_manifest_path": "wave4e5_third_issuer_skeptic_packet_20260322_0353/KO_05_p4_i2_novelty_ledger_standard_v2/run_manifest.json"
+    }
+  ]
+}

@@ -714,6 +714,7 @@ export default function LabPanel({
         <LabPanelProtocolMeaningSection pilotArtifacts={pilotArtifacts} />
       ) : null}
 
+      {/* Audit trail keeps Where methods agree, Scope boundary, and Optional insight layer below the first read. */}
       <LabPanelAuditTrailSection
         analysisMode={analysisMode}
         advancedControlsProps={advancedControlsProps}

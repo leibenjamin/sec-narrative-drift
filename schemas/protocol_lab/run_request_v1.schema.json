@@ -1,0 +1,157 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "artifact_status": "complete",
+  "$id": "protocol_lab/run_request_v1.schema.json",
+  "title": "Protocol Lab Run Request v1",
+  "type": "object",
+  "required": [
+    "artifact_status",
+    "artifact_schema_id",
+    "run_request_id",
+    "task_family_id",
+    "fixture_id",
+    "protocol_id",
+    "model_profile_id",
+    "runner_binding_id",
+    "input_pack_id",
+    "input_pack_selection",
+    "run_label",
+    "created_at",
+    "execution_status",
+    "expected_artifact_paths",
+    "notes"
+  ],
+  "properties": {
+    "artifact_status": {
+      "type": "string",
+      "enum": [
+        "complete",
+        "scaffolded",
+        "pending",
+        "blocked",
+        "not_attempted"
+      ]
+    },
+    "artifact_status_note": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "artifact_schema_id": {
+      "const": "run_request_v1"
+    },
+    "run_request_id": {
+      "type": "string"
+    },
+    "task_family_id": {
+      "type": "string"
+    },
+    "fixture_id": {
+      "type": "string"
+    },
+    "protocol_id": {
+      "type": "string"
+    },
+    "model_profile_id": {
+      "type": "string"
+    },
+    "stack_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "input_pack_id": {
+      "type": "string"
+    },
+    "run_label": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "execution_status": {
+      "type": "string",
+      "enum": [
+        "pending_model_execution",
+        "submitted",
+        "completed",
+        "failed",
+        "blocked"
+      ]
+    },
+    "expected_artifact_paths": {
+      "type": "object",
+      "required": [
+        "change_brief_output_path",
+        "evidence_bundle_path",
+        "change_brief_eval_path"
+      ],
+      "properties": {
+        "change_brief_output_path": {
+          "type": "string"
+        },
+        "evidence_bundle_path": {
+          "type": "string"
+        },
+        "change_brief_eval_path": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "runner_binding_id": {
+      "type": "string"
+    },
+    "input_pack_selection": {
+      "type": "object",
+      "required": [
+        "protocol_default_input_pack_id",
+        "experiment_cell_id",
+        "experiment_input_pack_id",
+        "run_override_input_pack_id",
+        "selection_source"
+      ],
+      "properties": {
+        "protocol_default_input_pack_id": {
+          "type": "string"
+        },
+        "experiment_cell_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "experiment_input_pack_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "run_override_input_pack_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "selection_source": {
+          "type": "string",
+          "enum": [
+            "protocol_default",
+            "experiment_override",
+            "run_override"
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

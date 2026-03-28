@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "artifact_status": "complete",
+  "$id": "protocol_lab/prompt_render_v1.schema.json",
+  "title": "Protocol Lab Prompt Render v1",
+  "type": "object",
+  "required": [
+    "artifact_status",
+    "artifact_schema_id",
+    "prompt_render_id",
+    "run_request_id",
+    "fixture_id",
+    "protocol_id",
+    "model_profile_id",
+    "runner_binding_id",
+    "stack_id",
+    "step_label",
+    "prompt_template_path",
+    "rendered_system_content",
+    "rendered_user_content",
+    "input_pack_id",
+    "input_pack_integrity_hash",
+    "input_pack_integrity_source",
+    "created_at",
+    "notes"
+  ],
+  "properties": {
+    "artifact_status": {
+      "type": "string",
+      "enum": [
+        "complete",
+        "scaffolded",
+        "pending",
+        "blocked",
+        "not_attempted"
+      ]
+    },
+    "artifact_status_note": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "artifact_schema_id": {
+      "const": "prompt_render_v1"
+    },
+    "prompt_render_id": {
+      "type": "string"
+    },
+    "run_request_id": {
+      "type": "string"
+    },
+    "fixture_id": {
+      "type": "string"
+    },
+    "protocol_id": {
+      "type": "string"
+    },
+    "model_profile_id": {
+      "type": "string"
+    },
+    "runner_binding_id": {
+      "type": "string"
+    },
+    "stack_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "step_label": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "prompt_template_path": {
+      "type": "string"
+    },
+    "rendered_system_content": {
+      "type": "string"
+    },
+    "rendered_user_content": {
+      "type": "string"
+    },
+    "input_pack_id": {
+      "type": "string"
+    },
+    "input_pack_integrity_hash": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "input_pack_integrity_source": {
+      "type": "string",
+      "enum": [
+        "input_pack_manifest",
+        "deferred_contract_only",
+        "not_available"
+      ]
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}

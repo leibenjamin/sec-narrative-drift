@@ -1,0 +1,429 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "artifact_status": "complete",
+  "$id": "protocol_lab/source_case_manifest_v1.schema.json",
+  "title": "Protocol Lab Source Case Manifest v1",
+  "type": "object",
+  "$defs": {
+    "qc_summary": {
+      "type": "object",
+      "required": [
+        "quality_gate_result",
+        "confidence_band",
+        "paragraph_count_plausibility",
+        "severe_warning_flags",
+        "readiness_derivation_note"
+      ],
+      "properties": {
+        "quality_gate_result": {
+          "type": "string",
+          "enum": [
+            "pass",
+            "review",
+            "fail",
+            "not_assessed"
+          ]
+        },
+        "confidence_band": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low",
+            "unknown"
+          ]
+        },
+        "paragraph_count_plausibility": {
+          "type": "string",
+          "enum": [
+            "plausible",
+            "implausible",
+            "not_assessed"
+          ]
+        },
+        "severe_warning_flags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "readiness_derivation_note": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "artifact_status",
+    "artifact_schema_id",
+    "source_case_manifest_id",
+    "fixture_id",
+    "ticker",
+    "issuer_name",
+    "form_type",
+    "section_id",
+    "year_from",
+    "year_to",
+    "availability_status",
+    "extraction_quality_status",
+    "analysis_readiness_status",
+    "source_filing_paths",
+    "years",
+    "pair_reuse_filtered_input_path",
+    "qc_summary",
+    "integrity",
+    "notes"
+  ],
+  "properties": {
+    "artifact_status": {
+      "type": "string",
+      "enum": [
+        "complete",
+        "scaffolded",
+        "pending",
+        "blocked",
+        "not_attempted"
+      ]
+    },
+    "artifact_status_note": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "artifact_schema_id": {
+      "const": "source_case_manifest_v1"
+    },
+    "source_case_manifest_id": {
+      "type": "string"
+    },
+    "fixture_id": {
+      "type": "string"
+    },
+    "ticker": {
+      "type": "string"
+    },
+    "issuer_name": {
+      "type": "string"
+    },
+    "form_type": {
+      "type": "string"
+    },
+    "section_id": {
+      "type": "string"
+    },
+    "year_from": {
+      "type": "integer"
+    },
+    "year_to": {
+      "type": "integer"
+    },
+    "source_filing_paths": {
+      "type": "object",
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "years": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "type": "object",
+        "required": [
+          "fiscal_year",
+          "year_label",
+          "status",
+          "status_note",
+          "availability_status",
+          "extraction_quality_status",
+          "analysis_readiness_status",
+          "accession_number",
+          "filing_date",
+          "report_date",
+          "cik",
+          "form_type",
+          "section_id",
+          "filing_meta_path",
+          "filing_text_path",
+          "risk_raw_text_path",
+          "risk_clean_text_path",
+          "risk_segments_path",
+          "rf_meta_path",
+          "reuse_filtered_year_input_path",
+          "extraction_metadata",
+          "qc_summary",
+          "integrity"
+        ],
+        "properties": {
+          "fiscal_year": {
+            "type": "integer"
+          },
+          "year_label": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "complete",
+              "scaffolded",
+              "pending",
+              "blocked",
+              "not_attempted"
+            ]
+          },
+          "status_note": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "accession_number": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "filing_date": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "report_date": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "cik": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "form_type": {
+            "type": "string"
+          },
+          "section_id": {
+            "type": "string"
+          },
+          "filing_meta_path": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "filing_text_path": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "risk_raw_text_path": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "risk_clean_text_path": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "risk_segments_path": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "rf_meta_path": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "reuse_filtered_year_input_path": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "extraction_metadata": {
+            "type": "object",
+            "required": [
+              "source_origin",
+              "rf_meta_method",
+              "rf_meta_confidence",
+              "rf_meta_status",
+              "rf_meta_warnings",
+              "rf_meta_candidate_count"
+            ],
+            "properties": {
+              "source_origin": {
+                "type": "string"
+              },
+              "rf_meta_method": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "rf_meta_confidence": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "rf_meta_status": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "rf_meta_warnings": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "rf_meta_candidate_count": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              }
+            },
+            "additionalProperties": false
+          },
+          "qc_summary": {
+            "$ref": "#/$defs/qc_summary"
+          },
+          "integrity": {
+            "type": "object",
+            "required": [
+              "filing_text_sha256",
+              "risk_text_sha256",
+              "risk_paragraph_count",
+              "required_paths_exist"
+            ],
+            "properties": {
+              "filing_text_sha256": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "risk_text_sha256": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "risk_paragraph_count": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "required_paths_exist": {
+                "type": "boolean"
+              }
+            },
+            "additionalProperties": false
+          },
+          "availability_status": {
+            "type": "string",
+            "enum": [
+              "available",
+              "partial",
+              "missing"
+            ]
+          },
+          "extraction_quality_status": {
+            "type": "string",
+            "enum": [
+              "not_assessed",
+              "failed",
+              "review_required",
+              "acceptable"
+            ]
+          },
+          "analysis_readiness_status": {
+            "type": "string",
+            "enum": [
+              "blocked",
+              "substrate_only",
+              "pilot_ready",
+              "matrix_ready"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "pair_reuse_filtered_input_path": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "qc_summary": {
+      "$ref": "#/$defs/qc_summary"
+    },
+    "integrity": {
+      "type": "object",
+      "required": [
+        "complete_year_count",
+        "all_required_files_present"
+      ],
+      "properties": {
+        "complete_year_count": {
+          "type": "integer"
+        },
+        "all_required_files_present": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "availability_status": {
+      "type": "string",
+      "enum": [
+        "available",
+        "partial",
+        "missing"
+      ]
+    },
+    "extraction_quality_status": {
+      "type": "string",
+      "enum": [
+        "not_assessed",
+        "failed",
+        "review_required",
+        "acceptable"
+      ]
+    },
+    "analysis_readiness_status": {
+      "type": "string",
+      "enum": [
+        "blocked",
+        "substrate_only",
+        "pilot_ready",
+        "matrix_ready"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

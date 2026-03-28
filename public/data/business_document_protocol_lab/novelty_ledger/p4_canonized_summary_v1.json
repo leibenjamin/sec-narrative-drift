@@ -1,0 +1,31 @@
+{
+  "artifact_schema_id": "p4_canonized_summary_v1",
+  "artifact_id": "p4_canonized_summary_v1",
+  "covered_issuers": [
+    "NVDA",
+    "LLY",
+    "KO"
+  ],
+  "issuer_artifact_paths": [
+    "data/business_document_protocol_lab/novelty_ledger/NVDA_2024_2025_10k_item1a/p4_canonized_matrix_v1.json",
+    "data/business_document_protocol_lab/novelty_ledger/LLY_2024_2025_10k_item1a/p4_canonized_matrix_v1.json",
+    "data/business_document_protocol_lab/novelty_ledger/KO_2024_2025_10k_item1a/p4_canonized_matrix_v1.json"
+  ],
+  "quality_note_paths": [
+    "data/business_document_protocol_lab/novelty_ledger/nvda_p4_quality_notes_v1.json",
+    "data/business_document_protocol_lab/novelty_ledger/lly_p4_quality_notes_v1.json",
+    "data/business_document_protocol_lab/novelty_ledger/ko_p4_quality_notes_v1.json"
+  ],
+  "what_p4_consistently_adds_over_02": [
+    "Fresh vs reused cleanly separates genuinely fresh, date-linked specifics from intensified or broadened carryover themes.",
+    "Fresh vs reused makes reused framework language explicit instead of leaving it implicit inside the broader first-read summary.",
+    "Fresh vs reused helps the product stay disciplined on lower-drift cases like KO by surfacing what should remain a boundary note instead of fake novelty."
+  ],
+  "what_p4_still_does_not_do_as_well_as_02": [
+    "Fresh vs reused remains weaker than the primary read as the broad default investor-readable synthesis of the filing shift.",
+    "Fresh vs reused remains more quality-sensitive because its value depends on narrow evidence and careful category discipline.",
+    "Fresh vs reused still does not justify becoming an equal top-level read across the current case mix."
+  ],
+  "why_secondary_only": "Across NVDA, LLY, and KO, Fresh vs reused is strong enough for limited visible use as a compact secondary module, but it remains intentionally narrower than the primary read and more dependent on classification discipline.",
+  "overall_verdict": "Across the vivid high-signal cases and the KO restraint case, Fresh vs reused is now credible as a limited secondary module. The product decision stays the same: keep the primary read first and keep Fresh vs reused compact and secondary."
+}

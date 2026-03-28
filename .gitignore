@@ -131,10 +131,13 @@ __pycache__/
 
 # Claude Code session files
 .claude/
+.codex
 .codex/
 
 # Windows artifact
 nul
+*.Zone.Identifier
+*:[Zz]one.Identifier
 
 # Internal pipeline scripts (not needed for portfolio app)
 scripts/audit_risk_extraction_bundle.py
@@ -164,6 +167,14 @@ public/data/sec_narrative_drift_metrics/
 public/data/sec_narrative_drift_lab_candidates*/
 # Local flat detector mirrors (canonical tracked paths are under outputs/<detector>/...)
 public/data/sec_narrative_drift_lab/*/lab_10k_item1a_*_det_*_edgar.json
+
+# Deferred Protocol Lab publish surfaces
+public/data/business_document_protocol_lab/comparisons/
+public/data/business_document_protocol_lab/evals/
+public/data/business_document_protocol_lab/runs/
+public/data/business_document_protocol_lab/product_positioning/current_case_mix_v1.json
+public/data/business_document_protocol_lab/product_positioning/demo_share_v1.json
+
 chatgpt_review_prompt2_sync_20260207_182131.zip
 chatgpt_review_prompt2_sync_20260207_183103.zip
 chatgpt_review_prompt2_sync_20260207_183237.zip
@@ -177,6 +188,8 @@ chatgpt_review_pack_lab_health_20260216_154326.zip
 # Local scratch files
 scripts/_tmp_*.txt
 scripts/_tmp_test_runs/
+screenshots/
+test-results/
 
 # Local temporary run inputs
 tmp_*

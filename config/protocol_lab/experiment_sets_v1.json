@@ -1,0 +1,294 @@
+{
+  "artifact_status": "complete",
+  "registry_id": "experiment_sets_v1",
+  "version": "1.0",
+  "updated_at_utc": "2026-03-14T22:45:00Z",
+  "items": [
+    {
+      "experiment_set_id": "nvda_ablation_contract_v1",
+      "display_name": "NVDA Ablation: Contract Structure",
+      "fixture_ids": [
+        "NVDA_2024_2025_10k_item1a"
+      ],
+      "stack_ids": [
+        "s_p0_m1_v1",
+        "s_p1_m1_v1"
+      ],
+      "primary_comparison_axis": "instruction_contract_structure",
+      "notes": [
+        "Canonical Wave 4A.5 ablation set.",
+        "Isolates instruction and contract structure while holding filed full text constant."
+      ],
+      "experiment_cells": [
+        {
+          "cell_id": "nvda_ablation_contract_v1__cell_p0_m1_i0",
+          "stack_id": "s_p0_m1_v1",
+          "input_pack_id": "i0_filed_full_text_v1",
+          "notes": [
+            "Baseline plain prompt against filed full text."
+          ]
+        },
+        {
+          "cell_id": "nvda_ablation_contract_v1__cell_p1_m1_i0",
+          "stack_id": "s_p1_m1_v1",
+          "input_pack_id": "i0_filed_full_text_v1",
+          "notes": [
+            "Experiment override from protocol default i1_reuse_filtered_v1."
+          ]
+        }
+      ]
+    },
+    {
+      "experiment_set_id": "nvda_ablation_filtering_v1",
+      "display_name": "NVDA Ablation: Filtering",
+      "fixture_ids": [
+        "NVDA_2024_2025_10k_item1a"
+      ],
+      "stack_ids": [
+        "s_p1_m1_v1"
+      ],
+      "primary_comparison_axis": "input_treatment",
+      "notes": [
+        "Canonical Wave 4A.5 ablation set.",
+        "Isolates filed-text versus reuse-filtered treatment while holding the structured contract constant."
+      ],
+      "experiment_cells": [
+        {
+          "cell_id": "nvda_ablation_filtering_v1__cell_p1_m1_i0",
+          "stack_id": "s_p1_m1_v1",
+          "input_pack_id": "i0_filed_full_text_v1",
+          "notes": [
+            "Experiment override against the protocol default pack."
+          ]
+        },
+        {
+          "cell_id": "nvda_ablation_filtering_v1__cell_p1_m1_i1",
+          "stack_id": "s_p1_m1_v1",
+          "input_pack_id": "i1_reuse_filtered_v1",
+          "notes": [
+            "Protocol default pack cell."
+          ]
+        }
+      ]
+    },
+    {
+      "experiment_set_id": "nvda_ablation_tag_awareness_v1",
+      "display_name": "NVDA Ablation: Tag Awareness",
+      "fixture_ids": [
+        "NVDA_2024_2025_10k_item1a"
+      ],
+      "stack_ids": [
+        "s_p1_m1_v1",
+        "s_p2_m1_v1"
+      ],
+      "primary_comparison_axis": "tag_awareness",
+      "notes": [
+        "Canonical Wave 4A.5 ablation set.",
+        "Isolates tag-aware instruction behavior while holding the tagged packet constant."
+      ],
+      "experiment_cells": [
+        {
+          "cell_id": "nvda_ablation_tag_awareness_v1__cell_p1_m1_i2",
+          "stack_id": "s_p1_m1_v1",
+          "input_pack_id": "i2_tagged_document_packet_v1",
+          "notes": [
+            "Experiment override from protocol default i1_reuse_filtered_v1."
+          ]
+        },
+        {
+          "cell_id": "nvda_ablation_tag_awareness_v1__cell_p2_m1_i2",
+          "stack_id": "s_p2_m1_v1",
+          "input_pack_id": "i2_tagged_document_packet_v1",
+          "notes": [
+            "Protocol default pack cell."
+          ]
+        }
+      ]
+    },
+    {
+      "experiment_set_id": "nvda_ablation_topology_v1",
+      "display_name": "NVDA Ablation: Topology",
+      "fixture_ids": [
+        "NVDA_2024_2025_10k_item1a"
+      ],
+      "stack_ids": [
+        "s_p2_m1_v1",
+        "s_p3_m1_v1"
+      ],
+      "primary_comparison_axis": "topology",
+      "notes": [
+        "Canonical Wave 4A.5 ablation set.",
+        "Isolates single-pass tagged synthesis versus extract-then-synthesize."
+      ],
+      "experiment_cells": [
+        {
+          "cell_id": "nvda_ablation_topology_v1__cell_p2_m1_i2",
+          "stack_id": "s_p2_m1_v1",
+          "input_pack_id": "i2_tagged_document_packet_v1",
+          "notes": [
+            "Tagged single-pass comparison anchor."
+          ]
+        },
+        {
+          "cell_id": "nvda_ablation_topology_v1__cell_p3_m1_i3",
+          "stack_id": "s_p3_m1_v1",
+          "input_pack_id": "i3_extractive_evidence_packet_v1",
+          "notes": [
+            "Topology-specific i3 pack remains deferred outside intentional P3 comparisons."
+          ]
+        }
+      ]
+    },
+    {
+      "experiment_set_id": "pilot_matrix_a_nvda_protocols_v1",
+      "display_name": "Pilot Matrix A: NVDA Protocols",
+      "fixture_ids": [
+        "NVDA_2024_2025_10k_item1a"
+      ],
+      "stack_ids": [
+        "s_p0_m1_v1",
+        "s_p1_m1_v1",
+        "s_p2_m1_v1",
+        "s_p3_m1_v1"
+      ],
+      "primary_comparison_axis": "protocol_id",
+      "notes": [
+        "Deprecated compatibility geometry as of Wave 4A.5.",
+        "Superseded by the canonical NVDA ablation sets."
+      ],
+      "experiment_cells": [
+        {
+          "cell_id": "pilot_matrix_a_nvda_protocols_v1__cell_p0_m1_i0",
+          "stack_id": "s_p0_m1_v1",
+          "input_pack_id": "i0_filed_full_text_v1",
+          "notes": [
+            "Protocol default pack cell."
+          ]
+        },
+        {
+          "cell_id": "pilot_matrix_a_nvda_protocols_v1__cell_p1_m1_i1",
+          "stack_id": "s_p1_m1_v1",
+          "input_pack_id": "i1_reuse_filtered_v1",
+          "notes": [
+            "Protocol default pack cell."
+          ]
+        },
+        {
+          "cell_id": "pilot_matrix_a_nvda_protocols_v1__cell_p2_m1_i2",
+          "stack_id": "s_p2_m1_v1",
+          "input_pack_id": "i2_tagged_document_packet_v1",
+          "notes": [
+            "Protocol default pack cell."
+          ]
+        },
+        {
+          "cell_id": "pilot_matrix_a_nvda_protocols_v1__cell_p3_m1_i3",
+          "stack_id": "s_p3_m1_v1",
+          "input_pack_id": "i3_extractive_evidence_packet_v1",
+          "notes": [
+            "Protocol default pack cell; sample artifact remains deferred at the input-pack artifact layer."
+          ]
+        }
+      ]
+    },
+    {
+      "experiment_set_id": "pilot_matrix_b_nvda_interaction_v1",
+      "display_name": "Pilot Matrix B: NVDA Interaction",
+      "fixture_ids": [
+        "NVDA_2024_2025_10k_item1a"
+      ],
+      "stack_ids": [
+        "s_p1_m1_v1",
+        "s_p2_m1_v1",
+        "s_p3_m1_v1",
+        "s_p1_m2_v1",
+        "s_p2_m2_v1",
+        "s_p3_m2_v1"
+      ],
+      "primary_comparison_axis": "stack_id",
+      "notes": [
+        "Deprecated compatibility geometry as of Wave 4A.5.",
+        "Superseded by ablation-style comparison sets that isolate one variable at a time."
+      ],
+      "experiment_cells": [
+        {
+          "cell_id": "pilot_matrix_b_nvda_interaction_v1__cell_p1_m1_i1",
+          "stack_id": "s_p1_m1_v1",
+          "input_pack_id": "i1_reuse_filtered_v1",
+          "notes": [
+            "Protocol default pack cell."
+          ]
+        },
+        {
+          "cell_id": "pilot_matrix_b_nvda_interaction_v1__cell_p2_m1_i2",
+          "stack_id": "s_p2_m1_v1",
+          "input_pack_id": "i2_tagged_document_packet_v1",
+          "notes": [
+            "Protocol default pack cell."
+          ]
+        },
+        {
+          "cell_id": "pilot_matrix_b_nvda_interaction_v1__cell_p3_m1_i3",
+          "stack_id": "s_p3_m1_v1",
+          "input_pack_id": "i3_extractive_evidence_packet_v1",
+          "notes": [
+            "Protocol default pack cell; sample artifact remains deferred at the input-pack artifact layer."
+          ]
+        },
+        {
+          "cell_id": "pilot_matrix_b_nvda_interaction_v1__cell_p1_m2_i1",
+          "stack_id": "s_p1_m2_v1",
+          "input_pack_id": "i1_reuse_filtered_v1",
+          "notes": [
+            "Protocol default pack cell."
+          ]
+        },
+        {
+          "cell_id": "pilot_matrix_b_nvda_interaction_v1__cell_p2_m2_i2",
+          "stack_id": "s_p2_m2_v1",
+          "input_pack_id": "i2_tagged_document_packet_v1",
+          "notes": [
+            "Protocol default pack cell."
+          ]
+        },
+        {
+          "cell_id": "pilot_matrix_b_nvda_interaction_v1__cell_p3_m2_i3",
+          "stack_id": "s_p3_m2_v1",
+          "input_pack_id": "i3_extractive_evidence_packet_v1",
+          "notes": [
+            "Protocol default pack cell; sample artifact remains deferred at the input-pack artifact layer."
+          ]
+        }
+      ]
+    },
+    {
+      "experiment_set_id": "sentinel_backfill_asml_v1",
+      "display_name": "Sentinel Backfill: ASML",
+      "fixture_ids": [
+        "ASML_2024_2025_20f_item3d"
+      ],
+      "stack_ids": [],
+      "primary_comparison_axis": "none",
+      "notes": [
+        "ASML is the first Stage 3 sentinel.",
+        "No canonical comparison cells are defined for this sentinel backfill surface."
+      ],
+      "experiment_cells": []
+    },
+    {
+      "experiment_set_id": "sentinel_backfill_ba_v1",
+      "display_name": "Sentinel Backfill: BA",
+      "fixture_ids": [
+        "BA_2024_2025_10k_item1a"
+      ],
+      "stack_ids": [],
+      "primary_comparison_axis": "none",
+      "notes": [
+        "Historical sentinel pairing retained for traceability after ASML repair cleared the original blocker.",
+        "No canonical comparison cells are defined for this sentinel backfill surface."
+      ],
+      "experiment_cells": []
+    }
+  ]
+}
+

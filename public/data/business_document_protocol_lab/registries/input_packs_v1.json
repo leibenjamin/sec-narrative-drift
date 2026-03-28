@@ -1,0 +1,47 @@
+{
+  "artifact_status": "complete",
+  "registry_id": "input_packs_v1",
+  "version": "1.0",
+  "updated_at_utc": "2026-03-14T03:59:10Z",
+  "items": [
+    {
+      "input_pack_id": "i0_filed_full_text_v1",
+      "display_name": "Filed Full Text",
+      "pack_kind": "section_text_pair",
+      "render_contract": "full risk-section text only",
+      "notes": [
+        "Uses filed risk-section text, not the full filing body.",
+        "Protocol P0 default input pack."
+      ]
+    },
+    {
+      "input_pack_id": "i1_reuse_filtered_v1",
+      "display_name": "Reuse-Filtered Pair",
+      "pack_kind": "pair_relative_reuse_filtered",
+      "render_contract": "pair-relative filtered year packets",
+      "notes": [
+        "Backed by current llm_inputs_v2 deboilerplated year inputs where available.",
+        "Protocol P1 default input pack."
+      ]
+    },
+    {
+      "input_pack_id": "i2_tagged_document_packet_v1",
+      "display_name": "Tagged Document Packet",
+      "pack_kind": "tagged_paragraph_packet",
+      "render_contract": "clean section text plus stable paragraph locators",
+      "notes": [
+        "Protocol P2 default input pack."
+      ]
+    },
+    {
+      "input_pack_id": "i3_extractive_evidence_packet_v1",
+      "display_name": "Extractive Evidence Packet",
+      "pack_kind": "extractive_evidence_packet",
+      "render_contract": "candidate evidence set for multi-step protocols",
+      "notes": [
+        "Protocol P3 default input pack.",
+        "Stage 3 defines the reusable contract but defers NVDA pack materialization unless a deterministic extractor exists."
+      ]
+    }
+  ]
+}

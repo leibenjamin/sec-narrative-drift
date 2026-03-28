@@ -1,0 +1,128 @@
+{
+    "artifact_status": "complete",
+    "artifact_status_note": null,
+    "artifact_schema_id": "source_case_manifest_v1",
+    "source_case_manifest_id": "LLY_2024_2025_10k_item1a__source_case_manifest_v1",
+    "fixture_id": "LLY_2024_2025_10k_item1a",
+    "ticker": "LLY",
+    "issuer_name": "Eli Lilly and Company",
+    "form_type": "10-K",
+    "section_id": "item_1a",
+    "year_from": 2024,
+    "year_to": 2025,
+    "source_filing_paths": {
+        "2024": "data/sec_cache/filings/0000059478/0000059478-25-000067/filing.txt.gz",
+        "2025": "data/sec_cache/filings/0000059478/0000059478-26-000013/filing.txt.gz"
+    },
+    "years": [
+        {
+            "fiscal_year": 2024,
+            "year_label": "FY2024",
+            "status": "complete",
+            "status_note": null,
+            "accession_number": "0000059478-25-000067",
+            "filing_date": "2025-02-19",
+            "report_date": "2024-12-31",
+            "cik": "0000059478",
+            "form_type": "10-K",
+            "section_id": "item_1a",
+            "filing_meta_path": "data/sec_cache/filings/0000059478/0000059478-25-000067/filing_meta.json",
+            "filing_text_path": "data/sec_cache/filings/0000059478/0000059478-25-000067/filing.txt.gz",
+            "risk_raw_text_path": "data/sec_cache/filings/0000059478/0000059478-25-000067/risk/item_1a.raw.txt.gz",
+            "risk_clean_text_path": "data/sec_cache/filings/0000059478/0000059478-25-000067/risk/item_1a.txt.gz",
+            "risk_segments_path": "data/sec_cache/filings/0000059478/0000059478-25-000067/risk/item_1a.segments.json.gz",
+            "rf_meta_path": "data/sec_cache/filings/0000059478/0000059478-25-000067/risk/rf_meta.json",
+            "reuse_filtered_year_input_path": null,
+            "extraction_metadata": {
+                "source_origin": "ticker_year_index",
+                "rf_meta_method": "blockdoc_scored",
+                "rf_meta_confidence": 0.8999999999999999,
+                "rf_meta_status": "REVIEW",
+                "rf_meta_warnings": [
+                    "toc_detected"
+                ],
+                "rf_meta_candidate_count": 1
+            },
+            "integrity": {
+                "filing_text_sha256": "ebee0db3987d8e3c444b24af1679b972debb51628d80a253836df636da78b9ea",
+                "risk_text_sha256": "0e5b3ae92e16f5e91c38af12666d6829b80215b666c2de1ac876fb2e3b9047ee",
+                "risk_paragraph_count": 81,
+                "required_paths_exist": true
+            },
+            "availability_status": "available",
+            "extraction_quality_status": "review_required",
+            "analysis_readiness_status": "pilot_ready",
+            "qc_summary": {
+                "quality_gate_result": "review",
+                "confidence_band": "high",
+                "paragraph_count_plausibility": "plausible",
+                "severe_warning_flags": [],
+                "readiness_derivation_note": "High-confidence review case: source files, tagged segments present, rf_meta_status is REVIEW."
+            }
+        },
+        {
+            "fiscal_year": 2025,
+            "year_label": "FY2025",
+            "status": "complete",
+            "status_note": null,
+            "accession_number": "0000059478-26-000013",
+            "filing_date": "2026-02-12",
+            "report_date": "2025-12-31",
+            "cik": "0000059478",
+            "form_type": "10-K",
+            "section_id": "item_1a",
+            "filing_meta_path": "data/sec_cache/filings/0000059478/0000059478-26-000013/filing_meta.json",
+            "filing_text_path": "data/sec_cache/filings/0000059478/0000059478-26-000013/filing.txt.gz",
+            "risk_raw_text_path": "data/sec_cache/filings/0000059478/0000059478-26-000013/risk/item_1a.raw.txt.gz",
+            "risk_clean_text_path": "data/sec_cache/filings/0000059478/0000059478-26-000013/risk/item_1a.txt.gz",
+            "risk_segments_path": "data/sec_cache/filings/0000059478/0000059478-26-000013/risk/item_1a.segments.json.gz",
+            "rf_meta_path": "data/sec_cache/filings/0000059478/0000059478-26-000013/risk/rf_meta.json",
+            "reuse_filtered_year_input_path": null,
+            "extraction_metadata": {
+                "source_origin": "ticker_year_index",
+                "rf_meta_method": "blockdoc_scored",
+                "rf_meta_confidence": 0.8999999999999999,
+                "rf_meta_status": "REVIEW",
+                "rf_meta_warnings": [
+                    "toc_detected"
+                ],
+                "rf_meta_candidate_count": 1
+            },
+            "integrity": {
+                "filing_text_sha256": "4b535508ee509a5b98a52446735d170b7e41d79592aff2320f7d4d45d0d64a96",
+                "risk_text_sha256": "f61af26f8abbc349a919eefe55d93d117634e1a675aa57a5de51251ac01c54cf",
+                "risk_paragraph_count": 90,
+                "required_paths_exist": true
+            },
+            "availability_status": "available",
+            "extraction_quality_status": "review_required",
+            "analysis_readiness_status": "pilot_ready",
+            "qc_summary": {
+                "quality_gate_result": "review",
+                "confidence_band": "high",
+                "paragraph_count_plausibility": "plausible",
+                "severe_warning_flags": [],
+                "readiness_derivation_note": "High-confidence review case: source files, tagged segments present, rf_meta_status is REVIEW."
+            }
+        }
+    ],
+    "pair_reuse_filtered_input_path": null,
+    "integrity": {
+        "complete_year_count": 2,
+        "all_required_files_present": true
+    },
+    "notes": [
+        "LLY Wave 4A.5 backfill target with local FY2024/FY2025 cache.",
+        "Canonical readiness lives in availability_status, extraction_quality_status, analysis_readiness_status, and qc_summary."
+    ],
+    "availability_status": "available",
+    "extraction_quality_status": "review_required",
+    "analysis_readiness_status": "pilot_ready",
+    "qc_summary": {
+        "quality_gate_result": "review",
+        "confidence_band": "high",
+        "paragraph_count_plausibility": "plausible",
+        "severe_warning_flags": [],
+        "readiness_derivation_note": "All required source paths present; extraction remains review_required because rf_meta_status is REVIEW."
+    }
+}

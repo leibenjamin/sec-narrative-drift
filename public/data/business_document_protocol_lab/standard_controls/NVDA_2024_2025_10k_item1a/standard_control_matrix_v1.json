@@ -1,0 +1,163 @@
+{
+  "artifact_schema_id": "standard_control_matrix_v1",
+  "matrix_id": "NVDA_2024_2025_10k_item1a__standard_control_matrix_v1",
+  "fixture_id": "NVDA_2024_2025_10k_item1a",
+  "issuer": {
+    "ticker": "NVDA",
+    "issuer_name": "NVIDIA Corporation"
+  },
+  "pair_info": {
+    "ticker": "NVDA",
+    "issuer_name": "NVIDIA Corporation",
+    "year_from": 2024,
+    "year_to": 2025,
+    "form_type": "10-K",
+    "section_id": "item_1a"
+  },
+  "packet_root": "wave4e1_standard_thinking_controls_20260319_0213",
+  "reasoning_mode": "standard_thinking",
+  "canonical_run_ids": [
+    "NVDA_00_b0_unstructured_frontier_baseline_standard",
+    "NVDA_02_p1_i2_tagged_packet_standard",
+    "NVDA_03_p2_i2_tagged_protocol_standard"
+  ],
+  "lane_roles": {
+    "02_p1_i2_tagged_packet": "hero",
+    "03_p2_i2_tagged_protocol": "main_comparator",
+    "00_b0_unstructured_frontier_baseline": "control"
+  },
+  "ordered_lane_ids": [
+    "02_p1_i2_tagged_packet",
+    "03_p2_i2_tagged_protocol",
+    "00_b0_unstructured_frontier_baseline"
+  ],
+  "lane_assessments": [
+    {
+      "lane_slug": "00_b0_unstructured_frontier_baseline",
+      "run_id": "NVDA_00_b0_unstructured_frontier_baseline_standard",
+      "role_label": "Control lane",
+      "assessment": "control",
+      "rationale": "00 stays readable enough to function as a control, but it remains ad hoc and noncanonical rather than a structured protocol lane."
+    },
+    {
+      "lane_slug": "02_p1_i2_tagged_packet",
+      "run_id": "NVDA_02_p1_i2_tagged_packet_standard",
+      "role_label": "Hero lane",
+      "assessment": "strongest",
+      "rationale": "02 remains the clearest standard-thinking first read on NVDA because it keeps the filing shift legible, structured, and machine-parseable on the tagged packet."
+    },
+    {
+      "lane_slug": "03_p2_i2_tagged_protocol",
+      "run_id": "NVDA_03_p2_i2_tagged_protocol_standard",
+      "role_label": "Main comparator",
+      "assessment": "meaningful_comparator",
+      "rationale": "03 remains a meaningful comparator on NVDA after the rerun because it still changes the lead story on the same tagged substrate and the current canonical raw file parses cleanly."
+    }
+  ],
+  "canonical_sources": [
+    {
+      "run_id": "NVDA_00_b0_unstructured_frontier_baseline_standard",
+      "lane_slug": "00_b0_unstructured_frontier_baseline",
+      "response_path": "wave4e1_standard_thinking_controls_20260319_0213/NVDA_00_b0_unstructured_frontier_baseline_standard/response.json",
+      "run_manifest_path": "wave4e1_standard_thinking_controls_20260319_0213/NVDA_00_b0_unstructured_frontier_baseline_standard/run_manifest.json",
+      "expected_top_level_keys": [
+        "brief_markdown",
+        "evidence"
+      ],
+      "validation_snapshot": {
+        "response_exists": true,
+        "response_non_empty": true,
+        "json_parseable": true,
+        "json_object": true,
+        "top_level_shape_valid": true,
+        "actual_top_level_keys": [
+          "brief_markdown",
+          "evidence"
+        ],
+        "raw_text_expected_key_hints": {
+          "brief_markdown": true,
+          "evidence": true
+        },
+        "blocker_codes": [],
+        "notes": [
+          "response.json matches the expected lane-family top-level keys."
+        ]
+      }
+    },
+    {
+      "run_id": "NVDA_02_p1_i2_tagged_packet_standard",
+      "lane_slug": "02_p1_i2_tagged_packet",
+      "response_path": "wave4e1_standard_thinking_controls_20260319_0213/NVDA_02_p1_i2_tagged_packet_standard/response.json",
+      "run_manifest_path": "wave4e1_standard_thinking_controls_20260319_0213/NVDA_02_p1_i2_tagged_packet_standard/run_manifest.json",
+      "expected_top_level_keys": [
+        "change_brief",
+        "evidence_bundle"
+      ],
+      "validation_snapshot": {
+        "response_exists": true,
+        "response_non_empty": true,
+        "json_parseable": true,
+        "json_object": true,
+        "top_level_shape_valid": true,
+        "actual_top_level_keys": [
+          "change_brief",
+          "evidence_bundle"
+        ],
+        "raw_text_expected_key_hints": {
+          "change_brief": true,
+          "evidence_bundle": true
+        },
+        "blocker_codes": [],
+        "notes": [
+          "response.json matches the expected lane-family top-level keys."
+        ]
+      }
+    },
+    {
+      "run_id": "NVDA_03_p2_i2_tagged_protocol_standard",
+      "lane_slug": "03_p2_i2_tagged_protocol",
+      "response_path": "wave4e1_standard_thinking_controls_20260319_0213/NVDA_03_p2_i2_tagged_protocol_standard/response.json",
+      "run_manifest_path": "wave4e1_standard_thinking_controls_20260319_0213/NVDA_03_p2_i2_tagged_protocol_standard/run_manifest.json",
+      "expected_top_level_keys": [
+        "change_brief",
+        "evidence_bundle"
+      ],
+      "validation_snapshot": {
+        "response_exists": true,
+        "response_non_empty": true,
+        "json_parseable": true,
+        "json_object": true,
+        "top_level_shape_valid": true,
+        "actual_top_level_keys": [
+          "change_brief",
+          "evidence_bundle"
+        ],
+        "raw_text_expected_key_hints": {
+          "change_brief": true,
+          "evidence_bundle": true
+        },
+        "blocker_codes": [],
+        "notes": [
+          "response.json matches the expected lane-family top-level keys."
+        ]
+      }
+    }
+  ],
+  "wave_summary": {
+    "summary": "On NVDA, the reduced-reasoning control wave preserves the same practical lane ordering as the extended pilot: 02 is still the default first read, 03 still shifts the narrative in a meaningful way, and 00 remains an honest ad hoc control.",
+    "strongest_lane": "02_p1_i2_tagged_packet",
+    "weaker_lane": "03_p2_i2_tagged_protocol",
+    "control_lane": "00_b0_unstructured_frontier_baseline",
+    "bounded_claim": "On this fixed NVDA pair, protocol value still appears visible under standard thinking, but the claim remains a bounded pilot finding rather than a benchmark."
+  },
+  "caveats": [
+    "This issuer artifact is still a one-issuer, one-pair control summary, not a benchmark.",
+    "B0 remains ad hoc and noncanonical even when it is readable.",
+    "No whole-filing, novelty-ledger, or external-research overlay is added in this wave."
+  ],
+  "provenance_notes": [
+    "The current packet-local response.json files are the canonical standard-thinking sources for this wave.",
+    "NVDA_03_p2_i2_tagged_protocol_standard was rerun and improved before canonization; the currently present response.json is treated as canonical.",
+    "No superseded archived NVDA standard 03 raw response was found in-repo, so no prior-vs-current raw diff is created."
+  ]
+}

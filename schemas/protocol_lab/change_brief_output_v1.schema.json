@@ -1,0 +1,237 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "artifact_status": "complete",
+  "$id": "protocol_lab/change_brief_output_v1.schema.json",
+  "title": "Protocol Lab Change Brief Output v1",
+  "type": "object",
+  "required": [
+    "artifact_status",
+    "artifact_schema_id",
+    "change_brief_output_id",
+    "run_request_id",
+    "fixture_id",
+    "protocol_id",
+    "model_profile_id",
+    "runner_binding_id",
+    "summary_one_liner",
+    "lead_shift",
+    "needle_change",
+    "novelty_vs_reuse",
+    "main_caveat",
+    "evidence_bundle_path",
+    "failure_risk_notes",
+    "notes"
+  ],
+  "properties": {
+    "artifact_status": {
+      "type": "string",
+      "enum": [
+        "complete",
+        "scaffolded",
+        "pending",
+        "blocked",
+        "not_attempted"
+      ]
+    },
+    "artifact_status_note": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "artifact_schema_id": {
+      "const": "change_brief_output_v1"
+    },
+    "change_brief_output_id": {
+      "type": "string"
+    },
+    "run_request_id": {
+      "type": "string"
+    },
+    "fixture_id": {
+      "type": "string"
+    },
+    "protocol_id": {
+      "type": "string"
+    },
+    "model_profile_id": {
+      "type": "string"
+    },
+    "runner_binding_id": {
+      "type": "string"
+    },
+    "stack_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "run_label": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "summary_one_liner": {
+      "type": "object",
+      "required": [
+        "label",
+        "text",
+        "evidence_ids"
+      ],
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "text": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "lead_shift": {
+      "type": "object",
+      "required": [
+        "label",
+        "text",
+        "evidence_ids"
+      ],
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "text": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "needle_change": {
+      "type": "object",
+      "required": [
+        "label",
+        "text",
+        "evidence_ids"
+      ],
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "text": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "novelty_vs_reuse": {
+      "type": "object",
+      "required": [
+        "label",
+        "text",
+        "evidence_ids"
+      ],
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "text": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "main_caveat": {
+      "type": "object",
+      "required": [
+        "label",
+        "text",
+        "evidence_ids",
+        "caveat_type"
+      ],
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "text": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "caveat_type": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "input_limit",
+            "evidence_limit",
+            "method_limit",
+            "comparison_limit",
+            "other",
+            null
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "evidence_bundle_path": {
+      "type": "string"
+    },
+    "failure_risk_notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}

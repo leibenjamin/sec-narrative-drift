@@ -1,0 +1,130 @@
+{
+    "artifact_status": "complete",
+    "artifact_status_note": null,
+    "artifact_schema_id": "source_case_manifest_v1",
+    "source_case_manifest_id": "BA_2024_2025_10k_item1a__source_case_manifest_v1",
+    "fixture_id": "BA_2024_2025_10k_item1a",
+    "ticker": "BA",
+    "issuer_name": "The Boeing Company",
+    "form_type": "10-K",
+    "section_id": "item_1a",
+    "year_from": 2024,
+    "year_to": 2025,
+    "source_filing_paths": {
+        "2024": "data/sec_cache/filings/0000012927/0000012927-25-000015/filing.txt.gz",
+        "2025": "data/sec_cache/filings/0000012927/0001628280-26-004357/filing.txt.gz"
+    },
+    "years": [
+        {
+            "fiscal_year": 2024,
+            "year_label": "FY2024",
+            "status": "complete",
+            "status_note": null,
+            "accession_number": "0000012927-25-000015",
+            "filing_date": "2025-02-03",
+            "report_date": "2024-12-31",
+            "cik": "0000012927",
+            "form_type": "10-K",
+            "section_id": "item_1a",
+            "filing_meta_path": "data/sec_cache/filings/0000012927/0000012927-25-000015/filing_meta.json",
+            "filing_text_path": "data/sec_cache/filings/0000012927/0000012927-25-000015/filing.txt.gz",
+            "risk_raw_text_path": "data/sec_cache/filings/0000012927/0000012927-25-000015/risk/item_1a.raw.txt.gz",
+            "risk_clean_text_path": "data/sec_cache/filings/0000012927/0000012927-25-000015/risk/item_1a.txt.gz",
+            "risk_segments_path": "data/sec_cache/filings/0000012927/0000012927-25-000015/risk/item_1a.segments.json.gz",
+            "rf_meta_path": "data/sec_cache/filings/0000012927/0000012927-25-000015/risk/rf_meta.json",
+            "reuse_filtered_year_input_path": null,
+            "extraction_metadata": {
+                "source_origin": "ticker_year_index",
+                "rf_meta_method": "blockdoc_scored",
+                "rf_meta_confidence": 0.8999999999999999,
+                "rf_meta_status": "REVIEW",
+                "rf_meta_warnings": [
+                    "toc_header_repeated",
+                    "toc_detected"
+                ],
+                "rf_meta_candidate_count": 1
+            },
+            "integrity": {
+                "filing_text_sha256": "61cf4266bc93c418180be9a453b5f6a5838670a4e243f9ad97f80a34c44569d0",
+                "risk_text_sha256": "0b2864cff7237271770b9f08cce46238b89e21d255a16f390ca67520921d1a6b",
+                "risk_paragraph_count": 104,
+                "required_paths_exist": true
+            },
+            "availability_status": "available",
+            "extraction_quality_status": "review_required",
+            "analysis_readiness_status": "pilot_ready",
+            "qc_summary": {
+                "quality_gate_result": "review",
+                "confidence_band": "high",
+                "paragraph_count_plausibility": "plausible",
+                "severe_warning_flags": [],
+                "readiness_derivation_note": "High-confidence review case: source files, tagged segments present, rf_meta_status is REVIEW."
+            }
+        },
+        {
+            "fiscal_year": 2025,
+            "year_label": "FY2025",
+            "status": "complete",
+            "status_note": null,
+            "accession_number": "0001628280-26-004357",
+            "filing_date": "2026-01-30",
+            "report_date": "2025-12-31",
+            "cik": "0000012927",
+            "form_type": "10-K",
+            "section_id": "item_1a",
+            "filing_meta_path": "data/sec_cache/filings/0000012927/0001628280-26-004357/filing_meta.json",
+            "filing_text_path": "data/sec_cache/filings/0000012927/0001628280-26-004357/filing.txt.gz",
+            "risk_raw_text_path": "data/sec_cache/filings/0000012927/0001628280-26-004357/risk/item_1a.raw.txt.gz",
+            "risk_clean_text_path": "data/sec_cache/filings/0000012927/0001628280-26-004357/risk/item_1a.txt.gz",
+            "risk_segments_path": "data/sec_cache/filings/0000012927/0001628280-26-004357/risk/item_1a.segments.json.gz",
+            "rf_meta_path": "data/sec_cache/filings/0000012927/0001628280-26-004357/risk/rf_meta.json",
+            "reuse_filtered_year_input_path": null,
+            "extraction_metadata": {
+                "source_origin": "ticker_year_index",
+                "rf_meta_method": "blockdoc_scored",
+                "rf_meta_confidence": 0.8999999999999999,
+                "rf_meta_status": "REVIEW",
+                "rf_meta_warnings": [
+                    "toc_header_repeated",
+                    "toc_detected"
+                ],
+                "rf_meta_candidate_count": 1
+            },
+            "integrity": {
+                "filing_text_sha256": "3e50ff9477700ec6f1e4ac213062ea5700e300e13f880b7651edc742702a0b6b",
+                "risk_text_sha256": "3a20b56014f81599048081782182b100086fe649db71d3187ccf4ea5589e253c",
+                "risk_paragraph_count": 101,
+                "required_paths_exist": true
+            },
+            "availability_status": "available",
+            "extraction_quality_status": "review_required",
+            "analysis_readiness_status": "pilot_ready",
+            "qc_summary": {
+                "quality_gate_result": "review",
+                "confidence_band": "high",
+                "paragraph_count_plausibility": "plausible",
+                "severe_warning_flags": [],
+                "readiness_derivation_note": "High-confidence review case: source files, tagged segments present, rf_meta_status is REVIEW."
+            }
+        }
+    ],
+    "pair_reuse_filtered_input_path": null,
+    "integrity": {
+        "complete_year_count": 2,
+        "all_required_files_present": true
+    },
+    "notes": [
+        "BA Wave 4A.5 backfill target with local FY2024/FY2025 cache.",
+        "Canonical readiness lives in availability_status, extraction_quality_status, analysis_readiness_status, and qc_summary."
+    ],
+    "availability_status": "available",
+    "extraction_quality_status": "review_required",
+    "analysis_readiness_status": "pilot_ready",
+    "qc_summary": {
+        "quality_gate_result": "review",
+        "confidence_band": "high",
+        "paragraph_count_plausibility": "plausible",
+        "severe_warning_flags": [],
+        "readiness_derivation_note": "All required source paths present; extraction remains review_required because rf_meta_status is REVIEW."
+    }
+}

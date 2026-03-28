@@ -1,0 +1,56 @@
+{
+  "artifact_schema_id": "standard_vs_extended_comparison_v1",
+  "comparison_id": "NVDA_2024_2025_10k_item1a__standard_vs_extended_v1",
+  "fixture_id": "NVDA_2024_2025_10k_item1a",
+  "issuer": {
+    "ticker": "NVDA",
+    "issuer_name": "NVIDIA Corporation"
+  },
+  "standard_matrix_id": "NVDA_2024_2025_10k_item1a__standard_control_matrix_v1",
+  "standard_matrix_path": "public/data/business_document_protocol_lab/standard_controls/NVDA_2024_2025_10k_item1a/standard_control_matrix_v1.json",
+  "extended_matrix_id": "NVDA_2024_2025_10k_item1a__desktop_pilot_matrix_v1",
+  "extended_matrix_path": "public/data/business_document_protocol_lab/pilot_matrices/NVDA_2024_2025_10k_item1a/pilot_matrix_v1.json",
+  "lane_comparisons": [
+    {
+      "lane_slug": "02_p1_i2_tagged_packet",
+      "stable_points": [
+        "02 remains the strongest default lane on the fixed NVDA pair.",
+        "The filing-first story still centers on a structured tagged-packet read rather than the ad hoc control."
+      ],
+      "degraded_points": [
+        "The standard wave is still a bounded control packet, so the claim stays narrower than a broader benchmark-style comparison."
+      ],
+      "lane_order_changed": false,
+      "meaningfulness_note": "02 remains the anchor lane rather than the comparator lane."
+    },
+    {
+      "lane_slug": "03_p2_i2_tagged_protocol",
+      "stable_points": [
+        "03 still changes the lead story relative to 02 while holding the tagged packet fixed.",
+        "The current rerun-backed canonical raw file remains parseable and structurally valid."
+      ],
+      "degraded_points": [
+        "03 still trails 02 as the default lane, so reduced reasoning does not reverse the ordering."
+      ],
+      "lane_order_changed": false,
+      "meaningfulness_note": "03 remains a meaningful comparator after the rerun and under reduced reasoning effort."
+    },
+    {
+      "lane_slug": "00_b0_unstructured_frontier_baseline",
+      "stable_points": [
+        "00 still functions as a readable control on the same tagged substrate.",
+        "00 remains clearly distinct from the structured lanes and does not replace them."
+      ],
+      "degraded_points": [
+        "00 stays noncanonical and ad hoc, so it still cannot support a structured-lane claim."
+      ],
+      "lane_order_changed": false,
+      "meaningfulness_note": "00 is useful only as a control, not as a structured comparator."
+    }
+  ],
+  "issuer_conclusion": "On NVDA, the standard-vs-extended comparison keeps the same product story: 02 remains strongest, 03 remains meaningful, and 00 remains control-only.",
+  "caveats": [
+    "This remains a bounded pilot comparison for one issuer-year pair.",
+    "No score-like benchmark precision is claimed."
+  ]
+}

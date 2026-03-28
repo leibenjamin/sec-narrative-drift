@@ -1,0 +1,93 @@
+{
+  "artifact_schema_id": "standard_control_summary_v1",
+  "summary_id": "standard_control_summary_v1",
+  "packet_root": "wave4e1_standard_thinking_controls_20260319_0213",
+  "reasoning_mode": "standard_thinking",
+  "canonical_run_ids": [
+    "NVDA_00_b0_unstructured_frontier_baseline_standard",
+    "NVDA_02_p1_i2_tagged_packet_standard",
+    "NVDA_03_p2_i2_tagged_protocol_standard",
+    "LLY_00_b0_unstructured_frontier_baseline_standard",
+    "LLY_02_p1_i2_tagged_packet_standard",
+    "LLY_03_p2_i2_tagged_protocol_standard"
+  ],
+  "by_issuer_ranking": [
+    {
+      "fixture_id": "NVDA_2024_2025_10k_item1a",
+      "issuer": {
+        "ticker": "NVDA",
+        "issuer_name": "NVIDIA Corporation"
+      },
+      "ordered_lane_ids": [
+        "02_p1_i2_tagged_packet",
+        "03_p2_i2_tagged_protocol",
+        "00_b0_unstructured_frontier_baseline"
+      ],
+      "ordered_run_ids": [
+        "NVDA_02_p1_i2_tagged_packet_standard",
+        "NVDA_03_p2_i2_tagged_protocol_standard",
+        "NVDA_00_b0_unstructured_frontier_baseline_standard"
+      ],
+      "ranking_note": "02 remains strongest, 03 remains the meaningful comparator, and 00 remains the control."
+    },
+    {
+      "fixture_id": "LLY_2024_2025_10k_item1a",
+      "issuer": {
+        "ticker": "LLY",
+        "issuer_name": "Eli Lilly and Company"
+      },
+      "ordered_lane_ids": [
+        "02_p1_i2_tagged_packet",
+        "03_p2_i2_tagged_protocol",
+        "00_b0_unstructured_frontier_baseline"
+      ],
+      "ordered_run_ids": [
+        "LLY_02_p1_i2_tagged_packet_standard",
+        "LLY_03_p2_i2_tagged_protocol_standard",
+        "LLY_00_b0_unstructured_frontier_baseline_standard"
+      ],
+      "ranking_note": "02 remains strongest, 03 remains the meaningful comparator, and 00 remains the control."
+    }
+  ],
+  "cross_issuer_pattern_summary": [
+    "02 stays ranked above 03 and 00 for both issuers, preserving the current product interpretation under reduced reasoning effort.",
+    "03 still matters because the same-substrate comparator story survives the rerun-backed canonization step on both issuers.",
+    "00 remains useful only as an ad hoc control and not as a structured lane, which keeps the proof boundary honest."
+  ],
+  "supports": [
+    "Across NVDA and LLY, the current two-issuer slice still supports a bounded claim that 02 is the most robust standard-thinking lane.",
+    "Across both issuers, 03 remains meaningful enough to act as a comparator lane rather than a discarded artifact.",
+    "Across both issuers, 00 remains useful as a readable control that makes the value of structured protocol lanes more explicit."
+  ],
+  "does_not_yet_support": [
+    "This wave does not establish benchmark-grade rigor or broad multi-company generalization.",
+    "This wave does not support whole-filing, external-research, or novelty-ledger claims.",
+    "This wave does not erase the capture-integrity caveat created by malformed LLY structured standard raw JSON."
+  ],
+  "robustness_conclusion": {
+    "02": "02 remains the most robust lane across both issuers and is still the strongest bounded product lane under standard thinking.",
+    "03": "03 remains meaningful across both issuers, but the reduced-reasoning claim stays bounded by the rerun provenance and the malformed LLY structured raw captures.",
+    "00": "00 remains useful only as a readable ad hoc control and not as a structured lane."
+  },
+  "validation_overview": {
+    "overall_result": "fail",
+    "passed_run_ids": [
+      "NVDA_00_b0_unstructured_frontier_baseline_standard",
+      "NVDA_02_p1_i2_tagged_packet_standard",
+      "NVDA_03_p2_i2_tagged_protocol_standard",
+      "LLY_00_b0_unstructured_frontier_baseline_standard"
+    ],
+    "failed_run_ids": [
+      "LLY_02_p1_i2_tagged_packet_standard",
+      "LLY_03_p2_i2_tagged_protocol_standard"
+    ],
+    "failure_note": "LLY_02_p1_i2_tagged_packet_standard and LLY_03_p2_i2_tagged_protocol_standard fail JSON parseability in their current canonical raw form; the other four runs pass the bounded validator.",
+    "validation_report_path": "reports/protocol_lab/wave4e15_standard_control_validation_report.json",
+    "raw_hint_note": "When JSON parsing fails, raw-text key hints are recorded for review but never used to repair or coerce the canonical raw file."
+  },
+  "provenance_notes": [
+    "The current packet-local response.json files are the canonical standard-thinking sources for all six runs.",
+    "NVDA_03_p2_i2_tagged_protocol_standard and LLY_03_p2_i2_tagged_protocol_standard were rerun and improved before canonization; the current response.json files are treated as canonical.",
+    "No superseded archived standard 03 raw outputs were found in-repo, so no prior-vs-current raw diff is created."
+  ]
+}

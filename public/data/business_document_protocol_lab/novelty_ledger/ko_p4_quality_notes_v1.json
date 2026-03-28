@@ -1,0 +1,35 @@
+{
+  "artifact_schema_id": "p4_quality_notes_v1",
+  "artifact_id": "ko_p4_quality_notes_v1",
+  "fixture_id": "KO_2024_2025_10k_item1a",
+  "issuer": {
+    "ticker": "KO",
+    "issuer_name": "The Coca-Cola Company"
+  },
+  "notes": [
+    {
+      "note_id": "ko_04_p4_i2_novelty_ledger_extended_v2__no_blocking_issue_observed",
+      "issue_type": "no_blocking_issue_observed",
+      "affected_run_id": "KO_04_p4_i2_novelty_ledger_extended_v2",
+      "issue_family": "none",
+      "deterministic_repair_allowed": false,
+      "repair_applied_in_canonization": false,
+      "changes_broad_analytical_verdict": false,
+      "review_note": "Parsed cleanly and remained usable as saved. The main review requirement on KO is analytical restraint rather than repair.",
+      "response_path": "wave4e5_third_issuer_skeptic_packet_20260322_0353/KO_04_p4_i2_novelty_ledger_extended_v2/response.json",
+      "run_manifest_path": "wave4e5_third_issuer_skeptic_packet_20260322_0353/KO_04_p4_i2_novelty_ledger_extended_v2/run_manifest.json"
+    },
+    {
+      "note_id": "ko_05_p4_i2_novelty_ledger_standard_v2__no_blocking_issue_observed",
+      "issue_type": "no_blocking_issue_observed",
+      "affected_run_id": "KO_05_p4_i2_novelty_ledger_standard_v2",
+      "issue_family": "none",
+      "deterministic_repair_allowed": false,
+      "repair_applied_in_canonization": false,
+      "changes_broad_analytical_verdict": false,
+      "review_note": "Parsed cleanly and remained usable as saved. The main review requirement on KO is analytical restraint rather than repair.",
+      "response_path": "wave4e5_third_issuer_skeptic_packet_20260322_0353/KO_05_p4_i2_novelty_ledger_standard_v2/response.json",
+      "run_manifest_path": "wave4e5_third_issuer_skeptic_packet_20260322_0353/KO_05_p4_i2_novelty_ledger_standard_v2/run_manifest.json"
+    }
+  ]
+}

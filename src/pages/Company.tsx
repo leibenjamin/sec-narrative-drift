@@ -192,7 +192,7 @@ export default function Company() {
             <div className="flex flex-wrap items-start justify-between gap-3 sm:gap-4">
               <div className="space-y-2.5 sm:space-y-3">
                 <p className="text-[11px] uppercase tracking-[0.28em] text-sky-100 sm:text-xs">
-                  Current pilot fixture
+                  Current pilot case
                 </p>
                 <h1 className="text-2xl leading-tight font-semibold text-slate-50 sm:text-4xl">
                   {displayName} ({ticker})

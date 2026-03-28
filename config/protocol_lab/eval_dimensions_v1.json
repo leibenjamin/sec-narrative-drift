@@ -1,0 +1,29 @@
+{
+  "artifact_status": "complete",
+  "registry_id": "eval_dimensions_v1",
+  "version": "1.0",
+  "updated_at_utc": "2026-03-14T03:59:10Z",
+  "rubric_dimensions": [
+    "evidence_grounding",
+    "novelty_separation",
+    "specificity",
+    "caveat_honesty",
+    "overall_usefulness"
+  ],
+  "rubric_bands": [
+    "strong",
+    "fair",
+    "weak"
+  ],
+  "failure_tags": [
+    "overclaim",
+    "missed_needle",
+    "weak_evidence",
+    "novelty_blur",
+    "generic_lead",
+    "caveat_missing",
+    "caveat_uninformative",
+    "structure_confusion",
+    "contradictory_claim"
+  ]
+}

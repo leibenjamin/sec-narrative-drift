@@ -1,0 +1,163 @@
+{
+  "artifact_schema_id": "standard_control_matrix_v1",
+  "matrix_id": "LLY_2024_2025_10k_item1a__standard_control_matrix_v1",
+  "fixture_id": "LLY_2024_2025_10k_item1a",
+  "issuer": {
+    "ticker": "LLY",
+    "issuer_name": "Eli Lilly and Company"
+  },
+  "pair_info": {
+    "ticker": "LLY",
+    "issuer_name": "Eli Lilly and Company",
+    "year_from": 2024,
+    "year_to": 2025,
+    "form_type": "10-K",
+    "section_id": "item_1a"
+  },
+  "packet_root": "wave4e1_standard_thinking_controls_20260319_0213",
+  "reasoning_mode": "standard_thinking",
+  "canonical_run_ids": [
+    "LLY_00_b0_unstructured_frontier_baseline_standard",
+    "LLY_02_p1_i2_tagged_packet_standard",
+    "LLY_03_p2_i2_tagged_protocol_standard"
+  ],
+  "lane_roles": {
+    "02_p1_i2_tagged_packet": "hero",
+    "03_p2_i2_tagged_protocol": "main_comparator",
+    "00_b0_unstructured_frontier_baseline": "control"
+  },
+  "ordered_lane_ids": [
+    "02_p1_i2_tagged_packet",
+    "03_p2_i2_tagged_protocol",
+    "00_b0_unstructured_frontier_baseline"
+  ],
+  "lane_assessments": [
+    {
+      "lane_slug": "00_b0_unstructured_frontier_baseline",
+      "run_id": "LLY_00_b0_unstructured_frontier_baseline_standard",
+      "role_label": "Control lane",
+      "assessment": "control",
+      "rationale": "00 stays readable enough to function as a control, but it remains ad hoc and noncanonical rather than a structured protocol lane."
+    },
+    {
+      "lane_slug": "02_p1_i2_tagged_packet",
+      "run_id": "LLY_02_p1_i2_tagged_packet_standard",
+      "role_label": "Hero lane",
+      "assessment": "strongest",
+      "rationale": "02 remains the strongest intended LLY standard-thinking lane, but the current canonical raw file is malformed JSON, so the claim stays bounded by capture integrity."
+    },
+    {
+      "lane_slug": "03_p2_i2_tagged_protocol",
+      "run_id": "LLY_03_p2_i2_tagged_protocol_standard",
+      "role_label": "Main comparator",
+      "assessment": "meaningful_comparator",
+      "rationale": "03 remains the intended meaningful LLY comparator after the rerun, but its current canonical raw file is also malformed JSON and therefore carries an explicit capture-integrity caveat."
+    }
+  ],
+  "canonical_sources": [
+    {
+      "run_id": "LLY_00_b0_unstructured_frontier_baseline_standard",
+      "lane_slug": "00_b0_unstructured_frontier_baseline",
+      "response_path": "wave4e1_standard_thinking_controls_20260319_0213/LLY_00_b0_unstructured_frontier_baseline_standard/response.json",
+      "run_manifest_path": "wave4e1_standard_thinking_controls_20260319_0213/LLY_00_b0_unstructured_frontier_baseline_standard/run_manifest.json",
+      "expected_top_level_keys": [
+        "brief_markdown",
+        "evidence"
+      ],
+      "validation_snapshot": {
+        "response_exists": true,
+        "response_non_empty": true,
+        "json_parseable": true,
+        "json_object": true,
+        "top_level_shape_valid": true,
+        "actual_top_level_keys": [
+          "brief_markdown",
+          "evidence"
+        ],
+        "raw_text_expected_key_hints": {
+          "brief_markdown": true,
+          "evidence": true
+        },
+        "blocker_codes": [],
+        "notes": [
+          "response.json matches the expected lane-family top-level keys."
+        ]
+      }
+    },
+    {
+      "run_id": "LLY_02_p1_i2_tagged_packet_standard",
+      "lane_slug": "02_p1_i2_tagged_packet",
+      "response_path": "wave4e1_standard_thinking_controls_20260319_0213/LLY_02_p1_i2_tagged_packet_standard/response.json",
+      "run_manifest_path": "wave4e1_standard_thinking_controls_20260319_0213/LLY_02_p1_i2_tagged_packet_standard/run_manifest.json",
+      "expected_top_level_keys": [
+        "change_brief",
+        "evidence_bundle"
+      ],
+      "validation_snapshot": {
+        "response_exists": true,
+        "response_non_empty": true,
+        "json_parseable": false,
+        "json_object": false,
+        "top_level_shape_valid": false,
+        "actual_top_level_keys": [],
+        "raw_text_expected_key_hints": {
+          "change_brief": true,
+          "evidence_bundle": true
+        },
+        "blocker_codes": [
+          "json_parse_failed"
+        ],
+        "notes": [
+          "JSON parse failed: Expecting ',' delimiter at line 1, column 10430.",
+          "Expected top-level key tokens are still present in the raw text."
+        ]
+      }
+    },
+    {
+      "run_id": "LLY_03_p2_i2_tagged_protocol_standard",
+      "lane_slug": "03_p2_i2_tagged_protocol",
+      "response_path": "wave4e1_standard_thinking_controls_20260319_0213/LLY_03_p2_i2_tagged_protocol_standard/response.json",
+      "run_manifest_path": "wave4e1_standard_thinking_controls_20260319_0213/LLY_03_p2_i2_tagged_protocol_standard/run_manifest.json",
+      "expected_top_level_keys": [
+        "change_brief",
+        "evidence_bundle"
+      ],
+      "validation_snapshot": {
+        "response_exists": true,
+        "response_non_empty": true,
+        "json_parseable": false,
+        "json_object": false,
+        "top_level_shape_valid": false,
+        "actual_top_level_keys": [],
+        "raw_text_expected_key_hints": {
+          "change_brief": true,
+          "evidence_bundle": true
+        },
+        "blocker_codes": [
+          "json_parse_failed"
+        ],
+        "notes": [
+          "JSON parse failed: Expecting ',' delimiter at line 1, column 6584.",
+          "Expected top-level key tokens are still present in the raw text."
+        ]
+      }
+    }
+  ],
+  "wave_summary": {
+    "summary": "On LLY, the reduced-reasoning control wave still points to the same intended lane ordering as the extended pilot, but the structured 02 and 03 canonical raw captures are malformed JSON, so the story is informative yet mechanically fragile.",
+    "strongest_lane": "02_p1_i2_tagged_packet",
+    "weaker_lane": "03_p2_i2_tagged_protocol",
+    "control_lane": "00_b0_unstructured_frontier_baseline",
+    "bounded_claim": "On this fixed LLY pair, protocol value still appears directionally visible under standard thinking, but the claim remains pilot-grade and explicitly bounded by capture-integrity failure on the structured lanes."
+  },
+  "caveats": [
+    "This issuer artifact is still a one-issuer, one-pair control summary, not a benchmark.",
+    "LLY_02 and LLY_03 are canonical raw sources but fail JSON parseability in their current saved form.",
+    "B0 remains ad hoc and noncanonical even when it is readable."
+  ],
+  "provenance_notes": [
+    "The current packet-local response.json files are the canonical standard-thinking sources for this wave.",
+    "LLY_03_p2_i2_tagged_protocol_standard was rerun and improved before canonization; the currently present response.json is treated as canonical.",
+    "No superseded archived LLY standard 03 raw response was found in-repo, so no prior-vs-current raw diff is created."
+  ]
+}

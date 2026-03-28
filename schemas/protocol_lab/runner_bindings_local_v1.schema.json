@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "artifact_status": "complete",
+  "$id": "protocol_lab/runner_bindings_local_v1.schema.json",
+  "title": "Protocol Lab Runner Bindings Local v1",
+  "type": "object",
+  "required": [
+    "artifact_status",
+    "registry_id",
+    "version",
+    "updated_at_utc",
+    "items"
+  ],
+  "properties": {
+    "artifact_status": {
+      "type": "string",
+      "enum": [
+        "complete",
+        "scaffolded",
+        "pending",
+        "blocked",
+        "not_attempted"
+      ]
+    },
+    "registry_id": {
+      "const": "runner_bindings_local_v1"
+    },
+    "version": {
+      "type": "string"
+    },
+    "updated_at_utc": {
+      "type": "string"
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "runner_binding_id",
+          "model_profile_id",
+          "binding_kind",
+          "campaign_id",
+          "display_name",
+          "notes"
+        ],
+        "properties": {
+          "runner_binding_id": {
+            "type": "string"
+          },
+          "model_profile_id": {
+            "type": "string"
+          },
+          "binding_kind": {
+            "type": "string"
+          },
+          "campaign_id": {
+            "type": "string"
+          },
+          "display_name": {
+            "type": "string"
+          },
+          "notes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

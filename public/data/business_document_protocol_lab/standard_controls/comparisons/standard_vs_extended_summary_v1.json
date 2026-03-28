@@ -1,0 +1,25 @@
+{
+  "artifact_schema_id": "standard_vs_extended_summary_v1",
+  "summary_id": "standard_vs_extended_summary_v1",
+  "packet_root": "wave4e1_standard_thinking_controls_20260319_0213",
+  "reasoning_mode": "standard_thinking",
+  "issuer_comparison_paths": [
+    "public/data/business_document_protocol_lab/standard_controls/comparisons/nvda_standard_vs_extended_v1.json",
+    "public/data/business_document_protocol_lab/standard_controls/comparisons/lly_standard_vs_extended_v1.json"
+  ],
+  "cross_issuer_stability_patterns": [
+    "No issuer shows a lane-order reversal: 02 still leads, 03 still follows as the comparator, and 00 stays the control.",
+    "The practical protocol story survives on the bounded two-issuer slice: structured tagged-packet lanes remain more valuable than the ad hoc control."
+  ],
+  "cross_issuer_degradation_patterns": [
+    "The reduced-reasoning wave is still pilot-grade rather than benchmark-grade.",
+    "LLY_02 and LLY_03 add a capture-integrity caveat because the canonical structured raw files are malformed JSON."
+  ],
+  "lane_order_change_summary": "No issuer shows a lane-order reversal. 02 stays ahead of 03, and 00 stays the control for both NVDA and LLY.",
+  "protocol_value_under_reduced_reasoning": "The current two-issuer slice still supports a bounded claim that protocol structure adds value under reduced reasoning effort, but the claim remains pilot-grade and explicitly limited by the malformed LLY structured standard raw files.",
+  "does_not_yet_support": [
+    "No benchmark-grade claim about universal lane superiority.",
+    "No third issuer or broader multi-company expansion claim.",
+    "No whole-filing, external-research, or novelty-ledger claim."
+  ]
+}

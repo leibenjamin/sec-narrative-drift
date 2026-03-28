@@ -1,0 +1,22 @@
+{
+  "artifact_status": "complete",
+  "artifact_schema_id": "input_pack_v1",
+  "input_pack_artifact_id": "LLY_2024_2025_10k_item1a__i2_tagged_document_packet_v1",
+  "input_pack_id": "i2_tagged_document_packet_v1",
+  "fixture_id": "LLY_2024_2025_10k_item1a",
+  "source_case_manifest_path": "public/data/business_document_protocol_lab/source_cases/LLY_2024_2025_10k_item1a/source_case_manifest_v1.json",
+  "pack_kind": "tagged_paragraph_packet",
+  "metadata": {
+    "locator_strategy": "risk_segments_char_ranges",
+    "paragraph_counts": {
+      "FY2024": 81,
+      "FY2025": 90
+    }
+  },
+  "integrity_hash": "b0f54e12cc50a360f86471aa88e2a05347dc1d0c7d51a8e61d87af4bf8d146ed",
+  "notes": [
+    "Built from clean risk-section text using existing segment char ranges.",
+    "Wave 4D2 materialized only the minimal tagged i2 scaffold needed for the reduced second-company Desktop packet."
+  ],
+  "rendered_inputs_path": "public/data/business_document_protocol_lab/input_packs/LLY_2024_2025_10k_item1a/i2_tagged_document_packet_v1.rendered_inputs.json"
+}

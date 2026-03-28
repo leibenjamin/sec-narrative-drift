@@ -1,0 +1,417 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "artifact_status": "complete",
+  "$id": "protocol_lab/comparison_view_v1.schema.json",
+  "title": "Protocol Lab Comparison View v1",
+  "type": "object",
+  "required": [
+    "artifact_status",
+    "artifact_schema_id",
+    "comparison_view_id",
+    "comparison_axis",
+    "comparison_purpose",
+    "comparison_context",
+    "compared_cells",
+    "comparison_verdict",
+    "delta_ledger",
+    "pairwise_findings",
+    "high_level_takeaway",
+    "review_status",
+    "notes"
+  ],
+  "properties": {
+    "artifact_status": {
+      "type": "string",
+      "enum": [
+        "complete",
+        "scaffolded",
+        "pending",
+        "blocked",
+        "not_attempted"
+      ]
+    },
+    "artifact_status_note": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "artifact_schema_id": {
+      "const": "comparison_view_v1"
+    },
+    "comparison_view_id": {
+      "type": "string"
+    },
+    "comparison_axis": {
+      "type": "string"
+    },
+    "comparison_purpose": {
+      "type": "object",
+      "required": [
+        "purpose_id",
+        "label",
+        "text"
+      ],
+      "properties": {
+        "purpose_id": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "text": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "comparison_context": {
+      "type": "object",
+      "required": [
+        "fixed_dimensions",
+        "varying_dimensions"
+      ],
+      "properties": {
+        "fixed_dimensions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "dimension_id",
+              "value"
+            ],
+            "properties": {
+              "dimension_id": {
+                "type": "string"
+              },
+              "value": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                ]
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "varying_dimensions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "dimension_id",
+              "values"
+            ],
+            "properties": {
+              "dimension_id": {
+                "type": "string"
+              },
+              "values": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "compared_cells": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "cell_id",
+          "run_request_id",
+          "run_request_path",
+          "stack_id",
+          "protocol_id",
+          "model_profile_id",
+          "runner_binding_id",
+          "input_pack_id",
+          "input_pack_selection_source",
+          "change_brief_output_path"
+        ],
+        "properties": {
+          "cell_id": {
+            "type": "string"
+          },
+          "cell_label": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "run_request_id": {
+            "type": "string"
+          },
+          "run_request_path": {
+            "type": "string"
+          },
+          "stack_id": {
+            "type": "string"
+          },
+          "protocol_id": {
+            "type": "string"
+          },
+          "model_profile_id": {
+            "type": "string"
+          },
+          "runner_binding_id": {
+            "type": "string"
+          },
+          "input_pack_id": {
+            "type": "string"
+          },
+          "input_pack_selection_source": {
+            "type": "string",
+            "enum": [
+              "protocol_default",
+              "experiment_override",
+              "run_override"
+            ]
+          },
+          "change_brief_output_path": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "comparison_verdict": {
+      "type": "object",
+      "required": [
+        "label",
+        "text",
+        "verdict_kind",
+        "leading_cell_id",
+        "cell_ids"
+      ],
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "text": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "verdict_kind": {
+          "type": "string",
+          "enum": [
+            "no_verdict",
+            "left_advantage",
+            "right_advantage",
+            "mixed",
+            "no_material_difference",
+            "blocked"
+          ]
+        },
+        "leading_cell_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "cell_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "delta_ledger": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "delta_id",
+          "left_cell_id",
+          "right_cell_id",
+          "dimension_id",
+          "delta_kind",
+          "impact_level",
+          "summary"
+        ],
+        "properties": {
+          "delta_id": {
+            "type": "string"
+          },
+          "left_cell_id": {
+            "type": "string"
+          },
+          "right_cell_id": {
+            "type": "string"
+          },
+          "dimension_id": {
+            "type": "string"
+          },
+          "delta_kind": {
+            "type": "string",
+            "enum": [
+              "protocol_contract",
+              "input_treatment",
+              "tag_awareness",
+              "topology",
+              "evidence_scope",
+              "other"
+            ]
+          },
+          "impact_level": {
+            "type": "string",
+            "enum": [
+              "low",
+              "medium",
+              "high"
+            ]
+          },
+          "summary": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "pairwise_findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "finding_id",
+          "left_cell_id",
+          "right_cell_id",
+          "finding_category",
+          "label",
+          "text",
+          "cell_ids",
+          "delta_ids"
+        ],
+        "properties": {
+          "finding_id": {
+            "type": "string"
+          },
+          "left_cell_id": {
+            "type": "string"
+          },
+          "right_cell_id": {
+            "type": "string"
+          },
+          "finding_category": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "text": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "cell_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "delta_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "high_level_takeaway": {
+      "type": "object",
+      "required": [
+        "label",
+        "text",
+        "cell_ids"
+      ],
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "text": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "cell_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "review_status": {
+      "type": "object",
+      "required": [
+        "state",
+        "note"
+      ],
+      "properties": {
+        "state": {
+          "type": "string",
+          "enum": [
+            "scaffold_only",
+            "pending_review",
+            "reviewed",
+            "blocked"
+          ]
+        },
+        "note": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}

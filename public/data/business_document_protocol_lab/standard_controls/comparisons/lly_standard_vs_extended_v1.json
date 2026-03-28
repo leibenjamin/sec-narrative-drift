@@ -1,0 +1,56 @@
+{
+  "artifact_schema_id": "standard_vs_extended_comparison_v1",
+  "comparison_id": "LLY_2024_2025_10k_item1a__standard_vs_extended_v1",
+  "fixture_id": "LLY_2024_2025_10k_item1a",
+  "issuer": {
+    "ticker": "LLY",
+    "issuer_name": "Eli Lilly and Company"
+  },
+  "standard_matrix_id": "LLY_2024_2025_10k_item1a__standard_control_matrix_v1",
+  "standard_matrix_path": "public/data/business_document_protocol_lab/standard_controls/LLY_2024_2025_10k_item1a/standard_control_matrix_v1.json",
+  "extended_matrix_id": "LLY_2024_2025_10k_item1a__desktop_pilot_matrix_v1",
+  "extended_matrix_path": "public/data/business_document_protocol_lab/pilot_matrices/LLY_2024_2025_10k_item1a/pilot_matrix_v1.json",
+  "lane_comparisons": [
+    {
+      "lane_slug": "02_p1_i2_tagged_packet",
+      "stable_points": [
+        "02 remains the intended strongest first-read lane on the fixed LLY pair.",
+        "The filing-first product story still points to the structured tagged packet as the best bounded lane."
+      ],
+      "degraded_points": [
+        "The canonical standard raw file is malformed JSON, which weakens machine-audit reliability relative to the extended pilot surface."
+      ],
+      "lane_order_changed": false,
+      "meaningfulness_note": "02 remains the anchor lane rather than the comparator lane."
+    },
+    {
+      "lane_slug": "03_p2_i2_tagged_protocol",
+      "stable_points": [
+        "03 still matters as the intended same-substrate comparator to 02 after the rerun-backed canonization step.",
+        "The rerun provenance keeps 03 in play as a truthful comparison lane rather than a discarded artifact."
+      ],
+      "degraded_points": [
+        "The canonical standard raw file is malformed JSON, which limits machine validation and keeps the reduced-reasoning claim pilot-grade."
+      ],
+      "lane_order_changed": false,
+      "meaningfulness_note": "03 remains a meaningful comparator after the rerun, but with an explicit capture-integrity caveat."
+    },
+    {
+      "lane_slug": "00_b0_unstructured_frontier_baseline",
+      "stable_points": [
+        "00 still functions as a readable control on the same tagged substrate.",
+        "00 remains clearly distinct from the structured lanes and does not replace them."
+      ],
+      "degraded_points": [
+        "00 stays noncanonical and ad hoc, so it still cannot support a structured-lane claim."
+      ],
+      "lane_order_changed": false,
+      "meaningfulness_note": "00 is useful only as a control, not as a structured comparator."
+    }
+  ],
+  "issuer_conclusion": "On LLY, the standard-vs-extended story remains directionally consistent with 02 strongest, 03 meaningful, and 00 control-only, but the structured standard captures are mechanically weaker because the canonical raw JSON is malformed.",
+  "caveats": [
+    "This remains a bounded pilot comparison for one issuer-year pair.",
+    "LLY structured standard outputs are canonical but malformed, so no benchmark-like precision is claimed."
+  ]
+}

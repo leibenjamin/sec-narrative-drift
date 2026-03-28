@@ -1,0 +1,255 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "artifact_status": "complete",
+  "$id": "protocol_lab/evidence_resolution_v1.schema.json",
+  "title": "Protocol Lab Evidence Resolution v1",
+  "type": "object",
+  "required": [
+    "artifact_status",
+    "artifact_schema_id",
+    "evidence_resolution_id",
+    "run_request_id",
+    "fixture_id",
+    "protocol_id",
+    "model_profile_id",
+    "runner_binding_id",
+    "input_pack_id",
+    "evidence_bundle_path",
+    "change_brief_output_path",
+    "resolution_summary",
+    "items",
+    "notes"
+  ],
+  "properties": {
+    "artifact_status": {
+      "type": "string",
+      "enum": [
+        "complete",
+        "scaffolded",
+        "pending",
+        "blocked",
+        "not_attempted"
+      ]
+    },
+    "artifact_status_note": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "artifact_schema_id": {
+      "const": "evidence_resolution_v1"
+    },
+    "evidence_resolution_id": {
+      "type": "string"
+    },
+    "run_request_id": {
+      "type": "string"
+    },
+    "fixture_id": {
+      "type": "string"
+    },
+    "protocol_id": {
+      "type": "string"
+    },
+    "model_profile_id": {
+      "type": "string"
+    },
+    "runner_binding_id": {
+      "type": "string"
+    },
+    "input_pack_id": {
+      "type": "string"
+    },
+    "evidence_bundle_path": {
+      "type": "string"
+    },
+    "change_brief_output_path": {
+      "type": "string"
+    },
+    "resolution_summary": {
+      "type": "object",
+      "required": [
+        "overall_result",
+        "total_evidence_items",
+        "resolved_item_count",
+        "failed_item_count",
+        "quote_text_pass_count",
+        "locator_match_pass_count",
+        "paragraph_id_pass_count"
+      ],
+      "properties": {
+        "overall_result": {
+          "type": "string",
+          "enum": [
+            "pass",
+            "fail",
+            "not_run"
+          ]
+        },
+        "total_evidence_items": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "resolved_item_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "failed_item_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "quote_text_pass_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "locator_match_pass_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "paragraph_id_pass_count": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "evidence_id",
+          "year_label",
+          "paragraph_id",
+          "matched_document_id",
+          "matched_year_label",
+          "matched_paragraph_id",
+          "overall_result",
+          "checks"
+        ],
+        "properties": {
+          "evidence_id": {
+            "type": "string"
+          },
+          "year_label": {
+            "type": "string"
+          },
+          "paragraph_id": {
+            "type": "string"
+          },
+          "matched_document_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "matched_year_label": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "matched_paragraph_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "overall_result": {
+            "type": "string",
+            "enum": [
+              "pass",
+              "fail"
+            ]
+          },
+          "checks": {
+            "type": "object",
+            "required": [
+              "evidence_id_present",
+              "source_locator_present",
+              "locator_matches_source",
+              "year_label_match",
+              "paragraph_id_exists",
+              "quote_text_present",
+              "char_range_within_source"
+            ],
+            "properties": {
+              "evidence_id_present": {
+                "type": "string",
+                "enum": [
+                  "pass",
+                  "fail",
+                  "not_applicable"
+                ]
+              },
+              "source_locator_present": {
+                "type": "string",
+                "enum": [
+                  "pass",
+                  "fail",
+                  "not_applicable"
+                ]
+              },
+              "locator_matches_source": {
+                "type": "string",
+                "enum": [
+                  "pass",
+                  "fail",
+                  "not_applicable"
+                ]
+              },
+              "year_label_match": {
+                "type": "string",
+                "enum": [
+                  "pass",
+                  "fail",
+                  "not_applicable"
+                ]
+              },
+              "paragraph_id_exists": {
+                "type": "string",
+                "enum": [
+                  "pass",
+                  "fail",
+                  "not_applicable"
+                ]
+              },
+              "quote_text_present": {
+                "type": "string",
+                "enum": [
+                  "pass",
+                  "fail",
+                  "not_applicable"
+                ]
+              },
+              "char_range_within_source": {
+                "type": "string",
+                "enum": [
+                  "pass",
+                  "fail",
+                  "not_applicable"
+                ]
+              }
+            },
+            "additionalProperties": false
+          },
+          "note": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}
