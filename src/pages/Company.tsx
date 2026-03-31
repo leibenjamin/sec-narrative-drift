@@ -163,8 +163,8 @@ export default function Company() {
         title={`${displayName} (${ticker}) | Document Protocol Lab`}
         description={companyMetaDescription}
       />
-      <div className="mx-auto max-w-6xl space-y-6 px-5 py-7 sm:space-y-8 sm:px-6 sm:py-10">
-        <header className="space-y-3 sm:space-y-4">
+      <div className="mx-auto max-w-6xl space-y-4 px-5 py-5 sm:space-y-5 sm:px-6 sm:py-6">
+        <header className="space-y-2.5 sm:space-y-3">
           <nav
             className="text-[11px] uppercase tracking-[0.24em] text-slate-300 sm:text-xs"
             aria-label="Breadcrumb"
@@ -188,18 +188,34 @@ export default function Company() {
             </ol>
           </nav>
 
-          <section className="rounded-[1.45rem] border border-white/10 bg-linear-to-br from-slate-950/80 via-slate-900/58 to-slate-950/40 p-4 shadow-[0_22px_56px_rgba(2,6,23,0.35)] sm:p-5">
-            <div className="flex flex-wrap items-start justify-between gap-3 sm:gap-4">
-              <div className="space-y-2.5 sm:space-y-3">
-                <p className="text-[11px] uppercase tracking-[0.28em] text-sky-100 sm:text-xs">
-                  Current pilot case
+          <section className="rounded-[1.35rem] border border-white/10 bg-linear-to-br from-slate-950/86 via-slate-900/60 to-slate-950/40 p-4 shadow-[0_18px_42px_rgba(2,6,23,0.3)] sm:p-4.5">
+            <div className="flex flex-wrap items-start justify-between gap-3">
+              <div className="min-w-0 flex-1 space-y-2.5">
+                <div className="flex flex-wrap gap-1.5 text-[11px] text-slate-200 sm:text-xs">
+                  <span className="rounded-full border border-sky-300/25 bg-sky-400/10 px-2.5 py-1">
+                    Current pilot case
+                  </span>
+                  <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1">
+                    Fixture role: {visiblePilot?.role_label ?? "Visible pilot"}
+                  </span>
+                  <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1">
+                    Filing pair: {activeCaseLabel}
+                  </span>
+                  <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1">
+                    Bounded SEC Item 1A pilot
+                  </span>
+                </div>
+                <div className="space-y-1.5">
+                  <h1 className="text-[clamp(1.8rem,3.6vw,3.05rem)] leading-tight font-semibold text-slate-50">
+                    {displayName} <span className="text-slate-400">({ticker})</span>
+                  </h1>
+                  {SHOWCASE_COMPANY_SECTORS[ticker] ? (
+                    <p className="text-sm font-medium text-slate-400">{SHOWCASE_COMPANY_SECTORS[ticker]}</p>
+                  ) : null}
+                </div>
+                <p className="max-w-3xl text-sm leading-6 text-slate-300">
+                  {inlineCue}
                 </p>
-                <h1 className="text-2xl leading-tight font-semibold text-slate-50 sm:text-4xl">
-                  {displayName} ({ticker})
-                </h1>
-                {SHOWCASE_COMPANY_SECTORS[ticker] ? (
-                  <p className="text-sm font-medium text-slate-400">{SHOWCASE_COMPANY_SECTORS[ticker]}</p>
-                ) : null}
               </div>
               <div className="flex flex-wrap gap-1.5 sm:gap-2">
                 <Link
@@ -216,18 +232,6 @@ export default function Company() {
                 </Link>
               </div>
             </div>
-            <div className="mt-3 flex flex-wrap gap-1.5 text-[11px] text-slate-200 sm:mt-4 sm:gap-2 sm:text-xs">
-              <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 sm:px-3 sm:py-1.5">
-                Fixture role: {visiblePilot?.role_label ?? "Visible pilot"}
-              </span>
-              <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 sm:px-3 sm:py-1.5">
-                Filing pair: {activeCaseLabel}
-              </span>
-              <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 sm:px-3 sm:py-1.5">
-                Bounded SEC Item 1A pilot
-              </span>
-            </div>
-            <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-300 sm:mt-4">{inlineCue}</p>
           </section>
         </header>
 

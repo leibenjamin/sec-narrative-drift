@@ -1,8 +1,8 @@
+import type { ComponentProps } from "react"
+import CompanyBriefingShell from "./CompanyBriefingShell"
 import { useEffect, useMemo, useRef, useState } from "react"
 import LabPanelAuditTrailSection from "./LabPanelAuditTrailSection"
 import LabPanelBoundedVisibleCase from "./LabPanelBoundedVisibleCase"
-import LabPanelFilingAnswerSection from "./LabPanelFilingAnswerSection"
-import LabPanelProtocolMeaningSection from "./LabPanelProtocolMeaningSection"
 import useLabPanelOutputs from "./useLabPanelOutputs"
 import useLabPanelPilotArtifacts, {
   type LabPanelPilotMatrixTarget,
@@ -696,10 +696,28 @@ export default function LabPanel({
     )
   }
 
+  const auditTrailProps: ComponentProps<typeof LabPanelAuditTrailSection> = {
+    analysisMode,
+    advancedControlsProps,
+    groupedMethodCards,
+    outputState,
+    methodProfilesByDetector,
+    deepAutoOpenContextKeys,
+    isCardExpanded,
+    onToggleCardExpanded: handleToggleCardExpanded,
+    selectedLlmCampaignA,
+    selectedLlmCampaignB,
+    selectedCampaignLabelA,
+    selectedCampaignLabelB,
+    selectedCompareCampaignIds,
+    hasAnyInsightOutput,
+    compactInsightItems,
+  }
+
   return (
-    <section className="space-y-5 sm:space-y-6">
+    <section className="space-y-4 sm:space-y-5">
       {selectedCase ? (
-        <LabPanelFilingAnswerSection
+        <CompanyBriefingShell
           selectedCase={selectedCase}
           selectedLlmCampaignA={selectedLlmCampaignA}
           selectedLlmCampaignB={selectedLlmCampaignB}
@@ -707,31 +725,10 @@ export default function LabPanel({
           selectedCampaignLabelB={selectedCampaignLabelB}
           analysisMode={analysisMode}
           outputState={outputState}
+          pilotArtifacts={pilotArtifacts}
+          auditTrailProps={auditTrailProps}
         />
       ) : null}
-
-      {isPilotMatrixSelectedCase ? (
-        <LabPanelProtocolMeaningSection pilotArtifacts={pilotArtifacts} />
-      ) : null}
-
-      {/* Audit trail keeps Where methods agree, Scope boundary, and Optional insight layer below the first read. */}
-      <LabPanelAuditTrailSection
-        analysisMode={analysisMode}
-        advancedControlsProps={advancedControlsProps}
-        groupedMethodCards={groupedMethodCards}
-        outputState={outputState}
-        methodProfilesByDetector={methodProfilesByDetector}
-        deepAutoOpenContextKeys={deepAutoOpenContextKeys}
-        isCardExpanded={isCardExpanded}
-        onToggleCardExpanded={handleToggleCardExpanded}
-        selectedLlmCampaignA={selectedLlmCampaignA}
-        selectedLlmCampaignB={selectedLlmCampaignB}
-        selectedCampaignLabelA={selectedCampaignLabelA}
-        selectedCampaignLabelB={selectedCampaignLabelB}
-        selectedCompareCampaignIds={selectedCompareCampaignIds}
-        hasAnyInsightOutput={hasAnyInsightOutput}
-        compactInsightItems={compactInsightItems}
-      />
     </section>
   )
 }

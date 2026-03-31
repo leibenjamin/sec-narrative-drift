@@ -255,24 +255,29 @@ function renderEvidenceCard(props: {
 }) {
   const { heading, year, ref, evidence, note = null } = props
   return (
-    <div className="rounded-lg border border-white/10 bg-slate-950/45 p-3">
-      <div className="text-[11px] uppercase tracking-wide text-slate-400">{heading}</div>
+    <div className="rounded-[1.1rem] border border-white/10 bg-slate-950/40 p-3 sm:p-4">
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <div className="text-[11px] uppercase tracking-wide text-slate-400">{heading}</div>
+        <span className="rounded-full border border-white/10 bg-white/5 px-2 py-0.5 text-[11px] text-slate-300">
+          Proof
+        </span>
+      </div>
       {ref && evidence ? (
         <>
           <div className="mt-1 text-[11px] text-slate-500">{formatEvidenceRef(ref)}</div>
-          <p className="mt-2 text-xs text-slate-100">"{evidence.snippet}"</p>
-          <p className="mt-1 text-[11px] text-slate-400">{evidence.why}</p>
+          <p className="mt-2 text-sm leading-6 text-slate-100 text-clamp-3">"{evidence.snippet}"</p>
+          <p className="mt-2 text-[11px] text-slate-400">{evidence.why}</p>
           {note ? <p className="mt-2 text-[11px] text-slate-500">{note}</p> : null}
         </>
       ) : ref ? (
         <>
           <div className="mt-1 text-[11px] text-slate-500">{formatEvidenceRef(ref)}</div>
-          <p className="mt-2 text-xs text-slate-400">
+          <p className="mt-2 text-sm text-slate-400">
             {note ?? "The surfaced reference did not resolve to a stored evidence snippet."}
           </p>
         </>
       ) : (
-        <p className="mt-2 text-xs text-slate-400">
+        <p className="mt-2 text-sm text-slate-400">
           {note ?? `No ${year}-year evidence reference was surfaced for this lead change.`}
         </p>
       )}
@@ -545,174 +550,18 @@ function buildCompareReadsSummary(columns: NarrativeCampaignColumn[]): CompareRe
   }
 }
 
-function renderCampaignNarrativeColumn(props: {
-  column: NarrativeCampaignColumn
-  analysisMode: AnalysisMode
-  yearFrom: number
-  yearTo: number
-}) {
-  const { column, analysisMode, yearFrom, yearTo } = props
-  const runtime = column.runtime
-  const structured = column.structured
-  if (!runtime) {
-    return (
-      <div className="rounded-2xl border border-amber-300/30 bg-amber-400/10 p-4 text-sm text-slate-200">
-        <div className={`inline-flex rounded-full border px-2.5 py-1 text-[11px] font-medium ${column.accentClass}`}>
-          {column.label}
-        </div>
-        <p className="mt-3 text-sm text-amber-100">Compare artifact not available for this campaign.</p>
-        <p className="mt-1 text-xs text-slate-300">
-          Deterministic methods below still provide a complete filing-to-filing baseline.
-        </p>
-      </div>
-    )
-  }
-
-  const drift = buildDriftScore(runtime)
-  const evidenceLookup = buildColumnEvidenceLookup(column)
-  const topChanges = sortMaterialChanges(runtime).slice(0, analysisMode === "executive" ? 3 : 5)
-  const investorItems = structured?.investor_relevance.slice(0, analysisMode === "executive" ? 2 : 3) ?? []
-  const mechanismItems = structured?.change_mechanisms.slice(0, analysisMode === "executive" ? 2 : 3) ?? []
-  const limitItems = structured?.uncertainty_and_limits.slice(0, 2) ?? []
+function renderCompareReadsBadge(divergenceLabel: CompareReadsSummary["divergenceLabel"]) {
+  const className =
+    divergenceLabel === "substantive"
+      ? "border-amber-300/35 bg-amber-400/12 text-amber-100"
+      : divergenceLabel === "stylistic"
+        ? "border-sky-300/35 bg-sky-400/12 text-sky-100"
+        : "border-white/15 bg-white/5 text-slate-200"
 
   return (
-    <div className="space-y-4 rounded-2xl border border-white/10 bg-slate-950/35 p-4 shadow-[0_18px_40px_rgba(2,6,23,0.25)]">
-      <div className="space-y-2">
-        <div className={`inline-flex rounded-full border px-2.5 py-1 text-[11px] font-medium ${column.accentClass}`}>
-          {column.label}
-        </div>
-        <p className={`text-sm font-semibold ${column.accentTextClass}`}>
-          {topChanges[0]?.title ?? "No lead change surfaced."}
-        </p>
-        <p className="text-xs text-slate-400">
-          {drift.label} | {runtime.material_changes.length} material changes surfaced
-        </p>
-      </div>
-
-      <div className={`rounded-xl border px-3 py-2 text-xs ${column.accentSurfaceClass}`}>
-        <div className="font-medium text-slate-100">Campaign framing</div>
-        <p className="mt-1 text-slate-200">{runtime.lens_divergence.summary}</p>
-      </div>
-
-      <div className="space-y-3">
-        <div className="flex items-center justify-between gap-2">
-          <h4 className="text-xs font-semibold uppercase tracking-wide text-slate-300">Top material changes</h4>
-          <span className="text-[11px] text-slate-500">{analysisMode === "executive" ? "Top 3" : "Top 5"}</span>
-        </div>
-        {topChanges.map((change, index) => {
-          const prevRef = change.evidence_refs.find((ref) => ref.year === yearFrom) ?? null
-          const currRef = change.evidence_refs.find((ref) => ref.year === yearTo) ?? null
-          const prevEvidence = prevRef ? findEvidenceForRef(prevRef, evidenceLookup) : null
-          const currEvidence = currRef ? findEvidenceForRef(currRef, evidenceLookup) : null
-          return (
-            <article key={`${column.id}:${change.id}`} className="rounded-xl border border-white/10 bg-slate-900/45 p-4">
-              <div className="flex flex-wrap items-start justify-between gap-3">
-                <div>
-                  <div className="text-[11px] uppercase tracking-wide text-slate-500">Rank {index + 1}</div>
-                  <h5 className="mt-1 text-sm font-semibold text-slate-100">{change.title}</h5>
-                </div>
-                <div className="flex flex-wrap items-center gap-2">
-                  {formatClassBadge(change.change_class)}
-                  <span className="text-[11px] text-slate-400">salience {change.salience.toFixed(2)}</span>
-                </div>
-              </div>
-              <p className="mt-2 text-xs text-slate-300">
-                <span className="font-medium text-slate-200">Caveat:</span> {change.caveat}
-              </p>
-              <div className="mt-3 flex flex-wrap gap-1.5">
-                {change.evidence_refs.map((ref, refIndex) => (
-                  <span
-                    key={`${column.id}:${change.id}:${refIndex}`}
-                    className="rounded-full border border-white/10 bg-white/5 px-2 py-0.5 text-[11px] text-slate-200"
-                  >
-                    {formatEvidenceRef(ref)}
-                  </span>
-                ))}
-              </div>
-              {index < 2 ? (
-                <div className="mt-3 grid gap-3 xl:grid-cols-2">
-                  {renderEvidenceCard({
-                    heading: `${formatFiscalYearLabel(yearFrom)} filing evidence`,
-                    year: yearFrom,
-                    ref: prevRef,
-                    evidence: prevEvidence,
-                  })}
-                  {renderEvidenceCard({
-                    heading: `${formatFiscalYearLabel(yearTo)} filing evidence`,
-                    year: yearTo,
-                    ref: currRef,
-                    evidence: currEvidence,
-                  })}
-                </div>
-              ) : null}
-            </article>
-          )
-        })}
-      </div>
-
-      <div className="grid gap-3 xl:grid-cols-2">
-        <div className="rounded-xl border border-white/10 bg-slate-900/40 p-4">
-          <h4 className="text-xs font-semibold uppercase tracking-wide text-slate-300">Why it matters</h4>
-          <div className="mt-3 space-y-3 text-xs text-slate-200">
-            {investorItems.length > 0 ? (
-              investorItems.map((item) => (
-                <div key={`${column.id}:${item.id}`} className="rounded-lg border border-white/10 bg-slate-950/40 p-3">
-                  <p>{item.why_it_matters}</p>
-                  <div className="mt-2 flex flex-wrap gap-1.5">
-                    {item.evidence_refs.map((ref, refIndex) => (
-                      <span
-                        key={`${column.id}:${item.id}:${refIndex}`}
-                        className="rounded-full border border-white/10 bg-white/5 px-2 py-0.5 text-[11px] text-slate-400"
-                      >
-                        {formatEvidenceRef(ref)}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ))
-            ) : (
-              <p className="text-slate-400">Structured investor-relevance rows were not provided for this campaign.</p>
-            )}
-          </div>
-        </div>
-        <div className="rounded-xl border border-white/10 bg-slate-900/40 p-4">
-          <h4 className="text-xs font-semibold uppercase tracking-wide text-slate-300">Change mechanisms</h4>
-          <div className="mt-3 space-y-3 text-xs text-slate-200">
-            {mechanismItems.length > 0 ? (
-              mechanismItems.map((item) => (
-                <div key={`${column.id}:${item.id}`} className="rounded-lg border border-white/10 bg-slate-950/40 p-3">
-                  <p className="font-medium text-slate-100">{item.mechanism}</p>
-                  <p className="mt-1 text-slate-300">Channel: {item.transmission_channel}</p>
-                  <p className="mt-1 text-slate-300">Effect: {item.business_effect}</p>
-                  <p className="mt-1 text-slate-400">
-                    {item.time_horizon === "near_term"
-                      ? "Near term"
-                      : item.time_horizon === "medium_term"
-                        ? "Medium term"
-                        : "Long term"}
-                  </p>
-                </div>
-              ))
-            ) : (
-              <p className="text-slate-400">Structured mechanism rows were not provided for this campaign.</p>
-            )}
-          </div>
-        </div>
-      </div>
-
-      {limitItems.length > 0 ? (
-        <div className="space-y-2">
-          <h4 className="text-xs font-semibold uppercase tracking-wide text-slate-300">Limitations to keep in mind</h4>
-          <div className="grid gap-2 sm:grid-cols-2">
-            {limitItems.map((item) => (
-              <div key={`${column.id}:${item.id}`} className="rounded-lg border border-amber-300/20 bg-amber-400/8 p-3 text-xs text-slate-300">
-                {item.limitation}
-              </div>
-            ))}
-          </div>
-        </div>
-      ) : null}
-    </div>
+    <span className={`rounded-full border px-2.5 py-1 text-[11px] font-medium ${className}`}>
+      {divergenceLabel === "single" ? "Single campaign" : `${divergenceLabel} divergence`}
+    </span>
   )
 }
 
@@ -775,121 +624,112 @@ export default function RiskNarrativeSummary({
   return (
     <section
       id="lab-risk-narrative"
-      className="space-y-4 rounded-[1.4rem] border border-slate-500/25 bg-linear-to-b from-slate-900/70 via-slate-950/55 to-slate-950/35 p-4 shadow-[0_18px_48px_rgba(2,6,23,0.35)] sm:space-y-5 sm:p-5"
+      className="space-y-4 rounded-[1.4rem] border border-slate-500/25 bg-linear-to-b from-slate-900/72 via-slate-950/58 to-slate-950/35 p-4 shadow-[0_18px_48px_rgba(2,6,23,0.35)] sm:space-y-5 sm:p-5"
     >
-      <div className="flex flex-wrap items-start justify-between gap-3 sm:gap-4">
+      <div className="flex flex-wrap items-start justify-between gap-3">
         <div className="max-w-3xl">
           <p className="text-[11px] uppercase tracking-[0.24em] text-sky-100">Filing answer</p>
-          <h3 className="mt-1.5 text-lg font-semibold text-slate-100 sm:mt-2 sm:text-xl">
-            What changed in {ticker}&apos;s filing: {formatFiscalYearLabel(yearFrom)} to {formatFiscalYearLabel(yearTo)}
-          </h3>
+          <h2 className="mt-1.5 text-xl font-semibold text-slate-100 sm:text-2xl">
+            {ticker} filing answer, {formatFiscalYearLabel(yearFrom)} to {formatFiscalYearLabel(yearTo)}
+          </h2>
           <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-300">
-            Start with the filing answer, why it matters, and paired evidence. Open Compare reads only
-            when you want to see where the visible runs line up or diverge before moving deeper into
-            protocol or audit detail.
+            Claim first, proof beside it, compare tucked below. Use the lower layers only when the
+            first read needs pressure.
           </p>
         </div>
-        <div className="w-full rounded-2xl border border-white/10 bg-slate-950/38 px-3 py-2.5 text-left sm:w-auto sm:px-4 sm:py-3 sm:text-right">
-          <div className="text-[10px] uppercase tracking-[0.22em] text-slate-400">Reading mode</div>
-          <div className="mt-1 text-sm font-semibold text-slate-100">
-            {analysisMode === "executive" ? "Executive" : "Deep"}
-          </div>
-          <div className="mt-1 text-[11px] text-slate-400">
-            {analysisMode === "executive"
-              ? "Top three shifts with paired evidence excerpts."
-              : "Top five shifts plus investor, mechanism, and limitation context."}
-          </div>
+        <div className="flex flex-wrap gap-2 text-[11px] text-slate-200">
+          <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1">
+            Read mode: {analysisMode === "executive" ? "Quick read" : "Deep review"}
+          </span>
+          {leadSummary?.isLowDrift ? (
+            <span className="rounded-full border border-sky-300/25 bg-sky-400/10 px-2.5 py-1 text-sky-100">
+              Low-drift signal
+            </span>
+          ) : null}
+          <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1">
+            Evidence stays adjacent
+          </span>
         </div>
       </div>
 
       {leadSummary ? (
         <>
-          <div className="grid gap-3 sm:gap-4 xl:grid-cols-[1.15fr,0.85fr]">
-            <article className="rounded-2xl border border-white/10 bg-slate-950/42 p-3 sm:p-4">
+          <div className="grid gap-4 xl:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)]">
+            <article className="rounded-[1.25rem] border border-white/10 bg-slate-950/44 p-4 shadow-[0_18px_40px_rgba(2,6,23,0.24)] sm:p-5">
               <div className="flex flex-wrap items-center gap-2">
                 {formatClassBadge(leadSummary.primaryChange.change_class)}
                 <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] text-slate-200">
                   {leadSummary.primaryColumn.label || `Campaign ${leadSummary.primaryColumn.id}`}
                 </span>
-                {leadSummary.isLowDrift ? (
-                  <span className="rounded-full border border-sky-300/25 bg-sky-400/10 px-2.5 py-1 text-[11px] text-sky-100">
-                    Low-drift signal
-                  </span>
+              </div>
+
+              <div className="mt-4">
+                <div className="text-[10px] uppercase tracking-[0.24em] text-slate-300">Lead answer</div>
+                <p className="mt-2 text-[1.05rem] font-semibold leading-8 text-slate-50 sm:text-[1.45rem]">
+                  {leadSummary.whatChanged}
+                </p>
+                {leadSummary.secondaryNote ? (
+                  <p className="mt-3 text-sm leading-6 text-slate-300">{leadSummary.secondaryNote}</p>
                 ) : null}
               </div>
-              <div className="mt-3">
-                <div className="text-[10px] uppercase tracking-[0.24em] text-slate-300">What changed</div>
-                <p className="mt-2 text-base font-semibold text-slate-100 sm:text-lg">{leadSummary.whatChanged}</p>
-                {leadSummary.secondaryNote ? (
-                  <p className="mt-2 text-sm text-slate-300">{leadSummary.secondaryNote}</p>
-                ) : null}
+
+              <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                <article className="rounded-[1rem] border border-white/10 bg-slate-900/42 p-3 sm:p-4">
+                  <div className="text-[10px] uppercase tracking-[0.24em] text-slate-300">Why it matters</div>
+                  <p className="mt-2 text-sm leading-6 text-slate-100">{leadSummary.whyItMatters}</p>
+                </article>
+                <article className="rounded-[1rem] border border-amber-300/20 bg-amber-400/8 p-3 sm:p-4">
+                  <div className="text-[10px] uppercase tracking-[0.24em] text-amber-100">Stop cue</div>
+                  <p className="mt-2 text-sm leading-6 text-slate-100">{leadSummary.caution}</p>
+                </article>
               </div>
             </article>
 
-            <div className="grid gap-3 sm:gap-4">
-              <article className="rounded-2xl border border-white/10 bg-slate-950/38 p-3 sm:p-4">
-                <div className="text-[10px] uppercase tracking-[0.24em] text-slate-300">Why it matters</div>
-                <p className="mt-2 text-sm text-slate-100">{leadSummary.whyItMatters}</p>
-              </article>
-              <article className="rounded-2xl border border-amber-300/20 bg-amber-400/7 p-3 sm:p-4">
-                <div className="text-[10px] uppercase tracking-[0.24em] text-amber-100">Caution / signal</div>
-                <p className="mt-2 text-sm text-slate-100">{leadSummary.caution}</p>
-              </article>
+            <div className="space-y-3">
+              <div className="rounded-[1rem] border border-white/10 bg-slate-950/34 px-3 py-2 text-[11px] uppercase tracking-[0.24em] text-slate-300">
+                Paired proof
+              </div>
+              <div className="grid gap-3">
+                {renderEvidenceCard({
+                  heading: `${formatFiscalYearLabel(yearFrom)} filing evidence`,
+                  year: yearFrom,
+                  ref: leadSummary.prevEvidence.ref,
+                  evidence: leadSummary.prevEvidence.evidence,
+                  note: leadSummary.prevEvidence.note,
+                })}
+                {renderEvidenceCard({
+                  heading: `${formatFiscalYearLabel(yearTo)} filing evidence`,
+                  year: yearTo,
+                  ref: leadSummary.currEvidence.ref,
+                  evidence: leadSummary.currEvidence.evidence,
+                  note: leadSummary.currEvidence.note,
+                })}
+              </div>
             </div>
-          </div>
-
-          <div className="grid gap-3 xl:grid-cols-2">
-            {renderEvidenceCard({
-              heading: `${formatFiscalYearLabel(yearFrom)} filing evidence`,
-              year: yearFrom,
-              ref: leadSummary.prevEvidence.ref,
-              evidence: leadSummary.prevEvidence.evidence,
-              note: leadSummary.prevEvidence.note,
-            })}
-            {renderEvidenceCard({
-              heading: `${formatFiscalYearLabel(yearTo)} filing evidence`,
-              year: yearTo,
-              ref: leadSummary.currEvidence.ref,
-              evidence: leadSummary.currEvidence.evidence,
-              note: leadSummary.currEvidence.note,
-            })}
           </div>
         </>
       ) : null}
 
-      <details className="rounded-2xl border border-white/10 bg-slate-950/30 p-3 sm:p-4">
-        <summary className="cursor-pointer list-none text-sm font-medium text-slate-100">
-          Compare reads
+      <details className="rounded-[1.15rem] border border-white/10 bg-slate-950/30 p-3 sm:p-4">
+        <summary className="flex cursor-pointer list-none flex-wrap items-center justify-between gap-3 text-sm font-medium text-slate-100">
+          <span>Compare reads</span>
+          {renderCompareReadsBadge(compareSummary.divergenceLabel)}
         </summary>
         <div className="mt-3 space-y-3">
-          <div className="rounded-2xl border border-white/10 bg-slate-950/40 p-3 sm:p-4">
-            <div className="flex flex-wrap items-center gap-2">
-              <span
-                className={`rounded-full border px-2.5 py-1 text-[11px] font-medium ${
-                  compareSummary.divergenceLabel === "substantive"
-                    ? "border-amber-300/35 bg-amber-400/12 text-amber-100"
-                    : compareSummary.divergenceLabel === "stylistic"
-                      ? "border-sky-300/35 bg-sky-400/12 text-sky-100"
-                      : "border-white/15 bg-white/5 text-slate-200"
-                }`}
-              >
-                {compareSummary.divergenceLabel === "single"
-                  ? "Single campaign"
-                  : `${compareSummary.divergenceLabel} divergence`}
-              </span>
-            </div>
-            <p className="mt-2 text-base font-semibold text-slate-100">{compareSummary.headline}</p>
-            <p className="mt-2 text-sm text-slate-300">{compareSummary.divergenceText}</p>
+          <div className="rounded-[1rem] border border-white/10 bg-slate-950/36 p-3 sm:p-4">
+            <p className="text-base font-semibold text-slate-100">{compareSummary.headline}</p>
+            <p className="mt-2 text-sm leading-6 text-slate-300">{compareSummary.divergenceText}</p>
           </div>
 
-          <div className={`grid gap-3 ${columns.length > 1 ? "xl:grid-cols-2" : "grid-cols-1"}`}>
+          <div className={`grid gap-3 ${columns.length > 1 ? "sm:grid-cols-2" : "grid-cols-1"}`}>
             {columns.slice(0, 2).map((column) => {
               const runtime = column.runtime
               const lead = runtime ? sortMaterialChanges(runtime)[0] : null
+              const drift = runtime ? buildDriftScore(runtime).label : null
               return (
                 <article
                   key={`compare-summary-${column.id}`}
-                  className="rounded-2xl border border-white/10 bg-slate-950/28 p-3 sm:p-4"
+                  className="rounded-[1rem] border border-white/10 bg-slate-950/28 p-3 sm:p-4"
                 >
                   <div
                     className={`inline-flex rounded-full border px-2.5 py-1 text-[11px] font-medium ${column.accentClass}`}
@@ -904,9 +744,16 @@ export default function RiskNarrativeSummary({
                       <p className="mt-1 text-sm font-semibold text-slate-100">
                         {lead?.title ?? "No lead change surfaced."}
                       </p>
-                      <p className="mt-2 text-xs text-slate-300">{runtime.lens_divergence.summary}</p>
+                      {drift ? (
+                        <p className="mt-2 text-[11px] text-slate-400">
+                          {drift} | {runtime.material_changes.length} ranked changes
+                        </p>
+                      ) : null}
+                      <p className="mt-2 text-xs leading-5 text-slate-300 text-clamp-3">
+                        {runtime.lens_divergence.summary}
+                      </p>
                       <p className="mt-2 text-[11px] text-slate-500">
-                        {runtime.material_changes.length} ranked material changes available in deeper compare detail.
+                        Full ranked compare stays in the audit gateway below.
                       </p>
                     </>
                   ) : (
@@ -918,28 +765,6 @@ export default function RiskNarrativeSummary({
               )
             })}
           </div>
-
-          <details className="rounded-2xl border border-white/10 bg-slate-950/22 p-3 sm:p-4">
-            <summary className="cursor-pointer list-none text-sm font-medium text-slate-100">
-              Open deeper compare detail
-            </summary>
-            <p className="mt-3 text-xs text-slate-400">
-              Use this only when you want each campaign&apos;s ranked changes, mechanisms, limitations,
-              and paired evidence in full.
-            </p>
-            <div className={`mt-4 grid gap-4 ${columns.length > 1 ? "2xl:grid-cols-2" : "grid-cols-1"}`}>
-              {columns.map((column) => (
-                <div key={`risk-column-${column.id}`}>
-                  {renderCampaignNarrativeColumn({
-                    column,
-                    analysisMode,
-                    yearFrom,
-                    yearTo,
-                  })}
-                </div>
-              ))}
-            </div>
-          </details>
         </div>
       </details>
     </section>
