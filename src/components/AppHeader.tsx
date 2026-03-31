@@ -7,7 +7,6 @@ type NavItem = {
 
 const NAV_ITEMS: NavItem[] = [
   { to: "/", label: "Home" },
-  { to: "/companies", label: "Cases" },
   { to: "/methodology", label: "Methodology" },
 ]
 
@@ -34,7 +33,7 @@ export default function AppHeader() {
               Document Protocol Lab
             </Link>
             <div className="mt-1 text-[11px] text-slate-400">
-              Current live pilot: bounded SEC Item 1A pilot
+              Bounded public pilot: NVDA, LLY, and KO
             </div>
           </div>
           <span className="rounded bg-amber-600/80 px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wide text-amber-100">
