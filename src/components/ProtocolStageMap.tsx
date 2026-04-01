@@ -13,7 +13,7 @@ type ProtocolStageMapProps = {
 export default function ProtocolStageMap({ steps }: ProtocolStageMapProps) {
   return (
     <section className="relative overflow-hidden rounded-[1.55rem] border border-white/10 bg-slate-950/55 p-4 shadow-[0_22px_48px_rgba(2,6,23,0.28)] sm:p-5">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(56,189,248,0.14),_transparent_48%),linear-gradient(135deg,rgba(8,13,26,0.16),rgba(8,13,26,0))]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(56,189,248,0.14),transparent_48%),linear-gradient(135deg,rgba(8,13,26,0.16),rgba(8,13,26,0))]" />
       <div className="relative">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="text-[11px] uppercase tracking-[0.32em] text-slate-400">Protocol map</div>

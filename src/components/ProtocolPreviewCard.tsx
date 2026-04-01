@@ -1,6 +1,11 @@
 import KORestraintStrip from "./KORestraintStrip"
+import { compactText } from "../lib/compactText"
 import { formatPilotStatusLabel } from "../lib/protocolLabMatrixPresentation.ts"
 import type { ProtocolLabPilotMatrixCell } from "../lib/protocolLabMatrixTypes.ts"
+import {
+  getRouteFamilyConfig,
+  type RouteFamilyPreviewSupportStrategy,
+} from "../lib/routeFamilyUi"
 import type { LabPanelPilotArtifactsState } from "./useLabPanelPilotArtifacts"
 
 type PreviewVariant = "integrated" | "bounded"
@@ -11,22 +16,19 @@ type PreviewTile = {
   tone: "neutral" | "accent" | "boundary"
 }
 
+type ProtocolPreviewViewModel = {
+  title: string
+  subtitle: string
+  chips: string[]
+  tiles: PreviewTile[]
+  showDetailDisclosure: boolean
+  showRestraintStrip: boolean
+}
+
 type ProtocolPreviewCardProps = {
   pilotArtifacts: LabPanelPilotArtifactsState
   ticker?: string
   variant?: PreviewVariant
-}
-
-function normalizeText(text: string): string {
-  return text.replace(/\s+/g, " ").trim()
-}
-
-function compactText(text: string, maxLength = 160): string {
-  const normalized = normalizeText(text)
-  if (normalized.length <= maxLength) return normalized
-  const clipped = normalized.slice(0, maxLength).trimEnd()
-  const lastSpace = clipped.lastIndexOf(" ")
-  return `${(lastSpace > 0 ? clipped.slice(0, lastSpace) : clipped).trimEnd()}...`
 }
 
 function getPrimaryCell(bundle: LabPanelPilotArtifactsState["pilotMatrixBundle"]): ProtocolLabPilotMatrixCell | null {
@@ -41,21 +43,25 @@ function renderPublicCellLabel(cell: ProtocolLabPilotMatrixCell): string {
   return "Control read"
 }
 
-function buildSupportTile(pilotArtifacts: LabPanelPilotArtifactsState): PreviewTile | null {
-  const { effortRobustnessBundle, skepticCaseArtifact, noveltyLedgerArtifact } = pilotArtifacts
+function buildSupportTile(
+  pilotArtifacts: LabPanelPilotArtifactsState,
+  supportStrategy: RouteFamilyPreviewSupportStrategy,
+  scopeNote: string
+): PreviewTile {
+  const { effortRobustnessBundle, noveltyLedgerArtifact } = pilotArtifacts
+
+  if (supportStrategy === "scope_only") {
+    return {
+      label: "Pilot scope",
+      value: compactText(scopeNote, 130),
+      tone: "neutral",
+    }
+  }
 
   if (effortRobustnessBundle) {
     return {
       label: "Matched-effort check",
-      value: compactText(effortRobustnessBundle.case_artifact.headline, 140),
-      tone: "accent",
-    }
-  }
-
-  if (skepticCaseArtifact) {
-    return {
-      label: "Restraint check",
-      value: compactText(skepticCaseArtifact.finding_summary, 140),
+      value: compactText(effortRobustnessBundle.case_artifact.headline, 130),
       tone: "accent",
     }
   }
@@ -63,12 +69,16 @@ function buildSupportTile(pilotArtifacts: LabPanelPilotArtifactsState): PreviewT
   if (noveltyLedgerArtifact) {
     return {
       label: "Fresh vs reused",
-      value: compactText(noveltyLedgerArtifact.comparison_to_02.why_secondary_only, 140),
+      value: compactText(noveltyLedgerArtifact.comparison_to_02.why_secondary_only, 130),
       tone: "neutral",
     }
   }
 
-  return null
+  return {
+    label: "Pilot scope",
+    value: compactText(scopeNote, 130),
+    tone: "neutral",
+  }
 }
 
 function getToneClasses(tone: PreviewTile["tone"]): string {
@@ -81,6 +91,73 @@ function getToneClasses(tone: PreviewTile["tone"]): string {
   return "border-white/10 bg-slate-950/35"
 }
 
+function buildPreviewModel(
+  pilotArtifacts: LabPanelPilotArtifactsState,
+  ticker: string | undefined,
+  variant: PreviewVariant
+): ProtocolPreviewViewModel | null {
+  const { pilotMatrixBundle, effortRobustnessBundle, noveltyLedgerArtifact } = pilotArtifacts
+  if (!pilotMatrixBundle) return null
+
+  const familyConfig = getRouteFamilyConfig(ticker)
+  const primaryCell = getPrimaryCell(pilotMatrixBundle)
+  const subtitleSource = familyConfig?.preview.subtitleSource ?? "card_takeaway"
+  const rawSubtitle =
+    subtitleSource === "protocol_read"
+      ? pilotMatrixBundle.story.protocol_read
+      : subtitleSource === "why_case_exists"
+        ? pilotMatrixBundle.story.why_this_case_matters
+        : primaryCell?.card_takeaway ?? pilotMatrixBundle.story.why_this_case_matters
+  const supportTile = buildSupportTile(
+    pilotArtifacts,
+    familyConfig?.preview.supportStrategy ?? "effort_first",
+    pilotMatrixBundle.matrix.pilot_status.note
+  )
+  const statusLabel = formatPilotStatusLabel(pilotMatrixBundle.matrix.pilot_status.state)
+  const chips = [
+    primaryCell ? `${renderPublicCellLabel(primaryCell)} first` : null,
+    `Scope: ${statusLabel}`,
+    noveltyLedgerArtifact && supportTile.label !== "Fresh vs reused"
+      ? "Fresh vs reused stays secondary"
+      : null,
+    effortRobustnessBundle && supportTile.label !== "Matched-effort check"
+      ? "Matched-effort check visible"
+      : null,
+  ].filter((value): value is string => Boolean(value))
+
+  return {
+    title:
+      variant === "bounded"
+        ? familyConfig?.preview.boundedTitle ?? "Why this bounded read stays visible"
+        : familyConfig?.preview.integratedTitle ?? "Why this fixture stays visible",
+    subtitle: compactText(rawSubtitle, variant === "bounded" ? 138 : 150),
+    chips,
+    tiles: [
+      {
+        label: "Case role",
+        value: compactText(
+          familyConfig?.preview.roleSummary ?? pilotMatrixBundle.story.why_this_case_matters,
+          132
+        ),
+        tone: "neutral",
+      },
+      {
+        label: "Visible reads add",
+        value: compactText(pilotMatrixBundle.story.protocol_read, 132),
+        tone: "accent",
+      },
+      {
+        label: "Boundary",
+        value: compactText(pilotMatrixBundle.story.caveat, 132),
+        tone: "boundary",
+      },
+      supportTile,
+    ],
+    showDetailDisclosure: variant === "integrated",
+    showRestraintStrip: Boolean(familyConfig?.preview.showRestraintStrip),
+  }
+}
+
 export default function ProtocolPreviewCard({
   pilotArtifacts,
   ticker,
@@ -91,8 +168,6 @@ export default function ProtocolPreviewCard({
     isLoadingPilotMatrix,
     pilotMatrixError,
     pilotMatrixDebugText,
-    effortRobustnessBundle,
-    noveltyLedgerArtifact,
     skepticCaseArtifact,
   } = pilotArtifacts
 
@@ -114,12 +189,12 @@ export default function ProtocolPreviewCard({
         className="space-y-3 rounded-[1.35rem] border border-amber-300/20 bg-amber-400/10 p-4 text-sm text-slate-200 shadow-[0_18px_40px_rgba(2,6,23,0.2)] sm:p-5"
       >
         <div>
-          <p className="text-[11px] uppercase tracking-[0.24em] text-amber-100">Protocol preview</p>
+          <p className="text-[11px] uppercase tracking-[0.24em] text-amber-100">Protocol meaning</p>
           <h2 className="mt-1.5 text-lg font-semibold text-slate-50">Protocol layer unavailable</h2>
         </div>
         <p className="text-sm text-slate-100">
-          The filing answer is still available above. The protocol layer did not load for this case, so
-          deeper pressure-testing should rely on the audit gateway below.
+          The filing answer is still available above. The protocol layer did not load for this case,
+          so deeper pressure-testing should rely on the audit gateway below.
         </p>
         {pilotMatrixError ? <p className="text-sm text-amber-100">{pilotMatrixError}</p> : null}
         {pilotMatrixDebugText ? (
@@ -130,52 +205,10 @@ export default function ProtocolPreviewCard({
   }
 
   const primaryCell = getPrimaryCell(pilotMatrixBundle)
-  const supportTile = buildSupportTile(pilotArtifacts)
-  const statusLabel = formatPilotStatusLabel(pilotMatrixBundle.matrix.pilot_status.state)
+  const previewModel = buildPreviewModel(pilotArtifacts, ticker, variant)
+  if (!previewModel) return null
+
   const readOrder = pilotMatrixBundle.ordered_cells.map((cell) => renderPublicCellLabel(cell)).join(" -> ")
-  const title =
-    ticker === "KO"
-      ? "Why restraint stays useful"
-      : variant === "bounded"
-        ? "Why this bounded read stays visible"
-        : "Why this fixture stays visible"
-  const subtitle =
-    primaryCell?.card_takeaway
-      ? compactText(primaryCell.card_takeaway, variant === "bounded" ? 150 : 170)
-      : compactText(pilotMatrixBundle.story.why_this_case_matters, variant === "bounded" ? 150 : 170)
-  const previewTiles: PreviewTile[] = [
-    {
-      label: variant === "bounded" ? "Case role" : "Why this fixture matters",
-      value: compactText(pilotMatrixBundle.story.why_this_case_matters, 140),
-      tone: "neutral",
-    },
-    {
-      label: "Visible reads add",
-      value: compactText(pilotMatrixBundle.story.protocol_read, 140),
-      tone: "accent",
-    },
-    {
-      label: variant === "bounded" ? "Stop stays explicit" : "Boundary",
-      value: compactText(pilotMatrixBundle.story.caveat, 140),
-      tone: "boundary",
-    },
-    supportTile ?? {
-      label: "Pilot scope",
-      value: compactText(pilotMatrixBundle.matrix.pilot_status.note, 140),
-      tone: "neutral",
-    },
-  ]
-  const chips = [
-    primaryCell ? `${renderPublicCellLabel(primaryCell)} first` : null,
-    `Scope: ${statusLabel}`,
-    noveltyLedgerArtifact ? "Fresh vs reused stays secondary" : null,
-    effortRobustnessBundle
-      ? "Matched-effort check visible"
-      : skepticCaseArtifact
-        ? "Restraint check visible"
-        : null,
-  ].filter((value): value is string => Boolean(value))
-  const showDetailDisclosure = variant === "integrated"
 
   return (
     <section id="lab-pilot-matrix" className="space-y-3">
@@ -183,23 +216,23 @@ export default function ProtocolPreviewCard({
         <div className="flex flex-wrap items-start justify-between gap-3">
           <div className="space-y-2">
             <p className="text-[11px] uppercase tracking-[0.24em] text-sky-100">Protocol meaning</p>
-            <h2 className="text-lg font-semibold text-slate-50 sm:text-xl">{title}</h2>
+            <h2 className="text-lg font-semibold text-slate-50 sm:text-xl">{previewModel.title}</h2>
           </div>
           <span className="rounded-full border border-sky-300/20 bg-sky-400/10 px-2.5 py-1 text-[11px] text-sky-100">
             Second layer
           </span>
         </div>
 
-        {ticker === "KO" && skepticCaseArtifact ? (
+        {previewModel.showRestraintStrip && skepticCaseArtifact ? (
           <div className="mt-3">
             <KORestraintStrip bundle={pilotMatrixBundle} skepticCase={skepticCaseArtifact} />
           </div>
         ) : null}
 
-        <p className="mt-3 text-sm leading-6 text-slate-100 text-clamp-2">{subtitle}</p>
+        <p className="mt-3 text-sm leading-6 text-slate-100 text-clamp-2">{previewModel.subtitle}</p>
 
         <div className="mt-3 flex flex-wrap gap-1.5 text-[11px] text-slate-200">
-          {chips.map((chip) => (
+          {previewModel.chips.map((chip) => (
             <span
               key={chip}
               className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1"
@@ -210,10 +243,10 @@ export default function ProtocolPreviewCard({
         </div>
 
         <div className="mt-3 grid gap-2.5 sm:grid-cols-2">
-          {previewTiles.map((tile) => (
+          {previewModel.tiles.map((tile) => (
             <article
               key={tile.label}
-              className={`rounded-[1rem] border p-3 ${getToneClasses(tile.tone)}`}
+              className={`rounded-2xl border p-3 ${getToneClasses(tile.tone)}`}
             >
               <div className="text-[10px] uppercase tracking-[0.24em] text-slate-300">{tile.label}</div>
               <p className="mt-2 text-sm leading-6 text-slate-100 text-clamp-3">{tile.value}</p>
@@ -222,7 +255,7 @@ export default function ProtocolPreviewCard({
         </div>
       </article>
 
-      {showDetailDisclosure ? (
+      {previewModel.showDetailDisclosure ? (
         <details className="rounded-[1.1rem] border border-white/10 bg-slate-950/28 p-3 sm:p-4">
           <summary className="cursor-pointer list-none text-sm font-medium text-slate-100">
             Protocol detail

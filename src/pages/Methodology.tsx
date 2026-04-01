@@ -7,6 +7,7 @@ import WorkflowAnatomyDiagram, {
   type WorkflowAnatomyStage,
 } from "../components/WorkflowAnatomyDiagram"
 import { withBase } from "../lib/paths"
+import { VISIBLE_FAMILY_TICKERS, getRouteFamilyConfig } from "../lib/routeFamilyUi"
 
 const METHODOLOGY_TITLE = "Methodology | Document Protocol Lab"
 const METHODOLOGY_DESCRIPTION =
@@ -126,23 +127,18 @@ const TRUST_MODEL_ITEMS: TrustModelItem[] = [
   { label: "Bounded visible scope" },
 ]
 
-const FIXTURE_ROLE_ITEMS: FixtureRoleStripItem[] = [
-  {
-    ticker: "NVDA",
-    role: "Strongest first signal",
-    detail: "Shows the workflow at full clarity when the filing shift is vivid and easy to pressure-test.",
-  },
-  {
-    ticker: "LLY",
-    role: "Honest stop",
-    detail: "Shows where policy-heavy contrast needs a visible stop before the public surface pretends to broader certainty.",
-  },
-  {
-    ticker: "KO",
-    role: "Useful restraint",
-    detail: "Shows the same workflow staying useful when the filing barely moves and drama would be misleading.",
-  },
-]
+const FIXTURE_ROLE_ITEMS: FixtureRoleStripItem[] = VISIBLE_FAMILY_TICKERS.map((ticker) => {
+  const familyConfig = getRouteFamilyConfig(ticker)
+  if (!familyConfig) {
+    throw new Error(`Missing route-family config for ${ticker}.`)
+  }
+
+  return {
+    ticker,
+    role: familyConfig.publicRoleLabel,
+    detail: familyConfig.methodologyDetail,
+  }
+})
 
 const METHOD_FAMILIES: MethodFamily[] = [
   {
@@ -170,8 +166,8 @@ export default function Methodology() {
     <main className="min-h-screen page-fade">
       <PageMetadata title={METHODOLOGY_TITLE} description={METHODOLOGY_DESCRIPTION} />
       <div className="mx-auto max-w-6xl space-y-6 px-5 py-6 sm:space-y-7 sm:px-6 sm:py-8">
-        <section className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-linear-to-br from-slate-950/92 via-slate-950/84 to-slate-900/72 p-5 shadow-[0_30px_80px_rgba(2,6,23,0.38)] sm:p-6">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(56,189,248,0.16),_transparent_36%),radial-gradient(circle_at_bottom_right,_rgba(16,185,129,0.11),_transparent_30%)]" />
+        <section className="relative overflow-hidden rounded-4xl border border-white/10 bg-linear-to-br from-slate-950/92 via-slate-950/84 to-slate-900/72 p-5 shadow-[0_30px_80px_rgba(2,6,23,0.38)] sm:p-6">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(56,189,248,0.16),transparent_36%),radial-gradient(circle_at_bottom_right,rgba(16,185,129,0.11),transparent_30%)]" />
           <div className="relative space-y-4">
             <div className="flex flex-wrap items-center gap-2 text-[11px] uppercase tracking-[0.24em] text-slate-300">
               <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">

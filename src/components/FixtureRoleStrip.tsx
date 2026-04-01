@@ -8,17 +8,26 @@ type FixtureRoleStripProps = {
   items: FixtureRoleStripItem[]
 }
 
+function formatRoleList(roles: string[]): string {
+  if (roles.length === 0) return "the approved route family"
+  if (roles.length === 1) return roles[0]
+  if (roles.length === 2) return `${roles[0]} and ${roles[1]}`
+  return `${roles.slice(0, -1).join(", ")}, and ${roles[roles.length - 1]}`
+}
+
 export default function FixtureRoleStrip({ items }: FixtureRoleStripProps) {
+  const roleSummary = formatRoleList(items.map((item) => item.role.toLowerCase()))
+
   return (
     <section className="rounded-[1.35rem] border border-white/10 bg-slate-950/42 p-3.5">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div className="max-w-2xl">
           <div className="text-[11px] uppercase tracking-[0.28em] text-slate-400">
-            Visible fixture roles
+            Visible pilot roles
           </div>
           <p className="mt-1.5 text-sm leading-5 text-slate-300">
-            Three visible fixtures are enough to show vivid change, honest stop, and low-drift
-            restraint without widening the public pilot claim.
+            Three pilot cases are enough to show {roleSummary} without widening the public pilot
+            claim.
           </p>
         </div>
         <div className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-slate-300">

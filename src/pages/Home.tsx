@@ -6,11 +6,14 @@ import ProtocolStageMap, { type ProtocolStageStep } from "../components/Protocol
 import {
   buildProtocolLabCaseHref,
   getProtocolLabRecommendedPilot,
-  listProtocolLabVisiblePilots,
   loadProtocolLabVisiblePilotSystem,
-  type ProtocolLabVisiblePilotEntry,
   type ProtocolLabVisiblePilotSystem,
 } from "../lib/protocolLabProductPositioning"
+import {
+  VISIBLE_FAMILY_TICKERS,
+  getRouteFamilyConfig,
+  type VisibleFamilyTicker,
+} from "../lib/routeFamilyUi"
 
 const HOME_TITLE = "Document Protocol Lab | SEC Item 1A pilot"
 const HOME_META_DESCRIPTION =
@@ -37,10 +40,8 @@ const PROTOCOL_STAGE_STEPS: ProtocolStageStep[] = [
   },
 ]
 
-type PrototypeTicker = "NVDA" | "LLY" | "KO"
-
 type HomeFixtureCardModel = {
-  ticker: PrototypeTicker
+  ticker: VisibleFamilyTicker
   companyName: string
   roleLabel: string
   demonstration: string
@@ -49,49 +50,22 @@ type HomeFixtureCardModel = {
   emphasis: "primary" | "default"
 }
 
-const PROTOTYPE_FIXTURE_COPY: Record<
-  PrototypeTicker,
-  Omit<HomeFixtureCardModel, "ticker" | "href" | "ctaLabel" | "emphasis">
-> = {
-  NVDA: {
-    companyName: "NVIDIA",
-    roleLabel: "Vivid answer",
-    demonstration: "See the clearest answer-first shift in the pilot.",
-  },
-  LLY: {
-    companyName: "Eli Lilly and Company",
-    roleLabel: "Honest stop",
-    demonstration: "See where policy pressure forces the protocol to stop before it overclaims.",
-  },
-  KO: {
-    companyName: "Coca-Cola",
-    roleLabel: "Useful restraint",
-    demonstration: "See why restraint still matters when a filing barely moves.",
-  },
-}
-
-function buildFallbackFixtureCards(): HomeFixtureCardModel[] {
-  return (["NVDA", "LLY", "KO"] as const).map((ticker) => ({
-    ticker,
-    companyName: PROTOTYPE_FIXTURE_COPY[ticker].companyName,
-    roleLabel: PROTOTYPE_FIXTURE_COPY[ticker].roleLabel,
-    demonstration: PROTOTYPE_FIXTURE_COPY[ticker].demonstration,
-    href: buildProtocolLabCaseHref(ticker, 2024, 2025),
-    ctaLabel: ticker === "NVDA" ? "Open NVDA" : `Open ${ticker}`,
-    emphasis: ticker === "NVDA" ? "primary" : "default",
-  }))
-}
-
-function buildFixtureCardModel(pilot: ProtocolLabVisiblePilotEntry): HomeFixtureCardModel {
-  const ticker = pilot.ticker as PrototypeTicker
-  const fixtureCopy = PROTOTYPE_FIXTURE_COPY[ticker]
+function buildFixtureCardModel(
+  ticker: VisibleFamilyTicker,
+  href: string,
+  companyName: string | null = null
+): HomeFixtureCardModel {
+  const familyConfig = getRouteFamilyConfig(ticker)
+  if (!familyConfig) {
+    throw new Error(`Missing route-family config for ${ticker}.`)
+  }
 
   return {
     ticker,
-    companyName: pilot.company_name,
-    roleLabel: fixtureCopy.roleLabel,
-    demonstration: fixtureCopy.demonstration,
-    href: pilot.href,
+    companyName: companyName ?? familyConfig.companyName,
+    roleLabel: familyConfig.homeCardLabel,
+    demonstration: familyConfig.homeCardDemo,
+    href,
     ctaLabel: ticker === "NVDA" ? "Open NVDA" : `Open ${ticker}`,
     emphasis: ticker === "NVDA" ? "primary" : "default",
   }
@@ -125,9 +99,14 @@ export default function Home() {
     }
   }, [])
 
-  const fixtureCards = visiblePilotSystem
-    ? listProtocolLabVisiblePilots(visiblePilotSystem).map((pilot) => buildFixtureCardModel(pilot))
-    : buildFallbackFixtureCards()
+  const fixtureCards = VISIBLE_FAMILY_TICKERS.map((ticker) => {
+    const pilot = visiblePilotSystem?.visiblePilots.find((entry) => entry.ticker === ticker) ?? null
+    return buildFixtureCardModel(
+      ticker,
+      pilot?.href ?? buildProtocolLabCaseHref(ticker, 2024, 2025),
+      pilot?.company_name ?? null
+    )
+  })
   const recommendedHref = visiblePilotSystem
     ? getProtocolLabRecommendedPilot(visiblePilotSystem).href
     : buildProtocolLabCaseHref("NVDA", 2024, 2025)
@@ -137,7 +116,7 @@ export default function Home() {
       <PageMetadata title={HOME_TITLE} description={HOME_META_DESCRIPTION} />
       <div className="mx-auto max-w-6xl px-6 py-6 sm:py-8">
         <section className="relative overflow-hidden rounded-[2.2rem] border border-white/10 bg-linear-to-br from-slate-950/92 via-slate-950/82 to-slate-900/72 shadow-[0_32px_80px_rgba(2,6,23,0.44)]">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(56,189,248,0.16),_transparent_34%),radial-gradient(circle_at_bottom_right,_rgba(16,185,129,0.12),_transparent_28%)]" />
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(56,189,248,0.16),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(16,185,129,0.12),transparent_28%)]" />
           <div className="relative grid gap-5 p-5 sm:p-6 xl:p-7">
             <div className="flex flex-wrap items-center gap-2 text-[11px] uppercase tracking-[0.24em] text-slate-300">
               <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">

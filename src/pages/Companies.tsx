@@ -54,8 +54,8 @@ export default function Companies() {
             Choose the fixture that matches your goal.
           </h1>
           <p className="max-w-3xl text-sm text-slate-300">
-            This is the lean chooser for the visible three-fixture pilot. Pick the strongest first
-            signal, the policy-heavy bounded contrast, or the restraint / low-drift honesty check.
+            This is the lean chooser for the visible three-fixture pilot. Pick vivid answer,
+            honest stop, or useful restraint.
           </p>
           <div className="flex flex-wrap gap-2 text-xs text-slate-200">
             <span className="rounded-full border border-sky-300/30 bg-sky-400/12 px-3 py-1">

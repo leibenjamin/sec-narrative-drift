@@ -52,7 +52,7 @@ export default function MethodFamilySummary({ families }: MethodFamilySummaryPro
                 <li
                   key={detector.id}
                   id={`detector-${detector.id}`}
-                  className="scroll-mt-28 rounded-[1rem] border border-white/10 bg-slate-900/55 p-3"
+                  className="scroll-mt-28 rounded-2xl border border-white/10 bg-slate-900/55 p-3"
                 >
                   <div className="text-[11px] uppercase tracking-[0.2em] text-slate-500">
                     {detector.question}

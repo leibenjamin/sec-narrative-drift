@@ -3,6 +3,11 @@ import {
   buildProtocolLabCaseHref,
   type ProtocolLabVisiblePilotEntry,
 } from "../lib/protocolLabProductPositioning"
+import {
+  VISIBLE_FAMILY_TICKERS,
+  getRouteFamilyConfig,
+  type VisibleFamilyTicker,
+} from "../lib/routeFamilyUi"
 
 type ProtocolLabUseCaseGuideProps = {
   visiblePilots: ProtocolLabVisiblePilotEntry[]
@@ -11,29 +16,9 @@ type ProtocolLabUseCaseGuideProps = {
   className?: string
 }
 
-type UseCaseRow = {
-  objective: string
-  ticker: "NVDA" | "KO" | "LLY"
-}
-
-const USE_CASE_ROWS: UseCaseRow[] = [
-  {
-    objective: "Strongest first signal",
-    ticker: "NVDA",
-  },
-  {
-    objective: "Policy-heavy bounded contrast",
-    ticker: "LLY",
-  },
-  {
-    objective: "Restraint / low-drift honesty check",
-    ticker: "KO",
-  },
-]
-
 function resolvePilot(
   visiblePilots: ProtocolLabVisiblePilotEntry[],
-  ticker: UseCaseRow["ticker"]
+  ticker: VisibleFamilyTicker
 ): ProtocolLabVisiblePilotEntry | null {
   for (const pilot of visiblePilots) {
     if (pilot.ticker === ticker) return pilot
@@ -43,7 +28,7 @@ function resolvePilot(
 
 function resolveHref(
   visiblePilots: ProtocolLabVisiblePilotEntry[],
-  ticker: UseCaseRow["ticker"]
+  ticker: VisibleFamilyTicker
 ): string {
   const pilot = resolvePilot(visiblePilots, ticker)
   if (pilot) return pilot.href
@@ -61,26 +46,22 @@ export default function ProtocolLabUseCaseGuide({
       <div className="text-xs uppercase tracking-[0.24em] text-slate-400">{title}</div>
       <p className="mt-2 max-w-3xl text-sm text-slate-300">{description}</p>
       <div className="mt-4 grid gap-4 lg:grid-cols-3">
-        {USE_CASE_ROWS.map((row) => {
-          const pilot = resolvePilot(visiblePilots, row.ticker)
+        {VISIBLE_FAMILY_TICKERS.map((ticker) => {
+          const pilot = resolvePilot(visiblePilots, ticker)
+          const familyConfig = getRouteFamilyConfig(ticker)
           return (
             <Link
-              key={row.objective}
-              to={resolveHref(visiblePilots, row.ticker)}
+              key={ticker}
+              to={resolveHref(visiblePilots, ticker)}
               className="block rounded-[1.2rem] border border-white/10 bg-slate-950/35 p-4 transition hover:border-sky-300/35 hover:bg-slate-950/55"
             >
-              <div className="flex items-start justify-between gap-3">
-                <div>
-                  <div className="text-[11px] uppercase tracking-wide text-slate-400">
-                    {row.objective}
-                  </div>
-                  <h2 className="mt-2 text-base font-semibold text-slate-50">
-                    {pilot ? `${pilot.company_name} (${pilot.ticker})` : row.ticker}
-                  </h2>
+              <div>
+                <div className="text-[11px] uppercase tracking-wide text-slate-400">
+                  {familyConfig?.chooserObjectiveLabel ?? ticker}
                 </div>
-                <span className="rounded-full border border-sky-300/30 bg-sky-400/12 px-2 py-0.5 text-[11px] text-sky-100">
-                  {pilot?.role_label ?? row.objective}
-                </span>
+                <h2 className="mt-2 text-base font-semibold text-slate-50">
+                  {pilot ? `${pilot.company_name} (${pilot.ticker})` : ticker}
+                </h2>
               </div>
 
               <p className="mt-4 text-sm text-slate-100">
@@ -98,7 +79,7 @@ export default function ProtocolLabUseCaseGuide({
 
               <div className="mt-4 flex items-center justify-between gap-3 text-xs text-slate-300">
                 <span>{pilot?.guidance.why_pick ?? "Open this fixture."}</span>
-                <span className="text-sky-200">{`Open ${row.ticker}`}</span>
+                <span className="text-sky-200">{`Open ${ticker}`}</span>
               </div>
             </Link>
           )

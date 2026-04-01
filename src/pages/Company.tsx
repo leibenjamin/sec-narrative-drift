@@ -9,35 +9,20 @@ import {
   type ProtocolLabVisiblePilotEntry,
   type ProtocolLabVisiblePilotSystem,
 } from "../lib/protocolLabProductPositioning"
+import { getRouteFamilyConfig } from "../lib/routeFamilyUi"
 
-const SHOWCASE_COMPANY_NAMES: Record<string, string> = {
-  NVDA: "NVIDIA",
-  LLY: "Eli Lilly and Company",
-  KO: "Coca-Cola",
+const FALLBACK_COMPANY_NAMES: Record<string, string> = {
   WM: "Waste Management",
   GE: "General Electric",
 }
 
-const SHOWCASE_COMPANY_SECTORS: Record<string, string> = {
-  NVDA: "Semiconductors / AI Infrastructure",
-  LLY: "Pharmaceuticals / Cardiometabolic and Obesity",
-  KO: "Consumer Staples / Beverages",
+const FALLBACK_COMPANY_SECTORS: Record<string, string> = {
   WM: "Industrials / Waste Services",
   GE: "Industrials / Aerospace & Energy",
 }
 
-const SHOWCASE_COMPANY_TOP_CUE: Record<string, string> = {
-  NVDA: "Read the filing answer first; use the protocol layer and audit below only to pressure-test it.",
-  LLY: "Honest stop: take the filing answer first, use the compact protocol layer second, then stop at the explicit scope boundary.",
-  KO: "Useful restraint: take the filing answer first, then read the protocol layer as selective sharpening on a mostly stable filing.",
-  WM: "Read the filing answer first, then use the lower protocol and audit layers only as supporting checks.",
-  GE: "Read the filing answer first, then use the lower protocol and audit layers only as supporting checks.",
-}
-
-const ACTIVE_COMPANY_ROLE_LABELS: Record<string, string> = {
-  LLY: "Honest stop",
-  KO: "Useful restraint",
-}
+const DEFAULT_TOP_CUE =
+  "Read the filing answer first, then use the protocol meaning and lower audit only when you need more pressure."
 
 type Pair = { from: number; to: number }
 
@@ -111,6 +96,7 @@ export default function Company() {
   const requestedLlmCampaignA = searchParams.get("llmA")
   const requestedLlmCampaignB = searchParams.get("llmB")
   const visiblePilot = visiblePilotSystem ? findProtocolLabVisiblePilotEntry(visiblePilotSystem, ticker) : null
+  const familyConfig = getRouteFamilyConfig(ticker)
 
   useEffect(() => {
     const tab = searchParams.get("tab")
@@ -132,18 +118,16 @@ export default function Company() {
     setSearchParams(next, { replace: true })
   }, [searchParams, setSearchParams, visiblePilot])
 
-  const displayName = visiblePilot?.company_name ?? SHOWCASE_COMPANY_NAMES[ticker] ?? ticker
-  const activeRoleLabel =
-    ACTIVE_COMPANY_ROLE_LABELS[ticker] ?? visiblePilot?.role_label ?? "Visible pilot"
+  const displayName = visiblePilot?.company_name ?? familyConfig?.companyName ?? FALLBACK_COMPANY_NAMES[ticker] ?? ticker
+  const activeRoleLabel = familyConfig?.publicRoleLabel ?? visiblePilot?.role_label ?? "Visible pilot"
   const activeCaseLabel = visiblePilot
     ? formatPilotPairLabel(visiblePilot)
     : requestedPair
       ? `${formatFiscalYearRange(requestedPair.from, requestedPair.to)} Item 1A`
       : "FY2024 to FY2025 Item 1A"
   const companyMetaDescription = `Document Protocol Lab visible pilot fixture for ${displayName}: start with the filing answer, then the protocol meaning, then the deeper audit only when you need it.`
-  const inlineCue =
-    SHOWCASE_COMPANY_TOP_CUE[ticker] ??
-    "Read the filing answer first, then use the protocol meaning and deeper audit only as secondary checks."
+  const inlineCue = familyConfig?.topCue ?? DEFAULT_TOP_CUE
+  const sectorLabel = familyConfig?.sector ?? FALLBACK_COMPANY_SECTORS[ticker] ?? null
 
   const handleSelectedPairChange = (pair: Pair) => {
     const next = mergeSearchParams(searchParams, {
@@ -200,24 +184,24 @@ export default function Company() {
               <div className="min-w-0 flex-1 space-y-2.5">
                 <div className="flex flex-wrap gap-1.5 text-[11px] text-slate-200 sm:text-xs">
                   <span className="rounded-full border border-sky-300/25 bg-sky-400/10 px-2.5 py-1">
-                    Current pilot case
+                    Pilot case
                   </span>
                   <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1">
-                    Fixture role: {activeRoleLabel}
+                    Role: {activeRoleLabel}
                   </span>
                   <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1">
-                    Filing pair: {activeCaseLabel}
+                    Pair: {activeCaseLabel}
                   </span>
                   <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1">
-                    Bounded SEC Item 1A pilot
+                    Bounded public pilot
                   </span>
                 </div>
                 <div className="space-y-1.5">
                   <h1 className="text-[clamp(1.8rem,3.6vw,3.05rem)] leading-tight font-semibold text-slate-50">
                     {displayName} <span className="text-slate-400">({ticker})</span>
                   </h1>
-                  {SHOWCASE_COMPANY_SECTORS[ticker] ? (
-                    <p className="text-sm font-medium text-slate-400">{SHOWCASE_COMPANY_SECTORS[ticker]}</p>
+                  {sectorLabel ? (
+                    <p className="text-sm font-medium text-slate-400">{sectorLabel}</p>
                   ) : null}
                 </div>
                 <p className="max-w-3xl text-sm leading-6 text-slate-300">

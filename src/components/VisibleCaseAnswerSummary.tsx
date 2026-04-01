@@ -4,6 +4,7 @@ import type {
   ProtocolLabPilotMatrixBundle,
   ProtocolLabPilotMatrixCell,
 } from "../lib/protocolLabMatrixTypes.ts"
+import { compactText } from "../lib/compactText"
 
 type VisibleCaseAnswerSummaryProps = {
   bundle: ProtocolLabPilotMatrixBundle
@@ -26,11 +27,11 @@ function formatSurfaceCoverageLabel(props: {
   const parts = ["the primary read"]
 
   if (props.noveltyLedger) {
-    parts.push("Fresh vs reused")
+    parts.push("the fresh-vs-reused cue")
   }
 
   if (props.effortRobustness) {
-    parts.push("the matched-effort integrity check")
+    parts.push("the matched-effort check")
   }
 
   if (parts.length === 1) {
@@ -50,7 +51,8 @@ export default function VisibleCaseAnswerSummary({
   effortRobustness,
 }: VisibleCaseAnswerSummaryProps) {
   const primaryCell = getPrimaryCell(bundle)
-  const primarySummary = primaryCell?.summary ?? bundle.story.investor_read
+  const primarySummary = compactText(primaryCell?.summary ?? bundle.story.investor_read, 340)
+  const matterSummary = compactText(bundle.story.investor_read, 240)
   const surfaceCoverage = formatSurfaceCoverageLabel({ noveltyLedger, effortRobustness })
 
   return (
@@ -61,9 +63,7 @@ export default function VisibleCaseAnswerSummary({
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div className="space-y-2">
           <div className="text-[11px] uppercase tracking-[0.24em] text-sky-100">Filing answer</div>
-          <h2 className="text-lg font-semibold text-slate-50 sm:text-xl">
-            LLY filing answer, bounded visible case
-          </h2>
+          <h2 className="text-lg font-semibold text-slate-50 sm:text-xl">LLY filing answer</h2>
         </div>
         <span className="rounded-full border border-sky-300/25 bg-sky-400/10 px-2.5 py-1 text-[11px] text-sky-100">
           Honest stop
@@ -72,19 +72,19 @@ export default function VisibleCaseAnswerSummary({
 
       <div className="flex flex-wrap gap-1.5 text-[11px] text-slate-200 sm:gap-2">
         <span className="rounded-full border border-sky-300/25 bg-sky-400/10 px-2.5 py-1 sm:px-3">
-          Answer basis: {primaryCell?.short_label ?? "Primary read"}
+          Basis: {primaryCell?.short_label ?? "Primary read"}
         </span>
         <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 sm:px-3">
-          Visible case only
+          Visible case
         </span>
         {noveltyLedger ? (
           <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 sm:px-3">
-            Fresh vs reused: secondary lens
+            Fresh vs reused
           </span>
         ) : null}
         {effortRobustness ? (
           <span className="rounded-full border border-amber-300/25 bg-amber-400/10 px-2.5 py-1 sm:px-3">
-            Integrity caveat: visible
+            Integrity caveat
           </span>
         ) : null}
       </div>
@@ -92,13 +92,13 @@ export default function VisibleCaseAnswerSummary({
       <div className="grid gap-3 sm:gap-4 lg:grid-cols-2">
         <article className="rounded-[1.1rem] border border-sky-300/20 bg-slate-950/35 p-3 sm:p-4">
           <div className="text-[10px] uppercase tracking-[0.24em] text-sky-100">What changed</div>
-          <p className="mt-2.5 text-sm text-slate-100">{primarySummary}</p>
+          <p className="mt-2.5 text-sm leading-6 text-slate-100">{primarySummary}</p>
         </article>
 
         <article className="rounded-[1.1rem] border border-emerald-300/20 bg-slate-950/35 p-3 sm:p-4">
           <div className="text-[10px] uppercase tracking-[0.24em] text-emerald-100">Why it matters</div>
-          <p className="mt-2.5 text-sm text-slate-100">
-            This bounded answer is supported by {surfaceCoverage}. {bundle.story.investor_read}
+          <p className="mt-2.5 text-sm leading-6 text-slate-100">
+            Supported by {surfaceCoverage}. {matterSummary}
           </p>
         </article>
       </div>

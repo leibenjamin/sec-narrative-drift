@@ -2,18 +2,11 @@ import type {
   ProtocolLabPilotMatrixBundle,
   ProtocolLabSkepticCaseCanonizedMatrix,
 } from "../lib/protocolLabMatrixTypes.ts"
+import { compactText } from "../lib/compactText"
 
 type KORestraintStripProps = {
   bundle: ProtocolLabPilotMatrixBundle
   skepticCase: ProtocolLabSkepticCaseCanonizedMatrix
-}
-
-function compactText(text: string, maxLength = 150): string {
-  const normalized = text.replace(/\s+/g, " ").trim()
-  if (normalized.length <= maxLength) return normalized
-  const clipped = normalized.slice(0, maxLength).trimEnd()
-  const lastSpace = clipped.lastIndexOf(" ")
-  return `${(lastSpace > 0 ? clipped.slice(0, lastSpace) : clipped).trimEnd()}...`
 }
 
 export default function KORestraintStrip({ bundle, skepticCase }: KORestraintStripProps) {
@@ -25,7 +18,7 @@ export default function KORestraintStrip({ bundle, skepticCase }: KORestraintStr
       <article className="rounded-[0.95rem] border border-white/10 bg-slate-950/34 p-3">
         <div className="text-[10px] uppercase tracking-[0.24em] text-emerald-100">Mostly stable</div>
         <p className="mt-2 text-sm leading-6 text-slate-100 text-clamp-3">
-          {compactText(bundle.story.why_this_case_matters, 130)}
+          {compactText(bundle.story.why_this_case_matters, 120)}
         </p>
       </article>
 
@@ -34,7 +27,7 @@ export default function KORestraintStrip({ bundle, skepticCase }: KORestraintStr
           Selectively sharpened
         </div>
         <p className="mt-2 text-sm leading-6 text-slate-100 text-clamp-3">
-          {compactText(skepticCase.finding_summary, 140)}
+          {compactText(skepticCase.finding_summary, 128)}
         </p>
       </article>
 
@@ -43,7 +36,7 @@ export default function KORestraintStrip({ bundle, skepticCase }: KORestraintStr
           Why restraint matters
         </div>
         <p className="mt-2 text-sm leading-6 text-slate-100 text-clamp-3">
-          {compactText(skepticCase.product_interpretation, 140)}
+          {compactText(skepticCase.product_interpretation, 128)}
         </p>
       </article>
     </section>

@@ -179,21 +179,21 @@ export default function LabPanelAuditTrailSection({
       </div>
 
       <div className="grid gap-2.5 md:grid-cols-3">
-        <article className="rounded-[1rem] border border-white/10 bg-slate-950/28 p-3">
+        <article className="rounded-2xl border border-white/10 bg-slate-950/28 p-3">
           <div className="text-[10px] uppercase tracking-[0.24em] text-slate-400">Controls</div>
           <p className="mt-2 text-xs leading-5 text-slate-100">
             Case override, compare-lane selection, and method toggles stay tucked into the first
             collapsed panel.
           </p>
         </article>
-        <article className="rounded-[1rem] border border-white/10 bg-slate-950/28 p-3">
+        <article className="rounded-2xl border border-white/10 bg-slate-950/28 p-3">
           <div className="text-[10px] uppercase tracking-[0.24em] text-slate-400">Methods</div>
           <p className="mt-2 text-xs leading-5 text-slate-100">
             {totalMethodCards} deterministic cards remain available, but they no longer dominate the
             default company view.
           </p>
         </article>
-        <article className="rounded-[1rem] border border-white/10 bg-slate-950/28 p-3">
+        <article className="rounded-2xl border border-white/10 bg-slate-950/28 p-3">
           <div className="text-[10px] uppercase tracking-[0.24em] text-slate-400">Structure audit</div>
           <p className="mt-2 text-xs leading-5 text-slate-100">
             Full ranked compare, outline structure, and optional insight stay below this gateway and

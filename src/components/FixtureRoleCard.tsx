@@ -49,7 +49,7 @@ export default function FixtureRoleCard({
 
       <div className="mt-4 flex items-center justify-between gap-3">
         <div className="text-[11px] uppercase tracking-[0.26em] text-slate-500">
-          {isPrimary ? "Recommended first fixture" : "Protocol demo fixture"}
+          {isPrimary ? "Recommended first case" : "Pilot case"}
         </div>
         <Link
           to={href}
