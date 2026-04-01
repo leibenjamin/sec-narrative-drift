@@ -686,7 +686,7 @@ export default function LabPanel({
 
   if (!cases.length) {
     if (isPilotOnlyMatrixView) {
-      return <LabPanelBoundedVisibleCase pilotArtifacts={pilotArtifacts} />
+      return <LabPanelBoundedVisibleCase ticker={ticker} pilotArtifacts={pilotArtifacts} />
     }
 
     return (

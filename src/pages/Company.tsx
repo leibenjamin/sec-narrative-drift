@@ -28,10 +28,15 @@ const SHOWCASE_COMPANY_SECTORS: Record<string, string> = {
 
 const SHOWCASE_COMPANY_TOP_CUE: Record<string, string> = {
   NVDA: "Read the filing answer first; use the protocol layer and audit below only to pressure-test it.",
-  LLY: "Bounded case: take the filing answer first, use protocol meaning second, then stop at the explicit scope boundary.",
-  KO: "Low drift is the point here: take the filing answer first, then read the protocol layer as selective sharpening, not forced novelty.",
+  LLY: "Honest stop: take the filing answer first, use the compact protocol layer second, then stop at the explicit scope boundary.",
+  KO: "Useful restraint: take the filing answer first, then read the protocol layer as selective sharpening on a mostly stable filing.",
   WM: "Read the filing answer first, then use the lower protocol and audit layers only as supporting checks.",
   GE: "Read the filing answer first, then use the lower protocol and audit layers only as supporting checks.",
+}
+
+const ACTIVE_COMPANY_ROLE_LABELS: Record<string, string> = {
+  LLY: "Honest stop",
+  KO: "Useful restraint",
 }
 
 type Pair = { from: number; to: number }
@@ -128,6 +133,8 @@ export default function Company() {
   }, [searchParams, setSearchParams, visiblePilot])
 
   const displayName = visiblePilot?.company_name ?? SHOWCASE_COMPANY_NAMES[ticker] ?? ticker
+  const activeRoleLabel =
+    ACTIVE_COMPANY_ROLE_LABELS[ticker] ?? visiblePilot?.role_label ?? "Visible pilot"
   const activeCaseLabel = visiblePilot
     ? formatPilotPairLabel(visiblePilot)
     : requestedPair
@@ -196,7 +203,7 @@ export default function Company() {
                     Current pilot case
                   </span>
                   <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1">
-                    Fixture role: {visiblePilot?.role_label ?? "Visible pilot"}
+                    Fixture role: {activeRoleLabel}
                   </span>
                   <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1">
                     Filing pair: {activeCaseLabel}

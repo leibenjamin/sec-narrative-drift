@@ -53,7 +53,10 @@ export default function CompanyBriefingShell({
           analysisMode={analysisMode}
         />
 
-        <ProtocolPreviewCard pilotArtifacts={pilotArtifacts} />
+        <ProtocolPreviewCard
+          pilotArtifacts={pilotArtifacts}
+          ticker={selectedCase.ticker}
+        />
       </div>
 
       <LabPanelAuditTrailSection {...auditTrailProps} />
