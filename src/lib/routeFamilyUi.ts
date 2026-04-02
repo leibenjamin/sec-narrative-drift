@@ -75,7 +75,7 @@ const ROUTE_FAMILY_CASE_CONFIG = {
     sector: "Consumer Staples / Beverages",
     publicRoleLabel: "Useful restraint",
     topCue:
-      "Useful restraint: read the filing answer, then use the protocol layer as selective sharpening on a mostly stable filing.",
+      "Useful restraint: read the filing answer, then use the protocol layer to selectively sharpen a mostly stable filing.",
     homeCardLabel: "Useful restraint",
     homeCardDemo: "See why selective sharpening still matters when the filing barely moves.",
     chooserObjectiveLabel: "Useful restraint",

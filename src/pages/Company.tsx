@@ -180,8 +180,8 @@ export default function Company() {
           </nav>
 
           <section className="rounded-[1.35rem] border border-white/10 bg-linear-to-br from-slate-950/86 via-slate-900/60 to-slate-950/40 p-4 shadow-[0_18px_42px_rgba(2,6,23,0.3)] sm:p-4.5">
-            <div className="flex flex-wrap items-start justify-between gap-3">
-              <div className="min-w-0 flex-1 space-y-2.5">
+            <div className="grid gap-3 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-start sm:gap-4">
+              <div className="min-w-0 space-y-2.5">
                 <div className="flex flex-wrap gap-1.5 text-[11px] text-slate-200 sm:text-xs">
                   <span className="rounded-full border border-sky-300/25 bg-sky-400/10 px-2.5 py-1">
                     Pilot case
@@ -197,18 +197,18 @@ export default function Company() {
                   </span>
                 </div>
                 <div className="space-y-1.5">
-                  <h1 className="text-[clamp(1.8rem,3.6vw,3.05rem)] leading-tight font-semibold text-slate-50">
+                  <h1 className="text-[clamp(1.7rem,3.6vw,3.05rem)] leading-tight font-semibold text-slate-50">
                     {displayName} <span className="text-slate-400">({ticker})</span>
                   </h1>
                   {sectorLabel ? (
-                    <p className="text-sm font-medium text-slate-400">{sectorLabel}</p>
+                    <p className="text-[13px] font-medium text-slate-400 sm:text-sm">{sectorLabel}</p>
                   ) : null}
                 </div>
                 <p className="max-w-3xl text-sm leading-6 text-slate-300">
                   {inlineCue}
                 </p>
               </div>
-              <div className="flex flex-wrap gap-1.5 sm:gap-2">
+              <div className="flex flex-wrap gap-1.5 sm:justify-end sm:gap-2 sm:pt-1">
                 <Link
                   to="/companies"
                   className="inline-flex items-center rounded-full border border-white/20 px-2.5 py-1 text-[11px] text-slate-200 hover:border-white/40 hover:bg-white/5 sm:px-3 sm:py-1.5 sm:text-xs"

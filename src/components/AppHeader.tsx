@@ -22,25 +22,20 @@ export default function AppHeader() {
   const { pathname } = useLocation()
 
   return (
-    <header className="sticky top-0 z-30 border-b border-white/10 bg-slate-950/78 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-6 py-4">
-        <div className="flex items-center gap-3">
-          <div>
-            <Link
-              to="/"
-              className="text-xs uppercase tracking-[0.24em] text-slate-200 hover:text-slate-50"
-            >
-              Document Protocol Lab
-            </Link>
-            <div className="mt-1 text-[11px] text-slate-400">
-              Bounded public pilot: NVDA, LLY, and KO
-            </div>
+    <header className="sticky top-0 z-30 border-b border-white/10 bg-slate-950/84 backdrop-blur">
+      <div className="mx-auto flex max-w-6xl flex-wrap items-start justify-between gap-x-5 gap-y-2 px-5 py-3 sm:items-center sm:px-6 sm:py-4">
+        <div className="min-w-0">
+          <Link
+            to="/"
+            className="text-[11px] uppercase tracking-[0.24em] text-slate-200 hover:text-slate-50 sm:text-xs"
+          >
+            Document Protocol Lab
+          </Link>
+          <div className="mt-1 text-[10px] text-slate-400 sm:text-[11px]">
+            Bounded public pilot: NVDA, LLY, and KO
           </div>
-          <span className="rounded bg-amber-600/80 px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wide text-amber-100">
-            Beta
-          </span>
         </div>
-        <nav className="flex flex-wrap items-center gap-4 text-sm" aria-label="Primary">
+        <nav className="flex flex-wrap items-center gap-4 pt-0.5 text-sm" aria-label="Primary">
           {NAV_ITEMS.map((item) => {
             const active = isActive(pathname, item.to)
             return (

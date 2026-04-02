@@ -119,6 +119,13 @@ function formatClassBadge(changeClass: string) {
   )
 }
 
+function formatCampaignSurfaceLabel(column: Pick<NarrativeCampaignColumn, "id" | "label">): string {
+  const trimmed = column.label.trim()
+  if (!trimmed) return `Campaign ${column.id}`
+  const simplified = trimmed.split(" (")[0]?.trim()
+  return simplified && simplified.length > 0 ? simplified : trimmed
+}
+
 function formatEvidenceRef(ref: LabOutlineEvidenceRef): string {
   return `${ref.year} para ${ref.paragraph_idx + 1}`
 }
@@ -441,8 +448,8 @@ function buildLeadSummary(
     return null
   }
 
-  const primaryLabel = primaryColumn.label || `Campaign ${primaryColumn.id}`
-  const secondaryLabel = secondaryColumn?.label || (secondaryColumn ? `Campaign ${secondaryColumn.id}` : "")
+  const primaryLabel = formatCampaignSurfaceLabel(primaryColumn)
+  const secondaryLabel = secondaryColumn ? formatCampaignSurfaceLabel(secondaryColumn) : ""
 
   let whatChanged: string
   let secondaryNote: string | null = null
@@ -517,12 +524,12 @@ function buildCompareReadsSummary(columns: NarrativeCampaignColumn[]): CompareRe
 
   const sharedMatch = buildSharedLeadMatch(available)
   if (sharedMatch) {
-    const leftLabel = sharedMatch.leftColumn.label || `Campaign ${sharedMatch.leftColumn.id}`
-    const rightLabel = sharedMatch.rightColumn.label || `Campaign ${sharedMatch.rightColumn.id}`
+    const leftLabel = formatCampaignSurfaceLabel(sharedMatch.leftColumn)
+    const rightLabel = formatCampaignSurfaceLabel(sharedMatch.rightColumn)
     return {
       headline: "Same core shift, different emphasis.",
       divergenceLabel: "stylistic",
-      divergenceText: `${leftLabel}: "${compactText(sharedMatch.leftChange.title, 84)}". ${rightLabel}: "${compactText(sharedMatch.rightChange.title, 84)}".`,
+      divergenceText: `${leftLabel}: "${compactText(sharedMatch.leftChange.title, 68)}". ${rightLabel}: "${compactText(sharedMatch.rightChange.title, 68)}".`,
     }
   }
 
@@ -536,12 +543,12 @@ function buildCompareReadsSummary(columns: NarrativeCampaignColumn[]): CompareRe
     }
   }
 
-  const leftLabel = available[0].label || `Campaign ${available[0].id}`
-  const rightLabel = available[1].label || `Campaign ${available[1].id}`
+  const leftLabel = formatCampaignSurfaceLabel(available[0])
+  const rightLabel = formatCampaignSurfaceLabel(available[1])
   return {
     headline: "Different lead reads.",
     divergenceLabel: "substantive",
-    divergenceText: `${leftLabel}: "${compactText(leftLead.title, 84)}". ${rightLabel}: "${compactText(rightLead.title, 84)}".`,
+    divergenceText: `${leftLabel}: "${compactText(leftLead.title, 68)}". ${rightLabel}: "${compactText(rightLead.title, 68)}".`,
   }
 }
 
@@ -654,7 +661,7 @@ export default function RiskNarrativeSummary({
               <div className="flex flex-wrap items-center gap-2">
                 {formatClassBadge(leadSummary.primaryChange.change_class)}
                 <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] text-slate-200">
-                  {leadSummary.primaryColumn.label || `Campaign ${leadSummary.primaryColumn.id}`}
+                  {formatCampaignSurfaceLabel(leadSummary.primaryColumn)}
                 </span>
               </div>
 
@@ -705,18 +712,18 @@ export default function RiskNarrativeSummary({
         </>
       ) : null}
 
-      <details className="rounded-[1.1rem] border border-white/10 bg-slate-950/30 p-3 sm:p-4">
-        <summary className="flex cursor-pointer list-none flex-wrap items-center justify-between gap-3 text-sm font-medium text-slate-100">
+      <details className="rounded-[1.1rem] border border-white/10 bg-slate-950/28 p-2.5 sm:p-3.5">
+        <summary className="flex cursor-pointer list-none flex-wrap items-center justify-between gap-2.5 text-[13px] font-medium text-slate-100 sm:text-sm">
           <span>Compare reads</span>
           {renderCompareReadsBadge(compareSummary.divergenceLabel)}
         </summary>
-        <div className="mt-2.5 space-y-2.5">
-          <div className="rounded-[0.95rem] border border-white/10 bg-slate-950/36 p-3">
+        <div className="mt-2 space-y-2">
+          <div className="rounded-[0.95rem] border border-white/10 bg-slate-950/34 p-2.5">
             <p className="text-sm font-semibold text-slate-100">{compareSummary.headline}</p>
-            <p className="mt-1.5 text-xs leading-5 text-slate-300">{compareSummary.divergenceText}</p>
+            <p className="mt-1 text-[11px] leading-5 text-slate-300">{compareSummary.divergenceText}</p>
           </div>
 
-          <div className={`grid gap-2.5 ${columns.length > 1 ? "sm:grid-cols-2" : "grid-cols-1"}`}>
+          <div className={`grid gap-2 ${columns.length > 1 ? "sm:grid-cols-2" : "grid-cols-1"}`}>
             {columns.slice(0, 2).map((column) => {
               const runtime = column.runtime
               const lead = runtime ? sortMaterialChanges(runtime)[0] : null
@@ -724,28 +731,29 @@ export default function RiskNarrativeSummary({
               return (
                 <article
                   key={`compare-summary-${column.id}`}
-                  className="rounded-[0.95rem] border border-white/10 bg-slate-950/28 p-3"
+                  className="rounded-[0.95rem] border border-white/10 bg-slate-950/26 p-2.5"
                 >
                   <div
-                    className={`inline-flex rounded-full border px-2.5 py-1 text-[11px] font-medium ${column.accentClass}`}
+                    title={column.label || `Campaign ${column.id}`}
+                    className={`inline-flex rounded-full border px-2.5 py-1 text-[10px] font-medium ${column.accentClass}`}
                   >
-                    {column.label || `Campaign ${column.id}`}
+                    {formatCampaignSurfaceLabel(column)}
                   </div>
                   {runtime ? (
                     <>
-                      <p className="mt-2 text-sm font-semibold leading-5 text-slate-100">
-                        {compactText(lead?.title ?? "No lead change surfaced.", 92)}
+                      <p className="mt-2 text-[13px] font-semibold leading-5 text-slate-100">
+                        {compactText(lead?.title ?? "No lead change surfaced.", 76)}
                       </p>
-                      <p className="mt-1 text-[11px] text-slate-400">
+                      <p className="mt-1 text-[10px] text-slate-400">
                         {drift ? `${drift} | ` : ""}
                         {runtime.material_changes.length} ranked changes
                       </p>
-                      <p className="mt-2 text-xs leading-5 text-slate-300 text-clamp-2">
-                        {compactText(runtime.lens_divergence.summary, 150)}
+                      <p className="mt-1.5 text-[11px] leading-5 text-slate-300 text-clamp-2">
+                        {compactText(runtime.lens_divergence.summary, 118)}
                       </p>
                     </>
                   ) : (
-                    <p className="mt-2 text-xs text-slate-400">
+                    <p className="mt-2 text-[11px] text-slate-400">
                       No runtime compare artifact loaded for this campaign.
                     </p>
                   )}
@@ -753,7 +761,7 @@ export default function RiskNarrativeSummary({
               )
             })}
           </div>
-          <p className="text-[11px] text-slate-500">
+          <p className="text-[10px] text-slate-500">
             Full ranked compare stays in the audit gateway below.
           </p>
         </div>

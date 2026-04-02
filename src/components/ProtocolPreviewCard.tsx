@@ -53,7 +53,7 @@ function buildSupportTile(
   if (supportStrategy === "scope_only") {
     return {
       label: "Pilot scope",
-      value: compactText(scopeNote, 130),
+      value: compactText(scopeNote, 118),
       tone: "neutral",
     }
   }
@@ -61,7 +61,7 @@ function buildSupportTile(
   if (effortRobustnessBundle) {
     return {
       label: "Matched-effort check",
-      value: compactText(effortRobustnessBundle.case_artifact.headline, 130),
+      value: compactText(effortRobustnessBundle.case_artifact.headline, 118),
       tone: "accent",
     }
   }
@@ -69,26 +69,26 @@ function buildSupportTile(
   if (noveltyLedgerArtifact) {
     return {
       label: "Fresh vs reused",
-      value: compactText(noveltyLedgerArtifact.comparison_to_02.why_secondary_only, 130),
+      value: compactText(noveltyLedgerArtifact.comparison_to_02.why_secondary_only, 118),
       tone: "neutral",
     }
   }
 
   return {
     label: "Pilot scope",
-    value: compactText(scopeNote, 130),
+    value: compactText(scopeNote, 118),
     tone: "neutral",
   }
 }
 
 function getToneClasses(tone: PreviewTile["tone"]): string {
   if (tone === "accent") {
-    return "border-sky-300/20 bg-sky-400/10"
+    return "border-sky-300/18 bg-sky-400/8"
   }
   if (tone === "boundary") {
-    return "border-amber-300/20 bg-amber-400/8"
+    return "border-amber-300/18 bg-amber-400/7"
   }
-  return "border-white/10 bg-slate-950/35"
+  return "border-white/10 bg-slate-950/32"
 }
 
 function buildPreviewModel(
@@ -130,25 +130,25 @@ function buildPreviewModel(
       variant === "bounded"
         ? familyConfig?.preview.boundedTitle ?? "Why this bounded read stays visible"
         : familyConfig?.preview.integratedTitle ?? "Why this fixture stays visible",
-    subtitle: compactText(rawSubtitle, variant === "bounded" ? 138 : 150),
+    subtitle: compactText(rawSubtitle, variant === "bounded" ? 126 : 138),
     chips,
     tiles: [
       {
         label: "Case role",
         value: compactText(
           familyConfig?.preview.roleSummary ?? pilotMatrixBundle.story.why_this_case_matters,
-          132
+          122
         ),
         tone: "neutral",
       },
       {
         label: "Visible reads add",
-        value: compactText(pilotMatrixBundle.story.protocol_read, 132),
+        value: compactText(pilotMatrixBundle.story.protocol_read, 122),
         tone: "accent",
       },
       {
         label: "Boundary",
-        value: compactText(pilotMatrixBundle.story.caveat, 132),
+        value: compactText(pilotMatrixBundle.story.caveat, 122),
         tone: "boundary",
       },
       supportTile,
@@ -212,26 +212,26 @@ export default function ProtocolPreviewCard({
 
   return (
     <section id="lab-pilot-matrix" className="space-y-3">
-      <article className="rounded-[1.35rem] border border-white/10 bg-linear-to-br from-slate-950/82 via-slate-900/65 to-slate-950/40 p-4 shadow-[0_18px_40px_rgba(2,6,23,0.2)] sm:p-5">
+      <article className="rounded-[1.35rem] border border-white/10 bg-linear-to-br from-slate-950/82 via-slate-900/65 to-slate-950/40 p-3.5 shadow-[0_18px_40px_rgba(2,6,23,0.2)] sm:p-4.5">
         <div className="flex flex-wrap items-start justify-between gap-3">
-          <div className="space-y-2">
+          <div className="space-y-1.5">
             <p className="text-[11px] uppercase tracking-[0.24em] text-sky-100">Protocol meaning</p>
             <h2 className="text-lg font-semibold text-slate-50 sm:text-xl">{previewModel.title}</h2>
           </div>
-          <span className="rounded-full border border-sky-300/20 bg-sky-400/10 px-2.5 py-1 text-[11px] text-sky-100">
+          <span className="rounded-full border border-sky-300/20 bg-sky-400/10 px-2.5 py-1 text-[10px] text-sky-100">
             Second layer
           </span>
         </div>
 
         {previewModel.showRestraintStrip && skepticCaseArtifact ? (
-          <div className="mt-3">
+          <div className="mt-2.5">
             <KORestraintStrip bundle={pilotMatrixBundle} skepticCase={skepticCaseArtifact} />
           </div>
         ) : null}
 
-        <p className="mt-3 text-sm leading-6 text-slate-100 text-clamp-2">{previewModel.subtitle}</p>
+        <p className="mt-2.5 text-sm leading-6 text-slate-100 text-clamp-2">{previewModel.subtitle}</p>
 
-        <div className="mt-3 flex flex-wrap gap-1.5 text-[11px] text-slate-200">
+        <div className="mt-2.5 flex flex-wrap gap-1.5 text-[11px] text-slate-200">
           {previewModel.chips.map((chip) => (
             <span
               key={chip}
@@ -242,41 +242,41 @@ export default function ProtocolPreviewCard({
           ))}
         </div>
 
-        <div className="mt-3 grid gap-2.5 sm:grid-cols-2">
+        <div className="mt-2.5 grid gap-2 sm:grid-cols-2">
           {previewModel.tiles.map((tile) => (
             <article
               key={tile.label}
-              className={`rounded-2xl border p-3 ${getToneClasses(tile.tone)}`}
+              className={`rounded-2xl border p-2.5 ${getToneClasses(tile.tone)}`}
             >
               <div className="text-[10px] uppercase tracking-[0.24em] text-slate-300">{tile.label}</div>
-              <p className="mt-2 text-sm leading-6 text-slate-100 text-clamp-3">{tile.value}</p>
+              <p className="mt-1.5 text-sm leading-5 text-slate-100 text-clamp-3">{tile.value}</p>
             </article>
           ))}
         </div>
       </article>
 
       {previewModel.showDetailDisclosure ? (
-        <details className="rounded-[1.1rem] border border-white/10 bg-slate-950/28 p-3 sm:p-4">
-          <summary className="cursor-pointer list-none text-sm font-medium text-slate-100">
+        <details className="rounded-[1.1rem] border border-white/10 bg-slate-950/26 p-2.5 sm:p-3.5">
+          <summary className="cursor-pointer list-none text-[13px] font-medium text-slate-100 sm:text-sm">
             Protocol detail
           </summary>
-          <p className="mt-2 text-xs text-slate-400">
+          <p className="mt-1.5 text-[11px] leading-5 text-slate-400">
             Lane roles, scope cues, and protocol-specific support stay discoverable here without taking
             over the default fold.
           </p>
 
-          <div className="mt-3 grid gap-3 md:grid-cols-3">
-            <article className="rounded-lg border border-white/10 bg-slate-950/35 p-3">
+          <div className="mt-2.5 grid gap-2.5 md:grid-cols-3">
+            <article className="rounded-lg border border-white/10 bg-slate-950/35 p-2.5">
               <div className="text-[11px] uppercase tracking-wide text-slate-400">Read order</div>
               <p className="mt-2 text-sm text-slate-100">{readOrder}</p>
             </article>
-            <article className="rounded-lg border border-white/10 bg-slate-950/35 p-3">
+            <article className="rounded-lg border border-white/10 bg-slate-950/35 p-2.5">
               <div className="text-[11px] uppercase tracking-wide text-slate-400">Pilot scope</div>
               <p className="mt-2 text-sm text-slate-100">
                 {compactText(pilotMatrixBundle.matrix.pilot_status.note, 180)}
               </p>
             </article>
-            <article className="rounded-lg border border-white/10 bg-slate-950/35 p-3">
+            <article className="rounded-lg border border-white/10 bg-slate-950/35 p-2.5">
               <div className="text-[11px] uppercase tracking-wide text-slate-400">Primary read</div>
               <p className="mt-2 text-sm text-slate-100">
                 {primaryCell ? compactText(primaryCell.why_this_lane_matters, 180) : "Primary read not available."}
@@ -284,11 +284,11 @@ export default function ProtocolPreviewCard({
             </article>
           </div>
 
-          <div className="mt-3 grid gap-3">
+          <div className="mt-2.5 grid gap-2.5">
             {pilotMatrixBundle.ordered_cells.map((cell) => (
               <article
                 key={cell.cell_id}
-                className="rounded-lg border border-white/10 bg-slate-950/35 p-3"
+                className="rounded-lg border border-white/10 bg-slate-950/35 p-2.5"
               >
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="rounded-full border border-white/10 bg-white/5 px-2 py-0.5 text-[11px] text-slate-200">

@@ -18,7 +18,7 @@ export default function LLYStopStrip({
 }: LLYStopStripProps) {
   const availableParts = [
     "Filing answer",
-    "Protocol cue",
+    "Protocol meaning",
     noveltyLedger ? "Fresh vs reused" : null,
     effortRobustness ? "Integrity check" : null,
   ].filter((value): value is string => Boolean(value))
@@ -28,7 +28,7 @@ export default function LLYStopStrip({
   return (
     <section
       id="lab-lly-stop-strip"
-      className="space-y-2.5 rounded-[1.25rem] border border-amber-300/25 bg-linear-to-r from-amber-400/12 via-slate-950/78 to-slate-950/45 p-3.5 shadow-[0_18px_36px_rgba(15,23,42,0.22)] sm:p-4.5"
+      className="space-y-2.5 rounded-[1.25rem] border border-amber-300/25 bg-linear-to-r from-amber-400/12 via-slate-950/78 to-slate-950/45 p-3.5 shadow-[0_18px_36px_rgba(15,23,42,0.22)] sm:p-4"
     >
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div className="space-y-1.5">

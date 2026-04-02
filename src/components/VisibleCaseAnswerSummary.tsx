@@ -75,7 +75,7 @@ export default function VisibleCaseAnswerSummary({
           Basis: {primaryCell?.short_label ?? "Primary read"}
         </span>
         <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 sm:px-3">
-          Visible case
+          Pilot case
         </span>
         {noveltyLedger ? (
           <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 sm:px-3">

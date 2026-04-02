@@ -59,13 +59,13 @@ export default function Companies() {
           </p>
           <div className="flex flex-wrap gap-2 text-xs text-slate-200">
             <span className="rounded-full border border-sky-300/30 bg-sky-400/12 px-3 py-1">
-              Three fixed fixtures
+              Bounded public pilot
             </span>
             <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">
-              Choose by goal
+              Visible pilot roles
             </span>
             <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">
-              Open one case
+              Open one pilot case
             </span>
           </div>
           <div className="flex flex-wrap gap-3">
