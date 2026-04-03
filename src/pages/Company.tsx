@@ -189,7 +189,7 @@ export default function Company() {
                   <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1">
                     Role: {activeRoleLabel}
                   </span>
-                  <span className="rounded-full border border-white/8 bg-white/[0.04] px-2.5 py-1 text-slate-300">
+                  <span className="rounded-full border border-white/8 bg-white/4 px-2.5 py-1 text-slate-300">
                     Pair: {activeCaseLabel}
                   </span>
                 </div>

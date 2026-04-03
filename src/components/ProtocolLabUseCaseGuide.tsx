@@ -68,7 +68,7 @@ export default function ProtocolLabUseCaseGuide({
                 {pilot?.why_case_exists ?? "Open the current fixture for this pilot role."}
               </p>
 
-              <div className="mt-4 rounded-xl border border-white/10 bg-white/[0.04] p-3">
+              <div className="mt-4 rounded-xl border border-white/10 bg-white/4 p-3">
                 <div className="text-[11px] uppercase tracking-[0.2em] text-slate-500">
                   What this fixture proves
                 </div>
@@ -78,7 +78,7 @@ export default function ProtocolLabUseCaseGuide({
               </div>
 
               <div className="mt-auto flex items-center justify-between gap-3 border-t border-white/10 pt-4">
-                <span className="max-w-[13rem] text-xs leading-5 text-slate-300">
+                <span className="max-w-52 text-xs leading-5 text-slate-300">
                   {pilot?.guidance.why_pick ?? "Open this fixture."}
                 </span>
                 <span className="inline-flex items-center gap-2 rounded-full border border-sky-300/25 bg-sky-400/10 px-3 py-1.5 text-sm font-semibold text-sky-100 transition group-hover:border-sky-200/45 group-hover:text-white">

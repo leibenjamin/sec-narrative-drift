@@ -235,7 +235,7 @@ export default function ProtocolPreviewCard({
           {previewModel.chips.map((chip) => (
             <span
               key={chip}
-              className="rounded-full border border-white/8 bg-white/[0.04] px-2.5 py-1"
+              className="rounded-full border border-white/8 bg-white/4 px-2.5 py-1"
             >
               {chip}
             </span>

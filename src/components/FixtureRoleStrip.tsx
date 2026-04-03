@@ -39,7 +39,7 @@ export default function FixtureRoleStrip({ items }: FixtureRoleStripProps) {
         {items.map((item) => (
           <article
             key={item.ticker}
-            className="rounded-[1rem] border border-white/10 bg-slate-950/70 p-2.5"
+            className="rounded-2xl border border-white/10 bg-slate-950/70 p-2.5"
           >
             <div className="flex items-start justify-between gap-3">
               <div>

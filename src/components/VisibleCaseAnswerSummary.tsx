@@ -75,7 +75,7 @@ export default function VisibleCaseAnswerSummary({
           Basis: {primaryCell?.short_label ?? "Primary read"}
         </span>
         {noveltyLedger ? (
-          <span className="rounded-full border border-white/8 bg-white/[0.04] px-2.5 py-1 text-slate-300 sm:px-3">
+          <span className="rounded-full border border-white/8 bg-white/4 px-2.5 py-1 text-slate-300 sm:px-3">
             Fresh vs reused
           </span>
         ) : null}
