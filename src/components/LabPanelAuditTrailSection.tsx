@@ -98,6 +98,26 @@ function buildDebugPayload(
   )
 }
 
+type DisclosureSummaryProps = {
+  title: string
+  description: string
+  badge: string
+}
+
+function DisclosureSummary({ title, description, badge }: DisclosureSummaryProps) {
+  return (
+    <summary className="flex cursor-pointer list-none items-start justify-between gap-3 rounded-[0.95rem] border border-white/10 bg-slate-950/36 px-3 py-3">
+      <div>
+        <div className="text-sm font-semibold text-slate-100">{title}</div>
+        <p className="mt-1 text-xs leading-5 text-slate-400">{description}</p>
+      </div>
+      <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] font-medium text-slate-200">
+        {badge}
+      </span>
+    </summary>
+  )
+}
+
 export default function LabPanelAuditTrailSection({
   analysisMode,
   advancedControlsProps,
@@ -179,21 +199,21 @@ export default function LabPanelAuditTrailSection({
       </div>
 
       <div className="grid gap-2.5 md:grid-cols-3">
-        <article className="rounded-2xl border border-white/10 bg-slate-950/28 p-3">
+        <article className="rounded-2xl border border-sky-300/14 bg-slate-950/28 p-3">
           <div className="text-[10px] uppercase tracking-[0.24em] text-slate-400">Controls</div>
           <p className="mt-2 text-xs leading-5 text-slate-100">
             Case override, compare-lane selection, and method toggles stay tucked into the first
             collapsed panel.
           </p>
         </article>
-        <article className="rounded-2xl border border-white/10 bg-slate-950/28 p-3">
+        <article className="rounded-2xl border border-emerald-300/14 bg-slate-950/28 p-3">
           <div className="text-[10px] uppercase tracking-[0.24em] text-slate-400">Methods</div>
           <p className="mt-2 text-xs leading-5 text-slate-100">
             {totalMethodCards} deterministic cards remain available, but they no longer dominate the
             default company view.
           </p>
         </article>
-        <article className="rounded-2xl border border-white/10 bg-slate-950/28 p-3">
+        <article className="rounded-2xl border border-amber-300/14 bg-slate-950/28 p-3">
           <div className="text-[10px] uppercase tracking-[0.24em] text-slate-400">Structure audit</div>
           <p className="mt-2 text-xs leading-5 text-slate-100">
             Full ranked compare, outline structure, and optional insight stay below this gateway and
@@ -204,11 +224,13 @@ export default function LabPanelAuditTrailSection({
 
       <LabPanelAdvancedControls {...advancedControlsProps} />
 
-      <details className="rounded-[1.1rem] border border-white/10 bg-slate-950/22 p-3 sm:p-4">
-        <summary className="cursor-pointer list-none text-sm font-medium text-slate-100">
-          Deterministic methods
-        </summary>
-        <p className="mt-2 text-xs text-slate-400">
+      <details className="rounded-[1.1rem] border border-emerald-300/16 bg-slate-950/22 p-3 sm:p-4">
+        <DisclosureSummary
+          title="Deterministic methods"
+          description="Open this only when the filing answer needs method-by-method pressure."
+          badge={`${totalMethodCards} cards`}
+        />
+        <p className="mt-3 text-xs text-slate-400">
           Expand only when the filing answer needs method-by-method pressure. Each card still keeps
           its own evidence, caveats, and method context.
         </p>
@@ -245,11 +267,16 @@ export default function LabPanelAuditTrailSection({
         </div>
       </details>
 
-      <details id="lab-agreement" className="rounded-[1.1rem] border border-white/10 bg-slate-950/22 p-3 sm:p-4">
-        <summary className="cursor-pointer list-none text-sm font-medium text-slate-100">
-          Where methods agree
-        </summary>
-        <p className="mt-2 text-xs text-slate-400">
+      <details
+        id="lab-agreement"
+        className="rounded-[1.1rem] border border-sky-300/16 bg-slate-950/22 p-3 sm:p-4"
+      >
+        <DisclosureSummary
+          title="Where methods agree"
+          description="Use this table only when you want to test whether the deterministic methods reinforce the same story."
+          badge="Cross-check"
+        />
+        <p className="mt-3 text-xs text-slate-400">
           Use this table only when you want to test whether the deterministic methods reinforce the
           same story or pull you into a slower read.
         </p>
@@ -297,11 +324,13 @@ export default function LabPanelAuditTrailSection({
       </details>
 
       {selectedLlmCampaignA || selectedLlmCampaignB ? (
-        <details className="rounded-[1.1rem] border border-white/10 bg-slate-950/22 p-3 sm:p-4">
-          <summary className="cursor-pointer list-none text-sm font-medium text-slate-100">
-            Structure audit
-          </summary>
-          <p className="mt-2 text-xs text-slate-400">
+        <details className="rounded-[1.1rem] border border-amber-300/16 bg-slate-950/22 p-3 sm:p-4">
+          <DisclosureSummary
+            title="Structure audit"
+            description="Open this only when you want the full ranked compare and outline structure behind the briefing shell."
+            badge="Full compare"
+          />
+          <p className="mt-3 text-xs text-slate-400">
             Open this only when you want the full ranked compare, outline structure, mechanisms, and
             limitations that sit behind the briefing shell.
           </p>
@@ -345,10 +374,12 @@ export default function LabPanelAuditTrailSection({
 
       {selectedLlmCampaignA || selectedLlmCampaignB ? (
         <details className="rounded-[1.1rem] border border-white/10 bg-slate-950/22 p-3 sm:p-4">
-          <summary className="cursor-pointer list-none text-sm font-medium text-slate-100">
-            Optional insight lens
-          </summary>
-          <p className="mt-2 text-xs text-slate-400">
+          <DisclosureSummary
+            title="Optional insight lens"
+            description="Insight sidecars stay explicitly secondary and only matter once the filing answer and structure audit are already in view."
+            badge="Optional"
+          />
+          <p className="mt-3 text-xs text-slate-400">
             Insight sidecars stay explicitly secondary and only matter once the filing answer and
             structure audit are already in view.
           </p>

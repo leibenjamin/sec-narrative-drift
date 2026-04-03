@@ -89,9 +89,17 @@ export default function LabPanelAdvancedControls({
   showMethodContextJump,
 }: LabPanelAdvancedControlsProps) {
   return (
-    <details className="rounded-[1.1rem] border border-white/10 bg-slate-950/18 p-3 sm:p-4">
-      <summary className="cursor-pointer list-none text-sm font-semibold text-slate-100">
-        Advanced controls
+    <details className="rounded-[1.1rem] border border-sky-300/16 bg-slate-950/18 p-3 sm:p-4">
+      <summary className="flex cursor-pointer list-none items-start justify-between gap-3 rounded-[0.95rem] border border-white/10 bg-slate-950/36 px-3 py-3">
+        <div>
+          <div className="text-sm font-semibold text-slate-100">Advanced controls</div>
+          <p className="mt-1 text-xs leading-5 text-slate-400">
+            Power-user controls for changing lanes, methods, and diagnostics.
+          </p>
+        </div>
+        <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] font-medium text-slate-200">
+          Power tools
+        </span>
       </summary>
       <p className="mt-3 max-w-3xl text-xs text-slate-400">
         Power-user controls for changing lanes, methods, and diagnostics. They stay below the answer

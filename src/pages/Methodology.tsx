@@ -168,7 +168,7 @@ export default function Methodology() {
       <div className="mx-auto max-w-6xl space-y-5 px-5 py-5 sm:space-y-7 sm:px-6 sm:py-8">
         <section className="relative overflow-hidden rounded-4xl border border-white/10 bg-linear-to-br from-slate-950/92 via-slate-950/84 to-slate-900/72 p-4 shadow-[0_30px_80px_rgba(2,6,23,0.38)] sm:p-6">
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(56,189,248,0.16),transparent_36%),radial-gradient(circle_at_bottom_right,rgba(16,185,129,0.11),transparent_30%)]" />
-          <div className="relative space-y-3.5 sm:space-y-4">
+          <div className="relative space-y-3 sm:space-y-4">
             <div className="flex flex-wrap items-center gap-2 text-[11px] uppercase tracking-[0.24em] text-slate-300">
               <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">
                 Methodology
@@ -176,7 +176,7 @@ export default function Methodology() {
               <span className="rounded-full border border-sky-300/25 bg-sky-400/10 px-3 py-1 text-sky-100">
                 Workflow anatomy
               </span>
-              <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">
+              <span className="px-1 text-[10px] tracking-[0.18em] text-slate-500 sm:px-2">
                 Bounded public pilot
               </span>
             </div>
@@ -191,9 +191,17 @@ export default function Methodology() {
               </p>
             </header>
 
-            <WorkflowAnatomyDiagram stages={WORKFLOW_STAGES} />
-            <TrustModelRow items={TRUST_MODEL_ITEMS} />
-            <FixtureRoleStrip items={FIXTURE_ROLE_ITEMS} />
+            <div className="grid gap-3.5 sm:gap-4">
+              <div className="lg:order-2">
+                <TrustModelRow items={TRUST_MODEL_ITEMS} />
+              </div>
+              <div className="lg:order-3">
+                <FixtureRoleStrip items={FIXTURE_ROLE_ITEMS} />
+              </div>
+              <div className="lg:order-1">
+                <WorkflowAnatomyDiagram stages={WORKFLOW_STAGES} />
+              </div>
+            </div>
           </div>
         </section>
 

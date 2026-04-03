@@ -53,10 +53,10 @@ export default function ProtocolLabUseCaseGuide({
             <Link
               key={ticker}
               to={resolveHref(visiblePilots, ticker)}
-              className="block rounded-[1.2rem] border border-white/10 bg-slate-950/35 p-4 transition hover:border-sky-300/35 hover:bg-slate-950/55"
+              className="group flex h-full flex-col rounded-[1.25rem] border border-white/10 bg-slate-950/35 p-4 transition hover:-translate-y-0.5 hover:border-sky-300/35 hover:bg-slate-950/58"
             >
               <div>
-                <div className="text-[11px] uppercase tracking-wide text-slate-400">
+                <div className="text-[11px] uppercase tracking-[0.22em] text-slate-400">
                   {familyConfig?.chooserObjectiveLabel ?? ticker}
                 </div>
                 <h2 className="mt-2 text-base font-semibold text-slate-50">
@@ -64,22 +64,29 @@ export default function ProtocolLabUseCaseGuide({
                 </h2>
               </div>
 
-              <p className="mt-4 text-sm text-slate-100">
+              <p className="mt-4 text-sm leading-6 text-slate-100">
                 {pilot?.why_case_exists ?? "Open the current fixture for this pilot role."}
               </p>
 
-              <div className="mt-4 rounded-xl border border-white/10 bg-white/5 p-3">
-                <div className="text-[11px] uppercase tracking-wide text-slate-400">
+              <div className="mt-4 rounded-xl border border-white/10 bg-white/[0.04] p-3">
+                <div className="text-[11px] uppercase tracking-[0.2em] text-slate-500">
                   What this fixture proves
                 </div>
-                <p className="mt-2 text-sm text-slate-100">
+                <p className="mt-2 text-sm leading-6 text-slate-100">
                   {pilot?.guidance.what_you_learn ?? "Current pilot guidance is unavailable."}
                 </p>
               </div>
 
-              <div className="mt-4 flex items-center justify-between gap-3 text-xs text-slate-300">
-                <span>{pilot?.guidance.why_pick ?? "Open this fixture."}</span>
-                <span className="text-sky-200">{`Open ${ticker}`}</span>
+              <div className="mt-auto flex items-center justify-between gap-3 border-t border-white/10 pt-4">
+                <span className="max-w-[13rem] text-xs leading-5 text-slate-300">
+                  {pilot?.guidance.why_pick ?? "Open this fixture."}
+                </span>
+                <span className="inline-flex items-center gap-2 rounded-full border border-sky-300/25 bg-sky-400/10 px-3 py-1.5 text-sm font-semibold text-sky-100 transition group-hover:border-sky-200/45 group-hover:text-white">
+                  {`Open ${ticker}`}
+                  <span aria-hidden="true" className="text-base leading-none transition group-hover:translate-x-0.5">
+                    →
+                  </span>
+                </span>
               </div>
             </Link>
           )

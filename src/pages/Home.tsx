@@ -21,6 +21,8 @@ const HOME_META_DESCRIPTION =
 const HOME_HOOK = "How do you show what changed in a document without overstating what you know?"
 const HOME_SUPPORT =
   "A bounded public pilot across NVDA, LLY, and KO makes the protocol visible in one pass."
+const HOME_CHOOSER_SUMMARY =
+  "Choose the first read you want: vivid answer, honest stop, or useful restraint."
 
 const PROTOCOL_STAGE_STEPS: ProtocolStageStep[] = [
   {
@@ -117,80 +119,90 @@ export default function Home() {
       <div className="mx-auto max-w-6xl px-5 py-5 sm:px-6 sm:py-8">
         <section className="relative overflow-hidden rounded-[2.2rem] border border-white/10 bg-linear-to-br from-slate-950/92 via-slate-950/82 to-slate-900/72 shadow-[0_32px_80px_rgba(2,6,23,0.44)]">
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(56,189,248,0.16),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(16,185,129,0.12),transparent_28%)]" />
-          <div className="relative grid gap-4 p-5 sm:gap-5 sm:p-6 xl:p-7">
-            <div className="flex flex-wrap items-center gap-2 text-[11px] uppercase tracking-[0.24em] text-slate-300">
-              <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">
-                Document Protocol Lab
-              </span>
-              <span className="rounded-full border border-sky-300/25 bg-sky-400/10 px-3 py-1 text-sky-100">
-                Bounded public pilot
-              </span>
-              <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">
-                NVDA / LLY / KO
-              </span>
-            </div>
+          <div className="relative grid gap-5 p-5 sm:gap-6 sm:p-6 xl:p-7">
+            <div className="grid gap-5">
+              <div className="flex flex-wrap items-center gap-2 text-[11px] uppercase tracking-[0.24em] text-slate-300">
+                <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">
+                  Document Protocol Lab
+                </span>
+                <span className="rounded-full border border-sky-300/25 bg-sky-400/10 px-3 py-1 text-sky-100">
+                  Bounded public pilot
+                </span>
+                <span className="px-1 text-[10px] tracking-[0.18em] text-slate-500 sm:px-2">
+                  NVDA / LLY / KO
+                </span>
+              </div>
 
-            <div className="grid gap-4 lg:grid-cols-[1.08fr_0.92fr] lg:items-end">
-              <div className="space-y-4">
-                <div className="space-y-3">
-                  <h1 className="text-[clamp(2.15rem,4vw,4.2rem)] font-semibold leading-[0.95] tracking-[-0.04em] text-slate-50">
-                    {HOME_HOOK}
-                  </h1>
-                  <p className="max-w-2xl text-sm leading-6 text-slate-200 sm:text-base">
-                    {HOME_SUPPORT}
-                  </p>
+              <div className="grid gap-5 lg:grid-cols-[1.02fr_0.98fr] lg:items-start">
+                <div className="space-y-5">
+                  <div className="space-y-3">
+                    <h1 className="max-w-3xl text-[clamp(2.15rem,4vw,4.2rem)] font-semibold leading-[0.95] tracking-[-0.04em] text-slate-50">
+                      {HOME_HOOK}
+                    </h1>
+                    <p className="max-w-2xl text-sm leading-6 text-slate-200 sm:text-base">
+                      {HOME_SUPPORT}
+                    </p>
+                  </div>
+
+                  <div className="space-y-3">
+                    <div className="flex flex-wrap items-center gap-3">
+                      <Link
+                        to={recommendedHref}
+                        className="inline-flex min-h-11 items-center justify-center rounded-full bg-sky-500 px-5 py-2.5 text-sm font-semibold text-slate-950 transition hover:bg-sky-400"
+                      >
+                        Start with NVDA
+                      </Link>
+                      <Link
+                        to="/companies"
+                        className="inline-flex min-h-11 items-center justify-center rounded-full border border-white/20 px-4 py-2.5 text-sm font-medium text-slate-200 transition hover:border-white/40 hover:bg-white/5"
+                      >
+                        See all fixtures
+                      </Link>
+                    </div>
+                    <Link
+                      to="/methodology"
+                      className="inline-flex items-center gap-2 text-sm font-medium text-slate-300 transition hover:text-white"
+                    >
+                      <span>How the protocol works</span>
+                      <span aria-hidden="true" className="text-base leading-none">
+                        →
+                      </span>
+                    </Link>
+                  </div>
                 </div>
 
-                <div className="flex flex-wrap items-center gap-3">
-                  <Link
-                    to={recommendedHref}
-                    className="inline-flex min-h-11 items-center justify-center rounded-full bg-sky-500 px-5 py-2.5 text-sm font-semibold text-slate-950 transition hover:bg-sky-400"
-                  >
-                    Start with NVDA
-                  </Link>
-                  <Link
-                    to="/companies"
-                    className="inline-flex min-h-11 items-center justify-center rounded-full border border-white/20 px-4 py-2.5 text-sm font-medium text-slate-200 transition hover:border-white/40 hover:bg-white/5"
-                  >
-                    See all fixtures
-                  </Link>
-                  <Link
-                    to="/methodology"
-                    className="inline-flex min-h-11 items-center justify-center rounded-full border border-transparent px-2 py-2.5 text-sm font-medium text-slate-300 transition hover:text-white"
-                  >
-                    How the protocol works
-                  </Link>
+                <ProtocolStageMap steps={PROTOCOL_STAGE_STEPS} />
+              </div>
+            </div>
+
+            <div className="rounded-[1.7rem] border border-white/10 bg-slate-950/34 p-4 sm:p-5">
+              <div className="flex flex-wrap items-start justify-between gap-4">
+                <div className="max-w-2xl">
+                  <div className="text-[11px] uppercase tracking-[0.28em] text-sky-100">Next move</div>
+                  <h2 className="mt-2 text-xl font-semibold text-slate-50 sm:text-2xl">
+                    Choose the fixture that matches the read you need.
+                  </h2>
+                  <p className="mt-2 text-sm leading-6 text-slate-300">{HOME_CHOOSER_SUMMARY}</p>
+                </div>
+                <div className="text-[11px] uppercase tracking-[0.2em] text-slate-500">
+                  Static JSON only. Audit stays secondary.
                 </div>
               </div>
 
-              <ProtocolStageMap steps={PROTOCOL_STAGE_STEPS} />
-            </div>
-
-            <div className="grid gap-4 md:grid-cols-3 stagger-children">
-              {fixtureCards.map((fixture) => (
-                <FixtureRoleCard
-                  key={fixture.ticker}
-                  ticker={fixture.ticker}
-                  companyName={fixture.companyName}
-                  roleLabel={fixture.roleLabel}
-                  demonstration={fixture.demonstration}
-                  href={fixture.href}
-                  ctaLabel={fixture.ctaLabel}
-                  emphasis={fixture.emphasis}
-                />
-              ))}
-            </div>
-
-            <div className="flex flex-wrap items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-slate-400">
-              <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">
-                Static JSON only
-              </span>
-              <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">
-                Audit stays secondary
-              </span>
-              <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">
-                Pilot claim stays bounded
-              </span>
+              <div className="mt-4 grid gap-4 md:grid-cols-3 stagger-children">
+                {fixtureCards.map((fixture) => (
+                  <FixtureRoleCard
+                    key={fixture.ticker}
+                    ticker={fixture.ticker}
+                    companyName={fixture.companyName}
+                    roleLabel={fixture.roleLabel}
+                    demonstration={fixture.demonstration}
+                    href={fixture.href}
+                    ctaLabel={fixture.ctaLabel}
+                    emphasis={fixture.emphasis}
+                  />
+                ))}
+              </div>
             </div>
 
             {isLoading ? (

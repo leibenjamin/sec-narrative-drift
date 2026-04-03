@@ -47,7 +47,7 @@ export default function Companies() {
   return (
     <main className="min-h-screen page-fade">
       <PageMetadata title={COMPANIES_TITLE} description={COMPANIES_DESCRIPTION} />
-      <div className="mx-auto max-w-6xl space-y-8 px-6 py-12">
+      <div className="mx-auto max-w-6xl space-y-7 px-6 py-12">
         <header className="space-y-4">
           <p className="text-xs uppercase tracking-[0.28em] text-slate-300">Cases</p>
           <h1 className="text-3xl font-semibold text-slate-50 sm:text-4xl">
@@ -63,9 +63,6 @@ export default function Companies() {
             </span>
             <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">
               Visible pilot roles
-            </span>
-            <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">
-              Open one pilot case
             </span>
           </div>
           <div className="flex flex-wrap gap-3">
@@ -100,7 +97,7 @@ export default function Companies() {
             <ProtocolLabUseCaseGuide
               visiblePilots={visiblePilots}
               title="Choose by goal"
-              description="Each option below is a fixed visible pilot fixture for a different first question."
+              description="Open the fixed pilot fixture that gives the first read you want."
             />
 
             <section className="grid gap-4 lg:grid-cols-[1.05fr_0.95fr]">

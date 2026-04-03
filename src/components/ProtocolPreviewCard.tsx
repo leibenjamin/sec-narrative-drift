@@ -231,11 +231,11 @@ export default function ProtocolPreviewCard({
 
         <p className="mt-2.5 text-sm leading-6 text-slate-100 text-clamp-2">{previewModel.subtitle}</p>
 
-        <div className="mt-2.5 flex flex-wrap gap-1.5 text-[11px] text-slate-200">
+        <div className="mt-2.5 flex flex-wrap gap-1.5 text-[11px] text-slate-300">
           {previewModel.chips.map((chip) => (
             <span
               key={chip}
-              className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1"
+              className="rounded-full border border-white/8 bg-white/[0.04] px-2.5 py-1"
             >
               {chip}
             </span>

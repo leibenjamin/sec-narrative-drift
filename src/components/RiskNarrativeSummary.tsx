@@ -529,7 +529,7 @@ function buildCompareReadsSummary(columns: NarrativeCampaignColumn[]): CompareRe
     return {
       headline: "Same core shift, different emphasis.",
       divergenceLabel: "stylistic",
-      divergenceText: `${leftLabel}: "${compactText(sharedMatch.leftChange.title, 68)}". ${rightLabel}: "${compactText(sharedMatch.rightChange.title, 68)}".`,
+      divergenceText: `${leftLabel}: "${compactText(sharedMatch.leftChange.title, 54)}". ${rightLabel}: "${compactText(sharedMatch.rightChange.title, 54)}".`,
     }
   }
 
@@ -548,7 +548,7 @@ function buildCompareReadsSummary(columns: NarrativeCampaignColumn[]): CompareRe
   return {
     headline: "Different lead reads.",
     divergenceLabel: "substantive",
-    divergenceText: `${leftLabel}: "${compactText(leftLead.title, 68)}". ${rightLabel}: "${compactText(rightLead.title, 68)}".`,
+    divergenceText: `${leftLabel}: "${compactText(leftLead.title, 54)}". ${rightLabel}: "${compactText(rightLead.title, 54)}".`,
   }
 }
 
@@ -712,15 +712,30 @@ export default function RiskNarrativeSummary({
         </>
       ) : null}
 
-      <details className="rounded-[1.1rem] border border-white/10 bg-slate-950/28 p-2.5 sm:p-3.5">
-        <summary className="flex cursor-pointer list-none flex-wrap items-center justify-between gap-2.5 text-[13px] font-medium text-slate-100 sm:text-sm">
-          <span>Compare reads</span>
-          {renderCompareReadsBadge(compareSummary.divergenceLabel)}
+      <details className="rounded-[1.1rem] border border-sky-300/15 bg-slate-950/28 p-2.5 sm:p-3">
+        <summary className="list-none cursor-pointer rounded-[0.95rem] border border-white/10 bg-slate-950/38 px-3 py-3">
+          <div className="flex flex-wrap items-start justify-between gap-3">
+            <div>
+              <div className="text-[10px] uppercase tracking-[0.24em] text-slate-400">Compare utility</div>
+              <div className="mt-1 text-sm font-semibold text-slate-100">Compare reads</div>
+              <p className="mt-1 text-[11px] leading-5 text-slate-400">
+                Check whether the visible reads land on the same shift before opening the full audit.
+              </p>
+            </div>
+            <div className="flex items-center gap-2">
+              {renderCompareReadsBadge(compareSummary.divergenceLabel)}
+              <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] font-medium text-slate-200">
+                Open
+              </span>
+            </div>
+          </div>
         </summary>
-        <div className="mt-2 space-y-2">
-          <div className="rounded-[0.95rem] border border-white/10 bg-slate-950/34 p-2.5">
+        <div className="mt-3 space-y-3">
+          <div className="rounded-[0.95rem] border border-white/10 bg-slate-950/34 p-3">
             <p className="text-sm font-semibold text-slate-100">{compareSummary.headline}</p>
-            <p className="mt-1 text-[11px] leading-5 text-slate-300">{compareSummary.divergenceText}</p>
+            <p className="mt-1 text-[11px] leading-5 text-slate-300">
+              {compactText(compareSummary.divergenceText, 134)}
+            </p>
           </div>
 
           <div className={`grid gap-2 ${columns.length > 1 ? "sm:grid-cols-2" : "grid-cols-1"}`}>
@@ -731,7 +746,7 @@ export default function RiskNarrativeSummary({
               return (
                 <article
                   key={`compare-summary-${column.id}`}
-                  className="rounded-[0.95rem] border border-white/10 bg-slate-950/26 p-2.5"
+                  className="rounded-[0.95rem] border border-white/10 bg-slate-950/26 p-3"
                 >
                   <div
                     title={column.label || `Campaign ${column.id}`}
@@ -742,14 +757,14 @@ export default function RiskNarrativeSummary({
                   {runtime ? (
                     <>
                       <p className="mt-2 text-[13px] font-semibold leading-5 text-slate-100">
-                        {compactText(lead?.title ?? "No lead change surfaced.", 76)}
+                        {compactText(lead?.title ?? "No lead change surfaced.", 58)}
                       </p>
                       <p className="mt-1 text-[10px] text-slate-400">
                         {drift ? `${drift} | ` : ""}
                         {runtime.material_changes.length} ranked changes
                       </p>
                       <p className="mt-1.5 text-[11px] leading-5 text-slate-300 text-clamp-2">
-                        {compactText(runtime.lens_divergence.summary, 118)}
+                        {compactText(runtime.lens_divergence.summary, 86)}
                       </p>
                     </>
                   ) : (
@@ -761,7 +776,7 @@ export default function RiskNarrativeSummary({
               )
             })}
           </div>
-          <p className="text-[10px] text-slate-500">
+          <p className="text-[10px] uppercase tracking-[0.18em] text-slate-500">
             Full ranked compare stays in the audit gateway below.
           </p>
         </div>

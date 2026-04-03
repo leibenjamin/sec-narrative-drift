@@ -40,35 +40,40 @@ export default function LLYStopStrip({
         </span>
       </div>
 
-      <div className="grid gap-2.5 md:grid-cols-3">
-        <article className="rounded-2xl border border-white/10 bg-slate-950/36 p-3">
-          <div className="text-[10px] uppercase tracking-[0.24em] text-slate-300">Available here</div>
-          <div className="mt-2 flex flex-wrap gap-1.5 text-[11px] text-slate-100">
-            {availableParts.map((part) => (
-              <span
-                key={part}
-                className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1"
-              >
-                {part}
-              </span>
-            ))}
-          </div>
-        </article>
-
-        <article className="rounded-2xl border border-white/10 bg-slate-950/36 p-3">
-          <div className="text-[10px] uppercase tracking-[0.24em] text-slate-300">
-            Intentionally not shown
-          </div>
-          <p className="mt-2 text-sm leading-5 text-slate-100">
-            No lower audit stack, broader benchmark claim, or deeper multi-panel route ships on the
-            public LLY page.
+      <div className="grid gap-2.5 lg:grid-cols-[minmax(0,1.12fr)_minmax(0,0.88fr)]">
+        <article className="rounded-2xl border border-amber-300/22 bg-amber-400/10 p-4">
+          <div className="text-[10px] uppercase tracking-[0.24em] text-amber-100">Stop signal</div>
+          <p className="mt-2 text-lg font-semibold leading-7 text-slate-50 sm:text-xl">
+            Stop at the explicit boundary before the public route pretends to broader certainty.
           </p>
+          <p className="mt-3 text-sm leading-6 text-slate-100">{compactText(disciplinedStop, 220)}</p>
         </article>
 
-        <article className="rounded-2xl border border-amber-300/20 bg-amber-400/10 p-3">
-          <div className="text-[10px] uppercase tracking-[0.24em] text-amber-100">Why stop here</div>
-          <p className="mt-2 text-sm leading-5 text-slate-100">{compactText(disciplinedStop, 150)}</p>
-        </article>
+        <div className="grid gap-2.5">
+          <article className="rounded-2xl border border-white/10 bg-slate-950/36 p-3">
+            <div className="text-[10px] uppercase tracking-[0.24em] text-slate-300">Available here</div>
+            <div className="mt-2 flex flex-wrap gap-1.5 text-[11px] text-slate-100">
+              {availableParts.map((part) => (
+                <span
+                  key={part}
+                  className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1"
+                >
+                  {part}
+                </span>
+              ))}
+            </div>
+          </article>
+
+          <article className="rounded-2xl border border-white/10 bg-slate-950/36 p-3">
+            <div className="text-[10px] uppercase tracking-[0.24em] text-slate-300">
+              Intentionally not shown
+            </div>
+            <p className="mt-2 text-sm leading-5 text-slate-100">
+              No lower audit stack, broader benchmark claim, or deeper multi-panel route ships on the
+              public LLY page.
+            </p>
+          </article>
+        </div>
       </div>
     </section>
   )
