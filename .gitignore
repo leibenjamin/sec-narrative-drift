@@ -168,12 +168,36 @@ public/data/sec_narrative_drift_lab_candidates*/
 # Local flat detector mirrors (canonical tracked paths are under outputs/<detector>/...)
 public/data/sec_narrative_drift_lab/*/lab_10k_item1a_*_det_*_edgar.json
 
-# Deferred Protocol Lab publish surfaces
+# Protocol Lab: non-app-consumed artifacts excluded from public serving
 public/data/business_document_protocol_lab/comparisons/
 public/data/business_document_protocol_lab/evals/
 public/data/business_document_protocol_lab/runs/
+public/data/business_document_protocol_lab/input_packs/
+public/data/business_document_protocol_lab/source_cases/
+public/data/business_document_protocol_lab/registries/runner_bindings_local_v1.json
+public/data/business_document_protocol_lab/registries/model_profiles_v1.json
+public/data/business_document_protocol_lab/registries/eval_dimensions_v1.json
+public/data/business_document_protocol_lab/registries/experiment_sets_v1.json
+public/data/business_document_protocol_lab/registries/fixtures_v1.json
+public/data/business_document_protocol_lab/registries/input_packs_v1.json
+public/data/business_document_protocol_lab/registries/protocols_v1.json
+public/data/business_document_protocol_lab/registries/stacks_v1.json
+public/data/business_document_protocol_lab/registries/task_families_v1.json
 public/data/business_document_protocol_lab/product_positioning/current_case_mix_v1.json
 public/data/business_document_protocol_lab/product_positioning/demo_share_v1.json
+public/data/business_document_protocol_lab/standard_controls/comparisons/
+public/data/business_document_protocol_lab/standard_controls/standard_control_summary_v1.json
+public/data/business_document_protocol_lab/standard_controls/*/standard_control_matrix_v1.json
+public/data/business_document_protocol_lab/novelty_ledger/*_quality_notes_v1.json
+public/data/business_document_protocol_lab/novelty_ledger/p4_canonized_summary_v1.json
+public/data/business_document_protocol_lab/novelty_ledger/p4_vs_p1_summary_v1.json
+public/data/business_document_protocol_lab/skeptic_cases/third_pilot_summary_v1.json
+public/data/business_document_protocol_lab/skeptic_cases/vivid_vs_skeptic_summary_v1.json
+public/data/business_document_protocol_lab/skeptic_cases/*/ko_p1_vs_p4_summary_v1.json
+public/data/business_document_protocol_lab/skeptic_cases/*/ko_quality_notes_v1.json
+
+# Archived protocol lab data (removed from public serving)
+data_archive/
 
 chatgpt_review_prompt2_sync_20260207_182131.zip
 chatgpt_review_prompt2_sync_20260207_183103.zip

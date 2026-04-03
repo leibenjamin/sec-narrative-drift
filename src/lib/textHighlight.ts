@@ -41,9 +41,15 @@ function termToPattern(term: string): string {
   return `\\b${escaped}\\b`
 }
 
+const MAX_HIGHLIGHT_TERMS = 50
+const MAX_TERM_LENGTH = 200
+
 function buildRegex(terms: string[]): RegExp | null {
   if (terms.length === 0) return null
-  const patterns = terms.map(termToPattern).filter(Boolean)
+  const capped = terms
+    .filter((t) => t.length <= MAX_TERM_LENGTH)
+    .slice(0, MAX_HIGHLIGHT_TERMS)
+  const patterns = capped.map(termToPattern).filter(Boolean)
   if (patterns.length === 0) return null
   const pattern = patterns.join("|")
   return new RegExp(pattern, "gi")
