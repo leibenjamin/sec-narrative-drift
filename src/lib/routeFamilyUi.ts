@@ -13,7 +13,8 @@ export type RouteFamilyCaseConfig = {
   publicRoleLabel: string
   topCue: string
   homeCardLabel: string
-  homeCardDemo: string
+  chooserCardDescription: string
+  chooserBestFor: string
   chooserObjectiveLabel: string
   methodologyDetail: string
   preview: {
@@ -35,7 +36,8 @@ const ROUTE_FAMILY_CASE_CONFIG = {
     topCue:
       "Vivid answer: read the filing answer first, then use the protocol and audit layers only to pressure-test it.",
     homeCardLabel: "Vivid answer",
-    homeCardDemo: "See the clearest answer-first shift in the pilot.",
+    chooserCardDescription: "The clearest answer-first shift in the pilot.",
+    chooserBestFor: "Strongest first signal",
     chooserObjectiveLabel: "Vivid answer",
     methodologyDetail:
       "Shows the workflow at full clarity when the filing shift is vivid and easy to pressure-test.",
@@ -56,7 +58,8 @@ const ROUTE_FAMILY_CASE_CONFIG = {
     topCue:
       "Honest stop: read the filing answer, check the compact protocol layer, then stop at the explicit boundary.",
     homeCardLabel: "Honest stop",
-    homeCardDemo: "See where policy pressure makes the public route stop before it overclaims.",
+    chooserCardDescription: "Policy pressure makes the stop boundary visible.",
+    chooserBestFor: "Policy-heavy contrast",
     chooserObjectiveLabel: "Honest stop",
     methodologyDetail:
       "Shows where policy-heavy contrast needs a visible stop before the public surface pretends to broader certainty.",
@@ -77,7 +80,8 @@ const ROUTE_FAMILY_CASE_CONFIG = {
     topCue:
       "Useful restraint: read the filing answer, then use the protocol layer to selectively sharpen a mostly stable filing.",
     homeCardLabel: "Useful restraint",
-    homeCardDemo: "See why selective sharpening still matters when the filing barely moves.",
+    chooserCardDescription: "Selective sharpening matters when the filing barely moves.",
+    chooserBestFor: "Low-drift restraint",
     chooserObjectiveLabel: "Useful restraint",
     methodologyDetail:
       "Shows the same workflow staying useful when the filing barely moves and drama would be misleading.",

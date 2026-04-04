@@ -43,23 +43,22 @@ export default function Companies() {
   return (
     <main className="min-h-screen page-fade">
       <PageMetadata title={COMPANIES_TITLE} description={COMPANIES_DESCRIPTION} />
-      <div className="mx-auto max-w-6xl space-y-6 px-6 py-12">
-        <header className="space-y-4">
+      <div className="mx-auto max-w-6xl space-y-5 px-5 py-8 sm:px-6 sm:py-10">
+        <header className="space-y-3">
           <p className="text-xs uppercase tracking-[0.28em] text-slate-300">Cases</p>
-          <h1 className="text-3xl font-semibold text-slate-50 sm:text-4xl">
+          <h1 className="max-w-3xl text-3xl font-semibold text-slate-50 sm:text-4xl">
             Choose the fixture that matches your goal.
           </h1>
-          <p className="max-w-2xl text-sm leading-6 text-slate-300">
+          <p className="max-w-3xl text-sm leading-6 text-slate-300">
             Pick the fixed pilot fixture that matches the first read you need.
           </p>
-          <div className="flex flex-wrap gap-3">
-            <Link
-              to="/"
-              className="inline-flex items-center justify-center rounded-full border border-white/20 px-4 py-2 text-sm text-slate-200 transition hover:border-white/40 hover:bg-white/5"
-            >
-              Back to Home
-            </Link>
-          </div>
+          <Link
+            to="/"
+            className="inline-flex items-center gap-2 text-sm font-medium text-slate-300 transition hover:text-white"
+          >
+            <span aria-hidden="true">←</span>
+            <span>Back to Home</span>
+          </Link>
           {error ? (
             <div className="rounded-xl border border-amber-400/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-100">
               {error}
@@ -77,8 +76,7 @@ export default function Companies() {
           <>
             <ProtocolLabUseCaseGuide
               visiblePilots={visiblePilots}
-              title="Choose by goal"
-              description="The cards are the chooser. Open the one that matches your read."
+              showIntro={false}
             />
           </>
         )}

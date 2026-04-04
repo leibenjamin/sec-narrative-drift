@@ -47,7 +47,7 @@ type HomeFixtureCardModel = {
   ticker: VisibleFamilyTicker
   companyName: string
   roleLabel: string
-  demonstration: string
+  description: string
   href: string
   ctaLabel: string
   emphasis: "primary" | "default"
@@ -67,7 +67,7 @@ function buildFixtureCardModel(
     ticker,
     companyName: companyName ?? familyConfig.companyName,
     roleLabel: familyConfig.homeCardLabel,
-    demonstration: compactText(familyConfig.homeCardDemo, 84),
+    description: compactText(familyConfig.chooserCardDescription, 64),
     href,
     ctaLabel: ticker === "NVDA" ? "Open NVDA" : `Open ${ticker}`,
     emphasis: ticker === "NVDA" ? "primary" : "default",
@@ -117,11 +117,12 @@ export default function Home() {
   return (
     <main className="min-h-screen page-fade">
       <PageMetadata title={HOME_TITLE} description={HOME_META_DESCRIPTION} />
-      <div className="mx-auto max-w-6xl px-5 py-5 sm:px-6 sm:py-8">
+      <div className="mx-auto max-w-6xl px-5 py-4 sm:px-6 sm:py-8">
         <section className="relative overflow-hidden rounded-[2.2rem] border border-white/10 bg-linear-to-br from-slate-950/92 via-slate-950/82 to-slate-900/72 shadow-[0_32px_80px_rgba(2,6,23,0.44)]">
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(56,189,248,0.16),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(16,185,129,0.12),transparent_28%)]" />
-          <div className="relative grid gap-5 p-5 sm:gap-6 sm:p-6 xl:p-7">
-            <div className="rounded-[1.8rem] border border-white/10 bg-slate-950/24 p-4 sm:p-5 xl:p-6">
+          <div className="relative grid gap-4 p-4 sm:gap-6 sm:p-6 xl:p-7">
+            <div className="grid gap-4 lg:grid-cols-[minmax(0,0.94fr)_minmax(0,1.06fr)] lg:items-start">
+              <div className="rounded-[1.8rem] border border-white/10 bg-slate-950/24 p-4 sm:p-5 xl:p-6">
               <div className="flex flex-wrap items-center gap-2 text-[11px] uppercase tracking-[0.24em] text-slate-300">
                 <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">
                   Document Protocol Lab
@@ -134,8 +135,7 @@ export default function Home() {
                 </span>
               </div>
 
-              <div className="mt-5 grid gap-5 lg:grid-cols-[minmax(0,0.94fr)_minmax(0,1.06fr)] lg:items-start">
-                <div className="space-y-5">
+                <div className="mt-4 space-y-4 sm:mt-5 sm:space-y-5">
                   <div className="space-y-3">
                     <h1 className="max-w-3xl text-[clamp(2.15rem,4vw,4.2rem)] font-semibold leading-[0.95] tracking-[-0.04em] text-slate-50">
                       {HOME_HOOK}
@@ -171,13 +171,9 @@ export default function Home() {
                     </Link>
                   </div>
                 </div>
-
-                <ProtocolStageMap steps={PROTOCOL_STAGE_STEPS} />
               </div>
-            </div>
 
-            <div className="rounded-[1.8rem] border border-sky-300/14 bg-slate-950/42 p-4 shadow-[0_20px_50px_rgba(2,6,23,0.22)] sm:p-5">
-              <div className="flex flex-wrap items-start justify-between gap-4">
+              <div className="order-2 rounded-[1.8rem] border border-sky-300/14 bg-slate-950/42 p-4 shadow-[0_20px_50px_rgba(2,6,23,0.22)] sm:p-5 lg:order-3 lg:col-span-2">
                 <div className="max-w-2xl">
                   <div className="text-[11px] uppercase tracking-[0.28em] text-sky-100">Next move</div>
                   <h2 className="mt-2 text-xl font-semibold text-slate-50 sm:text-2xl">
@@ -185,24 +181,26 @@ export default function Home() {
                   </h2>
                   <p className="mt-2 text-sm leading-6 text-slate-300">{HOME_CHOOSER_SUMMARY}</p>
                 </div>
-                <div className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-slate-300">
-                  Pick one route
+
+                <div className="mt-4 grid gap-4 md:grid-cols-3 stagger-children">
+                  {fixtureCards.map((fixture) => (
+                    <FixtureRoleCard
+                      key={fixture.ticker}
+                      ticker={fixture.ticker}
+                      companyName={fixture.companyName}
+                      roleLabel={fixture.roleLabel}
+                      description={fixture.description}
+                      href={fixture.href}
+                      ctaLabel={fixture.ctaLabel}
+                      emphasis={fixture.emphasis}
+                      variant="home"
+                    />
+                  ))}
                 </div>
               </div>
 
-              <div className="mt-4 grid gap-4 md:grid-cols-3 stagger-children">
-                {fixtureCards.map((fixture) => (
-                  <FixtureRoleCard
-                    key={fixture.ticker}
-                    ticker={fixture.ticker}
-                    companyName={fixture.companyName}
-                    roleLabel={fixture.roleLabel}
-                    demonstration={fixture.demonstration}
-                    href={fixture.href}
-                    ctaLabel={fixture.ctaLabel}
-                    emphasis={fixture.emphasis}
-                  />
-                ))}
+              <div className="order-3 lg:order-2">
+                <ProtocolStageMap steps={PROTOCOL_STAGE_STEPS} />
               </div>
             </div>
 
