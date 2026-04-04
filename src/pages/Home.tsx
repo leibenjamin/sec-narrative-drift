@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 import FixtureRoleCard from "../components/FixtureRoleCard"
 import PageMetadata from "../components/PageMetadata"
 import ProtocolStageMap, { type ProtocolStageStep } from "../components/ProtocolStageMap"
+import { compactText } from "../lib/compactText"
 import {
   buildProtocolLabCaseHref,
   getProtocolLabRecommendedPilot,
@@ -20,25 +21,25 @@ const HOME_META_DESCRIPTION =
   "Document Protocol Lab is a bounded public pilot across NVDA, LLY, and KO: claim first, protocol proof second, deeper audit only when needed."
 const HOME_HOOK = "How do you show what changed in a document without overstating what you know?"
 const HOME_SUPPORT =
-  "A bounded public pilot across NVDA, LLY, and KO makes the protocol visible in one pass."
+  "A bounded public pilot across NVDA, LLY, and KO makes the protocol legible in one pass."
 const HOME_CHOOSER_SUMMARY =
-  "Choose the first read you want: vivid answer, honest stop, or useful restraint."
+  "Pick the first read you need, then let the lower layers stay secondary."
 
 const PROTOCOL_STAGE_STEPS: ProtocolStageStep[] = [
   {
     title: "Claim",
-    detail: "Lead with the filing answer before explanation takes over.",
+    detail: "Lead with the filing answer.",
     chips: ["answer first"],
   },
   {
     title: "Prove",
-    detail: "Show why the fixture belongs in the lab and what the framing adds.",
-    chips: ["fixture meaning"],
+    detail: "Show what the protocol adds beside it.",
+    chips: ["proof beside it"],
   },
   {
     title: "Stop",
     detail: "Open deeper audit only when the first read needs pressure.",
-    chips: ["audit on demand"],
+    chips: ["audit if needed"],
   },
 ]
 
@@ -66,7 +67,7 @@ function buildFixtureCardModel(
     ticker,
     companyName: companyName ?? familyConfig.companyName,
     roleLabel: familyConfig.homeCardLabel,
-    demonstration: familyConfig.homeCardDemo,
+    demonstration: compactText(familyConfig.homeCardDemo, 84),
     href,
     ctaLabel: ticker === "NVDA" ? "Open NVDA" : `Open ${ticker}`,
     emphasis: ticker === "NVDA" ? "primary" : "default",
@@ -120,7 +121,7 @@ export default function Home() {
         <section className="relative overflow-hidden rounded-[2.2rem] border border-white/10 bg-linear-to-br from-slate-950/92 via-slate-950/82 to-slate-900/72 shadow-[0_32px_80px_rgba(2,6,23,0.44)]">
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(56,189,248,0.16),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(16,185,129,0.12),transparent_28%)]" />
           <div className="relative grid gap-5 p-5 sm:gap-6 sm:p-6 xl:p-7">
-            <div className="grid gap-5">
+            <div className="rounded-[1.8rem] border border-white/10 bg-slate-950/24 p-4 sm:p-5 xl:p-6">
               <div className="flex flex-wrap items-center gap-2 text-[11px] uppercase tracking-[0.24em] text-slate-300">
                 <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">
                   Document Protocol Lab
@@ -133,13 +134,13 @@ export default function Home() {
                 </span>
               </div>
 
-              <div className="grid gap-5 lg:grid-cols-[1.02fr_0.98fr] lg:items-start">
+              <div className="mt-5 grid gap-5 lg:grid-cols-[minmax(0,0.94fr)_minmax(0,1.06fr)] lg:items-start">
                 <div className="space-y-5">
                   <div className="space-y-3">
                     <h1 className="max-w-3xl text-[clamp(2.15rem,4vw,4.2rem)] font-semibold leading-[0.95] tracking-[-0.04em] text-slate-50">
                       {HOME_HOOK}
                     </h1>
-                    <p className="max-w-2xl text-sm leading-6 text-slate-200 sm:text-base">
+                    <p className="max-w-xl text-sm leading-6 text-slate-200 sm:text-base">
                       {HOME_SUPPORT}
                     </p>
                   </div>
@@ -175,7 +176,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="rounded-[1.7rem] border border-white/10 bg-slate-950/34 p-4 sm:p-5">
+            <div className="rounded-[1.8rem] border border-sky-300/14 bg-slate-950/42 p-4 shadow-[0_20px_50px_rgba(2,6,23,0.22)] sm:p-5">
               <div className="flex flex-wrap items-start justify-between gap-4">
                 <div className="max-w-2xl">
                   <div className="text-[11px] uppercase tracking-[0.28em] text-sky-100">Next move</div>
@@ -184,8 +185,8 @@ export default function Home() {
                   </h2>
                   <p className="mt-2 text-sm leading-6 text-slate-300">{HOME_CHOOSER_SUMMARY}</p>
                 </div>
-                <div className="text-[11px] uppercase tracking-[0.2em] text-slate-500">
-                  Static JSON only. Audit stays secondary.
+                <div className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-slate-300">
+                  Pick one route
                 </div>
               </div>
 

@@ -1,3 +1,5 @@
+import { compactText } from "../lib/compactText"
+
 export type MethodFamilyDetector = {
   id: string
   label: string
@@ -33,8 +35,7 @@ export default function MethodFamilySummary({ families }: MethodFamilySummaryPro
       </div>
 
       <p className="max-w-3xl text-sm leading-6 text-slate-300">
-        The workflow above answers what the lab is doing. These grouped families are for readers
-        who want to pressure-test that answer with lexical, reuse, structure, and agreement detail.
+        The workflow explains the route. These families stay below it for readers who want the audit shape.
       </p>
 
       <div className="grid gap-3 lg:grid-cols-3">
@@ -45,20 +46,23 @@ export default function MethodFamilySummary({ families }: MethodFamilySummaryPro
           >
             <div className="text-[11px] uppercase tracking-[0.24em] text-slate-500">Family</div>
             <h3 className="mt-2 text-lg font-semibold text-slate-100">{family.title}</h3>
-            <p className="mt-2 text-sm leading-5 text-slate-300">{family.summary}</p>
+            <p className="mt-2 text-sm leading-6 text-slate-300">{compactText(family.summary, 116)}</p>
 
-            <ul className="mt-4 space-y-3">
+            <ul className="mt-4 space-y-2 border-t border-white/10 pt-3">
               {family.detectors.map((detector) => (
                 <li
                   key={detector.id}
                   id={`detector-${detector.id}`}
-                  className="scroll-mt-28 rounded-2xl border border-white/10 bg-slate-900/55 p-3"
+                  className="scroll-mt-28"
                 >
-                  <div className="text-[11px] uppercase tracking-[0.2em] text-slate-500">
+                  <div className="text-[10px] uppercase tracking-[0.2em] text-slate-500">
                     {detector.question}
                   </div>
-                  <div className="mt-1 text-sm font-semibold text-slate-100">{detector.label}</div>
-                  <p className="mt-1 text-sm leading-5 text-slate-300">{detector.summary}</p>
+                  <p className="mt-1 text-sm leading-6 text-slate-200">
+                    <span className="font-semibold text-slate-100">{detector.label}</span>
+                    {" — "}
+                    {compactText(detector.summary, 58)}
+                  </p>
                 </li>
               ))}
             </ul>

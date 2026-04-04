@@ -259,29 +259,24 @@ function renderEvidenceCard(props: {
 }) {
   const { heading, year, ref, evidence, note = null } = props
   return (
-    <div className="rounded-[1.1rem] border border-white/10 bg-slate-950/40 p-3 sm:p-4">
-      <div className="flex flex-wrap items-center justify-between gap-2">
-        <div className="text-[11px] uppercase tracking-wide text-slate-400">{heading}</div>
-        <span className="rounded-full border border-white/10 bg-white/5 px-2 py-0.5 text-[11px] text-slate-300">
-          Proof
-        </span>
-      </div>
+    <div className="rounded-[1.1rem] border border-white/10 bg-slate-950/40 p-3.5 sm:p-4">
+      <div className="text-[11px] uppercase tracking-wide text-slate-400">{heading}</div>
       {ref && evidence ? (
         <>
-          <div className="mt-1 text-[11px] text-slate-500">{formatEvidenceRef(ref)}</div>
-          <p className="mt-2 text-sm leading-6 text-slate-100 text-clamp-3">"{evidence.snippet}"</p>
-          <p className="mt-2 text-[11px] text-slate-400">{evidence.why}</p>
-          {note ? <p className="mt-2 text-[11px] text-slate-500">{note}</p> : null}
+          <div className="mt-1.5 text-[11px] text-slate-500">{formatEvidenceRef(ref)}</div>
+          <p className="mt-2.5 text-sm leading-6 text-slate-100 text-clamp-5">"{evidence.snippet}"</p>
+          <p className="mt-2.5 text-[11px] leading-5 text-slate-400">{evidence.why}</p>
+          {note ? <p className="mt-2 text-[11px] leading-5 text-slate-500">{note}</p> : null}
         </>
       ) : ref ? (
         <>
-          <div className="mt-1 text-[11px] text-slate-500">{formatEvidenceRef(ref)}</div>
-          <p className="mt-2 text-sm text-slate-400">
+          <div className="mt-1.5 text-[11px] text-slate-500">{formatEvidenceRef(ref)}</div>
+          <p className="mt-2.5 text-sm text-slate-400">
             {note ?? "The surfaced reference did not resolve to a stored evidence snippet."}
           </p>
         </>
       ) : (
-        <p className="mt-2 text-sm text-slate-400">
+        <p className="mt-2.5 text-sm text-slate-400">
           {note ?? `No ${year}-year evidence reference was surfaced for this lead change.`}
         </p>
       )}
@@ -610,6 +605,32 @@ export default function RiskNarrativeSummary({
   const hasAnyRuntime = columns.some((column) => column.runtime)
   const leadSummary = useMemo(() => buildLeadSummary(columns, yearFrom, yearTo), [columns, yearFrom, yearTo])
   const compareSummary = useMemo(() => buildCompareReadsSummary(columns), [columns])
+  const leadSupportItems = useMemo(() => {
+    if (!leadSummary) return []
+    return [
+      {
+        label: leadSummary.secondaryNote ? "Compare read" : "Active lane",
+        value: compactText(
+          leadSummary.secondaryNote ??
+            `Lead surfaced by ${formatCampaignSurfaceLabel(leadSummary.primaryColumn)}.`,
+          92
+        ),
+        tone: "neutral" as const,
+      },
+      {
+        label: "Boundary",
+        value: compactText(leadSummary.caution, 92),
+        tone: "boundary" as const,
+      },
+    ]
+  }, [leadSummary])
+  const leadSupportParagraph = useMemo(() => {
+    if (!leadSummary) return null
+    return compactText(
+      `${leadSummary.whatChanged} ${leadSummary.whyItMatters}`,
+      leadSummary.isLowDrift ? 228 : 244
+    )
+  }, [leadSummary])
 
   if (!hasAnyRuntime) {
     return (
@@ -635,7 +656,7 @@ export default function RiskNarrativeSummary({
             {ticker} filing answer, {formatFiscalYearLabel(yearFrom)} to {formatFiscalYearLabel(yearTo)}
           </h2>
           <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-300">
-            Claim first, proof beside it, compare tucked below. Use the lower layers only when the
+            Claim first, proof directly below it, compare tucked lower. Use the lower layers only when the
             first read needs pressure.
           </p>
         </div>
@@ -648,67 +669,87 @@ export default function RiskNarrativeSummary({
               Low-drift signal
             </span>
           ) : null}
-          <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1">
-            Evidence stays adjacent
-          </span>
         </div>
       </div>
 
       {leadSummary ? (
         <>
-          <div className="grid gap-4 xl:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)]">
-            <article className="rounded-[1.25rem] border border-white/10 bg-slate-950/44 p-4 shadow-[0_18px_40px_rgba(2,6,23,0.24)] sm:p-5">
-              <div className="flex flex-wrap items-center gap-2">
+          <article className="rounded-[1.25rem] border border-white/10 bg-slate-950/44 p-4 shadow-[0_18px_40px_rgba(2,6,23,0.24)] sm:p-5">
+            <div className="grid gap-4 xl:grid-cols-[minmax(0,1.1fr)_minmax(18rem,0.9fr)] xl:items-start">
+              <div className="flex flex-wrap items-center gap-2 xl:col-span-2">
                 {formatClassBadge(leadSummary.primaryChange.change_class)}
                 <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] text-slate-200">
                   {formatCampaignSurfaceLabel(leadSummary.primaryColumn)}
                 </span>
               </div>
 
-              <div className="mt-4">
+              <div className="xl:col-span-2">
                 <div className="text-[10px] uppercase tracking-[0.24em] text-slate-300">Lead answer</div>
-                <p className="mt-2 text-[1.05rem] font-semibold leading-8 text-slate-50 sm:text-[1.45rem]">
-                  {leadSummary.whatChanged}
+                <p className="mt-2.5 max-w-4xl text-[1.2rem] font-semibold leading-[1.2] text-slate-50 sm:text-[1.55rem] lg:text-[1.7rem]">
+                  {compactText(leadSummary.primaryChange.title, leadSummary.isLowDrift ? 104 : 118)}
                 </p>
-                {leadSummary.secondaryNote ? (
-                  <p className="mt-3 text-sm leading-6 text-slate-300">{leadSummary.secondaryNote}</p>
-                ) : null}
+                <p className="mt-3 max-w-4xl text-sm leading-6 text-slate-200">
+                  {leadSupportParagraph}
+                </p>
               </div>
 
-              <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                <article className="rounded-2xl border border-white/10 bg-slate-900/42 p-3 sm:p-4">
-                  <div className="text-[10px] uppercase tracking-[0.24em] text-slate-300">Why it matters</div>
-                  <p className="mt-2 text-sm leading-6 text-slate-100">{leadSummary.whyItMatters}</p>
-                </article>
-                <article className="rounded-2xl border border-amber-300/20 bg-amber-400/8 p-3 sm:p-4">
-                  <div className="text-[10px] uppercase tracking-[0.24em] text-amber-100">Stop cue</div>
-                  <p className="mt-2 text-sm leading-6 text-slate-100">{leadSummary.caution}</p>
-                </article>
+              <div className="grid gap-2.5 sm:grid-cols-2 xl:col-span-2">
+                {leadSupportItems.map((item) => (
+                  <article
+                    key={item.label}
+                    className={
+                      item.tone === "boundary"
+                        ? "rounded-[1.05rem] border border-amber-300/20 bg-amber-400/8 p-3"
+                        : "rounded-[1.05rem] border border-white/10 bg-slate-900/38 p-3"
+                    }
+                  >
+                    <div
+                      className={
+                        item.tone === "boundary"
+                          ? "text-[10px] uppercase tracking-[0.24em] text-amber-100"
+                          : "text-[10px] uppercase tracking-[0.24em] text-slate-300"
+                      }
+                    >
+                      {item.label}
+                    </div>
+                    <p className="mt-1.5 text-sm leading-5 text-slate-100">{item.value}</p>
+                  </article>
+                ))}
               </div>
-            </article>
 
-            <div className="space-y-3">
-              <div className="rounded-2xl border border-white/10 bg-slate-950/34 px-3 py-2 text-[11px] uppercase tracking-[0.24em] text-slate-300">
-                Paired proof
-              </div>
-              <div className="grid gap-3">
-                {renderEvidenceCard({
-                  heading: `${formatFiscalYearLabel(yearFrom)} filing evidence`,
-                  year: yearFrom,
-                  ref: leadSummary.prevEvidence.ref,
-                  evidence: leadSummary.prevEvidence.evidence,
-                  note: leadSummary.prevEvidence.note,
-                })}
-                {renderEvidenceCard({
-                  heading: `${formatFiscalYearLabel(yearTo)} filing evidence`,
-                  year: yearTo,
-                  ref: leadSummary.currEvidence.ref,
-                  evidence: leadSummary.currEvidence.evidence,
-                  note: leadSummary.currEvidence.note,
-                })}
+              <div className="xl:col-span-2 border-t border-white/10 pt-4">
+                <div className="flex flex-wrap items-start justify-between gap-3">
+                  <div>
+                    <div className="text-[11px] uppercase tracking-[0.24em] text-slate-300">
+                      Paired proof
+                    </div>
+                    <p className="mt-2 text-sm leading-6 text-slate-300">
+                      Check the two filing excerpts before opening the full compare.
+                    </p>
+                  </div>
+                  <div className="text-[10px] uppercase tracking-[0.18em] text-slate-500">
+                    Evidence stays adjacent
+                  </div>
+                </div>
+                <div className="mt-4 grid gap-3 lg:grid-cols-2">
+                  {renderEvidenceCard({
+                    heading: `${formatFiscalYearLabel(yearFrom)} filing evidence`,
+                    year: yearFrom,
+                    ref: leadSummary.prevEvidence.ref,
+                    evidence: leadSummary.prevEvidence.evidence,
+                    note: leadSummary.prevEvidence.note,
+                  })}
+                  {renderEvidenceCard({
+                    heading: `${formatFiscalYearLabel(yearTo)} filing evidence`,
+                    year: yearTo,
+                    ref: leadSummary.currEvidence.ref,
+                    evidence: leadSummary.currEvidence.evidence,
+                    note: leadSummary.currEvidence.note,
+                  })}
+                </div>
               </div>
             </div>
-          </div>
+          </article>
         </>
       ) : null}
 

@@ -18,9 +18,12 @@ type PreviewTile = {
 
 type ProtocolPreviewViewModel = {
   title: string
-  subtitle: string
+  lead: string
+  supportLine: string
   chips: string[]
-  tiles: PreviewTile[]
+  visibleTiles: PreviewTile[]
+  detailTile: PreviewTile
+  boundaryTile: PreviewTile
   showDetailDisclosure: boolean
   showRestraintStrip: boolean
 }
@@ -96,7 +99,7 @@ function buildPreviewModel(
   ticker: string | undefined,
   variant: PreviewVariant
 ): ProtocolPreviewViewModel | null {
-  const { pilotMatrixBundle, effortRobustnessBundle, noveltyLedgerArtifact } = pilotArtifacts
+  const { pilotMatrixBundle } = pilotArtifacts
   if (!pilotMatrixBundle) return null
 
   const familyConfig = getRouteFamilyConfig(ticker)
@@ -113,16 +116,15 @@ function buildPreviewModel(
     familyConfig?.preview.supportStrategy ?? "effort_first",
     pilotMatrixBundle.matrix.pilot_status.note
   )
+  const boundaryTile = {
+    label: "Boundary",
+    value: compactText(pilotMatrixBundle.story.caveat, 96),
+    tone: "boundary" as const,
+  }
   const statusLabel = formatPilotStatusLabel(pilotMatrixBundle.matrix.pilot_status.state)
   const chips = [
     primaryCell ? `${renderPublicCellLabel(primaryCell)} first` : null,
     `Scope: ${statusLabel}`,
-    noveltyLedgerArtifact && supportTile.label !== "Fresh vs reused"
-      ? "Fresh vs reused stays secondary"
-      : null,
-    effortRobustnessBundle && supportTile.label !== "Matched-effort check"
-      ? "Matched-effort check visible"
-      : null,
   ].filter((value): value is string => Boolean(value))
 
   return {
@@ -130,29 +132,26 @@ function buildPreviewModel(
       variant === "bounded"
         ? familyConfig?.preview.boundedTitle ?? "Why this bounded read stays visible"
         : familyConfig?.preview.integratedTitle ?? "Why this fixture stays visible",
-    subtitle: compactText(rawSubtitle, variant === "bounded" ? 126 : 138),
+    lead: compactText(rawSubtitle, variant === "bounded" ? 126 : 138),
+    supportLine: compactText(
+      familyConfig?.preview.roleSummary ?? pilotMatrixBundle.story.why_this_case_matters,
+      118
+    ),
     chips,
-    tiles: [
+    visibleTiles: [
       {
-        label: "Case role",
-        value: compactText(
-          familyConfig?.preview.roleSummary ?? pilotMatrixBundle.story.why_this_case_matters,
-          122
-        ),
-        tone: "neutral",
+        label:
+          familyConfig?.preview.supportStrategy === "scope_only" ? supportTile.label : "Visible reads add",
+        value:
+          familyConfig?.preview.supportStrategy === "scope_only"
+            ? compactText(pilotMatrixBundle.matrix.pilot_status.note, 96)
+            : compactText(pilotMatrixBundle.story.protocol_read, 96),
+        tone: familyConfig?.preview.supportStrategy === "scope_only" ? "neutral" : "accent",
       },
-      {
-        label: "Visible reads add",
-        value: compactText(pilotMatrixBundle.story.protocol_read, 122),
-        tone: "accent",
-      },
-      {
-        label: "Boundary",
-        value: compactText(pilotMatrixBundle.story.caveat, 122),
-        tone: "boundary",
-      },
-      supportTile,
+      boundaryTile,
     ],
+    detailTile: supportTile,
+    boundaryTile,
     showDetailDisclosure: variant === "integrated",
     showRestraintStrip: Boolean(familyConfig?.preview.showRestraintStrip),
   }
@@ -204,7 +203,6 @@ export default function ProtocolPreviewCard({
     )
   }
 
-  const primaryCell = getPrimaryCell(pilotMatrixBundle)
   const previewModel = buildPreviewModel(pilotArtifacts, ticker, variant)
   if (!previewModel) return null
 
@@ -229,9 +227,12 @@ export default function ProtocolPreviewCard({
           </div>
         ) : null}
 
-        <p className="mt-2.5 text-sm leading-6 text-slate-100 text-clamp-2">{previewModel.subtitle}</p>
+        <p className="mt-3 text-lg font-semibold leading-7 text-slate-100 sm:text-[1.15rem]">
+          {previewModel.lead}
+        </p>
+        <p className="mt-2 text-sm leading-6 text-slate-300">{previewModel.supportLine}</p>
 
-        <div className="mt-2.5 flex flex-wrap gap-1.5 text-[11px] text-slate-300">
+        <div className="mt-3 flex flex-wrap gap-1.5 text-[11px] text-slate-300">
           {previewModel.chips.map((chip) => (
             <span
               key={chip}
@@ -242,14 +243,14 @@ export default function ProtocolPreviewCard({
           ))}
         </div>
 
-        <div className="mt-2.5 grid gap-2 sm:grid-cols-2">
-          {previewModel.tiles.map((tile) => (
+        <div className="mt-3 grid gap-2.5 sm:grid-cols-2">
+          {previewModel.visibleTiles.map((tile) => (
             <article
               key={tile.label}
-              className={`rounded-2xl border p-2.5 ${getToneClasses(tile.tone)}`}
+              className={`rounded-[1.05rem] border p-3 ${getToneClasses(tile.tone)}`}
             >
               <div className="text-[10px] uppercase tracking-[0.24em] text-slate-300">{tile.label}</div>
-              <p className="mt-1.5 text-sm leading-5 text-slate-100 text-clamp-3">{tile.value}</p>
+              <p className="mt-1.5 text-sm leading-5 text-slate-100">{tile.value}</p>
             </article>
           ))}
         </div>
@@ -271,15 +272,17 @@ export default function ProtocolPreviewCard({
               <p className="mt-2 text-sm text-slate-100">{readOrder}</p>
             </article>
             <article className="rounded-lg border border-white/10 bg-slate-950/35 p-2.5">
-              <div className="text-[11px] uppercase tracking-wide text-slate-400">Pilot scope</div>
-              <p className="mt-2 text-sm text-slate-100">
-                {compactText(pilotMatrixBundle.matrix.pilot_status.note, 180)}
-              </p>
+              <div className="text-[11px] uppercase tracking-wide text-slate-400">
+                {previewModel.detailTile.label}
+              </div>
+              <p className="mt-2 text-sm text-slate-100">{compactText(previewModel.detailTile.value, 180)}</p>
             </article>
             <article className="rounded-lg border border-white/10 bg-slate-950/35 p-2.5">
-              <div className="text-[11px] uppercase tracking-wide text-slate-400">Primary read</div>
+              <div className="text-[11px] uppercase tracking-wide text-slate-400">
+                {previewModel.boundaryTile.label}
+              </div>
               <p className="mt-2 text-sm text-slate-100">
-                {primaryCell ? compactText(primaryCell.why_this_lane_matters, 180) : "Primary read not available."}
+                {compactText(previewModel.boundaryTile.value, 180)}
               </p>
             </article>
           </div>

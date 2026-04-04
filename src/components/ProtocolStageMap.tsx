@@ -17,8 +17,8 @@ export default function ProtocolStageMap({ steps }: ProtocolStageMapProps) {
       <div className="relative">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="text-[11px] uppercase tracking-[0.32em] text-slate-400">Protocol map</div>
-          <div className="rounded-full border border-sky-300/20 bg-sky-400/10 px-3 py-1 text-[11px] uppercase tracking-[0.22em] text-sky-100">
-            Claim / Prove / Stop
+          <div className="text-[11px] uppercase tracking-[0.22em] text-slate-400">
+            claim {"->"} prove {"->"} stop
           </div>
         </div>
 
@@ -26,30 +26,19 @@ export default function ProtocolStageMap({ steps }: ProtocolStageMapProps) {
           {steps.map((step, index) => (
             <Fragment key={step.title}>
               <article className="relative overflow-hidden rounded-[1.15rem] border border-white/10 bg-slate-950/72 px-3.5 py-3.5">
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2.5">
                   <div className="grid h-8 w-8 place-items-center rounded-full border border-sky-300/25 bg-sky-400/12 text-[11px] font-semibold tracking-[0.22em] text-sky-100">
                     {`0${index + 1}`}
                   </div>
-                  <div className="text-[11px] uppercase tracking-[0.32em] text-slate-500">
-                    Stage
+                  <div className="text-[11px] uppercase tracking-[0.24em] text-slate-400">
+                    {step.chips[0]}
                   </div>
                 </div>
 
-                <div className="mt-3 text-[1.55rem] font-semibold tracking-[-0.03em] text-slate-50 sm:text-[1.8rem]">
+                <div className="mt-3 text-[1.45rem] font-semibold tracking-[-0.03em] text-slate-50 sm:text-[1.7rem]">
                   {step.title}
                 </div>
                 <p className="mt-1.5 text-[13px] leading-5 text-slate-300">{step.detail}</p>
-
-                <div className="mt-3 flex flex-wrap gap-2">
-                  {step.chips.map((chip) => (
-                    <span
-                      key={chip}
-                      className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] uppercase tracking-[0.18em] text-slate-200"
-                    >
-                      {chip}
-                    </span>
-                  ))}
-                </div>
               </article>
 
               {index < steps.length - 1 ? (

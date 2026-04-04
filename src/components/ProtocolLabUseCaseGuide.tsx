@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom"
+import { compactText } from "../lib/compactText"
 import {
   buildProtocolLabCaseHref,
   type ProtocolLabVisiblePilotEntry,
@@ -42,51 +43,66 @@ export default function ProtocolLabUseCaseGuide({
   className = "",
 }: ProtocolLabUseCaseGuideProps) {
   return (
-    <section className={`rounded-[1.4rem] border border-white/10 bg-slate-900/45 p-5 ${className}`.trim()}>
-      <div className="text-xs uppercase tracking-[0.24em] text-slate-400">{title}</div>
-      <p className="mt-2 max-w-3xl text-sm text-slate-300">{description}</p>
-      <div className="mt-4 grid gap-4 lg:grid-cols-3">
+    <section className={`space-y-4 ${className}`.trim()}>
+      <div>
+        <div className="text-xs uppercase tracking-[0.24em] text-slate-400">{title}</div>
+        <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-300">{description}</p>
+      </div>
+      <div className="grid gap-4 lg:grid-cols-3">
         {VISIBLE_FAMILY_TICKERS.map((ticker) => {
           const pilot = resolvePilot(visiblePilots, ticker)
           const familyConfig = getRouteFamilyConfig(ticker)
+          const primaryLine = compactText(
+            pilot?.why_case_exists ?? "Open the current fixture for this pilot role.",
+            136
+          )
+          const supportLine = compactText(
+            pilot?.best_for ?? pilot?.guidance.why_pick ?? "Open this fixture.",
+            74
+          )
+          const isRecommended = Boolean(pilot?.is_recommended_first_case)
           return (
             <Link
               key={ticker}
               to={resolveHref(visiblePilots, ticker)}
-              className="group flex h-full flex-col rounded-[1.25rem] border border-white/10 bg-slate-950/35 p-4 transition hover:-translate-y-0.5 hover:border-sky-300/35 hover:bg-slate-950/58"
+              className={
+                isRecommended
+                  ? "group flex h-full flex-col rounded-[1.45rem] border border-sky-300/26 bg-linear-to-br from-sky-400/12 via-slate-950/72 to-slate-950/82 p-4 shadow-[0_20px_44px_rgba(14,165,233,0.1)] transition hover:-translate-y-0.5 hover:border-sky-200/45 hover:shadow-[0_24px_52px_rgba(14,165,233,0.16)]"
+                  : "group flex h-full flex-col rounded-[1.45rem] border border-white/10 bg-slate-950/50 p-4 transition hover:-translate-y-0.5 hover:border-sky-300/35 hover:bg-slate-950/72"
+              }
             >
-              <div>
-                <div className="text-[11px] uppercase tracking-[0.22em] text-slate-400">
-                  {familyConfig?.chooserObjectiveLabel ?? ticker}
+              <div className="flex items-start justify-between gap-3">
+                <div className="min-w-0">
+                  <div className="text-[11px] uppercase tracking-[0.22em] text-slate-400">
+                    {familyConfig?.chooserObjectiveLabel ?? ticker}
+                  </div>
+                  <h2 className="mt-2 text-xl font-semibold tracking-[-0.02em] text-slate-50">
+                    {pilot ? `${pilot.company_name} (${pilot.ticker})` : ticker}
+                  </h2>
                 </div>
-                <h2 className="mt-2 text-base font-semibold text-slate-50">
-                  {pilot ? `${pilot.company_name} (${pilot.ticker})` : ticker}
-                </h2>
+                <span
+                  className={
+                    isRecommended
+                      ? "grid h-10 w-10 shrink-0 place-items-center rounded-full border border-sky-300/30 bg-sky-400/12 text-lg text-sky-100 transition group-hover:border-sky-200/45 group-hover:text-white"
+                      : "grid h-10 w-10 shrink-0 place-items-center rounded-full border border-white/10 bg-white/5 text-lg text-slate-200 transition group-hover:border-sky-300/35 group-hover:text-white"
+                  }
+                  aria-hidden="true"
+                >
+                  →
+                </span>
               </div>
 
-              <p className="mt-4 text-sm leading-6 text-slate-100">
-                {pilot?.why_case_exists ?? "Open the current fixture for this pilot role."}
+              <p className="mt-4 text-sm leading-7 text-slate-100">
+                {primaryLine}
               </p>
 
-              <div className="mt-4 rounded-xl border border-white/10 bg-white/4 p-3">
-                <div className="text-[11px] uppercase tracking-[0.2em] text-slate-500">
-                  What this fixture proves
-                </div>
-                <p className="mt-2 text-sm leading-6 text-slate-100">
-                  {pilot?.guidance.what_you_learn ?? "Current pilot guidance is unavailable."}
+              <div className="mt-auto pt-5">
+                <p className="text-sm leading-6 text-slate-300">
+                  Best for: {supportLine}
                 </p>
-              </div>
-
-              <div className="mt-auto flex items-center justify-between gap-3 border-t border-white/10 pt-4">
-                <span className="max-w-52 text-xs leading-5 text-slate-300">
-                  {pilot?.guidance.why_pick ?? "Open this fixture."}
-                </span>
-                <span className="inline-flex items-center gap-2 rounded-full border border-sky-300/25 bg-sky-400/10 px-3 py-1.5 text-sm font-semibold text-sky-100 transition group-hover:border-sky-200/45 group-hover:text-white">
+                <div className="mt-3 text-sm font-semibold text-slate-100 transition group-hover:text-white">
                   {`Open ${ticker}`}
-                  <span aria-hidden="true" className="text-base leading-none transition group-hover:translate-x-0.5">
-                    →
-                  </span>
-                </span>
+                </div>
               </div>
             </Link>
           )

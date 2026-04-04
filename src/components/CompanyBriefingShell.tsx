@@ -35,7 +35,7 @@ export default function CompanyBriefingShell({
 
   return (
     <section className="space-y-4 sm:space-y-5">
-      <div className="grid gap-4 xl:grid-cols-[minmax(0,1.14fr)_minmax(0,0.86fr)] xl:items-start">
+      <div className="grid gap-4 xl:grid-cols-[minmax(0,1.22fr)_minmax(19rem,0.78fr)] xl:items-start">
         <RiskNarrativeSummary
           ticker={selectedCase.ticker}
           yearFrom={selectedCase.year_from}

@@ -28,7 +28,7 @@ export default function LLYStopStrip({
   return (
     <section
       id="lab-lly-stop-strip"
-      className="space-y-2.5 rounded-[1.25rem] border border-amber-300/25 bg-linear-to-r from-amber-400/12 via-slate-950/78 to-slate-950/45 p-3.5 shadow-[0_18px_36px_rgba(15,23,42,0.22)] sm:p-4"
+      className="space-y-3 rounded-[1.25rem] border border-amber-300/25 bg-linear-to-r from-amber-400/12 via-slate-950/78 to-slate-950/45 p-3.5 shadow-[0_18px_36px_rgba(15,23,42,0.22)] sm:p-4"
     >
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div className="space-y-1.5">
@@ -40,41 +40,22 @@ export default function LLYStopStrip({
         </span>
       </div>
 
-      <div className="grid gap-2.5 lg:grid-cols-[minmax(0,1.12fr)_minmax(0,0.88fr)]">
-        <article className="rounded-2xl border border-amber-300/22 bg-amber-400/10 p-4">
-          <div className="text-[10px] uppercase tracking-[0.24em] text-amber-100">Stop signal</div>
-          <p className="mt-2 text-lg font-semibold leading-7 text-slate-50 sm:text-xl">
-            Stop at the explicit boundary before the public route pretends to broader certainty.
-          </p>
-          <p className="mt-3 text-sm leading-6 text-slate-100">{compactText(disciplinedStop, 220)}</p>
-        </article>
+      <article className="rounded-2xl border border-amber-300/22 bg-amber-400/10 p-4 sm:p-5">
+        <div className="text-[10px] uppercase tracking-[0.24em] text-amber-100">Stop signal</div>
+        <p className="mt-2 text-[1.35rem] font-semibold leading-tight text-slate-50 sm:text-[1.7rem]">
+          Stop here on purpose before the public route pretends to broader certainty.
+        </p>
+        <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-100">
+          {compactText(disciplinedStop, 170)}
+        </p>
 
-        <div className="grid gap-2.5">
-          <article className="rounded-2xl border border-white/10 bg-slate-950/36 p-3">
-            <div className="text-[10px] uppercase tracking-[0.24em] text-slate-300">Available here</div>
-            <div className="mt-2 flex flex-wrap gap-1.5 text-[11px] text-slate-100">
-              {availableParts.map((part) => (
-                <span
-                  key={part}
-                  className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1"
-                >
-                  {part}
-                </span>
-              ))}
-            </div>
-          </article>
-
-          <article className="rounded-2xl border border-white/10 bg-slate-950/36 p-3">
-            <div className="text-[10px] uppercase tracking-[0.24em] text-slate-300">
-              Intentionally not shown
-            </div>
-            <p className="mt-2 text-sm leading-5 text-slate-100">
-              No lower audit stack, broader benchmark claim, or deeper multi-panel route ships on the
-              public LLY page.
-            </p>
-          </article>
+        <div className="mt-4 grid gap-2.5 text-sm leading-6 text-slate-200 sm:grid-cols-[auto_1fr]">
+          <div className="text-[10px] uppercase tracking-[0.24em] text-slate-300">Shown here</div>
+          <p>{availableParts.join(", ")}.</p>
+          <div className="text-[10px] uppercase tracking-[0.24em] text-slate-300">Not shown</div>
+          <p>No lower audit stack, broader benchmark claim, or deeper multi-panel public route.</p>
         </div>
-      </div>
+      </article>
     </section>
   )
 }

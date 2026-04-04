@@ -1,3 +1,5 @@
+import { compactText } from "../lib/compactText"
+
 export type FixtureRoleStripItem = {
   ticker: string
   role: string
@@ -26,8 +28,7 @@ export default function FixtureRoleStrip({ items }: FixtureRoleStripProps) {
             Visible pilot roles
           </div>
           <p className="mt-1.5 text-sm leading-5 text-slate-300">
-            Three pilot cases are enough to show {roleSummary} without widening the public pilot
-            claim.
+            Three cases are enough to show {roleSummary} without widening the public claim.
           </p>
         </div>
         <div className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-slate-300">
@@ -39,18 +40,17 @@ export default function FixtureRoleStrip({ items }: FixtureRoleStripProps) {
         {items.map((item) => (
           <article
             key={item.ticker}
-            className="rounded-2xl border border-white/10 bg-slate-950/70 p-2.5"
+            className="rounded-[1.1rem] border border-white/10 bg-slate-950/70 p-3"
           >
             <div className="flex items-start justify-between gap-3">
               <div>
                 <div className="text-base font-semibold text-slate-50">{item.ticker}</div>
-                <div className="text-[10px] uppercase tracking-[0.22em] text-slate-500">Role</div>
               </div>
               <span className="rounded-full border border-white/10 bg-white/5 px-2 py-1 text-[10px] tracking-[0.06em] text-slate-200">
                 {item.role}
               </span>
             </div>
-            <p className="mt-2 text-[13px] leading-5 text-slate-300">{item.detail}</p>
+            <p className="mt-2 text-[13px] leading-5 text-slate-300">{compactText(item.detail, 84)}</p>
           </article>
         ))}
       </div>

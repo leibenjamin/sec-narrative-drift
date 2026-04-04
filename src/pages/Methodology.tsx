@@ -85,37 +85,37 @@ const DETECTORS = [
 const WORKFLOW_STAGES: WorkflowAnatomyStage[] = [
   {
     title: "Source prep",
-    detail: "Clean filings and precompute shipped artifacts offline before anything ships.",
-    chip: "Offline prep",
-    discipline: "Static runtime input only",
+    detail: "Clean filings and precompute runtime artifacts before anything ships.",
+    chip: "Offline",
+    discipline: "Static runtime only",
     tone: "source",
   },
   {
     title: "Filing answer / claim",
     detail: "Lead with the filing answer before protocol explanation takes over.",
-    chip: "Answer first",
-    discipline: "Claim discipline",
+    chip: "Claim",
+    discipline: "Answer first",
     tone: "claim",
   },
   {
     title: "Proof / evidence",
-    detail: "Keep proof adjacent with snippets, paragraph indices, and method-backed evidence.",
-    chip: "Evidence",
-    discipline: "Proof discipline",
+    detail: "Keep excerpts and method evidence adjacent to the claim.",
+    chip: "Proof",
+    discipline: "Evidence adjacent",
     tone: "proof",
   },
   {
     title: "Stop / limits",
-    detail: "Make scope boundaries and honest stopping points explicit.",
-    chip: "Bounded stop",
-    discipline: "Stop discipline",
+    detail: "Make scope boundaries and honest stopping points visible.",
+    chip: "Stop",
+    discipline: "Scope stays visible",
     tone: "stop",
   },
   {
     title: "Audit if needed",
-    detail: "Keep detector families, agreement, and provenance lower and secondary.",
+    detail: "Leave detector families and provenance lower and optional.",
     chip: "Appendix",
-    discipline: "Audit stays optional",
+    discipline: "Audit on demand",
     tone: "audit",
   },
 ]
@@ -207,26 +207,27 @@ export default function Methodology() {
 
         <MethodFamilySummary families={METHOD_FAMILIES} />
 
-        <section className="space-y-4 rounded-[1.55rem] border border-white/10 bg-slate-900/45 p-5">
-          <div className="flex flex-wrap items-start justify-between gap-3">
-            <div>
-              <div className="text-[11px] uppercase tracking-[0.28em] text-slate-400">
-                Deeper method appendix
+        <details className="rounded-[1.45rem] border border-white/10 bg-slate-900/45 p-4 sm:p-5">
+          <summary className="cursor-pointer list-none">
+            <div className="flex flex-wrap items-start justify-between gap-3 rounded-[1.1rem] border border-white/10 bg-slate-950/34 px-4 py-4">
+              <div>
+                <div className="text-[11px] uppercase tracking-[0.28em] text-slate-400">
+                  Deeper method appendix
+                </div>
+                <h2 className="mt-2 text-xl font-semibold text-slate-100 sm:text-2xl">
+                  Full method rationale stays below the first read
+                </h2>
+                <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-300">
+                  Open the full table only when you need method-by-method limitations and deviations.
+                </p>
               </div>
-              <h2 className="mt-2 text-2xl font-semibold text-slate-100">
-                Full method rationale stays below the first read
-              </h2>
+              <div className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-slate-300">
+                Detailed audit only
+              </div>
             </div>
-            <div className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-slate-300">
-              Detailed audit only
-            </div>
-          </div>
-          <p className="max-w-3xl text-sm leading-6 text-slate-300">
-            The table below is still available for full method-by-method reasoning, limitations,
-            and app-specific deviations. It remains lower on the route so the workflow anatomy does
-            the main explanatory job first.
-          </p>
-          <div className="overflow-x-auto">
+          </summary>
+
+          <div className="mt-4 overflow-x-auto">
             <table className="min-w-full text-left text-xs text-slate-100">
               <thead className="text-slate-300">
                 <tr>
@@ -257,85 +258,108 @@ export default function Methodology() {
               </tbody>
             </table>
           </div>
-        </section>
+        </details>
 
-        <section className="grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">
-          <article className="space-y-3 rounded-[1.45rem] border border-white/10 bg-slate-900/45 p-5">
-            <div className="text-[11px] uppercase tracking-[0.28em] text-slate-400">
-              Offline model sidecars
+        <details className="rounded-[1.45rem] border border-white/10 bg-slate-900/45 p-4 sm:p-5">
+          <summary className="cursor-pointer list-none">
+            <div className="flex flex-wrap items-start justify-between gap-3 rounded-[1.1rem] border border-white/10 bg-slate-950/34 px-4 py-4">
+              <div>
+                <div className="text-[11px] uppercase tracking-[0.28em] text-slate-400">
+                  Operational appendix
+                </div>
+                <h2 className="mt-2 text-xl font-semibold text-slate-100 sm:text-2xl">
+                  Sidecars, audit boundary, and source references
+                </h2>
+                <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-300">
+                  Keep the workflow above primary. Open this appendix for offline sidecars, explicit limits, and source indexes.
+                </p>
+              </div>
+              <div className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-slate-300">
+                Appendix
+              </div>
             </div>
-            <h2 className="text-2xl font-semibold text-slate-100">
-              Structured compare artifacts are produced before runtime
-            </h2>
-            <ol className="list-decimal space-y-2 pl-5 text-sm text-slate-200">
-              <li>Generate case and year inputs from deterministic scripts.</li>
-              <li>Run one manual thread per case, lens, and campaign under the strict JSON-only outline-compare contract.</li>
-              <li>Write the structured artifact to its canonical output path.</li>
-              <li>Project it deterministically into runtime outputs and validate before deployment.</li>
-            </ol>
-            <p className="text-xs text-slate-400">
-              The shipped app never invokes a model at runtime. Users only see projected runtime
-              artifacts and the structured evidence they were derived from.
-            </p>
-          </article>
+          </summary>
 
-          <article className="space-y-3 rounded-[1.45rem] border border-white/10 bg-slate-900/45 p-5">
-            <div className="text-[11px] uppercase tracking-[0.28em] text-slate-400">
-              Audit boundary
-            </div>
-            <h2 className="text-2xl font-semibold text-slate-100">Confidence and limits stay explicit</h2>
-            <ul className="list-disc space-y-2 pl-5 text-sm text-slate-200">
-              <li>Extraction confidence is a heuristic quality signal, not a calibrated probability.</li>
-              <li>Per-method confidence bands are ordinal triage aids, not statistical confidence intervals.</li>
-              <li>High agreement is useful, but it does not remove the need to inspect the filing evidence.</li>
-              <li>Treat model rows as structured interpretations anchored to evidence, not ground truth by themselves.</li>
-              <li>Bounded visible cases can stop earlier than full-runtime cases; that stopping point is an explicit product decision, not a hidden fallback.</li>
-            </ul>
-          </article>
-        </section>
+          <div className="mt-4 space-y-4">
+            <section className="grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">
+              <article className="space-y-3 rounded-[1.2rem] border border-white/10 bg-slate-950/30 p-4">
+                <div className="text-[11px] uppercase tracking-[0.28em] text-slate-400">
+                  Offline model sidecars
+                </div>
+                <h3 className="text-xl font-semibold text-slate-100">
+                  Structured compare artifacts are produced before runtime
+                </h3>
+                <ol className="list-decimal space-y-2 pl-5 text-sm text-slate-200">
+                  <li>Generate case and year inputs from deterministic scripts.</li>
+                  <li>Run one manual thread per case, lens, and campaign under the strict JSON-only outline-compare contract.</li>
+                  <li>Write the structured artifact to its canonical output path.</li>
+                  <li>Project it deterministically into runtime outputs and validate before deployment.</li>
+                </ol>
+                <p className="text-xs text-slate-400">
+                  The shipped app never invokes a model at runtime. Users only see projected runtime
+                  artifacts and the structured evidence they were derived from.
+                </p>
+              </article>
 
-        <section className="space-y-3 rounded-[1.45rem] border border-white/10 bg-slate-900/45 p-5">
-          <div className="text-[11px] uppercase tracking-[0.28em] text-slate-400">
-            Appendix links
+              <article className="space-y-3 rounded-[1.2rem] border border-white/10 bg-slate-950/30 p-4">
+                <div className="text-[11px] uppercase tracking-[0.28em] text-slate-400">
+                  Audit boundary
+                </div>
+                <h3 className="text-xl font-semibold text-slate-100">Confidence and limits stay explicit</h3>
+                <ul className="list-disc space-y-2 pl-5 text-sm text-slate-200">
+                  <li>Extraction confidence is a heuristic quality signal, not a calibrated probability.</li>
+                  <li>Per-method confidence bands are ordinal triage aids, not statistical confidence intervals.</li>
+                  <li>High agreement is useful, but it does not remove the need to inspect the filing evidence.</li>
+                  <li>Treat model rows as structured interpretations anchored to evidence, not ground truth by themselves.</li>
+                  <li>Bounded visible cases can stop earlier than full-runtime cases; that stopping point is an explicit product decision, not a hidden fallback.</li>
+                </ul>
+              </article>
+            </section>
+
+            <section className="space-y-3 rounded-[1.2rem] border border-white/10 bg-slate-950/30 p-4">
+              <div className="text-[11px] uppercase tracking-[0.28em] text-slate-400">
+                Appendix links
+              </div>
+              <h3 className="text-xl font-semibold text-slate-100">Source indexes and route truth references</h3>
+              <div className="space-y-2 text-sm text-slate-200">
+                <p>
+                  Full-section input indexes:
+                  <a
+                    className="ml-1 text-sky-300 underline decoration-sky-300/60 underline-offset-2"
+                    href={withBase("data/sec_narrative_drift_lab/llm_inputs_v2/inputs_index_pair_v2.json")}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    inputs_index_pair_v2.json
+                  </a>
+                  {" | "}
+                  <a
+                    className="text-sky-300 underline decoration-sky-300/60 underline-offset-2"
+                    href={withBase("data/sec_narrative_drift_lab/llm_inputs_v2/inputs_index_year_v2.json")}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    inputs_index_year_v2.json
+                  </a>
+                </p>
+                <p>
+                  Method profile metadata:
+                  <a
+                    className="ml-1 text-sky-300 underline decoration-sky-300/60 underline-offset-2"
+                    href={withBase("data/sec_narrative_drift_lab/lab_method_profiles_v1.json")}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    lab_method_profiles_v1.json
+                  </a>
+                </p>
+                <p>
+                  Source docs: <code>docs/SEC_TEXT_SAFETY.md</code> and <code>docs/lab/05_llm_reproducibility_contract.md</code>
+                </p>
+              </div>
+            </section>
           </div>
-          <h2 className="text-2xl font-semibold text-slate-100">Source indexes and route truth references</h2>
-          <div className="space-y-2 text-sm text-slate-200">
-            <p>
-              Full-section input indexes:
-              <a
-                className="ml-1 text-sky-300 underline decoration-sky-300/60 underline-offset-2"
-                href={withBase("data/sec_narrative_drift_lab/llm_inputs_v2/inputs_index_pair_v2.json")}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                inputs_index_pair_v2.json
-              </a>
-              {" | "}
-              <a
-                className="text-sky-300 underline decoration-sky-300/60 underline-offset-2"
-                href={withBase("data/sec_narrative_drift_lab/llm_inputs_v2/inputs_index_year_v2.json")}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                inputs_index_year_v2.json
-              </a>
-            </p>
-            <p>
-              Method profile metadata:
-              <a
-                className="ml-1 text-sky-300 underline decoration-sky-300/60 underline-offset-2"
-                href={withBase("data/sec_narrative_drift_lab/lab_method_profiles_v1.json")}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                lab_method_profiles_v1.json
-              </a>
-            </p>
-            <p>
-              Source docs: <code>docs/SEC_TEXT_SAFETY.md</code> and <code>docs/lab/05_llm_reproducibility_contract.md</code>
-            </p>
-          </div>
-        </section>
+        </details>
 
         <footer className="flex flex-wrap items-center gap-2 text-sm">
           <Link

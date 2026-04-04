@@ -51,9 +51,16 @@ export default function VisibleCaseAnswerSummary({
   effortRobustness,
 }: VisibleCaseAnswerSummaryProps) {
   const primaryCell = getPrimaryCell(bundle)
-  const primarySummary = compactText(primaryCell?.summary ?? bundle.story.investor_read, 340)
-  const matterSummary = compactText(bundle.story.investor_read, 240)
+  const primarySummary = compactText(primaryCell?.summary ?? bundle.story.investor_read, 300)
+  const matterSummary = compactText(bundle.story.investor_read, 180)
   const surfaceCoverage = formatSurfaceCoverageLabel({ noveltyLedger, effortRobustness })
+  const summaryMeta = [
+    `Basis: ${primaryCell?.short_label ?? "Primary read"}`,
+    noveltyLedger ? "Fresh vs reused stays secondary" : null,
+    effortRobustness ? "Integrity caveat stays visible" : null,
+  ]
+    .filter((value): value is string => Boolean(value))
+    .join(" • ")
 
   return (
     <section
@@ -70,31 +77,17 @@ export default function VisibleCaseAnswerSummary({
         </span>
       </div>
 
-      <div className="flex flex-wrap gap-1.5 text-[11px] text-slate-200 sm:gap-2">
-        <span className="rounded-full border border-sky-300/25 bg-sky-400/10 px-2.5 py-1 sm:px-3">
-          Basis: {primaryCell?.short_label ?? "Primary read"}
-        </span>
-        {noveltyLedger ? (
-          <span className="rounded-full border border-white/8 bg-white/4 px-2.5 py-1 text-slate-300 sm:px-3">
-            Fresh vs reused
-          </span>
-        ) : null}
-        {effortRobustness ? (
-          <span className="rounded-full border border-amber-300/25 bg-amber-400/10 px-2.5 py-1 sm:px-3">
-            Integrity caveat
-          </span>
-        ) : null}
-      </div>
+      <p className="text-[11px] uppercase tracking-[0.2em] text-slate-400">{summaryMeta}</p>
 
-      <div className="grid gap-3 sm:gap-4 lg:grid-cols-2">
-        <article className="rounded-[1.1rem] border border-sky-300/20 bg-slate-950/35 p-3 sm:p-4">
+      <div className="grid gap-3 sm:gap-4 lg:grid-cols-[minmax(0,1.16fr)_minmax(0,0.84fr)]">
+        <article className="rounded-[1.1rem] border border-sky-300/20 bg-slate-950/35 p-3.5 sm:p-4">
           <div className="text-[10px] uppercase tracking-[0.24em] text-sky-100">What changed</div>
           <p className="mt-2.5 text-sm leading-6 text-slate-100">{primarySummary}</p>
         </article>
 
-        <article className="rounded-[1.1rem] border border-emerald-300/20 bg-slate-950/35 p-3 sm:p-4">
+        <article className="rounded-[1.1rem] border border-white/10 bg-slate-950/28 p-3.5 sm:p-4">
           <div className="text-[10px] uppercase tracking-[0.24em] text-emerald-100">Why it matters</div>
-          <p className="mt-2.5 text-sm leading-6 text-slate-100">
+          <p className="mt-2 text-sm leading-6 text-slate-100">
             Supported by {surfaceCoverage}. {matterSummary}
           </p>
         </article>
