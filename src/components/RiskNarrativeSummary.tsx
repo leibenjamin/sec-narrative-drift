@@ -643,7 +643,7 @@ export default function RiskNarrativeSummary({
       <section className="rounded-xl border border-slate-600/30 bg-slate-900/40 p-5">
         <h3 className="text-base font-semibold text-slate-200">Risk narrative analysis</h3>
         <p className="mt-2 text-sm text-slate-400">
-          Precomputed outline-compare data is not yet available for {ticker}. Deterministic methods below
+          Precomputed outline-compare data is not yet available for {ticker}. Rule-based methods below
           still provide quantitative drift signals.
         </p>
       </section>

@@ -32,7 +32,7 @@ export default function AppHeader() {
             Document Protocol Lab
           </Link>
           <div className="mt-1 text-[10px] text-slate-400 sm:text-[11px]">
-            Bounded public pilot: NVDA, LLY, and KO
+            Public pilot: NVDA, LLY, and KO
           </div>
         </div>
         <nav className="flex flex-wrap items-center gap-4 pt-0.5 text-sm" aria-label="Primary">

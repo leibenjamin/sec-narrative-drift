@@ -18,9 +18,9 @@ export default function LLYStopStrip({
 }: LLYStopStripProps) {
   const availableParts = [
     "Filing answer",
-    "Protocol meaning",
-    noveltyLedger ? "Fresh vs reused" : null,
-    effortRobustness ? "Integrity check" : null,
+    "Why this read matters",
+    noveltyLedger ? "New vs repeated" : null,
+    effortRobustness ? "Matched-effort check" : null,
   ].filter((value): value is string => Boolean(value))
 
   const disciplinedStop = effortRobustness?.case_artifact.caveat ?? bundle.story.caveat

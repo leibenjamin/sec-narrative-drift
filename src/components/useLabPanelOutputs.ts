@@ -365,11 +365,11 @@ export default function useLabPanelOutputs(
         if (!artifact) {
           nextInsightOutputs[campaignId] = null
           nextInsightDebugPaths[campaignId] =
-            "Optional insight lens sidecar is not published for this compare lane."
+            "Optional insight sidecar is not published for this compare lane."
           nextInsightDebugInfo[campaignId] = {
             expectedPath: null,
             requestedUrl: null,
-            errorText: "Optional insight lens sidecar not available for this case/lens/campaign.",
+            errorText: "Optional insight sidecar not available for this case/lens/campaign.",
           }
           continue
         }

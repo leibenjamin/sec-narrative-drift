@@ -224,13 +224,13 @@ export default function LabPanelAuditTrailSection({
     >
       <div className="space-y-2.5">
         <p className="text-[11px] uppercase tracking-[0.24em] text-slate-300">Audit gateway</p>
-        <h2 className="text-xl font-semibold text-slate-100">Pressure-test the briefing</h2>
+        <h2 className="text-xl font-semibold text-slate-100">Pressure-test the read</h2>
         <p className="max-w-3xl text-sm leading-6 text-slate-300">
-          Open the lower audit only when the filing answer or protocol layer still needs more
+          Open the lower audit only when the filing answer or supporting read still needs more
           pressure.
         </p>
         <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px] uppercase tracking-[0.18em] text-slate-500">
-          <span>{totalMethodCards} deterministic cards</span>
+          <span>{totalMethodCards} rule-based cards</span>
           <span className="text-slate-700">/</span>
           <span>{modeLabel}</span>
           <span className="text-slate-700">/</span>
@@ -240,8 +240,8 @@ export default function LabPanelAuditTrailSection({
 
       <div className="space-y-3">
         <AuditDisclosureRow
-          title="Deterministic methods"
-          description={`${totalMethodCards} deterministic cards when the filing answer needs method-by-method pressure.`}
+          title="Rule-based methods"
+          description={`${totalMethodCards} rule-based cards when the filing answer needs method-by-method pressure.`}
         >
           <div id="lab-method-context" className="space-y-6">
             {groupedMethodCards.map((group) => (
@@ -278,7 +278,7 @@ export default function LabPanelAuditTrailSection({
         <AuditDisclosureRow
           id="lab-agreement"
           title="Where methods agree"
-          description="Cross-check whether the deterministic methods reinforce the same story or force a slower read."
+          description="Cross-check whether the rule-based methods reinforce the same story or force a slower read."
         >
           <div className="space-y-4">
             <AgreementMatrix output={agreementOutput} />
@@ -327,8 +327,8 @@ export default function LabPanelAuditTrailSection({
       {selectedLlmCampaignA || selectedLlmCampaignB ? (
         <div className="pt-2">
           <AuditDisclosureRow
-            title="Structure audit"
-            description="Compare the ranked outline audit only when the briefing shell still needs proof."
+            title="Structure check"
+            description="Compare the ranked outline audit only when the filing answer still needs proof."
           >
             <OutlineComparePanel
               modelALabel={selectedCampaignLabelA}
@@ -372,7 +372,7 @@ export default function LabPanelAuditTrailSection({
           <div className="pt-2">
             <AuditDisclosureRow
               title="Advanced controls"
-              description="Adjust lanes, method coverage, and diagnostics without reopening the upper shell."
+              description="Adjust lanes, method coverage, and diagnostics without reopening the top of the page."
               tone="utility"
             >
               <LabPanelAdvancedControls {...advancedControlsProps} />
@@ -380,8 +380,8 @@ export default function LabPanelAuditTrailSection({
           </div>
           <div className="pt-3">
             <AuditDisclosureRow
-              title="Optional insight lens"
-              description="Optional paragraph drilldown once the filing answer and structure audit are already in view."
+              title="Optional insight"
+              description="Optional paragraph drilldown once the filing answer and structure check are already in view."
               tone="optional"
             >
               {selectedCompareCampaignIds.length > 0 && !hasAnyInsightOutput ? (
@@ -391,7 +391,7 @@ export default function LabPanelAuditTrailSection({
                 >
                   <p className="text-sm text-slate-200">
                     Optional insight sidecars are not published for these compare lanes. The shipped compare
-                    path remains the filing answer plus the outline audit above.
+                    path remains the filing answer plus the structure check above.
                   </p>
                   <div className="mt-3 flex flex-wrap gap-2 text-[11px] text-slate-300">
                     {compactInsightItems.map((item) => (
@@ -427,7 +427,7 @@ export default function LabPanelAuditTrailSection({
         <div className="pt-2">
           <AuditDisclosureRow
             title="Advanced controls"
-            description="Adjust lanes, method coverage, and diagnostics without reopening the upper shell."
+            description="Adjust lanes, method coverage, and diagnostics without reopening the top of the page."
             tone="utility"
           >
             <LabPanelAdvancedControls {...advancedControlsProps} />

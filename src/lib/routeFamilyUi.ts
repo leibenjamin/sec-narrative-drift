@@ -34,7 +34,7 @@ const ROUTE_FAMILY_CASE_CONFIG = {
     sector: "Semiconductors / AI Infrastructure",
     publicRoleLabel: "Vivid answer",
     topCue:
-      "Vivid answer: read the filing answer first, then use the protocol and audit layers only to pressure-test it.",
+      "Vivid answer: read the filing answer first, then use the supporting read and audit only if you need more pressure.",
     homeCardLabel: "Vivid answer",
     chooserCardDescription: "The clearest answer-first shift in the pilot.",
     chooserBestFor: "Strongest first signal",
@@ -42,20 +42,20 @@ const ROUTE_FAMILY_CASE_CONFIG = {
     methodologyDetail:
       "Shows the workflow at full clarity when the filing shift is vivid and easy to pressure-test.",
     preview: {
-      integratedTitle: "Why this fixture stays visible",
-      boundedTitle: "Why this read stays visible",
-      roleSummary: "Answer-first is clearest here; the support layers only pressure-test it.",
+      integratedTitle: "Why this case is here",
+      boundedTitle: "Why this read is here",
+      roleSummary: "Answer-first is clearest here; the supporting read only pressure-tests it.",
       subtitleSource: "card_takeaway",
       supportStrategy: "effort_first",
     },
   },
   LLY: {
     ticker: "LLY",
-    companyName: "Eli Lilly and Company",
+    companyName: "Eli Lilly",
     sector: "Pharmaceuticals / Cardiometabolic and Obesity",
     publicRoleLabel: "Honest stop",
     topCue:
-      "Honest stop: read the filing answer, check the compact protocol layer, then stop at the explicit boundary.",
+      "Honest stop: read the filing answer, check the supporting read, then stop at the explicit boundary.",
     homeCardLabel: "Honest stop",
     chooserCardDescription: "Policy pressure makes the stop boundary visible.",
     chooserBestFor: "Policy-heavy contrast",
@@ -63,8 +63,8 @@ const ROUTE_FAMILY_CASE_CONFIG = {
     methodologyDetail:
       "Shows where policy-heavy contrast needs a visible stop before the public surface pretends to broader certainty.",
     preview: {
-      integratedTitle: "Why this fixture stays visible",
-      boundedTitle: "Why this bounded read stays visible",
+      integratedTitle: "Why this case is here",
+      boundedTitle: "Why this read stops here",
       roleSummary: "Show the visible read, then stop at the boundary.",
       subtitleSource: "card_takeaway",
       supportStrategy: "effort_first",
@@ -76,7 +76,7 @@ const ROUTE_FAMILY_CASE_CONFIG = {
     sector: "Consumer Staples / Beverages",
     publicRoleLabel: "Useful restraint",
     topCue:
-      "Useful restraint: read the filing answer, then use the protocol layer to selectively sharpen a mostly stable filing.",
+      "Useful restraint: read the filing answer, then use the supporting read to selectively sharpen a mostly stable filing.",
     homeCardLabel: "Useful restraint",
     chooserCardDescription: "Selective sharpening matters when the filing barely moves.",
     chooserBestFor: "Low-drift restraint",
@@ -84,9 +84,9 @@ const ROUTE_FAMILY_CASE_CONFIG = {
     methodologyDetail:
       "Shows the same workflow staying useful when the filing barely moves and drama would be misleading.",
     preview: {
-      integratedTitle: "Why restraint stays useful",
-      boundedTitle: "Why restraint stays useful",
-      roleSummary: "Mostly stable filing; the protocol only sharpens the few places that moved.",
+      integratedTitle: "Why restraint helps here",
+      boundedTitle: "Why restraint helps here",
+      roleSummary: "Mostly stable filing; the supporting read only sharpens the few places that moved.",
       subtitleSource: "card_takeaway",
       supportStrategy: "scope_only",
       showRestraintStrip: true,

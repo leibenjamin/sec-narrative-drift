@@ -478,7 +478,7 @@ export default function InsightLensPanel({
         <div className="max-w-3xl">
           <p className="text-sm font-medium text-slate-100">Paragraph-level drilldown stays optional.</p>
           <p className="mt-1 text-[11px] text-slate-400">
-            Keep the filing answer and structure audit primary unless you need clustered insight cards
+            Keep the filing answer and structure check primary unless you need clustered insight cards
             and direct paragraph drilldown.
           </p>
         </div>

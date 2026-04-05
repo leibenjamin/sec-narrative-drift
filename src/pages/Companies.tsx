@@ -10,7 +10,7 @@ import {
 
 const COMPANIES_TITLE = "Pilot Cases | Document Protocol Lab"
 const COMPANIES_DESCRIPTION =
-  "Choose the current Document Protocol Lab SEC Item 1A fixture: NVDA, LLY, or KO."
+  "Choose the current Document Protocol Lab SEC Item 1A case: NVDA, LLY, or KO."
 
 export default function Companies() {
   const [visiblePilotSystem, setVisiblePilotSystem] = useState<ProtocolLabVisiblePilotSystem | null>(null)
@@ -47,10 +47,10 @@ export default function Companies() {
         <header className="space-y-3">
           <p className="text-xs uppercase tracking-[0.28em] text-slate-300">Cases</p>
           <h1 className="max-w-3xl text-3xl font-semibold text-slate-50 sm:text-4xl">
-            Choose the fixture that matches your goal.
+            Choose the case that matches your goal.
           </h1>
           <p className="max-w-3xl text-sm leading-6 text-slate-300">
-            Pick the fixed pilot fixture that matches the first read you need.
+            Pick the pilot case that matches the first read you need.
           </p>
           <Link
             to="/"
@@ -67,10 +67,10 @@ export default function Companies() {
         </header>
 
         {isLoading ? (
-          <p className="text-sm text-slate-300">Loading fixture chooser...</p>
+          <p className="text-sm text-slate-300">Loading case chooser...</p>
         ) : !visiblePilotSystem ? (
           <p className="rounded-xl border border-amber-400/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-100">
-            Fixture chooser is unavailable because the case list did not load cleanly.
+            Case chooser is unavailable because the case list did not load cleanly.
           </p>
         ) : (
           <>

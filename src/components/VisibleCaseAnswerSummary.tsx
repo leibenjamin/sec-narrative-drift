@@ -27,7 +27,7 @@ function formatSurfaceCoverageLabel(props: {
   const parts = ["the primary read"]
 
   if (props.noveltyLedger) {
-    parts.push("the fresh-vs-reused cue")
+    parts.push("the new-vs-repeated cue")
   }
 
   if (props.effortRobustness) {

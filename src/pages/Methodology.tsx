@@ -11,7 +11,7 @@ import { VISIBLE_FAMILY_TICKERS, getRouteFamilyConfig } from "../lib/routeFamily
 
 const METHODOLOGY_TITLE = "Methodology | Document Protocol Lab"
 const METHODOLOGY_DESCRIPTION =
-  "Workflow anatomy for Document Protocol Lab: bounded offline stages, compact trust signals, fixture roles, and deferred audit detail without runtime model calls."
+  "Workflow anatomy for Document Protocol Lab: bounded offline stages, compact trust signals, case roles, and deferred audit detail without runtime model calls."
 
 const DETECTORS = [
   {
@@ -123,8 +123,8 @@ const WORKFLOW_STAGES: WorkflowAnatomyStage[] = [
 const TRUST_MODEL_ITEMS: TrustModelItem[] = [
   { label: "Static JSON only" },
   { label: "No runtime LLM" },
-  { label: "Evidence-grounded" },
-  { label: "Bounded visible scope" },
+  { label: "Evidence-based" },
+  { label: "Bounded scope" },
 ]
 
 const FIXTURE_ROLE_ITEMS: FixtureRoleStripItem[] = VISIBLE_FAMILY_TICKERS.map((ticker) => {
@@ -169,15 +169,12 @@ export default function Methodology() {
         <section className="relative overflow-hidden rounded-4xl border border-white/10 bg-linear-to-br from-slate-950/92 via-slate-950/84 to-slate-900/72 p-4 shadow-[0_30px_80px_rgba(2,6,23,0.38)] sm:p-6">
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(56,189,248,0.16),transparent_36%),radial-gradient(circle_at_bottom_right,rgba(16,185,129,0.11),transparent_30%)]" />
           <div className="relative space-y-3 sm:space-y-4">
-            <div className="flex flex-wrap items-center gap-2 text-[11px] uppercase tracking-[0.24em] text-slate-300">
+            <div className="flex flex-wrap items-center gap-1.5 text-[11px] uppercase tracking-[0.24em] text-slate-300">
               <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">
                 Methodology
               </span>
               <span className="rounded-full border border-sky-300/25 bg-sky-400/10 px-3 py-1 text-sky-100">
-                Workflow anatomy
-              </span>
-              <span className="px-1 text-[10px] tracking-[0.18em] text-slate-500 sm:px-2">
-                Bounded public pilot
+                Public pilot
               </span>
             </div>
 

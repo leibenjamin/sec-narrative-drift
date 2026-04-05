@@ -25,7 +25,7 @@ export default function FixtureRoleStrip({ items }: FixtureRoleStripProps) {
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div className="max-w-2xl">
           <div className="text-[11px] uppercase tracking-[0.28em] text-slate-400">
-            Visible pilot roles
+            Case roles
           </div>
           <p className="mt-1.5 text-sm leading-5 text-slate-300">
             Three cases are enough to show {roleSummary} without widening the public claim.

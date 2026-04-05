@@ -129,7 +129,7 @@ export default function LabPanelAdvancedControls({
             </div>
             <p className="mt-3 text-xs text-slate-400">
               {isExecutiveMode
-                ? "Quick read keeps the two core deterministic methods in view first."
+                ? "Quick read keeps the two core rule-based methods in view first."
                 : "Deep review restores the full deterministic set and richer method context."}
             </p>
             {presetStatusMessage ? (
@@ -195,7 +195,7 @@ export default function LabPanelAdvancedControls({
 
       <div className="rounded-lg border border-white/10 bg-slate-950/35 p-4">
         <div className="flex items-center justify-between gap-3">
-          <div className="text-xs uppercase tracking-wide text-slate-400">Deterministic methods</div>
+          <div className="text-xs uppercase tracking-wide text-slate-400">Rule-based methods</div>
           <div className="text-xs text-slate-500">
             Available outputs: {availableDetectorCount}/{detectorCatalogCount}
           </div>
@@ -307,14 +307,14 @@ export default function LabPanelAdvancedControls({
               className="underline decoration-white/30 underline-offset-2 hover:text-slate-100"
               href="#lab-outline-compare"
             >
-              Structure audit
+              Structure check
             </a>
             {showInsightJump ? (
               <a
                 className="underline decoration-white/30 underline-offset-2 hover:text-slate-100"
                 href="#lab-insight-lens"
               >
-                Insight lens
+                Insight
               </a>
             ) : null}
             {showMethodContextJump ? (

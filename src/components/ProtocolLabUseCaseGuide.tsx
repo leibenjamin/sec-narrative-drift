@@ -40,7 +40,7 @@ function resolveHref(
 export default function ProtocolLabUseCaseGuide({
   visiblePilots,
   title = "Choose by goal",
-  description = "Each option below is a fixed visible pilot fixture.",
+  description = "Each option below is a current public case.",
   className = "",
   showIntro = true,
 }: ProtocolLabUseCaseGuideProps) {
@@ -59,11 +59,11 @@ export default function ProtocolLabUseCaseGuide({
           const primaryLine = compactText(
             familyConfig?.chooserCardDescription ??
               pilot?.guidance.what_you_learn ??
-              "Open the current fixture for this pilot role.",
+              "Open the current case for this route.",
             74
           )
           const supportLine = compactText(
-            familyConfig?.chooserBestFor ?? pilot?.best_for ?? pilot?.guidance.why_pick ?? "Open this fixture.",
+            familyConfig?.chooserBestFor ?? pilot?.best_for ?? pilot?.guidance.why_pick ?? "Open this case.",
             32
           )
           const isRecommended = Boolean(pilot?.is_recommended_first_case)
@@ -71,7 +71,7 @@ export default function ProtocolLabUseCaseGuide({
             <FixtureRoleCard
               key={ticker}
               ticker={ticker}
-              companyName={pilot?.company_name ?? familyConfig?.companyName ?? ticker}
+              companyName={familyConfig?.companyName ?? pilot?.company_name ?? ticker}
               roleLabel={familyConfig?.chooserObjectiveLabel ?? ticker}
               description={primaryLine}
               bestFor={supportLine}

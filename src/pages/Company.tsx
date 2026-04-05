@@ -22,7 +22,7 @@ const FALLBACK_COMPANY_SECTORS: Record<string, string> = {
 }
 
 const DEFAULT_TOP_CUE =
-  "Read the filing answer first, then use the protocol meaning and lower audit only when you need more pressure."
+  "Read the filing answer first, then use the supporting read and lower audit only when you need more pressure."
 
 type Pair = { from: number; to: number }
 
@@ -119,13 +119,13 @@ export default function Company() {
   }, [searchParams, setSearchParams, visiblePilot])
 
   const displayName = visiblePilot?.company_name ?? familyConfig?.companyName ?? FALLBACK_COMPANY_NAMES[ticker] ?? ticker
-  const activeRoleLabel = familyConfig?.publicRoleLabel ?? visiblePilot?.role_label ?? "Visible pilot"
+  const activeRoleLabel = familyConfig?.publicRoleLabel ?? visiblePilot?.role_label ?? "Public case"
   const activeCaseLabel = visiblePilot
     ? formatPilotPairLabel(visiblePilot)
     : requestedPair
       ? `${formatFiscalYearRange(requestedPair.from, requestedPair.to)} Item 1A`
       : "FY2024 to FY2025 Item 1A"
-  const companyMetaDescription = `Document Protocol Lab visible pilot fixture for ${displayName}: start with the filing answer, then the protocol meaning, then the deeper audit only when you need it.`
+  const companyMetaDescription = `Document Protocol Lab public pilot case for ${displayName}: start with the filing answer, then the supporting read, then the deeper audit only when you need it.`
   const inlineCue = familyConfig?.topCue ?? DEFAULT_TOP_CUE
   const sectorLabel = familyConfig?.sector ?? FALLBACK_COMPANY_SECTORS[ticker] ?? null
 
@@ -182,15 +182,15 @@ export default function Company() {
           <section className="rounded-[1.35rem] border border-white/10 bg-linear-to-br from-slate-950/86 via-slate-900/60 to-slate-950/40 p-4 shadow-[0_18px_42px_rgba(2,6,23,0.3)] sm:p-4.5">
             <div className="grid gap-3 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-start sm:gap-4">
               <div className="min-w-0 space-y-2.5">
-                <div className="flex flex-wrap gap-1.5 text-[11px] text-slate-200 sm:text-xs">
-                  <span className="rounded-full border border-sky-300/25 bg-sky-400/10 px-2.5 py-1">
-                    Pilot case
+                <div className="flex flex-wrap gap-1 text-[11px] text-slate-200 sm:text-xs">
+                  <span className="rounded-full border border-sky-300/25 bg-sky-400/10 px-2 py-1">
+                    Case
                   </span>
-                  <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1">
-                    Role: {activeRoleLabel}
+                  <span className="rounded-full border border-white/10 bg-white/5 px-2 py-1">
+                    {activeRoleLabel}
                   </span>
-                  <span className="rounded-full border border-white/8 bg-white/4 px-2.5 py-1 text-slate-300">
-                    Pair: {activeCaseLabel}
+                  <span className="rounded-full border border-white/8 bg-white/4 px-2 py-1 text-slate-300">
+                    {activeCaseLabel}
                   </span>
                 </div>
                 <div className="space-y-1.5">
@@ -210,7 +210,7 @@ export default function Company() {
                   to="/companies"
                   className="inline-flex items-center rounded-full border border-white/20 px-2.5 py-1 text-[11px] text-slate-200 hover:border-white/40 hover:bg-white/5 sm:px-3 sm:py-1.5 sm:text-xs"
                 >
-                  Back to 3 fixtures
+                  Back to 3 cases
                 </Link>
                 <Link
                   to="/methodology"

@@ -18,10 +18,10 @@ import {
 
 const HOME_TITLE = "Document Protocol Lab | SEC Item 1A pilot"
 const HOME_META_DESCRIPTION =
-  "Document Protocol Lab is a bounded public pilot across NVDA, LLY, and KO: claim first, protocol proof second, deeper audit only when needed."
+  "Document Protocol Lab is a public pilot across NVDA, LLY, and KO: answer first, supporting read second, deeper audit only when needed."
 const HOME_HOOK = "How do you show what changed in a document without overstating what you know?"
 const HOME_SUPPORT =
-  "A bounded public pilot across NVDA, LLY, and KO makes the protocol legible in one pass."
+  "A public pilot across NVDA, LLY, and KO makes the protocol legible in one pass."
 const HOME_CHOOSER_SUMMARY =
   "Pick the first read you need, then let the lower layers stay secondary."
 
@@ -55,8 +55,7 @@ type HomeFixtureCardModel = {
 
 function buildFixtureCardModel(
   ticker: VisibleFamilyTicker,
-  href: string,
-  companyName: string | null = null
+  href: string
 ): HomeFixtureCardModel {
   const familyConfig = getRouteFamilyConfig(ticker)
   if (!familyConfig) {
@@ -65,7 +64,7 @@ function buildFixtureCardModel(
 
   return {
     ticker,
-    companyName: companyName ?? familyConfig.companyName,
+    companyName: familyConfig.companyName,
     roleLabel: familyConfig.homeCardLabel,
     description: compactText(familyConfig.chooserCardDescription, 64),
     href,
@@ -91,7 +90,7 @@ export default function Home() {
       .catch(() => {
         if (cancelled) return
         setVisiblePilotSystem(null)
-        setError("Fixture guidance did not load cleanly. Showing the fixed pilot routes instead.")
+        setError("Case guidance did not load cleanly. Showing the fixed case routes instead.")
       })
       .finally(() => {
         if (!cancelled) setIsLoading(false)
@@ -104,11 +103,7 @@ export default function Home() {
 
   const fixtureCards = VISIBLE_FAMILY_TICKERS.map((ticker) => {
     const pilot = visiblePilotSystem?.visiblePilots.find((entry) => entry.ticker === ticker) ?? null
-    return buildFixtureCardModel(
-      ticker,
-      pilot?.href ?? buildProtocolLabCaseHref(ticker, 2024, 2025),
-      pilot?.company_name ?? null
-    )
+    return buildFixtureCardModel(ticker, pilot?.href ?? buildProtocolLabCaseHref(ticker, 2024, 2025))
   })
   const recommendedHref = visiblePilotSystem
     ? getProtocolLabRecommendedPilot(visiblePilotSystem).href
@@ -123,15 +118,12 @@ export default function Home() {
           <div className="relative grid gap-4 p-4 sm:gap-6 sm:p-6 xl:p-7">
             <div className="grid gap-4 lg:grid-cols-[minmax(0,0.94fr)_minmax(0,1.06fr)] lg:items-start">
               <div className="rounded-[1.8rem] border border-white/10 bg-slate-950/24 p-4 sm:p-5 xl:p-6">
-              <div className="flex flex-wrap items-center gap-2 text-[11px] uppercase tracking-[0.24em] text-slate-300">
+              <div className="flex flex-wrap items-center gap-1.5 text-[11px] uppercase tracking-[0.24em] text-slate-300">
                 <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">
                   Document Protocol Lab
                 </span>
                 <span className="rounded-full border border-sky-300/25 bg-sky-400/10 px-3 py-1 text-sky-100">
-                  Bounded public pilot
-                </span>
-                <span className="px-1 text-[10px] tracking-[0.18em] text-slate-500 sm:px-2">
-                  NVDA / LLY / KO
+                  Public pilot
                 </span>
               </div>
 
@@ -157,7 +149,7 @@ export default function Home() {
                         to="/companies"
                         className="inline-flex min-h-11 items-center justify-center rounded-full border border-white/20 px-4 py-2.5 text-sm font-medium text-slate-200 transition hover:border-white/40 hover:bg-white/5"
                       >
-                        See all fixtures
+                        See all cases
                       </Link>
                     </div>
                     <Link
@@ -177,7 +169,7 @@ export default function Home() {
                 <div className="max-w-2xl">
                   <div className="text-[11px] uppercase tracking-[0.28em] text-sky-100">Next move</div>
                   <h2 className="mt-2 text-xl font-semibold text-slate-50 sm:text-2xl">
-                    Choose the fixture that matches the read you need.
+                    Choose the case that matches the read you need.
                   </h2>
                   <p className="mt-2 text-sm leading-6 text-slate-300">{HOME_CHOOSER_SUMMARY}</p>
                 </div>
@@ -205,7 +197,7 @@ export default function Home() {
             </div>
 
             {isLoading ? (
-              <p className="text-sm text-slate-400">Loading current pilot guidance...</p>
+              <p className="text-sm text-slate-400">Loading current case guidance...</p>
             ) : null}
 
             {error ? (

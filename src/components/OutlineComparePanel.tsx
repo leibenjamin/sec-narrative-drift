@@ -547,7 +547,7 @@ export default function OutlineComparePanel({
           <div className="rounded-xl border border-white/8 bg-slate-950/12 p-3">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div className="text-xs text-slate-300">
-                Filter the detailed compare without changing the visible briefing above.
+                Filter the detailed compare without changing the visible read above.
               </div>
               <div className="flex flex-wrap items-center gap-2">
                 <select

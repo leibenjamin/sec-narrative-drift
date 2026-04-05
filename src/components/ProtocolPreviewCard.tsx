@@ -56,7 +56,7 @@ function buildSupportTile(
 
   if (supportStrategy === "scope_only") {
     return {
-      label: "Pilot scope",
+      label: "Case scope",
       value: compactText(scopeNote, 118),
       tone: "neutral",
     }
@@ -72,14 +72,14 @@ function buildSupportTile(
 
   if (noveltyLedgerArtifact) {
     return {
-      label: "Fresh vs reused",
+      label: "New vs repeated",
       value: compactText(noveltyLedgerArtifact.comparison_to_02.why_secondary_only, 118),
       tone: "neutral",
     }
   }
 
   return {
-    label: "Pilot scope",
+    label: "Case scope",
     value: compactText(scopeNote, 118),
     tone: "neutral",
   }
@@ -135,7 +135,7 @@ function buildPreviewModel(
     ? [supportTile]
     : [
         {
-          label: supportStrategy === "scope_only" ? supportTile.label : "Visible reads add",
+          label: supportStrategy === "scope_only" ? supportTile.label : "What this adds",
           value:
             supportStrategy === "scope_only"
               ? compactText(pilotMatrixBundle.matrix.pilot_status.note, 86)
@@ -148,8 +148,8 @@ function buildPreviewModel(
   return {
     title:
       variant === "bounded"
-        ? familyConfig?.preview.boundedTitle ?? "Why this bounded read stays visible"
-        : familyConfig?.preview.integratedTitle ?? "Why this fixture stays visible",
+        ? familyConfig?.preview.boundedTitle ?? "Why this read is here"
+        : familyConfig?.preview.integratedTitle ?? "Why this case is here",
     lead: compactText(rawSubtitle, showRestraintStrip ? 0 : variant === "bounded" ? 118 : 128),
     showLead,
     supportLine: compactText(
@@ -196,11 +196,11 @@ export default function ProtocolPreviewCard({
         className="space-y-3 rounded-[1.35rem] border border-amber-300/20 bg-amber-400/10 p-4 text-sm text-slate-200 shadow-[0_18px_40px_rgba(2,6,23,0.2)] sm:p-5"
       >
         <div>
-          <p className="text-[11px] uppercase tracking-[0.24em] text-amber-100">Protocol meaning</p>
-          <h2 className="mt-1.5 text-lg font-semibold text-slate-50">Protocol layer unavailable</h2>
+          <p className="text-[11px] uppercase tracking-[0.24em] text-amber-100">Why this read matters</p>
+          <h2 className="mt-1.5 text-lg font-semibold text-slate-50">Second layer unavailable</h2>
         </div>
         <p className="text-sm text-slate-100">
-          The filing answer is still available above. The protocol layer did not load for this case,
+          The filing answer is still available above. The second layer did not load for this case,
           so deeper pressure-testing should rely on the audit gateway below.
         </p>
         {pilotMatrixError ? <p className="text-sm text-amber-100">{pilotMatrixError}</p> : null}
@@ -221,7 +221,7 @@ export default function ProtocolPreviewCard({
       <article className="rounded-[1.35rem] border border-white/10 bg-linear-to-br from-slate-950/82 via-slate-900/65 to-slate-950/40 p-3.5 shadow-[0_18px_40px_rgba(2,6,23,0.2)] sm:p-4.5">
         <div className="flex flex-wrap items-start justify-between gap-3">
           <div className="space-y-1.5">
-            <p className="text-[11px] uppercase tracking-[0.24em] text-sky-100">Protocol meaning</p>
+            <p className="text-[11px] uppercase tracking-[0.24em] text-sky-100">Why this read matters</p>
             <h2 className="text-lg font-semibold text-slate-50 sm:text-xl">{previewModel.title}</h2>
           </div>
           <span className="rounded-full border border-sky-300/20 bg-sky-400/10 px-2.5 py-1 text-[10px] text-sky-100">
@@ -266,10 +266,10 @@ export default function ProtocolPreviewCard({
       {previewModel.showDetailDisclosure ? (
         <details className="rounded-[1.1rem] border border-white/10 bg-slate-950/26 p-2.5 sm:p-3.5">
           <summary className="cursor-pointer list-none text-[13px] font-medium text-slate-100 sm:text-sm">
-            Protocol detail
+            More detail
           </summary>
           <p className="mt-1.5 text-[11px] leading-5 text-slate-400">
-            Lane roles, scope cues, and protocol-specific support stay discoverable here without taking
+            Lane roles, scope cues, and supporting notes stay discoverable here without taking
             over the default fold.
           </p>
 
