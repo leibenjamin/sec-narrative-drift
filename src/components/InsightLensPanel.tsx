@@ -473,17 +473,13 @@ export default function InsightLensPanel({
   }
 
   return (
-    <section
-      id="lab-insight-lens"
-      className="space-y-3 rounded-xl border border-white/10 bg-slate-950/18 p-3 sm:space-y-4 sm:p-4"
-    >
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <div>
-          <p className="text-[11px] uppercase tracking-[0.24em] text-slate-300">Optional deep review</p>
-          <h3 className="mt-2 text-sm font-semibold text-slate-100">Insight lens</h3>
-          <p className="mt-1 text-[11px] text-slate-300">
-            Paragraph-level drilldown is optional. The shipped compare path is still the filing answer,
-            protocol meaning, and audit trail above.
+    <section id="lab-insight-lens" className="space-y-3">
+      <div className="flex flex-wrap items-start justify-between gap-3 rounded-xl border border-white/8 bg-slate-950/14 px-3 py-3">
+        <div className="max-w-3xl">
+          <p className="text-sm font-medium text-slate-100">Paragraph-level drilldown stays optional.</p>
+          <p className="mt-1 text-[11px] text-slate-400">
+            Keep the filing answer and structure audit primary unless you need clustered insight cards
+            and direct paragraph drilldown.
           </p>
         </div>
         {modelAOutput || modelBOutput ? (
@@ -492,7 +488,7 @@ export default function InsightLensPanel({
             onClick={() => setIsExpanded((previous) => !previous)}
             className="rounded-md border border-white/20 bg-slate-900/55 px-3 py-1.5 text-xs text-slate-100 transition hover:border-white/35"
           >
-            {isExpanded ? "Hide insight lens" : "Open insight lens"}
+            {isExpanded ? "Hide paragraph drilldown" : "Open paragraph drilldown"}
           </button>
         ) : null}
       </div>
@@ -507,7 +503,7 @@ export default function InsightLensPanel({
       {!modelBOutput ? renderMissingPanel(modelBLabel, modelBDebug, modelBDebugPath) : null}
 
       {activeOutput && !isExpanded ? (
-        <div className="rounded-md border border-white/10 bg-slate-950/30 p-3 text-sm text-slate-100">
+        <div className="rounded-md border border-white/8 bg-slate-950/12 p-3 text-sm text-slate-100">
           <div className="font-medium">{resolvedActiveModel === "A" ? modelALabel : modelBLabel}</div>
           <div className="mt-1 text-xs text-slate-300">{activeOutput.executive_digest.summary_text}</div>
           <div className="mt-2 text-[11px] text-slate-400">
@@ -518,7 +514,7 @@ export default function InsightLensPanel({
 
       {activeOutput && isExpanded ? (
         <div className="space-y-4">
-          <div className="flex flex-wrap items-center justify-between gap-3 rounded-md border border-white/10 bg-slate-950/30 p-3 text-sm text-slate-100">
+          <div className="flex flex-wrap items-center justify-between gap-3 rounded-md border border-white/8 bg-slate-950/12 p-3 text-sm text-slate-100">
             <div>
               <div className="font-medium">{resolvedActiveModel === "A" ? modelALabel : modelBLabel}</div>
               <div className="mt-1 text-xs text-slate-300">

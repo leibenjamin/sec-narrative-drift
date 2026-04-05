@@ -310,7 +310,7 @@ function renderCompareColumn(props: {
 
   if (!runtime) {
     return (
-      <div className="space-y-3 rounded-2xl border border-white/10 bg-slate-950/35 p-4">
+      <div className="space-y-3 rounded-[1.05rem] border border-white/10 bg-slate-950/24 p-4">
         <div className={`inline-flex rounded-full border px-2.5 py-1 text-[11px] font-medium ${column.accentClass}`}>
           {column.label || `Campaign ${column.id}`}
         </div>
@@ -327,7 +327,7 @@ function renderCompareColumn(props: {
   const evidenceLookup = structured ? buildEvidenceLookup(structured.evidence_bank) : new Map<string, LabOutlineEvidence>()
 
   return (
-    <div className="space-y-4 rounded-2xl border border-white/10 bg-slate-950/35 p-4 shadow-[0_18px_40px_rgba(2,6,23,0.25)]">
+    <div className="space-y-4 rounded-[1.05rem] border border-white/10 bg-slate-950/24 p-4">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
           <div className={`inline-flex rounded-full border px-2.5 py-1 text-[11px] font-medium ${column.accentClass}`}>
@@ -518,17 +518,14 @@ export default function OutlineComparePanel({
   ])
 
   return (
-    <section
-      id="lab-outline-compare"
-      className="space-y-3 rounded-[1.4rem] border border-white/10 bg-slate-950/22 p-3 sm:space-y-4 sm:p-4"
-    >
-      <div className="flex flex-wrap items-center justify-between gap-3">
+    <section id="lab-outline-compare" className="space-y-3">
+      <div className="flex flex-wrap items-start justify-between gap-3 rounded-xl border border-white/8 bg-slate-950/16 px-3 py-3">
         <div className="max-w-3xl">
-          <p className="text-[11px] uppercase tracking-[0.24em] text-slate-300">Deeper audit</p>
-          <h3 className="mt-2 text-lg font-semibold text-slate-100">Structure audit</h3>
-          <p className="mt-1 text-[12px] text-slate-300">
-            Use this lower layer only when you want to compare how each visible read structured the
-            filing, what it ranked, and where the deeper audit detail differs.
+          <p className="text-sm font-medium text-slate-100">{buildPanelCompareSummary(columns)}</p>
+          <p className="mt-1 text-[11px] text-slate-400">
+            {analysisMode === "executive"
+              ? "Executive mode keeps four material changes per campaign in view."
+              : "Deep mode restores the fuller ranked compare, structured context, and outline read."}
           </p>
         </div>
         <button
@@ -536,27 +533,21 @@ export default function OutlineComparePanel({
           onClick={() => setIsExpanded((previous) => !previous)}
           className="rounded-md border border-white/20 bg-slate-900/50 px-2.5 py-1.5 text-xs text-slate-100 transition hover:border-white/35"
         >
-          {isExpanded ? "Hide structure audit" : "Open structure audit"}
+          {isExpanded ? "Hide detailed compare" : "Open detailed compare"}
         </button>
-      </div>
-
-      <div className="rounded-md border border-white/10 bg-slate-950/28 px-3 py-2 text-xs text-slate-200">
-        {buildPanelCompareSummary(columns)}
       </div>
 
       {!isExpanded ? (
         <p className="text-[11px] text-slate-400">
-          Closed by default so the filing answer and protocol meaning stay primary. Open this panel
-          for side-by-side ranked changes, structured mechanisms, limits, and outline structure.
+          Side-by-side ranked changes, structured mechanisms, limits, and outline structure stay one
+          layer deeper until you open them.
         </p>
       ) : (
         <>
-          <div className="rounded-xl border border-white/10 bg-slate-950/25 p-3">
+          <div className="rounded-xl border border-white/8 bg-slate-950/12 p-3">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div className="text-xs text-slate-300">
-                {analysisMode === "executive"
-                  ? "Executive mode shows four material changes per campaign."
-                  : "Deep mode shows six material changes plus structured context per campaign."}
+                Filter the detailed compare without changing the visible briefing above.
               </div>
               <div className="flex flex-wrap items-center gap-2">
                 <select

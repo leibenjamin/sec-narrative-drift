@@ -411,7 +411,6 @@ export default function LabPanel({
     selectedLlmCampaignB,
   })
   const {
-    outputs,
     isLoadingOutputs,
     insightOutputs,
     insightDebugPaths,
@@ -464,16 +463,6 @@ export default function LabPanel({
       return next
     })
   }
-
-  const methodCoverageSummary = useMemo(() => {
-    let selected = 0
-    let available = 0
-    for (const card of methodCards) {
-      selected += 1
-      if (outputs[card.cardKey]) available += 1
-    }
-    return `Method coverage ${available}/${selected}`
-  }, [methodCards, outputs])
 
   const selectedCompareCampaignIds = useMemo(
     () => Array.from(new Set([selectedLlmCampaignA, selectedLlmCampaignB].filter(Boolean))),
@@ -665,7 +654,6 @@ export default function LabPanel({
     methodCardCount: methodCards.length,
     onReloadOutputs: handleReloadOutputs,
     isReloadDisabled: !selectedCase || isLoadingOutputs,
-    methodCoverageSummary,
     showProtocolJump: isPilotMatrixSelectedCase,
     showInsightJump: hasAnyInsightOutput || compactInsightItems.length > 0,
     showMethodContextJump: isDeepMode,
