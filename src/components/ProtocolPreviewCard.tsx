@@ -254,7 +254,7 @@ export default function ProtocolPreviewCard({
           {previewModel.visibleTiles.map((tile) => (
             <article
               key={tile.label}
-              className={`rounded-[1rem] border p-3 ${getToneClasses(tile.tone)}`}
+              className={`rounded-2xl border p-3 ${getToneClasses(tile.tone)}`}
             >
               <div className="text-[10px] uppercase tracking-[0.24em] text-slate-300">{tile.label}</div>
               <p className="mt-1.5 text-sm leading-5 text-slate-100">{tile.value}</p>

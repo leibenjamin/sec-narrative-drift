@@ -27,7 +27,7 @@ export default function KORestraintStrip({ bundle, skepticCase }: KORestraintStr
         </p>
       </article>
 
-      <article className="rounded-[1rem] border border-white/8 bg-slate-950/22 p-3.5">
+      <article className="rounded-2xl border border-white/8 bg-slate-950/22 p-3.5">
         <div className="text-[10px] uppercase tracking-[0.24em] text-slate-300">
           Selective sharpening
         </div>

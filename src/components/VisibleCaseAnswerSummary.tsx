@@ -80,7 +80,7 @@ export default function VisibleCaseAnswerSummary({
           <p className="mt-2.5 text-sm leading-6 text-slate-100">{primarySummary}</p>
         </article>
 
-        <article className="rounded-[1rem] border border-white/8 bg-slate-950/22 p-3.5 sm:p-4">
+        <article className="rounded-2xl border border-white/8 bg-slate-950/22 p-3.5 sm:p-4">
           <div className="text-[10px] uppercase tracking-[0.24em] text-emerald-100">Why it matters</div>
           <p className="mt-2 text-sm leading-5 text-slate-100">{supportNote}</p>
         </article>

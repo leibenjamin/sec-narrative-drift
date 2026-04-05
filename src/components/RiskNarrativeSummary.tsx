@@ -259,7 +259,7 @@ function renderEvidenceCard(props: {
 }) {
   const { heading, year, ref, evidence, note = null } = props
   return (
-    <div className="rounded-[1rem] border border-white/8 bg-slate-950/30 p-3 sm:p-3.5">
+    <div className="rounded-2xl border border-white/8 bg-slate-950/30 p-3 sm:p-3.5">
       <div className="text-[10px] uppercase tracking-[0.22em] text-slate-400">{heading}</div>
       {ref && evidence ? (
         <>
@@ -702,8 +702,8 @@ export default function RiskNarrativeSummary({
                     key={item.label}
                     className={
                       item.tone === "boundary"
-                        ? "rounded-[1rem] border border-amber-300/16 bg-amber-400/7 p-3"
-                        : "rounded-[1rem] border border-white/8 bg-slate-900/28 p-3"
+                        ? "rounded-2xl border border-amber-300/16 bg-amber-400/7 p-3"
+                        : "rounded-2xl border border-white/8 bg-slate-900/28 p-3"
                     }
                   >
                     <div
@@ -756,7 +756,7 @@ export default function RiskNarrativeSummary({
         </>
       ) : null}
 
-      <details className="rounded-[1rem] border border-white/8 bg-slate-950/18 px-3 py-2.5 sm:px-3.5 sm:py-3">
+      <details className="rounded-2xl border border-white/8 bg-slate-950/18 px-3 py-2.5 sm:px-3.5 sm:py-3">
         <summary className="list-none cursor-pointer">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div className="min-w-0">
