@@ -44,8 +44,7 @@ const ROUTE_FAMILY_CASE_CONFIG = {
     preview: {
       integratedTitle: "Why this fixture stays visible",
       boundedTitle: "Why this read stays visible",
-      roleSummary:
-        "The vivid-answer route makes the answer-first grammar easiest to read on the clearest pilot pair.",
+      roleSummary: "Answer-first is clearest here; the support layers only pressure-test it.",
       subtitleSource: "card_takeaway",
       supportStrategy: "effort_first",
     },
@@ -66,8 +65,7 @@ const ROUTE_FAMILY_CASE_CONFIG = {
     preview: {
       integratedTitle: "Why this fixture stays visible",
       boundedTitle: "Why this bounded read stays visible",
-      roleSummary:
-        "Honest stop keeps the public read visible long enough to show protocol value without pretending to broader certainty.",
+      roleSummary: "Show the visible read, then stop at the boundary.",
       subtitleSource: "card_takeaway",
       supportStrategy: "effort_first",
     },
@@ -88,8 +86,7 @@ const ROUTE_FAMILY_CASE_CONFIG = {
     preview: {
       integratedTitle: "Why restraint stays useful",
       boundedTitle: "Why restraint stays useful",
-      roleSummary:
-        "Useful restraint keeps the workflow credible when the filing is mostly stable and the signal is selective sharpening.",
+      roleSummary: "Mostly stable filing; the protocol only sharpens the few places that moved.",
       subtitleSource: "card_takeaway",
       supportStrategy: "scope_only",
       showRestraintStrip: true,

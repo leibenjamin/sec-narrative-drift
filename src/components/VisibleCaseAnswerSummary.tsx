@@ -51,16 +51,11 @@ export default function VisibleCaseAnswerSummary({
   effortRobustness,
 }: VisibleCaseAnswerSummaryProps) {
   const primaryCell = getPrimaryCell(bundle)
-  const primarySummary = compactText(primaryCell?.summary ?? bundle.story.investor_read, 300)
-  const matterSummary = compactText(bundle.story.investor_read, 180)
+  const primarySummary = compactText(primaryCell?.summary ?? bundle.story.investor_read, 232)
+  const matterSummary = compactText(bundle.story.investor_read, 124)
   const surfaceCoverage = formatSurfaceCoverageLabel({ noveltyLedger, effortRobustness })
-  const summaryMeta = [
-    `Basis: ${primaryCell?.short_label ?? "Primary read"}`,
-    noveltyLedger ? "Fresh vs reused stays secondary" : null,
-    effortRobustness ? "Integrity caveat stays visible" : null,
-  ]
-    .filter((value): value is string => Boolean(value))
-    .join(" • ")
+  const summaryMeta = `Basis: ${primaryCell?.short_label ?? "Primary read"}`
+  const supportNote = compactText(`Checked against ${surfaceCoverage}. ${matterSummary}`, 132)
 
   return (
     <section
@@ -79,17 +74,15 @@ export default function VisibleCaseAnswerSummary({
 
       <p className="text-[11px] uppercase tracking-[0.2em] text-slate-400">{summaryMeta}</p>
 
-      <div className="grid gap-3 sm:gap-4 lg:grid-cols-[minmax(0,1.16fr)_minmax(0,0.84fr)]">
+      <div className="grid gap-3 sm:gap-4 lg:grid-cols-[minmax(0,1.2fr)_minmax(15rem,0.8fr)]">
         <article className="rounded-[1.1rem] border border-sky-300/20 bg-slate-950/35 p-3.5 sm:p-4">
           <div className="text-[10px] uppercase tracking-[0.24em] text-sky-100">What changed</div>
           <p className="mt-2.5 text-sm leading-6 text-slate-100">{primarySummary}</p>
         </article>
 
-        <article className="rounded-[1.1rem] border border-white/10 bg-slate-950/28 p-3.5 sm:p-4">
+        <article className="rounded-[1rem] border border-white/8 bg-slate-950/22 p-3.5 sm:p-4">
           <div className="text-[10px] uppercase tracking-[0.24em] text-emerald-100">Why it matters</div>
-          <p className="mt-2 text-sm leading-6 text-slate-100">
-            Supported by {surfaceCoverage}. {matterSummary}
-          </p>
+          <p className="mt-2 text-sm leading-5 text-slate-100">{supportNote}</p>
         </article>
       </div>
     </section>

@@ -259,24 +259,24 @@ function renderEvidenceCard(props: {
 }) {
   const { heading, year, ref, evidence, note = null } = props
   return (
-    <div className="rounded-[1.1rem] border border-white/10 bg-slate-950/40 p-3.5 sm:p-4">
-      <div className="text-[11px] uppercase tracking-wide text-slate-400">{heading}</div>
+    <div className="rounded-[1rem] border border-white/8 bg-slate-950/30 p-3 sm:p-3.5">
+      <div className="text-[10px] uppercase tracking-[0.22em] text-slate-400">{heading}</div>
       {ref && evidence ? (
         <>
           <div className="mt-1.5 text-[11px] text-slate-500">{formatEvidenceRef(ref)}</div>
-          <p className="mt-2.5 text-sm leading-6 text-slate-100 text-clamp-5">"{evidence.snippet}"</p>
-          <p className="mt-2.5 text-[11px] leading-5 text-slate-400">{evidence.why}</p>
-          {note ? <p className="mt-2 text-[11px] leading-5 text-slate-500">{note}</p> : null}
+          <p className="mt-2 text-sm leading-6 text-slate-100 text-clamp-5">"{evidence.snippet}"</p>
+          <p className="mt-2 text-[11px] leading-5 text-slate-400">{evidence.why}</p>
+          {note ? <p className="mt-1.5 text-[11px] leading-5 text-slate-500">{note}</p> : null}
         </>
       ) : ref ? (
         <>
           <div className="mt-1.5 text-[11px] text-slate-500">{formatEvidenceRef(ref)}</div>
-          <p className="mt-2.5 text-sm text-slate-400">
+          <p className="mt-2 text-sm text-slate-400">
             {note ?? "The surfaced reference did not resolve to a stored evidence snippet."}
           </p>
         </>
       ) : (
-        <p className="mt-2.5 text-sm text-slate-400">
+        <p className="mt-2 text-sm text-slate-400">
           {note ?? `No ${year}-year evidence reference was surfaced for this lead change.`}
         </p>
       )}
@@ -451,17 +451,17 @@ function buildLeadSummary(
 
   if (sharedMatch && secondaryChange && secondaryColumn) {
     whatChanged = isLowDrift
-      ? `Both visible reads still describe a low-drift filing. The main movement is selective sharpening around ${primaryChange.title}.`
-      : `Both visible reads converge on the same filing shift: ${primaryChange.title}.`
+      ? `Low drift overall; the clearest movement is ${primaryChange.title}.`
+      : `Both visible reads converge on ${primaryChange.title}.`
     secondaryNote = `${secondaryLabel} frames the same shift as "${secondaryChange.title}".`
   } else if (secondaryChange && secondaryColumn) {
     whatChanged = isLowDrift
-      ? `This filing still reads as low drift. The clearest surfaced movement is ${primaryChange.title}.`
-      : `${primaryLabel} leads with: ${primaryChange.title}.`
+      ? `Low drift overall; the clearest movement is ${primaryChange.title}.`
+      : `${primaryLabel} leads with ${primaryChange.title}.`
     secondaryNote = `${secondaryLabel} instead leads with "${secondaryChange.title}".`
   } else {
     whatChanged = isLowDrift
-      ? `This filing still reads as low drift. The clearest surfaced movement is ${primaryChange.title}.`
+      ? `Low drift overall; the clearest movement is ${primaryChange.title}.`
       : `The clearest surfaced filing shift is ${primaryChange.title}.`
   }
 
@@ -477,7 +477,7 @@ function buildLeadSummary(
     "No structured why-it-matters row was surfaced for this lead change."
   const baseCaution = limitationRow?.limitation ?? primaryChange.caveat
   const caution = isLowDrift
-    ? `Low drift is part of the signal here. Read this as selective sharpening rather than a wholesale rewrite. ${baseCaution}`
+    ? `Low drift is part of the signal. Read this as selective sharpening, not a rewrite. ${baseCaution}`
     : baseCaution
 
   return {
@@ -574,6 +574,8 @@ export default function RiskNarrativeSummary({
   modelBStructured,
   analysisMode = "deep",
 }: RiskNarrativeSummaryProps) {
+  const normalizedTicker = ticker.trim().toUpperCase()
+  const isKo = normalizedTicker === "KO"
   const columns = useMemo(() => {
     const configured: NarrativeCampaignColumn[] = [
       {
@@ -607,30 +609,34 @@ export default function RiskNarrativeSummary({
   const compareSummary = useMemo(() => buildCompareReadsSummary(columns), [columns])
   const leadSupportItems = useMemo(() => {
     if (!leadSummary) return []
+    const compareLength = isKo ? 72 : 84
+    const boundaryLength = isKo ? 74 : 84
     return [
       {
         label: leadSummary.secondaryNote ? "Compare read" : "Active lane",
         value: compactText(
           leadSummary.secondaryNote ??
             `Lead surfaced by ${formatCampaignSurfaceLabel(leadSummary.primaryColumn)}.`,
-          92
+          compareLength
         ),
-        tone: "neutral" as const,
+        tone: "primary" as const,
       },
       {
         label: "Boundary",
-        value: compactText(leadSummary.caution, 92),
+        value: compactText(leadSummary.caution, boundaryLength),
         tone: "boundary" as const,
       },
     ]
-  }, [leadSummary])
+  }, [isKo, leadSummary])
   const leadSupportParagraph = useMemo(() => {
     if (!leadSummary) return null
+    const supportBudget = isKo ? 160 : leadSummary.isLowDrift ? 174 : 188
     return compactText(
       `${leadSummary.whatChanged} ${leadSummary.whyItMatters}`,
-      leadSummary.isLowDrift ? 228 : 244
+      supportBudget
     )
-  }, [leadSummary])
+  }, [isKo, leadSummary])
+  const leadTitleBudget = isKo ? 96 : leadSummary?.isLowDrift ? 102 : 110
 
   if (!hasAnyRuntime) {
     return (
@@ -656,8 +662,7 @@ export default function RiskNarrativeSummary({
             {ticker} filing answer, {formatFiscalYearLabel(yearFrom)} to {formatFiscalYearLabel(yearTo)}
           </h2>
           <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-300">
-            Claim first, proof directly below it, compare tucked lower. Use the lower layers only when the
-            first read needs pressure.
+            Start with the filing shift. Use proof or compare only if the first read needs support.
           </p>
         </div>
         <div className="flex flex-wrap gap-2 text-[11px] text-slate-200">
@@ -675,32 +680,30 @@ export default function RiskNarrativeSummary({
       {leadSummary ? (
         <>
           <article className="rounded-[1.25rem] border border-white/10 bg-slate-950/44 p-4 shadow-[0_18px_40px_rgba(2,6,23,0.24)] sm:p-5">
-            <div className="grid gap-4 xl:grid-cols-[minmax(0,1.1fr)_minmax(18rem,0.9fr)] xl:items-start">
-              <div className="flex flex-wrap items-center gap-2 xl:col-span-2">
+            <div className="space-y-4">
+              <div className="flex flex-wrap items-center gap-2">
                 {formatClassBadge(leadSummary.primaryChange.change_class)}
                 <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] text-slate-200">
                   {formatCampaignSurfaceLabel(leadSummary.primaryColumn)}
                 </span>
               </div>
 
-              <div className="xl:col-span-2">
+              <div>
                 <div className="text-[10px] uppercase tracking-[0.24em] text-slate-300">Lead answer</div>
-                <p className="mt-2.5 max-w-4xl text-[1.2rem] font-semibold leading-[1.2] text-slate-50 sm:text-[1.55rem] lg:text-[1.7rem]">
-                  {compactText(leadSummary.primaryChange.title, leadSummary.isLowDrift ? 104 : 118)}
+                <p className="mt-2.5 max-w-4xl text-[1.2rem] font-semibold leading-[1.18] text-slate-50 sm:text-[1.5rem] lg:text-[1.64rem]">
+                  {compactText(leadSummary.primaryChange.title, leadTitleBudget)}
                 </p>
-                <p className="mt-3 max-w-4xl text-sm leading-6 text-slate-200">
-                  {leadSupportParagraph}
-                </p>
+                <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-200">{leadSupportParagraph}</p>
               </div>
 
-              <div className="grid gap-2.5 sm:grid-cols-2 xl:col-span-2">
+              <div className="grid gap-2.5 lg:grid-cols-[minmax(0,1.22fr)_minmax(15rem,0.78fr)]">
                 {leadSupportItems.map((item) => (
                   <article
                     key={item.label}
                     className={
                       item.tone === "boundary"
-                        ? "rounded-[1.05rem] border border-amber-300/20 bg-amber-400/8 p-3"
-                        : "rounded-[1.05rem] border border-white/10 bg-slate-900/38 p-3"
+                        ? "rounded-[1rem] border border-amber-300/16 bg-amber-400/7 p-3"
+                        : "rounded-[1rem] border border-white/8 bg-slate-900/28 p-3"
                     }
                   >
                     <div
@@ -717,21 +720,21 @@ export default function RiskNarrativeSummary({
                 ))}
               </div>
 
-              <div className="xl:col-span-2 border-t border-white/10 pt-4">
+              <div className="border-t border-white/10 pt-4">
                 <div className="flex flex-wrap items-start justify-between gap-3">
                   <div>
                     <div className="text-[11px] uppercase tracking-[0.24em] text-slate-300">
                       Paired proof
                     </div>
-                    <p className="mt-2 text-sm leading-6 text-slate-300">
-                      Check the two filing excerpts before opening the full compare.
+                    <p className="mt-1.5 text-sm leading-6 text-slate-300">
+                      Two filing excerpts anchor the visible shift.
                     </p>
                   </div>
                   <div className="text-[10px] uppercase tracking-[0.18em] text-slate-500">
-                    Evidence stays adjacent
+                    Evidence stays visible
                   </div>
                 </div>
-                <div className="mt-4 grid gap-3 lg:grid-cols-2">
+                <div className="mt-3 grid gap-2.5">
                   {renderEvidenceCard({
                     heading: `${formatFiscalYearLabel(yearFrom)} filing evidence`,
                     year: yearFrom,
@@ -753,29 +756,28 @@ export default function RiskNarrativeSummary({
         </>
       ) : null}
 
-      <details className="rounded-[1.1rem] border border-sky-300/15 bg-slate-950/28 p-2.5 sm:p-3">
-        <summary className="list-none cursor-pointer rounded-[0.95rem] border border-white/10 bg-slate-950/38 px-3 py-3">
-          <div className="flex flex-wrap items-start justify-between gap-3">
-            <div>
+      <details className="rounded-[1rem] border border-white/8 bg-slate-950/18 px-3 py-2.5 sm:px-3.5 sm:py-3">
+        <summary className="list-none cursor-pointer">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div className="min-w-0">
               <div className="text-[10px] uppercase tracking-[0.24em] text-slate-400">Compare utility</div>
-              <div className="mt-1 text-sm font-semibold text-slate-100">Compare reads</div>
-              <p className="mt-1 text-[11px] leading-5 text-slate-400">
-                Check whether the visible reads land on the same shift before opening the full audit.
+              <p className="mt-1 text-sm leading-5 text-slate-300">
+                Open compare reads only if you need lane-to-lane framing.
               </p>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2">
               {renderCompareReadsBadge(compareSummary.divergenceLabel)}
               <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] font-medium text-slate-200">
-                Open
+                Open compare reads
               </span>
             </div>
           </div>
         </summary>
-        <div className="mt-3 space-y-3">
-          <div className="rounded-[0.95rem] border border-white/10 bg-slate-950/34 p-3">
+        <div className="mt-3 space-y-2.5 border-t border-white/8 pt-3">
+          <div className="rounded-[0.95rem] border border-white/8 bg-slate-950/28 p-3">
             <p className="text-sm font-semibold text-slate-100">{compareSummary.headline}</p>
             <p className="mt-1 text-[11px] leading-5 text-slate-300">
-              {compactText(compareSummary.divergenceText, 134)}
+              {compactText(compareSummary.divergenceText, 104)}
             </p>
           </div>
 
@@ -787,7 +789,7 @@ export default function RiskNarrativeSummary({
               return (
                 <article
                   key={`compare-summary-${column.id}`}
-                  className="rounded-[0.95rem] border border-white/10 bg-slate-950/26 p-3"
+                  className="rounded-[0.95rem] border border-white/8 bg-slate-950/22 p-3"
                 >
                   <div
                     title={column.label || `Campaign ${column.id}`}
@@ -798,14 +800,14 @@ export default function RiskNarrativeSummary({
                   {runtime ? (
                     <>
                       <p className="mt-2 text-[13px] font-semibold leading-5 text-slate-100">
-                        {compactText(lead?.title ?? "No lead change surfaced.", 58)}
+                        {compactText(lead?.title ?? "No lead change surfaced.", 52)}
                       </p>
                       <p className="mt-1 text-[10px] text-slate-400">
                         {drift ? `${drift} | ` : ""}
                         {runtime.material_changes.length} ranked changes
                       </p>
                       <p className="mt-1.5 text-[11px] leading-5 text-slate-300 text-clamp-2">
-                        {compactText(runtime.lens_divergence.summary, 86)}
+                        {compactText(runtime.lens_divergence.summary, 68)}
                       </p>
                     </>
                   ) : (

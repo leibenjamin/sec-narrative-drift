@@ -19,8 +19,9 @@ type PreviewTile = {
 type ProtocolPreviewViewModel = {
   title: string
   lead: string
+  showLead: boolean
   supportLine: string
-  chips: string[]
+  metaLine: string | null
   visibleTiles: PreviewTile[]
   detailTile: PreviewTile
   boundaryTile: PreviewTile
@@ -104,6 +105,8 @@ function buildPreviewModel(
 
   const familyConfig = getRouteFamilyConfig(ticker)
   const primaryCell = getPrimaryCell(pilotMatrixBundle)
+  const supportStrategy = familyConfig?.preview.supportStrategy ?? "effort_first"
+  const showRestraintStrip = Boolean(familyConfig?.preview.showRestraintStrip)
   const subtitleSource = familyConfig?.preview.subtitleSource ?? "card_takeaway"
   const rawSubtitle =
     subtitleSource === "protocol_read"
@@ -113,47 +116,52 @@ function buildPreviewModel(
         : primaryCell?.card_takeaway ?? pilotMatrixBundle.story.why_this_case_matters
   const supportTile = buildSupportTile(
     pilotArtifacts,
-    familyConfig?.preview.supportStrategy ?? "effort_first",
+    supportStrategy,
     pilotMatrixBundle.matrix.pilot_status.note
   )
   const boundaryTile = {
     label: "Boundary",
-    value: compactText(pilotMatrixBundle.story.caveat, 96),
+    value: compactText(pilotMatrixBundle.story.caveat, showRestraintStrip ? 82 : 92),
     tone: "boundary" as const,
   }
   const statusLabel = formatPilotStatusLabel(pilotMatrixBundle.matrix.pilot_status.state)
-  const chips = [
-    primaryCell ? `${renderPublicCellLabel(primaryCell)} first` : null,
-    `Scope: ${statusLabel}`,
-  ].filter((value): value is string => Boolean(value))
+  const showLead = !showRestraintStrip
+  const metaLine = showRestraintStrip
+    ? `Scope: ${statusLabel}`
+    : primaryCell
+      ? `${renderPublicCellLabel(primaryCell)} first · Scope: ${statusLabel}`
+      : `Scope: ${statusLabel}`
+  const visibleTiles = showRestraintStrip
+    ? [supportTile]
+    : [
+        {
+          label: supportStrategy === "scope_only" ? supportTile.label : "Visible reads add",
+          value:
+            supportStrategy === "scope_only"
+              ? compactText(pilotMatrixBundle.matrix.pilot_status.note, 86)
+              : compactText(pilotMatrixBundle.story.protocol_read, 82),
+          tone: supportStrategy === "scope_only" ? ("neutral" as const) : ("accent" as const),
+        },
+        boundaryTile,
+      ]
 
   return {
     title:
       variant === "bounded"
         ? familyConfig?.preview.boundedTitle ?? "Why this bounded read stays visible"
         : familyConfig?.preview.integratedTitle ?? "Why this fixture stays visible",
-    lead: compactText(rawSubtitle, variant === "bounded" ? 126 : 138),
+    lead: compactText(rawSubtitle, showRestraintStrip ? 0 : variant === "bounded" ? 118 : 128),
+    showLead,
     supportLine: compactText(
       familyConfig?.preview.roleSummary ?? pilotMatrixBundle.story.why_this_case_matters,
-      118
+      showRestraintStrip ? 92 : 108
     ),
-    chips,
-    visibleTiles: [
-      {
-        label:
-          familyConfig?.preview.supportStrategy === "scope_only" ? supportTile.label : "Visible reads add",
-        value:
-          familyConfig?.preview.supportStrategy === "scope_only"
-            ? compactText(pilotMatrixBundle.matrix.pilot_status.note, 96)
-            : compactText(pilotMatrixBundle.story.protocol_read, 96),
-        tone: familyConfig?.preview.supportStrategy === "scope_only" ? "neutral" : "accent",
-      },
-      boundaryTile,
-    ],
+    metaLine,
+    visibleTiles,
     detailTile: supportTile,
     boundaryTile,
     showDetailDisclosure: variant === "integrated",
-    showRestraintStrip: Boolean(familyConfig?.preview.showRestraintStrip),
+    showRestraintStrip,
   }
 }
 
@@ -227,27 +235,26 @@ export default function ProtocolPreviewCard({
           </div>
         ) : null}
 
-        <p className="mt-3 text-lg font-semibold leading-7 text-slate-100 sm:text-[1.15rem]">
-          {previewModel.lead}
+        {previewModel.showLead ? (
+          <p className="mt-3 text-lg font-semibold leading-7 text-slate-100 sm:text-[1.1rem]">
+            {previewModel.lead}
+          </p>
+        ) : null}
+        <p className={`${previewModel.showLead ? "mt-2" : "mt-3"} text-sm leading-6 text-slate-300`}>
+          {previewModel.supportLine}
         </p>
-        <p className="mt-2 text-sm leading-6 text-slate-300">{previewModel.supportLine}</p>
 
-        <div className="mt-3 flex flex-wrap gap-1.5 text-[11px] text-slate-300">
-          {previewModel.chips.map((chip) => (
-            <span
-              key={chip}
-              className="rounded-full border border-white/8 bg-white/4 px-2.5 py-1"
-            >
-              {chip}
-            </span>
-          ))}
-        </div>
+        {previewModel.metaLine ? (
+          <p className="mt-2 text-[11px] uppercase tracking-[0.2em] text-slate-400">
+            {previewModel.metaLine}
+          </p>
+        ) : null}
 
-        <div className="mt-3 grid gap-2.5 sm:grid-cols-2">
+        <div className={`mt-3 grid gap-2.5 ${previewModel.visibleTiles.length > 1 ? "sm:grid-cols-2" : ""}`}>
           {previewModel.visibleTiles.map((tile) => (
             <article
               key={tile.label}
-              className={`rounded-[1.05rem] border p-3 ${getToneClasses(tile.tone)}`}
+              className={`rounded-[1rem] border p-3 ${getToneClasses(tile.tone)}`}
             >
               <div className="text-[10px] uppercase tracking-[0.24em] text-slate-300">{tile.label}</div>
               <p className="mt-1.5 text-sm leading-5 text-slate-100">{tile.value}</p>
