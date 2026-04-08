@@ -188,6 +188,9 @@ def resolve_bundle_paths(
     if prompt_path is not None and not prompt_path.is_absolute():
         prompt_path = (REPO_ROOT / prompt_path).resolve()
     if prompt_path is None:
+        # Legacy detector-oriented helpers still default to prompt_templates_showcase.md.
+        # Casebook candidate prep uses prompt_templates_casebook.md through
+        # scripts/build_casebook_candidate_inputs_bundle.py instead.
         candidate = bundle_path / "prompt_templates_showcase.md"
         if candidate.exists():
             prompt_path = candidate

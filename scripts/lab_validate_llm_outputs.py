@@ -1037,7 +1037,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--bundle",
         default="",
-        help="LLM input bundle root (defaults to latest bundles/showcase_llm_inputs_*)",
+        help="Legacy queue bundle root (defaults to latest bundles/showcase_llm_inputs_*)",
     )
     parser.add_argument(
         "--inputs-index-focuspack",
@@ -1052,7 +1052,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--prompt-templates",
         default="",
-        help="Override path to prompt_templates_showcase.md",
+        help="Override path to prompt_templates_showcase.md (archived detector flow only)",
     )
     parser.add_argument(
         "--debug-citations",

@@ -1,6 +1,7 @@
 ﻿from __future__ import annotations
 
-from typing import Optional
+from pathlib import Path
+from typing import Any, Optional
 
 from lab_output_tracks import (
     EXECUTION_VENUE_CHATGPT_DESKTOP,
@@ -9,6 +10,14 @@ from lab_output_tracks import (
     get_primary_llm_campaign,
 )
 
+# --- Archived legacy lanes (DO NOT USE for casebook expansion) ---
+# These detectors are no longer part of the active shipped product surface.
+# See docs/LAB_ARCHITECTURE_AND_GOALS.md for the authoritative deprecation notice.
+# The active workflows are:
+#   1. llm_outline_compare_structured (prompts in docs/lab/llm_master_compare_structured_*.md)
+#   2. Protocol Lab pilot matrix (prompts in docs/protocol_lab/prompts/p0-p4)
+# The functions below that generate det_llm_delta_brief_v1 and det_llm_excerpt_picker_v1
+# templates are kept for backward compatibility but should not be used for new cases.
 DETECTOR_DELTA_BRIEF = "det_llm_delta_brief_v1"
 DETECTOR_EXCERPT_PICKER = "det_llm_excerpt_picker_v1"
 SUPPORTED_DETECTORS = {DETECTOR_DELTA_BRIEF, DETECTOR_EXCERPT_PICKER}
@@ -33,6 +42,27 @@ PROVENANCE_REQUIRED_KEYS = ("input_file", "model_provider", "model_name")
 PROVENANCE_OPTIONAL_KEYS = ("run_label",)
 PROVENANCE_ALLOWED_KEYS = PROVENANCE_REQUIRED_KEYS + PROVENANCE_OPTIONAL_KEYS
 RUN_LABEL_TEMPLATE = "YYYY-MM-DD_<campaign_tag>"
+REPO_ROOT = Path(__file__).resolve().parents[1]
+
+CASEBOOK_WORKFLOW_DOC = "docs/lab/12_casebook_candidate_workflows.md"
+STRUCTURED_SYSTEM_DOC = REPO_ROOT / "docs" / "lab" / "llm_master_compare_structured_system.md"
+STRUCTURED_USER_DOC = REPO_ROOT / "docs" / "lab" / "llm_master_compare_structured_user_template.md"
+STRUCTURED_SELF_CHECK_DOC = REPO_ROOT / "docs" / "lab" / "llm_master_compare_structured_self_check.md"
+PROTOCOL_PROMPT_DOCS: tuple[tuple[str, Path], ...] = (
+    ("p0_plain_prompt_v1", REPO_ROOT / "docs" / "protocol_lab" / "prompts" / "p0_plain_prompt_v1.md"),
+    (
+        "p1_structured_contract_v1",
+        REPO_ROOT / "docs" / "protocol_lab" / "prompts" / "p1_structured_contract_v1.md",
+    ),
+    (
+        "p2_tagged_input_contract_v1",
+        REPO_ROOT / "docs" / "protocol_lab" / "prompts" / "p2_tagged_input_contract_v1.md",
+    ),
+    (
+        "p4_novelty_ledger_contract_v1",
+        REPO_ROOT / "docs" / "protocol_lab" / "prompts" / "p4_novelty_ledger_contract_v1.md",
+    ),
+)
 
 
 def _run_label_template_for_campaign(campaign: OutputTrack) -> str:
@@ -486,6 +516,204 @@ def build_prompt_templates_showcase_lines(
     return lines
 
 
+def _read_markdown_lines(path: Path) -> list[str]:
+    return path.read_text(encoding="utf-8-sig").rstrip().splitlines()
+
+
+def _get_job_int(job: dict[str, Any], key: str) -> int:
+    value = job.get(key)
+    if not isinstance(value, int):
+        raise SystemExit(f"Casebook prompt job missing integer field: {key}")
+    return value
+
+
+def _get_job_str(job: dict[str, Any], key: str) -> str:
+    value = job.get(key)
+    if not isinstance(value, str) or not value:
+        raise SystemExit(f"Casebook prompt job missing string field: {key}")
+    return value
+
+
+def build_prompt_templates_casebook_lines(
+    jobs: list[dict[str, Any]],
+    *,
+    run_label_example: str = "YYYY-MM-DD_openai_chatgpt5ext_casebook_candidates",
+    recommendation_lines: Optional[list[str]] = None,
+) -> list[str]:
+    lines: list[str] = []
+    lines.append("# LLM Prompt Templates — Business Document Protocol Lab (Casebook Expansion)")
+    lines.append("")
+    lines.append(
+        "> Generated from canonical prompt sources in `docs/lab/llm_master_compare_structured_*.md`"
+    )
+    lines.append("> and `docs/protocol_lab/prompts/*.md`.")
+    lines.append(
+        f"> Source-of-truth workflow guide: `{CASEBOOK_WORKFLOW_DOC}`."
+    )
+    lines.append("")
+    lines.append(
+        "> Do not regenerate or run candidate jobs from `prompt_templates_showcase.md`."
+    )
+    lines.append(
+        "> `det_llm_delta_brief_v1` and `det_llm_excerpt_picker_v1` are archived legacy lanes,"
+    )
+    lines.append("> not valid casebook candidate-prep targets.")
+    lines.append("")
+    lines.append("## Active Workflows")
+    lines.append("")
+    lines.append("1. `llm_outline_compare_structured` -> deterministic `llm_outline_compare_runtime`")
+    lines.append("2. Protocol Lab Pilot Matrix (`p0`, `p1`, `p2`, optional `p4`)")
+    lines.append("")
+    if recommendation_lines:
+        lines.append("## Current Run Recommendations")
+        lines.append("")
+        for line in recommendation_lines:
+            lines.append(f"- {line}")
+        lines.append("")
+    lines.append("## Workflow 1 — Outline Compare Structured")
+    lines.append("")
+    lines.append(
+        "This is the primary compare workflow used by `RiskNarrativeSummary` and `OutlineComparePanel`."
+    )
+    lines.append(
+        "Each job writes a structured artifact first; `llm_outline_compare_runtime` is created later by deterministic projection."
+    )
+    lines.append("")
+    lines.append("### System Instructions")
+    lines.append("")
+    lines.append("```text")
+    lines.extend(_read_markdown_lines(STRUCTURED_SYSTEM_DOC))
+    lines.append("```")
+    lines.append("")
+    lines.append("### User Prompt")
+    lines.append("")
+    lines.append("```text")
+    lines.extend(_read_markdown_lines(STRUCTURED_USER_DOC))
+    lines.append("```")
+    lines.append("")
+    lines.append("### Self-Check Gate")
+    lines.append("")
+    lines.append("```text")
+    lines.extend(_read_markdown_lines(STRUCTURED_SELF_CHECK_DOC))
+    lines.append("```")
+    lines.append("")
+    lines.append("### Provenance Contract")
+    lines.append("")
+    lines.append(
+        "- `provenance.input_file`: `inputs/pair/<TICKER>_<YEAR_FROM>_<YEAR_TO>_10k_item1a_<LENS>_edgar.json`"
+    )
+    lines.append("- `provenance.model_provider`: exact provider string for the chosen campaign")
+    lines.append("- `provenance.model_name`: exact model string for the chosen campaign")
+    lines.append(f"- `provenance.run_label`: `{run_label_example}`")
+    lines.append("")
+    lines.append("### Jobs To Run")
+    lines.append("")
+    lines.append(
+        "| # | Ticker | Fiscal pair | Lens | Pair manifest | Year prev | Year curr | Structured output path | Runtime output path |"
+    )
+    lines.append(
+        "| --- | --- | --- | --- | --- | --- | --- | --- | --- |"
+    )
+    ordered_jobs = sorted(
+        jobs,
+        key=lambda job: (
+            _get_job_str(job, "ticker"),
+            _get_job_int(job, "year_from"),
+            _get_job_int(job, "year_to"),
+            _get_job_str(job, "lens"),
+        ),
+    )
+    for index, job in enumerate(ordered_jobs, start=1):
+        ticker = _get_job_str(job, "ticker")
+        year_from = _get_job_int(job, "year_from")
+        year_to = _get_job_int(job, "year_to")
+        lens = _get_job_str(job, "lens")
+        pair_path = _get_job_str(job, "pair_path")
+        prev_year_path = _get_job_str(job, "prev_year_path")
+        curr_year_path = _get_job_str(job, "curr_year_path")
+        fiscal_pair = f"FY{year_from} vs FY{year_to}"
+        structured_path = (
+            f"public/data/sec_narrative_drift_lab/{ticker}/outputs/llm_outline_compare_structured/"
+            f"<campaign-slug>/lab_llm_outline_compare_structured_10k_item1a_{year_from}_{year_to}_{lens}_edgar__<campaign-slug>.json"
+        )
+        runtime_path = (
+            f"public/data/sec_narrative_drift_lab/{ticker}/outputs/llm_outline_compare_runtime/"
+            f"<campaign-slug>/lab_llm_outline_compare_runtime_10k_item1a_{year_from}_{year_to}_{lens}_edgar__<campaign-slug>.json"
+        )
+        lines.append(
+            f"| {index} | {ticker} | {fiscal_pair} | {lens} | `{pair_path}` | `{prev_year_path}` | "
+            f"`{curr_year_path}` | `{structured_path}` | `{runtime_path}` |"
+        )
+    lines.append("")
+    lines.append(
+        "WMT stays on the official-fiscal-year convention: `FY2025 vs FY2026`, not a one-off calendar-month relabel."
+    )
+    lines.append("")
+    lines.append("## Workflow 2 — Protocol Lab Pilot Matrix")
+    lines.append("")
+    lines.append(
+        "`ProtocolPreviewCard` depends on the pilot-matrix bundle. Minimum candidate-matrix scope is `p0`, `p1`, and `p2`; `p4` is optional depth."
+    )
+    lines.append("")
+    lines.append("### Recommended Candidate Matrix Shape")
+    lines.append("")
+    lines.append("- Run pilot cells against the `deboilerplated` year inputs from this bundle.")
+    lines.append("- Use fixture id pattern: `<TICKER>_<YEAR_FROM>_<YEAR_TO>_10k_item1a`.")
+    lines.append(
+        "- Required matrix files: `pilot_matrix_v1.json`, `pilot_matrix_story_v1.json`, `pilot_matrix_review_v1.json`."
+    )
+    lines.append(
+        "- Required cell artifacts: `cells/<cell_id>__pilot_matrix_cell_v1.json` for `p0`, `p1`, and `p2`."
+    )
+    lines.append(
+        "- Optional `p4` novelty-ledger follow-up writes `public/data/business_document_protocol_lab/novelty_ledger/<fixture_id>/p4_canonized_matrix_v1.json`."
+    )
+    lines.append(
+        "- Effort-robustness and skeptic-case layers are support artifacts, not minimum candidate-case requirements."
+    )
+    lines.append("")
+    lines.append("### Canonical Prompt Sources")
+    lines.append("")
+    for protocol_id, path in PROTOCOL_PROMPT_DOCS:
+        lines.append(f"#### `{protocol_id}`")
+        lines.append("")
+        lines.append("```text")
+        lines.extend(_read_markdown_lines(path))
+        lines.append("```")
+        lines.append("")
+    lines.append("### Pilot Matrix Job Table")
+    lines.append("")
+    lines.append(
+        "| Case | Fixture id | Input lens | Required cells | Optional cells | Expected bundle roots |"
+    )
+    lines.append("| --- | --- | --- | --- | --- | --- |")
+    seen_fixtures: set[tuple[str, int, int]] = set()
+    for job in ordered_jobs:
+        ticker = _get_job_str(job, "ticker")
+        year_from = _get_job_int(job, "year_from")
+        year_to = _get_job_int(job, "year_to")
+        fixture_key = (ticker, year_from, year_to)
+        if fixture_key in seen_fixtures:
+            continue
+        seen_fixtures.add(fixture_key)
+        fixture_id = f"{ticker}_{year_from}_{year_to}_10k_item1a"
+        bundle_roots = (
+            f"`public/data/business_document_protocol_lab/pilot_matrices/{fixture_id}/` "
+            f"and optional `public/data/business_document_protocol_lab/novelty_ledger/{fixture_id}/`"
+        )
+        lines.append(
+            f"| {ticker} | `{fixture_id}` | deboilerplated | `p0`, `p1`, `p2` | `p4` | {bundle_roots} |"
+        )
+    lines.append("")
+    lines.append("## Execution Order")
+    lines.append("")
+    lines.append("1. Run `llm_outline_compare_structured` for the cases marked required in the candidate workflow guide.")
+    lines.append("2. Project each structured output to `llm_outline_compare_runtime` before evaluating compare readiness.")
+    lines.append("3. Run the Protocol Lab Pilot Matrix only for cases where the workflow guide marks it required or recommended-first.")
+    lines.append("4. Do not run archived detector lanes for candidate-case prep.")
+    return lines
+
+
 def build_project_instructions_lines(
     campaign: Optional[OutputTrack] = None,
     input_mode: str = "full_section_v2",
@@ -707,4 +935,3 @@ def build_thread_starter_lines(
     lines.append("REPAIR MODE")
     lines.append("Given validator errors pasted below, output corrected JSON only.")
     return lines
-

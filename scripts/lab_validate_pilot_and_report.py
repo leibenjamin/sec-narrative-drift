@@ -154,7 +154,9 @@ def warnings_present(payload: dict[str, Any]) -> bool:
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="Validate pilot outputs and write a quality report.")
+    parser = argparse.ArgumentParser(
+        description="Validate legacy detector pilot outputs and write a quality report."
+    )
     parser.add_argument(
         "--pilot-pack",
         default="",
@@ -168,7 +170,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--bundle",
         default="",
-        help="LLM input bundle root (defaults to latest bundles/showcase_llm_inputs_*)",
+        help="Legacy queue bundle root (defaults to latest bundles/showcase_llm_inputs_*)",
     )
     parser.add_argument(
         "--inputs-index-focuspack",
@@ -183,7 +185,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--prompt-templates",
         default="",
-        help="Override path to prompt_templates_showcase.md",
+        help="Override path to prompt_templates_showcase.md (archived detector flow only)",
     )
     parser.add_argument(
         "--report",

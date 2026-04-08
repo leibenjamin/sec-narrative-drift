@@ -1,6 +1,6 @@
 # Lab Architecture, Goals, and Design Insights
 
-Last updated: 2026-03-27
+Last updated: 2026-04-06
 
 ## What This App Is
 Document Protocol Lab currently ships a bounded visible SEC Item 1A pilot across `NVDA`, `LLY`, and `KO`, each with one active FY2024 to FY2025 fixture.
@@ -17,11 +17,19 @@ The lower runtime registry and supporting lab artifacts can remain broader backs
 - Static-site deployment
 
 ### Data Flow
-1. SEC filings are fetched and cleaned offline.
-2. Deterministic detectors produce per-method analysis artifacts.
-3. Manual model campaigns produce structured outline-compare artifacts offline.
-4. Structured artifacts are projected deterministically into runtime compare artifacts.
-5. The frontend reads shipped positioning and runtime results from `public/data/...`.
+1. SEC filings (10-K HTML) are fetched from EDGAR and extracted into plain text offline by deterministic Python scripts (`sec_extract_item1a.py`). No LLM is involved in extraction.
+2. Extracted text is split into paragraphs (`build_lab_outputs.py`) and optionally filtered through the deboilerplated lens (see below). No LLM is involved in these steps.
+3. Deterministic detectors produce per-method analysis artifacts (log-odds, JSD, MinHash, winnowing, structure, RBO agreement).
+4. The LLM input bundle is assembled from the deterministic paragraph arrays — pair manifests + per-year files with SHA256 integrity metadata. **All LLM inputs are produced entirely by deterministic scripts with no LLM pre-processing.** The LLM being evaluated sees the full filing text (or deboilerplated subset), not a prior model's interpretation of it.
+5. Manual model campaigns produce structured outline-compare artifacts offline.
+6. Structured artifacts are projected deterministically into runtime compare artifacts.
+7. The frontend reads shipped positioning and runtime results from `public/data/...`.
+
+### Cleaning Lenses
+- **`raw`**: The full extracted Item 1A text, split into paragraphs. Nothing is removed.
+- **`deboilerplated`**: A deterministic sentence-level set-difference filter. Each year's text is split into sentences, normalized (lowercased, whitespace-collapsed), and the intersection (sentences whose normalized form appears identically in both years) is removed. Only sentences unique to each year are retained. This is a conservative exact-match filter — no LLM, no semantic similarity, no ML. It removes recurring legal boilerplate that is copy-pasted year to year, leaving the sentences that actually changed.
+
+The deboilerplated lens is the default because it produces a cleaner first read by removing noise that would trivially inflate apparent similarity between filings. Both lenses are available in the UI for comparison.
 
 ### Public Positioning Files
 - `public/data/business_document_protocol_lab/product_positioning/current_case_mix_v2.json`: visible fixture mix and public anti-hype framing.
@@ -43,13 +51,50 @@ The lower runtime registry and supporting lab artifacts can remain broader backs
 - `det_structure_artifacts_v1`: tracks heading and section-shape changes.
 - `det_rbo_agreement_v1`: summarizes cross-method agreement.
 
-Archived legacy lanes such as `det_llm_delta_brief_v1` and `det_llm_excerpt_picker_v1` are no longer part of the active shipped product surface.
+### Archived legacy LLM lanes (DO NOT USE for new cases)
+- `det_llm_delta_brief_v1`: flat delta brief (Change/Drivers/Caveat) — **ARCHIVED**.
+- `det_llm_excerpt_picker_v1`: paragraph excerpt selection — **ARCHIVED**.
 
-## Outline Compare Pipeline
+These legacy lanes are no longer part of the active shipped product surface.
+The build script `scripts/lab_prompt_blocks.py` still generates templates for these
+lanes in `prompt_templates_showcase.md`, but those templates must NOT be used for
+casebook expansion or any new LLM jobs. Use the outline compare structured workflow
+(below) and Protocol Lab pilot matrix prompts (in `docs/protocol_lab/prompts/`) instead.
+
+## Outline Compare Pipeline (active shipped workflow)
 Each campaign and lens can produce three artifact tiers:
 1. `llm_outline_compare_structured`: canonical manual authoring unit with alignment, evidence, mechanisms, relevance, and limits.
 2. `llm_outline_compare_runtime`: deterministic projection used by the shipped compare UI.
 3. `llm_outline_compare_insight`: optional insight layer, not required for the core public flow.
+
+## Protocol Lab Pilot Matrix (active pedagogical workflow)
+The pilot matrix is a pedagogical comparison experiment showing how different prompting
+protocols produce different quality outputs on the same filing pair. Displayed in the
+ProtocolPreviewCard component. Data lives in `public/data/business_document_protocol_lab/`.
+
+Prompt templates are in `docs/protocol_lab/prompts/`:
+- `p0_plain_prompt_v1.md`: unstructured frontier baseline (control)
+- `p1_structured_contract_v1.md`: structured contract (typically the hero read)
+- `p2_tagged_input_contract_v1.md`: tagged input contract (comparator)
+- `p4_novelty_ledger_contract_v1.md`: novelty ledger (deeper analysis)
+
+Each cell produces `change_brief` + `evidence_bundle` (+ `novelty_ledger` for p4).
+
+### Casebook LLM job bundles
+For preparing ChatGPT Desktop LLM jobs for new casebook cases, use:
+- `scripts/build_casebook_candidate_inputs_bundle.py`
+- `bundles/.../prompt_templates_casebook.md`
+- `docs/lab/12_casebook_candidate_workflows.md`
+
+Do **not** use:
+- `prompt_templates_showcase.md`
+- `det_llm_delta_brief_v1`
+- `det_llm_excerpt_picker_v1`
+- legacy focuspack / pilot-pack helpers as candidate-prep sources of truth
+
+Candidate-prep fiscal-year policy also follows the official company fiscal-year convention.
+That means `WMT` remains `FY2025 vs FY2026`, consistent with `NVDA`. A later switch to a
+“bulk of 12 months” convention would be a repo-wide relabeling decision, not a one-off fix.
 
 ## Public Visible Scope
 - Visible pilot only: `NVDA`, `LLY`, and `KO`
@@ -71,7 +116,7 @@ Each campaign and lens can produce three artifact tiers:
 
 ## UX Defaults
 - Quick read is the default mode.
-- The default lens is `deboilerplated` because it removes recurring filing boilerplate for a cleaner first read.
+- The default lens is `deboilerplated` because it removes recurring filing boilerplate (sentences shared verbatim between both years) for a cleaner first read. See the "Cleaning Lenses" section above for the exact mechanism.
 - Single-case company pages do not foreground case-picking UI.
 - Campaign overrides, detector checkboxes, utilities, and jump links live under `Advanced controls`.
 - Existing `/company/:ticker` deep links and `from`, `to`, `llmA`, and `llmB` query params remain supported.

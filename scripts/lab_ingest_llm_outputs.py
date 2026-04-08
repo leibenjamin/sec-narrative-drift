@@ -28,7 +28,11 @@ from lab_validate_llm_outputs import (  # type: ignore
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="Package validated LLM outputs into a shareable bundle.")
+    parser = argparse.ArgumentParser(
+        description=(
+            "Package validated legacy detector-shaped LLM outputs into a shareable bundle."
+        )
+    )
     parser.add_argument(
         "--outputs-dir",
         default=str(DEFAULT_OUTPUTS_DIR),
@@ -37,7 +41,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--bundle",
         default="",
-        help="LLM input bundle root (defaults to latest bundles/showcase_llm_inputs_*)",
+        help="Legacy queue bundle root (defaults to latest bundles/showcase_llm_inputs_*)",
     )
     parser.add_argument(
         "--inputs-index-focuspack",
@@ -52,7 +56,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--prompt-templates",
         default="",
-        help="Override path to prompt_templates_showcase.md",
+        help="Override path to prompt_templates_showcase.md (archived detector flow only)",
     )
     parser.add_argument(
         "--out-dir",

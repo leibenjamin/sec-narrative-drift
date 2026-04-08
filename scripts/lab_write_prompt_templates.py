@@ -38,12 +38,15 @@ def find_latest_showcase_bundle(root: Path) -> Optional[Path]:
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="Rewrite prompt_templates_showcase.md from canonical prompt blocks."
+        description=(
+            "Rewrite archived detector compatibility prompt templates "
+            "(`prompt_templates_showcase.md`) from canonical prompt blocks."
+        )
     )
     parser.add_argument(
         "--bundle",
         default="",
-        help="Showcase bundle directory (defaults to latest bundles/showcase_llm_inputs_*).",
+        help="Compatibility bundle directory (defaults to latest bundles/showcase_llm_inputs_*).",
     )
     parser.add_argument(
         "--campaign-id",
@@ -55,7 +58,8 @@ def build_parser() -> argparse.ArgumentParser:
         default="",
         help=(
             "Output filename/path for prompt templates. Relative values resolve from the "
-            "selected bundle directory. Defaults to prompt_templates_showcase.md."
+            "selected bundle directory. Defaults to prompt_templates_showcase.md "
+            "(archived detector flow only; not casebook candidate prep)."
         ),
     )
     return parser

@@ -35,7 +35,7 @@ Status: canonical manual outline-compare workflow for the shipped `full_section_
 - `scripts/lab_build_portable_master_run_pack.py`
 
 ## Canonical Execution Chain
-1. Build or select the active bundle.
+1. Build or select the active bundle. The bundle's input files are produced by deterministic scripts (`sec_extract_item1a.py` for 10-K HTML extraction, `build_lab_outputs.py` for paragraph splitting and deboilerplating) with no LLM pre-processing.
 2. Publish `public/data/sec_narrative_drift_lab/llm_inputs_v2` from that bundle.
 3. Rebuild the campaign master manifest.
 4. Emit the matching master thread starters.

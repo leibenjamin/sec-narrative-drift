@@ -1,6 +1,6 @@
 ﻿# Codex Real Run Profile (8 Master Jobs - FY2024->FY2025 Cohort)
 
-Last updated: 2026-03-09
+Last updated: 2026-04-06
 Scope: `llm_outline_compare_structured` manual Codex jobs generated from
 `reports/lab_llm_master_thread_starters_codex_real.md`.
 
@@ -14,9 +14,18 @@ Companion canonical docs:
 - `docs/lab/05_llm_reproducibility_contract.md`
 - `docs/lab/09_master_run_troubleshooting_and_sources_of_truth.md`
 
-Prompt template pairing (full_section_v2 bundle):
-- Primary Codex: `prompt_templates_showcase.md`
-- Compare ChatGPT: `prompt_templates_showcase__openai-chatgpt54ext-agent-fullsec-real-2026-03-06.md`
+Prompt source of truth:
+- structured compare prompts live in:
+  - `docs/lab/llm_master_compare_structured_system.md`
+  - `docs/lab/llm_master_compare_structured_user_template.md`
+  - `docs/lab/llm_master_compare_structured_self_check.md`
+- casebook candidate prep uses:
+  - `docs/lab/12_casebook_candidate_workflows.md`
+  - `scripts/build_casebook_candidate_inputs_bundle.py`
+
+Compatibility note:
+- `prompt_templates_showcase.md` and `prompt_templates_showcase__<track_slug>.md` are compatibility-only files for older bundle tooling.
+- They are not the canonical candidate-case prompt source and should not be used to prep `GOOGL`, `META`, `TSLA`, `UNH`, or `WMT`.
 
 ## Anchored Cohort Policy
 - Current production cohort is frozen to FY2024->FY2025 for Core4 (`NVDA`, `KO`, `WM`, `GE`).

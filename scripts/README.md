@@ -8,6 +8,7 @@ The shipped app reads static JSON only from `public/data/sec_narrative_drift_lab
 The active build and validation flow centers on:
 
 - `build_lab_outputs.py`
+- `build_casebook_candidate_inputs_bundle.py` for active candidate-case job prep
 - `lab_build_cases_registry_v1.py`
 - `lab_runtime_readiness_check.py`
 - `lab_run_fullsec_campaign_pipeline.py`
@@ -35,6 +36,7 @@ Prefer the canonical Lab docs for manual data work:
 - `docs/00_DOC_INDEX.md`
 - `docs/LAB_REMAINING_WORK_PLAN.md`
 - `docs/lab/03_llm_precompute_workflow.md`
+- `docs/lab/12_casebook_candidate_workflows.md`
 - `docs/lab/05_llm_reproducibility_contract.md`
 - `docs/lab/09_master_run_troubleshooting_and_sources_of_truth.md`
 

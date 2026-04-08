@@ -1,4 +1,27 @@
-﻿from __future__ import annotations
+﻿"""Build LLM input bundles for showcase precompute jobs.
+
+This script assembles the three-file input set (pair manifest + year prev
++ year curr) that operators attach to ChatGPT Desktop or workspace-aware
+agent threads.  All input content is produced by deterministic scripts:
+
+  - Filing text is extracted from SEC EDGAR HTML by ``sec_extract_item1a.py``
+    (rule-based HTML parsing, no LLM).
+  - Paragraphs are split by ``build_lab_outputs.py`` (whitespace heuristics,
+    no LLM).
+  - The deboilerplated lens is a sentence-level exact-match set-difference
+    filter (no LLM, no semantic similarity).
+  - This script writes pair manifests and year files with SHA256 integrity
+    metadata.  No content transformation is applied.
+
+**No LLM is involved at any point in creating these input files.**  The
+model being evaluated sees the full filing text (or its deterministic
+deboilerplated subset), not a prior model's summary or outline.
+
+Note: For casebook candidate prep, prefer
+``build_casebook_candidate_inputs_bundle.py`` (see
+``docs/lab/12_casebook_candidate_workflows.md``).
+"""
+from __future__ import annotations
 
 import argparse
 import hashlib
@@ -518,7 +541,12 @@ def file_sha256(path: Path) -> str:
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="Build LLM input bundles for showcase precompute.")
+    parser = argparse.ArgumentParser(
+        description=(
+            "Build full-section v2 LLM input bundles for the legacy showcase/master pipeline. "
+            "Candidate-case prep should use scripts/build_casebook_candidate_inputs_bundle.py."
+        )
+    )
     parser.add_argument(
         "--roster",
         default=str(PUBLIC_LAB_ROOT / "lab_showcase_roster_v2.json"),
@@ -532,7 +560,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--out_dir",
         default="",
-        help="Output bundle directory (default bundles/showcase_llm_inputs_<timestamp>)",
+        help="Output bundle directory (default bundles/showcase_llm_inputs_full_section_v2_<timestamp>)",
     )
     parser.add_argument(
         "--include-focuspack",
@@ -547,7 +575,11 @@ def main(argv: Optional[list[str]] = None) -> int:
     args = parser.parse_args(argv)
 
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    out_dir = Path(args.out_dir) if args.out_dir else REPO_ROOT / "bundles" / f"showcase_llm_inputs_{timestamp}"
+    out_dir = (
+        Path(args.out_dir)
+        if args.out_dir
+        else REPO_ROOT / "bundles" / f"showcase_llm_inputs_full_section_v2_{timestamp}"
+    )
     out_dir.mkdir(parents=True, exist_ok=True)
 
     roster_path = Path(args.roster)
@@ -827,7 +859,7 @@ def main(argv: Optional[list[str]] = None) -> int:
     (out_dir / "packet_sizes_report.md").write_text("\n".join(packet_lines), encoding="utf-8")
 
     readme_lines = [
-        "# Showcase LLM Inputs Bundle",
+        "# Full-Section v2 LLM Inputs Bundle",
         "",
         f"Created: {timestamp}",
         f"Roster: {roster_path}",
@@ -835,13 +867,25 @@ def main(argv: Optional[list[str]] = None) -> int:
         f"Hero pair count: {hero_pair_count}",
         f"Hero tickers with pairs: {hero_ticker_count}",
         "",
+        "## Scope",
+        "",
+        "This bundle provides canonical v2 year/pair inputs for the full-section pipeline.",
+        "Candidate-case job prep should use `scripts/build_casebook_candidate_inputs_bundle.py`",
+        "plus `docs/lab/12_casebook_candidate_workflows.md` instead of this compatibility path.",
+        "",
+        "## Compatibility Warning",
+        "",
+        "`prompt_templates_showcase.md` remains here only for archived detector-shaped helpers",
+        "(`det_llm_delta_brief_v1`, `det_llm_excerpt_picker_v1`). It is not the active",
+        "casebook workflow source of truth and must not be used for candidate-case prep.",
+        "",
         "Contents:",
         "- inputs/year/ (v2 canonical per-year full-section inputs)",
         "- inputs/pair/ (v2 canonical pair manifests referencing year inputs)",
         "- inputs_index_year_v2.json",
         "- inputs_index_pair_v2.json",
+        "- prompt_templates_showcase.md (archived detector compatibility only)",
         "- llm_inputs_focuspack/ and inputs_index_focuspack.json (optional legacy, when --include-focuspack is set)",
-        "- prompt_templates_showcase.md",
         "- packet_sizes_report.md",
         "",
         "Notes:",

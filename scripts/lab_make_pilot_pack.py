@@ -67,11 +67,13 @@ def pick_input(
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="Build a pilot LLM precompute pack.")
+    parser = argparse.ArgumentParser(
+        description="Build a legacy detector pilot LLM precompute pack."
+    )
     parser.add_argument(
         "--bundle",
         default="",
-        help="LLM input bundle root (defaults to latest bundles/showcase_llm_inputs_*)",
+        help="Legacy queue bundle root (defaults to latest bundles/showcase_llm_inputs_*)",
     )
     parser.add_argument(
         "--inputs-index-focuspack",
@@ -86,7 +88,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--prompt-templates",
         default="",
-        help="Optional override path to prompt_templates_showcase.md",
+        help="Optional override path to prompt_templates_showcase.md (archived detector flow only)",
     )
     parser.add_argument(
         "--out-dir",

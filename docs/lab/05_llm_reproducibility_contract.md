@@ -22,6 +22,17 @@ This contract defines the canonical manual LLM run standard for SEC Narrative Dr
 - Pre-registered hidden workspace-aware Claude lane is `anthropic_claudeopus46_claudecode_fullsec_real_2026-03-09`.
 
 ## Manual Input Contract
+
+### Input provenance
+All three input files attached to each LLM job are produced entirely by deterministic Python scripts with no LLM involvement:
+- **Extraction**: `sec_extract_item1a.py` parses 10-K HTML from SEC EDGAR into plain text (rule-based HTML parsing).
+- **Paragraph splitting**: `build_lab_outputs.py` splits on double-newline boundaries and merges short fragments.
+- **Deboilerplated lens**: `build_deboilerplated_pair()` removes sentences shared verbatim between both years via normalized exact-match set-difference. No semantic similarity or ML.
+- **Bundle assembly**: pair manifests and year files are written with SHA256 integrity metadata.
+
+The LLM being evaluated receives the full filing text (or its deterministic deboilerplated subset), never a prior model's interpretation.
+
+### Input file contract
 Each outline-compare job uses exactly three input JSON files:
 - pair manifest
 - year prev input
