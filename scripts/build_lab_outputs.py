@@ -1,3 +1,21 @@
+"""Deterministic analysis pipeline for SEC filing sections.
+
+This script produces all deterministic (non-LLM) artifacts for the Document
+Protocol Lab.  It handles:
+
+  - Loading extracted filing text from cached EDGAR HTML or pre-extracted
+    plain-text files (no LLM involvement).
+  - Paragraph splitting via whitespace heuristics (no LLM involvement).
+  - The **deboilerplated** cleaning lens: a sentence-level exact-match
+    set-difference filter that removes sentences shared verbatim between
+    adjacent filing years.  This is a pure string operation (normalize,
+    intersect, subtract) with no LLM or semantic-similarity step.
+  - Running the six deterministic detectors (log-odds, JSD, MinHash,
+    winnowing, structure, RBO agreement).
+
+No LLM or ML model is invoked anywhere in this script.  All outputs are
+fully reproducible from the same input text.
+"""
 from __future__ import annotations
 
 import argparse
@@ -13,6 +31,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Optional, cast
 
+from sec_cache import load_gz_text, load_json, risk_text_path, ticker_year_index_path
 from sec_extract_item1a import extract_item1a_from_html, split_paragraphs
 from sec_metrics import (
     DF_PENALTY_EPS,
@@ -298,6 +317,35 @@ def find_cached_html(root: Path, ticker: str, year: int) -> Optional[Path]:
     return candidates[0]
 
 
+def find_cached_sec_risk_text(ticker: str, year: int) -> Optional[Path]:
+    index_path = ticker_year_index_path()
+    index_raw = load_json(index_path)
+    if not isinstance(index_raw, dict):
+        return None
+    index_payload = cast(dict[str, Any], index_raw)
+
+    ticker_raw = index_payload.get(ticker.upper())
+    if not isinstance(ticker_raw, dict):
+        return None
+    ticker_payload = cast(dict[str, Any], ticker_raw)
+
+    year_raw = ticker_payload.get(str(year))
+    if not isinstance(year_raw, dict):
+        return None
+    year_payload = cast(dict[str, Any], year_raw)
+
+    cik: str | None = year_payload.get("cik")
+    accession: str | None = year_payload.get("accession")
+    form_type: str | None = year_payload.get("formType")
+    if not isinstance(cik, str) or not isinstance(accession, str) or not isinstance(form_type, str):
+        return None
+
+    path = risk_text_path(cik, accession, form_type)
+    if path.exists():
+        return path
+    return None
+
+
 def load_section_text(
     ticker: str,
     year: int,
@@ -315,6 +363,13 @@ def load_section_text(
         paragraphs = build_paragraphs(text, min_chars=200)
         return SectionText(year=year, text=text, paragraphs=paragraphs)
 
+    sec_risk_text = find_cached_sec_risk_text(ticker, year)
+    if sec_risk_text is not None:
+        text = load_gz_text(sec_risk_text)
+        if text:
+            paragraphs = build_paragraphs(text, min_chars=200)
+            return SectionText(year=year, text=text, paragraphs=paragraphs)
+
     cached_html = find_cached_html(root, ticker, year)
     if cached_html is None:
         return None
@@ -327,6 +382,20 @@ def load_section_text(
 
 
 def build_deboilerplated_pair(prev_text: str, curr_text: str) -> tuple[list[str], list[str], dict[str, int]]:
+    """Remove sentences shared verbatim between adjacent filing years.
+
+    Algorithm:
+      1. Split each year's text into sentences.
+      2. Normalize each sentence (lowercase, collapse whitespace).
+      3. Compute the set intersection of normalized sentences.
+      4. Retain only sentences whose normalized form is NOT in the
+         shared set.
+
+    This is a deterministic exact-match string filter.  No LLM, no
+    semantic similarity, and no ML is involved.  The filter removes
+    recurring legal boilerplate that companies copy-paste year to year,
+    leaving the sentences that actually changed between filings.
+    """
     prev_sentences = extract_sentences(prev_text)
     curr_sentences = extract_sentences(curr_text)
 

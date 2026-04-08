@@ -655,7 +655,17 @@ def round_value(value: Optional[float], digits: int = 2) -> Optional[float]:
 def extract_terms(items: Sequence[Union[TermBase, Mapping[str, Any]]], limit: int = 3) -> list[str]:
     terms: list[str] = []
     for item in items:
-        terms.append(item["term"])
+        term: Optional[str] = None
+        raw_term = item.get("term")
+        if isinstance(raw_term, str) and raw_term.strip():
+            term = raw_term
+        else:
+            raw_label = item.get("label")
+            if isinstance(raw_label, str) and raw_label.strip():
+                term = raw_label
+        if term is None:
+            continue
+        terms.append(term)
         if len(terms) >= limit:
             break
     return terms

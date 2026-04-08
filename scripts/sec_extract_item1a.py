@@ -1,3 +1,13 @@
+"""Extract Item 1A (Risk Factors) sections from SEC 10-K/20-F HTML filings.
+
+This script parses HTML filings fetched from SEC EDGAR and extracts the
+Item 1A section text using rule-based HTML structure detection (heading
+matching, tag boundary identification, confidence scoring).
+
+**No LLM or ML model is involved.**  The extraction is fully deterministic
+and reproducible from the same HTML input.  The output is plain text that
+downstream scripts split into paragraphs for use as LLM job inputs.
+"""
 import argparse
 import re
 from dataclasses import dataclass, field
