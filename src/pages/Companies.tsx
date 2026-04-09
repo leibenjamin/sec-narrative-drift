@@ -103,6 +103,23 @@ export default function Companies() {
           ) : null}
         </header>
 
+        <section
+          id="casebook-curation-note"
+          className="rounded-[1.45rem] border border-white/10 bg-slate-950/42 p-4 sm:p-5"
+        >
+          <div className="space-y-2">
+            <div className="text-[11px] uppercase tracking-[0.24em] text-slate-400">
+              {casebookFraming.casebook.rosterNoteTitle}
+            </div>
+            <p className="max-w-3xl text-sm leading-6 text-slate-100">
+              {casebookFraming.casebook.rosterNoteLead}
+            </p>
+            <p className="max-w-3xl text-sm leading-6 text-slate-300">
+              {casebookFraming.casebook.rosterNoteSupport}
+            </p>
+          </div>
+        </section>
+
         {isLoading ? (
           <p className="text-sm text-slate-300">Loading casebook roster...</p>
         ) : (

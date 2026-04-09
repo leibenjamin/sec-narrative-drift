@@ -263,19 +263,32 @@ export default function Home() {
         </section>
 
         <section className="grid gap-4 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
-          <article className="rounded-[1.6rem] border border-sky-300/16 bg-linear-to-br from-sky-400/10 via-slate-950/70 to-slate-950/48 p-4 sm:p-5">
+          <article
+            id="home-casebook-entry"
+            className="rounded-[1.6rem] border border-sky-300/16 bg-linear-to-br from-sky-400/10 via-slate-950/70 to-slate-950/48 p-4 sm:p-5"
+          >
             <div className="text-[11px] uppercase tracking-[0.24em] text-sky-100">
               {casebookFraming.home.casebookEntryTitle}
             </div>
             <p className="mt-2 text-sm leading-6 text-slate-100">
               {casebookFraming.home.casebookEntryBody}
             </p>
-            <div className="mt-4">
+            <p className="mt-3 text-sm leading-6 text-slate-200">
+              {casebookFraming.home.compareTeaser}
+            </p>
+            <div className="mt-4 flex flex-wrap items-center gap-4">
               <Link
                 to="/companies"
                 className="inline-flex min-h-11 items-center justify-center rounded-full border border-sky-300/30 bg-sky-400/10 px-4 py-2.5 text-sm font-medium text-sky-100 transition hover:border-sky-200/45 hover:bg-sky-400/14"
               >
                 {casebookFraming.home.casebookEntryCta}
+              </Link>
+              <Link
+                to="/methodology#methodology-compare"
+                className="inline-flex items-center gap-2 text-sm font-medium text-slate-200 transition hover:text-white"
+              >
+                <span>{casebookFraming.home.compareTeaserCta}</span>
+                <span aria-hidden="true">→</span>
               </Link>
             </div>
           </article>

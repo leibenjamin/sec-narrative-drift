@@ -6,7 +6,12 @@ import TrustModelRow, { type TrustModelItem } from "../components/TrustModelRow"
 import WorkflowAnatomyDiagram, {
   type WorkflowAnatomyStage,
 } from "../components/WorkflowAnatomyDiagram"
-import { PUBLIC_CASEBOOK_TICKERS, casebookFraming } from "../lib/casebookContent"
+import {
+  PEDAGOGIC_COMPARE_EXAMPLES,
+  PUBLIC_CASEBOOK_TICKERS,
+  casebookFraming,
+  getPublicCasebookEntry,
+} from "../lib/casebookContent"
 import { withBase } from "../lib/paths"
 import { getRouteFamilyConfig } from "../lib/routeFamilyUi"
 
@@ -140,6 +145,19 @@ const FIXTURE_ROLE_ITEMS: FixtureRoleStripItem[] = PUBLIC_CASEBOOK_TICKERS.map((
   }
 })
 
+const PEDAGOGIC_COMPARE_ITEMS = PEDAGOGIC_COMPARE_EXAMPLES.map((example) => {
+  const entry = getPublicCasebookEntry(example.ticker)
+  if (!entry) {
+    throw new Error(`Missing pedagogic compare case for ${example.ticker}.`)
+  }
+
+  return {
+    ...example,
+    companyName: entry.companyName,
+    roleLabel: entry.publicRoleLabel,
+  }
+})
+
 const METHOD_FAMILIES: MethodFamily[] = [
   {
     title: "Lexical drift",
@@ -227,6 +245,76 @@ export default function Methodology() {
                   ))}
                 </ul>
               </article>
+            </section>
+
+            <section
+              id="methodology-compare"
+              className="space-y-3 rounded-[1.2rem] border border-white/10 bg-slate-950/30 p-4"
+            >
+              <div className="space-y-2">
+                <div className="text-[11px] uppercase tracking-[0.24em] text-slate-400">
+                  Simple read vs structured read
+                </div>
+                <h2 className="text-xl font-semibold text-slate-50 sm:text-2xl">
+                  {casebookFraming.methodology.compareTitle}
+                </h2>
+                <p className="max-w-3xl text-sm leading-6 text-slate-300">
+                  {casebookFraming.methodology.compareIntro}
+                </p>
+              </div>
+
+              <div className="grid gap-3 lg:grid-cols-2">
+                {PEDAGOGIC_COMPARE_ITEMS.map((item) => (
+                  <article
+                    key={item.ticker}
+                    id={`methodology-compare-${item.ticker.toLowerCase()}`}
+                    className="rounded-[1.15rem] border border-white/10 bg-slate-950/62 p-4"
+                  >
+                    <div className="flex flex-wrap items-start justify-between gap-3">
+                      <div>
+                        <div className="text-[11px] uppercase tracking-[0.24em] text-slate-400">
+                          {item.ticker}
+                        </div>
+                        <h3 className="mt-1 text-lg font-semibold text-slate-50">
+                          {item.companyName}
+                        </h3>
+                      </div>
+                      <div className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] tracking-[0.06em] text-slate-200">
+                        {item.roleLabel}
+                      </div>
+                    </div>
+
+                    <div className="mt-3 grid gap-2.5">
+                      <article className="rounded-[1rem] border border-white/10 bg-slate-950/58 p-3">
+                        <div className="text-[10px] uppercase tracking-[0.24em] text-slate-400">
+                          What a simpler read gets you
+                        </div>
+                        <p className="mt-1.5 text-sm leading-6 text-slate-100">
+                          {item.simpleRead}
+                        </p>
+                      </article>
+
+                      <article className="rounded-[1rem] border border-sky-300/18 bg-sky-400/8 p-3">
+                        <div className="text-[10px] uppercase tracking-[0.24em] text-sky-100">
+                          What the structured read adds
+                        </div>
+                        <p className="mt-1.5 text-sm leading-6 text-slate-100">
+                          {item.structuredRead}
+                        </p>
+                      </article>
+
+                      <article className="rounded-[1rem] border border-white/10 bg-slate-950/58 p-3">
+                        <div className="text-[10px] uppercase tracking-[0.24em] text-slate-400">
+                          Why this matters
+                        </div>
+                        <p className="mt-1.5 text-sm leading-6 text-slate-100">
+                          {item.whyItMatters}
+                        </p>
+                      </article>
+                    </div>
+                  </article>
+                ))}
+              </div>
             </section>
 
             <article className="rounded-[1.2rem] border border-white/10 bg-slate-950/30 p-4">

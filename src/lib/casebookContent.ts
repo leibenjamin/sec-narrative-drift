@@ -73,6 +73,13 @@ export type CasebookBand = {
   tickers: PublicCasebookTicker[]
 }
 
+export type PedagogicCompareExample = {
+  ticker: Extract<PublicCasebookTicker, "META" | "TSLA">
+  simpleRead: string
+  structuredRead: string
+  whyItMatters: string
+}
+
 export const casebookFraming = {
   appName: "Document Protocol Lab",
   casebookOneLiner:
@@ -87,7 +94,7 @@ export const casebookFraming = {
     support:
       "An interactive casebook for how document-comparison workflows should claim, prove, and stop.",
     chooserSummary:
-      "Start with the three anchor answer shapes, then use the Casebook to compare the added pressure cases.",
+      "Start with the three anchor answer shapes. The full Casebook shows how those same judgment habits behave under added pressure.",
     whatThisIsTitle: "What this is",
     whatThisIs: "An interactive casebook for bounded document-comparison judgment.",
     whatThisIsntTitle: "What this isn't",
@@ -100,7 +107,10 @@ export const casebookFraming = {
     ],
     casebookEntryTitle: "Explore the full casebook",
     casebookEntryBody:
-      "Three anchor cases teach the cleanest answer shapes. Three added cases show how pressure type changes the read without widening the claim.",
+      "The first three teach the answer shapes. The full Casebook shows how those shapes behave under other pressures.",
+    compareTeaser:
+      "Methodology shows, with TSLA and META, what a simpler read gets right and what structure adds.",
+    compareTeaserCta: "See the compare",
     casebookEntryCta: "Open the Casebook",
     commonFailureModesTitle: "Common failure modes this lab avoids",
     commonFailureModes: [
@@ -118,12 +128,17 @@ export const casebookFraming = {
     eyebrow: "Casebook",
     heading: "A curated set of worked document-comparison cases.",
     intro:
-      "Each case demonstrates a different allowed answer shape or pressure type for the same kind of comparison task.",
+      "Each public case earns space by teaching a different answer shape or pressure type for the same comparison task.",
+    rosterNoteTitle: "Why this roster",
+    rosterNoteLead:
+      "Each public case earns space by teaching a different kind of judgment. The first three anchor the answer shapes. The second three show those shapes under added pressure.",
+    rosterNoteSupport:
+      "The roster stays bounded on purpose so the casebook stays curated, not noisy. Some valid candidates stay out when they overlap too much or add too little teaching contrast.",
     boundednessNote:
       "This is a curated six-case roster, not a filing browser, upload flow, or broad benchmark.",
-    comparisonTitle: "Cross-case comparison",
+    comparisonTitle: "Cross-case map",
     comparisonIntro:
-      "Use one matrix to see why these cases belong together and where each route should stop.",
+      "Use one quick map to compare the first question, answer shape, stopping boundary, and best fit for each public case.",
   },
   methodology: {
     title: "Methodology | Document Protocol Lab",
@@ -134,10 +149,13 @@ export const casebookFraming = {
       "The public lab is not trying to answer every document question. It exists to show how a bounded workflow should make a claim, prove it with visible evidence, and stop where the public route should stop.",
     whyFrontierTitle: "Why not just ask a frontier model?",
     whyFrontierBody: [
-      "A strong model can often produce a plausible answer.",
-      "This lab is for when you care about the answer shape, the proof beside it, and the point where the workflow should stop.",
-      "The value here is visible judgment, not just output.",
+      "A strong frontier model can often give you a plausible first read.",
+      "This casebook is for when you care about answer shape, proof beside the answer, and where the workflow should stop.",
+      "TSLA and META show the difference: the simpler read catches the theme, while the structured read makes the mechanism, ranking, and stopping boundary clearer.",
     ],
+    compareTitle: "What the structured read adds",
+    compareIntro:
+      "These two cases show what a simpler read gets right, what the structured read adds, and why that difference matters.",
     nonClaimsTitle: "What this lab does not claim",
     nonClaims: [
       "It is not a benchmark of every model or prompt family.",
@@ -166,15 +184,36 @@ export const CASEBOOK_BANDS: CasebookBand[] = [
     id: "anchor_shapes",
     title: "Anchor answer shapes",
     description:
-      "Start here when you need the cleanest examples of answer-first, honest stop, and useful restraint.",
+      "The first three public cases teach the anchor answer shapes: vivid answer, honest stop, and useful restraint.",
     tickers: ["NVDA", "LLY", "KO"],
   },
   {
     id: "pressure_cases",
     title: "Added pressure cases",
     description:
-      "Use these when the same comparison task needs sharper pressure around regulation, policy shock, or interface risk.",
+      "The second three show those same judgment habits under AI and regulation, policy shock, and interface pressure.",
     tickers: ["META", "TSLA", "WMT"],
+  },
+] as const
+
+export const PEDAGOGIC_COMPARE_EXAMPLES: PedagogicCompareExample[] = [
+  {
+    ticker: "TSLA",
+    simpleRead:
+      "You quickly see autonomy, tariffs, and roadmap pressure moving closer to the center.",
+    structuredRead:
+      "P2 keeps the mechanism chain visible: policy shock to cost and demand pressure to commercialization dependence, with proof beside the claim and a clearer stop.",
+    whyItMatters:
+      "That keeps the case from flattening into generic EV or AI commentary.",
+  },
+  {
+    ticker: "META",
+    simpleRead:
+      "You quickly see AI and regulation sharpening.",
+    structuredRead:
+      "P2 separates the repeated AI and privacy scaffold from the newly decision-useful 2025 stack: named decisions, liability shifts, and AI-specific execution risk.",
+    whyItMatters:
+      "That keeps repeated theme language from masquerading as genuinely new risk.",
   },
 ] as const
 
@@ -486,56 +525,45 @@ export const CASEBOOK_COMPARISON_ROWS: CasebookComparisonRow[] = [
   {
     label: "First question",
     values: {
-      NVDA: PUBLIC_CASEBOOK_CASES.NVDA.firstQuestion,
-      LLY: PUBLIC_CASEBOOK_CASES.LLY.firstQuestion,
-      KO: PUBLIC_CASEBOOK_CASES.KO.firstQuestion,
-      META: PUBLIC_CASEBOOK_CASES.META.firstQuestion,
-      TSLA: PUBLIC_CASEBOOK_CASES.TSLA.firstQuestion,
-      WMT: PUBLIC_CASEBOOK_CASES.WMT.firstQuestion,
+      NVDA: "Strong enough to answer first?",
+      LLY: "Where should the public read stop?",
+      KO: "Mostly stable, or selectively sharper?",
+      META: "Sharper stack, or repeated theme?",
+      TSLA: "Did outside pressure re-center the story?",
+      WMT: "Calm story, sharper pressure points?",
     },
   },
   {
-    label: "Allowed answer shape",
+    label: "Answer shape",
     values: {
-      NVDA: PUBLIC_CASEBOOK_CASES.NVDA.allowedAnswerShape,
-      LLY: PUBLIC_CASEBOOK_CASES.LLY.allowedAnswerShape,
-      KO: PUBLIC_CASEBOOK_CASES.KO.allowedAnswerShape,
-      META: PUBLIC_CASEBOOK_CASES.META.allowedAnswerShape,
-      TSLA: PUBLIC_CASEBOOK_CASES.TSLA.allowedAnswerShape,
-      WMT: PUBLIC_CASEBOOK_CASES.WMT.allowedAnswerShape,
+      NVDA: "Answer first, then test",
+      LLY: "Bounded public stop",
+      KO: "Selective sharpening",
+      META: "Sharpened risk stack",
+      TSLA: "Policy-shock pivot",
+      WMT: "Calm operating shift",
     },
   },
   {
-    label: "What the route refuses",
+    label: "Route refuses",
     values: {
-      NVDA: PUBLIC_CASEBOOK_CASES.NVDA.routeRefuses,
-      LLY: PUBLIC_CASEBOOK_CASES.LLY.routeRefuses,
-      KO: PUBLIC_CASEBOOK_CASES.KO.routeRefuses,
-      META: PUBLIC_CASEBOOK_CASES.META.routeRefuses,
-      TSLA: PUBLIC_CASEBOOK_CASES.TSLA.routeRefuses,
-      WMT: PUBLIC_CASEBOOK_CASES.WMT.routeRefuses,
+      NVDA: "Universal benchmark claims",
+      LLY: "Bounded evidence as full certainty",
+      KO: "Forced drama",
+      META: "Every repeated AI theme as new",
+      TSLA: "Generic EV-demand commentary",
+      WMT: "Every refresh as a reordered map",
     },
   },
   {
-    label: "Why this case matters",
+    label: "Best used for",
     values: {
-      NVDA: PUBLIC_CASEBOOK_CASES.NVDA.whyCaseMatters,
-      LLY: PUBLIC_CASEBOOK_CASES.LLY.whyCaseMatters,
-      KO: PUBLIC_CASEBOOK_CASES.KO.whyCaseMatters,
-      META: PUBLIC_CASEBOOK_CASES.META.whyCaseMatters,
-      TSLA: PUBLIC_CASEBOOK_CASES.TSLA.whyCaseMatters,
-      WMT: PUBLIC_CASEBOOK_CASES.WMT.whyCaseMatters,
-    },
-  },
-  {
-    label: "Best used when",
-    values: {
-      NVDA: PUBLIC_CASEBOOK_CASES.NVDA.bestUsedWhen,
-      LLY: PUBLIC_CASEBOOK_CASES.LLY.bestUsedWhen,
-      KO: PUBLIC_CASEBOOK_CASES.KO.bestUsedWhen,
-      META: PUBLIC_CASEBOOK_CASES.META.bestUsedWhen,
-      TSLA: PUBLIC_CASEBOOK_CASES.TSLA.bestUsedWhen,
-      WMT: PUBLIC_CASEBOOK_CASES.WMT.bestUsedWhen,
+      NVDA: "Clean answer-first route",
+      LLY: "Visible stopping boundary",
+      KO: "Low-drift honesty check",
+      META: "AI and governance stack",
+      TSLA: "Policy-shock pivot",
+      WMT: "Retail interface pressure",
     },
   },
 ] as const

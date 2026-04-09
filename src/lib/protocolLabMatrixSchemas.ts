@@ -17,6 +17,7 @@ function isRepoPathLike(value: string): boolean {
   if (normalized.includes("..")) return false
   return (
     normalized.startsWith("/") ||
+    normalized.startsWith("bundles/") ||
     normalized.startsWith("data/") ||
     normalized.startsWith("public/") ||
     normalized.startsWith("wave") ||

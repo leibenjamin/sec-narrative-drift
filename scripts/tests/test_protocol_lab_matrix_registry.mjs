@@ -124,7 +124,23 @@ test("selectPilotMatrixRegistryItem resolves public casebook entries by ticker w
 
 test("registry source surfaces still wire bounded public matrix support", () => {
   assert.match(schemaSource, /comparison_pairs:\s*z\s*\.array\(/)
+  assert.match(schemaSource, /normalized\.startsWith\("bundles\/"\)/)
   assert.match(dataSource, /export function resolveNoveltyLedgerCasePathForTicker\(ticker: string\)/)
   assert.match(dataSource, /export function resolveSkepticCasePathForTicker\(ticker: string\)/)
   assert.match(dataSource, /loadPilotMatrixBundleForTicker/)
+})
+
+test("candidate-backed public matrix cells can keep bundles-backed raw source refs", () => {
+  for (const relativePath of [
+    "public/data/business_document_protocol_lab/pilot_matrices/META_2024_2025_10k_item1a/cells/00_p0_i2_tagged_plain_prompt__pilot_matrix_cell_v1.json",
+    "public/data/business_document_protocol_lab/pilot_matrices/META_2024_2025_10k_item1a/cells/02_p2_i2_tagged_protocol__pilot_matrix_cell_v1.json",
+    "public/data/business_document_protocol_lab/pilot_matrices/TSLA_2024_2025_10k_item1a/cells/00_p0_i2_tagged_plain_prompt__pilot_matrix_cell_v1.json",
+    "public/data/business_document_protocol_lab/pilot_matrices/TSLA_2024_2025_10k_item1a/cells/02_p2_i2_tagged_protocol__pilot_matrix_cell_v1.json",
+    "public/data/business_document_protocol_lab/pilot_matrices/WMT_2025_2026_10k_item1a/cells/02_p2_i2_tagged_protocol__pilot_matrix_cell_v1.json",
+  ]) {
+    const payload = readJson(relativePath)
+    assert.equal(payload.artifact_schema_id, "pilot_matrix_cell_v1")
+    assert.match(payload.raw_source_refs.response_path, /^bundles\//)
+    assert.match(payload.raw_source_refs.run_manifest_path, /^bundles\//)
+  }
 })
