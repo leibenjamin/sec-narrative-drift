@@ -22,13 +22,14 @@ export default function LabPanelBoundedVisibleCase({
     <section className="space-y-4 sm:space-y-5">
       {pilotMatrixBundle ? (
         <VisibleCaseAnswerSummary
+          ticker={ticker}
           bundle={pilotMatrixBundle}
           noveltyLedger={noveltyLedgerArtifact}
           effortRobustness={effortRobustnessBundle}
         />
       ) : null}
 
-      {pilotMatrixBundle ? (
+      {ticker === "LLY" && pilotMatrixBundle ? (
         <LLYStopStrip
           bundle={pilotMatrixBundle}
           noveltyLedger={noveltyLedgerArtifact}

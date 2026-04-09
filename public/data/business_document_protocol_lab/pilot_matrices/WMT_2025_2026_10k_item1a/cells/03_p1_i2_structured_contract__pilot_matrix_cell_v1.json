@@ -1,0 +1,72 @@
+{
+  "artifact_schema_id": "pilot_matrix_cell_v1",
+  "cell_id": "03_p1_i2_structured_contract",
+  "matrix_id": "WMT_2025_2026_10k_item1a__desktop_pilot_matrix_v1",
+  "fixture_id": "WMT_2025_2026_10k_item1a",
+  "label": "P1 + i2 structured contract",
+  "short_label": "P1+i2",
+  "role": "main_comparator",
+  "lane_position": 2,
+  "protocol_input_identity": {
+    "protocol_id": "p1_structured_contract_v1",
+    "protocol_label": "P1 structured contract",
+    "input_pack_id": "i2_tagged_document_packet_v1",
+    "input_label": "i2 tagged document packet",
+    "display_text": "P1 structured contract + i2 tagged document packet"
+  },
+  "headline": "FY2026 keeps Walmart's core retail-risk scaffold but sharpens the filing around AI-mediated shopping and discovery, AI-amplified cyber and compliance exposure, more immediate tariff pressure, and broader fintech and litigation vectors.",
+  "summary": "The center of gravity moves from generic eCommerce and generative-AI execution language toward control of the customer interface in an AI and agentic-commerce environment, with Walmart explicitly flagging AI-powered search and discovery, agentic shopping tools, stronger competitor AI capabilities, and the need to preserve a direct customer relationship.",
+  "card_takeaway": "Main comparator on the same tagged packet, still useful but broader and less selective than the P2 default.",
+  "why_this_lane_matters": "This is the main comparator because it keeps the same evidence packet while reading the operating shift with a broader first-pass shape.",
+  "output_shape_info": {
+    "contract_mode": "canonical_protocol_json",
+    "display_text": "Canonical structured brief plus evidence bundle",
+    "canonical_structured": true
+  },
+  "evidence_richness_tier": "high",
+  "evidence_count_total": 21,
+  "auditability_note": "High auditability on the same packet, but less selective than P2 about what truly sharpened.",
+  "strengths": [
+    "Same evidence substrate as P2 makes answer-shape differences easy to inspect.",
+    "Still surfaces AI-mediated shopping, cyber, and tariff pressure clearly."
+  ],
+  "limitations": [
+    "Less surgical than P2 about separating calm selective shift from broad novelty claims.",
+    "More likely to let refreshed examples read like a larger reordering than the evidence supports."
+  ],
+  "evidence_preview": [
+    {
+      "evidence_id": "e1_2025_ai_strategy_genai",
+      "year_label": "FY2025",
+      "paragraph_id": "wmt_2025_p001",
+      "quote_text": "Our strategy, which includes investments in eCommerce, technology, including the use of artificial intelligence (\"AI\") and generative AI technologies (which continues to grow and evolve within our Company), talent, supply chain automation and enhancements, advertising, acquisitions, joint ventures, store remodels and other customer initiatives may not adequately or effectively allow us to continue to grow our eCommerce business, increase comparable sales, maintain or grow our overall market position or otherwise offset the impact on the growth of our business of a moderated pace of new store and club openings and sustain the current pace of remodels.",
+      "short_note": null
+    },
+    {
+      "evidence_id": "e2_2026_ai_enabled_search_store_traffic",
+      "year_label": "FY2026",
+      "paragraph_id": "wmt_2026_p006",
+      "quote_text": "In addition, a greater concentration of eCommerce sales, including increasing online grocery sales and the increasing role of AI-enabled platforms in product search, discovery, advertising and purchasing, could result in a reduction in the amount of traffic in our stores and clubs, which would, in turn, reduce the opportunities for cross-store or cross-club sales of merchandise that such traffic creates and could reduce our sales within our stores and clubs and materially adversely affect our financial performance.",
+      "short_note": null
+    },
+    {
+      "evidence_id": "e3_2026_ai_search_discovery_tools",
+      "year_label": "FY2026",
+      "paragraph_id": "wmt_2026_p009",
+      "quote_text": "In addition, to remain competitive, we must continue to develop, integrate and scale digital tools, including AI-powered search and discovery platforms and capabilities, useful interfaces and other marketing tools such as third-party recommendation engines, paid search and mobile applications.",
+      "short_note": null
+    }
+  ],
+  "raw_source_refs": {
+    "response_path": "bundles/showcase_llm_inputs_casebook_candidates_20260406_wmtfix/runs/04_WMT/04_protocol_p1_structured_contract/response.normalized.json",
+    "run_manifest_path": "bundles/showcase_llm_inputs_casebook_candidates_20260406_wmtfix/runs/04_WMT/04_protocol_p1_structured_contract/run_manifest.json"
+  },
+  "normalization_status": {
+    "kind": "canonical_json",
+    "recovered": false,
+    "source_json_parseable": true,
+    "recovery_boundary": null,
+    "required_labels_found": [],
+    "note": "Parsed directly from the normalized protocol-ready candidate response JSON."
+  }
+}

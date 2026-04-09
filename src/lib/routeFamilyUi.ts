@@ -1,13 +1,24 @@
-export const VISIBLE_FAMILY_TICKERS = ["NVDA", "LLY", "KO"] as const
+import {
+  HOME_ANCHOR_TICKERS,
+  PUBLIC_CASEBOOK_CASES,
+  PUBLIC_CASEBOOK_TICKERS,
+  getPublicCasebookEntry,
+  type HomeAnchorTicker,
+  type PublicCasebookTicker,
+  type RouteFamilyPreviewSubtitleSource,
+  type RouteFamilyPreviewSupportStrategy,
+} from "./casebookContent"
 
-export type VisibleFamilyTicker = (typeof VISIBLE_FAMILY_TICKERS)[number]
-
-export type RouteFamilyPreviewSubtitleSource = "card_takeaway" | "protocol_read" | "why_case_exists"
-
-export type RouteFamilyPreviewSupportStrategy = "effort_first" | "scope_only"
+export { HOME_ANCHOR_TICKERS, PUBLIC_CASEBOOK_TICKERS }
+export type {
+  HomeAnchorTicker,
+  PublicCasebookTicker,
+  RouteFamilyPreviewSubtitleSource,
+  RouteFamilyPreviewSupportStrategy,
+}
 
 export type RouteFamilyCaseConfig = {
-  ticker: VisibleFamilyTicker
+  ticker: PublicCasebookTicker
   companyName: string
   sector: string
   publicRoleLabel: string
@@ -27,84 +38,40 @@ export type RouteFamilyCaseConfig = {
   }
 }
 
-const ROUTE_FAMILY_CASE_CONFIG = {
-  NVDA: {
-    ticker: "NVDA",
-    companyName: "NVIDIA",
-    sector: "Semiconductors / AI Infrastructure",
-    publicRoleLabel: "Vivid answer",
-    topCue:
-      "Vivid answer: read the filing answer first, then use the supporting read and audit only if you need more pressure.",
-    homeCardLabel: "Vivid answer",
-    chooserCardDescription: "The clearest answer-first shift in the pilot.",
-    chooserBestFor: "Strongest first signal",
-    chooserObjectiveLabel: "Vivid answer",
-    methodologyDetail:
-      "Shows the workflow at full clarity when the filing shift is vivid and easy to pressure-test.",
-    preview: {
-      integratedTitle: "Why this case is here",
-      boundedTitle: "Why this read is here",
-      roleSummary: "Answer-first is clearest here; the supporting read only pressure-tests it.",
-      subtitleSource: "card_takeaway",
-      supportStrategy: "effort_first",
-    },
-  },
-  LLY: {
-    ticker: "LLY",
-    companyName: "Eli Lilly",
-    sector: "Pharmaceuticals / Cardiometabolic and Obesity",
-    publicRoleLabel: "Honest stop",
-    topCue:
-      "Honest stop: read the filing answer, check the supporting read, then stop at the explicit boundary.",
-    homeCardLabel: "Honest stop",
-    chooserCardDescription: "Policy pressure makes the stop boundary visible.",
-    chooserBestFor: "Policy-heavy contrast",
-    chooserObjectiveLabel: "Honest stop",
-    methodologyDetail:
-      "Shows where policy-heavy contrast needs a visible stop before the public surface pretends to broader certainty.",
-    preview: {
-      integratedTitle: "Why this case is here",
-      boundedTitle: "Why this read stops here",
-      roleSummary: "Show the visible read, then stop at the boundary.",
-      subtitleSource: "card_takeaway",
-      supportStrategy: "effort_first",
-    },
-  },
-  KO: {
-    ticker: "KO",
-    companyName: "Coca-Cola",
-    sector: "Consumer Staples / Beverages",
-    publicRoleLabel: "Useful restraint",
-    topCue:
-      "Useful restraint: read the filing answer, then use the supporting read to selectively sharpen a mostly stable filing.",
-    homeCardLabel: "Useful restraint",
-    chooserCardDescription: "Selective sharpening matters when the filing barely moves.",
-    chooserBestFor: "Low-drift restraint",
-    chooserObjectiveLabel: "Useful restraint",
-    methodologyDetail:
-      "Shows the same workflow staying useful when the filing barely moves and drama would be misleading.",
-    preview: {
-      integratedTitle: "Why restraint helps here",
-      boundedTitle: "Why restraint helps here",
-      roleSummary: "Mostly stable filing; the supporting read only sharpens the few places that moved.",
-      subtitleSource: "card_takeaway",
-      supportStrategy: "scope_only",
-      showRestraintStrip: true,
-    },
-  },
-} satisfies Record<VisibleFamilyTicker, RouteFamilyCaseConfig>
+const ROUTE_FAMILY_CASE_CONFIG = PUBLIC_CASEBOOK_TICKERS.reduce<
+  Record<PublicCasebookTicker, RouteFamilyCaseConfig>
+>((accumulator, ticker) => {
+  const entry = PUBLIC_CASEBOOK_CASES[ticker]
+  accumulator[ticker] = {
+    ticker,
+    companyName: entry.companyName,
+    sector: entry.sector,
+    publicRoleLabel: entry.publicRoleLabel,
+    topCue: entry.topCue,
+    homeCardLabel: entry.homeCardLabel,
+    chooserCardDescription: entry.chooserCardDescription,
+    chooserBestFor: entry.chooserBestFor,
+    chooserObjectiveLabel: entry.chooserObjectiveLabel,
+    methodologyDetail: entry.methodologyDetail,
+    preview: entry.preview,
+  }
+  return accumulator
+}, {} as Record<PublicCasebookTicker, RouteFamilyCaseConfig>)
 
-export function isVisibleFamilyTicker(value: string): value is VisibleFamilyTicker {
-  return VISIBLE_FAMILY_TICKERS.includes(value as VisibleFamilyTicker)
+export function isPublicCasebookTicker(value: string): value is PublicCasebookTicker {
+  return PUBLIC_CASEBOOK_TICKERS.includes(value as PublicCasebookTicker)
+}
+
+export function isHomeAnchorTicker(value: string): value is HomeAnchorTicker {
+  return HOME_ANCHOR_TICKERS.includes(value as HomeAnchorTicker)
 }
 
 export function getRouteFamilyConfig(ticker: string | null | undefined): RouteFamilyCaseConfig | null {
-  if (!ticker) return null
-  const normalizedTicker = ticker.trim().toUpperCase()
-  if (!isVisibleFamilyTicker(normalizedTicker)) return null
-  return ROUTE_FAMILY_CASE_CONFIG[normalizedTicker]
+  const entry = getPublicCasebookEntry(ticker)
+  if (!entry) return null
+  return ROUTE_FAMILY_CASE_CONFIG[entry.ticker]
 }
 
 export function listRouteFamilyConfigs(): RouteFamilyCaseConfig[] {
-  return VISIBLE_FAMILY_TICKERS.map((ticker) => ROUTE_FAMILY_CASE_CONFIG[ticker])
+  return PUBLIC_CASEBOOK_TICKERS.map((ticker) => ROUTE_FAMILY_CASE_CONFIG[ticker])
 }

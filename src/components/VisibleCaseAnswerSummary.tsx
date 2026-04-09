@@ -4,9 +4,11 @@ import type {
   ProtocolLabPilotMatrixBundle,
   ProtocolLabPilotMatrixCell,
 } from "../lib/protocolLabMatrixTypes.ts"
+import { getPublicCasebookEntry } from "../lib/casebookContent"
 import { compactText } from "../lib/compactText"
 
 type VisibleCaseAnswerSummaryProps = {
+  ticker?: string
   bundle: ProtocolLabPilotMatrixBundle
   noveltyLedger: ProtocolLabNoveltyLedgerCase | null
   effortRobustness: ProtocolLabEffortRobustnessBundle | null
@@ -46,16 +48,22 @@ function formatSurfaceCoverageLabel(props: {
 }
 
 export default function VisibleCaseAnswerSummary({
+  ticker,
   bundle,
   noveltyLedger,
   effortRobustness,
 }: VisibleCaseAnswerSummaryProps) {
+  const casebookEntry = getPublicCasebookEntry(ticker)
   const primaryCell = getPrimaryCell(bundle)
   const primarySummary = compactText(primaryCell?.summary ?? bundle.story.investor_read, 232)
-  const matterSummary = compactText(bundle.story.investor_read, 124)
+  const matterSummary = compactText(casebookEntry?.whyCaseMatters ?? bundle.story.investor_read, 124)
   const surfaceCoverage = formatSurfaceCoverageLabel({ noveltyLedger, effortRobustness })
   const summaryMeta = `Basis: ${primaryCell?.short_label ?? "Primary read"}`
   const supportNote = compactText(`Checked against ${surfaceCoverage}. ${matterSummary}`, 132)
+  const heading = casebookEntry
+    ? `${casebookEntry.ticker} filing answer`
+    : `${bundle.matrix.pair_info.ticker} filing answer`
+  const badge = casebookEntry?.publicRoleLabel ?? "Public case"
 
   return (
     <section
@@ -65,10 +73,10 @@ export default function VisibleCaseAnswerSummary({
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div className="space-y-2">
           <div className="text-[11px] uppercase tracking-[0.24em] text-sky-100">Filing answer</div>
-          <h2 className="text-lg font-semibold text-slate-50 sm:text-xl">LLY filing answer</h2>
+          <h2 className="text-lg font-semibold text-slate-50 sm:text-xl">{heading}</h2>
         </div>
         <span className="rounded-full border border-sky-300/25 bg-sky-400/10 px-2.5 py-1 text-[11px] text-sky-100">
-          Honest stop
+          {badge}
         </span>
       </div>
 

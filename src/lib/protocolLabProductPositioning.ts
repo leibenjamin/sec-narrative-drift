@@ -1,11 +1,12 @@
 import { withBase } from "./paths"
+import { PUBLIC_CASEBOOK_TICKERS } from "./casebookContent"
 
 const PRODUCT_POSITIONING_ROOT = withBase("data/business_document_protocol_lab/product_positioning")
 const CURRENT_CASE_MIX_PATH = `${PRODUCT_POSITIONING_ROOT}/current_case_mix_v2.json`
 const START_HERE_PATH = `${PRODUCT_POSITIONING_ROOT}/start_here_v1.json`
 const DEMO_SHARE_V2_PATH = `${PRODUCT_POSITIONING_ROOT}/demo_share_v2.json`
 const DEMO_SHARE_V3_PATH = `${PRODUCT_POSITIONING_ROOT}/demo_share_v3.json`
-const EXPECTED_VISIBLE_TICKERS = ["NVDA", "LLY", "KO"] as const
+const EXPECTED_VISIBLE_TICKERS = PUBLIC_CASEBOOK_TICKERS
 const EXPECTED_READING_FLOW_STEPS = [
   "filing answer",
   "protocol meaning",

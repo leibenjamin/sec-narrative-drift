@@ -1,0 +1,72 @@
+{
+  "artifact_schema_id": "pilot_matrix_cell_v1",
+  "cell_id": "02_p2_i2_tagged_protocol",
+  "matrix_id": "TSLA_2024_2025_10k_item1a__desktop_pilot_matrix_v1",
+  "fixture_id": "TSLA_2024_2025_10k_item1a",
+  "label": "P2 + i2 tagged protocol",
+  "short_label": "P2+i2",
+  "role": "hero",
+  "lane_position": 1,
+  "protocol_input_identity": {
+    "protocol_id": "p2_tagged_input_contract_v1",
+    "protocol_label": "P2 tagged-input contract",
+    "input_pack_id": "i2_tagged_document_packet_v1",
+    "input_label": "i2 tagged document packet",
+    "display_text": "P2 tagged-input contract + i2 tagged document packet"
+  },
+  "headline": "FY2025 broadens Tesla\u2019s Item 1A from a predominantly EV manufacturing-and-demand risk story into a platform risk story centered on autonomous driving, Robotaxi/Cybercab, Bots and AI capacity, while also adding concrete 2025 trade-policy and incentive-rollback headwinds on cost and demand.",
+  "summary": "The clearest lead shift is that autonomy moves from being framed mainly as a regulated vehicle-feature risk in FY2024 to being framed in FY2025 as a core business dependency and operating business line, with Robotaxi launch, Cybercab plans and Bot commercialization explicitly tied to future growth.",
+  "card_takeaway": "Best default read for the public case: it makes the autonomy commercialization and policy-shock mechanism chain explicit.",
+  "why_this_lane_matters": "This is the hero lane because it best connects 2025 autonomy, Robotaxi, Bot, tariff, and incentive changes into a bounded first-read claim.",
+  "output_shape_info": {
+    "contract_mode": "canonical_protocol_json",
+    "display_text": "Canonical structured brief plus evidence bundle",
+    "canonical_structured": true
+  },
+  "evidence_richness_tier": "high",
+  "evidence_count_total": 22,
+  "auditability_note": "High auditability: P2 keeps the autonomy pivot and trade-policy specifics tightly attached to evidence.",
+  "strengths": [
+    "Strongest mechanism chain from policy shock to cost, demand, and commercialization dependence.",
+    "Keeps the case from collapsing into generic EV-demand commentary."
+  ],
+  "limitations": [
+    "Still a tagged-packet comparison rather than a proof about the full filing hierarchy.",
+    "Some novelty claims remain intensifications inside an existing regulatory and execution scaffold."
+  ],
+  "evidence_preview": [
+    {
+      "evidence_id": "tsla_2024_p008",
+      "year_label": "FY2024",
+      "paragraph_id": "tsla_2024_p008",
+      "quote_text": "to a number of uncertainties inherent in all new manufacturing operations, including ongoing compliance with regulatory requirements, procurement and maintenance of construction, environmental and operational licenses and approvals for additional expansion, supply chain constraints, hiring, training and retention of qualified employees and the pace of bringing production equipment and processes online with the capability to manufacture high-quality units at scale.",
+      "short_note": null
+    },
+    {
+      "evidence_id": "tsla_2024_p016",
+      "year_label": "FY2024",
+      "paragraph_id": "tsla_2024_p016",
+      "quote_text": "Our future growth and success are dependent upon consumers\u2019 demand for electric vehicles and specifically our vehicles in an automotive industry that is generally competitive, cyclical and volatile.",
+      "short_note": null
+    },
+    {
+      "evidence_id": "tsla_2024_p023",
+      "year_label": "FY2024",
+      "paragraph_id": "tsla_2024_p023",
+      "quote_text": "Our operations in such jurisdictions, particularly as a company based in the U.S., with additional manufacturing operations in China and Europe, create risks relating to conforming our products to regulatory and safety requirements and charging and other electric infrastructures; organizing local operating entities; establishing, staffing and managing foreign business locations; attracting local customers; navigating foreign government taxes, regulations and permit requirements; enforceability of our contractual rights; trade restrictions, customs regulations, tariffs and price or exchange controls; and preferences in foreign nations for domestically manufactured products.",
+      "short_note": null
+    }
+  ],
+  "raw_source_refs": {
+    "response_path": "bundles/showcase_llm_inputs_casebook_candidates_20260406_wmtfix/runs/02_TSLA/05_protocol_p2_tagged_input_contract/response.normalized.json",
+    "run_manifest_path": "bundles/showcase_llm_inputs_casebook_candidates_20260406_wmtfix/runs/02_TSLA/05_protocol_p2_tagged_input_contract/run_manifest.json"
+  },
+  "normalization_status": {
+    "kind": "canonical_json",
+    "recovered": false,
+    "source_json_parseable": true,
+    "recovery_boundary": null,
+    "required_labels_found": [],
+    "note": "Parsed directly from the normalized protocol-ready candidate response JSON."
+  }
+}

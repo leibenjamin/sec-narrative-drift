@@ -1,7 +1,9 @@
 import { useEffect, useMemo, useState } from "react"
 import { Link, useParams, useSearchParams } from "react-router-dom"
+import CaseTeachingLayer from "../components/CaseTeachingLayer"
 import LabPanel from "../components/LabPanel"
 import PageMetadata from "../components/PageMetadata"
+import { getPublicCasebookEntry } from "../lib/casebookContent"
 import { formatFiscalYearRange } from "../lib/fiscalYear"
 import {
   findProtocolLabVisiblePilotEntry,
@@ -97,6 +99,7 @@ export default function Company() {
   const requestedLlmCampaignB = searchParams.get("llmB")
   const visiblePilot = visiblePilotSystem ? findProtocolLabVisiblePilotEntry(visiblePilotSystem, ticker) : null
   const familyConfig = getRouteFamilyConfig(ticker)
+  const casebookEntry = getPublicCasebookEntry(ticker)
 
   useEffect(() => {
     const tab = searchParams.get("tab")
@@ -125,7 +128,9 @@ export default function Company() {
     : requestedPair
       ? `${formatFiscalYearRange(requestedPair.from, requestedPair.to)} Item 1A`
       : "FY2024 to FY2025 Item 1A"
-  const companyMetaDescription = `Document Protocol Lab public pilot case for ${displayName}: start with the filing answer, then the supporting read, then the deeper audit only when you need it.`
+  const companyMetaDescription = casebookEntry
+    ? `${displayName} in the Document Protocol Lab casebook: ${casebookEntry.teachingSummary}`
+    : `Document Protocol Lab case page for ${displayName}: start with the filing answer, then the supporting read, then the deeper audit only when you need it.`
   const inlineCue = familyConfig?.topCue ?? DEFAULT_TOP_CUE
   const sectorLabel = familyConfig?.sector ?? FALLBACK_COMPANY_SECTORS[ticker] ?? null
 
@@ -169,7 +174,7 @@ export default function Company() {
               <li aria-hidden="true" className="text-slate-500">/</li>
               <li>
                 <Link to="/companies" className="hover:text-slate-100">
-                  Cases
+                  Casebook
                 </Link>
               </li>
               <li aria-hidden="true" className="text-slate-500">/</li>
@@ -210,7 +215,7 @@ export default function Company() {
                   to="/companies"
                   className="inline-flex items-center rounded-full border border-white/20 px-2.5 py-1 text-[11px] text-slate-200 hover:border-white/40 hover:bg-white/5 sm:px-3 sm:py-1.5 sm:text-xs"
                 >
-                  Back to 3 cases
+                  Back to Casebook
                 </Link>
                 <Link
                   to="/methodology"
@@ -222,6 +227,8 @@ export default function Company() {
             </div>
           </section>
         </header>
+
+        <CaseTeachingLayer ticker={ticker} />
 
         <LabPanel
           ticker={ticker}

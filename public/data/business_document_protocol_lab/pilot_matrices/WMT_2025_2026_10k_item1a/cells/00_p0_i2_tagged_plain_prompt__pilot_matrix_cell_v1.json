@@ -1,0 +1,72 @@
+{
+  "artifact_schema_id": "pilot_matrix_cell_v1",
+  "cell_id": "00_p0_i2_tagged_plain_prompt",
+  "matrix_id": "WMT_2025_2026_10k_item1a__desktop_pilot_matrix_v1",
+  "fixture_id": "WMT_2025_2026_10k_item1a",
+  "label": "P0 + i2 tagged plain prompt",
+  "short_label": "P0+i2",
+  "role": "control",
+  "lane_position": 3,
+  "protocol_input_identity": {
+    "protocol_id": "p0_plain_prompt_v1",
+    "protocol_label": "P0 plain prompt",
+    "input_pack_id": "i2_tagged_document_packet_v1",
+    "input_label": "i2 tagged document packet",
+    "display_text": "P0 plain prompt + i2 tagged document packet"
+  },
+  "headline": "FY2026 keeps Walmart's core omnichannel, digital, and AI execution-risk frame, but the section shifts from broader AI and generative-AI implementation language toward a more operational warning that AI and emerging agentic tools can reshape product discovery, customer traffic, competition, and cyber exposure at the same time [ev_01][ev_02][ev_03][ev_04][ev_06][ev_07][ev_09][ev_10].",
+  "summary": "- The shopping and discovery risk gets much more specific in FY2026: the filing adds \"emerging agentic platforms,\" AI-enabled search, discovery, advertising, purchasing, and recommendation engines as channels Walmart must compete through, rather than describing digital change mostly at a higher level [ev_03][ev_04][ev_05]. - Competition risk broadens from general omnichannel pressure to explicit rivalry with \"emerging agentic shopping tools and platforms\" and faster competitor AI development, plus an added warning that Walmart may not adopt or leverage AI as quickly or effectively as competitors [ev_06][ev_07][ev_08]. - Cyber and compliance language intensifies around AI: FY2026 says AI is accelerating attack techniques, creating autonomous cyber-threat categories, and colliding with a growing patchwork of AI, privacy, and consumer-protection rules [ev_09][ev_10][ev_11]. - Trade and regulatory pressure becomes sharper and more current: FY2025 mainly warned that further tariffs could raise costs, while FY2026 says tax and trade changes \"have impacted\" margins and strategic-initiative costs, may persist in a dynamic tariff environment into fiscal 2027, and now explicitly references dynamic and algorithmic pricing laws [ev_12][ev_13][ev_14][ev_15]. - The regulated-business and litigation mix also broadens: financial-services risk expands from ONE to OnePay with limited crypto and equity products, while legal risk shifts away from FY2025's named opioid-centered litigation emphasis toward novel consumer-product, pricing, and self-insurance exposure in FY2026 [ev_16][ev_17][ev_18][ev_19][ev_20][ev_21][ev_22].",
+  "card_takeaway": "Simple-prompt control that catches the broad agentic-commerce turn, but it is looser about selective sharpening versus full risk-map change.",
+  "why_this_lane_matters": "This is the control because it shows the same tagged packet without the sharper structured boundary on customer-interface and tariff persistence.",
+  "output_shape_info": {
+    "contract_mode": "canonical_plain_prompt_json",
+    "display_text": "Canonical plain-prompt brief plus evidence array",
+    "canonical_structured": false
+  },
+  "evidence_richness_tier": "baseline",
+  "evidence_count_total": 26,
+  "auditability_note": "Canonical p0 output: readable and evidence-backed, but looser than the structured lanes about what changed versus what merely refreshed.",
+  "strengths": [
+    "Makes the broad shift toward agentic commerce, customer-interface risk, and tariff pressure visible quickly.",
+    "Uses the same tagged packet, so the control comparison remains fair."
+  ],
+  "limitations": [
+    "Less explicit about which changes are selective sharpenings inside the same scaffold.",
+    "More likely to overread refreshed examples as a full reprioritization of the filing."
+  ],
+  "evidence_preview": [
+    {
+      "evidence_id": "ev_01",
+      "year_label": "FY2025",
+      "paragraph_id": "wmt_2025_p040",
+      "quote_text": "We continue to invest in AI and generative AI technologies to enhance our customers\u2019 shopping experience and our associate work experience and to improve efficiencies of our supply chain, operations, management functions and talent recruitment and development; however, these are evolving technologies and there are inherent operational and legal complexities associated with implementation of these technologies within our business.",
+      "short_note": null
+    },
+    {
+      "evidence_id": "ev_02",
+      "year_label": "FY2025",
+      "paragraph_id": "wmt_2025_p041",
+      "quote_text": "When integrating and introducing AI and generative AI technologies into our platforms, processes and systems, we may be exposed to new or expanded liabilities and risks due to elevated governmental scrutiny and monitoring, litigation, data privacy risks and compliance issues in a disparate and at times conflicting regulatory environment, all of which could negatively affect our financial performance and business reputation.",
+      "short_note": null
+    },
+    {
+      "evidence_id": "ev_03",
+      "year_label": "FY2026",
+      "paragraph_id": "wmt_2026_p005",
+      "quote_text": "Customers are using digital means, including websites, captive and third-party digital applications, social media, and emerging agentic platforms to shop with us and our competitors and to do comparison shopping, and we use these digital means along with digital advertising, text messages and email to interact with our customers and enhance their shopping experience.",
+      "short_note": null
+    }
+  ],
+  "raw_source_refs": {
+    "response_path": "bundles/showcase_llm_inputs_casebook_candidates_20260406_wmtfix/runs/04_WMT/03_protocol_p0_plain_prompt/response.normalized.json",
+    "run_manifest_path": "bundles/showcase_llm_inputs_casebook_candidates_20260406_wmtfix/runs/04_WMT/03_protocol_p0_plain_prompt/run_manifest.json"
+  },
+  "normalization_status": {
+    "kind": "canonical_json",
+    "recovered": false,
+    "source_json_parseable": true,
+    "recovery_boundary": null,
+    "required_labels_found": [],
+    "note": "Parsed directly from the normalized protocol-ready candidate response JSON."
+  }
+}

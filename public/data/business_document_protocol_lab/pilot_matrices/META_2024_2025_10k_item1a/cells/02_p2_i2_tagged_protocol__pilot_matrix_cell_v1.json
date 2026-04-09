@@ -1,0 +1,72 @@
+{
+  "artifact_schema_id": "pilot_matrix_cell_v1",
+  "cell_id": "02_p2_i2_tagged_protocol",
+  "matrix_id": "META_2024_2025_10k_item1a__desktop_pilot_matrix_v1",
+  "fixture_id": "META_2024_2025_10k_item1a",
+  "label": "P2 + i2 tagged protocol",
+  "short_label": "P2+i2",
+  "role": "hero",
+  "lane_position": 1,
+  "protocol_input_identity": {
+    "protocol_id": "p2_tagged_input_contract_v1",
+    "protocol_label": "P2 tagged-input contract",
+    "input_pack_id": "i2_tagged_document_packet_v1",
+    "input_label": "i2 tagged document packet",
+    "display_text": "P2 tagged-input contract + i2 tagged document packet"
+  },
+  "headline": "FY2025 keeps Meta's core Item 1A architecture but materially sharpens it with concrete 2025-specific developments in AI, European enforcement, youth regulation, Brazilian platform liability, AI-linked security and IP exposure, metrics methodology, and tax and financing pressure.",
+  "summary": "The biggest substantive shift is that AI moves from a broad generative-AI theme to a denser execution, governance, and competition theme that now explicitly covers superintelligence, named governmental scrutiny, data and talent constraints, and AI-specific security and intellectual-property vulnerabilities.",
+  "card_takeaway": "Best default read for the public case: it turns a familiar AI theme into a sharper enforcement, liability, and governance stack.",
+  "why_this_lane_matters": "This is the hero lane because it best separates repeated AI/privacy scaffolds from the newly decision-useful 2025 specifics.",
+  "output_shape_info": {
+    "contract_mode": "canonical_protocol_json",
+    "display_text": "Canonical structured brief plus evidence bundle",
+    "canonical_structured": true
+  },
+  "evidence_richness_tier": "high",
+  "evidence_count_total": 25,
+  "auditability_note": "High auditability: the structured brief keeps named 2025 decisions and liabilities adjacent to evidence.",
+  "strengths": [
+    "Sharpest separation between repeated risk buckets and newly concrete 2025 decisions.",
+    "Keeps the case legible as a bounded public read rather than an AI-theme collage."
+  ],
+  "limitations": [
+    "Still a tagged-packet comparison rather than a whole-filing proof of enterprise reprioritization.",
+    "Some apparent novelty is better read as intensified examples inside existing buckets."
+  ],
+  "evidence_preview": [
+    {
+      "evidence_id": "e1",
+      "year_label": "FY2024",
+      "paragraph_id": "meta_2024_p019",
+      "quote_text": "We are making significant investments in AI initiatives, including generative AI, to, among other things, recommend relevant content across our products, enhance our advertising tools, develop new products, and develop new features for existing products.",
+      "short_note": "FY2024 AI baseline investment scope."
+    },
+    {
+      "evidence_id": "e2",
+      "year_label": "FY2025",
+      "paragraph_id": "meta_2025_p019",
+      "quote_text": "We have made significant investments in AI initiatives, including generative AI and superintelligence, to, among other things, recommend relevant content across our products, enhance our advertising tools, develop new products, and develop new features for existing products, and expect to continue to increase these investments.",
+      "short_note": "FY2025 broadens AI to superintelligence and rising investment."
+    },
+    {
+      "evidence_id": "e3",
+      "year_label": "FY2025",
+      "paragraph_id": "meta_2025_p022",
+      "quote_text": "For example, we have been the subject of media and government scrutiny relating to AI and AI chatbots, including inquiries and investigations by the FTC, members of Congress and state attorneys general.",
+      "short_note": "Specific AI scrutiny by FTC, Congress, and state AGs."
+    }
+  ],
+  "raw_source_refs": {
+    "response_path": "bundles/showcase_llm_inputs_casebook_candidates_20260406_wmtfix/runs/01_META/05_protocol_p2_tagged_input_contract/response.normalized.json",
+    "run_manifest_path": "bundles/showcase_llm_inputs_casebook_candidates_20260406_wmtfix/runs/01_META/05_protocol_p2_tagged_input_contract/run_manifest.json"
+  },
+  "normalization_status": {
+    "kind": "canonical_json",
+    "recovered": false,
+    "source_json_parseable": true,
+    "recovery_boundary": null,
+    "required_labels_found": [],
+    "note": "Parsed directly from the normalized protocol-ready candidate response JSON."
+  }
+}

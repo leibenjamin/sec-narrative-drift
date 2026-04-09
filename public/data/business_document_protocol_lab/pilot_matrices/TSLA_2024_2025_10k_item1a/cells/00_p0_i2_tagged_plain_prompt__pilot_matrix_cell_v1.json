@@ -1,0 +1,72 @@
+{
+  "artifact_schema_id": "pilot_matrix_cell_v1",
+  "cell_id": "00_p0_i2_tagged_plain_prompt",
+  "matrix_id": "TSLA_2024_2025_10k_item1a__desktop_pilot_matrix_v1",
+  "fixture_id": "TSLA_2024_2025_10k_item1a",
+  "label": "P0 + i2 tagged plain prompt",
+  "short_label": "P0+i2",
+  "role": "control",
+  "lane_position": 3,
+  "protocol_input_identity": {
+    "protocol_id": "p0_plain_prompt_v1",
+    "protocol_label": "P0 plain prompt",
+    "input_pack_id": "i2_tagged_document_packet_v1",
+    "input_label": "i2 tagged document packet",
+    "display_text": "P0 plain prompt + i2 tagged document packet"
+  },
+  "headline": "Tesla's FY2025 Item 1A materially broadens the risk narrative from a mostly EV-manufacturing and execution frame into a wider AI, autonomous-driving, Robotaxi, and robotics story, while still resting on the same core manufacturing and regulatory backbone. [ev_01][ev_02][ev_03][ev_04][ev_05][ev_06][ev_07][ev_15][ev_26][ev_27]",
+  "summary": "The opening execution risk expands from delays in launching \"products and features\" to issues in developing, launching and ramping \"products, services and features,\" and then explicitly says Tesla's future business depends on driver assistance systems, autonomous driving solutions, mass-market vehicles including Cybercab, stronger AI capabilities, and Bots for future commercialization. [ev_01][ev_02][ev_03][ev_04][ev_05] The demand and competition discussion also shifts from demand for electric vehicles alone to demand for electric vehicles plus adoption of autonomous driving solutions, adds Tesla's June 2025 Robotaxi launch and Cybercab mass-production plans, and introduces a separate commercialization-and-competition risk for Bots including Optimus. [ev_06][ev_07][ev_08][ev_09][ev_10] FY2025 adds a much more concrete trade-policy risk lane, tying 2025 U.S. tariff changes and retaliatory measures to supply-chain costs, product pricing, demand, and sourcing constraints for EV and battery components. [ev_11][ev_12][ev_13][ev_14][ev_15] FY2025 also adds a new incentive-policy and subsidy-eligibility layer, warning that repealed or restricted consumer, manufacturing, charging-infrastructure, and regulatory-credit programs, plus OBBBA effects and critical-mineral documentation failures, could raise costs and reduce demand. [ev_16][ev_17][ev_18] Beyond product and policy risk, FY2025 sharpens reputation, privacy, and governance language by adding protests that escalated to violence, broader multi-state and Asia-Pacific privacy-law complexity, and a new risk that the 2025 CEO Performance Award could steer investment toward technologies that do not match market demand. [ev_19][ev_20][ev_21][ev_22][ev_23][ev_24][ev_25]",
+  "card_takeaway": "Simple-prompt control that catches the broad autonomy turn, but it is looser about the mechanism chain from policy shock to commercialization risk.",
+  "why_this_lane_matters": "This is the control because it shows the same tagged packet without the sharper structured ranking of autonomy, tariffs, and incentive rollback.",
+  "output_shape_info": {
+    "contract_mode": "canonical_plain_prompt_json",
+    "display_text": "Canonical plain-prompt brief plus evidence array",
+    "canonical_structured": false
+  },
+  "evidence_richness_tier": "baseline",
+  "evidence_count_total": 28,
+  "auditability_note": "Canonical p0 output: readable and evidence-backed, but less disciplined about mechanism and boundary than the structured lanes.",
+  "strengths": [
+    "Makes the broad shift toward autonomy, Robotaxi, and robotics visible quickly.",
+    "Uses the same tagged packet, so the control lane remains a fair baseline."
+  ],
+  "limitations": [
+    "Less explicit about how 2025 policy changes alter costs, demand, and commercialization dependence.",
+    "More likely to collapse a specific pivot into a generic AI or EV-demand story."
+  ],
+  "evidence_preview": [
+    {
+      "evidence_id": "ev_01",
+      "year_label": "FY2024",
+      "paragraph_id": "tsla_2024_p000",
+      "quote_text": "We may experience delays in launching and ramping the production of our products and features, or we may be unable to control our manufacturing costs.",
+      "short_note": null
+    },
+    {
+      "evidence_id": "ev_02",
+      "year_label": "FY2025",
+      "paragraph_id": "tsla_2025_p000",
+      "quote_text": "We may experience issues or delays in developing, launching and ramping the production of our products, services and features, or we may be unable to control our manufacturing costs.",
+      "short_note": null
+    },
+    {
+      "evidence_id": "ev_03",
+      "year_label": "FY2025",
+      "paragraph_id": "tsla_2025_p002",
+      "quote_text": "In particular, our future business depends on development of our driver assistance systems and autonomous driving solutions and increasing the production of mass-market vehicles, including Cybercab, our purpose-built Robotaxi product.",
+      "short_note": null
+    }
+  ],
+  "raw_source_refs": {
+    "response_path": "bundles/showcase_llm_inputs_casebook_candidates_20260406_wmtfix/runs/02_TSLA/03_protocol_p0_plain_prompt/response.normalized.json",
+    "run_manifest_path": "bundles/showcase_llm_inputs_casebook_candidates_20260406_wmtfix/runs/02_TSLA/03_protocol_p0_plain_prompt/run_manifest.json"
+  },
+  "normalization_status": {
+    "kind": "canonical_json",
+    "recovered": false,
+    "source_json_parseable": true,
+    "recovery_boundary": null,
+    "required_labels_found": [],
+    "note": "Parsed directly from the normalized protocol-ready candidate response JSON."
+  }
+}

@@ -14,6 +14,7 @@ import {
   listLabCasesForTicker,
   loadLabLlmCampaignsIndex,
 } from "../lib/labData"
+import { isMatrixFirstPublicTicker } from "../lib/casebookContent"
 import { formatFiscalYearRange } from "../lib/fiscalYear"
 import type {
   LabCase,
@@ -329,7 +330,7 @@ export default function LabPanel({
 
   const panelMode = useMemo<LabPanelMode>(() => {
     if (selectedCase) return "registry_case"
-    if (ticker === "LLY") return "bounded_visible_case"
+    if (isMatrixFirstPublicTicker(ticker)) return "bounded_visible_case"
     return "empty"
   }, [selectedCase, ticker])
 

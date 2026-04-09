@@ -1,4 +1,5 @@
 ﻿import { Link, useLocation } from "react-router-dom"
+import { casebookFraming } from "../lib/casebookContent"
 
 type NavItem = {
   to: string
@@ -7,6 +8,7 @@ type NavItem = {
 
 const NAV_ITEMS: NavItem[] = [
   { to: "/", label: "Home" },
+  { to: "/companies", label: "Casebook" },
   { to: "/methodology", label: "Methodology" },
 ]
 
@@ -32,7 +34,7 @@ export default function AppHeader() {
             Document Protocol Lab
           </Link>
           <div className="mt-1 text-[10px] text-slate-400 sm:text-[11px]">
-            Public pilot: NVDA, LLY, and KO
+            {casebookFraming.casebookOneLiner}
           </div>
         </div>
         <nav className="flex flex-wrap items-center gap-4 pt-0.5 text-sm" aria-label="Primary">

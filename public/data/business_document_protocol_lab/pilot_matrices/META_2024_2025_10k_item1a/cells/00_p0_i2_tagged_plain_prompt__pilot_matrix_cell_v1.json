@@ -1,0 +1,72 @@
+{
+  "artifact_schema_id": "pilot_matrix_cell_v1",
+  "cell_id": "00_p0_i2_tagged_plain_prompt",
+  "matrix_id": "META_2024_2025_10k_item1a__desktop_pilot_matrix_v1",
+  "fixture_id": "META_2024_2025_10k_item1a",
+  "label": "P0 + i2 tagged plain prompt",
+  "short_label": "P0+i2",
+  "role": "control",
+  "lane_position": 3,
+  "protocol_input_identity": {
+    "protocol_id": "p0_plain_prompt_v1",
+    "protocol_label": "P0 plain prompt",
+    "input_pack_id": "i2_tagged_document_packet_v1",
+    "input_label": "i2 tagged document packet",
+    "display_text": "P0 plain prompt + i2 tagged document packet"
+  },
+  "headline": "FY2025 keeps the same broad privacy, advertising, and platform-regulation risk frame as FY2024, but it becomes materially more specific about European ad-model enforcement, AI execution and liability, youth/content governance, and the funding burden of Meta's investment program [ev_01][ev_02][ev_03][ev_04][ev_05][ev_06][ev_09][ev_18][ev_19].",
+  "summary": "The clearest regulatory sharpening is in Europe: FY2025 adds AI to the top-level legal-risk framing, states that the European Commission issued an April 2025 final decision that Meta's \"subscription for no ads\" model was non-compliant, and warns that further model changes during the appeal could materially worsen user experience and significantly affect European business and revenue [ev_02][ev_03][ev_04]. The AI discussion broadens from major generative-AI investment risk to a fuller strategy-and-execution risk, adding \"superintelligence,\" AI chatbot scrutiny from the FTC, Congress, and state attorneys general, dependence on training data and specialized talent, and the possibility that the AI strategy and investments may not succeed at all [ev_05][ev_06][ev_07][ev_08][ev_09]. Youth and content-governance risk also broadens: FY2024 already cited U.S. state minor-access laws, but FY2025 adds possible EU age-verification or social-media bans, says litigation tied to younger users is increasing, and updates Brazil from a framework under Supreme Court review to a partially invalidated regime that requires removal of unlawful content upon private notice and civil liability for non-compliance [ev_10][ev_11][ev_12][ev_13][ev_14][ev_15]. FY2025 also adds new balance-sheet and measurement pressure points by stating that Meta may seek additional debt or equity financing, warning that inadequate financing could hurt operations and initiatives, and revising the violating-accounts methodology while moving the estimate from less than 3% to less than 5% of worldwide DAP [ev_18][ev_19][ev_20][ev_21][ev_22]. The tax and back-end risk sections are also updated: the filing rolls forward from the 2017 Tax Cuts and Jobs Act to the July 2025 OBBBA, adds CAMT-specific risk to share-based compensation tax benefits, and makes the cyber/IP tail more AI-specific through prompt-injection, model-weight and source-code exposure, AI-generated software vulnerabilities, and AI-training copyright litigation with potentially substantial per-work statutory damages [ev_23][ev_24][ev_25][ev_26][ev_27][ev_28][ev_29].",
+  "card_takeaway": "Simple-prompt control that still catches the broad shift, but it is less disciplined about separating repeated scaffolds from the genuinely sharper 2025 specifics.",
+  "why_this_lane_matters": "This is the control because it shows what the same tagged packet looks like without the stronger structured claim shape.",
+  "output_shape_info": {
+    "contract_mode": "canonical_plain_prompt_json",
+    "display_text": "Canonical plain-prompt brief plus evidence array",
+    "canonical_structured": false
+  },
+  "evidence_richness_tier": "baseline",
+  "evidence_count_total": 29,
+  "auditability_note": "Canonical p0 output: usable evidence, but looser claim discipline than the structured lanes.",
+  "strengths": [
+    "Still surfaces the broad shift toward sharper AI and enforcement exposure.",
+    "Uses the same tagged packet, so the control comparison stays fair."
+  ],
+  "limitations": [
+    "More likely to blur sharpened specifics into a broad theme recap.",
+    "Less explicit about where repeated scaffolds end and new decision-useful specifics begin."
+  ],
+  "evidence_preview": [
+    {
+      "evidence_id": "ev_01",
+      "year_label": "FY2024",
+      "paragraph_id": "meta_2024_p089",
+      "quote_text": "Our business is subject to complex and evolving U.S. and foreign laws and regulations regarding privacy, data use, data combination, data protection, content, competition, youth, safety, consumer protection, advertising, e-commerce, and other matters.",
+      "short_note": null
+    },
+    {
+      "evidence_id": "ev_02",
+      "year_label": "FY2025",
+      "paragraph_id": "meta_2025_p103",
+      "quote_text": "Our business is subject to complex and evolving U.S. and foreign laws and regulations regarding privacy, data use, data combination, data protection, content, AI, competition, youth, safety, consumer protection, advertising, e-commerce, and other matters.",
+      "short_note": null
+    },
+    {
+      "evidence_id": "ev_03",
+      "year_label": "FY2025",
+      "paragraph_id": "meta_2025_p011",
+      "quote_text": "In April 2025, the European Commission issued a final decision that our \"subscription for no ads\" model does not comply with such requirements.",
+      "short_note": null
+    }
+  ],
+  "raw_source_refs": {
+    "response_path": "bundles/showcase_llm_inputs_casebook_candidates_20260406_wmtfix/runs/01_META/03_protocol_p0_plain_prompt/response.normalized.json",
+    "run_manifest_path": "bundles/showcase_llm_inputs_casebook_candidates_20260406_wmtfix/runs/01_META/03_protocol_p0_plain_prompt/run_manifest.json"
+  },
+  "normalization_status": {
+    "kind": "canonical_json",
+    "recovered": false,
+    "source_json_parseable": true,
+    "recovery_boundary": null,
+    "required_labels_found": [],
+    "note": "Parsed directly from the normalized protocol-ready candidate response JSON."
+  }
+}

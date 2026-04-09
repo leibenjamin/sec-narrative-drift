@@ -6,12 +6,12 @@ import TrustModelRow, { type TrustModelItem } from "../components/TrustModelRow"
 import WorkflowAnatomyDiagram, {
   type WorkflowAnatomyStage,
 } from "../components/WorkflowAnatomyDiagram"
+import { PUBLIC_CASEBOOK_TICKERS, casebookFraming } from "../lib/casebookContent"
 import { withBase } from "../lib/paths"
-import { VISIBLE_FAMILY_TICKERS, getRouteFamilyConfig } from "../lib/routeFamilyUi"
+import { getRouteFamilyConfig } from "../lib/routeFamilyUi"
 
-const METHODOLOGY_TITLE = "Methodology | Document Protocol Lab"
-const METHODOLOGY_DESCRIPTION =
-  "Workflow anatomy for Document Protocol Lab: bounded offline stages, compact trust signals, case roles, and deferred audit detail without runtime model calls."
+const METHODOLOGY_TITLE = casebookFraming.methodology.title
+const METHODOLOGY_DESCRIPTION = casebookFraming.methodology.metaDescription
 
 const DETECTORS = [
   {
@@ -127,7 +127,7 @@ const TRUST_MODEL_ITEMS: TrustModelItem[] = [
   { label: "Bounded scope" },
 ]
 
-const FIXTURE_ROLE_ITEMS: FixtureRoleStripItem[] = VISIBLE_FAMILY_TICKERS.map((ticker) => {
+const FIXTURE_ROLE_ITEMS: FixtureRoleStripItem[] = PUBLIC_CASEBOOK_TICKERS.map((ticker) => {
   const familyConfig = getRouteFamilyConfig(ticker)
   if (!familyConfig) {
     throw new Error(`Missing route-family config for ${ticker}.`)
@@ -166,7 +166,10 @@ export default function Methodology() {
     <main className="min-h-screen page-fade">
       <PageMetadata title={METHODOLOGY_TITLE} description={METHODOLOGY_DESCRIPTION} />
       <div className="mx-auto max-w-6xl space-y-5 px-5 py-5 sm:space-y-7 sm:px-6 sm:py-8">
-        <section className="relative overflow-hidden rounded-4xl border border-white/10 bg-linear-to-br from-slate-950/92 via-slate-950/84 to-slate-900/72 p-4 shadow-[0_30px_80px_rgba(2,6,23,0.38)] sm:p-6">
+        <section
+          id="methodology-top-fold"
+          className="relative overflow-hidden rounded-4xl border border-white/10 bg-linear-to-br from-slate-950/92 via-slate-950/84 to-slate-900/72 p-4 shadow-[0_30px_80px_rgba(2,6,23,0.38)] sm:p-6"
+        >
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(56,189,248,0.16),transparent_36%),radial-gradient(circle_at_bottom_right,rgba(16,185,129,0.11),transparent_30%)]" />
           <div className="relative space-y-3 sm:space-y-4">
             <div className="flex flex-wrap items-center gap-1.5 text-[11px] uppercase tracking-[0.24em] text-slate-300">
@@ -174,17 +177,16 @@ export default function Methodology() {
                 Methodology
               </span>
               <span className="rounded-full border border-sky-300/25 bg-sky-400/10 px-3 py-1 text-sky-100">
-                Public pilot
+                Field guide
               </span>
             </div>
 
             <header className="space-y-1.5">
               <h1 className="max-w-3xl text-[clamp(2rem,3.4vw,3.15rem)] font-semibold leading-[0.95] tracking-[-0.04em] text-slate-50">
-                Workflow anatomy for the bounded pilot.
+                {casebookFraming.methodology.heading}
               </h1>
               <p className="max-w-3xl text-sm leading-6 text-slate-300">
-                The public lab answers first, proves with evidence, stops on visible limits, and
-                leaves deeper audit lower on the page.
+                {casebookFraming.methodology.intro}
               </p>
             </header>
 
@@ -199,6 +201,42 @@ export default function Methodology() {
                 <WorkflowAnatomyDiagram stages={WORKFLOW_STAGES} />
               </div>
             </div>
+
+            <section className="grid gap-3 md:grid-cols-2">
+              <article
+                id="methodology-frontier-models"
+                className="rounded-[1.2rem] border border-sky-300/18 bg-sky-400/8 p-4"
+              >
+                <div className="text-[11px] uppercase tracking-[0.24em] text-sky-100">
+                  {casebookFraming.methodology.whyFrontierTitle}
+                </div>
+                <div className="mt-2 space-y-2 text-sm leading-6 text-slate-100">
+                  {casebookFraming.methodology.whyFrontierBody.map((item) => (
+                    <p key={item}>{item}</p>
+                  ))}
+                </div>
+              </article>
+
+              <article className="rounded-[1.2rem] border border-white/10 bg-slate-950/30 p-4">
+                <div className="text-[11px] uppercase tracking-[0.24em] text-slate-400">
+                  {casebookFraming.methodology.nonClaimsTitle}
+                </div>
+                <ul className="mt-2 list-disc space-y-2 pl-5 text-sm text-slate-200">
+                  {casebookFraming.methodology.nonClaims.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </article>
+            </section>
+
+            <article className="rounded-[1.2rem] border border-white/10 bg-slate-950/30 p-4">
+              <div className="text-[11px] uppercase tracking-[0.24em] text-slate-400">
+                Matrix-first public cases
+              </div>
+              <p className="mt-2 text-sm leading-6 text-slate-200">
+                {casebookFraming.methodology.matrixOnlyNote}
+              </p>
+            </article>
           </div>
         </section>
 
@@ -369,7 +407,7 @@ export default function Methodology() {
             to="/companies"
             className="inline-flex items-center rounded-full border border-white/20 px-4 py-2 text-slate-200 hover:border-white/40 hover:bg-white/5"
           >
-            Open companies
+            Open Casebook
           </Link>
         </footer>
       </div>

@@ -1,0 +1,72 @@
+{
+  "artifact_schema_id": "pilot_matrix_cell_v1",
+  "cell_id": "03_p1_i2_structured_contract",
+  "matrix_id": "TSLA_2024_2025_10k_item1a__desktop_pilot_matrix_v1",
+  "fixture_id": "TSLA_2024_2025_10k_item1a",
+  "label": "P1 + i2 structured contract",
+  "short_label": "P1+i2",
+  "role": "main_comparator",
+  "lane_position": 2,
+  "protocol_input_identity": {
+    "protocol_id": "p1_structured_contract_v1",
+    "protocol_label": "P1 structured contract",
+    "input_pack_id": "i2_tagged_document_packet_v1",
+    "input_label": "i2 tagged document packet",
+    "display_text": "P1 structured contract + i2 tagged document packet"
+  },
+  "headline": "FY2025 keeps Tesla\u2019s familiar manufacturing-and-demand risk backbone, but it shifts the filing\u2019s center of gravity toward AI-enabled autonomy and service commercialization, adding explicit Robotaxi/Cybercab and Bot execution risk alongside concrete 2025 tariff, incentive-policy and CEO-award strategy risks.",
+  "summary": "The main lead shift is from a 2024 framing anchored in vehicle launch/ramp execution and EV demand toward a 2025 framing that explicitly says future business depends on driver-assistance and autonomous-driving solutions, Cybercab/Robotaxi scale-up, AI capability, and Bot commercialization.",
+  "card_takeaway": "Main comparator on the same tagged packet, still useful but broader and less surgical than the P2 default.",
+  "why_this_lane_matters": "This is the main comparator because it keeps the same evidence packet while softening the mechanism-heavy first read.",
+  "output_shape_info": {
+    "contract_mode": "canonical_protocol_json",
+    "display_text": "Canonical structured brief plus evidence bundle",
+    "canonical_structured": true
+  },
+  "evidence_richness_tier": "high",
+  "evidence_count_total": 20,
+  "auditability_note": "High auditability on the same packet, but a broader summary than P2 on the policy-shock mechanism.",
+  "strengths": [
+    "Same evidence substrate as P2 makes answer-shape differences legible.",
+    "Still surfaces autonomy, Robotaxi, and tariff pressure clearly."
+  ],
+  "limitations": [
+    "Less explicit than P2 about the move from feature risk to business dependency.",
+    "More likely to blur autonomy commercialization and policy shock into one broad pivot."
+  ],
+  "evidence_preview": [
+    {
+      "evidence_id": "ev01",
+      "year_label": "FY2024",
+      "paragraph_id": "tsla_2024_p000",
+      "quote_text": "We may experience delays in launching and ramping the production of our products and features, or we may be unable to control our manufacturing costs.",
+      "short_note": "2024 opening frame centers on launch/ramp and manufacturing cost control."
+    },
+    {
+      "evidence_id": "ev02",
+      "year_label": "FY2024",
+      "paragraph_id": "tsla_2024_p016",
+      "quote_text": "Our future growth and success are dependent upon consumers\u2019 demand for electric vehicles and specifically our vehicles in an automotive industry that is generally competitive, cyclical and volatile.",
+      "short_note": "2024 demand framing is centered on EV adoption."
+    },
+    {
+      "evidence_id": "ev03",
+      "year_label": "FY2024",
+      "paragraph_id": "tsla_2024_p078",
+      "quote_text": "There are a variety of international, federal and state regulations that may apply to, and may adversely affect, the design and performance, sale, marketing, registration and operation of Autopilot and FSD (Supervised), and future capability, including autonomous vehicles that may not be operated by a human driver.",
+      "short_note": "2024 already carries autonomy-feature regulatory risk under Autopilot/FSD."
+    }
+  ],
+  "raw_source_refs": {
+    "response_path": "bundles/showcase_llm_inputs_casebook_candidates_20260406_wmtfix/runs/02_TSLA/04_protocol_p1_structured_contract/response.normalized.json",
+    "run_manifest_path": "bundles/showcase_llm_inputs_casebook_candidates_20260406_wmtfix/runs/02_TSLA/04_protocol_p1_structured_contract/run_manifest.json"
+  },
+  "normalization_status": {
+    "kind": "canonical_json",
+    "recovered": false,
+    "source_json_parseable": true,
+    "recovery_boundary": null,
+    "required_labels_found": [],
+    "note": "Parsed directly from the normalized protocol-ready candidate response JSON."
+  }
+}

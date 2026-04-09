@@ -1,14 +1,15 @@
 import FixtureRoleCard from "./FixtureRoleCard"
 import { compactText } from "../lib/compactText"
 import {
+  PUBLIC_CASEBOOK_TICKERS,
+  getPublicCasebookEntry,
+  type PublicCasebookTicker,
+} from "../lib/casebookContent"
+import {
   buildProtocolLabCaseHref,
   type ProtocolLabVisiblePilotEntry,
 } from "../lib/protocolLabProductPositioning"
-import {
-  VISIBLE_FAMILY_TICKERS,
-  getRouteFamilyConfig,
-  type VisibleFamilyTicker,
-} from "../lib/routeFamilyUi"
+import { getRouteFamilyConfig } from "../lib/routeFamilyUi"
 
 type ProtocolLabUseCaseGuideProps = {
   visiblePilots: ProtocolLabVisiblePilotEntry[]
@@ -20,7 +21,7 @@ type ProtocolLabUseCaseGuideProps = {
 
 function resolvePilot(
   visiblePilots: ProtocolLabVisiblePilotEntry[],
-  ticker: VisibleFamilyTicker
+  ticker: PublicCasebookTicker
 ): ProtocolLabVisiblePilotEntry | null {
   for (const pilot of visiblePilots) {
     if (pilot.ticker === ticker) return pilot
@@ -30,11 +31,15 @@ function resolvePilot(
 
 function resolveHref(
   visiblePilots: ProtocolLabVisiblePilotEntry[],
-  ticker: VisibleFamilyTicker
+  ticker: PublicCasebookTicker
 ): string {
   const pilot = resolvePilot(visiblePilots, ticker)
   if (pilot) return pilot.href
-  return buildProtocolLabCaseHref(ticker, 2024, 2025)
+  const entry = getPublicCasebookEntry(ticker)
+  if (!entry) {
+    throw new Error(`Missing casebook entry for ${ticker}.`)
+  }
+  return buildProtocolLabCaseHref(ticker, entry.yearFrom, entry.yearTo)
 }
 
 export default function ProtocolLabUseCaseGuide({
@@ -53,17 +58,23 @@ export default function ProtocolLabUseCaseGuide({
         </div>
       ) : null}
       <div className="grid gap-4 lg:grid-cols-3">
-        {VISIBLE_FAMILY_TICKERS.map((ticker) => {
+        {PUBLIC_CASEBOOK_TICKERS.map((ticker) => {
           const pilot = resolvePilot(visiblePilots, ticker)
           const familyConfig = getRouteFamilyConfig(ticker)
+          const casebookEntry = getPublicCasebookEntry(ticker)
           const primaryLine = compactText(
             familyConfig?.chooserCardDescription ??
+              casebookEntry?.chooserCardDescription ??
               pilot?.guidance.what_you_learn ??
               "Open the current case for this route.",
             74
           )
           const supportLine = compactText(
-            familyConfig?.chooserBestFor ?? pilot?.best_for ?? pilot?.guidance.why_pick ?? "Open this case.",
+            familyConfig?.chooserBestFor ??
+              casebookEntry?.bestUsedWhen ??
+              pilot?.best_for ??
+              pilot?.guidance.why_pick ??
+              "Open this case.",
             32
           )
           const isRecommended = Boolean(pilot?.is_recommended_first_case)
@@ -71,8 +82,8 @@ export default function ProtocolLabUseCaseGuide({
             <FixtureRoleCard
               key={ticker}
               ticker={ticker}
-              companyName={familyConfig?.companyName ?? pilot?.company_name ?? ticker}
-              roleLabel={familyConfig?.chooserObjectiveLabel ?? ticker}
+              companyName={familyConfig?.companyName ?? casebookEntry?.companyName ?? pilot?.company_name ?? ticker}
+              roleLabel={familyConfig?.chooserObjectiveLabel ?? casebookEntry?.publicRoleLabel ?? ticker}
               description={primaryLine}
               bestFor={supportLine}
               href={resolveHref(visiblePilots, ticker)}

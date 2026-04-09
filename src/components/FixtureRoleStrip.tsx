@@ -19,6 +19,7 @@ function formatRoleList(roles: string[]): string {
 
 export default function FixtureRoleStrip({ items }: FixtureRoleStripProps) {
   const roleSummary = formatRoleList(items.map((item) => item.role.toLowerCase()))
+  const rosterLabel = `${items.length} public cases`
 
   return (
     <section className="rounded-[1.35rem] border border-white/10 bg-slate-950/42 p-3.5">
@@ -28,15 +29,15 @@ export default function FixtureRoleStrip({ items }: FixtureRoleStripProps) {
             Case roles
           </div>
           <p className="mt-1.5 text-sm leading-5 text-slate-300">
-            Three cases are enough to show {roleSummary} without widening the public claim.
+            The public casebook uses {rosterLabel.toLowerCase()} to show {roleSummary} without drifting into a random gallery.
           </p>
         </div>
         <div className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-slate-300">
-          NVDA / LLY / KO only
+          {rosterLabel}
         </div>
       </div>
 
-      <div className="mt-3 grid gap-2 md:grid-cols-3">
+      <div className="mt-3 grid gap-2 md:grid-cols-2 xl:grid-cols-3">
         {items.map((item) => (
           <article
             key={item.ticker}

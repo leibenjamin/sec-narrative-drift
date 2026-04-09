@@ -34,7 +34,7 @@ function selectPilotMatrixRegistryItem(items, options) {
   return tickerMatches.length === 1 ? tickerMatches[0] : null
 }
 
-test("pilot_matrices_v1 registry stays valid for the three integrated pilot cases", () => {
+test("pilot_matrices_v1 registry stays valid for the six public casebook cases", () => {
   const registry = readJson(
     "public/data/business_document_protocol_lab/registries/pilot_matrices_v1.json"
   )
@@ -42,10 +42,10 @@ test("pilot_matrices_v1 registry stays valid for the three integrated pilot case
   assert.equal(registry.artifact_schema_id, "pilot_matrices_v1")
   assert.equal(registry.version, "1.0")
   assert.equal(Array.isArray(registry.items), true)
-  assert.equal(registry.items.length, 3)
+  assert.equal(registry.items.length, 6)
   assert.deepEqual(
-    registry.items.map((item) => item.ticker).sort(),
-    ["KO", "LLY", "NVDA"]
+    registry.items.map((item) => item.ticker),
+    ["NVDA", "LLY", "KO", "META", "TSLA", "WMT"]
   )
 
   const uniquePairs = new Set(
@@ -54,55 +54,77 @@ test("pilot_matrices_v1 registry stays valid for the three integrated pilot case
   assert.equal(uniquePairs.size, registry.items.length)
 })
 
-test("selectPilotMatrixRegistryItem resolves exact NVDA, LLY, and KO cases", () => {
-  const registry = readJson(
-    "public/data/business_document_protocol_lab/registries/pilot_matrices_v1.json"
-  )
-
-  const nvda = selectPilotMatrixRegistryItem(registry.items, {
-    ticker: "NVDA",
-    yearFrom: 2024,
-    yearTo: 2025,
-  })
-  const lly = selectPilotMatrixRegistryItem(registry.items, {
-    ticker: "LLY",
-    yearFrom: 2024,
-    yearTo: 2025,
-  })
-  const ko = selectPilotMatrixRegistryItem(registry.items, {
-    ticker: "KO",
-    yearFrom: 2024,
-    yearTo: 2025,
-  })
-
-  assert.equal(nvda?.fixture_id, "NVDA_2024_2025_10k_item1a")
-  assert.equal(lly?.fixture_id, "LLY_2024_2025_10k_item1a")
-  assert.equal(ko?.fixture_id, "KO_2024_2025_10k_item1a")
-})
-
-test("selectPilotMatrixRegistryItem resolves by ticker when only one integrated case exists", () => {
+test("selectPilotMatrixRegistryItem resolves exact public casebook cases", () => {
   const registry = readJson(
     "public/data/business_document_protocol_lab/registries/pilot_matrices_v1.json"
   )
 
   assert.equal(
-    selectPilotMatrixRegistryItem(registry.items, { ticker: "nvda" })?.fixture_id,
+    selectPilotMatrixRegistryItem(registry.items, {
+      ticker: "NVDA",
+      yearFrom: 2024,
+      yearTo: 2025,
+    })?.fixture_id,
     "NVDA_2024_2025_10k_item1a"
   )
   assert.equal(
-    selectPilotMatrixRegistryItem(registry.items, { ticker: "LLY" })?.fixture_id,
+    selectPilotMatrixRegistryItem(registry.items, {
+      ticker: "LLY",
+      yearFrom: 2024,
+      yearTo: 2025,
+    })?.fixture_id,
     "LLY_2024_2025_10k_item1a"
   )
   assert.equal(
-    selectPilotMatrixRegistryItem(registry.items, { ticker: "KO" })?.fixture_id,
+    selectPilotMatrixRegistryItem(registry.items, {
+      ticker: "KO",
+      yearFrom: 2024,
+      yearTo: 2025,
+    })?.fixture_id,
     "KO_2024_2025_10k_item1a"
   )
-  assert.equal(selectPilotMatrixRegistryItem(registry.items, { ticker: "WM" }), null)
+  assert.equal(
+    selectPilotMatrixRegistryItem(registry.items, {
+      ticker: "META",
+      yearFrom: 2024,
+      yearTo: 2025,
+    })?.fixture_id,
+    "META_2024_2025_10k_item1a"
+  )
+  assert.equal(
+    selectPilotMatrixRegistryItem(registry.items, {
+      ticker: "TSLA",
+      yearFrom: 2024,
+      yearTo: 2025,
+    })?.fixture_id,
+    "TSLA_2024_2025_10k_item1a"
+  )
+  assert.equal(
+    selectPilotMatrixRegistryItem(registry.items, {
+      ticker: "WMT",
+      yearFrom: 2025,
+      yearTo: 2026,
+    })?.fixture_id,
+    "WMT_2025_2026_10k_item1a"
+  )
 })
 
-test("registry source surfaces still wire KO and one-lane matrix support", () => {
+test("selectPilotMatrixRegistryItem resolves public casebook entries by ticker when unique", () => {
+  const registry = readJson(
+    "public/data/business_document_protocol_lab/registries/pilot_matrices_v1.json"
+  )
+
+  for (const ticker of ["NVDA", "LLY", "KO", "META", "TSLA", "WMT"]) {
+    assert.equal(selectPilotMatrixRegistryItem(registry.items, { ticker })?.ticker, ticker)
+  }
+
+  assert.equal(selectPilotMatrixRegistryItem(registry.items, { ticker: "GOOGL" }), null)
+  assert.equal(selectPilotMatrixRegistryItem(registry.items, { ticker: "UNH" }), null)
+})
+
+test("registry source surfaces still wire bounded public matrix support", () => {
   assert.match(schemaSource, /comparison_pairs:\s*z\s*\.array\(/)
-  assert.match(schemaSource, /pilot_active_skeptic_case_slice|ProtocolLabSkepticCaseCanonizedMatrixSchema/)
   assert.match(dataSource, /export function resolveNoveltyLedgerCasePathForTicker\(ticker: string\)/)
   assert.match(dataSource, /export function resolveSkepticCasePathForTicker\(ticker: string\)/)
+  assert.match(dataSource, /loadPilotMatrixBundleForTicker/)
 })

@@ -33,6 +33,27 @@ for (const fixture of [
     consensusCount: 4,
     disagreementCount: 3,
   },
+  {
+    fixtureId: "META_2024_2025_10k_item1a",
+    matrixId: "META_2024_2025_10k_item1a__desktop_pilot_matrix_v1",
+    path: "public/data/business_document_protocol_lab/pilot_matrices/META_2024_2025_10k_item1a/pilot_matrix_story_v1.json",
+    consensusCount: 4,
+    disagreementCount: 3,
+  },
+  {
+    fixtureId: "TSLA_2024_2025_10k_item1a",
+    matrixId: "TSLA_2024_2025_10k_item1a__desktop_pilot_matrix_v1",
+    path: "public/data/business_document_protocol_lab/pilot_matrices/TSLA_2024_2025_10k_item1a/pilot_matrix_story_v1.json",
+    consensusCount: 4,
+    disagreementCount: 3,
+  },
+  {
+    fixtureId: "WMT_2025_2026_10k_item1a",
+    matrixId: "WMT_2025_2026_10k_item1a__desktop_pilot_matrix_v1",
+    path: "public/data/business_document_protocol_lab/pilot_matrices/WMT_2025_2026_10k_item1a/pilot_matrix_story_v1.json",
+    consensusCount: 4,
+    disagreementCount: 3,
+  },
 ]) {
   test(`pilot_matrix_story_v1 stays valid and ordered for ${fixture.fixtureId}`, () => {
     const story = readJson(fixture.path)

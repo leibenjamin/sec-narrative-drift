@@ -1,0 +1,72 @@
+{
+  "artifact_schema_id": "pilot_matrix_cell_v1",
+  "cell_id": "03_p1_i2_structured_contract",
+  "matrix_id": "META_2024_2025_10k_item1a__desktop_pilot_matrix_v1",
+  "fixture_id": "META_2024_2025_10k_item1a",
+  "label": "P1 + i2 structured contract",
+  "short_label": "P1+i2",
+  "role": "main_comparator",
+  "lane_position": 2,
+  "protocol_input_identity": {
+    "protocol_id": "p1_structured_contract_v1",
+    "protocol_label": "P1 structured contract",
+    "input_pack_id": "i2_tagged_document_packet_v1",
+    "input_label": "i2 tagged document packet",
+    "display_text": "P1 structured contract + i2 tagged document packet"
+  },
+  "headline": "FY2025 keeps Meta's core Item 1A architecture largely intact, but it noticeably sharpens the filing around AI as a broader operating, regulatory, cyber, and IP risk, adds a concrete European ad-model setback, and introduces new financing and 2025 tax-mechanics language.",
+  "summary": "The clearest lead shift is AI: FY2024 already discussed generative AI, but FY2025 expands that lane into superintelligence, AI-chatbot scrutiny, model-training dependence on data and talent, AI-specific security failure modes such as prompt injection and AI-agent issues, and AI-training copyright litigation.",
+  "card_takeaway": "Main comparator on the same tagged packet, showing a useful but broader read of the same 2025 sharpening.",
+  "why_this_lane_matters": "This is the main comparator because it keeps the same tagged evidence while using a less sharpened answer shape than P2.",
+  "output_shape_info": {
+    "contract_mode": "canonical_protocol_json",
+    "display_text": "Canonical structured brief plus evidence bundle",
+    "canonical_structured": true
+  },
+  "evidence_richness_tier": "high",
+  "evidence_count_total": 18,
+  "auditability_note": "High auditability on the same tagged packet, but with a broader first-read synthesis than P2.",
+  "strengths": [
+    "Keeps the same evidence substrate as P2, so protocol differences stay interpretable.",
+    "Still surfaces the AI, Europe, youth, and liability stack clearly."
+  ],
+  "limitations": [
+    "Less decisive than P2 about which 2025 specifics most changed the decision surface.",
+    "More likely to blur sharpened specifics into a broader AI-governance frame."
+  ],
+  "evidence_preview": [
+    {
+      "evidence_id": "ev_2024_ai_investment",
+      "year_label": "FY2024",
+      "paragraph_id": "meta_2024_p019",
+      "quote_text": "including generative AI",
+      "short_note": null
+    },
+    {
+      "evidence_id": "ev_2025_ai_superintelligence",
+      "year_label": "FY2025",
+      "paragraph_id": "meta_2025_p019",
+      "quote_text": "including generative AI and superintelligence",
+      "short_note": null
+    },
+    {
+      "evidence_id": "ev_2025_ai_scrutiny",
+      "year_label": "FY2025",
+      "paragraph_id": "meta_2025_p022",
+      "quote_text": "media and government scrutiny relating to AI and AI chatbots",
+      "short_note": null
+    }
+  ],
+  "raw_source_refs": {
+    "response_path": "bundles/showcase_llm_inputs_casebook_candidates_20260406_wmtfix/runs/01_META/04_protocol_p1_structured_contract/response.normalized.json",
+    "run_manifest_path": "bundles/showcase_llm_inputs_casebook_candidates_20260406_wmtfix/runs/01_META/04_protocol_p1_structured_contract/run_manifest.json"
+  },
+  "normalization_status": {
+    "kind": "canonical_json",
+    "recovered": false,
+    "source_json_parseable": true,
+    "recovery_boundary": null,
+    "required_labels_found": [],
+    "note": "Parsed directly from the normalized protocol-ready candidate response JSON."
+  }
+}
