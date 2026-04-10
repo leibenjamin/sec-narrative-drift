@@ -9,7 +9,7 @@ from typing import Any, cast
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_MANIFEST_PATH = (
-    REPO_ROOT / "config" / "protocol_lab" / "experimental" / "nextgen_workflow_prototypes_v1.json"
+    REPO_ROOT / "config" / "protocol_lab" / "experimental" / "nextgen_workflow_prototypes_v1_1.json"
 )
 
 
@@ -142,11 +142,67 @@ def build_split_inputs_from_combined(rendered_inputs: dict[str, Any]) -> dict[st
     return split_payloads
 
 
+def resolve_source_artifacts_for_run(
+    run: dict[str, Any],
+    family: dict[str, Any],
+    run_dir: Path,
+    source_workspace_root: Path | None,
+) -> dict[str, Path] | None:
+    """Copy source artifacts into the run directory for adjudication families.
+
+    Returns a dict mapping artifact role to the bundle-local path, or None if
+    the family has no source_artifact_requirements.
+    """
+    requirements = family.get("source_artifact_requirements")
+    resolution = family.get("source_artifact_resolution")
+    if not requirements or not resolution:
+        return None
+
+    fixture_id = cast(str, run["fixture_id"])
+    fixture_resolution = resolution.get(fixture_id)
+    if fixture_resolution is None:
+        raise ValueError(
+            f"No source_artifact_resolution for fixture `{fixture_id}` in "
+            f"family `{family['family_id']}`"
+        )
+
+    sources_dir = run_dir / "source_artifacts"
+    sources_dir.mkdir(parents=True, exist_ok=True)
+    copied: dict[str, Path] = {}
+
+    for role, req in cast(dict[str, dict[str, Any]], requirements).items():
+        path_key = f"{role}_path"
+        relative_path = cast(str, fixture_resolution[path_key])
+        source_file = resolve_source_path(relative_path, source_workspace_root)
+        bundle_filename = cast(str, req["bundle_filename"])
+        destination = sources_dir / bundle_filename
+        copy_file(source_file, destination)
+        copied[role] = destination
+
+    # Write a tiny manifest confirming what was copied
+    manifest_rows = {
+        role: {
+            "bundle_path": repo_rel(path),
+            "source_path": cast(str, fixture_resolution[f"{role}_path"]),
+            "exists": path.exists(),
+        }
+        for role, path in copied.items()
+    }
+    write_json(sources_dir / "source_artifact_manifest.json", {
+        "run_id": run["run_id"],
+        "fixture_id": fixture_id,
+        "artifacts": manifest_rows,
+        "note": "These source artifacts are physically bundled for adjudication. They are included in default_attachments.",
+    })
+    return copied
+
+
 def build_run_starter_prompt(
     run: dict[str, Any],
     family: dict[str, Any],
     fixture: dict[str, Any],
     source_case: dict[str, Any],
+    source_artifact_paths: dict[str, Path] | None = None,
 ) -> str:
     year_from = source_case["year_from"]
     year_to = source_case["year_to"]
@@ -163,13 +219,27 @@ def build_run_starter_prompt(
         f"Stack id: `{family['stack_id']}`.",
         "The attached split `i2_tagged_document_packet_v1_FY*.json` files together are the input content block for this run.",
         f"This run covers {issuer_name} FY{year_from} vs FY{year_to} {source_case['form_type']} {source_case['section_id']}.",
+    ]
+    if source_artifact_paths:
+        simple_path = source_artifact_paths.get("simple_read")
+        structured_path = source_artifact_paths.get("structured_read")
+        if simple_path and structured_path:
+            lines.extend([
+                f"Simple-read source artifact: attached as `{simple_path.name}`.",
+                f"Structured-read source artifact: attached as `{structured_path.name}`.",
+                "These are the two independently produced source artifacts you must adjudicate.",
+                "Do not rewrite or regenerate either source artifact.",
+                "Do not assume the structured artifact is better unless it earns a cleaner allowed public claim.",
+                "If the structured path does not earn its cost, say so directly.",
+            ])
+    lines.extend([
         f"Prototype family intent: {family['operator_focus']}",
         f"Fixture guidance: {fixture['fixture_guidance']}",
         f"Comparison baseline: {run['comparison_baseline']}",
         f"Return only one JSON object with exactly the top-level keys {output_keys}.",
         "Save the raw model response as `response.json` in this run folder.",
         "Do not add markdown or commentary outside the JSON object.",
-    ]
+    ])
     return "\n".join(lines) + "\n"
 
 
@@ -190,6 +260,7 @@ def build_desktop_run_instructions(
         lines.append(f"- `{path}`")
     lines.extend(
         [
+            "The default file set above is the intended attachment set for this run. Do not omit required files.",
             "3. If a single combined rendered-input file is easier, upload this fallback set instead:",
         ]
     )
@@ -197,6 +268,7 @@ def build_desktop_run_instructions(
         lines.append(f"- `{path}`")
     lines.extend(
         [
+            "Use either the full default set or the full fallback set. Do not mix partial sets.",
             "4. Paste the full contents of `starter_prompt.txt` exactly. Do not upload `starter_prompt.txt`.",
             "5. Save the returned JSON as `response.json` in this run folder.",
             "6. Run the post-run validation command from `run_manifest.json`.",
@@ -242,8 +314,12 @@ def build_run_readme(run_manifest: dict[str, Any]) -> str:
 
 
 def build_root_readme(bundle_root_rel: str, manifest: dict[str, Any], runs: list[dict[str, Any]]) -> str:
+    display_name = cast(str, manifest.get("display_name", manifest["program_id"]))
+    staged_run_plan = cast(dict[str, Any], manifest.get("staged_run_plan", {}))
+    first_wave = cast(list[dict[str, Any]], staged_run_plan.get("first_wave", []))
+    second_wave = cast(list[dict[str, Any]], staged_run_plan.get("second_wave_if_first_wave_promising", []))
     lines = [
-        "# Next-Generation Workflow Prototypes v1 Bundle",
+        f"# {display_name} Bundle",
         "",
         "This bundle is experimental only and is intended for later ChatGPT Desktop execution.",
         "",
@@ -254,11 +330,30 @@ def build_root_readme(bundle_root_rel: str, manifest: dict[str, Any], runs: list
     lines.extend(
         [
             "",
-            "Execution order:",
+            "Runnable now (first wave only):",
         ]
     )
     for run in runs:
         lines.append(f"- `{run['run_id']}`")
+    if second_wave:
+        lines.extend(
+            [
+                "",
+                "Second-wave runs are configured but intentionally not emitted yet:",
+            ]
+        )
+        for run in second_wave:
+            lines.append(f"- `{run['run_id']}`")
+        lines.append("Execute these only if first-wave review is clearly promising.")
+    if first_wave:
+        lines.extend(
+            [
+                "",
+                "Staging note:",
+                "- `manifest.json` records the first-wave and deferred second-wave plan explicitly.",
+                "- The emitted `runs/` folders should match the first-wave list only.",
+            ]
+        )
     lines.extend(
         [
             "",
@@ -303,6 +398,7 @@ def build_evaluation_template(manifest: dict[str, Any], runs: list[dict[str, Any
 def build_run_manifest(
     bundle_root: Path,
     bundle_root_rel: str,
+    program_id: str,
     run: dict[str, Any],
     family: dict[str, Any],
     fixture: dict[str, Any],
@@ -311,6 +407,7 @@ def build_run_manifest(
     prompt_bundle_path: Path,
     schema_bundle_path: Path,
     fixture_root: Path,
+    source_artifact_paths: dict[str, Path] | None = None,
 ) -> dict[str, Any]:
     run_dir = bundle_root / "runs" / run["run_id"]
     run_dir_rel = repo_rel(run_dir)
@@ -322,10 +419,18 @@ def build_run_manifest(
         for year in year_entries
     ]
     default_attachments = [prompt_rel, *split_rendered_input_paths]
+    # Include physically bundled source artifacts in default attachments
+    if source_artifact_paths:
+        for path in source_artifact_paths.values():
+            default_attachments.append(repo_rel(path))
     combined_attachments = [
         prompt_rel,
         repo_rel(fixture_root / "i2_tagged_document_packet_v1.rendered_inputs.json"),
     ]
+    # Source artifacts must also appear in the combined fallback set
+    if source_artifact_paths:
+        for path in source_artifact_paths.values():
+            combined_attachments.append(repo_rel(path))
     do_not_attach = [
         repo_rel(run_dir / "run_manifest.json"),
         repo_rel(run_dir / "starter_prompt.txt"),
@@ -334,6 +439,11 @@ def build_run_manifest(
         repo_rel(fixture_root / "source_case_manifest_v1.json"),
         repo_rel(fixture_root / "i2_tagged_document_packet_v1.json"),
     ]
+    # Source artifact manifest is operator-only, not an attachment
+    if source_artifact_paths:
+        do_not_attach.append(
+            repo_rel(run_dir / "source_artifacts" / "source_artifact_manifest.json")
+        )
     response_path = f"{run_dir_rel}/response.json"
     primary_sidecar_path = f"{run_dir_rel}/artifacts/{family['primary_sidecar_filename']}"
     evidence_sidecar_path = f"{run_dir_rel}/artifacts/evidence_bundle_v1.json"
@@ -348,7 +458,7 @@ def build_run_manifest(
     return {
         "artifact_status": "prepared",
         "artifact_schema_id": "nextgen_workflow_prototype_run_manifest_v1",
-        "program_id": "nextgen_workflow_prototypes_v1",
+        "program_id": program_id,
         "bundle_root": bundle_root_rel,
         "run_identity": {
           "run_id": run["run_id"],
@@ -383,7 +493,18 @@ def build_run_manifest(
           "split_rendered_input_paths": split_rendered_input_paths,
           "default_attachments": default_attachments,
           "combined_attachment_fallback": combined_attachments,
-          "reference_artifacts": fixture["reference_artifacts"]
+          "reference_artifacts": fixture["reference_artifacts"],
+          "source_artifacts": (
+              {
+                  role: {
+                      "bundle_path": repo_rel(path),
+                      "bundle_filename": path.name,
+                  }
+                  for role, path in source_artifact_paths.items()
+              }
+              if source_artifact_paths
+              else None
+          )
         },
         "output_contract": {
           "response_format": "json_object",
@@ -507,9 +628,13 @@ def generate_bundle(manifest_path: Path, source_workspace_root: Path | None) -> 
         source_case, input_pack, fixture_root = resolved_fixtures[cast(str, run["fixture_id"])]
         run_dir = bundle_root / "runs" / cast(str, run["run_id"])
         run_dir.mkdir(parents=True, exist_ok=True)
+        source_artifact_paths = resolve_source_artifacts_for_run(
+            cast(dict[str, Any], run), family, run_dir, source_workspace_root
+        )
         run_manifest = build_run_manifest(
             bundle_root,
             bundle_root_rel,
+            cast(str, manifest["program_id"]),
             cast(dict[str, Any], run),
             family,
             fixture,
@@ -518,8 +643,11 @@ def generate_bundle(manifest_path: Path, source_workspace_root: Path | None) -> 
             prompt_copy_paths[cast(str, run["family_id"])],
             schema_copy_paths[cast(str, run["family_id"])],
             fixture_root,
+            source_artifact_paths,
         )
-        starter_prompt = build_run_starter_prompt(cast(dict[str, Any], run), family, fixture, source_case)
+        starter_prompt = build_run_starter_prompt(
+            cast(dict[str, Any], run), family, fixture, source_case, source_artifact_paths
+        )
         default_attachments = cast(list[str], cast(dict[str, Any], run_manifest["input_basis"])["default_attachments"])
         combined_attachments = cast(list[str], cast(dict[str, Any], run_manifest["input_basis"])["combined_attachment_fallback"])
         do_not_attach = cast(list[str], run_manifest["do_not_attach"])
@@ -556,6 +684,8 @@ def generate_bundle(manifest_path: Path, source_workspace_root: Path | None) -> 
         "generated_at_utc": utc_now_iso(),
         "source_workspace_root": source_workspace_root.resolve().as_posix() if source_workspace_root else None,
         "bundle_root": bundle_root_rel,
+        "staged_run_plan": manifest.get("staged_run_plan"),
+        "emitted_run_ids": [run["run_id"] for run in run_payloads],
         "shared_prompt_copies": [repo_rel(path) for path in prompt_copy_paths.values()],
         "shared_schema_copies": [repo_rel(path) for path in schema_copy_paths.values()],
         "runs": run_payloads,

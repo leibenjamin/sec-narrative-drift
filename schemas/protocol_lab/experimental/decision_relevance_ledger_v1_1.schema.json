@@ -1,0 +1,191 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "artifact_status": "complete",
+  "$id": "protocol_lab/experimental/decision_relevance_ledger_v1_1.schema.json",
+  "title": "Decision Relevance Ledger Response v1.1",
+  "type": "object",
+  "required": [
+    "decision_relevance_ledger",
+    "evidence_bundle"
+  ],
+  "properties": {
+    "decision_relevance_ledger": {
+      "$ref": "#/$defs/decisionRelevanceLedgerArtifact"
+    },
+    "evidence_bundle": {
+      "$ref": "../evidence_bundle_v1.schema.json"
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "readerOfRecord": {
+      "type": "object",
+      "required": [
+        "id",
+        "description"
+      ],
+      "properties": {
+        "id": {
+          "const": "general_business_reader"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "ledgerEntry": {
+      "type": "object",
+      "required": [
+        "change_anchor",
+        "change_type",
+        "decision_relevance",
+        "public_claim_effect",
+        "why_it_matters",
+        "why_not_to_overclaim",
+        "why_this_is_not_just_novelty",
+        "public_route_implication",
+        "evidence_ids"
+      ],
+      "properties": {
+        "change_anchor": {
+          "type": "string",
+          "minLength": 1
+        },
+        "change_type": {
+          "type": "string",
+          "enum": [
+            "new",
+            "sharpened",
+            "reframed",
+            "reused",
+            "carryforward"
+          ]
+        },
+        "decision_relevance": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "public_claim_effect": {
+          "type": "string",
+          "enum": [
+            "broadens",
+            "narrows",
+            "clarifies",
+            "no_change"
+          ]
+        },
+        "why_it_matters": {
+          "type": "string",
+          "minLength": 1
+        },
+        "why_not_to_overclaim": {
+          "type": "string",
+          "minLength": 1
+        },
+        "why_this_is_not_just_novelty": {
+          "type": "string",
+          "minLength": 1
+        },
+        "public_route_implication": {
+          "type": "string",
+          "enum": [
+            "foreground",
+            "supporting",
+            "background_only"
+          ]
+        },
+        "evidence_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "overallVerdict": {
+      "type": "object",
+      "required": [
+        "most_decision_relevant_shift",
+        "what_remains_background",
+        "boundary_note",
+        "tempting_bad_read"
+      ],
+      "properties": {
+        "most_decision_relevant_shift": {
+          "type": "string",
+          "minLength": 1
+        },
+        "what_remains_background": {
+          "type": "string",
+          "minLength": 1
+        },
+        "boundary_note": {
+          "type": "string",
+          "minLength": 1
+        },
+        "tempting_bad_read": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The most likely overread or bad public takeaway a weaker workflow or careless reader would make from this case. Must be case-specific, not a generic caution."
+        }
+      },
+      "additionalProperties": false
+    },
+    "decisionRelevanceLedgerArtifact": {
+      "type": "object",
+      "required": [
+        "fixture_id",
+        "reader_of_record",
+        "entries",
+        "overall_verdict"
+      ],
+      "properties": {
+        "fixture_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reader_of_record": {
+          "$ref": "#/$defs/readerOfRecord"
+        },
+        "entries": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 3,
+          "allOf": [
+            {
+              "contains": {
+                "type": "object",
+                "required": [
+                  "public_route_implication"
+                ],
+                "properties": {
+                  "public_route_implication": {
+                    "const": "foreground"
+                  }
+                }
+              },
+              "minContains": 0,
+              "maxContains": 2
+            }
+          ],
+          "items": {
+            "$ref": "#/$defs/ledgerEntry"
+          }
+        },
+        "overall_verdict": {
+          "$ref": "#/$defs/overallVerdict"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

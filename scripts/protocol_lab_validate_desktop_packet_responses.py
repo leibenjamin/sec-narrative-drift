@@ -4,8 +4,15 @@ import argparse
 import json
 from dataclasses import dataclass
 from datetime import datetime, timezone
+from functools import lru_cache
 from pathlib import Path
 from typing import Any, Sequence, cast
+
+try:
+    from jsonschema import Draft202012Validator, RefResolver
+except ImportError:  # pragma: no cover - dependency is present in the repo env
+    Draft202012Validator = None  # type: ignore[assignment]
+    RefResolver = None  # type: ignore[assignment]
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 REPORTS_ROOT = REPO_ROOT / "reports" / "protocol_lab"
@@ -139,6 +146,80 @@ def expected_top_level_keys_for_run(run_id: str, run_manifest_path: Path) -> tup
         return manifest_keys
     lane_slug = derive_lane_slug(run_id)
     return expected_top_level_keys_for_lane_slug(lane_slug)
+
+
+def schema_repo_path_from_run_manifest(run_manifest_path: Path) -> str | None:
+    manifest = run_manifest_payload(run_manifest_path)
+    if manifest is None:
+        return None
+
+    schema_basis = manifest.get("schema_basis")
+    if isinstance(schema_basis, dict):
+        basis = cast(dict[str, object], schema_basis)
+        repo_path = basis.get("response_schema_repo_path")
+        if isinstance(repo_path, str) and repo_path:
+            return repo_path
+
+    output_contract = manifest.get("output_contract")
+    if isinstance(output_contract, dict):
+        contract = cast(dict[str, object], output_contract)
+        schema_path = contract.get("schema_path")
+        if isinstance(schema_path, str) and schema_path:
+            return schema_path
+    return None
+
+
+def format_schema_error_path(error: Any) -> str:
+    parts = [str(part) for part in error.absolute_path]
+    return ".".join(parts) if parts else "<root>"
+
+
+@lru_cache(maxsize=None)
+def load_schema_validator(schema_path_str: str) -> Any:
+    if Draft202012Validator is None or RefResolver is None:
+        raise RuntimeError("jsonschema is not available in this environment.")
+
+    schema_path = Path(schema_path_str)
+    schema = cast(dict[str, Any], json.loads(schema_path.read_text(encoding="utf-8-sig")))
+    schema["$id"] = schema_path.resolve().as_uri()
+    resolver = RefResolver(base_uri=schema_path.resolve().as_uri(), referrer=schema)
+    return Draft202012Validator(schema, resolver=resolver)
+
+
+def validate_against_manifest_schema(
+    parsed: dict[str, object],
+    run_manifest_path: Path,
+) -> tuple[str, list[str]]:
+    schema_path_value = schema_repo_path_from_run_manifest(run_manifest_path)
+    if schema_path_value is None:
+        return ("skipped", ["No manifest-declared schema path; skipped schema validation."])
+
+    schema_path = resolve_repo_path(schema_path_value)
+    try:
+        validator = load_schema_validator(schema_path.resolve().as_posix())
+    except Exception as exc:
+        return (
+            "failed",
+            [f"Schema validation could not load `{repo_rel_or_abs(schema_path)}`: {exc}."],
+        )
+
+    errors = sorted(validator.iter_errors(parsed), key=lambda error: list(error.absolute_path))
+    if errors:
+        notes = [
+            "Schema validation failed against "
+            f"`{repo_rel_or_abs(schema_path)}` "
+            f"with {len(errors)} error(s)."
+        ]
+        for error in errors[:5]:
+            notes.append(f"{format_schema_error_path(error)}: {error.message}")
+        if len(errors) > 5:
+            notes.append(f"{len(errors) - 5} additional schema error(s) omitted.")
+        return ("failed", notes)
+
+    return (
+        "passed",
+        [f"Schema validation passed against `{repo_rel_or_abs(schema_path)}`."],
+    )
 
 
 def sidecar_outputs_from_run_manifest(run_manifest_path: Path) -> list[dict[str, str]]:
@@ -314,7 +395,11 @@ def validate_run(packet_root: Path, run_id: str, *, write_sidecars: bool = False
         )
     else:
         notes.append("response.json matches the expected lane-family top-level keys.")
-        if write_sidecars:
+        schema_status, schema_notes = validate_against_manifest_schema(checked_parsed, run_manifest_path)
+        notes.extend(schema_notes)
+        if schema_status == "failed":
+            blocker_codes.append("schema_validation_failed")
+        if write_sidecars and not blocker_codes:
             sidecars_written = write_sidecars_from_response(checked_parsed, run_manifest_path)
             if sidecars_written:
                 notes.append("Wrote sidecar artifacts from the validated response.")

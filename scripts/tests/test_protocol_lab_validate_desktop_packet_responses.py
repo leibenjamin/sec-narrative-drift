@@ -14,6 +14,60 @@ import protocol_lab_validate_desktop_packet_responses as validator  # noqa: E402
 
 
 class PacketResponseValidatorTest(unittest.TestCase):
+    def minimal_evidence_bundle(
+        self,
+        *,
+        fixture_id: str,
+        protocol_id: str,
+    ) -> dict[str, object]:
+        return {
+            "artifact_status": "complete",
+            "artifact_schema_id": "evidence_bundle_v1",
+            "evidence_bundle_id": f"{fixture_id}__evidence",
+            "run_request_id": f"{fixture_id}__run_request",
+            "fixture_id": fixture_id,
+            "protocol_id": protocol_id,
+            "model_profile_id": "m_alternate_strong_reasoning_v1",
+            "runner_binding_id": "rb_openai_chatgpt54ext_real_local_v1",
+            "items": [],
+            "notes": [],
+        }
+
+    def minimal_simple_vs_structured_adjudication(self, *, fixture_id: str) -> dict[str, object]:
+        return {
+            "fixture_id": fixture_id,
+            "simple_read_source": {
+                "workflow_id": "p0_plain_prompt_v1",
+                "artifact_ref": "simple",
+            },
+            "structured_read_source": {
+                "workflow_id": "p2_tagged_input_contract_v1",
+                "artifact_ref": "structured",
+            },
+            "source_consistency_verdict": "consistent",
+            "source_consistency_check": "Both sources use the same fixture, years, and tagged packet.",
+            "contrast_verdict": "mixed",
+            "what_simple_gets_right": "It catches the broad direction.",
+            "what_structure_adds": "It names the sharper mechanism.",
+            "allowed_public_claim_delta": "clearer",
+            "most_likely_misread_if_using_only_simple_read": "A reader would blur a selective sharpening into a broader shift.",
+            "why_the_difference_matters": "The structured read narrows the public claim.",
+            "stop_note": "The extra structure adds precision, not scope.",
+        }
+
+    def minimal_decision_relevance_entry(self, *, anchor: str, implication: str) -> dict[str, object]:
+        return {
+            "change_anchor": anchor,
+            "change_type": "sharpened",
+            "decision_relevance": "high",
+            "public_claim_effect": "clarifies",
+            "why_it_matters": "It changes what the reader should monitor.",
+            "why_not_to_overclaim": "The filing narrows the point; it does not justify a bigger conclusion.",
+            "why_this_is_not_just_novelty": "It changes the decision the reader should make.",
+            "public_route_implication": implication,
+            "evidence_ids": ["ev_01"],
+        }
+
     def write_run(
         self,
         packet_root: Path,
@@ -150,6 +204,120 @@ class PacketResponseValidatorTest(unittest.TestCase):
             )
             self.assertEqual([], result.blocker_codes)
             self.assertTrue(result.top_level_shape_valid)
+        finally:
+            shutil.rmtree(repo, ignore_errors=True)
+
+    def test_manifest_declared_schema_blocks_invalid_simple_vs_structured_response(self) -> None:
+        repo = TMP_ROOT / "validator_case_d"
+        shutil.rmtree(repo, ignore_errors=True)
+        repo.mkdir(parents=True, exist_ok=True)
+        try:
+            packet_root = repo / "nextgen_bundle_runs"
+            fixture_id = "WMT_2025_2026_10k_item1a"
+            adjudication = self.minimal_simple_vs_structured_adjudication(fixture_id=fixture_id)
+            adjudication.pop("source_consistency_verdict")
+            self.write_run(
+                packet_root,
+                "simple_vs_structured__WMT_2025_2026_10k_item1a",
+                json.dumps(
+                    {
+                        "simple_vs_structured_adjudication": adjudication,
+                        "evidence_bundle": self.minimal_evidence_bundle(
+                            fixture_id=fixture_id,
+                            protocol_id="simple_read_vs_structured_read_contrast_v1_1",
+                        ),
+                    }
+                ),
+                manifest_payload={
+                    "schema_basis": {
+                        "response_schema_repo_path": "schemas/protocol_lab/experimental/simple_read_vs_structured_read_contrast_v1_1.schema.json"
+                    },
+                    "output_contract": {
+                        "top_level_keys": [
+                            "simple_vs_structured_adjudication",
+                            "evidence_bundle",
+                        ]
+                    },
+                },
+            )
+
+            report = validator.validate_packet(
+                packet_root, ["simple_vs_structured__WMT_2025_2026_10k_item1a"]
+            )
+
+            self.assertEqual("fail", report.overall_result)
+            result = report.run_results[0]
+            self.assertTrue(result.top_level_shape_valid)
+            self.assertIn("schema_validation_failed", result.blocker_codes)
+            self.assertTrue(
+                any("source_consistency_verdict" in note for note in result.notes),
+                msg=result.notes,
+            )
+        finally:
+            shutil.rmtree(repo, ignore_errors=True)
+
+    def test_manifest_declared_schema_blocks_more_than_two_foreground_entries(self) -> None:
+        repo = TMP_ROOT / "validator_case_e"
+        shutil.rmtree(repo, ignore_errors=True)
+        repo.mkdir(parents=True, exist_ok=True)
+        try:
+            packet_root = repo / "nextgen_bundle_runs"
+            fixture_id = "LLY_2024_2025_10k_item1a"
+            ledger = {
+                "fixture_id": fixture_id,
+                "reader_of_record": {
+                    "id": "general_business_reader",
+                    "description": "A general professional reader deciding whether the filing pair contains a sharper risk signal that should change what they remember, monitor, or say publicly about the company's risk posture.",
+                },
+                "entries": [
+                    self.minimal_decision_relevance_entry(anchor="Entry 1", implication="foreground"),
+                    self.minimal_decision_relevance_entry(anchor="Entry 2", implication="foreground"),
+                    self.minimal_decision_relevance_entry(anchor="Entry 3", implication="foreground"),
+                ],
+                "overall_verdict": {
+                    "most_decision_relevant_shift": "Entry 1 is the main shift.",
+                    "what_remains_background": "Everything else is secondary.",
+                    "boundary_note": "Do not overread the case.",
+                    "tempting_bad_read": "A careless reader would treat every refreshed item as foreground.",
+                },
+            }
+            self.write_run(
+                packet_root,
+                "decision_relevance_ledger__LLY_2024_2025_10k_item1a",
+                json.dumps(
+                    {
+                        "decision_relevance_ledger": ledger,
+                        "evidence_bundle": self.minimal_evidence_bundle(
+                            fixture_id=fixture_id,
+                            protocol_id="decision_relevance_ledger_v1_1",
+                        ),
+                    }
+                ),
+                manifest_payload={
+                    "schema_basis": {
+                        "response_schema_repo_path": "schemas/protocol_lab/experimental/decision_relevance_ledger_v1_1.schema.json"
+                    },
+                    "output_contract": {
+                        "top_level_keys": [
+                            "decision_relevance_ledger",
+                            "evidence_bundle",
+                        ]
+                    },
+                },
+            )
+
+            report = validator.validate_packet(
+                packet_root, ["decision_relevance_ledger__LLY_2024_2025_10k_item1a"]
+            )
+
+            self.assertEqual("fail", report.overall_result)
+            result = report.run_results[0]
+            self.assertTrue(result.top_level_shape_valid)
+            self.assertIn("schema_validation_failed", result.blocker_codes)
+            self.assertTrue(
+                any("Too many items match" in note for note in result.notes),
+                msg=result.notes,
+            )
         finally:
             shutil.rmtree(repo, ignore_errors=True)
 

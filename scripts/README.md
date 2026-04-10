@@ -92,10 +92,17 @@ convenience layer.
 
 Use `build_nextgen_workflow_prototypes_bundle.py` when preparing the shared
 next-generation workflow prototype packet for later ChatGPT Desktop execution.
-It reads `config/protocol_lab/experimental/nextgen_workflow_prototypes_v1.json`
-and emits a local-only bundle under `bundles/nextgen_workflow_prototypes_v1_*`.
+Its default manifest now points at the current run-ready experimental surface,
+`config/protocol_lab/experimental/nextgen_workflow_prototypes_v1_1.json`, and
+it emits a local-only bundle under `bundles/nextgen_workflow_prototypes_v1_1_*`.
+Use `--manifest` if you need to rebuild the older v1 packet deliberately.
 This path is for backstage research only and does not wire anything into the
 public app.
+
+After emitting the bundle, run `check_nextgen_workflow_prototypes_bundle.py` to
+confirm the first-wave run surface, required attachments, adjudication source
+artifacts, starter-prompt rendering, and sidecar declarations before any real
+Desktop execution begins.
 
 ## Core commands
 
