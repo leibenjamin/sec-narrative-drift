@@ -1,0 +1,215 @@
+{
+  "artifact_status": "complete",
+  "artifact_schema_id": "nextgen_workflow_prototypes_program_manifest_v1",
+  "program_id": "nextgen_workflow_prototypes_v1",
+  "display_name": "Next-Generation Workflow Prototypes v1",
+  "updated_at_utc": "2026-04-10T17:30:00Z",
+  "task_family_id": "nextgen_workflow_prototypes_v1",
+  "model_profile_id": "m_alternate_strong_reasoning_v1",
+  "runner_binding_id": "rb_openai_chatgpt54ext_real_local_v1",
+  "runner_campaign_id": "openai_chatgpt54ext_agent_fullsec_real_2026-03-06",
+  "bundle_root": "bundles/nextgen_workflow_prototypes_v1_2026-04-10",
+  "report_root": "reports/nextgen_workflow_prototypes_v1_2026-04-10",
+  "validation_script_path": "scripts/protocol_lab_validate_desktop_packet_responses.py",
+  "source_workspace_resolution": {
+    "requires_materialized_local_inputs": true,
+    "resolution_order": [
+      "current_repo_root",
+      "source_workspace_root"
+    ],
+    "source_workspace_root_cli_arg": "--source-workspace-root",
+    "notes": [
+      "The clean experimental branch does not commit the historical casebook bundles or archived input-pack materializations.",
+      "The shared builder must resolve source materials from the current repo root first, then from an operator-supplied workspace root when local-only packet sources are needed."
+    ]
+  },
+  "families": [
+    {
+      "family_id": "simple_read_vs_structured_read_contrast_v1",
+      "protocol_id": "simple_read_vs_structured_read_contrast_v1",
+      "stack_id": "s_simple_vs_structured_m2_v1",
+      "prompt_path": "docs/protocol_lab/prompts/experimental/simple_read_vs_structured_read_contrast_v1.md",
+      "schema_path": "schemas/protocol_lab/experimental/simple_read_vs_structured_read_contrast_v1.schema.json",
+      "output_top_level_keys": [
+        "simple_vs_structured",
+        "evidence_bundle"
+      ],
+      "primary_artifact_key": "simple_vs_structured",
+      "primary_sidecar_filename": "simple_vs_structured_v1.json",
+      "expected_to": "supplement_p0_p2_compare_logic",
+      "selected_fixtures": [
+        "WMT_2025_2026_10k_item1a",
+        "META_2024_2025_10k_item1a",
+        "TSLA_2024_2025_10k_item1a"
+      ],
+      "operator_focus": "Test what a strong simple read gets right, what structure adds, and whether the added structure was worth it."
+    },
+    {
+      "family_id": "decision_relevance_ledger_v1",
+      "protocol_id": "decision_relevance_ledger_v1",
+      "stack_id": "s_decision_relevance_ledger_m2_v1",
+      "prompt_path": "docs/protocol_lab/prompts/experimental/decision_relevance_ledger_v1.md",
+      "schema_path": "schemas/protocol_lab/experimental/decision_relevance_ledger_v1.schema.json",
+      "output_top_level_keys": [
+        "decision_relevance_ledger",
+        "evidence_bundle"
+      ],
+      "primary_artifact_key": "decision_relevance_ledger",
+      "primary_sidecar_filename": "decision_relevance_ledger_v1.json",
+      "expected_to": "supplement_or_challenge_novelty_first_p4",
+      "selected_fixtures": [
+        "WMT_2025_2026_10k_item1a",
+        "META_2024_2025_10k_item1a",
+        "LLY_2024_2025_10k_item1a"
+      ],
+      "operator_focus": "Test whether a compact relevance-first ledger better explains public-worthiness, boundedness, and calm-case value than novelty-first framing."
+    }
+  ],
+  "fixtures": {
+    "WMT_2025_2026_10k_item1a": {
+      "ticker": "WMT",
+      "issuer_name": "Walmart Inc.",
+      "year_labels": [
+        "FY2025",
+        "FY2026"
+      ],
+      "fixture_guidance": "Calm operating-shift case. Treat selective sharpening as a legitimate outcome. Do not force drama. Watch whether simple is already enough and whether relevance can stay useful without novelty inflation.",
+      "source_materials": {
+        "source_case_manifest_path": "bundles/showcase_llm_inputs_casebook_candidates_20260406_wmtfix/runs/04_WMT/sources/source_case_manifest_v1.json",
+        "input_pack_manifest_path": "bundles/showcase_llm_inputs_casebook_candidates_20260406_wmtfix/runs/04_WMT/sources/i2_tagged_document_packet_v1.json",
+        "rendered_inputs_path": "bundles/showcase_llm_inputs_casebook_candidates_20260406_wmtfix/runs/04_WMT/sources/i2_tagged_document_packet_v1.rendered_inputs.json",
+        "split_rendered_input_paths": [
+          "bundles/showcase_llm_inputs_casebook_candidates_20260406_wmtfix/runs/04_WMT/sources/i2_tagged_document_packet_v1_FY2025.json",
+          "bundles/showcase_llm_inputs_casebook_candidates_20260406_wmtfix/runs/04_WMT/sources/i2_tagged_document_packet_v1_FY2026.json"
+        ]
+      },
+      "reference_artifacts": [
+        "public/data/business_document_protocol_lab/pilot_matrices/WMT_2025_2026_10k_item1a/pilot_matrix_story_v1.json",
+        "public/data/business_document_protocol_lab/pilot_matrices/WMT_2025_2026_10k_item1a/pilot_matrix_review_v1.json"
+      ]
+    },
+    "META_2024_2025_10k_item1a": {
+      "ticker": "META",
+      "issuer_name": "Meta Platforms, Inc.",
+      "year_labels": [
+        "FY2024",
+        "FY2025"
+      ],
+      "fixture_guidance": "Repeated-theme sharpening case. Keep AI and regulation from flattening into a generic theme summary. Use the ledger to separate truly decision-relevant sharpening from repeated scaffold language.",
+      "source_materials": {
+        "source_case_manifest_path": "bundles/showcase_llm_inputs_casebook_candidates_20260406_wmtfix/runs/01_META/sources/source_case_manifest_v1.json",
+        "input_pack_manifest_path": "bundles/showcase_llm_inputs_casebook_candidates_20260406_wmtfix/runs/01_META/sources/i2_tagged_document_packet_v1.json",
+        "rendered_inputs_path": "bundles/showcase_llm_inputs_casebook_candidates_20260406_wmtfix/runs/01_META/sources/i2_tagged_document_packet_v1.rendered_inputs.json",
+        "split_rendered_input_paths": [
+          "bundles/showcase_llm_inputs_casebook_candidates_20260406_wmtfix/runs/01_META/sources/i2_tagged_document_packet_v1_FY2024.json",
+          "bundles/showcase_llm_inputs_casebook_candidates_20260406_wmtfix/runs/01_META/sources/i2_tagged_document_packet_v1_FY2025.json"
+        ]
+      },
+      "reference_artifacts": [
+        "public/data/business_document_protocol_lab/pilot_matrices/META_2024_2025_10k_item1a/pilot_matrix_story_v1.json",
+        "public/data/business_document_protocol_lab/pilot_matrices/META_2024_2025_10k_item1a/pilot_matrix_review_v1.json"
+      ]
+    },
+    "TSLA_2024_2025_10k_item1a": {
+      "ticker": "TSLA",
+      "issuer_name": "Tesla, Inc.",
+      "year_labels": [
+        "FY2024",
+        "FY2025"
+      ],
+      "fixture_guidance": "Vivid mechanism-chain case. Test whether the structured read adds material value by keeping policy shock, commercialization dependence, and stop discipline explicit rather than broadening into generic commentary.",
+      "source_materials": {
+        "source_case_manifest_path": "bundles/showcase_llm_inputs_casebook_candidates_20260406_wmtfix/runs/02_TSLA/sources/source_case_manifest_v1.json",
+        "input_pack_manifest_path": "bundles/showcase_llm_inputs_casebook_candidates_20260406_wmtfix/runs/02_TSLA/sources/i2_tagged_document_packet_v1.json",
+        "rendered_inputs_path": "bundles/showcase_llm_inputs_casebook_candidates_20260406_wmtfix/runs/02_TSLA/sources/i2_tagged_document_packet_v1.rendered_inputs.json",
+        "split_rendered_input_paths": [
+          "bundles/showcase_llm_inputs_casebook_candidates_20260406_wmtfix/runs/02_TSLA/sources/i2_tagged_document_packet_v1_FY2024.json",
+          "bundles/showcase_llm_inputs_casebook_candidates_20260406_wmtfix/runs/02_TSLA/sources/i2_tagged_document_packet_v1_FY2025.json"
+        ]
+      },
+      "reference_artifacts": [
+        "public/data/business_document_protocol_lab/pilot_matrices/TSLA_2024_2025_10k_item1a/pilot_matrix_story_v1.json",
+        "public/data/business_document_protocol_lab/pilot_matrices/TSLA_2024_2025_10k_item1a/pilot_matrix_review_v1.json"
+      ]
+    },
+    "LLY_2024_2025_10k_item1a": {
+      "ticker": "LLY",
+      "issuer_name": "Eli Lilly and Company",
+      "year_labels": [
+        "FY2024",
+        "FY2025"
+      ],
+      "fixture_guidance": "Boundary and honest-stop case. Use the ledger to explain what meaningfully sharpens the public claim, what remains background, and where stronger emphasis would become overclaiming.",
+      "source_materials": {
+        "source_case_manifest_path": "data_archive/business_document_protocol_lab_removed/source_cases/LLY_2024_2025_10k_item1a/source_case_manifest_v1.json",
+        "input_pack_manifest_path": "data_archive/business_document_protocol_lab_removed/input_packs/LLY_2024_2025_10k_item1a/i2_tagged_document_packet_v1.json",
+        "rendered_inputs_path": "data_archive/business_document_protocol_lab_removed/input_packs/LLY_2024_2025_10k_item1a/i2_tagged_document_packet_v1.rendered_inputs.json",
+        "split_rendered_input_paths": [
+          "wave4e1_standard_thinking_controls_20260319_0213/LLY_03_p2_i2_tagged_protocol_standard/sources/i2_tagged_document_packet_v1_FY2024.json",
+          "wave4e1_standard_thinking_controls_20260319_0213/LLY_03_p2_i2_tagged_protocol_standard/sources/i2_tagged_document_packet_v1_FY2025.json"
+        ]
+      },
+      "reference_artifacts": [
+        "public/data/business_document_protocol_lab/pilot_matrices/LLY_2024_2025_10k_item1a/pilot_matrix_story_v1.json",
+        "public/data/business_document_protocol_lab/pilot_matrices/LLY_2024_2025_10k_item1a/pilot_matrix_review_v1.json",
+        "public/data/business_document_protocol_lab/novelty_ledger/LLY_2024_2025_10k_item1a/p4_canonized_matrix_v1.json"
+      ]
+    }
+  },
+  "runs": [
+    {
+      "order": 1,
+      "run_id": "simple_vs_structured__WMT_2025_2026_10k_item1a",
+      "family_id": "simple_read_vs_structured_read_contrast_v1",
+      "fixture_id": "WMT_2025_2026_10k_item1a",
+      "comparison_baseline": "Current p0 and p2 WMT pilot-matrix control."
+    },
+    {
+      "order": 2,
+      "run_id": "simple_vs_structured__META_2024_2025_10k_item1a",
+      "family_id": "simple_read_vs_structured_read_contrast_v1",
+      "fixture_id": "META_2024_2025_10k_item1a",
+      "comparison_baseline": "Current p0 and p2 META pilot-matrix control."
+    },
+    {
+      "order": 3,
+      "run_id": "simple_vs_structured__TSLA_2024_2025_10k_item1a",
+      "family_id": "simple_read_vs_structured_read_contrast_v1",
+      "fixture_id": "TSLA_2024_2025_10k_item1a",
+      "comparison_baseline": "Current p0 and p2 TSLA pilot-matrix control."
+    },
+    {
+      "order": 4,
+      "run_id": "decision_relevance_ledger__WMT_2025_2026_10k_item1a",
+      "family_id": "decision_relevance_ledger_v1",
+      "fixture_id": "WMT_2025_2026_10k_item1a",
+      "comparison_baseline": "Current p4 novelty-first framing plus p2 WMT pilot-matrix control."
+    },
+    {
+      "order": 5,
+      "run_id": "decision_relevance_ledger__META_2024_2025_10k_item1a",
+      "family_id": "decision_relevance_ledger_v1",
+      "fixture_id": "META_2024_2025_10k_item1a",
+      "comparison_baseline": "Current p4 novelty-first framing plus p2 META pilot-matrix control."
+    },
+    {
+      "order": 6,
+      "run_id": "decision_relevance_ledger__LLY_2024_2025_10k_item1a",
+      "family_id": "decision_relevance_ledger_v1",
+      "fixture_id": "LLY_2024_2025_10k_item1a",
+      "comparison_baseline": "Current p4 novelty-first framing plus p2 LLY pilot-matrix control."
+    }
+  ],
+  "evaluation_dimensions": [
+    "meaningfulness",
+    "pedagogical_value",
+    "visible_boundedness",
+    "contrast_with_simple_prompting",
+    "compactness",
+    "public_display_usefulness",
+    "risk_of_adding_noise",
+    "risk_of_overclaiming",
+    "case_specific_distinctiveness",
+    "worth_later_public_integration"
+  ]
+}

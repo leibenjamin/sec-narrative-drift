@@ -88,6 +88,15 @@ See `docs/lab/12_casebook_candidate_workflows.md` for the full candidate job
 matrix, fiscal-year policy, archived legacy lanes, and the runs/ operator
 convenience layer.
 
+## Experimental prototype bundles
+
+Use `build_nextgen_workflow_prototypes_bundle.py` when preparing the shared
+next-generation workflow prototype packet for later ChatGPT Desktop execution.
+It reads `config/protocol_lab/experimental/nextgen_workflow_prototypes_v1.json`
+and emits a local-only bundle under `bundles/nextgen_workflow_prototypes_v1_*`.
+This path is for backstage research only and does not wire anything into the
+public app.
+
 ## Core commands
 
 ```bash
@@ -121,6 +130,7 @@ Prefer these for manual data work rather than reading the scripts directly:
 - `docs/00_DOC_INDEX.md`
 - `docs/LAB_ARCHITECTURE_AND_GOALS.md`
 - `docs/LAB_REMAINING_WORK_PLAN.md`
+- `docs/protocol_lab/README.md`
 - `docs/lab/03_llm_precompute_workflow.md`
 - `docs/lab/12_casebook_candidate_workflows.md`
 - `docs/lab/05_llm_reproducibility_contract.md`

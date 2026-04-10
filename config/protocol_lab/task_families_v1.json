@@ -2,7 +2,7 @@
   "artifact_status": "complete",
   "registry_id": "task_families_v1",
   "version": "1.0",
-  "updated_at_utc": "2026-03-14T03:59:10Z",
+  "updated_at_utc": "2026-04-10T17:30:00Z",
   "items": [
     {
       "task_family_id": "evidence_grounded_change_brief_v1",
@@ -12,6 +12,17 @@
       "notes": [
         "Stage 3 MVP task family.",
         "Deterministic methods remain audit/reference probes, not the primary story spine."
+      ]
+    },
+    {
+      "task_family_id": "nextgen_workflow_prototypes_v1",
+      "display_name": "Next-Generation Workflow Prototypes",
+      "active": true,
+      "primary_corpus_scope": "annual 10-K / 20-F Risk sections only",
+      "notes": [
+        "Experimental-only family for next-generation workflow comparisons and relevance-ledger prototyping.",
+        "Uses the existing tagged-paragraph packet substrate and local Desktop execution flows.",
+        "Not a public app integration surface."
       ]
     }
   ]

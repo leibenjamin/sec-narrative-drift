@@ -2,7 +2,7 @@
   "artifact_status": "complete",
   "registry_id": "stacks_v1",
   "version": "1.0",
-  "updated_at_utc": "2026-03-14T03:59:10Z",
+  "updated_at_utc": "2026-04-10T17:30:00Z",
   "items": [
     {
       "stack_id": "s_p0_m1_v1",
@@ -65,6 +65,26 @@
       "model_profile_id": "m_alternate_strong_reasoning_v1",
       "notes": [
         "Matrix B stack."
+      ]
+    },
+    {
+      "stack_id": "s_simple_vs_structured_m2_v1",
+      "display_name": "Simple vs Structured + M2",
+      "protocol_id": "simple_read_vs_structured_read_contrast_v1",
+      "model_profile_id": "m_alternate_strong_reasoning_v1",
+      "notes": [
+        "Experimental next-generation prototype stack.",
+        "Pinned to the existing ChatGPT 5.4-Thinking lane."
+      ]
+    },
+    {
+      "stack_id": "s_decision_relevance_ledger_m2_v1",
+      "display_name": "Decision Relevance Ledger + M2",
+      "protocol_id": "decision_relevance_ledger_v1",
+      "model_profile_id": "m_alternate_strong_reasoning_v1",
+      "notes": [
+        "Experimental next-generation prototype stack.",
+        "Pinned to the existing ChatGPT 5.4-Thinking lane."
       ]
     }
   ]

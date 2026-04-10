@@ -18,6 +18,7 @@
 - `docs/lab/09_master_run_troubleshooting_and_sources_of_truth.md` - canonical source-of-truth and recovery guide for bundle -> mirror -> manifest -> starter drift.
 - `docs/lab/10_case_quality_review_log.md` - canonical human-review ledger for keep/defer/rerun decisions on active case artifacts.
 - `docs/lab/08_remaining_work_plan_history.md` - archived and superseded execution narrative.
+- `docs/protocol_lab/README.md` - Protocol Lab namespace rules, registry/control-plane guidance, and prompt-doc entrypoint.
 
 ## Archived Legacy References (Reference Only)
 Legacy contract/docs remain available under archive paths and are not canonical execution sources:

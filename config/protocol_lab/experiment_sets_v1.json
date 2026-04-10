@@ -2,7 +2,7 @@
   "artifact_status": "complete",
   "registry_id": "experiment_sets_v1",
   "version": "1.0",
-  "updated_at_utc": "2026-03-14T22:45:00Z",
+  "updated_at_utc": "2026-04-10T17:30:00Z",
   "items": [
     {
       "experiment_set_id": "nvda_ablation_contract_v1",
@@ -288,7 +288,82 @@
         "No canonical comparison cells are defined for this sentinel backfill surface."
       ],
       "experiment_cells": []
+    },
+    {
+      "experiment_set_id": "nextgen_workflow_prototypes_v1",
+      "display_name": "Next-Generation Workflow Prototypes v1",
+      "fixture_ids": [
+        "WMT_2025_2026_10k_item1a",
+        "META_2024_2025_10k_item1a",
+        "TSLA_2024_2025_10k_item1a",
+        "LLY_2024_2025_10k_item1a"
+      ],
+      "stack_ids": [
+        "s_simple_vs_structured_m2_v1",
+        "s_decision_relevance_ledger_m2_v1"
+      ],
+      "primary_comparison_axis": "prototype_family",
+      "notes": [
+        "Experimental-only program for the first two next-generation workflow families.",
+        "Holds the tagged packet substrate fixed and compares workflow shape or decision-relevance framing rather than introducing public runtime changes.",
+        "Cell entries include fixture_id because this experiment set intentionally spans multiple fixtures."
+      ],
+      "experiment_cells": [
+        {
+          "cell_id": "nextgen_workflow_prototypes_v1__simple_vs_structured__wmt",
+          "fixture_id": "WMT_2025_2026_10k_item1a",
+          "stack_id": "s_simple_vs_structured_m2_v1",
+          "input_pack_id": "i2_tagged_document_packet_v1",
+          "notes": [
+            "Calm case where simple may sometimes be enough."
+          ]
+        },
+        {
+          "cell_id": "nextgen_workflow_prototypes_v1__simple_vs_structured__meta",
+          "fixture_id": "META_2024_2025_10k_item1a",
+          "stack_id": "s_simple_vs_structured_m2_v1",
+          "input_pack_id": "i2_tagged_document_packet_v1",
+          "notes": [
+            "Repeated-theme sharpening case for bounded structured-value testing."
+          ]
+        },
+        {
+          "cell_id": "nextgen_workflow_prototypes_v1__simple_vs_structured__tsla",
+          "fixture_id": "TSLA_2024_2025_10k_item1a",
+          "stack_id": "s_simple_vs_structured_m2_v1",
+          "input_pack_id": "i2_tagged_document_packet_v1",
+          "notes": [
+            "Mechanism-chain case where structured explanation may add the most value."
+          ]
+        },
+        {
+          "cell_id": "nextgen_workflow_prototypes_v1__decision_relevance_ledger__wmt",
+          "fixture_id": "WMT_2025_2026_10k_item1a",
+          "stack_id": "s_decision_relevance_ledger_m2_v1",
+          "input_pack_id": "i2_tagged_document_packet_v1",
+          "notes": [
+            "Calm case for testing relevance without forced novelty."
+          ]
+        },
+        {
+          "cell_id": "nextgen_workflow_prototypes_v1__decision_relevance_ledger__meta",
+          "fixture_id": "META_2024_2025_10k_item1a",
+          "stack_id": "s_decision_relevance_ledger_m2_v1",
+          "input_pack_id": "i2_tagged_document_packet_v1",
+          "notes": [
+            "Strong candidate for separating sharper relevance from recurring AI-theme language."
+          ]
+        },
+        {
+          "cell_id": "nextgen_workflow_prototypes_v1__decision_relevance_ledger__lly",
+          "fixture_id": "LLY_2024_2025_10k_item1a",
+          "stack_id": "s_decision_relevance_ledger_m2_v1",
+          "input_pack_id": "i2_tagged_document_packet_v1",
+          "notes": [
+            "Boundary case for public-worthiness and overclaim control."
+          ]
+        }
+      ]
     }
   ]
 }
-

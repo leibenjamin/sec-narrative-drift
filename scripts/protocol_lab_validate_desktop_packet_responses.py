@@ -28,6 +28,7 @@ class RunValidationResult:
     raw_text_expected_key_hints: dict[str, bool]
     blocker_codes: list[str]
     notes: list[str]
+    sidecars_written: list[str]
 
 
 @dataclass(frozen=True)
@@ -70,6 +71,40 @@ def derive_lane_slug(run_id: str) -> str:
     return parts[1]
 
 
+def run_manifest_payload(run_manifest_path: Path) -> dict[str, object] | None:
+    if not run_manifest_path.exists():
+        return None
+    try:
+        payload = json.loads(run_manifest_path.read_text(encoding="utf-8-sig"))
+    except (OSError, json.JSONDecodeError):
+        return None
+    if not isinstance(payload, dict):
+        return None
+    return cast(dict[str, object], payload)
+
+
+def derive_lane_slug_from_run_manifest(run_manifest_path: Path) -> str | None:
+    manifest = run_manifest_payload(run_manifest_path)
+    if manifest is None:
+        return None
+    run_identity = manifest.get("run_identity")
+    if isinstance(run_identity, dict):
+        identity = cast(dict[str, object], run_identity)
+        family_id = identity.get("family_id")
+        if isinstance(family_id, str) and family_id:
+            return family_id
+        lane_slug = identity.get("lane_slug")
+        if isinstance(lane_slug, str) and lane_slug:
+            return lane_slug
+    output_contract = manifest.get("output_contract")
+    if isinstance(output_contract, dict):
+        contract = cast(dict[str, object], output_contract)
+        primary_artifact_key = contract.get("primary_artifact_key")
+        if isinstance(primary_artifact_key, str) and primary_artifact_key:
+            return primary_artifact_key
+    return None
+
+
 def expected_top_level_keys_for_lane_slug(lane_slug: str) -> tuple[str, ...]:
     if lane_slug.startswith("00_"):
         return ("brief_markdown", "evidence")
@@ -79,15 +114,9 @@ def expected_top_level_keys_for_lane_slug(lane_slug: str) -> tuple[str, ...]:
 
 
 def expected_top_level_keys_from_run_manifest(run_manifest_path: Path) -> tuple[str, ...] | None:
-    if not run_manifest_path.exists():
+    manifest = run_manifest_payload(run_manifest_path)
+    if manifest is None:
         return None
-    try:
-        payload = json.loads(run_manifest_path.read_text(encoding="utf-8-sig"))
-    except (OSError, json.JSONDecodeError):
-        return None
-    if not isinstance(payload, dict):
-        return None
-    manifest = cast(dict[str, object], payload)
     output_contract = manifest.get("output_contract")
     if not isinstance(output_contract, dict):
         return None
@@ -112,19 +141,59 @@ def expected_top_level_keys_for_run(run_id: str, run_manifest_path: Path) -> tup
     return expected_top_level_keys_for_lane_slug(lane_slug)
 
 
+def sidecar_outputs_from_run_manifest(run_manifest_path: Path) -> list[dict[str, str]]:
+    manifest = run_manifest_payload(run_manifest_path)
+    if manifest is None:
+        return []
+    output_contract = manifest.get("output_contract")
+    if not isinstance(output_contract, dict):
+        return []
+    contract = cast(dict[str, object], output_contract)
+    raw_outputs = contract.get("sidecar_outputs")
+    if not isinstance(raw_outputs, list):
+        return []
+
+    outputs: list[dict[str, str]] = []
+    for item in cast(list[object], raw_outputs):
+        if not isinstance(item, dict):
+            continue
+        output = cast(dict[str, object], item)
+        response_key = output.get("response_key")
+        relative_path = output.get("relative_path")
+        if isinstance(response_key, str) and response_key and isinstance(relative_path, str) and relative_path:
+            outputs.append({"response_key": response_key, "relative_path": relative_path})
+    return outputs
+
+
+def write_sidecars_from_response(parsed: dict[str, object], run_manifest_path: Path) -> list[str]:
+    written_paths: list[str] = []
+    for sidecar in sidecar_outputs_from_run_manifest(run_manifest_path):
+        response_key = sidecar["response_key"]
+        if response_key not in parsed:
+            continue
+        value = parsed[response_key]
+        if not isinstance(value, dict):
+            continue
+        destination = resolve_repo_path(sidecar["relative_path"])
+        write_json(destination, cast(dict[str, Any], value))
+        written_paths.append(repo_rel_or_abs(destination))
+    return written_paths
+
+
 def detect_expected_key_hints(raw_text: str, expected_keys: Sequence[str]) -> dict[str, bool]:
     return {key: f'"{key}"' in raw_text for key in expected_keys}
 
 
-def validate_run(packet_root: Path, run_id: str) -> RunValidationResult:
-    lane_slug = derive_lane_slug(run_id)
+def validate_run(packet_root: Path, run_id: str, *, write_sidecars: bool = False) -> RunValidationResult:
     response_path = packet_root / run_id / "response.json"
     run_manifest_path = packet_root / run_id / "run_manifest.json"
+    lane_slug = derive_lane_slug_from_run_manifest(run_manifest_path) or run_id
     expected_keys = expected_top_level_keys_for_run(run_id, run_manifest_path)
     blocker_codes: list[str] = []
     notes: list[str] = []
     actual_top_level_keys: list[str] = []
     raw_text_expected_key_hints = {key: False for key in expected_keys}
+    sidecars_written: list[str] = []
     response_exists = response_path.exists()
     response_non_empty = False
     json_parseable = False
@@ -149,6 +218,7 @@ def validate_run(packet_root: Path, run_id: str) -> RunValidationResult:
             raw_text_expected_key_hints=raw_text_expected_key_hints,
             blocker_codes=blocker_codes,
             notes=notes,
+            sidecars_written=sidecars_written,
         )
 
     raw_text = response_path.read_text(encoding="utf-8-sig")
@@ -172,6 +242,7 @@ def validate_run(packet_root: Path, run_id: str) -> RunValidationResult:
             raw_text_expected_key_hints=raw_text_expected_key_hints,
             blocker_codes=blocker_codes,
             notes=notes,
+            sidecars_written=sidecars_written,
         )
 
     try:
@@ -205,6 +276,7 @@ def validate_run(packet_root: Path, run_id: str) -> RunValidationResult:
             raw_text_expected_key_hints=raw_text_expected_key_hints,
             blocker_codes=blocker_codes,
             notes=notes,
+            sidecars_written=sidecars_written,
         )
 
     if not isinstance(parsed, dict):
@@ -225,6 +297,7 @@ def validate_run(packet_root: Path, run_id: str) -> RunValidationResult:
             raw_text_expected_key_hints=raw_text_expected_key_hints,
             blocker_codes=blocker_codes,
             notes=notes,
+            sidecars_written=sidecars_written,
         )
 
     json_object = True
@@ -241,6 +314,10 @@ def validate_run(packet_root: Path, run_id: str) -> RunValidationResult:
         )
     else:
         notes.append("response.json matches the expected lane-family top-level keys.")
+        if write_sidecars:
+            sidecars_written = write_sidecars_from_response(checked_parsed, run_manifest_path)
+            if sidecars_written:
+                notes.append("Wrote sidecar artifacts from the validated response.")
 
     return RunValidationResult(
         run_id=run_id,
@@ -257,6 +334,7 @@ def validate_run(packet_root: Path, run_id: str) -> RunValidationResult:
         raw_text_expected_key_hints=raw_text_expected_key_hints,
         blocker_codes=blocker_codes,
         notes=notes,
+        sidecars_written=sidecars_written,
     )
 
 
@@ -273,9 +351,14 @@ def discover_run_ids(packet_root: Path) -> list[str]:
     return run_ids
 
 
-def validate_packet(packet_root: Path, run_ids: Sequence[str] | None = None) -> ValidationReport:
+def validate_packet(
+    packet_root: Path,
+    run_ids: Sequence[str] | None = None,
+    *,
+    write_sidecars: bool = False,
+) -> ValidationReport:
     effective_run_ids = list(run_ids) if run_ids else discover_run_ids(packet_root)
-    results = [validate_run(packet_root, run_id) for run_id in effective_run_ids]
+    results = [validate_run(packet_root, run_id, write_sidecars=write_sidecars) for run_id in effective_run_ids]
     overall_result = "pass" if results and all(not result.blocker_codes for result in results) else "fail"
     return ValidationReport(
         packet_root=repo_rel_or_abs(packet_root),
@@ -307,6 +390,7 @@ def report_to_payload(report: ValidationReport) -> dict[str, Any]:
                 "raw_text_expected_key_hints": result.raw_text_expected_key_hints,
                 "blocker_codes": result.blocker_codes,
                 "notes": result.notes,
+                "sidecars_written": result.sidecars_written,
             }
             for result in report.run_results
         ],
@@ -334,6 +418,11 @@ def build_parser() -> argparse.ArgumentParser:
         default=str(DEFAULT_REPORT_PATH),
         help="Path for the JSON validation report. Defaults to reports/protocol_lab/wave4e15_standard_control_validation_report.json.",
     )
+    parser.add_argument(
+        "--write-sidecars",
+        action="store_true",
+        help="Write configured sidecar artifacts from valid response.json files after validation.",
+    )
     return parser
 
 
@@ -343,7 +432,7 @@ def main() -> int:
     packet_root = resolve_repo_path(args.packet_root)
     report_path = resolve_repo_path(args.report_out)
 
-    report = validate_packet(packet_root, args.run_ids)
+    report = validate_packet(packet_root, args.run_ids, write_sidecars=args.write_sidecars)
     write_validation_report(report, report_path)
 
     passed_runs = [result.run_id for result in report.run_results if not result.blocker_codes]

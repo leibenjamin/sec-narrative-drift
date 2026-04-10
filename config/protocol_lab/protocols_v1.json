@@ -2,7 +2,7 @@
   "artifact_status": "complete",
   "registry_id": "protocols_v1",
   "version": "1.0",
-  "updated_at_utc": "2026-03-20T04:30:24Z",
+  "updated_at_utc": "2026-04-10T17:30:00Z",
   "items": [
     {
       "protocol_id": "p0_plain_prompt_v1",
@@ -85,6 +85,40 @@
         "Single-pass novelty-ledger protocol for packet-first NVDA review.",
         "Keeps the existing internal p3 extract-then-synthesize protocol unchanged.",
         "Legacy input_pack_id is a compatibility alias of default_input_pack_id."
+      ],
+      "default_input_pack_id": "i2_tagged_document_packet_v1",
+      "input_pack_id": "i2_tagged_document_packet_v1"
+    },
+    {
+      "protocol_id": "simple_read_vs_structured_read_contrast_v1",
+      "display_name": "Simple Read vs Structured Read Contrast",
+      "task_family_id": "nextgen_workflow_prototypes_v1",
+      "protocol_kind": "single_pass",
+      "instruction_style": "teaching_contrast_contract",
+      "evidence_contract_id": "evidence_bundle_v1_exact_refs",
+      "output_contract_id": "simple_read_vs_structured_read_contrast_v1",
+      "limitation_requirement": "must compare a compact simple read against a compact structured read on the same tagged packet without assuming structure wins",
+      "notes": [
+        "Experimental-only next-generation workflow family.",
+        "Designed to test when extra structure materially improves a bounded public-facing teaching artifact.",
+        "Keeps the output compact and verdict-bearing."
+      ],
+      "default_input_pack_id": "i2_tagged_document_packet_v1",
+      "input_pack_id": "i2_tagged_document_packet_v1"
+    },
+    {
+      "protocol_id": "decision_relevance_ledger_v1",
+      "display_name": "Decision Relevance Ledger",
+      "task_family_id": "nextgen_workflow_prototypes_v1",
+      "protocol_kind": "single_pass",
+      "instruction_style": "decision_relevance_ledger_contract",
+      "evidence_contract_id": "evidence_bundle_v1_exact_refs",
+      "output_contract_id": "decision_relevance_ledger_v1",
+      "limitation_requirement": "must separate decision relevance from mere novelty and keep public-claim effects bounded",
+      "notes": [
+        "Experimental-only next-generation workflow family.",
+        "Uses the provisional general_business_reader frame for controlled testing.",
+        "Intended to challenge or refine novelty-first internal ledgering without broadening the public claim."
       ],
       "default_input_pack_id": "i2_tagged_document_packet_v1",
       "input_pack_id": "i2_tagged_document_packet_v1"
