@@ -3,11 +3,11 @@
 Last updated: 2026-04-06
 
 ## What This App Is
-Document Protocol Lab currently ships a bounded visible SEC Item 1A pilot across `NVDA`, `LLY`, and `KO`, each with one active FY2024 to FY2025 fixture.
+Document Protocol Lab currently ships a bounded interactive casebook across six public SEC Item 1A cases: three anchor cases (`NVDA`, `LLY`, `KO`) plus three pressure cases (`META`, `TSLA`, `WMT`). Each fixture uses an adjacent-year pair under the company-official fiscal-year convention — FY2024 to FY2025 for most cases, and FY2025 to FY2026 for `WMT`.
 
 The public UX is intentionally simple. Users choose a fixture, not a broad issuer gallery, and land in one default reading order: filing answer first, protocol meaning second, deeper audit third.
 
-The lower runtime registry and supporting lab artifacts can remain broader backstage. That backstage breadth supports audit and future work, but it does not widen the visible product claim.
+The lower runtime registry and supporting lab artifacts can remain broader backstage. That backstage breadth supports audit and future work, but it does not widen the visible product claim. In particular, the legacy Core4 runtime registry (`NVDA`/`KO`/`WM`/`GE` under `public/data/sec_narrative_drift_lab/`) is a separate backstage surface from the public casebook data under `public/data/business_document_protocol_lab/`. Both still coexist, but only the latter maps to the shipped six-case public route.
 
 ## Core Architecture
 
@@ -97,15 +97,23 @@ That means `WMT` remains `FY2025 vs FY2026`, consistent with `NVDA`. A later swi
 “bulk of 12 months” convention would be a repo-wide relabeling decision, not a one-off fix.
 
 ## Public Visible Scope
-- Visible pilot only: `NVDA`, `LLY`, and `KO`
-- One active FY2024 to FY2025 Item 1A fixture per visible company
-- `NVDA`: strongest first signal
+- Public casebook: `NVDA`, `LLY`, `KO`, `META`, `TSLA`, and `WMT`
+- Three Home anchor cases: `NVDA`, `LLY`, `KO`
+- Three added pressure cases surfaced inside the Casebook: `META`, `TSLA`, `WMT`
+- Adjacent-year Item 1A fixture per visible company, using the company-official fiscal-year convention (FY2024 to FY2025 for most; FY2025 to FY2026 for `WMT`)
+- `NVDA`: strongest first signal / vivid answer
 - `LLY`: policy-heavy bounded contrast with an explicit stop before full lower-audit runtime depth
 - `KO`: restraint / low-drift honesty check with narrower visible comparisons by design
+- `META`: sharper AI enforcement / platform-risk pressure case
+- `TSLA`: policy-shock and autonomy-commercialization pressure case
+- `WMT`: calm retail interface and tariff persistence pressure case
+- `GOOGL` remains reserve and `UNH` remains hold/internal-only
+- Canonical public-casebook ticker lists live in `src/lib/casebookContent.ts` (`HOME_ANCHOR_TICKERS` and `PUBLIC_CASEBOOK_TICKERS`)
 
 ## Backstage Runtime Scope
-- Lower runtime registries may still include additional cases, lanes, and supporting artifacts.
-- Backstage breadth does not change the visible three-fixture product claim.
+- The legacy Core4 lab runtime registry (`public/data/sec_narrative_drift_lab/lab_cases_v1.json`) still covers `NVDA`, `KO`, `WM`, and `GE` with deterministic detector outputs and LLM outline-compare artifacts. It powers the older outline-compare runtime surfaces but is not the source of truth for the public casebook's six-case route.
+- The active public casebook is served from `public/data/business_document_protocol_lab/` and is sourced from the casebook-candidate bundle builder (`scripts/build_casebook_candidate_inputs_bundle.py`) plus the protocol-lab pilot-matrix cells.
+- Backstage Core4 breadth does not change the six-case public product claim.
 - Hidden preregistered lanes remain out of public flow until they earn exposure.
 
 ## Public Page Flow
@@ -136,6 +144,6 @@ Missing artifacts should remain visible and path-explicit. The app should not si
 Copy should speak to people interested in how the filing changed, not to evaluators of a demo or showcase artifact.
 
 ## Current Improvement Focus
-- Keep public docs, labels, and UX aligned with the visible three-fixture pilot while leaving backstage runtime breadth explicit but secondary.
+- Keep public docs, labels, and UX aligned with the six-case public casebook while leaving backstage Core4 runtime breadth explicit but secondary.
 - Preserve advanced audit controls without letting them dominate the default reading path.
 - Continue treating Insight Lens as optional enrichment rather than required surface area.

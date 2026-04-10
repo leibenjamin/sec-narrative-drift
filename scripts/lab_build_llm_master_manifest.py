@@ -9,6 +9,7 @@ from typing import Any, Optional
 
 from lab_script_version import build_script_version
 from lab_output_tracks import (
+    CORE4_SHOWCASE_TICKERS,
     DEFAULT_PRIMARY_LLM_CAMPAIGN_ID,
     canonical_outline_runtime_relative_path,
     canonical_outline_structured_relative_path,
@@ -34,7 +35,7 @@ PUBLIC_LAB_ROOT = REPO_ROOT / "public" / "data" / "sec_narrative_drift_lab"
 DEFAULT_REGISTRY_PATH = PUBLIC_LAB_ROOT / "lab_cases_v1.json"
 DEFAULT_OUT_MD = REPO_ROOT / "reports" / "lab_llm_master_manifest.md"
 DEFAULT_OUT_JSON = REPO_ROOT / "reports" / "lab_llm_master_manifest.json"
-DEFAULT_TICKERS = ("NVDA", "KO", "WM", "GE")
+DEFAULT_TICKERS = CORE4_SHOWCASE_TICKERS  # Legacy Core4 backstage runtime tickers.
 DEFAULT_REQUIRED_START = 2022
 DEFAULT_REQUIRED_END = 2025
 DEFAULT_INCLUDE_LATEST_AFTER = 2025

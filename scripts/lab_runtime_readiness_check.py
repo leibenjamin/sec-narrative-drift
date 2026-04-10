@@ -216,9 +216,11 @@ def pair_sort_key(pair: tuple[str, int, int]) -> tuple[int, int, int]:
 
 
 def build_parser() -> argparse.ArgumentParser:
+    ticker_list = "/".join(CORE4_SHOWCASE_TICKERS)
     parser = argparse.ArgumentParser(
         description=(
-            "Audit deterministic lab runtime readiness across NVDA/KO/WM/GE. "
+            f"Audit deterministic lab runtime readiness across {ticker_list} "
+            "(legacy Core4 backstage runtime registry). "
             "Fails when required deboilerplated outputs are missing."
         )
     )

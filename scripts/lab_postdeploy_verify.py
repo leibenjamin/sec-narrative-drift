@@ -6,13 +6,16 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Optional, cast
 
+from lab_output_tracks import CORE4_SHOWCASE_TICKERS
+
 
 SCRIPT_VERSION = "lab_postdeploy_verify.py@v1"
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 LAB_ROOT = REPO_ROOT / "public" / "data" / "sec_narrative_drift_lab"
 DEFAULT_REGISTRY = LAB_ROOT / "lab_cases_v1.json"
-SHOWCASE_TICKERS = ("NVDA", "KO", "WM", "GE")
+# Legacy Core4 backstage runtime tickers verified by postdeploy checks.
+SHOWCASE_TICKERS = CORE4_SHOWCASE_TICKERS
 
 
 @dataclass(frozen=True)

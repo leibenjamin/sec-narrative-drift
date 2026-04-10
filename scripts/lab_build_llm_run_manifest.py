@@ -13,6 +13,7 @@ import sys
 
 from lab_script_version import build_script_version
 from lab_output_tracks import (  # type: ignore
+    CORE4_SHOWCASE_TICKERS,
     DEFAULT_PRIMARY_LLM_CAMPAIGN_ID,
     canonical_output_relative_path,
     get_llm_campaign,
@@ -26,7 +27,7 @@ DEFAULT_REGISTRY_PATH = PUBLIC_LAB_ROOT / "lab_cases_v1.json"
 DEFAULT_OUT_MD = REPO_ROOT / "reports" / "lab_llm_run_manifest.md"
 DEFAULT_OUT_JSON = REPO_ROOT / "reports" / "lab_llm_run_manifest.json"
 
-DEFAULT_TICKERS = ("NVDA", "KO", "WM", "GE")
+DEFAULT_TICKERS = CORE4_SHOWCASE_TICKERS  # Legacy Core4 backstage runtime tickers.
 DEFAULT_REQUIRED_START = 2022
 DEFAULT_REQUIRED_END = 2025
 DEFAULT_INCLUDE_LATEST_AFTER = 2025

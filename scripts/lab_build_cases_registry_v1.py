@@ -13,6 +13,7 @@ from typing import Any, Optional, cast
 
 from lab_script_version import build_script_version
 from lab_output_tracks import (
+    CORE4_SHOWCASE_TICKERS,
     DETERMINISTIC_DETECTORS,
     LEGACY_FIXED_WINDOW_RUNTIME_CASES,
     pick_latest_adjacent_pair,
@@ -40,9 +41,18 @@ BUILD_REPORT_PATH = REPORTS_ROOT / "lab_cases_registry_build.md"
 
 VALID_LENSES = {"raw", "stage1_clean", "deboilerplated", "structure_aware"}
 VALID_SOURCES = {"edgar", "sraf_nd"}
-DEFAULT_TICKERS = ["NVDA", "KO", "WM", "GE"]
+# Legacy Core4 backstage runtime tickers written into lab_cases_v1.json.
+# The public casebook (NVDA/LLY/KO/META/TSLA/WMT) lives in
+# public/data/business_document_protocol_lab/ and is sourced from the
+# casebook-candidate bundle builder, not from this script.
+DEFAULT_TICKERS = list(CORE4_SHOWCASE_TICKERS)
 DEFAULT_YEAR_MIN = 2022
 DEFAULT_YEAR_MAX = 2030
+# VISIBLE_PILOT_TICKERS and VISIBLE_PILOT_INTEGRATED_TICKERS control tag
+# emission inside this registry only. They are retained at the original
+# three-anchor scope (NVDA/LLY/KO) because LLY has no data under
+# sec_narrative_drift_lab/ so it is inert here, and the tag consumers in
+# the frontend (business_document_protocol_lab) do not read these fields.
 VISIBLE_PILOT_TICKERS = {"NVDA", "LLY", "KO"}
 VISIBLE_PILOT_INTEGRATED_TICKERS = {"NVDA", "KO"}
 

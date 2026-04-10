@@ -6,6 +6,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Optional, cast
 
+from lab_output_tracks import CORE4_SHOWCASE_TICKERS
 from lab_script_version import build_script_version
 
 SCRIPT_VERSION = build_script_version(Path(__file__), "v4")
@@ -15,7 +16,8 @@ DEFAULT_MANIFEST_PATH = REPO_ROOT / "reports" / "lab_llm_run_manifest.json"
 DEFAULT_OUT_PATH = REPO_ROOT / "reports" / "lab_llm_manual_rerun_checklist.md"
 BUNDLES_ROOT = REPO_ROOT / "bundles"
 
-TICKER_SORT_ORDER = {"NVDA": 0, "KO": 1, "WM": 2, "GE": 3}
+# Legacy Core4 backstage runtime tickers iterated by the rerun checklist.
+TICKER_SORT_ORDER = {ticker: idx for idx, ticker in enumerate(CORE4_SHOWCASE_TICKERS)}
 DETECTOR_SORT_ORDER = {
     "det_llm_delta_brief_v1": 0,
     "det_llm_excerpt_picker_v1": 1,
@@ -292,7 +294,7 @@ def build_lines(
     for job in jobs:
         ticker_buckets.setdefault(job.ticker, []).append(job)
 
-    for ticker in ("NVDA", "KO", "WM", "GE"):
+    for ticker in CORE4_SHOWCASE_TICKERS:
         wave_jobs = ticker_buckets.get(ticker, [])
         if not wave_jobs:
             continue

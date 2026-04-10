@@ -5,6 +5,8 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Optional
 
+from lab_output_tracks import CORE4_SHOWCASE_TICKERS
+
 
 SCRIPT_VERSION = "lab_build_raw_prereq_audit.py@v1"
 
@@ -14,7 +16,10 @@ CACHE_ROOT = REPO_ROOT / "scripts" / "_cache"
 LAB_ROOT = REPO_ROOT / "public" / "data" / "sec_narrative_drift_lab"
 DEFAULT_REPORT = REPO_ROOT / "reports" / "lab_raw_prereq_audit.md"
 
-SHOWCASE_TICKERS = ("NVDA", "KO", "WM", "GE")
+# Legacy Core4 backstage runtime tickers (NVDA/KO/WM/GE). Public casebook
+# tickers (NVDA/LLY/KO/META/TSLA/WMT) live in business_document_protocol_lab/
+# and are not covered by this raw-prereq audit.
+SHOWCASE_TICKERS = CORE4_SHOWCASE_TICKERS
 RAW_DETECTORS = (
     "det_logodds_terms_v1",
     "det_jsd_ngrams_v1",

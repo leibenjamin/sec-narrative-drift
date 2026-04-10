@@ -11,6 +11,7 @@ from pathlib import Path
 from typing import Any, Optional, cast
 
 import build_lab_outputs as blo  # type: ignore
+from lab_output_tracks import CORE4_SHOWCASE_TICKERS
 from lab_script_version import build_script_version
 
 SCRIPT_VERSION = build_script_version(Path(__file__), "v1")
@@ -22,7 +23,8 @@ DEFAULT_REPORT = REPO_ROOT / "reports" / "lab_full_section_source_audit.md"
 SECTIONS_ROOT = REPO_ROOT / "scripts" / "_reports" / "risk_extraction_bundle" / "sections"
 HTML_CACHE_ROOT = REPO_ROOT / "scripts" / "_cache"
 SEC_CACHE_FILINGS_ROOT = REPO_ROOT / "data" / "sec_cache" / "filings"
-SHOWCASE_TICKERS = ("NVDA", "KO", "WM", "GE")
+# Legacy Core4 backstage runtime tickers audited for full-section source parity.
+SHOWCASE_TICKERS = CORE4_SHOWCASE_TICKERS
 SECTION = "10k_item1a"
 
 WS_RE = re.compile(r"\s+")
