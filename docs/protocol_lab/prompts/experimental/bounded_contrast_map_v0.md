@@ -15,6 +15,8 @@ Its job is to show a small number of memorable contrasts that make a bounded pub
 
 Critical boundedness rules:
 - Keep the artifact compact. The `rows` array must contain 2 to 4 rows only.
+- Target a total `evidence_ids` budget of roughly 6 to 12 ids for the whole artifact. Reuse the same grounded ids across rows when that keeps the map honest.
+- Do not let the evidence list expand into a disguised outline compare or mini taxonomy.
 - Do not reconstruct the whole section, outline, or taxonomy.
 - Do not turn the artifact into a mini outline compare with many headings or exhaustive subthemes.
 - Do not just restate the matrix brief in slightly longer prose.
@@ -27,8 +29,9 @@ Critical boundedness rules:
 
 Language discipline:
 - Write short, concrete claims.
-- Axis labels must be memorable and case-specific, not consultant headings such as "strategy", "operations", or "risk environment" unless the evidence truly requires them.
+- Axis labels must be memorable, mechanism-first, and case-specific.
 - Name the mechanism or boundary, not just the topic area.
+- Avoid broad buckets such as "regulation," "AI," "operations," or "competition" unless you sharpen them into the concrete mechanism that changed.
 - Avoid filler such as "changing landscape," "stakeholder impact," "important evolving area," or topic-only claims with no case-specific mechanism.
 
 Do not invent evidence ids, quotes, year labels, paragraph ids, source locators, or completion claims.
@@ -53,9 +56,6 @@ Bounded contrast map contract:
 - `stop_note`: `string`
 - `tempting_bad_read`: `string`
 - `evidence_ids`: `string[]`
-- Optional only if clearly earned:
-- `matrix_first_reason`: `string`
-- `why_not_full_outline_compare`: `string`
 - Every row in `rows` must include:
 - `axis`: `string`
 - `what_changed`: `string`
@@ -68,11 +68,9 @@ Bounded contrast map contract:
 - Use `what_stayed_the_same` to prevent novelty inflation.
 - Use `why_not_to_overcall_it` to state the honest boundary for that row.
 - Use `why_it_still_matters` to say why the row still belongs in a bounded public second layer.
-- Use `best_used_when` to explain why this artifact is the right second layer for this case.
-- Use `stop_note` to explain where the bounded contrast should stop and why a broader claim would outrun the evidence.
+- Use `best_used_when` to explain why this artifact is the right compact second layer for this case instead of either stopping at one matrix brief or expanding into a full outline compare.
+- Use `stop_note` to explain exactly where the bounded contrast should stop and why a broader claim would outrun the evidence.
 - Use `tempting_bad_read` to name the single most likely overread a weaker workflow or careless reader would make from this case.
-- `matrix_first_reason`, if used, must explain why the case belongs on the matrix-first path rather than the integrated full path.
-- `why_not_full_outline_compare`, if used, must explain why the full outline compare would overbuild this case rather than deepen it honestly.
 - Keep the artifact distinct from a matrix brief: this map must surface contrasts, not just one summary claim.
 - Keep the artifact distinct from full outline compare: this map must not reconstruct section architecture or enumerate every theme.
 - `evidence_bundle` must include:

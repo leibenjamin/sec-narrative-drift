@@ -1,0 +1,190 @@
+{
+  "artifact_status": "complete",
+  "artifact_schema_id": "nextgen_workflow_prototypes_program_manifest_v1_1",
+  "program_id": "calibration_bundle_cleanup_nextgen_required_2026_04_12",
+  "display_name": "Calibration Bundle Cleanup Nextgen Required",
+  "updated_at_utc": "2026-04-12T00:00:00Z",
+  "revision_note": "Focused calibration bundle for integrated anchor cases after the six-case freshness audit.",
+  "task_family_id": "nextgen_workflow_prototypes_v1_1",
+  "model_profile_id": "m_alternate_strong_reasoning_v1",
+  "runner_binding_id": "rb_openai_chatgpt54ext_real_local_v1",
+  "runner_campaign_id": "openai_chatgpt54ext_agent_fullsec_real_2026-03-06",
+  "bundle_root": "bundles/calibration_bundle_assembly_and_bounded_contrast_cleanup_2026-04-12/required/nextgen_workflow_calibration_2026-04-12",
+  "report_root": "reports/calibration_bundle_assembly_and_bounded_contrast_cleanup_2026-04-12",
+  "validation_script_path": "scripts/protocol_lab_validate_desktop_packet_responses.py",
+  "source_workspace_resolution": {
+    "requires_materialized_local_inputs": true,
+    "resolution_order": [
+      "current_repo_root",
+      "source_workspace_root"
+    ],
+    "source_workspace_root_cli_arg": "--source-workspace-root",
+    "notes": [
+      "This calibration bundle reuses already materialized local packet sources and existing validated source artifacts.",
+      "No public-route integration is part of this bundle."
+    ]
+  },
+  "families": [
+    {
+      "family_id": "simple_read_vs_structured_read_contrast_v1_1",
+      "protocol_id": "simple_read_vs_structured_read_contrast_v1_1",
+      "stack_id": "s_simple_vs_structured_adjudication_m2_v1_1",
+      "prompt_path": "docs/protocol_lab/prompts/experimental/simple_read_vs_structured_read_contrast_v1_1.md",
+      "schema_path": "schemas/protocol_lab/experimental/simple_read_vs_structured_read_contrast_v1_1.schema.json",
+      "output_top_level_keys": [
+        "simple_vs_structured_adjudication",
+        "evidence_bundle"
+      ],
+      "primary_artifact_key": "simple_vs_structured_adjudication",
+      "primary_sidecar_filename": "simple_vs_structured_adjudication_v1_1.json",
+      "expected_to": "supplement_p0_p2_compare_logic_via_true_adjudication",
+      "source_artifact_requirements": {
+        "simple_read": {
+          "description": "A previously produced plain-prompt source artifact for the same fixture",
+          "typical_source": "historical control or equivalent plain-prompt run",
+          "bundle_filename": "simple_read_source.json"
+        },
+        "structured_read": {
+          "description": "A previously produced tagged-input structured source artifact for the same fixture",
+          "typical_source": "historical structured run for the same fixture",
+          "bundle_filename": "structured_read_source.json"
+        }
+      },
+      "source_artifact_resolution": {
+        "NVDA_2024_2025_10k_item1a": {
+          "simple_read_path": "wave4e1_standard_thinking_controls_20260319_0213/NVDA_00_b0_unstructured_frontier_baseline_standard/response.json",
+          "structured_read_path": "wave4e1_standard_thinking_controls_20260319_0213/NVDA_03_p2_i2_tagged_protocol_standard/response.json"
+        }
+      },
+      "selected_fixtures": [
+        "NVDA_2024_2025_10k_item1a"
+      ],
+      "operator_focus": "Test whether newer adjudication still adds value on the vivid integrated anchor without rewarding structure for its own sake."
+    },
+    {
+      "family_id": "decision_relevance_ledger_v1_1",
+      "protocol_id": "decision_relevance_ledger_v1_1",
+      "stack_id": "s_decision_relevance_ledger_m2_v1_1",
+      "prompt_path": "docs/protocol_lab/prompts/experimental/decision_relevance_ledger_v1_1.md",
+      "schema_path": "schemas/protocol_lab/experimental/decision_relevance_ledger_v1_1.schema.json",
+      "output_top_level_keys": [
+        "decision_relevance_ledger",
+        "evidence_bundle"
+      ],
+      "primary_artifact_key": "decision_relevance_ledger",
+      "primary_sidecar_filename": "decision_relevance_ledger_v1_1.json",
+      "expected_to": "supplement_or_challenge_novelty_first_p4_with_stronger_anti_novelty_discipline",
+      "selected_fixtures": [
+        "NVDA_2024_2025_10k_item1a",
+        "KO_2024_2025_10k_item1a"
+      ],
+      "operator_focus": "Test whether the tightened ledger remains genuinely decision-useful on the integrated anchor pair and the skeptic anchor without forcing drama."
+    }
+  ],
+  "fixtures": {
+    "NVDA_2024_2025_10k_item1a": {
+      "ticker": "NVDA",
+      "issuer_name": "NVIDIA Corporation",
+      "year_labels": [
+        "FY2024",
+        "FY2025"
+      ],
+      "fixture_guidance": "Integrated anchor case. Use newer-family calibration to test additive value, not to re-litigate the already strong integrated outline route.",
+      "source_materials": {
+        "source_case_manifest_path": "wave4e1_standard_thinking_controls_20260319_0213/NVDA_03_p2_i2_tagged_protocol_standard/sources/source_case_manifest_v1.json",
+        "input_pack_manifest_path": "wave4e1_standard_thinking_controls_20260319_0213/NVDA_03_p2_i2_tagged_protocol_standard/sources/i2_tagged_document_packet_v1.json",
+        "rendered_inputs_path": "wave4e1_standard_thinking_controls_20260319_0213/NVDA_03_p2_i2_tagged_protocol_standard/sources/i2_tagged_document_packet_v1.rendered_inputs.json",
+        "split_rendered_input_paths": [
+          "wave4e1_standard_thinking_controls_20260319_0213/NVDA_03_p2_i2_tagged_protocol_standard/sources/i2_tagged_document_packet_v1_FY2024.json",
+          "wave4e1_standard_thinking_controls_20260319_0213/NVDA_03_p2_i2_tagged_protocol_standard/sources/i2_tagged_document_packet_v1_FY2025.json"
+        ]
+      },
+      "reference_artifacts": [
+        "public/data/business_document_protocol_lab/pilot_matrices/NVDA_2024_2025_10k_item1a/pilot_matrix_story_v1.json",
+        "public/data/business_document_protocol_lab/pilot_matrices/NVDA_2024_2025_10k_item1a/pilot_matrix_review_v1.json",
+        "public/data/sec_narrative_drift_lab/NVDA/outputs/llm_outline_compare_structured/openai-chatgpt54ext-agent-fullsec-real-2026-03-06/lab_llm_outline_compare_structured_10k_item1a_2024_2025_deboilerplated_edgar__openai-chatgpt54ext-agent-fullsec-real-2026-03-06.json"
+      ]
+    },
+    "KO_2024_2025_10k_item1a": {
+      "ticker": "KO",
+      "issuer_name": "The Coca-Cola Company",
+      "year_labels": [
+        "FY2024",
+        "FY2025"
+      ],
+      "fixture_guidance": "Skeptic integrated anchor. The ledger should stay useful and honest on a low-drift case rather than manufacturing drama.",
+      "source_materials": {
+        "source_case_manifest_path": "wave4e5_third_issuer_skeptic_packet_20260322_0353/KO_02_p1_i2_tagged_packet_standard/sources/source_case_manifest_v1.json",
+        "input_pack_manifest_path": "wave4e5_third_issuer_skeptic_packet_20260322_0353/KO_02_p1_i2_tagged_packet_standard/sources/i2_tagged_document_packet_v1.json",
+        "rendered_inputs_path": "wave4e5_third_issuer_skeptic_packet_20260322_0353/KO_02_p1_i2_tagged_packet_standard/sources/i2_tagged_document_packet_v1.rendered_inputs.json",
+        "split_rendered_input_paths": [
+          "wave4e5_third_issuer_skeptic_packet_20260322_0353/KO_02_p1_i2_tagged_packet_standard/sources/i2_tagged_document_packet_v1_FY2024.json",
+          "wave4e5_third_issuer_skeptic_packet_20260322_0353/KO_02_p1_i2_tagged_packet_standard/sources/i2_tagged_document_packet_v1_FY2025.json"
+        ]
+      },
+      "reference_artifacts": [
+        "public/data/business_document_protocol_lab/pilot_matrices/KO_2024_2025_10k_item1a/pilot_matrix_story_v1.json",
+        "public/data/business_document_protocol_lab/pilot_matrices/KO_2024_2025_10k_item1a/pilot_matrix_review_v1.json",
+        "public/data/sec_narrative_drift_lab/KO/outputs/llm_outline_compare_structured/openai-chatgpt54ext-agent-fullsec-real-2026-03-06/lab_llm_outline_compare_structured_10k_item1a_2024_2025_deboilerplated_edgar__openai-chatgpt54ext-agent-fullsec-real-2026-03-06.json"
+      ]
+    }
+  },
+  "staged_run_plan": {
+    "first_wave": [
+      {
+        "order": 1,
+        "run_id": "simple_vs_structured__NVDA_2024_2025_10k_item1a",
+        "family_id": "simple_read_vs_structured_read_contrast_v1_1",
+        "fixture_id": "NVDA_2024_2025_10k_item1a",
+        "comparison_baseline": "Current NVDA b0 vs p2 controls and the already-current integrated outline compare."
+      },
+      {
+        "order": 2,
+        "run_id": "decision_relevance_ledger__NVDA_2024_2025_10k_item1a",
+        "family_id": "decision_relevance_ledger_v1_1",
+        "fixture_id": "NVDA_2024_2025_10k_item1a",
+        "comparison_baseline": "Current NVDA integrated outline compare plus pilot-matrix story and review."
+      },
+      {
+        "order": 3,
+        "run_id": "decision_relevance_ledger__KO_2024_2025_10k_item1a",
+        "family_id": "decision_relevance_ledger_v1_1",
+        "fixture_id": "KO_2024_2025_10k_item1a",
+        "comparison_baseline": "Current KO integrated outline compare plus skeptic p1 route and pilot-matrix story."
+      }
+    ]
+  },
+  "runs": [
+    {
+      "order": 1,
+      "run_id": "simple_vs_structured__NVDA_2024_2025_10k_item1a",
+      "family_id": "simple_read_vs_structured_read_contrast_v1_1",
+      "fixture_id": "NVDA_2024_2025_10k_item1a",
+      "comparison_baseline": "Current NVDA b0 vs p2 controls and the already-current integrated outline compare."
+    },
+    {
+      "order": 2,
+      "run_id": "decision_relevance_ledger__NVDA_2024_2025_10k_item1a",
+      "family_id": "decision_relevance_ledger_v1_1",
+      "fixture_id": "NVDA_2024_2025_10k_item1a",
+      "comparison_baseline": "Current NVDA integrated outline compare plus pilot-matrix story and review."
+    },
+    {
+      "order": 3,
+      "run_id": "decision_relevance_ledger__KO_2024_2025_10k_item1a",
+      "family_id": "decision_relevance_ledger_v1_1",
+      "fixture_id": "KO_2024_2025_10k_item1a",
+      "comparison_baseline": "Current KO integrated outline compare plus skeptic p1 route and pilot-matrix story."
+    }
+  ],
+  "evaluation_dimensions": [
+    "meaningfulness",
+    "pedagogical_value",
+    "visible_boundedness",
+    "compactness",
+    "case_specific_distinctiveness",
+    "worth_later_public_integration",
+    "risk_of_adding_noise",
+    "risk_of_overclaiming"
+  ]
+}

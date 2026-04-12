@@ -3,8 +3,8 @@
   "artifact_schema_id": "bounded_contrast_map_program_manifest_v1",
   "program_id": "bounded_contrast_map_v0",
   "display_name": "Bounded Contrast Map v0",
-  "updated_at_utc": "2026-04-11T00:00:00Z",
-  "revision_note": "Compact run-ready bundle for the lighter second-layer artifact on matrix-first public cases.",
+  "updated_at_utc": "2026-04-12T00:00:00Z",
+  "revision_note": "Compact bounded-contrast manifest after the micro-cleanup: tighter mechanism-first labels, no backstage-only output fields, and a clearer evidence-budget ceiling.",
   "task_family_id": "bounded_contrast_map_v0",
   "model_profile_id": "m_alternate_strong_reasoning_v1",
   "runner_binding_id": "rb_openai_chatgpt54ext_real_local_v1",
@@ -43,7 +43,7 @@
         "LLY_2024_2025_10k_item1a",
         "META_2024_2025_10k_item1a"
       ],
-      "operator_focus": "Render a compact contrast map that stays lighter than outline compare while being more structured and memorable than a single matrix brief."
+      "operator_focus": "Render a compact contrast map that stays lighter than outline compare while being more structured and memorable than a single matrix brief. Prefer mechanism-first axes and keep the total evidence-id list within a compact budget."
     }
   ],
   "fixtures": {

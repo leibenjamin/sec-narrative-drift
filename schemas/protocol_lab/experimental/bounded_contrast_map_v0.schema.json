@@ -89,18 +89,11 @@
         "evidence_ids": {
           "type": "array",
           "minItems": 1,
+          "maxItems": 12,
           "items": {
             "type": "string",
             "minLength": 1
           }
-        },
-        "matrix_first_reason": {
-          "type": "string",
-          "minLength": 1
-        },
-        "why_not_full_outline_compare": {
-          "type": "string",
-          "minLength": 1
         }
       },
       "additionalProperties": false

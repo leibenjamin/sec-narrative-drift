@@ -1,0 +1,102 @@
+{
+  "artifact_status": "complete",
+  "artifact_schema_id": "nextgen_workflow_prototype_bundle_manifest_v1",
+  "program_id": "calibration_bundle_cleanup_bounded_contrast_tsla_2026_04_12",
+  "display_name": "Calibration Bundle Cleanup Bounded Contrast TSLA",
+  "updated_at_utc": "2026-04-12T00:00:00Z",
+  "revision_note": "Fresh TSLA bounded-contrast bundle after the bounded_contrast_map_v0 micro-cleanup.",
+  "task_family_id": "bounded_contrast_map_v0",
+  "model_profile_id": "m_alternate_strong_reasoning_v1",
+  "runner_binding_id": "rb_openai_chatgpt54ext_real_local_v1",
+  "runner_campaign_id": "openai_chatgpt54ext_agent_fullsec_real_2026-03-06",
+  "bundle_root": "bundles/calibration_bundle_assembly_and_bounded_contrast_cleanup_2026-04-12/required/bounded_contrast_map_tsla_2026-04-12",
+  "report_root": "reports/calibration_bundle_assembly_and_bounded_contrast_cleanup_2026-04-12",
+  "validation_script_path": "scripts/protocol_lab_validate_desktop_packet_responses.py",
+  "source_workspace_resolution": {
+    "requires_materialized_local_inputs": true,
+    "resolution_order": [
+      "current_repo_root",
+      "source_workspace_root"
+    ],
+    "source_workspace_root_cli_arg": "--source-workspace-root",
+    "notes": [
+      "This calibration bundle reuses existing local-only candidate packet sources already present in the repo.",
+      "No public-route integration is part of this bundle."
+    ]
+  },
+  "families": [
+    {
+      "family_id": "bounded_contrast_map_v0",
+      "protocol_id": "bounded_contrast_map_v0",
+      "stack_id": "s_bounded_contrast_map_m2_v0",
+      "prompt_path": "docs/protocol_lab/prompts/experimental/bounded_contrast_map_v0.md",
+      "schema_path": "schemas/protocol_lab/experimental/bounded_contrast_map_v0.schema.json",
+      "output_top_level_keys": [
+        "bounded_contrast_map",
+        "evidence_bundle"
+      ],
+      "primary_artifact_key": "bounded_contrast_map",
+      "primary_sidecar_filename": "bounded_contrast_map_v0.json",
+      "expected_to": "supplement_matrix_first_public_routes_with_a_lighter_second_layer",
+      "selected_fixtures": [
+        "TSLA_2024_2025_10k_item1a"
+      ],
+      "operator_focus": "Render a compact TSLA contrast map that stays lighter than outline compare while being more structured and memorable than a single matrix brief. Keep rows sharp, mechanism-first, and evidence-budgeted."
+    }
+  ],
+  "fixtures": {
+    "TSLA_2024_2025_10k_item1a": {
+      "ticker": "TSLA",
+      "issuer_name": "Tesla, Inc.",
+      "year_labels": [
+        "FY2024",
+        "FY2025"
+      ],
+      "fixture_guidance": "Vivid mechanism-chain case. Keep the contrast bounded to the sharpest mechanism shifts rather than expanding into a full section reconstruction.",
+      "source_materials": {
+        "source_case_manifest_path": "bundles/showcase_llm_inputs_casebook_candidates_20260406_wmtfix/runs/02_TSLA/sources/source_case_manifest_v1.json",
+        "input_pack_manifest_path": "bundles/showcase_llm_inputs_casebook_candidates_20260406_wmtfix/runs/02_TSLA/sources/i2_tagged_document_packet_v1.json",
+        "rendered_inputs_path": "bundles/showcase_llm_inputs_casebook_candidates_20260406_wmtfix/runs/02_TSLA/sources/i2_tagged_document_packet_v1.rendered_inputs.json",
+        "split_rendered_input_paths": [
+          "bundles/showcase_llm_inputs_casebook_candidates_20260406_wmtfix/runs/02_TSLA/sources/i2_tagged_document_packet_v1_FY2024.json",
+          "bundles/showcase_llm_inputs_casebook_candidates_20260406_wmtfix/runs/02_TSLA/sources/i2_tagged_document_packet_v1_FY2025.json"
+        ]
+      },
+      "reference_artifacts": [
+        "public/data/business_document_protocol_lab/pilot_matrices/TSLA_2024_2025_10k_item1a/pilot_matrix_story_v1.json",
+        "bundles/nextgen_workflow_prototypes_v1_1_2026-04-10/runs/simple_vs_structured__TSLA_2024_2025_10k_item1a/response.json",
+        "bundles/nextgen_workflow_prototypes_v1_1_second_wave_2026-04-11/runs/decision_relevance_ledger__TSLA_2024_2025_10k_item1a/response.json"
+      ]
+    }
+  },
+  "staged_run_plan": {
+    "first_wave": [
+      {
+        "order": 1,
+        "run_id": "bounded_contrast_map__TSLA_2024_2025_10k_item1a",
+        "family_id": "bounded_contrast_map_v0",
+        "fixture_id": "TSLA_2024_2025_10k_item1a",
+        "comparison_baseline": "Current TSLA matrix brief plus existing simple-vs-structured and decision-relevance support artifacts."
+      }
+    ]
+  },
+  "runs": [
+    {
+      "order": 1,
+      "run_id": "bounded_contrast_map__TSLA_2024_2025_10k_item1a",
+      "family_id": "bounded_contrast_map_v0",
+      "fixture_id": "TSLA_2024_2025_10k_item1a",
+      "comparison_baseline": "Current TSLA matrix brief plus existing simple-vs-structured and decision-relevance support artifacts."
+    }
+  ],
+  "evaluation_dimensions": [
+    "meaningfulness",
+    "pedagogical_value",
+    "visible_boundedness",
+    "compactness",
+    "case_specific_distinctiveness",
+    "worth_later_public_integration",
+    "risk_of_adding_noise",
+    "risk_of_overclaiming"
+  ]
+}
