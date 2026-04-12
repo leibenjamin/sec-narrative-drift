@@ -7,6 +7,7 @@ import unittest
 from pathlib import Path
 
 ROOT_DIR = Path(__file__).resolve().parents[1]
+REPO_DIR = ROOT_DIR.parent
 TMP_ROOT = ROOT_DIR / "_tmp_test_runs"
 sys.path.insert(0, str(ROOT_DIR))
 
@@ -31,6 +32,11 @@ class PacketResponseValidatorTest(unittest.TestCase):
             "runner_binding_id": "rb_openai_chatgpt54ext_real_local_v1",
             "items": [],
             "notes": [],
+        }
+
+    def minimal_evidence_bundle_transportless(self) -> dict[str, object]:
+        return {
+            "items": [],
         }
 
     def minimal_simple_vs_structured_adjudication(self, *, fixture_id: str) -> dict[str, object]:
@@ -222,15 +228,25 @@ class PacketResponseValidatorTest(unittest.TestCase):
                 json.dumps(
                     {
                         "simple_vs_structured_adjudication": adjudication,
-                        "evidence_bundle": self.minimal_evidence_bundle(
-                            fixture_id=fixture_id,
-                            protocol_id="simple_read_vs_structured_read_contrast_v1_1",
-                        ),
+                        "evidence_bundle": self.minimal_evidence_bundle_transportless(),
                     }
                 ),
                 manifest_payload={
                     "schema_basis": {
-                        "response_schema_repo_path": "schemas/protocol_lab/experimental/simple_read_vs_structured_read_contrast_v1_1.schema.json"
+                        "response_schema_repo_path": (
+                            REPO_DIR
+                            / "schemas"
+                            / "protocol_lab"
+                            / "experimental"
+                            / "simple_read_vs_structured_read_contrast_v1_1.schema.json"
+                        ).as_posix()
+                    },
+                    "run_identity": {
+                        "run_id": "simple_vs_structured__WMT_2025_2026_10k_item1a",
+                        "fixture_id": fixture_id,
+                        "protocol_id": "simple_read_vs_structured_read_contrast_v1_1",
+                        "model_profile_id": "m_alternate_strong_reasoning_v1",
+                        "runner_binding_id": "rb_openai_chatgpt54ext_real_local_v1",
                     },
                     "output_contract": {
                         "top_level_keys": [
@@ -287,15 +303,19 @@ class PacketResponseValidatorTest(unittest.TestCase):
                 json.dumps(
                     {
                         "decision_relevance_ledger": ledger,
-                        "evidence_bundle": self.minimal_evidence_bundle(
-                            fixture_id=fixture_id,
-                            protocol_id="decision_relevance_ledger_v1_1",
-                        ),
+                        "evidence_bundle": self.minimal_evidence_bundle_transportless(),
                     }
                 ),
                 manifest_payload={
                     "schema_basis": {
                         "response_schema_repo_path": "schemas/protocol_lab/experimental/decision_relevance_ledger_v1_1.schema.json"
+                    },
+                    "run_identity": {
+                        "run_id": "decision_relevance_ledger__LLY_2024_2025_10k_item1a",
+                        "fixture_id": fixture_id,
+                        "protocol_id": "decision_relevance_ledger_v1_1",
+                        "model_profile_id": "m_alternate_strong_reasoning_v1",
+                        "runner_binding_id": "rb_openai_chatgpt54ext_real_local_v1",
                     },
                     "output_contract": {
                         "top_level_keys": [
@@ -319,6 +339,111 @@ class PacketResponseValidatorTest(unittest.TestCase):
                 msg=result.notes,
             )
         finally:
+            shutil.rmtree(repo, ignore_errors=True)
+
+    def test_manifest_declared_schema_hydrates_transport_fields_and_writes_sidecars(self) -> None:
+        repo = TMP_ROOT / "validator_case_f"
+        shutil.rmtree(repo, ignore_errors=True)
+        repo.mkdir(parents=True, exist_ok=True)
+        original_repo_root = validator.REPO_ROOT
+        validator.REPO_ROOT = repo
+        try:
+            packet_root = repo / "nextgen_bundle_runs"
+            fixture_id = "WMT_2025_2026_10k_item1a"
+            run_id = "simple_vs_structured__WMT_2025_2026_10k_item1a"
+            response_path = packet_root / run_id / "response.json"
+            evidence_sidecar_path = (
+                repo
+                / "bundles"
+                / "nextgen_workflow_prototypes_v1_1_2026-04-10"
+                / "runs"
+                / run_id
+                / "artifacts"
+                / "evidence_bundle_v1.json"
+            )
+            primary_sidecar_path = (
+                repo
+                / "bundles"
+                / "nextgen_workflow_prototypes_v1_1_2026-04-10"
+                / "runs"
+                / run_id
+                / "artifacts"
+                / "simple_vs_structured_adjudication_v1_1.json"
+            )
+            adjudication = self.minimal_simple_vs_structured_adjudication(fixture_id=fixture_id)
+            raw_response = {
+                "simple_vs_structured_adjudication": adjudication,
+                "evidence_bundle": self.minimal_evidence_bundle_transportless(),
+            }
+            self.write_run(
+                packet_root,
+                run_id,
+                json.dumps(raw_response),
+                manifest_payload={
+                    "schema_basis": {
+                        "response_schema_repo_path": (
+                            REPO_DIR
+                            / "schemas"
+                            / "protocol_lab"
+                            / "experimental"
+                            / "simple_read_vs_structured_read_contrast_v1_1.schema.json"
+                        ).as_posix()
+                    },
+                    "run_identity": {
+                        "run_id": run_id,
+                        "fixture_id": fixture_id,
+                        "protocol_id": "simple_read_vs_structured_read_contrast_v1_1",
+                        "model_profile_id": "m_alternate_strong_reasoning_v1",
+                        "runner_binding_id": "rb_openai_chatgpt54ext_real_local_v1",
+                    },
+                    "output_contract": {
+                        "top_level_keys": [
+                            "simple_vs_structured_adjudication",
+                            "evidence_bundle",
+                        ],
+                        "sidecar_outputs": [
+                            {
+                                "response_key": "simple_vs_structured_adjudication",
+                                "relative_path": primary_sidecar_path.relative_to(repo).as_posix(),
+                            },
+                            {
+                                "response_key": "evidence_bundle",
+                                "relative_path": evidence_sidecar_path.relative_to(repo).as_posix(),
+                            },
+                        ],
+                    },
+                },
+            )
+
+            report = validator.validate_packet(
+                packet_root,
+                [run_id],
+                write_sidecars=True,
+            )
+
+            self.assertEqual("pass", report.overall_result)
+            result = report.run_results[0]
+            self.assertEqual([], result.blocker_codes)
+            self.assertTrue(evidence_sidecar_path.exists())
+            self.assertTrue(primary_sidecar_path.exists())
+            self.assertTrue(any("Hydrated missing `evidence_bundle` transport fields" in note for note in result.notes))
+
+            sidecar_payload = json.loads(evidence_sidecar_path.read_text(encoding="utf-8"))
+            self.assertEqual("complete", sidecar_payload["artifact_status"])
+            self.assertEqual("evidence_bundle_v1", sidecar_payload["artifact_schema_id"])
+            self.assertEqual(f"{run_id}__evidence_bundle_v1", sidecar_payload["evidence_bundle_id"])
+            self.assertEqual(run_id, sidecar_payload["run_request_id"])
+            self.assertEqual(fixture_id, sidecar_payload["fixture_id"])
+            self.assertEqual("simple_read_vs_structured_read_contrast_v1_1", sidecar_payload["protocol_id"])
+            self.assertEqual("m_alternate_strong_reasoning_v1", sidecar_payload["model_profile_id"])
+            self.assertEqual("rb_openai_chatgpt54ext_real_local_v1", sidecar_payload["runner_binding_id"])
+            self.assertEqual([], sidecar_payload["notes"])
+            self.assertEqual([], sidecar_payload["items"])
+
+            raw_saved_response = json.loads(response_path.read_text(encoding="utf-8"))
+            self.assertEqual(raw_response, raw_saved_response)
+        finally:
+            validator.REPO_ROOT = original_repo_root
             shutil.rmtree(repo, ignore_errors=True)
 
 

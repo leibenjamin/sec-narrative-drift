@@ -222,6 +222,99 @@ def validate_against_manifest_schema(
     )
 
 
+def experimental_run_context_from_manifest(run_manifest_path: Path) -> dict[str, str]:
+    manifest = run_manifest_payload(run_manifest_path)
+    if manifest is None:
+        return {}
+
+    context: dict[str, str] = {}
+    run_identity = manifest.get("run_identity")
+    if isinstance(run_identity, dict):
+        identity = cast(dict[str, object], run_identity)
+        run_request_id = identity.get("run_request_id")
+        if isinstance(run_request_id, str) and run_request_id:
+            context["run_request_id"] = run_request_id
+        run_id = identity.get("run_id")
+        if isinstance(run_id, str) and run_id:
+            context.setdefault("run_request_id", run_id)
+        fixture_id = identity.get("fixture_id")
+        if isinstance(fixture_id, str) and fixture_id:
+            context["fixture_id"] = fixture_id
+        protocol_id = identity.get("protocol_id")
+        if isinstance(protocol_id, str) and protocol_id:
+            context["protocol_id"] = protocol_id
+        model_profile_id = identity.get("model_profile_id")
+        if isinstance(model_profile_id, str) and model_profile_id:
+            context["model_profile_id"] = model_profile_id
+        runner_binding_id = identity.get("runner_binding_id")
+        if isinstance(runner_binding_id, str) and runner_binding_id:
+            context["runner_binding_id"] = runner_binding_id
+
+    top_level_run_request_id = manifest.get("run_request_id")
+    if isinstance(top_level_run_request_id, str) and top_level_run_request_id:
+        context["run_request_id"] = top_level_run_request_id
+    top_level_fixture_id = manifest.get("fixture_id")
+    if isinstance(top_level_fixture_id, str) and top_level_fixture_id:
+        context["fixture_id"] = top_level_fixture_id
+    top_level_protocol_id = manifest.get("protocol_id")
+    if isinstance(top_level_protocol_id, str) and top_level_protocol_id:
+        context["protocol_id"] = top_level_protocol_id
+    top_level_model_profile_id = manifest.get("model_profile_id")
+    if isinstance(top_level_model_profile_id, str) and top_level_model_profile_id:
+        context["model_profile_id"] = top_level_model_profile_id
+    top_level_runner_binding_id = manifest.get("runner_binding_id")
+    if isinstance(top_level_runner_binding_id, str) and top_level_runner_binding_id:
+        context["runner_binding_id"] = top_level_runner_binding_id
+
+    return context
+
+
+def hydrate_evidence_bundle_transport(
+    parsed: dict[str, object],
+    run_manifest_path: Path,
+) -> tuple[dict[str, object], list[str]]:
+    bundle_value = parsed.get("evidence_bundle")
+    if not isinstance(bundle_value, dict):
+        return parsed, []
+
+    bundle = dict(cast(dict[str, object], bundle_value))
+    context = experimental_run_context_from_manifest(run_manifest_path)
+    run_request_id = context.get("run_request_id")
+    hydration_notes: list[str] = []
+    missing_fields_added: list[str] = []
+
+    def add_missing(field_name: str, value: object) -> None:
+        if field_name in bundle or value is None:
+            return
+        bundle[field_name] = value
+        missing_fields_added.append(field_name)
+
+    add_missing("artifact_status", "complete")
+    add_missing("artifact_schema_id", "evidence_bundle_v1")
+    add_missing(
+        "evidence_bundle_id",
+        f"{run_request_id}__evidence_bundle_v1" if run_request_id else None,
+    )
+    add_missing("run_request_id", run_request_id)
+    add_missing("fixture_id", context.get("fixture_id"))
+    add_missing("protocol_id", context.get("protocol_id"))
+    add_missing("model_profile_id", context.get("model_profile_id"))
+    add_missing("runner_binding_id", context.get("runner_binding_id"))
+    add_missing("notes", [])
+
+    if not missing_fields_added:
+        return parsed, hydration_notes
+
+    hydrated = dict(parsed)
+    hydrated["evidence_bundle"] = bundle
+    hydration_notes.append(
+        "Hydrated missing `evidence_bundle` transport fields from run manifest context: "
+        + ", ".join(sorted(missing_fields_added))
+        + "."
+    )
+    return hydrated, hydration_notes
+
+
 def sidecar_outputs_from_run_manifest(run_manifest_path: Path) -> list[dict[str, str]]:
     manifest = run_manifest_payload(run_manifest_path)
     if manifest is None:
@@ -395,12 +488,14 @@ def validate_run(packet_root: Path, run_id: str, *, write_sidecars: bool = False
         )
     else:
         notes.append("response.json matches the expected lane-family top-level keys.")
-        schema_status, schema_notes = validate_against_manifest_schema(checked_parsed, run_manifest_path)
+        validated_parsed, hydration_notes = hydrate_evidence_bundle_transport(checked_parsed, run_manifest_path)
+        notes.extend(hydration_notes)
+        schema_status, schema_notes = validate_against_manifest_schema(validated_parsed, run_manifest_path)
         notes.extend(schema_notes)
         if schema_status == "failed":
             blocker_codes.append("schema_validation_failed")
         if write_sidecars and not blocker_codes:
-            sidecars_written = write_sidecars_from_response(checked_parsed, run_manifest_path)
+            sidecars_written = write_sidecars_from_response(validated_parsed, run_manifest_path)
             if sidecars_written:
                 notes.append("Wrote sidecar artifacts from the validated response.")
 
