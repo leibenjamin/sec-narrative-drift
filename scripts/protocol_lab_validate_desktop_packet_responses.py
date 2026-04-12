@@ -9,7 +9,7 @@ from pathlib import Path
 from typing import Any, Sequence, cast
 
 try:
-    from jsonschema import Draft202012Validator, RefResolver
+    from jsonschema import Draft202012Validator, RefResolver  # pyright: ignore[reportMissingModuleSource]
 except ImportError:  # pragma: no cover - dependency is present in the repo env
     Draft202012Validator = None  # type: ignore[assignment]
     RefResolver = None  # type: ignore[assignment]

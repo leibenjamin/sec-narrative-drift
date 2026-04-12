@@ -105,9 +105,10 @@ def build_source_case_summary(source_case: dict[str, Any]) -> str:
 
 
 def build_input_integrity_note(input_pack: dict[str, Any]) -> str:
-    paragraph_counts = cast(dict[str, Any], input_pack.get("metadata", {})).get("paragraph_counts")
+    raw_counts = cast(dict[str, Any], input_pack.get("metadata", {})).get("paragraph_counts")
     counts_note = ""
-    if isinstance(paragraph_counts, dict) and paragraph_counts:
+    if isinstance(raw_counts, dict) and raw_counts:
+        paragraph_counts = cast(dict[str, Any], raw_counts)
         rendered = ", ".join(f"{key}={value}" for key, value in paragraph_counts.items())
         counts_note = f"; paragraph_counts: {rendered}"
     return f"integrity_hash={input_pack.get('integrity_hash')}{counts_note}"
@@ -629,13 +630,13 @@ def generate_bundle(manifest_path: Path, source_workspace_root: Path | None) -> 
         run_dir = bundle_root / "runs" / cast(str, run["run_id"])
         run_dir.mkdir(parents=True, exist_ok=True)
         source_artifact_paths = resolve_source_artifacts_for_run(
-            cast(dict[str, Any], run), family, run_dir, source_workspace_root
+            run, family, run_dir, source_workspace_root
         )
         run_manifest = build_run_manifest(
             bundle_root,
             bundle_root_rel,
             cast(str, manifest["program_id"]),
-            cast(dict[str, Any], run),
+            run,
             family,
             fixture,
             source_case,
@@ -646,7 +647,7 @@ def generate_bundle(manifest_path: Path, source_workspace_root: Path | None) -> 
             source_artifact_paths,
         )
         starter_prompt = build_run_starter_prompt(
-            cast(dict[str, Any], run), family, fixture, source_case, source_artifact_paths
+            run, family, fixture, source_case, source_artifact_paths
         )
         default_attachments = cast(list[str], cast(dict[str, Any], run_manifest["input_basis"])["default_attachments"])
         combined_attachments = cast(list[str], cast(dict[str, Any], run_manifest["input_basis"])["combined_attachment_fallback"])
@@ -675,7 +676,7 @@ def generate_bundle(manifest_path: Path, source_workspace_root: Path | None) -> 
             }
         )
 
-    evaluation_template = build_evaluation_template(manifest, cast(list[dict[str, Any]], runs))
+    evaluation_template = build_evaluation_template(manifest, runs)
     write_json(bundle_root / "evaluation_template.json", evaluation_template)
     root_manifest = {
         "artifact_status": "prepared",
@@ -692,7 +693,7 @@ def generate_bundle(manifest_path: Path, source_workspace_root: Path | None) -> 
         "evaluation_template_path": repo_rel(bundle_root / "evaluation_template.json"),
     }
     write_json(bundle_root / "manifest.json", root_manifest)
-    write_text(bundle_root / "README.md", build_root_readme(bundle_root_rel, manifest, cast(list[dict[str, Any]], runs)))
+    write_text(bundle_root / "README.md", build_root_readme(bundle_root_rel, manifest, runs))
     return bundle_root
 
 

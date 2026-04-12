@@ -108,12 +108,15 @@ def check_bundle(bundle_root: Path) -> dict[str, Any]:
 
         primary_sidecar_filename = output_contract.get("primary_sidecar_filename")
         evidence_sidecar_filename = output_contract.get("evidence_sidecar_filename")
-        sidecar_outputs = cast(list[dict[str, Any]], output_contract.get("sidecar_outputs", []))
-        declared_paths = {
-            cast(str, row.get("response_key")): Path(cast(str, row.get("relative_path", ""))).name
-            for row in sidecar_outputs
-            if isinstance(row, dict)
-        }
+        sidecar_outputs = cast(list[Any], output_contract.get("sidecar_outputs", []))
+        declared_paths: dict[str, str] = {}
+        for row in sidecar_outputs:
+            if not isinstance(row, dict):
+                continue
+            row_dict = cast(dict[str, Any], row)
+            declared_paths[cast(str, row_dict.get("response_key"))] = Path(
+                cast(str, row_dict.get("relative_path", ""))
+            ).name
         if declared_paths.get(cast(str, output_contract.get("primary_artifact_key"))) != primary_sidecar_filename:
             run_failures.append("Primary sidecar filename does not match the declared sidecar output path.")
         if declared_paths.get("evidence_bundle") != evidence_sidecar_filename:

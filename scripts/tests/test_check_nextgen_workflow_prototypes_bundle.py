@@ -4,6 +4,7 @@ import json
 import shutil
 import sys
 import unittest
+from collections.abc import Mapping
 from pathlib import Path
 from typing import cast
 
@@ -15,7 +16,7 @@ import check_nextgen_workflow_prototypes_bundle as checker  # noqa: E402
 
 
 class NextgenBundleCheckTest(unittest.TestCase):
-    def write_json(self, path: Path, payload: dict[str, object]) -> None:
+    def write_json(self, path: Path, payload: Mapping[str, object]) -> None:
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
 

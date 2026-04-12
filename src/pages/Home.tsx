@@ -253,7 +253,7 @@ export default function Home() {
               {casebookFraming.home.whyThisMatters.map((item) => (
                 <div
                   key={item}
-                  className="rounded-[1rem] border border-white/10 bg-slate-950/58 px-3.5 py-3 text-sm leading-6 text-slate-100"
+                  className="rounded-2xl border border-white/10 bg-slate-950/58 px-3.5 py-3 text-sm leading-6 text-slate-100"
                 >
                   {item}
                 </div>

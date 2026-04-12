@@ -285,7 +285,7 @@ export default function Methodology() {
                     </div>
 
                     <div className="mt-3 grid gap-2.5">
-                      <article className="rounded-[1rem] border border-white/10 bg-slate-950/58 p-3">
+                      <article className="rounded-2xl border border-white/10 bg-slate-950/58 p-3">
                         <div className="text-[10px] uppercase tracking-[0.24em] text-slate-400">
                           What a simpler read gets you
                         </div>
@@ -294,7 +294,7 @@ export default function Methodology() {
                         </p>
                       </article>
 
-                      <article className="rounded-[1rem] border border-sky-300/18 bg-sky-400/8 p-3">
+                      <article className="rounded-2xl border border-sky-300/18 bg-sky-400/8 p-3">
                         <div className="text-[10px] uppercase tracking-[0.24em] text-sky-100">
                           What the structured read adds
                         </div>
@@ -303,7 +303,7 @@ export default function Methodology() {
                         </p>
                       </article>
 
-                      <article className="rounded-[1rem] border border-white/10 bg-slate-950/58 p-3">
+                      <article className="rounded-2xl border border-white/10 bg-slate-950/58 p-3">
                         <div className="text-[10px] uppercase tracking-[0.24em] text-slate-400">
                           Why this matters
                         </div>
