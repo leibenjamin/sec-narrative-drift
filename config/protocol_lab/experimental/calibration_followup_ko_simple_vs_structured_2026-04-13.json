@@ -1,0 +1,120 @@
+{
+  "artifact_status": "complete",
+  "artifact_schema_id": "nextgen_workflow_prototypes_program_manifest_v1_1",
+  "program_id": "calibration_followup_ko_simple_vs_structured_2026_04_13",
+  "display_name": "Calibration Follow-Up KO Simple vs Structured",
+  "updated_at_utc": "2026-04-13T00:00:00Z",
+  "revision_note": "One-run follow-up bundle for the missing KO adjudication after validated prep-source capture.",
+  "task_family_id": "nextgen_workflow_prototypes_v1_1",
+  "model_profile_id": "m_alternate_strong_reasoning_v1",
+  "runner_binding_id": "rb_openai_chatgpt54ext_real_local_v1",
+  "runner_campaign_id": "openai_chatgpt54ext_agent_fullsec_real_2026-03-06",
+  "bundle_root": "bundles/calibration_2026-04-12/required/ko_simple_vs_structured_adjudication_2026-04-13",
+  "report_root": "reports/calibration_bundle_assembly_and_bounded_contrast_cleanup_2026-04-12",
+  "validation_script_path": "scripts/protocol_lab_validate_desktop_packet_responses.py",
+  "source_workspace_resolution": {
+    "requires_materialized_local_inputs": true,
+    "resolution_order": [
+      "current_repo_root",
+      "source_workspace_root"
+    ],
+    "source_workspace_root_cli_arg": "--source-workspace-root",
+    "notes": [
+      "This follow-up bundle uses the validated KO prep responses as the adjudication source pair.",
+      "Use the short live calibration root as canonical for all new follow-up work."
+    ]
+  },
+  "families": [
+    {
+      "family_id": "simple_read_vs_structured_read_contrast_v1_1",
+      "protocol_id": "simple_read_vs_structured_read_contrast_v1_1",
+      "stack_id": "s_simple_vs_structured_adjudication_m2_v1_1",
+      "prompt_path": "docs/protocol_lab/prompts/experimental/simple_read_vs_structured_read_contrast_v1_1.md",
+      "schema_path": "schemas/protocol_lab/experimental/simple_read_vs_structured_read_contrast_v1_1.schema.json",
+      "output_top_level_keys": [
+        "simple_vs_structured_adjudication",
+        "evidence_bundle"
+      ],
+      "primary_artifact_key": "simple_vs_structured_adjudication",
+      "primary_sidecar_filename": "simple_vs_structured_adjudication_v1_1.json",
+      "expected_to": "supplement_p0_p2_compare_logic_via_true_adjudication",
+      "source_artifact_requirements": {
+        "simple_read": {
+          "description": "A validated plain-prompt source artifact for the same fixture",
+          "typical_source": "prep-required p0 follow-up run",
+          "bundle_filename": "simple_read_source.json"
+        },
+        "structured_read": {
+          "description": "A validated tagged-input structured source artifact for the same fixture",
+          "typical_source": "prep-required p2 follow-up run",
+          "bundle_filename": "structured_read_source.json"
+        }
+      },
+      "source_artifact_resolution": {
+        "KO_2024_2025_10k_item1a": {
+          "simple_read_path": "bundles/calibration_2026-04-12/prep_required/ko_source_pair_prep_2026-04-12/runs/source_p0__KO_2024_2025_10k_item1a/response.json",
+          "structured_read_path": "bundles/calibration_2026-04-12/prep_required/ko_source_pair_prep_2026-04-12/runs/source_p2__KO_2024_2025_10k_item1a/response.json"
+        }
+      },
+      "selected_fixtures": [
+        "KO_2024_2025_10k_item1a"
+      ],
+      "operator_focus": "Use the already-produced KO simple and structured reads as fixed source artifacts. Judge whether the structured path truly earns extra public-teaching value on a low-drift skeptic anchor without rewarding polish for its own sake."
+    }
+  ],
+  "fixtures": {
+    "KO_2024_2025_10k_item1a": {
+      "ticker": "KO",
+      "issuer_name": "The Coca-Cola Company",
+      "year_labels": [
+        "FY2024",
+        "FY2025"
+      ],
+      "fixture_guidance": "Skeptic integrated anchor. The adjudication should reward cleaner allowed public claims only if they materially beat the plain read on a low-drift case.",
+      "source_materials": {
+        "source_case_manifest_path": "bundles/calibration_2026-04-12/prep_required/ko_source_pair_prep_2026-04-12/fixtures/KO_2024_2025_10k_item1a/source_case_manifest_v1.json",
+        "input_pack_manifest_path": "bundles/calibration_2026-04-12/prep_required/ko_source_pair_prep_2026-04-12/fixtures/KO_2024_2025_10k_item1a/i2_tagged_document_packet_v1.json",
+        "rendered_inputs_path": "bundles/calibration_2026-04-12/prep_required/ko_source_pair_prep_2026-04-12/fixtures/KO_2024_2025_10k_item1a/i2_tagged_document_packet_v1.rendered_inputs.json",
+        "split_rendered_input_paths": [
+          "bundles/calibration_2026-04-12/prep_required/ko_source_pair_prep_2026-04-12/fixtures/KO_2024_2025_10k_item1a/i2_tagged_document_packet_v1_FY2024.json",
+          "bundles/calibration_2026-04-12/prep_required/ko_source_pair_prep_2026-04-12/fixtures/KO_2024_2025_10k_item1a/i2_tagged_document_packet_v1_FY2025.json"
+        ]
+      },
+      "reference_artifacts": [
+        "public/data/business_document_protocol_lab/pilot_matrices/KO_2024_2025_10k_item1a/pilot_matrix_story_v1.json",
+        "public/data/business_document_protocol_lab/pilot_matrices/KO_2024_2025_10k_item1a/pilot_matrix_review_v1.json",
+        "public/data/sec_narrative_drift_lab/KO/outputs/llm_outline_compare_structured/openai-chatgpt54ext-agent-fullsec-real-2026-03-06/lab_llm_outline_compare_structured_10k_item1a_2024_2025_deboilerplated_edgar__openai-chatgpt54ext-agent-fullsec-real-2026-03-06.json",
+        "bundles/calibration_2026-04-12/required/nextgen_workflow_calibration_2026-04-12/runs/decision_relevance_ledger__KO_2024_2025_10k_item1a/response.json"
+      ]
+    }
+  },
+  "staged_run_plan": {
+    "follow_up_wave": [
+      {
+        "order": 1,
+        "run_id": "simple_vs_structured__KO_2024_2025_10k_item1a",
+        "family_id": "simple_read_vs_structured_read_contrast_v1_1",
+        "fixture_id": "KO_2024_2025_10k_item1a",
+        "comparison_baseline": "Fresh KO prep-source pair, current KO integrated outline compare, and the newly completed KO decision ledger."
+      }
+    ]
+  },
+  "runs": [
+    {
+      "order": 1,
+      "run_id": "simple_vs_structured__KO_2024_2025_10k_item1a",
+      "family_id": "simple_read_vs_structured_read_contrast_v1_1",
+      "fixture_id": "KO_2024_2025_10k_item1a",
+      "comparison_baseline": "Fresh KO prep-source pair, current KO integrated outline compare, and the newly completed KO decision ledger."
+    }
+  ],
+  "evaluation_dimensions": [
+    "meaningfulness",
+    "pedagogical_value",
+    "compactness",
+    "case_specific_distinctiveness",
+    "worth_later_public_integration",
+    "risk_of_adding_noise",
+    "risk_of_overclaiming"
+  ]
+}
