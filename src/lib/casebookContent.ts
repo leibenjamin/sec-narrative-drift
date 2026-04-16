@@ -11,14 +11,10 @@ export type ReserveCaseTicker = (typeof RESERVE_CASE_TICKERS)[number]
 export type HoldCaseTicker = (typeof HOLD_CASE_TICKERS)[number]
 
 export type RouteFamilyPreviewSubtitleSource = "card_takeaway" | "protocol_read" | "why_case_exists"
-export type RouteFamilyPreviewSupportStrategy = "effort_first" | "scope_only"
 export type PublicCaseSurface = "runtime_full" | "matrix_first"
 export type PublicCaseBandId = "anchor_shapes" | "pressure_cases"
 
 export type CaseTeachingLayer = {
-  proves: string
-  doesntProve: string
-  lesson: string
   commonMistake: string
 }
 
@@ -30,6 +26,9 @@ export type PublicCasebookEntry = {
   yearTo: number
   surface: PublicCaseSurface
   publicRoleLabel: string
+  publicClaim: string
+  proofBasis: string
+  stopBoundary: string
   homeCardLabel: string
   chooserCardDescription: string
   chooserBestFor: string
@@ -41,7 +40,6 @@ export type PublicCasebookEntry = {
     boundedTitle: string
     roleSummary: string
     subtitleSource: RouteFamilyPreviewSubtitleSource
-    supportStrategy: RouteFamilyPreviewSupportStrategy
     showRestraintStrip?: boolean
   }
   bandId: PublicCaseBandId
@@ -94,7 +92,7 @@ export const casebookFraming = {
     support:
       "An interactive casebook for how document-comparison workflows should claim, prove, and stop.",
     chooserSummary:
-      "Start with the three anchor answer shapes. The full Casebook shows how those same judgment habits behave under added pressure.",
+      "Start with the three anchor answer shapes. The full Casebook keeps the same claim, proof, and stop grammar under added pressure.",
     whatThisIsTitle: "What this is",
     whatThisIs: "An interactive casebook for bounded document-comparison judgment.",
     whatThisIsntTitle: "What this isn't",
@@ -107,9 +105,9 @@ export const casebookFraming = {
     ],
     casebookEntryTitle: "Explore the full casebook",
     casebookEntryBody:
-      "The first three teach the answer shapes. The full Casebook shows how those shapes behave under other pressures.",
+      "The first three teach vivid answer, honest stop, and useful restraint. The full Casebook keeps the same bounded grammar under added pressure.",
     compareTeaser:
-      "Methodology shows, with TSLA and META, what a simpler read gets right and what structure adds.",
+      "Methodology uses TSLA and META to show what a simpler read gets right, what structure adds, and why the public route still stays bounded.",
     compareTeaserCta: "See the compare",
     casebookEntryCta: "Open the Casebook",
     commonFailureModesTitle: "Common failure modes this lab avoids",
@@ -128,10 +126,10 @@ export const casebookFraming = {
     eyebrow: "Casebook",
     heading: "A curated set of worked document-comparison cases.",
     intro:
-      "Each public case earns space by teaching a different answer shape or pressure type for the same comparison task.",
+      "Each public case earns space by teaching a different first question, answer shape, and stopping boundary for the same comparison task.",
     rosterNoteTitle: "Why this roster",
     rosterNoteLead:
-      "Each public case earns space by teaching a different kind of judgment. The first three anchor the answer shapes. The second three show those shapes under added pressure.",
+      "Each public case earns space by teaching a different kind of judgment. The first three anchor the answer shapes. The second three keep the same grammar under added pressure without promising full depth everywhere.",
     rosterNoteSupport:
       "The roster stays bounded on purpose so the casebook stays curated, not noisy. Some valid candidates stay out when they overlap too much or add too little teaching contrast.",
     boundednessNote:
@@ -146,7 +144,7 @@ export const casebookFraming = {
       "How the casebook makes bounded document-comparison claims, keeps proof visible, and stops before overclaiming.",
     heading: "Field guide for claim, proof, and stop.",
     intro:
-      "The public lab is not trying to answer every document question. It exists to show how a bounded workflow should make a claim, prove it with visible evidence, and stop where the public route should stop.",
+      "The public lab is not trying to answer every document question. It exists to show how a bounded workflow should make a claim, prove it with visible evidence, and stop before the public route overclaims.",
     whyFrontierTitle: "Why not just ask a frontier model?",
     whyFrontierBody: [
       "A strong frontier model can often give you a plausible first read.",
@@ -155,7 +153,7 @@ export const casebookFraming = {
     ],
     compareTitle: "What the structured read adds",
     compareIntro:
-      "These two cases show what a simpler read gets right, what the structured read adds, and why that difference matters.",
+      "These two cases show what a simpler read gets right, what the structured read adds, and why the stronger public route still needs an explicit stop.",
     nonClaimsTitle: "What this lab does not claim",
     nonClaims: [
       "It is not a benchmark of every model or prompt family.",
@@ -163,7 +161,7 @@ export const casebookFraming = {
       "It is not proof that every document set needs the same answer shape.",
     ],
     matrixOnlyNote:
-      "Some public cases can ship honestly with pilot-matrix artifacts only. LLY already proves that the visible route does not need outline compare everywhere to be useful.",
+      "Some public cases can ship honestly with pilot-matrix evidence only. Matrix-first here means the proof basis is sufficient and the bounded public stop is part of the lesson, not a missing feature.",
   },
   reserveHold: {
     reserveTitle: "Reserve",
@@ -226,6 +224,12 @@ export const PUBLIC_CASEBOOK_CASES: Record<PublicCasebookTicker, PublicCasebookE
     yearTo: 2025,
     surface: "runtime_full",
     publicRoleLabel: "Vivid answer",
+    publicClaim:
+      "FY2025 is vivid enough to support a specific first claim about regulatory and AI-infrastructure execution pressure.",
+    proofBasis:
+      "Integrated runtime compare on the official FY2024 to FY2025 pair, with the pilot matrix kept nearby as a compact cross-check.",
+    stopBoundary:
+      "It does not prove a universal benchmark winner or that every filing deserves the same answer-first confidence.",
     homeCardLabel: "Vivid answer",
     chooserCardDescription:
       "The clearest answer-first case when the filing shift is vivid and evidence-adjacent.",
@@ -234,13 +238,12 @@ export const PUBLIC_CASEBOOK_CASES: Record<PublicCasebookTicker, PublicCasebookE
     methodologyDetail:
       "Shows the workflow at full clarity when the filing shift is vivid enough to support a specific first read.",
     topCue:
-      "Vivid answer: start with the filing claim, keep proof beside it, and stop before the extra machinery takes over.",
+      "Vivid answer: make the claim up front, keep proof beside it, and stop before the extra machinery takes over.",
     preview: {
       integratedTitle: "Why this case matters",
       boundedTitle: "Why this read matters",
       roleSummary: "A strong answer-first read can stay specific without pretending to be a universal benchmark.",
       subtitleSource: "card_takeaway",
-      supportStrategy: "effort_first",
     },
     bandId: "anchor_shapes",
     bandLabel: "Anchor answer shape",
@@ -256,9 +259,6 @@ export const PUBLIC_CASEBOOK_CASES: Record<PublicCasebookTicker, PublicCasebookE
     whyCaseMatters:
       "It proves the workflow can be decisive without losing auditability or boundaries.",
     teaching: {
-      proves: "A strong answer-first read can stay specific and evidence-adjacent.",
-      doesntProve: "It does not prove the same answer-first shape belongs on every filing pair.",
-      lesson: "When the shift is vivid, the workflow should claim clearly without dragging the reader through every lower layer first.",
       commonMistake:
         "Mistaking a vivid case for permission to overclaim on weaker or lower-drift cases.",
     },
@@ -275,6 +275,12 @@ export const PUBLIC_CASEBOOK_CASES: Record<PublicCasebookTicker, PublicCasebookE
     yearTo: 2025,
     surface: "matrix_first",
     publicRoleLabel: "Honest stop",
+    publicClaim:
+      "FY2025 brings obesity-access, pricing, and concentration pressure closer to the center, and the honest public move is to stop there.",
+    proofBasis:
+      "Matrix-first read on the official FY2024 to FY2025 paragraph packet. The pilot matrix keeps the evidence nearby without implying a full lower public stack.",
+    stopBoundary:
+      "It does not prove a full lower-audit public route or broader certainty beyond the bounded public read.",
     homeCardLabel: "Honest stop",
     chooserCardDescription:
       "The bounded public route that teaches where to stop before overclaiming.",
@@ -283,13 +289,12 @@ export const PUBLIC_CASEBOOK_CASES: Record<PublicCasebookTicker, PublicCasebookE
     methodologyDetail:
       "Shows why a public case can ship honestly with a matrix-first route when the boundary is part of the lesson.",
     topCue:
-      "Honest stop: read the visible claim, inspect the proof, then stop where the public route should stop.",
+      "Honest stop: make the visible claim, inspect the proof, then stop before the public route starts bluffing.",
     preview: {
       integratedTitle: "Why this case matters",
       boundedTitle: "Why this read stops here",
       roleSummary: "The value is not maximal coverage. The value is a public route that stops honestly before pretending to broader certainty.",
       subtitleSource: "card_takeaway",
-      supportStrategy: "effort_first",
     },
     bandId: "anchor_shapes",
     bandLabel: "Anchor answer shape",
@@ -305,9 +310,6 @@ export const PUBLIC_CASEBOOK_CASES: Record<PublicCasebookTicker, PublicCasebookE
     whyCaseMatters:
       "It teaches that honesty about stopping is part of the product, not a fallback.",
     teaching: {
-      proves: "A public route can stop honestly without pretending to completeness.",
-      doesntProve: "It does not prove every public case should stop at the same depth.",
-      lesson: "Boundedness should be visible when the right move is to stop before a broader claim.",
       commonMistake:
         "Confusing a useful bounded route with an incomplete route that needs to hide its limits.",
     },
@@ -324,6 +326,12 @@ export const PUBLIC_CASEBOOK_CASES: Record<PublicCasebookTicker, PublicCasebookE
     yearTo: 2025,
     surface: "runtime_full",
     publicRoleLabel: "Useful restraint",
+    publicClaim:
+      "FY2025 is mostly stable, but a few policy, quality, and concentration details become selectively sharper.",
+    proofBasis:
+      "Integrated runtime compare on the official FY2024 to FY2025 pair, with the matrix story keeping the calm shift explicit.",
+    stopBoundary:
+      "It does not prove a dramatic rewrite, broad issuer expansion, or equal weight for every lower layer.",
     homeCardLabel: "Useful restraint",
     chooserCardDescription:
       "The calm low-drift case that proves selective sharpening is still a real answer.",
@@ -332,13 +340,12 @@ export const PUBLIC_CASEBOOK_CASES: Record<PublicCasebookTicker, PublicCasebookE
     methodologyDetail:
       "Shows the workflow staying useful when the filing barely moves and drama would be misleading.",
     topCue:
-      "Useful restraint: let the filing stay mostly stable, then sharpen only the parts that truly moved.",
+      "Useful restraint: let the filing stay mostly stable, prove the selective shift, and stop before calm change turns into fake drama.",
     preview: {
       integratedTitle: "Why restraint helps here",
       boundedTitle: "Why restraint helps here",
       roleSummary: "Mostly stable filing; the workflow earns trust by staying selective instead of forcing drama.",
       subtitleSource: "card_takeaway",
-      supportStrategy: "scope_only",
       showRestraintStrip: true,
     },
     bandId: "anchor_shapes",
@@ -355,9 +362,6 @@ export const PUBLIC_CASEBOOK_CASES: Record<PublicCasebookTicker, PublicCasebookE
     whyCaseMatters:
       "It proves that useful restraint is a product strength rather than a weak result.",
     teaching: {
-      proves: "A calm selective shift can still be the right result.",
-      doesntProve: "It does not prove every low-drift case deserves public space.",
-      lesson: "Selective sharpening is the honest answer when the filing stays mostly stable.",
       commonMistake:
         "Overcalling weak change just because the workflow feels obligated to produce drama.",
     },
@@ -374,6 +378,12 @@ export const PUBLIC_CASEBOOK_CASES: Record<PublicCasebookTicker, PublicCasebookE
     yearTo: 2025,
     surface: "matrix_first",
     publicRoleLabel: "Risk-stack sharpening",
+    publicClaim:
+      "FY2025 turns a familiar AI and governance theme into a sharper decision stack once named decisions, liability, and AI-specific vulnerabilities land.",
+    proofBasis:
+      "Matrix-first read on the official FY2024 to FY2025 paragraph packet. The pilot matrix keeps P2 as the default read and P1 as the compact check.",
+    stopBoundary:
+      "It does not prove a full novelty map, a benchmark result, or that repeated AI language is automatically new.",
     homeCardLabel: "Risk-stack sharpening",
     chooserCardDescription:
       "A familiar AI theme becomes decision-useful once enforcement and governance specifics land.",
@@ -382,14 +392,13 @@ export const PUBLIC_CASEBOOK_CASES: Record<PublicCasebookTicker, PublicCasebookE
     methodologyDetail:
       "Shows a persistent theme becoming sharper and more decision-useful when named decisions, obligations, and AI-specific risk arrive.",
     topCue:
-      "Risk-stack sharpening: read how a familiar AI and governance theme becomes materially sharper once concrete decisions and obligations land.",
+      "Risk-stack sharpening: claim only the sharper 2025 stack, prove it on the packet, and stop before repeated theme language turns into false novelty.",
     preview: {
       integratedTitle: "Why this case matters",
       boundedTitle: "Why this read matters",
       roleSummary:
         "The theme already existed. The teaching value is in how named decisions, governance pressure, and AI-specific vulnerabilities make it more decision-useful.",
       subtitleSource: "card_takeaway",
-      supportStrategy: "scope_only",
     },
     bandId: "pressure_cases",
     bandLabel: "Added pressure case",
@@ -405,10 +414,6 @@ export const PUBLIC_CASEBOOK_CASES: Record<PublicCasebookTicker, PublicCasebookE
     whyCaseMatters:
       "It teaches when new decisions and obligations matter more than broad topical overlap.",
     teaching: {
-      proves:
-        "A familiar theme can become newly decision-useful when specific enforcement, platform-liability, and AI-security details sharpen it.",
-      doesntProve: "It does not prove every AI-heavy filing update is genuinely new.",
-      lesson: "Look for named decisions, obligations, and mechanisms before claiming novelty.",
       commonMistake:
         "Confusing broader AI vocabulary with a genuinely sharper or more useful risk read.",
     },
@@ -425,6 +430,12 @@ export const PUBLIC_CASEBOOK_CASES: Record<PublicCasebookTicker, PublicCasebookE
     yearTo: 2025,
     surface: "matrix_first",
     publicRoleLabel: "Policy-shock pivot",
+    publicClaim:
+      "FY2025 re-centers the filing around autonomy commercialization plus tariff and incentive pressure, not just generic EV execution.",
+    proofBasis:
+      "Matrix-first read on the official FY2024 to FY2025 paragraph packet. The pilot matrix keeps P2 as the default read and P1 as the compact check.",
+    stopBoundary:
+      "It does not prove a full-filing benchmark result or justify turning a vivid pivot into a totalizing thesis.",
     homeCardLabel: "Policy-shock pivot",
     chooserCardDescription:
       "External pressure turns an EV-manufacturing story into an autonomy, tariffs, and commercialization pivot.",
@@ -433,14 +444,13 @@ export const PUBLIC_CASEBOOK_CASES: Record<PublicCasebookTicker, PublicCasebookE
     methodologyDetail:
       "Shows how external policy shock and platform-roadmap dependence can re-center the filing read.",
     topCue:
-      "Policy-shock pivot: read how tariffs, incentives, and autonomy commercialization shift the center of the filing.",
+      "Policy-shock pivot: claim the re-centering, prove the mechanism chain, and stop before it turns into a full-filing thesis.",
     preview: {
       integratedTitle: "Why this case matters",
       boundedTitle: "Why this read matters",
       roleSummary:
         "The case becomes public because outside pressure turns a familiar manufacturing story into a sharper autonomy, policy, and commercialization read.",
       subtitleSource: "card_takeaway",
-      supportStrategy: "scope_only",
     },
     bandId: "pressure_cases",
     bandLabel: "Added pressure case",
@@ -456,10 +466,6 @@ export const PUBLIC_CASEBOOK_CASES: Record<PublicCasebookTicker, PublicCasebookE
     whyCaseMatters:
       "It teaches how policy shock and commercialization dependence can make an external-pressure case vivid without widening the claim.",
     teaching: {
-      proves:
-        "A filing can pivot from product and manufacturing execution into platform-roadmap and policy-shock risk.",
-      doesntProve: "It does not prove every autonomy mention is equally material or public-ready.",
-      lesson: "Follow the mechanism chain from policy change to cost, demand, and commercialization dependence.",
       commonMistake:
         "Collapsing a specific autonomy and tariff pivot into generic EV-demand or CEO narrative.",
     },
@@ -476,6 +482,12 @@ export const PUBLIC_CASEBOOK_CASES: Record<PublicCasebookTicker, PublicCasebookE
     yearTo: 2026,
     surface: "matrix_first",
     publicRoleLabel: "Calm operating shift",
+    publicClaim:
+      "FY2026 keeps the broad retail scaffold but makes customer-interface AI, cyber, and tariff persistence materially sharper.",
+    proofBasis:
+      "Matrix-first read on the official FY2025 to FY2026 paragraph packet. The pilot matrix keeps the selective shift visible without turning the case into a full compare.",
+    stopBoundary:
+      "It does not prove a rewritten risk map or justify treating a calm case like a dramatic overhaul.",
     homeCardLabel: "Calm operating shift",
     chooserCardDescription:
       "A calm retail case becomes meaningful once agentic commerce, customer-interface risk, and tariff persistence sharpen.",
@@ -484,14 +496,13 @@ export const PUBLIC_CASEBOOK_CASES: Record<PublicCasebookTicker, PublicCasebookE
     methodologyDetail:
       "Shows how a calmer operating case can still earn public space when interface control and tariff pressure become specific.",
     topCue:
-      "Calm operating shift: read how agentic commerce, tariff persistence, and customer-interface risk sharpen a seemingly stable retail story.",
+      "Calm operating shift: claim only the selective sharpening, prove it on the official FY2025 to FY2026 packet, and stop before calm change becomes fake drama.",
     preview: {
       integratedTitle: "Why this case matters",
       boundedTitle: "Why this read matters",
       roleSummary:
         "The case earns public space because a calm retail story still becomes meaningfully sharper once customer-interface and tariff mechanics are explicit.",
       subtitleSource: "card_takeaway",
-      supportStrategy: "scope_only",
     },
     bandId: "pressure_cases",
     bandLabel: "Added pressure case",
@@ -507,10 +518,6 @@ export const PUBLIC_CASEBOOK_CASES: Record<PublicCasebookTicker, PublicCasebookE
     whyCaseMatters:
       "It teaches that a calm public case can still be distinctive when the shift changes customer-interface and pricing pressure.",
     teaching: {
-      proves:
-        "A seemingly calm retail case can still show meaningful shifts in customer-interface and tariff exposure.",
-      doesntProve: "It does not prove the filing was broadly rewritten or re-prioritized end to end.",
-      lesson: "Calm cases still matter when the sharpened examples change how the business meets customers and absorbs cost pressure.",
       commonMistake:
         "Dismissing a calm case as weak just because the strongest movement is selective rather than dramatic.",
     },
@@ -534,7 +541,7 @@ export const CASEBOOK_COMPARISON_ROWS: CasebookComparisonRow[] = [
     },
   },
   {
-    label: "Answer shape",
+    label: "Allowed answer",
     values: {
       NVDA: "Answer first, then test",
       LLY: "Bounded public stop",
@@ -545,14 +552,14 @@ export const CASEBOOK_COMPARISON_ROWS: CasebookComparisonRow[] = [
     },
   },
   {
-    label: "Route refuses",
+    label: "Stop boundary",
     values: {
-      NVDA: "Universal benchmark claims",
-      LLY: "Bounded evidence as full certainty",
-      KO: "Forced drama",
-      META: "Every repeated AI theme as new",
-      TSLA: "Generic EV-demand commentary",
-      WMT: "Every refresh as a reordered map",
+      NVDA: "Strong first read, not a universal benchmark",
+      LLY: "Stop before public certainty outruns proof",
+      KO: "Stay calm; do not force drama",
+      META: "Sharper stack, not automatic novelty",
+      TSLA: "Mechanism chain, not a full-filing thesis",
+      WMT: "Selective sharpening, not a rewritten map",
     },
   },
   {

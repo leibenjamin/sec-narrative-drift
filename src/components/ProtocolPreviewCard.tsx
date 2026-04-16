@@ -1,11 +1,9 @@
 import KORestraintStrip from "./KORestraintStrip"
 import { compactText } from "../lib/compactText"
+import { getPublicCasebookEntry } from "../lib/casebookContent"
 import { formatPilotStatusLabel } from "../lib/protocolLabMatrixPresentation.ts"
 import type { ProtocolLabPilotMatrixCell } from "../lib/protocolLabMatrixTypes.ts"
-import {
-  getRouteFamilyConfig,
-  type RouteFamilyPreviewSupportStrategy,
-} from "../lib/routeFamilyUi"
+import { getRouteFamilyConfig } from "../lib/routeFamilyUi"
 import type { LabPanelPilotArtifactsState } from "./useLabPanelPilotArtifacts"
 
 type PreviewVariant = "integrated" | "bounded"
@@ -47,44 +45,6 @@ function renderPublicCellLabel(cell: ProtocolLabPilotMatrixCell): string {
   return "Control read"
 }
 
-function buildSupportTile(
-  pilotArtifacts: LabPanelPilotArtifactsState,
-  supportStrategy: RouteFamilyPreviewSupportStrategy,
-  scopeNote: string
-): PreviewTile {
-  const { effortRobustnessBundle, noveltyLedgerArtifact } = pilotArtifacts
-
-  if (supportStrategy === "scope_only") {
-    return {
-      label: "Case scope",
-      value: compactText(scopeNote, 118),
-      tone: "neutral",
-    }
-  }
-
-  if (effortRobustnessBundle) {
-    return {
-      label: "Matched-effort check",
-      value: compactText(effortRobustnessBundle.case_artifact.headline, 118),
-      tone: "accent",
-    }
-  }
-
-  if (noveltyLedgerArtifact) {
-    return {
-      label: "New vs repeated",
-      value: compactText(noveltyLedgerArtifact.comparison_to_02.why_secondary_only, 118),
-      tone: "neutral",
-    }
-  }
-
-  return {
-    label: "Case scope",
-    value: compactText(scopeNote, 118),
-    tone: "neutral",
-  }
-}
-
 function getToneClasses(tone: PreviewTile["tone"]): string {
   if (tone === "accent") {
     return "border-sky-300/18 bg-sky-400/8"
@@ -104,8 +64,8 @@ function buildPreviewModel(
   if (!pilotMatrixBundle) return null
 
   const familyConfig = getRouteFamilyConfig(ticker)
+  const casebookEntry = getPublicCasebookEntry(ticker)
   const primaryCell = getPrimaryCell(pilotMatrixBundle)
-  const supportStrategy = familyConfig?.preview.supportStrategy ?? "effort_first"
   const showRestraintStrip = Boolean(familyConfig?.preview.showRestraintStrip)
   const subtitleSource = familyConfig?.preview.subtitleSource ?? "card_takeaway"
   const rawSubtitle =
@@ -114,43 +74,38 @@ function buildPreviewModel(
       : subtitleSource === "why_case_exists"
         ? pilotMatrixBundle.story.why_this_case_matters
         : primaryCell?.card_takeaway ?? pilotMatrixBundle.story.why_this_case_matters
-  const supportTile = buildSupportTile(
-    pilotArtifacts,
-    supportStrategy,
-    pilotMatrixBundle.matrix.pilot_status.note
-  )
+  const proofBasisTile = {
+    label: "Proof basis",
+    value: compactText(
+      casebookEntry?.proofBasis ?? pilotMatrixBundle.matrix.pilot_status.note,
+      showRestraintStrip ? 98 : 118
+    ),
+    tone: "accent" as const,
+  }
   const boundaryTile = {
-    label: "Boundary",
-    value: compactText(pilotMatrixBundle.story.caveat, showRestraintStrip ? 82 : 92),
+    label: "Stop boundary",
+    value: compactText(
+      casebookEntry?.stopBoundary ?? pilotMatrixBundle.story.caveat,
+      showRestraintStrip ? 96 : 104
+    ),
     tone: "boundary" as const,
   }
   const statusLabel = formatPilotStatusLabel(pilotMatrixBundle.matrix.pilot_status.state)
+  const routeLabel =
+    casebookEntry?.surface === "matrix_first" ? "Matrix-first public route" : "Integrated public route"
   const showLead = !showRestraintStrip
-  const metaLine = showRestraintStrip
-    ? `Scope: ${statusLabel}`
-    : primaryCell
-      ? `${renderPublicCellLabel(primaryCell)} first · Scope: ${statusLabel}`
-      : `Scope: ${statusLabel}`
-  const visibleTiles = showRestraintStrip
-    ? [supportTile]
-    : [
-        {
-          label: supportStrategy === "scope_only" ? supportTile.label : "What this adds",
-          value:
-            supportStrategy === "scope_only"
-              ? compactText(pilotMatrixBundle.matrix.pilot_status.note, 86)
-              : compactText(pilotMatrixBundle.story.protocol_read, 82),
-          tone: supportStrategy === "scope_only" ? ("neutral" as const) : ("accent" as const),
-        },
-        boundaryTile,
-      ]
+  const metaLine = `${routeLabel} · Scope: ${statusLabel}`
+  const visibleTiles = showRestraintStrip ? [proofBasisTile] : [proofBasisTile, boundaryTile]
 
   return {
     title:
       variant === "bounded"
         ? familyConfig?.preview.boundedTitle ?? "Why this read is here"
         : familyConfig?.preview.integratedTitle ?? "Why this case is here",
-    lead: compactText(rawSubtitle, showRestraintStrip ? 0 : variant === "bounded" ? 118 : 128),
+    lead: compactText(
+      variant === "bounded" ? casebookEntry?.publicClaim ?? rawSubtitle : rawSubtitle,
+      showRestraintStrip ? 0 : variant === "bounded" ? 132 : 128
+    ),
     showLead,
     supportLine: compactText(
       familyConfig?.preview.roleSummary ?? pilotMatrixBundle.story.why_this_case_matters,
@@ -158,7 +113,7 @@ function buildPreviewModel(
     ),
     metaLine,
     visibleTiles,
-    detailTile: supportTile,
+    detailTile: proofBasisTile,
     boundaryTile,
     showDetailDisclosure: variant === "integrated",
     showRestraintStrip,

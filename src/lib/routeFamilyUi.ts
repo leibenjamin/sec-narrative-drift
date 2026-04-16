@@ -6,7 +6,6 @@ import {
   type HomeAnchorTicker,
   type PublicCasebookTicker,
   type RouteFamilyPreviewSubtitleSource,
-  type RouteFamilyPreviewSupportStrategy,
 } from "./casebookContent"
 
 export { HOME_ANCHOR_TICKERS, PUBLIC_CASEBOOK_TICKERS }
@@ -14,7 +13,6 @@ export type {
   HomeAnchorTicker,
   PublicCasebookTicker,
   RouteFamilyPreviewSubtitleSource,
-  RouteFamilyPreviewSupportStrategy,
 }
 
 export type RouteFamilyCaseConfig = {
@@ -33,7 +31,6 @@ export type RouteFamilyCaseConfig = {
     boundedTitle: string
     roleSummary: string
     subtitleSource: RouteFamilyPreviewSubtitleSource
-    supportStrategy: RouteFamilyPreviewSupportStrategy
     showRestraintStrip?: boolean
   }
 }

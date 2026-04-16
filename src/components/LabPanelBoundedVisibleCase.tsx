@@ -12,21 +12,12 @@ export default function LabPanelBoundedVisibleCase({
   ticker,
   pilotArtifacts,
 }: LabPanelBoundedVisibleCaseProps) {
-  const {
-    pilotMatrixBundle,
-    effortRobustnessBundle,
-    noveltyLedgerArtifact,
-  } = pilotArtifacts
+  const { pilotMatrixBundle, effortRobustnessBundle, noveltyLedgerArtifact } = pilotArtifacts
 
   return (
     <section className="space-y-4 sm:space-y-5">
       {pilotMatrixBundle ? (
-        <VisibleCaseAnswerSummary
-          ticker={ticker}
-          bundle={pilotMatrixBundle}
-          noveltyLedger={noveltyLedgerArtifact}
-          effortRobustness={effortRobustnessBundle}
-        />
+        <VisibleCaseAnswerSummary ticker={ticker} bundle={pilotMatrixBundle} />
       ) : null}
 
       {ticker === "LLY" && pilotMatrixBundle ? (

@@ -19,16 +19,16 @@ function buildTeachingCards(ticker: PublicCasebookTicker): TeachingCard[] {
 
   return [
     {
-      label: "What this case proves",
-      value: entry.teaching.proves,
+      label: "Public claim",
+      value: entry.publicClaim,
+    },
+    {
+      label: "Proof basis",
+      value: entry.proofBasis,
     },
     {
       label: "What it doesn't prove",
-      value: entry.teaching.doesntProve,
-    },
-    {
-      label: "Lesson",
-      value: entry.teaching.lesson,
+      value: entry.stopBoundary,
     },
     {
       label: "Common mistake this case prevents",
@@ -45,6 +45,8 @@ export default function CaseTeachingLayer({
   if (!entry) return null
 
   const cards = buildTeachingCards(entry.ticker)
+  const surfaceLabel =
+    entry.surface === "matrix_first" ? "Matrix-first public route" : "Integrated public route"
 
   return (
     <section
@@ -64,7 +66,7 @@ export default function CaseTeachingLayer({
           </p>
         </div>
         <div className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-slate-300">
-          {entry.artifactPolicy.primary}
+          {surfaceLabel}
         </div>
       </div>
 

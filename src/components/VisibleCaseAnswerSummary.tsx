@@ -1,17 +1,14 @@
 import type {
-  ProtocolLabEffortRobustnessBundle,
-  ProtocolLabNoveltyLedgerCase,
   ProtocolLabPilotMatrixBundle,
   ProtocolLabPilotMatrixCell,
 } from "../lib/protocolLabMatrixTypes.ts"
 import { getPublicCasebookEntry } from "../lib/casebookContent"
 import { compactText } from "../lib/compactText"
+import { formatFiscalYearRange } from "../lib/fiscalYear"
 
 type VisibleCaseAnswerSummaryProps = {
   ticker?: string
   bundle: ProtocolLabPilotMatrixBundle
-  noveltyLedger: ProtocolLabNoveltyLedgerCase | null
-  effortRobustness: ProtocolLabEffortRobustnessBundle | null
 }
 
 function getPrimaryCell(bundle: ProtocolLabPilotMatrixBundle): ProtocolLabPilotMatrixCell | null {
@@ -22,44 +19,23 @@ function getPrimaryCell(bundle: ProtocolLabPilotMatrixBundle): ProtocolLabPilotM
   )
 }
 
-function formatSurfaceCoverageLabel(props: {
-  noveltyLedger: ProtocolLabNoveltyLedgerCase | null
-  effortRobustness: ProtocolLabEffortRobustnessBundle | null
-}): string {
-  const parts = ["the primary read"]
-
-  if (props.noveltyLedger) {
-    parts.push("the new-vs-repeated cue")
-  }
-
-  if (props.effortRobustness) {
-    parts.push("the matched-effort check")
-  }
-
-  if (parts.length === 1) {
-    return parts[0]
-  }
-
-  if (parts.length === 2) {
-    return `${parts[0]} and ${parts[1]}`
-  }
-
-  return `${parts.slice(0, -1).join(", ")}, and ${parts[parts.length - 1]}`
-}
-
 export default function VisibleCaseAnswerSummary({
   ticker,
   bundle,
-  noveltyLedger,
-  effortRobustness,
 }: VisibleCaseAnswerSummaryProps) {
   const casebookEntry = getPublicCasebookEntry(ticker)
   const primaryCell = getPrimaryCell(bundle)
   const primarySummary = compactText(primaryCell?.summary ?? bundle.story.investor_read, 232)
-  const matterSummary = compactText(casebookEntry?.whyCaseMatters ?? bundle.story.investor_read, 124)
-  const surfaceCoverage = formatSurfaceCoverageLabel({ noveltyLedger, effortRobustness })
-  const summaryMeta = `Basis: ${primaryCell?.short_label ?? "Primary read"}`
-  const supportNote = compactText(`Checked against ${surfaceCoverage}. ${matterSummary}`, 132)
+  const pairLabel = formatFiscalYearRange(
+    bundle.matrix.pair_info.year_from,
+    bundle.matrix.pair_info.year_to
+  )
+  const summaryMeta = `Bounded claim on the official ${pairLabel} pair`
+  const proofBasis = compactText(
+    casebookEntry?.proofBasis ??
+      `Primary read on the official ${pairLabel} paragraph packet.`,
+    148
+  )
   const heading = casebookEntry
     ? `${casebookEntry.ticker} filing answer`
     : `${bundle.matrix.pair_info.ticker} filing answer`
@@ -89,8 +65,8 @@ export default function VisibleCaseAnswerSummary({
         </article>
 
         <article className="rounded-2xl border border-white/8 bg-slate-950/22 p-3.5 sm:p-4">
-          <div className="text-[10px] uppercase tracking-[0.24em] text-emerald-100">Why it matters</div>
-          <p className="mt-2 text-sm leading-5 text-slate-100">{supportNote}</p>
+          <div className="text-[10px] uppercase tracking-[0.24em] text-emerald-100">Proof basis</div>
+          <p className="mt-2 text-sm leading-5 text-slate-100">{proofBasis}</p>
         </article>
       </div>
     </section>
