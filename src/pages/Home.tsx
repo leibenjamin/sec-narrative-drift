@@ -16,7 +16,7 @@ import {
   loadProtocolLabVisiblePilotSystem,
   type ProtocolLabVisiblePilotSystem,
 } from "../lib/protocolLabProductPositioning"
-import { getRouteFamilyConfig } from "../lib/routeFamilyUi"
+import { getRouteFamilyConfig, isHomeAnchorTicker } from "../lib/routeFamilyUi"
 
 const PROTOCOL_STAGE_STEPS: ProtocolStageStep[] = [
   {
@@ -44,6 +44,11 @@ type HomeFixtureCardModel = {
   href: string
   ctaLabel: string
   emphasis: "primary" | "default"
+}
+
+type HomeHeroSignal = {
+  label: string
+  detail: string
 }
 
 function buildFallbackHref(ticker: HomeAnchorTicker): string {
@@ -112,6 +117,33 @@ export default function Home() {
     : null
   const recommendedTicker = recommendedPilot?.ticker ?? "NVDA"
   const recommendedHref = recommendedPilot?.href ?? buildFallbackHref("NVDA")
+  const readingFlow = visiblePilotSystem?.startHere.reading_flow ?? [
+    { step: "filing answer", description: "Read the filing claim first." },
+    { step: "protocol meaning", description: "Keep the route visible." },
+    { step: "audit if needed", description: "Leave the deeper audit lower." },
+  ]
+  const liveCaseCount = visiblePilotSystem?.currentCaseMix.visible_pilots.length ?? 6
+  const anchorSummary =
+    visiblePilotSystem?.currentCaseMix.why_this_mix_matters ?? casebookFraming.home.chooserSummary
+  const antiHypeStatement =
+    visiblePilotSystem?.currentCaseMix.anti_hype_statement ??
+    "Curated casebook, not a broad filing browser."
+  const heroSignals: HomeHeroSignal[] = [
+    {
+      label: `${liveCaseCount} curated cases`,
+      detail: "live public roster",
+    },
+    {
+      label: `${HOME_ANCHOR_TICKERS.length} anchor answer shapes`,
+      detail: "claim, stop, restraint",
+    },
+    {
+      label: `Start with ${recommendedTicker}`,
+      detail: recommendedPilot?.role_label ?? "vivid answer",
+    },
+  ]
+  const pressurePilots =
+    visiblePilotSystem?.visiblePilots.filter((pilot) => !isHomeAnchorTicker(pilot.ticker)).slice(0, 3) ?? []
 
   return (
     <main className="min-h-screen page-fade">
@@ -119,15 +151,17 @@ export default function Home() {
         title={casebookFraming.home.title}
         description={casebookFraming.home.metaDescription}
       />
-      <div className="mx-auto max-w-6xl space-y-5 px-5 py-4 sm:space-y-6 sm:px-6 sm:py-8">
+      <div className="mx-auto max-w-6xl space-y-4 px-5 py-4 sm:space-y-5 sm:px-6 sm:py-6 xl:py-8">
         <section
           id="home-top-fold"
-          className="relative overflow-hidden rounded-[2.2rem] border border-white/10 bg-linear-to-br from-slate-950/92 via-slate-950/82 to-slate-900/72 shadow-[0_32px_80px_rgba(2,6,23,0.44)]"
+          className="home-hero-shell relative overflow-hidden rounded-[2.4rem] border border-white/10 bg-linear-to-br from-slate-950/94 via-slate-950/86 to-slate-900/76 shadow-[0_36px_90px_rgba(2,6,23,0.46)]"
         >
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(56,189,248,0.16),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(16,185,129,0.12),transparent_28%)]" />
-          <div className="relative grid gap-4 p-4 sm:gap-6 sm:p-6 xl:p-7">
-            <div className="grid gap-4 lg:grid-cols-[minmax(0,0.94fr)_minmax(0,1.06fr)] lg:items-start">
-              <div className="rounded-[1.8rem] border border-white/10 bg-slate-950/24 p-4 sm:p-5 xl:p-6">
+          <div aria-hidden="true" className="home-hero-ambient pointer-events-none absolute inset-0" />
+          <div aria-hidden="true" className="home-hero-gridlines pointer-events-none absolute inset-0" />
+          <div aria-hidden="true" className="home-hero-spotlight pointer-events-none absolute inset-0" />
+          <div className="relative grid gap-4 p-4 sm:gap-5 sm:p-6 xl:gap-5 xl:p-7">
+            <div className="grid gap-4 xl:grid-cols-[minmax(0,0.96fr)_minmax(0,1.04fr)] xl:items-stretch">
+              <article className="home-hero-panel home-reveal home-reveal--1 rounded-[1.95rem] border border-white/10 bg-slate-950/26 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] sm:p-6 xl:p-7">
                 <div className="flex flex-wrap items-center gap-1.5 text-[11px] uppercase tracking-[0.24em] text-slate-300">
                   <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">
                     {casebookFraming.appName}
@@ -137,96 +171,179 @@ export default function Home() {
                   </span>
                 </div>
 
-                <div className="mt-4 space-y-4 sm:mt-5 sm:space-y-5">
-                  <div className="space-y-3">
-                    <h1 className="max-w-3xl text-[clamp(2.15rem,4vw,4.2rem)] font-semibold leading-[0.95] tracking-[-0.04em] text-slate-50">
-                      {casebookFraming.home.hook}
-                    </h1>
-                    <p className="max-w-xl text-sm leading-6 text-slate-200 sm:text-base">
-                      {casebookFraming.home.support}
-                    </p>
+                <div className="mt-5 grid gap-5 sm:mt-6 sm:gap-6">
+                  <div className="grid gap-5">
+                    <div className="space-y-4">
+                      <h1 className="max-w-3xl text-[clamp(2.4rem,4vw,4.55rem)] font-semibold leading-[0.92] tracking-[-0.05em] text-slate-50">
+                        {casebookFraming.home.hook}
+                      </h1>
+                      <p className="max-w-xl text-sm leading-6 text-slate-200 sm:text-base">
+                        {casebookFraming.home.support}
+                      </p>
+                    </div>
+
+                    <div className="grid gap-3 sm:grid-cols-3">
+                      {heroSignals.map((signal) => (
+                        <div
+                          key={signal.label}
+                          className="home-hero-signal rounded-[1.2rem] border border-white/10 bg-slate-950/34 px-4 py-3"
+                        >
+                          <div className="text-[11px] uppercase tracking-[0.24em] text-sky-100">
+                            {signal.label}
+                          </div>
+                          <p className="mt-2 text-sm leading-5 text-slate-300">{signal.detail}</p>
+                        </div>
+                      ))}
+                    </div>
                   </div>
 
                   <div className="space-y-3">
                     <div className="flex flex-wrap items-center gap-3">
                       <Link
                         to={recommendedHref}
-                        className="inline-flex min-h-11 items-center justify-center rounded-full bg-sky-500 px-5 py-2.5 text-sm font-semibold text-slate-950 transition hover:bg-sky-400"
+                        className="home-cta-primary inline-flex min-h-11 items-center justify-center rounded-full bg-sky-500 px-5 py-2.5 text-sm font-semibold text-slate-950 transition hover:bg-sky-400"
                       >
                         {`Start with ${recommendedTicker}`}
                       </Link>
                       <Link
                         to="/companies"
-                        className="inline-flex min-h-11 items-center justify-center rounded-full border border-white/20 px-4 py-2.5 text-sm font-medium text-slate-200 transition hover:border-white/40 hover:bg-white/5"
+                        className="home-cta-secondary inline-flex min-h-11 items-center justify-center rounded-full border border-white/20 px-4 py-2.5 text-sm font-medium text-slate-200 transition hover:border-white/40 hover:bg-white/5"
                       >
                         {casebookFraming.home.casebookEntryCta}
                       </Link>
                     </div>
-                    <Link
-                      to="/methodology"
-                      className="inline-flex items-center gap-2 text-sm font-medium text-slate-300 transition hover:text-white"
-                    >
-                      <span>How the workflow works</span>
-                      <span aria-hidden="true" className="text-base leading-none">
-                        →
-                      </span>
-                    </Link>
+
+                    <div className="flex flex-wrap items-center gap-3">
+                      <Link
+                        to="/methodology"
+                        className="inline-flex items-center gap-2 text-sm font-medium text-slate-200 transition hover:text-white"
+                      >
+                        <span>How the workflow works</span>
+                        <span aria-hidden="true" className="text-base leading-none">
+                          →
+                        </span>
+                      </Link>
+                      <span aria-hidden="true" className="hidden h-4 w-px bg-white/10 sm:block" />
+                      <p className="max-w-md text-[11px] uppercase leading-5 tracking-[0.24em] text-slate-500">
+                        {antiHypeStatement}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <div className="home-reveal home-reveal--2">
+                <div className="home-stage-shell rounded-[1.95rem] border border-sky-300/16 bg-slate-950/34 p-4 shadow-[0_24px_60px_rgba(2,6,23,0.18)] sm:p-5 xl:flex xl:h-full xl:flex-col xl:justify-between xl:p-6">
+                  <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+                    <div className="max-w-xl">
+                      <div className="text-[11px] uppercase tracking-[0.28em] text-sky-100">
+                        Presentation route
+                      </div>
+                      <h2 className="mt-2 text-[1.55rem] font-semibold leading-tight text-slate-50 sm:text-[1.8rem]">
+                        Move through the casebook like a guided route.
+                      </h2>
+                      <p className="mt-2 max-w-xl text-sm leading-6 text-slate-300">
+                        Lead with the filing answer, keep the proof nearby, and leave the deeper
+                        audit layers below the fold.
+                      </p>
+                    </div>
+
+                    <div className="flex flex-wrap gap-2">
+                      {readingFlow.map((item) => (
+                        <span
+                          key={item.step}
+                          className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] uppercase tracking-[0.22em] text-slate-300"
+                        >
+                          {item.step}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="mt-4 xl:mt-5">
+                    <ProtocolStageMap steps={PROTOCOL_STAGE_STEPS} />
                   </div>
                 </div>
               </div>
+            </div>
 
-              <div className="order-2 rounded-[1.8rem] border border-sky-300/14 bg-slate-950/42 p-4 shadow-[0_20px_50px_rgba(2,6,23,0.22)] sm:p-5 lg:order-3 lg:col-span-2">
+            <article className="home-anchor-shell home-reveal home-reveal--3 rounded-[1.95rem] border border-sky-300/14 bg-slate-950/40 p-4 shadow-[0_24px_60px_rgba(2,6,23,0.18)] sm:p-5 xl:p-6">
+              <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
                 <div className="max-w-2xl">
-                  <div className="text-[11px] uppercase tracking-[0.28em] text-sky-100">Anchor cases</div>
-                  <h2 className="mt-2 text-xl font-semibold text-slate-50 sm:text-2xl">
+                  <div className="text-[11px] uppercase tracking-[0.28em] text-sky-100">
+                    Anchor cases
+                  </div>
+                  <h2 className="mt-2 text-[1.7rem] font-semibold tracking-[-0.03em] text-slate-50 sm:text-[2rem]">
                     Start with the three anchor answer shapes.
                   </h2>
-                  <p className="mt-2 text-sm leading-6 text-slate-300">
-                    {casebookFraming.home.chooserSummary}
+                  <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-300">
+                    {anchorSummary}
                   </p>
                 </div>
 
-                <div className="mt-4 grid gap-4 md:grid-cols-3 stagger-children">
-                  {fixtureCards.map((fixture) => (
-                    <FixtureRoleCard
-                      key={fixture.ticker}
-                      ticker={fixture.ticker}
-                      companyName={fixture.companyName}
-                      roleLabel={fixture.roleLabel}
-                      description={fixture.description}
-                      href={fixture.href}
-                      ctaLabel={fixture.ctaLabel}
-                      emphasis={fixture.emphasis}
-                      variant="home"
-                    />
-                  ))}
-                </div>
+                {pressurePilots.length > 0 ? (
+                  <div className="max-w-xl">
+                    <div className="text-[11px] uppercase tracking-[0.24em] text-slate-400">
+                      Then pressure-test with
+                    </div>
+                    <div className="mt-2 flex flex-wrap gap-2.5">
+                      {pressurePilots.map((pilot) => (
+                        <Link
+                          key={pilot.ticker}
+                          to={pilot.href}
+                          className="home-pressure-chip inline-flex items-center gap-2 rounded-full border border-white/10 bg-slate-950/50 px-3.5 py-2 text-sm text-slate-200 transition hover:border-sky-300/45 hover:text-white"
+                        >
+                          <span className="font-semibold tracking-[0.04em] text-slate-50">
+                            {pilot.ticker}
+                          </span>
+                          <span className="text-slate-400">{pilot.role_label}</span>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                ) : null}
               </div>
 
-              <div className="order-3 lg:order-2">
-                <ProtocolStageMap steps={PROTOCOL_STAGE_STEPS} />
+              <div className="mt-5 grid gap-4 md:grid-cols-3 stagger-children">
+                {fixtureCards.map((fixture) => (
+                  <FixtureRoleCard
+                    key={fixture.ticker}
+                    ticker={fixture.ticker}
+                    companyName={fixture.companyName}
+                    roleLabel={fixture.roleLabel}
+                    description={fixture.description}
+                    href={fixture.href}
+                    ctaLabel={fixture.ctaLabel}
+                    emphasis={fixture.emphasis}
+                    variant="home"
+                  />
+                ))}
               </div>
-            </div>
+            </article>
 
-            {isLoading ? (
-              <p className="text-sm text-slate-400">Loading current case guidance...</p>
-            ) : null}
+            {isLoading || error ? (
+              <div className="grid gap-2">
+                {isLoading ? (
+                  <p className="text-sm text-slate-400">Loading current case guidance...</p>
+                ) : null}
 
-            {error ? (
-              <p className="rounded-2xl border border-amber-400/25 bg-amber-500/10 px-4 py-3 text-sm text-amber-100">
-                {error}
-              </p>
+                {error ? (
+                  <p className="rounded-2xl border border-amber-400/25 bg-amber-500/10 px-4 py-3 text-sm text-amber-100">
+                    {error}
+                  </p>
+                ) : null}
+              </div>
             ) : null}
           </div>
         </section>
 
         <section
           id="home-framing"
-          className="grid gap-4 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]"
+          className="grid gap-4 xl:grid-cols-[minmax(0,1.02fr)_minmax(0,0.98fr)]"
         >
-          <article className="rounded-[1.6rem] border border-white/10 bg-slate-950/48 p-4 sm:p-5">
+          <article className="home-support-panel rounded-[1.7rem] border border-white/10 bg-slate-950/48 p-4 sm:p-5">
             <div className="grid gap-3 sm:grid-cols-2">
-              <div className="rounded-[1.2rem] border border-white/10 bg-slate-950/58 p-4">
+              <div className="home-support-tile rounded-[1.2rem] border border-white/10 bg-slate-950/58 p-4">
                 <div className="text-[11px] uppercase tracking-[0.24em] text-slate-400">
                   {casebookFraming.home.whatThisIsTitle}
                 </div>
@@ -234,7 +351,7 @@ export default function Home() {
                   {casebookFraming.home.whatThisIs}
                 </p>
               </div>
-              <div className="rounded-[1.2rem] border border-white/10 bg-slate-950/58 p-4">
+              <div className="home-support-tile rounded-[1.2rem] border border-white/10 bg-slate-950/58 p-4">
                 <div className="text-[11px] uppercase tracking-[0.24em] text-slate-400">
                   {casebookFraming.home.whatThisIsntTitle}
                 </div>
@@ -245,7 +362,7 @@ export default function Home() {
             </div>
           </article>
 
-          <article className="rounded-[1.6rem] border border-white/10 bg-slate-950/48 p-4 sm:p-5">
+          <article className="home-support-panel rounded-[1.7rem] border border-white/10 bg-slate-950/48 p-4 sm:p-5">
             <div className="text-[11px] uppercase tracking-[0.24em] text-slate-400">
               {casebookFraming.home.whyThisMattersTitle}
             </div>
@@ -253,7 +370,7 @@ export default function Home() {
               {casebookFraming.home.whyThisMatters.map((item) => (
                 <div
                   key={item}
-                  className="rounded-2xl border border-white/10 bg-slate-950/58 px-3.5 py-3 text-sm leading-6 text-slate-100"
+                  className="home-support-pill rounded-2xl border border-white/10 bg-slate-950/58 px-3.5 py-3 text-sm leading-6 text-slate-100"
                 >
                   {item}
                 </div>
@@ -262,10 +379,10 @@ export default function Home() {
           </article>
         </section>
 
-        <section className="grid gap-4 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+        <section className="grid gap-4 xl:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)]">
           <article
             id="home-casebook-entry"
-            className="rounded-[1.6rem] border border-sky-300/16 bg-linear-to-br from-sky-400/10 via-slate-950/70 to-slate-950/48 p-4 sm:p-5"
+            className="home-support-panel rounded-[1.7rem] border border-sky-300/16 bg-linear-to-br from-sky-400/10 via-slate-950/70 to-slate-950/48 p-4 sm:p-5"
           >
             <div className="text-[11px] uppercase tracking-[0.24em] text-sky-100">
               {casebookFraming.home.casebookEntryTitle}
@@ -279,7 +396,7 @@ export default function Home() {
             <div className="mt-4 flex flex-wrap items-center gap-4">
               <Link
                 to="/companies"
-                className="inline-flex min-h-11 items-center justify-center rounded-full border border-sky-300/30 bg-sky-400/10 px-4 py-2.5 text-sm font-medium text-sky-100 transition hover:border-sky-200/45 hover:bg-sky-400/14"
+                className="home-cta-secondary inline-flex min-h-11 items-center justify-center rounded-full border border-sky-300/30 bg-sky-400/10 px-4 py-2.5 text-sm font-medium text-sky-100 transition hover:border-sky-200/45 hover:bg-sky-400/14"
               >
                 {casebookFraming.home.casebookEntryCta}
               </Link>
@@ -293,7 +410,7 @@ export default function Home() {
             </div>
           </article>
 
-          <article className="rounded-[1.6rem] border border-white/10 bg-slate-950/48 p-4 sm:p-5">
+          <article className="home-support-panel rounded-[1.7rem] border border-white/10 bg-slate-950/48 p-4 sm:p-5">
             <div className="text-[11px] uppercase tracking-[0.24em] text-slate-400">
               {casebookFraming.home.commonFailureModesTitle}
             </div>
@@ -301,7 +418,7 @@ export default function Home() {
               {casebookFraming.home.commonFailureModes.map((item) => (
                 <span
                   key={item}
-                  className="rounded-full border border-white/10 bg-slate-950/60 px-3 py-1.5 text-[13px] text-slate-200"
+                  className="home-failure-chip rounded-full border border-white/10 bg-slate-950/60 px-3 py-1.5 text-[13px] text-slate-200"
                 >
                   {item}
                 </span>
