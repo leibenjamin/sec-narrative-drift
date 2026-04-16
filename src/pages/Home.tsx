@@ -154,11 +154,8 @@ export default function Home() {
       <div className="mx-auto max-w-6xl space-y-4 px-5 py-4 sm:space-y-5 sm:px-6 sm:py-6 xl:py-8">
         <section
           id="home-top-fold"
-          className="home-hero-shell relative overflow-hidden rounded-[2.4rem] border border-white/10 bg-linear-to-br from-slate-950/94 via-slate-950/86 to-slate-900/76 shadow-[0_36px_90px_rgba(2,6,23,0.46)]"
+          className="relative overflow-hidden rounded-[2.4rem] border border-white/10 bg-linear-to-br from-slate-950/94 via-slate-950/86 to-slate-900/76 shadow-[0_36px_90px_rgba(2,6,23,0.46)]"
         >
-          <div aria-hidden="true" className="home-hero-ambient pointer-events-none absolute inset-0" />
-          <div aria-hidden="true" className="home-hero-gridlines pointer-events-none absolute inset-0" />
-          <div aria-hidden="true" className="home-hero-spotlight pointer-events-none absolute inset-0" />
           <div className="relative grid gap-4 p-4 sm:gap-5 sm:p-6 xl:gap-5 xl:p-7">
             <div className="grid gap-4 xl:grid-cols-[minmax(0,0.96fr)_minmax(0,1.04fr)] xl:items-stretch">
               <article className="home-hero-panel home-reveal home-reveal--1 rounded-[1.95rem] border border-white/10 bg-slate-950/26 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] sm:p-6 xl:p-7">
