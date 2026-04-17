@@ -1,6 +1,18 @@
-# SEC Narrative Drift Lab - Remaining Work Plan (Active)
+# Core4 Backstage Runtime — Remaining Work Plan
 
-Last updated: 2026-03-10
+Last updated: 2026-03-10 (scope-narrow note added 2026-04-17)
+
+## Scope note (added 2026-04-17)
+This document covers the **Core4 backstage runtime** only — the legacy `sec_narrative_drift_lab` registry for `NVDA`, `KO`, `WM`, `GE` with deterministic detectors and manual outline-compare projection. It is **not** the active public-product plan.
+
+The active public product is Document Protocol Lab, an interactive casebook that compares approaches to business-document reading across six cases (`NVDA`, `LLY`, `KO`, `META`, `TSLA`, `WMT`) under `public/data/business_document_protocol_lab/`. For current public-product plans, framing, and architecture, see:
+- `docs/LAB_ARCHITECTURE_AND_GOALS.md`
+- `docs/PRODUCT_STORY.md`
+- `docs/protocol_lab/README.md`
+
+The operational items below (gates, manifests, lock verification, canonical/compatibility/archive boundary) are still valid Core4 backstage concerns and are why this document is kept rather than archived. Local-only execution briefs under `docs/protocol_lab/NEXT_EXECUTION_BRIEF_*.md` are gitignored by policy and may reflect superseded framing; treat them as historical context, not active plans.
+
+## Original plan (2026-03-10, Core4 backstage scope)
 
 Scope: active canonical work only (deterministic runtime + structured manual outline-compare runs + deterministic runtime projection).
 
