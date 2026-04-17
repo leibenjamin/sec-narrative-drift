@@ -1,65 +1,50 @@
 # Document Protocol Lab
 
-Document Protocol Lab ships as an interactive casebook for bounded document-comparison judgment across six public SEC Item 1A cases: `NVDA`, `LLY`, `KO`, `META`, `TSLA`, and `WMT`.
+Document Protocol Lab is an interactive casebook that compares approaches to business-document reading with frontier LLMs across six public SEC Item 1A cases: `NVDA`, `LLY`, `KO`, `META`, `TSLA`, and `WMT`.
 
-The product exists to show what a workflow should claim, how it should prove it, and where it should stop.
+The point is not to read one filing the one right way. It is to put three approaches on the same substrate and let a visitor see which one earned the answer and which one was theater.
 
-**Current public casebook:** three anchor cases plus three added pressure cases.
+**Current public casebook:** three anchor cases plus three added-pressure cases, each comparing plain prompt, structured contract, and tagged protocol reads on the same adjacent-year Item 1A pair.
 
-**Status:** curated casebook, not a broad issuer browser, general document chatbot, or benchmark-grade product comparison.
+**Status:** curated casebook, not a broad filing browser, general document chatbot, or benchmark-grade model ranking.
 
 Live casebook: `https://benlei.org/sec-narrative-drift/`
 
 ## What this repo shows
 
-- A compact interactive casebook inside Document Protocol Lab.
-- Three anchor answer shapes on Home: vivid answer, honest stop, and useful restraint.
-- Three added pressure cases in the Casebook: sharper AI enforcement, policy shock, and calm retail-interface shift.
-- Company pages that surface:
-  1. the filing answer,
-  2. what the case proves and does not prove,
-  3. deeper audit only when you want it.
-- A static-runtime model: precomputed JSON only, with no runtime ML or LLM calls.
+- **Three approaches compared on the same case**: plain prompt (control), structured contract (typically the primary read), tagged protocol (comparator). Every multi-cell case renders a side-by-side of the control read and the primary read so the approach verdict is visible without clicking a disclosure.
+- **An approach catalog** on the Methodology page naming what each approach earns, when it helps, and when it is theater.
+- **Per-case anatomy** underneath: filing answer first, proof, stop, appendix. That is a grammar for reading one case, distinct from the app-level Read/Compare/Verdict grammar for comparing approaches across cases.
+- **A static-runtime model**: precomputed JSON only, no runtime ML or LLM calls.
 
 ## Why these cases
 
-- **`NVDA`** shows the clearest answer-first route.
-- **`LLY`** is the honest-stop public route.
-- **`KO`** is the restraint check that shows the workflow staying useful on a mostly stable filing.
-- **`META`** sharpens a repeated AI theme into a more decision-useful enforcement and liability stack.
-- **`TSLA`** turns an execution story into a policy-shock and autonomy-commercialization pivot.
-- **`WMT`** shows how a calm retail case can still matter once customer-interface risk and tariff persistence sharpen.
+- **`NVDA`** — strongest structural lift from moving beyond a plain-prompt read.
+- **`LLY`** — where a structured approach tightens the stop honestly instead of overclaiming.
+- **`KO`** — restraint case; the disciplined read produces one cell, not five, and the product lets that be enough.
+- **`META`** — sharper AI enforcement and platform-liability pressure under added structure.
+- **`TSLA`** — policy-shock and autonomy-commercialization pivot that a plain read misses.
+- **`WMT`** — calm retail filing whose customer-interface risk and tariff persistence only surface once the approach earns them.
 
-## Start here
+## Reading order
 
-- Start with **`NVDA`** for the clearest answer-first read.
-- Open **`LLY`** to see how the visible product stays useful while stopping honestly.
-- Read **`KO`** to understand why low-drift restraint is a product strength.
-- Use the full **Casebook** for `META`, `TSLA`, and `WMT` when you want added pressure types without widening the public claim.
-
-## How to read a case
-
-1. Start with the filing answer and paired evidence.
-2. Read the case layer to see what the workflow is allowed to claim and where it should stop.
-3. Open the deeper audit only when you want more structure, mechanism detail, or provenance.
-4. Treat lower comparison lanes as supporting pedagogy, not as the default first read.
+1. Start on Home to see the three-approach framing and the approach-verdict tile.
+2. Open an anchor case (`NVDA`, `LLY`, or `KO`) to see the control-vs-primary approach comparison on a real filing pair.
+3. Read the Methodology page's approach catalog for what each approach earns and when it is theater.
+4. Deeper audit (deterministic detector control arm, provenance, methods) remains available under a disclosure and is intentionally not the default surface.
 
 ## Scope boundaries
 
-This public product is intentionally narrow. It uses SEC Item 1A risk sections as a bounded demonstration corpus rather than trying to be a broad issuer gallery, upload flow, or whole-filing research platform.
+This public product is intentionally narrow. The corpus is bounded to six curated SEC Item 1A adjacent-year pairs rather than a broad issuer gallery, upload flow, or whole-filing research platform. Approaches are limited to the three with authored pilot-matrix data. A fourth approach (extract-then-synthesize) has prompt templates but no cell data and is not claimed as live.
 
-The public casebook roster is fixed to `NVDA`, `LLY`, `KO`, `META`, `TSLA`, and `WMT`.
-
-`GOOGL` remains reserve and `UNH` remains hold/internal-only.
-
-Some public cases ship with pilot-matrix artifacts only. That bounded stop is an explicit product decision rather than a hidden fallback.
+`GOOGL` remains reserve and `UNH` remains hold/internal-only. Some public cases ship with a single pilot-matrix cell rather than multiple; that restraint is an explicit product decision rather than a missing artifact.
 
 ## Product discipline
 
 - Static JSON only at runtime.
-- No runtime ML or LLM calls.
+- No runtime ML or LLM calls in the shipped app.
 - SEC text is treated as untrusted and rendered as plain text only.
-- Public answer shape, proof, and stop stay visible.
+- The approach catalog names when an approach is theater; the case comparison shows whether structure earned its weight on that filing.
 
 ## Local development
 
@@ -79,14 +64,16 @@ npm run lab:readiness
 
 ## Further reading
 
-- `docs/DEMO_READINESS.md`
-- `docs/REMAINING_SEAMS.md`
-- `docs/LAB_ARCHITECTURE_AND_GOALS.md`
-- `docs/00_DOC_INDEX.md`
-- `public/data/business_document_protocol_lab/product_positioning/demo_share_v3.json`
+- `docs/DEMO_READINESS.md` — walkthrough and speaking notes.
+- `docs/LAB_ARCHITECTURE_AND_GOALS.md` — architecture and the two-level grammar (approach comparison vs per-case anatomy).
+- `docs/PRODUCT_STORY.md` — public product narrative.
+- `docs/protocol_lab/README.md` — approach catalog and prompt-template entrypoint.
+- `docs/REMAINING_SEAMS.md` — operational follow-ups.
+- `docs/00_DOC_INDEX.md` — full documentation index.
+- `public/data/business_document_protocol_lab/product_positioning/demo_share_v3.json` — public one-liner and share metadata.
 
 ## Notes
 
-- `bundles/*` are local-only run artifacts for manual LLM jobs.
-- `reports/*` are local operator artifacts and remain untracked.
-- Archived non-canonical artifacts live under `attic/`.
+- `bundles/*` are local-only run artifacts for manual LLM jobs (gitignored).
+- `reports/*` are local operator artifacts (gitignored).
+- Archived non-canonical artifacts live under `attic/` (gitignored).

@@ -1,15 +1,20 @@
 # Casebook Candidate Workflows
 
-Last updated: 2026-04-06
+Last updated: 2026-04-16
 
 ## Purpose
 
 This document is the canonical source of truth for candidate-case LLM job preparation.
-Use it when preparing `GOOGL`, `META`, `TSLA`, `UNH`, `WMT`, or future casebook candidates.
+
+**Status note:** `META`, `TSLA`, and `WMT` have been promoted to shipped public cases. Use this document when preparing `GOOGL`, `UNH`, or future casebook candidates. The shipped cases keep their artifact trails here as reference, but the "Recommendation" column in the Candidate Job Matrix is historical for those rows.
 
 It exists to prevent one specific confusion:
-- candidate-case prep must follow the active Business Document Protocol Lab workflows
-- candidate-case prep must not drift back to archived SEC Narrative Drift legacy lanes
+- candidate-case prep must follow the active Document Protocol Lab workflows under the `business_document_protocol_lab` namespace
+- candidate-case prep must not drift back to archived legacy detector lanes under `sec_narrative_drift_lab`
+
+## Approach-comparison framing
+
+Candidate-case prep now carries forward the approach-comparison framing. A new case should produce pilot-matrix cells for at least the three live approaches (`p0`, `p1`, `p2`) so the case can render the same control-vs-primary approach comparison the shipped cases do. A fourth approach (`p4_novelty_ledger`) is optional and case-dependent. `p3_extract_then_synthesize` is not a live approach and should not be produced for candidate prep.
 
 ## Active Workflow Families
 

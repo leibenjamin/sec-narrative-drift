@@ -1,7 +1,24 @@
 # Protocol Lab Namespace
 
+## What this namespace is
+This is the active authoring and runtime namespace for Document Protocol Lab, the interactive casebook that compares approaches to business-document reading with frontier LLMs. Product-level framing lives in `docs/PRODUCT_STORY.md` and architecture in `docs/LAB_ARCHITECTURE_AND_GOALS.md`; this document is the internal reference for namespace, registry, and artifact-contract rules.
+
 `config/protocol_lab/*.json` is the authoring truth for Protocol Lab registry content.
 `public/data/business_document_protocol_lab/registries/*.json` is the runtime mirror and should stay aligned with the source registries.
+
+## Approach catalog (live vs authored)
+Three approaches are live across the public casebook, each with authored pilot-matrix cells:
+- `p0_plain_prompt_v1` — plain-prompt baseline (control).
+- `p1_structured_contract_v1` — structured contract (typically the primary read).
+- `p2_tagged_input_contract_v1` — tagged input contract (comparator).
+
+`p4_novelty_ledger_contract_v1` is available on a subset of cases as a deeper structural comparison.
+
+`p3_extract_then_synthesize_v1` has a prompt template and is referenced by artifact contracts below, but has no authored cell data in any public case. It is not claimed as a live approach on the product surface. Artifact-contract rules that reference `p3` apply only if a run is eventually executed; they do not imply the approach is shipped.
+
+Prompt templates live in `docs/protocol_lab/prompts/`.
+
+## Control-plane and artifact-contract rules
 
 Wave 4A / 4A.5 control-plane rules:
 - `artifact_status` is artifact lifecycle and scaffold state only. It is not a readiness field.

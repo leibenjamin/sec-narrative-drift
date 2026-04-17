@@ -2,13 +2,14 @@
 
 ## Start Here
 - `docs/00_DOC_INDEX.md` - this file.
-- `docs/LAB_REMAINING_WORK_PLAN.md` - active execution status and remaining work.
-- `docs/LAB_ARCHITECTURE_AND_GOALS.md` - canonical product/runtime architecture, design goals, and shipped-surface principles.
-- `docs/PRODUCT_STORY.md` - public product narrative and walkthrough order.
-- `docs/DEMO_READINESS.md` - compact walkthrough and speaking notes for the current public pilot.
-- `docs/REMAINING_SEAMS.md` - brief note on the remaining public/runtime seams and manual follow-ups.
+- `docs/LAB_ARCHITECTURE_AND_GOALS.md` - canonical product architecture; names the two-level grammar (app-level approach comparison vs per-case anatomy) and the three-approach / six-case scope.
+- `docs/PRODUCT_STORY.md` - public product narrative: approaches to business-document reading compared on the same substrate.
+- `docs/DEMO_READINESS.md` - compact walkthrough and speaking notes, organized around the approach-verdict first click.
+- `docs/protocol_lab/README.md` - approach catalog and prompt-template entrypoint (p0 plain / p1 structured / p2 tagged / p4 novelty ledger). Names p3 as authored-but-not-live.
+- `docs/REMAINING_SEAMS.md` - public/runtime seams and manual follow-ups.
 - `docs/PUBLIC_TONE_POLICY.md` - public-facing language policy and banned framing.
 - `docs/SEC_TEXT_SAFETY.md` - SEC text trust model and rendering safety rules.
+- `docs/LAB_REMAINING_WORK_PLAN.md` - active execution status and remaining work (may trail the shipped state; check against the code before relying on it).
 - `docs/lab/03_llm_precompute_workflow.md` - canonical precompute workflow (`full_section_v2`, master-first).
 - `docs/lab/05_llm_reproducibility_contract.md` - strict manual LLM output contract for outline-compare runs.
 - `docs/lab/06_llm_model_comparison_workflow.md` - campaign-aware model comparison workflow.

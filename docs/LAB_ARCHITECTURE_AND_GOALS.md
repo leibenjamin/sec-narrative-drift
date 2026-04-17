@@ -1,13 +1,21 @@
 # Lab Architecture, Goals, and Design Insights
 
-Last updated: 2026-04-06
+Last updated: 2026-04-16
 
 ## What This App Is
-Document Protocol Lab currently ships a bounded interactive casebook across six public SEC Item 1A cases: three anchor cases (`NVDA`, `LLY`, `KO`) plus three pressure cases (`META`, `TSLA`, `WMT`). Each fixture uses an adjacent-year pair under the company-official fiscal-year convention — FY2024 to FY2025 for most cases, and FY2025 to FY2026 for `WMT`.
+Document Protocol Lab is an interactive casebook that compares approaches to business-document reading with frontier LLMs across six public SEC Item 1A cases: three anchor cases (`NVDA`, `LLY`, `KO`) plus three added-pressure cases (`META`, `TSLA`, `WMT`). Each case uses an adjacent-year pair under the company-official fiscal-year convention — FY2024 to FY2025 for most cases, FY2025 to FY2026 for `WMT`.
 
-The public UX is intentionally simple. Users choose a fixture, not a broad issuer gallery, and land in one default reading order: filing answer first, protocol meaning second, deeper audit third.
+The visible unit of comparison is the approach, not the company. Three approaches are compared on the same substrate: plain prompt (control), structured contract (typically the primary read), and tagged protocol (comparator). Every multi-cell case renders a side-by-side of the control read and the primary read so the approach verdict is visible without a click.
 
-The lower runtime registry and supporting lab artifacts can remain broader backstage. That backstage breadth supports audit and future work, but it does not widen the visible product claim. In particular, the legacy Core4 runtime registry (`NVDA`/`KO`/`WM`/`GE` under `public/data/sec_narrative_drift_lab/`) is a separate backstage surface from the public casebook data under `public/data/business_document_protocol_lab/`. Both still coexist, but only the latter maps to the shipped six-case public route.
+The public UX is intentionally narrow. Visitors compare approaches across a curated casebook — not a broad issuer gallery, not an upload flow, not a whole-filing research platform. Lower runtime registries and supporting lab artifacts remain broader backstage but do not widen the visible product claim or the three-approach count. In particular, the legacy Core4 runtime registry (`NVDA`/`KO`/`WM`/`GE` under `public/data/sec_narrative_drift_lab/`) is a separate backstage surface from the public casebook data under `public/data/business_document_protocol_lab/`. Both still coexist, but only the latter maps to the shipped six-case public route.
+
+## Two-Level Grammar
+The product has two grammars operating at different levels, and they are intentionally distinct:
+
+- **App-level grammar — Read → Compare → Verdict.** This is how the product compares approaches across cases. It appears on Home (the approach-verdict tile, the three-approach signal) and on Methodology (the approach catalog). This is the distinctive claim.
+- **Per-case anatomy — filing answer → proof → stop → appendix.** This is how a visitor reads one case after the approach is chosen. It is familiar casebook reading and lives on each company page.
+
+Conflating these two levels was a real risk during the reframe. The `WorkflowAnatomyDiagram` header therefore names itself "Case page anatomy (after an approach is chosen)" to disambiguate from the app-level Read/Compare/Verdict grammar.
 
 ## Core Architecture
 
@@ -67,18 +75,18 @@ Each campaign and lens can produce three artifact tiers:
 2. `llm_outline_compare_runtime`: deterministic projection used by the shipped compare UI.
 3. `llm_outline_compare_insight`: optional insight layer, not required for the core public flow.
 
-## Protocol Lab Pilot Matrix (active pedagogical workflow)
-The pilot matrix is a pedagogical comparison experiment showing how different prompting
-protocols produce different quality outputs on the same filing pair. Displayed in the
-ProtocolPreviewCard component. Data lives in `public/data/business_document_protocol_lab/`.
+## Protocol Lab Pilot Matrix (core product experiment)
+The pilot matrix is the core product experiment. Each case has cells representing different approach reads on the same filing pair, and the comparison between cells is what the product surfaces on the case page. The primary surface is the `ProtocolPreviewCard` component, which renders `comparison_pairs[0]` (control read vs primary read) as a side-by-side block visible without a disclosure click. Data lives in `public/data/business_document_protocol_lab/`.
 
-Prompt templates are in `docs/protocol_lab/prompts/`:
-- `p0_plain_prompt_v1.md`: unstructured frontier baseline (control)
-- `p1_structured_contract_v1.md`: structured contract (typically the hero read)
-- `p2_tagged_input_contract_v1.md`: tagged input contract (comparator)
-- `p4_novelty_ledger_contract_v1.md`: novelty ledger (deeper analysis)
+Prompt templates in `docs/protocol_lab/prompts/`:
+- `p0_plain_prompt_v1.md`: unstructured plain-prompt baseline (control).
+- `p1_structured_contract_v1.md`: structured contract (typically the primary read).
+- `p2_tagged_input_contract_v1.md`: tagged input contract (comparator).
+- `p4_novelty_ledger_contract_v1.md`: novelty ledger (available on a subset of cases for deeper structural comparison).
 
-Each cell produces `change_brief` + `evidence_bundle` (+ `novelty_ledger` for p4).
+A fourth approach (`p3_extract_then_synthesize`) has prompt templates in the same folder but no authored cell data in any case. It is not claimed as live, and Home's three-approach signal excludes it deliberately.
+
+Each cell produces `change_brief` + `evidence_bundle` (+ `novelty_ledger` for p4 where authored).
 
 ### Casebook LLM job bundles
 For preparing ChatGPT Desktop LLM jobs for new casebook cases, use:
@@ -97,18 +105,19 @@ That means `WMT` remains `FY2025 vs FY2026`, consistent with `NVDA`. A later swi
 “bulk of 12 months” convention would be a repo-wide relabeling decision, not a one-off fix.
 
 ## Public Visible Scope
-- Public casebook: `NVDA`, `LLY`, `KO`, `META`, `TSLA`, and `WMT`
-- Three Home anchor cases: `NVDA`, `LLY`, `KO`
-- Three added pressure cases surfaced inside the Casebook: `META`, `TSLA`, `WMT`
-- Adjacent-year Item 1A fixture per visible company, using the company-official fiscal-year convention (FY2024 to FY2025 for most; FY2025 to FY2026 for `WMT`)
-- `NVDA`: strongest first signal / vivid answer
-- `LLY`: policy-heavy bounded contrast with an explicit stop before full lower-audit runtime depth
-- `KO`: restraint / low-drift honesty check with narrower visible comparisons by design
-- `META`: sharper AI enforcement / platform-risk pressure case
-- `TSLA`: policy-shock and autonomy-commercialization pressure case
-- `WMT`: calm retail interface and tariff persistence pressure case
-- `GOOGL` remains reserve and `UNH` remains hold/internal-only
-- Canonical public-casebook ticker lists live in `src/lib/casebookContent.ts` (`HOME_ANCHOR_TICKERS` and `PUBLIC_CASEBOOK_TICKERS`)
+- Public casebook: `NVDA`, `LLY`, `KO`, `META`, `TSLA`, and `WMT`.
+- Home anchor cases: `NVDA`, `LLY`, `KO`.
+- Added-pressure cases surfaced inside the Casebook: `META`, `TSLA`, `WMT`.
+- Adjacent-year Item 1A pair per case, using the company-official fiscal-year convention (FY2024 to FY2025 for most; FY2025 to FY2026 for `WMT`).
+- Three approaches compared: plain prompt, structured contract, tagged protocol. A fourth (extract-then-synthesize) has templates but no authored cells and is not claimed as live.
+- `NVDA`: strongest structural lift from moving beyond a plain-prompt read.
+- `LLY`: honest stop tightening under structure.
+- `KO`: useful restraint — one cell by design, and the product lets that be enough.
+- `META`: sharper AI enforcement and platform-liability pressure under structure.
+- `TSLA`: policy shock and autonomy-commercialization pivot.
+- `WMT`: calm retail case whose customer-interface risk and tariff persistence only surface once the approach earns them.
+- `GOOGL` remains reserve and `UNH` remains hold/internal-only.
+- Canonical public-casebook ticker lists live in `src/lib/casebookContent.ts` (`HOME_ANCHOR_TICKERS` and `PUBLIC_CASEBOOK_TICKERS`).
 
 ## Backstage Runtime Scope
 - The legacy Core4 lab runtime registry (`public/data/sec_narrative_drift_lab/lab_cases_v1.json`) still covers `NVDA`, `KO`, `WM`, and `GE` with deterministic detector outputs and LLM outline-compare artifacts. It powers the older outline-compare runtime surfaces but is not the source of truth for the public casebook's six-case route.
@@ -116,11 +125,17 @@ That means `WMT` remains `FY2025 vs FY2026`, consistent with `NVDA`. A later swi
 - Backstage Core4 breadth does not change the six-case public product claim.
 - Hidden preregistered lanes remain out of public flow until they earn exposure.
 
-## Public Page Flow
-1. **Filing Answer**: the answer and nearby evidence come first.
-2. **Protocol Meaning**: the fixture role and comparison geometry come second.
-3. **Deeper Audit**: methods, agreement, compare detail, and provenance stay lower on the page.
-4. **Optional Insight**: only shown when the sidecar exists.
+## App-Level Surface: Approach Comparison
+1. **Home** surfaces the approach tile (three approaches compared across six cases) and the approach-verdict framing.
+2. **Methodology** surfaces the approach catalog (input shape, output shape, what each approach earns, when it helps, when it is theater) and a worked-comparison example block.
+3. **Case page** surfaces the side-by-side approach comparison (`comparison_pairs[0]`: control read vs primary read) as the top disclosure-free block, then the per-case anatomy below it.
+4. **Deterministic detector arm** is preserved on Methodology under a `<details>` disclosure labelled as a control arm, not as the product.
+
+## Per-Case Page Anatomy (after an approach is chosen)
+1. **Filing answer**: the answer and nearby evidence come first.
+2. **Proof**: the structured evidence the approach produced.
+3. **Stop**: what the approach explicitly does not claim, and why.
+4. **Appendix / optional insight**: methods, agreement, compare detail, and provenance stay lower on the page.
 
 ## UX Defaults
 - Quick read is the default mode.
@@ -144,6 +159,8 @@ Missing artifacts should remain visible and path-explicit. The app should not si
 Copy should speak to people interested in how the filing changed, not to evaluators of a demo or showcase artifact.
 
 ## Current Improvement Focus
-- Keep public docs, labels, and UX aligned with the six-case public casebook while leaving backstage Core4 runtime breadth explicit but secondary.
-- Preserve advanced audit controls without letting them dominate the default reading path.
-- Continue treating Insight Lens as optional enrichment rather than required surface area.
+- Keep public docs, labels, and UX aligned with the approach-comparison framing across the six-case public casebook. The backstage Core4 runtime remains explicit but secondary.
+- Preserve the disambiguation between the app-level Read/Compare/Verdict grammar and the per-case filing-answer/proof/stop anatomy. Both appear in the UI on purpose; conflating them was the main staleness risk during the reframe.
+- Extend `PEDAGOGIC_COMPARE_EXAMPLES` in `src/lib/casebookContent.ts` to cover the three anchor cases (`NVDA`, `LLY`, `KO`) in addition to the existing `TSLA` and `META` breakdowns. The side-by-side approach comparison block is already live on every multi-cell case; the gap is in the authored worked-example text.
+- Keep the deterministic detector arm under a disclosure as a control arm rather than letting it dominate the default reading path.
+- Keep the approach count honest. Three approaches are live; a fourth (extract-then-synthesize) has templates but no authored cells and is not claimed.

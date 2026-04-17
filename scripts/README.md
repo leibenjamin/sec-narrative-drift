@@ -5,6 +5,14 @@ shipped app reads at runtime. No LLM or ML call ever happens at runtime; every
 JSON under `public/data/` is the output of one of these scripts, or of a manual
 LLM campaign whose outputs are deterministically projected into runtime form.
 
+Product framing: the shipped app is an interactive casebook that compares
+three approaches to business-document reading (plain prompt, structured
+contract, tagged protocol) across six SEC Item 1A cases. The approach catalog
+lives on the Methodology page; pilot-matrix cells under
+`public/data/business_document_protocol_lab/` are the data these scripts
+produce or validate. A fourth approach (`p3_extract_then_synthesize`) has
+prompt templates but no authored cells and is not shipped.
+
 ## Two product surfaces live side-by-side
 
 The repository intentionally maintains two separate runtime data trees. Both
