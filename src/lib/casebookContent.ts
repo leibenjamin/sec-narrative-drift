@@ -242,6 +242,15 @@ export const PEDAGOGIC_COMPARE_EXAMPLES: PedagogicCompareExample[] = [
     whyItMatters:
       "This is where a structured approach earns its cost: it stops repeated theme language from masquerading as genuinely new risk.",
   },
+  {
+    ticker: "WMT",
+    simpleRead:
+      "A plain prompt catches the refreshed specifics — agentic shopping platforms, AI-enabled cyber threats, tariff persistence into fiscal 2027 — and tends to read them as a broad reprioritization of the risk map.",
+    structuredRead:
+      "The tagged protocol holds the same refreshed specifics against the repeated omnichannel and compliance scaffold, so they register as selective sharpenings rather than a rewritten thesis.",
+    whyItMatters:
+      "This is where structure earns its cost on a calm case: it keeps real but selective pressure from being overread as a wholesale strategic shift, and that boundary discipline is itself the verdict.",
+  },
 ] as const
 
 export const PUBLIC_CASEBOOK_CASES: Record<PublicCasebookTicker, PublicCasebookEntry> = {
