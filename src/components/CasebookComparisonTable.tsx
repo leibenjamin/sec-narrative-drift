@@ -12,7 +12,7 @@ export default function CasebookComparisonTable() {
           <thead>
             <tr className="border-b border-white/10">
               <th className="w-24 px-3 py-3 text-[11px] uppercase tracking-[0.22em] text-slate-400 sm:w-28">
-                Claim / prove / stop
+                Approach across cases
               </th>
               {PUBLIC_CASEBOOK_TICKERS.map((ticker) => (
                 <th

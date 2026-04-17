@@ -18,6 +18,73 @@ import { getRouteFamilyConfig } from "../lib/routeFamilyUi"
 const METHODOLOGY_TITLE = casebookFraming.methodology.title
 const METHODOLOGY_DESCRIPTION = casebookFraming.methodology.metaDescription
 
+type ApproachCatalogEntry = {
+  id: string
+  code: string
+  label: string
+  inputShape: string
+  outputShape: string
+  earns: string
+  whenItHelps: string
+  whenItIsTheater: string
+  seenInCases: string
+}
+
+const APPROACH_CATALOG: ApproachCatalogEntry[] = [
+  {
+    id: "plain_prompt",
+    code: "B0 / P0",
+    label: "Plain prompt",
+    inputShape: "Filing text (raw or already tagged) and a plain natural-language question.",
+    outputShape: "Free-form answer with whatever shape the model chooses.",
+    earns: "Nothing extra; every other approach has to beat this baseline to justify its cost.",
+    whenItHelps:
+      "When the filing shift is vivid enough that a plain read already catches the turn, and more structure would add cost without lift.",
+    whenItIsTheater:
+      "When a plain read sounds confident but quietly blurs recycled scaffolding together with newly decision-useful content.",
+    seenInCases: "Control lane in NVDA, LLY, META, TSLA, WMT.",
+  },
+  {
+    id: "structured_contract",
+    code: "P1",
+    label: "Structured contract",
+    inputShape: "Same filing substrate, with a pre-specified output contract that names the evaluation slots.",
+    outputShape: "Filled slots that stay comparable across cases, still one LLM call.",
+    earns: "Predictable shape, holdable across cases, and a read that can be lined up with another read on the same slots.",
+    whenItHelps:
+      "When several cases need to be held to the same evaluation slots without hand-shaping each read, or when lift over a plain prompt needs to be auditable slot-by-slot.",
+    whenItIsTheater:
+      "When contract slots force an answer the evidence does not actually support, or when a plain read was already enough and slots just add cost.",
+    seenInCases: "Default read in NVDA and KO; comparator in LLY, META, TSLA, WMT.",
+  },
+  {
+    id: "tagged_protocol",
+    code: "P2",
+    label: "Tagged protocol",
+    inputShape: "Same tagged substrate as P1, plus an explicit protocol that names roles and scope for each evidence slot.",
+    outputShape: "Ranked reads with role-tagged evidence and an explicit protocol layer.",
+    earns:
+      "Novelty ranking, mechanism chains that a plain list cannot hold together, and auditability by role rather than by free text.",
+    whenItHelps:
+      "When repeated theme language needs to be separated from newly decision-useful items (META), or a mechanism chain needs to be visible (TSLA), or a public stop needs structure to stay honest (LLY).",
+    whenItIsTheater:
+      "When a plain prompt already catches the turn and the extra ranking just adds ceremony without new signal.",
+    seenInCases: "Default read in META, TSLA, WMT; comparator in NVDA and LLY.",
+  },
+  {
+    id: "reuse_filtered_input",
+    code: "P1-i1",
+    label: "Reuse-filtered input (control)",
+    inputShape: "Filing substrate with recycled boilerplate filtered out before the P1 contract runs.",
+    outputShape: "Filled contract slots anchored in the filtered substrate.",
+    earns:
+      "A control on how much of a structured read was driven by boilerplate carryover rather than genuinely new language.",
+    whenItHelps: "When tagged-packet richness needs to be tested for whether it survives stripping recycled scaffolding.",
+    whenItIsTheater: "When reuse filtering strips out context the read actually needed.",
+    seenInCases: "Only NVDA (secondary comparator lane).",
+  },
+]
+
 const DETECTORS = [
   {
     id: "det_logodds_terms_v1",
@@ -248,12 +315,101 @@ export default function Methodology() {
             </section>
 
             <section
+              id="methodology-approach-catalog"
+              className="space-y-3 rounded-[1.2rem] border border-sky-300/18 bg-sky-400/6 p-4"
+            >
+              <div className="space-y-2">
+                <div className="text-[11px] uppercase tracking-[0.24em] text-sky-100">
+                  Approach catalog
+                </div>
+                <h2 className="text-xl font-semibold text-slate-50 sm:text-2xl">
+                  The approaches compared on each case
+                </h2>
+                <p className="max-w-3xl text-sm leading-6 text-slate-300">
+                  Every visible case ships with at least one of these approaches as its default read,
+                  and most ship with a comparator so the verdict is not a single-point claim.
+                </p>
+              </div>
+
+              <div className="grid gap-3 lg:grid-cols-2">
+                {APPROACH_CATALOG.map((approach) => (
+                  <article
+                    key={approach.id}
+                    id={`methodology-approach-${approach.id}`}
+                    className="rounded-[1.15rem] border border-white/10 bg-slate-950/62 p-4"
+                  >
+                    <div className="flex flex-wrap items-start justify-between gap-3">
+                      <div>
+                        <div className="text-[11px] uppercase tracking-[0.24em] text-slate-400">
+                          Approach {approach.code}
+                        </div>
+                        <h3 className="mt-1 text-lg font-semibold text-slate-50">
+                          {approach.label}
+                        </h3>
+                      </div>
+                      <div className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] text-slate-200">
+                        {approach.seenInCases}
+                      </div>
+                    </div>
+
+                    <div className="mt-3 grid gap-2.5">
+                      <div className="grid gap-2 sm:grid-cols-2">
+                        <article className="rounded-2xl border border-white/10 bg-slate-950/58 p-3">
+                          <div className="text-[10px] uppercase tracking-[0.24em] text-slate-400">
+                            Input shape
+                          </div>
+                          <p className="mt-1.5 text-sm leading-6 text-slate-100">
+                            {approach.inputShape}
+                          </p>
+                        </article>
+                        <article className="rounded-2xl border border-white/10 bg-slate-950/58 p-3">
+                          <div className="text-[10px] uppercase tracking-[0.24em] text-slate-400">
+                            Output shape
+                          </div>
+                          <p className="mt-1.5 text-sm leading-6 text-slate-100">
+                            {approach.outputShape}
+                          </p>
+                        </article>
+                      </div>
+
+                      <article className="rounded-2xl border border-sky-300/18 bg-sky-400/8 p-3">
+                        <div className="text-[10px] uppercase tracking-[0.24em] text-sky-100">
+                          What it earns over the baseline
+                        </div>
+                        <p className="mt-1.5 text-sm leading-6 text-slate-100">{approach.earns}</p>
+                      </article>
+
+                      <div className="grid gap-2 sm:grid-cols-2">
+                        <article className="rounded-2xl border border-white/10 bg-slate-950/58 p-3">
+                          <div className="text-[10px] uppercase tracking-[0.24em] text-slate-400">
+                            When it helps
+                          </div>
+                          <p className="mt-1.5 text-sm leading-6 text-slate-100">
+                            {approach.whenItHelps}
+                          </p>
+                        </article>
+                        <article className="rounded-2xl border border-amber-300/18 bg-amber-400/7 p-3">
+                          <div className="text-[10px] uppercase tracking-[0.24em] text-amber-100">
+                            When it is theater
+                          </div>
+                          <p className="mt-1.5 text-sm leading-6 text-slate-100">
+                            {approach.whenItIsTheater}
+                          </p>
+                        </article>
+                      </div>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </section>
+
+            <section
               id="methodology-compare"
               className="space-y-3 rounded-[1.2rem] border border-white/10 bg-slate-950/30 p-4"
             >
               <div className="space-y-2">
                 <div className="text-[11px] uppercase tracking-[0.24em] text-slate-400">
-                  Simple read vs structured read
+                  Worked approach verdicts
                 </div>
                 <h2 className="text-xl font-semibold text-slate-50 sm:text-2xl">
                   {casebookFraming.methodology.compareTitle}
@@ -328,7 +484,35 @@ export default function Methodology() {
           </div>
         </section>
 
-        <MethodFamilySummary families={METHOD_FAMILIES} />
+        <details
+          id="methodology-non-llm-control-arm"
+          className="rounded-[1.45rem] border border-white/10 bg-slate-900/45 p-4 sm:p-5"
+        >
+          <summary className="cursor-pointer list-none">
+            <div className="flex flex-wrap items-start justify-between gap-3 rounded-[1.1rem] border border-white/10 bg-slate-950/34 px-4 py-4">
+              <div>
+                <div className="text-[11px] uppercase tracking-[0.28em] text-slate-400">
+                  Non-LLM control arm
+                </div>
+                <h2 className="mt-2 text-xl font-semibold text-slate-100 sm:text-2xl">
+                  Deterministic drift detectors — a control arm, not the product
+                </h2>
+                <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-300">
+                  These run offline with no LLM. They are the boring baseline the approach verdicts
+                  above are supposed to beat — if tagged protocol cannot do more than a term ranker,
+                  structure has not earned its cost. Open only if you want the control-arm detail.
+                </p>
+              </div>
+              <div className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-slate-300">
+                Appendix layer
+              </div>
+            </div>
+          </summary>
+
+          <div className="mt-4">
+            <MethodFamilySummary families={METHOD_FAMILIES} />
+          </div>
+        </details>
 
         <details className="rounded-[1.45rem] border border-white/10 bg-slate-900/45 p-4 sm:p-5">
           <summary className="cursor-pointer list-none">

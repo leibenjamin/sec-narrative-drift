@@ -29,7 +29,7 @@ export default function WorkflowAnatomyDiagram({
       <div className="relative">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="text-[11px] uppercase tracking-[0.32em] text-slate-400">
-            Workflow anatomy
+            Case page anatomy (after an approach is chosen)
           </div>
           <div className="hidden text-[11px] uppercase tracking-[0.18em] text-slate-400 sm:block">
             claim {"->"} proof {"->"} stop {"->"} appendix

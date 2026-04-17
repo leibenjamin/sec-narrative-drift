@@ -81,87 +81,89 @@ export type PedagogicCompareExample = {
 export const casebookFraming = {
   appName: "Document Protocol Lab",
   casebookOneLiner:
-    "An interactive casebook for how document-comparison workflows should claim, prove, and stop.",
+    "A side-by-side catalog of approaches to business-document comparison, with an honest verdict per case.",
   productStatement:
-    "Document Protocol Lab is an interactive casebook for bounded document-comparison judgment. It shows what a workflow should claim, how it should prove it, and where it should stop.",
+    "Document Protocol Lab is a side-by-side approach catalog for business-document comparison. It compares plain-prompt, structured-contract, and tagged-protocol reads on six SEC Item 1A pairs, then tells you which approach earned its complexity on each case.",
   home: {
-    title: "Document Protocol Lab | Interactive Casebook",
+    title: "Document Protocol Lab | Approach Comparison Casebook",
     metaDescription:
-      "Document Protocol Lab is an interactive casebook for bounded document-comparison judgment across six public cases.",
-    hook: "How do you show what changed in a document without overstating what you know?",
+      "A side-by-side catalog comparing plain-prompt, structured-contract, and tagged-protocol approaches to business-document comparison across six SEC cases.",
+    hook: "Any frontier model can read a 10-K on a plain prompt. The harder question is which approach actually helps.",
     support:
-      "An interactive casebook for how document-comparison workflows should claim, prove, and stop.",
+      "Document Protocol Lab compares plain-prompt, structured-contract, and tagged-protocol reads on six SEC Item 1A pairs, and gives an honest verdict about which approach earned its complexity on each case.",
     chooserSummary:
-      "Start with the three anchor answer shapes. The full Casebook keeps the same claim, proof, and stop grammar under added pressure.",
+      "Three anchors show where structure earns its weight, where it only sharpens the stop, and when one disciplined read is enough. The rest hold the same comparison under added pressure.",
     whatThisIsTitle: "What this is",
-    whatThisIs: "An interactive casebook for bounded document-comparison judgment.",
+    whatThisIs:
+      "A side-by-side approach comparison for business-document analysis: same filings, different approaches, honest verdicts.",
     whatThisIsntTitle: "What this isn't",
-    whatThisIsnt: "A general document chatbot or a broad filing browser.",
+    whatThisIsnt:
+      "Not a runtime chatbot, a benchmark leaderboard, or a claim that more machinery always wins.",
     whyThisMattersTitle: "Why this matters",
     whyThisMatters: [
-      "Better than a summary when the shape of the claim matters.",
-      "Better than a one-off answer when you want proof beside the answer.",
-      "Better than false certainty when the honest move is to stop.",
+      "Better than a single model output when you need to see which approach actually helped.",
+      "Better than a benchmark score when you want the evidence beside the verdict.",
+      "Better than false certainty when the honest answer is that extra structure did not move the needle.",
     ],
     casebookEntryTitle: "Explore the full casebook",
     casebookEntryBody:
-      "The first three teach vivid answer, honest stop, and useful restraint. The full Casebook keeps the same bounded grammar under added pressure.",
+      "The first three teach when structure earns its weight, when it only sharpens the stop, and when one disciplined read is enough. The rest hold the same approach comparison under AI-governance, policy-shock, and calm-interface pressure.",
     compareTeaser:
-      "Methodology uses TSLA and META to show what a simpler read gets right, what structure adds, and why the public route still stays bounded.",
-    compareTeaserCta: "See the compare",
+      "Methodology uses TSLA and META to show what plain prompting catches, what tagging and structured contracts add, and where the extra machinery stops helping.",
+    compareTeaserCta: "See the approach comparison",
     casebookEntryCta: "Open the Casebook",
     commonFailureModesTitle: "Common failure modes this lab avoids",
     commonFailureModes: [
-      "Mistaking reordering for novelty",
-      "Treating added examples as new themes",
-      "Summarizing without proof",
-      "Refusing to stop",
-      "Overcalling weak change",
+      "Mistaking structure for insight",
+      "Calling extra machinery a win when it was theater",
+      "Treating one case as a universal result",
+      "Hiding when plain prompt was already enough",
+      "Summarizing without an honest verdict",
     ],
   },
   casebook: {
     title: "Casebook | Document Protocol Lab",
     metaDescription:
-      "Six public cases show how document-comparison workflows should claim, prove, and stop.",
+      "Six SEC cases, each compared across plain-prompt, structured-contract, and tagged-protocol approaches, with an honest verdict per case.",
     eyebrow: "Casebook",
-    heading: "A curated set of worked document-comparison cases.",
+    heading: "Six approach comparisons on curated filing pairs.",
     intro:
-      "Each public case earns space by teaching a different first question, answer shape, and stopping boundary for the same comparison task.",
+      "Each public case compares plain, structured, and tagged-protocol reads on the same Item 1A pair, then gives an honest verdict about which approach earned its complexity.",
     rosterNoteTitle: "Why this roster",
     rosterNoteLead:
-      "Each public case earns space by teaching a different kind of judgment. The first three anchor the answer shapes. The second three keep the same grammar under added pressure without promising full depth everywhere.",
+      "Each case earns space by producing a different approach verdict. The first three anchor the outcomes: structure earns its weight, structure only sharpens the stop, one disciplined read is enough. The second three hold the same comparison under AI-governance, policy-shock, and calm-interface pressure.",
     rosterNoteSupport:
-      "The roster stays bounded on purpose so the casebook stays curated, not noisy. Some valid candidates stay out when they overlap too much or add too little teaching contrast.",
+      "The roster stays bounded on purpose so each verdict is earned, not padded. Candidates that would overlap or add no fresh verdict stay out.",
     boundednessNote:
-      "This is a curated six-case roster, not a filing browser, upload flow, or broad benchmark.",
-    comparisonTitle: "Cross-case map",
+      "This is a curated six-case approach catalog, not a filing browser, upload flow, or broad benchmark.",
+    comparisonTitle: "Cross-case verdict map",
     comparisonIntro:
-      "Use one quick map to compare the first question, answer shape, stopping boundary, and best fit for each public case.",
+      "Use one quick map to compare the first question, approach verdict, stopping boundary, and best fit for each public case.",
   },
   methodology: {
     title: "Methodology | Document Protocol Lab",
     metaDescription:
-      "How the casebook makes bounded document-comparison claims, keeps proof visible, and stops before overclaiming.",
-    heading: "Field guide for claim, proof, and stop.",
+      "How the lab compares plain-prompt, structured-contract, and tagged-protocol approaches, and how verdicts stay evidence-backed.",
+    heading: "Field guide for approach comparison.",
     intro:
-      "The public lab is not trying to answer every document question. It exists to show how a bounded workflow should make a claim, prove it with visible evidence, and stop before the public route overclaims.",
+      "The lab compares plain-prompt, structured-contract, and tagged-protocol reads on six SEC Item 1A pairs, then gives an honest verdict about whether the extra machinery earned its complexity on each case.",
     whyFrontierTitle: "Why not just ask a frontier model?",
     whyFrontierBody: [
-      "A strong frontier model can often give you a plausible first read.",
-      "This casebook is for when you care about answer shape, proof beside the answer, and where the workflow should stop.",
-      "TSLA and META show the difference: the simpler read catches the theme, while the structured read makes the mechanism, ranking, and stopping boundary clearer.",
+      "A strong frontier model will give you a plausible first read on a plain prompt.",
+      "The real question is when adding structure, tagging, or a separate evidence step earns its complexity, and when the extra machinery is theater.",
+      "TSLA and META show the difference: the plain-prompt read catches the turn, while the tagged protocol separates ranked specifics from repeated theme language.",
     ],
-    compareTitle: "What the structured read adds",
+    compareTitle: "What the tagged protocol actually adds over plain prompt",
     compareIntro:
-      "These two cases show what a simpler read gets right, what the structured read adds, and why the stronger public route still needs an explicit stop.",
+      "These two cases compare a plain-prompt read and a tagged-protocol read on the same tagged substrate. The verdict is specific: structure helps when ranking novelty over repeated theme language matters.",
     nonClaimsTitle: "What this lab does not claim",
     nonClaims: [
-      "It is not a benchmark of every model or prompt family.",
-      "It is not a broad market screener or issuer browser.",
-      "It is not proof that every document set needs the same answer shape.",
+      "Not a benchmark across every model or prompt family.",
+      "Not a broad document chatbot or filing browser.",
+      "Not a claim that any one approach always wins.",
     ],
     matrixOnlyNote:
-      "Some public cases can ship honestly with pilot-matrix evidence only. Matrix-first here means the proof basis is sufficient and the bounded public stop is part of the lesson, not a missing feature.",
+      "Some public cases ship honestly with pilot-matrix evidence only. Matrix-first means the approach comparison is sufficient and the bounded public stop is part of the verdict, not a missing feature.",
   },
   reserveHold: {
     reserveTitle: "Reserve",
@@ -180,16 +182,16 @@ export const casebookFraming = {
 export const CASEBOOK_BANDS: CasebookBand[] = [
   {
     id: "anchor_shapes",
-    title: "Anchor answer shapes",
+    title: "Anchor approach verdicts",
     description:
-      "The first three public cases teach the anchor answer shapes: vivid answer, honest stop, and useful restraint.",
+      "The first three cases anchor where structure earns its cost (NVDA), where it sharpens the public stop (LLY), and where one disciplined read is honestly enough (KO).",
     tickers: ["NVDA", "LLY", "KO"],
   },
   {
     id: "pressure_cases",
-    title: "Added pressure cases",
+    title: "Approaches under added pressure",
     description:
-      "The second three show those same judgment habits under AI and regulation, policy shock, and interface pressure.",
+      "The second three put the same approaches under AI and governance pressure (META), outside policy shock (TSLA), and customer-interface pressure (WMT).",
     tickers: ["META", "TSLA", "WMT"],
   },
 ] as const
@@ -198,20 +200,20 @@ export const PEDAGOGIC_COMPARE_EXAMPLES: PedagogicCompareExample[] = [
   {
     ticker: "TSLA",
     simpleRead:
-      "You quickly see autonomy, tariffs, and roadmap pressure moving closer to the center.",
+      "A plain prompt lists autonomy, tariffs, and roadmap pressure side by side, without showing how they actually pressure the story.",
     structuredRead:
-      "P2 keeps the mechanism chain visible: policy shock to cost and demand pressure to commercialization dependence, with proof beside the claim and a clearer stop.",
+      "The tagged protocol keeps a mechanism chain visible: outside policy shock into cost and demand pressure into commercialization dependence, with proof tied to each step.",
     whyItMatters:
-      "That keeps the case from flattening into generic EV or AI commentary.",
+      "This is where a structured approach turns a flat list into an auditable mechanism story, instead of flattening into generic EV or AI commentary.",
   },
   {
     ticker: "META",
     simpleRead:
-      "You quickly see AI and regulation sharpening.",
+      "A plain prompt flags AI and regulation as sharper, but it blurs repeated scaffolding together with the newly decision-useful items.",
     structuredRead:
-      "P2 separates the repeated AI and privacy scaffold from the newly decision-useful 2025 stack: named decisions, liability shifts, and AI-specific execution risk.",
+      "The tagged protocol separates the ongoing AI and privacy scaffold from the 2025 stack: named decisions, liability shifts, and AI-specific execution risk.",
     whyItMatters:
-      "That keeps repeated theme language from masquerading as genuinely new risk.",
+      "This is where a structured approach earns its cost: it stops repeated theme language from masquerading as genuinely new risk.",
   },
 ] as const
 
@@ -223,22 +225,22 @@ export const PUBLIC_CASEBOOK_CASES: Record<PublicCasebookTicker, PublicCasebookE
     yearFrom: 2024,
     yearTo: 2025,
     surface: "runtime_full",
-    publicRoleLabel: "Vivid answer",
+    publicRoleLabel: "Structure earns its weight",
     publicClaim:
-      "FY2025 is vivid enough to support a specific first claim about regulatory and AI-infrastructure execution pressure.",
+      "The FY2024 to FY2025 shift is vivid enough that plain prompting catches the turn; the structured tagged read materially lifts specificity, ranking, and auditability on the same evidence.",
     proofBasis:
-      "Integrated runtime compare on the official FY2024 to FY2025 pair, with the pilot matrix kept nearby as a compact cross-check.",
+      "Integrated runtime compare on the official FY2024 to FY2025 pair, with a four-cell pilot matrix (control, reuse-filtered input, tagged packet, tagged protocol) on the same substrate.",
     stopBoundary:
-      "It does not prove a universal benchmark winner or that every filing deserves the same answer-first confidence.",
-    homeCardLabel: "Vivid answer",
+      "It does not prove that structure always wins or that this single-case lift generalizes across issuers.",
+    homeCardLabel: "Structure earns its weight",
     chooserCardDescription:
-      "The clearest answer-first case when the filing shift is vivid and evidence-adjacent.",
-    chooserBestFor: "Strongest answer-first case",
-    chooserObjectiveLabel: "Vivid answer",
+      "The case where moving from a plain baseline to a structured tagged read materially lifts specificity, ranking, and auditability on the same evidence.",
+    chooserBestFor: "Where structure clearly pays off",
+    chooserObjectiveLabel: "Structure earns its weight",
     methodologyDetail:
-      "Shows the workflow at full clarity when the filing shift is vivid enough to support a specific first read.",
+      "Shows how moving from a plain baseline to a structured tagged read materially lifts specificity, ranking, and auditability on the same evidence substrate.",
     topCue:
-      "Vivid answer: make the claim up front, keep proof beside it, and stop before the extra machinery takes over.",
+      "Approach verdict: plain prompt catches the turn, but the structured tagged read materially lifts specificity and auditability on NVDA.",
     preview: {
       integratedTitle: "Why this case matters",
       boundedTitle: "Why this read matters",
@@ -246,24 +248,24 @@ export const PUBLIC_CASEBOOK_CASES: Record<PublicCasebookTicker, PublicCasebookE
       subtitleSource: "card_takeaway",
     },
     bandId: "anchor_shapes",
-    bandLabel: "Anchor answer shape",
-    bandSummary: "The cleanest answer-first read in the public roster.",
+    bandLabel: "Anchor approach verdict",
+    bandSummary: "The clearest case where structure materially lifts the read.",
     teachingSummary:
-      "Shows how a vivid filing shift can stay specific, evidence-adjacent, and bounded.",
+      "Shows how a vivid filing shift still benefits from structure: more ranked, more auditable, and more specific than a plain baseline.",
     whyCaseExists:
-      "The filing change is vivid enough to make the answer-first route legible on first contact.",
-    bestUsedWhen: "You want the clearest answer-first route.",
-    firstQuestion: "Is the shift strong enough to claim clearly up front?",
-    allowedAnswerShape: "Answer first, then pressure-test.",
-    routeRefuses: "It refuses to turn vividness into a universal benchmark.",
+      "The vivid FY2024 to FY2025 shift is the cleanest place to see what a structured tagged read adds over a plain baseline on the same evidence.",
+    bestUsedWhen: "You want the cleanest case for structure earning its complexity.",
+    firstQuestion: "Does the structured read materially beat the plain baseline here?",
+    allowedAnswerShape: "Answer-first claim with visible lift from structure.",
+    routeRefuses: "It refuses to turn a single-case lift into a universal benchmark result.",
     whyCaseMatters:
-      "It proves the workflow can be decisive without losing auditability or boundaries.",
+      "It proves that extra structure can be worth its cost, without pretending every case has the same lift.",
     teaching: {
       commonMistake:
-        "Mistaking a vivid case for permission to overclaim on weaker or lower-drift cases.",
+        "Assuming a clear structural lift on one case means structure always earns its cost on every other case.",
     },
     artifactPolicy: {
-      primary: "Runtime compare plus pilot matrix.",
+      primary: "Runtime compare plus four-cell pilot matrix.",
       optional: "Novelty ledger and effort-robustness stay secondary.",
     },
   },
@@ -274,22 +276,22 @@ export const PUBLIC_CASEBOOK_CASES: Record<PublicCasebookTicker, PublicCasebookE
     yearFrom: 2024,
     yearTo: 2025,
     surface: "matrix_first",
-    publicRoleLabel: "Honest stop",
+    publicRoleLabel: "Structure sharpens the stop",
     publicClaim:
-      "FY2025 brings obesity-access, pricing, and concentration pressure closer to the center, and the honest public move is to stop there.",
+      "All three approaches converge on obesity-access, pricing, and concentration as the center; the structured tagged read only sharpens where the bounded public read should stop.",
     proofBasis:
-      "Matrix-first read on the official FY2024 to FY2025 paragraph packet. The pilot matrix keeps the evidence nearby without implying a full lower public stack.",
+      "Matrix-first read on the official FY2024 to FY2025 paragraph packet. A three-cell pilot matrix (control, tagged packet, tagged protocol) shows structure sharpening the stop without extending it.",
     stopBoundary:
-      "It does not prove a full lower-audit public route or broader certainty beyond the bounded public read.",
-    homeCardLabel: "Honest stop",
+      "It does not prove that more structure buys more certainty beyond the bounded public read, or justify a full lower-audit stack on the public route.",
+    homeCardLabel: "Structure sharpens the stop",
     chooserCardDescription:
-      "The bounded public route that teaches where to stop before overclaiming.",
-    chooserBestFor: "Bounded public route",
-    chooserObjectiveLabel: "Honest stop",
+      "The bounded case where every approach converges on the same public read. Structure sharpens the stop; it does not extend it.",
+    chooserBestFor: "Where structure cannot buy more truth",
+    chooserObjectiveLabel: "Structure sharpens the stop",
     methodologyDetail:
-      "Shows why a public case can ship honestly with a matrix-first route when the boundary is part of the lesson.",
+      "Shows how a bounded case stays bounded even when more structure is available: the approach can sharpen the stop, not move it.",
     topCue:
-      "Honest stop: make the visible claim, inspect the proof, then stop before the public route starts bluffing.",
+      "Approach verdict: all three reads converge on the same bounded public read; tagged protocol only sharpens where LLY should stop.",
     preview: {
       integratedTitle: "Why this case matters",
       boundedTitle: "Why this read stops here",
@@ -297,24 +299,24 @@ export const PUBLIC_CASEBOOK_CASES: Record<PublicCasebookTicker, PublicCasebookE
       subtitleSource: "card_takeaway",
     },
     bandId: "anchor_shapes",
-    bandLabel: "Anchor answer shape",
-    bandSummary: "The clearest bounded public route in the roster.",
+    bandLabel: "Anchor approach verdict",
+    bandSummary: "The case where structure clarifies the stop but cannot extend it.",
     teachingSummary:
-      "Shows how a public case can be useful precisely because it stops where the evidence stops.",
+      "Shows how a bounded case stays bounded even when more approaches are applied: structure sharpens where to stop, not how far to reach.",
     whyCaseExists:
-      "Policy, pricing, and concentration pressure make the public stop boundary easy to see and teach.",
-    bestUsedWhen: "You need a public route that stays visibly bounded.",
-    firstQuestion: "Where should the public route stop before it starts bluffing?",
-    allowedAnswerShape: "Bounded public read with an explicit stop.",
-    routeRefuses: "It refuses to pretend bounded evidence equals full certainty.",
+      "Policy, pricing, and concentration pressure make a bounded public read clearly correct, and the approach comparison only sharpens where it ends.",
+    bestUsedWhen: "You need to see an approach that earns its discipline by stopping honestly.",
+    firstQuestion: "Does added structure buy more truth on a bounded case?",
+    allowedAnswerShape: "Bounded public read with the stop sharpened by structure.",
+    routeRefuses: "It refuses to pretend that more approach machinery buys more certainty.",
     whyCaseMatters:
-      "It teaches that honesty about stopping is part of the product, not a fallback.",
+      "It teaches that approach sophistication can sharpen a stop without being able to move it, and that honest stopping is itself a verdict.",
     teaching: {
       commonMistake:
-        "Confusing a useful bounded route with an incomplete route that needs to hide its limits.",
+        "Assuming more approach layers will extend a bounded read, rather than just sharpen where it should stop.",
     },
     artifactPolicy: {
-      primary: "Pilot matrix only.",
+      primary: "Three-cell pilot matrix (control, tagged packet, tagged protocol).",
       optional: "Existing novelty and robustness checks remain secondary.",
     },
   },
@@ -325,22 +327,22 @@ export const PUBLIC_CASEBOOK_CASES: Record<PublicCasebookTicker, PublicCasebookE
     yearFrom: 2024,
     yearTo: 2025,
     surface: "runtime_full",
-    publicRoleLabel: "Useful restraint",
+    publicRoleLabel: "One disciplined read is enough",
     publicClaim:
-      "FY2025 is mostly stable, but a few policy, quality, and concentration details become selectively sharper.",
+      "On a calm filing, one restrained primary read already surfaces the selective sharpening; layering a narrower novelty ledger adds only situational lift.",
     proofBasis:
-      "Integrated runtime compare on the official FY2024 to FY2025 pair, with the matrix story keeping the calm shift explicit.",
+      "Integrated runtime compare on the official FY2024 to FY2025 pair, with a single disciplined primary-read cell plus a narrower novelty-ledger cross-check.",
     stopBoundary:
-      "It does not prove a dramatic rewrite, broad issuer expansion, or equal weight for every lower layer.",
-    homeCardLabel: "Useful restraint",
+      "It does not prove a dramatic rewrite, broad issuer expansion, or that layering more approaches helps on low-drift cases.",
+    homeCardLabel: "One disciplined read is enough",
     chooserCardDescription:
-      "The calm low-drift case that proves selective sharpening is still a real answer.",
-    chooserBestFor: "Low-drift restraint",
-    chooserObjectiveLabel: "Useful restraint",
+      "The calm case where one restrained primary read stays useful and extra approach layers add only situational lift.",
+    chooserBestFor: "Where layering more approaches stops helping",
+    chooserObjectiveLabel: "One disciplined read is enough",
     methodologyDetail:
-      "Shows the workflow staying useful when the filing barely moves and drama would be misleading.",
+      "Shows how a single disciplined approach stays honest on a mostly stable filing, and why adding a narrower novelty layer gives only classification-sensitive lift.",
     topCue:
-      "Useful restraint: let the filing stay mostly stable, prove the selective shift, and stop before calm change turns into fake drama.",
+      "Approach verdict: on a low-drift filing, one restrained primary read already captures the selective shift; extra approach layers add only narrower, situational lift.",
     preview: {
       integratedTitle: "Why restraint helps here",
       boundedTitle: "Why restraint helps here",
@@ -349,24 +351,24 @@ export const PUBLIC_CASEBOOK_CASES: Record<PublicCasebookTicker, PublicCasebookE
       showRestraintStrip: true,
     },
     bandId: "anchor_shapes",
-    bandLabel: "Anchor answer shape",
-    bandSummary: "The calm selective-shift case.",
+    bandLabel: "Anchor approach verdict",
+    bandSummary: "The calm case where one disciplined read beats layered machinery.",
     teachingSummary:
-      "Shows how low drift can still justify a real answer when the workflow stays selective.",
+      "Shows that on a mostly stable filing, one restrained primary read captures the real signal; extra approach layers add only narrower classification lift.",
     whyCaseExists:
-      "The filing barely moves, which makes restraint itself part of the lesson.",
-    bestUsedWhen: "You need the cleanest low-drift honesty check.",
-    firstQuestion: "Is the right answer a calm selective shift rather than a dramatic rewrite?",
-    allowedAnswerShape: "Selective sharpening on a mostly stable filing.",
-    routeRefuses: "It refuses to force drama into a low-drift case.",
+      "The filing barely moves, which turns the approach question into 'which layer is worth keeping' rather than 'which approach wins.'",
+    bestUsedWhen: "You want to see where layering more approaches stops helping.",
+    firstQuestion: "Does layering more approaches add truth on a low-drift filing?",
+    allowedAnswerShape: "Selective sharpening delivered by a single disciplined read.",
+    routeRefuses: "It refuses to force drama by stacking approaches that the case does not reward.",
     whyCaseMatters:
-      "It proves that useful restraint is a product strength rather than a weak result.",
+      "It proves that 'which approach helps' sometimes answers with 'the simplest disciplined one already does.'",
     teaching: {
       commonMistake:
-        "Overcalling weak change just because the workflow feels obligated to produce drama.",
+        "Stacking more approach layers on a low-drift case in the hope of manufacturing novelty.",
     },
     artifactPolicy: {
-      primary: "Runtime compare plus pilot matrix.",
+      primary: "Runtime compare plus primary-read pilot matrix cell.",
       optional: "Novelty ledger and skeptic-case material stay secondary.",
     },
   },
@@ -377,22 +379,22 @@ export const PUBLIC_CASEBOOK_CASES: Record<PublicCasebookTicker, PublicCasebookE
     yearFrom: 2024,
     yearTo: 2025,
     surface: "matrix_first",
-    publicRoleLabel: "Risk-stack sharpening",
+    publicRoleLabel: "Tagged protocol ranks the novelty",
     publicClaim:
-      "FY2025 turns a familiar AI and governance theme into a sharper decision stack once named decisions, liability, and AI-specific vulnerabilities land.",
+      "The tagged protocol read most clearly ranks 2025-specific decisions above repeated AI/privacy scaffold; the plain and structured reads catch the turn but leave the ranking blurred.",
     proofBasis:
-      "Matrix-first read on the official FY2024 to FY2025 paragraph packet. The pilot matrix keeps P2 as the default read and P1 as the compact check.",
+      "Matrix-first read on the official FY2024 to FY2025 paragraph packet. A three-cell pilot matrix (plain prompt, structured contract, tagged protocol) on the same tagged substrate.",
     stopBoundary:
-      "It does not prove a full novelty map, a benchmark result, or that repeated AI language is automatically new.",
-    homeCardLabel: "Risk-stack sharpening",
+      "It does not prove a full novelty map, a benchmark result, or that every repeated AI theme line is automatically new.",
+    homeCardLabel: "Tagged protocol ranks the novelty",
     chooserCardDescription:
-      "A familiar AI theme becomes decision-useful once enforcement and governance specifics land.",
-    chooserBestFor: "Sharpened AI risk stack",
-    chooserObjectiveLabel: "Risk-stack sharpening",
+      "The case where the tagged protocol best ranks named 2025 decisions above repeated theme language; looser approaches catch the turn but leave the ranking blurred.",
+    chooserBestFor: "Where tagging separates sharpening from repetition",
+    chooserObjectiveLabel: "Tagged protocol ranks the novelty",
     methodologyDetail:
-      "Shows a persistent theme becoming sharper and more decision-useful when named decisions, obligations, and AI-specific risk arrive.",
+      "Shows how a tagged protocol separates a genuinely sharper 2025 decision stack from repeated theme language when the filing adds specifics without rewriting.",
     topCue:
-      "Risk-stack sharpening: claim only the sharper 2025 stack, prove it on the packet, and stop before repeated theme language turns into false novelty.",
+      "Approach verdict: on META, tagged protocol best ranks 2025-specific decisions; structured contract stays useful but broader; plain prompt loses ranking discipline.",
     preview: {
       integratedTitle: "Why this case matters",
       boundedTitle: "Why this read matters",
@@ -401,24 +403,24 @@ export const PUBLIC_CASEBOOK_CASES: Record<PublicCasebookTicker, PublicCasebookE
       subtitleSource: "card_takeaway",
     },
     bandId: "pressure_cases",
-    bandLabel: "Added pressure case",
-    bandSummary: "AI risk stack under regulatory-decision pressure.",
+    bandLabel: "Pressure approach verdict",
+    bandSummary: "The case where tagged protocol pays off in novelty ranking.",
     teachingSummary:
-      "Shows how a persistent theme becomes decision-useful when risk specifics sharpen and regulatory decisions bite.",
+      "Shows how a tagged protocol separates a genuinely sharper decision stack from repeated theme language, where looser approaches leave that distinction blurred.",
     whyCaseExists:
-      "The filing sharpens AI, enforcement, youth-safety, and platform-liability risk into a denser decision stack rather than just repeating the old theme.",
-    bestUsedWhen: "You need the sharper AI, governance, and enforcement stack.",
-    firstQuestion: "Did a familiar theme become materially sharper, or just broader?",
-    allowedAnswerShape: "Sharpened risk stack with explicit limits.",
-    routeRefuses: "It refuses to treat every repeated AI theme as a new category.",
+      "The filing adds named 2025 decisions on top of a familiar AI theme, so the approach question becomes whether structure can separate sharpening from repetition.",
+    bestUsedWhen: "You want to see where tagging beats plain prompting on novelty ranking.",
+    firstQuestion: "Can a tagged protocol separate a sharper stack from repeated theme language?",
+    allowedAnswerShape: "Ranked 2025 decision stack with repeated theme held separately.",
+    routeRefuses: "It refuses to treat every repeated AI theme line as a fresh category.",
     whyCaseMatters:
-      "It teaches when new decisions and obligations matter more than broad topical overlap.",
+      "It teaches where structure adds decision-usefulness by ranking novelty, not by summarizing more.",
     teaching: {
       commonMistake:
-        "Confusing broader AI vocabulary with a genuinely sharper or more useful risk read.",
+        "Confusing broader AI vocabulary with a genuinely sharper or more decision-useful risk stack.",
     },
     artifactPolicy: {
-      primary: "Pilot matrix with P2 as default and P1 as comparator.",
+      primary: "Three-cell pilot matrix (plain prompt, structured contract, tagged protocol).",
       optional: "Outline compare stays deferred pending manual review.",
     },
   },
@@ -429,22 +431,22 @@ export const PUBLIC_CASEBOOK_CASES: Record<PublicCasebookTicker, PublicCasebookE
     yearFrom: 2024,
     yearTo: 2025,
     surface: "matrix_first",
-    publicRoleLabel: "Policy-shock pivot",
+    publicRoleLabel: "Structure exposes the mechanism",
     publicClaim:
-      "FY2025 re-centers the filing around autonomy commercialization plus tariff and incentive pressure, not just generic EV execution.",
+      "The tagged protocol read best exposes the policy shock to cost to commercialization mechanism chain; plain and structured reads catch the pivot but blur the chain.",
     proofBasis:
-      "Matrix-first read on the official FY2024 to FY2025 paragraph packet. The pilot matrix keeps P2 as the default read and P1 as the compact check.",
+      "Matrix-first read on the official FY2024 to FY2025 paragraph packet. A three-cell pilot matrix (plain prompt, structured contract, tagged protocol) on the same tagged substrate.",
     stopBoundary:
       "It does not prove a full-filing benchmark result or justify turning a vivid pivot into a totalizing thesis.",
-    homeCardLabel: "Policy-shock pivot",
+    homeCardLabel: "Structure exposes the mechanism",
     chooserCardDescription:
-      "External pressure turns an EV-manufacturing story into an autonomy, tariffs, and commercialization pivot.",
-    chooserBestFor: "Policy shock and platform pivot",
-    chooserObjectiveLabel: "Policy-shock pivot",
+      "The case where tagged protocol best exposes the policy shock to cost to commercialization chain; looser approaches flatten it into generic EV commentary.",
+    chooserBestFor: "Where structure preserves a mechanism chain",
+    chooserObjectiveLabel: "Structure exposes the mechanism",
     methodologyDetail:
-      "Shows how external policy shock and platform-roadmap dependence can re-center the filing read.",
+      "Shows how protocol framing makes a mechanism chain visible under external pressure, keeping the pivot specific instead of flattening it into a generic demand story.",
     topCue:
-      "Policy-shock pivot: claim the re-centering, prove the mechanism chain, and stop before it turns into a full-filing thesis.",
+      "Approach verdict: on TSLA, tagged protocol best exposes the mechanism chain; structured contract stays useful but broader; plain prompt is less disciplined about policy and commercialization specifics.",
     preview: {
       integratedTitle: "Why this case matters",
       boundedTitle: "Why this read matters",
@@ -453,24 +455,24 @@ export const PUBLIC_CASEBOOK_CASES: Record<PublicCasebookTicker, PublicCasebookE
       subtitleSource: "card_takeaway",
     },
     bandId: "pressure_cases",
-    bandLabel: "Added pressure case",
-    bandSummary: "External shock plus platform-roadmap pivot.",
+    bandLabel: "Pressure approach verdict",
+    bandSummary: "The case where tagged protocol preserves the mechanism chain.",
     teachingSummary:
-      "Shows how a filing can pivot from manufacturing execution into autonomy commercialization and policy-shock pressure.",
+      "Shows how protocol framing keeps a policy-shock mechanism chain visible where looser approaches flatten it into generic EV commentary.",
     whyCaseExists:
-      "The filing re-centers around autonomy, Robotaxi, Bots, tariffs, and incentive rollback in a way that changes the first question.",
-    bestUsedWhen: "You need the clearest policy-shock and roadmap pivot case.",
-    firstQuestion: "Did external pressure change the center of the business-risk story?",
-    allowedAnswerShape: "Vivid pivot with explicit mechanism chain.",
-    routeRefuses: "It refuses to reduce the change to generic EV-demand commentary.",
+      "Outside pressure re-centers the filing around autonomy, tariffs, and commercialization, so the approach question becomes whether structure can preserve the mechanism chain.",
+    bestUsedWhen: "You want to see where structure beats plain prompting on mechanism preservation.",
+    firstQuestion: "Can a tagged protocol preserve a mechanism chain under policy shock?",
+    allowedAnswerShape: "Ranked pivot with the policy to commercialization chain kept visible.",
+    routeRefuses: "It refuses to reduce the change to generic EV-demand or CEO narrative.",
     whyCaseMatters:
-      "It teaches how policy shock and commercialization dependence can make an external-pressure case vivid without widening the claim.",
+      "It teaches that structure can earn its weight by preserving mechanism specificity, not by adding more bullet points.",
     teaching: {
       commonMistake:
-        "Collapsing a specific autonomy and tariff pivot into generic EV-demand or CEO narrative.",
+        "Collapsing a specific autonomy and tariff pivot into a generic EV-demand read that a plainer approach can also produce.",
     },
     artifactPolicy: {
-      primary: "Pilot matrix with P2 as default and P1 as comparator.",
+      primary: "Three-cell pilot matrix (plain prompt, structured contract, tagged protocol).",
       optional: "Outline compare stays deferred pending manual review.",
     },
   },
@@ -481,22 +483,22 @@ export const PUBLIC_CASEBOOK_CASES: Record<PublicCasebookTicker, PublicCasebookE
     yearFrom: 2025,
     yearTo: 2026,
     surface: "matrix_first",
-    publicRoleLabel: "Calm operating shift",
+    publicRoleLabel: "Structure prevents overreading",
     publicClaim:
-      "FY2026 keeps the broad retail scaffold but makes customer-interface AI, cyber, and tariff persistence materially sharper.",
+      "The tagged protocol read best preserves the calm selective-shift boundary; plain and structured reads catch the same movement but risk turning refreshed examples into false novelty.",
     proofBasis:
-      "Matrix-first read on the official FY2025 to FY2026 paragraph packet. The pilot matrix keeps the selective shift visible without turning the case into a full compare.",
+      "Matrix-first read on the official FY2025 to FY2026 paragraph packet. A three-cell pilot matrix (plain prompt, structured contract, tagged protocol) on the same tagged substrate.",
     stopBoundary:
       "It does not prove a rewritten risk map or justify treating a calm case like a dramatic overhaul.",
-    homeCardLabel: "Calm operating shift",
+    homeCardLabel: "Structure prevents overreading",
     chooserCardDescription:
-      "A calm retail case becomes meaningful once agentic commerce, customer-interface risk, and tariff persistence sharpen.",
-    chooserBestFor: "Retail interface and tariff persistence",
-    chooserObjectiveLabel: "Calm operating shift",
+      "The calm case where tagged protocol best preserves the selective-shift boundary; looser approaches risk turning refreshed examples into false novelty.",
+    chooserBestFor: "Where structure bounds an overread",
+    chooserObjectiveLabel: "Structure prevents overreading",
     methodologyDetail:
-      "Shows how a calmer operating case can still earn public space when interface control and tariff pressure become specific.",
+      "Shows how protocol framing keeps a calm retail shift bounded, where looser approaches inflate refreshed examples into novelty.",
     topCue:
-      "Calm operating shift: claim only the selective sharpening, prove it on the official FY2025 to FY2026 packet, and stop before calm change becomes fake drama.",
+      "Approach verdict: on WMT, tagged protocol keeps the calm boundary; structured contract stays useful but broader; plain prompt risks overreading refreshed specifics.",
     preview: {
       integratedTitle: "Why this case matters",
       boundedTitle: "Why this read matters",
@@ -530,47 +532,47 @@ export const PUBLIC_CASEBOOK_CASES: Record<PublicCasebookTicker, PublicCasebookE
 
 export const CASEBOOK_COMPARISON_ROWS: CasebookComparisonRow[] = [
   {
-    label: "First question",
+    label: "Approaches in play",
     values: {
-      NVDA: "Strong enough to answer first?",
-      LLY: "Where should the public read stop?",
-      KO: "Mostly stable, or selectively sharper?",
-      META: "Sharper stack, or repeated theme?",
-      TSLA: "Did outside pressure re-center the story?",
-      WMT: "Calm story, sharper pressure points?",
+      NVDA: "Plain baseline, reuse-filtered input, tagged packet, tagged protocol",
+      LLY: "Tagged packet versus tagged protocol on the same pair",
+      KO: "One disciplined structured read (no second approach needed)",
+      META: "Plain prompt, structured contract, tagged protocol",
+      TSLA: "Plain prompt, structured contract, tagged protocol",
+      WMT: "Structured contract versus tagged protocol on the same pair",
     },
   },
   {
-    label: "Allowed answer",
+    label: "Approach verdict",
     values: {
-      NVDA: "Answer first, then test",
-      LLY: "Bounded public stop",
-      KO: "Selective sharpening",
-      META: "Sharpened risk stack",
-      TSLA: "Policy-shock pivot",
-      WMT: "Calm operating shift",
+      NVDA: "Plain prompt catches the turn; structure materially lifts specificity and auditability.",
+      LLY: "Structure sharpens the public stop without letting the read overrun the evidence.",
+      KO: "One disciplined read is enough; extra approaches would add noise, not signal.",
+      META: "Tagged protocol ranks newly decision-useful items above repeated theme language.",
+      TSLA: "Tagged protocol exposes a mechanism chain that a plain list cannot hold together.",
+      WMT: "Structured approaches prevent a calm case from being overread into false drama.",
     },
   },
   {
     label: "Stop boundary",
     values: {
-      NVDA: "Strong first read, not a universal benchmark",
-      LLY: "Stop before public certainty outruns proof",
-      KO: "Stay calm; do not force drama",
-      META: "Sharper stack, not automatic novelty",
-      TSLA: "Mechanism chain, not a full-filing thesis",
-      WMT: "Selective sharpening, not a rewritten map",
+      NVDA: "A one-case lift does not turn structure into a universal benchmark win.",
+      LLY: "The sharper stop is still a stop; public reads stay bounded by proof.",
+      KO: "One strong read here is not proof that plain prompting always suffices.",
+      META: "A sharper stack is not the same as automatic novelty or decision-readiness.",
+      TSLA: "A mechanism chain is not a full-filing thesis or a forecast.",
+      WMT: "Selective pressure is not a rewritten strategic map.",
     },
   },
   {
     label: "Best used for",
     values: {
-      NVDA: "Clean answer-first route",
-      LLY: "Visible stopping boundary",
-      KO: "Low-drift honesty check",
-      META: "AI and governance stack",
-      TSLA: "Policy-shock pivot",
-      WMT: "Retail interface pressure",
+      NVDA: "Showing where structure clearly earns its cost.",
+      LLY: "Watching structure tighten a bounded public stop.",
+      KO: "Teaching restraint — resisting the urge to add more approaches.",
+      META: "Separating recycled scaffolding from genuinely new risk.",
+      TSLA: "Turning a flat list into an auditable mechanism story.",
+      WMT: "Holding a calm case to selective structural pressure.",
     },
   },
 ] as const

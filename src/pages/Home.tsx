@@ -20,19 +20,19 @@ import { getRouteFamilyConfig, isHomeAnchorTicker } from "../lib/routeFamilyUi"
 
 const PROTOCOL_STAGE_STEPS: ProtocolStageStep[] = [
   {
-    title: "Claim",
-    detail: "Lead with the filing answer.",
-    chips: ["answer first"],
+    title: "Read",
+    detail: "See what each approach actually produced on the same filing pair.",
+    chips: ["approach output"],
   },
   {
-    title: "Prove",
-    detail: "Keep proof beside the answer.",
-    chips: ["evidence nearby"],
+    title: "Compare",
+    detail: "Hold the reads side by side on the same evidence substrate.",
+    chips: ["same substrate"],
   },
   {
-    title: "Stop",
-    detail: "Make the honest boundary visible.",
-    chips: ["bounded route"],
+    title: "Verdict",
+    detail: "Name what the approach added, and where it honestly should stop.",
+    chips: ["honest takeaway"],
   },
 ]
 
@@ -134,12 +134,12 @@ export default function Home() {
       detail: "live public roster",
     },
     {
-      label: `${HOME_ANCHOR_TICKERS.length} anchor answer shapes`,
-      detail: "claim, stop, restraint",
+      label: "3 approaches compared",
+      detail: "plain prompt / structured contract / tagged protocol",
     },
     {
       label: `Start with ${recommendedTicker}`,
-      detail: recommendedPilot?.role_label ?? "vivid answer",
+      detail: recommendedPilot?.role_label ?? "structure earns its weight",
     },
   ]
   const pressurePilots =
@@ -237,11 +237,11 @@ export default function Home() {
                         Presentation route
                       </div>
                       <h2 className="mt-2 text-[1.55rem] font-semibold leading-tight text-slate-50 sm:text-[1.8rem]">
-                        Move through the casebook like a guided route.
+                        Compare approaches, then call the verdict.
                       </h2>
                       <p className="mt-2 max-w-xl text-sm leading-6 text-slate-300">
-                        Lead with the filing answer, keep the proof nearby, and leave the deeper
-                        audit layers below the fold.
+                        Each case holds two or more approaches against the same filing pair, and the
+                        verdict names what structure actually added over a plain prompt.
                       </p>
                     </div>
 
@@ -271,7 +271,7 @@ export default function Home() {
                     Anchor cases
                   </div>
                   <h2 className="mt-2 text-[1.7rem] font-semibold tracking-[-0.03em] text-slate-50 sm:text-[2rem]">
-                    Start with the three anchor answer shapes.
+                    Start with the three anchor approach verdicts.
                   </h2>
                   <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-300">
                     {anchorSummary}

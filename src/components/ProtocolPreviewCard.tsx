@@ -2,7 +2,10 @@ import KORestraintStrip from "./KORestraintStrip"
 import { compactText } from "../lib/compactText"
 import { getPublicCasebookEntry } from "../lib/casebookContent"
 import { formatPilotStatusLabel } from "../lib/protocolLabMatrixPresentation.ts"
-import type { ProtocolLabPilotMatrixCell } from "../lib/protocolLabMatrixTypes.ts"
+import type {
+  ProtocolLabPilotMatrixBundle,
+  ProtocolLabPilotMatrixCell,
+} from "../lib/protocolLabMatrixTypes.ts"
 import { getRouteFamilyConfig } from "../lib/routeFamilyUi"
 import type { LabPanelPilotArtifactsState } from "./useLabPanelPilotArtifacts"
 
@@ -43,6 +46,60 @@ function renderPublicCellLabel(cell: ProtocolLabPilotMatrixCell): string {
   if (cell.role === "main_comparator") return "Comparison read"
   if (cell.role === "secondary_comparator") return "Secondary comparison"
   return "Control read"
+}
+
+function renderApproachComparison(bundle: ProtocolLabPilotMatrixBundle) {
+  const pair = bundle.matrix.comparison_pairs[0]
+  if (!pair) return null
+
+  const left = bundle.cells_by_id[pair.left_cell_id]
+  const right = bundle.cells_by_id[pair.right_cell_id]
+  if (!left || !right) return null
+
+  const sides: Array<{ cell: ProtocolLabPilotMatrixCell; position: "Left" | "Right" }> = [
+    { cell: left, position: "Left" },
+    { cell: right, position: "Right" },
+  ]
+
+  return (
+    <article className="rounded-[1.35rem] border border-sky-300/20 bg-sky-400/6 p-3.5 sm:p-4.5">
+      <div className="flex flex-wrap items-start justify-between gap-3">
+        <div className="space-y-1.5">
+          <p className="text-[11px] uppercase tracking-[0.24em] text-sky-100">
+            Approach comparison
+          </p>
+          <h3 className="text-base font-semibold text-slate-50 sm:text-lg">{pair.label}</h3>
+        </div>
+        <span className="rounded-full border border-sky-300/20 bg-sky-400/10 px-2.5 py-1 text-[10px] text-sky-100">
+          Same substrate
+        </span>
+      </div>
+      <p className="mt-2 text-sm leading-6 text-slate-300">{pair.purpose}</p>
+      <div className="mt-3 grid gap-2.5 sm:grid-cols-2">
+        {sides.map(({ cell, position }) => (
+          <article
+            key={cell.cell_id}
+            className="rounded-2xl border border-white/10 bg-slate-950/58 p-3"
+          >
+            <div className="flex items-center justify-between gap-2">
+              <span className="rounded-full border border-sky-300/25 bg-sky-400/10 px-2 py-0.5 text-[10px] font-semibold text-sky-100">
+                {cell.short_label}
+              </span>
+              <span className="text-[10px] uppercase tracking-[0.2em] text-slate-400">
+                {position} / {renderPublicCellLabel(cell)}
+              </span>
+            </div>
+            <p className="mt-2 text-[11px] text-slate-400">
+              {cell.protocol_input_identity.display_text}
+            </p>
+            <p className="mt-2 text-sm leading-6 text-slate-100">
+              {compactText(cell.card_takeaway, 160)}
+            </p>
+          </article>
+        ))}
+      </div>
+    </article>
+  )
 }
 
 function getToneClasses(tone: PreviewTile["tone"]): string {
@@ -217,6 +274,8 @@ export default function ProtocolPreviewCard({
           ))}
         </div>
       </article>
+
+      {renderApproachComparison(pilotMatrixBundle)}
 
       {previewModel.showDetailDisclosure ? (
         <details className="rounded-[1.1rem] border border-white/10 bg-slate-950/26 p-2.5 sm:p-3.5">

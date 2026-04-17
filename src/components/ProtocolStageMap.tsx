@@ -15,13 +15,13 @@ export default function ProtocolStageMap({ steps }: ProtocolStageMapProps) {
       <div className="relative">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <div className="text-[11px] uppercase tracking-[0.32em] text-slate-400">Protocol map</div>
+            <div className="text-[11px] uppercase tracking-[0.32em] text-slate-400">Approach route</div>
             <h3 className="mt-2 text-lg font-semibold tracking-[-0.03em] text-slate-50 sm:text-xl">
-              Claim, prove, stop.
+              Read, compare, call the verdict.
             </h3>
           </div>
           <div className="text-[11px] uppercase tracking-[0.22em] text-slate-400">
-            claim {"->"} prove {"->"} stop
+            read {"->"} compare {"->"} verdict
           </div>
         </div>
 
