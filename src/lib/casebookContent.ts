@@ -72,7 +72,7 @@ export type CasebookBand = {
 }
 
 export type PedagogicCompareExample = {
-  ticker: Extract<PublicCasebookTicker, "META" | "TSLA">
+  ticker: PublicCasebookTicker
   simpleRead: string
   structuredRead: string
   whyItMatters: string
@@ -197,6 +197,33 @@ export const CASEBOOK_BANDS: CasebookBand[] = [
 ] as const
 
 export const PEDAGOGIC_COMPARE_EXAMPLES: PedagogicCompareExample[] = [
+  {
+    ticker: "NVDA",
+    simpleRead:
+      "A plain prompt catches the headline shift — AI demand, customer concentration, supply dependence — but leaves it as a flat list without ranking which factor is the load-bearing driver.",
+    structuredRead:
+      "The structured tagged read keeps the same items and ranks them: proximate driver, supporting condition, and audit-ready evidence for each, so the verdict is traceable rather than asserted.",
+    whyItMatters:
+      "Even on a vivid case, the plain prompt is not wrong. The structured read earns its weight by making the ranking auditable on the same evidence.",
+  },
+  {
+    ticker: "LLY",
+    simpleRead:
+      "A plain prompt correctly names obesity-access, pricing, and concentration pressure, but tends to extend into speculative reimbursement or pipeline language the filing does not settle.",
+    structuredRead:
+      "The structured tagged read converges on the same center and sharpens where to stop: the bounded public claim is tighter, the stop boundary is explicit, and the extension is refused rather than hedged.",
+    whyItMatters:
+      "This is where a more capable approach stops buying more truth. The lift is a sharper stop, not broader coverage, and a sharper stop is itself a verdict.",
+  },
+  {
+    ticker: "KO",
+    simpleRead:
+      "A plain prompt either manufactures drama that is not in the filing or collapses into generic stability language that misses the selective sharpening.",
+    structuredRead:
+      "A single disciplined structured read captures the selective shift; a narrower novelty-ledger cross-check adds only situational lift, not broader truth.",
+    whyItMatters:
+      "On a low-drift filing, the honest answer to 'which approach wins' can be 'one disciplined read already did the work,' and stacking approaches past that point stops helping.",
+  },
   {
     ticker: "TSLA",
     simpleRead:
