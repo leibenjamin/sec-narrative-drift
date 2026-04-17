@@ -228,13 +228,15 @@ If the project later adopts a “bulk of 12 months” convention, the migration 
 | `META` | `FY2024 vs FY2025` | required | required | present; strong enough to justify full read | present | AI-governance / platform-risk full case | strong | run full outline compare + pilot matrix | Already has casebook framing, deterministic support is solid, and it is one of the strongest candidates for a full answer-plus-audit route. |
 | `TSLA` | `FY2024 vs FY2025` | required | required | present; strong enough to justify full read | present | external-shock / execution-risk full case | strong | run full outline compare + pilot matrix | Existing content plus distinctive signal make this the other strong full-case candidate. |
 | `UNH` | `FY2024 vs FY2025` | skip | skip | present but weak; low-confidence RBO and no distinctive terms | missing | hold / weak candidate | weak | hold until later | This is the weakest candidate in current deterministic evidence and has no casebook framing yet. It does not justify immediate LLM spend. |
-| `WMT` | `FY2025 vs FY2026` | optional | required | present but filename labels are inconsistent | missing | tariff / retail-shock bounded candidate | medium | run pilot matrix first after label-aware review | Candidate inputs are corrected to official fiscal years, but the repo still has older `2024_2025` deterministic filenames. Pilot matrix first is the safest way to test whether the case earns a fuller route. |
+| `WMT` | `FY2025 vs FY2026` | optional (not shipped) | shipped | not present in legacy `sec_narrative_drift_lab/` tree; case lives in the public `business_document_protocol_lab/` tree only | present (shipped) | calm-case-under-pressure bounded candidate | medium | run pilot matrix first after label-aware review | Shipped as a pilot-matrix-first case on the official `FY2025 vs FY2026` pair. Historical rationale from 2026-04-05: candidate inputs were corrected to official fiscal years; no older `2024_2025` deterministic filenames exist in-tree because WMT was never promoted into the legacy Core4 backstage. |
 
-Cases ready to evaluate after jobs:
-- `META` after full outline compare + pilot matrix
-- `TSLA` after full outline compare + pilot matrix
-- `GOOGL` after pilot matrix first, then only full compare if the role becomes clear
-- `WMT` after pilot matrix first and explicit fiscal-label consistency review
+Shipped public cases (pilot-matrix-first, no outline-compare-structured lane yet):
+- `META` — shipped; optional upgrade path: run outline compare if the case earns a fuller route.
+- `TSLA` — shipped; optional upgrade path: run outline compare if the case earns a fuller route.
+- `WMT` — shipped on official `FY2025 vs FY2026` labeling; optional upgrade path: outline compare + novelty-ledger.
+
+Candidates not yet shipped:
+- `GOOGL` — run pilot matrix first, then decide on full compare.
 
 Not ready for immediate job spend:
 - `UNH`
