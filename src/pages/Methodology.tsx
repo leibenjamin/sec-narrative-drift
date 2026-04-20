@@ -275,6 +275,31 @@ export default function Methodology() {
               </p>
             </header>
 
+            <section className="grid gap-3 rounded-[1.2rem] border border-white/10 bg-slate-950/28 p-4 lg:grid-cols-[0.88fr_1.12fr]">
+              <div className="space-y-2">
+                <div className="text-[11px] uppercase tracking-[0.24em] text-slate-400">
+                  {casebookFraming.methodology.routeContextTitle}
+                </div>
+                <p className="max-w-xl text-sm leading-6 text-slate-200">
+                  {casebookFraming.methodology.routeContextIntro}
+                </p>
+              </div>
+              <div className="grid gap-3 md:grid-cols-3">
+                {casebookFraming.methodology.routeContextCards.map((card) => (
+                  <article
+                    key={card.label}
+                    className="rounded-[1rem] border border-white/10 bg-slate-950/44 p-3"
+                  >
+                    <div className="text-[11px] uppercase tracking-[0.24em] text-slate-400">
+                      {card.label}
+                    </div>
+                    <div className="mt-2 text-sm font-semibold text-slate-50">{card.title}</div>
+                    <p className="mt-1.5 text-sm leading-6 text-slate-300">{card.detail}</p>
+                  </article>
+                ))}
+              </div>
+            </section>
+
             <div className="grid gap-3.5 sm:gap-4">
               <div className="lg:order-2">
                 <TrustModelRow items={TRUST_MODEL_ITEMS} />
@@ -669,6 +694,12 @@ export default function Methodology() {
         </details>
 
         <footer className="flex flex-wrap items-center gap-2 text-sm">
+          <Link
+            to="/story"
+            className="inline-flex items-center rounded-full border border-white/20 px-4 py-2 text-slate-200 hover:border-white/40 hover:bg-white/5"
+          >
+            Read the story
+          </Link>
           <Link
             to="/"
             className="inline-flex items-center rounded-full border border-white/20 px-4 py-2 text-slate-200 hover:border-white/40 hover:bg-white/5"

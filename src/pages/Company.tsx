@@ -3,7 +3,7 @@ import { Link, useParams, useSearchParams } from "react-router-dom"
 import CaseTeachingLayer from "../components/CaseTeachingLayer"
 import LabPanel from "../components/LabPanel"
 import PageMetadata from "../components/PageMetadata"
-import { getPublicCasebookEntry } from "../lib/casebookContent"
+import { casebookFraming, getPublicCasebookEntry } from "../lib/casebookContent"
 import { formatFiscalYearRange } from "../lib/fiscalYear"
 import {
   findProtocolLabVisiblePilotEntry,
@@ -209,19 +209,28 @@ export default function Company() {
                 <p className="max-w-3xl text-sm leading-6 text-slate-300">
                   {inlineCue}
                 </p>
+                <p className="max-w-3xl text-sm leading-6 text-slate-400">
+                  {casebookFraming.casePage.contextLine}
+                </p>
               </div>
               <div className="flex flex-wrap gap-1.5 sm:justify-end sm:gap-2 sm:pt-1">
                 <Link
                   to="/companies"
                   className="inline-flex items-center rounded-full border border-white/20 px-2.5 py-1 text-[11px] text-slate-200 hover:border-white/40 hover:bg-white/5 sm:px-3 sm:py-1.5 sm:text-xs"
                 >
-                  Back to Casebook
+                  {casebookFraming.casePage.casebookLinkLabel}
+                </Link>
+                <Link
+                  to="/story"
+                  className="inline-flex items-center rounded-full border border-white/20 px-2.5 py-1 text-[11px] text-slate-200 hover:border-white/40 hover:bg-white/5 sm:px-3 sm:py-1.5 sm:text-xs"
+                >
+                  {casebookFraming.casePage.storyLinkLabel}
                 </Link>
                 <Link
                   to="/methodology"
                   className="inline-flex items-center rounded-full border border-white/20 px-2.5 py-1 text-[11px] text-slate-200 hover:border-white/40 hover:bg-white/5 sm:px-3 sm:py-1.5 sm:text-xs"
                 >
-                  Methodology
+                  {casebookFraming.casePage.methodologyLinkLabel}
                 </Link>
               </div>
             </div>

@@ -10,6 +10,7 @@ import {
 } from "../lib/casebookContent"
 import {
   buildProtocolLabCaseHref,
+  getProtocolLabRecommendedPilot,
   loadProtocolLabVisiblePilotSystem,
   type ProtocolLabVisiblePilotSystem,
 } from "../lib/protocolLabProductPositioning"
@@ -57,6 +58,12 @@ export default function Companies() {
     }
   }, [])
 
+  const recommendedPilot = visiblePilotSystem
+    ? getProtocolLabRecommendedPilot(visiblePilotSystem)
+    : null
+  const recommendedTicker = recommendedPilot?.ticker ?? "NVDA"
+  const recommendedHref = recommendedPilot?.href ?? resolveHref(null, "NVDA")
+
   return (
     <main className="min-h-screen page-fade">
       <PageMetadata
@@ -86,6 +93,13 @@ export default function Companies() {
               <span>Back to Home</span>
             </Link>
             <Link
+              to="/story"
+              className="inline-flex items-center gap-2 text-sm font-medium text-slate-300 transition hover:text-white"
+            >
+              <span>Story</span>
+              <span aria-hidden="true">→</span>
+            </Link>
+            <Link
               to="/methodology"
               className="inline-flex items-center gap-2 text-sm font-medium text-slate-300 transition hover:text-white"
             >
@@ -102,6 +116,47 @@ export default function Companies() {
             </div>
           ) : null}
         </header>
+
+        <section
+          id="casebook-chooser-guide"
+          className="rounded-[1.45rem] border border-white/10 bg-slate-950/42 p-4 sm:p-5"
+        >
+          <div className="space-y-3">
+            <div className="text-[11px] uppercase tracking-[0.24em] text-slate-400">
+              {casebookFraming.casebook.chooserTitle}
+            </div>
+            <p className="max-w-3xl text-sm leading-6 text-slate-100">
+              {casebookFraming.casebook.chooserIntro}
+            </p>
+            <div className="grid gap-3 md:grid-cols-3">
+              {casebookFraming.casebook.chooserGuides.map((item) => (
+                <div
+                  key={item}
+                  className="rounded-[1.15rem] border border-white/10 bg-slate-950/60 px-4 py-3 text-sm leading-6 text-slate-100"
+                >
+                  {item}
+                </div>
+              ))}
+            </div>
+            <div className="rounded-[1.15rem] border border-sky-300/18 bg-sky-400/8 px-4 py-3">
+              <div className="text-[11px] uppercase tracking-[0.24em] text-sky-100">
+                Recommended first case
+              </div>
+              <div className="mt-2 flex flex-wrap items-center gap-3">
+                <p className="max-w-2xl text-sm leading-6 text-slate-100">
+                  {recommendedPilot?.guidance.what_you_learn ??
+                    "Start with NVDA if you want the clearest proof of where structure earns its cost."}
+                </p>
+                <Link
+                  to={recommendedHref}
+                  className="inline-flex min-h-10 items-center justify-center rounded-full border border-sky-300/30 bg-sky-400/10 px-4 py-2 text-sm font-medium text-sky-100 transition hover:border-sky-200/45 hover:bg-sky-400/14"
+                >
+                  {`Open ${recommendedTicker}`}
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
 
         <section
           id="casebook-curation-note"
@@ -166,20 +221,29 @@ export default function Companies() {
           </section>
         )}
 
-        <section
+        <details
           id="casebook-comparison"
-          className="space-y-3 rounded-[1.6rem] border border-white/10 bg-slate-950/42 p-4 sm:p-5"
+          className="rounded-[1.6rem] border border-white/10 bg-slate-950/42 p-4 sm:p-5"
         >
-          <div className="space-y-2">
-            <div className="text-[11px] uppercase tracking-[0.24em] text-slate-400">
-              {casebookFraming.casebook.comparisonTitle}
+          <summary className="cursor-pointer list-none">
+            <div className="flex flex-wrap items-start justify-between gap-3 rounded-[1.2rem] border border-white/10 bg-slate-950/44 px-4 py-4">
+              <div className="space-y-2">
+                <div className="text-[11px] uppercase tracking-[0.24em] text-slate-400">
+                  {casebookFraming.casebook.comparisonTitle}
+                </div>
+                <p className="max-w-3xl text-sm leading-6 text-slate-300">
+                  {casebookFraming.casebook.comparisonIntro}
+                </p>
+              </div>
+              <div className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-slate-300">
+                {casebookFraming.casebook.comparisonDisclosureLabel}
+              </div>
             </div>
-            <p className="max-w-3xl text-sm leading-6 text-slate-300">
-              {casebookFraming.casebook.comparisonIntro}
-            </p>
+          </summary>
+          <div className="mt-4">
+            <CasebookComparisonTable />
           </div>
-          <CasebookComparisonTable />
-        </section>
+        </details>
       </div>
     </main>
   )
