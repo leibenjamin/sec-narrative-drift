@@ -6,7 +6,7 @@ Document Protocol Lab is an interactive casebook that compares three approaches 
 ## What makes the product distinctive
 - The visible unit of comparison is the approach, not the company. Every multi-cell case renders a side-by-side of the control read (plain prompt) and the primary read (structured contract) on the same filing pair.
 - The Methodology page names each approach explicitly: input shape, output shape, what it earns, when it helps, when it is theater.
-- Per-case anatomy underneath — filing answer, proof, stop, appendix — is a grammar for reading one case, distinct from the app-level Read / Compare / Verdict grammar for comparing approaches.
+- Per-case anatomy underneath — filing answer, proof, stop, appendix — is a grammar for reading one case (claim, proof, stop), distinct from the approach-comparison verdict the app produces across cases.
 - The deterministic detector arm is preserved as a control arm under a disclosure, not presented as the product.
 - The approach count is honest: three approaches, not five. A fourth approach has prompt templates but no authored cell data and is not claimed as live.
 - Missing artifacts stay explicit rather than silently hidden.

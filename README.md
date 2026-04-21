@@ -14,7 +14,7 @@ Live casebook: `https://benlei.org/sec-narrative-drift/`
 
 - **Three approaches compared on the same case**: plain prompt (control), structured contract (typically the primary read), tagged protocol (comparator). Every multi-cell case renders a side-by-side of the control read and the primary read so the approach verdict is visible without clicking a disclosure.
 - **An approach catalog** on the Methodology page naming what each approach earns, when it helps, and when it is theater.
-- **Per-case anatomy** underneath: filing answer first, proof, stop, appendix. That is a grammar for reading one case, distinct from the app-level Read/Compare/Verdict grammar for comparing approaches across cases.
+- **Per-case anatomy** underneath: filing answer first, proof, stop, appendix. That is a grammar for reading one case — claim, proof, stop — distinct from the approach-comparison verdict the app produces across cases.
 - **A static-runtime model**: precomputed JSON only, no runtime ML or LLM calls.
 
 ## Why these cases

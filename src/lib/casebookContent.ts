@@ -121,12 +121,6 @@ export const casebookFraming = {
       "The harder question is whether changing the approach changes the judgment or only the structure around it.",
       "That is why this casebook compares approaches on the same filing pair: the goal is a verdict you can hold against proof, and an honest stop when extra machinery buys no more truth.",
     ],
-    answerTitle: "Why a good answer is not enough",
-    answerBody: [
-      "A good answer can still hide whether the approach added anything over a simpler read.",
-      "That is why the product compares approaches on the same filing pair instead of asking users to trust one polished output in isolation.",
-      "The goal is not bigger summaries. The goal is a verdict you can hold against proof and an honest stop when the extra machinery did not buy more truth.",
-    ],
     grammarTitle: "Claim / prove / stop",
     grammarIntro:
       "Each case should say what changed, show why it holds, and stop where the evidence stops.",
@@ -173,16 +167,6 @@ export const casebookFraming = {
     chooserTitle: "Start here",
     chooserIntro:
       "Start with the anchors, then move to the pressure cases when you want harder tests.",
-    chooserGuides: [
-      "Start with NVDA if you want the clearest case where structure earns its cost.",
-      "Use LLY and KO to see where discipline matters more than breadth.",
-      "Use META, TSLA, and WMT to pressure-test novelty ranking, mechanism visibility, and overreading.",
-    ],
-    rosterNoteTitle: "Why this roster",
-    rosterNoteLead:
-      "Each case earns space by producing a different approach verdict. The first three anchor the outcomes: structure earns its weight, structure only sharpens the stop, one disciplined read is enough. The second three hold the same comparison under AI-governance, policy-shock, and calm-interface pressure.",
-    rosterNoteSupport:
-      "The roster stays bounded on purpose so each verdict is earned, not padded. Candidates that would overlap or add no fresh verdict stay out.",
     boundednessNote:
       "Bounded on purpose: six cases, not a filing browser, upload flow, or benchmark.",
     comparisonTitle: "Cross-case verdict map",

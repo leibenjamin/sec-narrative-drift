@@ -56,11 +56,9 @@ export default function Story() {
         >
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(56,189,248,0.16),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(16,185,129,0.12),transparent_30%)]" />
           <div className="relative space-y-4">
-            <div className="flex flex-wrap items-center gap-1.5 text-[11px] uppercase tracking-[0.24em] text-slate-300">
-              <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">
-                {casebookFraming.story.eyebrow}
-              </span>
-            </div>
+            <span className="inline-flex rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] uppercase tracking-[0.24em] text-slate-300">
+              {casebookFraming.story.eyebrow}
+            </span>
 
             <header className="space-y-3">
               <h1 className="max-w-4xl text-[clamp(2.3rem,4vw,4rem)] font-semibold leading-[0.92] tracking-[-0.05em] text-slate-50">
