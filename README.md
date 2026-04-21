@@ -76,4 +76,5 @@ npm run lab:readiness
 
 - `bundles/*` are local-only run artifacts for manual LLM jobs (gitignored).
 - `reports/*` are local operator artifacts (gitignored).
+- `screenshots/*` are local-only live-site captures (gitignored); current snapshots live under `screenshots/desktop/` and `screenshots/mobile/`.
 - Archived non-canonical artifacts live under `attic/` (gitignored).

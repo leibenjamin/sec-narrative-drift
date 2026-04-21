@@ -55,5 +55,6 @@ Compatibility-only artifacts may still appear locally (`reports/lab_llm_run_mani
 ## Local-Only Artifact Policy
 - `reports/*` - validation and checkpoint outputs for local workflow.
 - `bundles/*` - run-pack inputs and handoff artifacts.
+- `screenshots/*` - live-site captures for operator and reviewer reference; `screenshots/desktop/` and `screenshots/mobile/` hold the current snapshot.
 - `scripts/_cache/*` and `scripts/_reports/*` - local caches and intermediate reports.
 - `attic/*` - archived historical artifacts not used by production runtime.
