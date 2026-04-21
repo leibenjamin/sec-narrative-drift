@@ -288,7 +288,7 @@ export default function Methodology() {
                 {casebookFraming.methodology.routeContextCards.map((card) => (
                   <article
                     key={card.label}
-                    className="rounded-[1rem] border border-white/10 bg-slate-950/44 p-3"
+                    className="rounded-2xl border border-white/10 bg-slate-950/44 p-3"
                   >
                     <div className="text-[11px] uppercase tracking-[0.24em] text-slate-400">
                       {card.label}

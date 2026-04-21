@@ -144,7 +144,7 @@ export default function Story() {
               </p>
             ))}
           </div>
-          <div className="mt-4 rounded-[1rem] border border-white/8 bg-slate-950/34 px-3.5 py-2.5 text-[13px] leading-5 text-slate-300">
+          <div className="mt-4 rounded-2xl border border-white/8 bg-slate-950/34 px-3.5 py-2.5 text-[13px] leading-5 text-slate-300">
             {casebookFraming.casebook.boundednessNote}
           </div>
         </section>

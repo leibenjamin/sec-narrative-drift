@@ -157,7 +157,7 @@ export default function Home() {
               </article>
             </div>
 
-            <div className="rounded-[1rem] border border-white/8 bg-slate-950/30 px-3.5 py-2.5 text-[13px] leading-5 text-slate-300">
+            <div className="rounded-2xl border border-white/8 bg-slate-950/30 px-3.5 py-2.5 text-[13px] leading-5 text-slate-300">
               <span className="mr-2 text-[10px] uppercase tracking-[0.22em] text-slate-400">
                 {casebookFraming.home.boundednessLabel}
               </span>
