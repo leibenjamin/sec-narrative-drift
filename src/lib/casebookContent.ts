@@ -88,47 +88,38 @@ export const casebookFraming = {
     title: "Document Protocol Lab | Approach Comparison Casebook",
     metaDescription:
       "A side-by-side catalog comparing plain-prompt, structured-contract, and tagged-protocol approaches to business-document comparison across six SEC cases.",
-    hook: "Any frontier model can read a 10-K on a plain prompt. The harder question is which approach actually helps.",
+    hook: "Any frontier model can read a 10-K. The harder question is which approach actually helps.",
     support:
-      "Document Protocol Lab compares plain-prompt, structured-contract, and tagged-protocol reads on six SEC Item 1A pairs, and gives an honest verdict about which approach earned its complexity on each case.",
+      "Six SEC Item 1A pairs. Three live approaches. See which one earns its complexity.",
     boundednessLabel: "Bounded six-case scope",
     boundednessBody:
-      "Public scope stays fixed to six SEC Item 1A cases, three live approaches, and an explicit claim / prove / stop grammar.",
+      "Six cases. Three live approaches. Claim / prove / stop.",
     storyEntryTitle: "Read the story",
     storyEntryBody:
-      "Start here if you want the compact argument for why this product exists, why a good answer is not enough, and why claim / prove / stop matters.",
-    storyEntryPoints: [
-      "Understand the problem before you browse the cases.",
-      "See why this is not just a better summary surface.",
-      "Use the six-case roster as proof, not as an arbitrary gallery.",
-    ],
+      "Why this exists, why a good answer is not enough, and why claim / prove / stop matters.",
     storyEntryCta: "Read the story",
     casebookEntryTitle: "Enter the lab",
     casebookEntryBody:
-      "Use the six-case casebook as the public face of the lab: choose a case, compare the route roles, and inspect where proof earns the verdict.",
-    casebookEntryPoints: [
-      "Start with the anchor cases if you want the cleanest route-role differences.",
-      "Use pressure cases once you want novelty ranking, mechanism preservation, or calmer overread control.",
-      "Go case by case; the product is curated on purpose rather than trying to explain everything at once.",
-    ],
+      "Six cases. One bounded instrument. See where proof earns the verdict.",
     casebookEntryCta: "Open the casebook",
     casebookEntrySecondaryCta: "Start with",
     anchorPreviewTitle: "What the anchor cases teach",
     anchorPreviewBody:
-      "NVDA proves where structure earns its cost, LLY shows where structure sharpens the stop, and KO shows where one disciplined read is enough.",
+      "NVDA shows where structure earns its cost. LLY shows where it sharpens the stop. KO shows where one disciplined read is enough.",
   },
   story: {
     title: "Story | Document Protocol Lab",
     metaDescription:
       "Why Document Protocol Lab exists, why six cases are enough, and why claim / prove / stop matters before you open the casebook.",
     eyebrow: "Story",
-    heading: "A compact argument for why this casebook exists.",
+    heading: "Why a good answer is not enough.",
     intro:
-      "The product is not trying to prove that more machinery always wins. It is trying to show, on bounded public cases, when an approach earns its complexity and when it should stop.",
-    coreQuestionTitle: "Core question",
+      "A plain prompt can already sound convincing on a filing. The question is whether a different approach changes the judgment or just adds ceremony.",
+    coreQuestionTitle: "Why this exists",
     coreQuestionBody: [
       "A strong frontier model can already give you a plausible first read on a filing.",
-      "The harder question is whether changing the approach actually changes the quality of the judgment, or just changes the amount of ceremony around it.",
+      "The harder question is whether changing the approach changes the judgment or only the structure around it.",
+      "That is why this casebook compares approaches on the same filing pair: the goal is a verdict you can hold against proof, and an honest stop when extra machinery buys no more truth.",
     ],
     answerTitle: "Why a good answer is not enough",
     answerBody: [
@@ -138,50 +129,50 @@ export const casebookFraming = {
     ],
     grammarTitle: "Claim / prove / stop",
     grammarIntro:
-      "That grammar keeps the public route disciplined. Each case should say what changed, show why that answer is warranted, and name where the public read should stop.",
+      "Each case should say what changed, show why it holds, and stop where the evidence stops.",
     grammarCards: [
       {
         label: "Claim",
-        detail: "Say what the filing shift means in a bounded, public-facing form.",
+        detail: "Make the filing shift legible in a bounded public form.",
       },
       {
         label: "Prove",
-        detail: "Keep the answer adjacent to the evidence and the approach that earned it.",
+        detail: "Keep the answer next to the evidence and the approach that earned it.",
       },
       {
         label: "Stop",
-        detail: "Refuse to stretch a sharper read into a broader claim the evidence does not support.",
+        detail: "Say where the read should stop instead of stretching the claim.",
       },
     ],
-    rosterTitle: "Why these six cases",
+    rosterTitle: "Why these six",
     rosterBody: [
-      "Six cases are enough because the roster is curated around distinct approach verdicts, not breadth for its own sake.",
-      "Three anchors establish the basic outcomes: structure earns its weight, structure sharpens the stop, and one disciplined read is enough. Three pressure cases hold the same question under AI-governance, policy-shock, and calm-interface pressure.",
-      "Anything that would widen the roster without adding a distinct verdict stays out of public scope.",
+      "The roster is curated around distinct verdicts, not breadth.",
+      "The anchors establish the base outcomes. The pressure cases ask the same question under harder conditions.",
+      "Anything that does not add a distinct verdict stays out.",
     ],
     anchorTitle: "What the anchors teach",
     anchorIntro:
-      "The anchor trio gives the shortest path to understanding the product grammar before you move into the full casebook.",
-    pressureTitle: "Then pressure-test the argument",
+      "The anchor trio is the shortest proof before you enter the full casebook.",
+    pressureTitle: "Pressure cases",
     pressureBody:
-      "META, TSLA, and WMT do not widen scope. They prove the same bounded question under harder conditions: novelty ranking, mechanism preservation, and overread control.",
-    ctaTitle: "Enter the lab and see the proof",
+      "META, TSLA, and WMT hold the same question under novelty, mechanism, and calm-case overread pressure.",
+    ctaTitle: "Enter the lab",
     ctaBody:
-      "Once the argument is clear, the casebook is where you browse the six proof surfaces. Methodology stays separate as the field guide to how the instrument behaves.",
+      "The argument ends here. Open the casebook to choose among the six cases. Use Methodology only if you want the field guide.",
     primaryCta: "Open the casebook",
-    secondaryCta: "Open Methodology",
+    secondaryCta: "Field guide",
   },
   casebook: {
     title: "Casebook | Document Protocol Lab",
     metaDescription:
       "Six SEC cases, each compared across plain-prompt, structured-contract, and tagged-protocol approaches, with an honest verdict per case.",
     eyebrow: "Casebook",
-    heading: "Six cases, one bounded instrument.",
+    heading: "Six cases. One instrument.",
     intro:
-      "This casebook is the public map of Document Protocol Lab: six curated filing pairs, each chosen because it teaches a different route-role verdict.",
-    chooserTitle: "How to use the casebook",
+      "The lab map: six filing pairs, each kept because it teaches a different approach verdict.",
+    chooserTitle: "Start here",
     chooserIntro:
-      "Start with the anchor cases if you want the core argument fast. Then move into the pressure cases when you want to see the same instrument under harder conditions.",
+      "Start with the anchors, then move to the pressure cases when you want harder tests.",
     chooserGuides: [
       "Start with NVDA if you want the clearest case where structure earns its cost.",
       "Use LLY and KO to see where discipline matters more than breadth.",
@@ -193,11 +184,11 @@ export const casebookFraming = {
     rosterNoteSupport:
       "The roster stays bounded on purpose so each verdict is earned, not padded. Candidates that would overlap or add no fresh verdict stay out.",
     boundednessNote:
-      "This is a curated six-case approach catalog, not a filing browser, upload flow, or broad benchmark.",
+      "Bounded on purpose: six cases, not a filing browser, upload flow, or benchmark.",
     comparisonTitle: "Cross-case verdict map",
     comparisonIntro:
-      "Use one quick map to compare the first question, approach verdict, stopping boundary, and best fit for each public case.",
-    comparisonDisclosureLabel: "Open the cross-case verdict map",
+      "Open only if you want the quick cross-case verdict map.",
+    comparisonDisclosureLabel: "Quick verdict map",
   },
   methodology: {
     title: "Methodology | Document Protocol Lab",
@@ -208,22 +199,22 @@ export const casebookFraming = {
       "The lab compares plain-prompt, structured-contract, and tagged-protocol reads on six SEC Item 1A pairs, then gives an honest verdict about whether the extra machinery earned its complexity on each case.",
     routeContextTitle: "How the routes divide the work",
     routeContextIntro:
-      "Story explains why the product exists. Casebook is where the six proof surfaces live. Methodology is the field guide for how the instrument behaves once you are inside it.",
+      "Story makes the case for why this product exists. Casebook is where you choose among the six cases. Methodology explains how the workflow behaves once you are inside it.",
     routeContextCards: [
       {
         label: "Story",
         title: "Why this exists",
-        detail: "Read the compact argument before you browse the cases.",
+        detail: "Read the short argument before you browse the cases.",
       },
       {
         label: "Casebook",
-        title: "Where the proof lives",
-        detail: "Choose among the six curated cases and their route roles.",
+        title: "Where you choose",
+        detail: "Choose among the six cases and inspect the verdict.",
       },
       {
         label: "Methodology",
         title: "How the instrument behaves",
-        detail: "Use this page when you want the field guide and approach catalog.",
+        detail: "Use this page when you want the workflow and approach catalog.",
       },
     ],
     whyFrontierTitle: "Why not just ask a frontier model?",
@@ -245,11 +236,11 @@ export const casebookFraming = {
       "Some public cases ship honestly with pilot-matrix evidence only. Matrix-first means the approach comparison is sufficient and the bounded public stop is part of the verdict, not a missing feature.",
   },
   casePage: {
-    storyLinkLabel: "Read the story",
-    casebookLinkLabel: "Back to Casebook",
+    storyLinkLabel: "Story",
+    casebookLinkLabel: "Casebook",
     methodologyLinkLabel: "Methodology",
     contextLine:
-      "This page is the proof surface. Story explains why the casebook exists; Methodology explains how the instrument behaves.",
+      "Need the argument? Read Story. Need the field guide? Open Methodology.",
   },
   reserveHold: {
     reserveTitle: "Reserve",
@@ -268,16 +259,16 @@ export const casebookFraming = {
 export const CASEBOOK_BANDS: CasebookBand[] = [
   {
     id: "anchor_shapes",
-    title: "Anchor approach verdicts",
+    title: "Anchor verdicts",
     description:
-      "The first three cases anchor where structure earns its cost (NVDA), where it sharpens the public stop (LLY), and where one disciplined read is honestly enough (KO).",
+      "Three base outcomes: structure earns its weight, sharpens the stop, or adds nothing useful.",
     tickers: ["NVDA", "LLY", "KO"],
   },
   {
     id: "pressure_cases",
-    title: "Approaches under added pressure",
+    title: "Pressure cases",
     description:
-      "The second three put the same approaches under AI and governance pressure (META), outside policy shock (TSLA), and customer-interface pressure (WMT).",
+      "The same question under novelty, mechanism, and overread pressure.",
     tickers: ["META", "TSLA", "WMT"],
   },
 ] as const
@@ -362,7 +353,7 @@ export const PUBLIC_CASEBOOK_CASES: Record<PublicCasebookTicker, PublicCasebookE
     methodologyDetail:
       "Shows how moving from a plain baseline to a structured tagged read materially lifts specificity, ranking, and auditability on the same evidence substrate.",
     topCue:
-      "Approach verdict: plain prompt catches the turn, but the structured tagged read materially lifts specificity and auditability on NVDA.",
+      "Plain prompting catches the turn here, but structure earns its keep by making the read more specific and auditable.",
     preview: {
       integratedTitle: "Why this case matters",
       boundedTitle: "Why this read matters",
@@ -373,10 +364,10 @@ export const PUBLIC_CASEBOOK_CASES: Record<PublicCasebookTicker, PublicCasebookE
     bandLabel: "Anchor approach verdict",
     bandSummary: "The clearest case where structure materially lifts the read.",
     teachingSummary:
-      "Shows how a vivid filing shift still benefits from structure: more ranked, more auditable, and more specific than a plain baseline.",
+      "A vivid shift where structure earns its cost by making the read more ranked, specific, and auditable.",
     whyCaseExists:
       "The vivid FY2024 to FY2025 shift is the cleanest place to see what a structured tagged read adds over a plain baseline on the same evidence.",
-    bestUsedWhen: "You want the cleanest case for structure earning its complexity.",
+    bestUsedWhen: "You want the clearest case where structure earns its complexity.",
     firstQuestion: "Does the structured read materially beat the plain baseline here?",
     allowedAnswerShape: "Answer-first claim with visible lift from structure.",
     routeRefuses: "It refuses to turn a single-case lift into a universal benchmark result.",
@@ -413,7 +404,7 @@ export const PUBLIC_CASEBOOK_CASES: Record<PublicCasebookTicker, PublicCasebookE
     methodologyDetail:
       "Shows how a bounded case stays bounded even when more structure is available: the approach can sharpen the stop, not move it.",
     topCue:
-      "Approach verdict: all three reads converge on the same bounded public read; tagged protocol only sharpens where LLY should stop.",
+      "All three reads land on the same center here; structure mainly sharpens where the case should stop.",
     preview: {
       integratedTitle: "Why this case matters",
       boundedTitle: "Why this read stops here",
@@ -424,10 +415,10 @@ export const PUBLIC_CASEBOOK_CASES: Record<PublicCasebookTicker, PublicCasebookE
     bandLabel: "Anchor approach verdict",
     bandSummary: "The case where structure clarifies the stop but cannot extend it.",
     teachingSummary:
-      "Shows how a bounded case stays bounded even when more approaches are applied: structure sharpens where to stop, not how far to reach.",
+      "A bounded case where structure sharpens the stop rather than extending the claim.",
     whyCaseExists:
       "Policy, pricing, and concentration pressure make a bounded public read clearly correct, and the approach comparison only sharpens where it ends.",
-    bestUsedWhen: "You need to see an approach that earns its discipline by stopping honestly.",
+    bestUsedWhen: "You want to see structure earn its value by stopping honestly.",
     firstQuestion: "Does added structure buy more truth on a bounded case?",
     allowedAnswerShape: "Bounded public read with the stop sharpened by structure.",
     routeRefuses: "It refuses to pretend that more approach machinery buys more certainty.",
@@ -464,7 +455,7 @@ export const PUBLIC_CASEBOOK_CASES: Record<PublicCasebookTicker, PublicCasebookE
     methodologyDetail:
       "Shows how a single disciplined approach stays honest on a mostly stable filing, and why adding a narrower novelty layer gives only classification-sensitive lift.",
     topCue:
-      "Approach verdict: on a low-drift filing, one restrained primary read already captures the selective shift; extra approach layers add only narrower, situational lift.",
+      "This filing does not reward extra machinery; one disciplined read already captures the selective shift.",
     preview: {
       integratedTitle: "Why restraint helps here",
       boundedTitle: "Why restraint helps here",
@@ -476,10 +467,10 @@ export const PUBLIC_CASEBOOK_CASES: Record<PublicCasebookTicker, PublicCasebookE
     bandLabel: "Anchor approach verdict",
     bandSummary: "The calm case where one disciplined read beats layered machinery.",
     teachingSummary:
-      "Shows that on a mostly stable filing, one restrained primary read captures the real signal; extra approach layers add only narrower classification lift.",
+      "A calm filing where one disciplined read is enough and extra layers add little.",
     whyCaseExists:
       "The filing barely moves, which turns the approach question into 'which layer is worth keeping' rather than 'which approach wins.'",
-    bestUsedWhen: "You want to see where layering more approaches stops helping.",
+    bestUsedWhen: "You want to see where extra layers stop helping.",
     firstQuestion: "Does layering more approaches add truth on a low-drift filing?",
     allowedAnswerShape: "Selective sharpening delivered by a single disciplined read.",
     routeRefuses: "It refuses to force drama by stacking approaches that the case does not reward.",
@@ -516,7 +507,7 @@ export const PUBLIC_CASEBOOK_CASES: Record<PublicCasebookTicker, PublicCasebookE
     methodologyDetail:
       "Shows how a tagged protocol separates a genuinely sharper 2025 decision stack from repeated theme language when the filing adds specifics without rewriting.",
     topCue:
-      "Approach verdict: on META, tagged protocol best ranks 2025-specific decisions; structured contract stays useful but broader; plain prompt loses ranking discipline.",
+      "The useful lift here is ranking: tagged protocol separates the sharper 2025 stack from repeated AI scaffolding.",
     preview: {
       integratedTitle: "Why this case matters",
       boundedTitle: "Why this read matters",
@@ -528,10 +519,10 @@ export const PUBLIC_CASEBOOK_CASES: Record<PublicCasebookTicker, PublicCasebookE
     bandLabel: "Pressure approach verdict",
     bandSummary: "The case where tagged protocol pays off in novelty ranking.",
     teachingSummary:
-      "Shows how a tagged protocol separates a genuinely sharper decision stack from repeated theme language, where looser approaches leave that distinction blurred.",
+      "A case where tagging separates genuinely sharper decisions from repeated AI theme language.",
     whyCaseExists:
       "The filing adds named 2025 decisions on top of a familiar AI theme, so the approach question becomes whether structure can separate sharpening from repetition.",
-    bestUsedWhen: "You want to see where tagging beats plain prompting on novelty ranking.",
+    bestUsedWhen: "You want to see tagging win on novelty ranking.",
     firstQuestion: "Can a tagged protocol separate a sharper stack from repeated theme language?",
     allowedAnswerShape: "Ranked 2025 decision stack with repeated theme held separately.",
     routeRefuses: "It refuses to treat every repeated AI theme line as a fresh category.",
@@ -568,7 +559,7 @@ export const PUBLIC_CASEBOOK_CASES: Record<PublicCasebookTicker, PublicCasebookE
     methodologyDetail:
       "Shows how protocol framing makes a mechanism chain visible under external pressure, keeping the pivot specific instead of flattening it into a generic demand story.",
     topCue:
-      "Approach verdict: on TSLA, tagged protocol best exposes the mechanism chain; structured contract stays useful but broader; plain prompt is less disciplined about policy and commercialization specifics.",
+      "The useful lift here is mechanism visibility: structure keeps the policy-to-cost-to-commercialization chain intact.",
     preview: {
       integratedTitle: "Why this case matters",
       boundedTitle: "Why this read matters",
@@ -580,10 +571,10 @@ export const PUBLIC_CASEBOOK_CASES: Record<PublicCasebookTicker, PublicCasebookE
     bandLabel: "Pressure approach verdict",
     bandSummary: "The case where tagged protocol preserves the mechanism chain.",
     teachingSummary:
-      "Shows how protocol framing keeps a policy-shock mechanism chain visible where looser approaches flatten it into generic EV commentary.",
+      "A case where structure keeps the policy-to-commercialization mechanism chain visible.",
     whyCaseExists:
       "Outside pressure re-centers the filing around autonomy, tariffs, and commercialization, so the approach question becomes whether structure can preserve the mechanism chain.",
-    bestUsedWhen: "You want to see where structure beats plain prompting on mechanism preservation.",
+    bestUsedWhen: "You want to see structure preserve the mechanism chain.",
     firstQuestion: "Can a tagged protocol preserve a mechanism chain under policy shock?",
     allowedAnswerShape: "Ranked pivot with the policy to commercialization chain kept visible.",
     routeRefuses: "It refuses to reduce the change to generic EV-demand or CEO narrative.",
@@ -620,7 +611,7 @@ export const PUBLIC_CASEBOOK_CASES: Record<PublicCasebookTicker, PublicCasebookE
     methodologyDetail:
       "Shows how protocol framing keeps a calm retail shift bounded, where looser approaches inflate refreshed examples into novelty.",
     topCue:
-      "Approach verdict: on WMT, tagged protocol keeps the calm boundary; structured contract stays useful but broader; plain prompt risks overreading refreshed specifics.",
+      "The useful lift here is restraint: structure keeps a calm case from being overread into a rewritten risk map.",
     preview: {
       integratedTitle: "Why this case matters",
       boundedTitle: "Why this read matters",
@@ -632,10 +623,10 @@ export const PUBLIC_CASEBOOK_CASES: Record<PublicCasebookTicker, PublicCasebookE
     bandLabel: "Added pressure case",
     bandSummary: "Retail interface and tariff persistence under calm surface movement.",
     teachingSummary:
-      "Shows how a calm retail case can still reveal meaningful shifts in customer interface and tariff exposure.",
+      "A calm case where structure keeps refreshed specifics from turning into false novelty.",
     whyCaseExists:
       "It adds a retail and agentic-commerce case whose value comes from selective sharpening rather than dramatic rewrite.",
-    bestUsedWhen: "You need the calmer retail-interface and tariff case.",
+    bestUsedWhen: "You want the calm retail-interface and tariff case.",
     firstQuestion: "Did a calm operating story become meaningfully sharper in the right places?",
     allowedAnswerShape: "Selective operating shift with a sharper interface read.",
     routeRefuses: "It refuses to treat every refreshed example as a reordered enterprise-risk map.",

@@ -17,6 +17,12 @@ function buildCaseHref(ticker: string): string {
   return buildProtocolLabCaseHref(ticker, entry.yearFrom, entry.yearTo)
 }
 
+function getPressureMarker(ticker: string): string {
+  if (ticker === "META") return "ranks novelty"
+  if (ticker === "TSLA") return "shows mechanism"
+  return "checks overread"
+}
+
 export default function Story() {
   const anchorEntries = HOME_ANCHOR_TICKERS.map((ticker) => {
     const entry = getPublicCasebookEntry(ticker)
@@ -27,14 +33,15 @@ export default function Story() {
     return entry
   })
 
-  const pressureEntries = CASEBOOK_BANDS.find((band) => band.id === "pressure_cases")?.tickers.map((ticker) => {
-    const entry = getPublicCasebookEntry(ticker)
-    if (!entry) {
-      throw new Error(`Missing pressure casebook entry for ${ticker}.`)
-    }
+  const pressureEntries =
+    CASEBOOK_BANDS.find((band) => band.id === "pressure_cases")?.tickers.map((ticker) => {
+      const entry = getPublicCasebookEntry(ticker)
+      if (!entry) {
+        throw new Error(`Missing pressure casebook entry for ${ticker}.`)
+      }
 
-    return entry
-  }) ?? []
+      return entry
+    }) ?? []
 
   return (
     <main className="min-h-screen page-fade">
@@ -48,13 +55,10 @@ export default function Story() {
           className="relative overflow-hidden rounded-[2.2rem] border border-white/10 bg-linear-to-br from-slate-950/94 via-slate-950/84 to-slate-900/70 p-5 shadow-[0_30px_80px_rgba(2,6,23,0.42)] sm:p-7"
         >
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(56,189,248,0.16),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(16,185,129,0.12),transparent_30%)]" />
-          <div className="relative space-y-5">
+          <div className="relative space-y-4">
             <div className="flex flex-wrap items-center gap-1.5 text-[11px] uppercase tracking-[0.24em] text-slate-300">
               <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">
                 {casebookFraming.story.eyebrow}
-              </span>
-              <span className="rounded-full border border-sky-300/25 bg-sky-400/10 px-3 py-1 text-sky-100">
-                Compact guided argument
               </span>
             </div>
 
@@ -67,7 +71,7 @@ export default function Story() {
               </p>
             </header>
 
-            <div className="grid gap-3 md:grid-cols-2">
+            <div className="flex flex-wrap items-center gap-4">
               <Link
                 to="/companies"
                 className="inline-flex min-h-12 items-center justify-center rounded-full bg-sky-500 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-sky-400"
@@ -76,16 +80,17 @@ export default function Story() {
               </Link>
               <Link
                 to="/methodology"
-                className="inline-flex min-h-12 items-center justify-center rounded-full border border-white/20 px-5 py-3 text-sm font-medium text-slate-200 transition hover:border-white/40 hover:bg-white/5"
+                className="inline-flex items-center gap-2 text-sm font-medium text-slate-200 transition hover:text-white"
               >
-                {casebookFraming.story.secondaryCta}
+                <span>{casebookFraming.story.secondaryCta}</span>
+                <span aria-hidden="true">→</span>
               </Link>
             </div>
           </div>
         </section>
 
         <section
-          id="story-core-question"
+          id="story-argument"
           className="rounded-[1.6rem] border border-white/10 bg-slate-950/48 p-5 sm:p-6"
         >
           <div className="text-[11px] uppercase tracking-[0.24em] text-slate-400">
@@ -93,22 +98,6 @@ export default function Story() {
           </div>
           <div className="mt-3 grid gap-3">
             {casebookFraming.story.coreQuestionBody.map((item) => (
-              <p key={item} className="max-w-3xl text-sm leading-6 text-slate-100">
-                {item}
-              </p>
-            ))}
-          </div>
-        </section>
-
-        <section
-          id="story-answer-shape"
-          className="rounded-[1.6rem] border border-white/10 bg-slate-950/48 p-5 sm:p-6"
-        >
-          <div className="text-[11px] uppercase tracking-[0.24em] text-slate-400">
-            {casebookFraming.story.answerTitle}
-          </div>
-          <div className="mt-3 grid gap-3">
-            {casebookFraming.story.answerBody.map((item) => (
               <p key={item} className="max-w-3xl text-sm leading-6 text-slate-100">
                 {item}
               </p>
@@ -132,7 +121,7 @@ export default function Story() {
             {casebookFraming.story.grammarCards.map((card) => (
               <article
                 key={card.label}
-                className="rounded-[1.2rem] border border-white/10 bg-slate-950/68 p-4"
+                className="rounded-[1.1rem] border border-white/10 bg-slate-950/68 p-3.5"
               >
                 <div className="text-[11px] uppercase tracking-[0.24em] text-sky-100">
                   {card.label}
@@ -157,7 +146,7 @@ export default function Story() {
               </p>
             ))}
           </div>
-          <div className="mt-4 rounded-[1.2rem] border border-white/10 bg-slate-950/62 px-4 py-3 text-sm text-slate-200">
+          <div className="mt-4 rounded-[1rem] border border-white/8 bg-slate-950/34 px-3.5 py-2.5 text-[13px] leading-5 text-slate-300">
             {casebookFraming.casebook.boundednessNote}
           </div>
         </section>
@@ -174,23 +163,20 @@ export default function Story() {
               {casebookFraming.story.anchorIntro}
             </p>
           </div>
-
-          <div className="mt-4 grid gap-3 md:grid-cols-3">
+          <div className="mt-4 grid gap-2.5 md:grid-cols-3">
             {anchorEntries.map((entry) => (
               <Link
                 key={entry.ticker}
                 to={buildCaseHref(entry.ticker)}
-                className="group rounded-[1.25rem] border border-white/10 bg-slate-950/70 p-4 transition hover:border-sky-300/40 hover:bg-slate-950/84"
+                className="group rounded-[1.1rem] border border-white/10 bg-slate-950/66 p-3.5 transition hover:border-sky-300/35 hover:bg-slate-950/82"
               >
-                <div className="text-[11px] uppercase tracking-[0.24em] text-slate-400">
+                <div className="text-[11px] uppercase tracking-[0.24em] text-slate-400">{entry.ticker}</div>
+                <h2 className="mt-2 text-lg font-semibold leading-6 text-slate-50">
                   {entry.publicRoleLabel}
-                </div>
-                <h2 className="mt-2 text-2xl font-semibold tracking-[-0.04em] text-slate-50">
-                  {entry.ticker}
                 </h2>
                 <p className="mt-2 text-sm leading-6 text-slate-200">{entry.teachingSummary}</p>
                 <div className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-sky-100 transition group-hover:text-white">
-                  <span>Open {entry.ticker}</span>
+                  <span>See {entry.ticker}</span>
                   <span aria-hidden="true">→</span>
                 </div>
               </Link>
@@ -205,19 +191,17 @@ export default function Story() {
               {casebookFraming.story.pressureBody}
             </p>
           </div>
-
-          <div className="mt-4 grid gap-3 md:grid-cols-3">
+          <div className="mt-4 flex flex-wrap gap-2.5">
             {pressureEntries.map((entry) => (
-              <article
+              <Link
                 key={entry.ticker}
-                className="rounded-[1.15rem] border border-white/10 bg-slate-950/62 p-4"
+                to={buildCaseHref(entry.ticker)}
+                className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-slate-950/62 px-3.5 py-2 text-sm text-slate-200 transition hover:border-sky-300/35 hover:text-white"
               >
-                <div className="text-[11px] uppercase tracking-[0.24em] text-slate-400">
-                  {entry.publicRoleLabel}
-                </div>
-                <div className="mt-2 text-lg font-semibold text-slate-50">{entry.ticker}</div>
-                <p className="mt-2 text-sm leading-6 text-slate-200">{entry.teachingSummary}</p>
-              </article>
+                <span className="font-semibold text-slate-50">{entry.ticker}</span>
+                <span className="text-slate-400">/</span>
+                <span>{getPressureMarker(entry.ticker)}</span>
+              </Link>
             ))}
           </div>
         </section>
@@ -230,11 +214,14 @@ export default function Story() {
             <div className="text-[11px] uppercase tracking-[0.24em] text-sky-100">
               {casebookFraming.story.ctaTitle}
             </div>
+            <h2 className="text-xl font-semibold text-slate-50 sm:text-2xl">
+              Choose the case that earns the claim.
+            </h2>
             <p className="max-w-3xl text-sm leading-6 text-slate-100">
               {casebookFraming.story.ctaBody}
             </p>
           </div>
-          <div className="mt-4 flex flex-wrap items-center gap-3">
+          <div className="mt-4 flex flex-wrap items-center gap-4">
             <Link
               to="/companies"
               className="inline-flex min-h-11 items-center justify-center rounded-full bg-sky-500 px-5 py-2.5 text-sm font-semibold text-slate-950 transition hover:bg-sky-400"
@@ -243,9 +230,10 @@ export default function Story() {
             </Link>
             <Link
               to="/methodology"
-              className="inline-flex min-h-11 items-center justify-center rounded-full border border-white/20 px-4 py-2.5 text-sm font-medium text-slate-200 transition hover:border-white/40 hover:bg-white/5"
+              className="inline-flex items-center gap-2 text-sm font-medium text-slate-200 transition hover:text-white"
             >
-              {casebookFraming.story.secondaryCta}
+              <span>{casebookFraming.story.secondaryCta}</span>
+              <span aria-hidden="true">→</span>
             </Link>
           </div>
         </section>

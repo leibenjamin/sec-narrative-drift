@@ -63,6 +63,10 @@ export default function Companies() {
     : null
   const recommendedTicker = recommendedPilot?.ticker ?? "NVDA"
   const recommendedHref = recommendedPilot?.href ?? resolveHref(null, "NVDA")
+  const recommendedEntry = getPublicCasebookEntry(recommendedTicker) ?? getPublicCasebookEntry("NVDA")
+  if (!recommendedEntry) {
+    throw new Error("Missing casebook entry for NVDA.")
+  }
 
   return (
     <main className="min-h-screen page-fade">
@@ -70,10 +74,10 @@ export default function Companies() {
         title={casebookFraming.casebook.title}
         description={casebookFraming.casebook.metaDescription}
       />
-      <div className="mx-auto max-w-6xl space-y-5 px-5 py-8 sm:space-y-6 sm:px-6 sm:py-10">
+      <div className="mx-auto max-w-6xl space-y-3.5 px-5 py-8 sm:space-y-4 sm:px-6 sm:py-10">
         <header
           id="casebook-top-fold"
-          className="space-y-3 rounded-[1.7rem] border border-white/10 bg-linear-to-br from-slate-950/90 via-slate-950/76 to-slate-900/62 p-4 shadow-[0_22px_55px_rgba(2,6,23,0.32)] sm:p-6"
+          className="space-y-2 rounded-[1.7rem] border border-white/10 bg-linear-to-br from-slate-950/90 via-slate-950/76 to-slate-900/62 p-4 shadow-[0_22px_55px_rgba(2,6,23,0.32)] sm:p-5"
         >
           <p className="text-xs uppercase tracking-[0.28em] text-slate-300">
             {casebookFraming.casebook.eyebrow}
@@ -84,32 +88,32 @@ export default function Companies() {
           <p className="max-w-3xl text-sm leading-6 text-slate-300">
             {casebookFraming.casebook.intro}
           </p>
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="flex flex-wrap items-center gap-4 text-sm text-slate-400">
             <Link
               to="/"
-              className="inline-flex items-center gap-2 text-sm font-medium text-slate-300 transition hover:text-white"
+              className="inline-flex items-center gap-2 font-medium transition hover:text-white"
             >
               <span aria-hidden="true">←</span>
               <span>Back to Home</span>
             </Link>
             <Link
               to="/story"
-              className="inline-flex items-center gap-2 text-sm font-medium text-slate-300 transition hover:text-white"
+              className="inline-flex items-center gap-2 font-medium transition hover:text-white"
             >
               <span>Story</span>
               <span aria-hidden="true">→</span>
             </Link>
             <Link
               to="/methodology"
-              className="inline-flex items-center gap-2 text-sm font-medium text-slate-300 transition hover:text-white"
+              className="inline-flex items-center gap-2 font-medium transition hover:text-white"
             >
               <span>Methodology</span>
               <span aria-hidden="true">→</span>
             </Link>
           </div>
-          <div className="rounded-[1.1rem] border border-white/10 bg-slate-950/38 px-4 py-3 text-sm text-slate-200">
+          <p className="text-sm text-slate-400">
             {casebookFraming.casebook.boundednessNote}
-          </div>
+          </p>
           {error ? (
             <div className="rounded-xl border border-amber-400/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-100">
               {error}
@@ -119,37 +123,28 @@ export default function Companies() {
 
         <section
           id="casebook-chooser-guide"
-          className="rounded-[1.45rem] border border-white/10 bg-slate-950/42 p-4 sm:p-5"
+          className="rounded-[1.35rem] border border-white/10 bg-slate-950/42 p-4"
         >
-          <div className="space-y-3">
-            <div className="text-[11px] uppercase tracking-[0.24em] text-slate-400">
-              {casebookFraming.casebook.chooserTitle}
-            </div>
-            <p className="max-w-3xl text-sm leading-6 text-slate-100">
-              {casebookFraming.casebook.chooserIntro}
-            </p>
-            <div className="grid gap-3 md:grid-cols-3">
-              {casebookFraming.casebook.chooserGuides.map((item) => (
-                <div
-                  key={item}
-                  className="rounded-[1.15rem] border border-white/10 bg-slate-950/60 px-4 py-3 text-sm leading-6 text-slate-100"
-                >
-                  {item}
-                </div>
-              ))}
-            </div>
-            <div className="rounded-[1.15rem] border border-sky-300/18 bg-sky-400/8 px-4 py-3">
-              <div className="text-[11px] uppercase tracking-[0.24em] text-sky-100">
-                Recommended first case
+          <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+            <div className="space-y-1.5">
+              <div className="text-[11px] uppercase tracking-[0.24em] text-slate-400">
+                {casebookFraming.casebook.chooserTitle}
               </div>
-              <div className="mt-2 flex flex-wrap items-center gap-3">
-                <p className="max-w-2xl text-sm leading-6 text-slate-100">
-                  {recommendedPilot?.guidance.what_you_learn ??
-                    "Start with NVDA if you want the clearest proof of where structure earns its cost."}
+              <p className="max-w-2xl text-sm leading-6 text-slate-100">
+                {casebookFraming.casebook.chooserIntro}
+              </p>
+            </div>
+            <div className="rounded-[1rem] border border-sky-300/16 bg-sky-400/6 px-3 py-2.5">
+              <div className="flex flex-col items-start gap-2.5 sm:flex-row sm:flex-wrap sm:items-center">
+                <div className="rounded-full border border-sky-300/25 bg-sky-400/10 px-2.5 py-1 text-[11px] uppercase tracking-[0.22em] text-sky-100">
+                  {`Start with ${recommendedTicker}`}
+                </div>
+                <p className="min-w-0 flex-1 text-sm leading-6 text-slate-100">
+                  {recommendedEntry.bestUsedWhen}
                 </p>
                 <Link
                   to={recommendedHref}
-                  className="inline-flex min-h-10 items-center justify-center rounded-full border border-sky-300/30 bg-sky-400/10 px-4 py-2 text-sm font-medium text-sky-100 transition hover:border-sky-200/45 hover:bg-sky-400/14"
+                  className="inline-flex min-h-9 items-center justify-center rounded-full border border-sky-300/30 bg-sky-400/10 px-3.5 py-1.5 text-sm font-medium text-sky-100 transition hover:border-sky-200/45 hover:bg-sky-400/14"
                 >
                   {`Open ${recommendedTicker}`}
                 </Link>
@@ -158,31 +153,14 @@ export default function Companies() {
           </div>
         </section>
 
-        <section
-          id="casebook-curation-note"
-          className="rounded-[1.45rem] border border-white/10 bg-slate-950/42 p-4 sm:p-5"
-        >
-          <div className="space-y-2">
-            <div className="text-[11px] uppercase tracking-[0.24em] text-slate-400">
-              {casebookFraming.casebook.rosterNoteTitle}
-            </div>
-            <p className="max-w-3xl text-sm leading-6 text-slate-100">
-              {casebookFraming.casebook.rosterNoteLead}
-            </p>
-            <p className="max-w-3xl text-sm leading-6 text-slate-300">
-              {casebookFraming.casebook.rosterNoteSupport}
-            </p>
-          </div>
-        </section>
-
         {isLoading ? (
           <p className="text-sm text-slate-300">Loading casebook roster...</p>
         ) : (
-          <section id="casebook-roster" className="space-y-5">
+          <section id="casebook-roster" className="space-y-4">
             {CASEBOOK_BANDS.map((band) => (
               <section
                 key={band.id}
-                className="space-y-4 rounded-[1.6rem] border border-white/10 bg-slate-950/42 p-4 sm:p-5"
+                className="space-y-3 rounded-[1.6rem] border border-white/10 bg-slate-950/42 p-4 sm:p-5"
               >
                 <div className="space-y-2">
                   <div className="text-[11px] uppercase tracking-[0.24em] text-slate-400">
@@ -193,7 +171,7 @@ export default function Companies() {
                   </p>
                 </div>
 
-                <div className="grid gap-4 xl:grid-cols-3">
+                <div className="grid gap-3 xl:grid-cols-3">
                   {band.tickers.map((ticker) => {
                     const entry = getPublicCasebookEntry(ticker)
                     if (!entry) {
@@ -207,7 +185,6 @@ export default function Companies() {
                         companyName={entry.companyName}
                         roleLabel={entry.publicRoleLabel}
                         description={entry.teachingSummary}
-                        bestFor={entry.bestUsedWhen}
                         href={resolveHref(visiblePilotSystem, ticker)}
                         ctaLabel={`Open ${ticker}`}
                         emphasis={band.id === "anchor_shapes" && ticker === "NVDA" ? "primary" : "default"}

@@ -188,9 +188,6 @@ export default function Company() {
             <div className="grid gap-3 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-start sm:gap-4">
               <div className="min-w-0 space-y-2.5">
                 <div className="flex flex-wrap gap-1 text-[11px] text-slate-200 sm:text-xs">
-                  <span className="rounded-full border border-sky-300/25 bg-sky-400/10 px-2 py-1">
-                    Case
-                  </span>
                   <span className="rounded-full border border-white/10 bg-white/5 px-2 py-1">
                     {activeRoleLabel}
                   </span>
@@ -209,26 +206,26 @@ export default function Company() {
                 <p className="max-w-3xl text-sm leading-6 text-slate-300">
                   {inlineCue}
                 </p>
-                <p className="max-w-3xl text-sm leading-6 text-slate-400">
+                <p className="max-w-2xl text-sm leading-6 text-slate-400">
                   {casebookFraming.casePage.contextLine}
                 </p>
               </div>
-              <div className="flex flex-wrap gap-1.5 sm:justify-end sm:gap-2 sm:pt-1">
+              <div className="flex flex-wrap items-center gap-4 text-sm text-slate-400 sm:justify-end sm:pt-0.5">
                 <Link
                   to="/companies"
-                  className="inline-flex items-center rounded-full border border-white/20 px-2.5 py-1 text-[11px] text-slate-200 hover:border-white/40 hover:bg-white/5 sm:px-3 sm:py-1.5 sm:text-xs"
+                  className="font-medium transition hover:text-white"
                 >
                   {casebookFraming.casePage.casebookLinkLabel}
                 </Link>
                 <Link
                   to="/story"
-                  className="inline-flex items-center rounded-full border border-white/20 px-2.5 py-1 text-[11px] text-slate-200 hover:border-white/40 hover:bg-white/5 sm:px-3 sm:py-1.5 sm:text-xs"
+                  className="font-medium transition hover:text-white"
                 >
                   {casebookFraming.casePage.storyLinkLabel}
                 </Link>
                 <Link
                   to="/methodology"
-                  className="inline-flex items-center rounded-full border border-white/20 px-2.5 py-1 text-[11px] text-slate-200 hover:border-white/40 hover:bg-white/5 sm:px-3 sm:py-1.5 sm:text-xs"
+                  className="font-medium transition hover:text-white"
                 >
                   {casebookFraming.casePage.methodologyLinkLabel}
                 </Link>

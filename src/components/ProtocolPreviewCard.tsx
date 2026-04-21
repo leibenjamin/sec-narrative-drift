@@ -149,7 +149,7 @@ function buildPreviewModel(
   }
   const statusLabel = formatPilotStatusLabel(pilotMatrixBundle.matrix.pilot_status.state)
   const routeLabel =
-    casebookEntry?.surface === "matrix_first" ? "Matrix-first public route" : "Integrated public route"
+    casebookEntry?.surface === "matrix_first" ? "Matrix-led case" : "Full compare case"
   const showLead = !showRestraintStrip
   const metaLine = `${routeLabel} · Scope: ${statusLabel}`
   const visibleTiles = showRestraintStrip ? [proofBasisTile] : [proofBasisTile, boundaryTile]

@@ -56,6 +56,10 @@ export default function Home() {
     : null
   const recommendedTicker = recommendedPilot?.ticker ?? "NVDA"
   const recommendedHref = recommendedPilot?.href ?? buildFallbackHref("NVDA")
+  const recommendedEntry = getPublicCasebookEntry(recommendedTicker) ?? getPublicCasebookEntry("NVDA")
+  if (!recommendedEntry) {
+    throw new Error("Missing casebook entry for NVDA.")
+  }
 
   const anchorEntries = HOME_ANCHOR_TICKERS.map((ticker) => {
     const entry = getPublicCasebookEntry(ticker)
@@ -75,123 +79,77 @@ export default function Home() {
         title={casebookFraming.home.title}
         description={casebookFraming.home.metaDescription}
       />
-      <div className="mx-auto max-w-6xl space-y-4 px-5 py-4 sm:space-y-5 sm:px-6 sm:py-6 xl:py-8">
+      <div className="mx-auto max-w-6xl space-y-4 px-5 py-4 sm:space-y-5 sm:px-6 sm:py-6 xl:py-7">
         <section
           id="home-top-fold"
           className="relative overflow-hidden rounded-[2.35rem] border border-white/10 bg-linear-to-br from-slate-950/94 via-slate-950/86 to-slate-900/74 shadow-[0_36px_90px_rgba(2,6,23,0.46)]"
         >
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(56,189,248,0.14),transparent_32%),radial-gradient(circle_at_bottom_right,rgba(16,185,129,0.1),transparent_28%)]" />
-          <div className="relative grid gap-5 p-5 sm:gap-6 sm:p-6 xl:p-7">
-            <article className="rounded-[1.9rem] border border-white/10 bg-slate-950/32 p-5 backdrop-blur sm:p-6 xl:p-7">
-              <div className="flex flex-wrap items-center gap-1.5 text-[11px] uppercase tracking-[0.24em] text-slate-300">
-                <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">
-                  {casebookFraming.appName}
-                </span>
-                <span className="rounded-full border border-sky-300/25 bg-sky-400/10 px-3 py-1 text-sky-100">
-                  Bounded six-case casebook
-                </span>
+          <div className="relative grid gap-3 p-4 sm:gap-4 sm:p-5 xl:p-6">
+            <article className="rounded-[1.9rem] border border-white/10 bg-slate-950/32 p-4 backdrop-blur sm:p-5 xl:p-6">
+              <div className="inline-flex rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] uppercase tracking-[0.24em] text-slate-300">
+                {casebookFraming.appName}
               </div>
 
-              <div className="mt-5 grid gap-5 sm:mt-6 sm:gap-6">
-                <div className="space-y-4">
-                  <h1 className="max-w-4xl text-[clamp(2.4rem,4vw,4.8rem)] font-semibold leading-[0.92] tracking-[-0.05em] text-slate-50">
-                    {casebookFraming.home.hook}
-                  </h1>
-                  <p className="max-w-3xl text-sm leading-6 text-slate-200 sm:text-base">
-                    {casebookFraming.home.support}
-                  </p>
-                </div>
-
-                <div className="flex flex-wrap gap-2.5">
-                  <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-[11px] uppercase tracking-[0.22em] text-slate-300">
-                    6 curated cases
-                  </span>
-                  <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-[11px] uppercase tracking-[0.22em] text-slate-300">
-                    3 live approaches
-                  </span>
-                  <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-[11px] uppercase tracking-[0.22em] text-slate-300">
-                    claim / prove / stop
-                  </span>
-                </div>
+              <div className="mt-3 space-y-2.5 sm:mt-4 sm:space-y-3.5">
+                <h1 className="max-w-4xl text-[clamp(2.1rem,7vw,4.7rem)] font-semibold leading-[0.92] tracking-[-0.05em] text-slate-50">
+                  {casebookFraming.home.hook}
+                </h1>
+                <p className="max-w-2xl text-sm leading-6 text-slate-200 sm:text-base">
+                  {casebookFraming.home.support}
+                </p>
               </div>
             </article>
 
-            <div className="grid gap-4 xl:grid-cols-2">
-              <article className="rounded-[1.75rem] border border-white/10 bg-slate-950/44 p-5 backdrop-blur sm:p-6">
+            <div className="grid gap-3 xl:grid-cols-2">
+              <article className="rounded-[1.75rem] border border-white/10 bg-slate-950/44 p-4 backdrop-blur sm:p-5">
                 <div className="text-[11px] uppercase tracking-[0.24em] text-slate-400">
                   {casebookFraming.home.storyEntryTitle}
                 </div>
-                <p className="mt-3 text-lg font-semibold leading-7 text-slate-50">
-                  Understand the argument before you inspect the proof.
+                <p className="mt-2 text-lg font-semibold leading-7 text-slate-50">
+                  Read the argument first.
                 </p>
-                <p className="mt-3 max-w-xl text-sm leading-6 text-slate-200">
+                <p className="mt-2 max-w-xl text-sm leading-6 text-slate-200">
                   {casebookFraming.home.storyEntryBody}
                 </p>
-                <div className="mt-4 grid gap-2.5">
-                  {casebookFraming.home.storyEntryPoints.map((item) => (
-                    <div
-                      key={item}
-                      className="rounded-[1.1rem] border border-white/10 bg-slate-950/56 px-4 py-3 text-sm leading-6 text-slate-100"
-                    >
-                      {item}
-                    </div>
-                  ))}
-                </div>
-                <div className="mt-5 flex flex-wrap items-center gap-3">
+                <div className="mt-4 flex flex-wrap items-center gap-3">
                   <Link
                     to="/story"
                     className="inline-flex min-h-11 items-center justify-center rounded-full bg-sky-500 px-5 py-2.5 text-sm font-semibold text-slate-950 transition hover:bg-sky-400"
                   >
                     {casebookFraming.home.storyEntryCta}
                   </Link>
-                  <Link
-                    to="/methodology"
-                    className="inline-flex items-center gap-2 text-sm font-medium text-slate-200 transition hover:text-white"
-                  >
-                    <span>Field guide</span>
-                    <span aria-hidden="true">→</span>
-                  </Link>
                 </div>
               </article>
 
-              <article className="rounded-[1.75rem] border border-sky-300/18 bg-linear-to-br from-sky-400/10 via-slate-950/78 to-slate-950/58 p-5 backdrop-blur sm:p-6">
+              <article className="rounded-[1.75rem] border border-sky-300/18 bg-linear-to-br from-sky-400/10 via-slate-950/78 to-slate-950/58 p-4 backdrop-blur sm:p-5">
                 <div className="text-[11px] uppercase tracking-[0.24em] text-sky-100">
                   {casebookFraming.home.casebookEntryTitle}
                 </div>
-                <p className="mt-3 text-lg font-semibold leading-7 text-slate-50">
-                  Browse the six-case instrument without widening the claim.
+                <p className="mt-2 text-lg font-semibold leading-7 text-slate-50">
+                  Open the six-case casebook.
                 </p>
-                <p className="mt-3 max-w-xl text-sm leading-6 text-slate-100">
+                <p className="mt-2 max-w-xl text-sm leading-6 text-slate-100">
                   {casebookFraming.home.casebookEntryBody}
                 </p>
-                <div className="mt-4 grid gap-2.5">
-                  {casebookFraming.home.casebookEntryPoints.map((item) => (
-                    <div
-                      key={item}
-                      className="rounded-[1.1rem] border border-white/10 bg-slate-950/56 px-4 py-3 text-sm leading-6 text-slate-100"
-                    >
-                      {item}
-                    </div>
-                  ))}
-                </div>
-                <div className="mt-4 rounded-[1.1rem] border border-white/10 bg-slate-950/62 px-4 py-3">
-                  <div className="text-[11px] uppercase tracking-[0.22em] text-slate-400">
-                    {`${casebookFraming.home.casebookEntrySecondaryCta} ${recommendedTicker}`}
-                  </div>
-                  <p className="mt-2 text-sm leading-6 text-slate-200">
-                    {recommendedPilot?.guidance.why_pick ?? "Begin with the clearest anchor verdict before moving through the full roster."}
-                  </p>
-                </div>
-                <div className="mt-5 flex flex-wrap items-center gap-3">
+                <div className="mt-4 flex flex-wrap items-center gap-3">
                   <Link
                     to="/companies"
                     className="inline-flex min-h-11 items-center justify-center rounded-full border border-sky-300/30 bg-sky-400/10 px-5 py-2.5 text-sm font-semibold text-sky-100 transition hover:border-sky-200/45 hover:bg-sky-400/14"
                   >
                     {casebookFraming.home.casebookEntryCta}
                   </Link>
+                </div>
+                <div className="mt-3 flex flex-col items-start gap-2.5 rounded-[0.95rem] border border-white/10 bg-slate-950/56 px-3 py-2.5 sm:flex-row sm:flex-wrap sm:items-center">
+                  <div className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] uppercase tracking-[0.22em] text-slate-300">
+                    {`${casebookFraming.home.casebookEntrySecondaryCta} ${recommendedTicker}`}
+                  </div>
+                  <p className="min-w-0 flex-1 text-sm leading-6 text-slate-200">
+                    {recommendedEntry.bestUsedWhen}
+                  </p>
                   <Link
                     to={recommendedHref}
-                    className="inline-flex min-h-11 items-center justify-center rounded-full border border-white/20 px-4 py-2.5 text-sm font-medium text-slate-200 transition hover:border-white/40 hover:bg-white/5"
+                    className="inline-flex min-h-9 items-center justify-center rounded-full border border-white/20 px-3.5 py-1.5 text-sm font-medium text-slate-200 transition hover:border-white/40 hover:bg-white/5"
                   >
                     {`Open ${recommendedTicker}`}
                   </Link>
@@ -199,8 +157,8 @@ export default function Home() {
               </article>
             </div>
 
-            <div className="rounded-[1.25rem] border border-white/10 bg-slate-950/42 px-4 py-3 text-sm leading-6 text-slate-200">
-              <span className="mr-2 text-[11px] uppercase tracking-[0.22em] text-slate-400">
+            <div className="rounded-[1rem] border border-white/8 bg-slate-950/30 px-3.5 py-2.5 text-[13px] leading-5 text-slate-300">
+              <span className="mr-2 text-[10px] uppercase tracking-[0.22em] text-slate-400">
                 {casebookFraming.home.boundednessLabel}
               </span>
               {casebookFraming.home.boundednessBody}
